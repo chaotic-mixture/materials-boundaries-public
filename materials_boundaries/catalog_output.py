@@ -11,6 +11,9 @@ def render_catalog(catalog: dict, kind: str, language: str = "en") -> str:
     if kind == "predictions":
         from .predictions import render_predictions
         return render_predictions(catalog, language)
+    if kind == "observations":
+        from ._observation_contract import validate_mos2_records
+        validate_mos2_records(catalog["records"])
     if kind == "claims":
         from ._compressibility_contract import validate_compressibility_records
         from ._directional_contract import validate_directional_records
@@ -27,7 +30,9 @@ def render_catalog(catalog: dict, kind: str, language: str = "en") -> str:
     def t(key: str) -> str:
         return translate(key, language)
 
-    def status(value: str) -> str:
+    def status(value: str | None) -> str:
+        if value is None:
+            return t("unknown")
         # Unknown future codes stay visible rather than acquiring an invented label.
         key = "catalog_status_" + value
         label = t(key)
@@ -74,6 +79,21 @@ def render_catalog(catalog: dict, kind: str, language: str = "en") -> str:
                 lines.append(field("catalog_display_name", display_name))
             result, material, method = record["reported_result"], record["material"], record["method"]
             uncertainty = result["uncertainty"]
+            mos2 = record.get("method_family") == "bertolazzi_2011_mos2_monolayer_indentation_v1"
+            if mos2:
+                # Disclose the unresolved source model before the numerical result.
+                q = method["q_source_report"]
+                lines.extend([
+                    "  " + t("catalog_mos2_model_notice"),
+                    field("catalog_model_status", status(record["model_status"])),
+                    field("catalog_q_formula", q["formula_as_printed"]),
+                    field("catalog_q_nu", q["nu_as_printed"]),
+                    field("catalog_q_reported", q["q_as_printed"]),
+                    field("catalog_q_arithmetic", q["audit_arithmetic_value"]),
+                    field("catalog_q_used", q["fit_constant_actually_used"]),
+                    field("catalog_locator", q["locator"]),
+                    "  " + t("catalog_mos2_source_notice"),
+                ])
             lines.extend([
                 field("catalog_original_name", record["name"]),
                 field("catalog_version", record["version"]),
@@ -95,7 +115,7 @@ def render_catalog(catalog: dict, kind: str, language: str = "en") -> str:
                 field("catalog_uncertainty_type", status(uncertainty["type"])),
                 field("catalog_coverage_factor", uncertainty["coverage_factor"]),
                 field("catalog_confidence_level", uncertainty["confidence_level"]),
-                "  " + t("catalog_reported_uncertainty_notice"),
+                "  " + t("catalog_sd_notice" if mos2 else "catalog_reported_uncertainty_notice"),
                 field("catalog_uncertainty_interpretation", uncertainty["interpretation"]),
                 field("catalog_measurement_method", status(method["technique"])),
                 field("catalog_inference", method["inference"]),
@@ -105,17 +125,44 @@ def render_catalog(catalog: dict, kind: str, language: str = "en") -> str:
                 field("catalog_model_assumptions", ""),
             ])
             lines.extend("    - " + assumption for assumption in method["model_assumptions"])
+            if mos2:
+                lines.extend([
+                    field("catalog_preparation_notes", material["preparation_notes"]),
+                    field("catalog_geometry_tolerance", material["suspended_span_diameters"]["reported_value_string"]),
+                    field("catalog_tip_radius", method["tip_radius"]["reported_value_string"]),
+                    "  " + t("catalog_geometry_uncertainty_notice"),
+                    field("catalog_averaging_convention", uncertainty["averaging_convention"]),
+                    field("catalog_stress_strain_status", method["stress_strain_measure_status"]),
+                ])
             lines.append(field("catalog_conditions", ""))
             for key in ("temperature", "atmosphere", "humidity", "loading_rate"):
-                lines.append(field("catalog_" + key, record["conditions"][key], "    "))
+                value = record["conditions"][key]
+                if mos2 and key == "loading_rate":
+                    lines.append(field("catalog_probe_speed", f'{value["value"]} {value["unit"]}', "    "))
+                    lines.append("    " + t("catalog_probe_speed_notice"))
+                    lines.append(field("catalog_locator", value["locator"], "    "))
+                else:
+                    lines.append(field("catalog_" + key, value, "    "))
+            if mos2:
+                lines.extend("    - " + note for note in record["conditions"]["notes"])
             sample = record["sample_metadata"]
             lines.append(field("catalog_sample_metadata", None if sample is None else ""))
             if sample is not None:
                 lines.append(field("catalog_sample_scope", status(sample["scope"]), "    "))
-                for key, label in (("force_displacement_fits", "catalog_fit_count"), ("membranes", "catalog_membrane_count"), ("flakes", "catalog_flake_count")):
-                    lines.append(field(label, sample["counts"][key], "    "))
-                for key, label in (("mean", "catalog_distribution_mean"), ("standard_deviation", "catalog_distribution_sd")):
-                    lines.append(field(label, f'{sample["fitted_distribution"][key]} {sample["fitted_distribution"]["unit"]}', "    "))
+                if mos2:
+                    for key, label in (("study_monolayer_membranes", "catalog_study_monolayer_count"),
+                                       ("force_displacement_curves", "catalog_curve_count"),
+                                       ("distinct_parent_flakes", "catalog_parent_flake_count"),
+                                       ("failure_events", "catalog_failure_count")):
+                        lines.append(field(label, sample["counts"][key], "    "))
+                    if "membranes_explicitly_associated_with_stiffness_average" in sample["counts"]:
+                        lines.append(field("catalog_stiffness_membrane_count", sample["counts"]["membranes_explicitly_associated_with_stiffness_average"], "    "))
+                    lines.append(field("catalog_locator", sample["locator"], "    "))
+                else:
+                    for key, label in (("force_displacement_fits", "catalog_fit_count"), ("membranes", "catalog_membrane_count"), ("flakes", "catalog_flake_count")):
+                        lines.append(field(label, sample["counts"][key], "    "))
+                    for key, label in (("mean", "catalog_distribution_mean"), ("standard_deviation", "catalog_distribution_sd")):
+                        lines.append(field(label, f'{sample["fitted_distribution"][key]} {sample["fitted_distribution"]["unit"]}', "    "))
                 lines.extend("    - " + note for note in sample["notes"])
             verification = record["verification"]
             lines.extend([
@@ -123,10 +170,14 @@ def render_catalog(catalog: dict, kind: str, language: str = "en") -> str:
                 field("catalog_independent_review", t("catalog_yes" if verification["independent_scientific_review"] else "catalog_no")),
                 field("catalog_gaps", ""),
             ])
+            if mos2:
+                lines.append("  " + t("catalog_mos2_transcription_notice"))
             lines.extend("    - " + gap for gap in verification["gaps"])
             lines.append(field("catalog_observation_evidence", ""))
             for evidence in record["evidence"]:
                 lines.append(field("source", evidence["source_id"], "    "))
+                if mos2:
+                    lines.append(field("catalog_urls", evidence["source_url"], "      "))
                 source = sources.get(evidence["source_id"])
                 if source is not None:
                     lines.extend(source_summary(source, "      "))

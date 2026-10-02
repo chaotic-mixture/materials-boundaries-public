@@ -33,7 +33,7 @@ def ids(catalog):
 class ObservationCatalogTests(unittest.TestCase):
     def test_historical_observation_records_and_catalog_separation(self):
         claims, sources, observations = [read_catalog(k) for k in ('claims', 'sources', 'observations')]
-        self.assertEqual([c['schema_version'] for c in (claims, sources, observations)], ['1.10.0', '1.0.0', '1.0.0'])
+        self.assertEqual([c['schema_version'] for c in (claims, sources, observations)], ['1.10.0', '1.0.0', '1.1.0'])
         self.assertTrue(set(IDS).issubset(ids(observations)))
         self.assertIn(SOURCE, ids(sources))
         self.assertTrue(set(ids(claims)).isdisjoint(IDS))
@@ -235,7 +235,7 @@ class ObservationQueryAndDisplayTests(unittest.TestCase):
                 actual = main(['catalog', 'observations', *args])
             self.assertEqual(actual, code, stderr.getvalue())
             if code == 0:
-                self.assertEqual(json.loads(stdout.getvalue()), {'schema_version': '1.0.0', 'records': []})
+                self.assertEqual(json.loads(stdout.getvalue()), {'schema_version': read_catalog('observations')['schema_version'], 'records': []})
 
 
 @unittest.skipIf(Draft202012Validator is None, 'optional jsonschema dev dependency not installed')

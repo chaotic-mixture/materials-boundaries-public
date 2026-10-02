@@ -1,0 +1,22 @@
+{
+  "release": "0.17.0",
+  "baseline_release": "0.16.0-public-contributor-baseline",
+  "scope": "Narrow reviewed schema-envelope and historical-export label test updates; no scientific records, numeric assertions or historical source ledgers changed.",
+  "approved_test_updates": {
+    "tests/test_observation_catalog.py": {
+      "previous_sha256": "aa0d64ac366dcdb43bfdf81103a12cbefe5ec2e11c631cad85cf780aebf05fae",
+      "sha256": "6626e4710ad9846f32951ee42cd366b47837eb8c19f471de257183c353737edb",
+      "reason": "Advance only the explicit observation-schema assertion to 1.1.0 and derive empty filtered envelope from the current catalog; preserve every historical scientific assertion."
+    },
+    "tests/test_temperature.py": {
+      "previous_sha256": "01b7b2a43a86200c71eac264761ca80aad78dcc4f86ce0f5a7ba9189dca4f5c4",
+      "sha256": "81bd71206a29993d5097dffd6811a152638a231e83cedef46cb662729f71793f",
+      "reason": "Rebuild all fixed synthetic exports under their original 0.16.0 engine label and retain full byte-for-byte assertions; preserve all data, snapshots, conditions and current-label checks in release metadata."
+    },
+    "tests/provenance_corrections.py": {
+      "previous_sha256": "21b4b63d38dbc13f41ed33ad9d32753404249fca1f33ef71d18d03871ad1c381",
+      "sha256": "675f73f489d14dc9a2c1683abaf3c13a83761eea6e8f6c5b1b09c38085934544",
+      "reason": "Append this exact three-file fail-closed v0.17.0 test-update step after every prior ledger; preserve previous hash/reason checks and allowed-file sets."
+    }
+  }
+}

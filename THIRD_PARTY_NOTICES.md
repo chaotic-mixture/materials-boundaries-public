@@ -54,6 +54,19 @@ and source-specific caveats:
 - Graphene observation summaries from [Lee et al. (2008)](https://doi.org/10.1126/science.1157996):
   ©2008 AAAS; model-dependent two-dimensional results, not raw experimental data
   or third-party figures. See [observation provenance](docs/OBSERVATIONS.md)
+- Monolayer MoS2 observation summaries from [Bertolazzi, Brivio and Kis (2011)](https://doi.org/10.1021/nn203879f):
+  publisher metadata states ©2011 American Chemical Society; the inspected
+  [EPFL proof-formatted PDF](https://infoscience.epfl.ch/server/api/core/bitstreams/5af84a4c-55a4-4151-9d85-d5c215d848a4/content)
+  has lettered pages A–G and an ACS notice with a placeholder year. Repository
+  “openaccess” / “Published version” labels establish neither verified final-text
+  identity nor an open-reuse license. The final publisher text and supplement
+  remain unverified; no general reuse permission is inferred. Only two brief
+  factual monolayer numerical summaries, metadata, locators and original
+  curation are included. The printed-q discrepancy, unresolved actual fit
+  constant, source-reported SD semantics and unknown conditions are preserved;
+  no correction, refit, plot or conversion is claimed. No PDF, full text, figure,
+  screenshot or raw measurement collection is redistributed. MIT does not
+  relicense this paper or its factual material. See [observation provenance](docs/OBSERVATIONS.md)
 - Ni-family ideal-shear and silicon first-instability computational predictions:
   brief published values with methods and unknown conditions preserved; no
   article redistribution or universal-bound claim. See [prediction provenance](docs/COMPUTATIONAL_PREDICTIONS.md)

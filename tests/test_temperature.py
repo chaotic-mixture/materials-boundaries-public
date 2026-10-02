@@ -230,16 +230,20 @@ class TemperatureVisualizationTests(unittest.TestCase):
                 self.assertIn('materials_boundaries_synthetic_temperature_demo',html)
 
     def test_checked_in_synthetic_exports_are_canonical_and_reproducible(self):
-        # Pin this published sample by ID; additions to the live catalog remain welcome.
-        for folder,ids in [('visualization',[LINEAR,OVERLAP]),('catalog-visualization',[LINEAR,OVERLAP,'synthetic_quadratic_temperature','synthetic_quartic_temperature','synthetic_interval_temperature'])]:
-            target=ROOT/'examples/temperature'/folder
-            bundle=build_temperature_comparison(ids,points_per_branch=101)
-            self.assertEqual((target/'temperature-comparison.json').read_text(),comparison_json(bundle))
-            self.assertEqual((target/'temperature-comparison.csv').read_text(),comparison_csv(bundle))
-            for lang in ('en','zh','ja','de'):
-                self.assertEqual((target/f'temperature-comparison.{lang}.html').read_text(),render_temperature_html(bundle,lang=lang))
-                self.assertEqual((target/f'temperature-comparison.{lang}.svg').read_text(),render_temperature_svg(bundle,lang=lang))
-                self.assertEqual((target/f'temperature-comparison.narrow.{lang}.svg').read_text(),render_temperature_svg(bundle,lang=lang,width=380))
+        # Preserve the published v0.16.0 artifacts byte-for-byte. Rebuild with
+        # only that historical engine label; no values, snapshots or conditions
+        # are normalized. Current engine labels are checked in release metadata.
+        with patch('materials_boundaries.__version__', '0.16.0'):
+            # Pin this published sample by ID; additions to the live catalog remain welcome.
+            for folder,ids in [('visualization',[LINEAR,OVERLAP]),('catalog-visualization',[LINEAR,OVERLAP,'synthetic_quadratic_temperature','synthetic_quartic_temperature','synthetic_interval_temperature'])]:
+                target=ROOT/'examples/temperature'/folder
+                bundle=build_temperature_comparison(ids,points_per_branch=101)
+                self.assertEqual((target/'temperature-comparison.json').read_text(),comparison_json(bundle))
+                self.assertEqual((target/'temperature-comparison.csv').read_text(),comparison_csv(bundle))
+                for lang in ('en','zh','ja','de'):
+                    self.assertEqual((target/f'temperature-comparison.{lang}.html').read_text(),render_temperature_html(bundle,lang=lang))
+                    self.assertEqual((target/f'temperature-comparison.{lang}.svg').read_text(),render_temperature_svg(bundle,lang=lang))
+                    self.assertEqual((target/f'temperature-comparison.narrow.{lang}.svg').read_text(),render_temperature_svg(bundle,lang=lang,width=380))
 
     def test_cli_files_errors_and_output(self):
         def run(*args):return subprocess.run([sys.executable,'-m','materials_boundaries',*args],cwd=ROOT,text=True,capture_output=True)

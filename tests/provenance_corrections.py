@@ -13,6 +13,8 @@ DIRECTIONAL_TEST_UPDATES = json.loads((Path(__file__).parent / 'fixtures/directi
 
 COMPRESSIBILITY_TEST_UPDATES = json.loads((Path(__file__).parent / 'fixtures/compressibility_test_updates_v0160.json').read_text(encoding='utf-8'))
 
+OBSERVATION_TEST_UPDATES = json.loads((Path(__file__).parent / 'fixtures/observation_test_updates_v0170.json').read_text(encoding='utf-8'))
+
 PUBLIC_BASELINE = json.loads((Path(__file__).parent / 'fixtures/public_baseline_adjustments.json').read_text(encoding='utf-8'))
 
 
@@ -117,5 +119,15 @@ def reviewed_test_hash(filename, expected):
     if change is not None:
         if change['previous_sha256'] != expected or not change['reason'].strip():
             raise AssertionError('Broken first-public test-update provenance: ' + filename)
+        expected = change['sha256']
+    updates = OBSERVATION_TEST_UPDATES['approved_test_updates']
+    allowed = {'tests/test_observation_catalog.py', 'tests/test_temperature.py',
+               'tests/provenance_corrections.py'}
+    if set(updates) != allowed:
+        raise AssertionError('Unexpected observation-release historical test override')
+    change = updates.get(filename)
+    if change is not None:
+        if change['previous_sha256'] != expected or not change['reason'].strip():
+            raise AssertionError('Broken observation test-update provenance: ' + filename)
         expected = change['sha256']
     return expected

@@ -1,6 +1,14 @@
 # Getting started: Materials Boundaries
 
-**0.16.0 is the first public release:** 34 mechanics claims, 47 source records,
+**Current v0.17.0** adds one study with two catalog-only monolayer MoS2
+records: **4 observations from 2 studies, 48 sources**, observation schema
+**1.1.0**. Existing graphene records are unchanged. MoS2 stiffness
+**180 ± 60 N/m** and breaking strength **15 ± 3 N/m** use reported standard
+deviations. **The printed q formula conflicts with stated q=0.95; the actual
+fit constant is unresolved, and no refit is made.** See
+[SD semantics, source evidence and q caveat](OBSERVATIONS.md#monolayer-mos2-bertolazzi-et-al-2011-new-records).
+
+**Historical first-public-release baseline, 0.16.0:** 34 mechanics claims, 47 source records,
 2 observations, 6 computational predictions and 5 synthetic temperature demos
 (7 branches). The eight executable composite rules remain unchanged. Claims
 schema is 1.10.0; schema versions and software versions are independent.
@@ -23,7 +31,7 @@ python -m materials_boundaries temperature evaluate examples/temperature/synthet
 python -m materials_boundaries temperature plot --output /tmp/temperature-demos --lang en
 ```
 
-[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Release scope](MIGRATION_v0.16.0.md)
+[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Release scope](MIGRATION_v0.17.0.md)
 
 ## Run locally
 

@@ -1,6 +1,6 @@
 # 材料边界 · Materials Boundaries
 
-Current software release: **v0.16.0** · **First public release** · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
+Current software release: **v0.17.0** · **Bounded monolayer MoS2 catalog expansion** · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
 
 A condition-aware, source-traceable materials-mechanics catalog and offline Python toolkit. It separates conditional mathematical bounds, model relations, published observations, computational predictions and synthetic demonstrations. Python 3.10+; no third-party runtime dependencies.
 
@@ -8,13 +8,15 @@ Repository: [chaotic-mixture/materials-boundaries-public](https://github.com/cha
 
 ## Public-release scope
 
-- **34 mechanics claims**, **47 source records**, **2 observations from one study**, **6 published computational predictions**, and **5 synthetic temperature demos with 7 branches**
+- **34 mechanics claims**, **48 source records**, **4 observations from two studies**, **6 published computational predictions**, and **5 synthetic temperature demos with 7 branches**
 - Exactly **8 executable composite calculation rules**: HS/Reuss/Voigt bulk and shear bounds plus conservative derived Young's-modulus and Poisson-ratio envelopes
 - Other mechanics records, including hydrostatic compressibility, directional Poisson ratio, anisotropy, fatigue, fracture, stability and porous relations, are catalog-only
-- The 47 sources comprise the 46 existing bibliographic/source records plus one original synthetic-demo provenance record; a source record is not a redistribution of its publication or dataset
+- The 48 sources comprise 47 bibliographic/source records plus one original synthetic-demo provenance record; a source record is not a redistribution of its publication or dataset
 - All five temperature demos use intentionally invented coefficients and ranges. They do not describe real materials, measured properties or engineering allowables
 
-This is the first public release. Earlier version labels in the migration notes describe development milestones, not prior public releases. The earlier development version 0.16.0 was never published, so this public release retains **0.16.0**. Claims schema is **1.10.0**; scientific schema versions are independent of the software version.
+Version **0.16.0** was the first public-release baseline; earlier version labels describe development milestones. Version **0.17.0** adds one MoS2 study and two catalog-only 2D summaries while preserving every existing graphene record and source record. Claims schema remains **1.10.0**; observations advance from **1.0.0 to 1.1.0** through a narrow closed MoS2 family. Scientific schema versions are independent of the software version. [Migration and unchanged contracts](docs/MIGRATION_v0.17.0.md)
+
+The new monolayer MoS2 summaries are **180 ± 60 N/m in-plane stiffness** and **15 ± 3 N/m breaking strength**, with source-reported standard deviations. They retain a flagged inconsistency between the printed q formula and stated q = 0.95; the actual fit constant remains unresolved. The inspected EPFL artifact is proof-formatted (A–G); final publisher text and the supplement are unverified. No refit, plot, comparison, ranking or thickness conversion is added. [Observation evidence and limits](docs/OBSERVATIONS.md#monolayer-mos2-bertolazzi-et-al-2011-new-records)
 
 Original project code, documentation and original curation are MIT-licensed under the maintainer handle **chaotic-mixture**. This does not relicense third-party publications, source datasets or scientific facts, or imply their authors' endorsement. See [Third-party notices](THIRD_PARTY_NOTICES.md) and [source provenance](docs/SOURCES.md).
 
@@ -39,13 +41,13 @@ The synthetic linear temperature demo returns **15 GPa at 50 K**. The overlap de
 
 [English](docs/GETTING_STARTED.en.md) · [中文](docs/GETTING_STARTED.zh.md) · [日本語](docs/GETTING_STARTED.ja.md) · [Deutsch](docs/GETTING_STARTED.de.md)
 
-The scientific guides retain source-specific qualifications for the graphene observations, Ni-family ideal-shear predictions, silicon first-instability predictions and literature-model example. These brief numerical facts are not removed merely because their publications have separate rights. No paper PDFs, figures, full text or raw measurement collections are bundled.
+The scientific guides retain source-specific qualifications for the graphene and monolayer MoS2 observations, Ni-family ideal-shear predictions, silicon first-instability predictions and literature-model example. These brief numerical facts are not removed merely because their publications have separate rights. No paper PDFs, figures, full text or raw measurement collections are bundled.
 
-中文：这是首个公开版本，原创代码、文档及策展内容采用 MIT 许可证，第三方作品及科学事实不因此被重新许可。温度目录仅含五个人为构造的演示模型（七个分支），不能当作真实材料数据。NIST 低温系数及其推导示例暂不收录，这是一项谨慎的发布选择，并非已证明禁止再分发。八条复合材料计算规则及其他科学目录保留；独立科学审查和母语审校尚未完成。
+中文：0.16.0 是首个公开版本的基线；当前 0.17.0 仅新增一项 MoS2 研究的两项二维观测。原创代码、文档及策展内容采用 MIT 许可证，第三方作品及科学事实不因此被重新许可。温度目录仅含五个人为构造的演示模型（七个分支），不能当作真实材料数据。NIST 低温系数及其推导示例暂不收录，这是一项谨慎的发布选择，并非已证明禁止再分发。八条复合材料计算规则及其他科学目录保留；独立科学审查和母语审校尚未完成。
 
-日本語：初の公開版です。独自のコード、文書、キュレーションには MIT ライセンスを適用しますが、第三者の著作物や科学的事実を再許諾するものではありません。温度カタログは人工的なデモ5件（7分岐）のみで、実材料のデータではありません。NIST の低温係数と派生例は確認待ちのため慎重に除外しており、再配布禁止が確定したという意味ではありません。独立した科学的・母語レビューは未実施です。
+日本語：0.16.0 は初の公開版の基準です。現在の 0.17.0 は MoS2 の一研究から二つの二次元観測を追加します。独自のコード、文書、キュレーションには MIT ライセンスを適用しますが、第三者の著作物や科学的事実を再許諾するものではありません。温度カタログは人工的なデモ5件（7分岐）のみで、実材料のデータではありません。NIST の低温係数と派生例は確認待ちのため慎重に除外しており、再配布禁止が確定したという意味ではありません。独立した科学的・母語レビューは未実施です。
 
-Deutsch: Dies ist die erste öffentliche Version. Eigener Code, eigene Dokumentation und eigenständige Kuration stehen unter MIT; fremde Werke und wissenschaftliche Fakten werden damit nicht neu lizenziert. Die Temperaturmodelle sind fünf künstliche Demos mit sieben Zweigen, keine realen Materialdaten. NIST-Tieftemperaturkoeffizienten und abgeleitete Beispiele bleiben vorsorglich bis zur Klärung ausgenommen; daraus folgt kein nachgewiesenes Weitergabeverbot. Unabhängige wissenschaftliche und muttersprachliche Prüfung steht noch aus.
+Deutsch: 0.16.0 war die Basis der ersten öffentlichen Version. Die aktuelle Version 0.17.0 ergänzt zwei zweidimensionale Beobachtungen aus einer MoS2-Studie. Eigener Code, eigene Dokumentation und eigenständige Kuration stehen unter MIT; fremde Werke und wissenschaftliche Fakten werden damit nicht neu lizenziert. Die Temperaturmodelle sind fünf künstliche Demos mit sieben Zweigen, keine realen Materialdaten. NIST-Tieftemperaturkoeffizienten und abgeleitete Beispiele bleiben vorsorglich bis zur Klärung ausgenommen; daraus folgt kein nachgewiesenes Weitergabeverbot. Unabhängige wissenschaftliche und muttersprachliche Prüfung steht noch aus.
 
 ## 立即运行
 
@@ -142,7 +144,7 @@ python -m materials_boundaries --lang zh catalog --help
 ```
 
 - `--id` 精确匹配记录 ID，区分大小写；未知 ID 报错并以 2 退出
-- `--query` 按空白拆词，经 Unicode `casefold` 后做字面子串匹配，所有词均须命中。检索 ID、标题/名称，以及来源的作者、DOI、用途；论断还检索物理量、方向、`claim_type`、规则 ID 和证据来源 ID。观测检索 ID、名称、物理量、`observation_type`、`study_id`、`material.name` 和证据来源 ID；十八条 v0.4.0–v0.6.0、v0.8.0 与 v0.9.0 论断及两条观测的人工策展四语言显示名称也作为字面搜索别名；它不搜索论文全文，不做词干化、排名、模糊匹配或自动翻译
+- `--query` 按空白拆词，经 Unicode `casefold` 后做字面子串匹配，所有词均须命中。检索 ID、标题/名称，以及来源的作者、DOI、用途；论断还检索物理量、方向、`claim_type`、规则 ID 和证据来源 ID。观测检索 ID、名称、物理量、`observation_type`、`study_id`、`material.name` 和证据来源 ID；十八条 v0.4.0–v0.6.0、v0.8.0 与 v0.9.0 论断及四条观测的人工策展四语言显示名称也作为字面搜索别名；它不搜索论文全文，不做词干化、排名、模糊匹配或自动翻译
 - `claims` 专用筛选：`--direction interval|lower|upper|prediction|relation|constraint`、`--claim-type theoretical_bound|derived_outer_envelope|model_estimate|model_relation|stability_criterion`
 - 论断与观测共用 `--source-id`（精确匹配证据引用的来源 ID）；观测专用 `--quantity` 和 `--observation-type experiment_derived_model_dependent`
 - `sources` 专用筛选：`--role`（用途）、`--year`（整数）、`--license`（许可证标识符或许可证状态）。除查询文字外，字符串筛选均精确匹配并区分大小写
@@ -255,7 +257,7 @@ v0.3.0 的十条论断目录使用 schema 1.2.0，每条包含 `claim_type`、`q
 
 ## 离线对比可视化
 
-可对既有八条复合材料评价进行保留来源与条件信息的多案例绘图，见[可视化使用说明](docs/VISUALIZATION.md)。目录中的七条强度／断裂模型、八条稳定性判据、三条孔隙论断和同一研究的两条观测不会被绘成已计算的预测或叠加到复合材料曲线上；未知、不满足和数值失败也不能用伪造数值代替。
+可对既有八条复合材料评价进行保留来源与条件信息的多案例绘图，见[可视化使用说明](docs/VISUALIZATION.md)。目录中的七条强度／断裂模型、八条稳定性判据、三条孔隙论断和两项研究的四条观测不会被绘成已计算的预测或叠加到复合材料曲线上；未知、不满足和数值失败也不能用伪造数值代替。
 
 ## 历史 v0.2.0 输出迁移
 
@@ -271,7 +273,8 @@ v0.2.0 将评价结果从 3 条扩展到 8 条；原有三个体积模量 claim 
 - `materials_boundaries/engine.py`：固定可执行规则表；不会执行输入或资料中的任意公式字符串
 - `docs/CATALOG.md`：只读目录检索、筛选、Python API 与录入检查表
 - `docs/MODEL.md`：体积/剪切界、推导 E/ν 外包络、数值策略与边界情况
-- `docs/OBSERVATIONS.md`：同一石墨烯研究的两项观测、模型依赖、统计区别、单位及核验边界
+- `docs/OBSERVATIONS.md`：石墨烯和单层 MoS2 两项研究的四项观测、模型依赖、统计区别、单位及核验边界
+- `docs/MIGRATION_v0.17.0.md`：观测 schema 1.1.0、窄范围 MoS2 扩展、打印 q 矛盾及不变的旧记录
 - `docs/MIGRATION_v0.7.0.md`：独立观测目录、筛选与不变的论断／评价约定
 - `docs/MIGRATION_v0.2.0.md`：历史八条输出、类型信息、依赖和单位迁移
 - `docs/MIGRATION_v0.3.0.md`：十条目录记录、论断分类、量纲及仅目录支持标识

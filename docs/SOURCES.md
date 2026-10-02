@@ -1,6 +1,6 @@
 # Source curation, verification and rights
 
-Reusable claims, observation summaries and the source manifest are separate records. Current v0.16.0 has 34 mechanics claims, 47 sources and two observations from one study, alongside five synthetic temperature demos (seven branches) and six computational predictions. The v0.8.0 historical batch had 26 claims and 20 sources; its four new stability claims reused an existing source and preserved those 20 source records. Some claims are executable elastic bounds/envelopes; the strength/fracture models, stability criteria and porous solid/void intervals are catalog-only. A source being available or read does not establish every claim attributed to it. Each claim or observation retains its own locator, verification status and gaps. The repository includes brief numerical facts, bibliographic metadata and original curation notes; no publisher PDF, article full text, scraped body or unlicensed figure is bundled.
+Reusable claims, observation summaries and the source manifest are separate records. Current v0.17.0 has 34 mechanics claims, 48 sources and four observations from two studies, alongside five synthetic temperature demos (seven branches) and six computational predictions. The v0.8.0 historical batch had 26 claims and 20 sources; its four new stability claims reused an existing source and preserved those 20 source records. Some claims are executable elastic bounds/envelopes; the strength/fracture models, stability criteria and porous solid/void intervals are catalog-only. A source being available or read does not establish every claim attributed to it. Each claim or observation retains its own locator, verification status and gaps. The repository includes brief numerical facts, bibliographic metadata and original curation notes; no publisher PDF, article full text, scraped body or unlicensed figure is bundled.
 
 ## Historical evidence ledger and later release additions
 
@@ -67,7 +67,8 @@ Copyright ©2008 AAAS, all rights reserved; no open reuse license is verified. P
 
 ## Licenses and release status
 
-Version 0.16.0 is the first public release. Original project code, documentation
+Version 0.16.0 was the first public-release baseline; version 0.17.0 adds only
+the bounded monolayer MoS2 observation batch described below. Original project code, documentation
 and original curation use the [MIT License](../LICENSE), under maintainer handle
 chaotic-mixture. Scientific facts and third-party works are not relicensed.
 Public readability, arXiv hosting, a supplement or a repository link does not
@@ -142,7 +143,7 @@ see [temperature contract](TEMPERATURE_MODELS.md) and [notices](../THIRD_PARTY_N
 ## v0.16.0 hydrostatic-compressibility provenance
 
 Two source identities accompany the two hydrostatic-compressibility claims.
-The first public release has 34 mechanics claims and 47 source records, including
+The v0.16.0 first public-release baseline has 34 mechanics claims and 47 source records, including
 the separate original synthetic-demo source. Existing bibliographic identities
 and source-specific rights caveats are preserved. The proofs of the all-real normalized range at fixed
 positive κ, trace/spectral consequences and strict same-tensor energy constraint
@@ -184,9 +185,73 @@ inspection grants redistribution rights. Independent scientific/native-language
 review remains unperformed. Full scientific scope, source locators and the
 attribution boundary are in [the compressibility guide](DIRECTIONAL_COMPRESSIBILITY.md).
 
-## Complete public source index (v0.16.0)
+## v0.17.0 addition: one monolayer MoS2 study, two summaries
 
-These are the 47 packaged source identities, including one original synthetic
+Exactly one source record, `bertolazzi_brivio_kis_2011`, is appended to the
+unchanged 47-record source catalog. All existing claims, two graphene
+observations, predictions and synthetic temperature contents retain their
+facts and contracts. The new records share one study identity:
+
+Simone Bertolazzi, Jacopo Brivio and Andras Kis (2011),
+[“Stretching and Breaking of Ultrathin MoS2”](https://doi.org/10.1021/nn203879f),
+*ACS Nano* 5(12), 9703–9709. Publisher-indexed abstract,
+[PubMed](https://pubmed.ncbi.nlm.nih.gov/22087740/) and
+[EPFL metadata](https://infoscience.epfl.ch/entities/publication/e119e335-b8de-42b8-a8e3-ec8b6d3fd8ba)
+corroborate bibliographic identity. Source online date is 16 November 2011;
+issue date is 27 December 2011.
+
+The inspected [institutional PDF](https://infoscience.epfl.ch/server/api/core/bitstreams/5af84a4c-55a4-4151-9d85-d5c215d848a4/content)
+is proof-formatted: seven lettered pages A–G and placeholder journal footers,
+despite EPFL's “Publisher’s Version”, “Published version” and “openaccess”
+labels. Use PDF page plus printed letter, not unverified final-journal mapping.
+Final publisher text and artifact equivalence remain unverified. The artifact
+SHA-256 is `348f5d00676c252d79f3717802be4cc999349c7180b261219bd209ebbe17e9ca`.
+
+- PDF p. 4 (D), right column: monolayer in-plane stiffness **180 ± 60 N/m**;
+  the following sentence explicitly defines property uncertainties as SD
+- PDF p. 5 (E), left column below Eq. (3): monolayer breaking strength
+  **15 ± 3 N/m**. This is finite spherical-tip model inference of local central
+  failure stress, not measured uniform tension or Lee's nonlinear FE model
+- PDF p. 4 (D), upper-right after Eq. (1): printed
+  **q = 1/(1.05 − 0.15ν − 0.16ν²)**, assumed **ν = 0.27**, stated **q = 0.95**.
+  They are retained separately and explicitly flagged inconsistent. Curator
+  arithmetic is approximately **1.002168693051764**, not a replacement source
+  constant. The actual q used in fitting is unresolved; no refit or strength
+  recomputation is performed
+- PDF p. 3 (C) and p. 4 (D): **nine monolayer membranes** are study/stiffness
+  counts; no separately verified failure-event total is reported. Six bilayer
+  membranes are context only, outside the selected batch
+- PDF p. 2 (B): **2 μm/s vertical probe translation speed** is not strain rate
+  or force/stress rate. Actual test environment and stress/strain measures remain
+  unknown; the 400 °C vacuum anneal is preparation only
+- Main text reports 550 ± 10 nm spans and 12 ± 2 nm tip radius. Their tolerance
+  type is unspecified; the property-SD definition is not transferred to geometry
+
+All seven pages were text-checked and PDF pp. 3–6 visually inspected; a second
+transcription check addressed the same artifact. These checks do not constitute
+independent scientific review, raw-data reanalysis or replication. The publisher
+full-text request returned HTTP 403; the official supplement route failed and
+the supplement remains unread. The public EPFL copy had been located
+independently before that failure; no blocked route was bypassed. Main-text
+SEM-based tip-radius reporting is not independent inspection of the supplement.
+The breaking-average body text points to Fig. 4 although summary bars are in
+Fig. 5; evidence locators use the body paragraph. Bilayer and thickness-normalized
+3D results are excluded, with no graph digitization or inferred replacement.
+
+Publisher metadata states ©2011 American Chemical Society; the proof PDF has
+an ACS notice with a placeholder year. No explicit open-reuse license is
+verified. Only brief factual values, metadata, source locators and original
+curation are included; **no PDF, article full text, figures, page screenshots
+or raw measurement collection** is bundled. MIT does not relicense the paper
+or scientific facts, and no legal clearance is claimed. SD does not imply SEM,
+a confidence interval, 68% coverage or a complete uncertainty budget. The
+existing graphene ± values remain statistically unspecified. See
+[observation evidence and limits](OBSERVATIONS.md),
+[migration](MIGRATION_v0.17.0.md) and [notices](../THIRD_PARTY_NOTICES.md).
+
+## Complete public source index (v0.17.0)
+
+These are the 48 packaged source identities, including one original synthetic
 provenance record. A bibliographic record is not a bundled publication or dataset;
 see each canonical record and the guides above for read/review and rights status.
 Repeated works in distinct source roles are not independent studies.
@@ -238,3 +303,5 @@ Repeated works in distinct source roles are not independent studies.
 - `ortiz_2012_anisotropic_mof_elasticity`: [Anisotropic Elastic Properties of Flexible Metal-Organic Frameworks: How Soft are Soft Porous Crystals?](https://doi.org/10.1103/PhysRevLett.109.195502)
 - `miller_evans_marmier_2015_linear_compressibility`: [Negative linear compressibility in common materials](https://doi.org/10.1063/1.4922460)
 - `materials_boundaries_synthetic_temperature_demo`: [Materials Boundaries original SYNTHETIC temperature demonstrations](https://github.com/chaotic-mixture/materials-boundaries-public/blob/main/docs/TEMPERATURE_MODELS.md)
+
+- `bertolazzi_brivio_kis_2011`: [Stretching and Breaking of Ultrathin MoS2](https://doi.org/10.1021/nn203879f)

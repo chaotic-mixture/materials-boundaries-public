@@ -1,6 +1,6 @@
 # Read-only catalog reference
 
-The packaged `claims`, `sources` and `observations` catalogs are curated metadata, not a complete literature index or a comprehensive material-property database. Current v0.16.0 contains 34 mechanics claims, 47 sources and two observations from one study, alongside five separate synthetic temperature demonstrations (seven branches) and six computational predictions. The two newest claims describe hydrostatic directional compressibility and its normalized tensor-class range; see [compressibility contracts](DIRECTIONAL_COMPRESSIBILITY.md). The earlier [directional Poisson relations](DIRECTIONAL_POISSON.md) remain distinct. Searching never changes a record, fetches a source, evaluates a material, or executes a formula string. A match does not establish applicability or verification; no match does not establish absence from the scientific literature.
+The packaged `claims`, `sources` and `observations` catalogs are curated metadata, not a complete literature index or a comprehensive material-property database. Current v0.17.0 contains 34 mechanics claims, 48 sources and four observations from two studies, alongside five separate synthetic temperature demonstrations (seven branches) and six computational predictions. The two newest claims describe hydrostatic directional compressibility and its normalized tensor-class range; see [compressibility contracts](DIRECTIONAL_COMPRESSIBILITY.md). The earlier [directional Poisson relations](DIRECTIONAL_POISSON.md) remain distinct. Searching never changes a record, fetches a source, evaluates a material, or executes a formula string. A match does not establish applicability or verification; no match does not establish absence from the scientific literature.
 
 ## CLI
 
@@ -19,7 +19,7 @@ python -m materials_boundaries --lang ja catalog --help
 
 `materials-boundaries` is an equivalent entry point after installation. The three catalog kinds are `claims`, `sources` and `observations`.
 
-- Default output remains canonical JSON for backward compatibility; `--json` explicitly requests the same format. The envelope is `{"schema_version": ..., "records": [...]}` even for one match or no matches: claims use `1.10.0`, sources retain `1.0.0`, and the separate observations catalog uses `1.0.0`. The separate evaluation output stays at `1.1.0`
+- Default output remains canonical JSON for backward compatibility; `--json` explicitly requests the same format. The envelope is `{"schema_version": ..., "records": [...]}` even for one match or no matches: claims use `1.10.0`, sources retain `1.0.0`, and the separate observations catalog uses `1.1.0`. The separate evaluation output stays at `1.1.0`
 - `--text` selects human-readable output. `--text` and `--json` are mutually exclusive
 - `--lang en|zh|ja|de` selects display language; English is the default. It may appear globally before the command or after it, and the last occurrence wins
 - Help labels and descriptions are localized. Syntax, flags, filter values, record IDs, and JSON remain canonical
@@ -38,7 +38,7 @@ Searchable fields are deliberately limited:
 | All three | `id`, `title` or `name` |
 | Sources | `authors`, `doi`, `role` |
 | Claims | `quantity`, `direction`, `claim_type`, `rule_id`, each `evidence[].source_id`, and the eighteen v0.4.0–v0.6.0, v0.8.0 and v0.9.0 records’ curated display names in en/zh/ja/de |
-| Observations | `quantity`, `observation_type`, `study_id`, `material.name`, each `evidence[].source_id`, and the two records’ curated display names in en/zh/ja/de |
+| Observations | `quantity`, `observation_type`, `study_id`, `material.name`, each `evidence[].source_id`, and curated display names in en/zh/ja/de |
 
 Source years, license metadata, full evidence notes, formulas, assumptions, other localized labels, and linked paper contents are not free-text search fields. A claim or observation's source reference is searched as an ID, not as a joined source title. Observation values, uncertainty, methods, conditions and sample metadata are not indexed. There is no stemming, ranking, fuzzy matching, automatic translation, or network search.
 
@@ -222,7 +222,7 @@ All four authored display names are literal aliases in each language; `--lang` c
 
 ## Separate observations in v0.7.0
 
-Two `experiment_derived_model_dependent` observations from the same Lee–Wei–Kysar–Hone (2008) study describe freestanding monolayer graphene: in-plane stiffness 340 ± 50 N/m and model-inferred breaking strength 42 ± 4 N/m. Both are `catalog_only`, in the separate observation schema 1.0.0; no claim is added or reclassified. In v0.7.0 the 22 claims stayed unchanged under schema 1.5.0, and the source catalog appended one record to its unchanged original 19. The historical v0.8.0 claim count/schema were 26/1.6.0; both observation records and all 20 sources remain unchanged.
+Two `experiment_derived_model_dependent` observations from the same Lee–Wei–Kysar–Hone (2008) study describe freestanding monolayer graphene: in-plane stiffness 340 ± 50 N/m and model-inferred breaking strength 42 ± 4 N/m. Both were introduced as `catalog_only` under observation schema 1.0.0 (their record objects remain unchanged in the current 1.1.0 envelope); no claim is added or reclassified. In v0.7.0 the 22 claims stayed unchanged under schema 1.5.0, and the source catalog appended one record to its unchanged original 19. The historical v0.8.0 claim count/schema were 26/1.6.0; both observation records and all 20 sources remain unchanged.
 
 `reported_plus_minus_unspecified` means that the reported ± type and coverage are unverified, not a standard deviation, confidence interval or bound. A separate stiffness-fit distribution has mean 342 N/m, SD 30 N/m and 67 fits on 23 membranes from two flakes; these counts must not be used for breaking strength. Temperature, atmosphere, humidity and loading rate remain unknown. Main-text passages were checked; the supplement was inaccessible and unread.
 
@@ -232,6 +232,37 @@ python -m materials_boundaries catalog observations --query "graphene strength" 
 ```
 
 The shared study ID does not supply independent replication. The source's AFM/membrane inference and second Piola–Kirchhoff/Lagrangian convention remain attached to the result. N/m quantities have no default thickness or GPa conversion; matching units alone do not establish comparable properties. Observation records are not executable instances, applicability checks or comparison overlays. See [observations and locators](OBSERVATIONS.md) and [v0.7.0 migration](MIGRATION_v0.7.0.md).
+
+## Closed monolayer MoS2 addition in v0.17.0
+
+The separate observations envelope advances to **1.1.0**, retaining both
+original graphene objects exactly and adding two closed-family MoS2 records
+from `bertolazzi_brivio_kis_2011`. Values are **180 ± 60 N/m** stiffness and
+**15 ± 3 N/m** breaking strength, with `reported_standard_deviation` and null
+confidence/coverage fields. Four property records represent two studies.
+Graphene's existing statistical type remains `reported_plus_minus_unspecified`.
+
+The MoS2 branch keeps unknown stress/strain measures and test environment null,
+a typed 2 μm/s vertical probe translation speed, and nine study/stiffness
+membranes without inventing a failure-event count. Printed q formula
+1/(1.05 − 0.15ν − 0.16ν²), assumed ν=0.27 and stated q=0.95 are separate,
+inconsistent source statements; arithmetic approximately 1.002168693051764 is
+only an audit note and actual fit q remains unresolved. They do not create an
+executable fit, correction or conversion. The proof-formatted EPFL A–G artifact
+is the inspected source; final publisher text and supplement are unverified.
+
+```sh
+python -m materials_boundaries catalog observations --source-id bertolazzi_brivio_kis_2011 --text --lang en
+python -m materials_boundaries catalog observations --query "MoS2 stiffness" --json
+```
+
+Observation IDs, units and JSON stay language-independent. Existing literal
+AND-based query and exact filters apply. No plots, composite overlays, material
+ranking or default thickness are added; unknown conditions cannot establish
+matched studies. See [full provenance and semantics](OBSERVATIONS.md) and
+[version migration](MIGRATION_v0.17.0.md). This narrow scientific-contract change
+does not alter contribution forms or the existing mechanics, predictions,
+temperature and eight-rule composite contracts.
 
 ## Evidence and reuse boundaries
 
@@ -262,9 +293,9 @@ Five original synthetic polynomial models with seven artificial branches live
 in `temperature_models`, using the separate `temperature` CLI namespace. They
 are not measurements, empirical source fits or theoretical bounds. They never
 extend `composite_evaluate`. Use `temperature catalog` for canonical records and
-`--text --lang` for authored descriptions. The source catalog preserves the 46
-existing bibliographic records and adds one original demonstration-provenance
-record, for 47 total. NIST cryogenic coefficients and derived outputs are omitted
+`--text --lang` for authored descriptions. The v0.16.0 source catalog preserved 46
+bibliographic records and added one original demonstration-provenance record.
+The v0.17.0 MoS2 source makes 48 records in total; the synthetic contents are unchanged. NIST cryogenic coefficients and derived outputs are omitted
 conservatively; bibliographic references remain. See [temperature contracts](TEMPERATURE_MODELS.md)
 and [rights scope](../THIRD_PARTY_NOTICES.md).
 

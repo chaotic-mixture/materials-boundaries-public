@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "records": [
     {
       "id": "lee_2008_graphene_in_plane_stiffness_2d",
@@ -190,6 +190,378 @@
         "Breaking strength here depends on the nonlinear constitutive inference and reference stress/strain measures; do not substitute Cauchy stress, engineering stress or a generic three-dimensional tensile strength.",
         "The authors infer defect-free behavior in the highly stressed region beneath the tip; this is not independent imaging proof for every entire membrane or a guarantee for macroscopic or processed graphene."
       ]
+    },
+    {
+      "id": "bertolazzi_2011_mos2_monolayer_in_plane_stiffness_2d",
+      "name": "Bertolazzi et al. (2011): monolayer MoS2 in-plane stiffness (2D)",
+      "observation_type": "experiment_derived_model_dependent",
+      "study_id": "bertolazzi_brivio_kis_2011",
+      "quantity": "in_plane_stiffness_2d",
+      "quantity_dimension": "force_per_length",
+      "si_unit": "N/m",
+      "evaluation_support": "catalog_only",
+      "material": {
+        "name": "Freestanding monolayer molybdenum disulfide (MoS2)",
+        "formula": "MoS2",
+        "dimensionality": 2,
+        "layer_count": 1,
+        "specimen_form": "suspended_membrane",
+        "preparation": "micromechanical_exfoliation_of_molybdenite_with_PVA_PMMA_transfer",
+        "preparation_notes": "Naturally occurring bulk MoS2/molybdenite; PMMA/PVA-assisted transfer to patterned SiO2. Polymer-removal anneal: vacuum, 400 °C, 4 h. This is preparation, not test temperature or atmosphere.",
+        "crystal_orientation": null,
+        "suspended_span_diameters": {
+          "values": [
+            550
+          ],
+          "unit": "nm",
+          "reported_value_string": "550 ± 10 nm",
+          "uncertainty": {
+            "value": 10,
+            "unit": "nm",
+            "type": "reported_plus_minus_unspecified",
+            "coverage_factor": null,
+            "confidence_level": null,
+            "interpretation": "The explicit SD definition applies to modulus and breaking strength, not automatically to the quoted geometric tolerances."
+          },
+          "locator": "PDF p. 3 (C), lower-left column; Fig. 3 geometry"
+        },
+        "identification_locator": "PDF p. 2 (B), Results and Discussion, sample preparation; PDF pp. 5–6 (E–F), Materials and Methods",
+        "monolayer_identification": [
+          "optical_contrast",
+          "afm_thickness_verification"
+        ]
+      },
+      "reported_result": {
+        "value": 180,
+        "unit": "N/m",
+        "source_value_string": "180 ± 60 Nm⁻¹",
+        "summary_statistic": "reported_average",
+        "uncertainty": {
+          "notation": "plus_minus",
+          "value": 60,
+          "unit": "N/m",
+          "type": "reported_standard_deviation",
+          "coverage_factor": null,
+          "confidence_level": null,
+          "interpretation": "The source explicitly defines modulus/strength uncertainties as standard deviations of experimental values. Not an SEM, confidence interval, certified bound, or fully specified uncertainty budget. The exact replicate/weighting convention is not specified.",
+          "scope": "reported_property_experimental_values",
+          "averaging_convention": null
+        }
+      },
+      "method": {
+        "technique": "afm_central_indentation",
+        "instrument": "Asylum Research Cypher AFM; Olympus AC240 silicon cantilever",
+        "direct_experimental_inputs": [
+          "cantilever_deflection",
+          "z_piezo_extension"
+        ],
+        "calibration": "Cantilever spring constants calibrated using the thermal method; PDF p. 6 (F), Materials and Methods.",
+        "poissons_ratio_assumed": 0.27,
+        "poissons_ratio_role": "Bulk MoS2 value adopted for the membrane model; not measured for these monolayers.",
+        "stress_measure": null,
+        "strain_measure": null,
+        "stress_strain_measure_status": "The inspected main text does not explicitly identify Cauchy/engineering/second-Piola stress or engineering/Lagrangian strain conventions. Do not inherit the Lee graphene conventions.",
+        "tip_radius": {
+          "value": 12,
+          "unit": "nm",
+          "reported_value_string": "12 ± 2 nm",
+          "uncertainty": {
+            "value": 2,
+            "unit": "nm",
+            "type": "reported_plus_minus_unspecified",
+            "coverage_factor": null,
+            "confidence_level": null,
+            "interpretation": "The explicit SD definition applies to modulus and breaking strength, not automatically to the quoted tip-radius tolerance."
+          },
+          "measurement": "SEM-based estimate reported in main text; supplement images not inspected",
+          "locator": "PDF p. 3 (C), lower-left column; PDF p. 4 (D), upper-right column"
+        },
+        "q_source_report": {
+          "formula_as_printed": "q = 1/(1.05 − 0.15ν − 0.16ν²)",
+          "nu_as_printed": 0.27,
+          "q_as_printed": 0.95,
+          "locator": "PDF p. 4 (D), upper-right column, paragraph following Eq. (1)",
+          "internal_consistency": "inconsistent",
+          "audit_arithmetic_value": 1.002168693051764,
+          "audit_arithmetic_status": "Curator arithmetic check of the printed formula at printed ν, not a source-reported measurement or a replacement q.",
+          "curation_action": "Retain all printed inputs separately and flag discrepancy; do not select a corrected fit constant, refit curves, alter E2D, or recompute strength.",
+          "fit_constant_actually_used": null,
+          "fit_constant_status": "The inspected PDF does not establish whether the printed formula, stated q, or another value was actually used in the least-squares fits."
+        },
+        "inference": "Least-squares inference of E2D and pretension from AFM force–deflection curves using the circular-membrane force law, not direct uniform tensile-modulus measurement.",
+        "model_assumptions": [
+          "Clamped circular, prestretched, isotropic membrane; linear material constitutive assumption.",
+          "Eq. (1): F = σ0^(2D) πδ + E^(2D) q^3 δ^3/r^2. The linear term describes pretension and the cubic term membrane stretching; bending-dominated plate behavior is not the fitted regime.",
+          "Point-loading approximation is used for the fit; the source states r_tip/r approximately 0.05.",
+          "Printed q inconsistency is retained separately in q_source_report."
+        ],
+        "constitutive_model": "isotropic_linear_elastic_membrane",
+        "inference_model": "circular_membrane_elastic_force_deflection_fit"
+      },
+      "conditions": {
+        "temperature": null,
+        "atmosphere": null,
+        "humidity": null,
+        "loading_rate": {
+          "quantity": "vertical_probe_translation_speed",
+          "value": 2,
+          "unit": "um/s",
+          "reported_value_string": "2 μm s⁻¹",
+          "locator": "PDF p. 2 (B), right column, cantilever-deflection/loading paragraph"
+        },
+        "verification_status": "partially_reported_primary_main_text",
+        "notes": [
+          "Probe translation speed is not membrane strain rate or force/stress rate.",
+          "An air temperature controller is reported to reduce drift; no numerical test temperature, controlled gas composition, pressure or humidity is reported in the inspected main text.",
+          "Do not use the 400 °C vacuum processing step as the indentation test condition."
+        ]
+      },
+      "sample_metadata": {
+        "scope": "study_membrane_counts_not_force_curve_or_failure_event_counts",
+        "counts": {
+          "study_monolayer_membranes": 9,
+          "force_displacement_curves": null,
+          "distinct_parent_flakes": null,
+          "failure_events": null,
+          "membranes_explicitly_associated_with_stiffness_average": 9
+        },
+        "locator": "PDF p. 3 (C), left column, first body paragraph; stiffness average n=9 additionally PDF p. 4 (D), right column.",
+        "notes": [
+          "Multiple indentation curves were acquired per hole; the total number of curves is not supplied.",
+          "The separately enumerated number of failure tests contributing to the strength summary is not stated. Do not turn the nine study monolayer membranes into nine explicitly verified failure observations."
+        ]
+      },
+      "verification": {
+        "status": "primary_institutional_main_text_checked_supplement_not_inspected",
+        "independent_scientific_review": false,
+        "gaps": [
+          "Publisher full-text/final pagination not checked; inspected PDF has proof-formatted lettered pages.",
+          "Printed q formula and stated numerical q are inconsistent at stated ν.",
+          "Supplement not inspected; no independent SEM tip-radius reconstruction or raw-data reanalysis.",
+          "Actual test temperature, atmosphere and humidity are not stated in inspected main text.",
+          "Stress and strain measure definitions, force-curve total, failure-event total and exact SD averaging convention are not independently established."
+        ],
+        "source_inspection": {
+          "artifact": "epfl_institutional_main_text",
+          "pagination": "proof_formatted_pdf_pages_A_to_G",
+          "publisher_final_text_identity_verified": false,
+          "supplement_inspected": false,
+          "separate_reader_transcription_checked": true,
+          "raw_data_reanalysis": false,
+          "independent_replication": false,
+          "scope": "Separate reader checked transcription against the same artifact, not independent scientific peer review."
+        }
+      },
+      "evidence": [
+        {
+          "source_id": "bertolazzi_brivio_kis_2011",
+          "source_url": "https://infoscience.epfl.ch/server/api/core/bitstreams/5af84a4c-55a4-4151-9d85-d5c215d848a4/content",
+          "doi": "10.1021/nn203879f",
+          "locator": "PDF p. 4 (D), right column, least-squares-fit paragraph and immediately following uncertainty sentence; also PDF p. 1 (A), Abstract and publisher abstract.",
+          "verification_status": "primary_main_text_passage_and_visual_layout_checked",
+          "verified_as": "Exact text-reported 2D property average and reported standard deviation, with source-model assumptions retained."
+        }
+      ],
+      "limits": [
+        "A model-dependent summary from one study; not a theoretical or universal bound, engineering allowable, executable rule, or new independent replication.",
+        "Canonical 2D quantity in N/m. No conversion to Pa/GPa and no assigned default thickness.",
+        "Equal N/m units do not make stiffness and breaking strength the same quantity.",
+        "The two selected records share specimens/methods/source assumptions and are not independent confirmations.",
+        "Unreported conditions cannot be treated as matched when comparing MoS2 with graphene or another study.",
+        "The source assumes isotropic linear-elastic material behavior up to failure; geometric nonlinearity of the indentation response is not the Lee graphene nonlinear constitutive/finite-element failure model.",
+        "The source interpretation of near-intrinsic or mostly defect-free behavior is not an independently established defect census and is not promoted to a universal material bound.",
+        "Source-reported values are retained despite the explicitly recorded printed-q discrepancy; no raw-data refit or correction is claimed.",
+        "No direct overlay on the composite evaluator or volume-fraction sweeps; no ranking from unmatched method, stress convention, specimen size, or unknown environment."
+      ],
+      "version": "1.0.0",
+      "method_family": "bertolazzi_2011_mos2_monolayer_indentation_v1",
+      "model_status": "source_reported_unresolved_model_discrepancy"
+    },
+    {
+      "id": "bertolazzi_2011_mos2_monolayer_breaking_strength_2d",
+      "name": "Bertolazzi et al. (2011): monolayer MoS2 breaking strength (2D)",
+      "observation_type": "experiment_derived_model_dependent",
+      "study_id": "bertolazzi_brivio_kis_2011",
+      "quantity": "breaking_strength_2d",
+      "quantity_dimension": "force_per_length",
+      "si_unit": "N/m",
+      "evaluation_support": "catalog_only",
+      "material": {
+        "name": "Freestanding monolayer molybdenum disulfide (MoS2)",
+        "formula": "MoS2",
+        "dimensionality": 2,
+        "layer_count": 1,
+        "specimen_form": "suspended_membrane",
+        "preparation": "micromechanical_exfoliation_of_molybdenite_with_PVA_PMMA_transfer",
+        "preparation_notes": "Naturally occurring bulk MoS2/molybdenite; PMMA/PVA-assisted transfer to patterned SiO2. Polymer-removal anneal: vacuum, 400 °C, 4 h. This is preparation, not test temperature or atmosphere.",
+        "crystal_orientation": null,
+        "suspended_span_diameters": {
+          "values": [
+            550
+          ],
+          "unit": "nm",
+          "reported_value_string": "550 ± 10 nm",
+          "uncertainty": {
+            "value": 10,
+            "unit": "nm",
+            "type": "reported_plus_minus_unspecified",
+            "coverage_factor": null,
+            "confidence_level": null,
+            "interpretation": "The explicit SD definition applies to modulus and breaking strength, not automatically to the quoted geometric tolerances."
+          },
+          "locator": "PDF p. 3 (C), lower-left column; Fig. 3 geometry"
+        },
+        "identification_locator": "PDF p. 2 (B), Results and Discussion, sample preparation; PDF pp. 5–6 (E–F), Materials and Methods",
+        "monolayer_identification": [
+          "optical_contrast",
+          "afm_thickness_verification"
+        ]
+      },
+      "reported_result": {
+        "value": 15,
+        "unit": "N/m",
+        "source_value_string": "15 ± 3 Nm⁻¹",
+        "summary_statistic": "reported_average",
+        "uncertainty": {
+          "notation": "plus_minus",
+          "value": 3,
+          "unit": "N/m",
+          "type": "reported_standard_deviation",
+          "coverage_factor": null,
+          "confidence_level": null,
+          "interpretation": "The source explicitly defines modulus/strength uncertainties as standard deviations of experimental values. Not an SEM, confidence interval, certified bound, or fully specified uncertainty budget. The exact replicate/weighting convention is not specified.",
+          "scope": "reported_property_experimental_values",
+          "averaging_convention": null
+        }
+      },
+      "method": {
+        "technique": "afm_central_indentation",
+        "instrument": "Asylum Research Cypher AFM; Olympus AC240 silicon cantilever",
+        "direct_experimental_inputs": [
+          "cantilever_deflection",
+          "z_piezo_extension",
+          "failure_event"
+        ],
+        "calibration": "Cantilever spring constants calibrated using the thermal method; PDF p. 6 (F), Materials and Methods.",
+        "poissons_ratio_assumed": 0.27,
+        "poissons_ratio_role": "Bulk MoS2 value adopted for the membrane model; not measured for these monolayers.",
+        "stress_measure": null,
+        "strain_measure": null,
+        "stress_strain_measure_status": "The inspected main text does not explicitly identify Cauchy/engineering/second-Piola stress or engineering/Lagrangian strain conventions. Do not inherit the Lee graphene conventions.",
+        "tip_radius": {
+          "value": 12,
+          "unit": "nm",
+          "reported_value_string": "12 ± 2 nm",
+          "uncertainty": {
+            "value": 2,
+            "unit": "nm",
+            "type": "reported_plus_minus_unspecified",
+            "coverage_factor": null,
+            "confidence_level": null,
+            "interpretation": "The explicit SD definition applies to modulus and breaking strength, not automatically to the quoted tip-radius tolerance."
+          },
+          "measurement": "SEM-based estimate reported in main text; supplement images not inspected",
+          "locator": "PDF p. 3 (C), lower-left column; PDF p. 4 (D), upper-right column"
+        },
+        "q_source_report": {
+          "formula_as_printed": "q = 1/(1.05 − 0.15ν − 0.16ν²)",
+          "nu_as_printed": 0.27,
+          "q_as_printed": 0.95,
+          "locator": "PDF p. 4 (D), upper-right column, paragraph following Eq. (1)",
+          "internal_consistency": "inconsistent",
+          "audit_arithmetic_value": 1.002168693051764,
+          "audit_arithmetic_status": "Curator arithmetic check of the printed formula at printed ν, not a source-reported measurement or a replacement q.",
+          "curation_action": "Retain all printed inputs separately and flag discrepancy; do not select a corrected fit constant, refit curves, alter E2D, or recompute strength.",
+          "fit_constant_actually_used": null,
+          "fit_constant_status": "The inspected PDF does not establish whether the printed formula, stated q, or another value was actually used in the least-squares fits."
+        },
+        "inference": "Source-model maximum local central 2D stress inferred from AFM failure force, fitted E2D and finite spherical-tip radius, not measured uniform tensile stress.",
+        "model_assumptions": [
+          "Source assumes a linearly elastic isotropic membrane indented by a spherical tip, large load compared with pretension and small indenter radius relative to membrane radius.",
+          "Eq. (3): σ_max^(2D) = sqrt(F_max E^(2D)/(4π r_tip)).",
+          "The source gives r_tip/r approximately 0.05 and κ < 0.02 for its large-load/small-indenter regime; do not replace this finite-tip failure inference with the elastic-fit point-load approximation.",
+          "Strength inherits model dependence and the printed-q issue through fitted E2D; no correction is applied."
+        ],
+        "constitutive_model": "isotropic_linear_elastic_membrane",
+        "inference_model": "finite_spherical_tip_large_load_maximum_local_stress"
+      },
+      "conditions": {
+        "temperature": null,
+        "atmosphere": null,
+        "humidity": null,
+        "loading_rate": {
+          "quantity": "vertical_probe_translation_speed",
+          "value": 2,
+          "unit": "um/s",
+          "reported_value_string": "2 μm s⁻¹",
+          "locator": "PDF p. 2 (B), right column, cantilever-deflection/loading paragraph"
+        },
+        "verification_status": "partially_reported_primary_main_text",
+        "notes": [
+          "Probe translation speed is not membrane strain rate or force/stress rate.",
+          "An air temperature controller is reported to reduce drift; no numerical test temperature, controlled gas composition, pressure or humidity is reported in the inspected main text.",
+          "Do not use the 400 °C vacuum processing step as the indentation test condition."
+        ]
+      },
+      "sample_metadata": {
+        "scope": "study_membrane_counts_not_force_curve_or_failure_event_counts",
+        "counts": {
+          "study_monolayer_membranes": 9,
+          "force_displacement_curves": null,
+          "distinct_parent_flakes": null,
+          "failure_events": null
+        },
+        "locator": "PDF p. 3 (C), left column, first body paragraph; stiffness average n=9 additionally PDF p. 4 (D), right column.",
+        "notes": [
+          "Multiple indentation curves were acquired per hole; the total number of curves is not supplied.",
+          "The separately enumerated number of failure tests contributing to the strength summary is not stated. Do not turn the nine study monolayer membranes into nine explicitly verified failure observations."
+        ]
+      },
+      "verification": {
+        "status": "primary_institutional_main_text_checked_supplement_not_inspected",
+        "independent_scientific_review": false,
+        "gaps": [
+          "Publisher full-text/final pagination not checked; inspected PDF has proof-formatted lettered pages.",
+          "Printed q formula and stated numerical q are inconsistent at stated ν.",
+          "Supplement not inspected; no independent SEM tip-radius reconstruction or raw-data reanalysis.",
+          "Actual test temperature, atmosphere and humidity are not stated in inspected main text.",
+          "Stress and strain measure definitions, force-curve total, failure-event total and exact SD averaging convention are not independently established."
+        ],
+        "source_inspection": {
+          "artifact": "epfl_institutional_main_text",
+          "pagination": "proof_formatted_pdf_pages_A_to_G",
+          "publisher_final_text_identity_verified": false,
+          "supplement_inspected": false,
+          "separate_reader_transcription_checked": true,
+          "raw_data_reanalysis": false,
+          "independent_replication": false,
+          "scope": "Separate reader checked transcription against the same artifact, not independent scientific peer review."
+        }
+      },
+      "evidence": [
+        {
+          "source_id": "bertolazzi_brivio_kis_2011",
+          "source_url": "https://infoscience.epfl.ch/server/api/core/bitstreams/5af84a4c-55a4-4151-9d85-d5c215d848a4/content",
+          "doi": "10.1021/nn203879f",
+          "locator": "PDF p. 5 (E), left column immediately below Eq. (3); SD definition on PDF p. 4 (D), right column; also PDF p. 1 (A), Abstract and publisher abstract.",
+          "verification_status": "primary_main_text_passage_and_visual_layout_checked",
+          "verified_as": "Exact text-reported 2D property average and reported standard deviation, with source-model assumptions retained."
+        }
+      ],
+      "limits": [
+        "A model-dependent summary from one study; not a theoretical or universal bound, engineering allowable, executable rule, or new independent replication.",
+        "Canonical 2D quantity in N/m. No conversion to Pa/GPa and no assigned default thickness.",
+        "Equal N/m units do not make stiffness and breaking strength the same quantity.",
+        "The two selected records share specimens/methods/source assumptions and are not independent confirmations.",
+        "Unreported conditions cannot be treated as matched when comparing MoS2 with graphene or another study.",
+        "The source assumes isotropic linear-elastic material behavior up to failure; geometric nonlinearity of the indentation response is not the Lee graphene nonlinear constitutive/finite-element failure model.",
+        "The source interpretation of near-intrinsic or mostly defect-free behavior is not an independently established defect census and is not promoted to a universal material bound.",
+        "Source-reported values are retained despite the explicitly recorded printed-q discrepancy; no raw-data refit or correction is claimed.",
+        "No direct overlay on the composite evaluator or volume-fraction sweeps; no ranking from unmatched method, stress convention, specimen size, or unknown environment."
+      ],
+      "version": "1.0.0",
+      "method_family": "bertolazzi_2011_mos2_monolayer_indentation_v1",
+      "model_status": "source_reported_unresolved_model_discrepancy"
     }
   ]
 }

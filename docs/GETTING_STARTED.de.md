@@ -1,6 +1,15 @@
 # Erste Schritte: Materials Boundaries
 
-**0.16.0 ist die erste öffentliche Version:** 34 Mechanikaussagen,
+**Die aktuelle Version v0.17.0** ergänzt zwei reine Katalogeinträge für
+einlagiges MoS2 aus einer Studie: insgesamt **4 Beobachtungen aus 2 Studien,
+48 Quellen**, Beobachtungsschema **1.1.0**. Die bisherigen Graphen-Einträge
+bleiben unverändert. MoS2-Steifigkeit **180 ± 60 N/m** und Bruchfestigkeit
+**15 ± 3 N/m** verwenden berichtete Standardabweichungen. **Die gedruckte
+q-Formel widerspricht dem angegebenen q=0.95; die tatsächlich verwendete
+Fitkonstante bleibt ungeklärt. Es erfolgt keine Neuanpassung.** Siehe
+[SD-Bedeutung, Quellenbelege und q-Vorbehalt](OBSERVATIONS.md#monolayer-mos2-bertolazzi-et-al-2011-new-records).
+
+**Historische Basis der ersten öffentlichen Version, 0.16.0:** 34 Mechanikaussagen,
 47 Quellenrecords, 2 Beobachtungen, 6 rechnerische Vorhersagen und 5 synthetische
 Temperaturdemos mit 7 Zweigen. Die acht ausführbaren Verbundregeln sind unverändert.
 Das Aussagenschema ist 1.10.0; Schema- und Softwareversion sind unabhängig.
@@ -24,7 +33,7 @@ python -m materials_boundaries temperature evaluate examples/temperature/synthet
 python -m materials_boundaries temperature plot --output /tmp/temperature-demos --lang de
 ```
 
-[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Release scope](MIGRATION_v0.16.0.md)
+[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Release scope](MIGRATION_v0.17.0.md)
 
 ## Lokal ausführen
 

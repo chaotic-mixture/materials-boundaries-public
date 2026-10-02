@@ -1,6 +1,8 @@
 # 快速开始：材料边界
 
-**0.16.0 是首个公开版本：**34 条力学论断、47 条来源记录、2 条观测、6 条计算预测，以及 5 个合成温度演示模型（7 个分支）。八条复合材料计算规则不变。论断 schema 为 1.10.0；科学 schema 版本独立于软件版本。
+**当前 v0.17.0** 新增一项研究的两条仅目录单层 MoS2 记录：现有 **2 项研究的 4 条观测、48 条来源**，观测 schema 为 **1.1.0**。原有石墨烯记录不变。MoS2 面内刚度 **180 ± 60 N/m** 与破坏强度 **15 ± 3 N/m** 的 ± 表示来源报告的标准差。**打印的 q 公式与所写 q=0.95 不一致；实际拟合常数仍未确定，未重新拟合。** 详见[标准差含义、来源证据与 q 限制](OBSERVATIONS.md#monolayer-mos2-bertolazzi-et-al-2011-new-records)。
+
+**首个公开版本基线（0.16.0）当时的目录：**34 条力学论断、47 条来源记录、2 条观测、6 条计算预测，以及 5 个合成温度演示模型（7 个分支）。八条复合材料计算规则不变。论断 schema 为 1.10.0；科学 schema 版本独立于软件版本。
 
 原创代码、文档和原创策展内容采用 [MIT 许可证](../LICENSE)，不重新许可第三方作品或科学事实。NIST 低温系数及推导示例出于谨慎暂不收录，等待复用条款澄清；这不表示已经证实禁止再分发。书目信息和链接保留，见[第三方说明](../THIRD_PARTY_NOTICES.md)。
 
@@ -12,7 +14,7 @@ python -m materials_boundaries temperature evaluate examples/temperature/synthet
 python -m materials_boundaries temperature plot --output /tmp/temperature-demos --lang zh
 ```
 
-[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Release scope](MIGRATION_v0.16.0.md)
+[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Release scope](MIGRATION_v0.17.0.md)
 
 ## 本地运行
 

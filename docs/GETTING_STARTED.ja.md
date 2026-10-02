@@ -1,6 +1,8 @@
 # はじめに：Materials Boundaries
 
-**0.16.0 は初の公開版です：**力学論断34件、出典記録47件、観測2件、計算予測6件、合成温度デモ5件（7分岐）。複合材料の計算規則8件は不変です。論断スキーマは1.10.0で、科学的スキーマとソフトウェアの版は独立しています。
+**現在の v0.17.0** は、一つの研究から単層 MoS2 のカタログ専用レコードを2件追加します。合計は **2研究の観測4件、出典48件**、観測スキーマは **1.1.0** です。既存のグラフェン記録は変更しません。MoS2 の面内剛性 **180 ± 60 N/m** と破壊強さ **15 ± 3 N/m** の ± は、出典が報告する標準偏差です。**印刷された q の式と記載値 q=0.95 は整合せず、実際のフィット定数は未解明です。再フィットは行いません。** [標準偏差の意味・出典・q の注意点](OBSERVATIONS.md#monolayer-mos2-bertolazzi-et-al-2011-new-records)を参照してください。
+
+**初の公開版（0.16.0）当時の構成：**力学論断34件、出典記録47件、観測2件、計算予測6件、合成温度デモ5件（7分岐）。複合材料の計算規則8件は不変です。論断スキーマは1.10.0で、科学的スキーマとソフトウェアの版は独立しています。
 
 独自のコード、文書、キュレーションには [MIT ライセンス](../LICENSE)を適用し、第三者の著作物や科学的事実を再許諾しません。NIST の低温係数と派生例は利用条件の確認待ちとして慎重に除外しています。これは再配布禁止が確定したという意味ではありません。書誌情報とリンクは保持します。[第三者の権利に関する注意](../THIRD_PARTY_NOTICES.md)
 
@@ -12,7 +14,7 @@ python -m materials_boundaries temperature evaluate examples/temperature/synthet
 python -m materials_boundaries temperature plot --output /tmp/temperature-demos --lang ja
 ```
 
-[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Release scope](MIGRATION_v0.16.0.md)
+[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Release scope](MIGRATION_v0.17.0.md)
 
 ## ローカルで実行する
 

@@ -1,6 +1,6 @@
 # Strength and fracture knowledge records
 
-This guide documents five **catalog-only** entries introduced during v0.4.0 development. The current public release has 34 mechanics claims and 47 source records in total. Eight elastic-bound/envelope evaluations remain executable. These additions do not implement a strength/fracture calculator or certify a specimen's premises. Unknown parameters are not filled from elastic-bound endpoints.
+This guide documents five **catalog-only** entries introduced during v0.4.0 development. The current v0.17.0 release has 34 mechanics claims and 48 source records in total. Eight elastic-bound/envelope evaluations remain executable. These additions do not implement a strength/fracture calculator or certify a specimen's premises. Unknown parameters are not filled from elastic-bound endpoints.
 
 | Record | Class | Output / SI unit | Evidence anchor |
 | --- | --- | --- | --- |
@@ -85,10 +85,10 @@ A schema-valid entry, a matching query, formula inspection and software tests do
 
 See [source ledger](SOURCES.md), [catalog contract](CATALOG.md), and [v0.4.0 migration](MIGRATION_v0.4.0.md).
 
-## Current v0.16.0 hydrostatic-compressibility addition
+## Historical v0.16.0 hydrostatic-compressibility addition
 
-The v0.4.0 records above remain unchanged. Current totals are 34 mechanics claims
-and 47 sources. Two new catalog-only `model_relation` / `relation` records add
+The v0.4.0 records above remained unchanged. The v0.16.0 baseline had 34 mechanics
+claims and 47 sources. Its two new catalog-only `model_relation` / `relation` records add
 hydrostatic directional linear compressibility β(n)=nn:S:I (`inverse_pressure`,
 `Pa^-1`) and normalized β/κ (`dimensionless`, `1`). Both have null `bound_kind`;
 no strength or material-specific prediction is implied.

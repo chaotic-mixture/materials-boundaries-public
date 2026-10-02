@@ -12,6 +12,9 @@ def read_catalog(name: str) -> dict:
         from ._directional_contract import validate_directional_records
         validate_compressibility_records(catalog["records"], resolve_dependencies=True)
         validate_directional_records(catalog["records"], resolve_dependencies=True)
+    if name == "observations":
+        from ._observation_contract import validate_mos2_records
+        validate_mos2_records(catalog["records"])
     return catalog
 
 

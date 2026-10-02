@@ -99,9 +99,35 @@ for language in languages:
         text = stdout.getvalue()
         require(json.loads(text) == evaluation if as_json else translate("summary_title", language) in text,
                 "installed CLI output mismatch: " + language)
+# Exercise the mixed catalog in the dependency-free installation as well.
+from materials_boundaries.catalog import query_catalog
+observations = read_catalog("observations")
+mos2 = query_catalog("observations", source_id="bertolazzi_brivio_kis_2011")
+require(len(mos2["records"]) >= 2, "missing installed MoS2 observations")
+for language in languages:
+    for filtered in (False, True):
+        args = ["catalog", "observations", "--lang", language]
+        if filtered:
+            args += ["--source-id", "bertolazzi_brivio_kis_2011"]
+        for as_json in (False, True):
+            stdout = io.StringIO()
+            with redirect_stdout(stdout):
+                code = main(args + (["--json"] if as_json else ["--text"]))
+            text = stdout.getvalue()
+            require(code == 0 and "[missing:" not in text, "installed observation CLI failed")
+            if as_json:
+                require(json.loads(text) == (mos2 if filtered else observations), "observation JSON changed by language")
+            else:
+                for key in ("catalog_mos2_model_notice", "catalog_sd_notice", "catalog_mos2_source_notice",
+                            "catalog_mos2_transcription_notice"):
+                    require(translate(key, language) in text, "missing installed scientific disclosure: " + key)
+                require(translate("catalog_q_used", language) + ": " + translate("unknown", language) in text,
+                        "actual fit constant must remain unknown")
+                require(text.index(translate("catalog_mos2_model_notice", language)) < text.index("180 ± 60 N/m"),
+                        "unresolved model notice must precede MoS2 value")
 print(json.dumps({"version": expected, "metadata_version": metadata_version,
                   "engine_outputs": sorted(outputs), "languages": languages,
-                  "installed_without_dependencies": True}))
+                  "installed_without_dependencies": True, "mixed_observation_catalog_languages": languages}))
 '''
 
 

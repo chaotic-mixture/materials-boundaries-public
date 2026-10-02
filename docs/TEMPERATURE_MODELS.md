@@ -1,17 +1,22 @@
 # Synthetic temperature-model demonstrations
 
-The first public release, **0.16.0**, contains **five original synthetic models
+The first-public-release baseline, **0.16.0**, introduced **five original synthetic models
 with seven branches** in the separate temperature catalog. Their coefficients,
 intervals and displayed GPa values are deliberately invented to demonstrate
 software behavior. They are not measured or fitted material properties,
 reference data, theoretical bounds, engineering allowables or NIST predictions.
 No real material identity or physical applicability is implied.
 
-The 34 mechanics claims, two published observations, six computational
-predictions and exactly eight executable composite rules remain separate.
-The source catalog contains 47 records: the 46 existing source identities plus
+At that historical **v0.16.0 baseline**, the 34 mechanics claims, two published
+observations, six computational predictions and exactly eight executable
+composite rules were separate. Its source catalog contained 47 records: the
+46 existing source identities plus
 `materials_boundaries_synthetic_temperature_demo`, which records original
 author provenance rather than an external publication.
+
+The current [v0.17.0 catalog expansion](MIGRATION_v0.17.0.md) has 48 sources
+and four observations from two studies. These five synthetic temperature models
+and their seven branches are unchanged.
 
 ## Polynomial and branch contract
 

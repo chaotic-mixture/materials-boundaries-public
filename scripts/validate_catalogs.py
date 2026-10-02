@@ -811,7 +811,7 @@ def _index(records: list[dict], kind: str) -> dict:
 
 
 def _validate_labels(locales: dict, names: set[str], *, index_present: bool = False,
-                     directional_present: bool = False, compressibility_present: bool = False) -> None:
+                     directional_present: bool = False, compressibility_present: bool = False, mos2_present: bool = False) -> None:
     require(isinstance(locales, dict), "locales: expected an object")
     require(set(locales) == {"schema_version", "default_language", "translation_review", "languages"},
             "locales: unsupported or missing envelope fields")
@@ -825,6 +825,10 @@ def _validate_labels(locales: dict, names: set[str], *, index_present: bool = Fa
     require(all(isinstance(messages, dict) for messages in languages.values()),
             "locales: each language must be a dictionary")
     keys = set(languages["en"])
+    if mos2_present:
+        from materials_boundaries._observation_contract import MOS2_LABELS
+        require(MOS2_LABELS <= keys, "locales: missing required MoS2 warning/display labels: " +
+                ", ".join(sorted(MOS2_LABELS - keys)))
     if compressibility_present:
         required_compressibility_keys = {"catalog_compressibility_" + key for key in
             ("notice", "conditions", "limits", "fixed_tensor", "range", "energy", "symmetry")}
@@ -922,6 +926,11 @@ def validate_catalogs(catalogs: dict, schema_dir: Path = ROOT / "schemas") -> di
             for evidence in record["evidence"]:
                 require(evidence["source_id"] in sources,
                         f"{kind}.{name}: unresolved evidence source {evidence['source_id']}")
+    from materials_boundaries._observation_contract import validate_mos2_records
+    try:
+        validate_mos2_records(list(observations.values()))
+    except ValueError as exc:
+        raise CatalogValidationError(str(exc)) from exc
     for name, observation in observations.items():
         study = observation["study_id"]
         require(study in sources, f"observations.{name}: unresolved study source {study}")
@@ -977,7 +986,8 @@ def validate_catalogs(catalogs: dict, schema_dir: Path = ROOT / "schemas") -> di
     _validate_labels(catalogs["locales"], set(claims) | set(observations),
                      index_present=any("index_range" in claim for claim in claims.values()),
                      directional_present=any("directional_contract" in claim for claim in claims.values()),
-                     compressibility_present=any("hydrostatic_compressibility_contract" in claim for claim in claims.values()))
+                     compressibility_present=any("hydrostatic_compressibility_contract" in claim for claim in claims.values()),
+                     mos2_present=any("method_family" in record for record in observations.values()))
     return {kind: len(index) for kind, index in indexes.items()}
 
 
