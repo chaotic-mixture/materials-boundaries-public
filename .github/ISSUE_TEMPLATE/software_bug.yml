@@ -1,0 +1,46 @@
+name: Software bug
+description: Report a reproducible CLI, validation, packaging or rendering problem.
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Search existing issues first. For a scientific statement or provenance error, use the scientific correction form. See [CONTRIBUTING](https://github.com/chaotic-mixture/materials-boundaries-public/blob/main/CONTRIBUTING.md) for checks.
+
+        This issue is public. Prefer a minimal synthetic input, clearly labeled invented. Do not post credentials, private data, personal data, copyrighted PDFs, page images, figures, full article text or raw source collections. Link source evidence instead. Original project code is MIT-licensed; this is not blanket relicensing of third-party works. Preserve [third-party notices](https://github.com/chaotic-mixture/materials-boundaries-public/blob/main/THIRD_PARTY_NOTICES.md), including the exclusion of NIST cryogenic coefficients and derived outputs.
+  - type: textarea
+    id: environment
+    attributes:
+      label: Version and environment
+      description: Give the public version or commit, Python version, operating system, installation method and relevant command. Remove usernames, local private paths and other identifying log details.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Minimal reproduction
+      description: Provide exact commands and the smallest shareable input, preferably an existing public example or an invented synthetic fixture. State whether the problem reproduces from a clean checkout or installed wheel.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Expected and actual behavior
+      description: Include sanitized output/error text, exit status and why the expected behavior follows the documented contract. Link related issues and describe any checks already run; never report unrun checks as passing.
+    validations:
+      required: true
+  - type: textarea
+    id: scientific_context
+    attributes:
+      label: Scientific context or not applicable
+      description: If scientific output is affected, identify record IDs and distinguish theoretical bound, model relation, observation, computational prediction and synthetic demo. Give quantity/units, conditions/domain, source URL and page/equation locator if relevant, and uncertainty. Unknown is not unbounded; a synthetic result is not material evidence. For a software-only failure, state not applicable with a reason.
+    validations:
+      required: true
+  - type: textarea
+    id: rights
+    attributes:
+      label: Input provenance and rights status
+      description: Identify the existing public example or describe your original synthetic construction. For third-party content, link the source-specific rights notice or state unknown/conflicting status. Do not upload source inspection files or assume public readability permits redistribution.
+    validations:
+      required: true

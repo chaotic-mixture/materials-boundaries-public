@@ -1,0 +1,76 @@
+name: Source-backed record or evidence
+description: Propose a record or strengthen an existing scientific claim with traceable evidence.
+title: "[Record] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Start with [CONTRIBUTING](https://github.com/chaotic-mixture/materials-boundaries-public/blob/main/CONTRIBUTING.md) and the [catalog review checklist](https://github.com/chaotic-mixture/materials-boundaries-public/blob/main/docs/CATALOG_CONTRIBUTION_TEMPLATE.md). Search existing records and issues; prefer adding evidence to an unchanged scientific contract over duplicating it. A proposal is not scientific review or automatic acceptance.
+
+        This issue is public. Link sources rather than uploading copyrighted PDFs, page images, figures, full article text or raw source collections. Do not post credentials, private data or personal data. The project's MIT license covers original project work, not blanket relicensing of third-party works; see [third-party notices](https://github.com/chaotic-mixture/materials-boundaries-public/blob/main/THIRD_PARTY_NOTICES.md). The excluded NIST cryogenic coefficients and their derived outputs require separate review before any reintroduction.
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit inspected
+      description: Identify the public software version or commit you checked.
+      placeholder: "0.16.0, or a full public commit hash"
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Proposed addition and existing records
+      description: Describe the evidence or record, existing record/source IDs and related issues. Explain whether this enriches evidence, reuses a complete supported contract, or proposes a new contract. Say what you searched.
+    validations:
+      required: true
+  - type: dropdown
+    id: classification
+    attributes:
+      label: Scientific classification
+      description: Select the kind of claim being proposed, not how authoritative its source appears. Explain mixed or uncertain cases below.
+      options:
+        - Theoretical bound under stated assumptions
+        - Model relation or definition
+        - Published observation or measurement summary
+        - Computational prediction
+        - Synthetic demonstration (invented, not material data)
+        - Unsure (explain below)
+    validations:
+      required: true
+  - type: textarea
+    id: contract
+    attributes:
+      label: Quantity, units, conditions and limits
+      description: Give the quantity, dimensions, source and SI units/conversion, formula and parameter meanings, material/model identity, geometry/axes/loading, temperature/pressure, method and valid domain as applicable. Mark missing conditions unknown; do not infer them from matching units.
+      placeholder: |
+        Quantity and units/conversion:
+        Relation and parameter definitions:
+        Required assumptions, conditions and validity domain:
+        Uncertainty, exclusions and unknowns:
+        Range/endpoints: distinguish unknown from proven unbounded; state fixed-system versus varying-class scope and whether endpoints are attained.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Sources, exact locators and inspection status
+      description: Provide bibliographic details, DOI or official URL, edition/version and exact page plus equation/table/figure/passage locator. Say what you actually inspected and what supports each assertion. Use unknown or not applicable with a reason instead of inventing a locator. Synthetic demos need explicit original provenance and construction details.
+      placeholder: |
+        Citation and DOI/official URL:
+        Page and equation/table/figure/passage locator:
+        Inspected scope (abstract, text, equations, supplement, visual page check):
+        Supported assertions versus original derivation or historical attribution:
+        Study identity, uninspected gaps and independent scientific review (performed or pending):
+    validations:
+      required: true
+  - type: textarea
+    id: rights
+    attributes:
+      label: Rights status and proposed bundled content
+      description: Link the source-specific rights notice and describe any proposed copied content. State unknown or conflicting rights explicitly; public access, attribution and software checks do not establish reuse permission. Do not paste source text or upload inspection files to demonstrate rights.
+      placeholder: |
+        Rights status and supporting notice URL (or unknown):
+        Content proposed for inclusion and its provenance:
+        Unresolved reuse questions or exclusions:
+    validations:
+      required: true

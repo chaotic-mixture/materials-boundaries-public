@@ -1,0 +1,64 @@
+name: Scientific or provenance correction
+description: Report a specific error in a relation, condition, unit, classification, source or rights statement.
+title: "[Correction] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Corrections are welcome even when the replacement is not yet known. Read [CONTRIBUTING](https://github.com/chaotic-mixture/materials-boundaries-public/blob/main/CONTRIBUTING.md) and the [catalog review checklist](https://github.com/chaotic-mixture/materials-boundaries-public/blob/main/docs/CATALOG_CONTRIBUTION_TEMPLATE.md). Separate an identified error from a proposed interpretation; software checks are not independent scientific peer review.
+
+        This issue is public. Link sources; do not upload copyrighted PDFs, page images, figures, full article text or raw source collections. Remove credentials, private data and personal data. MIT licensing of original project work does not relicense third-party works; preserve [source-specific rights](https://github.com/chaotic-mixture/materials-boundaries-public/blob/main/THIRD_PARTY_NOTICES.md). Do not restore excluded NIST cryogenic coefficients or derived outputs through a correction without separate review.
+  - type: textarea
+    id: target
+    attributes:
+      label: Affected version, record and location
+      description: Give the public version or commit, record/source ID, file and section/line or output command. Link any related issue.
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: Current statement, problem and proposed correction
+      description: Identify the project's current statement, explain why it is incorrect or unsupported and suggest a replacement if known. State the impact without extending the conclusion beyond the evidence.
+    validations:
+      required: true
+  - type: dropdown
+    id: classification
+    attributes:
+      label: Correct scientific classification
+      description: Choose the intended classification. Describe any change from the current one above; a source or rights-only correction may be not applicable.
+      options:
+        - Theoretical bound under stated assumptions
+        - Model relation or definition
+        - Published observation or measurement summary
+        - Computational prediction
+        - Synthetic demonstration (invented, not material data)
+        - Unsure or not applicable (explain above)
+    validations:
+      required: true
+  - type: textarea
+    id: contract
+    attributes:
+      label: Units, conditions, range and uncertainty
+      description: Give the correct quantity/dimensions, source and SI units/conversion, relation/parameters, material/model, geometry/axes/loading, method and temperature/pressure/domain as applicable. For a provenance-only correction, state not applicable with a reason.
+      placeholder: |
+        Units, relation and parameters:
+        Conditions, valid domain and exclusions:
+        Unknown or unverified conditions and uncertainty:
+        Range/endpoints: unknown is not proven unbounded; distinguish one fixed system from a varying class and finite attained endpoints from unattained infinity.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Source evidence and exact locators
+      description: Give bibliographic details, DOI or official URL, edition/version, page and equation/table/figure/passage locator, and what was actually inspected. Distinguish source-supported facts from your derivation and list unresolved or uninspected gaps. State independent scientific review performed or pending; use unknown or not applicable with a reason where necessary.
+    validations:
+      required: true
+  - type: textarea
+    id: rights
+    attributes:
+      label: Rights status and content affected
+      description: Link source-specific rights evidence, or state unknown/conflicting status. Identify any content proposed for inclusion, removal or attribution changes. Public availability, citation and validation do not grant redistribution permission. Original synthetic constructions must remain visibly invented.
+    validations:
+      required: true
