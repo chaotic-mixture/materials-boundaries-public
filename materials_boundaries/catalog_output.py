@@ -3,7 +3,7 @@ from functools import lru_cache
 import json
 
 from .catalog import read_catalog
-from .i18n import translate
+from .i18n import _catalog_translation_lookup
 
 
 def render_catalog(catalog: dict, kind: str, language: str = "en") -> str:
@@ -28,9 +28,11 @@ def render_catalog(catalog: dict, kind: str, language: str = "en") -> str:
         definitions.update({record["id"]: record for record in catalog["records"]})
         validate_directional_records(list(definitions.values()), resolve_dependencies=True)
         validate_compressibility_records(list(definitions.values()), resolve_dependencies=True)
+    lookup = _catalog_translation_lookup(language)
+
     @lru_cache(maxsize=None)
     def t(key: str) -> str:
-        return translate(key, language)
+        return lookup(key)
 
     def status(value: str | None) -> str:
         if value is None:
