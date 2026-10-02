@@ -1,0 +1,1584 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:materials-boundaries:schema:computational_predictions:1.1.0",
+  "title": "Published discrete computational predictions: closed shear and first-instability families",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "enum": [
+        "1.0.0",
+        "1.1.0"
+      ]
+    },
+    "records": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/record"
+      }
+    },
+    "protocols": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/protocol"
+      }
+    },
+    "comparison_groups": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/group"
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "records",
+    "protocols",
+    "comparison_groups"
+  ],
+  "$defs": {
+    "ni_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "const": "1.0.0"
+        },
+        "quantity": {
+          "const": "ideal_shear_strength"
+        },
+        "evaluation_support": {
+          "const": "reported_discrete_prediction"
+        },
+        "evidence_type": {
+          "const": "published_computational_prediction"
+        },
+        "material_representation": {
+          "const": "periodic_atomic_supercell_model"
+        },
+        "commercial_alloy_grade": {
+          "const": false
+        },
+        "uncertainty_GPa": {
+          "const": null
+        },
+        "universal_upper_bound": {
+          "const": false
+        },
+        "unit": {
+          "const": "GPa"
+        },
+        "verification": {
+          "const": {
+            "status": "source_table_visually_checked",
+            "independent_scientific_review": false,
+            "raw_inputs_audited": false
+          }
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "names": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "en": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "zh": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "ja": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "de": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "required": [
+            "en",
+            "zh",
+            "ja",
+            "de"
+          ]
+        },
+        "formula": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "cell_composition": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "stoichiometry_in_model_cell": {
+          "type": "object",
+          "minProperties": 1,
+          "maxProperties": 2,
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 12
+          }
+        },
+        "source_table_label": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "source_value_string": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+$"
+        },
+        "value_GPa": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "reported_decimal_places": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 12
+        },
+        "precision_note": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "source_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "source_table": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "source_pdf_page_1_based": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "protocol_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "comparison_group_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "cell_composition_status": {
+          "enum": [
+            "inferred_from_shared_12_atom_host_setup",
+            "explicit_Ni11X_model_from_methods"
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "source_id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              },
+              "locator": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "url": {
+                "type": "string",
+                "format": "uri",
+                "pattern": "^https://"
+              },
+              "supports": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              }
+            },
+            "required": [
+              "source_id",
+              "locator",
+              "url",
+              "supports"
+            ]
+          }
+        },
+        "uncertainty_reason": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        }
+      },
+      "required": [
+        "version",
+        "quantity",
+        "evaluation_support",
+        "evidence_type",
+        "material_representation",
+        "commercial_alloy_grade",
+        "uncertainty_GPa",
+        "universal_upper_bound",
+        "unit",
+        "verification",
+        "id",
+        "name",
+        "names",
+        "formula",
+        "cell_composition",
+        "stoichiometry_in_model_cell",
+        "source_table_label",
+        "source_value_string",
+        "value_GPa",
+        "reported_decimal_places",
+        "precision_note",
+        "source_id",
+        "source_table",
+        "source_pdf_page_1_based",
+        "protocol_id",
+        "comparison_group_id",
+        "cell_composition_status",
+        "evidence",
+        "uncertainty_reason"
+      ]
+    },
+    "ni_protocol": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "source_sections": {
+          "const": [
+            "2.1",
+            "2.2",
+            "3.1"
+          ]
+        },
+        "property": {
+          "const": "ideal_shear_strength"
+        },
+        "property_interpretation": {
+          "const": "Maximum shear stress along the reported constrained-relaxation strain path"
+        },
+        "evidence_type": {
+          "const": "published_computational_prediction"
+        },
+        "material_representation": {
+          "const": "periodic_atomic_supercell_model"
+        },
+        "commercial_alloy_grade": {
+          "const": false
+        },
+        "structure": {
+          "const": {
+            "host_lattice": "fcc Ni",
+            "initial_cell_geometry": "orthorhombic",
+            "atoms_per_cell": 12,
+            "atomic_layers_along_111": 3,
+            "substitution_location": "one Ni site within the shear plane for Ni11X"
+          }
+        },
+        "geometry": {
+          "const": {
+            "slip_plane_miller_indices": [
+              1,
+              1,
+              1
+            ],
+            "slip_direction_indices": [
+              1,
+              1,
+              -2
+            ],
+            "slip_direction_display": "[1,1,-2]",
+            "transverse_in_plane_direction_indices": [
+              -1,
+              1,
+              0
+            ],
+            "normal_direction_indices": [
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "loading": {
+          "const": {
+            "type": "pure_alias_shear",
+            "shear_parameter_sign": "positive",
+            "deformation_matrix_as_printed": [
+              [
+                "1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "0"
+              ],
+              [
+                "epsilon",
+                "0",
+                "1"
+              ]
+            ],
+            "matrix_convention_note": "Retain the source matrix as printed; do not silently transpose it based on a different vector convention.",
+            "strain_definition": "engineering shear displacement divided by supercell height",
+            "displacement_regime": "initial relative displacement of one atomic layer, then relaxation",
+            "fixed_quantity": "prescribed shear angle",
+            "relaxed_quantities": [
+              "atomic positions",
+              "non-prescribed cell parameters"
+            ],
+            "geometry_optimizer": "Gadget",
+            "peak_search": "incremental shear; additional calculations near the stress maximum/drop",
+            "full_loading_history_or_strain_step_schedule_verified": false
+          }
+        },
+        "calculation": {
+          "const": {
+            "framework": "static DFT constrained-geometry calculations",
+            "software": "VASP",
+            "pseudopotential_method": "PAW",
+            "exchange_correlation_reported": "GGA parameterized by Perdew et al., reference 43 (Phys. Rev. B 46 (1992) 6671-6687)",
+            "exchange_correlation_label_caution": "Do not substitute PBE. The paper identifies its GGA through reference 43; raw input tags have not been inspected.",
+            "plane_wave_cutoff_eV": 350,
+            "k_mesh": [
+              9,
+              8,
+              7
+            ],
+            "k_mesh_center": "Gamma",
+            "electronic_self_consistency_tolerance_eV_per_supercell": 5e-06,
+            "electronic_smearing": {
+              "scheme": "Methfessel-Paxton",
+              "width_eV": 0.2,
+              "is_physical_temperature": false
+            },
+            "framework_status": "Classification from the reported constrained-geometry DFT procedure; no numeric physical temperature inferred"
+          }
+        },
+        "numerical_controls": {
+          "const": {
+            "strength_peak_convergence_reported_GPa": 0.08,
+            "strength_peak_convergence_semantics": "Author-reported convergence criterion, not a standard deviation, confidence interval, or per-record error bar",
+            "non_imposed_stress_component_threshold_GPa": 0.15,
+            "atomic_force_threshold_eV_per_angstrom": 0.03,
+            "statistical_uncertainty": null,
+            "systematic_model_error": null
+          }
+        },
+        "state_fields": {
+          "const": {
+            "physical_temperature_K": null,
+            "physical_temperature_status": "not_verified_in_inspected_content",
+            "pressure_GPa": null,
+            "pressure_status": "not_verified_as_a_scalar_thermodynamic_state_in_inspected_content",
+            "normal_stress_condition": "Other relaxed stress components reported below 0.15 GPa; do not replace this residual threshold with an exact external pressure value.",
+            "magnetic_state": null,
+            "spin_polarization": null,
+            "magnetic_state_status": "not_verified_in_inspected_content",
+            "static_DFT_is_not_a_temperature_measurement": true
+          }
+        },
+        "family": {
+          "const": "shimanek_v2_pure_alias_12atom_v1"
+        },
+        "version": {
+          "const": "1.0.0"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "source_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "source_id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              },
+              "locator": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "url": {
+                "type": "string",
+                "format": "uri",
+                "pattern": "^https://"
+              },
+              "supports": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              }
+            },
+            "required": [
+              "source_id",
+              "locator",
+              "url",
+              "supports"
+            ]
+          }
+        },
+        "verification": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "const": "published_method_inspected"
+            },
+            "raw_inputs_audited": {
+              "const": false
+            },
+            "independent_scientific_review": {
+              "const": false
+            },
+            "gaps": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              }
+            }
+          },
+          "required": [
+            "status",
+            "raw_inputs_audited",
+            "independent_scientific_review",
+            "gaps"
+          ]
+        },
+        "unknown_field_reasons": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "magnetic_state": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "temperature": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "pressure": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "uncertainty": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "raw_protocol": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "required": [
+            "magnetic_state",
+            "temperature",
+            "pressure",
+            "uncertainty",
+            "raw_protocol"
+          ]
+        }
+      },
+      "required": [
+        "source_sections",
+        "property",
+        "property_interpretation",
+        "evidence_type",
+        "material_representation",
+        "commercial_alloy_grade",
+        "structure",
+        "geometry",
+        "loading",
+        "calculation",
+        "numerical_controls",
+        "state_fields",
+        "family",
+        "version",
+        "id",
+        "source_id",
+        "evidence",
+        "verification",
+        "unknown_field_reasons"
+      ]
+    },
+    "ni_group": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "verification_level": {
+          "const": "reported_method_only"
+        },
+        "unknown_conditions_equivalent": {
+          "const": false
+        },
+        "raw_inputs_audited": {
+          "const": false
+        },
+        "cross_study_comparison_allowed": {
+          "const": false
+        },
+        "excluded_interpretations": {
+          "const": [
+            "experimental observation",
+            "commercial alloy grade",
+            "ultimate tensile strength",
+            "hardness",
+            "macroscopic yield strength",
+            "universal rigorous strength upper bound",
+            "complete stability envelope over all modes"
+          ]
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "source_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "protocol_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "record_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "uniqueItems": true
+        },
+        "basis": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "qualifier": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "names": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "en": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "zh": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "ja": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "de": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "required": [
+            "en",
+            "zh",
+            "ja",
+            "de"
+          ]
+        }
+      },
+      "required": [
+        "verification_level",
+        "unknown_conditions_equivalent",
+        "raw_inputs_audited",
+        "cross_study_comparison_allowed",
+        "excluded_interpretations",
+        "id",
+        "source_id",
+        "protocol_id",
+        "record_ids",
+        "basis",
+        "qualifier",
+        "names"
+      ]
+    },
+    "critical_engineering_strain": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "quantity": {
+          "const": "critical_engineering_strain_at_first_instability"
+        },
+        "unit": {
+          "const": "1"
+        },
+        "source_unit": {
+          "const": "%"
+        },
+        "reported_decimal_places": {
+          "const": 0
+        },
+        "uncertainty": {
+          "const": null
+        },
+        "definition": {
+          "const": "engineering_strain_at_the_same_reported_first_instability_as_the_strength"
+        },
+        "value": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "source_value_string": {
+          "type": "string",
+          "pattern": "^[1-9][0-9]*$"
+        },
+        "precision_note": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "source_id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              },
+              "locator": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "url": {
+                "type": "string",
+                "format": "uri",
+                "pattern": "^https://"
+              },
+              "supports": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              }
+            },
+            "required": [
+              "source_id",
+              "locator",
+              "url",
+              "supports"
+            ]
+          }
+        }
+      },
+      "required": [
+        "quantity",
+        "unit",
+        "source_unit",
+        "reported_decimal_places",
+        "uncertainty",
+        "definition",
+        "value",
+        "source_value_string",
+        "precision_note",
+        "evidence"
+      ]
+    },
+    "silicon_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "const": "1.0.0"
+        },
+        "quantity": {
+          "const": "tensile_first_instability_strength"
+        },
+        "evaluation_support": {
+          "const": "reported_discrete_prediction"
+        },
+        "evidence_type": {
+          "const": "published_computational_prediction"
+        },
+        "material_representation": {
+          "const": "periodic_atomic_primitive_cell_model"
+        },
+        "commercial_alloy_grade": {
+          "const": false
+        },
+        "uncertainty_GPa": {
+          "const": null
+        },
+        "universal_upper_bound": {
+          "const": false
+        },
+        "unit": {
+          "const": "GPa"
+        },
+        "verification": {
+          "const": {
+            "status": "source_table_visually_checked",
+            "independent_scientific_review": false,
+            "raw_inputs_audited": false
+          }
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "names": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "en": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "zh": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "ja": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "de": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "required": [
+            "en",
+            "zh",
+            "ja",
+            "de"
+          ]
+        },
+        "formula": {
+          "const": "Si"
+        },
+        "cell_composition": {
+          "const": "Si2"
+        },
+        "stoichiometry_in_model_cell": {
+          "const": {
+            "Si": 2
+          }
+        },
+        "source_table_label": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "source_value_string": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+$"
+        },
+        "value_GPa": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "reported_decimal_places": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 12
+        },
+        "precision_note": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "source_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "source_table": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "source_pdf_page_1_based": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "protocol_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "comparison_group_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "cell_composition_status": {
+          "const": "explicit_two_atom_silicon_primitive_cell"
+        },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "source_id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              },
+              "locator": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "url": {
+                "type": "string",
+                "format": "uri",
+                "pattern": "^https://"
+              },
+              "supports": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              }
+            },
+            "required": [
+              "source_id",
+              "locator",
+              "url",
+              "supports"
+            ]
+          }
+        },
+        "uncertainty_reason": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "reported_strength_definition": {
+          "const": "computed_stress_at_first_detected_instability"
+        },
+        "descriptions": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "en": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "zh": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "ja": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "de": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "required": [
+            "en",
+            "zh",
+            "ja",
+            "de"
+          ]
+        },
+        "direction": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "family_indices": {
+              "enum": [
+                [
+                  1,
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  1,
+                  1
+                ]
+              ]
+            },
+            "display": {
+              "enum": [
+                "⟨100⟩",
+                "⟨110⟩",
+                "⟨111⟩"
+              ]
+            },
+            "notation": {
+              "const": "crystallographically_equivalent_direction_family_not_a_specific_signed_vector"
+            }
+          },
+          "required": [
+            "family_indices",
+            "display",
+            "notation"
+          ]
+        },
+        "critical_engineering_strain": {
+          "$ref": "#/$defs/critical_engineering_strain"
+        },
+        "first_instability": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "const": "elastic"
+            },
+            "phonon_wavevector_location": {
+              "const": "Brillouin_zone_center"
+            },
+            "mode": {
+              "enum": [
+                "⟨100⟩ tension",
+                "⟨110⟩ tension",
+                "⟨111⟩ tension"
+              ]
+            },
+            "source_table": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "source_pdf_page_1_based": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "evidence": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "source_id": {
+                    "type": "string",
+                    "pattern": "^[a-z][a-z0-9_]*$"
+                  },
+                  "locator": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "\\S"
+                  },
+                  "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "^https://"
+                  },
+                  "supports": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "pattern": "\\S"
+                    }
+                  }
+                },
+                "required": [
+                  "source_id",
+                  "locator",
+                  "url",
+                  "supports"
+                ]
+              }
+            }
+          },
+          "required": [
+            "type",
+            "phonon_wavevector_location",
+            "mode",
+            "source_table",
+            "source_pdf_page_1_based",
+            "evidence"
+          ]
+        }
+      },
+      "required": [
+        "version",
+        "quantity",
+        "evaluation_support",
+        "evidence_type",
+        "material_representation",
+        "commercial_alloy_grade",
+        "uncertainty_GPa",
+        "universal_upper_bound",
+        "unit",
+        "verification",
+        "id",
+        "name",
+        "names",
+        "formula",
+        "cell_composition",
+        "stoichiometry_in_model_cell",
+        "source_table_label",
+        "source_value_string",
+        "value_GPa",
+        "reported_decimal_places",
+        "precision_note",
+        "source_id",
+        "source_table",
+        "source_pdf_page_1_based",
+        "protocol_id",
+        "comparison_group_id",
+        "cell_composition_status",
+        "evidence",
+        "uncertainty_reason",
+        "reported_strength_definition",
+        "descriptions",
+        "direction",
+        "critical_engineering_strain",
+        "first_instability"
+      ]
+    },
+    "silicon_protocol": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "family": {
+          "const": "dubois_2006_si_uniaxial_deformation_v1"
+        },
+        "version": {
+          "const": "1.0.0"
+        },
+        "source_sections": {
+          "const": [
+            "II",
+            "III.A",
+            "III.B",
+            "III.C"
+          ]
+        },
+        "property": {
+          "const": "tensile_first_instability_strength"
+        },
+        "property_interpretation": {
+          "const": "Reported tensile stress at the first detected structural instability under fixed transverse strain"
+        },
+        "evidence_type": {
+          "const": "published_computational_prediction"
+        },
+        "material_representation": {
+          "const": "periodic_atomic_primitive_cell_model"
+        },
+        "commercial_alloy_grade": {
+          "const": false
+        },
+        "structure": {
+          "const": {
+            "composition": "Si",
+            "cell_type_reported": "primitive",
+            "atoms_per_cell": 2,
+            "lattice_constant_reported_bohr": 10.201,
+            "source_for_lattice_constant": "Table I, page 235203-2",
+            "crystal_structure_reported": null,
+            "crystal_structure_normalized": "diamond_cubic",
+            "crystal_structure_normalization_status": "Inferred standard bulk silicon structure from the reported two-atom primitive cell and cubic directions; diamond-cubic is not explicitly named in the inspected source text. Preserve this inference label or keep the normalized field null if explicit-only ingestion is required.",
+            "space_group_number": null,
+            "defect_model": "perfect_periodic_crystal"
+          }
+        },
+        "geometry": {
+          "const": {
+            "comparison_variable": "loading_direction_family",
+            "notation": "crystallographically_equivalent_direction_family_not_a_specific_signed_vector",
+            "supported_direction_family_indices": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                1,
+                1,
+                0
+              ],
+              [
+                1,
+                1,
+                1
+              ]
+            ]
+          }
+        },
+        "loading": {
+          "const": {
+            "source_name": "uniaxial deformation",
+            "source_alias": "unrelaxed tension",
+            "imposed_strain_equation_as_printed": "epsilon_tension = epsilon_11 (e_1 tensor e_1)",
+            "equation_number": 1,
+            "strain_measure_for_tabulated_critical_strain": "engineering",
+            "e_1": "unit vector in loading direction",
+            "fixed_during_relaxation": "lattice vectors at each imposed strain",
+            "relaxed": "relative atomic positions only",
+            "transverse_strain_constraint": "zero imposed transverse strain components",
+            "transverse_stress": "not relaxed to zero",
+            "exact_strain_schedule": null,
+            "stress_measure": "DFT stress as reported; no explicit Cauchy/nominal classification verified"
+          }
+        },
+        "calculation": {
+          "const": {
+            "method": "DFT_and_density_functional_perturbation_theory",
+            "software": "ABINIT",
+            "exchange_correlation": "LDA_Teter_Pade",
+            "pseudopotential": "separable_norm_conserving_Troullier_Martins",
+            "plane_wave_cutoff": {
+              "value": 10,
+              "unit": "hartree"
+            },
+            "kpoint_mesh": [
+              12,
+              12,
+              12
+            ],
+            "kpoint_scheme": "Monkhorst_Pack",
+            "smearing": {
+              "scheme": "cold_smearing",
+              "value": 0.01,
+              "unit": "hartree",
+              "physical_temperature": false
+            },
+            "phonon_qpoint_mesh": [
+              6,
+              6,
+              6
+            ],
+            "phonon_check": "Interpolated dynamical matrices; suspect high-symmetry phonon modes recalculated explicitly",
+            "calculation_regime": "static_constrained_geometry_DFT_inferred_from_method_not_a_reported_temperature"
+          }
+        },
+        "numerical_controls": {
+          "const": {
+            "author_numerical_stress_error_estimate_GPa": {
+              "qualifier": "less_than_approximately",
+              "value": 0.05,
+              "scope": "smearing_finite_basis_kpoint_sampling",
+              "is_statistical_or_total_uncertainty": false
+            },
+            "relaxed_loading_residual_stress_threshold_GPa": {
+              "value": 0.02,
+              "applies_to_this_fixed_lattice_batch": false
+            },
+            "statistical_uncertainty_GPa": null,
+            "total_model_uncertainty_GPa": null
+          }
+        },
+        "state_fields": {
+          "const": {
+            "physical_temperature_K": null,
+            "pressure_GPa": null,
+            "magnetic_state": null,
+            "spin_polarization": null,
+            "temperature_note": "Table I contains experimental room-temperature/77 K references, not temperatures for the selected DFT calculations. Do not infer 0 K from static geometry optimization or smearing.",
+            "pressure_note": "Anisotropic transverse stresses are allowed by this loading protocol; do not assign exact zero hydrostatic pressure.",
+            "magnetic_note": "Not verified in inspected paper; do not infer a spin setup."
+          }
+        },
+        "strength_criterion": {
+          "const": {
+            "reported": "first structural instability detected using phonon spectra and stiffness tensor",
+            "selected_rows_first_mode": "elastic_tensile_mode_along_the_imposed_direction",
+            "complete_stability_analysis": "reported by authors; not independently reproduced",
+            "stress_path_peak": "qualitatively consistent with Figure 2(b), no graph-derived numbers"
+          }
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "source_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "source_id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              },
+              "locator": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "url": {
+                "type": "string",
+                "format": "uri",
+                "pattern": "^https://"
+              },
+              "supports": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              }
+            },
+            "required": [
+              "source_id",
+              "locator",
+              "url",
+              "supports"
+            ]
+          }
+        },
+        "verification": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "const": "published_method_inspected"
+            },
+            "raw_inputs_audited": {
+              "const": false
+            },
+            "independent_scientific_review": {
+              "const": false
+            },
+            "gaps": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              }
+            }
+          },
+          "required": [
+            "status",
+            "raw_inputs_audited",
+            "independent_scientific_review",
+            "gaps"
+          ]
+        },
+        "unknown_field_reasons": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "magnetic_state": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "temperature": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "pressure": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "uncertainty": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "raw_protocol": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "required": [
+            "magnetic_state",
+            "temperature",
+            "pressure",
+            "uncertainty",
+            "raw_protocol"
+          ]
+        }
+      },
+      "required": [
+        "family",
+        "version",
+        "source_sections",
+        "property",
+        "property_interpretation",
+        "evidence_type",
+        "material_representation",
+        "commercial_alloy_grade",
+        "structure",
+        "geometry",
+        "loading",
+        "calculation",
+        "numerical_controls",
+        "state_fields",
+        "strength_criterion",
+        "id",
+        "source_id",
+        "evidence",
+        "verification",
+        "unknown_field_reasons"
+      ]
+    },
+    "silicon_group": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "verification_level": {
+          "const": "reported_method_only"
+        },
+        "unknown_conditions_equivalent": {
+          "const": false
+        },
+        "raw_inputs_audited": {
+          "const": false
+        },
+        "cross_study_comparison_allowed": {
+          "const": false
+        },
+        "excluded_interpretations": {
+          "const": [
+            "experimental observation",
+            "commercial alloy grade",
+            "ultimate tensile strength",
+            "hardness",
+            "macroscopic yield strength",
+            "universal rigorous strength upper bound",
+            "complete stability envelope over all modes",
+            "fully relaxed uniaxial tension",
+            "ideal shear strength",
+            "generic stress path maximum"
+          ]
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "source_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "protocol_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "record_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "uniqueItems": true
+        },
+        "basis": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "qualifier": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "names": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "en": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "zh": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "ja": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "de": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "required": [
+            "en",
+            "zh",
+            "ja",
+            "de"
+          ]
+        },
+        "comparison_axis": {
+          "const": "loading_direction_family"
+        }
+      },
+      "required": [
+        "verification_level",
+        "unknown_conditions_equivalent",
+        "raw_inputs_audited",
+        "cross_study_comparison_allowed",
+        "excluded_interpretations",
+        "id",
+        "source_id",
+        "protocol_id",
+        "record_ids",
+        "basis",
+        "qualifier",
+        "names",
+        "comparison_axis"
+      ]
+    },
+    "record": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/ni_record"
+        },
+        {
+          "$ref": "#/$defs/silicon_record"
+        }
+      ]
+    },
+    "protocol": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/ni_protocol"
+        },
+        {
+          "$ref": "#/$defs/silicon_protocol"
+        }
+      ]
+    },
+    "group": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/ni_group"
+        },
+        {
+          "$ref": "#/$defs/silicon_group"
+        }
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "schema_version": {
+            "const": "1.0.0"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "records": {
+            "items": {
+              "$ref": "#/$defs/ni_record"
+            }
+          },
+          "protocols": {
+            "items": {
+              "$ref": "#/$defs/ni_protocol"
+            }
+          },
+          "comparison_groups": {
+            "items": {
+              "$ref": "#/$defs/ni_group"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "provenance": {
+    "method": "Independent factual transcription from the inspected paper, not generated from production catalog objects. Table II supplies stress and engineering strain; Table III supplies the first instability.",
+    "doi": "10.1103/PhysRevB.74.235203",
+    "title": "Ideal strength of silicon: An ab initio study",
+    "primary_copy_url": "https://perso.uclouvain.be/gian-marco.rignanese/publications/A029.pdf",
+    "source_pdf_sha256": "3586497e97d88071ce07759d53a42803ec79880eb92bcf9b817c9eda303b0648",
+    "factual_audit_sha256": "8f5c6ae711479dc22461000ec392ea03da0d4ff0ddb806c456ef1d599f38a3df",
+    "table_values_visually_checked": true,
+    "raw_inputs_audited": false
+  },
+  "source_id": "dubois_2006_prb_74_235203",
+  "protocol_id": "dubois_2006_si_uniaxial_deformation",
+  "group_id": "dubois_2006_si_directional_instability",
+  "family": "dubois_2006_si_uniaxial_deformation_v1",
+  "quantity": "tensile_first_instability_strength",
+  "source_table": "Table II",
+  "source_pdf_page_1_based": 3,
+  "records": [
+    {
+      "id": "dubois2006_si_100_uniaxial_deformation",
+      "formula": "Si",
+      "source_table_label": "⟨100⟩ uniaxal deformation",
+      "source_value_string": "27.8",
+      "value_GPa": 27.8,
+      "unit": "GPa",
+      "reported_decimal_places": 1,
+      "loading_direction_family_indices": [
+        1,
+        0,
+        0
+      ],
+      "loading_direction_display": "⟨100⟩",
+      "direction_notation": "crystallographically_equivalent_direction_family_not_a_specific_signed_vector",
+      "engineering_strain_at_reported_strength": 0.31,
+      "source_strain_value_string": "31",
+      "source_strain_unit": "%",
+      "reported_strength_definition": "computed_stress_at_first_detected_instability",
+      "first_instability": {
+        "type": "elastic",
+        "phonon_wavevector_location": "Brillouin_zone_center",
+        "mode": "⟨100⟩ tension",
+        "source_table": "Table III",
+        "source_pdf_page_1_based": 3
+      }
+    },
+    {
+      "id": "dubois2006_si_110_uniaxial_deformation",
+      "formula": "Si",
+      "source_table_label": "⟨110⟩ uniaxal deformation",
+      "source_value_string": "22.6",
+      "value_GPa": 22.6,
+      "unit": "GPa",
+      "reported_decimal_places": 1,
+      "loading_direction_family_indices": [
+        1,
+        1,
+        0
+      ],
+      "loading_direction_display": "⟨110⟩",
+      "direction_notation": "crystallographically_equivalent_direction_family_not_a_specific_signed_vector",
+      "engineering_strain_at_reported_strength": 0.25,
+      "source_strain_value_string": "25",
+      "source_strain_unit": "%",
+      "reported_strength_definition": "computed_stress_at_first_detected_instability",
+      "first_instability": {
+        "type": "elastic",
+        "phonon_wavevector_location": "Brillouin_zone_center",
+        "mode": "⟨110⟩ tension",
+        "source_table": "Table III",
+        "source_pdf_page_1_based": 3
+      }
+    },
+    {
+      "id": "dubois2006_si_111_uniaxial_deformation",
+      "formula": "Si",
+      "source_table_label": "⟨111⟩ uniaxal deformation",
+      "source_value_string": "20.7",
+      "value_GPa": 20.7,
+      "unit": "GPa",
+      "reported_decimal_places": 1,
+      "loading_direction_family_indices": [
+        1,
+        1,
+        1
+      ],
+      "loading_direction_display": "⟨111⟩",
+      "direction_notation": "crystallographically_equivalent_direction_family_not_a_specific_signed_vector",
+      "engineering_strain_at_reported_strength": 0.19,
+      "source_strain_value_string": "19",
+      "source_strain_unit": "%",
+      "reported_strength_definition": "computed_stress_at_first_detected_instability",
+      "first_instability": {
+        "type": "elastic",
+        "phonon_wavevector_location": "Brillouin_zone_center",
+        "mode": "⟨111⟩ tension",
+        "source_table": "Table III",
+        "source_pdf_page_1_based": 3
+      }
+    }
+  ],
+  "method": {
+    "cell_type": "primitive",
+    "atoms_per_cell": 2,
+    "lattice_constant_bohr": 10.201,
+    "software": "ABINIT",
+    "plane_wave_cutoff_hartree": 10,
+    "kpoint_mesh": [
+      12,
+      12,
+      12
+    ],
+    "phonon_qpoint_mesh": [
+      6,
+      6,
+      6
+    ],
+    "cold_smearing_hartree": 0.01,
+    "fixed": "lattice vectors at each imposed strain",
+    "relaxed": "relative atomic positions only",
+    "transverse_strain_constraint": "zero imposed transverse strain components",
+    "transverse_stress": "not relaxed to zero",
+    "numerical_stress_error_GPa": 0.05,
+    "numerical_stress_error_qualifier": "less_than_approximately",
+    "relaxed_protocol_only_residual_GPa": 0.02
+  }
+}

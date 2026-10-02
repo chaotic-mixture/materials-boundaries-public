@@ -1,0 +1,1287 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:materials-boundaries:schema:temperature_models:1.0.0",
+  "title": "Separate synthetic demonstration and empirical temperature model contracts v1",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/model"
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "schema_version",
+    "records"
+  ],
+  "$defs": {
+    "model": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/synthetic_model"
+        },
+        {
+          "$ref": "#/$defs/empirical_model"
+        }
+      ]
+    },
+    "synthetic_model": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "version": {
+          "const": "1.0.0"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "descriptions": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "en": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "zh": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "ja": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "de": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "required": [
+            "en",
+            "zh",
+            "ja",
+            "de"
+          ]
+        },
+        "classification": {
+          "const": "synthetic_demo"
+        },
+        "evaluation_support": {
+          "const": "temperature_quartic"
+        },
+        "equation_family": {
+          "const": "temperature_quartic_v1"
+        },
+        "quantity": {
+          "const": "youngs_modulus"
+        },
+        "input_unit": {
+          "const": "K"
+        },
+        "output_unit": {
+          "const": "GPa"
+        },
+        "equation_display": {
+          "const": "E_GPa = a + b*T_K + c*T_K^2 + d*T_K^3 + e*T_K^4"
+        },
+        "coefficient_order": {
+          "const": [
+            "a",
+            "b",
+            "c",
+            "d",
+            "e"
+          ]
+        },
+        "coefficient_units": {
+          "const": [
+            "GPa",
+            "GPa/K",
+            "GPa/K^2",
+            "GPa/K^3",
+            "GPa/K^4"
+          ]
+        },
+        "material": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "UNS": {
+              "type": "null"
+            },
+            "temper": {
+              "type": "null"
+            },
+            "temper_status": {
+              "const": "not_applicable_synthetic_demo"
+            },
+            "identity_status": {
+              "const": "synthetic_demo"
+            }
+          },
+          "required": [
+            "name",
+            "UNS",
+            "temper",
+            "temper_status",
+            "identity_status"
+          ]
+        },
+        "branches": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              },
+              "coefficients_text": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[+-]?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[Ee][+-]?[0-9]+)?$"
+                },
+                "minItems": 5,
+                "maxItems": 5
+              },
+              "source_data_range_K": {
+                "type": "null"
+              },
+              "equation_range_K": {
+                "type": "array",
+                "items": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "endpoints": {
+                "const": "inclusive"
+              },
+              "reported_fit_error": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "value": {
+                    "type": "null"
+                  },
+                  "unit": {
+                    "type": "null"
+                  },
+                  "statistic": {
+                    "type": "null"
+                  },
+                  "confidence_level": {
+                    "type": "null"
+                  },
+                  "is_measurement_uncertainty": {
+                    "const": false
+                  },
+                  "is_confidence_interval": {
+                    "const": false
+                  },
+                  "is_validated_maximum_error_bound": {
+                    "const": false
+                  },
+                  "status": {
+                    "const": "not_applicable_synthetic_demo"
+                  }
+                },
+                "required": [
+                  "value",
+                  "unit",
+                  "statistic",
+                  "confidence_level",
+                  "is_measurement_uncertainty",
+                  "is_confidence_interval",
+                  "is_validated_maximum_error_bound",
+                  "status"
+                ]
+              },
+              "range_status": {
+                "const": "artificial_demonstration_interval"
+              }
+            },
+            "required": [
+              "id",
+              "coefficients_text",
+              "source_data_range_K",
+              "equation_range_K",
+              "endpoints",
+              "reported_fit_error",
+              "range_status"
+            ]
+          },
+          "minItems": 1,
+          "maxItems": 20
+        },
+        "unknown_conditions": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "pressure": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value": {
+                  "type": "null"
+                },
+                "status": {
+                  "const": "not_applicable_synthetic_demo"
+                }
+              },
+              "required": [
+                "value",
+                "status"
+              ]
+            },
+            "test_direction": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value": {
+                  "type": "null"
+                },
+                "status": {
+                  "const": "not_applicable_synthetic_demo"
+                }
+              },
+              "required": [
+                "value",
+                "status"
+              ]
+            },
+            "grain_size": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value": {
+                  "type": "null"
+                },
+                "status": {
+                  "const": "not_applicable_synthetic_demo"
+                }
+              },
+              "required": [
+                "value",
+                "status"
+              ]
+            },
+            "texture": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value": {
+                  "type": "null"
+                },
+                "status": {
+                  "const": "not_applicable_synthetic_demo"
+                }
+              },
+              "required": [
+                "value",
+                "status"
+              ]
+            },
+            "porosity": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value": {
+                  "type": "null"
+                },
+                "status": {
+                  "const": "not_applicable_synthetic_demo"
+                }
+              },
+              "required": [
+                "value",
+                "status"
+              ]
+            },
+            "product_form": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value": {
+                  "type": "null"
+                },
+                "status": {
+                  "const": "not_applicable_synthetic_demo"
+                }
+              },
+              "required": [
+                "value",
+                "status"
+              ]
+            },
+            "specimen_geometry": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value": {
+                  "type": "null"
+                },
+                "status": {
+                  "const": "not_applicable_synthetic_demo"
+                }
+              },
+              "required": [
+                "value",
+                "status"
+              ]
+            },
+            "cold_work": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value": {
+                  "type": "null"
+                },
+                "status": {
+                  "const": "not_applicable_synthetic_demo"
+                }
+              },
+              "required": [
+                "value",
+                "status"
+              ]
+            },
+            "test_method": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value": {
+                  "type": "null"
+                },
+                "status": {
+                  "const": "not_applicable_synthetic_demo"
+                }
+              },
+              "required": [
+                "value",
+                "status"
+              ]
+            },
+            "strain_rate_or_frequency": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value": {
+                  "type": "null"
+                },
+                "status": {
+                  "const": "not_applicable_synthetic_demo"
+                }
+              },
+              "required": [
+                "value",
+                "status"
+              ]
+            },
+            "measurement_uncertainty": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value": {
+                  "type": "null"
+                },
+                "status": {
+                  "const": "not_applicable_synthetic_demo"
+                }
+              },
+              "required": [
+                "value",
+                "status"
+              ]
+            },
+            "fit_error_statistical_definition": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value": {
+                  "type": "null"
+                },
+                "status": {
+                  "const": "not_applicable_synthetic_demo"
+                }
+              },
+              "required": [
+                "value",
+                "status"
+              ]
+            },
+            "confidence_level": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value": {
+                  "type": "null"
+                },
+                "status": {
+                  "const": "not_applicable_synthetic_demo"
+                }
+              },
+              "required": [
+                "value",
+                "status"
+              ]
+            }
+          },
+          "required": [
+            "pressure",
+            "test_direction",
+            "grain_size",
+            "texture",
+            "porosity",
+            "product_form",
+            "specimen_geometry",
+            "cold_work",
+            "test_method",
+            "strain_rate_or_frequency",
+            "measurement_uncertainty",
+            "fit_error_statistical_definition",
+            "confidence_level"
+          ]
+        },
+        "overlap_policy": {
+          "const": "retain_all_matching_branches_without_selection_averaging_or_smoothing"
+        },
+        "source_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "source_locator": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "scope_exclusions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "minItems": 1
+        },
+        "verification": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "synthetic_arithmetic_checked": {
+              "const": true
+            },
+            "independent_scientific_review": {
+              "const": false
+            },
+            "translation_review": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "empirical_validation": {
+              "const": false
+            }
+          },
+          "required": [
+            "synthetic_arithmetic_checked",
+            "independent_scientific_review",
+            "translation_review",
+            "empirical_validation"
+          ]
+        },
+        "reuse": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "caveats": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "minItems": 1
+            },
+            "recommended_attribution": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "required": [
+            "status",
+            "caveats",
+            "recommended_attribution"
+          ]
+        },
+        "curation_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "range_interpretation": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "author_provenance": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "author": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "creation_method": {
+              "const": "independently_authored_demonstration_polynomial"
+            },
+            "is_empirical": {
+              "const": false
+            },
+            "derived_from_measurements": {
+              "const": false
+            }
+          },
+          "required": [
+            "author",
+            "creation_method",
+            "is_empirical",
+            "derived_from_measurements"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "name",
+        "descriptions",
+        "classification",
+        "evaluation_support",
+        "equation_family",
+        "quantity",
+        "input_unit",
+        "output_unit",
+        "equation_display",
+        "coefficient_order",
+        "coefficient_units",
+        "material",
+        "branches",
+        "unknown_conditions",
+        "overlap_policy",
+        "source_ids",
+        "source_locator",
+        "scope_exclusions",
+        "verification",
+        "reuse",
+        "curation_date",
+        "range_interpretation",
+        "author_provenance"
+      ]
+    },
+    "empirical_model": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "version": {
+          "const": "1.0.0"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "descriptions": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "en": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "zh": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "ja": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "de": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "required": [
+            "en",
+            "zh",
+            "ja",
+            "de"
+          ]
+        },
+        "classification": {
+          "const": "empirical_fit_prediction"
+        },
+        "evaluation_support": {
+          "const": "temperature_quartic"
+        },
+        "equation_family": {
+          "const": "temperature_quartic_v1"
+        },
+        "quantity": {
+          "const": "youngs_modulus"
+        },
+        "input_unit": {
+          "const": "K"
+        },
+        "output_unit": {
+          "const": "GPa"
+        },
+        "equation_display": {
+          "const": "E_GPa = a + b*T_K + c*T_K^2 + d*T_K^3 + e*T_K^4"
+        },
+        "coefficient_order": {
+          "const": [
+            "a",
+            "b",
+            "c",
+            "d",
+            "e"
+          ]
+        },
+        "coefficient_units": {
+          "const": [
+            "GPa",
+            "GPa/K",
+            "GPa/K^2",
+            "GPa/K^3",
+            "GPa/K^4"
+          ]
+        },
+        "material": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "UNS": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "temper": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "temper_status": {
+              "enum": [
+                "specified",
+                "not specified"
+              ]
+            }
+          },
+          "required": [
+            "name",
+            "UNS",
+            "temper",
+            "temper_status"
+          ],
+          "oneOf": [
+            {
+              "properties": {
+                "temper": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "temper_status": {
+                  "const": "specified"
+                }
+              }
+            },
+            {
+              "properties": {
+                "temper": {
+                  "type": "null"
+                },
+                "temper_status": {
+                  "const": "not specified"
+                }
+              }
+            }
+          ]
+        },
+        "branches": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              },
+              "coefficients_text": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[+-]?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[Ee][+-]?[0-9]+)?$"
+                },
+                "minItems": 5,
+                "maxItems": 5
+              },
+              "source_data_range_K": {
+                "type": "array",
+                "items": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "equation_range_K": {
+                "type": "array",
+                "items": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "endpoints": {
+                "const": "inclusive"
+              },
+              "reported_fit_error": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "value": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "unit": {
+                    "const": "percent_relative_to_source_data"
+                  },
+                  "statistic": {
+                    "type": "null"
+                  },
+                  "confidence_level": {
+                    "type": "null"
+                  },
+                  "is_measurement_uncertainty": {
+                    "const": false
+                  },
+                  "is_confidence_interval": {
+                    "const": false
+                  },
+                  "is_validated_maximum_error_bound": {
+                    "const": false
+                  }
+                },
+                "required": [
+                  "value",
+                  "unit",
+                  "statistic",
+                  "confidence_level",
+                  "is_measurement_uncertainty",
+                  "is_confidence_interval",
+                  "is_validated_maximum_error_bound"
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "coefficients_text",
+              "source_data_range_K",
+              "equation_range_K",
+              "endpoints",
+              "reported_fit_error"
+            ]
+          },
+          "minItems": 1,
+          "maxItems": 20
+        },
+        "unknown_conditions": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "pressure": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value": {
+                  "type": "null"
+                },
+                "status": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              },
+              "required": [
+                "value",
+                "status"
+              ]
+            },
+            "test_direction": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value": {
+                  "type": "null"
+                },
+                "status": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              },
+              "required": [
+                "value",
+                "status"
+              ]
+            },
+            "grain_size": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value": {
+                  "type": "null"
+                },
+                "status": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              },
+              "required": [
+                "value",
+                "status"
+              ]
+            },
+            "texture": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value": {
+                  "type": "null"
+                },
+                "status": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              },
+              "required": [
+                "value",
+                "status"
+              ]
+            },
+            "porosity": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value": {
+                  "type": "null"
+                },
+                "status": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              },
+              "required": [
+                "value",
+                "status"
+              ]
+            },
+            "product_form": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value": {
+                  "type": "null"
+                },
+                "status": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              },
+              "required": [
+                "value",
+                "status"
+              ]
+            },
+            "specimen_geometry": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value": {
+                  "type": "null"
+                },
+                "status": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              },
+              "required": [
+                "value",
+                "status"
+              ]
+            },
+            "cold_work": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value": {
+                  "type": "null"
+                },
+                "status": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              },
+              "required": [
+                "value",
+                "status"
+              ]
+            },
+            "test_method": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value": {
+                  "type": "null"
+                },
+                "status": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              },
+              "required": [
+                "value",
+                "status"
+              ]
+            },
+            "strain_rate_or_frequency": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value": {
+                  "type": "null"
+                },
+                "status": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              },
+              "required": [
+                "value",
+                "status"
+              ]
+            },
+            "measurement_uncertainty": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value": {
+                  "type": "null"
+                },
+                "status": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              },
+              "required": [
+                "value",
+                "status"
+              ]
+            },
+            "fit_error_statistical_definition": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value": {
+                  "type": "null"
+                },
+                "status": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              },
+              "required": [
+                "value",
+                "status"
+              ]
+            },
+            "confidence_level": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value": {
+                  "type": "null"
+                },
+                "status": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              },
+              "required": [
+                "value",
+                "status"
+              ]
+            }
+          },
+          "required": [
+            "pressure",
+            "test_direction",
+            "grain_size",
+            "texture",
+            "porosity",
+            "product_form",
+            "specimen_geometry",
+            "cold_work",
+            "test_method",
+            "strain_rate_or_frequency",
+            "measurement_uncertainty",
+            "fit_error_statistical_definition",
+            "confidence_level"
+          ]
+        },
+        "overlap_policy": {
+          "const": "retain_all_matching_branches_without_selection_averaging_or_smoothing"
+        },
+        "source_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "source_locator": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "original_reference": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "editor": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "institution": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "edition": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "chart": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "reference_list_locator": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "reference_chart_retrieved": {
+              "const": false
+            },
+            "source_date_annotation": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "required": [
+            "title",
+            "editor",
+            "institution",
+            "edition",
+            "chart",
+            "reference_list_locator",
+            "reference_chart_retrieved"
+          ]
+        },
+        "scope_exclusions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "minItems": 1
+        },
+        "verification": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "source_equation_checked": {
+              "const": true
+            },
+            "synthetic_arithmetic_checked": {
+              "const": true
+            },
+            "independent_scientific_review": {
+              "const": false
+            },
+            "translation_review": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "original_charts_retrieved": {
+              "const": false
+            }
+          },
+          "required": [
+            "source_equation_checked",
+            "synthetic_arithmetic_checked",
+            "independent_scientific_review",
+            "translation_review",
+            "original_charts_retrieved"
+          ]
+        },
+        "reuse": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "caveats": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "minItems": 1
+            },
+            "recommended_attribution": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "required": [
+            "status",
+            "caveats",
+            "recommended_attribution"
+          ]
+        },
+        "curation_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "range_interpretation": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "name",
+        "descriptions",
+        "classification",
+        "evaluation_support",
+        "equation_family",
+        "quantity",
+        "input_unit",
+        "output_unit",
+        "equation_display",
+        "coefficient_order",
+        "coefficient_units",
+        "material",
+        "branches",
+        "unknown_conditions",
+        "overlap_policy",
+        "source_ids",
+        "source_locator",
+        "original_reference",
+        "scope_exclusions",
+        "verification",
+        "reuse",
+        "curation_date",
+        "range_interpretation"
+      ]
+    }
+  }
+}

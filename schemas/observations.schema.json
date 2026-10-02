@@ -1,0 +1,518 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:materials-boundaries:schema:observations:1.0.0",
+  "title": "Materials Boundaries observational context v1",
+  "description": "Narrow catalog-only 2D monolayer graphene context. Reported ± values have unverified statistical meaning. No evaluation, comparison or conversion API is implied.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "version": {
+            "const": "1.0.0"
+          },
+          "observation_type": {
+            "const": "experiment_derived_model_dependent"
+          },
+          "study_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "quantity": {
+            "enum": [
+              "in_plane_stiffness_2d",
+              "breaking_strength_2d"
+            ]
+          },
+          "quantity_dimension": {
+            "const": "force_per_length"
+          },
+          "si_unit": {
+            "const": "N/m"
+          },
+          "evaluation_support": {
+            "const": "catalog_only"
+          },
+          "material": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "dimensionality": {
+                "const": 2
+              },
+              "layer_count": {
+                "const": 1
+              },
+              "specimen_form": {
+                "const": "suspended_membrane"
+              },
+              "preparation": {
+                "const": "mechanically_deposited_graphite_flakes"
+              },
+              "monolayer_identification": {
+                "type": "array",
+                "prefixItems": [
+                  {
+                    "const": "optical_microscopy"
+                  },
+                  {
+                    "const": "raman_spectroscopy"
+                  }
+                ],
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "suspended_span_diameters": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "values": {
+                    "type": "array",
+                    "items": {
+                      "type": "number",
+                      "exclusiveMinimum": 0
+                    },
+                    "minItems": 1,
+                    "uniqueItems": true
+                  },
+                  "unit": {
+                    "const": "um"
+                  }
+                },
+                "required": [
+                  "values",
+                  "unit"
+                ]
+              }
+            },
+            "required": [
+              "name",
+              "dimensionality",
+              "layer_count",
+              "specimen_form",
+              "preparation",
+              "monolayer_identification",
+              "suspended_span_diameters"
+            ]
+          },
+          "reported_result": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "value": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "unit": {
+                "const": "N/m"
+              },
+              "uncertainty": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "notation": {
+                    "const": "plus_minus"
+                  },
+                  "value": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "unit": {
+                    "const": "N/m"
+                  },
+                  "type": {
+                    "const": "reported_plus_minus_unspecified"
+                  },
+                  "coverage_factor": {
+                    "type": "null"
+                  },
+                  "confidence_level": {
+                    "type": "null"
+                  },
+                  "interpretation": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "\\S"
+                  }
+                },
+                "required": [
+                  "notation",
+                  "value",
+                  "unit",
+                  "type",
+                  "coverage_factor",
+                  "confidence_level",
+                  "interpretation"
+                ]
+              }
+            },
+            "required": [
+              "value",
+              "unit",
+              "uncertainty"
+            ]
+          },
+          "method": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "technique": {
+                "const": "afm_central_indentation"
+              },
+              "inference": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "model_assumptions": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              },
+              "poissons_ratio_assumed": {
+                "const": 0.165
+              },
+              "stress_measure": {
+                "const": "second_piola_kirchhoff"
+              },
+              "strain_measure": {
+                "const": "lagrangian"
+              }
+            },
+            "required": [
+              "technique",
+              "inference",
+              "model_assumptions",
+              "poissons_ratio_assumed",
+              "stress_measure",
+              "strain_measure"
+            ]
+          },
+          "conditions": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "temperature": {
+                "type": "null"
+              },
+              "atmosphere": {
+                "type": "null"
+              },
+              "humidity": {
+                "type": "null"
+              },
+              "loading_rate": {
+                "type": "null"
+              },
+              "verification_status": {
+                "const": "not_verified"
+              }
+            },
+            "required": [
+              "temperature",
+              "atmosphere",
+              "humidity",
+              "loading_rate",
+              "verification_status"
+            ]
+          },
+          "sample_metadata": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "scope": {
+                    "const": "stiffness_force_displacement_fits"
+                  },
+                  "counts": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "force_displacement_fits": {
+                        "type": "integer",
+                        "minimum": 1
+                      },
+                      "membranes": {
+                        "type": "integer",
+                        "minimum": 1
+                      },
+                      "flakes": {
+                        "type": "integer",
+                        "minimum": 1
+                      }
+                    },
+                    "required": [
+                      "force_displacement_fits",
+                      "membranes",
+                      "flakes"
+                    ]
+                  },
+                  "fitted_distribution": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "mean": {
+                        "type": "number",
+                        "exclusiveMinimum": 0
+                      },
+                      "standard_deviation": {
+                        "type": "number",
+                        "minimum": 0
+                      },
+                      "unit": {
+                        "const": "N/m"
+                      }
+                    },
+                    "required": [
+                      "mean",
+                      "standard_deviation",
+                      "unit"
+                    ]
+                  },
+                  "notes": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "pattern": "\\S"
+                    }
+                  }
+                },
+                "required": [
+                  "scope",
+                  "counts",
+                  "fitted_distribution",
+                  "notes"
+                ]
+              }
+            ]
+          },
+          "verification": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "status": {
+                "const": "primary_main_text_checked_supplement_not_inspected"
+              },
+              "independent_scientific_review": {
+                "const": false
+              },
+              "gaps": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              }
+            },
+            "required": [
+              "status",
+              "independent_scientific_review",
+              "gaps"
+            ]
+          },
+          "evidence": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "source_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "locator": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "verification_status": {
+                  "const": "primary_main_text_passage_checked"
+                },
+                "verified_as": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              },
+              "required": [
+                "source_id",
+                "locator",
+                "verification_status",
+                "verified_as"
+              ]
+            }
+          },
+          "limits": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "version",
+          "observation_type",
+          "study_id",
+          "quantity",
+          "quantity_dimension",
+          "si_unit",
+          "evaluation_support",
+          "material",
+          "reported_result",
+          "method",
+          "conditions",
+          "sample_metadata",
+          "verification",
+          "evidence",
+          "limits"
+        ],
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "quantity": {
+                  "const": "breaking_strength_2d"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "sample_metadata": {
+                  "type": "null"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "quantity": {
+                  "const": "in_plane_stiffness_2d"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "sample_metadata": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "scope": {
+                      "const": "stiffness_force_displacement_fits"
+                    },
+                    "counts": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "force_displacement_fits": {
+                          "type": "integer",
+                          "minimum": 1
+                        },
+                        "membranes": {
+                          "type": "integer",
+                          "minimum": 1
+                        },
+                        "flakes": {
+                          "type": "integer",
+                          "minimum": 1
+                        }
+                      },
+                      "required": [
+                        "force_displacement_fits",
+                        "membranes",
+                        "flakes"
+                      ]
+                    },
+                    "fitted_distribution": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "mean": {
+                          "type": "number",
+                          "exclusiveMinimum": 0
+                        },
+                        "standard_deviation": {
+                          "type": "number",
+                          "minimum": 0
+                        },
+                        "unit": {
+                          "const": "N/m"
+                        }
+                      },
+                      "required": [
+                        "mean",
+                        "standard_deviation",
+                        "unit"
+                      ]
+                    },
+                    "notes": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "string",
+                        "minLength": 1,
+                        "pattern": "\\S"
+                      }
+                    }
+                  },
+                  "required": [
+                    "scope",
+                    "counts",
+                    "fitted_distribution",
+                    "notes"
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "records"
+  ]
+}

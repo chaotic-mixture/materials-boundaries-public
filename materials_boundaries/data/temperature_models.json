@@ -1,0 +1,839 @@
+{
+  "schema_version": "1.0.0",
+  "records": [
+    {
+      "id": "synthetic_linear_temperature",
+      "version": "1.0.0",
+      "name": "SYNTHETIC linear temperature demonstration",
+      "descriptions": {
+        "en": "Project-authored SYNTHETIC linear polynomial demonstration with artificial temperature intervals. No real material, measurements, empirical fit, physical prediction or theoretical bound is represented.",
+        "zh": "项目原创的合成线性多项式演示，温度区间为人为设定。不代表真实材料、测量、经验拟合、物理预测或理论界。",
+        "ja": "プロジェクト独自の合成線形多項式デモ。温度区間は人為的に設定されており、実在材料、測定、経験的適合、物理的予測、理論的限界を表さない。",
+        "de": "Projekteigene SYNTHETISCHE Demonstration: lineares Polynom mit künstlichen Temperaturintervallen. Keine Darstellung realer Materialien, Messungen, empirischer Anpassungen, physikalischer Vorhersagen oder theoretischer Schranken."
+      },
+      "classification": "synthetic_demo",
+      "evaluation_support": "temperature_quartic",
+      "equation_family": "temperature_quartic_v1",
+      "quantity": "youngs_modulus",
+      "input_unit": "K",
+      "output_unit": "GPa",
+      "equation_display": "E_GPa = a + b*T_K + c*T_K^2 + d*T_K^3 + e*T_K^4",
+      "coefficient_order": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e"
+      ],
+      "coefficient_units": [
+        "GPa",
+        "GPa/K",
+        "GPa/K^2",
+        "GPa/K^3",
+        "GPa/K^4"
+      ],
+      "material": {
+        "name": "SYNTHETIC linear demonstration",
+        "UNS": null,
+        "temper": null,
+        "temper_status": "not_applicable_synthetic_demo",
+        "identity_status": "synthetic_demo"
+      },
+      "branches": [
+        {
+          "id": "synthetic_linear_10_100",
+          "coefficients_text": [
+            "10",
+            "0.1",
+            "0",
+            "0",
+            "0"
+          ],
+          "source_data_range_K": null,
+          "equation_range_K": [
+            10,
+            100
+          ],
+          "range_status": "artificial_demonstration_interval",
+          "endpoints": "inclusive",
+          "reported_fit_error": {
+            "value": null,
+            "unit": null,
+            "status": "not_applicable_synthetic_demo",
+            "statistic": null,
+            "confidence_level": null,
+            "is_measurement_uncertainty": false,
+            "is_confidence_interval": false,
+            "is_validated_maximum_error_bound": false
+          }
+        }
+      ],
+      "unknown_conditions": {
+        "pressure": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "test_direction": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "grain_size": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "texture": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "porosity": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "product_form": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "specimen_geometry": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "cold_work": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "test_method": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "strain_rate_or_frequency": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "measurement_uncertainty": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "fit_error_statistical_definition": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "confidence_level": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        }
+      },
+      "overlap_policy": "retain_all_matching_branches_without_selection_averaging_or_smoothing",
+      "source_ids": [
+        "materials_boundaries_synthetic_temperature_demo"
+      ],
+      "source_locator": "Project-authored linear demonstration in materials_boundaries/data/temperature_models.json",
+      "scope_exclusions": [
+        "All real-material property inference",
+        "Empirical accuracy, experimental or statistical error claims",
+        "Strength, safety factors, design allowables and physical bounds",
+        "Extrapolation beyond artificial demonstration intervals"
+      ],
+      "verification": {
+        "synthetic_arithmetic_checked": true,
+        "independent_scientific_review": false,
+        "empirical_validation": false,
+        "translation_review": "machine_assisted_not_scientifically_reviewed"
+      },
+      "reuse": {
+        "status": "Original project-authored synthetic demonstration; see project LICENSE for reuse terms.",
+        "caveats": [
+          "Coefficients and intervals were authored for software demonstrations; no measurement collection or external correlation is represented.",
+          "Artificial values are not usable as real-material evidence or design inputs.",
+          "Arithmetic checks do not establish empirical validity."
+        ],
+        "recommended_attribution": "Materials Boundaries contributors, synthetic temperature demonstrations, 2026-10-02."
+      },
+      "curation_date": "2026-10-02",
+      "range_interpretation": "Artificial, inclusive demonstration intervals chosen by the project authors. Null source data ranges mean there are no observations; overlaps exercise branch retention only.",
+      "author_provenance": {
+        "author": "Materials Boundaries contributors",
+        "creation_method": "independently_authored_demonstration_polynomial",
+        "is_empirical": false,
+        "derived_from_measurements": false
+      }
+    },
+    {
+      "id": "synthetic_overlap_temperature",
+      "version": "1.0.0",
+      "name": "SYNTHETIC overlap temperature demonstration",
+      "descriptions": {
+        "en": "Project-authored SYNTHETIC endpoint-overlap polynomial demonstration with artificial temperature intervals. No real material, measurements, empirical fit, physical prediction or theoretical bound is represented.",
+        "zh": "项目原创的合成端点重叠多项式演示，温度区间为人为设定。不代表真实材料、测量、经验拟合、物理预测或理论界。",
+        "ja": "プロジェクト独自の合成端点重複多項式デモ。温度区間は人為的に設定されており、実在材料、測定、経験的適合、物理的予測、理論的限界を表さない。",
+        "de": "Projekteigene SYNTHETISCHE Demonstration: Polynom mit Endpunktüberlappung mit künstlichen Temperaturintervallen. Keine Darstellung realer Materialien, Messungen, empirischer Anpassungen, physikalischer Vorhersagen oder theoretischer Schranken."
+      },
+      "classification": "synthetic_demo",
+      "evaluation_support": "temperature_quartic",
+      "equation_family": "temperature_quartic_v1",
+      "quantity": "youngs_modulus",
+      "input_unit": "K",
+      "output_unit": "GPa",
+      "equation_display": "E_GPa = a + b*T_K + c*T_K^2 + d*T_K^3 + e*T_K^4",
+      "coefficient_order": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e"
+      ],
+      "coefficient_units": [
+        "GPa",
+        "GPa/K",
+        "GPa/K^2",
+        "GPa/K^3",
+        "GPa/K^4"
+      ],
+      "material": {
+        "name": "SYNTHETIC overlap demonstration",
+        "UNS": null,
+        "temper": null,
+        "temper_status": "not_applicable_synthetic_demo",
+        "identity_status": "synthetic_demo"
+      },
+      "branches": [
+        {
+          "id": "synthetic_overlap_20_50",
+          "coefficients_text": [
+            "20",
+            "0.1",
+            "0",
+            "0",
+            "0"
+          ],
+          "source_data_range_K": null,
+          "equation_range_K": [
+            20,
+            50
+          ],
+          "range_status": "artificial_demonstration_interval",
+          "endpoints": "inclusive",
+          "reported_fit_error": {
+            "value": null,
+            "unit": null,
+            "status": "not_applicable_synthetic_demo",
+            "statistic": null,
+            "confidence_level": null,
+            "is_measurement_uncertainty": false,
+            "is_confidence_interval": false,
+            "is_validated_maximum_error_bound": false
+          }
+        },
+        {
+          "id": "synthetic_overlap_50_100",
+          "coefficients_text": [
+            "30",
+            "0.05",
+            "0",
+            "0",
+            "0"
+          ],
+          "source_data_range_K": null,
+          "equation_range_K": [
+            50,
+            100
+          ],
+          "range_status": "artificial_demonstration_interval",
+          "endpoints": "inclusive",
+          "reported_fit_error": {
+            "value": null,
+            "unit": null,
+            "status": "not_applicable_synthetic_demo",
+            "statistic": null,
+            "confidence_level": null,
+            "is_measurement_uncertainty": false,
+            "is_confidence_interval": false,
+            "is_validated_maximum_error_bound": false
+          }
+        }
+      ],
+      "unknown_conditions": {
+        "pressure": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "test_direction": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "grain_size": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "texture": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "porosity": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "product_form": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "specimen_geometry": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "cold_work": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "test_method": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "strain_rate_or_frequency": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "measurement_uncertainty": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "fit_error_statistical_definition": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "confidence_level": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        }
+      },
+      "overlap_policy": "retain_all_matching_branches_without_selection_averaging_or_smoothing",
+      "source_ids": [
+        "materials_boundaries_synthetic_temperature_demo"
+      ],
+      "source_locator": "Project-authored overlap demonstration in materials_boundaries/data/temperature_models.json",
+      "scope_exclusions": [
+        "All real-material property inference",
+        "Empirical accuracy, experimental or statistical error claims",
+        "Strength, safety factors, design allowables and physical bounds",
+        "Extrapolation beyond artificial demonstration intervals"
+      ],
+      "verification": {
+        "synthetic_arithmetic_checked": true,
+        "independent_scientific_review": false,
+        "empirical_validation": false,
+        "translation_review": "machine_assisted_not_scientifically_reviewed"
+      },
+      "reuse": {
+        "status": "Original project-authored synthetic demonstration; see project LICENSE for reuse terms.",
+        "caveats": [
+          "Coefficients and intervals were authored for software demonstrations; no measurement collection or external correlation is represented.",
+          "Artificial values are not usable as real-material evidence or design inputs.",
+          "Arithmetic checks do not establish empirical validity."
+        ],
+        "recommended_attribution": "Materials Boundaries contributors, synthetic temperature demonstrations, 2026-10-02."
+      },
+      "curation_date": "2026-10-02",
+      "range_interpretation": "Artificial, inclusive demonstration intervals chosen by the project authors. Null source data ranges mean there are no observations; overlaps exercise branch retention only.",
+      "author_provenance": {
+        "author": "Materials Boundaries contributors",
+        "creation_method": "independently_authored_demonstration_polynomial",
+        "is_empirical": false,
+        "derived_from_measurements": false
+      }
+    },
+    {
+      "id": "synthetic_quadratic_temperature",
+      "version": "1.0.0",
+      "name": "SYNTHETIC quadratic temperature demonstration",
+      "descriptions": {
+        "en": "Project-authored SYNTHETIC quadratic polynomial demonstration with artificial temperature intervals. No real material, measurements, empirical fit, physical prediction or theoretical bound is represented.",
+        "zh": "项目原创的合成二次多项式演示，温度区间为人为设定。不代表真实材料、测量、经验拟合、物理预测或理论界。",
+        "ja": "プロジェクト独自の合成二次多項式デモ。温度区間は人為的に設定されており、実在材料、測定、経験的適合、物理的予測、理論的限界を表さない。",
+        "de": "Projekteigene SYNTHETISCHE Demonstration: quadratisches Polynom mit künstlichen Temperaturintervallen. Keine Darstellung realer Materialien, Messungen, empirischer Anpassungen, physikalischer Vorhersagen oder theoretischer Schranken."
+      },
+      "classification": "synthetic_demo",
+      "evaluation_support": "temperature_quartic",
+      "equation_family": "temperature_quartic_v1",
+      "quantity": "youngs_modulus",
+      "input_unit": "K",
+      "output_unit": "GPa",
+      "equation_display": "E_GPa = a + b*T_K + c*T_K^2 + d*T_K^3 + e*T_K^4",
+      "coefficient_order": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e"
+      ],
+      "coefficient_units": [
+        "GPa",
+        "GPa/K",
+        "GPa/K^2",
+        "GPa/K^3",
+        "GPa/K^4"
+      ],
+      "material": {
+        "name": "SYNTHETIC quadratic demonstration",
+        "UNS": null,
+        "temper": null,
+        "temper_status": "not_applicable_synthetic_demo",
+        "identity_status": "synthetic_demo"
+      },
+      "branches": [
+        {
+          "id": "synthetic_quadratic_25_125",
+          "coefficients_text": [
+            "40",
+            "-0.1",
+            "0.001",
+            "0",
+            "0"
+          ],
+          "source_data_range_K": null,
+          "equation_range_K": [
+            25,
+            125
+          ],
+          "range_status": "artificial_demonstration_interval",
+          "endpoints": "inclusive",
+          "reported_fit_error": {
+            "value": null,
+            "unit": null,
+            "status": "not_applicable_synthetic_demo",
+            "statistic": null,
+            "confidence_level": null,
+            "is_measurement_uncertainty": false,
+            "is_confidence_interval": false,
+            "is_validated_maximum_error_bound": false
+          }
+        }
+      ],
+      "unknown_conditions": {
+        "pressure": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "test_direction": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "grain_size": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "texture": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "porosity": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "product_form": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "specimen_geometry": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "cold_work": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "test_method": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "strain_rate_or_frequency": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "measurement_uncertainty": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "fit_error_statistical_definition": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "confidence_level": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        }
+      },
+      "overlap_policy": "retain_all_matching_branches_without_selection_averaging_or_smoothing",
+      "source_ids": [
+        "materials_boundaries_synthetic_temperature_demo"
+      ],
+      "source_locator": "Project-authored quadratic demonstration in materials_boundaries/data/temperature_models.json",
+      "scope_exclusions": [
+        "All real-material property inference",
+        "Empirical accuracy, experimental or statistical error claims",
+        "Strength, safety factors, design allowables and physical bounds",
+        "Extrapolation beyond artificial demonstration intervals"
+      ],
+      "verification": {
+        "synthetic_arithmetic_checked": true,
+        "independent_scientific_review": false,
+        "empirical_validation": false,
+        "translation_review": "machine_assisted_not_scientifically_reviewed"
+      },
+      "reuse": {
+        "status": "Original project-authored synthetic demonstration; see project LICENSE for reuse terms.",
+        "caveats": [
+          "Coefficients and intervals were authored for software demonstrations; no measurement collection or external correlation is represented.",
+          "Artificial values are not usable as real-material evidence or design inputs.",
+          "Arithmetic checks do not establish empirical validity."
+        ],
+        "recommended_attribution": "Materials Boundaries contributors, synthetic temperature demonstrations, 2026-10-02."
+      },
+      "curation_date": "2026-10-02",
+      "range_interpretation": "Artificial, inclusive demonstration intervals chosen by the project authors. Null source data ranges mean there are no observations; overlaps exercise branch retention only.",
+      "author_provenance": {
+        "author": "Materials Boundaries contributors",
+        "creation_method": "independently_authored_demonstration_polynomial",
+        "is_empirical": false,
+        "derived_from_measurements": false
+      }
+    },
+    {
+      "id": "synthetic_quartic_temperature",
+      "version": "1.0.0",
+      "name": "SYNTHETIC quartic temperature demonstration",
+      "descriptions": {
+        "en": "Project-authored SYNTHETIC quartic polynomial demonstration with artificial temperature intervals. No real material, measurements, empirical fit, physical prediction or theoretical bound is represented.",
+        "zh": "项目原创的合成四次多项式演示，温度区间为人为设定。不代表真实材料、测量、经验拟合、物理预测或理论界。",
+        "ja": "プロジェクト独自の合成四次多項式デモ。温度区間は人為的に設定されており、実在材料、測定、経験的適合、物理的予測、理論的限界を表さない。",
+        "de": "Projekteigene SYNTHETISCHE Demonstration: quartisches Polynom mit künstlichen Temperaturintervallen. Keine Darstellung realer Materialien, Messungen, empirischer Anpassungen, physikalischer Vorhersagen oder theoretischer Schranken."
+      },
+      "classification": "synthetic_demo",
+      "evaluation_support": "temperature_quartic",
+      "equation_family": "temperature_quartic_v1",
+      "quantity": "youngs_modulus",
+      "input_unit": "K",
+      "output_unit": "GPa",
+      "equation_display": "E_GPa = a + b*T_K + c*T_K^2 + d*T_K^3 + e*T_K^4",
+      "coefficient_order": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e"
+      ],
+      "coefficient_units": [
+        "GPa",
+        "GPa/K",
+        "GPa/K^2",
+        "GPa/K^3",
+        "GPa/K^4"
+      ],
+      "material": {
+        "name": "SYNTHETIC quartic demonstration",
+        "UNS": null,
+        "temper": null,
+        "temper_status": "not_applicable_synthetic_demo",
+        "identity_status": "synthetic_demo"
+      },
+      "branches": [
+        {
+          "id": "synthetic_quartic_10_200",
+          "coefficients_text": [
+            "100",
+            "-0.1",
+            "0.001",
+            "-0.000001",
+            "0.000000001"
+          ],
+          "source_data_range_K": null,
+          "equation_range_K": [
+            10,
+            200
+          ],
+          "range_status": "artificial_demonstration_interval",
+          "endpoints": "inclusive",
+          "reported_fit_error": {
+            "value": null,
+            "unit": null,
+            "status": "not_applicable_synthetic_demo",
+            "statistic": null,
+            "confidence_level": null,
+            "is_measurement_uncertainty": false,
+            "is_confidence_interval": false,
+            "is_validated_maximum_error_bound": false
+          }
+        }
+      ],
+      "unknown_conditions": {
+        "pressure": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "test_direction": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "grain_size": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "texture": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "porosity": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "product_form": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "specimen_geometry": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "cold_work": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "test_method": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "strain_rate_or_frequency": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "measurement_uncertainty": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "fit_error_statistical_definition": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "confidence_level": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        }
+      },
+      "overlap_policy": "retain_all_matching_branches_without_selection_averaging_or_smoothing",
+      "source_ids": [
+        "materials_boundaries_synthetic_temperature_demo"
+      ],
+      "source_locator": "Project-authored quartic demonstration in materials_boundaries/data/temperature_models.json",
+      "scope_exclusions": [
+        "All real-material property inference",
+        "Empirical accuracy, experimental or statistical error claims",
+        "Strength, safety factors, design allowables and physical bounds",
+        "Extrapolation beyond artificial demonstration intervals"
+      ],
+      "verification": {
+        "synthetic_arithmetic_checked": true,
+        "independent_scientific_review": false,
+        "empirical_validation": false,
+        "translation_review": "machine_assisted_not_scientifically_reviewed"
+      },
+      "reuse": {
+        "status": "Original project-authored synthetic demonstration; see project LICENSE for reuse terms.",
+        "caveats": [
+          "Coefficients and intervals were authored for software demonstrations; no measurement collection or external correlation is represented.",
+          "Artificial values are not usable as real-material evidence or design inputs.",
+          "Arithmetic checks do not establish empirical validity."
+        ],
+        "recommended_attribution": "Materials Boundaries contributors, synthetic temperature demonstrations, 2026-10-02."
+      },
+      "curation_date": "2026-10-02",
+      "range_interpretation": "Artificial, inclusive demonstration intervals chosen by the project authors. Null source data ranges mean there are no observations; overlaps exercise branch retention only.",
+      "author_provenance": {
+        "author": "Materials Boundaries contributors",
+        "creation_method": "independently_authored_demonstration_polynomial",
+        "is_empirical": false,
+        "derived_from_measurements": false
+      }
+    },
+    {
+      "id": "synthetic_interval_temperature",
+      "version": "1.0.0",
+      "name": "SYNTHETIC interval temperature demonstration",
+      "descriptions": {
+        "en": "Project-authored SYNTHETIC interval-overlap polynomial demonstration with artificial temperature intervals. No real material, measurements, empirical fit, physical prediction or theoretical bound is represented.",
+        "zh": "项目原创的合成区间重叠多项式演示，温度区间为人为设定。不代表真实材料、测量、经验拟合、物理预测或理论界。",
+        "ja": "プロジェクト独自の合成区間重複多項式デモ。温度区間は人為的に設定されており、実在材料、測定、経験的適合、物理的予測、理論的限界を表さない。",
+        "de": "Projekteigene SYNTHETISCHE Demonstration: Polynom mit Intervallüberlappung mit künstlichen Temperaturintervallen. Keine Darstellung realer Materialien, Messungen, empirischer Anpassungen, physikalischer Vorhersagen oder theoretischer Schranken."
+      },
+      "classification": "synthetic_demo",
+      "evaluation_support": "temperature_quartic",
+      "equation_family": "temperature_quartic_v1",
+      "quantity": "youngs_modulus",
+      "input_unit": "K",
+      "output_unit": "GPa",
+      "equation_display": "E_GPa = a + b*T_K + c*T_K^2 + d*T_K^3 + e*T_K^4",
+      "coefficient_order": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e"
+      ],
+      "coefficient_units": [
+        "GPa",
+        "GPa/K",
+        "GPa/K^2",
+        "GPa/K^3",
+        "GPa/K^4"
+      ],
+      "material": {
+        "name": "SYNTHETIC interval demonstration",
+        "UNS": null,
+        "temper": null,
+        "temper_status": "not_applicable_synthetic_demo",
+        "identity_status": "synthetic_demo"
+      },
+      "branches": [
+        {
+          "id": "synthetic_interval_20_80",
+          "coefficients_text": [
+            "50",
+            "0.05",
+            "0",
+            "0",
+            "0"
+          ],
+          "source_data_range_K": null,
+          "equation_range_K": [
+            20,
+            80
+          ],
+          "range_status": "artificial_demonstration_interval",
+          "endpoints": "inclusive",
+          "reported_fit_error": {
+            "value": null,
+            "unit": null,
+            "status": "not_applicable_synthetic_demo",
+            "statistic": null,
+            "confidence_level": null,
+            "is_measurement_uncertainty": false,
+            "is_confidence_interval": false,
+            "is_validated_maximum_error_bound": false
+          }
+        },
+        {
+          "id": "synthetic_interval_60_120",
+          "coefficients_text": [
+            "60",
+            "-0.025",
+            "0",
+            "0",
+            "0"
+          ],
+          "source_data_range_K": null,
+          "equation_range_K": [
+            60,
+            120
+          ],
+          "range_status": "artificial_demonstration_interval",
+          "endpoints": "inclusive",
+          "reported_fit_error": {
+            "value": null,
+            "unit": null,
+            "status": "not_applicable_synthetic_demo",
+            "statistic": null,
+            "confidence_level": null,
+            "is_measurement_uncertainty": false,
+            "is_confidence_interval": false,
+            "is_validated_maximum_error_bound": false
+          }
+        }
+      ],
+      "unknown_conditions": {
+        "pressure": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "test_direction": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "grain_size": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "texture": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "porosity": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "product_form": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "specimen_geometry": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "cold_work": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "test_method": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "strain_rate_or_frequency": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "measurement_uncertainty": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "fit_error_statistical_definition": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        },
+        "confidence_level": {
+          "value": null,
+          "status": "not_applicable_synthetic_demo"
+        }
+      },
+      "overlap_policy": "retain_all_matching_branches_without_selection_averaging_or_smoothing",
+      "source_ids": [
+        "materials_boundaries_synthetic_temperature_demo"
+      ],
+      "source_locator": "Project-authored interval demonstration in materials_boundaries/data/temperature_models.json",
+      "scope_exclusions": [
+        "All real-material property inference",
+        "Empirical accuracy, experimental or statistical error claims",
+        "Strength, safety factors, design allowables and physical bounds",
+        "Extrapolation beyond artificial demonstration intervals"
+      ],
+      "verification": {
+        "synthetic_arithmetic_checked": true,
+        "independent_scientific_review": false,
+        "empirical_validation": false,
+        "translation_review": "machine_assisted_not_scientifically_reviewed"
+      },
+      "reuse": {
+        "status": "Original project-authored synthetic demonstration; see project LICENSE for reuse terms.",
+        "caveats": [
+          "Coefficients and intervals were authored for software demonstrations; no measurement collection or external correlation is represented.",
+          "Artificial values are not usable as real-material evidence or design inputs.",
+          "Arithmetic checks do not establish empirical validity."
+        ],
+        "recommended_attribution": "Materials Boundaries contributors, synthetic temperature demonstrations, 2026-10-02."
+      },
+      "curation_date": "2026-10-02",
+      "range_interpretation": "Artificial, inclusive demonstration intervals chosen by the project authors. Null source data ranges mean there are no observations; overlaps exercise branch retention only.",
+      "author_provenance": {
+        "author": "Materials Boundaries contributors",
+        "creation_method": "independently_authored_demonstration_polynomial",
+        "is_empirical": false,
+        "derived_from_measurements": false
+      }
+    }
+  ]
+}

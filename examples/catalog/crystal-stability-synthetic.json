@@ -1,0 +1,391 @@
+{
+  "kind": "synthetic_test_fixtures_not_material_observations",
+  "note": "Invented arithmetic examples only, not measured or computed material data, application inputs, or an executable stability API. The application displays criteria and does not evaluate these fixtures. Exact tests independently construct matrices without executing catalog formula strings.",
+  "stiffness_unit": "GPa",
+  "margin_order": [
+    "C11-abs(C12)",
+    "normal_block",
+    "C44",
+    "class_specific_shear_or_coupling"
+  ],
+  "margin_units_note": "The first and third margins are GPa. The normal-block margin is GPa^2. The fourth is GPa for tetragonal I and GPa^2 for the other three classes; do not form a dimensional minimum of these margins.",
+  "boundary_note": "Zero modes count as marginal harmonic cases only when the entire matrix is positive semidefinite. Zero plus a negative mode is not marginal; neither case satisfies strict positive definiteness. Exact eigenvalues use the engineering-Voigt matrix representation and have units GPa.",
+  "fixtures": [
+    {
+      "id": "tetragonal_i_pass",
+      "symmetry": "tetragonal_i",
+      "input": {
+        "C11": 150,
+        "C12": 50,
+        "C13": 40,
+        "C33": 180,
+        "C44": 60,
+        "C66": 35
+      },
+      "expected_margins": [
+        100,
+        32800,
+        60,
+        35
+      ],
+      "classification": "strictly_positive_definite"
+    },
+    {
+      "id": "tetragonal_i_fail",
+      "symmetry": "tetragonal_i",
+      "input": {
+        "C11": 150,
+        "C12": 50,
+        "C13": 40,
+        "C33": 180,
+        "C44": 60,
+        "C66": -1
+      },
+      "expected_margins": [
+        100,
+        32800,
+        60,
+        -1
+      ],
+      "classification": "indefinite"
+    },
+    {
+      "id": "tetragonal_i_psd_boundary",
+      "symmetry": "tetragonal_i",
+      "input": {
+        "C11": 6,
+        "C12": 2,
+        "C13": 0,
+        "C33": 3,
+        "C44": 2,
+        "C66": 0
+      },
+      "expected_margins": [
+        4,
+        24,
+        2,
+        0
+      ],
+      "classification": "positive_semidefinite_with_zero_modes",
+      "exact_eigenvalues": [
+        0,
+        2,
+        2,
+        3,
+        4,
+        8
+      ]
+    },
+    {
+      "id": "tetragonal_i_zero_and_negative",
+      "symmetry": "tetragonal_i",
+      "input": {
+        "C11": 6,
+        "C12": 2,
+        "C13": 0,
+        "C33": -1,
+        "C44": 2,
+        "C66": 0
+      },
+      "expected_margins": [
+        4,
+        -8,
+        2,
+        0
+      ],
+      "classification": "zero_and_negative_modes",
+      "exact_eigenvalues": [
+        -1,
+        0,
+        2,
+        2,
+        4,
+        8
+      ]
+    },
+    {
+      "id": "tetragonal_ii_pass",
+      "symmetry": "tetragonal_ii",
+      "input": {
+        "C11": 150,
+        "C12": 50,
+        "C13": 40,
+        "C33": 180,
+        "C44": 60,
+        "C66": 35,
+        "C16": 20
+      },
+      "expected_margins": [
+        100,
+        32800,
+        60,
+        2700
+      ],
+      "classification": "strictly_positive_definite"
+    },
+    {
+      "id": "tetragonal_ii_fail",
+      "symmetry": "tetragonal_ii",
+      "input": {
+        "C11": 150,
+        "C12": 50,
+        "C13": 40,
+        "C33": 180,
+        "C44": 60,
+        "C66": 35,
+        "C16": 50
+      },
+      "expected_margins": [
+        100,
+        32800,
+        60,
+        -1500
+      ],
+      "classification": "indefinite"
+    },
+    {
+      "id": "tetragonal_ii_psd_boundary",
+      "symmetry": "tetragonal_ii",
+      "input": {
+        "C11": 6,
+        "C12": 2,
+        "C13": 0,
+        "C33": 3,
+        "C44": 2,
+        "C66": 2,
+        "C16": 2
+      },
+      "expected_margins": [
+        4,
+        24,
+        2,
+        0
+      ],
+      "classification": "positive_semidefinite_with_zero_modes",
+      "exact_eigenvalues": [
+        0,
+        2,
+        2,
+        3,
+        6,
+        8
+      ]
+    },
+    {
+      "id": "tetragonal_ii_zero_and_negative",
+      "symmetry": "tetragonal_ii",
+      "input": {
+        "C11": 6,
+        "C12": 2,
+        "C13": 0,
+        "C33": -1,
+        "C44": 2,
+        "C66": 2,
+        "C16": 2
+      },
+      "expected_margins": [
+        4,
+        -8,
+        2,
+        0
+      ],
+      "classification": "zero_and_negative_modes",
+      "exact_eigenvalues": [
+        -1,
+        0,
+        2,
+        2,
+        6,
+        8
+      ]
+    },
+    {
+      "id": "rhombohedral_i_pass",
+      "symmetry": "rhombohedral_i",
+      "input": {
+        "C11": 150,
+        "C12": 50,
+        "C13": 40,
+        "C33": 180,
+        "C44": 60,
+        "C14": 20
+      },
+      "expected_margins": [
+        100,
+        32800,
+        60,
+        5200
+      ],
+      "classification": "strictly_positive_definite"
+    },
+    {
+      "id": "rhombohedral_i_fail",
+      "symmetry": "rhombohedral_i",
+      "input": {
+        "C11": 150,
+        "C12": 50,
+        "C13": 40,
+        "C33": 180,
+        "C44": 60,
+        "C14": 60
+      },
+      "expected_margins": [
+        100,
+        32800,
+        60,
+        -1200
+      ],
+      "classification": "indefinite"
+    },
+    {
+      "id": "rhombohedral_i_psd_boundary",
+      "symmetry": "rhombohedral_i",
+      "input": {
+        "C11": 6,
+        "C12": 2,
+        "C13": 0,
+        "C33": 3,
+        "C44": 2,
+        "C14": 2
+      },
+      "expected_margins": [
+        4,
+        24,
+        2,
+        0
+      ],
+      "classification": "positive_semidefinite_with_zero_modes",
+      "exact_eigenvalues": [
+        0,
+        0,
+        3,
+        4,
+        6,
+        8
+      ]
+    },
+    {
+      "id": "rhombohedral_i_zero_and_negative",
+      "symmetry": "rhombohedral_i",
+      "input": {
+        "C11": 6,
+        "C12": 2,
+        "C13": 0,
+        "C33": -1,
+        "C44": 2,
+        "C14": 2
+      },
+      "expected_margins": [
+        4,
+        -8,
+        2,
+        0
+      ],
+      "classification": "zero_and_negative_modes",
+      "exact_eigenvalues": [
+        -1,
+        0,
+        0,
+        4,
+        6,
+        8
+      ]
+    },
+    {
+      "id": "rhombohedral_ii_pass",
+      "symmetry": "rhombohedral_ii",
+      "input": {
+        "C11": 150,
+        "C12": 50,
+        "C13": 40,
+        "C33": 180,
+        "C44": 60,
+        "C14": 20,
+        "C15": 30
+      },
+      "expected_margins": [
+        100,
+        32800,
+        60,
+        3400
+      ],
+      "classification": "strictly_positive_definite"
+    },
+    {
+      "id": "rhombohedral_ii_fail",
+      "symmetry": "rhombohedral_ii",
+      "input": {
+        "C11": 150,
+        "C12": 50,
+        "C13": 40,
+        "C33": 180,
+        "C44": 60,
+        "C14": 40,
+        "C15": 40
+      },
+      "expected_margins": [
+        100,
+        32800,
+        60,
+        -400
+      ],
+      "classification": "indefinite"
+    },
+    {
+      "id": "rhombohedral_ii_psd_boundary",
+      "symmetry": "rhombohedral_ii",
+      "input": {
+        "C11": 7,
+        "C12": 3,
+        "C13": 0,
+        "C33": 3,
+        "C44": 50,
+        "C14": 6,
+        "C15": 8
+      },
+      "expected_margins": [
+        4,
+        30,
+        50,
+        0
+      ],
+      "classification": "positive_semidefinite_with_zero_modes",
+      "exact_eigenvalues": [
+        0,
+        0,
+        3,
+        10,
+        52,
+        54
+      ]
+    },
+    {
+      "id": "rhombohedral_ii_zero_and_negative",
+      "symmetry": "rhombohedral_ii",
+      "input": {
+        "C11": 7,
+        "C12": 3,
+        "C13": 0,
+        "C33": -1,
+        "C44": 50,
+        "C14": 6,
+        "C15": 8
+      },
+      "expected_margins": [
+        4,
+        -10,
+        50,
+        0
+      ],
+      "classification": "zero_and_negative_modes",
+      "exact_eigenvalues": [
+        -1,
+        0,
+        0,
+        10,
+        52,
+        54
+      ]
+    }
+  ]
+}

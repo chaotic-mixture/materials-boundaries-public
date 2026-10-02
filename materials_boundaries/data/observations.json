@@ -1,0 +1,195 @@
+{
+  "schema_version": "1.0.0",
+  "records": [
+    {
+      "id": "lee_2008_graphene_in_plane_stiffness_2d",
+      "name": "Lee et al. (2008): monolayer graphene in-plane stiffness (2D)",
+      "version": "1.0.0",
+      "observation_type": "experiment_derived_model_dependent",
+      "study_id": "lee_wei_kysar_hone_2008",
+      "quantity": "in_plane_stiffness_2d",
+      "quantity_dimension": "force_per_length",
+      "si_unit": "N/m",
+      "evaluation_support": "catalog_only",
+      "material": {
+        "name": "Freestanding monolayer graphene",
+        "dimensionality": 2,
+        "layer_count": 1,
+        "specimen_form": "suspended_membrane",
+        "preparation": "mechanically_deposited_graphite_flakes",
+        "monolayer_identification": [
+          "optical_microscopy",
+          "raman_spectroscopy"
+        ],
+        "suspended_span_diameters": {
+          "values": [
+            1,
+            1.5
+          ],
+          "unit": "um"
+        }
+      },
+      "reported_result": {
+        "value": 340,
+        "unit": "N/m",
+        "uncertainty": {
+          "notation": "plus_minus",
+          "value": 50,
+          "unit": "N/m",
+          "type": "reported_plus_minus_unspecified",
+          "coverage_factor": null,
+          "confidence_level": null,
+          "interpretation": "The paper reports a ± value; its statistical type and coverage have not been verified. Do not treat it as a confidence interval, standard deviation, standard error or certified bound."
+        }
+      },
+      "method": {
+        "technique": "afm_central_indentation",
+        "inference": "Two-dimensional in-plane elastic stiffness inferred by fitting AFM force–displacement curves with a membrane indentation model; this is a model-dependent experimental summary.",
+        "model_assumptions": [
+          "Clamped isotropic circular membrane under central indentation; the elastic fit uses the point-load approximation in Eq. (2).",
+          "Negligible bending stiffness.",
+          "Poisson ratio 0.165 is a modeling assumption, not a measured result."
+        ],
+        "poissons_ratio_assumed": 0.165,
+        "stress_measure": "second_piola_kirchhoff",
+        "strain_measure": "lagrangian"
+      },
+      "conditions": {
+        "temperature": null,
+        "atmosphere": null,
+        "humidity": null,
+        "loading_rate": null,
+        "verification_status": "not_verified"
+      },
+      "sample_metadata": {
+        "scope": "stiffness_force_displacement_fits",
+        "counts": {
+          "force_displacement_fits": 67,
+          "membranes": 23,
+          "flakes": 2
+        },
+        "fitted_distribution": {
+          "mean": 342,
+          "standard_deviation": 30,
+          "unit": "N/m"
+        },
+        "notes": [
+          "These are stiffness-fit statistics only, not breaking-test sample counts.",
+          "The distribution standard deviation 30 N/m is distinct from the reported stiffness uncertainty ±50 N/m; neither statistic is replaced by the other."
+        ]
+      },
+      "verification": {
+        "status": "primary_main_text_checked_supplement_not_inspected",
+        "independent_scientific_review": false,
+        "gaps": [
+          "Supporting supplementary material was inaccessible; uncertainty type and coverage have not been verified.",
+          "Temperature, atmosphere, humidity and loading rate have not been verified.",
+          "No raw-data reanalysis, independent replication, specimen-condition validation or independent scientific review is claimed."
+        ]
+      },
+      "evidence": [
+        {
+          "source_id": "lee_wei_kysar_hone_2008",
+          "locator": "Science 321 (2008), p. 387 final paragraph (340 ± 50 N/m); p. 386 final paragraph (23 membranes from 2 flakes); p. 387 opening and Fig. 3A discussion (67 fits; mean 342 N/m, standard deviation 30 N/m); p. 386 Eqs. (1)–(2) and membrane-model discussion; p. 385 and Fig. 1 (preparation, monolayer identification and spans).",
+          "verification_status": "primary_main_text_passage_checked",
+          "verified_as": "Reported two-dimensional elastic stiffness and separate fit-distribution statistics; a model-dependent observation rather than a universal elastic bound."
+        }
+      ],
+      "limits": [
+        "Observational context from one study, not a theoretical or universal material limit, engineering allowable or new executable rule.",
+        "This two-dimensional force-per-length quantity must not be identified with a three-dimensional pressure merely by changing unit labels. No thickness conversion is performed.",
+        "Matching N/m units do not make in-plane stiffness and breaking strength the same quantity. Material state, dimensionality, quantity, method and stress/strain conventions must also be compatible.",
+        "These two records share one study and are not independent confirmations. They cannot be passed to the composite evaluator or overlaid on its volume-fraction sweeps.",
+        "The authors infer defect-free behavior in the highly stressed region beneath the tip; this is not independent imaging proof for every entire membrane or a guarantee for macroscopic or processed graphene."
+      ]
+    },
+    {
+      "id": "lee_2008_graphene_breaking_strength_2d",
+      "name": "Lee et al. (2008): monolayer graphene breaking strength (2D)",
+      "version": "1.0.0",
+      "observation_type": "experiment_derived_model_dependent",
+      "study_id": "lee_wei_kysar_hone_2008",
+      "quantity": "breaking_strength_2d",
+      "quantity_dimension": "force_per_length",
+      "si_unit": "N/m",
+      "evaluation_support": "catalog_only",
+      "material": {
+        "name": "Freestanding monolayer graphene",
+        "dimensionality": 2,
+        "layer_count": 1,
+        "specimen_form": "suspended_membrane",
+        "preparation": "mechanically_deposited_graphite_flakes",
+        "monolayer_identification": [
+          "optical_microscopy",
+          "raman_spectroscopy"
+        ],
+        "suspended_span_diameters": {
+          "values": [
+            1,
+            1.5
+          ],
+          "unit": "um"
+        }
+      },
+      "reported_result": {
+        "value": 42,
+        "unit": "N/m",
+        "uncertainty": {
+          "notation": "plus_minus",
+          "value": 4,
+          "unit": "N/m",
+          "type": "reported_plus_minus_unspecified",
+          "coverage_factor": null,
+          "confidence_level": null,
+          "interpretation": "The paper reports a ± value; its statistical type and coverage have not been verified. Do not treat it as a confidence interval, standard deviation, standard error or certified bound."
+        }
+      },
+      "method": {
+        "technique": "afm_central_indentation",
+        "inference": "Two-dimensional breaking strength inferred from AFM failure measurements using nonlinear membrane elasticity and finite-element simulation. The constitutive convention is sigma=E2D*epsilon+D2D*epsilon^2 with second Piola–Kirchhoff stress and uniaxial Lagrangian strain; its model maximum is -E2D^2/(4*D2D). These are source-model descriptions, not executable formulas or direct uniform-stress measurements.",
+        "model_assumptions": [
+          "Clamped isotropic circular membrane indented centrally by a finite-radius AFM tip; the failure inference uses nonlinear finite-element modeling and accounts for tip radius, not the point-load approximation used for elastic fitting.",
+          "Negligible bending stiffness.",
+          "Poisson ratio 0.165 is a modeling assumption, not a measured result."
+        ],
+        "poissons_ratio_assumed": 0.165,
+        "stress_measure": "second_piola_kirchhoff",
+        "strain_measure": "lagrangian"
+      },
+      "conditions": {
+        "temperature": null,
+        "atmosphere": null,
+        "humidity": null,
+        "loading_rate": null,
+        "verification_status": "not_verified"
+      },
+      "sample_metadata": null,
+      "verification": {
+        "status": "primary_main_text_checked_supplement_not_inspected",
+        "independent_scientific_review": false,
+        "gaps": [
+          "Supporting supplementary material was inaccessible; uncertainty type and coverage have not been verified.",
+          "Temperature, atmosphere, humidity and loading rate have not been verified.",
+          "No raw-data reanalysis, independent replication, specimen-condition validation or independent scientific review is claimed.",
+          "Breaking-test sample counts are not verified in this record; the stiffness-fit counts are not transferred to breaking strength."
+        ]
+      },
+      "evidence": [
+        {
+          "source_id": "lee_wei_kysar_hone_2008",
+          "locator": "Science 321 (2008), p. 388 opening paragraph (42 ± 4 N/m); p. 387 final-column numerical-simulation paragraph (nonlinear finite-element failure inference and tip-radius dependence); p. 386 Eq. (1) and associated nonlinear constitutive and maximum-stress discussion; p. 385 and Fig. 1 (preparation, monolayer identification and spans).",
+          "verification_status": "primary_main_text_passage_checked",
+          "verified_as": "Source-reported model-inferred two-dimensional breaking strength from AFM failure, with the source stress/strain convention retained; not a directly measured uniform tensile stress or universal bound."
+        }
+      ],
+      "limits": [
+        "Observational context from one study, not a theoretical or universal material limit, engineering allowable or new executable rule.",
+        "This two-dimensional force-per-length quantity must not be identified with a three-dimensional pressure merely by changing unit labels. No thickness conversion is performed.",
+        "Matching N/m units do not make in-plane stiffness and breaking strength the same quantity. Material state, dimensionality, quantity, method and stress/strain conventions must also be compatible.",
+        "These two records share one study and are not independent confirmations. They cannot be passed to the composite evaluator or overlaid on its volume-fraction sweeps.",
+        "Breaking strength here depends on the nonlinear constitutive inference and reference stress/strain measures; do not substitute Cauchy stress, engineering stress or a generic three-dimensional tensile strength.",
+        "The authors infer defect-free behavior in the highly stressed region beneath the tip; this is not independent imaging proof for every entire membrane or a guarantee for macroscopic or processed graphene."
+      ]
+    }
+  ]
+}

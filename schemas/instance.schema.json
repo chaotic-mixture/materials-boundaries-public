@@ -1,0 +1,450 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:materials-boundaries:schema:instance:1.0.0",
+  "title": "Materials Boundaries instance v1",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "conditions": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "dimension": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "integer",
+              "minimum": 1
+            }
+          ]
+        },
+        "constituent_symmetry": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          ]
+        },
+        "effective_symmetry": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          ]
+        },
+        "kinematics": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          ]
+        },
+        "constitutive_law": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          ]
+        },
+        "loading": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          ]
+        },
+        "interface": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          ]
+        }
+      },
+      "required": []
+    },
+    "phases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "volume_fraction": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 1
+          },
+          "bulk_modulus": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "value": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "unit": {
+                    "enum": [
+                      "Pa",
+                      "kPa",
+                      "MPa",
+                      "GPa"
+                    ]
+                  }
+                },
+                "required": [
+                  "value",
+                  "unit"
+                ]
+              }
+            ]
+          },
+          "shear_modulus": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "value": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "unit": {
+                    "enum": [
+                      "Pa",
+                      "kPa",
+                      "MPa",
+                      "GPa"
+                    ]
+                  }
+                },
+                "required": [
+                  "value",
+                  "unit"
+                ]
+              }
+            ]
+          }
+        },
+        "required": [
+          "id"
+        ]
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "synthetic",
+            "literature",
+            "computed",
+            "measured",
+            "unspecified",
+            "literature_model"
+          ]
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "source_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          }
+        },
+        "model_evidence": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "source_id": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "locator": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "parameter_basis": {
+              "const": "literature_model_inputs"
+            },
+            "raw_parameters": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "phase_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "\\S"
+                  },
+                  "youngs_modulus": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "value": {
+                        "type": "number",
+                        "exclusiveMinimum": 0
+                      },
+                      "unit": {
+                        "enum": [
+                          "Pa",
+                          "kPa",
+                          "MPa",
+                          "GPa"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "value",
+                      "unit"
+                    ]
+                  },
+                  "poissons_ratio": {
+                    "type": "number",
+                    "exclusiveMinimum": -1,
+                    "exclusiveMaximum": 0.5
+                  }
+                },
+                "required": [
+                  "phase_id",
+                  "youngs_modulus",
+                  "poissons_ratio"
+                ]
+              }
+            },
+            "conversion_rule_id": {
+              "const": "isotropic_young_poisson_to_bulk_shear_v1"
+            },
+            "condition_basis": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "dimension": {
+                  "enum": [
+                    "source_model",
+                    "calculator_assumption",
+                    "unknown"
+                  ]
+                },
+                "constituent_symmetry": {
+                  "enum": [
+                    "source_model",
+                    "calculator_assumption",
+                    "unknown"
+                  ]
+                },
+                "effective_symmetry": {
+                  "enum": [
+                    "source_model",
+                    "calculator_assumption",
+                    "unknown"
+                  ]
+                },
+                "kinematics": {
+                  "enum": [
+                    "source_model",
+                    "calculator_assumption",
+                    "unknown"
+                  ]
+                },
+                "constitutive_law": {
+                  "enum": [
+                    "source_model",
+                    "calculator_assumption",
+                    "unknown"
+                  ]
+                },
+                "loading": {
+                  "enum": [
+                    "source_model",
+                    "calculator_assumption",
+                    "unknown"
+                  ]
+                },
+                "interface": {
+                  "enum": [
+                    "source_model",
+                    "calculator_assumption",
+                    "unknown"
+                  ]
+                }
+              },
+              "required": [
+                "dimension",
+                "constituent_symmetry",
+                "effective_symmetry",
+                "kinematics",
+                "constitutive_law",
+                "loading",
+                "interface"
+              ]
+            },
+            "fraction_basis": {
+              "const": "calculator_choice"
+            },
+            "temperature_k": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "exclusiveMinimum": 0
+            },
+            "material_grade": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "cure_state": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "measurement_uncertainty": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "scope_note": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "required": [
+            "source_id",
+            "locator",
+            "parameter_basis",
+            "raw_parameters",
+            "conversion_rule_id",
+            "condition_basis",
+            "fraction_basis",
+            "temperature_k",
+            "material_grade",
+            "cure_state",
+            "measurement_uncertainty",
+            "scope_note"
+          ]
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "literature_model"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "source_ids",
+              "model_evidence"
+            ],
+            "properties": {
+              "source_ids": {
+                "minItems": 1
+              }
+            }
+          },
+          "else": {
+            "not": {
+              "required": [
+                "model_evidence"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "conditions",
+    "phases",
+    "provenance"
+  ],
+  "$comment": "Additional runtime constraints: finite float-representable numbers (reject lexical underflow); unique phase IDs; known fraction sum <=1+1e-12; complete fraction sum within 1e-12 of 1. Missing or null observations represent unknown. Literature-model runtime checks require source/phase reference integrity, explicit condition bases consistent with unknown values, and K/G agreement with the fixed E/nu conversion (relative tolerance 1e-12)."
+}

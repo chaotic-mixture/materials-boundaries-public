@@ -1,0 +1,505 @@
+<!doctype html><html lang="zh"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>温度模型输出</title><style>body{font-family:system-ui,sans-serif;max-width:1100px;margin:auto;padding:20px;color:#15344b;background:#f6f9fc;overflow-wrap:anywhere}svg{width:100%;height:auto}pre{white-space:pre-wrap;overflow-wrap:anywhere}a{color:#087f8c}p{line-height:1.5}</style><body><svg xmlns="http://www.w3.org/2000/svg" width="1100" height="1132" viewBox="0 0 1100 1132" role="img">
+<title>温度模型输出</title><desc>曲线止于包含端点的公式区间。合成区间为人为设定的软件演示。输出不是测量或理论界，不允许外推。 合成演示没有经验拟合误差。经验模型报告的拟合误差不是测量不确定性、置信区间或经验证的最大误差界。不绘制统计带。 每个温度保留所有适用分支。不选择、平均、平滑，也不推断物理不连续。</desc>
+<rect width="100%" height="100%" fill="#f6f9fc"/>
+<style>text{font-family:DejaVu Sans,Noto Sans CJK JP,sans-serif} .grid{stroke:#d6e0e8;stroke-width:1}</style>
+<text x="24" y="25" font-size="11" fill="#15344b">MATERIALS BOUNDARIES · v0.16.0</text>
+<text x="24" y="54" font-size="28" fill="#15344b">温度模型输出</text>
+<text x="24" y="82" font-size="15" fill="#15344b">合成演示与来源模型 · 独立分面</text>
+<text x="24" y="102" font-size="12" fill="#15344b">温度坐标相同；每个分面使用独立且标明的模量刻度。不叠加，也不假定试样条件相同。</text>
+<g data-model-id="synthetic_linear_temperature">
+<rect x="24" y="136" width="512" height="610" rx="12" fill="white" stroke="#d6e0e8"/>
+<text x="38" y="164" font-size="18" fill="#15344b">合成线性演示</text>
+<text x="38" y="190" font-size="11" fill="#15344b">合成演示：没有真实材料、试样或经验证据</text>
+<text x="38" y="207" font-size="11" fill="#15344b">来源： materials_boundaries_synthetic_temperature_demo</text>
+<text x="84" y="238" font-size="11" fill="#15344b">模型值（GPa）</text>
+<path class="grid" d="M 84 443 H 514"/>
+<text x="77" y="447" font-size="11" text-anchor="end" fill="#15344b">9.9</text>
+<path class="grid" d="M 84 395 H 514"/>
+<text x="77" y="399" font-size="11" text-anchor="end" fill="#15344b">12.7</text>
+<path class="grid" d="M 84 347 H 514"/>
+<text x="77" y="351" font-size="11" text-anchor="end" fill="#15344b">15.5</text>
+<path class="grid" d="M 84 299 H 514"/>
+<text x="77" y="303" font-size="11" text-anchor="end" fill="#15344b">18.3</text>
+<path class="grid" d="M 84 251 H 514"/>
+<text x="77" y="255" font-size="11" text-anchor="end" fill="#15344b">21.1</text>
+<path class="grid" d="M 84 251 V 443"/>
+<text x="84" y="462" font-size="10" text-anchor="middle" fill="#15344b">0</text>
+<path class="grid" d="M 155.667 251 V 443"/>
+<text x="155.667" y="462" font-size="10" text-anchor="middle" fill="#15344b">50</text>
+<path class="grid" d="M 227.333 251 V 443"/>
+<text x="227.333" y="462" font-size="10" text-anchor="middle" fill="#15344b">100</text>
+<path class="grid" d="M 299 251 V 443"/>
+<text x="299" y="462" font-size="10" text-anchor="middle" fill="#15344b">150</text>
+<path class="grid" d="M 370.667 251 V 443"/>
+<text x="370.667" y="462" font-size="10" text-anchor="middle" fill="#15344b">200</text>
+<path class="grid" d="M 442.333 251 V 443"/>
+<text x="442.333" y="462" font-size="10" text-anchor="middle" fill="#15344b">250</text>
+<path class="grid" d="M 514 251 V 443"/>
+<text x="514" y="462" font-size="10" text-anchor="middle" fill="#15344b">300</text>
+<text x="299" y="482" font-size="12" text-anchor="middle" fill="#15344b">温度 (K)</text>
+<polyline data-branch-id="synthetic_linear_10_100" fill="none" stroke="#087f8c" stroke-width="2.4" points="98.333333,424.419355 99.623333,422.870968 100.913333,421.322581 102.203333,419.774194 103.493333,418.225806 104.783333,416.677419 106.073333,415.129032 107.363333,413.580645 108.653333,412.032258 109.943333,410.483871 111.233333,408.935484 112.523333,407.387097 113.813333,405.838710 115.103333,404.290323 116.393333,402.741935 117.683333,401.193548 118.973333,399.645161 120.263333,398.096774 121.553333,396.548387 122.843333,395.000000 124.133333,393.451613 125.423333,391.903226 126.713333,390.354839 128.003333,388.806452 129.293333,387.258065 130.583333,385.709677 131.873333,384.161290 133.163333,382.612903 134.453333,381.064516 135.743333,379.516129 137.033333,377.967742 138.323333,376.419355 139.613333,374.870968 140.903333,373.322581 142.193333,371.774194 143.483333,370.225806 144.773333,368.677419 146.063333,367.129032 147.353333,365.580645 148.643333,364.032258 149.933333,362.483871 151.223333,360.935484 152.513333,359.387097 153.803333,357.838710 155.093333,356.290323 156.383333,354.741935 157.673333,353.193548 158.963333,351.645161 160.253333,350.096774 161.543333,348.548387 162.833333,347.000000 164.123333,345.451613 165.413333,343.903226 166.703333,342.354839 167.993333,340.806452 169.283333,339.258065 170.573333,337.709677 171.863333,336.161290 173.153333,334.612903 174.443333,333.064516 175.733333,331.516129 177.023333,329.967742 178.313333,328.419355 179.603333,326.870968 180.893333,325.322581 182.183333,323.774194 183.473333,322.225806 184.763333,320.677419 186.053333,319.129032 187.343333,317.580645 188.633333,316.032258 189.923333,314.483871 191.213333,312.935484 192.503333,311.387097 193.793333,309.838710 195.083333,308.290323 196.373333,306.741935 197.663333,305.193548 198.953333,303.645161 200.243333,302.096774 201.533333,300.548387 202.823333,299.000000 204.113333,297.451613 205.403333,295.903226 206.693333,294.354839 207.983333,292.806452 209.273333,291.258065 210.563333,289.709677 211.853333,288.161290 213.143333,286.612903 214.433333,285.064516 215.723333,283.516129 217.013333,281.967742 218.303333,280.419355 219.593333,278.870968 220.883333,277.322581 222.173333,275.774194 223.463333,274.225806 224.753333,272.677419 226.043333,271.129032 227.333333,269.580645"/>
+<circle cx="98.333333" cy="424.419355" r="3.1" fill="#087f8c"><title>synthetic_linear_10_100: 10 K: 11 GPa; prediction</title></circle>
+<circle cx="227.333333" cy="269.580645" r="3.1" fill="#087f8c"><title>synthetic_linear_10_100: 100 K: 20 GPa; prediction</title></circle>
+<text x="38" y="495" font-size="11" fill="#087f8c">分支 1: synthetic_linear_10_100</text>
+<text x="38" y="512" font-size="11" fill="#087f8c">求值区间: 10–100 K · 来源数据区间: 不适用：没有测量</text>
+<text x="38" y="529" font-size="11" fill="#087f8c">synthetic_linear_10_100：合成演示；拟合误差不适用</text>
+<text x="38" y="563" font-size="11" fill="#15344b">项目原创的合成演示；复用条款见项目 LICENSE</text>
+</g>
+<g data-model-id="synthetic_overlap_temperature">
+<rect x="564" y="136" width="512" height="610" rx="12" fill="white" stroke="#d6e0e8"/>
+<text x="578" y="164" font-size="18" fill="#15344b">合成端点重叠演示</text>
+<text x="578" y="190" font-size="11" fill="#15344b">合成演示：没有真实材料、试样或经验证据</text>
+<text x="578" y="207" font-size="11" fill="#15344b">来源： materials_boundaries_synthetic_temperature_demo</text>
+<text x="624" y="238" font-size="11" fill="#15344b">模型值（GPa）</text>
+<path class="grid" d="M 624 443 H 1054"/>
+<text x="617" y="447" font-size="11" text-anchor="end" fill="#15344b">20.4</text>
+<path class="grid" d="M 624 395 H 1054"/>
+<text x="617" y="399" font-size="11" text-anchor="end" fill="#15344b">24.5</text>
+<path class="grid" d="M 624 347 H 1054"/>
+<text x="617" y="351" font-size="11" text-anchor="end" fill="#15344b">28.5</text>
+<path class="grid" d="M 624 299 H 1054"/>
+<text x="617" y="303" font-size="11" text-anchor="end" fill="#15344b">32.5</text>
+<path class="grid" d="M 624 251 H 1054"/>
+<text x="617" y="255" font-size="11" text-anchor="end" fill="#15344b">36.6</text>
+<path class="grid" d="M 624 251 V 443"/>
+<text x="624" y="462" font-size="10" text-anchor="middle" fill="#15344b">0</text>
+<path class="grid" d="M 695.667 251 V 443"/>
+<text x="695.667" y="462" font-size="10" text-anchor="middle" fill="#15344b">50</text>
+<path class="grid" d="M 767.333 251 V 443"/>
+<text x="767.333" y="462" font-size="10" text-anchor="middle" fill="#15344b">100</text>
+<path class="grid" d="M 839 251 V 443"/>
+<text x="839" y="462" font-size="10" text-anchor="middle" fill="#15344b">150</text>
+<path class="grid" d="M 910.667 251 V 443"/>
+<text x="910.667" y="462" font-size="10" text-anchor="middle" fill="#15344b">200</text>
+<path class="grid" d="M 982.333 251 V 443"/>
+<text x="982.333" y="462" font-size="10" text-anchor="middle" fill="#15344b">250</text>
+<path class="grid" d="M 1054 251 V 443"/>
+<text x="1054" y="462" font-size="10" text-anchor="middle" fill="#15344b">300</text>
+<text x="839" y="482" font-size="12" text-anchor="middle" fill="#15344b">温度 (K)</text>
+<polyline data-branch-id="synthetic_overlap_20_50" fill="none" stroke="#087f8c" stroke-width="2.4" points="652.666667,424.419355 653.096667,424.062035 653.526667,423.704715 653.956667,423.347395 654.386667,422.990074 654.816667,422.632754 655.246667,422.275434 655.676667,421.918114 656.106667,421.560794 656.536667,421.203474 656.966667,420.846154 657.396667,420.488834 657.826667,420.131514 658.256667,419.774194 658.686667,419.416873 659.116667,419.059553 659.546667,418.702233 659.976667,418.344913 660.406667,417.987593 660.836667,417.630273 661.266667,417.272953 661.696667,416.915633 662.126667,416.558313 662.556667,416.200993 662.986667,415.843672 663.416667,415.486352 663.846667,415.129032 664.276667,414.771712 664.706667,414.414392 665.136667,414.057072 665.566667,413.699752 665.996667,413.342432 666.426667,412.985112 666.856667,412.627792 667.286667,412.270471 667.716667,411.913151 668.146667,411.555831 668.576667,411.198511 669.006667,410.841191 669.436667,410.483871 669.866667,410.126551 670.296667,409.769231 670.726667,409.411911 671.156667,409.054591 671.586667,408.697270 672.016667,408.339950 672.446667,407.982630 672.876667,407.625310 673.306667,407.267990 673.736667,406.910670 674.166667,406.553350 674.596667,406.196030 675.026667,405.838710 675.456667,405.481390 675.886667,405.124069 676.316667,404.766749 676.746667,404.409429 677.176667,404.052109 677.606667,403.694789 678.036667,403.337469 678.466667,402.980149 678.896667,402.622829 679.326667,402.265509 679.756667,401.908189 680.186667,401.550868 680.616667,401.193548 681.046667,400.836228 681.476667,400.478908 681.906667,400.121588 682.336667,399.764268 682.766667,399.406948 683.196667,399.049628 683.626667,398.692308 684.056667,398.334988 684.486667,397.977667 684.916667,397.620347 685.346667,397.263027 685.776667,396.905707 686.206667,396.548387 686.636667,396.191067 687.066667,395.833747 687.496667,395.476427 687.926667,395.119107 688.356667,394.761787 688.786667,394.404467 689.216667,394.047146 689.646667,393.689826 690.076667,393.332506 690.506667,392.975186 690.936667,392.617866 691.366667,392.260546 691.796667,391.903226 692.226667,391.545906 692.656667,391.188586 693.086667,390.831266 693.516667,390.473945 693.946667,390.116625 694.376667,389.759305 694.806667,389.401985 695.236667,389.044665 695.666667,388.687345"/>
+<circle cx="652.666667" cy="424.419355" r="3.1" fill="#087f8c"><title>synthetic_overlap_20_50: 20 K: 22 GPa; prediction</title></circle>
+<circle cx="695.666667" cy="388.687345" r="3.1" fill="#087f8c"><title>synthetic_overlap_20_50: 50 K: 25 GPa; ambiguous_overlap</title></circle>
+<polyline data-branch-id="synthetic_overlap_50_100" fill="none" stroke="#a45117" stroke-width="2.4" points="695.666667,299.357320 696.383333,299.059553 697.100000,298.761787 697.816667,298.464020 698.533333,298.166253 699.250000,297.868486 699.966667,297.570720 700.683333,297.272953 701.400000,296.975186 702.116667,296.677419 702.833333,296.379653 703.550000,296.081886 704.266667,295.784119 704.983333,295.486352 705.700000,295.188586 706.416667,294.890819 707.133333,294.593052 707.850000,294.295285 708.566667,293.997519 709.283333,293.699752 710.000000,293.401985 710.716667,293.104218 711.433333,292.806452 712.150000,292.508685 712.866667,292.210918 713.583333,291.913151 714.300000,291.615385 715.016667,291.317618 715.733333,291.019851 716.450000,290.722084 717.166667,290.424318 717.883333,290.126551 718.600000,289.828784 719.316667,289.531017 720.033333,289.233251 720.750000,288.935484 721.466667,288.637717 722.183333,288.339950 722.900000,288.042184 723.616667,287.744417 724.333333,287.446650 725.050000,287.148883 725.766667,286.851117 726.483333,286.553350 727.200000,286.255583 727.916667,285.957816 728.633333,285.660050 729.350000,285.362283 730.066667,285.064516 730.783333,284.766749 731.500000,284.468983 732.216667,284.171216 732.933333,283.873449 733.650000,283.575682 734.366667,283.277916 735.083333,282.980149 735.800000,282.682382 736.516667,282.384615 737.233333,282.086849 737.950000,281.789082 738.666667,281.491315 739.383333,281.193548 740.100000,280.895782 740.816667,280.598015 741.533333,280.300248 742.250000,280.002481 742.966667,279.704715 743.683333,279.406948 744.400000,279.109181 745.116667,278.811414 745.833333,278.513648 746.550000,278.215881 747.266667,277.918114 747.983333,277.620347 748.700000,277.322581 749.416667,277.024814 750.133333,276.727047 750.850000,276.429280 751.566667,276.131514 752.283333,275.833747 753.000000,275.535980 753.716667,275.238213 754.433333,274.940447 755.150000,274.642680 755.866667,274.344913 756.583333,274.047146 757.300000,273.749380 758.016667,273.451613 758.733333,273.153846 759.450000,272.856079 760.166667,272.558313 760.883333,272.260546 761.600000,271.962779 762.316667,271.665012 763.033333,271.367246 763.750000,271.069479 764.466667,270.771712 765.183333,270.473945 765.900000,270.176179 766.616667,269.878412 767.333333,269.580645"/>
+<circle cx="695.666667" cy="299.357320" r="3.1" fill="#a45117"><title>synthetic_overlap_50_100: 50 K: 32.5 GPa; ambiguous_overlap</title></circle>
+<circle cx="767.333333" cy="269.580645" r="3.1" fill="#a45117"><title>synthetic_overlap_50_100: 100 K: 35 GPa; prediction</title></circle>
+<text x="578" y="495" font-size="11" fill="#087f8c">分支 1: synthetic_overlap_20_50</text>
+<text x="578" y="512" font-size="11" fill="#087f8c">求值区间: 20–50 K · 来源数据区间: 不适用：没有测量</text>
+<text x="578" y="529" font-size="11" fill="#087f8c">synthetic_overlap_20_50：合成演示；拟合误差不适用</text>
+<text x="578" y="563" font-size="11" fill="#a45117">分支 2: synthetic_overlap_50_100</text>
+<text x="578" y="580" font-size="11" fill="#a45117">求值区间: 50–100 K · 来源数据区间: 不适用：没有测量</text>
+<text x="578" y="597" font-size="11" fill="#a45117">synthetic_overlap_50_100：合成演示；拟合误差不适用</text>
+<text x="578" y="631" font-size="11" fill="#15344b">50 K：所有适用分支的预测（GPa）</text>
+<text x="578" y="648" font-size="11" fill="#15344b">synthetic_overlap_20_50：25.000000 GPa</text>
+<text x="578" y="665" font-size="11" fill="#15344b">synthetic_overlap_50_100：32.500000 GPa</text>
+<text x="578" y="699" font-size="11" fill="#15344b">项目原创的合成演示；复用条款见项目 LICENSE</text>
+</g>
+<text x="24" y="770" font-size="12" fill="#15344b">曲线止于包含端点的公式区间。合成区间为人为设定的软件演示。输出不是测量或理论界，不允许外推。</text>
+<text x="24" y="808" font-size="12" fill="#15344b">合成演示没有经验拟合误差。经验模型报告的拟合误差不是测量不确定性、置信区间或经验证的最大误差界。不绘制统计带。</text>
+<text x="24" y="846" font-size="12" fill="#15344b">合成演示没有物理试样，实验条件不适用。经验模型不会确立未指定的试样条件。</text>
+<text x="24" y="884" font-size="12" fill="#15344b">每个温度保留所有适用分支。不选择、平均、平滑，也不推断物理不连续。</text>
+<text x="24" y="922" font-size="12" fill="#15344b">所列重叠位置为分支端点；若存在区间重叠，整个重叠区间均保留多值。</text>
+<text x="24" y="960" font-size="12" fill="#15344b">合成区间及包含端点的规则为演示而设，不代表测得的有效性。经验来源的数据区间不扩展公式适用范围。</text>
+<text x="24" y="998" font-size="12" fill="#15344b">计算位数不代表测量精度。</text>
+<text x="24" y="1036" font-size="12" fill="#15344b">算术和软件检查不属于经验验证或独立科学评审。译文未经独立评审。</text>
+<text x="24" y="1074" font-size="12" fill="#15344b">内置演示为项目原创的合成示例。每个模型保留自身的来源与复用状态。参见项目 LICENSE 和来源元数据。</text>
+</svg>
+<section data-model-id="synthetic_linear_temperature"><h2>合成线性演示</h2><p>项目原创的合成线性多项式演示，温度区间为人为设定。不代表真实材料、测量、经验拟合、物理预测或理论界。</p><p>合成演示：没有真实材料、试样或经验证据</p><p>项目原创的合成演示；复用条款见项目 LICENSE</p><p>synthetic_linear_10_100 · 求值区间: [10, 100] K · 来源数据区间: 不适用：没有测量</p><p>系数 a–e: 10, 0.1, 0, 0, 0</p><p>synthetic_linear_10_100：合成演示；拟合误差不适用</p><p><a href="https://github.com/chaotic-mixture/materials-boundaries-public/blob/main/docs/TEMPERATURE_MODELS.md">Materials Boundaries original SYNTHETIC temperature demonstrations</a></p><details><summary>出处与条件详情</summary><pre>{
+  &quot;model&quot;: {
+    &quot;author_provenance&quot;: {
+      &quot;author&quot;: &quot;Materials Boundaries contributors&quot;,
+      &quot;creation_method&quot;: &quot;independently_authored_demonstration_polynomial&quot;,
+      &quot;derived_from_measurements&quot;: false,
+      &quot;is_empirical&quot;: false
+    },
+    &quot;branches&quot;: [
+      {
+        &quot;coefficients_text&quot;: [
+          &quot;10&quot;,
+          &quot;0.1&quot;,
+          &quot;0&quot;,
+          &quot;0&quot;,
+          &quot;0&quot;
+        ],
+        &quot;endpoints&quot;: &quot;inclusive&quot;,
+        &quot;equation_range_K&quot;: [
+          10,
+          100
+        ],
+        &quot;id&quot;: &quot;synthetic_linear_10_100&quot;,
+        &quot;range_status&quot;: &quot;artificial_demonstration_interval&quot;,
+        &quot;reported_fit_error&quot;: {
+          &quot;confidence_level&quot;: null,
+          &quot;is_confidence_interval&quot;: false,
+          &quot;is_measurement_uncertainty&quot;: false,
+          &quot;is_validated_maximum_error_bound&quot;: false,
+          &quot;statistic&quot;: null,
+          &quot;status&quot;: &quot;not_applicable_synthetic_demo&quot;,
+          &quot;unit&quot;: null,
+          &quot;value&quot;: null
+        },
+        &quot;source_data_range_K&quot;: null
+      }
+    ],
+    &quot;classification&quot;: &quot;synthetic_demo&quot;,
+    &quot;coefficient_order&quot;: [
+      &quot;a&quot;,
+      &quot;b&quot;,
+      &quot;c&quot;,
+      &quot;d&quot;,
+      &quot;e&quot;
+    ],
+    &quot;coefficient_units&quot;: [
+      &quot;GPa&quot;,
+      &quot;GPa/K&quot;,
+      &quot;GPa/K^2&quot;,
+      &quot;GPa/K^3&quot;,
+      &quot;GPa/K^4&quot;
+    ],
+    &quot;curation_date&quot;: &quot;2026-10-02&quot;,
+    &quot;descriptions&quot;: {
+      &quot;de&quot;: &quot;Projekteigene SYNTHETISCHE Demonstration: lineares Polynom mit künstlichen Temperaturintervallen. Keine Darstellung realer Materialien, Messungen, empirischer Anpassungen, physikalischer Vorhersagen oder theoretischer Schranken.&quot;,
+      &quot;en&quot;: &quot;Project-authored SYNTHETIC linear polynomial demonstration with artificial temperature intervals. No real material, measurements, empirical fit, physical prediction or theoretical bound is represented.&quot;,
+      &quot;ja&quot;: &quot;プロジェクト独自の合成線形多項式デモ。温度区間は人為的に設定されており、実在材料、測定、経験的適合、物理的予測、理論的限界を表さない。&quot;,
+      &quot;zh&quot;: &quot;项目原创的合成线性多项式演示，温度区间为人为设定。不代表真实材料、测量、经验拟合、物理预测或理论界。&quot;
+    },
+    &quot;equation_display&quot;: &quot;E_GPa = a + b*T_K + c*T_K^2 + d*T_K^3 + e*T_K^4&quot;,
+    &quot;equation_family&quot;: &quot;temperature_quartic_v1&quot;,
+    &quot;evaluation_support&quot;: &quot;temperature_quartic&quot;,
+    &quot;id&quot;: &quot;synthetic_linear_temperature&quot;,
+    &quot;input_unit&quot;: &quot;K&quot;,
+    &quot;material&quot;: {
+      &quot;UNS&quot;: null,
+      &quot;identity_status&quot;: &quot;synthetic_demo&quot;,
+      &quot;name&quot;: &quot;SYNTHETIC linear demonstration&quot;,
+      &quot;temper&quot;: null,
+      &quot;temper_status&quot;: &quot;not_applicable_synthetic_demo&quot;
+    },
+    &quot;name&quot;: &quot;SYNTHETIC linear temperature demonstration&quot;,
+    &quot;output_unit&quot;: &quot;GPa&quot;,
+    &quot;overlap_policy&quot;: &quot;retain_all_matching_branches_without_selection_averaging_or_smoothing&quot;,
+    &quot;quantity&quot;: &quot;youngs_modulus&quot;,
+    &quot;range_interpretation&quot;: &quot;Artificial, inclusive demonstration intervals chosen by the project authors. Null source data ranges mean there are no observations; overlaps exercise branch retention only.&quot;,
+    &quot;reuse&quot;: {
+      &quot;caveats&quot;: [
+        &quot;Coefficients and intervals were authored for software demonstrations; no measurement collection or external correlation is represented.&quot;,
+        &quot;Artificial values are not usable as real-material evidence or design inputs.&quot;,
+        &quot;Arithmetic checks do not establish empirical validity.&quot;
+      ],
+      &quot;recommended_attribution&quot;: &quot;Materials Boundaries contributors, synthetic temperature demonstrations, 2026-10-02.&quot;,
+      &quot;status&quot;: &quot;Original project-authored synthetic demonstration; see project LICENSE for reuse terms.&quot;
+    },
+    &quot;scope_exclusions&quot;: [
+      &quot;All real-material property inference&quot;,
+      &quot;Empirical accuracy, experimental or statistical error claims&quot;,
+      &quot;Strength, safety factors, design allowables and physical bounds&quot;,
+      &quot;Extrapolation beyond artificial demonstration intervals&quot;
+    ],
+    &quot;source_ids&quot;: [
+      &quot;materials_boundaries_synthetic_temperature_demo&quot;
+    ],
+    &quot;source_locator&quot;: &quot;Project-authored linear demonstration in materials_boundaries/data/temperature_models.json&quot;,
+    &quot;unknown_conditions&quot;: {
+      &quot;cold_work&quot;: {
+        &quot;status&quot;: &quot;not_applicable_synthetic_demo&quot;,
+        &quot;value&quot;: null
+      },
+      &quot;confidence_level&quot;: {
+        &quot;status&quot;: &quot;not_applicable_synthetic_demo&quot;,
+        &quot;value&quot;: null
+      },
+      &quot;fit_error_statistical_definition&quot;: {
+        &quot;status&quot;: &quot;not_applicable_synthetic_demo&quot;,
+        &quot;value&quot;: null
+      },
+      &quot;grain_size&quot;: {
+        &quot;status&quot;: &quot;not_applicable_synthetic_demo&quot;,
+        &quot;value&quot;: null
+      },
+      &quot;measurement_uncertainty&quot;: {
+        &quot;status&quot;: &quot;not_applicable_synthetic_demo&quot;,
+        &quot;value&quot;: null
+      },
+      &quot;porosity&quot;: {
+        &quot;status&quot;: &quot;not_applicable_synthetic_demo&quot;,
+        &quot;value&quot;: null
+      },
+      &quot;pressure&quot;: {
+        &quot;status&quot;: &quot;not_applicable_synthetic_demo&quot;,
+        &quot;value&quot;: null
+      },
+      &quot;product_form&quot;: {
+        &quot;status&quot;: &quot;not_applicable_synthetic_demo&quot;,
+        &quot;value&quot;: null
+      },
+      &quot;specimen_geometry&quot;: {
+        &quot;status&quot;: &quot;not_applicable_synthetic_demo&quot;,
+        &quot;value&quot;: null
+      },
+      &quot;strain_rate_or_frequency&quot;: {
+        &quot;status&quot;: &quot;not_applicable_synthetic_demo&quot;,
+        &quot;value&quot;: null
+      },
+      &quot;test_direction&quot;: {
+        &quot;status&quot;: &quot;not_applicable_synthetic_demo&quot;,
+        &quot;value&quot;: null
+      },
+      &quot;test_method&quot;: {
+        &quot;status&quot;: &quot;not_applicable_synthetic_demo&quot;,
+        &quot;value&quot;: null
+      },
+      &quot;texture&quot;: {
+        &quot;status&quot;: &quot;not_applicable_synthetic_demo&quot;,
+        &quot;value&quot;: null
+      }
+    },
+    &quot;verification&quot;: {
+      &quot;empirical_validation&quot;: false,
+      &quot;independent_scientific_review&quot;: false,
+      &quot;synthetic_arithmetic_checked&quot;: true,
+      &quot;translation_review&quot;: &quot;machine_assisted_not_scientifically_reviewed&quot;
+    },
+    &quot;version&quot;: &quot;1.0.0&quot;
+  },
+  &quot;sources&quot;: [
+    {
+      &quot;authors&quot;: [
+        &quot;chaotic-mixture&quot;
+      ],
+      &quot;bundled_content&quot;: &quot;Original synthetic polynomial coefficients, artificial intervals and project-authored explanatory metadata only.&quot;,
+      &quot;claim_notes&quot;: [
+        &quot;All coefficients and temperature intervals are independently constructed for software demonstrations and tests; they do not represent any real material, experiment, empirical fit, uncertainty estimate or scientific evidence.&quot;,
+        &quot;The unit labels demonstrate evaluator plumbing only; these outputs must not be used for engineering design.&quot;
+      ],
+      &quot;doi&quot;: null,
+      &quot;id&quot;: &quot;materials_boundaries_synthetic_temperature_demo&quot;,
+      &quot;license&quot;: {
+        &quot;identifier&quot;: &quot;MIT&quot;,
+        &quot;status&quot;: &quot;MIT applies to original project-authored synthetic demonstration coefficients and documentation. No empirical dataset or third-party content is included in these demonstrations.&quot;
+      },
+      &quot;provenance&quot;: {
+        &quot;curation_date&quot;: &quot;2026-10-02&quot;,
+        &quot;method&quot;: &quot;Original simple polynomial construction for the first public edition; no coefficients transcribed or adapted from literature.&quot;
+      },
+      &quot;read_status&quot;: &quot;original_project_authored_artificial_examples_not_literature_or_measurements&quot;,
+      &quot;role&quot;: &quot;synthetic_demo_provenance&quot;,
+      &quot;title&quot;: &quot;Materials Boundaries original SYNTHETIC temperature demonstrations&quot;,
+      &quot;urls&quot;: [
+        &quot;https://github.com/chaotic-mixture/materials-boundaries-public/blob/main/docs/TEMPERATURE_MODELS.md&quot;
+      ],
+      &quot;year&quot;: 2026
+    }
+  ]
+}</pre></details></section><section data-model-id="synthetic_overlap_temperature"><h2>合成端点重叠演示</h2><p>项目原创的合成端点重叠多项式演示，温度区间为人为设定。不代表真实材料、测量、经验拟合、物理预测或理论界。</p><p>合成演示：没有真实材料、试样或经验证据</p><p>项目原创的合成演示；复用条款见项目 LICENSE</p><p>synthetic_overlap_20_50 · 求值区间: [20, 50] K · 来源数据区间: 不适用：没有测量</p><p>系数 a–e: 20, 0.1, 0, 0, 0</p><p>synthetic_overlap_20_50：合成演示；拟合误差不适用</p><p>synthetic_overlap_50_100 · 求值区间: [50, 100] K · 来源数据区间: 不适用：没有测量</p><p>系数 a–e: 30, 0.05, 0, 0, 0</p><p>synthetic_overlap_50_100：合成演示；拟合误差不适用</p><p><a href="https://github.com/chaotic-mixture/materials-boundaries-public/blob/main/docs/TEMPERATURE_MODELS.md">Materials Boundaries original SYNTHETIC temperature demonstrations</a></p><details><summary>出处与条件详情</summary><pre>{
+  &quot;model&quot;: {
+    &quot;author_provenance&quot;: {
+      &quot;author&quot;: &quot;Materials Boundaries contributors&quot;,
+      &quot;creation_method&quot;: &quot;independently_authored_demonstration_polynomial&quot;,
+      &quot;derived_from_measurements&quot;: false,
+      &quot;is_empirical&quot;: false
+    },
+    &quot;branches&quot;: [
+      {
+        &quot;coefficients_text&quot;: [
+          &quot;20&quot;,
+          &quot;0.1&quot;,
+          &quot;0&quot;,
+          &quot;0&quot;,
+          &quot;0&quot;
+        ],
+        &quot;endpoints&quot;: &quot;inclusive&quot;,
+        &quot;equation_range_K&quot;: [
+          20,
+          50
+        ],
+        &quot;id&quot;: &quot;synthetic_overlap_20_50&quot;,
+        &quot;range_status&quot;: &quot;artificial_demonstration_interval&quot;,
+        &quot;reported_fit_error&quot;: {
+          &quot;confidence_level&quot;: null,
+          &quot;is_confidence_interval&quot;: false,
+          &quot;is_measurement_uncertainty&quot;: false,
+          &quot;is_validated_maximum_error_bound&quot;: false,
+          &quot;statistic&quot;: null,
+          &quot;status&quot;: &quot;not_applicable_synthetic_demo&quot;,
+          &quot;unit&quot;: null,
+          &quot;value&quot;: null
+        },
+        &quot;source_data_range_K&quot;: null
+      },
+      {
+        &quot;coefficients_text&quot;: [
+          &quot;30&quot;,
+          &quot;0.05&quot;,
+          &quot;0&quot;,
+          &quot;0&quot;,
+          &quot;0&quot;
+        ],
+        &quot;endpoints&quot;: &quot;inclusive&quot;,
+        &quot;equation_range_K&quot;: [
+          50,
+          100
+        ],
+        &quot;id&quot;: &quot;synthetic_overlap_50_100&quot;,
+        &quot;range_status&quot;: &quot;artificial_demonstration_interval&quot;,
+        &quot;reported_fit_error&quot;: {
+          &quot;confidence_level&quot;: null,
+          &quot;is_confidence_interval&quot;: false,
+          &quot;is_measurement_uncertainty&quot;: false,
+          &quot;is_validated_maximum_error_bound&quot;: false,
+          &quot;statistic&quot;: null,
+          &quot;status&quot;: &quot;not_applicable_synthetic_demo&quot;,
+          &quot;unit&quot;: null,
+          &quot;value&quot;: null
+        },
+        &quot;source_data_range_K&quot;: null
+      }
+    ],
+    &quot;classification&quot;: &quot;synthetic_demo&quot;,
+    &quot;coefficient_order&quot;: [
+      &quot;a&quot;,
+      &quot;b&quot;,
+      &quot;c&quot;,
+      &quot;d&quot;,
+      &quot;e&quot;
+    ],
+    &quot;coefficient_units&quot;: [
+      &quot;GPa&quot;,
+      &quot;GPa/K&quot;,
+      &quot;GPa/K^2&quot;,
+      &quot;GPa/K^3&quot;,
+      &quot;GPa/K^4&quot;
+    ],
+    &quot;curation_date&quot;: &quot;2026-10-02&quot;,
+    &quot;descriptions&quot;: {
+      &quot;de&quot;: &quot;Projekteigene SYNTHETISCHE Demonstration: Polynom mit Endpunktüberlappung mit künstlichen Temperaturintervallen. Keine Darstellung realer Materialien, Messungen, empirischer Anpassungen, physikalischer Vorhersagen oder theoretischer Schranken.&quot;,
+      &quot;en&quot;: &quot;Project-authored SYNTHETIC endpoint-overlap polynomial demonstration with artificial temperature intervals. No real material, measurements, empirical fit, physical prediction or theoretical bound is represented.&quot;,
+      &quot;ja&quot;: &quot;プロジェクト独自の合成端点重複多項式デモ。温度区間は人為的に設定されており、実在材料、測定、経験的適合、物理的予測、理論的限界を表さない。&quot;,
+      &quot;zh&quot;: &quot;项目原创的合成端点重叠多项式演示，温度区间为人为设定。不代表真实材料、测量、经验拟合、物理预测或理论界。&quot;
+    },
+    &quot;equation_display&quot;: &quot;E_GPa = a + b*T_K + c*T_K^2 + d*T_K^3 + e*T_K^4&quot;,
+    &quot;equation_family&quot;: &quot;temperature_quartic_v1&quot;,
+    &quot;evaluation_support&quot;: &quot;temperature_quartic&quot;,
+    &quot;id&quot;: &quot;synthetic_overlap_temperature&quot;,
+    &quot;input_unit&quot;: &quot;K&quot;,
+    &quot;material&quot;: {
+      &quot;UNS&quot;: null,
+      &quot;identity_status&quot;: &quot;synthetic_demo&quot;,
+      &quot;name&quot;: &quot;SYNTHETIC overlap demonstration&quot;,
+      &quot;temper&quot;: null,
+      &quot;temper_status&quot;: &quot;not_applicable_synthetic_demo&quot;
+    },
+    &quot;name&quot;: &quot;SYNTHETIC overlap temperature demonstration&quot;,
+    &quot;output_unit&quot;: &quot;GPa&quot;,
+    &quot;overlap_policy&quot;: &quot;retain_all_matching_branches_without_selection_averaging_or_smoothing&quot;,
+    &quot;quantity&quot;: &quot;youngs_modulus&quot;,
+    &quot;range_interpretation&quot;: &quot;Artificial, inclusive demonstration intervals chosen by the project authors. Null source data ranges mean there are no observations; overlaps exercise branch retention only.&quot;,
+    &quot;reuse&quot;: {
+      &quot;caveats&quot;: [
+        &quot;Coefficients and intervals were authored for software demonstrations; no measurement collection or external correlation is represented.&quot;,
+        &quot;Artificial values are not usable as real-material evidence or design inputs.&quot;,
+        &quot;Arithmetic checks do not establish empirical validity.&quot;
+      ],
+      &quot;recommended_attribution&quot;: &quot;Materials Boundaries contributors, synthetic temperature demonstrations, 2026-10-02.&quot;,
+      &quot;status&quot;: &quot;Original project-authored synthetic demonstration; see project LICENSE for reuse terms.&quot;
+    },
+    &quot;scope_exclusions&quot;: [
+      &quot;All real-material property inference&quot;,
+      &quot;Empirical accuracy, experimental or statistical error claims&quot;,
+      &quot;Strength, safety factors, design allowables and physical bounds&quot;,
+      &quot;Extrapolation beyond artificial demonstration intervals&quot;
+    ],
+    &quot;source_ids&quot;: [
+      &quot;materials_boundaries_synthetic_temperature_demo&quot;
+    ],
+    &quot;source_locator&quot;: &quot;Project-authored overlap demonstration in materials_boundaries/data/temperature_models.json&quot;,
+    &quot;unknown_conditions&quot;: {
+      &quot;cold_work&quot;: {
+        &quot;status&quot;: &quot;not_applicable_synthetic_demo&quot;,
+        &quot;value&quot;: null
+      },
+      &quot;confidence_level&quot;: {
+        &quot;status&quot;: &quot;not_applicable_synthetic_demo&quot;,
+        &quot;value&quot;: null
+      },
+      &quot;fit_error_statistical_definition&quot;: {
+        &quot;status&quot;: &quot;not_applicable_synthetic_demo&quot;,
+        &quot;value&quot;: null
+      },
+      &quot;grain_size&quot;: {
+        &quot;status&quot;: &quot;not_applicable_synthetic_demo&quot;,
+        &quot;value&quot;: null
+      },
+      &quot;measurement_uncertainty&quot;: {
+        &quot;status&quot;: &quot;not_applicable_synthetic_demo&quot;,
+        &quot;value&quot;: null
+      },
+      &quot;porosity&quot;: {
+        &quot;status&quot;: &quot;not_applicable_synthetic_demo&quot;,
+        &quot;value&quot;: null
+      },
+      &quot;pressure&quot;: {
+        &quot;status&quot;: &quot;not_applicable_synthetic_demo&quot;,
+        &quot;value&quot;: null
+      },
+      &quot;product_form&quot;: {
+        &quot;status&quot;: &quot;not_applicable_synthetic_demo&quot;,
+        &quot;value&quot;: null
+      },
+      &quot;specimen_geometry&quot;: {
+        &quot;status&quot;: &quot;not_applicable_synthetic_demo&quot;,
+        &quot;value&quot;: null
+      },
+      &quot;strain_rate_or_frequency&quot;: {
+        &quot;status&quot;: &quot;not_applicable_synthetic_demo&quot;,
+        &quot;value&quot;: null
+      },
+      &quot;test_direction&quot;: {
+        &quot;status&quot;: &quot;not_applicable_synthetic_demo&quot;,
+        &quot;value&quot;: null
+      },
+      &quot;test_method&quot;: {
+        &quot;status&quot;: &quot;not_applicable_synthetic_demo&quot;,
+        &quot;value&quot;: null
+      },
+      &quot;texture&quot;: {
+        &quot;status&quot;: &quot;not_applicable_synthetic_demo&quot;,
+        &quot;value&quot;: null
+      }
+    },
+    &quot;verification&quot;: {
+      &quot;empirical_validation&quot;: false,
+      &quot;independent_scientific_review&quot;: false,
+      &quot;synthetic_arithmetic_checked&quot;: true,
+      &quot;translation_review&quot;: &quot;machine_assisted_not_scientifically_reviewed&quot;
+    },
+    &quot;version&quot;: &quot;1.0.0&quot;
+  },
+  &quot;sources&quot;: [
+    {
+      &quot;authors&quot;: [
+        &quot;chaotic-mixture&quot;
+      ],
+      &quot;bundled_content&quot;: &quot;Original synthetic polynomial coefficients, artificial intervals and project-authored explanatory metadata only.&quot;,
+      &quot;claim_notes&quot;: [
+        &quot;All coefficients and temperature intervals are independently constructed for software demonstrations and tests; they do not represent any real material, experiment, empirical fit, uncertainty estimate or scientific evidence.&quot;,
+        &quot;The unit labels demonstrate evaluator plumbing only; these outputs must not be used for engineering design.&quot;
+      ],
+      &quot;doi&quot;: null,
+      &quot;id&quot;: &quot;materials_boundaries_synthetic_temperature_demo&quot;,
+      &quot;license&quot;: {
+        &quot;identifier&quot;: &quot;MIT&quot;,
+        &quot;status&quot;: &quot;MIT applies to original project-authored synthetic demonstration coefficients and documentation. No empirical dataset or third-party content is included in these demonstrations.&quot;
+      },
+      &quot;provenance&quot;: {
+        &quot;curation_date&quot;: &quot;2026-10-02&quot;,
+        &quot;method&quot;: &quot;Original simple polynomial construction for the first public edition; no coefficients transcribed or adapted from literature.&quot;
+      },
+      &quot;read_status&quot;: &quot;original_project_authored_artificial_examples_not_literature_or_measurements&quot;,
+      &quot;role&quot;: &quot;synthetic_demo_provenance&quot;,
+      &quot;title&quot;: &quot;Materials Boundaries original SYNTHETIC temperature demonstrations&quot;,
+      &quot;urls&quot;: [
+        &quot;https://github.com/chaotic-mixture/materials-boundaries-public/blob/main/docs/TEMPERATURE_MODELS.md&quot;
+      ],
+      &quot;year&quot;: 2026
+    }
+  ]
+}</pre></details></section></body></html>

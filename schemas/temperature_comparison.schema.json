@@ -1,0 +1,235 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:materials-boundaries:schema:temperature_comparison:1.0.0",
+  "title": "Reproducible temperature comparison v1",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "engine_version": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "classification": {
+      "enum": [
+        "synthetic_demo",
+        "empirical_fit_prediction",
+        "mixed_temperature_models"
+      ]
+    },
+    "axis": {
+      "const": {
+        "quantity": "absolute_temperature",
+        "unit": "K"
+      }
+    },
+    "output": {
+      "const": {
+        "quantity": "youngs_modulus",
+        "unit": "GPa"
+      }
+    },
+    "points_per_branch": {
+      "type": "integer",
+      "minimum": 2,
+      "maximum": 501
+    },
+    "cases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "model_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "model_snapshot": {
+            "$ref": "urn:materials-boundaries:schema:temperature_models:1.0.0#/$defs/model"
+          },
+          "source_snapshots": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "minItems": 1
+          },
+          "series": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "branch_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "equation_range_K": {
+                  "type": "array",
+                  "items": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                "points": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "temperature_K": {
+                        "type": "number",
+                        "minimum": 0
+                      },
+                      "value_GPa": {
+                        "type": "number",
+                        "exclusiveMinimum": 0
+                      },
+                      "status": {
+                        "enum": [
+                          "prediction",
+                          "ambiguous_overlap"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "temperature_K",
+                      "value_GPa",
+                      "status"
+                    ]
+                  },
+                  "minItems": 2,
+                  "maxItems": 501
+                }
+              },
+              "required": [
+                "branch_id",
+                "equation_range_K",
+                "points"
+              ]
+            },
+            "minItems": 1
+          },
+          "overlaps": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "temperature_K": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "status": {
+                  "const": "ambiguous_overlap"
+                },
+                "predictions": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "branch_id": {
+                        "type": "string",
+                        "minLength": 1,
+                        "pattern": "\\S"
+                      },
+                      "value": {
+                        "type": "number",
+                        "exclusiveMinimum": 0
+                      },
+                      "unit": {
+                        "const": "GPa"
+                      },
+                      "equation_range_K": {
+                        "type": "array",
+                        "items": {
+                          "type": "number",
+                          "minimum": 0
+                        },
+                        "minItems": 2,
+                        "maxItems": 2
+                      }
+                    },
+                    "required": [
+                      "branch_id",
+                      "value",
+                      "unit",
+                      "equation_range_K"
+                    ]
+                  },
+                  "minItems": 2
+                }
+              },
+              "required": [
+                "temperature_K",
+                "status",
+                "predictions"
+              ]
+            }
+          },
+          "specimen_applicability": {
+            "enum": [
+              "not_applicable_synthetic_demo",
+              "not_established"
+            ]
+          }
+        },
+        "required": [
+          "model_id",
+          "model_snapshot",
+          "source_snapshots",
+          "series",
+          "overlaps",
+          "specimen_applicability"
+        ]
+      },
+      "minItems": 1,
+      "maxItems": 20
+    },
+    "display": {
+      "const": "separate_material_facets"
+    },
+    "overlay_allowed": {
+      "const": false
+    },
+    "uncertainty_band": {
+      "const": null
+    },
+    "sampling": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "comparison": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "overlap_policy": {
+      "const": "retain_all_matching_branches_without_selection_averaging_or_smoothing"
+    }
+  },
+  "required": [
+    "schema_version",
+    "engine_version",
+    "classification",
+    "axis",
+    "output",
+    "points_per_branch",
+    "cases",
+    "display",
+    "overlay_allowed",
+    "uncertainty_band",
+    "sampling",
+    "comparison",
+    "overlap_policy"
+  ]
+}

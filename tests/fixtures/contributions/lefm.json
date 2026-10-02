@@ -1,0 +1,109 @@
+{
+  "source": {
+    "id": "synthetic_contribution_source",
+    "title": "SYNTHETIC TEST ONLY: contribution pipeline fixture",
+    "authors": [],
+    "year": null,
+    "doi": null,
+    "urls": [
+      "https://example.invalid/materials-boundaries-test-only"
+    ],
+    "read_status": "synthetic_fixture_not_read",
+    "license": {
+      "status": "not_assessed_synthetic_fixture",
+      "identifier": null
+    },
+    "role": "synthetic_test_fixture",
+    "claim_notes": [
+      "Not an external scientific source; no publication, license grant or scientific evidence is asserted."
+    ],
+    "provenance": {
+      "curation_date": "2026-10-02",
+      "method": "Synthetic regression fixture only; never publish in the production catalog."
+    },
+    "bundled_content": "bibliographic_metadata_and_original_curation_notes_only"
+  },
+  "claim": {
+    "id": "synthetic_contribution_lefm",
+    "version": "1.0.0",
+    "name": "SYNTHETIC TEST ONLY: existing central-crack LEFM contract",
+    "quantity": "mode_i_stress_intensity_factor",
+    "direction": "relation",
+    "rule_id": "lefm_central_crack_mode_i_stress_intensity_v1",
+    "formula_display": "K_I = sigma*sqrt(pi*a)",
+    "required_assumptions": {
+      "material_symmetry": "homogeneous_isotropic",
+      "strain_regime": "small_strain",
+      "constitutive_behavior": "linear_elastic",
+      "loading_regime": "quasi_static",
+      "crack_mode": "mode_I",
+      "crack_faces": "traction_free",
+      "crack_tip_process_zone": "negligible_relative_to_crack_and_body",
+      "geometry": "infinite_plate_central_through_crack",
+      "crack_length_convention": "a_is_half_total_length_2a",
+      "loading": "remote_uniform_tension_normal_to_crack",
+      "positive_crack_half_length": true,
+      "continuum_crack_scale": true
+    },
+    "evidence": [
+      {
+        "source_id": "synthetic_contribution_source",
+        "locator": null,
+        "verification_status": "synthetic_fixture_not_source_verification",
+        "verified_as": "Test-only structural fixture; no paper, equation or independent review was inspected."
+      }
+    ],
+    "verification": {
+      "status": "synthetic_fixture_not_scientific_evidence",
+      "independent_scientific_review": false,
+      "gaps": [
+        "Test-only duplicate of an existing supported contract; not a new scientific claim or source verification."
+      ]
+    },
+    "limits": [
+      "Exact stress-intensity relation within the stated infinite-plate LEFM idealization; it is not K_Ic, a fracture criterion, a material strength bound or an allowable.",
+      "K_I has dimension pressure times square root of length and SI unit Pa*m^0.5; it is not bulk modulus K or a stress in Pa.",
+      "a is half of total crack length 2a. Finite width, edge/surface cracks, significant yielding, crack interactions, residual stress, mixed-mode and dynamic loading require other descriptions.",
+      "The source figure indicates 2a much smaller than plate width W. No unreported finite-width accuracy threshold is inferred.",
+      "No composite modulus, toughness, critical fracture energy or failure stress is inferred by this relation.",
+      "Unknown or violated premises do not justify applying this formula. A catalog query returns definitions, not numerical results or specimen applicability states."
+    ],
+    "bound_kind": null,
+    "dependencies": [],
+    "claim_type": "model_relation",
+    "quantity_dimension": "stress_intensity",
+    "si_unit": "Pa*m^0.5",
+    "evaluation_support": "catalog_only",
+    "parameters": [
+      {
+        "symbol": "sigma",
+        "quantity": "remote_tensile_stress",
+        "dimension": "pressure",
+        "si_unit": "Pa",
+        "meaning": "Uniform remote tensile stress normal to the crack; use gross far-field stress, not net-ligament stress."
+      },
+      {
+        "symbol": "a",
+        "quantity": "crack_half_length",
+        "dimension": "length",
+        "si_unit": "m",
+        "meaning": "Positive crack half-length; the complete central through crack is 2*a, not a. Continuum crack scale is required."
+      }
+    ]
+  },
+  "labels": {
+    "en": "Synthetic test only: central-crack LEFM fixture",
+    "zh": "仅用于合成测试：中心裂纹 LEFM 夹具",
+    "ja": "合成テスト専用：中央き裂 LEFM フィクスチャ",
+    "de": "Nur synthetischer Test: LEFM-Testdatensatz für zentralen Riss"
+  },
+  "evidence_addition": {
+    "claim_id": "lefm_central_crack_mode_i_stress_intensity",
+    "evidence": {
+      "source_id": "synthetic_contribution_source",
+      "locator": null,
+      "verification_status": "synthetic_fixture_not_source_verification",
+      "verified_as": "Test-only structural fixture; no paper, equation or independent review was inspected."
+    }
+  }
+}

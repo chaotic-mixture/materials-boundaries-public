@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0.0",
+  "id": "literature-epoxy-glass-model",
+  "conditions": {
+    "dimension": 3,
+    "constituent_symmetry": "isotropic",
+    "effective_symmetry": "isotropic",
+    "kinematics": "small_strain",
+    "constitutive_law": "linear_elastic",
+    "loading": "static",
+    "interface": "perfectly_bonded"
+  },
+  "phases": [
+    {
+      "id": "epoxy_model",
+      "volume_fraction": 0.8,
+      "bulk_modulus": {
+        "value": 4.333333333333334,
+        "unit": "GPa"
+      },
+      "shear_modulus": {
+        "value": 1.1304347826086958,
+        "unit": "GPa"
+      }
+    },
+    {
+      "id": "glass_model",
+      "volume_fraction": 0.2,
+      "bulk_modulus": {
+        "value": 50.666666666666664,
+        "unit": "GPa"
+      },
+      "shear_modulus": {
+        "value": 30.4,
+        "unit": "GPa"
+      }
+    }
+  ],
+  "provenance": {
+    "kind": "literature_model",
+    "source_ids": [
+      "genin_birman_2009"
+    ],
+    "note": "Published constituent model inputs with project-derived K/G and calculator-selected volume fractions; not a measured material or a reported specimen.",
+    "model_evidence": {
+      "source_id": "genin_birman_2009",
+      "locator": "Author uncorrected proof dated 30 August 2008: PDF p. 8, Section 5, printed lines 381-383 and Fig. 1 (parameters); PDF p. 2, Section 2, printed line 101 (isotropic linear elastic phases).",
+      "parameter_basis": "literature_model_inputs",
+      "raw_parameters": [
+        {
+          "phase_id": "epoxy_model",
+          "youngs_modulus": {
+            "value": 3.12,
+            "unit": "GPa"
+          },
+          "poissons_ratio": 0.38
+        },
+        {
+          "phase_id": "glass_model",
+          "youngs_modulus": {
+            "value": 76.0,
+            "unit": "GPa"
+          },
+          "poissons_ratio": 0.25
+        }
+      ],
+      "conversion_rule_id": "isotropic_young_poisson_to_bulk_shear_v1",
+      "condition_basis": {
+        "dimension": "calculator_assumption",
+        "constituent_symmetry": "source_model",
+        "effective_symmetry": "calculator_assumption",
+        "kinematics": "calculator_assumption",
+        "constitutive_law": "source_model",
+        "loading": "calculator_assumption",
+        "interface": "calculator_assumption"
+      },
+      "fraction_basis": "calculator_choice",
+      "temperature_k": null,
+      "material_grade": null,
+      "cure_state": null,
+      "measurement_uncertainty": null,
+      "scope_note": "Only the epoxy/glass particulate-matrix submodel is used, not the paper's full three-phase fiber-reinforced or graded laminate. Glass fraction 0.20 and epoxy fraction 0.80 are an illustration within the plotted range, not a reported specimen. Effective isotropy, perfect bonding, static loading, small strain and 3D homogenized interpretation are calculator assumptions, not independently observed material facts. Temperature, grade, cure and measurement uncertainty are unspecified."
+    }
+  }
+}

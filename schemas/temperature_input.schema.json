@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:materials-boundaries:schema:temperature_input:1.0.0",
+  "title": "Temperature fit input v1",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "model_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "temperature": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "type": "number",
+          "minimum": 0
+        },
+        "unit": {
+          "const": "K"
+        }
+      },
+      "required": [
+        "value",
+        "unit"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "model_id",
+    "temperature"
+  ]
+}

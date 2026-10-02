@@ -1,0 +1,73 @@
+{
+  "classification": "project_synthetic_not_measurement",
+  "inputs": {
+    "Ks_GPa": 100.0,
+    "Gs_GPa": 40.0,
+    "rho_s_kg_m3": 2500.0
+  },
+  "samples": [
+    {
+      "p": 0.0,
+      "K_upper_GPa": 100.0,
+      "G_upper_GPa": 40.0,
+      "E_upper_GPa": 105.88235294117646,
+      "rho_eff_kg_m3": 2500.0,
+      "K_lower_GPa": 100.0,
+      "G_lower_GPa": 40.0,
+      "E_lower_GPa": 105.88235294117646
+    },
+    {
+      "p": 0.25,
+      "K_upper_GPa": 51.06382978723404,
+      "G_upper_GPa": 24.563758389261746,
+      "E_upper_GPa": 63.5079770569239,
+      "rho_eff_kg_m3": 1875.0,
+      "K_lower_GPa": 0.0,
+      "G_lower_GPa": 0.0,
+      "E_lower_GPa": 0.0
+    },
+    {
+      "p": 0.5,
+      "K_upper_GPa": 25.806451612903224,
+      "G_upper_GPa": 13.863636363636363,
+      "E_upper_GPa": 35.2742751586218,
+      "rho_eff_kg_m3": 1250.0,
+      "K_lower_GPa": 0.0,
+      "G_lower_GPa": 0.0,
+      "E_lower_GPa": 0.0
+    },
+    {
+      "p": 0.9,
+      "K_upper_GPa": 3.7209302325581386,
+      "G_upper_GPa": 2.226277372262773,
+      "E_upper_GPa": 5.568304278922343,
+      "rho_eff_kg_m3": 249.99999999999994,
+      "K_lower_GPa": 0.0,
+      "G_lower_GPa": 0.0,
+      "E_lower_GPa": 0.0
+    },
+    {
+      "p": 1.0,
+      "K_upper_GPa": 0.0,
+      "G_upper_GPa": 0.0,
+      "E_upper_GPa": 0.0,
+      "rho_eff_kg_m3": 0.0,
+      "K_lower_GPa": 0.0,
+      "G_lower_GPa": 0.0,
+      "E_lower_GPa": 0.0
+    }
+  ],
+  "kind": "catalog_documentation_example_not_evaluator_input",
+  "claim_ids": [
+    "hs_porous_bulk_3d_solid_void",
+    "hs_porous_shear_3d_solid_void",
+    "hs_porous_youngs_outer_3d_solid_void"
+  ],
+  "method": "Project synthetic arithmetic from the displayed finite-porosity equations; not parsed catalog formulas, measured data, a package evaluator or a certification.",
+  "scope_notes": [
+    "p is void volume fraction. All stiffness inputs are invented and share units.",
+    "For 0<p<1, lower endpoints are zero in the unrestricted geometry class; at p=0 all moduli collapse to the solid values.",
+    "p=1 is a formal empty-domain limit: zero stiffness, undefined Poisson ratio and undefined specific moduli.",
+    "The density column additionally assumes a fixed solid of density rho_s and massless void."
+  ]
+}

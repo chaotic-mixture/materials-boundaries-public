@@ -1,0 +1,164 @@
+{
+  "release": "0.13.2",
+  "baseline": "0.13.1",
+  "reason": "Historical bibliography-only rights correction. Coefficient models, empirical outputs and old temperature locale snapshots are excluded from this public baseline.",
+  "evidence": [
+    {
+      "url": "https://trc.nist.gov/cryogenics/",
+      "locator": "Cryogenic Technology Resources, numbered item 3: Cryogenic Material Properties Database; web extraction line 6",
+      "verified_fact": "The site identifies the material correlations as developed under a past NIST Standard Reference Data project.",
+      "implication": "Existing metadata must not imply non-SRD provenance or treat general government-work status as sufficient clearance for these correlations. SRD project provenance does not establish a particular product identifier, license, or rights scope."
+    },
+    {
+      "url": "https://www.nist.gov/copyrights-disclaimers",
+      "locator": "Opening paragraph; Use of NIST information; Research products; retrieved page updated June 2, 2026",
+      "verified_fact": "General web guidance permits distribution of unmarked public information with credits, warns of product-specific terms, and refers research products to a specialized policy.",
+      "implication": "Keep this as general policy context, not a product-specific license grant."
+    },
+    {
+      "url": "https://www.nist.gov/open/copyright-fair-use-and-licensing-statements-srd-data-software-and-technical-series-publications",
+      "locator": "Standard Reference Data (SRD) section; Fair Use of Other NIST Data/Works; retrieved page updated June 24, 2025",
+      "verified_fact": "NIST distinguishes SRD compilation copyright from government work outside the SRD Act.",
+      "implication": "Do not apply the non-SRD section to this database without resolving the product's actual status and terms."
+    }
+  ],
+  "records": {
+    "sources": {
+      "nist_cryogenic_al6061_t6": [
+        {
+          "operation": "replace",
+          "path": [
+            "license",
+            "status"
+          ],
+          "before": "NIST public information with attribution and AS IS disclaimer; no blanket CC0 or third-party rights assertion",
+          "after": "Project-specific public redistribution and relicensing terms for the cryogenic database are not verified; review pending. No public-domain or CC0 claim."
+        },
+        {
+          "operation": "append",
+          "path": [
+            "claim_notes"
+          ],
+          "value": "v0.13.2 reuse correction: official correlations originated in a past NIST SRD project; project-specific database redistribution/relicensing terms remain unverified. The general web policy and paper-specific notices do not establish database-wide rights."
+        }
+      ],
+      "nist_cryogenic_ss304": [
+        {
+          "operation": "replace",
+          "path": [
+            "license",
+            "status"
+          ],
+          "before": "NIST public information with attribution and AS IS disclaimer; no blanket CC0 or third-party rights assertion",
+          "after": "Project-specific public redistribution and relicensing terms for the cryogenic database are not verified; review pending. No public-domain or CC0 claim."
+        },
+        {
+          "operation": "append",
+          "path": [
+            "claim_notes"
+          ],
+          "value": "v0.13.2 reuse correction: official correlations originated in a past NIST SRD project; project-specific database redistribution/relicensing terms remain unverified. The general web policy and paper-specific notices do not establish database-wide rights."
+        }
+      ],
+      "nist_cryogenic_reference_list": [
+        {
+          "operation": "replace",
+          "path": [
+            "license",
+            "status"
+          ],
+          "before": "NIST public information with attribution and AS IS disclaimer; no blanket CC0 or third-party rights assertion",
+          "after": "Project-specific public redistribution and relicensing terms for the cryogenic database are not verified; review pending. No public-domain or CC0 claim."
+        },
+        {
+          "operation": "append",
+          "path": [
+            "claim_notes"
+          ],
+          "value": "v0.13.2 reuse correction: official correlations originated in a past NIST SRD project; project-specific database redistribution/relicensing terms remain unverified. The general web policy and paper-specific notices do not establish database-wide rights."
+        }
+      ],
+      "bradley_radebaugh_lewis_2006": [
+        {
+          "operation": "replace",
+          "path": [
+            "license",
+            "status"
+          ],
+          "before": "NIST public information with attribution and AS IS disclaimer; no blanket CC0 or third-party rights assertion",
+          "after": "The PDF identifies the NIST contribution as not subject to U.S. copyright; this paper-specific notice is not a license grant for the linked database. Database public redistribution and relicensing terms are not verified; review pending. No database-wide public-domain or CC0 claim."
+        },
+        {
+          "operation": "append",
+          "path": [
+            "claim_notes"
+          ],
+          "value": "v0.13.2 reuse correction: official correlations originated in a past NIST SRD project; project-specific database redistribution/relicensing terms remain unverified. The general web policy and paper-specific notices do not establish database-wide rights."
+        }
+      ],
+      "nist_public_information_reuse": [
+        {
+          "operation": "replace",
+          "path": [
+            "license",
+            "status"
+          ],
+          "before": "NIST public information with attribution and AS IS disclaimer; no blanket CC0 or third-party rights assertion",
+          "after": "Project-specific public redistribution and relicensing terms for the cryogenic database are not verified; review pending. No public-domain or CC0 claim."
+        },
+        {
+          "operation": "append",
+          "path": [
+            "claim_notes"
+          ],
+          "value": "v0.13.2 reuse correction: official correlations originated in a past NIST SRD project; project-specific database redistribution/relicensing terms remain unverified. The general web policy and paper-specific notices do not establish database-wide rights."
+        },
+        {
+          "operation": "replace",
+          "path": [
+            "read_status"
+          ],
+          "before": "General web and non-SRD reuse guidance inspected; not a property-specific CC0 license and not proof of SRD or SRM status.",
+          "after": "NIST Cryogenic Technology Resources item 3, general copyright guidance (opening product caveat and Use of NIST information), and specialized SRD/non-SRD sections inspected 2026-10-02; database-specific redistribution/relicensing terms not verified."
+        },
+        {
+          "operation": "replace_item",
+          "path": [
+            "claim_notes"
+          ],
+          "before": "General web and non-SRD reuse guidance inspected; not a property-specific CC0 license and not proof of SRD or SRM status.",
+          "after": "The general NIST web policy and specialized SRD/non-SRD sections are policy context, not a project-specific license grant. The cryogenics homepage identifies past SRD-project provenance without establishing a product identifier or license."
+        },
+        {
+          "operation": "replace",
+          "path": [
+            "provenance",
+            "method"
+          ],
+          "before": "Official NIST web extraction and cited compilation passages inspected; original Mann charts not retrieved.",
+          "after": "Official NIST cryogenics homepage and copyright/SRD policy pages inspected on 2026-10-02 for a narrow reuse-confidence correction; no legal clearance or additional scientific verification implied."
+        },
+        {
+          "operation": "append",
+          "path": [
+            "urls"
+          ],
+          "value": "https://trc.nist.gov/cryogenics/"
+        }
+      ]
+    }
+  },
+  "locales": {},
+  "approved_test_updates": {
+    "tests/test_predictions.py": {
+      "previous_sha256": "83ac09875cb7ba2c171a6a7c70ebc72753a56caa90f1f036380f7e9e165c785c",
+      "sha256": "e7f2ba5b0461ef6089a4c151c8cfb3eca20cc3002b8caf6bd2b8b54e94fe79df",
+      "reason": "v0.13.2 inserts the exact, fail-closed metadata-correction adapter before historical hashes. Original historical science/output hashes and all unrelated assertions are unchanged."
+    },
+    "tests/test_anisotropy_catalog.py": {
+      "previous_sha256": "f9bf5c71f71fa64619e441188013c323d604bbbd6549d929a09deda88ebb3804",
+      "sha256": "245dd83d9711c11a348fd6dacc9dede3f4bb2dc04b89dc9d4d6435643c84b443",
+      "reason": "v0.13.2 applies the same exact metadata-correction adapter to the pre-anisotropy source/model and temperature-output historical guards. Their original fixtures, hashes and scientific assertions remain unchanged."
+    }
+  }
+}

@@ -1,0 +1,301 @@
+{
+  "schema_version": "1.0.0",
+  "purpose": "Independently authored synthetic construction and exact decimal power-sum oracle. No observed material, source transcription, source-derived coefficients, or scientific validation.",
+  "source_id": "materials_boundaries_synthetic_temperature_demo",
+  "equation_display": "E_GPa = a + b*T_K + c*T_K^2 + d*T_K^3 + e*T_K^4",
+  "coefficient_order": [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e"
+  ],
+  "coefficient_units": [
+    "GPa",
+    "GPa/K",
+    "GPa/K^2",
+    "GPa/K^3",
+    "GPa/K^4"
+  ],
+  "models": [
+    {
+      "id": "synthetic_linear_temperature",
+      "construction": "E = 10 + T/10",
+      "branches": [
+        {
+          "id": "synthetic_linear_10_100",
+          "coefficients_text": [
+            "10",
+            "0.1",
+            "0",
+            "0",
+            "0"
+          ],
+          "equation_range_K": [
+            10,
+            100
+          ],
+          "arithmetic_checks": [
+            [
+              "10",
+              "11.0"
+            ],
+            [
+              "25.5",
+              "12.5500"
+            ],
+            [
+              "50",
+              "15.0"
+            ],
+            [
+              "100",
+              "20.0"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "synthetic_overlap_temperature",
+      "construction": "Independent lines intentionally disagree at their inclusive shared endpoint",
+      "branches": [
+        {
+          "id": "synthetic_overlap_20_50",
+          "coefficients_text": [
+            "20",
+            "0.1",
+            "0",
+            "0",
+            "0"
+          ],
+          "equation_range_K": [
+            20,
+            50
+          ],
+          "arithmetic_checks": [
+            [
+              "20",
+              "22.0"
+            ],
+            [
+              "35",
+              "23.5"
+            ],
+            [
+              "49.999",
+              "24.999900000000"
+            ],
+            [
+              "50",
+              "25.0"
+            ]
+          ]
+        },
+        {
+          "id": "synthetic_overlap_50_100",
+          "coefficients_text": [
+            "30",
+            "0.05",
+            "0",
+            "0",
+            "0"
+          ],
+          "equation_range_K": [
+            50,
+            100
+          ],
+          "arithmetic_checks": [
+            [
+              "50",
+              "32.50"
+            ],
+            [
+              "50.001",
+              "32.500050000000"
+            ],
+            [
+              "75",
+              "33.75"
+            ],
+            [
+              "100",
+              "35.00"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "synthetic_quadratic_temperature",
+      "construction": "E = 37.5 + (T-50)^2/1000; turning point at T = 50",
+      "branches": [
+        {
+          "id": "synthetic_quadratic_25_125",
+          "coefficients_text": [
+            "40",
+            "-0.1",
+            "0.001",
+            "0",
+            "0"
+          ],
+          "equation_range_K": [
+            25,
+            125
+          ],
+          "arithmetic_checks": [
+            [
+              "25",
+              "38.125"
+            ],
+            [
+              "50",
+              "37.500"
+            ],
+            [
+              "75",
+              "38.125"
+            ],
+            [
+              "125",
+              "43.125"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "synthetic_quartic_temperature",
+      "construction": "Authored coefficients exercise all five polynomial terms",
+      "branches": [
+        {
+          "id": "synthetic_quartic_10_200",
+          "coefficients_text": [
+            "100",
+            "-0.1",
+            "0.001",
+            "-0.000001",
+            "0.000000001"
+          ],
+          "equation_range_K": [
+            10,
+            200
+          ],
+          "arithmetic_checks": [
+            [
+              "10",
+              "99.099010000"
+            ],
+            [
+              "50",
+              "97.381250000"
+            ],
+            [
+              "100",
+              "99.100000000"
+            ],
+            [
+              "150.5",
+              "104.7044212000625"
+            ],
+            [
+              "200",
+              "113.600000000"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "synthetic_interval_temperature",
+      "construction": "Two independent lines share an interval, without selection or averaging",
+      "branches": [
+        {
+          "id": "synthetic_interval_20_80",
+          "coefficients_text": [
+            "50",
+            "0.05",
+            "0",
+            "0",
+            "0"
+          ],
+          "equation_range_K": [
+            20,
+            80
+          ],
+          "arithmetic_checks": [
+            [
+              "20",
+              "51.00"
+            ],
+            [
+              "60",
+              "53.00"
+            ],
+            [
+              "70",
+              "53.50"
+            ],
+            [
+              "80",
+              "54.00"
+            ]
+          ]
+        },
+        {
+          "id": "synthetic_interval_60_120",
+          "coefficients_text": [
+            "60",
+            "-0.025",
+            "0",
+            "0",
+            "0"
+          ],
+          "equation_range_K": [
+            60,
+            120
+          ],
+          "arithmetic_checks": [
+            [
+              "60",
+              "58.500"
+            ],
+            [
+              "70",
+              "58.250"
+            ],
+            [
+              "80",
+              "58.000"
+            ],
+            [
+              "120",
+              "57.000"
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "shared_endpoint": {
+    "model_id": "synthetic_overlap_temperature",
+    "temperature_K": "50",
+    "branch_values_GPa": {
+      "synthetic_overlap_20_50": "25",
+      "synthetic_overlap_50_100": "32.5"
+    },
+    "high_minus_low_GPa": "7.5"
+  },
+  "shared_interval": {
+    "model_id": "synthetic_interval_temperature",
+    "range_K": [
+      60,
+      80
+    ],
+    "temperature_K": "70",
+    "branch_values_GPa": {
+      "synthetic_interval_20_80": "53.5",
+      "synthetic_interval_60_120": "58.25"
+    }
+  }
+}

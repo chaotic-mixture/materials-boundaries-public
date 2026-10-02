@@ -1,0 +1,52 @@
+{
+  "release": "0.16.0",
+  "baseline_release": "0.15.0",
+  "scope": "Historical assertions adapted only to current schema and explicit new family semantics; previous reviewed correction history retained byte-for-byte.",
+  "approved_test_updates": {
+    "tests/test_anisotropy_catalog.py": {
+      "previous_sha256": "9be54428fdf33bdbf69d4a1ed73200c1ef7e53d84bc4cba184faee4f5da86643",
+      "sha256": "8b0911543f9a985f92dbac4cb3545035a42b3ef23f178a73fe8c785806005c83",
+      "reason": "Update explicit current claims-schema assertion from 1.9.0 to 1.10.0; all scientific assertions retained."
+    },
+    "tests/test_catalog_search.py": {
+      "previous_sha256": "e5c9165aaf8ef98775ad787d9be7a4e718e4fa94c4d474246e6c879330df5b3f",
+      "sha256": "561598fe21eb05182bcd3bb33e407adc133aca5f5db3c435c0e5f7088a0c4428",
+      "reason": "Update explicit current claims-schema assertion from 1.9.0 to 1.10.0; all scientific assertions retained."
+    },
+    "tests/test_directional_poisson_catalog.py": {
+      "previous_sha256": "32e6bb87ad8c63fee6a48cc0f87bb52cd988cdb46aa03bd648d7413f1233d801",
+      "sha256": "83668f45358bea8aabd294ac6d1e0a172d702ee2ef2aad069a2d453a05acc4a5",
+      "reason": "Update explicit current claims-schema assertion from 1.9.0 to 1.10.0; all scientific assertions retained."
+    },
+    "tests/test_fatigue_catalog.py": {
+      "previous_sha256": "ab2163200c87f84b9bde6486938844ed8e800a86bf41d52c7a55879e07f1ce38",
+      "sha256": "f918c5988c084fd454ede076188264f870a92f6284fb3afdb00152786da66092",
+      "reason": "Update explicit current claims-schema assertion from 1.9.0 to 1.10.0; all scientific assertions retained."
+    },
+    "tests/test_mechanical.py": {
+      "previous_sha256": "b06a4feccf4d8c679f17d3ea2d64af20647a870bdc57e24885628683ef140451",
+      "sha256": "c99307f4be1bc1968f5ede8644f99f66f83d17ea748e589e105042a5688bb677",
+      "reason": "Update explicit current claims-schema assertion from 1.9.0 to 1.10.0; all scientific assertions retained."
+    },
+    "tests/test_mechanics_catalog_expansion.py": {
+      "previous_sha256": "5d26e903db8a4e30551dd9611c438bfa9c20af5c237f7294ba6766ac57030ea7",
+      "sha256": "57e69fbf1fc2858f1bf12927501ed9ba39f76ecdb33161530aaaa7c502314943",
+      "reason": "Update explicit current claims-schema assertion from 1.9.0 to 1.10.0; all scientific assertions retained."
+    },
+    "tests/test_observation_catalog.py": {
+      "previous_sha256": "b374a7ffda8c375f09b11278de275d3466a5738a07b44d865820e1b8ff91f10c",
+      "sha256": "aa0d64ac366dcdb43bfdf81103a12cbefe5ec2e11c631cad85cf780aebf05fae",
+      "reason": "Update explicit current claims-schema assertion from 1.9.0 to 1.10.0; all scientific assertions retained."
+    },
+    "tests/test_fracture_catalog.py": {
+      "previous_sha256": "d89655f7d0c307c5b5fc0d8653689b7a3bfd48036397c508d170f0ed205f9093",
+      "sha256": "77ee8cc3d87fe4f00d09bf6aa3e8cbcf69869e16f3de02fdbdfa1fcbe1d70d91",
+      "reason": "Extend exact family-dependent dependency assertions to the hydrostatic definition (empty) and normalized relation (one hydrostatic-definition-family dependency); every prior family assertion retained."
+    },
+    "tests/provenance_corrections.py": {
+      "previous_sha256": "4ebebdb77ec12dbb44a2cc9b659f9ce9bd855a21b9b296ed16c8001e5124d730",
+      "sha256": "943df60d15d6ed441ff9823ee4dad8794787b9ed7851d8094d57383e77444042",
+      "reason": "Append one fail-closed release-ledger step after all prior correction steps; preserve every earlier allowed-file set, previous hash check and exact correction record."
+    }
+  }
+}

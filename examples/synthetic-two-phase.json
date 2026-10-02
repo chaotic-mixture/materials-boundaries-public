@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "id": "synthetic-two-phase",
+  "conditions": {
+    "dimension": 3,
+    "constituent_symmetry": "isotropic",
+    "effective_symmetry": "isotropic",
+    "kinematics": "small_strain",
+    "constitutive_law": "linear_elastic",
+    "loading": "static",
+    "interface": "perfectly_bonded"
+  },
+  "phases": [
+    {
+      "id": "phase_1",
+      "volume_fraction": 0.5,
+      "bulk_modulus": {
+        "value": 10,
+        "unit": "GPa"
+      },
+      "shear_modulus": {
+        "value": 5,
+        "unit": "GPa"
+      }
+    },
+    {
+      "id": "phase_2",
+      "volume_fraction": 0.5,
+      "bulk_modulus": {
+        "value": 30,
+        "unit": "GPa"
+      },
+      "shear_modulus": {
+        "value": 15,
+        "unit": "GPa"
+      }
+    }
+  ],
+  "provenance": {
+    "kind": "synthetic",
+    "note": "Illustrative inputs only; not measured or Materials Project data."
+  }
+}

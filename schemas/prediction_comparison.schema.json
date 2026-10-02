@@ -1,0 +1,384 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:materials-boundaries:schema:prediction_comparison:1.1.0",
+  "title": "Canonical discrete computational comparison: closed protocol families",
+  "oneOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0.0"
+        },
+        "engine_version": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "classification": {
+          "const": "published_computational_prediction"
+        },
+        "group_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "group_snapshot": {
+          "$ref": "urn:materials-boundaries:schema:computational_predictions:1.1.0#/$defs/ni_group"
+        },
+        "protocol_snapshot": {
+          "$ref": "urn:materials-boundaries:schema:computational_predictions:1.1.0#/$defs/ni_protocol"
+        },
+        "source_snapshots": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "urn:materials-boundaries:schema:sources:1.0.0#/properties/records/items"
+          }
+        },
+        "record_snapshots": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "urn:materials-boundaries:schema:computational_predictions:1.1.0#/$defs/ni_record"
+          }
+        },
+        "points": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "record_id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              },
+              "formula": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "value_GPa": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "source_value_string": {
+                "type": "string",
+                "pattern": "^[0-9]+\\.[0-9]+$"
+              }
+            },
+            "required": [
+              "record_id",
+              "formula",
+              "value_GPa",
+              "source_value_string"
+            ]
+          }
+        },
+        "axis": {
+          "const": {
+            "quantity": "ideal_shear_strength",
+            "unit": "GPa",
+            "minimum": 0
+          }
+        },
+        "display": {
+          "const": "unconnected_categorical_points"
+        },
+        "interpolation": {
+          "const": false
+        },
+        "uncertainty_bars": {
+          "const": null
+        },
+        "stress_strain_curve": {
+          "const": null
+        },
+        "comparison_scope": {
+          "const": "explicit_same_source_reported_method_only"
+        },
+        "unknown_conditions_equivalent": {
+          "const": false
+        }
+      },
+      "required": [
+        "schema_version",
+        "engine_version",
+        "classification",
+        "group_id",
+        "group_snapshot",
+        "protocol_snapshot",
+        "source_snapshots",
+        "record_snapshots",
+        "points",
+        "axis",
+        "display",
+        "interpolation",
+        "uncertainty_bars",
+        "stress_strain_curve",
+        "comparison_scope",
+        "unknown_conditions_equivalent"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.1.0"
+        },
+        "engine_version": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "classification": {
+          "const": "published_computational_prediction"
+        },
+        "group_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "group_snapshot": {
+          "$ref": "urn:materials-boundaries:schema:computational_predictions:1.1.0#/$defs/silicon_group"
+        },
+        "protocol_snapshot": {
+          "$ref": "urn:materials-boundaries:schema:computational_predictions:1.1.0#/$defs/silicon_protocol"
+        },
+        "source_snapshots": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "urn:materials-boundaries:schema:sources:1.0.0#/properties/records/items"
+          }
+        },
+        "record_snapshots": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "urn:materials-boundaries:schema:computational_predictions:1.1.0#/$defs/silicon_record"
+          }
+        },
+        "points": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "record_id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              },
+              "formula": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "value_GPa": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "source_value_string": {
+                "type": "string",
+                "pattern": "^[0-9]+\\.[0-9]+$"
+              },
+              "direction": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "family_indices": {
+                    "enum": [
+                      [
+                        1,
+                        0,
+                        0
+                      ],
+                      [
+                        1,
+                        1,
+                        0
+                      ],
+                      [
+                        1,
+                        1,
+                        1
+                      ]
+                    ]
+                  },
+                  "display": {
+                    "enum": [
+                      "⟨100⟩",
+                      "⟨110⟩",
+                      "⟨111⟩"
+                    ]
+                  },
+                  "notation": {
+                    "const": "crystallographically_equivalent_direction_family_not_a_specific_signed_vector"
+                  }
+                },
+                "required": [
+                  "family_indices",
+                  "display",
+                  "notation"
+                ]
+              }
+            },
+            "required": [
+              "record_id",
+              "formula",
+              "value_GPa",
+              "source_value_string",
+              "direction"
+            ]
+          }
+        },
+        "axis": {
+          "const": {
+            "quantity": "tensile_first_instability_strength",
+            "unit": "GPa",
+            "minimum": 0
+          }
+        },
+        "display": {
+          "const": "unconnected_categorical_points"
+        },
+        "interpolation": {
+          "const": false
+        },
+        "uncertainty_bars": {
+          "const": null
+        },
+        "stress_strain_curve": {
+          "const": null
+        },
+        "comparison_scope": {
+          "const": "explicit_same_source_reported_method_only"
+        },
+        "unknown_conditions_equivalent": {
+          "const": false
+        },
+        "comparison_axis": {
+          "const": "loading_direction_family"
+        },
+        "associated_critical_strains": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "quantity": {
+                "const": "critical_engineering_strain_at_first_instability"
+              },
+              "unit": {
+                "const": "1"
+              },
+              "source_unit": {
+                "const": "%"
+              },
+              "reported_decimal_places": {
+                "const": 0
+              },
+              "uncertainty": {
+                "const": null
+              },
+              "definition": {
+                "const": "engineering_strain_at_the_same_reported_first_instability_as_the_strength"
+              },
+              "value": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "source_value_string": {
+                "type": "string",
+                "pattern": "^[1-9][0-9]*$"
+              },
+              "precision_note": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "evidence": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "source_id": {
+                      "type": "string",
+                      "pattern": "^[a-z][a-z0-9_]*$"
+                    },
+                    "locator": {
+                      "type": "string",
+                      "minLength": 1,
+                      "pattern": "\\S"
+                    },
+                    "url": {
+                      "type": "string",
+                      "format": "uri",
+                      "pattern": "^https://"
+                    },
+                    "supports": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "string",
+                        "minLength": 1,
+                        "pattern": "\\S"
+                      }
+                    }
+                  },
+                  "required": [
+                    "source_id",
+                    "locator",
+                    "url",
+                    "supports"
+                  ]
+                }
+              },
+              "record_id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              }
+            },
+            "required": [
+              "quantity",
+              "unit",
+              "source_unit",
+              "reported_decimal_places",
+              "uncertainty",
+              "definition",
+              "value",
+              "source_value_string",
+              "precision_note",
+              "evidence",
+              "record_id"
+            ]
+          }
+        }
+      },
+      "required": [
+        "schema_version",
+        "engine_version",
+        "classification",
+        "group_id",
+        "group_snapshot",
+        "protocol_snapshot",
+        "source_snapshots",
+        "record_snapshots",
+        "points",
+        "axis",
+        "display",
+        "interpolation",
+        "uncertainty_bars",
+        "stress_strain_curve",
+        "comparison_scope",
+        "unknown_conditions_equivalent",
+        "comparison_axis",
+        "associated_critical_strains"
+      ]
+    }
+  ]
+}

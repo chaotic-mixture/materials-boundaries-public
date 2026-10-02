@@ -1,0 +1,22 @@
+name: tests
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  unit-and-schema:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m unittest discover -s tests -p test_release_metadata.py -v
+      - run: python -m pip install -e '.[dev]'
+      - run: python -m pip wheel --no-deps --wheel-dir dist .
+      - run: python scripts/check_wheel_metadata.py dist/*.whl
+      - run: python scripts/validate_catalogs.py
+      - run: python -m unittest discover -s tests -v
+      - run: python -m materials_boundaries evaluate examples/synthetic-two-phase.json --json

@@ -1,0 +1,2000 @@
+{
+  "axis": {
+    "quantity": "absolute_temperature",
+    "unit": "K"
+  },
+  "cases": [
+    {
+      "model_id": "synthetic_linear_temperature",
+      "model_snapshot": {
+        "author_provenance": {
+          "author": "Materials Boundaries contributors",
+          "creation_method": "independently_authored_demonstration_polynomial",
+          "derived_from_measurements": false,
+          "is_empirical": false
+        },
+        "branches": [
+          {
+            "coefficients_text": [
+              "10",
+              "0.1",
+              "0",
+              "0",
+              "0"
+            ],
+            "endpoints": "inclusive",
+            "equation_range_K": [
+              10,
+              100
+            ],
+            "id": "synthetic_linear_10_100",
+            "range_status": "artificial_demonstration_interval",
+            "reported_fit_error": {
+              "confidence_level": null,
+              "is_confidence_interval": false,
+              "is_measurement_uncertainty": false,
+              "is_validated_maximum_error_bound": false,
+              "statistic": null,
+              "status": "not_applicable_synthetic_demo",
+              "unit": null,
+              "value": null
+            },
+            "source_data_range_K": null
+          }
+        ],
+        "classification": "synthetic_demo",
+        "coefficient_order": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e"
+        ],
+        "coefficient_units": [
+          "GPa",
+          "GPa/K",
+          "GPa/K^2",
+          "GPa/K^3",
+          "GPa/K^4"
+        ],
+        "curation_date": "2026-10-02",
+        "descriptions": {
+          "de": "Projekteigene SYNTHETISCHE Demonstration: lineares Polynom mit künstlichen Temperaturintervallen. Keine Darstellung realer Materialien, Messungen, empirischer Anpassungen, physikalischer Vorhersagen oder theoretischer Schranken.",
+          "en": "Project-authored SYNTHETIC linear polynomial demonstration with artificial temperature intervals. No real material, measurements, empirical fit, physical prediction or theoretical bound is represented.",
+          "ja": "プロジェクト独自の合成線形多項式デモ。温度区間は人為的に設定されており、実在材料、測定、経験的適合、物理的予測、理論的限界を表さない。",
+          "zh": "项目原创的合成线性多项式演示，温度区间为人为设定。不代表真实材料、测量、经验拟合、物理预测或理论界。"
+        },
+        "equation_display": "E_GPa = a + b*T_K + c*T_K^2 + d*T_K^3 + e*T_K^4",
+        "equation_family": "temperature_quartic_v1",
+        "evaluation_support": "temperature_quartic",
+        "id": "synthetic_linear_temperature",
+        "input_unit": "K",
+        "material": {
+          "UNS": null,
+          "identity_status": "synthetic_demo",
+          "name": "SYNTHETIC linear demonstration",
+          "temper": null,
+          "temper_status": "not_applicable_synthetic_demo"
+        },
+        "name": "SYNTHETIC linear temperature demonstration",
+        "output_unit": "GPa",
+        "overlap_policy": "retain_all_matching_branches_without_selection_averaging_or_smoothing",
+        "quantity": "youngs_modulus",
+        "range_interpretation": "Artificial, inclusive demonstration intervals chosen by the project authors. Null source data ranges mean there are no observations; overlaps exercise branch retention only.",
+        "reuse": {
+          "caveats": [
+            "Coefficients and intervals were authored for software demonstrations; no measurement collection or external correlation is represented.",
+            "Artificial values are not usable as real-material evidence or design inputs.",
+            "Arithmetic checks do not establish empirical validity."
+          ],
+          "recommended_attribution": "Materials Boundaries contributors, synthetic temperature demonstrations, 2026-10-02.",
+          "status": "Original project-authored synthetic demonstration; see project LICENSE for reuse terms."
+        },
+        "scope_exclusions": [
+          "All real-material property inference",
+          "Empirical accuracy, experimental or statistical error claims",
+          "Strength, safety factors, design allowables and physical bounds",
+          "Extrapolation beyond artificial demonstration intervals"
+        ],
+        "source_ids": [
+          "materials_boundaries_synthetic_temperature_demo"
+        ],
+        "source_locator": "Project-authored linear demonstration in materials_boundaries/data/temperature_models.json",
+        "unknown_conditions": {
+          "cold_work": {
+            "status": "not_applicable_synthetic_demo",
+            "value": null
+          },
+          "confidence_level": {
+            "status": "not_applicable_synthetic_demo",
+            "value": null
+          },
+          "fit_error_statistical_definition": {
+            "status": "not_applicable_synthetic_demo",
+            "value": null
+          },
+          "grain_size": {
+            "status": "not_applicable_synthetic_demo",
+            "value": null
+          },
+          "measurement_uncertainty": {
+            "status": "not_applicable_synthetic_demo",
+            "value": null
+          },
+          "porosity": {
+            "status": "not_applicable_synthetic_demo",
+            "value": null
+          },
+          "pressure": {
+            "status": "not_applicable_synthetic_demo",
+            "value": null
+          },
+          "product_form": {
+            "status": "not_applicable_synthetic_demo",
+            "value": null
+          },
+          "specimen_geometry": {
+            "status": "not_applicable_synthetic_demo",
+            "value": null
+          },
+          "strain_rate_or_frequency": {
+            "status": "not_applicable_synthetic_demo",
+            "value": null
+          },
+          "test_direction": {
+            "status": "not_applicable_synthetic_demo",
+            "value": null
+          },
+          "test_method": {
+            "status": "not_applicable_synthetic_demo",
+            "value": null
+          },
+          "texture": {
+            "status": "not_applicable_synthetic_demo",
+            "value": null
+          }
+        },
+        "verification": {
+          "empirical_validation": false,
+          "independent_scientific_review": false,
+          "synthetic_arithmetic_checked": true,
+          "translation_review": "machine_assisted_not_scientifically_reviewed"
+        },
+        "version": "1.0.0"
+      },
+      "overlaps": [],
+      "series": [
+        {
+          "branch_id": "synthetic_linear_10_100",
+          "equation_range_K": [
+            10,
+            100
+          ],
+          "points": [
+            {
+              "status": "prediction",
+              "temperature_K": 10,
+              "value_GPa": 11.0
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 10.9,
+              "value_GPa": 11.09
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 11.8,
+              "value_GPa": 11.18
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 12.7,
+              "value_GPa": 11.27
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 13.6,
+              "value_GPa": 11.36
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 14.5,
+              "value_GPa": 11.45
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 15.4,
+              "value_GPa": 11.54
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 16.3,
+              "value_GPa": 11.63
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 17.2,
+              "value_GPa": 11.72
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 18.1,
+              "value_GPa": 11.81
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 19.0,
+              "value_GPa": 11.9
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 19.9,
+              "value_GPa": 11.99
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 20.8,
+              "value_GPa": 12.08
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 21.7,
+              "value_GPa": 12.17
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 22.6,
+              "value_GPa": 12.26
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 23.5,
+              "value_GPa": 12.35
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 24.4,
+              "value_GPa": 12.44
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 25.3,
+              "value_GPa": 12.53
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 26.2,
+              "value_GPa": 12.62
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 27.1,
+              "value_GPa": 12.71
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 28.0,
+              "value_GPa": 12.8
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 28.9,
+              "value_GPa": 12.89
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 29.8,
+              "value_GPa": 12.98
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 30.7,
+              "value_GPa": 13.07
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 31.6,
+              "value_GPa": 13.16
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 32.5,
+              "value_GPa": 13.25
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 33.4,
+              "value_GPa": 13.34
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 34.3,
+              "value_GPa": 13.43
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 35.2,
+              "value_GPa": 13.52
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 36.1,
+              "value_GPa": 13.61
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 37.0,
+              "value_GPa": 13.7
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 37.9,
+              "value_GPa": 13.79
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 38.8,
+              "value_GPa": 13.88
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 39.7,
+              "value_GPa": 13.97
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 40.6,
+              "value_GPa": 14.06
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 41.5,
+              "value_GPa": 14.15
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 42.4,
+              "value_GPa": 14.24
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 43.3,
+              "value_GPa": 14.33
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 44.2,
+              "value_GPa": 14.42
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 45.1,
+              "value_GPa": 14.51
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 46.0,
+              "value_GPa": 14.6
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 46.9,
+              "value_GPa": 14.69
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 47.8,
+              "value_GPa": 14.78
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 48.7,
+              "value_GPa": 14.87
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 49.6,
+              "value_GPa": 14.96
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 50.5,
+              "value_GPa": 15.05
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 51.4,
+              "value_GPa": 15.14
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 52.3,
+              "value_GPa": 15.23
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 53.2,
+              "value_GPa": 15.32
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 54.1,
+              "value_GPa": 15.41
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 55.0,
+              "value_GPa": 15.5
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 55.9,
+              "value_GPa": 15.59
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 56.8,
+              "value_GPa": 15.68
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 57.7,
+              "value_GPa": 15.77
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 58.6,
+              "value_GPa": 15.86
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 59.5,
+              "value_GPa": 15.95
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 60.4,
+              "value_GPa": 16.04
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 61.3,
+              "value_GPa": 16.13
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 62.2,
+              "value_GPa": 16.22
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 63.1,
+              "value_GPa": 16.31
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 64.0,
+              "value_GPa": 16.4
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 64.9,
+              "value_GPa": 16.49
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 65.8,
+              "value_GPa": 16.58
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 66.7,
+              "value_GPa": 16.67
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 67.6,
+              "value_GPa": 16.76
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 68.5,
+              "value_GPa": 16.85
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 69.4,
+              "value_GPa": 16.94
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 70.3,
+              "value_GPa": 17.03
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 71.2,
+              "value_GPa": 17.12
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 72.1,
+              "value_GPa": 17.21
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 73.0,
+              "value_GPa": 17.3
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 73.9,
+              "value_GPa": 17.39
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 74.8,
+              "value_GPa": 17.48
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 75.7,
+              "value_GPa": 17.57
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 76.6,
+              "value_GPa": 17.66
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 77.5,
+              "value_GPa": 17.75
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 78.4,
+              "value_GPa": 17.84
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 79.3,
+              "value_GPa": 17.93
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 80.2,
+              "value_GPa": 18.02
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 81.1,
+              "value_GPa": 18.11
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 82.0,
+              "value_GPa": 18.2
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 82.9,
+              "value_GPa": 18.29
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 83.8,
+              "value_GPa": 18.38
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 84.7,
+              "value_GPa": 18.47
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 85.6,
+              "value_GPa": 18.56
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 86.5,
+              "value_GPa": 18.65
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 87.4,
+              "value_GPa": 18.74
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 88.3,
+              "value_GPa": 18.83
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 89.2,
+              "value_GPa": 18.92
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 90.1,
+              "value_GPa": 19.01
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 91.0,
+              "value_GPa": 19.1
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 91.9,
+              "value_GPa": 19.19
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 92.8,
+              "value_GPa": 19.28
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 93.7,
+              "value_GPa": 19.37
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 94.6,
+              "value_GPa": 19.46
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 95.5,
+              "value_GPa": 19.55
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 96.4,
+              "value_GPa": 19.64
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 97.3,
+              "value_GPa": 19.73
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 98.2,
+              "value_GPa": 19.82
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 99.1,
+              "value_GPa": 19.91
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 100,
+              "value_GPa": 20.0
+            }
+          ]
+        }
+      ],
+      "source_snapshots": [
+        {
+          "authors": [
+            "chaotic-mixture"
+          ],
+          "bundled_content": "Original synthetic polynomial coefficients, artificial intervals and project-authored explanatory metadata only.",
+          "claim_notes": [
+            "All coefficients and temperature intervals are independently constructed for software demonstrations and tests; they do not represent any real material, experiment, empirical fit, uncertainty estimate or scientific evidence.",
+            "The unit labels demonstrate evaluator plumbing only; these outputs must not be used for engineering design."
+          ],
+          "doi": null,
+          "id": "materials_boundaries_synthetic_temperature_demo",
+          "license": {
+            "identifier": "MIT",
+            "status": "MIT applies to original project-authored synthetic demonstration coefficients and documentation. No empirical dataset or third-party content is included in these demonstrations."
+          },
+          "provenance": {
+            "curation_date": "2026-10-02",
+            "method": "Original simple polynomial construction for the first public edition; no coefficients transcribed or adapted from literature."
+          },
+          "read_status": "original_project_authored_artificial_examples_not_literature_or_measurements",
+          "role": "synthetic_demo_provenance",
+          "title": "Materials Boundaries original SYNTHETIC temperature demonstrations",
+          "urls": [
+            "https://github.com/chaotic-mixture/materials-boundaries-public/blob/main/docs/TEMPERATURE_MODELS.md"
+          ],
+          "year": 2026
+        }
+      ],
+      "specimen_applicability": "not_applicable_synthetic_demo"
+    },
+    {
+      "model_id": "synthetic_overlap_temperature",
+      "model_snapshot": {
+        "author_provenance": {
+          "author": "Materials Boundaries contributors",
+          "creation_method": "independently_authored_demonstration_polynomial",
+          "derived_from_measurements": false,
+          "is_empirical": false
+        },
+        "branches": [
+          {
+            "coefficients_text": [
+              "20",
+              "0.1",
+              "0",
+              "0",
+              "0"
+            ],
+            "endpoints": "inclusive",
+            "equation_range_K": [
+              20,
+              50
+            ],
+            "id": "synthetic_overlap_20_50",
+            "range_status": "artificial_demonstration_interval",
+            "reported_fit_error": {
+              "confidence_level": null,
+              "is_confidence_interval": false,
+              "is_measurement_uncertainty": false,
+              "is_validated_maximum_error_bound": false,
+              "statistic": null,
+              "status": "not_applicable_synthetic_demo",
+              "unit": null,
+              "value": null
+            },
+            "source_data_range_K": null
+          },
+          {
+            "coefficients_text": [
+              "30",
+              "0.05",
+              "0",
+              "0",
+              "0"
+            ],
+            "endpoints": "inclusive",
+            "equation_range_K": [
+              50,
+              100
+            ],
+            "id": "synthetic_overlap_50_100",
+            "range_status": "artificial_demonstration_interval",
+            "reported_fit_error": {
+              "confidence_level": null,
+              "is_confidence_interval": false,
+              "is_measurement_uncertainty": false,
+              "is_validated_maximum_error_bound": false,
+              "statistic": null,
+              "status": "not_applicable_synthetic_demo",
+              "unit": null,
+              "value": null
+            },
+            "source_data_range_K": null
+          }
+        ],
+        "classification": "synthetic_demo",
+        "coefficient_order": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e"
+        ],
+        "coefficient_units": [
+          "GPa",
+          "GPa/K",
+          "GPa/K^2",
+          "GPa/K^3",
+          "GPa/K^4"
+        ],
+        "curation_date": "2026-10-02",
+        "descriptions": {
+          "de": "Projekteigene SYNTHETISCHE Demonstration: Polynom mit Endpunktüberlappung mit künstlichen Temperaturintervallen. Keine Darstellung realer Materialien, Messungen, empirischer Anpassungen, physikalischer Vorhersagen oder theoretischer Schranken.",
+          "en": "Project-authored SYNTHETIC endpoint-overlap polynomial demonstration with artificial temperature intervals. No real material, measurements, empirical fit, physical prediction or theoretical bound is represented.",
+          "ja": "プロジェクト独自の合成端点重複多項式デモ。温度区間は人為的に設定されており、実在材料、測定、経験的適合、物理的予測、理論的限界を表さない。",
+          "zh": "项目原创的合成端点重叠多项式演示，温度区间为人为设定。不代表真实材料、测量、经验拟合、物理预测或理论界。"
+        },
+        "equation_display": "E_GPa = a + b*T_K + c*T_K^2 + d*T_K^3 + e*T_K^4",
+        "equation_family": "temperature_quartic_v1",
+        "evaluation_support": "temperature_quartic",
+        "id": "synthetic_overlap_temperature",
+        "input_unit": "K",
+        "material": {
+          "UNS": null,
+          "identity_status": "synthetic_demo",
+          "name": "SYNTHETIC overlap demonstration",
+          "temper": null,
+          "temper_status": "not_applicable_synthetic_demo"
+        },
+        "name": "SYNTHETIC overlap temperature demonstration",
+        "output_unit": "GPa",
+        "overlap_policy": "retain_all_matching_branches_without_selection_averaging_or_smoothing",
+        "quantity": "youngs_modulus",
+        "range_interpretation": "Artificial, inclusive demonstration intervals chosen by the project authors. Null source data ranges mean there are no observations; overlaps exercise branch retention only.",
+        "reuse": {
+          "caveats": [
+            "Coefficients and intervals were authored for software demonstrations; no measurement collection or external correlation is represented.",
+            "Artificial values are not usable as real-material evidence or design inputs.",
+            "Arithmetic checks do not establish empirical validity."
+          ],
+          "recommended_attribution": "Materials Boundaries contributors, synthetic temperature demonstrations, 2026-10-02.",
+          "status": "Original project-authored synthetic demonstration; see project LICENSE for reuse terms."
+        },
+        "scope_exclusions": [
+          "All real-material property inference",
+          "Empirical accuracy, experimental or statistical error claims",
+          "Strength, safety factors, design allowables and physical bounds",
+          "Extrapolation beyond artificial demonstration intervals"
+        ],
+        "source_ids": [
+          "materials_boundaries_synthetic_temperature_demo"
+        ],
+        "source_locator": "Project-authored overlap demonstration in materials_boundaries/data/temperature_models.json",
+        "unknown_conditions": {
+          "cold_work": {
+            "status": "not_applicable_synthetic_demo",
+            "value": null
+          },
+          "confidence_level": {
+            "status": "not_applicable_synthetic_demo",
+            "value": null
+          },
+          "fit_error_statistical_definition": {
+            "status": "not_applicable_synthetic_demo",
+            "value": null
+          },
+          "grain_size": {
+            "status": "not_applicable_synthetic_demo",
+            "value": null
+          },
+          "measurement_uncertainty": {
+            "status": "not_applicable_synthetic_demo",
+            "value": null
+          },
+          "porosity": {
+            "status": "not_applicable_synthetic_demo",
+            "value": null
+          },
+          "pressure": {
+            "status": "not_applicable_synthetic_demo",
+            "value": null
+          },
+          "product_form": {
+            "status": "not_applicable_synthetic_demo",
+            "value": null
+          },
+          "specimen_geometry": {
+            "status": "not_applicable_synthetic_demo",
+            "value": null
+          },
+          "strain_rate_or_frequency": {
+            "status": "not_applicable_synthetic_demo",
+            "value": null
+          },
+          "test_direction": {
+            "status": "not_applicable_synthetic_demo",
+            "value": null
+          },
+          "test_method": {
+            "status": "not_applicable_synthetic_demo",
+            "value": null
+          },
+          "texture": {
+            "status": "not_applicable_synthetic_demo",
+            "value": null
+          }
+        },
+        "verification": {
+          "empirical_validation": false,
+          "independent_scientific_review": false,
+          "synthetic_arithmetic_checked": true,
+          "translation_review": "machine_assisted_not_scientifically_reviewed"
+        },
+        "version": "1.0.0"
+      },
+      "overlaps": [
+        {
+          "predictions": [
+            {
+              "branch_id": "synthetic_overlap_20_50",
+              "equation_range_K": [
+                20,
+                50
+              ],
+              "unit": "GPa",
+              "value": 25.0
+            },
+            {
+              "branch_id": "synthetic_overlap_50_100",
+              "equation_range_K": [
+                50,
+                100
+              ],
+              "unit": "GPa",
+              "value": 32.5
+            }
+          ],
+          "status": "ambiguous_overlap",
+          "temperature_K": 50
+        }
+      ],
+      "series": [
+        {
+          "branch_id": "synthetic_overlap_20_50",
+          "equation_range_K": [
+            20,
+            50
+          ],
+          "points": [
+            {
+              "status": "prediction",
+              "temperature_K": 20,
+              "value_GPa": 22.0
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 20.3,
+              "value_GPa": 22.03
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 20.6,
+              "value_GPa": 22.06
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 20.9,
+              "value_GPa": 22.09
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 21.2,
+              "value_GPa": 22.12
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 21.5,
+              "value_GPa": 22.15
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 21.8,
+              "value_GPa": 22.18
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 22.1,
+              "value_GPa": 22.21
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 22.4,
+              "value_GPa": 22.24
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 22.7,
+              "value_GPa": 22.27
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 23.0,
+              "value_GPa": 22.3
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 23.3,
+              "value_GPa": 22.33
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 23.6,
+              "value_GPa": 22.36
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 23.9,
+              "value_GPa": 22.39
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 24.2,
+              "value_GPa": 22.42
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 24.5,
+              "value_GPa": 22.45
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 24.8,
+              "value_GPa": 22.48
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 25.1,
+              "value_GPa": 22.51
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 25.4,
+              "value_GPa": 22.54
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 25.7,
+              "value_GPa": 22.57
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 26.0,
+              "value_GPa": 22.6
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 26.3,
+              "value_GPa": 22.63
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 26.6,
+              "value_GPa": 22.66
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 26.9,
+              "value_GPa": 22.69
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 27.2,
+              "value_GPa": 22.72
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 27.5,
+              "value_GPa": 22.75
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 27.8,
+              "value_GPa": 22.78
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 28.1,
+              "value_GPa": 22.81
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 28.4,
+              "value_GPa": 22.84
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 28.7,
+              "value_GPa": 22.87
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 29.0,
+              "value_GPa": 22.9
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 29.3,
+              "value_GPa": 22.93
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 29.6,
+              "value_GPa": 22.96
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 29.9,
+              "value_GPa": 22.99
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 30.2,
+              "value_GPa": 23.02
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 30.5,
+              "value_GPa": 23.05
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 30.8,
+              "value_GPa": 23.08
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 31.1,
+              "value_GPa": 23.11
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 31.4,
+              "value_GPa": 23.14
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 31.7,
+              "value_GPa": 23.17
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 32.0,
+              "value_GPa": 23.2
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 32.3,
+              "value_GPa": 23.23
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 32.6,
+              "value_GPa": 23.26
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 32.9,
+              "value_GPa": 23.29
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 33.2,
+              "value_GPa": 23.32
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 33.5,
+              "value_GPa": 23.35
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 33.8,
+              "value_GPa": 23.38
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 34.1,
+              "value_GPa": 23.41
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 34.4,
+              "value_GPa": 23.44
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 34.7,
+              "value_GPa": 23.47
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 35.0,
+              "value_GPa": 23.5
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 35.3,
+              "value_GPa": 23.53
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 35.6,
+              "value_GPa": 23.56
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 35.9,
+              "value_GPa": 23.59
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 36.2,
+              "value_GPa": 23.62
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 36.5,
+              "value_GPa": 23.65
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 36.8,
+              "value_GPa": 23.68
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 37.1,
+              "value_GPa": 23.71
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 37.4,
+              "value_GPa": 23.74
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 37.7,
+              "value_GPa": 23.77
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 38.0,
+              "value_GPa": 23.8
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 38.3,
+              "value_GPa": 23.83
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 38.6,
+              "value_GPa": 23.86
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 38.9,
+              "value_GPa": 23.89
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 39.2,
+              "value_GPa": 23.92
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 39.5,
+              "value_GPa": 23.95
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 39.8,
+              "value_GPa": 23.98
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 40.1,
+              "value_GPa": 24.01
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 40.4,
+              "value_GPa": 24.04
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 40.7,
+              "value_GPa": 24.07
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 41.0,
+              "value_GPa": 24.1
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 41.3,
+              "value_GPa": 24.13
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 41.6,
+              "value_GPa": 24.16
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 41.9,
+              "value_GPa": 24.19
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 42.2,
+              "value_GPa": 24.22
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 42.5,
+              "value_GPa": 24.25
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 42.8,
+              "value_GPa": 24.28
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 43.1,
+              "value_GPa": 24.31
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 43.4,
+              "value_GPa": 24.34
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 43.7,
+              "value_GPa": 24.37
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 44.0,
+              "value_GPa": 24.4
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 44.3,
+              "value_GPa": 24.43
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 44.6,
+              "value_GPa": 24.46
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 44.9,
+              "value_GPa": 24.49
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 45.2,
+              "value_GPa": 24.52
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 45.5,
+              "value_GPa": 24.55
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 45.8,
+              "value_GPa": 24.58
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 46.1,
+              "value_GPa": 24.61
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 46.4,
+              "value_GPa": 24.64
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 46.7,
+              "value_GPa": 24.67
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 47.0,
+              "value_GPa": 24.7
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 47.3,
+              "value_GPa": 24.73
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 47.6,
+              "value_GPa": 24.76
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 47.9,
+              "value_GPa": 24.79
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 48.2,
+              "value_GPa": 24.82
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 48.5,
+              "value_GPa": 24.85
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 48.8,
+              "value_GPa": 24.88
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 49.1,
+              "value_GPa": 24.91
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 49.4,
+              "value_GPa": 24.94
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 49.7,
+              "value_GPa": 24.97
+            },
+            {
+              "status": "ambiguous_overlap",
+              "temperature_K": 50,
+              "value_GPa": 25.0
+            }
+          ]
+        },
+        {
+          "branch_id": "synthetic_overlap_50_100",
+          "equation_range_K": [
+            50,
+            100
+          ],
+          "points": [
+            {
+              "status": "ambiguous_overlap",
+              "temperature_K": 50,
+              "value_GPa": 32.5
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 50.5,
+              "value_GPa": 32.525
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 51.0,
+              "value_GPa": 32.55
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 51.5,
+              "value_GPa": 32.575
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 52.0,
+              "value_GPa": 32.6
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 52.5,
+              "value_GPa": 32.625
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 53.0,
+              "value_GPa": 32.65
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 53.5,
+              "value_GPa": 32.675
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 54.0,
+              "value_GPa": 32.7
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 54.5,
+              "value_GPa": 32.725
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 55.0,
+              "value_GPa": 32.75
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 55.5,
+              "value_GPa": 32.775
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 56.0,
+              "value_GPa": 32.8
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 56.5,
+              "value_GPa": 32.825
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 57.0,
+              "value_GPa": 32.85
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 57.5,
+              "value_GPa": 32.875
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 58.0,
+              "value_GPa": 32.9
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 58.5,
+              "value_GPa": 32.925
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 59.0,
+              "value_GPa": 32.95
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 59.5,
+              "value_GPa": 32.975
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 60.0,
+              "value_GPa": 33.0
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 60.5,
+              "value_GPa": 33.025
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 61.0,
+              "value_GPa": 33.05
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 61.5,
+              "value_GPa": 33.075
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 62.0,
+              "value_GPa": 33.1
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 62.5,
+              "value_GPa": 33.125
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 63.0,
+              "value_GPa": 33.15
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 63.5,
+              "value_GPa": 33.175
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 64.0,
+              "value_GPa": 33.2
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 64.5,
+              "value_GPa": 33.225
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 65.0,
+              "value_GPa": 33.25
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 65.5,
+              "value_GPa": 33.275
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 66.0,
+              "value_GPa": 33.3
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 66.5,
+              "value_GPa": 33.325
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 67.0,
+              "value_GPa": 33.35
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 67.5,
+              "value_GPa": 33.375
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 68.0,
+              "value_GPa": 33.4
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 68.5,
+              "value_GPa": 33.425
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 69.0,
+              "value_GPa": 33.45
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 69.5,
+              "value_GPa": 33.475
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 70.0,
+              "value_GPa": 33.5
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 70.5,
+              "value_GPa": 33.525
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 71.0,
+              "value_GPa": 33.55
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 71.5,
+              "value_GPa": 33.575
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 72.0,
+              "value_GPa": 33.6
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 72.5,
+              "value_GPa": 33.625
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 73.0,
+              "value_GPa": 33.65
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 73.5,
+              "value_GPa": 33.675
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 74.0,
+              "value_GPa": 33.7
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 74.5,
+              "value_GPa": 33.725
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 75.0,
+              "value_GPa": 33.75
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 75.5,
+              "value_GPa": 33.775
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 76.0,
+              "value_GPa": 33.8
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 76.5,
+              "value_GPa": 33.825
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 77.0,
+              "value_GPa": 33.85
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 77.5,
+              "value_GPa": 33.875
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 78.0,
+              "value_GPa": 33.9
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 78.5,
+              "value_GPa": 33.925
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 79.0,
+              "value_GPa": 33.95
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 79.5,
+              "value_GPa": 33.975
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 80.0,
+              "value_GPa": 34.0
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 80.5,
+              "value_GPa": 34.025
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 81.0,
+              "value_GPa": 34.05
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 81.5,
+              "value_GPa": 34.075
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 82.0,
+              "value_GPa": 34.1
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 82.5,
+              "value_GPa": 34.125
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 83.0,
+              "value_GPa": 34.15
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 83.5,
+              "value_GPa": 34.175
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 84.0,
+              "value_GPa": 34.2
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 84.5,
+              "value_GPa": 34.225
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 85.0,
+              "value_GPa": 34.25
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 85.5,
+              "value_GPa": 34.275
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 86.0,
+              "value_GPa": 34.3
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 86.5,
+              "value_GPa": 34.325
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 87.0,
+              "value_GPa": 34.35
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 87.5,
+              "value_GPa": 34.375
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 88.0,
+              "value_GPa": 34.4
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 88.5,
+              "value_GPa": 34.425
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 89.0,
+              "value_GPa": 34.45
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 89.5,
+              "value_GPa": 34.475
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 90.0,
+              "value_GPa": 34.5
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 90.5,
+              "value_GPa": 34.525
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 91.0,
+              "value_GPa": 34.55
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 91.5,
+              "value_GPa": 34.575
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 92.0,
+              "value_GPa": 34.6
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 92.5,
+              "value_GPa": 34.625
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 93.0,
+              "value_GPa": 34.65
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 93.5,
+              "value_GPa": 34.675
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 94.0,
+              "value_GPa": 34.7
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 94.5,
+              "value_GPa": 34.725
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 95.0,
+              "value_GPa": 34.75
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 95.5,
+              "value_GPa": 34.775
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 96.0,
+              "value_GPa": 34.8
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 96.5,
+              "value_GPa": 34.825
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 97.0,
+              "value_GPa": 34.85
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 97.5,
+              "value_GPa": 34.875
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 98.0,
+              "value_GPa": 34.9
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 98.5,
+              "value_GPa": 34.925
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 99.0,
+              "value_GPa": 34.95
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 99.5,
+              "value_GPa": 34.975
+            },
+            {
+              "status": "prediction",
+              "temperature_K": 100,
+              "value_GPa": 35.0
+            }
+          ]
+        }
+      ],
+      "source_snapshots": [
+        {
+          "authors": [
+            "chaotic-mixture"
+          ],
+          "bundled_content": "Original synthetic polynomial coefficients, artificial intervals and project-authored explanatory metadata only.",
+          "claim_notes": [
+            "All coefficients and temperature intervals are independently constructed for software demonstrations and tests; they do not represent any real material, experiment, empirical fit, uncertainty estimate or scientific evidence.",
+            "The unit labels demonstrate evaluator plumbing only; these outputs must not be used for engineering design."
+          ],
+          "doi": null,
+          "id": "materials_boundaries_synthetic_temperature_demo",
+          "license": {
+            "identifier": "MIT",
+            "status": "MIT applies to original project-authored synthetic demonstration coefficients and documentation. No empirical dataset or third-party content is included in these demonstrations."
+          },
+          "provenance": {
+            "curation_date": "2026-10-02",
+            "method": "Original simple polynomial construction for the first public edition; no coefficients transcribed or adapted from literature."
+          },
+          "read_status": "original_project_authored_artificial_examples_not_literature_or_measurements",
+          "role": "synthetic_demo_provenance",
+          "title": "Materials Boundaries original SYNTHETIC temperature demonstrations",
+          "urls": [
+            "https://github.com/chaotic-mixture/materials-boundaries-public/blob/main/docs/TEMPERATURE_MODELS.md"
+          ],
+          "year": 2026
+        }
+      ],
+      "specimen_applicability": "not_applicable_synthetic_demo"
+    }
+  ],
+  "classification": "synthetic_demo",
+  "comparison": "Synthetic demonstrations represent no real material or empirical evidence. Any empirical models retain their own evidence and unknown specimen conditions. Shared units do not establish physical equivalence.",
+  "display": "separate_material_facets",
+  "engine_version": "0.16.0",
+  "output": {
+    "quantity": "youngs_modulus",
+    "unit": "GPa"
+  },
+  "overlap_policy": "retain_all_matching_branches_without_selection_averaging_or_smoothing",
+  "overlay_allowed": false,
+  "points_per_branch": 101,
+  "sampling": "Chosen equally spaced samples within each equation range, with exact endpoints; not observations. Straight SVG segments connect samples within a branch only.",
+  "schema_version": "1.0.0",
+  "uncertainty_band": null
+}
