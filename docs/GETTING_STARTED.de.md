@@ -1,6 +1,52 @@
 # Erste Schritte: Materials Boundaries
 
-## Aktuell v0.19.0: einlagige hBN-Beobachtungen als Katalogwissen
+## Aktuell v0.20.0: Offline-Ansicht zur Beobachtungsprüfung
+
+Die sechs vorhandenen modellabhängigen Zusammenfassungen aus drei Studien
+erscheinen als Karten/Tabellen in Quellenreihenfolge. Alle wissenschaftlichen
+Einträge bleiben erhalten: 36 Aussagen, 51 Quellen, sechs Beobachtungen, sechs
+rechnerische Vorhersagen und fünf synthetische Temperaturdemos (sieben Zweige).
+Genau acht Verbundregeln sind ausführbar. Das neue Inspektionsschema ist 1.0.0;
+das Beobachtungsschema bleibt 1.2.0.
+
+```sh
+python -m materials_boundaries observation inspect --output /tmp/observations --lang de
+python -m materials_boundaries observation inspect --output /tmp/hbn --source-id falin_et_al_2017_hbn_mechanical_properties --group-by quantity --lang de
+python -m materials_boundaries observation inspect --output /tmp/selected --id lee_2008_graphene_in_plane_stiffness_2d --id falin_2017_hbn_monolayer_breaking_strength_2d --lang de
+python -m materials_boundaries observation inspect --help --lang de
+```
+
+Wiederholtes `--id` wählt exakte IDs. `--source-id` und `--quantity` vergleichen
+exakt und beachten Groß-/Kleinschreibung. Alle Filter werden mit AND verknüpft;
+zulässige Größen sind `in_plane_stiffness_2d` und `breaking_strength_2d`.
+Standard ist `study`; `quantity` ändert nur die Navigation. Die Katalogreihenfolge
+bleibt erhalten, ohne numerische Sortierung. Unbekannte, doppelte oder fehlerhafte
+IDs, unzulässige Selektoren/Methodenfamilien und leere Ergebnisse werden vor dem
+Schreiben zurückgewiesen.
+
+Ausgabe: `observation-inspection.json`, `.csv`, `.de.svg`, `.narrow.de.svg` und
+`.de.html`. HTML lässt sich lokal öffnen, ist eigenständig und skriptfrei;
+Quellenlinks werden nur auf Wunsch des Lesers geöffnet. JSON/CSV, Quellenwortlaut,
+Zahlen, IDs und Prüfsummen sind sprachunabhängig. Die normalisierte Kataloganzeige
+ist vom Original-Quellenstring getrennt, kein wörtliches Zitat und keine neue
+Dickenumrechnung.
+
+Warnungen stehen vor den Werten: Bei MoS2 bleiben der gedruckte q-Widerspruch und
+das unbekannte tatsächliche Fit-q ohne Neufit/Korrektur bestehen. Bei Graphen ist
+die statistische Bedeutung von ± ungeprüft. hBN-Festigkeit ist die FEM-
+volumengemittelte Spannung unter dem Eindringkörper; genaue zentrale Statistik
+und Spannungskomponente bleiben unbestimmt. hBN-SD/Zählbelege stammen weiterhin
+aus der Autorenantwort zur Begutachtung, PDF S. 8. Steifigkeitszahlen werden nicht
+zu Bruchereigniszahlen. Unbekannte Bedingungen belegen keine Gleichheit.
+
+Kein Beobachtungsrechner, Vergleich bei nachgewiesen gleichen Bedingungen,
+numerische Achsen, Fehlerbalken, Aggregation, Rangfolge oder Überlagerung kommt
+hinzu. Alte Inspektionsbündel neu erzeugen, nicht nur umetikettieren. Quellen-PDFs,
+Abbildungen und Rohdaten werden nicht mitgeliefert. Unabhängige wissenschaftliche
+und muttersprachliche Prüfung der Übersetzungen steht aus.
+[Inspektionsanleitung](OBSERVATION_INSPECTION.md) · [Migration](MIGRATION_v0.20.0.md)
+
+## Historisch v0.19.0: einlagige hBN-Beobachtungen als Katalogwissen
 
 Genau zwei Einträge aus Falin et al. (2017) und eine Quelle kommen hinzu:
 **36 Mechanikaussagen, 51 Quellen, 6 Beobachtungen aus 3 Studien**. Das
@@ -131,7 +177,7 @@ python -m materials_boundaries temperature evaluate examples/temperature/synthet
 python -m materials_boundaries temperature plot --output /tmp/temperature-demos --lang de
 ```
 
-[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.19.0.md)
+[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.20.0.md)
 
 ## Lokal ausführen
 

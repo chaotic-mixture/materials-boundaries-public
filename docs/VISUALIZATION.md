@@ -1,5 +1,34 @@
 # Offline, traceable elastic comparison views
 
+## Current v0.20.0: separate observation inspection
+
+[Observation inspection](OBSERVATION_INSPECTION.md) adds source-ordered,
+non-quantitative cards/tables for the six existing experiment-derived,
+model-dependent summaries. It exports JSON/CSV and wide/narrow SVG plus offline
+HTML, with exact ID/source/quantity filters and study/quantity grouping. Primary
+source-specific warnings precede values; normalized catalog displays remain
+separate from original source strings. The closed inspection schema is 1.0.0;
+scientific records and existing comparison schemas remain unchanged.
+
+There are no observation axes, bars, points, error whiskers, shared scales,
+rankings, aggregation, endpoint calculations or magnitude-dependent styling.
+Unknown conditions never establish equivalence. This is no observation evaluator
+or matched-condition comparison and does not authorize overlays into the existing
+composite, prediction or synthetic-temperature pipelines. The existing eight
+composite rules and scientific results remain unchanged.
+
+```sh
+python -m materials_boundaries observation inspect --output /tmp/observations --lang en
+python -m materials_boundaries observation inspect --output /tmp/strength --quantity breaking_strength_2d --group-by quantity --lang de
+```
+
+See [v0.20.0 migration](MIGRATION_v0.20.0.md). The historical visualization notes
+below describe their own pipelines and release-specific exclusions; they are not
+claims that v0.20.0 lacks an observation inspection view. Static SVG inspection
+and actual browser reflow QA remain distinct verification activities.
+
+## Existing composite visualization layer
+
 This first visualization layer plots the existing canonical elastic engine only:
 conditional Hashin–Shtrikman (HS) K/G intervals, optional Reuss/Voigt lower/upper
 bounds, and derived E/ν outer envelopes. It adds no physical calculator and does
@@ -239,7 +268,7 @@ See [computational predictions](COMPUTATIONAL_PREDICTIONS.md).
 
 ## v0.19.0 hBN observations remain outside composite plots
 
-The current catalog contains six observations from three studies after adding
+At v0.19.0 the catalog contained six observations from three studies after adding
 the two monolayer hBN summaries. All remain `catalog_only` and are excluded
 from composite comparison builders/renderers, overlays, rankings and uncertainty
 bands. The hBN N/m stiffness and model-dependent FEM strength are distinct

@@ -1,6 +1,44 @@
 # はじめに：Materials Boundaries
 
-## 現在の v0.19.0：カタログ専用の単層 hBN 観測
+## 現在の v0.20.0：オフライン観測閲覧ビュー
+
+3研究の既存のモデル依存要約6件を、出典順のカード／表として閲覧できます。
+科学的記録は不変で、論断36件、出典51件、観測6件、計算予測6件、合成温度デモ
+5件（7分岐）を保持します。実行可能な複合材料規則は8件のままです。
+新しい閲覧バンドルのスキーマは1.0.0、観測スキーマは1.2.0のままです。
+
+```sh
+python -m materials_boundaries observation inspect --output /tmp/observations --lang ja
+python -m materials_boundaries observation inspect --output /tmp/hbn --source-id falin_et_al_2017_hbn_mechanical_properties --group-by quantity --lang ja
+python -m materials_boundaries observation inspect --output /tmp/selected --id lee_2008_graphene_in_plane_stiffness_2d --id falin_2017_hbn_monolayer_breaking_strength_2d --lang ja
+python -m materials_boundaries observation inspect --help --lang ja
+```
+
+`--id` は繰り返し指定できます。`--source-id` と `--quantity` は大文字・小文字を
+区別する完全一致です。全フィルターを AND で結合し、量は
+`in_plane_stiffness_2d` と `breaking_strength_2d` を指定できます。
+既定の `study` と任意の `quantity` は閲覧上のグループ分けだけを変更します。
+カタログ順を保ち、数値で並べ替えません。不明・重複・不正形式の ID、未対応の
+指定値／科学的方法ファミリー、空の結果はファイル作成前に拒否します。
+
+出力は `observation-inspection.json`、`.csv`、`.ja.svg`、`.narrow.ja.svg`、
+`.ja.html` です。HTML はローカルで開ける自己完結型で、スクリプトを使いません。
+通信は読者が出典リンクを開く場合のみです。JSON／CSV、出典の表現、数値、ID、
+ダイジェストは言語に依存しません。正規化したカタログ表示と出典の原文文字列は
+別であり、逐語引用や新しい厚さ換算ではありません。
+
+警告を数値の前に表示します。MoS2 の印刷された q の不整合と実際のフィット q
+が不明な点を保持し、再フィット・修正はしません。グラフェンの ± の統計的意味は
+未確認です。hBN の強さは FEM による圧子下応力の体積平均で、正確な中心統計量と
+応力成分は未指定です。hBN の SD／枚数の根拠は査読著者回答 PDF 8頁のままで、
+剛性の標本数を強さの破壊事象数へ転用しません。不明な条件同士の同等性は示せません。
+
+観測計算器、条件を一致させた比較、数値軸、誤差棒、集計、順位付け、重ね描きは
+追加しません。古い閲覧バンドルは再生成し、版番号だけを変えないでください。
+出典 PDF、図、生データは同梱しません。独立した科学的・母語レビューは未実施です。
+[閲覧ガイド](OBSERVATION_INSPECTION.md) · [移行](MIGRATION_v0.20.0.md)
+
+## 以前の v0.19.0：カタログ専用の単層 hBN 観測
 
 Falin ら（2017）のレコード2件と出典1件のみを追加し、**力学論断36件、出典51件、
 3研究の観測6件**です。観測スキーマは **1.1.0 → 1.2.0** となり、hBN 専用の閉じた
@@ -89,7 +127,7 @@ python -m materials_boundaries temperature evaluate examples/temperature/synthet
 python -m materials_boundaries temperature plot --output /tmp/temperature-demos --lang ja
 ```
 
-[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.19.0.md)
+[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.20.0.md)
 
 ## ローカルで実行する
 

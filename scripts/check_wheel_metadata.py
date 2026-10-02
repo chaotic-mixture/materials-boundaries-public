@@ -183,9 +183,53 @@ for language in languages:
             pass
         else:
             raise RuntimeError("installed hBN guard accepted false SD provenance")
+# Observation inspection is presentation-only and must work with no dev extras.
+from materials_boundaries.observation_visualization import (
+    build_observation_inspection, export_observation_inspection, labels,
+    validate_observation_inspection, ObservationInspectionError,
+)
+inspection = build_observation_inspection()
+require(inspection["engine_version"] == expected, "stale installed inspection version")
+require(inspection["schema_version"] == "1.0.0", "wrong installed inspection schema")
+require(inspection["record_snapshots"] == read_catalog("observations")["records"],
+        "installed inspection changed observation snapshots")
+inspection_files = {}
+for language in languages:
+    output = Path(instance_path).parent / "inspection" / language
+    stdout = io.StringIO()
+    with redirect_stdout(stdout):
+        code = main(["observation", "inspect", "--output", str(output), "--lang", language])
+    report = json.loads(stdout.getvalue())
+    require(code == 0 and len(report["artifacts"]) == 5, "installed inspection CLI failed")
+    require(set(p.name for p in output.iterdir()) == set(report["artifacts"]), "wrong inspection artifacts")
+    for filename in report["artifacts"]:
+        text = (output / filename).read_text(encoding="utf-8")
+        require("[missing:" not in text, "missing installed inspection labels")
+        if filename.endswith((".svg", ".html")):
+            require(labels(language)["normalized"] in text, "missing normalized display label")
+    inspection_files[language] = [(output / name).read_bytes() for name in
+                                 ("observation-inspection.json", "observation-inspection.csv")]
+require(all(value == inspection_files["en"] for value in inspection_files.values()),
+        "inspection JSON/CSV changed by locale")
+weakened = deepcopy(inspection)
+weakened["presentation_policy"]["overlay_allowed"] = True
+try:
+    validate_observation_inspection(weakened)
+except ObservationInspectionError:
+    pass
+else:
+    raise RuntimeError("installed inspection guard accepted changed policy")
+invalid_output = Path(instance_path).parent / "invalid-inspection"
+try:
+    export_observation_inspection(invalid_output, record_ids=["not-a-record"])
+except ObservationInspectionError:
+    pass
+else:
+    raise RuntimeError("installed inspection accepted an unknown ID")
+require(not invalid_output.exists(), "invalid inspection wrote partial files")
 print(json.dumps({"version": expected, "metadata_version": metadata_version,
                   "engine_outputs": sorted(outputs), "languages": languages,
-                  "installed_without_dependencies": True, "mixed_observation_catalog_languages": languages, "bulk_wave_catalog_languages": languages, "hbn_observation_languages": languages}))
+                  "installed_without_dependencies": True, "mixed_observation_catalog_languages": languages, "bulk_wave_catalog_languages": languages, "hbn_observation_languages": languages, "observation_inspection_languages": languages, "observation_inspection_schema": "1.0.0"}))
 '''
 
 

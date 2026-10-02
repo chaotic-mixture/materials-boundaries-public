@@ -142,6 +142,19 @@ def _build_parser(language: str) -> argparse.ArgumentParser:
     add_language(prediction_plot)
     prediction_plot.add_argument("--output", required=True, help=pt["output"])
     prediction_plot.add_argument("--group-id", default=DEFAULT_GROUP, help=pt["group"])
+    from .observation_visualization import labels as observation_labels
+    ot = observation_labels(language)
+    observation_parser = sub.add_parser("observation", help=ot["command"], description=ot["command"])
+    add_language(observation_parser)
+    observation_sub = observation_parser.add_subparsers(dest="observation_command", required=True,
+        parser_class=partial(_LocalizedParser, language=language))
+    observation_inspect = observation_sub.add_parser("inspect", help=ot["inspect"], description=ot["inspect"])
+    add_language(observation_inspect)
+    observation_inspect.add_argument("--output", required=True, help=ot["output"])
+    observation_inspect.add_argument("--id", dest="record_ids", action="append", metavar="ID", help=ot["id"])
+    observation_inspect.add_argument("--source-id", metavar="ID", help=ot["source_id"])
+    observation_inspect.add_argument("--quantity", metavar="QUANTITY", help=ot["quantity"])
+    observation_inspect.add_argument("--group-by", choices=("study", "quantity"), default="study", help=ot["group_by"])
     return parser
 
 
@@ -157,6 +170,13 @@ def main(argv: list[str] | None = None) -> int:
     if not hasattr(args, "lang"):
         args.lang = "en"
     try:
+        if args.command == "observation":
+            from .observation_visualization import export_observation_inspection
+            artifacts = export_observation_inspection(
+                args.output, record_ids=args.record_ids, source_id=args.source_id,
+                quantity=args.quantity, group_by=args.group_by, lang=args.lang)
+            print(json.dumps({"output": args.output, "artifacts": artifacts}, ensure_ascii=False))
+            return 0
         if args.command == "prediction":
             from .prediction_visualization import export_prediction_comparison
             artifacts = export_prediction_comparison(args.output, lang=args.lang, group_id=args.group_id)

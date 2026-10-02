@@ -1,6 +1,47 @@
 # Getting started: Materials Boundaries
 
-## Current v0.19.0: catalog-only monolayer hBN observations
+## Current v0.20.0: offline observation inspection
+
+Inspect the six existing model-dependent summaries from three studies as
+source-ordered cards/tables. No scientific records change: 36 claims, 51 sources,
+six observations, six computational predictions and five synthetic temperature
+demos (seven branches) remain. Exactly eight composite rules are executable.
+The new inspection bundle schema is 1.0.0; observations stay 1.2.0.
+
+```sh
+python -m materials_boundaries observation inspect --output /tmp/observations --lang en
+python -m materials_boundaries observation inspect --output /tmp/hbn --source-id falin_et_al_2017_hbn_mechanical_properties --group-by quantity --lang en
+python -m materials_boundaries observation inspect --output /tmp/selected --id lee_2008_graphene_in_plane_stiffness_2d --id falin_2017_hbn_monolayer_breaking_strength_2d --lang en
+python -m materials_boundaries observation inspect --help --lang en
+```
+
+Repeat `--id` for exact IDs; `--source-id` and `--quantity` are exact and
+case-sensitive. All filters combine with AND; valid quantities are
+`in_plane_stiffness_2d` and `breaking_strength_2d`. Default grouping is `study`;
+`quantity` changes navigation only. Packaged order is retained, never value order.
+Unknown/duplicate/malformed IDs, unsupported selectors/families and empty results
+are rejected before files are written.
+
+Exports: `observation-inspection.json`, `.csv`, `.en.svg`, `.narrow.en.svg` and
+`.en.html`. Open HTML locally; it is standalone and script-free, with source
+links followed only by the reader. JSON/CSV, source wording, numbers, IDs and
+digests are language-independent. Normalized catalog display is separate from
+source strings; it is not a verbatim quotation or a new thickness conversion.
+
+Warnings precede values: MoS2 retains the unresolved printed-q discrepancy and
+unknown actual fit q with no refit/correction; graphene's ± statistical meaning
+is unverified; hBN strength is FEM volume-averaged under-indenter stress with
+exact central statistic/component unspecified. hBN SD/count evidence remains
+the peer-review author response, PDF p. 8; stiffness counts do not become
+strength failure counts. Unknown conditions do not establish equivalence.
+
+No observation evaluator, matched-condition comparison, axes, error bars,
+aggregation, ranking or overlay is added. Regenerate stale inspection bundles;
+do not relabel their versions. Source PDFs, figures and raw data are not bundled.
+Translations are not independently scientifically or native-speaker reviewed.
+[Inspection guide](OBSERVATION_INSPECTION.md) · [Migration](MIGRATION_v0.20.0.md)
+
+## Historical v0.19.0: catalog-only monolayer hBN observations
 
 Exactly two Falin et al. (2017) records and one source are added: **36 mechanics
 claims, 51 sources, 6 observations from 3 studies**. Observations schema advances
@@ -117,7 +158,7 @@ python -m materials_boundaries temperature evaluate examples/temperature/synthet
 python -m materials_boundaries temperature plot --output /tmp/temperature-demos --lang en
 ```
 
-[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.19.0.md)
+[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.20.0.md)
 
 ## Run locally
 

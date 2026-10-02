@@ -478,3 +478,15 @@ See [the complete scientific/source contract](BULK_ELASTIC_WAVES.md) and
 [migration](MIGRATION_v0.18.0.md). Source equation inspection and original
 algebra are not independent scientific/native-language review or redistribution
 permission; no source full text, PDF, page image or figure is bundled.
+
+
+## Separate observation inspection exports (v0.20.0)
+
+`observation inspect --output DIR` exports source-ordered inspection cards/tables
+for existing observation records, separately from `catalog` output. It accepts
+repeatable exact `--id`, exact `--source-id`, exact `--quantity` and
+`--group-by study|quantity`; filters combine with AND and retain packaged order.
+Unlike catalog queries, it rejects empty selections and does not accept
+`--query`. JSON/CSV audit exports and localized SVG/HTML retain the source-specific
+inference, uncertainty and evidence contract without numerical comparison,
+aggregation or a new evaluator. [Usage and audit contract](OBSERVATION_INSPECTION.md)

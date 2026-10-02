@@ -1,6 +1,39 @@
 # 快速开始：材料边界
 
-## 当前 v0.19.0：仅目录的单层 hBN 观测
+## 当前 v0.20.0：离线观测查阅视图
+
+以按来源排序的卡片／表格查阅三项研究的六条现有模型相关摘要。科学记录不变：
+36 条论断、51 条来源、六条观测、六条计算预测及五个合成温度演示（七个分支）。
+仍只有八条可执行复合材料规则。新增查阅包 schema 1.0.0；观测 schema 仍为 1.2.0。
+
+```sh
+python -m materials_boundaries observation inspect --output /tmp/observations --lang zh
+python -m materials_boundaries observation inspect --output /tmp/hbn --source-id falin_et_al_2017_hbn_mechanical_properties --group-by quantity --lang zh
+python -m materials_boundaries observation inspect --output /tmp/selected --id lee_2008_graphene_in_plane_stiffness_2d --id falin_2017_hbn_monolayer_breaking_strength_2d --lang zh
+python -m materials_boundaries observation inspect --help --lang zh
+```
+
+可重复 `--id` 选择精确 ID；`--source-id` 和 `--quantity` 区分大小写并精确匹配。
+筛选按 AND 组合；可选量为 `in_plane_stiffness_2d`、`breaking_strength_2d`。
+默认按 `study` 分组，`quantity` 仅改变导航。保留目录顺序，绝不按数值排序。
+未知、重复或格式错误的 ID、不支持的筛选／科学方法族及空结果均在写文件前拒绝。
+
+导出 `observation-inspection.json`、`.csv`、`.zh.svg`、`.narrow.zh.svg` 和 `.zh.html`。
+HTML 可本地打开，无脚本且自包含；仅在读者点击来源链接时访问网络。
+JSON／CSV、来源措辞、数值、ID 和摘要哈希不随语言变化。“规范化目录显示”
+与来源原始字符串分开，不是逐字引文或新的厚度换算。
+
+警告先于数值：MoS2 保留打印 q 矛盾、实际拟合 q 未知且未重拟合／更正；
+石墨烯 ± 的统计含义未经核实；hBN 强度为压头下应力的 FEM 体积平均，
+确切中心统计量及应力分量未指定。hBN 标准差及薄膜计数的证据仍是公开审稿作者
+回复 PDF 第 8 页；刚度样本数不能变成强度失效次数。未知条件不构成条件相同的证据。
+
+不新增观测求值器、匹配条件比较、数值坐标轴、误差棒、聚合、排名或叠加。
+旧查阅包需重新生成，不能仅改版本号。不附来源 PDF、图或原始数据。
+翻译尚未经过独立科学或母语审校。
+[查阅指南](OBSERVATION_INSPECTION.md) · [迁移说明](MIGRATION_v0.20.0.md)
+
+## 历史 v0.19.0：仅目录的单层 hBN 观测
 
 只新增 Falin 等（2017）的两条记录和一条来源：共 **36 条力学论断、51 条来源、
 3 项研究的 6 条观测**。观测 schema **1.1.0 → 1.2.0**，hBN 使用独立封闭方法族。
@@ -81,7 +114,7 @@ python -m materials_boundaries temperature evaluate examples/temperature/synthet
 python -m materials_boundaries temperature plot --output /tmp/temperature-demos --lang zh
 ```
 
-[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.19.0.md)
+[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.20.0.md)
 
 ## 本地运行
 

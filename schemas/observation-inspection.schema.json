@@ -1,0 +1,476 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:materials-boundaries:schema:observation_inspection:1.0.0",
+  "title": "Canonical source-ordered observation inspection v1.0",
+  "description": "Closed inspection-only snapshots of supported observational source/method families. Runtime admission additionally requires canonical rebuilding from current catalogs; schema admission alone establishes neither canonical provenance nor scientific comparability. Snapshot digests identify bundled metadata, not source artifact bytes.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "kind": {
+      "const": "observation_inspection"
+    },
+    "engine_version": {
+      "$ref": "#/$defs/exact_string"
+    },
+    "catalog_schema_versions": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "observations": {
+          "const": "1.2.0"
+        },
+        "sources": {
+          "const": "1.0.0"
+        }
+      },
+      "required": [
+        "observations",
+        "sources"
+      ]
+    },
+    "selection": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "requested_record_ids": {
+          "anyOf": [
+            {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/exact_string"
+              },
+              "uniqueItems": true
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "source_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/exact_string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "quantity": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "resolved_record_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/exact_string"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "requested_record_ids",
+        "source_id",
+        "quantity",
+        "resolved_record_ids"
+      ]
+    },
+    "group_by": {
+      "enum": [
+        "study",
+        "quantity"
+      ]
+    },
+    "groups": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "$ref": "#/$defs/exact_string"
+          },
+          "kind": {
+            "enum": [
+              "study",
+              "quantity"
+            ]
+          },
+          "identity": {
+            "$ref": "#/$defs/exact_string"
+          },
+          "facet_ids": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "pattern": "^observation-[a-f0-9]{64}$"
+            },
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "identity",
+          "facet_ids"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "facets": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/facet"
+      },
+      "uniqueItems": true
+    },
+    "record_snapshots": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "urn:materials-boundaries:schema:observations:1.2.0#/properties/records/items"
+      },
+      "uniqueItems": true
+    },
+    "source_snapshots": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "urn:materials-boundaries:schema:sources:1.0.0#/properties/records/items"
+      },
+      "uniqueItems": true
+    },
+    "record_digests": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "record_id": {
+            "$ref": "#/$defs/exact_string"
+          },
+          "record_version": {
+            "$ref": "#/$defs/exact_string"
+          },
+          "sha256": {
+            "$ref": "#/$defs/sha256"
+          }
+        },
+        "required": [
+          "record_id",
+          "record_version",
+          "sha256"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "source_digests": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "source_id": {
+            "$ref": "#/$defs/exact_string"
+          },
+          "sha256": {
+            "$ref": "#/$defs/sha256"
+          }
+        },
+        "required": [
+          "source_id",
+          "sha256"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "presentation_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "purpose": {
+          "const": "inspection_only"
+        },
+        "display": {
+          "const": "source_ordered_text_facets"
+        },
+        "overlay_allowed": {
+          "const": false
+        },
+        "aggregation_allowed": {
+          "const": false
+        },
+        "unknown_conditions_equivalent": {
+          "const": false
+        },
+        "ranking_allowed": {
+          "const": false
+        },
+        "quantitative_axes_allowed": {
+          "const": false
+        },
+        "uncertainty_endpoints_calculated": {
+          "const": false
+        },
+        "thickness_conversion_allowed": {
+          "const": false
+        },
+        "formula_execution_allowed": {
+          "const": false
+        },
+        "evaluation_support": {
+          "const": "catalog_only"
+        },
+        "quantities_remain_distinct": {
+          "const": true
+        },
+        "associated_study_summaries_are_independent_replications": {
+          "const": false
+        },
+        "snapshot_digests_identify": {
+          "const": "bundled_catalog_metadata_not_original_source_artifact_bytes"
+        },
+        "csv_missing_scalar": {
+          "const": "null"
+        }
+      },
+      "required": [
+        "purpose",
+        "display",
+        "overlay_allowed",
+        "aggregation_allowed",
+        "unknown_conditions_equivalent",
+        "ranking_allowed",
+        "quantitative_axes_allowed",
+        "uncertainty_endpoints_calculated",
+        "thickness_conversion_allowed",
+        "formula_execution_allowed",
+        "evaluation_support",
+        "quantities_remain_distinct",
+        "associated_study_summaries_are_independent_replications",
+        "snapshot_digests_identify",
+        "csv_missing_scalar"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "engine_version",
+    "catalog_schema_versions",
+    "selection",
+    "group_by",
+    "groups",
+    "facets",
+    "record_snapshots",
+    "source_snapshots",
+    "record_digests",
+    "source_digests",
+    "presentation_policy"
+  ],
+  "$defs": {
+    "exact_string": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!\\s)(?!.*\\s$)[^\\u0000-\\u001f\\u007f]+$"
+    },
+    "quantity": {
+      "enum": [
+        "in_plane_stiffness_2d",
+        "breaking_strength_2d"
+      ]
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "facet": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^observation-[a-f0-9]{64}$"
+        },
+        "record_id": {
+          "$ref": "#/$defs/exact_string"
+        },
+        "record_version": {
+          "$ref": "#/$defs/exact_string"
+        },
+        "study_id": {
+          "$ref": "#/$defs/exact_string"
+        },
+        "quantity": {
+          "$ref": "#/$defs/quantity"
+        },
+        "method_family": {
+          "enum": [
+            "lee_2008_legacy_indentation_v1",
+            "bertolazzi_2011_mos2_monolayer_indentation_v1",
+            "falin_2017_hbn_monolayer_indentation_v1"
+          ]
+        },
+        "unit": {
+          "const": "N/m"
+        },
+        "normalized_display": {
+          "type": "string",
+          "pattern": "^[0-9]+(?:\\.[0-9]+)?(?:e[+-]?[0-9]+)? ± [0-9]+(?:\\.[0-9]+)?(?:e[+-]?[0-9]+)? N/m$"
+        },
+        "display_basis": {
+          "const": "catalog_reported_result_value_and_uncertainty_value_in_N_per_m_not_verbatim_source"
+        },
+        "required_caveat_codes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "enum": [
+              "graphene_warning",
+              "mos2_warning",
+              "catalog_mos2_source_notice",
+              "hbn_stiffness_warning",
+              "hbn_strength_warning",
+              "catalog_hbn_sd_notice",
+              "sd_warning"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "uncertainty_type": {
+          "enum": [
+            "reported_plus_minus_unspecified",
+            "reported_standard_deviation"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "record_id",
+        "record_version",
+        "study_id",
+        "quantity",
+        "method_family",
+        "unit",
+        "normalized_display",
+        "display_basis",
+        "required_caveat_codes",
+        "uncertainty_type"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "method_family": {
+                "const": "lee_2008_legacy_indentation_v1"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "required_caveat_codes": {
+                "const": [
+                  "graphene_warning"
+                ]
+              },
+              "uncertainty_type": {
+                "const": "reported_plus_minus_unspecified"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "method_family": {
+                "const": "bertolazzi_2011_mos2_monolayer_indentation_v1"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "required_caveat_codes": {
+                "const": [
+                  "mos2_warning",
+                  "catalog_mos2_source_notice",
+                  "sd_warning"
+                ]
+              },
+              "uncertainty_type": {
+                "const": "reported_standard_deviation"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "method_family": {
+                "const": "falin_2017_hbn_monolayer_indentation_v1"
+              },
+              "quantity": {
+                "const": "in_plane_stiffness_2d"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "required_caveat_codes": {
+                "const": [
+                  "hbn_stiffness_warning",
+                  "catalog_hbn_sd_notice",
+                  "sd_warning"
+                ]
+              },
+              "uncertainty_type": {
+                "const": "reported_standard_deviation"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "method_family": {
+                "const": "falin_2017_hbn_monolayer_indentation_v1"
+              },
+              "quantity": {
+                "const": "breaking_strength_2d"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "required_caveat_codes": {
+                "const": [
+                  "hbn_strength_warning",
+                  "catalog_hbn_sd_notice",
+                  "sd_warning"
+                ]
+              },
+              "uncertainty_type": {
+                "const": "reported_standard_deviation"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

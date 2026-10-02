@@ -1,20 +1,26 @@
 # Traceable, catalog-only observations
 
-Version **0.19.0** contains **six property records from three studies**: two
+Version **0.20.0** retains **six property records from three studies**: two
 unchanged Lee–Wei–Kysar–Hone (2008) graphene records, two unchanged
-Bertolazzi–Brivio–Kis (2011) monolayer MoS2 records, and exactly two new
+Bertolazzi–Brivio–Kis (2011) monolayer MoS2 records, and the two
 Falin et al. (2017) monolayer hBN records. Each pair describes two quantities
 from one study, not two independent confirmations. The catalog is neither a
 broad experimental database nor a source of universal bounds or engineering
 allowables. All six records remain model-dependent and `catalog_only`; no
-evaluator, observation plot, comparison or ranking is added.
+evaluator, quantitative observation plot, matched-condition comparison or ranking is added.
+The separate [offline inspection view](OBSERVATION_INSPECTION.md) adds
+source-ordered cards/tables and auditable JSON/CSV/SVG/HTML, with essential
+caveats before values and normalized displays separate from source strings.
+It uses new inspection schema **1.0.0** without changing these records.
 
-The observations envelope advances from schema **1.1.0 to 1.2.0** through a
-separate, closed hBN family. All four earlier observation objects are preserved
-exactly. Graphene's unknown uncertainty type and the MoS2 printed-q discrepancy
+At v0.19.0, the observations envelope advanced from schema **1.1.0 to 1.2.0**
+through a separate, closed hBN family, preserving the four earlier observation
+objects exactly. All six observation objects and the envelope remain unchanged
+in v0.20.0. Graphene's unknown uncertainty type and the MoS2 printed-q discrepancy
 retain their own evidence and limits; neither inherits hBN assumptions or SD
 provenance. The release has **36 unchanged mechanics claims and 51 sources**;
 exactly eight composite evaluations remain supported. See
+[v0.20.0 migration](MIGRATION_v0.20.0.md), the historical
 [v0.19.0 migration](MIGRATION_v0.19.0.md) and the preserved
 [v0.17.0 migration](MIGRATION_v0.17.0.md).
 
@@ -359,6 +365,21 @@ Scientific and native-language review remain outstanding. See
 [v0.19.0 migration](MIGRATION_v0.19.0.md), [sources](SOURCES.md) and
 [third-party notices](../THIRD_PARTY_NOTICES.md).
 
+## Offline inspection (v0.20.0)
+
+```sh
+python -m materials_boundaries observation inspect --output /tmp/observations --lang en
+python -m materials_boundaries observation inspect --output /tmp/mos2-strength --source-id bertolazzi_brivio_kis_2011 --quantity breaking_strength_2d --lang zh
+```
+
+This separate interface preserves source order and distinct study/quantity
+facets. Repeat `--id` to select exact records; combine exact source/quantity
+filters with AND. Grouping changes navigation only. JSON/CSV remain independent
+of language; SVG/HTML support all four authored locales. Warnings, scoped counts,
+unknown conditions and evidence remain visible. There is no common numeric axis,
+uncertainty endpoint, aggregation or inferred equivalence. See the
+[inspection contract and Python API](OBSERVATION_INSPECTION.md).
+
 ## Read-only access
 
 ```sh
@@ -384,7 +405,7 @@ Default/`--json` output remains a canonical `{schema_version, records}` envelope
 - `materials_boundaries/data/observations.json` stores summaries and context; it is neither `claims.json` nor an instance file
 - `schemas/observations.schema.json` describes the closed graphene/MoS2/hBN observation families; current claims schema is 1.11.0, sources 1.0.0 and evaluation 1.1.0
 - `validate` and `evaluate` still accept composite instances only; they do not execute observation records or infer specimen applicability
-- Comparison builders/renderers still use the original eight elastic evaluations. No observation plots, overlays, uncertainty bars, material ranking or graphene/MoS2/hBN/composite comparison are added
-- The new Falin hBN source is evidence for its two observations only; all earlier source records, claims, predictions and synthetic temperature contents remain unchanged
+- Composite comparison builders/renderers still use the original eight elastic evaluations. The separate observation inspection builder reads only observation/source catalogs; it does not execute formulas or add quantitative plots, overlays, uncertainty bars, ranking or matched-condition comparison
+- The Falin hBN source added in v0.19.0 is evidence for its two observations only; all earlier source records, claims, predictions and synthetic temperature contents remain unchanged
 
 See [v0.19.0 migration](MIGRATION_v0.19.0.md), [v0.17.0 migration](MIGRATION_v0.17.0.md), [historical v0.7.0 migration](MIGRATION_v0.7.0.md), [source notes](SOURCES.md), [four-language terminology](TERMINOLOGY.md) and [visualization boundaries](VISUALIZATION.md).
