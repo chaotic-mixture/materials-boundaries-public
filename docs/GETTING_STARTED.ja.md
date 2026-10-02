@@ -1,8 +1,44 @@
 # はじめに：Materials Boundaries
 
-**現在の v0.17.0** は、一つの研究から単層 MoS2 のカタログ専用レコードを2件追加します。合計は **2研究の観測4件、出典48件**、観測スキーマは **1.1.0** です。既存のグラフェン記録は変更しません。MoS2 の面内剛性 **180 ± 60 N/m** と破壊強さ **15 ± 3 N/m** の ± は、出典が報告する標準偏差です。**印刷された q の式と記載値 q=0.95 は整合せず、実際のフィット定数は未解明です。再フィットは行いません。** [標準偏差の意味・出典・q の注意点](OBSERVATIONS.md#monolayer-mos2-bertolazzi-et-al-2011-new-records)を参照してください。
+## 現在の v0.18.0：カタログ専用のバルク弾性波
 
-**初の公開版（0.16.0）当時の構成：**力学論断34件、出典記録47件、観測2件、計算予測6件、合成温度デモ5件（7分岐）。複合材料の計算規則8件は不変です。論断スキーマは1.10.0で、科学的スキーマとソフトウェアの版は独立しています。
+本版は関係2件と出典2件のみを追加し、**力学論断36件、出典50件**、論断スキーマ
+**1.11.0** となります。2研究の観測4件、計算予測6件、合成温度デモ5件（7分岐）、
+実行可能な複合材料規則8件は不変です。波速計算器、材料入力、テンソル固有値ソルバー、
+波の図は追加しません。
+
+無応力平衡状態にある均質・無限の三次元古典的局所線形弾性・非散逸媒質で、等方的な
+K、G とスカラー密度 ρ が有限正値なら、**c_L²=(K+4G/3)/ρ**、**c_T²=G/ρ**、
+**c_L/c_T∈(√(4/3),∞)** です。これは有限の正ひずみエネルギーを持つ材料集合全体の
+比の範囲です。下限は到達されず、共通の有限上限はありませんが、無限大という値が実現
+するわけではありません。一つの固定材料では c_L、c_T は有限で方向によらず、横波は
+二重縮退します。
+
+所定の実弾性テンソル対称性の下で、**Q_ik=C_ijkl n_j n_l** の単位は Pa、
+**Γ=Q/ρ** の単位は m² s⁻² で、Q a=ρc²a です。位相法線 n と変位の偏極 a は
+別の変数です。厳密な強楕円性は、すべての単位 n で Q(n) が正定値、すなわちすべての
+方向で三つの波速の二乗が厳密に正であることです。全対称ひずみに対するエネルギーの
+正定値性は強楕円性を含意しますが、逆は成り立ちません。プロジェクト独自の反例
+**K=−G/3、G>0** では Q=GI で三つの波速の二乗が等しく正でも、静水圧的なひずみの
+エネルギーは負です。安定な実材料の提案ではなく、既存の全エネルギー安定性基準の意味は
+弱めません。
+
+一般異方性のモードが厳密な縦波・横波とは限らず、縦波が常に最速という順序は主張
+しません。位相速度は波線・群速度についての結論ではありません。静的・等温弾性率の
+自動代入、熱力学的変換、予応力や有限ひずみへの拡張はありません。Chevrot–van der
+Hilst（2003）印刷頁498の式 (1)–(4)、Xiang–Qi–Wei arXiv v2 の2、4–5頁が基礎式の
+出典で、比の区間とエネルギーの証明は独自導出です。出典の図・全文は収録せず、独立した
+科学的・母語レビューは未実施です。[仮定・証明・版・適用除外](BULK_ELASTIC_WAVES.md)と
+[v0.18.0 移行ガイド](MIGRATION_v0.18.0.md)を参照してください。
+
+```sh
+python -m materials_boundaries catalog claims --id isotropic_bulk_plane_wave_speeds_and_ratio --text --lang ja
+python -m materials_boundaries catalog claims --id christoffel_tensor_strong_ellipticity --text --lang ja
+```
+
+**以前の v0.17.0** は、一つの研究から単層 MoS2 のカタログ専用レコードを2件追加しました。当時の合計は **2研究の観測4件、出典48件**、観測スキーマは **1.1.0** です。既存のグラフェン記録は変更しません。MoS2 の面内剛性 **180 ± 60 N/m** と破壊強さ **15 ± 3 N/m** の ± は、出典が報告する標準偏差です。**印刷された q の式と記載値 q=0.95 は整合せず、実際のフィット定数は未解明です。再フィットは行いません。** [標準偏差の意味・出典・q の注意点](OBSERVATIONS.md#monolayer-mos2-bertolazzi-et-al-2011-new-records)を参照してください。
+
+**初の公開版（0.16.0）当時の構成：**力学論断34件、出典記録47件、観測2件、計算予測6件、合成温度デモ5件（7分岐）。複合材料の計算規則8件は不変です。当時の論断スキーマは1.10.0で、科学的スキーマとソフトウェアの版は独立しています。
 
 独自のコード、文書、キュレーションには [MIT ライセンス](../LICENSE)を適用し、第三者の著作物や科学的事実を再許諾しません。NIST の低温係数と派生例は利用条件の確認待ちとして慎重に除外しています。これは再配布禁止が確定したという意味ではありません。書誌情報とリンクは保持します。[第三者の権利に関する注意](../THIRD_PARTY_NOTICES.md)
 
@@ -14,7 +50,7 @@ python -m materials_boundaries temperature evaluate examples/temperature/synthet
 python -m materials_boundaries temperature plot --output /tmp/temperature-demos --lang ja
 ```
 
-[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Release scope](MIGRATION_v0.17.0.md)
+[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.18.0.md)
 
 ## ローカルで実行する
 

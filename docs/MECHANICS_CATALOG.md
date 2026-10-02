@@ -1,6 +1,6 @@
 # Strength and fracture knowledge records
 
-This guide documents five **catalog-only** entries introduced during v0.4.0 development. The current v0.17.0 release has 34 mechanics claims and 48 source records in total. Eight elastic-bound/envelope evaluations remain executable. These additions do not implement a strength/fracture calculator or certify a specimen's premises. Unknown parameters are not filled from elastic-bound endpoints.
+This guide documents five **catalog-only** entries introduced during v0.4.0 development. The current v0.18.0 release has 36 mechanics claims and 50 source records in total. Eight elastic-bound/envelope evaluations remain executable. These additions do not implement a strength/fracture calculator or certify a specimen's premises. Unknown parameters are not filled from elastic-bound endpoints.
 
 | Record | Class | Output / SI unit | Evidence anchor |
 | --- | --- | --- | --- |
@@ -109,3 +109,29 @@ author-manuscript equations were text-checked only. Neither is credited with
 proving the original unrestricted normalized-range theorem. No independent
 scientific/native-language review, source-reuse license, tensor evaluator or
 additional executable composite rule is added.
+
+## v0.18.0 bulk elastic-wave addition
+
+The earlier mechanics entries retain their definitions and evidence. Two new
+catalog-only `model_relation` / `relation` records are
+`isotropic_bulk_plane_wave_speeds_and_ratio` and
+`christoffel_tensor_strong_ellipticity`. With finite positive K,G,ρ, isotropic
+c_L²=(K+4G/3)/ρ and c_T²=G/ρ imply the exact class ratio (√(4/3),∞),
+not attained endpoints. A fixed material has finite direction-independent
+speeds and two transverse polarizations sharing c_T.
+
+In the shared finite real 3D stress-free homogeneous mechanical model,
+Q_ik=C_ijkl n_j n_l has units Pa and Γ=Q/ρ has speed-squared units.
+All-direction strict Q-SPD is equivalent to three strictly positive c² values
+counting multiplicity. Full symmetric-strain energy SPD is stronger: the
+original K=−G/3 counterexample has Q=GI but negative hydrostatic energy.
+Phase normal and polarization differ; generic anisotropic modes have no
+universal exact L/T ordering, and phase speed is not a ray/group-speed claim.
+No static/isothermal modulus substitution is automatic.
+
+The [bulk-wave guide](BULK_ELASTIC_WAVES.md) gives original proofs, precise
+source/version locators and exclusions. Chevrot–van der Hilst (2003), printed
+p. 498 Eqs. (1)–(4), and Xiang–Qi–Wei arXiv v2, pp. 2, 4–5, are the two added
+sources. The 36-claim/50-source catalog adds no evaluator, tensor solver,
+strength prediction or wave plot. Existing full-energy stability criteria,
+observations and eight executable composite rules remain unchanged.

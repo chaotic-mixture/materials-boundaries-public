@@ -1,8 +1,40 @@
 # 快速开始：材料边界
 
-**当前 v0.17.0** 新增一项研究的两条仅目录单层 MoS2 记录：现有 **2 项研究的 4 条观测、48 条来源**，观测 schema 为 **1.1.0**。原有石墨烯记录不变。MoS2 面内刚度 **180 ± 60 N/m** 与破坏强度 **15 ± 3 N/m** 的 ± 表示来源报告的标准差。**打印的 q 公式与所写 q=0.95 不一致；实际拟合常数仍未确定，未重新拟合。** 详见[标准差含义、来源证据与 q 限制](OBSERVATIONS.md#monolayer-mos2-bertolazzi-et-al-2011-new-records)。
+## 当前 v0.18.0：仅目录的体弹性波
 
-**首个公开版本基线（0.16.0）当时的目录：**34 条力学论断、47 条来源记录、2 条观测、6 条计算预测，以及 5 个合成温度演示模型（7 个分支）。八条复合材料计算规则不变。论断 schema 为 1.10.0；科学 schema 版本独立于软件版本。
+本版只新增两条关系和两条来源：共 **36 条力学论断、50 条来源**，论断 schema
+为 **1.11.0**。两项研究的四条观测、六条计算预测、五个合成温度演示（七个分支）
+以及八条可执行复合材料规则不变。不新增波速计算器、材料输入、张量特征值求解器或波图。
+
+在无应力平衡态、均匀无界三维经典局部线弹性无耗散介质中，若各向同性 K、G
+及标量密度 ρ 均为有限正值，则 **c_L²=(K+4G/3)/ρ**、**c_T²=G/ρ**，且
+**c_L/c_T∈(√(4/3),∞)**。这是有限正应变能材料类别之间的比值范围：下确界不达到，
+不存在共同的有限上界，无穷大也不是可达到的材料值。每个固定材料的 c_L、c_T
+均有限且与方向无关，横波具有二重简并。
+
+在所声明的实刚度张量对称性下，**Q_ik=C_ijkl n_j n_l** 的单位为 Pa，
+**Γ=Q/ρ** 的单位为 m² s⁻²，满足 Q a=ρc²a。相位法向 n 与位移偏振 a
+是不同变量。严格强椭圆性要求每个单位 n 的 Q(n) 均正定，等价于每个方向的
+三个波速平方均严格为正。完整对称应变能正定性蕴含强椭圆性，反之不成立：
+项目原创反例 **K=−G/3、G>0** 给出 Q=GI，三个波速平方相等且为正，但静水
+应变能为负。这不是真实稳定材料的提案；既有完整应变能稳定性判据保留较强含义。
+
+一般各向异性模态不一定是精确纵波或横波，也没有普适的“纵波最快”排序。
+相速度不等于关于射线／群速度的结论；不能自动代入静态或等温模量，也未提供
+热力学转换、预应力或有限应变推广。Chevrot–van der Hilst（2003）印刷页 498
+式 (1)–(4) 及 Xiang–Qi–Wei arXiv v2 第 2、4–5 页支持基础方程；区间和能量
+证明为项目原创推导。不附来源图或全文；独立科学与母语审校尚未完成。
+详见[完整假设、证明、版本与排除范围](BULK_ELASTIC_WAVES.md)及
+[v0.18.0 迁移](MIGRATION_v0.18.0.md)。
+
+```sh
+python -m materials_boundaries catalog claims --id isotropic_bulk_plane_wave_speeds_and_ratio --text --lang zh
+python -m materials_boundaries catalog claims --id christoffel_tensor_strong_ellipticity --text --lang zh
+```
+
+**历史 v0.17.0** 新增一项研究的两条仅目录单层 MoS2 记录：当时共有 **2 项研究的 4 条观测、48 条来源**，观测 schema 为 **1.1.0**。原有石墨烯记录不变。MoS2 面内刚度 **180 ± 60 N/m** 与破坏强度 **15 ± 3 N/m** 的 ± 表示来源报告的标准差。**打印的 q 公式与所写 q=0.95 不一致；实际拟合常数仍未确定，未重新拟合。** 详见[标准差含义、来源证据与 q 限制](OBSERVATIONS.md#monolayer-mos2-bertolazzi-et-al-2011-new-records)。
+
+**首个公开版本基线（0.16.0）当时的目录：**34 条力学论断、47 条来源记录、2 条观测、6 条计算预测，以及 5 个合成温度演示模型（7 个分支）。八条复合材料计算规则不变。当时的论断 schema 为 1.10.0；科学 schema 版本独立于软件版本。
 
 原创代码、文档和原创策展内容采用 [MIT 许可证](../LICENSE)，不重新许可第三方作品或科学事实。NIST 低温系数及推导示例出于谨慎暂不收录，等待复用条款澄清；这不表示已经证实禁止再分发。书目信息和链接保留，见[第三方说明](../THIRD_PARTY_NOTICES.md)。
 
@@ -14,7 +46,7 @@ python -m materials_boundaries temperature evaluate examples/temperature/synthet
 python -m materials_boundaries temperature plot --output /tmp/temperature-demos --lang zh
 ```
 
-[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Release scope](MIGRATION_v0.17.0.md)
+[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.18.0.md)
 
 ## 本地运行
 

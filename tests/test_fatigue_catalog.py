@@ -176,7 +176,7 @@ class FatigueContractSchemaTests(unittest.TestCase):
 
     def test_new_contract_and_comparison_snapshot_validate(self):
         validate_catalogs(self.catalogs)
-        self.assertEqual(self.catalogs['claims']['schema_version'],'1.10.0')
+        self.assertEqual(self.catalogs['claims']['schema_version'],'1.11.0')
         self.assertEqual(load_json(ROOT/'schemas/comparison.schema.json')['$defs']['claims'],
                          load_json(ROOT/'schemas/claims.schema.json'))
 

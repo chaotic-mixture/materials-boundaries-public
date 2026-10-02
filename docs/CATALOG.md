@@ -1,6 +1,6 @@
 # Read-only catalog reference
 
-The packaged `claims`, `sources` and `observations` catalogs are curated metadata, not a complete literature index or a comprehensive material-property database. Current v0.17.0 contains 34 mechanics claims, 48 sources and four observations from two studies, alongside five separate synthetic temperature demonstrations (seven branches) and six computational predictions. The two newest claims describe hydrostatic directional compressibility and its normalized tensor-class range; see [compressibility contracts](DIRECTIONAL_COMPRESSIBILITY.md). The earlier [directional Poisson relations](DIRECTIONAL_POISSON.md) remain distinct. Searching never changes a record, fetches a source, evaluates a material, or executes a formula string. A match does not establish applicability or verification; no match does not establish absence from the scientific literature.
+The packaged `claims`, `sources` and `observations` catalogs are curated metadata, not a complete literature index or a comprehensive material-property database. Current v0.18.0 contains 36 mechanics claims, 50 sources and four observations from two studies, alongside five separate synthetic temperature demonstrations (seven branches) and six computational predictions. The two newest claims describe bulk elastic plane-wave speeds and strict strong ellipticity; see [bulk-wave definitions and proofs](BULK_ELASTIC_WAVES.md). The earlier hydrostatic directional compressibility and normalized tensor-class range retain their [compressibility contracts](DIRECTIONAL_COMPRESSIBILITY.md). The earlier [directional Poisson relations](DIRECTIONAL_POISSON.md) remain distinct. Searching never changes a record, fetches a source, evaluates a material, or executes a formula string. A match does not establish applicability or verification; no match does not establish absence from the scientific literature.
 
 ## CLI
 
@@ -19,7 +19,7 @@ python -m materials_boundaries --lang ja catalog --help
 
 `materials-boundaries` is an equivalent entry point after installation. The three catalog kinds are `claims`, `sources` and `observations`.
 
-- Default output remains canonical JSON for backward compatibility; `--json` explicitly requests the same format. The envelope is `{"schema_version": ..., "records": [...]}` even for one match or no matches: claims use `1.10.0`, sources retain `1.0.0`, and the separate observations catalog uses `1.1.0`. The separate evaluation output stays at `1.1.0`
+- Default output remains canonical JSON for backward compatibility; `--json` explicitly requests the same format. The envelope is `{"schema_version": ..., "records": [...]}` even for one match or no matches: claims use `1.11.0`, sources retain `1.0.0`, and the separate observations catalog uses `1.1.0`. The separate evaluation output stays at `1.1.0`
 - `--text` selects human-readable output. `--text` and `--json` are mutually exclusive
 - `--lang en|zh|ja|de` selects display language; English is the default. It may appear globally before the command or after it, and the last occurrence wins
 - Help labels and descriptions are localized. Syntax, flags, filter values, record IDs, and JSON remain canonical
@@ -386,3 +386,58 @@ JSON and scientific IDs/units do not depend on language. See [definitions,
 original proofs, source inspection limits and four-language caveats](DIRECTIONAL_COMPRESSIBILITY.md)
 and [migration](MIGRATION_v0.16.0.md). No independent scientific or native-language
 review, physical realization, or source-redistribution clearance is inferred.
+
+## Bulk elastic-wave relations (v0.18.0)
+
+Exactly two appended `model_relation` / `relation` records have null
+`bound_kind` and `evaluation_support: catalog_only`:
+
+- `isotropic_bulk_plane_wave_speeds_and_ratio`: c_L²=(K+4G/3)/ρ,
+  c_T²=G/ρ and the original project ratio-range derivation
+- `christoffel_tensor_strong_ellipticity`: Q_ik=C_ijkl n_j n_l,
+  Γ=Q/ρ, Q a=ρc²a and the strict all-direction rank-one criterion
+
+The model is finite real 3D, stress-free, homogeneous, local linear-elastic,
+purely mechanical and nondissipative, with both minor and major stiffness
+symmetries and finite positive scalar density. Q has units Pa; Γ and c² have
+units m² s⁻². Phase normal n is distinct from displacement polarization a.
+No static/isothermal-to-acoustic substitution is supplied.
+
+For finite positive K,G,ρ the isotropic material-class ratio is the open range
+(√(4/3),∞), with an unattained infimum and no attained infinity. Each fixed
+material has finite direction-independent speeds and a twofold transverse
+eigenspace. The all-direction criterion instead permits any tensor whose
+Q(n) is SPD for every unit n; zero or negative squared speeds fail it. Full
+symmetric-strain energy SPD implies this criterion, but not conversely:
+K=−G/3, G>0 gives Q=GI and negative hydrostatic energy. Existing full-energy
+stability records are not weakened. General anisotropic modes are not asserted
+to be exact longitudinal/transverse modes with a universal speed ordering;
+phase-speed relations do not supply ray/group velocities.
+
+The closed `bulk_wave_contract` records the shared assumptions, exclusions,
+strict criteria, tensor contraction/normalization, degeneracy and source-versus-
+project attribution. Both additions have `dependencies: []`; neither draws
+runtime composite-bound results into a wave prediction. The first uses quantity
+`isotropic_bulk_phase_speed_ratio` with dimension `dimensionless` and SI unit
+`1`; the second uses `bulk_phase_speed_squared` with `speed_squared` and
+`m^2 s^-2`. Parameter metadata distinguishes `mass_density` (`kg m^-3`),
+`speed` (`m s^-1`) and `speed_squared` (`m^2 s^-2`) from pressure moduli.
+
+The claim envelope advances to 1.11.0 (36 claims); sources stay 1.0.0 (50
+records). Authored four-language display names, cautions and literal aliases do
+not change canonical IDs, equations, units, source identity or search semantics.
+Neither displayed formula strings nor descriptive wave metadata are evaluated.
+There is no wave material input, eigensolver, plot, specimen stability decision
+or extra executable composite rule. Existing observations, including the
+visible unresolved MoS2 q discrepancy, remain unchanged.
+
+```sh
+python -m materials_boundaries catalog claims --id isotropic_bulk_plane_wave_speeds_and_ratio --text --lang en
+python -m materials_boundaries catalog claims --id christoffel_tensor_strong_ellipticity --text --lang de
+python -m materials_boundaries catalog sources --id chevrot_vanderhilst_2003 --json
+```
+
+See [the complete scientific/source contract](BULK_ELASTIC_WAVES.md) and
+[migration](MIGRATION_v0.18.0.md). Source equation inspection and original
+algebra are not independent scientific/native-language review or redistribution
+permission; no source full text, PDF, page image or figure is bundled.

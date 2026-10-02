@@ -34,6 +34,8 @@ EMPTY_DEPENDENCY_FAMILIES = {
     'zener_cubic_elastic_anisotropy_index_v1', 'universal_elastic_anisotropy_index_v1',
     'directional_poissons_ratio_definition_and_range_v1',
     'directional_linear_compressibility_hydrostatic_relation_v1',
+    'isotropic_bulk_plane_wave_speeds_and_ratio_v1',
+    'christoffel_tensor_strong_ellipticity_v1',
 }
 
 

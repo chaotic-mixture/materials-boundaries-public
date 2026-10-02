@@ -84,3 +84,28 @@ Consult [SOURCES.md](docs/SOURCES.md), the scientific guides and the packaged
 `materials_boundaries/data/sources.json` records for precise locators, inspected
 scope, rights evidence and unresolved gaps. Software/schema checks and formula
 cross-checks are not independent scientific peer review or legal clearance.
+
+## Bulk elastic-wave relations (v0.18.0)
+
+Exactly two new bibliographic sources support the catalog-only wave records:
+
+- [Chevrot and van der Hilst (2003)](https://doi.org/10.1046/j.1365-246X.2003.01865.x),
+  *Geophysical Journal International* 152(2), 497–505: ©2003 RAS. The inspected
+  university-hosted journal-layout PDF was visually checked at printed p. 498,
+  Eqs. (1)–(4). Public author/university access does not establish a general
+  reuse license; none was verified
+- [Xiang, Qi and Wei, arXiv:1708.04876v2](https://arxiv.org/abs/1708.04876v2):
+  specifically the January 2018 v2 preprint, with pp. 2, 4–5 visually checked;
+  no verified journal-version claim. Its arXiv nonexclusive distribution
+  permission does not grant general republication or relicensing permission
+
+The repository includes bibliographic metadata, mathematical relations and
+original explanatory proofs, including the speed-ratio interval and the
+strong-ellipticity/strain-energy counterexample. It does not redistribute the
+papers, full text, PDF pages, screenshots or figures. No source author or
+publisher is credited with the project's original interval or counterexample
+proof, nor represented as endorsing it. MIT covers original project work only.
+Source inspection, formula checks and tests are not independent scientific
+review or legal clearance. Existing source-specific notices and the conservative
+NIST omissions remain unchanged. See [wave provenance and proofs](docs/BULK_ELASTIC_WAVES.md)
+and [source ledger](docs/SOURCES.md).

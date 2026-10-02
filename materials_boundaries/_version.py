@@ -1,3 +1,3 @@
 """Single software-release version, read statically by the build backend."""
 
-__version__ = "0.17.0"
+__version__ = "0.18.0"

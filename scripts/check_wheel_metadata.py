@@ -125,9 +125,38 @@ for language in languages:
                         "actual fit constant must remain unknown")
                 require(text.index(translate("catalog_mos2_model_notice", language)) < text.index("180 ± 60 N/m"),
                         "unresolved model notice must precede MoS2 value")
+# Exercise both non-executable wave families in every language and reject
+# weakened scientific metadata without installing schema/runtime dependencies.
+from copy import deepcopy
+from materials_boundaries.catalog_output import render_catalog
+wave_ids = ("isotropic_bulk_plane_wave_speeds_and_ratio", "christoffel_tensor_strong_ellipticity")
+for identifier in wave_ids:
+    wave = query_catalog("claims", record_id=identifier)
+    require(wave["records"][0]["evaluation_support"] == "catalog_only", "wave became executable")
+    for language in languages:
+        for as_json in (False, True):
+            stdout = io.StringIO()
+            with redirect_stdout(stdout):
+                code = main(["catalog", "claims", "--id", identifier, "--lang", language,
+                             "--json" if as_json else "--text"])
+            text = stdout.getvalue()
+            require(code == 0 and "[missing:" not in text, "installed wave CLI failed")
+            if as_json:
+                require(json.loads(text) == wave, "wave JSON changed by language")
+            else:
+                for key in ("notice", "conditions", "normalization", "polarization", "energy", "range", "limits"):
+                    require(translate("catalog_wave_" + key, language) in text, "missing wave disclosure: " + key)
+    weakened = deepcopy(wave)
+    weakened["records"][0]["required_assumptions"]["density"] = "rho>=0"
+    try:
+        render_catalog(weakened, "claims")
+    except ValueError:
+        pass
+    else:
+        raise RuntimeError("installed wave guard accepted non-strict density")
 print(json.dumps({"version": expected, "metadata_version": metadata_version,
                   "engine_outputs": sorted(outputs), "languages": languages,
-                  "installed_without_dependencies": True, "mixed_observation_catalog_languages": languages}))
+                  "installed_without_dependencies": True, "mixed_observation_catalog_languages": languages, "bulk_wave_catalog_languages": languages}))
 '''
 
 

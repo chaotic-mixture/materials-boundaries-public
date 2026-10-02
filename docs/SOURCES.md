@@ -1,6 +1,6 @@
 # Source curation, verification and rights
 
-Reusable claims, observation summaries and the source manifest are separate records. Current v0.17.0 has 34 mechanics claims, 48 sources and four observations from two studies, alongside five synthetic temperature demos (seven branches) and six computational predictions. The v0.8.0 historical batch had 26 claims and 20 sources; its four new stability claims reused an existing source and preserved those 20 source records. Some claims are executable elastic bounds/envelopes; the strength/fracture models, stability criteria and porous solid/void intervals are catalog-only. A source being available or read does not establish every claim attributed to it. Each claim or observation retains its own locator, verification status and gaps. The repository includes brief numerical facts, bibliographic metadata and original curation notes; no publisher PDF, article full text, scraped body or unlicensed figure is bundled.
+Reusable claims, observation summaries and the source manifest are separate records. Current v0.18.0 has 36 mechanics claims, 50 sources and four observations from two studies, alongside five synthetic temperature demos (seven branches) and six computational predictions. The v0.8.0 historical batch had 26 claims and 20 sources; its four new stability claims reused an existing source and preserved those 20 source records. Some claims are executable elastic bounds/envelopes; the strength/fracture models, stability criteria and porous solid/void intervals are catalog-only. A source being available or read does not establish every claim attributed to it. Each claim or observation retains its own locator, verification status and gaps. The repository includes brief numerical facts, bibliographic metadata and original curation notes; no publisher PDF, article full text, scraped body or unlicensed figure is bundled.
 
 ## Historical evidence ledger and later release additions
 
@@ -305,3 +305,55 @@ Repeated works in distinct source roles are not independent studies.
 - `materials_boundaries_synthetic_temperature_demo`: [Materials Boundaries original SYNTHETIC temperature demonstrations](https://github.com/chaotic-mixture/materials-boundaries-public/blob/main/docs/TEMPERATURE_MODELS.md)
 
 - `bertolazzi_brivio_kis_2011`: [Stretching and Breaking of Ultrathin MoS2](https://doi.org/10.1021/nn203879f)
+
+## v0.18.0 bulk elastic-wave evidence and original derivations
+
+This batch appends exactly two sources to the former 48, giving **50 source
+records**. Both support catalog-only continuum relations, not measurements or
+material-specific acoustic predictions. Existing source records retain their
+original rights, inspection scope and verification gaps.
+
+- `chevrot_vanderhilst_2003`: Sébastien Chevrot and Robert D. van der Hilst,
+  “On the effects of a dipping axis of symmetry on shear wave splitting
+  measurements in a transversely isotropic medium,” *Geophysical Journal
+  International* **152(2)**, 497–505 (2003),
+  [DOI 10.1046/j.1365-246X.2003.01865.x](https://doi.org/10.1046/j.1365-246X.2003.01865.x).
+  The inspected [university-hosted journal-layout PDF](https://hilst.mit.edu/wp-content/uploads/2017/05/2003_gji_152-497-505.pdf)
+  was visually checked at §2, printed p. 498 / PDF p. 2, Eqs. (1)–(4).
+  These establish the homogeneous plane-wave equation, density-normalized
+  Christoffel tensor, squared-phase-speed eigenvalue and displacement
+  polarization. First-pair minor symmetry and index relabeling map its Eq. (3)
+  to Q_ik=C_ijkl n_j n_l, Γ=Q/ρ. The paper's later weak-anisotropy perturbation,
+  numerical cases and material results are not imported. ©2003 RAS; no general
+  reuse license was verified
+- `xiang_qi_wei_2018_arxiv_v2`: Hua Xiang, Liqun Qi and Yimin Wei,
+  “On the M-eigenvalues of elasticity tensor and the strong ellipticity
+  condition,” [arXiv:1708.04876v2](https://arxiv.org/abs/1708.04876v2),
+  [versioned PDF](https://arxiv.org/pdf/1708.04876v2). The v2 record was
+  submitted 22 January 2018; its PDF title date is 23 January 2018.
+  Printed/PDF p. 2 (rank-one criterion and tensor symmetries) and pp. 4–5
+  (positive-definiteness implication, isotropic tensor and unnumbered v_P/v_S
+  identities) were visually checked. No journal-version verification is
+  claimed. The arXiv nonexclusive distribution permission is not general
+  republication or relicensing permission
+
+Three source qualifications are scientifically important. The strict rank-one
+quantifiers explicitly exclude zero vectors. Full positive strain energy is
+restricted to nonzero **symmetric** strains, not arbitrary nonsymmetric matrices
+whose skew part is annihilated by elasticity's minor symmetries. The catalog
+does not reuse a derivation that divides by K+G/3 at its zero value: direct
+contraction correctly handles K=−G/3 and its triple wave degeneracy.
+
+The exact positive-energy isotropic class ratio (√(4/3),∞), its unattained
+infimum/unbounded upper extent, index mapping, SPD-to-strong-ellipticity proof,
+K=−G/3 hydrostatic-energy counterexample, fixed-tensor compactness bounds and
+unit audit are **original project derivations**. They are written out in
+[BULK_ELASTIC_WAVES.md](BULK_ELASTIC_WAVES.md), rather than attributed to a
+source's interval theorem or independent peer review. The two claims do not
+cite an uninspected book chapter or generalized-continuum corroboration.
+
+The original full-energy stability sources are not newly re-audited by this
+batch, and their existing claims are not redefined. No article PDF, full text,
+page image or figure is included. Formula inspection and symbolic/software
+checks establish neither physical realizability nor independent scientific
+review. See [migration](MIGRATION_v0.18.0.md) and [third-party notices](../THIRD_PARTY_NOTICES.md).

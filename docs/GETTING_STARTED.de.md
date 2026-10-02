@@ -1,7 +1,54 @@
 # Erste Schritte: Materials Boundaries
 
-**Die aktuelle Version v0.17.0** ergänzt zwei reine Katalogeinträge für
-einlagiges MoS2 aus einer Studie: insgesamt **4 Beobachtungen aus 2 Studien,
+## Aktuell v0.18.0: elastische Volumenwellen als Katalogwissen
+
+Diese Version ergänzt genau zwei Relationen und zwei Quellen: insgesamt
+**36 Mechanikaussagen, 50 Quellen**, Aussagenschema **1.11.0**. Vier
+Beobachtungen aus zwei Studien, sechs rechnerische Vorhersagen, fünf synthetische
+Temperaturdemos (sieben Zweige) und genau acht ausführbare Verbundregeln bleiben
+unverändert. Es gibt keinen neuen Wellenrechner, Materialeingang, Tensor-
+Eigenwertlöser oder Wellenplot.
+
+Für ein spannungsfreies, homogenes, unbegrenztes dreidimensionales klassisches
+lokales linear-elastisches, nichtdissipatives Medium mit endlichen positiven
+isotropen K, G und skalarer Dichte ρ gilt **c_L²=(K+4G/3)/ρ**,
+**c_T²=G/ρ** und **c_L/c_T∈(√(4/3),∞)**. Das ist der Verhältnisbereich über die
+Materialklasse mit positiver Verzerrungsenergie. Das untere Infimum wird nicht
+erreicht; es gibt keine gemeinsame endliche obere Schranke, aber Unendlichkeit
+ist kein erreichter Materialwert. Ein festes Material hat endliche,
+richtungsunabhängige c_L und c_T mit zweifacher transversaler Entartung.
+
+Bei den angegebenen reellen Tensorsymmetrien hat **Q_ik=C_ijkl n_j n_l** die
+Einheit Pa, **Γ=Q/ρ** die Einheit m² s⁻²; es gilt Q a=ρc²a. Phasennormale n
+und Verschiebungspolarisation a sind verschiedene Variablen. Strikte starke
+Elliptizität bedeutet: Q(n) ist für jedes Einheits-n positiv definit,
+gleichbedeutend mit drei strikt positiven Geschwindigkeitsquadraten in jeder
+Richtung. Positive Energie für alle von null verschiedenen symmetrischen
+Verzerrungen impliziert dies, aber nicht umgekehrt. Das eigenständig hergeleitete
+Gegenbeispiel **K=−G/3, G>0** ergibt Q=GI und drei gleiche positive
+Geschwindigkeitsquadrate, jedoch negative hydrostatische Verzerrungsenergie.
+Es ist kein Vorschlag für ein stabiles reales Material; die bisherigen
+vollständigen Energie-Stabilitätskriterien behalten ihre stärkere Bedeutung.
+
+Allgemein anisotrope Moden sind nicht notwendigerweise exakt longitudinal oder
+transversal; eine universelle Reihenfolge mit schnellster Longitudinalmode wird
+nicht behauptet. Phasengeschwindigkeit ist keine Aussage über Strahl- oder
+Gruppengeschwindigkeit. Statische/isotherme Moduln dürfen nicht automatisch
+eingesetzt werden; thermodynamische Umrechnung, Vorspannung und endliche
+Verzerrungen sind nicht abgedeckt. Chevrot–van der Hilst (2003), S. 498,
+Gl. (1)–(4), und Xiang–Qi–Wei arXiv v2, S. 2, 4–5, belegen die Grundgleichungen;
+Intervall- und Energiebeweise sind eigene Projektableitungen. Keine Quellenbilder
+oder Volltexte werden mitgeliefert. Unabhängige wissenschaftliche und
+muttersprachliche Prüfung steht aus. Siehe [Annahmen, Beweise, Versionen und
+Ausschlüsse](BULK_ELASTIC_WAVES.md) sowie [Migration](MIGRATION_v0.18.0.md).
+
+```sh
+python -m materials_boundaries catalog claims --id isotropic_bulk_plane_wave_speeds_and_ratio --text --lang de
+python -m materials_boundaries catalog claims --id christoffel_tensor_strong_ellipticity --text --lang de
+```
+
+**Die vorherige Version v0.17.0** ergänzte zwei reine Katalogeinträge für
+einlagiges MoS2 aus einer Studie: damals insgesamt **4 Beobachtungen aus 2 Studien,
 48 Quellen**, Beobachtungsschema **1.1.0**. Die bisherigen Graphen-Einträge
 bleiben unverändert. MoS2-Steifigkeit **180 ± 60 N/m** und Bruchfestigkeit
 **15 ± 3 N/m** verwenden berichtete Standardabweichungen. **Die gedruckte
@@ -12,7 +59,7 @@ Fitkonstante bleibt ungeklärt. Es erfolgt keine Neuanpassung.** Siehe
 **Historische Basis der ersten öffentlichen Version, 0.16.0:** 34 Mechanikaussagen,
 47 Quellenrecords, 2 Beobachtungen, 6 rechnerische Vorhersagen und 5 synthetische
 Temperaturdemos mit 7 Zweigen. Die acht ausführbaren Verbundregeln sind unverändert.
-Das Aussagenschema ist 1.10.0; Schema- und Softwareversion sind unabhängig.
+Das Aussagenschema war damals 1.10.0; Schema- und Softwareversion sind unabhängig.
 
 Eigener Code, eigene Dokumentation und eigenständige Kuration stehen unter
 [MIT](../LICENSE). Werke Dritter und wissenschaftliche Fakten werden nicht neu
@@ -33,7 +80,7 @@ python -m materials_boundaries temperature evaluate examples/temperature/synthet
 python -m materials_boundaries temperature plot --output /tmp/temperature-demos --lang de
 ```
 
-[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Release scope](MIGRATION_v0.17.0.md)
+[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.18.0.md)
 
 ## Lokal ausführen
 

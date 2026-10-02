@@ -232,7 +232,7 @@ class CatalogSearchCLITests(unittest.TestCase):
         self.assertEqual(json.loads(unknown.stderr)["error"], "catalog_id_not_found")
         empty = self.run_cli("catalog", "claims", "--query", "not_present", isolated=True)
         self.assertEqual(empty.returncode, 0, empty.stderr)
-        self.assertEqual(json.loads(empty.stdout), {"schema_version": "1.10.0", "records": []})
+        self.assertEqual(json.loads(empty.stdout), {"schema_version": "1.11.0", "records": []})
         text = self.run_cli("catalog", "claims", "--query", "not_present", "--text", "--lang", "ja", isolated=True)
         self.assertEqual(text.returncode, 0, text.stderr)
         self.assertIn(translate("catalog_empty", "ja"), text.stdout)

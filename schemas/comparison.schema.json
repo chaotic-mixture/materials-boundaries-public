@@ -491,7 +491,7 @@
       "additionalProperties": false,
       "properties": {
         "claims": {
-          "$ref": "urn:materials-boundaries:schema:claims:1.10.0"
+          "$ref": "urn:materials-boundaries:schema:claims:1.11.0"
         },
         "sources": {
           "$ref": "urn:materials-boundaries:schema:sources:1.0.0"
@@ -2249,13 +2249,13 @@
     },
     "claims": {
       "$schema": "https://json-schema.org/draft/2020-12/schema",
-      "$id": "urn:materials-boundaries:schema:claims:1.10.0",
-      "title": "Materials Boundaries claims v1.10",
+      "$id": "urn:materials-boundaries:schema:claims:1.11.0",
+      "title": "Materials Boundaries claims v1.11",
       "type": "object",
       "additionalProperties": false,
       "properties": {
         "schema_version": {
-          "const": "1.10.0"
+          "const": "1.11.0"
         },
         "records": {
           "type": "array",
@@ -2296,7 +2296,9 @@
                   "universal_elastic_anisotropy_index",
                   "directional_poissons_ratio",
                   "directional_linear_compressibility",
-                  "normalized_directional_linear_compressibility"
+                  "normalized_directional_linear_compressibility",
+                  "isotropic_bulk_phase_speed_ratio",
+                  "bulk_phase_speed_squared"
                 ]
               },
               "direction": {
@@ -2434,7 +2436,8 @@
                   "energy_per_area",
                   "logical_predicate",
                   "length_per_cycle",
-                  "inverse_pressure"
+                  "inverse_pressure",
+                  "speed_squared"
                 ]
               },
               "si_unit": {
@@ -2445,7 +2448,8 @@
                   "J/m^2",
                   null,
                   "m/cycle",
-                  "Pa^-1"
+                  "Pa^-1",
+                  "m^2 s^-2"
                 ]
               },
               "evaluation_support": {
@@ -2480,7 +2484,10 @@
                         "dimensionless",
                         "stress_intensity",
                         "length_per_cycle_times_stress_intensity_power",
-                        "inverse_pressure"
+                        "inverse_pressure",
+                        "mass_density",
+                        "speed",
+                        "speed_squared"
                       ]
                     },
                     "si_unit": {
@@ -2492,7 +2499,10 @@
                         "Pa*m^0.5",
                         "m/cycle*(Pa*m^0.5)^(-m)",
                         "m/cycle*(Pa*m^0.5)^(1-n)",
-                        "Pa^-1"
+                        "Pa^-1",
+                        "kg m^-3",
+                        "m s^-1",
+                        "m^2 s^-2"
                       ]
                     },
                     "meaning": {
@@ -2605,6 +2615,36 @@
                         },
                         "si_unit": {
                           "const": "Pa^-1"
+                        }
+                      }
+                    },
+                    {
+                      "properties": {
+                        "dimension": {
+                          "const": "mass_density"
+                        },
+                        "si_unit": {
+                          "const": "kg m^-3"
+                        }
+                      }
+                    },
+                    {
+                      "properties": {
+                        "dimension": {
+                          "const": "speed"
+                        },
+                        "si_unit": {
+                          "const": "m s^-1"
+                        }
+                      }
+                    },
+                    {
+                      "properties": {
+                        "dimension": {
+                          "const": "speed_squared"
+                        },
+                        "si_unit": {
+                          "const": "m^2 s^-2"
                         }
                       }
                     }
@@ -2961,6 +3001,9 @@
                     }
                   }
                 ]
+              },
+              "bulk_wave_contract": {
+                "type": "object"
               }
             },
             "required": [
@@ -8218,6 +8261,482 @@
                   "hydrostatic_compressibility_contract",
                   "parameters"
                 ]
+              },
+              {
+                "properties": {
+                  "quantity": {
+                    "const": "isotropic_bulk_phase_speed_ratio"
+                  },
+                  "direction": {
+                    "const": "relation"
+                  },
+                  "claim_type": {
+                    "const": "model_relation"
+                  },
+                  "bound_kind": {
+                    "const": null
+                  },
+                  "quantity_dimension": {
+                    "const": "dimensionless"
+                  },
+                  "si_unit": {
+                    "const": "1"
+                  },
+                  "evaluation_support": {
+                    "const": "catalog_only"
+                  },
+                  "formula_display": {
+                    "const": "cL^2=(K+4*G/3)/rho; cT^2=G/rho; cL/cT=sqrt(K/G+4/3)"
+                  },
+                  "required_assumptions": {
+                    "const": {
+                      "spatial_dimension": 3,
+                      "reference_state": "stress_free_equilibrium",
+                      "kinematics": "infinitesimal_strain",
+                      "constitutive_law": "classical_local_linear_elastic_purely_mechanical_nondissipative",
+                      "medium": "homogeneous_unbounded_continuum_bulk_plane_waves",
+                      "elastic_tensor": "finite_real_spatially_constant_C_ijkl",
+                      "tensor_symmetries": "C_ijkl=C_jikl=C_ijlk=C_klij",
+                      "density": "finite_constant_scalar_mass_density_rho>0",
+                      "axes": "orthonormal_Cartesian",
+                      "indices": "i,j,k,l=1,2,3; repeated_indices_summed",
+                      "constitutive_relation": "sigma_ij=C_ijkl*epsilon_kl; epsilon_kl=(u_k,l+u_l,k)/2",
+                      "wave_convention": "u(x,t)=Re[A*a*exp(i*k*(n dot x-c*t))]; k>0; |n|=1; a_nonzero_real_eigenpolarization; positive_phase_speed_root_when_c_squared>0",
+                      "directions": "n_is_phase_normal_wavevector_direction; a_is_particle_displacement_polarization",
+                      "modulus_scope": "operative_tensor_of_declared_ideal_mechanical_model; no_automatic_static_isothermal_to_adiabatic_or_frequency_conversion",
+                      "phase_velocity_scope": "no_claim_about_anisotropic_ray_group_or_energy_velocity",
+                      "elastic_symmetry": "isotropic",
+                      "moduli": "finite_K>0_and_finite_G>0",
+                      "stability": "full_strain_energy_positive_for_every_nonzero_symmetric_strain"
+                    }
+                  },
+                  "bulk_wave_contract": {
+                    "const": {
+                      "units": {
+                        "C_K_G_lambda_Q": "Pa",
+                        "rho": "kg m^-3",
+                        "c": "m s^-1",
+                        "Gamma_and_c_squared": "m^2 s^-2",
+                        "n_and_a": "1",
+                        "dimension_check": "Pa/(kg m^-3)=m^2 s^-2"
+                      },
+                      "scope_exclusions": [
+                        "prestress_and_residual_stress",
+                        "finite_strain_incremental_or_tangent_moduli",
+                        "complex_viscoelasticity_damping_and_material_dispersion",
+                        "thermoelastic_coupling_or_isothermal_to_adiabatic_conversion",
+                        "poroelasticity_or_heterogeneous_effective_medium_wave_assumptions",
+                        "negative_or_tensorial_dynamic_effective_density",
+                        "nonlocal_strain_gradient_Cosserat_or_micromorphic_media",
+                        "two_dimensional_reductions_or_thin_film_plane_stress_plane_strain",
+                        "surface_Rayleigh_Love_or_guided_waves",
+                        "finite_body_boundary_resonances",
+                        "material_specific_speed_prediction",
+                        "full_phonon_or_thermodynamic_stability"
+                      ],
+                      "derivation_status": "original_project_algebra_not_independent_scientific_peer_review",
+                      "source_attribution": {
+                        "published_equations": "Chevrot_van_der_Hilst_2003_p498_Eqs_1_to_4_plane_wave_eigenproblem",
+                        "preprint_equations": "Xiang_Qi_Wei_arXiv_1708.04876v2_pp2_4_5_strong_ellipticity_and_isotropic_speeds; journal_publication_not_verified",
+                        "project_results": "index_relabeling_ratio_range_SPD_implication_counterexample_and_compactness_are_original_project_derivations",
+                        "scientific_peer_review_certified": false,
+                        "physical_realizability_certified": false
+                      },
+                      "kind": "isotropic_speeds_and_positive_energy_class_ratio",
+                      "isotropic_tensor": "C_ijkl=(K-2*G/3)*delta_ij*delta_kl+G*(delta_ik*delta_jl+delta_il*delta_jk)",
+                      "acoustic_tensor": "Q(n)=G*I+(K+G/3)*(n tensor n), |n|=1",
+                      "modes": {
+                        "longitudinal_polarization": "a_parallel_n",
+                        "transverse_polarization": "a_perpendicular_n",
+                        "longitudinal_multiplicity": 1,
+                        "transverse_multiplicity": 2,
+                        "fixed_material_speeds_finite": true,
+                        "direction_independent": true
+                      },
+                      "material_class_range": {
+                        "quantity": "cL/cT",
+                        "attainable_set": "(sqrt(4/3), infinity)",
+                        "scope": "varying_all_finite_positive_K_G_rho",
+                        "lower": {
+                          "value": "sqrt(4/3)",
+                          "inclusive": false,
+                          "attained": false,
+                          "status": "strict_unattained_infimum"
+                        },
+                        "upper": {
+                          "finite_bound_exists": false,
+                          "infinity_attained": false
+                        },
+                        "density_cancels": true,
+                        "fixed_material": "one_finite_cL_and_one_finite_doubly_degenerate_cT",
+                        "basis": "original_project_derivation_from_source_equations"
+                      },
+                      "endpoint_exclusions": {
+                        "K=0": "outside_strict_positive_energy_class_even_though_SE_for_G>0",
+                        "K=infinity": "not_a_finite_parameter_material"
+                      },
+                      "proof_ids": [
+                        "W1_isotropic_contraction",
+                        "W2_positive_energy_ratio_range"
+                      ]
+                    }
+                  },
+                  "dependencies": {
+                    "const": []
+                  },
+                  "parameters": {
+                    "minItems": 6,
+                    "maxItems": 6,
+                    "allOf": [
+                      {
+                        "contains": {
+                          "const": {
+                            "symbol": "K",
+                            "quantity": "bulk_modulus",
+                            "dimension": "pressure",
+                            "si_unit": "Pa",
+                            "meaning": "Finite strictly positive operative isotropic bulk modulus."
+                          }
+                        },
+                        "minContains": 1,
+                        "maxContains": 1
+                      },
+                      {
+                        "contains": {
+                          "const": {
+                            "symbol": "G",
+                            "quantity": "shear_modulus",
+                            "dimension": "pressure",
+                            "si_unit": "Pa",
+                            "meaning": "Finite strictly positive operative isotropic shear modulus."
+                          }
+                        },
+                        "minContains": 1,
+                        "maxContains": 1
+                      },
+                      {
+                        "contains": {
+                          "const": {
+                            "symbol": "rho",
+                            "quantity": "mass_density",
+                            "dimension": "mass_density",
+                            "si_unit": "kg m^-3",
+                            "meaning": "Finite constant strictly positive scalar mass density."
+                          }
+                        },
+                        "minContains": 1,
+                        "maxContains": 1
+                      },
+                      {
+                        "contains": {
+                          "const": {
+                            "symbol": "cL",
+                            "quantity": "longitudinal_phase_speed",
+                            "dimension": "speed",
+                            "si_unit": "m s^-1",
+                            "meaning": "Positive phase-speed root with displacement polarization parallel to n."
+                          }
+                        },
+                        "minContains": 1,
+                        "maxContains": 1
+                      },
+                      {
+                        "contains": {
+                          "const": {
+                            "symbol": "cT",
+                            "quantity": "transverse_phase_speed",
+                            "dimension": "speed",
+                            "si_unit": "m s^-1",
+                            "meaning": "Positive phase-speed root with displacement polarization perpendicular to n; multiplicity two."
+                          }
+                        },
+                        "minContains": 1,
+                        "maxContains": 1
+                      },
+                      {
+                        "contains": {
+                          "const": {
+                            "symbol": "R",
+                            "quantity": "longitudinal_to_transverse_phase_speed_ratio",
+                            "dimension": "dimensionless",
+                            "si_unit": "1",
+                            "meaning": "cL/cT for the same material; density cancels."
+                          }
+                        },
+                        "minContains": 1,
+                        "maxContains": 1
+                      }
+                    ]
+                  },
+                  "rule_id": {
+                    "const": "isotropic_bulk_plane_wave_speeds_and_ratio_v1"
+                  },
+                  "criterion": false,
+                  "index_range": false,
+                  "directional_contract": false,
+                  "hydrostatic_compressibility_contract": false
+                },
+                "required": [
+                  "bulk_wave_contract",
+                  "parameters"
+                ]
+              },
+              {
+                "properties": {
+                  "quantity": {
+                    "const": "bulk_phase_speed_squared"
+                  },
+                  "direction": {
+                    "const": "relation"
+                  },
+                  "claim_type": {
+                    "const": "model_relation"
+                  },
+                  "bound_kind": {
+                    "const": null
+                  },
+                  "quantity_dimension": {
+                    "const": "speed_squared"
+                  },
+                  "si_unit": {
+                    "const": "m^2 s^-2"
+                  },
+                  "evaluation_support": {
+                    "const": "catalog_only"
+                  },
+                  "formula_display": {
+                    "const": "Q_ik(n)=C_ijkl*n_j*n_l; Gamma_ik(n)=Q_ik(n)/rho; Q*a=rho*c^2*a; Gamma*a=c^2*a"
+                  },
+                  "required_assumptions": {
+                    "const": {
+                      "spatial_dimension": 3,
+                      "reference_state": "stress_free_equilibrium",
+                      "kinematics": "infinitesimal_strain",
+                      "constitutive_law": "classical_local_linear_elastic_purely_mechanical_nondissipative",
+                      "medium": "homogeneous_unbounded_continuum_bulk_plane_waves",
+                      "elastic_tensor": "finite_real_spatially_constant_C_ijkl",
+                      "tensor_symmetries": "C_ijkl=C_jikl=C_ijlk=C_klij",
+                      "density": "finite_constant_scalar_mass_density_rho>0",
+                      "axes": "orthonormal_Cartesian",
+                      "indices": "i,j,k,l=1,2,3; repeated_indices_summed",
+                      "constitutive_relation": "sigma_ij=C_ijkl*epsilon_kl; epsilon_kl=(u_k,l+u_l,k)/2",
+                      "wave_convention": "u(x,t)=Re[A*a*exp(i*k*(n dot x-c*t))]; k>0; |n|=1; a_nonzero_real_eigenpolarization; positive_phase_speed_root_when_c_squared>0",
+                      "directions": "n_is_phase_normal_wavevector_direction; a_is_particle_displacement_polarization",
+                      "modulus_scope": "operative_tensor_of_declared_ideal_mechanical_model; no_automatic_static_isothermal_to_adiabatic_or_frequency_conversion",
+                      "phase_velocity_scope": "no_claim_about_anisotropic_ray_group_or_energy_velocity",
+                      "elastic_symmetry": "any_3D_classical_elastic_symmetry",
+                      "stability": "none_required_for_real_symmetric_eigenproblem; strict_SE_required_for_positive_squared_speeds_in_every_direction"
+                    }
+                  },
+                  "bulk_wave_contract": {
+                    "const": {
+                      "units": {
+                        "C_K_G_lambda_Q": "Pa",
+                        "rho": "kg m^-3",
+                        "c": "m s^-1",
+                        "Gamma_and_c_squared": "m^2 s^-2",
+                        "n_and_a": "1",
+                        "dimension_check": "Pa/(kg m^-3)=m^2 s^-2"
+                      },
+                      "scope_exclusions": [
+                        "prestress_and_residual_stress",
+                        "finite_strain_incremental_or_tangent_moduli",
+                        "complex_viscoelasticity_damping_and_material_dispersion",
+                        "thermoelastic_coupling_or_isothermal_to_adiabatic_conversion",
+                        "poroelasticity_or_heterogeneous_effective_medium_wave_assumptions",
+                        "negative_or_tensorial_dynamic_effective_density",
+                        "nonlocal_strain_gradient_Cosserat_or_micromorphic_media",
+                        "two_dimensional_reductions_or_thin_film_plane_stress_plane_strain",
+                        "surface_Rayleigh_Love_or_guided_waves",
+                        "finite_body_boundary_resonances",
+                        "material_specific_speed_prediction",
+                        "full_phonon_or_thermodynamic_stability"
+                      ],
+                      "derivation_status": "original_project_algebra_not_independent_scientific_peer_review",
+                      "source_attribution": {
+                        "published_equations": "Chevrot_van_der_Hilst_2003_p498_Eqs_1_to_4_plane_wave_eigenproblem",
+                        "preprint_equations": "Xiang_Qi_Wei_arXiv_1708.04876v2_pp2_4_5_strong_ellipticity_and_isotropic_speeds; journal_publication_not_verified",
+                        "project_results": "index_relabeling_ratio_range_SPD_implication_counterexample_and_compactness_are_original_project_derivations",
+                        "scientific_peer_review_certified": false,
+                        "physical_realizability_certified": false
+                      },
+                      "kind": "Christoffel_eigenproblem_and_strict_strong_ellipticity",
+                      "contraction": {
+                        "unnormalized": "Q_ik=C_ijkl*n_j*n_l",
+                        "normalized": "Gamma_ik=Q_ik/rho",
+                        "equations": [
+                          "Q*a=rho*c^2*a",
+                          "Gamma*a=c^2*a"
+                        ],
+                        "source_index_mapping": "Chevrot_Gamma_jk=C_ijkl*n_i*n_l/rho; first_pair_minor_symmetry_and_dummy_index_relabeling_give_project_Q_ik/rho"
+                      },
+                      "strict_criterion": {
+                        "expression": "C_ijkl*a_i*n_j*a_k*n_l>0",
+                        "quantifier": "every_nonzero_real_a_and_every_nonzero_real_n",
+                        "equivalent": "Q(n)_SPD_for_every_unit_n",
+                        "zero_vectors_excluded": true,
+                        "zero_eigenvalues_excluded": true,
+                        "nonnegative_is_sufficient": false
+                      },
+                      "spectrum": {
+                        "eigenvalue_count_with_multiplicity": 3,
+                        "Q_real_symmetric": true,
+                        "orthonormal_real_eigenbasis": true,
+                        "strict_SE_iff_all_c_squared_positive_in_every_unit_direction": true,
+                        "distinct_eigenvalues_required": false,
+                        "degenerate_eigenbasis": "nonunique_within_repeated_eigenspaces",
+                        "generic_exact_longitudinal_transverse_labels": false,
+                        "generic_fastest_longitudinal_ordering": false
+                      },
+                      "energy_relation": {
+                        "full_symmetric_strain_energy_SPD_implies_SE": true,
+                        "converse": false,
+                        "rank_one_identity": "a^T*Q(n)*a=e:C:e, e=sym(a tensor n)",
+                        "nonzero_symmetric_strain": "||e||^2=(|a|^2*|n|^2+(a dot n)^2)/2>0 for a!=0,n!=0"
+                      },
+                      "isotropic_specialization": {
+                        "Q": "G*I+(K+G/3)*(n tensor n), |n|=1",
+                        "SE": "G>0 AND K+4*G/3>0",
+                        "full_energy_SPD": "G>0 AND K>0",
+                        "negative_K_allowed_by_SE": true,
+                        "SE_is_bulk_energy_stability": false
+                      },
+                      "counterexample": {
+                        "conditions": "finite_G>0; K=-G/3; finite_rho>0",
+                        "lambda": "-G",
+                        "Q": "G*I_for_every_unit_n",
+                        "c_squared": "G/rho_with_multiplicity_three",
+                        "hydrostatic_strain": "epsilon=alpha*I, alpha!=0",
+                        "energy": "W=(9/2)*K*alpha^2=-(3/2)*G*alpha^2<0",
+                        "full_strain_energy_SPD": false,
+                        "division_by_K_plus_G_over_3": false
+                      },
+                      "fixed_tensor_bounds": {
+                        "scope": "one_fixed_finite_strictly_SE_tensor_and_positive_finite_rho",
+                        "minimum_squared_phase_speed": "strictly_positive_attained_over_unit_sphere",
+                        "maximum_squared_phase_speed": "finite_attained_over_unit_sphere",
+                        "basis": "project_continuity_and_compactness_proof",
+                        "universal_numerical_speed_bound": false
+                      },
+                      "proof_ids": [
+                        "W3_plane_wave_and_index_mapping",
+                        "W4_SPD_implies_SE_and_counterexample",
+                        "W5_fixed_tensor_compactness"
+                      ]
+                    }
+                  },
+                  "dependencies": {
+                    "const": []
+                  },
+                  "parameters": {
+                    "minItems": 7,
+                    "maxItems": 7,
+                    "allOf": [
+                      {
+                        "contains": {
+                          "const": {
+                            "symbol": "C",
+                            "quantity": "operative_elastic_stiffness_tensor",
+                            "dimension": "pressure",
+                            "si_unit": "Pa",
+                            "meaning": "Finite real fourth-order tensor with both minor and major symmetries."
+                          }
+                        },
+                        "minContains": 1,
+                        "maxContains": 1
+                      },
+                      {
+                        "contains": {
+                          "const": {
+                            "symbol": "Q",
+                            "quantity": "unnormalized_acoustic_tensor",
+                            "dimension": "pressure",
+                            "si_unit": "Pa",
+                            "meaning": "Q_ik=C_ijkl*n_j*n_l. Do not replace with C_ijkl*n_k*n_l."
+                          }
+                        },
+                        "minContains": 1,
+                        "maxContains": 1
+                      },
+                      {
+                        "contains": {
+                          "const": {
+                            "symbol": "rho",
+                            "quantity": "mass_density",
+                            "dimension": "mass_density",
+                            "si_unit": "kg m^-3",
+                            "meaning": "Finite constant strictly positive scalar mass density."
+                          }
+                        },
+                        "minContains": 1,
+                        "maxContains": 1
+                      },
+                      {
+                        "contains": {
+                          "const": {
+                            "symbol": "Gamma",
+                            "quantity": "density_normalized_Christoffel_tensor",
+                            "dimension": "speed_squared",
+                            "si_unit": "m^2 s^-2",
+                            "meaning": "Gamma=Q/rho; its eigenvalues are c_alpha(n)^2."
+                          }
+                        },
+                        "minContains": 1,
+                        "maxContains": 1
+                      },
+                      {
+                        "contains": {
+                          "const": {
+                            "symbol": "c^2",
+                            "quantity": "bulk_phase_speed_squared",
+                            "dimension": "speed_squared",
+                            "si_unit": "m^2 s^-2",
+                            "meaning": "Eigenvalue of Gamma; strictly positive in every unit direction exactly when strict strong ellipticity holds."
+                          }
+                        },
+                        "minContains": 1,
+                        "maxContains": 1
+                      },
+                      {
+                        "contains": {
+                          "const": {
+                            "symbol": "n",
+                            "quantity": "phase_normal_direction",
+                            "dimension": "dimensionless",
+                            "si_unit": "1",
+                            "meaning": "Real unit vector giving propagation wavevector direction, not polarization or ray direction."
+                          }
+                        },
+                        "minContains": 1,
+                        "maxContains": 1
+                      },
+                      {
+                        "contains": {
+                          "const": {
+                            "symbol": "a",
+                            "quantity": "displacement_polarization",
+                            "dimension": "dimensionless",
+                            "si_unit": "1",
+                            "meaning": "Nonzero real eigenpolarization; amplitude A supplies displacement units."
+                          }
+                        },
+                        "minContains": 1,
+                        "maxContains": 1
+                      }
+                    ]
+                  },
+                  "rule_id": {
+                    "const": "christoffel_tensor_strong_ellipticity_v1"
+                  },
+                  "criterion": false,
+                  "index_range": false,
+                  "directional_contract": false,
+                  "hydrostatic_compressibility_contract": false
+                },
+                "required": [
+                  "bulk_wave_contract",
+                  "parameters"
+                ]
               }
             ],
             "allOf": [
@@ -8983,6 +9502,43 @@
                   "properties": {
                     "si_unit": {
                       "const": "Pa^-1"
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "rule_id": {
+                      "not": {
+                        "enum": [
+                          "isotropic_bulk_plane_wave_speeds_and_ratio_v1",
+                          "christoffel_tensor_strong_ellipticity_v1"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "then": {
+                  "not": {
+                    "required": [
+                      "bulk_wave_contract"
+                    ]
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "quantity_dimension": {
+                      "const": "speed_squared"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "si_unit": {
+                      "const": "m^2 s^-2"
                     }
                   }
                 }

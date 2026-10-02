@@ -30,6 +30,7 @@ except ImportError as exc:
 from materials_boundaries.engine import BASE_RULES, DERIVED_RULES
 from materials_boundaries.validation import ValidationError, load_json
 from materials_boundaries._directional_contract import DIRECTIONAL_CONTRACTS, validate_directional_records
+from materials_boundaries._wave_contract import WAVE_CONTRACTS, validate_wave_records
 from materials_boundaries._compressibility_contract import COMPRESSIBILITY_CONTRACTS, validate_compressibility_records
 
 CATALOGS = ("claims", "sources", "observations", "temperature_models", "computational_predictions")
@@ -678,6 +679,11 @@ SUPPORTED_FAMILY_IDENTITIES.update({rule: tuple(contract[field] for field in FAM
                                    for rule, contract in COMPRESSIBILITY_CONTRACTS.items()})
 
 
+SUPPORTED_FAMILY_ASSUMPTIONS.update({rule: contract['required_assumptions']
+                                    for rule, contract in WAVE_CONTRACTS.items()})
+SUPPORTED_FAMILY_IDENTITIES.update({rule: tuple(contract[field] for field in FAMILY_IDENTITY_FIELDS)
+                                   for rule, contract in WAVE_CONTRACTS.items()})
+
 class CatalogValidationError(ValueError):
     """The supplied catalogs violate the supported local contract."""
 
@@ -811,7 +817,7 @@ def _index(records: list[dict], kind: str) -> dict:
 
 
 def _validate_labels(locales: dict, names: set[str], *, index_present: bool = False,
-                     directional_present: bool = False, compressibility_present: bool = False, mos2_present: bool = False) -> None:
+                     directional_present: bool = False, compressibility_present: bool = False, mos2_present: bool = False, wave_present: bool = False) -> None:
     require(isinstance(locales, dict), "locales: expected an object")
     require(set(locales) == {"schema_version", "default_language", "translation_review", "languages"},
             "locales: unsupported or missing envelope fields")
@@ -829,6 +835,12 @@ def _validate_labels(locales: dict, names: set[str], *, index_present: bool = Fa
         from materials_boundaries._observation_contract import MOS2_LABELS
         require(MOS2_LABELS <= keys, "locales: missing required MoS2 warning/display labels: " +
                 ", ".join(sorted(MOS2_LABELS - keys)))
+    if wave_present:
+        required_wave_keys = {"catalog_wave_" + key for key in
+            ("notice", "conditions", "normalization", "polarization", "energy", "range", "limits")}
+        required_wave_keys |= {"catalog_status_" + key for key in
+            ("mass_density", "speed", "speed_squared", "isotropic_bulk_phase_speed_ratio", "bulk_phase_speed_squared")}
+        require(required_wave_keys <= keys, "locales: missing required bulk wave display labels")
     if compressibility_present:
         required_compressibility_keys = {"catalog_compressibility_" + key for key in
             ("notice", "conditions", "limits", "fixed_tensor", "range", "energy", "symmetry")}
@@ -907,6 +919,7 @@ def validate_catalogs(catalogs: dict, schema_dir: Path = ROOT / "schemas") -> di
     require(len(all_ids) == len(set(all_ids)), "duplicate record ID across catalog kinds")
     claims, sources, observations = (indexes[name] for name in ("claims", "sources", "observations"))
     try:
+        validate_wave_records(list(claims.values()))
         validate_directional_records(list(claims.values()), resolve_dependencies=True)
         validate_compressibility_records(list(claims.values()), resolve_dependencies=True)
     except ValueError as exc:
@@ -987,7 +1000,8 @@ def validate_catalogs(catalogs: dict, schema_dir: Path = ROOT / "schemas") -> di
                      index_present=any("index_range" in claim for claim in claims.values()),
                      directional_present=any("directional_contract" in claim for claim in claims.values()),
                      compressibility_present=any("hydrostatic_compressibility_contract" in claim for claim in claims.values()),
-                     mos2_present=any("method_family" in record for record in observations.values()))
+                     mos2_present=any("method_family" in record for record in observations.values()),
+                     wave_present=any("bulk_wave_contract" in claim for claim in claims.values()))
     return {kind: len(index) for kind, index in indexes.items()}
 
 

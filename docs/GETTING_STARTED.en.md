@@ -1,7 +1,49 @@
 # Getting started: Materials Boundaries
 
-**Current v0.17.0** adds one study with two catalog-only monolayer MoS2
-records: **4 observations from 2 studies, 48 sources**, observation schema
+## Current v0.18.0: catalog-only bulk elastic waves
+
+This release adds exactly two relations and two sources: **36 mechanics claims,
+50 sources**, claims schema **1.11.0**. The four observations from two studies,
+six computational predictions, five synthetic temperature demos (seven branches)
+and exactly eight executable composite rules remain unchanged. No wave evaluator,
+material input, tensor eigensolver or wave plot is added.
+
+For a stress-free, homogeneous unbounded 3D classical local linear-elastic
+nondissipative medium with finite positive isotropic K,G and scalar density ρ,
+**c_L²=(K+4G/3)/ρ**, **c_T²=G/ρ** and
+**c_L/c_T∈(√(4/3),∞)**. This is the ratio range across the finite positive-energy
+material class: the lower infimum is not attained and no finite common upper
+bound exists; infinity is not a material value. Each fixed material has finite
+direction-independent c_L and c_T, with twofold transverse degeneracy.
+
+For the declared real tensor symmetries, **Q_ik=C_ijkl n_j n_l** has units Pa,
+**Γ=Q/ρ** has units m² s⁻², and Q a=ρc²a. Phase normal n and displacement
+polarization a are different variables. Strict strong ellipticity means Q(n)
+is SPD for every unit n, equivalently all three squared speeds are strictly
+positive in every direction. Full symmetric-strain energy SPD implies it, but
+not conversely: the original project example **K=−G/3, G>0** gives Q=GI and
+three equal positive squared speeds, yet negative hydrostatic strain energy.
+It is not a proposed stable material. Existing full-energy stability criteria
+retain their stronger meaning.
+
+Generic anisotropic modes need not be exactly longitudinal/transverse and have
+no universal fastest-longitudinal ordering. Phase speed is not a claim about
+ray/group velocity. Static or isothermal moduli cannot be substituted
+automatically; no thermodynamic conversion, prestress or finite-strain
+extension is supplied. Chevrot–van der Hilst (2003), p. 498 Eqs. (1)–(4), and
+Xiang–Qi–Wei arXiv v2, pp. 2, 4–5, support the equations; the interval and
+energy proofs are original project derivations. No source figures/full text
+or independent scientific/native-language review is supplied. See
+[full assumptions, proofs, versions and exclusions](BULK_ELASTIC_WAVES.md) and
+[v0.18.0 migration](MIGRATION_v0.18.0.md).
+
+```sh
+python -m materials_boundaries catalog claims --id isotropic_bulk_plane_wave_speeds_and_ratio --text --lang en
+python -m materials_boundaries catalog claims --id christoffel_tensor_strong_ellipticity --text --lang en
+```
+
+**The previous v0.17.0 release** added one study with two catalog-only monolayer MoS2
+records: at that release, **4 observations from 2 studies, 48 sources**, observation schema
 **1.1.0**. Existing graphene records are unchanged. MoS2 stiffness
 **180 ± 60 N/m** and breaking strength **15 ± 3 N/m** use reported standard
 deviations. **The printed q formula conflicts with stated q=0.95; the actual
@@ -11,7 +53,7 @@ fit constant is unresolved, and no refit is made.** See
 **Historical first-public-release baseline, 0.16.0:** 34 mechanics claims, 47 source records,
 2 observations, 6 computational predictions and 5 synthetic temperature demos
 (7 branches). The eight executable composite rules remain unchanged. Claims
-schema is 1.10.0; schema versions and software versions are independent.
+schema was 1.10.0 at that baseline; schema versions and software versions are independent.
 
 Original project code, documentation and original curation are [MIT-licensed](../LICENSE).
 Third-party works and scientific facts are not relicensed. NIST cryogenic
@@ -31,7 +73,7 @@ python -m materials_boundaries temperature evaluate examples/temperature/synthet
 python -m materials_boundaries temperature plot --output /tmp/temperature-demos --lang en
 ```
 
-[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Release scope](MIGRATION_v0.17.0.md)
+[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.18.0.md)
 
 ## Run locally
 

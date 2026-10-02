@@ -1,6 +1,6 @@
 # 材料边界 · Materials Boundaries
 
-Current software release: **v0.17.0** · **Bounded monolayer MoS2 catalog expansion** · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
+Current software release: **v0.18.0** · **Catalog-only bulk elastic waves** · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
 
 A condition-aware, source-traceable materials-mechanics catalog and offline Python toolkit. It separates conditional mathematical bounds, model relations, published observations, computational predictions and synthetic demonstrations. Python 3.10+; no third-party runtime dependencies.
 
@@ -8,15 +8,19 @@ Repository: [chaotic-mixture/materials-boundaries-public](https://github.com/cha
 
 ## Public-release scope
 
-- **34 mechanics claims**, **48 source records**, **4 observations from two studies**, **6 published computational predictions**, and **5 synthetic temperature demos with 7 branches**
+- **36 mechanics claims**, **50 source records**, **4 observations from two studies**, **6 published computational predictions**, and **5 synthetic temperature demos with 7 branches**
 - Exactly **8 executable composite calculation rules**: HS/Reuss/Voigt bulk and shear bounds plus conservative derived Young's-modulus and Poisson-ratio envelopes
-- Other mechanics records, including hydrostatic compressibility, directional Poisson ratio, anisotropy, fatigue, fracture, stability and porous relations, are catalog-only
-- The 48 sources comprise 47 bibliographic/source records plus one original synthetic-demo provenance record; a source record is not a redistribution of its publication or dataset
+- Other mechanics records, including bulk elastic waves, hydrostatic compressibility, directional Poisson ratio, anisotropy, fatigue, fracture, stability and porous relations, are catalog-only
+- The 50 sources comprise 49 bibliographic/source records plus one original synthetic-demo provenance record; a source record is not a redistribution of its publication or dataset
 - All five temperature demos use intentionally invented coefficients and ranges. They do not describe real materials, measured properties or engineering allowables
 
-Version **0.16.0** was the first public-release baseline; earlier version labels describe development milestones. Version **0.17.0** adds one MoS2 study and two catalog-only 2D summaries while preserving every existing graphene record and source record. Claims schema remains **1.10.0**; observations advance from **1.0.0 to 1.1.0** through a narrow closed MoS2 family. Scientific schema versions are independent of the software version. [Migration and unchanged contracts](docs/MIGRATION_v0.17.0.md)
+Version **0.16.0** was the first public-release baseline; earlier version labels describe development milestones. Version **0.18.0** adds exactly two catalog-only bulk elastic-wave claims and two sources, preserving all earlier records. Claims schema advances **1.10.0 → 1.11.0**; sources stay **1.0.0**, observations **1.1.0**, and evaluation **1.1.0**. Scientific schema versions are independent of the software version. [Migration and unchanged contracts](docs/MIGRATION_v0.18.0.md)
 
-The new monolayer MoS2 summaries are **180 ± 60 N/m in-plane stiffness** and **15 ± 3 N/m breaking strength**, with source-reported standard deviations. They retain a flagged inconsistency between the printed q formula and stated q = 0.95; the actual fit constant remains unresolved. The inspected EPFL artifact is proof-formatted (A–G); final publisher text and the supplement are unverified. No refit, plot, comparison, ranking or thickness conversion is added. [Observation evidence and limits](docs/OBSERVATIONS.md#monolayer-mos2-bertolazzi-et-al-2011-new-records)
+For finite positive isotropic K, G and density ρ, c_L²=(K+4G/3)/ρ and c_T²=G/ρ. The material-class ratio is **c_L/c_T ∈ (√(4/3),∞)**: the lower infimum is unattained and no finite class-wide upper bound exists. Each fixed material has finite direction-independent speeds and twofold transverse degeneracy. The canonical acoustic tensor **Q_ik=C_ijkl n_j n_l** has pressure units; **Γ=Q/ρ** has speed-squared units. Strict strong ellipticity means every directional Q is SPD; full symmetric-strain energy SPD implies it, but the converse fails. Phase normal and polarization are distinct, and no generic anisotropic exact L/T ordering, ray/group-speed claim or automatic static/isothermal-modulus substitution is made. [Definitions, original proofs, source/version limits and exclusions](docs/BULK_ELASTIC_WAVES.md)
+
+Version **0.17.0** previously added one MoS2 study and two catalog-only 2D summaries, with observations schema **1.0.0 → 1.1.0**. [Its migration notes](docs/MIGRATION_v0.17.0.md) remain applicable.
+
+The retained monolayer MoS2 summaries are **180 ± 60 N/m in-plane stiffness** and **15 ± 3 N/m breaking strength**, with source-reported standard deviations. They retain a flagged inconsistency between the printed q formula and stated q = 0.95; the actual fit constant remains unresolved. The inspected EPFL artifact is proof-formatted (A–G); final publisher text and the supplement are unverified. No refit, plot, comparison, ranking or thickness conversion is added. [Observation evidence and limits](docs/OBSERVATIONS.md#monolayer-mos2-bertolazzi-et-al-2011-new-records)
 
 Original project code, documentation and original curation are MIT-licensed under the maintainer handle **chaotic-mixture**. This does not relicense third-party publications, source datasets or scientific facts, or imply their authors' endorsement. See [Third-party notices](THIRD_PARTY_NOTICES.md) and [source provenance](docs/SOURCES.md).
 
@@ -29,6 +33,7 @@ Formula checks and software tests do not constitute independent scientific peer 
 ```sh
 python -m pip install -e .
 python -m materials_boundaries evaluate examples/synthetic-two-phase.json --lang en
+python -m materials_boundaries catalog claims --id isotropic_bulk_plane_wave_speeds_and_ratio --text --lang en
 python -m materials_boundaries catalog claims --query compressibility --text --lang en
 python -m materials_boundaries catalog observations --text --lang en
 python -m materials_boundaries catalog predictions --text --lang en
@@ -43,11 +48,11 @@ The synthetic linear temperature demo returns **15 GPa at 50 K**. The overlap de
 
 The scientific guides retain source-specific qualifications for the graphene and monolayer MoS2 observations, Ni-family ideal-shear predictions, silicon first-instability predictions and literature-model example. These brief numerical facts are not removed merely because their publications have separate rights. No paper PDFs, figures, full text or raw measurement collections are bundled.
 
-中文：0.16.0 是首个公开版本的基线；当前 0.17.0 仅新增一项 MoS2 研究的两项二维观测。原创代码、文档及策展内容采用 MIT 许可证，第三方作品及科学事实不因此被重新许可。温度目录仅含五个人为构造的演示模型（七个分支），不能当作真实材料数据。NIST 低温系数及其推导示例暂不收录，这是一项谨慎的发布选择，并非已证明禁止再分发。八条复合材料计算规则及其他科学目录保留；独立科学审查和母语审校尚未完成。
+中文：0.16.0 是首个公开版本的基线；0.17.0 曾新增一项 MoS2 研究的两项二维观测，当前 0.18.0 新增两条仅目录体弹性波关系和两条来源，共 36 条力学论断、50 条来源。有限正 K、G、ρ 的各向同性比值 c_L/c_T∈(√(4/3),∞) 是跨材料类别的范围；单一材料的速度有限且与方向无关，横波二重简并。严格强椭圆性弱于完整对称应变能正定性；相位法向不等于偏振方向，也不声称一般各向异性的精确纵横波排序、群速度或静态／等温模量自动适用。详见[体弹性波](docs/BULK_ELASTIC_WAVES.md)。原创代码、文档及策展内容采用 MIT 许可证，第三方作品及科学事实不因此被重新许可。温度目录仅含五个人为构造的演示模型（七个分支），不能当作真实材料数据。NIST 低温系数及其推导示例暂不收录，这是一项谨慎的发布选择，并非已证明禁止再分发。八条复合材料计算规则及其他科学目录保留；独立科学审查和母语审校尚未完成。
 
-日本語：0.16.0 は初の公開版の基準です。現在の 0.17.0 は MoS2 の一研究から二つの二次元観測を追加します。独自のコード、文書、キュレーションには MIT ライセンスを適用しますが、第三者の著作物や科学的事実を再許諾するものではありません。温度カタログは人工的なデモ5件（7分岐）のみで、実材料のデータではありません。NIST の低温係数と派生例は確認待ちのため慎重に除外しており、再配布禁止が確定したという意味ではありません。独立した科学的・母語レビューは未実施です。
+日本語：0.16.0 は初の公開版の基準です。0.17.0 は MoS2 の一研究から二つの二次元観測を追加しました。現在の 0.18.0 はカタログ専用のバルク弾性波関係2件と出典2件を追加し、論断36件・出典50件です。有限正値 K、G、ρ に対する等方的速度比 c_L/c_T∈(√(4/3),∞) は材料集合の範囲であり、固定材料の速度は有限・方向非依存で横波は二重縮退します。厳密な強楕円性は全対称ひずみエネルギーの正定値性より弱い条件です。位相法線と偏極は別で、一般異方性の厳密な縦横波順序、群速度、静的・等温弾性率の自動適用は主張しません。[バルク弾性波](docs/BULK_ELASTIC_WAVES.md)を参照してください。独自のコード、文書、キュレーションには MIT ライセンスを適用しますが、第三者の著作物や科学的事実を再許諾するものではありません。温度カタログは人工的なデモ5件（7分岐）のみで、実材料のデータではありません。NIST の低温係数と派生例は確認待ちのため慎重に除外しており、再配布禁止が確定したという意味ではありません。独立した科学的・母語レビューは未実施です。
 
-Deutsch: 0.16.0 war die Basis der ersten öffentlichen Version. Die aktuelle Version 0.17.0 ergänzt zwei zweidimensionale Beobachtungen aus einer MoS2-Studie. Eigener Code, eigene Dokumentation und eigenständige Kuration stehen unter MIT; fremde Werke und wissenschaftliche Fakten werden damit nicht neu lizenziert. Die Temperaturmodelle sind fünf künstliche Demos mit sieben Zweigen, keine realen Materialdaten. NIST-Tieftemperaturkoeffizienten und abgeleitete Beispiele bleiben vorsorglich bis zur Klärung ausgenommen; daraus folgt kein nachgewiesenes Weitergabeverbot. Unabhängige wissenschaftliche und muttersprachliche Prüfung steht noch aus.
+Deutsch: 0.16.0 war die Basis der ersten öffentlichen Version. Version 0.17.0 ergänzte zwei zweidimensionale Beobachtungen aus einer MoS2-Studie. Die aktuelle Version 0.18.0 ergänzt zwei reine Katalogrelationen für elastische Volumenwellen und zwei Quellen: insgesamt 36 Aussagen und 50 Quellen. Für endliche positive K, G, ρ gilt über die isotrope Materialklasse c_L/c_T∈(√(4/3),∞); ein festes Material hat endliche richtungsunabhängige Geschwindigkeiten und zweifach entartete Transversalmoden. Strikte starke Elliptizität ist schwächer als positive Energie aller symmetrischen Verzerrungen. Phasennormale und Polarisation sind verschieden; allgemeine anisotrope L/T-Reihenfolge, Gruppengeschwindigkeit oder automatische Verwendung statischer/isothermer Moduln werden nicht behauptet. Siehe [Volumenwellen](docs/BULK_ELASTIC_WAVES.md). Eigener Code, eigene Dokumentation und eigenständige Kuration stehen unter MIT; fremde Werke und wissenschaftliche Fakten werden damit nicht neu lizenziert. Die Temperaturmodelle sind fünf künstliche Demos mit sieben Zweigen, keine realen Materialdaten. NIST-Tieftemperaturkoeffizienten und abgeleitete Beispiele bleiben vorsorglich bis zur Klärung ausgenommen; daraus folgt kein nachgewiesenes Weitergabeverbot. Unabhängige wissenschaftliche und muttersprachliche Prüfung steht noch aus.
 
 ## 立即运行
 
@@ -272,6 +277,8 @@ v0.2.0 将评价结果从 3 条扩展到 8 条；原有三个体积模量 claim 
 - `schemas/*.schema.json`：JSON Schema 2020-12；运行时还检查跨字段约束
 - `materials_boundaries/engine.py`：固定可执行规则表；不会执行输入或资料中的任意公式字符串
 - `docs/CATALOG.md`：只读目录检索、筛选、Python API 与录入检查表
+- `docs/BULK_ELASTIC_WAVES.md`：体弹性波速度、精确类别比值范围、声学张量归一化、严格强椭圆性及原创能量反例
+- `docs/MIGRATION_v0.18.0.md`：36 条论断、50 条来源、论断 schema 1.11.0 与不变的八条可执行规则
 - `docs/MODEL.md`：体积/剪切界、推导 E/ν 外包络、数值策略与边界情况
 - `docs/OBSERVATIONS.md`：石墨烯和单层 MoS2 两项研究的四项观测、模型依赖、统计区别、单位及核验边界
 - `docs/MIGRATION_v0.17.0.md`：观测 schema 1.1.0、窄范围 MoS2 扩展、打印 q 矛盾及不变的旧记录

@@ -15,8 +15,10 @@ def render_catalog(catalog: dict, kind: str, language: str = "en") -> str:
         from ._observation_contract import validate_mos2_records
         validate_mos2_records(catalog["records"])
     if kind == "claims":
+        from ._wave_contract import validate_wave_records
         from ._compressibility_contract import validate_compressibility_records
         from ._directional_contract import validate_directional_records
+        validate_wave_records(catalog["records"])
         validate_compressibility_records(catalog["records"])
         validate_directional_records(catalog["records"])
         # Filtered output may omit its definition dependency. Resolve it against
@@ -209,13 +211,19 @@ def render_catalog(catalog: dict, kind: str, language: str = "en") -> str:
                 field("catalog_formula", record["formula_display"]),
             ])
             if record["evaluation_support"] == "catalog_only":
-                notice = ("catalog_compressibility_notice" if "hydrostatic_compressibility_contract" in record
+                notice = ("catalog_wave_notice" if "bulk_wave_contract" in record
+                          else "catalog_compressibility_notice" if "hydrostatic_compressibility_contract" in record
                           else "catalog_directional_notice" if "directional_contract" in record
                           else "catalog_index_notice" if "index_range" in record
                           else "catalog_criterion_notice" if record["claim_type"] == "stability_criterion"
                           else "catalog_bound_notice" if record["claim_type"] in {"theoretical_bound", "derived_outer_envelope"}
                           else "catalog_model_notice")
                 lines.append("  " + t(notice))
+            if "bulk_wave_contract" in record:
+                for key in ("conditions", "normalization", "polarization", "energy", "range", "limits"):
+                    lines.append("  " + t("catalog_wave_" + key))
+                lines.append("    bulk_wave_contract: " + json.dumps(
+                    record["bulk_wave_contract"], ensure_ascii=False, allow_nan=False))
             if "hydrostatic_compressibility_contract" in record:
                 contract = record["hydrostatic_compressibility_contract"]
                 for key in ("conditions", "fixed_tensor", "range", "energy", "symmetry", "limits"):

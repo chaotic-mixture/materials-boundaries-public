@@ -15,6 +15,8 @@ COMPRESSIBILITY_TEST_UPDATES = json.loads((Path(__file__).parent / 'fixtures/com
 
 OBSERVATION_TEST_UPDATES = json.loads((Path(__file__).parent / 'fixtures/observation_test_updates_v0170.json').read_text(encoding='utf-8'))
 
+WAVE_TEST_UPDATES = json.loads((Path(__file__).parent / 'fixtures/wave_test_updates_v0180.json').read_text(encoding='utf-8'))
+
 PUBLIC_BASELINE = json.loads((Path(__file__).parent / 'fixtures/public_baseline_adjustments.json').read_text(encoding='utf-8'))
 
 
@@ -129,5 +131,14 @@ def reviewed_test_hash(filename, expected):
     if change is not None:
         if change['previous_sha256'] != expected or not change['reason'].strip():
             raise AssertionError('Broken observation test-update provenance: ' + filename)
+        expected = change['sha256']
+    updates = WAVE_TEST_UPDATES['approved_test_updates']
+    allowed = {'tests/test_catalog_search.py', 'tests/test_directional_poisson_catalog.py', 'tests/test_anisotropy_catalog.py', 'tests/provenance_corrections.py', 'tests/test_mechanical.py', 'tests/test_directional_compressibility_catalog.py', 'tests/test_mechanics_catalog_expansion.py', 'tests/test_observation_catalog.py', 'tests/test_fatigue_catalog.py', 'tests/test_fracture_catalog.py'}
+    if set(updates) != allowed:
+        raise AssertionError('Unexpected wave-release historical test override')
+    change = updates.get(filename)
+    if change is not None:
+        if change['previous_sha256'] != expected or not change['reason'].strip():
+            raise AssertionError('Broken wave test-update provenance: ' + filename)
         expected = change['sha256']
     return expected
