@@ -1,18 +1,21 @@
 # Traceable, catalog-only observations
 
-Version **0.17.0** contains **four property records from two studies**: two
-unchanged Lee–Wei–Kysar–Hone (2008) graphene records and two new
-Bertolazzi–Brivio–Kis (2011) monolayer MoS2 records. Each pair describes two
-quantities from one study, not two independent confirmations. The catalog is
-neither a broad experimental database nor a source of universal bounds or
-engineering allowables. All four records remain model-dependent and
-`catalog_only`; no evaluator, observation plot, comparison or ranking is added.
+Version **0.19.0** contains **six property records from three studies**: two
+unchanged Lee–Wei–Kysar–Hone (2008) graphene records, two unchanged
+Bertolazzi–Brivio–Kis (2011) monolayer MoS2 records, and exactly two new
+Falin et al. (2017) monolayer hBN records. Each pair describes two quantities
+from one study, not two independent confirmations. The catalog is neither a
+broad experimental database nor a source of universal bounds or engineering
+allowables. All six records remain model-dependent and `catalog_only`; no
+evaluator, observation plot, comparison or ranking is added.
 
-The observations envelope advances from schema **1.0.0 to 1.1.0** through a
-narrow, closed MoS2 family. Both original graphene record objects are preserved
-exactly; their unknown uncertainty type and conditions do not inherit the new
-study's metadata. The release has 34 unchanged mechanics claims and 48 source
-records; exactly eight composite evaluations remain supported. See
+The observations envelope advances from schema **1.1.0 to 1.2.0** through a
+separate, closed hBN family. All four earlier observation objects are preserved
+exactly. Graphene's unknown uncertainty type and the MoS2 printed-q discrepancy
+retain their own evidence and limits; neither inherits hBN assumptions or SD
+provenance. The release has **36 unchanged mechanics claims and 51 sources**;
+exactly eight composite evaluations remain supported. See
+[v0.19.0 migration](MIGRATION_v0.19.0.md) and the preserved
 [v0.17.0 migration](MIGRATION_v0.17.0.md).
 
 ## Graphene: Lee et al. (2008), existing records
@@ -204,6 +207,158 @@ original project contributions only, not the paper or scientific facts; no
 legal review is claimed. See [source notes](SOURCES.md) and
 [third-party notices](../THIRD_PARTY_NOTICES.md).
 
+## Monolayer hBN: Falin et al. (2017), new records
+
+### Source identity, version and inspection
+
+Aleksey Falin, Qiran Cai, Elton J. G. Santos, Declan Scullion, Dong Qian,
+Rui Zhang, Zhi Yang, Shaoming Huang, Kenji Watanabe, Takashi Taniguchi,
+Matthew R. Barnett, Ying Chen, Rodney S. Ruoff and Lu Hua Li,
+[“Mechanical properties of atomically thin boron nitride and the role of interlayer interactions”](https://doi.org/10.1038/ncomms15815),
+*Nature Communications* **8**, 15815, published 22 June 2017. Source and study
+ID: `falin_et_al_2017_hbn_mechanical_properties`; the separate closed family is
+`falin_2017_hbn_monolayer_indentation_v1`.
+
+The inspected primary artifact is the [published publisher HTML](https://www.nature.com/articles/ncomms15815),
+including visually checked equation images for Eqs. (1), (2) and (4). The main
+article PDF was **not inspected**; main-text locators therefore use sections,
+equations and figures, not guessed PDF page numbers. Relevant text in the
+[publisher-linked supplement](https://media.springernature.com/original/springer-static/esm/art:10.1038%2Fncomms15815/MediaObjects/41467_2017_BFncomms15815_MOESM442_ESM.pdf)
+was checked, with PDF pp. 4–5 / Figs. S4–S5 visually inspected. The
+[publisher-linked peer-review author response](https://media.springernature.com/original/springer-static/esm/art:10.1038%2Fncomms15815/MediaObjects/41467_2017_BFncomms15815_MOESM443_ESM.pdf),
+PDF p. 8, Reviewer #1 question 3, was text- and visually checked for SD and
+sample-count semantics. A second reader checked transcription against these
+same artifacts; that is not independent scientific review or replication.
+
+### Exactly two source-printed 2D summaries
+
+| Record ID | Quantity | Source-reported summary | Publisher HTML locator |
+| --- | --- | --- | --- |
+| `falin_2017_hbn_monolayer_in_plane_stiffness_2d` | `in_plane_stiffness_2d` | **289 ± 24 N/m** | Results, “Elastic modulus and breaking strength”, paragraph associated with Fig. 3; N=11 |
+| `falin_2017_hbn_monolayer_breaking_strength_2d` | `breaking_strength_2d` | **23.6 ± 1.8 N/m** | Same section, paragraph associated with Fig. 4 |
+
+Both are `experiment_derived_model_dependent`, `force_per_length`, `N/m` and
+`catalog_only`. The stiffness central statistic is the reported average; the
+strength is a reported summary whose exact central-statistic label and
+replicate weighting remain unspecified. Two properties from one study are
+not two independent confirmations. Matching N/m units do not make stiffness
+and strength interchangeable or establish a matched-condition comparison.
+
+The article separately prints the selected **N/m values**. No curator converts
+or reconstructs them from 0.865 ± 0.073 TPa or 70.5 ± 5.5 GPa. The source's
+**0.334 nm** thickness is recorded solely as its volumetric/FEM convention;
+it is neither a default thickness nor the illustrated **0.48 nm apparent AFM
+height**. Preserve each source-printed rounded value without “repairing” it by
+multiplication. No new 3D observation or automatic N/m-to-Pa/GPa conversion is
+introduced.
+
+The specimens are suspended monolayer hexagonal BN, mechanically exfoliated
+onto patterned SiO2/Si with 90 nm oxide. The reported well radius is **650 nm**
+(diameter **1.3 μm**). Optical microscopy, AFM height profiles and Raman
+characterization identify monolayers. The authors' high-quality single-crystal
+description does not establish an independent quantitative defect census.
+Orientation and distinct parent-flake count remain unknown.
+
+### Stiffness fit and q arithmetic, without a mismatch claim
+
+The Cypher AFM central-indentation protocol uses diamond tips with reported
+TEM-measured radii **5.6 and 6.3 nm**. These are two radii, not a mean with an
+uncertainty, and per-sheet assignment is unknown. Fig. S4's 12.6 nm diameter is
+an example for one tip. Cantilever calibration combines thermal-noise and Sader
+methods. Eq. (1) gives δ=ΔZ_piezo−δ_tip. The Eq. (2) circular-membrane fit is:
+
+- F = σ₀²ᴰ(πa)(δ/a) + E²ᴰ(q³a)(δ/a)³
+- q = 1/(1.049 − 0.15ν − 0.16ν²), with source-adopted **ν=0.211**
+
+Pretension and membrane stretching are fitted; there is no bending term. The
+isotropic membrane/central-load assumption belongs to this stiffness fit, not
+to the finite-radius FEM strength reduction. The adopted ν is a model input
+cited to earlier work, not a measurement of these specimens.
+
+Evaluating the printed formula at ν=0.211 gives **0.9898768854482001**. This is
+**curator arithmetic only**, not a source-reported fitted value or a replacement
+constant. No separately printed numerical q was found, and the actual constant
+used by the uninspected fit implementation remains unknown. There is therefore
+**no hBN printed-q mismatch claim**. The separate, preserved MoS2 printed-q
+inconsistency must not be copied into this family or erased by this distinction.
+
+### Strength is a nonlinear FEM volume average
+
+Methods, “Finite element analysis”, uses source Eq. (4), σ=Eε+Dε², with
+**E=865 GPa** and **D=−2035 GPa** as source model constants. The latter is
+reported as obtained from experimental results; neither becomes a new
+standalone observation here. An equivalent elastic-plastic ABAQUS material
+implementation represents assumed nonlinear elastic behavior; its name does
+not establish physical plasticity.
+
+The source uses an axisymmetric membrane, a rigid spherical indenter,
+frictionless contact, 650 nm radius and 0.334 nm initial thickness, with
+1663 MAX1 two-node linear axisymmetric membrane elements. At loading steps
+matched to the experimental fracture load, the strength reduction uses the
+**volume average of stresses in membrane elements directly beneath the
+finite-radius indenter**. It is not a direct uniform-tension measurement,
+a local maximum formula or the MoS2 finite-tip strength formula.
+
+**Supplementary Fig. S5 plots maximum Von Mises stress**, a model-sensitivity
+diagnostic distinct from that volume-averaged reported strength. Its reported
+25.7% linear-model overestimate is neither an uncertainty correction nor a
+multiplier applied to 23.6 ± 1.8 N/m. The stress component/invariant used in the
+volume average is not explicitly identified. Eq. (4) does not explicitly define
+finite-strain stress/strain measures, so both remain **null**; Fig. 5's nominal
+strain label and S5's Von Mises label do not establish Cauchy, first/second
+Piola–Kirchhoff or Lagrangian conventions for the strength result. In particular,
+the graphene convention is not inherited.
+
+### SD evidence, tested sheets and environmental unknowns
+
+Both ±24 and ±1.8 are labeled `reported_standard_deviation` **because the
+publisher-linked peer-review author response, PDF p. 8, Reviewer #1 question 3,
+explicitly clarifies SDs and refers to Figs. 3–4**. The main article's ± notation
+alone does not define this. The response is a distinct source artifact, not the
+final article or a raw-data file. These are not SEMs, confidence intervals,
+hard bounds or a full uncertainty budget. Coverage factor, confidence level,
+exact averaging convention and replicate weighting remain unknown.
+
+The same response defines N as **tested sheets**. **N=11** is printed with the
+monolayer stiffness average; it is study context for the strength record,
+not a separately verified strength-summary sample size or count of failure
+events. A typical protocol of five increasing-load indentations per sheet does
+not mean exactly five per sheet and **must not become a 55-curve dataset**.
+Acquired, retained and excluded curve totals, parent-flake count and failure-event
+count remain **null**. Curves with obvious/large hysteresis are excluded, but the
+exact exclusion threshold and count are not reported.
+
+Methods, “Materials and fabrication”, reports **ambient conditions** and
+**0.5 μm/s loading/unloading probe translation velocity**. Numerical temperature,
+pressure, gas composition and humidity remain **unknown**. A translation velocity
+is not a strain, force or stress rate. The FEM displacement increment of
+0.1 nm per step is numerical discretization, not experimental rate, and its
+100 nm endpoint is not an experimental mean failure displacement. Neither the
+paper's 800 °C oxidation discussion nor computational electronic temperature
+is an indentation condition.
+
+### Selection, verification and rights
+
+This addition excludes bilayer/few-layer hBN, the paper's graphene controls,
+DFT/interlayer/sliding predictions, graph digitization and new model evaluation.
+No raw AFM curves, fit code or FEM input deck was reanalysed, no author was
+contacted and no public source-data file was located. The article says supporting
+data are available from the corresponding author on request; no request was made.
+No universal bound, engineering allowable, material ranking, matched-environment
+comparison, observation plot or composite overlay is supplied.
+
+The publisher article is ©2017 The Author(s) under
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), subject to contrary
+third-party credit lines. Attribution, title and DOI are retained above. Separate
+license scope for the supplement and peer-review file is **not verified**; the
+article's license is not automatically assigned to them. The repository includes
+brief attributed facts, locators and original curation only: **no source PDF,
+full text, figure, screenshot, peer-review report or raw-data collection**.
+MIT covers original project contributions and does not replace source licensing.
+Scientific and native-language review remain outstanding. See
+[v0.19.0 migration](MIGRATION_v0.19.0.md), [sources](SOURCES.md) and
+[third-party notices](../THIRD_PARTY_NOTICES.md).
+
 ## Read-only access
 
 ```sh
@@ -216,18 +371,20 @@ python -m materials_boundaries catalog sources --id lee_wei_kysar_hone_2008 --te
 python -m materials_boundaries catalog observations --source-id bertolazzi_brivio_kis_2011 --text --lang en
 python -m materials_boundaries catalog observations --query "MoS2 stiffness" --json
 python -m materials_boundaries catalog sources --id bertolazzi_brivio_kis_2011 --text --lang de
+python -m materials_boundaries catalog observations --source-id falin_et_al_2017_hbn_mechanical_properties --text --lang en
+python -m materials_boundaries catalog observations --query "hBN stiffness" --json
 ```
 
 Observation queries index `id`, `name`, `quantity`, `observation_type`, `study_id`, `material.name`, evidence source IDs and curated display-name aliases in all four languages. Search is literal, Unicode-casefolded and all-term; it is not paper search or automatic translation. `--id`, `--source-id`, `--quantity` and `--observation-type` use exact case-sensitive matches and combine with the query using AND. `--source-id` also works for claims; quantity/type filters are observation-only. No numerical value, uncertainty, method or condition search is implied. See [the full CLI/Python contract](CATALOG.md).
 
-Default/`--json` output remains a canonical `{schema_version, records}` envelope with observation schema **1.1.0**, independent of display language. Human-readable output translates labels and authored display names while retaining IDs, units, values, original evidence wording and verification gaps. Independent scientific and native-language review of these translations remain pending.
+Default/`--json` output remains a canonical `{schema_version, records}` envelope with observation schema **1.2.0**, independent of display language. Human-readable output translates labels and authored display names while retaining IDs, units, values, original evidence wording and verification gaps. Independent scientific and native-language review of these translations remain pending.
 
 ## Keep the contracts separate
 
 - `materials_boundaries/data/observations.json` stores summaries and context; it is neither `claims.json` nor an instance file
-- `schemas/observations.schema.json` describes the closed graphene/MoS2 observation families; current claims schema is 1.10.0, sources 1.0.0 and evaluation 1.1.0
+- `schemas/observations.schema.json` describes the closed graphene/MoS2/hBN observation families; current claims schema is 1.11.0, sources 1.0.0 and evaluation 1.1.0
 - `validate` and `evaluate` still accept composite instances only; they do not execute observation records or infer specimen applicability
-- Comparison builders/renderers still use the original eight elastic evaluations. No observation plots, overlays, uncertainty bars, material ranking or graphene/MoS2/composite comparison are added
-- The new MoS2 source is evidence for its two observations only; all earlier source records, claims, predictions and synthetic temperature contents remain unchanged
+- Comparison builders/renderers still use the original eight elastic evaluations. No observation plots, overlays, uncertainty bars, material ranking or graphene/MoS2/hBN/composite comparison are added
+- The new Falin hBN source is evidence for its two observations only; all earlier source records, claims, predictions and synthetic temperature contents remain unchanged
 
-See [v0.17.0 migration](MIGRATION_v0.17.0.md), [historical v0.7.0 migration](MIGRATION_v0.7.0.md), [source notes](SOURCES.md), [four-language terminology](TERMINOLOGY.md) and [visualization boundaries](VISUALIZATION.md).
+See [v0.19.0 migration](MIGRATION_v0.19.0.md), [v0.17.0 migration](MIGRATION_v0.17.0.md), [historical v0.7.0 migration](MIGRATION_v0.7.0.md), [source notes](SOURCES.md), [four-language terminology](TERMINOLOGY.md) and [visualization boundaries](VISUALIZATION.md).

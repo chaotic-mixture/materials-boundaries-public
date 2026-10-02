@@ -1,6 +1,57 @@
 # Erste Schritte: Materials Boundaries
 
-## Aktuell v0.18.0: elastische Volumenwellen als Katalogwissen
+## Aktuell v0.19.0: einlagige hBN-Beobachtungen als Katalogwissen
+
+Genau zwei Einträge aus Falin et al. (2017) und eine Quelle kommen hinzu:
+**36 Mechanikaussagen, 51 Quellen, 6 Beobachtungen aus 3 Studien**. Das
+Beobachtungsschema steigt von **1.1.0 auf 1.2.0** mit einer eigenen geschlossenen
+hBN-Methodenfamilie. Sechs rechnerische Vorhersagen, fünf synthetische
+Temperaturdemos (sieben Zweige) und genau acht ausführbare Verbundregeln bleiben
+unverändert; das Aussagenschema bleibt 1.11.0.
+
+Die Quelle nennt ausdrücklich **289 ± 24 N/m Steifigkeit in der Ebene** und
+**23.6 ± 1.8 N/m Bruchfestigkeit**. Die Definition als Standardabweichung stammt
+aus der vom Verlag verlinkten **öffentlichen Autorenantwort zur Begutachtung,
+PDF S. 8, Gutachter #1, Frage 3**, nicht allein aus dem ± im Haupttext. Es sind
+keine Standardfehler, Konfidenzintervalle, strikten Grenzen oder vollständigen
+Unsicherheitsbudgets; die genaue Gewichtung der Wiederholungen bleibt unbekannt.
+**N=11 zählt getestete Schichten und ist ausdrücklich dem Steifigkeitsmittel
+zugeordnet**. Kurven- und Bruchereigniszahlen sind unbekannt. Typisch fünf
+Eindrückungen pro Schicht ergeben nicht exakt 55 Kurven oder elf verifizierte
+Festigkeitswiederholungen.
+
+Die Steifigkeit wird durch einen kreisförmigen AFM-Membranfit abgeleitet.
+Die Festigkeit verwendet nichtlineare FEM und **volumengemittelte Spannungen
+unter dem Eindringkörper mit endlichem Radius**. Sie ist weder die diagnostische
+**maximale Von-Mises-Spannung** aus Ergänzungsabbildung S5 noch direkt gemessene
+homogene Zugfestigkeit. Spannungs- und Verzerrungsmaße bei endlicher Verformung
+bleiben unbekannt. Die gedruckte Formel **q=1/(1.049−0.15ν−0.16ν²)** bei
+**ν=0.211** ergibt **0.9898768854482001 ausschließlich als eigene Rechenkontrolle**.
+Kein separat gedruckter q-Wert und keine tatsächlich verwendete Fitkonstante sind
+verifiziert; ein hBN-q-Widerspruch oder eine Korrektur wird nicht behauptet.
+
+„Ambient“ legt keine numerische Temperatur, Druck, Gaszusammensetzung oder
+Feuchte fest. **0.5 μm/s** ist die Sondentranslationsgeschwindigkeit beim Be- und
+Entlasten, keine Verzerrungsrate. Beide N/m-Werte stehen ausdrücklich in der
+Quelle; **0.334 nm** ist nur deren Modelldickenkonvention. Es gibt keine automatische
+Dickenumrechnung, Neuanpassung, Rangliste, Vergleiche, Plots oder Überlagerung mit
+Verbundrechnungen. Graphen/MoS2 bleiben erhalten, einschließlich des unten
+hervorgehobenen gedruckten MoS2-q-Widerspruchs.
+
+Der Artikel steht unter [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/);
+die eigenständige Lizenzgeltung für Supplement und Begutachtungsdatei ist
+ungeklärt. Quellen-PDFs, Volltexte, Abbildungen, Screenshots, Begutachtungsberichte
+und Rohdatensammlungen werden nicht mitgeliefert. Transkriptionskontrolle und
+Softwaretests ersetzen keine unabhängige wissenschaftliche oder muttersprachliche
+Prüfung. Siehe [hBN-Belege und Grenzen](OBSERVATIONS.md#monolayer-hbn-falin-et-al-2017-new-records)
+und [Migration v0.19.0](MIGRATION_v0.19.0.md).
+
+```sh
+python -m materials_boundaries catalog observations --source-id falin_et_al_2017_hbn_mechanical_properties --text --lang de
+python -m materials_boundaries catalog observations --query "hBN stiffness" --json
+```
+
+## Historisch v0.18.0: elastische Volumenwellen als Katalogwissen
 
 Diese Version ergänzt genau zwei Relationen und zwei Quellen: insgesamt
 **36 Mechanikaussagen, 50 Quellen**, Aussagenschema **1.11.0**. Vier
@@ -80,7 +131,7 @@ python -m materials_boundaries temperature evaluate examples/temperature/synthet
 python -m materials_boundaries temperature plot --output /tmp/temperature-demos --lang de
 ```
 
-[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.18.0.md)
+[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.19.0.md)
 
 ## Lokal ausführen
 

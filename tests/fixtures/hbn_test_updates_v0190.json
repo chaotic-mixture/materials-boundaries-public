@@ -1,0 +1,21 @@
+{
+  "release": "0.19.0",
+  "scope": "Exact reviewed test bookkeeping only; scientific assertions retained.",
+  "approved_test_updates": {
+    "tests/provenance_corrections.py": {
+      "previous_sha256": "eb3712bcebd8e22a3480489e86a76ca177d196ed1ddecf93a015a2b292bb1b02",
+      "sha256": "2bfb482967b2da01431cc21b4e35482efabc51a517b8bdea595fbcf708b00e04",
+      "reason": "Append this fail-closed release ledger after prior ledgers, preserving all historical hashes and allowed-file sets."
+    },
+    "tests/test_mos2_observation_catalog.py": {
+      "previous_sha256": "154736a6372e62c05106254d11af0515b5c58971cd06c41de0b4dbf2af846da5",
+      "sha256": "fb2256a22037db8813792ba9d31bf9daac64b6d25a065885afdead38406abe7d",
+      "reason": "Update only current observations-schema envelope expectations from 1.1.0 to 1.2.0; all scientific assertions unchanged."
+    },
+    "tests/test_observation_catalog.py": {
+      "previous_sha256": "5baccbbf0e13f71504ec36e30e829837023f6b6e359351a693058fdfab01b993",
+      "sha256": "567ccff9687bf609381b1644a651772c6963e2472fadc661e4ad58cd1a044016",
+      "reason": "Update only current observations-schema envelope expectations from 1.1.0 to 1.2.0; all scientific assertions unchanged."
+    }
+  }
+}

@@ -154,9 +154,38 @@ for identifier in wave_ids:
         pass
     else:
         raise RuntimeError("installed wave guard accepted non-strict density")
+# Falin hBN source components and unknowns must also survive dependency-free installation.
+from materials_boundaries._hbn_observation_contract import HBN_SOURCE
+hbn = query_catalog("observations", source_id=HBN_SOURCE)
+require(len(hbn["records"]) >= 2, "missing installed hBN observations")
+for language in languages:
+    for record in hbn["records"]:
+        selected = {"schema_version": hbn["schema_version"], "records": [record]}
+        for as_json in (False, True):
+            stdout = io.StringIO()
+            with redirect_stdout(stdout):
+                code = main(["catalog", "observations", "--id", record["id"], "--lang", language,
+                             "--json" if as_json else "--text"])
+            text = stdout.getvalue()
+            require(code == 0 and "[missing:" not in text, "installed hBN CLI failed")
+            if as_json:
+                require(json.loads(text) == selected, "hBN JSON changed by language")
+            else:
+                for key in ("catalog_hbn_model_notice", "catalog_hbn_sd_notice", "catalog_hbn_count_notice",
+                            "catalog_hbn_stress_strain_notice", "catalog_hbn_velocity_notice", "catalog_hbn_rights_notice"):
+                    require(translate(key, language) in text, "missing installed hBN disclosure: " + key)
+                require("PDF p. 8" in text and "MOESM443_ESM.pdf" in text, "missing SD source component")
+        weakened = deepcopy(selected)
+        weakened["records"][0]["reported_result"]["uncertainty"]["evidence"]["artifact"] = "publisher_html"
+        try:
+            render_catalog(weakened, "observations", language)
+        except ValueError:
+            pass
+        else:
+            raise RuntimeError("installed hBN guard accepted false SD provenance")
 print(json.dumps({"version": expected, "metadata_version": metadata_version,
                   "engine_outputs": sorted(outputs), "languages": languages,
-                  "installed_without_dependencies": True, "mixed_observation_catalog_languages": languages, "bulk_wave_catalog_languages": languages}))
+                  "installed_without_dependencies": True, "mixed_observation_catalog_languages": languages, "bulk_wave_catalog_languages": languages, "hbn_observation_languages": languages}))
 '''
 
 

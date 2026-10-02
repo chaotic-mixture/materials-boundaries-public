@@ -12,8 +12,8 @@ def render_catalog(catalog: dict, kind: str, language: str = "en") -> str:
         from .predictions import render_predictions
         return render_predictions(catalog, language)
     if kind == "observations":
-        from ._observation_contract import validate_mos2_records
-        validate_mos2_records(catalog["records"])
+        from ._observation_contract import validate_observation_records
+        validate_observation_records(catalog["records"])
     if kind == "claims":
         from ._wave_contract import validate_wave_records
         from ._compressibility_contract import validate_compressibility_records
@@ -56,6 +56,190 @@ def render_catalog(catalog: dict, kind: str, language: str = "en") -> str:
             field("catalog_license_id", source["license"]["identifier"], indent),
         ]
 
+    def hbn_observation(record: dict) -> list[str]:
+        """Render the Falin family without borrowing graphene/MoS2 conventions."""
+        material, method = record["material"], record["method"]
+        result, sample = record["reported_result"], record["sample_metadata"]
+        uncertainty, conditions = result["uncertainty"], record["conditions"]
+        strength = record["quantity"] == "breaking_strength_2d"
+
+        def evidence_lines(evidence: dict, indent: str = "    ") -> list[str]:
+            return [
+                field("source", evidence["source_id"], indent),
+                field("catalog_hbn_source_component", status(evidence["artifact"]), indent),
+                field("catalog_urls", evidence["source_url"], indent),
+                field("catalog_evidence_status", status(evidence["verification_status"]), indent),
+                field("catalog_locator", evidence["locator"], indent),
+                field("catalog_verified_as", evidence["verified_as"], indent),
+            ]
+
+        def physical_value(value: dict) -> str:
+            return f'{value["value"]} {value["unit"]}'
+
+        rendered = [
+            field("catalog_original_name", record["name"]),
+            field("catalog_version", record["version"]),
+            field("catalog_study_id", record["study_id"]),
+            field("catalog_observation_type", status(record["observation_type"])),
+            field("catalog_quantity", status(record["quantity"])),
+            field("catalog_quantity_dimension", status(record["quantity_dimension"])),
+            field("catalog_si_unit", record["si_unit"]),
+            field("catalog_evaluation_support", status(record["evaluation_support"])),
+            "  " + t("catalog_observation_notice"),
+            field("catalog_model_status", status(record["model_status"])),
+            "  " + t("catalog_hbn_model_notice"),
+            field("catalog_material", material["name"]),
+            field("catalog_dimensionality", material["dimensionality"]),
+            field("catalog_layer_count", material["layer_count"]),
+            field("catalog_specimen_form", status(material["specimen_form"])),
+            field("catalog_preparation", material["preparation"]),
+            field("catalog_monolayer_identification", "; ".join(status(value) for value in material["monolayer_identification"])),
+            field("catalog_hbn_well_radius", physical_value(material["suspended_well_radius"])),
+            field("catalog_span_diameters", physical_value(material["suspended_well_diameter"])),
+            field("catalog_locator", material["suspended_well_diameter"]["locator"]),
+            field("catalog_hbn_apparent_height", physical_value(material["example_afm_apparent_height"])),
+            field("catalog_hbn_effective_thickness", physical_value(method["effective_thickness_convention"])),
+            "  " + t("catalog_hbn_thickness_notice"),
+            "  " + t("catalog_hbn_specimen_notice"),
+            field("catalog_reported_result", f'{result["value"]} ± {uncertainty["value"]} {result["unit"]}'),
+            field("catalog_hbn_summary_statistic", status(result["summary_statistic"])),
+        ]
+        if strength:
+            rendered.append(field("catalog_hbn_central_statistic", result["central_statistic_explicitly_named"]))
+        rendered.extend([
+            field("catalog_uncertainty_type", status(uncertainty["type"])),
+            "  " + t("catalog_hbn_sd_notice"),
+            field("catalog_coverage_factor", uncertainty["coverage_factor"]),
+            field("catalog_confidence_level", uncertainty["confidence_level"]),
+            field("catalog_averaging_convention", uncertainty["averaging_convention"]),
+            field("catalog_uncertainty_interpretation", uncertainty["interpretation"]),
+            field("catalog_hbn_sd_evidence", status(uncertainty["definition_basis"])),
+        ])
+        rendered.extend(evidence_lines(uncertainty["evidence"]))
+        rendered.extend([
+            field("catalog_measurement_method", status(method["technique"])),
+            field("catalog_hbn_instrument", method["instrument"]),
+            field("catalog_hbn_tip_radii", f'{", ".join(str(value) for value in method["tip_radii"]["values"])} {method["tip_radii"]["unit"]}'),
+            field("catalog_locator", method["tip_radii"]["locator"]),
+            "  " + t("catalog_hbn_tip_notice"),
+            field("catalog_hbn_inference_model", status(method["inference_model"])),
+            field("catalog_inference", method["inference"]),
+            field("catalog_poissons_ratio_assumed", method["poissons_ratio_assumed"]),
+            "  " + t("catalog_hbn_poisson_notice"),
+            field("catalog_stress_measure", method["stress_measure"]),
+            field("catalog_strain_measure", method["strain_measure"]),
+            "  " + t("catalog_hbn_stress_strain_notice"),
+            field("catalog_stress_strain_status", method["stress_strain_measure_status"]),
+        ])
+        if strength:
+            relation, fem = method["constitutive_relation"], method["finite_element_model"]
+            rendered.extend([
+                "  " + t("catalog_hbn_strength_notice"),
+                field("catalog_formula", relation["formula_as_printed"]),
+                field("catalog_hbn_fem_elastic_input", physical_value(relation["E"])),
+                field("catalog_hbn_fem_third_order_input", physical_value(relation["D"])),
+                field("catalog_hbn_fem_software", fem["software"]),
+                field("catalog_hbn_fem_geometry", "; ".join(status(fem[key]) for key in ("membrane", "indenter", "contact"))),
+                field("catalog_hbn_strength_reduction", status(fem["strength_reduction"])),
+                field("catalog_hbn_stress_component", fem["reported_stress_component_or_invariant_for_this_average"]),
+                field("catalog_hbn_fem_element", fem["element_type"]),
+                field("catalog_hbn_fem_element_count", fem["element_count"]),
+                field("catalog_hbn_fem_depth", physical_value(fem["applied_indentation_depth"])),
+                field("catalog_hbn_fem_increment", physical_value(fem["displacement_increment"])),
+                "  " + t("catalog_hbn_fem_input_notice"),
+                "  " + t("catalog_hbn_diagnostic_notice"),
+                field("catalog_locator", method["diagnostic_not_selected_result"]["source"]),
+            ])
+        else:
+            q, force_law = method["q_source_report"], method["fit_force_law"]
+            rendered.extend([
+                "  " + t("catalog_hbn_stiffness_notice"),
+                field("catalog_formula", force_law["formula_as_printed"]),
+                field("catalog_locator", force_law["source_locator"]),
+                field("catalog_q_formula", q["formula_as_printed"]),
+                field("catalog_hbn_q_nu", q["nu_as_printed"]),
+                field("catalog_q_reported", q["q_as_printed"]),
+                field("catalog_q_arithmetic", q["audit_arithmetic_value"]),
+                field("catalog_q_used", q["fit_constant_actually_used"]),
+                "  " + t("catalog_hbn_q_notice"),
+            ])
+        rendered.append(field("catalog_model_assumptions", ""))
+        rendered.extend("    - " + assumption for assumption in method["model_assumptions"])
+        rendered.extend([
+            "  " + t("catalog_hbn_curve_selection_notice"),
+            field("catalog_conditions", ""),
+            field("catalog_hbn_environment", t("catalog_hbn_ambient"), "    "),
+            "    " + t("catalog_hbn_conditions_notice"),
+        ])
+        for key in ("temperature", "atmosphere", "humidity", "pressure"):
+            rendered.append(field("catalog_" + key, conditions[key], "    "))
+        rendered.extend([
+            field("catalog_hbn_probe_velocity", physical_value(conditions["loading_rate"]), "    "),
+            field("catalog_hbn_strain_rate", conditions["loading_rate"]["strain_rate"], "    "),
+            "    " + t("catalog_hbn_velocity_notice"),
+            field("catalog_locator", conditions["loading_rate"]["locator"], "    "),
+            field("catalog_sample_metadata", ""),
+            field("catalog_sample_scope", status(sample["scope"]), "    "),
+            "    " + t("catalog_hbn_count_notice"),
+        ])
+        for key, label in (
+            ("study_monolayer_tested_sheets", "catalog_hbn_tested_sheet_count"),
+            ("force_displacement_curves_acquired", "catalog_hbn_acquired_curve_count"),
+            ("force_displacement_curves_retained", "catalog_hbn_retained_curve_count"),
+            ("force_displacement_curves_excluded", "catalog_hbn_excluded_curve_count"),
+            ("distinct_parent_flakes", "catalog_parent_flake_count"),
+            ("failure_events", "catalog_failure_count"),
+            ("tested_sheets_explicitly_associated_with_stiffness_average", "catalog_hbn_stiffness_sheet_count"),
+        ):
+            if key in sample["counts"]:
+                rendered.append(field(label, sample["counts"][key], "    "))
+        rendered.extend([
+            field("catalog_hbn_typical_indentations", sample["typical_protocol"]["indentations_per_sheet_typically"], "    "),
+            field("catalog_hbn_exact_protocol_count", t("catalog_yes" if sample["typical_protocol"]["exact_count"] else "catalog_no"), "    "),
+            field("catalog_hbn_count_evidence", "", "    "),
+        ])
+        rendered.extend(evidence_lines(sample["count_definition_source"], "      "))
+        rendered.extend("    - " + note for note in sample["notes"])
+        verification = record["verification"]
+        inspected = verification["source_inspection"]
+        rendered.extend([
+            field("catalog_observation_verification", status(verification["status"])),
+            field("catalog_independent_review", t("catalog_yes" if verification["independent_scientific_review"] else "catalog_no")),
+            "  " + t("catalog_hbn_inspection_notice"),
+            field("catalog_hbn_source_component", status(inspected["main_artifact"])),
+        ])
+        for key, label in (
+            ("main_pdf_inspected", "catalog_hbn_main_pdf_inspected"),
+            ("supplement_inspected", "catalog_hbn_supplement_inspected"),
+            ("peer_review_author_response_inspected", "catalog_hbn_peer_response_inspected"),
+            ("separate_reader_transcription_checked", "catalog_hbn_second_reader"),
+            ("raw_data_reanalysis", "catalog_hbn_raw_reanalysis"),
+            ("plot_digitization", "catalog_hbn_plot_digitization"),
+            ("independent_replication", "catalog_hbn_independent_replication"),
+        ):
+            rendered.append(field(label, t("catalog_yes" if inspected[key] else "catalog_no"), "    "))
+        for key, label in (
+            ("equations_visually_checked", "catalog_hbn_equations_checked"),
+            ("supplement_visual_pages", "catalog_hbn_supplement_pages"),
+            ("peer_review_visual_pages", "catalog_hbn_peer_response_pages"),
+        ):
+            rendered.append(field(label, ", ".join(str(value) for value in inspected[key]), "    "))
+        rendered.append(field("catalog_gaps", ""))
+        rendered.extend("    - " + gap for gap in verification["gaps"])
+        rendered.append(field("catalog_observation_evidence", ""))
+        source = sources.get(record["study_id"])
+        if source is not None:
+            rendered.extend(source_summary(source, "    "))
+        for evidence in record["evidence"]:
+            rendered.extend(evidence_lines(evidence))
+        rendered.extend([
+            "  " + t("catalog_hbn_rights_notice"),
+            field("catalog_limits", ""),
+        ])
+        rendered.extend("    - " + limit for limit in record["limits"])
+        rendered.append("  " + t("catalog_observation_compatibility_notice"))
+        return rendered
+
     lines = [t("catalog_" + kind), field("catalog_count", len(catalog["records"]), "")]
     if not catalog["records"]:
         lines.append(t("catalog_empty"))
@@ -79,6 +263,9 @@ def render_catalog(catalog: dict, kind: str, language: str = "en") -> str:
             display_name = t(name_key)
             if display_name != f"[missing:{name_key}]":
                 lines.append(field("catalog_display_name", display_name))
+            if record.get("method_family") == "falin_2017_hbn_monolayer_indentation_v1":
+                lines.extend(hbn_observation(record))
+                continue
             result, material, method = record["reported_result"], record["material"], record["method"]
             uncertainty = result["uncertainty"]
             mos2 = record.get("method_family") == "bertolazzi_2011_mos2_monolayer_indentation_v1"

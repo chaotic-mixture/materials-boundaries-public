@@ -1,6 +1,6 @@
 # Read-only catalog reference
 
-The packaged `claims`, `sources` and `observations` catalogs are curated metadata, not a complete literature index or a comprehensive material-property database. Current v0.18.0 contains 36 mechanics claims, 50 sources and four observations from two studies, alongside five separate synthetic temperature demonstrations (seven branches) and six computational predictions. The two newest claims describe bulk elastic plane-wave speeds and strict strong ellipticity; see [bulk-wave definitions and proofs](BULK_ELASTIC_WAVES.md). The earlier hydrostatic directional compressibility and normalized tensor-class range retain their [compressibility contracts](DIRECTIONAL_COMPRESSIBILITY.md). The earlier [directional Poisson relations](DIRECTIONAL_POISSON.md) remain distinct. Searching never changes a record, fetches a source, evaluates a material, or executes a formula string. A match does not establish applicability or verification; no match does not establish absence from the scientific literature.
+The packaged `claims`, `sources` and `observations` catalogs are curated metadata, not a complete literature index or a comprehensive material-property database. Current v0.19.0 contains 36 mechanics claims, 51 sources and six observations from three studies, alongside five separate synthetic temperature demonstrations (seven branches) and six computational predictions. The newest addition is exactly two [monolayer hBN observations](OBSERVATIONS.md#monolayer-hbn-falin-et-al-2017-new-records) and one source. The two v0.18.0 claims describe bulk elastic plane-wave speeds and strict strong ellipticity; see [bulk-wave definitions and proofs](BULK_ELASTIC_WAVES.md). The earlier hydrostatic directional compressibility and normalized tensor-class range retain their [compressibility contracts](DIRECTIONAL_COMPRESSIBILITY.md). The earlier [directional Poisson relations](DIRECTIONAL_POISSON.md) remain distinct. Searching never changes a record, fetches a source, evaluates a material, or executes a formula string. A match does not establish applicability or verification; no match does not establish absence from the scientific literature.
 
 ## CLI
 
@@ -19,7 +19,7 @@ python -m materials_boundaries --lang ja catalog --help
 
 `materials-boundaries` is an equivalent entry point after installation. The three catalog kinds are `claims`, `sources` and `observations`.
 
-- Default output remains canonical JSON for backward compatibility; `--json` explicitly requests the same format. The envelope is `{"schema_version": ..., "records": [...]}` even for one match or no matches: claims use `1.11.0`, sources retain `1.0.0`, and the separate observations catalog uses `1.1.0`. The separate evaluation output stays at `1.1.0`
+- Default output remains canonical JSON for backward compatibility; `--json` explicitly requests the same format. The envelope is `{"schema_version": ..., "records": [...]}` even for one match or no matches: claims use `1.11.0`, sources retain `1.0.0`, and the separate observations catalog uses `1.2.0`. The separate evaluation output stays at `1.1.0`
 - `--text` selects human-readable output. `--text` and `--json` are mutually exclusive
 - `--lang en|zh|ja|de` selects display language; English is the default. It may appear globally before the command or after it, and the last occurrence wins
 - Help labels and descriptions are localized. Syntax, flags, filter values, record IDs, and JSON remain canonical
@@ -126,7 +126,7 @@ python -m materials_boundaries catalog claims --id poissons_ratio_outer --text -
 
 Derived records describe conservative outer envelopes of separately bounded K/G. They do not assert tightness or simultaneous attainability. `algebraic_derivation_from_cited_identities` records an algebraic derivation, not a new independently reviewed joint-bound theorem. Unknown or violated prerequisites suppress numerical evaluation; catalog presence alone does not supply those prerequisites.
 
-Bound-kind and dependency labels are localized in text output; canonical IDs and original evidence wording remain unchanged. `bound_kind` and `dependencies` are not dedicated filters or indexed fields. Version 0.3.0 adds indexed `claim_type` and its exact filter, so `--claim-type derived_outer_envelope` selected the two original derived records directly; it now also selects the catalog-only porous Young record. Always inspect `evaluation_support`. See the historical [v0.2.0 migration](MIGRATION_v0.2.0.md) and [v0.3.0 migration](MIGRATION_v0.3.0.md); the porous extension is in [v0.6.0 migration](MIGRATION_v0.6.0.md), the separate observation extension is in [v0.7.0 migration](MIGRATION_v0.7.0.md), and the current strict-stability extension is in [v0.8.0 migration](MIGRATION_v0.8.0.md).
+Bound-kind and dependency labels are localized in text output; canonical IDs and original evidence wording remain unchanged. `bound_kind` and `dependencies` are not dedicated filters or indexed fields. Version 0.3.0 adds indexed `claim_type` and its exact filter, so `--claim-type derived_outer_envelope` selected the two original derived records directly; it now also selects the catalog-only porous Young record. Always inspect `evaluation_support`. See the historical [v0.2.0 migration](MIGRATION_v0.2.0.md) and [v0.3.0 migration](MIGRATION_v0.3.0.md); the porous extension is in [v0.6.0 migration](MIGRATION_v0.6.0.md), the separate observation extension is in [v0.7.0 migration](MIGRATION_v0.7.0.md), and the historical strict-stability extension is in [v0.8.0 migration](MIGRATION_v0.8.0.md).
 
 ## Catalog-only fracture models in v0.3.0
 
@@ -222,7 +222,7 @@ All four authored display names are literal aliases in each language; `--lang` c
 
 ## Separate observations in v0.7.0
 
-Two `experiment_derived_model_dependent` observations from the same Lee–Wei–Kysar–Hone (2008) study describe freestanding monolayer graphene: in-plane stiffness 340 ± 50 N/m and model-inferred breaking strength 42 ± 4 N/m. Both were introduced as `catalog_only` under observation schema 1.0.0 (their record objects remain unchanged in the current 1.1.0 envelope); no claim is added or reclassified. In v0.7.0 the 22 claims stayed unchanged under schema 1.5.0, and the source catalog appended one record to its unchanged original 19. The historical v0.8.0 claim count/schema were 26/1.6.0; both observation records and all 20 sources remain unchanged.
+Two `experiment_derived_model_dependent` observations from the same Lee–Wei–Kysar–Hone (2008) study describe freestanding monolayer graphene: in-plane stiffness 340 ± 50 N/m and model-inferred breaking strength 42 ± 4 N/m. Both were introduced as `catalog_only` under observation schema 1.0.0 (their record objects remain unchanged in the current 1.2.0 envelope); no claim is added or reclassified. In v0.7.0 the 22 claims stayed unchanged under schema 1.5.0, and the source catalog appended one record to its unchanged original 19. The historical v0.8.0 claim count/schema were 26/1.6.0; both observation records and all 20 sources remain unchanged.
 
 `reported_plus_minus_unspecified` means that the reported ± type and coverage are unverified, not a standard deviation, confidence interval or bound. A separate stiffness-fit distribution has mean 342 N/m, SD 30 N/m and 67 fits on 23 membranes from two flakes; these counts must not be used for breaking strength. Temperature, atmosphere, humidity and loading rate remain unknown. Main-text passages were checked; the supplement was inaccessible and unread.
 
@@ -235,11 +235,11 @@ The shared study ID does not supply independent replication. The source's AFM/me
 
 ## Closed monolayer MoS2 addition in v0.17.0
 
-The separate observations envelope advances to **1.1.0**, retaining both
+At v0.17.0, the separate observations envelope advanced to **1.1.0**, retaining both
 original graphene objects exactly and adding two closed-family MoS2 records
 from `bertolazzi_brivio_kis_2011`. Values are **180 ± 60 N/m** stiffness and
 **15 ± 3 N/m** breaking strength, with `reported_standard_deviation` and null
-confidence/coverage fields. Four property records represent two studies.
+confidence/coverage fields. At that release four property records represented two studies.
 Graphene's existing statistical type remains `reported_plus_minus_unspecified`.
 
 The MoS2 branch keeps unknown stress/strain measures and test environment null,
@@ -263,6 +263,43 @@ matched studies. See [full provenance and semantics](OBSERVATIONS.md) and
 [version migration](MIGRATION_v0.17.0.md). This narrow scientific-contract change
 does not alter contribution forms or the existing mechanics, predictions,
 temperature and eight-rule composite contracts.
+
+## Closed monolayer hBN addition in v0.19.0
+
+The observation envelope advances to **1.2.0** through
+`falin_2017_hbn_monolayer_indentation_v1`, a separate closed method family with
+exactly two records from `falin_et_al_2017_hbn_mechanical_properties`:
+**289 ± 24 N/m stiffness** and **23.6 ± 1.8 N/m breaking strength**. The new total
+is six observations from three studies; all four earlier observation objects
+are preserved.
+
+SD meaning is backed specifically by the publisher-linked peer-review author
+response, PDF p. 8, Reviewer #1 question 3, not main-text ± notation alone.
+Eleven tested sheets are explicitly associated with the stiffness average;
+curve/failure-event totals remain null, and typically five indentations per
+sheet is not an exact 55-curve dataset. Source-printed N/m values are retained
+without using 0.334 nm as a default conversion thickness.
+
+The strength reduction is a nonlinear FEM **volume average of under-indenter
+stresses**, distinct from the supplement's **maximum Von Mises stress**
+diagnostic. Finite-strain stress/strain conventions remain unknown. Ambient is
+qualitative; numeric temperature, pressure, humidity and gas composition stay
+null. **0.5 μm/s** is probe translation velocity, not strain rate. The printed
+q formula uses **1.049**, ν=0.211; **0.9898768854482001** is curator arithmetic
+only, with no separate printed q or verified actual fit constant. No hBN
+q-mismatch claim is made, and the MoS2 mismatch is preserved.
+
+```sh
+python -m materials_boundaries catalog observations --source-id falin_et_al_2017_hbn_mechanical_properties --text --lang en
+python -m materials_boundaries catalog observations --query "hBN stiffness" --json
+```
+
+The existing literal AND query, exact filters, catalog order and canonical JSON
+behavior are unchanged. There is no evaluator, refit, thickness conversion,
+plot, ranking, comparison or composite overlay. The article's CC BY 4.0 status
+does not establish separate supplement/peer-review licensing; no source-media
+or report redistribution is added. See [full observation contract](OBSERVATIONS.md#monolayer-hbn-falin-et-al-2017-new-records)
+and [migration](MIGRATION_v0.19.0.md).
 
 ## Evidence and reuse boundaries
 
@@ -295,7 +332,7 @@ are not measurements, empirical source fits or theoretical bounds. They never
 extend `composite_evaluate`. Use `temperature catalog` for canonical records and
 `--text --lang` for authored descriptions. The v0.16.0 source catalog preserved 46
 bibliographic records and added one original demonstration-provenance record.
-The v0.17.0 MoS2 source makes 48 records in total; the synthetic contents are unchanged. NIST cryogenic coefficients and derived outputs are omitted
+The v0.17.0 MoS2 source brought the total to 48; the current v0.19.0 catalog has 51 sources, with the synthetic contents unchanged. NIST cryogenic coefficients and derived outputs are omitted
 conservatively; bibliographic references remain. See [temperature contracts](TEMPERATURE_MODELS.md)
 and [rights scope](../THIRD_PARTY_NOTICES.md).
 

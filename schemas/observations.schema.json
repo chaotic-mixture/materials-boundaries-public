@@ -1,13 +1,13 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "urn:materials-boundaries:schema:observations:1.1.0",
-  "title": "Materials Boundaries observational context v1.1",
-  "description": "Closed catalog-only source/method families: historical Lee graphene and Bertolazzi monolayer MoS2. Uncertainty types and inference contracts are separate; unresolved source-model discrepancies are explicit. No comparison, evaluation or thickness conversion API.",
+  "$id": "urn:materials-boundaries:schema:observations:1.2.0",
+  "title": "Materials Boundaries observational context v1.2",
+  "description": "Closed catalog-only source/method families: historical Lee graphene, Bertolazzi monolayer MoS2 and Falin monolayer hBN. Source-specific uncertainty, count and inference contracts remain separate. No comparison, evaluation or thickness conversion API.",
   "type": "object",
   "additionalProperties": false,
   "properties": {
     "schema_version": {
-      "const": "1.1.0"
+      "const": "1.2.0"
     },
     "records": {
       "type": "array",
@@ -18,6 +18,9 @@
           },
           {
             "$ref": "#/$defs/bertolazzi_mos2"
+          },
+          {
+            "$ref": "#/$defs/falin_hbn"
           }
         ]
       }
@@ -1331,6 +1334,689 @@
               }
             }
           }
+        }
+      ]
+    },
+    "falin_hbn": {
+      "description": "Closed Falin 2017 monolayer hBN source/method contract. Scientific fields, uncertainty evidence, source limitations and artifact inspection are source-bound constants; quantity branches prevent stiffness/failure count or model leakage. IDs and display names remain appendable and are never scientific dispatch keys.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "observation_type": {
+          "const": "experiment_derived_model_dependent"
+        },
+        "study_id": {
+          "const": "falin_et_al_2017_hbn_mechanical_properties"
+        },
+        "quantity_dimension": {
+          "const": "force_per_length"
+        },
+        "si_unit": {
+          "const": "N/m"
+        },
+        "evaluation_support": {
+          "const": "catalog_only"
+        },
+        "version": {
+          "const": "1.0.0"
+        },
+        "method_family": {
+          "const": "falin_2017_hbn_monolayer_indentation_v1"
+        },
+        "model_status": {
+          "const": "source_reported_model_dependent_with_explicit_metadata_gaps"
+        },
+        "material": {
+          "const": {
+            "name": "Suspended monolayer hexagonal boron nitride",
+            "formula": "BN",
+            "phase": "hexagonal",
+            "dimensionality": 2,
+            "layer_count": 1,
+            "specimen_form": "suspended_membrane",
+            "preparation": "Scotch-tape mechanical exfoliation from high-quality hBN single crystals onto prepatterned SiO2/Si",
+            "substrate": {
+              "oxide_thickness": 90,
+              "oxide_thickness_unit": "nm"
+            },
+            "suspended_well_radius": {
+              "value": 650,
+              "unit": "nm",
+              "uncertainty": null
+            },
+            "suspended_well_diameter": {
+              "value": 1.3,
+              "unit": "um",
+              "source_reports_explicitly": true,
+              "locator": "Figure 1 caption"
+            },
+            "monolayer_identification": [
+              "optical_microscopy",
+              "AFM_height_profile",
+              "Raman_characterization"
+            ],
+            "example_afm_apparent_height": {
+              "value": 0.48,
+              "unit": "nm",
+              "scope": "Illustrated 1L BN nanosheet, not effective model thickness and not a sample-distribution mean"
+            },
+            "crystal_orientation": null,
+            "defect_status": {
+              "source_description": "high-quality single-crystalline mono- and few-layer BN",
+              "quantitative_defect_census": null,
+              "curation_limit": "This is the authors’ specimen characterization, not independent proof that every stressed region or whole sheet is defect-free."
+            },
+            "processing_vs_testing": "Exfoliation/substrate construction describe sample preparation. Literature claims about 800 °C oxidative stability and computational electronic temperature are not indentation test conditions. No anneal or processing temperature is assigned."
+          }
+        },
+        "method": {
+          "type": "object"
+        },
+        "conditions": {
+          "const": {
+            "temperature": null,
+            "atmosphere": null,
+            "humidity": null,
+            "pressure": null,
+            "environment_description": "ambient conditions",
+            "loading_rate": {
+              "quantity": "reported_loading_and_unloading_translation_velocity",
+              "value": 0.5,
+              "unit": "um/s",
+              "source_value_string": "0.5 μm s−1",
+              "source_scope": "all measurements",
+              "strain_rate": null,
+              "locator": "Methods > Materials and fabrication"
+            },
+            "verification_status": "ambient_descriptor_and_translation_velocity_reported",
+            "notes": [
+              "Ambient does not establish a numerical temperature, pressure, gas composition or humidity.",
+              "The length/time loading velocity is not a membrane strain rate or stress rate.",
+              "FEM increment 0.1 nm per step is a numerical discretization parameter, not experimental loading rate."
+            ]
+          }
+        },
+        "sample_metadata": {
+          "type": "object"
+        },
+        "verification": {
+          "const": {
+            "status": "publisher_main_text_and_relevant_supplement_and_peer_review_checked",
+            "independent_scientific_review": false,
+            "source_inspection": {
+              "main_artifact": "publisher_html",
+              "main_pdf_inspected": false,
+              "equations_visually_checked": [
+                1,
+                2,
+                4
+              ],
+              "supplement_inspected": true,
+              "supplement_visual_pages": [
+                4,
+                5
+              ],
+              "peer_review_author_response_inspected": true,
+              "peer_review_visual_pages": [
+                8
+              ],
+              "separate_reader_transcription_checked": true,
+              "raw_data_reanalysis": false,
+              "plot_digitization": false,
+              "independent_replication": false
+            },
+            "gaps": [
+              "Unknown numeric temperature, humidity, pressure and atmosphere composition.",
+              "Unknown raw/retained/excluded curve totals, exact failure-event count, parent-flake count and statistical averaging/weighting convention.",
+              "Eq. 4 finite-strain stress/strain convention is not explicitly defined in inspected source.",
+              "No raw AFM curves, FEM input deck, fit code or independent tip metrology reconstruction available in this batch.",
+              "The public peer-review author response supplies SD and sheet-count semantics; the main-text ± notation alone does not."
+            ]
+          }
+        },
+        "limits": {
+          "const": [
+            "A selected source-reported, model-dependent experimental summary; not a universal material bound, engineering allowable or executable mechanics rule.",
+            "N/m is force per length, not a volumetric pressure. No curator 2D/3D conversion or assigned default thickness is admitted.",
+            "Stiffness and breaking strength have matching units but are different quantities.",
+            "These two property records share one study and are not independent confirmations.",
+            "No matched-environment comparison, ranking, composite-evaluator use or volume-fraction overlay is implied.",
+            "Monolayer hBN only. Exclude multilayer trends, the paper’s graphene controls, and separate DFT/interlayer/sliding predictions from this small batch."
+          ]
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "quantity": {
+          "enum": [
+            "in_plane_stiffness_2d",
+            "breaking_strength_2d"
+          ]
+        },
+        "reported_result": {
+          "type": "object"
+        },
+        "evidence": {
+          "type": "array"
+        }
+      },
+      "required": [
+        "observation_type",
+        "study_id",
+        "quantity_dimension",
+        "si_unit",
+        "evaluation_support",
+        "version",
+        "method_family",
+        "model_status",
+        "material",
+        "method",
+        "conditions",
+        "sample_metadata",
+        "verification",
+        "limits",
+        "id",
+        "name",
+        "quantity",
+        "reported_result",
+        "evidence"
+      ],
+      "oneOf": [
+        {
+          "properties": {
+            "method": {
+              "const": {
+                "technique": "afm_central_indentation",
+                "instrument": "Cypher AFM",
+                "indenter_material": "diamond",
+                "tip_radii": {
+                  "values": [
+                    5.6,
+                    6.3
+                  ],
+                  "unit": "nm",
+                  "uncertainty": null,
+                  "measurement": "Transmission electron microscopy, as reported by authors",
+                  "per_sheet_assignment": null,
+                  "locator": "Methods > Materials and fabrication; Figure S4 shows 12.6 nm diameter for one tip",
+                  "curation_limit": "These are two reported radii, not a mean plus/minus tolerance. Do not assign one radius to all monolayer tests or treat the 6.3 nm example as every specimen."
+                },
+                "calibration": "Cantilever spring constants determined using combined thermal-noise and Sader methods",
+                "direct_experimental_inputs": [
+                  "cantilever_tip_deflection",
+                  "piezo_or_sample_z_displacement",
+                  "applied_load_displacement_curve"
+                ],
+                "displacement_relation": {
+                  "equation_number": 1,
+                  "formula_as_printed": "δ = ΔZ_piezo − δ_tip",
+                  "visually_verified": true
+                },
+                "curve_selection": "Fits/calculations retain loading-unloading curves without obvious hysteresis and exclude curves with large hysteresis; exact excluded count and threshold not reported. Relatively large nanosheets used to reduce substrate-slippage error.",
+                "poissons_ratio_assumed": 0.211,
+                "poissons_ratio_role": "Source-adopted hBN model input cited to prior work; not measured for these specimens. Explicitly attached to Eq. 2 fitting discussion.",
+                "stress_measure": null,
+                "strain_measure": null,
+                "stress_strain_measure_status": "Eq. 4 does not explicitly define finite-strain stress/strain measures. Figure 5 labels its strain nominal. Supplement Figure S5 labels its diagnostic maximum Von Mises stress; that neither establishes the volume-averaged strength statistic nor identifies a Cauchy/first-/second-Piola measure. Do not inherit Lee or MoS2 conventions.",
+                "effective_thickness_convention": {
+                  "value": 0.334,
+                  "unit": "nm",
+                  "role": "Source-used layer thickness for volumetric conversion and finite-element geometry; not the AFM apparent height and not a curator default conversion.",
+                  "selected_2d_values_status": "Both selected N/m summaries are expressly printed in source; neither is generated by the curator."
+                },
+                "inference_model": "circular_membrane_force_deflection_fit",
+                "inference": "Fit the loading response with source Eq. 2 to infer E2D and pretension; not a direct uniform tensile-modulus measurement.",
+                "constitutive_model": "effective_isotropic_elastic_membrane_for_stiffness_fit",
+                "fit_force_law": {
+                  "equation_number": 2,
+                  "formula_as_printed": "F = σ₀²ᴰ(πa)(δ/a) + E²ᴰ(q³a)(δ/a)³",
+                  "visually_verified": true,
+                  "source_locator": "Results > Mechanical tests by indentation, Eq. 2 and following paragraph",
+                  "interpretation": "Pretension term plus membrane-stretching term. Equation is a source description, not an executable rule."
+                },
+                "q_source_report": {
+                  "formula_as_printed": "q = 1/(1.049 − 0.15ν − 0.16ν²)",
+                  "nu_as_printed": 0.211,
+                  "q_as_printed": null,
+                  "audit_arithmetic_value": 0.9898768854482001,
+                  "audit_arithmetic_status": "Curator arithmetic evaluation of source formula only, not a reported fitted value or replacement constant.",
+                  "internal_consistency": "No separately printed numerical q was found to test against the source formula.",
+                  "fit_constant_actually_used": null,
+                  "fit_constant_status": "The article prescribes the formula and ν; raw fit implementation not inspected."
+                },
+                "model_assumptions": [
+                  "Centrally indented circular isotropic membrane; stiffness fit describes tension/stretching and has no bending term.",
+                  "The source force law uses the circular-membrane central-load approximation. Do not transfer that approximation to finite-radius FEM failure inference.",
+                  "ν=0.211 is adopted from cited prior work."
+                ]
+              }
+            },
+            "sample_metadata": {
+              "const": {
+                "scope": "tested_sheet_count_not_raw_curve_or_separately_enumerated_failure_count",
+                "counts": {
+                  "study_monolayer_tested_sheets": 11,
+                  "force_displacement_curves_acquired": null,
+                  "force_displacement_curves_retained": null,
+                  "force_displacement_curves_excluded": null,
+                  "distinct_parent_flakes": null,
+                  "failure_events": null,
+                  "tested_sheets_explicitly_associated_with_stiffness_average": 11
+                },
+                "typical_protocol": {
+                  "indentations_per_sheet_typically": 5,
+                  "exact_count": false,
+                  "description": "Authors describe repeated indentations with increasing loads until fracture. This is not an exact count for every sheet."
+                },
+                "count_definition_source": {
+                  "artifact": "peer_review_author_response",
+                  "source_url": "https://media.springernature.com/original/springer-static/esm/art:10.1038%2Fncomms15815/MediaObjects/41467_2017_BFncomms15815_MOESM443_ESM.pdf",
+                  "locator": "PDF p. 8, author response to Reviewer #1 question 3",
+                  "verified_as": "Authors define N as tested sheets and describe typical five-indent protocol",
+                  "source_id": "falin_et_al_2017_hbn_mechanical_properties",
+                  "verification_status": "publisher_peer_review_author_response_text_and_visual_passage_checked"
+                },
+                "notes": [
+                  "N=11 is explicitly printed adjacent to the monolayer stiffness summary.",
+                  "Do not multiply 11 by typically five to invent a 55-curve dataset.",
+                  "Do not transfer N=11 to an independently verified count of retained failure events or strength-summary replicates."
+                ]
+              }
+            },
+            "quantity": {
+              "const": "in_plane_stiffness_2d"
+            },
+            "reported_result": {
+              "const": {
+                "value": 289,
+                "unit": "N/m",
+                "source_value_string": "289±24 N m−1 (N=11)",
+                "summary_statistic": "reported_average",
+                "uncertainty": {
+                  "notation": "plus_minus",
+                  "value": 24,
+                  "unit": "N/m",
+                  "type": "reported_standard_deviation",
+                  "definition_basis": "publisher_peer_review_author_response",
+                  "coverage_factor": null,
+                  "confidence_level": null,
+                  "averaging_convention": null,
+                  "interpretation": "The authors explicitly call deviations SDs in the public peer-review response and refer to Figures 3 and 4. This is not an SEM, confidence interval, hard bound or full uncertainty budget. Exact replicate weighting is unspecified.",
+                  "evidence": {
+                    "artifact": "peer_review_author_response",
+                    "source_url": "https://media.springernature.com/original/springer-static/esm/art:10.1038%2Fncomms15815/MediaObjects/41467_2017_BFncomms15815_MOESM443_ESM.pdf",
+                    "locator": "PDF p. 8, Reviewer #1 question 3, author response",
+                    "verified_as": "SD clarification for main-text deviations and Figures 3–4",
+                    "source_id": "falin_et_al_2017_hbn_mechanical_properties",
+                    "verification_status": "publisher_peer_review_author_response_text_and_visual_passage_checked"
+                  }
+                }
+              }
+            },
+            "evidence": {
+              "type": "array",
+              "minItems": 5,
+              "maxItems": 5,
+              "allOf": [
+                {
+                  "contains": {
+                    "const": {
+                      "artifact": "publisher_html",
+                      "source_url": "https://www.nature.com/articles/ncomms15815",
+                      "locator": "Results > Elastic modulus and breaking strength, first paragraph associated with Fig. 3",
+                      "verified_as": "Exact monolayer E2D value, ± value, reported average and N=11",
+                      "source_id": "falin_et_al_2017_hbn_mechanical_properties",
+                      "verification_status": "publisher_main_text_passage_checked"
+                    }
+                  },
+                  "minContains": 1,
+                  "maxContains": 1
+                },
+                {
+                  "contains": {
+                    "const": {
+                      "artifact": "publisher_html",
+                      "source_url": "https://www.nature.com/articles/ncomms15815",
+                      "locator": "Results > Mechanical tests by indentation, Eqs. 1–2 and adjoining paragraph",
+                      "verified_as": "Displacement, force-law fit, q formula, ν and effective thickness",
+                      "source_id": "falin_et_al_2017_hbn_mechanical_properties",
+                      "verification_status": "publisher_main_text_passage_checked"
+                    }
+                  },
+                  "minContains": 1,
+                  "maxContains": 1
+                },
+                {
+                  "contains": {
+                    "const": {
+                      "artifact": "publisher_html",
+                      "source_url": "https://www.nature.com/articles/ncomms15815",
+                      "locator": "Results > Preparation and characterization; Figure 1 caption; Methods > Materials and fabrication",
+                      "verified_as": "Specimen, geometry, instrument, calibration, ambient descriptor and velocity",
+                      "source_id": "falin_et_al_2017_hbn_mechanical_properties",
+                      "verification_status": "publisher_main_text_passage_checked"
+                    }
+                  },
+                  "minContains": 1,
+                  "maxContains": 1
+                },
+                {
+                  "contains": {
+                    "const": {
+                      "artifact": "peer_review_author_response",
+                      "source_url": "https://media.springernature.com/original/springer-static/esm/art:10.1038%2Fncomms15815/MediaObjects/41467_2017_BFncomms15815_MOESM443_ESM.pdf",
+                      "locator": "PDF p. 8, Reviewer #1 question 3 and author response",
+                      "verified_as": "SD, tested-sheet definition and typical repeated indentation protocol",
+                      "source_id": "falin_et_al_2017_hbn_mechanical_properties",
+                      "verification_status": "publisher_peer_review_author_response_text_and_visual_passage_checked"
+                    }
+                  },
+                  "minContains": 1,
+                  "maxContains": 1
+                },
+                {
+                  "contains": {
+                    "const": {
+                      "artifact": "supplement",
+                      "source_url": "https://media.springernature.com/original/springer-static/esm/art:10.1038%2Fncomms15815/MediaObjects/41467_2017_BFncomms15815_MOESM442_ESM.pdf",
+                      "locator": "PDF p. 4, Supplementary Figure S4, caption",
+                      "verified_as": "TEM tip diameter example 12.6 nm; no new tip measurement performed",
+                      "source_id": "falin_et_al_2017_hbn_mechanical_properties",
+                      "verification_status": "publisher_supplement_text_and_visual_passage_checked"
+                    }
+                  },
+                  "minContains": 1,
+                  "maxContains": 1
+                }
+              ]
+            }
+          },
+          "required": [
+            "method",
+            "sample_metadata",
+            "quantity",
+            "reported_result",
+            "evidence"
+          ]
+        },
+        {
+          "properties": {
+            "method": {
+              "const": {
+                "technique": "afm_central_indentation",
+                "instrument": "Cypher AFM",
+                "indenter_material": "diamond",
+                "tip_radii": {
+                  "values": [
+                    5.6,
+                    6.3
+                  ],
+                  "unit": "nm",
+                  "uncertainty": null,
+                  "measurement": "Transmission electron microscopy, as reported by authors",
+                  "per_sheet_assignment": null,
+                  "locator": "Methods > Materials and fabrication; Figure S4 shows 12.6 nm diameter for one tip",
+                  "curation_limit": "These are two reported radii, not a mean plus/minus tolerance. Do not assign one radius to all monolayer tests or treat the 6.3 nm example as every specimen."
+                },
+                "calibration": "Cantilever spring constants determined using combined thermal-noise and Sader methods",
+                "direct_experimental_inputs": [
+                  "cantilever_tip_deflection",
+                  "piezo_or_sample_z_displacement",
+                  "applied_load_displacement_curve",
+                  "fracture_load"
+                ],
+                "displacement_relation": {
+                  "equation_number": 1,
+                  "formula_as_printed": "δ = ΔZ_piezo − δ_tip",
+                  "visually_verified": true
+                },
+                "curve_selection": "Fits/calculations retain loading-unloading curves without obvious hysteresis and exclude curves with large hysteresis; exact excluded count and threshold not reported. Relatively large nanosheets used to reduce substrate-slippage error.",
+                "poissons_ratio_assumed": 0.211,
+                "poissons_ratio_role": "Source-adopted hBN model input cited to prior work; not measured for these specimens. Explicitly attached to Eq. 2 fitting discussion.",
+                "stress_measure": null,
+                "strain_measure": null,
+                "stress_strain_measure_status": "Eq. 4 does not explicitly define finite-strain stress/strain measures. Figure 5 labels its strain nominal. Supplement Figure S5 labels its diagnostic maximum Von Mises stress; that neither establishes the volume-averaged strength statistic nor identifies a Cauchy/first-/second-Piola measure. Do not inherit Lee or MoS2 conventions.",
+                "effective_thickness_convention": {
+                  "value": 0.334,
+                  "unit": "nm",
+                  "role": "Source-used layer thickness for volumetric conversion and finite-element geometry; not the AFM apparent height and not a curator default conversion.",
+                  "selected_2d_values_status": "Both selected N/m summaries are expressly printed in source; neither is generated by the curator."
+                },
+                "inference_model": "nonlinear_finite_element_volume_averaged_under_indenter_stress",
+                "constitutive_model": "source_nonlinear_elastic_quadratic_stress_strain_relation",
+                "inference": "Match nonlinear finite-element loading steps to experimental fracture loads; take the volume average of stresses in membrane elements directly beneath the finite-radius indenter. Retain the authors’ explicitly reported 2D strength. This is not a direct uniform-tension measurement, local maximum formula, or the maximum stress from the diagnostic S5 plot.",
+                "constitutive_relation": {
+                  "equation_number": 4,
+                  "formula_as_printed": "σ = Eε + Dε²",
+                  "visually_verified": true,
+                  "E": {
+                    "value": 865,
+                    "unit": "GPa",
+                    "role": "FEM input set by authors"
+                  },
+                  "D": {
+                    "value": -2035,
+                    "unit": "GPa",
+                    "role": "Third-order constant authors say was obtained from experimental results; not a selected standalone observation"
+                  },
+                  "implementation": "Equivalent elastic-plastic ABAQUS material implementation used for assumed nonlinear elastic behavior; do not infer physical plasticity merely from implementation terminology."
+                },
+                "finite_element_model": {
+                  "software": "ABAQUS",
+                  "indenter": "rigid_sphere",
+                  "contact": "frictionless",
+                  "membrane": "axisymmetric",
+                  "radius": {
+                    "value": 650,
+                    "unit": "nm"
+                  },
+                  "initial_thickness": {
+                    "value": 0.334,
+                    "unit": "nm",
+                    "scope": "monolayer BN"
+                  },
+                  "element_type": "MAX1 two-node linear axisymmetric membrane",
+                  "element_count": 1663,
+                  "mesh_spacing": {
+                    "centre": 0.1,
+                    "outermost": 1.0,
+                    "unit": "nm"
+                  },
+                  "applied_indentation_depth": {
+                    "value": 100,
+                    "unit": "nm",
+                    "role": "simulation prescribed endpoint, not experimental mean fracture displacement"
+                  },
+                  "displacement_increment": {
+                    "value": 0.1,
+                    "unit": "nm",
+                    "role": "simulation load step, not physical loading rate"
+                  },
+                  "strength_reduction": "volume_average_of_under_indenter_element_stresses_at_experimental_fracture_load",
+                  "reported_stress_component_or_invariant_for_this_average": null
+                },
+                "diagnostic_not_selected_result": {
+                  "source": "Supplementary Figure S5, PDF p. 5",
+                  "plotted_quantity": "maximum Von Mises stress",
+                  "source_reported_linear_model_overestimate_percent": 25.7,
+                  "scope": "Authors’ model sensitivity illustration, not an uncertainty correction or multiplier to the reported breaking strength"
+                },
+                "model_assumptions": [
+                  "Nonlinear elastic constitutive response, axisymmetric membrane and rigid spherical tip.",
+                  "Frictionless contact and source-assigned initial thickness.",
+                  "Finite-radius indentation produces a nonuniform stress field; strength is reduced by averaging element stresses beneath the tip.",
+                  "No unreported stress/strain convention or source maximum-stress formula is imported from another study."
+                ]
+              }
+            },
+            "sample_metadata": {
+              "const": {
+                "scope": "tested_sheet_count_not_raw_curve_or_separately_enumerated_failure_count",
+                "counts": {
+                  "study_monolayer_tested_sheets": 11,
+                  "force_displacement_curves_acquired": null,
+                  "force_displacement_curves_retained": null,
+                  "force_displacement_curves_excluded": null,
+                  "distinct_parent_flakes": null,
+                  "failure_events": null
+                },
+                "typical_protocol": {
+                  "indentations_per_sheet_typically": 5,
+                  "exact_count": false,
+                  "description": "Authors describe repeated indentations with increasing loads until fracture. This is not an exact count for every sheet."
+                },
+                "count_definition_source": {
+                  "artifact": "peer_review_author_response",
+                  "source_url": "https://media.springernature.com/original/springer-static/esm/art:10.1038%2Fncomms15815/MediaObjects/41467_2017_BFncomms15815_MOESM443_ESM.pdf",
+                  "locator": "PDF p. 8, author response to Reviewer #1 question 3",
+                  "verified_as": "Authors define N as tested sheets and describe typical five-indent protocol",
+                  "source_id": "falin_et_al_2017_hbn_mechanical_properties",
+                  "verification_status": "publisher_peer_review_author_response_text_and_visual_passage_checked"
+                },
+                "notes": [
+                  "N=11 is explicitly printed adjacent to the monolayer stiffness summary.",
+                  "Do not multiply 11 by typically five to invent a 55-curve dataset.",
+                  "Do not transfer N=11 to an independently verified count of retained failure events or strength-summary replicates."
+                ]
+              }
+            },
+            "quantity": {
+              "const": "breaking_strength_2d"
+            },
+            "reported_result": {
+              "const": {
+                "value": 23.6,
+                "unit": "N/m",
+                "source_value_string": "70.5±5.5 GPa (23.6±1.8 N m−1)",
+                "summary_statistic": "reported_strength_summary",
+                "central_statistic_explicitly_named": null,
+                "uncertainty": {
+                  "notation": "plus_minus",
+                  "value": 1.8,
+                  "unit": "N/m",
+                  "type": "reported_standard_deviation",
+                  "definition_basis": "publisher_peer_review_author_response",
+                  "coverage_factor": null,
+                  "confidence_level": null,
+                  "averaging_convention": null,
+                  "interpretation": "The authors explicitly call deviations SDs in the public peer-review response and refer to Figures 3 and 4. This is not an SEM, confidence interval, hard bound or full uncertainty budget. Exact replicate weighting is unspecified.",
+                  "evidence": {
+                    "artifact": "peer_review_author_response",
+                    "source_url": "https://media.springernature.com/original/springer-static/esm/art:10.1038%2Fncomms15815/MediaObjects/41467_2017_BFncomms15815_MOESM443_ESM.pdf",
+                    "locator": "PDF p. 8, Reviewer #1 question 3, author response",
+                    "verified_as": "SD clarification for main-text deviations and Figures 3–4",
+                    "source_id": "falin_et_al_2017_hbn_mechanical_properties",
+                    "verification_status": "publisher_peer_review_author_response_text_and_visual_passage_checked"
+                  }
+                }
+              }
+            },
+            "evidence": {
+              "type": "array",
+              "minItems": 6,
+              "maxItems": 6,
+              "allOf": [
+                {
+                  "contains": {
+                    "const": {
+                      "artifact": "publisher_html",
+                      "source_url": "https://www.nature.com/articles/ncomms15815",
+                      "locator": "Results > Elastic modulus and breaking strength, paragraph associated with Fig. 4 beginning with strengths calculated using finite element simulation",
+                      "verified_as": "Exact monolayer strength 70.5±5.5 GPa (23.6±1.8 N/m)",
+                      "source_id": "falin_et_al_2017_hbn_mechanical_properties",
+                      "verification_status": "publisher_main_text_passage_checked"
+                    }
+                  },
+                  "minContains": 1,
+                  "maxContains": 1
+                },
+                {
+                  "contains": {
+                    "const": {
+                      "artifact": "publisher_html",
+                      "source_url": "https://www.nature.com/articles/ncomms15815",
+                      "locator": "Methods > Finite element analysis, Eq. 4 and all paragraphs in that subsection",
+                      "verified_as": "FEM geometry/contact/constants and volume-averaged under-indenter stress at fracture",
+                      "source_id": "falin_et_al_2017_hbn_mechanical_properties",
+                      "verification_status": "publisher_main_text_passage_checked"
+                    }
+                  },
+                  "minContains": 1,
+                  "maxContains": 1
+                },
+                {
+                  "contains": {
+                    "const": {
+                      "artifact": "publisher_html",
+                      "source_url": "https://www.nature.com/articles/ncomms15815",
+                      "locator": "Methods > Materials and fabrication",
+                      "verified_as": "AFM, tip radii, calibration, velocity, environment and curve exclusions",
+                      "source_id": "falin_et_al_2017_hbn_mechanical_properties",
+                      "verification_status": "publisher_main_text_passage_checked"
+                    }
+                  },
+                  "minContains": 1,
+                  "maxContains": 1
+                },
+                {
+                  "contains": {
+                    "const": {
+                      "artifact": "supplement",
+                      "source_url": "https://media.springernature.com/original/springer-static/esm/art:10.1038%2Fncomms15815/MediaObjects/41467_2017_BFncomms15815_MOESM442_ESM.pdf",
+                      "locator": "PDF p. 5, Supplementary Figure S5, axes and caption",
+                      "verified_as": "Maximum Von Mises diagnostic plot distinguished from main-text volume-average strength",
+                      "source_id": "falin_et_al_2017_hbn_mechanical_properties",
+                      "verification_status": "publisher_supplement_text_and_visual_passage_checked"
+                    }
+                  },
+                  "minContains": 1,
+                  "maxContains": 1
+                },
+                {
+                  "contains": {
+                    "const": {
+                      "artifact": "peer_review_author_response",
+                      "source_url": "https://media.springernature.com/original/springer-static/esm/art:10.1038%2Fncomms15815/MediaObjects/41467_2017_BFncomms15815_MOESM443_ESM.pdf",
+                      "locator": "PDF p. 8, Reviewer #1 question 3 and author response",
+                      "verified_as": "SD clarification referring to Figures 3 and 4; not a separately enumerated failure-event count",
+                      "source_id": "falin_et_al_2017_hbn_mechanical_properties",
+                      "verification_status": "publisher_peer_review_author_response_text_and_visual_passage_checked"
+                    }
+                  },
+                  "minContains": 1,
+                  "maxContains": 1
+                },
+                {
+                  "contains": {
+                    "const": {
+                      "artifact": "supplement",
+                      "source_url": "https://media.springernature.com/original/springer-static/esm/art:10.1038%2Fncomms15815/MediaObjects/41467_2017_BFncomms15815_MOESM442_ESM.pdf",
+                      "locator": "PDF p. 4, Supplementary Figure S4, caption",
+                      "verified_as": "TEM tip diameter example 12.6 nm; no new tip measurement performed",
+                      "source_id": "falin_et_al_2017_hbn_mechanical_properties",
+                      "verification_status": "publisher_supplement_text_and_visual_passage_checked"
+                    }
+                  },
+                  "minContains": 1,
+                  "maxContains": 1
+                }
+              ]
+            }
+          },
+          "required": [
+            "method",
+            "sample_metadata",
+            "quantity",
+            "reported_result",
+            "evidence"
+          ]
         }
       ]
     }

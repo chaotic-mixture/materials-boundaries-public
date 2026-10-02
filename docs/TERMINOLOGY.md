@@ -188,7 +188,7 @@ The source's I/II labels and exact Laue classes are part of the scientific ident
 - **日本語：** 正方晶 I／II の C66 は独立ですが、菱面体晶 I／II では (C11−C12)/2 に従属します。菱面体晶／三方晶という名称は非直交原始基底を要求しません。完全な Cartesian 工学 Voigt テンプレート、結合符号、係数2と C14²+C15² の合算条件を保持します。無応力・一様ひずみ・調和近似での厳密な安定性は、フォノン／初期応力下の安定性や強度とは異なります。等号は厳密な安定性を満たさず、限界状態には全体の半正定値性とゼロモードが必要です。正の行列式だけでは不十分です
 - **Deutsch:** C66 ist in Tetragonal I/II unabhängig und in Rhomboedrisch I/II durch (C11−C12)/2 bestimmt. Rhomboedrisch/trigonal verlangt keine nichtorthogonale primitive Basis. Vollständige kartesische technische Voigt-Vorlage, Kopplungsvorzeichen, Faktor 2 und gemeinsame Summe C14²+C15² bleiben erhalten. Strikte spannungsfreie homogene harmonische Stabilität bedeutet weder Phononen-/Vorspannungsstabilität noch Festigkeit. Gleichheit erfüllt keine strikte Stabilität; harmonische Grenzfälle benötigen insgesamt PSD mit Nullmode. Eine positive Determinante allein genügt nicht
 
-All full conditions and source locators are in [Elastic stability](ELASTIC_STABILITY.md); the [four getting-started guides](I18N.md) explain the unchanged eight-output calculator and current 34-claim catalog. None of these translated labels supplies runtime specimen classification.
+All full conditions and source locators are in [Elastic stability](ELASTIC_STABILITY.md); the [four getting-started guides](I18N.md) explain the unchanged eight-output calculator and current 36-claim catalog. None of these translated labels supplies runtime specimen classification.
 
 ## v0.16.0 hydrostatic compressibility terminology
 
@@ -217,3 +217,35 @@ manuscript equations were text-checked only. The inspection distinction must
 survive translation. No source PDF, image or full text is bundled, and source
 access confers no reuse license. For complete translated scope and exclusions,
 see [the four-language scientific summaries](DIRECTIONAL_COMPRESSIBILITY.md#four-language-scientific-summary).
+
+## Monolayer hBN observation terms (v0.19.0)
+
+These labels belong to the Falin et al. (2017) family; they do not change the
+older graphene or MoS2 conventions. Full evidence and limits are in the
+[observation guide](OBSERVATIONS.md#monolayer-hbn-falin-et-al-2017-new-records).
+
+| Concept | English | 简体中文 | 日本語 | Deutsch |
+| --- | --- | --- | --- | --- |
+| Selected specimen | Suspended monolayer hexagonal boron nitride (hBN) | 悬空单层六方氮化硼（hBN） | 懸架した単層六方晶窒化ホウ素（hBN） | Freitragendes einlagiges hexagonales Bornitrid (hBN) |
+| Stiffness result | In-plane stiffness, 289 ± 24 N/m | 面内刚度，289 ± 24 N/m | 面内剛性、289 ± 24 N/m | Steifigkeit in der Ebene, 289 ± 24 N/m |
+| Strength result | Breaking strength, 23.6 ± 1.8 N/m | 破坏强度，23.6 ± 1.8 N/m | 破壊強さ、23.6 ± 1.8 N/m | Bruchfestigkeit, 23.6 ± 1.8 N/m |
+| Strength reduction | Volume-averaged stresses beneath the indenter | 压头下应力的体积平均 | 圧子直下の応力の体積平均 | Volumengemittelte Spannungen unter dem Eindringkörper |
+| S5 diagnostic | Maximum Von Mises stress, distinct from the strength statistic | 最大 Von Mises 应力，与强度统计量不同 | 最大 Von Mises 応力、強さの統計量とは別 | Maximale Von-Mises-Spannung, getrennt vom Festigkeitskennwert |
+| Rate | Probe translation velocity, not strain rate | 探针平移速度，不是应变率 | 探針移動速度、ひずみ速度ではない | Sondentranslationsgeschwindigkeit, keine Verzerrungsrate |
+| Count | Tested sheets, not a verified failure-event count | 试验薄膜张数，不是已核实的失效事件数 | 試験シート枚数、確認済み破壊事象数ではない | Getestete Schichten, keine verifizierte Bruchereigniszahl |
+| SD basis | Peer-review author response, PDF p. 8; not main-text notation alone | 审稿作者回复 PDF 第 8 页；非仅据正文符号 | 査読著者回答 PDF 8頁、本文記号のみではない | Autorenantwort zur Begutachtung, PDF S. 8; nicht allein Haupttextnotation |
+
+The source's **0.5 μm/s** translation velocity and qualitative ambient descriptor
+do not establish strain rate or numeric temperature/pressure/humidity/gas
+composition. Eleven tested sheets are explicitly linked to stiffness only;
+unknown curves and failures are not zero or eleven by default. “Typically five”
+is not an exact count. Both ± values have source-clarified SD meaning with
+unknown coverage and weighting, rather than a confidence interval or bound.
+The finite-strain stress/strain measures remain unknown.
+
+The q arithmetic **0.9898768854482001** follows the source formula with
+**1.049** and **ν=0.211**; it is neither a printed/fitted q value nor evidence
+of an hBN mismatch. Keep the separate MoS2 q inconsistency visible. N/m is
+source-printed, with no automatic thickness conversion. Article CC BY 4.0 does
+not establish the separate supplement/peer-review-file license scope. These
+translations do not claim independent scientific or native-language review.

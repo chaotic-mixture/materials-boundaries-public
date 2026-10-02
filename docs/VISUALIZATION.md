@@ -236,3 +236,15 @@ method; unknown conditions are not treated as proven equal. It supplies no
 stress–strain interpolation, invented error bars or universal bounds. This
 separate renderer does not change the composite or temperature visualizations.
 See [computational predictions](COMPUTATIONAL_PREDICTIONS.md).
+
+## v0.19.0 hBN observations remain outside composite plots
+
+The current catalog contains six observations from three studies after adding
+the two monolayer hBN summaries. All remain `catalog_only` and are excluded
+from composite comparison builders/renderers, overlays, rankings and uncertainty
+bands. The hBN N/m stiffness and model-dependent FEM strength are distinct
+quantities; source SDs are not certified bounds or plot-ready confidence bands.
+The eight executable rules and their numerical comparison behavior are unchanged.
+No hBN plot, thickness conversion or cross-study matched-condition comparison
+is introduced. See [observation evidence and limits](OBSERVATIONS.md#monolayer-hbn-falin-et-al-2017-new-records)
+and [migration](MIGRATION_v0.19.0.md).

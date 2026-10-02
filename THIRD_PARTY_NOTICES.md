@@ -109,3 +109,32 @@ Source inspection, formula checks and tests are not independent scientific
 review or legal clearance. Existing source-specific notices and the conservative
 NIST omissions remain unchanged. See [wave provenance and proofs](docs/BULK_ELASTIC_WAVES.md)
 and [source ledger](docs/SOURCES.md).
+
+## Monolayer hBN observations (v0.19.0)
+
+The added source is Aleksey Falin, Qiran Cai, Elton J. G. Santos, Declan Scullion,
+Dong Qian, Rui Zhang, Zhi Yang, Shaoming Huang, Kenji Watanabe, Takashi Taniguchi,
+Matthew R. Barnett, Ying Chen, Rodney S. Ruoff and Lu Hua Li,
+[“Mechanical properties of atomically thin boron nitride and the role of interlayer interactions”](https://doi.org/10.1038/ncomms15815),
+*Nature Communications* 8, 15815 (2017). The publisher article is ©2017 The
+Author(s) under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/),
+subject to contrary third-party credit lines. The license is linked in the
+publisher's [Rights and permissions](https://www.nature.com/articles/ncomms15815#rightslink).
+
+Exactly two selected monolayer summaries are curated: stiffness 289 ± 24 N/m
+and breaking strength 23.6 ± 1.8 N/m. These are source-printed numerical facts,
+with original notes and precise source locators, not refits or a redistributed
+experimental dataset. The SD and tested-sheet definitions are specifically
+attributed to the publisher-linked peer-review author response, PDF p. 8,
+Reviewer #1 question 3; they are not represented as definitions printed in the
+main article. Nonlinear FEM volume-averaged under-indenter strength is kept
+distinct from the supplement's diagnostic maximum Von Mises stress.
+
+**Separate license scope for the supplementary information and public peer-review
+file is unverified.** The article's CC BY 4.0 status is not automatically applied
+to either artifact. No source PDF, full text, figure, screenshot, peer-review
+report or raw-data collection is redistributed. The MIT license covers original
+project work only and does not replace source licensing or imply author/publisher
+endorsement. Source inspection and software tests do not establish scientific
+peer review or legal clearance. See [observation provenance](docs/OBSERVATIONS.md#monolayer-hbn-falin-et-al-2017-new-records)
+and [source ledger](docs/SOURCES.md).

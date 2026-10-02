@@ -1,6 +1,45 @@
 # はじめに：Materials Boundaries
 
-## 現在の v0.18.0：カタログ専用のバルク弾性波
+## 現在の v0.19.0：カタログ専用の単層 hBN 観測
+
+Falin ら（2017）のレコード2件と出典1件のみを追加し、**力学論断36件、出典51件、
+3研究の観測6件**です。観測スキーマは **1.1.0 → 1.2.0** となり、hBN 専用の閉じた
+方法ファミリーを設けます。計算予測6件、合成温度デモ5件（7分岐）、実行可能な
+複合材料規則8件は不変で、論断スキーマは1.11.0のままです。
+
+出典は **面内剛性289 ± 24 N/m** と **破壊強さ23.6 ± 1.8 N/m** を明記します。
+標準偏差という定義の根拠は、出版社がリンクする**公開査読の著者回答 PDF 8頁、
+査読者 #1 の質問3**です。本文の ± 記号だけに由来する定義ではありません。
+標準誤差、信頼区間、厳密な限界、完全な不確かさ予算ではなく、反復値の重み付けは
+不明です。**N=11 は試験シートの枚数で、剛性平均との対応のみ明示**されます。
+曲線総数と破壊事象数は不明です。各シートで通常5回の圧入は、厳密に55本の曲線や
+11個の確認済み強さ反復値を意味しません。
+
+剛性は円形膜の AFM フィットで推定します。強さは非線形 FEM による**有限半径の
+圧子直下の膜要素応力の体積平均**であり、補足図 S5 の**最大 Von Mises 応力**の
+診断や直接測定した均一引張強さではありません。有限ひずみの応力・ひずみ尺度は
+不明のままです。出典の式 **q=1/(1.049−0.15ν−0.16ν²)** と **ν=0.211** から得る
+**0.9898768854482001 はキュレーターによる算術確認のみ**です。別記の数値 q や
+実際のフィット定数は未確認のため、hBN の q の不整合や修正は主張しません。
+
+ambient という記述から数値の温度・圧力・気体組成・湿度は確定しません。
+**0.5 μm/s** は負荷・除荷時の探針移動速度であり、ひずみ速度ではありません。
+二つの N/m 値は出典の明記値で、**0.334 nm** は出典のモデル厚さの規約のみです。
+厚さ換算、再フィット、順位付け、比較、図、複合材料への重ね描きは追加しません。
+既存のグラフェンと MoS2 の記録および下記の MoS2 の q 不整合は保持します。
+
+論文は [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) ですが、補足資料と
+査読ファイルそれぞれのライセンス範囲は未確認です。出典 PDF、全文、図、スクリーン
+ショット、査読報告書、実験生データ集は収録しません。転記確認とソフトウェアテストは
+独立した科学的・母語レビューではありません。[hBN の根拠と限界](OBSERVATIONS.md#monolayer-hbn-falin-et-al-2017-new-records)
+および [v0.19.0 移行](MIGRATION_v0.19.0.md)を参照してください。
+
+```sh
+python -m materials_boundaries catalog observations --source-id falin_et_al_2017_hbn_mechanical_properties --text --lang ja
+python -m materials_boundaries catalog observations --query "hBN stiffness" --json
+```
+
+## 以前の v0.18.0：カタログ専用のバルク弾性波
 
 本版は関係2件と出典2件のみを追加し、**力学論断36件、出典50件**、論断スキーマ
 **1.11.0** となります。2研究の観測4件、計算予測6件、合成温度デモ5件（7分岐）、
@@ -50,7 +89,7 @@ python -m materials_boundaries temperature evaluate examples/temperature/synthet
 python -m materials_boundaries temperature plot --output /tmp/temperature-demos --lang ja
 ```
 
-[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.18.0.md)
+[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.19.0.md)
 
 ## ローカルで実行する
 

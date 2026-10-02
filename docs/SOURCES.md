@@ -1,6 +1,6 @@
 # Source curation, verification and rights
 
-Reusable claims, observation summaries and the source manifest are separate records. Current v0.18.0 has 36 mechanics claims, 50 sources and four observations from two studies, alongside five synthetic temperature demos (seven branches) and six computational predictions. The v0.8.0 historical batch had 26 claims and 20 sources; its four new stability claims reused an existing source and preserved those 20 source records. Some claims are executable elastic bounds/envelopes; the strength/fracture models, stability criteria and porous solid/void intervals are catalog-only. A source being available or read does not establish every claim attributed to it. Each claim or observation retains its own locator, verification status and gaps. The repository includes brief numerical facts, bibliographic metadata and original curation notes; no publisher PDF, article full text, scraped body or unlicensed figure is bundled.
+Reusable claims, observation summaries and the source manifest are separate records. Current v0.19.0 contains 36 mechanics claims, 51 sources and six observations from three studies, alongside five synthetic temperature demos (seven branches) and six computational predictions. The v0.8.0 historical batch had 26 claims and 20 sources; its four new stability claims reused an existing source and preserved those 20 source records. Some claims are executable elastic bounds/envelopes; the strength/fracture models, stability criteria and porous solid/void intervals are catalog-only. A source being available or read does not establish every claim attributed to it. Each claim or observation retains its own locator, verification status and gaps. The repository includes brief numerical facts, bibliographic metadata and original curation notes; no publisher PDF, article full text, scraped body or unlicensed figure is bundled.
 
 ## Historical evidence ledger and later release additions
 
@@ -67,8 +67,9 @@ Copyright ©2008 AAAS, all rights reserved; no open reuse license is verified. P
 
 ## Licenses and release status
 
-Version 0.16.0 was the first public-release baseline; version 0.17.0 adds only
-the bounded monolayer MoS2 observation batch described below. Original project code, documentation
+Version 0.16.0 was the first public-release baseline; current version 0.19.0
+adds only the bounded monolayer hBN observation batch described below, preserving
+the earlier MoS2 and bulk-wave additions. Original project code, documentation
 and original curation use the [MIT License](../LICENSE), under maintainer handle
 chaotic-mixture. Scientific facts and third-party works are not relicensed.
 Public readability, arXiv hosting, a supplement or a repository link does not
@@ -249,9 +250,9 @@ existing graphene ± values remain statistically unspecified. See
 [observation evidence and limits](OBSERVATIONS.md),
 [migration](MIGRATION_v0.17.0.md) and [notices](../THIRD_PARTY_NOTICES.md).
 
-## Complete public source index (v0.17.0)
+## Complete public source index (v0.19.0)
 
-These are the 48 packaged source identities, including one original synthetic
+These are the 51 packaged source identities, including one original synthetic
 provenance record. A bibliographic record is not a bundled publication or dataset;
 see each canonical record and the guides above for read/review and rights status.
 Repeated works in distinct source roles are not independent studies.
@@ -306,6 +307,10 @@ Repeated works in distinct source roles are not independent studies.
 
 - `bertolazzi_brivio_kis_2011`: [Stretching and Breaking of Ultrathin MoS2](https://doi.org/10.1021/nn203879f)
 
+- `chevrot_vanderhilst_2003`: [On the effects of a dipping axis of symmetry on shear wave splitting measurements in a transversely isotropic medium](https://doi.org/10.1046/j.1365-246X.2003.01865.x)
+- `xiang_qi_wei_2018_arxiv_v2`: [On the M-eigenvalues of elasticity tensor and the strong ellipticity condition](https://arxiv.org/abs/1708.04876v2)
+- `falin_et_al_2017_hbn_mechanical_properties`: [Mechanical properties of atomically thin boron nitride and the role of interlayer interactions](https://doi.org/10.1038/ncomms15815)
+
 ## v0.18.0 bulk elastic-wave evidence and original derivations
 
 This batch appends exactly two sources to the former 48, giving **50 source
@@ -357,3 +362,71 @@ batch, and their existing claims are not redefined. No article PDF, full text,
 page image or figure is included. Formula inspection and symbolic/software
 checks establish neither physical realizability nor independent scientific
 review. See [migration](MIGRATION_v0.18.0.md) and [third-party notices](../THIRD_PARTY_NOTICES.md).
+
+## v0.19.0 addition: one monolayer hBN study, two summaries
+
+This batch appends exactly one source to the former 50, giving **51 sources**
+(50 bibliographic/source records plus one original synthetic-demo provenance
+record). The 36 mechanics claims, previous four observations, six computational
+predictions and five synthetic temperature demos/seven branches are preserved.
+There are now **six observations from three studies** and still exactly eight
+executable composite rules.
+
+51. **Falin et al. (2017)**, [“Mechanical properties of atomically thin boron nitride and the role of interlayer interactions”](https://doi.org/10.1038/ncomms15815),
+*Nature Communications* 8, 15815, published 22 June 2017; source/study ID
+`falin_et_al_2017_hbn_mechanical_properties`. The complete author attribution is
+in the canonical source record and [observation guide](OBSERVATIONS.md#monolayer-hbn-falin-et-al-2017-new-records).
+The inspected artifact is published publisher HTML, not an author manuscript
+or preprint; no explicit revision number is displayed. HTML publication/modified
+metadata does not prove absence of subsequent corrections. The main PDF was
+not inspected, so locators use named sections, equations and figures.
+
+The evidence is deliberately split by artifact:
+
+- **Published article HTML:** Results, “Elastic modulus and breaking strength”,
+  Fig. 3 paragraph gives **289 ± 24 N/m (N=11)**; the Fig. 4 paragraph gives
+  **23.6 ± 1.8 N/m**. Eqs. (1), (2), (4) were visually checked as equation
+  images. Methods gives ambient conditions, **0.5 μm/s** loading/unloading probe
+  translation velocity, two tip radii (5.6 and 6.3 nm), and nonlinear FEM with
+  **volume-averaged stresses beneath the finite-radius indenter** at the
+  experimental fracture load
+- **[Supplementary information](https://media.springernature.com/original/springer-static/esm/art:10.1038%2Fncomms15815/MediaObjects/41467_2017_BFncomms15815_MOESM442_ESM.pdf):**
+  relevant text checked; visual checks of PDF pp. 4–5 / Figs. S4–S5 distinguish
+  the example 12.6 nm tip diameter and the **maximum Von Mises stress**
+  diagnostic. The latter is not the reported volume-average strength statistic.
+  The 15-page artifact SHA-256 is
+  `a9f8b7cee5990f6af75a375b1e116189fbdc98998a6871912099c610ba681d1e`
+- **[Public peer-review author response](https://media.springernature.com/original/springer-static/esm/art:10.1038%2Fncomms15815/MediaObjects/41467_2017_BFncomms15815_MOESM443_ESM.pdf):**
+  **PDF p. 8, Reviewer #1 question 3**, text/visual inspection establishes that
+  the reported deviations are SDs (referring to Figs. 3–4), N denotes tested
+  sheets, and five indentations per sheet is a typical protocol. The 21-page
+  artifact SHA-256 is
+  `6efa8726cd93b811440b2fb60c1206f2bf37b7a492aeea47fae62818ffea5976`.
+  This is an author-response clarification, not a main-text SD definition,
+  final-article page or raw-data file
+
+Eleven tested sheets are explicitly associated with stiffness; curve totals,
+parent-flake count and separately enumerated failure events remain unknown.
+There is no invented 55-curve dataset or eleven verified strength replicates.
+Finite-strain stress/strain conventions and the stress component/invariant used
+for the FEM volume average remain unspecified. Ambient does not supply numerical
+temperature, pressure, humidity or gas composition, and probe translation is
+not strain rate. The source-printed N/m values are retained without thickness
+conversion or rounding correction.
+
+The stiffness fit prints q=1/(1.049−0.15ν−0.16ν²), ν=0.211. Its
+**0.9898768854482001** evaluation is curator arithmetic only. No separately
+printed numerical q was found and the actual fit constant is unknown; no hBN
+q discrepancy is claimed. This does not modify the separate MoS2 discrepancy.
+A second-reader transcription check used the same artifacts. No raw-data
+reanalysis, fit/FEM-code inspection, replication or independent scientific
+review is claimed. The article's on-request data-availability statement is
+recorded; no author request was made and no public source-data file was located.
+
+The article explicitly carries ©2017 The Author(s) and
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), with contrary
+third-party credit lines excepted. **Separate supplement and peer-review license
+scope is unverified**. Only brief factual values, metadata, equations, locators
+and original curation are bundled, with no PDF, full text, figure, screenshot,
+peer-review report or raw collection. MIT does not replace source rights.
+See [migration](MIGRATION_v0.19.0.md) and [notices](../THIRD_PARTY_NOTICES.md).

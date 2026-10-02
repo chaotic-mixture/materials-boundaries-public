@@ -14,8 +14,8 @@ composite rules were separate. Its source catalog contained 47 records: the
 `materials_boundaries_synthetic_temperature_demo`, which records original
 author provenance rather than an external publication.
 
-The current [v0.17.0 catalog expansion](MIGRATION_v0.17.0.md) has 48 sources
-and four observations from two studies. These five synthetic temperature models
+The current [v0.19.0 catalog expansion](MIGRATION_v0.19.0.md) has 51 sources
+and six observations from three studies. These five synthetic temperature models
 and their seven branches are unchanged.
 
 ## Polynomial and branch contract

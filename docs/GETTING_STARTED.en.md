@@ -1,6 +1,50 @@
 # Getting started: Materials Boundaries
 
-## Current v0.18.0: catalog-only bulk elastic waves
+## Current v0.19.0: catalog-only monolayer hBN observations
+
+Exactly two Falin et al. (2017) records and one source are added: **36 mechanics
+claims, 51 sources, 6 observations from 3 studies**. Observations schema advances
+**1.1.0 → 1.2.0** with a separate closed hBN family. Six computational predictions,
+five synthetic temperature demos (seven branches) and exactly eight executable
+composite rules remain unchanged; claims schema stays 1.11.0.
+
+The source explicitly prints **289 ± 24 N/m in-plane stiffness** and
+**23.6 ± 1.8 N/m breaking strength**. The SD definition comes from the
+publisher-linked **peer-review author response, PDF p. 8, Reviewer #1 question 3**,
+not the main text's ± notation alone. These are not SEMs, confidence intervals,
+bounds or a complete uncertainty budget. Exact replicate weighting remains unknown.
+**N=11 is tested sheets explicitly associated with the stiffness average**;
+curve counts and failure-event counts remain unknown. Typically five indentations
+per sheet does not mean exactly 55 curves or eleven verified strength replicates.
+
+Stiffness is inferred by a circular-membrane AFM fit. Breaking strength uses
+nonlinear FEM **volume-averaged stresses beneath a finite-radius indenter**,
+not the **maximum Von Mises stress** diagnostic in Supplementary Fig. S5 or
+a directly measured uniform tensile strength. Finite-strain stress/strain measures
+remain unknown. Source formula **q=1/(1.049−0.15ν−0.16ν²)** with **ν=0.211** gives
+**0.9898768854482001 by curator arithmetic only**; no separately printed numerical
+q or actual fit constant is verified. No hBN q mismatch or correction is asserted.
+
+“Ambient” supplies no numerical temperature, pressure, gas composition or humidity.
+**0.5 μm/s** is loading/unloading probe translation velocity, not strain rate.
+Both N/m summaries are source-printed; **0.334 nm** is the source's model-thickness
+convention only. No automatic thickness conversion, refit, ranking, comparison,
+plot or composite overlay is added. Previous graphene/MoS2 records are preserved,
+including the prominent MoS2 printed-q inconsistency below.
+
+The article is [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); separate
+supplement and peer-review-file license scope is unverified. No source PDFs,
+full text, figures, screenshots, peer-review reports or raw-data collections are
+bundled. Source transcription and software tests are not independent scientific
+or native-language review. See [full hBN evidence and limits](OBSERVATIONS.md#monolayer-hbn-falin-et-al-2017-new-records)
+and [v0.19.0 migration](MIGRATION_v0.19.0.md).
+
+```sh
+python -m materials_boundaries catalog observations --source-id falin_et_al_2017_hbn_mechanical_properties --text --lang en
+python -m materials_boundaries catalog observations --query "hBN stiffness" --json
+```
+
+## Historical v0.18.0: catalog-only bulk elastic waves
 
 This release adds exactly two relations and two sources: **36 mechanics claims,
 50 sources**, claims schema **1.11.0**. The four observations from two studies,
@@ -73,7 +117,7 @@ python -m materials_boundaries temperature evaluate examples/temperature/synthet
 python -m materials_boundaries temperature plot --output /tmp/temperature-demos --lang en
 ```
 
-[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.18.0.md)
+[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.19.0.md)
 
 ## Run locally
 
@@ -156,7 +200,7 @@ The formula is σc = sqrt(E_prime Gc/(πa)), where E_prime = E in plane stress a
 
 The model assumes a homogeneous isotropic linear-elastic body, a central through-crack in a sufficiently wide/infinite plate, remote mode-I tension and a small yielding/process zone. Other geometries and large-scale plasticity are outside this model. Its critical stress is not a universal tensile-strength upper bound or an engineering allowable. Do not extrapolate the continuum formula to atomic crack sizes or a → 0.
 
-Catalog retrieval does not establish any premise for a supplied specimen, produce `satisfied`/`violated`/`unknown` states, or calculate stress. Unknown or violated premises cannot justify use. `evaluate()` still returns the same eight composite evaluations under schema 1.1.0. The current claims schema is 1.6.0; stability predicates have no physical output unit. In v0.3.0 the ten-record claims catalog moved to schema 1.2.0; v0.4.0 has fifteen claims under schema 1.3.0; every claim now has explicit `claim_type`, `quantity_dimension`, `si_unit`, and `evaluation_support`.
+Catalog retrieval does not establish any premise for a supplied specimen, produce `satisfied`/`violated`/`unknown` states, or calculate stress. Unknown or violated premises cannot justify use. `evaluate()` still returns the same eight composite evaluations under schema 1.1.0. The current claims schema is 1.11.0; stability predicates have no physical output unit. In v0.3.0 the ten-record claims catalog moved to schema 1.2.0; v0.4.0 has fifteen claims under schema 1.3.0; every claim now has explicit `claim_type`, `quantity_dimension`, `si_unit`, and `evaluation_support`.
 
 ```sh
 python -m materials_boundaries catalog claims --claim-type model_estimate --direction prediction --text --lang en

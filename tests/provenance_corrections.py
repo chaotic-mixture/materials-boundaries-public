@@ -17,6 +17,8 @@ OBSERVATION_TEST_UPDATES = json.loads((Path(__file__).parent / 'fixtures/observa
 
 WAVE_TEST_UPDATES = json.loads((Path(__file__).parent / 'fixtures/wave_test_updates_v0180.json').read_text(encoding='utf-8'))
 
+HBN_TEST_UPDATES = json.loads((Path(__file__).parent / 'fixtures/hbn_test_updates_v0190.json').read_text(encoding='utf-8'))
+
 PUBLIC_BASELINE = json.loads((Path(__file__).parent / 'fixtures/public_baseline_adjustments.json').read_text(encoding='utf-8'))
 
 
@@ -140,5 +142,14 @@ def reviewed_test_hash(filename, expected):
     if change is not None:
         if change['previous_sha256'] != expected or not change['reason'].strip():
             raise AssertionError('Broken wave test-update provenance: ' + filename)
+        expected = change['sha256']
+    updates = HBN_TEST_UPDATES['approved_test_updates']
+    allowed = {'tests/test_observation_catalog.py', 'tests/test_mos2_observation_catalog.py', 'tests/provenance_corrections.py'}
+    if set(updates) != allowed:
+        raise AssertionError('Unexpected hBN-release historical test override')
+    change = updates.get(filename)
+    if change is not None:
+        if change['previous_sha256'] != expected or not change['reason'].strip():
+            raise AssertionError('Broken hBN test-update provenance: ' + filename)
         expected = change['sha256']
     return expected

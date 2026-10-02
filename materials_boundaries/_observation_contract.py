@@ -1,4 +1,4 @@
-"""Dependency-free display guard for the closed MoS2 source/method contract.
+"""Dependency-free display guard for the closed source/method observation contracts.
 
 Full structural admission lives in observations.schema.json. This guard also
 keeps the indispensable caveat/SD/count semantics fail-closed in runtime catalog
@@ -43,7 +43,7 @@ def validate_mos2_records(records):
     for record in records:
         family = record.get("method_family")
         material = record.get("material", {})
-        is_mos2 = (family is not None or material.get("formula") == "MoS2"
+        is_mos2 = (family == MOS2_FAMILY or material.get("formula") == "MoS2"
                    or record.get("study_id") == MOS2_SOURCE)
         if not is_mos2:
             continue  # Historical graphene schema/records remain unchanged.
@@ -98,3 +98,27 @@ def validate_mos2_records(records):
             require(type(value) in (int, float) and math.isfinite(value)
                     and (value >= 0 if zero else value > 0), "invalid reported number")
         require(any(item.get("source_id") == MOS2_SOURCE for item in record["evidence"]), "missing study evidence")
+
+
+def validate_observation_records(records):
+    """Dispatch explicit families; unknown families never inherit another model."""
+    from ._hbn_observation_contract import HBN_FAMILY, HBN_SOURCE, validate_hbn_records
+    for record in records:
+        if not isinstance(record, dict) or not isinstance(record.get("material"), dict):
+            raise ValueError("Observation contract: invalid record/material shape")
+        family = record.get("method_family")
+        if family not in (None, MOS2_FAMILY, HBN_FAMILY):
+            raise ValueError("Observation contract: unsupported method family")
+        if family is None:
+            # The legacy branch is the existing Lee contract only. Relabeling
+            # newer records must not bypass their source-specific safeguards.
+            legacy_method_keys = {"inference", "model_assumptions", "poissons_ratio_assumed",
+                                  "strain_measure", "stress_measure", "technique"}
+            if (record.get("study_id") != "lee_wei_kysar_hone_2008"
+                    or "formula" in record["material"]
+                    or "model_status" in record or "method_family" in record
+                    or not isinstance(record.get("method"), dict)
+                    or set(record["method"]) != legacy_method_keys):
+                raise ValueError("Observation contract: missing method family or unsupported legacy shape")
+    validate_mos2_records(records)
+    validate_hbn_records(records)

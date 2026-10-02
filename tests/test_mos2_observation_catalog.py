@@ -86,7 +86,7 @@ def patched_catalogs(catalogs):
 class MoS2SourceFactsTests(unittest.TestCase):
     def test_selected_pair_does_not_close_catalog_growth(self):
         catalog = read_catalog('observations')
-        self.assertEqual(catalog['schema_version'], '1.1.0')
+        self.assertEqual(catalog['schema_version'], '1.2.0')
         selected = [record for record in catalog['records'] if record['id'] in IDS]
         self.assertEqual(len(selected), 2)
         self.assertEqual({record['id'] for record in selected}, set(IDS))
@@ -299,7 +299,7 @@ class MoS2SchemaContractTests(unittest.TestCase):
     def test_current_schema_accepts_pair_full_catalog_and_empty_subset(self):
         self.validator.validate(self.catalog)
         self.validator.validate(read_catalog('observations'))
-        self.validator.validate({'schema_version': '1.1.0', 'records': []})
+        self.validator.validate({'schema_version': '1.2.0', 'records': []})
         candidate = copy.deepcopy(self.catalog)
         candidate['schema_version'] = '1.0.0'
         self.assertTrue(list(self.validator.iter_errors(candidate)))
@@ -578,7 +578,7 @@ class MoS2RuntimeGuardTests(unittest.TestCase):
                 with self.subTest(record=original['id'], path=path):
                     record = copy.deepcopy(original)
                     set_path(record, path, value)
-                    candidate = {'schema_version': '1.1.0', 'records': [record]}
+                    candidate = {'schema_version': '1.2.0', 'records': [record]}
                     with self.assertRaises(ValueError):
                         render_catalog(candidate, 'observations')
                     resource = Mock()
@@ -597,7 +597,7 @@ class MoS2RuntimeGuardTests(unittest.TestCase):
                 target = target[key]
             del target[path[-1]]
             with self.subTest(path=path), self.assertRaises(ValueError):
-                render_catalog({'schema_version': '1.1.0', 'records': [record]}, 'observations')
+                render_catalog({'schema_version': '1.2.0', 'records': [record]}, 'observations')
 
 
 class MoS2QueryAndDisplayTests(unittest.TestCase):
@@ -691,7 +691,7 @@ class MoS2QueryAndDisplayTests(unittest.TestCase):
         record = copy.deepcopy(selected_records()[0])
         record['id'] = 'synthetic_unaliased_' + uuid4().hex
         record['name'] = 'SYNTHETIC TEST ONLY: canonical display fallback'
-        subset = {'schema_version': '1.1.0', 'records': [record]}
+        subset = {'schema_version': '1.2.0', 'records': [record]}
         for language in LANGUAGES:
             text = render_catalog(subset, 'observations', language)
             self.assertIn(record['id'], text)
