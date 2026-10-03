@@ -1,0 +1,44 @@
+{
+  "purpose": "Independent presentation-contract fixture for one descriptive two-study profile. Source observations remain checked against the separate historical source-transcription fixtures. This is software/transcription QA, not experimental replication, independent scientific review, or native-language review.",
+  "profile_id": "ciganas-zach-uts-temperature-v1",
+  "profile_version": "1.0.0",
+  "schema_version": "1.0.0",
+  "comparison_scope": "descriptive_juxtaposition_of_two_reviewed_source_groups",
+  "x_domain": [15, 155],
+  "y_domain": [0, 65],
+  "x_ticks": [20, 40, 60, 80, 100, 120, 140],
+  "y_ticks": [0, 10, 20, 30, 40, 50, 60],
+  "protocol_fact_ids": ["preparation", "printing", "geometry", "rate", "statistic", "sd", "temperature"],
+  "panels": [
+    {
+      "panel_id": "ciganas",
+      "study_id": "ciganas2026polym18050563",
+      "dataset_id": "ciganas-2026-pa12-cf15-fff-uts-temperature",
+      "protocol_id": "ciganas2026-pa12-cf15-quasistatic-tension",
+      "method_family": "ciganas_2026_pa12_cf15_fff_tensile_temperature_v1",
+      "fixture": "pa12_cf15_source_transcription.json",
+      "central_field": "central",
+      "si_sd_field": "sd_pa",
+      "summary_statistic": "reported_central_value",
+      "central_statistic_explicitly_named": null,
+      "sd_notation": "plus_minus",
+      "sample_count": 3,
+      "sample_scope": "tensile_tests_per_temperature_condition"
+    },
+    {
+      "panel_id": "zach",
+      "study_id": "zach_dudescu2025jcs9110624",
+      "dataset_id": "zach-2025-paht-cf-annealed-fff-uts-temperature",
+      "protocol_id": "zach2025-paht-cf-annealed-pm45-tension",
+      "method_family": "zach_2025_paht_cf_annealed_tensile_temperature_v1",
+      "fixture": "paht_cf_source_transcription.json",
+      "central_field": "median",
+      "si_sd_field": "conditional_sd_pa",
+      "summary_statistic": "median_as_reported",
+      "central_statistic_explicitly_named": "median",
+      "sd_notation": "separate_sd",
+      "sample_count": 5,
+      "sample_scope": "specimens_per_orientation_temperature_annealing_combination"
+    }
+  ]
+}

@@ -1,8 +1,9 @@
 # Offline observation inspection
 
-Version **0.23.0** preserves the v0.22.0 packaged-catalog-ordered inspection cards/tables for **12
-observations from four studies**: six unchanged 2D model-dependent summaries
-and the six PA12 CF15 3D tensile-test summaries added in v0.22.0. Inspection schema **1.1.0**
+The current catalog has **16 observations from five studies**: six unchanged
+2D model-dependent summaries, six PA12 CF15 3D tensile-test summaries added in
+v0.22.0 and four annealed PAHT-CF reported-median summaries added in v0.24.0.
+Inspection preserves packaged-catalog order and source-specific statistics. Inspection schema **1.1.0**
 references observation schema **1.3.0**. Every family retains its own quantity,
 units, method and source-specific evidence. This is catalog inspection, with no
 evaluator, fitted result, matched-condition comparison, material ranking or
@@ -34,7 +35,8 @@ python -m materials_boundaries observation inspect --help --lang de
 `--source-id` and `--quantity` are exact, case-sensitive filters; all selectors
 combine with **AND**. Supported quantities are `in_plane_stiffness_2d`,
 `breaking_strength_2d` and `ultimate_tensile_strength_as_reported_3d`. The default
-selects all 12 records; the PA12 source or quantity selects six. Selection retains
+selects all 16 records; the PA12 source selects six, the PAHT source selects four,
+and the 3D UTS quantity selects ten across the two separate studies. Selection retains
 catalog order, even when IDs are requested in reverse order. It does not sort by
 value, rank materials or perform free-text matching. Use `catalog observations`
 for the separate literal text-search interface.

@@ -1,6 +1,6 @@
 # 材料边界 · Materials Boundaries
 
-Current software release: **v0.24.0** · **Annealed PAHT-CF catalog observations** · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
+Current software release: **v0.25.0** · **Annealed PAHT-CF catalog observations** · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
 
 A condition-aware, source-traceable materials-mechanics catalog and offline Python toolkit. It separates conditional mathematical bounds, model relations, published observations, computational predictions and synthetic demonstrations. Python 3.10+; no third-party runtime dependencies.
 
@@ -13,6 +13,8 @@ Repository: [chaotic-mixture/materials-boundaries-public](https://github.com/cha
 - Other mechanics records, including bulk elastic waves, hydrostatic compressibility, directional Poisson ratio, anisotropy, fatigue, fracture, stability and porous relations, are catalog-only
 - The 52 sources comprise 51 bibliographic/source records plus one original synthetic-demo provenance record; a source record is not a redistribution of its publication or dataset
 - All five temperature demos use intentionally invented coefficients and ranges. They do not describe real materials, measured properties or engineering allowables
+
+Version **0.25.0** adds one explicit `observation compare-temperature-studies --profile-id ciganas-zach-uts-temperature-v1` view. Both protocols and caveats come first; six Ciganas unspecified-central UTS summaries and four Zach reported medians remain separate, unconnected panels with always-visible SD columns. No uncertainty endpoints, matched-condition inference, pooling or ranking is added. Zach SD units remain contextual. No scientific records, old fixtures/examples, generic inspection or existing Ciganas plot policy change. [Two-study guide](docs/OBSERVATION_STUDY_COMPARISON.md) · [v0.25.0 migration](docs/MIGRATION_v0.25.0.md)
 
 Version **0.24.0** adds four catalog-only annealed ±45° PAHT-CF median UTS observations from Zach and Dudescu (2025), at reported chamber conditions 25, 50, 100 and 150 °C. Reported medians and separate SD strings are preserved; the SD unit is contextually inferred as MPa because its header prints no unit. Conditional SI scaling is explicitly labeled. No median ± SD interval, new plot, pooled estimate, interpolation or cross-study ranking is admitted. Four-language inspection shows source-specific warnings before values. All older records, fixtures, generated examples and the Ciganas plot profile remain unchanged. [Source and limits](docs/PAHT_CF_ANNEALED_OBSERVATIONS.md) · [v0.24.0 migration](docs/MIGRATION_v0.24.0.md)
 

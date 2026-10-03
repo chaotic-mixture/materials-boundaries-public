@@ -1017,6 +1017,12 @@ def validate_catalogs(catalogs: dict, schema_dir: Path = ROOT / "schemas") -> di
                      hbn_present=any(record.get("method_family") == "falin_2017_hbn_monolayer_indentation_v1" for record in observations.values()),
                      pa12_present=any(record.get("method_family") == "ciganas_2026_pa12_cf15_fff_tensile_temperature_v1" for record in observations.values()),
                      wave_present=any("bulk_wave_contract" in claim for claim in claims.values()))
+    from materials_boundaries._observation_study_comparison_labels import LABELS as STUDY_LABELS
+    require(set(STUDY_LABELS) == LANGUAGES, "study comparison: four authored languages required")
+    for language, messages in STUDY_LABELS.items():
+        require(set(messages) == set(STUDY_LABELS['en']) and all(
+            type(value) is str and bool(value.strip()) for value in messages.values()),
+            "study comparison: invalid labels or key parity in " + language)
     return {kind: len(index) for kind, index in indexes.items()}
 
 

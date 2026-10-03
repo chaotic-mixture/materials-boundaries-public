@@ -440,3 +440,14 @@ admitted. Keep all previous fixtures and generated examples byte-identical.
 Run `test_paht_cf_observations.py`, `test_paht_inspection.py` and the new lineage
 and preservation checks, followed by the full production and disposable mixed
 suites and isolated wheel smoke. See [source guide](docs/PAHT_CF_ANNEALED_OBSERVATIONS.md).
+
+
+### Two-study display profile (v0.25.0)
+
+The separate [temperature study comparison](docs/OBSERVATION_STUDY_COMPARISON.md)
+admits only `ciganas-zach-uts-temperature-v1`, with independent source-family
+validation and canonical rebuild before every output. New pairs require a new
+reviewed profile, evidence/protocol summaries, schema, four authored labels and
+adversarial/rendering/preservation tests. Shared units or unknown fields never
+admit a comparison. Existing scientific payloads and historical artifacts must
+remain intact; no pooling, rankings or SD endpoint computation is permitted.

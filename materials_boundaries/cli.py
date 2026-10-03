@@ -164,6 +164,15 @@ def _build_parser(language: str) -> argparse.ArgumentParser:
         "--dataset-id", required=True,
         choices=("ciganas-2026-pa12-cf15-fff-uts-temperature",), help=opt["dataset_id"])
     observation_temperature.add_argument("--output", required=True, help=opt["output"])
+    from ._observation_study_comparison_labels import labels as study_comparison_labels
+    from .observation_study_comparison import PROFILE_ID
+    sct = study_comparison_labels(language)
+    study_comparison = observation_sub.add_parser(
+        "compare-temperature-studies", help=sct["compare_temperature_studies"],
+        description=sct["compare_temperature_studies"])
+    add_language(study_comparison)
+    study_comparison.add_argument("--profile-id", required=True, choices=(PROFILE_ID,), help=sct["profile_id"])
+    study_comparison.add_argument("--output", required=True, help=sct["output"])
     return parser
 
 
@@ -180,6 +189,12 @@ def main(argv: list[str] | None = None) -> int:
         args.lang = "en"
     try:
         if args.command == "observation":
+            if args.observation_command == "compare-temperature-studies":
+                from .observation_study_comparison import export_observation_study_comparison
+                artifacts = export_observation_study_comparison(
+                    args.output, profile_id=args.profile_id, lang=args.lang)
+                print(json.dumps({"output": args.output, "artifacts": artifacts}, ensure_ascii=False))
+                return 0
             if args.observation_command == "plot-temperature":
                 from .observation_temperature_plot import export_observation_temperature_plot
                 artifacts = export_observation_temperature_plot(

@@ -560,9 +560,69 @@ rejects(lambda: validate_paht_dataset([wrong]), 'installed PAHT accepted invente
 rejects(lambda: plot_view.build_observation_temperature_plot(dataset_id=PAHT_DATASET),
         'installed PAHT entered Ciganas plot')
 
+# New named two-study profile stays closed in a dependency-free installation.
+from materials_boundaries import observation_study_comparison as study_view
+study_bundle = study_view.build_observation_study_comparison(profile_id=study_view.PROFILE_ID)
+study_view.validate_observation_study_comparison(study_bundle)
+require(study_bundle['engine_version'] == expected, 'stale installed two-study engine')
+require([len(p['points']) for p in study_bundle['panels']] == [6, 4], 'wrong two-study membership')
+require(study_bundle['panels'][0]['points'][0]['central_statistic_explicitly_named'] is None,
+        'Ciganas central statistic invented')
+require(study_bundle['panels'][1]['points'][0]['summary_statistic'] == 'median_as_reported',
+        'Zach median label lost')
+require(study_bundle['panels'][1]['points'][0]['reported_sd']['header_unit_explicit'] is False,
+        'Zach SD unit inference lost')
+study_data = []
+for language in languages:
+    target = Path(instance_path).parent / ('study-comparison-' + language)
+    stdout = io.StringIO()
+    with redirect_stdout(stdout):
+        code = main(['observation', 'compare-temperature-studies', '--profile-id', study_view.PROFILE_ID,
+                     '--output', str(target), '--lang', language])
+    report = json.loads(stdout.getvalue())
+    require(code == 0 and len(report['artifacts']) == 5, 'installed two-study CLI failed')
+    require(set(p.name for p in target.iterdir()) == set(report['artifacts']), 'extra study files')
+    content = [(target / ('observation-study-comparison.' + ext)).read_bytes() for ext in ('json', 'csv')]
+    study_data.append(content)
+    require(json.loads(content[0]) == study_bundle, 'installed study bundle altered')
+    rows = list(csv.DictReader(io.StringIO(content[1].decode())))
+    require(len(rows) == 10 and [r['panel_id'] for r in rows] == ['ciganas'] * 6 + ['zach'] * 4,
+            'installed study CSV wrong long-form order')
+    require(rows[6]['sd_notation'] == 'separate_sd' and rows[6]['central_value_string'] == '58.91',
+            'installed study CSV lost median/SD source identity')
+    for filename in report['artifacts']:
+        text = (target / filename).read_text()
+        if filename.endswith(('.svg', '.html')):
+            require('[missing:' not in text and '<script' not in text.lower(), 'unsafe study render')
+            require('32.70' in text and '58.91' in text and '3.44' in text, 'source strings missing')
+        if filename.endswith('.svg'):
+            root = ET.fromstring(text)
+            require(sum(node.tag.endswith('circle') for node in root.iter()) == 10, 'wrong study dot count')
+require(all(v == study_data[0] for v in study_data), 'study machine exports depend on language')
+for alteration in (
+    lambda b: b['panels'].reverse(),
+    lambda b: b['panels'][1]['points'][0]['reported_sd'].update(header_unit_explicit=True),
+    lambda b: b['presentation_policy'].update(uncertainty_endpoints_calculated=True),
+    lambda b: b.update(matched_conditions_established=True),
+):
+    bad = deepcopy(study_bundle); alteration(bad)
+    for emit in (study_view.observation_study_comparison_json, study_view.observation_study_comparison_csv,
+                 study_view.render_observation_study_comparison_svg, study_view.render_observation_study_comparison_html):
+        rejects(lambda: emit(bad), 'installed study output accepted forged bundle')
+read_study = study_view.read_catalog
+with patch.object(study_view, 'read_catalog', side_effect=lambda kind: deepcopy(reordered) if kind == 'observations' else read_study(kind)):
+    require(study_view.build_observation_study_comparison(profile_id=study_view.PROFILE_ID) == study_bundle,
+            'catalog order changed source panel order')
+target = Path(instance_path).parent / 'invalid-study-comparison'
+rejects(lambda: study_view.export_observation_study_comparison(target, profile_id='wrong'), 'unreviewed profile accepted')
+require(not target.exists(), 'invalid study profile wrote target')
+require(build_observation_inspection()['presentation_policy']['quantitative_axes_allowed'] is False,
+        'new view relaxed generic inspection')
+rejects(lambda: plot_view.build_observation_temperature_plot(dataset_id=PAHT_DATASET), 'new view relaxed old plot')
+
 print(json.dumps({"version": expected, "metadata_version": metadata_version,
                   "engine_outputs": sorted(outputs), "languages": languages,
-                  "installed_without_dependencies": True, "mixed_observation_catalog_languages": languages, "bulk_wave_catalog_languages": languages, "hbn_observation_languages": languages, "observation_inspection_languages": languages, "observation_inspection_schema": "1.1.0", "pa12_export_checks": export_checks, "pa12_scientific_mutations_rejected": len(mutations), "pa12_exact_selected_cells": len(expected_cells), "temperature_observation_plot_languages": languages, "temperature_observation_plot_schema": "1.0.0", "temperature_observation_plot_cells": len(plot_bundle["glyphs"]), "paht_exact_median_sd_cells": len(paht), "paht_four_language_inspection": True}))
+                  "installed_without_dependencies": True, "mixed_observation_catalog_languages": languages, "bulk_wave_catalog_languages": languages, "hbn_observation_languages": languages, "observation_inspection_languages": languages, "observation_inspection_schema": "1.1.0", "pa12_export_checks": export_checks, "pa12_scientific_mutations_rejected": len(mutations), "pa12_exact_selected_cells": len(expected_cells), "temperature_observation_plot_languages": languages, "temperature_observation_plot_schema": "1.0.0", "temperature_observation_plot_cells": len(plot_bundle["glyphs"]), "paht_exact_median_sd_cells": len(paht), "paht_four_language_inspection": True, "study_comparison_languages": languages, "study_comparison_schema": "1.0.0", "study_comparison_cells": 10}))
 '''
 
 
