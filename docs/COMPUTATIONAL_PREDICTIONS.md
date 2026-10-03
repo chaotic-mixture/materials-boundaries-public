@@ -3,8 +3,10 @@
 The isolated `computational_predictions.json` catalog contains published
 computational predictions, separate from theoretical claims, experimental
 observations and synthetic temperature demonstrations. No DFT calculation is executed.
-The first public release, v0.16.0, has six predictions in two closed scientific families and two
-explicit comparison groups. A common GPa unit does not make their strength
+The current v0.21.0 catalog has **12 predictions in two closed scientific families
+and three explicit comparison groups**: nine Ni-family ideal-shear predictions
+(two groups of three and six) and three Si first-instability predictions (one
+group). The first public release, v0.16.0, had six predictions and two groups. A common GPa unit does not make their strength
 criteria or loading protocols interchangeable.
 
 ## Ni ideal-shear family (introduced in v0.12.0)
@@ -21,6 +23,51 @@ The original three published discrete ideal-shear maxima come from
 The Al and Co table labels name solutes in Ni11X, not pure Al or pure Co.
 `source_value_string` retains the original two decimal places independently of
 the numeric value. Those digits are formatting precision, not uncertainty.
+
+### Six additional Ni11X predictions (v0.21.0)
+
+Exactly six additional Table 2 cells form the new group
+`shimanek_v2_table2_cr_mn_fe_cu_si_ti`, in the following explicit order:
+
+| Model | Exact source label | Exact printed strength | Table 2 cell, PDF/printed p. 27 |
+|---|---|---|---|
+| Ni11Cr | Cr | 4.90 GPa | Main Sc–Zn row, column 4 |
+| Ni11Mn | Mn | 5.12 GPa | Main Sc–Zn row, column 5 |
+| Ni11Fe | Fe | 5.20 GPa | Main Sc–Zn row, column 6 |
+| Ni11Cu | Cu | 4.51 GPa | Main Sc–Zn row, column 9 |
+| Ni11Si | Si | 4.17 GPa | Raised Al–Si row, column 2 |
+| Ni11Ti | Ti | 4.24 GPa | Main Sc–Zn row, column 2 |
+
+Columns are counted from the left within the indicated row. All six are
+**Ni11X periodic-model predictions**, not pure Cr, Mn, Fe, Cu, Si or Ti
+strengths, commercial alloy grades, experimental observations or universal
+bounds. In particular, Ni11Si ideal shear is not the separate pure-Si tensile
+first-instability family below. `source_value_string` preserves **4.90** and
+**5.20**, including their trailing zeros; numeric JSON values may be 4.9 and 5.2.
+No interpolation, fitting, graph digitization or new DFT run supplies these values.
+
+The official arXiv v2 Table 2 cells were visually checked; two independent
+transcriptions and layout-text extraction agree. This is transcription checking,
+not independent scientific review. Methods pages 5–7 and Table 2 page 27 were
+re-inspected. Section 2.1 applies the shared procedure to the single-solute
+supercells, including these six. New per-record evidence and this group's
+qualifier document that scope while the existing source/protocol objects remain
+unchanged. In particular, the historical protocol's temperature-reason wording
+about the original three calculations is retained; it is not evidence of known
+temperature for the new six. Physical temperature remains unverified for all six.
+
+Each selected cell has a **bare element label with no printed pv/sv suffix**.
+The caption associates these suffixes with p/s states treated as valence, but
+absence of a suffix is only a label-level fact. It does **not** identify an
+actual element-specific PAW/POTCAR dataset or version, establish a valence
+configuration, or prove absence of semicore states. Raw input files were not
+audited. Do not strip suffixes from other Table 2 rows to force their admission;
+those other cells are outside this bounded addition.
+
+The original `shimanek_v2_table2_ni_al_co` group and three records remain exact,
+and it remains the default for `prediction plot`. The new six-point group must
+be selected explicitly. No nine-point overlay, duplicate prediction, automatic
+group widening or cross-family comparison is introduced.
 
 ### Ni shared reported method and unresolved conditions
 
@@ -155,6 +202,8 @@ python -m materials_boundaries catalog predictions --query "せん断" --text --
 python -m materials_boundaries catalog predictions --query "Scherfestigkeit" --text --lang de
 python -m materials_boundaries catalog predictions --source-id shimanek_2022_arxiv_2108_06412_v2 --quantity ideal_shear_strength --json
 python -m materials_boundaries prediction plot --group-id shimanek_v2_table2_ni_al_co --output /tmp/ideal-shear --lang zh
+python -m materials_boundaries catalog predictions --query shimanek_v2_table2_cr_mn_fe_cu_si_ti --text --lang en
+python -m materials_boundaries prediction plot --group-id shimanek_v2_table2_cr_mn_fe_cu_si_ti --output /tmp/ni11x-six --lang en
 python -m materials_boundaries catalog predictions --quantity tensile_first_instability_strength --text --lang en
 python -m materials_boundaries prediction plot --group-id dubois_2006_si_directional_instability --output /tmp/si-first-instability --lang en
 ```
@@ -163,7 +212,11 @@ Search uses literal whitespace-separated, casefolded AND terms across IDs,
 canonical/localized names, composition, quantity, classification and source,
 protocol and group identifiers. Exact filters are case-sensitive. Unsupported
 filters fail. Unknown exact IDs fail with exit 2; empty filtered results succeed.
-Language affects text/help only; canonical JSON does not change.
+Language affects text/help only; canonical JSON does not change. The unfiltered
+catalog now returns 12 records. Filtering by the Shimanek source or
+`ideal_shear_strength` returns nine; a literal query for the new group ID returns
+its six records. Source selection is not group selection and never changes the
+default plot.
 
 A filtered catalog preserves the complete protocol/group metadata verbatim;
 group member IDs refer to the **full installed catalog**, not necessarily the
@@ -172,9 +225,9 @@ filtered records. A search result does not create a new curated comparison.
 The plot command exports canonical JSON, CSV, wide SVG, narrow SVG and a responsive
 standalone HTML file. Its explicit group membership determines category order.
 It never auto-joins studies, treats missing state fields as proven equal, or
-automatically plots new records. Within each group, its three points share the
-reported method in one source, with **published-method-only** comparability and unresolved conditions
-visible. This is not an input-level audit or a reproducibility claim.
+automatically plots new records. Each group contains only its explicitly selected
+three or six points from the reported method in one source, with
+**published-method-only** comparability and unresolved conditions visible. This is not an input-level audit or a reproducibility claim.
 
 Points remain unconnected on a common zero-origin GPa scale. There is no
 stress–strain curve, interpolation, uncertainty band or error bar. The CSV retains
@@ -190,14 +243,14 @@ from materials_boundaries.prediction_visualization import (
     build_prediction_comparison, comparison_json, comparison_csv,
     render_prediction_svg, render_prediction_html,
 )
-bundle = build_prediction_comparison('shimanek_v2_table2_ni_al_co')
+bundle = build_prediction_comparison('shimanek_v2_table2_cr_mn_fe_cu_si_ti')
 svg = render_prediction_svg(bundle, lang='de', width=380)
 ```
 
 ## Contribution and validation boundary
 
 The prediction catalog envelope/schema is 1.1.0; individual records and
-protocols retain 1.0.0. The Ni comparison bundle stays at 1.0.0 and the Si
+protocols retain 1.0.0. Both Ni comparison bundles stay at 1.0.0 and the Si
 comparison bundle uses 1.1.0. The schema uses closed alternatives for records,
 protocols and comparison groups rather than a permissive generic extension:
 
@@ -210,8 +263,10 @@ protocols and comparison groups rather than a permissive generic extension:
 Runtime and development guards check each complete physical/calculation
 contract, composition, source decimal text, reference integrity, explicit group
 membership and non-equivalence of unknowns. Fresh record, protocol and group IDs
-under a complete supported contract are appendable without changing existing
-tests. Families cannot be mixed merely because both use GPa. A different
+under a complete supported contract are appendable without changing the scientific
+guards. Historical source-filtered text snapshots need a narrowly scoped original-record
+projection when the same source gains records; this does not weaken record,
+protocol, group or default-output preservation checks. Families cannot be mixed merely because both use GPa. A different
 geometry, relaxation constraint, stability definition, cell size, known state or
 error model requires reviewed schema/guard work, not a weakened family or
 catch-all branch. Structural support is not source verification.

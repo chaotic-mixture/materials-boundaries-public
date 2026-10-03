@@ -1,6 +1,26 @@
 # Offline, traceable elastic comparison views
 
-## Current v0.20.0: separate observation inspection
+## Current v0.21.0: explicit six-point Ni11X group
+
+The prediction catalog now has 12 records in two scientific families and three
+explicit groups. The new six-point group `shimanek_v2_table2_cr_mn_fe_cu_si_ti`
+uses the unchanged prediction renderer and must be selected with `--group-id`.
+The original three-point Ni/Al/Co default and three-point Si first-instability
+group remain unchanged. No automatic nine-point overlay is introduced.
+
+```sh
+python -m materials_boundaries prediction plot --group-id shimanek_v2_table2_cr_mn_fe_cu_si_ti --output /tmp/ni11x-six --lang en
+```
+
+These are published-method-only Ni11X predictions on a zero-origin GPa axis,
+not pure-solute measurements, commercial grades or universal bounds. Unknown
+conditions and uncertainty remain unresolved; 0.08 GPa convergence supplies no
+error bars. Bare source labels do not establish PAW datasets or valence states.
+See [prediction evidence and limits](COMPUTATIONAL_PREDICTIONS.md) and
+[v0.21.0 migration](MIGRATION_v0.21.0.md). Historical checked-in previews are
+preserved; source figures are not reproduced.
+
+## Earlier v0.20.0: separate observation inspection
 
 [Observation inspection](OBSERVATION_INSPECTION.md) adds source-ordered,
 non-quantitative cards/tables for the six existing experiment-derived,

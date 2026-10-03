@@ -1,6 +1,51 @@
 # Erste Schritte: Materials Boundaries
 
-## Aktuell v0.20.0: Offline-Ansicht zur Beobachtungsprüfung
+## Aktuell v0.21.0: sechs zusätzliche Ni11X-Modellvorhersagen
+
+Genau sechs veröffentlichte ideale Scherfestigkeiten kommen hinzu:
+**Ni11Cr 4.90, Ni11Mn 5.12, Ni11Fe 5.20, Ni11Cu 4.51, Ni11Si 4.17 und
+Ni11Ti 4.24 GPa**. Quelle: Shimanek et al., arXiv:2108.06412v2, Tabelle 2,
+PDF-/Druckseite 27. Der Katalog umfasst nun **12 Vorhersagen, 2 wissenschaftliche
+Methodenfamilien und 3 explizite Vergleichsgruppen**. Die 36 Aussagen, 51 Quellen,
+6 Beobachtungen aus 3 Studien, 5 synthetischen Temperaturdemos (7 Zweige) und
+8 ausführbaren Verbundregeln bleiben unverändert. Laufzeitcode, wissenschaftliche
+Schemas und bestehende Quellenrecords werden nicht geändert.
+
+Die neue Gruppe heißt **Ni11X-Periodenmodelle: Cr, Mn, Fe, Cu, Si und Ti** und
+muss ausdrücklich gewählt werden. Ni/Ni11Al/Ni11Co bleiben die drei Standardpunkte;
+die separate Siliziumgruppe zur ersten Instabilität behält ihre drei Punkte.
+Ni11Si-Scherung ist nicht die Zugfestigkeit von reinem Silizium bei der ersten
+Instabilität. Der ungefilterte Vorhersagekatalog liefert 12, der Shimanek-Quellenfilter
+9 Einträge; ein Quellenfilter definiert keine neue Diagrammgruppe.
+
+Die fcc-Ni-basierten periodischen Modelle haben 12 Atome und 3 Lagen; X ersetzt
+einen Ni-Platz in der Scherebene. Positive pure-alias-Scherung auf (111)[1,1,-2]
+hält den vorgeschriebenen Scherwinkel fest und relaxiert Atompositionen sowie
+nicht vorgeschriebene Zellparameter. Vergleichbarkeit gilt **nur auf Ebene des
+veröffentlichten Verfahrens**, nicht als geprüfte Gleichheit der Rohinputs oder
+unbekannter Bedingungen. Dies sind keine Festigkeiten von reinem X, Handelsgüten,
+Experimente oder universellen oberen Grenzen.
+
+Die sechs Tabellenlabels tragen kein pv/sv-Suffix. Das bestimmt weder die
+PAW-Datensätze noch die Valenzkonfigurationen und beweist nicht das Fehlen von
+Semicore-Zuständen. Physikalische Temperatur, skalarer Druck, Magnetismus/
+Spinpolarisation sowie statistische/Gesamtunsicherheit bleiben unbekannt.
+Die GGA verweist auf **Perdew et al. (1992), ohne eine PBE-Zuordnung zu unterstellen**.
+**0.08 GPa Spitzenkonvergenz ist kein Fehlerbalken**; 4.90 und 5.20 bewahren die
+Druckpräzision, keine Unsicherheitsangabe. Quellen-PDF, Volltext und Abbildungen
+werden nicht weitergegeben. Transkriptions- und Übersetzungsprüfungen ersetzen
+keine unabhängige wissenschaftliche oder muttersprachliche Prüfung.
+
+```sh
+python -m materials_boundaries catalog predictions --query shimanek_v2_table2_cr_mn_fe_cu_si_ti --text --lang de
+python -m materials_boundaries prediction plot --group-id shimanek_v2_table2_cr_mn_fe_cu_si_ti --output /tmp/ni11x-six-de --lang de
+python -m materials_boundaries prediction plot --group-id shimanek_v2_table2_ni_al_co --output /tmp/ni-original-de --lang de
+python -m materials_boundaries prediction plot --group-id dubois_2006_si_directional_instability --output /tmp/si-first-instability-de --lang de
+```
+
+[Verfahren, Herkunft und Grenzen](COMPUTATIONAL_PREDICTIONS.md) · [Migration](MIGRATION_v0.21.0.md)
+
+## Früher v0.20.0: Offline-Ansicht zur Beobachtungsprüfung
 
 Die sechs vorhandenen modellabhängigen Zusammenfassungen aus drei Studien
 erscheinen als Karten/Tabellen in Quellenreihenfolge. Alle wissenschaftlichen
@@ -177,7 +222,7 @@ python -m materials_boundaries temperature evaluate examples/temperature/synthet
 python -m materials_boundaries temperature plot --output /tmp/temperature-demos --lang de
 ```
 
-[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.20.0.md)
+[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.21.0.md)
 
 ## Lokal ausführen
 
@@ -296,7 +341,7 @@ python -m materials_boundaries catalog observations --observation-type experimen
 
 ## Publizierte Vorhersagen idealer Scherung (v0.12.0)
 
-`catalog predictions --text --lang de` durchsucht drei quellengeprüfte periodische
+`catalog predictions --query shimanek_v2_table2_ni_al_co --text --lang de` durchsucht drei quellengeprüfte periodische
 Modelle; `prediction plot --output /tmp/ideal-shear --lang de` exportiert diskrete
 Vergleichspunkte. Ni / Ni11Al / Ni11Co: 5.13 / 4.58 / 5.46 GPa. Der Vergleich gilt
 nur für das publizierte Verfahren einer Studie, nicht für Messungen kommerzieller

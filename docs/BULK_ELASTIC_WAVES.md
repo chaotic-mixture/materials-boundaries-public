@@ -11,7 +11,7 @@ consequences. They add no material inputs, density/modulus conversion API,
 tensor evaluator, eigensolver, directional plot, specimen classification or new
 executable rule. The existing eight composite rules remain unchanged. The
 v0.18.0 catalog contained 36 mechanics claims and 50 sources; claims schema is
-1.11.0. The current v0.19.0 has 51 sources and six observations from three
+1.11.0. The current v0.21.0 has 51 sources and six observations from three
 studies; the wave claims and their scientific contracts are unchanged.
 Source-supported equations and **original project derivations** are identified
 separately below. No independent scientific peer review is claimed.

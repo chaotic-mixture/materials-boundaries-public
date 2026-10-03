@@ -1,6 +1,40 @@
 # 快速开始：材料边界
 
-## 当前 v0.20.0：离线观测查阅视图
+## 当前 v0.21.0：新增六条 Ni11X 模型预测
+
+本版只新增六条已发表的理想剪切预测：**Ni11Cr 4.90、Ni11Mn 5.12、
+Ni11Fe 5.20、Ni11Cu 4.51、Ni11Si 4.17、Ni11Ti 4.24 GPa**，来源为
+Shimanek 等的 arXiv:2108.06412v2，表 2，PDF／印刷页码 27。
+当前共 **12 条预测、2 个科学方法族、3 个显式比较组**；36 条论断、51 条来源、
+三项研究的 6 条观测、5 个合成温度演示（7 个分支）及 8 条可执行复合材料规则不变。
+不改变运行时、科学 schema 或已有来源记录。
+
+新组名称为 **Ni11X 周期模型：Cr、Mn、Fe、Cu、Si 和 Ti**，必须显式选择。
+原 Ni／Ni11Al／Ni11Co 默认组仍为三点，独立的硅首次失稳三点组不变。
+Ni11Si 的剪切预测不是纯硅拉伸首次失稳强度。无筛选目录返回 12 条记录；
+按 Shimanek 来源筛选返回 9 条，但这不会建立新的绘图比较组。
+
+这些模型为由 fcc Ni 构建的 12 原子、三层周期晶胞，平面内一个 Ni 位点由 X 取代；
+使用 (111)[1,1,-2] 正向 pure-alias 剪切，固定规定剪切角，弛豫原子位置与其余晶胞参数。
+比较仅限于**已发表方法层面**，不能证明原始输入或未知条件相同；
+不是纯 X 强度、商业合金牌号、实验测量或普适上界。
+
+六个表格标签未打印 pv／sv 后缀，但这不能确认 PAW 数据集、价电子配置或不含半芯态。
+物理温度、标量压力、磁态／自旋极化及统计／总不确定性仍未知。
+来源的 GGA 对应 **Perdew 等（1992），不能推定为 PBE**。
+**0.08 GPa 峰值收敛不是误差棒**；4.90、5.20 保留原打印精度，不表示不确定性。
+不再分发来源 PDF、全文或图像；来源核对及翻译检查不是独立科学或母语审校。
+
+```sh
+python -m materials_boundaries catalog predictions --query shimanek_v2_table2_cr_mn_fe_cu_si_ti --text --lang zh
+python -m materials_boundaries prediction plot --group-id shimanek_v2_table2_cr_mn_fe_cu_si_ti --output /tmp/ni11x-six-zh --lang zh
+python -m materials_boundaries prediction plot --group-id shimanek_v2_table2_ni_al_co --output /tmp/ni-original-zh --lang zh
+python -m materials_boundaries prediction plot --group-id dubois_2006_si_directional_instability --output /tmp/si-first-instability-zh --lang zh
+```
+
+[方法、来源与局限](COMPUTATIONAL_PREDICTIONS.md) · [迁移说明](MIGRATION_v0.21.0.md)
+
+## 此前 v0.20.0：离线观测查阅视图
 
 以按来源排序的卡片／表格查阅三项研究的六条现有模型相关摘要。科学记录不变：
 36 条论断、51 条来源、六条观测、六条计算预测及五个合成温度演示（七个分支）。
@@ -114,7 +148,7 @@ python -m materials_boundaries temperature evaluate examples/temperature/synthet
 python -m materials_boundaries temperature plot --output /tmp/temperature-demos --lang zh
 ```
 
-[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.20.0.md)
+[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.21.0.md)
 
 ## 本地运行
 
@@ -233,7 +267,7 @@ python -m materials_boundaries catalog observations --observation-type experimen
 
 ## 已发表的理想剪切预测（v0.12.0）
 
-运行 `catalog predictions --text --lang zh` 查询三个已核对来源的周期模型；
+运行 `catalog predictions --query shimanek_v2_table2_ni_al_co --text --lang zh` 查询三个已核对来源的周期模型；
 `prediction plot --output /tmp/ideal-shear --lang zh` 导出离散点比较。
 Ni / Ni11Al / Ni11Co：5.13 / 4.58 / 5.46 GPa。只在同一研究所述方法层面比较，
 不是商业合金测量值或普适上界。物理温度、标量压力、磁态与不确定性保持未知；

@@ -138,3 +138,27 @@ project work only and does not replace source licensing or imply author/publishe
 endorsement. Source inspection and software tests do not establish scientific
 peer review or legal clearance. See [observation provenance](docs/OBSERVATIONS.md#monolayer-hbn-falin-et-al-2017-new-records)
 and [source ledger](docs/SOURCES.md).
+
+## Six additional Ni11X predictions (v0.21.0)
+
+The additional Ni11Cr 4.90, Ni11Mn 5.12, Ni11Fe 5.20, Ni11Cu 4.51,
+Ni11Si 4.17 and Ni11Ti 4.24 GPa entries are brief factual results attributed to
+Shimanek, Shang, Beese and Liu, [arXiv:2108.06412v2, Table 2, p. 27](https://arxiv.org/pdf/2108.06412v2#page=27).
+They reuse the existing source record; no new license or republication permission
+is asserted. The earlier arXiv non-exclusive distribution-license evidence is
+inherited, and its licensing page was not newly inspected for this batch. That
+license does not establish a general third-party right to redistribute the paper.
+
+Only these selected numbers, exact locators, bibliographic attribution and
+original method/limitation paraphrases are included. No cached PDF, full extracted
+text, rendered source page, table artwork, screenshot or source figure is
+redistributed. Project MIT licensing does not relicense the publication or
+scientific facts and does not imply endorsement. Source/transcription checks are
+not scientific peer review or legal clearance.
+
+All six are periodic Ni11X model predictions, not pure-solute measurements,
+commercial grades or universal bounds. A bare table label does not establish a
+PAW dataset, a valence configuration or absence of semicore states. Unknown
+conditions and uncertainty remain explicit; published-method-only comparison is
+not an input audit. [Source scope](docs/SOURCES.md#v0210-ni11x-six-record-addition-existing-source-new-inspected-cells)
+· [Scientific qualifications](docs/COMPUTATIONAL_PREDICTIONS.md).

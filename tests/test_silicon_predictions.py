@@ -236,7 +236,14 @@ class SiliconPreservationTests(unittest.TestCase):
         self.assertEqual(version_neutral_digest(comparison_csv(bundle)), expected['csv_sha256'])
         old_source = bundle['group_snapshot']['source_id']
         for lang in LANGUAGES:
-            text = render_catalog(query_catalog('predictions', source_id=old_source), 'predictions', lang)
+            # A source query is intentionally additive as new real records arrive.
+            # Keep this historical golden scoped to the original explicit group;
+            # the six-record batch tests separately assert the broader query.
+            original_selection = query_catalog('predictions', source_id=old_source)
+            by_record_id = {record['id']: record for record in original_selection['records']}
+            original_selection['records'] = [by_record_id[identifier]
+                                             for identifier in bundle['group_snapshot']['record_ids']]
+            text = render_catalog(original_selection, 'predictions', lang)
             self.assertEqual(version_neutral_digest(text), expected['text_' + lang])
             self.assertEqual(version_neutral_digest(render_prediction_html(bundle, lang=lang)), expected['html_' + lang])
             for width in (360, 380, 1100, 1600):

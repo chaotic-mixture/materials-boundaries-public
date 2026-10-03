@@ -1,6 +1,40 @@
 # はじめに：Materials Boundaries
 
-## 現在の v0.20.0：オフライン観測閲覧ビュー
+## 現在の v0.21.0：Ni11X モデル予測6件を追加
+
+追加する公表済み理想せん断予測は **Ni11Cr 4.90、Ni11Mn 5.12、Ni11Fe 5.20、
+Ni11Cu 4.51、Ni11Si 4.17、Ni11Ti 4.24 GPa** の6件だけです。
+出典は Shimanek らの arXiv:2108.06412v2、表2、PDF／印刷頁27です。
+現在は **予測12件・科学的方法ファミリー2件・明示的比較グループ3件**です。
+論断36件、出典51件、3研究の観測6件、合成温度デモ5件（7分岐）、
+実行可能な複合材料規則8件は変わりません。実行時コード、科学的スキーマ、既存出典も不変です。
+
+新グループ名は **Ni11X 周期モデル：Cr、Mn、Fe、Cu、Si、Ti** で、明示的な選択が必要です。
+既定の Ni／Ni11Al／Ni11Co は3点のまま、別のシリコン初回不安定性グループも3点のままです。
+Ni11Si のせん断予測は純シリコンの引張初回不安定性強度とは異なります。
+無選択の予測カタログは12件、Shimanek 出典で絞ると9件を返しますが、新しい図の比較群は作りません。
+
+fcc Ni に基づく12原子・3層の周期セルで、面内の Ni 1サイトを X で置換したモデルです。
+(111)[1,1,-2] の正の pure-alias せん断角を規定し、原子位置とその他のセルパラメータを緩和します。
+比較可能性は**公表された方法の範囲のみ**で、未監査の入力や不明な条件の一致を意味しません。
+純粋な X の強さ、市販合金、実験測定、普遍的な上限ではありません。
+
+表の6ラベルに pv／sv 接尾辞はありませんが、PAW データセットや価電子配置を特定せず、
+半内殻状態の不在も証明しません。物理温度、スカラー圧力、磁気状態／スピン分極、
+統計的／全不確かさは不明のままです。GGA の参照は **Perdew ら（1992）で、PBE と推定しません**。
+**0.08 GPa のピーク収束基準は誤差棒ではありません**。4.90、5.20 の桁数は原文の表示精度です。
+出典 PDF・全文・図を再配布しません。転記・翻訳の点検は独立した科学的・母語レビューではありません。
+
+```sh
+python -m materials_boundaries catalog predictions --query shimanek_v2_table2_cr_mn_fe_cu_si_ti --text --lang ja
+python -m materials_boundaries prediction plot --group-id shimanek_v2_table2_cr_mn_fe_cu_si_ti --output /tmp/ni11x-six-ja --lang ja
+python -m materials_boundaries prediction plot --group-id shimanek_v2_table2_ni_al_co --output /tmp/ni-original-ja --lang ja
+python -m materials_boundaries prediction plot --group-id dubois_2006_si_directional_instability --output /tmp/si-first-instability-ja --lang ja
+```
+
+[方法・出典・限界](COMPUTATIONAL_PREDICTIONS.md) · [移行](MIGRATION_v0.21.0.md)
+
+## 以前の v0.20.0：オフライン観測閲覧ビュー
 
 3研究の既存のモデル依存要約6件を、出典順のカード／表として閲覧できます。
 科学的記録は不変で、論断36件、出典51件、観測6件、計算予測6件、合成温度デモ
@@ -127,7 +161,7 @@ python -m materials_boundaries temperature evaluate examples/temperature/synthet
 python -m materials_boundaries temperature plot --output /tmp/temperature-demos --lang ja
 ```
 
-[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.20.0.md)
+[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.21.0.md)
 
 ## ローカルで実行する
 
@@ -246,7 +280,7 @@ python -m materials_boundaries catalog observations --observation-type experimen
 
 ## 公表された理想せん断予測（v0.12.0）
 
-`catalog predictions --text --lang ja` で出典確認済みの 3 つの周期モデルを検索し、
+`catalog predictions --query shimanek_v2_table2_ni_al_co --text --lang ja` で出典確認済みの 3 つの周期モデルを検索し、
 `prediction plot --output /tmp/ideal-shear --lang ja` で離散点比較を出力します。
 Ni / Ni11Al / Ni11Co：5.13 / 4.58 / 5.46 GPa。同一研究の報告手順に限った
 比較であり、市販合金の測定値や普遍的上限ではありません。物理温度、圧力、

@@ -1,6 +1,6 @@
 # Source curation, verification and rights
 
-Reusable claims, observation summaries and the source manifest are separate records. Current v0.19.0 contains 36 mechanics claims, 51 sources and six observations from three studies, alongside five synthetic temperature demos (seven branches) and six computational predictions. The v0.8.0 historical batch had 26 claims and 20 sources; its four new stability claims reused an existing source and preserved those 20 source records. Some claims are executable elastic bounds/envelopes; the strength/fracture models, stability criteria and porous solid/void intervals are catalog-only. A source being available or read does not establish every claim attributed to it. Each claim or observation retains its own locator, verification status and gaps. The repository includes brief numerical facts, bibliographic metadata and original curation notes; no publisher PDF, article full text, scraped body or unlicensed figure is bundled.
+Reusable claims, observation summaries and the source manifest are separate records. Current v0.21.0 contains 36 mechanics claims, 51 sources and six observations from three studies, alongside five synthetic temperature demos (seven branches) and twelve computational predictions in two scientific families and three explicit groups. The v0.8.0 historical batch had 26 claims and 20 sources; its four new stability claims reused an existing source and preserved those 20 source records. Some claims are executable elastic bounds/envelopes; the strength/fracture models, stability criteria and porous solid/void intervals are catalog-only. A source being available or read does not establish every claim attributed to it. Each claim or observation retains its own locator, verification status and gaps. The repository includes brief numerical facts, bibliographic metadata and original curation notes; no publisher PDF, article full text, scraped body or unlicensed figure is bundled.
 
 ## Historical evidence ledger and later release additions
 
@@ -430,3 +430,51 @@ scope is unverified**. Only brief factual values, metadata, equations, locators
 and original curation are bundled, with no PDF, full text, figure, screenshot,
 peer-review report or raw collection. MIT does not replace source rights.
 See [migration](MIGRATION_v0.19.0.md) and [notices](../THIRD_PARTY_NOTICES.md).
+
+## v0.21.0 Ni11X six-record addition: existing source, new inspected cells
+
+No source record is added or changed. Six further published predictions reuse
+`shimanek_2022_arxiv_2108_06412_v2`: Shimanek, Shang, Beese and Liu,
+*Insight into Ideal Shear Strength of Ni-based Dilute Alloys using First-Principles
+Calculations and Correlational Analysis*, official arXiv:2108.06412v2.
+[Table 2, PDF/printed p. 27](https://arxiv.org/pdf/2108.06412v2#page=27)
+supplies Ni11Cr **4.90**, Ni11Mn **5.12**, Ni11Fe **5.20**, Ni11Cu **4.51**,
+Ni11Si **4.17** and Ni11Ti **4.24 GPa**. Cr/Mn/Fe/Cu/Ti occupy columns
+4/5/6/9/2 of the main Sc–Zn row; Si is column 2 of the raised Al–Si row.
+Columns are counted within each indicated row. Exact source strings retain two
+decimal places, including trailing zeros; these digits are not uncertainty.
+
+The authorized official-v2 PDF/text cache was reused and checked against the
+prior provenance hashes. Pages 5, 6, 7 and 27 were visually inspected in this
+pass; independent visual transcriptions and text extraction agree on all six
+cells. [Section 2.1, pp. 5–6](https://arxiv.org/pdf/2108.06412v2#page=5) defines
+the one-in-plane-site substitution in the 12-atom, three-layer fcc-derived
+orthorhombic Ni cell and repeats the loading procedure for the solute supercells.
+These are (111)[1,1,-2] positive pure-alias path maxima with prescribed shear
+angle and relaxation of atomic positions/non-prescribed cell parameters.
+
+The selected labels have no printed pv/sv suffix. That observation does not
+verify PAW dataset identities, valence configurations or absence of semicore
+states. The shared reported method retains VASP/PAW, 350 eV, Gamma 9×8×7,
+5e-6 eV and 0.2 eV Methfessel–Paxton smearing; GGA cites Perdew et al. (1992),
+reference 43, and is not silently renamed PBE. Raw inputs/outputs, magnetic
+settings, exact physical temperature or scalar pressure, strain grids and
+statistical/total uncertainty remain unverified. 0.08 GPa is peak convergence,
+not an error bar. Electronic smearing does not establish temperature, and the
+0.15 GPa residual-stress threshold does not establish exact zero pressure.
+
+Comparability is **published-method-only** within the new explicit group
+`shimanek_v2_table2_cr_mn_fe_cu_si_ti`. Unknown conditions are not proven equal.
+The old source, protocol, original three-point default and separate Si group
+are preserved; the new evidence explains the wider inspected-cell scope.
+These Ni11X predictions are not pure-X strengths, experimental values,
+commercial-alloy grades, universal upper bounds or a complete stability envelope.
+
+The original landing/version/license check is inherited, not a new licensing
+inspection. The journal typeset version and raw calculation files were not
+inspected and the authors were not contacted. The arXiv non-exclusive distribution
+license is not a verified general republication grant. Only selected factual
+numbers, attribution, locators and original curation are included: no PDF, full
+extracted text, table/page images or source figures are republished. This is not
+scientific peer review or legal clearance. [Full prediction contract](COMPUTATIONAL_PREDICTIONS.md)
+· [Migration](MIGRATION_v0.21.0.md).

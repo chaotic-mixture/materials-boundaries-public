@@ -1,6 +1,47 @@
 # Getting started: Materials Boundaries
 
-## Current v0.20.0: offline observation inspection
+## Current v0.21.0: six additional Ni11X model predictions
+
+Exactly six published ideal-shear predictions are added: **Ni11Cr 4.90,
+Ni11Mn 5.12, Ni11Fe 5.20, Ni11Cu 4.51, Ni11Si 4.17 and Ni11Ti 4.24 GPa**.
+They come from Shimanek et al., arXiv:2108.06412v2, Table 2, PDF/printed p. 27.
+The catalog now has **12 predictions, 2 scientific families and 3 explicit
+groups**, alongside the unchanged 36 claims, 51 sources, 6 observations from
+3 studies and 5 synthetic temperature demos (7 branches). Exactly 8 composite
+rules remain executable. No runtime, scientific schema or source record changes.
+
+The new group is **Ni11X periodic models: Cr, Mn, Fe, Cu, Si and Ti**.
+Select it explicitly; the Ni/Ni11Al/Ni11Co default remains three points and the
+separate three-point Si first-instability group is unchanged. Ni11Si shear is
+not pure-Si tensile first instability. The unfiltered prediction catalog returns
+12 records; selecting the Shimanek source returns nine, not a new plotted group.
+
+These are 12-atom, three-layer fcc-derived periodic Ni11X models with one
+in-plane substitution: (111)[1,1,-2] positive pure-alias shear, prescribed shear
+angle, relaxed atomic positions and non-prescribed cell parameters. Comparability
+is **published-method-only**, not audited equality of raw inputs or unknown
+conditions. They are not pure-X strengths, commercial grades, experiments or
+universal bounds.
+
+The six bare table labels have no printed pv/sv suffix; that does not identify
+PAW datasets or valence configurations or prove the absence of semicore states.
+Physical temperature, scalar pressure, magnetism/spin polarization and
+statistical/total uncertainty remain unknown. The reported GGA follows
+**Perdew et al. (1992), not an inferred PBE assignment**. **0.08 GPa peak
+convergence is not an error bar**; 4.90 and 5.20 retain source formatting, not
+uncertainty. Source PDFs, full text and figures are not republished. Translation
+and source checks do not establish scientific or native-language review.
+
+```sh
+python -m materials_boundaries catalog predictions --query shimanek_v2_table2_cr_mn_fe_cu_si_ti --text --lang en
+python -m materials_boundaries prediction plot --group-id shimanek_v2_table2_cr_mn_fe_cu_si_ti --output /tmp/ni11x-six-en --lang en
+python -m materials_boundaries prediction plot --group-id shimanek_v2_table2_ni_al_co --output /tmp/ni-original-en --lang en
+python -m materials_boundaries prediction plot --group-id dubois_2006_si_directional_instability --output /tmp/si-first-instability-en --lang en
+```
+
+[Method, source and limits](COMPUTATIONAL_PREDICTIONS.md) · [Migration](MIGRATION_v0.21.0.md)
+
+## Earlier v0.20.0: offline observation inspection
 
 Inspect the six existing model-dependent summaries from three studies as
 source-ordered cards/tables. No scientific records change: 36 claims, 51 sources,
@@ -158,7 +199,7 @@ python -m materials_boundaries temperature evaluate examples/temperature/synthet
 python -m materials_boundaries temperature plot --output /tmp/temperature-demos --lang en
 ```
 
-[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.20.0.md)
+[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.21.0.md)
 
 ## Run locally
 
@@ -277,7 +318,7 @@ python -m materials_boundaries catalog observations --observation-type experimen
 
 ## Published ideal-shear predictions (v0.12.0)
 
-Use `catalog predictions --text --lang en` for three source-verified periodic
+Use `catalog predictions --query shimanek_v2_table2_ni_al_co --text --lang en` for three source-verified periodic
 models, and `prediction plot --output /tmp/ideal-shear --lang en` for discrete
 point exports. Ni / Ni11Al / Ni11Co: 5.13 / 4.58 / 5.46 GPa. This is one study's
 published computational method, not commercial-alloy measurements or universal
