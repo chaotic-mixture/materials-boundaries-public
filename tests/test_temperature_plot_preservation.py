@@ -1,6 +1,7 @@
 """Every v0.22 scientific record/test remains bound to its accepted payload.
 
 The two old test deltas support the reviewed source-cell ordering fix.
+A separate current-only maintenance tail binds the test-helper lineage repair.
 These are catalog/test metadata hashes, never publisher source-artifact hashes.
 """
 from copy import deepcopy
@@ -8,6 +9,8 @@ import hashlib
 import json
 from pathlib import Path
 import unittest
+
+from provenance_corrections import reviewed_current_test_hash
 
 from materials_boundaries.catalog import read_catalog
 from materials_boundaries.observation_visualization import POLICY as INSPECTION_POLICY
@@ -54,6 +57,7 @@ class TemperaturePlotPreservationTests(unittest.TestCase):
                 self.assertEqual(change['previous_sha256'], previous)
                 self.assertTrue(change['reason'].strip())
                 expected = change['sha256']
+            expected = reviewed_current_test_hash(filename, expected)
             with self.subTest(filename=filename):
                 self.assertEqual(hashlib.sha256((ROOT / filename).read_bytes()).hexdigest(), expected)
 

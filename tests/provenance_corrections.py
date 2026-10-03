@@ -5,6 +5,7 @@ accepts a prior uncorrected value. It first proves the exact corrected value and
 then restores only its recorded predecessor for historical hash comparison.
 """
 import copy
+import hashlib
 import json
 from pathlib import Path
 
@@ -22,6 +23,82 @@ HBN_TEST_UPDATES = json.loads((Path(__file__).parent / 'fixtures/hbn_test_update
 PA12_TEST_UPDATES = json.loads((Path(__file__).parent / 'fixtures/pa12_test_updates_v0220.json').read_text(encoding='utf-8'))
 
 PUBLIC_BASELINE = json.loads((Path(__file__).parent / 'fixtures/public_baseline_adjustments.json').read_text(encoding='utf-8'))
+
+
+
+def _unique_lineage_keys(pairs):
+    """New maintenance evidence must not silently collapse duplicate JSON keys."""
+    result = {}
+    for key, value in pairs:
+        if key in result:
+            raise AssertionError('Duplicate helper-lineage key: ' + key)
+        result[key] = value
+    return result
+
+
+def _load_lineage_fixture(name):
+    return json.loads((Path(__file__).parent / 'fixtures' / name).read_text(encoding='utf-8'),
+                      object_pairs_hook=_unique_lineage_keys)
+
+
+HELPER_BOOTSTRAP_BRIDGE = _load_lineage_fixture('helper_bootstrap_bridge_20261003.json')
+CURRENT_HELPER_UPDATES = _load_lineage_fixture('helper_maintenance_updates_20261003.json')
+
+
+def _reviewed_bootstrap_hash(filename, expected):
+    # This acyclic pin binds all source bytes, endpoint/commit/blob evidence,
+    # exact edits, allowed filename and current (never historical) review claim.
+    evidence = json.dumps(HELPER_BOOTSTRAP_BRIDGE, ensure_ascii=False, sort_keys=True,
+                          separators=(',', ':'), allow_nan=False).encode('utf-8')
+    if hashlib.sha256(evidence).hexdigest() != 'f3684e8c8f6ddfbc2fd9bef88bc2918af3a0460eeee6f85cbde9de00b98325ae':
+        raise AssertionError('Unexpected current-reviewed public helper bridge')
+    change, = HELPER_BOOTSTRAP_BRIDGE['approved_test_updates']
+    if filename == change['filename']:
+        if expected != change['previous_sha256'] or not change['reason'].strip():
+            raise AssertionError('Broken reconstructed public helper provenance: ' + filename)
+        return change['sha256']
+    return expected
+
+
+def reviewed_current_test_hash(filename, expected):
+    """Apply only this maintenance tail to an exact accepted direct baseline.
+
+    This is deliberately separate from the full historical traversal below.
+    Successor bytes are pinned independently by test_helper_lineage.py; embedding
+    this file's own successor hash here would create a self-reference cycle.
+    """
+    ledger = CURRENT_HELPER_UPDATES
+    if (set(ledger) != {'schema_version', 'scope', 'review', 'approved_test_updates'}
+            or ledger['schema_version'] != 1
+            or ledger['scope'] != 'test_helper_self_lineage_only'
+            or ledger['review'] != {
+                'kind': 'current_maintenance_review', 'review_date': '2026-10-03',
+                'baseline_commit': '6b351cc15126f50563eb18740103760f00b9282a',
+                'baseline_tree': 'a50b4c986f9d10d61f5aef4cfa0e4a3ad32a12dd',
+                'historical_review_claimed': False}):
+        raise AssertionError('Unexpected helper maintenance review provenance')
+    predecessors = {
+        'tests/provenance_corrections.py': '5afbaae797599ac9321ea9a59c925f4877d35799dd283338cd70a3facb0f022c',
+        'tests/test_temperature_plot_preservation.py': '25d3449d640fba780d0a7020f50a952ae0f0672c4ace0b809fc7172e53e7115a',
+    }
+    entries = ledger['approved_test_updates']
+    if (not isinstance(entries, list) or len(entries) != len(predecessors)
+            or any(not isinstance(e, dict) for e in entries)
+            or {e.get('filename') for e in entries} != set(predecessors)):
+        raise AssertionError('Unexpected helper maintenance file override')
+    for change in entries:
+        if (set(change) != {'filename', 'previous_sha256', 'sha256', 'reason'}
+                or change['previous_sha256'] != predecessors[change['filename']]
+                or not isinstance(change['reason'], str) or not change['reason'].strip()
+                or not isinstance(change['sha256'], str) or len(change['sha256']) != 64
+                or any(c not in '0123456789abcdef' for c in change['sha256'])):
+            raise AssertionError('Broken helper maintenance entry: ' + change['filename'])
+    for change in entries:
+        if filename == change['filename']:
+            if expected != change['previous_sha256']:
+                raise AssertionError('Broken current helper maintenance provenance: ' + filename)
+            return change['sha256']
+    return expected
 
 
 def public_previous_record(kind, record):
@@ -126,6 +203,7 @@ def reviewed_test_hash(filename, expected):
         if change['previous_sha256'] != expected or not change['reason'].strip():
             raise AssertionError('Broken first-public test-update provenance: ' + filename)
         expected = change['sha256']
+    expected = _reviewed_bootstrap_hash(filename, expected)
     updates = OBSERVATION_TEST_UPDATES['approved_test_updates']
     allowed = {'tests/test_observation_catalog.py', 'tests/test_temperature.py',
                'tests/provenance_corrections.py'}
@@ -165,4 +243,4 @@ def reviewed_test_hash(filename, expected):
         if change['previous_sha256'] != expected or not change['reason'].strip():
             raise AssertionError('Broken PA12 test-update provenance: ' + filename)
         expected = change['sha256']
-    return expected
+    return reviewed_current_test_hash(filename, expected)

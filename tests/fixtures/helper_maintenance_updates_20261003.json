@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "scope": "test_helper_self_lineage_only",
+  "review": {
+    "kind": "current_maintenance_review",
+    "review_date": "2026-10-03",
+    "baseline_commit": "6b351cc15126f50563eb18740103760f00b9282a",
+    "baseline_tree": "a50b4c986f9d10d61f5aef4cfa0e4a3ad32a12dd",
+    "historical_review_claimed": false
+  },
+  "approved_test_updates": [
+    {
+      "filename": "tests/provenance_corrections.py",
+      "previous_sha256": "5afbaae797599ac9321ea9a59c925f4877d35799dd283338cd70a3facb0f022c",
+      "sha256": "e5bf06ae239c9ea8f7db6d767aa6c35a00f88b85a07830858cbc499a9f4de5fe",
+      "reason": "Insert the pinned current-reviewed reconstructed public bootstrap bridge, retain every prior guard, and append this exact two-file current maintenance tail; scientific normalization functions are unchanged."
+    },
+    {
+      "filename": "tests/test_temperature_plot_preservation.py",
+      "previous_sha256": "25d3449d640fba780d0a7020f50a952ae0f0672c4ace0b809fc7172e53e7115a",
+      "sha256": "906da60f3065d901d6d618cdc439bb639beb422e5074e9f026b1a48cf557bc1a",
+      "reason": "After the unchanged direct historical baseline and two reviewed ordering deltas, apply only the separate current maintenance tail; preserve every scientific assertion and historical fixture."
+    }
+  ]
+}

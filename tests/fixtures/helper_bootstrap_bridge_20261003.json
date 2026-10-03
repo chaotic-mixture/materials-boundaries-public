@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "scope": "test_helper_self_lineage_only",
+  "review": {
+    "kind": "current_review_of_reconstructed_public_bootstrap",
+    "review_date": "2026-10-03",
+    "historical_review_claimed": false,
+    "reason": "Record the omitted clean-public helper edge now from exact public source bytes and hash-verified reconstruction; do not amend any historical ledger or assert historical review."
+  },
+  "approved_test_updates": [
+    {
+      "filename": "tests/provenance_corrections.py",
+      "previous_sha256": "943df60d15d6ed441ff9823ee4dad8794787b9ed7851d8094d57383e77444042",
+      "sha256": "21b4b63d38dbc13f41ed33ad9d32753404249fca1f33ef71d18d03871ad1c381",
+      "reason": "Bridge the reconstructed v0.16 helper endpoint to the actually retrieved first public helper; no scientific record or runtime change."
+    }
+  ],
+  "evidence": {
+    "public_repository": "https://github.com/chaotic-mixture/materials-boundaries-public",
+    "filename": "tests/provenance_corrections.py",
+    "public_introduction_commit": "6476616c662fe6ff5f6b1ecf68800653f9aad166",
+    "public_introduction_tree": "421f60c9f204513d09113846907f3eea450c3a52",
+    "public_introduction_blob": "7e36208d4afcc95911ea4c9a5347c59d80713793",
+    "public_introduction_bytes": 6497,
+    "public_introduction_sha256": "21b4b63d38dbc13f41ed33ad9d32753404249fca1f33ef71d18d03871ad1c381",
+    "public_source_utf8": "\"\"\"Exact, fail-closed reversal of reviewed metadata changes for old fixtures.\n\nThis test-only adapter never changes production data, drops arbitrary fields, or\naccepts a prior uncorrected value. It first proves the exact corrected value and\nthen restores only its recorded predecessor for historical hash comparison.\n\"\"\"\nimport copy\nimport json\nfrom pathlib import Path\n\nLEDGER = json.loads((Path(__file__).parent / 'fixtures/nist_reuse_correction_v0132.json').read_text(encoding='utf-8'))\nDIRECTIONAL_TEST_UPDATES = json.loads((Path(__file__).parent / 'fixtures/directional_test_updates_v0150.json').read_text(encoding='utf-8'))\n\nCOMPRESSIBILITY_TEST_UPDATES = json.loads((Path(__file__).parent / 'fixtures/compressibility_test_updates_v0160.json').read_text(encoding='utf-8'))\n\nPUBLIC_BASELINE = json.loads((Path(__file__).parent / 'fixtures/public_baseline_adjustments.json').read_text(encoding='utf-8'))\n\n\ndef public_previous_record(kind, record):\n    \"\"\"Undo only exact bibliography-scope corrections for private-baseline parity.\"\"\"\n    result = copy.deepcopy(record)\n    if kind == 'sources':\n        for change in reversed(PUBLIC_BASELINE['source_corrections'].get(record['id'], [])):\n            parent = result\n            for key in change['path'][:-1]:\n                parent = parent[key]\n            key = change['path'][-1]\n            # Curation notes may be reordered during contribution rehearsals.\n            if isinstance(parent, list):\n                if parent.count(change['after']) != 1:\n                    raise AssertionError('Unexpected public source correction: ' + record['id'])\n                parent[parent.index(change['after'])] = copy.deepcopy(change['before'])\n            else:\n                if parent[key] != change['after']:\n                    raise AssertionError('Unexpected public source correction: ' + record['id'])\n                parent[key] = copy.deepcopy(change['before'])\n    return result\n\n\ndef historical_record(kind, record):\n    result = public_previous_record(kind, record)\n    for change in reversed(LEDGER['records'].get(kind, {}).get(record['id'], [])):\n        parent = result\n        for key in change['path'][:-1]:\n            parent = parent[key]\n        key = change['path'][-1]\n        operation = change['operation']\n        if operation == 'replace':\n            if parent[key] != change['after']:\n                raise AssertionError('Unexpected corrected metadata: ' + record['id'] + ':' + '.'.join(change['path']))\n            parent[key] = copy.deepcopy(change['before'])\n        elif operation == 'append':\n            if parent[key].count(change['value']) != 1:\n                raise AssertionError('Missing or duplicate correction evidence: ' + record['id'])\n            parent[key].remove(change['value'])\n        elif operation == 'replace_item':\n            if parent[key].count(change['after']) != 1 or change['before'] in parent[key]:\n                raise AssertionError('Unexpected corrected metadata item: ' + record['id'])\n            parent[key][parent[key].index(change['after'])] = change['before']\n        else:\n            raise AssertionError('Unknown correction operation: ' + operation)\n    return result\n\n\ndef historical_temperature_result(result):\n    result = copy.deepcopy(result)\n    result['model_snapshot'] = historical_record('temperature_models', result['model_snapshot'])\n    result['source_snapshots'] = [historical_record('sources', source) for source in result['source_snapshots']]\n    return result\n\n\ndef historical_locales(kind, catalog):\n    result = copy.deepcopy(catalog)\n    if kind == 'temperature_locales':\n        for lang, changes in LEDGER['locales'].items():\n            for key, change in changes.items():\n                if result['languages'][lang][key] != change['after']:\n                    raise AssertionError('Unexpected corrected notice: ' + lang + ':' + key)\n                result['languages'][lang][key] = change['before']\n    return result\n\n\ndef reviewed_test_hash(filename, expected):\n    if set(LEDGER['approved_test_updates']) != {'tests/test_predictions.py', 'tests/test_anisotropy_catalog.py'}:\n        raise AssertionError('Only the two reviewed historical guard tests may have hash overrides')\n    change = LEDGER['approved_test_updates'].get(filename)\n    if change is not None:\n        if change['previous_sha256'] != expected or not change['reason'].strip():\n            raise AssertionError('Broken test-update provenance: ' + filename)\n        expected = change['sha256']\n    updates = DIRECTIONAL_TEST_UPDATES['approved_test_updates']\n    allowed = {'tests/test_anisotropy_catalog.py', 'tests/test_catalog_search.py',\n               'tests/test_fatigue_catalog.py', 'tests/test_mechanical.py',\n               'tests/test_mechanics_catalog_expansion.py', 'tests/test_observation_catalog.py',\n               'tests/test_catalog_cli.py', 'tests/test_fracture_catalog.py'}\n    if set(updates) != allowed:\n        raise AssertionError('Unexpected directional-release historical test override')\n    change = updates.get(filename)\n    if change is not None:\n        if change['previous_sha256'] != expected or not change['reason'].strip():\n            raise AssertionError('Broken directional test-update provenance: ' + filename)\n        expected = change['sha256']\n    updates = COMPRESSIBILITY_TEST_UPDATES['approved_test_updates']\n    allowed = {'tests/test_anisotropy_catalog.py', 'tests/test_catalog_search.py',\n               'tests/test_directional_poisson_catalog.py', 'tests/test_fatigue_catalog.py',\n               'tests/test_mechanical.py', 'tests/test_mechanics_catalog_expansion.py',\n               'tests/test_observation_catalog.py', 'tests/test_fracture_catalog.py',\n               'tests/provenance_corrections.py'}\n    if set(updates) != allowed:\n        raise AssertionError('Unexpected compressibility-release historical test override')\n    change = updates.get(filename)\n    if change is not None:\n        if change['previous_sha256'] != expected or not change['reason'].strip():\n            raise AssertionError('Broken compressibility test-update provenance: ' + filename)\n        expected = change['sha256']\n    change = PUBLIC_BASELINE['approved_test_updates'].get(filename)\n    if change is not None:\n        if change['previous_sha256'] != expected or not change['reason'].strip():\n            raise AssertionError('Broken first-public test-update provenance: ' + filename)\n        expected = change['sha256']\n    return expected\n",
+    "public_parent_commit": "e0433e64847f32e9783230fda74c12a7a28a8e21",
+    "public_parent_contents": [
+      "LICENSE"
+    ],
+    "pre_observation_parent_commit": "81a6cbcb6e556facc6a9b8bd486090f46c92a7d5",
+    "pre_observation_parent_blob": "7e36208d4afcc95911ea4c9a5347c59d80713793",
+    "predecessor_origin": "reconstructed_from_public_source_not_retrieved_git_blob",
+    "predecessor_bytes": 5012,
+    "predecessor_sha256": "943df60d15d6ed441ff9823ee4dad8794787b9ed7851d8094d57383e77444042",
+    "reverse_edits": [
+      {
+        "before": "PUBLIC_BASELINE = json.loads((Path(__file__).parent / 'fixtures/public_baseline_adjustments.json').read_text(encoding='utf-8'))\n\n\n",
+        "after": ""
+      },
+      {
+        "before": "def public_previous_record(kind, record):\n    \"\"\"Undo only exact bibliography-scope corrections for private-baseline parity.\"\"\"\n    result = copy.deepcopy(record)\n    if kind == 'sources':\n        for change in reversed(PUBLIC_BASELINE['source_corrections'].get(record['id'], [])):\n            parent = result\n            for key in change['path'][:-1]:\n                parent = parent[key]\n            key = change['path'][-1]\n            # Curation notes may be reordered during contribution rehearsals.\n            if isinstance(parent, list):\n                if parent.count(change['after']) != 1:\n                    raise AssertionError('Unexpected public source correction: ' + record['id'])\n                parent[parent.index(change['after'])] = copy.deepcopy(change['before'])\n            else:\n                if parent[key] != change['after']:\n                    raise AssertionError('Unexpected public source correction: ' + record['id'])\n                parent[key] = copy.deepcopy(change['before'])\n    return result\n\n\n",
+        "after": ""
+      },
+      {
+        "before": "    result = public_previous_record(kind, record)",
+        "after": "    result = copy.deepcopy(record)"
+      },
+      {
+        "before": "    change = PUBLIC_BASELINE['approved_test_updates'].get(filename)\n    if change is not None:\n        if change['previous_sha256'] != expected or not change['reason'].strip():\n            raise AssertionError('Broken first-public test-update provenance: ' + filename)\n        expected = change['sha256']\n",
+        "after": ""
+      }
+    ],
+    "forward_unified_diff_utf8": "--- reconstructed_prepublic.py\n+++ public_v016.py\n@@ -13,8 +13,32 @@\n \n COMPRESSIBILITY_TEST_UPDATES = json.loads((Path(__file__).parent / 'fixtures/compressibility_test_updates_v0160.json').read_text(encoding='utf-8'))\n \n+PUBLIC_BASELINE = json.loads((Path(__file__).parent / 'fixtures/public_baseline_adjustments.json').read_text(encoding='utf-8'))\n+\n+\n+def public_previous_record(kind, record):\n+    \"\"\"Undo only exact bibliography-scope corrections for private-baseline parity.\"\"\"\n+    result = copy.deepcopy(record)\n+    if kind == 'sources':\n+        for change in reversed(PUBLIC_BASELINE['source_corrections'].get(record['id'], [])):\n+            parent = result\n+            for key in change['path'][:-1]:\n+                parent = parent[key]\n+            key = change['path'][-1]\n+            # Curation notes may be reordered during contribution rehearsals.\n+            if isinstance(parent, list):\n+                if parent.count(change['after']) != 1:\n+                    raise AssertionError('Unexpected public source correction: ' + record['id'])\n+                parent[parent.index(change['after'])] = copy.deepcopy(change['before'])\n+            else:\n+                if parent[key] != change['after']:\n+                    raise AssertionError('Unexpected public source correction: ' + record['id'])\n+                parent[key] = copy.deepcopy(change['before'])\n+    return result\n+\n+\n def historical_record(kind, record):\n-    result = copy.deepcopy(record)\n+    result = public_previous_record(kind, record)\n     for change in reversed(LEDGER['records'].get(kind, {}).get(record['id'], [])):\n         parent = result\n         for key in change['path'][:-1]:\n@@ -89,4 +113,9 @@\n         if change['previous_sha256'] != expected or not change['reason'].strip():\n             raise AssertionError('Broken compressibility test-update provenance: ' + filename)\n         expected = change['sha256']\n+    change = PUBLIC_BASELINE['approved_test_updates'].get(filename)\n+    if change is not None:\n+        if change['previous_sha256'] != expected or not change['reason'].strip():\n+            raise AssertionError('Broken first-public test-update provenance: ' + filename)\n+        expected = change['sha256']\n     return expected\n",
+    "forward_unified_diff_sha256": "e3b750841a1754adf3696b18f4f616252de1bf358eef43a00b60bf9816a25562",
+    "subsequent_public_steps": [
+      {
+        "ledger": "observation_test_updates_v0170.json",
+        "public_commit": "8deb3e235b8a92b01b8223a10f6b09f4466bbc09",
+        "sha256": "675f73f489d14dc9a2c1683abaf3c13a83761eea6e8f6c5b1b09c38085934544",
+        "bytes": 7224,
+        "git_blob": "715faf160cf63a89eb0eb21ac71d57a4331ea263",
+        "previous_sha256": "21b4b63d38dbc13f41ed33ad9d32753404249fca1f33ef71d18d03871ad1c381",
+        "edits": [
+          {
+            "offset": 741,
+            "before": "",
+            "after": "0.json').read_text(encoding='utf-8'))\n\nOBSERVATION_TEST_UPDATES = json.loads((Path(__file__).parent / 'fixtures/observation_test_updates_v017"
+          },
+          {
+            "offset": 6481,
+            "before": "",
+            "after": "updates = OBSERVATION_TEST_UPDATES['approved_test_updates']\n    allowed = {'tests/test_observation_catalog.py', 'tests/test_temperature.py',\n               'tests/provenance_corrections.py'}\n    if set(updates) != allowed:\n        raise AssertionError('Unexpected observation-release historical test override')\n    change = updates.get(filename)\n    if change is not None:\n        if change['previous_sha256'] != expected or not change['reason'].strip():\n            raise AssertionError('Broken observation test-update provenance: ' + filename)\n        expected = change['sha256']\n    "
+          }
+        ]
+      },
+      {
+        "ledger": "wave_test_updates_v0180.json",
+        "public_commit": "0a004c790e1741fda1326413bb22d919af1f6314",
+        "sha256": "eb3712bcebd8e22a3480489e86a76ca177d196ed1ddecf93a015a2b292bb1b02",
+        "bytes": 8178,
+        "git_blob": "d5a4dedcffa03a066214eca38fecf3425cc1a472",
+        "previous_sha256": "675f73f489d14dc9a2c1683abaf3c13a83761eea6e8f6c5b1b09c38085934544",
+        "edits": [
+          {
+            "offset": 882,
+            "before": "",
+            "after": "0.json').read_text(encoding='utf-8'))\n\nWAVE_TEST_UPDATES = json.loads((Path(__file__).parent / 'fixtures/wave_test_updates_v018"
+          },
+          {
+            "offset": 7208,
+            "before": "",
+            "after": "updates = WAVE_TEST_UPDATES['approved_test_updates']\n    allowed = {'tests/test_catalog_search.py', 'tests/test_directional_poisson_catalog.py', 'tests/test_anisotropy_catalog.py', 'tests/provenance_corrections.py', 'tests/test_mechanical.py', 'tests/test_directional_compressibility_catalog.py', 'tests/test_mechanics_catalog_expansion.py', 'tests/test_observation_catalog.py', 'tests/test_fatigue_catalog.py', 'tests/test_fracture_catalog.py'}\n    if set(updates) != allowed:\n        raise AssertionError('Unexpected wave-release historical test override')\n    change = updates.get(filename)\n    if change is not None:\n        if change['previous_sha256'] != expected or not change['reason'].strip():\n            raise AssertionError('Broken wave test-update provenance: ' + filename)\n        expected = change['sha256']\n    "
+          }
+        ]
+      },
+      {
+        "ledger": "hbn_test_updates_v0190.json",
+        "public_commit": "0735b6409687a2752b81a73644ae695466911624",
+        "sha256": "2bfb482967b2da01431cc21b4e35482efabc51a517b8bdea595fbcf708b00e04",
+        "bytes": 8863,
+        "git_blob": "9c8ce790df8ba38526d3757dd62e15927ce97b64",
+        "previous_sha256": "eb3712bcebd8e22a3480489e86a76ca177d196ed1ddecf93a015a2b292bb1b02",
+        "edits": [
+          {
+            "offset": 1009,
+            "before": "",
+            "after": "0.json').read_text(encoding='utf-8'))\n\nHBN_TEST_UPDATES = json.loads((Path(__file__).parent / 'fixtures/hbn_test_updates_v019"
+          },
+          {
+            "offset": 8162,
+            "before": "",
+            "after": "updates = HBN_TEST_UPDATES['approved_test_updates']\n    allowed = {'tests/test_observation_catalog.py', 'tests/test_mos2_observation_catalog.py', 'tests/provenance_corrections.py'}\n    if set(updates) != allowed:\n        raise AssertionError('Unexpected hBN-release historical test override')\n    change = updates.get(filename)\n    if change is not None:\n        if change['previous_sha256'] != expected or not change['reason'].strip():\n            raise AssertionError('Broken hBN test-update provenance: ' + filename)\n        expected = change['sha256']\n    "
+          }
+        ]
+      },
+      {
+        "ledger": "pa12_test_updates_v0220.json",
+        "public_commit": "2d73023efa12d01ac1a292566895d04dbbc39a1b",
+        "sha256": "5afbaae797599ac9321ea9a59c925f4877d35799dd283338cd70a3facb0f022c",
+        "bytes": 9710,
+        "git_blob": "0d676f14bcfc9faaf54ae120d200fab2be764943",
+        "previous_sha256": "2bfb482967b2da01431cc21b4e35482efabc51a517b8bdea595fbcf708b00e04",
+        "edits": [
+          {
+            "offset": 1134,
+            "before": "",
+            "after": "0.json').read_text(encoding='utf-8'))\n\nPA12_TEST_UPDATES = json.loads((Path(__file__).parent / 'fixtures/pa12_test_updates_v022"
+          },
+          {
+            "offset": 8847,
+            "before": "",
+            "after": "updates = PA12_TEST_UPDATES['approved_test_updates']\n    allowed = {'tests/test_catalog_translation_snapshot.py', 'tests/test_hbn_observation_catalog.py',\n               'tests/test_mos2_observation_catalog.py', 'tests/test_observation_catalog.py',\n               'tests/test_observation_inspection.py', 'tests/provenance_corrections.py'}\n    if set(updates) != allowed:\n        raise AssertionError('Unexpected PA12-release historical test override')\n    change = updates.get(filename)\n    if change is not None:\n        if change['previous_sha256'] != expected or not change['reason'].strip():\n            raise AssertionError('Broken PA12 test-update provenance: ' + filename)\n        expected = change['sha256']\n    "
+          }
+        ]
+      }
+    ],
+    "accepted_public_commit": "6b351cc15126f50563eb18740103760f00b9282a",
+    "accepted_public_tree": "a50b4c986f9d10d61f5aef4cfa0e4a3ad32a12dd",
+    "accepted_public_helper": {
+      "sha256": "5afbaae797599ac9321ea9a59c925f4877d35799dd283338cd70a3facb0f022c",
+      "bytes": 9710,
+      "git_blob": "0d676f14bcfc9faaf54ae120d200fab2be764943"
+    },
+    "historical_fixture_sha256": {
+      "tests/fixtures/catalog_translation_v0201.json": "e489c975dae91bf5b33153123adae9d56b09de5ce57b9b4b94390d43eb8ffc40",
+      "tests/fixtures/compressibility_test_updates_v0160.json": "0bf357ad463fe9e8295cf20e22e38e9353b1d76108eba9deb6017e361518efc0",
+      "tests/fixtures/contributions/lefm.json": "240dd544adf763609be769706c262baf069eb2906897da925dbe28732218dd8d",
+      "tests/fixtures/directional_test_updates_v0150.json": "2c8da46535e9db2b5b1f3269e5837c5fdf4ca5c44959805fbdde09dd683c783a",
+      "tests/fixtures/hbn_test_updates_v0190.json": "d98155989387379a6ca8186cb2271214403e561142547e3c2428c5b144f8d4b2",
+      "tests/fixtures/historical_provenance.json": "1a75d287ce3182fbe07d7147e63d32aef572dcdf4325580b7ab8bde9de0d4c70",
+      "tests/fixtures/nickel_six_source_transcription.json": "7bd9ed892a5ec72d2dc0568bb31b58161ec997ac51b1f469286a5ec27986e012",
+      "tests/fixtures/nickel_test_updates_v0210.json": "4d8be2aa03013098ef524d82bf8c6c8608ed1e33c81a2e1a290057c2cd9f7a1e",
+      "tests/fixtures/nist_reuse_correction_v0132.json": "56c9b9f308a0c06abe33213d2d18f33d2512c390c1b56c35368871e12f274bd8",
+      "tests/fixtures/observation_test_updates_v0170.json": "213871d238ab00d1f562b265f2671f48978a287f477e7de861384387a4e766a3",
+      "tests/fixtures/pa12_cf15_source_transcription.json": "e3fdcff696e3927ecbdd80740663551e36f192465849bb6ffeb15748142e90f8",
+      "tests/fixtures/pa12_test_updates_v0220.json": "811a9a04be57ac2889660d547dca15c3ce52650fd11375ce31a346eff8725a4b",
+      "tests/fixtures/pre_anisotropy_outputs.json": "f3554ebde313a7ac65695e338cb67aaf78bf9964da0cba442ffc900f3a60fe44",
+      "tests/fixtures/pre_anisotropy_records.json": "3405360eb85b5965314b4d5b3023cf344bf8f5903bc4abfbcddb6d40478410cc",
+      "tests/fixtures/pre_bulk_wave_record_digests.json": "95221a3219066c52e0dbac579b5cc6b6bdbba4cd738ab969bac02b403254584b",
+      "tests/fixtures/pre_compressibility_record_digests.json": "d533c2ccef1c8c7a51da092e643abafb80cae800a50bf44a684af98cc339b604",
+      "tests/fixtures/pre_directional_record_digests.json": "b8321b097fac8bc2006c7b80c3aa7d35046e3ddf04a0b48d00b2aa7da273a531",
+      "tests/fixtures/pre_fatigue_records_sha256.json": "8e4001907999b321ec95a7b6e0206486db750af67dfaf6f278d53f6ca29b2d2f",
+      "tests/fixtures/pre_hbn_record_digests.json": "6b4453bea413d8f2509a05b8b48b4b26aea31800d3ddf89a513d391a108696d5",
+      "tests/fixtures/pre_nickel_batch_v0210.json": "01b046aec877c989bc0f252b0d6c0774daa44b2fdea950f771d552e6aeb3cb7e",
+      "tests/fixtures/pre_pa12_v0220.json": "91710039387f91dd12631ccfd76bef1b402d8ba567eb6d035dd00dd53cb383b6",
+      "tests/fixtures/pre_prediction_baseline.json": "1e20e8af4dc17f1188c05d8e76df0aea02899a7c6f36f026888768dc2d8aa3dc",
+      "tests/fixtures/pre_silicon_baseline.json": "1c8fbc1375071074fd531282508ae79746dc96967643419a54842eedbb4e662c",
+      "tests/fixtures/pre_temperature_plot_v0230.json": "63c29a678675f5e9804797e6db19d5ded7bf4d00ac583ef64098ea64213ec0a4",
+      "tests/fixtures/pre_temperature_records.json": "acbd50f52a6afa55665b8f2575407f33ad7c54a7468971fd76bbce9e34fe691c",
+      "tests/fixtures/prediction_source_transcription.json": "5cb45725611608eeeff8c2eb3da835907f88ee86aa8ffb882ad0d5280684b32c",
+      "tests/fixtures/public_baseline_adjustments.json": "7c3a0b39db60301ce68d0441ff37e6d4449d668b3f1656b6d617eacf7103fa8e",
+      "tests/fixtures/public_exclusion_fingerprints.json": "8a0ed4c6b22f68ce0dae2366169777b811c7c945f9c265997ccd6738e305bdb1",
+      "tests/fixtures/silicon_source_transcription.json": "900ded5db4b0410cfb3d388d06b2effda428aecf2090b669630a6dfca175dbfb",
+      "tests/fixtures/temperature_arithmetic.json": "11af5d0d2f660f2a4fe5273163b0cab8a47cff6d51c0ba5ca288a5348514faa6",
+      "tests/fixtures/temperature_synthetic_baseline.json": "26bee792d3120891fe86463af64ed9773df85c03b63a4db9333fc0c261cf785b",
+      "tests/fixtures/temperature_synthetic_construction.json": "60ba8c1021317df8321c939a650983e209a101974a04de42964816bf3f2057ac",
+      "tests/fixtures/wave_test_updates_v0180.json": "edabcacbb149f6b6382af8bbd098186ede84d17efc044d87fdcd1e7be54512e7"
+    },
+    "unchanged_normalization_function_sha256": {
+      "public_previous_record": "eec28fd27ceeab17a7226c2d90716e4287dfb3b159351470e8504084047f9b63",
+      "historical_record": "06f7fd4910bbe4bbc1d351aff785fc1d8b5e80dd9c8527b218585437876df56b",
+      "historical_temperature_result": "7af79c3d06f8f48a7bd28cb49b91413bf8013dd30ef1b7613f8969dc2f602920",
+      "historical_locales": "4b299108f4c365a752109cecbf5a706f766576a354330d5edff3ccec116402e5"
+    }
+  }
+}
