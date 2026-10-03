@@ -17,6 +17,11 @@ def read_catalog(name: str) -> dict:
     if name == "observations":
         from ._observation_contract import validate_observation_records
         validate_observation_records(catalog["records"])
+        from ._pa12_cf15_observation_contract import validate_pa12_dataset
+        validate_pa12_dataset(catalog["records"], require_complete=True)
+    if name == "sources":
+        from ._pa12_cf15_observation_contract import validate_pa12_sources
+        validate_pa12_sources(catalog["records"])
     return catalog
 
 
@@ -73,7 +78,7 @@ def query_catalog(
     if claim_type is not None and claim_type not in {"theoretical_bound", "derived_outer_envelope", "model_estimate", "model_relation", "stability_criterion"}:
         raise ValueError(f"unknown claim_type: {claim_type}")
 
-    if observation_type is not None and observation_type != "experiment_derived_model_dependent":
+    if observation_type is not None and observation_type not in {"experiment_derived_model_dependent", "experiment_derived_tensile_test_summary"}:
         raise ValueError(f"unknown observation_type: {observation_type}")
 
     if kind == "predictions":

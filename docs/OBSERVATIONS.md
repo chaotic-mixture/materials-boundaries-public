@@ -1,28 +1,49 @@
 # Traceable, catalog-only observations
 
-Version **0.20.0** retains **six property records from three studies**: two
-unchanged Lee–Wei–Kysar–Hone (2008) graphene records, two unchanged
-Bertolazzi–Brivio–Kis (2011) monolayer MoS2 records, and the two
-Falin et al. (2017) monolayer hBN records. Each pair describes two quantities
-from one study, not two independent confirmations. The catalog is neither a
-broad experimental database nor a source of universal bounds or engineering
-allowables. All six records remain model-dependent and `catalog_only`; no
-evaluator, quantitative observation plot, matched-condition comparison or ranking is added.
-The separate [offline inspection view](OBSERVATION_INSPECTION.md) adds
-source-ordered cards/tables and auditable JSON/CSV/SVG/HTML, with essential
-caveats before values and normalized displays separate from source strings.
-It uses new inspection schema **1.0.0** without changing these records.
+Version **0.22.0** contains **12 property records from four studies**: the six
+unchanged graphene, monolayer MoS2 and monolayer hBN summaries, plus six PA12 CF15
+tensile-test summaries at distinct reported chamber conditions from one study.
+The three older pairs remain `experiment_derived_model_dependent` 2D records.
+The new closed family is `experiment_derived_tensile_test_summary`, with 3D
+pressure dimension. Every record remains `catalog_only`. Conditions or properties
+from one study are associated records, not independent cross-study confirmations.
+The catalog is neither a broad experimental database nor a source of universal
+bounds, engineering allowables, fitted temperature laws or material rankings.
 
-At v0.19.0, the observations envelope advanced from schema **1.1.0 to 1.2.0**
-through a separate, closed hBN family, preserving the four earlier observation
-objects exactly. All six observation objects and the envelope remain unchanged
-in v0.20.0. Graphene's unknown uncertainty type and the MoS2 printed-q discrepancy
-retain their own evidence and limits; neither inherits hBN assumptions or SD
-provenance. The release has **36 unchanged mechanics claims and 51 sources**;
-exactly eight composite evaluations remain supported. See
-[v0.20.0 migration](MIGRATION_v0.20.0.md), the historical
-[v0.19.0 migration](MIGRATION_v0.19.0.md) and the preserved
-[v0.17.0 migration](MIGRATION_v0.17.0.md).
+Observations schema advances **1.2.0 → 1.3.0** and the separate
+[offline inspection view](OBSERVATION_INSPECTION.md) advances **1.0.0 → 1.1.0**.
+Inspection retains source-ordered text cards/tables and auditable JSON/CSV/SVG/HTML,
+with essential caveats before values. The catalog now has **36 mechanics claims
+and 52 sources**, with the **12 predictions, five synthetic temperature models,
+seven synthetic branches and eight executable composite rules unchanged**.
+The six earlier observation objects and their scientific contracts remain exact;
+graphene uncertainty, the MoS2 q discrepancy and hBN component-specific evidence
+are neither generalized nor replaced. See [v0.22.0 migration](MIGRATION_v0.22.0.md).
+
+## PA12 CF15: Ciganas et al. (2026), six temperature conditions
+
+The source-specific family contains only the six selected Table 3 ultimate
+tensile-strength/SD cells at reported chamber conditions **23, 40, 60, 80, 100
+and 120 °C**. It describes horizontally FFF-printed Fiberlogy PA12 CF15 with
+alternating +45°/−45° raster, tested under one displacement-rate protocol.
+Chamber conditions after 30 minutes of stabilization are not independently
+verified direct specimen temperatures. The reported rate is 1 mm/min crosshead
+motion, not a measured local strain rate. Actual moisture/RH, stress convention,
+stress-area basis, exact central statistic and aggregation remain unknown.
+
+Each condition reports three tensile tests. Its ± is **reported SD**, not SEM,
+a confidence interval, hard bounds or a complete uncertainty budget. These are
+six condition summaries from one study, not six independent studies. Values
+retain MPa source strings (including trailing zeros) separately from exact
+integer Pa re-expression by 1 MPa = 1000000 Pa. That unit scale adds no measured
+precision, observation, geometry reconstruction or thickness assumption.
+
+The current publisher HTML was inspected; PDF access did not yield an inspected
+artifact. Revision metadata and a cached/live discrepancy in unselected Table 4
+remain visible, without asserting all source versions agree. The six selected
+Table 3 cells agree across current HTML, visual inspection and an independent
+second transcription. This is not raw-data reanalysis or scientific replication.
+See the [full PA12 CF15 source, values, protocol, rights and limits](PA12_CF15_TEMPERATURE_OBSERVATIONS.md).
 
 ## Graphene: Lee et al. (2008), existing records
 
@@ -365,10 +386,11 @@ Scientific and native-language review remain outstanding. See
 [v0.19.0 migration](MIGRATION_v0.19.0.md), [sources](SOURCES.md) and
 [third-party notices](../THIRD_PARTY_NOTICES.md).
 
-## Offline inspection (v0.20.0)
+## Offline inspection (v0.22.0)
 
 ```sh
 python -m materials_boundaries observation inspect --output /tmp/observations --lang en
+python -m materials_boundaries observation inspect --source-id ciganas2026polym18050563 --output /tmp/pa12-cf15 --lang en
 python -m materials_boundaries observation inspect --output /tmp/mos2-strength --source-id bertolazzi_brivio_kis_2011 --quantity breaking_strength_2d --lang zh
 ```
 
@@ -394,18 +416,23 @@ python -m materials_boundaries catalog observations --query "MoS2 stiffness" --j
 python -m materials_boundaries catalog sources --id bertolazzi_brivio_kis_2011 --text --lang de
 python -m materials_boundaries catalog observations --source-id falin_et_al_2017_hbn_mechanical_properties --text --lang en
 python -m materials_boundaries catalog observations --query "hBN stiffness" --json
+python -m materials_boundaries catalog observations --source-id ciganas2026polym18050563 --text --lang en
+python -m materials_boundaries catalog observations --observation-type experiment_derived_tensile_test_summary --json
+python -m materials_boundaries catalog observations --quantity ultimate_tensile_strength_as_reported_3d --json
 ```
 
 Observation queries index `id`, `name`, `quantity`, `observation_type`, `study_id`, `material.name`, evidence source IDs and curated display-name aliases in all four languages. Search is literal, Unicode-casefolded and all-term; it is not paper search or automatic translation. `--id`, `--source-id`, `--quantity` and `--observation-type` use exact case-sensitive matches and combine with the query using AND. `--source-id` also works for claims; quantity/type filters are observation-only. No numerical value, uncertainty, method or condition search is implied. See [the full CLI/Python contract](CATALOG.md).
 
-Default/`--json` output remains a canonical `{schema_version, records}` envelope with observation schema **1.2.0**, independent of display language. Human-readable output translates labels and authored display names while retaining IDs, units, values, original evidence wording and verification gaps. Independent scientific and native-language review of these translations remain pending.
+Default/`--json` output remains a canonical `{schema_version, records}` envelope with observation schema **1.3.0**, independent of display language. Human-readable output translates labels and authored display names while retaining IDs, units, values, original evidence wording and verification gaps. Independent scientific and native-language review of these translations remain pending.
 
 ## Keep the contracts separate
 
 - `materials_boundaries/data/observations.json` stores summaries and context; it is neither `claims.json` nor an instance file
-- `schemas/observations.schema.json` describes the closed graphene/MoS2/hBN observation families; current claims schema is 1.11.0, sources 1.0.0 and evaluation 1.1.0
+- `schemas/observations.schema.json` describes the closed graphene/MoS2/hBN and six-cell PA12 CF15 observation families; current claims schema is 1.11.0, sources 1.0.0 and evaluation 1.1.0
 - `validate` and `evaluate` still accept composite instances only; they do not execute observation records or infer specimen applicability
 - Composite comparison builders/renderers still use the original eight elastic evaluations. The separate observation inspection builder reads only observation/source catalogs; it does not execute formulas or add quantitative plots, overlays, uncertainty bars, ranking or matched-condition comparison
-- The Falin hBN source added in v0.19.0 is evidence for its two observations only; all earlier source records, claims, predictions and synthetic temperature contents remain unchanged
+- The Ciganas source added in v0.22.0 supports six selected tensile summaries only; the 51 earlier source objects, six earlier observation objects, claims, predictions and synthetic temperature contents remain unchanged
+- The new family is closed by dataset/quantity/source-cell identity. Subsets and renamed record identities remain valid when their scientific payload is unchanged; the full catalog rejects duplicate aliases for a selected cell and requires all six cells in source-column order. Additional temperatures, materials or protocols require scientific review rather than automatic same-family appendability
+- Existing supported-family appendability remains available under each complete pre-existing scientific contract
 
-See [v0.19.0 migration](MIGRATION_v0.19.0.md), [v0.17.0 migration](MIGRATION_v0.17.0.md), [historical v0.7.0 migration](MIGRATION_v0.7.0.md), [source notes](SOURCES.md), [four-language terminology](TERMINOLOGY.md) and [visualization boundaries](VISUALIZATION.md).
+See [v0.22.0 migration](MIGRATION_v0.22.0.md), [v0.19.0 migration](MIGRATION_v0.19.0.md), [v0.17.0 migration](MIGRATION_v0.17.0.md), [historical v0.7.0 migration](MIGRATION_v0.7.0.md), [source notes](SOURCES.md), [four-language terminology](TERMINOLOGY.md) and [visualization boundaries](VISUALIZATION.md).

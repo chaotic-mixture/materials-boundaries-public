@@ -1,11 +1,58 @@
 # Getting started: Materials Boundaries
 
-## Current v0.21.0: six additional Ni11X model predictions
+## Current v0.22.0: PA12 CF15 tensile summaries at six chamber conditions
+
+Six selected Table 3 UTS/SD summaries from Ciganas, Kalinauskis and Cigane (2026)
+are added at reported chamber conditions **23, 40, 60, 80, 100 and 120 °C**.
+Current totals are **12 observations from four studies and 52 sources**. The
+**36 claims, 12 predictions, five synthetic models, seven branches and eight
+executable composite rules** are unchanged.
+
+These are horizontally FFF-printed Fiberlogy PA12 CF15 specimens with alternating
++45°/−45° raster, tested at 1 mm/min crosshead rate after 30-minute chamber
+stabilization. Chamber conditions do not establish direct specimen temperature;
+drying does not establish actual moisture. Declared 15 wt.% and 100% infill are
+formulation/print settings, not measured fiber fraction or zero porosity.
+Stress convention/area basis, exact central statistic and aggregation remain
+unknown. Three tests per condition and reported SD do not justify a confidence
+interval, SEM, hard bounds or a universal engineering allowable.
+
+The new type is `experiment_derived_tensile_test_summary`, quantity
+`ultimate_tensile_strength_as_reported_3d`. Exact **MPa source strings** and SD
+remain separate from exact **Pa unit re-expression**, 1 MPa = 1000000 Pa, which
+adds no measured precision or geometry conversion. Older 2D N/m records remain
+unchanged. No interpolation, continuous temperature model, ranking or
+cross-dimensional comparison is added.
+
+Observations schema is **1.3.0** and inspection schema **1.1.0**. Regenerate saved
+inspection bundles; do not relabel them. Default inspection returns 12 text
+facets, with essential warnings before property values. CSV distinguishes
+reported-result units from named SI/normalization columns. The six-cell family
+rejects duplicate cell aliases in the full catalog; subsets and renamed identities
+with unchanged scientific payload are supported. Existing-family appendability
+elsewhere is preserved.
+
+The inspected HTML revision and uninspected PDF remain explicit, including a
+cached/live discrepancy in excluded Table 4. Agreement is limited to the six
+selected Table 3 cells across HTML, visual reading and a second transcription.
+The article is CC BY 4.0 with author/title/DOI attribution; manufacturer Table 1
+is excluded. No source assets or long article passages are redistributed.
+Translation and software checks are not independent scientific or native review.
+
+```sh
+python -m materials_boundaries catalog observations --source-id ciganas2026polym18050563 --text --lang en
+python -m materials_boundaries observation inspect --source-id ciganas2026polym18050563 --output /tmp/pa12-cf15-en --lang en
+python -m materials_boundaries observation inspect --id ciganas2026-pa12cf15-uts-60c --output /tmp/pa12-cf15-60c-en --lang en
+```
+
+[PA12 CF15](PA12_CF15_TEMPERATURE_OBSERVATIONS.md) · [v0.22.0](MIGRATION_v0.22.0.md) · [Inspection](OBSERVATION_INSPECTION.md)
+
+## Earlier v0.21.0: six additional Ni11X model predictions
 
 Exactly six published ideal-shear predictions are added: **Ni11Cr 4.90,
 Ni11Mn 5.12, Ni11Fe 5.20, Ni11Cu 4.51, Ni11Si 4.17 and Ni11Ti 4.24 GPa**.
 They come from Shimanek et al., arXiv:2108.06412v2, Table 2, PDF/printed p. 27.
-The catalog now has **12 predictions, 2 scientific families and 3 explicit
+At v0.21.0, the catalog had **12 predictions, 2 scientific families and 3 explicit
 groups**, alongside the unchanged 36 claims, 51 sources, 6 observations from
 3 studies and 5 synthetic temperature demos (7 branches). Exactly 8 composite
 rules remain executable. No runtime, scientific schema or source record changes.
@@ -199,7 +246,7 @@ python -m materials_boundaries temperature evaluate examples/temperature/synthet
 python -m materials_boundaries temperature plot --output /tmp/temperature-demos --lang en
 ```
 
-[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.21.0.md)
+[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.22.0.md)
 
 ## Run locally
 
@@ -310,7 +357,7 @@ python -m materials_boundaries catalog claims --query porous --direction interva
 
 ## Search observations
 
-`catalog observations` uses the same canonical JSON default and `--text` language selection. Observation queries search ID, name, `quantity`, `observation_type`, `study_id`, `material.name`, evidence source IDs and curated display names in all four languages. They use the same literal all-term matching. `--source-id` is shared by claims and observations; `--quantity` and `--observation-type experiment_derived_model_dependent` are observation-only, exact and case-sensitive. All filters combine with AND; unsupported catalog/filter combinations are errors. Two property records with the same study ID remain one study.
+`catalog observations` uses the same canonical JSON default and `--text` language selection. Observation queries search ID, name, `quantity`, `observation_type`, `study_id`, `material.name`, evidence source IDs and curated display names in all four languages. They use the same literal all-term matching. `--source-id` is shared by claims and observations; `--quantity` and `--observation-type` (`experiment_derived_model_dependent`, `experiment_derived_tensile_test_summary`) are observation-only, exact and case-sensitive. All filters combine with AND; unsupported catalog/filter combinations are errors. Two property records with the same study ID remain one study.
 
 ```sh
 python -m materials_boundaries catalog observations --observation-type experiment_derived_model_dependent --query graphene --text --lang en

@@ -1,0 +1,56 @@
+{
+  "release": "0.22.0",
+  "basis": "Accepted public v0.21.0 tests; no historical fixture is regenerated or scientific assertion weakened",
+  "approved_test_updates": {
+    "tests/test_catalog_translation_snapshot.py": {
+      "previous_sha256": "1cadc77dfb9137cc3c647beadabf9c79c8092900be622acd804fc4b2142292dd",
+      "sha256": "f4f6e2f5d008009798c1e4699208d23eea2f477f7375562b3b95c1645cc8edff",
+      "reasons": [
+        "Historical JSON serialization restores only the accepted observations envelope 1.2.0 after asserting current 1.3.0; frozen text and record payload hashes remain unchanged."
+      ],
+      "reason": "Historical JSON serialization restores only the accepted observations envelope 1.2.0 after asserting current 1.3.0; frozen text and record payload hashes remain unchanged."
+    },
+    "tests/test_hbn_observation_catalog.py": {
+      "previous_sha256": "f19cc496723a7767c5385544595629bd36efbd6f27381211ed31317054d600aa",
+      "sha256": "e53f1aff4c4e4eb04882d205a44cc6abcbd1c69f1cafb0e66b6409059865db65",
+      "reasons": [
+        "Current observation envelope assertions and subset fixtures move 1.2.0 to 1.3.0.",
+        "The historical hBN appendability fixture reverses old observation families/evidence while retaining the independently closed PA12 cells in source-column order; all old hBN assertions remain."
+      ],
+      "reason": "Current observation envelope assertions and subset fixtures move 1.2.0 to 1.3.0. The historical hBN appendability fixture reverses old observation families/evidence while retaining the independently closed PA12 cells in source-column order; all old hBN assertions remain."
+    },
+    "tests/test_mos2_observation_catalog.py": {
+      "previous_sha256": "fb2256a22037db8813792ba9d31bf9daac64b6d25a065885afdead38406abe7d",
+      "sha256": "8c5b18a273dd30c6ef6529762d0907d7581b9bb9eee2c9de990dae0bf0c7c722",
+      "reasons": [
+        "Current observation envelope assertions and subset fixtures move 1.2.0 to 1.3.0.",
+        "The historical MoS2 shifted-order fixture still reverses old scientific catalogs/observation families but preserves the independently closed six-cell PA12 source order."
+      ],
+      "reason": "Current observation envelope assertions and subset fixtures move 1.2.0 to 1.3.0. The historical MoS2 shifted-order fixture still reverses old scientific catalogs/observation families but preserves the independently closed six-cell PA12 source order."
+    },
+    "tests/test_observation_catalog.py": {
+      "previous_sha256": "567ccff9687bf609381b1644a651772c6963e2472fadc661e4ad58cd1a044016",
+      "sha256": "9e4b338d5aa2370cfa056a3122b5b93ae31abc094073f14fa5b13cc79b934467",
+      "reasons": [
+        "Current observation envelope assertion moves1.2.0 to 1.3.0; graphene scientific fields and invalid pressure-family tests unchanged."
+      ],
+      "reason": "Current observation envelope assertion moves1.2.0 to 1.3.0; graphene scientific fields and invalid pressure-family tests unchanged."
+    },
+    "tests/test_observation_inspection.py": {
+      "previous_sha256": "e3b891c002666cd7fb6d2b411e991ad5e524eed0b5196cb2cc5a385dc50d86b1",
+      "sha256": "de6e7744d6e759f2563c2e98feeaaf15e5a35a215a01248d6596134da4ecb896",
+      "reasons": [
+        "Current inspection envelope 1.0.0 to 1.1.0, observation reference/envelope 1.2.0 to 1.3.0.",
+        "Pinned old-six grouping assertion names its two historical quantities instead of equating a subset to the expanded live supported-quantity registry; all old science, display and guard assertions remain."
+      ],
+      "reason": "Current inspection envelope 1.0.0 to 1.1.0, observation reference/envelope 1.2.0 to 1.3.0. Pinned old-six grouping assertion names its two historical quantities instead of equating a subset to the expanded live supported-quantity registry; all old science, display and guard assertions remain."
+    },
+    "tests/provenance_corrections.py": {
+      "previous_sha256": "2bfb482967b2da01431cc21b4e35482efabc51a517b8bdea595fbcf708b00e04",
+      "sha256": "5afbaae797599ac9321ea9a59c925f4877d35799dd283338cd70a3facb0f022c",
+      "reason": "Append the exact six-file PA12 test ledger to the existing fail-closed provenance chain. Preserve every historical ledger, predecessor hash, allowed-file set and scientific assertion."
+    }
+  },
+  "unchanged_scientific_fixtures": "All existing fixture files remain byte-identical; new PA12 fixtures are additive",
+  "separate_new_contract": "PA12 aliases cannot duplicate a dataset/quantity/source-cell; source-column order is required for its complete catalog. Existing-family appendability is preserved."
+}

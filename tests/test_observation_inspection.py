@@ -148,7 +148,7 @@ class ObservationInspectionTests(unittest.TestCase):
 
     def test_exact_six_selected_values_in_packaged_order(self):
         b = self.bundle
-        self.assertEqual(b['schema_version'], '1.0.0')
+        self.assertEqual(b['schema_version'], '1.1.0')
         self.assertEqual(b['kind'], 'observation_inspection')
         self.assertEqual(b['selection'], dict(requested_record_ids=list(IDS), source_id=None,
                          quantity=None, resolved_record_ids=list(IDS)))
@@ -167,7 +167,7 @@ class ObservationInspectionTests(unittest.TestCase):
         referenced = {r['study_id'] for r in b['record_snapshots']}
         referenced.update(e['source_id'] for r in b['record_snapshots'] for e in r['evidence'])
         self.assertEqual(b['source_snapshots'], [s for s in self.sources['records'] if s['id'] in referenced])
-        self.assertEqual(b['catalog_schema_versions'], {'observations':'1.2.0','sources':'1.0.0'})
+        self.assertEqual(b['catalog_schema_versions'], {'observations':'1.3.0','sources':'1.0.0'})
         self.assertEqual(b['record_digests'], [dict(record_id=r['id'], record_version=r['version'], sha256=digest(r)) for r in b['record_snapshots']])
         self.assertEqual(b['source_digests'], [dict(source_id=s['id'], sha256=digest(s)) for s in b['source_snapshots']])
         for s in b['source_snapshots']:
@@ -369,7 +369,8 @@ class ObservationInspectionTests(unittest.TestCase):
         for key in ('record_snapshots','source_snapshots','record_digests','source_digests','selection','presentation_policy'):
             self.assertEqual(study[key],quantity[key])
         self.assertEqual([g['identity'] for g in study['groups']],list(dict.fromkeys(r['study_id'] for r in study['record_snapshots'])))
-        self.assertEqual([g['identity'] for g in quantity['groups']],list(view.QUANTITIES))
+        self.assertEqual([g['identity'] for g in quantity['groups']],
+                         ['in_plane_stiffness_2d', 'breaking_strength_2d'])
         for group in quantity['groups']:
             self.assertEqual(group['facet_ids'],[f['id'] for f in study['facets'] if f['quantity']==group['identity']])
         subset=view.build_observation_inspection([IDS[-1],IDS[0]])
@@ -737,7 +738,7 @@ class ObservationInspectionSchemaTests(unittest.TestCase):
                 for value in schema:walk(value)
         walk(self.schema)
         refs=[self.schema['properties'][key]['items']['$ref'] for key in ('record_snapshots','source_snapshots')]
-        self.assertEqual(refs,['urn:materials-boundaries:schema:observations:1.2.0#/properties/records/items',
+        self.assertEqual(refs,['urn:materials-boundaries:schema:observations:1.3.0#/properties/records/items',
                                'urn:materials-boundaries:schema:sources:1.0.0#/properties/records/items'])
 
     def test_extra_fields_rejected_at_every_snapshot_object_depth(self):

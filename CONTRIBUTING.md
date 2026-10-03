@@ -331,3 +331,51 @@ pending scientific/native-language review in every language. Never copy inspecti
 PDFs, page images or extracted source full text into the repository or package.
 Use [the migration checklist](docs/MIGRATION_v0.16.0.md) for version/snapshot,
 negative-mutation, exact-algebra, appendability and installed-wheel checks.
+
+
+## PA12 CF15 observations and mixed inspection (v0.22.0)
+
+Read the [PA12 CF15 guide](docs/PA12_CF15_TEMPERATURE_OBSERVATIONS.md),
+[inspection contract](docs/OBSERVATION_INSPECTION.md) and
+[migration checklist](docs/MIGRATION_v0.22.0.md) before changing this family.
+Observations schema 1.3.0 admits six exact Table 3 UTS/SD cells; inspection schema
+1.1.0 supports their 3D pressure dimension alongside unchanged 2D families.
+Reported MPa strings and reported SD remain separate from exact decimal Pa
+re-expression. Do not apply the 2D indentation classification, introduce a
+default thickness, infer engineering stress from engineering strain, or fill
+stress, aggregation, temperature, moisture or other unknowns.
+
+This dataset is intentionally closed: full-catalog validation requires the six
+selected cells in source-column order and rejects duplicate `(dataset_id, quantity, source_cell)`
+aliases even with distinct record IDs. Subsets and renamed record identities
+are accepted when the scientific payload is unchanged; an alias is not new
+science. Other temperatures, materials, protocols or scientific metadata need
+reviewed admission. Existing supported-family appendability elsewhere remains
+unchanged; do not disable those regressions to enforce this narrow closure.
+
+Both schema and dependency-free runtime checks protect values, exact strings,
+Pa scaling, protocol/preparation, all nulls, source cells, sample-count scope,
+SD definition, revision/PDF caveats, attribution and source-record semantics.
+A generic source-schema pass does not establish source-specific correctness.
+Keep independent source-fact fixtures, negative mutation tests, full-catalog
+versus subset tests and historical-object preservation checks. Do not regenerate
+frozen scientific fixtures to conceal a change. In the complete test suite,
+update only deliberate software/schema envelopes and additive CSV assertions.
+
+Inspect default, old-only, PA12-only, mixed and single-condition outputs in all
+four locales. Essential chamber/process/stress/statistic/count/SD caveats must
+precede every MPa and Pa property value, not only appear in embedded JSON.
+Maintain source order, text-only cards, constant styling and no quantitative
+axes, whiskers, interpolation, ranking, aggregation or temperature fitting.
+JSON/CSV must preserve strings, units, nulls and complete snapshots; stale or
+altered bundles fail canonical rebuilding before writes. Regenerate older
+inspection bundles rather than relabel their schema versions.
+
+The new source is article-verified CC BY 4.0 with attribution and explicit
+reorganization/unit-re-expression notes. Record current HTML revision,
+uninspected PDF and unselected Table 4 discrepancy; do not claim all artifacts
+agree. Exclude manufacturer Table 1 and all publisher PDFs, screenshots, figures,
+HTML dumps, extensive passages and raw measurement collections. Include no local
+research paths in public provenance. Unit checks and independent transcription
+are not scientific replication, review or a permission grant. Preserve all
+older source-specific rights and conservative excluded-data boundaries.

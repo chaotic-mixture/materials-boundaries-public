@@ -1,12 +1,14 @@
 # Offline observation inspection
 
-Version **0.20.0** adds source-ordered inspection cards/tables for the **six
-existing model-dependent observations from three studies**. This is a separate
-presentation of catalog evidence, with a closed inspection schema **1.0.0**.
-It adds no observations, evaluator, fitted result, matched-condition comparison,
-material ranking or engineering allowable. Exactly eight executable composite
-rules remain. See [source-specific observation evidence](OBSERVATIONS.md) and
-[v0.20.0 migration](MIGRATION_v0.20.0.md).
+Version **0.22.0** supports source-ordered inspection cards/tables for **12
+observations from four studies**: six unchanged 2D model-dependent summaries
+and six new PA12 CF15 3D tensile-test summaries. Inspection schema **1.1.0**
+references observation schema **1.3.0**. Every family retains its own quantity,
+units, method and source-specific evidence. This is catalog inspection, with no
+evaluator, fitted result, matched-condition comparison, material ranking or
+engineering allowable. Exactly eight executable composite rules remain. See
+[source-specific evidence](OBSERVATIONS.md), the [PA12 CF15 guide](PA12_CF15_TEMPERATURE_OBSERVATIONS.md)
+and [v0.22.0 migration](MIGRATION_v0.22.0.md).
 
 ## Export and select
 
@@ -17,13 +19,16 @@ python -m materials_boundaries observation inspect --output /tmp/observations --
 python -m materials_boundaries observation inspect --output /tmp/hbn --source-id falin_et_al_2017_hbn_mechanical_properties --lang zh
 python -m materials_boundaries observation inspect --output /tmp/strength --quantity breaking_strength_2d --group-by quantity --lang ja
 python -m materials_boundaries observation inspect --output /tmp/selected --id lee_2008_graphene_in_plane_stiffness_2d --id falin_2017_hbn_monolayer_breaking_strength_2d --lang de
+python -m materials_boundaries observation inspect --source-id ciganas2026polym18050563 --output /tmp/pa12-cf15 --lang en
+python -m materials_boundaries observation inspect --id ciganas2026-pa12cf15-uts-60c --output /tmp/pa12-cf15-60c --lang de
 python -m materials_boundaries observation inspect --help --lang de
 ```
 
 `--id` is repeatable, with one exact, case-sensitive ID per occurrence.
 `--source-id` and `--quantity` are exact, case-sensitive filters; all selectors
-combine with **AND**. Supported quantities are `in_plane_stiffness_2d` and
-`breaking_strength_2d`. The default selects all six records. Selection retains
+combine with **AND**. Supported quantities are `in_plane_stiffness_2d`,
+`breaking_strength_2d` and `ultimate_tensile_strength_as_reported_3d`. The default
+selects all 12 records; the PA12 source or quantity selects six. Selection retains
 catalog order, even when IDs are requested in reverse order. It does not sort by
 value, rank materials or perform free-text matching. Use `catalog observations`
 for the separate literal text-search interface.
@@ -33,8 +38,11 @@ quantity facets. `--group-by quantity` changes navigation/order only and retains
 source order within each quantity. It establishes no common scientific basis.
 Malformed, duplicate or unknown IDs, unknown sources/quantities, unsupported
 scientific families and empty filter intersections fail before output files are
-written. Future IDs in an already supported, validated family do not need a
-presentation record-ID whitelist; an unknown scientific family is rejected.
+written. Valid record identities do not need a presentation record-ID whitelist;
+an unknown scientific family is rejected. The PA12 scientific family itself
+is closed to six source cells. Subsets and renamed IDs are accepted with the
+unchanged payload; full-catalog duplicate cell aliases are rejected. Existing
+supported-family appendability is preserved under those families' contracts.
 
 Each export produces five files (English example):
 
@@ -59,7 +67,8 @@ and evidence references without depending on an HTML details panel.
 
 ## Read each value together with its caveats
 
-The primary value is explicitly labeled **normalized catalog display**. It uses
+For the older 2D families, the primary value is explicitly labeled
+**normalized catalog display**. It uses
 the exact stored central/± values in N/m, without fixed-decimal rounding, added
 precision, thickness conversion or source correction. It is not a verbatim
 quotation. Original source wording/context is retained separately: the hBN
@@ -67,9 +76,37 @@ strength string contains both GPa and N/m, but this does not add a selected 3D
 result. Graphene has no `source_value_string`; this absence remains explicit.
 
 Stiffness and breaking strength are different quantities despite sharing N/m.
-A study's two property summaries are associated records, not independent
+A study's property/condition summaries are associated records, not independent
 replications. Central values are not all labeled means: graphene has no
 `summary_statistic`, and hBN strength's exact central-statistic label is unknown.
+
+### PA12 CF15: chamber condition, reported MPa and exact SI Pa
+
+Each of the six text-only facets presents the specific 3D printed-material,
+dataset/protocol and reported chamber condition before a property value. The
+30-minute stabilization does not establish direct specimen temperature or a
+verified stability tolerance. Horizontal alternating +45°/−45° FFF, filament
+drying, declared 15 wt.% formulation, 100% infill setting and 1 mm/min crosshead
+rate remain specific protocol context. Actual moisture/RH and local strain rate
+are unknown; drying and infill do not establish measured dry state or zero porosity.
+
+Before every MPa/Pa property display, including a single-condition card, the view
+states that stress convention/area basis, central statistic and aggregation are
+unknown. Three tensile tests are reported per condition; ± is reported SD, not
+CI, SEM or bounds. There is no raw-data reanalysis or universal allowable.
+
+The primary **Catalog display in reported units** uses the exact MPa strings,
+such as **32.70 ± 1.18 MPa**. A separate **exact SI unit re-expression** uses
+**32700000 ± 1180000 Pa**, with 1 MPa = 1000000 Pa and no added measurement
+precision or geometry/thickness calculation. Source strings/context remain
+separate. No N/m-to-Pa conversion is applied to the older 2D records.
+
+Complete process, nominal geometry, protocol, scoped count and component evidence
+remain visible. The source-version note preserves the inspected HTML revision,
+PDF noninspection and the cached/live discrepancy in unselected Table 4. Only
+the selected Table 3 UTS/SD cells have HTML/visual/second-transcription agreement.
+Article-specific CC BY 4.0 attribution does not extend to excluded manufacturer
+Table 1. See [all six conditions and source limits](PA12_CF15_TEMPERATURE_OBSERVATIONS.md).
 
 ### MoS2: retain the unresolved q discrepancy
 
@@ -149,16 +186,20 @@ specimen/condition assumption is invented. Unknown conditions never establish
 equivalence, including when two records both contain null. There are **no axes,
 bars, points, error whiskers, endpoint calculations, shared scales or
 magnitude-dependent styling**. No averaging, ratios, ranking, interpolation,
-refitting or conversion is performed. These remain `catalog_only`,
-experiment-derived, model-dependent summaries, not theoretical bounds or
-executable composite inputs.
+refitting or cross-dimensional conversion is performed. PA12 alone adds the
+explicit exact MPa-to-Pa scale described above. All records remain `catalog_only`
+experiment-derived summaries; older 2D model-dependent records and the new 3D
+tensile-test family retain distinct classifications. Neither is a theoretical
+bound or executable composite input.
 
 ## Audit bundle and CSV
 
 The inspection bundle retains explicit resolved selection and grouping, full
 unchanged observation/source snapshots, observation record versions, catalog
 schema versions, engine version, stable facet/record/study/quantity references,
-required caveats, normalized display strings and their catalog-derived basis.
+required caveats, family-specific reported/normalized display strings and their
+catalog-derived basis. PA12 facets additionally preserve dataset, protocol,
+source-cell and temperature identity, reported units, SI units and normalization.
 Presentation policy is inspection-only, with `overlay_allowed=false`,
 `aggregation_allowed=false`, and `unknown_conditions_equivalent=false`.
 
@@ -168,7 +209,16 @@ invented. The existing MoS2 inspected-artifact hash stays provenance for that
 artifact only. IDs/digests do not depend on language or numerical ranking.
 There are no generated timestamps or random identifiers.
 
-CSV places identity, model status and essential caveats before value columns.
+CSV places identity, model status, temperature basis and essential caveats before
+property-value columns. `unit`, `central_value` and `plus_minus_value` use reported
+result units (N/m for older records; MPa for PA12), not uniformly SI units. New
+`si_unit`, `si_central_value`, `si_plus_minus_value` and `normalization_json`
+columns explicitly distinguish exact Pa re-expression from the original MPa
+strings; older records retain N/m with identity normalization. Additional columns
+include `reported_value_string`, `reported_plus_minus_string`, `dataset_id`,
+`protocol_id`, `source_cell_json` and `temperature_value`, `temperature_value_string`, `temperature_unit`,
+`temperature_basis`, `temperature_json` fields. Read
+columns by name, not fixed position. Source strings preserve trailing zeros.
 Uncertainty meaning/evidence, scoped counts, conditions, locators, versions and
 digests accompany each row. Compact JSON columns retain complete record/source
 snapshots, including null unknowns. The policy declares scalar missing values as
@@ -209,8 +259,11 @@ separate from optional development-time JSON Schema validation. No observation
 formula or composite evaluator is called by the inspection builder.
 
 The inspection layer also checks the complete Lee and MoS2 source-defined
-scientific payloads; the existing hBN guard already performs that check. Record
-IDs and display names remain appendable, and evidence order is immaterial.
+scientific payloads; the existing hBN guard already performs that check. These
+older families retain their supported ID/name appendability and evidence-order
+semantics. The new PA12 guard pins complete six-cell scientific payloads and
+source provenance, including metadata gaps, rights and inspected revision. Its
+subset/renamed-ID admission must not be confused with full-catalog cell duplication.
 Changing scientific values or semantics needs a reviewed source contract rather
 than silently inheriting existing caveats. XML-illegal characters are rejected
 before export rather than removed from evidence or snapshot text.
@@ -222,7 +275,8 @@ raw-data reanalysis, independent scientific review or replication. Inspection
 gaps and artifact-specific licensing remain visible. No source PDF, full text,
 figure, screenshot or raw measurement collection is redistributed. The hBN main
 article's CC BY 4.0 does not establish the license of the supplement or peer-review
-file. See [source ledger](SOURCES.md) and [third-party notices](../THIRD_PARTY_NOTICES.md).
+file. PA12 article CC BY 4.0 is verified at the article copyright block; it is
+not extended to excluded third-party manufacturer content. See [source ledger](SOURCES.md) and [third-party notices](../THIRD_PARTY_NOTICES.md).
 
 Authored English, Chinese, Japanese and German labels/notices are working
 translations, not independently scientifically or native-speaker reviewed.

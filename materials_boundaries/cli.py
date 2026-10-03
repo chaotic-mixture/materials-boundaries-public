@@ -111,7 +111,7 @@ def _build_parser(language: str) -> argparse.ArgumentParser:
     catalog_parser.add_argument("--claim-type", choices=("theoretical_bound", "derived_outer_envelope", "model_estimate", "model_relation", "stability_criterion"), help=t("cli_claim_type"))
     catalog_parser.add_argument("--source-id", metavar="ID", help=t("cli_source_id"))
     catalog_parser.add_argument("--quantity", metavar="QUANTITY", help=t("cli_observation_quantity"))
-    catalog_parser.add_argument("--observation-type", choices=("experiment_derived_model_dependent",), help=t("cli_observation_type"))
+    catalog_parser.add_argument("--observation-type", choices=("experiment_derived_model_dependent", "experiment_derived_tensile_test_summary"), help=t("cli_observation_type"))
     catalog_parser.add_argument("--role", metavar="ROLE", help=t("cli_role"))
     catalog_parser.add_argument("--year", type=int, metavar="YEAR", help=t("cli_year"))
     catalog_parser.add_argument("--license", metavar="LICENSE", help=t("cli_license"))

@@ -1,6 +1,6 @@
 # Strength and fracture knowledge records
 
-This guide documents five **catalog-only** entries introduced during v0.4.0 development. The current v0.21.0 release has 36 mechanics claims and 51 source records in total. Eight elastic-bound/envelope evaluations remain executable. These additions do not implement a strength/fracture calculator or certify a specimen's premises. Unknown parameters are not filled from elastic-bound endpoints.
+This guide documents five **catalog-only** entries introduced during v0.4.0 development. The current v0.22.0 release has 36 mechanics claims and 52 source records in total. Eight elastic-bound/envelope evaluations remain executable. These additions do not implement a strength/fracture calculator or certify a specimen's premises. Unknown parameters are not filled from elastic-bound endpoints.
 
 | Record | Class | Output / SI unit | Evidence anchor |
 | --- | --- | --- | --- |

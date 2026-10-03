@@ -17,16 +17,24 @@ from urllib.parse import urlsplit
 from .catalog import read_catalog
 from ._observation_contract import MOS2_FAMILY, validate_observation_records
 from ._hbn_observation_contract import HBN_FAMILY
+from ._pa12_cf15_observation_contract import PA12_FAMILY, validate_pa12_sources
 from .i18n import translate
 from .validation import ValidationError
 
-QUANTITIES = ('in_plane_stiffness_2d', 'breaking_strength_2d')
+QUANTITY_LABELS = {'in_plane_stiffness_2d': 'stiffness',
+                   'breaking_strength_2d': 'strength',
+                   'ultimate_tensile_strength_as_reported_3d': 'pa12_strength'}
+QUANTITIES = tuple(QUANTITY_LABELS)
 LEE_FAMILY = 'lee_2008_legacy_indentation_v1'
 # Integrity of the two legacy source-defined scientific payloads, not paper
 # hashes. IDs/names remain appendable and evidence order is immaterial.
 LEE_SCIENTIFIC_PAYLOAD_SHA256 = {'in_plane_stiffness_2d': '4fbf98b62f6b011869561e5ec20f65fa2dec6e48c7845483f404b9c327f75f44', 'breaking_strength_2d': '0a26d5ebc57eea2d0ba1b8f26b479d380fd14b5e7ddebfc81e414708c58ea08e'}
 MOS2_SCIENTIFIC_PAYLOAD_SHA256 = {'in_plane_stiffness_2d': 'cdc809aaf360a6f421e834132fc30a679facee3f5a0c14c98e7a228c633056a4', 'breaking_strength_2d': '36bc7c51b4e0b57c49bcaa26f87551c93a95621b759111dfe9e3bbc14930260f'}
 DISPLAY_BASIS = 'catalog_reported_result_value_and_uncertainty_value_in_N_per_m_not_verbatim_source'
+PA12_DISPLAY_BASIS = 'catalog_exact_reported_MPa_strings_not_additional_measurement_precision'
+PA12_CAVEATS = ['pa12_temperature_warning', 'pa12_process_warning',
+                'pa12_stress_statistic_warning', 'pa12_sd_count_warning',
+                'pa12_scope_warning']
 POLICY = {
     'purpose': 'inspection_only', 'display': 'source_ordered_text_facets',
     'overlay_allowed': False, 'aggregation_allowed': False,
@@ -113,7 +121,7 @@ def _safe_url(value):
 def _validate_links(value):
     if isinstance(value, dict):
         for key, item in value.items():
-            if key in ('source_url', 'url') and item is not None:
+            if key in ('source_url', 'url', 'license_url', 'version_notes_url', 'doi_url', 'publisher_url') and item is not None:
                 _safe_url(item)
             elif key == 'urls':
                 for url in item:
@@ -153,7 +161,11 @@ def _caveats(record):
     if family == HBN_FAMILY:
         return [('hbn_strength_warning' if quantity == QUANTITIES[1]
                  else 'hbn_stiffness_warning'), 'catalog_hbn_sd_notice', 'sd_warning']
-    return ['graphene_warning']
+    if family == PA12_FAMILY:
+        return list(PA12_CAVEATS)
+    if family == LEE_FAMILY:
+        return ['graphene_warning']
+    raise ObservationInspectionError('unsupported observation method family')
 
 
 def _caveat_text(code, lang):
@@ -171,6 +183,92 @@ def _number(value):
     return str(value)
 
 
+def _membrane_facet(r):
+    _require(r['quantity'] in QUANTITIES[:2] and r['si_unit'] == 'N/m'
+             and r['quantity_dimension'] == 'force_per_length'
+             and r['observation_type'] == 'experiment_derived_model_dependent'
+             and r['evaluation_support'] == 'catalog_only', 'unsupported scientific observation contract')
+    result, uncertainty = r['reported_result'], r['reported_result']['uncertainty']
+    _require(result['unit'] == uncertainty['unit'] == 'N/m', 'unsupported observation unit')
+    _require(uncertainty['notation'] == 'plus_minus', 'unsupported uncertainty notation')
+    expected = 'reported_plus_minus_unspecified' if _family(r) == LEE_FAMILY else 'reported_standard_deviation'
+    _require(uncertainty['type'] == expected, 'source-specific uncertainty type changed')
+    central, spread = _number(result['value']), _number(uncertainty['value'])
+    _require(result['value'] > 0 and uncertainty['value'] >= 0, 'invalid reported value range')
+    return {'id': 'observation-' + _digest([r['study_id'], r['quantity'], r['id']]),
+           'record_id': r['id'], 'record_version': r['version'],
+           'study_id': r['study_id'], 'quantity': r['quantity'],
+           'method_family': _family(r), 'unit': 'N/m',
+           'normalized_display': central + ' ± ' + spread + ' N/m',
+           'display_basis': DISPLAY_BASIS, 'required_caveat_codes': _caveats(r),
+           'uncertainty_type': uncertainty['type']}
+
+
+def _pa12_facet(r):
+    """A separate pressure-valued branch; no membrane shape or unit fallback."""
+    _require(_family(r) == PA12_FAMILY and r['quantity'] == QUANTITIES[2]
+             and r['quantity_dimension'] == 'pressure' and r['si_unit'] == 'Pa'
+             and r['observation_type'] == 'experiment_derived_tensile_test_summary'
+             and r['evaluation_support'] == 'catalog_only', 'unsupported tensile observation contract')
+    result, u, si = r['reported_result'], r['reported_result']['uncertainty'], r['si_result']
+    _require(result['unit'] == u['unit'] == 'MPa' and si['unit'] == 'Pa', 'unsupported tensile unit')
+    # Exact strings and SI scaling were admitted by the source-specific guard.
+    # The view does not calculate a material property or uncertainty endpoints.
+    return {'id': 'observation-' + _digest([r['study_id'], r['quantity'], r['id']]),
+            'record_id': r['id'], 'record_version': r['version'], 'study_id': r['study_id'],
+            'quantity': r['quantity'], 'quantity_dimension': r['quantity_dimension'],
+            'method_family': PA12_FAMILY, 'observation_type': r['observation_type'],
+            'model_status': r['model_status'], 'dataset_id': r['dataset_id'],
+            'protocol_id': r['protocol_id'], 'source_cell': deepcopy(r['source_cell']),
+            'temperature': deepcopy(r['conditions']['temperature']),
+            'temperature_basis': r['conditions']['temperature']['basis'],
+            'unit': 'MPa', 'si_unit': 'Pa',
+            'reported_value_string': result['value_string'],
+            'reported_plus_minus_string': u['value_string'],
+            'normalized_display': result['value_string'] + ' ± ' + u['value_string'] + ' MPa',
+            'display_basis': PA12_DISPLAY_BASIS,
+            'si_display': str(int(si['value'])) + ' ± ' + str(int(si['uncertainty_value'])) + ' Pa',
+            'si_value': int(si['value']), 'si_uncertainty_value': int(si['uncertainty_value']),
+            'normalization': deepcopy(si['normalization']),
+            'required_caveat_codes': _caveats(r), 'uncertainty_type': u['type']}
+
+
+def _classification(record, lang):
+    return labels(lang)['pa12_classification' if _family(record) == PA12_FAMILY else 'classification']
+
+
+def _pa12_identity_lines(record, lang):
+    t = labels(lang)
+    return [t['pa12_identity'] + ' | ' + record['material']['name'],
+            t['pa12_dataset'] + ': ' + record['dataset_id'],
+            t['pa12_protocol'] + ': ' + record['protocol_id'],
+            t['pa12_temperature'] + ': ' + record['conditions']['temperature']['value_string'] + ' °C',
+            t['pa12_temperature_basis']]
+
+
+def _pa12_detail_lines(record, lang):
+    """Complete protocol context stays visible, including unknown/null states."""
+    t = labels(lang)
+    lines = [(t['source_wording'] + ': ' + record['reported_result']['source_value_string'] + ' MPa', None),
+             (t['pa12_cell'] + ': ' + _canonical(record['source_cell']), None)]
+    for key, label in (('material', 'pa12_material'), ('method', 'pa12_method'),
+                       ('conditions', 'pa12_conditions'), ('sample_metadata', 'pa12_counts')):
+        # Render each top-level structured component separately for wrapping;
+        # none is hidden behind the full-snapshot disclosure control.
+        lines.append((t[label], None))
+        for field, value in record[key].items():
+            lines.append((field + ': ' + _canonical(value), None))
+    lines.append((t['pa12_standard_warning'], None))
+    lines.append((t['pa12_version_warning'], None))
+    lines.append((t['pa12_source_version'] + ': ' + _canonical(record['verification']['source_inspection']), None))
+    lines.extend((gap, None) for gap in record['verification']['gaps'])
+    lines.append((t['pa12_rights_warning'], None))
+    rights = record['verification']['rights']
+    lines.append((t['rights'] + ': ' + _canonical(rights), None))
+    lines.append((rights['license_url'], rights['license_url']))
+    return lines
+
+
 def build_observation_inspection(record_ids=None, source_id=None, quantity=None, group_by='study'):
     """Select exact records in packaged order; filters combine with AND."""
     from . import __version__
@@ -186,9 +284,10 @@ def build_observation_inspection(record_ids=None, source_id=None, quantity=None,
     _require(quantity is None or quantity in QUANTITIES, 'unsupported observation quantity')
     try:
         catalog, source_catalog = read_catalog('observations'), read_catalog('sources')
-        _require(catalog['schema_version'] == '1.2.0' and source_catalog['schema_version'] == '1.0.0',
+        _require(catalog['schema_version'] == '1.3.0' and source_catalog['schema_version'] == '1.0.0',
                  'unsupported observation/source catalog schema version')
         validate_observation_records(catalog['records'])
+        validate_pa12_sources(source_catalog['records'])
         _json_safe(catalog); _json_safe(source_catalog)
         records, sources = catalog['records'], source_catalog['records']
         all_ids = [r['id'] for r in records]
@@ -208,26 +307,9 @@ def build_observation_inspection(record_ids=None, source_id=None, quantity=None,
             _validate_source_display(r)
             for key in ('id', 'study_id', 'version'):
                 _selector(r[key], key)
-            _require(r['quantity'] in QUANTITIES and r['si_unit'] == 'N/m'
-                     and r['quantity_dimension'] == 'force_per_length'
-                     and r['observation_type'] == 'experiment_derived_model_dependent'
-                     and r['evaluation_support'] == 'catalog_only', 'unsupported scientific observation contract')
-            result, uncertainty = r['reported_result'], r['reported_result']['uncertainty']
-            _require(result['unit'] == uncertainty['unit'] == 'N/m', 'unsupported observation unit')
-            _require(uncertainty['notation'] == 'plus_minus', 'unsupported uncertainty notation')
-            expected = 'reported_plus_minus_unspecified' if _family(r) == LEE_FAMILY else 'reported_standard_deviation'
-            _require(uncertainty['type'] == expected, 'source-specific uncertainty type changed')
-            central, spread = _number(result['value']), _number(uncertainty['value'])
-            _require(result['value'] > 0 and uncertainty['value'] >= 0, 'invalid reported value range')
             referenced.add(r['study_id'])
             referenced.update(e['source_id'] for e in r['evidence'])
-            facets.append({'id': 'observation-' + _digest([r['study_id'], r['quantity'], r['id']]),
-                           'record_id': r['id'], 'record_version': r['version'],
-                           'study_id': r['study_id'], 'quantity': r['quantity'],
-                           'method_family': _family(r), 'unit': 'N/m',
-                           'normalized_display': central + ' ± ' + spread + ' N/m',
-                           'display_basis': DISPLAY_BASIS, 'required_caveat_codes': _caveats(r),
-                           'uncertainty_type': uncertainty['type']})
+            facets.append(_pa12_facet(r) if _family(r) == PA12_FAMILY else _membrane_facet(r))
         _require(referenced.issubset(source_ids), 'missing referenced observation source')
         selected_sources = [s for s in sources if s['id'] in referenced]
         _validate_links(selected); _validate_links(selected_sources)
@@ -236,7 +318,7 @@ def build_observation_inspection(record_ids=None, source_id=None, quantity=None,
         for identity in group_values:
             groups.append({'id': group_by + ':' + identity, 'kind': group_by, 'identity': identity,
                            'facet_ids': [f['id'] for f in facets if f['study_id' if group_by == 'study' else 'quantity'] == identity]})
-        return {'schema_version': '1.0.0', 'kind': 'observation_inspection', 'engine_version': __version__,
+        return {'schema_version': '1.1.0', 'kind': 'observation_inspection', 'engine_version': __version__,
                 'catalog_schema_versions': {'observations': catalog['schema_version'], 'sources': source_catalog['schema_version']},
                 'selection': {'requested_record_ids': None if record_ids is None else list(record_ids),
                               'source_id': source_id, 'quantity': quantity,
@@ -279,43 +361,79 @@ def _uncertainty_evidence(record):
 
 
 def inspection_csv(bundle):
-    """One row per selected record; source warnings precede all value columns.
+    """One row per selected record; identities and caveats precede values.
 
-    Scalar missing states are literal ``null``. Embedded compact JSON keeps
-    null, Boolean and numeric types and complete unchanged source snapshots.
+    Result columns retain reported units. Separate SI columns are exact prefix
+    scaling for PA12 and identity normalization for historic N/m records.
+    Missing scalars remain literal ``null``; snapshots retain complete types.
     """
     validate_observation_inspection(bundle)
-    out = io.StringIO(newline='')
-    writer = csv.writer(out, lineterminator='\n')
     columns = ['record_id', 'record_version', 'study_id', 'quantity', 'unit',
         'classification', 'evaluation_support', 'method_family', 'model_status',
-        'required_caveat_codes_json', 'essential_caveats', 'presentation_policy_json',
-        'normalized_display_basis', 'normalized_display', 'central_value', 'plus_minus_value',
-        'uncertainty_type', 'uncertainty_interpretation', 'uncertainty_evidence_json',
-        'summary_statistic', 'source_value_string', 'sample_metadata_json', 'conditions_json',
-        'method_json', 'evidence_json', 'verification_json', 'engine_version',
-        'inspection_schema_version', 'observation_schema_version', 'source_schema_version',
-        'record_snapshot_sha256', 'source_snapshot_digests_json', 'selection_json', 'group_by',
+        'dataset_id', 'protocol_id', 'source_cell_json', 'temperature_value',
+        'temperature_value_string', 'temperature_unit', 'temperature_basis',
+        'temperature_json', 'required_caveat_codes_json', 'essential_caveats',
+        'presentation_policy_json', 'normalized_display_basis', 'normalized_display',
+        'central_value', 'plus_minus_value', 'reported_value_string',
+        'reported_plus_minus_string', 'si_unit', 'si_central_value', 'si_plus_minus_value',
+        'normalization_json', 'uncertainty_type', 'uncertainty_interpretation',
+        'uncertainty_evidence_json', 'summary_statistic', 'source_value_string',
+        'sample_metadata_json', 'conditions_json', 'method_json', 'evidence_json',
+        'verification_json', 'engine_version', 'inspection_schema_version',
+        'observation_schema_version', 'source_schema_version', 'record_snapshot_sha256',
+        'source_snapshot_digests_json', 'selection_json', 'group_by',
         'scalar_missing_convention', 'record_snapshot_json', 'source_snapshots_json']
-    writer.writerow(columns)
+    out = io.StringIO(newline='')
+    writer = csv.DictWriter(out, fieldnames=columns, lineterminator='\n')
+    writer.writeheader()
     digests = {d['record_id']: d['sha256'] for d in bundle['record_digests']}
     for r, f in zip(bundle['record_snapshots'], bundle['facets']):
         result, u = r['reported_result'], r['reported_result']['uncertainty']
         ids = {r['study_id'], *(e['source_id'] for e in r['evidence'])}
-        writer.writerow([r['id'], r['version'], r['study_id'], r['quantity'], 'N/m',
-            r['observation_type'], r['evaluation_support'], f['method_family'],
-            r.get('model_status', 'source_reported_model_dependent'),
-            _canonical(f['required_caveat_codes']), ' '.join(_caveat_text(c, 'en') for c in f['required_caveat_codes']),
-            _canonical(bundle['presentation_policy']), DISPLAY_BASIS, f['normalized_display'],
-            _number(result['value']), _number(u['value']), u['type'], u['interpretation'],
-            _canonical(_uncertainty_evidence(r)), result.get('summary_statistic', 'null'),
-            result.get('source_value_string', 'null'), _canonical(r['sample_metadata']), _canonical(r['conditions']),
-            _canonical(r['method']), _canonical(r['evidence']), _canonical(r['verification']),
-            bundle['engine_version'], bundle['schema_version'], bundle['catalog_schema_versions']['observations'],
-            bundle['catalog_schema_versions']['sources'], digests[r['id']],
-            _canonical([d for d in bundle['source_digests'] if d['source_id'] in ids]),
-            _canonical(bundle['selection']), bundle['group_by'], 'null', _canonical(r),
-            _canonical([s for s in bundle['source_snapshots'] if s['id'] in ids])])
+        tensile = _family(r) == PA12_FAMILY
+        temperature = r['conditions']['temperature'] if tensile else None
+        si = r['si_result'] if tensile else {'value': result['value'],
+            'uncertainty_value': u['value'], 'unit': 'N/m',
+            'normalization': {'kind': 'identity_no_unit_conversion', 'from_unit': 'N/m',
+                              'to_unit': 'N/m', 'factor_string': '1', 'offset_string': '0',
+                              'adds_measurement_precision': False}}
+        row = dict(record_id=r['id'], record_version=r['version'], study_id=r['study_id'],
+            quantity=r['quantity'], unit=result['unit'], classification=r['observation_type'],
+            evaluation_support=r['evaluation_support'], method_family=f['method_family'],
+            model_status=r.get('model_status', 'source_reported_model_dependent'),
+            dataset_id=r.get('dataset_id', 'null'), protocol_id=r.get('protocol_id', 'null'),
+            source_cell_json=_canonical(r.get('source_cell')),
+            temperature_value=temperature['value_string'] if tensile else 'null',
+            temperature_value_string=temperature['value_string'] if tensile else 'null',
+            temperature_unit=temperature['unit'] if tensile else 'null',
+            temperature_basis=temperature['basis'] if tensile else 'null',
+            temperature_json=_canonical(temperature),
+            required_caveat_codes_json=_canonical(f['required_caveat_codes']),
+            essential_caveats=' '.join(_caveat_text(c, 'en') for c in f['required_caveat_codes']),
+            presentation_policy_json=_canonical(bundle['presentation_policy']),
+            normalized_display_basis=f['display_basis'], normalized_display=f['normalized_display'],
+            central_value=_number(result['value']), plus_minus_value=_number(u['value']),
+            reported_value_string=result.get('value_string', 'null'),
+            reported_plus_minus_string=u.get('value_string', 'null'), si_unit=si['unit'],
+            si_central_value=str(int(si['value'])) if tensile else _number(si['value']),
+            si_plus_minus_value=str(int(si['uncertainty_value'])) if tensile else _number(si['uncertainty_value']),
+            normalization_json=_canonical(si['normalization']), uncertainty_type=u['type'],
+            uncertainty_interpretation=u['interpretation'],
+            uncertainty_evidence_json=_canonical(_uncertainty_evidence(r)),
+            summary_statistic=result.get('summary_statistic', 'null'),
+            source_value_string=result.get('source_value_string', 'null'),
+            sample_metadata_json=_canonical(r['sample_metadata']), conditions_json=_canonical(r['conditions']),
+            method_json=_canonical(r['method']), evidence_json=_canonical(r['evidence']),
+            verification_json=_canonical(r['verification']), engine_version=bundle['engine_version'],
+            inspection_schema_version=bundle['schema_version'],
+            observation_schema_version=bundle['catalog_schema_versions']['observations'],
+            source_schema_version=bundle['catalog_schema_versions']['sources'],
+            record_snapshot_sha256=digests[r['id']],
+            source_snapshot_digests_json=_canonical([d for d in bundle['source_digests'] if d['source_id'] in ids]),
+            selection_json=_canonical(bundle['selection']), group_by=bundle['group_by'],
+            scalar_missing_convention='null', record_snapshot_json=_canonical(r),
+            source_snapshots_json=_canonical([s for s in bundle['source_snapshots'] if s['id'] in ids]))
+        writer.writerow(row)
     return out.getvalue()
 
 
@@ -329,6 +447,8 @@ def _status(value, lang):
 
 def _detail_lines(record, lang):
     """Visible scientific context, not raw-JSON-only warnings."""
+    if _family(record) == PA12_FAMILY:
+        return _pa12_detail_lines(record, lang)
     t = labels(lang)
     c = lambda key: translate('catalog_' + key, lang)
     family = _family(record)
@@ -431,7 +551,8 @@ def _evidence_lines(record, source, lang):
         lines.append((t['uncertainty_evidence'] + ': ' + t['unknown'], None))
     sample = record['sample_metadata']
     if sample and 'count_definition_source' in sample:
-        evidence.append((translate('catalog_hbn_count_evidence', lang), sample['count_definition_source']))
+        count_label = labels(lang)['pa12_counts'] if _family(record) == PA12_FAMILY else translate('catalog_hbn_count_evidence', lang)
+        evidence.append((count_label, sample['count_definition_source']))
     for label, ev in evidence:
         artifact = ev.get('artifact', record['verification'].get('source_inspection', {}).get('artifact', source['read_status']))
         url = ev.get('source_url')
@@ -503,7 +624,7 @@ def render_observation_svg(bundle, lang='en', width=1100):
     for key in ('subtitle', 'policy', 'translation_notice'):
         y = para(t[key], margin, y, width-2*margin)
     for group, pairs in _ordered_groups(bundle):
-        heading = sources[group['identity']]['title'] if group['kind'] == 'study' else t['stiffness' if group['identity'] == QUANTITIES[0] else 'strength']
+        heading = sources[group['identity']]['title'] if group['kind'] == 'study' else t[QUANTITY_LABELS[group['identity']]]
         y = para(t['group_' + group['kind']] + ': ' + heading, margin, y+15, width-2*margin, 18, bold=True)
         columns = 2 if width >= 900 else 1
         gap = 18
@@ -516,17 +637,25 @@ def render_observation_svg(bundle, lang='en', width=1100):
                 start = len(elements)
                 cy = y + 25
                 cx, space = x+15, card_width-30
-                cy = para(t['stiffness' if record['quantity'] == QUANTITIES[0] else 'strength'], cx, cy, space, 18, bold=True)
+                cy = para(t[QUANTITY_LABELS[record['quantity']]], cx, cy, space, 18, bold=True)
                 for identity in (record['name'], t['record'] + ': ' + record['id'],
                                  t['record_version'] + ': ' + record['version'],
-                                 t['study'] + ': ' + record['study_id'], t['classification']):
+                                 t['study'] + ': ' + record['study_id'], _classification(record, lang)):
                     cy = para(identity, cx, cy, space, 12)
+                if _family(record) == PA12_FAMILY:
+                    for identity in _pa12_identity_lines(record, lang):
+                        cy = para(identity, cx, cy, space, 12)
                 cy = para(t['primary_warning'], cx, cy, space, 13, '#744000', True)
                 for code in facet['required_caveat_codes']:
                     cy = para(_caveat_text(code, lang), cx, cy, space, 13, '#744000')
-                cy = para(t['normalized'], cx, cy, space, 13, bold=True)
-                cy = para(t['normalized_notice'], cx, cy, space, 12)
+                tensile = _family(record) == PA12_FAMILY
+                cy = para(t['pa12_reported_display' if tensile else 'normalized'], cx, cy, space, 13, bold=True)
+                cy = para(t['pa12_reported_notice' if tensile else 'normalized_notice'], cx, cy, space, 12)
                 cy = para(facet['normalized_display'], cx, cy, space, 23, bold=True)
+                if tensile:
+                    cy = para(t['pa12_si_display'], cx, cy, space, 13, bold=True)
+                    cy = para(t['pa12_si_notice'], cx, cy, space, 12)
+                    cy = para(facet['si_display'], cx, cy, space, 18, bold=True)
                 for value, url in _detail_lines(record, lang) + _evidence_lines(record, source, lang):
                     cy = para(value, cx, cy, space, 12, url=url)
                 cy = para(t['digest'] + ': ' + _digest(record), cx, cy, space, 10)
@@ -568,17 +697,24 @@ def render_observation_html(bundle, lang='en'):
         p(t[key])
     out.append('</header><main>')
     for group, pairs in _ordered_groups(bundle):
-        heading = sources[group['identity']]['title'] if group['kind'] == 'study' else t['stiffness' if group['identity'] == QUANTITIES[0] else 'strength']
+        heading = sources[group['identity']]['title'] if group['kind'] == 'study' else t[QUANTITY_LABELS[group['identity']]]
         out.append('<section><h2>' + escape(t['group_' + group['kind']] + ': ' + heading) + '</h2><div class="facets">')
         for facet, record in pairs:
-            out.append('<article id="' + facet['id'] + '" data-record-id="' + escape(record['id'], quote=True) + '"><h3>' + escape(t['stiffness' if record['quantity'] == QUANTITIES[0] else 'strength']) + '</h3>')
-            for identity in (record['name'], t['record'] + ': ' + record['id'], t['record_version'] + ': ' + record['version'], t['study'] + ': ' + record['study_id'], t['classification']):
+            out.append('<article id="' + facet['id'] + '" data-record-id="' + escape(record['id'], quote=True) + '"><h3>' + escape(t[QUANTITY_LABELS[record['quantity']]]) + '</h3>')
+            for identity in (record['name'], t['record'] + ': ' + record['id'], t['record_version'] + ': ' + record['version'], t['study'] + ': ' + record['study_id'], _classification(record, lang)):
                 p(identity, cls='identity')
+            if _family(record) == PA12_FAMILY:
+                for identity in _pa12_identity_lines(record, lang):
+                    p(identity, cls='identity')
             out.append('<div class="warning"><h3>' + escape(t['primary_warning']) + '</h3>')
             for code in facet['required_caveat_codes']:
                 p(_caveat_text(code, lang))
-            out.append('</div><h3>' + escape(t['normalized']) + '</h3>')
-            p(t['normalized_notice']); p(facet['normalized_display'], cls='value')
+            tensile = _family(record) == PA12_FAMILY
+            out.append('</div><h3>' + escape(t['pa12_reported_display' if tensile else 'normalized']) + '</h3>')
+            p(t['pa12_reported_notice' if tensile else 'normalized_notice']); p(facet['normalized_display'], cls='value')
+            if tensile:
+                out.append('<h3>' + escape(t['pa12_si_display']) + '</h3>')
+                p(t['pa12_si_notice']); p(facet['si_display'], cls='si-value')
             for value, url in _detail_lines(record, lang) + _evidence_lines(record, sources[record['study_id']], lang):
                 p(value, url)
             p(t['digest'] + ': ' + _digest(record), cls='identity')

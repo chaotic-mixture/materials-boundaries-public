@@ -1,6 +1,6 @@
 # Read-only catalog reference
 
-The packaged `claims`, `sources` and `observations` catalogs are curated metadata, not a complete literature index or a comprehensive material-property database. Current v0.21.0 contains 36 mechanics claims, 51 sources and six observations from three studies, alongside five separate synthetic temperature demonstrations (seven branches) and twelve computational predictions in two scientific families and three explicit groups. The v0.21.0 addition is six Ni11X predictions in a new explicit group; see [prediction search and boundaries](COMPUTATIONAL_PREDICTIONS.md). The earlier v0.19.0 addition was exactly two [monolayer hBN observations](OBSERVATIONS.md#monolayer-hbn-falin-et-al-2017-new-records) and one source. The two v0.18.0 claims describe bulk elastic plane-wave speeds and strict strong ellipticity; see [bulk-wave definitions and proofs](BULK_ELASTIC_WAVES.md). The earlier hydrostatic directional compressibility and normalized tensor-class range retain their [compressibility contracts](DIRECTIONAL_COMPRESSIBILITY.md). The earlier [directional Poisson relations](DIRECTIONAL_POISSON.md) remain distinct. Searching never changes a record, fetches a source, evaluates a material, or executes a formula string. A match does not establish applicability or verification; no match does not establish absence from the scientific literature.
+The packaged `claims`, `sources` and `observations` catalogs are curated metadata, not a complete literature index or a comprehensive material-property database. Current v0.22.0 contains 36 mechanics claims, 52 sources and twelve observations from four studies, alongside five separate synthetic temperature demonstrations (seven branches) and twelve computational predictions in two scientific families and three explicit groups. The v0.22.0 addition is six [PA12 CF15 tensile-test summaries](PA12_CF15_TEMPERATURE_OBSERVATIONS.md) and one source, with reported MPa separate from exact SI Pa. The earlier v0.21.0 addition was six Ni11X predictions in a new explicit group; see [prediction search and boundaries](COMPUTATIONAL_PREDICTIONS.md). The earlier v0.19.0 addition was exactly two [monolayer hBN observations](OBSERVATIONS.md#monolayer-hbn-falin-et-al-2017-new-records) and one source. The two v0.18.0 claims describe bulk elastic plane-wave speeds and strict strong ellipticity; see [bulk-wave definitions and proofs](BULK_ELASTIC_WAVES.md). The earlier hydrostatic directional compressibility and normalized tensor-class range retain their [compressibility contracts](DIRECTIONAL_COMPRESSIBILITY.md). The earlier [directional Poisson relations](DIRECTIONAL_POISSON.md) remain distinct. Searching never changes a record, fetches a source, evaluates a material, or executes a formula string. A match does not establish applicability or verification; no match does not establish absence from the scientific literature.
 
 ## CLI
 
@@ -19,7 +19,7 @@ python -m materials_boundaries --lang ja catalog --help
 
 `materials-boundaries` is an equivalent entry point after installation. The three catalog kinds are `claims`, `sources` and `observations`.
 
-- Default output remains canonical JSON for backward compatibility; `--json` explicitly requests the same format. The envelope is `{"schema_version": ..., "records": [...]}` even for one match or no matches: claims use `1.11.0`, sources retain `1.0.0`, and the separate observations catalog uses `1.2.0`. The separate evaluation output stays at `1.1.0`
+- Default output remains canonical JSON for backward compatibility; `--json` explicitly requests the same format. The envelope is `{"schema_version": ..., "records": [...]}` even for one match or no matches: claims use `1.11.0`, sources retain `1.0.0`, and the separate observations catalog uses `1.3.0`. The separate evaluation output stays at `1.1.0`
 - `--text` selects human-readable output. `--text` and `--json` are mutually exclusive
 - `--lang en|zh|ja|de` selects display language; English is the default. It may appear globally before the command or after it, and the last occurrence wins
 - Help labels and descriptions are localized. Syntax, flags, filter values, record IDs, and JSON remain canonical
@@ -50,7 +50,7 @@ Source years, license metadata, full evidence notes, formulas, assumptions, othe
 | Claims | `--claim-type theoretical_bound\|derived_outer_envelope\|model_estimate\|model_relation\|stability_criterion` | Exact `claim_type` |
 | Claims, observations | `--source-id ID` | Exact `evidence[].source_id` reference |
 | Observations | `--quantity QUANTITY` | Exact `quantity`; any nonempty string is accepted, with no match returning an empty result |
-| Observations | `--observation-type experiment_derived_model_dependent` | Exact supported `observation_type` |
+| Observations | `--observation-type TYPE` | Exact `experiment_derived_model_dependent` or `experiment_derived_tensile_test_summary` |
 | Sources | `--role ROLE` | Exact `role` |
 | Sources | `--year INTEGER` | Exact integer `year`; unknown (`null`) years do not match |
 | Sources | `--license VALUE` | Exact `license.identifier` **or** `license.status` |
@@ -222,7 +222,7 @@ All four authored display names are literal aliases in each language; `--lang` c
 
 ## Separate observations in v0.7.0
 
-Two `experiment_derived_model_dependent` observations from the same Lee–Wei–Kysar–Hone (2008) study describe freestanding monolayer graphene: in-plane stiffness 340 ± 50 N/m and model-inferred breaking strength 42 ± 4 N/m. Both were introduced as `catalog_only` under observation schema 1.0.0 (their record objects remain unchanged in the current 1.2.0 envelope); no claim is added or reclassified. In v0.7.0 the 22 claims stayed unchanged under schema 1.5.0, and the source catalog appended one record to its unchanged original 19. The historical v0.8.0 claim count/schema were 26/1.6.0; both observation records and all 20 sources remain unchanged.
+Two `experiment_derived_model_dependent` observations from the same Lee–Wei–Kysar–Hone (2008) study describe freestanding monolayer graphene: in-plane stiffness 340 ± 50 N/m and model-inferred breaking strength 42 ± 4 N/m. Both were introduced as `catalog_only` under observation schema 1.0.0 (their record objects remain unchanged in the current 1.3.0 envelope); no claim is added or reclassified. In v0.7.0 the 22 claims stayed unchanged under schema 1.5.0, and the source catalog appended one record to its unchanged original 19. The historical v0.8.0 claim count/schema were 26/1.6.0; both observation records and all 20 sources remain unchanged.
 
 `reported_plus_minus_unspecified` means that the reported ± type and coverage are unverified, not a standard deviation, confidence interval or bound. A separate stiffness-fit distribution has mean 342 N/m, SD 30 N/m and 67 fits on 23 membranes from two flakes; these counts must not be used for breaking strength. Temperature, atmosphere, humidity and loading rate remain unknown. Main-text passages were checked; the supplement was inaccessible and unread.
 
@@ -332,7 +332,7 @@ are not measurements, empirical source fits or theoretical bounds. They never
 extend `composite_evaluate`. Use `temperature catalog` for canonical records and
 `--text --lang` for authored descriptions. The v0.16.0 source catalog preserved 46
 bibliographic records and added one original demonstration-provenance record.
-The v0.17.0 MoS2 source brought the total to 48; the current v0.21.0 catalog has 51 sources, with the synthetic contents unchanged. NIST cryogenic coefficients and derived outputs are omitted
+The v0.17.0 MoS2 source brought the total to 48; the current v0.22.0 catalog has 52 sources, with the synthetic contents unchanged. NIST cryogenic coefficients and derived outputs are omitted
 conservatively; bibliographic references remain. See [temperature contracts](TEMPERATURE_MODELS.md)
 and [rights scope](../THIRD_PARTY_NOTICES.md).
 
@@ -480,13 +480,45 @@ algebra are not independent scientific/native-language review or redistribution
 permission; no source full text, PDF, page image or figure is bundled.
 
 
-## Separate observation inspection exports (v0.20.0)
+## Separate observation inspection exports (current v0.22.0)
 
 `observation inspect --output DIR` exports source-ordered inspection cards/tables
-for existing observation records, separately from `catalog` output. It accepts
+for all 12 observation records, separately from `catalog` output. Inspection
+schema 1.1.0 retains the six old 2D facets and adds six PA12 3D chamber-condition
+facets with reported MPa and explicit exact SI Pa re-expression. It accepts
 repeatable exact `--id`, exact `--source-id`, exact `--quantity` and
 `--group-by study|quantity`; filters combine with AND and retain packaged order.
 Unlike catalog queries, it rejects empty selections and does not accept
 `--query`. JSON/CSV audit exports and localized SVG/HTML retain the source-specific
 inference, uncertainty and evidence contract without numerical comparison,
-aggregation or a new evaluator. [Usage and audit contract](OBSERVATION_INSPECTION.md)
+aggregation or a new evaluator. Regenerate stale bundles; never relabel their
+versions. CSV consumers must distinguish reported `unit` from `si_unit` and
+read the new source-string, normalization, dataset/protocol/cell and temperature
+columns by name. [Usage and audit contract](OBSERVATION_INSPECTION.md)
+
+
+## Closed PA12 CF15 observation family (v0.22.0)
+
+The exact quantity `ultimate_tensile_strength_as_reported_3d` and observation
+type `experiment_derived_tensile_test_summary` select the six Table 3 summaries
+from source `ciganas2026polym18050563`. They are 3D pressure-dimension records
+in reported MPa, with exact SI Pa separately stored. The default catalog has
+12 observations; older quantity/type/source selections preserve old science.
+Exact selectors and literal search retain AND semantics and packaged order.
+
+```sh
+python -m materials_boundaries catalog observations --source-id ciganas2026polym18050563 --text --lang en
+python -m materials_boundaries catalog observations --observation-type experiment_derived_tensile_test_summary --json
+python -m materials_boundaries catalog observations --quantity ultimate_tensile_strength_as_reported_3d --json
+```
+
+No quantitative temperature-range query, interpolation, stress calculation,
+N/m conversion, confidence interval or universal bound is implied. The full
+catalog requires six unique approved dataset/quantity/source-cell identities
+in source-column order;
+renamed duplicates cannot add evidence. A selected subset or unchanged scientific
+payload under a renamed ID is valid. Other temperatures, materials and protocols
+require reviewed admission; existing supported-family appendability remains.
+Source-specific guards also preserve revision/PDF/rights metadata. See the
+[full source contract](PA12_CF15_TEMPERATURE_OBSERVATIONS.md) and
+[migration](MIGRATION_v0.22.0.md).

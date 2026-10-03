@@ -1,11 +1,52 @@
 # はじめに：Materials Boundaries
 
-## 現在の v0.21.0：Ni11X モデル予測6件を追加
+## 現在の v0.22.0：六つの試験槽条件での PA12 CF15 引張要約
+
+Ciganas、Kalinauskis、Cigane（2026）の表3から UTS／SD の6セルを追加します。
+報告された試験槽条件は **23、40、60、80、100、120 °C** です。現在は
+**4研究の12観測・52出典**で、**論断36件、予測12件、合成温度モデル5件、
+7分岐、実行可能な複合材料規則8件**は変わりません。
+
+水平 FFF 印刷の Fiberlogy PA12 CF15、交互の +45°／−45° ラスター、
+試験槽で30分間安定化後の 1 mm/min クロスヘッド速度という特定手順です。
+直接測定した試料温度、温度安定性公差、局所ひずみ速度や実際の含水率は不明です。
+乾燥は含水率測定ではなく、15 wt.% は宣言された配合、100% インフィルは印刷設定で、
+測定済み繊維量や空隙ゼロを意味しません。応力定義、断面積の根拠、中心統計量と集計法
+も不明です。各条件で試験3回と報告された SD は、SEM、信頼区間、厳密な上下界や
+普遍的な設計許容値を与えません。
+
+新しい型は `experiment_derived_tensile_test_summary`、量は
+`ultimate_tensile_strength_as_reported_3d` です。**MPa の出典文字列**と SD は、
+**正確な Pa 単位換算**から分離します。1 MPa = 1000000 Pa は測定精度を追加せず、
+幾何学から応力を再計算しません。従来の2D N/m記録は不変です。補間、連続温度モデル、
+順位付け、異なる次元の量との比較は追加しません。
+
+観測スキーマは **1.3.0**、閲覧スキーマは **1.1.0** です。保存済みバンドルは版番号を
+書き換えず再生成してください。既定では警告が物性値に先行する12枚のテキストカードを
+返します。CSV は報告単位と SI／正規化列を区別します。全カタログは同じ出典セルの
+重複別名を拒否しますが、科学的内容を保った部分集合・改名は有効です。他の既存
+ファミリーの追加可能性は保持します。
+
+HTML の版、未確認の PDF、選択外の表4のキャッシュ／現行差異を保持します。
+一致の確認は選択した表3の6セルの HTML・目視・独立した第二転記に限り、独立実験を
+意味しません。論文の CC BY 4.0 と著者・題名・DOI 帰属を保持し、メーカー由来の表1
+は除外します。出典媒体や長文は再配布しません。翻訳・ソフトウェア点検は独立した
+科学的・母語レビューではありません。
+
+```sh
+python -m materials_boundaries catalog observations --source-id ciganas2026polym18050563 --text --lang ja
+python -m materials_boundaries observation inspect --source-id ciganas2026polym18050563 --output /tmp/pa12-cf15-ja --lang ja
+python -m materials_boundaries observation inspect --id ciganas2026-pa12cf15-uts-60c --output /tmp/pa12-cf15-60c-ja --lang ja
+```
+
+[PA12 CF15](PA12_CF15_TEMPERATURE_OBSERVATIONS.md) · [v0.22.0](MIGRATION_v0.22.0.md) · [Inspection](OBSERVATION_INSPECTION.md)
+
+## 以前の v0.21.0：Ni11X モデル予測6件を追加
 
 追加する公表済み理想せん断予測は **Ni11Cr 4.90、Ni11Mn 5.12、Ni11Fe 5.20、
 Ni11Cu 4.51、Ni11Si 4.17、Ni11Ti 4.24 GPa** の6件だけです。
 出典は Shimanek らの arXiv:2108.06412v2、表2、PDF／印刷頁27です。
-現在は **予測12件・科学的方法ファミリー2件・明示的比較グループ3件**です。
+v0.21.0 では **予測12件・科学的方法ファミリー2件・明示的比較グループ3件**です。
 論断36件、出典51件、3研究の観測6件、合成温度デモ5件（7分岐）、
 実行可能な複合材料規則8件は変わりません。実行時コード、科学的スキーマ、既存出典も不変です。
 
@@ -161,7 +202,7 @@ python -m materials_boundaries temperature evaluate examples/temperature/synthet
 python -m materials_boundaries temperature plot --output /tmp/temperature-demos --lang ja
 ```
 
-[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.21.0.md)
+[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.22.0.md)
 
 ## ローカルで実行する
 
@@ -272,7 +313,7 @@ python -m materials_boundaries catalog claims --query porous --direction interva
 
 ## 観測を検索する
 
-`catalog observations` も既定では正規 JSON を返し、`--text` で表示言語を選びます。観測の検索対象は ID、名称、`quantity`、`observation_type`、`study_id`、`material.name`、証拠の出典 ID と四言語の編集済み表示名で、同じリテラル全検索語一致です。`--source-id` は主張と観測で共用し、`--quantity` と `--observation-type experiment_derived_model_dependent` は観測専用で、大文字・小文字を区別して完全一致します。全フィルターは AND で結合し、未対応のカタログ／フィルターの組合せはエラーです。同じ研究 ID の二つの物性記録は一つの研究のままです。
+`catalog observations` も既定では正規 JSON を返し、`--text` で表示言語を選びます。観測の検索対象は ID、名称、`quantity`、`observation_type`、`study_id`、`material.name`、証拠の出典 ID と四言語の編集済み表示名で、同じリテラル全検索語一致です。`--source-id` は主張と観測で共用し、`--quantity` と `--observation-type` (`experiment_derived_model_dependent`, `experiment_derived_tensile_test_summary`) は観測専用で、大文字・小文字を区別して完全一致します。全フィルターは AND で結合し、未対応のカタログ／フィルターの組合せはエラーです。同じ研究 ID の二つの物性記録は一つの研究のままです。
 
 ```sh
 python -m materials_boundaries catalog observations --observation-type experiment_derived_model_dependent --query graphene --text --lang ja

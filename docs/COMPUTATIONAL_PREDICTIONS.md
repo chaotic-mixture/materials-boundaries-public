@@ -3,7 +3,7 @@
 The isolated `computational_predictions.json` catalog contains published
 computational predictions, separate from theoretical claims, experimental
 observations and synthetic temperature demonstrations. No DFT calculation is executed.
-The current v0.21.0 catalog has **12 predictions in two closed scientific families
+The current v0.22.0 catalog has **12 predictions in two closed scientific families
 and three explicit comparison groups**: nine Ni-family ideal-shear predictions
 (two groups of three and six) and three Si first-instability predictions (one
 group). The first public release, v0.16.0, had six predictions and two groups. A common GPa unit does not make their strength

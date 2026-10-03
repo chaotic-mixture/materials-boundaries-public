@@ -54,7 +54,13 @@ class CatalogTranslationSnapshotTests(unittest.TestCase):
                     text = render_catalog(catalog, kind, language)
                     self.assertEqual(hashlib.sha256(text.encode()).hexdigest(), expected["text_sha256"][language])
                     self.assertEqual(catalog, before)
-                    serialized = json.dumps(catalog, ensure_ascii=False, indent=2)
+                    # Only the observation envelope advances in v0.22; the
+                    # frozen v0.20.1 payload/text must remain byte-identical.
+                    historic = copy.deepcopy(catalog)
+                    if kind == "observations":
+                        self.assertEqual(historic["schema_version"], "1.3.0")
+                        historic["schema_version"] = "1.2.0"
+                    serialized = json.dumps(historic, ensure_ascii=False, indent=2)
                     self.assertEqual(hashlib.sha256(serialized.encode()).hexdigest(), expected["json_sha256"])
 
     def test_one_fresh_locale_read_per_full_catalog_render(self):

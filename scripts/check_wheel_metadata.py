@@ -190,7 +190,7 @@ from materials_boundaries.observation_visualization import (
 )
 inspection = build_observation_inspection()
 require(inspection["engine_version"] == expected, "stale installed inspection version")
-require(inspection["schema_version"] == "1.0.0", "wrong installed inspection schema")
+require(inspection["schema_version"] == "1.1.0", "wrong installed inspection schema")
 require(inspection["record_snapshots"] == read_catalog("observations")["records"],
         "installed inspection changed observation snapshots")
 inspection_files = {}
@@ -227,9 +227,224 @@ except ObservationInspectionError:
 else:
     raise RuntimeError("installed inspection accepted an unknown ID")
 require(not invalid_output.exists(), "invalid inspection wrote partial files")
+# PA12 admission and all inspection formats must work with only the standard library.
+import csv
+from decimal import Decimal
+from html import unescape
+from importlib.util import find_spec
+import re
+import xml.etree.ElementTree as ET
+from unittest.mock import patch
+from materials_boundaries._pa12_cf15_observation_contract import (
+    PA12_FAMILY, PA12_SOURCE, PA12_QUANTITY, validate_pa12_dataset, validate_pa12_sources,
+)
+from materials_boundaries._observation_contract import validate_observation_records
+from materials_boundaries import observation_visualization as observation_view
+require(find_spec('jsonschema') is None and find_spec('referencing') is None,
+        'wheel smoke accidentally has development dependencies')
+all_records = observations['records']
+old_records = [r for r in all_records if r.get('method_family') != PA12_FAMILY]
+new_records = [r for r in all_records if r.get('method_family') == PA12_FAMILY]
+require(len(all_records) == 12 and len(old_records) == len(new_records) == 6,
+        'unexpected production observation counts')
+require(len(read_catalog('sources')['records']) == 52, 'unexpected production source count')
+expected_cells = (('23', '49.07', '0.88', 49070000, 880000),
+                  ('40', '40.31', '0.72', 40310000, 720000),
+                  ('60', '32.70', '1.18', 32700000, 1180000),
+                  ('80', '26.60', '1.15', 26600000, 1150000),
+                  ('100', '22.78', '0.97', 22780000, 970000),
+                  ('120', '18.68', '0.91', 18680000, 910000))
+for record, (temperature, central, sd, pa, pa_sd) in zip(new_records, expected_cells):
+    result, u = record['reported_result'], record['reported_result']['uncertainty']
+    require((record['conditions']['temperature']['value_string'], result['value_string'],
+             u['value_string'], record['si_result']['value'], record['si_result']['uncertainty_value'])
+            == (temperature, central, sd, pa, pa_sd), 'source cell changed')
+    require(Decimal(central) * Decimal('1000000') == pa
+            and Decimal(sd) * Decimal('1000000') == pa_sd, 'SI scaling is not exact')
+    require(record['quantity_dimension'] == 'pressure' and record['si_unit'] == 'Pa'
+            and result['unit'] == u['unit'] == 'MPa', 'mixed reported/SI units')
+    require(record['method']['stress_measure'] is None
+            and record['method']['stress_area_basis'] is None
+            and result['central_statistic_explicitly_named'] is None
+            and result['aggregation_convention'] is None
+            and record['conditions']['humidity']['specimen_moisture_content'] is None
+            and record['conditions']['temperature']['direct_specimen_temperature_measurement'] is None
+            and record['conditions']['temperature']['stability_tolerance'] is None,
+            'unknown PA12 metadata acquired a default')
+    require(record['sample_metadata']['count'] == 3
+            and record['sample_metadata']['scope'] == 'tensile_tests_per_temperature_condition'
+            and u['type'] == 'reported_standard_deviation'
+            and u['confidence_level'] is None, 'changed count or SD interpretation')
+for record in old_records:
+    require(record['si_unit'] == record['reported_result']['unit'] == 'N/m', 'old membrane units changed')
+old_ids, new_ids = ([r['id'] for r in records] for records in (old_records, new_records))
+selected_modes = {'default': None, 'old': old_ids, 'new': new_ids,
+                  'mixed': [new_ids[2], old_ids[0]], 'one_temperature': [new_ids[2]]}
+catalog_modes = {
+    'default': ([], observations),
+    'old': (['--observation-type', 'experiment_derived_model_dependent'],
+            query_catalog('observations', observation_type='experiment_derived_model_dependent')),
+    'new': (['--source-id', PA12_SOURCE], query_catalog('observations', source_id=PA12_SOURCE)),
+    'one_temperature': (['--id', new_ids[2]], query_catalog('observations', record_id=new_ids[2])),
+}
+for language in languages:
+    for mode, (filters, selected) in catalog_modes.items():
+        for as_json in (False, True):
+            stdout = io.StringIO()
+            with redirect_stdout(stdout):
+                code = main(['catalog', 'observations', '--lang', language] + filters
+                            + (['--json'] if as_json else ['--text']))
+            text = stdout.getvalue()
+            require(code == 0 and '[missing:' not in text, 'PA12 catalog CLI failed: ' + mode)
+            if as_json:
+                require(json.loads(text) == selected, 'catalog JSON changed by locale: ' + mode)
+            elif mode != 'old':
+                first = next(r for r in selected['records'] if r.get('method_family') == PA12_FAMILY)
+                value = first['reported_result']['value_string'] + ' ± ' + first['reported_result']['uncertainty']['value_string'] + ' MPa'
+                for key in ('identity', 'temperature', 'process', 'stress', 'sample'):
+                    require(text.index(translate('catalog_pa12_' + key, language)) < text.index(value),
+                            'essential catalog warning must precede value: ' + key)
+                for key in ('source_version', 'rights', 'normalization'):
+                    require(translate('catalog_pa12_' + key, language) in text, 'missing PA12 disclosure: ' + key)
+    mixed = {'schema_version': observations['schema_version'],
+             'records': [r for r in all_records if r['id'] in selected_modes['mixed']]}
+    mixed_text = render_catalog(mixed, 'observations', language)
+    require('N/m' in mixed_text and '32.70 ± 1.18 MPa' in mixed_text
+            and '[missing:' not in mixed_text, 'mixed-unit catalog failed')
+
+export_checks = {}
+def compact(value):
+    return ''.join(value.split())
+for mode, selected_ids in selected_modes.items():
+    language_bytes = {}
+    for language in languages:
+        for grouping in ('study', 'quantity'):
+            output = Path(instance_path).parent / 'pa12-inspection' / mode / grouping / language
+            args = ['observation', 'inspect', '--output', str(output), '--lang', language,
+                    '--group-by', grouping]
+            for identifier in reversed(selected_ids or []):
+                args += ['--id', identifier]
+            stdout = io.StringIO()
+            with redirect_stdout(stdout):
+                code = main(args)
+            report = json.loads(stdout.getvalue())
+            require(code == 0 and len(report['artifacts']) == 5, 'PA12 inspection CLI failed')
+            require(set(p.name for p in output.iterdir()) == set(report['artifacts']), 'unexpected inspection output')
+            bundle = json.loads((output / 'observation-inspection.json').read_text())
+            selected = [r for r in all_records if selected_ids is None or r['id'] in selected_ids]
+            require(bundle['schema_version'] == '1.1.0'
+                    and bundle['catalog_schema_versions']['observations'] == '1.3.0', 'stale schema envelope')
+            require(bundle['record_snapshots'] == selected, 'selection or immutable snapshot changed')
+            require(bundle['selection']['resolved_record_ids'] == [r['id'] for r in selected], 'requested IDs changed source order')
+            validate_observation_inspection(bundle)
+            rows = list(csv.DictReader(io.StringIO((output / 'observation-inspection.csv').read_text())))
+            require(len(rows) == len(selected), 'incorrect CSV row count')
+            for row, record in zip(rows, selected):
+                require(json.loads(row['record_snapshot_json']) == record, 'CSV lost record snapshot')
+                if record.get('method_family') == PA12_FAMILY:
+                    require(row['unit'] == 'MPa' and row['si_unit'] == 'Pa'
+                            and row['reported_value_string'] == record['reported_result']['value_string']
+                            and row['reported_plus_minus_string'] == record['reported_result']['uncertainty']['value_string']
+                            and Decimal(row['si_central_value']) == record['si_result']['value']
+                            and row['temperature_basis'] == 'reported_chamber_test_condition', 'PA12 CSV contract changed')
+                    require(json.loads(row['method_json'])['stress_measure'] is None, 'CSV lost unknown stress convention')
+                    columns = list(row)
+                    require(columns.index('temperature_basis') < columns.index('central_value')
+                            and columns.index('essential_caveats') < columns.index('central_value'), 'CSV warnings follow values')
+                else:
+                    require(row['unit'] == row['si_unit'] == 'N/m'
+                            and row['si_central_value'] == row['central_value']
+                            and row['si_plus_minus_value'] == row['plus_minus_value']
+                            and row['temperature_value'] == row['dataset_id'] == 'null', 'old CSV fields changed')
+            for filename in report['artifacts']:
+                text = (output / filename).read_text()
+                require('[missing:' not in text, 'missing translation in installed export')
+                if filename.endswith('.svg'):
+                    xml = ET.fromstring(text)
+                    cards = {node.attrib['data-record-id']: ''.join(node.itertext()) for node in xml.iter()
+                             if 'data-record-id' in node.attrib}
+                    require(not any(node.tag.rsplit('}', 1)[-1] in ('script', 'image', 'circle', 'line', 'polyline', 'path')
+                                    for node in xml.iter()), 'inspection gained script, network image or quantitative marks')
+                elif filename.endswith('.html'):
+                    cards = {unescape(match[1]): unescape(re.sub('<[^>]+>', '', match[2])) for match in
+                             re.finditer(r'<article[^>]*data-record-id="([^"]+)"[^>]*>(.*?)</article>', text, re.S)}
+                    require('<script' not in text.lower() and '<img' not in text.lower(), 'active/network inspection content')
+                else:
+                    continue
+                require(set(cards) == {r['id'] for r in selected}, 'missing visible cards')
+                for record in selected:
+                    if record.get('method_family') != PA12_FAMILY:
+                        require('N/m' in cards[record['id']], 'old membrane unit missing')
+                        continue
+                    facet = next(f for f in bundle['facets'] if f['record_id'] == record['id'])
+                    visible = compact(cards[record['id']])
+                    value_index = visible.index(compact(facet['normalized_display']))
+                    require(compact(record['dataset_id']) in visible[:value_index]
+                            and compact(record['protocol_id']) in visible[:value_index]
+                            and compact(record['conditions']['temperature']['value_string'] + ' °C') in visible[:value_index],
+                            'identity/temperature must precede PA12 value')
+                    for key in facet['required_caveat_codes']:
+                        require(compact(labels(language)[key]) in visible[:value_index], 'warning follows PA12 value: ' + key)
+                    require(compact(facet['si_display']) in visible
+                            and compact(labels(language)['pa12_version_warning']) in visible
+                            and compact(labels(language)['pa12_rights_warning']) in visible, 'PA12 detail disclosure missing')
+            language_bytes[(language, grouping)] = [(output / name).read_bytes() for name in
+                ('observation-inspection.json', 'observation-inspection.csv')]
+    for grouping in ('study', 'quantity'):
+        require(all(language_bytes[(lang, grouping)] == language_bytes[('en', grouping)] for lang in languages),
+                'PA12 JSON/CSV changed by locale')
+    export_checks[mode] = {'languages': list(languages), 'groupings': ['study', 'quantity'], 'files_per_export': 5}
+
+# No schema dependency may be necessary to reject scientific mutations.
+def rejects(call, message):
+    try:
+        call()
+    except ValueError:
+        return
+    raise RuntimeError(message)
+mutations = (
+    lambda r: r['method'].update(stress_measure='engineering_stress'),
+    lambda r: r['reported_result']['uncertainty'].update(confidence_level=0.95),
+    lambda r: r['conditions']['temperature'].update(value=True),
+    lambda r: r['conditions']['humidity'].update(specimen_moisture_content=0),
+    lambda r: r['si_result'].update(value=r['si_result']['value'] + 1),
+    lambda r: r.pop('method_family'),
+)
+for mutate in mutations:
+    weakened = deepcopy(new_records[0]); mutate(weakened)
+    rejects(lambda: validate_observation_records([weakened]), 'installed record guard accepted scientific mutation')
+    rejects(lambda: render_catalog({'schema_version': observations['schema_version'], 'records': [weakened]}, 'observations'),
+            'installed catalog renderer accepted scientific mutation')
+renamed = deepcopy(new_records[0]); renamed['id'] = 'wheel_renamed_pa12'; renamed['name'] = 'Renamed display only'
+validate_observation_records([renamed]); validate_pa12_dataset([renamed], require_complete=False)
+rejects(lambda: validate_pa12_dataset(new_records + [renamed], require_complete=True),
+        'installed dataset guard accepted duplicate cell with alias ID')
+weakened_sources = deepcopy(read_catalog('sources'))
+next(s for s in weakened_sources['records'] if s['id'] == PA12_SOURCE)['doi'] = '10.3390/incorrect'
+rejects(lambda: validate_pa12_sources(weakened_sources['records']), 'installed source guard accepted DOI mutation')
+rejects(lambda: render_catalog(weakened_sources, 'sources'), 'installed source text accepted DOI mutation')
+new_bundle = build_observation_inspection(record_ids=new_ids)
+for mutate in (
+    lambda b: b['facets'][0]['temperature'].update(basis='direct_specimen_measurement'),
+    lambda b: b['facets'][0]['normalization'].update(adds_measurement_precision=True),
+    lambda b: b.update(schema_version='1.0.0'),
+    lambda b: b['record_snapshots'][0]['method'].update(stress_measure='engineering_stress'),
+    lambda b: b['source_snapshots'][0].update(doi='10.3390/incorrect'),
+):
+    weakened = deepcopy(new_bundle); mutate(weakened)
+    rejects(lambda: validate_observation_inspection(weakened), 'installed canonical rebuild accepted altered bundle')
+# Both a nonexistent directory and existing sentinel remain untouched on invalid input.
+invalid_new = Path(instance_path).parent / 'pa12-invalid-new'
+rejects(lambda: export_observation_inspection(invalid_new, record_ids=['not-a-record']), 'invalid ID accepted')
+require(not invalid_new.exists(), 'invalid PA12 selector created a directory')
+sentinel = Path(instance_path).parent / 'pa12-invalid-existing'; sentinel.mkdir()
+(sentinel / 'keep.txt').write_text('sentinel')
+rejects(lambda: export_observation_inspection(sentinel, record_ids=new_ids, lang='invalid'), 'invalid language accepted')
+require([(p.name, p.read_text()) for p in sentinel.iterdir()] == [('keep.txt', 'sentinel')], 'invalid export modified existing target')
+
 print(json.dumps({"version": expected, "metadata_version": metadata_version,
                   "engine_outputs": sorted(outputs), "languages": languages,
-                  "installed_without_dependencies": True, "mixed_observation_catalog_languages": languages, "bulk_wave_catalog_languages": languages, "hbn_observation_languages": languages, "observation_inspection_languages": languages, "observation_inspection_schema": "1.0.0"}))
+                  "installed_without_dependencies": True, "mixed_observation_catalog_languages": languages, "bulk_wave_catalog_languages": languages, "hbn_observation_languages": languages, "observation_inspection_languages": languages, "observation_inspection_schema": "1.1.0", "pa12_export_checks": export_checks, "pa12_scientific_mutations_rejected": len(mutations), "pa12_exact_selected_cells": len(expected_cells)}))
 '''
 
 

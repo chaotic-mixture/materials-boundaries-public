@@ -33,12 +33,12 @@ def records():
 
 
 def subset(record):
-    return {'schema_version': '1.2.0', 'records': [record]}
+    return {'schema_version': '1.3.0', 'records': [record]}
 
 
 class HBNSourceFacts(unittest.TestCase):
     def test_two_selected_source_values_and_distinct_statistics(self):
-        self.assertEqual(read_catalog('observations')['schema_version'], '1.2.0')
+        self.assertEqual(read_catalog('observations')['schema_version'], '1.3.0')
         for r, value, sd, stat in zip(records(), (289, 23.6), (24, 1.8),
                                      ('reported_average', 'reported_strength_summary')):
             self.assertEqual((r['method_family'], r['study_id']), (HBN_FAMILY, HBN_SOURCE))
@@ -257,7 +257,16 @@ class HBNContractTests(unittest.TestCase):
             r=copy.deepcopy(original);r['id']='synthetic_hbn_'+uuid4().hex;r['name']='Synthetic test fixture '+r['id']
             r['evidence'].reverse();c['observations']['records'].append(r);fresh.append(r)
             for lang,labels in c['locales']['languages'].items():labels['catalog_name_'+r['id']]=lang+': '+r['name']
-        for kind in ('claims','sources','observations'):c[kind]['records'].reverse()
+        for kind in ('claims','sources','observations'):
+            if kind == 'observations':
+                # Only legacy families are appendable/reorderable here. The
+                # separately reviewed six-cell PA12 dataset retains source order.
+                records_ = c[kind]['records']
+                family = 'ciganas_2026_pa12_cf15_fff_tensile_temperature_v1'
+                c[kind]['records'] = [r for r in reversed(records_) if r.get('method_family') != family] + [
+                    r for r in records_ if r.get('method_family') == family]
+            else:
+                c[kind]['records'].reverse()
         before=copy.deepcopy(c);validate_catalogs(c);self.assertEqual(c,before)
         with patched_catalogs(c):
             for r in fresh:

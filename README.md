@@ -1,6 +1,6 @@
 # 材料边界 · Materials Boundaries
 
-Current software release: **v0.21.0** · **Six additional Ni11X predictions** · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
+Current software release: **v0.22.0** · **PA12 CF15 temperature-conditioned tensile observations** · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
 
 A condition-aware, source-traceable materials-mechanics catalog and offline Python toolkit. It separates conditional mathematical bounds, model relations, published observations, computational predictions and synthetic demonstrations. Python 3.10+; no third-party runtime dependencies.
 
@@ -8,15 +8,17 @@ Repository: [chaotic-mixture/materials-boundaries-public](https://github.com/cha
 
 ## Public-release scope
 
-- **36 mechanics claims**, **51 source records**, **6 observations from three studies**, **12 published computational predictions in 2 scientific families and 3 explicit groups**, and **5 synthetic temperature demos with 7 branches**
+- **36 mechanics claims**, **52 source records**, **12 observations from four studies**, **12 published computational predictions in 2 scientific families and 3 explicit groups**, and **5 synthetic temperature demos with 7 branches**
 - Exactly **8 executable composite calculation rules**: HS/Reuss/Voigt bulk and shear bounds plus conservative derived Young's-modulus and Poisson-ratio envelopes
 - Other mechanics records, including bulk elastic waves, hydrostatic compressibility, directional Poisson ratio, anisotropy, fatigue, fracture, stability and porous relations, are catalog-only
-- The 51 sources comprise 50 bibliographic/source records plus one original synthetic-demo provenance record; a source record is not a redistribution of its publication or dataset
+- The 52 sources comprise 51 bibliographic/source records plus one original synthetic-demo provenance record; a source record is not a redistribution of its publication or dataset
 - All five temperature demos use intentionally invented coefficients and ranges. They do not describe real materials, measured properties or engineering allowables
 
-Version **0.21.0** appends exactly six **Ni11X periodic-model ideal-shear predictions** from Shimanek et al., arXiv:2108.06412v2, Table 2, p. 27: **Cr 4.90, Mn 5.12, Fe 5.20, Cu 4.51, Si 4.17 and Ti 4.24 GPa**. They form the new explicit group `shimanek_v2_table2_cr_mn_fe_cu_si_ti`; the original Ni/Ni11Al/Ni11Co default remains three points, and the separate three-point silicon first-instability group is unchanged. No source or scientific schema is added or changed. These are published-method-only predictions for 12-atom Ni11X cells, not pure-X strengths, commercial grades, experiments or universal bounds. Unknown temperature, pressure, magnetism and uncertainty remain unknown; bare table labels do not identify the PAW datasets or valence configurations. Perdew et al. (1992) GGA is not silently relabeled PBE; 0.08 GPa peak convergence is not an error bar. [Prediction evidence and limits](docs/COMPUTATIONAL_PREDICTIONS.md) · [v0.21.0 migration](docs/MIGRATION_v0.21.0.md)
+Version **0.22.0** adds six **catalog-only PA12 CF15 tensile-test summaries** from one study, one printed-material protocol and six reported chamber conditions: **23, 40, 60, 80, 100 and 120 °C**. They are 3D ultimate tensile strength **as reported**, with source MPa strings and reported SD kept separate from exact SI Pa unit re-expression. Three tensile tests are reported per condition; the central statistic, stress convention, stress-area basis and actual moisture remain unknown. Chamber conditions are not verified direct specimen temperatures. No interpolation, continuous temperature model, confidence interval, universal strength bound or engineering allowable is added. The six older 2D records remain unchanged. Observations schema advances **1.2.0 → 1.3.0** and inspection schema **1.0.0 → 1.1.0**; saved inspection bundles must be regenerated. [PA12 CF15 evidence and limits](docs/PA12_CF15_TEMPERATURE_OBSERVATIONS.md) · [v0.22.0 migration](docs/MIGRATION_v0.22.0.md)
 
-Version **0.20.0** previously added source-ordered offline **observation inspection cards/tables** for the existing six summaries. It changes no scientific record or evaluator: normalized catalog values, original source strings, source-specific warnings, uncertainty evidence, scoped sample counts and unknown conditions remain separate and traceable. Exact filters and study/quantity grouping export auditable JSON, CSV, wide/narrow SVG and script-free HTML in en/zh/ja/de. There are no quantitative axes, uncertainty endpoints, aggregation, ranking, overlays or matched-condition comparisons. The new inspection schema is **1.0.0**; existing scientific schemas stay unchanged. [Inspection guide](docs/OBSERVATION_INSPECTION.md) · [v0.20.0 migration](docs/MIGRATION_v0.20.0.md)
+Version **0.21.0** previously appended exactly six **Ni11X periodic-model ideal-shear predictions** from Shimanek et al., arXiv:2108.06412v2, Table 2, p. 27: **Cr 4.90, Mn 5.12, Fe 5.20, Cu 4.51, Si 4.17 and Ti 4.24 GPa**. They form the new explicit group `shimanek_v2_table2_cr_mn_fe_cu_si_ti`; the original Ni/Ni11Al/Ni11Co default remains three points, and the separate three-point silicon first-instability group is unchanged. No source or scientific schema was added or changed in that release. These are published-method-only predictions for 12-atom Ni11X cells, not pure-X strengths, commercial grades, experiments or universal bounds. Unknown temperature, pressure, magnetism and uncertainty remain unknown; bare table labels do not identify the PAW datasets or valence configurations. Perdew et al. (1992) GGA is not silently relabeled PBE; 0.08 GPa peak convergence is not an error bar. [Prediction evidence and limits](docs/COMPUTATIONAL_PREDICTIONS.md) · [v0.21.0 migration](docs/MIGRATION_v0.21.0.md)
+
+Version **0.20.0** previously added source-ordered offline **observation inspection cards/tables** for the existing six summaries. It changes no scientific record or evaluator: normalized catalog values, original source strings, source-specific warnings, uncertainty evidence, scoped sample counts and unknown conditions remain separate and traceable. Exact filters and study/quantity grouping export auditable JSON, CSV, wide/narrow SVG and script-free HTML in en/zh/ja/de. There are no quantitative axes, uncertainty endpoints, aggregation, ranking, overlays or matched-condition comparisons. At that release, the new inspection schema was **1.0.0** and existing scientific schemas stayed unchanged. [Inspection guide](docs/OBSERVATION_INSPECTION.md) · [v0.20.0 migration](docs/MIGRATION_v0.20.0.md)
 
 Version **0.16.0** was the first public-release baseline; earlier version labels describe development milestones. Version **0.19.0** previously appended exactly two catalog-only monolayer hBN observations and one Falin et al. (2017) source, preserving all earlier records. At that release, observations schema advanced **1.1.0 → 1.2.0** with a separate closed hBN method family; claims stay **1.11.0**, sources **1.0.0**, and evaluation **1.1.0**. Scientific schema versions are independent of the software version. [Migration and unchanged contracts](docs/MIGRATION_v0.19.0.md)
 
@@ -44,6 +46,8 @@ python -m materials_boundaries evaluate examples/synthetic-two-phase.json --lang
 python -m materials_boundaries catalog claims --id isotropic_bulk_plane_wave_speeds_and_ratio --text --lang en
 python -m materials_boundaries catalog claims --query compressibility --text --lang en
 python -m materials_boundaries catalog observations --source-id falin_et_al_2017_hbn_mechanical_properties --text --lang en
+python -m materials_boundaries catalog observations --source-id ciganas2026polym18050563 --text --lang en
+python -m materials_boundaries observation inspect --source-id ciganas2026polym18050563 --output /tmp/pa12-cf15 --lang en
 python -m materials_boundaries observation inspect --output /tmp/observations --lang en
 python -m materials_boundaries catalog predictions --text --lang en
 python -m materials_boundaries prediction plot --group-id shimanek_v2_table2_cr_mn_fe_cu_si_ti --output /tmp/ni11x-six --lang en
@@ -56,9 +60,11 @@ The synthetic linear temperature demo returns **15 GPa at 50 K**. The overlap de
 
 [English](docs/GETTING_STARTED.en.md) · [中文](docs/GETTING_STARTED.zh.md) · [日本語](docs/GETTING_STARTED.ja.md) · [Deutsch](docs/GETTING_STARTED.de.md)
 
-The scientific guides retain source-specific qualifications for the graphene, monolayer MoS2 and monolayer hBN observations, Ni-family ideal-shear predictions, silicon first-instability predictions and literature-model example. These brief numerical facts are not removed merely because their publications have separate rights. No paper PDFs, figures, full text or raw measurement collections are bundled.
+The scientific guides retain source-specific qualifications for the graphene, monolayer MoS2 and monolayer hBN and PA12 CF15 observations, Ni-family ideal-shear predictions, silicon first-instability predictions and literature-model example. These brief numerical facts are not removed merely because their publications have separate rights. No paper PDFs, figures, full text or raw measurement collections are bundled.
 
-中文：当前 **0.21.0** 新增 Ni11X 周期模型的六条理想剪切预测：Cr 4.90、Mn 5.12、Fe 5.20、Cu 4.51、Si 4.17、Ti 4.24 GPa，共 12 条预测、2 个科学方法族、3 个显式比较组。须用 `--group-id shimanek_v2_table2_cr_mn_fe_cu_si_ti` 选择新组；原 Ni／Al／Co 三点默认组与独立硅三点组不变。仅在已发表方法层面比较，不是纯 X、商业牌号、实验测量或普适上界。温度、压力、磁态和不确定性未知；无 pv／sv 后缀不能证明 PAW 数据集、价电子配置或不含半芯态。Perdew（1992）不改称 PBE，0.08 GPa 收敛不是误差棒。[完整说明](docs/GETTING_STARTED.zh.md)
+中文：当前 **0.22.0** 新增同一研究、同一打印与拉伸协议下 PA12 CF15 的六条观测，试验箱条件为 23、40、60、80、100、120 °C；共四项研究 12 条观测、52 条来源。每条件三次拉伸试验；MPa 原始字符串及报告的标准差与精确 Pa 单位换算分开。试样直接温度、含水量、应力定义和中心统计量仍未知。不插值、不构建温度模型，也不生成置信区间、普适强度界或设计许用值。观测 schema 为 1.3.0，查阅 schema 为 1.1.0；旧二维记录和八条计算规则不变。[完整说明](docs/PA12_CF15_TEMPERATURE_OBSERVATIONS.md)
+
+中文：此前 **0.21.0** 新增 Ni11X 周期模型的六条理想剪切预测：Cr 4.90、Mn 5.12、Fe 5.20、Cu 4.51、Si 4.17、Ti 4.24 GPa，共 12 条预测、2 个科学方法族、3 个显式比较组。须用 `--group-id shimanek_v2_table2_cr_mn_fe_cu_si_ti` 选择新组；原 Ni／Al／Co 三点默认组与独立硅三点组不变。仅在已发表方法层面比较，不是纯 X、商业牌号、实验测量或普适上界。温度、压力、磁态和不确定性未知；无 pv／sv 后缀不能证明 PAW 数据集、价电子配置或不含半芯态。Perdew（1992）不改称 PBE，0.08 GPa 收敛不是误差棒。[完整说明](docs/GETTING_STARTED.zh.md)
 
 中文：此前 **0.20.0** 新增六条现有观测的离线查阅卡片／表格；精确筛选与按研究／量分组可导出 JSON、CSV、宽／窄 SVG 和无脚本 HTML。规范化目录显示与来源原始字符串分开，警告先于数值，来源及未知条件保留。不新增科学记录、求值器、数值坐标轴、误差棒、排名、聚合或匹配条件比较。[查阅说明](docs/GETTING_STARTED.zh.md)
 
@@ -66,7 +72,9 @@ The scientific guides retain source-specific qualifications for the graphene, mo
 
 中文：0.16.0 是首个公开版本的基线；0.17.0 曾新增一项 MoS2 研究的两项二维观测，此前 0.18.0 新增两条仅目录体弹性波关系和两条来源，共 36 条力学论断、50 条来源。有限正 K、G、ρ 的各向同性比值 c_L/c_T∈(√(4/3),∞) 是跨材料类别的范围；单一材料的速度有限且与方向无关，横波二重简并。严格强椭圆性弱于完整对称应变能正定性；相位法向不等于偏振方向，也不声称一般各向异性的精确纵横波排序、群速度或静态／等温模量自动适用。详见[体弹性波](docs/BULK_ELASTIC_WAVES.md)。原创代码、文档及策展内容采用 MIT 许可证，第三方作品及科学事实不因此被重新许可。温度目录仅含五个人为构造的演示模型（七个分支），不能当作真实材料数据。NIST 低温系数及其推导示例暂不收录，这是一项谨慎的发布选择，并非已证明禁止再分发。八条复合材料计算规则及其他科学目录保留；独立科学审查和母语审校尚未完成。
 
-日本語：現在の **0.21.0** は Ni11X 周期モデルの理想せん断予測6件を追加します。Cr 4.90、Mn 5.12、Fe 5.20、Cu 4.51、Si 4.17、Ti 4.24 GPa、合計12予測・2方法ファミリー・3明示的比較グループです。新グループは `--group-id shimanek_v2_table2_cr_mn_fe_cu_si_ti` で選択し、既定の Ni／Al／Co 3点と独立したシリコン3点は不変です。比較は公表された方法の範囲に限り、純粋な X、市販材、実測値、普遍的上限を表しません。温度・圧力・磁気状態・不確かさは不明です。pv／sv 接尾辞がないことから PAW データセット、価電子配置、半内殻状態の不在を確定できません。Perdew（1992）を PBE とせず、0.08 GPa の収束基準を誤差棒としません。[詳細](docs/GETTING_STARTED.ja.md)
+日本語：現在の **0.22.0** は、一研究の同じ印刷・引張試験手順から PA12 CF15 の6観測を追加します。試験槽条件は 23、40、60、80、100、120 °C、合計4研究の12観測・52出典です。各条件で引張試験3回を報告し、MPa の出典文字列と報告された標準偏差を、正確な Pa 単位換算と分けます。直接測定した試料温度、含水率、応力定義、中心統計量は不明です。補間、温度モデル、信頼区間、普遍的強度限界、設計許容値を作りません。観測スキーマは1.3.0、閲覧スキーマは1.1.0です。従来の二次元記録と8計算規則は不変です。[詳細](docs/PA12_CF15_TEMPERATURE_OBSERVATIONS.md)
+
+日本語：以前の **0.21.0** は Ni11X 周期モデルの理想せん断予測6件を追加します。Cr 4.90、Mn 5.12、Fe 5.20、Cu 4.51、Si 4.17、Ti 4.24 GPa、合計12予測・2方法ファミリー・3明示的比較グループです。新グループは `--group-id shimanek_v2_table2_cr_mn_fe_cu_si_ti` で選択し、既定の Ni／Al／Co 3点と独立したシリコン3点は不変です。比較は公表された方法の範囲に限り、純粋な X、市販材、実測値、普遍的上限を表しません。温度・圧力・磁気状態・不確かさは不明です。pv／sv 接尾辞がないことから PAW データセット、価電子配置、半内殻状態の不在を確定できません。Perdew（1992）を PBE とせず、0.08 GPa の収束基準を誤差棒としません。[詳細](docs/GETTING_STARTED.ja.md)
 
 日本語：以前の **0.20.0** は既存観測6件のオフライン閲覧カード／表を追加します。完全一致の選択と研究／量のグループ分けから JSON、CSV、広幅／狭幅 SVG、スクリプト不要の HTML を出力します。正規化表示と原文を分け、警告を数値より先に示し、出典と不明条件を保持します。科学的記録、計算器、数値軸、誤差棒、順位、集計、条件一致比較は追加しません。[閲覧説明](docs/GETTING_STARTED.ja.md)
 
@@ -74,7 +82,9 @@ The scientific guides retain source-specific qualifications for the graphene, mo
 
 日本語：0.16.0 は初の公開版の基準です。0.17.0 は MoS2 の一研究から二つの二次元観測を追加しました。以前の 0.18.0 はカタログ専用のバルク弾性波関係2件と出典2件を追加し、論断36件・出典50件です。有限正値 K、G、ρ に対する等方的速度比 c_L/c_T∈(√(4/3),∞) は材料集合の範囲であり、固定材料の速度は有限・方向非依存で横波は二重縮退します。厳密な強楕円性は全対称ひずみエネルギーの正定値性より弱い条件です。位相法線と偏極は別で、一般異方性の厳密な縦横波順序、群速度、静的・等温弾性率の自動適用は主張しません。[バルク弾性波](docs/BULK_ELASTIC_WAVES.md)を参照してください。独自のコード、文書、キュレーションには MIT ライセンスを適用しますが、第三者の著作物や科学的事実を再許諾するものではありません。温度カタログは人工的なデモ5件（7分岐）のみで、実材料のデータではありません。NIST の低温係数と派生例は確認待ちのため慎重に除外しており、再配布禁止が確定したという意味ではありません。独立した科学的・母語レビューは未実施です。
 
-Deutsch: Die aktuelle Version **0.21.0** ergänzt sechs ideale Scherfestigkeiten periodischer Ni11X-Modelle: Cr 4.90, Mn 5.12, Fe 5.20, Cu 4.51, Si 4.17 und Ti 4.24 GPa. Insgesamt sind es 12 Vorhersagen, 2 Methodenfamilien und 3 explizite Vergleichsgruppen. Die neue Gruppe wird mit `--group-id shimanek_v2_table2_cr_mn_fe_cu_si_ti` gewählt; die drei Ni/Al/Co-Standardpunkte und die separate Siliziumgruppe bleiben unverändert. Vergleichbarkeit gilt nur für das veröffentlichte Verfahren, nicht für reines X, Handelslegierungen, Messungen oder universelle Grenzen. Temperatur, Druck, Magnetismus und Unsicherheit bleiben unbekannt. Fehlende pv/sv-Suffixe belegen weder PAW-Datensätze noch Valenzkonfigurationen oder das Fehlen von Semicore-Zuständen. Perdew (1992) wird nicht zu PBE; 0.08 GPa Konvergenz ist kein Fehlerbalken. [Details](docs/GETTING_STARTED.de.md)
+Deutsch: Die aktuelle Version **0.22.0** ergänzt sechs PA12-CF15-Beobachtungen aus einer Studie mit demselben Druck- und Zugversuchsprotokoll bei berichteten Kammerbedingungen von 23, 40, 60, 80, 100 und 120 °C. Insgesamt sind es 12 Beobachtungen aus vier Studien und 52 Quellen. Je Bedingung werden drei Zugversuche berichtet; MPa-Quellzeichenfolgen und berichtete SD bleiben von der exakten Pa-Einheitenumrechnung getrennt. Direkte Probentemperatur, Feuchte, Spannungsdefinition und Zentralstatistik bleiben unbekannt. Keine Interpolation, kein Temperaturmodell, Konfidenzintervall, universeller Festigkeitsgrenzwert oder Bemessungswert. Beobachtungsschema 1.3.0 und Inspektionsschema 1.1.0; ältere 2D-Einträge und acht Rechenregeln bleiben unverändert. [Details](docs/PA12_CF15_TEMPERATURE_OBSERVATIONS.md)
+
+Deutsch: Die frühere Version **0.21.0** ergänzt sechs ideale Scherfestigkeiten periodischer Ni11X-Modelle: Cr 4.90, Mn 5.12, Fe 5.20, Cu 4.51, Si 4.17 und Ti 4.24 GPa. Insgesamt sind es 12 Vorhersagen, 2 Methodenfamilien und 3 explizite Vergleichsgruppen. Die neue Gruppe wird mit `--group-id shimanek_v2_table2_cr_mn_fe_cu_si_ti` gewählt; die drei Ni/Al/Co-Standardpunkte und die separate Siliziumgruppe bleiben unverändert. Vergleichbarkeit gilt nur für das veröffentlichte Verfahren, nicht für reines X, Handelslegierungen, Messungen oder universelle Grenzen. Temperatur, Druck, Magnetismus und Unsicherheit bleiben unbekannt. Fehlende pv/sv-Suffixe belegen weder PAW-Datensätze noch Valenzkonfigurationen oder das Fehlen von Semicore-Zuständen. Perdew (1992) wird nicht zu PBE; 0.08 GPa Konvergenz ist kein Fehlerbalken. [Details](docs/GETTING_STARTED.de.md)
 
 Deutsch: Die frühere Version **0.20.0** ergänzt Offline-Karten/Tabellen für sechs bestehende Beobachtungen. Exakte Filter und Studien-/Größengruppen exportieren JSON, CSV, breite/schmale SVG und skriptfreies HTML. Normalisierte Kataloganzeige und Originalwortlaut bleiben getrennt; Warnungen stehen vor Werten, Quellen und unbekannte Bedingungen bleiben erhalten. Keine neuen wissenschaftlichen Einträge, Rechner, numerischen Achsen, Fehlerbalken, Rangfolgen, Aggregation oder Vergleiche bei nachgewiesen gleichen Bedingungen. [Anleitung](docs/GETTING_STARTED.de.md)
 
@@ -179,7 +189,7 @@ python -m materials_boundaries --lang zh catalog --help
 - `--id` 精确匹配记录 ID，区分大小写；未知 ID 报错并以 2 退出
 - `--query` 按空白拆词，经 Unicode `casefold` 后做字面子串匹配，所有词均须命中。检索 ID、标题/名称，以及来源的作者、DOI、用途；论断还检索物理量、方向、`claim_type`、规则 ID 和证据来源 ID。观测检索 ID、名称、物理量、`observation_type`、`study_id`、`material.name` 和证据来源 ID；十八条 v0.4.0–v0.6.0、v0.8.0 与 v0.9.0 论断及六条观测的人工策展四语言显示名称也作为字面搜索别名；它不搜索论文全文，不做词干化、排名、模糊匹配或自动翻译
 - `claims` 专用筛选：`--direction interval|lower|upper|prediction|relation|constraint`、`--claim-type theoretical_bound|derived_outer_envelope|model_estimate|model_relation|stability_criterion`
-- 论断与观测共用 `--source-id`（精确匹配证据引用的来源 ID）；观测专用 `--quantity` 和 `--observation-type experiment_derived_model_dependent`
+- 论断与观测共用 `--source-id`（精确匹配证据引用的来源 ID）；观测专用 `--quantity` 和 `--observation-type experiment_derived_model_dependent|experiment_derived_tensile_test_summary`
 - `sources` 专用筛选：`--role`（用途）、`--year`（整数）、`--license`（许可证标识符或许可证状态）。除查询文字外，字符串筛选均精确匹配并区分大小写
 - 所有筛选条件按 AND 组合，结果保持原目录顺序；空结果是成功查询，退出码为 0。把筛选用于不支持的目录种类，是用法错误，退出码为 2
 
@@ -300,19 +310,21 @@ v0.2.0 将评价结果从 3 条扩展到 8 条；原有三个体积模量 claim 
 
 - `materials_boundaries/data/claims.json`：可复用 claim、条件、固定 rule ID、公式展示、逐 claim 核验缺口
 - `materials_boundaries/data/sources.json`：人工策展的来源、阅读范围、许可证状态及用途
-- `materials_boundaries/data/observations.json`：单独保存模型依赖实验摘要、同一研究关联、方法、不确定性及未知条件
+- `materials_boundaries/data/observations.json`：单独保存二维模型依赖实验摘要和三维拉伸试验摘要、同一研究关联、方法、不确定性及未知条件
 - `examples/*.json`：四份独立评价输入，不与 claim 定义混用；`examples/catalog/porous-synthetic.json` 与 `examples/catalog/crystal-stability-synthetic.json` 仅为文档／测试合成示例，不是评价输入
 - `schemas/*.schema.json`：JSON Schema 2020-12；运行时还检查跨字段约束
 - `materials_boundaries/engine.py`：固定可执行规则表；不会执行输入或资料中的任意公式字符串
 - `docs/CATALOG.md`：只读目录检索、筛选、Python API 与录入检查表
 - `docs/BULK_ELASTIC_WAVES.md`：体弹性波速度、精确类别比值范围、声学张量归一化、严格强椭圆性及原创能量反例
-- `docs/OBSERVATION_INSPECTION.md`：六条现有观测的离线查阅、精确筛选及审计导出；不是匹配条件比较
+- `docs/OBSERVATION_INSPECTION.md`：四项研究 12 条观测的离线查阅、精确筛选及审计导出；不是匹配条件比较
+- `docs/PA12_CF15_TEMPERATURE_OBSERVATIONS.md`：六个试验箱温度条件下的三维拉伸强度、MPa／Pa、SD、方法与来源版本边界
+- `docs/MIGRATION_v0.22.0.md`：12 条观测、52 条来源，观测 schema 1.3.0／查阅 schema 1.1.0 与 CSV 新列
 - `docs/MIGRATION_v0.21.0.md`：六条 Ni11X 预测、12 条预测与三个显式组；原默认三点、科学协议及 schema 不变
 - `docs/MIGRATION_v0.20.0.md`：新查阅 schema 1.0.0，科学记录与八条计算规则不变
 - `docs/MIGRATION_v0.19.0.md`：单层 hBN 两条观测、来源与统计边界，观测 schema 1.2.0；共 36 条论断、51 条来源、三项研究六条观测
 - `docs/MIGRATION_v0.18.0.md`：历史 36 条论断、50 条来源、论断 schema 1.11.0 与不变的八条可执行规则
 - `docs/MODEL.md`：体积/剪切界、推导 E/ν 外包络、数值策略与边界情况
-- `docs/OBSERVATIONS.md`：石墨烯、单层 MoS2 和单层 hBN 三项研究的六项观测、模型依赖、统计区别、单位及核验边界
+- `docs/OBSERVATIONS.md`：石墨烯、单层 MoS2、单层 hBN 和 PA12 CF15 四项研究的 12 项观测、方法依赖、统计区别、单位及核验边界
 - `docs/MIGRATION_v0.17.0.md`：观测 schema 1.1.0、窄范围 MoS2 扩展、打印 q 矛盾及不变的旧记录
 - `docs/MIGRATION_v0.7.0.md`：独立观测目录、筛选与不变的论断／评价约定
 - `docs/MIGRATION_v0.2.0.md`：历史八条输出、类型信息、依赖和单位迁移

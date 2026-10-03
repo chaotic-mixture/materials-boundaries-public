@@ -1,6 +1,6 @@
 # Source curation, verification and rights
 
-Reusable claims, observation summaries and the source manifest are separate records. Current v0.21.0 contains 36 mechanics claims, 51 sources and six observations from three studies, alongside five synthetic temperature demos (seven branches) and twelve computational predictions in two scientific families and three explicit groups. The v0.8.0 historical batch had 26 claims and 20 sources; its four new stability claims reused an existing source and preserved those 20 source records. Some claims are executable elastic bounds/envelopes; the strength/fracture models, stability criteria and porous solid/void intervals are catalog-only. A source being available or read does not establish every claim attributed to it. Each claim or observation retains its own locator, verification status and gaps. The repository includes brief numerical facts, bibliographic metadata and original curation notes; no publisher PDF, article full text, scraped body or unlicensed figure is bundled.
+Reusable claims, observation summaries and the source manifest are separate records. Current v0.22.0 contains 36 mechanics claims, 52 sources and twelve observations from four studies, alongside five synthetic temperature demos (seven branches) and twelve computational predictions in two scientific families and three explicit groups. The v0.8.0 historical batch had 26 claims and 20 sources; its four new stability claims reused an existing source and preserved those 20 source records. Some claims are executable elastic bounds/envelopes; the strength/fracture models, stability criteria and porous solid/void intervals are catalog-only. A source being available or read does not establish every claim attributed to it. Each claim or observation retains its own locator, verification status and gaps. The repository includes brief numerical facts, bibliographic metadata and original curation notes; no publisher PDF, article full text, scraped body or unlicensed figure is bundled.
 
 ## Historical evidence ledger and later release additions
 
@@ -67,9 +67,9 @@ Copyright ©2008 AAAS, all rights reserved; no open reuse license is verified. P
 
 ## Licenses and release status
 
-Version 0.16.0 was the first public-release baseline; current version 0.19.0
-adds only the bounded monolayer hBN observation batch described below, preserving
-the earlier MoS2 and bulk-wave additions. Original project code, documentation
+Version 0.16.0 was the first public-release baseline; current version 0.22.0
+adds the bounded six-condition PA12 CF15 observation batch and one source,
+preserving the earlier scientific records and their source-specific notices. Original project code, documentation
 and original curation use the [MIT License](../LICENSE), under maintainer handle
 chaotic-mixture. Scientific facts and third-party works are not relicensed.
 Public readability, arXiv hosting, a supplement or a repository link does not
@@ -80,7 +80,7 @@ record the public-release boundary and source-specific rights caveats.
 
 Record the exact property, dimension, constituent and effective symmetries, constitutive regime, loading/interface assumptions, fraction conventions, source version, equation/page locator and license/read status. Distinguish a theorem, construction, conjecture, empirical fit and computed observation. Declare whether a record is catalog-only or supported by a fixed reviewed executable rule; textual formulas are never evaluated. Catalog-only records must not be presented as computed results or checked specimen applicability. Preserve theorem, outer-envelope and model-estimate, model-relation and stability-criterion classifications, dimensional metadata, and parameter conventions. Add independent fixtures and non-applicability tests. Keep unknown information explicit. Do not promote source-level metadata into claim-level scientific verification.
 
-Observation curation additionally requires study-level identity, specimen and method context, explicit model dependence, statistical-notation limits and the correct scope of every sample count. Keep observations separate from reusable claims and executable inputs. Preserve N/m dimensionality and the source stress/strain convention; a unit match alone is not a valid material comparison.
+Observation curation additionally requires study-level identity, specimen and method context, explicit model dependence, statistical-notation limits and the correct scope of every sample count. Keep observations separate from reusable claims and executable inputs. Preserve each family's dimensionality, reported units, SI normalization and source stress/strain conventions: 2D N/m remains separate from 3D MPa/Pa. A unit match alone is not a valid material comparison. Temperature-conditioned observations do not imply a temperature model.
 
 ## v0.8.0 extension: four predicates, no new sources
 
@@ -250,9 +250,9 @@ existing graphene ± values remain statistically unspecified. See
 [observation evidence and limits](OBSERVATIONS.md),
 [migration](MIGRATION_v0.17.0.md) and [notices](../THIRD_PARTY_NOTICES.md).
 
-## Complete public source index (v0.19.0)
+## Complete public source index (v0.22.0)
 
-These are the 51 packaged source identities, including one original synthetic
+These are the 52 packaged source identities, including one original synthetic
 provenance record. A bibliographic record is not a bundled publication or dataset;
 see each canonical record and the guides above for read/review and rights status.
 Repeated works in distinct source roles are not independent studies.
@@ -310,6 +310,7 @@ Repeated works in distinct source roles are not independent studies.
 - `chevrot_vanderhilst_2003`: [On the effects of a dipping axis of symmetry on shear wave splitting measurements in a transversely isotropic medium](https://doi.org/10.1046/j.1365-246X.2003.01865.x)
 - `xiang_qi_wei_2018_arxiv_v2`: [On the M-eigenvalues of elasticity tensor and the strong ellipticity condition](https://arxiv.org/abs/1708.04876v2)
 - `falin_et_al_2017_hbn_mechanical_properties`: [Mechanical properties of atomically thin boron nitride and the role of interlayer interactions](https://doi.org/10.1038/ncomms15815)
+- `ciganas2026polym18050563`: [Thermo-Mechanical and Fatigue Behavior of 3D-Printed PA12 CF15 for Engineering Application](https://doi.org/10.3390/polym18050563)
 
 ## v0.18.0 bulk elastic-wave evidence and original derivations
 
@@ -478,3 +479,62 @@ numbers, attribution, locators and original curation are included: no PDF, full
 extracted text, table/page images or source figures are republished. This is not
 scientific peer review or legal clearance. [Full prediction contract](COMPUTATIONAL_PREDICTIONS.md)
 · [Migration](MIGRATION_v0.21.0.md).
+
+
+## v0.22.0 PA12 CF15: six selected cells, one new source
+
+52. **Justas Ciganas, Tomas Kalinauskis and Urte Cigane (2026)**,
+[“Thermo-Mechanical and Fatigue Behavior of 3D-Printed PA12 CF15 for Engineering Application”](https://doi.org/10.3390/polym18050563),
+*Polymers* 18(5), 563. Source/study ID `ciganas2026polym18050563` is the sole new
+source. All 51 earlier source objects are preserved. Current totals are
+**52 sources, 12 observations from four studies, 36 claims, 12 predictions,
+five synthetic models and seven branches**, with eight executable composite
+rules unchanged.
+
+Only six [Table 3](https://www.mdpi.com/2073-4360/18/5/563#polymers-18-00563-t003)
+UTS/SD cells are selected, at reported chamber conditions 23, 40, 60, 80, 100 and
+120 °C. These are tensile-test-derived summaries from one printed-material
+protocol, not a temperature fit, manufacturer lookup or six independent studies.
+There are three reported tests per condition; stress convention/area basis,
+central statistic/aggregation, actual moisture and direct specimen temperature
+remain unverified. MPa source strings and SD are separate from exact Pa unit
+re-expression. See [the complete protocol and cell table](PA12_CF15_TEMPERATURE_OBSERVATIONS.md).
+
+Publisher-rendered HTML, expanded Tables 2–3, methods, references, copyright block
+and [version notes](https://www.mdpi.com/2073-4360/18/5/563/notes) were inspected on
+**3 October 2026**. The article was published **26 February 2026**; version notes
+report HTML updated **3 September 2026 02:53 CEST** and PDF uploaded
+**26 February 2026 11:36 CET**. **The PDF was not retrieved or inspected**, so PDF
+pagination stays unknown and no PDF-equivalence claim is made. The explicit
+component identity describes the observed HTML revision and access date,
+not an immutable source URL or source-file hash.
+
+Value/SD provenance uses Table 3 container `polymers-18-00563-t003`, expanded ID
+`table_body_display_polymers-18-00563-t003`, exact UTS row and temperature column.
+Drying, stabilization and unmeasured moisture reference
+`sec2dot1-polymers-18-00563`, with print settings in Table 2. Three tests per
+condition, 1 mm/min and 110 mm crosshead strain reference
+`sec2dot2-polymers-18-00563`; `sec3dot1-polymers-18-00563` supplies tensile-results
+context, not the test-count statement. Rights use `html-copyright`. The article's ISO 527
+reference is source-reported, with compliance and its URL unverified. It does
+not become an independently verified standard source.
+
+**Version caveat:** cached/search-rendered unselected Table 4 gives 3500-RPM
+y acceleration 14 and z frequency 337; current publisher HTML gives 13 and 336,
+consistent with the corresponding equations. These Table 4 values are excluded
+from the observations. Do not claim every source representation agrees. The six
+selected Table 3 UTS/SD cells agree across current HTML, visual inspection and an
+independent second transcription. The second reading is not an independent
+experiment or scientific review; raw tensile replicates, force/area data, SD
+recalculation and stress-area recomputation were unavailable.
+
+The article's own copyright block verifies **©2026 by the authors**, MDPI
+licensee, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); no third-party
+credit line was shown for selected Table 3. Attribute the authors, title and DOI
+above. Values are reorganized into discrete records with original notes and
+exact SI unit re-expression; source numbers and SD strings are preserved.
+Manufacturer-provided Table 1 is excluded and its rights are not inferred from
+the article license. No source PDF, screenshot, figure, HTML dump, long passage
+or raw measurement collection is bundled. MIT applies to original project work
+and does not replace third-party rights. [Notices](../THIRD_PARTY_NOTICES.md) ·
+[Migration](MIGRATION_v0.22.0.md).

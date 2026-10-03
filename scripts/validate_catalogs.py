@@ -817,7 +817,7 @@ def _index(records: list[dict], kind: str) -> dict:
 
 
 def _validate_labels(locales: dict, names: set[str], *, index_present: bool = False,
-                     directional_present: bool = False, compressibility_present: bool = False, mos2_present: bool = False, hbn_present: bool = False, wave_present: bool = False) -> None:
+                     directional_present: bool = False, compressibility_present: bool = False, mos2_present: bool = False, hbn_present: bool = False, pa12_present: bool = False, wave_present: bool = False) -> None:
     require(isinstance(locales, dict), "locales: expected an object")
     require(set(locales) == {"schema_version", "default_language", "translation_review", "languages"},
             "locales: unsupported or missing envelope fields")
@@ -839,6 +839,9 @@ def _validate_labels(locales: dict, names: set[str], *, index_present: bool = Fa
         from materials_boundaries._hbn_observation_contract import HBN_LABELS
         require(HBN_LABELS <= keys, "locales: missing required hBN warning/display labels: " +
                 ", ".join(sorted(HBN_LABELS - keys)))
+    if pa12_present:
+        required_pa12_keys = {"catalog_pa12_" + key for key in ("classification", "identity", "temperature", "process", "stress", "sample", "reported", "si", "normalization", "source_version", "rights", "dataset", "protocol", "cell", "details")}
+        require(required_pa12_keys <= keys, "locales: missing required PA12 warning/display labels")
     if wave_present:
         required_wave_keys = {"catalog_wave_" + key for key in
             ("notice", "conditions", "normalization", "polarization", "energy", "range", "limits")}
@@ -946,6 +949,9 @@ def validate_catalogs(catalogs: dict, schema_dir: Path = ROOT / "schemas") -> di
     from materials_boundaries._observation_contract import validate_observation_records
     try:
         validate_observation_records(list(observations.values()))
+        from materials_boundaries._pa12_cf15_observation_contract import validate_pa12_dataset, validate_pa12_sources
+        validate_pa12_dataset(list(observations.values()), require_complete=True)
+        validate_pa12_sources(list(sources.values()))
     except ValueError as exc:
         raise CatalogValidationError(str(exc)) from exc
     for name, observation in observations.items():
@@ -1006,6 +1012,7 @@ def validate_catalogs(catalogs: dict, schema_dir: Path = ROOT / "schemas") -> di
                      compressibility_present=any("hydrostatic_compressibility_contract" in claim for claim in claims.values()),
                      mos2_present=any(record.get("method_family") == "bertolazzi_2011_mos2_monolayer_indentation_v1" for record in observations.values()),
                      hbn_present=any(record.get("method_family") == "falin_2017_hbn_monolayer_indentation_v1" for record in observations.values()),
+                     pa12_present=any(record.get("method_family") == "ciganas_2026_pa12_cf15_fff_tensile_temperature_v1" for record in observations.values()),
                      wave_present=any("bulk_wave_contract" in claim for claim in claims.values()))
     return {kind: len(index) for kind, index in indexes.items()}
 

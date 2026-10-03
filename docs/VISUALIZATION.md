@@ -1,6 +1,30 @@
 # Offline, traceable elastic comparison views
 
-## Current v0.21.0: explicit six-point Ni11X group
+## Current v0.22.0: mixed 2D and 3D observation inspection
+
+[Observation inspection](OBSERVATION_INSPECTION.md) now contains 12 source-ordered
+text facets from four studies. Six PA12 CF15 facets represent six reported
+chamber conditions from one tensile-test protocol; the older six 2D facets
+retain their original scientific contracts. Inspection schema 1.1.0 distinguishes
+reported MPa display from exact SI Pa re-expression. No N/m-to-Pa conversion is
+added for older observations. Regenerate old bundles rather than relabel them.
+
+Every new facet shows chamber basis, preparation/rate, unknown stress/statistic,
+three-test scope and reported-SD caveats before its property values. There are
+no temperature axes, bars, points, whiskers, connecting curves, magnitude styling,
+interpolation, ranking, aggregation or cross-dimensional comparison. Study or
+quantity grouping changes navigation only. The five synthetic temperature models,
+12 computational predictions and eight-rule composite comparison remain unchanged.
+
+```sh
+python -m materials_boundaries observation inspect --source-id ciganas2026polym18050563 --output /tmp/pa12-cf15 --lang en
+```
+
+See [source/protocol limits](PA12_CF15_TEMPERATURE_OBSERVATIONS.md) and
+[migration](MIGRATION_v0.22.0.md). Historical sections below describe their own
+release scope. Static pixel inspection and browser reflow remain separate checks.
+
+## Earlier v0.21.0: explicit six-point Ni11X group
 
 The prediction catalog now has 12 records in two scientific families and three
 explicit groups. The new six-point group `shimanek_v2_table2_cr_mn_fe_cu_si_ti`

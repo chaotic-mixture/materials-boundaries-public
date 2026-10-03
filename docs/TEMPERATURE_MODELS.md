@@ -14,10 +14,12 @@ composite rules were separate. Its source catalog contained 47 records: the
 `materials_boundaries_synthetic_temperature_demo`, which records original
 author provenance rather than an external publication.
 
-The current [v0.21.0 catalog](MIGRATION_v0.21.0.md) retains 51 sources
-and six observations from three studies, with twelve separate computational
+The current [v0.22.0 catalog](MIGRATION_v0.22.0.md) contains 52 sources
+and twelve observations from four studies, with twelve separate computational
 predictions. These five synthetic temperature models and their seven branches
-are unchanged.
+are unchanged. The six real PA12 CF15 temperature-conditioned observations
+remain discrete catalog summaries; they add no temperature-model coefficients,
+interpolation or evaluator. See [their separate contract](PA12_CF15_TEMPERATURE_OBSERVATIONS.md).
 
 ## Polynomial and branch contract
 

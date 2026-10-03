@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.3.0",
   "records": [
     {
       "id": "lee_2008_graphene_in_plane_stiffness_2d",
@@ -1168,6 +1168,2364 @@
           "source_id": "falin_et_al_2017_hbn_mechanical_properties",
           "verification_status": "publisher_supplement_text_and_visual_passage_checked"
         }
+      ]
+    },
+    {
+      "id": "ciganas2026-pa12cf15-uts-23c",
+      "name": "PA12 CF15 FFF ultimate tensile strength at reported chamber condition 23 °C (Ciganas 2026)",
+      "version": "1.0.0",
+      "observation_type": "experiment_derived_tensile_test_summary",
+      "study_id": "ciganas2026polym18050563",
+      "dataset_id": "ciganas-2026-pa12-cf15-fff-uts-temperature",
+      "protocol_id": "ciganas2026-pa12-cf15-quasistatic-tension",
+      "method_family": "ciganas_2026_pa12_cf15_fff_tensile_temperature_v1",
+      "model_status": "source_reported_tensile_summary_with_explicit_metadata_gaps",
+      "quantity": "ultimate_tensile_strength_as_reported_3d",
+      "quantity_dimension": "pressure",
+      "si_unit": "Pa",
+      "evaluation_support": "catalog_only",
+      "source_cell": {
+        "table": "3",
+        "table_container_id": "polymers-18-00563-t003",
+        "expanded_table_id": "table_body_display_polymers-18-00563-t003",
+        "row": "Ultimate tensile strength, MPa ± SD",
+        "temperature_column": "23"
+      },
+      "material": {
+        "name": "Fiberlogy PA12 CF15, FFF-printed horizontally with alternating +45°/-45° raster",
+        "id": "fiberlogy-pa12-cf15-fff-ciganas2026-specific-protocol",
+        "dimensionality": 3,
+        "matrix": "polyamide 12 (PA12)",
+        "reinforcement": "short carbon fibers",
+        "commercial_grade_as_reported": "PA12 CF15",
+        "brand": "Fiberlogy",
+        "manufacturer": "Fiberlab S.A., Brzezie, Poland",
+        "reinforcement_mass_fraction": {
+          "value": 15,
+          "unit": "wt.%",
+          "basis": "declared_formulation",
+          "independently_assayed_fraction": null
+        },
+        "filament_diameter": {
+          "value": 1.75,
+          "value_string": "1.75",
+          "unit": "mm"
+        },
+        "spool_mass_as_supplied": {
+          "value": 0.5,
+          "value_string": "0.5",
+          "unit": "kg"
+        },
+        "lot_number": null,
+        "color": null,
+        "fiber_length_distribution": null,
+        "fiber_orientation_distribution": null,
+        "measured_porosity": null,
+        "crystallinity": null,
+        "isotropy_established": false,
+        "manufacturer_density_used": false,
+        "scope": "This commercial filament and horizontal alternating-raster FFF preparation; not neat PA12, all PA12 CF15 products, an isotropic bulk resin or all print orientations."
+      },
+      "reported_result": {
+        "value": 49.07,
+        "value_string": "49.07",
+        "unit": "MPa",
+        "source_value_string": "49.07 ± 0.88",
+        "summary_statistic": "reported_central_value",
+        "central_statistic_explicitly_named": null,
+        "aggregation_convention": null,
+        "precision_note": "Source strings preserve two decimal digits; this formatting is not established measurement resolution or accuracy.",
+        "uncertainty": {
+          "value": 0.88,
+          "value_string": "0.88",
+          "unit": "MPa",
+          "notation": "plus_minus",
+          "type": "reported_standard_deviation",
+          "definition_basis": "publisher_html_table_header",
+          "sample_or_population_formula": null,
+          "coverage_factor": null,
+          "confidence_level": null,
+          "averaging_convention": null,
+          "interpretation": "The plus/minus component is reported standard deviation (SD), not SEM, a confidence interval, a bound, an endpoint range or a full uncertainty budget. Neither the sample/population SD formula nor an averaging convention is supplied.",
+          "evidence": {
+            "source_id": "ciganas2026polym18050563",
+            "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+            "source_url": "https://www.mdpi.com/2073-4360/18/5/563#polymers-18-00563-t003",
+            "component_id": "polymers-18-00563-t003",
+            "expanded_component_id": "table_body_display_polymers-18-00563-t003",
+            "locator": "Table 3, ultimate tensile strength row and testing-temperature columns",
+            "verification_status": "publisher_html_component_checked",
+            "verified_as": "Selected condition-level UTS values and the row-header SD definition"
+          }
+        }
+      },
+      "si_result": {
+        "value": 49070000,
+        "uncertainty_value": 880000,
+        "unit": "Pa",
+        "normalization": {
+          "kind": "exact_decimal_unit_scale",
+          "from_unit": "MPa",
+          "to_unit": "Pa",
+          "factor_string": "1000000",
+          "offset_string": "0",
+          "basis": "SI_prefix_only_no_geometry_or_thickness",
+          "adds_measurement_precision": false
+        }
+      },
+      "method": {
+        "technique": "quasi_static_uniaxial_tension",
+        "instrument": "Step-Lab UD08 (STEP Engineering, Resana, Italy)",
+        "thermal_chamber": "integrated thermal chamber (STEP Engineering, Resana, Italy)",
+        "loading_direction": "along tensile specimen axis; no independent material isotropy asserted",
+        "preparation": {
+          "method": "fused_filament_fabrication",
+          "printer": "Creality K1 MAX (Creality, Shenzhen, China)",
+          "filament_drying": {
+            "equipment": "convection oven",
+            "temperature": {
+              "value": 80,
+              "unit": "degC"
+            },
+            "duration": {
+              "value": 12,
+              "unit": "h"
+            }
+          },
+          "printing_parameters": {
+            "nozzle_temperature": {
+              "value": 265,
+              "unit": "degC"
+            },
+            "bed_temperature": {
+              "value": 100,
+              "unit": "degC"
+            },
+            "reported_specimen_mass": {
+              "value": 6.42,
+              "value_string": "6.42",
+              "unit": "g"
+            },
+            "outer_wall_speed": {
+              "value": 60,
+              "unit": "mm/s"
+            },
+            "inner_wall_speed": {
+              "value": 60,
+              "unit": "mm/s"
+            },
+            "cooling_percent_as_reported": 100,
+            "layer_height": {
+              "value": 0.2,
+              "value_string": "0.2",
+              "unit": "mm"
+            },
+            "raster_angle_table_label": "45",
+            "raster_angle_table_unit": "deg",
+            "raster_methods_description": "+45°/-45°",
+            "infill_setting_percent": 100,
+            "infill_pattern": "linear",
+            "number_of_contours": 5,
+            "nozzle_diameter": {
+              "value": 0.6,
+              "value_string": "0.6",
+              "unit": "mm"
+            },
+            "build_orientation": "horizontal on heated bed",
+            "printing_chamber_temperature": null,
+            "infill_interpretation": "100% is the reported infill setting; it does not establish measured zero porosity."
+          },
+          "postprint_annealing": null,
+          "postprint_storage_duration_and_environment": null,
+          "surface_finishing": null
+        },
+        "specimen": {
+          "shape": "dog_bone",
+          "dimensions_basis": "source_reported_nominal_geometry",
+          "overall_length_mm": 150,
+          "gauge_length_mm_as_reported": 80,
+          "thickness_mm": 3,
+          "narrow_width_mm": 10,
+          "wide_width_mm": 20,
+          "grip_separation_mm": 110,
+          "dimensional_tolerances": null,
+          "measured_cross_section_for_stress": null,
+          "geometry_role": "Nominal specimen context only; no reconstructed stress-area calculation or thickness conversion."
+        },
+        "loading_rate": {
+          "value": 1,
+          "value_string": "1",
+          "unit": "mm/min",
+          "source_label": "load rate",
+          "quantity": "displacement_crosshead_rate",
+          "interpretation": "The displacement-rate unit supports a crosshead-rate reading, not force rate or measured local strain rate."
+        },
+        "local_strain_rate_per_s": null,
+        "strain_measure": "engineering_strain_from_crosshead_displacement",
+        "strain_reference_length": {
+          "value": 110,
+          "unit": "mm",
+          "basis": "full_grip_separation_including_transition_regions"
+        },
+        "strain_definition_note": "The 110 mm grip separation includes the reported 80 mm gauge section and transition regions; no measured local strain rate is reconstructed.",
+        "stress_measure": null,
+        "stress_area_basis": null,
+        "uts_extraction_criterion": null,
+        "stress_definition_note": "Engineering-strain wording does not establish engineering versus true stress or the stress-area calculation. UTS is retained as the Table 3 label.",
+        "standard_as_cited": "ISO 527",
+        "standard_reference_as_reported": "Article reference 33: ISO, Plastics—Determination of Tensile Properties, Geneva, 2025; https://www.iso.org/standard/527-2",
+        "standard_compliance_independently_verified": false,
+        "standard_url_validated": false,
+        "protocol_scope_note": "Source-reported protocol context is not an independently verified standard-compliance certification."
+      },
+      "conditions": {
+        "temperature": {
+          "value": 23,
+          "value_string": "23",
+          "unit": "degC",
+          "basis": "reported_chamber_test_condition",
+          "stabilization_duration_min": 30,
+          "direct_specimen_temperature_measurement": null,
+          "sensor_type_and_location": null,
+          "stability_tolerance": null,
+          "tensile_heating_rate": null,
+          "control_description": "Specimens were held at the selected chamber test condition for 30 minutes. Integrated-chamber temperature control is reported without quantitative stability tolerance; the DMA-only 1 °C/min ramp is not transferred."
+        },
+        "humidity": {
+          "reported_control": "Authors describe constant humidity and constant ambient temperature under controlled climatic conditions",
+          "relative_humidity_percent": null,
+          "humidity_tolerance": null,
+          "specimen_moisture_content": null,
+          "moisture_status": "Moisture after drying and before testing was not measured. Drying does not establish a measured dry-state specimen."
+        },
+        "atmosphere": null,
+        "pressure": null,
+        "notes": [
+          "No chamber gas or ambient pressure is supplied.",
+          "The 23 °C column carries the same reported-chamber-condition basis as every other selected column.",
+          "Processing temperatures and the DMA ramp are not tensile specimen-temperature measurements."
+        ]
+      },
+      "sample_metadata": {
+        "count": 3,
+        "scope": "tensile_tests_per_temperature_condition",
+        "count_definition_source": {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#sec2dot2-polymers-18-00563",
+          "component_id": "sec2dot2-polymers-18-00563",
+          "expanded_component_id": null,
+          "locator": "Section 2.2, first paragraph, tensile-test count per temperature",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Three tensile tests for each temperature, not evidence of replicate independence"
+        },
+        "raw_replicate_values_available": false,
+        "replicate_independence": null,
+        "aggregation_convention": null,
+        "independently_characterized_specimen_count": null,
+        "notes": [
+          "Three tests are reported per condition; neither a named arithmetic mean nor replicate independence is inferred.",
+          "The six temperatures share one study, material preparation and protocol; they are not six independent studies.",
+          "No raw replicate collection is available for SD or stress-area recomputation."
+        ]
+      },
+      "verification": {
+        "status": "publisher_html_selected_cells_methods_version_and_rights_checked",
+        "independent_scientific_review": false,
+        "source_inspection": {
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "publication_date": "2026-02-26",
+          "access_date": "2026-10-03",
+          "html_latest_update_as_reported": "3 September 2026 02:53 CEST",
+          "pdf_upload_as_reported": "26 February 2026 11:36 CET",
+          "pdf_inspected": false,
+          "pdf_pagination": null,
+          "pdf_equivalence_claimed": false,
+          "version_notes_url": "https://www.mdpi.com/2073-4360/18/5/563/notes",
+          "selected_table_visual_checked": true,
+          "separate_reader_transcription_checked": true,
+          "selected_cells_transcription_agree": true,
+          "raw_data_reanalysis": false,
+          "raw_replicate_sd_recomputed": false,
+          "stress_area_recomputed": false,
+          "plot_digitization": false,
+          "independent_replication": false,
+          "source_version_note": "An unselected Table 4 search-rendered snapshot and directly inspected current HTML disagree on two engine-load entries. This discrepancy is outside the selected tensile cells; the inaccessible PDF is not assumed equivalent. The six selected Table 3 UTS/SD cells agree across current HTML, visual inspection and an independent second transcription."
+        },
+        "measurement_lineage": {
+          "evidence_kind": "primary_experimental_tensile_test_derived_parameter",
+          "model_inference_only": false,
+          "manufacturer_lookup": false,
+          "finite_element_input_only": false,
+          "excluded_dataset_dependency": false,
+          "basis": "The selected Table 3 values derive from this study’s tensile experiments; later FE use does not make them assumed FE inputs. No excluded dataset supplies these values."
+        },
+        "rights": {
+          "license_identifier": "CC-BY-4.0",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "copyright_holder_as_reported": "2026 by the authors",
+          "publisher_licensee": "MDPI, Basel, Switzerland",
+          "article_license_verified": true,
+          "selected_table_third_party_credit_line_present": false,
+          "attribution": "Selected Table 3 values: Ciganas, J.; Kalinauskis, T.; Cigane, U. (2026), Thermo-Mechanical and Fatigue Behavior of 3D-Printed PA12 CF15 for Engineering Application, Polymers 18(5), 563, DOI 10.3390/polym18050563, CC BY 4.0. Reorganized into discrete observations with exact MPa-to-Pa unit re-expression; source numbers and SD strings preserved; curator notes are original.",
+          "modifications": "Reorganization as six condition-level observations, exact SI-prefix unit re-expression and original curator notes.",
+          "third_party_exclusion": "Manufacturer-provided Table 1 is excluded; the article license is not extended to that third-party content.",
+          "project_license_scope": "MIT covers original project contributions and does not replace source rights.",
+          "source_assets_redistributed": false
+        },
+        "gaps": [
+          "The PDF was not retrieved or inspected; its pagination and equivalence to the inspected HTML remain unknown.",
+          "Raw tensile replicates, force/area data and a mathematical UTS extraction definition are unavailable.",
+          "A second transcription checks reading agreement, not an independent experiment, reproduction or scientific review.",
+          "Stress convention, aggregation, numeric humidity, actual moisture and direct specimen temperature remain unknown."
+        ]
+      },
+      "evidence": [
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#polymers-18-00563-t003",
+          "component_id": "polymers-18-00563-t003",
+          "expanded_component_id": "table_body_display_polymers-18-00563-t003",
+          "locator": "Table 3, ultimate tensile strength row and testing-temperature columns",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Selected condition-level UTS values and the row-header SD definition"
+        },
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#sec2dot1-polymers-18-00563",
+          "component_id": "sec2dot1-polymers-18-00563",
+          "expanded_component_id": null,
+          "locator": "Section 2.1, material, drying, specimen preparation, dimensions and chamber conditioning",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Commercial formulation, nominal geometry, 30-minute chamber stabilization and unmeasured post-drying moisture"
+        },
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#polymers-18-00563-t002",
+          "component_id": "polymers-18-00563-t002",
+          "expanded_component_id": "table_body_display_polymers-18-00563-t002",
+          "locator": "Table 2, reported printing parameters",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Process settings, not measured porosity or material homogeneity"
+        },
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#sec2dot2-polymers-18-00563",
+          "component_id": "sec2dot2-polymers-18-00563",
+          "expanded_component_id": null,
+          "locator": "Section 2.2, tensile testing protocol",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Crosshead rate and crosshead-derived engineering strain over the full 110 mm grip separation"
+        },
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#sec2dot2-polymers-18-00563",
+          "component_id": "sec2dot2-polymers-18-00563",
+          "expanded_component_id": null,
+          "locator": "Section 2.2, first paragraph, tensile-test count per temperature",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Three tensile tests for each temperature, not evidence of replicate independence"
+        },
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#html-copyright",
+          "component_id": "html-copyright",
+          "expanded_component_id": null,
+          "locator": "Article copyright and Creative Commons license block",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Article CC BY 4.0 and author copyright, with third-party content excluded"
+        },
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563/notes",
+          "component_id": "version-notes",
+          "expanded_component_id": null,
+          "locator": "Article version notes",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Observed HTML update and reported PDF upload; no PDF-equivalence claim"
+        }
+      ],
+      "limits": [
+        "Catalog-only condition-level tensile summaries from one source-defined protocol; no evaluator or temperature-model admission.",
+        "Not a universal strength bound, design allowable, safety factor, service-life prediction or application-safety claim.",
+        "No interpolation, extrapolation, fitted temperature law, aggregation, cross-study confirmation or statistical significance claim.",
+        "Material state, horizontal raster, preparation, chamber condition and crosshead protocol restrict applicability; equality of temperature alone does not match another protocol.",
+        "The 15 wt.% is declared formulation, not an assayed fraction; 100% infill does not establish zero porosity or isotropy.",
+        "The plus/minus component is reported standard deviation (SD), not SEM, a confidence interval, a bound, an endpoint range or a full uncertainty budget. Neither the sample/population SD formula nor an averaging convention is supplied.",
+        "MPa and Pa describe the same pressure-valued observation; exact SI-prefix scaling adds no measurement precision and uses no specimen geometry.",
+        "These 3D pressure values are not commensurate with 2D membrane force-per-length quantities."
+      ]
+    },
+    {
+      "id": "ciganas2026-pa12cf15-uts-40c",
+      "name": "PA12 CF15 FFF ultimate tensile strength at reported chamber condition 40 °C (Ciganas 2026)",
+      "version": "1.0.0",
+      "observation_type": "experiment_derived_tensile_test_summary",
+      "study_id": "ciganas2026polym18050563",
+      "dataset_id": "ciganas-2026-pa12-cf15-fff-uts-temperature",
+      "protocol_id": "ciganas2026-pa12-cf15-quasistatic-tension",
+      "method_family": "ciganas_2026_pa12_cf15_fff_tensile_temperature_v1",
+      "model_status": "source_reported_tensile_summary_with_explicit_metadata_gaps",
+      "quantity": "ultimate_tensile_strength_as_reported_3d",
+      "quantity_dimension": "pressure",
+      "si_unit": "Pa",
+      "evaluation_support": "catalog_only",
+      "source_cell": {
+        "table": "3",
+        "table_container_id": "polymers-18-00563-t003",
+        "expanded_table_id": "table_body_display_polymers-18-00563-t003",
+        "row": "Ultimate tensile strength, MPa ± SD",
+        "temperature_column": "40"
+      },
+      "material": {
+        "name": "Fiberlogy PA12 CF15, FFF-printed horizontally with alternating +45°/-45° raster",
+        "id": "fiberlogy-pa12-cf15-fff-ciganas2026-specific-protocol",
+        "dimensionality": 3,
+        "matrix": "polyamide 12 (PA12)",
+        "reinforcement": "short carbon fibers",
+        "commercial_grade_as_reported": "PA12 CF15",
+        "brand": "Fiberlogy",
+        "manufacturer": "Fiberlab S.A., Brzezie, Poland",
+        "reinforcement_mass_fraction": {
+          "value": 15,
+          "unit": "wt.%",
+          "basis": "declared_formulation",
+          "independently_assayed_fraction": null
+        },
+        "filament_diameter": {
+          "value": 1.75,
+          "value_string": "1.75",
+          "unit": "mm"
+        },
+        "spool_mass_as_supplied": {
+          "value": 0.5,
+          "value_string": "0.5",
+          "unit": "kg"
+        },
+        "lot_number": null,
+        "color": null,
+        "fiber_length_distribution": null,
+        "fiber_orientation_distribution": null,
+        "measured_porosity": null,
+        "crystallinity": null,
+        "isotropy_established": false,
+        "manufacturer_density_used": false,
+        "scope": "This commercial filament and horizontal alternating-raster FFF preparation; not neat PA12, all PA12 CF15 products, an isotropic bulk resin or all print orientations."
+      },
+      "reported_result": {
+        "value": 40.31,
+        "value_string": "40.31",
+        "unit": "MPa",
+        "source_value_string": "40.31 ± 0.72",
+        "summary_statistic": "reported_central_value",
+        "central_statistic_explicitly_named": null,
+        "aggregation_convention": null,
+        "precision_note": "Source strings preserve two decimal digits; this formatting is not established measurement resolution or accuracy.",
+        "uncertainty": {
+          "value": 0.72,
+          "value_string": "0.72",
+          "unit": "MPa",
+          "notation": "plus_minus",
+          "type": "reported_standard_deviation",
+          "definition_basis": "publisher_html_table_header",
+          "sample_or_population_formula": null,
+          "coverage_factor": null,
+          "confidence_level": null,
+          "averaging_convention": null,
+          "interpretation": "The plus/minus component is reported standard deviation (SD), not SEM, a confidence interval, a bound, an endpoint range or a full uncertainty budget. Neither the sample/population SD formula nor an averaging convention is supplied.",
+          "evidence": {
+            "source_id": "ciganas2026polym18050563",
+            "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+            "source_url": "https://www.mdpi.com/2073-4360/18/5/563#polymers-18-00563-t003",
+            "component_id": "polymers-18-00563-t003",
+            "expanded_component_id": "table_body_display_polymers-18-00563-t003",
+            "locator": "Table 3, ultimate tensile strength row and testing-temperature columns",
+            "verification_status": "publisher_html_component_checked",
+            "verified_as": "Selected condition-level UTS values and the row-header SD definition"
+          }
+        }
+      },
+      "si_result": {
+        "value": 40310000,
+        "uncertainty_value": 720000,
+        "unit": "Pa",
+        "normalization": {
+          "kind": "exact_decimal_unit_scale",
+          "from_unit": "MPa",
+          "to_unit": "Pa",
+          "factor_string": "1000000",
+          "offset_string": "0",
+          "basis": "SI_prefix_only_no_geometry_or_thickness",
+          "adds_measurement_precision": false
+        }
+      },
+      "method": {
+        "technique": "quasi_static_uniaxial_tension",
+        "instrument": "Step-Lab UD08 (STEP Engineering, Resana, Italy)",
+        "thermal_chamber": "integrated thermal chamber (STEP Engineering, Resana, Italy)",
+        "loading_direction": "along tensile specimen axis; no independent material isotropy asserted",
+        "preparation": {
+          "method": "fused_filament_fabrication",
+          "printer": "Creality K1 MAX (Creality, Shenzhen, China)",
+          "filament_drying": {
+            "equipment": "convection oven",
+            "temperature": {
+              "value": 80,
+              "unit": "degC"
+            },
+            "duration": {
+              "value": 12,
+              "unit": "h"
+            }
+          },
+          "printing_parameters": {
+            "nozzle_temperature": {
+              "value": 265,
+              "unit": "degC"
+            },
+            "bed_temperature": {
+              "value": 100,
+              "unit": "degC"
+            },
+            "reported_specimen_mass": {
+              "value": 6.42,
+              "value_string": "6.42",
+              "unit": "g"
+            },
+            "outer_wall_speed": {
+              "value": 60,
+              "unit": "mm/s"
+            },
+            "inner_wall_speed": {
+              "value": 60,
+              "unit": "mm/s"
+            },
+            "cooling_percent_as_reported": 100,
+            "layer_height": {
+              "value": 0.2,
+              "value_string": "0.2",
+              "unit": "mm"
+            },
+            "raster_angle_table_label": "45",
+            "raster_angle_table_unit": "deg",
+            "raster_methods_description": "+45°/-45°",
+            "infill_setting_percent": 100,
+            "infill_pattern": "linear",
+            "number_of_contours": 5,
+            "nozzle_diameter": {
+              "value": 0.6,
+              "value_string": "0.6",
+              "unit": "mm"
+            },
+            "build_orientation": "horizontal on heated bed",
+            "printing_chamber_temperature": null,
+            "infill_interpretation": "100% is the reported infill setting; it does not establish measured zero porosity."
+          },
+          "postprint_annealing": null,
+          "postprint_storage_duration_and_environment": null,
+          "surface_finishing": null
+        },
+        "specimen": {
+          "shape": "dog_bone",
+          "dimensions_basis": "source_reported_nominal_geometry",
+          "overall_length_mm": 150,
+          "gauge_length_mm_as_reported": 80,
+          "thickness_mm": 3,
+          "narrow_width_mm": 10,
+          "wide_width_mm": 20,
+          "grip_separation_mm": 110,
+          "dimensional_tolerances": null,
+          "measured_cross_section_for_stress": null,
+          "geometry_role": "Nominal specimen context only; no reconstructed stress-area calculation or thickness conversion."
+        },
+        "loading_rate": {
+          "value": 1,
+          "value_string": "1",
+          "unit": "mm/min",
+          "source_label": "load rate",
+          "quantity": "displacement_crosshead_rate",
+          "interpretation": "The displacement-rate unit supports a crosshead-rate reading, not force rate or measured local strain rate."
+        },
+        "local_strain_rate_per_s": null,
+        "strain_measure": "engineering_strain_from_crosshead_displacement",
+        "strain_reference_length": {
+          "value": 110,
+          "unit": "mm",
+          "basis": "full_grip_separation_including_transition_regions"
+        },
+        "strain_definition_note": "The 110 mm grip separation includes the reported 80 mm gauge section and transition regions; no measured local strain rate is reconstructed.",
+        "stress_measure": null,
+        "stress_area_basis": null,
+        "uts_extraction_criterion": null,
+        "stress_definition_note": "Engineering-strain wording does not establish engineering versus true stress or the stress-area calculation. UTS is retained as the Table 3 label.",
+        "standard_as_cited": "ISO 527",
+        "standard_reference_as_reported": "Article reference 33: ISO, Plastics—Determination of Tensile Properties, Geneva, 2025; https://www.iso.org/standard/527-2",
+        "standard_compliance_independently_verified": false,
+        "standard_url_validated": false,
+        "protocol_scope_note": "Source-reported protocol context is not an independently verified standard-compliance certification."
+      },
+      "conditions": {
+        "temperature": {
+          "value": 40,
+          "value_string": "40",
+          "unit": "degC",
+          "basis": "reported_chamber_test_condition",
+          "stabilization_duration_min": 30,
+          "direct_specimen_temperature_measurement": null,
+          "sensor_type_and_location": null,
+          "stability_tolerance": null,
+          "tensile_heating_rate": null,
+          "control_description": "Specimens were held at the selected chamber test condition for 30 minutes. Integrated-chamber temperature control is reported without quantitative stability tolerance; the DMA-only 1 °C/min ramp is not transferred."
+        },
+        "humidity": {
+          "reported_control": "Authors describe constant humidity and constant ambient temperature under controlled climatic conditions",
+          "relative_humidity_percent": null,
+          "humidity_tolerance": null,
+          "specimen_moisture_content": null,
+          "moisture_status": "Moisture after drying and before testing was not measured. Drying does not establish a measured dry-state specimen."
+        },
+        "atmosphere": null,
+        "pressure": null,
+        "notes": [
+          "No chamber gas or ambient pressure is supplied.",
+          "The 23 °C column carries the same reported-chamber-condition basis as every other selected column.",
+          "Processing temperatures and the DMA ramp are not tensile specimen-temperature measurements."
+        ]
+      },
+      "sample_metadata": {
+        "count": 3,
+        "scope": "tensile_tests_per_temperature_condition",
+        "count_definition_source": {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#sec2dot2-polymers-18-00563",
+          "component_id": "sec2dot2-polymers-18-00563",
+          "expanded_component_id": null,
+          "locator": "Section 2.2, first paragraph, tensile-test count per temperature",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Three tensile tests for each temperature, not evidence of replicate independence"
+        },
+        "raw_replicate_values_available": false,
+        "replicate_independence": null,
+        "aggregation_convention": null,
+        "independently_characterized_specimen_count": null,
+        "notes": [
+          "Three tests are reported per condition; neither a named arithmetic mean nor replicate independence is inferred.",
+          "The six temperatures share one study, material preparation and protocol; they are not six independent studies.",
+          "No raw replicate collection is available for SD or stress-area recomputation."
+        ]
+      },
+      "verification": {
+        "status": "publisher_html_selected_cells_methods_version_and_rights_checked",
+        "independent_scientific_review": false,
+        "source_inspection": {
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "publication_date": "2026-02-26",
+          "access_date": "2026-10-03",
+          "html_latest_update_as_reported": "3 September 2026 02:53 CEST",
+          "pdf_upload_as_reported": "26 February 2026 11:36 CET",
+          "pdf_inspected": false,
+          "pdf_pagination": null,
+          "pdf_equivalence_claimed": false,
+          "version_notes_url": "https://www.mdpi.com/2073-4360/18/5/563/notes",
+          "selected_table_visual_checked": true,
+          "separate_reader_transcription_checked": true,
+          "selected_cells_transcription_agree": true,
+          "raw_data_reanalysis": false,
+          "raw_replicate_sd_recomputed": false,
+          "stress_area_recomputed": false,
+          "plot_digitization": false,
+          "independent_replication": false,
+          "source_version_note": "An unselected Table 4 search-rendered snapshot and directly inspected current HTML disagree on two engine-load entries. This discrepancy is outside the selected tensile cells; the inaccessible PDF is not assumed equivalent. The six selected Table 3 UTS/SD cells agree across current HTML, visual inspection and an independent second transcription."
+        },
+        "measurement_lineage": {
+          "evidence_kind": "primary_experimental_tensile_test_derived_parameter",
+          "model_inference_only": false,
+          "manufacturer_lookup": false,
+          "finite_element_input_only": false,
+          "excluded_dataset_dependency": false,
+          "basis": "The selected Table 3 values derive from this study’s tensile experiments; later FE use does not make them assumed FE inputs. No excluded dataset supplies these values."
+        },
+        "rights": {
+          "license_identifier": "CC-BY-4.0",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "copyright_holder_as_reported": "2026 by the authors",
+          "publisher_licensee": "MDPI, Basel, Switzerland",
+          "article_license_verified": true,
+          "selected_table_third_party_credit_line_present": false,
+          "attribution": "Selected Table 3 values: Ciganas, J.; Kalinauskis, T.; Cigane, U. (2026), Thermo-Mechanical and Fatigue Behavior of 3D-Printed PA12 CF15 for Engineering Application, Polymers 18(5), 563, DOI 10.3390/polym18050563, CC BY 4.0. Reorganized into discrete observations with exact MPa-to-Pa unit re-expression; source numbers and SD strings preserved; curator notes are original.",
+          "modifications": "Reorganization as six condition-level observations, exact SI-prefix unit re-expression and original curator notes.",
+          "third_party_exclusion": "Manufacturer-provided Table 1 is excluded; the article license is not extended to that third-party content.",
+          "project_license_scope": "MIT covers original project contributions and does not replace source rights.",
+          "source_assets_redistributed": false
+        },
+        "gaps": [
+          "The PDF was not retrieved or inspected; its pagination and equivalence to the inspected HTML remain unknown.",
+          "Raw tensile replicates, force/area data and a mathematical UTS extraction definition are unavailable.",
+          "A second transcription checks reading agreement, not an independent experiment, reproduction or scientific review.",
+          "Stress convention, aggregation, numeric humidity, actual moisture and direct specimen temperature remain unknown."
+        ]
+      },
+      "evidence": [
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#polymers-18-00563-t003",
+          "component_id": "polymers-18-00563-t003",
+          "expanded_component_id": "table_body_display_polymers-18-00563-t003",
+          "locator": "Table 3, ultimate tensile strength row and testing-temperature columns",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Selected condition-level UTS values and the row-header SD definition"
+        },
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#sec2dot1-polymers-18-00563",
+          "component_id": "sec2dot1-polymers-18-00563",
+          "expanded_component_id": null,
+          "locator": "Section 2.1, material, drying, specimen preparation, dimensions and chamber conditioning",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Commercial formulation, nominal geometry, 30-minute chamber stabilization and unmeasured post-drying moisture"
+        },
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#polymers-18-00563-t002",
+          "component_id": "polymers-18-00563-t002",
+          "expanded_component_id": "table_body_display_polymers-18-00563-t002",
+          "locator": "Table 2, reported printing parameters",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Process settings, not measured porosity or material homogeneity"
+        },
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#sec2dot2-polymers-18-00563",
+          "component_id": "sec2dot2-polymers-18-00563",
+          "expanded_component_id": null,
+          "locator": "Section 2.2, tensile testing protocol",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Crosshead rate and crosshead-derived engineering strain over the full 110 mm grip separation"
+        },
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#sec2dot2-polymers-18-00563",
+          "component_id": "sec2dot2-polymers-18-00563",
+          "expanded_component_id": null,
+          "locator": "Section 2.2, first paragraph, tensile-test count per temperature",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Three tensile tests for each temperature, not evidence of replicate independence"
+        },
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#html-copyright",
+          "component_id": "html-copyright",
+          "expanded_component_id": null,
+          "locator": "Article copyright and Creative Commons license block",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Article CC BY 4.0 and author copyright, with third-party content excluded"
+        },
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563/notes",
+          "component_id": "version-notes",
+          "expanded_component_id": null,
+          "locator": "Article version notes",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Observed HTML update and reported PDF upload; no PDF-equivalence claim"
+        }
+      ],
+      "limits": [
+        "Catalog-only condition-level tensile summaries from one source-defined protocol; no evaluator or temperature-model admission.",
+        "Not a universal strength bound, design allowable, safety factor, service-life prediction or application-safety claim.",
+        "No interpolation, extrapolation, fitted temperature law, aggregation, cross-study confirmation or statistical significance claim.",
+        "Material state, horizontal raster, preparation, chamber condition and crosshead protocol restrict applicability; equality of temperature alone does not match another protocol.",
+        "The 15 wt.% is declared formulation, not an assayed fraction; 100% infill does not establish zero porosity or isotropy.",
+        "The plus/minus component is reported standard deviation (SD), not SEM, a confidence interval, a bound, an endpoint range or a full uncertainty budget. Neither the sample/population SD formula nor an averaging convention is supplied.",
+        "MPa and Pa describe the same pressure-valued observation; exact SI-prefix scaling adds no measurement precision and uses no specimen geometry.",
+        "These 3D pressure values are not commensurate with 2D membrane force-per-length quantities."
+      ]
+    },
+    {
+      "id": "ciganas2026-pa12cf15-uts-60c",
+      "name": "PA12 CF15 FFF ultimate tensile strength at reported chamber condition 60 °C (Ciganas 2026)",
+      "version": "1.0.0",
+      "observation_type": "experiment_derived_tensile_test_summary",
+      "study_id": "ciganas2026polym18050563",
+      "dataset_id": "ciganas-2026-pa12-cf15-fff-uts-temperature",
+      "protocol_id": "ciganas2026-pa12-cf15-quasistatic-tension",
+      "method_family": "ciganas_2026_pa12_cf15_fff_tensile_temperature_v1",
+      "model_status": "source_reported_tensile_summary_with_explicit_metadata_gaps",
+      "quantity": "ultimate_tensile_strength_as_reported_3d",
+      "quantity_dimension": "pressure",
+      "si_unit": "Pa",
+      "evaluation_support": "catalog_only",
+      "source_cell": {
+        "table": "3",
+        "table_container_id": "polymers-18-00563-t003",
+        "expanded_table_id": "table_body_display_polymers-18-00563-t003",
+        "row": "Ultimate tensile strength, MPa ± SD",
+        "temperature_column": "60"
+      },
+      "material": {
+        "name": "Fiberlogy PA12 CF15, FFF-printed horizontally with alternating +45°/-45° raster",
+        "id": "fiberlogy-pa12-cf15-fff-ciganas2026-specific-protocol",
+        "dimensionality": 3,
+        "matrix": "polyamide 12 (PA12)",
+        "reinforcement": "short carbon fibers",
+        "commercial_grade_as_reported": "PA12 CF15",
+        "brand": "Fiberlogy",
+        "manufacturer": "Fiberlab S.A., Brzezie, Poland",
+        "reinforcement_mass_fraction": {
+          "value": 15,
+          "unit": "wt.%",
+          "basis": "declared_formulation",
+          "independently_assayed_fraction": null
+        },
+        "filament_diameter": {
+          "value": 1.75,
+          "value_string": "1.75",
+          "unit": "mm"
+        },
+        "spool_mass_as_supplied": {
+          "value": 0.5,
+          "value_string": "0.5",
+          "unit": "kg"
+        },
+        "lot_number": null,
+        "color": null,
+        "fiber_length_distribution": null,
+        "fiber_orientation_distribution": null,
+        "measured_porosity": null,
+        "crystallinity": null,
+        "isotropy_established": false,
+        "manufacturer_density_used": false,
+        "scope": "This commercial filament and horizontal alternating-raster FFF preparation; not neat PA12, all PA12 CF15 products, an isotropic bulk resin or all print orientations."
+      },
+      "reported_result": {
+        "value": 32.7,
+        "value_string": "32.70",
+        "unit": "MPa",
+        "source_value_string": "32.70 ± 1.18",
+        "summary_statistic": "reported_central_value",
+        "central_statistic_explicitly_named": null,
+        "aggregation_convention": null,
+        "precision_note": "Source strings preserve two decimal digits; this formatting is not established measurement resolution or accuracy.",
+        "uncertainty": {
+          "value": 1.18,
+          "value_string": "1.18",
+          "unit": "MPa",
+          "notation": "plus_minus",
+          "type": "reported_standard_deviation",
+          "definition_basis": "publisher_html_table_header",
+          "sample_or_population_formula": null,
+          "coverage_factor": null,
+          "confidence_level": null,
+          "averaging_convention": null,
+          "interpretation": "The plus/minus component is reported standard deviation (SD), not SEM, a confidence interval, a bound, an endpoint range or a full uncertainty budget. Neither the sample/population SD formula nor an averaging convention is supplied.",
+          "evidence": {
+            "source_id": "ciganas2026polym18050563",
+            "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+            "source_url": "https://www.mdpi.com/2073-4360/18/5/563#polymers-18-00563-t003",
+            "component_id": "polymers-18-00563-t003",
+            "expanded_component_id": "table_body_display_polymers-18-00563-t003",
+            "locator": "Table 3, ultimate tensile strength row and testing-temperature columns",
+            "verification_status": "publisher_html_component_checked",
+            "verified_as": "Selected condition-level UTS values and the row-header SD definition"
+          }
+        }
+      },
+      "si_result": {
+        "value": 32700000,
+        "uncertainty_value": 1180000,
+        "unit": "Pa",
+        "normalization": {
+          "kind": "exact_decimal_unit_scale",
+          "from_unit": "MPa",
+          "to_unit": "Pa",
+          "factor_string": "1000000",
+          "offset_string": "0",
+          "basis": "SI_prefix_only_no_geometry_or_thickness",
+          "adds_measurement_precision": false
+        }
+      },
+      "method": {
+        "technique": "quasi_static_uniaxial_tension",
+        "instrument": "Step-Lab UD08 (STEP Engineering, Resana, Italy)",
+        "thermal_chamber": "integrated thermal chamber (STEP Engineering, Resana, Italy)",
+        "loading_direction": "along tensile specimen axis; no independent material isotropy asserted",
+        "preparation": {
+          "method": "fused_filament_fabrication",
+          "printer": "Creality K1 MAX (Creality, Shenzhen, China)",
+          "filament_drying": {
+            "equipment": "convection oven",
+            "temperature": {
+              "value": 80,
+              "unit": "degC"
+            },
+            "duration": {
+              "value": 12,
+              "unit": "h"
+            }
+          },
+          "printing_parameters": {
+            "nozzle_temperature": {
+              "value": 265,
+              "unit": "degC"
+            },
+            "bed_temperature": {
+              "value": 100,
+              "unit": "degC"
+            },
+            "reported_specimen_mass": {
+              "value": 6.42,
+              "value_string": "6.42",
+              "unit": "g"
+            },
+            "outer_wall_speed": {
+              "value": 60,
+              "unit": "mm/s"
+            },
+            "inner_wall_speed": {
+              "value": 60,
+              "unit": "mm/s"
+            },
+            "cooling_percent_as_reported": 100,
+            "layer_height": {
+              "value": 0.2,
+              "value_string": "0.2",
+              "unit": "mm"
+            },
+            "raster_angle_table_label": "45",
+            "raster_angle_table_unit": "deg",
+            "raster_methods_description": "+45°/-45°",
+            "infill_setting_percent": 100,
+            "infill_pattern": "linear",
+            "number_of_contours": 5,
+            "nozzle_diameter": {
+              "value": 0.6,
+              "value_string": "0.6",
+              "unit": "mm"
+            },
+            "build_orientation": "horizontal on heated bed",
+            "printing_chamber_temperature": null,
+            "infill_interpretation": "100% is the reported infill setting; it does not establish measured zero porosity."
+          },
+          "postprint_annealing": null,
+          "postprint_storage_duration_and_environment": null,
+          "surface_finishing": null
+        },
+        "specimen": {
+          "shape": "dog_bone",
+          "dimensions_basis": "source_reported_nominal_geometry",
+          "overall_length_mm": 150,
+          "gauge_length_mm_as_reported": 80,
+          "thickness_mm": 3,
+          "narrow_width_mm": 10,
+          "wide_width_mm": 20,
+          "grip_separation_mm": 110,
+          "dimensional_tolerances": null,
+          "measured_cross_section_for_stress": null,
+          "geometry_role": "Nominal specimen context only; no reconstructed stress-area calculation or thickness conversion."
+        },
+        "loading_rate": {
+          "value": 1,
+          "value_string": "1",
+          "unit": "mm/min",
+          "source_label": "load rate",
+          "quantity": "displacement_crosshead_rate",
+          "interpretation": "The displacement-rate unit supports a crosshead-rate reading, not force rate or measured local strain rate."
+        },
+        "local_strain_rate_per_s": null,
+        "strain_measure": "engineering_strain_from_crosshead_displacement",
+        "strain_reference_length": {
+          "value": 110,
+          "unit": "mm",
+          "basis": "full_grip_separation_including_transition_regions"
+        },
+        "strain_definition_note": "The 110 mm grip separation includes the reported 80 mm gauge section and transition regions; no measured local strain rate is reconstructed.",
+        "stress_measure": null,
+        "stress_area_basis": null,
+        "uts_extraction_criterion": null,
+        "stress_definition_note": "Engineering-strain wording does not establish engineering versus true stress or the stress-area calculation. UTS is retained as the Table 3 label.",
+        "standard_as_cited": "ISO 527",
+        "standard_reference_as_reported": "Article reference 33: ISO, Plastics—Determination of Tensile Properties, Geneva, 2025; https://www.iso.org/standard/527-2",
+        "standard_compliance_independently_verified": false,
+        "standard_url_validated": false,
+        "protocol_scope_note": "Source-reported protocol context is not an independently verified standard-compliance certification."
+      },
+      "conditions": {
+        "temperature": {
+          "value": 60,
+          "value_string": "60",
+          "unit": "degC",
+          "basis": "reported_chamber_test_condition",
+          "stabilization_duration_min": 30,
+          "direct_specimen_temperature_measurement": null,
+          "sensor_type_and_location": null,
+          "stability_tolerance": null,
+          "tensile_heating_rate": null,
+          "control_description": "Specimens were held at the selected chamber test condition for 30 minutes. Integrated-chamber temperature control is reported without quantitative stability tolerance; the DMA-only 1 °C/min ramp is not transferred."
+        },
+        "humidity": {
+          "reported_control": "Authors describe constant humidity and constant ambient temperature under controlled climatic conditions",
+          "relative_humidity_percent": null,
+          "humidity_tolerance": null,
+          "specimen_moisture_content": null,
+          "moisture_status": "Moisture after drying and before testing was not measured. Drying does not establish a measured dry-state specimen."
+        },
+        "atmosphere": null,
+        "pressure": null,
+        "notes": [
+          "No chamber gas or ambient pressure is supplied.",
+          "The 23 °C column carries the same reported-chamber-condition basis as every other selected column.",
+          "Processing temperatures and the DMA ramp are not tensile specimen-temperature measurements."
+        ]
+      },
+      "sample_metadata": {
+        "count": 3,
+        "scope": "tensile_tests_per_temperature_condition",
+        "count_definition_source": {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#sec2dot2-polymers-18-00563",
+          "component_id": "sec2dot2-polymers-18-00563",
+          "expanded_component_id": null,
+          "locator": "Section 2.2, first paragraph, tensile-test count per temperature",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Three tensile tests for each temperature, not evidence of replicate independence"
+        },
+        "raw_replicate_values_available": false,
+        "replicate_independence": null,
+        "aggregation_convention": null,
+        "independently_characterized_specimen_count": null,
+        "notes": [
+          "Three tests are reported per condition; neither a named arithmetic mean nor replicate independence is inferred.",
+          "The six temperatures share one study, material preparation and protocol; they are not six independent studies.",
+          "No raw replicate collection is available for SD or stress-area recomputation."
+        ]
+      },
+      "verification": {
+        "status": "publisher_html_selected_cells_methods_version_and_rights_checked",
+        "independent_scientific_review": false,
+        "source_inspection": {
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "publication_date": "2026-02-26",
+          "access_date": "2026-10-03",
+          "html_latest_update_as_reported": "3 September 2026 02:53 CEST",
+          "pdf_upload_as_reported": "26 February 2026 11:36 CET",
+          "pdf_inspected": false,
+          "pdf_pagination": null,
+          "pdf_equivalence_claimed": false,
+          "version_notes_url": "https://www.mdpi.com/2073-4360/18/5/563/notes",
+          "selected_table_visual_checked": true,
+          "separate_reader_transcription_checked": true,
+          "selected_cells_transcription_agree": true,
+          "raw_data_reanalysis": false,
+          "raw_replicate_sd_recomputed": false,
+          "stress_area_recomputed": false,
+          "plot_digitization": false,
+          "independent_replication": false,
+          "source_version_note": "An unselected Table 4 search-rendered snapshot and directly inspected current HTML disagree on two engine-load entries. This discrepancy is outside the selected tensile cells; the inaccessible PDF is not assumed equivalent. The six selected Table 3 UTS/SD cells agree across current HTML, visual inspection and an independent second transcription."
+        },
+        "measurement_lineage": {
+          "evidence_kind": "primary_experimental_tensile_test_derived_parameter",
+          "model_inference_only": false,
+          "manufacturer_lookup": false,
+          "finite_element_input_only": false,
+          "excluded_dataset_dependency": false,
+          "basis": "The selected Table 3 values derive from this study’s tensile experiments; later FE use does not make them assumed FE inputs. No excluded dataset supplies these values."
+        },
+        "rights": {
+          "license_identifier": "CC-BY-4.0",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "copyright_holder_as_reported": "2026 by the authors",
+          "publisher_licensee": "MDPI, Basel, Switzerland",
+          "article_license_verified": true,
+          "selected_table_third_party_credit_line_present": false,
+          "attribution": "Selected Table 3 values: Ciganas, J.; Kalinauskis, T.; Cigane, U. (2026), Thermo-Mechanical and Fatigue Behavior of 3D-Printed PA12 CF15 for Engineering Application, Polymers 18(5), 563, DOI 10.3390/polym18050563, CC BY 4.0. Reorganized into discrete observations with exact MPa-to-Pa unit re-expression; source numbers and SD strings preserved; curator notes are original.",
+          "modifications": "Reorganization as six condition-level observations, exact SI-prefix unit re-expression and original curator notes.",
+          "third_party_exclusion": "Manufacturer-provided Table 1 is excluded; the article license is not extended to that third-party content.",
+          "project_license_scope": "MIT covers original project contributions and does not replace source rights.",
+          "source_assets_redistributed": false
+        },
+        "gaps": [
+          "The PDF was not retrieved or inspected; its pagination and equivalence to the inspected HTML remain unknown.",
+          "Raw tensile replicates, force/area data and a mathematical UTS extraction definition are unavailable.",
+          "A second transcription checks reading agreement, not an independent experiment, reproduction or scientific review.",
+          "Stress convention, aggregation, numeric humidity, actual moisture and direct specimen temperature remain unknown."
+        ]
+      },
+      "evidence": [
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#polymers-18-00563-t003",
+          "component_id": "polymers-18-00563-t003",
+          "expanded_component_id": "table_body_display_polymers-18-00563-t003",
+          "locator": "Table 3, ultimate tensile strength row and testing-temperature columns",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Selected condition-level UTS values and the row-header SD definition"
+        },
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#sec2dot1-polymers-18-00563",
+          "component_id": "sec2dot1-polymers-18-00563",
+          "expanded_component_id": null,
+          "locator": "Section 2.1, material, drying, specimen preparation, dimensions and chamber conditioning",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Commercial formulation, nominal geometry, 30-minute chamber stabilization and unmeasured post-drying moisture"
+        },
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#polymers-18-00563-t002",
+          "component_id": "polymers-18-00563-t002",
+          "expanded_component_id": "table_body_display_polymers-18-00563-t002",
+          "locator": "Table 2, reported printing parameters",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Process settings, not measured porosity or material homogeneity"
+        },
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#sec2dot2-polymers-18-00563",
+          "component_id": "sec2dot2-polymers-18-00563",
+          "expanded_component_id": null,
+          "locator": "Section 2.2, tensile testing protocol",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Crosshead rate and crosshead-derived engineering strain over the full 110 mm grip separation"
+        },
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#sec2dot2-polymers-18-00563",
+          "component_id": "sec2dot2-polymers-18-00563",
+          "expanded_component_id": null,
+          "locator": "Section 2.2, first paragraph, tensile-test count per temperature",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Three tensile tests for each temperature, not evidence of replicate independence"
+        },
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#html-copyright",
+          "component_id": "html-copyright",
+          "expanded_component_id": null,
+          "locator": "Article copyright and Creative Commons license block",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Article CC BY 4.0 and author copyright, with third-party content excluded"
+        },
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563/notes",
+          "component_id": "version-notes",
+          "expanded_component_id": null,
+          "locator": "Article version notes",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Observed HTML update and reported PDF upload; no PDF-equivalence claim"
+        }
+      ],
+      "limits": [
+        "Catalog-only condition-level tensile summaries from one source-defined protocol; no evaluator or temperature-model admission.",
+        "Not a universal strength bound, design allowable, safety factor, service-life prediction or application-safety claim.",
+        "No interpolation, extrapolation, fitted temperature law, aggregation, cross-study confirmation or statistical significance claim.",
+        "Material state, horizontal raster, preparation, chamber condition and crosshead protocol restrict applicability; equality of temperature alone does not match another protocol.",
+        "The 15 wt.% is declared formulation, not an assayed fraction; 100% infill does not establish zero porosity or isotropy.",
+        "The plus/minus component is reported standard deviation (SD), not SEM, a confidence interval, a bound, an endpoint range or a full uncertainty budget. Neither the sample/population SD formula nor an averaging convention is supplied.",
+        "MPa and Pa describe the same pressure-valued observation; exact SI-prefix scaling adds no measurement precision and uses no specimen geometry.",
+        "These 3D pressure values are not commensurate with 2D membrane force-per-length quantities."
+      ]
+    },
+    {
+      "id": "ciganas2026-pa12cf15-uts-80c",
+      "name": "PA12 CF15 FFF ultimate tensile strength at reported chamber condition 80 °C (Ciganas 2026)",
+      "version": "1.0.0",
+      "observation_type": "experiment_derived_tensile_test_summary",
+      "study_id": "ciganas2026polym18050563",
+      "dataset_id": "ciganas-2026-pa12-cf15-fff-uts-temperature",
+      "protocol_id": "ciganas2026-pa12-cf15-quasistatic-tension",
+      "method_family": "ciganas_2026_pa12_cf15_fff_tensile_temperature_v1",
+      "model_status": "source_reported_tensile_summary_with_explicit_metadata_gaps",
+      "quantity": "ultimate_tensile_strength_as_reported_3d",
+      "quantity_dimension": "pressure",
+      "si_unit": "Pa",
+      "evaluation_support": "catalog_only",
+      "source_cell": {
+        "table": "3",
+        "table_container_id": "polymers-18-00563-t003",
+        "expanded_table_id": "table_body_display_polymers-18-00563-t003",
+        "row": "Ultimate tensile strength, MPa ± SD",
+        "temperature_column": "80"
+      },
+      "material": {
+        "name": "Fiberlogy PA12 CF15, FFF-printed horizontally with alternating +45°/-45° raster",
+        "id": "fiberlogy-pa12-cf15-fff-ciganas2026-specific-protocol",
+        "dimensionality": 3,
+        "matrix": "polyamide 12 (PA12)",
+        "reinforcement": "short carbon fibers",
+        "commercial_grade_as_reported": "PA12 CF15",
+        "brand": "Fiberlogy",
+        "manufacturer": "Fiberlab S.A., Brzezie, Poland",
+        "reinforcement_mass_fraction": {
+          "value": 15,
+          "unit": "wt.%",
+          "basis": "declared_formulation",
+          "independently_assayed_fraction": null
+        },
+        "filament_diameter": {
+          "value": 1.75,
+          "value_string": "1.75",
+          "unit": "mm"
+        },
+        "spool_mass_as_supplied": {
+          "value": 0.5,
+          "value_string": "0.5",
+          "unit": "kg"
+        },
+        "lot_number": null,
+        "color": null,
+        "fiber_length_distribution": null,
+        "fiber_orientation_distribution": null,
+        "measured_porosity": null,
+        "crystallinity": null,
+        "isotropy_established": false,
+        "manufacturer_density_used": false,
+        "scope": "This commercial filament and horizontal alternating-raster FFF preparation; not neat PA12, all PA12 CF15 products, an isotropic bulk resin or all print orientations."
+      },
+      "reported_result": {
+        "value": 26.6,
+        "value_string": "26.60",
+        "unit": "MPa",
+        "source_value_string": "26.60 ± 1.15",
+        "summary_statistic": "reported_central_value",
+        "central_statistic_explicitly_named": null,
+        "aggregation_convention": null,
+        "precision_note": "Source strings preserve two decimal digits; this formatting is not established measurement resolution or accuracy.",
+        "uncertainty": {
+          "value": 1.15,
+          "value_string": "1.15",
+          "unit": "MPa",
+          "notation": "plus_minus",
+          "type": "reported_standard_deviation",
+          "definition_basis": "publisher_html_table_header",
+          "sample_or_population_formula": null,
+          "coverage_factor": null,
+          "confidence_level": null,
+          "averaging_convention": null,
+          "interpretation": "The plus/minus component is reported standard deviation (SD), not SEM, a confidence interval, a bound, an endpoint range or a full uncertainty budget. Neither the sample/population SD formula nor an averaging convention is supplied.",
+          "evidence": {
+            "source_id": "ciganas2026polym18050563",
+            "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+            "source_url": "https://www.mdpi.com/2073-4360/18/5/563#polymers-18-00563-t003",
+            "component_id": "polymers-18-00563-t003",
+            "expanded_component_id": "table_body_display_polymers-18-00563-t003",
+            "locator": "Table 3, ultimate tensile strength row and testing-temperature columns",
+            "verification_status": "publisher_html_component_checked",
+            "verified_as": "Selected condition-level UTS values and the row-header SD definition"
+          }
+        }
+      },
+      "si_result": {
+        "value": 26600000,
+        "uncertainty_value": 1150000,
+        "unit": "Pa",
+        "normalization": {
+          "kind": "exact_decimal_unit_scale",
+          "from_unit": "MPa",
+          "to_unit": "Pa",
+          "factor_string": "1000000",
+          "offset_string": "0",
+          "basis": "SI_prefix_only_no_geometry_or_thickness",
+          "adds_measurement_precision": false
+        }
+      },
+      "method": {
+        "technique": "quasi_static_uniaxial_tension",
+        "instrument": "Step-Lab UD08 (STEP Engineering, Resana, Italy)",
+        "thermal_chamber": "integrated thermal chamber (STEP Engineering, Resana, Italy)",
+        "loading_direction": "along tensile specimen axis; no independent material isotropy asserted",
+        "preparation": {
+          "method": "fused_filament_fabrication",
+          "printer": "Creality K1 MAX (Creality, Shenzhen, China)",
+          "filament_drying": {
+            "equipment": "convection oven",
+            "temperature": {
+              "value": 80,
+              "unit": "degC"
+            },
+            "duration": {
+              "value": 12,
+              "unit": "h"
+            }
+          },
+          "printing_parameters": {
+            "nozzle_temperature": {
+              "value": 265,
+              "unit": "degC"
+            },
+            "bed_temperature": {
+              "value": 100,
+              "unit": "degC"
+            },
+            "reported_specimen_mass": {
+              "value": 6.42,
+              "value_string": "6.42",
+              "unit": "g"
+            },
+            "outer_wall_speed": {
+              "value": 60,
+              "unit": "mm/s"
+            },
+            "inner_wall_speed": {
+              "value": 60,
+              "unit": "mm/s"
+            },
+            "cooling_percent_as_reported": 100,
+            "layer_height": {
+              "value": 0.2,
+              "value_string": "0.2",
+              "unit": "mm"
+            },
+            "raster_angle_table_label": "45",
+            "raster_angle_table_unit": "deg",
+            "raster_methods_description": "+45°/-45°",
+            "infill_setting_percent": 100,
+            "infill_pattern": "linear",
+            "number_of_contours": 5,
+            "nozzle_diameter": {
+              "value": 0.6,
+              "value_string": "0.6",
+              "unit": "mm"
+            },
+            "build_orientation": "horizontal on heated bed",
+            "printing_chamber_temperature": null,
+            "infill_interpretation": "100% is the reported infill setting; it does not establish measured zero porosity."
+          },
+          "postprint_annealing": null,
+          "postprint_storage_duration_and_environment": null,
+          "surface_finishing": null
+        },
+        "specimen": {
+          "shape": "dog_bone",
+          "dimensions_basis": "source_reported_nominal_geometry",
+          "overall_length_mm": 150,
+          "gauge_length_mm_as_reported": 80,
+          "thickness_mm": 3,
+          "narrow_width_mm": 10,
+          "wide_width_mm": 20,
+          "grip_separation_mm": 110,
+          "dimensional_tolerances": null,
+          "measured_cross_section_for_stress": null,
+          "geometry_role": "Nominal specimen context only; no reconstructed stress-area calculation or thickness conversion."
+        },
+        "loading_rate": {
+          "value": 1,
+          "value_string": "1",
+          "unit": "mm/min",
+          "source_label": "load rate",
+          "quantity": "displacement_crosshead_rate",
+          "interpretation": "The displacement-rate unit supports a crosshead-rate reading, not force rate or measured local strain rate."
+        },
+        "local_strain_rate_per_s": null,
+        "strain_measure": "engineering_strain_from_crosshead_displacement",
+        "strain_reference_length": {
+          "value": 110,
+          "unit": "mm",
+          "basis": "full_grip_separation_including_transition_regions"
+        },
+        "strain_definition_note": "The 110 mm grip separation includes the reported 80 mm gauge section and transition regions; no measured local strain rate is reconstructed.",
+        "stress_measure": null,
+        "stress_area_basis": null,
+        "uts_extraction_criterion": null,
+        "stress_definition_note": "Engineering-strain wording does not establish engineering versus true stress or the stress-area calculation. UTS is retained as the Table 3 label.",
+        "standard_as_cited": "ISO 527",
+        "standard_reference_as_reported": "Article reference 33: ISO, Plastics—Determination of Tensile Properties, Geneva, 2025; https://www.iso.org/standard/527-2",
+        "standard_compliance_independently_verified": false,
+        "standard_url_validated": false,
+        "protocol_scope_note": "Source-reported protocol context is not an independently verified standard-compliance certification."
+      },
+      "conditions": {
+        "temperature": {
+          "value": 80,
+          "value_string": "80",
+          "unit": "degC",
+          "basis": "reported_chamber_test_condition",
+          "stabilization_duration_min": 30,
+          "direct_specimen_temperature_measurement": null,
+          "sensor_type_and_location": null,
+          "stability_tolerance": null,
+          "tensile_heating_rate": null,
+          "control_description": "Specimens were held at the selected chamber test condition for 30 minutes. Integrated-chamber temperature control is reported without quantitative stability tolerance; the DMA-only 1 °C/min ramp is not transferred."
+        },
+        "humidity": {
+          "reported_control": "Authors describe constant humidity and constant ambient temperature under controlled climatic conditions",
+          "relative_humidity_percent": null,
+          "humidity_tolerance": null,
+          "specimen_moisture_content": null,
+          "moisture_status": "Moisture after drying and before testing was not measured. Drying does not establish a measured dry-state specimen."
+        },
+        "atmosphere": null,
+        "pressure": null,
+        "notes": [
+          "No chamber gas or ambient pressure is supplied.",
+          "The 23 °C column carries the same reported-chamber-condition basis as every other selected column.",
+          "Processing temperatures and the DMA ramp are not tensile specimen-temperature measurements."
+        ]
+      },
+      "sample_metadata": {
+        "count": 3,
+        "scope": "tensile_tests_per_temperature_condition",
+        "count_definition_source": {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#sec2dot2-polymers-18-00563",
+          "component_id": "sec2dot2-polymers-18-00563",
+          "expanded_component_id": null,
+          "locator": "Section 2.2, first paragraph, tensile-test count per temperature",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Three tensile tests for each temperature, not evidence of replicate independence"
+        },
+        "raw_replicate_values_available": false,
+        "replicate_independence": null,
+        "aggregation_convention": null,
+        "independently_characterized_specimen_count": null,
+        "notes": [
+          "Three tests are reported per condition; neither a named arithmetic mean nor replicate independence is inferred.",
+          "The six temperatures share one study, material preparation and protocol; they are not six independent studies.",
+          "No raw replicate collection is available for SD or stress-area recomputation."
+        ]
+      },
+      "verification": {
+        "status": "publisher_html_selected_cells_methods_version_and_rights_checked",
+        "independent_scientific_review": false,
+        "source_inspection": {
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "publication_date": "2026-02-26",
+          "access_date": "2026-10-03",
+          "html_latest_update_as_reported": "3 September 2026 02:53 CEST",
+          "pdf_upload_as_reported": "26 February 2026 11:36 CET",
+          "pdf_inspected": false,
+          "pdf_pagination": null,
+          "pdf_equivalence_claimed": false,
+          "version_notes_url": "https://www.mdpi.com/2073-4360/18/5/563/notes",
+          "selected_table_visual_checked": true,
+          "separate_reader_transcription_checked": true,
+          "selected_cells_transcription_agree": true,
+          "raw_data_reanalysis": false,
+          "raw_replicate_sd_recomputed": false,
+          "stress_area_recomputed": false,
+          "plot_digitization": false,
+          "independent_replication": false,
+          "source_version_note": "An unselected Table 4 search-rendered snapshot and directly inspected current HTML disagree on two engine-load entries. This discrepancy is outside the selected tensile cells; the inaccessible PDF is not assumed equivalent. The six selected Table 3 UTS/SD cells agree across current HTML, visual inspection and an independent second transcription."
+        },
+        "measurement_lineage": {
+          "evidence_kind": "primary_experimental_tensile_test_derived_parameter",
+          "model_inference_only": false,
+          "manufacturer_lookup": false,
+          "finite_element_input_only": false,
+          "excluded_dataset_dependency": false,
+          "basis": "The selected Table 3 values derive from this study’s tensile experiments; later FE use does not make them assumed FE inputs. No excluded dataset supplies these values."
+        },
+        "rights": {
+          "license_identifier": "CC-BY-4.0",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "copyright_holder_as_reported": "2026 by the authors",
+          "publisher_licensee": "MDPI, Basel, Switzerland",
+          "article_license_verified": true,
+          "selected_table_third_party_credit_line_present": false,
+          "attribution": "Selected Table 3 values: Ciganas, J.; Kalinauskis, T.; Cigane, U. (2026), Thermo-Mechanical and Fatigue Behavior of 3D-Printed PA12 CF15 for Engineering Application, Polymers 18(5), 563, DOI 10.3390/polym18050563, CC BY 4.0. Reorganized into discrete observations with exact MPa-to-Pa unit re-expression; source numbers and SD strings preserved; curator notes are original.",
+          "modifications": "Reorganization as six condition-level observations, exact SI-prefix unit re-expression and original curator notes.",
+          "third_party_exclusion": "Manufacturer-provided Table 1 is excluded; the article license is not extended to that third-party content.",
+          "project_license_scope": "MIT covers original project contributions and does not replace source rights.",
+          "source_assets_redistributed": false
+        },
+        "gaps": [
+          "The PDF was not retrieved or inspected; its pagination and equivalence to the inspected HTML remain unknown.",
+          "Raw tensile replicates, force/area data and a mathematical UTS extraction definition are unavailable.",
+          "A second transcription checks reading agreement, not an independent experiment, reproduction or scientific review.",
+          "Stress convention, aggregation, numeric humidity, actual moisture and direct specimen temperature remain unknown."
+        ]
+      },
+      "evidence": [
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#polymers-18-00563-t003",
+          "component_id": "polymers-18-00563-t003",
+          "expanded_component_id": "table_body_display_polymers-18-00563-t003",
+          "locator": "Table 3, ultimate tensile strength row and testing-temperature columns",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Selected condition-level UTS values and the row-header SD definition"
+        },
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#sec2dot1-polymers-18-00563",
+          "component_id": "sec2dot1-polymers-18-00563",
+          "expanded_component_id": null,
+          "locator": "Section 2.1, material, drying, specimen preparation, dimensions and chamber conditioning",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Commercial formulation, nominal geometry, 30-minute chamber stabilization and unmeasured post-drying moisture"
+        },
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#polymers-18-00563-t002",
+          "component_id": "polymers-18-00563-t002",
+          "expanded_component_id": "table_body_display_polymers-18-00563-t002",
+          "locator": "Table 2, reported printing parameters",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Process settings, not measured porosity or material homogeneity"
+        },
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#sec2dot2-polymers-18-00563",
+          "component_id": "sec2dot2-polymers-18-00563",
+          "expanded_component_id": null,
+          "locator": "Section 2.2, tensile testing protocol",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Crosshead rate and crosshead-derived engineering strain over the full 110 mm grip separation"
+        },
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#sec2dot2-polymers-18-00563",
+          "component_id": "sec2dot2-polymers-18-00563",
+          "expanded_component_id": null,
+          "locator": "Section 2.2, first paragraph, tensile-test count per temperature",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Three tensile tests for each temperature, not evidence of replicate independence"
+        },
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#html-copyright",
+          "component_id": "html-copyright",
+          "expanded_component_id": null,
+          "locator": "Article copyright and Creative Commons license block",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Article CC BY 4.0 and author copyright, with third-party content excluded"
+        },
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563/notes",
+          "component_id": "version-notes",
+          "expanded_component_id": null,
+          "locator": "Article version notes",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Observed HTML update and reported PDF upload; no PDF-equivalence claim"
+        }
+      ],
+      "limits": [
+        "Catalog-only condition-level tensile summaries from one source-defined protocol; no evaluator or temperature-model admission.",
+        "Not a universal strength bound, design allowable, safety factor, service-life prediction or application-safety claim.",
+        "No interpolation, extrapolation, fitted temperature law, aggregation, cross-study confirmation or statistical significance claim.",
+        "Material state, horizontal raster, preparation, chamber condition and crosshead protocol restrict applicability; equality of temperature alone does not match another protocol.",
+        "The 15 wt.% is declared formulation, not an assayed fraction; 100% infill does not establish zero porosity or isotropy.",
+        "The plus/minus component is reported standard deviation (SD), not SEM, a confidence interval, a bound, an endpoint range or a full uncertainty budget. Neither the sample/population SD formula nor an averaging convention is supplied.",
+        "MPa and Pa describe the same pressure-valued observation; exact SI-prefix scaling adds no measurement precision and uses no specimen geometry.",
+        "These 3D pressure values are not commensurate with 2D membrane force-per-length quantities."
+      ]
+    },
+    {
+      "id": "ciganas2026-pa12cf15-uts-100c",
+      "name": "PA12 CF15 FFF ultimate tensile strength at reported chamber condition 100 °C (Ciganas 2026)",
+      "version": "1.0.0",
+      "observation_type": "experiment_derived_tensile_test_summary",
+      "study_id": "ciganas2026polym18050563",
+      "dataset_id": "ciganas-2026-pa12-cf15-fff-uts-temperature",
+      "protocol_id": "ciganas2026-pa12-cf15-quasistatic-tension",
+      "method_family": "ciganas_2026_pa12_cf15_fff_tensile_temperature_v1",
+      "model_status": "source_reported_tensile_summary_with_explicit_metadata_gaps",
+      "quantity": "ultimate_tensile_strength_as_reported_3d",
+      "quantity_dimension": "pressure",
+      "si_unit": "Pa",
+      "evaluation_support": "catalog_only",
+      "source_cell": {
+        "table": "3",
+        "table_container_id": "polymers-18-00563-t003",
+        "expanded_table_id": "table_body_display_polymers-18-00563-t003",
+        "row": "Ultimate tensile strength, MPa ± SD",
+        "temperature_column": "100"
+      },
+      "material": {
+        "name": "Fiberlogy PA12 CF15, FFF-printed horizontally with alternating +45°/-45° raster",
+        "id": "fiberlogy-pa12-cf15-fff-ciganas2026-specific-protocol",
+        "dimensionality": 3,
+        "matrix": "polyamide 12 (PA12)",
+        "reinforcement": "short carbon fibers",
+        "commercial_grade_as_reported": "PA12 CF15",
+        "brand": "Fiberlogy",
+        "manufacturer": "Fiberlab S.A., Brzezie, Poland",
+        "reinforcement_mass_fraction": {
+          "value": 15,
+          "unit": "wt.%",
+          "basis": "declared_formulation",
+          "independently_assayed_fraction": null
+        },
+        "filament_diameter": {
+          "value": 1.75,
+          "value_string": "1.75",
+          "unit": "mm"
+        },
+        "spool_mass_as_supplied": {
+          "value": 0.5,
+          "value_string": "0.5",
+          "unit": "kg"
+        },
+        "lot_number": null,
+        "color": null,
+        "fiber_length_distribution": null,
+        "fiber_orientation_distribution": null,
+        "measured_porosity": null,
+        "crystallinity": null,
+        "isotropy_established": false,
+        "manufacturer_density_used": false,
+        "scope": "This commercial filament and horizontal alternating-raster FFF preparation; not neat PA12, all PA12 CF15 products, an isotropic bulk resin or all print orientations."
+      },
+      "reported_result": {
+        "value": 22.78,
+        "value_string": "22.78",
+        "unit": "MPa",
+        "source_value_string": "22.78 ± 0.97",
+        "summary_statistic": "reported_central_value",
+        "central_statistic_explicitly_named": null,
+        "aggregation_convention": null,
+        "precision_note": "Source strings preserve two decimal digits; this formatting is not established measurement resolution or accuracy.",
+        "uncertainty": {
+          "value": 0.97,
+          "value_string": "0.97",
+          "unit": "MPa",
+          "notation": "plus_minus",
+          "type": "reported_standard_deviation",
+          "definition_basis": "publisher_html_table_header",
+          "sample_or_population_formula": null,
+          "coverage_factor": null,
+          "confidence_level": null,
+          "averaging_convention": null,
+          "interpretation": "The plus/minus component is reported standard deviation (SD), not SEM, a confidence interval, a bound, an endpoint range or a full uncertainty budget. Neither the sample/population SD formula nor an averaging convention is supplied.",
+          "evidence": {
+            "source_id": "ciganas2026polym18050563",
+            "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+            "source_url": "https://www.mdpi.com/2073-4360/18/5/563#polymers-18-00563-t003",
+            "component_id": "polymers-18-00563-t003",
+            "expanded_component_id": "table_body_display_polymers-18-00563-t003",
+            "locator": "Table 3, ultimate tensile strength row and testing-temperature columns",
+            "verification_status": "publisher_html_component_checked",
+            "verified_as": "Selected condition-level UTS values and the row-header SD definition"
+          }
+        }
+      },
+      "si_result": {
+        "value": 22780000,
+        "uncertainty_value": 970000,
+        "unit": "Pa",
+        "normalization": {
+          "kind": "exact_decimal_unit_scale",
+          "from_unit": "MPa",
+          "to_unit": "Pa",
+          "factor_string": "1000000",
+          "offset_string": "0",
+          "basis": "SI_prefix_only_no_geometry_or_thickness",
+          "adds_measurement_precision": false
+        }
+      },
+      "method": {
+        "technique": "quasi_static_uniaxial_tension",
+        "instrument": "Step-Lab UD08 (STEP Engineering, Resana, Italy)",
+        "thermal_chamber": "integrated thermal chamber (STEP Engineering, Resana, Italy)",
+        "loading_direction": "along tensile specimen axis; no independent material isotropy asserted",
+        "preparation": {
+          "method": "fused_filament_fabrication",
+          "printer": "Creality K1 MAX (Creality, Shenzhen, China)",
+          "filament_drying": {
+            "equipment": "convection oven",
+            "temperature": {
+              "value": 80,
+              "unit": "degC"
+            },
+            "duration": {
+              "value": 12,
+              "unit": "h"
+            }
+          },
+          "printing_parameters": {
+            "nozzle_temperature": {
+              "value": 265,
+              "unit": "degC"
+            },
+            "bed_temperature": {
+              "value": 100,
+              "unit": "degC"
+            },
+            "reported_specimen_mass": {
+              "value": 6.42,
+              "value_string": "6.42",
+              "unit": "g"
+            },
+            "outer_wall_speed": {
+              "value": 60,
+              "unit": "mm/s"
+            },
+            "inner_wall_speed": {
+              "value": 60,
+              "unit": "mm/s"
+            },
+            "cooling_percent_as_reported": 100,
+            "layer_height": {
+              "value": 0.2,
+              "value_string": "0.2",
+              "unit": "mm"
+            },
+            "raster_angle_table_label": "45",
+            "raster_angle_table_unit": "deg",
+            "raster_methods_description": "+45°/-45°",
+            "infill_setting_percent": 100,
+            "infill_pattern": "linear",
+            "number_of_contours": 5,
+            "nozzle_diameter": {
+              "value": 0.6,
+              "value_string": "0.6",
+              "unit": "mm"
+            },
+            "build_orientation": "horizontal on heated bed",
+            "printing_chamber_temperature": null,
+            "infill_interpretation": "100% is the reported infill setting; it does not establish measured zero porosity."
+          },
+          "postprint_annealing": null,
+          "postprint_storage_duration_and_environment": null,
+          "surface_finishing": null
+        },
+        "specimen": {
+          "shape": "dog_bone",
+          "dimensions_basis": "source_reported_nominal_geometry",
+          "overall_length_mm": 150,
+          "gauge_length_mm_as_reported": 80,
+          "thickness_mm": 3,
+          "narrow_width_mm": 10,
+          "wide_width_mm": 20,
+          "grip_separation_mm": 110,
+          "dimensional_tolerances": null,
+          "measured_cross_section_for_stress": null,
+          "geometry_role": "Nominal specimen context only; no reconstructed stress-area calculation or thickness conversion."
+        },
+        "loading_rate": {
+          "value": 1,
+          "value_string": "1",
+          "unit": "mm/min",
+          "source_label": "load rate",
+          "quantity": "displacement_crosshead_rate",
+          "interpretation": "The displacement-rate unit supports a crosshead-rate reading, not force rate or measured local strain rate."
+        },
+        "local_strain_rate_per_s": null,
+        "strain_measure": "engineering_strain_from_crosshead_displacement",
+        "strain_reference_length": {
+          "value": 110,
+          "unit": "mm",
+          "basis": "full_grip_separation_including_transition_regions"
+        },
+        "strain_definition_note": "The 110 mm grip separation includes the reported 80 mm gauge section and transition regions; no measured local strain rate is reconstructed.",
+        "stress_measure": null,
+        "stress_area_basis": null,
+        "uts_extraction_criterion": null,
+        "stress_definition_note": "Engineering-strain wording does not establish engineering versus true stress or the stress-area calculation. UTS is retained as the Table 3 label.",
+        "standard_as_cited": "ISO 527",
+        "standard_reference_as_reported": "Article reference 33: ISO, Plastics—Determination of Tensile Properties, Geneva, 2025; https://www.iso.org/standard/527-2",
+        "standard_compliance_independently_verified": false,
+        "standard_url_validated": false,
+        "protocol_scope_note": "Source-reported protocol context is not an independently verified standard-compliance certification."
+      },
+      "conditions": {
+        "temperature": {
+          "value": 100,
+          "value_string": "100",
+          "unit": "degC",
+          "basis": "reported_chamber_test_condition",
+          "stabilization_duration_min": 30,
+          "direct_specimen_temperature_measurement": null,
+          "sensor_type_and_location": null,
+          "stability_tolerance": null,
+          "tensile_heating_rate": null,
+          "control_description": "Specimens were held at the selected chamber test condition for 30 minutes. Integrated-chamber temperature control is reported without quantitative stability tolerance; the DMA-only 1 °C/min ramp is not transferred."
+        },
+        "humidity": {
+          "reported_control": "Authors describe constant humidity and constant ambient temperature under controlled climatic conditions",
+          "relative_humidity_percent": null,
+          "humidity_tolerance": null,
+          "specimen_moisture_content": null,
+          "moisture_status": "Moisture after drying and before testing was not measured. Drying does not establish a measured dry-state specimen."
+        },
+        "atmosphere": null,
+        "pressure": null,
+        "notes": [
+          "No chamber gas or ambient pressure is supplied.",
+          "The 23 °C column carries the same reported-chamber-condition basis as every other selected column.",
+          "Processing temperatures and the DMA ramp are not tensile specimen-temperature measurements."
+        ]
+      },
+      "sample_metadata": {
+        "count": 3,
+        "scope": "tensile_tests_per_temperature_condition",
+        "count_definition_source": {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#sec2dot2-polymers-18-00563",
+          "component_id": "sec2dot2-polymers-18-00563",
+          "expanded_component_id": null,
+          "locator": "Section 2.2, first paragraph, tensile-test count per temperature",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Three tensile tests for each temperature, not evidence of replicate independence"
+        },
+        "raw_replicate_values_available": false,
+        "replicate_independence": null,
+        "aggregation_convention": null,
+        "independently_characterized_specimen_count": null,
+        "notes": [
+          "Three tests are reported per condition; neither a named arithmetic mean nor replicate independence is inferred.",
+          "The six temperatures share one study, material preparation and protocol; they are not six independent studies.",
+          "No raw replicate collection is available for SD or stress-area recomputation."
+        ]
+      },
+      "verification": {
+        "status": "publisher_html_selected_cells_methods_version_and_rights_checked",
+        "independent_scientific_review": false,
+        "source_inspection": {
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "publication_date": "2026-02-26",
+          "access_date": "2026-10-03",
+          "html_latest_update_as_reported": "3 September 2026 02:53 CEST",
+          "pdf_upload_as_reported": "26 February 2026 11:36 CET",
+          "pdf_inspected": false,
+          "pdf_pagination": null,
+          "pdf_equivalence_claimed": false,
+          "version_notes_url": "https://www.mdpi.com/2073-4360/18/5/563/notes",
+          "selected_table_visual_checked": true,
+          "separate_reader_transcription_checked": true,
+          "selected_cells_transcription_agree": true,
+          "raw_data_reanalysis": false,
+          "raw_replicate_sd_recomputed": false,
+          "stress_area_recomputed": false,
+          "plot_digitization": false,
+          "independent_replication": false,
+          "source_version_note": "An unselected Table 4 search-rendered snapshot and directly inspected current HTML disagree on two engine-load entries. This discrepancy is outside the selected tensile cells; the inaccessible PDF is not assumed equivalent. The six selected Table 3 UTS/SD cells agree across current HTML, visual inspection and an independent second transcription."
+        },
+        "measurement_lineage": {
+          "evidence_kind": "primary_experimental_tensile_test_derived_parameter",
+          "model_inference_only": false,
+          "manufacturer_lookup": false,
+          "finite_element_input_only": false,
+          "excluded_dataset_dependency": false,
+          "basis": "The selected Table 3 values derive from this study’s tensile experiments; later FE use does not make them assumed FE inputs. No excluded dataset supplies these values."
+        },
+        "rights": {
+          "license_identifier": "CC-BY-4.0",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "copyright_holder_as_reported": "2026 by the authors",
+          "publisher_licensee": "MDPI, Basel, Switzerland",
+          "article_license_verified": true,
+          "selected_table_third_party_credit_line_present": false,
+          "attribution": "Selected Table 3 values: Ciganas, J.; Kalinauskis, T.; Cigane, U. (2026), Thermo-Mechanical and Fatigue Behavior of 3D-Printed PA12 CF15 for Engineering Application, Polymers 18(5), 563, DOI 10.3390/polym18050563, CC BY 4.0. Reorganized into discrete observations with exact MPa-to-Pa unit re-expression; source numbers and SD strings preserved; curator notes are original.",
+          "modifications": "Reorganization as six condition-level observations, exact SI-prefix unit re-expression and original curator notes.",
+          "third_party_exclusion": "Manufacturer-provided Table 1 is excluded; the article license is not extended to that third-party content.",
+          "project_license_scope": "MIT covers original project contributions and does not replace source rights.",
+          "source_assets_redistributed": false
+        },
+        "gaps": [
+          "The PDF was not retrieved or inspected; its pagination and equivalence to the inspected HTML remain unknown.",
+          "Raw tensile replicates, force/area data and a mathematical UTS extraction definition are unavailable.",
+          "A second transcription checks reading agreement, not an independent experiment, reproduction or scientific review.",
+          "Stress convention, aggregation, numeric humidity, actual moisture and direct specimen temperature remain unknown."
+        ]
+      },
+      "evidence": [
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#polymers-18-00563-t003",
+          "component_id": "polymers-18-00563-t003",
+          "expanded_component_id": "table_body_display_polymers-18-00563-t003",
+          "locator": "Table 3, ultimate tensile strength row and testing-temperature columns",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Selected condition-level UTS values and the row-header SD definition"
+        },
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#sec2dot1-polymers-18-00563",
+          "component_id": "sec2dot1-polymers-18-00563",
+          "expanded_component_id": null,
+          "locator": "Section 2.1, material, drying, specimen preparation, dimensions and chamber conditioning",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Commercial formulation, nominal geometry, 30-minute chamber stabilization and unmeasured post-drying moisture"
+        },
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#polymers-18-00563-t002",
+          "component_id": "polymers-18-00563-t002",
+          "expanded_component_id": "table_body_display_polymers-18-00563-t002",
+          "locator": "Table 2, reported printing parameters",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Process settings, not measured porosity or material homogeneity"
+        },
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#sec2dot2-polymers-18-00563",
+          "component_id": "sec2dot2-polymers-18-00563",
+          "expanded_component_id": null,
+          "locator": "Section 2.2, tensile testing protocol",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Crosshead rate and crosshead-derived engineering strain over the full 110 mm grip separation"
+        },
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#sec2dot2-polymers-18-00563",
+          "component_id": "sec2dot2-polymers-18-00563",
+          "expanded_component_id": null,
+          "locator": "Section 2.2, first paragraph, tensile-test count per temperature",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Three tensile tests for each temperature, not evidence of replicate independence"
+        },
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#html-copyright",
+          "component_id": "html-copyright",
+          "expanded_component_id": null,
+          "locator": "Article copyright and Creative Commons license block",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Article CC BY 4.0 and author copyright, with third-party content excluded"
+        },
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563/notes",
+          "component_id": "version-notes",
+          "expanded_component_id": null,
+          "locator": "Article version notes",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Observed HTML update and reported PDF upload; no PDF-equivalence claim"
+        }
+      ],
+      "limits": [
+        "Catalog-only condition-level tensile summaries from one source-defined protocol; no evaluator or temperature-model admission.",
+        "Not a universal strength bound, design allowable, safety factor, service-life prediction or application-safety claim.",
+        "No interpolation, extrapolation, fitted temperature law, aggregation, cross-study confirmation or statistical significance claim.",
+        "Material state, horizontal raster, preparation, chamber condition and crosshead protocol restrict applicability; equality of temperature alone does not match another protocol.",
+        "The 15 wt.% is declared formulation, not an assayed fraction; 100% infill does not establish zero porosity or isotropy.",
+        "The plus/minus component is reported standard deviation (SD), not SEM, a confidence interval, a bound, an endpoint range or a full uncertainty budget. Neither the sample/population SD formula nor an averaging convention is supplied.",
+        "MPa and Pa describe the same pressure-valued observation; exact SI-prefix scaling adds no measurement precision and uses no specimen geometry.",
+        "These 3D pressure values are not commensurate with 2D membrane force-per-length quantities."
+      ]
+    },
+    {
+      "id": "ciganas2026-pa12cf15-uts-120c",
+      "name": "PA12 CF15 FFF ultimate tensile strength at reported chamber condition 120 °C (Ciganas 2026)",
+      "version": "1.0.0",
+      "observation_type": "experiment_derived_tensile_test_summary",
+      "study_id": "ciganas2026polym18050563",
+      "dataset_id": "ciganas-2026-pa12-cf15-fff-uts-temperature",
+      "protocol_id": "ciganas2026-pa12-cf15-quasistatic-tension",
+      "method_family": "ciganas_2026_pa12_cf15_fff_tensile_temperature_v1",
+      "model_status": "source_reported_tensile_summary_with_explicit_metadata_gaps",
+      "quantity": "ultimate_tensile_strength_as_reported_3d",
+      "quantity_dimension": "pressure",
+      "si_unit": "Pa",
+      "evaluation_support": "catalog_only",
+      "source_cell": {
+        "table": "3",
+        "table_container_id": "polymers-18-00563-t003",
+        "expanded_table_id": "table_body_display_polymers-18-00563-t003",
+        "row": "Ultimate tensile strength, MPa ± SD",
+        "temperature_column": "120"
+      },
+      "material": {
+        "name": "Fiberlogy PA12 CF15, FFF-printed horizontally with alternating +45°/-45° raster",
+        "id": "fiberlogy-pa12-cf15-fff-ciganas2026-specific-protocol",
+        "dimensionality": 3,
+        "matrix": "polyamide 12 (PA12)",
+        "reinforcement": "short carbon fibers",
+        "commercial_grade_as_reported": "PA12 CF15",
+        "brand": "Fiberlogy",
+        "manufacturer": "Fiberlab S.A., Brzezie, Poland",
+        "reinforcement_mass_fraction": {
+          "value": 15,
+          "unit": "wt.%",
+          "basis": "declared_formulation",
+          "independently_assayed_fraction": null
+        },
+        "filament_diameter": {
+          "value": 1.75,
+          "value_string": "1.75",
+          "unit": "mm"
+        },
+        "spool_mass_as_supplied": {
+          "value": 0.5,
+          "value_string": "0.5",
+          "unit": "kg"
+        },
+        "lot_number": null,
+        "color": null,
+        "fiber_length_distribution": null,
+        "fiber_orientation_distribution": null,
+        "measured_porosity": null,
+        "crystallinity": null,
+        "isotropy_established": false,
+        "manufacturer_density_used": false,
+        "scope": "This commercial filament and horizontal alternating-raster FFF preparation; not neat PA12, all PA12 CF15 products, an isotropic bulk resin or all print orientations."
+      },
+      "reported_result": {
+        "value": 18.68,
+        "value_string": "18.68",
+        "unit": "MPa",
+        "source_value_string": "18.68 ± 0.91",
+        "summary_statistic": "reported_central_value",
+        "central_statistic_explicitly_named": null,
+        "aggregation_convention": null,
+        "precision_note": "Source strings preserve two decimal digits; this formatting is not established measurement resolution or accuracy.",
+        "uncertainty": {
+          "value": 0.91,
+          "value_string": "0.91",
+          "unit": "MPa",
+          "notation": "plus_minus",
+          "type": "reported_standard_deviation",
+          "definition_basis": "publisher_html_table_header",
+          "sample_or_population_formula": null,
+          "coverage_factor": null,
+          "confidence_level": null,
+          "averaging_convention": null,
+          "interpretation": "The plus/minus component is reported standard deviation (SD), not SEM, a confidence interval, a bound, an endpoint range or a full uncertainty budget. Neither the sample/population SD formula nor an averaging convention is supplied.",
+          "evidence": {
+            "source_id": "ciganas2026polym18050563",
+            "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+            "source_url": "https://www.mdpi.com/2073-4360/18/5/563#polymers-18-00563-t003",
+            "component_id": "polymers-18-00563-t003",
+            "expanded_component_id": "table_body_display_polymers-18-00563-t003",
+            "locator": "Table 3, ultimate tensile strength row and testing-temperature columns",
+            "verification_status": "publisher_html_component_checked",
+            "verified_as": "Selected condition-level UTS values and the row-header SD definition"
+          }
+        }
+      },
+      "si_result": {
+        "value": 18680000,
+        "uncertainty_value": 910000,
+        "unit": "Pa",
+        "normalization": {
+          "kind": "exact_decimal_unit_scale",
+          "from_unit": "MPa",
+          "to_unit": "Pa",
+          "factor_string": "1000000",
+          "offset_string": "0",
+          "basis": "SI_prefix_only_no_geometry_or_thickness",
+          "adds_measurement_precision": false
+        }
+      },
+      "method": {
+        "technique": "quasi_static_uniaxial_tension",
+        "instrument": "Step-Lab UD08 (STEP Engineering, Resana, Italy)",
+        "thermal_chamber": "integrated thermal chamber (STEP Engineering, Resana, Italy)",
+        "loading_direction": "along tensile specimen axis; no independent material isotropy asserted",
+        "preparation": {
+          "method": "fused_filament_fabrication",
+          "printer": "Creality K1 MAX (Creality, Shenzhen, China)",
+          "filament_drying": {
+            "equipment": "convection oven",
+            "temperature": {
+              "value": 80,
+              "unit": "degC"
+            },
+            "duration": {
+              "value": 12,
+              "unit": "h"
+            }
+          },
+          "printing_parameters": {
+            "nozzle_temperature": {
+              "value": 265,
+              "unit": "degC"
+            },
+            "bed_temperature": {
+              "value": 100,
+              "unit": "degC"
+            },
+            "reported_specimen_mass": {
+              "value": 6.42,
+              "value_string": "6.42",
+              "unit": "g"
+            },
+            "outer_wall_speed": {
+              "value": 60,
+              "unit": "mm/s"
+            },
+            "inner_wall_speed": {
+              "value": 60,
+              "unit": "mm/s"
+            },
+            "cooling_percent_as_reported": 100,
+            "layer_height": {
+              "value": 0.2,
+              "value_string": "0.2",
+              "unit": "mm"
+            },
+            "raster_angle_table_label": "45",
+            "raster_angle_table_unit": "deg",
+            "raster_methods_description": "+45°/-45°",
+            "infill_setting_percent": 100,
+            "infill_pattern": "linear",
+            "number_of_contours": 5,
+            "nozzle_diameter": {
+              "value": 0.6,
+              "value_string": "0.6",
+              "unit": "mm"
+            },
+            "build_orientation": "horizontal on heated bed",
+            "printing_chamber_temperature": null,
+            "infill_interpretation": "100% is the reported infill setting; it does not establish measured zero porosity."
+          },
+          "postprint_annealing": null,
+          "postprint_storage_duration_and_environment": null,
+          "surface_finishing": null
+        },
+        "specimen": {
+          "shape": "dog_bone",
+          "dimensions_basis": "source_reported_nominal_geometry",
+          "overall_length_mm": 150,
+          "gauge_length_mm_as_reported": 80,
+          "thickness_mm": 3,
+          "narrow_width_mm": 10,
+          "wide_width_mm": 20,
+          "grip_separation_mm": 110,
+          "dimensional_tolerances": null,
+          "measured_cross_section_for_stress": null,
+          "geometry_role": "Nominal specimen context only; no reconstructed stress-area calculation or thickness conversion."
+        },
+        "loading_rate": {
+          "value": 1,
+          "value_string": "1",
+          "unit": "mm/min",
+          "source_label": "load rate",
+          "quantity": "displacement_crosshead_rate",
+          "interpretation": "The displacement-rate unit supports a crosshead-rate reading, not force rate or measured local strain rate."
+        },
+        "local_strain_rate_per_s": null,
+        "strain_measure": "engineering_strain_from_crosshead_displacement",
+        "strain_reference_length": {
+          "value": 110,
+          "unit": "mm",
+          "basis": "full_grip_separation_including_transition_regions"
+        },
+        "strain_definition_note": "The 110 mm grip separation includes the reported 80 mm gauge section and transition regions; no measured local strain rate is reconstructed.",
+        "stress_measure": null,
+        "stress_area_basis": null,
+        "uts_extraction_criterion": null,
+        "stress_definition_note": "Engineering-strain wording does not establish engineering versus true stress or the stress-area calculation. UTS is retained as the Table 3 label.",
+        "standard_as_cited": "ISO 527",
+        "standard_reference_as_reported": "Article reference 33: ISO, Plastics—Determination of Tensile Properties, Geneva, 2025; https://www.iso.org/standard/527-2",
+        "standard_compliance_independently_verified": false,
+        "standard_url_validated": false,
+        "protocol_scope_note": "Source-reported protocol context is not an independently verified standard-compliance certification."
+      },
+      "conditions": {
+        "temperature": {
+          "value": 120,
+          "value_string": "120",
+          "unit": "degC",
+          "basis": "reported_chamber_test_condition",
+          "stabilization_duration_min": 30,
+          "direct_specimen_temperature_measurement": null,
+          "sensor_type_and_location": null,
+          "stability_tolerance": null,
+          "tensile_heating_rate": null,
+          "control_description": "Specimens were held at the selected chamber test condition for 30 minutes. Integrated-chamber temperature control is reported without quantitative stability tolerance; the DMA-only 1 °C/min ramp is not transferred."
+        },
+        "humidity": {
+          "reported_control": "Authors describe constant humidity and constant ambient temperature under controlled climatic conditions",
+          "relative_humidity_percent": null,
+          "humidity_tolerance": null,
+          "specimen_moisture_content": null,
+          "moisture_status": "Moisture after drying and before testing was not measured. Drying does not establish a measured dry-state specimen."
+        },
+        "atmosphere": null,
+        "pressure": null,
+        "notes": [
+          "No chamber gas or ambient pressure is supplied.",
+          "The 23 °C column carries the same reported-chamber-condition basis as every other selected column.",
+          "Processing temperatures and the DMA ramp are not tensile specimen-temperature measurements."
+        ]
+      },
+      "sample_metadata": {
+        "count": 3,
+        "scope": "tensile_tests_per_temperature_condition",
+        "count_definition_source": {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#sec2dot2-polymers-18-00563",
+          "component_id": "sec2dot2-polymers-18-00563",
+          "expanded_component_id": null,
+          "locator": "Section 2.2, first paragraph, tensile-test count per temperature",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Three tensile tests for each temperature, not evidence of replicate independence"
+        },
+        "raw_replicate_values_available": false,
+        "replicate_independence": null,
+        "aggregation_convention": null,
+        "independently_characterized_specimen_count": null,
+        "notes": [
+          "Three tests are reported per condition; neither a named arithmetic mean nor replicate independence is inferred.",
+          "The six temperatures share one study, material preparation and protocol; they are not six independent studies.",
+          "No raw replicate collection is available for SD or stress-area recomputation."
+        ]
+      },
+      "verification": {
+        "status": "publisher_html_selected_cells_methods_version_and_rights_checked",
+        "independent_scientific_review": false,
+        "source_inspection": {
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "publication_date": "2026-02-26",
+          "access_date": "2026-10-03",
+          "html_latest_update_as_reported": "3 September 2026 02:53 CEST",
+          "pdf_upload_as_reported": "26 February 2026 11:36 CET",
+          "pdf_inspected": false,
+          "pdf_pagination": null,
+          "pdf_equivalence_claimed": false,
+          "version_notes_url": "https://www.mdpi.com/2073-4360/18/5/563/notes",
+          "selected_table_visual_checked": true,
+          "separate_reader_transcription_checked": true,
+          "selected_cells_transcription_agree": true,
+          "raw_data_reanalysis": false,
+          "raw_replicate_sd_recomputed": false,
+          "stress_area_recomputed": false,
+          "plot_digitization": false,
+          "independent_replication": false,
+          "source_version_note": "An unselected Table 4 search-rendered snapshot and directly inspected current HTML disagree on two engine-load entries. This discrepancy is outside the selected tensile cells; the inaccessible PDF is not assumed equivalent. The six selected Table 3 UTS/SD cells agree across current HTML, visual inspection and an independent second transcription."
+        },
+        "measurement_lineage": {
+          "evidence_kind": "primary_experimental_tensile_test_derived_parameter",
+          "model_inference_only": false,
+          "manufacturer_lookup": false,
+          "finite_element_input_only": false,
+          "excluded_dataset_dependency": false,
+          "basis": "The selected Table 3 values derive from this study’s tensile experiments; later FE use does not make them assumed FE inputs. No excluded dataset supplies these values."
+        },
+        "rights": {
+          "license_identifier": "CC-BY-4.0",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "copyright_holder_as_reported": "2026 by the authors",
+          "publisher_licensee": "MDPI, Basel, Switzerland",
+          "article_license_verified": true,
+          "selected_table_third_party_credit_line_present": false,
+          "attribution": "Selected Table 3 values: Ciganas, J.; Kalinauskis, T.; Cigane, U. (2026), Thermo-Mechanical and Fatigue Behavior of 3D-Printed PA12 CF15 for Engineering Application, Polymers 18(5), 563, DOI 10.3390/polym18050563, CC BY 4.0. Reorganized into discrete observations with exact MPa-to-Pa unit re-expression; source numbers and SD strings preserved; curator notes are original.",
+          "modifications": "Reorganization as six condition-level observations, exact SI-prefix unit re-expression and original curator notes.",
+          "third_party_exclusion": "Manufacturer-provided Table 1 is excluded; the article license is not extended to that third-party content.",
+          "project_license_scope": "MIT covers original project contributions and does not replace source rights.",
+          "source_assets_redistributed": false
+        },
+        "gaps": [
+          "The PDF was not retrieved or inspected; its pagination and equivalence to the inspected HTML remain unknown.",
+          "Raw tensile replicates, force/area data and a mathematical UTS extraction definition are unavailable.",
+          "A second transcription checks reading agreement, not an independent experiment, reproduction or scientific review.",
+          "Stress convention, aggregation, numeric humidity, actual moisture and direct specimen temperature remain unknown."
+        ]
+      },
+      "evidence": [
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#polymers-18-00563-t003",
+          "component_id": "polymers-18-00563-t003",
+          "expanded_component_id": "table_body_display_polymers-18-00563-t003",
+          "locator": "Table 3, ultimate tensile strength row and testing-temperature columns",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Selected condition-level UTS values and the row-header SD definition"
+        },
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#sec2dot1-polymers-18-00563",
+          "component_id": "sec2dot1-polymers-18-00563",
+          "expanded_component_id": null,
+          "locator": "Section 2.1, material, drying, specimen preparation, dimensions and chamber conditioning",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Commercial formulation, nominal geometry, 30-minute chamber stabilization and unmeasured post-drying moisture"
+        },
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#polymers-18-00563-t002",
+          "component_id": "polymers-18-00563-t002",
+          "expanded_component_id": "table_body_display_polymers-18-00563-t002",
+          "locator": "Table 2, reported printing parameters",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Process settings, not measured porosity or material homogeneity"
+        },
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#sec2dot2-polymers-18-00563",
+          "component_id": "sec2dot2-polymers-18-00563",
+          "expanded_component_id": null,
+          "locator": "Section 2.2, tensile testing protocol",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Crosshead rate and crosshead-derived engineering strain over the full 110 mm grip separation"
+        },
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#sec2dot2-polymers-18-00563",
+          "component_id": "sec2dot2-polymers-18-00563",
+          "expanded_component_id": null,
+          "locator": "Section 2.2, first paragraph, tensile-test count per temperature",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Three tensile tests for each temperature, not evidence of replicate independence"
+        },
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563#html-copyright",
+          "component_id": "html-copyright",
+          "expanded_component_id": null,
+          "locator": "Article copyright and Creative Commons license block",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Article CC BY 4.0 and author copyright, with third-party content excluded"
+        },
+        {
+          "source_id": "ciganas2026polym18050563",
+          "artifact": "publisher_html_updated_2026_09_03_inspected_2026_10_03",
+          "source_url": "https://www.mdpi.com/2073-4360/18/5/563/notes",
+          "component_id": "version-notes",
+          "expanded_component_id": null,
+          "locator": "Article version notes",
+          "verification_status": "publisher_html_component_checked",
+          "verified_as": "Observed HTML update and reported PDF upload; no PDF-equivalence claim"
+        }
+      ],
+      "limits": [
+        "Catalog-only condition-level tensile summaries from one source-defined protocol; no evaluator or temperature-model admission.",
+        "Not a universal strength bound, design allowable, safety factor, service-life prediction or application-safety claim.",
+        "No interpolation, extrapolation, fitted temperature law, aggregation, cross-study confirmation or statistical significance claim.",
+        "Material state, horizontal raster, preparation, chamber condition and crosshead protocol restrict applicability; equality of temperature alone does not match another protocol.",
+        "The 15 wt.% is declared formulation, not an assayed fraction; 100% infill does not establish zero porosity or isotropy.",
+        "The plus/minus component is reported standard deviation (SD), not SEM, a confidence interval, a bound, an endpoint range or a full uncertainty budget. Neither the sample/population SD formula nor an averaging convention is supplied.",
+        "MPa and Pa describe the same pressure-valued observation; exact SI-prefix scaling adds no measurement precision and uses no specimen geometry.",
+        "These 3D pressure values are not commensurate with 2D membrane force-per-length quantities."
       ]
     }
   ]

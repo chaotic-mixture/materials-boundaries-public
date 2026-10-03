@@ -19,6 +19,8 @@ WAVE_TEST_UPDATES = json.loads((Path(__file__).parent / 'fixtures/wave_test_upda
 
 HBN_TEST_UPDATES = json.loads((Path(__file__).parent / 'fixtures/hbn_test_updates_v0190.json').read_text(encoding='utf-8'))
 
+PA12_TEST_UPDATES = json.loads((Path(__file__).parent / 'fixtures/pa12_test_updates_v0220.json').read_text(encoding='utf-8'))
+
 PUBLIC_BASELINE = json.loads((Path(__file__).parent / 'fixtures/public_baseline_adjustments.json').read_text(encoding='utf-8'))
 
 
@@ -151,5 +153,16 @@ def reviewed_test_hash(filename, expected):
     if change is not None:
         if change['previous_sha256'] != expected or not change['reason'].strip():
             raise AssertionError('Broken hBN test-update provenance: ' + filename)
+        expected = change['sha256']
+    updates = PA12_TEST_UPDATES['approved_test_updates']
+    allowed = {'tests/test_catalog_translation_snapshot.py', 'tests/test_hbn_observation_catalog.py',
+               'tests/test_mos2_observation_catalog.py', 'tests/test_observation_catalog.py',
+               'tests/test_observation_inspection.py', 'tests/provenance_corrections.py'}
+    if set(updates) != allowed:
+        raise AssertionError('Unexpected PA12-release historical test override')
+    change = updates.get(filename)
+    if change is not None:
+        if change['previous_sha256'] != expected or not change['reason'].strip():
+            raise AssertionError('Broken PA12 test-update provenance: ' + filename)
         expected = change['sha256']
     return expected

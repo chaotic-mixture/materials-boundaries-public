@@ -1,11 +1,48 @@
 # 快速开始：材料边界
 
-## 当前 v0.21.0：新增六条 Ni11X 模型预测
+## 当前 v0.22.0：六个试验箱条件下的 PA12 CF15 拉伸摘要
+
+新增 Ciganas、Kalinauskis 和 Cigane（2026）表 3 的六个 UTS／SD 单元格，
+报告的试验箱条件为 **23、40、60、80、100、120 °C**。当前共 **四项研究的
+12 条观测、52 条来源**；**36 条论断、12 条预测、五个合成温度模型、七个分支
+及八条可执行复合材料规则**不变。
+
+材料为水平 FFF 打印的 Fiberlogy PA12 CF15，交替 +45°／−45° 光栅，
+试验箱稳定 30 分钟后以 1 mm/min 横梁位移速率测试。这不是实测局部应变率，
+也不证明直接试样温度或温度稳定公差。干燥不能证明实际含水量；15 wt.% 是声明
+配方，100% 填充是打印设置，不代表实测纤维含量或零孔隙率。应力定义、应力面积
+依据、确切中心统计量和聚合方式仍未知。每条件报告三次试验；± 是报告的标准差，
+不是标准误、置信区间、硬界或通用工程许用值。
+
+新类型为 `experiment_derived_tensile_test_summary`，物理量为
+`ultimate_tensile_strength_as_reported_3d`。**MPa 来源字符串**及 SD 与
+**精确 Pa 单位换算**分开，1 MPa = 1000000 Pa 不增加测量精度或进行几何重算。
+旧二维 N/m 记录不变。不插值、不拟合连续温度规律、不排名或跨量纲比较。
+
+观测 schema 为 **1.3.0**，查阅 schema 为 **1.1.0**。旧查阅包须重新生成，不能只改
+版本号。默认返回 12 张文本卡片，核心警告先于性质值；CSV 明确区分报告单位与 SI／
+归一化列。完整目录拒绝同一来源单元格的重复别名；科学内容不变的子集及改名身份可用，
+其他既有方法族的追加能力保留。
+
+保留所检 HTML 的更新版本、PDF 未检查和未选表 4 的缓存／实时差异。六个所选表 3
+单元格通过当前 HTML、视觉核对及第二次独立转录一致，不代表独立实验重复。文章的
+CC BY 4.0 及作者／题名／DOI 归属保留；厂家表 1 排除，不再分发来源媒体或长段正文。
+翻译及软件检查不是独立科学审查或母语审校。
+
+```sh
+python -m materials_boundaries catalog observations --source-id ciganas2026polym18050563 --text --lang zh
+python -m materials_boundaries observation inspect --source-id ciganas2026polym18050563 --output /tmp/pa12-cf15-zh --lang zh
+python -m materials_boundaries observation inspect --id ciganas2026-pa12cf15-uts-60c --output /tmp/pa12-cf15-60c-zh --lang zh
+```
+
+[PA12 CF15](PA12_CF15_TEMPERATURE_OBSERVATIONS.md) · [v0.22.0](MIGRATION_v0.22.0.md) · [Inspection](OBSERVATION_INSPECTION.md)
+
+## 此前 v0.21.0：新增六条 Ni11X 模型预测
 
 本版只新增六条已发表的理想剪切预测：**Ni11Cr 4.90、Ni11Mn 5.12、
 Ni11Fe 5.20、Ni11Cu 4.51、Ni11Si 4.17、Ni11Ti 4.24 GPa**，来源为
 Shimanek 等的 arXiv:2108.06412v2，表 2，PDF／印刷页码 27。
-当前共 **12 条预测、2 个科学方法族、3 个显式比较组**；36 条论断、51 条来源、
+在 v0.21.0 时，共 **12 条预测、2 个科学方法族、3 个显式比较组**；36 条论断、51 条来源、
 三项研究的 6 条观测、5 个合成温度演示（7 个分支）及 8 条可执行复合材料规则不变。
 不改变运行时、科学 schema 或已有来源记录。
 
@@ -148,7 +185,7 @@ python -m materials_boundaries temperature evaluate examples/temperature/synthet
 python -m materials_boundaries temperature plot --output /tmp/temperature-demos --lang zh
 ```
 
-[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.21.0.md)
+[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.22.0.md)
 
 ## 本地运行
 
@@ -259,7 +296,7 @@ python -m materials_boundaries catalog claims --query porous --direction interva
 
 ## 检索观测
 
-`catalog observations` 同样默认输出规范 JSON，并用 `--text` 选择本地化显示。观测查询检索 ID、名称、`quantity`、`observation_type`、`study_id`、`material.name`、证据来源 ID 和四语言策展显示名称，沿用字面、所有词均命中的规则。`--source-id` 由论断与观测共用；`--quantity` 和 `--observation-type experiment_derived_model_dependent` 仅供观测，精确匹配并区分大小写。所有筛选按 AND 组合，不支持的目录／筛选组合报错。同一研究 ID 下的两个性质记录仍只代表一项研究。
+`catalog observations` 同样默认输出规范 JSON，并用 `--text` 选择本地化显示。观测查询检索 ID、名称、`quantity`、`observation_type`、`study_id`、`material.name`、证据来源 ID 和四语言策展显示名称，沿用字面、所有词均命中的规则。`--source-id` 由论断与观测共用；`--quantity` 和 `--observation-type` (`experiment_derived_model_dependent`, `experiment_derived_tensile_test_summary`) 仅供观测，精确匹配并区分大小写。所有筛选按 AND 组合，不支持的目录／筛选组合报错。同一研究 ID 下的两个性质记录仍只代表一项研究。
 
 ```sh
 python -m materials_boundaries catalog observations --observation-type experiment_derived_model_dependent --query graphene --text --lang zh

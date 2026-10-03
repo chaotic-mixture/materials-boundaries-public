@@ -162,3 +162,29 @@ PAW dataset, a valence configuration or absence of semicore states. Unknown
 conditions and uncertainty remain explicit; published-method-only comparison is
 not an input audit. [Source scope](docs/SOURCES.md#v0210-ni11x-six-record-addition-existing-source-new-inspected-cells)
 · [Scientific qualifications](docs/COMPUTATIONAL_PREDICTIONS.md).
+
+
+## PA12 CF15 tensile-test summaries (v0.22.0)
+
+Justas Ciganas, Tomas Kalinauskis and Urte Cigane (2026),
+[“Thermo-Mechanical and Fatigue Behavior of 3D-Printed PA12 CF15 for Engineering Application”](https://doi.org/10.3390/polym18050563),
+*Polymers* 18(5), 563. The [article copyright block](https://www.mdpi.com/2073-4360/18/5/563#html-copyright)
+was inspected on 3 October 2026 and identifies ©2026 by the authors, MDPI as
+licensee, under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
+No third-party credit line was shown for selected Table 3.
+
+The six selected UTS/SD cells at reported chamber conditions 23, 40, 60, 80,
+100 and 120 °C are attributed to Table 3 of this article. They were reorganized
+into discrete observations: source numbers and SD strings are preserved, exact
+MPa-to-Pa unit re-expression is added, and curator notes are original summaries.
+This is not raw-data reanalysis, independent replication or a universal allowable.
+The article's Table 1 is manufacturer-provided and excluded; article licensing
+is not assumed to relicense that third-party content.
+
+Inspected HTML revision metadata and the cached/live discrepancy in unselected
+Table 4 are retained. The PDF was not inspected and no PDF equivalence is claimed.
+No publisher PDF, screenshot, figure, HTML dump, long passage or raw measurement
+collection is redistributed. The MIT license covers original project
+contributions only and does not replace source rights or imply author/publisher
+endorsement. See [source and scientific limits](docs/PA12_CF15_TEMPERATURE_OBSERVATIONS.md)
+and [source ledger](docs/SOURCES.md).

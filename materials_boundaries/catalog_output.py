@@ -58,6 +58,47 @@ def render_catalog(catalog: dict, kind: str, language: str = "en") -> str:
             field("catalog_license_id", source["license"]["identifier"], indent),
         ]
 
+    def pa12_observation(record: dict) -> list[str]:
+        """Dedicated 3D tensile-summary display; no membrane conversion path."""
+        result = record["reported_result"]
+        uncertainty = result["uncertainty"]
+        temperature = record["conditions"]["temperature"]
+        si = record["si_result"]
+        if record["study_id"] not in sources:
+            raise ValueError("PA12 observation contract: missing referenced source")
+        rendered = [
+            field("catalog_original_name", record["name"]),
+            field("catalog_version", record["version"]),
+            field("catalog_study_id", record["study_id"]),
+            "  " + t("catalog_pa12_classification"),
+            "  " + t("catalog_pa12_identity"),
+            field("catalog_pa12_dataset", record["dataset_id"]),
+            field("catalog_pa12_protocol", record["protocol_id"]),
+            field("catalog_quantity", record["quantity"]),
+            field("catalog_quantity_dimension", record["quantity_dimension"]),
+            "  " + t("catalog_pa12_temperature"),
+            field("catalog_temperature", f'{temperature["value_string"]} °C [{temperature["basis"]}]'),
+            "  " + t("catalog_pa12_process"),
+            "  " + t("catalog_pa12_stress"),
+            "  " + t("catalog_pa12_sample"),
+            field("catalog_pa12_reported", f'{result["value_string"]} ± {uncertainty["value_string"]} MPa'),
+            field("catalog_pa12_si", f'{int(si["value"])} ± {int(si["uncertainty_value"])} Pa'),
+            "  " + t("catalog_pa12_normalization"),
+            field("catalog_pa12_cell", json.dumps(record["source_cell"], ensure_ascii=False, sort_keys=True)),
+            "  " + t("catalog_pa12_source_version"),
+            "  " + t("catalog_pa12_rights"),
+            field("catalog_pa12_details", ""),
+        ]
+        # All source-specific process, geometry, unknowns, counts, component
+        # evidence and rights remain visible. Keys and source metadata are
+        # language-neutral; authored warnings/labels above are localized.
+        for key in ("material", "method", "conditions", "sample_metadata",
+                    "reported_result", "si_result", "verification", "evidence", "limits"):
+            rendered.append("    " + key + ": " + json.dumps(record[key], ensure_ascii=False, sort_keys=True))
+        rendered.extend(source_summary(sources[record["study_id"]], "    "))
+        rendered.append("    " + json.dumps(sources[record["study_id"]], ensure_ascii=False, sort_keys=True))
+        return rendered
+
     def hbn_observation(record: dict) -> list[str]:
         """Render the Falin family without borrowing graphene/MoS2 conventions."""
         material, method = record["material"], record["method"]
@@ -246,6 +287,11 @@ def render_catalog(catalog: dict, kind: str, language: str = "en") -> str:
     if not catalog["records"]:
         lines.append(t("catalog_empty"))
     sources = {source["id"]: source for source in read_catalog("sources")["records"]} if kind in {"claims", "observations"} else {}
+    from ._pa12_cf15_observation_contract import validate_pa12_sources
+    if kind == "sources":
+        validate_pa12_sources(catalog["records"])
+    elif kind in {"claims", "observations"}:
+        validate_pa12_sources(list(sources.values()))
     for record in catalog["records"]:
         lines.extend(["", f'{t({"claims": "claim", "sources": "source", "observations": "observation"}[kind])}: {record["id"]}'])
         if kind == "sources":
@@ -265,6 +311,9 @@ def render_catalog(catalog: dict, kind: str, language: str = "en") -> str:
             display_name = t(name_key)
             if display_name != f"[missing:{name_key}]":
                 lines.append(field("catalog_display_name", display_name))
+            if record.get("method_family") == "ciganas_2026_pa12_cf15_fff_tensile_temperature_v1":
+                lines.extend(pa12_observation(record))
+                continue
             if record.get("method_family") == "falin_2017_hbn_monolayer_indentation_v1":
                 lines.extend(hbn_observation(record))
                 continue

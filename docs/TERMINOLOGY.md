@@ -249,3 +249,23 @@ of an hBN mismatch. Keep the separate MoS2 q inconsistency visible. N/m is
 source-printed, with no automatic thickness conversion. Article CC BY 4.0 does
 not establish the separate supplement/peer-review-file license scope. These
 translations do not claim independent scientific or native-language review.
+
+
+## PA12 CF15 tensile-summary terms (v0.22.0)
+
+| Canonical concept | English | 简体中文 | 日本語 | Deutsch |
+| --- | --- | --- | --- | --- |
+| `experiment_derived_tensile_test_summary` | Experiment-derived tensile-test summary | 实验导出的拉伸试验摘要 | 実験から導いた引張試験要約 | Experimentell abgeleitete Zugversuchszusammenfassung |
+| `ultimate_tensile_strength_as_reported_3d` | Ultimate tensile strength as reported (3D) | 来源报告的极限拉伸强度（三维） | 報告された引張強さ（3D） | Berichtete Zugfestigkeit (3D) |
+| `reported_chamber_test_condition` | Reported chamber test condition | 报告的试验箱条件 | 報告された試験槽条件 | Berichtete Kammerprüfbedingung |
+| Reported-unit display | Catalog display in reported units | 以报告单位显示的目录值 | 報告単位によるカタログ表示 | Kataloganzeige in berichteten Einheiten |
+| Exact SI unit re-expression | Exact SI unit re-expression, no added precision | 精确 SI 单位换算，不增加精度 | 正確な SI 単位換算、精度の追加なし | Exakte SI-Einheitenumrechnung, keine zusätzliche Präzision |
+
+The new type is distinct from the older indentation families' model-dependent
+classification; it does not claim raw force/area measurement, verified stress
+convention or a known central statistic. Its six conditions are one study,
+with three reported tensile tests per condition. SD is not SEM, a confidence
+interval or bounds. Reported chamber conditions are not directly measured
+specimen temperatures. MPa-to-Pa scaling adds no measured precision, thickness
+assumption or comparison with 2D N/m. [Full definitions and gaps](PA12_CF15_TEMPERATURE_OBSERVATIONS.md).
+The translations remain unreviewed working terminology.

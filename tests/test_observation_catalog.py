@@ -33,7 +33,7 @@ def ids(catalog):
 class ObservationCatalogTests(unittest.TestCase):
     def test_historical_observation_records_and_catalog_separation(self):
         claims, sources, observations = [read_catalog(k) for k in ('claims', 'sources', 'observations')]
-        self.assertEqual([c['schema_version'] for c in (claims, sources, observations)], ['1.11.0', '1.0.0', '1.2.0'])
+        self.assertEqual([c['schema_version'] for c in (claims, sources, observations)], ['1.11.0', '1.0.0', '1.3.0'])
         self.assertTrue(set(IDS).issubset(ids(observations)))
         self.assertIn(SOURCE, ids(sources))
         self.assertTrue(set(ids(claims)).isdisjoint(IDS))

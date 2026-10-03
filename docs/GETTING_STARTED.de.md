@@ -1,11 +1,60 @@
 # Erste Schritte: Materials Boundaries
 
-## Aktuell v0.21.0: sechs zusätzliche Ni11X-Modellvorhersagen
+## Aktuell v0.22.0: PA12-CF15-Zugversuche bei sechs Kammerbedingungen
+
+Sechs UTS/SD-Zellen aus Tabelle 3 von Ciganas, Kalinauskis und Cigane (2026)
+kommen hinzu, bei berichteten Kammerbedingungen **23, 40, 60, 80, 100 und 120 °C**.
+Aktuell: **12 Beobachtungen aus vier Studien und 52 Quellen**. Die **36 Aussagen,
+12 Vorhersagen, fünf synthetischen Modelle, sieben Zweige und acht ausführbaren
+Verbundregeln** bleiben unverändert.
+
+Die Proben bestehen aus horizontal FFF-gedrucktem Fiberlogy PA12 CF15 mit
+wechselndem +45°/−45°-Raster, 30 Minuten Kammerstabilisierung und 1 mm/min
+Traversengeschwindigkeit. Direkte Probentemperatur, Stabilitätstoleranz, lokale
+Dehnrate und tatsächliche Feuchte sind unbekannt. Trocknung ersetzt keine
+Feuchtemessung; 15 wt.% ist deklarierte Rezeptur und 100% Infill eine Druckeinstellung,
+kein gemessener Faseranteil oder Nachweis von Porenfreiheit. Spannungsdefinition,
+Querschnittsbasis, Zentralstatistik und Aggregation bleiben unbekannt. Drei
+Versuche je Bedingung und berichtete SD ergeben weder SEM, Konfidenzintervalle,
+harte Grenzen noch universelle Bemessungswerte.
+
+Der neue Typ heißt `experiment_derived_tensile_test_summary`, die Größe
+`ultimate_tensile_strength_as_reported_3d`. Exakte **MPa-Quellzeichenfolgen** und SD
+bleiben von der **exakten Pa-Einheitenumrechnung** getrennt: 1 MPa = 1000000 Pa.
+Dies ergänzt keine Messpräzision und berechnet keine Spannung aus Geometrie.
+Die früheren 2D-N/m-Einträge bleiben unverändert. Keine Interpolation, stetige
+Temperaturfunktion, Rangfolge oder dimensionsübergreifende Vergleichbarkeit.
+
+Beobachtungsschema **1.3.0**, Inspektionsschema **1.1.0**: gespeicherte Bündel
+neu erzeugen, nicht umetikettieren. Standardmäßig erscheinen 12 Textkarten mit
+Warnungen vor Eigenschaftswerten. CSV unterscheidet berichtete Einheiten von
+SI-/Normalisierungsspalten. Der vollständige Katalog weist doppelte Aliase einer
+Quellzelle zurück; Teilmengen und umbenannte Identitäten mit unveränderter
+wissenschaftlicher Nutzlast bleiben gültig. Andere bestehende Familien bleiben
+unter ihrem vollständigen Vertrag erweiterbar.
+
+HTML-Version, ungeprüftes PDF und die Cache/Live-Abweichung in der ausgeschlossenen
+Tabelle 4 bleiben sichtbar. Übereinstimmung gilt nur für sechs ausgewählte
+Tabelle-3-Zellen in HTML, visueller Prüfung und zweiter Transkription, nicht für
+unabhängige Experimente. Artikel-CC-BY-4.0 mit Autoren/Titel/DOI-Zuordnung bleibt;
+Herstellertabelle 1 ist ausgeschlossen. Keine Quellenmedien oder langen Passagen
+werden verteilt. Software-/Übersetzungsprüfung ist keine unabhängige Wissenschafts-
+oder Muttersprachprüfung.
+
+```sh
+python -m materials_boundaries catalog observations --source-id ciganas2026polym18050563 --text --lang de
+python -m materials_boundaries observation inspect --source-id ciganas2026polym18050563 --output /tmp/pa12-cf15-de --lang de
+python -m materials_boundaries observation inspect --id ciganas2026-pa12cf15-uts-60c --output /tmp/pa12-cf15-60c-de --lang de
+```
+
+[PA12 CF15](PA12_CF15_TEMPERATURE_OBSERVATIONS.md) · [v0.22.0](MIGRATION_v0.22.0.md) · [Inspection](OBSERVATION_INSPECTION.md)
+
+## Früher v0.21.0: sechs zusätzliche Ni11X-Modellvorhersagen
 
 Genau sechs veröffentlichte ideale Scherfestigkeiten kommen hinzu:
 **Ni11Cr 4.90, Ni11Mn 5.12, Ni11Fe 5.20, Ni11Cu 4.51, Ni11Si 4.17 und
 Ni11Ti 4.24 GPa**. Quelle: Shimanek et al., arXiv:2108.06412v2, Tabelle 2,
-PDF-/Druckseite 27. Der Katalog umfasst nun **12 Vorhersagen, 2 wissenschaftliche
+PDF-/Druckseite 27. Der Katalog umfasste bei v0.21.0 **12 Vorhersagen, 2 wissenschaftliche
 Methodenfamilien und 3 explizite Vergleichsgruppen**. Die 36 Aussagen, 51 Quellen,
 6 Beobachtungen aus 3 Studien, 5 synthetischen Temperaturdemos (7 Zweige) und
 8 ausführbaren Verbundregeln bleiben unverändert. Laufzeitcode, wissenschaftliche
@@ -222,7 +271,7 @@ python -m materials_boundaries temperature evaluate examples/temperature/synthet
 python -m materials_boundaries temperature plot --output /tmp/temperature-demos --lang de
 ```
 
-[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.21.0.md)
+[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.22.0.md)
 
 ## Lokal ausführen
 
@@ -333,7 +382,7 @@ python -m materials_boundaries catalog claims --query porous --direction interva
 
 ## Beobachtungen durchsuchen
 
-Auch `catalog observations` liefert standardmäßig kanonisches JSON; `--text` wählt die lokalisierte Darstellung. Beobachtungsabfragen durchsuchen ID, Name, `quantity`, `observation_type`, `study_id`, `material.name`, Belegquellen-IDs und kuratierte Anzeigenamen aller vier Sprachen mit derselben wörtlichen Alle-Begriffe-Suche. `--source-id` gilt für Aussagen und Beobachtungen; `--quantity` und `--observation-type experiment_derived_model_dependent` gelten nur für Beobachtungen und vergleichen exakt mit Groß-/Kleinschreibung. Alle Filter werden mit AND verknüpft; unzulässige Katalog-/Filterkombinationen sind Fehler. Zwei Eigenschaftsdatensätze mit derselben Studien-ID bleiben eine Studie.
+Auch `catalog observations` liefert standardmäßig kanonisches JSON; `--text` wählt die lokalisierte Darstellung. Beobachtungsabfragen durchsuchen ID, Name, `quantity`, `observation_type`, `study_id`, `material.name`, Belegquellen-IDs und kuratierte Anzeigenamen aller vier Sprachen mit derselben wörtlichen Alle-Begriffe-Suche. `--source-id` gilt für Aussagen und Beobachtungen; `--quantity` und `--observation-type` (`experiment_derived_model_dependent`, `experiment_derived_tensile_test_summary`) gelten nur für Beobachtungen und vergleichen exakt mit Groß-/Kleinschreibung. Alle Filter werden mit AND verknüpft; unzulässige Katalog-/Filterkombinationen sind Fehler. Zwei Eigenschaftsdatensätze mit derselben Studien-ID bleiben eine Studie.
 
 ```sh
 python -m materials_boundaries catalog observations --observation-type experiment_derived_model_dependent --query graphene --text --lang de
