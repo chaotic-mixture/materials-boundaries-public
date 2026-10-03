@@ -155,6 +155,15 @@ def _build_parser(language: str) -> argparse.ArgumentParser:
     observation_inspect.add_argument("--source-id", metavar="ID", help=ot["source_id"])
     observation_inspect.add_argument("--quantity", metavar="QUANTITY", help=ot["quantity"])
     observation_inspect.add_argument("--group-by", choices=("study", "quantity"), default="study", help=ot["group_by"])
+    from ._observation_temperature_labels import labels as observation_temperature_labels
+    opt = observation_temperature_labels(language)
+    observation_temperature = observation_sub.add_parser(
+        "plot-temperature", help=opt["plot_temperature"], description=opt["plot_temperature"])
+    add_language(observation_temperature)
+    observation_temperature.add_argument(
+        "--dataset-id", required=True,
+        choices=("ciganas-2026-pa12-cf15-fff-uts-temperature",), help=opt["dataset_id"])
+    observation_temperature.add_argument("--output", required=True, help=opt["output"])
     return parser
 
 
@@ -171,6 +180,12 @@ def main(argv: list[str] | None = None) -> int:
         args.lang = "en"
     try:
         if args.command == "observation":
+            if args.observation_command == "plot-temperature":
+                from .observation_temperature_plot import export_observation_temperature_plot
+                artifacts = export_observation_temperature_plot(
+                    args.output, dataset_id=args.dataset_id, lang=args.lang)
+                print(json.dumps({"output": args.output, "artifacts": artifacts}, ensure_ascii=False))
+                return 0
             from .observation_visualization import export_observation_inspection
             artifacts = export_observation_inspection(
                 args.output, record_ids=args.record_ids, source_id=args.source_id,

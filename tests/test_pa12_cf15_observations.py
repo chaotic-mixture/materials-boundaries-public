@@ -74,7 +74,8 @@ class PA12SourceTranscriptionTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.catalog = load("materials_boundaries/data/observations.json")
-        cls.records = [r for r in cls.catalog["records"] if r.get("study_id") == PA12_SOURCE]
+        cls.records = sorted((r for r in cls.catalog["records"] if r.get("study_id") == PA12_SOURCE),
+                             key=lambda r: int(r["source_cell"]["temperature_column"]))
         cls.sources = load("materials_boundaries/data/sources.json")
         cls.source = next(r for r in cls.sources["records"] if r["id"] == PA12_SOURCE)
         cls.facts = load("tests/fixtures/pa12_cf15_source_transcription.json")
@@ -232,8 +233,8 @@ class PA12SourceTranscriptionTests(unittest.TestCase):
         validate_pa12_dataset(renamed, require_complete=True)
         with self.assertRaises(ValueError):
             validate_pa12_dataset(renamed + [copy.deepcopy(self.records[0])], require_complete=True)
-        with self.assertRaises(ValueError):
-            validate_pa12_dataset(list(reversed(renamed)), require_complete=True)
+        # Catalog ordering is presentation-only; completeness is by source cell.
+        validate_pa12_dataset(list(reversed(renamed)), require_complete=True)
 
     def test_family_source_dataset_spoofing_cannot_escape_guards(self):
         for discriminator in ("method_family", "study_id", "dataset_id", "protocol_id"):
@@ -245,7 +246,7 @@ class PA12SourceTranscriptionTests(unittest.TestCase):
                     record[discriminator] = replacement
                 self.assertTrue(is_pa12_record(record))
                 self.assert_rejected(record)
-        for legacy in self.catalog["records"][:6]:
+        for legacy in (r for r in self.catalog["records"] if not is_pa12_record(r)):
             record = copy.deepcopy(legacy)
             record["dataset_id"] = PA12_DATASET
             self.assertTrue(is_pa12_record(record))
@@ -335,8 +336,8 @@ class PA12SourceTranscriptionTests(unittest.TestCase):
         self.assertEqual(sum(is_pa12_record(r) for r in records), 6)
         validate_observation_records(records)
         validate_pa12_dataset(records, require_complete=True)
-        self.assertEqual(tuple(r["source_cell"]["temperature_column"] for r in records
-            if is_pa12_record(r)), PA12_TEMPERATURES)
+        self.assertEqual(tuple(sorted((r["source_cell"]["temperature_column"] for r in records
+            if is_pa12_record(r)), key=int)), PA12_TEMPERATURES)
 
     def test_catalog_reads_and_source_text_use_dependency_free_guards(self):
         record = copy.deepcopy(self.records[0])

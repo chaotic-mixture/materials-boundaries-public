@@ -61,7 +61,8 @@ class PA12InspectionTests(unittest.TestCase):
             view.build_observation_inspection([OLD_IDS[0]], source_id=PA12_SOURCE)
 
     def test_six_exact_reported_strings_and_separate_si_facets(self):
-        for index, facet in enumerate(self.bundle['facets']):
+        for position, facet in enumerate(self.bundle['facets']):
+            index = IDS.index(facet['record_id'])
             with self.subTest(temperature=TEMPERATURES[index]):
                 self.assertEqual(facet['record_id'], IDS[index])
                 self.assertEqual(facet['temperature']['value_string'], TEMPERATURES[index])
@@ -76,7 +77,7 @@ class PA12InspectionTests(unittest.TestCase):
                 self.assertEqual(facet['si_value'], PA[index])
                 self.assertEqual(facet['si_uncertainty_value'], PA_SD[index])
                 self.assertEqual(facet['si_display'], str(PA[index]) + ' ± ' + str(PA_SD[index]) + ' Pa')
-                self.assertEqual(facet['normalization'], self.bundle['record_snapshots'][index]['si_result']['normalization'])
+                self.assertEqual(facet['normalization'], self.bundle['record_snapshots'][position]['si_result']['normalization'])
                 self.assertEqual(facet['uncertainty_type'], 'reported_standard_deviation')
                 self.assertEqual(facet['observation_type'], 'experiment_derived_tensile_test_summary')
         self.validator.validate(self.bundle)
@@ -86,7 +87,8 @@ class PA12InspectionTests(unittest.TestCase):
             t = LABELS[lang]
             html = view.render_observation_html(self.bundle, lang)
             svgs = [view.render_observation_svg(self.bundle, lang, width) for width in (380, 1100)]
-            for index, facet in enumerate(self.bundle['facets']):
+            for facet in self.bundle['facets']:
+                index = IDS.index(facet['record_id'])
                 texts = [html_article(html, IDS[index])] + [svg_card(svg, IDS[index]) for svg in svgs]
                 for text in texts:
                     text = compact(text)
@@ -192,7 +194,7 @@ class PA12InspectionTests(unittest.TestCase):
             (('source_snapshots', 0, 'doi'), '10.0000/changed'),
             (('record_digests', 0, 'sha256'), '0' * 64),
             (('source_digests', 0, 'sha256'), '0' * 64),
-            (('selection', 'resolved_record_ids'), list(reversed(IDS))),
+            (('selection', 'resolved_record_ids'), list(reversed(self.bundle['selection']['resolved_record_ids']))),
             (('presentation_policy', 'quantitative_axes_allowed'), True)]
         for path, value in mutations:
             changed = deepcopy(self.bundle); set_path(changed, path, value)
@@ -218,7 +220,7 @@ class PA12InspectionTests(unittest.TestCase):
 
     def test_alias_subset_and_integral_float_representation_preserve_science(self):
         changed = deepcopy(self.observations)
-        original = deepcopy(self.bundle['record_snapshots'][0])
+        original = deepcopy(next(r for r in self.bundle['record_snapshots'] if r['id'] == IDS[0]))
         original['id'] = 'renamed-23c'; original['name'] = '<PA12 & inspection>'
         original['si_result']['value'] = float(original['si_result']['value'])
         original['si_result']['uncertainty_value'] = float(original['si_result']['uncertainty_value'])

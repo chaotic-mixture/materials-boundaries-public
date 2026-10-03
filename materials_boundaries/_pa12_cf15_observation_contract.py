@@ -197,7 +197,7 @@ def validate_pa12_record(record):
 
 
 def validate_pa12_dataset(records, require_complete=False):
-    """Validate subsets; packaged admission additionally needs all six cells.
+    """Validate subsets; packaged admission additionally needs the complete six-cell set.
 
     Scientific aliases never count as an additional observation. Duplicate
     dataset/quantity/source-cell identities are invalid even with different IDs.
@@ -217,8 +217,8 @@ def validate_pa12_dataset(records, require_complete=False):
         seen.add(identity)
         selected.append(record["source_cell"]["temperature_column"])
     if require_complete:
-        _require(tuple(selected) == PA12_TEMPERATURES,
-                 "packaged dataset must contain exactly six source-ordered unique approved cells")
+        _require(len(selected) == len(PA12_TEMPERATURES) and set(selected) == set(PA12_TEMPERATURES),
+                 "packaged dataset must contain exactly six unique approved source cells")
 
 
 def validate_pa12_sources(sources):

@@ -188,3 +188,21 @@ collection is redistributed. The MIT license covers original project
 contributions only and does not replace source rights or imply author/publisher
 endorsement. See [source and scientific limits](docs/PA12_CF15_TEMPERATURE_OBSERVATIONS.md)
 and [source ledger](docs/SOURCES.md).
+
+
+### v0.23.0 descriptive PA12 CF15 plotting adaptation
+
+The separate [temperature-observation plot](docs/OBSERVATION_TEMPERATURE_PLOT.md)
+uses the same six attributed Table 3 UTS/SD cells and unchanged source rights.
+It preserves the source numbers and SD strings while reorganizing and plotting
+them as discrete source summaries. Vertical glyph endpoints are explicit
+central-value ±reported-SD arithmetic; exact SI unit re-expression and original
+curator notes remain separate. The adaptation is not raw-data reanalysis,
+statistical validation, independent replication or a material-model claim.
+
+Retain Ciganas, Kalinauskis and Cigane (2026), the article title and DOI above,
+Table 3 locators, inspected HTML revision, PDF noninspection, unselected Table 4
+revision caveat and article-specific CC BY 4.0 notice. No new rights are asserted
+for excluded manufacturer Table 1 or any other unselected content. No source
+assets or raw measurements are redistributed; the MIT license applies to
+original project contributions and no author/publisher endorsement is implied.

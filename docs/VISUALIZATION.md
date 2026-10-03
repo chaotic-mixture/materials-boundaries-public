@@ -321,3 +321,15 @@ The eight executable rules and their numerical comparison behavior are unchanged
 No hBN plot, thickness conversion or cross-study matched-condition comparison
 is introduced. See [observation evidence and limits](OBSERVATIONS.md#monolayer-hbn-falin-et-al-2017-new-records)
 and [migration](MIGRATION_v0.19.0.md).
+
+
+## v0.23.0 separate descriptive temperature observations
+
+The original composite comparison route and its eight-series boundary remain
+unchanged. A new [explicit PA12 temperature-observation route](OBSERVATION_TEMPERATURE_PLOT.md)
+uses a separate closed 1.0.0 schema for six published source cells, numeric
+chamber-condition/MPa axes and mandatory ±reported-SD glyphs. It does not admit
+observations into composite curves, modify generic text-only inspection, or
+provide a material model. Unknown aggregation, stress/area basis, specimen
+temperature and replicate independence stay explicit. Display padding is not
+a material limit and derived glyph endpoints are not new observations.

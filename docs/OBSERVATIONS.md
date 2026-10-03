@@ -1,6 +1,6 @@
 # Traceable, catalog-only observations
 
-Version **0.22.0** contains **12 property records from four studies**: the six
+Version **0.23.0** retains the v0.22.0 catalog of **12 property records from four studies**: the six
 unchanged graphene, monolayer MoS2 and monolayer hBN summaries, plus six PA12 CF15
 tensile-test summaries at distinct reported chamber conditions from one study.
 The three older pairs remain `experiment_derived_model_dependent` 2D records.
@@ -10,15 +10,22 @@ from one study are associated records, not independent cross-study confirmations
 The catalog is neither a broad experimental database nor a source of universal
 bounds, engineering allowables, fitted temperature laws or material rankings.
 
-Observations schema advances **1.2.0 → 1.3.0** and the separate
-[offline inspection view](OBSERVATION_INSPECTION.md) advances **1.0.0 → 1.1.0**.
-Inspection retains source-ordered text cards/tables and auditable JSON/CSV/SVG/HTML,
+Observations schema remains **1.3.0** and the separate
+[offline inspection view](OBSERVATION_INSPECTION.md) remains **1.1.0**.
+Inspection retains packaged-catalog-ordered text cards/tables and auditable JSON/CSV/SVG/HTML,
 with essential caveats before values. The catalog now has **36 mechanics claims
 and 52 sources**, with the **12 predictions, five synthetic temperature models,
 seven synthetic branches and eight executable composite rules unchanged**.
 The six earlier observation objects and their scientific contracts remain exact;
 graphene uncertainty, the MoS2 q discrepancy and hBN component-specific evidence
 are neither generalized nor replaced. See [v0.22.0 migration](MIGRATION_v0.22.0.md).
+
+The [v0.23.0 explicit temperature plot](OBSERVATION_TEMPERATURE_PLOT.md) separately
+admits one complete six-cell PA12 dataset under plot schema 1.0.0. Numeric axes
+and central-value ±reported-SD glyphs describe the source cells only, with no mean,
+CI, hard-bound, direct-specimen-temperature or material-model claim. This does
+not turn arbitrary observations or inspection selections into a plot; all
+catalog-only classifications and generic inspection restrictions remain.
 
 ## PA12 CF15: Ciganas et al. (2026), six temperature conditions
 
@@ -394,7 +401,7 @@ python -m materials_boundaries observation inspect --source-id ciganas2026polym1
 python -m materials_boundaries observation inspect --output /tmp/mos2-strength --source-id bertolazzi_brivio_kis_2011 --quantity breaking_strength_2d --lang zh
 ```
 
-This separate interface preserves source order and distinct study/quantity
+This separate interface preserves packaged catalog order and distinct study/quantity
 facets. Repeat `--id` to select exact records; combine exact source/quantity
 filters with AND. Grouping changes navigation only. JSON/CSV remain independent
 of language; SVG/HTML support all four authored locales. Warnings, scoped counts,
@@ -431,8 +438,9 @@ Default/`--json` output remains a canonical `{schema_version, records}` envelope
 - `schemas/observations.schema.json` describes the closed graphene/MoS2/hBN and six-cell PA12 CF15 observation families; current claims schema is 1.11.0, sources 1.0.0 and evaluation 1.1.0
 - `validate` and `evaluate` still accept composite instances only; they do not execute observation records or infer specimen applicability
 - Composite comparison builders/renderers still use the original eight elastic evaluations. The separate observation inspection builder reads only observation/source catalogs; it does not execute formulas or add quantitative plots, overlays, uncertainty bars, ranking or matched-condition comparison
+- The separate v0.23.0 temperature-observation builder admits only the complete reviewed PA12 dataset, uses its own closed schema and numeric axes, and calculates mandatory ±reported-SD glyph endpoints as display arithmetic only; it adds no scientific observations, material model or new executable rule
 - The Ciganas source added in v0.22.0 supports six selected tensile summaries only; the 51 earlier source objects, six earlier observation objects, claims, predictions and synthetic temperature contents remain unchanged
-- The new family is closed by dataset/quantity/source-cell identity. Subsets and renamed record identities remain valid when their scientific payload is unchanged; the full catalog rejects duplicate aliases for a selected cell and requires all six cells in source-column order. Additional temperatures, materials or protocols require scientific review rather than automatic same-family appendability
+- The new family is closed by dataset/quantity/source-cell identity. Subsets and renamed record identities remain valid when their scientific payload is unchanged; the full catalog rejects duplicate aliases for a selected cell and requires the complete six-cell set. Since v0.23.0, packaged permutations of that set are valid; generic inspection retains packaged order, while the explicit temperature plot restores Table 3 source order. Additional temperatures, materials or protocols require scientific review rather than automatic same-family appendability
 - Existing supported-family appendability remains available under each complete pre-existing scientific contract
 
-See [v0.22.0 migration](MIGRATION_v0.22.0.md), [v0.19.0 migration](MIGRATION_v0.19.0.md), [v0.17.0 migration](MIGRATION_v0.17.0.md), [historical v0.7.0 migration](MIGRATION_v0.7.0.md), [source notes](SOURCES.md), [four-language terminology](TERMINOLOGY.md) and [visualization boundaries](VISUALIZATION.md).
+See [v0.23.0 migration](MIGRATION_v0.23.0.md), [v0.22.0 migration](MIGRATION_v0.22.0.md), [v0.19.0 migration](MIGRATION_v0.19.0.md), [v0.17.0 migration](MIGRATION_v0.17.0.md), [historical v0.7.0 migration](MIGRATION_v0.7.0.md), [source notes](SOURCES.md), [four-language terminology](TERMINOLOGY.md) and [visualization boundaries](VISUALIZATION.md).

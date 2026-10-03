@@ -167,3 +167,14 @@ neither alone provides a verified express redistribution/relicensing grant.
 Official links and source-specific caveats are in [Third-party notices](../THIRD_PARTY_NOTICES.md#nist-cryogenic-material-properties)
 and [source provenance](SOURCES.md). Original synthetic demonstrations and
 project software are MIT-licensed; third-party works retain their own rights.
+
+
+## Separate real-condition summaries (v0.23.0)
+
+`observation plot-temperature` is a separate
+[closed descriptive PA12 CF15 display](OBSERVATION_TEMPERATURE_PLOT.md), requiring
+its exact dataset ID. It does not use this synthetic model evaluator or add a
+sixth model/eighth branch. Six unconnected source-reported central UTS values
+with ±reported SD at chamber conditions are not a continuous temperature law,
+interpolation, confidence interval, material prediction or engineering allowable.
+The five synthetic models and seven branches remain unchanged.

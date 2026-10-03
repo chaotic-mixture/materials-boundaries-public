@@ -1,6 +1,63 @@
 # Erste Schritte: Materials Boundaries
 
-## Aktuell v0.22.0: PA12-CF15-Zugversuche bei sechs Kammerbedingungen
+## Aktuell v0.23.0: explizites PA12-CF15-Temperaturdiagramm
+
+Der neue separate Weg zeigt **alle sechs zugelassenen Tabelle-3-Zellen eines
+quellenberichteten gemeinsamen Protokolls**. Dies ist eine beschreibende
+Transkription veröffentlichter Zusammenfassungen, keine Materialvorhersage oder
+unabhängige wissenschaftliche Validierung. **12 Beobachtungen, 52 Quellen,
+36 Aussagen, 12 Vorhersagen, fünf synthetische Temperaturmodelle, sieben Zweige
+und acht ausführbare Regeln** bleiben unverändert; Beobachtungen bleiben `catalog_only`.
+
+```sh
+python -m materials_boundaries observation plot-temperature --dataset-id ciganas-2026-pa12-cf15-fff-uts-temperature --output /tmp/pa12-temperature-plot-de --lang de
+python -m materials_boundaries observation plot-temperature --help --lang de
+```
+
+Die exakte Datensatz-ID und der Ausgabeordner sind **Pflicht**. Kein Standardplot
+aller Records, keine Teilmengen, beliebigen druckförmigen Records oder automatischen
+Gruppen. Bei `--lang en|zh|ja|de` gewinnt die letzte Angabe. Diagrammschema **1.0.0**
+ist von unveränderten Beobachtungen **1.3.0** und allgemeiner Inspektion **1.1.0**
+getrennt. `observation inspect` behält Textdarstellung, Auswahl und Katalogreihenfolge.
+
+Sechs unverbundene, gleich gestaltete Punkte zeigen **berichtete UTS-Zentralwerte,
+keine behaupteten Mittelwerte**, auf numerischen Kammer-°C-/Quell-MPa-Achsen.
+Vertikale Balken mit Endkappen bedeuten **±berichtete SD**, weder SEM noch
+Konfidenzintervalle, beobachtete Minima/Maxima, harte Grenzen oder Überdeckung.
+**Drei Zugversuche je Bedingung** sind berichtet; Rohreplikate und Unabhängigkeit
+sind ungeprüft. 30 Minuten Kammerstabilisierung belegen keine direkte Probentemperatur.
+Fehlende x-Balken bedeuten **unberichtete Temperaturunsicherheit, nicht null**.
+Die festen Bereiche 15–125 °C / 0–55 MPa sind Anzeigeränder/Basislinie, keine
+Materialgrenzen. Keine Verbindungskurve, Anpassung, Interpolation, Extrapolation,
+Rangfolge, Überlagerung, Bemessungswerte oder Sicherheitsbehauptung.
+
+Die genaue Quelltabelle bewahrt Zeichenfolgen und Endnullen. Pa bleibt separate
+exakte Einheitenmetadaten: **1 MPa = 1000000 Pa** ohne zusätzliche Präzision oder
+Geometrieberechnung. Zentralstatistik/Aggregation, Spannungs-/Querschnittsbasis,
+Feuchte/RH und lokale Dehnrate bleiben unbekannt. Horizontales ±45°-FFF, Trocknung,
+deklarierte 15 wt.%, 100% Infill, Nenndimensionen und 1 mm/min Traverse sind
+spezifischer Kontext, kein Nachweis gemessener Zusammensetzung, Porenfreiheit oder Isotropie.
+
+Fünf Ausgaben tragen `observation-temperature-plot`: JSON, CSV, breite/schmale SVG
+und skriptfreies responsives HTML. Die kompakte SVG hält alle sechs Warnungen,
+Legende, exakte Quelltabelle/Record-IDs, gemeinsame Protokoll-/Geometrie-/Unbekannt-
+Zusammenfassung, genaue Quellenstellen und Versions-/Rechtezuordnung sichtbar.
+Vollständige Metadatenobjekte, wiederholte Record-Provenienz und alle sechs SI-Paare
+bleiben verlustfrei in JSON/CSV und inerten HTML-Details; wesentliche Warnungen
+werden dort nicht versteckt. JSON/CSV sind deterministisch und sprachunabhängig.
+Quell-, ID- und JSON-Spalten als Text importieren: formelähnliche Strings bleiben
+unverändert. Kanonische Prüfung rekonstruiert vor dem Schreiben aus aktuellen
+Katalogen; ungültige Eingaben ändern keine Ausgabe. Spätere Dateisystemfehler
+haben keine atomare Rückrollgarantie für alle Dateien. Das Diagramm stellt die
+Quellreihenfolge wieder her; allgemeine Inspektion behält die Katalogreihenfolge.
+
+HTML-Version, ungeprüftes PDF, Abweichung in ausgeschlossener Tabelle 4, CC-BY-4.0-
+Zuordnung und Adaptionshinweis bleiben erhalten. Keine Quellenmedien/Rohdaten kommen
+hinzu. Maschinenunterstützte Übersetzung ist keine unabhängige Wissenschafts- oder
+Muttersprachprüfung; Browser-QA ist ungeprüft. [Diagramm/API/CSV-Vertrag](OBSERVATION_TEMPERATURE_PLOT.md)
+· [Migration](MIGRATION_v0.23.0.md).
+
+## Früher v0.22.0: PA12-CF15-Zugversuche bei sechs Kammerbedingungen
 
 Sechs UTS/SD-Zellen aus Tabelle 3 von Ciganas, Kalinauskis und Cigane (2026)
 kommen hinzu, bei berichteten Kammerbedingungen **23, 40, 60, 80, 100 und 120 °C**.
@@ -271,7 +328,7 @@ python -m materials_boundaries temperature evaluate examples/temperature/synthet
 python -m materials_boundaries temperature plot --output /tmp/temperature-demos --lang de
 ```
 
-[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.22.0.md)
+[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.23.0.md)
 
 ## Lokal ausführen
 

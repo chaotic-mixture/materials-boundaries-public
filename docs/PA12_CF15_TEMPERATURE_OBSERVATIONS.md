@@ -1,6 +1,6 @@
 # PA12 CF15 temperature-conditioned tensile observations
 
-Version **0.22.0** admits exactly six **catalog-only** source-reported 3D
+Version **0.22.0** admitted exactly six **catalog-only** source-reported 3D
 ultimate-tensile-strength summaries. They describe one study's specific printed
 material and protocol at six reported chamber conditions. They do not define
 a continuous temperature law, universal strength bound, engineering allowable,
@@ -77,9 +77,13 @@ route for arbitrary pressure-valued observations.
 
 Selected subsets and renamed record IDs/display names remain valid when their
 scientific payload is unchanged. The full packaged catalog additionally requires
-all six admitted cells in source-column order and rejects duplicate `(dataset_id, quantity, source_cell)`
+all six admitted source-cell identities and rejects duplicate `(dataset_id, quantity, source_cell)`
 aliases even when their record IDs differ. An alias is not an additional
-observation or independent confirmation. New temperatures, material states,
+observation or independent confirmation. In v0.23.0, completeness is a source-cell
+set check, so a packaged permutation of the same six cells is valid. Generic
+inspection still preserves packaged order; the separately selected temperature
+plot restores source Table 3 order. No scientific payload requirement is relaxed.
+New temperatures, material states,
 protocols, stress definitions or scientific changes need reviewed admission.
 This narrowly closed dataset does not remove existing supported-family
 appendability elsewhere in the catalog. Runtime guards validate metadata without
@@ -182,14 +186,25 @@ python -m materials_boundaries observation inspect --source-id ciganas2026polym1
 python -m materials_boundaries observation inspect --id ciganas2026-pa12cf15-uts-60c --output /tmp/pa12-cf15-60c --lang de
 ```
 
-Inspection schema **1.1.0** supports source-ordered, text-only temperature facets
+Inspection schema **1.1.0** supports packaged-catalog-ordered, text-only temperature facets
 alongside the unchanged 2D facets. Essential material, chamber, protocol, stress,
 statistic and SD caveats precede every property value, including a single-card
 selection. The primary label is **Catalog display in reported units** (MPa);
-Pa is separately labeled **exact SI unit re-expression**. There are no axes,
+Pa is separately labeled **exact SI unit re-expression**. In generic inspection there are no axes,
 points, bars, uncertainty whiskers/endpoints, magnitude styling, connecting
 curves, ranking, aggregation or cross-dimensional N/m comparison. Study/quantity
 grouping is navigation only. See [inspection and CSV contracts](OBSERVATION_INSPECTION.md).
+
+Version **0.23.0** adds the **separate explicit** `observation plot-temperature`
+route for the complete dataset above. It shows six unconnected reported central
+UTS values on numeric chamber-temperature/MPa axes with visible ±reported-SD
+whiskers and an exact source table. This is descriptive transcription, not a
+material law or statistical validation. Centers are not asserted means, no x
+whiskers does not mean zero temperature uncertainty, and fixed display domains
+are not material limits. Derived whisker endpoints are display arithmetic only;
+exact Pa stays metadata. Generic inspection remains unchanged. See the
+[closed admission, API, source/SD caveats and export contract](OBSERVATION_TEMPERATURE_PLOT.md)
+and [v0.23.0 migration](MIGRATION_v0.23.0.md).
 
 The article's own copyright block identifies **©2026 by the authors**, with
 MDPI as licensee, under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

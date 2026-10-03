@@ -1,6 +1,51 @@
 # はじめに：Materials Boundaries
 
-## 現在の v0.22.0：六つの試験槽条件での PA12 CF15 引張要約
+## 現在の v0.23.0：明示的な PA12 CF15 温度観測図
+
+新しい独立経路は、**一つの出典報告手順に属する表3の承認済み6セルすべて**だけを
+表示します。公表要約の記述的転記であり、材料予測や独立した科学的検証ではありません。
+科学カタログ、**12観測・52出典・36論断・12予測・合成温度モデル5件・7分岐・8計算規則**
+は不変で、観測はすべて `catalog_only` のままです。
+
+```sh
+python -m materials_boundaries observation plot-temperature --dataset-id ciganas-2026-pa12-cf15-fff-uts-temperature --output /tmp/pa12-temperature-plot-ja --lang ja
+python -m materials_boundaries observation plot-temperature --help --lang ja
+```
+
+上記の正確なデータセット ID と出力先は**必須**です。全記録の既定描画、部分集合、
+任意の圧力型記録や自動グループはありません。`--lang en|zh|ja|de` は最後の指定が優先
+されます。図スキーマ **1.0.0** は、不変の観測 **1.3.0**・一般閲覧 **1.1.0** と別です。
+`observation inspect` は数値軸のないテキスト表示で、従来の選択とカタログ順序を保ちます。
+
+接続しない同一様式の6点は**報告された中心 UTS 値で、平均値とは断定しません**。
+数値軸は報告試験槽温度（°C）と出典 MPa です。端部付き縦ひげは **±報告 SD** であり、
+SEM・信頼区間・観測最小最大・厳密な上下界・包含率ではありません。**各条件で引張試験3回**
+との報告がありますが、元の反復データと独立性は未検証です。30分間の試験槽安定化は直接の
+試料温度を確定しません。横ひげがないのは**温度不確かさが未報告で、ゼロではない**ためです。
+固定の 15–125 °C／0–55 MPa 表示域は余白・基線で、材料限界ではありません。接続線、
+フィット、補間、外挿、順位付け、重ね描き、設計許容値や安全性の主張は追加しません。
+
+正確な出典表は文字列と末尾ゼロを保ちます。Pa は別の正確な単位メタデータで、
+**1 MPa = 1000000 Pa** は精度を追加せず、幾何学から再計算しません。中心統計量・集計、
+応力・断面積根拠、含水率・湿度、局所ひずみ速度は不明のままです。水平 ±45° FFF、乾燥、
+宣言15 wt.%、100% インフィル、名目寸法、1 mm/min クロスヘッド手順という条件は、
+測定済み組成・空隙ゼロ・等方性を保証しません。
+
+`observation-temperature-plot` 接頭辞で JSON、CSV、広幅／狭幅 SVG、スクリプト不要の
+応答型 HTML を生成します。簡潔な SVG でも、6項目の重要警告・凡例・正確な出典表と記録 ID・
+共通手順／形状／不明条件の要約・正確な出典位置・版と権利帰属を表示します。完全なメタデータ
+辞書、各記録で繰り返す来歴、6組の SI 値は JSON／CSV と実行不能の HTML 詳細に欠落なく
+保ち、解釈に必須の警告をそこに隠すことはありません。JSON／CSV は決定的かつ言語非依存です。式に似た文字列を
+改変しないため、出典・ID・JSON 列はテキストとして読み込みます。新規検証は書込み前に
+現行カタログから再構築します。不正入力は出力を変更しませんが、その後のファイル障害の
+全ファイル原子的ロールバックは保証しません。図は表3の出典順に戻し、一般閲覧は格納順です。
+
+HTML 版、PDF 未検証、対象外の表4差異、CC BY 4.0 帰属と図への改編表示を保ちます。
+出典媒体や生データは追加しません。機械支援翻訳は独立した科学的・母語レビューではなく、
+ブラウザー QA は未検証です。[図・API・CSV の全契約](OBSERVATION_TEMPERATURE_PLOT.md)
+· [移行](MIGRATION_v0.23.0.md)。
+
+## 以前の v0.22.0：六つの試験槽条件での PA12 CF15 引張要約
 
 Ciganas、Kalinauskis、Cigane（2026）の表3から UTS／SD の6セルを追加します。
 報告された試験槽条件は **23、40、60、80、100、120 °C** です。現在は
@@ -202,7 +247,7 @@ python -m materials_boundaries temperature evaluate examples/temperature/synthet
 python -m materials_boundaries temperature plot --output /tmp/temperature-demos --lang ja
 ```
 
-[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.22.0.md)
+[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.23.0.md)
 
 ## ローカルで実行する
 

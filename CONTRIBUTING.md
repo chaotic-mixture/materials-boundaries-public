@@ -346,10 +346,13 @@ default thickness, infer engineering stress from engineering strain, or fill
 stress, aggregation, temperature, moisture or other unknowns.
 
 This dataset is intentionally closed: full-catalog validation requires the six
-selected cells in source-column order and rejects duplicate `(dataset_id, quantity, source_cell)`
+unique selected source-cell identities and rejects duplicate `(dataset_id, quantity, source_cell)`
 aliases even with distinct record IDs. Subsets and renamed record identities
 are accepted when the scientific payload is unchanged; an alias is not new
-science. Other temperatures, materials, protocols or scientific metadata need
+science. The v0.23.0 ordering-only completeness correction permits a complete
+packaged permutation. Generic inspection retains packaged catalog order; the
+separate temperature plot restores Table 3 source order. Other temperatures,
+materials, protocols or scientific metadata need
 reviewed admission. Existing supported-family appendability elsewhere remains
 unchanged; do not disable those regressions to enforce this narrow closure.
 
@@ -360,13 +363,17 @@ A generic source-schema pass does not establish source-specific correctness.
 Keep independent source-fact fixtures, negative mutation tests, full-catalog
 versus subset tests and historical-object preservation checks. Do not regenerate
 frozen scientific fixtures to conceal a change. In the complete test suite,
-update only deliberate software/schema envelopes and additive CSV assertions.
+update only deliberate software/schema envelopes and additive CSV assertions,
+plus the reviewed v0.23.0 completeness assertion accepting the same complete
+source-cell set under a packaged permutation.
 
 Inspect default, old-only, PA12-only, mixed and single-condition outputs in all
 four locales. Essential chamber/process/stress/statistic/count/SD caveats must
 precede every MPa and Pa property value, not only appear in embedded JSON.
-Maintain source order, text-only cards, constant styling and no quantitative
-axes, whiskers, interpolation, ranking, aggregation or temperature fitting.
+For generic `observation inspect`, maintain packaged catalog order, text-only
+cards, constant styling and no quantitative axes, whiskers, interpolation,
+ranking, aggregation or temperature fitting. These restrictions are specific
+to inspection; the separately admitted plot has its own closed policy.
 JSON/CSV must preserve strings, units, nulls and complete snapshots; stale or
 altered bundles fail canonical rebuilding before writes. Regenerate older
 inspection bundles rather than relabel their schema versions.
@@ -379,3 +386,40 @@ HTML dumps, extensive passages and raw measurement collections. Include no local
 research paths in public provenance. Unit checks and independent transcription
 are not scientific replication, review or a permission grant. Preserve all
 older source-specific rights and conservative excluded-data boundaries.
+
+
+## Closed PA12 CF15 temperature-observation plot (v0.23.0)
+
+Read the [plot/API/export contract](docs/OBSERVATION_TEMPERATURE_PLOT.md) and
+[v0.23.0 migration checklist](docs/MIGRATION_v0.23.0.md) before changing this
+separate route. Admission is explicit and restricted to one complete six-cell
+source-reported shared-protocol group. Scientific record/source payloads and
+inspection policy remain unchanged. Neither shared pressure units, equal nulls,
+source IDs alone nor common object structure establishes compatibility.
+
+Keep reported central values distinct from asserted means, mandatory ±reported
+SD glyphs distinct from CI/SEM/min–max/bounds/coverage, and chamber conditions
+distinct from direct specimen temperatures. Preserve three tests per condition
+with unverified independence, all source strings/unknowns, separate exact SI
+metadata, fixed display padding rather than material limits, and before-value
+scientific warnings. Endpoint arithmetic is not a new material rule. Further
+groups require explicit scientific/schema/runtime/tests/docs review.
+
+Keep the compact standalone SVG self-contained for interpretation: all six
+visible scope warnings, adjacent legend, six exact source cells with record IDs
+and concise Table 3 columns, shared full protocol/geometry/unknowns summary,
+DOI/exact row and container locators, inspected revision and rights/attribution.
+Complete metadata dictionaries, repeated per-record provenance and six SI pairs
+belong in lossless canonical JSON/CSV and inert expandable HTML details rather
+than repeated SVG dictionary dumps. Compact layout must never hide essential
+warnings or change scientific snapshots, schema, guards or audit exports.
+
+Public serializers/renderers must rebuild canonically from current data and
+policy, rejecting altered or stale bundles before writes; metadata hashes alone
+do not confer validity. Preserve literal-null scalar CSV semantics and text-safe
+import instructions without changing formula-like source/ID/JSON strings.
+Regenerate only new examples with `scripts/generate_observation_temperature_demo.py`;
+leave historical scientific fixtures and examples intact. Test wide/narrow and
+320 px four-locale views and disclose actual static/browser QA boundaries.
+Machine-assisted locale checks are not scientific or native-language review.
+Keep article-specific attribution/adaptation/rights and exclusion notices.

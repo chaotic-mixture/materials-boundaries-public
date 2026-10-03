@@ -1,6 +1,46 @@
 # 快速开始：材料边界
 
-## 当前 v0.22.0：六个试验箱条件下的 PA12 CF15 拉伸摘要
+## 当前 v0.23.0：显式 PA12 CF15 温度观测图
+
+新独立路径只显示**同一来源报告协议下表 3 的完整六个已接纳单元格**，是已发表摘要
+的描述性转录，不是材料预测或独立科学验证。科学目录不变：**12 条观测、52 条来源、
+36 条论断、12 条预测、五个合成温度模型、七个分支、八条可执行规则**；观测仍为
+`catalog_only`。
+
+```sh
+python -m materials_boundaries observation plot-temperature --dataset-id ciganas-2026-pa12-cf15-fff-uts-temperature --output /tmp/pa12-temperature-plot-zh --lang zh
+python -m materials_boundaries observation plot-temperature --help --lang zh
+```
+
+上述精确数据集 ID 与输出目录均**必需**；不默认绘制全部记录，不接受子集、任意压力
+形状记录或自动分组。`--lang en|zh|ja|de` 仍以最后一次出现为准。新绘图 schema
+**1.0.0** 独立于不变的观测 **1.3.0** 和通用查阅 **1.1.0**。`observation inspect`
+仍是无数值轴的文本视图，原筛选及目录顺序保持不变。
+
+六个不连接、同样式的点表示**报告的中心 UTS 值，不断定为均值**；横轴是数值试验箱
+温度（°C），纵轴是来源 MPa。带端帽的竖向须线表示 **±报告的标准差 SD**，不是 SEM、
+置信区间、观测最小／最大值、硬界或覆盖声明。**每条件三次拉伸试验**的原始重复数据
+及独立性未核实。试验箱稳定 30 分钟不证明直接试样温度；无横向须线意味着**温度不确定性
+未报告，而非零**。固定的 15–125 °C／0–55 MPa 显示范围只是边距／基线，不是材料极限。
+不连线、不拟合、不插值或外推、不排名或叠加，也不提供许用值或安全声明。
+
+精确来源表保留字符串及尾零；Pa 仅为独立的精确单位元数据，**1 MPa = 1000000 Pa**，
+不增加精度或重算几何。中心统计量／聚合方式、应力／面积依据、含水量／湿度和局部
+应变率仍未知。水平 ±45° FFF、干燥、声明的 15 wt.%、100% 填充设置、标称几何与
+1 mm/min 横梁协议是具体条件，不能证明实测组分、零孔隙或各向同性。
+
+五类文件采用 `observation-temperature-plot` 前缀：JSON、CSV、宽／窄 SVG、无脚本
+响应式 HTML。紧凑 SVG 保持六项核心警告、图例、精确来源表／记录 ID、共享协议／几何／
+未知条件摘要、精确来源定位及版本／权利归属可见。完整元数据字典、逐条重复的来源信息和
+六组 SI 值仍无损保存在 JSON／CSV 及无脚本 HTML 详情中；核心解释警告不会隐藏于此。JSON／CSV 确定且不随语言变化；将来源、ID 和 JSON 列按文本导入，因为
+公式式前缀保持原样。新规范验证在写入前从当前目录重建；无效输入不改变输出，但后续
+磁盘／权限错误不保证全部文件原子回滚。绘图恢复表 3 来源顺序；通用查阅仍用目录顺序。
+
+HTML 版本、PDF 未检查、未选表 4 差异、CC BY 4.0 归属及离散绘图改编说明保留。
+不新增来源媒体或原始数据。机器辅助翻译不是独立科学／母语审校；浏览器 QA 未验证。
+[完整绘图／API／CSV 合同](OBSERVATION_TEMPERATURE_PLOT.md) · [迁移](MIGRATION_v0.23.0.md)。
+
+## 此前 v0.22.0：六个试验箱条件下的 PA12 CF15 拉伸摘要
 
 新增 Ciganas、Kalinauskis 和 Cigane（2026）表 3 的六个 UTS／SD 单元格，
 报告的试验箱条件为 **23、40、60、80、100、120 °C**。当前共 **四项研究的
@@ -185,7 +225,7 @@ python -m materials_boundaries temperature evaluate examples/temperature/synthet
 python -m materials_boundaries temperature plot --output /tmp/temperature-demos --lang zh
 ```
 
-[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.22.0.md)
+[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.23.0.md)
 
 ## 本地运行
 

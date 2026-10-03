@@ -1,6 +1,6 @@
 # Read-only catalog reference
 
-The packaged `claims`, `sources` and `observations` catalogs are curated metadata, not a complete literature index or a comprehensive material-property database. Current v0.22.0 contains 36 mechanics claims, 52 sources and twelve observations from four studies, alongside five separate synthetic temperature demonstrations (seven branches) and twelve computational predictions in two scientific families and three explicit groups. The v0.22.0 addition is six [PA12 CF15 tensile-test summaries](PA12_CF15_TEMPERATURE_OBSERVATIONS.md) and one source, with reported MPa separate from exact SI Pa. The earlier v0.21.0 addition was six Ni11X predictions in a new explicit group; see [prediction search and boundaries](COMPUTATIONAL_PREDICTIONS.md). The earlier v0.19.0 addition was exactly two [monolayer hBN observations](OBSERVATIONS.md#monolayer-hbn-falin-et-al-2017-new-records) and one source. The two v0.18.0 claims describe bulk elastic plane-wave speeds and strict strong ellipticity; see [bulk-wave definitions and proofs](BULK_ELASTIC_WAVES.md). The earlier hydrostatic directional compressibility and normalized tensor-class range retain their [compressibility contracts](DIRECTIONAL_COMPRESSIBILITY.md). The earlier [directional Poisson relations](DIRECTIONAL_POISSON.md) remain distinct. Searching never changes a record, fetches a source, evaluates a material, or executes a formula string. A match does not establish applicability or verification; no match does not establish absence from the scientific literature.
+The packaged `claims`, `sources` and `observations` catalogs are curated metadata, not a complete literature index or a comprehensive material-property database. Current v0.23.0 retains 36 mechanics claims, 52 sources and twelve observations from four studies, alongside five separate synthetic temperature demonstrations (seven branches) and twelve computational predictions in two scientific families and three explicit groups. The separate v0.23.0 [closed temperature-observation plot](OBSERVATION_TEMPERATURE_PLOT.md) admits no new scientific records. The v0.22.0 addition was six [PA12 CF15 tensile-test summaries](PA12_CF15_TEMPERATURE_OBSERVATIONS.md) and one source, with reported MPa separate from exact SI Pa. The earlier v0.21.0 addition was six Ni11X predictions in a new explicit group; see [prediction search and boundaries](COMPUTATIONAL_PREDICTIONS.md). The earlier v0.19.0 addition was exactly two [monolayer hBN observations](OBSERVATIONS.md#monolayer-hbn-falin-et-al-2017-new-records) and one source. The two v0.18.0 claims describe bulk elastic plane-wave speeds and strict strong ellipticity; see [bulk-wave definitions and proofs](BULK_ELASTIC_WAVES.md). The earlier hydrostatic directional compressibility and normalized tensor-class range retain their [compressibility contracts](DIRECTIONAL_COMPRESSIBILITY.md). The earlier [directional Poisson relations](DIRECTIONAL_POISSON.md) remain distinct. Searching never changes a record, fetches a source, evaluates a material, or executes a formula string. A match does not establish applicability or verification; no match does not establish absence from the scientific literature.
 
 ## CLI
 
@@ -332,7 +332,7 @@ are not measurements, empirical source fits or theoretical bounds. They never
 extend `composite_evaluate`. Use `temperature catalog` for canonical records and
 `--text --lang` for authored descriptions. The v0.16.0 source catalog preserved 46
 bibliographic records and added one original demonstration-provenance record.
-The v0.17.0 MoS2 source brought the total to 48; the current v0.22.0 catalog has 52 sources, with the synthetic contents unchanged. NIST cryogenic coefficients and derived outputs are omitted
+The v0.17.0 MoS2 source brought the total to 48; the current v0.23.0 catalog has 52 sources, with the synthetic contents unchanged. NIST cryogenic coefficients and derived outputs are omitted
 conservatively; bibliographic references remain. See [temperature contracts](TEMPERATURE_MODELS.md)
 and [rights scope](../THIRD_PARTY_NOTICES.md).
 
@@ -480,9 +480,9 @@ algebra are not independent scientific/native-language review or redistribution
 permission; no source full text, PDF, page image or figure is bundled.
 
 
-## Separate observation inspection exports (current v0.22.0)
+## Separate observation inspection exports (unchanged in v0.23.0)
 
-`observation inspect --output DIR` exports source-ordered inspection cards/tables
+`observation inspect --output DIR` exports packaged-catalog-ordered inspection cards/tables
 for all 12 observation records, separately from `catalog` output. Inspection
 schema 1.1.0 retains the six old 2D facets and adds six PA12 3D chamber-condition
 facets with reported MPa and explicit exact SI Pa re-expression. It accepts
@@ -514,11 +514,30 @@ python -m materials_boundaries catalog observations --quantity ultimate_tensile_
 
 No quantitative temperature-range query, interpolation, stress calculation,
 N/m conversion, confidence interval or universal bound is implied. The full
-catalog requires six unique approved dataset/quantity/source-cell identities
-in source-column order;
+catalog requires the complete set of six unique approved dataset/quantity/source-cell identities;
 renamed duplicates cannot add evidence. A selected subset or unchanged scientific
 payload under a renamed ID is valid. Other temperatures, materials and protocols
 require reviewed admission; existing supported-family appendability remains.
 Source-specific guards also preserve revision/PDF/rights metadata. See the
 [full source contract](PA12_CF15_TEMPERATURE_OBSERVATIONS.md) and
 [migration](MIGRATION_v0.22.0.md).
+
+
+## Explicit closed temperature-observation plot (v0.23.0)
+
+`observation plot-temperature --dataset-id ciganas-2026-pa12-cf15-fff-uts-temperature
+--output DIR` is an independent presentation route, not a catalog filter or a
+change to generic inspection. The exact dataset and output directory are required.
+It always uses all six approved Table 3 UTS/SD cells in source order, restoring
+that order from a valid packaged permutation. Catalog queries and generic
+inspection continue to retain packaged order. Unknown conditions, shared units
+or arbitrary pressure-shaped records cannot define a compatible group.
+
+The new plot schema 1.0.0 retains canonical scientific snapshots and current-data
+validation, source-reported central values rather than asserted means, mandatory
+±reported-SD whiskers, reported chamber °C and MPa axes, exact source strings and
+all scientific/rights caveats. SD is not CI, SEM, observed min–max or bounds;
+no x whiskers means unreported uncertainty. Display margins are not material
+limits. No new material model, prediction, allowable or executable rule results.
+[Full API and export contract](OBSERVATION_TEMPERATURE_PLOT.md) ·
+[Migration](MIGRATION_v0.23.0.md).

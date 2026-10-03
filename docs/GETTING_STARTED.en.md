@@ -1,6 +1,61 @@
 # Getting started: Materials Boundaries
 
-## Current v0.22.0: PA12 CF15 tensile summaries at six chamber conditions
+## Current v0.23.0: explicit PA12 CF15 temperature-observation plot
+
+Use the new independent route for **all six approved Table 3 cells from one
+source-reported shared protocol**. It is a descriptive display of published
+summaries, not a material prediction or independent scientific validation.
+The scientific catalogs, **12 observations, 52 sources, 36 claims, 12 predictions,
+five synthetic temperature models, seven branches and eight executable rules**
+remain unchanged; all observations stay `catalog_only`.
+
+```sh
+python -m materials_boundaries observation plot-temperature --dataset-id ciganas-2026-pa12-cf15-fff-uts-temperature --output /tmp/pa12-temperature-plot-en --lang en
+python -m materials_boundaries observation plot-temperature --help --lang en
+```
+
+The exact dataset ID and output directory are **required**. There is no default
+all-records plot, subset, arbitrary pressure-record admission or automatic group.
+`--lang en|zh|ja|de` retains final-occurrence precedence. Plot schema **1.0.0** is
+separate from unchanged observation **1.3.0** and generic inspection **1.1.0**.
+`observation inspect` stays text-only and retains its original selectors/order.
+
+Six unconnected equally styled dots show **reported central UTS values, not
+asserted means**, on numeric reported-chamber °C and source-MPa axes. Capped
+vertical whiskers are **±reported SD**, not SEM, CI, observed min–max, hard bounds
+or coverage. **Three tensile tests per condition** are reported, with raw
+replicates and independence unverified. Chamber conditions after 30-minute
+stabilization are not direct specimen temperatures; no x whiskers means
+**unreported temperature uncertainty, not zero**. Fixed 15–125 °C / 0–55 MPa
+display domains are padding/baseline, not material limits. There is no connecting
+curve, fit, interpolation, extrapolation, ranking, overlay, allowable or safety claim.
+
+The exact table preserves all source strings and trailing zeros; Pa is separate
+exact unit metadata, **1 MPa = 1000000 Pa**, with no added precision or geometry
+calculation. Central statistic/aggregation, stress/area basis, moisture/RH and
+local strain rate remain unknown. Horizontal ±45° FFF, drying, 15 wt.% declaration,
+100% infill setting, nominal geometry and 1 mm/min crosshead protocol remain
+specific context, not proof of measured composition, zero porosity or isotropy.
+
+Five outputs use `observation-temperature-plot`: JSON, CSV, wide/narrow SVG and
+script-free responsive HTML. The compact SVG keeps all six scope warnings,
+legend, exact source table/record IDs, shared protocol/geometry/unknowns summary,
+exact source locators and revision/rights attribution visible. Complete metadata
+dictionaries, repeated record provenance and all six SI pairs stay lossless in
+JSON/CSV and inert HTML details; essential warnings are never hidden there. JSON/CSV are deterministic and locale-independent;
+import source, ID and JSON columns as text because formula-like strings remain
+unmodified. Canonical validation rebuilds from current catalogs before writes;
+invalid input changes no output, but later filesystem failure has no all-file
+rollback guarantee. Plot source order is restored even from reordered packaged
+records; generic inspection still uses packaged order.
+
+HTML revision, PDF noninspection, unselected Table 4 discrepancy, CC BY 4.0
+attribution and plotting-adaptation notices remain. No source assets/raw data
+are added. Machine-assisted translations are not independent scientific/native
+review; browser QA is unverified. [Full plot/API/CSV contract](OBSERVATION_TEMPERATURE_PLOT.md)
+· [Migration](MIGRATION_v0.23.0.md).
+
+## Earlier v0.22.0: PA12 CF15 tensile summaries at six chamber conditions
 
 Six selected Table 3 UTS/SD summaries from Ciganas, Kalinauskis and Cigane (2026)
 are added at reported chamber conditions **23, 40, 60, 80, 100 and 120 °C**.
@@ -246,7 +301,7 @@ python -m materials_boundaries temperature evaluate examples/temperature/synthet
 python -m materials_boundaries temperature plot --output /tmp/temperature-demos --lang en
 ```
 
-[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.22.0.md)
+[Compressibility](DIRECTIONAL_COMPRESSIBILITY.md) · [Directional Poisson ratio](DIRECTIONAL_POISSON.md) · [Elastic stability](ELASTIC_STABILITY.md) · [Anisotropy](ELASTIC_ANISOTROPY.md) · [Fatigue](FATIGUE_GROWTH.md) · [Computational predictions](COMPUTATIONAL_PREDICTIONS.md) · [Bulk elastic waves](BULK_ELASTIC_WAVES.md) · [Release scope](MIGRATION_v0.23.0.md)
 
 ## Run locally
 

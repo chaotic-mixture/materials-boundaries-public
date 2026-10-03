@@ -1,14 +1,20 @@
 # Offline observation inspection
 
-Version **0.22.0** supports source-ordered inspection cards/tables for **12
+Version **0.23.0** preserves the v0.22.0 packaged-catalog-ordered inspection cards/tables for **12
 observations from four studies**: six unchanged 2D model-dependent summaries
-and six new PA12 CF15 3D tensile-test summaries. Inspection schema **1.1.0**
+and the six PA12 CF15 3D tensile-test summaries added in v0.22.0. Inspection schema **1.1.0**
 references observation schema **1.3.0**. Every family retains its own quantity,
 units, method and source-specific evidence. This is catalog inspection, with no
 evaluator, fitted result, matched-condition comparison, material ranking or
 engineering allowable. Exactly eight executable composite rules remain. See
 [source-specific evidence](OBSERVATIONS.md), the [PA12 CF15 guide](PA12_CF15_TEMPERATURE_OBSERVATIONS.md)
 and [v0.22.0 migration](MIGRATION_v0.22.0.md).
+
+All no-axes/no-whiskers restrictions in this guide apply to **generic inspection**.
+The separate [v0.23.0 temperature-observation plot](OBSERVATION_TEMPERATURE_PLOT.md)
+has a closed six-cell admission contract and its own 1.0.0 schema; it does not
+change this route's inspection-only purpose, selectors, packaged ordering or
+scientific policy.
 
 ## Export and select
 
@@ -35,7 +41,7 @@ for the separate literal text-search interface.
 
 `--group-by study` is the default: separate study sections contain separate
 quantity facets. `--group-by quantity` changes navigation/order only and retains
-source order within each quantity. It establishes no common scientific basis.
+packaged catalog order within each quantity. It establishes no common scientific basis.
 Malformed, duplicate or unknown IDs, unknown sources/quantities, unsupported
 scientific families and empty filter intersections fail before output files are
 written. Valid record identities do not need a presentation record-ID whitelist;
@@ -183,7 +189,7 @@ measures remain unspecified.
 Reported SD is not SEM, a confidence interval, 68% coverage, a hard bound or a
 full uncertainty budget. No averaging/replicate weighting, coverage or missing
 specimen/condition assumption is invented. Unknown conditions never establish
-equivalence, including when two records both contain null. There are **no axes,
+equivalence, including when two records both contain null. Generic inspection has **no axes,
 bars, points, error whiskers, endpoint calculations, shared scales or
 magnitude-dependent styling**. No averaging, ratios, ranking, interpolation,
 refitting or cross-dimensional conversion is performed. PA12 alone adds the

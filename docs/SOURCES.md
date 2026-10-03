@@ -538,3 +538,22 @@ the article license. No source PDF, screenshot, figure, HTML dump, long passage
 or raw measurement collection is bundled. MIT applies to original project work
 and does not replace third-party rights. [Notices](../THIRD_PARTY_NOTICES.md) ·
 [Migration](MIGRATION_v0.22.0.md).
+
+
+## v0.23.0 PA12 CF15 descriptive display (no new source)
+
+The [closed temperature-observation plot](OBSERVATION_TEMPERATURE_PLOT.md) reuses
+exactly the six already curated Table 3 UTS/SD cells and the unchanged Ciganas,
+Kalinauskis and Cigane (2026) source. No additional source was inspected or
+admitted for the display. The full HTML revision, PDF noninspection, unselected
+Table 4 discrepancy, author/title/DOI attribution and article CC BY 4.0 evidence
+above remain applicable. This is one source-reported shared-protocol display,
+not independent scientific validation or proof of comparable unknown conditions.
+
+Adaptation now includes discrete central-value/±reported-SD glyphs with stated
+decimal endpoint arithmetic, while source numbers/strings, units and uncertainty
+meaning remain intact. Exact SI re-expression and original curator notes remain
+separate. Metadata/policy hashes are not publisher artifact byte hashes. No
+source PDF, figure, screenshot, HTML dump, raw measurement collection or excluded
+manufacturer Table 1 is redistributed; source rights and no-endorsement terms
+are unchanged. [Migration](MIGRATION_v0.23.0.md).

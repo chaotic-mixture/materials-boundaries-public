@@ -442,9 +442,76 @@ sentinel = Path(instance_path).parent / 'pa12-invalid-existing'; sentinel.mkdir(
 rejects(lambda: export_observation_inspection(sentinel, record_ids=new_ids, lang='invalid'), 'invalid language accepted')
 require([(p.name, p.read_text()) for p in sentinel.iterdir()] == [('keep.txt', 'sentinel')], 'invalid export modified existing target')
 
+# Separate quantitative source-summary route; inspection stays nonquantitative.
+from decimal import Context, Inexact, Rounded, getcontext, setcontext
+from materials_boundaries import observation_temperature_plot as plot_view
+from materials_boundaries._pa12_cf15_observation_contract import PA12_DATASET
+from materials_boundaries._observation_temperature_labels import labels as plot_labels
+plot_bundle = plot_view.build_observation_temperature_plot(dataset_id=PA12_DATASET)
+plot_view.validate_observation_temperature_plot(plot_bundle)
+expected_endpoints = [('48.19', '49.95'), ('39.59', '41.03'), ('31.52', '33.88'),
+                      ('25.45', '27.75'), ('21.81', '23.75'), ('17.77', '19.59')]
+require([(g['derived_lower_string'], g['derived_upper_string']) for g in plot_bundle['glyphs']]
+        == expected_endpoints, 'wrong installed plot SD endpoints')
+require([g['central_value_string'] for g in plot_bundle['glyphs']]
+        == ['49.07', '40.31', '32.70', '26.60', '22.78', '18.68'], 'lost source precision')
+context_before = getcontext().copy()
+try:
+    hostile = Context(prec=2); hostile.traps[Inexact] = True; hostile.traps[Rounded] = True
+    setcontext(hostile)
+    require(plot_view.build_observation_temperature_plot(dataset_id=PA12_DATASET) == plot_bundle,
+            'caller Decimal context affected installed glyph arithmetic')
+finally:
+    setcontext(context_before)
+plot_data = []
+for language in languages:
+    destination = Path(instance_path).parent / ('temperature-observation-plot-' + language)
+    out = io.StringIO()
+    with redirect_stdout(out):
+        status = main(['observation', 'plot-temperature', '--dataset-id', PA12_DATASET,
+                       '--output', str(destination), '--lang', language])
+    report = json.loads(out.getvalue())
+    require(status == 0 and len(report['artifacts']) == 5, 'installed plot CLI failed')
+    require(all(name.startswith('observation-temperature-plot.') for name in report['artifacts']),
+            'plot export prefix could overwrite inspection')
+    bundle_bytes = (destination / 'observation-temperature-plot.json').read_bytes()
+    csv_bytes = (destination / 'observation-temperature-plot.csv').read_bytes()
+    plot_data.append((bundle_bytes, csv_bytes))
+    require(json.loads(bundle_bytes) == plot_bundle, 'installed export bundle changed')
+    rows = list(csv.DictReader(io.StringIO(csv_bytes.decode())))
+    require(len(rows) == 6 and rows[2]['source_value_string'] == '32.70 ± 1.18', 'plot CSV lost exact cells')
+    for filename in report['artifacts']:
+        if filename.endswith('.svg'):
+            root = ET.fromstring((destination / filename).read_text())
+            require(sum(node.tag.endswith('circle') for node in root.iter()) == 6,
+                    'installed source plot must have six equally styled points')
+        if filename.endswith(('.svg', '.html')):
+            text = (destination / filename).read_text()
+            require('[missing:' not in text and '<script' not in text.lower(), 'unsafe or incomplete plot rendering')
+            require('32.70' in text and 'CC-BY-4.0' in text, 'missing source precision or rights')
+require(all(data == plot_data[0] for data in plot_data), 'locale changed plot JSON or CSV')
+for alteration in (
+    lambda b: b['glyphs'].reverse(),
+    lambda b: b['glyphs'][0].update(derived_lower_string='48.18'),
+    lambda b: b['presentation_policy'].update(interpolation_allowed=True),
+    lambda b: b['group'].update(profile_version='1.0.1'),
+):
+    invalid = deepcopy(plot_bundle); alteration(invalid)
+    rejects(lambda: plot_view.temperature_observation_plot_json(invalid), 'installed plot accepted tampering')
+plot_read = plot_view.read_catalog
+reordered = deepcopy(observations); reordered['records'].reverse()
+with patch.object(plot_view, 'read_catalog', side_effect=lambda kind: deepcopy(reordered) if kind == 'observations' else plot_read(kind)):
+    require(plot_view.build_observation_temperature_plot(dataset_id=PA12_DATASET) == plot_bundle,
+            'catalog order leaked into source-ordered plot')
+invalid_target = Path(instance_path).parent / 'invalid-temperature-observation-plot'
+rejects(lambda: plot_view.export_observation_temperature_plot(invalid_target, dataset_id='wrong'), 'wrong dataset accepted')
+require(not invalid_target.exists(), 'invalid plot created output')
+require(build_observation_inspection()['presentation_policy']['quantitative_axes_allowed'] is False,
+        'separate route weakened generic inspection')
+
 print(json.dumps({"version": expected, "metadata_version": metadata_version,
                   "engine_outputs": sorted(outputs), "languages": languages,
-                  "installed_without_dependencies": True, "mixed_observation_catalog_languages": languages, "bulk_wave_catalog_languages": languages, "hbn_observation_languages": languages, "observation_inspection_languages": languages, "observation_inspection_schema": "1.1.0", "pa12_export_checks": export_checks, "pa12_scientific_mutations_rejected": len(mutations), "pa12_exact_selected_cells": len(expected_cells)}))
+                  "installed_without_dependencies": True, "mixed_observation_catalog_languages": languages, "bulk_wave_catalog_languages": languages, "hbn_observation_languages": languages, "observation_inspection_languages": languages, "observation_inspection_schema": "1.1.0", "pa12_export_checks": export_checks, "pa12_scientific_mutations_rejected": len(mutations), "pa12_exact_selected_cells": len(expected_cells), "temperature_observation_plot_languages": languages, "temperature_observation_plot_schema": "1.0.0", "temperature_observation_plot_cells": len(plot_bundle["glyphs"])}))
 '''
 
 
