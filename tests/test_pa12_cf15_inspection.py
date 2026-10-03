@@ -56,7 +56,7 @@ class PA12InspectionTests(unittest.TestCase):
                     self.assertEqual(subset['selection']['resolved_record_ids'], expected)
                     self.validator.validate(subset)
             self.validator.validate(view.build_observation_inspection(group_by=grouping))
-        self.assertEqual(view.build_observation_inspection(quantity=PA12_QUANTITY)['facets'], self.bundle['facets'])
+        self.assertEqual(view.build_observation_inspection(quantity=PA12_QUANTITY, source_id=PA12_SOURCE)['facets'], self.bundle['facets'])
         with self.assertRaises(view.ObservationInspectionError):
             view.build_observation_inspection([OLD_IDS[0]], source_id=PA12_SOURCE)
 

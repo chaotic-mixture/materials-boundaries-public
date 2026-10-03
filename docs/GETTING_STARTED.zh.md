@@ -349,3 +349,14 @@ python -m materials_boundaries catalog observations --observation-type experimen
 Ni / Ni11Al / Ni11Co：5.13 / 4.58 / 5.46 GPa。只在同一研究所述方法层面比较，
 不是商业合金测量值或普适上界。物理温度、标量压力、磁态与不确定性保持未知；
 0.08 GPa 收敛判据不是误差棒。[方法、来源与局限](COMPUTATIONAL_PREDICTIONS.md)。
+
+
+## v0.24.0 PAHT-CF
+
+v0.24.0 新增四条仅供目录查阅的退火 ±45° PAHT-CF 抗拉强度中位数观测，报告的试验箱条件为 25/50/100/150 °C。标准差单独报告；SD 表头无单位，MPa 是根据相邻 UTS 列推断的，SD 的 SI 换算具有条件性。每条件五个试样不证明独立性或置信区间。应力／面积定义、直接试样温度与含水量仍未知；保留原文 10 mm/s。不新增绘图、合并估计或排名。Ciganas 绘图仍仅接纳原六个单元格。
+
+[Source / 来源 / 出典 / Quelle](PAHT_CF_ANNEALED_OBSERVATIONS.md) · [Migration](MIGRATION_v0.24.0.md)
+
+```sh
+python -m materials_boundaries observation inspect --source-id zach_dudescu2025jcs9110624 --output /tmp/paht-inspection --lang zh
+```

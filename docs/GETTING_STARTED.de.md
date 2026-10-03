@@ -454,3 +454,14 @@ nur für das publizierte Verfahren einer Studie, nicht für Messungen kommerziel
 Legierungen oder universelle Grenzen. Temperatur, skalarer Druck, Magnetismus und
 Unsicherheit bleiben unbekannt; 0.08 GPa Konvergenz ist kein Fehlerbalken.
 [Verfahren, Herkunft und Grenzen](COMPUTATIONAL_PREDICTIONS.md).
+
+
+## v0.24.0 PAHT-CF
+
+v0.24.0 ergänzt vier reine Katalogbeobachtungen des UTS-Medians für getempertes ±45° PAHT-CF bei berichteten Kammerbedingungen 25/50/100/150 °C. SD wird separat angegeben; MPa ist aus der benachbarten UTS-Spalte erschlossen, da der SD-Kopf keine Einheit nennt. Die SI-Umrechnung der SD ist bedingt. Fünf Proben je Bedingung belegen weder Unabhängigkeit noch ein Konfidenzintervall. Spannungs-/Flächendefinition, direkte Probentemperatur und Feuchte bleiben unbekannt; 10 mm/s bleibt wie gedruckt. Keine neuen Diagramme, gepoolten Schätzer oder Rangfolgen. Das Ciganas-Diagramm bleibt auf seine sechs Zellen beschränkt.
+
+[Source / 来源 / 出典 / Quelle](PAHT_CF_ANNEALED_OBSERVATIONS.md) · [Migration](MIGRATION_v0.24.0.md)
+
+```sh
+python -m materials_boundaries observation inspect --source-id zach_dudescu2025jcs9110624 --output /tmp/paht-inspection --lang de
+```

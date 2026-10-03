@@ -952,6 +952,9 @@ def validate_catalogs(catalogs: dict, schema_dir: Path = ROOT / "schemas") -> di
         from materials_boundaries._pa12_cf15_observation_contract import validate_pa12_dataset, validate_pa12_sources
         validate_pa12_dataset(list(observations.values()), require_complete=True)
         validate_pa12_sources(list(sources.values()))
+        from materials_boundaries._paht_cf_observation_contract import validate_paht_dataset, validate_paht_sources
+        validate_paht_dataset(list(observations.values()), require_complete=True)
+        validate_paht_sources(list(sources.values()))
     except ValueError as exc:
         raise CatalogValidationError(str(exc)) from exc
     for name, observation in observations.items():

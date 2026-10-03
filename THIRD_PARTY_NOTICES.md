@@ -206,3 +206,12 @@ revision caveat and article-specific CC BY 4.0 notice. No new rights are asserte
 for excluded manufacturer Table 1 or any other unselected content. No source
 assets or raw measurements are redistributed; the MIT license applies to
 original project contributions and no author/publisher endorsement is implied.
+
+
+## Zach and Dudescu (2025): four annealed PAHT-CF observations
+
+Theodor Florian Zach and Mircea Cristian Dudescu, “Effect of Annealing on High Temperature Tensile Performance of 3D Printed Polyamide Carbon Fiber: A Comparative Study,” Journal of Composites Science 9(11), 624 (2025), DOI [10.3390/jcs9110624](https://doi.org/10.3390/jcs9110624). Article copyright © 2025 the authors; MDPI is licensee. The inspected article copyright block expressly links [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); Table A1 showed no third-party credit line.
+
+Four annealed ±45° Table A1 rows were selected and reorganized as catalog observations. Median/SD strings are preserved separately; exact SI-prefix re-expression and original curator notes were added. The SD header does not print a unit: MPa is a contextual inference and its Pa re-expression is conditional. This adaptation does not imply author endorsement. MIT applies to original project contributions and does not replace source rights.
+
+Only selected numerical facts, short labels, bibliographic/component/version metadata, attribution and original curation are bundled. Publisher PDFs, HTML, screenshots, source figures, long passages and raw measurements are not included. Supplier Table 1 and supplier publications/assets/raw data are excluded; Table 2 separately credits references [28,31], whose assets are not redistributed or relicensed. Neither PDF version was inspected or asserted equivalent to current HTML. See [full source guide](docs/PAHT_CF_ANNEALED_OBSERVATIONS.md).

@@ -72,6 +72,12 @@ def _has_marker(value, markers):
 
 def is_pa12_record(record):
     """Detect source/family/dataset claims even after another label is removed."""
+    # Shared UTS/dataset fields also occur in the separately reviewed median/SD
+    # family. Exempt it only after its full source-specific guard succeeds.
+    from ._paht_cf_observation_contract import PAHT_FAMILY, validate_paht_record
+    if isinstance(record, dict) and record.get('method_family') == PAHT_FAMILY:
+        validate_paht_record(record)
+        return False
     return isinstance(record, dict) and (
         _has_marker(record, {PA12_FAMILY, PA12_SOURCE, PA12_DATASET, PA12_PROTOCOL,
                             PA12_QUANTITY, PA12_ARTIFACT, PA12_DOI, PA12_MAIN,

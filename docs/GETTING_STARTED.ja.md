@@ -372,3 +372,14 @@ Ni / Ni11Al / Ni11Co：5.13 / 4.58 / 5.46 GPa。同一研究の報告手順に�
 比較であり、市販合金の測定値や普遍的上限ではありません。物理温度、圧力、
 磁気状態、不確かさは不明です。0.08 GPa の収束基準は誤差棒ではありません。
 [方法、出典、限界](COMPUTATIONAL_PREDICTIONS.md)。
+
+
+## v0.24.0 PAHT-CF
+
+v0.24.0 は、焼鈍した ±45° PAHT-CF の引張強さ中央値を、報告された試験槽条件 25/50/100/150 °C ごとに4件追加します。カタログ閲覧専用です。SD は別の値で、列見出しに単位がないため MPa は隣接 UTS 列からの文脈的推定です。SD の SI 換算はこの推定を条件とします。各条件5試料は独立性や信頼区間を保証しません。応力・面積、直接の試料温度、含水率は不明のまま、10 mm/s を原文どおり保持します。新しい図、統合推定、順位付けはありません。Ciganas 図は従来6セルのみです。
+
+[Source / 来源 / 出典 / Quelle](PAHT_CF_ANNEALED_OBSERVATIONS.md) · [Migration](MIGRATION_v0.24.0.md)
+
+```sh
+python -m materials_boundaries observation inspect --source-id zach_dudescu2025jcs9110624 --output /tmp/paht-inspection --lang ja
+```

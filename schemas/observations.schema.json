@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "urn:materials-boundaries:schema:observations:1.3.0",
   "title": "Materials Boundaries observational context v1.3",
-  "description": "Closed catalog-only source/method families: historical Lee graphene, Bertolazzi monolayer MoS2, Falin monolayer hBN and Ciganas PA12 CF15 tensile summaries. Source-specific dimensions, uncertainty, protocol and selected cells remain separate. No evaluation, temperature-law or cross-family comparison API.",
+  "description": "Closed catalog-only source/method families: historical Lee graphene, Bertolazzi monolayer MoS2, Falin monolayer hBN and Ciganas PA12 CF15 tensile summaries. Source-specific dimensions, uncertainty, protocol and selected cells remain separate. No evaluation, temperature-law or cross-family comparison API. Zach/Dudescu annealed PAHT-CF is a separate median/SD source family with contextual SD units.",
   "type": "object",
   "additionalProperties": false,
   "properties": {
@@ -24,6 +24,9 @@
           },
           {
             "$ref": "#/$defs/ciganas_pa12_cf15"
+          },
+          {
+            "$ref": "#/$defs/zach_paht_cf_annealed"
           }
         ]
       }
@@ -3965,6 +3968,861 @@
                 "uncertainty_value": {
                   "const": 910000
                 }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "zach_paht_cf_annealed": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "version": {
+          "const": "1.0.0"
+        },
+        "observation_type": {
+          "const": "experiment_derived_tensile_test_summary"
+        },
+        "study_id": {
+          "const": "zach_dudescu2025jcs9110624"
+        },
+        "dataset_id": {
+          "const": "zach-2025-paht-cf-annealed-fff-uts-temperature"
+        },
+        "protocol_id": {
+          "const": "zach2025-paht-cf-annealed-pm45-tension"
+        },
+        "method_family": {
+          "const": "zach_2025_paht_cf_annealed_tensile_temperature_v1"
+        },
+        "quantity": {
+          "const": "ultimate_tensile_strength_as_reported_3d"
+        },
+        "quantity_dimension": {
+          "const": "pressure"
+        },
+        "si_unit": {
+          "const": "Pa"
+        },
+        "model_status": {
+          "const": "source_reported_median_and_sd_with_explicit_metadata_gaps"
+        },
+        "evaluation_support": {
+          "const": "catalog_only"
+        },
+        "source_cell": {
+          "type": "object"
+        },
+        "material": {
+          "const": {
+            "name": "Bambu Lab PAHT-CF; annealed FFF specimens; ±45° infill",
+            "dimensionality": 3,
+            "commercial_grade_as_reported": "PAHT-CF",
+            "brand": "Bambu Lab",
+            "matrix": "polyamide 12 (PA12), as described by the authors",
+            "reinforcement": "short carbon fibers",
+            "reinforcement_mass_fraction": {
+              "value": 15,
+              "unit": "wt.%",
+              "basis": "declared_formulation",
+              "independently_assayed_fraction": null
+            },
+            "filament_diameter": {
+              "value": 1.75,
+              "unit": "mm"
+            },
+            "lot_number": null,
+            "isotropy_established": false,
+            "measured_porosity": null,
+            "measured_density": null,
+            "crystallinity": null,
+            "fiber_distribution": null
+          }
+        },
+        "reported_result": {
+          "type": "object"
+        },
+        "si_result": {
+          "type": "object"
+        },
+        "method": {
+          "const": {
+            "technique": "uniaxial_tension",
+            "instrument": "Instron 5967",
+            "force_sensor": "2580–10 KN/131510",
+            "extensometer": "2663-901",
+            "thermal_chamber": "Instron 3119-610",
+            "preparation": {
+              "method": "fused_filament_fabrication",
+              "printer": "Bambu Lab X1 Carbon",
+              "filament_predrying": {
+                "temperature": {
+                  "value": 80,
+                  "unit": "degC"
+                },
+                "duration": {
+                  "value": 12,
+                  "unit": "h"
+                }
+              },
+              "storage": "dehumidified storage; dehumidified AMS during printing",
+              "printing_parameters": {
+                "build_orientation": "flat",
+                "infill_orientation": "±45°",
+                "infill_setting_percent": 100,
+                "infill_interpretation": "Reported print setting, not measured zero porosity or isotropy.",
+                "nozzle_diameter": {
+                  "value": 0.4,
+                  "unit": "mm"
+                },
+                "layer_height": {
+                  "value": 0.2,
+                  "unit": "mm"
+                },
+                "top_bottom_layer_thickness_as_reported": {
+                  "value": 0.16,
+                  "unit": "mm"
+                },
+                "printing_speed": {
+                  "value": 100,
+                  "unit": "mm/s"
+                },
+                "extrusion_temperature": {
+                  "value": 290,
+                  "unit": "degC"
+                },
+                "plate_temperature": {
+                  "value": 100,
+                  "unit": "degC"
+                },
+                "printing_chamber_temperature": {
+                  "value": 45,
+                  "unit": "degC"
+                }
+              },
+              "postprint_annealing": {
+                "selected_group": "annealed",
+                "temperature": {
+                  "value": 80,
+                  "unit": "degC"
+                },
+                "continuous_duration": {
+                  "value": 12,
+                  "unit": "h"
+                }
+              },
+              "postanneal_cooling": "natural-convection cooling to room temperature in a vacuum-sealed dehumidified container",
+              "preparation_wording_ambiguity": "Section 2.2 describes annealing for all specimens while Table A1/Section 2.3 distinguish groups. Only explicitly annealed rows are admitted; untreated history is not inferred.",
+              "postprint_storage_duration": null,
+              "surface_finishing": null
+            },
+            "specimen": {
+              "shape": "source-reported ISO 23529 Type 1 design",
+              "dimensions_basis": "nominal_drawing_annotations_not_measured_dimensions",
+              "drawing_annotations": {
+                "overall_length": "115",
+                "wide_width": "25 ± 1",
+                "central_straight_length": "33 ± 2",
+                "thickness": "2.5 ± 0.2",
+                "unit_explicit_in_inspected_caption": null
+              },
+              "narrow_width": null,
+              "actual_dimensions": null,
+              "measured_cross_section_for_stress": null,
+              "extensometer_gauge_length": null,
+              "grip_separation": null,
+              "geometry_role": "Drawing context only; no area, strain-rate or gauge-length reconstruction."
+            },
+            "loading_rate": {
+              "value": 10,
+              "value_string": "10",
+              "unit": "mm/s",
+              "source_label": "displacement rate",
+              "quantity": "reported_displacement_rate",
+              "control_channel": null,
+              "interpretation": "As printed; no silent correction to mm/min, crosshead-channel assumption or local strain-rate conversion."
+            },
+            "local_strain_rate_per_s": null,
+            "strain_measure": null,
+            "strain_reference_length": null,
+            "stress_measure": null,
+            "stress_area_basis": null,
+            "uts_extraction_criterion": null,
+            "standard_as_cited": [
+              "ISO 23529 Type 1",
+              "ISO 37",
+              "ISO 527"
+            ],
+            "standard_compliance_independently_verified": false,
+            "standard_url_validated": false
+          }
+        },
+        "conditions": {
+          "type": "object"
+        },
+        "sample_metadata": {
+          "const": {
+            "count": 5,
+            "scope": "specimens_per_orientation_temperature_annealing_combination",
+            "count_definition_source": {
+              "source_id": "zach_dudescu2025jcs9110624",
+              "artifact": "publisher_html_updated_2026_09_02_inspected_2026_10_03",
+              "source_url": "https://www.mdpi.com/2504-477X/9/11/624#sec2dot3-jcs-09-00624",
+              "component_id": "sec2dot3-jcs-09-00624",
+              "expanded_component_id": null,
+              "locator": "Section 2.3",
+              "verification_status": "publisher_html_component_checked",
+              "verified_as": "Reported 10 mm/s displacement rate, five specimens per orientation × temperature × annealing group and 30-minute thermal-chamber conditioning"
+            },
+            "study_total_as_reported": 200,
+            "raw_replicate_values_available": false,
+            "replicate_independence": null,
+            "exclusions": null,
+            "aggregation_convention": "median_as_reported",
+            "notes": [
+              "Four condition summaries share one selected preparation/protocol; they are not four independent studies.",
+              "No SD formula, raw replicate independence or uncertainty of the median is inferred from the reported group count."
+            ]
+          }
+        },
+        "verification": {
+          "const": {
+            "status": "publisher_html_selected_cells_methods_version_and_rights_checked",
+            "independent_scientific_review": false,
+            "source_inspection": {
+              "artifact": "publisher_html_updated_2026_09_02_inspected_2026_10_03",
+              "publication_date": "2025-11-10",
+              "access_date": "2026-10-03",
+              "html_latest_update_as_reported": "2 September 2026 03:21 CEST",
+              "original_html_as_reported": "11 November 2025 05:36 CET",
+              "updated_pdf_as_reported": "11 November 2025 05:35 CET",
+              "original_pdf_as_reported": "10 November 2025 15:16 CET",
+              "pdf_inspected": false,
+              "pdf_pagination": null,
+              "pdf_equivalence_claimed": false,
+              "version_notes_url": "https://www.mdpi.com/2504-477X/9/11/624/notes",
+              "selected_table_visual_checked": true,
+              "separate_reader_transcription_checked": true,
+              "selected_cells_transcription_agree": true,
+              "raw_data_reanalysis": false,
+              "raw_replicate_sd_recomputed": false,
+              "stress_area_recomputed": false,
+              "plot_digitization": false,
+              "independent_replication": false,
+              "source_version_note": "Current live HTML selected table is the numeric source. Search-rendered prose differed in discussion arrangement; no selected-cell discrepancy found. Revision/access descriptor is not an immutable artifact hash."
+            },
+            "measurement_lineage": {
+              "evidence_kind": "primary_experimental_tensile_test_summary",
+              "model_inference_only": false,
+              "manufacturer_lookup": false,
+              "excluded_dataset_dependency": false,
+              "prior_related_study_doi": "10.3390/polym17131732",
+              "raw_data_overlap_audit_performed": false
+            },
+            "rights": {
+              "license_identifier": "CC-BY-4.0",
+              "license_url": "https://creativecommons.org/licenses/by/4.0/",
+              "copyright_holder_as_reported": "2025 by the authors",
+              "publisher_licensee": "MDPI, Basel, Switzerland",
+              "article_license_verified": true,
+              "selected_table_third_party_credit_line_present": false,
+              "attribution": "Selected Table A1 values: Zach, T. F.; Dudescu, M. C. (2025), Effect of Annealing on High Temperature Tensile Performance of 3D Printed Polyamide Carbon Fiber: A Comparative Study, Journal of Composites Science 9(11), 624, DOI 10.3390/jcs9110624, CC BY 4.0. Four annealed ±45° rows selected and reorganized; exact SI-prefix re-expression and original curator caveats added. SD units are contextually inferred from the associated UTS column, not printed in the SD header.",
+              "modifications": "Four selected annealed ±45° rows reorganized as discrete observations; median and SD columns remain separate; exact MPa-to-Pa central-value scaling and conditional SD scaling; original curator metadata and warnings.",
+              "third_party_exclusion": "Supplier Table 1 and supplier publications/assets/raw data are excluded. Table 2 credits references [28,31]; only factual source-reported settings are retained, not third-party tables/assets.",
+              "project_license_scope": "MIT covers original project contributions and does not replace source rights or imply author endorsement.",
+              "source_assets_redistributed": false
+            },
+            "gaps": [
+              "Neither publisher PDF was inspected; pagination and HTML/PDF equivalence remain unknown.",
+              "Raw replicates were not obtained; no raw-data, SD, stress-area, uncertainty-budget or experimental reanalysis.",
+              "Engineering versus true stress, area basis and exact UTS extraction method remain unestablished.",
+              "SD calculation convention, replicate independence and exclusions remain unverified; SD is not SEM, confidence interval, uncertainty of the median or a bound.",
+              "The SD column omits a unit. MPa is a contextual dimensional interpretation from the associated UTS column, and its Pa conversion is conditional on that interpretation.",
+              "Direct specimen temperature, calibration, sensor location, tolerance, stability and heating rate are not established.",
+              "Actual moisture/RH, batch, measured fiber fraction, crystallinity, density and porosity remain unestablished.",
+              "Section 2.2 describes annealing for all specimens while Table A1/Section 2.3 distinguish groups. Only explicitly annealed rows are admitted; untreated history is not inferred.",
+              "The 10 mm/s displacement rate is retained as printed, not repaired to mm/min or turned into measured local strain rate.",
+              "Source claims of ISO 23529 Type 1, ISO 37 and ISO 527 are not independently verified compliance. Drawing labels are not measured dimensions; central straight length is not assumed gauge length.",
+              "The prior 2025 study may overlap non-annealed data. No raw-data overlap audit establishes statistical independence; this admission selects only the newer article’s annealed rows.",
+              "Source transcription and software review do not establish independent experimental replication or external scientific validation."
+            ]
+          }
+        },
+        "evidence": {
+          "const": [
+            {
+              "source_id": "zach_dudescu2025jcs9110624",
+              "artifact": "publisher_html_updated_2026_09_02_inspected_2026_10_03",
+              "source_url": "https://www.mdpi.com/2504-477X/9/11/624#jcs-09-00624-t0A1",
+              "component_id": "jcs-09-00624-t0A1",
+              "expanded_component_id": "table_body_display_jcs-09-00624-t0A1",
+              "locator": "Appendix A, Table A1; annealed rows; ±45° orientation; temperature blocks 25, 50, 100, 150 °C; σUTS [MPa] and Standard Deviation columns",
+              "verification_status": "publisher_html_component_checked",
+              "verified_as": "Four selected median UTS strings and separate reported SD strings; SD header has no separate printed unit"
+            },
+            {
+              "source_id": "zach_dudescu2025jcs9110624",
+              "artifact": "publisher_html_updated_2026_09_02_inspected_2026_10_03",
+              "source_url": "https://www.mdpi.com/2504-477X/9/11/624#sec3dot1-jcs-09-00624",
+              "component_id": "sec3dot1-jcs-09-00624",
+              "expanded_component_id": null,
+              "locator": "Section 3.1 opening paragraph",
+              "verification_status": "publisher_html_component_checked",
+              "verified_as": "Central values explicitly described as medians, accompanied by standard deviations"
+            },
+            {
+              "source_id": "zach_dudescu2025jcs9110624",
+              "artifact": "publisher_html_updated_2026_09_02_inspected_2026_10_03",
+              "source_url": "https://www.mdpi.com/2504-477X/9/11/624#sec2dot1-jcs-09-00624",
+              "component_id": "sec2dot1-jcs-09-00624",
+              "expanded_component_id": null,
+              "locator": "Section 2.1",
+              "verification_status": "publisher_html_component_checked",
+              "verified_as": "Commercial Bambu Lab PAHT-CF described as PA12 with 15% mass short carbon fiber; predrying and dehumidified storage"
+            },
+            {
+              "source_id": "zach_dudescu2025jcs9110624",
+              "artifact": "publisher_html_updated_2026_09_02_inspected_2026_10_03",
+              "source_url": "https://www.mdpi.com/2504-477X/9/11/624#sec2dot2-jcs-09-00624",
+              "component_id": "sec2dot2-jcs-09-00624",
+              "expanded_component_id": null,
+              "locator": "Section 2.2",
+              "verification_status": "publisher_html_component_checked",
+              "verified_as": "Flat printing, annealing preparation and cooling; wording ambiguity and unmeasured quantitative porosity retained"
+            },
+            {
+              "source_id": "zach_dudescu2025jcs9110624",
+              "artifact": "publisher_html_updated_2026_09_02_inspected_2026_10_03",
+              "source_url": "https://www.mdpi.com/2504-477X/9/11/624#jcs-09-00624-t002",
+              "component_id": "jcs-09-00624-t002",
+              "expanded_component_id": "table_body_display_jcs-09-00624-t002",
+              "locator": "Table 2",
+              "verification_status": "publisher_html_component_checked",
+              "verified_as": "Reported printing settings, not measurements of material state"
+            },
+            {
+              "source_id": "zach_dudescu2025jcs9110624",
+              "artifact": "publisher_html_updated_2026_09_02_inspected_2026_10_03",
+              "source_url": "https://www.mdpi.com/2504-477X/9/11/624#jcs-09-00624-f001",
+              "component_id": "jcs-09-00624-f001",
+              "expanded_component_id": null,
+              "locator": "Figure 1(a), nominal geometry drawing; Figure 1(b), infill orientation",
+              "verification_status": "publisher_html_component_checked",
+              "verified_as": "Only selected factual drawing labels inspected; no unit supplied by the inspected caption and no measured cross-section reconstructed"
+            },
+            {
+              "source_id": "zach_dudescu2025jcs9110624",
+              "artifact": "publisher_html_updated_2026_09_02_inspected_2026_10_03",
+              "source_url": "https://www.mdpi.com/2504-477X/9/11/624#sec2dot3-jcs-09-00624",
+              "component_id": "sec2dot3-jcs-09-00624",
+              "expanded_component_id": null,
+              "locator": "Section 2.3",
+              "verification_status": "publisher_html_component_checked",
+              "verified_as": "Reported 10 mm/s displacement rate, five specimens per orientation × temperature × annealing group and 30-minute thermal-chamber conditioning"
+            },
+            {
+              "source_id": "zach_dudescu2025jcs9110624",
+              "artifact": "publisher_html_updated_2026_09_02_inspected_2026_10_03",
+              "source_url": "https://www.mdpi.com/2504-477X/9/11/624#html-copyright",
+              "component_id": "html-copyright",
+              "expanded_component_id": null,
+              "locator": "Article copyright and Creative Commons license block",
+              "verification_status": "publisher_html_component_checked",
+              "verified_as": "Article-level CC BY 4.0; no Table A1 third-party credit line; no redistribution of source assets"
+            },
+            {
+              "source_id": "zach_dudescu2025jcs9110624",
+              "artifact": "publisher_html_updated_2026_09_02_inspected_2026_10_03",
+              "source_url": "https://www.mdpi.com/2504-477X/9/11/624/notes",
+              "component_id": "version-notes",
+              "expanded_component_id": null,
+              "locator": "Article version notes",
+              "verification_status": "publisher_html_component_checked",
+              "verified_as": "Inspected current HTML revision descriptor; neither PDF version inspected"
+            }
+          ]
+        },
+        "limits": {
+          "const": [
+            "Catalog-only, source-specific median UTS and separately reported SD; no evaluator or temperature-law admission.",
+            "No new plot, interpolation, extrapolation, regression, pooled estimate, normalized-retention ranking or cross-study material superiority claim.",
+            "Not an engineering allowable, universal bound, service-temperature or application-safety claim.",
+            "Common MPa units, PA12/15% declarations and ±45° labels do not establish equivalence with another commercial formulation or protocol.",
+            "SD units are contextual, not explicitly printed; conditional exact SI re-expression adds no measurement precision.",
+            "Source medians must not be relabeled as means or equated with Ciganas’s unspecified central statistic.",
+            "Nominal temperature coincidence does not establish matched measured temperature, preparation, geometry, rate, sample distribution or uncertainty."
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "version",
+        "observation_type",
+        "study_id",
+        "dataset_id",
+        "protocol_id",
+        "method_family",
+        "quantity",
+        "quantity_dimension",
+        "si_unit",
+        "model_status",
+        "evaluation_support",
+        "source_cell",
+        "material",
+        "reported_result",
+        "si_result",
+        "method",
+        "conditions",
+        "sample_metadata",
+        "verification",
+        "evidence",
+        "limits"
+      ],
+      "oneOf": [
+        {
+          "properties": {
+            "source_cell": {
+              "const": {
+                "table": "A1",
+                "table_container_id": "jcs-09-00624-t0A1",
+                "expanded_table_id": "table_body_display_jcs-09-00624-t0A1",
+                "temperature_column": "25",
+                "annealing_row": "annealed",
+                "orientation_row": "±45°",
+                "central_column": "σUTS [MPa]",
+                "dispersion_column": "Standard Deviation"
+              }
+            },
+            "reported_result": {
+              "const": {
+                "value": 58.91,
+                "value_string": "58.91",
+                "unit": "MPa",
+                "source_value_string": "58.91",
+                "summary_statistic": "median_as_reported",
+                "central_statistic_explicitly_named": "median",
+                "aggregation_convention": "median_as_reported",
+                "statistic_evidence": {
+                  "source_id": "zach_dudescu2025jcs9110624",
+                  "artifact": "publisher_html_updated_2026_09_02_inspected_2026_10_03",
+                  "source_url": "https://www.mdpi.com/2504-477X/9/11/624#sec3dot1-jcs-09-00624",
+                  "component_id": "sec3dot1-jcs-09-00624",
+                  "expanded_component_id": null,
+                  "locator": "Section 3.1 opening paragraph",
+                  "verification_status": "publisher_html_component_checked",
+                  "verified_as": "Central values explicitly described as medians, accompanied by standard deviations"
+                },
+                "uncertainty": {
+                  "value": 3.44,
+                  "value_string": "3.44",
+                  "unit": "MPa",
+                  "unit_basis": "contextual_inference_from_associated_uts_column",
+                  "header_unit_explicit": false,
+                  "source_unit_string": null,
+                  "notation": "separate_sd",
+                  "type": "reported_standard_deviation",
+                  "definition_basis": "publisher_html_separate_standard_deviation_column",
+                  "sample_or_population_formula": null,
+                  "coverage_factor": null,
+                  "confidence_level": null,
+                  "averaging_convention": null,
+                  "interpretation": "Separate reported dispersion. Unit MPa is contextually inferred from the associated UTS column; not uncertainty of the median, SEM, CI, a coverage interval, endpoint range or full uncertainty budget.",
+                  "evidence": {
+                    "source_id": "zach_dudescu2025jcs9110624",
+                    "artifact": "publisher_html_updated_2026_09_02_inspected_2026_10_03",
+                    "source_url": "https://www.mdpi.com/2504-477X/9/11/624#jcs-09-00624-t0A1",
+                    "component_id": "jcs-09-00624-t0A1",
+                    "expanded_component_id": "table_body_display_jcs-09-00624-t0A1",
+                    "locator": "Appendix A, Table A1; annealed rows; ±45° orientation; temperature blocks 25, 50, 100, 150 °C; σUTS [MPa] and Standard Deviation columns",
+                    "verification_status": "publisher_html_component_checked",
+                    "verified_as": "Four selected median UTS strings and separate reported SD strings; SD header has no separate printed unit"
+                  }
+                }
+              }
+            },
+            "si_result": {
+              "const": {
+                "value": 58910000,
+                "unit": "Pa",
+                "uncertainty_value": 3440000,
+                "uncertainty_unit": "Pa",
+                "uncertainty_unit_basis": "conditional_on_contextual_MPa_inference",
+                "normalization": {
+                  "kind": "exact_decimal_unit_scale",
+                  "from_unit": "MPa",
+                  "to_unit": "Pa",
+                  "factor_string": "1000000",
+                  "offset_string": "0",
+                  "basis": "SI_prefix_only_no_geometry_or_thickness",
+                  "central_unit_evidence": "explicit_UTS_column_header",
+                  "sd_unit_evidence": "contextual_inference_not_explicit_SD_header",
+                  "sd_conversion_is_conditional": true,
+                  "adds_measurement_precision": false
+                }
+              }
+            },
+            "conditions": {
+              "const": {
+                "temperature": {
+                  "value": 25,
+                  "value_string": "25",
+                  "unit": "degC",
+                  "basis": "reported_chamber_test_condition",
+                  "stabilization_duration_min": 30,
+                  "direct_specimen_temperature_measurement": null,
+                  "calibration": null,
+                  "sensor_type_and_location": null,
+                  "stability_tolerance": null,
+                  "tensile_heating_rate": null,
+                  "control_description": "Room-temperature cooling followed by 30 minutes at the relevant Instron 3119-610 thermal-chamber test condition; direct specimen temperature and tolerance unestablished."
+                },
+                "humidity": {
+                  "relative_humidity_percent": null,
+                  "humidity_tolerance": null,
+                  "specimen_moisture_content": null,
+                  "moisture_status": "Predrying and dehumidified storage do not establish measured dry-state specimens."
+                },
+                "atmosphere": null,
+                "pressure": null
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "source_cell": {
+              "const": {
+                "table": "A1",
+                "table_container_id": "jcs-09-00624-t0A1",
+                "expanded_table_id": "table_body_display_jcs-09-00624-t0A1",
+                "temperature_column": "50",
+                "annealing_row": "annealed",
+                "orientation_row": "±45°",
+                "central_column": "σUTS [MPa]",
+                "dispersion_column": "Standard Deviation"
+              }
+            },
+            "reported_result": {
+              "const": {
+                "value": 40.87,
+                "value_string": "40.87",
+                "unit": "MPa",
+                "source_value_string": "40.87",
+                "summary_statistic": "median_as_reported",
+                "central_statistic_explicitly_named": "median",
+                "aggregation_convention": "median_as_reported",
+                "statistic_evidence": {
+                  "source_id": "zach_dudescu2025jcs9110624",
+                  "artifact": "publisher_html_updated_2026_09_02_inspected_2026_10_03",
+                  "source_url": "https://www.mdpi.com/2504-477X/9/11/624#sec3dot1-jcs-09-00624",
+                  "component_id": "sec3dot1-jcs-09-00624",
+                  "expanded_component_id": null,
+                  "locator": "Section 3.1 opening paragraph",
+                  "verification_status": "publisher_html_component_checked",
+                  "verified_as": "Central values explicitly described as medians, accompanied by standard deviations"
+                },
+                "uncertainty": {
+                  "value": 4.59,
+                  "value_string": "4.59",
+                  "unit": "MPa",
+                  "unit_basis": "contextual_inference_from_associated_uts_column",
+                  "header_unit_explicit": false,
+                  "source_unit_string": null,
+                  "notation": "separate_sd",
+                  "type": "reported_standard_deviation",
+                  "definition_basis": "publisher_html_separate_standard_deviation_column",
+                  "sample_or_population_formula": null,
+                  "coverage_factor": null,
+                  "confidence_level": null,
+                  "averaging_convention": null,
+                  "interpretation": "Separate reported dispersion. Unit MPa is contextually inferred from the associated UTS column; not uncertainty of the median, SEM, CI, a coverage interval, endpoint range or full uncertainty budget.",
+                  "evidence": {
+                    "source_id": "zach_dudescu2025jcs9110624",
+                    "artifact": "publisher_html_updated_2026_09_02_inspected_2026_10_03",
+                    "source_url": "https://www.mdpi.com/2504-477X/9/11/624#jcs-09-00624-t0A1",
+                    "component_id": "jcs-09-00624-t0A1",
+                    "expanded_component_id": "table_body_display_jcs-09-00624-t0A1",
+                    "locator": "Appendix A, Table A1; annealed rows; ±45° orientation; temperature blocks 25, 50, 100, 150 °C; σUTS [MPa] and Standard Deviation columns",
+                    "verification_status": "publisher_html_component_checked",
+                    "verified_as": "Four selected median UTS strings and separate reported SD strings; SD header has no separate printed unit"
+                  }
+                }
+              }
+            },
+            "si_result": {
+              "const": {
+                "value": 40870000,
+                "unit": "Pa",
+                "uncertainty_value": 4590000,
+                "uncertainty_unit": "Pa",
+                "uncertainty_unit_basis": "conditional_on_contextual_MPa_inference",
+                "normalization": {
+                  "kind": "exact_decimal_unit_scale",
+                  "from_unit": "MPa",
+                  "to_unit": "Pa",
+                  "factor_string": "1000000",
+                  "offset_string": "0",
+                  "basis": "SI_prefix_only_no_geometry_or_thickness",
+                  "central_unit_evidence": "explicit_UTS_column_header",
+                  "sd_unit_evidence": "contextual_inference_not_explicit_SD_header",
+                  "sd_conversion_is_conditional": true,
+                  "adds_measurement_precision": false
+                }
+              }
+            },
+            "conditions": {
+              "const": {
+                "temperature": {
+                  "value": 50,
+                  "value_string": "50",
+                  "unit": "degC",
+                  "basis": "reported_chamber_test_condition",
+                  "stabilization_duration_min": 30,
+                  "direct_specimen_temperature_measurement": null,
+                  "calibration": null,
+                  "sensor_type_and_location": null,
+                  "stability_tolerance": null,
+                  "tensile_heating_rate": null,
+                  "control_description": "Room-temperature cooling followed by 30 minutes at the relevant Instron 3119-610 thermal-chamber test condition; direct specimen temperature and tolerance unestablished."
+                },
+                "humidity": {
+                  "relative_humidity_percent": null,
+                  "humidity_tolerance": null,
+                  "specimen_moisture_content": null,
+                  "moisture_status": "Predrying and dehumidified storage do not establish measured dry-state specimens."
+                },
+                "atmosphere": null,
+                "pressure": null
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "source_cell": {
+              "const": {
+                "table": "A1",
+                "table_container_id": "jcs-09-00624-t0A1",
+                "expanded_table_id": "table_body_display_jcs-09-00624-t0A1",
+                "temperature_column": "100",
+                "annealing_row": "annealed",
+                "orientation_row": "±45°",
+                "central_column": "σUTS [MPa]",
+                "dispersion_column": "Standard Deviation"
+              }
+            },
+            "reported_result": {
+              "const": {
+                "value": 29.64,
+                "value_string": "29.64",
+                "unit": "MPa",
+                "source_value_string": "29.64",
+                "summary_statistic": "median_as_reported",
+                "central_statistic_explicitly_named": "median",
+                "aggregation_convention": "median_as_reported",
+                "statistic_evidence": {
+                  "source_id": "zach_dudescu2025jcs9110624",
+                  "artifact": "publisher_html_updated_2026_09_02_inspected_2026_10_03",
+                  "source_url": "https://www.mdpi.com/2504-477X/9/11/624#sec3dot1-jcs-09-00624",
+                  "component_id": "sec3dot1-jcs-09-00624",
+                  "expanded_component_id": null,
+                  "locator": "Section 3.1 opening paragraph",
+                  "verification_status": "publisher_html_component_checked",
+                  "verified_as": "Central values explicitly described as medians, accompanied by standard deviations"
+                },
+                "uncertainty": {
+                  "value": 0.72,
+                  "value_string": "0.72",
+                  "unit": "MPa",
+                  "unit_basis": "contextual_inference_from_associated_uts_column",
+                  "header_unit_explicit": false,
+                  "source_unit_string": null,
+                  "notation": "separate_sd",
+                  "type": "reported_standard_deviation",
+                  "definition_basis": "publisher_html_separate_standard_deviation_column",
+                  "sample_or_population_formula": null,
+                  "coverage_factor": null,
+                  "confidence_level": null,
+                  "averaging_convention": null,
+                  "interpretation": "Separate reported dispersion. Unit MPa is contextually inferred from the associated UTS column; not uncertainty of the median, SEM, CI, a coverage interval, endpoint range or full uncertainty budget.",
+                  "evidence": {
+                    "source_id": "zach_dudescu2025jcs9110624",
+                    "artifact": "publisher_html_updated_2026_09_02_inspected_2026_10_03",
+                    "source_url": "https://www.mdpi.com/2504-477X/9/11/624#jcs-09-00624-t0A1",
+                    "component_id": "jcs-09-00624-t0A1",
+                    "expanded_component_id": "table_body_display_jcs-09-00624-t0A1",
+                    "locator": "Appendix A, Table A1; annealed rows; ±45° orientation; temperature blocks 25, 50, 100, 150 °C; σUTS [MPa] and Standard Deviation columns",
+                    "verification_status": "publisher_html_component_checked",
+                    "verified_as": "Four selected median UTS strings and separate reported SD strings; SD header has no separate printed unit"
+                  }
+                }
+              }
+            },
+            "si_result": {
+              "const": {
+                "value": 29640000,
+                "unit": "Pa",
+                "uncertainty_value": 720000,
+                "uncertainty_unit": "Pa",
+                "uncertainty_unit_basis": "conditional_on_contextual_MPa_inference",
+                "normalization": {
+                  "kind": "exact_decimal_unit_scale",
+                  "from_unit": "MPa",
+                  "to_unit": "Pa",
+                  "factor_string": "1000000",
+                  "offset_string": "0",
+                  "basis": "SI_prefix_only_no_geometry_or_thickness",
+                  "central_unit_evidence": "explicit_UTS_column_header",
+                  "sd_unit_evidence": "contextual_inference_not_explicit_SD_header",
+                  "sd_conversion_is_conditional": true,
+                  "adds_measurement_precision": false
+                }
+              }
+            },
+            "conditions": {
+              "const": {
+                "temperature": {
+                  "value": 100,
+                  "value_string": "100",
+                  "unit": "degC",
+                  "basis": "reported_chamber_test_condition",
+                  "stabilization_duration_min": 30,
+                  "direct_specimen_temperature_measurement": null,
+                  "calibration": null,
+                  "sensor_type_and_location": null,
+                  "stability_tolerance": null,
+                  "tensile_heating_rate": null,
+                  "control_description": "Room-temperature cooling followed by 30 minutes at the relevant Instron 3119-610 thermal-chamber test condition; direct specimen temperature and tolerance unestablished."
+                },
+                "humidity": {
+                  "relative_humidity_percent": null,
+                  "humidity_tolerance": null,
+                  "specimen_moisture_content": null,
+                  "moisture_status": "Predrying and dehumidified storage do not establish measured dry-state specimens."
+                },
+                "atmosphere": null,
+                "pressure": null
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "source_cell": {
+              "const": {
+                "table": "A1",
+                "table_container_id": "jcs-09-00624-t0A1",
+                "expanded_table_id": "table_body_display_jcs-09-00624-t0A1",
+                "temperature_column": "150",
+                "annealing_row": "annealed",
+                "orientation_row": "±45°",
+                "central_column": "σUTS [MPa]",
+                "dispersion_column": "Standard Deviation"
+              }
+            },
+            "reported_result": {
+              "const": {
+                "value": 19.03,
+                "value_string": "19.03",
+                "unit": "MPa",
+                "source_value_string": "19.03",
+                "summary_statistic": "median_as_reported",
+                "central_statistic_explicitly_named": "median",
+                "aggregation_convention": "median_as_reported",
+                "statistic_evidence": {
+                  "source_id": "zach_dudescu2025jcs9110624",
+                  "artifact": "publisher_html_updated_2026_09_02_inspected_2026_10_03",
+                  "source_url": "https://www.mdpi.com/2504-477X/9/11/624#sec3dot1-jcs-09-00624",
+                  "component_id": "sec3dot1-jcs-09-00624",
+                  "expanded_component_id": null,
+                  "locator": "Section 3.1 opening paragraph",
+                  "verification_status": "publisher_html_component_checked",
+                  "verified_as": "Central values explicitly described as medians, accompanied by standard deviations"
+                },
+                "uncertainty": {
+                  "value": 0.67,
+                  "value_string": "0.67",
+                  "unit": "MPa",
+                  "unit_basis": "contextual_inference_from_associated_uts_column",
+                  "header_unit_explicit": false,
+                  "source_unit_string": null,
+                  "notation": "separate_sd",
+                  "type": "reported_standard_deviation",
+                  "definition_basis": "publisher_html_separate_standard_deviation_column",
+                  "sample_or_population_formula": null,
+                  "coverage_factor": null,
+                  "confidence_level": null,
+                  "averaging_convention": null,
+                  "interpretation": "Separate reported dispersion. Unit MPa is contextually inferred from the associated UTS column; not uncertainty of the median, SEM, CI, a coverage interval, endpoint range or full uncertainty budget.",
+                  "evidence": {
+                    "source_id": "zach_dudescu2025jcs9110624",
+                    "artifact": "publisher_html_updated_2026_09_02_inspected_2026_10_03",
+                    "source_url": "https://www.mdpi.com/2504-477X/9/11/624#jcs-09-00624-t0A1",
+                    "component_id": "jcs-09-00624-t0A1",
+                    "expanded_component_id": "table_body_display_jcs-09-00624-t0A1",
+                    "locator": "Appendix A, Table A1; annealed rows; ±45° orientation; temperature blocks 25, 50, 100, 150 °C; σUTS [MPa] and Standard Deviation columns",
+                    "verification_status": "publisher_html_component_checked",
+                    "verified_as": "Four selected median UTS strings and separate reported SD strings; SD header has no separate printed unit"
+                  }
+                }
+              }
+            },
+            "si_result": {
+              "const": {
+                "value": 19030000,
+                "unit": "Pa",
+                "uncertainty_value": 670000,
+                "uncertainty_unit": "Pa",
+                "uncertainty_unit_basis": "conditional_on_contextual_MPa_inference",
+                "normalization": {
+                  "kind": "exact_decimal_unit_scale",
+                  "from_unit": "MPa",
+                  "to_unit": "Pa",
+                  "factor_string": "1000000",
+                  "offset_string": "0",
+                  "basis": "SI_prefix_only_no_geometry_or_thickness",
+                  "central_unit_evidence": "explicit_UTS_column_header",
+                  "sd_unit_evidence": "contextual_inference_not_explicit_SD_header",
+                  "sd_conversion_is_conditional": true,
+                  "adds_measurement_precision": false
+                }
+              }
+            },
+            "conditions": {
+              "const": {
+                "temperature": {
+                  "value": 150,
+                  "value_string": "150",
+                  "unit": "degC",
+                  "basis": "reported_chamber_test_condition",
+                  "stabilization_duration_min": 30,
+                  "direct_specimen_temperature_measurement": null,
+                  "calibration": null,
+                  "sensor_type_and_location": null,
+                  "stability_tolerance": null,
+                  "tensile_heating_rate": null,
+                  "control_description": "Room-temperature cooling followed by 30 minutes at the relevant Instron 3119-610 thermal-chamber test condition; direct specimen temperature and tolerance unestablished."
+                },
+                "humidity": {
+                  "relative_humidity_percent": null,
+                  "humidity_tolerance": null,
+                  "specimen_moisture_content": null,
+                  "moisture_status": "Predrying and dehumidified storage do not establish measured dry-state specimens."
+                },
+                "atmosphere": null,
+                "pressure": null
               }
             }
           }

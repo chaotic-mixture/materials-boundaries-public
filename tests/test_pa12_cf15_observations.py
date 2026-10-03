@@ -246,7 +246,7 @@ class PA12SourceTranscriptionTests(unittest.TestCase):
                     record[discriminator] = replacement
                 self.assertTrue(is_pa12_record(record))
                 self.assert_rejected(record)
-        for legacy in (r for r in self.catalog["records"] if not is_pa12_record(r)):
+        for legacy in (r for r in self.catalog["records"] if r["observation_type"] == "experiment_derived_model_dependent"):
             record = copy.deepcopy(legacy)
             record["dataset_id"] = PA12_DATASET
             self.assertTrue(is_pa12_record(record))
@@ -277,7 +277,7 @@ class PA12SourceTranscriptionTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             validate_pa12_sources([self.source, copy.deepcopy(self.source)])
         validate_pa12_sources([])
-        validate_pa12_sources(self.sources["records"][:-1])
+        validate_pa12_sources([s for s in self.sources["records"] if s["id"] != PA12_SOURCE])
 
     def test_historical_record_payloads_remain_exact(self):
         frozen = load("tests/fixtures/pre_pa12_v0220.json")["record_sha256"]
@@ -327,7 +327,7 @@ class PA12SourceTranscriptionTests(unittest.TestCase):
 
     def test_legacy_clones_do_not_expand_or_break_the_six_cell_contract(self):
         records = copy.deepcopy(self.catalog["records"])
-        clones = [copy.deepcopy(r) for r in records if not is_pa12_record(r)]
+        clones = [copy.deepcopy(r) for r in records if r["observation_type"] == "experiment_derived_model_dependent"]
         for index, record in enumerate(clones):
             record["id"] = "legacy-clone-" + str(index)
             record["name"] = "Legacy family renamed observation"
@@ -343,7 +343,8 @@ class PA12SourceTranscriptionTests(unittest.TestCase):
         record = copy.deepcopy(self.records[0])
         record["conditions"]["temperature"]["basis"] = "directly_measured_specimen"
         candidate = copy.deepcopy(self.catalog)
-        candidate["records"][-6] = record
+        target = next(i for i, r in enumerate(candidate["records"]) if r["id"] == record["id"])
+        candidate["records"][target] = record
         resource = Mock()
         resource.joinpath.return_value.read_text.return_value = json.dumps(candidate)
         with patch("materials_boundaries.catalog.files", return_value=resource), self.assertRaises(ValueError):

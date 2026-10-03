@@ -242,12 +242,13 @@ from materials_boundaries._observation_contract import validate_observation_reco
 from materials_boundaries import observation_visualization as observation_view
 require(find_spec('jsonschema') is None and find_spec('referencing') is None,
         'wheel smoke accidentally has development dependencies')
+from materials_boundaries._paht_cf_observation_contract import PAHT_FAMILY
 all_records = observations['records']
-old_records = [r for r in all_records if r.get('method_family') != PA12_FAMILY]
+old_records = [r for r in all_records if r['observation_type'] == 'experiment_derived_model_dependent']
 new_records = [r for r in all_records if r.get('method_family') == PA12_FAMILY]
-require(len(all_records) == 12 and len(old_records) == len(new_records) == 6,
+require(len(all_records) == 16 and len(old_records) == len(new_records) == 6,
         'unexpected production observation counts')
-require(len(read_catalog('sources')['records']) == 52, 'unexpected production source count')
+require(len(read_catalog('sources')['records']) == 53, 'unexpected production source count')
 expected_cells = (('23', '49.07', '0.88', 49070000, 880000),
                   ('40', '40.31', '0.72', 40310000, 720000),
                   ('60', '32.70', '1.18', 32700000, 1180000),
@@ -351,6 +352,15 @@ for mode, selected_ids in selected_modes.items():
                     columns = list(row)
                     require(columns.index('temperature_basis') < columns.index('central_value')
                             and columns.index('essential_caveats') < columns.index('central_value'), 'CSV warnings follow values')
+                elif record.get('method_family') == PAHT_FAMILY:
+                    require(row['unit'] == 'MPa' and row['si_unit'] == 'Pa'
+                            and row['reported_median_string'] == record['reported_result']['value_string']
+                            and row['reported_sd_string'] == record['reported_result']['uncertainty']['value_string']
+                            and row['plus_minus_value'] == row['reported_plus_minus_string'] == row['si_plus_minus_value'] == 'null'
+                            and row['sd_header_unit_explicit'] == 'false'
+                            and row['sd_unit_basis'] == 'contextual_inference_from_associated_uts_column'
+                            and row['si_sd_unit_basis'] == 'conditional_on_contextual_MPa_inference',
+                            'PAHT CSV median/SD or conditional-unit contract changed')
                 else:
                     require(row['unit'] == row['si_unit'] == 'N/m'
                             and row['si_central_value'] == row['central_value']
@@ -373,6 +383,17 @@ for mode, selected_ids in selected_modes.items():
                     continue
                 require(set(cards) == {r['id'] for r in selected}, 'missing visible cards')
                 for record in selected:
+                    if record.get('method_family') == PAHT_FAMILY:
+                        from materials_boundaries._paht_observation_labels import PAHT_LABELS, PAHT_CAVEATS
+                        visible = compact(cards[record['id']])
+                        labels_paht = PAHT_LABELS[language]
+                        median_display = labels_paht['paht_reported_median'] + ': ' + record['reported_result']['value_string'] + ' MPa'
+                        value_index = visible.index(compact(median_display))
+                        for code in PAHT_CAVEATS:
+                            require(compact(labels_paht[code]) in visible[:value_index], 'PAHT caveat follows value')
+                        require(compact(labels_paht['paht_reported_sd'] + ': ' + record['reported_result']['uncertainty']['value_string'] + ' MPa') in visible,
+                                'PAHT separate SD missing')
+                        continue
                     if record.get('method_family') != PA12_FAMILY:
                         require('N/m' in cards[record['id']], 'old membrane unit missing')
                         continue
@@ -509,9 +530,39 @@ require(not invalid_target.exists(), 'invalid plot created output')
 require(build_observation_inspection()['presentation_policy']['quantitative_axes_allowed'] is False,
         'separate route weakened generic inspection')
 
+# PAHT median and SD semantics remain separate in the dependency-free wheel.
+from materials_boundaries._paht_cf_observation_contract import (
+    PAHT_SOURCE, PAHT_DATASET, PAHT_CELLS, validate_paht_dataset, validate_paht_sources,
+)
+paht = query_catalog('observations', source_id=PAHT_SOURCE)['records']
+require(len(paht) == 4, 'missing installed PAHT observations')
+validate_paht_dataset(paht, require_complete=True)
+validate_paht_sources(read_catalog('sources')['records'])
+paht_bundle = build_observation_inspection(source_id=PAHT_SOURCE)
+for record in paht:
+    r, u = record['reported_result'], record['reported_result']['uncertainty']
+    require(r['summary_statistic'] == 'median_as_reported' and u['notation'] == 'separate_sd',
+            'installed PAHT statistic changed')
+    require(u['header_unit_explicit'] is False and u['unit_basis'] == 'contextual_inference_from_associated_uts_column',
+            'installed PAHT SD unit lost contextual basis')
+for language in languages:
+    text = render_catalog(query_catalog('observations', source_id=PAHT_SOURCE), 'observations', language)
+    require('[missing:' not in text and '58.91' in text and '3.44' in text, 'installed PAHT catalog rendering failed')
+    html = observation_view.render_observation_html(paht_bundle, language)
+    svg = observation_view.render_observation_svg(paht_bundle, language)
+    require('[missing:' not in html + svg and '58.91 ± 3.44' not in html + svg,
+            'installed PAHT presentation joined median and SD')
+rows = list(csv.DictReader(io.StringIO(observation_view.inspection_csv(paht_bundle))))
+require(len(rows) == 4 and all(row['plus_minus_value'] == 'null' for row in rows),
+        'PAHT CSV entered legacy plus-minus fields')
+wrong = deepcopy(paht[0]); wrong['reported_result']['uncertainty']['header_unit_explicit'] = True
+rejects(lambda: validate_paht_dataset([wrong]), 'installed PAHT accepted invented SD header unit')
+rejects(lambda: plot_view.build_observation_temperature_plot(dataset_id=PAHT_DATASET),
+        'installed PAHT entered Ciganas plot')
+
 print(json.dumps({"version": expected, "metadata_version": metadata_version,
                   "engine_outputs": sorted(outputs), "languages": languages,
-                  "installed_without_dependencies": True, "mixed_observation_catalog_languages": languages, "bulk_wave_catalog_languages": languages, "hbn_observation_languages": languages, "observation_inspection_languages": languages, "observation_inspection_schema": "1.1.0", "pa12_export_checks": export_checks, "pa12_scientific_mutations_rejected": len(mutations), "pa12_exact_selected_cells": len(expected_cells), "temperature_observation_plot_languages": languages, "temperature_observation_plot_schema": "1.0.0", "temperature_observation_plot_cells": len(plot_bundle["glyphs"])}))
+                  "installed_without_dependencies": True, "mixed_observation_catalog_languages": languages, "bulk_wave_catalog_languages": languages, "hbn_observation_languages": languages, "observation_inspection_languages": languages, "observation_inspection_schema": "1.1.0", "pa12_export_checks": export_checks, "pa12_scientific_mutations_rejected": len(mutations), "pa12_exact_selected_cells": len(expected_cells), "temperature_observation_plot_languages": languages, "temperature_observation_plot_schema": "1.0.0", "temperature_observation_plot_cells": len(plot_bundle["glyphs"]), "paht_exact_median_sd_cells": len(paht), "paht_four_language_inspection": True}))
 '''
 
 

@@ -427,3 +427,14 @@ published computational method, not commercial-alloy measurements or universal
 bounds. Physical temperature, scalar pressure, magnetism and uncertainty remain
 unknown; 0.08 GPa convergence is not an error bar.
 [Method, provenance and limits](COMPUTATIONAL_PREDICTIONS.md).
+
+
+## v0.24.0 PAHT-CF
+
+v0.24.0 adds four catalog-only annealed ±45° PAHT-CF median UTS observations at reported chamber conditions 25/50/100/150 °C. SD is separately reported; its MPa unit is contextually inferred because the SD header has no unit. SI SD scaling is conditional. Five specimens per condition do not establish independence or a CI. Unknown stress/area, direct specimen temperature and moisture remain unknown; 10 mm/s is retained as printed. No new plot, pooling or ranking. The Ciganas plot stays closed to its six cells.
+
+[Source / 来源 / 出典 / Quelle](PAHT_CF_ANNEALED_OBSERVATIONS.md) · [Migration](MIGRATION_v0.24.0.md)
+
+```sh
+python -m materials_boundaries observation inspect --source-id zach_dudescu2025jcs9110624 --output /tmp/paht-inspection --lang en
+```

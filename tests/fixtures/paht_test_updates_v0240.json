@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "release": "0.24.0",
+  "scope": "paht_source_filter_and_test_lineage_only",
+  "review": {
+    "kind": "current_paht_compatibility_review",
+    "review_date": "2026-10-03",
+    "baseline_commit": "828ca90a4a32f4744f0e18ea704965cc0ec7f56e",
+    "baseline_tree": "200dbdbf7aab4832aa3293aeec1c8e83ac18a9e9",
+    "baseline_file_count": 258,
+    "historical_review_claimed": false
+  },
+  "approved_test_updates": [
+    {
+      "filename": "tests/provenance_corrections.py",
+      "previous_sha256": "e5bf06ae239c9ea8f7db6d767aa6c35a00f88b85a07830858cbc499a9f4de5fe",
+      "sha256": "1131d584642ee03202f492720f009af91595c8583c9800c4dbeb6a8bed0c55b1",
+      "reason": "Append the exact five-file PAHT compatibility tail after the unchanged maintenance tail. Retain every prior allowlist, predecessor, reason and source-evidence guard; keep scientific normalization functions unchanged. The independent new lineage test pins this successor to avoid a self-hash cycle.",
+      "edits": [
+        {
+          "offset": 2126,
+          "before": "",
+          "after": "PAHT_TEST_UPDATES = _load_lineage_fixture('paht_test_updates_v0240.json')\n"
+        },
+        {
+          "offset": 5403,
+          "before": "",
+          "after": "            return change['sha256']\n    return expected\n\n\ndef reviewed_paht_test_hash(filename, expected):\n    \"\"\"Append only the reviewed v0.24 tail to its exact accepted predecessor.\n\n    The independent PAHT lineage test pins this ledger and its actual successor\n    bytes. Keeping that pin outside this helper avoids a self-reference cycle.\n    All earlier ledgers, fixture bytes and normalization guards remain intact.\n    \"\"\"\n    ledger = PAHT_TEST_UPDATES\n    if (set(ledger) != {'schema_version', 'release', 'scope', 'review',\n                       'approved_test_updates', 'unchanged_fixture_sha256'}\n            or ledger['schema_version'] != 1 or ledger['release'] != '0.24.0'\n            or ledger['scope'] != 'paht_source_filter_and_test_lineage_only'\n            or ledger['review'] != {\n                'kind': 'current_paht_compatibility_review', 'review_date': '2026-10-03',\n                'baseline_commit': '828ca90a4a32f4744f0e18ea704965cc0ec7f56e',\n                'baseline_tree': '200dbdbf7aab4832aa3293aeec1c8e83ac18a9e9',\n                'baseline_file_count': 258, 'historical_review_claimed': False}):\n        raise AssertionError('Unexpected PAHT test review provenance')\n    predecessors = {\n        'tests/provenance_corrections.py': 'e5bf06ae239c9ea8f7db6d767aa6c35a00f88b85a07830858cbc499a9f4de5fe',\n        'tests/test_helper_lineage.py': 'b2af5a64ef777d1aa59e2ff763f7f1b07f7bebc69f541f344921c7f28e9d6ac4',\n        'tests/test_temperature_plot_preservation.py': '906da60f3065d901d6d618cdc439bb639beb422e5074e9f026b1a48cf557bc1a',\n        'tests/test_pa12_cf15_inspection.py': '7688ab79ec0ab39b00e28f406040363a1238b14c430f2ddd47fc5cdcc1f9f83a',\n        'tests/test_pa12_cf15_observations.py': '874539ebb135346d2eeecdc2bbb3cc52a95d9b308e0a91e7a8ebe73a22bf0e4f',\n    }\n    entries = ledger['approved_test_updates']\n    if (not isinstance(entries, list) or len(entries) != len(predecessors)\n            or any(not isinstance(e, dict) for e in entries)\n            or {e.get('filename') for e in entries} != set(predecessors)):\n        raise AssertionError('Unexpected PAHT historical file override')\n    for change in entries:\n        if (set(change) != {'filename', 'previous_sha256', 'sha256', 'reason', 'edits'}\n                or change['previous_sha256'] != predecessors[change['filename']]\n                or not isinstance(change['reason'], str) or not change['reason'].strip()\n                or not isinstance(change['sha256'], str) or len(change['sha256']) != 64\n                or any(c not in '0123456789abcdef' for c in change['sha256'])\n                or not isinstance(change['edits'], list) or not change['edits']):\n            raise AssertionError('Broken PAHT test entry: ' + change['filename'])\n        for edit in change['edits']:\n            if (not isinstance(edit, dict) or set(edit) != {'offset', 'before', 'after'}\n                    or type(edit['offset']) is not int or edit['offset'] < 0\n                    or not isinstance(edit['before'], str) or not isinstance(edit['after'], str)\n                    or edit['before'] == edit['after']):\n                raise AssertionError('Broken PAHT exact edit: ' + change['filename'])\n    for change in entries:\n        if filename == change['filename']:\n            if expected != change['previous_sha256']:\n                raise AssertionError('Broken PAHT test-update provenance: ' + filename)\n"
+        },
+        {
+          "offset": 13781,
+          "before": "    return reviewed_current_test_hash(filename, expected)\n",
+          "after": "    expected = reviewed_current_test_hash(filename, expected)\n    return reviewed_paht_test_hash(filename, expected)\n"
+        }
+      ]
+    },
+    {
+      "filename": "tests/test_helper_lineage.py",
+      "previous_sha256": "b2af5a64ef777d1aa59e2ff763f7f1b07f7bebc69f541f344921c7f28e9d6ac4",
+      "sha256": "abc098d10e80616397923c2ef195d2398cddb5d60ca339b954c987150bb6c7a0",
+      "reason": "Keep every existing historical bridge, fixture pin, mutation and normalization guard. Bind the unchanged maintenance endpoints to their old hashes, then traverse the separate PAHT tail before comparing actual current helper and direct-guard bytes; assert tail order explicitly.",
+      "edits": [
+        {
+          "offset": 8090,
+          "before": "        self.assertTrue(source.rstrip().endswith('return reviewed_current_test_hash(filename, expected)'))\n",
+          "after": "        self.assertLess(source.index('expected = reviewed_current_test_hash(filename, expected)'),\n                        source.index('return reviewed_paht_test_hash(filename, expected)'))\n        self.assertTrue(source.rstrip().endswith('return reviewed_paht_test_hash(filename, expected)'))\n"
+        },
+        {
+          "offset": 8752,
+          "before": "                self.assertEqual(history.reviewed_current_test_hash(change['filename'], change['previous_sha256']), actual)\n                self.assertEqual(actual, change['sha256'])\n",
+          "after": "                accepted = history.reviewed_current_test_hash(change['filename'], change['previous_sha256'])\n                self.assertEqual(accepted, change['sha256'])\n                self.assertEqual(history.reviewed_paht_test_hash(change['filename'], accepted), actual)\n"
+        },
+        {
+          "offset": 17477,
+          "before": "            expected = history.reviewed_current_test_hash(filename, change['previous_sha256'])\n",
+          "after": "            accepted = history.reviewed_current_test_hash(filename, change['previous_sha256'])\n            expected = history.reviewed_paht_test_hash(filename, accepted)\n"
+        },
+        {
+          "offset": 18071,
+          "before": "                self.assertEqual(sha(actual), history.reviewed_current_test_hash(filename, change['previous_sha256']))\n",
+          "after": "                accepted = history.reviewed_current_test_hash(filename, change['previous_sha256'])\n                self.assertEqual(sha(actual), history.reviewed_paht_test_hash(filename, accepted))\n"
+        }
+      ]
+    },
+    {
+      "filename": "tests/test_temperature_plot_preservation.py",
+      "previous_sha256": "906da60f3065d901d6d618cdc439bb639beb422e5074e9f026b1a48cf557bc1a",
+      "sha256": "703a5d8dd4740a6f569e0d602d6194226963ceb05c695d2e56f8e18f4b2645ee",
+      "reason": "Retain every scientific, protocol, policy and historical baseline assertion. Apply the separate exact PAHT tail only after the unchanged reviewed ordering deltas and maintenance tail.",
+      "edits": [
+        {
+          "offset": 407,
+          "before": "from provenance_corrections import reviewed_current_test_hash\n",
+          "after": "from provenance_corrections import reviewed_current_test_hash, reviewed_paht_test_hash\n"
+        },
+        {
+          "offset": 2991,
+          "before": "",
+          "after": "            expected = reviewed_paht_test_hash(filename, expected)\n"
+        }
+      ]
+    },
+    {
+      "filename": "tests/test_pa12_cf15_inspection.py",
+      "previous_sha256": "7688ab79ec0ab39b00e28f406040363a1238b14c430f2ddd47fc5cdcc1f9f83a",
+      "sha256": "208a0e98204bb00a23138bd88bc6de1445c0535578e086b4304aa8454de04ff6",
+      "reason": "Qualify the existing Ciganas PA12 facet equality by its source_id as well as UTS quantity because the PAHT study adds the same physical quantity. The expected Ciganas facets and all scientific assertions are unchanged; separate new tests require quantity-only selection to include both studies without mixing them.",
+      "edits": [
+        {
+          "offset": 3249,
+          "before": "        self.assertEqual(view.build_observation_inspection(quantity=PA12_QUANTITY)['facets'], self.bundle['facets'])\n",
+          "after": "        self.assertEqual(view.build_observation_inspection(quantity=PA12_QUANTITY, source_id=PA12_SOURCE)['facets'], self.bundle['facets'])\n"
+        }
+      ]
+    },
+    {
+      "filename": "tests/test_pa12_cf15_observations.py",
+      "reason": "Narrow the two historical legacy-membrane comprehensions to experiment_derived_model_dependent observations, identify the absent Ciganas source by PA12_SOURCE rather than the last source, and target the Ciganas mutation by exact record ID rather than a fixed tail index. Preserve every original six-membrane and PA12 scientific assertion, and PAHT duplicate/source-spoof rejection; new tests cover bidirectional dataset spoofing and duplicate PAHT aliases in mixed catalogs.",
+      "previous_sha256": "874539ebb135346d2eeecdc2bbb3cc52a95d9b308e0a91e7a8ebe73a22bf0e4f",
+      "sha256": "3ce547a18673b36c229cc0cf9e5dd2c9606edecdef9d38e379307cdb80550c56",
+      "edits": [
+        {
+          "offset": 12428,
+          "before": "        for legacy in (r for r in self.catalog[\"records\"] if not is_pa12_record(r)):\n",
+          "after": "        for legacy in (r for r in self.catalog[\"records\"] if r[\"observation_type\"] == \"experiment_derived_model_dependent\"):\n"
+        },
+        {
+          "offset": 13944,
+          "before": "        validate_pa12_sources(self.sources[\"records\"][:-1])\n",
+          "after": "        validate_pa12_sources([s for s in self.sources[\"records\"] if s[\"id\"] != PA12_SOURCE])\n"
+        },
+        {
+          "offset": 16981,
+          "before": "        clones = [copy.deepcopy(r) for r in records if not is_pa12_record(r)]\n",
+          "after": "        clones = [copy.deepcopy(r) for r in records if r[\"observation_type\"] == \"experiment_derived_model_dependent\"]\n"
+        },
+        {
+          "offset": 17937,
+          "before": "        candidate[\"records\"][-6] = record\n",
+          "after": "        target = next(i for i, r in enumerate(candidate[\"records\"]) if r[\"id\"] == record[\"id\"])\n        candidate[\"records\"][target] = record\n"
+        }
+      ]
+    }
+  ],
+  "unchanged_fixture_sha256": {
+    "tests/fixtures/catalog_translation_v0201.json": "e489c975dae91bf5b33153123adae9d56b09de5ce57b9b4b94390d43eb8ffc40",
+    "tests/fixtures/compressibility_test_updates_v0160.json": "0bf357ad463fe9e8295cf20e22e38e9353b1d76108eba9deb6017e361518efc0",
+    "tests/fixtures/contributions/lefm.json": "240dd544adf763609be769706c262baf069eb2906897da925dbe28732218dd8d",
+    "tests/fixtures/directional_test_updates_v0150.json": "2c8da46535e9db2b5b1f3269e5837c5fdf4ca5c44959805fbdde09dd683c783a",
+    "tests/fixtures/hbn_test_updates_v0190.json": "d98155989387379a6ca8186cb2271214403e561142547e3c2428c5b144f8d4b2",
+    "tests/fixtures/helper_bootstrap_bridge_20261003.json": "b5ac9a33e6f7b457d33295ddb1daf495dab52c9dd30940b65074c36eeef7db21",
+    "tests/fixtures/helper_maintenance_updates_20261003.json": "b4ce0814282d40564b97ab6c877c13d83d353a524e2394dc7206740d73246a92",
+    "tests/fixtures/historical_provenance.json": "1a75d287ce3182fbe07d7147e63d32aef572dcdf4325580b7ab8bde9de0d4c70",
+    "tests/fixtures/nickel_six_source_transcription.json": "7bd9ed892a5ec72d2dc0568bb31b58161ec997ac51b1f469286a5ec27986e012",
+    "tests/fixtures/nickel_test_updates_v0210.json": "4d8be2aa03013098ef524d82bf8c6c8608ed1e33c81a2e1a290057c2cd9f7a1e",
+    "tests/fixtures/nist_reuse_correction_v0132.json": "56c9b9f308a0c06abe33213d2d18f33d2512c390c1b56c35368871e12f274bd8",
+    "tests/fixtures/observation_test_updates_v0170.json": "213871d238ab00d1f562b265f2671f48978a287f477e7de861384387a4e766a3",
+    "tests/fixtures/pa12_cf15_source_transcription.json": "e3fdcff696e3927ecbdd80740663551e36f192465849bb6ffeb15748142e90f8",
+    "tests/fixtures/pa12_test_updates_v0220.json": "811a9a04be57ac2889660d547dca15c3ce52650fd11375ce31a346eff8725a4b",
+    "tests/fixtures/pre_anisotropy_outputs.json": "f3554ebde313a7ac65695e338cb67aaf78bf9964da0cba442ffc900f3a60fe44",
+    "tests/fixtures/pre_anisotropy_records.json": "3405360eb85b5965314b4d5b3023cf344bf8f5903bc4abfbcddb6d40478410cc",
+    "tests/fixtures/pre_bulk_wave_record_digests.json": "95221a3219066c52e0dbac579b5cc6b6bdbba4cd738ab969bac02b403254584b",
+    "tests/fixtures/pre_compressibility_record_digests.json": "d533c2ccef1c8c7a51da092e643abafb80cae800a50bf44a684af98cc339b604",
+    "tests/fixtures/pre_directional_record_digests.json": "b8321b097fac8bc2006c7b80c3aa7d35046e3ddf04a0b48d00b2aa7da273a531",
+    "tests/fixtures/pre_fatigue_records_sha256.json": "8e4001907999b321ec95a7b6e0206486db750af67dfaf6f278d53f6ca29b2d2f",
+    "tests/fixtures/pre_hbn_record_digests.json": "6b4453bea413d8f2509a05b8b48b4b26aea31800d3ddf89a513d391a108696d5",
+    "tests/fixtures/pre_nickel_batch_v0210.json": "01b046aec877c989bc0f252b0d6c0774daa44b2fdea950f771d552e6aeb3cb7e",
+    "tests/fixtures/pre_pa12_v0220.json": "91710039387f91dd12631ccfd76bef1b402d8ba567eb6d035dd00dd53cb383b6",
+    "tests/fixtures/pre_prediction_baseline.json": "1e20e8af4dc17f1188c05d8e76df0aea02899a7c6f36f026888768dc2d8aa3dc",
+    "tests/fixtures/pre_silicon_baseline.json": "1c8fbc1375071074fd531282508ae79746dc96967643419a54842eedbb4e662c",
+    "tests/fixtures/pre_temperature_plot_v0230.json": "63c29a678675f5e9804797e6db19d5ded7bf4d00ac583ef64098ea64213ec0a4",
+    "tests/fixtures/pre_temperature_records.json": "acbd50f52a6afa55665b8f2575407f33ad7c54a7468971fd76bbce9e34fe691c",
+    "tests/fixtures/prediction_source_transcription.json": "5cb45725611608eeeff8c2eb3da835907f88ee86aa8ffb882ad0d5280684b32c",
+    "tests/fixtures/public_baseline_adjustments.json": "7c3a0b39db60301ce68d0441ff37e6d4449d668b3f1656b6d617eacf7103fa8e",
+    "tests/fixtures/public_exclusion_fingerprints.json": "8a0ed4c6b22f68ce0dae2366169777b811c7c945f9c265997ccd6738e305bdb1",
+    "tests/fixtures/silicon_source_transcription.json": "900ded5db4b0410cfb3d388d06b2effda428aecf2090b669630a6dfca175dbfb",
+    "tests/fixtures/temperature_arithmetic.json": "11af5d0d2f660f2a4fe5273163b0cab8a47cff6d51c0ba5ca288a5348514faa6",
+    "tests/fixtures/temperature_synthetic_baseline.json": "26bee792d3120891fe86463af64ed9773df85c03b63a4db9333fc0c261cf785b",
+    "tests/fixtures/temperature_synthetic_construction.json": "60ba8c1021317df8321c939a650983e209a101974a04de42964816bf3f2057ac",
+    "tests/fixtures/wave_test_updates_v0180.json": "edabcacbb149f6b6382af8bbd098186ede84d17efc044d87fdcd1e7be54512e7"
+  }
+}

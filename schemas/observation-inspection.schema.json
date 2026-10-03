@@ -486,6 +486,9 @@
         },
         {
           "$ref": "#/$defs/pa12_facet"
+        },
+        {
+          "$ref": "#/$defs/paht_facet"
         }
       ]
     },
@@ -1354,6 +1357,743 @@
             "normalization",
             "required_caveat_codes",
             "uncertainty_type"
+          ]
+        }
+      ]
+    },
+    "paht_facet": {
+      "description": "Four reviewed annealed PAHT-CF source-cell contracts. Median and separately reported SD remain distinct; SD units and exact SI re-expression retain contextual inference. No plus/minus interval is created. Record IDs do not select the scientific payload.",
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^observation-[a-f0-9]{64}$"
+            },
+            "record_id": {
+              "$ref": "#/$defs/exact_string"
+            },
+            "record_version": {
+              "const": "1.0.0"
+            },
+            "study_id": {
+              "const": "zach_dudescu2025jcs9110624"
+            },
+            "quantity": {
+              "const": "ultimate_tensile_strength_as_reported_3d"
+            },
+            "quantity_dimension": {
+              "const": "pressure"
+            },
+            "method_family": {
+              "const": "zach_2025_paht_cf_annealed_tensile_temperature_v1"
+            },
+            "observation_type": {
+              "const": "experiment_derived_tensile_test_summary"
+            },
+            "model_status": {
+              "const": "source_reported_median_and_sd_with_explicit_metadata_gaps"
+            },
+            "dataset_id": {
+              "const": "zach-2025-paht-cf-annealed-fff-uts-temperature"
+            },
+            "protocol_id": {
+              "const": "zach2025-paht-cf-annealed-pm45-tension"
+            },
+            "source_cell": {
+              "const": {
+                "table": "A1",
+                "table_container_id": "jcs-09-00624-t0A1",
+                "expanded_table_id": "table_body_display_jcs-09-00624-t0A1",
+                "temperature_column": "25",
+                "annealing_row": "annealed",
+                "orientation_row": "±45°",
+                "central_column": "σUTS [MPa]",
+                "dispersion_column": "Standard Deviation"
+              }
+            },
+            "temperature": {
+              "const": {
+                "value": 25,
+                "value_string": "25",
+                "unit": "degC",
+                "basis": "reported_chamber_test_condition",
+                "stabilization_duration_min": 30,
+                "direct_specimen_temperature_measurement": null,
+                "calibration": null,
+                "sensor_type_and_location": null,
+                "stability_tolerance": null,
+                "tensile_heating_rate": null,
+                "control_description": "Room-temperature cooling followed by 30 minutes at the relevant Instron 3119-610 thermal-chamber test condition; direct specimen temperature and tolerance unestablished."
+              }
+            },
+            "temperature_basis": {
+              "const": "reported_chamber_test_condition"
+            },
+            "unit": {
+              "const": "MPa"
+            },
+            "si_unit": {
+              "const": "Pa"
+            },
+            "summary_statistic": {
+              "const": "median_as_reported"
+            },
+            "reported_median_string": {
+              "const": "58.91"
+            },
+            "reported_sd_string": {
+              "const": "3.44"
+            },
+            "normalized_display": {
+              "const": "Median: 58.91 MPa; SD: 3.44 MPa (unit contextually inferred)"
+            },
+            "display_basis": {
+              "const": "catalog_exact_reported_median_and_separate_sd_strings_with_contextually_inferred_sd_unit"
+            },
+            "si_display": {
+              "const": "Median: 58910000 Pa; SD: 3440000 Pa (source unit contextually inferred)"
+            },
+            "si_value": {
+              "const": 58910000
+            },
+            "si_sd_value": {
+              "const": 3440000
+            },
+            "normalization": {
+              "const": {
+                "kind": "exact_decimal_unit_scale",
+                "from_unit": "MPa",
+                "to_unit": "Pa",
+                "factor_string": "1000000",
+                "offset_string": "0",
+                "basis": "SI_prefix_only_no_geometry_or_thickness",
+                "central_unit_evidence": "explicit_UTS_column_header",
+                "sd_unit_evidence": "contextual_inference_not_explicit_SD_header",
+                "sd_conversion_is_conditional": true,
+                "adds_measurement_precision": false
+              }
+            },
+            "required_caveat_codes": {
+              "const": [
+                "paht_temperature_warning",
+                "paht_process_warning",
+                "paht_stress_warning",
+                "paht_sd_count_warning",
+                "paht_sd_unit_warning",
+                "paht_geometry_warning",
+                "paht_scope_warning",
+                "paht_version_warning",
+                "paht_rights_warning"
+              ]
+            },
+            "uncertainty_type": {
+              "const": "reported_standard_deviation"
+            },
+            "uncertainty_notation": {
+              "const": "separate_sd"
+            },
+            "sd_unit": {
+              "const": "MPa"
+            },
+            "sd_unit_basis": {
+              "const": "contextual_inference_from_associated_uts_column"
+            },
+            "sd_header_unit_explicit": {
+              "const": false
+            },
+            "si_sd_unit": {
+              "const": "Pa"
+            },
+            "si_sd_unit_basis": {
+              "const": "conditional_on_contextual_MPa_inference"
+            }
+          },
+          "required": [
+            "id",
+            "record_id",
+            "record_version",
+            "study_id",
+            "quantity",
+            "quantity_dimension",
+            "method_family",
+            "observation_type",
+            "model_status",
+            "dataset_id",
+            "protocol_id",
+            "source_cell",
+            "temperature",
+            "temperature_basis",
+            "unit",
+            "si_unit",
+            "summary_statistic",
+            "reported_median_string",
+            "reported_sd_string",
+            "normalized_display",
+            "display_basis",
+            "si_display",
+            "si_value",
+            "si_sd_value",
+            "normalization",
+            "required_caveat_codes",
+            "uncertainty_type",
+            "uncertainty_notation",
+            "sd_unit",
+            "sd_unit_basis",
+            "sd_header_unit_explicit",
+            "si_sd_unit",
+            "si_sd_unit_basis"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^observation-[a-f0-9]{64}$"
+            },
+            "record_id": {
+              "$ref": "#/$defs/exact_string"
+            },
+            "record_version": {
+              "const": "1.0.0"
+            },
+            "study_id": {
+              "const": "zach_dudescu2025jcs9110624"
+            },
+            "quantity": {
+              "const": "ultimate_tensile_strength_as_reported_3d"
+            },
+            "quantity_dimension": {
+              "const": "pressure"
+            },
+            "method_family": {
+              "const": "zach_2025_paht_cf_annealed_tensile_temperature_v1"
+            },
+            "observation_type": {
+              "const": "experiment_derived_tensile_test_summary"
+            },
+            "model_status": {
+              "const": "source_reported_median_and_sd_with_explicit_metadata_gaps"
+            },
+            "dataset_id": {
+              "const": "zach-2025-paht-cf-annealed-fff-uts-temperature"
+            },
+            "protocol_id": {
+              "const": "zach2025-paht-cf-annealed-pm45-tension"
+            },
+            "source_cell": {
+              "const": {
+                "table": "A1",
+                "table_container_id": "jcs-09-00624-t0A1",
+                "expanded_table_id": "table_body_display_jcs-09-00624-t0A1",
+                "temperature_column": "50",
+                "annealing_row": "annealed",
+                "orientation_row": "±45°",
+                "central_column": "σUTS [MPa]",
+                "dispersion_column": "Standard Deviation"
+              }
+            },
+            "temperature": {
+              "const": {
+                "value": 50,
+                "value_string": "50",
+                "unit": "degC",
+                "basis": "reported_chamber_test_condition",
+                "stabilization_duration_min": 30,
+                "direct_specimen_temperature_measurement": null,
+                "calibration": null,
+                "sensor_type_and_location": null,
+                "stability_tolerance": null,
+                "tensile_heating_rate": null,
+                "control_description": "Room-temperature cooling followed by 30 minutes at the relevant Instron 3119-610 thermal-chamber test condition; direct specimen temperature and tolerance unestablished."
+              }
+            },
+            "temperature_basis": {
+              "const": "reported_chamber_test_condition"
+            },
+            "unit": {
+              "const": "MPa"
+            },
+            "si_unit": {
+              "const": "Pa"
+            },
+            "summary_statistic": {
+              "const": "median_as_reported"
+            },
+            "reported_median_string": {
+              "const": "40.87"
+            },
+            "reported_sd_string": {
+              "const": "4.59"
+            },
+            "normalized_display": {
+              "const": "Median: 40.87 MPa; SD: 4.59 MPa (unit contextually inferred)"
+            },
+            "display_basis": {
+              "const": "catalog_exact_reported_median_and_separate_sd_strings_with_contextually_inferred_sd_unit"
+            },
+            "si_display": {
+              "const": "Median: 40870000 Pa; SD: 4590000 Pa (source unit contextually inferred)"
+            },
+            "si_value": {
+              "const": 40870000
+            },
+            "si_sd_value": {
+              "const": 4590000
+            },
+            "normalization": {
+              "const": {
+                "kind": "exact_decimal_unit_scale",
+                "from_unit": "MPa",
+                "to_unit": "Pa",
+                "factor_string": "1000000",
+                "offset_string": "0",
+                "basis": "SI_prefix_only_no_geometry_or_thickness",
+                "central_unit_evidence": "explicit_UTS_column_header",
+                "sd_unit_evidence": "contextual_inference_not_explicit_SD_header",
+                "sd_conversion_is_conditional": true,
+                "adds_measurement_precision": false
+              }
+            },
+            "required_caveat_codes": {
+              "const": [
+                "paht_temperature_warning",
+                "paht_process_warning",
+                "paht_stress_warning",
+                "paht_sd_count_warning",
+                "paht_sd_unit_warning",
+                "paht_geometry_warning",
+                "paht_scope_warning",
+                "paht_version_warning",
+                "paht_rights_warning"
+              ]
+            },
+            "uncertainty_type": {
+              "const": "reported_standard_deviation"
+            },
+            "uncertainty_notation": {
+              "const": "separate_sd"
+            },
+            "sd_unit": {
+              "const": "MPa"
+            },
+            "sd_unit_basis": {
+              "const": "contextual_inference_from_associated_uts_column"
+            },
+            "sd_header_unit_explicit": {
+              "const": false
+            },
+            "si_sd_unit": {
+              "const": "Pa"
+            },
+            "si_sd_unit_basis": {
+              "const": "conditional_on_contextual_MPa_inference"
+            }
+          },
+          "required": [
+            "id",
+            "record_id",
+            "record_version",
+            "study_id",
+            "quantity",
+            "quantity_dimension",
+            "method_family",
+            "observation_type",
+            "model_status",
+            "dataset_id",
+            "protocol_id",
+            "source_cell",
+            "temperature",
+            "temperature_basis",
+            "unit",
+            "si_unit",
+            "summary_statistic",
+            "reported_median_string",
+            "reported_sd_string",
+            "normalized_display",
+            "display_basis",
+            "si_display",
+            "si_value",
+            "si_sd_value",
+            "normalization",
+            "required_caveat_codes",
+            "uncertainty_type",
+            "uncertainty_notation",
+            "sd_unit",
+            "sd_unit_basis",
+            "sd_header_unit_explicit",
+            "si_sd_unit",
+            "si_sd_unit_basis"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^observation-[a-f0-9]{64}$"
+            },
+            "record_id": {
+              "$ref": "#/$defs/exact_string"
+            },
+            "record_version": {
+              "const": "1.0.0"
+            },
+            "study_id": {
+              "const": "zach_dudescu2025jcs9110624"
+            },
+            "quantity": {
+              "const": "ultimate_tensile_strength_as_reported_3d"
+            },
+            "quantity_dimension": {
+              "const": "pressure"
+            },
+            "method_family": {
+              "const": "zach_2025_paht_cf_annealed_tensile_temperature_v1"
+            },
+            "observation_type": {
+              "const": "experiment_derived_tensile_test_summary"
+            },
+            "model_status": {
+              "const": "source_reported_median_and_sd_with_explicit_metadata_gaps"
+            },
+            "dataset_id": {
+              "const": "zach-2025-paht-cf-annealed-fff-uts-temperature"
+            },
+            "protocol_id": {
+              "const": "zach2025-paht-cf-annealed-pm45-tension"
+            },
+            "source_cell": {
+              "const": {
+                "table": "A1",
+                "table_container_id": "jcs-09-00624-t0A1",
+                "expanded_table_id": "table_body_display_jcs-09-00624-t0A1",
+                "temperature_column": "100",
+                "annealing_row": "annealed",
+                "orientation_row": "±45°",
+                "central_column": "σUTS [MPa]",
+                "dispersion_column": "Standard Deviation"
+              }
+            },
+            "temperature": {
+              "const": {
+                "value": 100,
+                "value_string": "100",
+                "unit": "degC",
+                "basis": "reported_chamber_test_condition",
+                "stabilization_duration_min": 30,
+                "direct_specimen_temperature_measurement": null,
+                "calibration": null,
+                "sensor_type_and_location": null,
+                "stability_tolerance": null,
+                "tensile_heating_rate": null,
+                "control_description": "Room-temperature cooling followed by 30 minutes at the relevant Instron 3119-610 thermal-chamber test condition; direct specimen temperature and tolerance unestablished."
+              }
+            },
+            "temperature_basis": {
+              "const": "reported_chamber_test_condition"
+            },
+            "unit": {
+              "const": "MPa"
+            },
+            "si_unit": {
+              "const": "Pa"
+            },
+            "summary_statistic": {
+              "const": "median_as_reported"
+            },
+            "reported_median_string": {
+              "const": "29.64"
+            },
+            "reported_sd_string": {
+              "const": "0.72"
+            },
+            "normalized_display": {
+              "const": "Median: 29.64 MPa; SD: 0.72 MPa (unit contextually inferred)"
+            },
+            "display_basis": {
+              "const": "catalog_exact_reported_median_and_separate_sd_strings_with_contextually_inferred_sd_unit"
+            },
+            "si_display": {
+              "const": "Median: 29640000 Pa; SD: 720000 Pa (source unit contextually inferred)"
+            },
+            "si_value": {
+              "const": 29640000
+            },
+            "si_sd_value": {
+              "const": 720000
+            },
+            "normalization": {
+              "const": {
+                "kind": "exact_decimal_unit_scale",
+                "from_unit": "MPa",
+                "to_unit": "Pa",
+                "factor_string": "1000000",
+                "offset_string": "0",
+                "basis": "SI_prefix_only_no_geometry_or_thickness",
+                "central_unit_evidence": "explicit_UTS_column_header",
+                "sd_unit_evidence": "contextual_inference_not_explicit_SD_header",
+                "sd_conversion_is_conditional": true,
+                "adds_measurement_precision": false
+              }
+            },
+            "required_caveat_codes": {
+              "const": [
+                "paht_temperature_warning",
+                "paht_process_warning",
+                "paht_stress_warning",
+                "paht_sd_count_warning",
+                "paht_sd_unit_warning",
+                "paht_geometry_warning",
+                "paht_scope_warning",
+                "paht_version_warning",
+                "paht_rights_warning"
+              ]
+            },
+            "uncertainty_type": {
+              "const": "reported_standard_deviation"
+            },
+            "uncertainty_notation": {
+              "const": "separate_sd"
+            },
+            "sd_unit": {
+              "const": "MPa"
+            },
+            "sd_unit_basis": {
+              "const": "contextual_inference_from_associated_uts_column"
+            },
+            "sd_header_unit_explicit": {
+              "const": false
+            },
+            "si_sd_unit": {
+              "const": "Pa"
+            },
+            "si_sd_unit_basis": {
+              "const": "conditional_on_contextual_MPa_inference"
+            }
+          },
+          "required": [
+            "id",
+            "record_id",
+            "record_version",
+            "study_id",
+            "quantity",
+            "quantity_dimension",
+            "method_family",
+            "observation_type",
+            "model_status",
+            "dataset_id",
+            "protocol_id",
+            "source_cell",
+            "temperature",
+            "temperature_basis",
+            "unit",
+            "si_unit",
+            "summary_statistic",
+            "reported_median_string",
+            "reported_sd_string",
+            "normalized_display",
+            "display_basis",
+            "si_display",
+            "si_value",
+            "si_sd_value",
+            "normalization",
+            "required_caveat_codes",
+            "uncertainty_type",
+            "uncertainty_notation",
+            "sd_unit",
+            "sd_unit_basis",
+            "sd_header_unit_explicit",
+            "si_sd_unit",
+            "si_sd_unit_basis"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^observation-[a-f0-9]{64}$"
+            },
+            "record_id": {
+              "$ref": "#/$defs/exact_string"
+            },
+            "record_version": {
+              "const": "1.0.0"
+            },
+            "study_id": {
+              "const": "zach_dudescu2025jcs9110624"
+            },
+            "quantity": {
+              "const": "ultimate_tensile_strength_as_reported_3d"
+            },
+            "quantity_dimension": {
+              "const": "pressure"
+            },
+            "method_family": {
+              "const": "zach_2025_paht_cf_annealed_tensile_temperature_v1"
+            },
+            "observation_type": {
+              "const": "experiment_derived_tensile_test_summary"
+            },
+            "model_status": {
+              "const": "source_reported_median_and_sd_with_explicit_metadata_gaps"
+            },
+            "dataset_id": {
+              "const": "zach-2025-paht-cf-annealed-fff-uts-temperature"
+            },
+            "protocol_id": {
+              "const": "zach2025-paht-cf-annealed-pm45-tension"
+            },
+            "source_cell": {
+              "const": {
+                "table": "A1",
+                "table_container_id": "jcs-09-00624-t0A1",
+                "expanded_table_id": "table_body_display_jcs-09-00624-t0A1",
+                "temperature_column": "150",
+                "annealing_row": "annealed",
+                "orientation_row": "±45°",
+                "central_column": "σUTS [MPa]",
+                "dispersion_column": "Standard Deviation"
+              }
+            },
+            "temperature": {
+              "const": {
+                "value": 150,
+                "value_string": "150",
+                "unit": "degC",
+                "basis": "reported_chamber_test_condition",
+                "stabilization_duration_min": 30,
+                "direct_specimen_temperature_measurement": null,
+                "calibration": null,
+                "sensor_type_and_location": null,
+                "stability_tolerance": null,
+                "tensile_heating_rate": null,
+                "control_description": "Room-temperature cooling followed by 30 minutes at the relevant Instron 3119-610 thermal-chamber test condition; direct specimen temperature and tolerance unestablished."
+              }
+            },
+            "temperature_basis": {
+              "const": "reported_chamber_test_condition"
+            },
+            "unit": {
+              "const": "MPa"
+            },
+            "si_unit": {
+              "const": "Pa"
+            },
+            "summary_statistic": {
+              "const": "median_as_reported"
+            },
+            "reported_median_string": {
+              "const": "19.03"
+            },
+            "reported_sd_string": {
+              "const": "0.67"
+            },
+            "normalized_display": {
+              "const": "Median: 19.03 MPa; SD: 0.67 MPa (unit contextually inferred)"
+            },
+            "display_basis": {
+              "const": "catalog_exact_reported_median_and_separate_sd_strings_with_contextually_inferred_sd_unit"
+            },
+            "si_display": {
+              "const": "Median: 19030000 Pa; SD: 670000 Pa (source unit contextually inferred)"
+            },
+            "si_value": {
+              "const": 19030000
+            },
+            "si_sd_value": {
+              "const": 670000
+            },
+            "normalization": {
+              "const": {
+                "kind": "exact_decimal_unit_scale",
+                "from_unit": "MPa",
+                "to_unit": "Pa",
+                "factor_string": "1000000",
+                "offset_string": "0",
+                "basis": "SI_prefix_only_no_geometry_or_thickness",
+                "central_unit_evidence": "explicit_UTS_column_header",
+                "sd_unit_evidence": "contextual_inference_not_explicit_SD_header",
+                "sd_conversion_is_conditional": true,
+                "adds_measurement_precision": false
+              }
+            },
+            "required_caveat_codes": {
+              "const": [
+                "paht_temperature_warning",
+                "paht_process_warning",
+                "paht_stress_warning",
+                "paht_sd_count_warning",
+                "paht_sd_unit_warning",
+                "paht_geometry_warning",
+                "paht_scope_warning",
+                "paht_version_warning",
+                "paht_rights_warning"
+              ]
+            },
+            "uncertainty_type": {
+              "const": "reported_standard_deviation"
+            },
+            "uncertainty_notation": {
+              "const": "separate_sd"
+            },
+            "sd_unit": {
+              "const": "MPa"
+            },
+            "sd_unit_basis": {
+              "const": "contextual_inference_from_associated_uts_column"
+            },
+            "sd_header_unit_explicit": {
+              "const": false
+            },
+            "si_sd_unit": {
+              "const": "Pa"
+            },
+            "si_sd_unit_basis": {
+              "const": "conditional_on_contextual_MPa_inference"
+            }
+          },
+          "required": [
+            "id",
+            "record_id",
+            "record_version",
+            "study_id",
+            "quantity",
+            "quantity_dimension",
+            "method_family",
+            "observation_type",
+            "model_status",
+            "dataset_id",
+            "protocol_id",
+            "source_cell",
+            "temperature",
+            "temperature_basis",
+            "unit",
+            "si_unit",
+            "summary_statistic",
+            "reported_median_string",
+            "reported_sd_string",
+            "normalized_display",
+            "display_basis",
+            "si_display",
+            "si_value",
+            "si_sd_value",
+            "normalization",
+            "required_caveat_codes",
+            "uncertainty_type",
+            "uncertainty_notation",
+            "sd_unit",
+            "sd_unit_basis",
+            "sd_header_unit_explicit",
+            "si_sd_unit",
+            "si_sd_unit_basis"
           ]
         }
       ]

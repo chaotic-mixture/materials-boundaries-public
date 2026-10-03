@@ -19,9 +19,13 @@ def read_catalog(name: str) -> dict:
         validate_observation_records(catalog["records"])
         from ._pa12_cf15_observation_contract import validate_pa12_dataset
         validate_pa12_dataset(catalog["records"], require_complete=True)
+        from ._paht_cf_observation_contract import validate_paht_dataset
+        validate_paht_dataset(catalog["records"], require_complete=True)
     if name == "sources":
         from ._pa12_cf15_observation_contract import validate_pa12_sources
         validate_pa12_sources(catalog["records"])
+        from ._paht_cf_observation_contract import validate_paht_sources
+        validate_paht_sources(catalog["records"])
     return catalog
 
 

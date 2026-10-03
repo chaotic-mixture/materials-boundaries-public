@@ -134,7 +134,9 @@ class HelperLineageTests(unittest.TestCase):
                         source.index('_reviewed_bootstrap_hash(filename, expected)'))
         self.assertLess(source.index('_reviewed_bootstrap_hash(filename, expected)'),
                         source.index("updates = OBSERVATION_TEST_UPDATES['approved_test_updates']"))
-        self.assertTrue(source.rstrip().endswith('return reviewed_current_test_hash(filename, expected)'))
+        self.assertLess(source.index('expected = reviewed_current_test_hash(filename, expected)'),
+                        source.index('return reviewed_paht_test_hash(filename, expected)'))
+        self.assertTrue(source.rstrip().endswith('return reviewed_paht_test_hash(filename, expected)'))
 
     def test_direct_tail_binds_both_actual_files_after_exact_predecessors(self):
         baseline = json.loads((ROOT / 'tests/fixtures/pre_temperature_plot_v0230.json').read_text())
@@ -143,8 +145,9 @@ class HelperLineageTests(unittest.TestCase):
         for change in history.CURRENT_HELPER_UPDATES['approved_test_updates']:
             with self.subTest(filename=change['filename']):
                 actual = sha((ROOT / change['filename']).read_bytes())
-                self.assertEqual(history.reviewed_current_test_hash(change['filename'], change['previous_sha256']), actual)
-                self.assertEqual(actual, change['sha256'])
+                accepted = history.reviewed_current_test_hash(change['filename'], change['previous_sha256'])
+                self.assertEqual(accepted, change['sha256'])
+                self.assertEqual(history.reviewed_paht_test_hash(change['filename'], accepted), actual)
         # An arbitrary starting point remains invalid for the *full* traversal.
         with self.assertRaises(AssertionError):
             history.reviewed_test_hash(HELPER, baseline['historical_test_sha256'][HELPER])
@@ -269,14 +272,16 @@ class HelperLineageTests(unittest.TestCase):
         for change in history.CURRENT_HELPER_UPDATES['approved_test_updates']:
             filename = change['filename']
             actual = (ROOT / filename).read_bytes()
-            expected = history.reviewed_current_test_hash(filename, change['previous_sha256'])
+            accepted = history.reviewed_current_test_hash(filename, change['previous_sha256'])
+            expected = history.reviewed_paht_test_hash(filename, accepted)
             for changed in (b'!' + actual[1:], actual + b'\n'):
                 with self.subTest(filename=filename), self.assertRaises(AssertionError):
                     self.assertEqual(sha(changed), expected)
             altered = deepcopy(history.CURRENT_HELPER_UPDATES)
             next(e for e in altered['approved_test_updates'] if e['filename'] == filename)['sha256'] = '0' * 64
             with patch.object(history, 'CURRENT_HELPER_UPDATES', altered), self.assertRaises(AssertionError):
-                self.assertEqual(sha(actual), history.reviewed_current_test_hash(filename, change['previous_sha256']))
+                accepted = history.reviewed_current_test_hash(filename, change['previous_sha256'])
+                self.assertEqual(sha(actual), history.reviewed_paht_test_hash(filename, accepted))
             self.assertNotEqual(sha((json.dumps(altered, ensure_ascii=False, indent=2) + '\n').encode()), TAIL_SHA256)
         evidence = history.HELPER_BOOTSTRAP_BRIDGE['evidence']
         public = evidence['public_source_utf8'].encode()

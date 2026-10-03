@@ -10,7 +10,7 @@ import json
 from pathlib import Path
 import unittest
 
-from provenance_corrections import reviewed_current_test_hash
+from provenance_corrections import reviewed_current_test_hash, reviewed_paht_test_hash
 
 from materials_boundaries.catalog import read_catalog
 from materials_boundaries.observation_visualization import POLICY as INSPECTION_POLICY
@@ -58,6 +58,7 @@ class TemperaturePlotPreservationTests(unittest.TestCase):
                 self.assertTrue(change['reason'].strip())
                 expected = change['sha256']
             expected = reviewed_current_test_hash(filename, expected)
+            expected = reviewed_paht_test_hash(filename, expected)
             with self.subTest(filename=filename):
                 self.assertEqual(hashlib.sha256((ROOT / filename).read_bytes()).hexdigest(), expected)
 

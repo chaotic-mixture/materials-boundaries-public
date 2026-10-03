@@ -4,6 +4,8 @@ import json
 
 from .catalog import read_catalog
 from .i18n import _catalog_translation_lookup
+from ._paht_cf_observation_contract import PAHT_FAMILY, validate_paht_sources
+from ._paht_observation_labels import PAHT_LABELS, PAHT_CAVEATS
 
 
 def render_catalog(catalog: dict, kind: str, language: str = "en") -> str:
@@ -97,6 +99,41 @@ def render_catalog(catalog: dict, kind: str, language: str = "en") -> str:
             rendered.append("    " + key + ": " + json.dumps(record[key], ensure_ascii=False, sort_keys=True))
         rendered.extend(source_summary(sources[record["study_id"]], "    "))
         rendered.append("    " + json.dumps(sources[record["study_id"]], ensure_ascii=False, sort_keys=True))
+        return rendered
+
+    def paht_observation(record: dict) -> list[str]:
+        """The source median and SD keep separate labels and unit evidence."""
+        wording = PAHT_LABELS[language]
+        result, si = record['reported_result'], record['si_result']
+        uncertainty, temperature = result['uncertainty'], record['conditions']['temperature']
+        if record['study_id'] not in sources:
+            raise ValueError('PAHT observation contract: missing referenced source')
+
+        def local(key, value=None):
+            return '  ' + wording[key] + (': ' + str(value) if value is not None else '')
+
+        rendered = [field('catalog_original_name', record['name']),
+            field('catalog_version', record['version']), field('catalog_study_id', record['study_id']),
+            local('paht_classification'), local('paht_identity'),
+            local('paht_dataset', record['dataset_id']), local('paht_protocol', record['protocol_id']),
+            field('catalog_quantity', record['quantity']),
+            field('catalog_quantity_dimension', record['quantity_dimension']),
+            local('paht_temperature', temperature['value_string'] + ' °C'),
+            local('paht_temperature_basis')]
+        rendered.extend(local(code) for code in PAHT_CAVEATS)
+        rendered.extend([local('paht_reported_display'), local('paht_reported_notice'),
+            local('paht_reported_median', result['value_string'] + ' MPa'),
+            local('paht_reported_sd', uncertainty['value_string'] + ' MPa'),
+            local('paht_si_display'), local('paht_si_notice'),
+            local('paht_si_median', str(int(si['value'])) + ' Pa'),
+            local('paht_si_sd', str(int(si['uncertainty_value'])) + ' Pa'),
+            local('paht_cell', json.dumps(record['source_cell'], ensure_ascii=False, sort_keys=True)),
+            local('paht_details')])
+        for key in ('material', 'method', 'conditions', 'sample_metadata',
+                    'reported_result', 'si_result', 'verification', 'evidence', 'limits'):
+            rendered.append('    ' + key + ': ' + json.dumps(record[key], ensure_ascii=False, sort_keys=True))
+        rendered.extend(source_summary(sources[record['study_id']], '    '))
+        rendered.append('    ' + json.dumps(sources[record['study_id']], ensure_ascii=False, sort_keys=True))
         return rendered
 
     def hbn_observation(record: dict) -> list[str]:
@@ -290,8 +327,10 @@ def render_catalog(catalog: dict, kind: str, language: str = "en") -> str:
     from ._pa12_cf15_observation_contract import validate_pa12_sources
     if kind == "sources":
         validate_pa12_sources(catalog["records"])
+        validate_paht_sources(catalog["records"])
     elif kind in {"claims", "observations"}:
         validate_pa12_sources(list(sources.values()))
+        validate_paht_sources(list(sources.values()))
     for record in catalog["records"]:
         lines.extend(["", f'{t({"claims": "claim", "sources": "source", "observations": "observation"}[kind])}: {record["id"]}'])
         if kind == "sources":
@@ -311,6 +350,9 @@ def render_catalog(catalog: dict, kind: str, language: str = "en") -> str:
             display_name = t(name_key)
             if display_name != f"[missing:{name_key}]":
                 lines.append(field("catalog_display_name", display_name))
+            if record.get("method_family") == PAHT_FAMILY:
+                lines.extend(paht_observation(record))
+                continue
             if record.get("method_family") == "ciganas_2026_pa12_cf15_fff_tensile_temperature_v1":
                 lines.extend(pa12_observation(record))
                 continue

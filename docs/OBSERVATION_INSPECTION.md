@@ -291,3 +291,8 @@ language-independent. Static SVG pixel review and actual browser reflow QA are
 different checks; successful software tests alone prove neither. Record the
 checks actually performed for each release rather than treating this guide as
 a report of successful browser or independent scientific review.
+
+
+## v0.24.0 addition: annealed PAHT-CF
+
+Four source-specific catalog-only medians and separate SD values from Zach and Dudescu (2025) are admitted, with contextual SD units and complete before-value caveats. The total is now 16 observations from five studies and 53 sources. The previous records and Ciganas plot remain unchanged. Quantity-only UTS inspection includes both studies; filter by source ID for one study. [Exact cells, provenance, rights and limits](PAHT_CF_ANNEALED_OBSERVATIONS.md) · [Migration](MIGRATION_v0.24.0.md)

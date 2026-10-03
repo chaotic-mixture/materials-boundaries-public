@@ -18,6 +18,8 @@ from .catalog import read_catalog
 from ._observation_contract import MOS2_FAMILY, validate_observation_records
 from ._hbn_observation_contract import HBN_FAMILY
 from ._pa12_cf15_observation_contract import PA12_FAMILY, validate_pa12_sources
+from ._paht_cf_observation_contract import PAHT_FAMILY, validate_paht_sources
+from ._paht_observation_labels import PAHT_LABELS, PAHT_CAVEATS, PAHT_DISPLAY_BASIS
 from .i18n import translate
 from .validation import ValidationError
 
@@ -95,7 +97,7 @@ def _digest(value):
 def labels(lang='en'):
     from ._observation_inspection_labels import LABELS
     _require(type(lang) is str and lang in LABELS, 'unsupported inspection language')
-    return dict(LABELS[lang])
+    return {**LABELS[lang], **PAHT_LABELS[lang]}
 
 
 def _selector(value, name):
@@ -163,6 +165,8 @@ def _caveats(record):
                  else 'hbn_stiffness_warning'), 'catalog_hbn_sd_notice', 'sd_warning']
     if family == PA12_FAMILY:
         return list(PA12_CAVEATS)
+    if family == PAHT_FAMILY:
+        return list(PAHT_CAVEATS)
     if family == LEE_FAMILY:
         return ['graphene_warning']
     raise ObservationInspectionError('unsupported observation method family')
@@ -233,8 +237,74 @@ def _pa12_facet(r):
             'required_caveat_codes': _caveats(r), 'uncertainty_type': u['type']}
 
 
+def _paht_facet(r):
+    """Source-specific median and separate SD; no plus/minus interpretation."""
+    _require(_family(r) == PAHT_FAMILY and r['quantity'] == QUANTITIES[2]
+             and r['quantity_dimension'] == 'pressure' and r['si_unit'] == 'Pa'
+             and r['observation_type'] == 'experiment_derived_tensile_test_summary'
+             and r['evaluation_support'] == 'catalog_only', 'unsupported PAHT tensile contract')
+    result, u, si = r['reported_result'], r['reported_result']['uncertainty'], r['si_result']
+    _require(result['summary_statistic'] == 'median_as_reported'
+             and u['notation'] == 'separate_sd'
+             and result['unit'] == u['unit'] == 'MPa' and si['unit'] == si['uncertainty_unit'] == 'Pa'
+             and u['unit_basis'] == 'contextual_inference_from_associated_uts_column'
+             and u['header_unit_explicit'] is False
+             and si['uncertainty_unit_basis'] == 'conditional_on_contextual_MPa_inference',
+             'unsupported PAHT median/SD or unit semantics')
+    return {'id': 'observation-' + _digest([r['study_id'], r['quantity'], r['id']]),
+            'record_id': r['id'], 'record_version': r['version'], 'study_id': r['study_id'],
+            'quantity': r['quantity'], 'quantity_dimension': r['quantity_dimension'],
+            'method_family': PAHT_FAMILY, 'observation_type': r['observation_type'],
+            'model_status': r['model_status'], 'dataset_id': r['dataset_id'],
+            'protocol_id': r['protocol_id'], 'source_cell': deepcopy(r['source_cell']),
+            'temperature': deepcopy(r['conditions']['temperature']),
+            'temperature_basis': r['conditions']['temperature']['basis'],
+            'unit': 'MPa', 'si_unit': 'Pa', 'summary_statistic': result['summary_statistic'],
+            'reported_median_string': result['value_string'], 'reported_sd_string': u['value_string'],
+            'normalized_display': 'Median: ' + result['value_string'] + ' MPa; SD: '
+                + u['value_string'] + ' MPa (unit contextually inferred)',
+            'display_basis': PAHT_DISPLAY_BASIS,
+            'si_display': 'Median: ' + str(int(si['value'])) + ' Pa; SD: '
+                + str(int(si['uncertainty_value'])) + ' Pa (source unit contextually inferred)',
+            'si_value': int(si['value']), 'si_sd_value': int(si['uncertainty_value']),
+            'normalization': deepcopy(si['normalization']),
+            'required_caveat_codes': _caveats(r), 'uncertainty_type': u['type'],
+            'uncertainty_notation': u['notation'], 'sd_unit': u['unit'],
+            'sd_unit_basis': u['unit_basis'], 'sd_header_unit_explicit': u['header_unit_explicit'],
+            'si_sd_unit': si['uncertainty_unit'], 'si_sd_unit_basis': si['uncertainty_unit_basis']}
+
+
+def _paht_identity_lines(record, lang):
+    t = labels(lang)
+    return [t['paht_identity'] + ' | ' + record['material']['name'],
+            t['paht_dataset'] + ': ' + record['dataset_id'],
+            t['paht_protocol'] + ': ' + record['protocol_id'],
+            t['paht_temperature'] + ': ' + record['conditions']['temperature']['value_string'] + ' °C',
+            t['paht_temperature_basis']]
+
+
+def _paht_detail_lines(record, lang):
+    """All original structured conditions and SD-unit provenance stay visible."""
+    t = labels(lang)
+    lines = [(t['paht_cell'] + ': ' + _canonical(record['source_cell']), None)]
+    for key, label in (('material', 'paht_material'), ('method', 'paht_method'),
+                       ('conditions', 'paht_conditions'), ('sample_metadata', 'paht_counts'),
+                       ('reported_result', 'paht_reported_display'), ('si_result', 'paht_si_display'),
+                       ('verification', 'paht_source_version'), ('limits', 'paht_details')):
+        lines.append((t[label], None))
+        value = record[key]
+        if isinstance(value, dict):
+            lines.extend((field + ': ' + _canonical(item), None) for field, item in value.items())
+        else:
+            lines.append((_canonical(value), None))
+    url = record['verification']['rights']['license_url']
+    lines.append((url, url))
+    return lines
+
+
 def _classification(record, lang):
-    return labels(lang)['pa12_classification' if _family(record) == PA12_FAMILY else 'classification']
+    key = {PA12_FAMILY: 'pa12_classification', PAHT_FAMILY: 'paht_classification'}.get(_family(record), 'classification')
+    return labels(lang)[key]
 
 
 def _pa12_identity_lines(record, lang):
@@ -288,6 +358,7 @@ def build_observation_inspection(record_ids=None, source_id=None, quantity=None,
                  'unsupported observation/source catalog schema version')
         validate_observation_records(catalog['records'])
         validate_pa12_sources(source_catalog['records'])
+        validate_paht_sources(source_catalog['records'])
         _json_safe(catalog); _json_safe(source_catalog)
         records, sources = catalog['records'], source_catalog['records']
         all_ids = [r['id'] for r in records]
@@ -309,7 +380,8 @@ def build_observation_inspection(record_ids=None, source_id=None, quantity=None,
                 _selector(r[key], key)
             referenced.add(r['study_id'])
             referenced.update(e['source_id'] for e in r['evidence'])
-            facets.append(_pa12_facet(r) if _family(r) == PA12_FAMILY else _membrane_facet(r))
+            builder = {PA12_FAMILY: _pa12_facet, PAHT_FAMILY: _paht_facet}.get(_family(r), _membrane_facet)
+            facets.append(builder(r))
         _require(referenced.issubset(source_ids), 'missing referenced observation source')
         selected_sources = [s for s in sources if s['id'] in referenced]
         _validate_links(selected); _validate_links(selected_sources)
@@ -364,7 +436,9 @@ def inspection_csv(bundle):
     """One row per selected record; identities and caveats precede values.
 
     Result columns retain reported units. Separate SI columns are exact prefix
-    scaling for PA12 and identity normalization for historic N/m records.
+    scaling for PA12 and PAHT, and identity normalization for historic N/m records.
+    PAHT adds separate median/SD columns only when selected; its SD-to-Pa
+    scaling is conditional on the explicitly retained inferred source unit.
     Missing scalars remain literal ``null``; snapshots retain complete types.
     """
     validate_observation_inspection(bundle)
@@ -383,6 +457,14 @@ def inspection_csv(bundle):
         'observation_schema_version', 'source_schema_version', 'record_snapshot_sha256',
         'source_snapshot_digests_json', 'selection_json', 'group_by',
         'scalar_missing_convention', 'record_snapshot_json', 'source_snapshots_json']
+    has_paht = any(_family(r) == PAHT_FAMILY for r in bundle['record_snapshots'])
+    if has_paht:
+        before = columns.index('normalized_display_basis')
+        columns[before:before] = ['uncertainty_notation', 'sd_unit', 'sd_unit_basis',
+            'sd_header_unit_explicit', 'si_sd_unit', 'si_sd_unit_basis']
+        before = columns.index('central_value')
+        columns[before:before] = ['median_value', 'reported_median_string', 'sd_value',
+            'reported_sd_string', 'si_median_value', 'si_sd_value']
     out = io.StringIO(newline='')
     writer = csv.DictWriter(out, fieldnames=columns, lineterminator='\n')
     writer.writeheader()
@@ -390,7 +472,8 @@ def inspection_csv(bundle):
     for r, f in zip(bundle['record_snapshots'], bundle['facets']):
         result, u = r['reported_result'], r['reported_result']['uncertainty']
         ids = {r['study_id'], *(e['source_id'] for e in r['evidence'])}
-        tensile = _family(r) == PA12_FAMILY
+        paht = _family(r) == PAHT_FAMILY
+        tensile = _family(r) in (PA12_FAMILY, PAHT_FAMILY)
         temperature = r['conditions']['temperature'] if tensile else None
         si = r['si_result'] if tensile else {'value': result['value'],
             'uncertainty_value': u['value'], 'unit': 'N/m',
@@ -433,6 +516,22 @@ def inspection_csv(bundle):
             selection_json=_canonical(bundle['selection']), group_by=bundle['group_by'],
             scalar_missing_convention='null', record_snapshot_json=_canonical(r),
             source_snapshots_json=_canonical([s for s in bundle['source_snapshots'] if s['id'] in ids]))
+        if has_paht:
+            row.update(uncertainty_notation=u['notation'], sd_unit=u['unit'] if paht else 'null',
+                sd_unit_basis=u['unit_basis'] if paht else 'null',
+                sd_header_unit_explicit='false' if paht else 'null',
+                si_sd_unit=si['uncertainty_unit'] if paht else 'null',
+                si_sd_unit_basis=si['uncertainty_unit_basis'] if paht else 'null',
+                median_value=_number(result['value']) if paht else 'null',
+                reported_median_string=result['value_string'] if paht else 'null',
+                sd_value=_number(u['value']) if paht else 'null',
+                reported_sd_string=u['value_string'] if paht else 'null',
+                si_median_value=str(int(si['value'])) if paht else 'null',
+                si_sd_value=str(int(si['uncertainty_value'])) if paht else 'null')
+        if paht:
+            # A separate SD must never acquire an inherited ± column meaning.
+            row.update(plus_minus_value='null', reported_plus_minus_string='null',
+                       si_plus_minus_value='null')
         writer.writerow(row)
     return out.getvalue()
 
@@ -449,6 +548,8 @@ def _detail_lines(record, lang):
     """Visible scientific context, not raw-JSON-only warnings."""
     if _family(record) == PA12_FAMILY:
         return _pa12_detail_lines(record, lang)
+    if _family(record) == PAHT_FAMILY:
+        return _paht_detail_lines(record, lang)
     t = labels(lang)
     c = lambda key: translate('catalog_' + key, lang)
     family = _family(record)
@@ -544,6 +645,8 @@ def _evidence_lines(record, source, lang):
     t = labels(lang)
     lines = []
     evidence = [(t['evidence'], e) for e in record['evidence']]
+    if _family(record) == PAHT_FAMILY:
+        evidence.append((t['statistic'], record['reported_result']['statistic_evidence']))
     uncertainty = _uncertainty_evidence(record)
     if uncertainty is not None:
         evidence.append((t['uncertainty_evidence'], uncertainty))
@@ -551,7 +654,8 @@ def _evidence_lines(record, source, lang):
         lines.append((t['uncertainty_evidence'] + ': ' + t['unknown'], None))
     sample = record['sample_metadata']
     if sample and 'count_definition_source' in sample:
-        count_label = labels(lang)['pa12_counts'] if _family(record) == PA12_FAMILY else translate('catalog_hbn_count_evidence', lang)
+        count_key = {PA12_FAMILY: 'pa12_counts', PAHT_FAMILY: 'paht_counts'}.get(_family(record))
+        count_label = labels(lang)[count_key] if count_key else translate('catalog_hbn_count_evidence', lang)
         evidence.append((count_label, sample['count_definition_source']))
     for label, ev in evidence:
         artifact = ev.get('artifact', record['verification'].get('source_inspection', {}).get('artifact', source['read_status']))
@@ -645,17 +749,30 @@ def render_observation_svg(bundle, lang='en', width=1100):
                 if _family(record) == PA12_FAMILY:
                     for identity in _pa12_identity_lines(record, lang):
                         cy = para(identity, cx, cy, space, 12)
+                if _family(record) == PAHT_FAMILY:
+                    for identity in _paht_identity_lines(record, lang):
+                        cy = para(identity, cx, cy, space, 12)
                 cy = para(t['primary_warning'], cx, cy, space, 13, '#744000', True)
                 for code in facet['required_caveat_codes']:
                     cy = para(_caveat_text(code, lang), cx, cy, space, 13, '#744000')
-                tensile = _family(record) == PA12_FAMILY
-                cy = para(t['pa12_reported_display' if tensile else 'normalized'], cx, cy, space, 13, bold=True)
-                cy = para(t['pa12_reported_notice' if tensile else 'normalized_notice'], cx, cy, space, 12)
-                cy = para(facet['normalized_display'], cx, cy, space, 23, bold=True)
-                if tensile:
-                    cy = para(t['pa12_si_display'], cx, cy, space, 13, bold=True)
-                    cy = para(t['pa12_si_notice'], cx, cy, space, 12)
-                    cy = para(facet['si_display'], cx, cy, space, 18, bold=True)
+                if _family(record) == PAHT_FAMILY:
+                    cy = para(t['paht_reported_display'], cx, cy, space, 13, bold=True)
+                    cy = para(t['paht_reported_notice'], cx, cy, space, 12)
+                    cy = para(t['paht_reported_median'] + ': ' + facet['reported_median_string'] + ' MPa', cx, cy, space, 23, bold=True)
+                    cy = para(t['paht_reported_sd'] + ': ' + facet['reported_sd_string'] + ' MPa', cx, cy, space, 18, bold=True)
+                    cy = para(t['paht_si_display'], cx, cy, space, 13, bold=True)
+                    cy = para(t['paht_si_notice'], cx, cy, space, 12)
+                    cy = para(t['paht_si_median'] + ': ' + str(facet['si_value']) + ' Pa', cx, cy, space, 18, bold=True)
+                    cy = para(t['paht_si_sd'] + ': ' + str(facet['si_sd_value']) + ' Pa', cx, cy, space, 18, bold=True)
+                else:
+                    tensile = _family(record) == PA12_FAMILY
+                    cy = para(t['pa12_reported_display' if tensile else 'normalized'], cx, cy, space, 13, bold=True)
+                    cy = para(t['pa12_reported_notice' if tensile else 'normalized_notice'], cx, cy, space, 12)
+                    cy = para(facet['normalized_display'], cx, cy, space, 23, bold=True)
+                    if tensile:
+                        cy = para(t['pa12_si_display'], cx, cy, space, 13, bold=True)
+                        cy = para(t['pa12_si_notice'], cx, cy, space, 12)
+                        cy = para(facet['si_display'], cx, cy, space, 18, bold=True)
                 for value, url in _detail_lines(record, lang) + _evidence_lines(record, source, lang):
                     cy = para(value, cx, cy, space, 12, url=url)
                 cy = para(t['digest'] + ': ' + _digest(record), cx, cy, space, 10)
@@ -706,15 +823,28 @@ def render_observation_html(bundle, lang='en'):
             if _family(record) == PA12_FAMILY:
                 for identity in _pa12_identity_lines(record, lang):
                     p(identity, cls='identity')
+            if _family(record) == PAHT_FAMILY:
+                for identity in _paht_identity_lines(record, lang):
+                    p(identity, cls='identity')
             out.append('<div class="warning"><h3>' + escape(t['primary_warning']) + '</h3>')
             for code in facet['required_caveat_codes']:
                 p(_caveat_text(code, lang))
-            tensile = _family(record) == PA12_FAMILY
-            out.append('</div><h3>' + escape(t['pa12_reported_display' if tensile else 'normalized']) + '</h3>')
-            p(t['pa12_reported_notice' if tensile else 'normalized_notice']); p(facet['normalized_display'], cls='value')
-            if tensile:
-                out.append('<h3>' + escape(t['pa12_si_display']) + '</h3>')
-                p(t['pa12_si_notice']); p(facet['si_display'], cls='si-value')
+            if _family(record) == PAHT_FAMILY:
+                out.append('</div><h3>' + escape(t['paht_reported_display']) + '</h3>')
+                p(t['paht_reported_notice'])
+                p(t['paht_reported_median'] + ': ' + facet['reported_median_string'] + ' MPa', cls='value')
+                p(t['paht_reported_sd'] + ': ' + facet['reported_sd_string'] + ' MPa', cls='value')
+                out.append('<h3>' + escape(t['paht_si_display']) + '</h3>')
+                p(t['paht_si_notice'])
+                p(t['paht_si_median'] + ': ' + str(facet['si_value']) + ' Pa', cls='si-value')
+                p(t['paht_si_sd'] + ': ' + str(facet['si_sd_value']) + ' Pa', cls='si-value')
+            else:
+                tensile = _family(record) == PA12_FAMILY
+                out.append('</div><h3>' + escape(t['pa12_reported_display' if tensile else 'normalized']) + '</h3>')
+                p(t['pa12_reported_notice' if tensile else 'normalized_notice']); p(facet['normalized_display'], cls='value')
+                if tensile:
+                    out.append('<h3>' + escape(t['pa12_si_display']) + '</h3>')
+                    p(t['pa12_si_notice']); p(facet['si_display'], cls='si-value')
             for value, url in _detail_lines(record, lang) + _evidence_lines(record, sources[record['study_id']], lang):
                 p(value, url)
             p(t['digest'] + ': ' + _digest(record), cls='identity')

@@ -104,12 +104,14 @@ def validate_observation_records(records):
     """Dispatch explicit families; unknown families never inherit another model."""
     from ._hbn_observation_contract import HBN_FAMILY, HBN_SOURCE, validate_hbn_records
     from ._pa12_cf15_observation_contract import PA12_FAMILY, validate_pa12_dataset
+    from ._paht_cf_observation_contract import PAHT_FAMILY, validate_paht_dataset
+    validate_paht_dataset(records)
     validate_pa12_dataset(records)
     for record in records:
         if not isinstance(record, dict) or not isinstance(record.get("material"), dict):
             raise ValueError("Observation contract: invalid record/material shape")
         family = record.get("method_family")
-        if family not in (None, MOS2_FAMILY, HBN_FAMILY, PA12_FAMILY):
+        if family not in (None, MOS2_FAMILY, HBN_FAMILY, PA12_FAMILY, PAHT_FAMILY):
             raise ValueError("Observation contract: unsupported method family")
         if family is None:
             # The legacy branch is the existing Lee contract only. Relabeling

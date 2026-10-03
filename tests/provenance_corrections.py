@@ -43,6 +43,7 @@ def _load_lineage_fixture(name):
 
 HELPER_BOOTSTRAP_BRIDGE = _load_lineage_fixture('helper_bootstrap_bridge_20261003.json')
 CURRENT_HELPER_UPDATES = _load_lineage_fixture('helper_maintenance_updates_20261003.json')
+PAHT_TEST_UPDATES = _load_lineage_fixture('paht_test_updates_v0240.json')
 
 
 def _reviewed_bootstrap_hash(filename, expected):
@@ -97,6 +98,58 @@ def reviewed_current_test_hash(filename, expected):
         if filename == change['filename']:
             if expected != change['previous_sha256']:
                 raise AssertionError('Broken current helper maintenance provenance: ' + filename)
+            return change['sha256']
+    return expected
+
+
+def reviewed_paht_test_hash(filename, expected):
+    """Append only the reviewed v0.24 tail to its exact accepted predecessor.
+
+    The independent PAHT lineage test pins this ledger and its actual successor
+    bytes. Keeping that pin outside this helper avoids a self-reference cycle.
+    All earlier ledgers, fixture bytes and normalization guards remain intact.
+    """
+    ledger = PAHT_TEST_UPDATES
+    if (set(ledger) != {'schema_version', 'release', 'scope', 'review',
+                       'approved_test_updates', 'unchanged_fixture_sha256'}
+            or ledger['schema_version'] != 1 or ledger['release'] != '0.24.0'
+            or ledger['scope'] != 'paht_source_filter_and_test_lineage_only'
+            or ledger['review'] != {
+                'kind': 'current_paht_compatibility_review', 'review_date': '2026-10-03',
+                'baseline_commit': '828ca90a4a32f4744f0e18ea704965cc0ec7f56e',
+                'baseline_tree': '200dbdbf7aab4832aa3293aeec1c8e83ac18a9e9',
+                'baseline_file_count': 258, 'historical_review_claimed': False}):
+        raise AssertionError('Unexpected PAHT test review provenance')
+    predecessors = {
+        'tests/provenance_corrections.py': 'e5bf06ae239c9ea8f7db6d767aa6c35a00f88b85a07830858cbc499a9f4de5fe',
+        'tests/test_helper_lineage.py': 'b2af5a64ef777d1aa59e2ff763f7f1b07f7bebc69f541f344921c7f28e9d6ac4',
+        'tests/test_temperature_plot_preservation.py': '906da60f3065d901d6d618cdc439bb639beb422e5074e9f026b1a48cf557bc1a',
+        'tests/test_pa12_cf15_inspection.py': '7688ab79ec0ab39b00e28f406040363a1238b14c430f2ddd47fc5cdcc1f9f83a',
+        'tests/test_pa12_cf15_observations.py': '874539ebb135346d2eeecdc2bbb3cc52a95d9b308e0a91e7a8ebe73a22bf0e4f',
+    }
+    entries = ledger['approved_test_updates']
+    if (not isinstance(entries, list) or len(entries) != len(predecessors)
+            or any(not isinstance(e, dict) for e in entries)
+            or {e.get('filename') for e in entries} != set(predecessors)):
+        raise AssertionError('Unexpected PAHT historical file override')
+    for change in entries:
+        if (set(change) != {'filename', 'previous_sha256', 'sha256', 'reason', 'edits'}
+                or change['previous_sha256'] != predecessors[change['filename']]
+                or not isinstance(change['reason'], str) or not change['reason'].strip()
+                or not isinstance(change['sha256'], str) or len(change['sha256']) != 64
+                or any(c not in '0123456789abcdef' for c in change['sha256'])
+                or not isinstance(change['edits'], list) or not change['edits']):
+            raise AssertionError('Broken PAHT test entry: ' + change['filename'])
+        for edit in change['edits']:
+            if (not isinstance(edit, dict) or set(edit) != {'offset', 'before', 'after'}
+                    or type(edit['offset']) is not int or edit['offset'] < 0
+                    or not isinstance(edit['before'], str) or not isinstance(edit['after'], str)
+                    or edit['before'] == edit['after']):
+                raise AssertionError('Broken PAHT exact edit: ' + change['filename'])
+    for change in entries:
+        if filename == change['filename']:
+            if expected != change['previous_sha256']:
+                raise AssertionError('Broken PAHT test-update provenance: ' + filename)
             return change['sha256']
     return expected
 
@@ -243,4 +296,5 @@ def reviewed_test_hash(filename, expected):
         if change['previous_sha256'] != expected or not change['reason'].strip():
             raise AssertionError('Broken PA12 test-update provenance: ' + filename)
         expected = change['sha256']
-    return reviewed_current_test_hash(filename, expected)
+    expected = reviewed_current_test_hash(filename, expected)
+    return reviewed_paht_test_hash(filename, expected)

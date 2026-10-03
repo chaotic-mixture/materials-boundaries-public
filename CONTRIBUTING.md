@@ -423,3 +423,20 @@ leave historical scientific fixtures and examples intact. Test wide/narrow and
 320 px four-locale views and disclose actual static/browser QA boundaries.
 Machine-assisted locale checks are not scientific or native-language review.
 Keep article-specific attribution/adaptation/rights and exclusion notices.
+
+
+## PAHT-CF median/SD family (v0.24.0)
+
+The four Zach/Dudescu annealed ±45° source cells form their own closed family.
+Do not reuse the Ciganas central-value/±SD display for them. Preserve separate
+median and SD strings, contextual (not header-explicit) SD units, conditional SI
+SD scaling, n=5 without independence claims, preparation ambiguity, printed
+10 mm/s rate and unknown stress/geometry/moisture/specimen-temperature metadata.
+Aliases may replace display IDs/names; duplicate scientific source cells never
+become additional observations. A new condition or statistic needs a reviewed
+contract, not enum growth or borrowed protocol defaults. No new plot/ranking is
+admitted. Keep all previous fixtures and generated examples byte-identical.
+
+Run `test_paht_cf_observations.py`, `test_paht_inspection.py` and the new lineage
+and preservation checks, followed by the full production and disposable mixed
+suites and isolated wheel smoke. See [source guide](docs/PAHT_CF_ANNEALED_OBSERVATIONS.md).

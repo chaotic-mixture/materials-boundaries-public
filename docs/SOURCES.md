@@ -557,3 +557,8 @@ separate. Metadata/policy hashes are not publisher artifact byte hashes. No
 source PDF, figure, screenshot, HTML dump, raw measurement collection or excluded
 manufacturer Table 1 is redistributed; source rights and no-endorsement terms
 are unchanged. [Migration](MIGRATION_v0.23.0.md).
+
+
+## v0.24.0 addition: annealed PAHT-CF
+
+Four source-specific catalog-only medians and separate SD values from Zach and Dudescu (2025) are admitted, with contextual SD units and complete before-value caveats. The total is now 16 observations from five studies and 53 sources. The previous records and Ciganas plot remain unchanged. Quantity-only UTS inspection includes both studies; filter by source ID for one study. [Exact cells, provenance, rights and limits](PAHT_CF_ANNEALED_OBSERVATIONS.md) · [Migration](MIGRATION_v0.24.0.md)

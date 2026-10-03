@@ -444,3 +444,8 @@ Default/`--json` output remains a canonical `{schema_version, records}` envelope
 - Existing supported-family appendability remains available under each complete pre-existing scientific contract
 
 See [v0.23.0 migration](MIGRATION_v0.23.0.md), [v0.22.0 migration](MIGRATION_v0.22.0.md), [v0.19.0 migration](MIGRATION_v0.19.0.md), [v0.17.0 migration](MIGRATION_v0.17.0.md), [historical v0.7.0 migration](MIGRATION_v0.7.0.md), [source notes](SOURCES.md), [four-language terminology](TERMINOLOGY.md) and [visualization boundaries](VISUALIZATION.md).
+
+
+## v0.24.0 addition: annealed PAHT-CF
+
+Four source-specific catalog-only medians and separate SD values from Zach and Dudescu (2025) are admitted, with contextual SD units and complete before-value caveats. The total is now 16 observations from five studies and 53 sources. The previous records and Ciganas plot remain unchanged. Quantity-only UTS inspection includes both studies; filter by source ID for one study. [Exact cells, provenance, rights and limits](PAHT_CF_ANNEALED_OBSERVATIONS.md) · [Migration](MIGRATION_v0.24.0.md)
