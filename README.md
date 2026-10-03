@@ -1,6 +1,6 @@
 # 材料边界 · Materials Boundaries
 
-Current software release: **v0.25.0** · **Annealed PAHT-CF catalog observations** · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
+Current software release: **v0.25.0** · **Explicit two-study temperature comparison** · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
 
 A condition-aware, source-traceable materials-mechanics catalog and offline Python toolkit. It separates conditional mathematical bounds, model relations, published observations, computational predictions and synthetic demonstrations. Python 3.10+; no third-party runtime dependencies.
 
@@ -8,11 +8,13 @@ Repository: [chaotic-mixture/materials-boundaries-public](https://github.com/cha
 
 ## Public-release scope
 
-- **36 mechanics claims**, **52 source records**, **12 observations from four studies**, **12 published computational predictions in 2 scientific families and 3 explicit groups**, and **5 synthetic temperature demos with 7 branches**
+<!-- current-catalog-summary:start -->
+- **36 mechanics claims**, **53 source records**, **16 observations from 5 studies**, **12 published computational predictions in 2 scientific families and 3 explicit groups**, and **5 synthetic temperature demos with 7 branches**
 - Exactly **8 executable composite calculation rules**: HS/Reuss/Voigt bulk and shear bounds plus conservative derived Young's-modulus and Poisson-ratio envelopes
 - Other mechanics records, including bulk elastic waves, hydrostatic compressibility, directional Poisson ratio, anisotropy, fatigue, fracture, stability and porous relations, are catalog-only
-- The 52 sources comprise 51 bibliographic/source records plus one original synthetic-demo provenance record; a source record is not a redistribution of its publication or dataset
+- The 53 sources comprise 52 bibliographic/source records plus 1 original synthetic-demo provenance record; a source record is not a redistribution of its publication or dataset
 - All five temperature demos use intentionally invented coefficients and ranges. They do not describe real materials, measured properties or engineering allowables
+<!-- current-catalog-summary:end -->
 
 Version **0.25.0** adds one explicit `observation compare-temperature-studies --profile-id ciganas-zach-uts-temperature-v1` view. Both protocols and caveats come first; six Ciganas unspecified-central UTS summaries and four Zach reported medians remain separate, unconnected panels with always-visible SD columns. No uncertainty endpoints, matched-condition inference, pooling or ranking is added. Zach SD units remain contextual. No scientific records, old fixtures/examples, generic inspection or existing Ciganas plot policy change. [Two-study guide](docs/OBSERVATION_STUDY_COMPARISON.md) · [v0.25.0 migration](docs/MIGRATION_v0.25.0.md)
 
@@ -329,7 +331,7 @@ v0.2.0 将评价结果从 3 条扩展到 8 条；原有三个体积模量 claim 
 - `materials_boundaries/engine.py`：固定可执行规则表；不会执行输入或资料中的任意公式字符串
 - `docs/CATALOG.md`：只读目录检索、筛选、Python API 与录入检查表
 - `docs/BULK_ELASTIC_WAVES.md`：体弹性波速度、精确类别比值范围、声学张量归一化、严格强椭圆性及原创能量反例
-- `docs/OBSERVATION_INSPECTION.md`：四项研究 12 条观测的离线查阅、精确筛选及审计导出；不是匹配条件比较
+- `docs/OBSERVATION_INSPECTION.md`：当前观测目录的离线查阅、精确筛选及审计导出；不是匹配条件比较
 - `docs/PA12_CF15_TEMPERATURE_OBSERVATIONS.md`：六个试验箱温度条件下的三维拉伸强度、MPa／Pa、SD、方法与来源版本边界
 - `docs/OBSERVATION_TEMPERATURE_PLOT.md`：显式单数据集温度图、来源中心值／SD、数值轴、闭合验证与导出边界
 - `docs/MIGRATION_v0.23.0.md`：新绘图 schema 1.0.0；科学记录、通用查阅和八条规则保持不变
