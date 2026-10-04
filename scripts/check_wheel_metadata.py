@@ -793,6 +793,39 @@ wrong['records'][0]['engineering_allowable'] = True
 rejects(lambda: validate_material_catalog(materials, wrong, reference_sources),
         'installed material contract accepted an engineering allowable')
 
+
+# New evidence classes retain their exact method and dimensional meaning after
+# installation. Coverage is derived, never inflated by aliases or grade labels.
+new_reference_classes = {
+    'published_handbook_reference': ('source_reports_compiled_measurements', 'source_reported_compilation'),
+    'published_measurement_derived_reference': ('source_reports_calculation', 'source_reported_crystallographic_derivation'),
+}
+for evidence_kind, (basis, method) in new_reference_classes.items():
+    selected = query_catalog('reference-properties', evidence_kind=evidence_kind)
+    require(bool(selected['records']), 'missing installed expanded evidence class')
+    for prop in selected['records']:
+        require(prop['determination_basis'] == basis and prop['method_definition']['type'] == method,
+                'installed reference lost its source method')
+        if evidence_kind == 'published_measurement_derived_reference':
+            require(prop['quantity'] == 'mass_density' and prop['density_basis'] == 'crystallographic',
+                    'crystallographic density became bulk density')
+        altered = deepcopy(reference_properties)
+        target = next(item for item in altered['records'] if item['id'] == prop['id'])
+        target.update(evidence_kind='published_experimental_reference', determination_basis='source_reports_measurement')
+        rejects(lambda: validate_material_catalog(materials, altered, reference_sources),
+                'installed expanded provenance accepted direct-experiment relabel')
+    for language in languages:
+        labels = material_labels(language)
+        output = render_catalog(selected, 'reference-properties', language)
+        require(labels['code_' + evidence_kind] in output and labels['code_' + basis] in output,
+                'missing installed expanded provenance translation')
+        stdout = io.StringIO()
+        with redirect_stdout(stdout):
+            code = main(['catalog', 'reference-properties', '--evidence-kind', evidence_kind,
+                         '--lang', language, '--json'])
+        require(code == 0 and json.loads(stdout.getvalue()) == selected,
+                'expanded exact evidence filter changed by language')
+
 print(json.dumps({"version": expected, "metadata_version": metadata_version,
                   "engine_outputs": sorted(outputs), "languages": languages,
                   "installed_without_dependencies": True, "composite_report_languages": languages, "composite_report_schema": "1.0.0", "composite_exact_single_case_and_replay": True, "mixed_observation_catalog_languages": languages, "bulk_wave_catalog_languages": languages, "viscoelastic_catalog_languages": languages, "hbn_observation_languages": languages, "observation_inspection_languages": languages, "observation_inspection_schema": "1.1.0", "pa12_export_checks": export_checks, "pa12_scientific_mutations_rejected": len(mutations), "pa12_exact_selected_cells": len(expected_cells), "temperature_observation_plot_languages": languages, "temperature_observation_plot_schema": "1.0.0", "temperature_observation_plot_cells": len(plot_bundle["glyphs"]), "paht_exact_median_sd_cells": len(paht), "paht_four_language_inspection": True, "study_comparison_languages": languages, "study_comparison_schema": "1.0.0", "study_comparison_cells": 10}))

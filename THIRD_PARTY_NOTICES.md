@@ -318,3 +318,116 @@ study materials, including additives and process/porosity scope, not universal
 pure-ceramic constants. Manufacturer reference values are not recast as
 specimen-level experiments or engineering allowables. See the
 [material reference guide](docs/MATERIAL_REFERENCE_CATALOG.md).
+
+## Second material-reference batch (v0.30.0)
+
+Seven selected numerical facts are added with source identity, conditions,
+precise locators and original curation qualifications. Original numbers and unit
+strings are preserved; canonical lexical numbers remove supported digit grouping
+without numerical conversion. Handbook compilation and crystallographic
+measured-input derivation are explicit classifications, not assertions that
+these sources conducted direct specimen tests for every displayed value.
+No source PDF, full table, page image, screenshot, extracted prose, XML/HTML dump,
+figure or raw-data collection is redistributed. Project MIT licensing applies
+to original code and curation, not these publications, and implies no author,
+agency or publisher endorsement. Source-transcription review is not independent
+scientific peer review or blanket legal clearance.
+
+### Historical NBS silicon and germanium references
+
+- H. A. Bowman, R. M. Schoonover and C. L. Carroll (1975),
+  *Reevaluation of the Densities of the Four NBS Silicon Crystal Standards*,
+  NBSIR 75-768, August 1975, Final.
+  [DOI](https://doi.org/10.6028/NBS.IR.75-768) ·
+  [official PDF](https://nvlpubs.nist.gov/nistpubs/Legacy/IR/nbsir75-768.pdf).
+  The selected X2 new accepted density is in §7D, PDF p.19 / printed p.13
+- Horace A. Bowman, Randall M. Schoonover and C. Leon Carroll (1974),
+  *A Density Scale Based on Solid Objects*, Journal of Research of the National
+  Bureau of Standards 78A(1), 13–40.
+  [DOI](https://doi.org/10.6028/jres.078A.004) ·
+  [inspected article text](https://pmc.ncbi.nlm.nih.gov/articles/PMC6728515/).
+  This companion supports crystal identity, preparation and the 20 °C reference
+  basis, linked to the same objects by the 1975 correction report. Its
+  superseded numerical density is not selected; no retained-byte hash for this
+  companion is claimed
+- Howard E. Swanson and Eleanor Tatge (1953),
+  *Standard X-ray Diffraction Powder Patterns, Volume I*, NBS Circular 539.
+  [DOI](https://doi.org/10.6028/NBS.CIRC.539v1) ·
+  [official PDF](https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf).
+  The selected NBS lattice-derived density of Johnson Matthey germanium source
+  number 4065 appears in §2.6, PDF pp.22–23 / printed pp.18–19, with the unit
+  definition on PDF p.6 / printed p.2. Third-party comparison diffraction
+  patterns/tables are excluded
+
+The authors' NBS affiliations and selected-content provenance support the
+[NIST Technical Series rights notice](https://www.nist.gov/open/copyright-fair-use-and-licensing-statements-srd-data-software-and-technical-series-publications),
+inspected on 4 October 2026. Its employee-authored-work scope addresses domestic
+public-domain status and worldwide republication/distribution/derivative-work
+permission where NIST can assert foreign rights. This is not a made-up CC license
+or a claim that everything on a government website is unrestricted; credited
+third-party exceptions remain excluded.
+
+Republished courtesy of the National Institute of Standards and Technology.
+
+### USDA/FPL compiled wood references and identity support
+
+David E. Kretschmann (2010),
+[“Mechanical Properties of Wood,” Chapter 5](https://research.fs.usda.gov/download/treesearch/37427.pdf),
+in *Wood Handbook—Wood as an Engineering Material*, Centennial edition,
+General Technical Report FPL-GTR-190, USDA Forest Service, Forest Products
+Laboratory; [official publication record](https://research.fs.usda.gov/treesearch/37427).
+The inspected copy carries a 2018 erratum note on p.5–26, retained as revision
+metadata. Selected Table 5–3a facts are Sugar maple 12,600 MPa and Northern red
+oak 12,500 MPa on p.5–5, and Sitka spruce 10,800 MPa on p.5–8, each on the
+source's 12% moisture-content basis. The selected cells have no third-party
+credit line. They are compiled species averages with shear-inclusive bending
+scope, not claimed original 2010 experiments or project-recalculated values.
+
+Botanical identity support is limited to official *Silvics of North America*
+species pages for [sugar maple](https://research.fs.usda.gov/silvics/sugar-maple),
+[northern red oak](https://research.fs.usda.gov/silvics/northern-red-oak) and
+[Sitka spruce](https://research.fs.usda.gov/silvics/sitka-spruce).
+The opening paragraph of the
+[2021 handbook Chapter 3](https://research.fs.usda.gov/download/treesearch/62242.pdf),
+p.3–1, supplies biological-composite category context only; it does not replace
+the 2010 numerical source.
+
+The government-author byline, official FPL record and
+[USDA Forest Service Authors Guide](https://research.fs.usda.gov/sites/default/files/2024-05/srs-SRS-AuthorsGuide-2024.pdf),
+PDF p.5 / printed p.3, support the scoped government-authored factual reuse
+rationale, inspected on 4 October 2026. Retain source attribution. This is not
+blanket worldwide CC0 licensing. External assets, photographs, logos and
+credited third-party material are not included or relicensed. Only the selected
+facts and limited identity/category metadata are curated; no source assets or
+complete handbook tables are included.
+
+### Two article-authored experimental density results
+
+- Lucyna Domagała, Maria Margańska and Marek Miazgowicz (2024),
+  [“Moisture Impact on Static and Dynamic Modulus of Elasticity in Structural Normal-Weight Concretes”](https://doi.org/10.3390/ma17153722),
+  *Materials* 17(15), 3722. Copyright ©2024 by the authors; MDPI is licensee.
+  The [inspected XML](https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11313055/fullTextXML)
+  front/article-meta/permissions block explicitly identifies
+  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+  Selected Table 3, NC1/D_w, is article-authored and has no separate third-party
+  credit line. The value 2330 kg/m³ is transcribed unchanged; original project
+  qualifications preserve saturated state, nominal age, three-cylinder mean,
+  unknown density-test temperature and non-SD deviation wording. The recorded
+  numerical-source digest belongs to XML, not publisher HTML/PDF
+- Azemeraw Wubalem, Chiara Caselle, Battista Taboni and Gessica Umili (2025),
+  [“Effects of Rock Texture on Digital Image Correlation”](https://doi.org/10.3390/geosciences15040145),
+  *Geosciences* 15(4), 145. Copyright ©2025 by the authors; MDPI is licensee.
+  [Inspected PDF](https://www.mdpi.com/2076-3263/15/4/145/pdf), p.1, explicitly
+  identifies [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+  Table 2's specimen-13 bulk density, 2760 kg/m³, is article-authored and has no
+  separate third-party credit line. The numerical transcription is unchanged;
+  original project qualifications retain one-specimen scope, unknown method,
+  moisture/temperature and uncertainty, plus source group-SD/geometry
+  discrepancies. No group statistic is assigned to this specimen
+
+Both article-specific notices were inspected on 4 October 2026. Attribution,
+article/DOI links, license links and the description of added curation above
+identify the limited adaptation. Those licenses are not automatically extended
+to separately credited material or any unrelated source asset. No author or
+publisher endorsement is implied. See the
+[scientific scope and exact locators](docs/MATERIAL_COVERAGE_v0.30.0.md).

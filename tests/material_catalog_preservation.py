@@ -7,6 +7,7 @@ from copy import deepcopy
 import hashlib
 import json
 from pathlib import Path
+from material_batch_preservation import pre_material_batch_bytes
 import re
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -172,7 +173,10 @@ def pre_material_bytes(filename, current, *, ledger=None):
         raise AssertionError('Unknown material predecessor file')
     if digest(current) == ledger['baseline_sha256'][filename]:
         return current
-    if filename == 'README.md':
+    accepted = entries[filename]['sha256'] if filename in entries else ledger['baseline_sha256'][filename]
+    if digest(current) != accepted:
+        current = pre_material_batch_bytes(filename, current, allow_historical_summary=True)
+    if filename == 'README.md' and digest(current) != accepted:
         current, _ = _truthful_readme(current, ledger, allow_historical_summary=True)
     if filename not in entries:
         raise AssertionError('Unreviewed unchanged material predecessor: ' + filename)

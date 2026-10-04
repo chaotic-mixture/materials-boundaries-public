@@ -144,3 +144,108 @@ outside the package. See [third-party notices](../THIRD_PARTY_NOTICES.md).
 Old scientific records and historical fixtures must remain unchanged. Source
 inspection and factual transcription review do not upgrade
 `independent_scientific_review` or claim raw-data reanalysis.
+
+## v0.30.0 second material batch
+
+The [v0.30.0 coverage](MATERIAL_COVERAGE_v0.30.0.md) adds seven distinct
+source-scoped identities and keeps the v0.29.0 discussion above as the initial
+release history. The additions use the same identity/grade/state/property graph,
+closed fields, source-preserving display and catalog-only safeguards.
+
+### Compilation and measured-input derivation
+
+`published_handbook_reference` with
+`determination_basis: source_reports_compiled_measurements` identifies a
+published handbook or analogous explicit compilation of empirical results.
+Its required method type, `source_reported_compilation`, explains the compilation
+and the selected property's method/reference-condition scope using source
+evidence. Compilation can include aggregation, source-side unit conversion and
+reference-condition adjustment; it is not a claim of new experimentation at
+publication or direct testing at every stated condition.
+
+`published_measurement_derived_reference` with
+`determination_basis: source_reports_calculation` separates properties explicitly
+derived from measured inputs from direct measured properties and purely
+computational predictions. The v0.30.0 supported combination is deliberately
+limited to `mass_density`, `density_basis: crystallographic` and
+`method_definition.type: source_reported_crystallographic_derivation`.
+The definition and evidence explain the measured unit-cell inputs, adopted cell
+content/atomic masses and the source's derivation. This gate is generic by
+physical method, not by material ID. Other measured-input-derived methods need
+an explicit reviewed contract before admission.
+
+`crystallographic` density is distinct from `bulk`, `apparent`, powder packing
+and a silently inferred `true` density. An experimental calibration correction
+or ordinary data reduction does not alone require this derived class: the
+historical silicon recalibration remains `published_experimental_reference`
+with `source_reports_measurement` and `source_reported_conventional`.
+The method-definition object still has only its existing keys. These new enums
+do not unlock calculation, mixing, interpolation or evaluator use.
+
+Examples of the new exact evidence filters:
+
+```sh
+python -m materials_boundaries catalog materials --evidence-kind published_handbook_reference --text --lang en
+python -m materials_boundaries catalog reference-properties --evidence-kind published_measurement_derived_reference --text --lang de
+```
+
+Source lexical fidelity also permits ASCII spaces between fractional digit
+groups in a decimal-point token: `2.329 1289` retains that `value_text`, while
+`number` is `2.3291289`. The first fractional group has three digits, any
+intermediate groups have three, and the final group has one to four; each
+separation is exactly one ASCII space. Matching preserves every digit and decimal
+place; it is not arbitrary whitespace removal, arithmetic parsing or permission
+to discard trailing zeroes. Existing integer thousands-grouping syntax stays separate.
+The unit spelling `grams per cubic centimeter` maps to `g/cm^3` without changing
+the number or original unit string.
+
+### Conditions belong to the selected result
+
+- Historical NBS silicon crystal X2 uses the corrected 1975 assigned value.
+  The direct 20 °C reference statement is in the 1974 companion; the 1975
+  introduction and §7 connect the same crystals to correction-only
+  recalculation. The chain establishes a reference basis, not a claim that the
+  1975 value table prints 20 °C or every determination occurred at 20 °C. X2 is
+  one physical crystal; repeated determinations are not additional specimens.
+  The value is not current certification, and old uncertainty is not carried
+  into the revised value
+- Germanium source number 4065 has a 25 °C crystallographic density derived
+  from measured powder-XRD lattice data. The diffraction-pattern temperature
+  of 26 °C has a different role. The identifier is not proven to be a batch,
+  stock code, unique specimen or grade; physical-specimen count is unknown.
+  It is neither weighed bulk density, powder packing density nor a DFT result
+- Sugar maple, northern red oak and Sitka spruce are species-average handbook
+  flexural references on a common 12% moisture basis. Some dry data were
+  adjusted by the source; direct-versus-adjusted history for each cell is
+  unknown. The simply supported center-loaded beam has span/depth 14:1, and
+  the reported longitudinal bending modulus includes shear deflection. No
+  approximate 10% correction is applied. This is not an axial or isotropic
+  Young's modulus. ASTM D 143 is a source-stated procedural basis, without a
+  cell-specific edition/compliance claim. The generic 22% green-wood
+  coefficient of variation is not these cells' SD or uncertainty
+- NC1 concrete is the study's nominal 28-day water-saturated formulation,
+  with a reported mean over three cylinders. Its 20 °C curing/storage
+  condition is not a density-test temperature. Preserve the source's nominal
+  age despite the demolding/storage chronology ambiguity; do not repair it to
+  29 days. CEM I 42.5 R identifies a cement constituent, not a concrete grade.
+  The maximum individual deviation statement is not SD or uncertainty
+- Carrara marble's bulk density belongs to disk specimen 13, not a pooled
+  group mean. Density procedure, instrument, temperature, moisture and
+  uncertainty remain unknown. Tabulated mass/dimensions do not establish a
+  geometric method; dry/environmental-temperature wording concerns P-wave
+  testing. The source's group-SD reversal and unselected group-geometry
+  conflict are recorded without assigning either group SD to this specimen
+
+All numerical-source hashes refer to the actual inspected asset. In particular,
+NC1's selected-value digest identifies Europe PMC XML, not publisher HTML/PDF.
+The 1974 silicon companion has inspected web-text support but no retained-byte
+hash; no checksum is invented. Recorded hashes require a null `hash_note`;
+revision/erratum information belongs in revision or inspection scope.
+
+Only selected facts, precise citations and original qualifications are included.
+NIST/NBS Technical Series, scoped USDA government-authored content and two
+article-specific CC BY 4.0 sources retain their distinct rights evidence in the
+[third-party supplement](../THIRD_PARTY_NOTICES.md#second-material-reference-batch-v0300).
+The independent check was source-transcription review, not independent
+scientific peer review or raw-data reanalysis. Optional GaAs remains excluded
+behind its indentation-specific quantity/method gate.

@@ -704,7 +704,9 @@
             "manufacturer_reference",
             "technical_association_reference",
             "published_experimental_reference",
-            "published_computational_reference"
+            "published_computational_reference",
+            "published_handbook_reference",
+            "published_measurement_derived_reference"
           ]
         },
         "reporting_basis": {
@@ -723,6 +725,7 @@
           "enum": [
             "source_reports_measurement",
             "source_reports_calculation",
+            "source_reports_compiled_measurements",
             "not_stated",
             "mixed_or_unclear"
           ]
@@ -794,6 +797,7 @@
                 "apparent",
                 "bulk",
                 "true",
+                "crystallographic",
                 "not_stated"
               ]
             },
@@ -841,7 +845,12 @@
           "additionalProperties": false,
           "properties": {
             "type": {
-              "const": "source_reported_conventional"
+              "type": "string",
+              "enum": [
+                "source_reported_conventional",
+                "source_reported_compilation",
+                "source_reported_crystallographic_derivation"
+              ]
             },
             "definition": {
               "type": "string",

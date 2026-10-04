@@ -7,6 +7,7 @@ from pathlib import Path
 import unittest
 
 import material_catalog_preservation as history
+from material_batch_preservation import pre_material_batch_bytes
 from materials_boundaries.catalog import read_catalog
 from materials_boundaries.engine import BASE_RULES, DERIVED_RULES
 from materials_boundaries.material_references import material_coverage, validate_material_catalog
@@ -34,7 +35,7 @@ class MaterialCatalogPreservationTests(unittest.TestCase):
         for filename, digest in [(history.LEDGER_PATH, LEDGER_SHA256),
                                  ('tests/material_catalog_preservation.py', HELPER_SHA256),
                                  ('tests/fixtures/material_catalog_admission_v0290.json', ADMISSION_SHA256)]:
-            self.assertEqual(history.digest((ROOT / filename).read_bytes()), digest)
+            self.assertEqual(history.digest(pre_material_batch_bytes(filename, (ROOT / filename).read_bytes())), digest)
         ledger = history.load_ledger()
         history.validate_ledger(ledger)
         self.assertEqual(ledger['baseline_commit'], history.BASELINE_COMMIT)
@@ -47,7 +48,7 @@ class MaterialCatalogPreservationTests(unittest.TestCase):
         for filename, expected in ledger['baseline_sha256'].items():
             if filename.startswith('materials_boundaries/data/'):
                 continue
-            actual = (ROOT / filename).read_bytes()
+            actual = pre_material_batch_bytes(filename, (ROOT / filename).read_bytes())
             with self.subTest(filename=filename):
                 before = history.pre_material_bytes(filename, actual)
                 self.assertEqual(history.digest(before), expected)
@@ -59,8 +60,8 @@ class MaterialCatalogPreservationTests(unittest.TestCase):
     def test_successors_round_trip_and_arbitrary_bytes_fail(self):
         ledger = history.load_ledger()
         for entry in ledger['approved_existing_updates']:
-            actual = (ROOT / entry['filename']).read_bytes()
-            if entry['filename'] == 'README.md':
+            actual = pre_material_batch_bytes(entry['filename'], (ROOT / entry['filename']).read_bytes())
+            if entry['filename'] == 'README.md' and history.digest(actual) != entry['sha256']:
                 actual, _ = history._truthful_readme(actual, ledger)
             before = history.reverse_exact_edits(actual, entry)
             self.assertEqual(history.apply_exact_edits(before, entry['edits']), actual)

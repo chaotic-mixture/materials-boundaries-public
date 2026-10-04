@@ -3687,6 +3687,1419 @@
         "independent_scientific_review": false,
         "raw_data_reanalysis": false
       }
+    },
+    {
+      "id": "refprop_nbs_silicon_x2_1975_mass_density",
+      "version": "1.0.0",
+      "material_state_id": "state_nbs_silicon_x2_1975",
+      "quantity": "mass_density",
+      "quantity_dimension": "mass_per_volume",
+      "source_property_label": "New Accepted Value",
+      "reported_value": {
+        "kind": "scalar",
+        "value_text": "2.329 1289",
+        "unit_text": "g/cm³",
+        "unit_code": "g/cm^3",
+        "number": "2.3291289"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Revised historical calibration value from mass/interferometry/hydrostatic comparison measurements. Recalculation corrects the 1974 experimental determination; not a first-principles prediction.",
+      "conditions": {
+        "temperature": {
+          "status": "reported",
+          "text": "20 °C reference temperature, inherited from the 1974 reduction and retained in the 1975 recalculation",
+          "evidence": [
+            {
+              "source_id": "bowman_schoonover_carroll_1974_density_scale",
+              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6728515/",
+              "locator": "§2.5.3 (ratios reduced to 20 °C), §2.6 (crystal volumes and densities), Table 6",
+              "supports": [
+                "condition"
+              ]
+            },
+            {
+              "source_id": "bowman_schoonover_carroll_1975_nbsir75_768",
+              "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/IR/nbsir75-768.pdf",
+              "locator": "PDF p.7 / printed p.1, Introduction items a–d, and PDF pp.18–19 / printed pp.12–13, §7: link to previously determined crystal volumes and correction-only recalculation; direct temperature statement is in the 1974 companion",
+              "supports": [
+                "condition",
+                "method"
+              ]
+            }
+          ],
+          "notes": "Direct 20 °C statement comes from the 1974 paper; 1975 §§1 and 7 establish the same crystals and correction-only recalculation but do not independently restate temperature. Cite both roles; do not claim all measurements occurred at 20 °C."
+        },
+        "test_standard": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": null
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Mass measurement; hydrostatic volume comparison against steel spheres whose volumes came from interferometric diameters; 1975 corrections",
+          "evidence": [
+            {
+              "source_id": "bowman_schoonover_carroll_1975_nbsir75_768",
+              "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/IR/nbsir75-768.pdf",
+              "locator": "PDF p. 7 / printed p. 1, Introduction items a–d; PDF pp. 18–19 / printed pp. 12–13, §7",
+              "supports": [
+                "method",
+                "classification",
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "direction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": null
+        },
+        "conditioning": {
+          "status": "reported",
+          "text": "Boiled in water for several hours, then steamed in a vapor degreaser for about one day",
+          "evidence": [
+            {
+              "source_id": "bowman_schoonover_carroll_1975_nbsir75_768",
+              "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/IR/nbsir75-768.pdf",
+              "locator": "PDF p. 16 / printed p. 10, §6 Oxide Growth, first paragraph",
+              "supports": [
+                "condition",
+                "state"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "loading_rate": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": null
+        }
+      },
+      "density_basis": "not_stated",
+      "summary_statistic": "reported_value",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "No revised numerical density uncertainty is assigned in the 1975 report. Do not attach the superseded 1974 random/systematic estimates to the revised value without an explicit justification.",
+      "sample_count": {
+        "value": 1,
+        "relation": "exact",
+        "scope": "One selected crystal, X2. Four crystals belong to the original study; three measurement determinations per crystal are repeats, not three specimens.",
+        "source_statement": "The 1975 X2 row identifies one crystal. The 1974 study describes four individually named crystals and three determinations per crystal.",
+        "evidence": [
+          {
+            "source_id": "bowman_schoonover_carroll_1975_nbsir75_768",
+            "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/IR/nbsir75-768.pdf",
+            "locator": "PDF p. 19 / printed p. 13, §7D, separately identified X2 row",
+            "supports": [
+              "sample_count"
+            ]
+          },
+          {
+            "source_id": "bowman_schoonover_carroll_1974_density_scale",
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6728515/",
+            "locator": "§§2.1–2.2, material and crystal sizes; §2.6, three determinations per crystal",
+            "supports": [
+              "material_identity",
+              "state",
+              "sample_count"
+            ]
+          }
+        ]
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Historical assigned specimen density obtained from measured mass divided by hydrostatically transferred volume, incorporating source-reported calibration corrections.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "bowman_schoonover_carroll_1975_nbsir75_768",
+            "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/IR/nbsir75-768.pdf",
+            "locator": "PDF p. 7 / printed p. 1, Introduction items a–d; PDF pp. 18–19 / printed pp. 12–13, §7",
+            "supports": [
+              "method",
+              "classification",
+              "condition"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Report data sheet (PDF p. 41) summarizes the correction as about 1.7 ppm; main abstract says about 1.88 ppm and §7D gives 1.878 ppm. X2 numerical density agrees at all three locations.",
+          "disposition": "Use the exact X2 value, not the inconsistent rounded prose correction.",
+          "evidence": [
+            {
+              "source_id": "bowman_schoonover_carroll_1975_nbsir75_768",
+              "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/IR/nbsir75-768.pdf",
+              "locator": "PDF pp. 5, 19 and 41",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "bowman_schoonover_carroll_1975_nbsir75_768",
+      "evidence": [
+        {
+          "source_id": "bowman_schoonover_carroll_1975_nbsir75_768",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/IR/nbsir75-768.pdf",
+          "locator": "PDF p. 19 / printed p. 13, §7D, X2 row, New Accepted Value; independently repeated in abstract, PDF p. 5",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "bowman_schoonover_carroll_1975_nbsir75_768",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/IR/nbsir75-768.pdf",
+          "locator": "PDF p. 7 / printed p. 1, Introduction items a–d; PDF pp. 18–19 / printed pp. 12–13, §7",
+          "supports": [
+            "method",
+            "classification",
+            "condition"
+          ]
+        },
+        {
+          "source_id": "bowman_schoonover_carroll_1974_density_scale",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6728515/",
+          "locator": "§§2.1–2.2, material and crystal sizes; §2.6, three determinations per crystal",
+          "supports": [
+            "material_identity",
+            "state",
+            "sample_count"
+          ]
+        }
+      ],
+      "source_document": {
+        "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/IR/nbsir75-768.pdf",
+        "revision": "NBSIR 75-768, August 1975, Final",
+        "inspected_on": "2026-10-04",
+        "sha256": "667ea8e78816c8f3a981bd78c7ef65357d09919316278beb8d7368ac18148a84",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Independent selected-source readback: 1975 PDF pp.5,7,16,18–19,41 freshly text-extracted; p.19 visually read; retained SHA-256 rechecked. 1974 companion §§2.1–2.2,2.5.3,2.6/Table6 freshly read in primary-hosted web text; no retained companion byte hash. Source transcription review, no raw-data reanalysis or independent scientific validation.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "scope_note": "Only crystal X2 in the 1975 state. This is not a current certified standard or a universal silicon value. Dopant species/concentration, quantitative purity, crystallographic orientation, and polymorph are not established by the inspected sources. The generic observation that lightly doped transistor grades are adequate does not prove X2 doping.",
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Independent selected-source readback: 1975 PDF pp.5,7,16,18–19,41 freshly text-extracted; p.19 visually read; retained SHA-256 rechecked. 1974 companion §§2.1–2.2,2.5.3,2.6/Table6 freshly read in primary-hosted web text; no retained companion byte hash. Source transcription review, no raw-data reanalysis or independent scientific validation.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      }
+    },
+    {
+      "id": "refprop_nbs_ge4065_crystallographic_density",
+      "version": "1.0.0",
+      "material_state_id": "state_nbs_ge4065_xrd_1953",
+      "quantity": "mass_density",
+      "quantity_dimension": "mass_per_volume",
+      "source_property_label": "density, based on the NBS lattice constant",
+      "reported_value": {
+        "kind": "scalar",
+        "value_text": "5.325",
+        "unit_text": "grams per cubic centimeter",
+        "unit_code": "g/cm^3",
+        "number": "5.325"
+      },
+      "evidence_kind": "published_measurement_derived_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_calculation",
+      "basis_note": "Authors calculated crystallographic density from an experimentally measured powder-XRD lattice constant and the adopted diamond-type unit cell. The reported value belongs to the crystalline phase represented by Johnson Matthey source-number 4065. It is not directly weighed bulk density, powder packing density, a DFT prediction, or a hypothetical material.",
+      "conditions": {
+        "temperature": {
+          "status": "reported",
+          "text": "25 °C",
+          "evidence": [
+            {
+              "source_id": "swanson_tatge_1953_nbs_circ539v1",
+              "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+              "locator": "Printed p. 19 / PDF p. 23, §2.6 density paragraph immediately above Table 7; units defined in Introduction, printed p. 2 / PDF p. 6",
+              "supports": [
+                "reported_value",
+                "classification",
+                "method",
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Density reference temperature; Table 7 diffraction pattern was measured at 26 °C. Source discusses temperature conversion using 5.92 × 10^-6 linear expansion coefficient."
+        },
+        "test_standard": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": null
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Crystallographic density from NBS powder-XRD unit-cell measurement",
+          "evidence": [
+            {
+              "source_id": "swanson_tatge_1953_nbs_circ539v1",
+              "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+              "locator": "Printed pp. 1–2 / PDF pp. 5–6, Introduction; printed p. 19 / PDF p. 23, §2.6 and Table 7",
+              "supports": [
+                "method",
+                "classification",
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "direction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": null
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": null
+        },
+        "loading_rate": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": null
+        },
+        "additional_conditions": [
+          {
+            "name": "density_derivation",
+            "fact": {
+              "status": "reported",
+              "text": "Density calculated by authors from measured cubic lattice constant 5.6576 Å; diamond-type cell with eight atoms",
+              "evidence": [
+                {
+                  "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                  "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                  "locator": "Printed pp. 1–2 / PDF pp. 5–6, Introduction; printed p. 19 / PDF p. 23, §2.6 and Table 7",
+                  "supports": [
+                    "method",
+                    "classification",
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": null
+            }
+          },
+          {
+            "name": "xrd_measurement",
+            "fact": {
+              "status": "reported",
+              "text": "Geiger-counter X-ray spectrometer; Cu Kα 1.5405 Å; tungsten internal standard; Table 7 measured at 26 °C",
+              "evidence": [
+                {
+                  "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                  "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                  "locator": "Printed pp. 1–2 / PDF pp. 5–6, Introduction; printed p. 19 / PDF p. 23, §2.6 and Table 7",
+                  "supports": [
+                    "method",
+                    "classification",
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": null
+            }
+          }
+        ]
+      },
+      "density_basis": "crystallographic",
+      "summary_statistic": "reported_value",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "No density-specific numerical uncertainty. Do not propagate the Introduction’s lattice-error statement or atomic-weight discussion into an invented density error.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Selected Johnson Matthey source-number 4065 crystallographic-density result.",
+        "source_statement": "The material is labeled source number 4065; the identifier type and the numbers of independent physical specimens and repeat measurements are not stated.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_crystallographic_derivation",
+        "definition": "Source-reported crystallographic density derived from the experimentally measured powder-XRD lattice constant, reduced to a = 5.6576 Å at 25 °C, and the adopted cubic diamond-type cell containing eight Ge atoms. The identified crystallographic relation is unit-cell mass divided by unit-cell volume a³, with cell mass determined by cell content and adopted atomic mass. The source reports 5.325; no new density or uncertainty is computed here. This is neither directly weighed specimen density nor bulk or apparent powder packing density.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "swanson_tatge_1953_nbs_circ539v1",
+            "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+            "locator": "Printed pp. 1–2 / PDF pp. 5–6, Introduction; printed p. 19 / PDF p. 23, §2.6 and Table 7",
+            "supports": [
+              "method",
+              "classification",
+              "condition"
+            ]
+          },
+          {
+            "source_id": "swanson_tatge_1953_nbs_circ539v1",
+            "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+            "locator": "Printed p. 19 / PDF p. 23, §2.6 density paragraph immediately above Table 7; units defined in Introduction, printed p. 2 / PDF p. 6",
+            "supports": [
+              "reported_value",
+              "classification",
+              "method",
+              "condition"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [],
+      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+      "evidence": [
+        {
+          "source_id": "swanson_tatge_1953_nbs_circ539v1",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+          "locator": "Printed p. 19 / PDF p. 23, §2.6 density paragraph immediately above Table 7; units defined in Introduction, printed p. 2 / PDF p. 6",
+          "supports": [
+            "reported_value",
+            "classification",
+            "method",
+            "condition"
+          ]
+        },
+        {
+          "source_id": "swanson_tatge_1953_nbs_circ539v1",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+          "locator": "Printed pp. 18–19 / PDF pp. 22–23, §2.6 Germanium (Cubic), specimen provenance and structure",
+          "supports": [
+            "material_identity",
+            "state"
+          ]
+        },
+        {
+          "source_id": "swanson_tatge_1953_nbs_circ539v1",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+          "locator": "Printed pp. 1–2 / PDF pp. 5–6, Introduction; printed p. 19 / PDF p. 23, §2.6 and Table 7",
+          "supports": [
+            "method",
+            "classification",
+            "condition"
+          ]
+        }
+      ],
+      "source_document": {
+        "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+        "revision": "NBS Circular 539, Volume I, 1953",
+        "inspected_on": "2026-10-04",
+        "sha256": "003b872fbe7d403d38bbd1d752568ee92a96bdb010b6e381bdc82566929e2a6c",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Independent selected-source readback: original 1953 PDF pp.5–6,22–23 freshly text-extracted; p.23 visually read; retained source SHA-256 rechecked. Identity, source-number 4065, faint impurity list, diamond cell, 25 °C derived density, 26 °C XRD pattern and source-spelled density unit confirmed. Source transcription review only.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "scope_note": "Johnson, Matthey & Co., Ltd. source number 4065, cubic diamond-type Ge. The source does not establish whether 4065 is a supplier stock number, batch number or unique physical-specimen identifier. Trace Ag/Cu/Na/Fe are reported; deliberate doping and quantitative purity are unstated. Density describes the crystallographic phase, not bulk or loose-powder packing density. Crystallite size, porosity, Ge-specific prior processing, independent physical-specimen count and repeat count remain unknown. No universal value or commercial grade is asserted.",
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Independent selected-source readback: original 1953 PDF pp.5–6,22–23 freshly text-extracted; p.23 visually read; retained source SHA-256 rechecked. Identity, source-number 4065, faint impurity list, diamond cell, 25 °C derived density, 26 °C XRD pattern and source-spelled density unit confirmed. Source transcription review only.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      }
+    },
+    {
+      "id": "refprop_usda2010_sugar_maple_mc12_flexural_modulus",
+      "version": "1.0.0",
+      "material_state_id": "state_usda2010_sugar_maple_clear_mc12",
+      "quantity": "flexural_modulus",
+      "quantity_dimension": "pressure",
+      "source_property_label": "Static bending — Modulus of elasticity",
+      "reported_value": {
+        "kind": "scalar",
+        "value_text": "12,600",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "number": "12600"
+      },
+      "evidence_kind": "published_handbook_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_compiled_measurements",
+      "basis_note": "Government handbook compilation of experimental species-average data. Table 5–3a gives metric-converted values from Table 5–3b. The 2010 publication is not represented as an original experiment. Source calls values averages and estimates of average clear-wood properties (p. 5–21).",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No temperature is assigned to the selected Table 5–3a cells. The 23 °C passage on p. 5–21 concerns internal friction, and room-temperature figure captions on p. 5–38 concern separate heating experiments; neither is transferred."
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "ASTM D 143; the source says the table’s test methods are based on its standard procedures",
+          "evidence": [
+            {
+              "source_id": "usda_fpl_gtr190_2010_ch05",
+              "url": "https://research.fs.usda.gov/download/treesearch/37427.pdf",
+              "locator": "PDF p. 25, printed p. 5–25, right column, paragraph beginning Mechanical and physical properties",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "No cell-specific edition or compliance certificate is asserted. Additional References p.5–44 lists ASTM [Current edition] and D143–94; that bibliographic wording does not establish the edition used for each historical test."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Simply supported, center-loaded static bending beam; span/depth ratio 14:1",
+          "evidence": [
+            {
+              "source_id": "usda_fpl_gtr190_2010_ch05",
+              "url": "https://research.fs.usda.gov/download/treesearch/37427.pdf",
+              "locator": "PDF p. 8, printed p. 5–8, Table 5–3a footnote c",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "direction": {
+          "status": "reported",
+          "text": "Longitudinal E_L (parallel to grain), determined from bending",
+          "evidence": [
+            {
+              "source_id": "usda_fpl_gtr190_2010_ch05",
+              "url": "https://research.fs.usda.gov/download/treesearch/37427.pdf",
+              "locator": "PDF p. 2, printed p. 5–2, Modulus of Elasticity, and p. 1, Orthotropic Nature of Wood",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "This is the direction represented by the bending-derived modulus, not a claim that the transverse point load acts along the grain. Radial-versus-tangential loading plane is not established for each cell."
+        },
+        "conditioning": {
+          "status": "reported",
+          "text": "12% moisture-content basis; clear, straight-grained, air-dried wood",
+          "evidence": [
+            {
+              "source_id": "usda_fpl_gtr190_2010_ch05",
+              "url": "https://research.fs.usda.gov/download/treesearch/37427.pdf",
+              "locator": "PDF p. 5, printed p. 5–5, Table 5–3a (metric), Maple / Sugar, 12% moisture-content row, Static bending / Modulus of elasticity (MPa) column",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Table 5–3a footnote a identifies air-dried specimens. P.5–25 says many dry test values were adjusted to 12%; exact conditioning duration, humidity, schedule and cell-specific direct-versus-adjusted status are unknown."
+        },
+        "loading_rate": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "P.5–38 says static strength tests typically attain maximum load in about 5 minutes. This is general context, not a cell-specific crosshead speed, strain rate or modulus extraction timing; no exact rate is assigned."
+        }
+      },
+      "density_basis": null,
+      "summary_statistic": "reported_mean",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "No numerical uncertainty or distribution is reported for this species/condition/value. Table 5–6 p.5–26 reports an average 22% coefficient of variation for static-bending modulus based on green wood from about 50 species; this is neither this species’ SD nor uncertainty of this 12%-moisture mean and is deliberately not assigned.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Selected species 12%-moisture static-bending modulus estimate.",
+        "source_statement": "The selected table row and applicable notes do not give its number of specimens, trees or replicate measurements. The approximately 50 species in Table 5–6 is a different population and not a specimen count.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_compilation",
+        "definition": "Handbook compilation of previously measured species-average longitudinal static-bending moduli, reported as metric conversions of Table 5–3b and potentially adjusted to a 12% moisture reference basis. Source-reported longitudinal modulus of elasticity determined by static bending of a simply supported, center-loaded clear-wood beam, span/depth ratio 14:1. The tabulated value includes shear deflection; no 10% correction is applied. It is classified here as flexural_modulus, not an axial Young’s modulus. Cell-specific original test dates and direct-versus-adjusted history are unreported; the handbook publication is not a new experiment.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "usda_fpl_gtr190_2010_ch05",
+            "url": "https://research.fs.usda.gov/download/treesearch/37427.pdf",
+            "locator": "PDF p. 8, printed p. 5–8, Table 5–3a footnote c",
+            "supports": [
+              "method"
+            ]
+          },
+          {
+            "source_id": "usda_fpl_gtr190_2010_ch05",
+            "url": "https://research.fs.usda.gov/download/treesearch/37427.pdf",
+            "locator": "PDF p. 2, printed p. 5–2, Modulus of Elasticity",
+            "supports": [
+              "method",
+              "classification"
+            ]
+          },
+          {
+            "source_id": "usda_fpl_gtr190_2010_ch05",
+            "url": "https://research.fs.usda.gov/download/treesearch/37427.pdf",
+            "locator": "PDF pp. 1–2 / printed pp. 5–1 to 5–2, opening scope and Modulus of Elasticity; p. 21 / printed p. 5–21, species-average estimates; pp. 25–26 / printed pp. 5–25 to 5–26, moisture adjustment and methods",
+            "supports": [
+              "method",
+              "classification"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [],
+      "source_id": "usda_fpl_gtr190_2010_ch05",
+      "evidence": [
+        {
+          "source_id": "usda_fpl_gtr190_2010_ch05",
+          "url": "https://research.fs.usda.gov/download/treesearch/37427.pdf",
+          "locator": "PDF p. 5, printed p. 5–5, Table 5–3a (metric), Maple / Sugar, 12% moisture-content row, Static bending / Modulus of elasticity (MPa) column",
+          "supports": [
+            "reported_value",
+            "condition"
+          ]
+        },
+        {
+          "source_id": "usda_fpl_gtr190_2010_ch05",
+          "url": "https://research.fs.usda.gov/download/treesearch/37427.pdf",
+          "locator": "PDF p. 1, printed p. 5–1, opening paragraphs; p. 21, printed p. 5–21, Mechanical Properties of Clear Straight-Grained Wood",
+          "supports": [
+            "state",
+            "summary_statistic",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "usda_fpl_gtr190_2010_ch05",
+          "url": "https://research.fs.usda.gov/download/treesearch/37427.pdf",
+          "locator": "PDF p. 8, printed p. 5–8, Table 5–3a footnotes a–c",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        },
+        {
+          "source_id": "usda_fpl_gtr190_2010_ch05",
+          "url": "https://research.fs.usda.gov/download/treesearch/37427.pdf",
+          "locator": "PDF p. 25, printed p. 5–25, bottom-right test-methods paragraph continued p. 26; common-name paragraph on p. 5–26",
+          "supports": [
+            "method",
+            "material_identity"
+          ]
+        },
+        {
+          "source_id": "usda_fpl_gtr190_2010_ch05",
+          "url": "https://research.fs.usda.gov/download/treesearch/37427.pdf",
+          "locator": "PDF pp. 1–2 / printed pp. 5–1 to 5–2, opening scope and Modulus of Elasticity; p. 21 / printed p. 5–21, species-average estimates; pp. 25–26 / printed pp. 5–25 to 5–26, moisture adjustment and methods",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ],
+      "source_document": {
+        "url": "https://research.fs.usda.gov/download/treesearch/37427.pdf",
+        "revision": "2010 Centennial edition, FPL-GTR-190, Chapter 5; downloaded copy carries Errata, 2018 note on p. 5–26",
+        "inspected_on": "2026-10-04",
+        "sha256": "7f4b2a07f15f8eee6413b1432ef98963f0fd341a97aef770762bebc167f236a2",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Independent 2010 source readback: Table5–3a selected cells on PDF pp.5 and8 and footnote c visually checked; pp.1–2,21,25–26 freshly text-read for species-average scope, bending/shear, standard-method and reference-moisture qualifications. Retained source and official rights-policy hashes rechecked; no raw-data reanalysis or scientific validation.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "scope_note": "Species-average reference for clear, straight-grained wood grown in the United States, on the source’s 12% moisture basis. Not a commercial structural grade or supplier product, not an isotropic modulus, not a certified specimen value or engineering allowable. Dry data can have been adjusted to a 12% reference basis; the source does not establish whether each selected individual cell was directly measured exactly at 12%. Species-specific test temperature, specimen/tree count, numerical uncertainty, exact loading rate, growth-ring loading-plane orientation, sampling sites, age, heartwood/sapwood partition and detailed conditioning schedule are not established.",
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Independent 2010 source readback: Table5–3a selected cells on PDF pp.5 and8 and footnote c visually checked; pp.1–2,21,25–26 freshly text-read for species-average scope, bending/shear, standard-method and reference-moisture qualifications. Retained source and official rights-policy hashes rechecked; no raw-data reanalysis or scientific validation.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      }
+    },
+    {
+      "id": "refprop_usda2010_northern_red_oak_mc12_flexural_modulus",
+      "version": "1.0.0",
+      "material_state_id": "state_usda2010_northern_red_oak_clear_mc12",
+      "quantity": "flexural_modulus",
+      "quantity_dimension": "pressure",
+      "source_property_label": "Static bending — Modulus of elasticity",
+      "reported_value": {
+        "kind": "scalar",
+        "value_text": "12,500",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "number": "12500"
+      },
+      "evidence_kind": "published_handbook_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_compiled_measurements",
+      "basis_note": "Government handbook compilation of experimental species-average data. Table 5–3a gives metric-converted values from Table 5–3b. The 2010 publication is not represented as an original experiment. Source calls values averages and estimates of average clear-wood properties (p. 5–21).",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No temperature is assigned to the selected Table 5–3a cells. The 23 °C passage on p. 5–21 concerns internal friction, and room-temperature figure captions on p. 5–38 concern separate heating experiments; neither is transferred."
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "ASTM D 143; the source says the table’s test methods are based on its standard procedures",
+          "evidence": [
+            {
+              "source_id": "usda_fpl_gtr190_2010_ch05",
+              "url": "https://research.fs.usda.gov/download/treesearch/37427.pdf",
+              "locator": "PDF p. 25, printed p. 5–25, right column, paragraph beginning Mechanical and physical properties",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "No cell-specific edition or compliance certificate is asserted. Additional References p.5–44 lists ASTM [Current edition] and D143–94; that bibliographic wording does not establish the edition used for each historical test."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Simply supported, center-loaded static bending beam; span/depth ratio 14:1",
+          "evidence": [
+            {
+              "source_id": "usda_fpl_gtr190_2010_ch05",
+              "url": "https://research.fs.usda.gov/download/treesearch/37427.pdf",
+              "locator": "PDF p. 8, printed p. 5–8, Table 5–3a footnote c",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "direction": {
+          "status": "reported",
+          "text": "Longitudinal E_L (parallel to grain), determined from bending",
+          "evidence": [
+            {
+              "source_id": "usda_fpl_gtr190_2010_ch05",
+              "url": "https://research.fs.usda.gov/download/treesearch/37427.pdf",
+              "locator": "PDF p. 2, printed p. 5–2, Modulus of Elasticity, and p. 1, Orthotropic Nature of Wood",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "This is the direction represented by the bending-derived modulus, not a claim that the transverse point load acts along the grain. Radial-versus-tangential loading plane is not established for each cell."
+        },
+        "conditioning": {
+          "status": "reported",
+          "text": "12% moisture-content basis; clear, straight-grained, air-dried wood",
+          "evidence": [
+            {
+              "source_id": "usda_fpl_gtr190_2010_ch05",
+              "url": "https://research.fs.usda.gov/download/treesearch/37427.pdf",
+              "locator": "PDF p. 5, printed p. 5–5, Table 5–3a (metric), Oak, red / Northern red, 12% moisture-content row, Static bending / Modulus of elasticity (MPa) column",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Table 5–3a footnote a identifies air-dried specimens. P.5–25 says many dry test values were adjusted to 12%; exact conditioning duration, humidity, schedule and cell-specific direct-versus-adjusted status are unknown."
+        },
+        "loading_rate": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "P.5–38 says static strength tests typically attain maximum load in about 5 minutes. This is general context, not a cell-specific crosshead speed, strain rate or modulus extraction timing; no exact rate is assigned."
+        }
+      },
+      "density_basis": null,
+      "summary_statistic": "reported_mean",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "No numerical uncertainty or distribution is reported for this species/condition/value. Table 5–6 p.5–26 reports an average 22% coefficient of variation for static-bending modulus based on green wood from about 50 species; this is neither this species’ SD nor uncertainty of this 12%-moisture mean and is deliberately not assigned.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Selected species 12%-moisture static-bending modulus estimate.",
+        "source_statement": "The selected table row and applicable notes do not give its number of specimens, trees or replicate measurements. The approximately 50 species in Table 5–6 is a different population and not a specimen count.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_compilation",
+        "definition": "Handbook compilation of previously measured species-average longitudinal static-bending moduli, reported as metric conversions of Table 5–3b and potentially adjusted to a 12% moisture reference basis. Source-reported longitudinal modulus of elasticity determined by static bending of a simply supported, center-loaded clear-wood beam, span/depth ratio 14:1. The tabulated value includes shear deflection; no 10% correction is applied. It is classified here as flexural_modulus, not an axial Young’s modulus. Cell-specific original test dates and direct-versus-adjusted history are unreported; the handbook publication is not a new experiment.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "usda_fpl_gtr190_2010_ch05",
+            "url": "https://research.fs.usda.gov/download/treesearch/37427.pdf",
+            "locator": "PDF p. 8, printed p. 5–8, Table 5–3a footnote c",
+            "supports": [
+              "method"
+            ]
+          },
+          {
+            "source_id": "usda_fpl_gtr190_2010_ch05",
+            "url": "https://research.fs.usda.gov/download/treesearch/37427.pdf",
+            "locator": "PDF p. 2, printed p. 5–2, Modulus of Elasticity",
+            "supports": [
+              "method",
+              "classification"
+            ]
+          },
+          {
+            "source_id": "usda_fpl_gtr190_2010_ch05",
+            "url": "https://research.fs.usda.gov/download/treesearch/37427.pdf",
+            "locator": "PDF pp. 1–2 / printed pp. 5–1 to 5–2, opening scope and Modulus of Elasticity; p. 21 / printed p. 5–21, species-average estimates; pp. 25–26 / printed pp. 5–25 to 5–26, moisture adjustment and methods",
+            "supports": [
+              "method",
+              "classification"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [],
+      "source_id": "usda_fpl_gtr190_2010_ch05",
+      "evidence": [
+        {
+          "source_id": "usda_fpl_gtr190_2010_ch05",
+          "url": "https://research.fs.usda.gov/download/treesearch/37427.pdf",
+          "locator": "PDF p. 5, printed p. 5–5, Table 5–3a (metric), Oak, red / Northern red, 12% moisture-content row, Static bending / Modulus of elasticity (MPa) column",
+          "supports": [
+            "reported_value",
+            "condition"
+          ]
+        },
+        {
+          "source_id": "usda_fpl_gtr190_2010_ch05",
+          "url": "https://research.fs.usda.gov/download/treesearch/37427.pdf",
+          "locator": "PDF p. 1, printed p. 5–1, opening paragraphs; p. 21, printed p. 5–21, Mechanical Properties of Clear Straight-Grained Wood",
+          "supports": [
+            "state",
+            "summary_statistic",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "usda_fpl_gtr190_2010_ch05",
+          "url": "https://research.fs.usda.gov/download/treesearch/37427.pdf",
+          "locator": "PDF p. 8, printed p. 5–8, Table 5–3a footnotes a–c",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        },
+        {
+          "source_id": "usda_fpl_gtr190_2010_ch05",
+          "url": "https://research.fs.usda.gov/download/treesearch/37427.pdf",
+          "locator": "PDF p. 25, printed p. 5–25, bottom-right test-methods paragraph continued p. 26; common-name paragraph on p. 5–26",
+          "supports": [
+            "method",
+            "material_identity"
+          ]
+        },
+        {
+          "source_id": "usda_fpl_gtr190_2010_ch05",
+          "url": "https://research.fs.usda.gov/download/treesearch/37427.pdf",
+          "locator": "PDF pp. 1–2 / printed pp. 5–1 to 5–2, opening scope and Modulus of Elasticity; p. 21 / printed p. 5–21, species-average estimates; pp. 25–26 / printed pp. 5–25 to 5–26, moisture adjustment and methods",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ],
+      "source_document": {
+        "url": "https://research.fs.usda.gov/download/treesearch/37427.pdf",
+        "revision": "2010 Centennial edition, FPL-GTR-190, Chapter 5; downloaded copy carries Errata, 2018 note on p. 5–26",
+        "inspected_on": "2026-10-04",
+        "sha256": "7f4b2a07f15f8eee6413b1432ef98963f0fd341a97aef770762bebc167f236a2",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Independent 2010 source readback: Table5–3a selected cells on PDF pp.5 and8 and footnote c visually checked; pp.1–2,21,25–26 freshly text-read for species-average scope, bending/shear, standard-method and reference-moisture qualifications. Retained source and official rights-policy hashes rechecked; no raw-data reanalysis or scientific validation.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "scope_note": "Species-average reference for clear, straight-grained wood grown in the United States, on the source’s 12% moisture basis. Not a commercial structural grade or supplier product, not an isotropic modulus, not a certified specimen value or engineering allowable. Dry data can have been adjusted to a 12% reference basis; the source does not establish whether each selected individual cell was directly measured exactly at 12%. Species-specific test temperature, specimen/tree count, numerical uncertainty, exact loading rate, growth-ring loading-plane orientation, sampling sites, age, heartwood/sapwood partition and detailed conditioning schedule are not established.",
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Independent 2010 source readback: Table5–3a selected cells on PDF pp.5 and8 and footnote c visually checked; pp.1–2,21,25–26 freshly text-read for species-average scope, bending/shear, standard-method and reference-moisture qualifications. Retained source and official rights-policy hashes rechecked; no raw-data reanalysis or scientific validation.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      }
+    },
+    {
+      "id": "refprop_usda2010_sitka_spruce_mc12_flexural_modulus",
+      "version": "1.0.0",
+      "material_state_id": "state_usda2010_sitka_spruce_clear_mc12",
+      "quantity": "flexural_modulus",
+      "quantity_dimension": "pressure",
+      "source_property_label": "Static bending — Modulus of elasticity",
+      "reported_value": {
+        "kind": "scalar",
+        "value_text": "10,800",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "number": "10800"
+      },
+      "evidence_kind": "published_handbook_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_compiled_measurements",
+      "basis_note": "Government handbook compilation of experimental species-average data. Table 5–3a gives metric-converted values from Table 5–3b. The 2010 publication is not represented as an original experiment. Source calls values averages and estimates of average clear-wood properties (p. 5–21).",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No temperature is assigned to the selected Table 5–3a cells. The 23 °C passage on p. 5–21 concerns internal friction, and room-temperature figure captions on p. 5–38 concern separate heating experiments; neither is transferred."
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "ASTM D 143; the source says the table’s test methods are based on its standard procedures",
+          "evidence": [
+            {
+              "source_id": "usda_fpl_gtr190_2010_ch05",
+              "url": "https://research.fs.usda.gov/download/treesearch/37427.pdf",
+              "locator": "PDF p. 25, printed p. 5–25, right column, paragraph beginning Mechanical and physical properties",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "No cell-specific edition or compliance certificate is asserted. Additional References p.5–44 lists ASTM [Current edition] and D143–94; that bibliographic wording does not establish the edition used for each historical test."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Simply supported, center-loaded static bending beam; span/depth ratio 14:1",
+          "evidence": [
+            {
+              "source_id": "usda_fpl_gtr190_2010_ch05",
+              "url": "https://research.fs.usda.gov/download/treesearch/37427.pdf",
+              "locator": "PDF p. 8, printed p. 5–8, Table 5–3a footnote c",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "direction": {
+          "status": "reported",
+          "text": "Longitudinal E_L (parallel to grain), determined from bending",
+          "evidence": [
+            {
+              "source_id": "usda_fpl_gtr190_2010_ch05",
+              "url": "https://research.fs.usda.gov/download/treesearch/37427.pdf",
+              "locator": "PDF p. 2, printed p. 5–2, Modulus of Elasticity, and p. 1, Orthotropic Nature of Wood",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "This is the direction represented by the bending-derived modulus, not a claim that the transverse point load acts along the grain. Radial-versus-tangential loading plane is not established for each cell."
+        },
+        "conditioning": {
+          "status": "reported",
+          "text": "12% moisture-content basis; clear, straight-grained, air-dried wood",
+          "evidence": [
+            {
+              "source_id": "usda_fpl_gtr190_2010_ch05",
+              "url": "https://research.fs.usda.gov/download/treesearch/37427.pdf",
+              "locator": "PDF p. 8, printed p. 5–8, Table 5–3a (metric), Spruce / Sitka, 12% moisture-content row, Static bending / Modulus of elasticity (MPa) column",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Table 5–3a footnote a identifies air-dried specimens. P.5–25 says many dry test values were adjusted to 12%; exact conditioning duration, humidity, schedule and cell-specific direct-versus-adjusted status are unknown."
+        },
+        "loading_rate": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "P.5–38 says static strength tests typically attain maximum load in about 5 minutes. This is general context, not a cell-specific crosshead speed, strain rate or modulus extraction timing; no exact rate is assigned."
+        }
+      },
+      "density_basis": null,
+      "summary_statistic": "reported_mean",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "No numerical uncertainty or distribution is reported for this species/condition/value. Table 5–6 p.5–26 reports an average 22% coefficient of variation for static-bending modulus based on green wood from about 50 species; this is neither this species’ SD nor uncertainty of this 12%-moisture mean and is deliberately not assigned.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Selected species 12%-moisture static-bending modulus estimate.",
+        "source_statement": "The selected table row and applicable notes do not give its number of specimens, trees or replicate measurements. The approximately 50 species in Table 5–6 is a different population and not a specimen count.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_compilation",
+        "definition": "Handbook compilation of previously measured species-average longitudinal static-bending moduli, reported as metric conversions of Table 5–3b and potentially adjusted to a 12% moisture reference basis. Source-reported longitudinal modulus of elasticity determined by static bending of a simply supported, center-loaded clear-wood beam, span/depth ratio 14:1. The tabulated value includes shear deflection; no 10% correction is applied. It is classified here as flexural_modulus, not an axial Young’s modulus. Cell-specific original test dates and direct-versus-adjusted history are unreported; the handbook publication is not a new experiment.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "usda_fpl_gtr190_2010_ch05",
+            "url": "https://research.fs.usda.gov/download/treesearch/37427.pdf",
+            "locator": "PDF p. 8, printed p. 5–8, Table 5–3a footnote c",
+            "supports": [
+              "method"
+            ]
+          },
+          {
+            "source_id": "usda_fpl_gtr190_2010_ch05",
+            "url": "https://research.fs.usda.gov/download/treesearch/37427.pdf",
+            "locator": "PDF p. 2, printed p. 5–2, Modulus of Elasticity",
+            "supports": [
+              "method",
+              "classification"
+            ]
+          },
+          {
+            "source_id": "usda_fpl_gtr190_2010_ch05",
+            "url": "https://research.fs.usda.gov/download/treesearch/37427.pdf",
+            "locator": "PDF pp. 1–2 / printed pp. 5–1 to 5–2, opening scope and Modulus of Elasticity; p. 21 / printed p. 5–21, species-average estimates; pp. 25–26 / printed pp. 5–25 to 5–26, moisture adjustment and methods",
+            "supports": [
+              "method",
+              "classification"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [],
+      "source_id": "usda_fpl_gtr190_2010_ch05",
+      "evidence": [
+        {
+          "source_id": "usda_fpl_gtr190_2010_ch05",
+          "url": "https://research.fs.usda.gov/download/treesearch/37427.pdf",
+          "locator": "PDF p. 8, printed p. 5–8, Table 5–3a (metric), Spruce / Sitka, 12% moisture-content row, Static bending / Modulus of elasticity (MPa) column",
+          "supports": [
+            "reported_value",
+            "condition"
+          ]
+        },
+        {
+          "source_id": "usda_fpl_gtr190_2010_ch05",
+          "url": "https://research.fs.usda.gov/download/treesearch/37427.pdf",
+          "locator": "PDF p. 1, printed p. 5–1, opening paragraphs; p. 21, printed p. 5–21, Mechanical Properties of Clear Straight-Grained Wood",
+          "supports": [
+            "state",
+            "summary_statistic",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "usda_fpl_gtr190_2010_ch05",
+          "url": "https://research.fs.usda.gov/download/treesearch/37427.pdf",
+          "locator": "PDF p. 8, printed p. 5–8, Table 5–3a footnotes a–c",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        },
+        {
+          "source_id": "usda_fpl_gtr190_2010_ch05",
+          "url": "https://research.fs.usda.gov/download/treesearch/37427.pdf",
+          "locator": "PDF p. 25, printed p. 5–25, bottom-right test-methods paragraph continued p. 26; common-name paragraph on p. 5–26",
+          "supports": [
+            "method",
+            "material_identity"
+          ]
+        },
+        {
+          "source_id": "usda_fpl_gtr190_2010_ch05",
+          "url": "https://research.fs.usda.gov/download/treesearch/37427.pdf",
+          "locator": "PDF pp. 1–2 / printed pp. 5–1 to 5–2, opening scope and Modulus of Elasticity; p. 21 / printed p. 5–21, species-average estimates; pp. 25–26 / printed pp. 5–25 to 5–26, moisture adjustment and methods",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ],
+      "source_document": {
+        "url": "https://research.fs.usda.gov/download/treesearch/37427.pdf",
+        "revision": "2010 Centennial edition, FPL-GTR-190, Chapter 5; downloaded copy carries Errata, 2018 note on p. 5–26",
+        "inspected_on": "2026-10-04",
+        "sha256": "7f4b2a07f15f8eee6413b1432ef98963f0fd341a97aef770762bebc167f236a2",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Independent 2010 source readback: Table5–3a selected cells on PDF pp.5 and8 and footnote c visually checked; pp.1–2,21,25–26 freshly text-read for species-average scope, bending/shear, standard-method and reference-moisture qualifications. Retained source and official rights-policy hashes rechecked; no raw-data reanalysis or scientific validation.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "scope_note": "Species-average reference for clear, straight-grained wood grown in the United States, on the source’s 12% moisture basis. Not a commercial structural grade or supplier product, not an isotropic modulus, not a certified specimen value or engineering allowable. Dry data can have been adjusted to a 12% reference basis; the source does not establish whether each selected individual cell was directly measured exactly at 12%. Species-specific test temperature, specimen/tree count, numerical uncertainty, exact loading rate, growth-ring loading-plane orientation, sampling sites, age, heartwood/sapwood partition and detailed conditioning schedule are not established.",
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Independent 2010 source readback: Table5–3a selected cells on PDF pp.5 and8 and footnote c visually checked; pp.1–2,21,25–26 freshly text-read for species-average scope, bending/shear, standard-method and reference-moisture qualifications. Retained source and official rights-policy hashes rechecked; no raw-data reanalysis or scientific validation.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      }
+    },
+    {
+      "id": "refprop_domagala2024_nc1_28d_saturated_mass_density",
+      "version": "1.0.0",
+      "material_state_id": "state_domagala2024_nc1_28d_saturated",
+      "quantity": "mass_density",
+      "quantity_dimension": "mass_per_volume",
+      "source_property_label": "D_w",
+      "reported_value": {
+        "kind": "scalar",
+        "number": "2330",
+        "value_text": "2330",
+        "unit_text": "kg/m³",
+        "unit_code": "kg/m^3"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Original study experimental wet-density group mean. Reported mean of the NC1 nominal 28-day water-saturated density group; no density subprocedure is inferred.",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "20 °C is a curing/storage condition. No explicit density measurement temperature is supplied."
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "EN 12390-7:2019",
+          "evidence": [
+            {
+              "source_id": "domagala_2024_moisture_normal_weight_concrete",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11313055/fullTextXML",
+              "locator": "Table 2 and reference 23",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Density testing of water-saturated hardened concrete under EN 12390-7:2019; exact volume/mass subprocedure and instrument not specified",
+          "evidence": [
+            {
+              "source_id": "domagala_2024_moisture_normal_weight_concrete",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11313055/fullTextXML",
+              "locator": "§2 and Table 2",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "direction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": null
+        },
+        "conditioning": {
+          "status": "reported",
+          "text": "Water-saturated, nominal source age 28 days",
+          "evidence": [
+            {
+              "source_id": "domagala_2024_moisture_normal_weight_concrete",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11313055/fullTextXML",
+              "locator": "§2, 28-day density paragraph; Table 3",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "loading_rate": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected property is density rather than a mechanical loading result."
+        }
+      },
+      "density_basis": "not_stated",
+      "summary_statistic": "reported_mean",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "No density standard deviation, confidence interval, or instrument uncertainty is supplied. §3.1 says no individual density differs from the mean by more than 20 kg/m³; retain that as a maximum-deviation statement, never a ±20 SD or confidence interval. Do not borrow the 0.3 GPa modulus SD.",
+      "sample_count": {
+        "value": 3,
+        "relation": "exact",
+        "scope": "28-day density specimens in NC1 series",
+        "source_statement": "Table 2 shows three cylinders in a shared count cell spanning the two nominal 28-day density states, and §2 says this program is per concrete series.",
+        "evidence": [
+          {
+            "source_id": "domagala_2024_moisture_normal_weight_concrete",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11313055/fullTextXML",
+            "locator": "Table 2, shared three-cylinder cell spanning Oven-dry density and Water-saturated density rows; §2 says program is per series",
+            "supports": [
+              "sample_count"
+            ]
+          }
+        ]
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Density testing of water-saturated hardened concrete under EN 12390-7:2019; exact volume/mass subprocedure and instrument not specified",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "domagala_2024_moisture_normal_weight_concrete",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11313055/fullTextXML",
+            "locator": "§2 and Table 2, EN 12390-7 density testing; Table 3 selected water-saturated density; reference 23",
+            "supports": [
+              "method",
+              "classification"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [],
+      "source_id": "domagala_2024_moisture_normal_weight_concrete",
+      "evidence": [
+        {
+          "source_id": "domagala_2024_moisture_normal_weight_concrete",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11313055/fullTextXML",
+          "locator": "Table 3, NC1 row, D_w, kg/m³ column; XML table-wrap id materials-17-03722-t003",
+          "supports": [
+            "reported_value"
+          ]
+        },
+        {
+          "source_id": "domagala_2024_moisture_normal_weight_concrete",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11313055/fullTextXML",
+          "locator": "§3.1 first paragraph calls these mean properties; §2 and Table 2 identify density tests and specimen count",
+          "supports": [
+            "classification",
+            "summary_statistic"
+          ]
+        },
+        {
+          "source_id": "domagala_2024_moisture_normal_weight_concrete",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11313055/fullTextXML",
+          "locator": "§2 and Table 2, EN 12390-7 density testing; Table 3 selected water-saturated density; reference 23",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "domagala_2024_moisture_normal_weight_concrete",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11313055/fullTextXML",
+          "locator": "§2 specimen preparation and Table 1 NC1 row; Table 2 nominal 28-day density program; Table 3 NC1/D_w result",
+          "supports": [
+            "material_identity",
+            "state"
+          ]
+        }
+      ],
+      "source_document": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11313055/fullTextXML",
+        "revision": "Published 2024-07-27; PMCID PMC11313055.1, PMC version 1; XML records last change 2024-08-28",
+        "inspected_on": "2026-10-04",
+        "sha256": "8eee9708ea9e257dc060117f6b7c20a031443c982ecb98aa92cf5227e7479ec5",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Independent selected-source transcription review: exact Table 3 NC1/D_w XML cell and publisher HTML agree; §2, Tables 1–2, §3.1, nominal age, saturation, specimen-count rowspan and CC BY 4.0 permissions inspected. Retained XML SHA-256 rechecked. No raw-data reanalysis or independent scientific validation.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "scope_note": "No structural design allowable, certified grade, universal value or bound. Do not merge 28-day saturated state with 3-year air-dry/saturated experiments. Preserve unknown density basis (bulk/apparent/true terminology not stated by authors for this concrete value), test temperature, porosity and exact test subprocedure. Source 20 °C is curing/storage, not density-test temperature. The source reports demolding after 24 h followed by 28-day water storage while calling the selected testing age 28 days; retain its nominal 28-day designation without inferring 29 days. Density deviations within 20 kg/m³ of the mean are not an SD, confidence interval or uncertainty.",
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Independent selected-source transcription review: exact Table 3 NC1/D_w XML cell and publisher HTML agree; §2, Tables 1–2, §3.1, nominal age, saturation, specimen-count rowspan and CC BY 4.0 permissions inspected. Retained XML SHA-256 rechecked. No raw-data reanalysis or independent scientific validation.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      }
+    },
+    {
+      "id": "refprop_wubalem2025_carrara_marble_specimen13_mass_density",
+      "version": "1.0.0",
+      "material_state_id": "state_wubalem2025_carrara_marble_specimen13",
+      "quantity": "mass_density",
+      "quantity_dimension": "mass_per_volume",
+      "source_property_label": "Bulk Density",
+      "reported_value": {
+        "kind": "scalar",
+        "number": "2760",
+        "value_text": "2760",
+        "unit_text": "kg/m³",
+        "unit_code": "kg/m^3"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Original study measured bulk-density result for one named physical specimen. One separately identified specimen value, not a group mean; no density procedure is inferred from mass and dimensions.",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": null
+        },
+        "test_standard": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "ISRM methods are stated for Brazilian testing and sample dimensions, not explicitly for bulk-density measurement."
+        },
+        "test_method": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Mass and dimensions are tabulated but an explicit density procedure/instrument is not stated; do not infer Archimedes or a mass/geometric-volume procedure."
+        },
+        "direction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": null
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": null
+        },
+        "loading_rate": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Density property; do not borrow Brazilian loading setup."
+        }
+      },
+      "density_basis": "bulk",
+      "summary_statistic": "reported_value",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "No specimen 13 density SD or measurement uncertainty is given. Population/group SD values are not assigned to this specimen.",
+      "sample_count": {
+        "value": 1,
+        "relation": "exact",
+        "scope": "One explicitly identified specimen, number 13; number of repeat weighings/density measurements is unreported",
+        "source_statement": "Table 2 identifies specimen number 13 individually; the number of repeat density determinations is not reported.",
+        "evidence": [
+          {
+            "source_id": "wubalem_2025_rock_texture_dic",
+            "url": "https://www.mdpi.com/2076-3263/15/4/145/pdf",
+            "locator": "Table 2 specimen 13 row",
+            "supports": [
+              "sample_count"
+            ]
+          }
+        ]
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Source-reported measured bulk density for Carrara-marble specimen 13. The source does not specify its density procedure, volume determination or instrument; a geometric or Archimedes procedure is not inferred.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "wubalem_2025_rock_texture_dic",
+            "url": "https://www.mdpi.com/2076-3263/15/4/145/pdf",
+            "locator": "PDF p. 3 Table 2 specimen 13 Bulk Density column; §3.1 describes measured densities but does not specify procedure or instrument",
+            "supports": [
+              "method",
+              "classification"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "§3.1 narrative assigns density SD values 104.5 and 33.4 to marble and tonalite respectively, while Table 2 assigns 33.4 to marble and 104.5 to tonalite.",
+          "disposition": "No pooled mean/SD result selected. Specimen13 exact density has no competing value in inspected source. Do not repair source or assign either group SD to selected specimen.",
+          "evidence": [
+            {
+              "source_id": "wubalem_2025_rock_texture_dic",
+              "url": "https://www.mdpi.com/2076-3263/15/4/145/pdf",
+              "locator": "PDF p. 3 Table 2 and §3.1 density discussion",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "§2.1 narrative diameter/height groups for specimens 15–26 and 27–30 contradict Table 2; selected specimen 13 is outside these groups.",
+          "disposition": "Preserve exact Table 2 specimen 13 dimensions and ratio. Do not infer conformity to standard disk dimensions or use the group geometry narrative.",
+          "evidence": [
+            {
+              "source_id": "wubalem_2025_rock_texture_dic",
+              "url": "https://www.mdpi.com/2076-3263/15/4/145/pdf",
+              "locator": "PDF pp. 2–3, §2.1 specimen geometry narrative and Table 2",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "wubalem_2025_rock_texture_dic",
+      "evidence": [
+        {
+          "source_id": "wubalem_2025_rock_texture_dic",
+          "url": "https://www.mdpi.com/2076-3263/15/4/145/pdf",
+          "locator": "PDF p.3, Table 2, specimen n°13, Bulk Density [kg/m³] column",
+          "supports": [
+            "reported_value"
+          ]
+        },
+        {
+          "source_id": "wubalem_2025_rock_texture_dic",
+          "url": "https://www.mdpi.com/2076-3263/15/4/145/pdf",
+          "locator": "§3.1 explicitly describes Table 2 densities as measured; selected one-specimen cell is not group average",
+          "supports": [
+            "classification"
+          ]
+        },
+        {
+          "source_id": "wubalem_2025_rock_texture_dic",
+          "url": "https://www.mdpi.com/2076-3263/15/4/145/pdf",
+          "locator": "PDF p. 3 Table 2 specimen 13 Bulk Density column; §3.1 describes measured densities but does not specify procedure or instrument",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "wubalem_2025_rock_texture_dic",
+          "url": "https://www.mdpi.com/2076-3263/15/4/145/pdf",
+          "locator": "PDF pp. 3–4, §2.1 Carrara-marble preparation and Table 2 specimen 13 row",
+          "supports": [
+            "material_identity",
+            "state"
+          ]
+        }
+      ],
+      "source_document": {
+        "url": "https://www.mdpi.com/2076-3263/15/4/145/pdf",
+        "revision": "Published version 2025-04-10; PDF metadata creation and modification 2025-04-10; no separate errata/version-history audit",
+        "inspected_on": "2026-10-04",
+        "sha256": "37283acc112d44996d3d7df35b1fc4e9f2199a4583de1cf91ce9b02ba7f3903f",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Independent selected-source transcription review: retained PDF p. 3 Table 2 specimen 13 cell visually read and freshly text-extracted; §§2.1 and 3.1, sample scope, density unknowns, source discrepancies and PDF p. 1 CC BY 4.0 notice inspected. Retained PDF SHA-256 rechecked. No raw-data reanalysis or independent scientific validation.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "scope_note": "This is one physical marble specimen, not a material-wide expected mean. No density test temperature, moisture state, porosity, procedure or instrument is inferred. DIC failure for specimen 13 is an imaging/strain-analysis outcome, not evidence that its separately tabulated density is invalid. Other study specimen states cannot inflate distinct material count.",
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Independent selected-source transcription review: retained PDF p. 3 Table 2 specimen 13 cell visually read and freshly text-extracted; §§2.1 and 3.1, sample scope, density unknowns, source discrepancies and PDF p. 1 CC BY 4.0 notice inspected. Retained PDF SHA-256 rechecked. No raw-data reanalysis or independent scientific validation.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      }
     }
   ]
 }

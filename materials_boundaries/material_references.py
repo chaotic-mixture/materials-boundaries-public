@@ -37,6 +37,7 @@ UNIT_DIMENSIONS = {
 EVIDENCE_KINDS = (
     "manufacturer_reference", "technical_association_reference",
     "published_experimental_reference", "published_computational_reference",
+    "published_handbook_reference", "published_measurement_derived_reference",
 )
 REPORTING_BASES = (
     "typical", "nominal", "guideline", "specification_limit",
@@ -188,14 +189,15 @@ def _make_properties_schema():
         "quantity_dimension": _enum(sorted(set(QUANTITY_DIMENSIONS.values()))),
         "source_property_label": TEXT, "reported_value": _ref("reported_value"),
         "evidence_kind": _enum(EVIDENCE_KINDS), "reporting_basis": _enum(REPORTING_BASES),
-        "determination_basis": _enum(("source_reports_measurement", "source_reports_calculation", "not_stated", "mixed_or_unclear")),
+        "determination_basis": _enum(("source_reports_measurement", "source_reports_calculation", "source_reports_compiled_measurements", "not_stated", "mixed_or_unclear")),
         "basis_note": TEXT, "conditions": _object(conditions, ("additional_conditions",)),
-        "density_basis": {"anyOf": [_enum(("apparent", "bulk", "true", "not_stated")), NULL]},
+        "density_basis": {"anyOf": [_enum(("apparent", "bulk", "true", "crystallographic", "not_stated")), NULL]},
         "summary_statistic": _enum(("not_stated", "reported_value", "reported_mean")),
         "uncertainty": {"anyOf": [_ref("uncertainty"), NULL]},
         "uncertainty_status": _enum(("reported_standard_deviation", "not_reported_in_inspected_source", "not_applicable")),
         "uncertainty_note": TEXT, "sample_count": _ref("sample_count"),
-        "method_definition": _object({"type": {"const": "source_reported_conventional"},
+        "method_definition": _object({"type": _enum(("source_reported_conventional", "source_reported_compilation",
+                                                       "source_reported_crystallographic_derivation")),
                                        "definition": TEXT, "extraction_window": NULL, "evidence": evidence}),
         "source_discrepancies": _array(_object({"description": TEXT, "disposition": TEXT, "evidence": evidence})),
         "source_id": TEXT, "evidence": evidence, "source_document": _ref("source_document"),
@@ -431,7 +433,7 @@ def _validate_links(materials, properties, indices):
 # Only spelling/typography normalization; these mappings never change a unit or
 # infer a quantity. Unknown spellings need deliberate capability review.
 _UNIT_SPELLINGS = {
-    "g/cm^3": {"g/cm^3", "g/cm³", "g/cm3", "g cm^-3", "g.cm-3", "g cm⁻³", "g·cm⁻³", "g cm−3", "g cm-3"},
+    "g/cm^3": {"g/cm^3", "g/cm³", "g/cm3", "g cm^-3", "g.cm-3", "g cm⁻³", "g·cm⁻³", "g cm−3", "g cm-3", "grams per cubic centimeter"},
     "kg/m^3": {"kg/m^3", "kg/m³", "kg/m3", "kg m^-3", "kg.m-3", "kg m⁻³", "kg·m⁻³", "kg m−3", "kg m-3"},
     "kg/dm^3": {"kg/dm^3", "kg/dm³", "kg/dm3", "kg dm^-3", "kg.dm-3", "kg dm⁻³", "kg·dm⁻³", "kg dm−3", "kg dm-3"},
     "lb/in^3": {"lb/in^3", "lb/in³", "lb/in3", "lb./in.³", "lb./in.3", "lb./in.^3"},
@@ -461,6 +463,13 @@ def _numeric_token_matches(token, canonical):
         pattern = r"[1-9][0-9]{0,2}(?:" + re.escape(grouping) + r"[0-9]{3})+(?:" + re.escape(decimal) + r"[0-9]+)?"
         if re.fullmatch(pattern, token):
             candidates.add(token.replace(grouping, "").replace(decimal, "."))
+    # Printed decimal fractional groups: exactly one ASCII space between
+    # nonempty digit groups after one decimal point. The first fractional group
+    # has three digits; subsequent groups have three digits except the final
+    # group, which may have one to four. This covers scientific digit spacing
+    # without deleting arbitrary whitespace or relaxing decimal precision.
+    if re.fullmatch(r"(?:0|[1-9][0-9]*)\.[0-9]{3}(?: [0-9]{3})* [0-9]{1,4}", token):
+        candidates.add(token.replace(" ", ""))
     return canonical in candidates
 
 
@@ -525,9 +534,31 @@ def _validate_property(prop):
     if prop["verification"]["source_inspection_scope"] != doc["inspection_scope"]:
         _fail(path, "verification and document inspection scope disagree")
     expected_basis = {"published_experimental_reference": "source_reports_measurement",
-                      "published_computational_reference": "source_reports_calculation"}
+                      "published_computational_reference": "source_reports_calculation",
+                      "published_handbook_reference": "source_reports_compiled_measurements",
+                      "published_measurement_derived_reference": "source_reports_calculation"}
     if prop["evidence_kind"] in expected_basis and prop["determination_basis"] != expected_basis[prop["evidence_kind"]]:
         _fail(path, "published evidence class contradicts determination basis")
+    # These method classes are generic physical/provenance contracts, never
+    # material-ID exceptions. Both directions are checked: a relabel cannot turn
+    # a compilation or crystallographic calculation into a direct experiment.
+    method = prop["method_definition"]["type"]
+    if ((prop["evidence_kind"] == "published_handbook_reference") !=
+            (method == "source_reported_compilation")):
+        _fail(path, "handbook evidence requires its compilation method class")
+    if ((prop["determination_basis"] == "source_reports_compiled_measurements") !=
+            (prop["evidence_kind"] == "published_handbook_reference")):
+        _fail(path, "compiled measurements require handbook evidence")
+    is_derived = prop["evidence_kind"] == "published_measurement_derived_reference"
+    is_crystallographic = method == "source_reported_crystallographic_derivation"
+    if is_derived != is_crystallographic:
+        _fail(path, "measured-input-derived evidence requires an admitted derivation method")
+    if (prop["density_basis"] == "crystallographic") != is_crystallographic:
+        _fail(path, "crystallographic density requires its source-reported derivation method")
+    if is_crystallographic and prop["quantity"] != "mass_density":
+        _fail(path, "crystallographic derivation requires mass density")
+    if method != "source_reported_conventional":
+        _require_tag(prop["method_definition"]["evidence"], "classification", path, source)
     is_mean = prop["summary_statistic"] == "reported_mean"
     if is_mean:
         if prop["reporting_basis"] != "reported_summary" or prop["reported_value"]["kind"] != "scalar":
