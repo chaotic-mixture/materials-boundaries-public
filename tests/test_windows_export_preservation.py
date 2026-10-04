@@ -16,7 +16,7 @@ import composite_preservation as composite
 import windows_export_preservation as preservation
 
 ROOT = Path(__file__).resolve().parents[1]
-LEDGER_SHA256 = 'bdaae4ae9367179d5458d48d3477f1e55b230aef892dfe8283bcfbcdd224b7aa'
+LEDGER_SHA256 = 'be6e881a632ab537e4fc852a1d0353a6b4e10fb55fbac02b97d577cd6048e529'
 ADAPTER_SHA256 = '2a9efecf829cf4ade18393f9fb7772b7067bc8ddb0d4b4bfb8fde4beaff2f34a'
 COMPATIBILITY_READERS = {
     'tests/composite_preservation.py', 'tests/test_composite_preservation.py',

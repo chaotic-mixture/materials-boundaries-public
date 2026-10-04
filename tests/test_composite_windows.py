@@ -46,7 +46,9 @@ class WindowsGuardLogicTests(unittest.TestCase):
         def __init__(self, attributes=0x10, filesystem='NTFS', flags=0x00400000, drive=3):
             self.attributes, self.filesystem, self.flags, self.drive = attributes, filesystem, flags, drive
             self.closed = []
+            self.open_requests = []
         def CreateFileW(self, *args):
+            self.open_requests.append(args)
             return 123
         def GetFileInformationByHandle(self, handle, info):
             info._obj.attributes = self.attributes
@@ -70,6 +72,17 @@ class WindowsGuardLogicTests(unittest.TestCase):
                 with win._open_directory(Path('ignored'), api):
                     self.fail('unsafe directory admitted')
             self.assertEqual(api.closed, [123])
+
+    def test_directory_open_requests_data_read_and_excludes_delete_sharing(self):
+        api = self.FakeAPI()
+        with patch.object(win, '_directory_identity', return_value=(7, 11)):
+            with win._open_directory(Path('ignored'), api):
+                pass
+        request, = api.open_requests
+        self.assertEqual(request[1], 0x81)  # list-directory + read-attributes
+        self.assertEqual(request[2], 0x3)   # share read/write, never delete
+        self.assertEqual(request[4:6], (3, 0x02200000))
+        self.assertEqual(api.closed, [123])
 
     def test_nonlocal_drives_rejected_before_open(self):
         for drive in (0, 1, 4, 5, 6):
@@ -159,7 +172,7 @@ class NativeWindowsExportTests(unittest.TestCase):
         leaf = parent / 'leaf'; leaf.mkdir()
         with win._directory(win._safe_path(leaf)):
             for target in (parent, leaf):
-                with self.assertRaises(OSError):
+                with self.subTest(target=target), self.assertRaises(OSError):
                     target.rename(target.with_name(target.name + '-moved'))
         leaf.rename(parent / 'moved')
         parent.rename(self.root / 'renamed')

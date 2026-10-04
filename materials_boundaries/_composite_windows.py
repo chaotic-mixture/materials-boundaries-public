@@ -19,7 +19,7 @@ from .validation import ValidationError
 
 _FILE_ATTRIBUTE_DIRECTORY = 0x10
 _FILE_ATTRIBUTE_REPARSE_POINT = 0x400
-_FILE_READ_ATTRIBUTES = 0x80
+_DIRECTORY_READ_ACCESS = 0x1 | 0x80  # FILE_LIST_DIRECTORY | FILE_READ_ATTRIBUTES
 _FILE_SHARE_READ_WRITE = 0x3  # Deliberately omit FILE_SHARE_DELETE.
 _OPEN_EXISTING = 3
 _DIRECTORY_FLAGS = 0x02000000 | 0x00200000  # BACKUP_SEMANTICS | OPEN_REPARSE_POINT
@@ -107,7 +107,9 @@ def _safe_path(value) -> Path:
 
 @contextmanager
 def _open_directory(path: Path, api):
-    handle = api.CreateFileW(str(path), _FILE_READ_ATTRIBUTES, _FILE_SHARE_READ_WRITE,
+    # Attribute-only opens do not participate in Windows sharing checks.
+    # Directory-data read access makes omitted FILE_SHARE_DELETE effective.
+    handle = api.CreateFileW(str(path), _DIRECTORY_READ_ACCESS, _FILE_SHARE_READ_WRITE,
                              None, _OPEN_EXISTING, _DIRECTORY_FLAGS, None)
     if handle == _INVALID_HANDLE:
         raise _error(path)

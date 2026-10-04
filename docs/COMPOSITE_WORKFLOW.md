@@ -124,10 +124,13 @@ and hard links. Unsupported platforms fail explicitly.
 
 Version **0.28.1** adds a separate native Windows backend for **local NTFS**
 fixed/removable drives with hard-link support. It opens and holds every directory
-component with `CreateFileW`, `FILE_FLAG_OPEN_REPARSE_POINT` and
+component with `CreateFileW`, directory-data read access (`FILE_LIST_DIRECTORY`),
+`FILE_FLAG_OPEN_REPARSE_POINT` and
 `FILE_FLAG_BACKUP_SEMANTICS`, checks the opened object's attributes, and omits
 `FILE_SHARE_DELETE` to block ordinary rename/delete of those directory names
-while held. A reparse attribute is always refused, including junctions, symlinks,
+while held. Attribute-only access is insufficient for this sharing protection.
+Every ancestor must permit directory listing and attribute reads; insufficient
+access fails closed. A reparse attribute is always refused, including junctions, symlinks,
 mount points and cloud placeholders. A folder under OneDrive or another reparse
 ancestor may therefore be refused; select an ordinary local NTFS directory.
 The backend never resolves a rejected link into an accepted target.
