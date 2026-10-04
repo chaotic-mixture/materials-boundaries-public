@@ -342,7 +342,7 @@ class MechanicalContractTests(unittest.TestCase):
         catalog=query_catalog('sources',record_id='meille_garboczi_2001')
         for lang in LANGUAGES:
             text=render_catalog(catalog,'sources',lang)
-            for code in ('primary_paper_extracted_text_equation_checked_visual_not_verified',
+            for code in ('primary_paper_extracted_text_and_visual_equation_checked',
                          'copyright_iop_no_open_reuse_license_verified','isotropic_elastic_identity_source'):
                 label=translate('catalog_status_'+code,lang)
                 self.assertNotIn('[missing:',label);self.assertIn(label,text)

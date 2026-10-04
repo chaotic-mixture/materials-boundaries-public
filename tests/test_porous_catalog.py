@@ -10,6 +10,7 @@ import unittest
 from unittest.mock import patch
 
 from materials_boundaries import __version__, evaluate, load_json, ValidationError
+from source_evidence_preservation import previous_record
 from materials_boundaries.catalog import query_catalog, read_catalog
 from materials_boundaries.catalog_output import render_catalog
 from materials_boundaries.i18n import LANGUAGES, translate
@@ -55,7 +56,9 @@ def young(k, g):
 class PorousCatalogTests(unittest.TestCase):
     def test_historical_science_and_porous_ids_are_preserved(self):
         prior_ids = EXECUTABLE_IDS + GRIFFITH_IDS + MECHANICS_IDS + CORE_STABILITY_IDS
-        self.assertEqual(scientific_digest(historical_records('claims', prior_ids)),
+        predecessors = [previous_record('claims', record)
+                        for record in historical_records('claims', prior_ids)]
+        self.assertEqual(scientific_digest(predecessors),
                          '6aeb84933790e78734fd59b4292206be0bf520c575212d6700cbfb79c6d62fa0')
         self.assertEqual([c['id'] for c in porous()], IDS)
         self.assertEqual(query_catalog('sources', record_id=SOURCE)['records'][0]['id'], SOURCE)

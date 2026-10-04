@@ -7,6 +7,7 @@ import unittest
 from unittest.mock import patch
 
 from materials_boundaries import evaluate, load_json
+from source_evidence_preservation import previous_record
 from materials_boundaries.catalog import query_catalog, read_catalog
 from materials_boundaries.catalog_output import render_catalog
 from materials_boundaries.i18n import LANGUAGES, translate
@@ -34,7 +35,9 @@ def criteria():
 class StabilityCatalogTests(unittest.TestCase):
     def test_historical_science_and_classification_are_preserved(self):
         prior_ids = EXECUTABLE_IDS + GRIFFITH_IDS + MECHANICS_IDS
-        self.assertEqual(scientific_digest(historical_records('claims', prior_ids)),
+        predecessors = [previous_record('claims', record)
+                        for record in historical_records('claims', prior_ids)]
+        self.assertEqual(scientific_digest(predecessors),
                          '413262f21c5a50bac4a304d7042c70c248b952a600f16f8406ee842e50dba100')
         self.assertEqual([r['id'] for r in criteria()], IDS)
         constraint_ids = {r['id'] for r in query_catalog('claims', direction='constraint')['records']}

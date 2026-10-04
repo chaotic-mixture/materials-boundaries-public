@@ -9,6 +9,7 @@ from copy import deepcopy
 import hashlib
 import json
 from pathlib import Path
+from source_evidence_preservation import pre_evidence_bytes, previous_record
 import re
 import shutil
 import tempfile
@@ -106,7 +107,7 @@ class CompositePreservationTests(unittest.TestCase):
         for filename, expected in dict(fixtures, **examples,
                 **{'tests/provenance_corrections.py': baseline['tests/provenance_corrections.py']}).items():
             with self.subTest(filename=filename):
-                self.assertEqual(sha((ROOT / filename).read_bytes()), expected)
+                self.assertEqual(sha(pre_evidence_bytes(filename, (ROOT / filename).read_bytes())), expected)
 
     def test_every_prior_complete_object_locale_value_and_metadata_field_is_exact(self):
         self.assertEqual(len(self.ledger['catalog_preservation']), 9)
@@ -122,7 +123,7 @@ class CompositePreservationTests(unittest.TestCase):
                         index = {record['id']: record for record in current[key]}
                         self.assertEqual(len(index), len(current[key]))
                         for identifier, expected in entry['record_digests'].items():
-                            prior = deepcopy(index[identifier])
+                            prior = previous_record(Path(filename).stem, index[identifier])
                             if identifier in entry.get('evidence_digests', {}):
                                 pinned = entry['evidence_digests'][identifier]
                                 hashes = [sha(canonical(item)) for item in prior['evidence']]
@@ -143,7 +144,7 @@ class CompositePreservationTests(unittest.TestCase):
     def test_only_exact_compatibility_transformations_and_no_removed_test_declarations(self):
         entries = preservation.validate_ledger(self.ledger)
         for filename in COMPATIBILITY_READERS:
-            current = (ROOT / filename).read_bytes()
+            current = pre_evidence_bytes(filename, (ROOT / filename).read_bytes())
             before = preservation.reverse_exact_edits(current, entries[filename])
             self.assertEqual(current, expected_compatibility_update(filename, before.decode()).encode())
             self.assertEqual(declarations(before), declarations(current), filename)

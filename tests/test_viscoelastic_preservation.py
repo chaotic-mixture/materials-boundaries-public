@@ -4,6 +4,7 @@ from copy import deepcopy
 import hashlib
 import json
 from pathlib import Path
+from source_evidence_preservation import pre_evidence_bytes, previous_record
 import re
 import unittest
 
@@ -70,7 +71,7 @@ class ViscoelasticPreservationTests(unittest.TestCase):
         fixtures['tests/provenance_corrections.py'] = baseline['tests/provenance_corrections.py']
         for filename, expected in fixtures.items():
             with self.subTest(filename=filename):
-                self.assertEqual(sha((ROOT / filename).read_bytes()), expected)
+                self.assertEqual(sha(pre_evidence_bytes(filename, (ROOT / filename).read_bytes())), expected)
 
     def _release_readme(self, actual):
         return pre_yield_bytes('README.md', release_readme_bytes(actual))
@@ -98,7 +99,7 @@ class ViscoelasticPreservationTests(unittest.TestCase):
                     if 'record_digests' in baseline:
                         index = {r['id']: r for r in current[key]}
                         for identifier, expected in baseline['record_digests'].items():
-                            record = deepcopy(index[identifier])
+                            record = previous_record(Path(filename).stem, index[identifier])
                             if 'evidence_digests' in baseline:
                                 evidence = {sha(canonical(e)): e for e in record['evidence']}
                                 record['evidence'] = [evidence[h] for h in baseline['evidence_digests'][identifier]]

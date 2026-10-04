@@ -10,6 +10,7 @@ import unittest
 
 from jsonschema import Draft202012Validator
 from materials_boundaries import evaluate, load_json
+from source_evidence_preservation import previous_record
 from materials_boundaries.catalog import query_catalog, read_catalog
 from materials_boundaries.catalog_output import render_catalog
 from materials_boundaries.i18n import LANGUAGES, translate
@@ -31,7 +32,7 @@ class FatigueCatalogTests(unittest.TestCase):
     def test_preexisting_scientific_metadata_are_preserved(self):
         baseline = load_json(ROOT / 'tests/fixtures/pre_fatigue_records_sha256.json')
         for kind, expected in baseline.items():
-            records = {r['id']: r for r in read_catalog(kind)['records']}
+            records = {r['id']: previous_record(kind, r) for r in read_catalog(kind)['records']}
             for name, digest in expected.items():
                 with self.subTest(kind=kind, name=name):
                     # Evidence/notes may grow; reviewed provenance is guarded separately.

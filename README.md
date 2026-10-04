@@ -1,6 +1,6 @@
 # 材料边界 · Materials Boundaries
 
-Current software release: **v0.28.1** · **Native Windows composite saving** · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
+Current software release: **v0.28.2** · **Corrected composite source evidence** · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
 
 A condition-aware, source-traceable materials-mechanics catalog and offline Python toolkit. It separates conditional mathematical bounds, model relations, published observations, computational predictions and synthetic demonstrations. Python 3.10+; no third-party runtime dependencies.
 
@@ -17,6 +17,8 @@ Repository: [chaotic-mixture/materials-boundaries-public](https://github.com/cha
 <!-- current-catalog-summary:end -->
 
 ## Start with one composite case
+
+Version **0.28.2** corrects the Reuss shear citation (Kochmann–Milton Eq. 133 is translated bulk compliance) and records the completed Meille–Garboczi Eq. 3 visual identity check. Three affected claim records advance to 1.1.1; numerical formulas and outputs, applicability gates and all eight rules are unchanged. No independent scientific review or joint-sharpness proof is added. Previously exported reports remain historical and fail current strict replay; regenerate explicitly from retained original inputs. See [evidence correction and migration](docs/MIGRATION_v0.28.2.md).
 
 Version **0.28.1** adds composite input/report saving on local Windows NTFS drives, with explicit refusal of reparse points, network/device paths and unsupported filesystems. POSIX safeguards and all scientific/report contracts are unchanged. See [Windows support and limitations](docs/COMPOSITE_WORKFLOW.md#filesystem-guarantees-and-limitations) and the [compatibility migration](docs/MIGRATION_v0.28.1.md). Native Windows CI must pass for the exact release candidate before its Windows behavior is considered verified.
 
@@ -400,7 +402,7 @@ v0.2.0 将评价结果从 3 条扩展到 8 条；原有三个体积模量 claim 
 - `docs/SOURCES.md`：来源核验、历史争议与许可证边界
 - `docs/LITERATURE_EXAMPLE.md`：文献模型参数、换算与计算假设的逐项区分
 
-HS 实现与 [Kochmann–Milton 2014, arXiv v1](https://arxiv.org/html/1401.4142v1) 的体积模量式 (117)/(134) 及剪切模量式 (118)/(135) 核对。E/ν 恒等式与 [Meille–Garboczi 2001 式 (3)，第 2.2 节，印刷页 374 / PDF 第 4 页](https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=860321)的提取文本核对；截图/渲染核验失败，因此不声称已完成视觉核验。该文献只支持恒等式；外包络是基于这些恒等式和单调性的项目推导，不构成紧联合界的新定理，也不验证本复合材料的适用前提。v0.2.0 新增的第 9 条来源仅含元数据和原创注记，不附 PDF；未核实开放再使用许可证。原始 [Hashin–Shtrikman 1963](https://doi.org/10.1016/0022-5096(63)90060-7) 当前仅读到出版商摘要，原文公式定位仍未知。
+HS 实现与 [Kochmann–Milton 2014, arXiv v1](https://arxiv.org/html/1401.4142v1) 的体积模量式 (117)/(134) 及剪切模量式 (118)/(135) 核对。E/ν 恒等式与 [Meille–Garboczi 2001 式 (3)，第 2.2 节，印刷页 374 / PDF 第 4 页](https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=860321)的提取文本核对。此前截图/渲染核验未成功；2026-10-04 已在 NIST 托管的排版版 PDF 上目视核对三维恒等式 (3) 和封面，明确取代此前未完成的视觉核验状态。此次仅核对恒等式来源，不是独立科学审查或证明核验。该文献只支持恒等式；外包络是基于这些恒等式和单调性的项目推导，不构成紧联合界的新定理，也不验证本复合材料的适用前提。v0.2.0 新增的第 9 条来源仅含元数据和原创注记，不附 PDF；未核实开放再使用许可证。原始 [Hashin–Shtrikman 1963](https://doi.org/10.1016/0022-5096(63)90060-7) 当前仅读到出版商摘要，原文公式定位仍未知。
 
 ## 测试
 

@@ -19,6 +19,7 @@ from materials_boundaries._pa12_cf15_observation_contract import (
     is_pa12_record, validate_pa12_record, validate_pa12_dataset,
     validate_pa12_sources,
 )
+from source_evidence_preservation import previous_record
 from materials_boundaries.catalog import read_catalog
 from materials_boundaries.catalog_output import render_catalog
 
@@ -285,7 +286,7 @@ class PA12SourceTranscriptionTests(unittest.TestCase):
             current = {r["id"]: r for r in load("materials_boundaries/data/" + kind + ".json")["records"]}
             for identifier, digest in expected.items():
                 with self.subTest(kind=kind, id=identifier):
-                    record = copy.deepcopy(current[identifier])
+                    record = previous_record(kind, current[identifier])
                     if kind == "claims":
                         # Existing contracts allow additional source evidence.
                         # Require every exact historical member, then hash the

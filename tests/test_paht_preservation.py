@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 import unittest
 from unittest.mock import patch
+from source_evidence_preservation import previous_record
 from materials_boundaries.catalog import read_catalog
 from materials_boundaries.catalog_output import render_catalog
 from materials_boundaries import observation_visualization as view
@@ -24,7 +25,7 @@ class PAHTPreservationTests(unittest.TestCase):
             records={r['id']:r for r in read_catalog(kind)['records']}
             for rid,expected in hashes.items():
                 with self.subTest(kind=kind,id=rid):
-                    record=deepcopy(records[rid])
+                    record=previous_record(kind, records[rid])
                     if kind=='claims':
                         # Disposable synthetic rehearsals add clearly synthetic
                         # evidence. Only that exact fixture addition may be removed.

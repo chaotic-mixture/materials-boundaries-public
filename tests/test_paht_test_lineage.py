@@ -11,6 +11,7 @@ import hashlib
 import inspect
 import json
 from pathlib import Path
+from source_evidence_preservation import pre_evidence_bytes
 from viscoelastic_preservation import pre_viscoelastic_bytes
 import unittest
 from unittest.mock import patch
@@ -154,7 +155,7 @@ class PAHTTestLineageTests(unittest.TestCase):
     def test_helper_keeps_every_prior_function_and_appends_only_the_new_tail(self):
         change = next(e for e in history.PAHT_TEST_UPDATES['approved_test_updates']
                       if e['filename'] == HELPER)
-        actual = (ROOT / HELPER).read_bytes()
+        actual = pre_evidence_bytes(HELPER, (ROOT / HELPER).read_bytes())
         before = recover_predecessor(actual, change['edits'])
         def functions(source):
             lines = source.decode('utf-8').splitlines(keepends=True)
@@ -174,7 +175,7 @@ class PAHTTestLineageTests(unittest.TestCase):
                     self.assertEqual(new_functions[name], old)
 
     def test_full_chain_and_direct_chain_both_end_at_actual_helper_bytes(self):
-        actual = sha((ROOT / HELPER).read_bytes())
+        actual = sha(pre_evidence_bytes(HELPER, (ROOT / HELPER).read_bytes()))
         self.assertEqual(history.reviewed_test_hash(HELPER, FIRST_ANCHOR), actual)
         previous = history.CURRENT_HELPER_UPDATES['approved_test_updates'][0]
         accepted = history.reviewed_current_test_hash(HELPER, previous['previous_sha256'])

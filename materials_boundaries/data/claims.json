@@ -218,7 +218,7 @@
     },
     {
       "id": "reuss_shear",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "name": "Reuss shear lower bound (narrow comparison scope)",
       "quantity": "effective_shear_modulus",
       "direction": "lower",
@@ -240,7 +240,7 @@
       "evidence": [
         {
           "source_id": "kochmann_milton_2014",
-          "locator": "arXiv v1 introduction and section 4.4 eq. 133 (translated-medium shear Reuss relation); the unshifted positive-phase formula is a standard specialization",
+          "locator": "arXiv v1 introduction provides Reuss context. Section 4.4 eqs. 132-133, printed/PDF p. 20, are translated bulk-compliance relations, not a displayed shear Reuss formula. The implemented unshifted positive-phase shear expression retains contextual evidence; an original Reuss equation locator has not been established.",
           "verification_status": "standard_formula_with_context_source",
           "verified_as": "positive-phase restricted implementation; no independent proof review"
         }
@@ -318,7 +318,7 @@
     },
     {
       "id": "youngs_modulus_outer",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "name": "Derived Young modulus outer envelope (compatible HS rectangle)",
       "quantity": "effective_youngs_modulus",
       "direction": "interval",
@@ -348,7 +348,7 @@
         },
         {
           "source_id": "meille_garboczi_2001",
-          "locator": "Section 2.2 eq. 3, printed p. 374 / PDF p. 4 (extracted text checked; visual rendering not verified)",
+          "locator": "Section 2.2 eq. 3, printed p. 374 / PDF p. 4 (extracted text and rendered equation visually checked on 2026-10-04; 3D isotropic identities only)",
           "verification_status": "algebraic_derivation_from_cited_identities",
           "verified_as": "3D isotropic identity source only: E is rearranged from 9/E=1/K+3/G; nu identity is directly printed. The monotonic outer envelope is a project calculation, not a tight joint-bound claim from this source."
         }
@@ -359,8 +359,7 @@
         "gaps": [
           "Original historical source not fully inspected.",
           "Applicability checks use supplied assertions and numerical inputs, not microstructure verification.",
-          "Separate K/G bounds need not have simultaneously attainable corners; no joint-attainability or sharpness proof is claimed.",
-          "Identity-source equation checked in extracted text only; visual equation verification was not completed."
+          "Separate K/G bounds need not have simultaneously attainable corners; no joint-attainability or sharpness proof is claimed."
         ]
       },
       "limits": [
@@ -384,7 +383,7 @@
     },
     {
       "id": "poissons_ratio_outer",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "name": "Derived Poisson ratio outer envelope (compatible HS rectangle)",
       "quantity": "effective_poissons_ratio",
       "direction": "interval",
@@ -414,7 +413,7 @@
         },
         {
           "source_id": "meille_garboczi_2001",
-          "locator": "Section 2.2 eq. 3, printed p. 374 / PDF p. 4 (extracted text checked; visual rendering not verified)",
+          "locator": "Section 2.2 eq. 3, printed p. 374 / PDF p. 4 (extracted text and rendered equation visually checked on 2026-10-04; 3D isotropic identities only)",
           "verification_status": "algebraic_derivation_from_cited_identities",
           "verified_as": "3D isotropic identity source only: E is rearranged from 9/E=1/K+3/G; nu identity is directly printed. The monotonic outer envelope is a project calculation, not a tight joint-bound claim from this source."
         }
@@ -425,8 +424,7 @@
         "gaps": [
           "Original historical source not fully inspected.",
           "Applicability checks use supplied assertions and numerical inputs, not microstructure verification.",
-          "Separate K/G bounds need not have simultaneously attainable corners; no joint-attainability or sharpness proof is claimed.",
-          "Identity-source equation checked in extracted text only; visual equation verification was not completed."
+          "Separate K/G bounds need not have simultaneously attainable corners; no joint-attainability or sharpness proof is claimed."
         ]
       },
       "limits": [

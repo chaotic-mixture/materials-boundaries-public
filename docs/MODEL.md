@@ -32,6 +32,8 @@ Apply Reuss and Voigt separately to x = K and x = G. For HS, label complete phas
 
 The rational expression is algebraically equivalent to A(x) − f1 f2 (x1−x2)²/(D(x)+c). The bulk forms are cross-checked against [Kochmann–Milton, arXiv v1, equations (117)/(134)](https://arxiv.org/html/1401.4142v1); the shear forms use (118)/(135). This positive form avoids subtracting large nearly equal terms and never divides by a modulus contrast. It is an implementation rearrangement, not a new theoretical bound. Original Hashin–Shtrikman (1963) equation locations and proof remain uninspected; see [Sources](SOURCES.md).
 
+The Reuss expressions retain contextual support from the Kochmann–Milton introduction; an original Reuss equation locator has not been established. Section 4.4 equations (132)–(133), printed/PDF p. 20 of arXiv v1, are translated **bulk**-compliance relations, not a displayed unshifted shear Reuss formula. They do not establish a direct specialization of the implemented shear expression.
+
 For positive inputs R(x1,x2,0) = Reuss(x), and R increases toward Voigt as c grows. Equal K makes every bulk endpoint K; equal G makes both HS bulk endpoints coincide and every shear endpoint G. Equal K alone need not collapse the shear interval. Pure-phase fractions give the active K/G; E/ν follow the isotropic identities below. No geometry or simultaneous bulk/shear attainability is inferred.
 
 ## Derived E and ν outer envelopes
@@ -41,7 +43,7 @@ For a positive, isotropic effective material,
 - E(K,G) = 9KG/(3K+G)
 - ν(K,G) = (3K−2G)/(2(3K+G))
 
-These identities are supported by [Meille & Garboczi (2001), Section 2.2, equation (3), printed p. 374 / PDF page 4](https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=860321). The extracted text gives 9/E = 1/K + 3/G, rearranged above, and the displayed ν identity. Screenshot/render verification failed; the evidence is an extracted-text equation check, not a completed visual check. The source supports the identities only: the outer-envelope construction and monotonicity argument below are project derivations, and the paper is not used to establish this composite's premises or tight joint bounds.
+These identities are supported by [Meille & Garboczi (2001), Section 2.2, equation (3), printed p. 374 / PDF page 4](https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=860321). The extracted text gives 9/E = 1/K + 3/G, rearranged above, and the displayed ν identity. On 2026-10-04 the rendered publisher-typeset NIST-hosted PDF was visually checked at equation (3), printed p. 374 / PDF p. 4, and at the cover. This completed identity-source check supersedes the earlier unsuccessful render attempt; it is not independent scientific or proof review. Only the 3D identities are used, not the separate 2D equation (4). The source supports the identities only: the outer-envelope construction and monotonicity argument below are project derivations, and the paper is not used to establish this composite's premises or tight joint bounds.
 
 E is increasing in both K and G. ν is increasing in K and decreasing in G. Therefore separate compatible HS intervals K ∈ [Klow,Khigh] and G ∈ [Glow,Ghigh] imply
 

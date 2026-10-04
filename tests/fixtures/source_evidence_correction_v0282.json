@@ -1,0 +1,210 @@
+{
+  "schema_version": 1,
+  "release": "0.28.2",
+  "scope": "exact_composite_source_evidence_correction",
+  "review": {
+    "kind": "current_source_curation_correction",
+    "review_date": "2026-10-04",
+    "baseline_commit": "3affa5c5f2520435623a79b1761a436ef96b13bc",
+    "baseline_tree": "2058d6acfc154fda844fab2c8a489924c4eb1e57",
+    "baseline_file_count": 334,
+    "historical_review_claimed": false,
+    "independent_scientific_review": false
+  },
+  "source_evidence": [
+    {
+      "source_id": "kochmann_milton_2014",
+      "url": "https://arxiv.org/pdf/1401.4142v1",
+      "version": "arXiv:1401.4142v1, 16 January 2014",
+      "bytes": 1577932,
+      "pages": 24,
+      "sha256": "ac55c74e3cff34d94b5340a40fbce7f2ef179a7e0b4cef12c5b274c61d39bd00",
+      "locator": "Section 4.4 equations 132–133, printed/PDF page 20",
+      "finding": "Translated bulk compliance, not a directly printed unshifted Reuss shear formula; contextual citation and unknown original locator retained."
+    },
+    {
+      "source_id": "meille_garboczi_2001",
+      "url": "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=860321",
+      "version": "20-page publisher-typeset PDF; no revision label observed",
+      "bytes": 375681,
+      "pages": 20,
+      "sha256": "ef64eb6675e900faf1f8394a8caec3d06463350bb2ec6d0250de5c247804a873",
+      "locator": "Section 2.2 equation 3, printed page 374/PDF page 4; cover printed page 371/PDF page 1",
+      "finding": "Extracted text and rendered 3D isotropic identities visually checked on 2026-10-04; no scientific-expert, proof or joint-attainability review."
+    }
+  ],
+  "metadata_changes": [
+    {
+      "catalog": "claims",
+      "record_id": "reuss_shear",
+      "path": [
+        "evidence",
+        0,
+        "locator"
+      ],
+      "before": "arXiv v1 introduction and section 4.4 eq. 133 (translated-medium shear Reuss relation); the unshifted positive-phase formula is a standard specialization",
+      "after": "arXiv v1 introduction provides Reuss context. Section 4.4 eqs. 132-133, printed/PDF p. 20, are translated bulk-compliance relations, not a displayed shear Reuss formula. The implemented unshifted positive-phase shear expression retains contextual evidence; an original Reuss equation locator has not been established."
+    },
+    {
+      "catalog": "sources",
+      "record_id": "kochmann_milton_2014",
+      "path": [
+        "claim_notes",
+        3
+      ],
+      "before": "Voigt eq. 116 includes shear; unshifted Reuss shear is a standard positive-phase specialization of the compliance-average relation (translated-medium context eq. 133). Derived E/nu envelopes are project calculations from compatible separate bounds, not jointly attainable limits attributed to this paper.",
+      "after": "Voigt eq. 116 includes shear. The unshifted Reuss shear formula retains contextual support from the introduction; section 4.4 eqs. 132-133, printed/PDF p. 20, concern translated bulk compliance and do not directly print the unshifted shear formula. No original Reuss equation locator is established. Derived E/nu envelopes are project calculations from compatible separate bounds, not jointly attainable limits attributed to this paper."
+    },
+    {
+      "catalog": "sources",
+      "record_id": "meille_garboczi_2001",
+      "path": [
+        "read_status"
+      ],
+      "before": "primary_paper_extracted_text_equation_checked_visual_not_verified",
+      "after": "primary_paper_extracted_text_and_visual_equation_checked"
+    },
+    {
+      "catalog": "sources",
+      "record_id": "meille_garboczi_2001",
+      "path": [
+        "claim_notes",
+        2
+      ],
+      "before": "Relevant primary-paper extracted text checked; attempted screenshot/render inspection did not yield an inspectable image. Do not treat this as visual equation verification or independent proof review.",
+      "after": "Relevant primary-paper extracted text was previously checked. On 2026-10-04, the NIST-hosted publisher-typeset PDF was rendered and Section 2.2 equation 3, printed p. 374 / PDF p. 4, was visually checked; the 3D isotropic identities agree with the implementation. The cover was also visually inspected. This supersedes the prior unsuccessful render attempt; it is an identity-source check, not independent scientific or proof review."
+    },
+    {
+      "catalog": "sources",
+      "record_id": "meille_garboczi_2001",
+      "path": [
+        "provenance",
+        "method"
+      ],
+      "before": "NIST-hosted primary-paper extracted equation text and coauthor institutional bibliography checked; metadata, links and original curation notes only.",
+      "after": "NIST-hosted primary-paper extracted equation text and coauthor institutional bibliography checked; metadata, links and original curation notes only. Follow-up visual check completed 2026-10-04 on printed pp. 371 and 374 / PDF pp. 1 and 4 of the 20-page publisher-typeset NIST-hosted PDF, 375681 bytes, SHA256 ef64eb6675e900faf1f8394a8caec3d06463350bb2ec6d0250de5c247804a873; no revision label observed. Initial curation date retained; no PDF or images bundled."
+    },
+    {
+      "catalog": "claims",
+      "record_id": "youngs_modulus_outer",
+      "path": [
+        "evidence",
+        1,
+        "locator"
+      ],
+      "before": "Section 2.2 eq. 3, printed p. 374 / PDF p. 4 (extracted text checked; visual rendering not verified)",
+      "after": "Section 2.2 eq. 3, printed p. 374 / PDF p. 4 (extracted text and rendered equation visually checked on 2026-10-04; 3D isotropic identities only)"
+    },
+    {
+      "catalog": "claims",
+      "record_id": "youngs_modulus_outer",
+      "path": [
+        "verification",
+        "gaps"
+      ],
+      "before": [
+        "Original historical source not fully inspected.",
+        "Applicability checks use supplied assertions and numerical inputs, not microstructure verification.",
+        "Separate K/G bounds need not have simultaneously attainable corners; no joint-attainability or sharpness proof is claimed.",
+        "Identity-source equation checked in extracted text only; visual equation verification was not completed."
+      ],
+      "after": [
+        "Original historical source not fully inspected.",
+        "Applicability checks use supplied assertions and numerical inputs, not microstructure verification.",
+        "Separate K/G bounds need not have simultaneously attainable corners; no joint-attainability or sharpness proof is claimed."
+      ]
+    },
+    {
+      "catalog": "claims",
+      "record_id": "poissons_ratio_outer",
+      "path": [
+        "evidence",
+        1,
+        "locator"
+      ],
+      "before": "Section 2.2 eq. 3, printed p. 374 / PDF p. 4 (extracted text checked; visual rendering not verified)",
+      "after": "Section 2.2 eq. 3, printed p. 374 / PDF p. 4 (extracted text and rendered equation visually checked on 2026-10-04; 3D isotropic identities only)"
+    },
+    {
+      "catalog": "claims",
+      "record_id": "poissons_ratio_outer",
+      "path": [
+        "verification",
+        "gaps"
+      ],
+      "before": [
+        "Original historical source not fully inspected.",
+        "Applicability checks use supplied assertions and numerical inputs, not microstructure verification.",
+        "Separate K/G bounds need not have simultaneously attainable corners; no joint-attainability or sharpness proof is claimed.",
+        "Identity-source equation checked in extracted text only; visual equation verification was not completed."
+      ],
+      "after": [
+        "Original historical source not fully inspected.",
+        "Applicability checks use supplied assertions and numerical inputs, not microstructure verification.",
+        "Separate K/G bounds need not have simultaneously attainable corners; no joint-attainability or sharpness proof is claimed."
+      ]
+    }
+  ],
+  "claim_version_changes": [
+    {
+      "catalog": "claims",
+      "record_id": "reuss_shear",
+      "path": [
+        "version"
+      ],
+      "before": "1.1.0",
+      "after": "1.1.1"
+    },
+    {
+      "catalog": "claims",
+      "record_id": "youngs_modulus_outer",
+      "path": [
+        "version"
+      ],
+      "before": "1.1.0",
+      "after": "1.1.1"
+    },
+    {
+      "catalog": "claims",
+      "record_id": "poissons_ratio_outer",
+      "path": [
+        "version"
+      ],
+      "before": "1.1.0",
+      "after": "1.1.1"
+    }
+  ],
+  "record_digests": {
+    "claims": {
+      "reuss_shear": {
+        "before": "c652c78cdbc3a8fa4fd45623966c330bc4ac160d057f598c5be3205f4c9487d9",
+        "after": "605d111930299ac5561fddce7a270ee068eee7723fd1608ee3f1e8eb8a7dbf47"
+      },
+      "youngs_modulus_outer": {
+        "before": "210e014c9bf48b63a9532a1ee71186efdd758dac2e47addd3ea1660cf43a8c1b",
+        "after": "bc3648b0e90f9c777f66e4d27438c8b50e8ed4151ab6169f48e95763773a1a97"
+      },
+      "poissons_ratio_outer": {
+        "before": "e3d427cd403a6ab6b8755e2cdb3a6b540c6826f50447b513f664700f1475196b",
+        "after": "121c034e028f5fa734a0de875ebf655e02bef60d652245c9ae1dcb01a613546a"
+      }
+    },
+    "sources": {
+      "kochmann_milton_2014": {
+        "before": "519bd57e97dcec26297c164d2020c03c3787f69b3cf4e30c23a373b5d09e38fa",
+        "after": "40e85ee6296d598053746e97c84c28526b62d8ebb555e49ae72660f35d9e16c4"
+      },
+      "meille_garboczi_2001": {
+        "before": "8b75e376e690f392c83c8fdef41b1efcc2938b984890adfc8eaeab6a1332145d",
+        "after": "1a065cbd48762545a5d7cdd358f9a5509ec830760f56876ee5fa07181124915d"
+      }
+    }
+  },
+  "rights_and_limits": [
+    "No PDF, images or extracted article prose bundled; hashes identify inspected bytes, not reuse permission or theorem validity.",
+    "Original Reuss and Hashin–Shtrikman equation/proof locators remain unverified.",
+    "No formula, scientific schema, numerical policy, applicability gate, license status or scientific-review status changes.",
+    "Sources have no per-record version field; this dated ledger and canonical predecessor/successor digests identify their revisions.",
+    "Old report bundles remain stale under current strict replay. Regenerate explicitly from retained original inputs; never edit old bundle hashes in place."
+  ]
+}

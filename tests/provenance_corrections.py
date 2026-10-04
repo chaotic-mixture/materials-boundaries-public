@@ -8,6 +8,7 @@ import copy
 import hashlib
 import json
 from pathlib import Path
+from source_evidence_preservation import previous_record
 
 LEDGER = json.loads((Path(__file__).parent / 'fixtures/nist_reuse_correction_v0132.json').read_text(encoding='utf-8'))
 DIRECTIONAL_TEST_UPDATES = json.loads((Path(__file__).parent / 'fixtures/directional_test_updates_v0150.json').read_text(encoding='utf-8'))
@@ -155,8 +156,8 @@ def reviewed_paht_test_hash(filename, expected):
 
 
 def public_previous_record(kind, record):
-    """Undo only exact bibliography-scope corrections for private-baseline parity."""
-    result = copy.deepcopy(record)
+    """Undo exact current evidence, then older bibliography corrections."""
+    result = previous_record(kind, record)
     if kind == 'sources':
         for change in reversed(PUBLIC_BASELINE['source_corrections'].get(record['id'], [])):
             parent = result

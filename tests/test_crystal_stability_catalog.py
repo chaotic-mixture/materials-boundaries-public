@@ -14,6 +14,7 @@ import unittest
 from unittest.mock import patch
 
 from materials_boundaries import evaluate, load_json
+from source_evidence_preservation import previous_record
 from materials_boundaries.catalog import query_catalog, read_catalog
 from materials_boundaries.catalog_output import render_catalog
 from materials_boundaries.i18n import LANGUAGES, translate
@@ -208,7 +209,9 @@ def rotate_strain(strain, rotation):
 class CrystalStabilityCatalogTests(unittest.TestCase):
     def test_historical_science_and_crystal_ids_are_preserved(self):
         prior_ids = EXECUTABLE_IDS + GRIFFITH_IDS + MECHANICS_IDS + CORE_STABILITY_IDS + POROUS_IDS
-        self.assertEqual(scientific_digest(historical_records('claims', prior_ids)),
+        predecessors = [previous_record('claims', record)
+                        for record in historical_records('claims', prior_ids)]
+        self.assertEqual(scientific_digest(predecessors),
                          '457c411b56a6bb4ce8a1ac46c7874de2bd2a42cfc7da30b8094546b2d855d841')
         self.assertEqual(tuple(c['id'] for c in records()), IDS)
         # Bibliography and observation science stay anchored by ID, without

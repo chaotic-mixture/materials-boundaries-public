@@ -13,6 +13,7 @@ import unittest
 
 from provenance_corrections import reviewed_current_test_hash, reviewed_paht_test_hash
 
+from source_evidence_preservation import previous_record
 from materials_boundaries.catalog import read_catalog
 from materials_boundaries.observation_visualization import POLICY as INSPECTION_POLICY
 from materials_boundaries.engine import BASE_RULES, DERIVED_RULES
@@ -32,7 +33,7 @@ class TemperaturePlotPreservationTests(unittest.TestCase):
             current = {record['id']: record for record in read_catalog(kind)['records']}
             for identifier, value in expected.items():
                 with self.subTest(kind=kind, identifier=identifier):
-                    record = deepcopy(current[identifier])
+                    record = previous_record(kind, current[identifier])
                     if kind == 'claims':
                         evidence = {digest(item): item for item in record['evidence']}
                         record['evidence'] = [evidence[h] for h in BASELINE['claim_evidence_sha256'][identifier]]

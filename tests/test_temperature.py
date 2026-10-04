@@ -12,6 +12,7 @@ import unittest
 from unittest.mock import patch
 import xml.etree.ElementTree as ET
 
+from source_evidence_preservation import previous_record
 from materials_boundaries.catalog import read_catalog
 from materials_boundaries.temperature import (TemperatureError, evaluate_temperature, get_model,
                                              render_prediction, validate_model_catalog)
@@ -32,7 +33,7 @@ class TemperatureTests(unittest.TestCase):
     def test_original_catalog_science_and_evidence_remain(self):
         baseline=load_json(ROOT/'tests/fixtures/pre_temperature_records.json')
         for kind,records in baseline.items():
-            live={r['id']:r for r in read_catalog(kind)['records']}
+            live={r['id']:previous_record(kind, r) for r in read_catalog(kind)['records']}
             for r in records:
                 for k,v in r.items():
                     if k in ('evidence','claim_notes','urls'):

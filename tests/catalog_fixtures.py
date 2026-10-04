@@ -12,6 +12,7 @@ import json
 from pathlib import Path
 from unittest.mock import patch
 
+from source_evidence_preservation import current_provenance
 from materials_boundaries.catalog import read_catalog
 
 EXECUTABLE_IDS = (
@@ -206,7 +207,9 @@ def evidence_for(record, source_id):
     candidates = [item for item in record['evidence'] if item['source_id'] == source_id]
     identifier = record.get('id')
     for kind in ('claims', 'observations'):
-        expected = _provenance_baseline()[kind].get(identifier, {}).get('evidence', [])
+        baseline = _provenance_baseline()[kind].get(identifier)
+        expected = (current_provenance(kind, identifier, baseline).get('evidence', [])
+                    if baseline is not None else [])
         for original in expected:
             if original['source_id'] == source_id and original in candidates:
                 return next(item for item in candidates if item == original)
@@ -265,8 +268,8 @@ def _provenance_baseline():
 
 
 def expected_provenance(kind, identifier):
-    """Historical provenance expectations live in data, not old test literals."""
-    return _provenance_baseline()[kind][identifier]
+    """Current expectations overlay only exact reviewed historical corrections."""
+    return current_provenance(kind, identifier, _provenance_baseline()[kind][identifier])
 
 
 def expected_evidence(kind, identifier, source_id):

@@ -11,6 +11,7 @@ from pathlib import Path
 from viscoelastic_preservation import pre_viscoelastic_bytes
 import unittest
 
+from source_evidence_preservation import previous_record
 from materials_boundaries.catalog import read_catalog, query_catalog
 from materials_boundaries.i18n import translate
 from materials_boundaries._pa12_cf15_observation_contract import PA12_SOURCE, PA12_QUANTITY
@@ -32,7 +33,7 @@ class PA12HistoricPreservation(unittest.TestCase):
             records = {r['id']: r for r in read_catalog(kind)['records']}
             for identifier, expected_hash in expected.items():
                 with self.subTest(kind=kind, identifier=identifier):
-                    record = deepcopy(records[identifier])
+                    record = previous_record(kind, records[identifier])
                     if kind == 'claims':
                         evidence = {digest(e): e for e in record['evidence']}
                         record['evidence'] = [evidence[h] for h in BASELINE['claim_evidence_sha256'][identifier]]

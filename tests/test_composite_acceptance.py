@@ -16,6 +16,7 @@ from html.parser import HTMLParser
 import json
 import os
 from pathlib import Path
+from source_evidence_preservation import previous_record
 import re
 import subprocess
 import sys
@@ -663,7 +664,7 @@ class CompositeAcceptanceTests(unittest.TestCase):
             for identifier, expected in frozen['records_sha256'].items():
                 with self.subTest(catalog=name, record=identifier):
                     self.assertIn(identifier, records)
-                    record = deepcopy(records[identifier])
+                    record = previous_record(name, records[identifier])
                     # Established contribution tests may append independent
                     # evidence to catalog-only claims. Keep every original
                     # evidence entry, its multiplicity and relative order;
@@ -699,7 +700,8 @@ class CompositeAcceptanceTests(unittest.TestCase):
             self.assertEqual(claims[identifier]['evidence'][0]['verification_status'], 'standard_formula_with_context_source')
         for identifier in IDS[6:]:
             self.assertTrue(any('project' in e['verified_as'] and 'derivation' in e['verified_as'] for e in claims[identifier]['evidence']))
-            self.assertTrue(any('visual' in gap and 'not completed' in gap for gap in claims[identifier]['verification']['gaps']))
+            self.assertTrue(any('visual' in gap and 'not completed' in gap for gap in previous_record('claims', claims[identifier])['verification']['gaps']))
+            self.assertFalse(any('visual' in gap and 'not completed' in gap for gap in claims[identifier]['verification']['gaps']))
 
     def test_A27_unresolved_user_source_never_manufactures_bibliography(self):
         data = case(); data['provenance']['source_ids'] = ['user_note_unknown_source', 'javascript:alert(1)']

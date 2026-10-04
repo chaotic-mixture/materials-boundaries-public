@@ -11,6 +11,7 @@ import hashlib
 import inspect
 import json
 from pathlib import Path
+from source_evidence_preservation import pre_evidence_bytes
 from viscoelastic_preservation import pre_viscoelastic_bytes
 import unittest
 from unittest.mock import patch
@@ -129,7 +130,7 @@ class HelperLineageTests(unittest.TestCase):
 
     def test_full_self_traversal_ends_at_actual_current_helper_bytes(self):
         self.assertEqual(history.COMPRESSIBILITY_TEST_UPDATES['approved_test_updates'][HELPER]['previous_sha256'], FIRST_ANCHOR)
-        self.assertEqual(history.reviewed_test_hash(HELPER, FIRST_ANCHOR), sha((ROOT / HELPER).read_bytes()))
+        self.assertEqual(history.reviewed_test_hash(HELPER, FIRST_ANCHOR), sha(pre_evidence_bytes(HELPER, (ROOT / HELPER).read_bytes())))
         source = inspect.getsource(history.reviewed_test_hash)
         self.assertLess(source.index("change = PUBLIC_BASELINE['approved_test_updates']"),
                         source.index('_reviewed_bootstrap_hash(filename, expected)'))
@@ -156,7 +157,7 @@ class HelperLineageTests(unittest.TestCase):
     def test_arbitrary_and_intermediate_helper_anchors_fail(self):
         evidence = history.HELPER_BOOTSTRAP_BRIDGE['evidence']
         bad = ['', '0' * 64, evidence['predecessor_sha256'], evidence['public_introduction_sha256'],
-               sha((ROOT / HELPER).read_bytes())]
+               sha(pre_evidence_bytes(HELPER, (ROOT / HELPER).read_bytes()))]
         bad.extend(step['sha256'] for step in evidence['subsequent_public_steps'])
         for anchor in bad:
             with self.subTest(anchor=anchor), self.assertRaises(AssertionError):
@@ -171,7 +172,7 @@ class HelperLineageTests(unittest.TestCase):
         for filename, expected in evidence['historical_fixture_sha256'].items():
             with self.subTest(filename=filename):
                 self.assertEqual(sha(pre_viscoelastic_bytes(filename, (ROOT / filename).read_bytes())), expected)
-        source = (ROOT / HELPER).read_text()
+        source = pre_evidence_bytes(HELPER, (ROOT / HELPER).read_bytes()).decode('utf-8')
         lines = source.splitlines(keepends=True)
         functions = {node.name: ''.join(lines[node.lineno - 1:node.end_lineno]).encode()
                      for node in ast.parse(source).body if isinstance(node, ast.FunctionDef)}

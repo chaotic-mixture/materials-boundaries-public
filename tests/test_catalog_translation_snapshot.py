@@ -10,6 +10,7 @@ import threading
 import unittest
 from unittest.mock import patch
 
+from source_evidence_preservation import previous_catalog
 from materials_boundaries.catalog import query_catalog, read_catalog
 from viscoelastic_preservation import historical_claims_envelope
 from materials_boundaries.catalog_output import render_catalog
@@ -35,7 +36,7 @@ class CatalogTranslationSnapshotTests(unittest.TestCase):
     def test_original_catalog_text_bytes_and_canonical_json_in_four_languages(self):
         golden = json.loads((ROOT / "tests/fixtures/catalog_translation_v0201.json").read_text())
         for kind, expected in golden["catalogs"].items():
-            catalog = query_catalog(kind)
+            catalog = previous_catalog(kind, query_catalog(kind))
             records = {record["id"]: record for record in catalog["records"]}
             catalog["records"] = [records[identifier] for identifier in expected["record_ids"]]
             for key, identifiers in expected["metadata_ids"].items():
@@ -52,7 +53,10 @@ class CatalogTranslationSnapshotTests(unittest.TestCase):
             before = copy.deepcopy(catalog)
             for language in LANGUAGES:
                 with self.subTest(kind=kind, language=language):
-                    text = render_catalog(catalog, kind, language)
+                    # Historical text also renders referenced source records.
+                    with patch("materials_boundaries.catalog_output.read_catalog",
+                               side_effect=lambda name: previous_catalog(name, read_catalog(name))):
+                        text = render_catalog(catalog, kind, language)
                     self.assertEqual(hashlib.sha256(text.encode()).hexdigest(), expected["text_sha256"][language])
                     self.assertEqual(catalog, before)
                     # Only the observation envelope advances in v0.22; the

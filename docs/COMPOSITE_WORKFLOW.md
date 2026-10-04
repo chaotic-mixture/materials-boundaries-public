@@ -97,9 +97,15 @@ JavaScript Number conversion is used. Human modulus endpoints are approximate;
 rebuilds it with the installed engine/catalog contract and compares canonical
 contents. Altered IDs, checks, numbers, dependencies, policy, source locators,
 gaps, review flags or stale versions fail closed. It never migrates or rewrites
-an input. Hashes use sorted-key finite-number UTF-8 JSON and establish content
-identity only. A consistently replaced entire bundle can replay; these hashes
-do not authenticate its author or establish that citations/inputs are true.
+an input. The [v0.28.2 metadata correction](MIGRATION_v0.28.2.md) changes source
+locators, reading status and closed visual-check gaps, as well as three claim
+patch versions and the software version. Earlier report bundles are therefore
+stale under the current catalog even though numerical outputs are unchanged.
+Keep old artifacts intact and explicitly regenerate from their original input
+into a new output directory; there is no automatic report migration. Hashes use
+sorted-key finite-number UTF-8 JSON and establish content identity only. A
+consistently replaced entire bundle can replay; these hashes do not authenticate
+its author or establish that citations/inputs are true.
 
 The manifest hashes saved artifact bytes separately, excluding itself. Bundle
 replay does **not** verify that report.html/report.txt remain unmodified. To
@@ -176,12 +182,18 @@ that leaves an empty staging file or directory. No existing output is silently r
 ## Evidence and interpretation boundaries
 
 The historical HS 1963 original equations/proof remain uninspected; absent
-locators remain null. Kochmann–Milton arXiv v1 cross-check locators are preserved.
-Reuss has a standard positive-phase expression with contextual support, not an
-invented inspected original equation. Meille–Garboczi isotropic identities are
-text-checked with visual verification incomplete. The E/ν outer envelope is a
-project derivation, not a theorem attributed to that paper. Original software
-and curation licensing does not relicense third-party publications.
+locators remain null. Kochmann–Milton arXiv v1 section 4.4 equations (132)–(133),
+printed/PDF p. 20, are translated bulk-compliance relations, not a displayed
+shear Reuss formula. Reuss retains a standard positive-phase expression with
+contextual support; no original Reuss equation locator has been established.
+Meille–Garboczi equation (3), printed p. 374 / PDF p. 4, and the cover were
+visually checked on 2026-10-04, supplementing the earlier text check. Only the
+3D isotropic identities are used; the separate 2D identities are not imported.
+This closes the visual transcription gap, not independent scientific or proof
+review. The E/ν outer envelope remains a project derivation, not a theorem
+attributed to that paper or a jointly attainable sharp bound. Original software
+and curation licensing does not relicense third-party publications; no source
+PDF or rendered image is bundled.
 
 An effective measurement inside a calculated interval does not independently
 validate the model; an apparent exceedance does not automatically refute a

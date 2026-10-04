@@ -2,6 +2,7 @@
 import hashlib
 import json
 from pathlib import Path
+from source_evidence_preservation import previous_catalog
 from viscoelastic_preservation import pre_viscoelastic_bytes, historical_claims_envelope
 import unittest
 
@@ -32,7 +33,8 @@ class StudyComparisonPreservationTests(unittest.TestCase):
             return hashlib.sha256(json.dumps(value, ensure_ascii=False, sort_keys=True,
                 separators=(',', ':'), allow_nan=False).encode()).hexdigest()
         for filename, fields in BASELINE['catalog_preservation'].items():
-            current = json.loads((ROOT / filename).read_text())
+            current = previous_catalog(Path(filename).stem,
+                json.loads((ROOT / filename).read_text()))
             if filename == 'materials_boundaries/data/claims.json':
                 current = historical_claims_envelope(current)
             for key, baseline in fields.items():

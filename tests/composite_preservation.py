@@ -9,6 +9,7 @@ import hashlib
 import json
 import re
 from pathlib import Path
+from source_evidence_preservation import previous_record
 from windows_export_preservation import pre_windows_export_bytes
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -257,7 +258,7 @@ def verify_catalog(filename, current, *, ledger=None):
             for identifier, expected in values.items():
                 if identifier not in index:
                     raise AssertionError('Missing v0.28 prior object: ' + identifier)
-                prior = deepcopy(index[identifier])
+                prior = previous_record(Path(filename).stem, index[identifier])
                 if identifier in baseline.get('evidence_digests', {}):
                     pinned = baseline['evidence_digests'][identifier]
                     evidence = prior.get('evidence')

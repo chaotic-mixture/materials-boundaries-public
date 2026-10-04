@@ -20,6 +20,7 @@ from materials_boundaries import evaluate, load_json
 from materials_boundaries._wave_contract import (
     CHRISTOFFEL_RULE, ISOTROPIC_RULE, WAVE_CONTRACTS, validate_wave_records,
 )
+from source_evidence_preservation import previous_record
 from materials_boundaries.catalog import query_catalog, read_catalog
 from materials_boundaries.catalog_output import render_catalog
 from materials_boundaries.engine import BASE_RULES, DERIVED_RULES
@@ -321,7 +322,7 @@ class BulkWaveCatalogTests(unittest.TestCase):
             for identifier, expected in snapshots.items():
                 with self.subTest(kind=kind, identifier=identifier):
                     self.assertIn(identifier, current)
-                    record = current[identifier]
+                    record = previous_record(kind, current[identifier])
                     science = {k: v for k, v in record.items() if k not in CURATION_FIELDS}
                     self.assertEqual(digest(science), expected['science_sha256'])
                     for key, prior_digests in expected['append_only'].items():

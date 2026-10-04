@@ -10,6 +10,7 @@ from copy import deepcopy
 import hashlib
 import json
 from pathlib import Path
+from source_evidence_preservation import pre_evidence_bytes
 import unittest
 
 import composite_preservation as composite
@@ -141,11 +142,12 @@ class WindowsExportPreservationTests(unittest.TestCase):
 
     def release_bytes(self, filename):
         current = (ROOT / filename).read_bytes()
-        return composite.release_readme_bytes(current) if filename == 'README.md' else current
+        current = composite.release_readme_bytes(current) if filename == 'README.md' else current
+        return pre_evidence_bytes(filename, current)
 
     def test_independent_pins_and_exact_public_anchor(self):
         self.assertEqual(sha((ROOT / preservation.LEDGER_PATH).read_bytes()), LEDGER_SHA256)
-        self.assertEqual(sha((ROOT / 'tests/windows_export_preservation.py').read_bytes()), ADAPTER_SHA256)
+        self.assertEqual(sha(pre_evidence_bytes('tests/windows_export_preservation.py', (ROOT / 'tests/windows_export_preservation.py').read_bytes())), ADAPTER_SHA256)
         self.assertEqual(preservation.BASELINE_COMMIT, '08ca206c1ae558643e38bde5dfc632cb65328c68')
         self.assertEqual(preservation.BASELINE_TREE, '203db3af3b54198b175ab631643f0a673b529716')
         self.assertEqual(self.ledger['review']['baseline_file_count'], 328)
@@ -177,7 +179,7 @@ class WindowsExportPreservationTests(unittest.TestCase):
         for filename, expected in dict(fixtures, **examples, **schemas,
                 **{'tests/provenance_corrections.py': baseline['tests/provenance_corrections.py']}).items():
             with self.subTest(filename=filename):
-                self.assertEqual(sha((ROOT / filename).read_bytes()), expected)
+                self.assertEqual(sha(pre_evidence_bytes(filename, (ROOT / filename).read_bytes())), expected)
 
     def test_scientific_catalog_preservation_uses_unchanged_prior_ledger(self):
         baseline = self.ledger['baseline_sha256']
@@ -200,21 +202,21 @@ class WindowsExportPreservationTests(unittest.TestCase):
     def test_only_exact_reader_bridges_and_all_old_test_declarations_assertions_remain(self):
         entries = preservation.validate_ledger(self.ledger)
         for filename in COMPATIBILITY_READERS:
-            current = (ROOT / filename).read_bytes()
+            current = pre_evidence_bytes(filename, (ROOT / filename).read_bytes())
             before = preservation.reverse_exact_edits(current, entries[filename])
             self.assertEqual(current, expected_compatibility_update(filename, before.decode('utf-8')).encode('utf-8'))
             self.assertEqual(declarations(before), declarations(current), filename)
         filename = 'tests/test_composite_export.py'
-        current = (ROOT / filename).read_bytes()
+        current = pre_evidence_bytes(filename, (ROOT / filename).read_bytes())
         before = preservation.reverse_exact_edits(current, entries[filename])
         self.assertEqual(current, expected_export_platform_update(before.decode('utf-8')).encode('utf-8'))
         filename = 'tests/test_composite_acceptance.py'
-        current = (ROOT / filename).read_bytes()
+        current = pre_evidence_bytes(filename, (ROOT / filename).read_bytes())
         before = preservation.reverse_exact_edits(current, entries[filename])
         self.assertEqual(current, expected_acceptance_platform_update(before.decode('utf-8')).encode('utf-8'))
         for filename in self.ledger['baseline_sha256']:
             if filename.startswith('tests/') and filename.endswith('.py'):
-                current = (ROOT / filename).read_bytes()
+                current = pre_evidence_bytes(filename, (ROOT / filename).read_bytes())
                 before = preservation.pre_windows_export_bytes(filename, current)
                 self.assertLessEqual(declarations(before), declarations(current), filename)
                 old_assertions, current_assertions = assertion_signatures(before), assertion_signatures(current)
@@ -224,7 +226,7 @@ class WindowsExportPreservationTests(unittest.TestCase):
 
     def test_wheel_smoke_checker_changes_only_utf8_readers_and_isolated_launcher(self):
         filename = 'scripts/check_wheel_metadata.py'
-        current = (ROOT / filename).read_bytes()
+        current = pre_evidence_bytes(filename, (ROOT / filename).read_bytes())
         before = preservation.pre_windows_export_bytes(filename, current)
         self.assertEqual(before.count(b'.read_text()'), 9)
         expected = before.replace(b'.read_text()', b".read_text(encoding='utf-8')")

@@ -15,6 +15,7 @@ from uuid import uuid4
 from jsonschema import Draft202012Validator
 from materials_boundaries import ValidationError, evaluate, load_json
 from materials_boundaries._hbn_observation_contract import HBN_FAMILY, HBN_SOURCE, HBN_REVIEW
+from source_evidence_preservation import previous_record
 from materials_boundaries.catalog import read_catalog, query_catalog, CatalogLookupError
 from materials_boundaries.catalog_output import render_catalog
 from materials_boundaries.i18n import LANGUAGES, translate
@@ -125,7 +126,7 @@ class HBNSourceFacts(unittest.TestCase):
             index={r['id']:r for r in read_catalog(kind)['records']}
             for identifier,digest in expected.items():
                 with self.subTest(kind=kind,id=identifier):
-                    record=copy.deepcopy(index[identifier])
+                    record=previous_record(kind, index[identifier])
                     if kind == 'claims':
                         # Evidence can accumulate on an existing claim. Restore
                         # only the exact, individually hashed baseline members
