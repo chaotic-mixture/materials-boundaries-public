@@ -39,6 +39,10 @@ EVIDENCE_KINDS = (
     "published_experimental_reference", "published_computational_reference",
     "published_handbook_reference", "published_measurement_derived_reference",
 )
+NUMERICAL_UNCERTAINTIES = (
+    "reported_standard_deviation", "reported_confidence_interval",
+    "reported_plus_minus_unspecified",
+)
 REPORTING_BASES = (
     "typical", "nominal", "guideline", "specification_limit",
     "reported_summary", "not_stated",
@@ -162,11 +166,33 @@ def _make_properties_schema():
         _object({"kind": {"const": "comparison"}, **common_value,
                  "operator": _enum((">", ">=", "<", "<=")), "number": DECIMAL}),
     ]}
-    definitions["uncertainty"] = _object({
-        "type": {"const": "reported_standard_deviation"}, **common_value,
-        "number": DECIMAL, "scope": TEXT, "coverage_factor": NULL,
-        "confidence_level": NULL, "evidence": evidence,
+    # Closed source-reported uncertainty variants. An amplitude alone never
+    # establishes dispersion, mean aggregation or a confidence construction.
+    # Keep the existing SD shape unchanged for old catalog/output compatibility.
+    uncertainty_common = {**common_value, "number": DECIMAL, "scope": TEXT,
+                          "coverage_factor": NULL, "evidence": evidence}
+    definitions["confidence_level"] = _object({
+        "value_text": TEXT, "number": DECIMAL, "unit_code": {"const": "percent"},
     })
+    definitions["uncertainty_fact"] = {"oneOf": [
+        _object({"status": {"const": "reported"}, "text": TEXT,
+                 "evidence": evidence, "notes": NULLABLE_TEXT}),
+        _object({"status": {"const": "not_reported_in_inspected_source"}, "text": NULL,
+                 "evidence": _array(_ref("evidence")), "notes": TEXT}),
+    ]}
+    definitions["reported_window"] = _object({
+        "status": {"const": "reported"}, "text": TEXT,
+        "evidence": evidence, "notes": NULLABLE_TEXT,
+    })
+    definitions["uncertainty"] = {"oneOf": [
+        _object({"type": {"const": "reported_standard_deviation"},
+                 **uncertainty_common, "confidence_level": NULL}),
+        _object({"type": {"const": "reported_confidence_interval"},
+                 **uncertainty_common, "confidence_level": _ref("confidence_level"),
+                 "estimand": _ref("uncertainty_fact"), "construction": _ref("uncertainty_fact")}),
+        _object({"type": {"const": "reported_plus_minus_unspecified"},
+                 **uncertainty_common, "confidence_level": NULL}),
+    ]}
     definitions["sample_count"] = {"oneOf": [
         _object({"value": {"type": "integer", "minimum": 1}, "relation": _enum(("exact", "at_least")),
                  "scope": TEXT, "source_statement": TEXT, "evidence": evidence}),
@@ -194,11 +220,11 @@ def _make_properties_schema():
         "density_basis": {"anyOf": [_enum(("apparent", "bulk", "true", "crystallographic", "not_stated")), NULL]},
         "summary_statistic": _enum(("not_stated", "reported_value", "reported_mean")),
         "uncertainty": {"anyOf": [_ref("uncertainty"), NULL]},
-        "uncertainty_status": _enum(("reported_standard_deviation", "not_reported_in_inspected_source", "not_applicable")),
+        "uncertainty_status": _enum((*NUMERICAL_UNCERTAINTIES, "not_reported_in_inspected_source", "not_applicable")),
         "uncertainty_note": TEXT, "sample_count": _ref("sample_count"),
         "method_definition": _object({"type": _enum(("source_reported_conventional", "source_reported_compilation",
                                                        "source_reported_crystallographic_derivation")),
-                                       "definition": TEXT, "extraction_window": NULL, "evidence": evidence}),
+                                       "definition": TEXT, "extraction_window": {"anyOf": [_ref("reported_window"), NULL]}, "evidence": evidence}),
         "source_discrepancies": _array(_object({"description": TEXT, "disposition": TEXT, "evidence": evidence})),
         "source_id": TEXT, "evidence": evidence, "source_document": _ref("source_document"),
         "scope_note": TEXT, "evaluation_support": {"const": "catalog_only"},
@@ -514,6 +540,9 @@ def _validate_property(prop):
     if not any(entry["url"] == prop["source_document"]["url"] for entry in value_evidence):
         _fail(path, "primary value evidence must identify inspected document")
     _require_tag(prop["method_definition"]["evidence"], "method", path, source)
+    window = prop["method_definition"]["extraction_window"]
+    if window is not None:
+        _require_tag(window["evidence"], "method", path + ".extraction_window", source)
     for fact in prop["conditions"].values():
         facts = [item["fact"] for item in fact] if isinstance(fact, list) else [fact]
         for item in facts:
@@ -566,14 +595,29 @@ def _validate_property(prop):
         _require_tag(prop["evidence"], "summary_statistic", path, source)
     uncertainty = prop["uncertainty"]
     if uncertainty is not None:
-        if not is_mean or prop["uncertainty_status"] != "reported_standard_deviation":
+        kind = uncertainty["type"]
+        if prop["uncertainty_status"] != kind:
+            _fail(path, "uncertainty status must match its reported numerical type")
+        if prop["reported_value"]["kind"] != "scalar":
+            _fail(path, "reported symmetric uncertainty requires a scalar central result")
+        if kind == "reported_standard_deviation" and not is_mean:
             _fail(path, "SD requires explicit reported mean and uncertainty status")
         if uncertainty["unit_code"] != prop["reported_value"]["unit_code"]:
-            _fail(path, "SD unit must equal result unit")
+            _fail(path, "uncertainty unit must equal result unit")
         _validate_value(uncertainty, path + ".uncertainty", dimension, nonnegative=True)
         _require_tag(uncertainty["evidence"], "uncertainty", path, source)
-    elif prop["uncertainty_status"] == "reported_standard_deviation":
-        _fail(path, "SD status requires numerical SD")
+        if kind == "reported_confidence_interval":
+            level = uncertainty["confidence_level"]
+            if not Decimal("0") < Decimal(level["number"]) < Decimal("100"):
+                _fail(path, "confidence level must be strictly between 0 and 100 percent")
+            match = re.fullmatch(r"(.+?)\s*%", level["value_text"].strip())
+            if not match or not _numeric_token_matches(match[1], level["number"]):
+                _fail(path, "confidence-level text must preserve percent value and precision")
+            for name in ("estimand", "construction"):
+                if uncertainty[name]["status"] == "reported":
+                    _require_tag(uncertainty[name]["evidence"], "uncertainty", path + "." + name, source)
+    elif prop["uncertainty_status"] in NUMERICAL_UNCERTAINTIES:
+        _fail(path, "numerical uncertainty status requires its reported amplitude")
     count = prop["sample_count"]
     if count["value"] is not None:
         _require_tag(count["evidence"], "sample_count", path, source)

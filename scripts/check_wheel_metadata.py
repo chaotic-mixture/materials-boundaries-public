@@ -826,7 +826,54 @@ for evidence_kind, (basis, method) in new_reference_classes.items():
         require(code == 0 and json.loads(stdout.getvalue()) == selected,
                 'expanded exact evidence filter changed by language')
 
+# Generic CI and unspecified-± metadata remain lossless in an isolated install.
+uncertainty_variants = {'reported_confidence_interval': 'confidence_interval',
+                        'reported_plus_minus_unspecified': 'plus_minus_unspecified'}
+for uncertainty_kind, label in uncertainty_variants.items():
+    selected_rows = [p for p in reference_properties['records']
+                     if p['uncertainty_status'] == uncertainty_kind]
+    require(bool(selected_rows), 'missing installed uncertainty variant')
+    for prop in selected_rows:
+        selected = query_catalog('reference-properties', record_id=prop['id'])
+        uncertainty = prop['uncertainty']
+        require(uncertainty['type'] == uncertainty_kind, 'installed uncertainty type/status mismatch')
+        for language in languages:
+            labels = material_labels(language)
+            text = render_catalog(selected, 'reference-properties', language)
+            require(labels[label] + ': ' + uncertainty['value_text'] + ' ' + uncertainty['unit_text'] in text,
+                    'installed uncertainty mislabeled or amplitude missing')
+            require(labels['standard_deviation'] + ':' not in text and labels['statistics_notice'] not in text,
+                    'installed non-SD uncertainty displayed as SD')
+            require(prop['uncertainty_note'] in text and prop['sample_count']['scope'] in text,
+                    'installed source expression or sample scope lost')
+            if uncertainty_kind == 'reported_confidence_interval':
+                require(labels['confidence_level'] + ': ' + uncertainty['confidence_level']['value_text'] in text,
+                        'installed CI level lost')
+                for key in ('estimand', 'construction'):
+                    require(labels[key] + ':' in text, 'installed CI definition omitted')
+            window = prop['method_definition']['extraction_window']
+            if window is not None:
+                require(window['text'] in text, 'installed extraction window lost')
+            stdout = io.StringIO()
+            with redirect_stdout(stdout):
+                code = main(['catalog', 'reference-properties', '--id', prop['id'], '--lang', language, '--json'])
+            require(code == 0 and json.loads(stdout.getvalue()) == selected,
+                    'installed uncertainty CLI JSON changed by language')
+        for mutation in ('status', 'amplitude', 'unit', 'confidence'):
+            altered = deepcopy(reference_properties)
+            target = next(p for p in altered['records'] if p['id'] == prop['id'])
+            if mutation == 'status': target['uncertainty_status'] = 'not_reported_in_inspected_source'
+            elif mutation == 'amplitude': target['uncertainty'] = None
+            elif mutation == 'unit': target['uncertainty']['unit_code'] = 'kg/m^3'
+            elif uncertainty_kind == 'reported_confidence_interval':
+                target['uncertainty']['confidence_level']['number'] = '100'
+            else: target['uncertainty']['confidence_level'] = {'value_text':'95%', 'number':'95', 'unit_code':'percent'}
+            rejects(lambda: validate_material_catalog(materials, altered, reference_sources),
+                    'installed uncertainty malformed pairing accepted')
+
 print(json.dumps({"version": expected, "metadata_version": metadata_version,
+                  "material_uncertainty_types": sorted(uncertainty_variants), "material_uncertainty_languages": languages,
+                  "reported_extraction_windows": sum(p["method_definition"]["extraction_window"] is not None for p in reference_properties["records"]),
                   "engine_outputs": sorted(outputs), "languages": languages,
                   "installed_without_dependencies": True, "composite_report_languages": languages, "composite_report_schema": "1.0.0", "composite_exact_single_case_and_replay": True, "mixed_observation_catalog_languages": languages, "bulk_wave_catalog_languages": languages, "viscoelastic_catalog_languages": languages, "hbn_observation_languages": languages, "observation_inspection_languages": languages, "observation_inspection_schema": "1.1.0", "pa12_export_checks": export_checks, "pa12_scientific_mutations_rejected": len(mutations), "pa12_exact_selected_cells": len(expected_cells), "temperature_observation_plot_languages": languages, "temperature_observation_plot_schema": "1.0.0", "temperature_observation_plot_cells": len(plot_bundle["glyphs"]), "paht_exact_median_sd_cells": len(paht), "paht_four_language_inspection": True, "study_comparison_languages": languages, "study_comparison_schema": "1.0.0", "study_comparison_cells": 10}))
 '''

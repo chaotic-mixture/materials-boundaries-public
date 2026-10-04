@@ -1,6 +1,6 @@
 # 材料边界 · Materials Boundaries
 
-Current software release: **v0.30.0** · **Compiled and measurement-derived material references** · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
+Current software release: **v0.31.0** · **Source-qualified fibers and elastomers** · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
 
 A condition-aware, source-traceable materials-mechanics catalog and offline Python toolkit. It separates conditional mathematical bounds, model relations, published observations, computational predictions and synthetic demonstrations. Python 3.10+; no third-party runtime dependencies.
 
@@ -9,22 +9,22 @@ Repository: [chaotic-mixture/materials-boundaries-public](https://github.com/cha
 ## Public-release scope
 
 <!-- current-catalog-summary:start -->
-- **41 mechanics claims**, **83 source records**, **16 observations from 5 studies**, **12 published computational predictions in 2 scientific families and 3 explicit groups**, and **5 synthetic temperature demos with 7 branches**
+- **41 mechanics claims**, **90 source records**, **16 observations from 5 studies**, **12 published computational predictions in 2 scientific families and 3 explicit groups**, and **5 synthetic temperature demos with 7 branches**
 - Exactly **8 executable composite calculation rules**: HS/Reuss/Voigt bulk and shear bounds plus conservative derived Young's-modulus and Poisson-ratio envelopes
 - Other mechanics records, including initial-yield criteria and their function comparison, scalar viscoelasticity, bulk elastic waves, hydrostatic compressibility, directional Poisson ratio, anisotropy, fatigue, fracture, stability and porous relations, are catalog-only
-- The 83 sources comprise 82 bibliographic/source records plus 1 original synthetic-demo provenance record; a source record is not a redistribution of its publication or dataset
+- The 90 sources comprise 89 bibliographic/source records plus 1 original synthetic-demo provenance record; a source record is not a redistribution of its publication or dataset
 - All five temperature demos use intentionally invented coefficients and ranges. They do not describe real materials, measured properties or engineering allowables
 <!-- current-catalog-summary:end -->
 
 ## Concrete material references
 
 <!-- material-catalog-summary:start -->
-The separate reference catalogue contains **28 material identities**, **11 qualified grades**, **28 source-scoped states** and **28 reference properties**. Counts describe this registry only; aliases, categories, prior observations and computational model cells are not additional materials.
+The separate reference catalogue contains **34 material identities**, **17 qualified grades**, **34 source-scoped states** and **34 reference properties**. Counts describe this registry only; aliases, categories, prior observations and computational model cells are not additional materials.
 <!-- material-catalog-summary:end -->
 
-The initial 21 identities remain unchanged. This release adds seven source-qualified identities: historical NBS silicon X2, Johnson Matthey germanium source number 4065, sugar maple, northern red oak, Sitka spruce, NC1 concrete and Carrara marble. Species, formulations and study-specific physical states remain distinct; an alias or extra specimen cannot inflate material coverage.
+The prior 28 identities remain unchanged. This release adds six source-qualified industrial products/formulations: Toray T700S single filament, Deutsche Basalt Faser A76.9.2-sized filament, Sylgard 184 at one stated cure, SMR 10 NR compound, Vistalon 2504/N550 EPDM compound and PERBUNAN 3445 F NBR REF compound. Specimen indices, formulations, sizing and cure states remain explicit; aliases or extra specimens do not inflate identity counts.
 
-Every state resolves a source-backed property. Manufacturer references, original experiments, handbook compilations and measured-input-derived references retain distinct evidence classes. The wood values are shear-inclusive bending moduli at a 12% reference-moisture basis; Ge density is calculated from measured crystallographic inputs. Historical Si X2 is not a current certified standard, and its 20 °C reference basis is linked through the 1974 companion to the 1975 correction. Mean, reported SD, sample count, conditions, unknowns and rights remain separate; no value becomes a theoretical bound, allowable or calculator input. [Guide and contribution contract](docs/MATERIAL_REFERENCE_CATALOG.md) · [Coverage](docs/MATERIAL_COVERAGE_v0.30.0.md) · [Migration](docs/MIGRATION_v0.30.0.md)
+Every state resolves a source-backed property. The new generic metadata contract distinguishes reported SD, reported confidence intervals and reported ± with unspecified statistical meaning. Sylgard's reported 95% CI has unspecified estimand/construction; rubber density ± amplitudes and central aggregation remain unspecified. T700S is one specimen, while basalt's successful test count is unknown. Exact extraction windows, normalization unknowns, conditions and source rights remain visible in all four languages. No value becomes a theoretical bound, allowable or calculator input. [Guide and contribution contract](docs/MATERIAL_REFERENCE_CATALOG.md) · [Coverage](docs/MATERIAL_COVERAGE_v0.31.0.md) · [Migration](docs/MIGRATION_v0.31.0.md)
 
 ```sh
 python -m materials_boundaries catalog materials --text --lang en

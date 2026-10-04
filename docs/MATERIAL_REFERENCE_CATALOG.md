@@ -249,3 +249,61 @@ article-specific CC BY 4.0 sources retain their distinct rights evidence in the
 The independent check was source-transcription review, not independent
 scientific peer review or raw-data reanalysis. Optional GaAs remains excluded
 behind its indentation-specific quantity/method gate.
+
+
+## v0.31.0 fiber and elastomer batch
+
+Six further concrete identities add two tensile moduli, one Young's modulus and
+three mass-density values. Read the [source-specific limits](MATERIAL_COVERAGE_v0.31.0.md)
+before using any selected fact. All prior 28 records retain their original data.
+The material/reference envelopes remain 1.0.0, as in the preceding additive
+extension; clients must upgrade runtime, schema and locale labels together.
+
+### Closed uncertainty variants
+
+A numerical uncertainty has a matching `uncertainty_status` and `uncertainty.type`,
+a nonnegative finite exact-decimal amplitude, matching result unit, source evidence
+and a source-scoped note. It requires a scalar central result. It is never stored
+as a physical min/max range or confidence endpoints.
+
+- `reported_standard_deviation` retains the existing explicit `reported_mean`
+  evidence requirement and null confidence-level/coverage metadata
+- `reported_confidence_interval` stores a source-reported symmetric ± amplitude
+  plus `confidence_level` (`value_text`, exact decimal-string `number`,
+  `unit_code: percent`). The level is strictly between 0 and 100, with matching
+  percent text. `estimand` and `construction` are evidence-backed reported facts,
+  or explicitly not reported with explanatory notes. There is no default mean
+  estimand, distribution, formula, SD/SE conversion or coverage factor. A CI with
+  an unreported confidence level is not admitted by this version
+- `reported_plus_minus_unspecified` retains a reported ± amplitude whose
+  statistical meaning is unspecified. Confidence level and coverage factor stay
+  null. It does not require or imply arithmetic-mean aggregation
+
+The complete source expression belongs in `uncertainty_note`, alongside separate
+central and amplitude strings. Null uncertainty is allowed only for the existing
+nonnumerical statuses. Four-language text dispatches the actual kind, CI level,
+unknown estimand/construction and type-appropriate notice. Old SD output is
+unchanged. Source truth still requires independent review: structural validation
+cannot determine whether free text truthfully describes an experiment.
+
+### Source windows and normalization
+
+`method_definition.extraction_window` is null or a reported fact with text,
+evidence and optional notes. Non-null windows require primary method support;
+a linked primary-source entry can establish the supporting article's role, with
+actual detailed methods attributed to that article. Source strain units and
+qualifiers remain in the text. This field is not an executable fit definition,
+range evaluator or permission to reinterpret finite-extension rubber stress as
+Young's modulus.
+
+Normalization and correction facts use the existing condition/fact fields.
+Unknown, not verified and not applicable remain distinct. The source's applied
+Sylgard geometry/strain correction is not applied again. A circular-area formula
+for basalt strength does not verify its modulus-area estimator. T700S's selected
+dataset cell is not recomputed from diameter or replaced by a manufacturer value.
+
+Fresh, independently source-qualified identities can reuse these generic
+contracts, with new IDs and evidence. Holds for Kevlar 49, Dyneema SK76 and
+Sylgard 527 describe this batch's unresolved evidence only; there is no permanent
+ID or chemical-family ban. The eight-rule evaluator, existing scientific
+families, old observations/predictions and catalog-only boundary are unchanged.

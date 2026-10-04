@@ -4,7 +4,7 @@ import json
 
 
 LANGUAGES = ("en", "zh", "ja", "de")
-REQUIRED_LABELS = frozenset(('materials', 'reference_properties', 'count', 'empty', 'unknown', 'identity', 'grade', 'category', 'state', 'original_name', 'source_designation', 'source_scope', 'identity_scope', 'authority', 'manufacturer', 'product_form', 'processing', 'temper_or_heat_treatment', 'conditioning', 'composition_or_purity', 'reinforcement', 'porosity', 'orientation', 'property_label', 'quantity', 'evidence_kind', 'reporting_basis', 'determination_basis', 'basis_note', 'reported_value', 'conditions', 'temperature', 'test_standard', 'test_method', 'direction', 'loading_rate', 'density_basis', 'summary_statistic', 'uncertainty', 'uncertainty_status', 'uncertainty_note', 'standard_deviation', 'sample_count', 'scope', 'method_definition', 'source_document', 'source_discrepancies', 'verification', 'scope_note', 'evaluation_support', 'source', 'source_title', 'source_locator', 'source_url', 'source_read_status', 'source_rights', 'evidence', 'caveat', 'reference_notice', 'statistics_notice', 'unknown_notice', 'range_notice', 'comparison_notice', 'translation_notice', 'cli_catalog_extra', 'cli_material_id', 'cli_identity_id', 'cli_grade_id', 'cli_category', 'cli_evidence_kind', 'cli_reporting_basis', 'cli_source_id', 'cli_quantity', 'cli_filter_notice', 'code_catalog_only', 'code_reported', 'code_not_reported_in_inspected_source', 'code_not_verified', 'code_not_applicable', 'code_manufacturer_reference', 'code_technical_association_reference', 'code_published_experimental_reference', 'code_published_computational_reference', 'code_typical', 'code_nominal', 'code_guideline', 'code_specification_limit', 'code_reported_summary', 'code_not_stated', 'code_source_reports_measurement', 'code_source_reports_calculation', 'code_mixed_or_unclear', 'code_reported_mean', 'code_reported_value', 'code_mass_density', 'code_youngs_modulus', 'code_tensile_modulus', 'code_flexural_modulus', 'code_elastic_modulus_unspecified', 'code_tensile_strength', 'code_metal', 'code_polymer', 'code_inorganic', 'code_composite', 'code_apparent', 'code_bulk', 'code_true', 'code_published_handbook_reference', 'code_published_measurement_derived_reference', 'code_source_reports_compiled_measurements', 'code_crystallographic', 'code_source_reported_compilation', 'code_source_reported_crystallographic_derivation'))
+REQUIRED_LABELS = frozenset(('materials', 'reference_properties', 'count', 'empty', 'unknown', 'identity', 'grade', 'category', 'state', 'original_name', 'source_designation', 'source_scope', 'identity_scope', 'authority', 'manufacturer', 'product_form', 'processing', 'temper_or_heat_treatment', 'conditioning', 'composition_or_purity', 'reinforcement', 'porosity', 'orientation', 'property_label', 'quantity', 'evidence_kind', 'reporting_basis', 'determination_basis', 'basis_note', 'reported_value', 'conditions', 'temperature', 'test_standard', 'test_method', 'direction', 'loading_rate', 'density_basis', 'summary_statistic', 'uncertainty', 'uncertainty_status', 'uncertainty_note', 'standard_deviation', 'confidence_interval', 'plus_minus_unspecified', 'confidence_level', 'estimand', 'construction', 'reported_uncertainty_notice', 'sample_count', 'scope', 'method_definition', 'source_document', 'source_discrepancies', 'verification', 'scope_note', 'evaluation_support', 'source', 'source_title', 'source_locator', 'source_url', 'source_read_status', 'source_rights', 'evidence', 'caveat', 'reference_notice', 'statistics_notice', 'unknown_notice', 'range_notice', 'comparison_notice', 'translation_notice', 'cli_catalog_extra', 'cli_material_id', 'cli_identity_id', 'cli_grade_id', 'cli_category', 'cli_evidence_kind', 'cli_reporting_basis', 'cli_source_id', 'cli_quantity', 'cli_filter_notice', 'code_catalog_only', 'code_reported', 'code_not_reported_in_inspected_source', 'code_not_verified', 'code_not_applicable', 'code_manufacturer_reference', 'code_technical_association_reference', 'code_published_experimental_reference', 'code_published_computational_reference', 'code_typical', 'code_nominal', 'code_guideline', 'code_specification_limit', 'code_reported_summary', 'code_not_stated', 'code_source_reports_measurement', 'code_source_reports_calculation', 'code_mixed_or_unclear', 'code_reported_mean', 'code_reported_value', 'code_mass_density', 'code_youngs_modulus', 'code_tensile_modulus', 'code_flexural_modulus', 'code_elastic_modulus_unspecified', 'code_tensile_strength', 'code_metal', 'code_polymer', 'code_inorganic', 'code_composite', 'code_apparent', 'code_bulk', 'code_true', 'code_published_handbook_reference', 'code_published_measurement_derived_reference', 'code_source_reports_compiled_measurements', 'code_crystallographic', 'code_source_reported_compilation', 'code_source_reported_crystallographic_derivation'))
 
 
 def validate_material_locales(locales: dict) -> None:
@@ -96,7 +96,10 @@ def render_material_catalog(catalog: dict, kind: str, language: str = "en") -> s
     def code(value):
         if value is None:
             return labels["unknown"]
-        label = labels["standard_deviation"] if value == "reported_standard_deviation" else labels.get("code_" + value)
+        uncertainty_labels = {"reported_standard_deviation": "standard_deviation",
+                              "reported_confidence_interval": "confidence_interval",
+                              "reported_plus_minus_unspecified": "plus_minus_unspecified"}
+        label = labels[uncertainty_labels[value]] if value in uncertainty_labels else labels.get("code_" + value)
         return f"{label} [{value}]" if label else value
 
     def raw(value):
@@ -145,8 +148,15 @@ def render_material_catalog(catalog: dict, kind: str, language: str = "en") -> s
                 output.extend(fact(key, condition, indent + "    "))
         uncertainty = prop["uncertainty"]
         if uncertainty is not None:
-            output.append(field("standard_deviation",
+            label = {"reported_standard_deviation": "standard_deviation",
+                     "reported_confidence_interval": "confidence_interval",
+                     "reported_plus_minus_unspecified": "plus_minus_unspecified"}[uncertainty["type"]]
+            output.append(field(label,
                                 f'{uncertainty["value_text"]} {uncertainty["unit_text"]}', indent + "  "))
+            if uncertainty["type"] == "reported_confidence_interval":
+                output.append(field("confidence_level", uncertainty["confidence_level"]["value_text"], indent + "  "))
+                for key in ("estimand", "construction"):
+                    output.extend(fact(key, uncertainty[key], indent + "  "))
             output.append(field("scope", uncertainty["scope"], indent + "  "))
             output.extend(evidence(uncertainty["evidence"], indent + "    "))
         else:
@@ -154,7 +164,9 @@ def render_material_catalog(catalog: dict, kind: str, language: str = "en") -> s
         output.extend([field("uncertainty_status", code(prop["uncertainty_status"]), indent + "  "),
                        field("uncertainty_note", prop["uncertainty_note"], indent + "  "),
                        field("sample_count", raw(prop["sample_count"]), indent + "  ")])
-        if uncertainty is not None or prop["summary_statistic"] == "reported_mean":
+        if uncertainty is not None and uncertainty["type"] != "reported_standard_deviation":
+            output.append(indent + "  " + labels["reported_uncertainty_notice"])
+        elif uncertainty is not None or prop["summary_statistic"] == "reported_mean":
             output.append(indent + "  " + labels["statistics_notice"])
         if result["kind"] == "interval":
             output.append(indent + "  " + labels["range_notice"])

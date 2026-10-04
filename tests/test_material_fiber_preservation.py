@@ -1,4 +1,4 @@
-"""Exact v0.29 release recovery and open-ID v0.30 material admission pins."""
+"""Exact v0.30 release recovery and open-ID v0.31 material admission pins."""
 import ast
 from copy import deepcopy
 import json
@@ -9,16 +9,15 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-import material_batch_preservation as history
-from material_fiber_preservation import pre_material_fiber_bytes
+import material_fiber_preservation as history
 from materials_boundaries.catalog import read_catalog
 from materials_boundaries.engine import BASE_RULES, DERIVED_RULES
 from materials_boundaries.material_references import validate_material_catalog
 
 ROOT = Path(__file__).resolve().parents[1]
-LEDGER_SHA256 = '39f0c79c9197deee7dc09ee14130754341faddd7a1376ab298b3a3aec87ac380'
-HELPER_SHA256 = 'dacb802892c177740d16906eba13d3e9d027bebe016cb2c1836b9e6ba9d07612'
-ADMISSION_SHA256 = '7e81cd27cb7d3af67c6b362c73cab11fb5ea72c7920e77047dcd5adb4d27b4ad'
+LEDGER_SHA256 = '598f255b9fd494481b52206fe8c1d133a11c525c5a1120b4eb9a8d8229f94d54'
+HELPER_SHA256 = '946357a439a52eab9104ada19f4c128a4df9d24b5299d6011addc12a457d4415'
+ADMISSION_SHA256 = '94e925ae565bfac132de714261804837791dfe6044251d4e0a919bc7085b6e3f'
 
 
 def declarations(raw):
@@ -32,27 +31,27 @@ def serialized(value):
     return (json.dumps(value, ensure_ascii=False, indent=2, allow_nan=False) + '\n').encode('utf-8')
 
 
-class MaterialBatchPreservationTests(unittest.TestCase):
+class MaterialFiberPreservationTests(unittest.TestCase):
     def test_ledger_helper_admission_and_accepted_tree_are_pinned(self):
         for filename, expected in ((history.LEDGER_PATH, LEDGER_SHA256),
-                                   ('tests/material_batch_preservation.py', HELPER_SHA256),
+                                   ('tests/material_fiber_preservation.py', HELPER_SHA256),
                                    (history.ADMISSION_PATH, ADMISSION_SHA256)):
-            self.assertEqual(history.digest(pre_material_fiber_bytes(filename, (ROOT / filename).read_bytes())), expected)
+            self.assertEqual(history.digest((ROOT / filename).read_bytes()), expected)
         ledger = history.load_ledger()
         history.validate_ledger(ledger)
-        self.assertEqual(ledger['baseline_commit'], 'e68ec99bb9766c200a891076a98277f038fc3812')
-        self.assertEqual(ledger['baseline_tree'], 'd3c88daf3b33df0983dab0ee9efb0c753aea1206')
-        self.assertEqual(len(ledger['baseline_sha256']), 355)
+        self.assertEqual(ledger['baseline_commit'], '1b7b872dcea92c6f8e9048d2a56fc0a7db9092a5')
+        self.assertEqual(ledger['baseline_tree'], '63f072d4c36679289ade8491307224d275e0c500')
+        self.assertEqual(len(ledger['baseline_sha256']), 363)
         self.assertEqual({r[0] for r in (*BASE_RULES, *DERIVED_RULES)}, history.EXECUTABLE_IDS)
         self.assertEqual(len(BASE_RULES) + len(DERIVED_RULES), 8)
 
-    def test_all_355_predecessor_files_round_trip_exactly(self):
+    def test_all_363_predecessor_files_round_trip_exactly(self):
         ledger = history.load_ledger(); entries = history.validate_ledger(ledger)
         for filename, expected in ledger['baseline_sha256'].items():
             with self.subTest(filename=filename):
                 actual = (ROOT / filename).read_bytes()
                 release = history.release_bytes(filename, actual, ledger=ledger)
-                before = history.pre_material_batch_bytes(filename, actual, ledger=ledger)
+                before = history.pre_material_fiber_bytes(filename, actual, ledger=ledger)
                 self.assertEqual(history.digest(before), expected)
                 self.assertEqual(history.apply_exact_edits(before, entries[filename]['edits'])
                                  if filename in entries else before, release)
@@ -70,12 +69,12 @@ class MaterialBatchPreservationTests(unittest.TestCase):
                 self.assertEqual(history.apply_exact_edits(previous, entry['edits']), current)
                 for bad in (current + b'!', b'unreviewed replacement'):
                     with self.assertRaises((AssertionError, ValueError)):
-                        history.pre_material_batch_bytes(entry['filename'], bad, ledger=ledger)
+                        history.pre_material_fiber_bytes(entry['filename'], bad, ledger=ledger)
                 wrong = deepcopy(entry['edits']); wrong[0]['before'] += 'unreviewed'
                 with self.assertRaises(AssertionError):
                     history.apply_exact_edits(previous, wrong)
         with self.assertRaises(AssertionError):
-            history.pre_material_batch_bytes('../README.md', b'unknown', ledger=ledger)
+            history.pre_material_fiber_bytes('../README.md', b'unknown', ledger=ledger)
 
     def test_corrupt_incomplete_duplicate_or_foreign_ledgers_fail(self):
         mutations = [lambda x: x.update(extra=True), lambda x: x.update(schema_version=True),
@@ -107,12 +106,13 @@ class MaterialBatchPreservationTests(unittest.TestCase):
                 actual = json.loads((ROOT / filename).read_text(encoding='utf-8'))
                 previous = history.project_catalog(filename, actual, baseline)
                 self.assertEqual(history.digest(serialized(previous)), manifest[filename])
-        self.assertEqual(len(baseline['materials_boundaries/data/materials.json']['records']['record_digests']), 21)
-        self.assertEqual(len(baseline['materials_boundaries/data/reference_properties.json']['records']['record_digests']), 21)
+        self.assertEqual(len(baseline['materials_boundaries/data/materials.json']['identities']['record_digests']), 28)
+        self.assertEqual(len(baseline['materials_boundaries/data/materials.json']['records']['record_digests']), 28)
+        self.assertEqual(len(baseline['materials_boundaries/data/reference_properties.json']['records']['record_digests']), 28)
 
-    def test_seven_new_material_admissions_are_exact_independent_subsets(self):
+    def test_six_new_material_admissions_are_exact_independent_subsets(self):
         admission = json.loads((ROOT / history.ADMISSION_PATH).read_text(encoding='utf-8'))
-        self.assertEqual(admission['release'], '0.30.0')
+        self.assertEqual(admission['release'], '0.31.0')
         self.assertEqual(admission['baseline_commit'], history.BASELINE_COMMIT)
         self.assertEqual(admission['baseline_tree'], history.BASELINE_TREE)
         admitted = admission['admitted_record_digests']
@@ -124,7 +124,7 @@ class MaterialBatchPreservationTests(unittest.TestCase):
                 for identifier, expected in pins.items():
                     self.assertEqual(history.digest(history.canonical(index[identifier])), expected)
         for kind, field in (('materials', 'identities'), ('materials', 'records'), ('reference_properties', 'records')):
-            self.assertEqual(len(admitted[kind][field]), 7)
+            self.assertEqual(len(admitted[kind][field]), 6)
         validate_material_catalog(read_catalog('materials'), read_catalog('reference_properties'), read_catalog('sources'))
 
     def test_fixed_objects_cannot_be_mutated_removed_or_duplicated(self):
@@ -227,6 +227,78 @@ class MaterialBatchPreservationTests(unittest.TestCase):
                 self.assertEqual(history.release_bytes('README.md', text.encode('utf-8'), ledger=ledger), canonical_release)
                 with self.assertRaises(AssertionError):
                     history.release_bytes('README.md', actual, ledger=ledger)
+
+    def test_historical_normalizer_allows_only_exact_reviewed_summary(self):
+        ledger = history.load_ledger()
+        actual = (ROOT / 'README.md').read_bytes()
+        canonical_release = history.release_bytes('README.md', actual, ledger=ledger)
+        before, _, after = history._section(actual.decode('utf-8'), 'current-catalog-summary')
+        historical = ledger['readme_summaries']['historical-current-catalog-summary']
+        intermediate = (before + historical + after).encode('utf-8')
+        self.assertEqual(history.release_bytes('README.md', intermediate, ledger=ledger,
+                                              allow_historical_summary=True), canonical_release)
+        with self.assertRaises(AssertionError):
+            history.release_bytes('README.md', intermediate, ledger=ledger)
+        for bad in (intermediate.replace(b'mechanics claims**', b'unsupported claims**', 1),
+                    re.sub(rb'\*\*\d+ source-scoped states\*\*', b'**99999 source-scoped states**', intermediate),
+                    intermediate + b'Unreviewed prose'):
+            with self.assertRaises(AssertionError):
+                history.release_bytes('README.md', bad, ledger=ledger, allow_historical_summary=True)
+
+    def test_nested_material_append_compares_canonical_release_not_live_readme(self):
+        """Exercise the old false-failure with an already-appended outer checkout.
+
+        The inner test must compare the normalized release with canonical bytes,
+        while rejecting stale live counts. No frozen README fixture is rewritten.
+        """
+        from test_material_reference_contract import synthetic_material_catalog
+        from materials_boundaries.material_references import material_coverage
+        ledger = history.load_ledger()
+        original = (ROOT / 'README.md').read_bytes()
+        canonical_release = history.release_bytes('README.md', original, ledger=ledger)
+        entry = next(e for e in ledger['approved_existing_updates'] if e['filename'] == 'README.md')
+        self.assertEqual(history.digest(canonical_release), entry['sha256'])
+        graph = synthetic_material_catalog()
+        ids = {record['id'] for data in graph for rows in data.values()
+               if isinstance(rows, list) for record in rows}
+        mapping = {identifier: identifier + '_outer_readme_probe' for identifier in ids}
+        def rename(value):
+            if isinstance(value, str): return mapping.get(value, value)
+            if isinstance(value, list): return [rename(item) for item in value]
+            if isinstance(value, dict): return {key: rename(item) for key, item in value.items()}
+            return value
+        graph = rename(list(graph))
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            shutil.copytree(ROOT / 'materials_boundaries/data', root / 'materials_boundaries/data')
+            def catalog(name):
+                return json.loads((root / 'materials_boundaries/data' / (name + '.json')).read_text())
+            for name, extra in zip(('materials', 'reference_properties', 'sources'), graph):
+                current = catalog(name)
+                for field, rows in extra.items():
+                    if isinstance(rows, list): current[field].extend(rows)
+                (root / 'materials_boundaries/data' / (name + '.json')).write_bytes(serialized(current))
+            coverage = material_coverage(catalog('materials'), catalog('reference_properties'))
+            text = original.decode('utf-8')
+            for label, key in (('material identities', 'material_identity_count'),
+                               ('qualified grades', 'grade_count'), ('source-scoped states', 'material_state_count'),
+                               ('reference properties', 'property_record_count')):
+                text, count = re.subn(r'\*\*\d+ ' + label + r'\*\*', f'**{coverage[key]} {label}**', text)
+                self.assertEqual(count, 1)
+            sources = catalog('sources')['records']
+            synthetic = sum(s['role'] == 'synthetic_demo_provenance' for s in sources)
+            text = re.sub(r'\*\*\d+ source records\*\*', f'**{len(sources)} source records**', text)
+            text = re.sub(r'The \d+ sources comprise \d+ bibliographic/source records plus \d+ original synthetic-demo provenance record',
+                          f'The {len(sources)} sources comprise {len(sources)-synthetic} bibliographic/source records plus {synthetic} original synthetic-demo provenance record', text)
+            live = text.encode('utf-8')
+            self.assertNotEqual(live, canonical_release)
+            (root / 'README.md').write_bytes(live)
+            with patch.dict(globals(), ROOT=root), patch.object(history, 'ROOT', root), \
+                    patch.object(history, 'load_ledger', return_value=ledger):
+                self.assertEqual(history.release_bytes('README.md', live, ledger=ledger), canonical_release)
+                self.test_future_material_appends_require_truthful_live_readme_counts()
+                with self.assertRaises(AssertionError):
+                    history.release_bytes('README.md', original, ledger=ledger)
 
     def test_production_modules_have_no_test_preservation_imports(self):
         for path in (ROOT / 'materials_boundaries').glob('*.py'):

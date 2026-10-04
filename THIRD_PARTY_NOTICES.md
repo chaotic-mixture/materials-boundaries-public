@@ -431,3 +431,129 @@ identify the limited adaptation. Those licenses are not automatically extended
 to separately credited material or any unrelated source asset. No author or
 publisher endorsement is implied. See the
 [scientific scope and exact locators](docs/MATERIAL_COVERAGE_v0.30.0.md).
+## Source-qualified fibre and elastomer references (v0.31.0)
+
+The following sources support selected material identities, formulations, methods
+and numerical facts. Values and uncertainty amplitudes are transcribed without
+unit conversion or statistical reconstruction. Project-authored qualifications
+preserve each specimen/formulation scope, reported statistic, unknowns, source
+correction and source discrepancy. Four-language material names are
+machine-assisted project translations, not scientifically reviewed source
+translations. Original source designations and titles remain available.
+
+No source PDF, article HTML/XML, complete source table, data archive, dataset
+member, extracted article text, figure, screenshot or other source asset is
+redistributed. Public records and tests contain only selected factual
+transcriptions, attribution, source links, asset-identity hashes and original
+curation. Project MIT licensing does not relicense any source content. Scoped
+source-notice inspection is not legal clearance, independent scientific
+validation, experimental replication or author endorsement.
+
+### Toray T700S: numerical dataset and supporting methods article
+
+Francisco Mesquita, Steve Bucknell, Yann Leray, Stepan V. Lomov and Yentl Swolfs:
+
+- *Large datasets of single carbon and glass fibre mechanical properties obtained
+  with automated testing equipment*, Mendeley Data, Version 1, 26 March 2021.
+  [Versioned dataset](https://data.mendeley.com/datasets/ygyym4vy6b/1) ·
+  [DOI](https://doi.org/10.17632/ygyym4vy6b.1).
+  The dataset's own Licence field was independently inspected and identifies
+  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). This license was not
+  inferred from the companion article. The primary selected value is column 6,
+  specimen 1, in `T700/T700-analysed_data.dat`, at the
+  [direct member URL](https://data.mendeley.com/public-files/datasets/ygyym4vy6b/files/399cfb50-83d4-4689-a815-dd801292d18a/file_downloaded).
+  Its member hash is not the ZIP or landing-page hash. The 217-row dataset is
+  not bundled, averaged or reanalysed
+- *Large datasets of single carbon and glass fibre mechanical properties obtained
+  with automated testing equipment*, *Data in Brief* 36 (2021), 107085.
+  [DOI](https://doi.org/10.1016/j.dib.2021.107085) ·
+  [inspected article](https://pmc.ncbi.nlm.nih.gov/articles/PMC8114124/).
+  The article notice identifies
+  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+  Section 1 identifies the dataset; §§2.1–2.2 support identity and the detailed
+  testing methods. The source strain window and compliance method belong to
+  this article, not a statement directly printed in the selected DAT row
+
+The selected 249.8300317 GPa is one filament result, not the study mean or
+manufacturer nominal. Source digits, diameter and gauge length are retained
+without implying matching measurement accuracy. No circular-area assumption,
+initial-modulus substitution or derived uncertainty is introduced. Source IDs:
+`mesquita_2021_dataset_v1` and `mesquita_2021_methods`.
+
+### A76.9.2-sized basalt filament
+
+Leon L. Messmer, Ali Kandemir, Burak Ogun Yavuz, Marco L. Longana and Ian Hamerton
+(2024), *Mechanical Behaviour of As-Manufactured and Repaired Aligned
+Discontinuous Basalt Fibre-Reinforced Vitrimer Composites*, *Polymers* 16(8), 1089.
+[DOI](https://doi.org/10.3390/polym16081089) ·
+[inspected article](https://pmc.ncbi.nlm.nih.gov/articles/PMC11053685/) ·
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+The selected original Table 1 Type 1 fibre result is 56.1±11.5 GPa; its caption
+explicitly supports mean and SD. A76.9.2 sizing and successful-count unknowns
+remain attached; later composite results and Type 2 sizing are not imported.
+The circular-area equation for strength does not establish modulus
+normalization. Source ID: `messmer_2024`.
+
+### Sylgard 184 tensile-cure state
+
+I D Johnston, D K McCluskey, C K L Tan and M C Tracey (2014), *Mechanical
+characterization of bulk Sylgard 184 for microfluidics and microengineering*,
+*Journal of Micromechanics and Microengineering* 24, 035017.
+[DOI](https://doi.org/10.1088/0960-1317/24/3/035017) ·
+[inspected institutional-repository PDF](https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf) ·
+[CC BY 3.0](https://creativecommons.org/licenses/by/3.0/).
+The PDF p.1 notice explicitly permits reuse under CC BY 3.0 with author names,
+title, journal citation and DOI retained. Table 2's selected 100 °C tensile-cure
+result is 2.05 ± 0.12 MPa. Original curation distinguishes the source-reported
+95% CI from SD/SE, preserves its unknown estimand/construction and the six-test
+averaging statement, and retains the 48-minute tensile cure. The source-applied
+0.40 strain correction is not applied again. The kit's 10:1 parts ratio is not
+recast as a mass or volume ratio or chemically pure PDMS. Source ID:
+`johnston_2014_bulk_sylgard184`.
+
+### Three study-specific rubber density results
+
+- Marica Bianchi, Luca Fambri, Mauro Bortolotti, Alessandro Pegoretti and Andrea
+  Dorigato (2025), *Elastocaloric Performance of Natural Rubber: The Role of
+  Nanoclay Addition*, *Molecules* 30(14), 3035.
+  [DOI](https://doi.org/10.3390/molecules30143035) ·
+  [inspected publisher PDF](https://www.mdpi.com/1420-3049/30/14/3035/pdf) ·
+  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+  The original Table 1 NR density is 0.958 ± 0.006 g/cm³. Source-qualified
+  curation preserves the SMR 10/curatives recipe, ASTM D792 air/methanol method,
+  unspecified numerical room temperature and three density specimens. The
+  later mechanical mean/SD statement and four-specimen crosslinking method do
+  not define this density statistic. Source ID: `bianchi_2025_nr_nanoclay`
+- Marica Bianchi, Francesco Valentini, Giulia Fredi, Andrea Dorigato and Alessandro
+  Pegoretti (2022), *Thermo-Mechanical Behavior of Novel EPDM Foams Containing a
+  Phase Change Material for Thermal Energy Storage Applications*, *Polymers*
+  14(19), 4058.
+  [DOI](https://doi.org/10.3390/polym14194058) ·
+  [inspected v2 publisher PDF](https://mdpi-res.com/d_attachment/polymers/polymers-14-04058/article_deploy/polymers-14-04058-v2.pdf?version=1664434800) ·
+  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+  The original Table 5 unfoamed EPDM geometrical density is 0.996 ± 0.02 g/cm³.
+  The exact Vistalon 2504/N550 filled formulation, external-volume method and
+  ten geometric-density specimens remain attached. Theoretical-density
+  discrepancy and contextual SD wording are retained without correcting the
+  selected cell, relabelling its ± statistic, borrowing helium-pycnometry
+  conditions or calculating porosity. Source ID: `bianchi_2022_epdm_pcm`
+- Péter Tamás-Bényei and Péter Sántha (2025), *Sustainable Reinforcement for
+  Rubbers—Potential Application of Recycled Carbon Fibers*, *ACS Omega* 10,
+  61276–61287.
+  [DOI](https://doi.org/10.1021/acsomega.5c05493) ·
+  [inspected university-hosted published PDF](https://www.pt.bme.hu/publikaciok/2010_publ_sustainable-reinforcement-for-rubbers-potential-application-of-recycled-carbon-fibers_1229.pdf) ·
+  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+  The original §3.4 REF density is 1.031 ± 0.001 g/cm³. The exact PERBUNAN
+  3445 F/PEG/curatives REF recipe and ACTMIX S-80 as-added product loading
+  remain attached. Density-specific method, count and test conditions remain
+  unknown. Figure 1 carries a separate Ceresana credit and is excluded; the
+  selected original REF result has no identified third-party exception.
+  Source ID: `tamas_benyei_santha_2025_nbr_rcf`
+
+Each rubber PDF's first-page CC BY 4.0 notice was inspected. The reported ±
+amplitudes are retained with unspecified statistical construction and null
+confidence/coverage metadata; neither arithmetic mean nor SD is silently
+inferred. Source articles remain responsible for their results. These licenses
+are not blanket permissions for separately credited material or unrelated
+assets. All selected source and dataset notices above were inspected on
+4 October 2026, with independent retained-byte source-transcription checks.
