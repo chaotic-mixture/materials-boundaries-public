@@ -557,3 +557,194 @@ inferred. Source articles remain responsible for their results. These licenses
 are not blanket permissions for separately credited material or unrelated
 assets. All selected source and dataset notices above were inspected on
 4 October 2026, with independent retained-byte source-transcription checks.
+
+
+## Metals and natural-fiber references (v0.32.0)
+
+Eight original publications support nine selected source-qualified material
+identities and one numerical property per identity. Project-authored curation
+preserves identity/state, source value and unit spellings, method scope,
+statistical meaning, qualifiers, unknowns and source discrepancies. Exact
+scientific-notation checking preserves the printed mantissa precision; it does
+not convert units or reconstruct measurements. Four-language material names
+are machine-assisted project translations, not independently scientifically
+reviewed translations. Original source titles and designations remain available.
+
+The public contribution contains only minimal selected factual transcriptions,
+citations, exact locators, source-identity hashes and original qualifications.
+No source PDF, HTML/XML, complete source table, extracted full-text dump,
+figure, graph, screenshot, page render or failed-download response is bundled.
+The project MIT license does not relicense publications or other source works.
+Source-notice inspection and source-transcription review are not independent
+legal clearance, scientific validation, raw-data reanalysis or endorsement.
+
+### Three magnesium-alloy and zinc references
+
+- Helder Puga, Vitor Carneiro, Joaquim Barbosa and Vanessa Vieira (2015),
+  *Effect of Ultrasonic Treatment in the Static and Dynamic Mechanical Behavior
+  of AZ91D Mg Alloy*, *Metals* 5(4), 2210–2221.
+  [DOI](https://doi.org/10.3390/met5042210) ·
+  [publisher article](https://www.mdpi.com/2075-4701/5/4/2210) ·
+  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+  The PDF's final notice on p.12 / printed p.2221 identifies the authors'
+  copyright and CC BY 4.0 reuse terms. The selected original non-treated
+  as-cast AZ91D mean UTS **160 MPa** is on p.7 / printed p.2216, §3 below
+  Table 2. Curation retains measured composition, ten tensile specimens,
+  qualitative room temperature, 0.02 s⁻¹ and missing UTS uncertainty; it does
+  not transfer hardness/porosity statistics or ultrasonic-treatment results.
+  Source ID: `puga_2015_az91d_ultrasound`
+- Mariusz Kulczyk, Jacek Skiba, Monika Skorupska, Sylwia Przybysz and Julita
+  Smalc-Koziorowska (2022), *Influence of Strain Rates during Severe Plastic
+  Strain Processes on Microstructural and Mechanical Evolution in Pure Zinc*,
+  *Materials* 15(14), 4892.
+  [DOI](https://doi.org/10.3390/ma15144892) ·
+  [publisher article](https://www.mdpi.com/1996-1944/15/14/4892) ·
+  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+  The PDF p.1 copyright/license block and deposited article notice explicitly
+  identify CC BY 4.0. The selected original Table 2 p.7 UTS / column 0 result
+  is **60 ± 6 MPa** for stated 99.9% zinc in the annealed initial state.
+  Curation preserves unknown aggregation, ± kind and count, and separates
+  tensile rate 0.008 s⁻¹ from the processing-rate columns. An initial mirrored
+  copy of the journal PDF was cross-checked against publisher/deposited text;
+  independent publisher PDF readback subsequently matched its bytes. This
+  appended verification does not erase the original retrieval history.
+  Source ID: `kulczyk_2022_pure_zinc_strain_rates`
+- Yong Chen, Yuan Yao, Shengli Han, Xiaowei Feng, Tiegang Luo and Kaihong Zheng
+  (2023), *Study on Microstructure and Mechanical Properties of TC4/AZ31
+  Magnesium Matrix Nanocomposites*, *Materials* 16(3), 1139.
+  [DOI](https://doi.org/10.3390/ma16031139) ·
+  [publisher article](https://www.mdpi.com/1996-1944/16/3/1139) ·
+  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+  The PDF p.1 and publisher copyright notices identify CC BY 4.0. The selected
+  original Table 2 p.10 AZ31 / UTS / “This work” value is **274 ± 4.9 MPa**,
+  a mean with unspecified ± meaning. Original qualifications preserve the
+  unreinforced as-extruded comparator, three specimens and unknown tensile
+  rate. Composite-fabrication settings remain study context, not a separately
+  itemized AZ31 protocol. Nano-TC4/acetone preparation is not assigned to
+  AZ31. Duplicated/overlaid extracted text is distinguished from the clean,
+  legible independent render of p.4. Source ID: `chen_2023_az31_tc4_composites`
+
+The three selected results are article-authored experiments, without an
+identified separate third-party credit for those facts. Complete tables,
+comparison literature rows and publisher source assets are excluded.
+
+### NBS molybdenum and tungsten ambient-density measurements
+
+- A. Cezairliyan, M. S. Morse, H. A. Berman and C. W. Beckett (1970),
+  *High-Speed (Subsecond) Measurement of Heat Capacity, Electrical Resistivity,
+  and Thermal Radiation Properties of Molybdenum in the Range 1900 to 2800 K*,
+  *Journal of Research of the National Bureau of Standards, Section A:
+  Physics and Chemistry* 74A(1), 65–92.
+  [DOI](https://doi.org/10.6028/jres.074A.010) ·
+  [official NIST PDF](https://nvlpubs.nist.gov/nistpubs/jres/74A/jresv74An1p65_A1b.pdf).
+  The selected original density is **10.21 × 10³ kg/m³ at 298 K**, printed
+  p.72 §4.2(d), four water-displacement/pycnometer determinations. Relative
+  SEM **0.02%** on p.72/Table 12 p.86 is kept separate from **approximately
+  0.1% estimated inaccuracy** on p.84/Table 12 p.86. Original qualifications
+  retain the impurity inventory, unknown density/annealing chronology and
+  unknown density-test pressure; no absolute uncertainty, combined interval,
+  purity certificate or high-temperature density is constructed.
+  Source ID: `cezairliyan_1970_molybdenum`
+- A. Cezairliyan and J. L. McClure (1971), *High-Speed (Subsecond) Measurement
+  of Heat Capacity, Electrical Resistivity, and Thermal Radiation Properties
+  of Tungsten in the Range 2000 to 3600 K*, *Journal of Research of the
+  National Bureau of Standards, Section A: Physics and Chemistry* 75A(4),
+  283–290.
+  [DOI](https://doi.org/10.6028/jres.075A.027) ·
+  [official NIST PDF](https://nvlpubs.nist.gov/nistpubs/jres/75A/jresv75An4p283_A1b.pdf).
+  The selected original measured density is **19.23 × 10³ kg/m³ at 293 K**,
+  printed p.284 §2 final paragraph. Original qualifications preserve unknown
+  density method, count and uncertainty, impurity inventory and unspecified
+  density timing relative to annealing. Molybdenum's procedure/uncertainty and
+  the separate high-temperature-property errors are not transferred.
+  Source ID: `cezairliyan_1971_tungsten`
+
+Both mastheads identify the authors with the National Bureau of Standards.
+The [NIST Technical Series rights policy](https://www.nist.gov/open/copyright-fair-use-and-licensing-statements-srd-data-software-and-technical-series-publications),
+inspected on 4 October 2026, supports the scoped employee-authored technical-
+publication branch: no U.S. copyright protection for government-authored work,
+and the policy's worldwide reprinting/derivative-work grant where NIST can
+assert foreign rights. These sources are not assigned a Creative Commons
+license. No blanket permission for Standard Reference Data, the separately
+excluded cryogenic coefficient datasets, third-party content or all government
+web material is implied.
+
+Republished courtesy of the National Institute of Standards and Technology.
+
+### Romanian flax and hemp technical-fiber bundles
+
+Constantin Stochioiu, Miruna Ciolcă and Anca-Loredana Deca (2024),
+*Mechanical Characterization of Flax and Hemp Fibers Cultivated in Romania*,
+*Materials* 17(19), 4871.
+[DOI](https://doi.org/10.3390/ma17194871) ·
+[publisher article](https://www.mdpi.com/1996-1944/17/19/4871) ·
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+The PDF p.1 and deposited XML permissions identify authors' copyright and
+CC BY 4.0. Selected original Table 4 p.10 gives the 10-mm-gauge mean chord
+moduli: **31.75 GPa, CV 56.12%** for flax and **22.63 GPa, CV 72.02%** for
+hemp. The literature-survey Tables 1–2 are not selected.
+
+Original curation keeps each biological identity, 25 tested bundles per group,
+0.1–0.2% chord window, circular minimum-area approximation, slack correction,
+no compliance correction and unknown test climate/retained count. The method
+text is correctly located on p.8, with Figure 6 p.7. Methods C1557-03 and
+bibliography C1557 (2020) remain an unresolved exact-edition discrepancy. CV is
+not converted to SD. Broad composite classification refers to natural
+hierarchical bundles, not engineered resin-composite specimens.
+Source ID: `stochioiu_2024_romania_fibers`.
+
+### Native degummed control-diet silkworm fibroin
+
+Lan Cheng, Huiming Huang, Jingyou Zeng, Zulan Liu, Xiaoling Tong, Zhi Li,
+Hongping Zhao and Fangyin Dai (2019 issue; published 20 December 2018),
+*Effect of Different Additives in Diets on Secondary Structure, Thermal and
+Mechanical Properties of Silkworm Silk*, *Materials* 12(1), 14.
+[DOI](https://doi.org/10.3390/ma12010014) ·
+[publisher article](https://www.mdpi.com/1996-1944/12/1/14) ·
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+The PDF p.15 final notice and deposited XML permissions identify authors'
+copyright and CC BY 4.0. The selected original control-diet quasistatic strength
+is **332 MPa**, §3.4 p.8, supported by Figure 4b/caption p.10 as a mean with
+SD. No figure or digitized error bar is reproduced.
+
+Original qualifications retain Chinese strain 932, native degummed fibers,
+thirty test samples from five selected cocoons, intraspecific/intraindividual
+variability and ambient-test unknowns. Known graphical SD has null numerical
+amplitude, never zero or a reconstructed number. The §2.7 ANOVA/Figure 4
+unpaired two-tailed t-test discrepancy is recorded without a significance claim.
+No regenerated-silk, modified-diet or dynamic-analysis value is substituted.
+Source ID: `cheng_2019_silk_diets`.
+
+### Soap-cleaned Latxa sheep wool from Urnieta
+
+Aitor Arbelaiz, Telmo Yurramendi, Ander Larruscain, Ane Arrizabalaga,
+Arantxa Eceiza and Cristina Peña-Rodriguez (2024), *Preparation and
+Characterization of Novel Poly(Lactic Acid) Composites Reinforced with “Latxa”
+Sheep Wool Fibers: The Effect of Peroxide Surface Treatments and Fiber Content*,
+*Materials* 17(19), 4912.
+[DOI](https://doi.org/10.3390/ma17194912) ·
+[publisher article](https://www.mdpi.com/1996-1944/17/19/4912) ·
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+The PDF p.1 copyright/license notice and deposited XML permissions identify
+©2024 by the authors and CC BY 4.0. The selected Table 2 p.7 Soap cleaned /
+Strength / Current work result is **163 ± 23 MPa**, an original standalone-
+fiber result with no separately credited third-party exception. Cited flax/sisal
+comparison rows, peroxide-treated results and PLA-composite results are excluded.
+
+Original curation preserves explicit SD with unnamed central aggregation,
+fifteen tested fibers, 10-mm gauge, 1 mm/min and cylindrical-area approximation.
+The 55 °C soap cleaning is not test temperature; climate, exact test
+conditioning and successful count remain unknown. Wool is a natural protein
+fiber with possible residual lanolin, not purified keratin. The approximate
+average diameter is not used for numerical reanalysis.
+Source ID: `arbelaiz_2024_latxa_wool`.
+
+All six article-specific CC BY 4.0 notices and the two NBS rights branches were
+independently inspected on 4 October 2026. The eight publisher/NIST PDFs and
+three deposited fiber-paper XML files matched the inspected assets. These
+integrity and source-transcription checks are not scientific truth guarantees,
+a comprehensive errata/retraction audit or final software/release validation.
+Attribution, source/DOI links, license/policy links and the descriptions of
+project-authored qualifications above identify the limited adaptation. Rights
+do not automatically extend to separately credited third-party material or
+unrelated assets. See the [full scientific scope](docs/MATERIAL_COVERAGE_v0.32.0.md).

@@ -1,4 +1,4 @@
-"""Exact v0.30 release recovery and open-ID v0.31 material admission pins."""
+"""Exact v0.31 release recovery and open-ID v0.32 material admission pins."""
 import ast
 from copy import deepcopy
 import json
@@ -9,16 +9,15 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-import material_fiber_preservation as history
-from material_measures_preservation import pre_material_measures_bytes
+import material_measures_preservation as history
 from materials_boundaries.catalog import read_catalog
 from materials_boundaries.engine import BASE_RULES, DERIVED_RULES
 from materials_boundaries.material_references import validate_material_catalog
 
 ROOT = Path(__file__).resolve().parents[1]
-LEDGER_SHA256 = '598f255b9fd494481b52206fe8c1d133a11c525c5a1120b4eb9a8d8229f94d54'
-HELPER_SHA256 = '946357a439a52eab9104ada19f4c128a4df9d24b5299d6011addc12a457d4415'
-ADMISSION_SHA256 = '94e925ae565bfac132de714261804837791dfe6044251d4e0a919bc7085b6e3f'
+LEDGER_SHA256 = '87995a4c1d7c724c88476783585f9f232fa07cc1a3a2530d91e48961093763de'
+HELPER_SHA256 = '26c80fefded27d381594d87c2779dedebcea74d928f5c043fa548d252c92f60d'
+ADMISSION_SHA256 = 'cab44476132d16bc196baaf99f05077503eb79a78056b0e888140003aa87f1e7'
 
 
 def declarations(raw):
@@ -32,27 +31,27 @@ def serialized(value):
     return (json.dumps(value, ensure_ascii=False, indent=2, allow_nan=False) + '\n').encode('utf-8')
 
 
-class MaterialFiberPreservationTests(unittest.TestCase):
+class MaterialMeasuresPreservationTests(unittest.TestCase):
     def test_ledger_helper_admission_and_accepted_tree_are_pinned(self):
         for filename, expected in ((history.LEDGER_PATH, LEDGER_SHA256),
-                                   ('tests/material_fiber_preservation.py', HELPER_SHA256),
+                                   ('tests/material_measures_preservation.py', HELPER_SHA256),
                                    (history.ADMISSION_PATH, ADMISSION_SHA256)):
-            self.assertEqual(history.digest(pre_material_measures_bytes(filename, (ROOT / filename).read_bytes())), expected)
+            self.assertEqual(history.digest((ROOT / filename).read_bytes()), expected)
         ledger = history.load_ledger()
         history.validate_ledger(ledger)
-        self.assertEqual(ledger['baseline_commit'], '1b7b872dcea92c6f8e9048d2a56fc0a7db9092a5')
-        self.assertEqual(ledger['baseline_tree'], '63f072d4c36679289ade8491307224d275e0c500')
-        self.assertEqual(len(ledger['baseline_sha256']), 363)
+        self.assertEqual(ledger['baseline_commit'], '3e297fb219b5652c58d034a6bdb3b2efabc7dfd8')
+        self.assertEqual(ledger['baseline_tree'], 'b89e114564d02d939ef46cfe285f359b905587d0')
+        self.assertEqual(len(ledger['baseline_sha256']), 373)
         self.assertEqual({r[0] for r in (*BASE_RULES, *DERIVED_RULES)}, history.EXECUTABLE_IDS)
         self.assertEqual(len(BASE_RULES) + len(DERIVED_RULES), 8)
 
-    def test_all_363_predecessor_files_round_trip_exactly(self):
+    def test_all_373_predecessor_files_round_trip_exactly(self):
         ledger = history.load_ledger(); entries = history.validate_ledger(ledger)
         for filename, expected in ledger['baseline_sha256'].items():
             with self.subTest(filename=filename):
                 actual = (ROOT / filename).read_bytes()
                 release = history.release_bytes(filename, actual, ledger=ledger)
-                before = history.pre_material_fiber_bytes(filename, actual, ledger=ledger)
+                before = history.pre_material_measures_bytes(filename, actual, ledger=ledger)
                 self.assertEqual(history.digest(before), expected)
                 self.assertEqual(history.apply_exact_edits(before, entries[filename]['edits'])
                                  if filename in entries else before, release)
@@ -70,12 +69,12 @@ class MaterialFiberPreservationTests(unittest.TestCase):
                 self.assertEqual(history.apply_exact_edits(previous, entry['edits']), current)
                 for bad in (current + b'!', b'unreviewed replacement'):
                     with self.assertRaises((AssertionError, ValueError)):
-                        history.pre_material_fiber_bytes(entry['filename'], bad, ledger=ledger)
+                        history.pre_material_measures_bytes(entry['filename'], bad, ledger=ledger)
                 wrong = deepcopy(entry['edits']); wrong[0]['before'] += 'unreviewed'
                 with self.assertRaises(AssertionError):
                     history.apply_exact_edits(previous, wrong)
         with self.assertRaises(AssertionError):
-            history.pre_material_fiber_bytes('../README.md', b'unknown', ledger=ledger)
+            history.pre_material_measures_bytes('../README.md', b'unknown', ledger=ledger)
 
     def test_corrupt_incomplete_duplicate_or_foreign_ledgers_fail(self):
         mutations = [lambda x: x.update(extra=True), lambda x: x.update(schema_version=True),
@@ -107,13 +106,13 @@ class MaterialFiberPreservationTests(unittest.TestCase):
                 actual = json.loads((ROOT / filename).read_text(encoding='utf-8'))
                 previous = history.project_catalog(filename, actual, baseline)
                 self.assertEqual(history.digest(serialized(previous)), manifest[filename])
-        self.assertEqual(len(baseline['materials_boundaries/data/materials.json']['identities']['record_digests']), 28)
-        self.assertEqual(len(baseline['materials_boundaries/data/materials.json']['records']['record_digests']), 28)
-        self.assertEqual(len(baseline['materials_boundaries/data/reference_properties.json']['records']['record_digests']), 28)
+        self.assertEqual(len(baseline['materials_boundaries/data/materials.json']['identities']['record_digests']), 34)
+        self.assertEqual(len(baseline['materials_boundaries/data/materials.json']['records']['record_digests']), 34)
+        self.assertEqual(len(baseline['materials_boundaries/data/reference_properties.json']['records']['record_digests']), 34)
 
-    def test_six_new_material_admissions_are_exact_independent_subsets(self):
+    def test_nine_new_material_admissions_are_exact_independent_subsets(self):
         admission = json.loads((ROOT / history.ADMISSION_PATH).read_text(encoding='utf-8'))
-        self.assertEqual(admission['release'], '0.31.0')
+        self.assertEqual(admission['release'], '0.32.0')
         self.assertEqual(admission['baseline_commit'], history.BASELINE_COMMIT)
         self.assertEqual(admission['baseline_tree'], history.BASELINE_TREE)
         admitted = admission['admitted_record_digests']
@@ -125,7 +124,7 @@ class MaterialFiberPreservationTests(unittest.TestCase):
                 for identifier, expected in pins.items():
                     self.assertEqual(history.digest(history.canonical(index[identifier])), expected)
         for kind, field in (('materials', 'identities'), ('materials', 'records'), ('reference_properties', 'records')):
-            self.assertEqual(len(admitted[kind][field]), 6)
+            self.assertEqual(len(admitted[kind][field]), 9)
         validate_material_catalog(read_catalog('materials'), read_catalog('reference_properties'), read_catalog('sources'))
 
     def test_fixed_objects_cannot_be_mutated_removed_or_duplicated(self):

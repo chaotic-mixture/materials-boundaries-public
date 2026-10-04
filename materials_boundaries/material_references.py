@@ -43,6 +43,7 @@ NUMERICAL_UNCERTAINTIES = (
     "reported_standard_deviation", "reported_confidence_interval",
     "reported_plus_minus_unspecified",
 )
+REPORTED_UNCERTAINTIES = (*NUMERICAL_UNCERTAINTIES, "reported_measures")
 REPORTING_BASES = (
     "typical", "nominal", "guideline", "specification_limit",
     "reported_summary", "not_stated",
@@ -184,6 +185,35 @@ def _make_properties_schema():
         "status": {"const": "reported"}, "text": TEXT,
         "evidence": evidence, "notes": NULLABLE_TEXT,
     })
+    # A descriptor is not a symmetric interval. In particular, relative
+    # measurement error, CV and graphical SD cannot be collapsed into +/- SD.
+    # Percent belongs only to this relative-measure branch, never result units.
+    measure_common = {
+        "qualifier": _enum(("approximately", "not_qualified_in_source")),
+        "scope": TEXT, "evidence": evidence,
+        "confidence_level": NULL, "coverage_factor": NULL,
+    }
+    absolute_measure_value = _object({**common_value, "number": DECIMAL})
+    relative_measure_value = _object({
+        "value_text": TEXT, "unit_text": TEXT,
+        "unit_code": {"const": "percent"}, "number": DECIMAL,
+    })
+    measure_variants = []
+    for kind in ("standard_deviation", "coefficient_of_variation",
+                 "standard_error_of_mean", "estimated_inaccuracy"):
+        absolute = kind == "standard_deviation"
+        measure_variants.append(_object({
+            "kind": {"const": kind}, "availability": {"const": "numeric_reported"},
+            "basis": {"const": "absolute" if absolute else "relative_to_reported_value"},
+            "reported_value": absolute_measure_value if absolute else relative_measure_value,
+            **measure_common, "note": NULLABLE_TEXT,
+        }))
+    measure_variants.append(_object({
+        "kind": {"const": "standard_deviation"},
+        "availability": {"const": "graphical_only"}, "basis": {"const": "absolute"},
+        "reported_value": NULL, **measure_common, "note": TEXT,
+    }))
+    definitions["reported_measure"] = {"oneOf": measure_variants}
     definitions["uncertainty"] = {"oneOf": [
         _object({"type": {"const": "reported_standard_deviation"},
                  **uncertainty_common, "confidence_level": NULL}),
@@ -192,6 +222,8 @@ def _make_properties_schema():
                  "estimand": _ref("uncertainty_fact"), "construction": _ref("uncertainty_fact")}),
         _object({"type": {"const": "reported_plus_minus_unspecified"},
                  **uncertainty_common, "confidence_level": NULL}),
+        _object({"type": {"const": "reported_measures"},
+                 "measures": _array(_ref("reported_measure"), 1, True)}),
     ]}
     definitions["sample_count"] = {"oneOf": [
         _object({"value": {"type": "integer", "minimum": 1}, "relation": _enum(("exact", "at_least")),
@@ -220,7 +252,7 @@ def _make_properties_schema():
         "density_basis": {"anyOf": [_enum(("apparent", "bulk", "true", "crystallographic", "not_stated")), NULL]},
         "summary_statistic": _enum(("not_stated", "reported_value", "reported_mean")),
         "uncertainty": {"anyOf": [_ref("uncertainty"), NULL]},
-        "uncertainty_status": _enum((*NUMERICAL_UNCERTAINTIES, "not_reported_in_inspected_source", "not_applicable")),
+        "uncertainty_status": _enum((*REPORTED_UNCERTAINTIES, "not_reported_in_inspected_source", "not_applicable")),
         "uncertainty_note": TEXT, "sample_count": _ref("sample_count"),
         "method_definition": _object({"type": _enum(("source_reported_conventional", "source_reported_compilation",
                                                        "source_reported_crystallographic_derivation")),
@@ -466,7 +498,36 @@ _UNIT_SPELLINGS = {
     "MPa": {"MPa"}, "GPa": {"GPa"},
     "N/mm^2": {"N/mm^2", "N/mm²", "N/mm2"},
     "kN/mm^2": {"kN/mm^2", "kN/mm²", "kN/mm2"},
+    # Only relative reported measures use this spelling; UNIT_DIMENSIONS and
+    # the central-result schema deliberately do not contain percent.
+    "percent": {"%"},
 }
+
+
+def _scientific_token_matches(token, canonical):
+    """Validate exact bounded source notation, never a general expression.
+
+    Admit a fixed-point mantissa, literal ASCII spaces around multiplication,
+    and either caret or superscript integer power of ten. A Decimal tuple shifts
+    the exponent exactly without ambient-context rounding. Formatting retains
+    the mantissa's fractional precision after expansion; the source string is
+    never rewritten. Both the mantissa and expanded value obey DECIMAL limits.
+    """
+    match = re.fullmatch(
+        r"((?:0|[1-9][0-9]{0,23})(?:\.[0-9]{1,24})?) × 10"
+        r"(?:\^(-?(?:0|[1-9][0-9]?))|([⁻]?[⁰¹²³⁴⁵⁶⁷⁸⁹]{1,2}))", token)
+    if not match or not re.fullmatch(DECIMAL_PATTERN, canonical):
+        return False
+    exponent_text = match[2] if match[2] is not None else match[3].translate(
+        str.maketrans("⁻⁰¹²³⁴⁵⁶⁷⁸⁹", "-0123456789"))
+    if not re.fullmatch(r"(?:0|[1-9][0-9]?|-[1-9][0-9]?)", exponent_text):
+        return False
+    power = int(exponent_text)
+    if not -24 <= power <= 24:
+        return False
+    value = Decimal(match[1]).as_tuple()
+    expanded = format(Decimal((value.sign, value.digits, value.exponent + power)), "f")
+    return bool(re.fullmatch(DECIMAL_PATTERN, expanded)) and expanded == canonical
 
 
 def _numeric_token_matches(token, canonical):
@@ -476,6 +537,8 @@ def _numeric_token_matches(token, canonical):
     justify the convention. The validator refuses extra/removed significant
     decimal zeroes and cannot adjudicate an ambiguous source's typography.
     """
+    if "×" in token:
+        return len(token) <= 96 and _scientific_token_matches(token, canonical)
     token = token.strip()
     if not token or len(token) > 96:
         return False
@@ -521,8 +584,49 @@ def _validate_value(value, path, dimension=None, nonnegative=False):
         match = re.fullmatch(r"(>=|<=|>|<|≥|≤)\s*(.+)", text)
         if not match or {"≥": ">=", "≤": "<="}.get(match[1], match[1]) != value["operator"] or not _numeric_token_matches(match[2], value["number"]):
             _fail(path, "comparison source text does not preserve operator/value/precision")
-    elif not _numeric_token_matches(text, value["number"]):
+    elif not _numeric_token_matches(value["value_text"], value["number"]):
         _fail(path, "source text does not preserve scalar value/precision")
+
+
+def _validate_reported_measures(prop, path):
+    """Check declared measure metadata, not the truth of source prose.
+
+    Evidence kind, qualifier, scope and explanatory-note fidelity remain a
+    source-review obligation. These checks prevent structurally incompatible
+    reinterpretation, invention of graphical amplitudes and silent conversion.
+    """
+    source = prop["source_id"]
+    primary_evidence = {
+        (item["source_id"], item["url"], item["locator"])
+        for item in _tagged(prop["evidence"], "uncertainty", source)
+    }
+    seen = set()
+    for index, measure in enumerate(prop["uncertainty"]["measures"]):
+        measure_path = f"{path}.uncertainty.measures[{index}]"
+        for item in measure["evidence"]:
+            reference = (item["source_id"], item["url"], item["locator"])
+            if "uncertainty" not in item["supports"] or reference not in primary_evidence:
+                _fail(measure_path, "measure needs matching primary uncertainty source/URL/locator in property evidence")
+            descriptor = (measure["kind"], measure["basis"], *reference)
+            if descriptor in seen:
+                _fail(measure_path, "duplicate reported measure kind/basis/source/locator")
+            seen.add(descriptor)
+        if measure["kind"] == "standard_error_of_mean" and prop["summary_statistic"] != "reported_mean":
+            _fail(measure_path, "standard error of mean requires an independently evidenced reported mean")
+        if measure["kind"] == "standard_deviation" and prop["summary_statistic"] != "reported_mean" and measure["note"] is None:
+            _fail(measure_path, "SD with unspecified central aggregation requires an explicit explanatory note")
+        if measure["availability"] == "graphical_only":
+            if not any(re.search(r"\bfig(?:ure)?\.?\s*[0-9]+[a-z]?\b", item["locator"], re.IGNORECASE)
+                       for item in measure["evidence"]):
+                _fail(measure_path, "graphical SD requires an exact figure/panel/caption locator")
+            continue
+        value = measure["reported_value"]
+        if measure["basis"] == "absolute":
+            if value["unit_code"] != prop["reported_value"]["unit_code"]:
+                _fail(measure_path, "absolute measure unit must equal result unit")
+            _validate_value(value, measure_path, prop["quantity_dimension"], nonnegative=True)
+        else:
+            _validate_value(value, measure_path, nonnegative=True)
 
 
 def _validate_property(prop):
@@ -599,13 +703,16 @@ def _validate_property(prop):
         if prop["uncertainty_status"] != kind:
             _fail(path, "uncertainty status must match its reported numerical type")
         if prop["reported_value"]["kind"] != "scalar":
-            _fail(path, "reported symmetric uncertainty requires a scalar central result")
+            _fail(path, "reported uncertainty requires a scalar central result")
+        if kind == "reported_measures":
+            _validate_reported_measures(prop, path)
         if kind == "reported_standard_deviation" and not is_mean:
             _fail(path, "SD requires explicit reported mean and uncertainty status")
-        if uncertainty["unit_code"] != prop["reported_value"]["unit_code"]:
-            _fail(path, "uncertainty unit must equal result unit")
-        _validate_value(uncertainty, path + ".uncertainty", dimension, nonnegative=True)
-        _require_tag(uncertainty["evidence"], "uncertainty", path, source)
+        if kind != "reported_measures":
+            if uncertainty["unit_code"] != prop["reported_value"]["unit_code"]:
+                _fail(path, "uncertainty unit must equal result unit")
+            _validate_value(uncertainty, path + ".uncertainty", dimension, nonnegative=True)
+            _require_tag(uncertainty["evidence"], "uncertainty", path, source)
         if kind == "reported_confidence_interval":
             level = uncertainty["confidence_level"]
             if not Decimal("0") < Decimal(level["number"]) < Decimal("100"):
@@ -616,8 +723,8 @@ def _validate_property(prop):
             for name in ("estimand", "construction"):
                 if uncertainty[name]["status"] == "reported":
                     _require_tag(uncertainty[name]["evidence"], "uncertainty", path + "." + name, source)
-    elif prop["uncertainty_status"] in NUMERICAL_UNCERTAINTIES:
-        _fail(path, "numerical uncertainty status requires its reported amplitude")
+    elif prop["uncertainty_status"] in REPORTED_UNCERTAINTIES:
+        _fail(path, "reported uncertainty status requires its matching nonnull envelope")
     count = prop["sample_count"]
     if count["value"] is not None:
         _require_tag(count["evidence"], "sample_count", path, source)

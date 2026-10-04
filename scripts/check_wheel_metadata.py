@@ -871,7 +871,63 @@ for uncertainty_kind, label in uncertainty_variants.items():
             rejects(lambda: validate_material_catalog(materials, altered, reference_sources),
                     'installed uncertainty malformed pairing accepted')
 
+# Separately typed source-reported measures survive offline installation.
+reported_measure_rows = [p for p in reference_properties['records']
+                         if p['uncertainty_status'] == 'reported_measures']
+require(bool(reported_measure_rows), 'missing installed reported measures')
+reported_measure_kinds = set()
+for prop in reported_measure_rows:
+    selected = query_catalog('reference-properties', record_id=prop['id'])
+    measures = prop['uncertainty']['measures']
+    reported_measure_kinds.update(m['kind'] for m in measures)
+    for language in languages:
+        text = render_catalog(selected, 'reference-properties', language)
+        require(prop['reported_value']['value_text'] in text and prop['uncertainty_note'] in text,
+                'installed source expression or uncertainty explanation lost')
+        for measure in measures:
+            require(measure['scope'] in text, 'installed measure scope lost')
+            if measure['note'] is not None:
+                require(measure['note'] in text, 'installed measure qualification lost')
+            value = measure['reported_value']
+            if value is not None:
+                require(value['value_text'] + ' ' + value['unit_text'] in text,
+                        'installed separately reported measure amplitude lost')
+            for item in measure['evidence']:
+                require(item['locator'] in text and item['url'] in text,
+                        'installed measure evidence lost')
+        stdout = io.StringIO()
+        with redirect_stdout(stdout):
+            code = main(['catalog', 'reference-properties', '--id', prop['id'], '--lang', language, '--json'])
+        require(code == 0 and json.loads(stdout.getvalue()) == selected,
+                'installed measures JSON changed by language')
+    for mutation in ('empty', 'amplitude', 'unit', 'confidence', 'duplicate'):
+        altered = deepcopy(reference_properties)
+        target = next(p for p in altered['records'] if p['id'] == prop['id'])
+        measure = target['uncertainty']['measures'][0]
+        if mutation == 'empty': target['uncertainty']['measures'] = []
+        elif mutation == 'amplitude':
+            if measure['availability'] == 'graphical_only':
+                measure['reported_value'] = {'number':'0', 'value_text':'0', 'unit_code':'MPa', 'unit_text':'MPa'}
+            else: measure['reported_value'] = None
+        elif mutation == 'unit':
+            if measure['reported_value'] is None: measure['basis'] = 'relative_to_reported_value'
+            else: measure['reported_value']['unit_code'] = 'kg/m^3' if measure['basis'] == 'relative_to_reported_value' else 'percent'
+        elif mutation == 'confidence': measure['confidence_level'] = {'value_text':'95%', 'number':'95', 'unit_code':'percent'}
+        else: target['uncertainty']['measures'].append(deepcopy(measure))
+        rejects(lambda: validate_material_catalog(materials, altered, reference_sources),
+                'installed reported measure malformed pairing accepted')
+require({'standard_deviation', 'coefficient_of_variation', 'standard_error_of_mean', 'estimated_inaccuracy'} <= reported_measure_kinds,
+        'installed typed reported measure family missing')
+# A source scientific expression is retained, not rewritten into an integer label.
+scientific_rows = [p for p in reference_properties['records'] if ' × 10' in p['reported_value']['value_text']]
+require(bool(scientific_rows), 'missing installed source scientific notation')
+for prop in scientific_rows:
+    for language in languages:
+        require(prop['reported_value']['value_text'] in render_catalog(query_catalog('reference-properties', record_id=prop['id']), 'reference-properties', language),
+                'installed scientific-notation source precision lost')
+
 print(json.dumps({"version": expected, "metadata_version": metadata_version,
+                  "material_reported_measure_kinds": sorted(reported_measure_kinds), "material_reported_measure_languages": languages,
                   "material_uncertainty_types": sorted(uncertainty_variants), "material_uncertainty_languages": languages,
                   "reported_extraction_windows": sum(p["method_definition"]["extraction_window"] is not None for p in reference_properties["records"]),
                   "engine_outputs": sorted(outputs), "languages": languages,

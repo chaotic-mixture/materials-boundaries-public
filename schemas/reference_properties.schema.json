@@ -566,6 +566,456 @@
         "notes"
       ]
     },
+    "reported_measure": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "standard_deviation"
+            },
+            "availability": {
+              "const": "numeric_reported"
+            },
+            "basis": {
+              "const": "absolute"
+            },
+            "reported_value": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value_text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "unit_text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "unit_code": {
+                  "type": "string",
+                  "enum": [
+                    "g/cm^3",
+                    "kg/m^3",
+                    "kg/dm^3",
+                    "lb/in^3",
+                    "MPa",
+                    "GPa",
+                    "N/mm^2",
+                    "kN/mm^2"
+                  ]
+                },
+                "number": {
+                  "type": "string",
+                  "maxLength": 49,
+                  "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+                }
+              },
+              "required": [
+                "value_text",
+                "unit_text",
+                "unit_code",
+                "number"
+              ]
+            },
+            "qualifier": {
+              "type": "string",
+              "enum": [
+                "approximately",
+                "not_qualified_in_source"
+              ]
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "confidence_level": {
+              "type": "null"
+            },
+            "coverage_factor": {
+              "type": "null"
+            },
+            "note": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "availability",
+            "basis",
+            "reported_value",
+            "qualifier",
+            "scope",
+            "evidence",
+            "confidence_level",
+            "coverage_factor",
+            "note"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "coefficient_of_variation"
+            },
+            "availability": {
+              "const": "numeric_reported"
+            },
+            "basis": {
+              "const": "relative_to_reported_value"
+            },
+            "reported_value": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value_text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "unit_text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "unit_code": {
+                  "const": "percent"
+                },
+                "number": {
+                  "type": "string",
+                  "maxLength": 49,
+                  "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+                }
+              },
+              "required": [
+                "value_text",
+                "unit_text",
+                "unit_code",
+                "number"
+              ]
+            },
+            "qualifier": {
+              "type": "string",
+              "enum": [
+                "approximately",
+                "not_qualified_in_source"
+              ]
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "confidence_level": {
+              "type": "null"
+            },
+            "coverage_factor": {
+              "type": "null"
+            },
+            "note": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "availability",
+            "basis",
+            "reported_value",
+            "qualifier",
+            "scope",
+            "evidence",
+            "confidence_level",
+            "coverage_factor",
+            "note"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "standard_error_of_mean"
+            },
+            "availability": {
+              "const": "numeric_reported"
+            },
+            "basis": {
+              "const": "relative_to_reported_value"
+            },
+            "reported_value": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value_text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "unit_text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "unit_code": {
+                  "const": "percent"
+                },
+                "number": {
+                  "type": "string",
+                  "maxLength": 49,
+                  "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+                }
+              },
+              "required": [
+                "value_text",
+                "unit_text",
+                "unit_code",
+                "number"
+              ]
+            },
+            "qualifier": {
+              "type": "string",
+              "enum": [
+                "approximately",
+                "not_qualified_in_source"
+              ]
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "confidence_level": {
+              "type": "null"
+            },
+            "coverage_factor": {
+              "type": "null"
+            },
+            "note": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "availability",
+            "basis",
+            "reported_value",
+            "qualifier",
+            "scope",
+            "evidence",
+            "confidence_level",
+            "coverage_factor",
+            "note"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "estimated_inaccuracy"
+            },
+            "availability": {
+              "const": "numeric_reported"
+            },
+            "basis": {
+              "const": "relative_to_reported_value"
+            },
+            "reported_value": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value_text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "unit_text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "unit_code": {
+                  "const": "percent"
+                },
+                "number": {
+                  "type": "string",
+                  "maxLength": 49,
+                  "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+                }
+              },
+              "required": [
+                "value_text",
+                "unit_text",
+                "unit_code",
+                "number"
+              ]
+            },
+            "qualifier": {
+              "type": "string",
+              "enum": [
+                "approximately",
+                "not_qualified_in_source"
+              ]
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "confidence_level": {
+              "type": "null"
+            },
+            "coverage_factor": {
+              "type": "null"
+            },
+            "note": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "availability",
+            "basis",
+            "reported_value",
+            "qualifier",
+            "scope",
+            "evidence",
+            "confidence_level",
+            "coverage_factor",
+            "note"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "standard_deviation"
+            },
+            "availability": {
+              "const": "graphical_only"
+            },
+            "basis": {
+              "const": "absolute"
+            },
+            "reported_value": {
+              "type": "null"
+            },
+            "qualifier": {
+              "type": "string",
+              "enum": [
+                "approximately",
+                "not_qualified_in_source"
+              ]
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "confidence_level": {
+              "type": "null"
+            },
+            "coverage_factor": {
+              "type": "null"
+            },
+            "note": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            }
+          },
+          "required": [
+            "kind",
+            "availability",
+            "basis",
+            "reported_value",
+            "qualifier",
+            "scope",
+            "evidence",
+            "confidence_level",
+            "coverage_factor",
+            "note"
+          ]
+        }
+      ]
+    },
     "uncertainty": {
       "oneOf": [
         {
@@ -772,6 +1222,27 @@
             "coverage_factor",
             "evidence",
             "confidence_level"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "const": "reported_measures"
+            },
+            "measures": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/reported_measure"
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "type",
+            "measures"
           ]
         }
       ]
@@ -1110,6 +1581,7 @@
             "reported_standard_deviation",
             "reported_confidence_interval",
             "reported_plus_minus_unspecified",
+            "reported_measures",
             "not_reported_in_inspected_source",
             "not_applicable"
           ]

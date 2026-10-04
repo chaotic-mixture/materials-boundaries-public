@@ -307,3 +307,103 @@ contracts, with new IDs and evidence. Holds for Kevlar 49, Dyneema SK76 and
 Sylgard 527 describe this batch's unresolved evidence only; there is no permanent
 ID or chemical-family ban. The eight-rule evaluator, existing scientific
 families, old observations/predictions and catalog-only boundary are unchanged.
+
+
+## v0.32.0 metals and natural-fiber batch
+
+The [v0.32.0 coverage](MATERIAL_COVERAGE_v0.32.0.md) adds nine distinct
+source-qualified identities, each with one original experimental reference
+property: **34 + 9 = 43 identities**. Five tensile strengths, two mass densities
+and two chord Young's moduli use existing physical quantities and broad
+categories. Eight original sources support the additions. The historical
+sections above describe their respective releases; this section extends the
+contract without reinterpreting old records.
+
+### Separately reported measures
+
+`reported_measures` is one closed alternative in the uncertainty union, with a
+matching `uncertainty_status` and a nonempty `measures` array. Its scalar central
+result remains separate from its uncertainty descriptors. Each descriptor
+requires `kind`, `availability`, `basis`, `reported_value`, `qualifier`, `scope`,
+nonempty primary-source `evidence`, null `confidence_level`, null
+`coverage_factor`, and nullable `note`. Unknown keys, nested envelopes and exact
+duplicate descriptors are rejected.
+
+The closed kinds are `standard_deviation`, `coefficient_of_variation`,
+`standard_error_of_mean` and `estimated_inaccuracy`. Numeric descriptors use
+`availability: numeric_reported`; their `reported_value` holds exact decimal
+`number`, source `value_text`, `unit_text` and `unit_code`. Standard deviation is
+absolute and has the central result's physical unit. CV, SEM and estimated
+inaccuracy are relative to the reported central value and use percent; percent
+does not become a physical result unit. CV has no arbitrary 100% cap. Relative
+SEM requires an explicitly evidenced reported mean.
+
+Graphical-only support is deliberately limited to SD. It has
+`availability: graphical_only`, absolute basis, **null** `reported_value`, an
+exact figure/panel/caption locator and a note stating that no numerical amplitude
+was transcribed or digitized. Numeric availability cannot omit its amplitude;
+graphical availability cannot invent one. Silk's graph-only SD is therefore
+neither zero uncertainty nor wholly unreported uncertainty.
+
+Central aggregation and descriptor kind have independent evidence. A numeric
+SD in the new envelope may accompany the existing unknown-center statistic
+when the source explicitly labels SD but does not name the displayed center's
+aggregation. Such a record requires an explanatory note. Wool's **163 MPa**
+center remains `not_stated` with separately evidenced **23 MPa SD**; the old
+`reported_standard_deviation` alternative retains its explicit-mean requirement.
+The CI and unspecified-± alternatives likewise remain unchanged.
+
+`qualifier` distinguishes `approximately` from `not_qualified_in_source`.
+Molybdenum's **0.02% SEM** and **approximately 0.1% estimated inaccuracy** remain
+two independently evidenced relative descriptors, not one uncertainty value.
+Their measurement/population scopes and distinct meanings must survive text and
+JSON output. Flax/hemp's **56.12% / 72.02% CV** remains relative dispersion.
+There is no SD/SEM conversion, CV-derived amplitude, quadrature, interval
+construction, inferred confidence level, coverage factor or graphical digitizing.
+A descriptor is not a physical min/max bound or an engineering allowable.
+
+All numeric descriptors follow the existing bounded nonnegative finite-decimal
+lexical rules and source-text matching. Signs, nonfinite values, hidden controls,
+excessive precision and mismatched units/text remain invalid. Structural
+validation cannot establish that a source statement is scientifically true.
+
+### Source scientific notation
+
+Source `value_text` can preserve a narrowly accepted mantissa-times-power-of-ten
+spelling while `number` remains fixed-point. The selected density tokens
+`10.21 × 10^3` / `10210` and `19.23 × 10^3` / `19230` retain the source
+mantissa precision and `kg m−3` unit text. Exact decimal equivalence checks the
+notation; it does not recalculate a measurement, convert units or authorize
+rewriting the source display. The matcher is bounded and accepts only supported
+spellings, not general mathematical expressions or arbitrary metadata/unit
+parsing. Both molybdenum and tungsten depend on this support.
+
+### Interpretation and backward compatibility
+
+- AZ31 is the unreinforced as-extruded comparator; composite-process details
+  remain study context. Zinc's ± and AZ31's ± remain statistically unspecified
+- Flax/hemp method text is on PDF p.8, with Figure 6 p.7. Their source's
+  standard-edition discrepancy stays explicit. The source chord window,
+  minimum circular area, slack correction and absence of compliance correction
+  are not replaced by an initial or isotropic modulus
+- Silk keeps intraspecific/intraindividual sampling scope, five-cocoon origin,
+  graph-only SD and the ANOVA/t-test discrepancy without a significance claim
+- Broad `composite` means natural hierarchical lignocellulosic bundles for
+  flax/hemp, and `polymer` means natural protein fibers for silk/wool. These
+  classifications do not claim resin matrices, purified chemistry or new enums
+- Numerical room temperatures, successful sample denominators, density-test
+  methods/pressure and density timing relative to annealing are not invented
+
+The compatibility requirement keeps all prior 34 records and outputs unchanged.
+The material/reference envelopes remain 1.0.0; runtime, generated schema and
+four-language labels must be upgraded together. Locale output distinguishes CV,
+graph-only SD, SD with unknown central aggregation, relative SEM and approximate
+inaccuracy, preserving source qualifications. New records are catalog-only; the
+eight-rule evaluator and model/claim/prediction catalogs are not expanded.
+
+Read the [migration gates](MIGRATION_v0.32.0.md) before admitting a contribution.
+Exact-payload validation, old-output parity, full tests and installed-wheel
+checks are still required; source-transcription acceptance alone is not their
+success. Full attribution and separately scoped CC BY 4.0/NBS rights are in
+[third-party notices](../THIRD_PARTY_NOTICES.md#metals-and-natural-fiber-references-v0320).
+Only selected facts and original curation are included, never source assets.

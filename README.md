@@ -1,6 +1,6 @@
 # 材料边界 · Materials Boundaries
 
-Current software release: **v0.31.0** · **Source-qualified fibers and elastomers** · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
+Current software release: **v0.32.0** · **Nine source-qualified material additions** · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
 
 A condition-aware, source-traceable materials-mechanics catalog and offline Python toolkit. It separates conditional mathematical bounds, model relations, published observations, computational predictions and synthetic demonstrations. Python 3.10+; no third-party runtime dependencies.
 
@@ -9,22 +9,22 @@ Repository: [chaotic-mixture/materials-boundaries-public](https://github.com/cha
 ## Public-release scope
 
 <!-- current-catalog-summary:start -->
-- **41 mechanics claims**, **90 source records**, **16 observations from 5 studies**, **12 published computational predictions in 2 scientific families and 3 explicit groups**, and **5 synthetic temperature demos with 7 branches**
+- **41 mechanics claims**, **98 source records**, **16 observations from 5 studies**, **12 published computational predictions in 2 scientific families and 3 explicit groups**, and **5 synthetic temperature demos with 7 branches**
 - Exactly **8 executable composite calculation rules**: HS/Reuss/Voigt bulk and shear bounds plus conservative derived Young's-modulus and Poisson-ratio envelopes
 - Other mechanics records, including initial-yield criteria and their function comparison, scalar viscoelasticity, bulk elastic waves, hydrostatic compressibility, directional Poisson ratio, anisotropy, fatigue, fracture, stability and porous relations, are catalog-only
-- The 90 sources comprise 89 bibliographic/source records plus 1 original synthetic-demo provenance record; a source record is not a redistribution of its publication or dataset
+- The 98 sources comprise 97 bibliographic/source records plus 1 original synthetic-demo provenance record; a source record is not a redistribution of its publication or dataset
 - All five temperature demos use intentionally invented coefficients and ranges. They do not describe real materials, measured properties or engineering allowables
 <!-- current-catalog-summary:end -->
 
 ## Concrete material references
 
 <!-- material-catalog-summary:start -->
-The separate reference catalogue contains **34 material identities**, **17 qualified grades**, **34 source-scoped states** and **34 reference properties**. Counts describe this registry only; aliases, categories, prior observations and computational model cells are not additional materials.
+The separate reference catalogue contains **43 material identities**, **19 qualified grades**, **43 source-scoped states** and **43 reference properties**. Counts describe this registry only; aliases, categories, prior observations and computational model cells are not additional materials.
 <!-- material-catalog-summary:end -->
 
-The prior 28 identities remain unchanged. This release adds six source-qualified industrial products/formulations: Toray T700S single filament, Deutsche Basalt Faser A76.9.2-sized filament, Sylgard 184 at one stated cure, SMR 10 NR compound, Vistalon 2504/N550 EPDM compound and PERBUNAN 3445 F NBR REF compound. Specimen indices, formulations, sizing and cure states remain explicit; aliases or extra specimens do not inflate identity counts.
+The prior 34 identities remain unchanged. This release adds nine source-qualified materials: AZ91D and AZ31 magnesium alloys, annealed 99.9% zinc, NBS molybdenum and tungsten tubes, flax and hemp technical-fiber bundles, Bombyx mori silk fibroin and Latxa sheep wool. Each identity contributes one selected numerical property. Source-specific grades, processing, populations and unknown conditions remain explicit.
 
-Every state resolves a source-backed property. The new generic metadata contract distinguishes reported SD, reported confidence intervals and reported ± with unspecified statistical meaning. Sylgard's reported 95% CI has unspecified estimand/construction; rubber density ± amplitudes and central aggregation remain unspecified. T700S is one specimen, while basalt's successful test count is unknown. Exact extraction windows, normalization unknowns, conditions and source rights remain visible in all four languages. No value becomes a theoretical bound, allowable or calculator input. [Guide and contribution contract](docs/MATERIAL_REFERENCE_CATALOG.md) · [Coverage](docs/MATERIAL_COVERAGE_v0.31.0.md) · [Migration](docs/MIGRATION_v0.31.0.md)
+A closed generic metadata extension preserves reported CV, graphical SD with unavailable numerical amplitude, SD with unnamed central aggregation, and separate relative SEM and approximate estimated inaccuracy. NBS density expressions retain their source scientific notation and mantissa precision. These are separate reported descriptors, never combined or converted into bounds or confidence intervals. All four languages retain source qualifications; the existing eight executable rules and earlier records remain unchanged. [Guide and contribution contract](docs/MATERIAL_REFERENCE_CATALOG.md) · [Coverage](docs/MATERIAL_COVERAGE_v0.32.0.md) · [Migration](docs/MIGRATION_v0.32.0.md)
 
 ```sh
 python -m materials_boundaries catalog materials --text --lang en
