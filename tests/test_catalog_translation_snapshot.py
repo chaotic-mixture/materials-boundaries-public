@@ -11,6 +11,7 @@ import unittest
 from unittest.mock import patch
 
 from materials_boundaries.catalog import query_catalog, read_catalog
+from viscoelastic_preservation import historical_claims_envelope
 from materials_boundaries.catalog_output import render_catalog
 from materials_boundaries.i18n import LANGUAGES, translate
 
@@ -57,6 +58,8 @@ class CatalogTranslationSnapshotTests(unittest.TestCase):
                     # Only the observation envelope advances in v0.22; the
                     # frozen v0.20.1 payload/text must remain byte-identical.
                     historic = copy.deepcopy(catalog)
+                    if kind == "claims":
+                        historic = historical_claims_envelope(historic)
                     if kind == "observations":
                         self.assertEqual(historic["schema_version"], "1.3.0")
                         historic["schema_version"] = "1.2.0"

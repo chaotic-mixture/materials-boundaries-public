@@ -11,6 +11,7 @@ import hashlib
 import inspect
 import json
 from pathlib import Path
+from viscoelastic_preservation import pre_viscoelastic_bytes
 import unittest
 from unittest.mock import patch
 
@@ -75,7 +76,7 @@ class PAHTTestLineageTests(unittest.TestCase):
     def test_every_successor_is_actual_and_exact_edits_recover_accepted_bytes(self):
         for change in history.PAHT_TEST_UPDATES['approved_test_updates']:
             with self.subTest(filename=change['filename']):
-                actual = (ROOT / change['filename']).read_bytes()
+                actual = pre_viscoelastic_bytes(change['filename'], (ROOT / change['filename']).read_bytes())
                 self.assertEqual(sha(actual), change['sha256'])
                 self.assertEqual(history.reviewed_paht_test_hash(change['filename'],
                     PREDECESSORS[change['filename']]), sha(actual))
@@ -93,7 +94,7 @@ class PAHTTestLineageTests(unittest.TestCase):
         self.assertIn('tests/fixtures/helper_maintenance_updates_20261003.json', fixtures)
         for filename, expected in fixtures.items():
             with self.subTest(filename=filename):
-                self.assertEqual(sha((ROOT / filename).read_bytes()), expected)
+                self.assertEqual(sha(pre_viscoelastic_bytes(filename, (ROOT / filename).read_bytes())), expected)
 
     def test_only_reviewed_test_methods_change_and_no_method_is_dropped(self):
         allowed = {
@@ -114,7 +115,7 @@ class PAHTTestLineageTests(unittest.TestCase):
         for change in history.PAHT_TEST_UPDATES['approved_test_updates']:
             if change['filename'] == HELPER:
                 continue
-            actual = (ROOT / change['filename']).read_bytes()
+            actual = pre_viscoelastic_bytes(change['filename'], (ROOT / change['filename']).read_bytes())
             old_methods = methods(recover_predecessor(actual, change['edits']))
             new_methods = methods(actual)
             self.assertEqual(set(new_methods), set(old_methods), change['filename'])
@@ -122,7 +123,7 @@ class PAHTTestLineageTests(unittest.TestCase):
             self.assertEqual(changed, allowed[change['filename']], change['filename'])
         change = next(e for e in history.PAHT_TEST_UPDATES['approved_test_updates']
                       if e['filename'] == 'tests/test_pa12_cf15_inspection.py')
-        actual = (ROOT / change['filename']).read_bytes()
+        actual = pre_viscoelastic_bytes(change['filename'], (ROOT / change['filename']).read_bytes())
         before = recover_predecessor(actual, change['edits'])
         old = b"view.build_observation_inspection(quantity=PA12_QUANTITY)['facets']"
         new = b"view.build_observation_inspection(quantity=PA12_QUANTITY, source_id=PA12_SOURCE)['facets']"
@@ -132,7 +133,7 @@ class PAHTTestLineageTests(unittest.TestCase):
     def test_old_source_family_scopes_are_exactly_four_edits(self):
         change = next(e for e in history.PAHT_TEST_UPDATES['approved_test_updates']
                       if e['filename'] == 'tests/test_pa12_cf15_observations.py')
-        actual = (ROOT / change['filename']).read_bytes()
+        actual = pre_viscoelastic_bytes(change['filename'], (ROOT / change['filename']).read_bytes())
         before = recover_predecessor(actual, change['edits'])
         old = b'if not is_pa12_record(r)'
         new = b'if r["observation_type"] == "experiment_derived_model_dependent"'
@@ -240,7 +241,7 @@ class PAHTTestLineageTests(unittest.TestCase):
     def test_changed_bytes_and_forged_successors_fail_even_with_valid_digest_syntax(self):
         for change in history.PAHT_TEST_UPDATES['approved_test_updates']:
             filename = change['filename']
-            actual = (ROOT / filename).read_bytes()
+            actual = pre_viscoelastic_bytes(filename, (ROOT / filename).read_bytes())
             for modified in (b'!' + actual[1:], actual + b'\n'):
                 self.assertNotEqual(sha(modified), history.reviewed_paht_test_hash(filename, change['previous_sha256']))
                 with self.assertRaises(AssertionError):

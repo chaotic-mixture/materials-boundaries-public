@@ -1,6 +1,6 @@
 # 材料边界 · Materials Boundaries
 
-Current software release: **v0.25.0** · **Explicit two-study temperature comparison** · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
+Current software release: **v0.26.0** · **Scalar viscoelastic duality and conditional product bound** · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
 
 A condition-aware, source-traceable materials-mechanics catalog and offline Python toolkit. It separates conditional mathematical bounds, model relations, published observations, computational predictions and synthetic demonstrations. Python 3.10+; no third-party runtime dependencies.
 
@@ -9,12 +9,14 @@ Repository: [chaotic-mixture/materials-boundaries-public](https://github.com/cha
 ## Public-release scope
 
 <!-- current-catalog-summary:start -->
-- **36 mechanics claims**, **53 source records**, **16 observations from 5 studies**, **12 published computational predictions in 2 scientific families and 3 explicit groups**, and **5 synthetic temperature demos with 7 branches**
+- **38 mechanics claims**, **55 source records**, **16 observations from 5 studies**, **12 published computational predictions in 2 scientific families and 3 explicit groups**, and **5 synthetic temperature demos with 7 branches**
 - Exactly **8 executable composite calculation rules**: HS/Reuss/Voigt bulk and shear bounds plus conservative derived Young's-modulus and Poisson-ratio envelopes
-- Other mechanics records, including bulk elastic waves, hydrostatic compressibility, directional Poisson ratio, anisotropy, fatigue, fracture, stability and porous relations, are catalog-only
-- The 53 sources comprise 52 bibliographic/source records plus 1 original synthetic-demo provenance record; a source record is not a redistribution of its publication or dataset
+- Other mechanics records, including scalar viscoelasticity, bulk elastic waves, hydrostatic compressibility, directional Poisson ratio, anisotropy, fatigue, fracture, stability and porous relations, are catalog-only
+- The 55 sources comprise 54 bibliographic/source records plus 1 original synthetic-demo provenance record; a source record is not a redistribution of its publication or dataset
 - All five temperature demos use intentionally invented coefficients and ranges. They do not describe real materials, measured properties or engineering allowables
 <!-- current-catalog-summary:end -->
+
+Version **0.26.0** appends exactly two catalog-only scalar viscoelastic records and two source records. Within a matched causal linear time-invariant scalar channel, fixed material state and temperature, nonzero completely monotone ordinary relaxation with finite positive R0, and no additive Newtonian impulse, the normalized creep-relaxation convolution equals 1. The original project proof gives **0<R(t)J(t)<=1 at every finite t>0**; it is not a separately printed Hanyga theorem or a universal material-strength law. Initial jumps and possibly unbounded but integrable J' are retained. Changing loading rates remain allowed under the fixed kernel. Claims schema advances **1.11.0 → 1.12.0**; all eight executable rules are unchanged. [Scope, original proofs and source versions](docs/SCALAR_VISCOELASTICITY.md) · [v0.26.0 migration](docs/MIGRATION_v0.26.0.md)
 
 Version **0.25.0** adds one explicit `observation compare-temperature-studies --profile-id ciganas-zach-uts-temperature-v1` view. Both protocols and caveats come first; six Ciganas unspecified-central UTS summaries and four Zach reported medians remain separate, unconnected panels with always-visible SD columns. No uncertainty endpoints, matched-condition inference, pooling or ranking is added. Zach SD units remain contextual. No scientific records, old fixtures/examples, generic inspection or existing Ciganas plot policy change. [Two-study guide](docs/OBSERVATION_STUDY_COMPARISON.md) · [v0.25.0 migration](docs/MIGRATION_v0.25.0.md)
 

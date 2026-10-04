@@ -8,10 +8,12 @@ def read_catalog(name: str) -> dict:
         raise ValueError(f"unknown catalog: {name}")
     catalog = json.loads(files("materials_boundaries").joinpath("data", name + ".json").read_text(encoding="utf-8"))
     if name == "claims":
+        from ._viscoelastic_contract import validate_viscoelastic_records
         from ._wave_contract import validate_wave_records
         from ._compressibility_contract import validate_compressibility_records
         from ._directional_contract import validate_directional_records
         validate_wave_records(catalog["records"])
+        validate_viscoelastic_records(catalog["records"], resolve_dependencies=True)
         validate_compressibility_records(catalog["records"], resolve_dependencies=True)
         validate_directional_records(catalog["records"], resolve_dependencies=True)
     if name == "observations":

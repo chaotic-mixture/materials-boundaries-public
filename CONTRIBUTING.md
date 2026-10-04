@@ -451,3 +451,24 @@ reviewed profile, evidence/protocol summaries, schema, four authored labels and
 adversarial/rendering/preservation tests. Shared units or unknown fields never
 admit a comparison. Existing scientific payloads and historical artifacts must
 remain intact; no pooling, rankings or SD endpoint computation is permitted.
+
+## Scalar viscoelastic contracts (v0.26.0)
+
+The two families in [SCALAR_VISCOELASTICITY.md](docs/SCALAR_VISCOELASTICITY.md)
+are catalog-only. Their exact assumptions are conjunctive; finite positive R0,
+ordinary nonzero CM relaxation, matched scalar channel, fixed linear time-invariant
+kernel and state/temperature, and absence of an additive Newtonian impulse may
+not be weakened. Changing loading rate is allowed under the fixed kernel.
+Finite-interval absolute continuity of Bernstein J follows from its integrable
+possibly unbounded derivative. Retain the initial jump J0 delta_0. The product
+bound is original project algebra, not a separately printed Hanyga theorem,
+passivity equivalence, creep-strength law, or universal material bound.
+
+Fresh source/evidence records and IDs can reuse the closed scientific contracts;
+product dependencies resolve by the scalar-duality family, not a privileged ID.
+Each new ID needs all four authored names. Time and inverse-time parameter units
+are restricted to these new families. Do not add an evaluator or measured/fitted
+values through this path. Contributions outside the reviewed class require new
+scientific/schema review, not relaxation of an existing guard. During disposable
+mixed-append rehearsals, refresh only that copy's marked current README counts;
+all previous tests and scientific fixtures remain unchanged.

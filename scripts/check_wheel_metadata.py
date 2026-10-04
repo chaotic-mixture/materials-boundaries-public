@@ -154,6 +154,43 @@ for identifier in wave_ids:
         pass
     else:
         raise RuntimeError("installed wave guard accepted non-strict density")
+# Scalar viscoelastic records remain metadata-only after a dependency-free install.
+from materials_boundaries._viscoelastic_contract import validate_viscoelastic_records
+viscoelastic_ids = ('scalar_viscoelastic_creep_relaxation_duality',
+                   'scalar_viscoelastic_creep_relaxation_product_bound')
+for identifier in viscoelastic_ids:
+    selected = query_catalog('claims', record_id=identifier)
+    require(len(selected['records']) == 1, 'missing installed viscoelastic record')
+    require(selected['records'][0]['evaluation_support'] == 'catalog_only',
+            'installed viscoelastic record became executable')
+    for language in languages:
+        for as_json in (False, True):
+            stdout = io.StringIO()
+            with redirect_stdout(stdout):
+                code = main(['catalog', 'claims', '--id', identifier, '--lang', language,
+                             '--json' if as_json else '--text'])
+            text = stdout.getvalue()
+            require(code == 0 and '[missing:' not in text, 'installed viscoelastic CLI failed')
+            if as_json:
+                require(json.loads(text) == selected, 'viscoelastic JSON changed by language')
+            else:
+                for key in ('notice', 'conditions', 'regularity', 'attribution', 'range', 'limits'):
+                    require(translate('catalog_viscoelastic_' + key, language) in text,
+                            'missing installed viscoelastic disclosure: ' + key)
+    weakened = deepcopy(selected)
+    weakened['records'][0]['required_assumptions']['instantaneous_relaxation'] = 'R0>=0'
+    for action in (lambda: validate_viscoelastic_records(weakened['records']),
+                   lambda: render_catalog(weakened, 'claims')):
+        try:
+            action()
+        except ValueError:
+            pass
+        else:
+            raise RuntimeError('installed viscoelastic guard accepted non-strict instantaneous modulus')
+require(set(viscoelastic_ids).isdisjoint(e['claim_id'] for e in evaluation['evaluations']),
+        'installed evaluator dispatched a viscoelastic relation')
+require(len(evaluation['evaluations']) == 8 and len(outputs['comparison']['series']) == 8,
+        'installed viscoelastic catalog changed the eight-rule boundary')
 # Falin hBN source components and unknowns must also survive dependency-free installation.
 from materials_boundaries._hbn_observation_contract import HBN_SOURCE
 hbn = query_catalog("observations", source_id=HBN_SOURCE)
@@ -248,7 +285,7 @@ old_records = [r for r in all_records if r['observation_type'] == 'experiment_de
 new_records = [r for r in all_records if r.get('method_family') == PA12_FAMILY]
 require(len(all_records) == 16 and len(old_records) == len(new_records) == 6,
         'unexpected production observation counts')
-require(len(read_catalog('sources')['records']) == 53, 'unexpected production source count')
+require(len(read_catalog('sources')['records']) == 55, 'unexpected production source count')
 expected_cells = (('23', '49.07', '0.88', 49070000, 880000),
                   ('40', '40.31', '0.72', 40310000, 720000),
                   ('60', '32.70', '1.18', 32700000, 1180000),
@@ -622,7 +659,7 @@ rejects(lambda: plot_view.build_observation_temperature_plot(dataset_id=PAHT_DAT
 
 print(json.dumps({"version": expected, "metadata_version": metadata_version,
                   "engine_outputs": sorted(outputs), "languages": languages,
-                  "installed_without_dependencies": True, "mixed_observation_catalog_languages": languages, "bulk_wave_catalog_languages": languages, "hbn_observation_languages": languages, "observation_inspection_languages": languages, "observation_inspection_schema": "1.1.0", "pa12_export_checks": export_checks, "pa12_scientific_mutations_rejected": len(mutations), "pa12_exact_selected_cells": len(expected_cells), "temperature_observation_plot_languages": languages, "temperature_observation_plot_schema": "1.0.0", "temperature_observation_plot_cells": len(plot_bundle["glyphs"]), "paht_exact_median_sd_cells": len(paht), "paht_four_language_inspection": True, "study_comparison_languages": languages, "study_comparison_schema": "1.0.0", "study_comparison_cells": 10}))
+                  "installed_without_dependencies": True, "mixed_observation_catalog_languages": languages, "bulk_wave_catalog_languages": languages, "viscoelastic_catalog_languages": languages, "hbn_observation_languages": languages, "observation_inspection_languages": languages, "observation_inspection_schema": "1.1.0", "pa12_export_checks": export_checks, "pa12_scientific_mutations_rejected": len(mutations), "pa12_exact_selected_cells": len(expected_cells), "temperature_observation_plot_languages": languages, "temperature_observation_plot_schema": "1.0.0", "temperature_observation_plot_cells": len(plot_bundle["glyphs"]), "paht_exact_median_sd_cells": len(paht), "paht_four_language_inspection": True, "study_comparison_languages": languages, "study_comparison_schema": "1.0.0", "study_comparison_cells": 10}))
 '''
 
 

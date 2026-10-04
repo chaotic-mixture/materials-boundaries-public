@@ -8,6 +8,7 @@ from copy import deepcopy
 import hashlib
 import json
 from pathlib import Path
+from viscoelastic_preservation import pre_viscoelastic_bytes
 import unittest
 
 from provenance_corrections import reviewed_current_test_hash, reviewed_paht_test_hash
@@ -60,7 +61,7 @@ class TemperaturePlotPreservationTests(unittest.TestCase):
             expected = reviewed_current_test_hash(filename, expected)
             expected = reviewed_paht_test_hash(filename, expected)
             with self.subTest(filename=filename):
-                self.assertEqual(hashlib.sha256((ROOT / filename).read_bytes()).hexdigest(), expected)
+                self.assertEqual(hashlib.sha256(pre_viscoelastic_bytes(filename, (ROOT / filename).read_bytes())).hexdigest(), expected)
 
     def test_eight_rules_and_inspection_policy_are_not_relaxed(self):
         self.assertEqual(len(BASE_RULES) + len(DERIVED_RULES), 8)

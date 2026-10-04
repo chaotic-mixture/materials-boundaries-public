@@ -227,7 +227,7 @@ class AnisotropySchemaTests(unittest.TestCase):
 
     def test_catalog_closed_families_and_comparison_schema_snapshot(self):
         self.validator.check_schema(self.validator.schema);validate_catalogs(self.catalogs)
-        self.assertEqual(self.catalogs['claims']['schema_version'],'1.11.0')
+        self.assertEqual(self.catalogs['claims']['schema_version'],'1.12.0')
         self.assertEqual(load_json(ROOT/'schemas/comparison.schema.json')['$defs']['claims'],self.validator.schema)
         for r in records(self.catalogs):r['parameters'].reverse()
         validate_catalogs(self.catalogs)

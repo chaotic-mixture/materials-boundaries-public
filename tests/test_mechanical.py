@@ -290,7 +290,7 @@ class MechanicalContractTests(unittest.TestCase):
         validator.validate(evaluate(data))
 
     def test_all_new_claims_discoverable_and_source_ids_resolve(self):
-        catalog=read_catalog('claims');self.assertEqual(catalog['schema_version'],'1.11.0')
+        catalog=read_catalog('claims');self.assertEqual(catalog['schema_version'],'1.12.0')
         names={r['id'] for r in catalog['records']};sources={r['id'] for r in read_catalog('sources')['records']}
         for item in catalog['records']:
             self.assertTrue(set(item['dependencies']).issubset(names))

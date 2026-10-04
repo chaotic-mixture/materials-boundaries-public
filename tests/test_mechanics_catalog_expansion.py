@@ -34,7 +34,7 @@ def record(name):
 class MechanicsCatalogExpansionTests(unittest.TestCase):
     def test_identifiers_references_and_no_implicit_composite_dependencies(self):
         claims, sources = read_catalog('claims'), read_catalog('sources')
-        self.assertEqual(claims['schema_version'], '1.11.0')
+        self.assertEqual(claims['schema_version'], '1.12.0')
         self.assertEqual(sources['schema_version'], '1.0.0')
         claim_ids = [r['id'] for r in claims['records']]
         source_ids = [r['id'] for r in sources['records']]

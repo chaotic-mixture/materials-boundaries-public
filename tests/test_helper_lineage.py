@@ -11,6 +11,7 @@ import hashlib
 import inspect
 import json
 from pathlib import Path
+from viscoelastic_preservation import pre_viscoelastic_bytes
 import unittest
 from unittest.mock import patch
 
@@ -144,7 +145,7 @@ class HelperLineageTests(unittest.TestCase):
                          '5afbaae797599ac9321ea9a59c925f4877d35799dd283338cd70a3facb0f022c')
         for change in history.CURRENT_HELPER_UPDATES['approved_test_updates']:
             with self.subTest(filename=change['filename']):
-                actual = sha((ROOT / change['filename']).read_bytes())
+                actual = sha(pre_viscoelastic_bytes(change['filename'], (ROOT / change['filename']).read_bytes()))
                 accepted = history.reviewed_current_test_hash(change['filename'], change['previous_sha256'])
                 self.assertEqual(accepted, change['sha256'])
                 self.assertEqual(history.reviewed_paht_test_hash(change['filename'], accepted), actual)
@@ -169,7 +170,7 @@ class HelperLineageTests(unittest.TestCase):
         evidence = history.HELPER_BOOTSTRAP_BRIDGE['evidence']
         for filename, expected in evidence['historical_fixture_sha256'].items():
             with self.subTest(filename=filename):
-                self.assertEqual(sha((ROOT / filename).read_bytes()), expected)
+                self.assertEqual(sha(pre_viscoelastic_bytes(filename, (ROOT / filename).read_bytes())), expected)
         source = (ROOT / HELPER).read_text()
         lines = source.splitlines(keepends=True)
         functions = {node.name: ''.join(lines[node.lineno - 1:node.end_lineno]).encode()
@@ -271,7 +272,7 @@ class HelperLineageTests(unittest.TestCase):
     def test_changed_actual_bytes_and_forged_successors_fail_direct_comparison(self):
         for change in history.CURRENT_HELPER_UPDATES['approved_test_updates']:
             filename = change['filename']
-            actual = (ROOT / filename).read_bytes()
+            actual = pre_viscoelastic_bytes(filename, (ROOT / filename).read_bytes())
             accepted = history.reviewed_current_test_hash(filename, change['previous_sha256'])
             expected = history.reviewed_paht_test_hash(filename, accepted)
             for changed in (b'!' + actual[1:], actual + b'\n'):

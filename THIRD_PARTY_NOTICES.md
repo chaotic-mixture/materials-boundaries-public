@@ -215,3 +215,16 @@ Theodor Florian Zach and Mircea Cristian Dudescu, “Effect of Annealing on High
 Four annealed ±45° Table A1 rows were selected and reorganized as catalog observations. Median/SD strings are preserved separately; exact SI-prefix re-expression and original curator notes were added. The SD header does not print a unit: MPa is a contextual inference and its Pa re-expression is conditional. This adaptation does not imply author endorsement. MIT applies to original project contributions and does not replace source rights.
 
 Only selected numerical facts, short labels, bibliographic/component/version metadata, attribution and original curation are bundled. Publisher PDFs, HTML, screenshots, source figures, long passages and raw measurements are not included. Supplier Table 1 and supplier publications/assets/raw data are excluded; Table 2 separately credits references [28,31], whose assets are not redistributed or relicensed. Neither PDF version was inspected or asserted equivalent to current HTML. See [full source guide](docs/PAHT_CF_ANNEALED_OBSERVATIONS.md).
+
+## Hanyga scalar viscoelastic sources (v0.26.0)
+
+The two new source records describe Hanyga's arXiv:1805.07275v1 (17 May 2018)
+and arXiv:1903.03814v8 (2 November 2019). Their official abstract pages link
+https://arxiv.org/licenses/nonexclusive-distrib/1.0/license.html, which grants
+arXiv nonexclusive distribution rights and does not establish a general project
+redistribution license. No CC BY status is asserted. Bibliographic metadata,
+precise locators, mathematical facts, original paraphrases and original project
+proofs are included; source PDFs, extracted text, figures, screenshots and source
+TeX are not. MIT applies only to original project contributions. The publisher
+version associated with DOI 10.1007/s00419-019-01620-2 was not inspected.
+See [the versioned evidence and original proof guide](docs/SCALAR_VISCOELASTICITY.md).

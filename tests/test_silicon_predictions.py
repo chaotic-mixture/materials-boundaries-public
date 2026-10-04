@@ -13,6 +13,7 @@ from html.parser import HTMLParser
 import io
 import json
 from pathlib import Path
+from viscoelastic_preservation import pre_viscoelastic_bytes
 import subprocess
 import sys
 import tempfile
@@ -216,7 +217,7 @@ class SiliconPreservationTests(unittest.TestCase):
                 self.assertTrue(update['reason'].strip())
                 expected = update['sha256']
             expected = reviewed_test_hash(filename, expected)
-            self.assertEqual(sha256((ROOT / filename).read_bytes()).hexdigest(), expected, filename)
+            self.assertEqual(sha256(pre_viscoelastic_bytes(filename, (ROOT / filename).read_bytes())).hexdigest(), expected, filename)
 
     def test_legacy_evaluations_and_exact_ni_outputs_are_preserved(self):
         for filename, expected in BASELINE['composite_outputs'].items():

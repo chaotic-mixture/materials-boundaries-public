@@ -36,6 +36,7 @@ EMPTY_DEPENDENCY_FAMILIES = {
     'directional_linear_compressibility_hydrostatic_relation_v1',
     'isotropic_bulk_plane_wave_speeds_and_ratio_v1',
     'christoffel_tensor_strong_ellipticity_v1',
+    'scalar_viscoelastic_creep_relaxation_duality_v1',
 }
 
 
@@ -65,6 +66,14 @@ class FractureCatalogTests(unittest.TestCase):
                 else:
                     self.assertIn(record['rule_id'], EMPTY_DEPENDENCY_FAMILIES)
                     self.assertEqual(record['dependencies'], [])
+            elif record['rule_id'] == 'scalar_viscoelastic_creep_relaxation_product_bound_v1':
+                self.assertEqual(record['claim_type'], 'theoretical_bound')
+                self.assertEqual(record['direction'], 'interval')
+                self.assertEqual(record['bound_kind'], 'dimensionless_response_product_bound')
+                self.assertEqual(record['evaluation_support'], 'catalog_only')
+                self.assertEqual(len(record['dependencies']), 1)
+                self.assertEqual(by_id[record['dependencies'][0]]['rule_id'],
+                                 'scalar_viscoelastic_creep_relaxation_duality_v1')
             else:
                 self.assertEqual(record['evaluation_support'], 'composite_evaluate' if record['id'] in EXECUTABLE_IDS else 'catalog_only')
                 self.assertEqual(record['bound_kind'], 'scalar_modulus_bound' if record['claim_type'] == 'theoretical_bound' else record['claim_type'])

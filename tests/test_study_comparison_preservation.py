@@ -2,6 +2,7 @@
 import hashlib
 import json
 from pathlib import Path
+from viscoelastic_preservation import pre_viscoelastic_bytes, historical_claims_envelope
 import unittest
 
 from materials_boundaries import observation_visualization as inspection
@@ -24,7 +25,7 @@ class StudyComparisonPreservationTests(unittest.TestCase):
             if filename in allowed or filename.startswith('materials_boundaries/data/'):
                 continue
             with self.subTest(filename=filename):
-                self.assertEqual(hashlib.sha256((ROOT / filename).read_bytes()).hexdigest(), expected)
+                self.assertEqual(hashlib.sha256(pre_viscoelastic_bytes(filename, (ROOT / filename).read_bytes())).hexdigest(), expected)
 
     def test_all_existing_catalog_objects_are_unchanged_under_supported_appendability(self):
         def digest(value):
@@ -32,6 +33,8 @@ class StudyComparisonPreservationTests(unittest.TestCase):
                 separators=(',', ':'), allow_nan=False).encode()).hexdigest()
         for filename, fields in BASELINE['catalog_preservation'].items():
             current = json.loads((ROOT / filename).read_text())
+            if filename == 'materials_boundaries/data/claims.json':
+                current = historical_claims_envelope(current)
             for key, baseline in fields.items():
                 with self.subTest(filename=filename, field=key):
                     if 'record_digests' in baseline:

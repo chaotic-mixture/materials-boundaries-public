@@ -17,10 +17,12 @@ def render_catalog(catalog: dict, kind: str, language: str = "en") -> str:
         from ._observation_contract import validate_observation_records
         validate_observation_records(catalog["records"])
     if kind == "claims":
+        from ._viscoelastic_contract import validate_viscoelastic_records
         from ._wave_contract import validate_wave_records
         from ._compressibility_contract import validate_compressibility_records
         from ._directional_contract import validate_directional_records
         validate_wave_records(catalog["records"])
+        validate_viscoelastic_records(catalog["records"])
         validate_compressibility_records(catalog["records"])
         validate_directional_records(catalog["records"])
         # Filtered output may omit its definition dependency. Resolve it against
@@ -28,6 +30,7 @@ def render_catalog(catalog: dict, kind: str, language: str = "en") -> str:
         # are supported when their fresh definition is supplied in the subset.
         definitions = {record["id"]: record for record in read_catalog("claims")["records"]}
         definitions.update({record["id"]: record for record in catalog["records"]})
+        validate_viscoelastic_records(list(definitions.values()), resolve_dependencies=True)
         validate_directional_records(list(definitions.values()), resolve_dependencies=True)
         validate_compressibility_records(list(definitions.values()), resolve_dependencies=True)
     lookup = _catalog_translation_lookup(language)
@@ -491,7 +494,8 @@ def render_catalog(catalog: dict, kind: str, language: str = "en") -> str:
                 field("catalog_formula", record["formula_display"]),
             ])
             if record["evaluation_support"] == "catalog_only":
-                notice = ("catalog_wave_notice" if "bulk_wave_contract" in record
+                notice = ("catalog_viscoelastic_notice" if "viscoelastic_contract" in record
+                          else "catalog_wave_notice" if "bulk_wave_contract" in record
                           else "catalog_compressibility_notice" if "hydrostatic_compressibility_contract" in record
                           else "catalog_directional_notice" if "directional_contract" in record
                           else "catalog_index_notice" if "index_range" in record
@@ -499,6 +503,11 @@ def render_catalog(catalog: dict, kind: str, language: str = "en") -> str:
                           else "catalog_bound_notice" if record["claim_type"] in {"theoretical_bound", "derived_outer_envelope"}
                           else "catalog_model_notice")
                 lines.append("  " + t(notice))
+            if "viscoelastic_contract" in record:
+                for key in ("conditions", "regularity", "attribution", "range", "limits"):
+                    lines.append("  " + t("catalog_viscoelastic_" + key))
+                lines.append("    viscoelastic_contract: " + json.dumps(
+                    record["viscoelastic_contract"], ensure_ascii=False, allow_nan=False))
             if "bulk_wave_contract" in record:
                 for key in ("conditions", "normalization", "polarization", "energy", "range", "limits"):
                     lines.append("  " + t("catalog_wave_" + key))

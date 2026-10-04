@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.11.0",
+  "schema_version": "1.12.0",
   "records": [
     {
       "id": "hs_bulk_3d_two_phase",
@@ -4350,6 +4350,352 @@
           "W5_fixed_tensor_compactness"
         ]
       }
+    },
+    {
+      "id": "scalar_viscoelastic_creep_relaxation_duality",
+      "version": "1.0.0",
+      "name": "Scalar creep-relaxation convolution duality (finite-instantaneous CM scope)",
+      "rule_id": "scalar_viscoelastic_creep_relaxation_duality_v1",
+      "quantity": "normalized_scalar_creep_relaxation_convolution",
+      "direction": "relation",
+      "claim_type": "model_relation",
+      "bound_kind": null,
+      "quantity_dimension": "dimensionless",
+      "si_unit": "1",
+      "evaluation_support": "catalog_only",
+      "formula_display": "(1/t)*integral_0^t R(t-s)*J(s) ds=1, finite t>0; p^2*R_hat(p)*J_hat(p)=1, p>0",
+      "required_assumptions": {
+        "channel": "one_matched_scalar_reciprocal_stress_strain_channel",
+        "kinematics": "small_strain",
+        "constitutive_law": "causal_linear_time_translation_invariant_hereditary",
+        "material_state": "fixed_state_temperature_moisture_phase_and_chemistry",
+        "prehistory": "zero_stress_and_strain_before_zero; initial_jumps_retained",
+        "relaxation_kernel": "ordinary_nonzero_completely_monotone_R_on_positive_time",
+        "instantaneous_relaxation": "finite_strictly_positive_R0=R(0+)",
+        "newtonian_term": "N=0; no_additive_Dirac_impulse_in_relaxation",
+        "creep_function": "unique_reciprocal_Bernstein_J_in_the_declared_scalar_class",
+        "loading_rates": "may_change_under_the_same_fixed_linear_time_invariant_kernel",
+        "time_domain": "finite_t>0_for_normalized_identity_and_product_bound",
+        "laplace_domain": "real_p>0"
+      },
+      "parameters": [
+        {
+          "symbol": "R(t)",
+          "quantity": "scalar_relaxation_modulus",
+          "dimension": "pressure",
+          "si_unit": "Pa",
+          "meaning": "Ordinary nonzero completely monotone relaxation kernel; finite R0=R(0+)>0."
+        },
+        {
+          "symbol": "J(t)",
+          "quantity": "reciprocal_scalar_creep_compliance",
+          "dimension": "inverse_pressure",
+          "si_unit": "Pa^-1",
+          "meaning": "Unique Bernstein reciprocal for the same scalar channel and fixed conditions; J0=1/R0."
+        },
+        {
+          "symbol": "t",
+          "quantity": "elapsed_time",
+          "dimension": "time",
+          "si_unit": "s",
+          "meaning": "Finite strictly positive elapsed time; zero and infinity are limiting endpoints only."
+        },
+        {
+          "symbol": "p",
+          "quantity": "laplace_variable",
+          "dimension": "inverse_time",
+          "si_unit": "s^-1",
+          "meaning": "Real strictly positive Laplace variable; not a cyclic loading frequency."
+        }
+      ],
+      "viscoelastic_contract": {
+        "class_definitions": {
+          "complete_monotonicity": "(-1)^n R^(n)(t)>=0 for every integer n>=0 and every t>0",
+          "bernstein": "J>=0 and J_prime is completely monotone on t>0",
+          "weak_monotonicity": "R is nonincreasing; J is nondecreasing",
+          "relaxation_spectrum": "R(t)=integral_[0,infinity) exp(-r*t) mu(dr); 0<mu([0,infinity))=R0<infinity"
+        },
+        "causal_conventions": {
+          "convolution": "(R*J)(t)=integral_0^t R(t-s)*J(s) ds",
+          "constitutive_laws": "sigma=R*D(epsilon); epsilon=J*D(sigma), with causal distributional derivatives including initial jumps",
+          "initial_creep_jump": "D(HJ)=J0*delta_0+H(t)*J_prime(t); HJ denotes pointwise causal extension",
+          "newtonian_caution": "N=0 excludes an additive relaxation impulse, not every dashpot; the Maxwell series dashpot is admitted"
+        },
+        "units": {
+          "R": "Pa",
+          "J": "Pa^-1",
+          "t_and_R_convolved_with_J": "s",
+          "p": "s^-1",
+          "R_hat": "Pa*s",
+          "J_hat": "Pa^-1*s",
+          "normalized_convolution_and_same_time_product": "1"
+        },
+        "finite_interval_regularity": {
+          "bernstein_representation": "J(t)=J0+b*t+integral_(0,infinity) (1-exp(-r*t)) nu(dr); b>=0; integral min(1,r) nu(dr)<infinity",
+          "integrable_derivative": "For every finite T>0, Tonelli gives integral_0^T J_prime(s) ds=b*T+integral (1-exp(-r*T)) nu(dr)=J(T)-J0<infinity",
+          "absolute_continuity": "J(t)=J0+integral_0^t J_prime(s) ds, so J is absolutely continuous on every [0,T]",
+          "finite_initial_slope_required": false,
+          "differentiation": "R is continuous on [0,T]; write R*J=J0*integral_0^t R(u) du+integral_0^t (R*J_prime)(u) du. The latter convolution is continuous, so 1=J0*R(t)+(R*J_prime)(t) for every t>0"
+        },
+        "endpoint_limits": {
+          "initial": "R0*J0=1",
+          "positive_equilibrium_modulus": "If Rinf>0 then Jinf=1/Rinf and lim_(t->infinity) R(t)*J(t)=1",
+          "zero_equilibrium_modulus": "If Rinf=0 then Jinf=infinity; no universal product limit is inferred from 0 times infinity",
+          "pointwise_reciprocity_claimed": false
+        },
+        "source_attribution": {
+          "duality": "Hanyga 2018 arXiv:1805.07275v1 section 3 Theorems 1-2; Hanyga 2019 arXiv:1903.03814v8 section 2 Eqs (5)-(7), N=0",
+          "product_bound": "original_project_proof_from_the_restricted_duality_not_a_separately_printed_Hanyga_theorem",
+          "same_author_sources_are_independent_validation": false,
+          "scientific_peer_review_certified": false,
+          "passivity_equivalence_claimed": false
+        },
+        "scope_exclusions": [
+          "aging_or_two_time_kernels",
+          "nonlinear_or_finite_strain_response",
+          "history_or_state_dependent_changes_to_the_kernel",
+          "changing_material_state_or_temperature",
+          "damage_plasticity_tertiary_creep_or_rupture",
+          "singular_at_zero_relaxation_or_additive_Newtonian_impulse",
+          "tensor_componentwise_substitution",
+          "unmatched_channels_specimens_histories_or_conditions",
+          "unverified_instrument_inertia_or_wave_effects"
+        ],
+        "experimental_validation": false,
+        "creep_strength_or_rupture_prediction": false,
+        "numerical_evaluator": false,
+        "kind": "normalized_convolution_duality",
+        "identity": "(R*J)(t)=t; (R*J)(t)/t=1 for finite t>0; p^2*R_hat(p)*J_hat(p)=1 for p>0",
+        "reciprocal_existence_and_uniqueness": "Hanyga Theorem 1 with beta=0 supplies Bernstein J; Laplace uniqueness within the stated ordinary continuous/Bernstein class fixes it",
+        "proof_ids": [
+          "V1_restricted_duality",
+          "V2_finite_interval_AC_and_jump"
+        ]
+      },
+      "dependencies": [],
+      "evidence": [
+        {
+          "source_id": "hanyga2018scalar_anisotropic_duality",
+          "locator": "arXiv:1805.07275v1, section 3, Theorem 1, printed/PDF p. 4, Eqs (8)-(9), spectrum (11), construction p. 5; Theorem 2 p. 6; definitions pp. 12-13.",
+          "verification_status": "primary_equations_visually_checked_project_derivation_separate",
+          "verified_as": "CM/Bernstein reciprocal theorem restricted to ordinary nonzero R with finite positive R0 and beta=0. Only scalar results admitted."
+        },
+        {
+          "source_id": "hanyga2019newtonian_relaxation",
+          "locator": "Inspected arXiv:1903.03814v8, section 2, printed/PDF p. 3, constitutive paragraph and Eqs (5)-(7), explicitly N=0.",
+          "verification_status": "primary_equations_visually_checked_project_derivation_separate",
+          "verified_as": "Published constitutive duality and Laplace identity with causal zero extension. Publisher version not inspected. No slope-to-N inference outside the zero-initial-creep branch."
+        }
+      ],
+      "verification": {
+        "status": "source_checked_plus_original_project_proof_not_peer_reviewed",
+        "independent_scientific_review": false,
+        "gaps": [
+          "Independent mathematical admission check is not scientific peer review or empirical validation.",
+          "Two same-author sources are not independent validation. No native-language scientific review.",
+          "Finite noisy measurements cannot establish complete monotonicity at every derivative order."
+        ]
+      },
+      "limits": [
+        "Conditional scalar constitutive mathematics only; no passivity equivalence, universal material bound, fitted values, creep-strength or rupture prediction.",
+        "R is nonincreasing and J is nondecreasing; their same-time product need not be monotone and is not generally one.",
+        "Changing loading rate is permitted by the fixed linear time-invariant kernel; nonlinear or history/state-dependent kernel changes are excluded.",
+        "No finite J_prime(0+) assumption. The integrable derivative and initial jump J0*delta_0 must both be retained.",
+        "Original project proof and analytic synthetic Maxwell/SLS examples are not source-reported measurements.",
+        "No tensor/componentwise extension, singular-at-zero relaxation, additive Newtonian impulse, or unmatched response pairing."
+      ]
+    },
+    {
+      "id": "scalar_viscoelastic_creep_relaxation_product_bound",
+      "version": "1.0.0",
+      "name": "Scalar same-time creep-relaxation product bound (finite-instantaneous CM scope)",
+      "rule_id": "scalar_viscoelastic_creep_relaxation_product_bound_v1",
+      "quantity": "scalar_creep_relaxation_same_time_product",
+      "direction": "interval",
+      "claim_type": "theoretical_bound",
+      "bound_kind": "dimensionless_response_product_bound",
+      "quantity_dimension": "dimensionless",
+      "si_unit": "1",
+      "evaluation_support": "catalog_only",
+      "formula_display": "0<R(t)*J(t)<=1, for each finite t>0",
+      "required_assumptions": {
+        "channel": "one_matched_scalar_reciprocal_stress_strain_channel",
+        "kinematics": "small_strain",
+        "constitutive_law": "causal_linear_time_translation_invariant_hereditary",
+        "material_state": "fixed_state_temperature_moisture_phase_and_chemistry",
+        "prehistory": "zero_stress_and_strain_before_zero; initial_jumps_retained",
+        "relaxation_kernel": "ordinary_nonzero_completely_monotone_R_on_positive_time",
+        "instantaneous_relaxation": "finite_strictly_positive_R0=R(0+)",
+        "newtonian_term": "N=0; no_additive_Dirac_impulse_in_relaxation",
+        "creep_function": "unique_reciprocal_Bernstein_J_in_the_declared_scalar_class",
+        "loading_rates": "may_change_under_the_same_fixed_linear_time_invariant_kernel",
+        "time_domain": "finite_t>0_for_normalized_identity_and_product_bound",
+        "laplace_domain": "real_p>0"
+      },
+      "parameters": [
+        {
+          "symbol": "R(t)",
+          "quantity": "scalar_relaxation_modulus",
+          "dimension": "pressure",
+          "si_unit": "Pa",
+          "meaning": "Ordinary nonzero completely monotone relaxation kernel; finite R0=R(0+)>0."
+        },
+        {
+          "symbol": "J(t)",
+          "quantity": "reciprocal_scalar_creep_compliance",
+          "dimension": "inverse_pressure",
+          "si_unit": "Pa^-1",
+          "meaning": "Unique Bernstein reciprocal for the same scalar channel and fixed conditions; J0=1/R0."
+        },
+        {
+          "symbol": "t",
+          "quantity": "elapsed_time",
+          "dimension": "time",
+          "si_unit": "s",
+          "meaning": "Finite strictly positive elapsed time; zero and infinity are limiting endpoints only."
+        },
+        {
+          "symbol": "p",
+          "quantity": "laplace_variable",
+          "dimension": "inverse_time",
+          "si_unit": "s^-1",
+          "meaning": "Real strictly positive Laplace variable; not a cyclic loading frequency."
+        }
+      ],
+      "viscoelastic_contract": {
+        "class_definitions": {
+          "complete_monotonicity": "(-1)^n R^(n)(t)>=0 for every integer n>=0 and every t>0",
+          "bernstein": "J>=0 and J_prime is completely monotone on t>0",
+          "weak_monotonicity": "R is nonincreasing; J is nondecreasing",
+          "relaxation_spectrum": "R(t)=integral_[0,infinity) exp(-r*t) mu(dr); 0<mu([0,infinity))=R0<infinity"
+        },
+        "causal_conventions": {
+          "convolution": "(R*J)(t)=integral_0^t R(t-s)*J(s) ds",
+          "constitutive_laws": "sigma=R*D(epsilon); epsilon=J*D(sigma), with causal distributional derivatives including initial jumps",
+          "initial_creep_jump": "D(HJ)=J0*delta_0+H(t)*J_prime(t); HJ denotes pointwise causal extension",
+          "newtonian_caution": "N=0 excludes an additive relaxation impulse, not every dashpot; the Maxwell series dashpot is admitted"
+        },
+        "units": {
+          "R": "Pa",
+          "J": "Pa^-1",
+          "t_and_R_convolved_with_J": "s",
+          "p": "s^-1",
+          "R_hat": "Pa*s",
+          "J_hat": "Pa^-1*s",
+          "normalized_convolution_and_same_time_product": "1"
+        },
+        "finite_interval_regularity": {
+          "bernstein_representation": "J(t)=J0+b*t+integral_(0,infinity) (1-exp(-r*t)) nu(dr); b>=0; integral min(1,r) nu(dr)<infinity",
+          "integrable_derivative": "For every finite T>0, Tonelli gives integral_0^T J_prime(s) ds=b*T+integral (1-exp(-r*T)) nu(dr)=J(T)-J0<infinity",
+          "absolute_continuity": "J(t)=J0+integral_0^t J_prime(s) ds, so J is absolutely continuous on every [0,T]",
+          "finite_initial_slope_required": false,
+          "differentiation": "R is continuous on [0,T]; write R*J=J0*integral_0^t R(u) du+integral_0^t (R*J_prime)(u) du. The latter convolution is continuous, so 1=J0*R(t)+(R*J_prime)(t) for every t>0"
+        },
+        "endpoint_limits": {
+          "initial": "R0*J0=1",
+          "positive_equilibrium_modulus": "If Rinf>0 then Jinf=1/Rinf and lim_(t->infinity) R(t)*J(t)=1",
+          "zero_equilibrium_modulus": "If Rinf=0 then Jinf=infinity; no universal product limit is inferred from 0 times infinity",
+          "pointwise_reciprocity_claimed": false
+        },
+        "source_attribution": {
+          "duality": "Hanyga 2018 arXiv:1805.07275v1 section 3 Theorems 1-2; Hanyga 2019 arXiv:1903.03814v8 section 2 Eqs (5)-(7), N=0",
+          "product_bound": "original_project_proof_from_the_restricted_duality_not_a_separately_printed_Hanyga_theorem",
+          "same_author_sources_are_independent_validation": false,
+          "scientific_peer_review_certified": false,
+          "passivity_equivalence_claimed": false
+        },
+        "scope_exclusions": [
+          "aging_or_two_time_kernels",
+          "nonlinear_or_finite_strain_response",
+          "history_or_state_dependent_changes_to_the_kernel",
+          "changing_material_state_or_temperature",
+          "damage_plasticity_tertiary_creep_or_rupture",
+          "singular_at_zero_relaxation_or_additive_Newtonian_impulse",
+          "tensor_componentwise_substitution",
+          "unmatched_channels_specimens_histories_or_conditions",
+          "unverified_instrument_inertia_or_wave_effects"
+        ],
+        "experimental_validation": false,
+        "creep_strength_or_rupture_prediction": false,
+        "numerical_evaluator": false,
+        "kind": "conditional_same_time_product_bound",
+        "range": {
+          "lower": {
+            "value": 0,
+            "inclusive": false,
+            "attained": false,
+            "is_infimum": true
+          },
+          "upper": {
+            "value": 1,
+            "inclusive": true,
+            "attained_by": "pure_elastic_member"
+          },
+          "quantifier": "across_the_declared_class_at_each_fixed_finite_t>0",
+          "absolute_modulus_or_compliance_bound": false
+        },
+        "original_proof": {
+          "difference_identity": "1-R(t)*J(t)=integral_0^t [R(t-s)-R(t)]*J_prime(s) ds>=0",
+          "strict_positivity": "R(t)>0 at every finite time from its nonzero nonnegative finite spectrum; J(t)>=J0>0",
+          "initial_jump_term_retained": true
+        },
+        "synthetic_examples": {
+          "maxwell": {
+            "conditions": "R0>0; tau>0",
+            "R": "R0*exp(-t/tau)",
+            "J": "(1+t/tau)/R0",
+            "product": "(1+x)*exp(-x), x=t/tau",
+            "sharpness": "At fixed t>0, varying tau realizes every product in (0,1); a pure spring realizes 1; zero is not attained"
+          },
+          "standard_linear_solid": {
+            "conditions": "E>0; tau>0",
+            "R": "E*(1+exp(-t/tau))",
+            "J": "(1-0.5*exp(-t/(2*tau)))/E",
+            "gap": "1-R(t)*J(t)=q*(1-q)^2/2, q=exp(-t/(2*tau))",
+            "nonmonotone_product": true
+          },
+          "measured_data": false
+        },
+        "proof_ids": [
+          "V2_finite_interval_AC_and_jump",
+          "V3_product_bound_and_sharpness",
+          "V4_nonmonotone_SLS_product"
+        ]
+      },
+      "dependencies": [
+        "scalar_viscoelastic_creep_relaxation_duality"
+      ],
+      "evidence": [
+        {
+          "source_id": "hanyga2018scalar_anisotropic_duality",
+          "locator": "arXiv:1805.07275v1, section 3, Theorem 1, printed/PDF p. 4, Eqs (8)-(9), spectrum (11), construction p. 5; Theorem 2 p. 6; definitions pp. 12-13.",
+          "verification_status": "primary_equations_visually_checked_project_derivation_separate",
+          "verified_as": "CM/Bernstein reciprocal theorem restricted to ordinary nonzero R with finite positive R0 and beta=0. Only scalar results admitted. The same-time inequality, regularity argument and examples are original project derivations, not a separately printed Hanyga theorem."
+        },
+        {
+          "source_id": "hanyga2019newtonian_relaxation",
+          "locator": "Inspected arXiv:1903.03814v8, section 2, printed/PDF p. 3, constitutive paragraph and Eqs (5)-(7), explicitly N=0.",
+          "verification_status": "primary_equations_visually_checked_project_derivation_separate",
+          "verified_as": "Published constitutive duality and Laplace identity with causal zero extension. Publisher version not inspected. No slope-to-N inference outside the zero-initial-creep branch. The same-time inequality, regularity argument and examples are original project derivations, not a separately printed Hanyga theorem."
+        }
+      ],
+      "verification": {
+        "status": "source_checked_plus_original_project_proof_not_peer_reviewed",
+        "independent_scientific_review": false,
+        "gaps": [
+          "Independent mathematical admission check is not scientific peer review or empirical validation.",
+          "Two same-author sources are not independent validation. No native-language scientific review.",
+          "Finite noisy measurements cannot establish complete monotonicity at every derivative order."
+        ]
+      },
+      "limits": [
+        "Conditional scalar constitutive mathematics only; no passivity equivalence, universal material bound, fitted values, creep-strength or rupture prediction.",
+        "R is nonincreasing and J is nondecreasing; their same-time product need not be monotone and is not generally one.",
+        "Changing loading rate is permitted by the fixed linear time-invariant kernel; nonlinear or history/state-dependent kernel changes are excluded.",
+        "No finite J_prime(0+) assumption. The integrable derivative and initial jump J0*delta_0 must both be retained.",
+        "Original project proof and analytic synthetic Maxwell/SLS examples are not source-reported measurements.",
+        "No tensor/componentwise extension, singular-at-zero relaxation, additive Newtonian impulse, or unmatched response pairing."
+      ]
     }
   ]
 }

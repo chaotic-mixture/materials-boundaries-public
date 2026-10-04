@@ -5,6 +5,7 @@ from hashlib import sha256
 import io
 import json
 from pathlib import Path
+from viscoelastic_preservation import pre_viscoelastic_bytes
 import subprocess
 import sys
 import tempfile
@@ -169,7 +170,7 @@ class NickelBatchPreservationTests(unittest.TestCase):
         ledger = load_json(ROOT / 'tests/fixtures/nickel_test_updates_v0210.json')
         self.assertEqual(set(ledger['approved_test_updates']), {'tests/test_silicon_predictions.py'})
         for filename, change in ledger['approved_test_updates'].items():
-            self.assertEqual(sha256((ROOT / filename).read_bytes()).hexdigest(), change['sha256'])
+            self.assertEqual(sha256(pre_viscoelastic_bytes(filename, (ROOT / filename).read_bytes())).hexdigest(), change['sha256'])
             self.assertNotEqual(change['previous_sha256'], change['sha256'])
             self.assertTrue(change['reason'])
 

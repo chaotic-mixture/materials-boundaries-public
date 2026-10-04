@@ -1,3 +1,2 @@
-"""Single software-release version, read statically by the build backend."""
-
-__version__ = "0.25.0"
+"""Single source of truth for the software release version."""
+__version__ = "0.26.0"

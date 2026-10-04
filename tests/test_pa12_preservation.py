@@ -8,6 +8,7 @@ from copy import deepcopy
 import hashlib
 import json
 from pathlib import Path
+from viscoelastic_preservation import pre_viscoelastic_bytes
 import unittest
 
 from materials_boundaries.catalog import read_catalog, query_catalog
@@ -64,7 +65,7 @@ class PA12HistoricPreservation(unittest.TestCase):
         # This file has no older overrides; the new predecessor must match
         # exactly before the reviewed current hash can be used.
         self.assertEqual(history.reviewed_test_hash(filename, change['previous_sha256']), change['sha256'])
-        self.assertEqual(hashlib.sha256((ROOT / filename).read_bytes()).hexdigest(), change['sha256'])
+        self.assertEqual(hashlib.sha256(pre_viscoelastic_bytes(filename, (ROOT / filename).read_bytes())).hexdigest(), change['sha256'])
         for mutation in ('foreign_file', 'missing_file', 'wrong_predecessor', 'blank_reason'):
             altered = deepcopy(ledger)
             if mutation == 'foreign_file':

@@ -562,3 +562,15 @@ are unchanged. [Migration](MIGRATION_v0.23.0.md).
 ## v0.24.0 addition: annealed PAHT-CF
 
 Four source-specific catalog-only medians and separate SD values from Zach and Dudescu (2025) are admitted, with contextual SD units and complete before-value caveats. The total is now 16 observations from five studies and 53 sources. The previous records and Ciganas plot remain unchanged. Quantity-only UTS inspection includes both studies; filter by source ID for one study. [Exact cells, provenance, rights and limits](PAHT_CF_ANNEALED_OBSERVATIONS.md) · [Migration](MIGRATION_v0.24.0.md)
+
+## Scalar viscoelasticity: Hanyga versioned sources
+
+v0.26.0 adds bibliographic records for Hanyga arXiv:1805.07275v1 and the inspected
+arXiv:1903.03814v8 artifact. [The scientific guide](SCALAR_VISCOELASTICITY.md)
+records dates, exact equation/page locators, inspected-byte checksums, the
+unversioned-URL caveat for the v8 PDF, publication-status limits and rights.
+Only the restricted scalar CM/Bernstein constitutive duality is source-attributed.
+The finite-interval regularity exposition, same-time product proof and synthetic
+Maxwell/SLS checks are original project work. Same-author papers are not
+independent empirical validation; no scientific peer-review certification is
+made. Source artifacts are excluded from redistribution.
