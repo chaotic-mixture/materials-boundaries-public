@@ -81,6 +81,8 @@ def _build_parser(language: str) -> argparse.ArgumentParser:
     def t(key: str) -> str:
         return translate(key, language)
 
+    from .material_presentation import material_labels
+    mt = material_labels(language)
     parser = _LocalizedParser(description=t("cli_description"), language=language)
 
     def add_language(target):
@@ -98,9 +100,10 @@ def _build_parser(language: str) -> argparse.ArgumentParser:
     validate_parser = sub.add_parser("validate", help=t("cli_validate"), description=t("cli_validate"))
     validate_parser.add_argument("instance", help=t("cli_instance"))
     add_language(validate_parser)
-    catalog_parser = sub.add_parser("catalog", help=t("cli_catalog"), description=t("cli_catalog"),
-                                    epilog=t("cli_catalog_contract"))
-    catalog_parser.add_argument("kind", choices=("claims", "sources", "observations", "predictions"), help=t("cli_kind"))
+    catalog_help = t("cli_catalog") + "; " + mt["cli_catalog_extra"]
+    catalog_parser = sub.add_parser("catalog", help=catalog_help, description=catalog_help,
+                                    epilog=t("cli_catalog_contract") + " " + mt["cli_filter_notice"])
+    catalog_parser.add_argument("kind", choices=("claims", "sources", "observations", "predictions", "materials", "reference-properties"), help=t("cli_kind"))
     add_language(catalog_parser)
     output = catalog_parser.add_mutually_exclusive_group()
     output.add_argument("--text", action="store_true", help=t("cli_text"))
@@ -109,12 +112,18 @@ def _build_parser(language: str) -> argparse.ArgumentParser:
     catalog_parser.add_argument("--query", metavar="QUERY", help=t("cli_query"))
     catalog_parser.add_argument("--direction", choices=("interval", "lower", "upper", "prediction", "relation", "constraint"), help=t("cli_direction"))
     catalog_parser.add_argument("--claim-type", choices=("theoretical_bound", "derived_outer_envelope", "model_estimate", "model_relation", "stability_criterion"), help=t("cli_claim_type"))
-    catalog_parser.add_argument("--source-id", metavar="ID", help=t("cli_source_id"))
-    catalog_parser.add_argument("--quantity", metavar="QUANTITY", help=t("cli_observation_quantity"))
+    catalog_parser.add_argument("--source-id", metavar="ID", help=mt["cli_source_id"])
+    catalog_parser.add_argument("--quantity", metavar="QUANTITY", help=mt["cli_quantity"])
     catalog_parser.add_argument("--observation-type", choices=("experiment_derived_model_dependent", "experiment_derived_tensile_test_summary"), help=t("cli_observation_type"))
     catalog_parser.add_argument("--role", metavar="ROLE", help=t("cli_role"))
     catalog_parser.add_argument("--year", type=int, metavar="YEAR", help=t("cli_year"))
     catalog_parser.add_argument("--license", metavar="LICENSE", help=t("cli_license"))
+    catalog_parser.add_argument("--material-id", metavar="ID", help=mt["cli_material_id"])
+    catalog_parser.add_argument("--identity-id", metavar="ID", help=mt["cli_identity_id"])
+    catalog_parser.add_argument("--grade-id", metavar="ID", help=mt["cli_grade_id"])
+    catalog_parser.add_argument("--category", metavar="CATEGORY", help=mt["cli_category"])
+    catalog_parser.add_argument("--evidence-kind", metavar="KIND", help=mt["cli_evidence_kind"])
+    catalog_parser.add_argument("--reporting-basis", metavar="BASIS", help=mt["cli_reporting_basis"])
     from .temperature_visualization import labels as temperature_labels
     tt = temperature_labels(language)
     temperature_parser = sub.add_parser("temperature", help=tt["command"], description=tt["command"])
@@ -289,7 +298,10 @@ def main(argv: list[str] | None = None) -> int:
                 catalog = query_catalog(args.kind, record_id=args.record_id, query=args.query,
                                         direction=args.direction, claim_type=args.claim_type, source_id=args.source_id,
                                         role=args.role, year=args.year, license=args.license,
-                                        quantity=args.quantity, observation_type=args.observation_type)
+                                        quantity=args.quantity, observation_type=args.observation_type,
+                                        material_id=args.material_id, identity_id=args.identity_id,
+                                        grade_id=args.grade_id, category=args.category,
+                                        evidence_kind=args.evidence_kind, reporting_basis=args.reporting_basis)
             except CatalogLookupError as exc:
                 print(json.dumps({"error": "catalog_id_not_found", "detail": str(exc)}, ensure_ascii=False), file=sys.stderr)
                 return 2

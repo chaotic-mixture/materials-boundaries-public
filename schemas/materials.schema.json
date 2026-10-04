@@ -1,0 +1,562 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:materials-boundaries:schema:materials:1.0.0",
+  "title": "Catalog-only concrete material registry v1",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "identities": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/identity"
+      },
+      "minItems": 0
+    },
+    "grades": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/grade"
+      },
+      "minItems": 0
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/state"
+      },
+      "minItems": 0
+    }
+  },
+  "required": [
+    "schema_version",
+    "identities",
+    "grades",
+    "records"
+  ],
+  "$defs": {
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "source_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^(?![\\s\\S]*[\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff])https://[^\\s/?#]+(?:[/?#][^\\s]*)?(?![\\s\\S])"
+        },
+        "locator": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "supports": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "material_identity",
+              "grade",
+              "state",
+              "reported_value",
+              "method",
+              "condition",
+              "classification",
+              "disclaimer",
+              "summary_statistic",
+              "uncertainty",
+              "sample_count",
+              "source_discrepancy"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "source_id",
+        "url",
+        "locator",
+        "supports"
+      ]
+    },
+    "fact": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "const": "reported"
+            },
+            "text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "notes": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "status",
+            "text",
+            "evidence",
+            "notes"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "const": "not_reported_in_inspected_source"
+            },
+            "text": {
+              "type": "null"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 0
+            },
+            "notes": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "status",
+            "text",
+            "evidence",
+            "notes"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "const": "not_verified"
+            },
+            "text": {
+              "type": "null"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 0
+            },
+            "notes": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "status",
+            "text",
+            "evidence",
+            "notes"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "const": "not_applicable"
+            },
+            "text": {
+              "type": "null"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 0
+            },
+            "notes": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            }
+          },
+          "required": [
+            "status",
+            "text",
+            "evidence",
+            "notes"
+          ]
+        }
+      ]
+    },
+    "names": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "en": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "zh": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "ja": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "de": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        }
+      },
+      "required": [
+        "en",
+        "zh",
+        "ja",
+        "de"
+      ]
+    },
+    "alias": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "language": {
+          "type": "string",
+          "enum": [
+            "en",
+            "zh",
+            "ja",
+            "de",
+            "und"
+          ]
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        }
+      },
+      "required": [
+        "language",
+        "text"
+      ]
+    },
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^mat_[a-z0-9][a-z0-9_]*(?![\\s\\S])",
+          "maxLength": 160
+        },
+        "version": {
+          "const": "1.0.0"
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "metal",
+            "polymer",
+            "inorganic",
+            "composite"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "names": {
+          "$ref": "#/$defs/names"
+        },
+        "aliases": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/alias"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "identity_scope": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "category",
+        "name",
+        "names",
+        "aliases",
+        "identity_scope",
+        "evidence"
+      ]
+    },
+    "grade": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^grade_[a-z0-9][a-z0-9_]*(?![\\s\\S])",
+          "maxLength": 160
+        },
+        "version": {
+          "const": "1.0.0"
+        },
+        "identity_id": {
+          "type": "string",
+          "pattern": "^mat_[a-z0-9][a-z0-9_]*(?![\\s\\S])",
+          "maxLength": 160
+        },
+        "designation": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "authority": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "type": "string",
+              "enum": [
+                "manufacturer",
+                "standard_designation",
+                "source_designation"
+              ]
+            },
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            }
+          },
+          "required": [
+            "kind",
+            "name"
+          ]
+        },
+        "manufacturer": {
+          "$ref": "#/$defs/fact"
+        },
+        "aliases": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/alias"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "identity_id",
+        "designation",
+        "authority",
+        "manufacturer",
+        "aliases",
+        "evidence"
+      ]
+    },
+    "state": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^state_[a-z0-9][a-z0-9_]*(?![\\s\\S])",
+          "maxLength": 160
+        },
+        "version": {
+          "const": "1.0.0"
+        },
+        "identity_id": {
+          "type": "string",
+          "pattern": "^mat_[a-z0-9][a-z0-9_]*(?![\\s\\S])",
+          "maxLength": 160
+        },
+        "grade_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^grade_[a-z0-9][a-z0-9_]*(?![\\s\\S])",
+              "maxLength": 160
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "names": {
+          "$ref": "#/$defs/names"
+        },
+        "aliases": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/alias"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "source_designation": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "state": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "product_form": {
+              "$ref": "#/$defs/fact"
+            },
+            "processing": {
+              "$ref": "#/$defs/fact"
+            },
+            "temper_or_heat_treatment": {
+              "$ref": "#/$defs/fact"
+            },
+            "conditioning": {
+              "$ref": "#/$defs/fact"
+            },
+            "composition_or_purity": {
+              "$ref": "#/$defs/fact"
+            },
+            "reinforcement": {
+              "$ref": "#/$defs/fact"
+            },
+            "porosity": {
+              "$ref": "#/$defs/fact"
+            },
+            "orientation": {
+              "$ref": "#/$defs/fact"
+            }
+          },
+          "required": [
+            "product_form",
+            "processing",
+            "temper_or_heat_treatment",
+            "conditioning",
+            "composition_or_purity",
+            "reinforcement",
+            "porosity",
+            "orientation"
+          ]
+        },
+        "source_scope": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          },
+          "minItems": 1
+        },
+        "property_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^refprop_[a-z0-9][a-z0-9_]*(?![\\s\\S])",
+            "maxLength": 160
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "evaluation_support": {
+          "const": "catalog_only"
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "identity_id",
+        "grade_id",
+        "name",
+        "names",
+        "aliases",
+        "source_designation",
+        "state",
+        "source_scope",
+        "evidence",
+        "property_ids",
+        "evaluation_support"
+      ]
+    }
+  }
+}

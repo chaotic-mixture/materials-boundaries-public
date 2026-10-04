@@ -4,6 +4,7 @@ from copy import deepcopy
 import hashlib
 import json
 from pathlib import Path
+from material_catalog_preservation import pre_material_bytes
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -36,7 +37,7 @@ class SourceEvidenceCorrectionTests(unittest.TestCase):
 
     def test_exact_current_pins_and_public_predecessor(self):
         self.assertEqual(history.digest((ROOT / history.LEDGER_PATH).read_bytes()), LEDGER_SHA256)
-        self.assertEqual(history.digest((ROOT / 'tests/source_evidence_preservation.py').read_bytes()), ADAPTER_SHA256)
+        self.assertEqual(history.digest(pre_material_bytes('tests/source_evidence_preservation.py', (ROOT / 'tests/source_evidence_preservation.py').read_bytes())), ADAPTER_SHA256)
         self.assertEqual(history.digest((ROOT / 'materials_boundaries/engine.py').read_bytes()), ENGINE_SHA256)
         self.assertEqual(len(BASE_RULES) + len(DERIVED_RULES), 8)
         self.assertEqual(self.evidence['review']['baseline_commit'], history.BASELINE_COMMIT)
@@ -136,8 +137,7 @@ class SourceEvidenceCorrectionTests(unittest.TestCase):
         for filename, expected in self.ledger['baseline_sha256'].items():
             if filename.startswith('materials_boundaries/data/'):
                 continue
-            current = (ROOT / filename).read_bytes()
-            if filename == 'README.md': current = release_readme_bytes(current)
+            current = pre_material_bytes(filename, (ROOT / filename).read_bytes())
             with self.subTest(filename=filename):
                 before = history.pre_evidence_bytes(filename, current)
                 self.assertEqual(history.digest(before), expected)
@@ -148,12 +148,11 @@ class SourceEvidenceCorrectionTests(unittest.TestCase):
 
     def test_every_integration_edit_round_trips_and_rejects_arbitrary_bytes(self):
         for entry in self.ledger['approved_existing_updates']:
-            current = (ROOT / entry['filename']).read_bytes()
-            if entry['filename'] == 'README.md': current = release_readme_bytes(current)
             # Whole catalog bytes differ in intentional disposable append rehearsals;
             # complete historical objects are checked by the catalog guard instead.
             if entry['filename'].startswith('materials_boundaries/data/'):
                 continue
+            current = pre_material_bytes(entry['filename'], (ROOT / entry['filename']).read_bytes())
             before = history.reverse_exact_edits(current, entry)
             self.assertEqual(history.apply_exact_edits(before, entry['edits']), current)
             for wrong in (current + b'!', before):

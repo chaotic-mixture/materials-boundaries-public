@@ -35,8 +35,9 @@ from materials_boundaries._viscoelastic_contract import VISCOELASTIC_CONTRACTS, 
 from materials_boundaries._wave_contract import WAVE_CONTRACTS, validate_wave_records
 from materials_boundaries._compressibility_contract import COMPRESSIBILITY_CONTRACTS, validate_compressibility_records
 
-CATALOGS = ("claims", "sources", "observations", "temperature_models", "computational_predictions")
-LOCALE_CATALOGS = ("locales", "temperature_locales", "prediction_locales")
+CATALOGS = ("claims", "sources", "observations", "temperature_models", "computational_predictions",
+            "materials", "reference_properties")
+LOCALE_CATALOGS = ("locales", "temperature_locales", "prediction_locales", "material_locales")
 LANGUAGES = {"en", "zh", "ja", "de"}
 # These pre-alias records retain canonical names. Every new record needs four
 # authored labels; the exemption is by exact historical ID, never by family.
@@ -925,7 +926,7 @@ def validate_catalogs(catalogs: dict, schema_dir: Path = ROOT / "schemas") -> di
     own reviewed schema work, outside a catalog-only contribution.
     """
     require(isinstance(catalogs, dict) and set(catalogs) == {*CATALOGS, *LOCALE_CATALOGS},
-            "expected all scientific catalogs and the three locale dictionaries")
+            "expected all scientific and reference catalogs and four locale dictionaries")
     schemas = {name: load_json(schema_dir / f"{name}.schema.json") for name in CATALOGS}
     checker = FormatChecker()
     formats = {name for schema in schemas.values() for name in _formats(schema)}
@@ -948,6 +949,8 @@ def validate_catalogs(catalogs: dict, schema_dir: Path = ROOT / "schemas") -> di
     # IDs form one catalog namespace, so locale aliases and references cannot
     # silently point at another record kind.
     all_ids = [name for index in indexes.values() for name in index]
+    all_ids.extend(record["id"] for field in ("identities", "grades")
+                   for record in catalogs["materials"][field])
     require(len(all_ids) == len(set(all_ids)), "duplicate record ID across catalog kinds")
     claims, sources, observations = (indexes[name] for name in ("claims", "sources", "observations"))
     try:
@@ -1027,6 +1030,13 @@ def validate_catalogs(catalogs: dict, schema_dir: Path = ROOT / "schemas") -> di
     metadata_ids = [r["id"] for field in ("protocols", "comparison_groups")
                     for r in catalogs["computational_predictions"][field]]
     require(not set(metadata_ids) & set(all_ids), "prediction metadata IDs collide with catalog records")
+    from materials_boundaries.material_references import validate_material_catalog
+    from materials_boundaries.material_presentation import validate_material_locales
+    try:
+        validate_material_catalog(catalogs["materials"], catalogs["reference_properties"], catalogs["sources"])
+        validate_material_locales(catalogs["material_locales"])
+    except ValueError as exc:
+        raise CatalogValidationError(str(exc)) from exc
     prediction_locales = catalogs["prediction_locales"]
     require(isinstance(prediction_locales, dict) and set(prediction_locales) == {"schema_version", "translation_review", "languages"}, "prediction locales: invalid envelope")
     require(prediction_locales["schema_version"] == "1.0.0" and prediction_locales["translation_review"] == "machine_assisted_not_scientifically_reviewed", "prediction locales: invalid schema/review status")

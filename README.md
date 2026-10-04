@@ -1,6 +1,6 @@
 # 材料边界 · Materials Boundaries
 
-Current software release: **v0.28.2** · **Corrected composite source evidence** · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
+Current software release: **v0.29.0** · **Concrete material references** · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
 
 A condition-aware, source-traceable materials-mechanics catalog and offline Python toolkit. It separates conditional mathematical bounds, model relations, published observations, computational predictions and synthetic demonstrations. Python 3.10+; no third-party runtime dependencies.
 
@@ -9,12 +9,29 @@ Repository: [chaotic-mixture/materials-boundaries-public](https://github.com/cha
 ## Public-release scope
 
 <!-- current-catalog-summary:start -->
-- **41 mechanics claims**, **57 source records**, **16 observations from 5 studies**, **12 published computational predictions in 2 scientific families and 3 explicit groups**, and **5 synthetic temperature demos with 7 branches**
+- **41 mechanics claims**, **73 source records**, **16 observations from 5 studies**, **12 published computational predictions in 2 scientific families and 3 explicit groups**, and **5 synthetic temperature demos with 7 branches**
 - Exactly **8 executable composite calculation rules**: HS/Reuss/Voigt bulk and shear bounds plus conservative derived Young's-modulus and Poisson-ratio envelopes
 - Other mechanics records, including initial-yield criteria and their function comparison, scalar viscoelasticity, bulk elastic waves, hydrostatic compressibility, directional Poisson ratio, anisotropy, fatigue, fracture, stability and porous relations, are catalog-only
-- The 57 sources comprise 56 bibliographic/source records plus 1 original synthetic-demo provenance record; a source record is not a redistribution of its publication or dataset
+- The 73 sources comprise 72 bibliographic/source records plus 1 original synthetic-demo provenance record; a source record is not a redistribution of its publication or dataset
 - All five temperature demos use intentionally invented coefficients and ranges. They do not describe real materials, measured properties or engineering allowables
 <!-- current-catalog-summary:end -->
+
+## Concrete material references
+
+<!-- material-catalog-summary:start -->
+The separate reference catalogue contains **21 material identities**, **11 qualified grades**, **21 source-scoped states** and **21 reference properties**. Counts describe this registry only; aliases, categories, prior observations and computational model cells are not additional materials.
+<!-- material-catalog-summary:end -->
+
+Initial breadth: 8 metals, 5 printed-polymer formulations, 5 study-specific ceramics, 2 named glass materials and 1 bulk graphite. The last three groups share the `inorganic` browsing category; they are distinct coverage groups, not interchangeable material families.
+
+Every state resolves a source-backed property. Manufacturer references, published experimental summaries, per-property conditions, missing information and source rights remain distinct. Mean, reported SD and sample count stay separate; no reference value becomes a theoretical bound, allowable or calculator input. [Guide and contribution contract](docs/MATERIAL_REFERENCE_CATALOG.md) · [Migration](docs/MIGRATION_v0.29.0.md)
+
+```sh
+python -m materials_boundaries catalog materials --text --lang en
+python -m materials_boundaries catalog materials --category polymer --text --lang zh
+python -m materials_boundaries catalog reference-properties --quantity mass_density --text --lang ja
+python -m materials_boundaries catalog materials --query "graphite" --text --lang de
+```
 
 ## Start with one composite case
 

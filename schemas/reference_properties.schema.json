@@ -1,0 +1,989 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:materials-boundaries:schema:reference_properties:1.0.0",
+  "title": "Catalog-only source-reported reference properties v1",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/property"
+      },
+      "minItems": 0
+    }
+  },
+  "required": [
+    "schema_version",
+    "records"
+  ],
+  "$defs": {
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "source_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^(?![\\s\\S]*[\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff])https://[^\\s/?#]+(?:[/?#][^\\s]*)?(?![\\s\\S])"
+        },
+        "locator": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "supports": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "material_identity",
+              "grade",
+              "state",
+              "reported_value",
+              "method",
+              "condition",
+              "classification",
+              "disclaimer",
+              "summary_statistic",
+              "uncertainty",
+              "sample_count",
+              "source_discrepancy"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "source_id",
+        "url",
+        "locator",
+        "supports"
+      ]
+    },
+    "fact": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "const": "reported"
+            },
+            "text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "notes": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "status",
+            "text",
+            "evidence",
+            "notes"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "const": "not_reported_in_inspected_source"
+            },
+            "text": {
+              "type": "null"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 0
+            },
+            "notes": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "status",
+            "text",
+            "evidence",
+            "notes"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "const": "not_verified"
+            },
+            "text": {
+              "type": "null"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 0
+            },
+            "notes": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "status",
+            "text",
+            "evidence",
+            "notes"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "const": "not_applicable"
+            },
+            "text": {
+              "type": "null"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 0
+            },
+            "notes": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            }
+          },
+          "required": [
+            "status",
+            "text",
+            "evidence",
+            "notes"
+          ]
+        }
+      ]
+    },
+    "names": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "en": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "zh": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "ja": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "de": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        }
+      },
+      "required": [
+        "en",
+        "zh",
+        "ja",
+        "de"
+      ]
+    },
+    "alias": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "language": {
+          "type": "string",
+          "enum": [
+            "en",
+            "zh",
+            "ja",
+            "de",
+            "und"
+          ]
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        }
+      },
+      "required": [
+        "language",
+        "text"
+      ]
+    },
+    "reported_value": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "scalar"
+            },
+            "value_text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "unit_text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "unit_code": {
+              "type": "string",
+              "enum": [
+                "g/cm^3",
+                "kg/m^3",
+                "kg/dm^3",
+                "lb/in^3",
+                "MPa",
+                "GPa",
+                "N/mm^2",
+                "kN/mm^2"
+              ]
+            },
+            "number": {
+              "type": "string",
+              "maxLength": 49,
+              "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+            }
+          },
+          "required": [
+            "kind",
+            "value_text",
+            "unit_text",
+            "unit_code",
+            "number"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "interval"
+            },
+            "value_text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "unit_text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "unit_code": {
+              "type": "string",
+              "enum": [
+                "g/cm^3",
+                "kg/m^3",
+                "kg/dm^3",
+                "lb/in^3",
+                "MPa",
+                "GPa",
+                "N/mm^2",
+                "kN/mm^2"
+              ]
+            },
+            "lower": {
+              "type": "string",
+              "maxLength": 49,
+              "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+            },
+            "upper": {
+              "type": "string",
+              "maxLength": 49,
+              "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+            },
+            "endpoint_semantics": {
+              "const": "source_reported_not_a_confidence_interval"
+            }
+          },
+          "required": [
+            "kind",
+            "value_text",
+            "unit_text",
+            "unit_code",
+            "lower",
+            "upper",
+            "endpoint_semantics"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "comparison"
+            },
+            "value_text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "unit_text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "unit_code": {
+              "type": "string",
+              "enum": [
+                "g/cm^3",
+                "kg/m^3",
+                "kg/dm^3",
+                "lb/in^3",
+                "MPa",
+                "GPa",
+                "N/mm^2",
+                "kN/mm^2"
+              ]
+            },
+            "operator": {
+              "type": "string",
+              "enum": [
+                ">",
+                ">=",
+                "<",
+                "<="
+              ]
+            },
+            "number": {
+              "type": "string",
+              "maxLength": 49,
+              "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+            }
+          },
+          "required": [
+            "kind",
+            "value_text",
+            "unit_text",
+            "unit_code",
+            "operator",
+            "number"
+          ]
+        }
+      ]
+    },
+    "uncertainty": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "reported_standard_deviation"
+        },
+        "value_text": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "unit_text": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "unit_code": {
+          "type": "string",
+          "enum": [
+            "g/cm^3",
+            "kg/m^3",
+            "kg/dm^3",
+            "lb/in^3",
+            "MPa",
+            "GPa",
+            "N/mm^2",
+            "kN/mm^2"
+          ]
+        },
+        "number": {
+          "type": "string",
+          "maxLength": 49,
+          "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "coverage_factor": {
+          "type": "null"
+        },
+        "confidence_level": {
+          "type": "null"
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "type",
+        "value_text",
+        "unit_text",
+        "unit_code",
+        "number",
+        "scope",
+        "coverage_factor",
+        "confidence_level",
+        "evidence"
+      ]
+    },
+    "sample_count": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "value": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "relation": {
+              "type": "string",
+              "enum": [
+                "exact",
+                "at_least"
+              ]
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "source_statement": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "value",
+            "relation",
+            "scope",
+            "source_statement",
+            "evidence"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "value": {
+              "type": "null"
+            },
+            "relation": {
+              "const": "not_reported"
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "source_statement": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 0
+            }
+          },
+          "required": [
+            "value",
+            "relation",
+            "scope",
+            "source_statement",
+            "evidence"
+          ]
+        }
+      ]
+    },
+    "source_document": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^(?![\\s\\S]*[\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff])https://[^\\s/?#]+(?:[/?#][^\\s]*)?(?![\\s\\S])"
+        },
+        "revision": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "inspected_on": {
+          "type": "string",
+          "format": "date",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "sha256": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$",
+              "maxLength": 64
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "hash_status": {
+          "type": "string",
+          "enum": [
+            "recorded",
+            "not_retained",
+            "unavailable"
+          ]
+        },
+        "hash_note": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "inspection_scope": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "inspection_status": {
+          "const": "selected_content_inspected"
+        }
+      },
+      "required": [
+        "url",
+        "revision",
+        "inspected_on",
+        "sha256",
+        "hash_status",
+        "hash_note",
+        "inspection_scope",
+        "inspection_status"
+      ]
+    },
+    "property": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^refprop_[a-z0-9][a-z0-9_]*(?![\\s\\S])",
+          "maxLength": 160
+        },
+        "version": {
+          "const": "1.0.0"
+        },
+        "material_state_id": {
+          "type": "string",
+          "pattern": "^state_[a-z0-9][a-z0-9_]*(?![\\s\\S])",
+          "maxLength": 160
+        },
+        "quantity": {
+          "type": "string",
+          "enum": [
+            "mass_density",
+            "youngs_modulus",
+            "tensile_modulus",
+            "flexural_modulus",
+            "elastic_modulus_unspecified",
+            "tensile_strength"
+          ]
+        },
+        "quantity_dimension": {
+          "type": "string",
+          "enum": [
+            "mass_per_volume",
+            "pressure"
+          ]
+        },
+        "source_property_label": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "reported_value": {
+          "$ref": "#/$defs/reported_value"
+        },
+        "evidence_kind": {
+          "type": "string",
+          "enum": [
+            "manufacturer_reference",
+            "technical_association_reference",
+            "published_experimental_reference",
+            "published_computational_reference"
+          ]
+        },
+        "reporting_basis": {
+          "type": "string",
+          "enum": [
+            "typical",
+            "nominal",
+            "guideline",
+            "specification_limit",
+            "reported_summary",
+            "not_stated"
+          ]
+        },
+        "determination_basis": {
+          "type": "string",
+          "enum": [
+            "source_reports_measurement",
+            "source_reports_calculation",
+            "not_stated",
+            "mixed_or_unclear"
+          ]
+        },
+        "basis_note": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "conditions": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "temperature": {
+              "$ref": "#/$defs/fact"
+            },
+            "test_standard": {
+              "$ref": "#/$defs/fact"
+            },
+            "test_method": {
+              "$ref": "#/$defs/fact"
+            },
+            "direction": {
+              "$ref": "#/$defs/fact"
+            },
+            "conditioning": {
+              "$ref": "#/$defs/fact"
+            },
+            "loading_rate": {
+              "$ref": "#/$defs/fact"
+            },
+            "additional_conditions": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                  },
+                  "fact": {
+                    "$ref": "#/$defs/fact"
+                  }
+                },
+                "required": [
+                  "name",
+                  "fact"
+                ]
+              },
+              "minItems": 0
+            }
+          },
+          "required": [
+            "temperature",
+            "test_standard",
+            "test_method",
+            "direction",
+            "conditioning",
+            "loading_rate"
+          ]
+        },
+        "density_basis": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "apparent",
+                "bulk",
+                "true",
+                "not_stated"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "summary_statistic": {
+          "type": "string",
+          "enum": [
+            "not_stated",
+            "reported_value",
+            "reported_mean"
+          ]
+        },
+        "uncertainty": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/uncertainty"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "uncertainty_status": {
+          "type": "string",
+          "enum": [
+            "reported_standard_deviation",
+            "not_reported_in_inspected_source",
+            "not_applicable"
+          ]
+        },
+        "uncertainty_note": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "sample_count": {
+          "$ref": "#/$defs/sample_count"
+        },
+        "method_definition": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "const": "source_reported_conventional"
+            },
+            "definition": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "extraction_window": {
+              "type": "null"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "type",
+            "definition",
+            "extraction_window",
+            "evidence"
+          ]
+        },
+        "source_discrepancies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "description": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+              },
+              "disposition": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+              },
+              "evidence": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/evidence"
+                },
+                "minItems": 1
+              }
+            },
+            "required": [
+              "description",
+              "disposition",
+              "evidence"
+            ]
+          },
+          "minItems": 0
+        },
+        "source_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          },
+          "minItems": 1
+        },
+        "source_document": {
+          "$ref": "#/$defs/source_document"
+        },
+        "scope_note": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "evaluation_support": {
+          "const": "catalog_only"
+        },
+        "universal_bound": {
+          "const": false
+        },
+        "engineering_allowable": {
+          "const": false
+        },
+        "verification": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "source_inspection_scope": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "transcription_cross_check": {
+              "const": "completed"
+            },
+            "independent_scientific_review": {
+              "const": false
+            },
+            "raw_data_reanalysis": {
+              "const": false
+            }
+          },
+          "required": [
+            "source_inspection_scope",
+            "transcription_cross_check",
+            "independent_scientific_review",
+            "raw_data_reanalysis"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "material_state_id",
+        "quantity",
+        "quantity_dimension",
+        "source_property_label",
+        "reported_value",
+        "evidence_kind",
+        "reporting_basis",
+        "determination_basis",
+        "basis_note",
+        "conditions",
+        "density_basis",
+        "summary_statistic",
+        "uncertainty",
+        "uncertainty_status",
+        "uncertainty_note",
+        "sample_count",
+        "method_definition",
+        "source_discrepancies",
+        "source_id",
+        "evidence",
+        "source_document",
+        "scope_note",
+        "evaluation_support",
+        "universal_bound",
+        "engineering_allowable",
+        "verification"
+      ]
+    }
+  }
+}

@@ -323,8 +323,18 @@ old_records = [r for r in all_records if r['observation_type'] == 'experiment_de
 new_records = [r for r in all_records if r.get('method_family') == PA12_FAMILY]
 require(len(all_records) == 16 and len(old_records) == len(new_records) == 6,
         'unexpected production observation counts')
-require(len(read_catalog('sources')['records']) == 57, 'unexpected production source count')
-require(len(read_catalog('claims')['records']) == 41, 'unexpected production claim count')
+# Keep the complete accepted v0.28.2 membership while allowing future appends.
+baseline_sources_ids = frozenset(['hashin_shtrikman_1963', 'kochmann_milton_2014', 'berger_2017', 'milton_2018_comment', 'berger_2018_reply', 'singh_lai_2024', 'materials_project_elasticity', 'genin_birman_2009', 'meille_garboczi_2001', 'griffith_1921', 'wilson_1992_nasa_tm_103591', 'frenkel_1926', 'shimanek_2022_ideal_shear', 'rose_ferrante_smith_1981', 'van_der_ven_ceder_2004', 'azocar_guzman_2020_hydrogen', 'pierce_sullivan_1969_nasa_tn_d_5140', 'mouhat_coudert_2014_elastic_stability', 'roberts_garboczi_2002_porous', 'lee_wei_kysar_hone_2008', 'paris_erdogan_1963', 'forman_kearney_engle_1967', 'hudson_1969_nasa_tn_d_5390', 'afgrow_dtd_handbook_fatigue_growth', 'astm_e647_24_public_scope', 'nist_cryogenic_al6061_t6', 'nist_cryogenic_ss304', 'nist_cryogenic_reference_list', 'bradley_radebaugh_lewis_2006', 'nist_public_information_reuse', 'zener_1948_elasticity_anelasticity', 'ranganathan_ostoja_starzewski_2008_anisotropy', 'ranganathan_ostoja_starzewski_ferrari_2011_anisotropy', 'knowles_howie_2015_cubic_shear', 'shimanek_2022_arxiv_2108_06412_v2', 'dubois_2006_prb_74_235203', 'nist_cryogenic_al5083', 'nist_cryogenic_invar', 'nist_cryogenic_ss316', 'nist_cryogenic_material_index', 'nist_cryogenic_srd_provenance', 'ting_chen_2005_poisson_unbounded', 'norris_2006_cubic_poisson', 'norris_2006_anisotropic_extrema', 'ortiz_2012_anisotropic_mof_elasticity', 'miller_evans_marmier_2015_linear_compressibility', 'materials_boundaries_synthetic_temperature_demo', 'bertolazzi_brivio_kis_2011', 'chevrot_vanderhilst_2003', 'xiang_qi_wei_2018_arxiv_v2', 'falin_et_al_2017_hbn_mechanical_properties', 'ciganas2026polym18050563', 'zach_dudescu2025jcs9110624', 'hanyga2018scalar_anisotropic_duality', 'hanyga2019newtonian_relaxation', 'giraldo_londono_paulino_2020_yield_criteria', 'wierzbicki_2013_structural_plasticity'])
+installed_sources_ids = [record['id'] for record in read_catalog('sources')['records']]
+require(baseline_sources_ids <= set(installed_sources_ids)
+        and len(installed_sources_ids) == len(set(installed_sources_ids)),
+        'missing historical or duplicate installed sources ID')
+# Keep the complete accepted v0.28.2 membership while allowing future appends.
+baseline_claims_ids = frozenset(['hs_bulk_3d_two_phase', 'reuss_bulk', 'voigt_bulk', 'hs_shear_3d_two_phase', 'reuss_shear', 'voigt_shear', 'youngs_modulus_outer', 'poissons_ratio_outer', 'griffith_central_crack_plane_stress', 'griffith_central_crack_plane_strain', 'frenkel_slip_specific_ideal_shear', 'uber_normal_cohesive_strength', 'lefm_central_crack_mode_i_stress_intensity', 'lefm_mode_i_energy_release_relation', 'lefm_center_crack_finite_width_secant_factor', 'general_stiffness_positive_definite', 'cubic_born_stability', 'hexagonal_born_stability', 'orthorhombic_born_stability', 'hs_porous_bulk_3d_solid_void', 'hs_porous_shear_3d_solid_void', 'hs_porous_youngs_outer_3d_solid_void', 'tetragonal_i_born_stability', 'tetragonal_ii_born_stability', 'rhombohedral_i_born_stability', 'rhombohedral_ii_born_stability', 'paris_erdogan_intermediate_growth', 'forman_terminal_acceleration_growth', 'zener_cubic_elastic_anisotropy_index', 'universal_elastic_anisotropy_index', 'directional_poissons_ratio_definition_and_range', 'directional_poisson_reciprocity_energy_constraint', 'directional_linear_compressibility_hydrostatic_relation', 'normalized_directional_compressibility_range', 'isotropic_bulk_plane_wave_speeds_and_ratio', 'christoffel_tensor_strong_ellipticity', 'scalar_viscoelastic_creep_relaxation_duality', 'scalar_viscoelastic_creep_relaxation_product_bound', 'von_mises_initial_yield_relation', 'tresca_initial_yield_relation', 'tresca_von_mises_equivalent_stress_ratio_bound'])
+installed_claims_ids = [record['id'] for record in read_catalog('claims')['records']]
+require(baseline_claims_ids <= set(installed_claims_ids)
+        and len(installed_claims_ids) == len(set(installed_claims_ids)),
+        'missing historical or duplicate installed claims ID')
 expected_cells = (('23', '49.07', '0.88', 49070000, 880000),
                   ('40', '40.31', '0.72', 40310000, 720000),
                   ('60', '32.70', '1.18', 32700000, 1180000),
@@ -741,6 +751,47 @@ else:
     raise RuntimeError('installed replay accepted an altered endpoint')
 require(composite_bundle['policy']['independent_scientific_review'] is False,
         'composite report upgraded scientific review')
+
+# Concrete identities and reference facts remain a separate offline lane.
+from materials_boundaries.material_references import validate_material_catalog, material_coverage, resolve_material
+from materials_boundaries.material_presentation import material_labels
+materials = read_catalog('materials')
+reference_properties = read_catalog('reference_properties')
+reference_sources = read_catalog('sources')
+validate_material_catalog(materials, reference_properties, reference_sources)
+coverage = material_coverage(materials, reference_properties)
+require(coverage['material_state_count'] == len(materials['records']) > 0,
+        'missing installed concrete material registry')
+require(coverage['property_record_count'] == len(reference_properties['records']),
+        'incorrect installed material property coverage')
+for state in materials['records']:
+    resolved = resolve_material(state['id'], materials, reference_properties, reference_sources)
+    require(bool(resolved['properties']) and bool(resolved['sources']),
+            'installed material state has no traceable property')
+    require(all(p['evaluation_support'] == 'catalog_only' and p['universal_bound'] is False
+                and p['engineering_allowable'] is False for p in resolved['properties']),
+            'reference data acquired engineering capability')
+for kind in ('materials', 'reference-properties'):
+    canonical = None
+    for language in languages:
+        for as_json in (False, True):
+            stdout = io.StringIO()
+            with redirect_stdout(stdout):
+                code = main(['catalog', kind, '--lang', language, '--json' if as_json else '--text'])
+            text = stdout.getvalue()
+            require(code == 0 and '[missing:' not in text, 'installed material CLI failed')
+            if as_json:
+                if canonical is None:
+                    canonical = text
+                require(text == canonical, 'language changed canonical material JSON')
+            else:
+                labels = material_labels(language)
+                require(labels['caveat'] in text and labels['unknown_notice'] in text,
+                        'installed material caveat or unknown disclosure missing')
+wrong = deepcopy(reference_properties)
+wrong['records'][0]['engineering_allowable'] = True
+rejects(lambda: validate_material_catalog(materials, wrong, reference_sources),
+        'installed material contract accepted an engineering allowable')
 
 print(json.dumps({"version": expected, "metadata_version": metadata_version,
                   "engine_outputs": sorted(outputs), "languages": languages,

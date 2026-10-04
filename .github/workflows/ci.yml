@@ -41,6 +41,7 @@ jobs:
       - run: python -m unittest discover -s tests -p 'test_composite*.py' -v
       - run: python -m unittest discover -s tests -p test_windows_export_preservation.py -v
       - run: python -m unittest discover -s tests -p 'test_source_evidence*.py' -v
+      - run: python -m unittest discover -s tests -p 'test_material*.py' -v
       - run: python -m pip wheel --no-deps --wheel-dir dist .
       - shell: pwsh
         run: |

@@ -9,6 +9,10 @@ contribution adds evidence to an existing scientific claim, adds a distinct
 record under an **already supported full scientific contract**, or introduces a
 new scientific contract. A shared `claim_type` alone is not a shared contract.
 
+## Add concrete material references
+
+Use the separate [material reference contribution contract](docs/MATERIAL_REFERENCE_CATALOG.md#add-a-material-without-a-new-python-family) for a named material, grade and source-scoped state with at least one traceable numerical property. New valid grade IDs do not need material-specific Python branches. Preserve the source’s exact values, units, qualifiers, statistics and unknown conditions. Identity/grade/state/property counts are different; aliases are not new materials. Do not insert manufacturer references into the specimen-observation families or automatically use them as calculator inputs. The closed registry/property schema and source/reuse review apply independently of the scientific-family process below.
+
 ## Prefer evidence enrichment
 
 Search existing claims and sources before creating IDs. When the quantity,

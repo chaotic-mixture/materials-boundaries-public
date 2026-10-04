@@ -4,8 +4,11 @@ import json
 
 
 def read_catalog(name: str) -> dict:
-    if name not in {"claims", "sources", "observations", "locales", "temperature_models", "computational_predictions"}:
+    if name not in {"claims", "sources", "observations", "locales", "temperature_models", "computational_predictions",
+                    "materials", "reference_properties", "material_locales"}:
         raise ValueError(f"unknown catalog: {name}")
+    if name in {"materials", "reference_properties", "material_locales"}:
+        return _read_reference_resource(name)
     catalog = json.loads(files("materials_boundaries").joinpath("data", name + ".json").read_text(encoding="utf-8"))
     if name == "claims":
         from ._yield_contract import validate_yield_records
@@ -50,6 +53,12 @@ def query_catalog(
     role: str | None = None,
     year: int | None = None,
     license: str | None = None,
+    material_id: str | None = None,
+    identity_id: str | None = None,
+    grade_id: str | None = None,
+    category: str | None = None,
+    evidence_kind: str | None = None,
+    reporting_basis: str | None = None,
 ) -> dict:
     """Return a canonical subset, in packaged order, without changing records.
 
@@ -59,22 +68,31 @@ def query_catalog(
     automatic translation, formula execution, or network access. Curated display
     names in the packaged locale dictionary are literal claim/observation aliases.
     """
-    if not isinstance(kind, str) or kind not in {"claims", "sources", "observations", "predictions"}:
+    if not isinstance(kind, str) or kind not in {"claims", "sources", "observations", "predictions",
+                                               "materials", "reference-properties"}:
         raise ValueError(f"unknown searchable catalog: {kind}")
     filters = {"direction": direction, "claim_type": claim_type, "source_id": source_id,
                "role": role, "year": year, "license": license,
-               "quantity": quantity, "observation_type": observation_type}
+               "quantity": quantity, "observation_type": observation_type,
+               "material_id": material_id, "identity_id": identity_id,
+               "grade_id": grade_id, "category": category,
+               "evidence_kind": evidence_kind, "reporting_basis": reporting_basis}
     allowed = {"claims": {"direction", "claim_type", "source_id"},
                "sources": {"role", "year", "license"},
                "observations": {"source_id", "quantity", "observation_type"},
-               "predictions": {"source_id", "quantity"}}[kind]
+               "predictions": {"source_id", "quantity"},
+               "materials": {"identity_id", "grade_id", "category", "source_id", "quantity", "evidence_kind"},
+               "reference-properties": {"material_id", "source_id", "quantity", "evidence_kind", "reporting_basis"}}[kind]
     for key, value in filters.items():
         if value is not None and key not in allowed:
             raise ValueError(f"filter {key} is not valid for {kind}")
     for key, value in {"record_id": record_id, "direction": direction,
                        "claim_type": claim_type,
                        "source_id": source_id, "role": role, "license": license,
-                       "quantity": quantity, "observation_type": observation_type}.items():
+                       "quantity": quantity, "observation_type": observation_type,
+                       "material_id": material_id, "identity_id": identity_id,
+                       "grade_id": grade_id, "category": category,
+                       "evidence_kind": evidence_kind, "reporting_basis": reporting_basis}.items():
         if value is not None and (not isinstance(value, str) or not value.strip()):
             raise ValueError(f"{key} must be a nonempty string")
     if query is not None and not isinstance(query, str):
@@ -89,6 +107,12 @@ def query_catalog(
     if observation_type is not None and observation_type not in {"experiment_derived_model_dependent", "experiment_derived_tensile_test_summary"}:
         raise ValueError(f"unknown observation_type: {observation_type}")
 
+    if kind in {"materials", "reference-properties"}:
+        return _query_material_catalog(kind, record_id=record_id, query=query,
+                                       source_id=source_id, quantity=quantity,
+                                       material_id=material_id, identity_id=identity_id,
+                                       grade_id=grade_id, category=category,
+                                       evidence_kind=evidence_kind, reporting_basis=reporting_basis)
     if kind == "predictions":
         from .predictions import query_predictions
         return query_predictions(record_id=record_id, query=query, source_id=source_id, quantity=quantity)
@@ -142,3 +166,96 @@ def query_catalog(
 
     catalog["records"] = [record for record in records if matches(record)]
     return catalog
+
+
+def _query_material_catalog(kind: str, **filters) -> dict:
+    """Validate the complete reference graph before applying exact filters.
+
+    Search covers state/identity/grade/property/source IDs, canonical names,
+    all authored names and explicit aliases, grade designations, quantities,
+    categories, evidence kinds, reporting bases and original property labels.
+    It does not search source titles, prose scope notes or inferred synonyms.
+    """
+    from .material_references import (CATEGORIES, EVIDENCE_KINDS, QUANTITY_DIMENSIONS,
+                                      REPORTING_BASES, validate_material_catalog)
+    for key, choices in (("category", CATEGORIES), ("quantity", QUANTITY_DIMENSIONS),
+                         ("evidence_kind", EVIDENCE_KINDS), ("reporting_basis", REPORTING_BASES)):
+        if filters[key] is not None and filters[key] not in choices:
+            raise ValueError(f"unknown {key}: {filters[key]}")
+    materials = read_catalog("materials")
+    properties = read_catalog("reference_properties")
+    sources = read_catalog("sources")
+    validate_material_catalog(materials, properties, sources)
+    identities = {item["id"]: item for item in materials["identities"]}
+    grades = {item["id"]: item for item in materials["grades"]}
+    states = {item["id"]: item for item in materials["records"]}
+    property_index = {item["id"]: item for item in properties["records"]}
+    catalog = materials if kind == "materials" else properties
+    records = catalog["records"]
+    if filters["record_id"] is not None:
+        records = [item for item in records if item["id"] == filters["record_id"]]
+        if not records:
+            raise CatalogLookupError(f"unknown {kind} ID: {filters['record_id']}")
+    terms = (filters["query"] or "").casefold().split()
+
+    def names(item):
+        return [item["id"], item.get("name", ""), *item.get("names", {}).values(),
+                *(alias["text"] for alias in item["aliases"])]
+
+    def state_fields(state):
+        identity = identities[state["identity_id"]]
+        fields = [*names(state), *names(identity), identity["category"], state["source_designation"]]
+        if state["grade_id"] is not None:
+            grade = grades[state["grade_id"]]
+            fields.extend([*names(grade), grade["designation"], grade["authority"]["name"]])
+        return fields
+
+    def property_fields(prop):
+        return [prop[key] for key in ("id", "material_state_id", "quantity", "source_id",
+                                     "source_property_label", "evidence_kind", "reporting_basis")]
+
+    def property_matches(prop):
+        return all(filters[key] is None or prop[key] == filters[key]
+                   for key in ("source_id", "quantity", "evidence_kind", "reporting_basis"))
+
+    def matches(item):
+        if kind == "materials":
+            identity = identities[item["identity_id"]]
+            if any(filters[key] is not None and item[key] != filters[key]
+                   for key in ("identity_id", "grade_id")):
+                return False
+            if filters["category"] is not None and identity["category"] != filters["category"]:
+                return False
+            linked = [property_index[identifier] for identifier in item["property_ids"]]
+            # One linked record must satisfy the entire property conjunction.
+            if not any(property_matches(prop) for prop in linked):
+                return False
+            fields = state_fields(item)
+            fields.extend(field for prop in linked for field in property_fields(prop))
+        else:
+            if filters["material_id"] is not None and item["material_state_id"] != filters["material_id"]:
+                return False
+            if not property_matches(item):
+                return False
+            fields = [*property_fields(item), *state_fields(states[item["material_state_id"]])]
+        searchable = [field.casefold() for field in fields]
+        return all(any(term in field for field in searchable) for term in terms)
+
+    catalog["records"] = [item for item in records if matches(item)]
+    if kind == "materials":
+        identity_ids = {state["identity_id"] for state in catalog["records"]}
+        grade_ids = {state["grade_id"] for state in catalog["records"]}
+        catalog["identities"] = [item for item in catalog["identities"] if item["id"] in identity_ids]
+        catalog["grades"] = [item for item in catalog["grades"] if item["id"] in grade_ids]
+    return catalog
+
+
+def _read_reference_resource(name: str) -> dict:
+    """Read only the new lane's resources with strict JSON lexical checks."""
+    from .validation import _unique_pairs, _reject_constant, _strict_float, _strict_int
+    if name not in {"materials", "reference_properties", "material_locales"}:
+        raise ValueError(f"unknown reference resource: {name}")
+    text = files("materials_boundaries").joinpath("data", name + ".json").read_text(encoding="utf-8")
+    return json.loads(text, object_pairs_hook=_unique_pairs,
+                      parse_constant=_reject_constant,
+                      parse_float=_strict_float, parse_int=_strict_int)

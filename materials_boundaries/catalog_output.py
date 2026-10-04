@@ -10,6 +10,9 @@ from ._paht_observation_labels import PAHT_LABELS, PAHT_CAVEATS
 
 def render_catalog(catalog: dict, kind: str, language: str = "en") -> str:
     """Render canonical records with localized labels and original source text."""
+    if kind in {"materials", "reference-properties"}:
+        from .material_presentation import render_material_catalog
+        return render_material_catalog(catalog, kind, language)
     if kind == "predictions":
         from .predictions import render_predictions
         return render_predictions(catalog, language)

@@ -9,6 +9,7 @@ from copy import deepcopy
 import hashlib
 import json
 from pathlib import Path
+from material_catalog_preservation import pre_material_bytes
 
 ROOT = Path(__file__).resolve().parents[1]
 LEDGER_PATH = 'tests/fixtures/source_evidence_updates_v0282.json'
@@ -256,6 +257,9 @@ def pre_evidence_bytes(filename, current, *, ledger=None):
     """Recover v0.28.1 bytes only from the reviewed v0.28.2 successor."""
     ledger = load_ledger() if ledger is None else ledger
     entries = validate_ledger(ledger)
+    accepted = entries[filename]['sha256'] if filename in entries else ledger['baseline_sha256'].get(filename)
+    if digest(current) != accepted:
+        current = pre_material_bytes(filename, current)
     if filename in entries:
         return reverse_exact_edits(current, entries[filename])
     if (not isinstance(current, bytes) or filename not in ledger['baseline_sha256']
