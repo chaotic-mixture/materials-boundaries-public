@@ -8,6 +8,7 @@ import re
 import unittest
 
 import viscoelastic_preservation as preservation
+from yield_preservation import pre_yield_bytes, release_readme_bytes
 
 ROOT = Path(__file__).resolve().parents[1]
 LEDGER_SHA256 = 'b588e3cb4d019c7b5299697e76ee05a9d3f5dfd45ed594208a564c8b26b18972'
@@ -54,7 +55,7 @@ class ViscoelasticPreservationTests(unittest.TestCase):
 
     def test_independent_ledger_adapter_pins_and_exact_public_anchor(self):
         self.assertEqual(sha((ROOT / preservation.LEDGER_PATH).read_bytes()), LEDGER_SHA256)
-        self.assertEqual(sha((ROOT / 'tests/viscoelastic_preservation.py').read_bytes()), ADAPTER_SHA256)
+        self.assertEqual(sha(pre_yield_bytes('tests/viscoelastic_preservation.py', (ROOT / 'tests/viscoelastic_preservation.py').read_bytes())), ADAPTER_SHA256)
         entries = preservation.validate_ledger(self.ledger)
         self.assertTrue(VERSION_ONLY | COMPATIBILITY_READERS <= set(entries))
         self.assertEqual(len(self.ledger['baseline_sha256']), 295)
@@ -72,34 +73,7 @@ class ViscoelasticPreservationTests(unittest.TestCase):
                 self.assertEqual(sha((ROOT / filename).read_bytes()), expected)
 
     def _release_readme(self, actual):
-        # Rehearsals update only the exact current-summary count statements.
-        text = actual.decode()
-        start, end = '<!-- current-catalog-summary:start -->', '<!-- current-catalog-summary:end -->'
-        self.assertEqual(text.count(start), 1); self.assertEqual(text.count(end), 1)
-        before, selected = text.split(start); summary, after = selected.split(end)
-        release = self.ledger['release_readme_summary']
-        def catalog(name):
-            return json.loads((ROOT / 'materials_boundaries/data' / (name + '.json')).read_text())
-        claims, sources, observations = (catalog(name)['records'] for name in ('claims', 'sources', 'observations'))
-        predictions = catalog('computational_predictions')
-        demos = [r for r in catalog('temperature_models')['records'] if r['classification'] == 'synthetic_demo']
-        synthetic = sum(r['role'] == 'synthetic_demo_provenance' for r in sources)
-        pairs = [
-            (r'\*\*\d+ mechanics claims\*\*', f'**{len(claims)} mechanics claims**'),
-            (r'\*\*\d+ source records\*\*', f'**{len(sources)} source records**'),
-            (r'\*\*\d+ observations from \d+ studies\*\*', f'**{len(observations)} observations from {len({r["study_id"] for r in observations})} studies**'),
-            (r'\*\*\d+ published computational predictions in \d+ scientific families and \d+ explicit groups\*\*',
-             f'**{len(predictions["records"])} published computational predictions in {len({p["family"] for p in predictions["protocols"]})} scientific families and {len(predictions["comparison_groups"])} explicit groups**'),
-            (r'\*\*\d+ synthetic temperature demos with \d+ branches\*\*', f'**{len(demos)} synthetic temperature demos with {sum(len(r["branches"]) for r in demos)} branches**'),
-            (r'The \d+ sources comprise \d+ bibliographic/source records plus \d+ original synthetic-demo provenance record',
-             f'The {len(sources)} sources comprise {len(sources)-synthetic} bibliographic/source records plus {synthetic} original synthetic-demo provenance record'),
-        ]
-        expected = release
-        for pattern, value in pairs:
-            expected, count = re.subn(pattern, lambda match: value, expected)
-            self.assertEqual(count, 1, pattern)
-        self.assertEqual(summary, expected, 'only truthful current-summary counts may differ in a rehearsal')
-        return (before + start + release + end + after).encode()
+        return pre_yield_bytes('README.md', release_readme_bytes(actual))
 
     def test_every_old_noncatalog_file_has_exact_accepted_bytes_or_exact_reversal(self):
         for filename, expected in self.ledger['baseline_sha256'].items():
@@ -109,6 +83,8 @@ class ViscoelasticPreservationTests(unittest.TestCase):
                 actual = (ROOT / filename).read_bytes()
                 if filename == 'README.md':
                     actual = self._release_readme(actual)
+                else:
+                    actual = pre_yield_bytes(filename, actual)
                 before = preservation.pre_viscoelastic_bytes(filename, actual)
                 self.assertEqual(sha(before), expected)
 
@@ -139,7 +115,7 @@ class ViscoelasticPreservationTests(unittest.TestCase):
         for filename, entry in entries.items():
             if not filename.startswith('tests/'):
                 continue
-            current = (ROOT / filename).read_bytes()
+            current = pre_yield_bytes(filename, (ROOT / filename).read_bytes())
             before = preservation.reverse_exact_edits(current, entry)
             self.assertEqual(declarations(before), declarations(current), filename)
             expected = before.decode()
@@ -184,6 +160,8 @@ class ViscoelasticPreservationTests(unittest.TestCase):
             current = (ROOT / entry['filename']).read_bytes()
             if entry['filename'] == 'README.md':
                 current = self._release_readme(current)
+            else:
+                current = pre_yield_bytes(entry['filename'], current)
             before = preservation.reverse_exact_edits(current, entry)
             self.assertEqual(preservation.apply_exact_edits(before, entry['edits']), current)
             for bad in (current + b'\n', b'!' + current[1:]):
@@ -229,12 +207,12 @@ class ViscoelasticPreservationTests(unittest.TestCase):
                 preservation.apply_exact_edits(b'abcde', bad)
 
     def test_envelope_alignment_is_narrow_nonmutating_and_rejects_stale_inputs(self):
-        original = {'schema_version': '1.12.0', 'records': [{'id': 'unchanged', 'value': '1.12.0'}]}
+        original = {'schema_version': '1.13.0', 'records': [{'id': 'unchanged', 'value': '1.12.0'}]}
         before = deepcopy(original)
         self.assertEqual(preservation.historical_claims_envelope(original),
             {'schema_version': '1.11.0', 'records': original['records']})
         self.assertEqual(original, before)
-        for version in ('1.11.0', '1.13.0', None, 1.12):
+        for version in ('1.11.0', '1.12.0', '1.14.0', None, 1.13):
             with self.assertRaises(AssertionError):
                 preservation.historical_claims_envelope(dict(original, schema_version=version))
 

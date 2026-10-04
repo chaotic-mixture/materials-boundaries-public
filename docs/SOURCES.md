@@ -1,6 +1,6 @@
 # Source curation, verification and rights
 
-Reusable claims, observation summaries and the source manifest are separate records. Current v0.22.0 contains 36 mechanics claims, 52 sources and twelve observations from four studies, alongside five synthetic temperature demos (seven branches) and twelve computational predictions in two scientific families and three explicit groups. The v0.8.0 historical batch had 26 claims and 20 sources; its four new stability claims reused an existing source and preserved those 20 source records. Some claims are executable elastic bounds/envelopes; the strength/fracture models, stability criteria and porous solid/void intervals are catalog-only. A source being available or read does not establish every claim attributed to it. Each claim or observation retains its own locator, verification status and gaps. The repository includes brief numerical facts, bibliographic metadata and original curation notes; no publisher PDF, article full text, scraped body or unlicensed figure is bundled.
+Reusable claims, observation summaries and the source manifest are separate records. Current v0.27.0 contains 41 mechanics claims, 57 sources and sixteen observations from five studies, alongside five synthetic temperature demos (seven branches) and twelve computational predictions in two scientific families and three explicit groups. Exactly eight composite calculation rules are executable; the new initial-yield relations and stress-function comparison are catalog-only. The v0.8.0 historical batch had 26 claims and 20 sources; its four new stability claims reused an existing source and preserved those 20 source records. Some claims are executable elastic bounds/envelopes; the strength/fracture models, stability criteria and porous solid/void intervals are catalog-only. A source being available or read does not establish every claim attributed to it. Each claim or observation retains its own locator, verification status and gaps. The repository includes brief numerical facts, bibliographic metadata and original curation notes; no publisher PDF, article full text, scraped body or unlicensed figure is bundled.
 
 ## Historical evidence ledger and later release additions
 
@@ -67,9 +67,9 @@ Copyright ©2008 AAAS, all rights reserved; no open reuse license is verified. P
 
 ## Licenses and release status
 
-Version 0.16.0 was the first public-release baseline; current version 0.22.0
-adds the bounded six-condition PA12 CF15 observation batch and one source,
-preserving the earlier scientific records and their source-specific notices. Original project code, documentation
+Version 0.16.0 was the first public-release baseline; current version 0.27.0
+adds three catalog-only yield-criterion records and two source records,
+preserving earlier scientific records and their source-specific notices. Original project code, documentation
 and original curation use the [MIT License](../LICENSE), under maintainer handle
 chaotic-mixture. Scientific facts and third-party works are not relicensed.
 Public readability, arXiv hosting, a supplement or a repository link does not
@@ -574,3 +574,73 @@ The finite-interval regularity exposition, same-time product proof and synthetic
 Maxwell/SLS checks are original project work. Same-author papers are not
 independent empirical validation; no scientific peer-review certification is
 made. Source artifacts are excluded from redistribution.
+
+## Initial-yield equations and exact function comparison (v0.27.0)
+
+Exactly two new source records bring the source total to 57. All 55 previous
+source objects are preserved. The [yield guide](YIELD_CRITERIA.md) separates
+the selected source-supported definitions from original project comparison
+algebra and restricted physical-model interpretation. No material measurement,
+yield parameter, numerical plasticity integration or strength certification is
+added. The guide contains exact source URLs, locators and rights evidence.
+
+### Giraldo-Londoño–Paulino (2020)
+
+Source ID `giraldo_londono_paulino_2020_yield_criteria`: Oliver Giraldo-Londoño
+and Glaucio H. Paulino, *A unified approach for topology optimization with local
+stress constraints considering various failure criteria: von Mises,
+Drucker–Prager, Tresca, Mohr–Coulomb, Bresler–Pister and Willam–Warnke*,
+Proceedings of the Royal Society A 476(2238), 20190861.
+[DOI](https://doi.org/10.1098/rspa.2019.0861) ·
+[inspected author-hosted PDF](https://paulino.scholar.princeton.edu/sites/g/files/toruqf6546/files/documents/RSPA_20_AUnifiedApproach.pdf).
+
+The 26-page publisher-layout author copy's title page and printed/PDF pp. 3–5
+were visually checked. Section 2, p. 3 Eqs. (2.3)–(2.4) defines Cauchy stress
+and deviatoric invariants; p. 4 Eq. (2.5), Eqs. (2.8)–(2.11) gives normalization
+and von Mises; section 2(b), p. 5 Eq. (2.15) gives exact Tresca with alpha from
+p. 4 Eq. (2.10). Here `sigma_eq,VM=q_VM/Y`, `sigma_eq,T=q_T/Y` and `Lambda=f/Y`
+are dimensionless; catalog q/f are Pa. No later smoothing variant is imported.
+SHA-256: `ca6e6d895fd16caa46ad3f68bcd1272425317c268cd332b837732d362bec482c`.
+There is no explicit revision label; current publisher retrieval failed and
+current publisher byte-equivalence is not asserted. The title page states
+©2020 authors, Royal Society publication, all rights reserved; no permissive
+reuse license was verified. Author hosting is not a redistribution grant.
+
+### Wierzbicki (2013)
+
+Source ID `wierzbicki_2013_structural_plasticity`: Tomasz Wierzbicki,
+*Fundamental Concepts in Structural Plasticity*, MIT Structural Mechanics
+2.080J / 1.573J, Lecture 12, Fall 2013.
+[Official resource](https://ocw.mit.edu/courses/2-080j-structural-mechanics-fall-2013/resources/mit2_080jf13_lecture12/) ·
+[official PDF](https://ocw.mit.edu/courses/2-080j-structural-mechanics-fall-2013/30dc1a0f74debf21fb92a1df56616929_MIT2_080JF13_Lecture12.pdf).
+
+The course resource/footer establishes Fall 2013 despite unfilled “Semester Yr”
+running headers. The 20-page PDF's printed pp. 12-6, 12-8, 12-13 and 12-15
+(PDF pp. 6, 8, 13 and 15) were visually checked. Section 12.4 Eqs. (12.17)–(12.18)
+on p. 12-6 supports the squared von Mises definition; section 12.8
+Eqs. (12.47)–(12.48) on p. 12-13 supports maximum shear and Tresca uniaxial
+calibration. SHA-256: `b4a19b30e6fa5a7f79ed8e003b06b4c434799ebc44c016aeb751e498f126ea49`.
+
+Observed defects in this inspected PDF, **not verified official errata**:
+Eq. (12.22) lacks a square root and is dimensionally inconsistent; Eq. (12.46)
+repeats a principal pair. Neither is used. The loosely stated rounded p. 12-15
+comparison does not prove the exact project bound; introductory numerical
+proof-stress-offset discussion is not imported.
+[MIT OCW terms](https://ocw.mit.edu/pages/privacy-and-terms-of-use/), checked
+2026-10-04, state [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+These terms do not give unconditional permission to relicense source assets
+under MIT.
+
+### Admission boundary
+
+The two sources directly support selected definitions, not the separately
+labeled original sharp comparison/endpoint proof. Distinct sources and formula
+agreement are not independent empirical validation or expert scientific review.
+Historical original Tresca/von Mises publications were not inspected. The
+physical-model restrictions are deliberately narrow project scope, not an
+assertion that every source states every premise. Only metadata, exact links,
+independently expressed mathematical facts and original project prose/proof
+are admitted. No PDFs, screenshots, extracted prose, figures, experimental
+plot data or source assets are redistributed. No NIST coefficients, mirror,
+new material values or graphics are added. [Rights notices](../THIRD_PARTY_NOTICES.md)
+· [Migration](MIGRATION_v0.27.0.md).

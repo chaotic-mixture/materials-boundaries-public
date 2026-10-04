@@ -228,3 +228,46 @@ proofs are included; source PDFs, extracted text, figures, screenshots and sourc
 TeX are not. MIT applies only to original project contributions. The publisher
 version associated with DOI 10.1007/s00419-019-01620-2 was not inspected.
 See [the versioned evidence and original proof guide](docs/SCALAR_VISCOELASTICITY.md).
+
+## Yield-criterion definitions and original comparison (v0.27.0)
+
+Exactly two metadata-only sources are added for von Mises and Tresca initial
+yield and their equivalent-stress definitions. The sharp function comparison,
+endpoint proof, symbolic examples and optional fixed local proportional-ray
+consequence are original project algebra, not a source-printed theorem or a
+claim of independent expert scientific review.
+
+- Oliver Giraldo-Londoño and Glaucio H. Paulino (2020), “A unified approach for
+  topology optimization with local stress constraints considering various
+  failure criteria: von Mises, Drucker–Prager, Tresca, Mohr–Coulomb,
+  Bresler–Pister and Willam–Warnke,” Proceedings of the Royal Society A
+  476(2238), 20190861. [DOI](https://doi.org/10.1098/rspa.2019.0861) ·
+  [inspected author-hosted PDF](https://paulino.scholar.princeton.edu/sites/g/files/toruqf6546/files/documents/RSPA_20_AUnifiedApproach.pdf).
+  The title page states ©2020 authors, published by the Royal Society, all
+  rights reserved. No permissive reuse license was verified. Accessible author
+  hosting does not authorize redistribution; no equivalence to the current
+  publisher-hosted bytes is asserted
+- Tomasz Wierzbicki (2013), “Fundamental Concepts in Structural Plasticity,”
+  Lecture 12, MIT 2.080J / 1.573J Structural Mechanics, Fall 2013.
+  [Official resource](https://ocw.mit.edu/courses/2-080j-structural-mechanics-fall-2013/resources/mit2_080jf13_lecture12/) ·
+  [official PDF](https://ocw.mit.edu/courses/2-080j-structural-mechanics-fall-2013/30dc1a0f74debf21fb92a1df56616929_MIT2_080JF13_Lecture12.pdf).
+  [MIT OCW terms](https://ocw.mit.edu/pages/privacy-and-terms-of-use/), inspected
+  2026-10-04, state [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+  Attribution, noncommercial and share-alike conditions are not blanket
+  permission to relicense source assets under the project's MIT license
+
+Only bibliographic metadata, links, independently expressed mathematical facts
+and original explanation/curation/proof are included. Source PDFs, extracted
+prose, screenshots, page images, figures, experimental plot data and other
+source assets are excluded from repository, package and release. MIT applies
+to original project work only, without relicensing scientific facts or the
+third-party publications. This conservative boundary is not legal clearance
+for other reuse and implies no author, MIT or publisher endorsement.
+
+The [scientific guide](docs/YIELD_CRITERIA.md) records inspected-byte hashes,
+exact pages/equations, dimensionless source normalization and excluded printing
+defects. Wierzbicki Eqs. (12.22) and (12.46) have defects observed in the inspected
+copy; no publisher-issued errata were verified. Neither is used, and the rounded
+p. 12-15 comparison is not the exact proof. Selected-equation checks do not
+establish complete-paper validation, historical-original verification,
+empirical material adequacy or independent scientific peer review.

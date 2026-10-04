@@ -30,6 +30,7 @@ except ImportError as exc:
 from materials_boundaries.engine import BASE_RULES, DERIVED_RULES
 from materials_boundaries.validation import ValidationError, load_json
 from materials_boundaries._directional_contract import DIRECTIONAL_CONTRACTS, validate_directional_records
+from materials_boundaries._yield_contract import YIELD_CONTRACTS, validate_yield_records
 from materials_boundaries._viscoelastic_contract import VISCOELASTIC_CONTRACTS, validate_viscoelastic_records
 from materials_boundaries._wave_contract import WAVE_CONTRACTS, validate_wave_records
 from materials_boundaries._compressibility_contract import COMPRESSIBILITY_CONTRACTS, validate_compressibility_records
@@ -689,6 +690,11 @@ SUPPORTED_FAMILY_IDENTITIES.update({rule: tuple(contract[field] for field in FAM
 SUPPORTED_FAMILY_IDENTITIES.update({rule: tuple(contract[field] for field in FAMILY_IDENTITY_FIELDS)
                                    for rule, contract in WAVE_CONTRACTS.items()})
 
+SUPPORTED_FAMILY_ASSUMPTIONS.update({rule: contract['required_assumptions']
+                                    for rule, contract in YIELD_CONTRACTS.items()})
+SUPPORTED_FAMILY_IDENTITIES.update({rule: tuple(contract[field] for field in FAMILY_IDENTITY_FIELDS)
+                                   for rule, contract in YIELD_CONTRACTS.items()})
+
 class CatalogValidationError(ValueError):
     """The supplied catalogs violate the supported local contract."""
 
@@ -822,7 +828,7 @@ def _index(records: list[dict], kind: str) -> dict:
 
 
 def _validate_labels(locales: dict, names: set[str], *, index_present: bool = False,
-                     directional_present: bool = False, compressibility_present: bool = False, mos2_present: bool = False, hbn_present: bool = False, pa12_present: bool = False, wave_present: bool = False, viscoelastic_present: bool = False) -> None:
+                     directional_present: bool = False, compressibility_present: bool = False, mos2_present: bool = False, hbn_present: bool = False, pa12_present: bool = False, wave_present: bool = False, viscoelastic_present: bool = False, yield_present: bool = False) -> None:
     require(isinstance(locales, dict), "locales: expected an object")
     require(set(locales) == {"schema_version", "default_language", "translation_review", "languages"},
             "locales: unsupported or missing envelope fields")
@@ -847,6 +853,13 @@ def _validate_labels(locales: dict, names: set[str], *, index_present: bool = Fa
     if pa12_present:
         required_pa12_keys = {"catalog_pa12_" + key for key in ("classification", "identity", "temperature", "process", "stress", "sample", "reported", "si", "normalization", "source_version", "rights", "dataset", "protocol", "cell", "details")}
         require(required_pa12_keys <= keys, "locales: missing required PA12 warning/display labels")
+    if yield_present:
+        required_yield_keys = {"catalog_yield_" + key for key in
+            ("notice", "tensor", "normalization", "math_scope", "physical_scope", "attribution", "limits")}
+        required_yield_keys |= {"catalog_status_" + key for key in
+            ("pressure_squared", "von_mises_equivalent_stress", "tresca_equivalent_stress",
+             "tresca_von_mises_equivalent_stress_ratio", "criterion_function_comparison")}
+        require(required_yield_keys <= keys, "locales: missing required yield criterion labels")
     if viscoelastic_present:
         required_viscoelastic_keys = {"catalog_viscoelastic_" + key for key in
             ("notice", "conditions", "regularity", "attribution", "range", "limits")}
@@ -938,6 +951,7 @@ def validate_catalogs(catalogs: dict, schema_dir: Path = ROOT / "schemas") -> di
     require(len(all_ids) == len(set(all_ids)), "duplicate record ID across catalog kinds")
     claims, sources, observations = (indexes[name] for name in ("claims", "sources", "observations"))
     try:
+        validate_yield_records(list(claims.values()), resolve_dependencies=True)
         validate_viscoelastic_records(list(claims.values()), resolve_dependencies=True)
         validate_wave_records(list(claims.values()))
         validate_directional_records(list(claims.values()), resolve_dependencies=True)
@@ -1030,7 +1044,8 @@ def validate_catalogs(catalogs: dict, schema_dir: Path = ROOT / "schemas") -> di
                      hbn_present=any(record.get("method_family") == "falin_2017_hbn_monolayer_indentation_v1" for record in observations.values()),
                      pa12_present=any(record.get("method_family") == "ciganas_2026_pa12_cf15_fff_tensile_temperature_v1" for record in observations.values()),
                      wave_present=any("bulk_wave_contract" in claim for claim in claims.values()),
-                     viscoelastic_present=any("viscoelastic_contract" in claim for claim in claims.values()))
+                     viscoelastic_present=any("viscoelastic_contract" in claim for claim in claims.values()),
+                     yield_present=any("yield_criterion_contract" in claim for claim in claims.values()))
     from materials_boundaries._observation_study_comparison_labels import LABELS as STUDY_LABELS
     require(set(STUDY_LABELS) == LANGUAGES, "study comparison: four authored languages required")
     for language, messages in STUDY_LABELS.items():

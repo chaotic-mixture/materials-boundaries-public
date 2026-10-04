@@ -1,6 +1,6 @@
 # 材料边界 · Materials Boundaries
 
-Current software release: **v0.26.0** · **Scalar viscoelastic duality and conditional product bound** · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
+Current software release: **v0.27.0** · **Initial-yield criteria and sharp equivalent-stress comparison** · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
 
 A condition-aware, source-traceable materials-mechanics catalog and offline Python toolkit. It separates conditional mathematical bounds, model relations, published observations, computational predictions and synthetic demonstrations. Python 3.10+; no third-party runtime dependencies.
 
@@ -9,14 +9,16 @@ Repository: [chaotic-mixture/materials-boundaries-public](https://github.com/cha
 ## Public-release scope
 
 <!-- current-catalog-summary:start -->
-- **38 mechanics claims**, **55 source records**, **16 observations from 5 studies**, **12 published computational predictions in 2 scientific families and 3 explicit groups**, and **5 synthetic temperature demos with 7 branches**
+- **41 mechanics claims**, **57 source records**, **16 observations from 5 studies**, **12 published computational predictions in 2 scientific families and 3 explicit groups**, and **5 synthetic temperature demos with 7 branches**
 - Exactly **8 executable composite calculation rules**: HS/Reuss/Voigt bulk and shear bounds plus conservative derived Young's-modulus and Poisson-ratio envelopes
-- Other mechanics records, including scalar viscoelasticity, bulk elastic waves, hydrostatic compressibility, directional Poisson ratio, anisotropy, fatigue, fracture, stability and porous relations, are catalog-only
-- The 55 sources comprise 54 bibliographic/source records plus 1 original synthetic-demo provenance record; a source record is not a redistribution of its publication or dataset
+- Other mechanics records, including initial-yield criteria and their function comparison, scalar viscoelasticity, bulk elastic waves, hydrostatic compressibility, directional Poisson ratio, anisotropy, fatigue, fracture, stability and porous relations, are catalog-only
+- The 57 sources comprise 56 bibliographic/source records plus 1 original synthetic-demo provenance record; a source record is not a redistribution of its publication or dataset
 - All five temperature demos use intentionally invented coefficients and ranges. They do not describe real materials, measured properties or engineering allowables
 <!-- current-catalog-summary:end -->
 
-Version **0.26.0** appends exactly two catalog-only scalar viscoelastic records and two source records. Within a matched causal linear time-invariant scalar channel, fixed material state and temperature, nonzero completely monotone ordinary relaxation with finite positive R0, and no additive Newtonian impulse, the normalized creep-relaxation convolution equals 1. The original project proof gives **0<R(t)J(t)<=1 at every finite t>0**; it is not a separately printed Hanyga theorem or a universal material-strength law. Initial jumps and possibly unbounded but integrable J' are retained. Changing loading rates remain allowed under the fixed kernel. Claims schema advances **1.11.0 → 1.12.0**; all eight executable rules are unchanged. [Scope, original proofs and source versions](docs/SCALAR_VISCOELASTICITY.md) · [v0.26.0 migration](docs/MIGRATION_v0.26.0.md)
+Version **0.27.0** appends exactly three catalog-only records: von Mises and Tresca initial-yield relations, plus the sharp **1 <= q_T/q_VM <= 2/sqrt(3)** function comparison for the same nonhydrostatic symmetric 3D Cauchy stress tensor. The ratio is undefined at hydrostatic stress; the division-free inequality includes it. Source definitions are distinguished from original project proof and from restricted isotropic, pressure-insensitive initial-yield model applicability. Any model-threshold comparison requires the same positive uniaxial Y; an optional loading consequence is limited to one fixed local proportional ray. No numerical plasticity integration, material yield value, universal strength bracket or safety certification is added. Claims schema advances **1.12.0 → 1.13.0**; the eight executable rules remain unchanged. [Scientific scope, exact proof and source rights](docs/YIELD_CRITERIA.md) · [v0.27.0 migration](docs/MIGRATION_v0.27.0.md)
+
+Version **0.26.0** previously appended exactly two catalog-only scalar viscoelastic records and two source records. Within a matched causal linear time-invariant scalar channel, fixed material state and temperature, nonzero completely monotone ordinary relaxation with finite positive R0, and no additive Newtonian impulse, the normalized creep-relaxation convolution equals 1. The original project proof gives **0<R(t)J(t)<=1 at every finite t>0**; it is not a separately printed Hanyga theorem or a universal material-strength law. Initial jumps and possibly unbounded but integrable J' are retained. Changing loading rates remain allowed under the fixed kernel. Claims schema advances **1.11.0 → 1.12.0**; all eight executable rules are unchanged. [Scope, original proofs and source versions](docs/SCALAR_VISCOELASTICITY.md) · [v0.26.0 migration](docs/MIGRATION_v0.26.0.md)
 
 Version **0.25.0** adds one explicit `observation compare-temperature-studies --profile-id ciganas-zach-uts-temperature-v1` view. Both protocols and caveats come first; six Ciganas unspecified-central UTS summaries and four Zach reported medians remain separate, unconnected panels with always-visible SD columns. No uncertainty endpoints, matched-condition inference, pooling or ranking is added. Zach SD units remain contextual. No scientific records, old fixtures/examples, generic inspection or existing Ciganas plot policy change. [Two-study guide](docs/OBSERVATION_STUDY_COMPARISON.md) · [v0.25.0 migration](docs/MIGRATION_v0.25.0.md)
 
@@ -71,7 +73,26 @@ The synthetic linear temperature demo returns **15 GPa at 50 K**. The overlap de
 
 [English](docs/GETTING_STARTED.en.md) · [中文](docs/GETTING_STARTED.zh.md) · [日本語](docs/GETTING_STARTED.ja.md) · [Deutsch](docs/GETTING_STARTED.de.md)
 
-The scientific guides retain source-specific qualifications for the graphene, monolayer MoS2 and monolayer hBN and PA12 CF15 observations, Ni-family ideal-shear predictions, silicon first-instability predictions and literature-model example. These brief numerical facts are not removed merely because their publications have separate rights. No paper PDFs, figures, full text or raw measurement collections are bundled.
+### Yield catalog in four languages
+
+```sh
+python -m materials_boundaries catalog claims --id von_mises_initial_yield_relation --text --lang en
+python -m materials_boundaries catalog claims --id tresca_initial_yield_relation --text --lang zh
+python -m materials_boundaries catalog claims --id tresca_von_mises_equivalent_stress_ratio_bound --text --lang ja
+python -m materials_boundaries catalog claims --source-id giraldo_londono_paulino_2020_yield_criteria --text --lang de
+```
+
+English: v0.27.0 has 41 claims and 57 sources. The three new yield records compare model stress functions; they do not evaluate or certify material strength. The ratio is undefined at hydrostatic stress.
+
+中文：v0.27.0 共 41 条论断、57 条来源；新增三条仅目录记录，区分初始屈服模型与等效应力函数的严格比较。静水状态下比值未定义，不进行数值塑性求解或材料强度认证。
+
+日本語：v0.27.0 は論断41件・出典57件です。追加3件はカタログ専用で、初期降伏モデルと等価応力関数の厳密な比較を区別します。静水圧応力状態で比は未定義です。数値塑性解析や材料強度の認証は行いません。
+
+Deutsch: v0.27.0 enthält 41 Aussagen und 57 Quellen. Die drei neuen Katalogeinträge trennen Anfangsfließmodelle vom exakten Vergleich ihrer Vergleichsspannungsfunktionen. Bei hydrostatischer Spannung ist das Verhältnis undefiniert. Keine numerische Plastizitätsintegration oder Festigkeitszertifizierung.
+
+Canonical IDs, formulas and units remain unchanged across languages; scientific and native-language review is still outstanding. [Full conventions, proof and evidence](docs/YIELD_CRITERIA.md)
+
+The scientific guides retain source-specific qualifications for the graphene, monolayer MoS2, monolayer hBN, PA12 CF15 and annealed PAHT-CF observations, Ni-family ideal-shear predictions, silicon first-instability predictions and literature-model example. These brief numerical facts are not removed merely because their publications have separate rights. No paper PDFs, figures, full text or raw measurement collections are bundled.
 
 中文：此前 **0.23.0** 新增显式 `observation plot-temperature` 路径，仅接纳完整的 PA12 CF15 六个来源单元格。六个不连接、同样式的点表示报告的中心 UTS 值，不称为均值；竖向须线保留 ±来源报告的 SD，不是标准误、置信区间、观测最小／最大值或界限。每条件三次试验的独立性未核实。横轴是试验箱条件，不是直接试样温度；无横向须线不表示零不确定性，固定显示边距不是材料极限。新绘图 schema 1.0.0；通用查阅仍为无数值轴的 schema 1.1.0，观测 1.3.0、目录记录和八条计算规则不变。不拟合、不插值、不预测材料或给出许用值。[绘图与完整限制](docs/OBSERVATION_TEMPERATURE_PLOT.md)
 
@@ -317,7 +338,7 @@ v0.3.0 的十条论断目录使用 schema 1.2.0，每条包含 `claim_type`、`q
 
 ## 离线对比可视化
 
-可对既有八条复合材料评价进行保留来源与条件信息的多案例绘图，见[可视化使用说明](docs/VISUALIZATION.md)。目录中的七条强度／断裂模型、八条稳定性判据、三条孔隙论断和三项研究的六条观测不会被绘成已计算的预测或叠加到复合材料曲线上；未知、不满足和数值失败也不能用伪造数值代替。
+可对既有八条复合材料评价进行保留来源与条件信息的多案例绘图，见[可视化使用说明](docs/VISUALIZATION.md)。目录中的屈服、强度／断裂、稳定性、孔隙等仅目录论断和五项研究的十六条观测不会被当作已计算的复合材料预测或叠加到复合材料曲线上；未知、不满足和数值失败也不能用伪造数值代替。
 
 ## 历史 v0.2.0 输出迁移
 
@@ -325,6 +346,8 @@ v0.2.0 将评价结果从 3 条扩展到 8 条；原有三个体积模量 claim 
 
 ## 结构与证据
 
+- `docs/YIELD_CRITERIA.md`：v0.27.0 初始屈服模型、等效应力函数比较、原创证明、静水状态和来源边界
+- `docs/MIGRATION_v0.27.0.md`：41 条论断、57 条来源，论断 schema 1.13.0 与不变的八条可执行规则
 - `materials_boundaries/data/claims.json`：可复用 claim、条件、固定 rule ID、公式展示、逐 claim 核验缺口
 - `materials_boundaries/data/sources.json`：人工策展的来源、阅读范围、许可证状态及用途
 - `materials_boundaries/data/observations.json`：单独保存二维模型依赖实验摘要和三维拉伸试验摘要、同一研究关联、方法、不确定性及未知条件
@@ -343,7 +366,7 @@ v0.2.0 将评价结果从 3 条扩展到 8 条；原有三个体积模量 claim 
 - `docs/MIGRATION_v0.19.0.md`：单层 hBN 两条观测、来源与统计边界，观测 schema 1.2.0；共 36 条论断、51 条来源、三项研究六条观测
 - `docs/MIGRATION_v0.18.0.md`：历史 36 条论断、50 条来源、论断 schema 1.11.0 与不变的八条可执行规则
 - `docs/MODEL.md`：体积/剪切界、推导 E/ν 外包络、数值策略与边界情况
-- `docs/OBSERVATIONS.md`：石墨烯、单层 MoS2、单层 hBN 和 PA12 CF15 四项研究的 12 项观测、方法依赖、统计区别、单位及核验边界
+- `docs/OBSERVATIONS.md`：观测语义、石墨烯／单层 MoS2／单层 hBN 的二维方法依赖及通往 PA12 CF15、PAHT-CF 指南的入口；当前共五项研究十六条观测
 - `docs/MIGRATION_v0.17.0.md`：观测 schema 1.1.0、窄范围 MoS2 扩展、打印 q 矛盾及不变的旧记录
 - `docs/MIGRATION_v0.7.0.md`：独立观测目录、筛选与不变的论断／评价约定
 - `docs/MIGRATION_v0.2.0.md`：历史八条输出、类型信息、依赖和单位迁移

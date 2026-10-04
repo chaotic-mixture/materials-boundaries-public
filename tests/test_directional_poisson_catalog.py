@@ -230,7 +230,7 @@ class DirectionalSchemaTests(unittest.TestCase):
 
     def test_schema_snapshot_and_parameter_reordering(self):
         self.validator.check_schema(self.validator.schema);validate_catalogs(self.catalogs)
-        self.assertEqual(self.catalogs['claims']['schema_version'],'1.12.0')
+        self.assertEqual(self.catalogs['claims']['schema_version'],'1.13.0')
         self.assertEqual(load_json(ROOT/'schemas/comparison.schema.json')['$defs']['claims'],self.validator.schema)
         records(self.catalogs)[1]['parameters'].reverse();validate_catalogs(self.catalogs)
 

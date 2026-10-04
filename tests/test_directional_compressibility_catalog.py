@@ -471,8 +471,8 @@ class CompressibilitySchemaTests(unittest.TestCase):
 
     def test_public_schema_and_embedded_snapshot_are_v111(self):
         self.validator.check_schema(self.validator.schema)
-        self.assertEqual(self.catalogs['claims']['schema_version'], '1.12.0')
-        self.assertEqual(self.validator.schema['$id'], 'urn:materials-boundaries:schema:claims:1.12.0')
+        self.assertEqual(self.catalogs['claims']['schema_version'], '1.13.0')
+        self.assertEqual(self.validator.schema['$id'], 'urn:materials-boundaries:schema:claims:1.13.0')
         self.assertEqual(load_json(ROOT/'schemas/comparison.schema.json')['$defs']['claims'], self.validator.schema)
         validate_catalogs(self.catalogs)
 
@@ -485,7 +485,7 @@ class CompressibilitySchemaTests(unittest.TestCase):
                     with self.subTest(index=index, path=path, operation=operation, value=value):
                         mutated = copy.deepcopy(canonical)
                         apply_mutation(mutated, path, operation, value)
-                        subset = {'schema_version': '1.12.0', 'records': [mutated]}
+                        subset = {'schema_version': '1.13.0', 'records': [mutated]}
                         self.assertTrue(list(self.validator.iter_errors(subset)))
                         with self.assertRaises(ValueError):
                             validate_compressibility_records([mutated])

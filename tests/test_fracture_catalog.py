@@ -37,6 +37,7 @@ EMPTY_DEPENDENCY_FAMILIES = {
     'isotropic_bulk_plane_wave_speeds_and_ratio_v1',
     'christoffel_tensor_strong_ellipticity_v1',
     'scalar_viscoelastic_creep_relaxation_duality_v1',
+    'von_mises_initial_yield_relation_v1', 'tresca_initial_yield_relation_v1',
 }
 
 
@@ -74,6 +75,14 @@ class FractureCatalogTests(unittest.TestCase):
                 self.assertEqual(len(record['dependencies']), 1)
                 self.assertEqual(by_id[record['dependencies'][0]]['rule_id'],
                                  'scalar_viscoelastic_creep_relaxation_duality_v1')
+            elif record['rule_id'] == 'tresca_von_mises_equivalent_stress_ratio_bound_v1':
+                self.assertEqual(record['claim_type'], 'theoretical_bound')
+                self.assertEqual(record['direction'], 'interval')
+                self.assertEqual(record['bound_kind'], 'criterion_function_comparison')
+                self.assertEqual(record['evaluation_support'], 'catalog_only')
+                self.assertEqual(len(record['dependencies']), 2)
+                self.assertEqual({by_id[dependency]['rule_id'] for dependency in record['dependencies']},
+                                 {'von_mises_initial_yield_relation_v1', 'tresca_initial_yield_relation_v1'})
             else:
                 self.assertEqual(record['evaluation_support'], 'composite_evaluate' if record['id'] in EXECUTABLE_IDS else 'catalog_only')
                 self.assertEqual(record['bound_kind'], 'scalar_modulus_bound' if record['claim_type'] == 'theoretical_bound' else record['claim_type'])

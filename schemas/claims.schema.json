@@ -1,12 +1,12 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "urn:materials-boundaries:schema:claims:1.12.0",
-  "title": "Materials Boundaries claims v1.12",
+  "$id": "urn:materials-boundaries:schema:claims:1.13.0",
+  "title": "Materials Boundaries claims v1.13",
   "type": "object",
   "additionalProperties": false,
   "properties": {
     "schema_version": {
-      "const": "1.12.0"
+      "const": "1.13.0"
     },
     "records": {
       "type": "array",
@@ -51,7 +51,10 @@
               "isotropic_bulk_phase_speed_ratio",
               "bulk_phase_speed_squared",
               "normalized_scalar_creep_relaxation_convolution",
-              "scalar_creep_relaxation_same_time_product"
+              "scalar_creep_relaxation_same_time_product",
+              "von_mises_equivalent_stress",
+              "tresca_equivalent_stress",
+              "tresca_von_mises_equivalent_stress_ratio"
             ]
           },
           "direction": {
@@ -161,7 +164,8 @@
               "scalar_modulus_bound",
               "derived_outer_envelope",
               null,
-              "dimensionless_response_product_bound"
+              "dimensionless_response_product_bound",
+              "criterion_function_comparison"
             ]
           },
           "dependencies": {
@@ -243,7 +247,8 @@
                     "speed",
                     "speed_squared",
                     "time",
-                    "inverse_time"
+                    "inverse_time",
+                    "pressure_squared"
                   ]
                 },
                 "si_unit": {
@@ -260,7 +265,8 @@
                     "m s^-1",
                     "m^2 s^-2",
                     "s",
-                    "s^-1"
+                    "s^-1",
+                    "Pa^2"
                   ]
                 },
                 "meaning": {
@@ -423,6 +429,16 @@
                     },
                     "si_unit": {
                       "const": "s^-1"
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "dimension": {
+                      "const": "pressure_squared"
+                    },
+                    "si_unit": {
+                      "const": "Pa^2"
                     }
                   }
                 }
@@ -950,6 +966,311 @@
                     "V2_finite_interval_AC_and_jump",
                     "V3_product_bound_and_sharpness",
                     "V4_nonmonotone_SLS_product"
+                  ]
+                }
+              }
+            ]
+          },
+          "yield_criterion_contract": {
+            "oneOf": [
+              {
+                "const": {
+                  "kind": "von_mises_initial_yield_relation",
+                  "stress_conventions": {
+                    "tensor": "one_finite_real_symmetric_3D_Cauchy_stress_tensor_at_one_material_point",
+                    "sign": "tension_positive",
+                    "principal_stresses": "sigma1,sigma2,sigma3_are_eigenvalues_of_the_same_Cauchy_tensor",
+                    "ordering": "sigma1>=sigma2>=sigma3_when_ordered_gaps_or_maximum_minus_minimum_are_used",
+                    "tensor_shear": "ordinary_tensor_shear_components_not_doubled_engineering_strain_components",
+                    "contraction": "s:s=sum_i(s_ii^2)+2*sum_(i<j)(s_ij^2)",
+                    "deviator": "s=sigma-tr(sigma)*I/3; J2=(s:s)/2",
+                    "hydrostatic_sign": "sigma=p*I_has_p=tr(sigma)/3; p_is_signed_hydrostatic_normal_stress_opposite_to_compression_positive_pressure"
+                  },
+                  "units": {
+                    "sigma_principal_stresses_s_q_VM_q_T_tau_max_Y_and_dimensional_f": "Pa",
+                    "J2": "Pa^2",
+                    "q_over_Y_Lambda_equivalent_stress_ratio_and_load_multiplier": "1"
+                  },
+                  "source_normalization": {
+                    "catalog": "q_VM_and_q_T_are_dimensional_equivalent_stresses; f_VM=q_VM-Y; f_T=q_T-Y",
+                    "source_sigma_eq": "sigma_eq_VM=q_VM/Y; sigma_eq_T=q_T/Y; both_are_dimensionless",
+                    "source_Lambda": "Lambda_VM=f_VM/Y; Lambda_T=f_T/Y; both_are_dimensionless",
+                    "anchor": "Giraldo-Londono_and_Paulino_2020_section_2_Eqs_(2.5),(2.8)-(2.11),(2.15)"
+                  },
+                  "physical_interpretation": {
+                    "scope": "only_for_interpretation_as_material_initial_yield_models_not_premises_of_the_mathematical_function_comparison",
+                    "continuum": "ordinary_classical_Cauchy_stress_without_couple_stress_effects",
+                    "model_symmetry": "phenomenological_isotropic_pressure_insensitive_tension_compression_symmetric",
+                    "kinematics": "small_strain",
+                    "loading": "quasistatic_rate_independent_initial_yield",
+                    "material_state": "fixed_material_state_and_temperature",
+                    "calibration": "Y>0_declared_uniaxial_tensile_yield_calibration_matching_state_temperature_rate_regime_stress_measure_and_yield_definition",
+                    "calibration_not_supplied": "Y_is_neither_supplied_nor_inferred_from_elastic_constants",
+                    "common_calibration": "same_Y_for_both_models_when_comparing_yield_thresholds",
+                    "shear_calibration_caution": "equal_measured_pure_shear_calibration_gives_Y_T=2*tau_c_and_Y_VM=sqrt(3)*tau_c_so_same_Y_threshold_order_does_not_transfer",
+                    "proof_stress": "a_proof_stress_requires_its_declared_offset_and_is_not_an_experimentally_demonstrated_sharp_onset",
+                    "surface": "centered_initial_yield_surface_with_no_modeled_backstress_evolution",
+                    "no_post_yield_law": "no_hardening_law_plastic_flow_direction_associated_flow_assertion_loading_unloading_integration_or_post_yield_strain",
+                    "scope_exclusions": [
+                      "anisotropic_yielding",
+                      "tension_compression_asymmetry",
+                      "pressure_sensitive_yielding",
+                      "porous_damage",
+                      "evolving_material_state",
+                      "finite_strain_constitutive_evolution",
+                      "cyclic_plasticity",
+                      "rate_dependent_flow"
+                    ],
+                    "hydrostatic_caution": "function_invariance_does_not_establish_survival_against_hydrostatic_damage_cavitation_phase_change_or_other_failure",
+                    "admission_scope_attribution": "deliberately_restricted_project_scope_not_an_assertion_that_each_source_states_every_exclusion"
+                  },
+                  "hydrostatic_behavior": {
+                    "shift": "adding_any_signed_hydrostatic_increment_h*I_leaves_both_equivalent_stresses_unchanged",
+                    "zero": "q_VM=q_T=0_if_and_only_if_sigma=p*I",
+                    "ratio_at_zero": "undefined_0/0; no_hydrostatic_ratio_value_or_unique_limit_is_assigned"
+                  },
+                  "source_attribution": {
+                    "function_definitions": "Giraldo-Londono_and_Paulino_2020_and_selected_sound_Wierzbicki_2013_equations",
+                    "comparison_proof": "original_project_algebra_not_a_separately_printed_source_theorem",
+                    "source_warnings": "Wierzbicki_inspected_PDF_Eq_(12.22)_omits_the_square_root_and_Eq_(12.46)_repeats_a_principal_pair; neither_is_used; no_official_erratum_is_asserted",
+                    "rounded_comparison": "Wierzbicki_printed_p_12-15_rounded_comparison_is_not_used_as_the_exact_bound_proof",
+                    "scientific_peer_review_certified": false,
+                    "native_language_scientific_review_performed": false
+                  },
+                  "catalog_boundary": {
+                    "numerical_evaluator": false,
+                    "instance_premises_checked": false,
+                    "instance_satisfied_violated_unknown_states": false,
+                    "experimental_validation": false,
+                    "material_strength_or_safety_certification": false,
+                    "plasticity_solver": false,
+                    "measured_values_or_fitted_Y_supplied": false
+                  },
+                  "definition": {
+                    "equivalent_stress": "q_VM=sqrt(3*J2)=sqrt(((sigma1-sigma2)^2+(sigma2-sigma3)^2+(sigma3-sigma1)^2)/2)",
+                    "yield_function": "f_VM=q_VM-Y",
+                    "initial_boundary": "f_VM=0",
+                    "model_classification": "f_VM<0_is_inside_and_f_VM>0_is_outside_the_model_elastic_domain; no_specimen_state_is_evaluated",
+                    "pure_shear_substitution": "tau_VM=Y/sqrt(3); symbolic_model_substitution_not_measured_shear_strength"
+                  },
+                  "proof_ids": [
+                    "Y1_stress_definitions_and_normalization"
+                  ]
+                }
+              },
+              {
+                "const": {
+                  "kind": "tresca_initial_yield_relation",
+                  "stress_conventions": {
+                    "tensor": "one_finite_real_symmetric_3D_Cauchy_stress_tensor_at_one_material_point",
+                    "sign": "tension_positive",
+                    "principal_stresses": "sigma1,sigma2,sigma3_are_eigenvalues_of_the_same_Cauchy_tensor",
+                    "ordering": "sigma1>=sigma2>=sigma3_when_ordered_gaps_or_maximum_minus_minimum_are_used",
+                    "tensor_shear": "ordinary_tensor_shear_components_not_doubled_engineering_strain_components",
+                    "contraction": "s:s=sum_i(s_ii^2)+2*sum_(i<j)(s_ij^2)",
+                    "deviator": "s=sigma-tr(sigma)*I/3; J2=(s:s)/2",
+                    "hydrostatic_sign": "sigma=p*I_has_p=tr(sigma)/3; p_is_signed_hydrostatic_normal_stress_opposite_to_compression_positive_pressure"
+                  },
+                  "units": {
+                    "sigma_principal_stresses_s_q_VM_q_T_tau_max_Y_and_dimensional_f": "Pa",
+                    "J2": "Pa^2",
+                    "q_over_Y_Lambda_equivalent_stress_ratio_and_load_multiplier": "1"
+                  },
+                  "source_normalization": {
+                    "catalog": "q_VM_and_q_T_are_dimensional_equivalent_stresses; f_VM=q_VM-Y; f_T=q_T-Y",
+                    "source_sigma_eq": "sigma_eq_VM=q_VM/Y; sigma_eq_T=q_T/Y; both_are_dimensionless",
+                    "source_Lambda": "Lambda_VM=f_VM/Y; Lambda_T=f_T/Y; both_are_dimensionless",
+                    "anchor": "Giraldo-Londono_and_Paulino_2020_section_2_Eqs_(2.5),(2.8)-(2.11),(2.15)"
+                  },
+                  "physical_interpretation": {
+                    "scope": "only_for_interpretation_as_material_initial_yield_models_not_premises_of_the_mathematical_function_comparison",
+                    "continuum": "ordinary_classical_Cauchy_stress_without_couple_stress_effects",
+                    "model_symmetry": "phenomenological_isotropic_pressure_insensitive_tension_compression_symmetric",
+                    "kinematics": "small_strain",
+                    "loading": "quasistatic_rate_independent_initial_yield",
+                    "material_state": "fixed_material_state_and_temperature",
+                    "calibration": "Y>0_declared_uniaxial_tensile_yield_calibration_matching_state_temperature_rate_regime_stress_measure_and_yield_definition",
+                    "calibration_not_supplied": "Y_is_neither_supplied_nor_inferred_from_elastic_constants",
+                    "common_calibration": "same_Y_for_both_models_when_comparing_yield_thresholds",
+                    "shear_calibration_caution": "equal_measured_pure_shear_calibration_gives_Y_T=2*tau_c_and_Y_VM=sqrt(3)*tau_c_so_same_Y_threshold_order_does_not_transfer",
+                    "proof_stress": "a_proof_stress_requires_its_declared_offset_and_is_not_an_experimentally_demonstrated_sharp_onset",
+                    "surface": "centered_initial_yield_surface_with_no_modeled_backstress_evolution",
+                    "no_post_yield_law": "no_hardening_law_plastic_flow_direction_associated_flow_assertion_loading_unloading_integration_or_post_yield_strain",
+                    "scope_exclusions": [
+                      "anisotropic_yielding",
+                      "tension_compression_asymmetry",
+                      "pressure_sensitive_yielding",
+                      "porous_damage",
+                      "evolving_material_state",
+                      "finite_strain_constitutive_evolution",
+                      "cyclic_plasticity",
+                      "rate_dependent_flow"
+                    ],
+                    "hydrostatic_caution": "function_invariance_does_not_establish_survival_against_hydrostatic_damage_cavitation_phase_change_or_other_failure",
+                    "admission_scope_attribution": "deliberately_restricted_project_scope_not_an_assertion_that_each_source_states_every_exclusion"
+                  },
+                  "hydrostatic_behavior": {
+                    "shift": "adding_any_signed_hydrostatic_increment_h*I_leaves_both_equivalent_stresses_unchanged",
+                    "zero": "q_VM=q_T=0_if_and_only_if_sigma=p*I",
+                    "ratio_at_zero": "undefined_0/0; no_hydrostatic_ratio_value_or_unique_limit_is_assigned"
+                  },
+                  "source_attribution": {
+                    "function_definitions": "Giraldo-Londono_and_Paulino_2020_and_selected_sound_Wierzbicki_2013_equations",
+                    "comparison_proof": "original_project_algebra_not_a_separately_printed_source_theorem",
+                    "source_warnings": "Wierzbicki_inspected_PDF_Eq_(12.22)_omits_the_square_root_and_Eq_(12.46)_repeats_a_principal_pair; neither_is_used; no_official_erratum_is_asserted",
+                    "rounded_comparison": "Wierzbicki_printed_p_12-15_rounded_comparison_is_not_used_as_the_exact_bound_proof",
+                    "scientific_peer_review_certified": false,
+                    "native_language_scientific_review_performed": false
+                  },
+                  "catalog_boundary": {
+                    "numerical_evaluator": false,
+                    "instance_premises_checked": false,
+                    "instance_satisfied_violated_unknown_states": false,
+                    "experimental_validation": false,
+                    "material_strength_or_safety_certification": false,
+                    "plasticity_solver": false,
+                    "measured_values_or_fitted_Y_supplied": false
+                  },
+                  "definition": {
+                    "equivalent_stress": "q_T=max(abs(sigma1-sigma2),abs(sigma2-sigma3),abs(sigma3-sigma1))",
+                    "ordered_form": "sigma1>=sigma2>=sigma3_implies_q_T=sigma1-sigma3=2*tau_max",
+                    "yield_function": "f_T=q_T-Y",
+                    "initial_boundary": "f_T=0",
+                    "model_classification": "f_T<0_is_inside_and_f_T>0_is_outside_the_model_elastic_domain; no_specimen_state_is_evaluated",
+                    "pure_shear_substitution": "tau_T=Y/2; symbolic_model_substitution_not_measured_shear_strength",
+                    "smoothing": "exact_Tresca_no_smoothed_or_rounded_variant"
+                  },
+                  "proof_ids": [
+                    "Y1_stress_definitions_and_normalization"
+                  ]
+                }
+              },
+              {
+                "const": {
+                  "kind": "sharp_equivalent_stress_ratio_bound",
+                  "stress_conventions": {
+                    "tensor": "one_finite_real_symmetric_3D_Cauchy_stress_tensor_at_one_material_point",
+                    "sign": "tension_positive",
+                    "principal_stresses": "sigma1,sigma2,sigma3_are_eigenvalues_of_the_same_Cauchy_tensor",
+                    "ordering": "sigma1>=sigma2>=sigma3_when_ordered_gaps_or_maximum_minus_minimum_are_used",
+                    "tensor_shear": "ordinary_tensor_shear_components_not_doubled_engineering_strain_components",
+                    "contraction": "s:s=sum_i(s_ii^2)+2*sum_(i<j)(s_ij^2)",
+                    "deviator": "s=sigma-tr(sigma)*I/3; J2=(s:s)/2",
+                    "hydrostatic_sign": "sigma=p*I_has_p=tr(sigma)/3; p_is_signed_hydrostatic_normal_stress_opposite_to_compression_positive_pressure"
+                  },
+                  "units": {
+                    "sigma_principal_stresses_s_q_VM_q_T_tau_max_Y_and_dimensional_f": "Pa",
+                    "J2": "Pa^2",
+                    "q_over_Y_Lambda_equivalent_stress_ratio_and_load_multiplier": "1"
+                  },
+                  "source_normalization": {
+                    "catalog": "q_VM_and_q_T_are_dimensional_equivalent_stresses; f_VM=q_VM-Y; f_T=q_T-Y",
+                    "source_sigma_eq": "sigma_eq_VM=q_VM/Y; sigma_eq_T=q_T/Y; both_are_dimensionless",
+                    "source_Lambda": "Lambda_VM=f_VM/Y; Lambda_T=f_T/Y; both_are_dimensionless",
+                    "anchor": "Giraldo-Londono_and_Paulino_2020_section_2_Eqs_(2.5),(2.8)-(2.11),(2.15)"
+                  },
+                  "physical_interpretation": {
+                    "scope": "only_for_interpretation_as_material_initial_yield_models_not_premises_of_the_mathematical_function_comparison",
+                    "continuum": "ordinary_classical_Cauchy_stress_without_couple_stress_effects",
+                    "model_symmetry": "phenomenological_isotropic_pressure_insensitive_tension_compression_symmetric",
+                    "kinematics": "small_strain",
+                    "loading": "quasistatic_rate_independent_initial_yield",
+                    "material_state": "fixed_material_state_and_temperature",
+                    "calibration": "Y>0_declared_uniaxial_tensile_yield_calibration_matching_state_temperature_rate_regime_stress_measure_and_yield_definition",
+                    "calibration_not_supplied": "Y_is_neither_supplied_nor_inferred_from_elastic_constants",
+                    "common_calibration": "same_Y_for_both_models_when_comparing_yield_thresholds",
+                    "shear_calibration_caution": "equal_measured_pure_shear_calibration_gives_Y_T=2*tau_c_and_Y_VM=sqrt(3)*tau_c_so_same_Y_threshold_order_does_not_transfer",
+                    "proof_stress": "a_proof_stress_requires_its_declared_offset_and_is_not_an_experimentally_demonstrated_sharp_onset",
+                    "surface": "centered_initial_yield_surface_with_no_modeled_backstress_evolution",
+                    "no_post_yield_law": "no_hardening_law_plastic_flow_direction_associated_flow_assertion_loading_unloading_integration_or_post_yield_strain",
+                    "scope_exclusions": [
+                      "anisotropic_yielding",
+                      "tension_compression_asymmetry",
+                      "pressure_sensitive_yielding",
+                      "porous_damage",
+                      "evolving_material_state",
+                      "finite_strain_constitutive_evolution",
+                      "cyclic_plasticity",
+                      "rate_dependent_flow"
+                    ],
+                    "hydrostatic_caution": "function_invariance_does_not_establish_survival_against_hydrostatic_damage_cavitation_phase_change_or_other_failure",
+                    "admission_scope_attribution": "deliberately_restricted_project_scope_not_an_assertion_that_each_source_states_every_exclusion"
+                  },
+                  "hydrostatic_behavior": {
+                    "shift": "adding_any_signed_hydrostatic_increment_h*I_leaves_both_equivalent_stresses_unchanged",
+                    "zero": "q_VM=q_T=0_if_and_only_if_sigma=p*I",
+                    "ratio_at_zero": "undefined_0/0; no_hydrostatic_ratio_value_or_unique_limit_is_assigned"
+                  },
+                  "source_attribution": {
+                    "function_definitions": "Giraldo-Londono_and_Paulino_2020_and_selected_sound_Wierzbicki_2013_equations",
+                    "comparison_proof": "original_project_algebra_not_a_separately_printed_source_theorem",
+                    "source_warnings": "Wierzbicki_inspected_PDF_Eq_(12.22)_omits_the_square_root_and_Eq_(12.46)_repeats_a_principal_pair; neither_is_used; no_official_erratum_is_asserted",
+                    "rounded_comparison": "Wierzbicki_printed_p_12-15_rounded_comparison_is_not_used_as_the_exact_bound_proof",
+                    "scientific_peer_review_certified": false,
+                    "native_language_scientific_review_performed": false
+                  },
+                  "catalog_boundary": {
+                    "numerical_evaluator": false,
+                    "instance_premises_checked": false,
+                    "instance_satisfied_violated_unknown_states": false,
+                    "experimental_validation": false,
+                    "material_strength_or_safety_certification": false,
+                    "plasticity_solver": false,
+                    "measured_values_or_fitted_Y_supplied": false
+                  },
+                  "mathematical_domain": {
+                    "ratio": "nonhydrostatic_sigma; q_VM>0",
+                    "division_free": "all_finite_real_symmetric_3D_Cauchy_tensors_including_hydrostatic_sigma",
+                    "material_fit_required": false,
+                    "physical_isotropy_required": false,
+                    "yield_calibration_Y_required": false
+                  },
+                  "range": {
+                    "ratio": "q_T/q_VM",
+                    "lower": {
+                      "value": 1,
+                      "inclusive": true,
+                      "attained": true,
+                      "attained_when": "a*b=0_and_a+b>0; two_principal_stresses_coincide"
+                    },
+                    "upper": {
+                      "exact_value": "2/sqrt(3)",
+                      "inclusive": true,
+                      "attained": true,
+                      "attained_when": "a=b>0; sigma2=(sigma1+sigma3)/2"
+                    },
+                    "division_free": "q_VM<=q_T<=(2/sqrt(3))*q_VM",
+                    "actual_material_yield_bracket": false
+                  },
+                  "original_proof": {
+                    "ordered_gaps": "a=sigma1-sigma2>=0; b=sigma2-sigma3>=0",
+                    "equivalent_stresses": "q_T=a+b; q_VM^2=a^2+a*b+b^2",
+                    "lower_difference_identity": "q_T^2-q_VM^2=a*b>=0",
+                    "upper_difference_identity": "(4/3)*q_VM^2-q_T^2=(a-b)^2/3>=0",
+                    "square_roots": "q_T_and_q_VM_are_nonnegative_so_the_squared_inequalities_imply_the_division_free_bound",
+                    "division": "divide_by_q_VM_only_in_the_nonhydrostatic_branch",
+                    "sharpness": "both_endpoint_conditions_are_attainable_nonhydrostatic_stress_states_so_neither_constant_can_be_tightened"
+                  },
+                  "synthetic_examples": {
+                    "lower_endpoint": "sigma=diag(S,0,0), S>0: q_T=q_VM=S",
+                    "upper_endpoint": "sigma=diag(T,0,-T), T>0: q_T=2*T; q_VM=sqrt(3)*T",
+                    "hydrostatic_shift": "either_example_plus_any_h*I_has_the_same_function_values",
+                    "measured_data": false
+                  },
+                  "conditional_loading_consequence": {
+                    "path": "one_local_proportional_ray_sigma(lambda)=lambda*Sigma; lambda>=0; Sigma_nonhydrostatic",
+                    "calibration": "one_common_fixed_Y>0; physical_yield_interpretation_also_requires_the_separate_model_scope",
+                    "thresholds": "lambda_T=Y/q_T(Sigma); lambda_VM=Y/q_VM(Sigma)",
+                    "ratio": "1<=lambda_VM/lambda_T=q_T(Sigma)/q_VM(Sigma)<=2/sqrt(3)",
+                    "maximum_relative_excess": "2/sqrt(3)-1_approximately_15.47_percent_relative_to_the_Tresca_threshold",
+                    "hydrostatic_ray": "neither_function_reaches_positive_Y; no_finite_threshold_ratio",
+                    "exclusions": "no_automatic_extension_to_different_calibrations_residual_stress_paths_nonproportional_histories_or_evolving_plasticity",
+                    "interpretation": "model_threshold_comparison_not_material_error_safety_margin_or_bracket_on_actual_yield"
+                  },
+                  "proof_ids": [
+                    "Y1_stress_definitions_and_normalization",
+                    "Y2_sharp_comparison_and_endpoints",
+                    "Y3_conditional_proportional_loading"
                   ]
                 }
               }
@@ -7090,6 +7411,725 @@
               "viscoelastic_contract",
               "parameters"
             ]
+          },
+          {
+            "properties": {
+              "quantity": {
+                "const": "von_mises_equivalent_stress"
+              },
+              "direction": {
+                "const": "relation"
+              },
+              "claim_type": {
+                "const": "model_relation"
+              },
+              "bound_kind": {
+                "const": null
+              },
+              "quantity_dimension": {
+                "const": "pressure"
+              },
+              "si_unit": {
+                "const": "Pa"
+              },
+              "evaluation_support": {
+                "const": "catalog_only"
+              },
+              "formula_display": {
+                "const": "q_VM=sqrt(3*J2)=sqrt(((sigma1-sigma2)^2+(sigma2-sigma3)^2+(sigma3-sigma1)^2)/2); f_VM=q_VM-Y; initial yield: f_VM=0"
+              },
+              "required_assumptions": {
+                "const": {
+                  "stress_tensor": "finite_real_symmetric_3D_Cauchy_tensor_at_one_material_point",
+                  "stress_measure": "same_Cauchy_tensor_and_same_stress_measure_for_all_functions_and_principal_values",
+                  "stress_sign": "tension_positive",
+                  "shear_convention": "ordinary_tensor_shear_components",
+                  "definitions": "exact_unsmoothed_q_VM=sqrt(3*J2)_and_q_T=2*tau_max",
+                  "interpretation": "physical_yield_meaning_requires_the_separate_closed_model_scope_and_Y>0"
+                }
+              },
+              "yield_criterion_contract": {
+                "const": {
+                  "kind": "von_mises_initial_yield_relation",
+                  "stress_conventions": {
+                    "tensor": "one_finite_real_symmetric_3D_Cauchy_stress_tensor_at_one_material_point",
+                    "sign": "tension_positive",
+                    "principal_stresses": "sigma1,sigma2,sigma3_are_eigenvalues_of_the_same_Cauchy_tensor",
+                    "ordering": "sigma1>=sigma2>=sigma3_when_ordered_gaps_or_maximum_minus_minimum_are_used",
+                    "tensor_shear": "ordinary_tensor_shear_components_not_doubled_engineering_strain_components",
+                    "contraction": "s:s=sum_i(s_ii^2)+2*sum_(i<j)(s_ij^2)",
+                    "deviator": "s=sigma-tr(sigma)*I/3; J2=(s:s)/2",
+                    "hydrostatic_sign": "sigma=p*I_has_p=tr(sigma)/3; p_is_signed_hydrostatic_normal_stress_opposite_to_compression_positive_pressure"
+                  },
+                  "units": {
+                    "sigma_principal_stresses_s_q_VM_q_T_tau_max_Y_and_dimensional_f": "Pa",
+                    "J2": "Pa^2",
+                    "q_over_Y_Lambda_equivalent_stress_ratio_and_load_multiplier": "1"
+                  },
+                  "source_normalization": {
+                    "catalog": "q_VM_and_q_T_are_dimensional_equivalent_stresses; f_VM=q_VM-Y; f_T=q_T-Y",
+                    "source_sigma_eq": "sigma_eq_VM=q_VM/Y; sigma_eq_T=q_T/Y; both_are_dimensionless",
+                    "source_Lambda": "Lambda_VM=f_VM/Y; Lambda_T=f_T/Y; both_are_dimensionless",
+                    "anchor": "Giraldo-Londono_and_Paulino_2020_section_2_Eqs_(2.5),(2.8)-(2.11),(2.15)"
+                  },
+                  "physical_interpretation": {
+                    "scope": "only_for_interpretation_as_material_initial_yield_models_not_premises_of_the_mathematical_function_comparison",
+                    "continuum": "ordinary_classical_Cauchy_stress_without_couple_stress_effects",
+                    "model_symmetry": "phenomenological_isotropic_pressure_insensitive_tension_compression_symmetric",
+                    "kinematics": "small_strain",
+                    "loading": "quasistatic_rate_independent_initial_yield",
+                    "material_state": "fixed_material_state_and_temperature",
+                    "calibration": "Y>0_declared_uniaxial_tensile_yield_calibration_matching_state_temperature_rate_regime_stress_measure_and_yield_definition",
+                    "calibration_not_supplied": "Y_is_neither_supplied_nor_inferred_from_elastic_constants",
+                    "common_calibration": "same_Y_for_both_models_when_comparing_yield_thresholds",
+                    "shear_calibration_caution": "equal_measured_pure_shear_calibration_gives_Y_T=2*tau_c_and_Y_VM=sqrt(3)*tau_c_so_same_Y_threshold_order_does_not_transfer",
+                    "proof_stress": "a_proof_stress_requires_its_declared_offset_and_is_not_an_experimentally_demonstrated_sharp_onset",
+                    "surface": "centered_initial_yield_surface_with_no_modeled_backstress_evolution",
+                    "no_post_yield_law": "no_hardening_law_plastic_flow_direction_associated_flow_assertion_loading_unloading_integration_or_post_yield_strain",
+                    "scope_exclusions": [
+                      "anisotropic_yielding",
+                      "tension_compression_asymmetry",
+                      "pressure_sensitive_yielding",
+                      "porous_damage",
+                      "evolving_material_state",
+                      "finite_strain_constitutive_evolution",
+                      "cyclic_plasticity",
+                      "rate_dependent_flow"
+                    ],
+                    "hydrostatic_caution": "function_invariance_does_not_establish_survival_against_hydrostatic_damage_cavitation_phase_change_or_other_failure",
+                    "admission_scope_attribution": "deliberately_restricted_project_scope_not_an_assertion_that_each_source_states_every_exclusion"
+                  },
+                  "hydrostatic_behavior": {
+                    "shift": "adding_any_signed_hydrostatic_increment_h*I_leaves_both_equivalent_stresses_unchanged",
+                    "zero": "q_VM=q_T=0_if_and_only_if_sigma=p*I",
+                    "ratio_at_zero": "undefined_0/0; no_hydrostatic_ratio_value_or_unique_limit_is_assigned"
+                  },
+                  "source_attribution": {
+                    "function_definitions": "Giraldo-Londono_and_Paulino_2020_and_selected_sound_Wierzbicki_2013_equations",
+                    "comparison_proof": "original_project_algebra_not_a_separately_printed_source_theorem",
+                    "source_warnings": "Wierzbicki_inspected_PDF_Eq_(12.22)_omits_the_square_root_and_Eq_(12.46)_repeats_a_principal_pair; neither_is_used; no_official_erratum_is_asserted",
+                    "rounded_comparison": "Wierzbicki_printed_p_12-15_rounded_comparison_is_not_used_as_the_exact_bound_proof",
+                    "scientific_peer_review_certified": false,
+                    "native_language_scientific_review_performed": false
+                  },
+                  "catalog_boundary": {
+                    "numerical_evaluator": false,
+                    "instance_premises_checked": false,
+                    "instance_satisfied_violated_unknown_states": false,
+                    "experimental_validation": false,
+                    "material_strength_or_safety_certification": false,
+                    "plasticity_solver": false,
+                    "measured_values_or_fitted_Y_supplied": false
+                  },
+                  "definition": {
+                    "equivalent_stress": "q_VM=sqrt(3*J2)=sqrt(((sigma1-sigma2)^2+(sigma2-sigma3)^2+(sigma3-sigma1)^2)/2)",
+                    "yield_function": "f_VM=q_VM-Y",
+                    "initial_boundary": "f_VM=0",
+                    "model_classification": "f_VM<0_is_inside_and_f_VM>0_is_outside_the_model_elastic_domain; no_specimen_state_is_evaluated",
+                    "pure_shear_substitution": "tau_VM=Y/sqrt(3); symbolic_model_substitution_not_measured_shear_strength"
+                  },
+                  "proof_ids": [
+                    "Y1_stress_definitions_and_normalization"
+                  ]
+                }
+              },
+              "rule_id": {
+                "const": "von_mises_initial_yield_relation_v1"
+              },
+              "parameters": {
+                "minItems": 7,
+                "maxItems": 7,
+                "allOf": [
+                  {
+                    "contains": {
+                      "const": {
+                        "symbol": "sigma",
+                        "quantity": "cauchy_stress_tensor",
+                        "dimension": "pressure",
+                        "si_unit": "Pa",
+                        "meaning": "Finite real symmetric 3D Cauchy stress tensor at one material point; tension positive."
+                      }
+                    },
+                    "minContains": 1,
+                    "maxContains": 1
+                  },
+                  {
+                    "contains": {
+                      "const": {
+                        "symbol": "sigma1,sigma2,sigma3",
+                        "quantity": "principal_cauchy_stresses",
+                        "dimension": "pressure",
+                        "si_unit": "Pa",
+                        "meaning": "Eigenvalues of sigma; ordered sigma1>=sigma2>=sigma3 when an ordered representation is used."
+                      }
+                    },
+                    "minContains": 1,
+                    "maxContains": 1
+                  },
+                  {
+                    "contains": {
+                      "const": {
+                        "symbol": "s",
+                        "quantity": "deviatoric_cauchy_stress_tensor",
+                        "dimension": "pressure",
+                        "si_unit": "Pa",
+                        "meaning": "s=sigma-tr(sigma)*I/3, with ordinary tensor shear components."
+                      }
+                    },
+                    "minContains": 1,
+                    "maxContains": 1
+                  },
+                  {
+                    "contains": {
+                      "const": {
+                        "symbol": "J2",
+                        "quantity": "second_deviatoric_stress_invariant",
+                        "dimension": "pressure_squared",
+                        "si_unit": "Pa^2",
+                        "meaning": "J2=(s:s)/2; s:s=sum_i(s_ii^2)+2*sum_(i<j)(s_ij^2)."
+                      }
+                    },
+                    "minContains": 1,
+                    "maxContains": 1
+                  },
+                  {
+                    "contains": {
+                      "const": {
+                        "symbol": "q_VM",
+                        "quantity": "von_mises_equivalent_stress",
+                        "dimension": "pressure",
+                        "si_unit": "Pa",
+                        "meaning": "Dimensional nonnegative q_VM=sqrt(3*J2); not the source dimensionless sigma_eq."
+                      }
+                    },
+                    "minContains": 1,
+                    "maxContains": 1
+                  },
+                  {
+                    "contains": {
+                      "const": {
+                        "symbol": "Y",
+                        "quantity": "declared_uniaxial_tensile_yield_calibration",
+                        "dimension": "pressure",
+                        "si_unit": "Pa",
+                        "meaning": "Strictly positive declared uniaxial tensile yield calibration for the restricted model; no value is supplied or inferred."
+                      }
+                    },
+                    "minContains": 1,
+                    "maxContains": 1
+                  },
+                  {
+                    "contains": {
+                      "const": {
+                        "symbol": "f_VM",
+                        "quantity": "von_mises_dimensional_yield_function",
+                        "dimension": "pressure",
+                        "si_unit": "Pa",
+                        "meaning": "Dimensional f_VM=q_VM-Y; the initial model boundary is f_VM=0."
+                      }
+                    },
+                    "minContains": 1,
+                    "maxContains": 1
+                  }
+                ]
+              },
+              "dependencies": {
+                "maxItems": 0
+              },
+              "criterion": false,
+              "index_range": false,
+              "directional_contract": false,
+              "hydrostatic_compressibility_contract": false,
+              "bulk_wave_contract": false,
+              "viscoelastic_contract": false
+            },
+            "required": [
+              "yield_criterion_contract",
+              "parameters"
+            ]
+          },
+          {
+            "properties": {
+              "quantity": {
+                "const": "tresca_equivalent_stress"
+              },
+              "direction": {
+                "const": "relation"
+              },
+              "claim_type": {
+                "const": "model_relation"
+              },
+              "bound_kind": {
+                "const": null
+              },
+              "quantity_dimension": {
+                "const": "pressure"
+              },
+              "si_unit": {
+                "const": "Pa"
+              },
+              "evaluation_support": {
+                "const": "catalog_only"
+              },
+              "formula_display": {
+                "const": "q_T=max(abs(sigma1-sigma2),abs(sigma2-sigma3),abs(sigma3-sigma1))=2*tau_max; f_T=q_T-Y; initial yield: f_T=0"
+              },
+              "required_assumptions": {
+                "const": {
+                  "stress_tensor": "finite_real_symmetric_3D_Cauchy_tensor_at_one_material_point",
+                  "stress_measure": "same_Cauchy_tensor_and_same_stress_measure_for_all_functions_and_principal_values",
+                  "stress_sign": "tension_positive",
+                  "shear_convention": "ordinary_tensor_shear_components",
+                  "definitions": "exact_unsmoothed_q_VM=sqrt(3*J2)_and_q_T=2*tau_max",
+                  "interpretation": "physical_yield_meaning_requires_the_separate_closed_model_scope_and_Y>0"
+                }
+              },
+              "yield_criterion_contract": {
+                "const": {
+                  "kind": "tresca_initial_yield_relation",
+                  "stress_conventions": {
+                    "tensor": "one_finite_real_symmetric_3D_Cauchy_stress_tensor_at_one_material_point",
+                    "sign": "tension_positive",
+                    "principal_stresses": "sigma1,sigma2,sigma3_are_eigenvalues_of_the_same_Cauchy_tensor",
+                    "ordering": "sigma1>=sigma2>=sigma3_when_ordered_gaps_or_maximum_minus_minimum_are_used",
+                    "tensor_shear": "ordinary_tensor_shear_components_not_doubled_engineering_strain_components",
+                    "contraction": "s:s=sum_i(s_ii^2)+2*sum_(i<j)(s_ij^2)",
+                    "deviator": "s=sigma-tr(sigma)*I/3; J2=(s:s)/2",
+                    "hydrostatic_sign": "sigma=p*I_has_p=tr(sigma)/3; p_is_signed_hydrostatic_normal_stress_opposite_to_compression_positive_pressure"
+                  },
+                  "units": {
+                    "sigma_principal_stresses_s_q_VM_q_T_tau_max_Y_and_dimensional_f": "Pa",
+                    "J2": "Pa^2",
+                    "q_over_Y_Lambda_equivalent_stress_ratio_and_load_multiplier": "1"
+                  },
+                  "source_normalization": {
+                    "catalog": "q_VM_and_q_T_are_dimensional_equivalent_stresses; f_VM=q_VM-Y; f_T=q_T-Y",
+                    "source_sigma_eq": "sigma_eq_VM=q_VM/Y; sigma_eq_T=q_T/Y; both_are_dimensionless",
+                    "source_Lambda": "Lambda_VM=f_VM/Y; Lambda_T=f_T/Y; both_are_dimensionless",
+                    "anchor": "Giraldo-Londono_and_Paulino_2020_section_2_Eqs_(2.5),(2.8)-(2.11),(2.15)"
+                  },
+                  "physical_interpretation": {
+                    "scope": "only_for_interpretation_as_material_initial_yield_models_not_premises_of_the_mathematical_function_comparison",
+                    "continuum": "ordinary_classical_Cauchy_stress_without_couple_stress_effects",
+                    "model_symmetry": "phenomenological_isotropic_pressure_insensitive_tension_compression_symmetric",
+                    "kinematics": "small_strain",
+                    "loading": "quasistatic_rate_independent_initial_yield",
+                    "material_state": "fixed_material_state_and_temperature",
+                    "calibration": "Y>0_declared_uniaxial_tensile_yield_calibration_matching_state_temperature_rate_regime_stress_measure_and_yield_definition",
+                    "calibration_not_supplied": "Y_is_neither_supplied_nor_inferred_from_elastic_constants",
+                    "common_calibration": "same_Y_for_both_models_when_comparing_yield_thresholds",
+                    "shear_calibration_caution": "equal_measured_pure_shear_calibration_gives_Y_T=2*tau_c_and_Y_VM=sqrt(3)*tau_c_so_same_Y_threshold_order_does_not_transfer",
+                    "proof_stress": "a_proof_stress_requires_its_declared_offset_and_is_not_an_experimentally_demonstrated_sharp_onset",
+                    "surface": "centered_initial_yield_surface_with_no_modeled_backstress_evolution",
+                    "no_post_yield_law": "no_hardening_law_plastic_flow_direction_associated_flow_assertion_loading_unloading_integration_or_post_yield_strain",
+                    "scope_exclusions": [
+                      "anisotropic_yielding",
+                      "tension_compression_asymmetry",
+                      "pressure_sensitive_yielding",
+                      "porous_damage",
+                      "evolving_material_state",
+                      "finite_strain_constitutive_evolution",
+                      "cyclic_plasticity",
+                      "rate_dependent_flow"
+                    ],
+                    "hydrostatic_caution": "function_invariance_does_not_establish_survival_against_hydrostatic_damage_cavitation_phase_change_or_other_failure",
+                    "admission_scope_attribution": "deliberately_restricted_project_scope_not_an_assertion_that_each_source_states_every_exclusion"
+                  },
+                  "hydrostatic_behavior": {
+                    "shift": "adding_any_signed_hydrostatic_increment_h*I_leaves_both_equivalent_stresses_unchanged",
+                    "zero": "q_VM=q_T=0_if_and_only_if_sigma=p*I",
+                    "ratio_at_zero": "undefined_0/0; no_hydrostatic_ratio_value_or_unique_limit_is_assigned"
+                  },
+                  "source_attribution": {
+                    "function_definitions": "Giraldo-Londono_and_Paulino_2020_and_selected_sound_Wierzbicki_2013_equations",
+                    "comparison_proof": "original_project_algebra_not_a_separately_printed_source_theorem",
+                    "source_warnings": "Wierzbicki_inspected_PDF_Eq_(12.22)_omits_the_square_root_and_Eq_(12.46)_repeats_a_principal_pair; neither_is_used; no_official_erratum_is_asserted",
+                    "rounded_comparison": "Wierzbicki_printed_p_12-15_rounded_comparison_is_not_used_as_the_exact_bound_proof",
+                    "scientific_peer_review_certified": false,
+                    "native_language_scientific_review_performed": false
+                  },
+                  "catalog_boundary": {
+                    "numerical_evaluator": false,
+                    "instance_premises_checked": false,
+                    "instance_satisfied_violated_unknown_states": false,
+                    "experimental_validation": false,
+                    "material_strength_or_safety_certification": false,
+                    "plasticity_solver": false,
+                    "measured_values_or_fitted_Y_supplied": false
+                  },
+                  "definition": {
+                    "equivalent_stress": "q_T=max(abs(sigma1-sigma2),abs(sigma2-sigma3),abs(sigma3-sigma1))",
+                    "ordered_form": "sigma1>=sigma2>=sigma3_implies_q_T=sigma1-sigma3=2*tau_max",
+                    "yield_function": "f_T=q_T-Y",
+                    "initial_boundary": "f_T=0",
+                    "model_classification": "f_T<0_is_inside_and_f_T>0_is_outside_the_model_elastic_domain; no_specimen_state_is_evaluated",
+                    "pure_shear_substitution": "tau_T=Y/2; symbolic_model_substitution_not_measured_shear_strength",
+                    "smoothing": "exact_Tresca_no_smoothed_or_rounded_variant"
+                  },
+                  "proof_ids": [
+                    "Y1_stress_definitions_and_normalization"
+                  ]
+                }
+              },
+              "rule_id": {
+                "const": "tresca_initial_yield_relation_v1"
+              },
+              "parameters": {
+                "minItems": 6,
+                "maxItems": 6,
+                "allOf": [
+                  {
+                    "contains": {
+                      "const": {
+                        "symbol": "sigma",
+                        "quantity": "cauchy_stress_tensor",
+                        "dimension": "pressure",
+                        "si_unit": "Pa",
+                        "meaning": "Finite real symmetric 3D Cauchy stress tensor at one material point; tension positive."
+                      }
+                    },
+                    "minContains": 1,
+                    "maxContains": 1
+                  },
+                  {
+                    "contains": {
+                      "const": {
+                        "symbol": "sigma1,sigma2,sigma3",
+                        "quantity": "principal_cauchy_stresses",
+                        "dimension": "pressure",
+                        "si_unit": "Pa",
+                        "meaning": "Eigenvalues of sigma; ordered sigma1>=sigma2>=sigma3 when an ordered representation is used."
+                      }
+                    },
+                    "minContains": 1,
+                    "maxContains": 1
+                  },
+                  {
+                    "contains": {
+                      "const": {
+                        "symbol": "q_T",
+                        "quantity": "tresca_equivalent_stress",
+                        "dimension": "pressure",
+                        "si_unit": "Pa",
+                        "meaning": "Dimensional nonnegative maximum absolute principal-stress difference; q_T=2*tau_max."
+                      }
+                    },
+                    "minContains": 1,
+                    "maxContains": 1
+                  },
+                  {
+                    "contains": {
+                      "const": {
+                        "symbol": "tau_max",
+                        "quantity": "maximum_shear_stress",
+                        "dimension": "pressure",
+                        "si_unit": "Pa",
+                        "meaning": "tau_max=(max(sigma_i)-min(sigma_i))/2=q_T/2."
+                      }
+                    },
+                    "minContains": 1,
+                    "maxContains": 1
+                  },
+                  {
+                    "contains": {
+                      "const": {
+                        "symbol": "Y",
+                        "quantity": "declared_uniaxial_tensile_yield_calibration",
+                        "dimension": "pressure",
+                        "si_unit": "Pa",
+                        "meaning": "Strictly positive declared uniaxial tensile yield calibration for the restricted model; no value is supplied or inferred."
+                      }
+                    },
+                    "minContains": 1,
+                    "maxContains": 1
+                  },
+                  {
+                    "contains": {
+                      "const": {
+                        "symbol": "f_T",
+                        "quantity": "tresca_dimensional_yield_function",
+                        "dimension": "pressure",
+                        "si_unit": "Pa",
+                        "meaning": "Dimensional f_T=q_T-Y; the initial model boundary is f_T=0."
+                      }
+                    },
+                    "minContains": 1,
+                    "maxContains": 1
+                  }
+                ]
+              },
+              "dependencies": {
+                "maxItems": 0
+              },
+              "criterion": false,
+              "index_range": false,
+              "directional_contract": false,
+              "hydrostatic_compressibility_contract": false,
+              "bulk_wave_contract": false,
+              "viscoelastic_contract": false
+            },
+            "required": [
+              "yield_criterion_contract",
+              "parameters"
+            ]
+          },
+          {
+            "properties": {
+              "quantity": {
+                "const": "tresca_von_mises_equivalent_stress_ratio"
+              },
+              "direction": {
+                "const": "interval"
+              },
+              "claim_type": {
+                "const": "theoretical_bound"
+              },
+              "bound_kind": {
+                "const": "criterion_function_comparison"
+              },
+              "quantity_dimension": {
+                "const": "dimensionless"
+              },
+              "si_unit": {
+                "const": "1"
+              },
+              "evaluation_support": {
+                "const": "catalog_only"
+              },
+              "formula_display": {
+                "const": "1<=q_T/q_VM<=2/sqrt(3), nonhydrostatic sigma; q_VM<=q_T<=(2/sqrt(3))*q_VM for all finite real symmetric 3D Cauchy tensors"
+              },
+              "required_assumptions": {
+                "const": {
+                  "stress_tensor": "finite_real_symmetric_3D_Cauchy_tensor_at_one_material_point",
+                  "stress_measure": "same_Cauchy_tensor_and_same_stress_measure_for_all_functions_and_principal_values",
+                  "stress_sign": "tension_positive",
+                  "shear_convention": "ordinary_tensor_shear_components",
+                  "definitions": "exact_unsmoothed_q_VM=sqrt(3*J2)_and_q_T=2*tau_max",
+                  "ratio_domain": "nonhydrostatic_sigma_with_q_VM>0",
+                  "division_free_domain": "all_finite_real_symmetric_3D_Cauchy_tensors_including_hydrostatic_sigma",
+                  "physical_model_fit_required": false,
+                  "yield_calibration_Y_required": false
+                }
+              },
+              "yield_criterion_contract": {
+                "const": {
+                  "kind": "sharp_equivalent_stress_ratio_bound",
+                  "stress_conventions": {
+                    "tensor": "one_finite_real_symmetric_3D_Cauchy_stress_tensor_at_one_material_point",
+                    "sign": "tension_positive",
+                    "principal_stresses": "sigma1,sigma2,sigma3_are_eigenvalues_of_the_same_Cauchy_tensor",
+                    "ordering": "sigma1>=sigma2>=sigma3_when_ordered_gaps_or_maximum_minus_minimum_are_used",
+                    "tensor_shear": "ordinary_tensor_shear_components_not_doubled_engineering_strain_components",
+                    "contraction": "s:s=sum_i(s_ii^2)+2*sum_(i<j)(s_ij^2)",
+                    "deviator": "s=sigma-tr(sigma)*I/3; J2=(s:s)/2",
+                    "hydrostatic_sign": "sigma=p*I_has_p=tr(sigma)/3; p_is_signed_hydrostatic_normal_stress_opposite_to_compression_positive_pressure"
+                  },
+                  "units": {
+                    "sigma_principal_stresses_s_q_VM_q_T_tau_max_Y_and_dimensional_f": "Pa",
+                    "J2": "Pa^2",
+                    "q_over_Y_Lambda_equivalent_stress_ratio_and_load_multiplier": "1"
+                  },
+                  "source_normalization": {
+                    "catalog": "q_VM_and_q_T_are_dimensional_equivalent_stresses; f_VM=q_VM-Y; f_T=q_T-Y",
+                    "source_sigma_eq": "sigma_eq_VM=q_VM/Y; sigma_eq_T=q_T/Y; both_are_dimensionless",
+                    "source_Lambda": "Lambda_VM=f_VM/Y; Lambda_T=f_T/Y; both_are_dimensionless",
+                    "anchor": "Giraldo-Londono_and_Paulino_2020_section_2_Eqs_(2.5),(2.8)-(2.11),(2.15)"
+                  },
+                  "physical_interpretation": {
+                    "scope": "only_for_interpretation_as_material_initial_yield_models_not_premises_of_the_mathematical_function_comparison",
+                    "continuum": "ordinary_classical_Cauchy_stress_without_couple_stress_effects",
+                    "model_symmetry": "phenomenological_isotropic_pressure_insensitive_tension_compression_symmetric",
+                    "kinematics": "small_strain",
+                    "loading": "quasistatic_rate_independent_initial_yield",
+                    "material_state": "fixed_material_state_and_temperature",
+                    "calibration": "Y>0_declared_uniaxial_tensile_yield_calibration_matching_state_temperature_rate_regime_stress_measure_and_yield_definition",
+                    "calibration_not_supplied": "Y_is_neither_supplied_nor_inferred_from_elastic_constants",
+                    "common_calibration": "same_Y_for_both_models_when_comparing_yield_thresholds",
+                    "shear_calibration_caution": "equal_measured_pure_shear_calibration_gives_Y_T=2*tau_c_and_Y_VM=sqrt(3)*tau_c_so_same_Y_threshold_order_does_not_transfer",
+                    "proof_stress": "a_proof_stress_requires_its_declared_offset_and_is_not_an_experimentally_demonstrated_sharp_onset",
+                    "surface": "centered_initial_yield_surface_with_no_modeled_backstress_evolution",
+                    "no_post_yield_law": "no_hardening_law_plastic_flow_direction_associated_flow_assertion_loading_unloading_integration_or_post_yield_strain",
+                    "scope_exclusions": [
+                      "anisotropic_yielding",
+                      "tension_compression_asymmetry",
+                      "pressure_sensitive_yielding",
+                      "porous_damage",
+                      "evolving_material_state",
+                      "finite_strain_constitutive_evolution",
+                      "cyclic_plasticity",
+                      "rate_dependent_flow"
+                    ],
+                    "hydrostatic_caution": "function_invariance_does_not_establish_survival_against_hydrostatic_damage_cavitation_phase_change_or_other_failure",
+                    "admission_scope_attribution": "deliberately_restricted_project_scope_not_an_assertion_that_each_source_states_every_exclusion"
+                  },
+                  "hydrostatic_behavior": {
+                    "shift": "adding_any_signed_hydrostatic_increment_h*I_leaves_both_equivalent_stresses_unchanged",
+                    "zero": "q_VM=q_T=0_if_and_only_if_sigma=p*I",
+                    "ratio_at_zero": "undefined_0/0; no_hydrostatic_ratio_value_or_unique_limit_is_assigned"
+                  },
+                  "source_attribution": {
+                    "function_definitions": "Giraldo-Londono_and_Paulino_2020_and_selected_sound_Wierzbicki_2013_equations",
+                    "comparison_proof": "original_project_algebra_not_a_separately_printed_source_theorem",
+                    "source_warnings": "Wierzbicki_inspected_PDF_Eq_(12.22)_omits_the_square_root_and_Eq_(12.46)_repeats_a_principal_pair; neither_is_used; no_official_erratum_is_asserted",
+                    "rounded_comparison": "Wierzbicki_printed_p_12-15_rounded_comparison_is_not_used_as_the_exact_bound_proof",
+                    "scientific_peer_review_certified": false,
+                    "native_language_scientific_review_performed": false
+                  },
+                  "catalog_boundary": {
+                    "numerical_evaluator": false,
+                    "instance_premises_checked": false,
+                    "instance_satisfied_violated_unknown_states": false,
+                    "experimental_validation": false,
+                    "material_strength_or_safety_certification": false,
+                    "plasticity_solver": false,
+                    "measured_values_or_fitted_Y_supplied": false
+                  },
+                  "mathematical_domain": {
+                    "ratio": "nonhydrostatic_sigma; q_VM>0",
+                    "division_free": "all_finite_real_symmetric_3D_Cauchy_tensors_including_hydrostatic_sigma",
+                    "material_fit_required": false,
+                    "physical_isotropy_required": false,
+                    "yield_calibration_Y_required": false
+                  },
+                  "range": {
+                    "ratio": "q_T/q_VM",
+                    "lower": {
+                      "value": 1,
+                      "inclusive": true,
+                      "attained": true,
+                      "attained_when": "a*b=0_and_a+b>0; two_principal_stresses_coincide"
+                    },
+                    "upper": {
+                      "exact_value": "2/sqrt(3)",
+                      "inclusive": true,
+                      "attained": true,
+                      "attained_when": "a=b>0; sigma2=(sigma1+sigma3)/2"
+                    },
+                    "division_free": "q_VM<=q_T<=(2/sqrt(3))*q_VM",
+                    "actual_material_yield_bracket": false
+                  },
+                  "original_proof": {
+                    "ordered_gaps": "a=sigma1-sigma2>=0; b=sigma2-sigma3>=0",
+                    "equivalent_stresses": "q_T=a+b; q_VM^2=a^2+a*b+b^2",
+                    "lower_difference_identity": "q_T^2-q_VM^2=a*b>=0",
+                    "upper_difference_identity": "(4/3)*q_VM^2-q_T^2=(a-b)^2/3>=0",
+                    "square_roots": "q_T_and_q_VM_are_nonnegative_so_the_squared_inequalities_imply_the_division_free_bound",
+                    "division": "divide_by_q_VM_only_in_the_nonhydrostatic_branch",
+                    "sharpness": "both_endpoint_conditions_are_attainable_nonhydrostatic_stress_states_so_neither_constant_can_be_tightened"
+                  },
+                  "synthetic_examples": {
+                    "lower_endpoint": "sigma=diag(S,0,0), S>0: q_T=q_VM=S",
+                    "upper_endpoint": "sigma=diag(T,0,-T), T>0: q_T=2*T; q_VM=sqrt(3)*T",
+                    "hydrostatic_shift": "either_example_plus_any_h*I_has_the_same_function_values",
+                    "measured_data": false
+                  },
+                  "conditional_loading_consequence": {
+                    "path": "one_local_proportional_ray_sigma(lambda)=lambda*Sigma; lambda>=0; Sigma_nonhydrostatic",
+                    "calibration": "one_common_fixed_Y>0; physical_yield_interpretation_also_requires_the_separate_model_scope",
+                    "thresholds": "lambda_T=Y/q_T(Sigma); lambda_VM=Y/q_VM(Sigma)",
+                    "ratio": "1<=lambda_VM/lambda_T=q_T(Sigma)/q_VM(Sigma)<=2/sqrt(3)",
+                    "maximum_relative_excess": "2/sqrt(3)-1_approximately_15.47_percent_relative_to_the_Tresca_threshold",
+                    "hydrostatic_ray": "neither_function_reaches_positive_Y; no_finite_threshold_ratio",
+                    "exclusions": "no_automatic_extension_to_different_calibrations_residual_stress_paths_nonproportional_histories_or_evolving_plasticity",
+                    "interpretation": "model_threshold_comparison_not_material_error_safety_margin_or_bracket_on_actual_yield"
+                  },
+                  "proof_ids": [
+                    "Y1_stress_definitions_and_normalization",
+                    "Y2_sharp_comparison_and_endpoints",
+                    "Y3_conditional_proportional_loading"
+                  ]
+                }
+              },
+              "rule_id": {
+                "const": "tresca_von_mises_equivalent_stress_ratio_bound_v1"
+              },
+              "parameters": {
+                "minItems": 5,
+                "maxItems": 5,
+                "allOf": [
+                  {
+                    "contains": {
+                      "const": {
+                        "symbol": "sigma",
+                        "quantity": "cauchy_stress_tensor",
+                        "dimension": "pressure",
+                        "si_unit": "Pa",
+                        "meaning": "Finite real symmetric 3D Cauchy stress tensor at one material point; tension positive."
+                      }
+                    },
+                    "minContains": 1,
+                    "maxContains": 1
+                  },
+                  {
+                    "contains": {
+                      "const": {
+                        "symbol": "sigma1,sigma2,sigma3",
+                        "quantity": "principal_cauchy_stresses",
+                        "dimension": "pressure",
+                        "si_unit": "Pa",
+                        "meaning": "Eigenvalues of sigma; ordered sigma1>=sigma2>=sigma3 when an ordered representation is used."
+                      }
+                    },
+                    "minContains": 1,
+                    "maxContains": 1
+                  },
+                  {
+                    "contains": {
+                      "const": {
+                        "symbol": "q_VM",
+                        "quantity": "von_mises_equivalent_stress",
+                        "dimension": "pressure",
+                        "si_unit": "Pa",
+                        "meaning": "Dimensional nonnegative q_VM=sqrt(3*J2); not the source dimensionless sigma_eq."
+                      }
+                    },
+                    "minContains": 1,
+                    "maxContains": 1
+                  },
+                  {
+                    "contains": {
+                      "const": {
+                        "symbol": "q_T",
+                        "quantity": "tresca_equivalent_stress",
+                        "dimension": "pressure",
+                        "si_unit": "Pa",
+                        "meaning": "Dimensional nonnegative maximum absolute principal-stress difference; q_T=2*tau_max."
+                      }
+                    },
+                    "minContains": 1,
+                    "maxContains": 1
+                  },
+                  {
+                    "contains": {
+                      "const": {
+                        "symbol": "q_T/q_VM",
+                        "quantity": "tresca_von_mises_equivalent_stress_ratio",
+                        "dimension": "dimensionless",
+                        "si_unit": "1",
+                        "meaning": "Defined only for nonhydrostatic sigma; no Y or physical material fit is required."
+                      }
+                    },
+                    "minContains": 1,
+                    "maxContains": 1
+                  }
+                ]
+              },
+              "dependencies": {
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "criterion": false,
+              "index_range": false,
+              "directional_contract": false,
+              "hydrostatic_compressibility_contract": false,
+              "bulk_wave_contract": false,
+              "viscoelastic_contract": false
+            },
+            "required": [
+              "yield_criterion_contract",
+              "parameters"
+            ]
           }
         ],
         "allOf": [
@@ -7926,6 +8966,42 @@
                             "time",
                             "inverse_time"
                           ]
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "rule_id": {
+                  "not": {
+                    "enum": [
+                      "von_mises_initial_yield_relation_v1",
+                      "tresca_initial_yield_relation_v1",
+                      "tresca_von_mises_equivalent_stress_ratio_bound_v1"
+                    ]
+                  }
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "yield_criterion_contract": false,
+                "bound_kind": {
+                  "not": {
+                    "const": "criterion_function_comparison"
+                  }
+                },
+                "parameters": {
+                  "items": {
+                    "properties": {
+                      "dimension": {
+                        "not": {
+                          "const": "pressure_squared"
                         }
                       }
                     }

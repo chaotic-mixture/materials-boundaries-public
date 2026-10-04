@@ -189,8 +189,8 @@ class ViscoelasticCatalogTests(unittest.TestCase):
 
     def test_current_schema_and_exact_eight_executable_pairs(self):
         self.validator.check_schema(self.schema)
-        self.assertEqual(self.catalogs['claims']['schema_version'], '1.12.0')
-        self.assertEqual(self.schema['$id'], 'urn:materials-boundaries:schema:claims:1.12.0')
+        self.assertEqual(self.catalogs['claims']['schema_version'], '1.13.0')
+        self.assertEqual(self.schema['$id'], 'urn:materials-boundaries:schema:claims:1.13.0')
         self.assertEqual(load_json(ROOT/'schemas/comparison.schema.json')['$defs']['claims'], self.schema)
         validate_catalogs(self.catalogs)
         self.assertEqual(len(BASE_RULES)+len(DERIVED_RULES), 8)
@@ -209,7 +209,7 @@ class ViscoelasticCatalogTests(unittest.TestCase):
                     with self.subTest(id=row['id'], path=path, operation=operation):
                         mutated = copy.deepcopy(row)
                         apply_mutation(mutated, path, operation, value)
-                        subset = {'schema_version': '1.12.0', 'records': [mutated]}
+                        subset = {'schema_version': '1.13.0', 'records': [mutated]}
                         self.assertTrue(list(self.validator.iter_errors(subset)))
                         with self.assertRaises(ValueError): validate_viscoelastic_records([mutated])
 
@@ -248,7 +248,7 @@ class ViscoelasticCatalogTests(unittest.TestCase):
             ):
                 candidate=copy.deepcopy(original); change(candidate)
                 with self.subTest(id=original['id']):
-                    self.assertTrue(list(self.validator.iter_errors({'schema_version':'1.12.0','records':[candidate]})))
+                    self.assertTrue(list(self.validator.iter_errors({'schema_version':'1.13.0','records':[candidate]})))
                     with self.assertRaises(ValueError): validate_viscoelastic_records([candidate])
         for index in (0,1):
             for key in ('criterion','index_range','directional_contract','hydrostatic_compressibility_contract','bulk_wave_contract'):

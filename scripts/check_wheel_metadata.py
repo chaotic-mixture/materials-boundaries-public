@@ -191,6 +191,44 @@ require(set(viscoelastic_ids).isdisjoint(e['claim_id'] for e in evaluation['eval
         'installed evaluator dispatched a viscoelastic relation')
 require(len(evaluation['evaluations']) == 8 and len(outputs['comparison']['series']) == 8,
         'installed viscoelastic catalog changed the eight-rule boundary')
+# Yield criteria are closed metadata, never additional executable material rules.
+from materials_boundaries._yield_contract import validate_yield_records
+yield_ids = ('von_mises_initial_yield_relation', 'tresca_initial_yield_relation',
+             'tresca_von_mises_equivalent_stress_ratio_bound')
+for identifier in yield_ids:
+    selected = query_catalog('claims', record_id=identifier)
+    require(len(selected['records']) == 1, 'missing installed yield record')
+    require(selected['records'][0]['evaluation_support'] == 'catalog_only',
+            'installed yield record became executable')
+    for language in languages:
+        for as_json in (False, True):
+            stdout = io.StringIO()
+            with redirect_stdout(stdout):
+                code = main(['catalog', 'claims', '--id', identifier, '--lang', language,
+                             '--json' if as_json else '--text'])
+            text = stdout.getvalue()
+            require(code == 0 and '[missing:' not in text, 'installed yield CLI failed')
+            if as_json:
+                require(json.loads(text) == selected, 'yield JSON changed by language')
+            else:
+                for key in ('notice', 'tensor', 'normalization', 'math_scope',
+                            'physical_scope', 'attribution', 'limits'):
+                    require(translate('catalog_yield_' + key, language) in text,
+                            'missing installed yield disclosure: ' + key)
+    weakened = deepcopy(selected)
+    weakened['records'][0]['yield_criterion_contract']['hydrostatic_behavior']['ratio_at_zero'] = 1
+    for action in (lambda: validate_yield_records(weakened['records']),
+                   lambda: render_catalog(weakened, 'claims')):
+        try:
+            action()
+        except ValueError:
+            pass
+        else:
+            raise RuntimeError('installed yield guard assigned a hydrostatic ratio')
+require(set(yield_ids).isdisjoint(e['claim_id'] for e in evaluation['evaluations']),
+        'installed evaluator dispatched a yield criterion')
+require(len(evaluation['evaluations']) == 8 and len(outputs['comparison']['series']) == 8,
+        'installed yield catalog changed the eight-rule boundary')
 # Falin hBN source components and unknowns must also survive dependency-free installation.
 from materials_boundaries._hbn_observation_contract import HBN_SOURCE
 hbn = query_catalog("observations", source_id=HBN_SOURCE)
@@ -285,7 +323,8 @@ old_records = [r for r in all_records if r['observation_type'] == 'experiment_de
 new_records = [r for r in all_records if r.get('method_family') == PA12_FAMILY]
 require(len(all_records) == 16 and len(old_records) == len(new_records) == 6,
         'unexpected production observation counts')
-require(len(read_catalog('sources')['records']) == 55, 'unexpected production source count')
+require(len(read_catalog('sources')['records']) == 57, 'unexpected production source count')
+require(len(read_catalog('claims')['records']) == 41, 'unexpected production claim count')
 expected_cells = (('23', '49.07', '0.88', 49070000, 880000),
                   ('40', '40.31', '0.72', 40310000, 720000),
                   ('60', '32.70', '1.18', 32700000, 1180000),

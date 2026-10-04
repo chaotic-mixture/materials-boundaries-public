@@ -472,3 +472,50 @@ values through this path. Contributions outside the reviewed class require new
 scientific/schema review, not relaxation of an existing guard. During disposable
 mixed-append rehearsals, refresh only that copy's marked current README counts;
 all previous tests and scientific fixtures remain unchanged.
+
+## Initial-yield function contracts (v0.27.0)
+
+Read [YIELD_CRITERIA.md](docs/YIELD_CRITERIA.md) before modifying the three
+catalog-only yield families. Keep the exact finite real symmetric 3D Cauchy
+stress contract, tension-positive sign, ordinary tensor shear contraction,
+pressure/Pa q and f, pressure-squared/Pa^2 J2, and dimensionless ratios. Source
+normalization is `sigma_eq=q/Y`, `Lambda=f/Y`; it is not dimensional q/f.
+Tresca retains `q_T=2*tau_max` and the exact unsmoothed criterion.
+
+Separate mathematical premises from physical model applicability. The sharp
+nonhydrostatic ratio `1 <= q_T/q_VM <= 2/sqrt(3)` needs matching stress/function
+definitions, not a material fit, isotropy or measured Y. Hydrostatic stress
+makes both functions zero and the ratio undefined, with no unique limit; only
+the division-free comparison includes that state. Signed `p=tr(sigma)/3` is
+opposite to compression-positive pressure. Preserve the original project
+proof, endpoint equalities and source-definition attribution.
+
+Physical initial-yield interpretations require all declared scope/calibration
+premises. A proof stress retains its offset. Same measured shear calibration
+is not same uniaxial Y; no common-Y threshold ordering can be borrowed from it.
+The optional loading consequence is restricted to one fixed nonhydrostatic
+local proportional ray and common fixed Y > 0, with 15.47% relative to the
+Tresca threshold. It is not a general loading-history or material-strength
+claim. Do not introduce flow/associated flow, hardening, backstress evolution,
+loading/unloading integration, post-yield prediction, damage, ranking,
+allowables, certification or new runtime applicability states.
+
+Fresh IDs and precisely located evidence may reuse only the complete closed
+scientific contract, including family-resolved dependencies and all four
+authored names. A different definition, calibration, stress measure, physical
+model or hydrostatic-ratio convention needs new scientific/schema review,
+not enum growth or relaxed guards. Test factor-two and square-root errors,
+unit/normalization mutations, false hydrostatic endpoints, swapped limits,
+source/proof conflation, dependency swaps and scientific-family leakage.
+Original synthetic checks should cover hydrostatic shifts, both endpoint
+states, intermediate gaps, sign/permutation and orthogonal-rotation invariance.
+Software checks never establish specimen applicability or scientific peer review.
+
+Preserve exact source versions, links, hashes and rights boundaries. Retain
+MIT-note defects Eq. (12.22) and Eq. (12.46) as observations about the inspected
+copy, not official errata; do not use them or the rounded p. 12-15 paragraph as
+proof. Do not import the introductory numerical proof-stress offset. Author
+hosting and CC BY-NC-SA terms do not relicense source assets under MIT. Keep
+PDFs, screenshots, extracted prose, figures, experimental plot data and all
+source assets out of repository/package/release. Add no NIST data, mirrors or
+new material values through this catalog-only contribution path.
