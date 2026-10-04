@@ -1,0 +1,2280 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:materials-boundaries:schema:composite-report:1.0.0",
+  "title": "Materials Boundaries single-case composite report v1",
+  "description": "A language-independent conditional calculation. JSON Schema checks structure, not replay or scientific truth. validate_composite_report must rebuild the complete canonical core using the installed engine and catalog; digests alone never establish authenticity.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "kind": {
+      "const": "composite_report"
+    },
+    "report_version": {
+      "const": "1.0.0"
+    },
+    "engine_version": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "instance_schema_version": {
+      "const": "1.0.0"
+    },
+    "evaluation_schema_version": {
+      "const": "1.1.0"
+    },
+    "instance_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "output_unit": {
+      "enum": [
+        "Pa",
+        "kPa",
+        "MPa",
+        "GPa"
+      ]
+    },
+    "input": {
+      "$ref": "#/$defs/instance"
+    },
+    "evaluation": {
+      "$ref": "#/$defs/evaluation"
+    },
+    "catalogs": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "claims": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "schema_version": {
+              "const": "1.13.0"
+            },
+            "records": {
+              "type": "array",
+              "minItems": 8,
+              "maxItems": 8,
+              "items": {
+                "$ref": "#/$defs/claim"
+              }
+            }
+          },
+          "required": [
+            "schema_version",
+            "records"
+          ]
+        },
+        "sources": {
+          "$ref": "#/$defs/sources"
+        },
+        "unresolved_source_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          }
+        }
+      },
+      "required": [
+        "claims",
+        "sources",
+        "unresolved_source_ids"
+      ]
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "input_structure": {
+          "const": "existing_instance_contract"
+        },
+        "assumption_basis": {
+          "const": "supplied_assertions_not_sample_verification"
+        },
+        "base_rule_scope": {
+          "const": "all_six_base_rules_require_known_positive_active_K_and_G"
+        },
+        "hs_ordering": {
+          "const": "paired_non_strict_K_and_G_ordering"
+        },
+        "derived_dependencies": {
+          "const": "same_instance_HS_bulk_and_shear_only_no_fallback"
+        },
+        "joint_attainability": {
+          "const": "not_asserted"
+        },
+        "interval_semantics": {
+          "const": "conditional_theoretical_bounds_or_derived_outer_envelopes_not_confidence_intervals"
+        },
+        "numerical_policy": {
+          "const": "decimal80_rounded_binary_float_not_certified_outward_rounding"
+        },
+        "unknown_values": {
+          "const": "preserved_not_inferred_or_filled"
+        },
+        "input_citations": {
+          "const": "user_supplied_catalog_IDs_not_verified_input_evidence"
+        },
+        "scientific_review": {
+          "const": "recorded_claim_level_limits_preserved"
+        },
+        "independent_scientific_review": {
+          "const": false
+        },
+        "replay_scope": {
+          "const": "software_replay_only_not_physical_sample_verification_or_theorem_proof"
+        },
+        "hash_scope": {
+          "const": "content_identity_not_authorship_source_truth_or_permissions"
+        },
+        "rights": {
+          "const": "bibliographic_metadata_only_no_third_party_content_relicensing"
+        }
+      },
+      "required": [
+        "input_structure",
+        "assumption_basis",
+        "base_rule_scope",
+        "hs_ordering",
+        "derived_dependencies",
+        "joint_attainability",
+        "interval_semantics",
+        "numerical_policy",
+        "unknown_values",
+        "input_citations",
+        "scientific_review",
+        "independent_scientific_review",
+        "replay_scope",
+        "hash_scope",
+        "rights"
+      ]
+    },
+    "digests": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "algorithm": {
+          "const": "sha256"
+        },
+        "serialization": {
+          "const": "sorted_keys_utf8_compact_json_finite_numbers"
+        },
+        "input": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "evaluation": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "claims": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "sources": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "algorithm",
+        "serialization",
+        "input",
+        "evaluation",
+        "claims",
+        "sources"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "report_version",
+    "engine_version",
+    "instance_schema_version",
+    "evaluation_schema_version",
+    "instance_id",
+    "output_unit",
+    "input",
+    "evaluation",
+    "catalogs",
+    "policy",
+    "digests"
+  ],
+  "$defs": {
+    "instance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0.0"
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "conditions": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "dimension": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              ]
+            },
+            "constituent_symmetry": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              ]
+            },
+            "effective_symmetry": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              ]
+            },
+            "kinematics": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              ]
+            },
+            "constitutive_law": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              ]
+            },
+            "loading": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              ]
+            },
+            "interface": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              ]
+            }
+          },
+          "required": []
+        },
+        "phases": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "volume_fraction": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "minimum": 0,
+                "maximum": 1
+              },
+              "bulk_modulus": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "value": {
+                        "type": [
+                          "number",
+                          "null"
+                        ]
+                      },
+                      "unit": {
+                        "enum": [
+                          "Pa",
+                          "kPa",
+                          "MPa",
+                          "GPa"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "value",
+                      "unit"
+                    ]
+                  }
+                ]
+              },
+              "shear_modulus": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "value": {
+                        "type": [
+                          "number",
+                          "null"
+                        ]
+                      },
+                      "unit": {
+                        "enum": [
+                          "Pa",
+                          "kPa",
+                          "MPa",
+                          "GPa"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "value",
+                      "unit"
+                    ]
+                  }
+                ]
+              }
+            },
+            "required": [
+              "id"
+            ]
+          }
+        },
+        "provenance": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "enum": [
+                "synthetic",
+                "literature",
+                "computed",
+                "measured",
+                "unspecified",
+                "literature_model"
+              ]
+            },
+            "note": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "source_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              }
+            },
+            "model_evidence": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "source_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "locator": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "parameter_basis": {
+                  "const": "literature_model_inputs"
+                },
+                "raw_parameters": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "phase_id": {
+                        "type": "string",
+                        "minLength": 1,
+                        "pattern": "\\S"
+                      },
+                      "youngs_modulus": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "value": {
+                            "type": "number",
+                            "exclusiveMinimum": 0
+                          },
+                          "unit": {
+                            "enum": [
+                              "Pa",
+                              "kPa",
+                              "MPa",
+                              "GPa"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "value",
+                          "unit"
+                        ]
+                      },
+                      "poissons_ratio": {
+                        "type": "number",
+                        "exclusiveMinimum": -1,
+                        "exclusiveMaximum": 0.5
+                      }
+                    },
+                    "required": [
+                      "phase_id",
+                      "youngs_modulus",
+                      "poissons_ratio"
+                    ]
+                  }
+                },
+                "conversion_rule_id": {
+                  "const": "isotropic_young_poisson_to_bulk_shear_v1"
+                },
+                "condition_basis": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "dimension": {
+                      "enum": [
+                        "source_model",
+                        "calculator_assumption",
+                        "unknown"
+                      ]
+                    },
+                    "constituent_symmetry": {
+                      "enum": [
+                        "source_model",
+                        "calculator_assumption",
+                        "unknown"
+                      ]
+                    },
+                    "effective_symmetry": {
+                      "enum": [
+                        "source_model",
+                        "calculator_assumption",
+                        "unknown"
+                      ]
+                    },
+                    "kinematics": {
+                      "enum": [
+                        "source_model",
+                        "calculator_assumption",
+                        "unknown"
+                      ]
+                    },
+                    "constitutive_law": {
+                      "enum": [
+                        "source_model",
+                        "calculator_assumption",
+                        "unknown"
+                      ]
+                    },
+                    "loading": {
+                      "enum": [
+                        "source_model",
+                        "calculator_assumption",
+                        "unknown"
+                      ]
+                    },
+                    "interface": {
+                      "enum": [
+                        "source_model",
+                        "calculator_assumption",
+                        "unknown"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "dimension",
+                    "constituent_symmetry",
+                    "effective_symmetry",
+                    "kinematics",
+                    "constitutive_law",
+                    "loading",
+                    "interface"
+                  ]
+                },
+                "fraction_basis": {
+                  "const": "calculator_choice"
+                },
+                "temperature_k": {
+                  "type": [
+                    "number",
+                    "null"
+                  ],
+                  "exclusiveMinimum": 0
+                },
+                "material_grade": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "cure_state": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "measurement_uncertainty": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "scope_note": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              },
+              "required": [
+                "source_id",
+                "locator",
+                "parameter_basis",
+                "raw_parameters",
+                "conversion_rule_id",
+                "condition_basis",
+                "fraction_basis",
+                "temperature_k",
+                "material_grade",
+                "cure_state",
+                "measurement_uncertainty",
+                "scope_note"
+              ]
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "kind": {
+                    "const": "literature_model"
+                  }
+                }
+              },
+              "then": {
+                "required": [
+                  "source_ids",
+                  "model_evidence"
+                ],
+                "properties": {
+                  "source_ids": {
+                    "minItems": 1
+                  }
+                }
+              },
+              "else": {
+                "not": {
+                  "required": [
+                    "model_evidence"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "id",
+        "conditions",
+        "phases",
+        "provenance"
+      ],
+      "$comment": "Additional runtime constraints: finite float-representable numbers (reject lexical underflow); unique phase IDs; known fraction sum <=1+1e-12; complete fraction sum within 1e-12 of 1. Missing or null observations represent unknown. Literature-model runtime checks require source/phase reference integrity, explicit condition bases consistent with unknown values, and K/G agreement with the fixed E/nu conversion (relative tolerance 1e-12)."
+    },
+    "evaluation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.1.0"
+        },
+        "engine_version": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "instance_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "input_provenance": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "enum": [
+                "synthetic",
+                "literature",
+                "computed",
+                "measured",
+                "unspecified",
+                "literature_model"
+              ]
+            },
+            "note": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "source_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              }
+            },
+            "model_evidence": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "source_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "locator": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "parameter_basis": {
+                  "const": "literature_model_inputs"
+                },
+                "raw_parameters": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "phase_id": {
+                        "type": "string",
+                        "minLength": 1,
+                        "pattern": "\\S"
+                      },
+                      "youngs_modulus": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "value": {
+                            "type": "number",
+                            "exclusiveMinimum": 0
+                          },
+                          "unit": {
+                            "enum": [
+                              "Pa",
+                              "kPa",
+                              "MPa",
+                              "GPa"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "value",
+                          "unit"
+                        ]
+                      },
+                      "poissons_ratio": {
+                        "type": "number",
+                        "exclusiveMinimum": -1,
+                        "exclusiveMaximum": 0.5
+                      }
+                    },
+                    "required": [
+                      "phase_id",
+                      "youngs_modulus",
+                      "poissons_ratio"
+                    ]
+                  }
+                },
+                "conversion_rule_id": {
+                  "const": "isotropic_young_poisson_to_bulk_shear_v1"
+                },
+                "condition_basis": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "dimension": {
+                      "enum": [
+                        "source_model",
+                        "calculator_assumption",
+                        "unknown"
+                      ]
+                    },
+                    "constituent_symmetry": {
+                      "enum": [
+                        "source_model",
+                        "calculator_assumption",
+                        "unknown"
+                      ]
+                    },
+                    "effective_symmetry": {
+                      "enum": [
+                        "source_model",
+                        "calculator_assumption",
+                        "unknown"
+                      ]
+                    },
+                    "kinematics": {
+                      "enum": [
+                        "source_model",
+                        "calculator_assumption",
+                        "unknown"
+                      ]
+                    },
+                    "constitutive_law": {
+                      "enum": [
+                        "source_model",
+                        "calculator_assumption",
+                        "unknown"
+                      ]
+                    },
+                    "loading": {
+                      "enum": [
+                        "source_model",
+                        "calculator_assumption",
+                        "unknown"
+                      ]
+                    },
+                    "interface": {
+                      "enum": [
+                        "source_model",
+                        "calculator_assumption",
+                        "unknown"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "dimension",
+                    "constituent_symmetry",
+                    "effective_symmetry",
+                    "kinematics",
+                    "constitutive_law",
+                    "loading",
+                    "interface"
+                  ]
+                },
+                "fraction_basis": {
+                  "const": "calculator_choice"
+                },
+                "temperature_k": {
+                  "type": [
+                    "number",
+                    "null"
+                  ],
+                  "exclusiveMinimum": 0
+                },
+                "material_grade": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "cure_state": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "measurement_uncertainty": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "scope_note": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              },
+              "required": [
+                "source_id",
+                "locator",
+                "parameter_basis",
+                "raw_parameters",
+                "conversion_rule_id",
+                "condition_basis",
+                "fraction_basis",
+                "temperature_k",
+                "material_grade",
+                "cure_state",
+                "measurement_uncertainty",
+                "scope_note"
+              ]
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "kind": {
+                    "const": "literature_model"
+                  }
+                }
+              },
+              "then": {
+                "required": [
+                  "source_ids",
+                  "model_evidence"
+                ],
+                "properties": {
+                  "source_ids": {
+                    "minItems": 1
+                  }
+                }
+              },
+              "else": {
+                "not": {
+                  "required": [
+                    "model_evidence"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "output_unit": {
+          "enum": [
+            "Pa",
+            "kPa",
+            "MPa",
+            "GPa"
+          ]
+        },
+        "numerical_policy": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "fraction_normalization": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "performed": {
+              "type": "boolean"
+            },
+            "original_sum": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "absolute_tolerance": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "normalized_fractions": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "\\S"
+                  }
+                }
+              ]
+            }
+          },
+          "required": [
+            "performed",
+            "original_sum",
+            "absolute_tolerance",
+            "normalized_fractions"
+          ]
+        },
+        "assumption_policy": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "scientific_verification": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "evaluations": {
+          "type": "array",
+          "minItems": 8,
+          "maxItems": 8,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "claim_id": {
+                "enum": [
+                  "hs_bulk_3d_two_phase",
+                  "reuss_bulk",
+                  "voigt_bulk",
+                  "hs_shear_3d_two_phase",
+                  "reuss_shear",
+                  "voigt_shear",
+                  "youngs_modulus_outer",
+                  "poissons_ratio_outer"
+                ]
+              },
+              "rule_id": {
+                "enum": [
+                  "hs_bulk_3d_two_phase_v1",
+                  "reuss_bulk_v1",
+                  "voigt_bulk_v1",
+                  "hs_shear_3d_two_phase_v1",
+                  "reuss_shear_v1",
+                  "voigt_shear_v1",
+                  "isotropic_youngs_modulus_outer_v1",
+                  "isotropic_poissons_ratio_outer_v1"
+                ]
+              },
+              "applicability": {
+                "enum": [
+                  "satisfied",
+                  "violated",
+                  "unknown"
+                ]
+              },
+              "checks": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "condition_id": {
+                      "type": "string",
+                      "minLength": 1,
+                      "pattern": "\\S"
+                    },
+                    "state": {
+                      "enum": [
+                        "satisfied",
+                        "violated",
+                        "unknown"
+                      ]
+                    },
+                    "observed": {},
+                    "expected": {}
+                  },
+                  "required": [
+                    "condition_id",
+                    "state",
+                    "observed",
+                    "expected"
+                  ]
+                },
+                "minItems": 1
+              },
+              "computation": {
+                "enum": [
+                  "not_computed",
+                  "computed",
+                  "numerical_range_error"
+                ]
+              },
+              "result": {
+                "type": [
+                  "object",
+                  "null"
+                ]
+              },
+              "error": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "quantity": {
+                "enum": [
+                  "effective_bulk_modulus",
+                  "effective_shear_modulus",
+                  "effective_youngs_modulus",
+                  "effective_poissons_ratio"
+                ]
+              },
+              "bound_kind": {
+                "enum": [
+                  "scalar_modulus_bound",
+                  "derived_outer_envelope"
+                ]
+              },
+              "dependencies": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "instance_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "\\S"
+                  },
+                  "claim_ids": {
+                    "const": [
+                      "hs_bulk_3d_two_phase",
+                      "hs_shear_3d_two_phase"
+                    ]
+                  },
+                  "compatibility": {
+                    "const": "same_instance_phase_pair_fractions_units_and_conditions"
+                  },
+                  "joint_attainability": {
+                    "const": "not_asserted"
+                  }
+                },
+                "required": [
+                  "instance_id",
+                  "claim_ids",
+                  "compatibility",
+                  "joint_attainability"
+                ]
+              }
+            },
+            "required": [
+              "claim_id",
+              "rule_id",
+              "applicability",
+              "checks",
+              "computation",
+              "result",
+              "error",
+              "quantity",
+              "bound_kind"
+            ],
+            "oneOf": [
+              {
+                "properties": {
+                  "applicability": {
+                    "enum": [
+                      "unknown",
+                      "violated"
+                    ]
+                  },
+                  "computation": {
+                    "const": "not_computed"
+                  },
+                  "result": {
+                    "type": "null"
+                  },
+                  "error": {
+                    "type": "null"
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "applicability": {
+                    "const": "satisfied"
+                  },
+                  "computation": {
+                    "const": "computed"
+                  },
+                  "result": {
+                    "type": "object"
+                  },
+                  "error": {
+                    "type": "null"
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "applicability": {
+                    "const": "satisfied"
+                  },
+                  "computation": {
+                    "const": "numerical_range_error"
+                  },
+                  "result": {
+                    "type": "null"
+                  },
+                  "error": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            ],
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "checks": {
+                      "contains": {
+                        "properties": {
+                          "state": {
+                            "const": "violated"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "applicability": {
+                      "const": "violated"
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "checks": {
+                      "not": {
+                        "contains": {
+                          "properties": {
+                            "state": {
+                              "const": "violated"
+                            }
+                          }
+                        }
+                      },
+                      "contains": {
+                        "properties": {
+                          "state": {
+                            "const": "unknown"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "applicability": {
+                      "const": "unknown"
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "checks": {
+                      "items": {
+                        "properties": {
+                          "state": {
+                            "const": "satisfied"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "applicability": {
+                      "const": "satisfied"
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "claim_id": {
+                      "const": "hs_bulk_3d_two_phase"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "rule_id": {
+                      "const": "hs_bulk_3d_two_phase_v1"
+                    },
+                    "quantity": {
+                      "const": "effective_bulk_modulus"
+                    },
+                    "bound_kind": {
+                      "const": "scalar_modulus_bound"
+                    },
+                    "result": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "unit": {
+                              "enum": [
+                                "Pa",
+                                "kPa",
+                                "MPa",
+                                "GPa"
+                              ]
+                            },
+                            "lower": {
+                              "type": "number",
+                              "exclusiveMinimum": 0
+                            },
+                            "upper": {
+                              "type": "number",
+                              "exclusiveMinimum": 0
+                            }
+                          },
+                          "required": [
+                            "lower",
+                            "upper",
+                            "unit"
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  "not": {
+                    "required": [
+                      "dependencies"
+                    ]
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "claim_id": {
+                      "const": "reuss_bulk"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "rule_id": {
+                      "const": "reuss_bulk_v1"
+                    },
+                    "quantity": {
+                      "const": "effective_bulk_modulus"
+                    },
+                    "bound_kind": {
+                      "const": "scalar_modulus_bound"
+                    },
+                    "result": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "unit": {
+                              "enum": [
+                                "Pa",
+                                "kPa",
+                                "MPa",
+                                "GPa"
+                              ]
+                            },
+                            "lower": {
+                              "type": "number",
+                              "exclusiveMinimum": 0
+                            }
+                          },
+                          "required": [
+                            "lower",
+                            "unit"
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  "not": {
+                    "required": [
+                      "dependencies"
+                    ]
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "claim_id": {
+                      "const": "voigt_bulk"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "rule_id": {
+                      "const": "voigt_bulk_v1"
+                    },
+                    "quantity": {
+                      "const": "effective_bulk_modulus"
+                    },
+                    "bound_kind": {
+                      "const": "scalar_modulus_bound"
+                    },
+                    "result": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "unit": {
+                              "enum": [
+                                "Pa",
+                                "kPa",
+                                "MPa",
+                                "GPa"
+                              ]
+                            },
+                            "upper": {
+                              "type": "number",
+                              "exclusiveMinimum": 0
+                            }
+                          },
+                          "required": [
+                            "upper",
+                            "unit"
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  "not": {
+                    "required": [
+                      "dependencies"
+                    ]
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "claim_id": {
+                      "const": "hs_shear_3d_two_phase"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "rule_id": {
+                      "const": "hs_shear_3d_two_phase_v1"
+                    },
+                    "quantity": {
+                      "const": "effective_shear_modulus"
+                    },
+                    "bound_kind": {
+                      "const": "scalar_modulus_bound"
+                    },
+                    "result": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "unit": {
+                              "enum": [
+                                "Pa",
+                                "kPa",
+                                "MPa",
+                                "GPa"
+                              ]
+                            },
+                            "lower": {
+                              "type": "number",
+                              "exclusiveMinimum": 0
+                            },
+                            "upper": {
+                              "type": "number",
+                              "exclusiveMinimum": 0
+                            }
+                          },
+                          "required": [
+                            "lower",
+                            "upper",
+                            "unit"
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  "not": {
+                    "required": [
+                      "dependencies"
+                    ]
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "claim_id": {
+                      "const": "reuss_shear"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "rule_id": {
+                      "const": "reuss_shear_v1"
+                    },
+                    "quantity": {
+                      "const": "effective_shear_modulus"
+                    },
+                    "bound_kind": {
+                      "const": "scalar_modulus_bound"
+                    },
+                    "result": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "unit": {
+                              "enum": [
+                                "Pa",
+                                "kPa",
+                                "MPa",
+                                "GPa"
+                              ]
+                            },
+                            "lower": {
+                              "type": "number",
+                              "exclusiveMinimum": 0
+                            }
+                          },
+                          "required": [
+                            "lower",
+                            "unit"
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  "not": {
+                    "required": [
+                      "dependencies"
+                    ]
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "claim_id": {
+                      "const": "voigt_shear"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "rule_id": {
+                      "const": "voigt_shear_v1"
+                    },
+                    "quantity": {
+                      "const": "effective_shear_modulus"
+                    },
+                    "bound_kind": {
+                      "const": "scalar_modulus_bound"
+                    },
+                    "result": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "unit": {
+                              "enum": [
+                                "Pa",
+                                "kPa",
+                                "MPa",
+                                "GPa"
+                              ]
+                            },
+                            "upper": {
+                              "type": "number",
+                              "exclusiveMinimum": 0
+                            }
+                          },
+                          "required": [
+                            "upper",
+                            "unit"
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  "not": {
+                    "required": [
+                      "dependencies"
+                    ]
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "claim_id": {
+                      "const": "youngs_modulus_outer"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "rule_id": {
+                      "const": "isotropic_youngs_modulus_outer_v1"
+                    },
+                    "quantity": {
+                      "const": "effective_youngs_modulus"
+                    },
+                    "bound_kind": {
+                      "const": "derived_outer_envelope"
+                    },
+                    "result": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "unit": {
+                              "enum": [
+                                "Pa",
+                                "kPa",
+                                "MPa",
+                                "GPa"
+                              ]
+                            },
+                            "lower": {
+                              "type": "number",
+                              "exclusiveMinimum": 0
+                            },
+                            "upper": {
+                              "type": "number",
+                              "exclusiveMinimum": 0
+                            }
+                          },
+                          "required": [
+                            "lower",
+                            "upper",
+                            "unit"
+                          ]
+                        }
+                      ]
+                    },
+                    "checks": {
+                      "contains": {
+                        "properties": {
+                          "condition_id": {
+                            "const": "compatible_bulk_shear_bounds"
+                          }
+                        },
+                        "required": [
+                          "condition_id"
+                        ]
+                      },
+                      "minContains": 1,
+                      "maxContains": 1
+                    }
+                  },
+                  "required": [
+                    "dependencies"
+                  ]
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "claim_id": {
+                      "const": "poissons_ratio_outer"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "rule_id": {
+                      "const": "isotropic_poissons_ratio_outer_v1"
+                    },
+                    "quantity": {
+                      "const": "effective_poissons_ratio"
+                    },
+                    "bound_kind": {
+                      "const": "derived_outer_envelope"
+                    },
+                    "result": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "unit": {
+                              "const": "1"
+                            },
+                            "lower": {
+                              "type": "number",
+                              "exclusiveMinimum": -1,
+                              "exclusiveMaximum": 0.5
+                            },
+                            "upper": {
+                              "type": "number",
+                              "exclusiveMinimum": -1,
+                              "exclusiveMaximum": 0.5
+                            }
+                          },
+                          "required": [
+                            "lower",
+                            "upper",
+                            "unit"
+                          ]
+                        }
+                      ]
+                    },
+                    "checks": {
+                      "contains": {
+                        "properties": {
+                          "condition_id": {
+                            "const": "compatible_bulk_shear_bounds"
+                          }
+                        },
+                        "required": [
+                          "condition_id"
+                        ]
+                      },
+                      "minContains": 1,
+                      "maxContains": 1
+                    }
+                  },
+                  "required": [
+                    "dependencies"
+                  ]
+                }
+              }
+            ]
+          },
+          "allOf": [
+            {
+              "contains": {
+                "properties": {
+                  "claim_id": {
+                    "const": "hs_bulk_3d_two_phase"
+                  }
+                }
+              },
+              "minContains": 1,
+              "maxContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "claim_id": {
+                    "const": "reuss_bulk"
+                  }
+                }
+              },
+              "minContains": 1,
+              "maxContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "claim_id": {
+                    "const": "voigt_bulk"
+                  }
+                }
+              },
+              "minContains": 1,
+              "maxContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "claim_id": {
+                    "const": "hs_shear_3d_two_phase"
+                  }
+                }
+              },
+              "minContains": 1,
+              "maxContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "claim_id": {
+                    "const": "reuss_shear"
+                  }
+                }
+              },
+              "minContains": 1,
+              "maxContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "claim_id": {
+                    "const": "voigt_shear"
+                  }
+                }
+              },
+              "minContains": 1,
+              "maxContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "claim_id": {
+                    "const": "youngs_modulus_outer"
+                  }
+                }
+              },
+              "minContains": 1,
+              "maxContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "claim_id": {
+                    "const": "poissons_ratio_outer"
+                  }
+                }
+              },
+              "minContains": 1,
+              "maxContains": 1
+            }
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "engine_version",
+        "instance_id",
+        "input_provenance",
+        "output_unit",
+        "numerical_policy",
+        "fraction_normalization",
+        "assumption_policy",
+        "scientific_verification",
+        "evaluations"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "evaluations": {
+                "contains": {
+                  "properties": {
+                    "bound_kind": {
+                      "const": "derived_outer_envelope"
+                    },
+                    "computation": {
+                      "const": "computed"
+                    }
+                  },
+                  "required": [
+                    "bound_kind",
+                    "computation"
+                  ]
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "evaluations": {
+                "allOf": [
+                  {
+                    "contains": {
+                      "properties": {
+                        "claim_id": {
+                          "const": "hs_bulk_3d_two_phase"
+                        },
+                        "applicability": {
+                          "const": "satisfied"
+                        },
+                        "computation": {
+                          "const": "computed"
+                        }
+                      },
+                      "required": [
+                        "claim_id",
+                        "applicability",
+                        "computation"
+                      ]
+                    }
+                  },
+                  {
+                    "contains": {
+                      "properties": {
+                        "claim_id": {
+                          "const": "hs_shear_3d_two_phase"
+                        },
+                        "applicability": {
+                          "const": "satisfied"
+                        },
+                        "computation": {
+                          "const": "computed"
+                        }
+                      },
+                      "required": [
+                        "claim_id",
+                        "applicability",
+                        "computation"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "enum": [
+            "hs_bulk_3d_two_phase",
+            "reuss_bulk",
+            "voigt_bulk",
+            "hs_shear_3d_two_phase",
+            "reuss_shear",
+            "voigt_shear",
+            "youngs_modulus_outer",
+            "poissons_ratio_outer"
+          ]
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "quantity": {
+          "enum": [
+            "effective_bulk_modulus",
+            "effective_shear_modulus",
+            "effective_youngs_modulus",
+            "effective_poissons_ratio",
+            "critical_remote_tensile_stress",
+            "ideal_resolved_shear_stress",
+            "ideal_normal_cohesive_stress",
+            "mode_i_stress_intensity_factor",
+            "mode_i_energy_release_rate",
+            "finite_width_geometry_factor",
+            "homogeneous_elastic_stability",
+            "fatigue_crack_growth_rate",
+            "zener_elastic_anisotropy_index",
+            "universal_elastic_anisotropy_index",
+            "directional_poissons_ratio",
+            "directional_linear_compressibility",
+            "normalized_directional_linear_compressibility",
+            "isotropic_bulk_phase_speed_ratio",
+            "bulk_phase_speed_squared",
+            "normalized_scalar_creep_relaxation_convolution",
+            "scalar_creep_relaxation_same_time_product",
+            "von_mises_equivalent_stress",
+            "tresca_equivalent_stress",
+            "tresca_von_mises_equivalent_stress_ratio"
+          ]
+        },
+        "direction": {
+          "enum": [
+            "interval",
+            "lower",
+            "upper",
+            "prediction",
+            "relation",
+            "constraint"
+          ]
+        },
+        "rule_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "formula_display": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "required_assumptions": {
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "string",
+              "number",
+              "boolean"
+            ]
+          }
+        },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "source_id": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "locator": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "verification_status": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "verified_as": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              }
+            },
+            "required": [
+              "source_id",
+              "locator",
+              "verification_status",
+              "verified_as"
+            ]
+          }
+        },
+        "verification": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "independent_scientific_review": {
+              "type": "boolean"
+            },
+            "gaps": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              }
+            }
+          },
+          "required": [
+            "status",
+            "independent_scientific_review",
+            "gaps"
+          ]
+        },
+        "limits": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          }
+        },
+        "bound_kind": {
+          "enum": [
+            "scalar_modulus_bound",
+            "derived_outer_envelope"
+          ]
+        },
+        "dependencies": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          }
+        },
+        "claim_type": {
+          "enum": [
+            "theoretical_bound",
+            "derived_outer_envelope"
+          ]
+        },
+        "quantity_dimension": {
+          "enum": [
+            "pressure",
+            "dimensionless"
+          ]
+        },
+        "si_unit": {
+          "enum": [
+            "Pa",
+            "1"
+          ]
+        },
+        "evaluation_support": {
+          "const": "composite_evaluate"
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "name",
+        "quantity",
+        "direction",
+        "rule_id",
+        "formula_display",
+        "required_assumptions",
+        "evidence",
+        "verification",
+        "limits",
+        "bound_kind",
+        "dependencies",
+        "claim_type",
+        "quantity_dimension",
+        "si_unit",
+        "evaluation_support"
+      ]
+    },
+    "sources": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0.0"
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "title": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "authors": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              },
+              "year": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "doi": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "urls": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "format": "uri"
+                }
+              },
+              "read_status": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "license": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "status": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "\\S"
+                  },
+                  "identifier": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "required": [
+                  "status",
+                  "identifier"
+                ]
+              },
+              "role": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "claim_notes": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              },
+              "provenance": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "curation_date": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "method": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "\\S"
+                  }
+                },
+                "required": [
+                  "curation_date",
+                  "method"
+                ]
+              },
+              "bundled_content": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              }
+            },
+            "required": [
+              "id",
+              "title",
+              "authors",
+              "year",
+              "doi",
+              "urls",
+              "read_status",
+              "license",
+              "role",
+              "claim_notes",
+              "provenance",
+              "bundled_content"
+            ]
+          }
+        }
+      },
+      "required": [
+        "schema_version",
+        "records"
+      ]
+    }
+  }
+}

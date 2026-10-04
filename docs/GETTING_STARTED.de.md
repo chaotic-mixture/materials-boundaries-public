@@ -1,6 +1,51 @@
 # Erste Schritte: Materials Boundaries
 
-## Aktuell v0.23.0: explizites PA12-CF15-Temperaturdiagramm
+## Aktuell v0.28.0: ein bedingter Verbundfall
+
+Beginnen Sie mit einem leeren Fall, geben Sie jede Annahme ausdrücklich an,
+lesen Sie Belege und Bedingungen und reproduzieren Sie das gespeicherte Ergebnis.
+Die acht bestehenden Regeln und angegebenen Volumenanteile bleiben maßgeblich.
+Es kommen keine wissenschaftlichen Datensätze oder Quellenprüfungen hinzu.
+
+```sh
+python -m materials_boundaries composite init --output case.json --lang de
+python -m materials_boundaries composite init --original-demo --output demo.json --lang de
+python -m materials_boundaries composite report demo.json --output demo-report-de --unit GPa --lang de
+python -m materials_boundaries composite verify demo-report-de/bundle.json --json
+```
+
+`init` lässt Bedingungen, Anteile und Moduln unbekannt. Mit `--interactive` im
+Terminal können Sie eingeben, mit `/back` oder `/edit N` in der Prüfung ändern
+und ausdrücklich mit `/save` speichern. `/cancel`, EOF und Strg-C speichern
+nichts. Isotropie und 50/50 werden nicht vorausgewählt. `--original-demo` wählt
+ein eigenes fiktives Beispiel, keine Messdaten. Eine gültige vorhandene
+`literature_model`-Datei lässt sich unverändert an `report` übergeben.
+
+Lesen Sie Bedingungen und Belege vor den acht Ergebniszeilen. Unbekannte
+Anwendbarkeit, verletzte Voraussetzungen, Zahlenbereichsfehler und unabhängige
+wissenschaftliche Prüfung sind getrennt. Gekreuzte K/G-Ordnung lässt vier
+Reuss/Voigt-Zeilen verfügbar; E/ν nutzt keine Ersatzgrenzen. Ändern Sie keine
+wahre physische Bedingung nur für eine Zahl. Die Kennzeichnung als gemessener
+Eingang prüft weder Probe, Temperatur, Unsicherheit noch effektive Antwort.
+
+Lokal entstehen `input.json`, `evaluation.json`, `bundle.json`, `report.txt`,
+`report.html`, `manifest.json`. Ziel ist ein neues/leeres Verzeichnis mit
+vorhandenem Elternverzeichnis; Symlinks und `..` werden abgelehnt. Gewöhnliche
+Fehler entfernen nur eigene Dateien. Manifest zuletzt bedeutet keine
+absturzsichere Transaktion oder Garantie bei konkurrierenden Schreibzugriffen.
+Dateihashes und Paket-Reproduktion prüfen unterschiedliche Dinge. Kein Upload.
+
+Report-Codes: 0 gültig (auch unbekannt/verletzt), 2 Eingabe/I/O, 3 gespeicherter
+Bericht mit Zahlenbereichsfehler. Verify: 0 reproduziert, 2 ungültige Struktur,
+4 verändert/veraltet. Abbruch: 130. Nur Software-Reproduktion; keine Prüfung
+einer physischen Probe und kein Beweis eines Satzes. Maschinell unterstützte
+vier Sprachfassungen sind nicht unabhängig wissenschaftlich/muttersprachlich
+geprüft. Statisches HTML enthält keine Skripte oder externen Ressourcen;
+Browserprüfung für Tastatur und schmale Fenster wurde nicht durchgeführt.
+
+[Vollständiger Ablauf, API und Beleggrenzen](COMPOSITE_WORKFLOW.md) · [Migration](MIGRATION_v0.28.0.md)
+
+## Früher v0.23.0: explizites PA12-CF15-Temperaturdiagramm
 
 Der neue separate Weg zeigt **alle sechs zugelassenen Tabelle-3-Zellen eines
 quellenberichteten gemeinsamen Protokolls**. Dies ist eine beschreibende

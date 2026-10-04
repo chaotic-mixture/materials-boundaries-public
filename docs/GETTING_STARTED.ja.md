@@ -1,6 +1,43 @@
 # はじめに：Materials Boundaries
 
-## 現在の v0.23.0：明示的な PA12 CF15 温度観測図
+## 現行 v0.28.0：条件付き複合材料の単一ケース
+
+空白ケースから始め、各仮定を明示し、証拠と条件を読み、保存結果を再現します。
+既存の8規則と明示された体積分率だけを用い、新しい科学記録や出典検証は追加しません。
+
+```sh
+python -m materials_boundaries composite init --output case.json --lang ja
+python -m materials_boundaries composite init --original-demo --output demo.json --lang ja
+python -m materials_boundaries composite report demo.json --output demo-report-ja --unit GPa --lang ja
+python -m materials_boundaries composite verify demo-report-ja/bundle.json --json
+```
+
+`init` は条件・分率・弾性率を不明のまま保存します。端末で `--interactive` を
+選ぶと、`/back` や確認画面の `/edit N` で修正し、明示的な `/save` で保存できます。
+`/cancel`、EOF、Ctrl-C では保存しません。等方性や50/50は事前選択しません。
+`--original-demo` は独自の架空例であり、測定データではありません。既存の有効な
+`literature_model` ファイルはそのまま `report` に渡せます。
+
+8行の結果より先に条件と証拠を確認してください。適用性不明・前提違反・数値エラー・
+独立科学レビューは別状態です。K/G順序が交差しても4つのReuss/Voigt結果は残り、
+E/νに代替境界を使いません。数値を得るために真の物理条件を書き換えないでください。
+測定入力という表示は試料・温度・不確かさ・有効応答の検証ではありません。
+
+ローカルに `input.json`、`evaluation.json`、`bundle.json`、`report.txt`、
+`report.html`、`manifest.json` を保存します。親が存在する新規または空ディレクトリを
+使い、シンボリックリンクと `..` は拒否します。通常の失敗時には今回の所有ファイルだけを
+削除します。manifestを最後に公開しても、クラッシュ安全・同時書込みトランザクション
+ではありません。ファイルのハッシュ確認とバンドル再現は別です。共有・送信はしません。
+
+report の終了コードは0（有効、不明・違反も含む）、2（入力/I/O）、3（保存済みの数値
+エラー）。verifyは0（一致）、2（形式エラー）、4（変更/旧版）。取消は130です。
+ソフトウェア再現のみであり、物理試料の検証や定理の証明ではありません。機械支援の
+4言語表現には独立した科学・母語レビューがありません。静的HTMLにスクリプトや外部
+資産はありません。ブラウザーのキーボード操作・狭幅確認は未実施です。
+
+[完全なワークフロー・API・証拠の限界](COMPOSITE_WORKFLOW.md) · [移行](MIGRATION_v0.28.0.md)
+
+## 以前の v0.23.0：明示的な PA12 CF15 温度観測図
 
 新しい独立経路は、**一つの出典報告手順に属する表3の承認済み6セルすべて**だけを
 表示します。公表要約の記述的転記であり、材料予測や独立した科学的検証ではありません。

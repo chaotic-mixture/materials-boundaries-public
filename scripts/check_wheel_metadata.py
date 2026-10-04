@@ -696,9 +696,55 @@ require(build_observation_inspection()['presentation_policy']['quantitative_axes
         'new view relaxed generic inspection')
 rejects(lambda: plot_view.build_observation_temperature_plot(dataset_id=PAHT_DATASET), 'new view relaxed old plot')
 
+
+# A complete dependency-free single-case workflow, independent of old sweeps.
+from materials_boundaries.composite import build_composite_report, validate_composite_report, CompositeReplayError
+from materials_boundaries.composite_intake import original_demo_instance, blank_composite_instance
+from materials_boundaries.composite_render import render_composite_report
+from materials_boundaries.composite_export import export_composite_report, ARTIFACTS
+import hashlib
+original_case = original_demo_instance()
+composite_bundle = build_composite_report(original_case)
+require(composite_bundle['engine_version'] == expected, 'stale installed composite version')
+require(composite_bundle['input'] == original_case, 'single-case input changed')
+require([p['volume_fraction'] for p in composite_bundle['input']['phases']] == [0.25, 0.75],
+        'single-case fractions replaced by a sweep')
+require(len(composite_bundle['evaluation']['evaluations']) == 8, 'composite rule count changed')
+validate_composite_report(composite_bundle)
+for language in languages:
+    target = Path(instance_path).parent / ('composite-' + language)
+    result = export_composite_report(original_case, target, lang=language)
+    require(result == {'artifacts': list(ARTIFACTS), 'exit_code': 0}, 'installed composite export failed')
+    require(json.loads((target/'bundle.json').read_text()) == composite_bundle, 'language changed core')
+    manifest = json.loads((target/'manifest.json').read_text())
+    for name, entry in manifest['files'].items():
+        data = (target/name).read_bytes()
+        require(entry == {'bytes': len(data), 'sha256': hashlib.sha256(data).hexdigest()}, 'manifest mismatch')
+    for format in ('text', 'html'):
+        text = render_composite_report(composite_bundle, lang=language, format=format)
+        require('[missing:' not in text and '<script' not in text.lower(), 'unsafe or incomplete report')
+    stdout = io.StringIO()
+    with redirect_stdout(stdout):
+        code = main(['composite', 'verify', str(target/'bundle.json'), '--json', '--lang', language])
+    require(code == 0 and json.loads(stdout.getvalue())['status'] == 'reproduced', 'installed replay failed')
+unknown = build_composite_report(blank_composite_instance())
+require(all(r['applicability'] == 'unknown' for r in unknown['evaluation']['evaluations']),
+        'blank intake preselected scientific assumptions')
+validate_composite_report(unknown)
+changed = deepcopy(composite_bundle)
+changed['evaluation']['evaluations'][0]['result']['lower'] += 1
+try:
+    validate_composite_report(changed)
+except CompositeReplayError:
+    pass
+else:
+    raise RuntimeError('installed replay accepted an altered endpoint')
+require(composite_bundle['policy']['independent_scientific_review'] is False,
+        'composite report upgraded scientific review')
+
 print(json.dumps({"version": expected, "metadata_version": metadata_version,
                   "engine_outputs": sorted(outputs), "languages": languages,
-                  "installed_without_dependencies": True, "mixed_observation_catalog_languages": languages, "bulk_wave_catalog_languages": languages, "viscoelastic_catalog_languages": languages, "hbn_observation_languages": languages, "observation_inspection_languages": languages, "observation_inspection_schema": "1.1.0", "pa12_export_checks": export_checks, "pa12_scientific_mutations_rejected": len(mutations), "pa12_exact_selected_cells": len(expected_cells), "temperature_observation_plot_languages": languages, "temperature_observation_plot_schema": "1.0.0", "temperature_observation_plot_cells": len(plot_bundle["glyphs"]), "paht_exact_median_sd_cells": len(paht), "paht_four_language_inspection": True, "study_comparison_languages": languages, "study_comparison_schema": "1.0.0", "study_comparison_cells": 10}))
+                  "installed_without_dependencies": True, "composite_report_languages": languages, "composite_report_schema": "1.0.0", "composite_exact_single_case_and_replay": True, "mixed_observation_catalog_languages": languages, "bulk_wave_catalog_languages": languages, "viscoelastic_catalog_languages": languages, "hbn_observation_languages": languages, "observation_inspection_languages": languages, "observation_inspection_schema": "1.1.0", "pa12_export_checks": export_checks, "pa12_scientific_mutations_rejected": len(mutations), "pa12_exact_selected_cells": len(expected_cells), "temperature_observation_plot_languages": languages, "temperature_observation_plot_schema": "1.0.0", "temperature_observation_plot_cells": len(plot_bundle["glyphs"]), "paht_exact_median_sd_cells": len(paht), "paht_four_language_inspection": True, "study_comparison_languages": languages, "study_comparison_schema": "1.0.0", "study_comparison_cells": 10}))
 '''
 
 

@@ -173,6 +173,27 @@ def _build_parser(language: str) -> argparse.ArgumentParser:
     add_language(study_comparison)
     study_comparison.add_argument("--profile-id", required=True, choices=(PROFILE_ID,), help=sct["profile_id"])
     study_comparison.add_argument("--output", required=True, help=sct["output"])
+    from ._composite_cli_labels import labels as composite_labels
+    ct = composite_labels(language)
+    composite = sub.add_parser("composite", help=ct["command"], description=ct["command"])
+    add_language(composite)
+    commands = composite.add_subparsers(dest="composite_command", required=True,
+        parser_class=partial(_LocalizedParser, language=language))
+    initialize = commands.add_parser("init", help=ct["init"])
+    add_language(initialize)
+    initialize.add_argument("--output", required=True, help=ct["output"])
+    intake_mode = initialize.add_mutually_exclusive_group()
+    intake_mode.add_argument("--interactive", action="store_true", help=ct["interactive"])
+    intake_mode.add_argument("--original-demo", action="store_true", help=ct["demo"])
+    report = commands.add_parser("report", help=ct["report"])
+    add_language(report)
+    report.add_argument("instance", help=t("cli_instance"))
+    report.add_argument("--output", required=True, help=ct["output"])
+    report.add_argument("--unit", choices=tuple(UNITS), default="GPa", help=t("cli_unit"))
+    verify = commands.add_parser("verify", help=ct["verify"])
+    add_language(verify)
+    verify.add_argument("bundle", help=ct["bundle"])
+    verify.add_argument("--json", action="store_true", help=t("cli_json"))
     return parser
 
 
@@ -188,6 +209,43 @@ def main(argv: list[str] | None = None) -> int:
     if not hasattr(args, "lang"):
         args.lang = "en"
     try:
+        if args.command == "composite":
+            from ._composite_cli_labels import labels as composite_labels
+            from .composite import CompositeReplayError, validate_composite_report
+            from .composite_export import export_composite_report, save_composite_instance
+            from .composite_intake import (IntakeCancelled, blank_composite_instance,
+                                          interactive_composite_instance, original_demo_instance)
+            ct = composite_labels(args.lang)
+            def load_composite_json(path):
+                try:
+                    return load_json(path)
+                except (ValueError, RecursionError) as exc:
+                    raise ValidationError("composite input: malformed JSON or path: " + str(exc)) from exc
+            if args.composite_command == "init":
+                try:
+                    instance = (interactive_composite_instance(lang=args.lang) if args.interactive else
+                                original_demo_instance() if args.original_demo else blank_composite_instance())
+                except IntakeCancelled:
+                    print(ct["cancelled"], file=sys.stderr)
+                    return 130
+                save_composite_instance(instance, args.output)
+                print(f'{ct["saved"]}: {args.output}')
+                return 0
+            if args.composite_command == "report":
+                exported = export_composite_report(load_composite_json(args.instance), args.output,
+                                                   output_unit=args.unit, lang=args.lang)
+                print(json.dumps({"output": args.output, "artifacts": exported["artifacts"]}, ensure_ascii=False))
+                return exported["exit_code"]
+            try:
+                validate_composite_report(load_composite_json(args.bundle))
+            except CompositeReplayError as exc:
+                print(json.dumps({"status": "altered_or_stale", "scope": "software_replay_only",
+                                  "detail": str(exc)}, ensure_ascii=False) if args.json else ct["mismatch"])
+                return 4
+            print(json.dumps({"status": "reproduced", "scope": "software_replay_only",
+                              "physical_sample_verified": False, "theorem_proved": False}, ensure_ascii=False)
+                  if args.json else ct["replay"])
+            return 0
         if args.command == "observation":
             if args.observation_command == "compare-temperature-studies":
                 from .observation_study_comparison import export_observation_study_comparison

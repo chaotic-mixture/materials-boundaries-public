@@ -1,6 +1,6 @@
 # 材料边界 · Materials Boundaries
 
-Current software release: **v0.27.0** · **Initial-yield criteria and sharp equivalent-stress comparison** · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
+Current software release: **v0.28.0** · **Offline single-case composite report and replay** · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
 
 A condition-aware, source-traceable materials-mechanics catalog and offline Python toolkit. It separates conditional mathematical bounds, model relations, published observations, computational predictions and synthetic demonstrations. Python 3.10+; no third-party runtime dependencies.
 
@@ -15,6 +15,21 @@ Repository: [chaotic-mixture/materials-boundaries-public](https://github.com/cha
 - The 57 sources comprise 56 bibliographic/source records plus 1 original synthetic-demo provenance record; a source record is not a redistribution of its publication or dataset
 - All five temperature demos use intentionally invented coefficients and ranges. They do not describe real materials, measured properties or engineering allowables
 <!-- current-catalog-summary:end -->
+
+## Start with one composite case
+
+Version **0.28.0** turns the existing eight rules into one offline researcher workflow: explicit blank/terminal intake, a condition-and-evidence report for the supplied fractions, and closed software replay verification. It adds **no scientific records or rules**. Unknowns, partial availability, source gaps and independent-review=false stay visible. A successful replay does not verify a specimen or prove a theorem. [Workflow and safe-export contract](docs/COMPOSITE_WORKFLOW.md) · [Migration](docs/MIGRATION_v0.28.0.md)
+
+```sh
+python -m materials_boundaries composite init --output case.json --lang en
+python -m materials_boundaries composite init --original-demo --output demo.json --lang en
+python -m materials_boundaries composite report demo.json --output demo-report --unit GPa --lang en
+python -m materials_boundaries composite verify demo-report/bundle.json --json
+```
+
+The first command leaves observations unknown; `--interactive` requires a terminal and an explicit save. The second deliberately uses original fictitious data. Read conditions and evidence before interpreting approximate numbers. Output stays local in a new/empty directory; no source assets or network reads are used. HTML/text support en/zh/ja/de, while machine JSON is language-independent. [English](docs/GETTING_STARTED.en.md) · [中文](docs/GETTING_STARTED.zh.md) · [日本語](docs/GETTING_STARTED.ja.md) · [Deutsch](docs/GETTING_STARTED.de.md)
+
+## Earlier releases
 
 Version **0.27.0** appends exactly three catalog-only records: von Mises and Tresca initial-yield relations, plus the sharp **1 <= q_T/q_VM <= 2/sqrt(3)** function comparison for the same nonhydrostatic symmetric 3D Cauchy stress tensor. The ratio is undefined at hydrostatic stress; the division-free inequality includes it. Source definitions are distinguished from original project proof and from restricted isotropic, pressure-insensitive initial-yield model applicability. Any model-threshold comparison requires the same positive uniaxial Y; an optional loading consequence is limited to one fixed local proportional ray. No numerical plasticity integration, material yield value, universal strength bracket or safety certification is added. Claims schema advances **1.12.0 → 1.13.0**; the eight executable rules remain unchanged. [Scientific scope, exact proof and source rights](docs/YIELD_CRITERIA.md) · [v0.27.0 migration](docs/MIGRATION_v0.27.0.md)
 

@@ -271,3 +271,13 @@ copy; no publisher-issued errata were verified. Neither is used, and the rounded
 p. 12-15 comparison is not the exact proof. Selected-equation checks do not
 establish complete-paper validation, historical-original verification,
 empirical material adequacy or independent scientific peer review.
+
+## Composite single-case reports (v0.28.0)
+
+The offline report wrapper adds no source asset or scientific data. Reports
+contain existing bibliographic/evidence metadata and the user's supplied input,
+with unresolved citations and recorded review gaps preserved. The original
+12/6 and 36/18 GPa demonstration at 0.25/0.75 fractions is fictitious project
+test data, not a literature specimen. Software replay and artifact hashes do
+not authenticate authorship, establish source truth, certify materials, or
+create redistribution rights in third-party publications.

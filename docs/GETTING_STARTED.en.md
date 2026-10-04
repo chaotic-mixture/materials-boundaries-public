@@ -1,6 +1,46 @@
 # Getting started: Materials Boundaries
 
-## Current v0.23.0: explicit PA12 CF15 temperature-observation plot
+## Current v0.28.0: one conditional composite case
+
+Prepare a blank case, make every assumption explicit, read the evidence and
+reproduce the saved result. The workflow uses the existing eight rules and your
+supplied volume fractions. It adds no scientific record or source-review claim.
+
+```sh
+python -m materials_boundaries composite init --output case.json --lang en
+python -m materials_boundaries composite init --original-demo --output demo.json --lang en
+python -m materials_boundaries composite report demo.json --output demo-report-en --unit GPa --lang en
+python -m materials_boundaries composite verify demo-report-en/bundle.json --json
+```
+
+`init` leaves conditions, fractions and moduli unknown. Use `--interactive`
+on a terminal to enter them, review with `/back` or `/edit N`, and choose `/save`;
+`/cancel`, EOF or Ctrl-C saves nothing. No isotropy or 50/50 mixture is preselected.
+`--original-demo` explicitly selects fictitious values, not measured material data.
+An existing valid `literature_model` file can be passed to `report` unchanged.
+
+Read the conditions/evidence before the eight result rows. Unknown applicability,
+violated premises, numerical errors and independent scientific review are separate.
+Crossed K/G ordering retains the four Reuss/Voigt rows; E/ν never uses a fallback.
+Do not change a true physical condition just to obtain a number. A measured-input
+label does not verify the specimen, temperature, uncertainty or effective response.
+
+Output is local: `input.json`, `evaluation.json`, `bundle.json`, `report.txt`,
+`report.html`, `manifest.json`. Use a new/empty directory with an existing parent;
+symlinks and `..` paths are refused. Ordinary failures clean only owned files;
+manifest-last is not a crash-safe or concurrent-writer transaction. Verify the
+manifest hashes separately from bundle replay. No sharing or upload occurs.
+
+Report exit codes are 0 (valid, including unknown/violated), 2 (invalid/I/O), 3
+(valid saved report with numerical error). Verify uses 0 (reproduced), 2
+(malformed), 4 (altered/stale). Cancellation is 130. Software replay only; does
+not verify the physical sample or prove a theorem. Four-language machine-assisted
+wording has no independent scientific/native review. Static HTML has no scripts
+or external assets; browser keyboard/narrow-width QA remains unperformed.
+
+[Full workflow, API and evidence limits](COMPOSITE_WORKFLOW.md) · [Migration](MIGRATION_v0.28.0.md)
+
+## Earlier v0.23.0: explicit PA12 CF15 temperature-observation plot
 
 Use the new independent route for **all six approved Table 3 cells from one
 source-reported shared protocol**. It is a descriptive display of published

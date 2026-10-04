@@ -1,6 +1,40 @@
 # 快速开始：材料边界
 
-## 当前 v0.23.0：显式 PA12 CF15 温度观测图
+## 当前 v0.28.0：单个有条件复合材料案例
+
+从空白案例开始，明确每项假设，阅读来源与适用条件，并重放保存的结果。
+工作流只使用已有八条规则和用户明确提供的体积分数，不增加科学记录或来源核验声明。
+
+```sh
+python -m materials_boundaries composite init --output case.json --lang zh
+python -m materials_boundaries composite init --original-demo --output demo.json --lang zh
+python -m materials_boundaries composite report demo.json --output demo-report-zh --unit GPa --lang zh
+python -m materials_boundaries composite verify demo-report-zh/bundle.json --json
+```
+
+`init` 将条件、分数和模量保留为未知。终端中使用 `--interactive` 逐项录入，
+用 `/back` 或复核页的 `/edit N` 修改，明确 `/save` 后才保存；`/cancel`、EOF
+或 Ctrl-C 不保存。不会预选各向同性或 50/50。`--original-demo` 明确选择原创
+虚构数据，不代表实测材料。已有合法 `literature_model` 文件可原样传给 `report`。
+
+先看条件与证据，再读八行结果。适用性未知、条件违反、数值错误、独立科学审查
+是不同状态。K/G 排序交叉时仍保留四条 Reuss/Voigt 结果，E/ν 不使用替代界。
+不要为了得到数值而更改真实物理条件。“实测输入”标签不核验样品、温度、不确定度
+或有效响应。外包络不表示各端点可以由同一个可实现材料同时取得。
+
+仅本地输出 `input.json`、`evaluation.json`、`bundle.json`、`report.txt`、
+`report.html`、`manifest.json`。目标须为新建或空目录，其父目录已存在；拒绝符号
+链接及 `..` 路径。普通失败只清理本次创建的文件；最后发布 manifest 不等于崩溃
+安全或并发写入下的整体事务。文件哈希检查与报告包重放不同，不上传或共享数据。
+
+report 退出码：0 合法（含未知或违反），2 输入或 I/O 错误，3 已保存但有数值错误。
+verify：0 重放一致，2 格式错误，4 更改或过期；取消录入为 130。仅软件重放，
+不核验物理样品，也不证明定理。四语言含机器辅助翻译，尚无独立科学／母语审校。
+静态 HTML 无脚本或外部资源；浏览器键盘和窄屏检查尚未进行。
+
+[完整工作流、API 与证据边界](COMPOSITE_WORKFLOW.md) · [迁移说明](MIGRATION_v0.28.0.md)
+
+## 此前 v0.23.0：显式 PA12 CF15 温度观测图
 
 新独立路径只显示**同一来源报告协议下表 3 的完整六个已接纳单元格**，是已发表摘要
 的描述性转录，不是材料预测或独立科学验证。科学目录不变：**12 条观测、52 条来源、

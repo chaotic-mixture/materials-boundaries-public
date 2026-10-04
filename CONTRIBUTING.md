@@ -519,3 +519,17 @@ hosting and CC BY-NC-SA terms do not relicense source assets under MIT. Keep
 PDFs, screenshots, extracted prose, figures, experimental plot data and all
 source assets out of repository/package/release. Add no NIST data, mirrors or
 new material values through this catalog-only contribution path.
+
+## Composite workflow preservation (v0.28.0)
+
+The single-case wrapper must use `evaluate` for the supplied fractions, not a
+visualization sweep. Keep the eight-rule engine, scientific catalogs, instance
+and evaluation schemas unchanged. New report keys need explicit closed schema
+and runtime replay coverage. Complete core comparison includes source metadata,
+unknowns, evidence gaps, dependencies and policy, not only endpoints or digests.
+All four languages must preserve the same canonical bundle. Safe HTML text,
+near-boundary ν, original arbitrary-precision integers, explicit intake review,
+non-TTY refusal, back/edit/cancel, symlink/path escape refusal, ordinary failure
+rollback and cleanup ownership are regression requirements. Manifest-last and
+per-file exclusive publication are not crash-safe directory transactions.
+[Workflow contract](docs/COMPOSITE_WORKFLOW.md).

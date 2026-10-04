@@ -8,6 +8,7 @@ import re
 import unittest
 
 import yield_preservation as preservation
+from composite_preservation import pre_composite_bytes
 
 ROOT = Path(__file__).resolve().parents[1]
 LEDGER_SHA256 = '98f60054354141c6a37e58961a2826daac2590c333f121d047e1d621b89c78a7'
@@ -84,7 +85,7 @@ class YieldPreservationTests(unittest.TestCase):
 
     def test_independent_ledger_adapter_pins_and_exact_public_anchor(self):
         self.assertEqual(sha((ROOT / preservation.LEDGER_PATH).read_bytes()), LEDGER_SHA256)
-        self.assertEqual(sha((ROOT / 'tests/yield_preservation.py').read_bytes()), ADAPTER_SHA256)
+        self.assertEqual(sha(pre_composite_bytes('tests/yield_preservation.py', (ROOT / 'tests/yield_preservation.py').read_bytes())), ADAPTER_SHA256)
         entries = preservation.validate_ledger(self.ledger)
         self.assertTrue(VERSION_ONLY | COMPATIBILITY_READERS <= set(entries))
         self.assertEqual(len(self.ledger['baseline_sha256']), 302)
@@ -171,7 +172,7 @@ class YieldPreservationTests(unittest.TestCase):
         for filename, entry in entries.items():
             if not filename.startswith('tests/'):
                 continue
-            current = (ROOT / filename).read_bytes()
+            current = pre_composite_bytes(filename, (ROOT / filename).read_bytes())
             before = preservation.reverse_exact_edits(current, entry)
             self.assertEqual(declarations(before), declarations(current), filename)
             self.assertEqual(current, expected_compatibility_update(filename, before.decode()).encode(), filename)
@@ -181,6 +182,7 @@ class YieldPreservationTests(unittest.TestCase):
             current = (ROOT / entry['filename']).read_bytes()
             if entry['filename'] == 'README.md':
                 current = self._release_readme(current)
+            current = pre_composite_bytes(entry['filename'], current)
             before = preservation.reverse_exact_edits(current, entry)
             self.assertEqual(preservation.apply_exact_edits(before, entry['edits']), current)
             for bad in (current + b'\n', b'!' + current[1:]):
