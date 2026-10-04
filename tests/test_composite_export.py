@@ -62,6 +62,7 @@ class ExportTests(unittest.TestCase):
             for name in ('input.json','evaluation.json','bundle.json'):
                 self.assertEqual((self.root/'en1'/name).read_bytes(), (self.root/f'{lang}1'/name).read_bytes())
 
+    @unittest.skipUnless(os.name == "posix", "POSIX backend; native Windows coverage is separate")
     def test_symlink_output_and_ancestor_and_traversal_refused(self):
         outside = self.root/'outside'; outside.mkdir()
         alias = self.root/'alias'; alias.symlink_to(outside, target_is_directory=True)
@@ -95,6 +96,7 @@ class ExportTests(unittest.TestCase):
         self.assertEqual(existing.read_text(),'untouched')
         self.assertEqual([p.name for p in self.root.iterdir()],['exists'])
 
+    @unittest.skipUnless(os.name == "posix", "POSIX backend; native Windows coverage is separate")
     def test_stage_failures_clean_only_own_data(self):
         for fail_at in range(1,7):
             target=self.root/f'stage{fail_at}'; target.mkdir()
@@ -114,6 +116,7 @@ class ExportTests(unittest.TestCase):
         self.assertFalse((self.root/'partial-input.json').exists())
         self.assertFalse(any(p.name.startswith('.composite') for p in self.root.iterdir()))
 
+    @unittest.skipUnless(os.name == "posix", "POSIX backend; native Windows coverage is separate")
     def test_publish_failures_manifest_last_and_rollback(self):
         for fail_at in range(1,7):
             target=self.root/f'publish{fail_at}'
@@ -128,6 +131,7 @@ class ExportTests(unittest.TestCase):
             self.assertEqual(calls,list(ARTIFACTS)[:fail_at])
             self.assertFalse(target.exists())
 
+    @unittest.skipUnless(os.name == "posix", "POSIX backend; native Windows coverage is separate")
     def test_concurrent_unrelated_file_is_preserved(self):
         target=self.root/'concurrent'; original=export._stage_file
         def add_other(fd,name,data):
@@ -139,6 +143,7 @@ class ExportTests(unittest.TestCase):
         self.assertEqual([p.name for p in target.iterdir()],['unrelated.txt'])
         self.assertEqual((target/'unrelated.txt').read_text(),'keep')
 
+    @unittest.skipUnless(os.name == "posix", "POSIX backend; native Windows coverage is separate")
     def test_rollback_does_not_delete_replacement(self):
         target=self.root/'replacement'; original=export.os.link; calls=0
         def replace_other(source,destination,**kwargs):
@@ -154,6 +159,7 @@ class ExportTests(unittest.TestCase):
         self.assertEqual((target/'input.json').read_text(),'concurrent replacement')
         self.assertEqual(len(list(target.iterdir())),1)
 
+    @unittest.skipUnless(os.name == "posix", "POSIX backend; native Windows coverage is separate")
     def test_cleanup_failure_rolls_back_manifest_then_retries_owned_stage(self):
         original = export.os.unlink
         failed = False
@@ -172,6 +178,7 @@ class ExportTests(unittest.TestCase):
             save_composite_instance(self.case, self.root/'init.json')
         self.assertEqual(list(self.root.iterdir()), [])
 
+    @unittest.skipUnless(os.name == "posix", "POSIX backend; native Windows coverage is separate")
     def test_stage_open_failure_removes_created_empty_stage(self):
         original = export.os.open
         def fail(path, *args, **kwargs):
@@ -183,6 +190,7 @@ class ExportTests(unittest.TestCase):
             export_composite_report(self.case, target)
         self.assertFalse(target.exists())
 
+    @unittest.skipUnless(os.name == "posix", "POSIX backend; native Windows coverage is separate")
     def test_exclusive_name_collision_does_not_delete_other_input(self):
         collision=self.root/('.composite-input-'+'a'*32);collision.write_text('keep')
         with patch.object(export.secrets,'token_hex',return_value='a'*32), self.assertRaises(OSError):

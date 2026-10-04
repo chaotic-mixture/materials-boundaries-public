@@ -16,6 +16,7 @@ import unittest
 from unittest.mock import patch
 
 import composite_preservation as preservation
+from windows_export_preservation import pre_windows_export_bytes
 
 ROOT = Path(__file__).resolve().parents[1]
 LEDGER_SHA256 = '0e86e6bab32a18d7a01bd0ff04c7f05452bd27fd45057b37f4ba1f4ed2cdb30e'
@@ -72,11 +73,12 @@ class CompositePreservationTests(unittest.TestCase):
 
     def release_bytes(self, filename):
         current = (ROOT / filename).read_bytes()
-        return preservation.release_readme_bytes(current) if filename == 'README.md' else current
+        current = preservation.release_readme_bytes(current) if filename == 'README.md' else current
+        return pre_windows_export_bytes(filename, current)
 
     def test_independent_ledger_adapter_pins_and_exact_public_anchor(self):
         self.assertEqual(sha((ROOT / preservation.LEDGER_PATH).read_bytes()), LEDGER_SHA256)
-        self.assertEqual(sha((ROOT / 'tests/composite_preservation.py').read_bytes()), ADAPTER_SHA256)
+        self.assertEqual(sha(pre_windows_export_bytes('tests/composite_preservation.py', (ROOT / 'tests/composite_preservation.py').read_bytes())), ADAPTER_SHA256)
         self.assertEqual(preservation.BASELINE_COMMIT, '2fd1585423dd05478c24396bf6f0206db1b5ae9a')
         self.assertEqual(preservation.BASELINE_TREE, 'e62c0cae498f35e460d0d8552998d624f8502640')
         self.assertEqual(self.ledger['review']['baseline_file_count'], 309)

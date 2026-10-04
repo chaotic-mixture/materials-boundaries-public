@@ -9,6 +9,7 @@ import hashlib
 import json
 import re
 from pathlib import Path
+from windows_export_preservation import pre_windows_export_bytes
 
 ROOT = Path(__file__).resolve().parents[1]
 LEDGER_PATH = 'tests/fixtures/composite_updates_v0280.json'
@@ -137,6 +138,9 @@ def pre_composite_bytes(filename, current, *, ledger=None):
     """Verify exact current bytes, then recover only a recorded predecessor."""
     ledger = load_ledger() if ledger is None else ledger
     entries = validate_ledger(ledger)
+    accepted = entries[filename]['sha256'] if filename in entries else ledger['baseline_sha256'].get(filename)
+    if digest(current) != accepted:
+        current = pre_windows_export_bytes(filename, current)
     if filename in entries:
         return reverse_exact_edits(current, entries[filename])
     if filename not in ledger['baseline_sha256'] or digest(current) != ledger['baseline_sha256'][filename]:

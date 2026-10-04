@@ -407,14 +407,14 @@ for mode, selected_ids in selected_modes.items():
             report = json.loads(stdout.getvalue())
             require(code == 0 and len(report['artifacts']) == 5, 'PA12 inspection CLI failed')
             require(set(p.name for p in output.iterdir()) == set(report['artifacts']), 'unexpected inspection output')
-            bundle = json.loads((output / 'observation-inspection.json').read_text())
+            bundle = json.loads((output / 'observation-inspection.json').read_text(encoding='utf-8'))
             selected = [r for r in all_records if selected_ids is None or r['id'] in selected_ids]
             require(bundle['schema_version'] == '1.1.0'
                     and bundle['catalog_schema_versions']['observations'] == '1.3.0', 'stale schema envelope')
             require(bundle['record_snapshots'] == selected, 'selection or immutable snapshot changed')
             require(bundle['selection']['resolved_record_ids'] == [r['id'] for r in selected], 'requested IDs changed source order')
             validate_observation_inspection(bundle)
-            rows = list(csv.DictReader(io.StringIO((output / 'observation-inspection.csv').read_text())))
+            rows = list(csv.DictReader(io.StringIO((output / 'observation-inspection.csv').read_text(encoding='utf-8'))))
             require(len(rows) == len(selected), 'incorrect CSV row count')
             for row, record in zip(rows, selected):
                 require(json.loads(row['record_snapshot_json']) == record, 'CSV lost record snapshot')
@@ -443,7 +443,7 @@ for mode, selected_ids in selected_modes.items():
                             and row['si_plus_minus_value'] == row['plus_minus_value']
                             and row['temperature_value'] == row['dataset_id'] == 'null', 'old CSV fields changed')
             for filename in report['artifacts']:
-                text = (output / filename).read_text()
+                text = (output / filename).read_text(encoding='utf-8')
                 require('[missing:' not in text, 'missing translation in installed export')
                 if filename.endswith('.svg'):
                     xml = ET.fromstring(text)
@@ -537,7 +537,7 @@ require(not invalid_new.exists(), 'invalid PA12 selector created a directory')
 sentinel = Path(instance_path).parent / 'pa12-invalid-existing'; sentinel.mkdir()
 (sentinel / 'keep.txt').write_text('sentinel')
 rejects(lambda: export_observation_inspection(sentinel, record_ids=new_ids, lang='invalid'), 'invalid language accepted')
-require([(p.name, p.read_text()) for p in sentinel.iterdir()] == [('keep.txt', 'sentinel')], 'invalid export modified existing target')
+require([(p.name, p.read_text(encoding='utf-8')) for p in sentinel.iterdir()] == [('keep.txt', 'sentinel')], 'invalid export modified existing target')
 
 # Separate quantitative source-summary route; inspection stays nonquantitative.
 from decimal import Context, Inexact, Rounded, getcontext, setcontext
@@ -579,11 +579,11 @@ for language in languages:
     require(len(rows) == 6 and rows[2]['source_value_string'] == '32.70 ± 1.18', 'plot CSV lost exact cells')
     for filename in report['artifacts']:
         if filename.endswith('.svg'):
-            root = ET.fromstring((destination / filename).read_text())
+            root = ET.fromstring((destination / filename).read_text(encoding='utf-8'))
             require(sum(node.tag.endswith('circle') for node in root.iter()) == 6,
                     'installed source plot must have six equally styled points')
         if filename.endswith(('.svg', '.html')):
-            text = (destination / filename).read_text()
+            text = (destination / filename).read_text(encoding='utf-8')
             require('[missing:' not in text and '<script' not in text.lower(), 'unsafe or incomplete plot rendering')
             require('32.70' in text and 'CC-BY-4.0' in text, 'missing source precision or rights')
 require(all(data == plot_data[0] for data in plot_data), 'locale changed plot JSON or CSV')
@@ -667,7 +667,7 @@ for language in languages:
     require(rows[6]['sd_notation'] == 'separate_sd' and rows[6]['central_value_string'] == '58.91',
             'installed study CSV lost median/SD source identity')
     for filename in report['artifacts']:
-        text = (target / filename).read_text()
+        text = (target / filename).read_text(encoding='utf-8')
         if filename.endswith(('.svg', '.html')):
             require('[missing:' not in text and '<script' not in text.lower(), 'unsafe study render')
             require('32.70' in text and '58.91' in text and '3.44' in text, 'source strings missing')
@@ -715,8 +715,8 @@ for language in languages:
     target = Path(instance_path).parent / ('composite-' + language)
     result = export_composite_report(original_case, target, lang=language)
     require(result == {'artifacts': list(ARTIFACTS), 'exit_code': 0}, 'installed composite export failed')
-    require(json.loads((target/'bundle.json').read_text()) == composite_bundle, 'language changed core')
-    manifest = json.loads((target/'manifest.json').read_text())
+    require(json.loads((target/'bundle.json').read_text(encoding='utf-8')) == composite_bundle, 'language changed core')
+    manifest = json.loads((target/'manifest.json').read_text(encoding='utf-8'))
     for name, entry in manifest['files'].items():
         data = (target/name).read_bytes()
         require(entry == {'bytes': len(data), 'sha256': hashlib.sha256(data).hexdigest()}, 'manifest mismatch')
@@ -771,7 +771,11 @@ def check_wheel(wheel):
         instance.write_bytes((ROOT / "examples/synthetic-two-phase.json").read_bytes())
         temperature = work / "temperature.json"
         temperature.write_bytes((ROOT / "examples/temperature/synthetic-linear-50k.json").read_bytes())
-        result = subprocess.run([str(python), "-I", "-c", INSTALLED_CHECK, expected,
+        # Windows CreateProcess has a command-line limit below this check's
+        # length. Execute its exact UTF-8 bytes as a local isolated script.
+        installed_check = work / "installed_check.py"
+        installed_check.write_text(INSTALLED_CHECK, encoding="utf-8")
+        result = subprocess.run([str(python), "-I", str(installed_check), expected,
                                  str(instance), str(temperature)],
                                 cwd=work, env=env, check=True, capture_output=True, text=True)
         return json.loads(result.stdout)

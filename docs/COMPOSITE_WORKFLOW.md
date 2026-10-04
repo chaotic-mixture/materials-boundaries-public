@@ -117,26 +117,58 @@ CLI codes:
 ## Filesystem guarantees and limitations
 
 Only a new file or empty report destination is accepted. The parent directory
-must already exist. Symlink components and `..` traversal are refused; IDs and
-notes never become file paths. A directory-descriptor-based implementation is
-required (currently POSIX platforms with `O_DIRECTORY`, `O_NOFOLLOW`, descriptor
-relative operations and hard links). Unsupported platforms fail explicitly.
+must already exist. Symlink/reparse components and `..` traversal are refused;
+IDs and notes never become file paths. POSIX keeps the directory-descriptor
+implementation with `O_DIRECTORY`, `O_NOFOLLOW`, descriptor-relative operations
+and hard links. Unsupported platforms fail explicitly.
 
-Report files are prepared in a private staging directory **inside** the selected
-destination. Each completed file is exclusively published with a hard link;
-existing files are never overwritten, and `manifest.json` is published last.
-Ordinary parse/render failures write nothing. Ordinary staging/publish failures
-attempt to remove only invocation-owned files and staging data; unrelated files added
-concurrently are preserved. Single-case init similarly uses exclusive staging
-and atomic new-file publication in its selected parent.
+Version **0.28.1** adds a separate native Windows backend for **local NTFS**
+fixed/removable drives with hard-link support. It opens and holds every directory
+component with `CreateFileW`, `FILE_FLAG_OPEN_REPARSE_POINT` and
+`FILE_FLAG_BACKUP_SEMANTICS`, checks the opened object's attributes, and omits
+`FILE_SHARE_DELETE` to block ordinary rename/delete of those directory names
+while held. A reparse attribute is always refused, including junctions, symlinks,
+mount points and cloud placeholders. A folder under OneDrive or another reparse
+ancestor may therefore be refused; select an ordinary local NTFS directory.
+The backend never resolves a rejected link into an accepted target.
+
+Normal relative and absolute drive-letter paths, Unicode and long paths are
+supported subject to filesystem/component limits and permissions. Validated
+absolute paths receive an internal extended-length spelling; no system policy
+or registry setting is changed. UNC/network drives, caller-supplied device or
+extended namespaces, drive-relative/root-relative forms, alternate data streams,
+reserved DOS names, and trailing-dot/space components are refused. NTFS is checked
+before writes; other filesystems are deliberately unsupported in this release.
+
+Report files are prepared in a uniquely named staging directory **inside** the
+selected destination. Each completed file is exclusively published with a hard
+link; existing files are never overwritten, and `manifest.json` is published
+last. Ordinary parse/render failures write nothing. Ordinary staging/publish
+failures attempt to remove only invocation-owned files and staging data;
+unrelated files added concurrently are preserved. Single-case init similarly
+uses exclusive staging and atomic new-file publication in its selected parent.
+On Windows, directory and file identities control cleanup, file descriptors close
+before unlink, and directory handles close before empty-directory removal.
+Permissions follow the parent ACL and Python/Windows behavior; POSIX `0700`/`0600`
+permission semantics are not promised on every supported Python version. Choose
+a parent directory with appropriate access restrictions for sensitive inputs.
+
+Windows implementation references:
+[CreateFileW and sharing flags](https://learn.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-createfilew),
+[volume capabilities](https://learn.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-getvolumeinformationbyhandlew),
+[drive types](https://learn.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-getdrivetypew),
+[file identity limits](https://learn.microsoft.com/en-us/windows/win32/api/fileapi/ns-fileapi-by_handle_file_information),
+[Windows path rules](https://learn.microsoft.com/en-us/windows/win32/fileio/naming-a-file),
+[extended-length paths](https://learn.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation),
+and [Python filesystem behavior](https://docs.python.org/3/library/os.html).
 
 This is **not a crash-safe directory transaction**. Per-file atomic publication
 and a manifest-last convention do not guarantee all-or-nothing visibility,
 filesystem durability, or protection against a hostile concurrent writer or
-abrupt process termination. Persistent I/O errors can also prevent cleanup. A crash or failed cleanup may leave partial files or a staging folder;
+abrupt process termination. Failed identity acquisition or persistent I/O errors can also prevent cleanup. A crash or failed cleanup may leave partial files or a staging folder;
 do not treat them as a completed report. Use a new empty destination, verify all
-manifest hashes, and replay the bundle before relying on a saved export. No
-existing output is silently reused. Local saving does not publish or share data.
+manifest hashes, and replay the bundle before relying on a saved export. An object whose identity could not be established is left untouched, even if
+that leaves an empty staging file or directory. No existing output is silently reused. Local saving does not publish or share data.
 
 ## Evidence and interpretation boundaries
 
@@ -162,3 +194,6 @@ The 30 original acceptance questions are represented by
 filesystem-failure and CLI tests. Static HTML structure and escaping tests are
 not a substitute for browser, keyboard, accessibility or native-language review.
 Browser keyboard/narrow-width QA has not been performed in this environment.
+Native Windows tests run separately in CI; Linux branch mocks and skipped
+Windows tests do not establish actual Windows behavior. Confirm the Windows CI
+results for the exact candidate, including its isolated installed wheel.

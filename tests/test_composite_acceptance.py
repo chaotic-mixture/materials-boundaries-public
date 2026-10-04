@@ -14,6 +14,7 @@ import hashlib
 import io
 from html.parser import HTMLParser
 import json
+import os
 from pathlib import Path
 import re
 import subprocess
@@ -811,6 +812,9 @@ class CompositeAcceptanceTests(unittest.TestCase):
 
     def test_A30_hostile_labels_safe_local_deterministic_export_and_rollback(self):
         from materials_boundaries import composite_export as export
+        stage_backend = export
+        if os.name == 'nt':
+            from materials_boundaries import _composite_windows as stage_backend
         payload = '</script><script>alert("X")</script></pre><img src=x onerror=alert(1)>漢字 Ä "\''
         data = case(); data['id'] = '../' + payload
         data['phases'][0]['id'] = payload
@@ -837,7 +841,12 @@ class CompositeAcceptanceTests(unittest.TestCase):
             marker = root / 'occupied'; marker.mkdir(); (marker / 'keep.txt').write_text('unrelated')
             with self.assertRaises((ValidationError, OSError)): export.export_composite_report(data, marker)
             self.assertEqual((marker / 'keep.txt').read_text(), 'unrelated')
-            outside = root / 'outside'; outside.mkdir(); symlink = root / 'alias'; symlink.symlink_to(outside, target_is_directory=True)
+            outside = root / 'outside'; outside.mkdir(); symlink = root / 'alias'
+            if os.name == 'nt':
+                subprocess.run(['cmd', '/d', '/c', 'mklink', '/J', str(symlink), str(outside)],
+                               check=True, capture_output=True)
+            else:
+                symlink.symlink_to(outside, target_is_directory=True)
             for target in (symlink, symlink / 'nested', root / '..' / root.name / 'escape'):
                 with self.assertRaises((ValidationError, OSError)): export.export_composite_report(data, target)
             self.assertEqual(list(outside.iterdir()), [])
@@ -846,7 +855,7 @@ class CompositeAcceptanceTests(unittest.TestCase):
             for fail_at in range(1, 7):
                 target = root / ('fail-link-' + str(fail_at)); calls = []
                 def failing_link(*args, **kwargs):
-                    calls.append(args[0])
+                    calls.append(Path(args[0]).name)
                     if len(calls) == fail_at: raise OSError('injected publish failure')
                     return real_link(*args, **kwargs)
                 with patch.object(export.os, 'link', side_effect=failing_link), self.assertRaises(OSError):
@@ -855,7 +864,7 @@ class CompositeAcceptanceTests(unittest.TestCase):
                 if fail_at == 6: self.assertEqual(calls[-1], 'manifest.json')
             # An already-existing empty output directory is preserved on failure.
             target = root / 'empty'; target.mkdir()
-            with patch.object(export, '_stage_file', side_effect=OSError('injected stage failure')), self.assertRaises(OSError):
+            with patch.object(stage_backend, '_stage_file', side_effect=OSError('injected stage failure')), self.assertRaises(OSError):
                 export.export_composite_report(case(), target)
             self.assertTrue(target.is_dir()); self.assertEqual(list(target.iterdir()), [])
             invalid = case(); invalid['phases'][0]['bulk_modulus']['unit'] = 'psi'

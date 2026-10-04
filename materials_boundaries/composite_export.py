@@ -1,6 +1,7 @@
 """Conservative local export; manifest-last, not a crash-safe transaction.
 
-Paths are pinned with directory descriptors. Symlink components and '..' are
+On POSIX, paths are pinned with directory descriptors. Native Windows uses a
+separate local-NTFS backend that locks directories and rejects reparse points. Symlink components and '..' are
 refused. Files are published with exclusive hard links, never overwritten.
 Ordinary exceptions roll back only files still owned by this invocation.
 No guarantee is made against abrupt termination or a hostile concurrent writer.
@@ -93,6 +94,9 @@ def save_composite_instance(instance: dict, output) -> None:
     """Publish one valid new input atomically; never overwrite an existing path."""
     validate_instance(instance)
     data = json_bytes(instance)
+    if os.name == 'nt':
+        from ._composite_windows import save
+        return save(data, output)
     path = _safe_path(output)
     with _directory(path.parent) as parent_fd:
         temporary = '.composite-input-' + secrets.token_hex(16)
@@ -115,6 +119,9 @@ def save_composite_instance(instance: dict, output) -> None:
 def _publish_artifacts(contents: dict[str, bytes], output_dir) -> None:
     if tuple(contents) != ARTIFACTS:
         raise ValidationError('output: unexpected artifact names or order')
+    if os.name == 'nt':
+        from ._composite_windows import publish
+        return publish(contents, output_dir)
     path = _safe_path(output_dir)
     created_root = False
     with _directory(path.parent) as parent_fd:

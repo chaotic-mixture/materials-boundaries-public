@@ -1,6 +1,6 @@
 # 材料边界 · Materials Boundaries
 
-Current software release: **v0.28.0** · **Offline single-case composite report and replay** · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
+Current software release: **v0.28.1** · **Native Windows composite saving** · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
 
 A condition-aware, source-traceable materials-mechanics catalog and offline Python toolkit. It separates conditional mathematical bounds, model relations, published observations, computational predictions and synthetic demonstrations. Python 3.10+; no third-party runtime dependencies.
 
@@ -17,6 +17,8 @@ Repository: [chaotic-mixture/materials-boundaries-public](https://github.com/cha
 <!-- current-catalog-summary:end -->
 
 ## Start with one composite case
+
+Version **0.28.1** adds composite input/report saving on local Windows NTFS drives, with explicit refusal of reparse points, network/device paths and unsupported filesystems. POSIX safeguards and all scientific/report contracts are unchanged. See [Windows support and limitations](docs/COMPOSITE_WORKFLOW.md#filesystem-guarantees-and-limitations) and the [compatibility migration](docs/MIGRATION_v0.28.1.md). Native Windows CI must pass for the exact release candidate before its Windows behavior is considered verified.
 
 Version **0.28.0** turns the existing eight rules into one offline researcher workflow: explicit blank/terminal intake, a condition-and-evidence report for the supplied fractions, and closed software replay verification. It adds **no scientific records or rules**. Unknowns, partial availability, source gaps and independent-review=false stay visible. A successful replay does not verify a specimen or prove a theorem. [Workflow and safe-export contract](docs/COMPOSITE_WORKFLOW.md) · [Migration](docs/MIGRATION_v0.28.0.md)
 
