@@ -748,3 +748,191 @@ Attribution, source/DOI links, license/policy links and the descriptions of
 project-authored qualifications above identify the limited adaptation. Rights
 do not automatically extend to separately credited third-party material or
 unrelated assets. See the [full scientific scope](docs/MATERIAL_COVERAGE_v0.32.0.md).
+
+
+## Porous, natural and mineral references (v0.33.0)
+
+Eight selected density facts are transcribed from seven original experimental
+articles. Each article-specific notice identifies
+[Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/),
+independently inspected on 5 October 2026. Attribution, article/source links,
+license links and the limited changes described below apply to these selected
+facts. The project's MIT license does not relicense source articles or imply
+author/publisher endorsement. No source PDF, full HTML/XML, complete table,
+figure, screenshot or source dump is included.
+
+### Lupranol-based LPO-1 rigid polyurethane foam
+
+Aiga Ivdre, Mikelis Kirpluks, Arnis Abolins, Laima Vevere, Beatrise Sture,
+Aigars Paze, Daniela Godina, Janis Rizikovs and Ugis Cabulis (2024),
+*Rigid Polyurethane Foams’ Development and Optimization from Polyols Based on
+Depolymerized Suberin and Tall Oil Fatty Acids*, *Polymers* 16(7), 942.
+[DOI](https://doi.org/10.3390/polym16070942) ·
+[full article](https://pmc.ncbi.nlm.nih.gov/articles/PMC11013755/) ·
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+The original article XML permissions identify the article-level license.
+[Table 10, LPO-1 × Apparent density](https://pmc.ncbi.nlm.nih.gov/articles/PMC11013755/#polymers-16-00942-t010)
+supplies **43.2 kg/m³**. The selected optimized foam is the Table 9 Lupranol
+recipe, not the suberin-based SPO formulation despite the article title.
+
+Original curation preserves the apparent-density label, source-reported
+ISO 845:2006 method, room-temperature 24 h cure and unknown density aggregation,
+count, uncertainty and exact test temperature. Neither modeled target 45 nor
+compression-normalization 40 kg/m³ replaces the selected value. The 94 vol.%
+closed-cell content is not total porosity; cup and compression sample counts
+are not density counts. No other formulation or mechanical property is imported.
+Source ID: `ivdre_2024_lpo_rigid_pur`.
+
+### AMD5-derived open-cell aluminum-alloy SPS foam
+
+Alexandra Kosenko, Konstantin Pushnitsa, Artem Kim, Pavel Novikov and
+Anatoliy A. Popovich (2022), *Structural, Electrical, and Mechanical Properties
+Investigation of Open-Cell Aluminum Foams Obtained by Spark Plasma Sintering
+and Replication on Polyurethane Template*, *Materials* 15(3), 931.
+[DOI](https://doi.org/10.3390/ma15030931) ·
+[full article](https://pmc.ncbi.nlm.nih.gov/articles/PMC8839437/) ·
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+The original article XML permissions identify the article-level license.
+[Table 4, SPS × Density](https://pmc.ncbi.nlm.nih.gov/articles/PMC8839437/#materials-15-00931-t004)
+supplies **0.45 g/cm³**, with source unit/rounding retained.
+
+Original curation preserves the AMD5 Al–Mg–Ti input chemistry and selected SPS
+process, without declaring a final chemical assay or finished-material grade.
+Paraffin-sealed Archimedes weighing in ethanol is pore-inclusive, not skeletal;
+source apparent/bulk terminology, density n/aggregation/uncertainty and coating-
+volume correction remain unspecified. Table 4 “Underwater Weight” / ethanol
+and Table 6 g/m³ / selected Table 4 g/cm³ discrepancies remain explicit. The
+25 °C ethanol reference is not an asserted specimen-test setpoint. No ASD6
+replication result, compression property or third-party Table 6 comparison is
+selected. Source ID: `kosenko_2022_sps_al_foam`.
+
+### Quercus suber natural reproduction cork
+
+Denni Prasetia, Byantara Darsan Purusatama, Jong Ho Kim, Jae Hyuk Jang,
+Se-Yeong Park, Seung-Hwan Lee, Apri Heri Iswanto and Nam Hun Kim (2024),
+*Effects of boiling water treatment on the physical properties of Quercus
+variabilis virgin cork grown in Korea*, *Scientific Reports* 14, 5457.
+[DOI](https://doi.org/10.1038/s41598-024-56110-5) ·
+[publisher article](https://www.nature.com/articles/s41598-024-56110-5) ·
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+The inspected publisher PDF p.14 expressly supplies the license; the review
+applies to the PDF marked “corrected publication 2024”. Although the article
+title names Quercus variabilis, the selected original cell is the separate
+Quercus suber reproduction-cork comparator:
+[Table 5, Qs RC / Untreated / Density](https://pmc.ncbi.nlm.nih.gov/articles/PMC10914824/#Tab5),
+PDF p.9, **0.17 g/cm³**, with separately identified **SD 0.01 g/cm³**.
+
+Original curation preserves the unlabelled central aggregation as reported
+value, n=10 within the selected species/treatment group, air-dried mass/volume
+method, absent volume subprocedure, unspecified apparent/bulk label, moisture
+scope and conditioning versus test-temperature distinction. Study untreated
+does not mean never commercially processed. No mean, confidence/min-max range,
+other species' green density or boiled-cork identity is inferred. Broad
+composite mapping means natural hierarchical cork tissue, without an artificial
+binder claim. Source ID: `prasetia_2024_cork_physical`.
+
+### Moso and Guadua bamboo culms
+
+Ben Drury, Cameron Padfield, Mirko Russo, Lowri Swygart, Oliver Spalton,
+Sam Froggatt and Amir Mofidi (2023), *Assessment of the Compression Properties
+of Different Giant Bamboo Species for Sustainable Construction*,
+*Sustainability* 15(8), 6472.
+[DOI](https://doi.org/10.3390/su15086472) ·
+[publisher article](https://www.mdpi.com/2071-1050/15/8/6472) ·
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Article-specific PDF p.1 and publisher footer explicitly identify CC BY 4.0.
+Generic HTML `dc.rights` metadata instead mentions CC BY 3.0; the discrepancy
+is retained and the article-specific statement/PDF support the CC BY 4.0 notice.
+[Table 1, Moso and Guadua rows × ρ](https://www.mdpi.com/2071-1050/15/8/6472#table_body_display_sustainability-15-06472-t001),
+PDF p.6, supplies **746 kg/m³** and **655 kg/m³**, respectively.
+
+Original curation distinguishes Phyllostachys edulis from Guadua angustifolia,
+each a species average for six specimens (three nodal and three internodal),
+without a separately specified averaging estimator or density uncertainty.
+Fumigation applies to all shipping containers; Guadua also received borax and
+pierced nodes. One-year laboratory equilibration and study-wide 15.8% moisture
+do not establish exact species moisture or density-test climate. Density method
+and apparent/bulk basis remain unstated; ISO specimen/compression context is
+not a density-standard claim. No table-average reconstruction, mechanical CoV,
+generic untreated label, skeletal-density claim or central-lumen inclusion is
+inferred. The broad composite category means natural hierarchical tissue, not
+an engineered resin binder or laminate. Source ID: `drury_2023_bamboo_compression`.
+
+### Al-Taouab CP unfilled laboratory plaster
+
+Lokmane Saad Azzem and Nadir Bellel (2022), *Thermal and Physico-Chemical
+Characteristics of Plaster Reinforced with Wheat Straw for Use as Insulating
+Materials in Building*, *Buildings* 12(8), 1119.
+[DOI](https://doi.org/10.3390/buildings12081119) ·
+[publisher article](https://www.mdpi.com/2075-5309/12/8/1119) ·
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+The article-specific publisher copyright footer explicitly identifies CC BY 4.0.
+The selected original **1103.13 kg/m³** apparent density appears in
+[§4.3.1 first paragraph](https://www.mdpi.com/2075-5309/12/8/1119#sec4dot3dot1-buildings-12-01119),
+with Figure 11 and §3.2 Eq. (2) method context.
+
+Original curation preserves zero wheat straw, water/plaster 0.7, 72 h mold plus
+28 laboratory days, pore-inclusive mass/dimensional-volume method, and unknown
+density count, aggregation, uncertainty, moisture and test climate. The CP
+formulation is not a verified commercial grade, pure dihydrate or certified
+oven-dry specimen. Thermal-test temperatures, accuracy and dimensions and
+straw-only drying are not assigned to density. No thermal property is selected.
+Source ID: `saad_azzem_2022_plaster_wheat_straw`.
+
+### Boral-soil control fired-clay brick
+
+Abbas Mohajerani, Aruna Ukwatta, Tristan Jeffrey-Bailey, Michael Swaney,
+Mohtashim Ahmed, Glen Rodwell, Simon Bartolo, Nicky Eshtiaghi and
+Sujeeva Setunge (2019), *A Proposal for Recycling the World’s Unused Stockpiles
+of Treated Wastewater Sludge (Biosolids) in Fired-Clay Bricks*,
+*Buildings* 9(1), 14.
+[DOI](https://doi.org/10.3390/buildings9010014) ·
+[publisher article](https://www.mdpi.com/2075-5309/9/1/14) ·
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+The article-specific publisher copyright footer explicitly identifies CC BY 4.0.
+[Table 4, Bulk Density × Control Bricks](https://www.mdpi.com/2075-5309/9/1/14#table_body_display_buildings-09-00014-t004)
+provides the original **2122 kg/m³** bulk-density result, corroborated by §3.3.
+
+Original curation identifies the laboratory control as 100% supplied brick
+soil / 0% biosolids, not a marketed Boral product grade. It retains preparation,
+1100 °C firing / 3 h hold / furnace cooling, and unknown density-test climate,
+post-firing moisture and density submethod. The global triplicate/average
+statement is in the initial raw-material tests paragraph; its applicability to
+density is unclear. The selected value therefore has no asserted density mean,
+density-specific n=3 or uncertainty. No strength-row 25% composition, Table 11
+estimated data or regression-estimated conductivity is imported as a measured
+property. Source ID: `mohajerani_2019_biosolids_bricks`.
+
+### Upper Silesian K1 quartz-arenite sandstone
+
+Iwona Jonczy and Kamil Mucha (2022), *Relationships between the Petrographic
+and Abrasive Properties of Sandstones in the Aspect of Their Cutting*,
+*Energies* 15(7), 2692.
+[DOI](https://doi.org/10.3390/en15072692) ·
+[publisher article](https://www.mdpi.com/1996-1073/15/7/2692) ·
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+The article-specific publisher copyright footer explicitly identifies CC BY 4.0.
+[Table 3, γs × K1](https://www.mdpi.com/1996-1073/15/7/2692#table_body_display_energies-15-02692-t003)
+provides **2.34 ± 0.01 g/cm³** bulk density; §4.2 reports averages of five
+replicates without naming an arithmetic estimator or defining the ± kind.
+
+Original curation preserves the reported average and unspecified ± separately,
+without relabeling it SD, SE, CI, range or instrument error. It retains dry mass /
+specimen volume and the unresolved dimensions/hydrostatic-volume ambiguity,
+unknown exact mine, drying procedure and test climate. The 50 ± 0.5 mm cylinder
+dimensions are not density uncertainty. Petrographic proportions are not mass
+percentages; mechanical standards do not become density standards. No derived
+2.33–2.35 min/max interval, compressive strength or porosity property is selected.
+Source ID: `jonczy_mucha_2022_sandstones`.
+
+All selected facts are presented as the articles' own experimental results,
+without a separate third-party credit at the selected cells. This does not
+clear unrelated or separately credited article content. The limited adaptations
+are selected factual transcription, structured metadata, authored multilingual
+labels and source-scope qualifications. Source number/unit strings and reported
+precision are retained; no statistical reconstruction, raw-data reanalysis or
+source-asset republication is performed. Independent source-transcription and
+rights checks do not establish independent scientific validation, standard
+compliance, experimental replication, comprehensive errata/retraction review or
+final software/release success. See the [complete scientific scope](docs/MATERIAL_COVERAGE_v0.33.0.md)
+and [migration gates](docs/MIGRATION_v0.33.0.md).

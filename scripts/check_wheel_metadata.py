@@ -926,7 +926,133 @@ for prop in scientific_rows:
         require(prop['reported_value']['value_text'] in render_catalog(query_catalog('reference-properties', record_id=prop['id']), 'reference-properties', language),
                 'installed scientific-notation source precision lost')
 
+# The fifth density batch is a selected source-qualified subset, never a fixed
+# size for the live registry. Keep these checks additive to every earlier smoke.
+porous_density_facts = {
+    'ivdre2024_lpo1_rigid_pur': ('ivdre_2024_lpo_rigid_pur', '43.2', 'kg/m^3',
+        'apparent', 'reported_value', None, 'polymer'),
+    'kosenko2022_amd5_sps_foam': ('kosenko_2022_sps_al_foam', '0.45', 'g/cm^3',
+        'not_stated', 'reported_value', None, 'metal'),
+    'prasetia2024_qsuber_reproduction_cork': ('prasetia_2024_cork_physical', '0.17', 'g/cm^3',
+        'not_stated', 'reported_value', 10, 'composite'),
+    'drury2023_moso_bamboo_culm': ('drury_2023_bamboo_compression', '746', 'kg/m^3',
+        'not_stated', 'reported_mean', 6, 'composite'),
+    'drury2023_guadua_bamboo_culm': ('drury_2023_bamboo_compression', '655', 'kg/m^3',
+        'not_stated', 'reported_mean', 6, 'composite'),
+    'saadazzem2022_altaouab_cp_plaster': ('saad_azzem_2022_plaster_wheat_straw', '1103.13', 'kg/m^3',
+        'apparent', 'reported_value', None, 'inorganic'),
+    'mohajerani2019_boral_control_brick': ('mohajerani_2019_biosolids_bricks', '2122', 'kg/m^3',
+        'bulk', 'reported_value', None, 'inorganic'),
+    'jonczy2022_k1_quartz_arenite': ('jonczy_mucha_2022_sandstones', '2.34', 'g/cm^3',
+        'bulk', 'reported_mean', 5, 'inorganic'),
+}
+porous_density_caveats = {
+    'ivdre2024_lpo1_rigid_pur': ('Lupranol', 'not the suberin-based SPO', 'ISO 845:2006',
+        '24 h', 'not total porosity', '40 kg/m³'),
+    'kosenko2022_amd5_sps_foam': ('94.8 wt.% Al', '4.8 wt.% Mg', '0.4 wt.% Ti',
+        '550 °C', '38 MPa', '5 min', 'paraffin', 'ethanol', 'Underwater Weight',
+        'Table 6', 'g/m³', 'not a final bulk chemical assay'),
+    'prasetia2024_qsuber_reproduction_cork': ('Do not count boiled cork', 'Ten specimens',
+        'no independence of trees', 'KS F 2198', 'volume-measurement subprocedure is not stated',
+        'never mean ± SD'),
+    'drury2023_moso_bamboo_culm': ('fumigated for up to 24 h', 'Stored for one year',
+        'No borax treatment is stated', 'three nodal and three internodal',
+        'entire experimental cohort', 'Do not derive density', 'CC BY 3.0', 'CC BY 4.0'),
+    'drury2023_guadua_bamboo_culm': ('fumigated for up to 24 h', 'Stored for one year',
+        'Dipped in borax', 'internal nodes pierced', 'three nodal and three internodal',
+        'entire experimental cohort', 'Do not derive density', 'CC BY 3.0', 'CC BY 4.0'),
+    'saadazzem2022_altaouab_cp_plaster': ('Do not call the cured material pure dihydrate',
+        '0.7', '72 h', '28 days', 'density-specific specimen dimensions are unknown'),
+    'mohajerani2019_boral_control_brick': ('100 wt.%', '0% biosolids', '1100 °C',
+        'Do not assign density n=3', 'shrinkage', 'regression-estimated'),
+    'jonczy2022_k1_quartz_arenite': ('Five physical-property replicates',
+        'without claiming an explicitly specified arithmetic',
+        'does not unambiguously select exclusively geometric versus hydrostatic',
+        'EN 1926:2007', 'must not be transferred', 'Do not call it SD, SE, CI'),
+}
+porous_density_cli_outputs = 0
+for suffix, facts in porous_density_facts.items():
+    source_id, number, unit, basis, statistic, count, category = facts
+    property_id, state_id = 'refprop_' + suffix + '_mass_density', 'state_' + suffix
+    selected = query_catalog('reference-properties', record_id=property_id, source_id=source_id)
+    require([p['id'] for p in selected['records']] == [property_id],
+            'missing installed source-qualified fifth-batch property: ' + suffix)
+    prop = selected['records'][0]
+    state = next(s for s in materials['records'] if s['id'] == state_id)
+    identity = next(i for i in materials['identities'] if i['id'] == 'mat_' + suffix)
+    require(state['identity_id'] == identity['id'] and state['grade_id'] is None
+            and property_id in state['property_ids'] and identity['category'] == category,
+            'installed fifth-batch identity/state association changed: ' + suffix)
+    require((prop['material_state_id'], prop['quantity'], prop['reported_value']['kind'],
+             prop['reported_value']['number'], prop['reported_value']['value_text'],
+             prop['reported_value']['unit_code'], prop['density_basis'],
+             prop['summary_statistic'], prop['sample_count']['value'])
+            == (state_id, 'mass_density', 'scalar', number, number, unit, basis, statistic, count),
+            'installed fifth-batch value, unit, density basis or statistic changed: ' + suffix)
+    require(prop['conditions']['temperature']['status'] == 'not_reported_in_inspected_source'
+            and prop['conditions']['temperature']['text'] is None,
+            'installed fifth-batch acquired a density-test setpoint: ' + suffix)
+    require(prop['evidence_kind'] == 'published_experimental_reference'
+            and prop['determination_basis'] == 'source_reports_measurement'
+            and prop['evaluation_support'] == 'catalog_only'
+            and prop['universal_bound'] is False and prop['engineering_allowable'] is False
+            and prop['verification']['independent_scientific_review'] is False
+            and prop['verification']['raw_data_reanalysis'] is False,
+            'installed fifth-batch source fact acquired unsupported capability: ' + suffix)
+    uncertainty = prop['uncertainty']
+    if suffix == 'prasetia2024_qsuber_reproduction_cork':
+        require(prop['uncertainty_status'] == uncertainty['type'] == 'reported_measures'
+                and len(uncertainty['measures']) == 1, 'installed cork SD envelope changed')
+        measure = uncertainty['measures'][0]
+        require((measure['kind'], measure['availability'], measure['basis'],
+                 measure['reported_value']['number'], measure['reported_value']['value_text'],
+                 measure['reported_value']['unit_code'], measure['confidence_level'], measure['coverage_factor'])
+                == ('standard_deviation', 'numeric_reported', 'absolute', '0.01', '0.01', 'g/cm^3', None, None),
+                'installed cork separate source SD became inferred mean/CI/error')
+    elif suffix == 'jonczy2022_k1_quartz_arenite':
+        require(prop['uncertainty_status'] == uncertainty['type'] == 'reported_plus_minus_unspecified'
+                and (uncertainty['number'], uncertainty['value_text'], uncertainty['unit_code'],
+                     uncertainty['confidence_level'], uncertainty['coverage_factor'])
+                == ('0.01', '0.01', 'g/cm^3', None, None),
+                'installed K1 undefined plus/minus amplitude changed')
+    else:
+        require(uncertainty is None and prop['uncertainty_status'] == 'not_reported_in_inspected_source',
+                'installed fifth-batch unknown uncertainty was invented: ' + suffix)
+    for kind, identifier in (('materials', state_id), ('reference-properties', property_id)):
+        detail = query_catalog(kind, record_id=identifier, source_id=source_id)
+        require([r['id'] for r in detail['records']] == [identifier], 'installed exact selector changed')
+        for language in languages:
+            labels = material_labels(language)
+            for flag in ('--json', '--text'):
+                stdout = io.StringIO()
+                with redirect_stdout(stdout):
+                    code = main(['catalog', kind, '--id', identifier, '--source-id', source_id,
+                                 '--lang', language, flag])
+                text = stdout.getvalue()
+                require(code == 0 and '[missing:' not in text, 'installed fifth-batch CLI failed')
+                porous_density_cli_outputs += 1
+                if flag == '--json':
+                    require(json.loads(text) == detail, 'installed fifth-batch JSON changed by locale')
+                else:
+                    for required in (*porous_density_caveats[suffix], prop['uncertainty_note'],
+                                     prop['sample_count']['scope'], prop['source_document']['sha256'],
+                                     number + ' ' + prop['reported_value']['unit_text'],
+                                     labels['unknown_notice'], labels['caveat'], 'CC-BY-4.0'):
+                        require(required in text, 'installed fifth-batch disclosure lost: ' + required)
+                    if suffix == 'prasetia2024_qsuber_reproduction_cork':
+                        require(labels['central_aggregation_unknown_notice'] in text
+                                and labels['standard_deviation'] + ': 0.01 g/cm³' in text,
+                                'installed cork central-statistic unknown/SD disclosure lost')
+                    elif suffix == 'jonczy2022_k1_quartz_arenite':
+                        require(labels['plus_minus_unspecified'] + ': 0.01 g/cm³' in text
+                                and labels['standard_deviation'] + ':' not in text,
+                                'installed K1 undefined amplitude was relabeled SD')
+require(porous_density_cli_outputs == 128, 'installed fifth-batch detail coverage incomplete')
+
 print(json.dumps({"version": expected, "metadata_version": metadata_version,
+                  "material_porous_density_identities": len(porous_density_facts),
+                  "material_porous_density_cli_outputs": porous_density_cli_outputs,
+                  "material_porous_density_languages": languages,
                   "material_reported_measure_kinds": sorted(reported_measure_kinds), "material_reported_measure_languages": languages,
                   "material_uncertainty_types": sorted(uncertainty_variants), "material_uncertainty_languages": languages,
                   "reported_extraction_windows": sum(p["method_definition"]["extraction_window"] is not None for p in reference_properties["records"]),

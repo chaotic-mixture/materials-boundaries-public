@@ -1,0 +1,3532 @@
+{
+  "curated_on": "2026-10-05",
+  "scope": "Reviewed fifth-batch source transcriptions and qualifications, checked against independent decisions, original XML/HTML and natural-source table page renderings. Exact selected facts are frozen as a subset, not a limit on later appends. This is not experimental validation. Complete source assets are excluded.",
+  "records": [
+    {
+      "property_id": "refprop_ivdre2024_lpo1_rigid_pur_mass_density",
+      "state_id": "state_ivdre2024_lpo1_rigid_pur",
+      "identity_id": "mat_ivdre2024_lpo1_rigid_pur",
+      "expected_property": {
+        "id": "refprop_ivdre2024_lpo1_rigid_pur_mass_density",
+        "version": "1.0.0",
+        "material_state_id": "state_ivdre2024_lpo1_rigid_pur",
+        "quantity": "mass_density",
+        "quantity_dimension": "mass_per_volume",
+        "source_property_label": "Apparent density",
+        "reported_value": {
+          "kind": "scalar",
+          "value_text": "43.2",
+          "unit_text": "kg/m³",
+          "unit_code": "kg/m^3",
+          "number": "43.2"
+        },
+        "evidence_kind": "published_experimental_reference",
+        "reporting_basis": "reported_summary",
+        "determination_basis": "source_reports_measurement",
+        "basis_note": "Table 10 gives experimental characterization after optimization, not merely the modeled target. 43.2 kg/m³ is the selected measured apparent density. Do not substitute target density 45 kg/m³ or compression-normalization density 40 kg/m³. Statistical aggregation is not named.",
+        "conditions": {
+          "temperature": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "24 h at room temperature is curing. Do not copy 10 °C (thermal-conductivity mean plate temperature) or 25 °C (polyol rheometry) into the density test."
+          },
+          "test_standard": {
+            "status": "reported",
+            "text": "ISO 845:2006",
+            "evidence": [
+              {
+                "source_id": "ivdre_2024_lpo_rigid_pur",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+                "locator": "§2.8, paragraph ending with ISO 845:2006; /article/body/sec[2]/sec[8]/p[2]",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Source-reported standard; no independent compliance certification."
+          },
+          "test_method": {
+            "status": "reported",
+            "text": "Apparent density measured following ISO 845:2006; source does not provide a detailed measurement subprocedure. The named standard is source-reported, not independently verified compliance.",
+            "evidence": [
+              {
+                "source_id": "ivdre_2024_lpo_rigid_pur",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+                "locator": "§2.8, paragraph ending with ISO 845:2006; /article/body/sec[2]/sec[8]/p[2]",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": null
+          },
+          "direction": {
+            "status": "not_applicable",
+            "text": null,
+            "evidence": [],
+            "notes": "Mechanical loading direction is not applicable to scalar density; no isotropy inference."
+          },
+          "conditioning": {
+            "status": "reported",
+            "text": "Cured for 24 h at room temperature before additional testing",
+            "evidence": [
+              {
+                "source_id": "ivdre_2024_lpo_rigid_pur",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+                "locator": "§2.7",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Cure conditions are not density-test conditions."
+          },
+          "loading_rate": {
+            "status": "not_applicable",
+            "text": null,
+            "evidence": [],
+            "notes": "Mechanical loading rate is not applicable to selected mass density."
+          },
+          "additional_conditions": [
+            {
+              "name": "density_test_humidity",
+              "fact": {
+                "status": "not_reported_in_inspected_source",
+                "text": null,
+                "evidence": [],
+                "notes": "Actual relative humidity during density measurement is not stated; conditioning humidity does not establish it."
+              }
+            },
+            {
+              "name": "density_test_pressure",
+              "fact": {
+                "status": "not_reported_in_inspected_source",
+                "text": null,
+                "evidence": [],
+                "notes": "Density-test pressure is not stated; preparation pressure and other experiments do not establish it."
+              }
+            }
+          ]
+        },
+        "density_basis": "apparent",
+        "summary_statistic": "reported_value",
+        "uncertainty": null,
+        "uncertainty_status": "not_reported_in_inspected_source",
+        "uncertainty_note": "Table 10 supplies no uncertainty for apparent density; water-absorption ± values are unrelated.",
+        "sample_count": {
+          "value": null,
+          "relation": "not_reported",
+          "scope": "No unambiguous sample count for the selected optimized-foam density value. The 3 samples/formulation and 81 samples/series in §2.7 concern MRSM cup tests, not automatically this optimized large-mold density; the 6 cylinders concern mechanical tests.",
+          "source_statement": "No unambiguous sample count for the selected optimized-foam density value. The 3 samples/formulation and 81 samples/series in §2.7 concern MRSM cup tests, not automatically this optimized large-mold density; the 6 cylinders concern mechanical tests.",
+          "evidence": [
+            {
+              "source_id": "ivdre_2024_lpo_rigid_pur",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+              "locator": "§2.8, paragraph ending with ISO 845:2006; /article/body/sec[2]/sec[8]/p[2]",
+              "supports": [
+                "sample_count"
+              ]
+            }
+          ]
+        },
+        "method_definition": {
+          "type": "source_reported_conventional",
+          "definition": "Apparent density measured following ISO 845:2006; source does not provide a detailed measurement subprocedure. The named standard is source-reported, not independently verified compliance.",
+          "extraction_window": null,
+          "evidence": [
+            {
+              "source_id": "ivdre_2024_lpo_rigid_pur",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+              "locator": "§2.8, paragraph ending with ISO 845:2006; /article/body/sec[2]/sec[8]/p[2]",
+              "supports": [
+                "method",
+                "condition",
+                "classification"
+              ]
+            }
+          ]
+        },
+        "source_discrepancies": [],
+        "source_id": "ivdre_2024_lpo_rigid_pur",
+        "evidence": [
+          {
+            "source_id": "ivdre_2024_lpo_rigid_pur",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+            "locator": "Table 10, Apparent density row × LPO-1 column; HTML/XML id polymers-16-00942-t010",
+            "supports": [
+              "reported_value",
+              "classification"
+            ]
+          },
+          {
+            "source_id": "ivdre_2024_lpo_rigid_pur",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+            "locator": "§2.8, paragraph ending with ISO 845:2006; /article/body/sec[2]/sec[8]/p[2]",
+            "supports": [
+              "method",
+              "condition",
+              "classification"
+            ]
+          }
+        ],
+        "source_document": {
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+          "revision": "Original article asset retained and inspected on 2026-10-05; no formal version number verified.",
+          "inspected_on": "2026-10-05",
+          "sha256": "4e0c1a91a9ae26d814576961a3805f9371b46498d4861fb578e7a413bb4c726d",
+          "hash_status": "recorded",
+          "hash_note": null,
+          "inspection_scope": "Original source asset, selected identity/preparation, numerical density, method, statistical scope and article-specific rights inspected and independently source-transcription cross-checked. No raw-data reanalysis, experimental replication, comprehensive errata/retraction audit or independent scientific review.",
+          "inspection_status": "selected_content_inspected"
+        },
+        "scope_note": "Only the optimized Lupranol-based LPO-1 rigid PUR formulation characterized in this study. Lupranol 3300/3422 polyether polyols and polymeric MDI distinguish this formulation; it is not the suberin-based SPO series despite the article title. LPO-1 is a study formulation, not a certified product grade. Do not count LPO-2/LPO-3 as extra identities or substitute modeled target/normalization densities.",
+        "evaluation_support": "catalog_only",
+        "universal_bound": false,
+        "engineering_allowable": false,
+        "verification": {
+          "source_inspection_scope": "Original source asset, selected identity/preparation, numerical density, method, statistical scope and article-specific rights inspected and independently source-transcription cross-checked. No raw-data reanalysis, experimental replication, comprehensive errata/retraction audit or independent scientific review.",
+          "transcription_cross_check": "completed",
+          "independent_scientific_review": false,
+          "raw_data_reanalysis": false
+        }
+      },
+      "expected_material_state": {
+        "id": "state_ivdre2024_lpo1_rigid_pur",
+        "version": "1.0.0",
+        "identity_id": "mat_ivdre2024_lpo1_rigid_pur",
+        "grade_id": null,
+        "name": "Optimized LPO-1 free-rise foam, 24 h room-temperature cure",
+        "names": {
+          "en": "Optimized LPO-1 free-rise foam, 24 h room-temperature cure",
+          "zh": "优化 LPO-1 自由发泡泡沫，室温固化 24 h",
+          "ja": "最適化 LPO-1 自由発泡フォーム、室温24 h硬化",
+          "de": "Optimierter frei aufgeschäumter LPO-1-Schaum, 24 h bei Raumtemperatur gehärtet"
+        },
+        "aliases": [],
+        "source_designation": "LPO-1, Table 9 formulation and Table 10 experimental characterization",
+        "state": {
+          "product_form": {
+            "status": "reported",
+            "text": "Optimized free-rise rigid foam cast in a 30 × 30 × 10 cm mold",
+            "evidence": [
+              {
+                "source_id": "ivdre_2024_lpo_rigid_pur",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+                "locator": "§2.7",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": null
+          },
+          "processing": {
+            "status": "reported",
+            "text": "Polyol components mechanically mixed about 2 min at 2000 rpm; physical blowing agent added last and mixed about 1 min; pMDI mixed 10 s before pouring",
+            "evidence": [
+              {
+                "source_id": "ivdre_2024_lpo_rigid_pur",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+                "locator": "§2.7",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": null
+          },
+          "temper_or_heat_treatment": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Not reported for the selected source result."
+          },
+          "conditioning": {
+            "status": "reported",
+            "text": "Cured for 24 h at room temperature before additional testing",
+            "evidence": [
+              {
+                "source_id": "ivdre_2024_lpo_rigid_pur",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+                "locator": "§2.7",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Cure conditions are not density-test conditions."
+          },
+          "composition_or_purity": {
+            "status": "reported",
+            "text": "Table 9 LPO-1 formulation inputs: Lupranol 3300 40 g; Lupranol 3422 60 g; total water 2.0 g; Opteon 1100 16.3 g; Polycat NP10 4 g; PC CAT TKA 30 0.5 g; Niax Silicone L-6915 2.5 g; TCPP 25.3 g; pMDI (Desmodur 44 V20 L) 165 g. Table footnotes state TCPP was adjusted to 8 wt.% of total foam mass and pMDI to NCO/OH ratio 1.2.",
+            "evidence": [
+              {
+                "source_id": "ivdre_2024_lpo_rigid_pur",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+                "locator": "§2.4 and Table 9 LPO-1 column and footnotes",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "These are formulation inputs, not a measured cured-foam elemental composition or purity certification."
+          },
+          "reinforcement": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "No quantitative reinforcement specification is assigned to this selected source-qualified material."
+          },
+          "porosity": {
+            "status": "reported",
+            "text": "Closed-cell content 94 vol.%",
+            "evidence": [
+              {
+                "source_id": "ivdre_2024_lpo_rigid_pur",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+                "locator": "Table 10, LPO-1 / Closed cell content; §2.8 ISO 4590:2016",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Closed-cell content is not total porosity. Do not set total void fraction to 94%."
+          },
+          "orientation": {
+            "status": "not_applicable",
+            "text": null,
+            "evidence": [],
+            "notes": "Direction is not applicable to this scalar mass-density selection; no isotropy is established."
+          }
+        },
+        "source_scope": "Only the optimized Lupranol-based LPO-1 rigid PUR formulation characterized in this study. Lupranol 3300/3422 polyether polyols and polymeric MDI distinguish this formulation; it is not the suberin-based SPO series despite the article title. LPO-1 is a study formulation, not a certified product grade. Do not count LPO-2/LPO-3 as extra identities or substitute modeled target/normalization densities.",
+        "evidence": [
+          {
+            "source_id": "ivdre_2024_lpo_rigid_pur",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+            "locator": "§2.4; §3.3 Table 9, LPO-1 column; §3.4 Table 10",
+            "supports": [
+              "state"
+            ]
+          }
+        ],
+        "property_ids": [
+          "refprop_ivdre2024_lpo1_rigid_pur_mass_density"
+        ],
+        "evaluation_support": "catalog_only"
+      },
+      "expected_identity": {
+        "id": "mat_ivdre2024_lpo1_rigid_pur",
+        "version": "1.0.0",
+        "category": "polymer",
+        "name": "LPO-1 rigid polyurethane foam (Ivdre 2024)",
+        "names": {
+          "en": "LPO-1 rigid polyurethane foam (Ivdre 2024)",
+          "zh": "LPO-1 硬质聚氨酯泡沫（Ivdre 2024）",
+          "ja": "LPO-1 硬質ポリウレタンフォーム（Ivdre 2024）",
+          "de": "LPO-1-Polyurethan-Hartschaum (Ivdre 2024)"
+        },
+        "aliases": [],
+        "identity_scope": "Only the optimized Lupranol-based LPO-1 rigid PUR formulation characterized in this study. Lupranol 3300/3422 polyether polyols and polymeric MDI distinguish this formulation; it is not the suberin-based SPO series despite the article title. LPO-1 is a study formulation, not a certified product grade. Do not count LPO-2/LPO-3 as extra identities or substitute modeled target/normalization densities.",
+        "evidence": [
+          {
+            "source_id": "ivdre_2024_lpo_rigid_pur",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+            "locator": "§2.4; §3.3 Table 9, LPO-1 column; §3.4 Table 10",
+            "supports": [
+              "material_identity",
+              "state"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "property_id": "refprop_kosenko2022_amd5_sps_foam_mass_density",
+      "state_id": "state_kosenko2022_amd5_sps_foam",
+      "identity_id": "mat_kosenko2022_amd5_sps_foam",
+      "expected_property": {
+        "id": "refprop_kosenko2022_amd5_sps_foam_mass_density",
+        "version": "1.0.0",
+        "material_state_id": "state_kosenko2022_amd5_sps_foam",
+        "quantity": "mass_density",
+        "quantity_dimension": "mass_per_volume",
+        "source_property_label": "Density",
+        "reported_value": {
+          "kind": "scalar",
+          "value_text": "0.45",
+          "unit_text": "g/cm³",
+          "unit_code": "g/cm^3",
+          "number": "0.45"
+        },
+        "evidence_kind": "published_experimental_reference",
+        "reporting_basis": "reported_summary",
+        "determination_basis": "source_reports_measurement",
+        "basis_note": "Source-reported selected experimental density value; no mean, distribution, uncertainty interval or engineering allowable is inferred.",
+        "conditions": {
+          "temperature": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "The source specifies ethanol density 0.785 g/cm³ at 25 °C. This is a fluid-density reference; it does not unambiguously state the actual density-test temperature."
+          },
+          "test_standard": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "No density-specific test standard is reported."
+          },
+          "test_method": {
+            "status": "reported",
+            "text": "§3.3: hydrostatic/Archimedes weighing, dry air weighing then paraffin coating to block fluid entry, air and ethanol weighing. The article does not state a named density standard or a detailed coating-volume correction. Paraffin-sealed hydrostatic weighing measures a pore-inclusive foam-envelope density; not a skeletal density. Source does not explicitly label foam value apparent or bulk, so retain not_stated code and preserve method. Source phrase bulk aluminum denotes the dense comparison material, not the foam.",
+            "evidence": [
+              {
+                "source_id": "kosenko_2022_sps_al_foam",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8839437/fullTextXML",
+                "locator": "§3.3 Porosity, paragraph and Table 4; /article/body/sec[3]/sec[3]/p",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": null
+          },
+          "direction": {
+            "status": "not_applicable",
+            "text": null,
+            "evidence": [],
+            "notes": "Mechanical loading direction is not applicable to scalar density; no isotropy inference."
+          },
+          "conditioning": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Table 4 identifies dry weights; precise drying protocol, humidity and pre-test storage not reported"
+          },
+          "loading_rate": {
+            "status": "not_applicable",
+            "text": null,
+            "evidence": [],
+            "notes": "Mechanical loading rate is not applicable to selected mass density."
+          },
+          "additional_conditions": [
+            {
+              "name": "density_test_humidity",
+              "fact": {
+                "status": "not_reported_in_inspected_source",
+                "text": null,
+                "evidence": [],
+                "notes": "Actual relative humidity during density measurement is not stated; conditioning humidity does not establish it."
+              }
+            },
+            {
+              "name": "density_test_pressure",
+              "fact": {
+                "status": "not_reported_in_inspected_source",
+                "text": null,
+                "evidence": [],
+                "notes": "Density-test pressure is not stated; preparation pressure and other experiments do not establish it."
+              }
+            }
+          ]
+        },
+        "density_basis": "not_stated",
+        "summary_statistic": "reported_value",
+        "uncertainty": null,
+        "uncertainty_status": "not_reported_in_inspected_source",
+        "uncertainty_note": "No density SD or measurement uncertainty reported.",
+        "sample_count": {
+          "value": null,
+          "relation": "not_reported",
+          "scope": "The SPS row is one reported condition/result; number of density specimens or repeated weighings is not stated. Do not reuse n=3 for compression/electrical tests.",
+          "source_statement": "The SPS row is one reported condition/result; number of density specimens or repeated weighings is not stated. Do not reuse n=3 for compression/electrical tests.",
+          "evidence": [
+            {
+              "source_id": "kosenko_2022_sps_al_foam",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8839437/fullTextXML",
+              "locator": "§3.3 Porosity, paragraph and Table 4; /article/body/sec[3]/sec[3]/p",
+              "supports": [
+                "sample_count"
+              ]
+            }
+          ]
+        },
+        "method_definition": {
+          "type": "source_reported_conventional",
+          "definition": "§3.3: hydrostatic/Archimedes weighing, dry air weighing then paraffin coating to block fluid entry, air and ethanol weighing. The article does not state a named density standard or a detailed coating-volume correction. Paraffin-sealed hydrostatic weighing measures a pore-inclusive foam-envelope density; not a skeletal density. Source does not explicitly label foam value apparent or bulk, so retain not_stated code and preserve method. Source phrase bulk aluminum denotes the dense comparison material, not the foam.",
+          "extraction_window": null,
+          "evidence": [
+            {
+              "source_id": "kosenko_2022_sps_al_foam",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8839437/fullTextXML",
+              "locator": "§3.3 Porosity, paragraph and Table 4; /article/body/sec[3]/sec[3]/p",
+              "supports": [
+                "method",
+                "condition",
+                "classification"
+              ]
+            }
+          ]
+        },
+        "source_discrepancies": [
+          {
+            "description": "Table 6 labels the repeated density row g/m³ although Table 4 correctly labels the selected data g/cm³ and foam magnitude/porosity discussion are consistent with g/cm³.",
+            "disposition": "Transcribe exact selected Table 4 0.45 g/cm³ with locator; flag Table 6 unit typo rather than silently correcting or using it as independent evidence.",
+            "evidence": [
+              {
+                "source_id": "kosenko_2022_sps_al_foam",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8839437/fullTextXML",
+                "locator": "§3.3, Tables 4 and 6",
+                "supports": [
+                  "source_discrepancy"
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Table 4 column is labeled Underwater Weight, while §3.3 explicitly says immersed in ethanol.",
+            "disposition": "Retain original table label in source extract, describe method exactly from §3.3, and flag the mismatch. Do not infer water immersion.",
+            "evidence": [
+              {
+                "source_id": "kosenko_2022_sps_al_foam",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8839437/fullTextXML",
+                "locator": "§3.3, Tables 4 and 6",
+                "supports": [
+                  "source_discrepancy"
+                ]
+              }
+            ]
+          },
+          {
+            "description": "§2.2 describes an average powder size of 90 μm; §2.1 gives d50 51.6 μm and d90 95.9 μm.",
+            "disposition": "Retain these distinct source statements; do not equate average, median and d90 or use them as density specimen dimensions.",
+            "evidence": [
+              {
+                "source_id": "kosenko_2022_sps_al_foam",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8839437/fullTextXML",
+                "locator": "§§2.1–2.2",
+                "supports": [
+                  "source_discrepancy"
+                ]
+              }
+            ]
+          }
+        ],
+        "source_id": "kosenko_2022_sps_al_foam",
+        "evidence": [
+          {
+            "source_id": "kosenko_2022_sps_al_foam",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8839437/fullTextXML",
+            "locator": "Table 4, SPS row, Density g/cm³ column; HTML/XML id materials-15-00931-t004",
+            "supports": [
+              "reported_value",
+              "classification"
+            ]
+          },
+          {
+            "source_id": "kosenko_2022_sps_al_foam",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8839437/fullTextXML",
+            "locator": "§3.3 Porosity, paragraph and Table 4; /article/body/sec[3]/sec[3]/p",
+            "supports": [
+              "method",
+              "condition",
+              "classification"
+            ]
+          }
+        ],
+        "source_document": {
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8839437/fullTextXML",
+          "revision": "Original article asset retained and inspected on 2026-10-05; no formal version number verified.",
+          "inspected_on": "2026-10-05",
+          "sha256": "5fd0c6fe137c764bf6ca020663c2e52f7ba696f2ad8dda3fc3b4f49be1fdcb7c",
+          "hash_status": "recorded",
+          "hash_note": null,
+          "inspection_scope": "Original source asset, selected identity/preparation, numerical density, method, statistical scope and article-specific rights inspected and independently source-transcription cross-checked. No raw-data reanalysis, experimental replication, comprehensive errata/retraction audit or independent scientific review.",
+          "inspection_status": "selected_content_inspected"
+        },
+        "scope_note": "Only the selected AMD5-derived SPS foam produced at 550 °C/38 MPa, with the specified NaCl space holders. It is a porous Al–Mg–Ti alloy, not pure aluminum and not Hydro 6061 already in the catalog. AMD5 is the input-powder designation, not an independently verified final-foam grade. Do not import the ASD6 replication route or third-party comparison values.",
+        "evaluation_support": "catalog_only",
+        "universal_bound": false,
+        "engineering_allowable": false,
+        "verification": {
+          "source_inspection_scope": "Original source asset, selected identity/preparation, numerical density, method, statistical scope and article-specific rights inspected and independently source-transcription cross-checked. No raw-data reanalysis, experimental replication, comprehensive errata/retraction audit or independent scientific review.",
+          "transcription_cross_check": "completed",
+          "independent_scientific_review": false,
+          "raw_data_reanalysis": false
+        }
+      },
+      "expected_material_state": {
+        "id": "state_kosenko2022_amd5_sps_foam",
+        "version": "1.0.0",
+        "identity_id": "mat_kosenko2022_amd5_sps_foam",
+        "grade_id": null,
+        "name": "AMD5/NaCl foam, SPS 550 °C and 38 MPa, hot-water leached",
+        "names": {
+          "en": "AMD5/NaCl foam, SPS 550 °C and 38 MPa, hot-water leached",
+          "zh": "AMD5/NaCl 泡沫，550 °C、38 MPa SPS 后热水浸出",
+          "ja": "AMD5/NaClフォーム、550 °C・38 MPaのSPS後に熱水浸出",
+          "de": "AMD5/NaCl-Schaum, SPS bei 550 °C und 38 MPa, heißwasserausgelaugt"
+        },
+        "aliases": [],
+        "source_designation": "SPS, Table 4; AMD5 input powder",
+        "state": {
+          "product_form": {
+            "status": "reported",
+            "text": "Open-cell aluminum-alloy foam produced by spark plasma sintering with NaCl space holders",
+            "evidence": [
+              {
+                "source_id": "kosenko_2022_sps_al_foam",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8839437/fullTextXML",
+                "locator": "§2.2",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Mechanical disk dimensions 19 mm × 2 mm do not independently establish density-coupon dimensions."
+          },
+          "processing": {
+            "status": "reported",
+            "text": "NaCl space holders with source-reported average particle size 500–1000 µm; Vibratory mixing 90 min; initial pressing in graphite mold at 5 MPa; SPS at 550 °C, 38 MPa for 5 min with 2–4 ms pulses and 2 ms pauses; hot-water leaching for 12 h",
+            "evidence": [
+              {
+                "source_id": "kosenko_2022_sps_al_foam",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8839437/fullTextXML",
+                "locator": "§2.2",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": null
+          },
+          "temper_or_heat_treatment": {
+            "status": "reported",
+            "text": "SPS at 550 °C, 38 MPa for 5 min; hot-water leaching for 12 h",
+            "evidence": [
+              {
+                "source_id": "kosenko_2022_sps_al_foam",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8839437/fullTextXML",
+                "locator": "§2.2",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "SPS process conditions are not density-test temperature or pressure."
+          },
+          "conditioning": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Table 4 identifies dry weights; precise drying protocol, humidity and pre-test storage not reported"
+          },
+          "composition_or_purity": {
+            "status": "reported",
+            "text": "AMD5 input powder: 94.8 wt.% Al, 4.8 wt.% Mg and 0.4 wt.% Ti; powder/NaCl mass ratio 10:90 and volume ratio 8:92",
+            "evidence": [
+              {
+                "source_id": "kosenko_2022_sps_al_foam",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8839437/fullTextXML",
+                "locator": "§2.2 and Table 2",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Input composition is not a final bulk chemical assay. Source EDX describes residual Na and Cl below 1 wt.% without resolving separate versus combined amounts; sulfur is attributed to salt impurity."
+          },
+          "reinforcement": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "No quantitative reinforcement specification is assigned to this selected source-qualified material."
+          },
+          "porosity": {
+            "status": "reported",
+            "text": "83% source-calculated porosity using foam density and approximately 2.7 g/cm³ dense-aluminum reference",
+            "evidence": [
+              {
+                "source_id": "kosenko_2022_sps_al_foam",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8839437/fullTextXML",
+                "locator": "§3.3 Eq. (1) and Table 4",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Not a separately measured open-pore fraction; the foam is an alloy, and no recalculation or reference-density substitution is performed."
+          },
+          "orientation": {
+            "status": "not_applicable",
+            "text": null,
+            "evidence": [],
+            "notes": "Direction is not applicable to this scalar mass-density selection; no isotropy is established."
+          }
+        },
+        "source_scope": "Only the selected AMD5-derived SPS foam produced at 550 °C/38 MPa, with the specified NaCl space holders. It is a porous Al–Mg–Ti alloy, not pure aluminum and not Hydro 6061 already in the catalog. AMD5 is the input-powder designation, not an independently verified final-foam grade. Do not import the ASD6 replication route or third-party comparison values.",
+        "evidence": [
+          {
+            "source_id": "kosenko_2022_sps_al_foam",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8839437/fullTextXML",
+            "locator": "§2.2; §3.1 Table 2; §3.2",
+            "supports": [
+              "state"
+            ]
+          }
+        ],
+        "property_ids": [
+          "refprop_kosenko2022_amd5_sps_foam_mass_density"
+        ],
+        "evaluation_support": "catalog_only"
+      },
+      "expected_identity": {
+        "id": "mat_kosenko2022_amd5_sps_foam",
+        "version": "1.0.0",
+        "category": "metal",
+        "name": "AMD5-derived open-cell aluminum-alloy SPS foam (Kosenko 2022)",
+        "names": {
+          "en": "AMD5-derived open-cell aluminum-alloy SPS foam (Kosenko 2022)",
+          "zh": "AMD5 原料制成的开孔铝合金 SPS 泡沫（Kosenko 2022）",
+          "ja": "AMD5由来の開気孔アルミニウム合金SPSフォーム（Kosenko 2022）",
+          "de": "Offenzelliger SPS-Aluminiumlegierungsschaum aus AMD5 (Kosenko 2022)"
+        },
+        "aliases": [],
+        "identity_scope": "Only the selected AMD5-derived SPS foam produced at 550 °C/38 MPa, with the specified NaCl space holders. It is a porous Al–Mg–Ti alloy, not pure aluminum and not Hydro 6061 already in the catalog. AMD5 is the input-powder designation, not an independently verified final-foam grade. Do not import the ASD6 replication route or third-party comparison values.",
+        "evidence": [
+          {
+            "source_id": "kosenko_2022_sps_al_foam",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8839437/fullTextXML",
+            "locator": "§2.2; §3.1 Table 2; §3.2",
+            "supports": [
+              "material_identity",
+              "state"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "property_id": "refprop_prasetia2024_qsuber_reproduction_cork_mass_density",
+      "state_id": "state_prasetia2024_qsuber_reproduction_cork",
+      "identity_id": "mat_prasetia2024_qsuber_reproduction_cork",
+      "expected_property": {
+        "id": "refprop_prasetia2024_qsuber_reproduction_cork_mass_density",
+        "version": "1.0.0",
+        "material_state_id": "state_prasetia2024_qsuber_reproduction_cork",
+        "quantity": "mass_density",
+        "quantity_dimension": "mass_per_volume",
+        "source_property_label": "Density (g/cm³)",
+        "reported_value": {
+          "kind": "scalar",
+          "value_text": "0.17",
+          "unit_text": "g/cm³",
+          "unit_code": "g/cm^3",
+          "number": "0.17"
+        },
+        "evidence_kind": "published_experimental_reference",
+        "reporting_basis": "reported_summary",
+        "determination_basis": "source_reports_measurement",
+        "basis_note": "Table 5 caption explicitly defines parentheses as standard deviations, but does not explicitly label the central numbers as means. A mean interpretation is plausible from study context but remains an inference. Import summary_statistic=reported_value, central estimate 0.17 g/cm^3, SD 0.01 g/cm^3, n=10; no confidence interval or measured min/max range is reported.",
+        "conditions": {
+          "temperature": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Exact density-test temperature is not reported; preparation, conditioning and other tests do not supply a density-test setpoint."
+          },
+          "test_standard": {
+            "status": "reported",
+            "text": "KS F 2198",
+            "evidence": [
+              {
+                "source_id": "prasetia_2024_cork_physical",
+                "url": "https://www.nature.com/articles/s41598-024-56110-5.pdf",
+                "locator": "Methods > Moisture content and density, Eq. (3); PDF pp.3–4 / PMC #Sec11",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Source-reported standard; no independent compliance certification."
+          },
+          "test_method": {
+            "status": "reported",
+            "text": "Air-dried specimen mass Ma divided by air-dried specimen volume Va, Eq. (3); Korean standard KS F 2198 The source calls this density, without bulk/apparent/true terminology. Eq. (3) specifies whole air-dried specimen mass divided by whole air-dried specimen volume. The volume-measurement subprocedure is not stated. Keep schema density_basis=not_stated; do not claim an explicitly geometric or skeletal-density method.",
+            "evidence": [
+              {
+                "source_id": "prasetia_2024_cork_physical",
+                "url": "https://www.nature.com/articles/s41598-024-56110-5.pdf",
+                "locator": "Methods > Moisture content and density, Eq. (3); PDF pp.3–4 / PMC #Sec11",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": null
+          },
+          "direction": {
+            "status": "not_applicable",
+            "text": null,
+            "evidence": [],
+            "notes": "Mechanical loading direction is not applicable to scalar density; no isotropy inference."
+          },
+          "conditioning": {
+            "status": "reported",
+            "text": "Conditioning room at 25 ± 5 °C and 60 ± 5% relative humidity; selected air-dried specimen state",
+            "evidence": [
+              {
+                "source_id": "prasetia_2024_cork_physical",
+                "url": "https://www.nature.com/articles/s41598-024-56110-5.pdf",
+                "locator": "PDF p.2 Materials",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Conditioning values are not exact density-test temperature or RH."
+          },
+          "loading_rate": {
+            "status": "not_applicable",
+            "text": null,
+            "evidence": [],
+            "notes": "Mechanical loading rate is not applicable to selected mass density."
+          },
+          "additional_conditions": [
+            {
+              "name": "density_test_humidity",
+              "fact": {
+                "status": "not_reported_in_inspected_source",
+                "text": null,
+                "evidence": [],
+                "notes": "Actual relative humidity during density measurement is not stated; conditioning humidity does not establish it."
+              }
+            },
+            {
+              "name": "density_test_pressure",
+              "fact": {
+                "status": "not_reported_in_inspected_source",
+                "text": null,
+                "evidence": [],
+                "notes": "Density-test pressure is not stated; preparation pressure and other experiments do not establish it."
+              }
+            },
+            {
+              "name": "moisture_content",
+              "fact": {
+                "status": "reported",
+                "text": "Selected Qs RC untreated air-dried moisture content 4.61%, with parenthetical SD 0.34 percentage points",
+                "evidence": [
+                  {
+                    "source_id": "prasetia_2024_cork_physical",
+                    "url": "https://www.nature.com/articles/s41598-024-56110-5.pdf",
+                    "locator": "Table 5, Qs RC Untreated, PDF p.9",
+                    "supports": [
+                      "condition"
+                    ]
+                  }
+                ],
+                "notes": "Separate moisture summary; not density uncertainty or exact moisture of every specimen."
+              }
+            }
+          ]
+        },
+        "density_basis": "not_stated",
+        "summary_statistic": "reported_value",
+        "uncertainty": {
+          "type": "reported_measures",
+          "measures": [
+            {
+              "kind": "standard_deviation",
+              "availability": "numeric_reported",
+              "basis": "absolute",
+              "reported_value": {
+                "number": "0.01",
+                "value_text": "0.01",
+                "unit_text": "g/cm³",
+                "unit_code": "g/cm^3"
+              },
+              "qualifier": "not_qualified_in_source",
+              "scope": "Selected Qs RC untreated density group; Table 5 parenthetical standard deviation. No independence, divisor, confidence construction or standard error is asserted.",
+              "evidence": [
+                {
+                  "source_id": "prasetia_2024_cork_physical",
+                  "url": "https://www.nature.com/articles/s41598-024-56110-5.pdf",
+                  "locator": "Table 5 caption defining parentheses as standard deviations and Qs RC Untreated density cell, PDF p.9",
+                  "supports": [
+                    "uncertainty"
+                  ]
+                }
+              ],
+              "confidence_level": null,
+              "coverage_factor": null,
+              "note": "The central density aggregation is not explicitly named. Preserve reported_value; SD identification does not establish a reported mean."
+            }
+          ]
+        },
+        "uncertainty_status": "reported_measures",
+        "uncertainty_note": "0.17 (0.01) g/cm³: Table 5 identifies parentheses as standard deviations. Central aggregation is not explicitly named; retain reported_value with separately typed SD, never mean ± SD, SEM, confidence interval or measured min/max range.",
+        "sample_count": {
+          "value": 10,
+          "relation": "exact",
+          "scope": "Ten specimens in the selected Qs RC untreated density group; no independence of trees, planks or measurements is established.",
+          "source_statement": "Ten specimens in the selected Qs RC untreated density group; no independence of trees, planks or measurements is established.",
+          "evidence": [
+            {
+              "source_id": "prasetia_2024_cork_physical",
+              "url": "https://www.nature.com/articles/s41598-024-56110-5.pdf",
+              "locator": "Table 2, density row, PDF p.3; Table 5 group selection, PDF p.9",
+              "supports": [
+                "sample_count"
+              ]
+            }
+          ]
+        },
+        "method_definition": {
+          "type": "source_reported_conventional",
+          "definition": "Air-dried specimen mass Ma divided by air-dried specimen volume Va, Eq. (3); Korean standard KS F 2198 The source calls this density, without bulk/apparent/true terminology. Eq. (3) specifies whole air-dried specimen mass divided by whole air-dried specimen volume. The volume-measurement subprocedure is not stated. Keep schema density_basis=not_stated; do not claim an explicitly geometric or skeletal-density method.",
+          "extraction_window": null,
+          "evidence": [
+            {
+              "source_id": "prasetia_2024_cork_physical",
+              "url": "https://www.nature.com/articles/s41598-024-56110-5.pdf",
+              "locator": "Methods > Moisture content and density, Eq. (3); PDF pp.3–4 / PMC #Sec11",
+              "supports": [
+                "method",
+                "condition",
+                "classification"
+              ]
+            }
+          ]
+        },
+        "source_discrepancies": [],
+        "source_id": "prasetia_2024_cork_physical",
+        "evidence": [
+          {
+            "source_id": "prasetia_2024_cork_physical",
+            "url": "https://www.nature.com/articles/s41598-024-56110-5.pdf",
+            "locator": "Table 5, Qs RC, Untreated row, Density column; PDF p.9 / PMC #Tab5",
+            "supports": [
+              "reported_value",
+              "classification"
+            ]
+          },
+          {
+            "source_id": "prasetia_2024_cork_physical",
+            "url": "https://www.nature.com/articles/s41598-024-56110-5.pdf",
+            "locator": "Methods > Moisture content and density, Eq. (3); PDF pp.3–4 / PMC #Sec11",
+            "supports": [
+              "method",
+              "condition",
+              "classification"
+            ]
+          },
+          {
+            "source_id": "prasetia_2024_cork_physical",
+            "url": "https://www.nature.com/articles/s41598-024-56110-5.pdf",
+            "locator": "Table 5 caption defining parentheses as standard deviations and Qs RC Untreated density cell, PDF p.9",
+            "supports": [
+              "uncertainty"
+            ]
+          }
+        ],
+        "source_document": {
+          "url": "https://www.nature.com/articles/s41598-024-56110-5.pdf",
+          "revision": "Original article asset retained and inspected on 2026-10-05; no formal version number verified.",
+          "inspected_on": "2026-10-05",
+          "sha256": "d7478930be36c2a5b8855b7ce5e76f30e704728d4e5e138e48b5b4bba442d584",
+          "hash_status": "recorded",
+          "hash_note": null,
+          "inspection_scope": "Original source asset, selected identity/preparation, numerical density, method, statistical scope and article-specific rights inspected and independently source-transcription cross-checked. Publisher PDF Table 5 p.9 visually reviewed; No raw-data reanalysis, experimental replication, comprehensive errata/retraction audit or independent scientific review.",
+          "inspection_status": "selected_content_inspected"
+        },
+        "scope_note": "Natural reproduction cork tissue of Quercus suber from two Portuguese Castelo Branco cork-forest planks, Amorim Group, supplied through FC Korea Land. Composite is a broad mapping for hierarchical natural tissue, not an agglomerated binder composite or engineered resin product. Untreated means no study boiling intervention, not historically never treated. No commercial quality grade is established. Do not count boiled cork as a second identity or import Q. variabilis virgin-cork green density.",
+        "evaluation_support": "catalog_only",
+        "universal_bound": false,
+        "engineering_allowable": false,
+        "verification": {
+          "source_inspection_scope": "Original source asset, selected identity/preparation, numerical density, method, statistical scope and article-specific rights inspected and independently source-transcription cross-checked. Publisher PDF Table 5 p.9 visually reviewed; No raw-data reanalysis, experimental replication, comprehensive errata/retraction audit or independent scientific review.",
+          "transcription_cross_check": "completed",
+          "independent_scientific_review": false,
+          "raw_data_reanalysis": false
+        }
+      },
+      "expected_material_state": {
+        "id": "state_prasetia2024_qsuber_reproduction_cork",
+        "version": "1.0.0",
+        "identity_id": "mat_prasetia2024_qsuber_reproduction_cork",
+        "grade_id": null,
+        "name": "Qs RC untreated study group, air-dried cubes",
+        "names": {
+          "en": "Qs RC untreated study group, air-dried cubes",
+          "zh": "Qs RC 研究未煮沸组，气干立方体试样",
+          "ja": "Qs RCの研究上の未煮沸群、気乾立方体試料",
+          "de": "Qs RC, unbehandelte Studiengruppe, luftgetrocknete Würfel"
+        },
+        "aliases": [],
+        "source_designation": "Qs RC, Untreated, Table 5",
+        "state": {
+          "product_form": {
+            "status": "reported",
+            "text": "20 mm radial × 20 mm tangential × 20 mm longitudinal cubes",
+            "evidence": [
+              {
+                "source_id": "prasetia_2024_cork_physical",
+                "url": "https://www.nature.com/articles/s41598-024-56110-5.pdf",
+                "locator": "PDF pp.2–3, Materials and Table 2",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": null
+          },
+          "processing": {
+            "status": "reported",
+            "text": "Study untreated group; samples oven-dried before conditioning, without the study boiling-water intervention",
+            "evidence": [
+              {
+                "source_id": "prasetia_2024_cork_physical",
+                "url": "https://www.nature.com/articles/s41598-024-56110-5.pdf",
+                "locator": "PDF p.2 Materials",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Historical commercial treatment is not established. Do not label never-treated cork."
+          },
+          "temper_or_heat_treatment": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Not reported for the selected source result."
+          },
+          "conditioning": {
+            "status": "reported",
+            "text": "Conditioning room at 25 ± 5 °C and 60 ± 5% relative humidity; selected air-dried specimen state",
+            "evidence": [
+              {
+                "source_id": "prasetia_2024_cork_physical",
+                "url": "https://www.nature.com/articles/s41598-024-56110-5.pdf",
+                "locator": "PDF p.2 Materials",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Conditioning values are not exact density-test temperature or RH."
+          },
+          "composition_or_purity": {
+            "status": "reported",
+            "text": "Natural Quercus suber reproduction cork tissue",
+            "evidence": [
+              {
+                "source_id": "prasetia_2024_cork_physical",
+                "url": "https://www.nature.com/articles/s41598-024-56110-5.pdf",
+                "locator": "PDF p.2 Materials",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "No quantitative chemical composition or artificial binder fraction is assigned."
+          },
+          "reinforcement": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "No quantitative reinforcement specification is assigned to this selected source-qualified material."
+          },
+          "porosity": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Not reported for the selected source result."
+          },
+          "orientation": {
+            "status": "not_applicable",
+            "text": null,
+            "evidence": [],
+            "notes": "Direction is not applicable to this scalar mass-density selection; no isotropy is established."
+          }
+        },
+        "source_scope": "Natural reproduction cork tissue of Quercus suber from two Portuguese Castelo Branco cork-forest planks, Amorim Group, supplied through FC Korea Land. Composite is a broad mapping for hierarchical natural tissue, not an agglomerated binder composite or engineered resin product. Untreated means no study boiling intervention, not historically never treated. No commercial quality grade is established. Do not count boiled cork as a second identity or import Q. variabilis virgin-cork green density.",
+        "evidence": [
+          {
+            "source_id": "prasetia_2024_cork_physical",
+            "url": "https://www.nature.com/articles/s41598-024-56110-5.pdf",
+            "locator": "Methods Materials, PDF p.2; Table 2 PDF p.3; Table 5 PDF p.9",
+            "supports": [
+              "state"
+            ]
+          }
+        ],
+        "property_ids": [
+          "refprop_prasetia2024_qsuber_reproduction_cork_mass_density"
+        ],
+        "evaluation_support": "catalog_only"
+      },
+      "expected_identity": {
+        "id": "mat_prasetia2024_qsuber_reproduction_cork",
+        "version": "1.0.0",
+        "category": "composite",
+        "name": "Quercus suber natural reproduction cork (Prasetia 2024 study)",
+        "names": {
+          "en": "Quercus suber natural reproduction cork (Prasetia 2024 study)",
+          "zh": "天然 Quercus suber 再生软木（Prasetia 2024 研究）",
+          "ja": "Quercus suberの天然再生コルク（Prasetia 2024研究）",
+          "de": "Natürlicher Reproduktionskork von Quercus suber (Prasetia 2024)"
+        },
+        "aliases": [
+          {
+            "language": "und",
+            "text": "Quercus suber"
+          },
+          {
+            "language": "und",
+            "text": "Qs RC"
+          },
+          {
+            "language": "und",
+            "text": "reproduction cork"
+          }
+        ],
+        "identity_scope": "Natural reproduction cork tissue of Quercus suber from two Portuguese Castelo Branco cork-forest planks, Amorim Group, supplied through FC Korea Land. Composite is a broad mapping for hierarchical natural tissue, not an agglomerated binder composite or engineered resin product. Untreated means no study boiling intervention, not historically never treated. No commercial quality grade is established. Do not count boiled cork as a second identity or import Q. variabilis virgin-cork green density.",
+        "evidence": [
+          {
+            "source_id": "prasetia_2024_cork_physical",
+            "url": "https://www.nature.com/articles/s41598-024-56110-5.pdf",
+            "locator": "Methods Materials, PDF p.2; Table 2 PDF p.3; Table 5 PDF p.9",
+            "supports": [
+              "material_identity",
+              "state"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "property_id": "refprop_drury2023_moso_bamboo_culm_mass_density",
+      "state_id": "state_drury2023_moso_bamboo_culm",
+      "identity_id": "mat_drury2023_moso_bamboo_culm",
+      "expected_property": {
+        "id": "refprop_drury2023_moso_bamboo_culm_mass_density",
+        "version": "1.0.0",
+        "material_state_id": "state_drury2023_moso_bamboo_culm",
+        "quantity": "mass_density",
+        "quantity_dimension": "mass_per_volume",
+        "source_property_label": "ρ (kg/m³)",
+        "reported_value": {
+          "kind": "scalar",
+          "value_text": "746",
+          "unit_text": "kg/m³",
+          "unit_code": "kg/m^3",
+          "number": "746"
+        },
+        "evidence_kind": "published_experimental_reference",
+        "reporting_basis": "reported_summary",
+        "determination_basis": "source_reports_measurement",
+        "basis_note": "Source-reported species average (Table 1 caption: averaged physical properties). Do not derive density by dividing the table mean mass by mean cross-section × mean length; mean of individual ratios need not equal ratio of means. The paper does not report SD/range for density.",
+        "conditions": {
+          "temperature": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Exact density-test temperature is not reported; preparation, conditioning and other tests do not supply a density-test setpoint."
+          },
+          "test_standard": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "ISO 22157:2019 §10.2 is cited for specimen geometry/compression preparation; a density-specific standard/procedure is not expressly supplied."
+          },
+          "test_method": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Source reports specimen dimensions and density, but a density-specific formula/protocol is not expressly supplied. See method_definition for the inspected scope."
+          },
+          "direction": {
+            "status": "not_applicable",
+            "text": null,
+            "evidence": [],
+            "notes": "Mechanical loading direction is not applicable to scalar density; no isotropy inference."
+          },
+          "conditioning": {
+            "status": "reported",
+            "text": "Stored for one year away from sunlight and water with air circulation to reach laboratory equilibrium",
+            "evidence": [
+              {
+                "source_id": "drury_2023_bamboo_compression",
+                "url": "https://www.mdpi.com/2071-1050/15/8/6472/pdf?version=1682230800",
+                "locator": "§2.1, PDF p.6 paragraph directly below Table 1",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Numerical laboratory conditioning temperature and humidity are not reported."
+          },
+          "loading_rate": {
+            "status": "not_applicable",
+            "text": null,
+            "evidence": [],
+            "notes": "Mechanical loading rate is not applicable to selected mass density."
+          },
+          "additional_conditions": [
+            {
+              "name": "density_test_humidity",
+              "fact": {
+                "status": "not_reported_in_inspected_source",
+                "text": null,
+                "evidence": [],
+                "notes": "Actual relative humidity during density measurement is not stated; conditioning humidity does not establish it."
+              }
+            },
+            {
+              "name": "density_test_pressure",
+              "fact": {
+                "status": "not_reported_in_inspected_source",
+                "text": null,
+                "evidence": [],
+                "notes": "Density-test pressure is not stated; preparation pressure and other experiments do not establish it."
+              }
+            },
+            {
+              "name": "cohort_moisture_context",
+              "fact": {
+                "status": "reported",
+                "text": "15.8% average moisture content for the entire experimental cohort",
+                "evidence": [
+                  {
+                    "source_id": "drury_2023_bamboo_compression",
+                    "url": "https://www.mdpi.com/2071-1050/15/8/6472/pdf?version=1682230800",
+                    "locator": "§2.1, PDF p.6 paragraph directly below Table 1",
+                    "supports": [
+                      "condition"
+                    ]
+                  }
+                ],
+                "notes": "Do not assign 15.8% to every Moso specimen or treat it as a Moso-specific mean."
+              }
+            }
+          ]
+        },
+        "density_basis": "not_stated",
+        "summary_statistic": "reported_mean",
+        "uncertainty": null,
+        "uncertainty_status": "not_reported_in_inspected_source",
+        "uncertainty_note": "No density SD, SEM, confidence interval or observed min/max range is reported.",
+        "sample_count": {
+          "value": 6,
+          "relation": "exact",
+          "scope": "Six specimens for the species, three nodal and three internodal from separate culms. This is not twelve density specimens or six independent plantations.",
+          "source_statement": "Six specimens for the species, three nodal and three internodal from separate culms. This is not twelve density specimens or six independent plantations.",
+          "evidence": [
+            {
+              "source_id": "drury_2023_bamboo_compression",
+              "url": "https://www.mdpi.com/2071-1050/15/8/6472/pdf?version=1682230800",
+              "locator": "§2.1 population text, PDF p.3; Table 2 specimen IDs, PDF p.7",
+              "supports": [
+                "sample_count"
+              ]
+            }
+          ]
+        },
+        "method_definition": {
+          "type": "source_reported_conventional",
+          "definition": "Source states cross-sectional measurements to 0.1 mm, with six diameter readings where variable (three each at top and bottom), and standard-length specimens per ISO 22157:2019 §10.2. Density-specific formula/protocol is not expressly supplied. Source reports specimen density beside wall cross-section and dimensions. It does not name bulk/apparent/true basis. Keep density_basis=not_stated. Do not call this skeletal density or density including the hollow culm central lumen.",
+          "extraction_window": null,
+          "evidence": [
+            {
+              "source_id": "drury_2023_bamboo_compression",
+              "url": "https://www.mdpi.com/2071-1050/15/8/6472/pdf?version=1682230800",
+              "locator": "Section 2.1, PDF p.5",
+              "supports": [
+                "method",
+                "condition",
+                "classification"
+              ]
+            }
+          ]
+        },
+        "source_discrepancies": [
+          {
+            "description": "Generic HTML dc.rights metadata names CC BY 3.0, while the article-specific statement and publisher PDF p.1 explicitly identify CC BY 4.0.",
+            "disposition": "Use article-specific CC BY 4.0 evidence and retain this metadata conflict; do not assert all metadata agree.",
+            "evidence": [
+              {
+                "source_id": "drury_2023_bamboo_compression",
+                "url": "https://www.mdpi.com/2071-1050/15/8/6472/pdf?version=1682230800",
+                "locator": "Publisher PDF p.1 article-specific CC BY 4.0 copyright statement",
+                "supports": [
+                  "source_discrepancy"
+                ]
+              },
+              {
+                "source_id": "drury_2023_bamboo_compression",
+                "url": "https://www.mdpi.com/2071-1050/15/8/6472",
+                "locator": "Publisher HTML dc.rights metadata naming CC BY 3.0, versus article-specific copyright/license statement naming CC BY 4.0",
+                "supports": [
+                  "source_discrepancy"
+                ]
+              }
+            ]
+          }
+        ],
+        "source_id": "drury_2023_bamboo_compression",
+        "evidence": [
+          {
+            "source_id": "drury_2023_bamboo_compression",
+            "url": "https://www.mdpi.com/2071-1050/15/8/6472/pdf?version=1682230800",
+            "locator": "Table 1, Moso row, ρ column; PDF p.6; HTML #table_body_display_sustainability-15-06472-t001",
+            "supports": [
+              "reported_value",
+              "classification"
+            ]
+          },
+          {
+            "source_id": "drury_2023_bamboo_compression",
+            "url": "https://www.mdpi.com/2071-1050/15/8/6472/pdf?version=1682230800",
+            "locator": "Section 2.1, PDF p.5",
+            "supports": [
+              "method",
+              "condition",
+              "classification"
+            ]
+          },
+          {
+            "source_id": "drury_2023_bamboo_compression",
+            "url": "https://www.mdpi.com/2071-1050/15/8/6472/pdf?version=1682230800",
+            "locator": "Table 1 caption, PDF p.6",
+            "supports": [
+              "summary_statistic"
+            ]
+          }
+        ],
+        "source_document": {
+          "url": "https://www.mdpi.com/2071-1050/15/8/6472/pdf?version=1682230800",
+          "revision": "Original article asset retained and inspected on 2026-10-05; no formal version number verified.",
+          "inspected_on": "2026-10-05",
+          "sha256": "4ffacd66749fac3bb8f7aa464413018add56f90a7f4c64ba3676b7f88dfdfa6e",
+          "hash_status": "recorded",
+          "hash_note": null,
+          "inspection_scope": "Original source asset, selected identity/preparation, numerical density, method, statistical scope and article-specific rights inspected and independently source-transcription cross-checked. Publisher PDF Table 1 p.6 visually reviewed; No raw-data reanalysis, experimental replication, comprehensive errata/retraction audit or independent scientific review.",
+          "inspection_status": "selected_content_inspected"
+        },
+        "scope_note": "Study-qualified Phyllostachys edulis full-culm tissue from China. Composite is a broad mapping for hierarchical natural lignocellulosic tissue, not an engineered resin-bonded laminate. Botanical species is the distinct identity; nodal/internodal specimens are states within one cohort, not additional identities. No commercial grade is specified. Do not label generic untreated bamboo or infer species-specific moisture from the full-cohort average.",
+        "evaluation_support": "catalog_only",
+        "universal_bound": false,
+        "engineering_allowable": false,
+        "verification": {
+          "source_inspection_scope": "Original source asset, selected identity/preparation, numerical density, method, statistical scope and article-specific rights inspected and independently source-transcription cross-checked. Publisher PDF Table 1 p.6 visually reviewed; No raw-data reanalysis, experimental replication, comprehensive errata/retraction audit or independent scientific review.",
+          "transcription_cross_check": "completed",
+          "independent_scientific_review": false,
+          "raw_data_reanalysis": false
+        }
+      },
+      "expected_material_state": {
+        "id": "state_drury2023_moso_bamboo_culm",
+        "version": "1.0.0",
+        "identity_id": "mat_drury2023_moso_bamboo_culm",
+        "grade_id": null,
+        "name": "Moso conditioned full-culm specimens, nodal/internodal cohort",
+        "names": {
+          "en": "Moso conditioned full-culm specimens, nodal/internodal cohort",
+          "zh": "Moso 调湿全竹秆试样，竹节及节间组",
+          "ja": "Mosoの調湿全稈試料、節部・節間の群",
+          "de": "Moso, konditionierte Vollhalmproben mit/ohne Knoten"
+        },
+        "aliases": [],
+        "source_designation": "Moso, Table 1",
+        "state": {
+          "product_form": {
+            "status": "reported",
+            "text": "Short full-culm compression specimens; 3 nodal and 3 internodal specimens per species from separate culms",
+            "evidence": [
+              {
+                "source_id": "drury_2023_bamboo_compression",
+                "url": "https://www.mdpi.com/2071-1050/15/8/6472/pdf?version=1682230800",
+                "locator": "§2.1 and Table 2, PDF pp.3–7",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": null
+          },
+          "processing": {
+            "status": "reported",
+            "text": "No borax treatment is stated for Moso. All shipping containers were fumigated for up to 24 h in origin country.",
+            "evidence": [
+              {
+                "source_id": "drury_2023_bamboo_compression",
+                "url": "https://www.mdpi.com/2071-1050/15/8/6472/pdf?version=1682230800",
+                "locator": "§2.1, PDF pp.3–5",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Do not label either species generically untreated; fumigant identity is unknown."
+          },
+          "temper_or_heat_treatment": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Not reported for the selected source result."
+          },
+          "conditioning": {
+            "status": "reported",
+            "text": "Stored for one year away from sunlight and water with air circulation to reach laboratory equilibrium",
+            "evidence": [
+              {
+                "source_id": "drury_2023_bamboo_compression",
+                "url": "https://www.mdpi.com/2071-1050/15/8/6472/pdf?version=1682230800",
+                "locator": "§2.1, PDF p.6 paragraph directly below Table 1",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Numerical laboratory conditioning temperature and humidity are not reported."
+          },
+          "composition_or_purity": {
+            "status": "reported",
+            "text": "Natural bamboo culm tissue; no resin binder or laminated composite formulation specified",
+            "evidence": [
+              {
+                "source_id": "drury_2023_bamboo_compression",
+                "url": "https://www.mdpi.com/2071-1050/15/8/6472/pdf?version=1682230800",
+                "locator": "§2.1, species identity and preparation",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Quantitative chemical composition and harvest age are not reported."
+          },
+          "reinforcement": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "No quantitative reinforcement specification is assigned to this selected source-qualified material."
+          },
+          "porosity": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Not reported for the selected source result."
+          },
+          "orientation": {
+            "status": "not_applicable",
+            "text": null,
+            "evidence": [],
+            "notes": "Direction is not applicable to this scalar mass-density selection; no isotropy is established."
+          }
+        },
+        "source_scope": "Study-qualified Phyllostachys edulis full-culm tissue from China. Composite is a broad mapping for hierarchical natural lignocellulosic tissue, not an engineered resin-bonded laminate. Botanical species is the distinct identity; nodal/internodal specimens are states within one cohort, not additional identities. No commercial grade is specified. Do not label generic untreated bamboo or infer species-specific moisture from the full-cohort average.",
+        "evidence": [
+          {
+            "source_id": "drury_2023_bamboo_compression",
+            "url": "https://www.mdpi.com/2071-1050/15/8/6472/pdf?version=1682230800",
+            "locator": "§2.1, PDF pp.3–6; Table 1 p.6; Table 2 p.7",
+            "supports": [
+              "state"
+            ]
+          }
+        ],
+        "property_ids": [
+          "refprop_drury2023_moso_bamboo_culm_mass_density"
+        ],
+        "evaluation_support": "catalog_only"
+      },
+      "expected_identity": {
+        "id": "mat_drury2023_moso_bamboo_culm",
+        "version": "1.0.0",
+        "category": "composite",
+        "name": "Phyllostachys edulis (Moso) bamboo culm (Drury 2023 study)",
+        "names": {
+          "en": "Phyllostachys edulis (Moso) bamboo culm (Drury 2023 study)",
+          "zh": "Phyllostachys edulis（Moso）竹秆（Drury 2023 研究）",
+          "ja": "Phyllostachys edulis（Moso）の竹稈（Drury 2023研究）",
+          "de": "Phyllostachys edulis (Moso), Bambushalm (Drury 2023)"
+        },
+        "aliases": [
+          {
+            "language": "und",
+            "text": "Phyllostachys edulis"
+          },
+          {
+            "language": "und",
+            "text": "Moso bamboo"
+          }
+        ],
+        "identity_scope": "Study-qualified Phyllostachys edulis full-culm tissue from China. Composite is a broad mapping for hierarchical natural lignocellulosic tissue, not an engineered resin-bonded laminate. Botanical species is the distinct identity; nodal/internodal specimens are states within one cohort, not additional identities. No commercial grade is specified. Do not label generic untreated bamboo or infer species-specific moisture from the full-cohort average.",
+        "evidence": [
+          {
+            "source_id": "drury_2023_bamboo_compression",
+            "url": "https://www.mdpi.com/2071-1050/15/8/6472/pdf?version=1682230800",
+            "locator": "§2.1, PDF pp.3–6; Table 1 p.6; Table 2 p.7",
+            "supports": [
+              "material_identity",
+              "state"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "property_id": "refprop_drury2023_guadua_bamboo_culm_mass_density",
+      "state_id": "state_drury2023_guadua_bamboo_culm",
+      "identity_id": "mat_drury2023_guadua_bamboo_culm",
+      "expected_property": {
+        "id": "refprop_drury2023_guadua_bamboo_culm_mass_density",
+        "version": "1.0.0",
+        "material_state_id": "state_drury2023_guadua_bamboo_culm",
+        "quantity": "mass_density",
+        "quantity_dimension": "mass_per_volume",
+        "source_property_label": "ρ (kg/m³)",
+        "reported_value": {
+          "kind": "scalar",
+          "value_text": "655",
+          "unit_text": "kg/m³",
+          "unit_code": "kg/m^3",
+          "number": "655"
+        },
+        "evidence_kind": "published_experimental_reference",
+        "reporting_basis": "reported_summary",
+        "determination_basis": "source_reports_measurement",
+        "basis_note": "Source-reported species average (Table 1 caption: averaged physical properties). Do not derive density by dividing the table mean mass by mean cross-section × mean length; mean of individual ratios need not equal ratio of means. The paper does not report SD/range for density.",
+        "conditions": {
+          "temperature": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Exact density-test temperature is not reported; preparation, conditioning and other tests do not supply a density-test setpoint."
+          },
+          "test_standard": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "ISO 22157:2019 §10.2 is cited for specimen geometry/compression preparation; a density-specific standard/procedure is not expressly supplied."
+          },
+          "test_method": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Source reports specimen dimensions and density, but a density-specific formula/protocol is not expressly supplied. See method_definition for the inspected scope."
+          },
+          "direction": {
+            "status": "not_applicable",
+            "text": null,
+            "evidence": [],
+            "notes": "Mechanical loading direction is not applicable to scalar density; no isotropy inference."
+          },
+          "conditioning": {
+            "status": "reported",
+            "text": "Stored for one year away from sunlight and water with air circulation to reach laboratory equilibrium",
+            "evidence": [
+              {
+                "source_id": "drury_2023_bamboo_compression",
+                "url": "https://www.mdpi.com/2071-1050/15/8/6472/pdf?version=1682230800",
+                "locator": "§2.1, PDF p.6 paragraph directly below Table 1",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Numerical laboratory conditioning temperature and humidity are not reported."
+          },
+          "loading_rate": {
+            "status": "not_applicable",
+            "text": null,
+            "evidence": [],
+            "notes": "Mechanical loading rate is not applicable to selected mass density."
+          },
+          "additional_conditions": [
+            {
+              "name": "density_test_humidity",
+              "fact": {
+                "status": "not_reported_in_inspected_source",
+                "text": null,
+                "evidence": [],
+                "notes": "Actual relative humidity during density measurement is not stated; conditioning humidity does not establish it."
+              }
+            },
+            {
+              "name": "density_test_pressure",
+              "fact": {
+                "status": "not_reported_in_inspected_source",
+                "text": null,
+                "evidence": [],
+                "notes": "Density-test pressure is not stated; preparation pressure and other experiments do not establish it."
+              }
+            },
+            {
+              "name": "cohort_moisture_context",
+              "fact": {
+                "status": "reported",
+                "text": "15.8% average moisture content for the entire experimental cohort",
+                "evidence": [
+                  {
+                    "source_id": "drury_2023_bamboo_compression",
+                    "url": "https://www.mdpi.com/2071-1050/15/8/6472/pdf?version=1682230800",
+                    "locator": "§2.1, PDF p.6 paragraph directly below Table 1",
+                    "supports": [
+                      "condition"
+                    ]
+                  }
+                ],
+                "notes": "Do not assign 15.8% to every Guadua specimen or treat it as a Guadua-specific mean."
+              }
+            }
+          ]
+        },
+        "density_basis": "not_stated",
+        "summary_statistic": "reported_mean",
+        "uncertainty": null,
+        "uncertainty_status": "not_reported_in_inspected_source",
+        "uncertainty_note": "No density SD, SEM, confidence interval or observed min/max range is reported.",
+        "sample_count": {
+          "value": 6,
+          "relation": "exact",
+          "scope": "Six specimens for the species, three nodal and three internodal from separate culms. This is not twelve density specimens or six independent plantations.",
+          "source_statement": "Six specimens for the species, three nodal and three internodal from separate culms. This is not twelve density specimens or six independent plantations.",
+          "evidence": [
+            {
+              "source_id": "drury_2023_bamboo_compression",
+              "url": "https://www.mdpi.com/2071-1050/15/8/6472/pdf?version=1682230800",
+              "locator": "§2.1 population text, PDF p.3; Table 2 specimen IDs, PDF p.7",
+              "supports": [
+                "sample_count"
+              ]
+            }
+          ]
+        },
+        "method_definition": {
+          "type": "source_reported_conventional",
+          "definition": "Source states cross-sectional measurements to 0.1 mm, with six diameter readings where variable (three each at top and bottom), and standard-length specimens per ISO 22157:2019 §10.2. Density-specific formula/protocol is not expressly supplied. Source reports specimen density beside wall cross-section and dimensions. It does not name bulk/apparent/true basis. Keep density_basis=not_stated. Do not call this skeletal density or density including the hollow culm central lumen.",
+          "extraction_window": null,
+          "evidence": [
+            {
+              "source_id": "drury_2023_bamboo_compression",
+              "url": "https://www.mdpi.com/2071-1050/15/8/6472/pdf?version=1682230800",
+              "locator": "Section 2.1, PDF p.5",
+              "supports": [
+                "method",
+                "condition",
+                "classification"
+              ]
+            }
+          ]
+        },
+        "source_discrepancies": [
+          {
+            "description": "Generic HTML dc.rights metadata names CC BY 3.0, while the article-specific statement and publisher PDF p.1 explicitly identify CC BY 4.0.",
+            "disposition": "Use article-specific CC BY 4.0 evidence and retain this metadata conflict; do not assert all metadata agree.",
+            "evidence": [
+              {
+                "source_id": "drury_2023_bamboo_compression",
+                "url": "https://www.mdpi.com/2071-1050/15/8/6472/pdf?version=1682230800",
+                "locator": "Publisher PDF p.1 article-specific CC BY 4.0 copyright statement",
+                "supports": [
+                  "source_discrepancy"
+                ]
+              },
+              {
+                "source_id": "drury_2023_bamboo_compression",
+                "url": "https://www.mdpi.com/2071-1050/15/8/6472",
+                "locator": "Publisher HTML dc.rights metadata naming CC BY 3.0, versus article-specific copyright/license statement naming CC BY 4.0",
+                "supports": [
+                  "source_discrepancy"
+                ]
+              }
+            ]
+          }
+        ],
+        "source_id": "drury_2023_bamboo_compression",
+        "evidence": [
+          {
+            "source_id": "drury_2023_bamboo_compression",
+            "url": "https://www.mdpi.com/2071-1050/15/8/6472/pdf?version=1682230800",
+            "locator": "Table 1, Guadua row, ρ column; PDF p.6; HTML #table_body_display_sustainability-15-06472-t001",
+            "supports": [
+              "reported_value",
+              "classification"
+            ]
+          },
+          {
+            "source_id": "drury_2023_bamboo_compression",
+            "url": "https://www.mdpi.com/2071-1050/15/8/6472/pdf?version=1682230800",
+            "locator": "Section 2.1, PDF p.5",
+            "supports": [
+              "method",
+              "condition",
+              "classification"
+            ]
+          },
+          {
+            "source_id": "drury_2023_bamboo_compression",
+            "url": "https://www.mdpi.com/2071-1050/15/8/6472/pdf?version=1682230800",
+            "locator": "Table 1 caption, PDF p.6",
+            "supports": [
+              "summary_statistic"
+            ]
+          }
+        ],
+        "source_document": {
+          "url": "https://www.mdpi.com/2071-1050/15/8/6472/pdf?version=1682230800",
+          "revision": "Original article asset retained and inspected on 2026-10-05; no formal version number verified.",
+          "inspected_on": "2026-10-05",
+          "sha256": "4ffacd66749fac3bb8f7aa464413018add56f90a7f4c64ba3676b7f88dfdfa6e",
+          "hash_status": "recorded",
+          "hash_note": null,
+          "inspection_scope": "Original source asset, selected identity/preparation, numerical density, method, statistical scope and article-specific rights inspected and independently source-transcription cross-checked. Publisher PDF Table 1 p.6 visually reviewed; No raw-data reanalysis, experimental replication, comprehensive errata/retraction audit or independent scientific review.",
+          "inspection_status": "selected_content_inspected"
+        },
+        "scope_note": "Study-qualified Guadua angustifolia full-culm tissue from Colombia. Composite is a broad mapping for hierarchical natural lignocellulosic tissue, not an engineered resin-bonded laminate. Botanical species is the distinct identity; nodal/internodal specimens are states within one cohort, not additional identities. No commercial grade is specified. Do not label generic untreated bamboo or infer species-specific moisture from the full-cohort average.",
+        "evaluation_support": "catalog_only",
+        "universal_bound": false,
+        "engineering_allowable": false,
+        "verification": {
+          "source_inspection_scope": "Original source asset, selected identity/preparation, numerical density, method, statistical scope and article-specific rights inspected and independently source-transcription cross-checked. Publisher PDF Table 1 p.6 visually reviewed; No raw-data reanalysis, experimental replication, comprehensive errata/retraction audit or independent scientific review.",
+          "transcription_cross_check": "completed",
+          "independent_scientific_review": false,
+          "raw_data_reanalysis": false
+        }
+      },
+      "expected_material_state": {
+        "id": "state_drury2023_guadua_bamboo_culm",
+        "version": "1.0.0",
+        "identity_id": "mat_drury2023_guadua_bamboo_culm",
+        "grade_id": null,
+        "name": "Guadua conditioned full-culm specimens, nodal/internodal cohort",
+        "names": {
+          "en": "Guadua conditioned full-culm specimens, nodal/internodal cohort",
+          "zh": "Guadua 调湿全竹秆试样，竹节及节间组",
+          "ja": "Guaduaの調湿全稈試料、節部・節間の群",
+          "de": "Guadua, konditionierte Vollhalmproben mit/ohne Knoten"
+        },
+        "aliases": [],
+        "source_designation": "Guadua, Table 1",
+        "state": {
+          "product_form": {
+            "status": "reported",
+            "text": "Short full-culm compression specimens; 3 nodal and 3 internodal specimens per species from separate culms",
+            "evidence": [
+              {
+                "source_id": "drury_2023_bamboo_compression",
+                "url": "https://www.mdpi.com/2071-1050/15/8/6472/pdf?version=1682230800",
+                "locator": "§2.1 and Table 2, PDF pp.3–7",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": null
+          },
+          "processing": {
+            "status": "reported",
+            "text": "Dipped in borax solution as insect repellent/preservative after harvest and before shipping; internal nodes pierced. All shipping containers were fumigated for up to 24 h in origin country.",
+            "evidence": [
+              {
+                "source_id": "drury_2023_bamboo_compression",
+                "url": "https://www.mdpi.com/2071-1050/15/8/6472/pdf?version=1682230800",
+                "locator": "§2.1, PDF pp.3–5",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Do not label either species generically untreated; fumigant identity is unknown."
+          },
+          "temper_or_heat_treatment": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Not reported for the selected source result."
+          },
+          "conditioning": {
+            "status": "reported",
+            "text": "Stored for one year away from sunlight and water with air circulation to reach laboratory equilibrium",
+            "evidence": [
+              {
+                "source_id": "drury_2023_bamboo_compression",
+                "url": "https://www.mdpi.com/2071-1050/15/8/6472/pdf?version=1682230800",
+                "locator": "§2.1, PDF p.6 paragraph directly below Table 1",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Numerical laboratory conditioning temperature and humidity are not reported."
+          },
+          "composition_or_purity": {
+            "status": "reported",
+            "text": "Natural bamboo culm tissue; no resin binder or laminated composite formulation specified",
+            "evidence": [
+              {
+                "source_id": "drury_2023_bamboo_compression",
+                "url": "https://www.mdpi.com/2071-1050/15/8/6472/pdf?version=1682230800",
+                "locator": "§2.1, species identity and preparation",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Quantitative chemical composition and harvest age are not reported."
+          },
+          "reinforcement": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "No quantitative reinforcement specification is assigned to this selected source-qualified material."
+          },
+          "porosity": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Not reported for the selected source result."
+          },
+          "orientation": {
+            "status": "not_applicable",
+            "text": null,
+            "evidence": [],
+            "notes": "Direction is not applicable to this scalar mass-density selection; no isotropy is established."
+          }
+        },
+        "source_scope": "Study-qualified Guadua angustifolia full-culm tissue from Colombia. Composite is a broad mapping for hierarchical natural lignocellulosic tissue, not an engineered resin-bonded laminate. Botanical species is the distinct identity; nodal/internodal specimens are states within one cohort, not additional identities. No commercial grade is specified. Do not label generic untreated bamboo or infer species-specific moisture from the full-cohort average.",
+        "evidence": [
+          {
+            "source_id": "drury_2023_bamboo_compression",
+            "url": "https://www.mdpi.com/2071-1050/15/8/6472/pdf?version=1682230800",
+            "locator": "§2.1, PDF pp.3–6; Table 1 p.6; Table 2 p.7",
+            "supports": [
+              "state"
+            ]
+          }
+        ],
+        "property_ids": [
+          "refprop_drury2023_guadua_bamboo_culm_mass_density"
+        ],
+        "evaluation_support": "catalog_only"
+      },
+      "expected_identity": {
+        "id": "mat_drury2023_guadua_bamboo_culm",
+        "version": "1.0.0",
+        "category": "composite",
+        "name": "Guadua angustifolia (Guadua) bamboo culm (Drury 2023 study)",
+        "names": {
+          "en": "Guadua angustifolia (Guadua) bamboo culm (Drury 2023 study)",
+          "zh": "Guadua angustifolia（Guadua）竹秆（Drury 2023 研究）",
+          "ja": "Guadua angustifolia（Guadua）の竹稈（Drury 2023研究）",
+          "de": "Guadua angustifolia (Guadua), Bambushalm (Drury 2023)"
+        },
+        "aliases": [
+          {
+            "language": "und",
+            "text": "Guadua angustifolia"
+          },
+          {
+            "language": "und",
+            "text": "Guadua bamboo"
+          }
+        ],
+        "identity_scope": "Study-qualified Guadua angustifolia full-culm tissue from Colombia. Composite is a broad mapping for hierarchical natural lignocellulosic tissue, not an engineered resin-bonded laminate. Botanical species is the distinct identity; nodal/internodal specimens are states within one cohort, not additional identities. No commercial grade is specified. Do not label generic untreated bamboo or infer species-specific moisture from the full-cohort average.",
+        "evidence": [
+          {
+            "source_id": "drury_2023_bamboo_compression",
+            "url": "https://www.mdpi.com/2071-1050/15/8/6472/pdf?version=1682230800",
+            "locator": "§2.1, PDF pp.3–6; Table 1 p.6; Table 2 p.7",
+            "supports": [
+              "material_identity",
+              "state"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "property_id": "refprop_saadazzem2022_altaouab_cp_plaster_mass_density",
+      "state_id": "state_saadazzem2022_altaouab_cp_plaster",
+      "identity_id": "mat_saadazzem2022_altaouab_cp_plaster",
+      "expected_property": {
+        "id": "refprop_saadazzem2022_altaouab_cp_plaster_mass_density",
+        "version": "1.0.0",
+        "material_state_id": "state_saadazzem2022_altaouab_cp_plaster",
+        "quantity": "mass_density",
+        "quantity_dimension": "mass_per_volume",
+        "source_property_label": "Apparent density",
+        "reported_value": {
+          "kind": "scalar",
+          "value_text": "1103.13",
+          "unit_text": "kg/m³",
+          "unit_code": "kg/m^3",
+          "number": "1103.13"
+        },
+        "evidence_kind": "published_experimental_reference",
+        "reporting_basis": "reported_summary",
+        "determination_basis": "source_reports_measurement",
+        "basis_note": "No explicit density replicate count, central-statistic designation, or uncertainty definition found. Keep reported_value with null n and uncertainty.",
+        "conditions": {
+          "temperature": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Exact density-test temperature/RH are not supplied. Do not borrow the 20–30 °C thermal-conductivity test range, 5% setup accuracy, or straw-only 60 °C/24 h drying conditions."
+          },
+          "test_standard": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "No density-specific test standard is reported."
+          },
+          "test_method": {
+            "status": "reported",
+            "text": "Mass divided by specimen volume, with sample weight and dimensions measured, §3.2 Eq. (2). External-volume apparent/bulk density, not particle/skeletal density.",
+            "evidence": [
+              {
+                "source_id": "saad_azzem_2022_plaster_wheat_straw",
+                "url": "https://www.mdpi.com/2075-5309/12/8/1119",
+                "locator": "§3.2 Apparent Density, Eq. (2)",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": null
+          },
+          "direction": {
+            "status": "not_applicable",
+            "text": null,
+            "evidence": [],
+            "notes": "Mechanical loading direction is not applicable to scalar density; no isotropy inference."
+          },
+          "conditioning": {
+            "status": "reported",
+            "text": "Laboratory storage at qualitative room temperature after demolding",
+            "evidence": [
+              {
+                "source_id": "saad_azzem_2022_plaster_wheat_straw",
+                "url": "https://www.mdpi.com/2075-5309/12/8/1119",
+                "locator": "§2.2",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "No oven-dry state or measured moisture content is specified for density."
+          },
+          "loading_rate": {
+            "status": "not_applicable",
+            "text": null,
+            "evidence": [],
+            "notes": "Mechanical loading rate is not applicable to selected mass density."
+          },
+          "additional_conditions": [
+            {
+              "name": "density_test_humidity",
+              "fact": {
+                "status": "not_reported_in_inspected_source",
+                "text": null,
+                "evidence": [],
+                "notes": "Actual relative humidity during density measurement is not stated; conditioning humidity does not establish it."
+              }
+            },
+            {
+              "name": "density_test_pressure",
+              "fact": {
+                "status": "not_reported_in_inspected_source",
+                "text": null,
+                "evidence": [],
+                "notes": "Density-test pressure is not stated; preparation pressure and other experiments do not establish it."
+              }
+            }
+          ]
+        },
+        "density_basis": "apparent",
+        "summary_statistic": "reported_value",
+        "uncertainty": null,
+        "uncertainty_status": "not_reported_in_inspected_source",
+        "uncertainty_note": "No uncertainty is reported for this selected density result.",
+        "sample_count": {
+          "value": null,
+          "relation": "not_reported",
+          "scope": "No density-specific specimen or determination count is reported in the inspected passages.",
+          "source_statement": "No density-specific specimen or determination count is reported in the inspected passages.",
+          "evidence": [
+            {
+              "source_id": "saad_azzem_2022_plaster_wheat_straw",
+              "url": "https://www.mdpi.com/2075-5309/12/8/1119",
+              "locator": "§3.2 Apparent Density, Eq. (2)",
+              "supports": [
+                "sample_count"
+              ]
+            }
+          ]
+        },
+        "method_definition": {
+          "type": "source_reported_conventional",
+          "definition": "Mass divided by specimen volume, with sample weight and dimensions measured, §3.2 Eq. (2). External-volume apparent/bulk density, not particle/skeletal density.",
+          "extraction_window": null,
+          "evidence": [
+            {
+              "source_id": "saad_azzem_2022_plaster_wheat_straw",
+              "url": "https://www.mdpi.com/2075-5309/12/8/1119",
+              "locator": "§3.2 Apparent Density, Eq. (2)",
+              "supports": [
+                "method",
+                "condition",
+                "classification"
+              ]
+            }
+          ]
+        },
+        "source_discrepancies": [],
+        "source_id": "saad_azzem_2022_plaster_wheat_straw",
+        "evidence": [
+          {
+            "source_id": "saad_azzem_2022_plaster_wheat_straw",
+            "url": "https://www.mdpi.com/2075-5309/12/8/1119",
+            "locator": "§4.3.1, first paragraph; Figure 11; method §3.2",
+            "supports": [
+              "reported_value",
+              "classification"
+            ]
+          },
+          {
+            "source_id": "saad_azzem_2022_plaster_wheat_straw",
+            "url": "https://www.mdpi.com/2075-5309/12/8/1119",
+            "locator": "§3.2 Apparent Density, Eq. (2)",
+            "supports": [
+              "method",
+              "condition",
+              "classification"
+            ]
+          }
+        ],
+        "source_document": {
+          "url": "https://www.mdpi.com/2075-5309/12/8/1119",
+          "revision": "Original article asset retained and inspected on 2026-10-05; no formal version number verified.",
+          "inspected_on": "2026-10-05",
+          "sha256": "3813c49962a2353c055fafeb924711c7d677d986178f6cae592d320cd32de33e",
+          "hash_status": "recorded",
+          "hash_note": null,
+          "inspection_scope": "Original source asset, selected identity/preparation, numerical density, method, statistical scope and article-specific rights inspected and independently source-transcription cross-checked. No raw-data reanalysis, experimental replication, comprehensive errata/retraction audit or independent scientific review.",
+          "inspection_status": "selected_content_inspected"
+        },
+        "scope_note": "Commercial plaster from Al-Taouab Company, Algiers, Algeria; article sample CP, zero wheat straw. Source-qualified study formulation, not a universal value for all gypsum plaster or all Al-Taouab products. CP is a source formulation label, not a certified commercial grade.",
+        "evaluation_support": "catalog_only",
+        "universal_bound": false,
+        "engineering_allowable": false,
+        "verification": {
+          "source_inspection_scope": "Original source asset, selected identity/preparation, numerical density, method, statistical scope and article-specific rights inspected and independently source-transcription cross-checked. No raw-data reanalysis, experimental replication, comprehensive errata/retraction audit or independent scientific review.",
+          "transcription_cross_check": "completed",
+          "independent_scientific_review": false,
+          "raw_data_reanalysis": false
+        }
+      },
+      "expected_material_state": {
+        "id": "state_saadazzem2022_altaouab_cp_plaster",
+        "version": "1.0.0",
+        "identity_id": "mat_saadazzem2022_altaouab_cp_plaster",
+        "grade_id": null,
+        "name": "CP plaster, water/plaster 0.7, laboratory-conditioned",
+        "names": {
+          "en": "CP plaster, water/plaster 0.7, laboratory-conditioned",
+          "zh": "CP 石膏，水膏比 0.7，实验室养护",
+          "ja": "CP石こう、水／石こう比0.7、実験室養生",
+          "de": "CP-Gipsputz, Wasser/Gips 0.7, im Labor gelagert"
+        },
+        "aliases": [],
+        "source_designation": "CP, commercial plaster without wheat straw",
+        "state": {
+          "product_form": {
+            "status": "reported",
+            "text": "Molded unfilled commercial-plaster laboratory specimens",
+            "evidence": [
+              {
+                "source_id": "saad_azzem_2022_plaster_wheat_straw",
+                "url": "https://www.mdpi.com/2075-5309/12/8/1119",
+                "locator": "§2.2 and Table 1 CP row",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "The 16 × 8 × 5 cm dimensions expressly concern thermal-conductivity samples; density-specific specimen dimensions are unknown."
+          },
+          "processing": {
+            "status": "reported",
+            "text": "Water/plaster ratio 0.7; 72 h in molds, then 28 days stored in the laboratory at room temperature",
+            "evidence": [
+              {
+                "source_id": "saad_azzem_2022_plaster_wheat_straw",
+                "url": "https://www.mdpi.com/2075-5309/12/8/1119",
+                "locator": "§2.2",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Do not relabel this chronology as a certified 28-day total age."
+          },
+          "temper_or_heat_treatment": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Not reported for the selected source result."
+          },
+          "conditioning": {
+            "status": "reported",
+            "text": "Laboratory storage at qualitative room temperature after demolding",
+            "evidence": [
+              {
+                "source_id": "saad_azzem_2022_plaster_wheat_straw",
+                "url": "https://www.mdpi.com/2075-5309/12/8/1119",
+                "locator": "§2.2",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "No oven-dry state or measured moisture content is specified for density."
+          },
+          "composition_or_purity": {
+            "status": "reported",
+            "text": "Feedstock is mainly calcium sulfate hemihydrate CaSO4·0.5H2O. Article XRD description identifies hemihydrate, dihydrate, and anhydrite phases, without quantitative phase fractions. Do not call the cured material pure dihydrate.",
+            "evidence": [
+              {
+                "source_id": "saad_azzem_2022_plaster_wheat_straw",
+                "url": "https://www.mdpi.com/2075-5309/12/8/1119",
+                "locator": "§2.1.2 and §4.2.1",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Qualitative phases, not measured cured-phase percentages or chemical purity."
+          },
+          "reinforcement": {
+            "status": "reported",
+            "text": "Zero wheat-straw addition in CP",
+            "evidence": [
+              {
+                "source_id": "saad_azzem_2022_plaster_wheat_straw",
+                "url": "https://www.mdpi.com/2075-5309/12/8/1119",
+                "locator": "Table 1 CP row",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Unfilled control; straw drying/treatment does not belong to CP."
+          },
+          "porosity": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Not reported for the selected source result."
+          },
+          "orientation": {
+            "status": "not_applicable",
+            "text": null,
+            "evidence": [],
+            "notes": "Direction is not applicable to this scalar mass-density selection; no isotropy is established."
+          }
+        },
+        "source_scope": "Commercial plaster from Al-Taouab Company, Algiers, Algeria; article sample CP, zero wheat straw. Source-qualified study formulation, not a universal value for all gypsum plaster or all Al-Taouab products. CP is a source formulation label, not a certified commercial grade.",
+        "evidence": [
+          {
+            "source_id": "saad_azzem_2022_plaster_wheat_straw",
+            "url": "https://www.mdpi.com/2075-5309/12/8/1119",
+            "locator": "§2.1.2; §2.2; Table 1 CP row; §4.2.1",
+            "supports": [
+              "state"
+            ]
+          }
+        ],
+        "property_ids": [
+          "refprop_saadazzem2022_altaouab_cp_plaster_mass_density"
+        ],
+        "evaluation_support": "catalog_only"
+      },
+      "expected_identity": {
+        "id": "mat_saadazzem2022_altaouab_cp_plaster",
+        "version": "1.0.0",
+        "category": "inorganic",
+        "name": "Al-Taouab gypsum plaster, CP unfilled laboratory formulation",
+        "names": {
+          "en": "Al-Taouab gypsum plaster, CP unfilled laboratory formulation",
+          "zh": "Al-Taouab 石膏，CP 无填料实验室配方",
+          "ja": "Al-Taouab石こう、無充填CP実験室配合",
+          "de": "Al-Taouab-Gipsputz, ungefüllte Laborrezeptur CP"
+        },
+        "aliases": [],
+        "identity_scope": "Commercial plaster from Al-Taouab Company, Algiers, Algeria; article sample CP, zero wheat straw. Source-qualified study formulation, not a universal value for all gypsum plaster or all Al-Taouab products. CP is a source formulation label, not a certified commercial grade.",
+        "evidence": [
+          {
+            "source_id": "saad_azzem_2022_plaster_wheat_straw",
+            "url": "https://www.mdpi.com/2075-5309/12/8/1119",
+            "locator": "§2.1.2; §2.2; Table 1 CP row; §4.2.1",
+            "supports": [
+              "material_identity",
+              "state"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "property_id": "refprop_mohajerani2019_boral_control_brick_mass_density",
+      "state_id": "state_mohajerani2019_boral_control_brick",
+      "identity_id": "mat_mohajerani2019_boral_control_brick",
+      "expected_property": {
+        "id": "refprop_mohajerani2019_boral_control_brick_mass_density",
+        "version": "1.0.0",
+        "material_state_id": "state_mohajerani2019_boral_control_brick",
+        "quantity": "mass_density",
+        "quantity_dimension": "mass_per_volume",
+        "source_property_label": "Bulk Density (kg/m³)",
+        "reported_value": {
+          "kind": "scalar",
+          "value_text": "2122",
+          "unit_text": "kg/m³",
+          "unit_code": "kg/m^3",
+          "number": "2122"
+        },
+        "evidence_kind": "published_experimental_reference",
+        "reporting_basis": "reported_summary",
+        "determination_basis": "source_reports_measurement",
+        "basis_note": "§2 says all tests were triplicated and averages obtained, but that statement is in the initial raw-material/geotechnical-testing paragraph before fired-brick preparation. §3.3 independently states three samples only for shrinkage. Density-specific n=3 and a definitely density-specific mean are not established. The proposal’s structured reported_value/null n/null uncertainty are the conservative choice.",
+        "conditions": {
+          "temperature": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Exact density-test temperature is not reported; preparation, conditioning and other tests do not supply a density-test setpoint."
+          },
+          "test_standard": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Source cites Australian masonry test standards collectively: AS/NZS 4455.1 and AS/NZS 4456. No density-specific submethod is resolved; AS/NZS 4456.6 concerns efflorescence."
+          },
+          "test_method": {
+            "status": "reported",
+            "text": "Table 4 explicitly labels bulk density. §2 includes density in the fired-brick tests conducted under cited Australian Standards [48–50]. The article gives no density-specific calculation or standard submethod; do not infer an exact displacement/geometric procedure. References are AS/NZS 4455.1, AS/NZS 4456, and AS/NZS 4456.6 (the last specifically concerns efflorescence).",
+            "evidence": [
+              {
+                "source_id": "mohajerani_2019_biosolids_bricks",
+                "url": "https://www.mdpi.com/2075-5309/9/1/14",
+                "locator": "§2 final fired-brick testing paragraph; §3.3 density discussion; Table 4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": null
+          },
+          "direction": {
+            "status": "not_applicable",
+            "text": null,
+            "evidence": [],
+            "notes": "Mechanical loading direction is not applicable to scalar density; no isotropy inference."
+          },
+          "conditioning": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "As-fired and furnace-cooled; exact post-firing density-test moisture conditioning is not detailed. Dry-density terminology also appears in a separate thermal-conductivity correlation."
+          },
+          "loading_rate": {
+            "status": "not_applicable",
+            "text": null,
+            "evidence": [],
+            "notes": "Mechanical loading rate is not applicable to selected mass density."
+          },
+          "additional_conditions": [
+            {
+              "name": "density_test_humidity",
+              "fact": {
+                "status": "not_reported_in_inspected_source",
+                "text": null,
+                "evidence": [],
+                "notes": "Actual relative humidity during density measurement is not stated; conditioning humidity does not establish it."
+              }
+            },
+            {
+              "name": "density_test_pressure",
+              "fact": {
+                "status": "not_reported_in_inspected_source",
+                "text": null,
+                "evidence": [],
+                "notes": "Density-test pressure is not stated; preparation pressure and other experiments do not establish it."
+              }
+            },
+            {
+              "name": "excluded_conductivity",
+              "fact": {
+                "status": "reported",
+                "text": "Thermal conductivity in Table 4 is regression-estimated from dry density",
+                "evidence": [
+                  {
+                    "source_id": "mohajerani_2019_biosolids_bricks",
+                    "url": "https://www.mdpi.com/2075-5309/9/1/14",
+                    "locator": "§3.3 Eq. (2) and Table 4",
+                    "supports": [
+                      "condition"
+                    ]
+                  }
+                ],
+                "notes": "Do not import this value as a measured thermal property."
+              }
+            }
+          ]
+        },
+        "density_basis": "bulk",
+        "summary_statistic": "reported_value",
+        "uncertainty": null,
+        "uncertainty_status": "not_reported_in_inspected_source",
+        "uncertainty_note": "No uncertainty is reported for this selected density result.",
+        "sample_count": {
+          "value": null,
+          "relation": "not_reported",
+          "scope": "Density-specific specimen/replicate count is unknown. The global triplicate/average statement is in the raw-material methods paragraph; three samples in §3.3 refer to shrinkage. Do not assign density n=3 or a density-specific mean.",
+          "source_statement": "Density-specific specimen/replicate count is unknown. The global triplicate/average statement is in the raw-material methods paragraph; three samples in §3.3 refer to shrinkage. Do not assign density n=3 or a density-specific mean.",
+          "evidence": [
+            {
+              "source_id": "mohajerani_2019_biosolids_bricks",
+              "url": "https://www.mdpi.com/2075-5309/9/1/14",
+              "locator": "§2 final fired-brick testing paragraph; §3.3 density discussion; Table 4",
+              "supports": [
+                "sample_count"
+              ]
+            }
+          ]
+        },
+        "method_definition": {
+          "type": "source_reported_conventional",
+          "definition": "Table 4 explicitly labels bulk density. §2 includes density in the fired-brick tests conducted under cited Australian Standards [48–50]. The article gives no density-specific calculation or standard submethod; do not infer an exact displacement/geometric procedure. References are AS/NZS 4455.1, AS/NZS 4456, and AS/NZS 4456.6 (the last specifically concerns efflorescence).",
+          "extraction_window": null,
+          "evidence": [
+            {
+              "source_id": "mohajerani_2019_biosolids_bricks",
+              "url": "https://www.mdpi.com/2075-5309/9/1/14",
+              "locator": "§2 final fired-brick testing paragraph; §3.3 density discussion; Table 4",
+              "supports": [
+                "method",
+                "condition",
+                "classification"
+              ]
+            }
+          ]
+        },
+        "source_discrepancies": [],
+        "source_id": "mohajerani_2019_biosolids_bricks",
+        "evidence": [
+          {
+            "source_id": "mohajerani_2019_biosolids_bricks",
+            "url": "https://www.mdpi.com/2075-5309/9/1/14",
+            "locator": "Table 4, Bulk Density row, Control Bricks column; corroborating §3.3",
+            "supports": [
+              "reported_value",
+              "classification"
+            ]
+          },
+          {
+            "source_id": "mohajerani_2019_biosolids_bricks",
+            "url": "https://www.mdpi.com/2075-5309/9/1/14",
+            "locator": "§2 final fired-brick testing paragraph; §3.3 density discussion; Table 4",
+            "supports": [
+              "method",
+              "condition",
+              "classification"
+            ]
+          }
+        ],
+        "source_document": {
+          "url": "https://www.mdpi.com/2075-5309/9/1/14",
+          "revision": "Original article asset retained and inspected on 2026-10-05; no formal version number verified.",
+          "inspected_on": "2026-10-05",
+          "sha256": "2c5c26f559d2911ebc12a5f6f3b616b51df71f8becb994493ba599033fff8bf9",
+          "hash_status": "recorded",
+          "hash_note": null,
+          "inspection_scope": "Original source asset, selected identity/preparation, numerical density, method, statistical scope and article-specific rights inspected and independently source-transcription cross-checked. No raw-data reanalysis, experimental replication, comprehensive errata/retraction audit or independent scientific review.",
+          "inspection_status": "selected_content_inspected"
+        },
+        "scope_note": "Study control bricks manufactured from 100 wt% brick soil supplied by Boral Bricks Pty Ltd., with 0% biosolids. This is a laboratory-fired control material, not a marketed Boral grade or generic brick.",
+        "evaluation_support": "catalog_only",
+        "universal_bound": false,
+        "engineering_allowable": false,
+        "verification": {
+          "source_inspection_scope": "Original source asset, selected identity/preparation, numerical density, method, statistical scope and article-specific rights inspected and independently source-transcription cross-checked. No raw-data reanalysis, experimental replication, comprehensive errata/retraction audit or independent scientific review.",
+          "transcription_cross_check": "completed",
+          "independent_scientific_review": false,
+          "raw_data_reanalysis": false
+        }
+      },
+      "expected_material_state": {
+        "id": "state_mohajerani2019_boral_control_brick",
+        "version": "1.0.0",
+        "identity_id": "mat_mohajerani2019_boral_control_brick",
+        "grade_id": null,
+        "name": "100% Boral-soil control, fired at 1100 °C and furnace-cooled",
+        "names": {
+          "en": "100% Boral-soil control, fired at 1100 °C and furnace-cooled",
+          "zh": "100% Boral 砖土对照，1100 °C 烧成后随炉冷却",
+          "ja": "Boral土100%対照、1100 °C焼成後に炉冷",
+          "de": "100%-Boral-Boden-Kontrolle, bei 1100 °C gebrannt und im Ofen abgekühlt"
+        },
+        "aliases": [],
+        "source_designation": "Control Bricks, 0% biosolids and 100% brick soil",
+        "state": {
+          "product_form": {
+            "status": "reported",
+            "text": "Laboratory control bricks compacted in a 100 mm diameter × 50 mm height mold",
+            "evidence": [
+              {
+                "source_id": "mohajerani_2019_biosolids_bricks",
+                "url": "https://www.mdpi.com/2075-5309/9/1/14",
+                "locator": "§2",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Mold dimensions are not measured final fired-brick dimensions."
+          },
+          "processing": {
+            "status": "reported",
+            "text": "Raw soil oven-dried at 105 °C for 24 h; mixed 20 min; gyratory compaction 240 kPa, 3° angle, 25 gyrations/min in 100 mm diameter × 50 mm height mould. Green samples air-dried 48 h then oven-dried 105 °C for 24 h; furnace ramp 0.7 °C/min to 1100 °C, held 3 h, furnace-cooled to room temperature.",
+            "evidence": [
+              {
+                "source_id": "mohajerani_2019_biosolids_bricks",
+                "url": "https://www.mdpi.com/2075-5309/9/1/14",
+                "locator": "§2",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "1100 °C firing and room-temperature furnace cooling are preparation, not a measured density-test setpoint."
+          },
+          "temper_or_heat_treatment": {
+            "status": "reported",
+            "text": "Furnace ramp 0.7 °C/min to 1100 °C, hold 3 h, furnace cooling to room temperature",
+            "evidence": [
+              {
+                "source_id": "mohajerani_2019_biosolids_bricks",
+                "url": "https://www.mdpi.com/2075-5309/9/1/14",
+                "locator": "§2",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": null
+          },
+          "conditioning": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "As-fired and furnace-cooled; exact post-firing density-test moisture conditioning is not detailed. Dry-density terminology also appears in a separate thermal-conductivity correlation."
+          },
+          "composition_or_purity": {
+            "status": "reported",
+            "text": "100 wt.% precursor brick soil from Boral Bricks Pty Ltd.; 0% biosolids. Raw soil is silica/alumina-rich and contains quartz, muscovite and kaolinite",
+            "evidence": [
+              {
+                "source_id": "mohajerani_2019_biosolids_bricks",
+                "url": "https://www.mdpi.com/2075-5309/9/1/14",
+                "locator": "§2; Tables 1–2; §3.1",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Precursor chemistry/mineralogy does not establish final fired phase fractions. No marketed Boral grade is selected."
+          },
+          "reinforcement": {
+            "status": "reported",
+            "text": "No biosolids in the selected control mixture",
+            "evidence": [
+              {
+                "source_id": "mohajerani_2019_biosolids_bricks",
+                "url": "https://www.mdpi.com/2075-5309/9/1/14",
+                "locator": "§2 control composition",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Do not mistake the strength-row parenthetic 25% wording for the control composition."
+          },
+          "porosity": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Not reported for the selected source result."
+          },
+          "orientation": {
+            "status": "not_applicable",
+            "text": null,
+            "evidence": [],
+            "notes": "Direction is not applicable to this scalar mass-density selection; no isotropy is established."
+          }
+        },
+        "source_scope": "Study control bricks manufactured from 100 wt% brick soil supplied by Boral Bricks Pty Ltd., with 0% biosolids. This is a laboratory-fired control material, not a marketed Boral grade or generic brick.",
+        "evidence": [
+          {
+            "source_id": "mohajerani_2019_biosolids_bricks",
+            "url": "https://www.mdpi.com/2075-5309/9/1/14",
+            "locator": "§2 Materials and Methods; Tables 1–2 Brick Soil column; §3.3",
+            "supports": [
+              "state"
+            ]
+          }
+        ],
+        "property_ids": [
+          "refprop_mohajerani2019_boral_control_brick_mass_density"
+        ],
+        "evaluation_support": "catalog_only"
+      },
+      "expected_identity": {
+        "id": "mat_mohajerani2019_boral_control_brick",
+        "version": "1.0.0",
+        "category": "inorganic",
+        "name": "Fired clay brick from Boral brick soil, 100% soil control (1100 °C)",
+        "names": {
+          "en": "Fired clay brick from Boral brick soil, 100% soil control (1100 °C)",
+          "zh": "Boral 砖土烧结黏土砖，100% 土对照（1100 °C）",
+          "ja": "Boralれんが土の焼成粘土れんが、土100%対照（1100 °C）",
+          "de": "Gebrannter Tonziegel aus Boral-Ziegelerde, 100%-Boden-Kontrolle (1100 °C)"
+        },
+        "aliases": [],
+        "identity_scope": "Study control bricks manufactured from 100 wt% brick soil supplied by Boral Bricks Pty Ltd., with 0% biosolids. This is a laboratory-fired control material, not a marketed Boral grade or generic brick.",
+        "evidence": [
+          {
+            "source_id": "mohajerani_2019_biosolids_bricks",
+            "url": "https://www.mdpi.com/2075-5309/9/1/14",
+            "locator": "§2 Materials and Methods; Tables 1–2 Brick Soil column; §3.3",
+            "supports": [
+              "material_identity",
+              "state"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "property_id": "refprop_jonczy2022_k1_quartz_arenite_mass_density",
+      "state_id": "state_jonczy2022_k1_quartz_arenite",
+      "identity_id": "mat_jonczy2022_k1_quartz_arenite",
+      "expected_property": {
+        "id": "refprop_jonczy2022_k1_quartz_arenite_mass_density",
+        "version": "1.0.0",
+        "material_state_id": "state_jonczy2022_k1_quartz_arenite",
+        "quantity": "mass_density",
+        "quantity_dimension": "mass_per_volume",
+        "source_property_label": "γs [g/cm³]",
+        "reported_value": {
+          "kind": "scalar",
+          "value_text": "2.34",
+          "unit_text": "g/cm³",
+          "unit_code": "g/cm^3",
+          "number": "2.34"
+        },
+        "evidence_kind": "published_experimental_reference",
+        "reporting_basis": "reported_summary",
+        "determination_basis": "source_reports_measurement",
+        "basis_note": "Section 4.2 reports average values of five replicates. Preserve as reported_mean, without claiming an explicitly specified arithmetic averaging algorithm. Table 3 ± has no defined statistical meaning.",
+        "conditions": {
+          "temperature": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Exact density-test temperature is not reported; preparation, conditioning and other tests do not supply a density-test setpoint."
+          },
+          "test_standard": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "No density-specific test standard stated; EN 1926:2007 and PN-G-04303:1997 belong to mechanical testing and must not be transferred."
+          },
+          "test_method": {
+            "status": "reported",
+            "text": "§3.2 Eq. (4): gamma_s = W_d/V_s, dry specimen mass divided by specimen volume. Eq. (2) defines V_s hydrostatically from saturated air and submerged weights; the density paragraph also mentions measured dimensions. Therefore the source supports external-volume bulk density but does not unambiguously select exclusively geometric versus hydrostatic volume determination.",
+            "evidence": [
+              {
+                "source_id": "jonczy_mucha_2022_sandstones",
+                "url": "https://www.mdpi.com/1996-1073/15/7/2692",
+                "locator": "§3.2 Eqs. (2) and (4), density paragraph",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": null
+          },
+          "direction": {
+            "status": "not_applicable",
+            "text": null,
+            "evidence": [],
+            "notes": "Mechanical loading direction is not applicable to scalar density; no isotropy inference."
+          },
+          "conditioning": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Dry specimen mass is explicit. Drying temperature/time and density-test relative humidity are not specified."
+          },
+          "loading_rate": {
+            "status": "not_applicable",
+            "text": null,
+            "evidence": [],
+            "notes": "Mechanical loading rate is not applicable to selected mass density."
+          },
+          "additional_conditions": [
+            {
+              "name": "density_test_humidity",
+              "fact": {
+                "status": "not_reported_in_inspected_source",
+                "text": null,
+                "evidence": [],
+                "notes": "Actual relative humidity during density measurement is not stated; conditioning humidity does not establish it."
+              }
+            },
+            {
+              "name": "density_test_pressure",
+              "fact": {
+                "status": "not_reported_in_inspected_source",
+                "text": null,
+                "evidence": [],
+                "notes": "Density-test pressure is not stated; preparation pressure and other experiments do not establish it."
+              }
+            }
+          ]
+        },
+        "density_basis": "bulk",
+        "summary_statistic": "reported_mean",
+        "uncertainty": {
+          "type": "reported_plus_minus_unspecified",
+          "number": "0.01",
+          "value_text": "0.01",
+          "unit_text": "g/cm³",
+          "unit_code": "g/cm^3",
+          "scope": "Undefined source-reported ± amplitude for the selected K1 bulk-density average; no SD, SE, CI, range or error construction is inferred.",
+          "coverage_factor": null,
+          "confidence_level": null,
+          "evidence": [
+            {
+              "source_id": "jonczy_mucha_2022_sandstones",
+              "url": "https://www.mdpi.com/1996-1073/15/7/2692",
+              "locator": "Table 3, γs row and K1 column; §4.2 first paragraph",
+              "supports": [
+                "uncertainty"
+              ]
+            }
+          ]
+        },
+        "uncertainty_status": "reported_plus_minus_unspecified",
+        "uncertainty_note": "2.34 ± 0.01 g/cm³: reported average of five replicates with an undefined ± amplitude. Do not call it SD, SE, CI, instrument error, tolerance, or a measured 2.33–2.35 range.",
+        "sample_count": {
+          "value": 5,
+          "relation": "exact",
+          "scope": "Five physical-property replicates for sandstone type K1; no independence of geological sampling sites is established.",
+          "source_statement": "Five physical-property replicates for sandstone type K1; no independence of geological sampling sites is established.",
+          "evidence": [
+            {
+              "source_id": "jonczy_mucha_2022_sandstones",
+              "url": "https://www.mdpi.com/1996-1073/15/7/2692",
+              "locator": "§3.2 sample preparation; §4.2 first paragraph",
+              "supports": [
+                "sample_count"
+              ]
+            }
+          ]
+        },
+        "method_definition": {
+          "type": "source_reported_conventional",
+          "definition": "§3.2 Eq. (4): gamma_s = W_d/V_s, dry specimen mass divided by specimen volume. Eq. (2) defines V_s hydrostatically from saturated air and submerged weights; the density paragraph also mentions measured dimensions. Therefore the source supports external-volume bulk density but does not unambiguously select exclusively geometric versus hydrostatic volume determination.",
+          "extraction_window": null,
+          "evidence": [
+            {
+              "source_id": "jonczy_mucha_2022_sandstones",
+              "url": "https://www.mdpi.com/1996-1073/15/7/2692",
+              "locator": "§3.2 Eqs. (2) and (4), density paragraph",
+              "supports": [
+                "method",
+                "condition",
+                "classification"
+              ]
+            }
+          ]
+        },
+        "source_discrepancies": [
+          {
+            "description": "The density paragraph mentions measured sample dimensions, while Eq. (2) defines specimen volume hydrostatically and Eq. (4) uses that volume symbol.",
+            "disposition": "Preserve the geometric/hydrostatic volume-method ambiguity. Do not assert exclusively geometric volume determination or skeletal density.",
+            "evidence": [
+              {
+                "source_id": "jonczy_mucha_2022_sandstones",
+                "url": "https://www.mdpi.com/1996-1073/15/7/2692",
+                "locator": "§3.2 density paragraph, Eqs. (2) and (4)",
+                "supports": [
+                  "source_discrepancy"
+                ]
+              }
+            ]
+          }
+        ],
+        "source_id": "jonczy_mucha_2022_sandstones",
+        "evidence": [
+          {
+            "source_id": "jonczy_mucha_2022_sandstones",
+            "url": "https://www.mdpi.com/1996-1073/15/7/2692",
+            "locator": "Table 3, γs row, K1 column; method §3.2 Eq. (4); averaging §4.2 first paragraph",
+            "supports": [
+              "reported_value",
+              "classification"
+            ]
+          },
+          {
+            "source_id": "jonczy_mucha_2022_sandstones",
+            "url": "https://www.mdpi.com/1996-1073/15/7/2692",
+            "locator": "§3.2 Eqs. (2) and (4), density paragraph",
+            "supports": [
+              "method",
+              "condition",
+              "classification"
+            ]
+          },
+          {
+            "source_id": "jonczy_mucha_2022_sandstones",
+            "url": "https://www.mdpi.com/1996-1073/15/7/2692",
+            "locator": "Table 3, γs row and K1 column; §4.2 first paragraph",
+            "supports": [
+              "uncertainty"
+            ]
+          },
+          {
+            "source_id": "jonczy_mucha_2022_sandstones",
+            "url": "https://www.mdpi.com/1996-1073/15/7/2692",
+            "locator": "§4.2 first paragraph",
+            "supports": [
+              "summary_statistic"
+            ]
+          }
+        ],
+        "source_document": {
+          "url": "https://www.mdpi.com/1996-1073/15/7/2692",
+          "revision": "Original article asset retained and inspected on 2026-10-05; no formal version number verified.",
+          "inspected_on": "2026-10-05",
+          "sha256": "305a78a3c37cf46ddd680bb89edfecc24155ef9a82bd6c928ed59222cf24f7ff",
+          "hash_status": "recorded",
+          "hash_note": null,
+          "inspection_scope": "Original source asset, selected identity/preparation, numerical density, method, statistical scope and article-specific rights inspected and independently source-transcription cross-checked. No raw-data reanalysis, experimental replication, comprehensive errata/retraction audit or independent scientific review.",
+          "inspection_status": "selected_content_inspected"
+        },
+        "scope_note": "Article rock sample type K1 from underground coal-mine excavations in the Upper Silesian Coal Basin, southern Poland. Article names sampling cities Katowice, Jaworzno, Bieruń, Libiąż collectively; do not assert exact mine/site for K1 without additional evidence. K1 classified as quartz arenite under both Folk and Dott–Pettijohn systems. K1 is a study rock type, not a commercial grade.",
+        "evaluation_support": "catalog_only",
+        "universal_bound": false,
+        "engineering_allowable": false,
+        "verification": {
+          "source_inspection_scope": "Original source asset, selected identity/preparation, numerical density, method, statistical scope and article-specific rights inspected and independently source-transcription cross-checked. No raw-data reanalysis, experimental replication, comprehensive errata/retraction audit or independent scientific review.",
+          "transcription_cross_check": "completed",
+          "independent_scientific_review": false,
+          "raw_data_reanalysis": false
+        }
+      },
+      "expected_material_state": {
+        "id": "state_jonczy2022_k1_quartz_arenite",
+        "version": "1.0.0",
+        "identity_id": "mat_jonczy2022_k1_quartz_arenite",
+        "grade_id": null,
+        "name": "K1 natural sandstone, dry-mass physical-property cohort",
+        "names": {
+          "en": "K1 natural sandstone, dry-mass physical-property cohort",
+          "zh": "K1 天然砂岩，干质量物理性质试样组",
+          "ja": "K1天然砂岩、乾燥質量による物性測定群",
+          "de": "K1-Natursandstein, Probenkollektiv für Trockenmasse und physikalische Eigenschaften"
+        },
+        "aliases": [],
+        "source_designation": "K1, quartz arenite",
+        "state": {
+          "product_form": {
+            "status": "reported",
+            "text": "Five cylindrical samples per rock type, diameter and height both 50 ± 0.5 mm",
+            "evidence": [
+              {
+                "source_id": "jonczy_mucha_2022_sandstones",
+                "url": "https://www.mdpi.com/1996-1073/15/7/2692",
+                "locator": "§3.2",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Source preparation dimensions; no density uncertainty is inferred from dimensional tolerance."
+          },
+          "processing": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Not reported for the selected source result."
+          },
+          "temper_or_heat_treatment": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Not reported for the selected source result."
+          },
+          "conditioning": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Dry specimen mass is explicit. Drying temperature/time and density-test relative humidity are not specified."
+          },
+          "composition_or_purity": {
+            "status": "reported",
+            "text": "K1 is quartz arenite under both Folk and Dott–Pettijohn classifications; framework quartz with feldspar, muscovite and heavy minerals; quartz/clay/carbonate/carbonaceous cement",
+            "evidence": [
+              {
+                "source_id": "jonczy_mucha_2022_sandstones",
+                "url": "https://www.mdpi.com/1996-1073/15/7/2692",
+                "locator": "§3.1; §4.1; Tables 1–2",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Petrographic point-count proportions are not mass percentages. Exact K1 mine/site is not resolved by the collective sampling-city list."
+          },
+          "reinforcement": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "No quantitative reinforcement specification is assigned to this selected source-qualified material."
+          },
+          "porosity": {
+            "status": "reported",
+            "text": "Effective/open porosity Pw = 5.5 ± 0.6%, reported average of five replicates",
+            "evidence": [
+              {
+                "source_id": "jonczy_mucha_2022_sandstones",
+                "url": "https://www.mdpi.com/1996-1073/15/7/2692",
+                "locator": "§3.2 Eqs. (1)–(3); Table 3 Pw row × K1 column; §4.2 first paragraph",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Connected/open pore-volume fraction, not total porosity. The ± meaning is undefined; do not label it SD, SE, CI or observed min/max. This is contextual source state metadata, not an additional selected density property or material identity."
+          },
+          "orientation": {
+            "status": "not_applicable",
+            "text": null,
+            "evidence": [],
+            "notes": "Direction is not applicable to this scalar mass-density selection; no isotropy is established."
+          }
+        },
+        "source_scope": "Article rock sample type K1 from underground coal-mine excavations in the Upper Silesian Coal Basin, southern Poland. Article names sampling cities Katowice, Jaworzno, Bieruń, Libiąż collectively; do not assert exact mine/site for K1 without additional evidence. K1 classified as quartz arenite under both Folk and Dott–Pettijohn systems. K1 is a study rock type, not a commercial grade.",
+        "evidence": [
+          {
+            "source_id": "jonczy_mucha_2022_sandstones",
+            "url": "https://www.mdpi.com/1996-1073/15/7/2692",
+            "locator": "§2; §3.1; §4.1; Tables 1–2 K1 column",
+            "supports": [
+              "state"
+            ]
+          }
+        ],
+        "property_ids": [
+          "refprop_jonczy2022_k1_quartz_arenite_mass_density"
+        ],
+        "evaluation_support": "catalog_only"
+      },
+      "expected_identity": {
+        "id": "mat_jonczy2022_k1_quartz_arenite",
+        "version": "1.0.0",
+        "category": "inorganic",
+        "name": "Upper Silesian Carboniferous sandstone K1 (quartz arenite)",
+        "names": {
+          "en": "Upper Silesian Carboniferous sandstone K1 (quartz arenite)",
+          "zh": "上西里西亚石炭纪砂岩 K1（石英砂岩）",
+          "ja": "上シレジアの石炭紀砂岩K1（石英アレナイト）",
+          "de": "Karbonischer Sandstein K1 aus Oberschlesien (Quarzarenit)"
+        },
+        "aliases": [],
+        "identity_scope": "Article rock sample type K1 from underground coal-mine excavations in the Upper Silesian Coal Basin, southern Poland. Article names sampling cities Katowice, Jaworzno, Bieruń, Libiąż collectively; do not assert exact mine/site for K1 without additional evidence. K1 classified as quartz arenite under both Folk and Dott–Pettijohn systems. K1 is a study rock type, not a commercial grade.",
+        "evidence": [
+          {
+            "source_id": "jonczy_mucha_2022_sandstones",
+            "url": "https://www.mdpi.com/1996-1073/15/7/2692",
+            "locator": "§2; §3.1; §4.1; Tables 1–2 K1 column",
+            "supports": [
+              "material_identity",
+              "state"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "sources": [
+    {
+      "id": "ivdre_2024_lpo_rigid_pur",
+      "title": "Rigid Polyurethane Foams’ Development and Optimization from Polyols Based on Depolymerized Suberin and Tall Oil Fatty Acids",
+      "authors": [
+        "Aiga Ivdre",
+        "Mikelis Kirpluks",
+        "Arnis Abolins",
+        "Laima Vevere",
+        "Beatrise Sture",
+        "Aigars Paze",
+        "Daniela Godina",
+        "Janis Rizikovs",
+        "Ugis Cabulis"
+      ],
+      "year": 2024,
+      "doi": "10.3390/polym16070942",
+      "urls": [
+        "https://doi.org/10.3390/polym16070942",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML"
+      ],
+      "read_status": "selected_primary_identity_state_density_method_statistics_and_article_rights_independently_inspected",
+      "license": {
+        "status": "explicit_reuse_license_verified",
+        "identifier": "CC-BY-4.0"
+      },
+      "role": "published_experimental_reference",
+      "claim_notes": [
+        "Original article asset retained and inspected on 2026-10-05; no formal version number verified.",
+        "Retained inspected original source SHA-256 4e0c1a91a9ae26d814576961a3805f9371b46498d4861fb578e7a413bb4c726d, 184537 bytes, corresponds to https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML. Independent source-transcription review confirmed the selected value and article-specific rights; this is not scientific replication.",
+        "License CC-BY-4.0: https://creativecommons.org/licenses/by/4.0/. Article-specific notice verified for the original selected study facts; no selected third-party comparison is imported. Adaptations are selected factual transcription, structured metadata, authored multilingual labels and scope qualifications; source number and unit precision remain unchanged. PDFs, full tables, figures, XML/HTML, screenshots and source dumps are not bundled or relicensed under project MIT.",
+        "Only the optimized Lupranol-based LPO-1 rigid PUR formulation characterized in this study. Lupranol 3300/3422 polyether polyols and polymeric MDI distinguish this formulation; it is not the suberin-based SPO series despite the article title. LPO-1 is a study formulation, not a certified product grade. Do not count LPO-2/LPO-3 as extra identities or substitute modeled target/normalization densities."
+      ],
+      "provenance": {
+        "curation_date": "2026-10-05",
+        "method": "Original source asset, selected identity/preparation, numerical density, method, statistical scope and article-specific rights inspected and independently source-transcription cross-checked. No raw-data reanalysis, experimental replication, comprehensive errata/retraction audit or independent scientific review."
+      },
+      "bundled_content": "selected_source_qualified_facts_bibliographic_metadata_and_original_curation_only_no_source_assets"
+    },
+    {
+      "id": "kosenko_2022_sps_al_foam",
+      "title": "Structural, Electrical, and Mechanical Properties Investigation of Open-Cell Aluminum Foams Obtained by Spark Plasma Sintering and Replication on Polyurethane Template",
+      "authors": [
+        "Alexandra Kosenko",
+        "Konstantin Pushnitsa",
+        "Artem Kim",
+        "Pavel Novikov",
+        "Anatoliy A Popovich"
+      ],
+      "year": 2022,
+      "doi": "10.3390/ma15030931",
+      "urls": [
+        "https://doi.org/10.3390/ma15030931",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8839437/fullTextXML"
+      ],
+      "read_status": "selected_primary_identity_state_density_method_statistics_and_article_rights_independently_inspected",
+      "license": {
+        "status": "explicit_reuse_license_verified",
+        "identifier": "CC-BY-4.0"
+      },
+      "role": "published_experimental_reference",
+      "claim_notes": [
+        "Original article asset retained and inspected on 2026-10-05; no formal version number verified.",
+        "Retained inspected original source SHA-256 5fd0c6fe137c764bf6ca020663c2e52f7ba696f2ad8dda3fc3b4f49be1fdcb7c, 90710 bytes, corresponds to https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8839437/fullTextXML. Independent source-transcription review confirmed the selected value and article-specific rights; this is not scientific replication.",
+        "License CC-BY-4.0: https://creativecommons.org/licenses/by/4.0/. Article-specific notice verified for the original selected study facts; no selected third-party comparison is imported. Adaptations are selected factual transcription, structured metadata, authored multilingual labels and scope qualifications; source number and unit precision remain unchanged. PDFs, full tables, figures, XML/HTML, screenshots and source dumps are not bundled or relicensed under project MIT.",
+        "Only the selected AMD5-derived SPS foam produced at 550 °C/38 MPa, with the specified NaCl space holders. It is a porous Al–Mg–Ti alloy, not pure aluminum and not Hydro 6061 already in the catalog. AMD5 is the input-powder designation, not an independently verified final-foam grade. Do not import the ASD6 replication route or third-party comparison values."
+      ],
+      "provenance": {
+        "curation_date": "2026-10-05",
+        "method": "Original source asset, selected identity/preparation, numerical density, method, statistical scope and article-specific rights inspected and independently source-transcription cross-checked. No raw-data reanalysis, experimental replication, comprehensive errata/retraction audit or independent scientific review."
+      },
+      "bundled_content": "selected_source_qualified_facts_bibliographic_metadata_and_original_curation_only_no_source_assets"
+    },
+    {
+      "id": "prasetia_2024_cork_physical",
+      "title": "Effects of boiling water treatment on the physical properties of Quercus variabilis virgin cork grown in Korea",
+      "authors": [
+        "Denni Prasetia",
+        "Byantara Darsan Purusatama",
+        "Jong Ho Kim",
+        "Jae Hyuk Jang",
+        "Se-Yeong Park",
+        "Seung-Hwan Lee",
+        "Apri Heri Iswanto",
+        "Nam Hun Kim"
+      ],
+      "year": 2024,
+      "doi": "10.1038/s41598-024-56110-5",
+      "urls": [
+        "https://doi.org/10.1038/s41598-024-56110-5",
+        "https://www.nature.com/articles/s41598-024-56110-5.pdf",
+        "https://www.nature.com/articles/s41598-024-56110-5"
+      ],
+      "read_status": "selected_primary_identity_state_density_method_statistics_and_article_rights_independently_inspected",
+      "license": {
+        "status": "explicit_reuse_license_verified",
+        "identifier": "CC-BY-4.0"
+      },
+      "role": "published_experimental_reference",
+      "claim_notes": [
+        "Original article asset retained and inspected on 2026-10-05; no formal version number verified.",
+        "Retained inspected original source SHA-256 d7478930be36c2a5b8855b7ce5e76f30e704728d4e5e138e48b5b4bba442d584, 2567554 bytes, corresponds to https://www.nature.com/articles/s41598-024-56110-5.pdf. Independent source-transcription review confirmed the selected value and article-specific rights; this is not scientific replication.",
+        "License CC-BY-4.0: https://creativecommons.org/licenses/by/4.0/. Article-specific notice verified for the original selected study facts; no selected third-party comparison is imported. Adaptations are selected factual transcription, structured metadata, authored multilingual labels and scope qualifications; source number and unit precision remain unchanged. PDFs, full tables, figures, XML/HTML, screenshots and source dumps are not bundled or relicensed under project MIT.",
+        "Natural reproduction cork tissue of Quercus suber from two Portuguese Castelo Branco cork-forest planks, Amorim Group, supplied through FC Korea Land. Composite is a broad mapping for hierarchical natural tissue, not an agglomerated binder composite or engineered resin product. Untreated means no study boiling intervention, not historically never treated. No commercial quality grade is established. Do not count boiled cork as a second identity or import Q. variabilis virgin-cork green density."
+      ],
+      "provenance": {
+        "curation_date": "2026-10-05",
+        "method": "Original source asset, selected identity/preparation, numerical density, method, statistical scope and article-specific rights inspected and independently source-transcription cross-checked. Publisher PDF Table 5 p.9 visually reviewed; No raw-data reanalysis, experimental replication, comprehensive errata/retraction audit or independent scientific review."
+      },
+      "bundled_content": "selected_source_qualified_facts_bibliographic_metadata_and_original_curation_only_no_source_assets"
+    },
+    {
+      "id": "drury_2023_bamboo_compression",
+      "title": "Assessment of the Compression Properties of Different Giant Bamboo Species for Sustainable Construction",
+      "authors": [
+        "Ben Drury",
+        "Cameron Padfield",
+        "Mirko Russo",
+        "Lowri Swygart",
+        "Oliver Spalton",
+        "Sam Froggatt",
+        "Amir Mofidi"
+      ],
+      "year": 2023,
+      "doi": "10.3390/su15086472",
+      "urls": [
+        "https://doi.org/10.3390/su15086472",
+        "https://www.mdpi.com/2071-1050/15/8/6472/pdf?version=1682230800",
+        "https://www.mdpi.com/2071-1050/15/8/6472"
+      ],
+      "read_status": "selected_primary_identity_state_density_method_statistics_and_article_rights_independently_inspected",
+      "license": {
+        "status": "explicit_reuse_license_verified",
+        "identifier": "CC-BY-4.0"
+      },
+      "role": "published_experimental_reference",
+      "claim_notes": [
+        "Original article asset retained and inspected on 2026-10-05; no formal version number verified.",
+        "Retained inspected original source SHA-256 4ffacd66749fac3bb8f7aa464413018add56f90a7f4c64ba3676b7f88dfdfa6e, 3233990 bytes, corresponds to https://www.mdpi.com/2071-1050/15/8/6472/pdf?version=1682230800. Independent source-transcription review confirmed the selected value and article-specific rights; this is not scientific replication.",
+        "License CC-BY-4.0: https://creativecommons.org/licenses/by/4.0/. Article-specific notice verified for the original selected study facts; no selected third-party comparison is imported. Adaptations are selected factual transcription, structured metadata, authored multilingual labels and scope qualifications; source number and unit precision remain unchanged. PDFs, full tables, figures, XML/HTML, screenshots and source dumps are not bundled or relicensed under project MIT.",
+        "Study-qualified Phyllostachys edulis full-culm tissue from China. Composite is a broad mapping for hierarchical natural lignocellulosic tissue, not an engineered resin-bonded laminate. Botanical species is the distinct identity; nodal/internodal specimens are states within one cohort, not additional identities. No commercial grade is specified. Do not label generic untreated bamboo or infer species-specific moisture from the full-cohort average.",
+        "Generic HTML dc.rights metadata names CC BY 3.0, while the article-specific statement and publisher PDF p.1 explicitly identify CC BY 4.0. Use article-specific CC BY 4.0 evidence and retain this metadata conflict; do not assert all metadata agree.",
+        "The second selected species is Guadua angustifolia from Colombia, borax-treated before shipping, with nodal and internodal specimens in the same species cohort. The two species are distinct identities, not two treatment states of one identity."
+      ],
+      "provenance": {
+        "curation_date": "2026-10-05",
+        "method": "Original source asset, selected identity/preparation, numerical density, method, statistical scope and article-specific rights inspected and independently source-transcription cross-checked. Publisher PDF Table 1 p.6 visually reviewed; No raw-data reanalysis, experimental replication, comprehensive errata/retraction audit or independent scientific review."
+      },
+      "bundled_content": "selected_source_qualified_facts_bibliographic_metadata_and_original_curation_only_no_source_assets"
+    },
+    {
+      "id": "saad_azzem_2022_plaster_wheat_straw",
+      "title": "Thermal and Physico-Chemical Characteristics of Plaster Reinforced with Wheat Straw for Use as Insulating Materials in Building",
+      "authors": [
+        "Lokmane Saad Azzem",
+        "Nadir Bellel"
+      ],
+      "year": 2022,
+      "doi": "10.3390/buildings12081119",
+      "urls": [
+        "https://doi.org/10.3390/buildings12081119",
+        "https://www.mdpi.com/2075-5309/12/8/1119"
+      ],
+      "read_status": "selected_primary_identity_state_density_method_statistics_and_article_rights_independently_inspected",
+      "license": {
+        "status": "explicit_reuse_license_verified",
+        "identifier": "CC-BY-4.0"
+      },
+      "role": "published_experimental_reference",
+      "claim_notes": [
+        "Original article asset retained and inspected on 2026-10-05; no formal version number verified.",
+        "Retained inspected original source SHA-256 3813c49962a2353c055fafeb924711c7d677d986178f6cae592d320cd32de33e, 587842 bytes, corresponds to https://www.mdpi.com/2075-5309/12/8/1119. Independent source-transcription review confirmed the selected value and article-specific rights; this is not scientific replication.",
+        "License CC-BY-4.0: https://creativecommons.org/licenses/by/4.0/. Article-specific notice verified for the original selected study facts; no selected third-party comparison is imported. Adaptations are selected factual transcription, structured metadata, authored multilingual labels and scope qualifications; source number and unit precision remain unchanged. PDFs, full tables, figures, XML/HTML, screenshots and source dumps are not bundled or relicensed under project MIT.",
+        "Commercial plaster from Al-Taouab Company, Algiers, Algeria; article sample CP, zero wheat straw. Source-qualified study formulation, not a universal value for all gypsum plaster or all Al-Taouab products. CP is a source formulation label, not a certified commercial grade."
+      ],
+      "provenance": {
+        "curation_date": "2026-10-05",
+        "method": "Original source asset, selected identity/preparation, numerical density, method, statistical scope and article-specific rights inspected and independently source-transcription cross-checked. No raw-data reanalysis, experimental replication, comprehensive errata/retraction audit or independent scientific review."
+      },
+      "bundled_content": "selected_source_qualified_facts_bibliographic_metadata_and_original_curation_only_no_source_assets"
+    },
+    {
+      "id": "mohajerani_2019_biosolids_bricks",
+      "title": "A Proposal for Recycling the World’s Unused Stockpiles of Treated Wastewater Sludge (Biosolids) in Fired-Clay Bricks",
+      "authors": [
+        "Abbas Mohajerani",
+        "Aruna Ukwatta",
+        "Tristan Jeffrey-Bailey",
+        "Michael Swaney",
+        "Mohtashim Ahmed",
+        "Glen Rodwell",
+        "Simon Bartolo",
+        "Nicky Eshtiaghi",
+        "Sujeeva Setunge"
+      ],
+      "year": 2019,
+      "doi": "10.3390/buildings9010014",
+      "urls": [
+        "https://doi.org/10.3390/buildings9010014",
+        "https://www.mdpi.com/2075-5309/9/1/14"
+      ],
+      "read_status": "selected_primary_identity_state_density_method_statistics_and_article_rights_independently_inspected",
+      "license": {
+        "status": "explicit_reuse_license_verified",
+        "identifier": "CC-BY-4.0"
+      },
+      "role": "published_experimental_reference",
+      "claim_notes": [
+        "Original article asset retained and inspected on 2026-10-05; no formal version number verified.",
+        "Retained inspected original source SHA-256 2c5c26f559d2911ebc12a5f6f3b616b51df71f8becb994493ba599033fff8bf9, 714962 bytes, corresponds to https://www.mdpi.com/2075-5309/9/1/14. Independent source-transcription review confirmed the selected value and article-specific rights; this is not scientific replication.",
+        "License CC-BY-4.0: https://creativecommons.org/licenses/by/4.0/. Article-specific notice verified for the original selected study facts; no selected third-party comparison is imported. Adaptations are selected factual transcription, structured metadata, authored multilingual labels and scope qualifications; source number and unit precision remain unchanged. PDFs, full tables, figures, XML/HTML, screenshots and source dumps are not bundled or relicensed under project MIT.",
+        "Study control bricks manufactured from 100 wt% brick soil supplied by Boral Bricks Pty Ltd., with 0% biosolids. This is a laboratory-fired control material, not a marketed Boral grade or generic brick."
+      ],
+      "provenance": {
+        "curation_date": "2026-10-05",
+        "method": "Original source asset, selected identity/preparation, numerical density, method, statistical scope and article-specific rights inspected and independently source-transcription cross-checked. No raw-data reanalysis, experimental replication, comprehensive errata/retraction audit or independent scientific review."
+      },
+      "bundled_content": "selected_source_qualified_facts_bibliographic_metadata_and_original_curation_only_no_source_assets"
+    },
+    {
+      "id": "jonczy_mucha_2022_sandstones",
+      "title": "Relationships between the Petrographic and Abrasive Properties of Sandstones in the Aspect of Their Cutting",
+      "authors": [
+        "Iwona Jonczy",
+        "Kamil Mucha"
+      ],
+      "year": 2022,
+      "doi": "10.3390/en15072692",
+      "urls": [
+        "https://doi.org/10.3390/en15072692",
+        "https://www.mdpi.com/1996-1073/15/7/2692"
+      ],
+      "read_status": "selected_primary_identity_state_density_method_statistics_and_article_rights_independently_inspected",
+      "license": {
+        "status": "explicit_reuse_license_verified",
+        "identifier": "CC-BY-4.0"
+      },
+      "role": "published_experimental_reference",
+      "claim_notes": [
+        "Original article asset retained and inspected on 2026-10-05; no formal version number verified.",
+        "Retained inspected original source SHA-256 305a78a3c37cf46ddd680bb89edfecc24155ef9a82bd6c928ed59222cf24f7ff, 571962 bytes, corresponds to https://www.mdpi.com/1996-1073/15/7/2692. Independent source-transcription review confirmed the selected value and article-specific rights; this is not scientific replication.",
+        "License CC-BY-4.0: https://creativecommons.org/licenses/by/4.0/. Article-specific notice verified for the original selected study facts; no selected third-party comparison is imported. Adaptations are selected factual transcription, structured metadata, authored multilingual labels and scope qualifications; source number and unit precision remain unchanged. PDFs, full tables, figures, XML/HTML, screenshots and source dumps are not bundled or relicensed under project MIT.",
+        "Article rock sample type K1 from underground coal-mine excavations in the Upper Silesian Coal Basin, southern Poland. Article names sampling cities Katowice, Jaworzno, Bieruń, Libiąż collectively; do not assert exact mine/site for K1 without additional evidence. K1 classified as quartz arenite under both Folk and Dott–Pettijohn systems. K1 is a study rock type, not a commercial grade."
+      ],
+      "provenance": {
+        "curation_date": "2026-10-05",
+        "method": "Original source asset, selected identity/preparation, numerical density, method, statistical scope and article-specific rights inspected and independently source-transcription cross-checked. No raw-data reanalysis, experimental replication, comprehensive errata/retraction audit or independent scientific review."
+      },
+      "bundled_content": "selected_source_qualified_facts_bibliographic_metadata_and_original_curation_only_no_source_assets"
+    }
+  ],
+  "baseline_sha256": {
+    "materials": {
+      "identities": {
+        "mat_aurubis_c11000": "fa0ac1b5dcb865f9cf8e60817772a4e10554e30e62dd4ff8d34d2611036baf5c",
+        "mat_aurubis_c26000": "61a5c44cae5b172c65c7acbed0d7f5ccc3d408ea4abccd5cb23aa6850721722d",
+        "mat_hydro_6061": "4c66a44b6fc0f0619a27738a92ea9cf2d62264f879288b5d826f2d56e60a31bb",
+        "mat_timet_timetal6_4_grade5": "6ac85c23e712c0e6e84ea74458099276009bbf3c0b5eee2315776373ac8927e7",
+        "mat_specialmetals_nickel200": "8bafa9c8af43bc9ba9814b208dda96d85f8d554a060a4716a4bf152cf5db53f2",
+        "mat_specialmetals_monel400": "e03b70cac9b1979e657f0fd3038f730433a5cc84caf58d67a0b4b128eeb841cc",
+        "mat_outokumpu_304l": "34485e713add5eaa0f819a687c58a505eefbfa642d401e4c2fc978d90b8af2c2",
+        "mat_outokumpu_441": "8c8dcdf320b4c7cc5864642b85b6f4251fb42fa527e332d5fea32362535a7f3d",
+        "mat_porima_pla_sahin_2026": "db77ee231ef0ab011929ac0c4ebb098eab4a3487bc58b27fb5d656e62fd82b93",
+        "mat_porima_abs_sahin_2026": "1ed7328cf9c670fef14579c176a23eb9ccef88830f02dd6785beef8a74915765",
+        "mat_porima_petg_sahin_2026": "7c4cb081fe52b93c9ee52209d6ca893b3c1d314b035b49c2e75037656344be66",
+        "mat_porima_asa_sahin_2026": "4bedb9d734c95f1cdef9eeac1ec3b46f069e6dc86917f308f535a182c1f2541f",
+        "mat_porima_pc_abs_sahin_2026": "720a5c12fb4f4e173687e74c74433f746be26dbe05566969d9d5fe68dfe237f0",
+        "mat_schott_borofloat_33": "b34d0038ea6f6dd8ec99bde8da8572a0d987e5dc920900371c0cb3bb06a873a5",
+        "mat_poco_axf_5q": "fb8ddfc35961576fdddba9e408b0c9af02e0ed2185f2ae077fc50d6d2e322159",
+        "mat_corning_hpfs_7980": "c8c682a4f3090ba3e94c4c38681466a01701f4504b043f590b5e99d8dafe8a84",
+        "mat_kwiatkowski2023_a16sg_sps1500": "855ecad5f7c335465822310d7b569ac4147a465fec9df79a4173b33878d16a55",
+        "mat_vladislavova2021_3ytzp_sinter1550": "e8fb7226e94ce713a9766a7333fb8cd00957c0942e7f8515437c7d5459393f0b",
+        "mat_yasar2020_sic_wet_1_5c_sps1950": "5835205769d0f055de2911ea0ef86703a63e697d2ecdf7cb301979acf924d6f7",
+        "mat_ozog2020_aln90_y6_a4_pressed": "fd08655aa88a0af3762885999000202d8c0e4f1beb27ab286e616a5f799f9e15",
+        "mat_lukianova2017_si3n4_85_9_6_sps1650": "70ff372a5b4ca28905b6727f487836c7f4ee9481f0a3884effc1abcc9d9e15be",
+        "mat_silicon_crystalline_nbs": "6c2a771b9e664d4a8d836f5e4f56093a44b043902c4bfb8a0912bdb96cff4030",
+        "mat_germanium_nbs4065": "c40b861eaddc19f1125ce62fba3ad743d6fdc0f42d312274066d04497cb607d4",
+        "mat_usda_sugar_maple": "ba8260a6ea1f5ab94d76a0f80ff101623ead1543d2a4e7dd21411162542a4bf8",
+        "mat_usda_northern_red_oak": "5850fc33aa05864783fae4684d15fc8a51fcece59244b0991fd4b4397d498cc0",
+        "mat_usda_sitka_spruce": "d1a0b0519f3dad67d953a9d6d1a1ac30ee9c309b588d6de4a6fa9f5e52eab4bf",
+        "mat_domagala2024_nc1_concrete": "deeb5f8883e6595a7ebd7cae497bdb22902864af0c47a1c440a8eba93a0b1742",
+        "mat_wubalem2025_carrara_marble": "3a867165967f10984669aa592f983ce941e573355395480e3653190975316b57",
+        "mat_toray_t700s": "c317aad87516dcd80ba78df6e5ba31cc8ac68c57b3799655b4ea493eef7b2008",
+        "mat_deutsche_basalt_faser": "7ab88f64ca5ecf213e91f70f421250501f863baa6bd277c6a4d115ebc3cce091",
+        "mat_dow_corning_sylgard184": "826d99a1dc7d14828956c6ffe8c602e14045389fc020f63cb14c2a42b235148a",
+        "mat_smr10_bianchi2025_nr": "7791dafd79d8ece18fb6aa628f8e8a9c72a954a647ca06f6dec56420fe1edf8a",
+        "mat_vistalon2504_n550_bianchi2022_epdm": "31eebc68e4f60e13bb474c57c9c35d970069ab725faf5ff15c6282845a66a37e",
+        "mat_perbunan3445f_tamas_benyei2025_ref": "045911725661b906a5e5efcb459a424e696105039b8d5b541b5259dc85d13eaf",
+        "mat_puga2015_az91d": "abd65656d4c20b91dde6e36fa48594e2c5c367a101e8686ca853cdea499eec2f",
+        "mat_kulczyk2022_zinc_99_9": "c0e40bad0625c57f69dadb572b38d00825ff936ff8d1cbd6f8d6f052b331687e",
+        "mat_chen2023_az31": "e622f32c43ce629f1bb4d08e97d2d067caa4908b596631a7eceffb94f0f4088e",
+        "mat_cezairliyan1970_molybdenum_tube": "de4e95f881fcf02e90bbf2dc96e333a315c19d59a0e94cd7ca00b3fc34d8cbae",
+        "mat_cezairliyan1971_tungsten_tube": "f2b7cd390f7d2095808058e3a27878e3fb80a6cbe14d72498562c981f7834fe6",
+        "mat_stochioiu2024_flax_technical_fiber": "b7cd23a6c9514f685e9a555249d7d930dcfe672916f27be899a9c029e2aeb019",
+        "mat_stochioiu2024_hemp_technical_fiber": "a6654f0a7344a8b40ce9ad52c7f75f56183ba0ac8e184a016ae25064ce03fb57",
+        "mat_cheng2019_bombyx_mori_silk_strain932": "252ed5e6a2d512e9b1181f80f103640182e5d63ad188a3e6fcaaa42423bbf51e",
+        "mat_arbelaiz2024_latxa_wool": "fb1652525b001554b32dce1ad118332f164d367c382708144e6a51f9078d8cc7"
+      },
+      "grades": {
+        "grade_aurubis_c11000": "8acfcb07cc2d68d0f2ed1c2113ed9cec60d25f6f09f66a4bf4a7bd160c60e211",
+        "grade_aurubis_c26000": "ae08268de1aae606c50b5c878bd741c8864334d754c4deb578fddca362068d09",
+        "grade_hydro_6061": "30297d0ac22751611bececfbd5250688556a2ea8be39a2329a585908e73c17db",
+        "grade_timet_timetal6_4_grade5": "a6835b11fcfa72860a55b758d3925a0053db5af3562273099143f485b4d08838",
+        "grade_specialmetals_nickel200": "fee8c1336e2ef0ead5983b8db89d831841eb39baa51d42c762c4e7134baaa5ec",
+        "grade_specialmetals_monel400": "13731768c61d032b7b66eeb5ae78c4f8beb25da8668bddfa47de46cd727f50e7",
+        "grade_outokumpu_304l": "ae3573cff38a43895449da77fddbb3c8f06cee70c1c1c8f39a5288c1c8614413",
+        "grade_outokumpu_441": "2c6c8efa3a43698afbeebeb3893b24ed42fde686628945a1e699fdec770edbb8",
+        "grade_schott_borofloat_33": "df70516b52ec339c9b2819eb992cd2d30cad8a5c3407579b8d00752be796c363",
+        "grade_poco_axf_5q": "cb763d624a9c675c1d544d94d8c84bc4eb69fbc770b22bb17e6ccbc780895aba",
+        "grade_corning_hpfs_7980": "f1646537d8d654fc545d1eed32c459beabdc1795d37e2988a3f5a071a01a8478",
+        "grade_toray_t700s": "a80bd3d56b4f37d4857bbe30e81e45e1349d7c6edc836958af32689bb8aca68f",
+        "grade_deutsche_basalt_faser": "efb8afaef873f8e83587d3a1818c0425e4baf8e84d4780016e94d2e0756dc0d6",
+        "grade_dow_corning_sylgard184": "6b7c69702a3d86f4554b58520927f180cd8e3073becb588d0ec5631476db5f6d",
+        "grade_smr10_bianchi2025_nr": "09013887eeeeccdb026eb32db688fabfe37f330ff7e833f4ba0924d988c4dc68",
+        "grade_vistalon2504_n550_bianchi2022_epdm": "0f9133ca273ea497aad42962aa5ab618954ca92e57b4ff016a3801ac72b76021",
+        "grade_perbunan3445f_tamas_benyei2025_ref": "831302b35a39452dce85323234eb2dd702053ab982e49602f4dda029c3c36ed2",
+        "grade_puga2015_az91d": "d744509b799002d4a1d40b178a786447362587cba00a1c9a2e114463ed70323e",
+        "grade_chen2023_az31": "0aa6abf5a7ac387e8d920aa172c1ea23416a8c02b0ad2ae1220b502bb058c33c"
+      },
+      "records": {
+        "state_aurubis_c11000": "c272c45b188cc5866e0c1c878263d8f12955832407eda291431fe3fbe5bbc6fe",
+        "state_aurubis_c26000": "ebf9419fd24cfc31f1caf43054d027f9f7c62d4ad7c39f54984481d82e5bf6c6",
+        "state_hydro_6061": "260e1b3c39a437a5461704db963ee41017ffe786ed1ba139f9056bc4e28f4e38",
+        "state_timet_timetal6_4_grade5": "d84c4017df0a9ca78b5035e0b773730637afa5e7564be30ca9418feb11ff6606",
+        "state_specialmetals_nickel200_annealed": "a1b2279b94393d5dcbc33e5a3fd7dc1c580592024325f15f5730bdec0213ba4f",
+        "state_specialmetals_monel400": "f1596c50771b470e4959d8a44518aa4a6481e62bee666138e62b6e8000ac1348",
+        "state_outokumpu_304l": "63a3f5832447cc58c55ca21a3a7709684851c2efc1182182efab7c8f2b8015f0",
+        "state_outokumpu_441": "68dcdf6e5bb94ce434c02526cc5518fbf1af74b7beb84b4663245efa230ff55c",
+        "state_porima_pla_sahin_2026_fdm": "d004a67d8ef02ff563c13d34523b89be66e2d482dfb65a4ba9f77eeaff04f6e2",
+        "state_porima_abs_sahin_2026_fdm": "f2608ba1122ba47a4c8e2749d1dfe3f31b57b1af720661ee38d445313051f226",
+        "state_porima_petg_sahin_2026_fdm": "7607aa7f788174e791f7544c92bb6f8ec51daa2e0138e06f4af55d2272bb7a81",
+        "state_porima_asa_sahin_2026_fdm": "69fffce6a31fbdaf57c2fd045a91ff3cbfbb2074af90058578d078142085ad92",
+        "state_porima_pc_abs_sahin_2026_fdm": "dc4c22040be56a28780508a98edbe0cd114d026e29e6267cc5af4da793537d1e",
+        "state_schott_borofloat_33": "8e887ab6c20d3bb222ac3a116caba0582411d0c9c9b9b42ba624171e48d7690c",
+        "state_poco_axf_5q": "20300d3d382ec2a1b51e51fe8530f7bce23a59874c431fae381bfd96f96a4559",
+        "state_corning_hpfs_7980_2006_reference": "da8ce946cf0e17a15a077607e2a9ed6e19837becb04ab19601e7810175a621c4",
+        "state_kwiatkowski2023_a16sg_sps1500": "9beee7d2643be590eadcf2753a843a0ebc3f0c56e3150cdaf3184d5b939248ab",
+        "state_vladislavova2021_3ytzp_sinter1550": "35b015eee2fad6c166cac72a912b9db6f54c178f29bb4d8868e7a096a098e791",
+        "state_yasar2020_sic_wet_1_5c_sps1950": "1204cf6da17e6f25cdf86c04857620374fba5204f40cbb2adf18195192ef0eb5",
+        "state_ozog2020_aln90_y6_a4_pressed": "2b0f5644c5c017bf54b310c7fc95a96574084ad0f0881d24a57a688e43efe80f",
+        "state_lukianova2017_si3n4_85_9_6_sps1650": "984574c7c1e161450a960617971bca223cf668e3d776a258e923a51a2471f1d7",
+        "state_nbs_silicon_x2_1975": "19b8c944aea2467ceffae48d4e755efa97eb629fdd46387d2766290c8d25e7e0",
+        "state_nbs_ge4065_xrd_1953": "46e8f293aee9d818e2a6aaf7de12191e130e68545351966e38952bb54f8e752d",
+        "state_usda2010_sugar_maple_clear_mc12": "1b154fb26d80c4defab6aec76b87abe6f491fb41303667c9857fc69324cde5a1",
+        "state_usda2010_northern_red_oak_clear_mc12": "7abcf73987278385d898b1f0bfcf713f5b0b9006b2cfe3268753f20787ff158e",
+        "state_usda2010_sitka_spruce_clear_mc12": "c0aacedb9eee1a04e1df413a6371944838dd9cf107e3d9545502350a3860bad1",
+        "state_domagala2024_nc1_28d_saturated": "d7c79fe0ec843cf2644ebef4025bfa770496818a3ccfdd2009dc8be69ec8b5ea",
+        "state_wubalem2025_carrara_marble_specimen13": "baa874b067e87ebe9265a94edcf31335cbf18be99fdda76ad67a71a540ce91be",
+        "state_toray_t700s_mesquita2021_specimen1": "a7a90f402c59fcc7ae59822c1aafc05a7459a9d269defc329dc61b5788c2ca4c",
+        "state_deutsche_basalt_faser_a76_9_2_messmer2024": "16ca2a23c9f84a88a9a2a5bb416344ac65ed8acdfedd1fc861a1da750a6757d0",
+        "state_dow_corning_sylgard184_johnston2014_100c": "791cf20ec6eed0c1fb2a6ba6fd49f903370933075875d76c635a353622e27515",
+        "state_smr10_bianchi2025_nr": "36ef928561cf9c5cff14aa76ab721fa7257cfe1fe613408df08baa3649967b2b",
+        "state_vistalon2504_n550_bianchi2022_epdm": "a7dea10d48d44462b335f48804a501fde319664df121f10b7a0b74ae66485968",
+        "state_perbunan3445f_tamas_benyei2025_ref": "db0e7a505c74f0629b774f68af5845a11f4cf138cfb8aeafa61d73290aedb2b7",
+        "state_puga2015_az91d_as_cast_non_us": "bf791c5d7748144fb0e374b27649219ae0e2ec12f8a659a9a79414d4afaece77",
+        "state_kulczyk2022_zinc_annealed": "fc0c68ecab04592e212a1fa0231b0ad6c858f89cfd1fcc58b7ac5d52587c3171",
+        "state_chen2023_az31_as_extruded": "aed566d365e26c4dae6da5e6f0fc0cadf0f0cd987177d565c94d2dba23064e5e",
+        "state_cezairliyan1970_molybdenum_tube_ambient_density": "701d35fd0ff232e377ae8327037a606427c8de7ef628b3f9c7709ba75aba9d13",
+        "state_cezairliyan1971_tungsten_tube_ambient_density": "6fb43402983261407cf38cc87bd4c077b9c4731f9d6b78554d0b060d3c0a7fa3",
+        "state_stochioiu2024_flax_technical_fiber_10mm": "d2b5535e94642afc70847c6aae5628bbcb083c7dc9feb052a79fd91352200c62",
+        "state_stochioiu2024_hemp_technical_fiber_10mm": "32752748868e5d86541423ac23adfa1d2b412848508fbbbc8c0728cf5f9d46d0",
+        "state_cheng2019_bombyx_mori_silk_strain932_degummed_control": "40bb87884d470a3ad7dcb131e38e9c5e2e5f6db0620ec2561abea48822777006",
+        "state_arbelaiz2024_latxa_wool_soap_cleaned": "b48f4f2e6fb48cced7ce69f063eaa0fe9facb88bbf7cf2541fe8ceccd4de1071"
+      }
+    },
+    "reference_properties": {
+      "records": {
+        "refprop_aurubis_c11000_mass_density": "f19972aad2d5e9bca91e978f7a46ab8283023d86d13972bce32b5f18176e38be",
+        "refprop_aurubis_c26000_mass_density": "47b65f2e0aec673828a791b342ca9d3d443e57484ce156999255205992d4347a",
+        "refprop_hydro_6061_mass_density": "95e639cc2195549237bc52e6ea3cda06d69184916a9d9e7a54d022f65927831d",
+        "refprop_timet_timetal6_4_grade5_mass_density": "cbeb088013a60a3de875fee7c672a9d8b4d71dc42c052e9e747cea11372e281f",
+        "refprop_specialmetals_nickel200_annealed_youngs_modulus": "5dceae2c9b0f3debc902bee05f29652b4cf78e76c2cc16b2d7f437b2e537e110",
+        "refprop_specialmetals_monel400_mass_density": "3b792be60b8e522dfd198e619d462de54880f87bb624994ba86af4b1fb72dff9",
+        "refprop_outokumpu_304l_mass_density": "5bf4340fe90c03203fb820e4b41c42d2718487731a97c3ea83477392231e27cc",
+        "refprop_outokumpu_441_mass_density": "12e725c977b30cfe8bef581ca08b5d025d94fc0736598eebcda76ebaededd620",
+        "refprop_porima_pla_sahin_2026_fdm_tensile_modulus": "e44740f72d10b7d98af8c60fb88332bd4fe385b52c196f9d7aa23cdd0162a5dc",
+        "refprop_porima_abs_sahin_2026_fdm_tensile_modulus": "c28ec2ca27fd6e9824c0d53bb3e646a1110323430bd0a5edd2417db7acc2c89a",
+        "refprop_porima_petg_sahin_2026_fdm_tensile_modulus": "4698ca4fea86d58d97e8f04d555b0d69d90a7aac888134acd5cf524ca002606e",
+        "refprop_porima_asa_sahin_2026_fdm_tensile_modulus": "9440662efa63d83adb8e6c28f77d52c6bd47b5c736e55f06568b8e010deede1b",
+        "refprop_porima_pc_abs_sahin_2026_fdm_tensile_modulus": "60813c3cef1c3478616fbbee4b4edbbfa2221734334a5ddc2f9f0b1f7caf0c83",
+        "refprop_schott_borofloat_33_mass_density": "16aa8dfc79e2de93d8847b1e32c168b652695ac18eb9c2566c6b777ac7469e35",
+        "refprop_poco_axf_5q_mass_density": "c9613a6a0f936bd74dff0bd5a4c892f14813249ef228381347f7e2b899c25b2c",
+        "refprop_corning_hpfs_7980_2006_reference_mass_density": "9ab1b16ddff6019ba23417a9e9a4cc44febf38dac97d84b713cbf41e90cec807",
+        "refprop_kwiatkowski2023_a16sg_sps1500_mass_density": "c5cfd35456201274dc058b23988fbeea61f9597f26f7dbcce801982b0a573dc2",
+        "refprop_vladislavova2021_3ytzp_sinter1550_mass_density": "4251c13860f8363649234ada87068d717f05ca395caaec58720188080f5d8b71",
+        "refprop_yasar2020_sic_wet_1_5c_sps1950_mass_density": "5364b82cb55ab461216ed6a35474703b67bdcff52d496799453a711917524bbe",
+        "refprop_ozog2020_aln90_y6_a4_pressed_mass_density": "4837fef35a2cb5054ceaefb0ae8fe33aa7bf487bb33d7c1d59882dc3da198620",
+        "refprop_lukianova2017_si3n4_85_9_6_sps1650_mass_density": "77a457199fefa8f406f1ee1cd6d72c7981819bdd56e3b5d1ebc980b684b84d24",
+        "refprop_nbs_silicon_x2_1975_mass_density": "cdb12b0b576bea917d13267c0e496c77d527c05908fb449eb763fa50d0ffd2ab",
+        "refprop_nbs_ge4065_crystallographic_density": "a68960e0847ccd24f456646b3803fcd641017de5bcb796dfc55d2728bb730ec6",
+        "refprop_usda2010_sugar_maple_mc12_flexural_modulus": "bcea8647fd6ab8ae66284f893716bd36dc9cdce535524e578b1998853b5e5518",
+        "refprop_usda2010_northern_red_oak_mc12_flexural_modulus": "71bf868dca47c1f33de3debe7b6a4cb67e123f4fb1d07cc2bee78bd27a6a0f19",
+        "refprop_usda2010_sitka_spruce_mc12_flexural_modulus": "64aa8130c1a6faa72dbaf84602759bcaa11722c1d59901594af0987f20e8eda6",
+        "refprop_domagala2024_nc1_28d_saturated_mass_density": "8e76db3fc07904485067ceef3b6a16f34e3e70c6075302b934c81afcbea6246e",
+        "refprop_wubalem2025_carrara_marble_specimen13_mass_density": "da608e4881e8adc3332d038592addcb7b04efad6d44379bcbe3a60629b10c8c2",
+        "refprop_toray_t700s_mesquita2021_specimen1_tensile_modulus": "6f2bc34bfe2bf7a5a6cfe366f773b2704a14ecff61ced404b11219840877ded1",
+        "refprop_deutsche_basalt_faser_a76_9_2_messmer2024_tensile_modulus": "5f10ea381fb6a3036b87d84f4b023109608c3c0effd5d0ed52ebdffb31fd1793",
+        "refprop_dow_corning_sylgard184_johnston2014_100c_youngs_modulus": "5dae0be5de60dc60330cb7f6bd7295f9087ef73ad9f4918bdca909e823823af5",
+        "refprop_smr10_bianchi2025_nr_mass_density": "c1fa46b12981ab325340861114a327fd98179109890e86ec98b03749999f247b",
+        "refprop_vistalon2504_n550_bianchi2022_epdm_mass_density": "3810af4b40eb96cdc18372befdfac5e734b88c1c2b52417f3080d204b94cbdd7",
+        "refprop_perbunan3445f_tamas_benyei2025_ref_mass_density": "fd01fbcc684b2cdc3a87fe0d423bd34caf956251ddcc2c9b7fb42ea4936acf99",
+        "refprop_puga2015_az91d_as_cast_non_us_tensile_strength": "1def1c0f696cf827137a6b0bbdfd36d341edbcb83fbe428b1bff4d65503a02dc",
+        "refprop_kulczyk2022_zinc_annealed_tensile_strength": "1e177cbcac192fe82a3e266f18da3cac8236973b1c7405e74db628a73fea6433",
+        "refprop_chen2023_az31_as_extruded_tensile_strength": "b946bf191f8067e6c45abf5964a53f355d251ea0635e2ac0197354318d7bbeaf",
+        "refprop_cezairliyan1970_molybdenum_tube_mass_density": "b680d2cca49cf363de916d71f60c9d0f28b8e701d25fed59ae809c0657bc3b06",
+        "refprop_cezairliyan1971_tungsten_tube_mass_density": "a4477ebf4ce100f5eb5e04afa26e889964054867087ab3a66e7c0fd7dbf0116b",
+        "refprop_stochioiu2024_flax_technical_fiber_youngs_modulus": "8db46dc8de01381c7f07da17f5f3461f5721d32ad0e1bad82ee736087510463f",
+        "refprop_stochioiu2024_hemp_technical_fiber_youngs_modulus": "242df94f3f6407b29c7442df87610d891040c0444daacd621618ddd39c484299",
+        "refprop_cheng2019_bombyx_mori_silk_strain932_control_tensile_strength": "425fb1806f5b9fc031b000fbd042bada83b7aa6e6811ff0e7f5cdd1a7792de8d",
+        "refprop_arbelaiz2024_latxa_wool_soap_cleaned_tensile_strength": "46e2cce322ecab2a811620bdfff7cfdf5df53c6d60aaa5ddede462fe03d6cb1a"
+      }
+    },
+    "sources": {
+      "records": {
+        "hashin_shtrikman_1963": "eb429ccc25f8aaf52db9a808124635e4ed2113d989041a0eef4eca51daa37365",
+        "kochmann_milton_2014": "40e85ee6296d598053746e97c84c28526b62d8ebb555e49ae72660f35d9e16c4",
+        "berger_2017": "17db8e7c8efd66ba018b0755233b5bf56a167fdbe1518c2935cbc3dd7e84cedb",
+        "milton_2018_comment": "c72d49ccc6512cf7e4649efdced423a6cfad1241df0d1004076878c0e56ca6ab",
+        "berger_2018_reply": "36ae1c7b383875d65f557d348b576e6d2e095b9b3caff291081999d61332a356",
+        "singh_lai_2024": "4bdade81b26bec94e9f794a319356c50e2ad5d9c3544c72d5a1940be1bfa822f",
+        "materials_project_elasticity": "dfc3ff854662ac220aee2ac40f467d375a0f03ea26a329c5b5dfede072d31d34",
+        "genin_birman_2009": "ee77e042fa2ced57c606931df08810670eeef9c49908f999a2bc4c7ce8ee5a3e",
+        "meille_garboczi_2001": "1a065cbd48762545a5d7cdd358f9a5509ec830760f56876ee5fa07181124915d",
+        "griffith_1921": "b7f1b883d6ad6b5b3e7ca92cb43d24b5789e4680454ad1f04bd6bc82ecd1e45e",
+        "wilson_1992_nasa_tm_103591": "a4120ac5b26e7542a14547b9b7a083f8565bbb23275f84feb3cd01ec56fc4ff6",
+        "frenkel_1926": "0e7384962497e2ac221c4f13107b5ee5a1ef985efacbc5e0e6ebb8f4e068c25c",
+        "shimanek_2022_ideal_shear": "14efb5c197bc97b41545b9189229f902e2a11af5f04258e62c05b5e005568986",
+        "rose_ferrante_smith_1981": "0aecf89d9dd1e0624b23e5250e58ba86e648dc535952e5863c1b7a1803a955c8",
+        "van_der_ven_ceder_2004": "9a5bbaf5686f4515469b2300e4cceb0dee84e3e79a9b65172efc3eaa72ecbc69",
+        "azocar_guzman_2020_hydrogen": "81d314fdd787383eded3507ea6a7a427d718fb982d55a421459039657b5ff05d",
+        "pierce_sullivan_1969_nasa_tn_d_5140": "4f4e04a9050aa05d7d9c9bae582cd764123013a7c41593b4ddb8dc736f8ac72d",
+        "mouhat_coudert_2014_elastic_stability": "c296191778aa07e1b7f38ae378e569a3648620b803e438de9d240c6c9d95f029",
+        "roberts_garboczi_2002_porous": "ae1164478792a565ce5d781fde1c92d2a923e5957d8b5b2975d891ecf3adb5e1",
+        "lee_wei_kysar_hone_2008": "3923cfeed09a9331e2b7d492aaa1749a1e1035da6236adb08f70ec2e22ffad96",
+        "paris_erdogan_1963": "e07fe04c13245bf8c95de1596555ed6af885c1835999c0ff6782dd4ea0605e39",
+        "forman_kearney_engle_1967": "4fc7f5c4fc250a95cd1611400ae4ea3ad556e663e7792ec177e873c524cfb2c0",
+        "hudson_1969_nasa_tn_d_5390": "efc02b044db65adaeaac8ee9e303289d7561b3ef18bd81392250e030493fa11c",
+        "afgrow_dtd_handbook_fatigue_growth": "7bae3395a778be8f5cb59114fb32f76db1887de5b364f9c385826598dd28df3c",
+        "astm_e647_24_public_scope": "9a533c9ea0223665af775f2b563e4fb0769772f4ccb8784236b1c1e2cd7f86f7",
+        "nist_cryogenic_al6061_t6": "63e8c2c3c06d8c8e90a26f28d5c9a710c1555886db5fb812ecd6636a3e499bc1",
+        "nist_cryogenic_ss304": "361367eecd2336ae3d8e9c7de3b16a6bb12aac2a61721f13aefd9e251a9432b7",
+        "nist_cryogenic_reference_list": "fa02f6d2812c06f0e594706b9014bcb0a15dc283db0a79f2dc45eea927ef5840",
+        "bradley_radebaugh_lewis_2006": "0dc61d424b0f2304efea02a151929665f714b2fa7249fa2af6108534fc9100ae",
+        "nist_public_information_reuse": "7168f1dd17a018d8584b825c3c2bfb463fe3fe9967f8492a3cb9e2c5fde9c75a",
+        "zener_1948_elasticity_anelasticity": "cb400496abf15a14910211faffe815386d6f9588343c0a587f507e7cdcac58d2",
+        "ranganathan_ostoja_starzewski_2008_anisotropy": "5e77e13a310c979f4dedab2cd90a6dd77dada0f500ec535e779b6cf78fb98cc6",
+        "ranganathan_ostoja_starzewski_ferrari_2011_anisotropy": "bc2fa540e097f1a8ad572bcd21ed4bf10d85c64f8046dc920dcd32ca97097c14",
+        "knowles_howie_2015_cubic_shear": "7f9319f8952fec9b6d3944c89d54e49e5d86b51fabbeb9d9b178ddcc9b41ba4b",
+        "shimanek_2022_arxiv_2108_06412_v2": "efc06eb360a373b710d4acacc67dbce454c24aead02e9e29d2ddb38e37d3874a",
+        "dubois_2006_prb_74_235203": "69ae439030675de92c76a42c4256a5506f3c7b851d7faf4a38969a0b7ffcff5e",
+        "nist_cryogenic_al5083": "f6b43a7b877b1797d3c469991ace539fc4ee0d028981ab233745fc81296b76b8",
+        "nist_cryogenic_invar": "d052ec87c4d0b33dea78c3897e2aa4d922d96e26aef1fc2b2087f7ad627da92a",
+        "nist_cryogenic_ss316": "fc28b36cd29f817774ac01eb80484139ac75fae7c8177f23d750ac829d420bc9",
+        "nist_cryogenic_material_index": "ff10d316b1e78d0e7c11df5d9929b78e5a71e624106602776ac41ef9219dd3c4",
+        "nist_cryogenic_srd_provenance": "a3c96133d5cda2b1d2adbc75c66d51bae7c8737b9370b6f5903437d517f8ec37",
+        "ting_chen_2005_poisson_unbounded": "9b62a27ee3a8a47990374f2afcf8d01cbbd0c82cba5be20ad3bbd6e8bb189458",
+        "norris_2006_cubic_poisson": "aba6fea5f1375a81edcd3b0d42567d3e70021cffaeaa33d7a50ea2399d07b42c",
+        "norris_2006_anisotropic_extrema": "24cb8bd7320b437f867bb0b192b9909896417ade7c2339279494ff64c225f7b5",
+        "ortiz_2012_anisotropic_mof_elasticity": "9940cc99a961ef91446f33468e33b1b55d5e42cc79856309618a48fd5f5d33d8",
+        "miller_evans_marmier_2015_linear_compressibility": "c1139610121c4a831e64eb5cdd00c353edefd0f0155b9935538a35096efad197",
+        "materials_boundaries_synthetic_temperature_demo": "06965757c832e2bc9082661cbf78b7ae8ad3bd5e6beb9e20e07b5661698ddaf1",
+        "bertolazzi_brivio_kis_2011": "46c7c163d542d89710142d50399106ca373f01c2fc1ac3f1d5f29d8612b860a2",
+        "chevrot_vanderhilst_2003": "e23a78c84e727440c38594e4479ed57233ca634e4087e6f00326b7065eca3389",
+        "xiang_qi_wei_2018_arxiv_v2": "03a6922c81fb7b0bf760076b0cee620e4d67e785d059fd95099be786e1651bbe",
+        "falin_et_al_2017_hbn_mechanical_properties": "98306a8ebe4352d09f231f6846f6879a9a30ffad6f445e8b164abaee0c637e2c",
+        "ciganas2026polym18050563": "b94f112a4befb0e79094da49a6b45fabf2737328dd0add25d8eaa6a840fcc764",
+        "zach_dudescu2025jcs9110624": "8fc9ad94401257875f8530d1983a7a305b6206ddd0b2bc4a3b4fb8e552dfd5b4",
+        "hanyga2018scalar_anisotropic_duality": "a16c9bb67298aacc5d76689be3847b222c941b01aa775c908882461fb3e7f1d0",
+        "hanyga2019newtonian_relaxation": "b2ab18858632544f6569735cf78428c152dd55f205ebd50b22aa7bb8523eb60f",
+        "giraldo_londono_paulino_2020_yield_criteria": "460c9199aa70a6839fcd4bdd3a6f76a4b407fa0a8b65fc73105ba9365a4ef221",
+        "wierzbicki_2013_structural_plasticity": "fccff5a93e87d6acb46ed7be12d05403b49f857cecdce6c3cf4d7501652cd89d",
+        "aurubis_c11000_1808us": "3c0f9c1b5d917efe8a370d011fe6cbb648372bdf00d5b2244989abe8c99e99c2",
+        "aurubis_c26000_1808us": "d5eb76006065cdae1021e5416ab459bdcbfd2cd71de5b5bb1a662a4849e8b60c",
+        "hydro_6061_201901": "90bb5aef360f255631e8f8870d06e1691807b9998fa45501104d247c053d62d1",
+        "timet_tmc0150_2000": "43d599e72850a9c9fdc40e252ac26414c72aecb59159c5470d955b4a7d638b9b",
+        "specialmetals_nickel200_smc061": "a3e02276911365772c166125508bf6127bb8be5c15ac740b0c80806daa7cb98e",
+        "specialmetals_monel400_smc053": "8011fdbeef255208e041ffeb0aa8927a77e6d68b1536144ffd9bf447221df593",
+        "outokumpu_core_1560en4_202211": "9edf15458a1e5cdc061321f5084dde3a7c45b29012fb66a01f8a772eeaa3100c",
+        "sahin_2026_polymer_mechanical_dielectric": "5b6a3ebd07ff4bd969c7f4e1281484099ecede38336ac62b32fab0987ffa38dc",
+        "schott_borofloat33_technical_data_26032019": "ce7038a501e4b0b47daa9adcea8debaca1033e50f6f987d7c70d6de3e6b054d2",
+        "poco_industrial_graphite_6204_11055tan_0320": "aad21661a137549af61b5b70cbcc8b78320bfc3bec650aed463ac1c437ed3019",
+        "vanbrocklin_navan_edwards_2006_corning": "bbce0b931ad0e2c24323c40c2bd0ee0ab8035b08ad1b7a0c985bd38c147e9617",
+        "kwiatkowski_2023_alumina_sps": "d6ee92bc05c91ecfe49132eeb50bbbc4affd79ef21fd44d8ae1c3b6a92390b8a",
+        "vladislavova_2021_ytzp": "dfd9ebbf2ea800954085c59e53d2feba6de6a597508d33f3820438e6d0cdbae0",
+        "yasar_haber_2020_sic": "733fab439d82d67a2c349ea9da565d4f289781a32afb9cf9a6db11cedbe3676a",
+        "ozog_2020_aln_ceramic": "2dc34b603b88dee5dae32ca6cadef8076b3ef02122c72175b03cf07720b40bfc",
+        "lukianova_2017_silicon_nitride_sps": "64c4a04fe8d2fa75a1b7fbca85dac5e3005ec18ae2dd3dd994837f560f9a846b",
+        "bowman_schoonover_carroll_1975_nbsir75_768": "590ed2c404d06b843eb0a553827d7a7671ea291678cd46a2539336a02d8878d6",
+        "bowman_schoonover_carroll_1974_density_scale": "17f1400bd08333c100a8dab505c902bedd3bd97483546421f7cab1f5a840045a",
+        "swanson_tatge_1953_nbs_circ539v1": "7c702385f20f3ed5e3ade849bf0f24891982d502e0ebaad8dde0eb3e20f1ac8a",
+        "usda_fpl_gtr190_2010_ch05": "9f69f86ef24f9ef85a90b3979a40517858492734b7477846cf33b19fa9b11a87",
+        "usda_fpl_gtr282_2021_ch03": "614e0ede33612b65d803966d8a7d8f7eb44631c7c4be53a93c2de39195180e4f",
+        "usda_silvics_1990_sugar_maple": "786864fb59a6a96689749e0a8f68394454b1af3e28b12adeeb06cdf7b243fe1b",
+        "usda_silvics_1990_northern_red_oak": "1e515845ed16e2e487f7ca575c40851c0762a4300c3cd88763d3bfcaa28b5eaa",
+        "usda_silvics_1990_sitka_spruce": "0da9e44b90d58304e7bd6a77664eac846b7ed26f3686f8c1b2995694944b4e7d",
+        "domagala_2024_moisture_normal_weight_concrete": "c04b1e8c0cf172087c5c568b3556b7e69967e40b1b93b3139d87d64d69f61504",
+        "wubalem_2025_rock_texture_dic": "7ecf3772544317dd89a5dd0e91e1cb851670b67b6a51525ca266734a61a91e29",
+        "mesquita_2021_methods": "476f2ae7adbcb1d28646b9e6e73c0ee819fbe4d147e93069a55c6b7a0f099e3b",
+        "mesquita_2021_dataset_v1": "75e2aec6e6f5c78636421913ecd75a2f58d3f7d740a9c85c1da61093f6036290",
+        "messmer_2024": "2bf7af558f30f481d7034255168fabbcba4623f45115cf114cfb6ad356fa9fe8",
+        "johnston_2014_bulk_sylgard184": "77f158eb33b564a163d0e6b49f464bc8afefa3ad53fa5e72981eb6b2ab83019e",
+        "bianchi_2025_nr_nanoclay": "5fd3811d39fb88d767fed74cf6c2824e4622ee45a19bde63014dde0e9a2ba5c0",
+        "bianchi_2022_epdm_pcm": "09d0df98a284428cf1b9aae28689ff2befb54c5aec21b6f04fbdb4bcb33710a2",
+        "tamas_benyei_santha_2025_nbr_rcf": "6b01787e580e83385e8700f0dbede1a2528f2f0af4c4b5c22dee2b098c37a8ca",
+        "puga_2015_az91d_ultrasound": "f85085a013131f4bf4c7dd9955ab72b6bcfbdb4ea6867f375dfbd97666f0de26",
+        "kulczyk_2022_pure_zinc_strain_rates": "feec00e51d0832605bdea0261a98568def462a9fb54d0eac5c12a5c717742d41",
+        "chen_2023_az31_tc4_composites": "653736474cb5c21032df21b50cfee8ca8ffa83d1ee902640c712067322e19ed7",
+        "cezairliyan_1970_molybdenum": "eeb79a3f2d1c09ed75fe7633e9f7d0755f9a3f7ea8b70fde313e9ca5dbfafee8",
+        "cezairliyan_1971_tungsten": "0364907c052115a717cae90bf26a2bca612fbea60977c3fd08c245e6226424d7",
+        "stochioiu_2024_romania_fibers": "c924a234889aa5c9433c17ff1d9b0d2f4355db697d0399ca66ce4753eba02053",
+        "cheng_2019_silk_diets": "e72a8b24e962eac240639813db0280247f42a0a52384346bbc31d6c49ef6328f",
+        "arbelaiz_2024_latxa_wool": "3988a9e3cfaab86aa8115ff70a2e1c65c2fa59b5f9b63c15c31afea0962b2787"
+      }
+    }
+  },
+  "grades": [],
+  "independent_transcriptions": [
+    {
+      "identity_id": "mat_ivdre2024_lpo1_rigid_pur",
+      "reported_value_text": "43.2",
+      "source_unit_code": "kg/m^3",
+      "density_basis": "apparent",
+      "summary_statistic": "reported_value",
+      "sample_count": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_value_text": null,
+      "test_temperature_status": "not_reported_in_inspected_source",
+      "source_doi": "10.3390/polym16070942",
+      "value_locator": "Table 10, Apparent density row × LPO-1 column; HTML/XML id polymers-16-00942-t010",
+      "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+      "source_sha256": "4e0c1a91a9ae26d814576961a3805f9371b46498d4861fb578e7a413bb4c726d",
+      "source_bytes": 184537,
+      "article_license": "CC-BY-4.0"
+    },
+    {
+      "identity_id": "mat_kosenko2022_amd5_sps_foam",
+      "reported_value_text": "0.45",
+      "source_unit_code": "g/cm^3",
+      "density_basis": "not_stated",
+      "summary_statistic": "reported_value",
+      "sample_count": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_value_text": null,
+      "test_temperature_status": "not_reported_in_inspected_source",
+      "source_doi": "10.3390/ma15030931",
+      "value_locator": "Table 4, SPS row, Density g/cm³ column; HTML/XML id materials-15-00931-t004",
+      "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8839437/fullTextXML",
+      "source_sha256": "5fd0c6fe137c764bf6ca020663c2e52f7ba696f2ad8dda3fc3b4f49be1fdcb7c",
+      "source_bytes": 90710,
+      "article_license": "CC-BY-4.0"
+    },
+    {
+      "identity_id": "mat_prasetia2024_qsuber_reproduction_cork",
+      "reported_value_text": "0.17",
+      "source_unit_code": "g/cm^3",
+      "density_basis": "not_stated",
+      "summary_statistic": "reported_value",
+      "sample_count": 10,
+      "uncertainty_status": "reported_measures",
+      "uncertainty_value_text": "0.01",
+      "test_temperature_status": "not_reported_in_inspected_source",
+      "source_doi": "10.1038/s41598-024-56110-5",
+      "value_locator": "Table 5, Qs RC, Untreated row, Density column; PDF p.9 / PMC #Tab5",
+      "source_url": "https://www.nature.com/articles/s41598-024-56110-5.pdf",
+      "source_sha256": "d7478930be36c2a5b8855b7ce5e76f30e704728d4e5e138e48b5b4bba442d584",
+      "source_bytes": 2567554,
+      "article_license": "CC-BY-4.0"
+    },
+    {
+      "identity_id": "mat_drury2023_moso_bamboo_culm",
+      "reported_value_text": "746",
+      "source_unit_code": "kg/m^3",
+      "density_basis": "not_stated",
+      "summary_statistic": "reported_mean",
+      "sample_count": 6,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_value_text": null,
+      "test_temperature_status": "not_reported_in_inspected_source",
+      "source_doi": "10.3390/su15086472",
+      "value_locator": "Table 1, Moso row, ρ column; PDF p.6; HTML #table_body_display_sustainability-15-06472-t001",
+      "source_url": "https://www.mdpi.com/2071-1050/15/8/6472/pdf?version=1682230800",
+      "source_sha256": "4ffacd66749fac3bb8f7aa464413018add56f90a7f4c64ba3676b7f88dfdfa6e",
+      "source_bytes": 3233990,
+      "article_license": "CC-BY-4.0"
+    },
+    {
+      "identity_id": "mat_drury2023_guadua_bamboo_culm",
+      "reported_value_text": "655",
+      "source_unit_code": "kg/m^3",
+      "density_basis": "not_stated",
+      "summary_statistic": "reported_mean",
+      "sample_count": 6,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_value_text": null,
+      "test_temperature_status": "not_reported_in_inspected_source",
+      "source_doi": "10.3390/su15086472",
+      "value_locator": "Table 1, Guadua row, ρ column; PDF p.6; HTML #table_body_display_sustainability-15-06472-t001",
+      "source_url": "https://www.mdpi.com/2071-1050/15/8/6472/pdf?version=1682230800",
+      "source_sha256": "4ffacd66749fac3bb8f7aa464413018add56f90a7f4c64ba3676b7f88dfdfa6e",
+      "source_bytes": 3233990,
+      "article_license": "CC-BY-4.0"
+    },
+    {
+      "identity_id": "mat_saadazzem2022_altaouab_cp_plaster",
+      "reported_value_text": "1103.13",
+      "source_unit_code": "kg/m^3",
+      "density_basis": "apparent",
+      "summary_statistic": "reported_value",
+      "sample_count": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_value_text": null,
+      "test_temperature_status": "not_reported_in_inspected_source",
+      "source_doi": "10.3390/buildings12081119",
+      "value_locator": "§4.3.1, first paragraph; Figure 11; method §3.2",
+      "source_url": "https://www.mdpi.com/2075-5309/12/8/1119",
+      "source_sha256": "3813c49962a2353c055fafeb924711c7d677d986178f6cae592d320cd32de33e",
+      "source_bytes": 587842,
+      "article_license": "CC-BY-4.0"
+    },
+    {
+      "identity_id": "mat_mohajerani2019_boral_control_brick",
+      "reported_value_text": "2122",
+      "source_unit_code": "kg/m^3",
+      "density_basis": "bulk",
+      "summary_statistic": "reported_value",
+      "sample_count": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_value_text": null,
+      "test_temperature_status": "not_reported_in_inspected_source",
+      "source_doi": "10.3390/buildings9010014",
+      "value_locator": "Table 4, Bulk Density row, Control Bricks column; corroborating §3.3",
+      "source_url": "https://www.mdpi.com/2075-5309/9/1/14",
+      "source_sha256": "2c5c26f559d2911ebc12a5f6f3b616b51df71f8becb994493ba599033fff8bf9",
+      "source_bytes": 714962,
+      "article_license": "CC-BY-4.0"
+    },
+    {
+      "identity_id": "mat_jonczy2022_k1_quartz_arenite",
+      "reported_value_text": "2.34",
+      "source_unit_code": "g/cm^3",
+      "density_basis": "bulk",
+      "summary_statistic": "reported_mean",
+      "sample_count": 5,
+      "uncertainty_status": "reported_plus_minus_unspecified",
+      "uncertainty_value_text": "0.01",
+      "test_temperature_status": "not_reported_in_inspected_source",
+      "source_doi": "10.3390/en15072692",
+      "value_locator": "Table 3, γs row, K1 column; method §3.2 Eq. (4); averaging §4.2 first paragraph",
+      "source_url": "https://www.mdpi.com/1996-1073/15/7/2692",
+      "source_sha256": "305a78a3c37cf46ddd680bb89edfecc24155ef9a82bd6c928ed59222cf24f7ff",
+      "source_bytes": 571962,
+      "article_license": "CC-BY-4.0"
+    }
+  ]
+}

@@ -407,3 +407,98 @@ checks are still required; source-transcription acceptance alone is not their
 success. Full attribution and separately scoped CC BY 4.0/NBS rights are in
 [third-party notices](../THIRD_PARTY_NOTICES.md#metals-and-natural-fiber-references-v0320).
 Only selected facts and original curation are included, never source assets.
+
+
+## v0.33.0 porous, natural and mineral batch
+
+The [v0.33.0 coverage](MATERIAL_COVERAGE_v0.33.0.md) adds eight identities,
+each with one original experimental density fact: **43 + 8 = 51 identities**.
+The registry now has **19 qualified grades, 51 source-scoped states and 51
+reference properties**, supported by seven new original articles. The full
+source registry contains **105** records. This is an application of the existing
+v0.32.0 contract: **no schema or runtime capability extension** is introduced.
+The material/reference envelope versions remain 1.0.0. Historical sections
+above describe their respective releases and are not retroactively rewritten.
+
+### Density and statistical scope
+
+All eight additions use existing `mass_density`, source-preserved decimal/unit
+strings and `published_experimental_reference`. LPO-1 PUR and CP plaster have
+explicit apparent density; Boral control brick and K1 sandstone have explicit
+bulk density. The source basis remains `not_stated` for AMD5-derived foam,
+cork and both bamboos. A method-informed pore-inclusive interpretation does not
+authorize changing an absent source basis to apparent/bulk, or relabeling any of
+these results as skeletal density.
+
+Cork demonstrates the already-supported separation between central aggregation
+and uncertainty kind. Its **0.17 g/cm³** remains `reported_value`; Table 5
+explicitly labels the separate **0.01 g/cm³** as SD, not the center as a mean.
+Use `reported_measures` with numeric absolute `standard_deviation`, exact
+source evidence, and the required explanation of unnamed central aggregation.
+Do not change the legacy mean-only SD contract, claim a mean to fit it, or
+flatten the descriptor into min/max or confidence endpoints. Its **n=10** is
+the selected species/treatment group, not all 40 density specimens or ten trees.
+
+K1 retains `reported_mean` for the source's **reported average of five
+replicates**, without claiming an explicitly arithmetic estimator. The printed
+**2.34 ± 0.01 g/cm³** uses `reported_plus_minus_unspecified`; ± is not identified
+as SD, SE, CI, range or instrument error. No derived 2.33–2.35 interval is
+admitted. Dry mass / specimen volume is known, but dimensions versus hydrostatic
+volume remains an unresolved source-method ambiguity.
+
+Boral remains `reported_value` with unknown density-specific count and
+aggregation. The global triplicate/average statement belongs to the initial
+raw-material tests paragraph; its application to density is unclear. Do not
+promote it to a density mean or n=3. PUR, Al foam and plaster likewise retain
+unknown density aggregation/count/uncertainty. Both bamboo values are reported
+species averages with six study specimens each and unknown density uncertainty;
+the exact averaging estimator and repeated-density-measurement count are not
+stated. No uncertainty is reconstructed from geometry, mechanical CoVs or
+unrelated tests.
+
+### Source identity and exclusions
+
+- LPO-1 is the Lupranol recipe, not the suberin-based SPO series; 43.2 kg/m³
+  is its selected measurement, 40 kg/m³ is compression normalization, and
+  94 vol.% closed-cell content is not total porosity
+- AMD5 identifies the Al–Mg–Ti precursor, not a verified finished-foam grade
+  or Hydro 6061. Preserve the Table 4 underwater/ethanol discrepancy, Table 6
+  g/m³ discrepancy and unknown paraffin-coating correction. Do not import
+  another route, third-party comparison or mechanical property
+- Cork and bamboo use broad `composite` only as hierarchical natural tissue,
+  without an engineered resin-binder or laminate claim. No new material
+  category is added. Botanical species support distinct identities; nodal,
+  internodal and boiled states do not
+- Do not label bamboo generically untreated, assign study-average 15.8%
+  moisture to a species/specimen, infer exact test temperatures or reconstruct
+  density from table averages. Cork's untreated label is relative to the
+  study intervention. Do not import the other cork species' green density
+- CP's source formulation label does not establish pure dihydrate or a grade.
+  Boral's control is laboratory-fired 100% supplied soil / 0% biosolids,
+  not a marketed product. K1 is a source rock type, not a certified grade
+- All exact density-test temperatures stay unknown. Cure, conditioning,
+  drying, firing, thermal-test and reference-fluid temperatures remain in
+  their original scopes. Named standards do not establish independently
+  verified compliance or transfer from mechanical testing to density
+
+No new qualified grade is created by LPO-1, CP, K1, AMD5, supplier names or
+botanical labels. No supplementary compression, thermal or porosity fact adds
+a property; Boral's regression-estimated conductivity is not imported as a
+measurement. No density-strength inference, pooling, ranking, universal bound
+or automatic evaluator input is created.
+
+Independent source-transcription review accepted the eight numerical facts
+without correction, while clarifying Boral's count/average scope, K1's averaging
+wording and natural-material exclusions. It is not independent scientific
+review, raw-data reanalysis or experiment/standard verification. Every new
+record retains catalog-only, non-universal, non-allowable and false scientific-
+review/raw-reanalysis flags. The old 43 records, schemas, eight-rule evaluator,
+scientific families and historical outputs remain unchanged.
+
+Read [migration and verification gates](MIGRATION_v0.33.0.md) before admission.
+Source acceptance does not substitute for final-payload schema/runtime checks,
+regression parity, four-language inspection or installed-wheel tests. Full
+[attribution and rights](../THIRD_PARTY_NOTICES.md#porous-natural-and-mineral-references-v0330)
+retain all seven article-specific CC BY 4.0 notices and the bamboo generic
+metadata discrepancy. Public records contain only selected facts and original
+curation, never full source assets, tables, figures or source dumps.

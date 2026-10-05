@@ -1,6 +1,6 @@
 # 材料边界 · Materials Boundaries
 
-Current software release: **v0.32.0** · **Nine source-qualified material additions** · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
+Current software release: **v0.33.0** · **Eight source-qualified density additions** · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
 
 A condition-aware, source-traceable materials-mechanics catalog and offline Python toolkit. It separates conditional mathematical bounds, model relations, published observations, computational predictions and synthetic demonstrations. Python 3.10+; no third-party runtime dependencies.
 
@@ -9,22 +9,22 @@ Repository: [chaotic-mixture/materials-boundaries-public](https://github.com/cha
 ## Public-release scope
 
 <!-- current-catalog-summary:start -->
-- **41 mechanics claims**, **98 source records**, **16 observations from 5 studies**, **12 published computational predictions in 2 scientific families and 3 explicit groups**, and **5 synthetic temperature demos with 7 branches**
+- **41 mechanics claims**, **105 source records**, **16 observations from 5 studies**, **12 published computational predictions in 2 scientific families and 3 explicit groups**, and **5 synthetic temperature demos with 7 branches**
 - Exactly **8 executable composite calculation rules**: HS/Reuss/Voigt bulk and shear bounds plus conservative derived Young's-modulus and Poisson-ratio envelopes
 - Other mechanics records, including initial-yield criteria and their function comparison, scalar viscoelasticity, bulk elastic waves, hydrostatic compressibility, directional Poisson ratio, anisotropy, fatigue, fracture, stability and porous relations, are catalog-only
-- The 98 sources comprise 97 bibliographic/source records plus 1 original synthetic-demo provenance record; a source record is not a redistribution of its publication or dataset
+- The 105 sources comprise 104 bibliographic/source records plus 1 original synthetic-demo provenance record; a source record is not a redistribution of its publication or dataset
 - All five temperature demos use intentionally invented coefficients and ranges. They do not describe real materials, measured properties or engineering allowables
 <!-- current-catalog-summary:end -->
 
 ## Concrete material references
 
 <!-- material-catalog-summary:start -->
-The separate reference catalogue contains **43 material identities**, **19 qualified grades**, **43 source-scoped states** and **43 reference properties**. Counts describe this registry only; aliases, categories, prior observations and computational model cells are not additional materials.
+The separate reference catalogue contains **51 material identities**, **19 qualified grades**, **51 source-scoped states** and **51 reference properties**. Counts describe this registry only; aliases, categories, prior observations and computational model cells are not additional materials.
 <!-- material-catalog-summary:end -->
 
-The prior 34 identities remain unchanged. This release adds nine source-qualified materials: AZ91D and AZ31 magnesium alloys, annealed 99.9% zinc, NBS molybdenum and tungsten tubes, flax and hemp technical-fiber bundles, Bombyx mori silk fibroin and Latxa sheep wool. Each identity contributes one selected numerical property. Source-specific grades, processing, populations and unknown conditions remain explicit.
+The prior 43 identities remain unchanged. This release adds eight source-qualified materials, each with one selected density: Lupranol-based LPO-1 rigid polyurethane foam, AMD5-derived Al–Mg–Ti SPS foam, Quercus suber reproduction cork, Moso and Guadua bamboo culms, Al-Taouab CP plaster, Boral-soil control fired-clay brick and K1 quartz-arenite sandstone. The 19 qualified-grade count is unchanged; study labels and precursor designations do not establish new finished-material grades.
 
-A closed generic metadata extension preserves reported CV, graphical SD with unavailable numerical amplitude, SD with unnamed central aggregation, and separate relative SEM and approximate estimated inaccuracy. NBS density expressions retain their source scientific notation and mantissa precision. These are separate reported descriptors, never combined or converted into bounds or confidence intervals. All four languages retain source qualifications; the existing eight executable rules and earlier records remain unchanged. [Guide and contribution contract](docs/MATERIAL_REFERENCE_CATALOG.md) · [Coverage](docs/MATERIAL_COVERAGE_v0.32.0.md) · [Migration](docs/MIGRATION_v0.32.0.md)
+All eight facts fit the existing schema and runtime capabilities. Cork keeps a reported central value with separately identified SD, K1 keeps a reported average with undefined ± and an ambiguous volume subprocedure, and Boral keeps a reported value without a density-specific mean or n=3 claim. Exact density-test temperatures remain unknown. Cork and bamboo use the broad composite category only as hierarchical natural tissue. Independent source-transcription review is distinct from independent scientific validation. The existing eight executable rules, earlier records and schemas remain unchanged. [Guide and contribution contract](docs/MATERIAL_REFERENCE_CATALOG.md) · [Coverage](docs/MATERIAL_COVERAGE_v0.33.0.md) · [Migration](docs/MIGRATION_v0.33.0.md)
 
 ```sh
 python -m materials_boundaries catalog materials --text --lang en
@@ -51,6 +51,14 @@ python -m materials_boundaries composite verify demo-report/bundle.json --json
 The first command leaves observations unknown; `--interactive` requires a terminal and an explicit save. The second deliberately uses original fictitious data. Read conditions and evidence before interpreting approximate numbers. Output stays local in a new/empty directory; no source assets or network reads are used. HTML/text support en/zh/ja/de, while machine JSON is language-independent. [English](docs/GETTING_STARTED.en.md) · [中文](docs/GETTING_STARTED.zh.md) · [日本語](docs/GETTING_STARTED.ja.md) · [Deutsch](docs/GETTING_STARTED.de.md)
 
 ## Earlier releases
+
+### v0.32.0 material-reference expansion
+
+The prior 34 identities remain unchanged. This release adds nine source-qualified materials: AZ91D and AZ31 magnesium alloys, annealed 99.9% zinc, NBS molybdenum and tungsten tubes, flax and hemp technical-fiber bundles, Bombyx mori silk fibroin and Latxa sheep wool. Each identity contributes one selected numerical property. Source-specific grades, processing, populations and unknown conditions remain explicit.
+
+A closed generic metadata extension preserves reported CV, graphical SD with unavailable numerical amplitude, SD with unnamed central aggregation, and separate relative SEM and approximate estimated inaccuracy. NBS density expressions retain their source scientific notation and mantissa precision. These are separate reported descriptors, never combined or converted into bounds or confidence intervals. All four languages retain source qualifications; the existing eight executable rules and earlier records remain unchanged. [Guide and contribution contract](docs/MATERIAL_REFERENCE_CATALOG.md) · [Coverage](docs/MATERIAL_COVERAGE_v0.32.0.md) · [Migration](docs/MIGRATION_v0.32.0.md)
+
+### Earlier mechanics and workflow releases
 
 Version **0.27.0** appends exactly three catalog-only records: von Mises and Tresca initial-yield relations, plus the sharp **1 <= q_T/q_VM <= 2/sqrt(3)** function comparison for the same nonhydrostatic symmetric 3D Cauchy stress tensor. The ratio is undefined at hydrostatic stress; the division-free inequality includes it. Source definitions are distinguished from original project proof and from restricted isotropic, pressure-insensitive initial-yield model applicability. Any model-threshold comparison requires the same positive uniaxial Y; an optional loading consequence is limited to one fixed local proportional ray. No numerical plasticity integration, material yield value, universal strength bracket or safety certification is added. Claims schema advances **1.12.0 → 1.13.0**; the eight executable rules remain unchanged. [Scientific scope, exact proof and source rights](docs/YIELD_CRITERIA.md) · [v0.27.0 migration](docs/MIGRATION_v0.27.0.md)
 
