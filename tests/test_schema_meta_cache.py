@@ -89,10 +89,10 @@ class SchemaMetaCacheTests(unittest.TestCase):
         self.validate()
         path = self.schemas / "claims.schema.json"
         before = path.stat()
-        raw = path.read_text(encoding="utf-8")
-        changed = raw.replace('"type": "object"', '"type": "mystic"', 1)
+        raw = path.read_bytes()
+        changed = raw.replace(b'"type": "object"', b'"type": "mystic"', 1)
         self.assertNotEqual(raw, changed)
-        path.write_text(changed, encoding="utf-8")
+        path.write_bytes(changed)
         os.utime(path, ns=(before.st_atime_ns, before.st_mtime_ns))
         self.assertEqual(path.stat().st_size, before.st_size)
         self.assertEqual(path.stat().st_mtime_ns, before.st_mtime_ns)

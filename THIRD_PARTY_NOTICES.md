@@ -936,3 +936,26 @@ rights checks do not establish independent scientific validation, standard
 compliance, experimental replication, comprehensive errata/retraction review or
 final software/release success. See the [complete scientific scope](docs/MATERIAL_COVERAGE_v0.33.0.md)
 and [migration gates](docs/MIGRATION_v0.33.0.md).
+
+
+## Polymer and biogenic references (v0.34.0)
+
+- Nnaemeka Ewurum, Armando G. McDonald (2025). *Lignin Reinforcement in Polybutylene Succinate Copolymers*. [Original publication](https://doi.org/10.3390/polym17020194); [inspected publisher PDF](https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf). Article p.1: © 2025 the authors, licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Inspected 2026-10-05; SHA-256 `766d17f0e92c7e93cd57a3a5e97dddff0cb66a84bba6bf9118fbd0796d4c2e6f` (3211541 bytes).
+- Maryam Abbasi, Dikshya Pokhrel, Erik R. Coats, Nicholas M. Guho, Armando G. McDonald (2022). *Effect of 3-Hydroxyvalerate Content on Thermal, Mechanical, and Rheological Properties of Poly(3-hydroxybutyrate-co-3-hydroxyvalerate) Biopolymers Produced from Fermented Dairy Manure*. [Original publication](https://doi.org/10.3390/polym14194140); [inspected publisher PDF](https://mdpi-res.com/d_attachment/polymers/polymers-14-04140/article_deploy/polymers-14-04140.pdf). Article p.1: © 2022 the authors, licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Inspected 2026-10-05; SHA-256 `31f8fb795385c4755bf17f104bd963cd3e2b107bef4e4ad9a5f34c7a776092ea` (1190592 bytes).
+- Asanda Mtibe, Lerato Hlekelele, Phumelele E. Kleyi, Sudhakar Muniyasamy, Nomvuyo E. Nomadolo, Osei Ofosu, Vincent Ojijo, Maya J. John (2022). *Fabrication of a Polybutylene Succinate (PBS)/Polybutylene Adipate-Co-Terephthalate (PBAT)-Based Hybrid System Reinforced with Lignin and Zinc Nanoparticles for Potential Biomedical Applications*. [Original publication](https://doi.org/10.3390/polym14235065); [inspected publisher PDF](https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf). Article p.1: © 2022 the authors, licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Inspected 2026-10-05; SHA-256 `fa72f3441329d8db6348926906817ebac7b3bd7077a90e836f75f8ecdb087287` (1922433 bytes).
+
+Only selected original experimental facts, bibliographic attribution and
+original curation are included. Adaptations are structured transcription,
+machine-assisted English/Chinese/Japanese/German names and scope qualifications.
+Source number/unit precision is preserved. No full tables, figures, source PDFs,
+extracted text or screenshots are bundled or relicensed under the project MIT
+license. The local hashes identify the actual inspected main PDFs; no
+supplementary-asset hash or comprehensive errata audit is claimed.
+
+Selected locators: Ewurum/McDonald Table 6 p.12 (B0/B20 modulus), Table 1 p.5
+(lignin density), methods pp.3/5; Abbasi Table 9 p.15 (PHBV-39 modulus), Table 1
+pp.2–3 and methods pp.4–5; Mtibe Table 3 p.7 (PBAT and unfilled PBS/PBAT modulus),
+identity/preparation p.3 and test method p.5. Third-party literature comparisons,
+manufacturer property values, other formulations and held candidates are not
+selected. The independent check concerns source transcription, not scientific
+peer review, raw-data reanalysis, experiment verification or legal clearance.

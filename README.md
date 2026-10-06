@@ -1,6 +1,6 @@
 # 材料边界 · Materials Boundaries
 
-Current software release: **v0.33.0** · **Eight source-qualified density additions** · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
+Current software release: **v0.34.0** · **Six polymer and biogenic material additions** · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
 
 A condition-aware, source-traceable materials-mechanics catalog and offline Python toolkit. It separates conditional mathematical bounds, model relations, published observations, computational predictions and synthetic demonstrations. Python 3.10+; no third-party runtime dependencies.
 
@@ -9,22 +9,22 @@ Repository: [chaotic-mixture/materials-boundaries-public](https://github.com/cha
 ## Public-release scope
 
 <!-- current-catalog-summary:start -->
-- **41 mechanics claims**, **105 source records**, **16 observations from 5 studies**, **12 published computational predictions in 2 scientific families and 3 explicit groups**, and **5 synthetic temperature demos with 7 branches**
+- **41 mechanics claims**, **108 source records**, **16 observations from 5 studies**, **12 published computational predictions in 2 scientific families and 3 explicit groups**, and **5 synthetic temperature demos with 7 branches**
 - Exactly **8 executable composite calculation rules**: HS/Reuss/Voigt bulk and shear bounds plus conservative derived Young's-modulus and Poisson-ratio envelopes
 - Other mechanics records, including initial-yield criteria and their function comparison, scalar viscoelasticity, bulk elastic waves, hydrostatic compressibility, directional Poisson ratio, anisotropy, fatigue, fracture, stability and porous relations, are catalog-only
-- The 105 sources comprise 104 bibliographic/source records plus 1 original synthetic-demo provenance record; a source record is not a redistribution of its publication or dataset
+- The 108 sources comprise 107 bibliographic/source records plus 1 original synthetic-demo provenance record; a source record is not a redistribution of its publication or dataset
 - All five temperature demos use intentionally invented coefficients and ranges. They do not describe real materials, measured properties or engineering allowables
 <!-- current-catalog-summary:end -->
 
 ## Concrete material references
 
 <!-- material-catalog-summary:start -->
-The separate reference catalogue contains **51 material identities**, **19 qualified grades**, **51 source-scoped states** and **51 reference properties**. Counts describe this registry only; aliases, categories, prior observations and computational model cells are not additional materials.
+The separate reference catalogue contains **57 material identities**, **20 qualified grades**, **57 source-scoped states** and **57 reference properties**. Counts describe this registry only; aliases, categories, prior observations and computational model cells are not additional materials.
 <!-- material-catalog-summary:end -->
 
-The prior 43 identities remain unchanged. This release adds eight source-qualified materials, each with one selected density: Lupranol-based LPO-1 rigid polyurethane foam, AMD5-derived Al–Mg–Ti SPS foam, Quercus suber reproduction cork, Moso and Guadua bamboo culms, Al-Taouab CP plaster, Boral-soil control fired-clay brick and K1 quartz-arenite sandstone. The 19 qualified-grade count is unchanged; study labels and precursor designations do not establish new finished-material grades.
+The prior 51 identities remain unchanged. This release adds BioPBS B0, PBS / 20 wt.% Indulin AT lignin blend B20, Indulin AT softwood kraft lignin, dairy-manure-derived PHBV-39, Ecoflex C1200 PBAT and the unfilled PBS/PBAT 70/30 blend. Each has one original experimental reference property. Ecoflex C1200 adds one source-designated grade; the unresolved BioPBS FZ91PM/FZ91PB wording does not establish a selected grade.
 
-All eight facts fit the existing schema and runtime capabilities. Cork keeps a reported central value with separately identified SD, K1 keeps a reported average with undefined ± and an ambiguous volume subprocedure, and Boral keeps a reported value without a density-specific mean or n=3 claim. Exact density-test temperatures remain unknown. Cork and bamboo use the broad composite category only as hierarchical natural tissue. Independent source-transcription review is distinct from independent scientific validation. The existing eight executable rules, earlier records and schemas remain unchanged. [Guide and contribution contract](docs/MATERIAL_REFERENCE_CATALOG.md) · [Coverage](docs/MATERIAL_COVERAGE_v0.33.0.md) · [Migration](docs/MIGRATION_v0.33.0.md)
+All six facts fit the existing schema and runtime. B0, B20 and PHBV-39 retain explicit mean ± SD; PHBV keeps n≥5. PBAT and PBS/PBAT keep unknown central aggregation and undefined ±, while the blend's 70/30 ratio basis remains unspecified. The lignin density keeps unknown aggregation, n and density basis. English, Chinese, Japanese and German names preserve source scope. The eight executable rules, old records and schemas are unchanged. [Guide and contribution contract](docs/MATERIAL_REFERENCE_CATALOG.md) · [Coverage](docs/MATERIAL_COVERAGE_v0.34.0.md) · [Migration](docs/MIGRATION_v0.34.0.md)
 
 ```sh
 python -m materials_boundaries catalog materials --text --lang en

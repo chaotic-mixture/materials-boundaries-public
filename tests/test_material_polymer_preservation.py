@@ -1,4 +1,4 @@
-"""Exact v0.32 release recovery and open-ID v0.33 material admission pins."""
+"""Exact v0.33 release recovery and open-ID v0.34 material admission pins."""
 import ast
 from copy import deepcopy
 import json
@@ -9,16 +9,15 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-import material_porous_preservation as history
-from material_polymer_preservation import pre_material_polymer_bytes
+import material_polymer_preservation as history
 from materials_boundaries.catalog import read_catalog
 from materials_boundaries.engine import BASE_RULES, DERIVED_RULES
 from materials_boundaries.material_references import validate_material_catalog
 
 ROOT = Path(__file__).resolve().parents[1]
-LEDGER_SHA256 = 'c9fdb94a8d4f2e730cf76e72f1bff2292071b4d6de0642547ff99a4d041bcdf3'
-HELPER_SHA256 = '31d28465234bed6d26ac6713319da5d7f71be10f2b1ac4ca88099b6ecb001173'
-ADMISSION_SHA256 = '9c3da341ff6c0ef62af78aaa28d29ea2dcda3e088a1ed7eb8f1f4564a2a93d0e'
+LEDGER_SHA256 = '9c78b514d0aee2b8aa2fe78c621387636ca3e0782e43fb89bba781f5c22f8c11'
+HELPER_SHA256 = '044a4eeb0679e9b5f0c241fdf38bdcaa97448bcbec41daa1fb16e3ab3501c8bb'
+ADMISSION_SHA256 = 'a503accaf1c1ad12918de2fd9aea947958d914e98471f1285e3d4d65ecd79998'
 
 
 def declarations(raw):
@@ -32,27 +31,27 @@ def serialized(value):
     return (json.dumps(value, ensure_ascii=False, indent=2, allow_nan=False) + '\n').encode('utf-8')
 
 
-class MaterialPorousPreservationTests(unittest.TestCase):
+class MaterialPolymerPreservationTests(unittest.TestCase):
     def test_ledger_helper_admission_and_accepted_tree_are_pinned(self):
         for filename, expected in ((history.LEDGER_PATH, LEDGER_SHA256),
-                                   ('tests/material_porous_preservation.py', HELPER_SHA256),
+                                   ('tests/material_polymer_preservation.py', HELPER_SHA256),
                                    (history.ADMISSION_PATH, ADMISSION_SHA256)):
-            self.assertEqual(history.digest(pre_material_polymer_bytes(filename, (ROOT / filename).read_bytes())), expected)
+            self.assertEqual(history.digest((ROOT / filename).read_bytes()), expected)
         ledger = history.load_ledger()
         history.validate_ledger(ledger)
-        self.assertEqual(ledger['baseline_commit'], '14d4c26054b77aa4a431a6c1cc0de3458a0c63c1')
-        self.assertEqual(ledger['baseline_tree'], '342da27ca3d781e55d0153a88171d0b2b3f7dd31')
-        self.assertEqual(len(ledger['baseline_sha256']), 383)
+        self.assertEqual(ledger['baseline_commit'], '8ed6fa18369b43719174fc407f76bc073e265d7c')
+        self.assertEqual(ledger['baseline_tree'], '754ff52504b8f661214a717c35d2155512f3e951')
+        self.assertEqual(len(ledger['baseline_sha256']), 394)
         self.assertEqual({r[0] for r in (*BASE_RULES, *DERIVED_RULES)}, history.EXECUTABLE_IDS)
         self.assertEqual(len(BASE_RULES) + len(DERIVED_RULES), 8)
 
-    def test_all_383_predecessor_files_round_trip_exactly(self):
+    def test_all_394_predecessor_files_round_trip_exactly(self):
         ledger = history.load_ledger(); entries = history.validate_ledger(ledger)
         for filename, expected in ledger['baseline_sha256'].items():
             with self.subTest(filename=filename):
                 actual = (ROOT / filename).read_bytes()
                 release = history.release_bytes(filename, actual, ledger=ledger)
-                before = history.pre_material_porous_bytes(filename, actual, ledger=ledger)
+                before = history.pre_material_polymer_bytes(filename, actual, ledger=ledger)
                 self.assertEqual(history.digest(before), expected)
                 self.assertEqual(history.apply_exact_edits(before, entries[filename]['edits'])
                                  if filename in entries else before, release)
@@ -70,12 +69,12 @@ class MaterialPorousPreservationTests(unittest.TestCase):
                 self.assertEqual(history.apply_exact_edits(previous, entry['edits']), current)
                 for bad in (current + b'!', b'unreviewed replacement'):
                     with self.assertRaises((AssertionError, ValueError)):
-                        history.pre_material_porous_bytes(entry['filename'], bad, ledger=ledger)
+                        history.pre_material_polymer_bytes(entry['filename'], bad, ledger=ledger)
                 wrong = deepcopy(entry['edits']); wrong[0]['before'] += 'unreviewed'
                 with self.assertRaises(AssertionError):
                     history.apply_exact_edits(previous, wrong)
         with self.assertRaises(AssertionError):
-            history.pre_material_porous_bytes('../README.md', b'unknown', ledger=ledger)
+            history.pre_material_polymer_bytes('../README.md', b'unknown', ledger=ledger)
 
     def test_corrupt_incomplete_duplicate_or_foreign_ledgers_fail(self):
         mutations = [lambda x: x.update(extra=True), lambda x: x.update(schema_version=True),
@@ -107,13 +106,13 @@ class MaterialPorousPreservationTests(unittest.TestCase):
                 actual = json.loads((ROOT / filename).read_text(encoding='utf-8'))
                 previous = history.project_catalog(filename, actual, baseline)
                 self.assertEqual(history.digest(serialized(previous)), manifest[filename])
-        self.assertEqual(len(baseline['materials_boundaries/data/materials.json']['identities']['record_digests']), 43)
-        self.assertEqual(len(baseline['materials_boundaries/data/materials.json']['records']['record_digests']), 43)
-        self.assertEqual(len(baseline['materials_boundaries/data/reference_properties.json']['records']['record_digests']), 43)
+        self.assertEqual(len(baseline['materials_boundaries/data/materials.json']['identities']['record_digests']), 51)
+        self.assertEqual(len(baseline['materials_boundaries/data/materials.json']['records']['record_digests']), 51)
+        self.assertEqual(len(baseline['materials_boundaries/data/reference_properties.json']['records']['record_digests']), 51)
 
-    def test_eight_new_material_admissions_are_exact_independent_subsets(self):
+    def test_six_new_material_admissions_are_exact_independent_subsets(self):
         admission = json.loads((ROOT / history.ADMISSION_PATH).read_text(encoding='utf-8'))
-        self.assertEqual(admission['release'], '0.33.0')
+        self.assertEqual(admission['release'], '0.34.0')
         self.assertEqual(admission['baseline_commit'], history.BASELINE_COMMIT)
         self.assertEqual(admission['baseline_tree'], history.BASELINE_TREE)
         admitted = admission['admitted_record_digests']
@@ -125,7 +124,7 @@ class MaterialPorousPreservationTests(unittest.TestCase):
                 for identifier, expected in pins.items():
                     self.assertEqual(history.digest(history.canonical(index[identifier])), expected)
         for kind, field in (('materials', 'identities'), ('materials', 'records'), ('reference_properties', 'records')):
-            self.assertEqual(len(admitted[kind][field]), 8)
+            self.assertEqual(len(admitted[kind][field]), 6)
         validate_material_catalog(read_catalog('materials'), read_catalog('reference_properties'), read_catalog('sources'))
 
     def test_fixed_objects_cannot_be_mutated_removed_or_duplicated(self):
@@ -315,6 +314,19 @@ class MaterialPorousPreservationTests(unittest.TestCase):
                 for name in names:
                     self.assertNotIn('preservation', name, str(path))
                     self.assertFalse(name == 'tests' or name.startswith('tests.'), str(path))
+
+
+    def test_earlier_helper_accepts_only_exact_recovered_unchanged_predecessor(self):
+        import material_catalog_preservation as earlier
+        filename = 'tests/test_schema_meta_cache.py'
+        current = (ROOT / filename).read_bytes()
+        expected = earlier.load_ledger()['baseline_sha256'][filename]
+        self.assertEqual(earlier.digest(earlier.pre_material_bytes(filename, current)), expected)
+        with self.assertRaises(AssertionError):
+            earlier.pre_material_bytes(filename, current + b'!')
+        with patch.object(earlier, 'pre_material_batch_bytes', return_value=b'forged predecessor'):
+            with self.assertRaises(AssertionError):
+                earlier.pre_material_bytes(filename, current)
 
 
 if __name__ == '__main__':

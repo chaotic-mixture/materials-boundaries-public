@@ -176,6 +176,8 @@ def pre_material_bytes(filename, current, *, ledger=None):
     accepted = entries[filename]['sha256'] if filename in entries else ledger['baseline_sha256'][filename]
     if digest(current) != accepted:
         current = pre_material_batch_bytes(filename, current, allow_historical_summary=True)
+    if digest(current) == ledger['baseline_sha256'][filename]:
+        return current
     if filename == 'README.md' and digest(current) != accepted:
         current, _ = _truthful_readme(current, ledger, allow_historical_summary=True)
     if filename not in entries:

@@ -502,3 +502,25 @@ regression parity, four-language inspection or installed-wheel tests. Full
 retain all seven article-specific CC BY 4.0 notices and the bamboo generic
 metadata discrepancy. Public records contain only selected facts and original
 curation, never full source assets, tables, figures or source dumps.
+
+
+## v0.34.0 polymer and biogenic batch
+
+The [six new source-qualified materials](MATERIAL_COVERAGE_v0.34.0.md) extend
+the registry from 51 to 57 identities, with 20 grades, 57 states/properties
+and 108 sources. One nitrogen-pycnometry density, three Young's moduli and two
+tensile moduli use existing contracts; no runtime/schema alternative is added.
+
+The grade field remains null for unresolved BioPBS FZ91PM/FZ91PB, study labels,
+purified PHBV and finished blends. Ecoflex C1200 has a source-designated grade.
+B20's 20 wt.% basis is explicit; PBS/PBAT 70/30 has no stated ratio basis.
+PBAT/PBS-PBAT center aggregation and ± remain undefined. PHBV n≥5 is not n=5,
+and its composition ± does not inherit mechanical-table SD. Lignin density
+basis and statistics remain unknown. No source simulation or vendor reference
+is substituted for the selected original experimental facts.
+
+Existing data and four-language outputs are preserved through an exact
+test-only successor layer, with no production dependency on that layer.
+See the [migration gates](MIGRATION_v0.34.0.md) and
+[article-specific rights](../THIRD_PARTY_NOTICES.md#polymer-and-biogenic-references-v0340).
+Source review is not scientific replication, and validation is not publication.

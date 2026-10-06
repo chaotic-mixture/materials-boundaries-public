@@ -1049,7 +1049,47 @@ for suffix, facts in porous_density_facts.items():
                                 'installed K1 undefined amplitude was relabeled SD')
 require(porous_density_cli_outputs == 128, 'installed fifth-batch detail coverage incomplete')
 
+# The six independently source-qualified v0.34 selections stay catalog-only.
+polymer_facts = {
+    'ewurum2025_biopbs': ('youngs_modulus', '575', 'MPa', '65', 'reported_mean', 'reported_standard_deviation', 10, 'exact'),
+    'ewurum2025_pbs_lignin20': ('youngs_modulus', '960', 'MPa', '77', 'reported_mean', 'reported_standard_deviation', 10, 'exact'),
+    'ewurum2025_indulin_at': ('mass_density', '1.226', 'g/cm^3', None, 'reported_value', 'not_reported_in_inspected_source', None, 'not_reported'),
+    'abbasi2022_manure_phbv39': ('youngs_modulus', '0.87', 'GPa', '0.04', 'reported_mean', 'reported_standard_deviation', 5, 'at_least'),
+    'mtibe2022_pbat_ecoflex_c1200': ('tensile_modulus', '52.01', 'MPa', '28.78', 'reported_value', 'reported_plus_minus_unspecified', 5, 'exact'),
+    'mtibe2022_pbs_pbat_70_30': ('tensile_modulus', '253.49', 'MPa', '13.40', 'reported_value', 'reported_plus_minus_unspecified', 5, 'exact'),
+}
+polymer_cli_outputs = 0
+for suffix, facts in polymer_facts.items():
+    quantity, number, unit, amplitude, statistic, uncertainty_kind, count, relation = facts
+    property_id, state_id = 'refprop_' + suffix + '_' + quantity, 'state_' + suffix
+    detail = query_catalog('reference-properties', record_id=property_id)
+    require(len(detail['records']) == 1, 'missing installed polymer fact: ' + suffix)
+    prop = detail['records'][0]
+    require((prop['quantity'], prop['reported_value']['number'], prop['reported_value']['unit_code'],
+             (prop['uncertainty'] or {}).get('number'), prop['summary_statistic'],
+             prop['uncertainty_status'], prop['sample_count']['value'], prop['sample_count']['relation']) == facts,
+            'installed polymer source semantics changed: ' + suffix)
+    require(prop['evaluation_support'] == 'catalog_only' and prop['universal_bound'] is False
+            and prop['engineering_allowable'] is False and prop['verification']['independent_scientific_review'] is False
+            and prop['verification']['raw_data_reanalysis'] is False, 'installed polymer capability changed')
+    for kind, identifier in (('materials', state_id), ('reference-properties', property_id)):
+        selected = query_catalog(kind, record_id=identifier, source_id=prop['source_id'])
+        for language in languages:
+            for flag in ('--text', '--json'):
+                stdout = io.StringIO()
+                with redirect_stdout(stdout):
+                    code = main(['catalog', kind, '--id', identifier, '--source-id', prop['source_id'], '--lang', language, flag])
+                rendered = stdout.getvalue()
+                require(code == 0 and '[missing:' not in rendered, 'installed polymer CLI failed')
+                if flag == '--json':
+                    require(json.loads(rendered) == selected, 'installed polymer JSON depends on language')
+                else:
+                    require(number in rendered and prop['uncertainty_note'] in rendered,
+                            'installed polymer result or source caveat lost')
+                polymer_cli_outputs += 1
 print(json.dumps({"version": expected, "metadata_version": metadata_version,
+                  "material_polymer_identities": len(polymer_facts),
+                  "material_polymer_cli_outputs": polymer_cli_outputs,
                   "material_porous_density_identities": len(porous_density_facts),
                   "material_porous_density_cli_outputs": porous_density_cli_outputs,
                   "material_porous_density_languages": languages,
