@@ -1,0 +1,250 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:materials:relationship-graph:1.0.0",
+  "title": "Material relationship design snapshot",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "release_state",
+    "frozen_tree",
+    "nodes",
+    "edges"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "release_state": {
+      "const": "design_only"
+    },
+    "frozen_tree": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{40}$"
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/node"
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/edge"
+      }
+    }
+  },
+  "$defs": {
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_id",
+        "locator",
+        "url",
+        "verification"
+      ],
+      "properties": {
+        "source_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "locator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "verification": {
+          "enum": [
+            "inherited_audit_evidence_not_rechecked_here",
+            "design_definition",
+            "primary_checked",
+            "unverified"
+          ]
+        }
+      }
+    },
+    "node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "revision",
+        "kind",
+        "label",
+        "origin",
+        "evidence"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "kind": {
+          "enum": [
+            "external_record",
+            "structure",
+            "material_identity",
+            "state",
+            "specimen",
+            "specimen_cohort",
+            "component",
+            "feedstock",
+            "observation",
+            "prediction",
+            "domain",
+            "chemical_system",
+            "layer_state"
+          ]
+        },
+        "label": {
+          "type": "string"
+        },
+        "origin": {
+          "enum": [
+            "existing_production",
+            "existing_companion",
+            "proposed_companion_mapping",
+            "design"
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/evidence"
+          }
+        },
+        "axis": {
+          "enum": [
+            "legacy_primary_category",
+            "composition_family",
+            "function",
+            "application",
+            "dimensionality",
+            "morphology"
+          ]
+        }
+      }
+    },
+    "edge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "subject",
+        "subject_revision",
+        "predicate",
+        "object",
+        "object_revision",
+        "status",
+        "curation",
+        "evidence",
+        "conditions",
+        "qualifiers",
+        "valid_from",
+        "valid_to",
+        "supersedes"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^rel_"
+        },
+        "subject": {
+          "type": "string"
+        },
+        "subject_revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "predicate": {
+          "enum": [
+            "represents_structure",
+            "reports_observation",
+            "reports_prediction",
+            "describes_state",
+            "candidate_matches",
+            "member_of",
+            "has_state",
+            "realizes_state",
+            "observed_on",
+            "predicted_for",
+            "component_of",
+            "derived_from",
+            "phase_of",
+            "has_layer_state",
+            "subclass_of"
+          ]
+        },
+        "object": {
+          "type": "string"
+        },
+        "object_revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "status": {
+          "enum": [
+            "supported",
+            "candidate",
+            "unknown",
+            "conflicted",
+            "retracted",
+            "rejected"
+          ]
+        },
+        "curation": {
+          "enum": [
+            "proposed",
+            "accepted",
+            "rejected"
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/evidence"
+          }
+        },
+        "conditions": {
+          "type": "object",
+          "minProperties": 1
+        },
+        "qualifiers": {
+          "type": "object"
+        },
+        "valid_from": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "valid_to": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "supersedes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+license = {file = "LICENSE"}
+name = "materials-boundaries-federation-prototype"
+version = "0.1.0"
+requires-python = ">=3.11"
+description = "Isolated review-only Materials Project and NOMAD adapters"
+dependencies = ["httpx[socks]>=0.28,<0.29", "pydantic>=2.13,<3"]
+
+[project.optional-dependencies]
+materials-project = ["mp-api>=0.45,<1"]
+structure = ["pymatgen>=2025.1"]
+
+[tool.setuptools.packages.find]
+include = ["materials_federation*"]
+
+[tool.setuptools]
+license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md"]

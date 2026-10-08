@@ -1,0 +1,7 @@
+# License and provenance notices
+
+Original integration code, documentation and synthetic fixtures use the repository MIT license (LICENSE). Dependencies keep their own licenses and are installed rather than vendored. FastAPI, Pydantic, HTTPX, Uvicorn and socksio are third-party runtime components; setuptools is a build dependency, PyYAML a QA-only dependency. Consult their distributed license files.
+
+The minimized NOMAD projected archive fixture retained in federation, query-service and lifecycle tests is an attributed public example, not original synthetic data: entry ----9KNOtIZc9bDFEWxgjeSRsJrC; source https://nomad-lab.eu/prod/v1/gui/search/entries/entry/id/----9KNOtIZc9bDFEWxgjeSRsJrC. Its metadata declares CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/), originating from AFLOW. Original source references are retained in the JSON. Projection/wrapping changes were made for tests; fixture bytes are not an exact historic HTTP capture. Provider license declarations are not a complete rights audit. This fixture is needed for adapter regression only, not a redistributable scientific dataset claim.
+
+MP fixtures are synthetic. materials_platform/fixtures/golden_nomad.json is original synthetic data and makes no claim of a real provider entry or physical measurement. Synthetic provider-shaped URLs are logical identities, not live evidence. Relationship examples reference the repository's existing source/identity namespace; all proposed edges remain proposed and inherited source terms remain applicable.

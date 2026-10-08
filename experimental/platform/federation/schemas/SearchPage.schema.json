@@ -1,0 +1,454 @@
+{
+  "$defs": {
+    "Candidate": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "0.1.0",
+          "default": "0.1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "snapshot_id": {
+          "title": "Snapshot Id",
+          "type": "string"
+        },
+        "canonical_material_id": {
+          "default": null,
+          "title": "Canonical Material Id",
+          "type": "null"
+        },
+        "source": {
+          "$ref": "#/$defs/SourceRef"
+        },
+        "formula": {
+          "title": "Formula",
+          "type": "string"
+        },
+        "composition": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "type": "number"
+              },
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Composition"
+        },
+        "structure": {
+          "anyOf": [
+            {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Structure"
+        },
+        "structure_format": {
+          "default": "absent",
+          "enum": [
+            "pymatgen",
+            "nomad_results",
+            "absent"
+          ],
+          "title": "Structure Format",
+          "type": "string"
+        },
+        "state": {
+          "additionalProperties": true,
+          "title": "State",
+          "type": "object"
+        },
+        "identity_evidence": {
+          "additionalProperties": {
+            "$ref": "#/$defs/Provenance"
+          },
+          "title": "Identity Evidence",
+          "type": "object"
+        },
+        "properties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PropertyEvidence"
+          },
+          "default": [],
+          "title": "Properties"
+        },
+        "external_references": {
+          "additionalProperties": true,
+          "title": "External References",
+          "type": "object"
+        },
+        "review_status": {
+          "const": "pending_review",
+          "default": "pending_review",
+          "title": "Review Status",
+          "type": "string"
+        },
+        "quota_credit": {
+          "const": 0,
+          "default": 0,
+          "title": "Quota Credit",
+          "type": "integer"
+        },
+        "limitations": {
+          "default": [
+            "Provider entry is not a canonical project material or a qualified production identity.",
+            "Formula, provider material IDs and structure similarity do not establish equivalence.",
+            "Unknown state, processing and uncertainty remain unknown."
+          ],
+          "items": {
+            "type": "string"
+          },
+          "title": "Limitations",
+          "type": "array"
+        }
+      },
+      "required": [
+        "snapshot_id",
+        "source",
+        "formula",
+        "identity_evidence"
+      ],
+      "title": "Candidate",
+      "type": "object"
+    },
+    "PropertyEvidence": {
+      "additionalProperties": false,
+      "properties": {
+        "quantity": {
+          "title": "Quantity",
+          "type": "string"
+        },
+        "value": {
+          "title": "Value",
+          "type": "number"
+        },
+        "unit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Unit"
+        },
+        "evidence_kind": {
+          "enum": [
+            "computed",
+            "experimental",
+            "unknown"
+          ],
+          "title": "Evidence Kind",
+          "type": "string"
+        },
+        "provenance": {
+          "$ref": "#/$defs/Provenance"
+        },
+        "uncertainty": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Uncertainty"
+        }
+      },
+      "required": [
+        "quantity",
+        "value",
+        "unit",
+        "evidence_kind",
+        "provenance"
+      ],
+      "title": "PropertyEvidence",
+      "type": "object"
+    },
+    "Provenance": {
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "$ref": "#/$defs/SourceRef"
+        },
+        "field_path": {
+          "title": "Field Path",
+          "type": "string"
+        },
+        "task_ids": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Task Ids",
+          "type": "array"
+        },
+        "method": {
+          "additionalProperties": true,
+          "title": "Method",
+          "type": "object"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Note"
+        }
+      },
+      "required": [
+        "source",
+        "field_path"
+      ],
+      "title": "Provenance",
+      "type": "object"
+    },
+    "Query": {
+      "additionalProperties": false,
+      "properties": {
+        "formula": {
+          "anyOf": [
+            {
+              "maxLength": 120,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Formula"
+        },
+        "limit": {
+          "default": 5,
+          "maximum": 25,
+          "minimum": 1,
+          "title": "Limit",
+          "type": "integer"
+        }
+      },
+      "title": "Query",
+      "type": "object"
+    },
+    "SourceRef": {
+      "additionalProperties": false,
+      "properties": {
+        "provider": {
+          "enum": [
+            "materials_project",
+            "nomad"
+          ],
+          "title": "Provider",
+          "type": "string"
+        },
+        "record_id": {
+          "minLength": 1,
+          "title": "Record Id",
+          "type": "string"
+        },
+        "endpoint": {
+          "title": "Endpoint",
+          "type": "string"
+        },
+        "source_url": {
+          "title": "Source Url",
+          "type": "string"
+        },
+        "provider_version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Provider Version"
+        },
+        "record_updated": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Record Updated"
+        },
+        "payload_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Payload Sha256",
+          "type": "string"
+        },
+        "retrieved_at": {
+          "format": "date-time",
+          "title": "Retrieved At",
+          "type": "string"
+        },
+        "adapter_version": {
+          "const": "0.1.0",
+          "default": "0.1.0",
+          "title": "Adapter Version",
+          "type": "string"
+        },
+        "license_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "License Identifier"
+        },
+        "license_evidence_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "License Evidence Url"
+        },
+        "license_review": {
+          "default": "unreviewed",
+          "enum": [
+            "unreviewed",
+            "source_declared"
+          ],
+          "title": "License Review",
+          "type": "string"
+        },
+        "fixture": {
+          "default": false,
+          "title": "Fixture",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "provider",
+        "record_id",
+        "endpoint",
+        "source_url",
+        "payload_sha256",
+        "retrieved_at"
+      ],
+      "title": "SourceRef",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "provider": {
+      "enum": [
+        "materials_project",
+        "nomad"
+      ],
+      "title": "Provider",
+      "type": "string"
+    },
+    "query": {
+      "$ref": "#/$defs/Query"
+    },
+    "candidates": {
+      "items": {
+        "$ref": "#/$defs/Candidate"
+      },
+      "title": "Candidates",
+      "type": "array"
+    },
+    "retrieved_at": {
+      "format": "date-time",
+      "title": "Retrieved At",
+      "type": "string"
+    },
+    "possibly_truncated": {
+      "title": "Possibly Truncated",
+      "type": "boolean"
+    },
+    "next_cursor": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Next Cursor"
+    },
+    "cache_status": {
+      "default": "fresh",
+      "enum": [
+        "fresh",
+        "cache_hit"
+      ],
+      "title": "Cache Status",
+      "type": "string"
+    },
+    "fixture": {
+      "default": false,
+      "title": "Fixture",
+      "type": "boolean"
+    },
+    "matching_provider_entries": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Matching Provider Entries"
+    },
+    "warnings": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Warnings",
+      "type": "array"
+    }
+  },
+  "required": [
+    "provider",
+    "query",
+    "candidates",
+    "retrieved_at",
+    "possibly_truncated"
+  ],
+  "title": "SearchPage",
+  "type": "object"
+}

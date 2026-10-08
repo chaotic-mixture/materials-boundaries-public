@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+[project]
+license = {file = "LICENSE"}
+name = "materials-boundaries-platform-experimental"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = ["materials-boundaries-federation-prototype==0.1.0", "materials-boundaries-query-service==0.1.0", "materials-lifecycle-prototype==0.1.0"]
+[project.scripts]
+materials-platform = "materials_platform.__main__:main"
+[tool.setuptools.packages.find]
+include = ["materials_platform*"]
+[tool.setuptools.package-data]
+materials_platform = ["fixtures/*.json"]
+
+[tool.setuptools]
+license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md"]

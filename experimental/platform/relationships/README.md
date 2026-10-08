@@ -1,0 +1,3 @@
+# Proposed relationship contracts
+
+These schemas and selected typed-edge examples are design artifacts, not a graph importer. Existing production and observation identifiers retain their strings. proposal:* identifiers and all curated relationships remain proposed. Source locators are inherited from the frozen catalog; no new source audit is claimed. queries.sql is a design sketch requiring a database implementation. The full original graph validation dataset is deliberately not vendored here; semantic integration tests remain future work. Source candidates use a distinct schema from admitted relationship entities. No automatic mapping between those contracts is implemented.

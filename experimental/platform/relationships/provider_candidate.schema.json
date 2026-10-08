@@ -1,0 +1,236 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "candidate_id",
+    "canonical_material_id",
+    "provider",
+    "provider_record_id",
+    "record_type",
+    "provider_revision",
+    "provider_database_version",
+    "fetched_at",
+    "raw_sha256",
+    "source_url",
+    "license",
+    "evidence_basis",
+    "method",
+    "fields",
+    "matching",
+    "admission",
+    "quota_credit"
+  ],
+  "properties": {
+    "candidate_id": {
+      "type": "string"
+    },
+    "canonical_material_id": {
+      "type": "null"
+    },
+    "provider": {
+      "enum": [
+        "materials_project",
+        "nomad"
+      ]
+    },
+    "provider_record_id": {
+      "type": "string"
+    },
+    "record_type": {
+      "type": "string"
+    },
+    "provider_revision": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "provider_database_version": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "fetched_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "raw_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "source_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "license": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "identifier",
+        "url",
+        "scope"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "verified",
+            "unknown",
+            "restricted"
+          ]
+        },
+        "identifier": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "scope": {
+          "type": "string"
+        }
+      }
+    },
+    "evidence_basis": {
+      "enum": [
+        "computed",
+        "experimental",
+        "mixed",
+        "unknown"
+      ]
+    },
+    "method": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "fields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "value",
+          "unit",
+          "evidence_basis",
+          "provenance"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "value": {},
+          "unit": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "evidence_basis": {
+            "enum": [
+              "computed",
+              "experimental",
+              "unknown"
+            ]
+          },
+          "provenance": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "source_record_id",
+              "field_path",
+              "method_ref",
+              "license_ref"
+            ],
+            "properties": {
+              "source_record_id": {
+                "type": "string"
+              },
+              "field_path": {
+                "type": "string"
+              },
+              "method_ref": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "license_ref": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "matching": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "target_ids",
+        "algorithm",
+        "algorithm_version",
+        "evidence",
+        "uncertainties"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "not_attempted",
+            "candidate",
+            "unknown",
+            "conflicted",
+            "rejected"
+          ]
+        },
+        "target_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "algorithm": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "algorithm_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evidence": {
+          "type": "array"
+        },
+        "uncertainties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "admission": {
+      "const": "pending_review"
+    },
+    "quota_credit": {
+      "const": 0
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Provider candidate normalized handoff v1"
+}
