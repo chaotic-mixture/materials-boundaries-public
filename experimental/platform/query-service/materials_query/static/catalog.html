@@ -1,0 +1,7 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Local validated catalog</title><link rel="stylesheet" href="/static/style.css"></head><body><main>
+<h1>Local validated catalog</h1><p>Historical installed-core snapshot. Local unique materials and external provider entries are separate counts and are never added together. No automatic refresh or source changes.</p>
+<p id="catalog-status" role="status">Checking local catalog availability…</p><p>Pinned version: <span id="catalog-version">Unavailable</span></p>
+<form id="catalog-form"><label>English search<input id="catalog-query" maxlength="256" required></label><label>Record type<select id="catalog-kind"><option value="materials">Material states</option><option value="reference-properties">Reference properties</option></select></label><label>Maximum results<input id="catalog-limit" type="number" min="1" max="100" value="20" required></label><button id="catalog-submit" disabled>Search pinned catalog</button></form>
+<p>Literal case-insensitive AND matching in bounded English fields. Aliases, non-English authored names and full CLI filters are not included. Matching does not prove scientific suitability.</p>
+<p id="catalog-result-status" role="status"></p><div id="catalog-results"></div><h2>Selected record</h2><pre id="catalog-detail"></pre>
+<p><a href="/">External candidate discovery</a> · <a href="/api/catalog/status">Catalog metadata</a></p></main><script src="/static/catalog.js"></script></body></html>

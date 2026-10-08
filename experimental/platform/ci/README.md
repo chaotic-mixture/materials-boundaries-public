@@ -95,3 +95,12 @@ GitHub's scheduler or expression engine.
 Python 3.13/3.14 matrix expansion is deferred until the pinned binary dependency
 set and full suite have been verified on those interpreters. Package metadata
 states Python >=3.11; that alone is not evidence of tested compatibility.
+
+
+## Proposed prerelease catalog extension
+
+Query-service and umbrella-platform wheels are now expected at 0.2.0.dev0; federation/lifecycle remain 0.1.0. The original four-wheel job preserves all83 tests, zero-skips checks and existing assertions. Only those two exact wheel-version expectations change.
+
+The separate optional-core-catalog job builds this repository root locally as core0.35.0 alongside those four wheels, installs them into a fresh isolated runtime, checks all five wheel licenses and installed imports, applies the existing offline socket guard, and runs query-service/catalog-tests: 21 tests with no skips or expected failures. Core is never fetched from a package index. The two jobs cover104 tests together.
+
+Both proposed runners passed locally on Python3.12.14. Python3.11, remote Actions runs, browser rendering, live providers, production acceptance and deployment remain pending or outside scope. No original83 green result alone validates the added snapshot integration.

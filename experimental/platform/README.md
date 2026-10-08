@@ -49,3 +49,7 @@ python -m pip check
 Independent component review passed for bounded local scope. Final integrated test evidence is summarized in VERIFICATION.md. Real browser rendering, accessibility, download behavior and mobile overflow remain unverified due to browser execution restrictions. API/static/JavaScript logic checks are not a browser pass. NOMAD live evidence is separate from fixtures; no MP live claim, deployment, DOI, public upload or workflow activation is made.
 
 Lifecycle reviewer authentication and production regression gates remain not_run. Source-envelope mapping is not scientific property normalization. Correction reopening, release-parent lineage, automatic semantic-version eligibility and reference-provider admission remain future work. See SNAPSHOT_POLICY.md, CONTRIBUTING.md and THIRD_PARTY_NOTICES.md.
+
+## Optional installed-core catalog
+
+This isolated revision adds a separately opted-in, fully validated historical local catalog with exact version-pinned API reads and a separate English page. Start `materials_query.app:create_catalog_app --factory` only after installing this repository's core locally. Default startup remains provider-only; no core package is fetched automatically. See [LOCAL_CATALOG.md](LOCAL_CATALOG.md) for installation, version semantics, separate local counts, bounded search and verification limits.

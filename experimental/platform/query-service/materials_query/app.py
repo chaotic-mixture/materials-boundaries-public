@@ -13,6 +13,8 @@ from materials_federation.models import Model, Query, SearchPage, now
 from materials_federation.normalize import normalize_mp, normalize_nomad
 from materials_federation.providers import NomadAdapter, ProviderError
 
+from . import __version__
+
 ROOT = Path(__file__).parent
 
 class SearchRequest(Model):
@@ -44,8 +46,8 @@ class DemoRequest(Model):
     provider: Literal['nomad', 'materials_project'] = 'nomad'
 
 
-def create_app(adapter=None):
-    app = FastAPI(docs_url=None, redoc_url=None, title='Materials Boundaries · Candidate Query', version='0.1.0',
+def create_app(adapter=None, *, enable_local_catalog=False):
+    app = FastAPI(docs_url=None, redoc_url=None, title='Materials Boundaries · Candidate Query', version=__version__,
                   description='Local review-only discovery. Entries are not admitted materials.')
     app.add_middleware(TrustedHostMiddleware, allowed_hosts=['localhost', '127.0.0.1', '[::1]', 'testserver'])
     app.mount('/static', StaticFiles(directory=ROOT/'static'), name='static')
@@ -128,9 +130,13 @@ def create_app(adapter=None):
     def ui():
         return FileResponse(ROOT/'static/index.html')
 
+    @app.get('/catalog', include_in_schema=False)
+    def catalog_ui():
+        return FileResponse(ROOT/'static/catalog.html')
+
     @app.get('/api/health')
     def health():
-        return {'status':'ok', 'service_version':'0.1.0', 'mode':'local_review_only', 'upstream_health':'not_checked'}
+        return {'status':'ok', 'service_version':__version__, 'mode':'local_review_only', 'upstream_health':'not_checked'}
 
     @app.get('/api/capabilities')
     def capabilities():
@@ -176,6 +182,14 @@ def create_app(adapter=None):
         if item is None:
             raise HTTPException(404, 'Snapshot absent or evicted; repeat its bounded query')
         return JSONResponse(content=item, headers={'Content-Disposition':f'attachment; filename="{snapshot_id}.json"'})
+    from .local_catalog import install_routes
+    install_routes(app, enabled=enable_local_catalog)
     return app
+
+
+def create_catalog_app():
+    """Explicit opt-in: one full installed-core snapshot construction per app."""
+    return create_app(enable_local_catalog=True)
+
 
 app = create_app()

@@ -5,11 +5,19 @@ on:
     branches: ['experimental/platform-integration']
     paths:
       - 'experimental/platform/**'
+      - 'materials_boundaries/**'
+      - 'pyproject.toml'
+      - 'LICENSE'
+      - 'THIRD_PARTY_NOTICES.md'
       - '.github/workflows/experimental-platform.yml'
   pull_request:
     branches: ['experimental/platform-integration']
     paths:
       - 'experimental/platform/**'
+      - 'materials_boundaries/**'
+      - 'pyproject.toml'
+      - 'LICENSE'
+      - 'THIRD_PARTY_NOTICES.md'
       - '.github/workflows/experimental-platform.yml'
   workflow_dispatch:
 
@@ -42,3 +50,29 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Clean wheel installs, offline suites and installed smoke
         run: python experimental/platform/ci/run_ci.py
+
+  optional-core-catalog:
+    if: github.event_name != 'workflow_dispatch' || github.ref == 'refs/heads/experimental/platform-integration'
+    name: Optional installed-core catalog (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12']
+    env:
+      PYTHONUTF8: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+      PIP_DISABLE_PIP_VERSION_CHECK: '1'
+      PIP_NO_INPUT: '1'
+    steps:
+      - name: Checkout without retained credentials
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Five local wheel installs and optional-core suite
+        run: python experimental/platform/ci/run_catalog_ci.py
