@@ -1,6 +1,6 @@
 # 材料边界 · Materials Boundaries
 
-Current software release: **v0.34.0** · **Six polymer and biogenic material additions** · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
+Current software release: **v0.35.0** · **Natural materials and reviewed bulk ingestion** · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
 
 A condition-aware, source-traceable materials-mechanics catalog and offline Python toolkit. It separates conditional mathematical bounds, model relations, published observations, computational predictions and synthetic demonstrations. Python 3.10+; no third-party runtime dependencies.
 
@@ -9,24 +9,25 @@ Repository: [chaotic-mixture/materials-boundaries-public](https://github.com/cha
 ## Public-release scope
 
 <!-- current-catalog-summary:start -->
-- **41 mechanics claims**, **108 source records**, **16 observations from 5 studies**, **12 published computational predictions in 2 scientific families and 3 explicit groups**, and **5 synthetic temperature demos with 7 branches**
+- **41 mechanics claims**, **114 source records**, **16 observations from 5 studies**, **12 published computational predictions in 2 scientific families and 3 explicit groups**, and **5 synthetic temperature demos with 7 branches**
 - Exactly **8 executable composite calculation rules**: HS/Reuss/Voigt bulk and shear bounds plus conservative derived Young's-modulus and Poisson-ratio envelopes
 - Other mechanics records, including initial-yield criteria and their function comparison, scalar viscoelasticity, bulk elastic waves, hydrostatic compressibility, directional Poisson ratio, anisotropy, fatigue, fracture, stability and porous relations, are catalog-only
-- The 108 sources comprise 107 bibliographic/source records plus 1 original synthetic-demo provenance record; a source record is not a redistribution of its publication or dataset
+- The 114 sources comprise 113 bibliographic/source records plus 1 original synthetic-demo provenance record; a source record is not a redistribution of its publication or dataset
 - All five temperature demos use intentionally invented coefficients and ranges. They do not describe real materials, measured properties or engineering allowables
 <!-- current-catalog-summary:end -->
 
 ## Concrete material references
 
 <!-- material-catalog-summary:start -->
-The separate reference catalogue contains **57 material identities**, **20 qualified grades**, **57 source-scoped states** and **57 reference properties**. Counts describe this registry only; aliases, categories, prior observations and computational model cells are not additional materials.
+The separate reference catalogue contains **1057 material identities**, **20 qualified grades**, **1057 source-scoped states** and **1057 reference properties**. Counts describe this registry only; aliases, categories, prior observations and computational model cells are not additional materials.
 <!-- material-catalog-summary:end -->
 
-The prior 51 identities remain unchanged. This release adds BioPBS B0, PBS / 20 wt.% Indulin AT lignin blend B20, Indulin AT softwood kraft lignin, dairy-manure-derived PHBV-39, Ecoflex C1200 PBAT and the unfilled PBS/PBAT 70/30 blend. Each has one original experimental reference property. Ecoflex C1200 adds one source-designated grade; the unresolved BioPBS FZ91PM/FZ91PB wording does not establish a selected grade.
+The five primary classes are metal, inorganic, polymer, composite and natural biological tissues/fibers. The exact reviewed v2 batch adds 1,000 distinct historical WFO species identities, each with one selected-accession conversion-derived basic-density property. Natural coverage is 1,010; metal 14, inorganic 16, polymer 14 and composite 3 remain below the 1,000-per-class goal. Ten existing biological identities migrate to natural through an exact versioned ledger. Processed biopolymers remain polymer; minerals and rocks remain inorganic. A material counts once by its admitted canonical identity, irrespective of aliases, states or measurements.
 
-All six facts fit the existing schema and runtime. B0, B20 and PHBV-39 retain explicit mean ± SD; PHBV keeps n≥5. PBAT and PBS/PBAT keep unknown central aggregation and undefined ±, while the blend's 70/30 ratio basis remains unspecified. The lignin density keeps unknown aggregation, n and density basis. English, Chinese, Japanese and German names preserve source scope. The eight executable rules, old records and schemas are unchanged. [Guide and contribution contract](docs/MATERIAL_REFERENCE_CATALOG.md) · [Coverage](docs/MATERIAL_COVERAGE_v0.34.0.md) · [Migration](docs/MIGRATION_v0.34.0.md)
+A reusable offline pipeline separates proposed, held and source-supported candidates from explicit reviewed admission. The first conversion profile preserves measured air-dry specific gravity and source-deposited basic-density estimates, their assumptions and provenance. It never turns a selected collection accession into a species mean or engineering design value. The eight executable scientific rules remain unchanged. [Guide](docs/MATERIAL_REFERENCE_CATALOG.md) · [Taxonomy](docs/MATERIAL_TAXONOMY.md) · [Bulk workflow](docs/BULK_INGESTION.md) · [Scientific gates](docs/BULK_INGESTION_DESIGN.md) · [Coverage](docs/MATERIAL_COVERAGE_v0.35.0.md) · [Migration](docs/MIGRATION_v0.35.0.md)
 
 ```sh
+python -m materials_boundaries coverage --text --lang en
 python -m materials_boundaries catalog materials --text --lang en
 python -m materials_boundaries catalog materials --category polymer --text --lang zh
 python -m materials_boundaries catalog reference-properties --quantity mass_density --text --lang ja

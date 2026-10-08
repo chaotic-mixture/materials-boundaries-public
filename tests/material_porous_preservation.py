@@ -6,6 +6,7 @@ fixed release serialization must then match its byte pin before reversal.
 Production readers and replay do not import this module.
 """
 from copy import deepcopy
+from material_bulk_preservation import predecessor_catalog
 from material_polymer_preservation import pre_material_polymer_bytes
 import hashlib
 import json
@@ -189,6 +190,7 @@ def project_catalog(filename, current, catalogs):
     evidence suffix. Its complete original evidence prefix and all other fields
     remain pinned; executable claims and every material/source object stay whole.
     """
+    current = predecessor_catalog(filename, current)
     fields = catalogs.get(filename)
     if not fields or type(current) is not dict or set(current) != set(fields):
         raise AssertionError('Unreviewed v0.33 catalog envelope: ' + filename)

@@ -318,11 +318,23 @@ from materials_boundaries import observation_visualization as observation_view
 require(find_spec('jsonschema') is None and find_spec('referencing') is None,
         'wheel smoke accidentally has development dependencies')
 from materials_boundaries._paht_cf_observation_contract import PAHT_FAMILY
+def historical_observation_rows(records):
+    # Exact accepted membership, while default exports still cover every live row.
+    baseline_ids = ('lee_2008_graphene_in_plane_stiffness_2d', 'lee_2008_graphene_breaking_strength_2d', 'bertolazzi_2011_mos2_monolayer_in_plane_stiffness_2d', 'bertolazzi_2011_mos2_monolayer_breaking_strength_2d', 'falin_2017_hbn_monolayer_in_plane_stiffness_2d', 'falin_2017_hbn_monolayer_breaking_strength_2d', 'ciganas2026-pa12cf15-uts-23c', 'ciganas2026-pa12cf15-uts-40c', 'ciganas2026-pa12cf15-uts-60c', 'ciganas2026-pa12cf15-uts-80c', 'ciganas2026-pa12cf15-uts-100c', 'ciganas2026-pa12cf15-uts-120c', 'zach-2025-paht-cf-annealed-uts-25c', 'zach-2025-paht-cf-annealed-uts-50c', 'zach-2025-paht-cf-annealed-uts-100c', 'zach-2025-paht-cf-annealed-uts-150c')
+    index = {record['id']: record for record in records}
+    require(len(index) == len(records) and set(baseline_ids) <= set(index),
+            'missing historical or duplicate installed observation ID')
+    baseline = [index[key] for key in baseline_ids]
+    old = baseline[:6]
+    pa12 = baseline[6:12]
+    require(len(baseline) == 16 and len(old) == len(pa12) == 6
+            and all(r['observation_type'] == 'experiment_derived_model_dependent' for r in old)
+            and all(r.get('method_family') == PA12_FAMILY for r in pa12),
+            'changed exact historical observation cohorts')
+    return baseline, old, pa12
+
 all_records = observations['records']
-old_records = [r for r in all_records if r['observation_type'] == 'experiment_derived_model_dependent']
-new_records = [r for r in all_records if r.get('method_family') == PA12_FAMILY]
-require(len(all_records) == 16 and len(old_records) == len(new_records) == 6,
-        'unexpected production observation counts')
+baseline_observations, old_records, new_records = historical_observation_rows(all_records)
 # Keep the complete accepted v0.28.2 membership while allowing future appends.
 baseline_sources_ids = frozenset(['hashin_shtrikman_1963', 'kochmann_milton_2014', 'berger_2017', 'milton_2018_comment', 'berger_2018_reply', 'singh_lai_2024', 'materials_project_elasticity', 'genin_birman_2009', 'meille_garboczi_2001', 'griffith_1921', 'wilson_1992_nasa_tm_103591', 'frenkel_1926', 'shimanek_2022_ideal_shear', 'rose_ferrante_smith_1981', 'van_der_ven_ceder_2004', 'azocar_guzman_2020_hydrogen', 'pierce_sullivan_1969_nasa_tn_d_5140', 'mouhat_coudert_2014_elastic_stability', 'roberts_garboczi_2002_porous', 'lee_wei_kysar_hone_2008', 'paris_erdogan_1963', 'forman_kearney_engle_1967', 'hudson_1969_nasa_tn_d_5390', 'afgrow_dtd_handbook_fatigue_growth', 'astm_e647_24_public_scope', 'nist_cryogenic_al6061_t6', 'nist_cryogenic_ss304', 'nist_cryogenic_reference_list', 'bradley_radebaugh_lewis_2006', 'nist_public_information_reuse', 'zener_1948_elasticity_anelasticity', 'ranganathan_ostoja_starzewski_2008_anisotropy', 'ranganathan_ostoja_starzewski_ferrari_2011_anisotropy', 'knowles_howie_2015_cubic_shear', 'shimanek_2022_arxiv_2108_06412_v2', 'dubois_2006_prb_74_235203', 'nist_cryogenic_al5083', 'nist_cryogenic_invar', 'nist_cryogenic_ss316', 'nist_cryogenic_material_index', 'nist_cryogenic_srd_provenance', 'ting_chen_2005_poisson_unbounded', 'norris_2006_cubic_poisson', 'norris_2006_anisotropic_extrema', 'ortiz_2012_anisotropic_mof_elasticity', 'miller_evans_marmier_2015_linear_compressibility', 'materials_boundaries_synthetic_temperature_demo', 'bertolazzi_brivio_kis_2011', 'chevrot_vanderhilst_2003', 'xiang_qi_wei_2018_arxiv_v2', 'falin_et_al_2017_hbn_mechanical_properties', 'ciganas2026polym18050563', 'zach_dudescu2025jcs9110624', 'hanyga2018scalar_anisotropic_duality', 'hanyga2019newtonian_relaxation', 'giraldo_londono_paulino_2020_yield_criteria', 'wierzbicki_2013_structural_plasticity'])
 installed_sources_ids = [record['id'] for record in read_catalog('sources')['records']]
@@ -753,7 +765,7 @@ require(composite_bundle['policy']['independent_scientific_review'] is False,
         'composite report upgraded scientific review')
 
 # Concrete identities and reference facts remain a separate offline lane.
-from materials_boundaries.material_references import validate_material_catalog, material_coverage, resolve_material
+from materials_boundaries.material_references import validate_material_catalog, material_coverage, resolve_materials
 from materials_boundaries.material_presentation import material_labels
 materials = read_catalog('materials')
 reference_properties = read_catalog('reference_properties')
@@ -764,8 +776,8 @@ require(coverage['material_state_count'] == len(materials['records']) > 0,
         'missing installed concrete material registry')
 require(coverage['property_record_count'] == len(reference_properties['records']),
         'incorrect installed material property coverage')
-for state in materials['records']:
-    resolved = resolve_material(state['id'], materials, reference_properties, reference_sources)
+for resolved in resolve_materials([state['id'] for state in materials['records']],
+                                  materials, reference_properties, reference_sources):
     require(bool(resolved['properties']) and bool(resolved['sources']),
             'installed material state has no traceable property')
     require(all(p['evaluation_support'] == 'catalog_only' and p['universal_bound'] is False
@@ -797,23 +809,36 @@ rejects(lambda: validate_material_catalog(materials, wrong, reference_sources),
 # New evidence classes retain their exact method and dimensional meaning after
 # installation. Coverage is derived, never inflated by aliases or grade labels.
 new_reference_classes = {
-    'published_handbook_reference': ('source_reports_compiled_measurements', 'source_reported_compilation'),
-    'published_measurement_derived_reference': ('source_reports_calculation', 'source_reported_crystallographic_derivation'),
+    'published_handbook_reference': ('source_reports_compiled_measurements', {'source_reported_compilation'}),
+    'published_measurement_derived_reference': ('source_reports_calculation', {
+        'source_reported_crystallographic_derivation', 'source_reported_empirical_conversion'}),
 }
-for evidence_kind, (basis, method) in new_reference_classes.items():
+empirical_profile_negative_checked = False
+for evidence_kind, (basis, methods) in new_reference_classes.items():
     selected = query_catalog('reference-properties', evidence_kind=evidence_kind)
     require(bool(selected['records']), 'missing installed expanded evidence class')
     for prop in selected['records']:
-        require(prop['determination_basis'] == basis and prop['method_definition']['type'] == method,
+        method = prop['method_definition']['type']
+        require(prop['determination_basis'] == basis and method in methods,
                 'installed reference lost its source method')
-        if evidence_kind == 'published_measurement_derived_reference':
+        if method == 'source_reported_crystallographic_derivation':
             require(prop['quantity'] == 'mass_density' and prop['density_basis'] == 'crystallographic',
                     'crystallographic density became bulk density')
-        altered = deepcopy(reference_properties)
-        target = next(item for item in altered['records'] if item['id'] == prop['id'])
-        target.update(evidence_kind='published_experimental_reference', determination_basis='source_reports_measurement')
-        rejects(lambda: validate_material_catalog(materials, altered, reference_sources),
-                'installed expanded provenance accepted direct-experiment relabel')
+        elif method == 'source_reported_empirical_conversion':
+            require(prop['quantity'] == 'basic_wood_density'
+                    and prop['density_basis'] == 'oven_dry_mass_over_fresh_or_water_saturated_volume'
+                    and prop['derivation']['profile_id'] == 'gwdd_airdry_sg_to_basic_density_v2_1',
+                    'converted basic density lost its typed physical basis')
+        # Keep every legacy-row negative check; one new-profile mutation avoids
+        # repeating full-graph validation per member of a 1,000-row import.
+        if method != 'source_reported_empirical_conversion' or not empirical_profile_negative_checked:
+            altered = deepcopy(reference_properties)
+            target = next(item for item in altered['records'] if item['id'] == prop['id'])
+            target.update(evidence_kind='published_experimental_reference', determination_basis='source_reports_measurement')
+            rejects(lambda: validate_material_catalog(materials, altered, reference_sources),
+                    'installed expanded provenance accepted direct-experiment relabel')
+            if method == 'source_reported_empirical_conversion':
+                empirical_profile_negative_checked = True
     for language in languages:
         labels = material_labels(language)
         output = render_catalog(selected, 'reference-properties', language)
@@ -934,11 +959,11 @@ porous_density_facts = {
     'kosenko2022_amd5_sps_foam': ('kosenko_2022_sps_al_foam', '0.45', 'g/cm^3',
         'not_stated', 'reported_value', None, 'metal'),
     'prasetia2024_qsuber_reproduction_cork': ('prasetia_2024_cork_physical', '0.17', 'g/cm^3',
-        'not_stated', 'reported_value', 10, 'composite'),
+        'not_stated', 'reported_value', 10, 'natural'),
     'drury2023_moso_bamboo_culm': ('drury_2023_bamboo_compression', '746', 'kg/m^3',
-        'not_stated', 'reported_mean', 6, 'composite'),
+        'not_stated', 'reported_mean', 6, 'natural'),
     'drury2023_guadua_bamboo_culm': ('drury_2023_bamboo_compression', '655', 'kg/m^3',
-        'not_stated', 'reported_mean', 6, 'composite'),
+        'not_stated', 'reported_mean', 6, 'natural'),
     'saadazzem2022_altaouab_cp_plaster': ('saad_azzem_2022_plaster_wheat_straw', '1103.13', 'kg/m^3',
         'apparent', 'reported_value', None, 'inorganic'),
     'mohajerani2019_boral_control_brick': ('mohajerani_2019_biosolids_bricks', '2122', 'kg/m^3',
@@ -1087,7 +1112,68 @@ for suffix, facts in polymer_facts.items():
                     require(number in rendered and prop['uncertainty_note'] in rendered,
                             'installed polymer result or source caveat lost')
                 polymer_cli_outputs += 1
+# The reviewed v2 batch is a fixed admission subset, not a live-registry ceiling.
+from decimal import Decimal
+from materials_boundaries.material_references import material_quota_coverage
+from materials_boundaries.wood_bulk_adapter import REVIEWED_BATCH_SHA256
+reviewed_wood = [p for p in reference_properties['records']
+                 if p.get('derivation', {}).get('provenance', {}).get('reviewed_batch_sha256') == REVIEWED_BATCH_SHA256]
+require(len(reviewed_wood) == 1000, 'installed reviewed wood batch is incomplete')
+wood_identities = {i['id']: i for i in materials['identities']}
+wood_states = {r['id']: r for r in materials['records']}
+wood_keys = set()
+for prop in reviewed_wood:
+    derived = prop['derivation']; formula = derived['formula']; original = derived['input']; output = derived['deposited_output']
+    identity = wood_identities[wood_states[prop['material_state_id']]['identity_id']]
+    require(identity['category'] == 'natural', 'installed wood identity category changed')
+    wood_keys.add(identity['canonical_taxon']['identity_key'])
+    require(original['number'] == original['value_text']
+            and original['unit_code'] == 'dimensionless'
+            and original['evidence_type'] == 'source_reported_measured_input',
+            'installed measured original SG string or evidence class changed')
+    require(formula['coefficient'] == '0.8281316' and formula['water_density_convention_g_cm3'] == '1'
+            and formula['nominal_conversion_moisture_percent'] == '12'
+            and formula['measured_specimen_moisture_percent'] is None
+            and formula['basis_convention_source_id'] == 'fischer_2026_gwdd_methods',
+            'installed conversion coefficient or specimen moisture semantics changed')
+    require(abs(Decimal(original['number']) * Decimal('0.8281316') - Decimal(output['number'])) < Decimal('0.005')
+            and Decimal(derived['si_output']['number']) == Decimal(output['number']) * 1000,
+            'installed deposited conversion or exact SI calculation changed')
+    require(any(e['source_id'] == formula['basis_convention_source_id'] for e in derived['evidence'])
+            and any(e['source_id'] == formula['basis_convention_source_id'] for e in prop['method_definition']['evidence']),
+            'installed basic-density convention lost its source binding')
+    require(prop['reported_value']['number'] == output['number']
+            and prop['reported_value']['value_text'] == output['number']
+            and prop['summary_statistic'] == 'reported_value'
+            and prop['uncertainty'] is None and prop['sample_count']['value'] is None,
+            'installed converted output became a measurement, species mean or independently counted sample')
+    require(derived['specimen_scope']['exact_test_temperature'] is None
+            and derived['specimen_scope']['exact_moisture'] is None,
+            'installed specimen conditions were inferred')
+require(len(wood_keys) == 1000, 'installed reviewed batch double-counts biological identities')
+quota = material_quota_coverage(materials, reference_properties, reference_sources)
+require(set(quota['classes']) == {'metal', 'inorganic', 'polymer', 'composite', 'natural'}
+        and quota['classes']['natural']['admitted_unique_identity_count'] >= 1010,
+        'installed five-class coverage is incomplete')
+for language in languages:
+    stdout = io.StringIO()
+    with redirect_stdout(stdout):
+        code = main(['coverage', '--lang', language, '--json'])
+    require(code == 0 and json.loads(stdout.getvalue()) == quota, 'installed quota JSON depends on language')
+    stdout = io.StringIO()
+    with redirect_stdout(stdout):
+        code = main(['coverage', '--lang', language, '--text'])
+    require(code == 0 and '[missing:' not in stdout.getvalue(), 'installed quota translation missing')
+# Repeated valid calls cannot cache acceptance of a later invalid full graph.
+resolve_materials([materials['records'][0]['id']], materials, reference_properties, reference_sources)
+poisoned = deepcopy(reference_properties); poisoned['records'][-1]['engineering_allowable'] = True
+rejects(lambda: resolve_materials([materials['records'][0]['id']], materials, poisoned, reference_sources),
+        'installed graph resolver reused stale validation or skipped an unselected invalid row')
+
 print(json.dumps({"version": expected, "metadata_version": metadata_version,
+                  "reviewed_wood_batch_sha256": REVIEWED_BATCH_SHA256,
+                  "reviewed_wood_identities": len(wood_keys), "reviewed_wood_properties": len(reviewed_wood),
+                  "fresh_mutated_graph_rejected": True, "material_quota_languages": languages,
                   "material_polymer_identities": len(polymer_facts),
                   "material_polymer_cli_outputs": polymer_cli_outputs,
                   "material_porous_density_identities": len(porous_density_facts),

@@ -959,3 +959,80 @@ identity/preparation p.3 and test method p.5. Third-party literature comparisons
 manufacturer property values, other formulations and held candidates are not
 selected. The independent check concerns source transcription, not scientific
 peer review, raw-data reanalysis, experiment verification or legal clearance.
+
+## v0.35.0 selected CIRAD/GWDD collection facts and historical taxonomy
+
+The bulk natural-material lane uses only the exact independently reviewed v2
+selection (source batch SHA-256
+`5e059c0565f13610b307d9f71b1a29c65bec46aff127392d0b10eba469aef032`).
+Source-supported staging is separate from explicit catalogue admission. The
+held v1 candidate selection is never admitted. The reusable importer does not
+extend these rights conclusions to other rows or other datasets.
+
+- CIRAD wood collection dataset, version 4.1, DOI
+  [10.18167/DVN1/CDHU51](https://dataverse.cirad.fr/dataset.xhtml?persistentId=doi:10.18167/DVN1/CDHU51),
+  explicit CC BY 4.0 grant verified in pinned official dataset metadata. Original
+  file 11836 is `2021- 06 Cirad wood collection index.csv`, SHA-256
+  `26c493495a2941782210021f3a51436aa63d1c1d8efae57f422e8986b8f6d53d`.
+  Credit Patrick Langbour, Sébastien Paradis, Bernard Thibaut and CIRAD. The
+  deposited GWDD citation's original author/name wording remains separately
+  preserved; the normalized methods attribution corrects its author-order error
+- Global Wood Density Database v2, deposited files v2.1, DOI
+  [10.5281/zenodo.16919510](https://zenodo.org/records/16919510), CC BY 4.0.
+  Credit Fabian Jörg Fischer and the GWDD contributors, with original CIRAD
+  attribution retained. The selected `gwdd_v2.1.csv` file is SHA-256
+  `f8806eb4b98589b3f9be778adff026477cac12209ea1490b2ba556e0f7423e92`;
+  `columns_gwdd_v2.1.csv` is SHA-256
+  `e66066f57dc2ac4f2e786aaa53cd75d8a557d67d985065ee22a71df2c3569148`.
+  No compilation-level grant is used to clear restricted original sources
+- World Flora Online Plant List, June 2023, DOI
+  [10.5281/zenodo.8079052](https://zenodo.org/records/8079052), CC0 1.0.
+  Credit the World Flora Online Consortium, Alan Elliott, Roger Hyam and William
+  Ulate. Historical backbone archive `_DwC_backbone_R.zip`, SHA-256
+  `854bf0ab8e1b836b79137d56481c536f1b0779214538ef23e56c4dc61849d8db`.
+  Exact original names/authors, accepted IDs, chains, rank/hybrid markers and
+  backbone locators remain source-qualified; this is not current-taxonomy advice
+
+Adaptations consist of selected factual transcription, structured identity and
+provenance metadata, explicit interpretation/missingness, four-language interface
+labels and documented source-applied conversion auditing. These facts retain
+source-specific rights and are not relicensed under project MIT. The full source
+CSV/backbone caches, source PDFs, screenshots, photographs and figures are not
+bundled. CC BY attribution, release/file hashes and grant metadata survive in the
+required source registry and source-complete inspection views.
+
+The collection measurement-method reference is Langbour, Patrick; Paradis,
+Sébastien; Thibaut, Bernard (2019), *Description of the Cirad wood collection in
+Montpellier, France, representing eight thousand identified species*, DOI
+[10.19182/bft2019.339.a31709](https://revues.cirad.fr/index.php/BFT/article/view/31709).
+Its historical PDF shows CC BY-ND 4.0 while the current landing page shows CC BY
+4.0; the separate dataset grant governs the selected data. The paper is cited
+and summarized factually without redistributing its assets.
+
+The empirical conversion-method reference is Vieilledent et al. (2018), *New
+formula and conversion factor to compute basic wood density of tree species
+using a global wood technology database*, DOI
+[10.1002/ajb2.1175](https://bsapubs.onlinelibrary.wiley.com/doi/10.1002/ajb2.1175).
+Its publication-rounded coefficient 0.828 is distinguished from the deposited
+GWDD coefficient 0.8281316. The 2018 calibration database is distinct from the
+2019 collection; its specimen counts, trunk/drying conditions and uncertainty
+are not imported as accession facts. Bibliographic citation and independently
+authored factual method summaries do not assert a new article-asset reuse grant.
+
+Selected properties are conversion-derived basic-density estimates for one
+collection accession, not direct basic-density measurements, species means or
+engineering allowables. Nominal conversion moisture 12% is not actual specimen
+moisture. Source-method uncertainty and decimal rounding are not individual
+uncertainty. GWDD `wsg_est`, BY-SA/PROSEA source rows and aggregates containing
+held rows remain excluded. Palm material remains anatomically unspecified.
+
+The GWDD definition/method reference is Fischer et al. (2026), *Beyond species
+means – the intraspecific contribution to global wood density variation*,
+DOI [10.1111/nph.70860](https://doi.org/10.1111/nph.70860). The inspected
+[institutional full text](https://research.chalmers.se/publication/550491/file/550491_Fulltext.pdf)
+has SHA-256 `dd237216441203ca80e62710687f82b58ad753d7e33ea682f60cfdd76492ee31`.
+Printed p.6 / PDF page 7 supports the basic-density mass/volume definition,
+water-density convention of 1 g/cm³ and inclusion of tree-like monocot tissues.
+The derivation retains an explicit source dependency for these basis conventions.
+This entry is bibliographic/factual method provenance only; the PDF is not bundled
+and its citation does not grant reuse of paper assets.

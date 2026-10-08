@@ -13,6 +13,7 @@ from pathlib import Path
 import unittest
 
 from materials_boundaries.catalog import read_catalog, query_catalog
+from material_bulk_preservation import predecessor_record
 from materials_boundaries.catalog_output import render_catalog
 from materials_boundaries.cli import main
 from materials_boundaries.material_references import validate_material_catalog, resolve_material
@@ -50,13 +51,13 @@ def assert_reviewed_subset(test, materials, properties, sources, fixture):
     states = indexed(materials['records'])
     identities = indexed(materials['identities'])
     for item in fixture['records']:
-        test.assertEqual(props[item['property_id']], item['expected_property'])
-        actual = deepcopy(states[item['state_id']])
+        test.assertEqual(predecessor_record('reference_properties', 'records', props[item['property_id']]), item['expected_property'])
+        actual = deepcopy(predecessor_record('materials', 'records', states[item['state_id']]))
         expected = deepcopy(item['expected_material_state'])
         # Additional independently reviewed properties can extend the same state.
         test.assertTrue(set(expected.pop('property_ids')).issubset(actual.pop('property_ids')))
         test.assertEqual(actual, expected)
-        test.assertEqual(identities[item['identity_id']], item['expected_identity'])
+        test.assertEqual(predecessor_record('materials', 'identities', identities[item['identity_id']]), item['expected_identity'])
     for expected in fixture['sources']:
         test.assertEqual(indexed(sources['records'])[expected['id']], expected)
     for expected in fixture['grades']:
@@ -105,7 +106,7 @@ class FourthMaterialBatchTests(unittest.TestCase):
             for collection, records in collections.items():
                 actual = indexed(catalogs[name][collection])
                 for record_id, digest in records.items():
-                    self.assertEqual(hashlib.sha256(canonical(actual[record_id])).hexdigest(), digest)
+                    self.assertEqual(hashlib.sha256(canonical(predecessor_record(name, collection, actual[record_id]))).hexdigest(), digest)
 
     def test_full_reviewed_transcriptions_and_source_scopes_are_preserved(self):
         assert_reviewed_subset(self, self.materials, self.properties, self.sources, self.fixture)
@@ -198,7 +199,7 @@ class FourthMaterialBatchTests(unittest.TestCase):
                                          (HEMP, '72.02', 'HempFlax', '2023')):
             p = self.props[key]; s = self.states[p['material_state_id']]
             identity = self.identities[s['identity_id']]
-            self.assertEqual(identity['category'], 'composite')
+            self.assertEqual(identity['category'], 'natural')
             self.assertIn('natural lignocellulosic', identity['identity_scope'])
             self.assertIn(supplier, identity['identity_scope']); self.assertIn(year, identity['identity_scope'])
             self.assertEqual(p['summary_statistic'], 'reported_mean')
@@ -254,7 +255,7 @@ class FourthMaterialBatchTests(unittest.TestCase):
         s = self.states[p['material_state_id']]
         self.assertIn('55 °C', s['state']['processing']['text'])
         self.assertIn('not tensile-test temperature', s['state']['processing']['notes'])
-        self.assertEqual(self.identities[s['identity_id']]['category'], 'polymer')
+        self.assertEqual(self.identities[s['identity_id']]['category'], 'natural')
         self.assertIn('lanolin', s['source_scope'])
 
     def test_sources_keep_recorded_pdf_identity_and_six_cc_two_nbs_rights(self):

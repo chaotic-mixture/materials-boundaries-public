@@ -644,3 +644,15 @@ are admitted. No PDFs, screenshots, extracted prose, figures, experimental
 plot data or source assets are redistributed. No NIST coefficients, mirror,
 new material values or graphics are added. [Rights notices](../THIRD_PARTY_NOTICES.md)
 · [Migration](MIGRATION_v0.27.0.md).
+
+## Natural-material bulk provenance (v0.35.0)
+
+The first registered adapter is limited to the exact reviewed v2 CIRAD/GWDD
+selection and historical WFO June 2023 taxonomy. Its required source registry,
+license attestations, original filenames/checksums, immutable release identifiers,
+source-row locators and row-level review pins are packaged in
+`materials_boundaries/data/wood_source_registry_v2.json`. The separately pinned
+baseline crosswalk is conservative duplicate exclusion, not a silent authority
+correction of legacy names. Source caches remain external reproduction inputs.
+See [the third-party notices](../THIRD_PARTY_NOTICES.md#v0350-selected-ciradgwdd-collection-facts-and-historical-taxonomy)
+and [the staged admission contract](BULK_INGESTION_DESIGN.md).

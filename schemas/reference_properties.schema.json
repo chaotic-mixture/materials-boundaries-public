@@ -274,6 +274,770 @@
         "text"
       ]
     },
+    "canonical_taxon": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "identity_key": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "tissue_scope": {
+          "const": "collection_woody_tissue_anatomy_unspecified"
+        },
+        "accepted_taxon_id": {
+          "type": "string",
+          "pattern": "^wfo-[0-9]{10}$",
+          "maxLength": 14
+        },
+        "accepted_name": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "accepted_authority": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "accepted_full_name": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "original_full_name": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "original_name_records": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "taxon_id": {
+                "type": "string",
+                "pattern": "^wfo-[0-9]{10}$",
+                "maxLength": 14
+              },
+              "scientific_name": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+              },
+              "authorship": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+              },
+              "rank": {
+                "const": "species"
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "Accepted",
+                  "Synonym"
+                ]
+              }
+            },
+            "required": [
+              "taxon_id",
+              "scientific_name",
+              "authorship",
+              "rank",
+              "status"
+            ]
+          },
+          "minItems": 1
+        },
+        "source_to_accepted_chains": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "source_name_wfo_id": {
+                "type": "string",
+                "pattern": "^wfo-[0-9]{10}$",
+                "maxLength": 14
+              },
+              "wfo_chain_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^wfo-[0-9]{10}$",
+                  "maxLength": 14
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "accepted_terminal_wfo_id": {
+                "type": "string",
+                "pattern": "^wfo-[0-9]{10}$",
+                "maxLength": 14
+              },
+              "error": {
+                "type": "null"
+              }
+            },
+            "required": [
+              "source_name_wfo_id",
+              "wfo_chain_ids",
+              "accepted_terminal_wfo_id",
+              "error"
+            ]
+          },
+          "minItems": 1
+        },
+        "mapping_method": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "mapping_disposition": {
+          "const": "reviewed_supported_historical_backbone"
+        },
+        "rank": {
+          "const": "species"
+        },
+        "hybrid": {
+          "const": false
+        },
+        "backbone": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "doi": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "version": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "archive_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$",
+              "maxLength": 64
+            },
+            "archive_member": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "accepted_record_1based": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "accepted_physical_line_start": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "accepted_physical_line_end": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "required": [
+            "doi",
+            "version",
+            "archive_sha256",
+            "archive_member",
+            "accepted_record_1based",
+            "accepted_physical_line_start",
+            "accepted_physical_line_end"
+          ]
+        },
+        "source_taxonomic_reference": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        }
+      },
+      "required": [
+        "identity_key",
+        "tissue_scope",
+        "accepted_taxon_id",
+        "accepted_name",
+        "accepted_authority",
+        "accepted_full_name",
+        "original_full_name",
+        "original_name_records",
+        "source_to_accepted_chains",
+        "mapping_method",
+        "mapping_disposition",
+        "rank",
+        "hybrid",
+        "backbone",
+        "source_taxonomic_reference"
+      ]
+    },
+    "derivation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0.0"
+        },
+        "kind": {
+          "const": "conversion_derived_estimate_from_measured_input"
+        },
+        "profile_id": {
+          "type": "string",
+          "enum": [
+            "gwdd_airdry_sg_to_basic_density_v2_1"
+          ]
+        },
+        "profile_version": {
+          "const": "1.0.0"
+        },
+        "formula_id": {
+          "const": "gwdd_v2_1_basic_from_airdry_sg"
+        },
+        "input": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "quantity": {
+              "const": "air_dry_specific_gravity"
+            },
+            "basis": {
+              "const": "air_dry_mass_over_air_dry_volume_relative_to_water_same_conditions"
+            },
+            "number": {
+              "type": "string",
+              "maxLength": 49,
+              "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+            },
+            "value_text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "unit_code": {
+              "const": "dimensionless"
+            },
+            "source_property_label": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "deposited_quantity_label": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evidence_type": {
+              "const": "source_reported_measured_input"
+            }
+          },
+          "required": [
+            "quantity",
+            "basis",
+            "number",
+            "value_text",
+            "unit_code",
+            "source_property_label",
+            "deposited_quantity_label",
+            "evidence_type"
+          ]
+        },
+        "deposited_output": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "number": {
+              "type": "string",
+              "maxLength": 49,
+              "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+            },
+            "unit_code": {
+              "const": "g/cm^3"
+            },
+            "rounding_increment": {
+              "type": "string",
+              "maxLength": 49,
+              "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+            }
+          },
+          "required": [
+            "number",
+            "unit_code",
+            "rounding_increment"
+          ]
+        },
+        "si_output": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "number": {
+              "type": "string",
+              "maxLength": 49,
+              "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+            },
+            "unit_code": {
+              "const": "kg/m^3"
+            },
+            "rounding_increment": {
+              "type": "string",
+              "maxLength": 49,
+              "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+            }
+          },
+          "required": [
+            "number",
+            "unit_code",
+            "rounding_increment"
+          ]
+        },
+        "formula": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "expression": {
+              "const": "deposited basic density = source-rounded (air-dry specific gravity * 0.8281316 * water-density convention 1 g/cm^3)"
+            },
+            "coefficient": {
+              "type": "string",
+              "maxLength": 49,
+              "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+            },
+            "coefficient_source_id": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "coefficient_source_field": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "calibration_source_id": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "basis_convention_source_id": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "water_density_convention_g_cm3": {
+              "type": "string",
+              "maxLength": 49,
+              "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+            },
+            "nominal_conversion_moisture_percent": {
+              "type": "string",
+              "maxLength": 49,
+              "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+            },
+            "measured_specimen_moisture_percent": {
+              "type": "null"
+            },
+            "calibration_context": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "rounding_audit_policy": {
+              "const": "absolute_difference_less_than_half_deposited_rounding_increment; halfway_ties_held"
+            },
+            "moisture_percent_basis": {
+              "const": "water_mass_over_oven_dry_mass"
+            }
+          },
+          "required": [
+            "expression",
+            "coefficient",
+            "coefficient_source_id",
+            "coefficient_source_field",
+            "calibration_source_id",
+            "basis_convention_source_id",
+            "water_density_convention_g_cm3",
+            "nominal_conversion_moisture_percent",
+            "measured_specimen_moisture_percent",
+            "calibration_context",
+            "rounding_audit_policy",
+            "moisture_percent_basis"
+          ]
+        },
+        "specimen_scope": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "accession": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "selection": {
+              "const": "selected_collection_accession"
+            },
+            "tissue_subtype": {
+              "type": "null"
+            },
+            "sample_anatomical_location": {
+              "type": "null"
+            },
+            "orientation": {
+              "type": "null"
+            },
+            "exact_test_temperature": {
+              "type": "null"
+            },
+            "exact_moisture": {
+              "type": "null"
+            },
+            "treatment": {
+              "type": "null"
+            },
+            "collection_date": {
+              "type": "null"
+            },
+            "measurement_date": {
+              "type": "null"
+            },
+            "missingness_reason": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            }
+          },
+          "required": [
+            "accession",
+            "selection",
+            "tissue_subtype",
+            "sample_anatomical_location",
+            "orientation",
+            "exact_test_temperature",
+            "exact_moisture",
+            "treatment",
+            "collection_date",
+            "measurement_date",
+            "missingness_reason"
+          ]
+        },
+        "counts": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "plants_sampled_as_reported": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "verified_independent_plants": {
+              "type": "null"
+            },
+            "collection_accessions_selected": {
+              "const": 1
+            },
+            "v1_mechanically_eligible_source_record_count": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "count_scope_note": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            }
+          },
+          "required": [
+            "plants_sampled_as_reported",
+            "verified_independent_plants",
+            "collection_accessions_selected",
+            "v1_mechanically_eligible_source_record_count",
+            "count_scope_note"
+          ]
+        },
+        "uncertainty": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "record_measurement_uncertainty": {
+              "type": "null"
+            },
+            "source_method_uncertainty_note": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "conversion_uncertainty": {
+              "type": "null"
+            },
+            "conversion_uncertainty_note": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "species_variation": {
+              "type": "null"
+            },
+            "rounding_is_uncertainty": {
+              "const": false
+            }
+          },
+          "required": [
+            "record_measurement_uncertainty",
+            "source_method_uncertainty_note",
+            "conversion_uncertainty",
+            "conversion_uncertainty_note",
+            "species_variation",
+            "rounding_is_uncertainty"
+          ]
+        },
+        "provenance": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "original": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "source_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "release_doi": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "release_version": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "file_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "file_name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "url": {
+                  "type": "string",
+                  "format": "uri",
+                  "pattern": "^(?![\\s\\S]*[\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff])https://[^\\s/?#]+(?:[/?#][^\\s]*)?(?![\\s\\S])"
+                },
+                "record_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "data_record_1based": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "physical_line_start": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "physical_line_end": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "fields": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                  },
+                  "minItems": 1,
+                  "uniqueItems": true
+                }
+              },
+              "required": [
+                "source_id",
+                "release_doi",
+                "release_version",
+                "file_id",
+                "file_name",
+                "sha256",
+                "url",
+                "record_id",
+                "data_record_1based",
+                "physical_line_start",
+                "physical_line_end",
+                "fields"
+              ]
+            },
+            "deposited": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "source_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "release_doi": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "release_version": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "file_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "file_name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "url": {
+                  "type": "string",
+                  "format": "uri",
+                  "pattern": "^(?![\\s\\S]*[\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff])https://[^\\s/?#]+(?:[/?#][^\\s]*)?(?![\\s\\S])"
+                },
+                "record_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "data_record_1based": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "physical_line_start": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "physical_line_end": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "fields": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                  },
+                  "minItems": 1,
+                  "uniqueItems": true
+                }
+              },
+              "required": [
+                "source_id",
+                "release_doi",
+                "release_version",
+                "file_id",
+                "file_name",
+                "sha256",
+                "url",
+                "record_id",
+                "data_record_1based",
+                "physical_line_start",
+                "physical_line_end",
+                "fields"
+              ]
+            },
+            "reviewed_batch_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$",
+              "maxLength": 64
+            },
+            "reviewed_candidate_key": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "original_citation": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "normalized_citation": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "license_identifiers": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            },
+            "attribution": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "source_scope_note": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            }
+          },
+          "required": [
+            "original",
+            "deposited",
+            "reviewed_batch_sha256",
+            "reviewed_candidate_key",
+            "original_citation",
+            "normalized_citation",
+            "license_identifiers",
+            "attribution",
+            "source_scope_note"
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "schema_version",
+        "kind",
+        "profile_id",
+        "profile_version",
+        "formula_id",
+        "input",
+        "deposited_output",
+        "si_output",
+        "formula",
+        "specimen_scope",
+        "counts",
+        "uncertainty",
+        "provenance",
+        "evidence"
+      ]
+    },
     "reported_value": {
       "oneOf": [
         {
@@ -1427,6 +2191,7 @@
           "type": "string",
           "enum": [
             "mass_density",
+            "basic_wood_density",
             "youngs_modulus",
             "tensile_modulus",
             "flexural_modulus",
@@ -1549,6 +2314,7 @@
                 "bulk",
                 "true",
                 "crystallographic",
+                "oven_dry_mass_over_fresh_or_water_saturated_volume",
                 "not_stated"
               ]
             },
@@ -1603,7 +2369,8 @@
               "enum": [
                 "source_reported_conventional",
                 "source_reported_compilation",
-                "source_reported_crystallographic_derivation"
+                "source_reported_crystallographic_derivation",
+                "source_reported_empirical_conversion"
               ]
             },
             "definition": {
@@ -1722,6 +2489,9 @@
             "independent_scientific_review",
             "raw_data_reanalysis"
           ]
+        },
+        "derivation": {
+          "$ref": "#/$defs/derivation"
         }
       },
       "required": [

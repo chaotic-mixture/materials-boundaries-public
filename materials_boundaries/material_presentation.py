@@ -5,6 +5,8 @@ import json
 
 LANGUAGES = ("en", "zh", "ja", "de")
 REQUIRED_LABELS = frozenset(('materials', 'reference_properties', 'count', 'empty', 'unknown', 'identity', 'grade', 'category', 'state', 'original_name', 'source_designation', 'source_scope', 'identity_scope', 'authority', 'manufacturer', 'product_form', 'processing', 'temper_or_heat_treatment', 'conditioning', 'composition_or_purity', 'reinforcement', 'porosity', 'orientation', 'property_label', 'quantity', 'evidence_kind', 'reporting_basis', 'determination_basis', 'basis_note', 'reported_value', 'conditions', 'temperature', 'test_standard', 'test_method', 'direction', 'loading_rate', 'density_basis', 'summary_statistic', 'uncertainty', 'uncertainty_status', 'uncertainty_note', 'standard_deviation', 'confidence_interval', 'plus_minus_unspecified', 'confidence_level', 'estimand', 'construction', 'reported_uncertainty_notice', 'sample_count', 'scope', 'method_definition', 'source_document', 'source_discrepancies', 'verification', 'scope_note', 'evaluation_support', 'source', 'source_title', 'source_locator', 'source_url', 'source_read_status', 'source_rights', 'evidence', 'caveat', 'reference_notice', 'statistics_notice', 'unknown_notice', 'range_notice', 'comparison_notice', 'translation_notice', 'cli_catalog_extra', 'cli_material_id', 'cli_identity_id', 'cli_grade_id', 'cli_category', 'cli_evidence_kind', 'cli_reporting_basis', 'cli_source_id', 'cli_quantity', 'cli_filter_notice', 'code_catalog_only', 'code_reported', 'code_not_reported_in_inspected_source', 'code_not_verified', 'code_not_applicable', 'code_manufacturer_reference', 'code_technical_association_reference', 'code_published_experimental_reference', 'code_published_computational_reference', 'code_typical', 'code_nominal', 'code_guideline', 'code_specification_limit', 'code_reported_summary', 'code_not_stated', 'code_source_reports_measurement', 'code_source_reports_calculation', 'code_mixed_or_unclear', 'code_reported_mean', 'code_reported_value', 'code_mass_density', 'code_youngs_modulus', 'code_tensile_modulus', 'code_flexural_modulus', 'code_elastic_modulus_unspecified', 'code_tensile_strength', 'code_metal', 'code_polymer', 'code_inorganic', 'code_composite', 'code_apparent', 'code_bulk', 'code_true', 'code_published_handbook_reference', 'code_published_measurement_derived_reference', 'code_source_reports_compiled_measurements', 'code_crystallographic', 'code_source_reported_compilation', 'code_source_reported_crystallographic_derivation'))
+REQUIRED_LABELS |= frozenset(('coverage', 'coverage_notice', 'coverage_target', 'coverage_admitted', 'coverage_remaining'))
+REQUIRED_LABELS |= frozenset(('code_natural', 'code_basic_wood_density', 'code_source_reported_empirical_conversion', 'code_oven_dry_mass_over_fresh_or_water_saturated_volume', 'derivation', 'canonical_taxon', 'derived_notice'))
 REQUIRED_LABELS |= frozenset((
     'coefficient_of_variation', 'standard_error_of_mean', 'estimated_inaccuracy',
     'measure_availability', 'measure_basis', 'measure_qualifier', 'measure_note',
@@ -74,7 +76,8 @@ def _resolved_graph(catalog: dict, kind: str) -> tuple[dict, dict, dict]:
             raise ValueError(f"material presentation: duplicate {key} ID")
         replacements = {item["id"]: item for item in incoming}
         existing = {item["id"] for item in target[key]}
-        target[key] = [deepcopy(replacements.get(item["id"], item)) for item in target[key]]
+        target[key] = [deepcopy(replacements[item["id"]]) if item["id"] in replacements else item
+                       for item in target[key]]
         target[key].extend(deepcopy(item) for item in incoming if item["id"] not in existing)
     if kind == "materials":
         materials = target
@@ -86,7 +89,6 @@ def _resolved_graph(catalog: dict, kind: str) -> tuple[dict, dict, dict]:
 
 def render_material_catalog(catalog: dict, kind: str, language: str = "en") -> str:
     """Show exact source strings, explicit unknowns and mandatory caveats."""
-    from .material_references import resolve_material
     if kind not in {"materials", "reference-properties"}:
         raise ValueError(f"unknown material presentation: {kind}")
     materials, properties, sources = _resolved_graph(catalog, kind)
@@ -95,6 +97,7 @@ def render_material_catalog(catalog: dict, kind: str, language: str = "en") -> s
     state_index = {state["id"]: state for state in materials["records"]}
     identity_index = {identity["id"]: identity for identity in materials["identities"]}
     grade_index = {grade["id"]: grade for grade in materials["grades"]}
+    property_index = {prop["id"]: prop for prop in properties["records"]}
     lines = [labels[kind.replace("-", "_")], f'{labels["count"]}: {len(catalog["records"])}',
              labels["caveat"], labels["reference_notice"], labels["unknown_notice"],
              labels["translation_notice"]]
@@ -201,6 +204,9 @@ def render_material_catalog(catalog: dict, kind: str, language: str = "en") -> s
             if key == "method_definition" and prop[key]["type"] != "source_reported_conventional":
                 value = code(prop[key]["type"]) + ": " + value
             output.append(field(key, value, indent + "  "))
+        if "derivation" in prop:
+            output.append(indent + "  " + labels["derived_notice"])
+            output.append(field("derivation", raw(prop["derivation"]), indent + "  "))
         output.append(field("scope_note", prop["scope_note"], indent + "  "))
         output.extend(evidence(prop["evidence"], indent + "  "))
         output.extend([field("source_read_status", source["read_status"], indent + "  "),
@@ -220,6 +226,8 @@ def render_material_catalog(catalog: dict, kind: str, language: str = "en") -> s
                       field("identity_scope", identity["identity_scope"]),
                       field("source_scope", state["source_scope"]),
                       field("evaluation_support", code(state["evaluation_support"]))])
+        if "canonical_taxon" in identity:
+            lines.append(field("canonical_taxon", raw(identity["canonical_taxon"])))
         if grade is not None:
             lines.extend([field("authority", raw(grade["authority"])),
                           field("manufacturer", raw(grade["manufacturer"]))])
@@ -229,7 +237,7 @@ def render_material_catalog(catalog: dict, kind: str, language: str = "en") -> s
         if grade is not None:
             lines.extend(evidence(grade["evidence"]))
         lines.extend(evidence(state["evidence"]))
-        selected = (resolve_material(state["id"], materials, properties, sources)["properties"]
+        selected = ([property_index[identifier] for identifier in state["property_ids"]]
                     if kind == "materials" else [record])
         for prop in selected:
             lines.extend(property_view(prop))

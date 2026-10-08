@@ -918,6 +918,26 @@ def _validate_labels(locales: dict, names: set[str], *, index_present: bool = Fa
             require(fields == placeholders[key], f"locales.{language}.{key}: placeholder parity failed")
 
 
+def _validate_claim_family_identity_and_assumptions(claims):
+    """Reject claim-local semantic errors without accepting any whole graph.
+
+    Called after claims schema validation and again at the historical location.
+    Successful requests still execute every schema and all cross-catalog checks.
+    A request with both a bad claim and a bad material now reports the claim first.
+    No input or validation result is cached or modified.
+    """
+    for name, claim in claims.items():
+        rule = claim["rule_id"]
+        require(rule in SUPPORTED_FAMILY_ASSUMPTIONS, f"claims.{name}: unsupported scientific family {rule}")
+        require(tuple(claim[field] for field in FAMILY_IDENTITY_FIELDS) == SUPPORTED_FAMILY_IDENTITIES[rule],
+                f"claims.{name}: structural identity differs from supported family {rule}")
+        expected = SUPPORTED_FAMILY_ASSUMPTIONS[rule]
+        actual = claim["required_assumptions"]
+        require(set(actual) == set(expected) and all(
+            type(actual[key]) is type(value) and actual[key] == value for key, value in expected.items()),
+            f"claims.{name}: required assumptions differ from the complete supported family {rule}")
+
+
 def validate_catalogs(catalogs: dict, schema_dir: Path = ROOT / "schemas") -> dict[str, int]:
     """Check local structural/integrity contracts without mutating the input.
 
@@ -946,6 +966,8 @@ def validate_catalogs(catalogs: dict, schema_dir: Path = ROOT / "schemas") -> di
             path = ".".join(map(str, error.absolute_path)) or "$"
             raise CatalogValidationError(f"{kind}.{path}: {error.message}")
         indexes[kind] = _index(catalogs[kind]["records"], kind)
+        if kind == "claims":
+            _validate_claim_family_identity_and_assumptions(indexes[kind])
     # IDs form one catalog namespace, so locale aliases and references cannot
     # silently point at another record kind.
     all_ids = [name for index in indexes.values() for name in index]
@@ -961,16 +983,7 @@ def validate_catalogs(catalogs: dict, schema_dir: Path = ROOT / "schemas") -> di
         validate_compressibility_records(list(claims.values()), resolve_dependencies=True)
     except ValueError as exc:
         raise CatalogValidationError(str(exc)) from exc
-    for name, claim in claims.items():
-        rule = claim["rule_id"]
-        require(rule in SUPPORTED_FAMILY_ASSUMPTIONS, f"claims.{name}: unsupported scientific family {rule}")
-        require(tuple(claim[field] for field in FAMILY_IDENTITY_FIELDS) == SUPPORTED_FAMILY_IDENTITIES[rule],
-                f"claims.{name}: structural identity differs from supported family {rule}")
-        expected = SUPPORTED_FAMILY_ASSUMPTIONS[rule]
-        actual = claim["required_assumptions"]
-        require(set(actual) == set(expected) and all(
-            type(actual[key]) is type(value) and actual[key] == value for key, value in expected.items()),
-            f"claims.{name}: required assumptions differ from the complete supported family {rule}")
+    _validate_claim_family_identity_and_assumptions(claims)
     for kind in ("claims", "observations"):
         for name, record in indexes[kind].items():
             for evidence in record["evidence"]:

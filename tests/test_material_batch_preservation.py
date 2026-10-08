@@ -10,6 +10,7 @@ import unittest
 from unittest.mock import patch
 
 import material_batch_preservation as history
+from material_bulk_preservation import predecessor_catalog
 from material_fiber_preservation import pre_material_fiber_bytes
 from materials_boundaries.catalog import read_catalog
 from materials_boundaries.engine import BASE_RULES, DERIVED_RULES
@@ -117,7 +118,7 @@ class MaterialBatchPreservationTests(unittest.TestCase):
         self.assertEqual(admission['baseline_tree'], history.BASELINE_TREE)
         admitted = admission['admitted_record_digests']
         for kind, fields in admitted.items():
-            actual = read_catalog(kind)
+            actual = predecessor_catalog("materials_boundaries/data/" + kind + ".json", read_catalog(kind))
             for field, pins in fields.items():
                 index = {record['id']: record for record in actual[field]}
                 self.assertEqual(len(index), len(actual[field]))

@@ -12,6 +12,7 @@ import unittest
 
 from materials_boundaries.catalog import query_catalog
 from materials_boundaries.cli import main
+from material_bulk_preservation import predecessor_output
 
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURE = 'tests/fixtures/material_porous_outputs_v0330.json'
@@ -40,7 +41,9 @@ def snapshot_case(kind, identifier, source_id):
                 raise AssertionError('Source-qualified CLI detail failed')
             if flag == '--json' and json.loads(text) != selected:
                 raise AssertionError('Language changed source-qualified JSON')
-            case['languages'][language][flag[2:] + '_sha256'] = digest(text.encode('utf-8'))
+            # Exact versioned migration is checked before comparing the untouched old fixture.
+            historical = predecessor_output(kind, identifier, source_id, language, flag[2:], text)
+            case['languages'][language][flag[2:] + '_sha256'] = digest(historical.encode('utf-8'))
     return case
 
 

@@ -14,6 +14,7 @@ from pathlib import Path
 import unittest
 
 from materials_boundaries.catalog import read_catalog, query_catalog
+from material_bulk_preservation import predecessor_record
 from materials_boundaries.catalog_output import render_catalog
 from materials_boundaries.cli import main
 from materials_boundaries.material_references import validate_material_catalog
@@ -32,9 +33,9 @@ SELECTED = (PUR, AL, CORK, MOSO, GUADUA, PLASTER, BRICK, K1)
 FACTS = {
     PUR: ('43.2', 'kg/m^3', 'apparent', 'reported_value', None, 'polymer'),
     AL: ('0.45', 'g/cm^3', 'not_stated', 'reported_value', None, 'metal'),
-    CORK: ('0.17', 'g/cm^3', 'not_stated', 'reported_value', 10, 'composite'),
-    MOSO: ('746', 'kg/m^3', 'not_stated', 'reported_mean', 6, 'composite'),
-    GUADUA: ('655', 'kg/m^3', 'not_stated', 'reported_mean', 6, 'composite'),
+    CORK: ('0.17', 'g/cm^3', 'not_stated', 'reported_value', 10, 'natural'),
+    MOSO: ('746', 'kg/m^3', 'not_stated', 'reported_mean', 6, 'natural'),
+    GUADUA: ('655', 'kg/m^3', 'not_stated', 'reported_mean', 6, 'natural'),
     PLASTER: ('1103.13', 'kg/m^3', 'apparent', 'reported_value', None, 'inorganic'),
     BRICK: ('2122', 'kg/m^3', 'bulk', 'reported_value', None, 'inorganic'),
     K1: ('2.34', 'g/cm^3', 'bulk', 'reported_mean', 5, 'inorganic'),
@@ -56,12 +57,12 @@ def assert_reviewed_subset(test, materials, properties, sources, fixture):
     states = indexed(materials['records'])
     identities = indexed(materials['identities'])
     for item in fixture['records']:
-        test.assertEqual(props[item['property_id']], item['expected_property'])
-        actual = deepcopy(states[item['state_id']])
+        test.assertEqual(predecessor_record('reference_properties', 'records', props[item['property_id']]), item['expected_property'])
+        actual = deepcopy(predecessor_record('materials', 'records', states[item['state_id']]))
         expected = deepcopy(item['expected_material_state'])
         test.assertTrue(set(expected.pop('property_ids')).issubset(actual.pop('property_ids')))
         test.assertEqual(actual, expected)
-        test.assertEqual(identities[item['identity_id']], item['expected_identity'])
+        test.assertEqual(predecessor_record('materials', 'identities', identities[item['identity_id']]), item['expected_identity'])
     for expected in fixture['sources']:
         test.assertEqual(indexed(sources['records'])[expected['id']], expected)
     for expected in fixture['grades']:
@@ -128,7 +129,7 @@ class FifthMaterialBatchTests(unittest.TestCase):
                 actual = indexed(catalogs[name][collection])
                 for record_id, digest in records.items():
                     with self.subTest(catalog=name, collection=collection, record=record_id):
-                        self.assertEqual(hashlib.sha256(canonical(actual[record_id])).hexdigest(), digest)
+                        self.assertEqual(hashlib.sha256(canonical(predecessor_record(name, collection, actual[record_id]))).hexdigest(), digest)
 
     def test_full_reviewed_transcriptions_and_source_scopes_are_preserved(self):
         assert_reviewed_subset(self, self.materials, self.properties, self.sources, self.fixture)

@@ -124,6 +124,12 @@ def _build_parser(language: str) -> argparse.ArgumentParser:
     catalog_parser.add_argument("--category", metavar="CATEGORY", help=mt["cli_category"])
     catalog_parser.add_argument("--evidence-kind", metavar="KIND", help=mt["cli_evidence_kind"])
     catalog_parser.add_argument("--reporting-basis", metavar="BASIS", help=mt["cli_reporting_basis"])
+    coverage_parser = sub.add_parser("coverage", help=mt["coverage"], description=mt["coverage"])
+    add_language(coverage_parser)
+    coverage_output = coverage_parser.add_mutually_exclusive_group()
+    coverage_output.add_argument("--text", action="store_true", help=t("cli_text"))
+    coverage_output.add_argument("--json", action="store_true", help=t("cli_json"))
+    coverage_parser.add_argument("--target", type=int, default=1000, help=mt["coverage_target"])
     from .temperature_visualization import labels as temperature_labels
     tt = temperature_labels(language)
     temperature_parser = sub.add_parser("temperature", help=tt["command"], description=tt["command"])
@@ -292,6 +298,28 @@ def main(argv: list[str] | None = None) -> int:
             else:
                 artifacts = export_temperature_comparison(args.output, lang=args.lang, points_per_branch=args.points)
                 print(json.dumps({"output":args.output,"artifacts":artifacts}, ensure_ascii=False))
+            return 0
+        if args.command == "coverage":
+            from .catalog import read_catalog
+            from .material_references import material_quota_coverage
+            from .material_presentation import material_labels
+            try:
+                coverage = material_quota_coverage(read_catalog("materials"), read_catalog("reference_properties"),
+                                                  read_catalog("sources"), target=args.target)
+            except ValueError as exc:
+                print(json.dumps({"error": "invalid_coverage_request", "detail": str(exc)}, ensure_ascii=False), file=sys.stderr)
+                return 2
+            if args.text:
+                labels = material_labels(args.lang)
+                lines = [labels["coverage"], labels["coverage_notice"],
+                         f'{labels["coverage_target"]}: {coverage["target_per_class"]}']
+                for category, values in coverage["classes"].items():
+                    lines.append(f'{labels["code_" + category]} [{category}]: '
+                                 f'{labels["coverage_admitted"]} {values["admitted_unique_identity_count"]}; '
+                                 f'{labels["coverage_remaining"]} {values["remaining"]}')
+                print("\n".join(lines))
+            else:
+                print(json.dumps(coverage, ensure_ascii=False, indent=2, allow_nan=False))
             return 0
         if args.command == "catalog":
             try:

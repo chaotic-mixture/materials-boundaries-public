@@ -85,9 +85,10 @@ are retained without treating them as interchangeable. A method name alone does
 not establish an unsupported density-basis classification.
 
 Every record remains `catalog_only`, with `universal_bound: false` and
-`engineering_allowable: false`. There is no autofill, numerical conversion,
-interpolation, fitted curve, ranking, mixing calculation or engineering
-comparison. The eight pre-existing executable composite rules are unchanged.
+`engineering_allowable: false`. There is no autofill, interpolation, fitted curve, ranking, mixing calculation
+or engineering comparison. The separately reviewed empirical-conversion lane
+retains a source-deposited result, audits its documented conversion and exposes
+an exact SI unit conversion without inventing measurement precision. The eight pre-existing executable composite rules are unchanged.
 
 ## Storage and validation
 
@@ -524,3 +525,37 @@ test-only successor layer, with no production dependency on that layer.
 See the [migration gates](MIGRATION_v0.34.0.md) and
 [article-specific rights](../THIRD_PARTY_NOTICES.md#polymer-and-biogenic-references-v0340).
 Source review is not scientific replication, and validation is not publication.
+
+
+## v0.35.0 natural taxonomy and staged bulk admission
+
+See [the five-class taxonomy and exact migration](MATERIAL_TAXONOMY.md),
+[bulk source-staging and scientific contract](BULK_INGESTION_DESIGN.md), and
+[versioned migration/verification](MIGRATION_v0.35.0.md). Natural means biological
+tissue or fiber; a mineral origin is not a reason to leave inorganic, nor is a
+bio-based feedstock a reason to move a processed polymer.
+
+Run `python -m materials_boundaries coverage --text --lang zh` (or `--json`)
+for the five-class 1,000-identity target. An explicit positive `--target` changes
+only the coverage goal, never admission policy.
+
+`material_quota_coverage(materials, properties, sources, target=1000)` validates
+the actual graph, then reports admitted unique identities for every primary
+class. No proposed, held or merely source-supported staged candidate contributes
+to this runtime count. `resolve_materials(state_ids, ...)` validates once per
+request and returns detached source-complete views without a global cache.
+
+The `basic_wood_density` quantity is distinct from unqualified mass density.
+Its basis is oven-dry mass over fresh/water-saturated volume, its evidence is
+source-applied empirical conversion from measured dimensionless air-dry SG,
+and its authoritative value is the rounded deposited GWDD value. A 12% moisture
+assumption is nominal, not an accession measurement. Taxon identity, original
+authority/name, accepted WFO ID/chain, backbone version/hash, specimen accession,
+source locators, source-applied formula, original/deposited citations, rights and
+unknowns are retained in canonical JSON and all four-language text views.
+
+The raw CIRAD collection includes palms. Its unspecified collection tissue is
+not relabeled as universal secondary-growth wood or inferred trunk material.
+Source-reported plants or inherited v1 mechanical record counts are not validated
+independent sample n. Neither source-method uncertainty nor rounding resolution
+is silently promoted to record-level uncertainty.

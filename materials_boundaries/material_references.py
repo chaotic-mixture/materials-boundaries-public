@@ -19,9 +19,10 @@ import re
 from urllib.parse import urlsplit
 
 LANGUAGES = ("en", "zh", "ja", "de")
-CATEGORIES = ("metal", "polymer", "inorganic", "composite")
+CATEGORIES = ("metal", "inorganic", "polymer", "composite", "natural")
 QUANTITY_DIMENSIONS = {
     "mass_density": "mass_per_volume",
+    "basic_wood_density": "mass_per_volume",
     "youngs_modulus": "pressure",
     "tensile_modulus": "pressure",
     "flexural_modulus": "pressure",
@@ -120,16 +121,21 @@ def _defs():
     }
 
 
+def _bulk_definitions():
+    from ._material_derivation import definitions
+    return definitions(TEXT, DECIMAL, HTTPS, NULL, _object, _array, _enum)
+
+
 def _make_materials_schema():
-    definitions = _defs()
+    definitions = {**_defs(), **_bulk_definitions()}
     common = {"version": {"const": "1.0.0"}}
     aliases = _array(_ref("alias"), unique=True)
     evidence = _array(_ref("evidence"), 1)
     definitions["identity"] = _object({
         "id": _id("mat"), **common, "category": _enum(CATEGORIES), "name": TEXT,
         "names": _ref("names"), "aliases": aliases, "identity_scope": TEXT,
-        "evidence": evidence,
-    })
+        "evidence": evidence, "canonical_taxon": _ref("canonical_taxon"),
+    }, ("canonical_taxon",))
     definitions["grade"] = _object({
         "id": _id("grade"), **common, "identity_id": _id("mat"),
         "designation": TEXT,
@@ -156,7 +162,7 @@ def _make_materials_schema():
 
 
 def _make_properties_schema():
-    definitions = _defs()
+    definitions = {**_defs(), **_bulk_definitions()}
     evidence = _array(_ref("evidence"), 1)
     unit = _enum(UNIT_DIMENSIONS)
     common_value = {"value_text": TEXT, "unit_text": TEXT, "unit_code": unit}
@@ -249,13 +255,13 @@ def _make_properties_schema():
         "evidence_kind": _enum(EVIDENCE_KINDS), "reporting_basis": _enum(REPORTING_BASES),
         "determination_basis": _enum(("source_reports_measurement", "source_reports_calculation", "source_reports_compiled_measurements", "not_stated", "mixed_or_unclear")),
         "basis_note": TEXT, "conditions": _object(conditions, ("additional_conditions",)),
-        "density_basis": {"anyOf": [_enum(("apparent", "bulk", "true", "crystallographic", "not_stated")), NULL]},
+        "density_basis": {"anyOf": [_enum(("apparent", "bulk", "true", "crystallographic", "oven_dry_mass_over_fresh_or_water_saturated_volume", "not_stated")), NULL]},
         "summary_statistic": _enum(("not_stated", "reported_value", "reported_mean")),
         "uncertainty": {"anyOf": [_ref("uncertainty"), NULL]},
         "uncertainty_status": _enum((*REPORTED_UNCERTAINTIES, "not_reported_in_inspected_source", "not_applicable")),
         "uncertainty_note": TEXT, "sample_count": _ref("sample_count"),
         "method_definition": _object({"type": _enum(("source_reported_conventional", "source_reported_compilation",
-                                                       "source_reported_crystallographic_derivation")),
+                                                       "source_reported_crystallographic_derivation", "source_reported_empirical_conversion")),
                                        "definition": TEXT, "extraction_window": {"anyOf": [_ref("reported_window"), NULL]}, "evidence": evidence}),
         "source_discrepancies": _array(_object({"description": TEXT, "disposition": TEXT, "evidence": evidence})),
         "source_id": TEXT, "evidence": evidence, "source_document": _ref("source_document"),
@@ -265,7 +271,8 @@ def _make_properties_schema():
                                   "transcription_cross_check": {"const": "completed"},
                                   "independent_scientific_review": {"const": False},
                                   "raw_data_reanalysis": {"const": False}}),
-    })
+        "derivation": _ref("derivation"),
+    }, ("derivation",))
     return {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "$id": "urn:materials-boundaries:schema:reference_properties:1.0.0",
@@ -290,6 +297,25 @@ def _same(value, expected):
     return type(value) is type(expected) and value == expected
 
 
+_SCHEMA_TYPES = {"object": dict, "array": list, "string": str, "integer": int, "null": type(None)}
+
+
+def _possible_branch(value, schema, root):
+    """Cheap disjoint-branch pruning only; accepted branches still validate fully."""
+    if "$ref" in schema:
+        schema = root["$defs"][schema["$ref"].split("/")[-1]]
+    kind = schema.get("type")
+    if kind and type(value) is not _SCHEMA_TYPES[kind]:
+        return False
+    if "const" in schema and not _same(value, schema["const"]):
+        return False
+    if kind == "object":
+        for key, field in schema["properties"].items():
+            if "const" in field and key in value and not _same(value[key], field["const"]):
+                return False
+    return True
+
+
 def _shape(value, schema, root, path):
     """Validate only the fixed schema vocabulary used above, without a dependency."""
     if "$ref" in schema:
@@ -298,6 +324,8 @@ def _shape(value, schema, root, path):
         if union in schema:
             matches = 0
             for branch in schema[union]:
+                if not _possible_branch(value, branch, root):
+                    continue
                 try:
                     _shape(value, branch, root, path)
                     matches += 1
@@ -310,8 +338,7 @@ def _shape(value, schema, root, path):
     if "enum" in schema and not any(_same(value, item) for item in schema["enum"]):
         _fail(path, "unsupported value")
     kind = schema.get("type")
-    types = {"object": dict, "array": list, "string": str, "integer": int, "null": type(None)}
-    if kind and type(value) is not types[kind]:
+    if kind and type(value) is not _SCHEMA_TYPES[kind]:
         _fail(path, "expected " + kind)
     if kind == "object":
         missing = set(schema["required"]) - value.keys()
@@ -422,6 +449,15 @@ def _validate_structure(materials, properties):
             index[row["id"]] = row
         indices.append(index)
     _reject_structural_duplicates(materials)
+    from ._material_derivation import canonical_identity_key, validate_taxon, validate_baseline_exclusions
+    validate_baseline_exclusions(materials)
+    keys = set()
+    for identity in materials["identities"]:
+        validate_taxon(identity)
+        key = canonical_identity_key(identity)
+        if key in keys:
+            _fail(identity["id"], "duplicate canonical material identity")
+        keys.add(key)
     return indices
 
 
@@ -636,7 +672,7 @@ def _validate_property(prop):
     if prop["quantity_dimension"] != dimension:
         _fail(path, "quantity dimension mismatch")
     _validate_value(prop["reported_value"], path + ".reported_value", dimension)
-    if (prop["density_basis"] is not None) != (prop["quantity"] == "mass_density"):
+    if (prop["density_basis"] is not None) != (prop["quantity"] in {"mass_density", "basic_wood_density"}):
         _fail(path, "density_basis required only for density")
     for tag in ("reported_value", "classification"):
         _require_tag(prop["evidence"], tag, path, source)
@@ -684,12 +720,17 @@ def _validate_property(prop):
         _fail(path, "compiled measurements require handbook evidence")
     is_derived = prop["evidence_kind"] == "published_measurement_derived_reference"
     is_crystallographic = method == "source_reported_crystallographic_derivation"
-    if is_derived != is_crystallographic:
+    is_empirical = method == "source_reported_empirical_conversion"
+    if is_derived != (is_crystallographic or is_empirical):
         _fail(path, "measured-input-derived evidence requires an admitted derivation method")
     if (prop["density_basis"] == "crystallographic") != is_crystallographic:
         _fail(path, "crystallographic density requires its source-reported derivation method")
     if is_crystallographic and prop["quantity"] != "mass_density":
         _fail(path, "crystallographic derivation requires mass density")
+    from ._material_derivation import validate_derivation
+    validate_derivation(prop)
+    if prop["quantity"] == "basic_wood_density" and not is_empirical:
+        _fail(path, "basic wood density requires an admitted basis-preserving derivation profile")
     if method != "source_reported_conventional":
         _require_tag(prop["method_definition"]["evidence"], "classification", path, source)
     is_mean = prop["summary_statistic"] == "reported_mean"
@@ -783,7 +824,14 @@ def validate_material_catalog(materials: dict, properties: dict, sources: dict) 
             # numeric table cell. Source truth still needs independent readback.
             if evidence["locator"].strip().casefold() in {"website", "homepage", "home page", "source", "table", "page", "n/a", "unknown"}:
                 _fail(record["id"], "evidence requires a specific locator")
+    from ._material_derivation import canonical_identity_key, validate_taxon, validate_derivation
+    keys = set()
     for identity in materials["identities"]:
+        validate_taxon(identity)
+        key = canonical_identity_key(identity)
+        if key in keys:
+            _fail(identity["id"], "duplicate canonical material identity")
+        keys.add(key)
         _require_tag(identity["evidence"], "material_identity", identity["id"])
     for grade in materials["grades"]:
         _require_tag(grade["evidence"], "grade", grade["id"])
@@ -797,6 +845,8 @@ def validate_material_catalog(materials: dict, properties: dict, sources: dict) 
         if prop["source_id"] not in source_index:
             _fail(prop["id"], "unknown primary source")
         _validate_property(prop)
+        state = indices[2][prop["material_state_id"]]
+        validate_derivation(prop, indices[0][state["identity_id"]], source_index)
         source_class = source_index[prop["source_id"]].get("role", "").casefold()
         if "manufacturer" in source_class and prop["evidence_kind"] != "manufacturer_reference":
             _fail(prop["id"], "manufacturer source cannot become published specimen evidence")
@@ -805,23 +855,39 @@ def validate_material_catalog(materials: dict, properties: dict, sources: dict) 
         _unique_fact(prop, duplicate_facts)
 
 
-def resolve_material(state_id: str, materials: dict, properties: dict, sources: dict) -> dict:
-    """Return a detached, source-complete inspection view of one validated state."""
+def resolve_materials(state_ids, materials: dict, properties: dict, sources: dict) -> list[dict]:
+    """Resolve a batch from one freshly validated graph, without global caches.
+
+    Every call validates its actual inputs. Returned objects are detached copies;
+    a mutation after this call cannot silently alter any previous inspection.
+    """
     validate_material_catalog(materials, properties, sources)
-    if not isinstance(state_id, str):
-        _fail("state_id", "expected state ID string")
-    state = next((item for item in materials["records"] if item["id"] == state_id), None)
-    if state is None:
-        _fail("state_id", "unknown material state " + state_id)
-    identity = next(item for item in materials["identities"] if item["id"] == state["identity_id"])
-    grade = next((item for item in materials["grades"] if item["id"] == state["grade_id"]), None)
+    if not isinstance(state_ids, (list, tuple)) or any(not isinstance(key, str) for key in state_ids):
+        _fail("state_ids", "expected a list of material state ID strings")
+    states = {item["id"]: item for item in materials["records"]}
+    identities = {item["id"]: item for item in materials["identities"]}
+    grades = {item["id"]: item for item in materials["grades"]}
     props = {item["id"]: item for item in properties["records"]}
-    selected = [props[key] for key in state["property_ids"]]
-    referenced = {entry["source_id"] for entry in _all_evidence([identity, grade, state, selected])}
-    referenced.update(item["source_id"] for item in selected)
-    return deepcopy({"schema_version": "1.0.0", "identity": identity, "grade": grade,
-                     "state": state, "properties": selected,
-                     "sources": [item for item in sources["records"] if item["id"] in referenced]})
+    source_order = {item["id"]: index for index, item in enumerate(sources["records"])}
+    source_index = {item["id"]: item for item in sources["records"]}
+    results = []
+    for state_id in state_ids:
+        if state_id not in states:
+            _fail("state_id", "unknown material state " + state_id)
+        state = states[state_id]
+        identity, grade = identities[state["identity_id"]], grades.get(state["grade_id"])
+        selected = [props[key] for key in state["property_ids"]]
+        referenced = {entry["source_id"] for entry in _all_evidence([identity, grade, state, selected])}
+        referenced.update(item["source_id"] for item in selected)
+        results.append(deepcopy({"schema_version": "1.0.0", "identity": identity, "grade": grade,
+                                "state": state, "properties": selected,
+                                "sources": [source_index[key] for key in sorted(referenced, key=source_order.get)]}))
+    return results
+
+
+def resolve_material(state_id: str, materials: dict, properties: dict, sources: dict) -> dict:
+    """Return one detached, source-complete view after validating actual inputs."""
+    return resolve_materials([state_id], materials, properties, sources)[0]
 
 
 def material_coverage(materials: dict, properties: dict) -> dict:
@@ -847,3 +913,51 @@ def material_coverage(materials: dict, properties: dict) -> dict:
         "by_category": dict(sorted(Counter(item["category"] for item in materials["identities"]).items())),
         "by_evidence_kind": dict(sorted(Counter(item["evidence_kind"] for item in properties["records"]).items())),
     }
+
+
+def material_quota_coverage(materials: dict, properties: dict, sources: dict, target: int = 1000) -> dict:
+    """Count admitted unique identities with traceable facts, never staged rows."""
+    if type(target) is not int or target < 1:
+        raise ValueError("target must be a positive integer")
+    validate_material_catalog(materials, properties, sources)
+    from ._material_derivation import canonical_identity_key
+    groups = {category: set() for category in CATEGORIES}
+    for identity in materials["identities"]:
+        groups[identity["category"]].add(canonical_identity_key(identity))
+    return {"taxonomy_policy_version": "natural-biogenic-v1", "status": "admitted",
+            "target_per_class": target, "distinct_material_count": sum(map(len, groups.values())),
+            "classes": {category: {"admitted_unique_identity_count": len(keys),
+                                    "remaining": max(0, target - len(keys)),
+                                    "target_met": len(keys) >= target}
+                        for category, keys in groups.items()}}
+
+
+def merge_material_catalogs(materials: dict, properties: dict, sources: dict, append: dict) -> dict:
+    """Deterministically merge already admitted append tables, never grant admission.
+
+    This in-memory release-building step does not write files or bless research.
+    Callers obtain ``append`` only from their separately approved adapter. Exact
+    existing records are idempotent; every conflicting existing ID fails closed.
+    Existing order and objects are retained, while new records sort by stable ID.
+    Both input graphs and the resulting graph are freshly validated.
+    """
+    if not isinstance(append, dict) or set(append) != {'materials', 'properties', 'sources'}:
+        raise ValueError('append tables require materials, properties and sources')
+    validate_material_catalog(materials, properties, sources)
+    validate_material_catalog(append['materials'], append['properties'], append['sources'])
+    result = {'materials': deepcopy(materials), 'properties': deepcopy(properties), 'sources': deepcopy(sources)}
+    for name, fields in (('materials', ('identities', 'grades', 'records')),
+                         ('properties', ('records',)), ('sources', ('records',))):
+        for field in fields:
+            existing = {row['id']: row for row in result[name][field]}
+            new = {}
+            for row in append[name][field]:
+                identifier = row['id']
+                if identifier in existing:
+                    if existing[identifier] != row:
+                        raise ValueError('conflicting existing catalog record: ' + identifier)
+                else:
+                    new[identifier] = row
+            result[name][field].extend(deepcopy(new[key]) for key in sorted(new))
+    validate_material_catalog(result['materials'], result['properties'], result['sources'])
+    return result

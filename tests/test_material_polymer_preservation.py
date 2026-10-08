@@ -10,6 +10,8 @@ import unittest
 from unittest.mock import patch
 
 import material_polymer_preservation as history
+from material_bulk_preservation import predecessor_catalog
+from material_bulk_preservation import pre_material_bulk_bytes
 from materials_boundaries.catalog import read_catalog
 from materials_boundaries.engine import BASE_RULES, DERIVED_RULES
 from materials_boundaries.material_references import validate_material_catalog
@@ -36,7 +38,7 @@ class MaterialPolymerPreservationTests(unittest.TestCase):
         for filename, expected in ((history.LEDGER_PATH, LEDGER_SHA256),
                                    ('tests/material_polymer_preservation.py', HELPER_SHA256),
                                    (history.ADMISSION_PATH, ADMISSION_SHA256)):
-            self.assertEqual(history.digest((ROOT / filename).read_bytes()), expected)
+            self.assertEqual(history.digest(pre_material_bulk_bytes(filename, (ROOT / filename).read_bytes())), expected)
         ledger = history.load_ledger()
         history.validate_ledger(ledger)
         self.assertEqual(ledger['baseline_commit'], '8ed6fa18369b43719174fc407f76bc073e265d7c')
@@ -117,7 +119,7 @@ class MaterialPolymerPreservationTests(unittest.TestCase):
         self.assertEqual(admission['baseline_tree'], history.BASELINE_TREE)
         admitted = admission['admitted_record_digests']
         for kind, fields in admitted.items():
-            actual = read_catalog(kind)
+            actual = predecessor_catalog("materials_boundaries/data/" + kind + ".json", read_catalog(kind))
             for field, pins in fields.items():
                 index = {record['id']: record for record in actual[field]}
                 self.assertEqual(len(index), len(actual[field]))

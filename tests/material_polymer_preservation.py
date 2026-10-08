@@ -6,6 +6,8 @@ fixed release serialization must then match its byte pin before reversal.
 Production readers and replay do not import this module.
 """
 from copy import deepcopy
+from material_bulk_preservation import predecessor_catalog
+from material_bulk_preservation import pre_material_bulk_bytes
 import hashlib
 import json
 from pathlib import Path
@@ -188,6 +190,7 @@ def project_catalog(filename, current, catalogs):
     evidence suffix. Its complete original evidence prefix and all other fields
     remain pinned; executable claims and every material/source object stay whole.
     """
+    current = predecessor_catalog(filename, current)
     fields = catalogs.get(filename)
     if not fields or type(current) is not dict or set(current) != set(fields):
         raise AssertionError('Unreviewed v0.34 catalog envelope: ' + filename)
@@ -305,7 +308,10 @@ def release_bytes(filename, current, *, ledger=None, allow_historical_summary=Fa
     if type(current) is not bytes or filename not in ledger['baseline_sha256']:
         raise AssertionError('Unknown v0.34 release file')
     expected = entries[filename]['sha256'] if filename in entries else ledger['baseline_sha256'][filename]
-    if filename == 'README.md':
+    if digest(current) != expected:
+        current = pre_material_bulk_bytes(filename, current,
+                                          allow_historical_summary=allow_historical_summary, root=root or ROOT)
+    if filename == 'README.md' and digest(current) != expected:
         current = truthful_readme(current, ledger, allow_historical_summary=allow_historical_summary, root=root)
     elif filename in ledger['catalog_preservation']:
         try:
