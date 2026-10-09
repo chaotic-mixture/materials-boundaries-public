@@ -12,6 +12,19 @@ RecordKind = Literal['identities', 'grades', 'materials', 'reference-properties'
 class Pinned(Model):
     version: str = Field(pattern=r'^[0-9a-f]{64}$')
 
+class RelationshipPinned(Pinned):
+    relationship_version: str = Field(pattern=r'^[0-9a-f]{64}$')
+
+class RelationshipIdentityRequest(RelationshipPinned):
+    identity_id: str = Field(min_length=1, max_length=512)
+
+class RelationshipSearchRequest(RelationshipPinned):
+    concepts: list[Literal['metal', 'alloy', 'inorganic', 'ceramic', 'polymer',
+        'composite', 'natural', 'semiconductor', 'battery', 'catalyst',
+        'two_dimensional', 'nanoscale']] = Field(min_length=1, max_length=12)
+    match: Literal['any', 'all'] = 'any'
+    limit: int = Field(default=20, ge=1, le=100, strict=True)
+
 class ExactRequest(Pinned):
     kind: Kind
     record_id: str = Field(min_length=1, max_length=512)
@@ -103,3 +116,39 @@ def install_routes(app, *, enabled=False):
     @app.post('/api/catalog/search')
     def search(req: CatalogSearch):
         return result(req.version, lambda s:s.search_english(req.kind, req.query, limit=req.limit))
+
+    # This additive view shares the validated catalog and its concurrency guard.
+    # Overlay drift disables this view only; established catalog APIs survive.
+    relationships = None
+    relationship_error = error
+    if snapshot is not None:
+        try:
+            from .family_relationships import FamilyRelationships
+            relationships = FamilyRelationships(snapshot)
+            relationship_error = None
+        except Exception:
+            relationship_error = 'relationship_initialization_failed'
+
+    @app.get('/api/catalog/relationships/status')
+    def relationship_status():
+        data = {'enabled': relationships is not None, 'reason': relationship_error}
+        if relationships is not None:
+            data.update(relationships.status())
+        return data
+
+    def relationship_result(req, operation):
+        def query(current):
+            if relationships is None:
+                raise HTTPException(503, 'Material relationships unavailable: ' + relationship_error)
+            if req.relationship_version != relationships.version:
+                raise HTTPException(409, 'Relationship version differs; inspect relationship status')
+            return {'relationship_version': relationships.version, 'data': operation(relationships)}
+        return result(req.version, query)
+
+    @app.post('/api/catalog/relationships/identity')
+    def relationship_identity(req: RelationshipIdentityRequest):
+        return relationship_result(req, lambda r: r.identity(req.identity_id))
+
+    @app.post('/api/catalog/relationships/search')
+    def relationship_search(req: RelationshipSearchRequest):
+        return relationship_result(req, lambda r: r.select(req.concepts, match=req.match, limit=req.limit))

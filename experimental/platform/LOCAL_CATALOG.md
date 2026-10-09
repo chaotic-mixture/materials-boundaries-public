@@ -43,3 +43,7 @@ The separate English catalog page shows its version and local counts, performs b
 API tests and static JavaScript syntax/safety assertions have been run. Real browser rendering, accessibility, click/download behavior and responsive layout remain unverified because browser execution is blocked. Do not call this a browser pass or a deployed web performance benchmark.
 
 The extra `query-service/catalog-tests/test_local_catalog.py` suite runs when this repository core is importable; it skips as a module when the optional core is absent. Run it separately with `python -m unittest discover -s query-service/catalog-tests -v`. The original four suites remain 83 tests with zero skips and retain their prior behavior; existing CI does not yet run the optional suite. Review artifacts outside the package include exhaustive snapshot parity replay, fresh-process loopback HTTP measurements, installed-wheel checks, exact source manifests and the isolated diff. No production acceptance, deployment, source mutation, GitHub update or CI activation is part of this revision.
+
+## Overlapping family view
+
+The optional catalog now offers an additive [evidence-backed relationship view](relationships/FAMILY_OVERLAP.md). It preserves legacy identity/category records and requires a separate relationship pin. Classification remains deliberately partial.
