@@ -42,6 +42,12 @@ def baseline_digest():
 
 
 def validate_review(review):
+    if isinstance(review, dict) and review.get('schema') == 'computed-review/2':
+        from .computed_schema_v2 import validate_review_v2
+        validate_review_v2(review)
+        if len(canonical(review)) > MAX_EXPORT_BYTES:
+            raise ValueError('Review exceeds fixed export budget')
+        return
     if set(review) != {'schema', 'packet_sha256', 'reviewer', 'rationale', 'records'}:
         raise ValueError('Unexpected review shape')
     if review['schema'] != 'computed-review-recovery/1' or not re.fullmatch('[0-9a-f]{64}', review['packet_sha256']):
@@ -83,11 +89,17 @@ def validate_review(review):
 
 class ComputedRegistry:
     """Explicit local API. Database paths never enter HTTP request models."""
-    def __init__(self, database, review, *, trusted_review_sha256):
+    def __init__(self, database, review, *, trusted_review_sha256, input_file_bytes=None):
         review = deepcopy(review)
         if digest(review) != trusted_review_sha256:
             raise ValueError('Review digest differs from independent trust anchor')
         validate_review(review)
+        self.rich = review['schema'] == 'computed-review/2'
+        if self.rich:
+            if not isinstance(input_file_bytes, bytes) or sha256(input_file_bytes).hexdigest() != review['input_file_sha256']:
+                raise ValueError('Exact input file bytes do not match reviewed input_file_sha256')
+        elif input_file_bytes is not None:
+            raise ValueError('Legacy review does not support a v2 input-file anchor')
         self._review = review
         self.review_digest = trusted_review_sha256
         self.baseline = baseline_digest()
@@ -99,7 +111,7 @@ class ComputedRegistry:
             db.execute('CREATE TABLE IF NOT EXISTS entries (id TEXT PRIMARY KEY, payload TEXT NOT NULL)')
             db.execute('CREATE TABLE IF NOT EXISTS admissions (id TEXT PRIMARY KEY, payload_sha256 TEXT NOT NULL)')
             existing = dict(db.execute('SELECT key,value FROM metadata'))
-            expected = {'baseline': self.baseline, 'review': self.review_digest, 'schema': 'computed-registry-recovery/1'}
+            expected = self._anchors()
             if not existing:
                 if db.execute('SELECT count(*) FROM entries').fetchone()[0] or db.execute('SELECT count(*) FROM admissions').fetchone()[0]:
                     raise ValueError('Missing initial registry anchors')
@@ -107,6 +119,13 @@ class ComputedRegistry:
             elif existing != expected:
                 raise ValueError('Initial baseline and review input cannot be replaced')
             self._records(db)
+
+    def _anchors(self):
+        anchors = {'baseline': self.baseline, 'review': self.review_digest,
+                   'schema': 'computed-registry/2' if self.rich else 'computed-registry-recovery/1'}
+        if self.rich:
+            anchors['input_file_sha256'] = self._review['input_file_sha256']
+        return anchors
 
     @contextmanager
     def _connect(self):
@@ -119,7 +138,7 @@ class ComputedRegistry:
             db.close()
 
     def _records(self, db):
-        if dict(db.execute('SELECT key,value FROM metadata')) != {'baseline':self.baseline,'review':self.review_digest,'schema':'computed-registry-recovery/1'}:
+        if dict(db.execute('SELECT key,value FROM metadata')) != self._anchors():
             raise ValueError('Registry anchor changed')
         rows = dict(db.execute('SELECT id,payload FROM entries'))
         ledger = dict(db.execute('SELECT id,payload_sha256 FROM admissions'))
@@ -154,6 +173,28 @@ class ComputedRegistry:
         return self.snapshot()
 
     def _envelope(self, records):
+        if getattr(self, 'rich', False):
+            groups, calculations = set(), set()
+            for r in records:
+                for group, entries in r['overlap_relations']['same_composition_provider_groups'].items():
+                    groups.add(group)
+                    calculations.update(entries)
+            result = {'schema': 'computed-overlay/2', 'namespace': 'computed',
+                'baseline_version': self.baseline, 'review_version': self.review_digest,
+                'canonical_review_sha256': self.review_digest,
+                'input_file_sha256': self._review['input_file_sha256'],
+                'overlay_version': digest(records), 'records': records,
+                'count_policy': deepcopy(self._review['count_policy']),
+                'scoped_accepted_identity_bucket_count': len({r['conservative_count_bucket'] for r in records}),
+                'selected_model_count': len({r['project_material_id'] for r in records}),
+                'selected_entry_count': len(records),
+                'related_source_calculation_count': len(calculations),
+                'related_source_provider_group_count': len(groups),
+                'legacy_unique_material_count': 1057,
+                'cross_namespace_equivalence': False, 'relationship_graph_reconstructed': False}
+            if len(canonical(result)) > MAX_EXPORT_BYTES:
+                raise ValueError('Overlay exceeds fixed export budget')
+            return result
         result = {'schema':'computed-overlay-recovery/1', 'namespace':'computed', 'baseline_version':self.baseline,
                   'review_version':self.review_digest, 'overlay_version':digest(records), 'records':records,
                   'project_unique_material_count':len({r['project_material_id'] for r in records}),

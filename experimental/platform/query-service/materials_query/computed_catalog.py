@@ -41,7 +41,7 @@ def install_routes(app, *, registry=None):
 
     def envelope(req, records):
         s = ready(req)
-        return {'namespace':'computed', **{k:s[k] for k in pins}, 'records':deepcopy(records)}
+        return {'namespace':'computed', **{k:s[k] for k in pins}, **({k:deepcopy(s[k]) for k in ('schema','count_policy','input_file_sha256','canonical_review_sha256')} if s['schema'] == 'computed-overlay/2' else {}), 'records':deepcopy(records)}
 
     def exact_records(req):
         records = [r for r in ready(req)['records'] if r['project_material_id'] == req.project_material_id]
@@ -68,7 +68,7 @@ def install_routes(app, *, registry=None):
         terms = req.query.casefold().split()
         if not terms or len(terms) > 16 or any(ord(c)<32 for c in req.query):
             raise HTTPException(400, 'Use 1–16 English literal search terms without controls')
-        records = [r for r in ready(req)['records'] if all(t in ' '.join(r[k] for k in
+        records = [r for r in ready(req)['records'] if all(t in ' '.join(r[k] if isinstance(r[k], str) else canonical(r[k]).decode() for k in
                    ('formula','project_material_id','provider_entry_id','provider_material_id','method')).casefold() for t in terms)]
         return envelope(req, records[req.offset:req.offset+req.limit])
 
@@ -76,15 +76,22 @@ def install_routes(app, *, registry=None):
     def exact(req: Exact):
         return envelope(req, exact_records(req))
 
+    def project(r, kind):
+        # Rich records stay whole in both projections: method and scalar values
+        # cannot become detached from scope, unknowns, rights or overlap caveats.
+        if snapshot['schema'] == 'computed-overlay/2':
+            return deepcopy(r)
+        keys = ('candidate_id','project_material_id','density','source_url','attribution','method','reason','rights') if kind == 'property' else (
+            'candidate_id','provider','provider_entry_id','provider_material_id','source_url','attribution','rights','reason')
+        return {k:deepcopy(r[k]) for k in keys}
+
     @app.post('/api/computed/property')
     def property_record(req: Property):
-        return envelope(req, [{k:deepcopy(r[k]) for k in ('candidate_id','project_material_id','density','source_url','attribution','method','reason','rights')}
-                              for r in exact_records(req)])
+        return envelope(req, [project(r, 'property') for r in exact_records(req)])
 
     @app.post('/api/computed/source')
     def source(req: Exact):
-        return envelope(req, [{k:deepcopy(r[k]) for k in ('candidate_id','provider','provider_entry_id','provider_material_id','source_url','attribution','rights','reason')}
-                              for r in exact_records(req)])
+        return envelope(req, [project(r, 'source') for r in exact_records(req)])
 
     @app.post('/api/computed/export')
     def export(req: Pin):
