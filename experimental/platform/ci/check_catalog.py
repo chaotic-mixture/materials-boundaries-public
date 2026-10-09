@@ -21,7 +21,7 @@ def main():
     wheels=sorted(args.wheel_dir.glob('*.whl'))
     require(len(wheels)==5, 'Expected exactly five locally built wheels')
     for name,source in packages.items():
-        version=('0.35.0' if name=='materials_boundaries' else '0.2.0.dev0' if name in {'materials_boundaries_query_service','materials_boundaries_platform_experimental'} else '0.1.0')
+        version=('0.35.0' if name=='materials_boundaries' else '0.5.0.dev0' if name in {'materials_boundaries_query_service','materials_boundaries_platform_experimental'} else '0.1.0')
         matches=list(args.wheel_dir.glob(name+'-'+version+'-*.whl'))
         require(len(matches)==1, 'Missing or duplicate local wheel: '+name)
         with zipfile.ZipFile(matches[0]) as wheel:

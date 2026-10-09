@@ -4,13 +4,13 @@ build-backend = "setuptools.build_meta"
 [project]
 license = {file = "LICENSE"}
 name = "materials-boundaries-query-service"
-version = "0.2.0.dev0"
+version = "0.5.0.dev0"
 requires-python = ">=3.11"
 dependencies = ["materials-boundaries-federation-prototype==0.1.0", "fastapi==0.141.1", "pydantic==2.13.4", "httpx[socks]==0.28.1", "uvicorn==0.52.1"]
 [tool.setuptools.packages.find]
 include = ["materials_query*"]
 [tool.setuptools.package-data]
-materials_query = ["static/*", "fixtures/*"]
+materials_query = ["static/*", "fixtures/*", "pins/*.json"]
 
 [tool.setuptools]
 license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md"]

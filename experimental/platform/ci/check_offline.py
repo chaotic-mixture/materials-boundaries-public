@@ -35,7 +35,7 @@ def check_wheels(directory):
     wheels = sorted(directory.glob('*.whl'))
     require(len(wheels) == 4, 'Expected exactly four local wheels')
     for name, source in PACKAGES.items():
-        version = '0.2.0.dev0' if name in {'materials_boundaries_query_service', 'materials_boundaries_platform_experimental'} else '0.1.0'
+        version = '0.5.0.dev0' if name in {'materials_boundaries_query_service', 'materials_boundaries_platform_experimental'} else '0.1.0'
         matches = list(directory.glob(name + '-' + version + '-*.whl'))
         require(len(matches) == 1, 'Missing or duplicate wheel: ' + name)
         with zipfile.ZipFile(matches[0]) as wheel:

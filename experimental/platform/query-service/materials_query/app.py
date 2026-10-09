@@ -1,10 +1,10 @@
 """Local, read-only candidate query API. No production admission or credentials."""
 from collections import OrderedDict
 from pathlib import Path
-from threading import BoundedSemaphore, Lock
+from threading import Lock
 from typing import Literal
 import json
-from fastapi import FastAPI, HTTPException
+from fastapi import HTTPException
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
@@ -14,6 +14,7 @@ from materials_federation.normalize import normalize_mp, normalize_nomad
 from materials_federation.providers import NomadAdapter, ProviderError
 
 from . import __version__
+from .transport import REQUEST_TIMEOUT_SECONDS, TransportBoundedFastAPI
 
 ROOT = Path(__file__).parent
 
@@ -46,33 +47,15 @@ class DemoRequest(Model):
     provider: Literal['nomad', 'materials_project'] = 'nomad'
 
 
-def create_app(adapter=None, *, enable_local_catalog=False):
-    app = FastAPI(docs_url=None, redoc_url=None, title='Materials Boundaries · Candidate Query', version=__version__,
+def create_app(adapter=None, *, enable_local_catalog=False, computed_registry=None,
+               transport_timeout_seconds=REQUEST_TIMEOUT_SECONDS):
+    app = TransportBoundedFastAPI(transport_timeout_seconds=transport_timeout_seconds, docs_url=None, redoc_url=None, title='Materials Boundaries · Candidate Query', version=__version__,
                   description='Local review-only discovery. Entries are not admitted materials.')
     app.add_middleware(TrustedHostMiddleware, allowed_hosts=['localhost', '127.0.0.1', '[::1]', 'testserver'])
     app.mount('/static', StaticFiles(directory=ROOT/'static'), name='static')
     provider = adapter or NomadAdapter()
-    slots = BoundedSemaphore(2)
     snapshots = OrderedDict()
     lock = Lock()
-
-    @app.middleware('http')
-    async def local_boundary(request, call_next):
-        # No CORS, and reject browser cross-origin mutations of local working state.
-        origin = request.headers.get('origin')
-        if origin and origin != str(request.base_url).rstrip('/'):
-            return JSONResponse(status_code=403, content={'detail':'Cross-origin requests are disabled'})
-        if request.headers.get('content-length', '0').isdigit() and int(request.headers.get('content-length', '0')) > 32768:
-            return JSONResponse(status_code=413, content={'detail':'Request body exceeds 32 KiB'})
-        if request.method == 'POST':
-            body = await request.body()
-            if len(body) > 32768:
-                return JSONResponse(status_code=413, content={'detail':'Request body exceeds 32 KiB'})
-        response = await call_next(request)
-        response.headers['X-Content-Type-Options'] = 'nosniff'
-        response.headers['Cache-Control'] = 'no-store'
-        response.headers['Content-Security-Policy'] = "default-src 'self'; style-src 'self'; script-src 'self'; frame-ancestors 'none'; base-uri 'none'"
-        return response
 
     def remember(c):
         with lock:
@@ -118,14 +101,6 @@ def create_app(adapter=None, *, enable_local_catalog=False):
             return {'status':'provider_error', 'provider':'nomad',
                     'message':'Public upstream read failed or timed out; no result is assumed. No automatic retry.', 'quota_credit':0}
 
-    def bounded(work):
-        if not slots.acquire(blocking=False):
-            raise HTTPException(429, 'Two query operations are active; retry later')
-        try:
-            return work()
-        finally:
-            slots.release()
-
     @app.get('/', include_in_schema=False)
     def ui():
         return FileResponse(ROOT/'static/index.html')
@@ -152,13 +127,13 @@ def create_app(adapter=None, *, enable_local_catalog=False):
 
     @app.post('/api/search')
     def single(req: SearchRequest):
-        result = bounded(lambda:search(req))
+        result = search(req)
         code = 503 if result['status']=='not_configured' else 502 if result['status']=='provider_error' else 200
         return JSONResponse(content=result, status_code=code)
 
     @app.post('/api/batch')
     def batch(req: BatchRequest):
-        results = bounded(lambda:[{'query':q.model_dump(), 'result':search(q)} for q in req.queries])
+        results = [{'query':q.model_dump(), 'result':search(q)} for q in req.queries]
         success = sum(r['result']['status']=='success' for r in results)
         return {'schema_version':'query_batch/0.1.0', 'status':'success' if success==len(results) else 'partial' if success else 'failed',
                 'results':results, 'unique_material_count':None, 'quota_credit':0,
@@ -184,6 +159,8 @@ def create_app(adapter=None, *, enable_local_catalog=False):
         return JSONResponse(content=item, headers={'Content-Disposition':f'attachment; filename="{snapshot_id}.json"'})
     from .local_catalog import install_routes
     install_routes(app, enabled=enable_local_catalog)
+    from .computed_catalog import install_routes as install_computed
+    install_computed(app, registry=computed_registry)
     return app
 
 

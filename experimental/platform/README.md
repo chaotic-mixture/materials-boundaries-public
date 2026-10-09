@@ -1,3 +1,7 @@
+# New 0.5.0.dev0 recovery candidate
+
+See [RECOVERY_CANDIDATE.md](RECOVERY_CANDIDATE.md) for the new computed namespace and its limitations. The earlier material below documents the recovered baseline.
+
 # Experimental Materials Platform
 
 An English-only, local experimental addition. The frozen 1,057-identity catalog, production code, version and CI are unchanged. This is not a dataset publication or a production platform.

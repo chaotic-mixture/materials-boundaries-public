@@ -33,10 +33,10 @@ class CatalogAPI(unittest.TestCase):
         for _ in range(10): self.post('resolve',state_id=self.first['id']).raise_for_status()
         self.assertEqual(self.validator.call_count,1)
     def test_02_metadata_counts_and_versions(self):
-        self.assertEqual(self.client.get('/api/health').json()['service_version'],'0.2.0.dev0')
-        self.assertEqual(self.client.get('/openapi.json').json()['info']['version'],'0.2.0.dev0')
+        self.assertEqual(self.client.get('/api/health').json()['service_version'],'0.5.0.dev0')
+        self.assertEqual(self.client.get('/openapi.json').json()['info']['version'],'0.5.0.dev0')
         from materials_platform import __version__ as umbrella_version
-        self.assertEqual(umbrella_version,'0.2.0.dev0')
+        self.assertEqual(umbrella_version,'0.5.0.dev0')
         self.assertEqual(self.status['counts']['local_catalog_unique_material_count'],1057)
         self.assertFalse(self.status['provider_counts_combined'])
         for name in ('version','content_digest','runtime_digest'): self.assertRegex(self.status[name],r'^[a-f0-9]{64}$')
