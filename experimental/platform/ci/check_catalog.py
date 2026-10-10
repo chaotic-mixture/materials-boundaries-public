@@ -1,4 +1,4 @@
-"""PROPOSAL: installed-core wheel licenses, offline 21-test catalog boundary."""
+"""Installed-core wheel licenses and offline catalog regression boundary."""
 import argparse
 from email.parser import BytesParser
 import importlib
@@ -34,7 +34,7 @@ def main():
         module=importlib.import_module(name)
         require(Path(module.__file__).resolve().is_relative_to(Path(sys.prefix).resolve()), 'Source import instead of installed wheel: '+name)
     suite=unittest.TestLoader().discover(str(ROOT/'query-service/catalog-tests'))
-    require(suite.countTestCases()>=21, 'Expected at least 21 local catalog tests')
+    require(suite.countTestCases()>=78, 'Expected at least 78 local catalog tests')
     result=unittest.TextTestRunner(verbosity=2).run(suite)
     require(result.wasSuccessful() and not result.skipped and not result.expectedFailures, 'Optional core tests did not fully pass')
     print('Installed optional-core offline catalog suite passed; no browser/live/deployment claim.')
