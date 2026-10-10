@@ -72,6 +72,9 @@ def install_routes(app, *, enabled=False):
                     'local_material_state_count':len(graph['materials']['records']),
                     'local_reference_property_count':len(graph['reference_properties']['records'])})
 
+    from .formal_catalog import install_routes as install_formal
+    install_formal(app, enabled=snapshot is not None)
+
     def ready(version):
         if snapshot is None:
             raise HTTPException(503, 'Local catalog disabled: ' + error + '. Install this repository core locally and restart the opt-in factory.')

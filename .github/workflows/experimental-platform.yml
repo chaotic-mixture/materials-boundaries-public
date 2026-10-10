@@ -5,6 +5,7 @@ on:
     branches: ['experimental/platform-integration']
     paths:
       - 'experimental/platform/**'
+      - 'formal-catalog/**'
       - 'materials_boundaries/**'
       - 'pyproject.toml'
       - 'LICENSE'
@@ -14,6 +15,7 @@ on:
     branches: ['experimental/platform-integration']
     paths:
       - 'experimental/platform/**'
+      - 'formal-catalog/**'
       - 'materials_boundaries/**'
       - 'pyproject.toml'
       - 'LICENSE'
@@ -74,5 +76,5 @@ jobs:
         uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Five local wheel installs and optional-core suite
+      - name: Six local wheel installs and optional-core plus formal add-on suites
         run: python experimental/platform/ci/run_catalog_ci.py

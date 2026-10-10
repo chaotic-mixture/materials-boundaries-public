@@ -1,4 +1,4 @@
-"""Installed-core wheel licenses and offline catalog regression boundary."""
+"""Installed six-wheel catalog and formal add-on regression boundary."""
 import argparse
 from email.parser import BytesParser
 import importlib
@@ -17,9 +17,9 @@ def main():
     except RuntimeError as error: require('Offline fixture CI' in str(error), 'Wrong guard failure')
     else: raise RuntimeError('Network guard did not block DNS')
     parser=argparse.ArgumentParser();parser.add_argument('--wheel-dir',type=Path,required=True);args=parser.parse_args()
-    packages={**PACKAGES, 'materials_boundaries': ROOT.parents[1]}
+    packages={**PACKAGES, 'materials_boundaries': ROOT.parents[1], 'materials_project_catalog': ROOT.parents[1]/'formal-catalog'}
     wheels=sorted(args.wheel_dir.glob('*.whl'))
-    require(len(wheels)==5, 'Expected exactly five locally built wheels')
+    require(len(wheels)==6, 'Expected exactly six locally built wheels')
     for name,source in packages.items():
         version=('0.35.0' if name=='materials_boundaries' else '0.5.0.dev0' if name in {'materials_boundaries_query_service','materials_boundaries_platform_experimental'} else '0.1.0')
         matches=list(args.wheel_dir.glob(name+'-'+version+'-*.whl'))
@@ -30,13 +30,19 @@ def main():
                 require(filename in metadata.get_all('License-File',[]), 'Missing license metadata')
                 members=[n for n in wheel.namelist() if '.dist-info/' in n and n.endswith('/'+filename)]
                 require(len(members)==1 and wheel.read(members[0])==(source/filename).read_bytes(), 'License bytes mismatch')
-    for name in ('materials_boundaries','materials_query','materials_federation','materials_platform','materials_lifecycle'):
+    for name in ('materials_boundaries','materials_query','materials_federation','materials_platform','materials_lifecycle','materials_project_catalog'):
         module=importlib.import_module(name)
         require(Path(module.__file__).resolve().is_relative_to(Path(sys.prefix).resolve()), 'Source import instead of installed wheel: '+name)
+    for filename in ('test_formal_project_catalog.py', 'test_computed_v2_second_tranche.py', 'test_combined_admission_boundary.py'):
+        require((ROOT/'query-service/catalog-tests'/filename).is_file(), 'Missing combined regression module: '+filename)
     suite=unittest.TestLoader().discover(str(ROOT/'query-service/catalog-tests'))
-    require(suite.countTestCases()>=78, 'Expected at least 78 local catalog tests')
+    require(suite.countTestCases()>=85, 'Expected at least 85 local catalog tests')
     result=unittest.TextTestRunner(verbosity=2).run(suite)
     require(result.wasSuccessful() and not result.skipped and not result.expectedFailures, 'Optional core tests did not fully pass')
+    formal_suite=unittest.TestLoader().discover(str(ROOT.parents[1]/'formal-catalog/tests'))
+    require(formal_suite.countTestCases()>=11, 'Expected formal project catalog tests')
+    formal_result=unittest.TextTestRunner(verbosity=2).run(formal_suite)
+    require(formal_result.wasSuccessful() and not formal_result.skipped and not formal_result.expectedFailures, 'Formal project tests did not fully pass')
     print('Installed optional-core offline catalog suite passed; no browser/live/deployment claim.')
 
 if __name__=='__main__':main()

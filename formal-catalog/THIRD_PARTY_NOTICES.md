@@ -1,0 +1,1038 @@
+# Third-party notices and license scope
+
+## Original project work
+
+Copyright (c) 2026 chaotic-mixture. The [MIT License](LICENSE) covers original
+project code, documentation, translations, synthetic examples and original
+curation/derivation text to the extent those contributions are copyrightable.
+It does not purport to license scientific facts or relicense third-party
+publications, datasets, figures, software or other source works. Each source
+retains its own rights and attribution. No author, publisher, NIST or other
+institution is represented as endorsing this project.
+
+The public repository contains brief attributed numerical facts, bibliographic
+metadata, mathematical relations and original explanatory notes. It does not
+bundle source PDFs, article full text, source page images, publisher figures,
+scraped source compilations or raw experimental collections. A source being
+publicly readable is not a blanket redistribution license. The source catalog's
+license fields describe recorded evidence, not an independent permission grant.
+
+## NIST cryogenic material properties
+
+The five NIST cryogenic coefficient datasets used during development and all
+their derived sample outputs are **omitted from the first public release**.
+The packaged temperature examples instead use five original synthetic models
+(seven branches), visibly labeled as invented demonstrations of software
+behavior. NIST bibliographic records and links remain for provenance.
+
+This is a conservative release choice pending clarification, **not a finding
+that redistribution is prohibited**. Official evidence, checked 2026-10-02:
+
+- [NIST's curated data collections](https://www.nist.gov/srd/related-data-products-and-links/curated-data-collections)
+  lists the Cryogenic Material Properties Database as formerly SRD 152
+- [NIST's related-data-products explanation](https://www.nist.gov/srd/related-data-products-and-links)
+  distinguishes curated collections from products meeting current SRD
+  critical-evaluation criteria
+- The [Cryogenic Technology Resources homepage](https://trc.nist.gov/cryogenics/)
+  records the correlations' origin in a past SRD project
+- [General NIST copyright guidance](https://www.nist.gov/copyrights-disclaimers)
+  and [SRD/data/software policy](https://www.nist.gov/open/copyright-fair-use-and-licensing-statements-srd-data-software-and-technical-series-publications)
+  provide policy context and distinguish different classes of NIST works
+
+Former SRD status and current reclassification are both recorded. Neither the
+reclassification, public access nor attribution establishes a verified express
+grant to redistribute or relicense these particular correlations. No CC0,
+public-domain, NIST certification or database-wide rights claim is made.
+
+## Literature facts and source-specific qualifications
+
+The omission above is limited to the NIST cryogenic coefficient datasets and
+their derived outputs. It is not a general exclusion of attributed numerical
+facts from literature. The following remain, with their exact scientific scope
+and source-specific caveats:
+
+- Graphene observation summaries from [Lee et al. (2008)](https://doi.org/10.1126/science.1157996):
+  ©2008 AAAS; model-dependent two-dimensional results, not raw experimental data
+  or third-party figures. See [observation provenance](docs/OBSERVATIONS.md)
+- Monolayer MoS2 observation summaries from [Bertolazzi, Brivio and Kis (2011)](https://doi.org/10.1021/nn203879f):
+  publisher metadata states ©2011 American Chemical Society; the inspected
+  [EPFL proof-formatted PDF](https://infoscience.epfl.ch/server/api/core/bitstreams/5af84a4c-55a4-4151-9d85-d5c215d848a4/content)
+  has lettered pages A–G and an ACS notice with a placeholder year. Repository
+  “openaccess” / “Published version” labels establish neither verified final-text
+  identity nor an open-reuse license. The final publisher text and supplement
+  remain unverified; no general reuse permission is inferred. Only two brief
+  factual monolayer numerical summaries, metadata, locators and original
+  curation are included. The printed-q discrepancy, unresolved actual fit
+  constant, source-reported SD semantics and unknown conditions are preserved;
+  no correction, refit, plot or conversion is claimed. No PDF, full text, figure,
+  screenshot or raw measurement collection is redistributed. MIT does not
+  relicense this paper or its factual material. See [observation provenance](docs/OBSERVATIONS.md)
+- Ni-family ideal-shear and silicon first-instability computational predictions:
+  brief published values with methods and unknown conditions preserved; no
+  article redistribution or universal-bound claim. See [prediction provenance](docs/COMPUTATIONAL_PREDICTIONS.md)
+- The [Genin–Birman literature-model example](docs/LITERATURE_EXAMPLE.md):
+  source model parameters and original conversions, not a measured specimen
+- Mechanics source metadata and original paraphrases: APS, ASME, AAAS, IOP,
+  Royal Society, Oxford University Press and other notices remain source-specific.
+  Public author copies and the arXiv nonexclusive distribution license do not
+  become a general reuse license
+- Sources with recorded Creative Commons or government-public-use notices keep
+  those specific notices; no blanket license or unsupported license identifier
+  is inferred for other works
+
+Consult [SOURCES.md](docs/SOURCES.md), the scientific guides and the packaged
+`materials_boundaries/data/sources.json` records for precise locators, inspected
+scope, rights evidence and unresolved gaps. Software/schema checks and formula
+cross-checks are not independent scientific peer review or legal clearance.
+
+## Bulk elastic-wave relations (v0.18.0)
+
+Exactly two new bibliographic sources support the catalog-only wave records:
+
+- [Chevrot and van der Hilst (2003)](https://doi.org/10.1046/j.1365-246X.2003.01865.x),
+  *Geophysical Journal International* 152(2), 497–505: ©2003 RAS. The inspected
+  university-hosted journal-layout PDF was visually checked at printed p. 498,
+  Eqs. (1)–(4). Public author/university access does not establish a general
+  reuse license; none was verified
+- [Xiang, Qi and Wei, arXiv:1708.04876v2](https://arxiv.org/abs/1708.04876v2):
+  specifically the January 2018 v2 preprint, with pp. 2, 4–5 visually checked;
+  no verified journal-version claim. Its arXiv nonexclusive distribution
+  permission does not grant general republication or relicensing permission
+
+The repository includes bibliographic metadata, mathematical relations and
+original explanatory proofs, including the speed-ratio interval and the
+strong-ellipticity/strain-energy counterexample. It does not redistribute the
+papers, full text, PDF pages, screenshots or figures. No source author or
+publisher is credited with the project's original interval or counterexample
+proof, nor represented as endorsing it. MIT covers original project work only.
+Source inspection, formula checks and tests are not independent scientific
+review or legal clearance. Existing source-specific notices and the conservative
+NIST omissions remain unchanged. See [wave provenance and proofs](docs/BULK_ELASTIC_WAVES.md)
+and [source ledger](docs/SOURCES.md).
+
+## Monolayer hBN observations (v0.19.0)
+
+The added source is Aleksey Falin, Qiran Cai, Elton J. G. Santos, Declan Scullion,
+Dong Qian, Rui Zhang, Zhi Yang, Shaoming Huang, Kenji Watanabe, Takashi Taniguchi,
+Matthew R. Barnett, Ying Chen, Rodney S. Ruoff and Lu Hua Li,
+[“Mechanical properties of atomically thin boron nitride and the role of interlayer interactions”](https://doi.org/10.1038/ncomms15815),
+*Nature Communications* 8, 15815 (2017). The publisher article is ©2017 The
+Author(s) under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/),
+subject to contrary third-party credit lines. The license is linked in the
+publisher's [Rights and permissions](https://www.nature.com/articles/ncomms15815#rightslink).
+
+Exactly two selected monolayer summaries are curated: stiffness 289 ± 24 N/m
+and breaking strength 23.6 ± 1.8 N/m. These are source-printed numerical facts,
+with original notes and precise source locators, not refits or a redistributed
+experimental dataset. The SD and tested-sheet definitions are specifically
+attributed to the publisher-linked peer-review author response, PDF p. 8,
+Reviewer #1 question 3; they are not represented as definitions printed in the
+main article. Nonlinear FEM volume-averaged under-indenter strength is kept
+distinct from the supplement's diagnostic maximum Von Mises stress.
+
+**Separate license scope for the supplementary information and public peer-review
+file is unverified.** The article's CC BY 4.0 status is not automatically applied
+to either artifact. No source PDF, full text, figure, screenshot, peer-review
+report or raw-data collection is redistributed. The MIT license covers original
+project work only and does not replace source licensing or imply author/publisher
+endorsement. Source inspection and software tests do not establish scientific
+peer review or legal clearance. See [observation provenance](docs/OBSERVATIONS.md#monolayer-hbn-falin-et-al-2017-new-records)
+and [source ledger](docs/SOURCES.md).
+
+## Six additional Ni11X predictions (v0.21.0)
+
+The additional Ni11Cr 4.90, Ni11Mn 5.12, Ni11Fe 5.20, Ni11Cu 4.51,
+Ni11Si 4.17 and Ni11Ti 4.24 GPa entries are brief factual results attributed to
+Shimanek, Shang, Beese and Liu, [arXiv:2108.06412v2, Table 2, p. 27](https://arxiv.org/pdf/2108.06412v2#page=27).
+They reuse the existing source record; no new license or republication permission
+is asserted. The earlier arXiv non-exclusive distribution-license evidence is
+inherited, and its licensing page was not newly inspected for this batch. That
+license does not establish a general third-party right to redistribute the paper.
+
+Only these selected numbers, exact locators, bibliographic attribution and
+original method/limitation paraphrases are included. No cached PDF, full extracted
+text, rendered source page, table artwork, screenshot or source figure is
+redistributed. Project MIT licensing does not relicense the publication or
+scientific facts and does not imply endorsement. Source/transcription checks are
+not scientific peer review or legal clearance.
+
+All six are periodic Ni11X model predictions, not pure-solute measurements,
+commercial grades or universal bounds. A bare table label does not establish a
+PAW dataset, a valence configuration or absence of semicore states. Unknown
+conditions and uncertainty remain explicit; published-method-only comparison is
+not an input audit. [Source scope](docs/SOURCES.md#v0210-ni11x-six-record-addition-existing-source-new-inspected-cells)
+· [Scientific qualifications](docs/COMPUTATIONAL_PREDICTIONS.md).
+
+
+## PA12 CF15 tensile-test summaries (v0.22.0)
+
+Justas Ciganas, Tomas Kalinauskis and Urte Cigane (2026),
+[“Thermo-Mechanical and Fatigue Behavior of 3D-Printed PA12 CF15 for Engineering Application”](https://doi.org/10.3390/polym18050563),
+*Polymers* 18(5), 563. The [article copyright block](https://www.mdpi.com/2073-4360/18/5/563#html-copyright)
+was inspected on 3 October 2026 and identifies ©2026 by the authors, MDPI as
+licensee, under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
+No third-party credit line was shown for selected Table 3.
+
+The six selected UTS/SD cells at reported chamber conditions 23, 40, 60, 80,
+100 and 120 °C are attributed to Table 3 of this article. They were reorganized
+into discrete observations: source numbers and SD strings are preserved, exact
+MPa-to-Pa unit re-expression is added, and curator notes are original summaries.
+This is not raw-data reanalysis, independent replication or a universal allowable.
+The article's Table 1 is manufacturer-provided and excluded; article licensing
+is not assumed to relicense that third-party content.
+
+Inspected HTML revision metadata and the cached/live discrepancy in unselected
+Table 4 are retained. The PDF was not inspected and no PDF equivalence is claimed.
+No publisher PDF, screenshot, figure, HTML dump, long passage or raw measurement
+collection is redistributed. The MIT license covers original project
+contributions only and does not replace source rights or imply author/publisher
+endorsement. See [source and scientific limits](docs/PA12_CF15_TEMPERATURE_OBSERVATIONS.md)
+and [source ledger](docs/SOURCES.md).
+
+
+### v0.23.0 descriptive PA12 CF15 plotting adaptation
+
+The separate [temperature-observation plot](docs/OBSERVATION_TEMPERATURE_PLOT.md)
+uses the same six attributed Table 3 UTS/SD cells and unchanged source rights.
+It preserves the source numbers and SD strings while reorganizing and plotting
+them as discrete source summaries. Vertical glyph endpoints are explicit
+central-value ±reported-SD arithmetic; exact SI unit re-expression and original
+curator notes remain separate. The adaptation is not raw-data reanalysis,
+statistical validation, independent replication or a material-model claim.
+
+Retain Ciganas, Kalinauskis and Cigane (2026), the article title and DOI above,
+Table 3 locators, inspected HTML revision, PDF noninspection, unselected Table 4
+revision caveat and article-specific CC BY 4.0 notice. No new rights are asserted
+for excluded manufacturer Table 1 or any other unselected content. No source
+assets or raw measurements are redistributed; the MIT license applies to
+original project contributions and no author/publisher endorsement is implied.
+
+
+## Zach and Dudescu (2025): four annealed PAHT-CF observations
+
+Theodor Florian Zach and Mircea Cristian Dudescu, “Effect of Annealing on High Temperature Tensile Performance of 3D Printed Polyamide Carbon Fiber: A Comparative Study,” Journal of Composites Science 9(11), 624 (2025), DOI [10.3390/jcs9110624](https://doi.org/10.3390/jcs9110624). Article copyright © 2025 the authors; MDPI is licensee. The inspected article copyright block expressly links [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); Table A1 showed no third-party credit line.
+
+Four annealed ±45° Table A1 rows were selected and reorganized as catalog observations. Median/SD strings are preserved separately; exact SI-prefix re-expression and original curator notes were added. The SD header does not print a unit: MPa is a contextual inference and its Pa re-expression is conditional. This adaptation does not imply author endorsement. MIT applies to original project contributions and does not replace source rights.
+
+Only selected numerical facts, short labels, bibliographic/component/version metadata, attribution and original curation are bundled. Publisher PDFs, HTML, screenshots, source figures, long passages and raw measurements are not included. Supplier Table 1 and supplier publications/assets/raw data are excluded; Table 2 separately credits references [28,31], whose assets are not redistributed or relicensed. Neither PDF version was inspected or asserted equivalent to current HTML. See [full source guide](docs/PAHT_CF_ANNEALED_OBSERVATIONS.md).
+
+## Hanyga scalar viscoelastic sources (v0.26.0)
+
+The two new source records describe Hanyga's arXiv:1805.07275v1 (17 May 2018)
+and arXiv:1903.03814v8 (2 November 2019). Their official abstract pages link
+https://arxiv.org/licenses/nonexclusive-distrib/1.0/license.html, which grants
+arXiv nonexclusive distribution rights and does not establish a general project
+redistribution license. No CC BY status is asserted. Bibliographic metadata,
+precise locators, mathematical facts, original paraphrases and original project
+proofs are included; source PDFs, extracted text, figures, screenshots and source
+TeX are not. MIT applies only to original project contributions. The publisher
+version associated with DOI 10.1007/s00419-019-01620-2 was not inspected.
+See [the versioned evidence and original proof guide](docs/SCALAR_VISCOELASTICITY.md).
+
+## Yield-criterion definitions and original comparison (v0.27.0)
+
+Exactly two metadata-only sources are added for von Mises and Tresca initial
+yield and their equivalent-stress definitions. The sharp function comparison,
+endpoint proof, symbolic examples and optional fixed local proportional-ray
+consequence are original project algebra, not a source-printed theorem or a
+claim of independent expert scientific review.
+
+- Oliver Giraldo-Londoño and Glaucio H. Paulino (2020), “A unified approach for
+  topology optimization with local stress constraints considering various
+  failure criteria: von Mises, Drucker–Prager, Tresca, Mohr–Coulomb,
+  Bresler–Pister and Willam–Warnke,” Proceedings of the Royal Society A
+  476(2238), 20190861. [DOI](https://doi.org/10.1098/rspa.2019.0861) ·
+  [inspected author-hosted PDF](https://paulino.scholar.princeton.edu/sites/g/files/toruqf6546/files/documents/RSPA_20_AUnifiedApproach.pdf).
+  The title page states ©2020 authors, published by the Royal Society, all
+  rights reserved. No permissive reuse license was verified. Accessible author
+  hosting does not authorize redistribution; no equivalence to the current
+  publisher-hosted bytes is asserted
+- Tomasz Wierzbicki (2013), “Fundamental Concepts in Structural Plasticity,”
+  Lecture 12, MIT 2.080J / 1.573J Structural Mechanics, Fall 2013.
+  [Official resource](https://ocw.mit.edu/courses/2-080j-structural-mechanics-fall-2013/resources/mit2_080jf13_lecture12/) ·
+  [official PDF](https://ocw.mit.edu/courses/2-080j-structural-mechanics-fall-2013/30dc1a0f74debf21fb92a1df56616929_MIT2_080JF13_Lecture12.pdf).
+  [MIT OCW terms](https://ocw.mit.edu/pages/privacy-and-terms-of-use/), inspected
+  2026-10-04, state [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+  Attribution, noncommercial and share-alike conditions are not blanket
+  permission to relicense source assets under the project's MIT license
+
+Only bibliographic metadata, links, independently expressed mathematical facts
+and original explanation/curation/proof are included. Source PDFs, extracted
+prose, screenshots, page images, figures, experimental plot data and other
+source assets are excluded from repository, package and release. MIT applies
+to original project work only, without relicensing scientific facts or the
+third-party publications. This conservative boundary is not legal clearance
+for other reuse and implies no author, MIT or publisher endorsement.
+
+The [scientific guide](docs/YIELD_CRITERIA.md) records inspected-byte hashes,
+exact pages/equations, dimensionless source normalization and excluded printing
+defects. Wierzbicki Eqs. (12.22) and (12.46) have defects observed in the inspected
+copy; no publisher-issued errata were verified. Neither is used, and the rounded
+p. 12-15 comparison is not the exact proof. Selected-equation checks do not
+establish complete-paper validation, historical-original verification,
+empirical material adequacy or independent scientific peer review.
+
+## Composite single-case reports (v0.28.0)
+
+The offline report wrapper adds no source asset or scientific data. Reports
+contain existing bibliographic/evidence metadata and the user's supplied input,
+with unresolved citations and recorded review gaps preserved. The original
+12/6 and 36/18 GPa demonstration at 0.25/0.75 fractions is fictitious project
+test data, not a literature specimen. Software replay and artifact hashes do
+not authenticate authorship, establish source truth, certify materials, or
+create redistribution rights in third-party publications.
+
+## Concrete material reference catalogue (v0.29.0)
+
+This catalogue adds brief source-attributed numerical facts and original
+identity/state curation. Source precision, qualifiers, density basis, methods,
+unknown conditions and printed statistics are retained. No source PDF, page
+image, copied table, article full text or research-download artifact is
+redistributed. The project MIT license covers its original code and curation;
+it does not relicense these source works or imply endorsement. Primary-source
+readback checks are not independent scientific peer review or legal clearance.
+
+The following source records were appended; all previously published source
+records remain unchanged.
+
+- Aurubis: [Technical Datasheet C11000](https://www.aurubis.com/dam/jcr:ec116d17-1541-419a-a897-ad31b4fa6c93/c11000-cu-etp-us.pdf) (date not established). No explicit open-reuse license was verified. Admission is limited to sparse attributed facts and original curation, with rights uncertainty retained; public accessibility is not a blanket redistribution grant. Source ID: `aurubis_c11000_1808us`
+- Aurubis: [Technical Datasheet C26000](https://www.aurubis.com/dam/jcr:32933033-29ab-4b18-9e6f-619a21c35881/c26000-cuzn30-us.pdf) (date not established). No explicit open-reuse license was verified. Admission is limited to sparse attributed facts and original curation, with rights uncertainty retained; public accessibility is not a blanket redistribution grant. Source ID: `aurubis_c26000_1808us`
+- Hydro Extrusion North America: [Alloy 6061](https://www.hydro.com/globalassets/01-products--services/extruded-profiles/americas/ena-resources/alloy-data-sheets/hydro_2019_data_sheet_6061.pdf) (2019). No explicit open-reuse license was verified. Admission is limited to sparse attributed facts and original curation, with rights uncertainty retained; public accessibility is not a blanket redistribution grant. Source ID: `hydro_6061_201901`
+- Titanium Metals Corporation (TIMET): [TIMETAL 6-4, 6-4 ELI & 6-4-.1Ru](https://www.timet.com/documents/datasheets/alpha-and-beta-alloys/timetal-6-4.pdf) (2000). No explicit open-reuse license was verified. Admission is limited to sparse attributed facts and original curation, with rights uncertainty retained; public accessibility is not a blanket redistribution grant. Source ID: `timet_tmc0150_2000`
+- Special Metals Corporation: [Nickel 200 & 201](https://www.specialmetals.com/documents/technical-bulletins/nickel-200.pdf) (2006). No explicit open-reuse license was verified. Admission is limited to sparse attributed facts and original curation, with rights uncertainty retained; public accessibility is not a blanket redistribution grant. Source ID: `specialmetals_nickel200_smc061`
+- Special Metals Corporation: [MONEL alloy 400](https://www.specialmetals.com/documents/technical-bulletins/monel-alloy-400.pdf) (2005). No explicit open-reuse license was verified. Admission is limited to sparse attributed facts and original curation, with rights uncertainty retained; public accessibility is not a blanket redistribution grant. Source ID: `specialmetals_monel400_smc053`
+- Outokumpu: [Outokumpu Core range datasheet: Stainless steels for corrosive environments](https://www.outokumpu.com/en/products/product-ranges/-/media/files/products/core/outokumpu-core-range-datasheet.pdf?hash=0DB21994AD31F93E9C62A531BE9C36E6&modified=20251117111909&revision=025e9931-a1d5-4c8f-8ff5-f881d38916da) (2022). No explicit open-reuse license was verified. Admission is limited to sparse attributed facts and original curation, with rights uncertainty retained; public accessibility is not a blanket redistribution grant. Source ID: `outokumpu_core_1560en4_202211`
+- Anıl Şahin: [Integrated Evaluation of Electrical Breakdown Strength and Mechanical Properties of 3D-Printed Polymers, Supplemented by ImageJ-Based Surface Damage Analysis](https://www.mdpi.com/2073-4360/18/11/1345) (2026). Article-authored content is identified as [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Selected factual values are transcribed with original project scope/condition notes; no raw-data reanalysis or article redistribution is claimed. Source ID: `sahin_2026_polymer_mechanical_dielectric`
+- SCHOTT Technical Glass Solutions GmbH: [BOROFLOAT® 33 – Technical Data](https://www.schott.com/-/media/project/onex/products/b/borofloat/downloads/schott-borofloat-technical-data-sheet-english-26032019.pdf?rev=aa66d15af04a4ce7994f5e7699350364) (date not established). No explicit open-reuse license was verified. Admission is limited to sparse attributed facts and original curation, with rights uncertainty retained; public accessibility is not a blanket redistribution grant. Source ID: `schott_borofloat33_technical_data_26032019`
+- Entegris / POCO: [Industrial Graphite: Materials and post processes](https://poco.entegris.com/content/dam/poco/resources/reference-materials/data-sheets/data-sheet-material-post-processing-11055.pdf) (date not established). No explicit open-reuse license was verified. Admission is limited to sparse attributed facts and original curation, with rights uncertainty retained; public accessibility is not a blanket redistribution grant. Source ID: `poco_industrial_graphite_6204_11055tan_0320`
+- Randy R. VanBrocklin, W. David Navan, Mary J. Edwards: [Corning: Supplier of Multiple Optical Materials for Telescope Projects](https://www.corning.com/content/dam/corning/media/worldwide/csm/documents/Corning_Supplier_of__VanBrocklin.pdf) (2006). No explicit open-reuse license was verified. Admission is limited to sparse attributed facts and original curation, with rights uncertainty retained; public accessibility is not a blanket redistribution grant. Source ID: `vanbrocklin_navan_edwards_2006_corning`
+- Maciej Kwiatkowski, Joanna Marczyk, Piotr Putyra, Michał Kwiatkowski, Szymon Przybyła, Marek Hebda: [Influence of Alumina Grade on Sintering Properties and Possible Application in Binder Jetting Additive Technology](https://www.mdpi.com/1996-1944/16/10/3853) (2023). Article-authored content is identified as [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Selected factual values are transcribed with original project scope/condition notes; no raw-data reanalysis or article redistribution is claimed. Source ID: `kwiatkowski_2023_alumina_sps`
+- Liliya Vladislavova, Tomasz Smolorz, Nina Orlovskaya, Mykola Lugovy, Michael J. Reece, Stefan Köbel, Agnieszka Kopia, Malgorzata Makowska, Thomas Graule, Gurdial Blugan: [Strength Analysis and Stress-Strain Deformation Behavior of 3 mol% Y-TZP and 21 wt.% Al2O3-3 mol% Y-TZP](https://www.mdpi.com/1996-1944/14/14/3903) (2021). Article-authored content is identified as [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Selected factual values are transcribed with original project scope/condition notes; no raw-data reanalysis or article redistribution is claimed. Source ID: `vladislavova_2021_ytzp`
+- Zeynep Aygüzer Yaşar, Richard A. Haber: [Effect of Carbon Addition and Mixture Method on the Microstructure and Mechanical Properties of Silicon Carbide](https://www.mdpi.com/1996-1944/13/17/3768) (2020). Article-authored content is identified as [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Selected factual values are transcribed with original project scope/condition notes; no raw-data reanalysis or article redistribution is claimed. Source ID: `yasar_haber_2020_sic`
+- Paulina Ożóg, Paweł Rutkowski, Dariusz Kata, Thomas Graule: [Ultraviolet Lithography-Based Ceramic Manufacturing (UV-LCM) of the Aluminum Nitride (AlN)-Based Photocurable Dispersions](https://www.mdpi.com/1996-1944/13/19/4219) (2020). Article-authored content is identified as [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Selected factual values are transcribed with original project scope/condition notes; no raw-data reanalysis or article redistribution is claimed. Source ID: `ozog_2020_aln_ceramic`
+- O. A. Lukianova, V. Yu. Novikov, A. A. Parkhomenko, V. V. Sirota, V. V. Krasilnikov: [Microstructure of Spark Plasma-Sintered Silicon Nitride Ceramics](https://link.springer.com/article/10.1186/s11671-017-2067-z) (2017). Article-authored content is identified as [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Selected factual values are transcribed with original project scope/condition notes; no raw-data reanalysis or article redistribution is claimed. Source ID: `lukianova_2017_silicon_nitride_sps`
+
+Rights-held manufacturer candidates and method-ambiguous apparent-modulus
+candidates are excluded. The admitted ceramic facts concern specific processed
+study materials, including additives and process/porosity scope, not universal
+pure-ceramic constants. Manufacturer reference values are not recast as
+specimen-level experiments or engineering allowables. See the
+[material reference guide](docs/MATERIAL_REFERENCE_CATALOG.md).
+
+## Second material-reference batch (v0.30.0)
+
+Seven selected numerical facts are added with source identity, conditions,
+precise locators and original curation qualifications. Original numbers and unit
+strings are preserved; canonical lexical numbers remove supported digit grouping
+without numerical conversion. Handbook compilation and crystallographic
+measured-input derivation are explicit classifications, not assertions that
+these sources conducted direct specimen tests for every displayed value.
+No source PDF, full table, page image, screenshot, extracted prose, XML/HTML dump,
+figure or raw-data collection is redistributed. Project MIT licensing applies
+to original code and curation, not these publications, and implies no author,
+agency or publisher endorsement. Source-transcription review is not independent
+scientific peer review or blanket legal clearance.
+
+### Historical NBS silicon and germanium references
+
+- H. A. Bowman, R. M. Schoonover and C. L. Carroll (1975),
+  *Reevaluation of the Densities of the Four NBS Silicon Crystal Standards*,
+  NBSIR 75-768, August 1975, Final.
+  [DOI](https://doi.org/10.6028/NBS.IR.75-768) ·
+  [official PDF](https://nvlpubs.nist.gov/nistpubs/Legacy/IR/nbsir75-768.pdf).
+  The selected X2 new accepted density is in §7D, PDF p.19 / printed p.13
+- Horace A. Bowman, Randall M. Schoonover and C. Leon Carroll (1974),
+  *A Density Scale Based on Solid Objects*, Journal of Research of the National
+  Bureau of Standards 78A(1), 13–40.
+  [DOI](https://doi.org/10.6028/jres.078A.004) ·
+  [inspected article text](https://pmc.ncbi.nlm.nih.gov/articles/PMC6728515/).
+  This companion supports crystal identity, preparation and the 20 °C reference
+  basis, linked to the same objects by the 1975 correction report. Its
+  superseded numerical density is not selected; no retained-byte hash for this
+  companion is claimed
+- Howard E. Swanson and Eleanor Tatge (1953),
+  *Standard X-ray Diffraction Powder Patterns, Volume I*, NBS Circular 539.
+  [DOI](https://doi.org/10.6028/NBS.CIRC.539v1) ·
+  [official PDF](https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf).
+  The selected NBS lattice-derived density of Johnson Matthey germanium source
+  number 4065 appears in §2.6, PDF pp.22–23 / printed pp.18–19, with the unit
+  definition on PDF p.6 / printed p.2. Third-party comparison diffraction
+  patterns/tables are excluded
+
+The authors' NBS affiliations and selected-content provenance support the
+[NIST Technical Series rights notice](https://www.nist.gov/open/copyright-fair-use-and-licensing-statements-srd-data-software-and-technical-series-publications),
+inspected on 4 October 2026. Its employee-authored-work scope addresses domestic
+public-domain status and worldwide republication/distribution/derivative-work
+permission where NIST can assert foreign rights. This is not a made-up CC license
+or a claim that everything on a government website is unrestricted; credited
+third-party exceptions remain excluded.
+
+Republished courtesy of the National Institute of Standards and Technology.
+
+### USDA/FPL compiled wood references and identity support
+
+David E. Kretschmann (2010),
+[“Mechanical Properties of Wood,” Chapter 5](https://research.fs.usda.gov/download/treesearch/37427.pdf),
+in *Wood Handbook—Wood as an Engineering Material*, Centennial edition,
+General Technical Report FPL-GTR-190, USDA Forest Service, Forest Products
+Laboratory; [official publication record](https://research.fs.usda.gov/treesearch/37427).
+The inspected copy carries a 2018 erratum note on p.5–26, retained as revision
+metadata. Selected Table 5–3a facts are Sugar maple 12,600 MPa and Northern red
+oak 12,500 MPa on p.5–5, and Sitka spruce 10,800 MPa on p.5–8, each on the
+source's 12% moisture-content basis. The selected cells have no third-party
+credit line. They are compiled species averages with shear-inclusive bending
+scope, not claimed original 2010 experiments or project-recalculated values.
+
+Botanical identity support is limited to official *Silvics of North America*
+species pages for [sugar maple](https://research.fs.usda.gov/silvics/sugar-maple),
+[northern red oak](https://research.fs.usda.gov/silvics/northern-red-oak) and
+[Sitka spruce](https://research.fs.usda.gov/silvics/sitka-spruce).
+The opening paragraph of the
+[2021 handbook Chapter 3](https://research.fs.usda.gov/download/treesearch/62242.pdf),
+p.3–1, supplies biological-composite category context only; it does not replace
+the 2010 numerical source.
+
+The government-author byline, official FPL record and
+[USDA Forest Service Authors Guide](https://research.fs.usda.gov/sites/default/files/2024-05/srs-SRS-AuthorsGuide-2024.pdf),
+PDF p.5 / printed p.3, support the scoped government-authored factual reuse
+rationale, inspected on 4 October 2026. Retain source attribution. This is not
+blanket worldwide CC0 licensing. External assets, photographs, logos and
+credited third-party material are not included or relicensed. Only the selected
+facts and limited identity/category metadata are curated; no source assets or
+complete handbook tables are included.
+
+### Two article-authored experimental density results
+
+- Lucyna Domagała, Maria Margańska and Marek Miazgowicz (2024),
+  [“Moisture Impact on Static and Dynamic Modulus of Elasticity in Structural Normal-Weight Concretes”](https://doi.org/10.3390/ma17153722),
+  *Materials* 17(15), 3722. Copyright ©2024 by the authors; MDPI is licensee.
+  The [inspected XML](https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11313055/fullTextXML)
+  front/article-meta/permissions block explicitly identifies
+  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+  Selected Table 3, NC1/D_w, is article-authored and has no separate third-party
+  credit line. The value 2330 kg/m³ is transcribed unchanged; original project
+  qualifications preserve saturated state, nominal age, three-cylinder mean,
+  unknown density-test temperature and non-SD deviation wording. The recorded
+  numerical-source digest belongs to XML, not publisher HTML/PDF
+- Azemeraw Wubalem, Chiara Caselle, Battista Taboni and Gessica Umili (2025),
+  [“Effects of Rock Texture on Digital Image Correlation”](https://doi.org/10.3390/geosciences15040145),
+  *Geosciences* 15(4), 145. Copyright ©2025 by the authors; MDPI is licensee.
+  [Inspected PDF](https://www.mdpi.com/2076-3263/15/4/145/pdf), p.1, explicitly
+  identifies [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+  Table 2's specimen-13 bulk density, 2760 kg/m³, is article-authored and has no
+  separate third-party credit line. The numerical transcription is unchanged;
+  original project qualifications retain one-specimen scope, unknown method,
+  moisture/temperature and uncertainty, plus source group-SD/geometry
+  discrepancies. No group statistic is assigned to this specimen
+
+Both article-specific notices were inspected on 4 October 2026. Attribution,
+article/DOI links, license links and the description of added curation above
+identify the limited adaptation. Those licenses are not automatically extended
+to separately credited material or any unrelated source asset. No author or
+publisher endorsement is implied. See the
+[scientific scope and exact locators](docs/MATERIAL_COVERAGE_v0.30.0.md).
+## Source-qualified fibre and elastomer references (v0.31.0)
+
+The following sources support selected material identities, formulations, methods
+and numerical facts. Values and uncertainty amplitudes are transcribed without
+unit conversion or statistical reconstruction. Project-authored qualifications
+preserve each specimen/formulation scope, reported statistic, unknowns, source
+correction and source discrepancy. Four-language material names are
+machine-assisted project translations, not scientifically reviewed source
+translations. Original source designations and titles remain available.
+
+No source PDF, article HTML/XML, complete source table, data archive, dataset
+member, extracted article text, figure, screenshot or other source asset is
+redistributed. Public records and tests contain only selected factual
+transcriptions, attribution, source links, asset-identity hashes and original
+curation. Project MIT licensing does not relicense any source content. Scoped
+source-notice inspection is not legal clearance, independent scientific
+validation, experimental replication or author endorsement.
+
+### Toray T700S: numerical dataset and supporting methods article
+
+Francisco Mesquita, Steve Bucknell, Yann Leray, Stepan V. Lomov and Yentl Swolfs:
+
+- *Large datasets of single carbon and glass fibre mechanical properties obtained
+  with automated testing equipment*, Mendeley Data, Version 1, 26 March 2021.
+  [Versioned dataset](https://data.mendeley.com/datasets/ygyym4vy6b/1) ·
+  [DOI](https://doi.org/10.17632/ygyym4vy6b.1).
+  The dataset's own Licence field was independently inspected and identifies
+  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). This license was not
+  inferred from the companion article. The primary selected value is column 6,
+  specimen 1, in `T700/T700-analysed_data.dat`, at the
+  [direct member URL](https://data.mendeley.com/public-files/datasets/ygyym4vy6b/files/399cfb50-83d4-4689-a815-dd801292d18a/file_downloaded).
+  Its member hash is not the ZIP or landing-page hash. The 217-row dataset is
+  not bundled, averaged or reanalysed
+- *Large datasets of single carbon and glass fibre mechanical properties obtained
+  with automated testing equipment*, *Data in Brief* 36 (2021), 107085.
+  [DOI](https://doi.org/10.1016/j.dib.2021.107085) ·
+  [inspected article](https://pmc.ncbi.nlm.nih.gov/articles/PMC8114124/).
+  The article notice identifies
+  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+  Section 1 identifies the dataset; §§2.1–2.2 support identity and the detailed
+  testing methods. The source strain window and compliance method belong to
+  this article, not a statement directly printed in the selected DAT row
+
+The selected 249.8300317 GPa is one filament result, not the study mean or
+manufacturer nominal. Source digits, diameter and gauge length are retained
+without implying matching measurement accuracy. No circular-area assumption,
+initial-modulus substitution or derived uncertainty is introduced. Source IDs:
+`mesquita_2021_dataset_v1` and `mesquita_2021_methods`.
+
+### A76.9.2-sized basalt filament
+
+Leon L. Messmer, Ali Kandemir, Burak Ogun Yavuz, Marco L. Longana and Ian Hamerton
+(2024), *Mechanical Behaviour of As-Manufactured and Repaired Aligned
+Discontinuous Basalt Fibre-Reinforced Vitrimer Composites*, *Polymers* 16(8), 1089.
+[DOI](https://doi.org/10.3390/polym16081089) ·
+[inspected article](https://pmc.ncbi.nlm.nih.gov/articles/PMC11053685/) ·
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+The selected original Table 1 Type 1 fibre result is 56.1±11.5 GPa; its caption
+explicitly supports mean and SD. A76.9.2 sizing and successful-count unknowns
+remain attached; later composite results and Type 2 sizing are not imported.
+The circular-area equation for strength does not establish modulus
+normalization. Source ID: `messmer_2024`.
+
+### Sylgard 184 tensile-cure state
+
+I D Johnston, D K McCluskey, C K L Tan and M C Tracey (2014), *Mechanical
+characterization of bulk Sylgard 184 for microfluidics and microengineering*,
+*Journal of Micromechanics and Microengineering* 24, 035017.
+[DOI](https://doi.org/10.1088/0960-1317/24/3/035017) ·
+[inspected institutional-repository PDF](https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf) ·
+[CC BY 3.0](https://creativecommons.org/licenses/by/3.0/).
+The PDF p.1 notice explicitly permits reuse under CC BY 3.0 with author names,
+title, journal citation and DOI retained. Table 2's selected 100 °C tensile-cure
+result is 2.05 ± 0.12 MPa. Original curation distinguishes the source-reported
+95% CI from SD/SE, preserves its unknown estimand/construction and the six-test
+averaging statement, and retains the 48-minute tensile cure. The source-applied
+0.40 strain correction is not applied again. The kit's 10:1 parts ratio is not
+recast as a mass or volume ratio or chemically pure PDMS. Source ID:
+`johnston_2014_bulk_sylgard184`.
+
+### Three study-specific rubber density results
+
+- Marica Bianchi, Luca Fambri, Mauro Bortolotti, Alessandro Pegoretti and Andrea
+  Dorigato (2025), *Elastocaloric Performance of Natural Rubber: The Role of
+  Nanoclay Addition*, *Molecules* 30(14), 3035.
+  [DOI](https://doi.org/10.3390/molecules30143035) ·
+  [inspected publisher PDF](https://www.mdpi.com/1420-3049/30/14/3035/pdf) ·
+  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+  The original Table 1 NR density is 0.958 ± 0.006 g/cm³. Source-qualified
+  curation preserves the SMR 10/curatives recipe, ASTM D792 air/methanol method,
+  unspecified numerical room temperature and three density specimens. The
+  later mechanical mean/SD statement and four-specimen crosslinking method do
+  not define this density statistic. Source ID: `bianchi_2025_nr_nanoclay`
+- Marica Bianchi, Francesco Valentini, Giulia Fredi, Andrea Dorigato and Alessandro
+  Pegoretti (2022), *Thermo-Mechanical Behavior of Novel EPDM Foams Containing a
+  Phase Change Material for Thermal Energy Storage Applications*, *Polymers*
+  14(19), 4058.
+  [DOI](https://doi.org/10.3390/polym14194058) ·
+  [inspected v2 publisher PDF](https://mdpi-res.com/d_attachment/polymers/polymers-14-04058/article_deploy/polymers-14-04058-v2.pdf?version=1664434800) ·
+  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+  The original Table 5 unfoamed EPDM geometrical density is 0.996 ± 0.02 g/cm³.
+  The exact Vistalon 2504/N550 filled formulation, external-volume method and
+  ten geometric-density specimens remain attached. Theoretical-density
+  discrepancy and contextual SD wording are retained without correcting the
+  selected cell, relabelling its ± statistic, borrowing helium-pycnometry
+  conditions or calculating porosity. Source ID: `bianchi_2022_epdm_pcm`
+- Péter Tamás-Bényei and Péter Sántha (2025), *Sustainable Reinforcement for
+  Rubbers—Potential Application of Recycled Carbon Fibers*, *ACS Omega* 10,
+  61276–61287.
+  [DOI](https://doi.org/10.1021/acsomega.5c05493) ·
+  [inspected university-hosted published PDF](https://www.pt.bme.hu/publikaciok/2010_publ_sustainable-reinforcement-for-rubbers-potential-application-of-recycled-carbon-fibers_1229.pdf) ·
+  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+  The original §3.4 REF density is 1.031 ± 0.001 g/cm³. The exact PERBUNAN
+  3445 F/PEG/curatives REF recipe and ACTMIX S-80 as-added product loading
+  remain attached. Density-specific method, count and test conditions remain
+  unknown. Figure 1 carries a separate Ceresana credit and is excluded; the
+  selected original REF result has no identified third-party exception.
+  Source ID: `tamas_benyei_santha_2025_nbr_rcf`
+
+Each rubber PDF's first-page CC BY 4.0 notice was inspected. The reported ±
+amplitudes are retained with unspecified statistical construction and null
+confidence/coverage metadata; neither arithmetic mean nor SD is silently
+inferred. Source articles remain responsible for their results. These licenses
+are not blanket permissions for separately credited material or unrelated
+assets. All selected source and dataset notices above were inspected on
+4 October 2026, with independent retained-byte source-transcription checks.
+
+
+## Metals and natural-fiber references (v0.32.0)
+
+Eight original publications support nine selected source-qualified material
+identities and one numerical property per identity. Project-authored curation
+preserves identity/state, source value and unit spellings, method scope,
+statistical meaning, qualifiers, unknowns and source discrepancies. Exact
+scientific-notation checking preserves the printed mantissa precision; it does
+not convert units or reconstruct measurements. Four-language material names
+are machine-assisted project translations, not independently scientifically
+reviewed translations. Original source titles and designations remain available.
+
+The public contribution contains only minimal selected factual transcriptions,
+citations, exact locators, source-identity hashes and original qualifications.
+No source PDF, HTML/XML, complete source table, extracted full-text dump,
+figure, graph, screenshot, page render or failed-download response is bundled.
+The project MIT license does not relicense publications or other source works.
+Source-notice inspection and source-transcription review are not independent
+legal clearance, scientific validation, raw-data reanalysis or endorsement.
+
+### Three magnesium-alloy and zinc references
+
+- Helder Puga, Vitor Carneiro, Joaquim Barbosa and Vanessa Vieira (2015),
+  *Effect of Ultrasonic Treatment in the Static and Dynamic Mechanical Behavior
+  of AZ91D Mg Alloy*, *Metals* 5(4), 2210–2221.
+  [DOI](https://doi.org/10.3390/met5042210) ·
+  [publisher article](https://www.mdpi.com/2075-4701/5/4/2210) ·
+  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+  The PDF's final notice on p.12 / printed p.2221 identifies the authors'
+  copyright and CC BY 4.0 reuse terms. The selected original non-treated
+  as-cast AZ91D mean UTS **160 MPa** is on p.7 / printed p.2216, §3 below
+  Table 2. Curation retains measured composition, ten tensile specimens,
+  qualitative room temperature, 0.02 s⁻¹ and missing UTS uncertainty; it does
+  not transfer hardness/porosity statistics or ultrasonic-treatment results.
+  Source ID: `puga_2015_az91d_ultrasound`
+- Mariusz Kulczyk, Jacek Skiba, Monika Skorupska, Sylwia Przybysz and Julita
+  Smalc-Koziorowska (2022), *Influence of Strain Rates during Severe Plastic
+  Strain Processes on Microstructural and Mechanical Evolution in Pure Zinc*,
+  *Materials* 15(14), 4892.
+  [DOI](https://doi.org/10.3390/ma15144892) ·
+  [publisher article](https://www.mdpi.com/1996-1944/15/14/4892) ·
+  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+  The PDF p.1 copyright/license block and deposited article notice explicitly
+  identify CC BY 4.0. The selected original Table 2 p.7 UTS / column 0 result
+  is **60 ± 6 MPa** for stated 99.9% zinc in the annealed initial state.
+  Curation preserves unknown aggregation, ± kind and count, and separates
+  tensile rate 0.008 s⁻¹ from the processing-rate columns. An initial mirrored
+  copy of the journal PDF was cross-checked against publisher/deposited text;
+  independent publisher PDF readback subsequently matched its bytes. This
+  appended verification does not erase the original retrieval history.
+  Source ID: `kulczyk_2022_pure_zinc_strain_rates`
+- Yong Chen, Yuan Yao, Shengli Han, Xiaowei Feng, Tiegang Luo and Kaihong Zheng
+  (2023), *Study on Microstructure and Mechanical Properties of TC4/AZ31
+  Magnesium Matrix Nanocomposites*, *Materials* 16(3), 1139.
+  [DOI](https://doi.org/10.3390/ma16031139) ·
+  [publisher article](https://www.mdpi.com/1996-1944/16/3/1139) ·
+  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+  The PDF p.1 and publisher copyright notices identify CC BY 4.0. The selected
+  original Table 2 p.10 AZ31 / UTS / “This work” value is **274 ± 4.9 MPa**,
+  a mean with unspecified ± meaning. Original qualifications preserve the
+  unreinforced as-extruded comparator, three specimens and unknown tensile
+  rate. Composite-fabrication settings remain study context, not a separately
+  itemized AZ31 protocol. Nano-TC4/acetone preparation is not assigned to
+  AZ31. Duplicated/overlaid extracted text is distinguished from the clean,
+  legible independent render of p.4. Source ID: `chen_2023_az31_tc4_composites`
+
+The three selected results are article-authored experiments, without an
+identified separate third-party credit for those facts. Complete tables,
+comparison literature rows and publisher source assets are excluded.
+
+### NBS molybdenum and tungsten ambient-density measurements
+
+- A. Cezairliyan, M. S. Morse, H. A. Berman and C. W. Beckett (1970),
+  *High-Speed (Subsecond) Measurement of Heat Capacity, Electrical Resistivity,
+  and Thermal Radiation Properties of Molybdenum in the Range 1900 to 2800 K*,
+  *Journal of Research of the National Bureau of Standards, Section A:
+  Physics and Chemistry* 74A(1), 65–92.
+  [DOI](https://doi.org/10.6028/jres.074A.010) ·
+  [official NIST PDF](https://nvlpubs.nist.gov/nistpubs/jres/74A/jresv74An1p65_A1b.pdf).
+  The selected original density is **10.21 × 10³ kg/m³ at 298 K**, printed
+  p.72 §4.2(d), four water-displacement/pycnometer determinations. Relative
+  SEM **0.02%** on p.72/Table 12 p.86 is kept separate from **approximately
+  0.1% estimated inaccuracy** on p.84/Table 12 p.86. Original qualifications
+  retain the impurity inventory, unknown density/annealing chronology and
+  unknown density-test pressure; no absolute uncertainty, combined interval,
+  purity certificate or high-temperature density is constructed.
+  Source ID: `cezairliyan_1970_molybdenum`
+- A. Cezairliyan and J. L. McClure (1971), *High-Speed (Subsecond) Measurement
+  of Heat Capacity, Electrical Resistivity, and Thermal Radiation Properties
+  of Tungsten in the Range 2000 to 3600 K*, *Journal of Research of the
+  National Bureau of Standards, Section A: Physics and Chemistry* 75A(4),
+  283–290.
+  [DOI](https://doi.org/10.6028/jres.075A.027) ·
+  [official NIST PDF](https://nvlpubs.nist.gov/nistpubs/jres/75A/jresv75An4p283_A1b.pdf).
+  The selected original measured density is **19.23 × 10³ kg/m³ at 293 K**,
+  printed p.284 §2 final paragraph. Original qualifications preserve unknown
+  density method, count and uncertainty, impurity inventory and unspecified
+  density timing relative to annealing. Molybdenum's procedure/uncertainty and
+  the separate high-temperature-property errors are not transferred.
+  Source ID: `cezairliyan_1971_tungsten`
+
+Both mastheads identify the authors with the National Bureau of Standards.
+The [NIST Technical Series rights policy](https://www.nist.gov/open/copyright-fair-use-and-licensing-statements-srd-data-software-and-technical-series-publications),
+inspected on 4 October 2026, supports the scoped employee-authored technical-
+publication branch: no U.S. copyright protection for government-authored work,
+and the policy's worldwide reprinting/derivative-work grant where NIST can
+assert foreign rights. These sources are not assigned a Creative Commons
+license. No blanket permission for Standard Reference Data, the separately
+excluded cryogenic coefficient datasets, third-party content or all government
+web material is implied.
+
+Republished courtesy of the National Institute of Standards and Technology.
+
+### Romanian flax and hemp technical-fiber bundles
+
+Constantin Stochioiu, Miruna Ciolcă and Anca-Loredana Deca (2024),
+*Mechanical Characterization of Flax and Hemp Fibers Cultivated in Romania*,
+*Materials* 17(19), 4871.
+[DOI](https://doi.org/10.3390/ma17194871) ·
+[publisher article](https://www.mdpi.com/1996-1944/17/19/4871) ·
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+The PDF p.1 and deposited XML permissions identify authors' copyright and
+CC BY 4.0. Selected original Table 4 p.10 gives the 10-mm-gauge mean chord
+moduli: **31.75 GPa, CV 56.12%** for flax and **22.63 GPa, CV 72.02%** for
+hemp. The literature-survey Tables 1–2 are not selected.
+
+Original curation keeps each biological identity, 25 tested bundles per group,
+0.1–0.2% chord window, circular minimum-area approximation, slack correction,
+no compliance correction and unknown test climate/retained count. The method
+text is correctly located on p.8, with Figure 6 p.7. Methods C1557-03 and
+bibliography C1557 (2020) remain an unresolved exact-edition discrepancy. CV is
+not converted to SD. Broad composite classification refers to natural
+hierarchical bundles, not engineered resin-composite specimens.
+Source ID: `stochioiu_2024_romania_fibers`.
+
+### Native degummed control-diet silkworm fibroin
+
+Lan Cheng, Huiming Huang, Jingyou Zeng, Zulan Liu, Xiaoling Tong, Zhi Li,
+Hongping Zhao and Fangyin Dai (2019 issue; published 20 December 2018),
+*Effect of Different Additives in Diets on Secondary Structure, Thermal and
+Mechanical Properties of Silkworm Silk*, *Materials* 12(1), 14.
+[DOI](https://doi.org/10.3390/ma12010014) ·
+[publisher article](https://www.mdpi.com/1996-1944/12/1/14) ·
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+The PDF p.15 final notice and deposited XML permissions identify authors'
+copyright and CC BY 4.0. The selected original control-diet quasistatic strength
+is **332 MPa**, §3.4 p.8, supported by Figure 4b/caption p.10 as a mean with
+SD. No figure or digitized error bar is reproduced.
+
+Original qualifications retain Chinese strain 932, native degummed fibers,
+thirty test samples from five selected cocoons, intraspecific/intraindividual
+variability and ambient-test unknowns. Known graphical SD has null numerical
+amplitude, never zero or a reconstructed number. The §2.7 ANOVA/Figure 4
+unpaired two-tailed t-test discrepancy is recorded without a significance claim.
+No regenerated-silk, modified-diet or dynamic-analysis value is substituted.
+Source ID: `cheng_2019_silk_diets`.
+
+### Soap-cleaned Latxa sheep wool from Urnieta
+
+Aitor Arbelaiz, Telmo Yurramendi, Ander Larruscain, Ane Arrizabalaga,
+Arantxa Eceiza and Cristina Peña-Rodriguez (2024), *Preparation and
+Characterization of Novel Poly(Lactic Acid) Composites Reinforced with “Latxa”
+Sheep Wool Fibers: The Effect of Peroxide Surface Treatments and Fiber Content*,
+*Materials* 17(19), 4912.
+[DOI](https://doi.org/10.3390/ma17194912) ·
+[publisher article](https://www.mdpi.com/1996-1944/17/19/4912) ·
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+The PDF p.1 copyright/license notice and deposited XML permissions identify
+©2024 by the authors and CC BY 4.0. The selected Table 2 p.7 Soap cleaned /
+Strength / Current work result is **163 ± 23 MPa**, an original standalone-
+fiber result with no separately credited third-party exception. Cited flax/sisal
+comparison rows, peroxide-treated results and PLA-composite results are excluded.
+
+Original curation preserves explicit SD with unnamed central aggregation,
+fifteen tested fibers, 10-mm gauge, 1 mm/min and cylindrical-area approximation.
+The 55 °C soap cleaning is not test temperature; climate, exact test
+conditioning and successful count remain unknown. Wool is a natural protein
+fiber with possible residual lanolin, not purified keratin. The approximate
+average diameter is not used for numerical reanalysis.
+Source ID: `arbelaiz_2024_latxa_wool`.
+
+All six article-specific CC BY 4.0 notices and the two NBS rights branches were
+independently inspected on 4 October 2026. The eight publisher/NIST PDFs and
+three deposited fiber-paper XML files matched the inspected assets. These
+integrity and source-transcription checks are not scientific truth guarantees,
+a comprehensive errata/retraction audit or final software/release validation.
+Attribution, source/DOI links, license/policy links and the descriptions of
+project-authored qualifications above identify the limited adaptation. Rights
+do not automatically extend to separately credited third-party material or
+unrelated assets. See the [full scientific scope](docs/MATERIAL_COVERAGE_v0.32.0.md).
+
+
+## Porous, natural and mineral references (v0.33.0)
+
+Eight selected density facts are transcribed from seven original experimental
+articles. Each article-specific notice identifies
+[Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/),
+independently inspected on 5 October 2026. Attribution, article/source links,
+license links and the limited changes described below apply to these selected
+facts. The project's MIT license does not relicense source articles or imply
+author/publisher endorsement. No source PDF, full HTML/XML, complete table,
+figure, screenshot or source dump is included.
+
+### Lupranol-based LPO-1 rigid polyurethane foam
+
+Aiga Ivdre, Mikelis Kirpluks, Arnis Abolins, Laima Vevere, Beatrise Sture,
+Aigars Paze, Daniela Godina, Janis Rizikovs and Ugis Cabulis (2024),
+*Rigid Polyurethane Foams’ Development and Optimization from Polyols Based on
+Depolymerized Suberin and Tall Oil Fatty Acids*, *Polymers* 16(7), 942.
+[DOI](https://doi.org/10.3390/polym16070942) ·
+[full article](https://pmc.ncbi.nlm.nih.gov/articles/PMC11013755/) ·
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+The original article XML permissions identify the article-level license.
+[Table 10, LPO-1 × Apparent density](https://pmc.ncbi.nlm.nih.gov/articles/PMC11013755/#polymers-16-00942-t010)
+supplies **43.2 kg/m³**. The selected optimized foam is the Table 9 Lupranol
+recipe, not the suberin-based SPO formulation despite the article title.
+
+Original curation preserves the apparent-density label, source-reported
+ISO 845:2006 method, room-temperature 24 h cure and unknown density aggregation,
+count, uncertainty and exact test temperature. Neither modeled target 45 nor
+compression-normalization 40 kg/m³ replaces the selected value. The 94 vol.%
+closed-cell content is not total porosity; cup and compression sample counts
+are not density counts. No other formulation or mechanical property is imported.
+Source ID: `ivdre_2024_lpo_rigid_pur`.
+
+### AMD5-derived open-cell aluminum-alloy SPS foam
+
+Alexandra Kosenko, Konstantin Pushnitsa, Artem Kim, Pavel Novikov and
+Anatoliy A. Popovich (2022), *Structural, Electrical, and Mechanical Properties
+Investigation of Open-Cell Aluminum Foams Obtained by Spark Plasma Sintering
+and Replication on Polyurethane Template*, *Materials* 15(3), 931.
+[DOI](https://doi.org/10.3390/ma15030931) ·
+[full article](https://pmc.ncbi.nlm.nih.gov/articles/PMC8839437/) ·
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+The original article XML permissions identify the article-level license.
+[Table 4, SPS × Density](https://pmc.ncbi.nlm.nih.gov/articles/PMC8839437/#materials-15-00931-t004)
+supplies **0.45 g/cm³**, with source unit/rounding retained.
+
+Original curation preserves the AMD5 Al–Mg–Ti input chemistry and selected SPS
+process, without declaring a final chemical assay or finished-material grade.
+Paraffin-sealed Archimedes weighing in ethanol is pore-inclusive, not skeletal;
+source apparent/bulk terminology, density n/aggregation/uncertainty and coating-
+volume correction remain unspecified. Table 4 “Underwater Weight” / ethanol
+and Table 6 g/m³ / selected Table 4 g/cm³ discrepancies remain explicit. The
+25 °C ethanol reference is not an asserted specimen-test setpoint. No ASD6
+replication result, compression property or third-party Table 6 comparison is
+selected. Source ID: `kosenko_2022_sps_al_foam`.
+
+### Quercus suber natural reproduction cork
+
+Denni Prasetia, Byantara Darsan Purusatama, Jong Ho Kim, Jae Hyuk Jang,
+Se-Yeong Park, Seung-Hwan Lee, Apri Heri Iswanto and Nam Hun Kim (2024),
+*Effects of boiling water treatment on the physical properties of Quercus
+variabilis virgin cork grown in Korea*, *Scientific Reports* 14, 5457.
+[DOI](https://doi.org/10.1038/s41598-024-56110-5) ·
+[publisher article](https://www.nature.com/articles/s41598-024-56110-5) ·
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+The inspected publisher PDF p.14 expressly supplies the license; the review
+applies to the PDF marked “corrected publication 2024”. Although the article
+title names Quercus variabilis, the selected original cell is the separate
+Quercus suber reproduction-cork comparator:
+[Table 5, Qs RC / Untreated / Density](https://pmc.ncbi.nlm.nih.gov/articles/PMC10914824/#Tab5),
+PDF p.9, **0.17 g/cm³**, with separately identified **SD 0.01 g/cm³**.
+
+Original curation preserves the unlabelled central aggregation as reported
+value, n=10 within the selected species/treatment group, air-dried mass/volume
+method, absent volume subprocedure, unspecified apparent/bulk label, moisture
+scope and conditioning versus test-temperature distinction. Study untreated
+does not mean never commercially processed. No mean, confidence/min-max range,
+other species' green density or boiled-cork identity is inferred. Broad
+composite mapping means natural hierarchical cork tissue, without an artificial
+binder claim. Source ID: `prasetia_2024_cork_physical`.
+
+### Moso and Guadua bamboo culms
+
+Ben Drury, Cameron Padfield, Mirko Russo, Lowri Swygart, Oliver Spalton,
+Sam Froggatt and Amir Mofidi (2023), *Assessment of the Compression Properties
+of Different Giant Bamboo Species for Sustainable Construction*,
+*Sustainability* 15(8), 6472.
+[DOI](https://doi.org/10.3390/su15086472) ·
+[publisher article](https://www.mdpi.com/2071-1050/15/8/6472) ·
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Article-specific PDF p.1 and publisher footer explicitly identify CC BY 4.0.
+Generic HTML `dc.rights` metadata instead mentions CC BY 3.0; the discrepancy
+is retained and the article-specific statement/PDF support the CC BY 4.0 notice.
+[Table 1, Moso and Guadua rows × ρ](https://www.mdpi.com/2071-1050/15/8/6472#table_body_display_sustainability-15-06472-t001),
+PDF p.6, supplies **746 kg/m³** and **655 kg/m³**, respectively.
+
+Original curation distinguishes Phyllostachys edulis from Guadua angustifolia,
+each a species average for six specimens (three nodal and three internodal),
+without a separately specified averaging estimator or density uncertainty.
+Fumigation applies to all shipping containers; Guadua also received borax and
+pierced nodes. One-year laboratory equilibration and study-wide 15.8% moisture
+do not establish exact species moisture or density-test climate. Density method
+and apparent/bulk basis remain unstated; ISO specimen/compression context is
+not a density-standard claim. No table-average reconstruction, mechanical CoV,
+generic untreated label, skeletal-density claim or central-lumen inclusion is
+inferred. The broad composite category means natural hierarchical tissue, not
+an engineered resin binder or laminate. Source ID: `drury_2023_bamboo_compression`.
+
+### Al-Taouab CP unfilled laboratory plaster
+
+Lokmane Saad Azzem and Nadir Bellel (2022), *Thermal and Physico-Chemical
+Characteristics of Plaster Reinforced with Wheat Straw for Use as Insulating
+Materials in Building*, *Buildings* 12(8), 1119.
+[DOI](https://doi.org/10.3390/buildings12081119) ·
+[publisher article](https://www.mdpi.com/2075-5309/12/8/1119) ·
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+The article-specific publisher copyright footer explicitly identifies CC BY 4.0.
+The selected original **1103.13 kg/m³** apparent density appears in
+[§4.3.1 first paragraph](https://www.mdpi.com/2075-5309/12/8/1119#sec4dot3dot1-buildings-12-01119),
+with Figure 11 and §3.2 Eq. (2) method context.
+
+Original curation preserves zero wheat straw, water/plaster 0.7, 72 h mold plus
+28 laboratory days, pore-inclusive mass/dimensional-volume method, and unknown
+density count, aggregation, uncertainty, moisture and test climate. The CP
+formulation is not a verified commercial grade, pure dihydrate or certified
+oven-dry specimen. Thermal-test temperatures, accuracy and dimensions and
+straw-only drying are not assigned to density. No thermal property is selected.
+Source ID: `saad_azzem_2022_plaster_wheat_straw`.
+
+### Boral-soil control fired-clay brick
+
+Abbas Mohajerani, Aruna Ukwatta, Tristan Jeffrey-Bailey, Michael Swaney,
+Mohtashim Ahmed, Glen Rodwell, Simon Bartolo, Nicky Eshtiaghi and
+Sujeeva Setunge (2019), *A Proposal for Recycling the World’s Unused Stockpiles
+of Treated Wastewater Sludge (Biosolids) in Fired-Clay Bricks*,
+*Buildings* 9(1), 14.
+[DOI](https://doi.org/10.3390/buildings9010014) ·
+[publisher article](https://www.mdpi.com/2075-5309/9/1/14) ·
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+The article-specific publisher copyright footer explicitly identifies CC BY 4.0.
+[Table 4, Bulk Density × Control Bricks](https://www.mdpi.com/2075-5309/9/1/14#table_body_display_buildings-09-00014-t004)
+provides the original **2122 kg/m³** bulk-density result, corroborated by §3.3.
+
+Original curation identifies the laboratory control as 100% supplied brick
+soil / 0% biosolids, not a marketed Boral product grade. It retains preparation,
+1100 °C firing / 3 h hold / furnace cooling, and unknown density-test climate,
+post-firing moisture and density submethod. The global triplicate/average
+statement is in the initial raw-material tests paragraph; its applicability to
+density is unclear. The selected value therefore has no asserted density mean,
+density-specific n=3 or uncertainty. No strength-row 25% composition, Table 11
+estimated data or regression-estimated conductivity is imported as a measured
+property. Source ID: `mohajerani_2019_biosolids_bricks`.
+
+### Upper Silesian K1 quartz-arenite sandstone
+
+Iwona Jonczy and Kamil Mucha (2022), *Relationships between the Petrographic
+and Abrasive Properties of Sandstones in the Aspect of Their Cutting*,
+*Energies* 15(7), 2692.
+[DOI](https://doi.org/10.3390/en15072692) ·
+[publisher article](https://www.mdpi.com/1996-1073/15/7/2692) ·
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+The article-specific publisher copyright footer explicitly identifies CC BY 4.0.
+[Table 3, γs × K1](https://www.mdpi.com/1996-1073/15/7/2692#table_body_display_energies-15-02692-t003)
+provides **2.34 ± 0.01 g/cm³** bulk density; §4.2 reports averages of five
+replicates without naming an arithmetic estimator or defining the ± kind.
+
+Original curation preserves the reported average and unspecified ± separately,
+without relabeling it SD, SE, CI, range or instrument error. It retains dry mass /
+specimen volume and the unresolved dimensions/hydrostatic-volume ambiguity,
+unknown exact mine, drying procedure and test climate. The 50 ± 0.5 mm cylinder
+dimensions are not density uncertainty. Petrographic proportions are not mass
+percentages; mechanical standards do not become density standards. No derived
+2.33–2.35 min/max interval, compressive strength or porosity property is selected.
+Source ID: `jonczy_mucha_2022_sandstones`.
+
+All selected facts are presented as the articles' own experimental results,
+without a separate third-party credit at the selected cells. This does not
+clear unrelated or separately credited article content. The limited adaptations
+are selected factual transcription, structured metadata, authored multilingual
+labels and source-scope qualifications. Source number/unit strings and reported
+precision are retained; no statistical reconstruction, raw-data reanalysis or
+source-asset republication is performed. Independent source-transcription and
+rights checks do not establish independent scientific validation, standard
+compliance, experimental replication, comprehensive errata/retraction review or
+final software/release success. See the [complete scientific scope](docs/MATERIAL_COVERAGE_v0.33.0.md)
+and [migration gates](docs/MIGRATION_v0.33.0.md).
+
+
+## Polymer and biogenic references (v0.34.0)
+
+- Nnaemeka Ewurum, Armando G. McDonald (2025). *Lignin Reinforcement in Polybutylene Succinate Copolymers*. [Original publication](https://doi.org/10.3390/polym17020194); [inspected publisher PDF](https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf). Article p.1: © 2025 the authors, licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Inspected 2026-10-05; SHA-256 `766d17f0e92c7e93cd57a3a5e97dddff0cb66a84bba6bf9118fbd0796d4c2e6f` (3211541 bytes).
+- Maryam Abbasi, Dikshya Pokhrel, Erik R. Coats, Nicholas M. Guho, Armando G. McDonald (2022). *Effect of 3-Hydroxyvalerate Content on Thermal, Mechanical, and Rheological Properties of Poly(3-hydroxybutyrate-co-3-hydroxyvalerate) Biopolymers Produced from Fermented Dairy Manure*. [Original publication](https://doi.org/10.3390/polym14194140); [inspected publisher PDF](https://mdpi-res.com/d_attachment/polymers/polymers-14-04140/article_deploy/polymers-14-04140.pdf). Article p.1: © 2022 the authors, licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Inspected 2026-10-05; SHA-256 `31f8fb795385c4755bf17f104bd963cd3e2b107bef4e4ad9a5f34c7a776092ea` (1190592 bytes).
+- Asanda Mtibe, Lerato Hlekelele, Phumelele E. Kleyi, Sudhakar Muniyasamy, Nomvuyo E. Nomadolo, Osei Ofosu, Vincent Ojijo, Maya J. John (2022). *Fabrication of a Polybutylene Succinate (PBS)/Polybutylene Adipate-Co-Terephthalate (PBAT)-Based Hybrid System Reinforced with Lignin and Zinc Nanoparticles for Potential Biomedical Applications*. [Original publication](https://doi.org/10.3390/polym14235065); [inspected publisher PDF](https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf). Article p.1: © 2022 the authors, licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Inspected 2026-10-05; SHA-256 `fa72f3441329d8db6348926906817ebac7b3bd7077a90e836f75f8ecdb087287` (1922433 bytes).
+
+Only selected original experimental facts, bibliographic attribution and
+original curation are included. Adaptations are structured transcription,
+machine-assisted English/Chinese/Japanese/German names and scope qualifications.
+Source number/unit precision is preserved. No full tables, figures, source PDFs,
+extracted text or screenshots are bundled or relicensed under the project MIT
+license. The local hashes identify the actual inspected main PDFs; no
+supplementary-asset hash or comprehensive errata audit is claimed.
+
+Selected locators: Ewurum/McDonald Table 6 p.12 (B0/B20 modulus), Table 1 p.5
+(lignin density), methods pp.3/5; Abbasi Table 9 p.15 (PHBV-39 modulus), Table 1
+pp.2–3 and methods pp.4–5; Mtibe Table 3 p.7 (PBAT and unfilled PBS/PBAT modulus),
+identity/preparation p.3 and test method p.5. Third-party literature comparisons,
+manufacturer property values, other formulations and held candidates are not
+selected. The independent check concerns source transcription, not scientific
+peer review, raw-data reanalysis, experiment verification or legal clearance.
+
+## v0.35.0 selected CIRAD/GWDD collection facts and historical taxonomy
+
+The bulk natural-material lane uses only the exact independently reviewed v2
+selection (source batch SHA-256
+`5e059c0565f13610b307d9f71b1a29c65bec46aff127392d0b10eba469aef032`).
+Source-supported staging is separate from explicit catalogue admission. The
+held v1 candidate selection is never admitted. The reusable importer does not
+extend these rights conclusions to other rows or other datasets.
+
+- CIRAD wood collection dataset, version 4.1, DOI
+  [10.18167/DVN1/CDHU51](https://dataverse.cirad.fr/dataset.xhtml?persistentId=doi:10.18167/DVN1/CDHU51),
+  explicit CC BY 4.0 grant verified in pinned official dataset metadata. Original
+  file 11836 is `2021- 06 Cirad wood collection index.csv`, SHA-256
+  `26c493495a2941782210021f3a51436aa63d1c1d8efae57f422e8986b8f6d53d`.
+  Credit Patrick Langbour, Sébastien Paradis, Bernard Thibaut and CIRAD. The
+  deposited GWDD citation's original author/name wording remains separately
+  preserved; the normalized methods attribution corrects its author-order error
+- Global Wood Density Database v2, deposited files v2.1, DOI
+  [10.5281/zenodo.16919510](https://zenodo.org/records/16919510), CC BY 4.0.
+  Credit Fabian Jörg Fischer and the GWDD contributors, with original CIRAD
+  attribution retained. The selected `gwdd_v2.1.csv` file is SHA-256
+  `f8806eb4b98589b3f9be778adff026477cac12209ea1490b2ba556e0f7423e92`;
+  `columns_gwdd_v2.1.csv` is SHA-256
+  `e66066f57dc2ac4f2e786aaa53cd75d8a557d67d985065ee22a71df2c3569148`.
+  No compilation-level grant is used to clear restricted original sources
+- World Flora Online Plant List, June 2023, DOI
+  [10.5281/zenodo.8079052](https://zenodo.org/records/8079052), CC0 1.0.
+  Credit the World Flora Online Consortium, Alan Elliott, Roger Hyam and William
+  Ulate. Historical backbone archive `_DwC_backbone_R.zip`, SHA-256
+  `854bf0ab8e1b836b79137d56481c536f1b0779214538ef23e56c4dc61849d8db`.
+  Exact original names/authors, accepted IDs, chains, rank/hybrid markers and
+  backbone locators remain source-qualified; this is not current-taxonomy advice
+
+Adaptations consist of selected factual transcription, structured identity and
+provenance metadata, explicit interpretation/missingness, four-language interface
+labels and documented source-applied conversion auditing. These facts retain
+source-specific rights and are not relicensed under project MIT. The full source
+CSV/backbone caches, source PDFs, screenshots, photographs and figures are not
+bundled. CC BY attribution, release/file hashes and grant metadata survive in the
+required source registry and source-complete inspection views.
+
+The collection measurement-method reference is Langbour, Patrick; Paradis,
+Sébastien; Thibaut, Bernard (2019), *Description of the Cirad wood collection in
+Montpellier, France, representing eight thousand identified species*, DOI
+[10.19182/bft2019.339.a31709](https://revues.cirad.fr/index.php/BFT/article/view/31709).
+Its historical PDF shows CC BY-ND 4.0 while the current landing page shows CC BY
+4.0; the separate dataset grant governs the selected data. The paper is cited
+and summarized factually without redistributing its assets.
+
+The empirical conversion-method reference is Vieilledent et al. (2018), *New
+formula and conversion factor to compute basic wood density of tree species
+using a global wood technology database*, DOI
+[10.1002/ajb2.1175](https://bsapubs.onlinelibrary.wiley.com/doi/10.1002/ajb2.1175).
+Its publication-rounded coefficient 0.828 is distinguished from the deposited
+GWDD coefficient 0.8281316. The 2018 calibration database is distinct from the
+2019 collection; its specimen counts, trunk/drying conditions and uncertainty
+are not imported as accession facts. Bibliographic citation and independently
+authored factual method summaries do not assert a new article-asset reuse grant.
+
+Selected properties are conversion-derived basic-density estimates for one
+collection accession, not direct basic-density measurements, species means or
+engineering allowables. Nominal conversion moisture 12% is not actual specimen
+moisture. Source-method uncertainty and decimal rounding are not individual
+uncertainty. GWDD `wsg_est`, BY-SA/PROSEA source rows and aggregates containing
+held rows remain excluded. Palm material remains anatomically unspecified.
+
+The GWDD definition/method reference is Fischer et al. (2026), *Beyond species
+means – the intraspecific contribution to global wood density variation*,
+DOI [10.1111/nph.70860](https://doi.org/10.1111/nph.70860). The inspected
+[institutional full text](https://research.chalmers.se/publication/550491/file/550491_Fulltext.pdf)
+has SHA-256 `dd237216441203ca80e62710687f82b58ad753d7e33ea682f60cfdd76492ee31`.
+Printed p.6 / PDF page 7 supports the basic-density mass/volume definition,
+water-density convention of 1 g/cm³ and inclusion of tree-like monocot tissues.
+The derivation retains an explicit source dependency for these basis conventions.
+This entry is bibliographic/factual method provenance only; the PDF is not bundled
+and its citation does not grant reuse of paper assets.

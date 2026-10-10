@@ -40,12 +40,12 @@ def main():
         run(builder, '-m', 'pip', 'install', '--no-deps', '--only-binary=:all:', '-r', CI / 'build-requirements.txt', cwd=work, env=env)
         # No isolated resolver may silently choose a different build backend.
         run(builder, '-m', 'pip', 'wheel', '--no-deps', '--no-build-isolation', '--wheel-dir', wheels,
-            ROOT / 'federation', ROOT / 'query-service', ROOT / 'lifecycle', ROOT, ROOT.parents[1], cwd=work, env=env)
+            ROOT / 'federation', ROOT / 'query-service', ROOT / 'lifecycle', ROOT, ROOT.parents[1], ROOT.parents[1] / 'formal-catalog', cwd=work, env=env)
         run(python, '-m', 'pip', 'install', '--no-deps', '--only-binary=:all:', 'pip==26.2.1', cwd=work, env=env)
         run(python, '-m', 'pip', 'install', '--no-deps', '--only-binary=:all:', '-r', ROOT / 'requirements-lock.txt', cwd=work, env=env)
         local_wheels = sorted(wheels.glob('*.whl'))
-        if len(local_wheels) != 5:
-            raise RuntimeError('Expected exactly five local package wheels')
+        if len(local_wheels) != 6:
+            raise RuntimeError('Expected exactly six local package wheels')
         run(python, '-m', 'pip', 'install', '--no-index', '--no-deps', *local_wheels, cwd=work, env=env)
         run(python, '-m', 'pip', 'check', cwd=work, env=env)
         env['PYTHONPATH'] = str(CI)  # Only the offline guard, never package source roots.
