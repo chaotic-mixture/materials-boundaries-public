@@ -107,6 +107,12 @@ least one resolved property. A malformed unselected record is rejected before
 filtering. Validation is not independent scientific peer review, a specimen
 check, native-language certification or legal clearance.
 
+Structural duplicate checks treat recursively normalized evidence as an unordered
+set: repeating a citation, reordering citations or reordering their support tags
+cannot make a cloned identity or state distinct. This affects comparison signatures
+only; source records retain their original evidence arrays. Other array order and
+multiplicity are unchanged, and support tags still require unique items.
+
 `resolve_material(state_id, materials, properties, sources)` supplies an
 inspection envelope containing the identity, nullable grade, state, properties
 and referenced source records. This is an in-process inspection API; there is

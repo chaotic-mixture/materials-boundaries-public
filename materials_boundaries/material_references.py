@@ -463,12 +463,16 @@ def _validate_structure(materials, properties):
 
 
 def _structural_signature(value, field=None):
-    """Stable factual signature; evidence/support array ordering is immaterial."""
+    """Stable factual signature; repeated evidence and evidence/support order are immaterial."""
     if isinstance(value, dict):
         return {key: _structural_signature(item, key) for key, item in sorted(value.items())}
     if isinstance(value, list):
         values = [_structural_signature(item) for item in value]
-        if field in {"evidence", "supports"}:
+        if field == "evidence":
+            unique = {json.dumps(item, sort_keys=True, ensure_ascii=False,
+                                 separators=(",", ":")): item for item in values}
+            return [unique[key] for key in sorted(unique)]
+        if field == "supports":
             values.sort(key=lambda item: json.dumps(item, sort_keys=True, ensure_ascii=False))
         return values
     return value
