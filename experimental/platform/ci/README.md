@@ -21,10 +21,10 @@ into a separate clean runtime. The suite minima are:
 | `offline-fixtures-and-wheels` | Independent API/lifecycle and linked integration | 18 |
 | `offline-fixtures-and-wheels` | NOMAD ingestion, incremental recovery and offline formal-review gaps | 105 |
 | First job subtotal | | **204** |
-| `optional-core-catalog` | Optional installed-core/computed catalog | 96 |
+| `optional-core-catalog` | Optional installed-core/computed catalog and private geometry diagnostics | 117 |
 | `optional-core-catalog` | Formal catalog add-on | 11 |
-| Second job subtotal | | **107** |
-| **Required minimum across both jobs per interpreter** | | **311** |
+| Second job subtotal | | **128** |
+| **Required minimum across both jobs per interpreter** | | **332** |
 
 These numbers are discovery requirements, not a claim that the current complete
 suite has executed. The verification history below identifies actual results.
@@ -47,9 +47,13 @@ package index. The jobs also check:
   optional catalog and formal add-on suites.
 
 The suite minima detect reduced discovery while allowing added tests.
-[required_test_ids.json](required_test_ids.json) additionally pins **90 required
+[required_test_ids.json](required_test_ids.json) additionally pins **111 required
 IDs**: 61 earlier ingestion tests, 19 offline formal-review-gap tests, four
-baseline path-portability tests and six selected-group consistency regressions.
+baseline path-portability tests, six selected-group consistency regressions and
+21 private-geometry diagnostic tests. The catalog runner also requires the
+geometry test module to exist. These new tests exercise the checkout-only
+diagnostic CLI with synthetic inputs; they do not install it as a wheel entry
+point or load private geometry.
 Unrelated extra tests cannot replace those regressions merely by preserving the
 count. Each suite prints its actual discovered IDs as a `DISCOVERED` JSON record. Discovery
 errors, duplicate discovered IDs, missing required IDs, a reduced count or a
@@ -79,7 +83,17 @@ python -m unittest discover -s experimental/platform/ingestion -p test_formal_re
 ```
 
 That targeted command covers 19 tests. It is not the full 105-test ingestion
-suite, the 311-test combined minimum, or either installed-wheel CI runner.
+suite, the 332-test combined minimum, or either installed-wheel CI runner.
+
+The checkout-only geometry diagnostic has a separate focused command:
+
+```sh
+python -m unittest discover -s experimental/platform/query-service/catalog-tests -p test_geometry_diagnostics.py -v
+```
+
+Its 21 synthetic tests also run as part of the catalog job's 117-test discovery.
+The normal catalog runner requires every discovered test to execute, with no
+skips or expected failures. A focused pass is not a complete 332-test matrix pass.
 
 Run the two CI runner commands with each supported interpreter to reproduce the
 matrix. Each creates fresh build and runtime virtual environments and removes
@@ -153,13 +167,29 @@ experimental matrix in
 with **292 tests per interpreter**. That result covers the six selected-group
 regressions and remains evidence for that exact revision.
 
-For the new offline formal-review-gap tool, **19 targeted tests passed locally
-with zero failures, errors or skips**. The complete current **311-test** set has
+For the offline formal-review-gap revision, **19 targeted tests passed locally
+with zero failures, errors or skips**. At that verification step the **311-test** set had
 **NOT BEEN RERUN** locally or established by a new hosted matrix result in this
 verification step. The prior 286/292 results and the new targeted result are
 separate evidence; their arithmetic does not constitute a 311-test suite pass.
 The existing three-branch trigger allowlist is unchanged by this report-tool
-work, and no new branch activation is asserted here.
+work, and no new branch activation was asserted by that step.
+
+The subsequent private-geometry implementation passed **21 focused synthetic
+tests**, with zero failures, errors or skips. Its CI integration adds those exact
+IDs and raises the catalog minimum to 117, making the current combined minimum
+332. This discovery contract does not retroactively expand earlier run results.
+A subsequent local Windows CPython 3.11 integration check executed **117 local
+catalog tests and 11 formal catalog tests**, all passing without skips, including
+all 21 geometry tests. It reused existing wheels after matching all 102 package
+files against source and installed bytes, with external networking blocked. The
+other 204 tests were discovered only. This is not a fresh Linux build or a
+332-test execution result.
+
+Publication to the already listed `experiment/reviewed-subset-audit` branch uses
+the existing workflow filters; this integration adds no branch, trigger or
+permission. See [geometry diagnostics](../GEOMETRY_DIAGNOSTICS.md) for the
+checkout-only command, fixed numerical criteria and held-output boundary.
 
 Python 3.13/3.14 matrix expansion is deferred until the pinned binary dependency
 set and full suite have been verified on those interpreters. Package metadata
