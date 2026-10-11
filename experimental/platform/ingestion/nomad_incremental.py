@@ -206,14 +206,26 @@ def public_transport(endpoint, body, limit):
 
 def retry_time(headers, now):
     value = headers.get('retry-after', '')
+    positive_numeric = isinstance(value, str) and value.strip().removeprefix('+').isdecimal()
     try:
         seconds = int(value)
-        return now + max(1, seconds)
+    except OverflowError:
+        raise ValueError('Retry-After seconds exceed supported UTC range') from None
     except (ValueError, TypeError):
+        # Python may refuse a numeric string before conversion because of its
+        # digit limit. Never shorten that positive wait to the malformed fallback.
+        if positive_numeric:
+            raise ValueError('Retry-After seconds exceed supported UTC range') from None
         try:
             return max(now + 1, parsedate_to_datetime(value).timestamp())
         except (ValueError, TypeError, OverflowError):
             return now + 60
+    try:
+        until = now + max(1, seconds)
+        utc(until)  # Check platform timestamp limits before recording a cooldown.
+    except (ValueError, OverflowError, OSError):
+        raise ValueError('Retry-After seconds exceed supported UTC range') from None
+    return until
 
 
 def integrity(db):

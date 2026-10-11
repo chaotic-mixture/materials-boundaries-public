@@ -116,8 +116,11 @@ recovery procedure. Use local storage with working SQLite and OS locking.
 | Invalid arguments, invalid store or lock conflict | `2` | Correct the reported error; no successful cycle is implied. |
 | Successful offline command | `0` | Inspect its JSON output; this does not imply acquisition completed. |
 
-HTTP 429 and 503 responses persist `Retry-After` as an absolute cooldown, including
-HTTP-date values. The command returns without waiting through that cooldown. A
+HTTP 429 and 503 responses persist representable `Retry-After` values as an
+absolute cooldown, including HTTP-date values. Numeric delays outside the
+platform's UTC range block the cycle without a shorter fallback or automatic
+retry; the attempted request remains charged. The command returns without
+waiting through that cooldown. A
 repeated job during cooldown performs no new request. Public requests also use a
 persisted last-dispatch time for one-second request spacing; this pacing may
 sleep for up to one second. Transport failures retain the partial cycle;
@@ -238,9 +241,11 @@ still necessary.
 
 Only the fixed official public NOMAD archive and attribution endpoints are read.
 No cookies, authentication, environment proxies, alternate endpoints, redirects
-or compressed responses are used. The projection requests scalar density and
-metadata; geometry and raw structure/calculation assets are outside scope and
-rejected if present. No source assets are uploaded. A provider license declaration
+or compressed responses are used. The fixed projection requests scalar density
+and metadata. A known-field denylist rejects recognized geometry and raw asset
+fields; it is not a general sanitizer for arbitrary unexpected provider fields.
+Geometry and raw structure/calculation assets remain outside scope. No source
+assets are uploaded. A provider license declaration
 does not establish upstream ICSD structural rights or complete a rights audit.
 Preserve source references, named authors, URLs, license and stated modifications
 with any later approved distribution.

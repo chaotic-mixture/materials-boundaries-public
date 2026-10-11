@@ -19,12 +19,12 @@ into a separate clean runtime. The suite minima are:
 | `offline-fixtures-and-wheels` | Query API fixtures and mocked transport | 37 |
 | `offline-fixtures-and-wheels` | Local lifecycle | 25 |
 | `offline-fixtures-and-wheels` | Independent API/lifecycle and linked integration | 18 |
-| `offline-fixtures-and-wheels` | NOMAD ingestion, incremental recovery and offline formal-review gaps | 105 |
-| First job subtotal | | **204** |
+| `offline-fixtures-and-wheels` | NOMAD ingestion, incremental recovery and offline formal-review gaps | 106 |
+| First job subtotal | | **205** |
 | `optional-core-catalog` | Optional installed-core/computed catalog and private geometry diagnostics | 117 |
 | `optional-core-catalog` | Formal catalog add-on | 11 |
 | Second job subtotal | | **128** |
-| **Required minimum across both jobs per interpreter** | | **332** |
+| **Required minimum across both jobs per interpreter** | | **333** |
 
 These numbers are discovery requirements, not a claim that the current complete
 suite has executed. The verification history below identifies actual results.
@@ -47,11 +47,12 @@ package index. The jobs also check:
   optional catalog and formal add-on suites.
 
 The suite minima detect reduced discovery while allowing added tests.
-[required_test_ids.json](required_test_ids.json) additionally pins **111 required
+[required_test_ids.json](required_test_ids.json) additionally pins **112 required
 IDs**: 61 earlier ingestion tests, 19 offline formal-review-gap tests, four
 baseline path-portability tests, six selected-group consistency regressions and
-21 private-geometry diagnostic tests. The catalog runner also requires the
-geometry test module to exist. These new tests exercise the checkout-only
+21 private-geometry diagnostic tests, plus one Retry-After
+representability and restart regression. The catalog runner also requires the
+geometry test module to exist. Those 21 geometry tests exercise the checkout-only
 diagnostic CLI with synthetic inputs; they do not install it as a wheel entry
 point or load private geometry.
 Unrelated extra tests cannot replace those regressions merely by preserving the
@@ -82,8 +83,8 @@ To run only the new offline report regression module from the repository root:
 python -m unittest discover -s experimental/platform/ingestion -p test_formal_review_gaps.py -v
 ```
 
-That targeted command covers 19 tests. It is not the full 105-test ingestion
-suite, the 332-test combined minimum, or either installed-wheel CI runner.
+That targeted command covers 19 tests. It is not the full 106-test ingestion
+suite, the 333-test combined minimum, or either installed-wheel CI runner.
 
 The checkout-only geometry diagnostic has a separate focused command:
 
@@ -93,7 +94,7 @@ python -m unittest discover -s experimental/platform/query-service/catalog-tests
 
 Its 21 synthetic tests also run as part of the catalog job's 117-test discovery.
 The normal catalog runner requires every discovered test to execute, with no
-skips or expected failures. A focused pass is not a complete 332-test matrix pass.
+skips or expected failures. A focused pass is not a complete 333-test matrix pass.
 
 Run the two CI runner commands with each supported interpreter to reproduce the
 matrix. Each creates fresh build and runtime virtual environments and removes
@@ -177,7 +178,7 @@ work, and no new branch activation was asserted by that step.
 
 The subsequent private-geometry implementation passed **21 focused synthetic
 tests**, with zero failures, errors or skips. Its CI integration adds those exact
-IDs and raises the catalog minimum to 117, making the current combined minimum
+IDs and raises the catalog minimum to 117, making that revision's combined minimum
 332. This discovery contract does not retroactively expand earlier run results.
 A subsequent local Windows CPython 3.11 integration check executed **117 local
 catalog tests and 11 formal catalog tests**, all passing without skips, including

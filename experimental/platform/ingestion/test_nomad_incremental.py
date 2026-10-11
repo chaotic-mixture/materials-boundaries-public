@@ -7,6 +7,7 @@ from pathlib import Path
 import sqlite3
 import tempfile
 import unittest
+from unittest.mock import patch
 
 import nomad_incremental as inc
 from test_nomad_batch import fixture
@@ -223,6 +224,55 @@ class IncrementalTests(unittest.TestCase):
         paused = self.update(QueueTransport())
         self.assertEqual(paused['status'], 'cooldown')
         self.assertEqual(paused['budget']['requests'], 0)
+
+    def test_unrepresentable_retry_after_blocks_without_resuming_or_committing(self):
+        cases = [('addition_overflow', 429, '9' * 400, None),
+                 ('utc_overflow', 503, str(10 ** 20), None),
+                 ('integer_digit_limit', 429, '9' * 5000, None),
+                 ('platform_utc_oserror', 429, str(10 ** 12), OSError),
+                 ('platform_utc_valueerror', 503, str(10 ** 12), ValueError)]
+        now = float(self.now)
+        original_utc = inc.utc
+        for label, code, value, utc_error in cases:
+            with self.subTest(case=label):
+                store = self.root / label
+                inc.init_store(store, boundary=BOUNDARY, retries=3)
+                row = fixture()
+                initial = inc.update(store, transport=QueueTransport(response([row]),
+                    attribution(row['entry_id'])), clock=lambda: now)
+                self.assertTrue(initial['baseline_committed'])
+                with inc.connect(store, readonly=True) as db:
+                    baseline = inc.meta(db, 'baseline')
+
+                def checked_utc(seconds):
+                    if utc_error and seconds > now + 10 ** 11:
+                        raise utc_error('Synthetic platform timestamp limit')
+                    return original_utc(seconds)
+
+                transport = QueueTransport((code, {'Retry-After': value}, b'{}'))
+                with patch.object(inc, 'utc', side_effect=checked_utc):
+                    blocked = inc.update(store, transport=transport, clock=lambda: now + 100)
+                self.assertEqual(blocked['status'], 'blocked')
+                self.assertFalse(blocked['baseline_committed'])
+                self.assertEqual(blocked['budget'], {'requests': 1, 'bytes_charged': 2, 'retries_used': 0})
+                self.assertEqual(blocked['admitted_delta'], 0)
+                attempt = blocked['acquisition'][0]
+                self.assertEqual(attempt['status'], 'rejected')
+                self.assertEqual(attempt['http_status'], code)
+                self.assertEqual(attempt['error'], 'Retry-After seconds exceed supported UTC range')
+                self.assertNotIn('retry_after_utc', attempt)
+                self.assertIsNone(blocked['not_before_utc'])
+                # Reopen after a plausible fallback delay; a rejected cooldown
+                # must not become a retry even though three retries are allowed.
+                resumed = inc.update(store, transport=transport, clock=lambda: now + 1000)
+                self.assertEqual(resumed, blocked)
+                self.assertEqual(len(transport.calls), 1)
+                with inc.connect(store, readonly=True) as db:
+                    self.assertEqual(inc.meta(db, 'baseline'), baseline)
+                    self.assertEqual(inc.meta(db, 'not_before'), 0)
+                    cycle = inc.latest(db)
+                    self.assertEqual((cycle['phase'], cycle['page'], cycle['cursor']),
+                                     ('scan_archive', 0, None))
 
     def test_crash_during_network_reserves_attempt_and_bytes(self):
         self.init(retries=0, max_response=1000)
