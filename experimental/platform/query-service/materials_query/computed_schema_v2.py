@@ -186,6 +186,9 @@ def validate_review_v2(review):
         for g in details:
             mid = g['provider_material_id']
             require(g['entry_count'] == len(groups[mid]) and g['selected_group'] == (mid == r['provider_material_id']), 'Group detail count/selection mismatch')
+            if g['selected_group']:
+                require(r['material_scope']['space_group_number_provider_reported'] in g['space_groups'], 'Selected group symmetry mismatch')
+                require(r['provenance']['mainfile'] in g['mainfiles'], 'Selected group mainfile mismatch')
             require(group_compositions.setdefault(mid,bucket) == bucket, 'Provider group has conflicting compositions')
             for eid in groups[mid]:
                 require(entry_groups.setdefault(eid,mid) == mid, 'Calculation maps to multiple provider groups')

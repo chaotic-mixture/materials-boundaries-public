@@ -21,10 +21,10 @@ into a separate clean runtime. The suite minima are:
 | `offline-fixtures-and-wheels` | Independent API/lifecycle and linked integration | 18 |
 | `offline-fixtures-and-wheels` | NOMAD ingestion and incremental recovery | 86 |
 | First job subtotal | | **185** |
-| `optional-core-catalog` | Optional installed-core/computed catalog | 90 |
+| `optional-core-catalog` | Optional installed-core/computed catalog | 96 |
 | `optional-core-catalog` | Formal catalog add-on | 11 |
-| Second job subtotal | | **101** |
-| **Distinct tests across both jobs per interpreter** | | **286** |
+| Second job subtotal | | **107** |
+| **Distinct tests across both jobs per interpreter** | | **292** |
 
 The first job builds four local wheels: federation, query service, lifecycle and
 the umbrella platform. The catalog job builds those four plus the repository's
@@ -45,7 +45,8 @@ package index. The jobs also check:
 
 The suite minima detect reduced discovery while allowing added tests.
 [required_test_ids.json](required_test_ids.json) additionally pins the 61 new
-ingestion tests and four baseline path-portability tests, so unrelated extra
+ingestion tests, four baseline path-portability tests and six selected-group
+consistency regressions, so unrelated extra
 tests cannot replace those regressions merely by preserving the count. Each
 suite prints its actual discovered IDs as a `DISCOVERED` JSON record. Discovery
 errors, duplicate discovered IDs, missing required IDs, a reduced count or a
@@ -89,13 +90,14 @@ are deliberately outside this fixture-only guard.
 ## Trigger and trust boundaries
 
 Pushes run only on `experimental/platform-integration` and
-`experiment/nomad-incremental-review`; pull requests run only when targeting one
+`experiment/nomad-incremental-review` and `experiment/reviewed-subset-audit`;
+pull requests run only when targeting one
 of those exact branches. Both event types are additionally filtered to
 `experimental/platform/**`, `formal-catalog/**`, `materials_boundaries/**`,
 `pyproject.toml`, `LICENSE`, `THIRD_PARTY_NOTICES.md` and
 `.github/workflows/experimental-platform.yml`. Changes outside those paths alone
 do not trigger this workflow. Manual dispatch has no arbitrary inputs, and both
-job guards restrict it to the same two exact branch refs. The token is
+job guards restrict it to the same three exact branch refs. The token is
 contents:read only; checkout does not retain credentials. Official checkout and
 setup-python actions are pinned to verified full release commit SHAs. There is
 no pull_request_target, untrusted event-text shell interpolation, self-hosted
@@ -103,7 +105,7 @@ runner, secret reference, or shell command generated from a provider response.
 
 GitHub requires a workflow_dispatch workflow to exist on the default branch for
 manual dispatch availability. Declaring it here does not promise the Run workflow
-button on these experimental branches. These jobs remain scoped to the two
+button on these experimental branches. These jobs remain scoped to the three
 experimental refs; a scoped push or pull request is the activation path.
 Do not make this path-filtered experimental job a main required check: skipped
 workflows may leave required checks pending. Baseline CI still has its existing
@@ -117,7 +119,7 @@ broad triggers and may also run for the same push.
 - [Setup Python v6.2.0 verified commit](https://github.com/actions/setup-python/commit/a309ff8b426b58ec0e2a45f0f869d46889d02405)
 - [pip repeatable installs](https://pip.pypa.io/en/stable/topics/repeatable-installs/)
 
-## Verification status
+## Earlier incremental baseline verification
 
 The completed Windows CPython 3.11 local regression covered all **286 distinct
 tests**, with zero failures, errors or skips, including the rebuilt installed
@@ -126,13 +128,14 @@ filesystem-only check are recorded in
 [closure verification](../ingestion/VERIFICATION_CLOSURE.md). This is evidence for
 the local suites; it does not assert that these Linux CI runners already passed.
 
-The Ubuntu 24.04 Python 3.11/3.12 matrix for this branch is **NOT RUN** pending the
-coordinated experimental push and actual Actions execution. The available
-local WSL distribution had no Python interpreter; its successful 64-file hash
-check is not a Linux Python-suite pass. Hosted execution must still establish
-event/path filtering, token permissions, hosted image/action compatibility,
-setup-python availability and both matrix results. Local YAML parsing validates
-structure, not GitHub's scheduler or expression engine.
+After that local verification, the Ubuntu 24.04 Python 3.11/3.12 matrix passed
+for incremental commit `094b7a02b639850e8eb2d4021de2a407d83aa454` in
+[run 38101758476](https://github.com/chaotic-mixture/materials-boundaries-public/actions/runs/38101758476).
+Each interpreter executed 286 tests with zero skips. Those results apply to the
+earlier incremental tree. They do not establish that the six subsequent
+selected-group regressions passed on a hosted runner. The current suite minimum
+is 292 per interpreter; the selected-group change requires its own recorded
+local results and exact-commit hosted CI result after publication.
 
 Python 3.13/3.14 matrix expansion is deferred until the pinned binary dependency
 set and full suite have been verified on those interpreters. Package metadata
