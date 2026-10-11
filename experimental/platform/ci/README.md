@@ -19,12 +19,15 @@ into a separate clean runtime. The suite minima are:
 | `offline-fixtures-and-wheels` | Query API fixtures and mocked transport | 37 |
 | `offline-fixtures-and-wheels` | Local lifecycle | 25 |
 | `offline-fixtures-and-wheels` | Independent API/lifecycle and linked integration | 18 |
-| `offline-fixtures-and-wheels` | NOMAD ingestion and incremental recovery | 86 |
-| First job subtotal | | **185** |
+| `offline-fixtures-and-wheels` | NOMAD ingestion, incremental recovery and offline formal-review gaps | 105 |
+| First job subtotal | | **204** |
 | `optional-core-catalog` | Optional installed-core/computed catalog | 96 |
 | `optional-core-catalog` | Formal catalog add-on | 11 |
 | Second job subtotal | | **107** |
-| **Distinct tests across both jobs per interpreter** | | **292** |
+| **Required minimum across both jobs per interpreter** | | **311** |
+
+These numbers are discovery requirements, not a claim that the current complete
+suite has executed. The verification history below identifies actual results.
 
 The first job builds four local wheels: federation, query service, lifecycle and
 the umbrella platform. The catalog job builds those four plus the repository's
@@ -44,11 +47,11 @@ package index. The jobs also check:
   optional catalog and formal add-on suites.
 
 The suite minima detect reduced discovery while allowing added tests.
-[required_test_ids.json](required_test_ids.json) additionally pins the 61 new
-ingestion tests, four baseline path-portability tests and six selected-group
-consistency regressions, so unrelated extra
-tests cannot replace those regressions merely by preserving the count. Each
-suite prints its actual discovered IDs as a `DISCOVERED` JSON record. Discovery
+[required_test_ids.json](required_test_ids.json) additionally pins **90 required
+IDs**: 61 earlier ingestion tests, 19 offline formal-review-gap tests, four
+baseline path-portability tests and six selected-group consistency regressions.
+Unrelated extra tests cannot replace those regressions merely by preserving the
+count. Each suite prints its actual discovered IDs as a `DISCOVERED` JSON record. Discovery
 errors, duplicate discovered IDs, missing required IDs, a reduced count or a
 discovered test that does not execute all fail the check. Failures, errors, skips
 and expected failures also fail the job. Matrix repetitions and separate
@@ -69,7 +72,16 @@ python experimental/platform/ci/run_ci.py
 python experimental/platform/ci/run_catalog_ci.py
 ```
 
-Run both commands separately with each supported interpreter to reproduce the
+To run only the new offline report regression module from the repository root:
+
+```sh
+python -m unittest discover -s experimental/platform/ingestion -p test_formal_review_gaps.py -v
+```
+
+That targeted command covers 19 tests. It is not the full 105-test ingestion
+suite, the 311-test combined minimum, or either installed-wheel CI runner.
+
+Run the two CI runner commands with each supported interpreter to reproduce the
 matrix. Each creates fresh build and runtime virtual environments and removes
 them on completion. Dependency installation needs package-index access. All external
 runtime/QA versions come from the existing requirements-lock.txt; build tools and
@@ -119,7 +131,7 @@ broad triggers and may also run for the same push.
 - [Setup Python v6.2.0 verified commit](https://github.com/actions/setup-python/commit/a309ff8b426b58ec0e2a45f0f869d46889d02405)
 - [pip repeatable installs](https://pip.pypa.io/en/stable/topics/repeatable-installs/)
 
-## Earlier incremental baseline verification
+## Verification history and current scope
 
 The completed Windows CPython 3.11 local regression covered all **286 distinct
 tests**, with zero failures, errors or skips, including the rebuilt installed
@@ -132,10 +144,22 @@ After that local verification, the Ubuntu 24.04 Python 3.11/3.12 matrix passed
 for incremental commit `094b7a02b639850e8eb2d4021de2a407d83aa454` in
 [run 38101758476](https://github.com/chaotic-mixture/materials-boundaries-public/actions/runs/38101758476).
 Each interpreter executed 286 tests with zero skips. Those results apply to the
-earlier incremental tree. They do not establish that the six subsequent
-selected-group regressions passed on a hosted runner. The current suite minimum
-is 292 per interpreter; the selected-group change requires its own recorded
-local results and exact-commit hosted CI result after publication.
+earlier incremental tree.
+
+The subsequent selected-group revision
+`681293c515707ff52974cbbae780d0099d84b5f7` passed the Ubuntu 24.04 Python 3.11/3.12
+experimental matrix in
+[run 38111418493](https://github.com/chaotic-mixture/materials-boundaries-public/actions/runs/38111418493),
+with **292 tests per interpreter**. That result covers the six selected-group
+regressions and remains evidence for that exact revision.
+
+For the new offline formal-review-gap tool, **19 targeted tests passed locally
+with zero failures, errors or skips**. The complete current **311-test** set has
+**NOT BEEN RERUN** locally or established by a new hosted matrix result in this
+verification step. The prior 286/292 results and the new targeted result are
+separate evidence; their arithmetic does not constitute a 311-test suite pass.
+The existing three-branch trigger allowlist is unchanged by this report-tool
+work, and no new branch activation is asserted here.
 
 Python 3.13/3.14 matrix expansion is deferred until the pinned binary dependency
 set and full suite have been verified on those interpreters. Package metadata

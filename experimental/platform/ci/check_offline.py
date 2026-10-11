@@ -23,7 +23,7 @@ SUITES = {
     'api-fixtures': ('query-service/tests', 37),
     'lifecycle': ('lifecycle/tests', 25),
     'linked-integration': ('tests', 18),
-    'nomad-ingestion': ('ingestion', 86),
+    'nomad-ingestion': ('ingestion', 105),
 }
 
 

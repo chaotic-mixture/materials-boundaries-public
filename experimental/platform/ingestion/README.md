@@ -99,3 +99,6 @@ must remain visible in review.
 
 For resumable, bounded updates, durable retry budgets, reviewable deltas and local
 scheduling examples, see [Resumable NOMAD review-queue updates](INCREMENTAL.md).
+
+For a deterministic offline deficiency report of the held two-record review
+priority, see [Offline formal-review gap report](FORMAL_REVIEW_GAPS.md).
