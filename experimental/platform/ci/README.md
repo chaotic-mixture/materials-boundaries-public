@@ -1,32 +1,58 @@
 # Experimental offline CI
 
-This is an independent, experimental-platform-only test job. It does not replace,
+This is an independent, experimental-platform-only workflow. It does not replace,
 relax, or modify `.github/workflows/ci.yml`, frozen v035 data, main release gates,
-production admission, or scientific review. Applying this proposal and activating
-GitHub Actions requires separate approval. There are no schedules, provider
-credentials, live integration jobs, deployments, external dataset uploads, or
+production admission, or scientific review. Its two jobs run only within the
+experimental branch and path boundaries below. There are no schedules, provider
+credentials, live integration jobs, deployments, external dataset uploads or
 artifact publication steps.
 
 ## Coverage
 
-The job targets Ubuntu 24.04 and CPython 3.11 and 3.12. Every matrix
-entry builds the same four local packages using a pinned build tool environment,
-installs only their wheels into a separate clean virtual environment, and runs:
+Both jobs target Ubuntu 24.04 with CPython 3.11 and 3.12. Each matrix entry builds
+local packages using a pinned build tool environment and installs their wheels
+into a separate clean runtime. The suite minima are:
+
+| Job | Suite | Minimum tests |
+| --- | --- | ---: |
+| `offline-fixtures-and-wheels` | Provider synthetic fixtures | 19 |
+| `offline-fixtures-and-wheels` | Query API fixtures and mocked transport | 37 |
+| `offline-fixtures-and-wheels` | Local lifecycle | 25 |
+| `offline-fixtures-and-wheels` | Independent API/lifecycle and linked integration | 18 |
+| `offline-fixtures-and-wheels` | NOMAD ingestion and incremental recovery | 86 |
+| First job subtotal | | **185** |
+| `optional-core-catalog` | Optional installed-core/computed catalog | 90 |
+| `optional-core-catalog` | Formal catalog add-on | 11 |
+| Second job subtotal | | **101** |
+| **Distinct tests across both jobs per interpreter** | | **286** |
+
+The first job builds four local wheels: federation, query service, lifecycle and
+the umbrella platform. The catalog job builds those four plus the repository's
+core and formal catalog add-on, for six local wheels. Query-service and umbrella
+versions remain `0.5.0.dev0`, core remains `0.35.0`, and federation, lifecycle and
+the formal add-on remain `0.1.0`. Core is built locally, not fetched from a
+package index. The jobs also check:
 
 - `pip check` after exact-pinned runtime and QA dependencies and local wheels.
 - Exact LICENSE and THIRD_PARTY_NOTICES.md wheel bytes and License-File metadata.
-- Provider synthetic fixtures: minimum 19 tests, no live provider verification.
-- Query API fixture/mocked transport tests: minimum 21 tests.
-- Local lifecycle tests: minimum 25 tests.
-- Independent API/lifecycle and linked-demo tests: minimum 18 tests.
 - Installed CLI and in-process API smoke from outside the checkout, checking
   module origins, OpenAPI, synthetic MP demo, and disabled MP live path.
 - Two installed linked-demo CLI executions with exact raw/typed/review binding,
   zero canonical/scientific-property admission, and byte-identical dataset.tar.
 - Installed lifecycle CLI fixture capture and staging.
+- All six catalog-job wheel licenses and installed module origins before the
+  optional catalog and formal add-on suites.
 
-The 83-test minimum is split by suite to catch accidental discovery loss while
-allowing new tests. Failures, errors, skips and expected failures fail the job.
+The suite minima detect reduced discovery while allowing added tests.
+[required_test_ids.json](required_test_ids.json) additionally pins the 61 new
+ingestion tests and four baseline path-portability tests, so unrelated extra
+tests cannot replace those regressions merely by preserving the count. Each
+suite prints its actual discovered IDs as a `DISCOVERED` JSON record. Discovery
+errors, duplicate discovered IDs, missing required IDs, a reduced count or a
+discovered test that does not execute all fail the check. Failures, errors, skips
+and expected failures also fail the job. Matrix repetitions and separate
+verification reruns do not increase the distinct-test total.
+
 Some inherited independent tests explicitly import source; the separate installed
 smoke ensures wheel-installed interfaces work without package-source imports.
 API/TestClient checks are not a real browser, accessibility, mobile, deployed API,
@@ -39,11 +65,12 @@ From the repository root on Linux with Python 3.11+:
 
 ```sh
 python experimental/platform/ci/run_ci.py
+python experimental/platform/ci/run_catalog_ci.py
 ```
 
-Run that command separately with each supported interpreter to reproduce the
-matrix. It creates fresh build and runtime virtual environments and removes them
-on completion. Dependency installation needs package-index access. All external
+Run both commands separately with each supported interpreter to reproduce the
+matrix. Each creates fresh build and runtime virtual environments and removes
+them on completion. Dependency installation needs package-index access. All external
 runtime/QA versions come from the existing requirements-lock.txt; build tools and
 packaging are pinned in build-requirements.txt. `--no-deps` prevents unpinned
 transitive resolution, `--only-binary=:all:` refuses external source builds, and
@@ -61,11 +88,14 @@ are deliberately outside this fixture-only guard.
 
 ## Trigger and trust boundaries
 
-Pushes run only on `experimental/platform-integration`; pull requests run only
-when targeting that branch. Both are additionally filtered to changes under
-`experimental/platform/**` or the new workflow file. Other production changes
-alone do not trigger this job. Manual dispatch has no arbitrary inputs, and its
-job guard also restricts execution to the experimental branch. The token is
+Pushes run only on `experimental/platform-integration` and
+`experiment/nomad-incremental-review`; pull requests run only when targeting one
+of those exact branches. Both event types are additionally filtered to
+`experimental/platform/**`, `formal-catalog/**`, `materials_boundaries/**`,
+`pyproject.toml`, `LICENSE`, `THIRD_PARTY_NOTICES.md` and
+`.github/workflows/experimental-platform.yml`. Changes outside those paths alone
+do not trigger this workflow. Manual dispatch has no arbitrary inputs, and both
+job guards restrict it to the same two exact branch refs. The token is
 contents:read only; checkout does not retain credentials. Official checkout and
 setup-python actions are pinned to verified full release commit SHAs. There is
 no pull_request_target, untrusted event-text shell interpolation, self-hosted
@@ -73,8 +103,8 @@ runner, secret reference, or shell command generated from a provider response.
 
 GitHub requires a workflow_dispatch workflow to exist on the default branch for
 manual dispatch availability. Declaring it here does not promise the Run workflow
-button on this experimental-only branch. Do not add it to main just to enable
-that button without separate approval; scoped pushes/PRs are the activation path.
+button on these experimental branches. These jobs remain scoped to the two
+experimental refs; a scoped push or pull request is the activation path.
 Do not make this path-filtered experimental job a main required check: skipped
 workflows may leave required checks pending. Baseline CI still has its existing
 broad triggers and may also run for the same push.
@@ -87,20 +117,23 @@ broad triggers and may also run for the same push.
 - [Setup Python v6.2.0 verified commit](https://github.com/actions/setup-python/commit/a309ff8b426b58ec0e2a45f0f869d46889d02405)
 - [pip repeatable installs](https://pip.pypa.io/en/stable/topics/repeatable-installs/)
 
-Real GitHub execution is still needed to verify event/path filtering, token
-permissions, hosted image/action compatibility, setup-python availability and
-both matrix environments. Local YAML parsing validates structure, not
-GitHub's scheduler or expression engine.
+## Verification status
+
+The completed Windows CPython 3.11 local regression covered all **286 distinct
+tests**, with zero failures, errors or skips, including the rebuilt installed
+query-service wheel and catalog/API checks. Exact results and the Linux
+filesystem-only check are recorded in
+[closure verification](../ingestion/VERIFICATION_CLOSURE.md). This is evidence for
+the local suites; it does not assert that these Linux CI runners already passed.
+
+The Ubuntu 24.04 Python 3.11/3.12 matrix for this branch is **NOT RUN** pending the
+coordinated experimental push and actual Actions execution. The available
+local WSL distribution had no Python interpreter; its successful 64-file hash
+check is not a Linux Python-suite pass. Hosted execution must still establish
+event/path filtering, token permissions, hosted image/action compatibility,
+setup-python availability and both matrix results. Local YAML parsing validates
+structure, not GitHub's scheduler or expression engine.
 
 Python 3.13/3.14 matrix expansion is deferred until the pinned binary dependency
 set and full suite have been verified on those interpreters. Package metadata
 states Python >=3.11; that alone is not evidence of tested compatibility.
-
-
-## Proposed prerelease catalog extension
-
-Query-service and umbrella-platform wheels are now expected at 0.2.0.dev0; federation/lifecycle remain 0.1.0. The original four-wheel job preserves all83 tests, zero-skips checks and existing assertions. Only those two exact wheel-version expectations change.
-
-The separate optional-core-catalog job builds this repository root locally as core0.35.0 alongside those four wheels, installs them into a fresh isolated runtime, checks all five wheel licenses and installed imports, applies the existing offline socket guard, and runs query-service/catalog-tests: 21 tests with no skips or expected failures. Core is never fetched from a package index. The two jobs cover104 tests together.
-
-Both proposed runners passed locally on Python3.12.14. Python3.11, remote Actions runs, browser rendering, live providers, production acceptance and deployment remain pending or outside scope. No original83 green result alone validates the added snapshot integration.

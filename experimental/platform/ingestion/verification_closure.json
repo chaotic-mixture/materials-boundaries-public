@@ -1,0 +1,155 @@
+{
+  "schema": "incremental-closure-verification/1",
+  "generated_utc": "2026-10-11T00:45:15.136814+00:00",
+  "base_commit": "4c5656cf6ba0ad1a54b736e0568e97abe4815c29",
+  "initial_incremental_commit": "87205077163a7d2cfb2427cb06d07a9a05775737",
+  "unchanged_main_reproduction": {
+    "tests_run": 86,
+    "errors": 33,
+    "skipped": 0,
+    "same_error_test_ids_as_initial_experiment": true,
+    "registry_source_sha256": "3ba042ca99ae8d4c2ee5927946e6977b3a5e5ddffed4d416cd11f65fefbcbd83",
+    "error_test_ids": [
+      "test_combined_admission_boundary.CombinedAdmissionBoundary.test_second_tranche_admission_does_not_change_formal_counts_or_pins",
+      "test_computed_recovery.RegistryTests.test_atomic_held_and_replay",
+      "test_computed_recovery.RegistryTests.test_changed_baseline_same_count_fails",
+      "test_computed_recovery.RegistryTests.test_concurrent_replay",
+      "test_computed_recovery.RegistryTests.test_dedup_provider_material_not_formula",
+      "test_computed_recovery.RegistryTests.test_deleted_or_forged_entry_fails",
+      "test_computed_recovery.RegistryTests.test_fixed_review_export_budget",
+      "test_computed_recovery.RegistryTests.test_forged_held_row_fails",
+      "test_computed_recovery.RegistryTests.test_initial_review_cannot_replace",
+      "test_computed_recovery.RegistryTests.test_payload_tampering_fails",
+      "test_computed_recovery.RegistryTests.test_replaced_baseline_pin_fails",
+      "test_computed_recovery.RegistryTests.test_review_pin_source_and_held_tampering",
+      "test_computed_recovery.RegistryTests.test_routes_default_off_pins_and_exports",
+      "test_computed_v2.RichRegistryTests.test_api_preserves_scope_sources_and_process_pin",
+      "test_computed_v2.RichRegistryTests.test_atomic_replay_concurrency",
+      "test_computed_v2.RichRegistryTests.test_extra_same_composition_model_and_calculation_do_not_inflate_bucket",
+      "test_computed_v2.RichRegistryTests.test_input_and_review_trust_anchors",
+      "test_computed_v2.RichRegistryTests.test_legacy_database_is_not_silently_migrated",
+      "test_computed_v2.RichRegistryTests.test_round_trip_preserves_every_qualifier",
+      "test_computed_v2.RichRegistryTests.test_storage_tampering",
+      "test_computed_v2_second_tranche.ReviewedSecondTrancheTests.test_all_api_projections_and_process_pinning",
+      "test_computed_v2_second_tranche.ReviewedSecondTrancheTests.test_cross_batch_duplicate_candidate_and_entry_rejected",
+      "test_computed_v2_second_tranche.ReviewedSecondTrancheTests.test_cross_batch_identity_and_relation_disjointness",
+      "test_computed_v2_second_tranche.ReviewedSecondTrancheTests.test_cumulative_counts_disposable_fixture_only",
+      "test_computed_v2_second_tranche.ReviewedSecondTrancheTests.test_default_off_and_held_composition_absent",
+      "test_computed_v2_second_tranche.ReviewedSecondTrancheTests.test_exact_input_review_and_prior_seven_pins",
+      "test_computed_v2_second_tranche.ReviewedSecondTrancheTests.test_lossless_transcription_all_62",
+      "test_computed_v2_second_tranche.ReviewedSecondTrancheTests.test_replay_reopen_and_cross_batch_database_isolation",
+      "test_computed_v2_second_tranche.ReviewedSecondTrancheTests.test_tranche_counts_relations_and_replay",
+      "test_computed_v2_tranche.ReviewedTrancheTests.test_all_api_projections_and_process_pinning",
+      "test_computed_v2_tranche.ReviewedTrancheTests.test_exact_input_review_and_prior_seven_pins",
+      "test_computed_v2_tranche.ReviewedTrancheTests.test_lossless_transcription_all_24",
+      "test_computed_v2_tranche.ReviewedTrancheTests.test_tranche_counts_relations_and_replay"
+    ],
+    "log_sha256": "6a31c6ce44f7bbc6214ab90c3b54c19d73f8b8dca63e5fcebc84b449d1af37af"
+  },
+  "final_regression": {
+    "distinct_tests_passed": 286,
+    "skipped": 0,
+    "suites": [
+      {
+        "suite": "ingestion",
+        "passed": 86,
+        "skipped": 0,
+        "log": "closure-ingestion.log",
+        "log_sha256": "25909d88b72eafc6a6f426e10db6b4234d67c5e14d1a2beb85b92b17973ea836"
+      },
+      {
+        "suite": "installed_catalog",
+        "passed": 90,
+        "skipped": 0,
+        "log": "installed-catalog.log",
+        "log_sha256": "eeda82d4199996887a4acb78796d45aec79bbb8361fbfc3293da1e5ae414b2f0"
+      },
+      {
+        "suite": "installed_api",
+        "passed": 37,
+        "skipped": 0,
+        "log": "closure-api.log",
+        "log_sha256": "58023098918bafd36705acb20553b99fcc58e591100e2db0567b1fb1824e2f4f"
+      },
+      {
+        "suite": "provider_fixtures",
+        "passed": 19,
+        "skipped": 0,
+        "log": "closure-provider.log",
+        "log_sha256": "3c33d139f3ebb8dc4c7252c350a9a7b4076a682eead478711f76b064c5d02674"
+      },
+      {
+        "suite": "lifecycle",
+        "passed": 25,
+        "skipped": 0,
+        "log": "closure-lifecycle.log",
+        "log_sha256": "1a0263e6283b09d653661b6daf5301ba3014c094174178864c2d70972fefa377"
+      },
+      {
+        "suite": "linked_integration",
+        "passed": 18,
+        "skipped": 0,
+        "log": "closure-linked.log",
+        "log_sha256": "f6d72839f89d611c45c9481ff3cb42389d405f4398ffff6938cb0bb95f448f41"
+      },
+      {
+        "suite": "formal_catalog",
+        "passed": 11,
+        "skipped": 0,
+        "log": "closure-formal.log",
+        "log_sha256": "893adc4549e727fcd16eb771f36ad9133db54841229d85042b473694ea38e1b2"
+      }
+    ]
+  },
+  "independent_review": {
+    "blocking_findings_remaining": 0,
+    "p2_findings_fixed": 4,
+    "new_tests_passed": 8,
+    "new_tests_included_in_ingestion_count": true,
+    "evidence_sha256": "44df70b9b0beb657c5bf9b318c2dfaa2f9bd7459352fe5578c1414d30bd5fd65",
+    "implementation_sha256": {
+      "experimental/platform/ingestion/nomad_incremental.py": "b2edfcafc88634b981a2253f230adc9de97852f458dbdbb82b69872e50094750",
+      "experimental/platform/ingestion/nomad_batch.py": "6f8f1b5ff399432d38dadcc1f5a009fbbef8b5ec5d08d4de326aa35a07daaa54",
+      "experimental/platform/ingestion/test_closure_review.py": "5b08b817e129aadfff02a4962c643b8a3b26d2c9bb917ad68b94a258abdf6b45"
+    },
+    "full_ingestion_log_sha256": "48701098adf7e70edbf304c409f8542a8cd0e0d02bead764576557fc23ada418"
+  },
+  "linux_compatibility": {
+    "actual_linux_manifest_check": "passed",
+    "files_verified_per_tree": 64,
+    "trees_verified": 2,
+    "path_keys_match": true,
+    "linux_python_suite": {
+      "status": "not_run",
+      "reason": "The existing docker-desktop WSL distribution has no Python interpreter; no runtime was downloaded or installed."
+    },
+    "evidence_sha256": "c7bfa928731c7c8655ae5ae61d0abe15f236d24fd0a434e6973b7fecbc66d408",
+    "log_sha256": "50e101203a24089b1833496c16ec0d005677891e122d56f3a99837e983195211"
+  },
+  "package": {
+    "rebuilt_query_wheel_sha256": "4af987e8a04227f18b5b956040c09073da1f39b4a264032e85eace813d4b6689",
+    "registry_source_sha256": "1d33ab4e9bc62b538e2aa6f2a232a71b112d9003bc9ac3d1883e1b8f528a8a54",
+    "pip_check": "No broken requirements found."
+  },
+  "scientific_boundary": {
+    "formal_total": 1081,
+    "legacy": 1057,
+    "reviewed_compositions": 24,
+    "unadmitted_examples": 62,
+    "admitted_delta": 0,
+    "formal_snapshot": "efea82e0f3ec2847a37807febe6bacffbd9624de2940f6e28bd481f75e9a6c14"
+  },
+  "network": {
+    "followup_live_nomad_requests": 0,
+    "historical_live_requests": 8,
+    "historical_live_response_bytes": 18268,
+    "historical_live_retries": 0
+  },
+  "delivery": {
+    "raw_provider_responses_included": false,
+    "sqlite_stores_included": false,
+    "pushed": false,
+    "doi_registered": false,
+    "public_deployment": false
+  }
+}

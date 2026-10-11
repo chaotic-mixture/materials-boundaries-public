@@ -4,9 +4,8 @@ from email.parser import BytesParser
 import importlib
 from pathlib import Path
 import sys
-import unittest
 import zipfile
-from check_offline import PACKAGES, require
+from check_offline import PACKAGES, require, run_discovered_suite
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -35,14 +34,8 @@ def main():
         require(Path(module.__file__).resolve().is_relative_to(Path(sys.prefix).resolve()), 'Source import instead of installed wheel: '+name)
     for filename in ('test_formal_project_catalog.py', 'test_computed_v2_second_tranche.py', 'test_combined_admission_boundary.py'):
         require((ROOT/'query-service/catalog-tests'/filename).is_file(), 'Missing combined regression module: '+filename)
-    suite=unittest.TestLoader().discover(str(ROOT/'query-service/catalog-tests'))
-    require(suite.countTestCases()>=85, 'Expected at least 85 local catalog tests')
-    result=unittest.TextTestRunner(verbosity=2).run(suite)
-    require(result.wasSuccessful() and not result.skipped and not result.expectedFailures, 'Optional core tests did not fully pass')
-    formal_suite=unittest.TestLoader().discover(str(ROOT.parents[1]/'formal-catalog/tests'))
-    require(formal_suite.countTestCases()>=11, 'Expected formal project catalog tests')
-    formal_result=unittest.TextTestRunner(verbosity=2).run(formal_suite)
-    require(formal_result.wasSuccessful() and not formal_result.skipped and not formal_result.expectedFailures, 'Formal project tests did not fully pass')
+    run_discovered_suite('local-catalog', ROOT/'query-service/catalog-tests', 90)
+    run_discovered_suite('formal-catalog', ROOT.parents[1]/'formal-catalog/tests', 11)
     print('Installed optional-core offline catalog suite passed; no browser/live/deployment claim.')
 
 if __name__=='__main__':main()

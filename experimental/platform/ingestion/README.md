@@ -96,3 +96,6 @@ The current schema is corroborating unit documentation, not a reimplementation
 of the older per-record processing commit. No DFT is rerun. No exact numerical
 recomputation is possible from this geometry-free projection; that limitation
 must remain visible in review.
+
+For resumable, bounded updates, durable retry budgets, reviewable deltas and local
+scheduling examples, see [Resumable NOMAD review-queue updates](INCREMENTAL.md).

@@ -1,5 +1,6 @@
 """Synthetic contract cases, not scientific acceptance of any source material."""
 from concurrent.futures import ThreadPoolExecutor
+from contextlib import closing
 from copy import deepcopy
 from hashlib import sha256
 import json
@@ -164,7 +165,7 @@ class RichRegistryTests(unittest.TestCase):
     def test_storage_tampering(self):
         for sql in ("UPDATE metadata SET value='forged' WHERE key='input_file_sha256'",'DELETE FROM admissions',"UPDATE entries SET payload='{}'"):
             p=Path(self.temp.name)/(str(abs(hash(sql)))+'.db');r=self.registry(path=p);r.admit(['synthetic1'])
-            with sqlite3.connect(p) as db:db.execute(sql)
+            with closing(sqlite3.connect(p)) as db, db:db.execute(sql)
             with self.assertRaises(ValueError):r.snapshot()
 
     def test_api_preserves_scope_sources_and_process_pin(self):

@@ -152,12 +152,25 @@ def normalize(rows, authors, bindings, existing_ids=()):
             dims=s.get('dimension_types')
             if dims!=[1,1,1] or not all(type(x) is int for x in dims): raise ValueError('not_three_dimensional')
             rho=s.get('mass_density')
-            if type(rho) not in (float,int) or not math.isfinite(rho) or rho<=0: raise ValueError('invalid_density')
+            # The official projected archive schema uses a bare SI scalar.
+            # Explicit alternative units or quantity envelopes are not converted.
+            # A naked mislabeled upstream value cannot be detected without an
+            # independent source/schema review and remains a documented limit.
+            if any(s[k] != 'kg/m^3' for k in ('mass_density_unit', 'unit') if k in s):
+                raise ValueError('unsupported_density_unit')
+            if isinstance(rho, dict): raise ValueError('unsupported_density_quantity_shape')
+            try:
+                valid_density = type(rho) in (float, int) and math.isfinite(rho) and rho > 0
+            except OverflowError:
+                valid_density = False
+            if not valid_density: raise ValueError('invalid_density')
             symmetry=m.get('symmetry',{}); sg=symmetry.get('space_group_number')
             if type(sg)!=int or not 1<=sg<=230: raise ValueError('missing_symmetry')
             method=archive['results'].get('method',{})
-            if not isinstance(method,dict) or method.get('method_name')!='DFT' or not isinstance(method.get('simulation'),dict) or not method['simulation'].get('program_name'): raise ValueError('unsupported_method')
-            if not all(meta.get(k) for k in ('nomad_version','nomad_commit','last_processing_time','mainfile')): raise ValueError('missing_provenance_version')
+            if not isinstance(method,dict) or method.get('method_name')!='DFT' or not isinstance(method.get('simulation'),dict): raise ValueError('unsupported_method')
+            program = method['simulation'].get('program_name')
+            if not isinstance(program, str) or not program.strip(): raise ValueError('unsupported_method')
+            if not all(isinstance(meta.get(k), str) and meta[k].strip() for k in ('nomad_version','nomad_commit','last_processing_time','mainfile')): raise ValueError('missing_provenance_version')
             if 'C' in elements: raise ValueError('carbon_category_review_required')
             category='metal' if elements<=METALS else 'inorganic'
             eligible.append({'candidate_id':'nomad_computed_'+hashlib.sha256(eid.encode()).hexdigest()[:16], 'project_material_id':'computed:nomad:'+mid,'provider_material_id':mid,'provider_entry_id':eid,'formula':m['chemical_formula_hill'],'reduced_formula':reduced,'category_candidate':category,'category_basis':'all-metal elemental composition; metallic behavior unverified' if category=='metal' else 'carbon-free bulk composition; taxonomy review pending','symmetry':symmetry,'density':{'value':rho,'unit':'kg/m^3','evidence_kind':'computed','source_path':'results.properties.structures.structure_original.mass_density'},'method':method,'source_url':'https://nomad-lab.eu/prod/v1/gui/entry/id/'+eid,'provenance':meta,'attribution':authors[eid], 'evidence':bindings[eid], 'rights':{'license':'CC BY 4.0','license_url':'https://creativecommons.org/licenses/by/4.0/','scope':'Computed scalar density and method metadata only; no geometry or raw calculation redistribution. Upstream ICSD geometry rights are not licensed by this packet.','changes':'Selected metadata; units labeled; composition category proposed; provider numerical density unchanged.'},'status':'candidate_pending_independent_review'})

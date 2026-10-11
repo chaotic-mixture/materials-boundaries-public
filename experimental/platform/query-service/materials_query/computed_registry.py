@@ -34,7 +34,7 @@ def baseline_digest():
     expected = json.loads(pin)
     root = files('materials_boundaries')
     # Exact manifest, not a record count: detect changed values and extra files.
-    actual = {str(p.relative_to(root)): sha256(p.read_bytes()).hexdigest()
+    actual = {p.relative_to(root).as_posix(): sha256(p.read_bytes()).hexdigest()
               for p in sorted(Path(root).rglob('*')) if p.is_file() and p.suffix in {'.py', '.json'}}
     if actual != expected:
         raise ValueError('Installed legacy baseline differs from the recovery anchor')

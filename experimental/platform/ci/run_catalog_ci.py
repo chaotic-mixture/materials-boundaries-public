@@ -1,4 +1,4 @@
-"""PROPOSAL: separate optional-core offline job; existing 83-test job is unchanged."""
+"""Separate six-wheel catalog job with strict discovery and admission boundaries."""
 import os
 from pathlib import Path
 import subprocess
