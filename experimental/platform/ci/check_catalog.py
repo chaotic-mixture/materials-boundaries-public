@@ -34,7 +34,7 @@ def main():
         require(Path(module.__file__).resolve().is_relative_to(Path(sys.prefix).resolve()), 'Source import instead of installed wheel: '+name)
     for filename in ('test_formal_project_catalog.py', 'test_computed_v2_second_tranche.py', 'test_combined_admission_boundary.py', 'test_geometry_diagnostics.py'):
         require((ROOT/'query-service/catalog-tests'/filename).is_file(), 'Missing combined regression module: '+filename)
-    run_discovered_suite('local-catalog', ROOT/'query-service/catalog-tests', 117)
+    run_discovered_suite('local-catalog', ROOT/'query-service/catalog-tests', 133)
     run_discovered_suite('formal-catalog', ROOT.parents[1]/'formal-catalog/tests', 11)
     print('Installed optional-core offline catalog suite passed; no browser/live/deployment claim.')
 

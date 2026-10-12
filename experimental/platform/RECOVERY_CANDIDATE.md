@@ -3,7 +3,8 @@
 This is new English-language implementation built from the verified public
 f1301af API 0.2 baseline. It does not restore missing 0.3 or 0.4 source, relationship
 work, historical seven material identities, or historical test counts. The core
-0.35.0 package and its 1,057 identities remain byte-for-byte unchanged.
+0.35.0 catalog data and its 1,057 identities remain byte-for-byte unchanged. The
+single approved runtime successor is described below.
 
 ## Computed namespace
 
@@ -41,8 +42,25 @@ normalized exports. Geometry and raw calculation assets are not shipped here.
 ## Trust and integrity boundaries
 
 The packaged baseline file manifest has a code-pinned digest and includes every
-core Python/JSON resource. Changing a value without changing counts fails the
-anchor. Review hashes cover source links, decisions and density. Registry reads
+core Python/JSON resource. The original manifest and its `BASELINE_PIN` remain
+unchanged. The validator accepts that complete manifest or one exact successor:
+only `material_references.py` changes from SHA-256
+`f485759f92bac90a655cbdf9328855c6a863552c258e645e63171dc3a625f82e` to
+`c22295a7e8ab4e360201eb57cb6fc13eba7f8b8ac5e419f35fcf42e8aa81a264`.
+The successor fixes structural-clone detection when evidence entries repeat;
+it does not change catalog records, source values, count policy or admissions.
+This is a complete-manifest comparison, not a package-version exemption or an
+allowlist for arbitrary combinations of file hashes. Unknown, missing or extra
+Python/JSON resources and every other changed resource still fail the anchor.
+
+Both accepted implementations return the digest of the original manifest.
+Existing registries reopen with the same baseline metadata, review anchors,
+admission ledger and snapshots; new registries use that same logical baseline.
+No database migration, metadata rewrite, deletion or automatic admission occurs.
+This narrowly scoped compatibility decision does not authorize future runtime
+or data changes; those require their own review and compatibility contract.
+
+Review hashes cover source links, decisions and density. Registry reads
 compare exact admitted payloads to pinned review input and an admission ledger,
 rejecting deleted rows, forged held outcomes and changed sources. A malicious
 local administrator can rewrite both database and program: this is not a signed,
