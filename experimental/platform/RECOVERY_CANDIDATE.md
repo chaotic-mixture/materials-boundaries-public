@@ -4,7 +4,7 @@ This is new English-language implementation built from the verified public
 f1301af API 0.2 baseline. It does not restore missing 0.3 or 0.4 source, relationship
 work, historical seven material identities, or historical test counts. The core
 0.35.0 catalog data and its 1,057 identities remain byte-for-byte unchanged. The
-single approved runtime successor is described below.
+exact runtime successors are described below.
 
 ## Computed namespace
 
@@ -43,17 +43,24 @@ normalized exports. Geometry and raw calculation assets are not shipped here.
 
 The packaged baseline file manifest has a code-pinned digest and includes every
 core Python/JSON resource. The original manifest and its `BASELINE_PIN` remain
-unchanged. The validator accepts that complete manifest or one exact successor:
+unchanged. The validator accepts that complete manifest or the evidence-dedup successor:
 only `material_references.py` changes from SHA-256
 `f485759f92bac90a655cbdf9328855c6a863552c258e645e63171dc3a625f82e` to
 `c22295a7e8ab4e360201eb57cb6fc13eba7f8b8ac5e419f35fcf42e8aa81a264`.
-The successor fixes structural-clone detection when evidence entries repeat;
+That successor fixes structural-clone detection when evidence entries repeat;
 it does not change catalog records, source values, count policy or admissions.
+A second, local performance candidate requires the entire evidence-dedup
+successor manifest plus exactly one further code change: `material_presentation.py`
+from SHA-256 `55de108d53fea5ac74dbaad21807a8ff38247d534410d6513173664c56c7610c`
+to `d4a74cbf65db1f457b8df0e77ae56fa25379b3c5ff09fefb4a1e823cb9685050`.
+It avoids only the second graph validation for a strictly unchanged selection
+after the complete graph has been freshly read and validated in the same call.
+The presentation-only hybrid with the original evidence implementation is rejected.
 This is a complete-manifest comparison, not a package-version exemption or an
 allowlist for arbitrary combinations of file hashes. Unknown, missing or extra
 Python/JSON resources and every other changed resource still fail the anchor.
 
-Both accepted implementations return the digest of the original manifest.
+All three accepted implementations return the digest of the original manifest.
 Existing registries reopen with the same baseline metadata, review anchors,
 admission ledger and snapshots; new registries use that same logical baseline.
 No database migration, metadata rewrite, deletion or automatic admission occurs.

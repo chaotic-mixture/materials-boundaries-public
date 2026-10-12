@@ -1,7 +1,7 @@
 """Exact baseline compatibility using real package bytes and synthetic reviews.
 
-The predecessor fixture reverses only the reviewed evidence-deduplication hunk.
-Both complete 64-file trees are hashed by the production baseline validator;
+The predecessor fixtures reverse only exact evidence and presentation hunks.
+All three complete 64-file trees are hashed by the production baseline validator;
 neither the validator nor any digest calculation is replaced by these tests.
 """
 from contextlib import closing, contextmanager
@@ -44,6 +44,129 @@ SUCCESSOR_HUNK = b'''    """Stable factual signature; repeated evidence and evid
 '''
 
 
+PRESENTATION_PREDECESSOR_SHA256 = '55de108d53fea5ac74dbaad21807a8ff38247d534410d6513173664c56c7610c'
+PRESENTATION_SUCCESSOR_SHA256 = 'd4a74cbf65db1f457b8df0e77ae56fa25379b3c5ff09fefb4a1e823cb9685050'
+# Independent exact hunks; no production or preservation helper is imported.
+PRESENTATION_REVERSE_EDITS = (
+    (
+        (
+            b'from copy import deepcopy\n'
+            b'import json\n'
+            b'import math\n'
+            b'\n'
+            b'\n'
+        ),
+        (
+            b'from copy import deepcopy\n'
+            b'import json\n'
+            b'\n'
+            b'\n'
+        ),
+    ),
+    (
+        (
+            b'\n'
+            b'\n'
+            b'def _same_json_value(left, right, depth=0):\n'
+            b'    """Conservatively recognize unchanged plain JSON without coercing types."""\n'
+            b'    if depth > 64 or type(left) is not type(right):\n'
+            b'        return False\n'
+            b'    if type(left) is dict:\n'
+            b'        if (any(type(key) is not str for key in left)\n'
+            b'                or any(type(key) is not str for key in right)\n'
+            b'                or tuple(left) != tuple(right)):\n'
+            b'            return False\n'
+            b'        return all(_same_json_value(left[key], right[key], depth + 1) for key in left)\n'
+            b'    if type(left) is list:\n'
+            b'        return len(left) == len(right) and all(\n'
+            b'            _same_json_value(a, b, depth + 1) for a, b in zip(left, right))\n'
+            b'    if type(left) is float:\n'
+            b'        return math.isfinite(left) and math.isfinite(right) and left.hex() == right.hex()\n'
+            b'    if type(left) in (str, int, bool, type(None)):\n'
+            b'        return left == right\n'
+            b'    return False\n'
+            b'\n'
+            b'\n'
+            b'def _resolved_graph(catalog: dict, kind: str) -> tuple[dict, dict, dict]:\n'
+            b'    """Resolve a canonical subset against the complete validated offline graph.\n'
+            b'\n'
+            b'    Incoming records replace records of the same ID. Changed or uncertain\n'
+            b'    inputs require full graph validation again. An exact unchanged subset\n'
+            b'    reuses only the complete graph freshly read and validated in this call.\n'
+            b'    Catalogues remain raw envelopes; resolved objects never become records.\n'
+            b'    """\n'
+        ),
+        (
+            b'\n'
+            b'\n'
+            b'def _resolved_graph(catalog: dict, kind: str) -> tuple[dict, dict, dict]:\n'
+            b'    """Resolve a canonical subset against the complete validated offline graph.\n'
+            b'\n'
+            b'    Incoming records replace records of the same ID. The resulting entire\n'
+            b'    graph is validated again, so display cannot bypass semantic protections.\n'
+            b'    Catalogues remain raw envelopes; resolved objects never become records.\n'
+            b'    """\n'
+        ),
+    ),
+    (
+        (
+            b'    if not isinstance(catalog, dict) or set(catalog) != keys or catalog["schema_version"] != "1.0.0":\n'
+            b'        raise ValueError("material presentation: invalid canonical catalogue envelope")\n'
+            b'    original = materials if kind == "materials" else properties\n'
+            b'    for key in keys - {"schema_version"}:\n'
+            b'        incoming = catalog[key]\n'
+        ),
+        (
+            b'    if not isinstance(catalog, dict) or set(catalog) != keys or catalog["schema_version"] != "1.0.0":\n'
+            b'        raise ValueError("material presentation: invalid canonical catalogue envelope")\n'
+            b'    target = deepcopy(materials if kind == "materials" else properties)\n'
+            b'    for key in keys - {"schema_version"}:\n'
+            b'        incoming = catalog[key]\n'
+        ),
+    ),
+    (
+        (
+            b'        if len(identifiers) != len(set(identifiers)):\n'
+            b'            raise ValueError(f"material presentation: duplicate {key} ID")\n'
+            b'\n'
+            b'    unchanged = (type(catalog) is dict and type(catalog["schema_version"]) is str\n'
+            b'                 and all(type(key) is str for key in catalog))\n'
+            b'    for key in keys - {"schema_version"}:\n'
+            b'        incoming = catalog[key]\n'
+            b'        if type(incoming) is not list:\n'
+            b'            unchanged = False\n'
+            b'            continue\n'
+            b'        index = {item["id"]: (position, item) for position, item in enumerate(original[key])}\n'
+            b'        previous_position = -1\n'
+            b'        for item in incoming:\n'
+            b'            if (type(item) is not dict or type(item["id"]) is not str\n'
+            b'                    or item["id"] not in index):\n'
+            b'                unchanged = False\n'
+            b'                break\n'
+            b'            position, original_item = index[item["id"]]\n'
+            b'            if position <= previous_position or not _same_json_value(item, original_item):\n'
+            b'                unchanged = False\n'
+            b'                break\n'
+            b'            previous_position = position\n'
+            b'    if unchanged:\n'
+            b'        return materials, properties, sources\n'
+            b'\n'
+            b'    target = deepcopy(original)\n'
+            b'    for key in keys - {"schema_version"}:\n'
+            b'        incoming = catalog[key]\n'
+            b'        replacements = {item["id"]: item for item in incoming}\n'
+            b'        existing = {item["id"] for item in target[key]}\n'
+        ),
+        (
+            b'        if len(identifiers) != len(set(identifiers)):\n'
+            b'            raise ValueError(f"material presentation: duplicate {key} ID")\n'
+            b'        replacements = {item["id"]: item for item in incoming}\n'
+            b'        existing = {item["id"] for item in target[key]}\n'
+        ),
+    ),
+)
+
+
 def manifest(root):
     return {p.relative_to(root).as_posix(): sha256(p.read_bytes()).hexdigest()
             for p in root.rglob('*') if p.is_file() and p.suffix in {'.py', '.json'}}
@@ -56,6 +179,7 @@ class BaselineCompatibility(unittest.TestCase):
         cls.addClassCleanup(cls.fixture.cleanup)
         cls.fixture_root = Path(cls.fixture.name)
         cls.current_root = cls.fixture_root / 'current'
+        cls.dedup_root = cls.fixture_root / 'dedup-predecessor'
         cls.original_root = cls.fixture_root / 'original'
         installed_root = Path(files('materials_boundaries'))
         for source in installed_root.rglob('*'):
@@ -69,7 +193,18 @@ class BaselineCompatibility(unittest.TestCase):
         predecessor = raw.replace(SUCCESSOR_HUNK, PREDECESSOR_HUNK)
         if sha256(predecessor).hexdigest() != PREDECESSOR_SHA256:
             raise AssertionError('Reconstructed predecessor differs from the historical anchor')
-        shutil.copytree(cls.current_root, cls.original_root)
+        presentation = (cls.current_root / 'material_presentation.py').read_bytes()
+        if sha256(presentation).hexdigest() != PRESENTATION_SUCCESSOR_SHA256:
+            raise AssertionError('Compatibility tests require the exact presentation successor')
+        for after, before in PRESENTATION_REVERSE_EDITS:
+            if presentation.count(after) != 1:
+                raise AssertionError('Presentation reversal hunk differs from the reviewed bytes')
+            presentation = presentation.replace(after, before)
+        if sha256(presentation).hexdigest() != PRESENTATION_PREDECESSOR_SHA256:
+            raise AssertionError('Reconstructed presentation differs from the historical anchor')
+        shutil.copytree(cls.current_root, cls.dedup_root)
+        (cls.dedup_root / 'material_presentation.py').write_bytes(presentation)
+        shutil.copytree(cls.dedup_root, cls.original_root)
         (cls.original_root / 'material_references.py').write_bytes(predecessor)
         cls.pin_bytes = files('materials_query').joinpath('pins/legacy_baseline.json').read_bytes()
         if sha256(cls.pin_bytes).hexdigest() != PIN_SHA256:
@@ -122,9 +257,10 @@ class BaselineCompatibility(unittest.TestCase):
                     for table in ('metadata', 'entries', 'admissions')}
 
     def assert_manifest_rejected(self, mutate):
-        for original in (True, False):
-            with self.subTest(manifest='original' if original else 'successor'):
-                root = self.copied_root(original)
+        for source in (self.original_root, self.dedup_root, self.current_root):
+            with self.subTest(manifest=source.name):
+                root = self.work / source.name
+                shutil.copytree(source, root)
                 mutate(root)
                 with self.resources(root), self.assertRaisesRegex(
                         ValueError, 'Installed legacy baseline differs'):
@@ -134,10 +270,13 @@ class BaselineCompatibility(unittest.TestCase):
         self.assertEqual(len(self.expected), 64)
         self.assertEqual(manifest(self.original_root), self.expected)
         expected_successor = dict(self.expected, **{'material_references.py': SUCCESSOR_SHA256})
+        self.assertEqual(manifest(self.dedup_root), expected_successor)
+        expected_successor['material_presentation.py'] = PRESENTATION_SUCCESSOR_SHA256
         self.assertEqual(manifest(self.current_root), expected_successor)
         self.assertEqual(self.expected['material_references.py'], PREDECESSOR_SHA256)
+        self.assertEqual(self.expected['material_presentation.py'], PRESENTATION_PREDECESSOR_SHA256)
         self.assertEqual(registry.BASELINE_PIN, PIN_SHA256)
-        for root in (self.original_root, self.current_root):
+        for root in (self.original_root, self.dedup_root, self.current_root):
             with self.subTest(root=root.name), self.resources(root):
                 self.assertEqual(registry.baseline_digest(), self.original_identity)
 
@@ -151,6 +290,20 @@ class BaselineCompatibility(unittest.TestCase):
     def test_unknown_reference_bytes_rejected(self):
         self.assert_manifest_rejected(lambda root: (root / 'material_references.py').write_bytes(
             (root / 'material_references.py').read_bytes() + b'\n# Unreviewed change\n'))
+
+    def test_unknown_presentation_bytes_rejected(self):
+        self.assert_manifest_rejected(lambda root: (root / 'material_presentation.py').write_bytes(
+            (root / 'material_presentation.py').read_bytes() + b'\n# Unreviewed change\n'))
+
+    def test_presentation_only_hybrid_manifest_rejected(self):
+        root = self.copied_root(original=True)
+        (root / 'material_presentation.py').write_bytes(
+            (self.current_root / 'material_presentation.py').read_bytes())
+        hybrid = dict(self.expected, **{'material_presentation.py': PRESENTATION_SUCCESSOR_SHA256})
+        self.assertEqual(manifest(root), hybrid)
+        with self.resources(root), self.assertRaisesRegex(
+                ValueError, 'Installed legacy baseline differs'):
+            registry.baseline_digest()
 
     def test_changed_other_python_file_rejected(self):
         self.assert_manifest_rejected(lambda root: (root / '_version.py').write_bytes(
@@ -177,11 +330,11 @@ class BaselineCompatibility(unittest.TestCase):
                         ValueError, 'Baseline pin was replaced'):
                     registry.baseline_digest()
 
-    def assert_old_database_reopens(self, rich):
+    def assert_old_database_reopens(self, rich, predecessor=None):
         path = self.work / 'historical.db'
         review = self.review(rich)
         candidate = review['records'][0]['candidate_id']
-        with self.resources(self.original_root):
+        with self.resources(self.original_root if predecessor is None else predecessor):
             old = self.make_registry(path, review, rich)
             before = old.admit([candidate])
         rows = self.database_rows(path)
@@ -203,6 +356,12 @@ class BaselineCompatibility(unittest.TestCase):
 
     def test_original_manifest_v2_database_reopens_without_changes(self):
         self.assert_old_database_reopens(True)
+
+    def test_dedup_predecessor_legacy_database_reopens_without_changes(self):
+        self.assert_old_database_reopens(False, self.dedup_root)
+
+    def test_dedup_predecessor_v2_database_reopens_without_changes(self):
+        self.assert_old_database_reopens(True, self.dedup_root)
 
     def assert_new_registry_replay(self, rich):
         review = self.review(rich)

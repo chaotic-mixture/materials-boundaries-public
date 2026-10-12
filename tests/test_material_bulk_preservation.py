@@ -13,6 +13,7 @@ from unittest.mock import patch
 
 import material_bulk_preservation as history
 from evidence_dedup_preservation import pre_evidence_dedup_bytes
+from presentation_fast_path_preservation import pre_presentation_fast_path_bytes
 from materials_boundaries.catalog import read_catalog
 from materials_boundaries import material_references as references
 
@@ -40,6 +41,7 @@ class MaterialBulkPreservationTests(unittest.TestCase):
                                    (history.ADMISSION_PATH, ADMISSION_SHA256)):
             raw = (ROOT / filename).read_bytes()
             if filename == 'tests/material_bulk_preservation.py':
+                raw = pre_presentation_fast_path_bytes(filename, raw)
                 raw = pre_evidence_dedup_bytes(filename, raw)
             self.assertEqual(history.digest(raw), expected)
         ledger = history.load_ledger()
