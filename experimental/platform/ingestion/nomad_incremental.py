@@ -18,6 +18,7 @@ import json
 import math
 from pathlib import Path
 import sqlite3
+import sys
 import time
 import urllib.error
 import urllib.request
@@ -653,6 +654,12 @@ def abandon(root, reason, *, clock=time.time):
         return cycle['report']
 
 
+def compare(root, *, before, after):
+    """Inspect selected source-field changes without updating the local store."""
+    from nomad_evidence_compare import compare as compare_cycles
+    return compare_cycles(root, before=before, after=after)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest='command', required=True)
@@ -663,20 +670,28 @@ def main():
         init.add_argument('--' + flag, type=int, default=default)
     init.add_argument('--entry-id', action='append', default=[])
     init.add_argument('--after')
-    for command in ('update', 'status', 'report', 'abandon'):
+    for command in ('update', 'status', 'report', 'abandon', 'compare'):
         child = sub.add_parser(command)
         child.add_argument('store')
         if command == 'abandon':
             child.add_argument('--reason', required=True)
         elif command == 'report':
             child.add_argument('--cycle', type=int)
+        elif command == 'compare':
+            child.add_argument('--before', type=int, required=True)
+            child.add_argument('--after', type=int, required=True)
     args = vars(parser.parse_args())
     command, root = args.pop('command'), args.pop('store')
     if command == 'init':
         args['entry_ids'] = args.pop('entry_id')
     try:
-        result = {'init': init_store, 'update': update, 'status': status, 'report': report, 'abandon': abandon}[command](root, **args)
-        print(json.dumps(result, indent=2, ensure_ascii=False, allow_nan=False))
+        result = {'init': init_store, 'update': update, 'status': status, 'report': report, 'abandon': abandon,
+                  'compare': compare}[command](root, **args)
+        if command == 'compare':
+            # The compact serialization is the comparison's bounded JSON format.
+            sys.stdout.buffer.write(canonical(result) + b'\n')
+        else:
+            print(json.dumps(result, indent=2, ensure_ascii=False, allow_nan=False))
         if command == 'update' and result.get('status') != 'complete':
             raise SystemExit(2)
     except ValueError as exc:

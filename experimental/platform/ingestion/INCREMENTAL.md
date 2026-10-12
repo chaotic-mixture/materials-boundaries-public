@@ -13,6 +13,108 @@ candidate admission claims. This command never changes the formal catalog.
 Candidate groups and calculations contribute **zero** admissions and do not count
 toward the goal of at least 1000 materials in each of five categories.
 
+## Compare cached source fields offline
+
+After two cycles have completed, compare their cached observations without another
+provider request or a store write:
+
+```sh
+python nomad_incremental.py compare /absolute/local-data/nomad-small --before 1 --after 2 > /absolute/local-data/nomad-source-changes.json
+```
+
+Use cycle IDs from `status`. Both IDs are required, positive, and ordered
+(`before < after`); missing, incomplete and abandoned cycles are refused. The
+cycles need not be adjacent. Both are read within one read-only SQLite snapshot
+using the existing profile, boundary and response-integrity checks. This command
+does not acquire, retry, abandon or advance a cycle, alter a review, or admit a
+candidate. Exit `0` means a comparison was produced; exit `2` means an invalid
+request, evidence/binding error or an exceeded comparison limit. No partial
+comparison is printed on failure. Keep output outside the checkout.
+
+Comparison supports the collector's default rollback-journal SQLite stores.
+Externally converted WAL-mode stores are refused after a read-only header probe,
+before opening SQLite: SQLite `mode=ro` alone can create WAL/SHM coordination
+files. The command does not change journal mode, checkpoint, restore, or ignore
+WAL contents. Do not change journal mode or replace store files concurrently.
+Other existing ingestion operations retain their original behavior.
+
+The compact JSON schema is `nomad-evidence-compare/1`. It avoids manually opening
+two large responses to locate a changed density, unit, source, method or author:
+
+- `before_cycle` and `after_cycle` bind the saved cycle and report with canonical
+  hashes, plus the exact successful response attempts, endpoints, byte counts,
+  request hashes and response-byte hashes. Profile and boundary hashes identify
+  the fixed collection scope. These hashes are local content bindings, not
+  authentication of the source, reviewer or database administrator.
+- `entry_changes` compares every observed entry, including held entries and
+  nonrepresentative calculations. Each side retains all archive and attribution
+  variant hashes and the **recorded** gate reasons. Gate payload hashes bind the
+  complete original exclusions. The command reads saved complete reports; it
+  does not regenerate an old report against today's observation baseline or
+  issue a new eligibility decision.
+- `fields` locates selected differences with `source` (`archive` or
+  `attribution`) and a JSON Pointer relative to the corresponding response's
+  `data` row. Each side has explicit presence, JSON type and canonical value
+  hash. Small nonsensitive scalar values are included exactly as decoded,
+  preserving null, string/number distinctions and units. Missing and null remain distinct.
+  These are decoded JSON values, not the original lexical number spelling.
+- The selected fields cover source/processing metadata, formula/elements,
+  provider identity, structural type, space-group number, method/program labels,
+  scalar density, explicit unit labels, dimensionality, author names, references
+  and dataset identifiers/names/DOIs. Lists retain index order. This is a fixed
+  review aid, not an exhaustive scientific projection or raw-asset export.
+  No arbitrary method, symmetry, author or dataset subtree is copied into output.
+- `mainfile`, reference items and DOI locators are always hash-only, including
+  apparently public URLs: no pathname, userinfo, signed query or fragment is
+  copied from those fields. Other strings with path/URI/assignment/control syntax,
+  recognized credential markers or an unbroken word over 64 characters are also
+  hash-only. The only slash exceptions are `kg/m^3` and `g/cm^3` at the explicit
+  density-unit fields; this preserves a wrong-unit observation without converting
+  it. Ordinary scientific labels and author names remain visible. Unsafe output
+  IDs, gate labels and unknown input-event codes in saved reports are refused
+  with a generic error. Local store paths and environment variables are not
+  included in output. This conservative guard may withhold harmless strings; it
+  is not a universal secret detector or authorization to use a private store.
+  Use only the existing public-metadata acquisition stores, never credentials
+  or private data disguised as scientific values or provider identifiers.
+- Conflicting archive or attribution variants are listed in `ambiguous_entries`.
+  A changed ambiguous entry has `source_comparison: ambiguous_variants` and no
+  paired fields; it requires inspecting the bound source evidence. Identical
+  duplicate rows coalesce as in the existing ingestion report.
+- `unexpanded_source_change` conservatively stays `true` for every changed source
+  fingerprint, even when selected fields explain some changes. Unknown fields,
+  containers, oversized scalars and long lists retain hash-only observations;
+  an empty `fields` list is never proof that the source did not change.
+- `candidate_changes` compares saved candidate-queue semantic hashes, excluding
+  retrieval evidence as in the existing incremental delta. Entry changes can
+  occur without a candidate change, for example for a nonrepresentative
+  calculation. Repeated identical input yields empty change lists. Separate
+  cycle/report bindings still differ because they identify separate acquisitions.
+
+`recorded_after_input_events` preserves events relative to the later cycle's
+then-current baseline, which may not be the selected earlier cycle. An entry
+observed only before/after the comparison is not a confirmed upstream deletion
+or new material. A `withdrawal_pending_review` event and removal from the
+candidate queue do not revoke a formal record. Comparison does not reuse or
+authenticate a prior scientific review or scoped rights decision.
+
+The output is bounded to 2,000,000 UTF-8 bytes, with at most 2,000 distinct entry
+IDs. Scalars over 2,048 canonical UTF-8 bytes are hash-only. Lists of over 100
+items are hash-only without expanding their elements; shorter lists also carry
+a parent hash. An exceeded entry or output limit refuses the whole comparison.
+The existing integrity check still verifies all retained raw responses in the
+store; comparison limits do not establish a bound on total retained history.
+`comparison_sha256` hashes the canonical result before adding that field, so it
+differs from the stdout file hash. Identical stored inputs and cycle selection
+produce identical stdout bytes. Concurrent reads describe their transaction's
+snapshot, not subsequent updates. The report is local review evidence; inspect
+source-specific scope before any redistribution.
+
+Formal totals remain **1081 = 1057 + 24** and the **62 examples stay excluded**.
+`admitted_delta` is always `0` and `release_authorized` is always `false`.
+The comparison is separate from the existing formal-review gap report and does
+not close its scientific, identity, authority or reuse requirements.
+
 ## Collection scope
 
 Initialize one immutable profile per store. The default profile revisits one page
