@@ -61,19 +61,25 @@ See the parent README for verified and blocked stages. Tests use deterministic H
 
 The default app remains provider-only. The explicit `materials_query.app:create_catalog_app --factory` startup captures and validates this repository's locally installed core once. See `../LOCAL_CATALOG.md` for local-only installation, pinned read-only API contracts and the separate `/catalog` page. No core package is automatically fetched and no local/external counts are summed. Browser rendering remains unverified.
 
-## Local NBS integration, 2026-10-14
+## Local NBS review candidate, 2026-10-14
 
-This experimental installation appends three source-qualified NBS identities
-(LiF, KCl and CaF2), each with one crystallographic-density reference. The local
-catalog now contains 1060 identities and the formal project component contains
-1084 entries: 1060 source-qualified identities plus the unchanged 24 reviewed
-computed compositions. Core inorganic coverage is 19; the formal inorganic
-count is 31. Nb is outside this integration. The 62 second-tranche examples and
-the two held NOMAD overlay candidates remain outside the formal count.
+This experimental branch contains a proposed addition of three source-qualified
+NBS identities (LiF, KCl and CaF2), each with one crystallographic-density
+reference. Its candidate snapshot contains 1084 entries: 1060 source-qualified
+identities plus the unchanged 24 reviewed computed compositions. Candidate core
+inorganic coverage is 19; the proposed combined inorganic count is 31.
 
-The query UI reads these counts from the captured catalog. The relationship
-view has 1065 supported memberships across 1060 identities and still one
-identity relationship; each new NBS identity contributes only its explicit
+The main baseline remains 1081 entries: 1057 source-qualified identities plus
+24 reviewed computed compositions. Its combined inorganic count is 28. The
+proposed 1084 snapshot is awaiting review and is not an approved formal release. In this
+branch, the API field `formal_project_admission_count` still reports the candidate
+total 1084; the field name and proposed resource pins do not confer formal
+admission. Nb is outside this candidate. The 62 second-tranche examples and the
+two held NOMAD overlay candidates remain excluded from both totals.
+
+The query UI reads the proposed counts from the captured candidate catalog.
+Its relationship view has 1065 supported memberships across 1060 identities and
+still one identity relationship; each new NBS identity contributes only its explicit
 inorganic membership. Unknown classifications remain unknown.
 
 The computed registry pins the complete installed core manifest, including the
@@ -97,7 +103,7 @@ python -m unittest discover -s catalog-tests -p test_catalog_baseline.py -v
 
 Catalog contract and API tests additionally cover the three exact NBS states,
 source reuse, reported density units and temperatures, unknown uncertainty,
-and the unchanged boundary between formal admissions and computed examples.
+and the boundary between the proposed catalog snapshot and computed examples.
 The source-derived values are catalog references; scientific validation and
-engineering-allowable status remain false. This is a local experimental
-integration with no public deployment or DOI registration.
+engineering-allowable status remain false. This local experimental candidate
+awaits review; no public deployment or DOI registration is included.
