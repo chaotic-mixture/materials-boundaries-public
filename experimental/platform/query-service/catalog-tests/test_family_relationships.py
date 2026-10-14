@@ -41,16 +41,16 @@ class FamilyRelationshipTests(unittest.TestCase):
         return {m['concept'] for m in row['memberships'] if m['status'] == 'supported'}
 
     def test_coverage_exact_and_no_count_inflation(self):
-        self.assertEqual(self.status['unique_identity_count'], 1057)
-        self.assertEqual(self.status['membership_assertion_count'], 1062)
+        self.assertEqual(self.status['unique_identity_count'], 1060)
+        self.assertEqual(self.status['membership_assertion_count'], 1065)
         self.assertEqual(self.status['identity_relationship_count'], 1)
-        expected = dict(metal=14, alloy=2, inorganic=16, ceramic=2, polymer=15,
+        expected = dict(metal=14, alloy=2, inorganic=19, ceramic=2, polymer=15,
                         composite=3, natural=1010, semiconductor=0, battery=0,
                         catalyst=0, two_dimensional=0, nanoscale=0)
         for concept, supported in expected.items():
             with self.subTest(concept=concept):
                 self.assertEqual(self.status['coverage'][concept]['supported'], supported)
-                self.assertEqual(self.status['coverage'][concept]['unknown'], 1057 - supported)
+                self.assertEqual(self.status['coverage'][concept]['unknown'], 1060 - supported)
         self.assertEqual(self.status['new_identities_admitted'], 0)
         self.assertFalse(self.status['provider_counts_combined'])
 
@@ -219,7 +219,7 @@ class FamilyRelationshipTests(unittest.TestCase):
         from materials_boundaries.catalog import read_catalog
         original = read_catalog('materials')
         self.assertEqual(Counter(i['category'] for i in original['identities']),
-                         dict(natural=1010, metal=14, inorganic=16, polymer=14, composite=3))
+                         dict(natural=1010, metal=14, inorganic=19, polymer=14, composite=3))
         for identity in original['identities']:
             self.assertEqual(self.snapshot.record('identities', identity['id']), identity)
             self.assertEqual(self.index.identity(identity['id'])['legacy_category'], identity['category'])

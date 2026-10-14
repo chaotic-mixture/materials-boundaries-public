@@ -37,7 +37,7 @@ class CatalogAPI(unittest.TestCase):
         self.assertEqual(self.client.get('/openapi.json').json()['info']['version'],'0.5.0.dev0')
         from materials_platform import __version__ as umbrella_version
         self.assertEqual(umbrella_version,'0.5.0.dev0')
-        self.assertEqual(self.status['counts']['local_catalog_unique_material_count'],1057)
+        self.assertEqual(self.status['counts']['local_catalog_unique_material_count'],1060)
         self.assertFalse(self.status['provider_counts_combined'])
         for name in ('version','content_digest','runtime_digest'): self.assertRegex(self.status[name],r'^[a-f0-9]{64}$')
     def test_03_exact_baseline_parity(self):
@@ -49,6 +49,29 @@ class CatalogAPI(unittest.TestCase):
         from materials_boundaries.material_references import resolve_material
         from materials_boundaries.catalog import read_catalog
         self.assertEqual(self.post('resolve',state_id=self.first['id']).json()['result'],resolve_material(self.first['id'],*(read_catalog(k) for k in ('materials','reference_properties','sources'))))
+    def test_nbs_source_scoped_density_resolution(self):
+        for suffix, number in [('lif_harshaw', '2.638'),
+                               ('kcl_mallinckrodt_kyd1', '1.9865'),
+                               ('caf2_stockbarger_mit', '3.181')]:
+            with self.subTest(material=suffix):
+                response = self.post('resolve', state_id='state_nbs1953_' + suffix + '_xrd')
+                self.assertEqual(response.status_code, 200)
+                value = response.json()['result']
+                self.assertEqual(value['identity']['id'], 'mat_nbs1953_' + suffix)
+                self.assertEqual(value['identity']['category'], 'inorganic')
+                self.assertIsNone(value['grade'])
+                self.assertEqual([source['id'] for source in value['sources']],
+                                 ['swanson_tatge_1953_nbs_circ539v1'])
+                self.assertEqual(len(value['properties']), 1)
+                prop = value['properties'][0]
+                self.assertEqual(prop['reported_value']['number'], number)
+                self.assertEqual(prop['reported_value']['unit_code'], 'g/cm^3')
+                self.assertEqual(prop['density_basis'], 'crystallographic')
+                self.assertEqual(prop['evidence_kind'], 'published_measurement_derived_reference')
+                self.assertEqual(prop['conditions']['temperature']['text'], '25 \u00b0C')
+                self.assertIsNone(prop['uncertainty'])
+                self.assertIsNone(prop['sample_count']['value'])
+                self.assertFalse(prop['engineering_allowable'])
     def test_05_copy_isolation(self):
         expected=self.post('resolve',state_id=self.first['id']).json()
         mutated=copy.deepcopy(expected); mutated['result']['state'].clear();mutated['result']['sources'].clear()

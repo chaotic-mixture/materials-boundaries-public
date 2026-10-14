@@ -1,4 +1,5 @@
 import concurrent.futures
+from contextlib import closing
 from copy import deepcopy
 import json
 from pathlib import Path
@@ -33,7 +34,7 @@ class RegistryTests(unittest.TestCase):
         self.assertEqual(self.registry.snapshot()['provider_entry_count'],0)
         a=self.registry.admit(['fixture-entry']); b=self.registry.admit(['fixture-entry'])
         self.assertEqual(a,b); self.assertEqual(a['project_unique_material_count'],1)
-        self.assertEqual(a['legacy_unique_material_count'],1057)
+        self.assertEqual(a['legacy_unique_material_count'],1060)
 
     def test_concurrent_replay(self):
         with concurrent.futures.ThreadPoolExecutor(8) as pool:
@@ -61,13 +62,13 @@ class RegistryTests(unittest.TestCase):
 
     def test_deleted_or_forged_entry_fails(self):
         self.registry.admit(['fixture-entry'])
-        with sqlite3.connect(self.path) as db: db.execute('DELETE FROM entries')
+        with closing(sqlite3.connect(self.path)) as db, db: db.execute('DELETE FROM entries')
         with self.assertRaises(ValueError): self.registry.snapshot()
 
     def test_payload_tampering_fails(self):
         self.registry.admit(['fixture-entry'])
         r=deepcopy(self.review['records'][0]);r['density']['value']=1
-        with sqlite3.connect(self.path) as db: db.execute('UPDATE entries SET payload=?',(json.dumps(r),))
+        with closing(sqlite3.connect(self.path)) as db, db: db.execute('UPDATE entries SET payload=?',(json.dumps(r),))
         with self.assertRaises(ValueError): self.registry.snapshot()
 
     def test_changed_baseline_same_count_fails(self):
@@ -87,7 +88,7 @@ class RegistryTests(unittest.TestCase):
     def test_forged_held_row_fails(self):
         from materials_query.computed_registry import canonical
         held=self.review['records'][1]
-        with sqlite3.connect(self.path) as db:
+        with closing(sqlite3.connect(self.path)) as db, db:
             db.execute('INSERT INTO entries VALUES (?,?)',('held',canonical(held).decode()))
             db.execute('INSERT INTO admissions VALUES (?,?)',('held',digest(held)))
         with self.assertRaises(ValueError):self.registry.snapshot()

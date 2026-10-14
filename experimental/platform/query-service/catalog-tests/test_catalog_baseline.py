@@ -1,0 +1,75 @@
+"""Exact integrated baseline and temporary old-registry compatibility checks."""
+from copy import deepcopy
+from hashlib import sha256
+from pathlib import Path, PureWindowsPath
+import json
+import tempfile
+import unittest
+from unittest.mock import Mock, patch
+
+from materials_query import computed_registry as registry
+
+
+OLD_BASELINE = '6ab6a7bcda3f98c33c9c5520b420fdbcc884cd18a10a3235f07ce58e28c5e1a9'
+NEW_BASELINE = '586b973ccf35a8e7050a9296ec5a241c138549d0decac85de619a6dbd23b2452'
+
+
+class IntegratedBaselineTests(unittest.TestCase):
+    def test_installed_package_matches_exact_new_anchor(self):
+        self.assertEqual(registry.baseline_digest(), NEW_BASELINE)
+        self.assertNotEqual(NEW_BASELINE, OLD_BASELINE)
+
+    def test_windows_paths_use_the_same_manifest_key(self):
+        payload = b'synthetic catalog bytes'
+        manifest = {'data/materials.json': sha256(payload).hexdigest()}
+        pin_bytes = registry.canonical(manifest) + b'\n'
+        pin_root, core_root, traversable, item = Mock(), Mock(), Mock(), Mock()
+        pin_root.joinpath.return_value.read_bytes.return_value = pin_bytes
+        item.relative_to.return_value = PureWindowsPath('data/materials.json')
+        item.suffix = '.json'
+        item.is_file.return_value = True
+        item.read_bytes.return_value = payload
+        traversable.rglob.return_value = [item]
+        with patch.object(registry, 'files', side_effect=[pin_root, core_root]), \
+                patch.object(registry, 'Path', return_value=traversable), \
+                patch.object(registry, 'BASELINE_PIN', sha256(pin_bytes).hexdigest()):
+            self.assertEqual(registry.baseline_digest(), registry.digest(manifest))
+        item.relative_to.assert_called_once_with(core_root)
+
+    def test_old_database_anchor_is_rejected_without_migration(self):
+        # A synthetic empty review is enough to exercise persistent anchors.
+        # No existing or user-owned database path is accessed.
+        review = {'schema': 'computed-review-recovery/1', 'packet_sha256': '0' * 64,
+                  'reviewer': 'Synthetic baseline compatibility test',
+                  'rationale': 'No real material admission', 'records': []}
+        with tempfile.TemporaryDirectory() as temporary:
+            database = Path(temporary) / 'old-baseline.db'
+            with patch.object(registry, 'baseline_digest', return_value=OLD_BASELINE):
+                old = registry.ComputedRegistry(database, deepcopy(review),
+                    trusted_review_sha256=registry.digest(review))
+            before = database.read_bytes()
+            with self.assertRaisesRegex(ValueError, 'Initial baseline and review input cannot be replaced'):
+                registry.ComputedRegistry(database, review,
+                    trusted_review_sha256=registry.digest(review))
+            self.assertEqual(database.read_bytes(), before)
+            self.assertEqual(old.snapshot()['baseline_version'], OLD_BASELINE)
+            self.assertEqual(old.snapshot()['records'], [])
+
+    def test_changed_core_resource_fails_even_with_unchanged_identity_count(self):
+        original = Path.read_bytes
+
+        def changed(path):
+            raw = original(path)
+            if path.name == 'materials.json' and path.parent.name == 'data':
+                value = json.loads(raw)
+                value['identities'][0]['name'] += ' altered'
+                return registry.canonical(value)
+            return raw
+
+        with patch.object(Path, 'read_bytes', changed):
+            with self.assertRaisesRegex(ValueError, 'Installed legacy baseline differs'):
+                registry.baseline_digest()
+
+
+if __name__ == '__main__':
+    unittest.main()

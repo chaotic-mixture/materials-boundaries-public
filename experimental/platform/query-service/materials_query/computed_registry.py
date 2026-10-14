@@ -14,7 +14,7 @@ import math
 import re
 import sqlite3
 
-BASELINE_PIN = '259d5d0e87635fec6f87ce544c8a252494038cbb1643228eeb685d5501f17897'
+BASELINE_PIN = '8910e90642d6d7de5db4f2b90a7463e304033a25315805dd67fad06af8d101fe'
 MAX_EXPORT_BYTES = 1_048_576
 MAX_RECORDS = 1000
 
@@ -34,7 +34,7 @@ def baseline_digest():
     expected = json.loads(pin)
     root = files('materials_boundaries')
     # Exact manifest, not a record count: detect changed values and extra files.
-    actual = {str(p.relative_to(root)): sha256(p.read_bytes()).hexdigest()
+    actual = {p.relative_to(root).as_posix(): sha256(p.read_bytes()).hexdigest()
               for p in sorted(Path(root).rglob('*')) if p.is_file() and p.suffix in {'.py', '.json'}}
     if actual != expected:
         raise ValueError('Installed legacy baseline differs from the recovery anchor')
@@ -190,7 +190,7 @@ class ComputedRegistry:
                 'selected_entry_count': len(records),
                 'related_source_calculation_count': len(calculations),
                 'related_source_provider_group_count': len(groups),
-                'legacy_unique_material_count': 1057,
+                'legacy_unique_material_count': 1060,
                 'cross_namespace_equivalence': False, 'relationship_graph_reconstructed': False}
             if len(canonical(result)) > MAX_EXPORT_BYTES:
                 raise ValueError('Overlay exceeds fixed export budget')
@@ -198,7 +198,7 @@ class ComputedRegistry:
         result = {'schema':'computed-overlay-recovery/1', 'namespace':'computed', 'baseline_version':self.baseline,
                   'review_version':self.review_digest, 'overlay_version':digest(records), 'records':records,
                   'project_unique_material_count':len({r['project_material_id'] for r in records}),
-                  'provider_entry_count':len(records), 'legacy_unique_material_count':1057,
+                  'provider_entry_count':len(records), 'legacy_unique_material_count':1060,
                   'cross_namespace_equivalence':False, 'relationship_graph_reconstructed':False}
         if len(canonical(result)) > MAX_EXPORT_BYTES:
             raise ValueError('Overlay exceeds fixed export budget')

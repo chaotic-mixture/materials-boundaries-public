@@ -388173,6 +388173,612 @@
           }
         ]
       }
+    },
+    {
+      "id": "refprop_nbs1953_caf2_stockbarger_mit_crystallographic_density",
+      "version": "1.0.0",
+      "material_state_id": "state_nbs1953_caf2_stockbarger_mit_xrd",
+      "quantity": "mass_density",
+      "quantity_dimension": "mass_per_volume",
+      "source_property_label": "density, based on the NBS lattice constant",
+      "reported_value": {
+        "kind": "scalar",
+        "value_text": "3.181",
+        "unit_text": "grams per cubic centimeter",
+        "unit_code": "g/cm^3",
+        "number": "3.181"
+      },
+      "evidence_kind": "published_measurement_derived_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_calculation",
+      "basis_note": "The authors report a crystallographic density derived from the experimental NBS powder-XRD lattice constant and adopted crystal structure. The value is retained exactly, without recalculation. It is not a directly measured bulk density, an arithmetic mean of independent density tests, a DFT prediction or a hypothetical material.",
+      "conditions": {
+        "temperature": {
+          "status": "reported",
+          "text": "25 °C",
+          "evidence": [
+            {
+              "source_id": "swanson_tatge_1953_nbs_circ539v1",
+              "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+              "locator": "Printed p. 70 / PDF p. 74, section 2.41, upper unit-cell table and density paragraph: 1953 NBS value at 25 degrees C; density units in Introduction, printed p. 2 / PDF p. 6",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source density reference temperature. The selected powder-pattern temperature is retained separately."
+        },
+        "test_standard": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No named density test-standard compliance is established; an NBS standard powder pattern is not a density-test certification."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Crystallographic density derived by the source from the experimental NBS powder-XRD lattice constant.",
+          "evidence": [
+            {
+              "source_id": "swanson_tatge_1953_nbs_circ539v1",
+              "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+              "locator": "Printed pp. 1-2 / PDF pp. 5-6, Introduction: NBS powder-pattern measurements, density units, reference-temperature conversion and scope of lattice-error statements; Printed p. 70 / PDF p. 74, section 2.41, upper unit-cell table and density paragraph: 1953 NBS value at 25 degrees C; density units in Introduction, printed p. 2 / PDF p. 6; Printed p. 70 / PDF p. 74, Table 42, 1953 Swanson and Tatge column: 25 degrees C header and lattice-constant entries",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "direction": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "A mechanical loading direction is not applicable to this scalar crystallographic-density value; no elastic-isotropy claim follows."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No density-specific conditioning time or measured specimen moisture is reported."
+        },
+        "loading_rate": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading rate is not applicable to this crystallographic-density result."
+        },
+        "additional_conditions": [
+          {
+            "name": "density_derivation",
+            "fact": {
+              "status": "reported",
+              "text": "The 1953 NBS lattice constant is 5.4626 angstroms at 25 degrees C. The source describes silica-gel dilution to reduce orientation effects in XRD intensity measurements. That preparation does not change the selected density into a mixture/composite property. Averaging diffraction lines is not a density replicate count.",
+              "evidence": [
+                {
+                  "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                  "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                  "locator": "Printed pp. 1-2 / PDF pp. 5-6, Introduction: NBS powder-pattern measurements, density units, reference-temperature conversion and scope of lattice-error statements; Printed p. 70 / PDF p. 74, section 2.41, upper unit-cell table and density paragraph: 1953 NBS value at 25 degrees C; density units in Introduction, printed p. 2 / PDF p. 6; Printed p. 70 / PDF p. 74, Table 42, 1953 Swanson and Tatge column: 25 degrees C header and lattice-constant entries",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": null
+            }
+          },
+          {
+            "name": "xrd_pattern_temperature",
+            "fact": {
+              "status": "reported",
+              "text": "Table 42 identifies the NBS powder-pattern temperature as 25 °C.",
+              "evidence": [
+                {
+                  "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                  "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                  "locator": "Printed p. 70 / PDF p. 74, Table 42, 1953 Swanson and Tatge column: 25 degrees C header and lattice-constant entries",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "The pattern is a measured XRD input to a source-derived reference property; its diffraction-line count is not independent sample n."
+            }
+          },
+          {
+            "name": "xrd_intensity_preparation",
+            "fact": {
+              "status": "reported",
+              "text": "For XRD intensity measurements, the source describes dilution with finely ground silica gel and careful placement in the specimen holder to limit preferred orientation. No silica-gel fraction, mixture density or composite identity is assigned here.",
+              "evidence": [
+                {
+                  "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                  "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                  "locator": "Printed p. 69 / PDF p. 73, section 2.41, right-column discussion of preferred orientation and silica-gel intensity preparation",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": null
+            }
+          }
+        ]
+      },
+      "density_basis": "crystallographic",
+      "summary_statistic": "reported_value",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "No density-specific numerical uncertainty is reported. The Introduction discusses lattice/interplanar-spacing error in the last significant figure and atomic-weight precision; neither statement supplies a density uncertainty. No propagation, confidence interval or inferred precision is added.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Selected NBS CaF2 crystallographic-density result for the source-qualified material.",
+        "source_statement": "The inspected passages do not establish the number of independent physical specimens or repeated density determinations. Published comparison patterns and diffraction lines are not specimen counts.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_crystallographic_derivation",
+        "definition": "Source-reported crystallographic density derived from the NBS experimental powder-XRD lattice constant a = 5.4626 angstroms at 25 degrees C and the adopted CaF2 crystalline phase. Cubic fluorite CaF2; source lattice face-centered cubic and space group Fm3m; four formula units per unit cell (source wording: four molecules). The identified relation is unit-cell mass divided by unit-cell volume a cubed, with mass established by the adopted cell content and atomic masses; this packet does not recompute cell mass, density or uncertainty. The authoritative density is the source value 3.181 grams per cubic centimeter. It is neither directly weighed specimen density, powder-packing density nor a DFT prediction.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "swanson_tatge_1953_nbs_circ539v1",
+            "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+            "locator": "Printed pp. 1-2 / PDF pp. 5-6, Introduction: NBS powder-pattern measurements, density units, reference-temperature conversion and scope of lattice-error statements; Printed p. 70 / PDF p. 74, section 2.41, upper unit-cell table and density paragraph: 1953 NBS value at 25 degrees C; density units in Introduction, printed p. 2 / PDF p. 6; Printed p. 70 / PDF p. 74, Table 42, 1953 Swanson and Tatge column: 25 degrees C header and lattice-constant entries",
+            "supports": [
+              "method",
+              "classification",
+              "condition"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [],
+      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+      "evidence": [
+        {
+          "source_id": "swanson_tatge_1953_nbs_circ539v1",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+          "locator": "Printed p. 70 / PDF p. 74, section 2.41, upper unit-cell table and density paragraph: 1953 NBS value at 25 degrees C; density units in Introduction, printed p. 2 / PDF p. 6",
+          "supports": [
+            "reported_value",
+            "classification",
+            "method",
+            "condition"
+          ]
+        },
+        {
+          "source_id": "swanson_tatge_1953_nbs_circ539v1",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+          "locator": "Printed pp. 69-70 / PDF pp. 73-74, section 2.41 Calcium Fluoride (Cubic): Stockbarger/MIT preparation and NBS spectrographic analysis on p. 69; structure on p. 70",
+          "supports": [
+            "material_identity",
+            "state"
+          ]
+        },
+        {
+          "source_id": "swanson_tatge_1953_nbs_circ539v1",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+          "locator": "Printed pp. 1-2 / PDF pp. 5-6, Introduction: NBS powder-pattern measurements, density units, reference-temperature conversion and scope of lattice-error statements; Printed p. 70 / PDF p. 74, section 2.41, upper unit-cell table and density paragraph: 1953 NBS value at 25 degrees C; density units in Introduction, printed p. 2 / PDF p. 6; Printed p. 70 / PDF p. 74, Table 42, 1953 Swanson and Tatge column: 25 degrees C header and lattice-constant entries",
+          "supports": [
+            "method",
+            "classification",
+            "condition"
+          ]
+        }
+      ],
+      "source_document": {
+        "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+        "revision": "NBS Circular 539, Volume I, 1953",
+        "inspected_on": "2026-10-14",
+        "sha256": "003b872fbe7d403d38bbd1d752568ee92a96bdb010b6e381bdc82566929e2a6c",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "The complete official 1953 PDF was checked against SHA-256 003b872fbe7d403d38bbd1d752568ee92a96bdb010b6e381bdc82566929e2a6c. Selected source passages and page images were independently cross-checked: Printed pp. 69-70 / PDF pp. 73-74, section 2.41 Calcium Fluoride (Cubic): Stockbarger/MIT preparation and NBS spectrographic analysis on p. 69; structure on p. 70; Printed p. 70 / PDF p. 74, section 2.41, upper unit-cell table and density paragraph: 1953 NBS value at 25 degrees C; density units in Introduction, printed p. 2 / PDF p. 6; Printed p. 70 / PDF p. 74, Table 42, 1953 Swanson and Tatge column: 25 degrees C header and lattice-constant entries. The Introduction establishes density units and distinguishes reference temperature from pattern temperature. Source-transcription review only; no experimental replication, density recalculation, raw-data reanalysis, scientific peer review or formal admission.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "scope_note": "Source-qualified calcium fluoride sample prepared by D. C. Stockbarger at the Massachusetts Institute of Technology for the NBS pattern in section 2.41. NBS reports its spectrographic impurity characterization. The density at 25 degrees C is derived by the source from the CaF2 crystal lattice; it is not a CaF2/silica-gel mixture density, bulk powder density, certified grade or universal value for calcium fluoride. Independent physical-specimen count, repeat count, porosity, sample-specific particle size and conditioning time remain unknown.",
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "The complete official 1953 PDF was checked against SHA-256 003b872fbe7d403d38bbd1d752568ee92a96bdb010b6e381bdc82566929e2a6c. Selected source passages and page images were independently cross-checked: Printed pp. 69-70 / PDF pp. 73-74, section 2.41 Calcium Fluoride (Cubic): Stockbarger/MIT preparation and NBS spectrographic analysis on p. 69; structure on p. 70; Printed p. 70 / PDF p. 74, section 2.41, upper unit-cell table and density paragraph: 1953 NBS value at 25 degrees C; density units in Introduction, printed p. 2 / PDF p. 6; Printed p. 70 / PDF p. 74, Table 42, 1953 Swanson and Tatge column: 25 degrees C header and lattice-constant entries. The Introduction establishes density units and distinguishes reference temperature from pattern temperature. Source-transcription review only; no experimental replication, density recalculation, raw-data reanalysis, scientific peer review or formal admission.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      }
+    },
+    {
+      "id": "refprop_nbs1953_kcl_mallinckrodt_kyd1_crystallographic_density",
+      "version": "1.0.0",
+      "material_state_id": "state_nbs1953_kcl_mallinckrodt_kyd1_xrd",
+      "quantity": "mass_density",
+      "quantity_dimension": "mass_per_volume",
+      "source_property_label": "density, based on the NBS lattice constant",
+      "reported_value": {
+        "kind": "scalar",
+        "value_text": "1.9865",
+        "unit_text": "grams per cubic centimeter",
+        "unit_code": "g/cm^3",
+        "number": "1.9865"
+      },
+      "evidence_kind": "published_measurement_derived_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_calculation",
+      "basis_note": "The authors report a crystallographic density derived from the experimental NBS powder-XRD lattice constant and adopted crystal structure. The value is retained exactly, without recalculation. It is not a directly measured bulk density, an arithmetic mean of independent density tests, a DFT prediction or a hypothetical material.",
+      "conditions": {
+        "temperature": {
+          "status": "reported",
+          "text": "25 °C",
+          "evidence": [
+            {
+              "source_id": "swanson_tatge_1953_nbs_circ539v1",
+              "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+              "locator": "Printed p. 66 / PDF p. 70, section 2.38, upper right column: 1953 NBS unit-cell row and density paragraph at 25 degrees C; density units in Introduction, printed p. 2 / PDF p. 6",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source density reference temperature. The selected powder-pattern temperature is retained separately."
+        },
+        "test_standard": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No named density test-standard compliance is established; an NBS standard powder pattern is not a density-test certification."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Crystallographic density derived by the source from the experimental NBS powder-XRD lattice constant.",
+          "evidence": [
+            {
+              "source_id": "swanson_tatge_1953_nbs_circ539v1",
+              "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+              "locator": "Printed pp. 1-2 / PDF pp. 5-6, Introduction: NBS powder-pattern measurements, density units, reference-temperature conversion and scope of lattice-error statements; Printed p. 66 / PDF p. 70, section 2.38, upper right column: 1953 NBS unit-cell row and density paragraph at 25 degrees C; density units in Introduction, printed p. 2 / PDF p. 6; Printed p. 66 / PDF p. 70, Table 39, 1953 Swanson and Tatge column: 25 degrees C header and lattice-constant entries",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "direction": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "A mechanical loading direction is not applicable to this scalar crystallographic-density value; no elastic-isotropy claim follows."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No density-specific conditioning time or measured specimen moisture is reported."
+        },
+        "loading_rate": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading rate is not applicable to this crystallographic-density result."
+        },
+        "additional_conditions": [
+          {
+            "name": "density_derivation",
+            "fact": {
+              "status": "reported",
+              "text": "The 1953 NBS lattice constant is 6.2931 angstroms at 25 degrees C. The passage separately compares earlier authors, including lattice constants inferred from precision density; those earlier values are not the selected NBS measurement or its method. The comparison of four literature measurements does not establish four NBS specimens or density repeats.",
+              "evidence": [
+                {
+                  "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                  "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                  "locator": "Printed pp. 1-2 / PDF pp. 5-6, Introduction: NBS powder-pattern measurements, density units, reference-temperature conversion and scope of lattice-error statements; Printed p. 66 / PDF p. 70, section 2.38, upper right column: 1953 NBS unit-cell row and density paragraph at 25 degrees C; density units in Introduction, printed p. 2 / PDF p. 6; Printed p. 66 / PDF p. 70, Table 39, 1953 Swanson and Tatge column: 25 degrees C header and lattice-constant entries",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": null
+            }
+          },
+          {
+            "name": "xrd_pattern_temperature",
+            "fact": {
+              "status": "reported",
+              "text": "Table 39 identifies the NBS powder-pattern temperature as 25 °C.",
+              "evidence": [
+                {
+                  "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                  "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                  "locator": "Printed p. 66 / PDF p. 70, Table 39, 1953 Swanson and Tatge column: 25 degrees C header and lattice-constant entries",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "The pattern is a measured XRD input to a source-derived reference property; its diffraction-line count is not independent sample n."
+            }
+          }
+        ]
+      },
+      "density_basis": "crystallographic",
+      "summary_statistic": "reported_value",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "No density-specific numerical uncertainty is reported. The Introduction discusses lattice/interplanar-spacing error in the last significant figure and atomic-weight precision; neither statement supplies a density uncertainty. No propagation, confidence interval or inferred precision is added.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Selected NBS KCl crystallographic-density result for the source-qualified material.",
+        "source_statement": "The inspected passages do not establish the number of independent physical specimens or repeated density determinations. Published comparison patterns and diffraction lines are not specimen counts.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_crystallographic_derivation",
+        "definition": "Source-reported crystallographic density derived from the NBS experimental powder-XRD lattice constant a = 6.2931 angstroms at 25 degrees C and the adopted KCl crystalline phase. Face-centered cubic KCl; source space group Fm3m. No numerical cell-content count is added from outside the inspected passage. The identified relation is unit-cell mass divided by unit-cell volume a cubed, with mass established by the adopted cell content and atomic masses; this packet does not recompute cell mass, density or uncertainty. The authoritative density is the source value 1.9865 grams per cubic centimeter. It is neither directly weighed specimen density, powder-packing density nor a DFT prediction.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "swanson_tatge_1953_nbs_circ539v1",
+            "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+            "locator": "Printed pp. 1-2 / PDF pp. 5-6, Introduction: NBS powder-pattern measurements, density units, reference-temperature conversion and scope of lattice-error statements; Printed p. 66 / PDF p. 70, section 2.38, upper right column: 1953 NBS unit-cell row and density paragraph at 25 degrees C; density units in Introduction, printed p. 2 / PDF p. 6; Printed p. 66 / PDF p. 70, Table 39, 1953 Swanson and Tatge column: 25 degrees C header and lattice-constant entries",
+            "supports": [
+              "method",
+              "classification",
+              "condition"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [],
+      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+      "evidence": [
+        {
+          "source_id": "swanson_tatge_1953_nbs_circ539v1",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+          "locator": "Printed p. 66 / PDF p. 70, section 2.38, upper right column: 1953 NBS unit-cell row and density paragraph at 25 degrees C; density units in Introduction, printed p. 2 / PDF p. 6",
+          "supports": [
+            "reported_value",
+            "classification",
+            "method",
+            "condition"
+          ]
+        },
+        {
+          "source_id": "swanson_tatge_1953_nbs_circ539v1",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+          "locator": "Printed pp. 65-66 / PDF pp. 69-70, section 2.38 Potassium Chloride (Cubic): Mallinckrodt supply and KYD-1 label at end of p. 65; accompanying chemical analysis and structure on p. 66",
+          "supports": [
+            "material_identity",
+            "state"
+          ]
+        },
+        {
+          "source_id": "swanson_tatge_1953_nbs_circ539v1",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+          "locator": "Printed pp. 1-2 / PDF pp. 5-6, Introduction: NBS powder-pattern measurements, density units, reference-temperature conversion and scope of lattice-error statements; Printed p. 66 / PDF p. 70, section 2.38, upper right column: 1953 NBS unit-cell row and density paragraph at 25 degrees C; density units in Introduction, printed p. 2 / PDF p. 6; Printed p. 66 / PDF p. 70, Table 39, 1953 Swanson and Tatge column: 25 degrees C header and lattice-constant entries",
+          "supports": [
+            "method",
+            "classification",
+            "condition"
+          ]
+        }
+      ],
+      "source_document": {
+        "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+        "revision": "NBS Circular 539, Volume I, 1953",
+        "inspected_on": "2026-10-14",
+        "sha256": "003b872fbe7d403d38bbd1d752568ee92a96bdb010b6e381bdc82566929e2a6c",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "The complete official 1953 PDF was checked against SHA-256 003b872fbe7d403d38bbd1d752568ee92a96bdb010b6e381bdc82566929e2a6c. Selected source passages and page images were independently cross-checked: Printed pp. 65-66 / PDF pp. 69-70, section 2.38 Potassium Chloride (Cubic): Mallinckrodt supply and KYD-1 label at end of p. 65; accompanying chemical analysis and structure on p. 66; Printed p. 66 / PDF p. 70, section 2.38, upper right column: 1953 NBS unit-cell row and density paragraph at 25 degrees C; density units in Introduction, printed p. 2 / PDF p. 6; Printed p. 66 / PDF p. 70, Table 39, 1953 Swanson and Tatge column: 25 degrees C header and lattice-constant entries. The Introduction establishes density units and distinguishes reference temperature from pattern temperature. Source-transcription review only; no experimental replication, density recalculation, raw-data reanalysis, scientific peer review or formal admission.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "scope_note": "Source-qualified potassium chloride obtained from the Mallinckrodt Chemical Works, bearing label KYD-1, for the NBS powder pattern in section 2.38. The label does not establish a grade, batch type or unique physical-specimen count. The accompanying chemical analysis is distinguished from the NBS XRD measurement. The source-calculated density at 25 degrees C describes this crystalline phase, not all potassium chloride or directly weighed bulk/powder-packing density. Independent physical-specimen count, repeat count, porosity, sample-specific particle size and conditioning time remain unknown.",
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "The complete official 1953 PDF was checked against SHA-256 003b872fbe7d403d38bbd1d752568ee92a96bdb010b6e381bdc82566929e2a6c. Selected source passages and page images were independently cross-checked: Printed pp. 65-66 / PDF pp. 69-70, section 2.38 Potassium Chloride (Cubic): Mallinckrodt supply and KYD-1 label at end of p. 65; accompanying chemical analysis and structure on p. 66; Printed p. 66 / PDF p. 70, section 2.38, upper right column: 1953 NBS unit-cell row and density paragraph at 25 degrees C; density units in Introduction, printed p. 2 / PDF p. 6; Printed p. 66 / PDF p. 70, Table 39, 1953 Swanson and Tatge column: 25 degrees C header and lattice-constant entries. The Introduction establishes density units and distinguishes reference temperature from pattern temperature. Source-transcription review only; no experimental replication, density recalculation, raw-data reanalysis, scientific peer review or formal admission.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      }
+    },
+    {
+      "id": "refprop_nbs1953_lif_harshaw_crystallographic_density",
+      "version": "1.0.0",
+      "material_state_id": "state_nbs1953_lif_harshaw_xrd",
+      "quantity": "mass_density",
+      "quantity_dimension": "mass_per_volume",
+      "source_property_label": "density, based on the NBS lattice constant",
+      "reported_value": {
+        "kind": "scalar",
+        "value_text": "2.638",
+        "unit_text": "grams per cubic centimeter",
+        "unit_code": "g/cm^3",
+        "number": "2.638"
+      },
+      "evidence_kind": "published_measurement_derived_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_calculation",
+      "basis_note": "The authors report a crystallographic density derived from the experimental NBS powder-XRD lattice constant and adopted crystal structure. The value is retained exactly, without recalculation. It is not a directly measured bulk density, an arithmetic mean of independent density tests, a DFT prediction or a hypothetical material.",
+      "conditions": {
+        "temperature": {
+          "status": "reported",
+          "text": "25 °C",
+          "evidence": [
+            {
+              "source_id": "swanson_tatge_1953_nbs_circ539v1",
+              "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+              "locator": "Printed p. 61 / PDF p. 65, section 2.34, right column: 1953 NBS unit-cell row at 25 degrees C and density paragraph; density units in Introduction, printed p. 2 / PDF p. 6",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source density reference temperature. The selected powder-pattern temperature is retained separately."
+        },
+        "test_standard": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No named density test-standard compliance is established; an NBS standard powder pattern is not a density-test certification."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Crystallographic density derived by the source from the experimental NBS powder-XRD lattice constant.",
+          "evidence": [
+            {
+              "source_id": "swanson_tatge_1953_nbs_circ539v1",
+              "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+              "locator": "Printed pp. 1-2 / PDF pp. 5-6, Introduction: NBS powder-pattern measurements, density units, reference-temperature conversion and scope of lattice-error statements; Printed p. 61 / PDF p. 65, section 2.34, right column: 1953 NBS unit-cell row at 25 degrees C and density paragraph; density units in Introduction, printed p. 2 / PDF p. 6; Printed p. 62 / PDF p. 66, Table 35, 1953 Swanson and Tatge column: 26 degrees C header and average unit cell for last five lines",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "direction": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "A mechanical loading direction is not applicable to this scalar crystallographic-density value; no elastic-isotropy claim follows."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No density-specific conditioning time or measured specimen moisture is reported."
+        },
+        "loading_rate": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading rate is not applicable to this crystallographic-density result."
+        },
+        "additional_conditions": [
+          {
+            "name": "density_derivation",
+            "fact": {
+              "status": "reported",
+              "text": "The 25 degrees C NBS lattice constant is 4.0269 angstroms. The Table 35 average for the last five diffraction lines is 4.0270 angstroms at 26 degrees C. These are distinct source temperature contexts; five diffraction lines are not five specimens or five density determinations.",
+              "evidence": [
+                {
+                  "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                  "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                  "locator": "Printed pp. 1-2 / PDF pp. 5-6, Introduction: NBS powder-pattern measurements, density units, reference-temperature conversion and scope of lattice-error statements; Printed p. 61 / PDF p. 65, section 2.34, right column: 1953 NBS unit-cell row at 25 degrees C and density paragraph; density units in Introduction, printed p. 2 / PDF p. 6; Printed p. 62 / PDF p. 66, Table 35, 1953 Swanson and Tatge column: 26 degrees C header and average unit cell for last five lines",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": null
+            }
+          },
+          {
+            "name": "xrd_pattern_temperature",
+            "fact": {
+              "status": "reported",
+              "text": "Table 35 identifies the NBS powder-pattern temperature as 26 °C.",
+              "evidence": [
+                {
+                  "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                  "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                  "locator": "Printed p. 62 / PDF p. 66, Table 35, 1953 Swanson and Tatge column: 26 degrees C header and average unit cell for last five lines",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "The pattern is a measured XRD input to a source-derived reference property; its diffraction-line count is not independent sample n."
+            }
+          }
+        ]
+      },
+      "density_basis": "crystallographic",
+      "summary_statistic": "reported_value",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "No density-specific numerical uncertainty is reported. The Introduction discusses lattice/interplanar-spacing error in the last significant figure and atomic-weight precision; neither statement supplies a density uncertainty. No propagation, confidence interval or inferred precision is added.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Selected NBS LiF crystallographic-density result for the source-qualified material.",
+        "source_statement": "The inspected passages do not establish the number of independent physical specimens or repeated density determinations. Published comparison patterns and diffraction lines are not specimen counts.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_crystallographic_derivation",
+        "definition": "Source-reported crystallographic density derived from the NBS experimental powder-XRD lattice constant a = 4.0269 angstroms at 25 degrees C and the adopted LiF crystalline phase. Cubic NaCl-type LiF; source space group Fm3m; four formula units per unit cell (source wording: four molecules). The identified relation is unit-cell mass divided by unit-cell volume a cubed, with mass established by the adopted cell content and atomic masses; this packet does not recompute cell mass, density or uncertainty. The authoritative density is the source value 2.638 grams per cubic centimeter. It is neither directly weighed specimen density, powder-packing density nor a DFT prediction.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "swanson_tatge_1953_nbs_circ539v1",
+            "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+            "locator": "Printed pp. 1-2 / PDF pp. 5-6, Introduction: NBS powder-pattern measurements, density units, reference-temperature conversion and scope of lattice-error statements; Printed p. 61 / PDF p. 65, section 2.34, right column: 1953 NBS unit-cell row at 25 degrees C and density paragraph; density units in Introduction, printed p. 2 / PDF p. 6; Printed p. 62 / PDF p. 66, Table 35, 1953 Swanson and Tatge column: 26 degrees C header and average unit cell for last five lines",
+            "supports": [
+              "method",
+              "classification",
+              "condition"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [],
+      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+      "evidence": [
+        {
+          "source_id": "swanson_tatge_1953_nbs_circ539v1",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+          "locator": "Printed p. 61 / PDF p. 65, section 2.34, right column: 1953 NBS unit-cell row at 25 degrees C and density paragraph; density units in Introduction, printed p. 2 / PDF p. 6",
+          "supports": [
+            "reported_value",
+            "classification",
+            "method",
+            "condition"
+          ]
+        },
+        {
+          "source_id": "swanson_tatge_1953_nbs_circ539v1",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+          "locator": "Printed p. 61 / PDF p. 65, section 2.34 Lithium Fluoride (Cubic), right column: Harshaw sample, NBS spectrographic analysis and crystal structure",
+          "supports": [
+            "material_identity",
+            "state"
+          ]
+        },
+        {
+          "source_id": "swanson_tatge_1953_nbs_circ539v1",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+          "locator": "Printed pp. 1-2 / PDF pp. 5-6, Introduction: NBS powder-pattern measurements, density units, reference-temperature conversion and scope of lattice-error statements; Printed p. 61 / PDF p. 65, section 2.34, right column: 1953 NBS unit-cell row at 25 degrees C and density paragraph; density units in Introduction, printed p. 2 / PDF p. 6; Printed p. 62 / PDF p. 66, Table 35, 1953 Swanson and Tatge column: 26 degrees C header and average unit cell for last five lines",
+          "supports": [
+            "method",
+            "classification",
+            "condition"
+          ]
+        }
+      ],
+      "source_document": {
+        "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+        "revision": "NBS Circular 539, Volume I, 1953",
+        "inspected_on": "2026-10-14",
+        "sha256": "003b872fbe7d403d38bbd1d752568ee92a96bdb010b6e381bdc82566929e2a6c",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "The complete official 1953 PDF was checked against SHA-256 003b872fbe7d403d38bbd1d752568ee92a96bdb010b6e381bdc82566929e2a6c. Selected source passages and page images were independently cross-checked: Printed p. 61 / PDF p. 65, section 2.34 Lithium Fluoride (Cubic), right column: Harshaw sample, NBS spectrographic analysis and crystal structure; Printed p. 61 / PDF p. 65, section 2.34, right column: 1953 NBS unit-cell row at 25 degrees C and density paragraph; density units in Introduction, printed p. 2 / PDF p. 6; Printed p. 62 / PDF p. 66, Table 35, 1953 Swanson and Tatge column: 26 degrees C header and average unit cell for last five lines. The Introduction establishes density units and distinguishes reference temperature from pattern temperature. Source-transcription review only; no experimental replication, density recalculation, raw-data reanalysis, scientific peer review or formal admission.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "scope_note": "Source-qualified lithium fluoride supplied by the Harshaw Chemical Co. for the NBS powder pattern in section 2.34. NBS reports its spectrographic impurity characterization. This is not all lithium fluoride, a certified grade or a hypothetical crystal model. The density is the source-calculated crystalline-phase value at 25 degrees C, not direct specimen weighing or bulk/powder-packing density. The Table 35 pattern temperature is 26 degrees C. Independent physical-specimen count, repeat count, porosity, sample-specific particle size and conditioning time remain unknown.",
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "The complete official 1953 PDF was checked against SHA-256 003b872fbe7d403d38bbd1d752568ee92a96bdb010b6e381bdc82566929e2a6c. Selected source passages and page images were independently cross-checked: Printed p. 61 / PDF p. 65, section 2.34 Lithium Fluoride (Cubic), right column: Harshaw sample, NBS spectrographic analysis and crystal structure; Printed p. 61 / PDF p. 65, section 2.34, right column: 1953 NBS unit-cell row at 25 degrees C and density paragraph; density units in Introduction, printed p. 2 / PDF p. 6; Printed p. 62 / PDF p. 66, Table 35, 1953 Swanson and Tatge column: 26 degrees C header and average unit cell for last five lines. The Introduction establishes density units and distinguishes reference temperature from pattern temperature. Source-transcription review only; no experimental replication, density recalculation, raw-data reanalysis, scientific peer review or formal admission.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      }
     }
   ]
 }

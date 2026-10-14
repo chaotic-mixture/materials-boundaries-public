@@ -60,3 +60,44 @@ See the parent README for verified and blocked stages. Tests use deterministic H
 ## Optional local catalog
 
 The default app remains provider-only. The explicit `materials_query.app:create_catalog_app --factory` startup captures and validates this repository's locally installed core once. See `../LOCAL_CATALOG.md` for local-only installation, pinned read-only API contracts and the separate `/catalog` page. No core package is automatically fetched and no local/external counts are summed. Browser rendering remains unverified.
+
+## Local NBS integration, 2026-10-14
+
+This experimental installation appends three source-qualified NBS identities
+(LiF, KCl and CaF2), each with one crystallographic-density reference. The local
+catalog now contains 1060 identities and the formal project component contains
+1084 entries: 1060 source-qualified identities plus the unchanged 24 reviewed
+computed compositions. Core inorganic coverage is 19; the formal inorganic
+count is 31. Nb is outside this integration. The 62 second-tranche examples and
+the two held NOMAD overlay candidates remain outside the formal count.
+
+The query UI reads these counts from the captured catalog. The relationship
+view has 1065 supported memberships across 1060 identities and still one
+identity relationship; each new NBS identity contributes only its explicit
+inorganic membership. Unknown classifications remain unknown.
+
+The computed registry pins the complete installed core manifest, including the
+two appended catalog resources. Its new canonical baseline anchor is
+`586b973ccf35a8e7050a9296ec5a241c138549d0decac85de619a6dbd23b2452`.
+A registry created against the earlier 1057-identity baseline is rejected in
+this installation. There is no automatic migration or old-anchor fallback.
+Keep existing databases with their original installation; use a distinct new
+local registry when explicitly exercising this baseline. Reviews, input-file
+pins and admission decisions remain independent of the catalog baseline.
+This integration neither opens existing user databases nor changes frozen
+computed review files.
+
+The focused baseline tests use temporary synthetic databases and verify old
+anchor rejection, unchanged database bytes, portable manifest path spelling,
+and rejection of changed catalog content even when identity counts match:
+
+```sh
+python -m unittest discover -s catalog-tests -p test_catalog_baseline.py -v
+```
+
+Catalog contract and API tests additionally cover the three exact NBS states,
+source reuse, reported density units and temperatures, unknown uncertainty,
+and the unchanged boundary between formal admissions and computed examples.
+The source-derived values are catalog references; scientific validation and
+engineering-allowable status remain false. This is a local experimental
+integration with no public deployment or DOI registration.

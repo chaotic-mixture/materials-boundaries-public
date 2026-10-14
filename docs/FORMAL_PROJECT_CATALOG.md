@@ -1,17 +1,22 @@
 # Formal project catalog admission policy
 
-This additive release read model admits exactly the independently reviewed
-24-record computed metadata tranche into a formal **project-scoped admission
-count** alongside 1057 unchanged legacy source-qualified identities. It reports
-1081 admissions: natural 1010, metal 26, inorganic 28, polymer 14, composite 3.
+This read model combines exactly the independently reviewed 24-record computed
+metadata tranche with 1060 source-qualified identities in a formal
+**project-scoped admission count**. The 2026-10-14 experimental integration adds
+three NBS crystal references to the unchanged 1057-record baseline and reports
+1084 admissions: natural 1010, metal 26, inorganic 31, polymer 14, composite 3.
+See [the NBS integration record](MATERIAL_GROWTH_20261014.md) for the exact scope
+and review evidence. This local experiment has not been published.
 This is the versioned `formal-project-count-policy/1` convention, not a claim of
-1081 universally distinct physical materials, experimentally observed materials,
+1084 universally distinct physical materials, experimentally observed materials,
 or scientifically equivalent levels of evidence.
 
 ## Two immutable indexes, one explicit project policy
 
-The legacy index preserves every existing identity and all its reference-property,
-source, grade and state APIs. Its historic coverage count remains 1057. Legacy
+The source-qualified index preserves all 1057 predecessor identities, states and
+properties and appends three NBS references, for a current count of 1060. Its
+historical 4c5656c baseline count remains 1057. Existing source, grade and state
+APIs are unchanged. Legacy
 entries retain their actual per-property evidence types; they are not all labeled
 experimental. Existing consumers do not receive computed values disguised as
 experimental measurements or legacy material-state records.
@@ -45,13 +50,17 @@ is granted for 30 related provider groups or 118 calculations. The prior seven
 records remain separate and excluded. A future tranche, equivalence adjudication,
 or legacy baseline change requires a new reviewed release and updated pins.
 
-The read model is a separate `materials_project_catalog` add-on distribution. It does not change any Python/JSON resource in `materials_boundaries`,
-preserving the existing computed registry baseline and previously admitted local
-databases. Both the legacy CLI and legacy integrity checks remain unchanged.
+The read model remains a separate `materials_project_catalog` add-on distribution.
+This integration changes only the two appended core data resources and updates
+their formal pins. The query-service baseline manifest also pins those new
+bytes. Existing SQLite registry anchors are not migrated or rewritten: an old
+baseline is rejected by the new environment. Computed review payloads, held
+candidates and excluded examples retain their original bytes and status.
 
 Install the add-on explicitly after the exact legacy core: `pip install ./formal-catalog`.
-The optional installed-wheel catalog CI installs both packages. The core wheel and
-its historical packaging/README remain byte-identical. Without the add-on installed,
+The optional installed-wheel catalog CI installs both packages. The core wheel includes the three additional references; historical records and
+fixtures are preserved, and only the marked current README material counts are
+refreshed. Without the add-on installed,
 the legacy catalog works normally and formal status reports unavailable.
 
 ## Read interfaces
@@ -60,7 +69,7 @@ the legacy catalog works normally and formal status reports unavailable.
 - `materials-project-catalog --list --offset 0 --limit 100`: admissions
 - `materials-project-catalog --partition reviewed-computed`: all 24 models
 - `materials-project-catalog --query Ag2AlCo`: bounded literal lookup
-- `materials-boundaries coverage`: unchanged legacy-only quota coverage
+- `materials-boundaries coverage`: 1060 source-qualified identities only
 
 Python callers use `materials_project_catalog.catalog.formal_project_catalog()`
 and `select_formal_catalog(...)`. Every read is detached and checked against exact
@@ -86,7 +95,7 @@ calculation files or credentials. No live upstream request is needed.
 
 ## Verification
 
-Core tests cover exact count/category arithmetic, unchanged legacy coverage,
+Core tests cover exact count/category arithmetic, preserved predecessor records,
 review bytes and full metadata equality, 30/118 provenance cardinalities,
 unknowns, detached pagination, selection limits, fail-closed resource drift and
 CLI outputs. Optional API tests cover default-off behavior, legacy separation,
