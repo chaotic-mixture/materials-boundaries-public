@@ -1,5 +1,12 @@
 # Three NBS crystal references: pending experimental candidate
 
+This document preserves the historical three-reference integration at `d4e9cf3`.
+For the current local five-reference increment and its counts, see
+[the 2026-10-16 integration record](MATERIAL_GROWTH_20261016.md). The old Nb hold
+below describes the earlier source-acquisition state; its resolved candidate
+is now handled by that separate increment.
+
+
 This unmerged candidate adds three source-qualified material identities under
 the existing crystallographic-density contract to the experimental core. It adds
 three states and three properties, with no new grades or sources. It is based on

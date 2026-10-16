@@ -19,6 +19,11 @@ BASELINE_SHA256 = {
     "reference_properties": "7430901a0f401aca384debb8706a124ac43ad6d043165beff1b8d186641fddef",
     "sources": "4240f52ef96bbe34a8a677e2f995296a6c72ac8ab14fc3f8978c043540fcef93",
 }
+D4E9_SHA256 = {
+    "materials": "54fbcfb1de21335f8e0ad2b6d98900cbb847ce77912632936677b38aa86e6378",
+    "reference_properties": "a4b9b64178b87e354727327a546db9fd9f1bb4495a9b4f653d8618b728cedcdd",
+    "sources": "4240f52ef96bbe34a8a677e2f995296a6c72ac8ab14fc3f8978c043540fcef93",
+}
 
 
 def serialized(value):
@@ -36,6 +41,44 @@ class NBSAdmissionTests(unittest.TestCase):
             "properties": json.loads((BATCH / "nbs-reference-properties.append.json").read_text(encoding="utf-8")),
             "sources": cls.sources,
         }
+        # Recover the frozen three-crystal candidate before exercising its
+        # original main-baseline recovery. Later additions cannot weaken either
+        # byte boundary or silently rewrite a prior scientific record.
+        cls.before_increment = {
+            "materials": deepcopy(cls.materials),
+            "reference_properties": deepcopy(cls.properties),
+            "sources": deepcopy(cls.sources),
+        }
+        packets = (
+            ("20261015-niobium-density", "nb-materials.candidate.json",
+             "nb-reference-properties.candidate.json", "nb-sources.candidate.json"),
+            ("20261015-nbs-halide-densities", "nbs-materials.candidate.json",
+             "nbs-reference-properties.candidate.json", None),
+        )
+        for directory, material_name, property_name, source_name in packets:
+            packet = ROOT / "experimental/material-batches" / directory
+            for name, filename, fields in (
+                ("materials", material_name, ("identities", "records")),
+                ("reference_properties", property_name, ("records",)),
+                ("sources", source_name, ("records",)),
+            ):
+                if filename is None:
+                    continue  # The four halides reuse the existing NBS source.
+                addition = json.loads((packet / filename).read_text(encoding="utf-8"))
+                for field in fields:
+                    ids = {record["id"] for record in addition[field]}
+                    cls.before_increment[name][field] = [
+                        record for record in cls.before_increment[name][field]
+                        if record["id"] not in ids
+                    ]
+
+    def test_removing_five_incremental_additions_recovers_exact_d4e9_candidate(self):
+        for name, expected in D4E9_SHA256.items():
+            self.assertEqual(sha256(serialized(self.before_increment[name])).hexdigest(), expected)
+        self.assertEqual(len(self.materials["identities"])
+                         - len(self.before_increment["materials"]["identities"]), 5)
+        self.assertEqual(len(self.sources["records"])
+                         - len(self.before_increment["sources"]["records"]), 1)
 
     def test_reviewed_payload_hashes_and_exact_runtime_records(self):
         for filename, expected in (("nbs-materials.append.json", MATERIAL_SHA256),
@@ -50,8 +93,8 @@ class NBSAdmissionTests(unittest.TestCase):
 
     def test_removing_only_three_additions_recovers_exact_baseline(self):
         for name, key, current, fields in (
-            ("materials", "materials", self.materials, ("identities", "records")),
-            ("reference_properties", "properties", self.properties, ("records",)),
+            ("materials", "materials", self.before_increment["materials"], ("identities", "records")),
+            ("reference_properties", "properties", self.before_increment["reference_properties"], ("records",)),
         ):
             recovered = deepcopy(current)
             for field in fields:
@@ -59,15 +102,15 @@ class NBSAdmissionTests(unittest.TestCase):
                 self.assertEqual(len(new_ids), 3)
                 recovered[field] = [record for record in recovered[field] if record["id"] not in new_ids]
             self.assertEqual(sha256(serialized(recovered)).hexdigest(), BASELINE_SHA256[name])
-        self.assertEqual(sha256((ROOT / "materials_boundaries/data/sources.json").read_bytes()).hexdigest(),
+        self.assertEqual(sha256(serialized(self.before_increment["sources"])).hexdigest(),
                          BASELINE_SHA256["sources"])
 
     def test_current_coverage_and_repeated_append_do_not_double_count(self):
         validate_material_catalog(self.materials, self.properties, self.sources)
         coverage = material_quota_coverage(self.materials, self.properties, self.sources)
-        self.assertEqual(coverage["distinct_material_count"], 1060)
+        self.assertEqual(coverage["distinct_material_count"], 1065)
         self.assertEqual({k: v["admitted_unique_identity_count"] for k, v in coverage["classes"].items()},
-                         {"natural": 1010, "metal": 14, "inorganic": 19, "polymer": 14, "composite": 3})
+                         {"natural": 1010, "metal": 15, "inorganic": 23, "polymer": 14, "composite": 3})
         result = merge_material_catalogs(self.materials, self.properties, self.sources, self.additions)
         self.assertEqual(result, {"materials": self.materials, "properties": self.properties, "sources": self.sources})
 

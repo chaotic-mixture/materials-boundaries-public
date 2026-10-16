@@ -9,7 +9,7 @@ from hashlib import sha256
 from importlib.resources import files
 import json
 
-RESOURCE_SHA256 = {'materials': '54fbcfb1de21335f8e0ad2b6d98900cbb847ce77912632936677b38aa86e6378', 'reference_properties': 'a4b9b64178b87e354727327a546db9fd9f1bb4495a9b4f653d8618b728cedcdd', 'sources': '4240f52ef96bbe34a8a677e2f995296a6c72ac8ab14fc3f8978c043540fcef93', 'formal_computed_review': 'a285523b2b2fdbf0d750ce6ac56e3abfb80d5c42056229a2352b016a787fd875'}
+RESOURCE_SHA256 = {'materials': 'ff81fc4075437e4a44d9bdd54b9776dd526f38ef670d467f2a209e1ce68d50ca', 'reference_properties': 'ce7117fdbcea867b69588320e77f1f24f10446ec510b4f764a37582db30e138c', 'sources': '3d8b8c6d4891400504ea9bedbafaa06d05698b5324e9cbd7f5686ebc1ac1736f', 'formal_computed_review': 'a285523b2b2fdbf0d750ce6ac56e3abfb80d5c42056229a2352b016a787fd875'}
 POLICY = {
     "schema": "formal-project-count-policy/1",
     "rule": "legacy-source-qualified-identities-plus-reviewed-composition-buckets",

@@ -1,0 +1,118 @@
+{
+  "status": "local_candidate_checks_passed_not_admitted",
+  "complete_graph_valid": true,
+  "schema_documents_passed": 3,
+  "runtime_graph_valid": true,
+  "candidate_counts": {
+    "identities": 1,
+    "grades": 0,
+    "states": 1,
+    "properties": 1,
+    "sources": 1
+  },
+  "baseline_counts": {
+    "identities": 1057,
+    "grades": 20,
+    "states": 1057,
+    "properties": 1057,
+    "sources": 114
+  },
+  "first_in_memory_merge_counts": {
+    "identities": 1058,
+    "grades": 20,
+    "states": 1058,
+    "properties": 1058,
+    "sources": 115
+  },
+  "first_in_memory_merge_delta": {
+    "identities": 1,
+    "grades": 0,
+    "states": 1,
+    "properties": 1,
+    "sources": 1
+  },
+  "repeat_merge_delta": {
+    "identities": 0,
+    "grades": 0,
+    "states": 0,
+    "properties": 0,
+    "sources": 0
+  },
+  "repeat_graph_exactly_equal": true,
+  "existing_records_and_input_objects_preserved": true,
+  "disk_catalogs_unchanged": true,
+  "baseline_id_collisions": {
+    "identity": [],
+    "grade": [],
+    "state": [],
+    "property": [],
+    "source": []
+  },
+  "negative_checks": {
+    "missing_property": {
+      "rejected": true,
+      "reason": "state_watanabe2026_niobium_cylinder_density: property links and ownership must be reciprocal and complete"
+    },
+    "wrong_density_unit": {
+      "rejected": true,
+      "reason": "refprop_watanabe2026_niobium_cylinder_mass_density.reported_value: unit does not match quantity dimension"
+    },
+    "unknown_primary_source": {
+      "rejected": true,
+      "reason": "refprop_watanabe2026_niobium_cylinder_mass_density: unknown primary source"
+    },
+    "source_url_not_registered": {
+      "rejected": true,
+      "reason": "mat_watanabe2026_niobium_cylinder: evidence URL absent from source registry"
+    },
+    "unsupported_six_density_repeats": {
+      "rejected": true,
+      "reason": "refprop_watanabe2026_niobium_cylinder_mass_density: missing primary evidence support: sample_count"
+    },
+    "unsupported_reported_mean": {
+      "rejected": true,
+      "reason": "refprop_watanabe2026_niobium_cylinder_mass_density: reported mean requires scalar reported_summary"
+    },
+    "reported_uncertainty_without_envelope": {
+      "rejected": true,
+      "reason": "refprop_watanabe2026_niobium_cylinder_mass_density: reported uncertainty status requires its matching nonnull envelope"
+    },
+    "missing_source_inspection_date": {
+      "rejected": true,
+      "reason": "reference_properties.records[0].source_document.inspected_on: expected string"
+    },
+    "missing_source_title": {
+      "rejected": true,
+      "reason": "None is not of type 'string'"
+    },
+    "relabeled_duplicate_nb_identity": {
+      "rejected": true,
+      "reason": "mat_test_only_duplicate_nb: duplicate structural identity of mat_watanabe2026_niobium_cylinder; new IDs or display labels do not create distinct coverage"
+    },
+    "relabeled_duplicate_nb_state": {
+      "rejected": true,
+      "reason": "state_test_only_duplicate_nb: duplicate structural state of state_watanabe2026_niobium_cylinder_density; new IDs or display labels do not create distinct coverage"
+    },
+    "conflicting_existing_source": {
+      "rejected": true,
+      "reason": "conflicting existing catalog record: watanabe2026_niobium_thermophysical"
+    }
+  },
+  "negative_checks_passed": 12,
+  "formal_project_total": 1081,
+  "admitted_delta": 0,
+  "limitations": "Software checks and disposable merge only. No independent human scientific/rights review or formal admission. Chemical equivalence is not inferred from IDs or automated clone checks.",
+  "started_at_utc": "2026-10-15T00:42:35.182175+00:00",
+  "completed_at_utc": "2026-10-15T00:42:42.086481+00:00",
+  "elapsed_seconds": 6.906,
+  "network_guard": "Python audit hook blocks connect, connect_ex, getaddrinfo and bind",
+  "protected_json_files_checked": 32,
+  "protected_json_files_changed": 0,
+  "validator_sha256": "eff40447af0d0e908dd68db4fd4bf3b5a92b2e49928c8a652af12db93e6aec5f",
+  "prior_generic_regressions": {
+    "commit": "0adb122d0d8937301eb4815a6f8fdadafe84ea3d",
+    "tests_passed": 30,
+    "skipped": 0,
+    "rerun_for_metadata_completion": false
+  }
+}

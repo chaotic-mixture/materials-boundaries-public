@@ -11,7 +11,7 @@ from materials_query import computed_registry as registry
 
 
 OLD_BASELINE = '6ab6a7bcda3f98c33c9c5520b420fdbcc884cd18a10a3235f07ce58e28c5e1a9'
-NEW_BASELINE = '586b973ccf35a8e7050a9296ec5a241c138549d0decac85de619a6dbd23b2452'
+NEW_BASELINE = 'c03c48c4b0b2196ba77ea439df01d5a5e8191925bbfafaa63ab1212aa2d0335f'
 
 
 class IntegratedBaselineTests(unittest.TestCase):

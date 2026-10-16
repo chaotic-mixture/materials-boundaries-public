@@ -1,0 +1,169 @@
+{
+  "schema_version": "1.0.0",
+  "records": [
+    {
+      "id": "refprop_watanabe2026_niobium_cylinder_mass_density",
+      "version": "1.0.0",
+      "material_state_id": "state_watanabe2026_niobium_cylinder_density",
+      "quantity": "mass_density",
+      "quantity_dimension": "mass_per_volume",
+      "source_property_label": "Density",
+      "reported_value": {
+        "kind": "scalar",
+        "value_text": "8587.6",
+        "unit_text": "kg/m³",
+        "unit_code": "kg/m^3",
+        "number": "8587.6"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "not_stated",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "The parent-verified source reports an Archimedes density of 8587.6 kg/m³ at 293 K. It does not establish a mean, an aggregation rule, or bulk/true/apparent density terminology.",
+      "conditions": {
+        "temperature": {
+          "status": "reported",
+          "text": "293 K",
+          "evidence": [
+            {
+              "source_id": "watanabe2026_niobium_thermophysical",
+              "url": "https://link.springer.com/article/10.1007/s10765-026-03765-z",
+              "locator": "Section 2.1.1, PDF pages 4-5, niobium cylinder description and Archimedes density at 293 K",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "test_standard": {
+          "status": "not_verified",
+          "text": null,
+          "evidence": [],
+          "notes": "The handoff did not provide this detail; absence from the original source has not been established for this field."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Archimedes method",
+          "evidence": [
+            {
+              "source_id": "watanabe2026_niobium_thermophysical",
+              "url": "https://link.springer.com/article/10.1007/s10765-026-03765-z",
+              "locator": "Section 2.1.1, PDF pages 4-5, niobium cylinder description and Archimedes density at 293 K",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Immersion liquid and buoyancy correction are not reported in the inspected scope."
+        },
+        "direction": {
+          "status": "not_verified",
+          "text": null,
+          "evidence": [],
+          "notes": "The handoff did not provide this detail; absence from the original source has not been established for this field."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Not reported specifically for the density measurement in the inspected scope, according to the parent-thread handoff."
+        },
+        "loading_rate": {
+          "status": "not_verified",
+          "text": null,
+          "evidence": [],
+          "notes": "The handoff did not provide this detail; absence from the original source has not been established for this field."
+        },
+        "additional_conditions": [
+          {
+            "name": "Immersion liquid",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Not reported in the article or either inspected official supplementary material."
+            }
+          },
+          {
+            "name": "Buoyancy correction",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Not reported in the article or either inspected official supplementary material."
+            }
+          },
+          {
+            "name": "Density measurement pre-treatment and timing",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Not reported for density. Section 2.1.2 thermal treatment cannot establish pre-density treatment or timing."
+            }
+          }
+        ]
+      },
+      "density_basis": "not_stated",
+      "summary_statistic": "not_stated",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "No density-specific uncertainty is reported in the parent-verified article and two official supplements. Section 2.4 does not supply density uncertainty. No zero, thermal-property uncertainty, or inferred precision interval is substituted.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Repeated determinations contributing to the density reported in Section 2.1.1",
+        "source_statement": "No density repeat count is reported in the inspected article or supplements. Section 3.1 describes six heating runs r41-r46 on one specimen; these are not density repetitions.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Source-reported Archimedes density measurement at 293 K; no implementation details beyond the supplied source findings are inferred.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "watanabe2026_niobium_thermophysical",
+            "url": "https://link.springer.com/article/10.1007/s10765-026-03765-z",
+            "locator": "Section 2.1.1, PDF pages 4-5, niobium cylinder description and Archimedes density at 293 K",
+            "supports": [
+              "method"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [],
+      "source_id": "watanabe2026_niobium_thermophysical",
+      "evidence": [
+        {
+          "source_id": "watanabe2026_niobium_thermophysical",
+          "url": "https://link.springer.com/article/10.1007/s10765-026-03765-z",
+          "locator": "Section 2.1.1, PDF pages 4-5, niobium cylinder description and Archimedes density at 293 K",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        }
+      ],
+      "source_document": {
+        "url": "https://link.springer.com/article/10.1007/s10765-026-03765-z",
+        "revision": null,
+        "inspected_on": "2026-10-15",
+        "sha256": null,
+        "hash_status": "unavailable",
+        "hash_note": "The parent-thread handoff did not supply the inspected source bytes or their digest. The earlier retained access-challenge HTML is not article evidence and its hash is not reused.",
+        "inspection_scope": "Parent-thread source inspection on 2026-10-15 UTC covered Section 2.1.1 (PDF pages 4-5), Sections 2.1.2, 2.4 and 3.1, and both official supplementary materials (MOESM1.xlsx: nine sheets; MOESM2.zip: three files). Supplement checks were completed by 2026-10-15T00:18:07Z and the final article transcription cross-check by 2026-10-15T00:18:32Z; these are completion upper bounds, not exact completion times. The local curator transcribed and checked the parent's supplied findings and source metadata without downloading or inspecting the source binaries again. These source and transcription checks are not an independent human scientific review or raw-data reanalysis.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "scope_note": "Local candidate continuing the previously held Watanabe niobium item; not admitted. One source-specific cylinder and one density fact, with missing scientific metadata preserved. Parent-verified transcription only; no independent human scientific review, raw-data reanalysis, recalculation, or engineering allowable.",
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Parent-thread source inspection on 2026-10-15 UTC covered Section 2.1.1 (PDF pages 4-5), Sections 2.1.2, 2.4 and 3.1, and both official supplementary materials (MOESM1.xlsx: nine sheets; MOESM2.zip: three files). Supplement checks were completed by 2026-10-15T00:18:07Z and the final article transcription cross-check by 2026-10-15T00:18:32Z; these are completion upper bounds, not exact completion times. The local curator transcribed and checked the parent's supplied findings and source metadata without downloading or inspecting the source binaries again. These source and transcription checks are not an independent human scientific review or raw-data reanalysis.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      }
+    }
+  ]
+}

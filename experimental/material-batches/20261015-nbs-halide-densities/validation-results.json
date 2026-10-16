@@ -1,0 +1,384 @@
+{
+  "schema": "nbs-halide-candidate-validation/1",
+  "execution": {
+    "schema": "halide-final-validation-execution/1",
+    "validator_sha256": "2cb89a5683bb780acf5e2488b21214408f9b54ff38daff97577461f6ea796d0f",
+    "started_at_utc": "2026-10-15T02:37:06.272348+00:00",
+    "finished_at_utc": "2026-10-15T02:37:14.866384+00:00",
+    "duration_seconds": 8.594403299997794,
+    "exit_code": 0,
+    "stderr_bytes": 0,
+    "stdout_sha256": "9a2213633d1a450f26e3a089b2d5b5be5c2651b3a1ea3fe86457a136bf68054c",
+    "python_version": "3.11.0",
+    "jsonschema_version": "4.26.0",
+    "repository_files_checked": 560,
+    "repository_bytes_unchanged_during_success_and_failure_runs": true,
+    "audit_guard": "Python audit hook loaded before validator execution; blocks file writes, filesystem mutations, sockets and subprocesses in the child. This supplements the executor sandbox; it is not an OS security boundary.",
+    "audit_guard_sha256": "ccd2d6340882929b224faec507d6f4a1243e8e1e389f08bfe4563ca99de943ce",
+    "early_failure_report_probe": {
+      "expected_exit_code": 1,
+      "actual_exit_code": 1,
+      "reported_failed": 1,
+      "skipped_count": null,
+      "remaining_checks_not_executed_after_failure": true,
+      "passed": true
+    }
+  },
+  "candidate_validator": {
+    "status": "local_candidate_checks_passed_not_admitted",
+    "candidate_counts": {
+      "identities": 4,
+      "grades": 0,
+      "states": 4,
+      "properties": 4,
+      "sources": 1
+    },
+    "baseline_catalog_and_schema_bytes_match_commit": "4c5656cf6ba0ad1a54b736e0568e97abe4815c29",
+    "baseline_counts": {
+      "identities": 1057,
+      "grades": 20,
+      "states": 1057,
+      "properties": 1057,
+      "sources": 114
+    },
+    "first_in_memory_merge_counts": {
+      "identities": 1061,
+      "grades": 20,
+      "states": 1061,
+      "properties": 1061,
+      "sources": 114
+    },
+    "first_in_memory_merge_delta": {
+      "identities": 4,
+      "grades": 0,
+      "states": 4,
+      "properties": 4,
+      "sources": 0
+    },
+    "repeat_merge_delta": {
+      "identities": 0,
+      "grades": 0,
+      "states": 0,
+      "properties": 0,
+      "sources": 0
+    },
+    "repeat_graph_exactly_equal": true,
+    "baseline_id_collisions": {
+      "identity": [],
+      "grade": [],
+      "state": [],
+      "property": [],
+      "source": [
+        "swanson_tatge_1953_nbs_circ539v1"
+      ]
+    },
+    "existing_records_and_input_objects_preserved": true,
+    "watched_files_unchanged": true,
+    "watched_file_sha256": {
+      "candidate/nbs-materials.candidate.json": "55e4c6f97e84ab39d984acf37224e0a5e059e2570ec827aa95f850c658738486",
+      "candidate/nbs-reference-properties.candidate.json": "64559d1d60bdafe72716921ac135a7bf8a77eae9fac9c05be6492d0735f91816",
+      "candidate/nbs-sources.reused.json": "616bda4835a62120df3fa2c088bc3e3aa06158cd291fdeec81100d2d58150594",
+      "catalog/materials.json": "ffd27ae7a927494083cbdcb173847502283f9ff0f69b8b7321abe0b042824dc1",
+      "catalog/reference_properties.json": "7430901a0f401aca384debb8706a124ac43ad6d043165beff1b8d186641fddef",
+      "catalog/sources.json": "4240f52ef96bbe34a8a677e2f995296a6c72ac8ab14fc3f8978c043540fcef93",
+      "schema/materials.schema.json": "b1bb12d436cd0580a1dbfddcb3854acbe233392950bee03d368094f3048255da",
+      "schema/reference_properties.schema.json": "8ec45ae83b30d9ecc697d703aa1d903ef231ce0cd9123c23491694149edec268",
+      "schema/sources.schema.json": "164016522283620c88831e36b7cd60abccf4203c1d9d3e2343054d3d0287abdf",
+      "candidate/review.json": "1dc928d12fe5bafccc6d4e8a7099eafc2ad93d9d6045d1d96ddbaeafb70e2d10",
+      "validator.py": "2cb89a5683bb780acf5e2488b21214408f9b54ff38daff97577461f6ea796d0f"
+    },
+    "formal_project_total_from_pinned_baseline": 1081,
+    "admitted_delta": 0,
+    "source_documents_read_live": 0,
+    "limitations": [
+      "Software compatibility and a disposable in-memory merge only; candidate records remain unadmitted.",
+      "The formal project total is pinned baseline context, not a new formal census.",
+      "Source-specific guards check selected supplied review facts; they do not inspect source pages or prove prose fidelity.",
+      "No independent scientific review, rights approval, measurement replication, chemical-equivalence inference, or publication occurs."
+    ],
+    "checks": [
+      {
+        "name": "pinned_catalog_and_schema_bytes",
+        "group": "positive_preservation",
+        "status": "passed"
+      },
+      {
+        "name": "materials_schema",
+        "group": "positive_generic_contract",
+        "status": "passed"
+      },
+      {
+        "name": "reference_properties_schema",
+        "group": "positive_generic_contract",
+        "status": "passed"
+      },
+      {
+        "name": "sources_schema",
+        "group": "positive_generic_contract",
+        "status": "passed"
+      },
+      {
+        "name": "complete_runtime_graph",
+        "group": "positive_generic_contract",
+        "status": "passed"
+      },
+      {
+        "name": "selected_source_handoff_facts",
+        "group": "positive_packet_source_facts",
+        "status": "passed"
+      },
+      {
+        "name": "pinned_baseline_counts",
+        "group": "positive_merge",
+        "status": "passed"
+      },
+      {
+        "name": "only_intended_source_id_reuse",
+        "group": "positive_merge",
+        "status": "passed"
+      },
+      {
+        "name": "reused_source_exactly_unchanged",
+        "group": "positive_merge",
+        "status": "passed"
+      },
+      {
+        "name": "first_disposable_merge_delta",
+        "group": "positive_merge",
+        "status": "passed"
+      },
+      {
+        "name": "repeated_merge_exactly_idempotent",
+        "group": "positive_merge",
+        "status": "passed"
+      },
+      {
+        "name": "preexisting_records_preserved",
+        "group": "positive_merge",
+        "status": "passed"
+      },
+      {
+        "name": "missing_required_property",
+        "group": "negative_generic_contract",
+        "status": "passed",
+        "rejected": true,
+        "reason": "state_nbs1953_baf2_mallinckrodt_xrd: property links and ownership must be reciprocal and complete"
+      },
+      {
+        "name": "wrong_density_unit",
+        "group": "negative_generic_contract",
+        "status": "passed",
+        "rejected": true,
+        "reason": "refprop_nbs1953_kbr_baker_111642_crystallographic_density.reported_value: unit does not match quantity dimension"
+      },
+      {
+        "name": "unknown_primary_source",
+        "group": "negative_generic_contract",
+        "status": "passed",
+        "rejected": true,
+        "reason": "refprop_nbs1953_kbr_baker_111642_crystallographic_density: unknown primary source"
+      },
+      {
+        "name": "unregistered_evidence_url",
+        "group": "negative_generic_contract",
+        "status": "passed",
+        "rejected": true,
+        "reason": "mat_nbs1953_kbr: evidence URL absent from source registry"
+      },
+      {
+        "name": "missing_inspection_date",
+        "group": "negative_generic_contract",
+        "status": "passed",
+        "rejected": true,
+        "reason": "reference_properties.records[0].source_document: missing fields ['inspected_on']; unsupported fields []"
+      },
+      {
+        "name": "reported_uncertainty_without_envelope",
+        "group": "negative_generic_contract",
+        "status": "passed",
+        "rejected": true,
+        "reason": "refprop_nbs1953_kbr_baker_111642_crystallographic_density: reported uncertainty status requires its matching nonnull envelope"
+      },
+      {
+        "name": "unevidenced_density_repeat_count",
+        "group": "negative_generic_contract",
+        "status": "passed",
+        "rejected": true,
+        "reason": "refprop_nbs1953_kbr_baker_111642_crystallographic_density: missing primary evidence support: sample_count"
+      },
+      {
+        "name": "unevidenced_reported_mean",
+        "group": "negative_generic_contract",
+        "status": "passed",
+        "rejected": true,
+        "reason": "refprop_nbs1953_kbr_baker_111642_crystallographic_density: missing primary evidence support: summary_statistic"
+      },
+      {
+        "name": "crystallographic_basis_changed_to_bulk",
+        "group": "negative_generic_contract",
+        "status": "passed",
+        "rejected": true,
+        "reason": "refprop_nbs1953_kbr_baker_111642_crystallographic_density: crystallographic density requires its source-reported derivation method"
+      },
+      {
+        "name": "relabeled_structural_identity_clone",
+        "group": "negative_generic_contract",
+        "status": "passed",
+        "rejected": true,
+        "reason": "mat_test_only_duplicate_halide: duplicate structural identity of mat_nbs1953_kbr; new IDs or display labels do not create distinct coverage"
+      },
+      {
+        "name": "relabeled_structural_state_clone",
+        "group": "negative_generic_contract",
+        "status": "passed",
+        "rejected": true,
+        "reason": "state_test_only_duplicate_halide: duplicate structural state of state_nbs1953_kbr_baker_111642_xrd; new IDs or display labels do not create distinct coverage"
+      },
+      {
+        "name": "conflicting_existing_property",
+        "group": "negative_generic_merge",
+        "status": "passed",
+        "rejected": true,
+        "reason": "conflicting existing catalog record: refprop_nbs1953_kbr_baker_111642_crystallographic_density"
+      },
+      {
+        "name": "conflicting_existing_source",
+        "group": "negative_generic_merge",
+        "status": "passed",
+        "rejected": true,
+        "reason": "conflicting existing catalog record: swanson_tatge_1953_nbs_circ539v1"
+      },
+      {
+        "name": "failed_merges_preserve_inputs",
+        "group": "positive_merge",
+        "status": "passed"
+      },
+      {
+        "name": "naf_pattern_temperature_as_density_temperature",
+        "group": "negative_packet_source_facts",
+        "status": "passed",
+        "rejected": true,
+        "reason": "naf: density temperature must remain unknown; lattice/pattern temperature cannot be copied",
+        "generic_contract_compatible_before_packet_guard": true
+      },
+      {
+        "name": "ki_annealing_temperature_as_density_temperature",
+        "group": "negative_packet_source_facts",
+        "status": "passed",
+        "rejected": true,
+        "reason": "ki: source density reference temperature changed",
+        "generic_contract_compatible_before_packet_guard": true
+      },
+      {
+        "name": "lattice_error_transferred_to_density_uncertainty",
+        "group": "negative_packet_source_facts",
+        "status": "passed",
+        "rejected": true,
+        "reason": "kbr: density uncertainty is unknown; lattice error is not a density envelope",
+        "generic_contract_compatible_before_packet_guard": true
+      },
+      {
+        "name": "ki_presumed_moisture_removal_as_proven_water_free",
+        "group": "negative_packet_source_facts",
+        "status": "passed",
+        "rejected": true,
+        "reason": "ki: measured moisture content is unknown; presumed removal does not prove a water-free specimen",
+        "generic_contract_compatible_before_packet_guard": true
+      },
+      {
+        "name": "baf2_impurity_percent_as_weight_percent",
+        "group": "negative_packet_source_facts",
+        "status": "passed",
+        "rejected": true,
+        "reason": "baf2: impurity basis and total purity are not established",
+        "generic_contract_compatible_before_packet_guard": true
+      },
+      {
+        "name": "coherent_bulk_relabel_of_source_crystallographic_density",
+        "group": "negative_packet_source_facts",
+        "status": "passed",
+        "rejected": true,
+        "reason": "kbr: source reports crystallographic derivation, not bulk measurement",
+        "generic_contract_compatible_before_packet_guard": true
+      },
+      {
+        "name": "all_input_objects_preserved",
+        "group": "positive_preservation",
+        "status": "passed"
+      },
+      {
+        "name": "all_watched_files_unchanged",
+        "group": "positive_preservation",
+        "status": "passed"
+      }
+    ],
+    "checks_passed": 34,
+    "checks_failed": 0,
+    "checks_skipped": 0,
+    "negative_checks_passed": 19
+  },
+  "scoped_regression": {
+    "schema": "halide-scoped-regression-run/1",
+    "runs": [
+      {
+        "suite": "test_material_reference_contract.py",
+        "command": [
+          "python",
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_material_reference_contract.py",
+          "-v"
+        ],
+        "started_at_utc": "2026-10-15T02:32:59.878816+00:00",
+        "finished_at_utc": "2026-10-15T02:33:02.428164+00:00",
+        "duration_seconds": 2.549905599997146,
+        "exit_code": 0,
+        "tests_run": 26,
+        "skipped": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256": "f0388056ff90d83ff5bb217ee142b36596ecc1d4c087705f80926fb4844e9a7b",
+        "success": true
+      },
+      {
+        "suite": "test_material_append_merge.py",
+        "command": [
+          "python",
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_material_append_merge.py",
+          "-v"
+        ],
+        "started_at_utc": "2026-10-15T02:33:02.429169+00:00",
+        "finished_at_utc": "2026-10-15T02:33:02.598829+00:00",
+        "duration_seconds": 0.16984149999916553,
+        "exit_code": 0,
+        "tests_run": 4,
+        "skipped": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256": "a4134ec7e1bd77068f0d08fe13b4ea701c0beb16c7a47c27c1ceef7268ed5b91",
+        "success": true
+      }
+    ],
+    "all_passed": true,
+    "total_tests_run": 30,
+    "total_skipped": 0,
+    "scope": "Two existing software contract and append-merge suites only; not a complete release suite or scientific review."
+  },
+  "not_run": [
+    "Complete release test suite",
+    "Remote CI",
+    "Live provider/API reads",
+    "Experimental replication or independent human scientific review"
+  ],
+  "scope_note": "The missing-packet probe intentionally exits 1 and confirms truthful early-failure reporting; it is not a failed candidate-data check. Earlier developmental executions are excluded from final pass totals. The final validator CLI prints only candidate_validator; execution timing and existing-suite receipts are caller capture metadata."
+}

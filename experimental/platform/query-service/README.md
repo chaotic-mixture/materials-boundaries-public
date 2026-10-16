@@ -61,49 +61,45 @@ See the parent README for verified and blocked stages. Tests use deterministic H
 
 The default app remains provider-only. The explicit `materials_query.app:create_catalog_app --factory` startup captures and validates this repository's locally installed core once. See `../LOCAL_CATALOG.md` for local-only installation, pinned read-only API contracts and the separate `/catalog` page. No core package is automatically fetched and no local/external counts are summed. Browser rendering remains unverified.
 
-## Local NBS review candidate, 2026-10-14
+## Local incremental review candidate, 2026-10-16
 
-This experimental branch contains a proposed addition of three source-qualified
-NBS identities (LiF, KCl and CaF2), each with one crystallographic-density
-reference. Its candidate snapshot contains 1084 entries: 1060 source-qualified
-identities plus the unchanged 24 reviewed computed compositions. Candidate core
-inorganic coverage is 19; the proposed combined inorganic count is 31.
+The local experiment retains LiF, KCl and CaF2 and adds one source-qualified Nb
+cylinder plus KBr, KI, NaF and BaF2. Each identity resolves one numerical density
+reference. Its candidate snapshot contains 1089 entries: 1065 source-qualified
+identities plus the unchanged 24 reviewed computed compositions. Core counts
+are natural 1010, metal 15, inorganic 23, polymer 14 and composite 3; the combined
+project counts are natural 1010, metal 27, inorganic 35, polymer 14 and composite 3.
+See [the incremental record](../../../docs/MATERIAL_GROWTH_20261016.md).
 
-The main baseline remains 1081 entries: 1057 source-qualified identities plus
-24 reviewed computed compositions. Its combined inorganic count is 28. The
-proposed 1084 snapshot is awaiting review and is not an approved formal release. In this
-branch, the API field `formal_project_admission_count` still reports the candidate
-total 1084; the field name and proposed resource pins do not confer formal
-admission. Nb is outside this candidate. The 62 second-tranche examples and the
-two held NOMAD overlay candidates remain excluded from both totals.
+Main remains at 1081 entries: 1057 source-qualified identities plus 24 reviewed
+computed compositions. In this local installation the existing API field
+`formal_project_admission_count` reports 1089; its name and proposed resource
+pins do not confer a reviewed main release. The 62 unadmitted examples and held
+NOMAD candidates remain excluded. Independent scientific and final rights
+admission remain pending. No login, push, public deployment or DOI registration
+is included in this increment.
 
-The query UI reads the proposed counts from the captured candidate catalog.
-Its relationship view has 1065 supported memberships across 1060 identities and
-still one identity relationship; each new NBS identity contributes only its explicit
-inorganic membership. Unknown classifications remain unknown.
+The query UI reads counts from the captured catalog. Its relationship view has
+1070 supported memberships across 1065 identities and one identity relationship;
+each new identity contributes only its existing primary-class membership.
+Unknown classifications remain unknown.
 
 The computed registry pins the complete installed core manifest, including the
-two appended catalog resources. Its new canonical baseline anchor is
-`586b973ccf35a8e7050a9296ec5a241c138549d0decac85de619a6dbd23b2452`.
-A registry created against the earlier 1057-identity baseline is rejected in
-this installation. There is no automatic migration or old-anchor fallback.
-Keep existing databases with their original installation; use a distinct new
-local registry when explicitly exercising this baseline. Reviews, input-file
-pins and admission decisions remain independent of the catalog baseline.
-This integration neither opens existing user databases nor changes frozen
-computed review files.
+three updated catalog resources. Its canonical baseline anchor is
+`c03c48c4b0b2196ba77ea439df01d5a5e8191925bbfafaa63ab1212aa2d0335f`.
+Registries from earlier baselines are rejected. There is no automatic migration
+or old-anchor fallback; keep existing databases with their original installation
+and use a distinct new local registry for this snapshot. Review and input pins
+remain separate from the catalog baseline. Frozen computed reviews are unchanged.
 
-The focused baseline tests use temporary synthetic databases and verify old
-anchor rejection, unchanged database bytes, portable manifest path spelling,
-and rejection of changed catalog content even when identity counts match:
+Focused tests retain old-anchor rejection, unchanged database bytes, portable
+manifest paths and rejection of content drift even when identity counts match:
 
 ```sh
 python -m unittest discover -s catalog-tests -p test_catalog_baseline.py -v
 ```
 
-Catalog contract and API tests additionally cover the three exact NBS states,
-source reuse, reported density units and temperatures, unknown uncertainty,
-and the boundary between the proposed catalog snapshot and computed examples.
-The source-derived values are catalog references; scientific validation and
-engineering-allowable status remain false. This local experimental candidate
-awaits review; no public deployment or DOI registration is included.
+The incremental tests additionally require exact frozen candidate payloads,
+explicit status-only adjustments, idempotent materialization, source reuse,
+per-property units and temperatures, and unchanged review limitations. Scientific
+validation and engineering-allowable flags remain false.

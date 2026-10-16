@@ -41,16 +41,16 @@ class FamilyRelationshipTests(unittest.TestCase):
         return {m['concept'] for m in row['memberships'] if m['status'] == 'supported'}
 
     def test_coverage_exact_and_no_count_inflation(self):
-        self.assertEqual(self.status['unique_identity_count'], 1060)
-        self.assertEqual(self.status['membership_assertion_count'], 1065)
+        self.assertEqual(self.status['unique_identity_count'], 1065)
+        self.assertEqual(self.status['membership_assertion_count'], 1070)
         self.assertEqual(self.status['identity_relationship_count'], 1)
-        expected = dict(metal=14, alloy=2, inorganic=19, ceramic=2, polymer=15,
+        expected = dict(metal=15, alloy=2, inorganic=23, ceramic=2, polymer=15,
                         composite=3, natural=1010, semiconductor=0, battery=0,
                         catalyst=0, two_dimensional=0, nanoscale=0)
         for concept, supported in expected.items():
             with self.subTest(concept=concept):
                 self.assertEqual(self.status['coverage'][concept]['supported'], supported)
-                self.assertEqual(self.status['coverage'][concept]['unknown'], 1060 - supported)
+                self.assertEqual(self.status['coverage'][concept]['unknown'], 1065 - supported)
         self.assertEqual(self.status['new_identities_admitted'], 0)
         self.assertFalse(self.status['provider_counts_combined'])
 
@@ -58,8 +58,8 @@ class FamilyRelationshipTests(unittest.TestCase):
         self.assertEqual(self.supported(self.row('mat_hydro_6061')), {'metal', 'alloy'})
         response = self.post('search', concepts=['metal', 'alloy', 'alloy'], limit=100)
         result = response.json()['result']['data']
-        self.assertEqual(result['matching_unique_identity_count'], 14)
-        self.assertEqual(len({r['identity_id'] for r in result['records']}), 14)
+        self.assertEqual(result['matching_unique_identity_count'], 15)
+        self.assertEqual(len({r['identity_id'] for r in result['records']}), 15)
         self.assertEqual(result['concepts'], ['alloy', 'metal'])
         self.assertFalse(result['truncated'])
 
@@ -219,7 +219,7 @@ class FamilyRelationshipTests(unittest.TestCase):
         from materials_boundaries.catalog import read_catalog
         original = read_catalog('materials')
         self.assertEqual(Counter(i['category'] for i in original['identities']),
-                         dict(natural=1010, metal=14, inorganic=19, polymer=14, composite=3))
+                         dict(natural=1010, metal=15, inorganic=23, polymer=14, composite=3))
         for identity in original['identities']:
             self.assertEqual(self.snapshot.record('identities', identity['id']), identity)
             self.assertEqual(self.index.identity(identity['id'])['legacy_category'], identity['category'])
