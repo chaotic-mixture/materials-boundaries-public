@@ -7,3 +7,9 @@ These schemas and selected typed-edge examples are design artifacts, not a graph
 The [family overlap view](FAMILY_OVERLAP.md) implements a separate additive,
 read-only, provenance-aware API for overlapping family/role/morphology concepts.
 It does not import these older proposed graph schemas or restore their dataset.
+
+The [hBN projection](HBN_PROJECTION.md) is a separate checkout-only read-only
+view of two existing observations and seven explicitly reviewed proposed
+relationships. It adds the previously missing material/state/cohort bridges,
+preserves catalog aliases, and does not change formal admissions or implement
+a general graph importer.
