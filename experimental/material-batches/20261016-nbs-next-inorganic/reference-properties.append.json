@@ -1,0 +1,518 @@
+{
+  "schema_version": "1.0.0",
+  "records": [
+    {
+      "id": "refprop_nbs1953_nh4cl_baker_crystallographic_density",
+      "version": "1.0.0",
+      "material_state_id": "state_nbs1953_nh4cl_baker_xrd",
+      "quantity": "mass_density",
+      "quantity_dimension": "mass_per_volume",
+      "source_property_label": "density",
+      "reported_value": {
+        "kind": "scalar",
+        "value_text": "1.527",
+        "unit_text": "grams per cubic centimeter",
+        "unit_code": "g/cm^3",
+        "number": "1.527"
+      },
+      "evidence_kind": "published_measurement_derived_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_calculation",
+      "basis_note": "Density calculated by the source from NBS experimental lattice measurements; exact reported value and precision retained without recomputation. A reported value does not establish a mean or repeat count.",
+      "conditions": {
+        "temperature": {
+          "status": "reported",
+          "text": "26 degrees C",
+          "evidence": [
+            {
+              "source_id": "swanson_tatge_1953_nbs_circ539v1",
+              "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+              "locator": "Section 2.33, printed p. 61 / PDF p. 65, left column: simple cubic structure, one molecule per unit cell and NBS crystallographic density 1.527 at 26 degrees C.",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Explicit density temperature, not inferred from preparation or a neighboring table."
+        },
+        "test_standard": {
+          "status": "not_verified",
+          "text": null,
+          "evidence": [],
+          "notes": "No density test-standard compliance is established; reagent ACS compliance is not a density-method certification."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Source crystallographic calculation from NBS experimental X-ray lattice measurements and adopted crystal structure.",
+          "evidence": [
+            {
+              "source_id": "swanson_tatge_1953_nbs_circ539v1",
+              "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+              "locator": "Section 2.33, printed pp. 59-60 / PDF pp. 63-64: J. T. Baker sample, NBS chemical laboratory ACS compliance and sublimation recrystallization. Section 2.33, printed p. 61 / PDF p. 65, left column: simple cubic structure, one molecule per unit cell and NBS crystallographic density 1.527 at 26 degrees C. Introduction, printed p. 2 / PDF p. 6: density is expressed in grams per cubic centimeter. PDF pages are one-based.",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "direction": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading direction does not apply to this scalar crystallographic density."
+        },
+        "conditioning": {
+          "status": "not_verified",
+          "text": null,
+          "evidence": [],
+          "notes": "No density-specific measured moisture content or conditioning duration is established; sample preparation remains in the state."
+        },
+        "loading_rate": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading rate does not apply to this crystallographic density."
+        },
+        "additional_conditions": [
+          {
+            "name": "density_pressure",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "No pressure is reported for the selected density value."
+            }
+          },
+          {
+            "name": "xrd_pattern_temperature",
+            "fact": {
+              "status": "reported",
+              "text": "26 degrees C for the NBS powder pattern; separately recorded from the explicit density temperature.",
+              "evidence": [
+                {
+                  "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                  "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                  "locator": "Printed p. 60 / PDF p. 64, Table 34: NBS powder-pattern temperature is 26 degrees C.",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": null
+            }
+          }
+        ]
+      },
+      "density_basis": "crystallographic",
+      "summary_statistic": "reported_value",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "Density-specific uncertainty is unreported. Lattice measurement error is not density uncertainty; no propagation or inferred error bar is supplied.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Selected NBS NH4Cl crystallographic density.",
+        "source_statement": "No independent physical-specimen or repeated density-determination count is established. The stated one formula unit per crystallographic cell and diffraction-line counts are not sample n.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_crystallographic_derivation",
+        "definition": "Source-reported crystallographic density from the measured NBS lattice constant for NH4Cl, simple cubic, with one formula unit per conventional cell. Cell mass is divided by cubic cell volume using the source's adopted cell content and atomic masses. The source value 1.527 grams per cubic centimeter is retained; no lattice constant, atomic-mass choice, density recalculation or uncertainty propagation is added. This is not direct bulk weighing, pycnometry or DFT.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "swanson_tatge_1953_nbs_circ539v1",
+            "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+            "locator": "Section 2.33, printed pp. 59-60 / PDF pp. 63-64: J. T. Baker sample, NBS chemical laboratory ACS compliance and sublimation recrystallization. Section 2.33, printed p. 61 / PDF p. 65, left column: simple cubic structure, one molecule per unit cell and NBS crystallographic density 1.527 at 26 degrees C. Introduction, printed p. 2 / PDF p. 6: density is expressed in grams per cubic centimeter. PDF pages are one-based.",
+            "supports": [
+              "method",
+              "classification",
+              "condition"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [],
+      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+      "evidence": [
+        {
+          "source_id": "swanson_tatge_1953_nbs_circ539v1",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+          "locator": "Section 2.33, printed p. 61 / PDF p. 65, left column: simple cubic structure, one molecule per unit cell and NBS crystallographic density 1.527 at 26 degrees C. Introduction, printed p. 2 / PDF p. 6: density is expressed in grams per cubic centimeter. PDF pages are one-based.",
+          "supports": [
+            "reported_value",
+            "classification",
+            "method",
+            "condition"
+          ]
+        },
+        {
+          "source_id": "swanson_tatge_1953_nbs_circ539v1",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+          "locator": "Section 2.33, printed pp. 59-60 / PDF pp. 63-64: J. T. Baker sample, NBS chemical laboratory ACS compliance and sublimation recrystallization.",
+          "supports": [
+            "material_identity",
+            "state"
+          ]
+        }
+      ],
+      "source_document": {
+        "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+        "revision": "NBS Circular 539, Volume I, 1953",
+        "inspected_on": "2026-10-16",
+        "sha256": "003b872fbe7d403d38bbd1d752568ee92a96bdb010b6e381bdc82566929e2a6c",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Selected original NBS page images inspected locally on 2026-10-16; full PDF SHA-256 003b872fbe7d403d38bbd1d752568ee92a96bdb010b6e381bdc82566929e2a6c. Section 2.33, printed pp. 59-60 / PDF pp. 63-64: J. T. Baker sample, NBS chemical laboratory ACS compliance and sublimation recrystallization. Section 2.33, printed p. 61 / PDF p. 65, left column: simple cubic structure, one molecule per unit cell and NBS crystallographic density 1.527 at 26 degrees C. Introduction, printed p. 2 / PDF p. 6: density is expressed in grams per cubic centimeter. PDF pages are one-based. Selected source-transcription inspection only; no scientific peer review, experimental replication or raw-data reanalysis.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "scope_note": "Ammonium chloride (NH4Cl), J. T. Baker Chemical Company sample (no specimen number reported), represented by NBS experimental powder-XRD measurements. The source-derived density concerns the simple cubic phase at 26 degrees C. It does not establish bulk specimen or powder-packing density, porosity, an engineering allowable or a universal material value. The reported one molecule per crystallographic cell is not an independent-specimen count.",
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Selected original NBS page images inspected locally on 2026-10-16; full PDF SHA-256 003b872fbe7d403d38bbd1d752568ee92a96bdb010b6e381bdc82566929e2a6c. Section 2.33, printed pp. 59-60 / PDF pp. 63-64: J. T. Baker sample, NBS chemical laboratory ACS compliance and sublimation recrystallization. Section 2.33, printed p. 61 / PDF p. 65, left column: simple cubic structure, one molecule per unit cell and NBS crystallographic density 1.527 at 26 degrees C. Introduction, printed p. 2 / PDF p. 6: density is expressed in grams per cubic centimeter. PDF pages are one-based. Selected source-transcription inspection only; no scientific peer review, experimental replication or raw-data reanalysis.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      }
+    },
+    {
+      "id": "refprop_nbs1953_licl_mallinckrodt_sdd_crystallographic_density",
+      "version": "1.0.0",
+      "material_state_id": "state_nbs1953_licl_mallinckrodt_sdd_xrd",
+      "quantity": "mass_density",
+      "quantity_dimension": "mass_per_volume",
+      "source_property_label": "density",
+      "reported_value": {
+        "kind": "scalar",
+        "value_text": "2.074",
+        "unit_text": "grams per cubic centimeter",
+        "unit_code": "g/cm^3",
+        "number": "2.074"
+      },
+      "evidence_kind": "published_measurement_derived_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_calculation",
+      "basis_note": "Density calculated by the source from NBS experimental lattice measurements; exact reported value and precision retained without recomputation. A reported value does not establish a mean or repeat count.",
+      "conditions": {
+        "temperature": {
+          "status": "reported",
+          "text": "25 degrees C",
+          "evidence": [
+            {
+              "source_id": "swanson_tatge_1953_nbs_circ539v1",
+              "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+              "locator": "Section 2.35, printed p. 62 / PDF p. 66, right column: NaCl structure with four molecules per cell and density calculated from the NBS lattice constant, 2.074 at 25 degrees C.",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Explicit density temperature, not inferred from preparation or a neighboring table."
+        },
+        "test_standard": {
+          "status": "not_verified",
+          "text": null,
+          "evidence": [],
+          "notes": "No density test-standard compliance is established; reagent ACS compliance is not a density-method certification."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Source crystallographic calculation from NBS experimental X-ray lattice measurements and adopted crystal structure.",
+          "evidence": [
+            {
+              "source_id": "swanson_tatge_1953_nbs_circ539v1",
+              "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+              "locator": "Section 2.35, printed p. 62 / PDF p. 66: Mallinckrodt sample labelled SDD, supplier chemical analysis and loosely packed NBS powder preparation to avoid orientation. Section 2.35, printed p. 62 / PDF p. 66, right column: NaCl structure with four molecules per cell and density calculated from the NBS lattice constant, 2.074 at 25 degrees C. Introduction, printed p. 2 / PDF p. 6: density is expressed in grams per cubic centimeter. PDF pages are one-based.",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "direction": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading direction does not apply to this scalar crystallographic density."
+        },
+        "conditioning": {
+          "status": "not_verified",
+          "text": null,
+          "evidence": [],
+          "notes": "No density-specific measured moisture content or conditioning duration is established; sample preparation remains in the state."
+        },
+        "loading_rate": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading rate does not apply to this crystallographic density."
+        },
+        "additional_conditions": [
+          {
+            "name": "density_pressure",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "No pressure is reported for the selected density value."
+            }
+          }
+        ]
+      },
+      "density_basis": "crystallographic",
+      "summary_statistic": "reported_value",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "Density-specific uncertainty is unreported. Lattice measurement error is not density uncertainty; no propagation or inferred error bar is supplied.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Selected NBS LiCl crystallographic density.",
+        "source_statement": "No independent physical-specimen or repeated density-determination count is established. The stated four formula units per crystallographic cell and diffraction-line counts are not sample n.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_crystallographic_derivation",
+        "definition": "Source-reported crystallographic density from the measured NBS lattice constant for LiCl, cubic NaCl type, with four formula units per conventional cell. Cell mass is divided by cubic cell volume using the source's adopted cell content and atomic masses. The source value 2.074 grams per cubic centimeter is retained; no lattice constant, atomic-mass choice, density recalculation or uncertainty propagation is added. This is not direct bulk weighing, pycnometry or DFT.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "swanson_tatge_1953_nbs_circ539v1",
+            "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+            "locator": "Section 2.35, printed p. 62 / PDF p. 66: Mallinckrodt sample labelled SDD, supplier chemical analysis and loosely packed NBS powder preparation to avoid orientation. Section 2.35, printed p. 62 / PDF p. 66, right column: NaCl structure with four molecules per cell and density calculated from the NBS lattice constant, 2.074 at 25 degrees C. Introduction, printed p. 2 / PDF p. 6: density is expressed in grams per cubic centimeter. PDF pages are one-based.",
+            "supports": [
+              "method",
+              "classification",
+              "condition"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [],
+      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+      "evidence": [
+        {
+          "source_id": "swanson_tatge_1953_nbs_circ539v1",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+          "locator": "Section 2.35, printed p. 62 / PDF p. 66, right column: NaCl structure with four molecules per cell and density calculated from the NBS lattice constant, 2.074 at 25 degrees C. Introduction, printed p. 2 / PDF p. 6: density is expressed in grams per cubic centimeter. PDF pages are one-based.",
+          "supports": [
+            "reported_value",
+            "classification",
+            "method",
+            "condition"
+          ]
+        },
+        {
+          "source_id": "swanson_tatge_1953_nbs_circ539v1",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+          "locator": "Section 2.35, printed p. 62 / PDF p. 66: Mallinckrodt sample labelled SDD, supplier chemical analysis and loosely packed NBS powder preparation to avoid orientation.",
+          "supports": [
+            "material_identity",
+            "state"
+          ]
+        }
+      ],
+      "source_document": {
+        "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+        "revision": "NBS Circular 539, Volume I, 1953",
+        "inspected_on": "2026-10-16",
+        "sha256": "003b872fbe7d403d38bbd1d752568ee92a96bdb010b6e381bdc82566929e2a6c",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Selected original NBS page images inspected locally on 2026-10-16; full PDF SHA-256 003b872fbe7d403d38bbd1d752568ee92a96bdb010b6e381bdc82566929e2a6c. Section 2.35, printed p. 62 / PDF p. 66: Mallinckrodt sample labelled SDD, supplier chemical analysis and loosely packed NBS powder preparation to avoid orientation. Section 2.35, printed p. 62 / PDF p. 66, right column: NaCl structure with four molecules per cell and density calculated from the NBS lattice constant, 2.074 at 25 degrees C. Introduction, printed p. 2 / PDF p. 6: density is expressed in grams per cubic centimeter. PDF pages are one-based. Selected source-transcription inspection only; no scientific peer review, experimental replication or raw-data reanalysis.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "scope_note": "Lithium chloride (LiCl), Mallinckrodt Chemical Works sample labelled SDD, represented by NBS experimental powder-XRD measurements. The source-derived density concerns the cubic NaCl type phase at 25 degrees C. It does not establish bulk specimen or powder-packing density, porosity, an engineering allowable or a universal material value. SDD is a source sample label, not a separately qualified grade. The density reference temperature is 25 degrees C; no powder-pattern temperature from the neighboring LiF table is assigned to LiCl.",
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Selected original NBS page images inspected locally on 2026-10-16; full PDF SHA-256 003b872fbe7d403d38bbd1d752568ee92a96bdb010b6e381bdc82566929e2a6c. Section 2.35, printed p. 62 / PDF p. 66: Mallinckrodt sample labelled SDD, supplier chemical analysis and loosely packed NBS powder preparation to avoid orientation. Section 2.35, printed p. 62 / PDF p. 66, right column: NaCl structure with four molecules per cell and density calculated from the NBS lattice constant, 2.074 at 25 degrees C. Introduction, printed p. 2 / PDF p. 6: density is expressed in grams per cubic centimeter. PDF pages are one-based. Selected source-transcription inspection only; no scientific peer review, experimental replication or raw-data reanalysis.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      }
+    },
+    {
+      "id": "refprop_nbs1953_kf_baker_crystallographic_density",
+      "version": "1.0.0",
+      "material_state_id": "state_nbs1953_kf_baker_xrd",
+      "quantity": "mass_density",
+      "quantity_dimension": "mass_per_volume",
+      "source_property_label": "density",
+      "reported_value": {
+        "kind": "scalar",
+        "value_text": "2.524",
+        "unit_text": "grams per cubic centimeter",
+        "unit_code": "g/cm^3",
+        "number": "2.524"
+      },
+      "evidence_kind": "published_measurement_derived_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_calculation",
+      "basis_note": "Density calculated by the source from NBS experimental lattice measurements; exact reported value and precision retained without recomputation. A reported value does not establish a mean or repeat count.",
+      "conditions": {
+        "temperature": {
+          "status": "reported",
+          "text": "26 degrees C",
+          "evidence": [
+            {
+              "source_id": "swanson_tatge_1953_nbs_circ539v1",
+              "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+              "locator": "Section 2.37, printed p. 65 / PDF p. 69, upper text: NaCl structure with four molecules per cell and density calculated from the NBS lattice constant, 2.524 at 26 degrees C.",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Explicit density temperature, not inferred from preparation or a neighboring table."
+        },
+        "test_standard": {
+          "status": "not_verified",
+          "text": null,
+          "evidence": [],
+          "notes": "No density test-standard compliance is established; reagent ACS compliance is not a density-method certification."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Source crystallographic calculation from NBS experimental X-ray lattice measurements and adopted crystal structure.",
+          "evidence": [
+            {
+              "source_id": "swanson_tatge_1953_nbs_circ539v1",
+              "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+              "locator": "Section 2.37, printed p. 64 / PDF p. 68: J. T. Baker sample, supplier chemical analysis, approximately 0.1 percent sodium in NBS spectrographic analysis, drying at 220 degrees C and petrolatum mounting. Section 2.37, printed p. 65 / PDF p. 69, upper text: NaCl structure with four molecules per cell and density calculated from the NBS lattice constant, 2.524 at 26 degrees C. Introduction, printed p. 2 / PDF p. 6: density is expressed in grams per cubic centimeter. PDF pages are one-based.",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "direction": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading direction does not apply to this scalar crystallographic density."
+        },
+        "conditioning": {
+          "status": "not_verified",
+          "text": null,
+          "evidence": [],
+          "notes": "No density-specific measured moisture content or conditioning duration is established; sample preparation remains in the state."
+        },
+        "loading_rate": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading rate does not apply to this crystallographic density."
+        },
+        "additional_conditions": [
+          {
+            "name": "density_pressure",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "No pressure is reported for the selected density value."
+            }
+          },
+          {
+            "name": "xrd_pattern_temperature",
+            "fact": {
+              "status": "reported",
+              "text": "26 degrees C for the NBS powder pattern; separately recorded from the explicit density temperature.",
+              "evidence": [
+                {
+                  "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                  "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                  "locator": "Printed p. 65 / PDF p. 69, Table 38: NBS powder-pattern temperature is 26 degrees C.",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": null
+            }
+          }
+        ]
+      },
+      "density_basis": "crystallographic",
+      "summary_statistic": "reported_value",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "Density-specific uncertainty is unreported. Lattice measurement error is not density uncertainty; no propagation or inferred error bar is supplied.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Selected NBS KF crystallographic density.",
+        "source_statement": "No independent physical-specimen or repeated density-determination count is established. The stated four formula units per crystallographic cell and diffraction-line counts are not sample n.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_crystallographic_derivation",
+        "definition": "Source-reported crystallographic density from the measured NBS lattice constant for KF, face-centered cubic NaCl type, with four formula units per conventional cell. Cell mass is divided by cubic cell volume using the source's adopted cell content and atomic masses. The source value 2.524 grams per cubic centimeter is retained; no lattice constant, atomic-mass choice, density recalculation or uncertainty propagation is added. This is not direct bulk weighing, pycnometry or DFT.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "swanson_tatge_1953_nbs_circ539v1",
+            "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+            "locator": "Section 2.37, printed p. 64 / PDF p. 68: J. T. Baker sample, supplier chemical analysis, approximately 0.1 percent sodium in NBS spectrographic analysis, drying at 220 degrees C and petrolatum mounting. Section 2.37, printed p. 65 / PDF p. 69, upper text: NaCl structure with four molecules per cell and density calculated from the NBS lattice constant, 2.524 at 26 degrees C. Introduction, printed p. 2 / PDF p. 6: density is expressed in grams per cubic centimeter. PDF pages are one-based.",
+            "supports": [
+              "method",
+              "classification",
+              "condition"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [],
+      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+      "evidence": [
+        {
+          "source_id": "swanson_tatge_1953_nbs_circ539v1",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+          "locator": "Section 2.37, printed p. 65 / PDF p. 69, upper text: NaCl structure with four molecules per cell and density calculated from the NBS lattice constant, 2.524 at 26 degrees C. Introduction, printed p. 2 / PDF p. 6: density is expressed in grams per cubic centimeter. PDF pages are one-based.",
+          "supports": [
+            "reported_value",
+            "classification",
+            "method",
+            "condition"
+          ]
+        },
+        {
+          "source_id": "swanson_tatge_1953_nbs_circ539v1",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+          "locator": "Section 2.37, printed p. 64 / PDF p. 68: J. T. Baker sample, supplier chemical analysis, approximately 0.1 percent sodium in NBS spectrographic analysis, drying at 220 degrees C and petrolatum mounting.",
+          "supports": [
+            "material_identity",
+            "state"
+          ]
+        }
+      ],
+      "source_document": {
+        "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+        "revision": "NBS Circular 539, Volume I, 1953",
+        "inspected_on": "2026-10-16",
+        "sha256": "003b872fbe7d403d38bbd1d752568ee92a96bdb010b6e381bdc82566929e2a6c",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Selected original NBS page images inspected locally on 2026-10-16; full PDF SHA-256 003b872fbe7d403d38bbd1d752568ee92a96bdb010b6e381bdc82566929e2a6c. Section 2.37, printed p. 64 / PDF p. 68: J. T. Baker sample, supplier chemical analysis, approximately 0.1 percent sodium in NBS spectrographic analysis, drying at 220 degrees C and petrolatum mounting. Section 2.37, printed p. 65 / PDF p. 69, upper text: NaCl structure with four molecules per cell and density calculated from the NBS lattice constant, 2.524 at 26 degrees C. Introduction, printed p. 2 / PDF p. 6: density is expressed in grams per cubic centimeter. PDF pages are one-based. Selected source-transcription inspection only; no scientific peer review, experimental replication or raw-data reanalysis.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "scope_note": "Potassium fluoride (KF), J. T. Baker Chemical Company sample (no specimen number reported), represented by NBS experimental powder-XRD measurements. The source-derived density concerns the face-centered cubic NaCl type phase at 26 degrees C. It does not establish bulk specimen or powder-packing density, porosity, an engineering allowable or a universal material value. This source-qualified KF phase retains the stated sodium impurity and solid-solution qualification; no perfectly pure KF, petrolatum mixture density or additional material identity is inferred.",
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Selected original NBS page images inspected locally on 2026-10-16; full PDF SHA-256 003b872fbe7d403d38bbd1d752568ee92a96bdb010b6e381bdc82566929e2a6c. Section 2.37, printed p. 64 / PDF p. 68: J. T. Baker sample, supplier chemical analysis, approximately 0.1 percent sodium in NBS spectrographic analysis, drying at 220 degrees C and petrolatum mounting. Section 2.37, printed p. 65 / PDF p. 69, upper text: NaCl structure with four molecules per cell and density calculated from the NBS lattice constant, 2.524 at 26 degrees C. Introduction, printed p. 2 / PDF p. 6: density is expressed in grams per cubic centimeter. PDF pages are one-based. Selected source-transcription inspection only; no scientific peer review, experimental replication or raw-data reanalysis.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      }
+    }
+  ]
+}
