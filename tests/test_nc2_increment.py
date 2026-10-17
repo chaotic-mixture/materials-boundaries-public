@@ -12,6 +12,7 @@ from materials_boundaries.material_references import (
     material_quota_coverage, merge_material_catalogs, validate_material_catalog,
 )
 from scripts.integrate_material_candidates import main, write_package
+from test_polymer_formulations_increment import recover_738_catalogs
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -42,7 +43,12 @@ def recover_eaf_catalogs(current):
     it without weakening their own historical pins. Sources and grades are
     never removed or rewritten, and the supplied graph remains unchanged.
     """
-    recovered = deepcopy(current)
+    # Older NBS tests also supply this exact already-recovered predecessor.
+    # Only its complete byte-pinned graph may bypass successor recovery.
+    if all(sha256(serialized(current[name])).hexdigest() == expected
+           for name, expected in BASELINE_EAF_SHA256.items()):
+        return deepcopy(current)
+    recovered = recover_738_catalogs(current)
     for table, field, identifier in (("materials", "identities", IDENTITY_ID),
                                      ("materials", "records", STATE_ID),
                                      ("properties", "records", PROPERTY_ID)):
@@ -63,6 +69,7 @@ class NC2IncrementTests(unittest.TestCase):
             name: json.loads((ROOT / "materials_boundaries/data" / filename).read_text(encoding="utf-8"))
             for name, filename in FILES.items()
         }
+        cls.current = recover_738_catalogs(cls.current)
         cls.baseline = recover_eaf_catalogs(cls.current)
         cls.manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
         if len(cls.manifest["batches"]) != 1:
@@ -95,7 +102,7 @@ class NC2IncrementTests(unittest.TestCase):
     def test_recovery_rejects_unrelated_historical_changes(self):
         changed = deepcopy(self.current)
         changed["materials"]["identities"][0]["name"] += " synthetic mutation"
-        with self.assertRaisesRegex(AssertionError, "eaf16e1 baseline bytes changed for materials"):
+        with self.assertRaisesRegex(AssertionError, "(?:eaf16e1|7388976) baseline bytes changed for materials"):
             recover_eaf_catalogs(changed)
 
     def test_nc2_identity_is_supported_by_a_different_recipe_not_an_extra_state(self):
@@ -218,7 +225,8 @@ class NC2IncrementTests(unittest.TestCase):
         self.assertEqual(package["catalogs"], self.current)
         for name, filename in FILES.items():
             self.assertEqual(serialized(package["catalogs"][name]),
-                             (ROOT / "materials_boundaries/data" / filename).read_bytes())
+                             serialized(self.current[name]),
+                             "artifact must recover exact pinned 7388976 bytes: " + name)
         self.assertEqual(package["report"]["delta"], {"identities": 1, "grades": 0,
             "states": 1, "properties": 1, "sources": 0,
             "categories": {"natural": 0, "metal": 0, "inorganic": 0, "polymer": 0, "composite": 1}})

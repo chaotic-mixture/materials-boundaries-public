@@ -63,49 +63,45 @@ The default app remains provider-only. The explicit `materials_query.app:create_
 
 ## Local source-qualified increment, 2026-10-17
 
-The experiment retains the eighteen earlier source-qualified additions and adds
-one distinct NC2 concrete formulation with a nominal 28-day water-saturated
-density mean of 2340 kg/m3. Its snapshot contains 1100 entries: 1076
-source-qualified identities plus the unchanged 24 reviewed computed compositions.
-Core counts are natural 1010, metal 22, inorganic 26, polymer 14 and composite 4;
-project counts are natural 1010, metal 34, inorganic 38, polymer 14 and composite 4.
-See [the incremental record](../../../docs/MATERIAL_GROWTH_NC2_20261017.md).
+The experiment extends the NC2 snapshot by one SPO-2 rigid PUR foam and two
+PBS/lignin simple-blend formulations B10/B30. It contains 1103 project entries:
+1079 source-qualified identities plus the unchanged 24 reviewed computed
+compositions. Core categories are natural 1010, metal 22, inorganic 26, polymer
+15 and composite 6; project categories are natural 1010, metal 34, inorganic 38,
+polymer 15 and composite 6. See [the incremental record](../../../docs/MATERIAL_GROWTH_FORMULATIONS_20261017.md).
 
-Main remains at 1081 entries: 1057 source-qualified identities plus 24 reviewed
-computed compositions. In this experimental installation the existing API field
-`formal_project_admission_count` reports 1100; its name and resource pins do not
-publish a main release. The 62 unadmitted examples and held NOMAD candidates
-remain excluded. NC2 reuses the existing article-specific CC BY 4.0 source after
-selected-table, preparation and license checks. Scientific-review and
-raw-reanalysis flags remain false. The PA2200 lead is held for inconsistent
-reported modulus statistics and contributes zero identities. Main release, DOI
-registration and public deployment remain deferred.
+This is one lineage from 1100 to 1103. Main remains 1081 = 1057 + 24, and the
+62 unadmitted examples and held NOMAD candidates remain excluded. The existing
+API field `formal_project_admission_count` describes the installed experimental
+snapshot; it does not publish a main release. New facts retain source-specific
+CC BY 4.0 attribution, unknown conditions and false scientific-review and
+raw-reanalysis flags. SPO-1, PA2200 and other unselected leads contribute zero.
+Main release, DOI registration and public deployment remain deferred.
 
-The query UI reads counts from the captured catalog. Its relationship view has
-1081 supported memberships across 1076 identities and one identity relationship;
-NC2 contributes only its existing primary-class membership. Unknown
-classifications remain unknown. No browser rendering test is claimed here.
+The relationship view retains its original reviewed overlay and one identity
+relationship. Its 1079 identities have 1084 supported memberships. The three
+new identities contribute their primary categories only; the new blends do
+not automatically acquire additional polymer memberships or constituent edges.
+The UI reads captured catalog counts. Browser rendering was not tested here.
 
-The computed registry pins the complete installed core manifest, including the
-two newly appended catalog resources; the source registry is unchanged. Its
-canonical baseline anchor is
-`a38937d66a5d6c8f99eae6c05747e60a90f7647a737a1dc4d1cebc983fafcca3`.
-Registries from earlier baselines are rejected, including the immediate eaf
-anchor `8da7a2000110021ad0a20b2a83dc1b02420a0bf9e3d1b68eb71b70f127965efe`.
-There is no automatic migration or old-anchor fallback; retain each database
-with its original installation and use a distinct local registry for this
-snapshot. Review and input pins remain separate from the catalog baseline.
-Frozen computed reviews are unchanged.
+The computed registry pins the complete installed core manifest. Its canonical
+baseline anchor is recorded in the integration review and packaged manifest.
+Earlier baselines, including the immediate NC2 anchor
+`a38937d66a5d6c8f99eae6c05747e60a90f7647a737a1dc4d1cebc983fafcca3`,
+are rejected. Keep old databases with their original installation and use a
+separate registry for this snapshot; no automatic migration, fallback or
+database rewrite is provided. Source registry and frozen computed reviews
+remain unchanged. Review/input pins remain separate from catalog baseline pins.
 
-Focused tests retain all earlier anchor-rejection cases and add the immediate
-predecessor, unchanged database bytes, portable manifest paths and rejection of
-content drift even when identity counts match:
+Focused tests retain the earlier anchor-rejection cases and add the NC2
+predecessor while checking unchanged database bytes, portable manifest paths
+and rejection of content drift even when counts match:
 
 ```sh
 python -m unittest discover -s catalog-tests -p test_catalog_baseline.py -v
 ```
 
-The increment additionally checks frozen candidate payloads, source reuse,
-per-property units and unknowns, exact predecessor-byte recovery, full graph
-validation and idempotent offline CLI replay. Actual focused test results are
-retained in the delivery evidence; a full-suite rerun is not claimed here.
+The increment also checks source-qualified values and unknowns, complete graph
+validation, exact predecessor recovery, idempotent CLI replay and installed
+package/API behavior. Actual test outcomes are retained in delivery evidence;
+no additional full-suite, browser or completed remote-CI run is implied.
