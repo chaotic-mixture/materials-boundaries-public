@@ -1,0 +1,427 @@
+{
+  "schema_version": "1.0.0",
+  "records": [
+    {
+      "id": "refprop_ewurum2025_pbs_lignin10_youngs_modulus",
+      "version": "1.0.0",
+      "material_state_id": "state_ewurum2025_pbs_lignin10",
+      "quantity": "youngs_modulus",
+      "quantity_dimension": "pressure",
+      "source_property_label": "Young’s Modulus (MPa)",
+      "reported_value": {
+        "kind": "scalar",
+        "value_text": "922",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "number": "922"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Selected original experimental table cell; no recalculation, supplier substitution, pooling or inference from simulations.",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Not reported for this selected source-qualified result."
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "ASTM D1708, source-stated tensile-test basis",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.5 §2.9",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "No independent standard-compliance or edition verification."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Injection-molded microtensile dog-bones tested on Instron 5500R-1132 with Bluehill v3.3 and Epsilon 3542 extensometer; source cites ASTM D1708 and crosshead speed 1 mm/min. Source calls the selected quantity Young’s modulus; the numerical strain-fit window and estimator are not stated.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.5 §2.9",
+              "supports": [
+                "method",
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "direction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Not reported for this selected source-qualified result."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Post-molding tensile conditioning is not stated; DCP/acetone pretreatment is not assigned to this simple blend."
+        },
+        "loading_rate": {
+          "status": "reported",
+          "text": "Crosshead speed 1 mm/min",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.5 §2.9",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "additional_conditions": [
+          {
+            "name": "test_relative_humidity",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Test relative humidity is not reported; no laboratory default is assigned."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "reported_mean",
+      "uncertainty": {
+        "type": "reported_standard_deviation",
+        "value_text": "77",
+        "number": "77",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "scope": "Selected source result only; no confidence interval, min/max bound or engineering allowable is inferred.",
+        "coverage_factor": null,
+        "confidence_level": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+            "locator": "PDF p.12 Table 6, B10 row × Young’s Modulus; footnote a",
+            "supports": [
+              "uncertainty"
+            ]
+          }
+        ]
+      },
+      "uncertainty_status": "reported_standard_deviation",
+      "uncertainty_note": "922 +/- 77 MPa: source explicitly reports mean +/- standard deviation; SD rounded up to the mean precision where necessary. Superscript b is a Tukey grouping, not an uncertainty token. No SD-to-SE/CI conversion or derived endpoints.",
+      "sample_count": {
+        "value": 10,
+        "relation": "exact",
+        "scope": "Selected material tensile-test group.",
+        "source_statement": "10 specimens/replicates in the selected group.",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+            "locator": "PDF p.5 §2.9",
+            "supports": [
+              "sample_count"
+            ]
+          }
+        ]
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Injection-molded microtensile dog-bones tested on Instron 5500R-1132 with Bluehill v3.3 and Epsilon 3542 extensometer; source cites ASTM D1708 and crosshead speed 1 mm/min. Source calls the selected quantity Young’s modulus; the numerical strain-fit window and estimator are not stated.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+            "locator": "PDF p.5 §2.9",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Section 2.1 gives the unresolved combined designation BioPBS FZ91PM/FZ91PB; no single grade is selected or inferred. Bxx/Rxx are study formulation labels, not certified grades.",
+          "disposition": "Retain the combined source text and grade_id null; do not invent a combined commercial grade or choose FZ91PM versus FZ91PB.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.3 §2.1",
+              "supports": [
+                "source_discrepancy",
+                "grade"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+          "locator": "PDF p.12 Table 6, B10 row × Young’s Modulus; footnote a",
+          "supports": [
+            "reported_value",
+            "summary_statistic",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+          "locator": "PDF p.5 §2.9",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ],
+      "source_document": {
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+        "revision": null,
+        "inspected_on": "2026-10-17",
+        "sha256": "766d17f0e92c7e93cd57a3a5e97dddff0cb66a84bba6bf9118fbd0796d4c2e6f",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Selected original publisher PDF independently reread on 2026-10-17: p.1 article-specific CC BY 4.0; p.3 sections 2.1-2.3 for constituent identity, separate physical formulation preparation, total-polymer-mass loading basis and Bxx/Rxx distinction; p.5 section 2.9 for tensile method and ten replicates; p.12 Table 6 B10/B30 Young's modulus cells and mean/SD footnote. Selected pages were also visually inspected. PDF SHA-256 matches the existing registered asset. No raw-data reanalysis, experimental replication or independent scientific review is claimed.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "scope_note": "Specific PBS blend with 10 wt.% softwood kraft lignin Indulin AT relative to total polymer mass; source B10 simple-blend series, not DCP-reactive R10. Section 2.3 describes separately extruded physical formulations, and Table 6 reports their separately measured tensile results. The 10, 20 and 30 wt.% formulations differ in lignin mass fraction; they are not additional identities for processing state, test repeats or translated labels. Broad composite category denotes lignin-filled polymer, not an engineered continuous-fiber laminate. Section 2.1 gives the unresolved combined designation BioPBS FZ91PM/FZ91PB; no single grade is selected or inferred. Bxx/Rxx are study formulation labels, not certified grades. Catalog-only source reference; not a universal material constant, automatic calculator input or engineering allowable.",
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Selected original publisher PDF independently reread on 2026-10-17: p.1 article-specific CC BY 4.0; p.3 sections 2.1-2.3 for constituent identity, separate physical formulation preparation, total-polymer-mass loading basis and Bxx/Rxx distinction; p.5 section 2.9 for tensile method and ten replicates; p.12 Table 6 B10/B30 Young's modulus cells and mean/SD footnote. Selected pages were also visually inspected. PDF SHA-256 matches the existing registered asset. No raw-data reanalysis, experimental replication or independent scientific review is claimed.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      }
+    },
+    {
+      "id": "refprop_ewurum2025_pbs_lignin30_youngs_modulus",
+      "version": "1.0.0",
+      "material_state_id": "state_ewurum2025_pbs_lignin30",
+      "quantity": "youngs_modulus",
+      "quantity_dimension": "pressure",
+      "source_property_label": "Young’s Modulus (MPa)",
+      "reported_value": {
+        "kind": "scalar",
+        "value_text": "969",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "number": "969"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Selected original experimental table cell; no recalculation, supplier substitution, pooling or inference from simulations.",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Not reported for this selected source-qualified result."
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "ASTM D1708, source-stated tensile-test basis",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.5 §2.9",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "No independent standard-compliance or edition verification."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Injection-molded microtensile dog-bones tested on Instron 5500R-1132 with Bluehill v3.3 and Epsilon 3542 extensometer; source cites ASTM D1708 and crosshead speed 1 mm/min. Source calls the selected quantity Young’s modulus; the numerical strain-fit window and estimator are not stated.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.5 §2.9",
+              "supports": [
+                "method",
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "direction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Not reported for this selected source-qualified result."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Post-molding tensile conditioning is not stated; DCP/acetone pretreatment is not assigned to this simple blend."
+        },
+        "loading_rate": {
+          "status": "reported",
+          "text": "Crosshead speed 1 mm/min",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.5 §2.9",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "additional_conditions": [
+          {
+            "name": "test_relative_humidity",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Test relative humidity is not reported; no laboratory default is assigned."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "reported_mean",
+      "uncertainty": {
+        "type": "reported_standard_deviation",
+        "value_text": "77",
+        "number": "77",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "scope": "Selected source result only; no confidence interval, min/max bound or engineering allowable is inferred.",
+        "coverage_factor": null,
+        "confidence_level": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+            "locator": "PDF p.12 Table 6, B30 row × Young’s Modulus; footnote a",
+            "supports": [
+              "uncertainty"
+            ]
+          }
+        ]
+      },
+      "uncertainty_status": "reported_standard_deviation",
+      "uncertainty_note": "969 +/- 77 MPa: source explicitly reports mean +/- standard deviation; SD rounded up to the mean precision where necessary. Superscript b is a Tukey grouping, not an uncertainty token. No SD-to-SE/CI conversion or derived endpoints.",
+      "sample_count": {
+        "value": 10,
+        "relation": "exact",
+        "scope": "Selected material tensile-test group.",
+        "source_statement": "10 specimens/replicates in the selected group.",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+            "locator": "PDF p.5 §2.9",
+            "supports": [
+              "sample_count"
+            ]
+          }
+        ]
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Injection-molded microtensile dog-bones tested on Instron 5500R-1132 with Bluehill v3.3 and Epsilon 3542 extensometer; source cites ASTM D1708 and crosshead speed 1 mm/min. Source calls the selected quantity Young’s modulus; the numerical strain-fit window and estimator are not stated.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+            "locator": "PDF p.5 §2.9",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Section 2.1 gives the unresolved combined designation BioPBS FZ91PM/FZ91PB; no single grade is selected or inferred. Bxx/Rxx are study formulation labels, not certified grades.",
+          "disposition": "Retain the combined source text and grade_id null; do not invent a combined commercial grade or choose FZ91PM versus FZ91PB.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.3 §2.1",
+              "supports": [
+                "source_discrepancy",
+                "grade"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+          "locator": "PDF p.12 Table 6, B30 row × Young’s Modulus; footnote a",
+          "supports": [
+            "reported_value",
+            "summary_statistic",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+          "locator": "PDF p.5 §2.9",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ],
+      "source_document": {
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+        "revision": null,
+        "inspected_on": "2026-10-17",
+        "sha256": "766d17f0e92c7e93cd57a3a5e97dddff0cb66a84bba6bf9118fbd0796d4c2e6f",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Selected original publisher PDF independently reread on 2026-10-17: p.1 article-specific CC BY 4.0; p.3 sections 2.1-2.3 for constituent identity, separate physical formulation preparation, total-polymer-mass loading basis and Bxx/Rxx distinction; p.5 section 2.9 for tensile method and ten replicates; p.12 Table 6 B10/B30 Young's modulus cells and mean/SD footnote. Selected pages were also visually inspected. PDF SHA-256 matches the existing registered asset. No raw-data reanalysis, experimental replication or independent scientific review is claimed.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "scope_note": "Specific PBS blend with 30 wt.% softwood kraft lignin Indulin AT relative to total polymer mass; source B30 simple-blend series, not DCP-reactive R30. Section 2.3 describes separately extruded physical formulations, and Table 6 reports their separately measured tensile results. The 10, 20 and 30 wt.% formulations differ in lignin mass fraction; they are not additional identities for processing state, test repeats or translated labels. Broad composite category denotes lignin-filled polymer, not an engineered continuous-fiber laminate. Section 2.1 gives the unresolved combined designation BioPBS FZ91PM/FZ91PB; no single grade is selected or inferred. Bxx/Rxx are study formulation labels, not certified grades. Catalog-only source reference; not a universal material constant, automatic calculator input or engineering allowable.",
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Selected original publisher PDF independently reread on 2026-10-17: p.1 article-specific CC BY 4.0; p.3 sections 2.1-2.3 for constituent identity, separate physical formulation preparation, total-polymer-mass loading basis and Bxx/Rxx distinction; p.5 section 2.9 for tensile method and ten replicates; p.12 Table 6 B10/B30 Young's modulus cells and mean/SD footnote. Selected pages were also visually inspected. PDF SHA-256 matches the existing registered asset. No raw-data reanalysis, experimental replication or independent scientific review is claimed.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      }
+    }
+  ]
+}

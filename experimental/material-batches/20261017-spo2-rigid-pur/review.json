@@ -1,0 +1,89 @@
+{
+  "schema": "spo2-rigid-pur-source-transcription-review/1",
+  "base_commit": "7388976fa914399a210322d019e3081f201ff08f",
+  "status": "selected_source_facts_ready_for_local_experimental_integration",
+  "identity_count": 1,
+  "states": 1,
+  "properties": 1,
+  "new_sources": 0,
+  "new_grades": 0,
+  "category_deltas": {
+    "natural": 0,
+    "metal": 0,
+    "inorganic": 0,
+    "polymer": 1,
+    "composite": 0
+  },
+  "source_document_sha256": "4e0c1a91a9ae26d814576961a3805f9371b46498d4861fb578e7a413bb4c726d",
+  "source_inspected_on": "2026-10-17",
+  "source_facts": [
+    {
+      "key": "spo2",
+      "identity_id": "mat_ivdre2024_spo2_rigid_pur",
+      "state_id": "state_ivdre2024_spo2_rigid_pur",
+      "property_id": "refprop_ivdre2024_spo2_rigid_pur_mass_density",
+      "category": "polymer",
+      "source_property_label": "Apparent density",
+      "density": "40.7",
+      "unit": "kg/m^3",
+      "density_basis": "apparent",
+      "summary_statistic": "reported_value",
+      "sample_count": null,
+      "recipe_locator": "Table 9 SPO-2 column; XML table-wrap polymers-16-00942-t009",
+      "density_locator": "Table 10 Apparent density row and SPO-2 column; XML table-wrap polymers-16-00942-t010",
+      "method_locator": "Section 2.8 density statement citing ISO 845:2006",
+      "preparation_locator": "Section 2.7 optimized large-mold foams; Section 2.4 polyol identities"
+    }
+  ],
+  "identity_policy": "Study-defined SPO-2 rigid polyurethane formulation based on synthesized suberinic-acid/tall-oil-derived polyols. The Table 9 inputs are 67 g SA-C_TOFA(50:50)/TMP and 33 g SA-E_ETOFA(50:50)/TMP, unlike the existing LPO-1 Lupranol 3300/3422 formulation. This is one selected representative of the SP formulation series, not all suberin-derived polyurethane foams. SPO-2 is a study label, not a certified grade. Do not count SPO-1/SPO-3, LPO-2/LPO-3, cure times, specimens or translations as extra identities in this packet. No final molecular formula, purity, elemental composition or universal material equivalence is inferred.",
+  "rights": {
+    "source_record_reused_unchanged": "ivdre_2024_lpo_rigid_pur",
+    "decision": "Reuse the unchanged registered source record while recording a new SPO-2-specific inspection of article-authored tables and permissions; the historical LPO-1 inspection did not itself approve SPO-2.",
+    "license_identifier": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "attribution": "Aiga Ivdre, Mikelis Kirpluks, Arnis Abolins, Laima Vevere, Beatrise Sture, Aigars Paze, Daniela Godina, Janis Rizikovs, Ugis Cabulis (2024), Rigid Polyurethane Foams’ Development and Optimization from Polyols Based on Depolymerized Suberin and Tall Oil Fatty Acids, Polymers 16(7), 942, DOI 10.3390/polym16070942.",
+    "adaptations": "Selected factual transcription, structured metadata, English fallback labels and original scope qualifications; source density precision unchanged.",
+    "assets_included": false,
+    "third_party_comparison_content_included": false
+  },
+  "verification": {
+    "transcription_cross_check": "completed",
+    "independent_scientific_review": false,
+    "raw_data_reanalysis": false
+  },
+  "locale_policy": "All four required name slots use authored English fallback labels; no native-language review is claimed.",
+  "unknowns": [
+    "Density aggregation statistic, specimen count and uncertainty",
+    "Density-test temperature, humidity and pressure",
+    "Exact density-specimen dimensions and detailed density subprocedure",
+    "Final molecular formula, composition, purity, lot and certified finished-material grade"
+  ],
+  "excluded": [
+    "Existing LPO-1 is unchanged; LPO-2/LPO-3 are not additional identities",
+    "SPO-1 is excluded with its table/prose density-range discrepancy retained",
+    "SPO-3 and other optimization variants are not additional identities in this packet",
+    "The 45 kg/m3 optimization target and 40 kg/m3 compression normalization are not measured density replacements",
+    "Cup-test and mechanical sample counts do not establish density n",
+    "No source assets, normalized compression properties or third-party comparisons are bundled"
+  ],
+  "source_discrepancies": [
+    {
+      "description": "Table 10 reports SPO-1 apparent density 43.9 kg/m3, while Section 3.4 gives an overall range of 40.7-43.5 kg/m3.",
+      "disposition": "Retain this unresolved source conflict for the unselected SPO-1 result. The selected SPO-2 value 40.7 kg/m3 agrees with the stated lower limit; do not alter either source value or include SPO-1.",
+      "evidence": [
+        {
+          "source_id": "ivdre_2024_lpo_rigid_pur",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+          "locator": "Table 10 Apparent density row, SPO-1 and SPO-2 columns; Section 3.4 paragraph beginning The apparent density varied",
+          "supports": [
+            "source_discrepancy"
+          ]
+        }
+      ]
+    }
+  ],
+  "specific_unresolved_admission_gaps": [],
+  "released_main_count": 1081,
+  "formal_admitted_delta": 0,
+  "release_scope": "Candidate packet only against the isolated experimental base. No runtime/formal catalog modification, main release, DOI registration, deployment or publication is performed."
+}

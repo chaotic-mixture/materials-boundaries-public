@@ -1,0 +1,98 @@
+{
+  "schema": "pbs-lignin-blends-source-transcription-review/1",
+  "base_commit": "7388976fa914399a210322d019e3081f201ff08f",
+  "status": "selected_source_facts_ready_for_local_experimental_integration",
+  "identity_count": 2,
+  "states": 2,
+  "properties": 2,
+  "new_sources": 0,
+  "new_grades": 0,
+  "category_deltas": {
+    "natural": 0,
+    "metal": 0,
+    "inorganic": 0,
+    "polymer": 0,
+    "composite": 2
+  },
+  "source_document_sha256": "766d17f0e92c7e93cd57a3a5e97dddff0cb66a84bba6bf9118fbd0796d4c2e6f",
+  "source_inspected_on": "2026-10-17",
+  "source_facts": [
+    {
+      "source_designation": "B10",
+      "identity_id": "mat_ewurum2025_pbs_lignin10",
+      "state_id": "state_ewurum2025_pbs_lignin10",
+      "property_id": "refprop_ewurum2025_pbs_lignin10_youngs_modulus",
+      "category": "composite",
+      "lignin_loading": "10",
+      "loading_unit": "wt.%",
+      "loading_basis": "percentage of total polymer mass",
+      "source_property_label": "Young’s Modulus (MPa)",
+      "quantity": "youngs_modulus",
+      "mean": "922",
+      "standard_deviation": "77",
+      "unit": "MPa",
+      "summary_statistic": "reported_mean",
+      "sample_count": 10,
+      "sample_count_relation": "exact",
+      "identity_locator": "PDF p.3 sections 2.1-2.3; separately prepared Bxx formulations",
+      "property_locator": "PDF p.12 Table 6, B10 row, Young's Modulus (MPa); footnote a",
+      "method_locator": "PDF p.5 section 2.9 tensile method and ten replicates"
+    },
+    {
+      "source_designation": "B30",
+      "identity_id": "mat_ewurum2025_pbs_lignin30",
+      "state_id": "state_ewurum2025_pbs_lignin30",
+      "property_id": "refprop_ewurum2025_pbs_lignin30_youngs_modulus",
+      "category": "composite",
+      "lignin_loading": "30",
+      "loading_unit": "wt.%",
+      "loading_basis": "percentage of total polymer mass",
+      "source_property_label": "Young’s Modulus (MPa)",
+      "quantity": "youngs_modulus",
+      "mean": "969",
+      "standard_deviation": "77",
+      "unit": "MPa",
+      "summary_statistic": "reported_mean",
+      "sample_count": 10,
+      "sample_count_relation": "exact",
+      "identity_locator": "PDF p.3 sections 2.1-2.3; separately prepared Bxx formulations",
+      "property_locator": "PDF p.12 Table 6, B30 row, Young's Modulus (MPa); footnote a",
+      "method_locator": "PDF p.5 section 2.9 tensile method and ten replicates"
+    }
+  ],
+  "identity_policy": "Two physically prepared simple blends with different lignin mass fractions, 10 and 30 wt.% of total polymer mass. Section 2.3 records separate 50 g formulation extrusion; Table 6 records separate experimental tensile results. Existing B0, B20 and Indulin AT are not repeated. Processing states, DCP-reactive counterparts and repeated tests do not create further identities in this packet.",
+  "rights": {
+    "source_record_reused_unchanged": "ewurum_mcdonald_2025_pbs_lignin",
+    "decision": "Selected original experimental facts fall within the existing article-authored CC BY 4.0 scope; p.1 license and p.12 Table 6 were reread. No separate third-party credit appears on the selected table.",
+    "license_identifier": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "attribution": "Nnaemeka Ewurum and Armando G. McDonald (2025), Lignin Reinforcement in Polybutylene Succinate Copolymers, Polymers 17, 194, DOI 10.3390/polym17020194.",
+    "adaptations": "Selected factual transcription, structured metadata, English fallback labels and original source-scope qualifications; numerical means, SDs and units remain as printed.",
+    "assets_included": false,
+    "third_party_comparison_content_included": false
+  },
+  "verification": {
+    "transcription_cross_check": "completed",
+    "independent_scientific_review": false,
+    "raw_data_reanalysis": false
+  },
+  "locale_policy": "All four required name slots contain authored English fallback labels; no native-language review is claimed.",
+  "unknowns": [
+    "Which of BioPBS FZ91PM and FZ91PB was used; retain the combined source designation and no grade",
+    "Numerical modulus strain-fit window and estimator",
+    "Tensile-test temperature and relative humidity",
+    "Post-molding tensile conditioning",
+    "Independent standard compliance and edition verification"
+  ],
+  "excluded": [
+    "Existing B0, B20 and Indulin AT identities",
+    "B45 and every DCP-reactive Rxx formulation",
+    "Density, tensile-strength and flexural properties",
+    "Hot-pressed discs and DCP/acetone preparation for the selected tensile state",
+    "Source assets, full tables, figures, screenshots and raw data"
+  ],
+  "specific_unresolved_admission_gaps": [],
+  "released_main_count": 1081,
+  "formal_admitted_delta": 0,
+  "release_scope": "Candidate packet only for the isolated local experiment. Runtime/formal catalogs remain unchanged; parent-coordinated integration and publication are separate. No main release, DOI registration or deployment."
+}
