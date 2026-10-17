@@ -51,7 +51,9 @@ def main():
         env['PYTHONPATH'] = str(CI)  # Only the offline guard, never package source roots.
         checker = CI / 'check_offline.py'
         run(python, checker, 'wheels', '--wheel-dir', wheels, cwd=work, env=env)
-        for stage in ('provider-fixtures', 'api-fixtures', 'lifecycle', 'linked-integration', 'nomad-ingestion', 'installed-smoke'):
+        # Each stage gets a separate process; checkout-only projection imports
+        # cannot affect the following installed-wheel smoke's module origins.
+        for stage in ('provider-fixtures', 'api-fixtures', 'lifecycle', 'linked-integration', 'nomad-ingestion', 'hbn-projection', 'installed-smoke'):
             run(python, checker, stage, cwd=work, env=env)
     print('Experimental platform CI passed; live integrations and publication were not run.', flush=True)
 

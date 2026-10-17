@@ -15,8 +15,6 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - run: python -m unittest discover -s tests -p test_release_metadata.py -v
       - run: python -m pip install -e '.[dev]'
-      - name: hBN relationship projection (checkout-only)
-        run: python -B -m unittest discover -s experimental/platform/relationships -p test_hbn_relationship_projection.py -v
       - run: python -m pip wheel --no-deps --wheel-dir dist .
       - run: python scripts/check_wheel_metadata.py dist/*.whl
       - run: python scripts/validate_catalogs.py

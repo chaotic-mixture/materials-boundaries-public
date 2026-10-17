@@ -24,6 +24,7 @@ SUITES = {
     'lifecycle': ('lifecycle/tests', 25),
     'linked-integration': ('tests', 18),
     'nomad-ingestion': ('ingestion', 106),
+    'hbn-projection': ('relationships', 14),  # Checkout-only; isolated from installed smoke.
 }
 
 
@@ -68,7 +69,7 @@ def discover_suite(name, directory, minimum):
     require(count == len(set(ids)), name + ': duplicate discovered test IDs')
     require(count >= minimum, f'{name}: expected at least {minimum} tests, found {count}')
     inventory = json.loads((Path(__file__).with_name('required_test_ids.json')).read_text(encoding='utf-8'))
-    required_ids = inventory[name] if name in ('nomad-ingestion', 'local-catalog') else []
+    required_ids = inventory[name] if name in ('nomad-ingestion', 'local-catalog', 'hbn-projection') else []
     missing = sorted(set(required_ids) - set(ids))
     require(not missing, name + ': missing required test IDs: ' + ', '.join(missing))
     print('DISCOVERED ' + json.dumps({'suite': name, 'count': count, 'test_ids': ids}, sort_keys=True), flush=True)

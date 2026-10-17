@@ -119,16 +119,21 @@ python -B -m unittest discover -s experimental/platform/relationships -p test_hb
 python -B -m unittest discover -s tests -p test_hbn_observation_catalog.py -v
 ```
 
-The existing `tests` workflow runs the complete 14-test projection module in a
-named `hBN relationship projection (checkout-only)` step on Linux with Python
-3.11 and 3.12, after installing the development dependencies. It runs for the
-workflow's existing push and pull-request events, with every original core
-test step retained. This checks source from the checkout, including the core
-and formal catalog readers; it is not installed-wheel coverage. The separate
-`experimental-platform-offline` workflow still does not include the hBN branch
-in its trigger allowlist. The two matrix executions cover the same 14 distinct
-tests and do not increase the distinct-test count. Hosted results must be
-checked for the exact commit; this wiring alone does not establish a CI pass.
+The existing `experimental-platform-offline` workflow includes
+`experiment/hbn-relationship-projection` in its exact push, pull-request target
+and manual-dispatch branch scopes. Its `offline-fixtures-and-wheels` matrix
+jobs on Ubuntu 24.04 with Python 3.11/3.12 run the complete 14-test module as
+the `hbn-projection` stage, requiring all 14
+pinned test IDs and rejecting failures, errors, skips and expected failures.
+This checks source from the checkout, including the core and formal catalog
+readers; it is not installed-wheel coverage. The stage runs in its own checker
+process, so its source imports cannot affect the separate installed smoke.
+The `optional-core-catalog` jobs retain their existing catalog suites.
+The core `tests` workflow retains its exact original bytes and all checks.
+The two matrix executions cover the same 14 distinct tests and do not increase
+the distinct-test count. Hosted results must be checked for the exact commit;
+this wiring alone does not establish a CI pass. See the
+[offline CI instructions](../ci/README.md) for the guarded local command.
 
 On Windows, set `$env:PYTHONUTF8 = '1'` in PowerShell before running the core
 regression. Its existing multilingual CLI subprocess writes Unicode; a GBK

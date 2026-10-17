@@ -20,11 +20,12 @@ into a separate clean runtime. The suite minima are:
 | `offline-fixtures-and-wheels` | Local lifecycle | 25 |
 | `offline-fixtures-and-wheels` | Independent API/lifecycle and linked integration | 18 |
 | `offline-fixtures-and-wheels` | NOMAD ingestion, incremental recovery and offline formal-review gaps | 106 |
-| First job subtotal | | **205** |
+| `offline-fixtures-and-wheels` | Checkout-only hBN relationship projection | 14 |
+| First job subtotal | | **219** |
 | `optional-core-catalog` | Optional installed-core/computed catalog and private geometry diagnostics | 133 |
 | `optional-core-catalog` | Formal catalog add-on | 11 |
 | Second job subtotal | | **144** |
-| **Required minimum across both jobs per interpreter** | | **349** |
+| **Required minimum across both jobs per interpreter** | | **363** |
 
 These numbers are discovery requirements, not a claim that the current complete
 suite has executed. The verification history below identifies actual results.
@@ -47,12 +48,13 @@ package index. The jobs also check:
   optional catalog and formal add-on suites.
 
 The suite minima detect reduced discovery while allowing added tests.
-[required_test_ids.json](required_test_ids.json) additionally pins **128 required
+[required_test_ids.json](required_test_ids.json) additionally pins **142 required
 IDs**: 61 earlier ingestion tests, 19 offline formal-review-gap tests, four
 baseline path-portability tests, six selected-group consistency regressions and
 21 private-geometry diagnostic tests, plus one Retry-After
 representability and restart regression, and 16 exact baseline-compatibility
-regressions. These compatibility tests cover both accepted byte manifests,
+regressions, plus all 14 checkout-only hBN projection tests. These compatibility
+tests cover both accepted byte manifests,
 unknown-byte rejection, existing database reopens, new registry creation and
 transaction rollback. The catalog runner also requires the
 geometry test module to exist. Those 21 geometry tests exercise the checkout-only
@@ -67,6 +69,10 @@ verification reruns do not increase the distinct-test total.
 
 Some inherited independent tests explicitly import source; the separate installed
 smoke ensures wheel-installed interfaces work without package-source imports.
+The `hbn-projection` stage also imports the checkout's core and formal catalog
+readers. It runs in a separate checker subprocess before the installed smoke,
+so its source-path changes cannot alter the smoke's module-origin assertions.
+This stage is checkout validation, not proof of installed projection support.
 API/TestClient checks are not a real browser, accessibility, mobile, deployed API,
 or live-provider pass. Local demo archives are not published and are deleted with
 the temporary directory. They remain non-self-contained raw replay bundles.
@@ -87,7 +93,7 @@ python -m unittest discover -s experimental/platform/ingestion -p test_formal_re
 ```
 
 That targeted command covers 19 tests. It is not the full 106-test ingestion
-suite, the 349-test combined minimum, or either installed-wheel CI runner.
+suite, the 363-test combined minimum, or either installed-wheel CI runner.
 
 The checkout-only geometry diagnostic has a separate focused command:
 
@@ -97,7 +103,19 @@ python -m unittest discover -s experimental/platform/query-service/catalog-tests
 
 Its 21 synthetic tests also run as part of the catalog job's 133-test discovery.
 The normal catalog runner requires every discovered test to execute, with no
-skips or expected failures. A focused pass is not a complete 349-test matrix pass.
+skips or expected failures. A focused pass is not a complete 363-test matrix pass.
+
+To run only the strict hBN projection stage on Linux from the repository root,
+using an environment with the existing development dependencies installed:
+
+```sh
+PYTHONPATH=experimental/platform/ci python -B experimental/platform/ci/check_offline.py hbn-projection
+```
+
+This uses the same required-ID and no-skip gates as CI, with the offline socket
+guard loaded at process startup. It executes all 14 projection tests; it does
+not build wheels or execute the other platform suites. `run_ci.py` executes
+every existing stage as well as this new stage in separate subprocesses.
 
 Run the two CI runner commands with each supported interpreter to reproduce the
 matrix. Each creates fresh build and runtime virtual environments and removes
@@ -120,15 +138,18 @@ are deliberately outside this fixture-only guard.
 ## Trigger and trust boundaries
 
 Pushes run only on `experimental/platform-integration`,
-`experiment/nomad-incremental-review`, `experiment/reviewed-subset-audit` and
-`experiment/evidence-signature-dedup`;
-pull requests run only when targeting one
-of those exact branches. Both event types are additionally filtered to
+`experiment/nomad-incremental-review`, `experiment/reviewed-subset-audit`,
+`experiment/evidence-signature-dedup`, `experiment/presentation-exact-subset-local`,
+`experiment/nomad-evidence-diff-local`, `experiment/formal-overlap-audit-local`
+and `experiment/hbn-relationship-projection`. Pull requests run only when
+targeting `experimental/platform-integration`, `experiment/nomad-incremental-review`,
+`experiment/reviewed-subset-audit`, `experiment/evidence-signature-dedup` or
+`experiment/hbn-relationship-projection`. Both event types are additionally filtered to
 `experimental/platform/**`, `formal-catalog/**`, `materials_boundaries/**`,
 `pyproject.toml`, `LICENSE`, `THIRD_PARTY_NOTICES.md` and
 `.github/workflows/experimental-platform.yml`. Changes outside those paths alone
 do not trigger this workflow. Manual dispatch has no arbitrary inputs, and both
-job guards restrict it to the same four exact branch refs. The token is
+job guards restrict it to those same five pull-request target branch refs. The token is
 contents:read only; checkout does not retain credentials. Official checkout and
 setup-python actions are pinned to verified full release commit SHAs. There is
 no pull_request_target, untrusted event-text shell interpolation, self-hosted
@@ -136,7 +157,7 @@ runner, secret reference, or shell command generated from a provider response.
 
 GitHub requires a workflow_dispatch workflow to exist on the default branch for
 manual dispatch availability. Declaring it here does not promise the Run workflow
-button on these experimental branches. These jobs remain scoped to the four
+button on these experimental branches. These jobs remain scoped to the listed
 experimental refs; a scoped push or pull request is the activation path.
 Do not make this path-filtered experimental job a main required check: skipped
 workflows may leave required checks pending. Baseline CI still has its existing
