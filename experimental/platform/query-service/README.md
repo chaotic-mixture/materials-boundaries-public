@@ -61,45 +61,48 @@ See the parent README for verified and blocked stages. Tests use deterministic H
 
 The default app remains provider-only. The explicit `materials_query.app:create_catalog_app --factory` startup captures and validates this repository's locally installed core once. See `../LOCAL_CATALOG.md` for local-only installation, pinned read-only API contracts and the separate `/catalog` page. No core package is automatically fetched and no local/external counts are summed. Browser rendering remains unverified.
 
-## Local incremental review candidate, 2026-10-16
+## Local NBS increment, 2026-10-16
 
-The local experiment retains LiF, KCl and CaF2 and adds one source-qualified Nb
-cylinder plus KBr, KI, NaF and BaF2. Each identity resolves one numerical density
-reference. Its candidate snapshot contains 1089 entries: 1065 source-qualified
-identities plus the unchanged 24 reviewed computed compositions. Core counts
-are natural 1010, metal 15, inorganic 23, polymer 14 and composite 3; the combined
-project counts are natural 1010, metal 27, inorganic 35, polymer 14 and composite 3.
-See [the incremental record](../../../docs/MATERIAL_GROWTH_20261016.md).
+The local experiment retains the earlier eight references and adds Pd, Ag, tin
+(beta state), Ta, Pt, Au, Pb, NH4Cl, LiCl and KF. Each new identity resolves one
+source-derived crystallographic-density reference. Its snapshot contains 1099
+entries: 1075 source-qualified identities plus the unchanged 24 reviewed computed
+compositions. Core counts are natural 1010, metal 22, inorganic 26, polymer 14 and
+composite 3; project counts are natural 1010, metal 34, inorganic 38, polymer 14
+and composite 3. See [the incremental record](../../../docs/MATERIAL_GROWTH_NBS_NEXT_20261016.md).
 
 Main remains at 1081 entries: 1057 source-qualified identities plus 24 reviewed
 computed compositions. In this local installation the existing API field
-`formal_project_admission_count` reports 1089; its name and proposed resource
-pins do not confer a reviewed main release. The 62 unadmitted examples and held
-NOMAD candidates remain excluded. Independent scientific and final rights
-admission remain pending. No login, push, public deployment or DOI registration
-is included in this increment.
+`formal_project_admission_count` reports 1099; its name and resource pins do not
+publish a main release. The 62 unadmitted examples and held NOMAD candidates
+remain excluded. The existing NBS rights scope is reused with concrete new
+page/value checks. Scientific-review and raw-reanalysis flags remain false; no
+new human-signature or repeated-rights-review gate is added. Publication alone
+is deferred. No login, push, public deployment or DOI registration is included.
 
 The query UI reads counts from the captured catalog. Its relationship view has
-1070 supported memberships across 1065 identities and one identity relationship;
+1080 supported memberships across 1075 identities and one identity relationship;
 each new identity contributes only its existing primary-class membership.
 Unknown classifications remain unknown.
 
 The computed registry pins the complete installed core manifest, including the
-three updated catalog resources. Its canonical baseline anchor is
-`c03c48c4b0b2196ba77ea439df01d5a5e8191925bbfafaa63ab1212aa2d0335f`.
+two newly appended catalog resources; the source registry is unchanged. Its
+canonical baseline anchor is
+`8da7a2000110021ad0a20b2a83dc1b02420a0bf9e3d1b68eb71b70f127965efe`.
 Registries from earlier baselines are rejected. There is no automatic migration
 or old-anchor fallback; keep existing databases with their original installation
 and use a distinct new local registry for this snapshot. Review and input pins
 remain separate from the catalog baseline. Frozen computed reviews are unchanged.
 
-Focused tests retain old-anchor rejection, unchanged database bytes, portable
-manifest paths and rejection of content drift even when identity counts match:
+Focused tests retain old-anchor rejection, including the immediate c03c48c4
+predecessor, unchanged database bytes, portable manifest paths and rejection of
+content drift even when identity counts match:
 
 ```sh
 python -m unittest discover -s catalog-tests -p test_catalog_baseline.py -v
 ```
 
-The incremental tests additionally require exact frozen candidate payloads,
-explicit status-only adjustments, idempotent materialization, source reuse,
-per-property units and temperatures, and unchanged review limitations. Scientific
-validation and engineering-allowable flags remain false.
+The increment additionally requires exact frozen candidate payloads, idempotent
+materialization, source reuse, per-property units and temperatures, exact
+predecessor-byte recovery and unchanged scientific limitations. Actual focused
+test outcomes are in the parent handoff; no new full-suite run is claimed here.

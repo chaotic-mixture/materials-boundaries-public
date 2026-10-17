@@ -255,7 +255,7 @@ def main(argv=None):
     print(("Created" if created else "Unchanged") + " experimental integration artifact: " + str(args.output))
     print("Recorded baseline-to-candidate identity delta: " + str(package["report"]["delta"]["identities"]))
     print("New artifact written: " + ("yes" if created else "no"))
-    print("Released main remains 1081; scientific and rights review gates remain pending.")
+    print("Released main remains 1081; local integration does not publish this artifact.")
     return 0
 
 

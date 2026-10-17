@@ -11,13 +11,15 @@ from materials_query import computed_registry as registry
 
 
 OLD_BASELINE = '6ab6a7bcda3f98c33c9c5520b420fdbcc884cd18a10a3235f07ce58e28c5e1a9'
-NEW_BASELINE = 'c03c48c4b0b2196ba77ea439df01d5a5e8191925bbfafaa63ab1212aa2d0335f'
+PREVIOUS_BASELINE = 'c03c48c4b0b2196ba77ea439df01d5a5e8191925bbfafaa63ab1212aa2d0335f'
+NEW_BASELINE = '8da7a2000110021ad0a20b2a83dc1b02420a0bf9e3d1b68eb71b70f127965efe'
 
 
 class IntegratedBaselineTests(unittest.TestCase):
     def test_installed_package_matches_exact_new_anchor(self):
         self.assertEqual(registry.baseline_digest(), NEW_BASELINE)
         self.assertNotEqual(NEW_BASELINE, OLD_BASELINE)
+        self.assertNotEqual(NEW_BASELINE, PREVIOUS_BASELINE)
 
     def test_windows_paths_use_the_same_manifest_key(self):
         payload = b'synthetic catalog bytes'
@@ -42,18 +44,20 @@ class IntegratedBaselineTests(unittest.TestCase):
         review = {'schema': 'computed-review-recovery/1', 'packet_sha256': '0' * 64,
                   'reviewer': 'Synthetic baseline compatibility test',
                   'rationale': 'No real material admission', 'records': []}
-        with tempfile.TemporaryDirectory() as temporary:
-            database = Path(temporary) / 'old-baseline.db'
-            with patch.object(registry, 'baseline_digest', return_value=OLD_BASELINE):
-                old = registry.ComputedRegistry(database, deepcopy(review),
-                    trusted_review_sha256=registry.digest(review))
-            before = database.read_bytes()
-            with self.assertRaisesRegex(ValueError, 'Initial baseline and review input cannot be replaced'):
-                registry.ComputedRegistry(database, review,
-                    trusted_review_sha256=registry.digest(review))
-            self.assertEqual(database.read_bytes(), before)
-            self.assertEqual(old.snapshot()['baseline_version'], OLD_BASELINE)
-            self.assertEqual(old.snapshot()['records'], [])
+        for old_baseline in (OLD_BASELINE, PREVIOUS_BASELINE):
+            with self.subTest(old_baseline=old_baseline):
+                with tempfile.TemporaryDirectory() as temporary:
+                    database = Path(temporary) / 'old-baseline.db'
+                    with patch.object(registry, 'baseline_digest', return_value=old_baseline):
+                        old = registry.ComputedRegistry(database, deepcopy(review),
+                            trusted_review_sha256=registry.digest(review))
+                    before = database.read_bytes()
+                    with self.assertRaisesRegex(ValueError, 'Initial baseline and review input cannot be replaced'):
+                        registry.ComputedRegistry(database, review,
+                            trusted_review_sha256=registry.digest(review))
+                    self.assertEqual(database.read_bytes(), before)
+                    self.assertEqual(old.snapshot()['baseline_version'], old_baseline)
+                    self.assertEqual(old.snapshot()['records'], [])
 
     def test_changed_core_resource_fails_even_with_unchanged_identity_count(self):
         original = Path.read_bytes

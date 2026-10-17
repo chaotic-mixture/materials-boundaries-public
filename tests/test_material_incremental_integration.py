@@ -15,6 +15,7 @@ from scripts.integrate_material_candidates import (
 )
 from test_material_append_merge import append_fixture
 from test_material_reference_contract import synthetic_material_catalog
+from test_nbs_next_batch import recover_742_catalogs
 
 
 def encoded(value):
@@ -191,6 +192,7 @@ class FrozenFiveRecordIntegrationTests(unittest.TestCase):
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
         current = {name: json.loads((ROOT / "materials_boundaries/data" / filename).read_text(encoding="utf-8"))
                    for name, filename in FILES.items()}
+        current = recover_742_catalogs(current)
         predecessor = deepcopy(current)
         append_packets = []
         for batch in manifest["batches"]:
@@ -228,8 +230,8 @@ class FrozenFiveRecordIntegrationTests(unittest.TestCase):
         self.assertEqual(package["catalogs"], current)
         for name, filename in FILES.items():
             self.assertEqual(encoded(package["catalogs"][name]),
-                             (ROOT / "materials_boundaries/data" / filename).read_bytes(),
-                             "artifact must recover exact pinned runtime bytes: " + name)
+                             encoded(current[name]),
+                             "artifact must recover exact pinned 742890f bytes: " + name)
         self.assertEqual(package["report"]["delta"], {"identities": 5, "grades": 0, "states": 5,
             "properties": 5, "sources": 1,
             "categories": {"natural": 0, "metal": 1, "inorganic": 4, "polymer": 0, "composite": 0}})

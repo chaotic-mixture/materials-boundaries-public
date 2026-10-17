@@ -9,6 +9,7 @@ from materials_boundaries.catalog import read_catalog
 from materials_boundaries.material_references import (
     material_quota_coverage, merge_material_catalogs, validate_material_catalog,
 )
+from test_nbs_next_batch import recover_742_catalogs
 
 ROOT = Path(__file__).resolve().parents[1]
 BATCH = ROOT / "experimental/material-batches/20261014-nb-nbs-crystals"
@@ -35,6 +36,12 @@ class NBSAdmissionTests(unittest.TestCase):
     def setUpClass(cls):
         cls.materials, cls.properties, cls.sources = (
             read_catalog(name) for name in ("materials", "reference_properties", "sources")
+        )
+        recovered_742 = recover_742_catalogs({"materials": cls.materials,
+                                             "properties": cls.properties,
+                                             "sources": cls.sources})
+        cls.materials, cls.properties, cls.sources = (
+            recovered_742[name] for name in ("materials", "properties", "sources")
         )
         cls.additions = {
             "materials": json.loads((BATCH / "nbs-materials.append.json").read_text(encoding="utf-8")),
