@@ -119,6 +119,17 @@ python -B -m unittest discover -s experimental/platform/relationships -p test_hb
 python -B -m unittest discover -s tests -p test_hbn_observation_catalog.py -v
 ```
 
+The existing `tests` workflow runs the complete 14-test projection module in a
+named `hBN relationship projection (checkout-only)` step on Linux with Python
+3.11 and 3.12, after installing the development dependencies. It runs for the
+workflow's existing push and pull-request events, with every original core
+test step retained. This checks source from the checkout, including the core
+and formal catalog readers; it is not installed-wheel coverage. The separate
+`experimental-platform-offline` workflow still does not include the hBN branch
+in its trigger allowlist. The two matrix executions cover the same 14 distinct
+tests and do not increase the distinct-test count. Hosted results must be
+checked for the exact commit; this wiring alone does not establish a CI pass.
+
 On Windows, set `$env:PYTHONUTF8 = '1'` in PowerShell before running the core
 regression. Its existing multilingual CLI subprocess writes Unicode; a GBK
 default cannot encode every source character. The new projection CLI writes
