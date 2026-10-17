@@ -1,6 +1,5 @@
 """Source-qualified next NBS batch and exact recovery of its 742890f parent."""
 from contextlib import redirect_stdout
-from copy import deepcopy
 from hashlib import sha256
 import io
 import json
@@ -12,6 +11,7 @@ from materials_boundaries.material_references import (
     material_quota_coverage, merge_material_catalogs, validate_material_catalog,
 )
 from scripts.integrate_material_candidates import main
+from test_nc2_increment import recover_eaf_catalogs
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -62,7 +62,7 @@ def recover_742_catalogs(current):
     and released-main hash checks remain independent of this additive batch.
     No source is removed: every new record reuses the existing NBS source.
     """
-    recovered = deepcopy(current)
+    recovered = recover_eaf_catalogs(current)
     for packet in next_packets():
         for table, fields in (("materials", ("identities", "grades", "records")),
                               ("properties", ("records",))):
@@ -85,6 +85,7 @@ class NBSNextBatchTests(unittest.TestCase):
             name: json.loads((ROOT / "materials_boundaries/data" / filename).read_text(encoding="utf-8"))
             for name, filename in FILES.items()
         }
+        cls.current = recover_eaf_catalogs(cls.current)
         cls.packets = next_packets()
         cls.baseline = recover_742_catalogs(cls.current)
 
@@ -204,7 +205,8 @@ class NBSNextBatchTests(unittest.TestCase):
         self.assertEqual(package["catalogs"], self.current)
         for name, filename in FILES.items():
             self.assertEqual(serialized(package["catalogs"][name]),
-                             (ROOT / "materials_boundaries/data" / filename).read_bytes())
+                             serialized(self.current[name]),
+                             "artifact must recover exact pinned eaf16e1 bytes: " + name)
         self.assertEqual(package["report"]["delta"], {"identities": 10, "grades": 0,
             "states": 10, "properties": 10, "sources": 0,
             "categories": {"natural": 0, "metal": 7, "inorganic": 3, "polymer": 0, "composite": 0}})

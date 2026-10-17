@@ -12,7 +12,8 @@ from materials_query import computed_registry as registry
 
 OLD_BASELINE = '6ab6a7bcda3f98c33c9c5520b420fdbcc884cd18a10a3235f07ce58e28c5e1a9'
 PREVIOUS_BASELINE = 'c03c48c4b0b2196ba77ea439df01d5a5e8191925bbfafaa63ab1212aa2d0335f'
-NEW_BASELINE = '8da7a2000110021ad0a20b2a83dc1b02420a0bf9e3d1b68eb71b70f127965efe'
+EAF_BASELINE = '8da7a2000110021ad0a20b2a83dc1b02420a0bf9e3d1b68eb71b70f127965efe'
+NEW_BASELINE = 'a38937d66a5d6c8f99eae6c05747e60a90f7647a737a1dc4d1cebc983fafcca3'
 
 
 class IntegratedBaselineTests(unittest.TestCase):
@@ -20,6 +21,7 @@ class IntegratedBaselineTests(unittest.TestCase):
         self.assertEqual(registry.baseline_digest(), NEW_BASELINE)
         self.assertNotEqual(NEW_BASELINE, OLD_BASELINE)
         self.assertNotEqual(NEW_BASELINE, PREVIOUS_BASELINE)
+        self.assertNotEqual(NEW_BASELINE, EAF_BASELINE)
 
     def test_windows_paths_use_the_same_manifest_key(self):
         payload = b'synthetic catalog bytes'
@@ -44,7 +46,7 @@ class IntegratedBaselineTests(unittest.TestCase):
         review = {'schema': 'computed-review-recovery/1', 'packet_sha256': '0' * 64,
                   'reviewer': 'Synthetic baseline compatibility test',
                   'rationale': 'No real material admission', 'records': []}
-        for old_baseline in (OLD_BASELINE, PREVIOUS_BASELINE):
+        for old_baseline in (OLD_BASELINE, PREVIOUS_BASELINE, EAF_BASELINE):
             with self.subTest(old_baseline=old_baseline):
                 with tempfile.TemporaryDirectory() as temporary:
                     database = Path(temporary) / 'old-baseline.db'

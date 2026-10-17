@@ -4,15 +4,15 @@ The released main baseline `4c5656c` combines 1057 source-qualified identities
 with exactly 24 independently reviewed computed composition buckets, for 1081
 formal project admissions. That published count remains unchanged.
 
-This unmerged experimental candidate adds seventeen NBS references and one Nb reference to its core and
-pairs its 1075 source-qualified identities with the same 24 computed buckets.
-Its **proposed experimental total is 1099**, with natural 1010, metal 34,
-inorganic 38, polymer 14 and composite 3. This is a candidate for a reviewed
+This unmerged experimental candidate adds seventeen NBS references, one Nb reference and one NC2 concrete formulation to its core and
+pairs its 1076 source-qualified identities with the same 24 computed buckets.
+Its **proposed experimental total is 1100**, with natural 1010, metal 34,
+inorganic 38, polymer 14 and composite 4. This is a candidate for a reviewed
 release, not an authorized change to the main formal count. The candidate may
 retain resource pins matching its new core bytes for reproducible testing.
 Those proposed pins do not establish release approval.
 
-See [the incremental integration record](MATERIAL_GROWTH_NBS_NEXT_20261016.md) for scope and
+See [the latest incremental integration record](MATERIAL_GROWTH_NC2_20261017.md) for scope and
 evidence. The `formal-project-count-policy/1` convention does not claim global
 physical uniqueness, experimental observation of every record, or equivalent
 levels of scientific evidence.
@@ -20,8 +20,8 @@ levels of scientific evidence.
 ## Two immutable indexes, one explicit project policy
 
 The candidate source-qualified index preserves all 1057 predecessor identities,
-states and properties and appends eighteen source-qualified references, for an experimental core
-count of 1075. The released main core remains 1057. Existing source, grade and
+states and properties and appends nineteen source-qualified references, for an experimental core
+count of 1076. The released main core remains 1057. Existing source, grade and
 state APIs are unchanged. Legacy
 entries retain their actual per-property evidence types; they are not all labeled
 experimental. Existing consumers do not receive computed values disguised as
@@ -41,7 +41,7 @@ and canonical review SHA-256
 It is byte-identical to the separately accepted experimental example. That
 example's acceptance pin covers normalized metadata; the released main policy
 separately admits these 24 computed buckets. Reusing them in this candidate does
-not constitute a release decision for the eighteen new source-qualified references. The review's
+not constitute a release decision for the nineteen new source-qualified references. The review's
 earlier preparation-stage wording is retained rather than rewritten.
 This candidate must be reviewed and authorized for release before it changes
 published counts. Hashes prove artifact identity, not independent authenticity,
@@ -66,15 +66,15 @@ baseline is rejected by the new environment. Computed review payloads, held
 candidates and excluded examples retain their original bytes and status.
 
 The existing catalog contract fixes `independent_scientific_review` to false.
-Selected-page transcription checks and the previously established limited NBS
-reuse finding support the ten new facts; prior source/rights findings remain
-applicable to the earlier eight additions. No unresolved concrete source, rights
+Selected-source transcription checks and the existing article-specific CC BY 4.0
+license support the NC2 density fact. The prior limited NBS reuse findings and
+source-specific checks remain applicable to the earlier eighteen additions. No unresolved concrete source, rights
 or identity hold is reported for this increment, and no extra human-signature or
 repeat-license-review prerequisite is added. Changing the published formal count
 still requires the separately coordinated release above.
 
 Install the add-on explicitly after the exact legacy core: `pip install ./formal-catalog`.
-The optional installed-wheel catalog CI installs both packages. The core wheel includes the eighteen additional references; historical records and
+The optional installed-wheel catalog CI installs both packages. The core wheel includes the nineteen additional references; historical records and
 fixtures are preserved, and only the marked current README material counts are
 refreshed. Without the add-on installed,
 the legacy catalog works normally and formal status reports unavailable.
@@ -85,9 +85,9 @@ the legacy catalog works normally and formal status reports unavailable.
 - `materials-project-catalog --list --offset 0 --limit 100`: packaged records
 - `materials-project-catalog --partition reviewed-computed`: all 24 models
 - `materials-project-catalog --query Ag2AlCo`: bounded literal lookup
-- `materials-boundaries coverage`: 1075 experimental source-qualified identities
+- `materials-boundaries coverage`: 1076 experimental source-qualified identities
 
-In this candidate installation, these interfaces expose the proposed 1099-record
+In this candidate installation, these interfaces expose the proposed 1100-record
 package. Existing formal API names and `admitted-by-packaged-policy` status refer
 to its pinned package convention; they do not announce a new main release.
 
