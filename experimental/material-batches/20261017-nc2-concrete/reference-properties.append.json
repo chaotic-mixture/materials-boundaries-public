@@ -1,0 +1,185 @@
+{
+  "schema_version": "1.0.0",
+  "records": [
+    {
+      "id": "refprop_domagala2024_nc2_28d_saturated_mass_density",
+      "version": "1.0.0",
+      "material_state_id": "state_domagala2024_nc2_28d_saturated",
+      "quantity": "mass_density",
+      "quantity_dimension": "mass_per_volume",
+      "source_property_label": "D_w",
+      "reported_value": {
+        "kind": "scalar",
+        "number": "2340",
+        "value_text": "2340",
+        "unit_text": "kg/m³",
+        "unit_code": "kg/m^3"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Original study experimental wet-density group mean. Reported mean of the NC2 nominal 28-day water-saturated density group; no density subprocedure is inferred.",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "20 °C is a curing/storage condition. No explicit density measurement temperature is supplied."
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "EN 12390-7:2019",
+          "evidence": [
+            {
+              "source_id": "domagala_2024_moisture_normal_weight_concrete",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11313055/fullTextXML",
+              "locator": "Table 2 and reference 23",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Density testing of water-saturated hardened concrete under EN 12390-7:2019; exact volume/mass subprocedure and instrument not specified",
+          "evidence": [
+            {
+              "source_id": "domagala_2024_moisture_normal_weight_concrete",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11313055/fullTextXML",
+              "locator": "§2 and Table 2",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "direction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": null
+        },
+        "conditioning": {
+          "status": "reported",
+          "text": "Water-saturated, nominal source age 28 days",
+          "evidence": [
+            {
+              "source_id": "domagala_2024_moisture_normal_weight_concrete",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11313055/fullTextXML",
+              "locator": "§2, 28-day density paragraph; Table 3",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "loading_rate": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected property is density rather than a mechanical loading result."
+        }
+      },
+      "density_basis": "not_stated",
+      "summary_statistic": "reported_mean",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "No density standard deviation, confidence interval, or instrument uncertainty is supplied. §3.1 says no individual density differs from the mean by more than 20 kg/m³; retain that as a maximum-deviation statement, never a ±20 SD or confidence interval. Do not borrow the 0.7 GPa modulus SD.",
+      "sample_count": {
+        "value": 3,
+        "relation": "exact",
+        "scope": "28-day density specimens in NC2 series",
+        "source_statement": "Table 2 shows three cylinders in a shared count cell spanning the two nominal 28-day density states, and §2 says this program is per concrete series.",
+        "evidence": [
+          {
+            "source_id": "domagala_2024_moisture_normal_weight_concrete",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11313055/fullTextXML",
+            "locator": "Table 2, shared three-cylinder cell spanning Oven-dry density and Water-saturated density rows; §2 says program is per series",
+            "supports": [
+              "sample_count"
+            ]
+          }
+        ]
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Density testing of water-saturated hardened concrete under EN 12390-7:2019; exact volume/mass subprocedure and instrument not specified",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "domagala_2024_moisture_normal_weight_concrete",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11313055/fullTextXML",
+            "locator": "§2 and Table 2, EN 12390-7 density testing; Table 3 selected water-saturated density; reference 23",
+            "supports": [
+              "method",
+              "classification"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [],
+      "source_id": "domagala_2024_moisture_normal_weight_concrete",
+      "evidence": [
+        {
+          "source_id": "domagala_2024_moisture_normal_weight_concrete",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11313055/fullTextXML",
+          "locator": "Table 3, NC2 row, D_w, kg/m³ column; XML table-wrap id materials-17-03722-t003",
+          "supports": [
+            "reported_value"
+          ]
+        },
+        {
+          "source_id": "domagala_2024_moisture_normal_weight_concrete",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11313055/fullTextXML",
+          "locator": "§3.1 first paragraph calls these mean properties; §2 and Table 2 identify density tests and specimen count",
+          "supports": [
+            "classification",
+            "summary_statistic"
+          ]
+        },
+        {
+          "source_id": "domagala_2024_moisture_normal_weight_concrete",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11313055/fullTextXML",
+          "locator": "§2 and Table 2, EN 12390-7 density testing; Table 3 selected water-saturated density; reference 23",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "domagala_2024_moisture_normal_weight_concrete",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11313055/fullTextXML",
+          "locator": "§2 specimen preparation and Table 1 NC2 row; Table 2 nominal 28-day density program; Table 3 NC2/D_w result",
+          "supports": [
+            "material_identity",
+            "state"
+          ]
+        }
+      ],
+      "source_document": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11313055/fullTextXML",
+        "revision": "Published 2024-07-27; PMCID PMC11313055.1, PMC version 1; XML records last change 2024-08-28",
+        "inspected_on": "2026-10-17",
+        "sha256": "8eee9708ea9e257dc060117f6b7c20a031443c982ecb98aa92cf5227e7479ec5",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Selected retained primary XML independently reread on 2026-10-17: Table 1 NC2 recipe and NC1 distinction, Table 2 shared three-cylinder/28-day density cells, Table 3 NC2/D_w = 2340 kg/m^3, section 2 preparation and wet-before-dry sequence, section 3.1 mean and maximum-deviation wording, and article-specific CC BY 4.0 permissions. XML SHA-256 matches the existing registered source asset. No new publisher HTML or PDF inspection, raw-data reanalysis, experimental replication or independent scientific review is claimed.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "scope_note": "No structural design allowable, certified grade, universal value or bound. Do not merge 28-day saturated state with 3-year air-dry/saturated experiments. Preserve unknown density basis (bulk/apparent/true terminology not stated by authors for this concrete value), test temperature, porosity and exact test subprocedure. Source 20 °C is curing/storage, not density-test temperature. The source reports demolding after 24 h followed by 28-day water storage while calling the selected testing age 28 days; retain its nominal 28-day designation without inferring 29 days. Density deviations within 20 kg/m³ of the mean are not an SD, confidence interval or uncertainty.",
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Selected retained primary XML independently reread on 2026-10-17: Table 1 NC2 recipe and NC1 distinction, Table 2 shared three-cylinder/28-day density cells, Table 3 NC2/D_w = 2340 kg/m^3, section 2 preparation and wet-before-dry sequence, section 3.1 mean and maximum-deviation wording, and article-specific CC BY 4.0 permissions. XML SHA-256 matches the existing registered source asset. No new publisher HTML or PDF inspection, raw-data reanalysis, experimental replication or independent scientific review is claimed.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      }
+    }
+  ]
+}

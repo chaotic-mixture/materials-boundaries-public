@@ -1,0 +1,168 @@
+{
+  "schema_version": "1.0.0",
+  "identities": [
+    {
+      "id": "mat_domagala2024_nc2_concrete",
+      "version": "1.0.0",
+      "category": "composite",
+      "name": "NC2 normal-weight concrete (Domagała 2024)",
+      "names": {
+        "en": "NC2 normal-weight concrete (Domagała 2024)",
+        "zh": "NC2 normal-weight concrete (Domagała 2024)",
+        "ja": "NC2 normal-weight concrete (Domagała 2024)",
+        "de": "NC2 normal-weight concrete (Domagała 2024)"
+      },
+      "aliases": [
+        {
+          "language": "en",
+          "text": "Domagała NC2 concrete"
+        }
+      ],
+      "identity_scope": "Study-defined NC2 concrete formulation from Domagala et al. (2024), distinct from the already cataloged NC1 formulation by cement, water and superplasticizer input quantities and nominal water/cement ratio. Table 1 reports NC2 cement 470, water 174 and superplasticizer 1.9 kg/m^3 with nominal w/c 0.37, versus NC1 cement 377, water 208 and superplasticizer 0 kg/m^3 with nominal w/c 0.55. These are different mixture recipes, not extra identities for moisture state, curing age or a translated label. Not all normal-weight concrete or all CEM I 42.5 R cement; the cement designation identifies a constituent, not a certified final-concrete grade.",
+      "evidence": [
+        {
+          "source_id": "domagala_2024_moisture_normal_weight_concrete",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11313055/fullTextXML",
+          "locator": "§2 specimen preparation and Table 1 NC2 row; Table 2 nominal 28-day density program; Table 3 NC2/D_w result",
+          "supports": [
+            "material_identity",
+            "state"
+          ]
+        }
+      ]
+    }
+  ],
+  "grades": [],
+  "records": [
+    {
+      "id": "state_domagala2024_nc2_28d_saturated",
+      "version": "1.0.0",
+      "identity_id": "mat_domagala2024_nc2_concrete",
+      "grade_id": null,
+      "name": "NC2 concrete, nominal 28-day water-saturated state (Domagała 2024)",
+      "names": {
+        "en": "NC2 concrete, nominal 28-day water-saturated state (Domagała 2024)",
+        "zh": "NC2 concrete, nominal 28-day water-saturated state (Domagała 2024)",
+        "ja": "NC2 concrete, nominal 28-day water-saturated state (Domagała 2024)",
+        "de": "NC2 concrete, nominal 28-day water-saturated state (Domagała 2024)"
+      },
+      "aliases": [
+        {
+          "language": "en",
+          "text": "NC2, 28-day saturated density state"
+        }
+      ],
+      "source_designation": "NC2",
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Cast cylindrical concrete specimens, nominal diameter 150 mm and length 300 mm",
+          "evidence": [
+            {
+              "source_id": "domagala_2024_moisture_normal_weight_concrete",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11313055/fullTextXML",
+              "locator": "§2, paragraph beginning Twenty-one standard cylindrical specimens",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "processing": {
+          "status": "reported",
+          "text": "Cast and demolded after 24 h; source reports water storage at 20 °C and nominal testing age 28 days, following EN 12390-2:2019",
+          "evidence": [
+            {
+              "source_id": "domagala_2024_moisture_normal_weight_concrete",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11313055/fullTextXML",
+              "locator": "§2 specimen preparation paragraph; Table 2, 28-day density rows; reference 22",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Source wording says stored for 28 days after demolding yet calls test age 28 days. Preserve nominal reported age rather than infer elapsed 29 days or repair chronology."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Use reported cement curing and moisture conditioning, not a metallic temper."
+        },
+        "conditioning": {
+          "status": "reported",
+          "text": "Water-saturated for selected wet-density result; wet measurement preceded oven-dry measurement",
+          "evidence": [
+            {
+              "source_id": "domagala_2024_moisture_normal_weight_concrete",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11313055/fullTextXML",
+              "locator": "§2 paragraph beginning For 28 days; Table 3 D_w column",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "NC2 input quantities, kg/m^3: 4/16 mm natural gravel 1140; 0/2 mm natural sand 570; cement CEM I 42.5 R 470; tap water 174; superplasticizer 1.9. Source nominal w/c = 0.37. Coarse aggregate is single-crushed rounded material, predominantly sandstone grains.",
+          "evidence": [
+            {
+              "source_id": "domagala_2024_moisture_normal_weight_concrete",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11313055/fullTextXML",
+              "locator": "§2 first paragraph and Table 1 NC2 row",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "NC1 uses the same listed gravel/sand quantities but cement 377, water 208 and superplasticizer 0 kg/m^3, with nominal w/c 0.55. Preserve the source recipe and nominal ratio; do not recompute w/c from rounded inputs or infer final phase fractions, supplier, batch identity or admixture chemistry."
+        },
+        "reinforcement": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No fiber/rebar reinforcement reported in selected formulation. Do not infer reinforcement from aggregate."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No numerical pore fraction assigned; water absorption is not equated to porosity."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": null
+        }
+      },
+      "source_scope": "No structural design allowable, certified grade, universal value or bound. Do not merge 28-day saturated state with 3-year air-dry/saturated experiments. Preserve unknown density basis (bulk/apparent/true terminology not stated by authors for this concrete value), test temperature, porosity and exact test subprocedure. Source 20 °C is curing/storage, not density-test temperature. The source reports demolding after 24 h followed by 28-day water storage while calling the selected testing age 28 days; retain its nominal 28-day designation without inferring 29 days. Density deviations within 20 kg/m³ of the mean are not an SD, confidence interval or uncertainty.",
+      "evidence": [
+        {
+          "source_id": "domagala_2024_moisture_normal_weight_concrete",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11313055/fullTextXML",
+          "locator": "§2 specimen preparation and Table 1 NC2 row; Table 2 nominal 28-day density program; Table 3 NC2/D_w result",
+          "supports": [
+            "material_identity",
+            "state"
+          ]
+        },
+        {
+          "source_id": "domagala_2024_moisture_normal_weight_concrete",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11313055/fullTextXML",
+          "locator": "Table 3, NC2 row, D_w, kg/m³ column; XML table-wrap id materials-17-03722-t003",
+          "supports": [
+            "reported_value"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_domagala2024_nc2_28d_saturated_mass_density"
+      ],
+      "evaluation_support": "catalog_only"
+    }
+  ]
+}

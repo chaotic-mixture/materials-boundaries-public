@@ -1,0 +1,82 @@
+{
+  "schema": "nc2-concrete-source-transcription-review/1",
+  "base_commit": "eaf16e1eb1edad17fbf78ac7385566f6a4e86a94",
+  "status": "selected_source_facts_ready_for_local_experimental_integration",
+  "identity_count": 1,
+  "states": 1,
+  "properties": 1,
+  "new_sources": 0,
+  "new_grades": 0,
+  "category_deltas": {
+    "natural": 0,
+    "metal": 0,
+    "inorganic": 0,
+    "polymer": 0,
+    "composite": 1
+  },
+  "source_document_sha256": "8eee9708ea9e257dc060117f6b7c20a031443c982ecb98aa92cf5227e7479ec5",
+  "source_inspected_on": "2026-10-17",
+  "source_facts": [
+    {
+      "key": "nc2",
+      "identity_id": "mat_domagala2024_nc2_concrete",
+      "state_id": "state_domagala2024_nc2_28d_saturated",
+      "property_id": "refprop_domagala2024_nc2_28d_saturated_mass_density",
+      "category": "composite",
+      "source_property_label": "D_w",
+      "density": "2340",
+      "unit": "kg/m^3",
+      "summary_statistic": "reported_mean",
+      "sample_count": 3,
+      "sample_count_scope": "Three cylinders per concrete series; shared Table 2 cell covers sequential wet and oven-dry density measurements, not three new independent specimens for each moisture state.",
+      "nominal_age": "28 days",
+      "moisture_state": "water-saturated",
+      "recipe_kg_per_m3": {
+        "natural_gravel_4_16_mm": "1140",
+        "natural_sand_0_2_mm": "570",
+        "cement_CEM_I_42_5_R": "470",
+        "tap_water": "174",
+        "superplasticizer": "1.9"
+      },
+      "nominal_water_cement_ratio": "0.37",
+      "recipe_locator": "Table 1 NC2 row; XML table-wrap materials-17-03722-t001; section 2 constituent descriptions",
+      "density_locator": "Table 3 NC2 row, D_w column; XML table-wrap materials-17-03722-t003",
+      "method_locator": "Section 2 and Table 2 density rows, shared count/age/EN 12390-7 cells; reference 23",
+      "statistical_locator": "Table 3 caption and section 3.1: means; maximum individual density deviation no greater than 20 kg/m^3 is not an SD or interval"
+    }
+  ],
+  "identity_policy": "Study-defined NC2 concrete formulation from Domagala et al. (2024), distinct from the already cataloged NC1 formulation by cement, water and superplasticizer input quantities and nominal water/cement ratio. Table 1 reports NC2 cement 470, water 174 and superplasticizer 1.9 kg/m^3 with nominal w/c 0.37, versus NC1 cement 377, water 208 and superplasticizer 0 kg/m^3 with nominal w/c 0.55. These are different mixture recipes, not extra identities for moisture state, curing age or a translated label. Not all normal-weight concrete or all CEM I 42.5 R cement; the cement designation identifies a constituent, not a certified final-concrete grade.",
+  "rights": {
+    "source_record_reused_unchanged": "domagala_2024_moisture_normal_weight_concrete",
+    "decision": "Reuse the existing article-authored CC BY 4.0 factual scope after rereading the retained XML permissions and selected original study tables; this is not a blanket permission for third-party content.",
+    "license_identifier": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "attribution": "Lucyna Domagala, Maria Marganska and Marek Miazgowicz (2024), Moisture Impact on Static and Dynamic Modulus of Elasticity in Structural Normal-Weight Concretes, Materials 17(15), 3722, DOI 10.3390/ma17153722.",
+    "adaptations": "Selected factual transcription, structured metadata, English fallback labels and original source-scope qualifications; the selected density number and unit precision are unchanged.",
+    "assets_included": false,
+    "third_party_comparison_content_included": false
+  },
+  "verification": {
+    "transcription_cross_check": "completed",
+    "independent_scientific_review": false,
+    "raw_data_reanalysis": false
+  },
+  "locale_policy": "All four required name slots contain authored English fallback labels; no native-language review is claimed.",
+  "unknowns": [
+    "Density-test temperature; 20 degrees C is curing/storage only",
+    "Bulk/apparent/true density terminology for the selected concrete value",
+    "Exact density volume/mass subprocedure and instrument",
+    "Density standard deviation, confidence interval and measurement uncertainty",
+    "Exact elapsed chronology beyond the source nominal 28-day designation",
+    "Final phase fractions, numerical porosity, supplier, batch and certified concrete grade"
+  ],
+  "excluded": [
+    "NC1 is already cataloged and is not appended again",
+    "Oven-dry density and 3-year states are not additional material identities",
+    "Strength and modulus values, their statistics, inferred porosity and source assets are not bundled"
+  ],
+  "specific_unresolved_admission_gaps": [],
+  "released_main_count": 1081,
+  "formal_admitted_delta": 0,
+  "release_scope": "Candidate packet only for the isolated local experiment. Runtime/formal catalogs are unchanged; parent-coordinated integration and publication remain separate. No main release, DOI registration or deployment is performed."
+}
