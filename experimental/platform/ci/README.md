@@ -106,9 +106,10 @@ The normal catalog runner requires every discovered test to execute, with no
 skips or expected failures. A focused pass is not a complete 363-test matrix pass.
 
 To run only the strict hBN projection stage on Linux from the repository root,
-using an environment with the existing development dependencies installed:
+first install its test-only dependency closure in the active test environment:
 
 ```sh
+python -m pip install --no-deps --only-binary=:all: -r experimental/platform/ci/projection-requirements.txt
 PYTHONPATH=experimental/platform/ci python -B experimental/platform/ci/check_offline.py hbn-projection
 ```
 
@@ -119,9 +120,15 @@ every existing stage as well as this new stage in separate subprocesses.
 
 Run the two CI runner commands with each supported interpreter to reproduce the
 matrix. Each creates fresh build and runtime virtual environments and removes
-them on completion. Dependency installation needs package-index access. All external
+them on completion. Dependency installation needs package-index access. Shared
 runtime/QA versions come from the existing requirements-lock.txt; build tools and
-packaging are pinned in build-requirements.txt. `--no-deps` prevents unpinned
+packaging are pinned in build-requirements.txt. The first job additionally installs
+the exact-pinned `projection-requirements.txt` into its fresh test environment.
+That file supplies `jsonschema` and its complete required dependency closure for
+the checkout projection's `Draft202012Validator` checks. Its optional format
+extras are not used by this stage. These QA packages are not added to product
+runtime metadata, and the optional-core-catalog job retains its existing
+dependency environment. `--no-deps` prevents unpinned
 transitive resolution, `--only-binary=:all:` refuses external source builds, and
 `pip check` fails on missing/incompatible dependencies. Local wheels build with
 `--no-build-isolation` so the pinned backend is used. This is version-pinned

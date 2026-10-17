@@ -43,6 +43,8 @@ def main():
             ROOT / 'federation', ROOT / 'query-service', ROOT / 'lifecycle', ROOT, cwd=work, env=env)
         run(python, '-m', 'pip', 'install', '--no-deps', '--only-binary=:all:', 'pip==26.2.1', cwd=work, env=env)
         run(python, '-m', 'pip', 'install', '--no-deps', '--only-binary=:all:', '-r', ROOT / 'requirements-lock.txt', cwd=work, env=env)
+        # Checkout-only projection QA; these are not product runtime dependencies.
+        run(python, '-m', 'pip', 'install', '--no-deps', '--only-binary=:all:', '-r', CI / 'projection-requirements.txt', cwd=work, env=env)
         local_wheels = sorted(wheels.glob('*.whl'))
         if len(local_wheels) != 4:
             raise RuntimeError('Expected exactly four local package wheels')
