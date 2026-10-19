@@ -393436,6 +393436,960 @@
         "independent_scientific_review": false,
         "raw_data_reanalysis": false
       }
+    },
+    {
+      "version": "1.0.0",
+      "quantity": "mass_density",
+      "quantity_dimension": "mass_per_volume",
+      "source_property_label": "density",
+      "reported_value": {
+        "kind": "scalar",
+        "unit_text": "grams per cubic centimeter",
+        "unit_code": "g/cm^3",
+        "value_text": "3.008",
+        "number": "3.008"
+      },
+      "evidence_kind": "published_measurement_derived_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_calculation",
+      "basis_note": "Source-reported measured-lattice-derived crystallographic density. Preserve the reported value and precision without recalculation; no mean, direct bulk measurement, DFT prediction or replicate count is inferred.",
+      "conditions": {
+        "test_standard": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No density test-standard compliance or certification is established."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Source crystallographic calculation from experimentally measured NBS powder-XRD lattice parameters and the adopted crystal structure.",
+          "evidence": [
+            {
+              "source_id": "swanson_tatge_1953_nbs_circ539v1",
+              "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+              "locator": "Introduction, printed pp. 1-2 / one-based PDF pp. 5-6: NBS measured powder-XRD patterns, lattice parameters, internal-standard calibration and source-computed density; density units are grams per cubic centimeter.",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Not direct mass/volume weighing, pycnometry or DFT."
+        },
+        "direction": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading direction does not apply to this scalar crystallographic density."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Density-specific moisture content and conditioning duration are unknown; reported preparation remains attached to the state."
+        },
+        "loading_rate": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading rate does not apply to crystallographic density."
+        },
+        "additional_conditions": [
+          {
+            "name": "density_pressure",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "No pressure is reported for the selected density."
+            }
+          }
+        ],
+        "temperature": {
+          "status": "reported",
+          "text": "26 degrees C",
+          "evidence": [
+            {
+              "source_id": "swanson_tatge_1953_nbs_circ539v1",
+              "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+              "locator": "Section 2.17, printed p. 37 / one-based PDF p. 41, left column below the unit-cell table: density based on the NBS lattice constant, 3.008 at 26 degrees C.",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Explicit density reference temperature; not inferred from preparation or a neighboring table."
+        }
+      },
+      "density_basis": "crystallographic",
+      "summary_statistic": "reported_value",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "No density-specific uncertainty is reported. The general lattice/spacing error statement is not a density error bar; no propagation is performed.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "source_statement": "The selected sections do not establish an independent specimen or repeated density-determination count. Unit-cell contents and numbers of diffraction lines are not sample n.",
+        "evidence": [],
+        "scope": "Selected NBS BeO hexagonal crystallographic density."
+      },
+      "method_definition": {
+        "type": "source_reported_crystallographic_derivation",
+        "extraction_window": null,
+        "definition": "The source reports density derived from its measured lattice parameters for the BeO hexagonal phase. The source value 3.008 grams per cubic centimeter is transcribed unchanged; no lattice/atomic-mass substitution, density recalculation or uncertainty propagation is performed.",
+        "evidence": [
+          {
+            "source_id": "swanson_tatge_1953_nbs_circ539v1",
+            "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+            "locator": "Section 2.17, printed p. 37 / one-based PDF p. 41, left column below the unit-cell table: density based on the NBS lattice constant, 3.008 at 26 degrees C. Introduction, printed pp. 1-2 / one-based PDF pp. 5-6: NBS measured powder-XRD patterns, lattice parameters, internal-standard calibration and source-computed density; density units are grams per cubic centimeter.",
+            "supports": [
+              "method",
+              "classification",
+              "condition"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [],
+      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+      "source_document": {
+        "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+        "revision": "NBS Circular 539, Volume I, 1953",
+        "inspected_on": "2026-10-19",
+        "sha256": "003b872fbe7d403d38bbd1d752568ee92a96bdb010b6e381bdc82566929e2a6c",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_status": "selected_content_inspected",
+        "inspection_scope": "Retained complete NBS Circular 539 Volume I PDF inspected locally on 2026-10-19 using extracted text and selected page images: Introduction printed pp. 1-2 / PDF pp. 5-6, and selected density/sample passages in sections 2.17, 2.18, 2.21, 2.22, 2.25 and 2.30. Exact row-level locators are in each property and state evidence. Source-transcription checking only; no scientific peer review, experimental replication or raw-data reanalysis. PDF page numbers are one-based."
+      },
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false,
+        "source_inspection_scope": "Retained complete NBS Circular 539 Volume I PDF inspected locally on 2026-10-19 using extracted text and selected page images: Introduction printed pp. 1-2 / PDF pp. 5-6, and selected density/sample passages in sections 2.17, 2.18, 2.21, 2.22, 2.25 and 2.30. Exact row-level locators are in each property and state evidence. Source-transcription checking only; no scientific peer review, experimental replication or raw-data reanalysis. PDF page numbers are one-based."
+      },
+      "id": "refprop_nbs1953_beo_brush_1743_1747_crystallographic_density",
+      "material_state_id": "state_nbs1953_beo_brush_1743_1747_xrd",
+      "evidence": [
+        {
+          "source_id": "swanson_tatge_1953_nbs_circ539v1",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+          "locator": "Section 2.17, printed p. 37 / one-based PDF p. 41, left column below the unit-cell table: density based on the NBS lattice constant, 3.008 at 26 degrees C. Introduction, printed p. 2 / one-based PDF p. 6, right column: density units are grams per cubic centimeter; lattice constants may be adjusted to 25 degrees C separately from experimental powder-pattern temperature.",
+          "supports": [
+            "reported_value",
+            "classification",
+            "method",
+            "condition"
+          ]
+        },
+        {
+          "source_id": "swanson_tatge_1953_nbs_circ539v1",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+          "locator": "Section 2.17, printed p. 36 / one-based PDF p. 40, upper left: Brush Beryllium Company sample No. 1743-1747, fluorescent-grade description, furnace preparation and NBS impurity analysis.",
+          "supports": [
+            "material_identity",
+            "state"
+          ]
+        }
+      ],
+      "scope_note": "BeO, hexagonal phase, represented by NBS experimental powder-XRD measurements. The source reports measured-lattice-derived crystallographic density at 26 degrees C. This does not establish bulk specimen density, powder-packing density, porosity or an engineering allowable. Sample, preparation, impurity and provenance limitations are retained in the linked state."
+    },
+    {
+      "version": "1.0.0",
+      "quantity": "mass_density",
+      "quantity_dimension": "mass_per_volume",
+      "source_property_label": "density",
+      "reported_value": {
+        "kind": "scalar",
+        "unit_text": "grams per cubic centimeter",
+        "unit_code": "g/cm^3",
+        "value_text": "3.345",
+        "number": "3.345"
+      },
+      "evidence_kind": "published_measurement_derived_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_calculation",
+      "basis_note": "Source-reported measured-lattice-derived crystallographic density. Preserve the reported value and precision without recalculation; no mean, direct bulk measurement, DFT prediction or replicate count is inferred.",
+      "conditions": {
+        "test_standard": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No density test-standard compliance or certification is established."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Source crystallographic calculation from experimentally measured NBS powder-XRD lattice parameters and the adopted crystal structure.",
+          "evidence": [
+            {
+              "source_id": "swanson_tatge_1953_nbs_circ539v1",
+              "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+              "locator": "Introduction, printed pp. 1-2 / one-based PDF pp. 5-6: NBS measured powder-XRD patterns, lattice parameters, internal-standard calibration and source-computed density; density units are grams per cubic centimeter.",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Not direct mass/volume weighing, pycnometry or DFT."
+        },
+        "direction": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading direction does not apply to this scalar crystallographic density."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Density-specific moisture content and conditioning duration are unknown; reported preparation remains attached to the state."
+        },
+        "loading_rate": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading rate does not apply to crystallographic density."
+        },
+        "additional_conditions": [
+          {
+            "name": "density_pressure",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "No pressure is reported for the selected density."
+            }
+          }
+        ],
+        "temperature": {
+          "status": "reported",
+          "text": "27 degrees C",
+          "evidence": [
+            {
+              "source_id": "swanson_tatge_1953_nbs_circ539v1",
+              "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+              "locator": "Section 2.21, printed p. 44 / one-based PDF p. 48, lower left below the unit-cell table: density calculated from the NBS lattice constant, 3.345 at 27 degrees C.",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Explicit density reference temperature; not inferred from preparation or a neighboring table."
+        }
+      },
+      "density_basis": "crystallographic",
+      "summary_statistic": "reported_value",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "No density-specific uncertainty is reported. The general lattice/spacing error statement is not a density error bar; no propagation is performed.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "source_statement": "The selected sections do not establish an independent specimen or repeated density-determination count. Unit-cell contents and numbers of diffraction lines are not sample n.",
+        "evidence": [],
+        "scope": "Selected NBS CaO face-centered cubic crystallographic density."
+      },
+      "method_definition": {
+        "type": "source_reported_crystallographic_derivation",
+        "extraction_window": null,
+        "definition": "The source reports density derived from its measured lattice parameters for the CaO face-centered cubic phase. The source value 3.345 grams per cubic centimeter is transcribed unchanged; no lattice/atomic-mass substitution, density recalculation or uncertainty propagation is performed.",
+        "evidence": [
+          {
+            "source_id": "swanson_tatge_1953_nbs_circ539v1",
+            "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+            "locator": "Section 2.21, printed p. 44 / one-based PDF p. 48, lower left below the unit-cell table: density calculated from the NBS lattice constant, 3.345 at 27 degrees C. Introduction, printed pp. 1-2 / one-based PDF pp. 5-6: NBS measured powder-XRD patterns, lattice parameters, internal-standard calibration and source-computed density; density units are grams per cubic centimeter.",
+            "supports": [
+              "method",
+              "classification",
+              "condition"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [],
+      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+      "source_document": {
+        "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+        "revision": "NBS Circular 539, Volume I, 1953",
+        "inspected_on": "2026-10-19",
+        "sha256": "003b872fbe7d403d38bbd1d752568ee92a96bdb010b6e381bdc82566929e2a6c",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_status": "selected_content_inspected",
+        "inspection_scope": "Retained complete NBS Circular 539 Volume I PDF inspected locally on 2026-10-19 using extracted text and selected page images: Introduction printed pp. 1-2 / PDF pp. 5-6, and selected density/sample passages in sections 2.17, 2.18, 2.21, 2.22, 2.25 and 2.30. Exact row-level locators are in each property and state evidence. Source-transcription checking only; no scientific peer review, experimental replication or raw-data reanalysis. PDF page numbers are one-based."
+      },
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false,
+        "source_inspection_scope": "Retained complete NBS Circular 539 Volume I PDF inspected locally on 2026-10-19 using extracted text and selected page images: Introduction printed pp. 1-2 / PDF pp. 5-6, and selected density/sample passages in sections 2.17, 2.18, 2.21, 2.22, 2.25 and 2.30. Exact row-level locators are in each property and state evidence. Source-transcription checking only; no scientific peer review, experimental replication or raw-data reanalysis. PDF page numbers are one-based."
+      },
+      "id": "refprop_nbs1953_cao_baker_121647_crystallographic_density",
+      "material_state_id": "state_nbs1953_cao_baker_121647_xrd",
+      "evidence": [
+        {
+          "source_id": "swanson_tatge_1953_nbs_circ539v1",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+          "locator": "Section 2.21, printed p. 44 / one-based PDF p. 48, lower left below the unit-cell table: density calculated from the NBS lattice constant, 3.345 at 27 degrees C. Introduction, printed p. 2 / one-based PDF p. 6, right column: density units are grams per cubic centimeter; lattice constants may be adjusted to 25 degrees C separately from experimental powder-pattern temperature.",
+          "supports": [
+            "reported_value",
+            "classification",
+            "method",
+            "condition"
+          ]
+        },
+        {
+          "source_id": "swanson_tatge_1953_nbs_circ539v1",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+          "locator": "Section 2.21, printed p. 43 / one-based PDF p. 47, upper right: calcium carbonate precursor from J. T. Baker No. 121647, calcination in platinum, NBS chemical analysis and petrolatum mounting.",
+          "supports": [
+            "material_identity",
+            "state"
+          ]
+        }
+      ],
+      "scope_note": "CaO, face-centered cubic phase, represented by NBS experimental powder-XRD measurements. The source reports measured-lattice-derived crystallographic density at 27 degrees C. This does not establish bulk specimen density, powder-packing density, porosity or an engineering allowable. Sample, preparation, impurity and provenance limitations are retained in the linked state."
+    },
+    {
+      "version": "1.0.0",
+      "quantity": "mass_density",
+      "quantity_dimension": "mass_per_volume",
+      "source_property_label": "density",
+      "reported_value": {
+        "kind": "scalar",
+        "unit_text": "grams per cubic centimeter",
+        "unit_code": "g/cm^3",
+        "value_text": "7.215",
+        "number": "7.215"
+      },
+      "evidence_kind": "published_measurement_derived_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_calculation",
+      "basis_note": "Source-reported measured-lattice-derived crystallographic density. Preserve the reported value and precision without recalculation; no mean, direct bulk measurement, DFT prediction or replicate count is inferred.",
+      "conditions": {
+        "test_standard": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No density test-standard compliance or certification is established."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Source crystallographic calculation from experimentally measured NBS powder-XRD lattice parameters and the adopted crystal structure.",
+          "evidence": [
+            {
+              "source_id": "swanson_tatge_1953_nbs_circ539v1",
+              "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+              "locator": "Introduction, printed pp. 1-2 / one-based PDF pp. 5-6: NBS measured powder-XRD patterns, lattice parameters, internal-standard calibration and source-computed density; density units are grams per cubic centimeter.",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Not direct mass/volume weighing, pycnometry or DFT."
+        },
+        "direction": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading direction does not apply to this scalar crystallographic density."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Density-specific moisture content and conditioning duration are unknown; reported preparation remains attached to the state."
+        },
+        "loading_rate": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading rate does not apply to crystallographic density."
+        },
+        "additional_conditions": [
+          {
+            "name": "density_pressure",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "No pressure is reported for the selected density."
+            }
+          }
+        ],
+        "temperature": {
+          "status": "reported",
+          "text": "26 degrees C",
+          "evidence": [
+            {
+              "source_id": "swanson_tatge_1953_nbs_circ539v1",
+              "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+              "locator": "Section 2.30, printed p. 57 / one-based PDF p. 61, upper left below the unit-cell table: density calculated from the NBS lattice constant, 7.215 at 26 degrees C.",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Explicit density reference temperature; not inferred from preparation or a neighboring table."
+        }
+      },
+      "density_basis": "crystallographic",
+      "summary_statistic": "reported_value",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "No density-specific uncertainty is reported. The general lattice/spacing error statement is not a density error bar; no propagation is performed.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "source_statement": "The selected sections do not establish an independent specimen or repeated density-determination count. Unit-cell contents and numbers of diffraction lines are not sample n.",
+        "evidence": [],
+        "scope": "Selected NBS CeO2 face-centered cubic fluorite type crystallographic density."
+      },
+      "method_definition": {
+        "type": "source_reported_crystallographic_derivation",
+        "extraction_window": null,
+        "definition": "The source reports density derived from its measured lattice parameters for the CeO2 face-centered cubic fluorite type phase. The source value 7.215 grams per cubic centimeter is transcribed unchanged; no lattice/atomic-mass substitution, density recalculation or uncertainty propagation is performed.",
+        "evidence": [
+          {
+            "source_id": "swanson_tatge_1953_nbs_circ539v1",
+            "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+            "locator": "Section 2.30, printed p. 57 / one-based PDF p. 61, upper left below the unit-cell table: density calculated from the NBS lattice constant, 7.215 at 26 degrees C. Introduction, printed pp. 1-2 / one-based PDF pp. 5-6: NBS measured powder-XRD patterns, lattice parameters, internal-standard calibration and source-computed density; density units are grams per cubic centimeter.",
+            "supports": [
+              "method",
+              "classification",
+              "condition"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [],
+      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+      "source_document": {
+        "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+        "revision": "NBS Circular 539, Volume I, 1953",
+        "inspected_on": "2026-10-19",
+        "sha256": "003b872fbe7d403d38bbd1d752568ee92a96bdb010b6e381bdc82566929e2a6c",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_status": "selected_content_inspected",
+        "inspection_scope": "Retained complete NBS Circular 539 Volume I PDF inspected locally on 2026-10-19 using extracted text and selected page images: Introduction printed pp. 1-2 / PDF pp. 5-6, and selected density/sample passages in sections 2.17, 2.18, 2.21, 2.22, 2.25 and 2.30. Exact row-level locators are in each property and state evidence. Source-transcription checking only; no scientific peer review, experimental replication or raw-data reanalysis. PDF page numbers are one-based."
+      },
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false,
+        "source_inspection_scope": "Retained complete NBS Circular 539 Volume I PDF inspected locally on 2026-10-19 using extracted text and selected page images: Introduction printed pp. 1-2 / PDF pp. 5-6, and selected density/sample passages in sections 2.17, 2.18, 2.21, 2.22, 2.25 and 2.30. Exact row-level locators are in each property and state evidence. Source-transcription checking only; no scientific peer review, experimental replication or raw-data reanalysis. PDF page numbers are one-based."
+      },
+      "id": "refprop_nbs1953_ceo2_nbs419100_crystallographic_density",
+      "material_state_id": "state_nbs1953_ceo2_nbs419100_xrd",
+      "evidence": [
+        {
+          "source_id": "swanson_tatge_1953_nbs_circ539v1",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+          "locator": "Section 2.30, printed p. 57 / one-based PDF p. 61, upper left below the unit-cell table: density calculated from the NBS lattice constant, 7.215 at 26 degrees C. Introduction, printed p. 2 / one-based PDF p. 6, right column: density units are grams per cubic centimeter; lattice constants may be adjusted to 25 degrees C separately from experimental powder-pattern temperature.",
+          "supports": [
+            "reported_value",
+            "classification",
+            "method",
+            "condition"
+          ]
+        },
+        {
+          "source_id": "swanson_tatge_1953_nbs_circ539v1",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+          "locator": "Section 2.30, printed p. 56 / one-based PDF p. 60, upper left: sample of unknown origin obtained from the NBS spectrographic laboratory, label No. 41-9100, approximate purity and traces; upper right: fluorite structure.",
+          "supports": [
+            "material_identity",
+            "state"
+          ]
+        }
+      ],
+      "scope_note": "CeO2, face-centered cubic fluorite type phase, represented by NBS experimental powder-XRD measurements. The source reports measured-lattice-derived crystallographic density at 26 degrees C. This does not establish bulk specimen density, powder-packing density, porosity or an engineering allowable. Sample, preparation, impurity and provenance limitations are retained in the linked state."
+    },
+    {
+      "version": "1.0.0",
+      "quantity": "mass_density",
+      "quantity_dimension": "mass_per_volume",
+      "source_property_label": "density",
+      "reported_value": {
+        "kind": "scalar",
+        "unit_text": "grams per cubic centimeter",
+        "unit_code": "g/cm^3",
+        "value_text": "6.51",
+        "number": "6.51"
+      },
+      "evidence_kind": "published_measurement_derived_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_calculation",
+      "basis_note": "Source-reported measured-lattice-derived crystallographic density. Preserve the reported value and precision without recalculation; no mean, direct bulk measurement, DFT prediction or replicate count is inferred.",
+      "conditions": {
+        "test_standard": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No density test-standard compliance or certification is established."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Source crystallographic calculation from experimentally measured NBS powder-XRD lattice parameters and the adopted crystal structure.",
+          "evidence": [
+            {
+              "source_id": "swanson_tatge_1953_nbs_circ539v1",
+              "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+              "locator": "Introduction, printed pp. 1-2 / one-based PDF pp. 5-6: NBS measured powder-XRD patterns, lattice parameters, internal-standard calibration and source-computed density; density units are grams per cubic centimeter.",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Not direct mass/volume weighing, pycnometry or DFT."
+        },
+        "direction": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading direction does not apply to this scalar crystallographic density."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Density-specific moisture content and conditioning duration are unknown; reported preparation remains attached to the state."
+        },
+        "loading_rate": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading rate does not apply to crystallographic density."
+        },
+        "additional_conditions": [
+          {
+            "name": "density_pressure",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "No pressure is reported for the selected density."
+            }
+          }
+        ],
+        "temperature": {
+          "status": "reported",
+          "text": "26 degrees C",
+          "evidence": [
+            {
+              "source_id": "swanson_tatge_1953_nbs_circ539v1",
+              "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+              "locator": "Section 2.25, printed p. 49 / one-based PDF p. 53, lower right below the unit-cell table: density based on the NBS lattice constant, 6.51 at 26 degrees C.",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Explicit density reference temperature; not inferred from preparation or a neighboring table."
+        }
+      },
+      "density_basis": "crystallographic",
+      "summary_statistic": "reported_value",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "No density-specific uncertainty is reported. The general lattice/spacing error statement is not a density error bar; no propagation is performed.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "source_statement": "The selected sections do not establish an independent specimen or repeated density-determination count. Unit-cell contents and numbers of diffraction lines are not sample n.",
+        "evidence": [],
+        "scope": "Selected NBS CuO monoclinic tenorite crystallographic density."
+      },
+      "method_definition": {
+        "type": "source_reported_crystallographic_derivation",
+        "extraction_window": null,
+        "definition": "The source reports density derived from its measured lattice parameters for the CuO monoclinic tenorite phase. The source value 6.51 grams per cubic centimeter is transcribed unchanged; no lattice/atomic-mass substitution, density recalculation or uncertainty propagation is performed.",
+        "evidence": [
+          {
+            "source_id": "swanson_tatge_1953_nbs_circ539v1",
+            "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+            "locator": "Section 2.25, printed p. 49 / one-based PDF p. 53, lower right below the unit-cell table: density based on the NBS lattice constant, 6.51 at 26 degrees C. Introduction, printed pp. 1-2 / one-based PDF pp. 5-6: NBS measured powder-XRD patterns, lattice parameters, internal-standard calibration and source-computed density; density units are grams per cubic centimeter.",
+            "supports": [
+              "method",
+              "classification",
+              "condition"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [],
+      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+      "source_document": {
+        "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+        "revision": "NBS Circular 539, Volume I, 1953",
+        "inspected_on": "2026-10-19",
+        "sha256": "003b872fbe7d403d38bbd1d752568ee92a96bdb010b6e381bdc82566929e2a6c",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_status": "selected_content_inspected",
+        "inspection_scope": "Retained complete NBS Circular 539 Volume I PDF inspected locally on 2026-10-19 using extracted text and selected page images: Introduction printed pp. 1-2 / PDF pp. 5-6, and selected density/sample passages in sections 2.17, 2.18, 2.21, 2.22, 2.25 and 2.30. Exact row-level locators are in each property and state evidence. Source-transcription checking only; no scientific peer review, experimental replication or raw-data reanalysis. PDF page numbers are one-based."
+      },
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false,
+        "source_inspection_scope": "Retained complete NBS Circular 539 Volume I PDF inspected locally on 2026-10-19 using extracted text and selected page images: Introduction printed pp. 1-2 / PDF pp. 5-6, and selected density/sample passages in sections 2.17, 2.18, 2.21, 2.22, 2.25 and 2.30. Exact row-level locators are in each property and state evidence. Source-transcription checking only; no scientific peer review, experimental replication or raw-data reanalysis. PDF page numbers are one-based."
+      },
+      "id": "refprop_nbs1953_cuo_jm3257_crystallographic_density",
+      "material_state_id": "state_nbs1953_cuo_jm3257_xrd",
+      "evidence": [
+        {
+          "source_id": "swanson_tatge_1953_nbs_circ539v1",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+          "locator": "Section 2.25, printed p. 49 / one-based PDF p. 53, lower right below the unit-cell table: density based on the NBS lattice constant, 6.51 at 26 degrees C. Introduction, printed p. 2 / one-based PDF p. 6, right column: density units are grams per cubic centimeter; lattice constants may be adjusted to 25 degrees C separately from experimental powder-pattern temperature.",
+          "supports": [
+            "reported_value",
+            "classification",
+            "method",
+            "condition"
+          ]
+        },
+        {
+          "source_id": "swanson_tatge_1953_nbs_circ539v1",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+          "locator": "Section 2.25, printed p. 49 / one-based PDF p. 53, lower left: Johnson, Matthey sample No. 3257 and NBS spectrographic analysis; right column: monoclinic tenorite structure.",
+          "supports": [
+            "material_identity",
+            "state"
+          ]
+        }
+      ],
+      "scope_note": "CuO, monoclinic tenorite phase, represented by NBS experimental powder-XRD measurements. The source reports measured-lattice-derived crystallographic density at 26 degrees C. This does not establish bulk specimen density, powder-packing density, porosity or an engineering allowable. Sample, preparation, impurity and provenance limitations are retained in the linked state."
+    },
+    {
+      "version": "1.0.0",
+      "quantity": "mass_density",
+      "quantity_dimension": "mass_per_volume",
+      "source_property_label": "density",
+      "reported_value": {
+        "kind": "scalar",
+        "unit_text": "grams per cubic centimeter",
+        "unit_code": "g/cm^3",
+        "value_text": "3.581",
+        "number": "3.581"
+      },
+      "evidence_kind": "published_measurement_derived_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_calculation",
+      "basis_note": "Source-reported measured-lattice-derived crystallographic density. Preserve the reported value and precision without recalculation; no mean, direct bulk measurement, DFT prediction or replicate count is inferred.",
+      "conditions": {
+        "test_standard": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No density test-standard compliance or certification is established."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Source crystallographic calculation from experimentally measured NBS powder-XRD lattice parameters and the adopted crystal structure.",
+          "evidence": [
+            {
+              "source_id": "swanson_tatge_1953_nbs_circ539v1",
+              "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+              "locator": "Introduction, printed pp. 1-2 / one-based PDF pp. 5-6: NBS measured powder-XRD patterns, lattice parameters, internal-standard calibration and source-computed density; density units are grams per cubic centimeter.",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Not direct mass/volume weighing, pycnometry or DFT."
+        },
+        "direction": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading direction does not apply to this scalar crystallographic density."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Density-specific moisture content and conditioning duration are unknown; reported preparation remains attached to the state."
+        },
+        "loading_rate": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading rate does not apply to crystallographic density."
+        },
+        "additional_conditions": [
+          {
+            "name": "density_pressure",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "No pressure is reported for the selected density."
+            }
+          }
+        ],
+        "temperature": {
+          "status": "reported",
+          "text": "25 degrees C",
+          "evidence": [
+            {
+              "source_id": "swanson_tatge_1953_nbs_circ539v1",
+              "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+              "locator": "Section 2.18, printed p. 39 / one-based PDF p. 43, upper left below the unit-cell table: density calculated from the NBS lattice constant, 3.581 at 25 degrees C.",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Explicit density reference temperature; not inferred from preparation or a neighboring table."
+        }
+      },
+      "density_basis": "crystallographic",
+      "summary_statistic": "reported_value",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "No density-specific uncertainty is reported. The general lattice/spacing error statement is not a density error bar; no propagation is performed.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "source_statement": "The selected sections do not establish an independent specimen or repeated density-determination count. Unit-cell contents and numbers of diffraction lines are not sample n.",
+        "evidence": [],
+        "scope": "Selected NBS MgO face-centered cubic crystallographic density."
+      },
+      "method_definition": {
+        "type": "source_reported_crystallographic_derivation",
+        "extraction_window": null,
+        "definition": "The source reports density derived from its measured lattice parameters for the MgO face-centered cubic phase. The source value 3.581 grams per cubic centimeter is transcribed unchanged; no lattice/atomic-mass substitution, density recalculation or uncertainty propagation is performed.",
+        "evidence": [
+          {
+            "source_id": "swanson_tatge_1953_nbs_circ539v1",
+            "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+            "locator": "Section 2.18, printed p. 39 / one-based PDF p. 43, upper left below the unit-cell table: density calculated from the NBS lattice constant, 3.581 at 25 degrees C. Introduction, printed pp. 1-2 / one-based PDF pp. 5-6: NBS measured powder-XRD patterns, lattice parameters, internal-standard calibration and source-computed density; density units are grams per cubic centimeter.",
+            "supports": [
+              "method",
+              "classification",
+              "condition"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [],
+      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+      "source_document": {
+        "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+        "revision": "NBS Circular 539, Volume I, 1953",
+        "inspected_on": "2026-10-19",
+        "sha256": "003b872fbe7d403d38bbd1d752568ee92a96bdb010b6e381bdc82566929e2a6c",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_status": "selected_content_inspected",
+        "inspection_scope": "Retained complete NBS Circular 539 Volume I PDF inspected locally on 2026-10-19 using extracted text and selected page images: Introduction printed pp. 1-2 / PDF pp. 5-6, and selected density/sample passages in sections 2.17, 2.18, 2.21, 2.22, 2.25 and 2.30. Exact row-level locators are in each property and state evidence. Source-transcription checking only; no scientific peer review, experimental replication or raw-data reanalysis. PDF page numbers are one-based."
+      },
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false,
+        "source_inspection_scope": "Retained complete NBS Circular 539 Volume I PDF inspected locally on 2026-10-19 using extracted text and selected page images: Introduction printed pp. 1-2 / PDF pp. 5-6, and selected density/sample passages in sections 2.17, 2.18, 2.21, 2.22, 2.25 and 2.30. Exact row-level locators are in each property and state evidence. Source-transcription checking only; no scientific peer review, experimental replication or raw-data reanalysis. PDF page numbers are one-based."
+      },
+      "id": "refprop_nbs1953_mgo_rca_crystallographic_density",
+      "material_state_id": "state_nbs1953_mgo_rca_xrd",
+      "evidence": [
+        {
+          "source_id": "swanson_tatge_1953_nbs_circ539v1",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+          "locator": "Section 2.18, printed p. 39 / one-based PDF p. 43, upper left below the unit-cell table: density calculated from the NBS lattice constant, 3.581 at 25 degrees C. Introduction, printed p. 2 / one-based PDF p. 6, right column: density units are grams per cubic centimeter; lattice constants may be adjusted to 25 degrees C separately from experimental powder-pattern temperature.",
+          "supports": [
+            "reported_value",
+            "classification",
+            "method",
+            "condition"
+          ]
+        },
+        {
+          "source_id": "swanson_tatge_1953_nbs_circ539v1",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+          "locator": "Section 2.18, printed p. 37 / one-based PDF p. 41, right column: Radio Corporation of America sample, graphite-crucible crystallization at 1800 degrees C for three hours and NBS spectrographic analysis.",
+          "supports": [
+            "material_identity",
+            "state"
+          ]
+        }
+      ],
+      "scope_note": "MgO, face-centered cubic phase, represented by NBS experimental powder-XRD measurements. The source reports measured-lattice-derived crystallographic density at 25 degrees C. This does not establish bulk specimen density, powder-packing density, porosity or an engineering allowable. Sample, preparation, impurity and provenance limitations are retained in the linked state."
+    },
+    {
+      "version": "1.0.0",
+      "quantity": "mass_density",
+      "quantity_dimension": "mass_per_volume",
+      "source_property_label": "density",
+      "reported_value": {
+        "kind": "scalar",
+        "unit_text": "grams per cubic centimeter",
+        "unit_code": "g/cm^3",
+        "value_text": "4.250",
+        "number": "4.250"
+      },
+      "evidence_kind": "published_measurement_derived_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_calculation",
+      "basis_note": "Source-reported measured-lattice-derived crystallographic density. Preserve the reported value and precision without recalculation; no mean, direct bulk measurement, DFT prediction or replicate count is inferred.",
+      "conditions": {
+        "test_standard": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No density test-standard compliance or certification is established."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Source crystallographic calculation from experimentally measured NBS powder-XRD lattice parameters and the adopted crystal structure.",
+          "evidence": [
+            {
+              "source_id": "swanson_tatge_1953_nbs_circ539v1",
+              "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+              "locator": "Introduction, printed pp. 1-2 / one-based PDF pp. 5-6: NBS measured powder-XRD patterns, lattice parameters, internal-standard calibration and source-computed density; density units are grams per cubic centimeter.",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Not direct mass/volume weighing, pycnometry or DFT."
+        },
+        "direction": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading direction does not apply to this scalar crystallographic density."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Density-specific moisture content and conditioning duration are unknown; reported preparation remains attached to the state."
+        },
+        "loading_rate": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading rate does not apply to crystallographic density."
+        },
+        "additional_conditions": [
+          {
+            "name": "density_pressure",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "No pressure is reported for the selected density."
+            }
+          }
+        ],
+        "temperature": {
+          "status": "reported",
+          "text": "26 degrees C",
+          "evidence": [
+            {
+              "source_id": "swanson_tatge_1953_nbs_circ539v1",
+              "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+              "locator": "Section 2.22, printed p. 46 / one-based PDF p. 50, upper right: density in accordance with the NBS lattice constant, 4.250 at 26 degrees C.",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Explicit density reference temperature; not inferred from preparation or a neighboring table."
+        }
+      },
+      "density_basis": "crystallographic",
+      "summary_statistic": "reported_value",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "No density-specific uncertainty is reported. The general lattice/spacing error statement is not a density error bar; no propagation is performed.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "source_statement": "The selected sections do not establish an independent specimen or repeated density-determination count. Unit-cell contents and numbers of diffraction lines are not sample n.",
+        "evidence": [],
+        "scope": "Selected NBS TiO2 tetragonal rutile crystallographic density."
+      },
+      "method_definition": {
+        "type": "source_reported_crystallographic_derivation",
+        "extraction_window": null,
+        "definition": "The source reports density derived from its measured lattice parameters for the TiO2 tetragonal rutile phase. The source value 4.250 grams per cubic centimeter is transcribed unchanged; no lattice/atomic-mass substitution, density recalculation or uncertainty propagation is performed.",
+        "evidence": [
+          {
+            "source_id": "swanson_tatge_1953_nbs_circ539v1",
+            "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+            "locator": "Section 2.22, printed p. 46 / one-based PDF p. 50, upper right: density in accordance with the NBS lattice constant, 4.250 at 26 degrees C. Introduction, printed pp. 1-2 / one-based PDF pp. 5-6: NBS measured powder-XRD patterns, lattice parameters, internal-standard calibration and source-computed density; density units are grams per cubic centimeter.",
+            "supports": [
+              "method",
+              "classification",
+              "condition"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [],
+      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+      "source_document": {
+        "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+        "revision": "NBS Circular 539, Volume I, 1953",
+        "inspected_on": "2026-10-19",
+        "sha256": "003b872fbe7d403d38bbd1d752568ee92a96bdb010b6e381bdc82566929e2a6c",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_status": "selected_content_inspected",
+        "inspection_scope": "Retained complete NBS Circular 539 Volume I PDF inspected locally on 2026-10-19 using extracted text and selected page images: Introduction printed pp. 1-2 / PDF pp. 5-6, and selected density/sample passages in sections 2.17, 2.18, 2.21, 2.22, 2.25 and 2.30. Exact row-level locators are in each property and state evidence. Source-transcription checking only; no scientific peer review, experimental replication or raw-data reanalysis. PDF page numbers are one-based."
+      },
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false,
+        "source_inspection_scope": "Retained complete NBS Circular 539 Volume I PDF inspected locally on 2026-10-19 using extracted text and selected page images: Introduction printed pp. 1-2 / PDF pp. 5-6, and selected density/sample passages in sections 2.17, 2.18, 2.21, 2.22, 2.25 and 2.30. Exact row-level locators are in each property and state evidence. Source-transcription checking only; no scientific peer review, experimental replication or raw-data reanalysis. PDF page numbers are one-based."
+      },
+      "id": "refprop_nbs1953_tio2_rutile_mp559_crystallographic_density",
+      "material_state_id": "state_nbs1953_tio2_rutile_mp559_xrd",
+      "evidence": [
+        {
+          "source_id": "swanson_tatge_1953_nbs_circ539v1",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+          "locator": "Section 2.22, printed p. 46 / one-based PDF p. 50, upper right: density in accordance with the NBS lattice constant, 4.250 at 26 degrees C. Introduction, printed p. 2 / one-based PDF p. 6, right column: density units are grams per cubic centimeter; lattice constants may be adjusted to 25 degrees C separately from experimental powder-pattern temperature.",
+          "supports": [
+            "reported_value",
+            "classification",
+            "method",
+            "condition"
+          ]
+        },
+        {
+          "source_id": "swanson_tatge_1953_nbs_circ539v1",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+          "locator": "Section 2.22, printed p. 44 / one-based PDF p. 48, lower right: National Lead Company Sample No. MP 559 and NBS spectrographic analysis; printed p. 45 / PDF p. 49, upper left: chiefly anatase starting sample heated for two hours at 1000 degrees C and cooled slowly to obtain rutile.",
+          "supports": [
+            "material_identity",
+            "state"
+          ]
+        }
+      ],
+      "scope_note": "TiO2, tetragonal rutile phase, represented by NBS experimental powder-XRD measurements. The source reports measured-lattice-derived crystallographic density at 26 degrees C. This does not establish bulk specimen density, powder-packing density, porosity or an engineering allowable. Sample, preparation, impurity and provenance limitations are retained in the linked state."
     }
   ]
 }
