@@ -104,7 +104,7 @@ TARGETED_JOB = """  polymer-composites-targeted:
       - run: python -m pip install --no-build-isolation -e '.[dev]'
       - run: python scripts/run_polymer_composites_ci.py --test
       - run: python scripts/validate_catalogs.py
-      - run: python -m pip wheel --no-deps --no-build-isolation --wheel-dir dist . formal-catalog experimental/platform/federation experimental/platform/query-service experimental/platform/lifecycle experimental/platform
+      - run: python -m pip wheel --no-index --no-deps --no-build-isolation --wheel-dir dist . ./formal-catalog ./experimental/platform/federation ./experimental/platform/query-service ./experimental/platform/lifecycle ./experimental/platform
       - run: "python -m pip download --no-deps --only-binary=:all: --dest dist/dependencies -r experimental/platform/requirements-lock.txt -r experimental/platform/ci/projection-requirements.txt"
       - run: python scripts/run_polymer_composites_ci.py --wheel-dir dist --dependency-dir dist/dependencies
 """

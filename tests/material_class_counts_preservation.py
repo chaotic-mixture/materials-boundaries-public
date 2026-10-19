@@ -16,8 +16,8 @@ ROOT = Path(__file__).resolve().parents[1]
 BASELINE_COMMIT = 'a592c89ede0dcced22579e56fc68b6fab4c55f49'
 DATA_COMMIT = '5396fd1cc9df72507785a112a21c2990fb4a7c50'
 LEDGER_PATH = 'tests/fixtures/material_class_counts_updates_20261019.json'
-LEDGER_SHA256 = 'e1c78aa28281d42d43c5704b2cf609cf84a4c341f788bc2181ab42c0e45d6992'
-LEDGER_CANONICAL_SHA256 = '8a52511163cc85060c51f2c889f5f7261b69cbd26d98740ea5832c44dc4cd7ed'
+LEDGER_SHA256 = '6903abbfe027266b2e8f3ea90261600fd72982390c2431e836861b92a17fd894'
+LEDGER_CANONICAL_SHA256 = '33d1fab253949a36dd6b3adfb82a252c6e38791a93ba496aa7093992e50cecc6'
 ALLOWED_PATHS = frozenset({
     'README.md', '.github/workflows/ci.yml',
     'tests/material_bulk_preservation.py',

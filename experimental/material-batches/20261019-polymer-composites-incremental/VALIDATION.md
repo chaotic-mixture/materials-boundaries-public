@@ -116,6 +116,31 @@ The new evidence is `ci-yaml-repair-01.json` and
 does not increase the 354 distinct test IDs. The initial remote failure is
 retained separately from the final commit's subsequent CI result.
 
+The second push, commit `4932ef4b602f1d162e281ffdb45913e22a561422`,
+produced run `39295194833`. Both operating systems passed all 79 selected core
+cases with zero skips and passed the full catalog validator. Both then failed
+at wheel construction: pip interpreted the bare `formal-catalog` argument as
+an index requirement. Neither job reached the installed tests. The command now
+uses explicit `./` local paths and `--no-index`. Its actual offline execution
+built all six wheels successfully; all extracted members, including metadata
+and license files, matched the earlier installed-test wheels byte-for-byte.
+The first local build attempt encountered a sandbox temporary-file rename
+error before producing wheels. That failed attempt is retained separately
+from the successful native execution of the same offline command.
+
+Evidence for this repair is `ci-wheel-path-repair-01/native-result.json`;
+the failed remote run's exact completed steps and logs are retained under
+`ci-final/`, including `failure-audit.json`. The historical directory name
+does not imply success. No catalog, runtime package or test runner bytes were
+changed by this build-command repair.
+
+The final workflow-byte update then passed the same 17 preservation cases
+once: 17 discovered/started/passed, zero skips/failures/errors, 25.668 seconds.
+All 417 recorded inputs matched before and after execution, including the
+402-file predecessor recovery case. The additional evidence is
+`preservation-ci-wheel-path-repair-01/result.json`; previous records remain
+intact and this repeat adds no distinct test IDs.
+
 No new multi-hour full regression, exhaustive wheel smoke, browser check,
 deployment, DOI registration, credential creation or permission change was
 performed. The successful full a592 verification remains historical evidence,

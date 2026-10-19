@@ -15,7 +15,7 @@ from materials_boundaries.material_references import material_coverage
 
 
 ROOT = Path(__file__).resolve().parents[1]
-HELPER_SHA256 = '5482996f88cc840406da434a9f8a7d8e299820f5e46069823434dbe8e59beb65'
+HELPER_SHA256 = '74d3ec919c4ed769e2e0fc6b10149b27a3375f703646e10850084fed3812fe26'
 BASELINE_README_SHA256 = '1f0edd6058cb7b163bc89018b3ca5cf0f5cf69d22660ec0bf1981377695036dc'
 SNAPSHOT_COUNTS = {'natural': 1010, 'metal': 22, 'inorganic': 26, 'polymer': 15, 'composite': 10}
 SNAPSHOT_RESOURCES = {
