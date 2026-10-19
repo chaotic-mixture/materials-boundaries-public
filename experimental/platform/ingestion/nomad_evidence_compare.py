@@ -116,8 +116,9 @@ def _snapshot(db, cycle_id):
         raise ValueError('Comparison requires two saved complete cycles')
     if (report.get('profile_sha256') != inc.meta(db, 'profile_sha256')
             or report.get('review_boundary_sha256') != inc.meta(db, 'review_boundary')['sha256']
-            or report.get('formal_project_total') != 1081 or report.get('admitted_delta') != 0
-            or report.get('excluded_example_count') != 62):
+            or report.get('formal_project_total') != inc.meta(db, 'review_boundary')['formal_project_total']
+            or report.get('admitted_delta') != 0
+            or report.get('excluded_example_count') != inc.meta(db, 'review_boundary')['excluded_example_count']):
         raise ValueError('Saved comparison report scope binding mismatch')
     attempts = db.execute('SELECT id,request_key,record FROM attempts WHERE cycle=? ORDER BY id',
                           (cycle_id,)).fetchall()
@@ -242,7 +243,8 @@ def _compare(db, before, after):
               'profile_sha256': inc.meta(db, 'profile_sha256'),
               'review_boundary_sha256': inc.meta(db, 'review_boundary')['sha256'],
               'review_boundary_content_sha256': inc.meta(db, 'boundary_sha256'),
-              'formal_project_total': 1081, 'excluded_example_count': 62, 'admitted_delta': 0,
+              'formal_project_total': inc.meta(db, 'review_boundary')['formal_project_total'],
+              'excluded_example_count': inc.meta(db, 'review_boundary')['excluded_example_count'], 'admitted_delta': 0,
               'release_authorized': False, 'observed_entry_union': len(entry_ids),
               'entry_changes': changes, 'candidate_changes': candidate_changes,
               'ambiguous_entries': ambiguous,

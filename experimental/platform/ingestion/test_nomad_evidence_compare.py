@@ -130,9 +130,42 @@ class EvidenceComparisonTests(unittest.TestCase):
                 old['candidate_packet']['candidates'][0].items() if key != 'evidence'}),
             'new_sha256': inc.digest({key: value for key, value in
                 new['candidate_packet']['candidates'][0].items() if key != 'evidence'})}])
-        self.assertEqual(result['formal_project_total'], 1081)
+        self.assertEqual(result['formal_project_total'], 1103)
         self.assertEqual(result['admitted_delta'], 0)
         self.assertIs(result['release_authorized'], False)
+
+    def test_saved_historical_scope_is_preserved_and_report_count_drift_rejected(self):
+        self.cycle()
+        self.cycle()
+        # This is an explicitly synthetic old-store fixture, not a migration.
+        with inc.connect(self.root) as db, db:
+            boundary = inc.meta(db, 'review_boundary')
+            boundary.update(formal_project_total=1081, formal_legacy_count=1057,
+                            baseline_commit='4c5656cf6ba0ad1a54b736e0568e97abe4815c29',
+                            sha256='synthetic-historical-boundary')
+            boundary['source_sha256']['materials_boundaries/data/materials.json'] = (
+                'ffd27ae7a927494083cbdcb173847502283f9ff0f69b8b7321abe0b042824dc1')
+            inc.set_meta(db, 'review_boundary', boundary)
+            inc.set_meta(db, 'boundary_sha256', inc.digest(boundary))
+            for row in db.execute('SELECT state FROM cycles').fetchall():
+                cycle = inc.decode(row['state'])
+                cycle['report']['formal_project_total'] = 1081
+                cycle['report']['review_boundary_sha256'] = boundary['sha256']
+                cycle['report']['candidate_packet']['baseline_commit'] = boundary['baseline_commit']
+                inc.save_cycle(db, cycle)
+        before = files_snapshot(self.root)
+        result = self.compare()
+        self.assertEqual(result['formal_project_total'], 1081)
+        self.assertEqual(result['excluded_example_count'], 62)
+        self.assertEqual(result['admitted_delta'], 0)
+        self.assertEqual(result['review_boundary_sha256'], 'synthetic-historical-boundary')
+        self.assertEqual(files_snapshot(self.root), before)
+        with inc.connect(self.root) as db, db:
+            cycle = inc.latest(db)
+            cycle['report']['formal_project_total'] = 1103
+            inc.save_cycle(db, cycle)
+        with self.assertRaisesRegex(ValueError, 'scope binding mismatch'):
+            self.compare()
 
     def test_selected_method_formula_provenance_and_attribution_are_expanded(self):
         self.cycle()

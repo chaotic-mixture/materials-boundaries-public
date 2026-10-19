@@ -48,12 +48,13 @@ package index. The jobs also check:
   optional catalog and formal add-on suites.
 
 The suite minima detect reduced discovery while allowing added tests.
-[required_test_ids.json](required_test_ids.json) additionally pins **145 required
+[required_test_ids.json](required_test_ids.json) additionally pins **149 required
 IDs**: 61 earlier ingestion tests, 19 offline formal-review-gap tests, four
 baseline path-portability tests, six selected-group consistency regressions and
 21 private-geometry diagnostic tests, plus one Retry-After
 representability and restart regression, and 19 exact baseline-compatibility
-regressions, plus all 14 checkout-only hBN projection tests. These compatibility
+regressions, plus all 14 checkout-only hBN projection tests and four current
+ingestion-boundary/historical-store regressions. These compatibility
 tests cover both accepted byte manifests,
 unknown-byte rejection, existing database reopens, new registry creation and
 transaction rollback. The catalog runner also requires the

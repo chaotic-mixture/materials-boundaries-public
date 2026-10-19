@@ -6,12 +6,23 @@ delta after each complete acquisition cycle. It uses Python 3.11+ and the standa
 library; it does not require a service, account or credentials.
 
 Automatic acquisition is not scientific review, license clearance or admission.
-The formal project total remains **1081 = 1057 legacy identities + 24 reviewed
+The current experiment's formal project total is **1103 = 1079 legacy identities + 24 reviewed
 computed composition buckets**. The 62 unadmitted computed examples, the older
 seven-record example and their known related provider IDs are excluded from new
 candidate admission claims. This command never changes the formal catalog.
 Candidate groups and calculations contribute **zero** admissions and do not count
 toward the goal of at least 1000 materials in each of five categories.
+
+The current boundary binds the exact catalog bytes from `5a11cac` and the
+unchanged 24-reviewed/62-excluded example resources. Use a new state directory
+when moving from the earlier 1081-entry boundary. `update` and `abandon` reject a
+different stored scope before dispatching a request, charging a budget or changing
+cycle state; they never migrate an old store silently. `status`, `report` and
+`compare` remain read-only and retain the saved scope, so historical 1081-entry
+reports are not relabeled as 1103. Saved-report counts must agree with that
+store's hash-bound boundary. Explicit Python boundary injection is available for
+synthetic test identities only within the same exact pinned scope; the CLI has
+no boundary override or bypass flag.
 
 ## Compare cached source fields offline
 
@@ -110,7 +121,8 @@ produce identical stdout bytes. Concurrent reads describe their transaction's
 snapshot, not subsequent updates. The report is local review evidence; inspect
 source-specific scope before any redistribution.
 
-Formal totals remain **1081 = 1057 + 24** and the **62 examples stay excluded**.
+Comparisons retain their store's formal total: **1103 = 1079 + 24** for a new
+current store, or the saved historical total for an older store. The **62 examples stay excluded**.
 `admitted_delta` is always `0` and `release_authorized` is always `false`.
 The comparison is separate from the existing formal-review gap report and does
 not close its scientific, identity, authority or reuse requirements.

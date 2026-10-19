@@ -20,6 +20,7 @@ from materials_project_catalog.catalog import formal_project_catalog, RESOURCE_S
 from materials_boundaries._material_derivation import canonical_identity_key
 from nomad_batch import canonical, composition, digest, ID
 from nomad_incremental import decode
+from nomad_review_boundary import LEGACY, LEGACY_COUNT, PROJECT_TOTAL
 
 SCHEMA = 'formal-overlap-audit/1'
 PROBE_SCHEMA = 'formal-overlap-probes/1'
@@ -108,7 +109,11 @@ def _labels(row, pointer, source, context=None):
 def load_inventory():
     """Reuse formal admission pins; inspect linked fields without editing them."""
     catalog = formal_project_catalog()
-    require(catalog['counts']['formal_project_admission_count'] == 1081, 'Unexpected formal scope')
+    require(catalog['counts']['formal_project_admission_count'] == PROJECT_TOTAL
+            and catalog['counts']['legacy_source_qualified_identity_count'] == LEGACY_COUNT
+            and catalog['counts']['reviewed_computed_composition_count'] == 24,
+            'Unexpected formal scope')
+    require(RESOURCE_SHA256['materials'] == LEGACY[1], 'Unexpected formal material pin')
     materials = _read_pinned('materials', RESOURCE_SHA256['materials'])
     crosswalk = _read_pinned('wood_baseline_crosswalk_v2', CROSSWALK_SHA256)
     by_crosswalk = {r['baseline_identity_id']: (i, r) for i, r in enumerate(crosswalk)}
@@ -182,7 +187,8 @@ def load_inventory():
                     item['comparison_cues'].append(_cue(fact['text'], fp + '/text', 'materials',
                                                          'composition_or_purity', fact['status'], state_context))
         rows.append(item)
-    require(len(rows) == 1081 and len({r['formal_id'] for r in rows}) == 1081, 'Formal identity coverage differs')
+    require(len(rows) == PROJECT_TOTAL and len({r['formal_id'] for r in rows}) == PROJECT_TOTAL,
+            'Formal identity coverage differs')
     return {'catalog_version': catalog['version'], 'resource_sha256': catalog['resource_sha256'] | {
                 'wood_baseline_crosswalk_v2': CROSSWALK_SHA256},
             'formal_counts': catalog['counts'], 'rows': sorted(rows, key=lambda r: r['formal_id'])}
@@ -294,7 +300,8 @@ def build_report(probe_document=None):
             'resource_sha256': inventory['resource_sha256'], 'formal_counts': inventory['formal_counts'],
             'primary_comparability_partition': dict(sorted(Counter(r['primary_comparability'] for r in rows).items())),
             'overlapping_field_coverage_dimensions': dimensions,
-            'coverage_policy': 'Dimensions overlap; only primary_comparability_partition sums to 1081. Text is never parsed into trusted stoichiometry.',
+            'coverage_policy': 'Dimensions overlap; only primary_comparability_partition sums to '
+                               + str(PROJECT_TOTAL) + '. Text is never parsed into trusted stoichiometry.',
             'classification_policy': {
                 'confirmed_overlap': 'Exact supplied formal ID and frozen identity-content digest; catalog-record reuse only, not proof a new source describes the same physical material.',
                 'possible_overlap': 'Shared composition, provider/taxon reference or literal text clue; scope, phase, formulation, state and equivalence require review.',

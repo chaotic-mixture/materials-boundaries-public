@@ -141,6 +141,23 @@ def validate_profile(profile):
         raise ValueError('An exact entry cohort uses one page without an after cursor')
 
 
+def require_current_boundary(boundary):
+    """Require exact checkout scope before creating or mutating collection state.
+
+    Explicit boundary injection can supply synthetic provider IDs to tests, but
+    cannot change the pinned catalog/review bytes, commit or admission counts.
+    The CLI always obtains its complete provider index from these pinned files.
+    """
+    from nomad_review_boundary import load_review_boundary
+    current = load_review_boundary()
+    scope = ('baseline_commit', 'source_sha256', 'formal_project_total',
+             'formal_legacy_count', 'formal_computed_composition_count',
+             'excluded_example_count', 'legacy_example_count')
+    if not isinstance(boundary, dict) or any(boundary.get(key) != current[key] for key in scope):
+        raise ValueError('Review boundary differs from this checkout; initialize a new state directory. '
+                         'Historical status/report/compare remain read-only; no migration was performed.')
+
+
 def init_store(root, *, pages=1, page_size=2, entry_ids=(), after=None,
                max_requests=8, max_bytes=2_000_000, max_response=500_000,
                retries=1, boundary=None):
@@ -152,8 +169,7 @@ def init_store(root, *, pages=1, page_size=2, entry_ids=(), after=None,
     if boundary is None:
         from nomad_review_boundary import load_review_boundary
         boundary = load_review_boundary()
-    if boundary.get('formal_project_total') != 1081 or boundary.get('excluded_example_count') != 62:
-        raise ValueError('Unexpected formal review boundary; review configuration first')
+    require_current_boundary(boundary)
     root = Path(root).resolve()
     root.mkdir(parents=True, exist_ok=True)
     with locked(root):
@@ -512,7 +528,8 @@ def assemble_report(db, cycle, commit=False):
               'complete': cycle['status'] == 'complete', 'baseline_committed': commit,
               'scope': 'Fixed bounded public NOMAD window/cohort, not provider-wide coverage',
               'review_required': ['Independent scientific review', 'Source and license review'],
-              'formal_project_total': 1081, 'admitted_delta': 0, 'excluded_example_count': 62,
+              'formal_project_total': boundary['formal_project_total'], 'admitted_delta': 0,
+              'excluded_example_count': boundary['excluded_example_count'],
               'profile_sha256': digest(profile), 'review_boundary_sha256': boundary['sha256'],
               'budget': {k: cycle[k] for k in ('requests', 'bytes_charged', 'retries_used')},
               'limits': {k: profile[k] for k in ('max_requests', 'max_bytes', 'max_response', 'retries')},
@@ -552,6 +569,7 @@ def update(root, *, transport=None, clock=time.time, after_cache=None):
     root = Path(root).resolve()
     with locked(root), connect(root) as db:
         integrity(db)
+        require_current_boundary(meta(db, 'review_boundary'))
         profile = meta(db, 'profile')
         cycle = latest(db)
         if cycle is None or cycle['status'] in ('complete', 'abandoned'):
@@ -621,7 +639,7 @@ def status(root):
                 'history': [{key: state[key] for key in ('id', 'status', 'requests', 'bytes_charged', 'started_utc')}
                             for state in (json.loads(row['state']) for row in db.execute('SELECT state FROM cycles ORDER BY id'))],
                 'not_before_utc': utc(meta(db, 'not_before')) if meta(db, 'not_before') else None,
-                'formal_project_total': 1081, 'admitted_delta': 0}
+                'formal_project_total': meta(db, 'review_boundary')['formal_project_total'], 'admitted_delta': 0}
 
 
 def report(root, cycle=None):
@@ -634,7 +652,8 @@ def report(root, cycle=None):
                 raise ValueError('Requested cycle does not exist')
             selected = json.loads(row['state'])
         if selected is None:
-            return {'schema': SCHEMA, 'status': 'initialized', 'formal_project_total': 1081, 'admitted_delta': 0}
+            return {'schema': SCHEMA, 'status': 'initialized',
+                    'formal_project_total': meta(db, 'review_boundary')['formal_project_total'], 'admitted_delta': 0}
         return selected.get('report') or assemble_report(db, selected)
 
 
@@ -644,6 +663,7 @@ def abandon(root, reason, *, clock=time.time):
     root = Path(root).resolve()
     with locked(root), connect(root) as db:
         integrity(db)
+        require_current_boundary(meta(db, 'review_boundary'))
         cycle = latest(db)
         if cycle is None or cycle['status'] in ('complete', 'abandoned'):
             raise ValueError('No incomplete cycle to abandon')

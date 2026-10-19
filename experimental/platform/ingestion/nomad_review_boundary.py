@@ -11,6 +11,9 @@ from nomad_batch import ID, composition, digest
 
 
 ROOT = Path(__file__).resolve().parents[3]
+BASELINE_COMMIT = "5a11cac383f2a7dc87500e24f22ad0b1f9d9c1d0"
+LEGACY_COUNT = 1079
+PROJECT_TOTAL = 1103
 SOURCES = {
     "formal_admitted24": (
         "formal-catalog/materials_project_catalog/data/formal_computed_review.json",
@@ -23,7 +26,7 @@ SOURCES = {
         "298e94d77f5166650f66c17ff83e859c6e654f6739745d779a4461310437bb33", 7),
 }
 LEGACY = ("materials_boundaries/data/materials.json",
-          "ffd27ae7a927494083cbdcb173847502283f9ff0f69b8b7321abe0b042824dc1")
+          "d078f1fb726289bdd6c7faff6f9a4a84d46eed5cd83ba586cd9c2f6ae0256739")
 
 
 def _pinned(root, relative, expected):
@@ -60,15 +63,15 @@ def load_review_boundary(root=ROOT):
                 for entry_id in entry_ids:
                     add(entries, entry_id, label, identifier=True)
     legacy = _pinned(root, *LEGACY)
-    if len(legacy["identities"]) != 1057:
+    if len(legacy["identities"]) != LEGACY_COUNT:
         raise ValueError("Unexpected legacy admission count")
     source_hashes[LEGACY[0]] = LEGACY[1]
     boundary = {
         "schema": "nomad-review-boundary/1",
-        "baseline_commit": "4c5656cf6ba0ad1a54b736e0568e97abe4815c29",
+        "baseline_commit": BASELINE_COMMIT,
         "source_sha256": source_hashes,
-        "formal_project_total": 1081,
-        "formal_legacy_count": 1057,
+        "formal_project_total": PROJECT_TOTAL,
+        "formal_legacy_count": LEGACY_COUNT,
         "formal_computed_composition_count": 24,
         "excluded_example_count": 62,
         "legacy_example_count": 7,

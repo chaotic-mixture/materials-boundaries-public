@@ -72,8 +72,8 @@ class FormalOverlapAuditTests(unittest.TestCase):
     def query(self, **fields):
         report = audit.build_report(document({'probe_id': 'synthetic_probe', **fields}))
         result = report['probe_results'][0]
-        self.assertEqual(sum(result['counts'].values()), 1081)
-        self.assertEqual(len(result['relations']), 1081)
+        self.assertEqual(sum(result['counts'].values()), 1103)
+        self.assertEqual(len(result['relations']), 1103)
         self.assertIsNone(result['new_material_count'])
         self.assertEqual(result['admitted_delta'], 0)
         return result
@@ -82,15 +82,17 @@ class FormalOverlapAuditTests(unittest.TestCase):
         return next(row for row in result['relations'] if row['formal_id'] == formal_id)
 
     def test_inventory_covers_only_all_1081_frozen_formal_records(self):
+        # Retain the historical test ID; the runtime inventory uses the exact
+        # current experiment, while archived 1081-entry reports stay unchanged.
         self.assertEqual(self.inventory['formal_counts'], {
-            'formal_project_admission_count': 1081,
-            'legacy_source_qualified_identity_count': 1057,
+            'formal_project_admission_count': 1103,
+            'legacy_source_qualified_identity_count': 1079,
             'reviewed_computed_composition_count': 24,
-            'categories': {'natural': 1010, 'metal': 26, 'inorganic': 28,
-                           'polymer': 14, 'composite': 3}})
-        self.assertEqual(len(self.rows), 1081)
+            'categories': {'natural': 1010, 'metal': 34, 'inorganic': 38,
+                           'polymer': 15, 'composite': 6}})
+        self.assertEqual(len(self.rows), 1103)
         self.assertEqual(sum(row['partition'] == 'legacy-source-qualified'
-                             for row in self.rows.values()), 1057)
+                             for row in self.rows.values()), 1079)
         self.assertEqual(sum(row['partition'] == 'reviewed-computed'
                              for row in self.rows.values()), 24)
         self.assertEqual([row['formal_id'] for row in self.inventory['rows']],
@@ -101,13 +103,13 @@ class FormalOverlapAuditTests(unittest.TestCase):
     def test_primary_partition_and_overlapping_dimensions_are_distinct(self):
         self.assertEqual(self.report['primary_comparability_partition'], {
             'structured_composition': 24, 'scoped_taxon_identity': 1000,
-            'advisory_taxon_crosswalk': 6, 'source_qualified_text_only': 51})
-        self.assertEqual(sum(self.report['primary_comparability_partition'].values()), 1081)
+            'advisory_taxon_crosswalk': 6, 'source_qualified_text_only': 73})
+        self.assertEqual(sum(self.report['primary_comparability_partition'].values()), 1103)
         self.assertEqual(self.report['overlapping_field_coverage_dimensions'], {
             'structured_integer_composition': 24, 'scoped_canonical_taxon': 1000,
-            'advisory_taxon_crosswalk': 6, 'reported_composition_prose': 49,
-            'associated_grade': 20, 'composite_category': 3})
-        self.assertGreater(sum(self.report['overlapping_field_coverage_dimensions'].values()), 1081)
+            'advisory_taxon_crosswalk': 6, 'reported_composition_prose': 71,
+            'associated_grade': 20, 'composite_category': 6})
+        self.assertGreater(sum(self.report['overlapping_field_coverage_dimensions'].values()), 1103)
 
     def test_each_reported_identity_digest_binds_the_frozen_source_record(self):
         legacy = json.loads(self.pinned_paths[0].read_bytes())['identities']
@@ -127,7 +129,7 @@ class FormalOverlapAuditTests(unittest.TestCase):
                           'legacy:mat_vistalon2504_n550_bianchi2022_epdm'):
             with self.subTest(formal_id=formal_id):
                 self.assertIsNone(self.rows[formal_id]['structured_composition'])
-        self.assertEqual(sum(row['category'] == 'composite' for row in legacy), 3)
+        self.assertEqual(sum(row['category'] == 'composite' for row in legacy), 6)
 
     def test_alexandria_formula_exposes_three_distinct_qualified_relations(self):
         result = self.query(formula='Al2O3')
@@ -139,7 +141,7 @@ class FormalOverlapAuditTests(unittest.TestCase):
             'legacy:mat_lukianova2017_si3n4_85_9_6_sps1650'}
         self.assertEqual(set(possible), expected)
         self.assertEqual(result['counts'], {'confirmed_overlap': 0, 'possible_overlap': 3,
-                                           'unable_to_compare': 1078})
+                                           'unable_to_compare': 1100})
         for row in possible.values():
             self.assertIn('literal_text_cue_not_composition_or_identity', row['reasons'])
             self.assertNotIn('same_structured_composition_identity_unresolved', row['reasons'])
@@ -239,7 +241,7 @@ class FormalOverlapAuditTests(unittest.TestCase):
             with self.subTest(formal_id=formal_id):
                 result = self.query(formal_reference={'id': formal_id, 'identity_sha256': digest})
                 self.assertEqual(result['counts']['confirmed_overlap'], 0)
-                self.assertEqual(result['counts']['unable_to_compare'], 1081)
+                self.assertEqual(result['counts']['unable_to_compare'], 1103)
         result = self.query(formal_reference={'id': 'legacy:mat_aurubis_c11000',
                                              'identity_sha256': '0' * 64})
         self.assertIn('formal_reference_digest_differs',
@@ -339,7 +341,7 @@ class FormalOverlapAuditTests(unittest.TestCase):
     def test_unmatched_and_missing_composition_leave_novelty_unknown(self):
         result = self.query(terms=['synthetic_absent_material_label_8417'])
         self.assertEqual(result['counts'], {'confirmed_overlap': 0, 'possible_overlap': 0,
-                                           'unable_to_compare': 1081})
+                                           'unable_to_compare': 1103})
         row = synthetic_row()
         self.assertEqual(audit.compare_probe(row, {'probe_id': 'missing', 'formula': 'Al2O3'})['status'],
                          'unable_to_compare')
@@ -407,6 +409,17 @@ class FormalOverlapAuditTests(unittest.TestCase):
         with patch.object(audit, 'CROSSWALK_SHA256', '0' * 64):
             with self.assertRaises(ValueError):
                 audit.build_report()
+
+    def test_current_inventory_rejects_changed_admission_counts(self):
+        original = audit.formal_project_catalog()
+        for field, value in (('formal_project_admission_count', 1081),
+                             ('legacy_source_qualified_identity_count', 1057),
+                             ('reviewed_computed_composition_count', 62)):
+            changed = deepcopy(original)
+            changed['counts'][field] = value
+            with self.subTest(field=field), patch.object(audit, 'formal_project_catalog', return_value=changed):
+                with self.assertRaisesRegex(ValueError, 'Unexpected formal scope'):
+                    audit.load_inventory()
 
     def test_offline_report_does_not_attempt_network_or_change_pinned_inputs(self):
         before = snapshot(self.pinned_paths)

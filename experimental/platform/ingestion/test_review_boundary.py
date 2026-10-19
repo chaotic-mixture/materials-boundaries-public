@@ -3,14 +3,18 @@ from pathlib import Path
 import unittest
 from unittest.mock import patch
 
-from nomad_review_boundary import ROOT, SOURCES, load_review_boundary
+from nomad_review_boundary import ROOT, SOURCES, LEGACY, load_review_boundary
 from test_nomad_batch import fixture, run
 
 
 class ReviewBoundaryTests(unittest.TestCase):
     def test_formal_and_example_counts_remain_separate(self):
         boundary = load_review_boundary()
-        self.assertEqual(boundary['formal_project_total'], 1081)
+        self.assertEqual(boundary['formal_project_total'], 1103)
+        self.assertEqual(boundary['formal_legacy_count'], 1079)
+        self.assertEqual(boundary['baseline_commit'], '5a11cac383f2a7dc87500e24f22ad0b1f9d9c1d0')
+        self.assertEqual(boundary['source_sha256'][LEGACY[0]],
+                         'd078f1fb726289bdd6c7faff6f9a4a84d46eed5cd83ba586cd9c2f6ae0256739')
         self.assertEqual(boundary['formal_computed_composition_count'], 24)
         self.assertEqual(boundary['excluded_example_count'], 62)
         self.assertFalse(boundary['automatic_admission'])
@@ -30,14 +34,15 @@ class ReviewBoundaryTests(unittest.TestCase):
 
     def test_boundary_fails_closed_on_changed_bytes(self):
         original = Path.read_bytes
-        target = ROOT / SOURCES['unadmitted_example62'][0]
+        for relative in (SOURCES['unadmitted_example62'][0], LEGACY[0]):
+            target = ROOT / relative
 
-        def changed(path):
-            return original(path) + b' ' if path == target else original(path)
+            def changed(path):
+                return original(path) + b' ' if path == target else original(path)
 
-        with patch.object(Path, 'read_bytes', changed):
-            with self.assertRaisesRegex(ValueError, 'boundary bytes differ'):
-                load_review_boundary()
+            with self.subTest(resource=relative), patch.object(Path, 'read_bytes', changed):
+                with self.assertRaisesRegex(ValueError, 'boundary bytes differ'):
+                    load_review_boundary()
 
     def test_explicit_wrong_units_are_never_relabeled(self):
         for key, value in [('mass_density_unit', 'g/cm^3'), ('unit', 'g/cm^3'),

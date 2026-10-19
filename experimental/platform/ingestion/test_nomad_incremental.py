@@ -10,10 +10,15 @@ import unittest
 from unittest.mock import patch
 
 import nomad_incremental as inc
+from nomad_review_boundary import BASELINE_COMMIT, LEGACY, SOURCES
 from test_nomad_batch import fixture
 
 BOUNDARY = {'provider_material_ids': [], 'provider_entry_ids': [], 'sha256': 'test-boundary',
-            'formal_project_total': 1081, 'excluded_example_count': 62}
+            'baseline_commit': BASELINE_COMMIT, 'formal_project_total': 1103,
+            'formal_legacy_count': 1079, 'formal_computed_composition_count': 24,
+            'excluded_example_count': 62, 'legacy_example_count': 7,
+            'source_sha256': {LEGACY[0]: LEGACY[1],
+                              **{path: expected for path, expected, _ in SOURCES.values()}}}
 
 
 def response(rows, total=None, after=None):
@@ -80,7 +85,7 @@ class IncrementalTests(unittest.TestCase):
         self.assertEqual(third['input_changes'][0]['change'], 'changed')
         self.assertEqual(third['candidate_changes'][0]['change'], 'changed')
         self.assertEqual(third['admitted_delta'], 0)
-        self.assertEqual(third['formal_project_total'], 1081)
+        self.assertEqual(third['formal_project_total'], 1103)
 
     def test_crash_after_archive_response_is_reused(self):
         self.init()
@@ -441,6 +446,55 @@ class IncrementalTests(unittest.TestCase):
         self.assertEqual(result['candidate_packet']['candidates'], [])
         self.assertEqual(result['gate_exclusions'][0]['reason'], 'known_review_boundary_material_overlap')
         self.assertIn('unadmitted_example62', result['gate_exclusions'][0]['review_boundary_labels'])
+
+    def test_new_store_requires_exact_current_catalog_scope_before_creation(self):
+        mutations = [('formal_project_total', 1081), ('formal_project_total', 1104),
+                     ('formal_legacy_count', 1057), ('formal_computed_composition_count', 62),
+                     ('excluded_example_count', 0), ('legacy_example_count', 0),
+                     ('baseline_commit', '4c5656cf6ba0ad1a54b736e0568e97abe4815c29'),
+                     ('source_sha256', {**BOUNDARY['source_sha256'], LEGACY[0]: '0' * 64})]
+        for index, (key, value) in enumerate(mutations):
+            root = self.root / str(index)
+            boundary = dict(BOUNDARY, **{key: value})
+            with self.subTest(field=key, value=value):
+                with self.assertRaisesRegex(ValueError, 'initialize a new state directory'):
+                    inc.init_store(root, boundary=boundary)
+                self.assertFalse(root.exists())
+
+    def test_historical_store_rejects_mutation_without_relabeling_read_only_reports(self):
+        self.init()
+        self.first_cycle()
+        # Retag only this synthetic fixture as a store created by the earlier
+        # checkout. No historical user store or published report is modified.
+        with inc.connect(self.root) as db, db:
+            boundary = inc.meta(db, 'review_boundary')
+            boundary.update(baseline_commit='4c5656cf6ba0ad1a54b736e0568e97abe4815c29',
+                            formal_project_total=1081, formal_legacy_count=1057,
+                            sha256='synthetic-historical-boundary')
+            boundary['source_sha256'][LEGACY[0]] = 'ffd27ae7a927494083cbdcb173847502283f9ff0f69b8b7321abe0b042824dc1'
+            inc.set_meta(db, 'review_boundary', boundary)
+            inc.set_meta(db, 'boundary_sha256', inc.digest(boundary))
+            cycle = inc.latest(db)
+            cycle['report']['formal_project_total'] = 1081
+            cycle['report']['review_boundary_sha256'] = boundary['sha256']
+            cycle['report']['candidate_packet']['baseline_commit'] = boundary['baseline_commit']
+            inc.save_cycle(db, cycle)
+            saved_report = copy.deepcopy(cycle['report'])
+        before = (self.root / inc.DB_NAME).read_bytes()
+        before_status = inc.status(self.root)
+        transport = QueueTransport()
+        with self.assertRaisesRegex(ValueError, 'initialize a new state directory'):
+            self.update(transport)
+        with self.assertRaisesRegex(ValueError, 'initialize a new state directory'):
+            inc.abandon(self.root, 'Synthetic request must not migrate old state')
+        self.assertEqual(transport.calls, [])
+        self.assertEqual((self.root / inc.DB_NAME).read_bytes(), before)
+        self.assertEqual(inc.status(self.root), before_status)
+        self.assertEqual(before_status['formal_project_total'], 1081)
+        self.assertEqual(inc.report(self.root, cycle=1), saved_report)
+        self.assertEqual(saved_report['formal_project_total'], 1081)
+        self.assertEqual(saved_report['excluded_example_count'], 62)
+        self.assertEqual((self.root / inc.DB_NAME).read_bytes(), before)
 
 
 if __name__ == '__main__':

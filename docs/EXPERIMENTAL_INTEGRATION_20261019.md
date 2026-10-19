@@ -20,6 +20,12 @@ this anchor. Three additional regressions verify old-pin rejection, old-data
 rejection, and rejection of an old-data database without modifying it. Existing
 regression IDs remain required by CI.
 
+The ingestion overlap boundary also binds the current data parent's exact bytes
+and 1103-project/1079-source counts. Saved historical stores retain their original
+scope in read-only status, reports, and comparisons. A historical store cannot
+silently resume acquisition against the current catalog; use a new state
+directory for the current boundary. No saved scientific evidence is relabeled.
+
 The incremental NOMAD command, persistent checkpoints, retry and request budgets,
 deduplication, withdrawal/change reports, and review gates are documented in
 [INCREMENTAL.md](../experimental/platform/ingestion/INCREMENTAL.md). The
