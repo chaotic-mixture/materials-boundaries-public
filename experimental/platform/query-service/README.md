@@ -279,7 +279,7 @@ See the [eight-salt packet](../../material-batches/nbs-salt-densities-20261019/R
 
 ## Final RCA reference increment, 2026-10-19
 
-The current local snapshot contains **1127 project entries = 1103 source-qualified
+The preceding RCA snapshot contained **1127 project entries = 1103 source-qualified
 identities + 24 reviewed computed compositions**. ZnB2O4, Mg2SiO4 and MgWO4 add
 three inorganic identities, states and properties. Core/project inorganic counts
 are 43/55; natural 1010, metal 22/34, polymer 18 and composite 10 are unchanged.
@@ -294,7 +294,7 @@ ZnB2O4 preparation is unreported. Purity remains qualitative, uncertainty and
 specimen count unknown, and scientific-review/raw-reanalysis flags false.
 The 62 computed examples remain excluded. Validation is bounded to this batch.
 
-The current query manifest anchor is `148c38cfa1819b8103ffa6c0f856d824b9fc54a3e9f8a5eecc50943fd19b27bd`,
+That query manifest anchor is `148c38cfa1819b8103ffa6c0f856d824b9fc54a3e9f8a5eecc50943fd19b27bd`,
 bound to data commit `3ea9e25aa67226518282e7804c8e98c89453046d`. The preceding
 `9090f061483cefde2d6255f057078b7700d3e22c85db7191ec00bc30de78f2ad`
 anchor stays historical. One new frozen descriptor reuses the unchanged exact-
@@ -304,3 +304,27 @@ older layers. Shared source rows and grades remain intact; all previous wrappers
 retain their exact scope. Partial, changed, duplicated, reordered or unrelated
 edits fail closed. Old registry and NOMAD stores retain their saved scope.
 See the [RCA packet](../../material-batches/nbs-rca-density-20261019/README.md).
+
+## Six binary-oxide references, 2026-10-19
+
+The current local snapshot contains **1133 project entries = 1109 source-qualified
+identities + 24 reviewed computed compositions**. NiO, GeO2, As2O3, SeO2, SnO2
+and ThO2 add six inorganic identities, states and properties. Core/project
+inorganic counts are 49/61; natural 1010, metal 22/34, polymer 18 and composite
+10 are unchanged. There are 116 sources and 21 grades. The relationship view has
+1109 identities, 1114 supported memberships and the same one identity relationship.
+
+All six API references preserve exact reported g/cm^3 values, crystallographic
+density, source-reported calculation basis and source-specific temperature text.
+The GeO2 and SnO2 temperature text explicitly identifies the NBS unit-cell
+determination. Unknown uncertainty and sample count, catalog-only scope and false
+scientific-review/raw-reanalysis flags remain. Existing elemental Ni, Ge and Sn
+references stay distinct; the 62 computed examples remain excluded. Validation
+is bounded to this batch.
+
+The binary-oxide data commit is `9cdbdbdee580df356ba0133b6723a3819777dc4d`. The exact 64-file query
+pin is `15c0619c3a55984550ecd564692c4588f777a10d60a4e9a01b91079c12978c2f`.
+The independent recovery descriptor binds the frozen packet and data ledger and
+recovers the complete `4db4ab5` predecessor before the existing RCA layer;
+historical pins remain test-only and are rejected by the current registry.
+See the [binary-oxide packet](../../material-batches/nbs-binary-oxide-density-20261019/README.md).

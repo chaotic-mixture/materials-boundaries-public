@@ -29,7 +29,8 @@ PRE_GROWTH_BATCH_PIN_SHA256 = '8fda4f7a4355c88f0e4e9e713c01f236a907985b4720454e3
 PRE_PUR_BATCH_PIN_SHA256 = '0d2f515260b78841249f5b48331f8a80fc9164bd58bb57c592f7adfed3d96277'
 PRE_TABLE_BATCH_PIN_SHA256 = '73b8b455042290c0f752e784f23687eaf3bbc8dc7631ced311af7af216f08d6e'
 PRE_RCA_BATCH_PIN_SHA256 = '9090f061483cefde2d6255f057078b7700d3e22c85db7191ec00bc30de78f2ad'
-CURRENT_PIN_SHA256 = '148c38cfa1819b8103ffa6c0f856d824b9fc54a3e9f8a5eecc50943fd19b27bd'
+PRE_BINARY_BATCH_PIN_SHA256 = '148c38cfa1819b8103ffa6c0f856d824b9fc54a3e9f8a5eecc50943fd19b27bd'
+CURRENT_PIN_SHA256 = '15c0619c3a55984550ecd564692c4588f777a10d60a4e9a01b91079c12978c2f'
 GROWTH_ROOT = Path(__file__).resolve().parents[4]
 GROWTH_LEDGER = GROWTH_ROOT / 'tests/fixtures/source_family_growth_data_20261019.json'
 GROWTH_LEDGER_SHA256 = '9dfc8d71e89041f05e11a870ad29aea34cb3ab90586bcea8f1d717adc9878ac3'
@@ -72,6 +73,15 @@ RCA_PACKET_SHA256 = '6d906eec144e3908941f7c6f3c91646d4d905a7134fdc5086a95c4e59f1
 PRE_RCA_BATCH_DATA_SHA256 = {
     'materials.json': '86a5e6253ebb6a93154fef86280b94efd332a5a2eab8eb6c92827ce4e25c6590',
     'reference_properties.json': '6c6007825f5e3a4942f434a52e0fed9f5a039a9e80a30fbbd7f4d0225b61a91f',
+    'sources.json': '4ba9dcd9258cd1e2d9e17bdf20b4fdaa39e081e77779d12eb726ee91b19835ae',
+}
+BINARY_LEDGER = GROWTH_ROOT / 'tests/fixtures/primary_table_growth_3_data_20261019.json'
+BINARY_LEDGER_SHA256 = '4ae9986cc914d9ff06a40875c19d606c0502a28527488151e6c71ec5f27eb0fe'
+BINARY_PACKET = GROWTH_ROOT / 'experimental/material-batches/nbs-binary-oxide-density-20261019/prepared-packet.json'
+BINARY_PACKET_SHA256 = '0511e82ef9279928629f8e05076ba5050988de4e18081593d3bb8cbd1bfaa28e'
+PRE_BINARY_BATCH_DATA_SHA256 = {
+    'materials.json': '0113657bc3c6ac7acf82944198f0be3c3c245fc8d59575194fd676fe1dbfe522',
+    'reference_properties.json': 'f9caa99826b7bb2436974f3550bc9076c80363606491ae3454c7b26baac46f69',
     'sources.json': '4ba9dcd9258cd1e2d9e17bdf20b4fdaa39e081e77779d12eb726ee91b19835ae',
 }
 PRE_EVIDENCE_BATCH_DATA_SHA256 = {
@@ -398,6 +408,21 @@ def recover_pre_table_batch_catalogs(current):
     return recover_exact_append_catalogs(current, table_batch_descriptor())
 
 
+def binary_batch_descriptor():
+    return {'label': 'Binary batch', 'ledger': BINARY_LEDGER,
+            'ledger_sha256': BINARY_LEDGER_SHA256, 'packet': BINARY_PACKET,
+            'packet_sha256': BINARY_PACKET_SHA256,
+            'parent_commit': '4db4ab591c0ee7b0a3580898b9f2ec75a2a52337',
+            'parent_data': PRE_BINARY_BATCH_DATA_SHA256,
+            'addition_counts': {'identities': 6, 'grades': 0, 'states': 6,
+                                'properties': 6, 'sources': 0}}
+
+def binary_batch_inventory():
+    return frozen_append_inventory(binary_batch_descriptor())
+
+def recover_pre_binary_batch_catalogs(current):
+    return recover_exact_append_catalogs(current, binary_batch_descriptor())
+
 def rca_batch_descriptor():
     return {'label': 'RCA batch', 'ledger': RCA_LEDGER,
             'ledger_sha256': RCA_LEDGER_SHA256, 'packet': RCA_PACKET,
@@ -518,6 +543,7 @@ class BaselineCompatibility(unittest.TestCase):
         cls.original_identity = sha256(json.dumps(
             cls.expected, sort_keys=True, separators=(',', ':'), ensure_ascii=False,
             allow_nan=False).encode()).hexdigest()
+        cls.recover_binary_anchor()
         cls.recover_rca_anchor()
         cls.recover_table_anchor()
         cls.recover_pur_anchor()
@@ -526,10 +552,28 @@ class BaselineCompatibility(unittest.TestCase):
         cls.recover_historical_anchor()
 
     @classmethod
+    def recover_binary_anchor(cls):
+        """Recover the exact 4db4ab5 data and complete pin before older append layers."""
+        cls.binary_parent_root = cls.fixture_root / 'pre-binary-batch-data'
+        shutil.copytree(cls.original_root, cls.binary_parent_root)
+        data_root = cls.binary_parent_root / 'data'
+        current = {name: json.loads((data_root / name).read_bytes())
+                   for name in PRE_BINARY_BATCH_DATA_SHA256}
+        for name, value in recover_pre_binary_batch_catalogs(current).items():
+            (data_root / name).write_bytes((json.dumps(value, ensure_ascii=False,
+                indent=2, allow_nan=False) + '\n').encode('utf-8'))
+        cls.binary_parent_pin = registry.canonical(manifest(cls.binary_parent_root))
+        if sha256(cls.binary_parent_pin).hexdigest() != PRE_BINARY_BATCH_PIN_SHA256:
+            raise AssertionError('Recovered 4db4ab5 complete pin bytes differ')
+        cls.binary_parent_query_root = cls.fixture_root / 'pre-binary-batch-query'
+        (cls.binary_parent_query_root / 'pins').mkdir(parents=True)
+        (cls.binary_parent_query_root / 'pins/legacy_baseline.json').write_bytes(cls.binary_parent_pin)
+
+    @classmethod
     def recover_rca_anchor(cls):
         """Recover the exact 799ca7a data and complete pin before older append layers."""
         cls.rca_parent_root = cls.fixture_root / 'pre-rca-batch-data'
-        shutil.copytree(cls.original_root, cls.rca_parent_root)
+        shutil.copytree(cls.binary_parent_root, cls.rca_parent_root)
         data_root = cls.rca_parent_root / 'data'
         current = {name: json.loads((data_root / name).read_bytes())
                    for name in PRE_RCA_BATCH_DATA_SHA256}
@@ -753,12 +797,88 @@ class BaselineCompatibility(unittest.TestCase):
         with self.assertRaisesRegex(AssertionError, 'Recovered a592 catalog bytes differ'):
             recover_a592_catalogs(changed)
 
+    def test_binary_batch_parent_manifest_and_catalog_recovery_remain_exact(self):
+        expected = dict(self.expected)
+        expected.update({'data/' + name: digest for name, digest in PRE_BINARY_BATCH_DATA_SHA256.items()})
+        self.assertEqual(len(manifest(self.binary_parent_root)), 64)
+        self.assertEqual(manifest(self.binary_parent_root), expected)
+        current = {name: json.loads((self.current_root / 'data' / name).read_bytes())
+                   for name in PRE_BINARY_BATCH_DATA_SHA256}
+        parent = {name: json.loads((self.binary_parent_root / 'data' / name).read_bytes())
+                  for name in PRE_BINARY_BATCH_DATA_SHA256}
+        self.assertEqual(recover_pre_binary_batch_catalogs(current), parent)
+        self.assertEqual(recover_pre_binary_batch_catalogs(parent), parent)
+        self.assertEqual(current['sources.json'], parent['sources.json'])
+        self.assertEqual(current['materials.json']['grades'], parent['materials.json']['grades'])
+        with self.assertRaisesRegex(AssertionError, 'RCA batch predecessor catalog bytes differ'):
+            recover_pre_rca_batch_catalogs(current)
+        ledger, additions = binary_batch_inventory()
+        for filename, section, collection, label in GROWTH_COLLECTIONS:
+            if not additions[label]:
+                continue
+            candidate = additions[label][0]
+            for mutation in ('missing', 'changed', 'duplicate'):
+                with self.subTest(collection=label, mutation=mutation):
+                    changed = deepcopy(current)
+                    rows = changed[filename][collection]
+                    row = next(row for row in rows if row['id'] == candidate['id'])
+                    if mutation == 'missing':
+                        rows.remove(row)
+                    elif mutation == 'changed':
+                        row['version'] = 'unreviewed'
+                    else:
+                        rows.append(deepcopy(row))
+                    with self.assertRaisesRegex(AssertionError, 'Binary batch'):
+                        recover_pre_binary_batch_catalogs(changed)
+        for filename, collection in [('materials.json', 'identities'), ('sources.json', 'records')]:
+            changed = deepcopy(current)
+            changed[filename][collection][0]['version'] = 'unreviewed'
+            with self.subTest(retained_collection=collection), self.assertRaisesRegex(
+                    AssertionError, 'Binary batch predecessor catalog bytes differ'):
+                recover_pre_binary_batch_catalogs(changed)
+        changed = deepcopy(current)
+        changed['materials.json']['identities'][-6:] = reversed(changed['materials.json']['identities'][-6:])
+        with self.assertRaisesRegex(AssertionError, 'Binary batch successor catalog order or bytes differ'):
+            recover_pre_binary_batch_catalogs(changed)
+        original_read = Path.read_bytes
+        for target in (BINARY_LEDGER, BINARY_PACKET):
+            def replaced(path):
+                return original_read(path) + (b' ' if path == target else b'')
+            with self.subTest(binding=target.name), patch.object(Path, 'read_bytes', replaced), \
+                    self.assertRaisesRegex(AssertionError, 'Binary batch .* bytes differ'):
+                recover_pre_binary_batch_catalogs(current)
+        with self.resources(self.binary_parent_root, self.binary_parent_query_root):
+            with self.assertRaisesRegex(ValueError, 'Baseline pin was replaced'):
+                registry.baseline_digest()
+            with patch.object(registry, 'BASELINE_PIN', PRE_BINARY_BATCH_PIN_SHA256):
+                self.assertEqual(registry.baseline_digest(), PRE_BINARY_BATCH_PIN_SHA256)
+        with self.resources(self.binary_parent_root), self.assertRaisesRegex(
+                ValueError, 'Installed legacy baseline differs'):
+            registry.baseline_digest()
+
+    def test_binary_batch_parent_database_rejected_without_migration(self):
+        for rich in (False, True):
+            with self.subTest(rich=rich):
+                review = self.review(rich)
+                path = self.work / ('4db4ab5-v2.db' if rich else '4db4ab5-legacy.db')
+                with self.resources(self.binary_parent_root, self.binary_parent_query_root), \
+                        patch.object(registry, 'BASELINE_PIN', PRE_BINARY_BATCH_PIN_SHA256):
+                    historical = self.make_registry(path, review, rich)
+                    before = historical.admit([review['records'][0]['candidate_id']])
+                raw = path.read_bytes()
+                rows = self.database_rows(path)
+                with self.assertRaisesRegex(ValueError, 'Initial baseline and review input cannot be replaced'):
+                    self.make_registry(path, review, rich)
+                self.assertEqual(path.read_bytes(), raw)
+                self.assertEqual(self.database_rows(path), rows)
+                self.assertEqual(historical.snapshot(), before)
+
     def test_rca_batch_parent_manifest_and_catalog_recovery_remain_exact(self):
         expected = dict(self.expected)
         expected.update({'data/' + name: digest for name, digest in PRE_RCA_BATCH_DATA_SHA256.items()})
         self.assertEqual(len(manifest(self.rca_parent_root)), 64)
         self.assertEqual(manifest(self.rca_parent_root), expected)
-        current = {name: json.loads((self.current_root / 'data' / name).read_bytes())
+        current = {name: json.loads((self.binary_parent_root / 'data' / name).read_bytes())
                    for name in PRE_RCA_BATCH_DATA_SHA256}
         parent = {name: json.loads((self.rca_parent_root / 'data' / name).read_bytes())
                   for name in PRE_RCA_BATCH_DATA_SHA256}

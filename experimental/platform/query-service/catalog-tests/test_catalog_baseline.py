@@ -20,7 +20,8 @@ PRE_GROWTH_BATCH_BASELINE = '8fda4f7a4355c88f0e4e9e713c01f236a907985b4720454e338
 PRE_PUR_BATCH_BASELINE = '0d2f515260b78841249f5b48331f8a80fc9164bd58bb57c592f7adfed3d96277'
 PRE_TABLE_BATCH_BASELINE = '73b8b455042290c0f752e784f23687eaf3bbc8dc7631ced311af7af216f08d6e'
 PRE_RCA_BATCH_BASELINE = '9090f061483cefde2d6255f057078b7700d3e22c85db7191ec00bc30de78f2ad'
-NEW_BASELINE = '148c38cfa1819b8103ffa6c0f856d824b9fc54a3e9f8a5eecc50943fd19b27bd'
+PRE_BINARY_BATCH_BASELINE = '148c38cfa1819b8103ffa6c0f856d824b9fc54a3e9f8a5eecc50943fd19b27bd'
+NEW_BASELINE = '15c0619c3a55984550ecd564692c4588f777a10d60a4e9a01b91079c12978c2f'
 
 
 class IntegratedBaselineTests(unittest.TestCase):
@@ -36,6 +37,7 @@ class IntegratedBaselineTests(unittest.TestCase):
         self.assertNotEqual(NEW_BASELINE, PRE_PUR_BATCH_BASELINE)
         self.assertNotEqual(NEW_BASELINE, PRE_TABLE_BATCH_BASELINE)
         self.assertNotEqual(NEW_BASELINE, PRE_RCA_BATCH_BASELINE)
+        self.assertNotEqual(NEW_BASELINE, PRE_BINARY_BATCH_BASELINE)
 
     def test_windows_paths_use_the_same_manifest_key(self):
         payload = b'synthetic catalog bytes'
@@ -61,7 +63,7 @@ class IntegratedBaselineTests(unittest.TestCase):
                   'reviewer': 'Synthetic baseline compatibility test',
                   'rationale': 'No real material admission', 'records': []}
         for old_baseline in (OLD_BASELINE, PREVIOUS_BASELINE, EAF_BASELINE, NC2_BASELINE,
-                             INTEGRATED_BASELINE, PRE_EVIDENCE_BATCH_BASELINE, PRE_GROWTH_BATCH_BASELINE, PRE_PUR_BATCH_BASELINE, PRE_TABLE_BATCH_BASELINE, PRE_RCA_BATCH_BASELINE):
+                             INTEGRATED_BASELINE, PRE_EVIDENCE_BATCH_BASELINE, PRE_GROWTH_BATCH_BASELINE, PRE_PUR_BATCH_BASELINE, PRE_TABLE_BATCH_BASELINE, PRE_RCA_BATCH_BASELINE, PRE_BINARY_BATCH_BASELINE):
             with self.subTest(old_baseline=old_baseline):
                 with tempfile.TemporaryDirectory() as temporary:
                     database = Path(temporary) / 'old-baseline.db'

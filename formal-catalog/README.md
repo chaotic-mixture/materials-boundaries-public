@@ -4,8 +4,8 @@ The released main baseline admits 1057 source-qualified identities and exactly
 24 reviewed computed composition buckets under formal-project-count-policy/1,
 for 1081 formal project admissions.
 
-This unmerged local experiment contains 1103 source-qualified identities and the
-same 24 computed buckets, totaling 1127. Main remains unchanged. Resource pins
+This unmerged local experiment contains 1109 source-qualified identities and the
+same 24 computed buckets, totaling 1133. Main remains unchanged. Resource pins
 match the local core for reproducible testing; they do not publish a release.
 Neither total is a global physical-uniqueness claim.
 
@@ -94,8 +94,8 @@ See the [primary-table packet](../experimental/material-batches/nbs-salt-densiti
 
 The final three RCA-supplied sections of the same NBS volume add ZnB2O4,
 Mg2SiO4 and MgWO4 references, each with one source-reported crystallographic
-density at 26 degrees C. The core now contains 1103 identities, states and
-properties, including 43 inorganic identities; the project view contains 1127
+density at 26 degrees C. That core snapshot contained 1103 identities, states and
+properties, including 43 inorganic identities; its project view contained 1127
 entries, including 55 inorganic entries. All other category counts, 116 sources,
 21 grades, 24 computed buckets and 62 excluded examples are unchanged.
 Preparation temperatures qualify the samples separately from density temperature.
@@ -104,3 +104,20 @@ references remain catalog-only with false scientific-review/raw-reanalysis flags
 
 The RCA data commit is `3ea9e25aa67226518282e7804c8e98c89453046d`.
 See the [RCA packet](../experimental/material-batches/nbs-rca-density-20261019/README.md).
+
+A separate six-binary-oxide batch from the same NBS volume adds NiO, GeO2,
+As2O3, SeO2, SnO2 and ThO2. The core now contains 1109 identities, states and
+properties, including 49 inorganic identities; the project view contains 1133
+entries, including 61 inorganic entries. Other categories, 116 sources, 21 grades,
+24 computed buckets and 62 excluded examples are unchanged. Existing elemental
+Ni, Ge and Sn references are distinct compositions; no new source row is added.
+Each oxide preserves its source-reported crystallographic density and temperature
+provenance. Uncertainty and specimen count remain unknown; catalog-only scope
+and false scientific-review/raw-reanalysis flags remain.
+
+The binary-oxide data commit is `9cdbdbdee580df356ba0133b6723a3819777dc4d`. The exact 64-file query
+pin is `15c0619c3a55984550ecd564692c4588f777a10d60a4e9a01b91079c12978c2f`.
+The independent recovery descriptor binds the frozen packet and data ledger and
+recovers the complete `4db4ab5` predecessor before the existing RCA layer;
+historical pins remain test-only and are rejected by the current registry.
+See the [binary-oxide packet](../experimental/material-batches/nbs-binary-oxide-density-20261019/README.md).
