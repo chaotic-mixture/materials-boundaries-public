@@ -94,6 +94,28 @@ and must not be reported as passes. Remote run IDs/conclusions are recorded in
 the final immutable parent handoff after publication; this document does not
 claim an unobserved remote outcome.
 
+The first experimental push, commit
+`72623a459a68862b398ec84472f8fd5bc8bf5519`, produced failed workflow run
+`39294071437` before any job started (the jobs API returned zero jobs).
+Two plain YAML `run` scalars contained an unquoted colon followed by a space.
+The repair quotes both complete commands and adds a dependency-free check for
+this delimiter in the fixed job template. PyYAML 6.0.3 parses the repaired
+workflow with all 26 `run` values as strings; both unquoted regression probes
+are rejected. Existing full jobs remain unchanged except their documented
+branch guards. The repair changes no catalog, runtime package or installed
+test runner bytes, so the six-wheel and installed-test evidence remains
+applicable to those unchanged files.
+
+After refreshing only this increment's new preservation ledger and its hashes,
+the same 17 affected preservation cases passed again in one run: 17 discovered,
+17 started, 17 passed, zero skips/failures/errors, 25.123 seconds. This includes
+the actual 402-file round trip. Input hashes matched before and after execution;
+the previous preservation evidence and all older ledgers remain unchanged.
+The new evidence is `ci-yaml-repair-01.json` and
+`preservation-ci-yaml-repair-01/result.json` in the parent delivery. This repeat
+does not increase the 354 distinct test IDs. The initial remote failure is
+retained separately from the final commit's subsequent CI result.
+
 No new multi-hour full regression, exhaustive wheel smoke, browser check,
 deployment, DOI registration, credential creation or permission change was
 performed. The successful full a592 verification remains historical evidence,

@@ -100,12 +100,12 @@ TARGETED_JOB = """  polymer-composites-targeted:
         with:
           python-version: ${{ matrix.python-version }}
       - run: python scripts/run_polymer_composites_ci.py --validate-scope
-      - run: python -m pip install --no-deps --only-binary=:all: -r experimental/platform/ci/build-requirements.txt
+      - run: "python -m pip install --no-deps --only-binary=:all: -r experimental/platform/ci/build-requirements.txt"
       - run: python -m pip install --no-build-isolation -e '.[dev]'
       - run: python scripts/run_polymer_composites_ci.py --test
       - run: python scripts/validate_catalogs.py
       - run: python -m pip wheel --no-deps --no-build-isolation --wheel-dir dist . formal-catalog experimental/platform/federation experimental/platform/query-service experimental/platform/lifecycle experimental/platform
-      - run: python -m pip download --no-deps --only-binary=:all: --dest dist/dependencies -r experimental/platform/requirements-lock.txt -r experimental/platform/ci/projection-requirements.txt
+      - run: "python -m pip download --no-deps --only-binary=:all: --dest dist/dependencies -r experimental/platform/requirements-lock.txt -r experimental/platform/ci/projection-requirements.txt"
       - run: python scripts/run_polymer_composites_ci.py --wheel-dir dist --dependency-dir dist/dependencies
 """
 
@@ -119,8 +119,28 @@ def git(*args):
     return subprocess.check_output(["git", *args], cwd=ROOT)
 
 
+def validate_targeted_run_scalars(template):
+    """Check the known single-line job template without a YAML dependency.
+
+    This is deliberately not a general YAML parser. Commands containing YAML
+    mapping/comment delimiters must use a JSON-compatible quoted scalar.
+    """
+    prefix = "      - run: "
+    commands = [line[len(prefix):] for line in template.splitlines() if line.startswith(prefix)]
+    require(commands, "Scoped job has no single-line run commands")
+    for value in commands:
+        if value.startswith('"'):
+            command = json.loads(value)
+            require(isinstance(command, str) and command.strip(), "Scoped run scalar must be a nonempty string")
+        else:
+            require(value.startswith(("python ", "git ")) and ": " not in value
+                    and not value.endswith(":") and " #" not in value,
+                    "Quote the complete scoped run scalar containing YAML delimiters: " + value)
+
+
 def expected_workflow(baseline):
     """Preserve the complete old workflow except the two complementary guards."""
+    validate_targeted_run_scalars(TARGETED_JOB)
     for job in ("unit-and-schema", "windows-composite"):
         marker = "  " + job + ":\n"
         require(baseline.count(marker) == 1, "Unexpected frozen full-job structure: " + job)
