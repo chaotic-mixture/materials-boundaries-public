@@ -19,7 +19,7 @@ Repository: [chaotic-mixture/materials-boundaries-public](https://github.com/cha
 ## Concrete material references
 
 <!-- material-catalog-summary:start -->
-The separate reference catalogue contains **1100 material identities**, **21 qualified grades**, **1100 source-scoped states** and **1100 reference properties**. Counts describe this registry only; aliases, categories, prior observations and computational model cells are not additional materials.
+The separate reference catalogue contains **1103 material identities**, **21 qualified grades**, **1103 source-scoped states** and **1103 reference properties**. Counts describe this registry only; aliases, categories, prior observations and computational model cells are not additional materials.
 <!-- material-catalog-summary:end -->
 
 The five primary classes are metal, inorganic, polymer, composite and natural biological tissues/fibers. The exact reviewed v2 batch adds 1,000 distinct historical WFO species identities, each with one selected-accession conversion-derived basic-density property. The 2026-10-19 experimental core snapshot (data commit `5396fd1cc9df72507785a112a21c2990fb4a7c50`) has natural 1,010; metal 22, inorganic 26, polymer 15 and composite 10. Only natural reaches the 1,000-per-class goal in this snapshot. Ten existing biological identities migrate to natural through an exact versioned ledger. Processed biopolymers remain polymer; minerals and rocks remain inorganic. A material counts once by its admitted canonical identity, irrespective of aliases, states or measurements.
