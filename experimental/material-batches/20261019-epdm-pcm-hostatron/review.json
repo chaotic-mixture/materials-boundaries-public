@@ -1,0 +1,209 @@
+{
+  "schema": "epdm-pcm-hostatron-source-transcription-review/1",
+  "base_commit": "a592c89ede0dcced22579e56fc68b6fab4c55f49",
+  "status": "selected_source_text_facts_prepared_for_parent_review",
+  "identity_count": 3,
+  "states": 3,
+  "properties": 3,
+  "new_sources": 0,
+  "new_grades": 0,
+  "category_deltas": {
+    "natural": 0,
+    "metal": 0,
+    "inorganic": 0,
+    "polymer": 0,
+    "composite": 3
+  },
+  "source_id": "bianchi_2022_epdm_pcm",
+  "source_document_url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04058/article_deploy/polymers-14-04058-v2.pdf?version=1664434800",
+  "source_inspected_on": "2026-10-19",
+  "source_document_sha256": null,
+  "source_hash_status": "not_retained_this_inspection",
+  "historical_source_document_sha256": "6c4d4a8620ff78dcda43308b09269f7a0fd88ec35e77314d5ad6f62a304db89c",
+  "historical_hash_reverified": false,
+  "local_source_asset_path": null,
+  "inspection_scope": "Official versioned publisher PDF text inspected on 2026-10-19: p.1 license; p.3 section 2.1/Table 1; pp.4-5 sections 2.2-2.2.2/Tables 2-3; pp.5-6 section 2.3.2; p.10 Table 5 and statistical/theoretical-density discussion. Selected Hostatron/paraffin recipe rows and rho_geom cells were checked against their text column headings and repeated source reads. Screenshot calls did not yield a viewable image in this execution environment; no new visual cross-check or PDF-byte hash verification is claimed. No raw-data reanalysis or independent scientific validation.",
+  "common_recipe": [
+    {
+      "constituent": "Vistalon 2504 EPDM",
+      "amount_text": "100",
+      "unit": "phr"
+    },
+    {
+      "constituent": "Sulfur",
+      "amount_text": "3.00",
+      "unit": "phr"
+    },
+    {
+      "constituent": "Zinc oxide",
+      "amount_text": "3.00",
+      "unit": "phr"
+    },
+    {
+      "constituent": "Stearic acid",
+      "amount_text": "1.00",
+      "unit": "phr"
+    },
+    {
+      "constituent": "N550 carbon black",
+      "amount_text": "20.00",
+      "unit": "phr"
+    },
+    {
+      "constituent": "Tetramethylthiuram disulfide (TMTD)",
+      "amount_text": "0.87",
+      "unit": "phr"
+    },
+    {
+      "constituent": "Zinc dibutyl dithiocarbamate (ZDBC)",
+      "amount_text": "2.50",
+      "unit": "phr"
+    },
+    {
+      "constituent": "Hostatron P0168",
+      "amount_text": "1.3",
+      "unit": "phr"
+    }
+  ],
+  "recipe_unit_basis": "phr as reported, per 100 parts Vistalon 2504 rubber; this basis is not nominal wt% of the compound.",
+  "nominal_composition_qualification": "Table 3 presents RT70HC columns in phr, wt% and vv%, whereas section 2.2 describes the nominal PCM percentages with respect to the EPDM compound and the sample-code paragraph describes percentage in the sample. These are distinct source representations with an unresolved percentage-denominator scope; the stated percentages are not percentages per 100 parts of raw EPDM. Preserve the printed phr and nominal wt% separately without conversion, renormalization or a measured final-composition claim. The final cured composition and residual blowing-agent products were not assayed in the selected passages.",
+  "source_facts": [
+    {
+      "source_designation": "EPDM_H_P20",
+      "identity_id": "mat_bianchi2022_epdm_h_p20",
+      "state_id": "state_bianchi2022_epdm_h_p20",
+      "property_id": "refprop_bianchi2022_epdm_h_p20_mass_density",
+      "category": "composite",
+      "rt70hc_phr": "33.0",
+      "rt70hc_nominal_wt_percent": "20.0",
+      "rt70hc_nominal_vv_percent": "22.0",
+      "hostatron_phr": "1.3",
+      "source_property_label": "rho_geom (geometrical density)",
+      "quantity": "mass_density",
+      "value": "0.55",
+      "plus_minus": "0.02",
+      "unit": "g/cm^3",
+      "summary_statistic": "reported_value",
+      "uncertainty_type": "reported_plus_minus_unspecified",
+      "sample_count": 10,
+      "sample_count_relation": "exact",
+      "identity_locator": "v2 PDF p.3 Table 1 and p.5 Table 3, EPDM_H_P20 row",
+      "property_locator": "v2 PDF p.10 Table 5, EPDM_H_P20 row, rho_geom column",
+      "method_locator": "v2 PDF pp.5-6 section 2.3.2, geometrical-density method and ten square specimens"
+    },
+    {
+      "source_designation": "EPDM_H_P40",
+      "identity_id": "mat_bianchi2022_epdm_h_p40",
+      "state_id": "state_bianchi2022_epdm_h_p40",
+      "property_id": "refprop_bianchi2022_epdm_h_p40_mass_density",
+      "category": "composite",
+      "rt70hc_phr": "87.0",
+      "rt70hc_nominal_wt_percent": "40.0",
+      "rt70hc_nominal_vv_percent": "43.0",
+      "hostatron_phr": "1.3",
+      "source_property_label": "rho_geom (geometrical density)",
+      "quantity": "mass_density",
+      "value": "0.66",
+      "plus_minus": "0.01",
+      "unit": "g/cm^3",
+      "summary_statistic": "reported_value",
+      "uncertainty_type": "reported_plus_minus_unspecified",
+      "sample_count": 10,
+      "sample_count_relation": "exact",
+      "identity_locator": "v2 PDF p.3 Table 1 and p.5 Table 3, EPDM_H_P40 row",
+      "property_locator": "v2 PDF p.10 Table 5, EPDM_H_P40 row, rho_geom column",
+      "method_locator": "v2 PDF pp.5-6 section 2.3.2, geometrical-density method and ten square specimens"
+    },
+    {
+      "source_designation": "EPDM_H_P60",
+      "identity_id": "mat_bianchi2022_epdm_h_p60",
+      "state_id": "state_bianchi2022_epdm_h_p60",
+      "property_id": "refprop_bianchi2022_epdm_h_p60_mass_density",
+      "category": "composite",
+      "rt70hc_phr": "196.0",
+      "rt70hc_nominal_wt_percent": "60.0",
+      "rt70hc_nominal_vv_percent": "63.0",
+      "hostatron_phr": "1.3",
+      "source_property_label": "rho_geom (geometrical density)",
+      "quantity": "mass_density",
+      "value": "0.70",
+      "plus_minus": "0.01",
+      "unit": "g/cm^3",
+      "summary_statistic": "reported_value",
+      "uncertainty_type": "reported_plus_minus_unspecified",
+      "sample_count": 10,
+      "sample_count_relation": "exact",
+      "identity_locator": "v2 PDF p.3 Table 1 and p.5 Table 3, EPDM_H_P60 row",
+      "property_locator": "v2 PDF p.10 Table 5, EPDM_H_P60 row, rho_geom column",
+      "method_locator": "v2 PDF pp.5-6 section 2.3.2, geometrical-density method and ten square specimens"
+    }
+  ],
+  "identity_policy": "Three separately prepared Hostatron/paraffin formulations, distinguished by 33.0, 87.0 and 196.0 phr RT70HC. Production routes, specimen replicates, test conditions and translated names do not create additional identities. Finished-composite grade_id remains null; constituent supplier designations are not finished-product grades.",
+  "duplicate_check": {
+    "catalog_path": "materials_boundaries/data/materials.json",
+    "catalog_sha256": "d078f1fb726289bdd6c7faff6f9a4a84d46eed5cd83ba586cd9c2f6ae0256739",
+    "baseline_category_counts": {
+      "composite": 6,
+      "inorganic": 26,
+      "metal": 22,
+      "natural": 1010,
+      "polymer": 15
+    },
+    "existing_epdm_identity_id": "mat_vistalon2504_n550_bianchi2022_epdm",
+    "existing_epdm_category": "composite",
+    "existing_composite_identity_ids": [
+      "mat_domagala2024_nc1_concrete",
+      "mat_vistalon2504_n550_bianchi2022_epdm",
+      "mat_ewurum2025_pbs_lignin20",
+      "mat_domagala2024_nc2_concrete",
+      "mat_ewurum2025_pbs_lignin10",
+      "mat_ewurum2025_pbs_lignin30"
+    ],
+    "decision": "The base EPDM/N550 identity is actually classified composite in the inspected a592c89 catalog. It contains no added paraffin or blowing agent. The three selected Hostatron/paraffin formulations are absent. NC1/NC2 and PBS B10/B20/B30 are existing unrelated identities; none is repeated."
+  },
+  "rights": {
+    "source_record_reused_unchanged": "bianchi_2022_epdm_pcm",
+    "license_identifier": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "license_locator": "v2 PDF p.1 copyright/license notice",
+    "decision": "Selected article-authored recipe and measured-density facts are covered by the article CC BY 4.0 notice; no separate third-party credit accompanies the selected Tables 1, 3 or 5. Only selected facts, bibliographic metadata and original qualification text are included.",
+    "attribution": "Marica Bianchi, Francesco Valentini, Giulia Fredi, Andrea Dorigato and Alessandro Pegoretti (2022), Thermo-Mechanical Behavior of Novel EPDM Foams Containing a Phase Change Material for Thermal Energy Storage Applications, Polymers 14, 4058, DOI 10.3390/polym14194058.",
+    "adaptations": "Selected factual transcription, structured metadata, English fallback labels and original scope qualifications; reported values and units remain unchanged.",
+    "assets_included": false,
+    "third_party_comparison_content_included": false
+  },
+  "verification": {
+    "transcription_cross_check": "completed",
+    "transcription_method": "Text-cell/column and recipe-code cross-checks against the versioned official publisher PDF; no new visual inspection claimed.",
+    "new_visual_cross_check": false,
+    "new_binary_hash_verification": false,
+    "independent_scientific_review": false,
+    "raw_data_reanalysis": false
+  },
+  "locale_policy": "All four required name slots use authored English fallback text; no native-language review is claimed.",
+  "unknowns": [
+    "Statistical construction of rho_geom plus-minus amplitudes and arithmetic aggregation",
+    "Geometrical-density test temperature and relative humidity",
+    "Density-specific post-cure conditioning and test interval",
+    "Exact final square density-coupon dimensions",
+    "Unambiguous nominal percentage denominator across the source representations",
+    "Measured final cured composition and residual blowing-agent chemistry",
+    "Resolution of the theoretical EPDM rho_bulk discrepancy"
+  ],
+  "excluded": [
+    "Existing unfoamed EPDM/N550 identity",
+    "Hostatron foam without paraffin and all Micropearl/salt-leached formulations",
+    "New identities for processing routes, temperature, porosity, aging or repeated specimens",
+    "Pycnometric rho_app and its 23.0 deg C/0.2 g/60-repeat conditions",
+    "Theoretical rho_bulk, derived porosities and density normalization",
+    "Finite-strain density-normalized E* recast as Young's modulus",
+    "Supplier matrix grades as finished-composite grades",
+    "Source PDFs, images, complete tables, raw data and raw structures"
+  ],
+  "schema_extension_required": false,
+  "product_tests_run": false,
+  "specific_unresolved_admission_gaps": [],
+  "released_main_count": 1081,
+  "formal_admitted_delta": 0,
+  "release_scope": "New candidate packet only. No runtime/formal catalog edits, commit, push, main merge, DOI registration or deployment. Parent-coordinated integration and publication are separate."
+}

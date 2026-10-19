@@ -1,0 +1,124 @@
+{
+  "schema": "pbs-lignin45-source-transcription-review/1",
+  "base_commit": "a592c89ede0dcced22579e56fc68b6fab4c55f49",
+  "status": "selected_source_facts_ready_for_local_experimental_integration",
+  "identity_count": 1,
+  "states": 1,
+  "properties": 1,
+  "new_sources": 0,
+  "new_grades": 0,
+  "category_deltas": {
+    "natural": 0,
+    "metal": 0,
+    "inorganic": 0,
+    "polymer": 0,
+    "composite": 1
+  },
+  "count_semantics": "Category deltas describe candidate content only; this packet contributes zero formal admissions.",
+  "source_document_sha256": "766d17f0e92c7e93cd57a3a5e97dddff0cb66a84bba6bf9118fbd0796d4c2e6f",
+  "source_inspected_on": "2026-10-19",
+  "source_access": {
+    "inspection_basis": "Previously retained original publisher PDF and page images; no new full-text download.",
+    "retained_document_bytes": 3211541,
+    "retained_document_sha256": "766d17f0e92c7e93cd57a3a5e97dddff0cb66a84bba6bf9118fbd0796d4c2e6f",
+    "sha256_rechecked_on": "2026-10-19",
+    "visually_inspected_pdf_pages": [
+      1,
+      3,
+      5,
+      12
+    ],
+    "current_public_page_attempt": {
+      "url": "https://www.mdpi.com/2073-4360/17/2/194",
+      "http_status": 429,
+      "retries": 0,
+      "full_text_retrieved": false,
+      "scope": "This candidate investigator's Ewurum article-page attempt only; not an aggregate of other agents' requests."
+    },
+    "fresh_successful_full_text_retrieval_claimed": false
+  },
+  "source_facts": [
+    {
+      "source_designation": "B45",
+      "identity_id": "mat_ewurum2025_pbs_lignin45",
+      "state_id": "state_ewurum2025_pbs_lignin45",
+      "property_id": "refprop_ewurum2025_pbs_lignin45_youngs_modulus",
+      "category": "composite",
+      "lignin_loading": "45",
+      "loading_unit": "wt.%",
+      "loading_basis": "percentage of total polymer mass",
+      "source_property_label": "Young’s Modulus (MPa)",
+      "quantity": "youngs_modulus",
+      "mean": "1206",
+      "standard_deviation": "132",
+      "unit": "MPa",
+      "summary_statistic": "reported_mean",
+      "sample_count": 10,
+      "sample_count_relation": "exact",
+      "tukey_group": "a",
+      "identity_locator": "PDF p.3 sections 2.1-2.3; separately prepared Bxx formulations",
+      "property_locator": "PDF p.12 Table 6, B45 row, Young's Modulus (MPa); footnote a",
+      "method_locator": "PDF p.5 section 2.9 tensile method and ten replicates"
+    }
+  ],
+  "identity_policy": "One physically prepared B45 simple blend with 45 wt.% lignin relative to total polymer mass. Existing B0, B10, B20, B30 and Indulin AT are not repeated. The changed source-reported formulation defines this candidate; processing conditions, specimens and translated labels do not create additional identities. DCP-reactive Rxx formulations are outside this packet.",
+  "deduplication": {
+    "baseline_materials_sha256": "d078f1fb726289bdd6c7faff6f9a4a84d46eed5cd83ba586cd9c2f6ae0256739",
+    "baseline_source_qualified_identity_count": 1079,
+    "baseline_formal_project_count": 1103,
+    "reviewed_computed_count": 24,
+    "excluded_computed_example_count": 62,
+    "baseline_polymer_count": 15,
+    "baseline_composite_count": 6,
+    "scope": "All current polymer/composite identities and the existing PBS/lignin and SPO-2 candidate packets were inspected. No B45 identity is present.",
+    "existing_related_identity_ids": [
+      "mat_ewurum2025_biopbs",
+      "mat_ewurum2025_indulin_at",
+      "mat_ewurum2025_pbs_lignin10",
+      "mat_ewurum2025_pbs_lignin20",
+      "mat_ewurum2025_pbs_lignin30",
+      "mat_mtibe2022_pbs_pbat_70_30"
+    ]
+  },
+  "rights": {
+    "source_record_reused_unchanged": "ewurum_mcdonald_2025_pbs_lignin",
+    "decision": "Retained PDF p.1 article-specific CC BY 4.0 notice and p.12 Table 6 were reread. The selected B45 result is original study content with no separate third-party credit on the table.",
+    "license_identifier": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "attribution": "Nnaemeka Ewurum and Armando G. McDonald (2025), Lignin Reinforcement in Polybutylene Succinate Copolymers, Polymers 17, 194, DOI 10.3390/polym17020194.",
+    "adaptations": "Selected factual transcription, structured metadata, English fallback labels and original scope qualifications; numerical mean, SD and units remain as printed.",
+    "assets_included": false,
+    "third_party_comparison_content_included": false
+  },
+  "verification": {
+    "transcription_cross_check": "completed",
+    "independent_scientific_review": false,
+    "raw_data_reanalysis": false
+  },
+  "verification_scope": "Local visual/text source-transcription cross-check only; no new independent scientific approval, experimental replication or test execution.",
+  "locale_policy": "All four required name slots contain authored English fallback labels; no native-language review is claimed.",
+  "unknowns": [
+    "Which of BioPBS FZ91PM and FZ91PB was used; retain the combined source designation and grade_id null",
+    "Numerical modulus strain-fit window and estimator",
+    "Tensile-test temperature and relative humidity",
+    "Post-molding tensile conditioning",
+    "Independent standard compliance and edition verification"
+  ],
+  "excluded": [
+    "Existing B0, B10, B20, B30 and Indulin AT identities",
+    "Every DCP-reactive Rxx formulation",
+    "Density, tensile-strength and flexural properties",
+    "Hot-pressed discs and DCP/acetone preparation for the selected tensile state",
+    "Source assets, full tables, figures, screenshots and raw data"
+  ],
+  "specific_unresolved_admission_gaps": [],
+  "formal_admitted_delta": 0,
+  "authorization": {
+    "local_experimental_integration": "authorized",
+    "experimental_branch_publication": "authorized_parent_coordinated",
+    "main_merge_or_release": "approval_pending",
+    "doi_registration": "deferred",
+    "public_deployment": "deferred"
+  },
+  "release_scope": "Candidate packet only; runtime catalogs and formal-component pins are unchanged by this work. Experimental integration and publication are authorized and coordinated by the parent after validation. Main approval remains pending. Source transcription does not grant scientific approval."
+}
