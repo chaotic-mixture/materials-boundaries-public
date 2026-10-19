@@ -6,6 +6,7 @@ from material_append_history import (
     project_catalog_bytes_chain, project_catalog_chain, project_file_chain,
     recover_catalogs, recover_file,
 )
+import material_append_successors as successors
 
 ROOT = Path(__file__).resolve().parents[1]
 BASELINE_COMMIT = "2509ee231edb62872ed323e8346895bd55c36c92"
@@ -24,16 +25,17 @@ def file_ledger():
 
 
 def recover_pre_pur_catalogs(current):
+    current = successors.project_successor_catalogs(current)
     return recover_catalogs(ROOT, current, data_ledger())
 
 
 def project_pur_catalogs(current):
-    return project_catalog_chain(ROOT, current, [data_ledger()])
+    return project_catalog_chain(ROOT, current, successors.data_ledgers() + [data_ledger()])
 
 
 def project_pur_catalog_bytes(filename, raw):
-    return project_catalog_bytes_chain(ROOT, filename, raw, [data_ledger()])
+    return project_catalog_bytes_chain(ROOT, filename, raw, successors.data_ledgers() + [data_ledger()])
 
 
 def project_pur_file(filename, raw):
-    return project_file_chain(filename, raw, [file_ledger()])
+    return project_file_chain(filename, raw, successors.file_ledgers() + [file_ledger()])

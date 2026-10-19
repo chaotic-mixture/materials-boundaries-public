@@ -203,7 +203,7 @@ live-provider or browser run.
 
 ## Bounded PUR formulation increment, 2026-10-19
 
-The current local snapshot contains **1116 project entries = 1092 source-qualified
+The preceding PUR snapshot contained **1116 project entries = 1092 source-qualified
 identities + 24 reviewed computed compositions**. The two new polymer identities
 are the source-defined LPO-2 and SPO-3 reactive-polyol formulations, with reported
 apparent densities of 43.5 and 43.2 kg/m^3. Their main reactive-polyol input ratios
@@ -229,7 +229,7 @@ Released main and the 62 excluded computed examples remain unchanged. Validation
 is recorded with this bounded batch; no full-suite, browser or live-provider
 validation is implied.
 
-The current complete query manifest anchor is `73b8b455042290c0f752e784f23687eaf3bbc8dc7631ced311af7af216f08d6e`,
+That complete query manifest anchor is `73b8b455042290c0f752e784f23687eaf3bbc8dc7631ced311af7af216f08d6e`,
 bound to data commit `4361b6018fcac09571b261983ce286c84f3841e5`. The preceding
 `0d2f515260b78841249f5b48331f8a80fc9164bd58bb57c592f7adfed3d96277`
 anchor stays historical. Independent query tests bind the PUR ledger and packet,
@@ -240,3 +240,39 @@ remain intact. The older recovery layer retains its exact original scope;
 partial, modified, duplicated, reordered or unrelated changes fail closed.
 Old registry and NOMAD state directories stay in their original scope and are
 not silently migrated or relabeled.
+
+## Eight-salt primary-table increment, 2026-10-19
+
+The current local snapshot contains **1124 project entries = 1100 source-qualified
+identities + 24 reviewed computed compositions** after eight NBS salt references:
+Hg2Cl2, HgCl2, HgI2, PbFCl, KCN, cubic NaCN, Sr(NO3)2 and Ba(NO3)2. Core categories
+are natural 1010, metal 22, inorganic 40, polymer 18 and composite 10; project
+categories are natural 1010, metal 34, inorganic 52, polymer 18 and composite 10.
+The relationship view has 1100 identities and 1105 supported memberships,
+including 40 inorganic memberships and the same one identity relationship.
+Overlapping memberships do not add materials. There are 1100 states and
+properties, 21 grades and 116 sources; the eight references reuse one source.
+
+The API preserves exact reported g/cm^3 values and temperatures, source-qualified
+identities, crystallographic density and source-reported calculation labels.
+The NaCN result retains the 96.2-percent sample composition and carbonate/
+orthorhombic reflection notes alongside its indexed-cubic-phase density.
+These measured-lattice-derived references are not direct bulk-density
+measurements, DFT predictions or scientific replication. Uncertainty and sample
+counts remain unknown; all eight references retain catalog-only scope and false
+scientific-review/raw-reanalysis flags. Released main and the 62 excluded
+computed examples remain unchanged. Validation belongs to this bounded batch;
+no full-suite, browser or live-provider run is implied.
+
+The current complete query manifest anchor is `9090f061483cefde2d6255f057078b7700d3e22c85db7191ec00bc30de78f2ad`,
+bound to data commit `0d642c6773263ab36f52c9ace5b27133a05f8bf0`. The preceding
+`73b8b455042290c0f752e784f23687eaf3bbc8dc7631ced311af7af216f08d6e`
+anchor stays historical. The independent query test adds one frozen descriptor
+to the existing exact-append helper, verifies the table ledger and packet, and
+removes only their eight identities, eight states and eight properties. It
+recovers the exact efd4ca2 resources and complete 64-file manifest before the
+existing PUR-to-2509, six-oxide-to-c901 and older layers. Shared source rows and
+all grades remain intact. Previous wrappers retain their exact historical scope;
+partial, modified, duplicated, reordered or unrelated changes fail closed.
+Old registry and NOMAD stores retain their saved scope without migration.
+See the [eight-salt packet](../../material-batches/nbs-salt-densities-20261019/README.md).

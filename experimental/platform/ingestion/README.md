@@ -103,5 +103,5 @@ scheduling examples, see [Resumable NOMAD review-queue updates](INCREMENTAL.md).
 For a deterministic offline deficiency report of the held two-record review
 priority, see [Offline formal-review gap report](FORMAL_REVIEW_GAPS.md).
 
-For read-only identity/composition coverage across all 1116 current experimental formal entries and
+For read-only identity/composition coverage across all 1124 current experimental formal entries and
 conservative local overlap clues, see [Formal overlap diagnostics](FORMAL_OVERLAP_AUDIT.md).

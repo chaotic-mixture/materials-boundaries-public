@@ -4,8 +4,8 @@ The released main baseline admits 1057 source-qualified identities and exactly
 24 reviewed computed composition buckets under formal-project-count-policy/1,
 for 1081 formal project admissions.
 
-This unmerged local experiment contains 1092 source-qualified identities and the
-same 24 computed buckets, totaling 1116. Main remains unchanged. Resource pins
+This unmerged local experiment contains 1100 source-qualified identities and the
+same 24 computed buckets, totaling 1124. Main remains unchanged. Resource pins
 match the local core for reproducible testing; they do not publish a release.
 Neither total is a global physical-uniqueness claim.
 
@@ -63,8 +63,8 @@ existing Ivdre source, each with one measured apparent-density reference
 (43.5 and 43.2 kg/m^3). The principal reactive-polyol input ratios distinguish
 these source-scoped formulations; study labels, catalyst changes and precursor
 feed labels alone are not identity criteria. No additional grade or source is
-created. The core now has 1092 identities, states and properties, including 18
-polymers; the project view has 1116 entries. Other categories, 21 grades, 116
+created. That batch brought the core to 1092 identities, states and properties, including
+18 polymers; its project view had 1116 entries. Other categories, 21 grades, 116
 sources, 24 reviewed computed buckets and 62 excluded examples are unchanged.
 See the [PUR formulation packet](../experimental/material-batches/pur-formulations-20261019/README.md).
 Density uncertainty, density-specific specimen count and test temperature,
@@ -73,3 +73,21 @@ curing is separate from test temperature. References remain catalog-only;
 independent scientific review and raw-data reanalysis remain false.
 
 The PUR data commit is `4361b6018fcac09571b261983ce286c84f3841e5`.
+
+The next bounded primary-table batch adds eight NBS source-qualified salts:
+Hg2Cl2, HgCl2, HgI2, PbFCl, KCN, cubic NaCN, Sr(NO3)2 and Ba(NO3)2. Each has
+one source-reported crystallographic density derived from measured lattice
+parameters. The core contains 1100 identities, states and properties, including
+40 inorganic identities; the project view contains 1124 entries, including 52
+inorganic entries. Natural 1010, core/project metal 22/34, polymer 18 and composite
+10 counts are unchanged. The batch reuses an existing source and adds no grade;
+116 sources, 21 grades, 24 reviewed computed buckets and 62 excluded examples
+are unchanged.
+
+These are scoped reference densities with their reported precision and
+source-specific temperatures. They are not direct bulk-density measurements or
+DFT predictions. Uncertainty and specimen counts remain unknown; catalog-only
+scope and false scientific-review/raw-reanalysis flags remain.
+
+The eight-salt data commit is `0d642c6773263ab36f52c9ace5b27133a05f8bf0`.
+See the [primary-table packet](../experimental/material-batches/nbs-salt-densities-20261019/README.md).

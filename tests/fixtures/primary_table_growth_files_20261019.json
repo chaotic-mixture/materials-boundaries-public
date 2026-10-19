@@ -1,0 +1,177 @@
+{
+  "schema_version": 1,
+  "baseline_commit": "efd4ca2a64c6b389c2a1fa9ba525f6fa77bbe93f",
+  "updates": {
+    "README.md": {
+      "previous_sha256": "85af195410337deefda0926b4c63ce39483ac4ff4715a4167dd4ed44731b583d",
+      "sha256": "bb66f40172deac4cd714024c864962cbc543aef8967d98fe7f14c21ca4ee7d1d",
+      "edits": [
+        {
+          "offset": 1833,
+          "before": "",
+          "after": "1"
+        },
+        {
+          "offset": 1834,
+          "before": "92",
+          "after": "0"
+        },
+        {
+          "offset": 1888,
+          "before": "",
+          "after": "1"
+        },
+        {
+          "offset": 1889,
+          "before": "92",
+          "after": "0"
+        },
+        {
+          "offset": 1922,
+          "before": "",
+          "after": "1"
+        },
+        {
+          "offset": 1923,
+          "before": "92",
+          "after": "0"
+        }
+      ]
+    },
+    ".github/workflows/ci.yml": {
+      "previous_sha256": "143407f96cfe06b6bf10c58ff571c5db2b1fe84ab4e8fbcfed50a2fa1f333aa3",
+      "sha256": "617636cff613f60cae4eb141684b196a7f673b0baf63413d7905b0bd0d3902e9",
+      "edits": [
+        {
+          "offset": 408,
+          "before": "",
+          "after": "h-20261019' && github.ref != 'refs/heads/experiment/primary-table-growt"
+        },
+        {
+          "offset": 1458,
+          "before": "",
+          "after": "h-20261019' && github.ref != 'refs/heads/experiment/primary-table-growt"
+        },
+        {
+          "offset": 9329,
+          "before": "",
+          "after": "  primary-table-growth-targeted:\n    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/experiment/primary-table-growth-20261019' }}\n    runs-on: ${{ matrix.os }}\n    timeout-minutes: 60\n    strategy:\n      fail-fast: false\n      matrix:\n        include:\n          - os: ubuntu-latest\n            python-version: '3.11'\n          - os: windows-latest\n            python-version: '3.12'\n    env:\n      PYTHONUTF8: '1'\n      PYTHONDONTWRITEBYTECODE: '1'\n    steps:\n      - run: git config --global core.autocrlf false\n      - uses: actions/checkout@v4\n        with:\n          fetch-depth: 0\n          persist-credentials: false\n      - uses: actions/setup-python@v5\n        with:\n          python-version: ${{ matrix.python-version }}\n      - run: python scripts/run_primary_table_growth_ci.py --validate-scope\n      - run: \"python -m pip install --no-deps --only-binary=:all: -r experimental/platform/ci/build-requirements.txt\"\n      - run: python -m pip install --no-build-isolation -e '.[dev]'\n      - run: python scripts/run_primary_table_growth_ci.py --test\n      - run: python scripts/validate_catalogs.py\n      - run: python -m pip wheel --no-index --no-deps --no-build-isolation --wheel-dir dist . ./formal-catalog ./experimental/platform/federation ./experimental/platform/query-service ./experimental/platform/lifecycle ./experimental/platform\n      - run: \"python -m pip download --no-deps --only-binary=:all: --dest dist/dependencies -r experimental/platform/requirements-lock.txt -r experimental/platform/ci/projection-requirements.txt\"\n      - run: python scripts/run_primary_table_growth_ci.py --wheel-dir dist --dependency-dir dist/dependencies\n"
+        }
+      ]
+    },
+    "tests/pur_formulation_preservation.py": {
+      "previous_sha256": "e13d54ef917b445f77277b063ba62da124189ac47ad93400bcaf2846d8951493",
+      "sha256": "ffa56cd53f85089622149a6f0ab42ed7ed422965d5605cc78acc969013d8ceee",
+      "edits": [
+        {
+          "offset": 340,
+          "before": "",
+          "after": "\nimport material_append_successors as successors"
+        },
+        {
+          "offset": 938,
+          "before": "",
+          "after": "current = successors.project_successor_catalogs(current)\n    "
+        },
+        {
+          "offset": 1077,
+          "before": "",
+          "after": "successors.data_ledgers() + "
+        },
+        {
+          "offset": 1202,
+          "before": "",
+          "after": "successors.data_ledgers() + "
+        },
+        {
+          "offset": 1303,
+          "before": "",
+          "after": "successors.file_ledgers() + "
+        }
+      ]
+    },
+    "tests/source_family_growth_preservation.py": {
+      "previous_sha256": "8e78dcf9cf4ef73e9cc72b839507dfab1c334f054ac5f417625064eba447d6b1",
+      "sha256": "e1d9777cf5ff87bc7ea127d198a48474296a5c74decb23104dc8157a14a133f3",
+      "edits": [
+        {
+          "offset": 387,
+          "before": "",
+          "after": "\nimport material_append_successors as successors"
+        },
+        {
+          "offset": 1274,
+          "before": "",
+          "after": "successors.data_ledgers() + "
+        },
+        {
+          "offset": 1489,
+          "before": "",
+          "after": "successors.file_ledgers() + "
+        },
+        {
+          "offset": 1644,
+          "before": "",
+          "after": "successors.data_ledgers() + "
+        }
+      ]
+    },
+    "tests/test_pur_formulation_preservation.py": {
+      "previous_sha256": "692861690754067c4decebc1f2e247055b5b3c6e4256b44be0f012c923a0908f",
+      "sha256": "b5d88d6eb2f6ed04856dc0646107d6a0cb1aa79340d11c98fb75027db883febc",
+      "edits": [
+        {
+          "offset": 429,
+          "before": "",
+          "after": "\nimport material_append_successors as successors"
+        },
+        {
+          "offset": 1452,
+          "before": "",
+          "after": "\n        cls.current = successors.project_successor_catalogs(cls.current)"
+        },
+        {
+          "offset": 9778,
+          "before": "",
+          "after": "successors.project_successor_catalog_bytes(\n                filename, "
+        },
+        {
+          "offset": 9837,
+          "before": "",
+          "after": ")"
+        },
+        {
+          "offset": 12073,
+          "before": "",
+          "after": "successors.project_successor_file(filename, "
+        },
+        {
+          "offset": 12102,
+          "before": "",
+          "after": ")"
+        }
+      ]
+    },
+    "tests/test_pur_formulation_batch_ci.py": {
+      "previous_sha256": "d59cff2441446beccbc11a93d00a65f0b88890c8e277951435f686d0269766f0",
+      "sha256": "3d10fb16bea3c291272026787818ed3ebbfd9a769e3ef271fc5c3fd9da7a504e",
+      "edits": [
+        {
+          "offset": 194,
+          "before": "",
+          "after": "\n\nfrom material_append_successors import project_successor_file"
+        },
+        {
+          "offset": 680,
+          "before": "",
+          "after": "project_successor_file(\".github/workflows/ci.yml\", "
+        },
+        {
+          "offset": 727,
+          "before": "",
+          "after": ")"
+        }
+      ]
+    }
+  }
+}

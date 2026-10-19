@@ -11,6 +11,7 @@ import unittest
 
 import pur_formulation_preservation as history
 import source_family_growth_preservation as growth
+import material_append_successors as successors
 from material_append_history import (
     appended_rows, load_frozen, project_catalog_chain, project_file_chain,
     recover_catalogs, recover_file,
@@ -34,6 +35,7 @@ class PURFormulationPreservationTests(unittest.TestCase):
         cls.ledger = history.data_ledger()
         cls.current = {name: json.loads((ROOT / "materials_boundaries/data" / filename).read_bytes())
                        for name, filename in history.FILES.items()}
+        cls.current = successors.project_successor_catalogs(cls.current)
         cls.baseline = history.recover_pre_pur_catalogs(cls.current)
         cls.additions = appended_rows(ROOT, cls.ledger)
 
@@ -156,7 +158,8 @@ class PURFormulationPreservationTests(unittest.TestCase):
         c901 = recover_catalogs(ROOT, self.baseline, growth.data_ledger())
         pre_evidence = old.recover_pre_evidence_batch_catalogs(c901)
         for name, filename in history.FILES.items():
-            current_raw = (ROOT / "materials_boundaries/data" / filename).read_bytes()
+            current_raw = successors.project_successor_catalog_bytes(
+                filename, (ROOT / "materials_boundaries/data" / filename).read_bytes())
             parent_raw = history.encoded(self.baseline[name])
             c901_raw = history.encoded(c901[name])
             self.assertEqual(history.project_pur_catalog_bytes(filename, current_raw), parent_raw)
@@ -187,7 +190,7 @@ class PURFormulationPreservationTests(unittest.TestCase):
     def test_finite_file_chain_preserves_old_pins_and_rejects_drift(self):
         import evidence_batch_workflow_preservation as old
         for filename, entry in history.file_ledger()["updates"].items():
-            raw = (ROOT / filename).read_bytes()
+            raw = successors.project_successor_file(filename, (ROOT / filename).read_bytes())
             previous = recover_file(raw, entry)
             self.assertEqual(history.digest(raw), entry["sha256"])
             self.assertEqual(history.digest(previous), entry["previous_sha256"])

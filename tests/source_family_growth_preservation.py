@@ -7,6 +7,7 @@ from material_append_history import (
     project_file_chain, recover_catalogs, recover_file,
 )
 import pur_formulation_preservation as pur_history
+import material_append_successors as successors
 
 ROOT = Path(__file__).resolve().parents[1]
 BASELINE_COMMIT = "c90188dcd5ac3a19863be0b49419722571b17eff"
@@ -31,13 +32,13 @@ def recover_growth_catalogs(current):
 
 def project_growth_catalogs(current):
     """Project this append only; older layers still validate their own images."""
-    return project_catalog_chain(ROOT, current, [pur_history.data_ledger(), data_ledger()])
+    return project_catalog_chain(ROOT, current, successors.data_ledgers() + [pur_history.data_ledger(), data_ledger()])
 
 
 def project_growth_file(filename, raw):
     """Recognize the finite new image; leave predecessor checks to older layers."""
-    return project_file_chain(filename, raw, [pur_history.file_ledger(), file_ledger()])
+    return project_file_chain(filename, raw, successors.file_ledgers() + [pur_history.file_ledger(), file_ledger()])
 
 
 def project_growth_catalog_bytes(filename, raw):
-    return project_catalog_bytes_chain(ROOT, filename, raw, [pur_history.data_ledger(), data_ledger()])
+    return project_catalog_bytes_chain(ROOT, filename, raw, successors.data_ledgers() + [pur_history.data_ledger(), data_ledger()])

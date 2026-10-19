@@ -37,7 +37,7 @@ class CatalogAPI(unittest.TestCase):
         self.assertEqual(self.client.get('/openapi.json').json()['info']['version'],'0.5.0.dev0')
         from materials_platform import __version__ as umbrella_version
         self.assertEqual(umbrella_version,'0.5.0.dev0')
-        self.assertEqual(self.status['counts']['local_catalog_unique_material_count'],1092)
+        self.assertEqual(self.status['counts']['local_catalog_unique_material_count'],1100)
         self.assertFalse(self.status['provider_counts_combined'])
         for name in ('version','content_digest','runtime_digest'): self.assertRegex(self.status[name],r'^[a-f0-9]{64}$')
     def test_03_exact_baseline_parity(self):
@@ -210,6 +210,64 @@ class CatalogAPI(unittest.TestCase):
                 self.assertEqual(selected.status_code, 200)
                 self.assertEqual(selected.json()['matched_count'], 1)
                 self.assertEqual(selected.json()['records'][0]['identity'], value['identity'])
+        self.assertEqual(self.client.get('/api/catalog/status').json(), self.status)
+        self.assertEqual(self.client.get('/api/catalog/project/status').json(), formal_status)
+
+    def test_primary_table_growth_eight_salt_resolution(self):
+        cases = (
+            ('hg2cl2', 'hg2cl2_general1891', '7.176', '26 degrees C'),
+            ('hgcl2', 'hgcl2_baker101742', '5.49', '26 degrees C'),
+            ('hgi2', 'hgi2_mallinckrodt', '6.325', '26 degrees C'),
+            ('pbfcl', 'pbfcl_nbs', '7.13', '26 degrees C'),
+            ('kcn', 'kcn_mallinckrodt_gnb', '1.555', '25 degrees C'),
+            ('nacn', 'nacn_baker121444_cubic', '1.591', '26 degrees C'),
+            ('sr_no3_2', 'sr_no3_2_mallinckrodt', '2.986', '26 degrees C'),
+            ('ba_no3_2', 'ba_no3_2_mallinckrodt', '3.244', '26 degrees C'),
+        )
+        formal_status = self.client.get('/api/catalog/project/status').json()
+        for identity_suffix, state_suffix, number, temperature in cases:
+            with self.subTest(identity=identity_suffix):
+                identity_id = 'mat_nbs1953_' + identity_suffix
+                state_id = 'state_nbs1953_' + state_suffix + '_xrd'
+                property_id = 'refprop_nbs1953_' + state_suffix + '_crystallographic_density'
+                resolved = self.post('resolve', state_id=state_id)
+                self.assertEqual(resolved.status_code, 200)
+                value = resolved.json()['result']
+                self.assertEqual(value['identity']['id'], identity_id)
+                self.assertEqual(value['identity']['category'], 'inorganic')
+                self.assertIsNone(value['grade'])
+                if identity_suffix == 'nacn':
+                    qualification = value['state']['state']['composition_or_purity']
+                    self.assertIn('NaCN 96.2', qualification['text'])
+                    self.assertIn('sodium-carbonate reflections', qualification['text'])
+                    self.assertIn('orthorhombic NaCN line', qualification['text'])
+                    self.assertIn('indexed cubic phase', qualification['notes'])
+                self.assertEqual([source['id'] for source in value['sources']],
+                                 ['swanson_tatge_1953_nbs_circ539v1'])
+                self.assertEqual(len(value['properties']), 1)
+                prop = value['properties'][0]
+                self.assertEqual(prop['id'], property_id)
+                self.assertEqual(prop['quantity'], 'mass_density')
+                self.assertEqual(prop['reported_value']['number'], number)
+                self.assertEqual(prop['reported_value']['unit_code'], 'g/cm^3')
+                self.assertEqual(prop['conditions']['temperature']['text'], temperature)
+                self.assertEqual(prop['density_basis'], 'crystallographic')
+                self.assertEqual(prop['determination_basis'], 'source_reports_calculation')
+                self.assertEqual(prop['evidence_kind'], 'published_measurement_derived_reference')
+                self.assertEqual(prop['evaluation_support'], 'catalog_only')
+                self.assertIsNone(prop['uncertainty'])
+                self.assertIsNone(prop['sample_count']['value'])
+                self.assertFalse(prop['engineering_allowable'])
+                self.assertFalse(prop['verification']['independent_scientific_review'])
+                self.assertFalse(prop['verification']['raw_data_reanalysis'])
+                exact = self.post('record', kind='reference-properties', record_id=property_id)
+                self.assertEqual(exact.status_code, 200)
+                self.assertEqual(exact.json()['result'], prop)
+                formal = self.client.post('/api/catalog/project/list', json={
+                    'version': formal_status['version'], 'record_id': 'legacy:' + identity_id})
+                self.assertEqual(formal.status_code, 200)
+                self.assertEqual(formal.json()['matched_count'], 1)
+                self.assertEqual(formal.json()['records'][0]['identity'], value['identity'])
         self.assertEqual(self.client.get('/api/catalog/status').json(), self.status)
         self.assertEqual(self.client.get('/api/catalog/project/status').json(), formal_status)
 
