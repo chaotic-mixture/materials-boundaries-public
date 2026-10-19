@@ -4,8 +4,8 @@ The released main baseline admits 1057 source-qualified identities and exactly
 24 reviewed computed composition buckets under formal-project-count-policy/1,
 for 1081 formal project admissions.
 
-This unmerged local experiment contains 1090 source-qualified identities and the
-same 24 computed buckets, totaling 1114. Main remains unchanged. Resource pins
+This unmerged local experiment contains 1092 source-qualified identities and the
+same 24 computed buckets, totaling 1116. Main remains unchanged. Resource pins
 match the local core for reproducible testing; they do not publish a release.
 Neither total is a global physical-uniqueness claim.
 
@@ -57,3 +57,19 @@ catalog-only references, not direct bulk-density measurements or DFT predictions
 scientific-review and raw-reanalysis flags remain false. The 62 excluded computed
 examples and every earlier registry anchor remain unchanged. These local
 resource pins neither publish a release nor migrate an older database.
+
+The subsequent bounded PUR formulation batch adds LPO-2 and SPO-3 from the
+existing Ivdre source, each with one measured apparent-density reference
+(43.5 and 43.2 kg/m^3). The principal reactive-polyol input ratios distinguish
+these source-scoped formulations; study labels, catalyst changes and precursor
+feed labels alone are not identity criteria. No additional grade or source is
+created. The core now has 1092 identities, states and properties, including 18
+polymers; the project view has 1116 entries. Other categories, 21 grades, 116
+sources, 24 reviewed computed buckets and 62 excluded examples are unchanged.
+See the [PUR formulation packet](../experimental/material-batches/pur-formulations-20261019/README.md).
+Density uncertainty, density-specific specimen count and test temperature,
+humidity, pressure and specimen dimensions remain unknown. Room-temperature
+curing is separate from test temperature. References remain catalog-only;
+independent scientific review and raw-data reanalysis remain false.
+
+The PUR data commit is `4361b6018fcac09571b261983ce286c84f3841e5`.

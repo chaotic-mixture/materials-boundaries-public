@@ -37,7 +37,7 @@ class CatalogAPI(unittest.TestCase):
         self.assertEqual(self.client.get('/openapi.json').json()['info']['version'],'0.5.0.dev0')
         from materials_platform import __version__ as umbrella_version
         self.assertEqual(umbrella_version,'0.5.0.dev0')
-        self.assertEqual(self.status['counts']['local_catalog_unique_material_count'],1090)
+        self.assertEqual(self.status['counts']['local_catalog_unique_material_count'],1092)
         self.assertFalse(self.status['provider_counts_combined'])
         for name in ('version','content_digest','runtime_digest'): self.assertRegex(self.status[name],r'^[a-f0-9]{64}$')
     def test_03_exact_baseline_parity(self):
@@ -158,6 +158,58 @@ class CatalogAPI(unittest.TestCase):
                 self.assertEqual(formal.status_code, 200)
                 self.assertEqual(formal.json()['matched_count'], 1)
                 self.assertEqual(formal.json()['records'][0]['identity'], value['identity'])
+        self.assertEqual(self.client.get('/api/catalog/status').json(), self.status)
+        self.assertEqual(self.client.get('/api/catalog/project/status').json(), formal_status)
+
+    def test_pur_formulation_batch_two_property_resolutions(self):
+        cases = (('lpo2', '43.5', 'Lupranol 3300 66 g; Lupranol 3422 34 g'),
+                 ('spo3', '43.2', 'SA-C_TOFA(50:50)/TMP 40 g'))
+        formal_status = self.client.get('/api/catalog/project/status').json()
+        for suffix, number, formulation in cases:
+            with self.subTest(formulation=suffix):
+                identity_id = 'mat_ivdre2024_' + suffix + '_rigid_pur'
+                state_id = 'state_ivdre2024_' + suffix + '_rigid_pur'
+                property_id = 'refprop_ivdre2024_' + suffix + '_rigid_pur_mass_density'
+                response = self.post('resolve', state_id=state_id)
+                self.assertEqual(response.status_code, 200)
+                value = response.json()['result']
+                self.assertEqual(value['identity']['id'], identity_id)
+                self.assertEqual(value['identity']['category'], 'polymer')
+                self.assertIsNone(value['grade'])
+                self.assertIn(formulation, value['state']['state']['composition_or_purity']['text'])
+                self.assertEqual([source['id'] for source in value['sources']],
+                                 ['ivdre_2024_lpo_rigid_pur'])
+                self.assertEqual(len(value['properties']), 1)
+                prop = value['properties'][0]
+                self.assertEqual(prop['id'], property_id)
+                self.assertEqual(prop['quantity'], 'mass_density')
+                self.assertEqual(prop['reported_value']['number'], number)
+                self.assertEqual(prop['reported_value']['unit_code'], 'kg/m^3')
+                self.assertEqual(prop['summary_statistic'], 'reported_value')
+                self.assertEqual(prop['density_basis'], 'apparent')
+                self.assertEqual(prop['determination_basis'], 'source_reports_measurement')
+                self.assertEqual(prop['evidence_kind'], 'published_experimental_reference')
+                self.assertEqual(prop['conditions']['test_standard']['text'], 'ISO 845:2006')
+                self.assertIsNone(prop['conditions']['temperature']['text'])
+                self.assertIn('24 h at room temperature', prop['conditions']['conditioning']['text'])
+                conditions = {row['name']: row['fact'] for row in prop['conditions']['additional_conditions']}
+                for name in ('density_test_humidity', 'density_test_pressure', 'density_specimen_dimensions'):
+                    self.assertEqual(conditions[name]['status'], 'not_reported_in_inspected_source')
+                    self.assertIsNone(conditions[name]['text'])
+                self.assertIsNone(prop['uncertainty'])
+                self.assertIsNone(prop['sample_count']['value'])
+                self.assertEqual(prop['evaluation_support'], 'catalog_only')
+                self.assertFalse(prop['engineering_allowable'])
+                self.assertFalse(prop['verification']['independent_scientific_review'])
+                self.assertFalse(prop['verification']['raw_data_reanalysis'])
+                exact = self.post('record', kind='reference-properties', record_id=property_id)
+                self.assertEqual(exact.status_code, 200)
+                self.assertEqual(exact.json()['result'], prop)
+                selected = self.client.post('/api/catalog/project/list', json={
+                    'version': formal_status['version'], 'record_id': 'legacy:' + identity_id})
+                self.assertEqual(selected.status_code, 200)
+                self.assertEqual(selected.json()['matched_count'], 1)
+                self.assertEqual(selected.json()['records'][0]['identity'], value['identity'])
         self.assertEqual(self.client.get('/api/catalog/status').json(), self.status)
         self.assertEqual(self.client.get('/api/catalog/project/status').json(), formal_status)
 

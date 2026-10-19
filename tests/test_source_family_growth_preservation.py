@@ -6,6 +6,7 @@ import tempfile
 import unittest
 
 import source_family_growth_preservation as history
+from pur_formulation_preservation import project_pur_catalogs, project_pur_file
 from material_append_history import appended_rows, recover_catalogs, recover_file
 from materials_boundaries.material_references import material_quota_coverage
 from scripts.prepare_formulation_packet import write_packet
@@ -25,6 +26,7 @@ class SourceFamilyGrowthPreservationTests(unittest.TestCase):
         cls.ledger = history.data_ledger()
         cls.current = {name: json.loads((ROOT / "materials_boundaries/data" / filename).read_bytes())
                        for name, filename in history.FILES.items()}
+        cls.current = project_pur_catalogs(cls.current)
         cls.baseline = history.recover_growth_catalogs(cls.current)
         cls.additions = appended_rows(ROOT, cls.ledger)
 
@@ -130,7 +132,7 @@ class SourceFamilyGrowthPreservationTests(unittest.TestCase):
 
     def test_all_finite_file_images_round_trip_and_reject_drift(self):
         for filename, entry in history.file_ledger()["updates"].items():
-            raw = (ROOT / filename).read_bytes()
+            raw = project_pur_file(filename, (ROOT / filename).read_bytes())
             previous = recover_file(raw, entry)
             self.assertEqual(history.digest(raw), entry["sha256"])
             self.assertEqual(history.digest(previous), entry["previous_sha256"])

@@ -122,3 +122,68 @@ def recover_file(raw, entry):
     if b"".join(chunks) + previous[cursor:] != raw:
         raise AssertionError("Append-history file round trip failed")
     return previous
+
+
+def _ordered_catalog_ledgers(ledgers):
+    """Require an explicit newest-first chain of adjacent frozen data images."""
+    if not isinstance(ledgers, (list, tuple)):
+        raise AssertionError("Append-history chain must be an explicit finite sequence")
+    for newer, older in zip(ledgers, ledgers[1:]):
+        if newer["baseline_sha256"] != older["current_sha256"]:
+            raise AssertionError("Append-history catalog chain is not adjacent or ordered")
+    return ledgers
+
+
+def project_catalog_chain(root, current, ledgers):
+    """Remove recognized finite successors; older callers still validate input.
+
+    This is a compatibility projection, not a permissive recovery or admission
+    API. A partial known append enters strict recovery and fails. A graph with
+    no known additions is passed to the older layer's unchanged exact checks.
+    """
+    graph_hashes(current)
+    for ledger in _ordered_catalog_ledgers(ledgers):
+        additions = appended_rows(root, ledger)
+        if (graph_hashes(current) == ledger["current_sha256"]
+                or any(any(row.get("id") in {item["id"] for item in additions[name]}
+                           for row in current[table][field])
+                       for name, (table, field) in TABLES.items())):
+            current = recover_catalogs(root, current, ledger)
+    return current
+
+
+def project_file_chain(filename, raw, ledgers):
+    """Reverse only known byte images; the historical caller rejects others."""
+    if type(filename) is not str or type(raw) is not bytes or not isinstance(ledgers, (list, tuple)):
+        raise AssertionError("Invalid finite file projection input")
+    entries = [ledger["updates"][filename] for ledger in ledgers if filename in ledger["updates"]]
+    for newer, older in zip(entries, entries[1:]):
+        if newer["previous_sha256"] != older["sha256"]:
+            raise AssertionError("Append-history file chain is not adjacent or ordered")
+    for entry in entries:
+        if digest(raw) == entry["sha256"]:
+            raw = recover_file(raw, entry)
+    return raw
+
+
+def project_catalog_bytes_chain(root, filename, raw, ledgers):
+    """Align the whole disk graph before substituting a known historical file.
+
+    Replacing one current table with an older image before projecting the other
+    tables would create a partial append. Each prefix is therefore recovered on
+    the complete graph first, before the matching single-file image is used.
+    """
+    if filename not in FILES.values() or type(raw) is not bytes:
+        raise AssertionError("Unknown append-history catalog path or input type")
+    ledgers = _ordered_catalog_ledgers(ledgers)
+    name = next(key for key, value in FILES.items() if value == filename)
+    for index, ledger in enumerate(ledgers):
+        if (ledger["current_sha256"][name] != ledger["baseline_sha256"][name]
+                and digest(raw) == ledger["current_sha256"][name]):
+            graph = {key: json.loads((root / "materials_boundaries/data" / path).read_bytes(),
+                                    object_pairs_hook=unique_keys)
+                     for key, path in FILES.items()}
+            graph = project_catalog_chain(root, graph, ledgers[:index])
+            graph[name] = json.loads(raw, object_pairs_hook=unique_keys)
+            raw = encoded(recover_catalogs(root, graph, ledger)[name])
+    return raw

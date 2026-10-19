@@ -10,11 +10,11 @@ from test_nomad_batch import fixture, run
 class ReviewBoundaryTests(unittest.TestCase):
     def test_formal_and_example_counts_remain_separate(self):
         boundary = load_review_boundary()
-        self.assertEqual(boundary['formal_project_total'], 1114)
-        self.assertEqual(boundary['formal_legacy_count'], 1090)
-        self.assertEqual(boundary['baseline_commit'], 'bc7bdeeff498c4186cdf86c33e88943c45ecfc75')
+        self.assertEqual(boundary['formal_project_total'], 1116)
+        self.assertEqual(boundary['formal_legacy_count'], 1092)
+        self.assertEqual(boundary['baseline_commit'], '4361b6018fcac09571b261983ce286c84f3841e5')
         self.assertEqual(boundary['source_sha256'][LEGACY[0]],
-                         '1241e7e60513cbf1df4929d4b2bbc972b8b6a1c592e22cfbfa1c9e39ce8a7471')
+                         'e0ee99ff62bb2d982a260da2a89f6d8b3068277ac9ba304aad4f2669810b9598')
         self.assertEqual(boundary['formal_computed_composition_count'], 24)
         self.assertEqual(boundary['excluded_example_count'], 62)
         self.assertEqual(boundary['legacy_example_count'], 7)

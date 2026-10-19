@@ -26,7 +26,8 @@ PIN_SHA256 = '259d5d0e87635fec6f87ce544c8a252494038cbb1643228eeb685d5501f17897'
 INTEGRATED_PIN_SHA256 = 'f1a1e3e379f9b7befba595b54477f15a26364548798b28dd65be8bc4326c0df4'
 PRE_EVIDENCE_BATCH_PIN_SHA256 = '3782f403f120f22b5287e01f4e207419e2f576a28dfda33a89a85580b936c0f6'
 PRE_GROWTH_BATCH_PIN_SHA256 = '8fda4f7a4355c88f0e4e9e713c01f236a907985b4720454e338d8d95eff4770e'
-CURRENT_PIN_SHA256 = '0d2f515260b78841249f5b48331f8a80fc9164bd58bb57c592f7adfed3d96277'
+PRE_PUR_BATCH_PIN_SHA256 = '0d2f515260b78841249f5b48331f8a80fc9164bd58bb57c592f7adfed3d96277'
+CURRENT_PIN_SHA256 = '73b8b455042290c0f752e784f23687eaf3bbc8dc7631ced311af7af216f08d6e'
 GROWTH_ROOT = Path(__file__).resolve().parents[4]
 GROWTH_LEDGER = GROWTH_ROOT / 'tests/fixtures/source_family_growth_data_20261019.json'
 GROWTH_LEDGER_SHA256 = '9dfc8d71e89041f05e11a870ad29aea34cb3ab90586bcea8f1d717adc9878ac3'
@@ -44,6 +45,15 @@ GROWTH_COLLECTIONS = (
     ('reference_properties.json', 'properties', 'records', 'properties'),
     ('sources.json', 'sources', 'records', 'sources'),
 )
+PUR_LEDGER = GROWTH_ROOT / 'tests/fixtures/pur_formulation_data_20261019.json'
+PUR_LEDGER_SHA256 = '541a4e325834ed992246489846bcfcf83480bfb86494ec2a212d78de821bf167'
+PUR_PACKET = GROWTH_ROOT / 'experimental/material-batches/pur-formulations-20261019/prepared-packet.json'
+PUR_PACKET_SHA256 = '2c5320856ba07892eac6b35d6b881bb3ab21126e801beefa2b887c77abd93be7'
+PRE_PUR_BATCH_DATA_SHA256 = {
+    'materials.json': '1241e7e60513cbf1df4929d4b2bbc972b8b6a1c592e22cfbfa1c9e39ce8a7471',
+    'reference_properties.json': '5d275d4de23a2fe28541c739b91c1c496ab4bc69ed63f8843fc5a1902c72025d',
+    'sources.json': '4ba9dcd9258cd1e2d9e17bdf20b4fdaa39e081e77779d12eb726ee91b19835ae',
+}
 PRE_EVIDENCE_BATCH_DATA_SHA256 = {
     'materials.json': '193f431190af502eb5c2121ff077bf59ddc9b708ae5ad786160bdc8287c83c83',
     'reference_properties.json': '03f9d1062c7e94f6c5078eea2309f016da0eac1c305fde6afeff1029757bf22d',
@@ -243,48 +253,49 @@ def manifest(root):
             for p in root.rglob('*') if p.is_file() and p.suffix in {'.py', '.json'}}
 
 
-def growth_batch_inventory():
-    """Read finite frozen evidence independently of the core recovery engine."""
-    raw = GROWTH_LEDGER.read_bytes()
-    if sha256(raw).hexdigest() != GROWTH_LEDGER_SHA256:
-        raise AssertionError('Growth batch ledger bytes differ')
+def frozen_append_inventory(descriptor):
+    """Read a closed, pinned test descriptor independently of core recovery code."""
+    label = descriptor['label']
+    raw = descriptor['ledger'].read_bytes()
+    if sha256(raw).hexdigest() != descriptor['ledger_sha256']:
+        raise AssertionError(label + ' ledger bytes differ')
     ledger = json.loads(raw)
     names = {'materials.json': 'materials', 'reference_properties.json': 'properties',
              'sources.json': 'sources'}
-    if (ledger['baseline_commit'] != 'c90188dcd5ac3a19863be0b49419722571b17eff'
-            or ledger['baseline_sha256'] != {names[k]: v for k, v in PRE_GROWTH_BATCH_DATA_SHA256.items()}
+    if (ledger['baseline_commit'] != descriptor['parent_commit']
+            or ledger['baseline_sha256'] != {names[k]: v for k, v in descriptor['parent_data'].items()}
             or len(ledger['packets']) != 1):
-        raise AssertionError('Growth batch parent or packet inventory differs')
-    descriptor = ledger['packets'][0]
-    if (descriptor['path'] != GROWTH_PACKET.relative_to(GROWTH_ROOT).as_posix()
-            or descriptor['sha256'] != GROWTH_PACKET_SHA256):
-        raise AssertionError('Growth batch packet binding differs')
-    raw = GROWTH_PACKET.read_bytes()
-    if sha256(raw).hexdigest() != GROWTH_PACKET_SHA256:
-        raise AssertionError('Growth batch packet bytes differ')
+        raise AssertionError(label + ' parent or packet inventory differs')
+    packet_info = ledger['packets'][0]
+    if (packet_info['path'] != descriptor['packet'].relative_to(GROWTH_ROOT).as_posix()
+            or packet_info['sha256'] != descriptor['packet_sha256']):
+        raise AssertionError(label + ' packet binding differs')
+    raw = descriptor['packet'].read_bytes()
+    if sha256(raw).hexdigest() != descriptor['packet_sha256']:
+        raise AssertionError(label + ' packet bytes differ')
     packet = json.loads(raw)
     packet_parent = packet['input']['baseline_sha256']
     if packet_parent != {'materials': ledger['baseline_sha256']['materials'],
                          'reference_properties': ledger['baseline_sha256']['properties'],
                          'sources': ledger['baseline_sha256']['sources']}:
-        raise AssertionError('Growth batch packet parent resources differ')
+        raise AssertionError(label + ' packet parent resources differ')
     additions = {}
-    for filename, section, collection, label in GROWTH_COLLECTIONS:
-        identifiers = descriptor['added_ids'][label]
+    for filename, section, collection, kind in GROWTH_COLLECTIONS:
+        identifiers = packet_info['added_ids'][kind]
         rows = [row for row in packet['catalogs'][section][collection]
                 if row['id'] in identifiers]
         if len(set(identifiers)) != len(identifiers) or len(rows) != len(identifiers):
-            raise AssertionError('Growth batch duplicate or missing addition')
-        additions[label] = rows
-    if {label: len(rows) for label, rows in additions.items()} != {
-            'identities': 6, 'grades': 0, 'states': 6, 'properties': 6, 'sources': 0}:
-        raise AssertionError('Growth batch exact addition counts differ')
+            raise AssertionError(label + ' duplicate or missing addition')
+        additions[kind] = rows
+    if {kind: len(rows) for kind, rows in additions.items()} != descriptor['addition_counts']:
+        raise AssertionError(label + ' exact addition counts differ')
     return ledger, additions
 
 
-def recover_pre_growth_batch_catalogs(current):
-    """Recover c901 only from its exact resources or the complete six-row append."""
-    ledger, additions = growth_batch_inventory()
+def recover_exact_append_catalogs(current, descriptor):
+    """Accept only the complete predecessor or successor of one frozen append."""
+    ledger, additions = frozen_append_inventory(descriptor)
+    label = descriptor['label']
     names = {'materials.json': 'materials', 'reference_properties.json': 'properties',
              'sources.json': 'sources'}
     def hashes(catalogs):
@@ -295,21 +306,58 @@ def recover_pre_growth_batch_catalogs(current):
     if actual == ledger['baseline_sha256']:
         return deepcopy(current)
     catalogs = deepcopy(current)
-    for filename, section, collection, label in GROWTH_COLLECTIONS:
-        candidates = additions[label]
+    for filename, section, collection, kind in GROWTH_COLLECTIONS:
+        candidates = additions[kind]
         identifiers = {row['id'] for row in candidates}
         rows = catalogs[filename][collection]
         for candidate in candidates:
             matches = [row for row in rows if row['id'] == candidate['id']]
             if len(matches) != 1 or registry.canonical(matches[0]) != registry.canonical(candidate):
-                raise AssertionError('Growth batch requires every unchanged addition')
-        # Shared source rows are deliberately absent from added_ids and retained.
+                raise AssertionError(label + ' requires every unchanged addition')
+        # Shared source rows are absent from added_ids and always retained.
         catalogs[filename][collection] = [row for row in rows if row['id'] not in identifiers]
     if hashes(catalogs) != ledger['baseline_sha256']:
-        raise AssertionError('Growth batch predecessor catalog bytes differ')
+        raise AssertionError(label + ' predecessor catalog bytes differ')
     if actual != ledger['current_sha256']:
-        raise AssertionError('Growth batch successor catalog order or bytes differ')
+        raise AssertionError(label + ' successor catalog order or bytes differ')
     return catalogs
+
+
+def growth_batch_descriptor():
+    return {'label': 'Growth batch', 'ledger': GROWTH_LEDGER,
+            'ledger_sha256': GROWTH_LEDGER_SHA256, 'packet': GROWTH_PACKET,
+            'packet_sha256': GROWTH_PACKET_SHA256,
+            'parent_commit': 'c90188dcd5ac3a19863be0b49419722571b17eff',
+            'parent_data': PRE_GROWTH_BATCH_DATA_SHA256,
+            'addition_counts': {'identities': 6, 'grades': 0, 'states': 6,
+                                'properties': 6, 'sources': 0}}
+
+
+def growth_batch_inventory():
+    return frozen_append_inventory(growth_batch_descriptor())
+
+
+def recover_pre_growth_batch_catalogs(current):
+    """Retain the exact c901-to-six-oxide scope; later appends are not accepted."""
+    return recover_exact_append_catalogs(current, growth_batch_descriptor())
+
+
+def pur_batch_descriptor():
+    return {'label': 'PUR batch', 'ledger': PUR_LEDGER,
+            'ledger_sha256': PUR_LEDGER_SHA256, 'packet': PUR_PACKET,
+            'packet_sha256': PUR_PACKET_SHA256,
+            'parent_commit': '2509ee231edb62872ed323e8346895bd55c36c92',
+            'parent_data': PRE_PUR_BATCH_DATA_SHA256,
+            'addition_counts': {'identities': 2, 'grades': 0, 'states': 2,
+                                'properties': 2, 'sources': 0}}
+
+
+def pur_batch_inventory():
+    return frozen_append_inventory(pur_batch_descriptor())
+
+
+def recover_pre_pur_batch_catalogs(current):
+    return recover_exact_append_catalogs(current, pur_batch_descriptor())
 
 
 def evidence_batch_catalogs():
@@ -414,15 +462,34 @@ class BaselineCompatibility(unittest.TestCase):
         cls.original_identity = sha256(json.dumps(
             cls.expected, sort_keys=True, separators=(',', ':'), ensure_ascii=False,
             allow_nan=False).encode()).hexdigest()
+        cls.recover_pur_anchor()
         cls.recover_growth_anchor()
         cls.recover_integrated_anchor()
         cls.recover_historical_anchor()
 
     @classmethod
+    def recover_pur_anchor(cls):
+        """Recover the exact 2509 data and complete pin before older append layers."""
+        cls.pur_parent_root = cls.fixture_root / 'pre-pur-batch-data'
+        shutil.copytree(cls.original_root, cls.pur_parent_root)
+        data_root = cls.pur_parent_root / 'data'
+        current = {name: json.loads((data_root / name).read_bytes())
+                   for name in PRE_PUR_BATCH_DATA_SHA256}
+        for name, value in recover_pre_pur_batch_catalogs(current).items():
+            (data_root / name).write_bytes((json.dumps(value, ensure_ascii=False,
+                indent=2, allow_nan=False) + '\n').encode('utf-8'))
+        cls.pur_parent_pin = registry.canonical(manifest(cls.pur_parent_root))
+        if sha256(cls.pur_parent_pin).hexdigest() != PRE_PUR_BATCH_PIN_SHA256:
+            raise AssertionError('Recovered 2509 complete pin bytes differ')
+        cls.pur_parent_query_root = cls.fixture_root / 'pre-pur-batch-query'
+        (cls.pur_parent_query_root / 'pins').mkdir(parents=True)
+        (cls.pur_parent_query_root / 'pins/legacy_baseline.json').write_bytes(cls.pur_parent_pin)
+
+    @classmethod
     def recover_growth_anchor(cls):
         """Recover the exact c901 data and complete pin before older append layers."""
         cls.growth_parent_root = cls.fixture_root / 'pre-growth-batch-data'
-        shutil.copytree(cls.original_root, cls.growth_parent_root)
+        shutil.copytree(cls.pur_parent_root, cls.growth_parent_root)
         data_root = cls.growth_parent_root / 'data'
         current = {name: json.loads((data_root / name).read_bytes())
                    for name in PRE_GROWTH_BATCH_DATA_SHA256}
@@ -592,12 +659,88 @@ class BaselineCompatibility(unittest.TestCase):
         with self.assertRaisesRegex(AssertionError, 'Recovered a592 catalog bytes differ'):
             recover_a592_catalogs(changed)
 
+    def test_pur_batch_parent_manifest_and_catalog_recovery_remain_exact(self):
+        expected = dict(self.expected)
+        expected.update({'data/' + name: digest for name, digest in PRE_PUR_BATCH_DATA_SHA256.items()})
+        self.assertEqual(len(manifest(self.pur_parent_root)), 64)
+        self.assertEqual(manifest(self.pur_parent_root), expected)
+        current = {name: json.loads((self.current_root / 'data' / name).read_bytes())
+                   for name in PRE_PUR_BATCH_DATA_SHA256}
+        parent = {name: json.loads((self.pur_parent_root / 'data' / name).read_bytes())
+                  for name in PRE_PUR_BATCH_DATA_SHA256}
+        self.assertEqual(recover_pre_pur_batch_catalogs(current), parent)
+        self.assertEqual(recover_pre_pur_batch_catalogs(parent), parent)
+        self.assertEqual(current['sources.json'], parent['sources.json'])
+        self.assertEqual(current['materials.json']['grades'], parent['materials.json']['grades'])
+        with self.assertRaisesRegex(AssertionError, 'Growth batch predecessor catalog bytes differ'):
+            recover_pre_growth_batch_catalogs(current)
+        ledger, additions = pur_batch_inventory()
+        for filename, section, collection, label in GROWTH_COLLECTIONS:
+            if not additions[label]:
+                continue
+            candidate = additions[label][0]
+            for mutation in ('missing', 'changed', 'duplicate'):
+                with self.subTest(collection=label, mutation=mutation):
+                    changed = deepcopy(current)
+                    rows = changed[filename][collection]
+                    row = next(row for row in rows if row['id'] == candidate['id'])
+                    if mutation == 'missing':
+                        rows.remove(row)
+                    elif mutation == 'changed':
+                        row['version'] = 'unreviewed'
+                    else:
+                        rows.append(deepcopy(row))
+                    with self.assertRaisesRegex(AssertionError, 'PUR batch'):
+                        recover_pre_pur_batch_catalogs(changed)
+        for filename, collection in [('materials.json', 'identities'), ('sources.json', 'records')]:
+            changed = deepcopy(current)
+            changed[filename][collection][0]['version'] = 'unreviewed'
+            with self.subTest(retained_collection=collection), self.assertRaisesRegex(
+                    AssertionError, 'PUR batch predecessor catalog bytes differ'):
+                recover_pre_pur_batch_catalogs(changed)
+        changed = deepcopy(current)
+        changed['materials.json']['identities'][-2:] = reversed(changed['materials.json']['identities'][-2:])
+        with self.assertRaisesRegex(AssertionError, 'PUR batch successor catalog order or bytes differ'):
+            recover_pre_pur_batch_catalogs(changed)
+        original_read = Path.read_bytes
+        for target in (PUR_LEDGER, PUR_PACKET):
+            def replaced(path):
+                return original_read(path) + (b' ' if path == target else b'')
+            with self.subTest(binding=target.name), patch.object(Path, 'read_bytes', replaced), \
+                    self.assertRaisesRegex(AssertionError, 'PUR batch .* bytes differ'):
+                recover_pre_pur_batch_catalogs(current)
+        with self.resources(self.pur_parent_root, self.pur_parent_query_root):
+            with self.assertRaisesRegex(ValueError, 'Baseline pin was replaced'):
+                registry.baseline_digest()
+            with patch.object(registry, 'BASELINE_PIN', PRE_PUR_BATCH_PIN_SHA256):
+                self.assertEqual(registry.baseline_digest(), PRE_PUR_BATCH_PIN_SHA256)
+        with self.resources(self.pur_parent_root), self.assertRaisesRegex(
+                ValueError, 'Installed legacy baseline differs'):
+            registry.baseline_digest()
+
+    def test_pur_batch_parent_database_rejected_without_migration(self):
+        for rich in (False, True):
+            with self.subTest(rich=rich):
+                review = self.review(rich)
+                path = self.work / ('2509-v2.db' if rich else '2509-legacy.db')
+                with self.resources(self.pur_parent_root, self.pur_parent_query_root), \
+                        patch.object(registry, 'BASELINE_PIN', PRE_PUR_BATCH_PIN_SHA256):
+                    historical = self.make_registry(path, review, rich)
+                    before = historical.admit([review['records'][0]['candidate_id']])
+                raw = path.read_bytes()
+                rows = self.database_rows(path)
+                with self.assertRaisesRegex(ValueError, 'Initial baseline and review input cannot be replaced'):
+                    self.make_registry(path, review, rich)
+                self.assertEqual(path.read_bytes(), raw)
+                self.assertEqual(self.database_rows(path), rows)
+                self.assertEqual(historical.snapshot(), before)
+
     def test_growth_batch_parent_manifest_and_catalog_recovery_remain_exact(self):
         expected = dict(self.expected)
         expected.update({'data/' + name: digest for name, digest in PRE_GROWTH_BATCH_DATA_SHA256.items()})
         self.assertEqual(len(manifest(self.growth_parent_root)), 64)
         self.assertEqual(manifest(self.growth_parent_root), expected)
-        current = {name: json.loads((self.current_root / 'data' / name).read_bytes())
+        current = {name: json.loads((self.pur_parent_root / 'data' / name).read_bytes())
                    for name in PRE_GROWTH_BATCH_DATA_SHA256}
         parent = {name: json.loads((self.growth_parent_root / 'data' / name).read_bytes())
                   for name in PRE_GROWTH_BATCH_DATA_SHA256}

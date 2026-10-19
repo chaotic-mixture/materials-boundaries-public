@@ -172,7 +172,7 @@ main remains at 1081; the 62 excluded computed examples remain excluded.
 
 ## Six-oxide source-family growth, 2026-10-19
 
-The current local snapshot contains **1114 project entries = 1090 source-qualified
+The preceding six-oxide snapshot contained **1114 project entries = 1090 source-qualified
 identities + 24 reviewed computed compositions** after six NBS oxide references:
 BeO, MgO, CaO, rutile TiO2, CuO and CeO2. Core categories are natural 1010,
 metal 22, inorganic 32, polymer 16 and composite 10; project categories are
@@ -200,3 +200,43 @@ See the [six-oxide packet](../../material-batches/nbs-oxide-density-20261019/REA
 Released main and the 62 excluded computed examples remain unchanged. Validation
 is reported in the batch evidence; this section does not claim a new full-suite,
 live-provider or browser run.
+
+## Bounded PUR formulation increment, 2026-10-19
+
+The current local snapshot contains **1116 project entries = 1092 source-qualified
+identities + 24 reviewed computed compositions**. The two new polymer identities
+are the source-defined LPO-2 and SPO-3 reactive-polyol formulations, with reported
+apparent densities of 43.5 and 43.2 kg/m^3. Their main reactive-polyol input ratios
+distinguish them from existing LPO-1 and SPO-2 references. Study labels are not
+certified grades, and precursor-feed ratios are not final foam composition.
+
+Core categories are natural 1010, metal 22, inorganic 32, polymer 18 and composite
+10; project categories are natural 1010, metal 34, inorganic 44, polymer 18 and
+composite 10. The relationship view has 1092 identities and 1097 supported
+memberships, including 19 polymer memberships and the same one identity
+relationship. Overlapping memberships do not add materials. There are 1092
+states and properties, 21 grades and 116 sources; both new records reuse the
+same registered source and create no grade.
+
+The API preserves the source-reported ISO 845:2006 method, exact density values,
+apparent-density classification and source-specific formulation prose.
+Uncertainty, density-specific sample count, test temperature, humidity, pressure
+and density-specimen dimensions remain unknown. The 24-hour room-temperature
+cure is a preparation condition, not an assigned density-test temperature.
+Catalog-only scope and false scientific-review/raw-reanalysis flags remain.
+See the [PUR formulation packet](../../material-batches/pur-formulations-20261019/README.md).
+Released main and the 62 excluded computed examples remain unchanged. Validation
+is recorded with this bounded batch; no full-suite, browser or live-provider
+validation is implied.
+
+The current complete query manifest anchor is `73b8b455042290c0f752e784f23687eaf3bbc8dc7631ced311af7af216f08d6e`,
+bound to data commit `4361b6018fcac09571b261983ce286c84f3841e5`. The preceding
+`0d2f515260b78841249f5b48331f8a80fc9164bd58bb57c592f7adfed3d96277`
+anchor stays historical. Independent query tests bind the PUR ledger and packet,
+remove only their two identities, two states and two properties, and recover the
+exact 2509 resources and complete 64-file manifest before the existing
+six-oxide-to-c901, PA12-to-12cb and older layers. Shared source rows and grades
+remain intact. The older recovery layer retains its exact original scope;
+partial, modified, duplicated, reordered or unrelated changes fail closed.
+Old registry and NOMAD state directories stay in their original scope and are
+not silently migrated or relabeled.

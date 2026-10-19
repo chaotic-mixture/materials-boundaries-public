@@ -1,11 +1,12 @@
 """Finite c90188d recovery using the reusable material append-history engine."""
-import json
 from pathlib import Path
 
 from material_append_history import (
     FILES, TABLES, appended_rows, digest, encoded, graph_hashes,
-    load_frozen, recover_catalogs, recover_file,
+    load_frozen, project_catalog_bytes_chain, project_catalog_chain,
+    project_file_chain, recover_catalogs, recover_file,
 )
+import pur_formulation_preservation as pur_history
 
 ROOT = Path(__file__).resolve().parents[1]
 BASELINE_COMMIT = "c90188dcd5ac3a19863be0b49419722571b17eff"
@@ -24,39 +25,19 @@ def file_ledger():
 
 
 def recover_growth_catalogs(current):
+    current = pur_history.project_pur_catalogs(current)
     return recover_catalogs(ROOT, current, data_ledger())
 
 
 def project_growth_catalogs(current):
     """Project this append only; older layers still validate their own images."""
-    additions = appended_rows(ROOT, data_ledger())
-    if any(any(row.get("id") in {item["id"] for item in additions[name]}
-               for row in current[table][field])
-           for name, (table, field) in TABLES.items()):
-        return recover_growth_catalogs(current)
-    return current
+    return project_catalog_chain(ROOT, current, [pur_history.data_ledger(), data_ledger()])
 
 
 def project_growth_file(filename, raw):
     """Recognize the finite new image; leave predecessor checks to older layers."""
-    if type(raw) is not bytes:
-        raise AssertionError("Growth file input must be bytes")
-    entries = file_ledger()["updates"]
-    if filename in entries and digest(raw) == entries[filename]["sha256"]:
-        return recover_file(raw, entries[filename])
-    return raw
+    return project_file_chain(filename, raw, [pur_history.file_ledger(), file_ledger()])
 
 
 def project_growth_catalog_bytes(filename, raw):
-    if filename not in FILES.values() or type(raw) is not bytes:
-        raise AssertionError("Unknown growth catalog path or input type")
-    ledger = data_ledger()
-    name = next(key for key, value in FILES.items() if value == filename)
-    if ledger["current_sha256"][name] == ledger["baseline_sha256"][name]:
-        return raw
-    if digest(raw) == ledger["current_sha256"][name]:
-        graph = {key: json.loads((ROOT / "materials_boundaries/data" / path).read_bytes())
-                 for key, path in FILES.items()}
-        graph[name] = json.loads(raw)
-        return encoded(recover_growth_catalogs(graph)[name])
-    return raw
+    return project_catalog_bytes_chain(ROOT, filename, raw, [pur_history.data_ledger(), data_ledger()])
