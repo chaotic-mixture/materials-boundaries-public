@@ -1,0 +1,212 @@
+{
+  "schema": "candidate-preparation-receipt/1",
+  "started_at_utc": "2026-10-19T23:21:36.049971+00:00",
+  "command": [
+    "python",
+    "scripts/prepare_formulation_packet.py",
+    "--spec",
+    "experimental\\material-batches\\nbs-binary-oxide-density-20261019\\packet-spec.json",
+    "--baseline-dir",
+    "materials_boundaries/data",
+    "--output",
+    "experimental\\material-batches\\nbs-binary-oxide-density-20261019\\prepared-packet.json"
+  ],
+  "runs": [
+    {
+      "ordinal": 1,
+      "exit_code": 0,
+      "stdout": "Created review-only formulation packet: experimental\\material-batches\\nbs-binary-oxide-density-20261019\\prepared-packet.json\nCandidate identity delta: 6\nHandoff ready: yes\nFormal admitted delta: 0. Source transcription is not scientific approval; runtime catalogs unchanged.\n",
+      "stderr": "",
+      "artifact": {
+        "sha256": "0511e82ef9279928629f8e05076ba5050988de4e18081593d3bb8cbd1bfaa28e",
+        "bytes": 202095,
+        "mtime_ns": 1792452100574450600
+      }
+    },
+    {
+      "ordinal": 2,
+      "exit_code": 0,
+      "stdout": "Unchanged review-only formulation packet: experimental\\material-batches\\nbs-binary-oxide-density-20261019\\prepared-packet.json\nCandidate identity delta: 6\nHandoff ready: yes\nFormal admitted delta: 0. Source transcription is not scientific approval; runtime catalogs unchanged.\n",
+      "stderr": "",
+      "artifact": {
+        "sha256": "0511e82ef9279928629f8e05076ba5050988de4e18081593d3bb8cbd1bfaa28e",
+        "bytes": 202095,
+        "mtime_ns": 1792452100574450600
+      }
+    }
+  ],
+  "product_tests_run": false,
+  "network_used": false,
+  "same_bytes_and_mtime": true,
+  "finished_at_utc": "2026-10-19T23:21:45.128458+00:00",
+  "spec_sha256": "a79479db7bb1b9b7e53063b3231696875c26cb8f26f3fb284ca63dc44e63e40c",
+  "canonical_spec_sha256": "e9ac162e9ab1921de519aad41c6c38bf0971266c0e18f85ac04ecaf4cd907607",
+  "report": {
+    "baseline_sha256": {
+      "materials": "0113657bc3c6ac7acf82944198f0be3c3c245fc8d59575194fd676fe1dbfe522",
+      "reference_properties": "f9caa99826b7bb2436974f3550bc9076c80363606491ae3454c7b26baac46f69",
+      "sources": "4ba9dcd9258cd1e2d9e17bdf20b4fdaa39e081e77779d12eb726ee91b19835ae"
+    },
+    "before": {
+      "identities": 1103,
+      "grades": 21,
+      "states": 1103,
+      "properties": 1103,
+      "sources": 116,
+      "categories": {
+        "metal": 22,
+        "inorganic": 43,
+        "polymer": 18,
+        "composite": 10,
+        "natural": 1010
+      }
+    },
+    "after": {
+      "identities": 1109,
+      "grades": 21,
+      "states": 1109,
+      "properties": 1109,
+      "sources": 116,
+      "categories": {
+        "metal": 22,
+        "inorganic": 49,
+        "polymer": 18,
+        "composite": 10,
+        "natural": 1010
+      }
+    },
+    "delta": {
+      "identities": 6,
+      "grades": 0,
+      "states": 6,
+      "properties": 6,
+      "sources": 0,
+      "categories": {
+        "metal": 0,
+        "inorganic": 6,
+        "polymer": 0,
+        "composite": 0,
+        "natural": 0
+      }
+    },
+    "formal_admitted_delta": 0,
+    "handoff_ready": true,
+    "pending_gates": [],
+    "identity_crosswalk": [
+      {
+        "identity_id": "mat_nbs1953_as2o3",
+        "source_id": "swanson_tatge_1953_nbs_circ539v1",
+        "source_designations": [
+          "As2O3, Mallinckrodt sample No. 906487, recrystallized by sublimation, selected cubic arsenolite"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "swanson_tatge_1953_nbs_circ539v1",
+            "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+            "locator": "Section 2.27, printed p. 53 / one-based PDF p. 57, left column: Mallinckrodt sample No. 906487, supplier spectrographic impurity range and recrystallization by sublimation; selected cubic arsenolite discussion continues from printed p. 51 / PDF p. 55.",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "As2O3 has no standalone composition match in the pinned 1103 core identities or 24 accepted computed reduced compositions. The independent frozen-catalog check includes all identity/state/property strings, common aliases and exact computed element maps. Elemental materials and constituent mentions are not this oxide identity. Supplier, sample, phase and temperature do not add counting credit. Preserve the reported impurity range without assigning a single numerical purity or a separate value to each constituent. No separate quantitative post-sublimation reassay or percentage basis is established. The selected cubic arsenolite sample is not the monoclinic claudetite or natural-specimen comparison. Sublimation temperature and duration remain unknown; 25 degrees C is the source-normalized cell/density condition."
+      },
+      {
+        "identity_id": "mat_nbs1953_geo2",
+        "source_id": "swanson_tatge_1953_nbs_circ539v1",
+        "source_designations": [
+          "GeO2, Johnson Matthey sample No. 3662, selected hexagonal phase"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "swanson_tatge_1953_nbs_circ539v1",
+            "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+            "locator": "Section 2.26, printed p. 51 / one-based PDF p. 55, upper left: Johnson, Matthey sample No. 3662 and supplier spectrographic calcium trace; right column: hexagonal NBS phase and discussion of an incorrectly labeled historical ASTM card.",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "GeO2 has no standalone composition match in the pinned 1103 core identities or 24 accepted computed reduced compositions. The independent frozen-catalog check includes all identity/state/property strings, common aliases and exact computed element maps. Elemental materials and constituent mentions are not this oxide identity. Supplier, sample, phase and temperature do not add counting credit. The analysis is attributed to the supplier, not promoted to a quantitative NBS assay. The historical ASTM card labeled tetragonal is discussed as a mislabel; this selected reference follows the source-designated hexagonal NBS phase and is not universal across GeO2 polymorphs. The temperature qualifier belongs to the NBS unit-cell determination and is not separately stated in the density sentence. Preserve the reported density string 4.280 including its trailing zero."
+      },
+      {
+        "identity_id": "mat_nbs1953_nio",
+        "source_id": "swanson_tatge_1953_nbs_circ539v1",
+        "source_designations": [
+          "NiO, Johnson Matthey sample No. 3087, historical NBS cubic classification"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "swanson_tatge_1953_nbs_circ539v1",
+            "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+            "locator": "Section 2.24, printed p. 47 / one-based PDF p. 51, right column: Johnson, Matthey sample No. 3087, supplier estimated purity and NBS qualitative spectroscopy; printed p. 48 / PDF p. 52, top: historical rhombohedral interpretation; printed p. 49 / PDF p. 53, top left: NBS did not resolve line doubling.",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "NiO has no standalone composition match in the pinned 1103 core identities or 24 accepted computed reduced compositions. The independent frozen-catalog check includes all identity/state/property strings, common aliases and exact computed element maps. Elemental materials and constituent mentions are not this oxide identity. Supplier, sample, phase and temperature do not add counting credit. The supplier estimate is not recast as an independent quantitative NBS 99.99-percent assay, and no percentage basis or certified grade is inferred. The source discusses Rooksby line splitting at 18 degrees C interpreted as slight rhombohedral distortion; NBS did not resolve the doubling. Retain the historical cubic classification and unresolved-distortion caveat without claiming that NBS disproved another structure."
+      },
+      {
+        "identity_id": "mat_nbs1953_seo2",
+        "source_id": "swanson_tatge_1953_nbs_circ539v1",
+        "source_designations": [
+          "SeO2, specially purified Mallinckrodt material mixed with petrolatum, selected tetragonal lattice with weak monohydrate reflections excluded"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "swanson_tatge_1953_nbs_circ539v1",
+            "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+            "locator": "Section 2.28, printed p. 53 / one-based PDF p. 57, right column: specially purified Mallinckrodt material, NBS spectrographic impurity bound, hygroscopicity, petrolatum mixing and omitted weak monohydrate reflections; tetragonal source assignment.",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "SeO2 has no standalone composition match in the pinned 1103 core identities or 24 accepted computed reduced compositions. The independent frozen-catalog check includes all identity/state/property strings, common aliases and exact computed element maps. Elemental materials and constituent mentions are not this oxide identity. Supplier, sample, phase and temperature do not add counting credit. The selected density belongs only to the source-assigned tetragonal SeO2 lattice, not the bulk of the petrolatum/monohydrate mixture. The per-impurity spectrographic bound is not a total-purity guarantee or evidence of no hydration. Monohydrate and petrolatum fractions remain unknown. Historical monoclinic descriptions and probable space-group alternatives are not promoted to a new structure determination."
+      },
+      {
+        "identity_id": "mat_nbs1953_sno2",
+        "source_id": "swanson_tatge_1953_nbs_circ539v1",
+        "source_designations": [
+          "SnO2, Johnson Matthey sample No. 2763, selected tetragonal cassiterite"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "swanson_tatge_1953_nbs_circ539v1",
+            "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+            "locator": "Section 2.29, printed p. 54 / one-based PDF p. 58, lower-left heading/sample paragraph continuing at upper right: Johnson, Matthey sample No. 2763 and the accompanying qualitative spectrographic report; right column: tetragonal source phase.",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "SnO2 has no standalone composition match in the pinned 1103 core identities or 24 accepted computed reduced compositions. The independent frozen-catalog check includes all identity/state/property strings, common aliases and exact computed element maps. Elemental materials and constituent mentions are not this oxide identity. Supplier, sample, phase and temperature do not add counting credit. The accompanying report is qualitative, not a separately established NBS quantitative assay or certified grade. Individual impurity identities/concentrations and percentage basis remain unknown. The temperature qualifier belongs to the underlying NBS unit-cell determination and is not separately stated in the density sentence."
+      },
+      {
+        "identity_id": "mat_nbs1953_tho2",
+        "source_id": "swanson_tatge_1953_nbs_circ539v1",
+        "source_designations": [
+          "ThO2, Lindsay Light and Chemical Company material with supplier-stated purity, selected cubic phase"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "swanson_tatge_1953_nbs_circ539v1",
+            "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+            "locator": "Section 2.31, printed p. 57 / one-based PDF p. 61, upper right: Lindsay Light and Chemical Company of West Chicago material and supplier-stated 99.99 percent purity; printed p. 58 / PDF p. 62, left column: fluorite-type face-centered cubic structure.",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "ThO2 has no standalone composition match in the pinned 1103 core identities or 24 accepted computed reduced compositions. The independent frozen-catalog check includes all identity/state/property strings, common aliases and exact computed element maps. Elemental materials and constituent mentions are not this oxide identity. Supplier, sample, phase and temperature do not add counting credit. The 99.99-percent figure remains a supplier statement, not an independently established NBS quantitative assay, exact universal purity or certified grade. Sample number, preparation protocol, impurity breakdown and percentage basis are unknown. Temperature data missing for comparison patterns are not substituted for the explicit selected NBS condition."
+      }
+    ]
+  }
+}
