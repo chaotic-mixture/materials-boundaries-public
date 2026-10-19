@@ -1,0 +1,250 @@
+{
+  "schema": "candidate-preparation-receipt/1",
+  "started_at_utc": "2026-10-19T21:24:38.440226+00:00",
+  "command": [
+    "python",
+    "scripts/prepare_formulation_packet.py",
+    "--spec",
+    "experimental\\material-batches\\nbs-salt-densities-20261019\\packet-spec.json",
+    "--baseline-dir",
+    "materials_boundaries/data",
+    "--output",
+    "experimental\\material-batches\\nbs-salt-densities-20261019\\prepared-packet.json"
+  ],
+  "runs": [
+    {
+      "ordinal": 1,
+      "exit_code": 0,
+      "stdout": "Created review-only formulation packet: experimental\\material-batches\\nbs-salt-densities-20261019\\prepared-packet.json\nCandidate identity delta: 8\nHandoff ready: yes\nFormal admitted delta: 0. Source transcription is not scientific approval; runtime catalogs unchanged.\n",
+      "stderr": "",
+      "artifact": {
+        "sha256": "091239fd1cc6e4d7d8429aab381f1a9525f62293339fc4fbea230142f53b541f",
+        "bytes": 223065,
+        "mtime_ns": 1792445082951637900
+      }
+    },
+    {
+      "ordinal": 2,
+      "exit_code": 0,
+      "stdout": "Unchanged review-only formulation packet: experimental\\material-batches\\nbs-salt-densities-20261019\\prepared-packet.json\nCandidate identity delta: 8\nHandoff ready: yes\nFormal admitted delta: 0. Source transcription is not scientific approval; runtime catalogs unchanged.\n",
+      "stderr": "",
+      "artifact": {
+        "sha256": "091239fd1cc6e4d7d8429aab381f1a9525f62293339fc4fbea230142f53b541f",
+        "bytes": 223065,
+        "mtime_ns": 1792445082951637900
+      }
+    }
+  ],
+  "product_tests_run": false,
+  "network_used": false,
+  "same_bytes_and_mtime": true,
+  "finished_at_utc": "2026-10-19T21:24:47.513845+00:00",
+  "spec_sha256": "32fbf1e10b1e1acae5a8a51b900c9221bd6c81976a207a63a0fbee0e609affd3",
+  "canonical_spec_sha256": "fe47d8f2b4dc7efb0c2958333c7cde2a3b1be8534b625663ee04a4faa1df221b",
+  "report": {
+    "baseline_sha256": {
+      "materials": "e0ee99ff62bb2d982a260da2a89f6d8b3068277ac9ba304aad4f2669810b9598",
+      "reference_properties": "03e76d2afa3854ecb9cf5c745f9af59b3abb76fe6d6f8e7430cd25648b5478f2",
+      "sources": "4ba9dcd9258cd1e2d9e17bdf20b4fdaa39e081e77779d12eb726ee91b19835ae"
+    },
+    "before": {
+      "identities": 1092,
+      "grades": 21,
+      "states": 1092,
+      "properties": 1092,
+      "sources": 116,
+      "categories": {
+        "metal": 22,
+        "inorganic": 32,
+        "polymer": 18,
+        "composite": 10,
+        "natural": 1010
+      }
+    },
+    "after": {
+      "identities": 1100,
+      "grades": 21,
+      "states": 1100,
+      "properties": 1100,
+      "sources": 116,
+      "categories": {
+        "metal": 22,
+        "inorganic": 40,
+        "polymer": 18,
+        "composite": 10,
+        "natural": 1010
+      }
+    },
+    "delta": {
+      "identities": 8,
+      "grades": 0,
+      "states": 8,
+      "properties": 8,
+      "sources": 0,
+      "categories": {
+        "metal": 0,
+        "inorganic": 8,
+        "polymer": 0,
+        "composite": 0,
+        "natural": 0
+      }
+    },
+    "formal_admitted_delta": 0,
+    "handoff_ready": true,
+    "pending_gates": [],
+    "identity_crosswalk": [
+      {
+        "identity_id": "mat_nbs1953_ba_no3_2",
+        "source_id": "swanson_tatge_1953_nbs_circ539v1",
+        "source_designations": [
+          "Ba(NO3)2, specially purified Mallinckrodt Chemical Works sample"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "swanson_tatge_1953_nbs_circ539v1",
+            "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+            "locator": "Section 2.51, printed p. 81 / one-based PDF p. 85, right column: specially purified Mallinckrodt sample, supplier spectrographic analysis and simple-cubic structure.",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "Ba(NO3)2 has no standalone composition identity match in the pinned 1092 core identities or 24 accepted computed reduced compositions. Source descriptions, aliases and stoichiometry were checked; constituent/impurity mentions are not identity matches. Supplier, phase and temperature do not add identity credit. The spectrographic analysis is attributed to the supplier, not the NBS laboratory. Per-impurity limits do not establish total purity. No detailed purification recipe, lot or certified grade is reported."
+      },
+      {
+        "identity_id": "mat_nbs1953_hg2cl2",
+        "source_id": "swanson_tatge_1953_nbs_circ539v1",
+        "source_designations": [
+          "Hg2Cl2, General Chemical Company, label No. 1891"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "swanson_tatge_1953_nbs_circ539v1",
+            "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+            "locator": "Section 2.43, printed p. 72 / one-based PDF p. 76, upper right, continuing on printed p. 73 / PDF p. 77, upper left: General Chemical Company label No. 1891 and NBS spectrographic analysis.",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "Hg2Cl2 has no standalone composition identity match in the pinned 1092 core identities or 24 accepted computed reduced compositions. Source descriptions, aliases and stoichiometry were checked; constituent/impurity mentions are not identity matches. Supplier, phase and temperature do not add identity credit. The alkali detection limit is not a total-purity specification or proof of absence. No quantitative overall purity, percentage basis or preparation recipe is established."
+      },
+      {
+        "identity_id": "mat_nbs1953_hgcl2",
+        "source_id": "swanson_tatge_1953_nbs_circ539v1",
+        "source_designations": [
+          "HgCl2, J. T. Baker Chemical Company, sample No. 101742"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "swanson_tatge_1953_nbs_circ539v1",
+            "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+            "locator": "Section 2.44, printed p. 73 / one-based PDF p. 77, right column: J. T. Baker Chemical Company sample No. 101742 and NBS spectrographic analysis.",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "HgCl2 has no standalone composition identity match in the pinned 1092 core identities or 24 accepted computed reduced compositions. Source descriptions, aliases and stoichiometry were checked; constituent/impurity mentions are not identity matches. Supplier, phase and temperature do not add identity credit. The per-impurity bound is not a bound on total impurities, an exact overall purity or a certified grade. No sample-specific preparation recipe is established."
+      },
+      {
+        "identity_id": "mat_nbs1953_hgi2",
+        "source_id": "swanson_tatge_1953_nbs_circ539v1",
+        "source_designations": [
+          "HgI2, Mallinckrodt Chemical Works sample stated to be of ACS purity, selected tetragonal phase"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "swanson_tatge_1953_nbs_circ539v1",
+            "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+            "locator": "Section 2.45, printed p. 74 / one-based PDF p. 78, right column: Mallinckrodt Chemical Works sample stated to be of ACS purity, with NBS spectrographic findings.",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "HgI2 has no standalone composition identity match in the pinned 1092 core identities or 24 accepted computed reduced compositions. Source descriptions, aliases and stoichiometry were checked; constituent/impurity mentions are not identity matches. Supplier, phase and temperature do not add identity credit. ACS purity is a source-reported supplied-sample claim, not an independently verified certification. No total numerical purity, supplier lot, red/alpha label or other polymorph density is inferred."
+      },
+      {
+        "identity_id": "mat_nbs1953_kcn",
+        "source_id": "swanson_tatge_1953_nbs_circ539v1",
+        "source_designations": [
+          "KCN, Mallinckrodt Chemical Works, lot GNB"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "swanson_tatge_1953_nbs_circ539v1",
+            "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+            "locator": "Section 2.47, printed p. 77 / one-based PDF p. 81, lower left: Mallinckrodt Chemical Works lot GNB and NBS chemical-laboratory analysis; printed p. 78 / PDF p. 82, left column: cubic structure and unit-cell accuracy qualification.",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "KCN has no standalone composition identity match in the pinned 1092 core identities or 24 accepted computed reduced compositions. Source descriptions, aliases and stoichiometry were checked; constituent/impurity mentions are not identity matches. Supplier, phase and temperature do not add identity credit. Preserve Pb 0.0000 as a printed analytical entry, not proof of absence. No total purity or percentage basis is established. The source notes that unit-cell measurements have not been of very high accuracy, but supplies no numerical density uncertainty. Density explicitly uses 25 degrees C."
+      },
+      {
+        "identity_id": "mat_nbs1953_nacn",
+        "source_id": "swanson_tatge_1953_nbs_circ539v1",
+        "source_designations": [
+          "NaCN, J. T. Baker Chemical Company, sample No. 121444, selected indexed cubic phase"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "swanson_tatge_1953_nbs_circ539v1",
+            "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+            "locator": "Section 2.48, printed p. 78 / one-based PDF p. 82, upper right: J. T. Baker Chemical Company sample No. 121444 and NBS chemical-laboratory analysis; printed p. 79 / PDF p. 83, upper left: sodium-carbonate and orthorhombic-NaCN reflections omitted from the cubic pattern table.",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "NaCN has no standalone composition identity match in the pinned 1092 core identities or 24 accepted computed reduced compositions. Source descriptions, aliases and stoichiometry were checked; constituent/impurity mentions are not identity matches. Supplier, phase and temperature do not add identity credit. The 96.2-percent NaCN sample is not chemically pure or phase-pure. This density belongs only to its indexed cubic phase, not the contaminated specimen as a whole. Preserve the source labels FeCN, SO4, Thiocyanite, CO3 and H2O without chemical reinterpretation; printed 0.00 entries do not prove absence. Do not allocate an exact remaining fraction or modernize Thiocyanite. The NBS-reported ACS statement is not a new certification. Orthorhombic NaCN is excluded and would not add another composition identity."
+      },
+      {
+        "identity_id": "mat_nbs1953_pbfcl",
+        "source_id": "swanson_tatge_1953_nbs_circ539v1",
+        "source_designations": [
+          "PbFCl, NBS chemical laboratory material for the precise determination of fluorine"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "swanson_tatge_1953_nbs_circ539v1",
+            "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+            "locator": "Section 2.46, printed p. 76 / one-based PDF p. 80, left column: NBS chemical laboratory material described as high purity, prepared for a project on precise determination of fluorine; separate natural-matlockite discussion is excluded.",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "PbFCl has no standalone composition identity match in the pinned 1092 core identities or 24 accepted computed reduced compositions. Source descriptions, aliases and stoichiometry were checked; constituent/impurity mentions are not identity matches. Supplier, phase and temperature do not add identity credit. The selected NBS laboratory material is not the separately discussed natural Matlockite specimen. The historical mistaken Pb2OCl2 formula is not assigned to this sample. High purity remains qualitative; no numerical assay, lot or certified grade is established."
+      },
+      {
+        "identity_id": "mat_nbs1953_sr_no3_2",
+        "source_id": "swanson_tatge_1953_nbs_circ539v1",
+        "source_designations": [
+          "Sr(NO3)2, specially purified Mallinckrodt Chemical Works sample"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "swanson_tatge_1953_nbs_circ539v1",
+            "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+            "locator": "Section 2.50, printed p. 80 / one-based PDF p. 84, upper right, continuing on printed p. 81 / PDF p. 85, left column: specially purified Mallinckrodt sample and supplier spectrographic analysis; simple-cubic structure.",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "Sr(NO3)2 has no standalone composition identity match in the pinned 1092 core identities or 24 accepted computed reduced compositions. Source descriptions, aliases and stoichiometry were checked; constituent/impurity mentions are not identity matches. Supplier, phase and temperature do not add identity credit. The spectrographic analysis is attributed to the supplier, not the NBS laboratory. Per-impurity limits and traces do not establish total purity. No detailed purification recipe, lot or certified grade is reported."
+      }
+    ]
+  }
+}
