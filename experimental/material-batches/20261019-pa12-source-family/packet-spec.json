@@ -1,0 +1,615 @@
+{
+  "schema": "formulation-packet-spec/1",
+  "batch_id": "20261019-pa12-source-family",
+  "baseline_sha256": {
+    "materials": "193f431190af502eb5c2121ff077bf59ddc9b708ae5ad786160bdc8287c83c83",
+    "reference_properties": "03f9d1062c7e94f6c5078eea2309f016da0eac1c305fde6afeff1029757bf22d",
+    "sources": "3d8b8c6d4891400504ea9bedbafaa06d05698b5324e9cbd7f5686ebc1ac1736f"
+  },
+  "source_records": [
+    {
+      "record": {
+        "id": "zakrecki_cieslik_2025_pa12_ageing",
+        "title": "Influence of Ageing and Post-Processing on the Mechanical and Aesthetic Stability of PA12-Based 3D-Printed Components for Medical Devices",
+        "authors": [
+          "Andrzej Zakręcki",
+          "Jacek Cieślik"
+        ],
+        "year": 2025,
+        "doi": "10.3390/ma18194478",
+        "urls": [
+          "https://doi.org/10.3390/ma18194478",
+          "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML"
+        ],
+        "read_status": "selected_retained_primary_xml_identity_method_result_statistics_and_license_inspected",
+        "license": {
+          "status": "explicit_reuse_license_verified",
+          "identifier": "CC-BY-4.0"
+        },
+        "role": "published_experimental_reference",
+        "claim_notes": [
+          "Materials 18(19), 4478; published 2025-09-25; PMID 41095305; PMCID PMC12525880. Ana Paula Piedade is the editor, not an author.",
+          "Retained Europe PMC XML: 229979 bytes, SHA-256 4d930d221c67d38199460f1f80b86a2a724a0b2986a77e09081172d5a83c42d7. This hash identifies retained XML, not a PDF or a fresh download.",
+          "The article-specific permissions state CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). The selected original Table 7 result has no separate third-party credit. Manufacturer-derived Tables 1 and 2 and source assets are excluded.",
+          "Table 7 also reports excluded SLS Reference modulus 1.41 GPa, SD 0.04 GPa, CV 3.48%; that unresolved statistical discrepancy is preserved, not repaired or imported.",
+          "PA2200 is treated only as a source-designated EOS grade for one source-qualified PA12 representative. No distinct-chemistry inference from trade names, universal grade equivalence, or medical suitability/certification claim."
+        ],
+        "provenance": {
+          "curation_date": "2026-10-19",
+          "method": "Previously retained Europe PMC full-text XML inspected on 2026-10-19: article metadata and permissions; sections 2.1-2.3 and 2.4; Table 5 identity/treatment/sample count; Table 7 SLS Reference tensile-strength Mean 43.72 MPa, Std 1.03 MPa and CV 2.36%. The selected facts were independently cross-checked in the retained XML. No new network retrieval, PDF visual inspection, raw-data reanalysis, experimental replication, scientific approval or medical-certification verification is claimed."
+        },
+        "bundled_content": "selected_source_qualified_facts_bibliographic_metadata_and_original_curation_only_no_source_assets"
+      },
+      "sha256": "66df6c8e906f1a8405d7901a8b25978c943252535021e4a2bc938e3aa0c341fb"
+    }
+  ],
+  "contexts": {
+    "identity": {
+      "pa12": {
+        "version": "1.0.0",
+        "category": "polymer"
+      }
+    },
+    "grade": {
+      "source_designated": {
+        "version": "1.0.0"
+      }
+    },
+    "state": {
+      "source_scoped": {
+        "version": "1.0.0"
+      }
+    },
+    "property": {
+      "measured_strength": {
+        "version": "1.0.0",
+        "quantity": "tensile_strength",
+        "quantity_dimension": "pressure",
+        "evidence_kind": "published_experimental_reference",
+        "evaluation_support": "catalog_only",
+        "universal_bound": false,
+        "engineering_allowable": false
+      }
+    }
+  },
+  "formulations": [
+    {
+      "identity": {
+        "context": "pa12",
+        "fields": {
+          "id": "mat_zakrecki2025_pa12_pa2200",
+          "name": "PA12 polymer, EOS PA2200 source-qualified representative",
+          "names": {
+            "en": "PA12 polymer, EOS PA2200 source-qualified representative",
+            "zh": "PA12 polymer, EOS PA2200 source-qualified representative",
+            "ja": "PA12 polymer, EOS PA2200 source-qualified representative",
+            "de": "PA12 polymer, EOS PA2200 source-qualified representative"
+          },
+          "aliases": [],
+          "identity_scope": "One source-qualified PA12 polymer representative identified in the study by the EOS PA2200 trade designation. Composition, not supplier name, print technology, post-processing or age, defines identity. No existing unfilled PA12 identity was identified in the frozen catalog; its PA12-CF15 observations are separate filled-formulation evidence and are not admitted here. This representative does not establish chemical purity, an additive-free formulation, or universal equivalence among PA12 grades. HP PA12 and all other PA12 products remain outside this packet; different manufacturer labels alone do not support additional identities.",
+          "evidence": [
+            {
+              "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+              "locator": "XML section 2.1 (sec2dot1-materials-18-04478), PA2200 trade-name paragraph; Table 5 (materials-18-04478-t005), SLS/PA2200",
+              "supports": [
+                "material_identity",
+                "classification"
+              ]
+            }
+          ]
+        }
+      },
+      "grades": [
+        {
+          "context": "source_designated",
+          "fields": {
+            "id": "grade_zakrecki2025_eos_pa2200",
+            "identity_id": "mat_zakrecki2025_pa12_pa2200",
+            "designation": "PA2200",
+            "authority": {
+              "kind": "source_designation",
+              "name": "Andrzej Zakrecki and Jacek Cieslik (2025), section 2.1 and Table 5"
+            },
+            "manufacturer": {
+              "status": "reported",
+              "text": "EOS",
+              "evidence": [
+                {
+                  "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+                  "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+                  "locator": "XML section 2.1 (sec2dot1-materials-18-04478), PA2200 trade-name paragraph; Table 5 (materials-18-04478-t005), SLS/PA2200",
+                  "supports": [
+                    "material_identity",
+                    "grade"
+                  ]
+                }
+              ],
+              "notes": "Source attribution only; no independent manufacturer or certification audit."
+            },
+            "aliases": [],
+            "evidence": [
+              {
+                "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+                "locator": "XML section 2.1 (sec2dot1-materials-18-04478), PA2200 trade-name paragraph; Table 5 (materials-18-04478-t005), SLS/PA2200",
+                "supports": [
+                  "material_identity",
+                  "grade"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "states": [
+        {
+          "record": {
+            "context": "source_scoped",
+            "fields": {
+              "id": "state_zakrecki2025_pa2200_sls_dyed_reference",
+              "identity_id": "mat_zakrecki2025_pa12_pa2200",
+              "grade_id": "grade_zakrecki2025_eos_pa2200",
+              "name": "EOS PA2200 SLS, dyed unaged reference tensile specimens",
+              "names": {
+                "en": "EOS PA2200 SLS, dyed unaged reference tensile specimens",
+                "zh": "EOS PA2200 SLS, dyed unaged reference tensile specimens",
+                "ja": "EOS PA2200 SLS, dyed unaged reference tensile specimens",
+                "de": "EOS PA2200 SLS, dyed unaged reference tensile specimens"
+              },
+              "aliases": [],
+              "source_designation": "PA2200; SLS / Reference; Powershot C + DM60 + Powershot S",
+              "state": {
+                "product_form": {
+                  "status": "reported",
+                  "text": "Horizontally printed tensile specimens, nominal 160 x 20 x 4 mm",
+                  "evidence": [
+                    {
+                      "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+                      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+                      "locator": "XML sections 2.1-2.2 (sec2dot1-materials-18-04478; sec2dot2-materials-18-04478); Tables 5 and 7, SLS reference treatment",
+                      "supports": [
+                        "state"
+                      ]
+                    }
+                  ],
+                  "notes": null
+                },
+                "processing": {
+                  "status": "reported",
+                  "text": "EOS P396 SLS using the study PA2200 material profile; selected table treatment label Powershot C + DM60 + Powershot S; Black 01 dye",
+                  "evidence": [
+                    {
+                      "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+                      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+                      "locator": "XML sections 2.1-2.2 (sec2dot1-materials-18-04478; sec2dot2-materials-18-04478); Tables 5 and 7, SLS reference treatment",
+                      "supports": [
+                        "state"
+                      ]
+                    }
+                  ],
+                  "notes": "Preserve the Table 5/7 treatment label. Section 2.4 lists the same equipment in a different order; no detailed operation sequence, timing or dye uptake is inferred."
+                },
+                "temper_or_heat_treatment": {
+                  "status": "not_reported_in_inspected_source",
+                  "text": null,
+                  "evidence": [],
+                  "notes": "No separate thermal treatment is assigned to this selected reference state; printer and ageing chamber settings are not tensile-test temperatures."
+                },
+                "conditioning": {
+                  "status": "reported",
+                  "text": "Reference specimens before accelerated ageing, after the selected post-processing",
+                  "evidence": [
+                    {
+                      "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+                      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+                      "locator": "XML sections 2.1-2.2 (sec2dot1-materials-18-04478; sec2dot2-materials-18-04478); Tables 5 and 7, SLS reference treatment",
+                      "supports": [
+                        "state"
+                      ]
+                    }
+                  ],
+                  "notes": "Moisture-equilibration protocol, pre-test temperature and relative humidity are not reported."
+                },
+                "composition_or_purity": {
+                  "status": "reported",
+                  "text": "Source identifies PA2200 as EOS trade name for white PA12",
+                  "evidence": [
+                    {
+                      "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+                      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+                      "locator": "XML section 2.1 (sec2dot1-materials-18-04478), PA2200 trade-name paragraph; Table 5 (materials-18-04478-t005), SLS/PA2200",
+                      "supports": [
+                        "state"
+                      ]
+                    }
+                  ],
+                  "notes": "Full additive package, purity, lot and dye uptake are not reported. No additive-free or universal PA12 composition is inferred."
+                },
+                "reinforcement": {
+                  "status": "not_reported_in_inspected_source",
+                  "text": null,
+                  "evidence": [],
+                  "notes": "No complete reinforcement/additive declaration is established by the selected passages; absence is not asserted."
+                },
+                "porosity": {
+                  "status": "not_reported_in_inspected_source",
+                  "text": null,
+                  "evidence": [],
+                  "notes": "No porosity value is assigned to this selected state."
+                },
+                "orientation": {
+                  "status": "reported",
+                  "text": "Horizontal XY placement; source states X is the longest specimen direction",
+                  "evidence": [
+                    {
+                      "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+                      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+                      "locator": "XML sections 2.1-2.2 (sec2dot1-materials-18-04478; sec2dot2-materials-18-04478); Tables 5 and 7, SLS reference treatment",
+                      "supports": [
+                        "state"
+                      ]
+                    }
+                  ],
+                  "notes": null
+                }
+              },
+              "source_scope": "One source-qualified PA12 polymer representative identified in the study by the EOS PA2200 trade designation. Composition, not supplier name, print technology, post-processing or age, defines identity. No existing unfilled PA12 identity was identified in the frozen catalog; its PA12-CF15 observations are separate filled-formulation evidence and are not admitted here. This representative does not establish chemical purity, an additive-free formulation, or universal equivalence among PA12 grades. HP PA12 and all other PA12 products remain outside this packet; different manufacturer labels alone do not support additional identities.",
+              "evidence": [
+                {
+                  "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+                  "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+                  "locator": "XML sections 2.1-2.2 (sec2dot1-materials-18-04478; sec2dot2-materials-18-04478); Tables 5 and 7, SLS reference treatment",
+                  "supports": [
+                    "state"
+                  ]
+                }
+              ],
+              "property_ids": [
+                "refprop_zakrecki2025_pa2200_sls_reference_tensile_strength"
+              ],
+              "evaluation_support": "catalog_only"
+            }
+          },
+          "properties": [
+            {
+              "context": "measured_strength",
+              "fields": {
+                "id": "refprop_zakrecki2025_pa2200_sls_reference_tensile_strength",
+                "material_state_id": "state_zakrecki2025_pa2200_sls_dyed_reference",
+                "source_property_label": "σ (MPa)",
+                "reported_value": {
+                  "kind": "scalar",
+                  "value_text": "43.72",
+                  "unit_text": "MPa",
+                  "unit_code": "MPa",
+                  "number": "43.72"
+                },
+                "reporting_basis": "reported_summary",
+                "determination_basis": "source_reports_measurement",
+                "basis_note": "Original Table 7 SLS Reference strength result; no manufacturer-data substitution, curve digitization, statistical repair or pooled estimate.",
+                "conditions": {
+                  "temperature": {
+                    "status": "not_reported_in_inspected_source",
+                    "text": null,
+                    "evidence": [],
+                    "notes": "Tensile-test temperature is not reported. The 23 C ageing-calculation reference and processing/chamber settings are not substituted."
+                  },
+                  "test_standard": {
+                    "status": "reported",
+                    "text": "EN ISO 527-1, as stated by the source",
+                    "evidence": [
+                      {
+                        "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+                        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+                        "locator": "XML section 2.3 (sec2dot3-materials-18-04478), tensile-testing paragraph",
+                        "supports": [
+                          "condition"
+                        ]
+                      }
+                    ],
+                    "notes": "Edition and compliance are not independently verified."
+                  },
+                  "test_method": {
+                    "status": "reported",
+                    "text": "Source-reported tensile testing on an Instron 5969 according to EN ISO 527-1, at 1 mm/min, with a source-described test section length of 115 mm. Nominal printed specimen dimensions are 160 x 20 x 4 mm. The source does not specify the exact strength-extraction rule, stress definition or strain-measurement implementation; 115 mm is not relabeled as a verified extensometer gauge length.",
+                    "evidence": [
+                      {
+                        "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+                        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+                        "locator": "XML section 2.3 (sec2dot3-materials-18-04478), tensile-testing paragraph",
+                        "supports": [
+                          "method",
+                          "condition"
+                        ]
+                      }
+                    ],
+                    "notes": null
+                  },
+                  "direction": {
+                    "status": "reported",
+                    "text": "Specimens printed horizontally in XY, longest side in X",
+                    "evidence": [
+                      {
+                        "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+                        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+                        "locator": "XML sections 2.1-2.2 (sec2dot1-materials-18-04478; sec2dot2-materials-18-04478); Tables 5 and 7, SLS reference treatment",
+                        "supports": [
+                          "condition"
+                        ]
+                      }
+                    ],
+                    "notes": "No isotropic property or transverse result is inferred."
+                  },
+                  "conditioning": {
+                    "status": "reported",
+                    "text": "Unaged reference group after the selected Powershot C + DM60 + Powershot S treatment and Black 01 dye",
+                    "evidence": [
+                      {
+                        "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+                        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+                        "locator": "XML sections 2.1-2.2 (sec2dot1-materials-18-04478; sec2dot2-materials-18-04478); Tables 5 and 7, SLS reference treatment",
+                        "supports": [
+                          "condition"
+                        ]
+                      }
+                    ],
+                    "notes": "Pre-test moisture equilibration and conditioning temperature/humidity are not reported."
+                  },
+                  "loading_rate": {
+                    "status": "reported",
+                    "text": "Source-reported test speed 1 mm/min",
+                    "evidence": [
+                      {
+                        "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+                        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+                        "locator": "XML section 2.3 (sec2dot3-materials-18-04478), tensile-testing paragraph",
+                        "supports": [
+                          "condition"
+                        ]
+                      }
+                    ],
+                    "notes": null
+                  },
+                  "additional_conditions": [
+                    {
+                      "name": "test_relative_humidity",
+                      "fact": {
+                        "status": "not_reported_in_inspected_source",
+                        "text": null,
+                        "evidence": [],
+                        "notes": "No tensile-test relative humidity is stated; no standard laboratory default is assigned."
+                      }
+                    }
+                  ]
+                },
+                "density_basis": null,
+                "summary_statistic": "reported_mean",
+                "uncertainty": {
+                  "type": "reported_standard_deviation",
+                  "value_text": "1.03",
+                  "number": "1.03",
+                  "unit_text": "MPa",
+                  "unit_code": "MPa",
+                  "scope": "Table 7 SLS Reference tensile-strength group only; no SE, CI or allowable is inferred.",
+                  "coverage_factor": null,
+                  "confidence_level": null,
+                  "evidence": [
+                    {
+                      "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+                      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+                      "locator": "XML Table 7 (materials-18-04478-t007), SLS / Reference, Powershot C + DM60 + Powershot S, sigma (MPa) Mean/Std/CV columns",
+                      "supports": [
+                        "uncertainty"
+                      ]
+                    }
+                  ]
+                },
+                "uncertainty_status": "reported_standard_deviation",
+                "uncertainty_note": "Table 7 explicitly labels Mean 43.72 MPa and Std 1.03 MPa; it separately reports CV 2.36%. All three selected strength numbers are retained without recalculation. The excluded modulus discrepancy does not receive a numerical repair.",
+                "sample_count": {
+                  "value": 6,
+                  "relation": "exact",
+                  "scope": "Selected SLS treatment and unaged reference tensile group.",
+                  "source_statement": "Six tensile strength specimens per printing technology, post-processing route and ageing time.",
+                  "evidence": [
+                    {
+                      "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+                      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+                      "locator": "XML section 2.2 (sec2dot2-materials-18-04478), six tensile specimens per technology/treatment/age group; Table 5",
+                      "supports": [
+                        "sample_count"
+                      ]
+                    }
+                  ]
+                },
+                "method_definition": {
+                  "type": "source_reported_conventional",
+                  "definition": "Source-reported tensile testing on an Instron 5969 according to EN ISO 527-1, at 1 mm/min, with a source-described test section length of 115 mm. Nominal printed specimen dimensions are 160 x 20 x 4 mm. The source does not specify the exact strength-extraction rule, stress definition or strain-measurement implementation; 115 mm is not relabeled as a verified extensometer gauge length.",
+                  "extraction_window": null,
+                  "evidence": [
+                    {
+                      "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+                      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+                      "locator": "XML section 2.3 (sec2dot3-materials-18-04478), tensile-testing paragraph",
+                      "supports": [
+                        "method",
+                        "condition"
+                      ]
+                    }
+                  ]
+                },
+                "source_discrepancies": [
+                  {
+                    "description": "The same Table 7 SLS Reference row reports Youngs modulus mean 1.41 GPa, SD 0.04 GPa and CV 3.48%; the displayed mean/SD and their rounding interval do not support that CV.",
+                    "disposition": "Preserve this unresolved source discrepancy and exclude the modulus. The selected tensile-strength mean/SD/CV are a separate reported quantity; no source-wide scientific validation is claimed.",
+                    "evidence": [
+                      {
+                        "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+                        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+                        "locator": "XML Table 7 (materials-18-04478-t007), SLS / Reference, E (GPa) Mean/Std/CV columns",
+                        "supports": [
+                          "source_discrepancy"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "description": "Table 5 and Table 7 label the selected post-processing C + DM60 + S; section 2.4 lists the equipment in a different order.",
+                    "disposition": "Keep the selected table treatment label without inferring a precise operation sequence or times.",
+                    "evidence": [
+                      {
+                        "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+                        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+                        "locator": "XML Tables 5 and 7, selected SLS treatment; section 2.4",
+                        "supports": [
+                          "source_discrepancy",
+                          "state"
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+                "evidence": [
+                  {
+                    "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+                    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+                    "locator": "XML Table 7 (materials-18-04478-t007), SLS / Reference, Powershot C + DM60 + Powershot S, sigma (MPa) Mean/Std/CV columns",
+                    "supports": [
+                      "reported_value",
+                      "summary_statistic",
+                      "classification"
+                    ]
+                  },
+                  {
+                    "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+                    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+                    "locator": "XML section 2.3 (sec2dot3-materials-18-04478), tensile-testing paragraph",
+                    "supports": [
+                      "method",
+                      "condition"
+                    ]
+                  }
+                ],
+                "source_document": {
+                  "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+                  "revision": null,
+                  "inspected_on": "2026-10-19",
+                  "sha256": "4d930d221c67d38199460f1f80b86a2a724a0b2986a77e09081172d5a83c42d7",
+                  "hash_status": "recorded",
+                  "hash_note": null,
+                  "inspection_scope": "Previously retained Europe PMC full-text XML inspected on 2026-10-19: article metadata and permissions; sections 2.1-2.3 and 2.4; Table 5 identity/treatment/sample count; Table 7 SLS Reference tensile-strength Mean 43.72 MPa, Std 1.03 MPa and CV 2.36%. The selected facts were independently cross-checked in the retained XML. No new network retrieval, PDF visual inspection, raw-data reanalysis, experimental replication, scientific approval or medical-certification verification is claimed.",
+                  "inspection_status": "selected_content_inspected"
+                },
+                "scope_note": "One source-qualified PA12 polymer representative identified in the study by the EOS PA2200 trade designation. Composition, not supplier name, print technology, post-processing or age, defines identity. No existing unfilled PA12 identity was identified in the frozen catalog; its PA12-CF15 observations are separate filled-formulation evidence and are not admitted here. This representative does not establish chemical purity, an additive-free formulation, or universal equivalence among PA12 grades. HP PA12 and all other PA12 products remain outside this packet; different manufacturer labels alone do not support additional identities. Selected dyed SLS reference state only; no universal material constant, engineering allowable, automatic calculator input or medical suitability/certification claim.",
+                "verification": {
+                  "source_inspection_scope": "Previously retained Europe PMC full-text XML inspected on 2026-10-19: article metadata and permissions; sections 2.1-2.3 and 2.4; Table 5 identity/treatment/sample count; Table 7 SLS Reference tensile-strength Mean 43.72 MPa, Std 1.03 MPa and CV 2.36%. The selected facts were independently cross-checked in the retained XML. No new network retrieval, PDF visual inspection, raw-data reanalysis, experimental replication, scientific approval or medical-certification verification is claimed.",
+                  "transcription_cross_check": "completed",
+                  "independent_scientific_review": false,
+                  "raw_data_reanalysis": false
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "identity_crosswalk": [
+    {
+      "identity_id": "mat_zakrecki2025_pa12_pa2200",
+      "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+      "source_designations": [
+        "PA2200; SLS / Reference; Powershot C + DM60 + Powershot S"
+      ],
+      "disposition": "distinct",
+      "evidence": [
+        {
+          "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+          "locator": "XML section 2.1 (sec2dot1-materials-18-04478), PA2200 trade-name paragraph; Table 5 (materials-18-04478-t005), SLS/PA2200",
+          "supports": [
+            "material_identity"
+          ]
+        }
+      ],
+      "note": "One source-qualified PA12 polymer representative identified in the study by the EOS PA2200 trade designation. Composition, not supplier name, print technology, post-processing or age, defines identity. No existing unfilled PA12 identity was identified in the frozen catalog; its PA12-CF15 observations are separate filled-formulation evidence and are not admitted here. This representative does not establish chemical purity, an additive-free formulation, or universal equivalence among PA12 grades. HP PA12 and all other PA12 products remain outside this packet; different manufacturer labels alone do not support additional identities. This is a curated candidate distinction from the frozen catalog, not compiler-created scientific approval."
+    }
+  ],
+  "review": {
+    "schema": "pa12-source-family-transcription-review/1",
+    "base_commit": "12cb89ca82b48ba444bdb921674c3d232d448720",
+    "status": "candidate_for_parent_experimental_integration_review",
+    "source_reviews": [
+      {
+        "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+        "status": "selected_facts_checked",
+        "note": "Retained article-specific CC BY 4.0 permissions, Table 7 selected original strength cell and methods checked; source assets and third-party Tables 1/2 excluded. Scientific and licensing review remain separate from compiler validation."
+      }
+    ],
+    "verification": {
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "formal_admitted_delta": 0,
+    "proposed_candidate_delta": {
+      "identities": 1,
+      "grades": 1,
+      "states": 1,
+      "properties": 1,
+      "sources": 1,
+      "polymer": 1
+    },
+    "identity_policy": "One source-qualified PA12 polymer representative identified in the study by the EOS PA2200 trade designation. Composition, not supplier name, print technology, post-processing or age, defines identity. No existing unfilled PA12 identity was identified in the frozen catalog; its PA12-CF15 observations are separate filled-formulation evidence and are not admitted here. This representative does not establish chemical purity, an additive-free formulation, or universal equivalence among PA12 grades. HP PA12 and all other PA12 products remain outside this packet; different manufacturer labels alone do not support additional identities.",
+    "grade_policy": "PA2200 is an explicit source_designation belonging to the selected PA12 representative, not an independently certified grade.",
+    "source_access": {
+      "fresh_requests": 0,
+      "retained_asset": "PMC12525880.xml",
+      "retained_bytes": 229979,
+      "retained_sha256": "4d930d221c67d38199460f1f80b86a2a724a0b2986a77e09081172d5a83c42d7",
+      "inspection_date": "2026-10-19",
+      "pdf_visual_inspection": false
+    },
+    "rights": {
+      "license_identifier": "CC-BY-4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "attribution": "Andrzej Zakrecki and Jacek Cieslik (2025), Influence of Ageing and Post-Processing on the Mechanical and Aesthetic Stability of PA12-Based 3D-Printed Components for Medical Devices, Materials 18(19), 4478, DOI 10.3390/ma18194478.",
+      "adaptation": "Selected factual transcription, structured metadata, authored English fallback names and original scope notes; no source asset or full table.",
+      "assets_included": false,
+      "third_party_comparison_content_included": false
+    },
+    "unknowns": [
+      "Additives, purity, lot and dye uptake",
+      "Tensile-test temperature and relative humidity",
+      "Pre-test moisture equilibration",
+      "Strength-extraction rule, stress definition and strain-measurement implementation",
+      "Exact post-processing sequence and operation times",
+      "Independent standard compliance or medical certification"
+    ],
+    "excluded": [
+      "HP PA12 and a second PA12 identity",
+      "Every ageing, dye, build orientation or process variant as an added identity",
+      "Table 7 disputed modulus and all other properties",
+      "Manufacturer-derived Tables 1 and 2",
+      "Raw XML, PDFs, figures, screenshots and raw measurement data",
+      "Universal PA12 grade equivalence or engineering allowable"
+    ],
+    "deduplication": {
+      "baseline_source_qualified_identity_count": 1083,
+      "baseline_project_count": 1107,
+      "reviewed_computed_count": 24,
+      "excluded_computed_example_count": 62,
+      "basis": "Composition-scope review of all current polymer/composite identities and semantic PA12/nylon-12/polyamide-12 aliases across the complete legacy graph and frozen computed records; no PA12 identity found. Existing polymer families PLA, ABS, PETG, ASA, PC/ABS, PDMS, NR, NBR, PUR, PBS, lignin, PHBV and PBAT are not PA12. Prior PA12-CF15 observations are filled-formulation observations, not admitted pure-PA12 identities. Product-label absence alone is not the distinction argument."
+    },
+    "authorization": {
+      "local_candidate_preparation": "authorized",
+      "runtime_catalog_change": "parent_coordinated_after_review",
+      "main_release": "not_authorized",
+      "doi_registration": "deferred",
+      "public_deployment": "deferred"
+    },
+    "locale_policy": "All four required name slots use the same authored English fallback; no native-language review claimed."
+  }
+}
