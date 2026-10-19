@@ -1,0 +1,169 @@
+{
+  "schema": "formulation-preparation-receipt/1",
+  "batch_id": "mtibe-pbs-pbat-hybrids-20261019",
+  "baseline_commit": "a5cc3f6c47954033db5de7f50220d182cfcff459",
+  "command": [
+    "C:\\Users\\pc\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "scripts/prepare_formulation_packet.py",
+    "--spec",
+    "experimental/material-batches/mtibe-pbs-pbat-hybrids-20261019/packet-spec.json",
+    "--baseline-dir",
+    "materials_boundaries/data",
+    "--output",
+    "experimental/material-batches/mtibe-pbs-pbat-hybrids-20261019/prepared-packet.json"
+  ],
+  "execution_environment": "Native Windows immutable-writer environment; no product tests",
+  "attempts": [
+    {
+      "purpose": "first_creation",
+      "started_utc": "2026-10-19T23:57:42.368986+00:00",
+      "finished_utc": "2026-10-19T23:57:46.986845+00:00",
+      "exit_code": 0,
+      "stdout": "Created review-only formulation packet: experimental\\material-batches\\mtibe-pbs-pbat-hybrids-20261019\\prepared-packet.json\nCandidate identity delta: 3\nHandoff ready: yes\nFormal admitted delta: 0. Source transcription is not scientific approval; runtime catalogs unchanged.\n",
+      "stderr": "",
+      "output_sha256": "8c0dad86412f0708f72a3866cae5a7766db01be99df38f85defd3ba052da388c",
+      "output_bytes": 108620,
+      "output_mtime_ns": 1792454266976438600
+    },
+    {
+      "purpose": "identical_repeat",
+      "started_utc": "2026-10-19T23:57:47.004362+00:00",
+      "finished_utc": "2026-10-19T23:57:51.615778+00:00",
+      "exit_code": 0,
+      "stdout": "Unchanged review-only formulation packet: experimental\\material-batches\\mtibe-pbs-pbat-hybrids-20261019\\prepared-packet.json\nCandidate identity delta: 3\nHandoff ready: yes\nFormal admitted delta: 0. Source transcription is not scientific approval; runtime catalogs unchanged.\n",
+      "stderr": "",
+      "output_sha256": "8c0dad86412f0708f72a3866cae5a7766db01be99df38f85defd3ba052da388c",
+      "output_bytes": 108620,
+      "output_mtime_ns": 1792454266976438600
+    }
+  ],
+  "formal_admitted_delta": 0,
+  "status": "created_then_unchanged",
+  "byte_identity_preserved": true,
+  "mtime_preserved": true,
+  "compiler_report": {
+    "baseline_sha256": {
+      "materials": "d7517f3c4abb76e7275a7291381459e2123eb165d67710744209a979ef20f61b",
+      "reference_properties": "4ca430bf31f24321527f42098b0009aa2648efa14c794c4a6e93617fca9f54b0",
+      "sources": "4ba9dcd9258cd1e2d9e17bdf20b4fdaa39e081e77779d12eb726ee91b19835ae"
+    },
+    "before": {
+      "identities": 1109,
+      "grades": 21,
+      "states": 1109,
+      "properties": 1109,
+      "sources": 116,
+      "categories": {
+        "metal": 22,
+        "inorganic": 49,
+        "polymer": 18,
+        "composite": 10,
+        "natural": 1010
+      }
+    },
+    "after": {
+      "identities": 1112,
+      "grades": 21,
+      "states": 1112,
+      "properties": 1112,
+      "sources": 116,
+      "categories": {
+        "metal": 22,
+        "inorganic": 49,
+        "polymer": 18,
+        "composite": 13,
+        "natural": 1010
+      }
+    },
+    "delta": {
+      "identities": 3,
+      "grades": 0,
+      "states": 3,
+      "properties": 3,
+      "sources": 0,
+      "categories": {
+        "metal": 0,
+        "inorganic": 0,
+        "polymer": 0,
+        "composite": 3,
+        "natural": 0
+      }
+    },
+    "formal_admitted_delta": 0,
+    "handoff_ready": true,
+    "pending_gates": [],
+    "identity_crosswalk": [
+      {
+        "identity_id": "mat_mtibe2022_pbs_pbat_lignin10_zno",
+        "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+        "source_designations": [
+          "90/10/1.5"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+            "locator": "PDF p.3 Table 2, 90/10/1.5 row; sections 2.1-2.3; p.5 section 2.6.2; pp.6-7 section 3.2 and Table 3",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "The pinned 1109 core identities and 24 accepted computed compositions contain no matching source-qualified hybrid. Same-source PBAT and unfilled 100/0/0 PBS/PBAT 70/30 are distinct; the Ewurum PBS/kraft-lignin family lacks this PBAT/lignosulphonate/ZnO formulation. The three selected matrix/lignosulphonate ratios are composition distinctions, not separate treatments or trade-name variants. The internal PBS/PBAT 70/30 ratio basis is unspecified: do not relabel it as mass, volume or wt/wt. Table 2 entries sum to 101.5; the denominator for the stated 1.5 wt.% ZnO is unspecified. Preserve the printed values without normalization, conversion to a complete mass-fraction formula, or an assumed ZnO basis. Lignin denotes the source lignosulphonate, not a generic pure lignin or the separately cataloged kraft-lignin series. Table 3 abbreviates its row labels by omitting ZnO; linkage to Table 2 and sections 2.3 and 2.6.2 supplies the source-qualified hybrid interpretation."
+      },
+      {
+        "identity_id": "mat_mtibe2022_pbs_pbat_lignin15_zno",
+        "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+        "source_designations": [
+          "85/15/1.5"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+            "locator": "PDF p.3 Table 2, 85/15/1.5 row; sections 2.1-2.3; p.5 section 2.6.2; pp.6-7 section 3.2 and Table 3",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "The pinned 1109 core identities and 24 accepted computed compositions contain no matching source-qualified hybrid. Same-source PBAT and unfilled 100/0/0 PBS/PBAT 70/30 are distinct; the Ewurum PBS/kraft-lignin family lacks this PBAT/lignosulphonate/ZnO formulation. The three selected matrix/lignosulphonate ratios are composition distinctions, not separate treatments or trade-name variants. The internal PBS/PBAT 70/30 ratio basis is unspecified: do not relabel it as mass, volume or wt/wt. Table 2 entries sum to 101.5; the denominator for the stated 1.5 wt.% ZnO is unspecified. Preserve the printed values without normalization, conversion to a complete mass-fraction formula, or an assumed ZnO basis. Lignin denotes the source lignosulphonate, not a generic pure lignin or the separately cataloged kraft-lignin series. Table 3 abbreviates its row labels by omitting ZnO; linkage to Table 2 and sections 2.3 and 2.6.2 supplies the source-qualified hybrid interpretation."
+      },
+      {
+        "identity_id": "mat_mtibe2022_pbs_pbat_lignin5_zno",
+        "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+        "source_designations": [
+          "95/5/1.5"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+            "locator": "PDF p.3 Table 2, 95/5/1.5 row; sections 2.1-2.3; p.5 section 2.6.2; pp.6-7 section 3.2 and Table 3",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "The pinned 1109 core identities and 24 accepted computed compositions contain no matching source-qualified hybrid. Same-source PBAT and unfilled 100/0/0 PBS/PBAT 70/30 are distinct; the Ewurum PBS/kraft-lignin family lacks this PBAT/lignosulphonate/ZnO formulation. The three selected matrix/lignosulphonate ratios are composition distinctions, not separate treatments or trade-name variants. The internal PBS/PBAT 70/30 ratio basis is unspecified: do not relabel it as mass, volume or wt/wt. Table 2 entries sum to 101.5; the denominator for the stated 1.5 wt.% ZnO is unspecified. Preserve the printed values without normalization, conversion to a complete mass-fraction formula, or an assumed ZnO basis. Lignin denotes the source lignosulphonate, not a generic pure lignin or the separately cataloged kraft-lignin series. Table 3 abbreviates its row labels by omitting ZnO; linkage to Table 2 and sections 2.3 and 2.6.2 supplies the source-qualified hybrid interpretation."
+      }
+    ]
+  },
+  "bound_files": {
+    "packet-spec.json": {
+      "sha256": "8c7cdd2e583d34573cf9c2d017103315d5b6d36d3c4aa840a5af2ac8d6208d80",
+      "bytes": 58236
+    },
+    "source-review.json": {
+      "sha256": "606819ed654fbb3643d476112611113ec1944acb6bceb3814c85ccd194f594ad",
+      "bytes": 13372
+    },
+    "README.md": {
+      "sha256": "256b90b8f02433b87c856e731c75a73f4ebd2de615695b5df696c4199099482d",
+      "bytes": 6164
+    }
+  }
+}
