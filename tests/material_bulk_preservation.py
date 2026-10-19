@@ -12,6 +12,7 @@ from pathlib import Path
 import re
 from evidence_dedup_preservation import ALLOWED_PATHS as DEDUP_PATHS, pre_evidence_dedup_bytes
 from presentation_fast_path_preservation import ALLOWED_PATHS as PRESENTATION_PATHS, pre_presentation_fast_path_bytes
+from material_class_counts_preservation import normalize_readme_snapshot, pre_class_counts_bytes
 
 ROOT = Path(__file__).resolve().parents[1]
 LEDGER_PATH = 'tests/fixtures/material_bulk_updates_v0350.json'
@@ -259,7 +260,7 @@ def _section(text, name):
 
 def truthful_readme(raw, ledger, *, allow_historical_summary=False, root=None):
     """Validate live counts, allowing only one exact old normalizer intermediate."""
-    text = raw.decode('utf-8')
+    text = normalize_readme_snapshot(raw)
     root = ROOT if root is None else root
     def catalog(name):
         return json.loads((root / 'materials_boundaries/data' / (name + '.json')).read_text(encoding='utf-8'))
@@ -306,6 +307,8 @@ def release_bytes(filename, current, *, ledger=None, allow_historical_summary=Fa
     entries = validate_ledger(ledger)
     if type(current) is not bytes or filename not in ledger['baseline_sha256']:
         raise AssertionError('Unknown v0.35 release file')
+    if filename == '.github/workflows/ci.yml':
+        current = pre_class_counts_bytes(filename, current)
     expected = entries[filename]['sha256'] if filename in entries else ledger['baseline_sha256'][filename]
     if filename in PRESENTATION_PATHS and digest(current) != expected:
         current = pre_presentation_fast_path_bytes(filename, current)

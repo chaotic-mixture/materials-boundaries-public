@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "baseline_commit": "a592c89ede0dcced22579e56fc68b6fab4c55f49",
+  "snapshot": {
+    "data_commit": "5396fd1cc9df72507785a112a21c2990fb4a7c50",
+    "catalog_sha256": {
+      "materials.json": "193f431190af502eb5c2121ff077bf59ddc9b708ae5ad786160bdc8287c83c83",
+      "reference_properties.json": "03f9d1062c7e94f6c5078eea2309f016da0eac1c305fde6afeff1029757bf22d",
+      "sources.json": "3d8b8c6d4891400504ea9bedbafaa06d05698b5324e9cbd7f5686ebc1ac1736f"
+    },
+    "core_identity_count": 1083,
+    "core_category_counts": {
+      "natural": 1010,
+      "metal": 22,
+      "inorganic": 26,
+      "polymer": 15,
+      "composite": 10
+    },
+    "scope": "Dated experimental core snapshot only; excludes the separate 24 reviewed computed identities and all 62 unadmitted computed examples. Dynamic README totals still describe the active reference registry."
+  },
+  "historical_readme_sha256": [
+    "01a41b3c8dec84bf44656cc91f18af27631c4945f17bbef20b1916a412d2d8aa",
+    "1b5553dd050208af0f72a120fc5f01912a1e03c653b880ea03bf0d79175e04db",
+    "1f0edd6058cb7b163bc89018b3ca5cf0f5cf69d22660ec0bf1981377695036dc",
+    "6ee4850e3a2ae93e85e3bd561a4d71c5b5c8120c25a88843870252c7ebb36d34",
+    "8972d031f94b347b3add6cd572e53484897181503101b3599bdb1409bdc13a6d",
+    "8cf7f1c1a3296fd40d739410ab9ec9895109f8e79ec6817ad93c1b916522a004",
+    "afd05a64c7ece82666acc152bb7ff19f3c75556a017ba273bab628c119238ce9",
+    "c03d1df147295077fa3b0f49c37b59d25aa4ba3919623dee78c88c84c0bb1b2f",
+    "ed3e3ec02a9ab3ec20aab089a479497d449280a2190c6c56f0548ee950eb8896"
+  ],
+  "preserved_ledger_sha256": {
+    "tests/fixtures/material_batch_updates_v0300.json": "39f0c79c9197deee7dc09ee14130754341faddd7a1376ab298b3a3aec87ac380",
+    "tests/fixtures/material_bulk_updates_v0350.json": "fa5b5d010dff9dd12e859a41ad02077b5350acc01bac50d001e1fa48184747d4",
+    "tests/fixtures/material_catalog_updates_v0290.json": "a6dbb49725c2c527bc02340e252c111bfd1ce9e393b0163aaf48f53ed156bb52",
+    "tests/fixtures/material_fiber_updates_v0310.json": "598f255b9fd494481b52206fe8c1d133a11c525c5a1120b4eb9a8d8229f94d54",
+    "tests/fixtures/material_measures_updates_v0320.json": "87995a4c1d7c724c88476783585f9f232fa07cc1a3a2530d91e48961093763de",
+    "tests/fixtures/material_polymer_updates_v0340.json": "9c78b514d0aee2b8aa2fe78c621387636ca3e0782e43fb89bba781f5c22f8c11",
+    "tests/fixtures/material_porous_updates_v0330.json": "c9fdb94a8d4f2e730cf76e72f1bff2292071b4d6de0642547ff99a4d041bcdf3",
+    "tests/fixtures/presentation_fast_path_updates_v1.json": "cb21d602f80d59f66889908de1c8a025de5080570c76db4eb4cf5ae3df437544",
+    "tests/fixtures/evidence_dedup_updates_v1.json": "3c7ecc146f216e113a99c636815cce7df9b4c1ee06ec55a736cc781f16c77890"
+  },
+  "updates": [
+    {
+      "filename": "README.md",
+      "previous_sha256": "1f0edd6058cb7b163bc89018b3ca5cf0f5cf69d22660ec0bf1981377695036dc",
+      "sha256": "f571f0b705af86571cdb123d70284bdbfd5df4999a3da2f1f48b203d64a137ca",
+      "edits": [
+        {
+          "offset": 1788,
+          "before": "The separate reference catalogue contains **1079 material identities**, **20 qualified grades**, **1079 source-scoped states** and **1079 reference properties**. Counts describe this registry only; aliases, categories, prior observations and computational model cells are not additional materials.\n",
+          "after": "The separate reference catalogue contains **1083 material identities**, **20 qualified grades**, **1083 source-scoped states** and **1083 reference properties**. Counts describe this registry only; aliases, categories, prior observations and computational model cells are not additional materials.\n"
+        },
+        {
+          "offset": 2125,
+          "before": "The five primary classes are metal, inorganic, polymer, composite and natural biological tissues/fibers. The exact reviewed v2 batch adds 1,000 distinct historical WFO species identities, each with one selected-accession conversion-derived basic-density property. Natural coverage is 1,010; metal 14, inorganic 16, polymer 14 and composite 3 remain below the 1,000-per-class goal. Ten existing biological identities migrate to natural through an exact versioned ledger. Processed biopolymers remain polymer; minerals and rocks remain inorganic. A material counts once by its admitted canonical identity, irrespective of aliases, states or measurements.\n",
+          "after": "The five primary classes are metal, inorganic, polymer, composite and natural biological tissues/fibers. The exact reviewed v2 batch adds 1,000 distinct historical WFO species identities, each with one selected-accession conversion-derived basic-density property. The 2026-10-19 experimental core snapshot (data commit `5396fd1cc9df72507785a112a21c2990fb4a7c50`) has natural 1,010; metal 22, inorganic 26, polymer 15 and composite 10. Only natural reaches the 1,000-per-class goal in this snapshot. Ten existing biological identities migrate to natural through an exact versioned ledger. Processed biopolymers remain polymer; minerals and rocks remain inorganic. A material counts once by its admitted canonical identity, irrespective of aliases, states or measurements.\n"
+        }
+      ]
+    },
+    {
+      "filename": ".github/workflows/ci.yml",
+      "previous_sha256": "87a5412f1f74656323143f2d97b66fb4d0613e8e889989f29e75fd7da8d5676d",
+      "sha256": "791a2237fb00095bfec3b8b809f6588dacb8165a8baf1822a741b06a8b86e371",
+      "edits": [
+        {
+          "offset": 92,
+          "before": "",
+          "after": "    if: ${{ github.event_name != 'push' || github.ref != 'refs/heads/experiment/polymer-composites-20261019' }}\n"
+        },
+        {
+          "offset": 810,
+          "before": "",
+          "after": "    if: ${{ github.event_name != 'push' || github.ref != 'refs/heads/experiment/polymer-composites-20261019' }}\n"
+        },
+        {
+          "offset": 2041,
+          "before": "",
+          "after": "  polymer-composites-targeted:\n    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/experiment/polymer-composites-20261019' }}\n    runs-on: ${{ matrix.os }}\n    timeout-minutes: 60\n    strategy:\n      fail-fast: false\n      matrix:\n        include:\n          - os: ubuntu-latest\n            python-version: '3.11'\n          - os: windows-latest\n            python-version: '3.12'\n    env:\n      PYTHONUTF8: '1'\n      PYTHONDONTWRITEBYTECODE: '1'\n    steps:\n      - run: git config --global core.autocrlf false\n      - uses: actions/checkout@v4\n        with:\n          fetch-depth: 0\n      - uses: actions/setup-python@v5\n        with:\n          python-version: ${{ matrix.python-version }}\n      - run: python scripts/run_polymer_composites_ci.py --validate-scope\n      - run: python -m pip install --no-deps --only-binary=:all: -r experimental/platform/ci/build-requirements.txt\n      - run: python -m pip install --no-build-isolation -e '.[dev]'\n      - run: python scripts/run_polymer_composites_ci.py --test\n      - run: python scripts/validate_catalogs.py\n      - run: python -m pip wheel --no-deps --no-build-isolation --wheel-dir dist . formal-catalog experimental/platform/federation experimental/platform/query-service experimental/platform/lifecycle experimental/platform\n      - run: python -m pip download --no-deps --only-binary=:all: --dest dist/dependencies -r experimental/platform/requirements-lock.txt -r experimental/platform/ci/projection-requirements.txt\n      - run: python scripts/run_polymer_composites_ci.py --wheel-dir dist --dependency-dir dist/dependencies\n"
+        }
+      ]
+    },
+    {
+      "filename": "tests/material_bulk_preservation.py",
+      "previous_sha256": "e0578211864d426a96121cee180514b1ece162fe780178ac3737a97b10fd8c1e",
+      "sha256": "110554c25ce2d0b94abb508e22957a581d4a4b1179b5dd195efdb3a674c97b1c",
+      "edits": [
+        {
+          "offset": 672,
+          "before": "",
+          "after": "from material_class_counts_preservation import normalize_readme_snapshot, pre_class_counts_bytes\n"
+        },
+        {
+          "offset": 14845,
+          "before": "    text = raw.decode('utf-8')\n",
+          "after": "    text = normalize_readme_snapshot(raw)\n"
+        },
+        {
+          "offset": 18526,
+          "before": "",
+          "after": "    if filename == '.github/workflows/ci.yml':\n        current = pre_class_counts_bytes(filename, current)\n"
+        }
+      ]
+    },
+    {
+      "filename": "tests/presentation_fast_path_preservation.py",
+      "previous_sha256": "38ba1d0fd76af94664b3e6c4288a6b7fe3b335f3055bb357333e68c404ec482f",
+      "sha256": "1ed51cc1470913b040c36899da3659a204fd8a0e83cac58dd011a466d3e91b72",
+      "edits": [
+        {
+          "offset": 372,
+          "before": "",
+          "after": "from material_class_counts_preservation import pre_class_counts_bytes\n"
+        },
+        {
+          "offset": 4255,
+          "before": "",
+          "after": "    if filename == 'tests/material_bulk_preservation.py':\n        current = pre_class_counts_bytes(filename, current)\n"
+        }
+      ]
+    },
+    {
+      "filename": "tests/test_presentation_fast_path_preservation.py",
+      "previous_sha256": "3be4c32bec695b0499abb3798c7b20d1d4e3ea4af5430f4b6cd91f7cbdab8a8a",
+      "sha256": "50e58003a6ae796fcc4079939517da5d0a19f17975598b846b64bef2f72419fe",
+      "edits": [
+        {
+          "offset": 294,
+          "before": "",
+          "after": "from material_class_counts_preservation import pre_class_counts_bytes\n"
+        },
+        {
+          "offset": 643,
+          "before": "        self.assertEqual(successor.digest((ROOT / 'tests/presentation_fast_path_preservation.py').read_bytes()), HELPER_SHA256)\n",
+          "after": "        helper = pre_class_counts_bytes('tests/presentation_fast_path_preservation.py',\n                                       (ROOT / 'tests/presentation_fast_path_preservation.py').read_bytes())\n        self.assertEqual(successor.digest(helper), HELPER_SHA256)\n"
+        },
+        {
+          "offset": 1224,
+          "before": "",
+          "after": "                if name == 'tests/material_bulk_preservation.py':\n                    current = pre_class_counts_bytes(name, current)\n"
+        }
+      ]
+    }
+  ]
+}

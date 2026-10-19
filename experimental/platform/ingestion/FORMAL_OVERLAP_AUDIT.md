@@ -1,8 +1,8 @@
 # Offline formal-catalog overlap diagnostics
 
-This standard-library-only command audits the pinned **1103 formal entries** and
+This standard-library-only command audits the pinned **1107 formal entries** and
 compares explicitly supplied local clues. It addresses a gap in
-`nomad_review_boundary`: that index checks the 1079 legacy bytes and count but
+`nomad_review_boundary`: that index checks the 1083 legacy bytes and count but
 indexes only the computed composition groups. The existing catalog text search
 does not search all reported composition text. The new command reuses the formal
 catalog's admission pins, the existing composition parser, canonical hashes,
@@ -58,12 +58,12 @@ source file label and JSON pointer. The mutually exclusive
 | Structured integer composition | 24 | Reviewed computed composition and NOMAD references; phase/site-order and global equivalence remain unresolved. |
 | Scoped canonical taxon identity | 1000 | Accepted WFO ID, tissue scope and historical backbone; no formula is inferred. |
 | Advisory taxon crosswalk | 6 | Five conservative wood/culm exclusions and one cork-versus-wood non-merge rule; these do not repair or replace legacy taxonomy. |
-| Source-qualified text only | 73 | Names, aliases, source/processing scope and sometimes grades or composition prose; no typed composition or canonical taxon key. |
+| Source-qualified text only | 77 | Names, aliases, source/processing scope and sometimes grades or composition prose; no typed composition or canonical taxon key. |
 
-These four classes sum to 1103. Separate field dimensions **overlap**: 71 legacy
+These four classes sum to 1107. Separate field dimensions **overlap**: 75 legacy
 entries have source-supported composition/purity prose, 20 have linked grades,
-and 6 are composites. Do not add those dimensions to estimate coverage. All
-1079 legacy identities lack a structured stoichiometric-composition field.
+and 10 are composites. Do not add those dimensions to estimate coverage. All
+1083 legacy identities lack a structured stoichiometric-composition field.
 The prose is useful evidence for manual comparison, not a trustworthy machine
 formula. Purity ranges, starting powders, additives, constituent ratios, supplier
 grades, specimen state and final retained phases are different claims.
@@ -131,14 +131,15 @@ A formula-only probe finds three possible legacy relations and no confirmed
 overlap: A16SG-derived alumina, an AlN/Y2O3/Al2O3 starting mixture, and a
 Si3N4/Al2O3/Y2O3 starting mixture. Their actual composition text and qualification
 notes remain attached. None is treated as an ideal pure Al2O3 crystal. The other
-1100 entries are `unable_to_compare` for this probe; that count is a diagnostic
+1104 entries are `unable_to_compare` for this probe; that count is a diagnostic
 coverage gap, not a count of novel materials or an assertion that overlap is
 impossible. No new Alexandria network read is performed.
 
-The complete output inventories only formal 1079 + 24 entries. The 62 excluded
+The complete output inventories only formal 1083 + 24 entries. The 62 excluded
 examples, the older seven examples, related provider groups and calculation
 counts are never added to the formal total. This local diagnosis changes no
 scientific, licensing or admission decision and generates no approval workflow.
 
-These are the current `5a11cac` catalog boundaries. Previously retained
-1081-entry diagnostic reports remain historical evidence and are not rewritten.
+These are the current `5396fd1cc9df72507785a112a21c2990fb4a7c50` catalog boundaries.
+Previously retained 1081-entry and predecessor 1103-entry diagnostic reports
+remain historical evidence and are not rewritten.

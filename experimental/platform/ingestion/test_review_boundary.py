@@ -10,13 +10,14 @@ from test_nomad_batch import fixture, run
 class ReviewBoundaryTests(unittest.TestCase):
     def test_formal_and_example_counts_remain_separate(self):
         boundary = load_review_boundary()
-        self.assertEqual(boundary['formal_project_total'], 1103)
-        self.assertEqual(boundary['formal_legacy_count'], 1079)
-        self.assertEqual(boundary['baseline_commit'], '5a11cac383f2a7dc87500e24f22ad0b1f9d9c1d0')
+        self.assertEqual(boundary['formal_project_total'], 1107)
+        self.assertEqual(boundary['formal_legacy_count'], 1083)
+        self.assertEqual(boundary['baseline_commit'], '5396fd1cc9df72507785a112a21c2990fb4a7c50')
         self.assertEqual(boundary['source_sha256'][LEGACY[0]],
-                         'd078f1fb726289bdd6c7faff6f9a4a84d46eed5cd83ba586cd9c2f6ae0256739')
+                         '193f431190af502eb5c2121ff077bf59ddc9b708ae5ad786160bdc8287c83c83')
         self.assertEqual(boundary['formal_computed_composition_count'], 24)
         self.assertEqual(boundary['excluded_example_count'], 62)
+        self.assertEqual(boundary['legacy_example_count'], 7)
         self.assertFalse(boundary['automatic_admission'])
         self.assertIn('unadmitted_example62', boundary['materials']['kKKhHtu2SdSNPod3lMwT16MAr068'])
         self.assertNotIn('formal_admitted24', boundary['materials']['kKKhHtu2SdSNPod3lMwT16MAr068'])

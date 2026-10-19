@@ -12,6 +12,7 @@ from materials_boundaries.material_references import (
     material_quota_coverage, merge_material_catalogs, validate_material_catalog,
 )
 from scripts.integrate_material_candidates import main, write_package
+from test_polymer_composites_increment import has_composite_increment, recover_a592_catalogs
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -54,7 +55,7 @@ def recover_738_catalogs(current):
     sources, row ordering and metadata remain part of the byte-level contract.
     Candidate manifests cannot enlarge this fixed removal allowlist.
     """
-    recovered = deepcopy(current)
+    recovered = recover_a592_catalogs(current) if has_composite_increment(current) else deepcopy(current)
     for table, field, identifiers in (("materials", "identities", NEW_IDENTITIES),
                                       ("materials", "records", NEW_STATES),
                                       ("properties", "records", NEW_PROPERTIES)):
@@ -71,6 +72,7 @@ class PolymerFormulationsIncrementTests(unittest.TestCase):
     def setUpClass(cls):
         cls.current = {name: json.loads((ROOT / "materials_boundaries/data" / filename).read_text(encoding="utf-8"))
                        for name, filename in FILES.items()}
+        cls.current = recover_a592_catalogs(cls.current)
         cls.baseline = recover_738_catalogs(cls.current)
         cls.manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
         if len(cls.manifest["batches"]) != 2:
@@ -268,7 +270,7 @@ class PolymerFormulationsIncrementTests(unittest.TestCase):
             package = json.loads(output.read_text(encoding="utf-8"))
         self.assertEqual(package["catalogs"], self.current)
         for name, filename in FILES.items():
-            self.assertEqual(serialized(package["catalogs"][name]), (ROOT / "materials_boundaries/data" / filename).read_bytes())
+            self.assertEqual(serialized(package["catalogs"][name]), serialized(self.current[name]))
         report = package["report"]
         self.assertEqual(len(report["batches"]), 2)
         self.assertEqual(report["delta"], {"identities": 3, "grades": 0, "states": 3, "properties": 3, "sources": 0,

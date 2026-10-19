@@ -37,7 +37,7 @@ class CatalogAPI(unittest.TestCase):
         self.assertEqual(self.client.get('/openapi.json').json()['info']['version'],'0.5.0.dev0')
         from materials_platform import __version__ as umbrella_version
         self.assertEqual(umbrella_version,'0.5.0.dev0')
-        self.assertEqual(self.status['counts']['local_catalog_unique_material_count'],1079)
+        self.assertEqual(self.status['counts']['local_catalog_unique_material_count'],1083)
         self.assertFalse(self.status['provider_counts_combined'])
         for name in ('version','content_digest','runtime_digest'): self.assertRegex(self.status[name],r'^[a-f0-9]{64}$')
     def test_03_exact_baseline_parity(self):

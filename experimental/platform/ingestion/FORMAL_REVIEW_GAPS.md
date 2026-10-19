@@ -9,7 +9,7 @@ directory search, and creates no approval or admission.
 The 62-record historical metadata acceptance remains intact: 47 metal-family
 and 15 inorganic examples, all outside the formal catalog. The proposed two-row
 subset is always **held**, with **zero formal admissions** from this command.
-Current experimental counts are **1103 = 1079 + 24**; the separate `CaEr2Eu` candidate remains
+Current experimental counts are **1107 = 1083 + 24**; the separate `CaEr2Eu` candidate remains
 held. Original input, review, acceptance pins and formal resources are read-only.
 
 ## Reproduce

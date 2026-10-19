@@ -14,7 +14,7 @@ import math
 import re
 import sqlite3
 
-BASELINE_PIN = 'f1a1e3e379f9b7befba595b54477f15a26364548798b28dd65be8bc4326c0df4'
+BASELINE_PIN = '3782f403f120f22b5287e01f4e207419e2f576a28dfda33a89a85580b936c0f6'
 _EVIDENCE_DEDUP_PREDECESSOR = 'f485759f92bac90a655cbdf9328855c6a863552c258e645e63171dc3a625f82e'
 _EVIDENCE_DEDUP_SUCCESSOR = 'c22295a7e8ab4e360201eb57cb6fc13eba7f8b8ac5e419f35fcf42e8aa81a264'
 _PRESENTATION_PREDECESSOR = '55de108d53fea5ac74dbaad21807a8ff38247d534410d6513173664c56c7610c'
@@ -210,7 +210,7 @@ class ComputedRegistry:
                 'selected_entry_count': len(records),
                 'related_source_calculation_count': len(calculations),
                 'related_source_provider_group_count': len(groups),
-                'legacy_unique_material_count': 1079,
+                'legacy_unique_material_count': 1083,
                 'cross_namespace_equivalence': False, 'relationship_graph_reconstructed': False}
             if len(canonical(result)) > MAX_EXPORT_BYTES:
                 raise ValueError('Overlay exceeds fixed export budget')
@@ -218,7 +218,7 @@ class ComputedRegistry:
         result = {'schema':'computed-overlay-recovery/1', 'namespace':'computed', 'baseline_version':self.baseline,
                   'review_version':self.review_digest, 'overlay_version':digest(records), 'records':records,
                   'project_unique_material_count':len({r['project_material_id'] for r in records}),
-                  'provider_entry_count':len(records), 'legacy_unique_material_count':1079,
+                  'provider_entry_count':len(records), 'legacy_unique_material_count':1083,
                   'cross_namespace_equivalence':False, 'relationship_graph_reconstructed':False}
         if len(canonical(result)) > MAX_EXPORT_BYTES:
             raise ValueError('Overlay exceeds fixed export budget')

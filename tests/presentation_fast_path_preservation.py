@@ -7,6 +7,7 @@ this layer; it neither caches validation nor grants runtime baseline acceptance.
 import hashlib
 import json
 from pathlib import Path
+from material_class_counts_preservation import pre_class_counts_bytes
 
 ROOT = Path(__file__).resolve().parents[1]
 BASELINE_COMMIT = '73f3b0b56f764736e1d4368d0da8fabf1cdf9c7b'
@@ -94,6 +95,8 @@ def pre_presentation_fast_path_bytes(filename, current, *, ledger=None):
     entry = entries[filename]
     if digest(current) == entry['previous_sha256']:
         return current
+    if filename == 'tests/material_bulk_preservation.py':
+        current = pre_class_counts_bytes(filename, current)
     if digest(current) != entry['sha256']:
         raise AssertionError('Unreviewed presentation-fast-path successor bytes')
     chunks, cursor, shift = [], 0, 0

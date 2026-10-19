@@ -24,6 +24,24 @@ from test_computed_v2 import INPUT, review_fixture as rich_review
 
 PIN_SHA256 = '259d5d0e87635fec6f87ce544c8a252494038cbb1643228eeb685d5501f17897'
 INTEGRATED_PIN_SHA256 = 'f1a1e3e379f9b7befba595b54477f15a26364548798b28dd65be8bc4326c0df4'
+CURRENT_PIN_SHA256 = '3782f403f120f22b5287e01f4e207419e2f576a28dfda33a89a85580b936c0f6'
+A592_DATA_SHA256 = {
+    'materials.json': 'd078f1fb726289bdd6c7faff6f9a4a84d46eed5cd83ba586cd9c2f6ae0256739',
+    'reference_properties.json': '4a5242f87beab3e07b0e5667e2fdb77b4b984baa71468978aec01092bb0aaad8',
+    'sources.json': '3d8b8c6d4891400504ea9bedbafaa06d05698b5324e9cbd7f5686ebc1ac1736f',
+}
+# Independent of candidate manifests and core preservation helpers so these
+# checks also run against installed wheels without importing repository tests.
+COMPOSITE_ADDITIONS = frozenset({
+    'ewurum2025_pbs_lignin45', 'bianchi2022_epdm_h_p20',
+    'bianchi2022_epdm_h_p40', 'bianchi2022_epdm_h_p60',
+})
+COMPOSITE_PROPERTIES = frozenset({
+    'refprop_ewurum2025_pbs_lignin45_youngs_modulus',
+    'refprop_bianchi2022_epdm_h_p20_mass_density',
+    'refprop_bianchi2022_epdm_h_p40_mass_density',
+    'refprop_bianchi2022_epdm_h_p60_mass_density',
+})
 HISTORICAL_DATA_SHA256 = {
     'materials.json': 'ffd27ae7a927494083cbdcb173847502283f9ff0f69b8b7321abe0b042824dc1',
     'reference_properties.json': '7430901a0f401aca384debb8706a124ac43ad6d043165beff1b8d186641fddef',
@@ -191,6 +209,26 @@ def manifest(root):
             for p in root.rglob('*') if p.is_file() and p.suffix in {'.py', '.json'}}
 
 
+def recover_a592_catalogs(current):
+    """Remove only this fixed batch and require every parent resource byte."""
+    catalogs = deepcopy(current)
+    materials = catalogs['materials.json']
+    identities = {'mat_' + suffix for suffix in COMPOSITE_ADDITIONS}
+    states = {'state_' + suffix for suffix in COMPOSITE_ADDITIONS}
+    materials['identities'] = [row for row in materials['identities']
+                              if row['id'] not in identities]
+    materials['records'] = [row for row in materials['records'] if row['id'] not in states]
+    catalogs['reference_properties.json']['records'] = [
+        row for row in catalogs['reference_properties.json']['records']
+        if row['id'] not in COMPOSITE_PROPERTIES]
+    for name, expected in A592_DATA_SHA256.items():
+        raw = (json.dumps(catalogs[name], ensure_ascii=False, indent=2,
+                          allow_nan=False) + '\n').encode('utf-8')
+        if sha256(raw).hexdigest() != expected:
+            raise AssertionError('Recovered a592 catalog bytes differ: ' + name)
+    return catalogs
+
+
 class BaselineCompatibility(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -226,19 +264,38 @@ class BaselineCompatibility(unittest.TestCase):
         shutil.copytree(cls.dedup_root, cls.original_root)
         (cls.original_root / 'material_references.py').write_bytes(predecessor)
         cls.pin_bytes = files('materials_query').joinpath('pins/legacy_baseline.json').read_bytes()
-        if sha256(cls.pin_bytes).hexdigest() != INTEGRATED_PIN_SHA256:
-            raise AssertionError('Integrated data pin bytes must remain unchanged')
+        if sha256(cls.pin_bytes).hexdigest() != CURRENT_PIN_SHA256:
+            raise AssertionError('Current data pin bytes differ from the reviewed increment')
         cls.expected = json.loads(cls.pin_bytes)
         cls.original_identity = sha256(json.dumps(
             cls.expected, sort_keys=True, separators=(',', ':'), ensure_ascii=False,
             allow_nan=False).encode()).hexdigest()
+        cls.recover_integrated_anchor()
         cls.recover_historical_anchor()
+
+    @classmethod
+    def recover_integrated_anchor(cls):
+        """Recover the exact a592 data and its complete 64-file logical pin."""
+        cls.integrated_root = cls.fixture_root / 'a592-data'
+        shutil.copytree(cls.original_root, cls.integrated_root)
+        data_root = cls.integrated_root / 'data'
+        current = {name: json.loads((data_root / name).read_bytes())
+                   for name in A592_DATA_SHA256}
+        for name, value in recover_a592_catalogs(current).items():
+            (data_root / name).write_bytes((json.dumps(value, ensure_ascii=False,
+                indent=2, allow_nan=False) + '\n').encode('utf-8'))
+        cls.integrated_pin = registry.canonical(manifest(cls.integrated_root))
+        if sha256(cls.integrated_pin).hexdigest() != INTEGRATED_PIN_SHA256:
+            raise AssertionError('Recovered a592 complete pin bytes differ')
+        cls.integrated_query_root = cls.fixture_root / 'a592-query'
+        (cls.integrated_query_root / 'pins').mkdir(parents=True)
+        (cls.integrated_query_root / 'pins/legacy_baseline.json').write_bytes(cls.integrated_pin)
 
     @classmethod
     def recover_historical_anchor(cls):
         """Reconstruct historical bytes without changing a production trust pin."""
         cls.historical_root = cls.fixture_root / 'historical-data'
-        shutil.copytree(cls.original_root, cls.historical_root)
+        shutil.copytree(cls.integrated_root, cls.historical_root)
         data_root = cls.historical_root / 'data'
         catalogs = {name: json.loads((data_root / name).read_bytes())
                     for name in HISTORICAL_DATA_SHA256}
@@ -333,7 +390,7 @@ class BaselineCompatibility(unittest.TestCase):
         self.assertEqual(manifest(self.current_root), expected_successor)
         self.assertEqual(self.expected['material_references.py'], PREDECESSOR_SHA256)
         self.assertEqual(self.expected['material_presentation.py'], PRESENTATION_PREDECESSOR_SHA256)
-        self.assertEqual(registry.BASELINE_PIN, INTEGRATED_PIN_SHA256)
+        self.assertEqual(registry.BASELINE_PIN, CURRENT_PIN_SHA256)
         for root in (self.original_root, self.dedup_root, self.current_root):
             with self.subTest(root=root.name), self.resources(root):
                 self.assertEqual(registry.baseline_digest(), self.original_identity)
@@ -344,6 +401,47 @@ class BaselineCompatibility(unittest.TestCase):
         review = legacy_review()
         database = self.make_registry(self.work / 'installed.db', review, False)
         self.assertEqual(database.admit(['fixture-entry'])['baseline_version'], self.original_identity)
+
+    def test_a592_complete_manifest_and_catalog_recovery_remain_exact(self):
+        expected = dict(self.expected)
+        expected.update({'data/' + name: digest for name, digest in A592_DATA_SHA256.items()})
+        self.assertEqual(len(manifest(self.integrated_root)), 64)
+        self.assertEqual(manifest(self.integrated_root), expected)
+        parent = {name: json.loads((self.integrated_root / 'data' / name).read_bytes())
+                  for name in A592_DATA_SHA256}
+        self.assertEqual(recover_a592_catalogs(parent), parent)
+        changed = deepcopy(parent)
+        changed['materials.json']['identities'][0]['name'] += ' unreviewed'
+        with self.assertRaisesRegex(AssertionError, 'Recovered a592 catalog bytes differ'):
+            recover_a592_catalogs(changed)
+
+    def test_a592_pin_cannot_replace_current_anchor(self):
+        self.assertNotEqual(CURRENT_PIN_SHA256, INTEGRATED_PIN_SHA256)
+        with self.resources(self.integrated_root, self.integrated_query_root):
+            with self.assertRaisesRegex(ValueError, 'Baseline pin was replaced'):
+                registry.baseline_digest()
+            with patch.object(registry, 'BASELINE_PIN', INTEGRATED_PIN_SHA256):
+                self.assertEqual(registry.baseline_digest(), INTEGRATED_PIN_SHA256)
+        with self.resources(self.integrated_root), self.assertRaisesRegex(
+                ValueError, 'Installed legacy baseline differs'):
+            registry.baseline_digest()
+
+    def test_a592_registry_rejected_without_migration(self):
+        for rich in (False, True):
+            with self.subTest(rich=rich):
+                path = self.work / ('a592-v2.db' if rich else 'a592-legacy.db')
+                review = self.review(rich)
+                with self.resources(self.integrated_root, self.integrated_query_root), \
+                        patch.object(registry, 'BASELINE_PIN', INTEGRATED_PIN_SHA256):
+                    previous = self.make_registry(path, review, rich)
+                    before = previous.admit([review['records'][0]['candidate_id']])
+                database_bytes = path.read_bytes()
+                rows = self.database_rows(path)
+                with self.assertRaisesRegex(ValueError, 'Initial baseline and review input cannot be replaced'):
+                    self.make_registry(path, review, rich)
+                self.assertEqual(path.read_bytes(), database_bytes)
+                self.assertEqual(self.database_rows(path), rows)
+                self.assertEqual(previous.snapshot(), before)
 
     def test_historical_pin_cannot_replace_integrated_anchor(self):
         self.assertNotEqual(PIN_SHA256, INTEGRATED_PIN_SHA256)

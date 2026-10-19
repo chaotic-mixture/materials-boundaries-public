@@ -7,6 +7,7 @@ import unittest
 import evidence_dedup_preservation as dedup
 import material_bulk_preservation as bulk
 import presentation_fast_path_preservation as successor
+from material_class_counts_preservation import pre_class_counts_bytes
 
 ROOT = Path(__file__).resolve().parents[1]
 HELPER_SHA256 = '38ba1d0fd76af94664b3e6c4288a6b7fe3b335f3055bb357333e68c404ec482f'
@@ -15,7 +16,9 @@ LEDGER_SHA256 = 'cb21d602f80d59f66889908de1c8a025de5080570c76db4eb4cf5ae3df43754
 
 class PresentationFastPathPreservationTests(unittest.TestCase):
     def test_helper_ledger_and_four_exact_predecessors_are_pinned(self):
-        self.assertEqual(successor.digest((ROOT / 'tests/presentation_fast_path_preservation.py').read_bytes()), HELPER_SHA256)
+        helper = pre_class_counts_bytes('tests/presentation_fast_path_preservation.py',
+                                       (ROOT / 'tests/presentation_fast_path_preservation.py').read_bytes())
+        self.assertEqual(successor.digest(helper), HELPER_SHA256)
         self.assertEqual(successor.digest((ROOT / successor.LEDGER_PATH).read_bytes()), LEDGER_SHA256)
         entries = successor.validate_ledger(successor.load_ledger())
         self.assertEqual(len(entries), 4)
@@ -23,6 +26,8 @@ class PresentationFastPathPreservationTests(unittest.TestCase):
         for name, entry in entries.items():
             with self.subTest(filename=name):
                 current = (ROOT / name).read_bytes()
+                if name == 'tests/material_bulk_preservation.py':
+                    current = pre_class_counts_bytes(name, current)
                 previous = successor.pre_presentation_fast_path_bytes(name, current)
                 self.assertEqual(successor.digest(current), entry['sha256'])
                 self.assertEqual(successor.digest(previous), entry['previous_sha256'])

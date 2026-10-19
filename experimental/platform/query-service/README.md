@@ -105,3 +105,37 @@ The increment also checks source-qualified values and unknowns, complete graph
 validation, exact predecessor recovery, idempotent CLI replay and installed
 package/API behavior. Actual test outcomes are retained in delivery evidence;
 no additional full-suite, browser or completed remote-CI run is implied.
+
+## Local composite increment, 2026-10-19
+
+The current experiment adds the source-qualified PBS/lignin B45 formulation and
+EPDM_H_P20/P40/P60 composites. The installed snapshot contains 1107 project
+entries: 1083 source-qualified identities plus the unchanged 24 reviewed
+computed compositions. Core categories are natural 1010, metal 22, inorganic
+26, polymer 15 and composite 10; project categories are natural 1010, metal 34,
+inorganic 38, polymer 15 and composite 10. See the
+[B45 packet](../../material-batches/20261019-pbs-lignin45/README.md),
+[EPDM packet](../../material-batches/20261019-epdm-pcm-hostatron/README.md) and
+[integration manifest](../../material-batches/20261019-polymer-composites-incremental/integration.json).
+Both packets reuse registered sources; the source registry remains unchanged.
+The relationship overlay remains unchanged: 1083 identities have 1088 supported
+memberships and one identity relationship. The four composites contribute
+their primary category only; additional polymer memberships or constituent
+edges require separate evidence and review.
+
+The current complete core manifest anchor is
+`3782f403f120f22b5287e01f4e207419e2f576a28dfda33a89a85580b936c0f6`.
+The preceding a592 catalog anchor
+`f1a1e3e379f9b7befba595b54477f15a26364548798b28dd65be8bc4326c0df4`
+and earlier data anchors remain historical. Keep their databases with their
+original installation and initialize a separate registry for this snapshot.
+Compatibility checks recover the exact a592 catalog bytes and its complete
+64-file logical manifest before recovering the earlier released catalog;
+production does not accept the preceding data anchor or migrate old databases.
+The existing exact code-only successor rules remain unchanged.
+
+This local experiment does not change the released main total of 1081, admit
+the 62 excluded computed examples, fetch raw assets, publish a release, register
+a DOI or deploy a service. Candidate review records retain their explicit
+scientific-review and raw-reanalysis limitations. Targeted test outcomes belong
+to this batch's validation evidence; no new full-suite or browser pass is implied.

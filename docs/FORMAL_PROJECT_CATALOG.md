@@ -4,24 +4,31 @@ The released main baseline `4c5656c` combines 1057 source-qualified identities
 with exactly 24 independently reviewed computed composition buckets, for 1081
 formal project admissions. That published count remains unchanged.
 
-This unmerged experimental candidate adds seventeen NBS references, one Nb reference, one NC2 concrete formulation and three polymer/composite formulations to its core and
-pairs its 1079 source-qualified identities with the same 24 computed buckets.
-Its **proposed experimental total is 1103**, with natural 1010, metal 34,
-inorganic 38, polymer 15 and composite 6. This is a candidate for a reviewed
+This unmerged experimental candidate retains seventeen NBS references, one Nb
+reference, one NC2 concrete formulation and three polymer/composite formulations
+from earlier increments, and adds four composite references on 2026-10-19. It
+pairs its 1083 source-qualified identities with the same 24 computed buckets.
+Its **proposed experimental total is 1107**, with natural 1010, metal 34,
+inorganic 38, polymer 15 and composite 10. This is a candidate for a reviewed
 release, not an authorized change to the main formal count. The candidate may
 retain resource pins matching its new core bytes for reproducible testing.
 Those proposed pins do not establish release approval.
 
-See [the latest incremental integration record](MATERIAL_GROWTH_FORMULATIONS_20261017.md) for scope and
-evidence. The `formal-project-count-policy/1` convention does not claim global
+The 2026-10-17 scope and evidence remain in the [earlier incremental integration record](MATERIAL_GROWTH_FORMULATIONS_20261017.md).
+The 2026-10-19 increment adds B45 PBS/lignin and EPDM_H_P20, EPDM_H_P40 and
+EPDM_H_P60; see the [B45 packet](../experimental/material-batches/20261019-pbs-lignin45/README.md),
+[EPDM packet](../experimental/material-batches/20261019-epdm-pcm-hostatron/README.md)
+and [integration manifest](../experimental/material-batches/20261019-polymer-composites-incremental/integration.json).
+The `formal-project-count-policy/1` convention does not claim global
 physical uniqueness, experimental observation of every record, or equivalent
 levels of scientific evidence.
 
 ## Two immutable indexes, one explicit project policy
 
 The candidate source-qualified index preserves all 1057 predecessor identities,
-states and properties and appends twenty-two source-qualified references, for an experimental core
-count of 1079. The released main core remains 1057. Existing source, grade and
+states and properties and appends twenty-six source-qualified references, for an experimental core
+count of 1083: natural 1010, metal 22, inorganic 26, polymer 15 and composite 10.
+The released main core remains 1057. Existing source, grade and
 state APIs are unchanged. Legacy
 entries retain their actual per-property evidence types; they are not all labeled
 experimental. Existing consumers do not receive computed values disguised as
@@ -41,7 +48,7 @@ and canonical review SHA-256
 It is byte-identical to the separately accepted experimental example. That
 example's acceptance pin covers normalized metadata; the released main policy
 separately admits these 24 computed buckets. Reusing them in this candidate does
-not constitute a release decision for the twenty-two new source-qualified references. The review's
+not constitute a release decision for the twenty-six new source-qualified references. The review's
 earlier preparation-stage wording is retained rather than rewritten.
 This candidate must be reviewed and authorized for release before it changes
 published counts. Hashes prove artifact identity, not independent authenticity,
@@ -66,15 +73,15 @@ baseline is rejected by the new environment. Computed review payloads, held
 candidates and excluded examples retain their original bytes and status.
 
 The existing catalog contract fixes `independent_scientific_review` to false.
-Selected-source transcription checks and existing article-specific CC BY 4.0
+For the 2026-10-17 increment, selected-source transcription checks and existing article-specific CC BY 4.0
 licenses support the SPO-2 density and B10/B30 modulus facts. Prior source-specific
 checks and limited NBS reuse findings remain applicable to the earlier nineteen additions. No unresolved concrete source, rights
-or identity hold is reported for this increment, and no extra human-signature or
+or identity hold was reported for that increment, and no extra human-signature or
 repeat-license-review prerequisite is added. Changing the published formal count
 still requires the separately coordinated release above.
 
 Install the add-on explicitly after the exact legacy core: `pip install ./formal-catalog`.
-The optional installed-wheel catalog CI installs both packages. The core wheel includes the twenty-two additional references; historical records and
+The optional installed-wheel catalog CI installs both packages. The core wheel includes the twenty-six additional references; historical records and
 fixtures are preserved, and only the marked current README material counts are
 refreshed. Without the add-on installed,
 the legacy catalog works normally and formal status reports unavailable.
@@ -85,9 +92,9 @@ the legacy catalog works normally and formal status reports unavailable.
 - `materials-project-catalog --list --offset 0 --limit 100`: packaged records
 - `materials-project-catalog --partition reviewed-computed`: all 24 models
 - `materials-project-catalog --query Ag2AlCo`: bounded literal lookup
-- `materials-boundaries coverage`: 1079 experimental source-qualified identities
+- `materials-boundaries coverage`: 1083 experimental source-qualified identities
 
-In this candidate installation, these interfaces expose the proposed 1103-record
+In this candidate installation, these interfaces expose the proposed 1107-record
 package. Existing formal API names and `admitted-by-packaged-policy` status refer
 to its pinned package convention; they do not announce a new main release.
 
@@ -123,8 +130,9 @@ stale/missing pins, unknown IDs, bounds, forbidden fields/routes, drift isolatio
 and safe UI text rendering. Existing full core and optional catalog suites must
 also pass. Browser interaction coverage is separate from static UI assertions.
 The preceding 073643b full-core evidence is retained as historical validation:
-1368 passed and 16 skipped, with no unresolved failures. This three-formulation
-follow-up uses focused validation; its actual results are recorded in the
-handoff. No new full-suite or remote-CI run is implied. Skips are not passes;
+1368 passed and 16 skipped, with no unresolved failures. The 2026-10-17 three-formulation
+follow-up used focused validation; its actual results remain recorded in that
+handoff. Evidence for the 2026-10-19 four-composite follow-up is recorded separately
+in its packets and integration manifest. No new full-suite or remote-CI run is implied. Skips are not passes;
 cross-platform conditions and the opt-in external source-cache check remain
 unverified where not executed.
