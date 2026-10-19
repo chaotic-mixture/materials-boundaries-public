@@ -27,6 +27,12 @@ SPEC_KEYS = {"schema", "batch_id", "baseline_sha256", "source_records", "context
              "formulations", "identity_crosswalk", "review"}
 PACKET_KEYS = {"schema", "spec_sha256", "input", "catalogs", "review", "report"}
 KINDS = ("identity", "grade", "state", "property")
+# Reuse only this already-curated source notice, without creating an SPDX grant
+# or extending it to other government works or third-party comparison tables.
+NBS_SOURCE_ID = "swanson_tatge_1953_nbs_circ539v1"
+NBS_SOURCE_SHA256 = "af69ed341f5d81b6cd651b984ce489462f8ea798dfa95a98ace78a91b153bade"
+NBS_DOCUMENT_URL = "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf"
+NBS_DOCUMENT_SHA256 = "003b872fbe7d403d38bbd1d752568ee92a96bdb010b6e381bdc82566929e2a6c"
 
 
 def record_sha256(value):
@@ -72,7 +78,8 @@ def _catalogs(spec, baseline):
     for row in spec["formulations"]:
         object_keys(row, {"identity", "grades", "states"}, "formulation")
         identity = _expand(row["identity"], "identity", contexts)
-        require(identity.get("category") in {"polymer", "composite"}, "formulation must be polymer or composite")
+        require(identity.get("category") in {"polymer", "composite", "inorganic"},
+                "formulation must be polymer, composite or inorganic")
         materials["identities"].append(identity)
         array(row["grades"], "grades")
         for item in row["grades"]:
@@ -216,7 +223,35 @@ def _identity_checks(spec, baseline, catalogs):
     return report, pending
 
 
-def _review_checks(review, sources):
+def _source_rights_available(source, baseline, catalogs):
+    if source["id"] != NBS_SOURCE_ID:
+        license = source.get("license")
+        return (isinstance(license, dict) and license.get("status") == "explicit_reuse_license_verified"
+                and isinstance(license.get("identifier"), str) and bool(license["identifier"].strip()))
+    # The known ID cannot opt out of its frozen notice by supplying a different
+    # record, even if the caller also rehashes the source and baseline files.
+    if (record_sha256(source) != NBS_SOURCE_SHA256
+            or source not in baseline["sources"]["records"]):
+        return False
+    identities = {row["id"]: row for row in catalogs["materials"]["identities"]}
+    states = {row["id"]: row for row in catalogs["materials"]["records"]}
+    properties = [row for row in catalogs["properties"]["records"] if row["source_id"] == NBS_SOURCE_ID]
+    # These structural checks bind the existing, selected NBS-authored density
+    # lane. Authorship of a particular passage remains the supplied source
+    # review's responsibility; a PDF digest alone does not establish it.
+    return bool(properties) and all(
+        identities[states[prop["material_state_id"]]["identity_id"]]["category"] == "inorganic"
+        and prop["quantity"] == "mass_density"
+        and prop["density_basis"] == "crystallographic"
+        and prop["evidence_kind"] == "published_measurement_derived_reference"
+        and prop["determination_basis"] == "source_reports_calculation"
+        and prop["method_definition"]["type"] == "source_reported_crystallographic_derivation"
+        and prop["source_document"]["url"] == NBS_DOCUMENT_URL
+        and prop["source_document"]["sha256"] == NBS_DOCUMENT_SHA256
+        for prop in properties)
+
+
+def _review_checks(review, catalogs, baseline):
     require(isinstance(review, dict), "review must be an object")
     require({"verification", "formal_admitted_delta", "source_reviews"} <= set(review), "missing review boundary fields")
     verification = review["verification"]
@@ -226,6 +261,7 @@ def _review_checks(review, sources):
     require(type(review["formal_admitted_delta"]) is int and review["formal_admitted_delta"] == 0,
             "prepared packets admit zero formal materials")
     array(review["source_reviews"], "source_reviews")
+    sources = catalogs["sources"]
     source_ids = {row["id"] for row in sources["records"]}
     reviewed = {}
     for row in review["source_reviews"]:
@@ -236,9 +272,7 @@ def _review_checks(review, sources):
         reviewed[row["source_id"]] = row["status"]
     pending = []
     for source in sources["records"]:
-        license = source.get("license")
-        if (not isinstance(license, dict) or license.get("status") != "explicit_reuse_license_verified"
-                or not isinstance(license.get("identifier"), str) or not license["identifier"].strip()):
+        if not _source_rights_available(source, baseline, catalogs):
             pending.append("Source-specific rights remain pending: " + source["id"])
         if reviewed.get(source["id"]) != "selected_facts_checked":
             pending.append("Selected-source transcription/rights scope remains pending: " + source["id"])
@@ -257,7 +291,7 @@ def compile_spec(spec, baseline_dir):
     validate_material_catalog(baseline["materials"], baseline["properties"], baseline["sources"])
     catalogs = _catalogs(spec, baseline)
     crosswalk, pending = _identity_checks(spec, baseline, catalogs)
-    pending.extend(_review_checks(spec["review"], catalogs["sources"]))
+    pending.extend(_review_checks(spec["review"], catalogs, baseline))
     merged = merge_material_catalogs(baseline["materials"], baseline["properties"], baseline["sources"], catalogs)
     before, after = counts(baseline), counts(merged)
     return {"schema": "formulation-prepared-packet/1", "spec_sha256": spec_hash,

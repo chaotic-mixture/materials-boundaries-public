@@ -1,0 +1,212 @@
+{
+  "schema": "candidate-preparation-receipt/1",
+  "started_at_utc": "2026-10-19T19:27:39.022169+00:00",
+  "command": [
+    "python",
+    "scripts/prepare_formulation_packet.py",
+    "--spec",
+    "experimental\\material-batches\\nbs-oxide-density-20261019\\packet-spec.json",
+    "--baseline-dir",
+    "materials_boundaries/data",
+    "--output",
+    "experimental\\material-batches\\nbs-oxide-density-20261019\\prepared-packet.json"
+  ],
+  "runs": [
+    {
+      "ordinal": 1,
+      "exit_code": 0,
+      "stdout": "Created review-only formulation packet: experimental\\material-batches\\nbs-oxide-density-20261019\\prepared-packet.json\nCandidate identity delta: 6\nHandoff ready: yes\nFormal admitted delta: 0. Source transcription is not scientific approval; runtime catalogs unchanged.\n",
+      "stderr": "",
+      "artifact": {
+        "sha256": "21aaed2df59b0ab9301d1573aabd6fd8bd87354c01fdf11323cdee62b600aab3",
+        "bytes": 162627,
+        "mtime_ns": 1792438063547533200
+      }
+    },
+    {
+      "ordinal": 2,
+      "exit_code": 0,
+      "stdout": "Unchanged review-only formulation packet: experimental\\material-batches\\nbs-oxide-density-20261019\\prepared-packet.json\nCandidate identity delta: 6\nHandoff ready: yes\nFormal admitted delta: 0. Source transcription is not scientific approval; runtime catalogs unchanged.\n",
+      "stderr": "",
+      "artifact": {
+        "sha256": "21aaed2df59b0ab9301d1573aabd6fd8bd87354c01fdf11323cdee62b600aab3",
+        "bytes": 162627,
+        "mtime_ns": 1792438063547533200
+      }
+    }
+  ],
+  "product_tests_run": false,
+  "network_used": false,
+  "same_bytes_and_mtime": true,
+  "finished_at_utc": "2026-10-19T19:27:48.117159+00:00",
+  "spec_sha256": "0896a313f68f3d91cd5be84fd85783ad7e9d105999a49c5ac6d275af1b97acfc",
+  "report": {
+    "baseline_sha256": {
+      "materials": "410efabb24dad7ed377ac7b94d35bccc40afe91194f0323e0298f500314e02f3",
+      "reference_properties": "c3f69e692a0dfb4ced72aea30794a7ee7b032ac99231db517397e0575dbc4bb0",
+      "sources": "4ba9dcd9258cd1e2d9e17bdf20b4fdaa39e081e77779d12eb726ee91b19835ae"
+    },
+    "before": {
+      "identities": 1084,
+      "grades": 21,
+      "states": 1084,
+      "properties": 1084,
+      "sources": 116,
+      "categories": {
+        "metal": 22,
+        "inorganic": 26,
+        "polymer": 16,
+        "composite": 10,
+        "natural": 1010
+      }
+    },
+    "after": {
+      "identities": 1090,
+      "grades": 21,
+      "states": 1090,
+      "properties": 1090,
+      "sources": 116,
+      "categories": {
+        "metal": 22,
+        "inorganic": 32,
+        "polymer": 16,
+        "composite": 10,
+        "natural": 1010
+      }
+    },
+    "delta": {
+      "identities": 6,
+      "grades": 0,
+      "states": 6,
+      "properties": 6,
+      "sources": 0,
+      "categories": {
+        "metal": 0,
+        "inorganic": 6,
+        "polymer": 0,
+        "composite": 0,
+        "natural": 0
+      }
+    },
+    "formal_admitted_delta": 0,
+    "handoff_ready": true,
+    "pending_gates": [],
+    "identity_crosswalk": [
+      {
+        "identity_id": "mat_nbs1953_beo",
+        "source_id": "swanson_tatge_1953_nbs_circ539v1",
+        "source_designations": [
+          "BeO, Brush Beryllium Company, No. 1743-1747, source-described fluorescent grade"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "swanson_tatge_1953_nbs_circ539v1",
+            "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+            "locator": "Section 2.17, printed p. 36 / one-based PDF p. 40, upper left: Brush Beryllium Company sample No. 1743-1747, fluorescent-grade description, furnace preparation and NBS impurity analysis.",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "BeO has no standalone identity match in the pinned 1084 core identities or 24 accepted reduced computed compositions. Constituent occurrences in another compound or mixture are not identity matches. Supplier, grade, phase and temperature do not add identity credit; source-sample limits remain explicit in the linked state."
+      },
+      {
+        "identity_id": "mat_nbs1953_cao",
+        "source_id": "swanson_tatge_1953_nbs_circ539v1",
+        "source_designations": [
+          "CaO prepared from J. T. Baker calcium carbonate No. 121647"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "swanson_tatge_1953_nbs_circ539v1",
+            "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+            "locator": "Section 2.21, printed p. 43 / one-based PDF p. 47, upper right: calcium carbonate precursor from J. T. Baker No. 121647, calcination in platinum, NBS chemical analysis and petrolatum mounting.",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "CaO has no standalone identity match in the pinned 1084 core identities or 24 accepted reduced computed compositions. Constituent occurrences in another compound or mixture are not identity matches. Supplier, grade, phase and temperature do not add identity credit; source-sample limits remain explicit in the linked state."
+      },
+      {
+        "identity_id": "mat_nbs1953_ceo2",
+        "source_id": "swanson_tatge_1953_nbs_circ539v1",
+        "source_designations": [
+          "CeO2, NBS spectrographic laboratory label No. 41-9100, origin unknown"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "swanson_tatge_1953_nbs_circ539v1",
+            "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+            "locator": "Section 2.30, printed p. 56 / one-based PDF p. 60, upper left: sample of unknown origin obtained from the NBS spectrographic laboratory, label No. 41-9100, approximate purity and traces; upper right: fluorite structure.",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "CeO2 has no standalone identity match in the pinned 1084 core identities or 24 accepted reduced computed compositions. Constituent occurrences in another compound or mixture are not identity matches. Supplier, grade, phase and temperature do not add identity credit; source-sample limits remain explicit in the linked state."
+      },
+      {
+        "identity_id": "mat_nbs1953_cuo",
+        "source_id": "swanson_tatge_1953_nbs_circ539v1",
+        "source_designations": [
+          "CuO, Johnson Matthey sample No. 3257"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "swanson_tatge_1953_nbs_circ539v1",
+            "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+            "locator": "Section 2.25, printed p. 49 / one-based PDF p. 53, lower left: Johnson, Matthey sample No. 3257 and NBS spectrographic analysis; right column: monoclinic tenorite structure.",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "CuO has no standalone identity match in the pinned 1084 core identities or 24 accepted reduced computed compositions. Constituent occurrences in another compound or mixture are not identity matches. Supplier, grade, phase and temperature do not add identity credit; source-sample limits remain explicit in the linked state."
+      },
+      {
+        "identity_id": "mat_nbs1953_mgo",
+        "source_id": "swanson_tatge_1953_nbs_circ539v1",
+        "source_designations": [
+          "MgO, Radio Corporation of America sample for phosphor research"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "swanson_tatge_1953_nbs_circ539v1",
+            "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+            "locator": "Section 2.18, printed p. 37 / one-based PDF p. 41, right column: Radio Corporation of America sample, graphite-crucible crystallization at 1800 degrees C for three hours and NBS spectrographic analysis.",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "MgO has no standalone identity match in the pinned 1084 core identities or 24 accepted reduced computed compositions. Constituent occurrences in another compound or mixture are not identity matches. Supplier, grade, phase and temperature do not add identity credit; source-sample limits remain explicit in the linked state."
+      },
+      {
+        "identity_id": "mat_nbs1953_tio2",
+        "source_id": "swanson_tatge_1953_nbs_circ539v1",
+        "source_designations": [
+          "TiO2 rutile, National Lead Company Sample No. MP 559 after source heat treatment"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "swanson_tatge_1953_nbs_circ539v1",
+            "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+            "locator": "Section 2.22, printed p. 44 / one-based PDF p. 48, lower right: National Lead Company Sample No. MP 559 and NBS spectrographic analysis; printed p. 45 / PDF p. 49, upper left: chiefly anatase starting sample heated for two hours at 1000 degrees C and cooled slowly to obtain rutile.",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "TiO2 has no standalone identity match in the pinned 1084 core identities or 24 accepted reduced computed compositions. Constituent occurrences in another compound or mixture are not identity matches. Supplier, grade, phase and temperature do not add identity credit; source-sample limits remain explicit in the linked state."
+      }
+    ]
+  },
+  "canonical_spec_sha256": "52691013f5502fb5a2268de913fa2f0bfb75cbcd6007cd162e796255680a3427"
+}

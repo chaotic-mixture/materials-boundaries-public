@@ -74,8 +74,12 @@ This is a shape illustration, not a complete scientific fixture. The expanded
 records must satisfy the existing material-reference schemas. All IDs, names in
 four language slots, links, source designations, original numeric strings,
 units, method/condition evidence, statistics and explicit unknowns are authored.
-The compiler does not fill missing schema fields. It accepts only polymer and
-composite identities. Grades remain explicit; an unknown grade stays null.
+The compiler does not fill missing schema fields. It accepts polymer, composite
+and inorganic identities. Grades remain explicit; an unknown grade stays null.
+Several compositions may share one source record and common explicitly authored
+context. An empty `grades` list and one state per identity require no special
+case. Composition, phase and sample qualifiers still require source evidence;
+the compiler does not infer chemical equivalence or a new identity from a sample.
 
 Each grade and state must belong to its enclosing identity. Every property must
 belong to its enclosing state, whose `property_ids` must name exactly the supplied
@@ -130,9 +134,34 @@ crosswalks are reported as pending, never silently treated as unique.
 `source_reviews`. Other original review fields are preserved. Each source-review
 row has exactly `source_id`, `status` (`selected_facts_checked` or `pending`), and
 a nonempty `note` stating the inspection and rights scope. Unknown/missing rights
-or missing/pending source review keeps handoff pending. This bounded lane requires
-an explicit source reuse-license status and identifier; it does not infer a grant
-from a URL, DOI, hash, or a compiler-generated label.
+or missing/pending source review keeps handoff pending. Normally this bounded lane
+requires an explicit source reuse-license status and identifier; it does not infer
+a grant from a URL, DOI, hash, or a compiler-generated label.
+
+One existing source-specific notice can also be reused: the complete registry
+record `swanson_tatge_1953_nbs_circ539v1`, canonical SHA-256
+`af69ed341f5d81b6cd651b984ce489462f8ea798dfa95a98ace78a91b153bade`,
+must already occur unchanged in the pinned baseline. Its NIST employee-authored
+government-work notice and null license identifier remain unchanged. This is not
+a general government-publication exception or an SPDX license assignment.
+The bounded compiler lane accepts only inorganic, source-calculated
+crystallographic `mass_density` references with the existing derived-evidence
+contract. Each linked property must identify the original NBS Circular 539,
+Volume I PDF URL and document SHA-256
+`003b872fbe7d403d38bbd1d752568ee92a96bdb010b6e381bdc82566929e2a6c`.
+Changed source records, a missing baseline source or references outside that
+scope keep the handoff pending, including when the caller rehashes its inputs.
+
+The authored `selected_facts_checked` source-review note must still describe the
+actual selected NBS-authored passages and rights scope. Separately credited
+third-party comparisons remain excluded, and the existing NIST attribution is
+retained. These machine checks do not determine a passage's authorship, repeat a
+source inspection, grant rights or establish scientific approval. No original
+PDF, image, full table or extended source text is added to the packet.
+Density values and units remain exactly authored; direct bulk measurement,
+crystallographic calculation and empirical conversion are distinct contracts.
+Thermal conductivity and its units are not supported by the current runtime
+property contract and cannot be introduced through a context or category change.
 
 The `handoff_ready` report means these authored declarations and machine contracts
 passed. It is not independent scientific review, legal certification, main

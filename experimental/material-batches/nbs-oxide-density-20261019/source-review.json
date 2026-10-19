@@ -1,0 +1,249 @@
+{
+  "schema": "nbs-oxide-density-source-review/1",
+  "review_kind": "independent_selected_source_transcription_check",
+  "status": "six_selected_density_values_and_temperatures_confirmed",
+  "reviewer": "Independent Codex source-transcription reviewer",
+  "review_scope": "Persisted findings from the completed read-only primary-PDF review. This artifact was not derived from the candidate packet specification and does not grant scientific approval or catalog admission.",
+  "verification": {
+    "source_transcription_checked": true,
+    "selected_density_sentences_visually_checked": true,
+    "independent_scientific_review": false,
+    "raw_data_reanalysis": false,
+    "scientific_approval": false,
+    "experimental_replication": false,
+    "identity_deduplication_in_this_review": false,
+    "tests_run": false,
+    "network_requests": 0,
+    "source_checks_repeated_for_persistence": false
+  },
+  "source": {
+    "title": "Standard X-ray Diffraction Powder Patterns",
+    "authors": [
+      "Howard E. Swanson",
+      "Eleanor Tatge"
+    ],
+    "publisher": "National Bureau of Standards, United States Department of Commerce",
+    "publication": "National Bureau of Standards Circular 539, Volume I",
+    "year": 1953,
+    "retained_pdf_path": "C:/Users/pc/Documents/Codex/2026-10-11/task/incremental-evidence/material-growth-20261014/sources/nbs-circular539-v1-complete.pdf",
+    "sha256": "003b872fbe7d403d38bbd1d752568ee92a96bdb010b6e381bdc82566929e2a6c",
+    "observed_pdf_page_count": 104,
+    "hash_check": "Matched during the completed independent source review; not recomputed when persisting this artifact.",
+    "pdf_page_numbering": "one_based",
+    "source_assets_included": false,
+    "source_and_rights_registry_changed": false,
+    "ownership_scope": "Each selected density statement explicitly uses NBS lattice constants associated with the 1953 Swanson and Tatge determinations. The surrounding ASTM and literature comparison results are separate third-party results and are not selected. This attribution check does not expand the existing source-rights decision."
+  },
+  "common_basis": {
+    "quantity": "mass_density",
+    "unit": "g/cm^3",
+    "unit_locator": {
+      "printed_page": 2,
+      "pdf_page_1based": 6,
+      "description": "Introduction explicitly states that density is given in grams per cubic centimeter. The individual density sentences inherit this convention."
+    },
+    "density_basis": "crystallographic",
+    "derivation": "Source-reported density derived from NBS lattice constants; no density was recalculated by this review.",
+    "not_a_direct_measurement_of": [
+      "bulk density",
+      "apparent density"
+    ],
+    "unknowns": [
+      "Density-specific sample count",
+      "Density standard deviation or other reported statistical uncertainty",
+      "Propagated density uncertainty"
+    ],
+    "limits": [
+      "Retain the source's numerical precision rather than recomputing with modern atomic weights.",
+      "The introductory temperature tolerance and lattice-error discussion are not density uncertainty envelopes.",
+      "The source's general high-purity description does not override the sample-specific impurity statements.",
+      "These selected facts are source-qualified references, not universal material constants, scientific approval, or engineering allowables."
+    ]
+  },
+  "records": [
+    {
+      "material": "Beryllium oxide",
+      "formula": "BeO",
+      "structure": "hexagonal",
+      "section": "2.17",
+      "section_printed_pages": [36, 37],
+      "section_pdf_pages_1based": [40, 41],
+      "reported_density": {"value_text": "3.008", "unit": "g/cm^3"},
+      "temperature_C": 26,
+      "density_locator": {"printed_page": 37, "pdf_page_1based": 41, "description": "Density sentence following the unit-cell comparison; explicitly based on the NBS lattice constant."},
+      "sample_locator": {"printed_page": 36, "pdf_page_1based": 40},
+      "sample": {
+        "supplier": "Brush Beryllium Company",
+        "source_identifier": "1743-1747",
+        "source_designation": "fluorescent grade",
+        "preparation": "Prepared at a furnace temperature of 1150 degrees C.",
+        "nbs_spectrographic_analysis": [
+          "Approximately 0.03 percent aluminum",
+          "Less than 0.01 percent each of calcium, iron, magnesium, and silicon",
+          "Traces of copper, lead, and tin"
+        ]
+      },
+      "limits": [
+        "Fluorescent grade is a source designation, not evidence of grade certification.",
+        "Do not interpret the identifier 1743-1747 as additional material identities.",
+        "The selected value is lattice-derived density of the source-qualified hexagonal BeO sample."
+      ]
+    },
+    {
+      "material": "Magnesium oxide",
+      "formula": "MgO",
+      "structure": "cubic",
+      "section": "2.18",
+      "section_printed_pages": [37, 38, 39],
+      "section_pdf_pages_1based": [41, 42, 43],
+      "reported_density": {"value_text": "3.581", "unit": "g/cm^3"},
+      "temperature_C": 25,
+      "density_locator": {"printed_page": 39, "pdf_page_1based": 43, "description": "Density sentence explicitly calculated from the NBS lattice constant at 25 degrees C."},
+      "sample_locator": {"printed_page": 37, "pdf_page_1based": 41},
+      "sample": {
+        "supplier": "Radio Corporation of America",
+        "source_description": "Sample contributed as a pure compound prepared for phosphor research.",
+        "preparation": "Crystallized in a graphite crucible maintained at 1800 degrees C for three hours.",
+        "nbs_spectrographic_analysis": [
+          "Calcium and silicon each between 0.01 and 0.1 percent",
+          "Aluminum, boron, chromium, iron, and nickel each between 0.001 and 0.01 percent"
+        ]
+      },
+      "temperature_qualification": {
+        "nbs_diffraction_pattern_temperature_C": 26,
+        "pattern_locator": "Table 19, printed page 38 / PDF page 42, 1953 Swanson and Tatge column heading",
+        "selected_density_temperature_C": 25,
+        "explanation": "The text gives the selected density at 25 degrees C. Section 2.18 discusses the expansion coefficient, and the introduction on printed page 2 / PDF page 6 explains recalculation to 25 degrees C when an expansion coefficient is available. The pattern temperature and normalized density temperature must remain distinct."
+      },
+      "limits": [
+        "Do not replace the explicit 25-degree density condition with the 26-degree diffraction-pattern temperature.",
+        "The source's pure-compound description is qualified by the reported impurity ranges; it is not a numerical total-purity guarantee."
+      ]
+    },
+    {
+      "material": "Calcium oxide",
+      "formula": "CaO",
+      "structure": "cubic",
+      "section": "2.21",
+      "section_printed_pages": [43, 44],
+      "section_pdf_pages_1based": [47, 48],
+      "reported_density": {"value_text": "3.345", "unit": "g/cm^3"},
+      "temperature_C": 27,
+      "density_locator": {"printed_page": 44, "pdf_page_1based": 48, "description": "Density sentence explicitly calculated from the NBS lattice constant."},
+      "sample_locator": {"printed_page": 43, "pdf_page_1based": 47},
+      "sample": {
+        "precursor": "Calcium carbonate",
+        "precursor_supplier": "J. T. Baker Chemical Company",
+        "precursor_identifier": "121647",
+        "preparation": "Calcined in a platinum crucible at 925 degrees C for one hour.",
+        "pattern_preparation": "A petrolatum mount minimized hydration.",
+        "nbs_chemical_analysis_percent": [
+          {"source_label": "Insoluble in HCl and NH4OH precipitate", "value_text": "0.01"},
+          {"source_label": "Chloride", "value_text": "<0.005"},
+          {"source_label": "Sulfate", "value_text": "0.037"},
+          {"source_label": "Alkalis (as SO4)", "value_text": "0.011"},
+          {"source_label": "Barium", "value_text": "<0.1"},
+          {"source_label": "Heavy metals (Pb, etc.)", "value_text": "0.001"},
+          {"source_label": "Fe", "value_text": "<0.003"},
+          {"source_label": "MgO and alkalis", "value_text": "0.21"}
+        ],
+        "separate_supplier_claims_percent": [
+          {"source_label": "Barium", "value_text": "0.005"},
+          {"source_label": "Iron", "value_text": "0.001"}
+        ]
+      },
+      "limits": [
+        "No. 121647 identifies the calcium-carbonate precursor; it is not a certified finished-CaO grade.",
+        "Keep the NBS chemical-analysis paragraph and the separate supplier barium/iron claims distinctly attributed.",
+        "The petrolatum mount minimized hydration; the source does not establish a complete absence of hydration.",
+        "Do not infer an exact total purity from the listed analyses."
+      ]
+    },
+    {
+      "material": "Titanium dioxide, rutile",
+      "formula": "TiO2",
+      "structure": "tetragonal rutile",
+      "section": "2.22",
+      "section_printed_pages": [44, 45, 46],
+      "section_pdf_pages_1based": [48, 49, 50],
+      "reported_density": {"value_text": "4.250", "unit": "g/cm^3"},
+      "temperature_C": 26,
+      "density_locator": {"printed_page": 46, "pdf_page_1based": 50, "description": "Density sentence states agreement with the NBS lattice constant."},
+      "sample_locator": {"printed_pages": [44, 45], "pdf_pages_1based": [48, 49]},
+      "sample": {
+        "supplier": "National Lead Company",
+        "source_identifier": "MP 559",
+        "starting_state": "Chiefly anatase",
+        "preparation": "Heated for two hours at 1000 degrees C, then cooled slowly to obtain rutile.",
+        "nbs_spectrographic_analysis": "No impurity greater than 0.001 percent."
+      },
+      "limits": [
+        "The impurity statement bounds each detected impurity, not total impurity or exact overall purity.",
+        "The selected density belongs to the resulting rutile state.",
+        "No anatase admission or anatase density is supported by this selected result."
+      ]
+    },
+    {
+      "material": "Copper(II) oxide, tenorite",
+      "formula": "CuO",
+      "structure": "monoclinic tenorite",
+      "section": "2.25",
+      "section_printed_pages": [49],
+      "section_pdf_pages_1based": [53],
+      "reported_density": {"value_text": "6.51", "unit": "g/cm^3"},
+      "temperature_C": 26,
+      "density_locator": {"printed_page": 49, "pdf_page_1based": 53, "description": "Density sentence explicitly based on the NBS lattice constant."},
+      "sample_locator": {"printed_page": 49, "pdf_page_1based": 53},
+      "sample": {
+        "supplier": "Johnson, Matthey & Co., Ltd.",
+        "source_identifier": "3257",
+        "nbs_spectrographic_analysis": "Faint traces of iron and magnesium."
+      },
+      "limits": [
+        "No quantitative total purity is supplied in the inspected section.",
+        "No sample-preparation treatment is supplied in the inspected section.",
+        "The sample number does not establish grade certification."
+      ]
+    },
+    {
+      "material": "Cerium dioxide",
+      "formula": "CeO2",
+      "structure": "cubic",
+      "section": "2.30",
+      "section_printed_pages": [56, 57],
+      "section_pdf_pages_1based": [60, 61],
+      "reported_density": {"value_text": "7.215", "unit": "g/cm^3"},
+      "temperature_C": 26,
+      "density_locator": {"printed_page": 57, "pdf_page_1based": 61, "description": "Density sentence explicitly calculated from the NBS lattice constant."},
+      "sample_locator": {"printed_page": 56, "pdf_page_1based": 60},
+      "sample": {
+        "origin": "unknown",
+        "obtained_from": "NBS spectrographic laboratory",
+        "source_identifier": "41-9100",
+        "source_reported_purity": "Approximately 99.99 percent",
+        "spectrographic_impurities": "Traces of praseodymium and copper."
+      },
+      "limits": [
+        "The source explicitly states that the sample origin is unknown.",
+        "Do not infer a manufacturer, synthesis route, or certified grade from the laboratory label.",
+        "Retain approximately rather than converting the source purity statement into an exact assay."
+      ]
+    }
+  ],
+  "result": {
+    "selected_values_confirmed": 6,
+    "selected_temperatures_confirmed": 6,
+    "numerical_corrections_required": [],
+    "required_qualifications": [
+      "All six densities are source-reported crystallographic derivations from NBS lattice data.",
+      "MgO density is normalized to 25 degrees C despite the NBS pattern column being recorded at 26 degrees C.",
+      "CaO source number 121647 belongs to the calcium-carbonate precursor.",
+      "BeO fluorescent grade is source-designated and not certified by this evidence.",
+      "TiO2 selection is rutile after transformation from chiefly anatase starting material; anatase is excluded.",
+      "CeO2 origin remains unknown.",
+      "Sample-specific impurity limits and unknowns must remain explicit."
+    ],
+    "admission_decision": "Not made by this source-transcription review.",
+    "scientific_approval": false
+  }
+}

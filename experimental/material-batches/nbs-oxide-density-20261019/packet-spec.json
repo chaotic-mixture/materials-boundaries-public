@@ -1,0 +1,1615 @@
+{
+  "schema": "formulation-packet-spec/1",
+  "batch_id": "nbs-oxide-density-20261019",
+  "baseline_sha256": {
+    "materials": "410efabb24dad7ed377ac7b94d35bccc40afe91194f0323e0298f500314e02f3",
+    "reference_properties": "c3f69e692a0dfb4ced72aea30794a7ee7b032ac99231db517397e0575dbc4bb0",
+    "sources": "4ba9dcd9258cd1e2d9e17bdf20b4fdaa39e081e77779d12eb726ee91b19835ae"
+  },
+  "source_records": [
+    {
+      "record": {
+        "id": "swanson_tatge_1953_nbs_circ539v1",
+        "title": "Standard X-ray Diffraction Powder Patterns, Volume I",
+        "authors": [
+          "Howard E. Swanson",
+          "Eleanor Tatge"
+        ],
+        "year": 1953,
+        "doi": "10.6028/NBS.CIRC.539v1",
+        "urls": [
+          "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+          "https://doi.org/10.6028/NBS.CIRC.539v1",
+          "https://www.nist.gov/open/copyright-fair-use-and-licensing-statements-srd-data-software-and-technical-series-publications",
+          "https://www.nist.gov/publications/circular-bureau-standards-no-539-volume-1standard-x-ray-diffraction-powder-patterns"
+        ],
+        "read_status": "selected_primary_content_and_NIST_rights_notice_independently_source_transcription_reviewed",
+        "license": {
+          "status": "NIST_employee_authored_US_government_work_with_express_worldwide_reuse_notice",
+          "identifier": null
+        },
+        "role": "published_measurement_derived_reference",
+        "claim_notes": [
+          "NBS Circular 539, Volume I, 1953",
+          "Official NBS title page identifies Swanson and Tatge; Introduction says these powder patterns and lattice constants were prepared/measured at NBS; selected density expressly based on NBS lattice constant.",
+          "NIST Technical Series Publications notice: employee-authored works are not subject to domestic copyright; the notice supplies worldwide perpetual royalty-free republication, electronic distribution and derivative-work permission where NIST can assert foreign rights. This is applied only to the selected NBS-authored content, excluding separately credited third-party content.",
+          "Bibliographic attribution is retained. Republished courtesy of the National Institute of Standards and Technology.",
+          "Only selected factual values, bibliographic metadata and original qualifications are curated. No source PDFs, images, complete tables or extended source text are bundled.",
+          "Selected numerical asset SHA-256: 003b872fbe7d403d38bbd1d752568ee92a96bdb010b6e381bdc82566929e2a6c. The digest refers to https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf."
+        ],
+        "provenance": {
+          "curation_date": "2026-10-04",
+          "method": "Selected primary-source content and rights evidence inspected and independently source-transcription reviewed; original curation, no scientific reanalysis or source-asset redistribution."
+        },
+        "bundled_content": "selected_factual_reference_values_bibliographic_metadata_and_original_curation_only"
+      },
+      "sha256": "af69ed341f5d81b6cd651b984ce489462f8ea798dfa95a98ace78a91b153bade"
+    }
+  ],
+  "contexts": {
+    "identity": {
+      "oxide": {
+        "version": "1.0.0",
+        "category": "inorganic"
+      }
+    },
+    "grade": {},
+    "state": {
+      "nbs_crystalline_phase": {
+        "version": "1.0.0",
+        "grade_id": null,
+        "aliases": [],
+        "evaluation_support": "catalog_only",
+        "state": {
+          "conditioning": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Measured moisture content, relative humidity and density-specific conditioning duration are not established."
+          },
+          "reinforcement": {
+            "status": "not_applicable",
+            "text": null,
+            "evidence": [],
+            "notes": "The selected result concerns an inorganic crystalline phase, not a reinforcement or mounting-medium composite."
+          },
+          "porosity": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Crystallographic density does not establish bulk specimen porosity."
+          },
+          "orientation": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "No macroscopic specimen orientation or mechanical isotropy is established."
+          }
+        }
+      }
+    },
+    "property": {
+      "nbs_crystallographic_density": {
+        "version": "1.0.0",
+        "quantity": "mass_density",
+        "quantity_dimension": "mass_per_volume",
+        "source_property_label": "density",
+        "reported_value": {
+          "kind": "scalar",
+          "unit_text": "grams per cubic centimeter",
+          "unit_code": "g/cm^3"
+        },
+        "evidence_kind": "published_measurement_derived_reference",
+        "reporting_basis": "reported_summary",
+        "determination_basis": "source_reports_calculation",
+        "basis_note": "Source-reported measured-lattice-derived crystallographic density. Preserve the reported value and precision without recalculation; no mean, direct bulk measurement, DFT prediction or replicate count is inferred.",
+        "conditions": {
+          "test_standard": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "No density test-standard compliance or certification is established."
+          },
+          "test_method": {
+            "status": "reported",
+            "text": "Source crystallographic calculation from experimentally measured NBS powder-XRD lattice parameters and the adopted crystal structure.",
+            "evidence": [
+              {
+                "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                "locator": "Introduction, printed pp. 1-2 / one-based PDF pp. 5-6: NBS measured powder-XRD patterns, lattice parameters, internal-standard calibration and source-computed density; density units are grams per cubic centimeter.",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Not direct mass/volume weighing, pycnometry or DFT."
+          },
+          "direction": {
+            "status": "not_applicable",
+            "text": null,
+            "evidence": [],
+            "notes": "Mechanical loading direction does not apply to this scalar crystallographic density."
+          },
+          "conditioning": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Density-specific moisture content and conditioning duration are unknown; reported preparation remains attached to the state."
+          },
+          "loading_rate": {
+            "status": "not_applicable",
+            "text": null,
+            "evidence": [],
+            "notes": "Mechanical loading rate does not apply to crystallographic density."
+          },
+          "additional_conditions": [
+            {
+              "name": "density_pressure",
+              "fact": {
+                "status": "not_reported_in_inspected_source",
+                "text": null,
+                "evidence": [],
+                "notes": "No pressure is reported for the selected density."
+              }
+            }
+          ]
+        },
+        "density_basis": "crystallographic",
+        "summary_statistic": "reported_value",
+        "uncertainty": null,
+        "uncertainty_status": "not_reported_in_inspected_source",
+        "uncertainty_note": "No density-specific uncertainty is reported. The general lattice/spacing error statement is not a density error bar; no propagation is performed.",
+        "sample_count": {
+          "value": null,
+          "relation": "not_reported",
+          "source_statement": "The selected sections do not establish an independent specimen or repeated density-determination count. Unit-cell contents and numbers of diffraction lines are not sample n.",
+          "evidence": []
+        },
+        "method_definition": {
+          "type": "source_reported_crystallographic_derivation",
+          "extraction_window": null
+        },
+        "source_discrepancies": [],
+        "source_id": "swanson_tatge_1953_nbs_circ539v1",
+        "source_document": {
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+          "revision": "NBS Circular 539, Volume I, 1953",
+          "inspected_on": "2026-10-19",
+          "sha256": "003b872fbe7d403d38bbd1d752568ee92a96bdb010b6e381bdc82566929e2a6c",
+          "hash_status": "recorded",
+          "hash_note": null,
+          "inspection_status": "selected_content_inspected",
+          "inspection_scope": "Retained complete NBS Circular 539 Volume I PDF inspected locally on 2026-10-19 using extracted text and selected page images: Introduction printed pp. 1-2 / PDF pp. 5-6, and selected density/sample passages in sections 2.17, 2.18, 2.21, 2.22, 2.25 and 2.30. Exact row-level locators are in each property and state evidence. Source-transcription checking only; no scientific peer review, experimental replication or raw-data reanalysis. PDF page numbers are one-based."
+        },
+        "evaluation_support": "catalog_only",
+        "universal_bound": false,
+        "engineering_allowable": false,
+        "verification": {
+          "transcription_cross_check": "completed",
+          "independent_scientific_review": false,
+          "raw_data_reanalysis": false,
+          "source_inspection_scope": "Retained complete NBS Circular 539 Volume I PDF inspected locally on 2026-10-19 using extracted text and selected page images: Introduction printed pp. 1-2 / PDF pp. 5-6, and selected density/sample passages in sections 2.17, 2.18, 2.21, 2.22, 2.25 and 2.30. Exact row-level locators are in each property and state evidence. Source-transcription checking only; no scientific peer review, experimental replication or raw-data reanalysis. PDF page numbers are one-based."
+        }
+      }
+    }
+  },
+  "formulations": [
+    {
+      "identity": {
+        "context": "oxide",
+        "fields": {
+          "id": "mat_nbs1953_beo",
+          "name": "Beryllium oxide",
+          "names": {
+            "en": "Beryllium oxide",
+            "zh": "Beryllium oxide",
+            "ja": "Beryllium oxide",
+            "de": "Beryllium oxide"
+          },
+          "aliases": [
+            {
+              "language": "und",
+              "text": "BeO"
+            }
+          ],
+          "identity_scope": "Beryllium oxide (BeO), one composition-level identity represented by a source-qualified NBS crystalline sample. Supplier, source number, phase, processing and temperature qualify its linked state and property, not additional identities. No exactly pure composition or universal density is inferred.",
+          "evidence": [
+            {
+              "source_id": "swanson_tatge_1953_nbs_circ539v1",
+              "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+              "locator": "Section 2.17, selected material heading and source sample paragraph. Section 2.17, printed p. 36 / one-based PDF p. 40, upper left: Brush Beryllium Company sample No. 1743-1747, fluorescent-grade description, furnace preparation and NBS impurity analysis.",
+              "supports": [
+                "material_identity",
+                "state"
+              ]
+            }
+          ]
+        }
+      },
+      "grades": [],
+      "states": [
+        {
+          "record": {
+            "context": "nbs_crystalline_phase",
+            "fields": {
+              "id": "state_nbs1953_beo_brush_1743_1747_xrd",
+              "identity_id": "mat_nbs1953_beo",
+              "name": "BeO, hexagonal, NBS 1953 source sample",
+              "names": {
+                "en": "BeO, hexagonal, NBS 1953 source sample",
+                "zh": "BeO, hexagonal, NBS 1953 source sample",
+                "ja": "BeO, hexagonal, NBS 1953 source sample",
+                "de": "BeO, hexagonal, NBS 1953 source sample"
+              },
+              "source_designation": "BeO, Brush Beryllium Company, No. 1743-1747, source-described fluorescent grade",
+              "state": {
+                "product_form": {
+                  "status": "reported",
+                  "text": "Crystalline hexagonal phase represented by the NBS powder-XRD pattern.",
+                  "evidence": [
+                    {
+                      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                      "locator": "Section 2.17, printed p. 36 / one-based PDF p. 40, upper left: Brush Beryllium Company sample No. 1743-1747, fluorescent-grade description, furnace preparation and NBS impurity analysis. Section 2.17, printed p. 37 / one-based PDF p. 41, left column below the unit-cell table: density based on the NBS lattice constant, 3.008 at 26 degrees C.",
+                      "supports": [
+                        "state"
+                      ]
+                    }
+                  ],
+                  "notes": "This is phase density, not a measured bulk or powder-packing density."
+                },
+                "processing": {
+                  "status": "reported",
+                  "text": "Prepared by the Brush Beryllium Company at a furnace temperature of 1150 degrees C; preparation duration is not reported.",
+                  "evidence": [
+                    {
+                      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                      "locator": "Section 2.17, printed p. 36 / one-based PDF p. 40, upper left: Brush Beryllium Company sample No. 1743-1747, fluorescent-grade description, furnace preparation and NBS impurity analysis.",
+                      "supports": [
+                        "state"
+                      ]
+                    }
+                  ],
+                  "notes": null
+                },
+                "temper_or_heat_treatment": {
+                  "status": "reported",
+                  "text": "Furnace preparation at 1150 degrees C; duration not reported.",
+                  "evidence": [
+                    {
+                      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                      "locator": "Section 2.17, printed p. 36 / one-based PDF p. 40, upper left: Brush Beryllium Company sample No. 1743-1747, fluorescent-grade description, furnace preparation and NBS impurity analysis.",
+                      "supports": [
+                        "state"
+                      ]
+                    }
+                  ],
+                  "notes": "Preparation temperature is separate from the density reference temperature."
+                },
+                "composition_or_purity": {
+                  "status": "reported",
+                  "text": "BeO, hexagonal. NBS spectrographic analysis indicates about 0.03 percent Al, less than 0.01 percent each Ca, Fe, Mg and Si, and traces of Cu, Pb and Sn.",
+                  "evidence": [
+                    {
+                      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                      "locator": "Section 2.17, printed p. 36 / one-based PDF p. 40, upper left: Brush Beryllium Company sample No. 1743-1747, fluorescent-grade description, furnace preparation and NBS impurity analysis.",
+                      "supports": [
+                        "state"
+                      ]
+                    }
+                  ],
+                  "notes": "The source phrase fluorescent grade is retained as a description, not normalized into a certified grade or extra identity. No total purity, percentage basis or independent specimen count is established."
+                }
+              },
+              "source_scope": "BeO, hexagonal phase, represented by NBS experimental powder-XRD measurements. The source reports measured-lattice-derived crystallographic density at 26 degrees C. This does not establish bulk specimen density, powder-packing density, porosity or an engineering allowable. Sample, preparation, impurity and provenance limitations are retained in the linked state.",
+              "evidence": [
+                {
+                  "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                  "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                  "locator": "Section 2.17, printed p. 36 / one-based PDF p. 40, upper left: Brush Beryllium Company sample No. 1743-1747, fluorescent-grade description, furnace preparation and NBS impurity analysis.",
+                  "supports": [
+                    "state",
+                    "material_identity"
+                  ]
+                }
+              ],
+              "property_ids": [
+                "refprop_nbs1953_beo_brush_1743_1747_crystallographic_density"
+              ]
+            }
+          },
+          "properties": [
+            {
+              "context": "nbs_crystallographic_density",
+              "fields": {
+                "id": "refprop_nbs1953_beo_brush_1743_1747_crystallographic_density",
+                "material_state_id": "state_nbs1953_beo_brush_1743_1747_xrd",
+                "reported_value": {
+                  "value_text": "3.008",
+                  "number": "3.008"
+                },
+                "conditions": {
+                  "temperature": {
+                    "status": "reported",
+                    "text": "26 degrees C",
+                    "evidence": [
+                      {
+                        "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                        "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                        "locator": "Section 2.17, printed p. 37 / one-based PDF p. 41, left column below the unit-cell table: density based on the NBS lattice constant, 3.008 at 26 degrees C.",
+                        "supports": [
+                          "condition"
+                        ]
+                      }
+                    ],
+                    "notes": "Explicit density reference temperature; not inferred from preparation or a neighboring table."
+                  }
+                },
+                "sample_count": {
+                  "scope": "Selected NBS BeO hexagonal crystallographic density."
+                },
+                "method_definition": {
+                  "definition": "The source reports density derived from its measured lattice parameters for the BeO hexagonal phase. The source value 3.008 grams per cubic centimeter is transcribed unchanged; no lattice/atomic-mass substitution, density recalculation or uncertainty propagation is performed.",
+                  "evidence": [
+                    {
+                      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                      "locator": "Section 2.17, printed p. 37 / one-based PDF p. 41, left column below the unit-cell table: density based on the NBS lattice constant, 3.008 at 26 degrees C. Introduction, printed pp. 1-2 / one-based PDF pp. 5-6: NBS measured powder-XRD patterns, lattice parameters, internal-standard calibration and source-computed density; density units are grams per cubic centimeter.",
+                      "supports": [
+                        "method",
+                        "classification",
+                        "condition"
+                      ]
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                    "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                    "locator": "Section 2.17, printed p. 37 / one-based PDF p. 41, left column below the unit-cell table: density based on the NBS lattice constant, 3.008 at 26 degrees C. Introduction, printed p. 2 / one-based PDF p. 6, right column: density units are grams per cubic centimeter; lattice constants may be adjusted to 25 degrees C separately from experimental powder-pattern temperature.",
+                    "supports": [
+                      "reported_value",
+                      "classification",
+                      "method",
+                      "condition"
+                    ]
+                  },
+                  {
+                    "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                    "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                    "locator": "Section 2.17, printed p. 36 / one-based PDF p. 40, upper left: Brush Beryllium Company sample No. 1743-1747, fluorescent-grade description, furnace preparation and NBS impurity analysis.",
+                    "supports": [
+                      "material_identity",
+                      "state"
+                    ]
+                  }
+                ],
+                "scope_note": "BeO, hexagonal phase, represented by NBS experimental powder-XRD measurements. The source reports measured-lattice-derived crystallographic density at 26 degrees C. This does not establish bulk specimen density, powder-packing density, porosity or an engineering allowable. Sample, preparation, impurity and provenance limitations are retained in the linked state."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "identity": {
+        "context": "oxide",
+        "fields": {
+          "id": "mat_nbs1953_mgo",
+          "name": "Magnesium oxide",
+          "names": {
+            "en": "Magnesium oxide",
+            "zh": "Magnesium oxide",
+            "ja": "Magnesium oxide",
+            "de": "Magnesium oxide"
+          },
+          "aliases": [
+            {
+              "language": "und",
+              "text": "MgO"
+            }
+          ],
+          "identity_scope": "Magnesium oxide (MgO), one composition-level identity represented by a source-qualified NBS crystalline sample. Supplier, source number, phase, processing and temperature qualify its linked state and property, not additional identities. No exactly pure composition or universal density is inferred.",
+          "evidence": [
+            {
+              "source_id": "swanson_tatge_1953_nbs_circ539v1",
+              "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+              "locator": "Section 2.18, selected material heading and source sample paragraph. Section 2.18, printed p. 37 / one-based PDF p. 41, right column: Radio Corporation of America sample, graphite-crucible crystallization at 1800 degrees C for three hours and NBS spectrographic analysis.",
+              "supports": [
+                "material_identity",
+                "state"
+              ]
+            }
+          ]
+        }
+      },
+      "grades": [],
+      "states": [
+        {
+          "record": {
+            "context": "nbs_crystalline_phase",
+            "fields": {
+              "id": "state_nbs1953_mgo_rca_xrd",
+              "identity_id": "mat_nbs1953_mgo",
+              "name": "MgO, face-centered cubic, NBS 1953 source sample",
+              "names": {
+                "en": "MgO, face-centered cubic, NBS 1953 source sample",
+                "zh": "MgO, face-centered cubic, NBS 1953 source sample",
+                "ja": "MgO, face-centered cubic, NBS 1953 source sample",
+                "de": "MgO, face-centered cubic, NBS 1953 source sample"
+              },
+              "source_designation": "MgO, Radio Corporation of America sample for phosphor research",
+              "state": {
+                "product_form": {
+                  "status": "reported",
+                  "text": "Crystalline face-centered cubic phase represented by the NBS powder-XRD pattern.",
+                  "evidence": [
+                    {
+                      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                      "locator": "Section 2.18, printed p. 37 / one-based PDF p. 41, right column: Radio Corporation of America sample, graphite-crucible crystallization at 1800 degrees C for three hours and NBS spectrographic analysis. Section 2.18, printed p. 39 / one-based PDF p. 43, upper left below the unit-cell table: density calculated from the NBS lattice constant, 3.581 at 25 degrees C.",
+                      "supports": [
+                        "state"
+                      ]
+                    }
+                  ],
+                  "notes": "This is phase density, not a measured bulk or powder-packing density."
+                },
+                "processing": {
+                  "status": "reported",
+                  "text": "Crystallized in a graphite crucible maintained at 1800 degrees C for three hours.",
+                  "evidence": [
+                    {
+                      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                      "locator": "Section 2.18, printed p. 37 / one-based PDF p. 41, right column: Radio Corporation of America sample, graphite-crucible crystallization at 1800 degrees C for three hours and NBS spectrographic analysis.",
+                      "supports": [
+                        "state"
+                      ]
+                    }
+                  ],
+                  "notes": null
+                },
+                "temper_or_heat_treatment": {
+                  "status": "reported",
+                  "text": "Graphite-crucible crystallization at 1800 degrees C for three hours.",
+                  "evidence": [
+                    {
+                      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                      "locator": "Section 2.18, printed p. 37 / one-based PDF p. 41, right column: Radio Corporation of America sample, graphite-crucible crystallization at 1800 degrees C for three hours and NBS spectrographic analysis.",
+                      "supports": [
+                        "state"
+                      ]
+                    }
+                  ],
+                  "notes": "Preparation temperature is separate from the density reference temperature."
+                },
+                "composition_or_purity": {
+                  "status": "reported",
+                  "text": "MgO, face-centered cubic. The source describes the contributed compound as pure for phosphor research but separately reports Ca and Si between 0.01 and 0.1 percent, and Al, B, Cr, Fe and Ni between 0.001 and 0.01 percent by NBS spectrographic analysis.",
+                  "evidence": [
+                    {
+                      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                      "locator": "Section 2.18, printed p. 37 / one-based PDF p. 41, right column: Radio Corporation of America sample, graphite-crucible crystallization at 1800 degrees C for three hours and NBS spectrographic analysis.",
+                      "supports": [
+                        "state"
+                      ]
+                    }
+                  ],
+                  "notes": "The qualitative source word pure does not establish an impurity-free specimen, certified purity or percentage basis. The 25 degrees C density reference must not be replaced with furnace or powder-pattern temperatures."
+                }
+              },
+              "source_scope": "MgO, face-centered cubic phase, represented by NBS experimental powder-XRD measurements. The source reports measured-lattice-derived crystallographic density at 25 degrees C. This does not establish bulk specimen density, powder-packing density, porosity or an engineering allowable. Sample, preparation, impurity and provenance limitations are retained in the linked state.",
+              "evidence": [
+                {
+                  "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                  "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                  "locator": "Section 2.18, printed p. 37 / one-based PDF p. 41, right column: Radio Corporation of America sample, graphite-crucible crystallization at 1800 degrees C for three hours and NBS spectrographic analysis.",
+                  "supports": [
+                    "state",
+                    "material_identity"
+                  ]
+                }
+              ],
+              "property_ids": [
+                "refprop_nbs1953_mgo_rca_crystallographic_density"
+              ]
+            }
+          },
+          "properties": [
+            {
+              "context": "nbs_crystallographic_density",
+              "fields": {
+                "id": "refprop_nbs1953_mgo_rca_crystallographic_density",
+                "material_state_id": "state_nbs1953_mgo_rca_xrd",
+                "reported_value": {
+                  "value_text": "3.581",
+                  "number": "3.581"
+                },
+                "conditions": {
+                  "temperature": {
+                    "status": "reported",
+                    "text": "25 degrees C",
+                    "evidence": [
+                      {
+                        "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                        "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                        "locator": "Section 2.18, printed p. 39 / one-based PDF p. 43, upper left below the unit-cell table: density calculated from the NBS lattice constant, 3.581 at 25 degrees C.",
+                        "supports": [
+                          "condition"
+                        ]
+                      }
+                    ],
+                    "notes": "Explicit density reference temperature; not inferred from preparation or a neighboring table."
+                  }
+                },
+                "sample_count": {
+                  "scope": "Selected NBS MgO face-centered cubic crystallographic density."
+                },
+                "method_definition": {
+                  "definition": "The source reports density derived from its measured lattice parameters for the MgO face-centered cubic phase. The source value 3.581 grams per cubic centimeter is transcribed unchanged; no lattice/atomic-mass substitution, density recalculation or uncertainty propagation is performed.",
+                  "evidence": [
+                    {
+                      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                      "locator": "Section 2.18, printed p. 39 / one-based PDF p. 43, upper left below the unit-cell table: density calculated from the NBS lattice constant, 3.581 at 25 degrees C. Introduction, printed pp. 1-2 / one-based PDF pp. 5-6: NBS measured powder-XRD patterns, lattice parameters, internal-standard calibration and source-computed density; density units are grams per cubic centimeter.",
+                      "supports": [
+                        "method",
+                        "classification",
+                        "condition"
+                      ]
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                    "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                    "locator": "Section 2.18, printed p. 39 / one-based PDF p. 43, upper left below the unit-cell table: density calculated from the NBS lattice constant, 3.581 at 25 degrees C. Introduction, printed p. 2 / one-based PDF p. 6, right column: density units are grams per cubic centimeter; lattice constants may be adjusted to 25 degrees C separately from experimental powder-pattern temperature.",
+                    "supports": [
+                      "reported_value",
+                      "classification",
+                      "method",
+                      "condition"
+                    ]
+                  },
+                  {
+                    "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                    "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                    "locator": "Section 2.18, printed p. 37 / one-based PDF p. 41, right column: Radio Corporation of America sample, graphite-crucible crystallization at 1800 degrees C for three hours and NBS spectrographic analysis.",
+                    "supports": [
+                      "material_identity",
+                      "state"
+                    ]
+                  }
+                ],
+                "scope_note": "MgO, face-centered cubic phase, represented by NBS experimental powder-XRD measurements. The source reports measured-lattice-derived crystallographic density at 25 degrees C. This does not establish bulk specimen density, powder-packing density, porosity or an engineering allowable. Sample, preparation, impurity and provenance limitations are retained in the linked state."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "identity": {
+        "context": "oxide",
+        "fields": {
+          "id": "mat_nbs1953_cao",
+          "name": "Calcium oxide",
+          "names": {
+            "en": "Calcium oxide",
+            "zh": "Calcium oxide",
+            "ja": "Calcium oxide",
+            "de": "Calcium oxide"
+          },
+          "aliases": [
+            {
+              "language": "und",
+              "text": "CaO"
+            }
+          ],
+          "identity_scope": "Calcium oxide (CaO), one composition-level identity represented by a source-qualified NBS crystalline sample. Supplier, source number, phase, processing and temperature qualify its linked state and property, not additional identities. No exactly pure composition or universal density is inferred.",
+          "evidence": [
+            {
+              "source_id": "swanson_tatge_1953_nbs_circ539v1",
+              "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+              "locator": "Section 2.21, selected material heading and source sample paragraph. Section 2.21, printed p. 43 / one-based PDF p. 47, upper right: calcium carbonate precursor from J. T. Baker No. 121647, calcination in platinum, NBS chemical analysis and petrolatum mounting.",
+              "supports": [
+                "material_identity",
+                "state"
+              ]
+            }
+          ]
+        }
+      },
+      "grades": [],
+      "states": [
+        {
+          "record": {
+            "context": "nbs_crystalline_phase",
+            "fields": {
+              "id": "state_nbs1953_cao_baker_121647_xrd",
+              "identity_id": "mat_nbs1953_cao",
+              "name": "CaO, face-centered cubic, NBS 1953 source sample",
+              "names": {
+                "en": "CaO, face-centered cubic, NBS 1953 source sample",
+                "zh": "CaO, face-centered cubic, NBS 1953 source sample",
+                "ja": "CaO, face-centered cubic, NBS 1953 source sample",
+                "de": "CaO, face-centered cubic, NBS 1953 source sample"
+              },
+              "source_designation": "CaO prepared from J. T. Baker calcium carbonate No. 121647",
+              "state": {
+                "product_form": {
+                  "status": "reported",
+                  "text": "Crystalline face-centered cubic phase represented by the NBS powder-XRD pattern.",
+                  "evidence": [
+                    {
+                      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                      "locator": "Section 2.21, printed p. 43 / one-based PDF p. 47, upper right: calcium carbonate precursor from J. T. Baker No. 121647, calcination in platinum, NBS chemical analysis and petrolatum mounting. Section 2.21, printed p. 44 / one-based PDF p. 48, lower left below the unit-cell table: density calculated from the NBS lattice constant, 3.345 at 27 degrees C.",
+                      "supports": [
+                        "state"
+                      ]
+                    }
+                  ],
+                  "notes": "This is phase density, not a measured bulk or powder-packing density."
+                },
+                "processing": {
+                  "status": "reported",
+                  "text": "Calcium carbonate precursor calcined in a platinum crucible at 925 degrees C for one hour; petrolatum mounting used to minimize hydration during XRD preparation.",
+                  "evidence": [
+                    {
+                      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                      "locator": "Section 2.21, printed p. 43 / one-based PDF p. 47, upper right: calcium carbonate precursor from J. T. Baker No. 121647, calcination in platinum, NBS chemical analysis and petrolatum mounting.",
+                      "supports": [
+                        "state"
+                      ]
+                    }
+                  ],
+                  "notes": null
+                },
+                "temper_or_heat_treatment": {
+                  "status": "reported",
+                  "text": "Calcination in a platinum crucible at 925 degrees C for one hour.",
+                  "evidence": [
+                    {
+                      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                      "locator": "Section 2.21, printed p. 43 / one-based PDF p. 47, upper right: calcium carbonate precursor from J. T. Baker No. 121647, calcination in platinum, NBS chemical analysis and petrolatum mounting.",
+                      "supports": [
+                        "state"
+                      ]
+                    }
+                  ],
+                  "notes": "Preparation temperature is separate from the density reference temperature."
+                },
+                "composition_or_purity": {
+                  "status": "reported",
+                  "text": "CaO, face-centered cubic, with reported impurities. NBS chemical analysis lists insoluble in HCl and NH4OH precipitate 0.01 percent; chloride less than 0.005; sulfate 0.037; alkalis (as SO4) 0.011; barium less than 0.1; heavy metals (Pb, etc.) 0.001; Fe less than 0.003; and the grouped MgO and alkalis entry 0.21 percent. The source separately quotes supplier barium 0.005 percent and iron 0.001 percent.",
+                  "evidence": [
+                    {
+                      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                      "locator": "Section 2.21, printed p. 43 / one-based PDF p. 47, upper right: calcium carbonate precursor from J. T. Baker No. 121647, calcination in platinum, NBS chemical analysis and petrolatum mounting.",
+                      "supports": [
+                        "state"
+                      ]
+                    }
+                  ],
+                  "notes": "No. 121647 identifies the supplied calcium-carbonate precursor, not a certified CaO grade. Preserve grouped impurity entries and separate NBS/supplier analyses; percentage basis and total purity are unknown. Petrolatum mounting is not a new composite or a density of the mounting mixture; measured hydration is unknown."
+                }
+              },
+              "source_scope": "CaO, face-centered cubic phase, represented by NBS experimental powder-XRD measurements. The source reports measured-lattice-derived crystallographic density at 27 degrees C. This does not establish bulk specimen density, powder-packing density, porosity or an engineering allowable. Sample, preparation, impurity and provenance limitations are retained in the linked state.",
+              "evidence": [
+                {
+                  "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                  "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                  "locator": "Section 2.21, printed p. 43 / one-based PDF p. 47, upper right: calcium carbonate precursor from J. T. Baker No. 121647, calcination in platinum, NBS chemical analysis and petrolatum mounting.",
+                  "supports": [
+                    "state",
+                    "material_identity"
+                  ]
+                }
+              ],
+              "property_ids": [
+                "refprop_nbs1953_cao_baker_121647_crystallographic_density"
+              ]
+            }
+          },
+          "properties": [
+            {
+              "context": "nbs_crystallographic_density",
+              "fields": {
+                "id": "refprop_nbs1953_cao_baker_121647_crystallographic_density",
+                "material_state_id": "state_nbs1953_cao_baker_121647_xrd",
+                "reported_value": {
+                  "value_text": "3.345",
+                  "number": "3.345"
+                },
+                "conditions": {
+                  "temperature": {
+                    "status": "reported",
+                    "text": "27 degrees C",
+                    "evidence": [
+                      {
+                        "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                        "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                        "locator": "Section 2.21, printed p. 44 / one-based PDF p. 48, lower left below the unit-cell table: density calculated from the NBS lattice constant, 3.345 at 27 degrees C.",
+                        "supports": [
+                          "condition"
+                        ]
+                      }
+                    ],
+                    "notes": "Explicit density reference temperature; not inferred from preparation or a neighboring table."
+                  }
+                },
+                "sample_count": {
+                  "scope": "Selected NBS CaO face-centered cubic crystallographic density."
+                },
+                "method_definition": {
+                  "definition": "The source reports density derived from its measured lattice parameters for the CaO face-centered cubic phase. The source value 3.345 grams per cubic centimeter is transcribed unchanged; no lattice/atomic-mass substitution, density recalculation or uncertainty propagation is performed.",
+                  "evidence": [
+                    {
+                      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                      "locator": "Section 2.21, printed p. 44 / one-based PDF p. 48, lower left below the unit-cell table: density calculated from the NBS lattice constant, 3.345 at 27 degrees C. Introduction, printed pp. 1-2 / one-based PDF pp. 5-6: NBS measured powder-XRD patterns, lattice parameters, internal-standard calibration and source-computed density; density units are grams per cubic centimeter.",
+                      "supports": [
+                        "method",
+                        "classification",
+                        "condition"
+                      ]
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                    "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                    "locator": "Section 2.21, printed p. 44 / one-based PDF p. 48, lower left below the unit-cell table: density calculated from the NBS lattice constant, 3.345 at 27 degrees C. Introduction, printed p. 2 / one-based PDF p. 6, right column: density units are grams per cubic centimeter; lattice constants may be adjusted to 25 degrees C separately from experimental powder-pattern temperature.",
+                    "supports": [
+                      "reported_value",
+                      "classification",
+                      "method",
+                      "condition"
+                    ]
+                  },
+                  {
+                    "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                    "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                    "locator": "Section 2.21, printed p. 43 / one-based PDF p. 47, upper right: calcium carbonate precursor from J. T. Baker No. 121647, calcination in platinum, NBS chemical analysis and petrolatum mounting.",
+                    "supports": [
+                      "material_identity",
+                      "state"
+                    ]
+                  }
+                ],
+                "scope_note": "CaO, face-centered cubic phase, represented by NBS experimental powder-XRD measurements. The source reports measured-lattice-derived crystallographic density at 27 degrees C. This does not establish bulk specimen density, powder-packing density, porosity or an engineering allowable. Sample, preparation, impurity and provenance limitations are retained in the linked state."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "identity": {
+        "context": "oxide",
+        "fields": {
+          "id": "mat_nbs1953_tio2",
+          "name": "Titanium dioxide",
+          "names": {
+            "en": "Titanium dioxide",
+            "zh": "Titanium dioxide",
+            "ja": "Titanium dioxide",
+            "de": "Titanium dioxide"
+          },
+          "aliases": [
+            {
+              "language": "und",
+              "text": "TiO2"
+            }
+          ],
+          "identity_scope": "Titanium dioxide (TiO2), one composition-level identity represented by a source-qualified NBS crystalline sample. Supplier, source number, phase, processing and temperature qualify its linked state and property, not additional identities. No exactly pure composition or universal density is inferred.",
+          "evidence": [
+            {
+              "source_id": "swanson_tatge_1953_nbs_circ539v1",
+              "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+              "locator": "Section 2.22, selected material heading and source sample paragraph. Section 2.22, printed p. 44 / one-based PDF p. 48, lower right: National Lead Company Sample No. MP 559 and NBS spectrographic analysis; printed p. 45 / PDF p. 49, upper left: chiefly anatase starting sample heated for two hours at 1000 degrees C and cooled slowly to obtain rutile.",
+              "supports": [
+                "material_identity",
+                "state"
+              ]
+            }
+          ]
+        }
+      },
+      "grades": [],
+      "states": [
+        {
+          "record": {
+            "context": "nbs_crystalline_phase",
+            "fields": {
+              "id": "state_nbs1953_tio2_rutile_mp559_xrd",
+              "identity_id": "mat_nbs1953_tio2",
+              "name": "TiO2, tetragonal rutile, NBS 1953 source sample",
+              "names": {
+                "en": "TiO2, tetragonal rutile, NBS 1953 source sample",
+                "zh": "TiO2, tetragonal rutile, NBS 1953 source sample",
+                "ja": "TiO2, tetragonal rutile, NBS 1953 source sample",
+                "de": "TiO2, tetragonal rutile, NBS 1953 source sample"
+              },
+              "source_designation": "TiO2 rutile, National Lead Company Sample No. MP 559 after source heat treatment",
+              "state": {
+                "product_form": {
+                  "status": "reported",
+                  "text": "Crystalline tetragonal rutile phase represented by the NBS powder-XRD pattern.",
+                  "evidence": [
+                    {
+                      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                      "locator": "Section 2.22, printed p. 44 / one-based PDF p. 48, lower right: National Lead Company Sample No. MP 559 and NBS spectrographic analysis; printed p. 45 / PDF p. 49, upper left: chiefly anatase starting sample heated for two hours at 1000 degrees C and cooled slowly to obtain rutile. Section 2.22, printed p. 46 / one-based PDF p. 50, upper right: density in accordance with the NBS lattice constant, 4.250 at 26 degrees C.",
+                      "supports": [
+                        "state"
+                      ]
+                    }
+                  ],
+                  "notes": "This is phase density, not a measured bulk or powder-packing density."
+                },
+                "processing": {
+                  "status": "reported",
+                  "text": "The chiefly anatase starting sample was heated for two hours at 1000 degrees C and cooled slowly to obtain the rutile phase.",
+                  "evidence": [
+                    {
+                      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                      "locator": "Section 2.22, printed p. 44 / one-based PDF p. 48, lower right: National Lead Company Sample No. MP 559 and NBS spectrographic analysis; printed p. 45 / PDF p. 49, upper left: chiefly anatase starting sample heated for two hours at 1000 degrees C and cooled slowly to obtain rutile.",
+                      "supports": [
+                        "state"
+                      ]
+                    }
+                  ],
+                  "notes": null
+                },
+                "temper_or_heat_treatment": {
+                  "status": "reported",
+                  "text": "Heated for two hours at 1000 degrees C, then cooled slowly; numerical cooling rate is not reported.",
+                  "evidence": [
+                    {
+                      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                      "locator": "Section 2.22, printed p. 44 / one-based PDF p. 48, lower right: National Lead Company Sample No. MP 559 and NBS spectrographic analysis; printed p. 45 / PDF p. 49, upper left: chiefly anatase starting sample heated for two hours at 1000 degrees C and cooled slowly to obtain rutile.",
+                      "supports": [
+                        "state"
+                      ]
+                    }
+                  ],
+                  "notes": "Preparation temperature is separate from the density reference temperature."
+                },
+                "composition_or_purity": {
+                  "status": "reported",
+                  "text": "TiO2, tetragonal rutile. Source sample No. MP 559 from the National Lead Company; NBS spectrographic analysis shows no impurity greater than 0.001 percent.",
+                  "evidence": [
+                    {
+                      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                      "locator": "Section 2.22, printed p. 44 / one-based PDF p. 48, lower right: National Lead Company Sample No. MP 559 and NBS spectrographic analysis; printed p. 45 / PDF p. 49, upper left: chiefly anatase starting sample heated for two hours at 1000 degrees C and cooled slowly to obtain rutile.",
+                      "supports": [
+                        "state"
+                      ]
+                    }
+                  ],
+                  "notes": "The spectrographic detection statement is not a total-purity or absence-of-impurities claim. Rutile is one state of a single TiO2 composition identity; the separate anatase result is excluded from this packet and would not create an extra identity."
+                }
+              },
+              "source_scope": "TiO2, tetragonal rutile phase, represented by NBS experimental powder-XRD measurements. The source reports measured-lattice-derived crystallographic density at 26 degrees C. This does not establish bulk specimen density, powder-packing density, porosity or an engineering allowable. Sample, preparation, impurity and provenance limitations are retained in the linked state.",
+              "evidence": [
+                {
+                  "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                  "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                  "locator": "Section 2.22, printed p. 44 / one-based PDF p. 48, lower right: National Lead Company Sample No. MP 559 and NBS spectrographic analysis; printed p. 45 / PDF p. 49, upper left: chiefly anatase starting sample heated for two hours at 1000 degrees C and cooled slowly to obtain rutile.",
+                  "supports": [
+                    "state",
+                    "material_identity"
+                  ]
+                }
+              ],
+              "property_ids": [
+                "refprop_nbs1953_tio2_rutile_mp559_crystallographic_density"
+              ]
+            }
+          },
+          "properties": [
+            {
+              "context": "nbs_crystallographic_density",
+              "fields": {
+                "id": "refprop_nbs1953_tio2_rutile_mp559_crystallographic_density",
+                "material_state_id": "state_nbs1953_tio2_rutile_mp559_xrd",
+                "reported_value": {
+                  "value_text": "4.250",
+                  "number": "4.250"
+                },
+                "conditions": {
+                  "temperature": {
+                    "status": "reported",
+                    "text": "26 degrees C",
+                    "evidence": [
+                      {
+                        "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                        "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                        "locator": "Section 2.22, printed p. 46 / one-based PDF p. 50, upper right: density in accordance with the NBS lattice constant, 4.250 at 26 degrees C.",
+                        "supports": [
+                          "condition"
+                        ]
+                      }
+                    ],
+                    "notes": "Explicit density reference temperature; not inferred from preparation or a neighboring table."
+                  }
+                },
+                "sample_count": {
+                  "scope": "Selected NBS TiO2 tetragonal rutile crystallographic density."
+                },
+                "method_definition": {
+                  "definition": "The source reports density derived from its measured lattice parameters for the TiO2 tetragonal rutile phase. The source value 4.250 grams per cubic centimeter is transcribed unchanged; no lattice/atomic-mass substitution, density recalculation or uncertainty propagation is performed.",
+                  "evidence": [
+                    {
+                      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                      "locator": "Section 2.22, printed p. 46 / one-based PDF p. 50, upper right: density in accordance with the NBS lattice constant, 4.250 at 26 degrees C. Introduction, printed pp. 1-2 / one-based PDF pp. 5-6: NBS measured powder-XRD patterns, lattice parameters, internal-standard calibration and source-computed density; density units are grams per cubic centimeter.",
+                      "supports": [
+                        "method",
+                        "classification",
+                        "condition"
+                      ]
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                    "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                    "locator": "Section 2.22, printed p. 46 / one-based PDF p. 50, upper right: density in accordance with the NBS lattice constant, 4.250 at 26 degrees C. Introduction, printed p. 2 / one-based PDF p. 6, right column: density units are grams per cubic centimeter; lattice constants may be adjusted to 25 degrees C separately from experimental powder-pattern temperature.",
+                    "supports": [
+                      "reported_value",
+                      "classification",
+                      "method",
+                      "condition"
+                    ]
+                  },
+                  {
+                    "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                    "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                    "locator": "Section 2.22, printed p. 44 / one-based PDF p. 48, lower right: National Lead Company Sample No. MP 559 and NBS spectrographic analysis; printed p. 45 / PDF p. 49, upper left: chiefly anatase starting sample heated for two hours at 1000 degrees C and cooled slowly to obtain rutile.",
+                    "supports": [
+                      "material_identity",
+                      "state"
+                    ]
+                  }
+                ],
+                "scope_note": "TiO2, tetragonal rutile phase, represented by NBS experimental powder-XRD measurements. The source reports measured-lattice-derived crystallographic density at 26 degrees C. This does not establish bulk specimen density, powder-packing density, porosity or an engineering allowable. Sample, preparation, impurity and provenance limitations are retained in the linked state."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "identity": {
+        "context": "oxide",
+        "fields": {
+          "id": "mat_nbs1953_cuo",
+          "name": "Copper(II) oxide",
+          "names": {
+            "en": "Copper(II) oxide",
+            "zh": "Copper(II) oxide",
+            "ja": "Copper(II) oxide",
+            "de": "Copper(II) oxide"
+          },
+          "aliases": [
+            {
+              "language": "und",
+              "text": "CuO"
+            }
+          ],
+          "identity_scope": "Copper(II) oxide (CuO), one composition-level identity represented by a source-qualified NBS crystalline sample. Supplier, source number, phase, processing and temperature qualify its linked state and property, not additional identities. No exactly pure composition or universal density is inferred.",
+          "evidence": [
+            {
+              "source_id": "swanson_tatge_1953_nbs_circ539v1",
+              "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+              "locator": "Section 2.25, selected material heading and source sample paragraph. Section 2.25, printed p. 49 / one-based PDF p. 53, lower left: Johnson, Matthey sample No. 3257 and NBS spectrographic analysis; right column: monoclinic tenorite structure.",
+              "supports": [
+                "material_identity",
+                "state"
+              ]
+            }
+          ]
+        }
+      },
+      "grades": [],
+      "states": [
+        {
+          "record": {
+            "context": "nbs_crystalline_phase",
+            "fields": {
+              "id": "state_nbs1953_cuo_jm3257_xrd",
+              "identity_id": "mat_nbs1953_cuo",
+              "name": "CuO, monoclinic tenorite, NBS 1953 source sample",
+              "names": {
+                "en": "CuO, monoclinic tenorite, NBS 1953 source sample",
+                "zh": "CuO, monoclinic tenorite, NBS 1953 source sample",
+                "ja": "CuO, monoclinic tenorite, NBS 1953 source sample",
+                "de": "CuO, monoclinic tenorite, NBS 1953 source sample"
+              },
+              "source_designation": "CuO, Johnson Matthey sample No. 3257",
+              "state": {
+                "product_form": {
+                  "status": "reported",
+                  "text": "Crystalline monoclinic tenorite phase represented by the NBS powder-XRD pattern.",
+                  "evidence": [
+                    {
+                      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                      "locator": "Section 2.25, printed p. 49 / one-based PDF p. 53, lower left: Johnson, Matthey sample No. 3257 and NBS spectrographic analysis; right column: monoclinic tenorite structure. Section 2.25, printed p. 49 / one-based PDF p. 53, lower right below the unit-cell table: density based on the NBS lattice constant, 6.51 at 26 degrees C.",
+                      "supports": [
+                        "state"
+                      ]
+                    }
+                  ],
+                  "notes": "This is phase density, not a measured bulk or powder-packing density."
+                },
+                "processing": {
+                  "status": "not_reported_in_inspected_source",
+                  "text": null,
+                  "evidence": [],
+                  "notes": "No sample-specific processing protocol is established by the selected section."
+                },
+                "temper_or_heat_treatment": {
+                  "status": "not_reported_in_inspected_source",
+                  "text": null,
+                  "evidence": [],
+                  "notes": "No sample-specific heat treatment is reported."
+                },
+                "composition_or_purity": {
+                  "status": "reported",
+                  "text": "CuO, monoclinic tenorite. NBS spectrographic analysis shows only faint traces of Fe and Mg as impurities.",
+                  "evidence": [
+                    {
+                      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                      "locator": "Section 2.25, printed p. 49 / one-based PDF p. 53, lower left: Johnson, Matthey sample No. 3257 and NBS spectrographic analysis; right column: monoclinic tenorite structure.",
+                      "supports": [
+                        "state"
+                      ]
+                    }
+                  ],
+                  "notes": "Faint traces do not establish numeric total purity or an analytical detection threshold. Source number 3257 is not a separately verified grade or independent-specimen count."
+                }
+              },
+              "source_scope": "CuO, monoclinic tenorite phase, represented by NBS experimental powder-XRD measurements. The source reports measured-lattice-derived crystallographic density at 26 degrees C. This does not establish bulk specimen density, powder-packing density, porosity or an engineering allowable. Sample, preparation, impurity and provenance limitations are retained in the linked state.",
+              "evidence": [
+                {
+                  "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                  "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                  "locator": "Section 2.25, printed p. 49 / one-based PDF p. 53, lower left: Johnson, Matthey sample No. 3257 and NBS spectrographic analysis; right column: monoclinic tenorite structure.",
+                  "supports": [
+                    "state",
+                    "material_identity"
+                  ]
+                }
+              ],
+              "property_ids": [
+                "refprop_nbs1953_cuo_jm3257_crystallographic_density"
+              ]
+            }
+          },
+          "properties": [
+            {
+              "context": "nbs_crystallographic_density",
+              "fields": {
+                "id": "refprop_nbs1953_cuo_jm3257_crystallographic_density",
+                "material_state_id": "state_nbs1953_cuo_jm3257_xrd",
+                "reported_value": {
+                  "value_text": "6.51",
+                  "number": "6.51"
+                },
+                "conditions": {
+                  "temperature": {
+                    "status": "reported",
+                    "text": "26 degrees C",
+                    "evidence": [
+                      {
+                        "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                        "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                        "locator": "Section 2.25, printed p. 49 / one-based PDF p. 53, lower right below the unit-cell table: density based on the NBS lattice constant, 6.51 at 26 degrees C.",
+                        "supports": [
+                          "condition"
+                        ]
+                      }
+                    ],
+                    "notes": "Explicit density reference temperature; not inferred from preparation or a neighboring table."
+                  }
+                },
+                "sample_count": {
+                  "scope": "Selected NBS CuO monoclinic tenorite crystallographic density."
+                },
+                "method_definition": {
+                  "definition": "The source reports density derived from its measured lattice parameters for the CuO monoclinic tenorite phase. The source value 6.51 grams per cubic centimeter is transcribed unchanged; no lattice/atomic-mass substitution, density recalculation or uncertainty propagation is performed.",
+                  "evidence": [
+                    {
+                      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                      "locator": "Section 2.25, printed p. 49 / one-based PDF p. 53, lower right below the unit-cell table: density based on the NBS lattice constant, 6.51 at 26 degrees C. Introduction, printed pp. 1-2 / one-based PDF pp. 5-6: NBS measured powder-XRD patterns, lattice parameters, internal-standard calibration and source-computed density; density units are grams per cubic centimeter.",
+                      "supports": [
+                        "method",
+                        "classification",
+                        "condition"
+                      ]
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                    "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                    "locator": "Section 2.25, printed p. 49 / one-based PDF p. 53, lower right below the unit-cell table: density based on the NBS lattice constant, 6.51 at 26 degrees C. Introduction, printed p. 2 / one-based PDF p. 6, right column: density units are grams per cubic centimeter; lattice constants may be adjusted to 25 degrees C separately from experimental powder-pattern temperature.",
+                    "supports": [
+                      "reported_value",
+                      "classification",
+                      "method",
+                      "condition"
+                    ]
+                  },
+                  {
+                    "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                    "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                    "locator": "Section 2.25, printed p. 49 / one-based PDF p. 53, lower left: Johnson, Matthey sample No. 3257 and NBS spectrographic analysis; right column: monoclinic tenorite structure.",
+                    "supports": [
+                      "material_identity",
+                      "state"
+                    ]
+                  }
+                ],
+                "scope_note": "CuO, monoclinic tenorite phase, represented by NBS experimental powder-XRD measurements. The source reports measured-lattice-derived crystallographic density at 26 degrees C. This does not establish bulk specimen density, powder-packing density, porosity or an engineering allowable. Sample, preparation, impurity and provenance limitations are retained in the linked state."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "identity": {
+        "context": "oxide",
+        "fields": {
+          "id": "mat_nbs1953_ceo2",
+          "name": "Cerium(IV) oxide",
+          "names": {
+            "en": "Cerium(IV) oxide",
+            "zh": "Cerium(IV) oxide",
+            "ja": "Cerium(IV) oxide",
+            "de": "Cerium(IV) oxide"
+          },
+          "aliases": [
+            {
+              "language": "und",
+              "text": "CeO2"
+            }
+          ],
+          "identity_scope": "Cerium(IV) oxide (CeO2), one composition-level identity represented by a source-qualified NBS crystalline sample. Supplier, source number, phase, processing and temperature qualify its linked state and property, not additional identities. No exactly pure composition or universal density is inferred.",
+          "evidence": [
+            {
+              "source_id": "swanson_tatge_1953_nbs_circ539v1",
+              "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+              "locator": "Section 2.30, selected material heading and source sample paragraph. Section 2.30, printed p. 56 / one-based PDF p. 60, upper left: sample of unknown origin obtained from the NBS spectrographic laboratory, label No. 41-9100, approximate purity and traces; upper right: fluorite structure.",
+              "supports": [
+                "material_identity",
+                "state"
+              ]
+            }
+          ]
+        }
+      },
+      "grades": [],
+      "states": [
+        {
+          "record": {
+            "context": "nbs_crystalline_phase",
+            "fields": {
+              "id": "state_nbs1953_ceo2_nbs419100_xrd",
+              "identity_id": "mat_nbs1953_ceo2",
+              "name": "CeO2, face-centered cubic fluorite type, NBS 1953 source sample",
+              "names": {
+                "en": "CeO2, face-centered cubic fluorite type, NBS 1953 source sample",
+                "zh": "CeO2, face-centered cubic fluorite type, NBS 1953 source sample",
+                "ja": "CeO2, face-centered cubic fluorite type, NBS 1953 source sample",
+                "de": "CeO2, face-centered cubic fluorite type, NBS 1953 source sample"
+              },
+              "source_designation": "CeO2, NBS spectrographic laboratory label No. 41-9100, origin unknown",
+              "state": {
+                "product_form": {
+                  "status": "reported",
+                  "text": "Crystalline face-centered cubic fluorite type phase represented by the NBS powder-XRD pattern.",
+                  "evidence": [
+                    {
+                      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                      "locator": "Section 2.30, printed p. 56 / one-based PDF p. 60, upper left: sample of unknown origin obtained from the NBS spectrographic laboratory, label No. 41-9100, approximate purity and traces; upper right: fluorite structure. Section 2.30, printed p. 57 / one-based PDF p. 61, upper left below the unit-cell table: density calculated from the NBS lattice constant, 7.215 at 26 degrees C.",
+                      "supports": [
+                        "state"
+                      ]
+                    }
+                  ],
+                  "notes": "This is phase density, not a measured bulk or powder-packing density."
+                },
+                "processing": {
+                  "status": "not_reported_in_inspected_source",
+                  "text": null,
+                  "evidence": [],
+                  "notes": "No sample-specific processing protocol is established by the selected section."
+                },
+                "temper_or_heat_treatment": {
+                  "status": "not_reported_in_inspected_source",
+                  "text": null,
+                  "evidence": [],
+                  "notes": "No sample-specific heat treatment is reported."
+                },
+                "composition_or_purity": {
+                  "status": "reported",
+                  "text": "CeO2, face-centered cubic fluorite type. The source states approximately 99.99 percent pure and only spectrographic traces of Pr and Cu.",
+                  "evidence": [
+                    {
+                      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                      "locator": "Section 2.30, printed p. 56 / one-based PDF p. 60, upper left: sample of unknown origin obtained from the NBS spectrographic laboratory, label No. 41-9100, approximate purity and traces; upper right: fluorite structure.",
+                      "supports": [
+                        "state"
+                      ]
+                    }
+                  ],
+                  "notes": "The material origin is explicitly unknown; the NBS laboratory is the reported immediate source, not an inferred manufacturer. Approximate purity remains qualified, with percentage basis unknown. Label 41-9100 is not a certified grade or specimen count."
+                }
+              },
+              "source_scope": "CeO2, face-centered cubic fluorite type phase, represented by NBS experimental powder-XRD measurements. The source reports measured-lattice-derived crystallographic density at 26 degrees C. This does not establish bulk specimen density, powder-packing density, porosity or an engineering allowable. Sample, preparation, impurity and provenance limitations are retained in the linked state.",
+              "evidence": [
+                {
+                  "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                  "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                  "locator": "Section 2.30, printed p. 56 / one-based PDF p. 60, upper left: sample of unknown origin obtained from the NBS spectrographic laboratory, label No. 41-9100, approximate purity and traces; upper right: fluorite structure.",
+                  "supports": [
+                    "state",
+                    "material_identity"
+                  ]
+                }
+              ],
+              "property_ids": [
+                "refprop_nbs1953_ceo2_nbs419100_crystallographic_density"
+              ]
+            }
+          },
+          "properties": [
+            {
+              "context": "nbs_crystallographic_density",
+              "fields": {
+                "id": "refprop_nbs1953_ceo2_nbs419100_crystallographic_density",
+                "material_state_id": "state_nbs1953_ceo2_nbs419100_xrd",
+                "reported_value": {
+                  "value_text": "7.215",
+                  "number": "7.215"
+                },
+                "conditions": {
+                  "temperature": {
+                    "status": "reported",
+                    "text": "26 degrees C",
+                    "evidence": [
+                      {
+                        "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                        "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                        "locator": "Section 2.30, printed p. 57 / one-based PDF p. 61, upper left below the unit-cell table: density calculated from the NBS lattice constant, 7.215 at 26 degrees C.",
+                        "supports": [
+                          "condition"
+                        ]
+                      }
+                    ],
+                    "notes": "Explicit density reference temperature; not inferred from preparation or a neighboring table."
+                  }
+                },
+                "sample_count": {
+                  "scope": "Selected NBS CeO2 face-centered cubic fluorite type crystallographic density."
+                },
+                "method_definition": {
+                  "definition": "The source reports density derived from its measured lattice parameters for the CeO2 face-centered cubic fluorite type phase. The source value 7.215 grams per cubic centimeter is transcribed unchanged; no lattice/atomic-mass substitution, density recalculation or uncertainty propagation is performed.",
+                  "evidence": [
+                    {
+                      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                      "locator": "Section 2.30, printed p. 57 / one-based PDF p. 61, upper left below the unit-cell table: density calculated from the NBS lattice constant, 7.215 at 26 degrees C. Introduction, printed pp. 1-2 / one-based PDF pp. 5-6: NBS measured powder-XRD patterns, lattice parameters, internal-standard calibration and source-computed density; density units are grams per cubic centimeter.",
+                      "supports": [
+                        "method",
+                        "classification",
+                        "condition"
+                      ]
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                    "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                    "locator": "Section 2.30, printed p. 57 / one-based PDF p. 61, upper left below the unit-cell table: density calculated from the NBS lattice constant, 7.215 at 26 degrees C. Introduction, printed p. 2 / one-based PDF p. 6, right column: density units are grams per cubic centimeter; lattice constants may be adjusted to 25 degrees C separately from experimental powder-pattern temperature.",
+                    "supports": [
+                      "reported_value",
+                      "classification",
+                      "method",
+                      "condition"
+                    ]
+                  },
+                  {
+                    "source_id": "swanson_tatge_1953_nbs_circ539v1",
+                    "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+                    "locator": "Section 2.30, printed p. 56 / one-based PDF p. 60, upper left: sample of unknown origin obtained from the NBS spectrographic laboratory, label No. 41-9100, approximate purity and traces; upper right: fluorite structure.",
+                    "supports": [
+                      "material_identity",
+                      "state"
+                    ]
+                  }
+                ],
+                "scope_note": "CeO2, face-centered cubic fluorite type phase, represented by NBS experimental powder-XRD measurements. The source reports measured-lattice-derived crystallographic density at 26 degrees C. This does not establish bulk specimen density, powder-packing density, porosity or an engineering allowable. Sample, preparation, impurity and provenance limitations are retained in the linked state."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "identity_crosswalk": [
+    {
+      "identity_id": "mat_nbs1953_beo",
+      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+      "source_designations": [
+        "BeO, Brush Beryllium Company, No. 1743-1747, source-described fluorescent grade"
+      ],
+      "disposition": "distinct",
+      "evidence": [
+        {
+          "source_id": "swanson_tatge_1953_nbs_circ539v1",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+          "locator": "Section 2.17, printed p. 36 / one-based PDF p. 40, upper left: Brush Beryllium Company sample No. 1743-1747, fluorescent-grade description, furnace preparation and NBS impurity analysis.",
+          "supports": [
+            "material_identity"
+          ]
+        }
+      ],
+      "note": "BeO has no standalone identity match in the pinned 1084 core identities or 24 accepted reduced computed compositions. Constituent occurrences in another compound or mixture are not identity matches. Supplier, grade, phase and temperature do not add identity credit; source-sample limits remain explicit in the linked state."
+    },
+    {
+      "identity_id": "mat_nbs1953_mgo",
+      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+      "source_designations": [
+        "MgO, Radio Corporation of America sample for phosphor research"
+      ],
+      "disposition": "distinct",
+      "evidence": [
+        {
+          "source_id": "swanson_tatge_1953_nbs_circ539v1",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+          "locator": "Section 2.18, printed p. 37 / one-based PDF p. 41, right column: Radio Corporation of America sample, graphite-crucible crystallization at 1800 degrees C for three hours and NBS spectrographic analysis.",
+          "supports": [
+            "material_identity"
+          ]
+        }
+      ],
+      "note": "MgO has no standalone identity match in the pinned 1084 core identities or 24 accepted reduced computed compositions. Constituent occurrences in another compound or mixture are not identity matches. Supplier, grade, phase and temperature do not add identity credit; source-sample limits remain explicit in the linked state."
+    },
+    {
+      "identity_id": "mat_nbs1953_cao",
+      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+      "source_designations": [
+        "CaO prepared from J. T. Baker calcium carbonate No. 121647"
+      ],
+      "disposition": "distinct",
+      "evidence": [
+        {
+          "source_id": "swanson_tatge_1953_nbs_circ539v1",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+          "locator": "Section 2.21, printed p. 43 / one-based PDF p. 47, upper right: calcium carbonate precursor from J. T. Baker No. 121647, calcination in platinum, NBS chemical analysis and petrolatum mounting.",
+          "supports": [
+            "material_identity"
+          ]
+        }
+      ],
+      "note": "CaO has no standalone identity match in the pinned 1084 core identities or 24 accepted reduced computed compositions. Constituent occurrences in another compound or mixture are not identity matches. Supplier, grade, phase and temperature do not add identity credit; source-sample limits remain explicit in the linked state."
+    },
+    {
+      "identity_id": "mat_nbs1953_tio2",
+      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+      "source_designations": [
+        "TiO2 rutile, National Lead Company Sample No. MP 559 after source heat treatment"
+      ],
+      "disposition": "distinct",
+      "evidence": [
+        {
+          "source_id": "swanson_tatge_1953_nbs_circ539v1",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+          "locator": "Section 2.22, printed p. 44 / one-based PDF p. 48, lower right: National Lead Company Sample No. MP 559 and NBS spectrographic analysis; printed p. 45 / PDF p. 49, upper left: chiefly anatase starting sample heated for two hours at 1000 degrees C and cooled slowly to obtain rutile.",
+          "supports": [
+            "material_identity"
+          ]
+        }
+      ],
+      "note": "TiO2 has no standalone identity match in the pinned 1084 core identities or 24 accepted reduced computed compositions. Constituent occurrences in another compound or mixture are not identity matches. Supplier, grade, phase and temperature do not add identity credit; source-sample limits remain explicit in the linked state."
+    },
+    {
+      "identity_id": "mat_nbs1953_cuo",
+      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+      "source_designations": [
+        "CuO, Johnson Matthey sample No. 3257"
+      ],
+      "disposition": "distinct",
+      "evidence": [
+        {
+          "source_id": "swanson_tatge_1953_nbs_circ539v1",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+          "locator": "Section 2.25, printed p. 49 / one-based PDF p. 53, lower left: Johnson, Matthey sample No. 3257 and NBS spectrographic analysis; right column: monoclinic tenorite structure.",
+          "supports": [
+            "material_identity"
+          ]
+        }
+      ],
+      "note": "CuO has no standalone identity match in the pinned 1084 core identities or 24 accepted reduced computed compositions. Constituent occurrences in another compound or mixture are not identity matches. Supplier, grade, phase and temperature do not add identity credit; source-sample limits remain explicit in the linked state."
+    },
+    {
+      "identity_id": "mat_nbs1953_ceo2",
+      "source_id": "swanson_tatge_1953_nbs_circ539v1",
+      "source_designations": [
+        "CeO2, NBS spectrographic laboratory label No. 41-9100, origin unknown"
+      ],
+      "disposition": "distinct",
+      "evidence": [
+        {
+          "source_id": "swanson_tatge_1953_nbs_circ539v1",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+          "locator": "Section 2.30, printed p. 56 / one-based PDF p. 60, upper left: sample of unknown origin obtained from the NBS spectrographic laboratory, label No. 41-9100, approximate purity and traces; upper right: fluorite structure.",
+          "supports": [
+            "material_identity"
+          ]
+        }
+      ],
+      "note": "CeO2 has no standalone identity match in the pinned 1084 core identities or 24 accepted reduced computed compositions. Constituent occurrences in another compound or mixture are not identity matches. Supplier, grade, phase and temperature do not add identity credit; source-sample limits remain explicit in the linked state."
+    }
+  ],
+  "review": {
+    "status": "selected_source_facts_checked_candidate_only",
+    "baseline_commit": "c90188dcd5ac3a19863be0b49419722571b17eff",
+    "formal_admitted_delta": 0,
+    "verification": {
+      "source_transcription_checked": true,
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "source_reviews": [
+      {
+        "source_id": "swanson_tatge_1953_nbs_circ539v1",
+        "status": "selected_facts_checked",
+        "note": "Reuse the complete existing NBS source record unchanged. Only NBS-authored density statements derived from measured lattice parameters and selected sample qualifications are curated; separately credited third-party comparison values and source assets are excluded. Retained NIST Technical Series rights notice supports the existing employee-authored-work scope, not a blanket CC0 claim. Republished courtesy of the National Institute of Standards and Technology."
+      }
+    ],
+    "source_document": {
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+      "sha256": "003b872fbe7d403d38bbd1d752568ee92a96bdb010b6e381bdc82566929e2a6c",
+      "bytes": 6422795,
+      "page_count": 104,
+      "selected_pdf_pages_one_based": [
+        5,
+        6,
+        40,
+        41,
+        43,
+        47,
+        48,
+        49,
+        50,
+        53,
+        60,
+        61
+      ]
+    },
+    "rights_evidence": {
+      "url": "https://www.nist.gov/open/copyright-fair-use-and-licensing-statements-srd-data-software-and-technical-series-publications",
+      "retained_sha256": "7277db527945beefe164286cea84cb98c46d21c3194b007420961930df462e94",
+      "retained_bytes": 93931,
+      "locator": "NIST Technical Series Publications",
+      "attribution": "Republished courtesy of the National Institute of Standards and Technology.",
+      "scope": "Selected NBS employee-authored factual content only; third-party comparisons excluded; source registration unchanged."
+    },
+    "identity_reconciliation": {
+      "core_identity_count": 1084,
+      "core_inorganic_count": 26,
+      "reviewed_computed_composition_count": 24,
+      "reviewed_computed_registry_sha256": "a285523b2b2fdbf0d750ce6ac56e3abfb80d5c42056229a2352b016a787fd875",
+      "comparison": "Core names, aliases, source qualifications and state compositions; exact reduced-element composition maps for the 24 accepted computed buckets. Trace constituent occurrences are not independent material identities.",
+      "finding": "The six oxide compositions are absent as standalone admitted identities; all earlier NBS halide identities remain excluded from this increment.",
+      "computed_examples_unadmitted": 62
+    },
+    "candidate_delta": {
+      "identities": 6,
+      "grades": 0,
+      "states": 6,
+      "properties": 6,
+      "sources": 0
+    },
+    "locale_status": "Explicit English fallback in all four required name slots; no native-language review claimed.",
+    "exclusions": [
+      "TiO2 anatase density: same TiO2 identity, and source records weak rutile lines omitted from its powder table.",
+      "SiO2 and all previously admitted NBS compositions; supplier, temperature or polymorph aliases do not add identities.",
+      "Third-party diffraction/lattice/optical comparison values, complete tables, source PDF/page images and raw structural assets.",
+      "Direct bulk-density, mean, uncertainty, independent sample-count, certified-grade or universal-purity claims."
+    ],
+    "candidate_facts": [
+      {
+        "formula": "BeO",
+        "phase": "hexagonal",
+        "designation": "BeO, Brush Beryllium Company, No. 1743-1747, source-described fluorescent grade",
+        "value": "3.008",
+        "temperature": "26 degrees C",
+        "section": "2.17",
+        "sample_locator": "Section 2.17, printed p. 36 / one-based PDF p. 40, upper left: Brush Beryllium Company sample No. 1743-1747, fluorescent-grade description, furnace preparation and NBS impurity analysis.",
+        "density_locator": "Section 2.17, printed p. 37 / one-based PDF p. 41, left column below the unit-cell table: density based on the NBS lattice constant, 3.008 at 26 degrees C."
+      },
+      {
+        "formula": "MgO",
+        "phase": "face-centered cubic",
+        "designation": "MgO, Radio Corporation of America sample for phosphor research",
+        "value": "3.581",
+        "temperature": "25 degrees C",
+        "section": "2.18",
+        "sample_locator": "Section 2.18, printed p. 37 / one-based PDF p. 41, right column: Radio Corporation of America sample, graphite-crucible crystallization at 1800 degrees C for three hours and NBS spectrographic analysis.",
+        "density_locator": "Section 2.18, printed p. 39 / one-based PDF p. 43, upper left below the unit-cell table: density calculated from the NBS lattice constant, 3.581 at 25 degrees C."
+      },
+      {
+        "formula": "CaO",
+        "phase": "face-centered cubic",
+        "designation": "CaO prepared from J. T. Baker calcium carbonate No. 121647",
+        "value": "3.345",
+        "temperature": "27 degrees C",
+        "section": "2.21",
+        "sample_locator": "Section 2.21, printed p. 43 / one-based PDF p. 47, upper right: calcium carbonate precursor from J. T. Baker No. 121647, calcination in platinum, NBS chemical analysis and petrolatum mounting.",
+        "density_locator": "Section 2.21, printed p. 44 / one-based PDF p. 48, lower left below the unit-cell table: density calculated from the NBS lattice constant, 3.345 at 27 degrees C."
+      },
+      {
+        "formula": "TiO2",
+        "phase": "tetragonal rutile",
+        "designation": "TiO2 rutile, National Lead Company Sample No. MP 559 after source heat treatment",
+        "value": "4.250",
+        "temperature": "26 degrees C",
+        "section": "2.22",
+        "sample_locator": "Section 2.22, printed p. 44 / one-based PDF p. 48, lower right: National Lead Company Sample No. MP 559 and NBS spectrographic analysis; printed p. 45 / PDF p. 49, upper left: chiefly anatase starting sample heated for two hours at 1000 degrees C and cooled slowly to obtain rutile.",
+        "density_locator": "Section 2.22, printed p. 46 / one-based PDF p. 50, upper right: density in accordance with the NBS lattice constant, 4.250 at 26 degrees C."
+      },
+      {
+        "formula": "CuO",
+        "phase": "monoclinic tenorite",
+        "designation": "CuO, Johnson Matthey sample No. 3257",
+        "value": "6.51",
+        "temperature": "26 degrees C",
+        "section": "2.25",
+        "sample_locator": "Section 2.25, printed p. 49 / one-based PDF p. 53, lower left: Johnson, Matthey sample No. 3257 and NBS spectrographic analysis; right column: monoclinic tenorite structure.",
+        "density_locator": "Section 2.25, printed p. 49 / one-based PDF p. 53, lower right below the unit-cell table: density based on the NBS lattice constant, 6.51 at 26 degrees C."
+      },
+      {
+        "formula": "CeO2",
+        "phase": "face-centered cubic fluorite type",
+        "designation": "CeO2, NBS spectrographic laboratory label No. 41-9100, origin unknown",
+        "value": "7.215",
+        "temperature": "26 degrees C",
+        "section": "2.30",
+        "sample_locator": "Section 2.30, printed p. 56 / one-based PDF p. 60, upper left: sample of unknown origin obtained from the NBS spectrographic laboratory, label No. 41-9100, approximate purity and traces; upper right: fluorite structure.",
+        "density_locator": "Section 2.30, printed p. 57 / one-based PDF p. 61, upper left below the unit-cell table: density calculated from the NBS lattice constant, 7.215 at 26 degrees C."
+      }
+    ]
+  }
+}
