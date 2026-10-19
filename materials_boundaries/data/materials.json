@@ -85887,6 +85887,31 @@
           ]
         }
       ]
+    },
+    {
+      "version": "1.0.0",
+      "category": "polymer",
+      "id": "mat_zakrecki2025_pa12_pa2200",
+      "name": "PA12 polymer, EOS PA2200 source-qualified representative",
+      "names": {
+        "en": "PA12 polymer, EOS PA2200 source-qualified representative",
+        "zh": "PA12 polymer, EOS PA2200 source-qualified representative",
+        "ja": "PA12 polymer, EOS PA2200 source-qualified representative",
+        "de": "PA12 polymer, EOS PA2200 source-qualified representative"
+      },
+      "aliases": [],
+      "identity_scope": "One source-qualified PA12 polymer representative identified in the study by the EOS PA2200 trade designation. Composition, not supplier name, print technology, post-processing or age, defines identity. No existing unfilled PA12 identity was identified in the frozen catalog; its PA12-CF15 observations are separate filled-formulation evidence and are not admitted here. This representative does not establish chemical purity, an additive-free formulation, or universal equivalence among PA12 grades. HP PA12 and all other PA12 products remain outside this packet; different manufacturer labels alone do not support additional identities.",
+      "evidence": [
+        {
+          "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+          "locator": "XML section 2.1 (sec2dot1-materials-18-04478), PA2200 trade-name paragraph; Table 5 (materials-18-04478-t005), SLS/PA2200",
+          "supports": [
+            "material_identity",
+            "classification"
+          ]
+        }
+      ]
     }
   ],
   "grades": [
@@ -86711,6 +86736,44 @@
           "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
           "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
           "locator": "PDF p.3 Table 1, PBAT row",
+          "supports": [
+            "material_identity",
+            "grade"
+          ]
+        }
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "id": "grade_zakrecki2025_eos_pa2200",
+      "identity_id": "mat_zakrecki2025_pa12_pa2200",
+      "designation": "PA2200",
+      "authority": {
+        "kind": "source_designation",
+        "name": "Andrzej Zakrecki and Jacek Cieslik (2025), section 2.1 and Table 5"
+      },
+      "manufacturer": {
+        "status": "reported",
+        "text": "EOS",
+        "evidence": [
+          {
+            "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+            "locator": "XML section 2.1 (sec2dot1-materials-18-04478), PA2200 trade-name paragraph; Table 5 (materials-18-04478-t005), SLS/PA2200",
+            "supports": [
+              "material_identity",
+              "grade"
+            ]
+          }
+        ],
+        "notes": "Source attribution only; no independent manufacturer or certification audit."
+      },
+      "aliases": [],
+      "evidence": [
+        {
+          "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+          "locator": "XML section 2.1 (sec2dot1-materials-18-04478), PA2200 trade-name paragraph; Table 5 (materials-18-04478-t005), SLS/PA2200",
           "supports": [
             "material_identity",
             "grade"
@@ -191743,6 +191806,131 @@
       ],
       "property_ids": [
         "refprop_bianchi2022_epdm_h_p60_mass_density"
+      ],
+      "evaluation_support": "catalog_only"
+    },
+    {
+      "version": "1.0.0",
+      "id": "state_zakrecki2025_pa2200_sls_dyed_reference",
+      "identity_id": "mat_zakrecki2025_pa12_pa2200",
+      "grade_id": "grade_zakrecki2025_eos_pa2200",
+      "name": "EOS PA2200 SLS, dyed unaged reference tensile specimens",
+      "names": {
+        "en": "EOS PA2200 SLS, dyed unaged reference tensile specimens",
+        "zh": "EOS PA2200 SLS, dyed unaged reference tensile specimens",
+        "ja": "EOS PA2200 SLS, dyed unaged reference tensile specimens",
+        "de": "EOS PA2200 SLS, dyed unaged reference tensile specimens"
+      },
+      "aliases": [],
+      "source_designation": "PA2200; SLS / Reference; Powershot C + DM60 + Powershot S",
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Horizontally printed tensile specimens, nominal 160 x 20 x 4 mm",
+          "evidence": [
+            {
+              "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+              "locator": "XML sections 2.1-2.2 (sec2dot1-materials-18-04478; sec2dot2-materials-18-04478); Tables 5 and 7, SLS reference treatment",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "processing": {
+          "status": "reported",
+          "text": "EOS P396 SLS using the study PA2200 material profile; selected table treatment label Powershot C + DM60 + Powershot S; Black 01 dye",
+          "evidence": [
+            {
+              "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+              "locator": "XML sections 2.1-2.2 (sec2dot1-materials-18-04478; sec2dot2-materials-18-04478); Tables 5 and 7, SLS reference treatment",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Preserve the Table 5/7 treatment label. Section 2.4 lists the same equipment in a different order; no detailed operation sequence, timing or dye uptake is inferred."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No separate thermal treatment is assigned to this selected reference state; printer and ageing chamber settings are not tensile-test temperatures."
+        },
+        "conditioning": {
+          "status": "reported",
+          "text": "Reference specimens before accelerated ageing, after the selected post-processing",
+          "evidence": [
+            {
+              "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+              "locator": "XML sections 2.1-2.2 (sec2dot1-materials-18-04478; sec2dot2-materials-18-04478); Tables 5 and 7, SLS reference treatment",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Moisture-equilibration protocol, pre-test temperature and relative humidity are not reported."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "Source identifies PA2200 as EOS trade name for white PA12",
+          "evidence": [
+            {
+              "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+              "locator": "XML section 2.1 (sec2dot1-materials-18-04478), PA2200 trade-name paragraph; Table 5 (materials-18-04478-t005), SLS/PA2200",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Full additive package, purity, lot and dye uptake are not reported. No additive-free or universal PA12 composition is inferred."
+        },
+        "reinforcement": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No complete reinforcement/additive declaration is established by the selected passages; absence is not asserted."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No porosity value is assigned to this selected state."
+        },
+        "orientation": {
+          "status": "reported",
+          "text": "Horizontal XY placement; source states X is the longest specimen direction",
+          "evidence": [
+            {
+              "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+              "locator": "XML sections 2.1-2.2 (sec2dot1-materials-18-04478; sec2dot2-materials-18-04478); Tables 5 and 7, SLS reference treatment",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": null
+        }
+      },
+      "source_scope": "One source-qualified PA12 polymer representative identified in the study by the EOS PA2200 trade designation. Composition, not supplier name, print technology, post-processing or age, defines identity. No existing unfilled PA12 identity was identified in the frozen catalog; its PA12-CF15 observations are separate filled-formulation evidence and are not admitted here. This representative does not establish chemical purity, an additive-free formulation, or universal equivalence among PA12 grades. HP PA12 and all other PA12 products remain outside this packet; different manufacturer labels alone do not support additional identities.",
+      "evidence": [
+        {
+          "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+          "locator": "XML sections 2.1-2.2 (sec2dot1-materials-18-04478; sec2dot2-materials-18-04478); Tables 5 and 7, SLS reference treatment",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_zakrecki2025_pa2200_sls_reference_tensile_strength"
       ],
       "evaluation_support": "catalog_only"
     }

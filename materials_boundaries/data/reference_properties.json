@@ -393193,6 +393193,249 @@
         "independent_scientific_review": false,
         "raw_data_reanalysis": false
       }
+    },
+    {
+      "version": "1.0.0",
+      "quantity": "tensile_strength",
+      "quantity_dimension": "pressure",
+      "evidence_kind": "published_experimental_reference",
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "id": "refprop_zakrecki2025_pa2200_sls_reference_tensile_strength",
+      "material_state_id": "state_zakrecki2025_pa2200_sls_dyed_reference",
+      "source_property_label": "σ (MPa)",
+      "reported_value": {
+        "kind": "scalar",
+        "value_text": "43.72",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "number": "43.72"
+      },
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Original Table 7 SLS Reference strength result; no manufacturer-data substitution, curve digitization, statistical repair or pooled estimate.",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Tensile-test temperature is not reported. The 23 C ageing-calculation reference and processing/chamber settings are not substituted."
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "EN ISO 527-1, as stated by the source",
+          "evidence": [
+            {
+              "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+              "locator": "XML section 2.3 (sec2dot3-materials-18-04478), tensile-testing paragraph",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Edition and compliance are not independently verified."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Source-reported tensile testing on an Instron 5969 according to EN ISO 527-1, at 1 mm/min, with a source-described test section length of 115 mm. Nominal printed specimen dimensions are 160 x 20 x 4 mm. The source does not specify the exact strength-extraction rule, stress definition or strain-measurement implementation; 115 mm is not relabeled as a verified extensometer gauge length.",
+          "evidence": [
+            {
+              "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+              "locator": "XML section 2.3 (sec2dot3-materials-18-04478), tensile-testing paragraph",
+              "supports": [
+                "method",
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "direction": {
+          "status": "reported",
+          "text": "Specimens printed horizontally in XY, longest side in X",
+          "evidence": [
+            {
+              "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+              "locator": "XML sections 2.1-2.2 (sec2dot1-materials-18-04478; sec2dot2-materials-18-04478); Tables 5 and 7, SLS reference treatment",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "No isotropic property or transverse result is inferred."
+        },
+        "conditioning": {
+          "status": "reported",
+          "text": "Unaged reference group after the selected Powershot C + DM60 + Powershot S treatment and Black 01 dye",
+          "evidence": [
+            {
+              "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+              "locator": "XML sections 2.1-2.2 (sec2dot1-materials-18-04478; sec2dot2-materials-18-04478); Tables 5 and 7, SLS reference treatment",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Pre-test moisture equilibration and conditioning temperature/humidity are not reported."
+        },
+        "loading_rate": {
+          "status": "reported",
+          "text": "Source-reported test speed 1 mm/min",
+          "evidence": [
+            {
+              "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+              "locator": "XML section 2.3 (sec2dot3-materials-18-04478), tensile-testing paragraph",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "additional_conditions": [
+          {
+            "name": "test_relative_humidity",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "No tensile-test relative humidity is stated; no standard laboratory default is assigned."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "reported_mean",
+      "uncertainty": {
+        "type": "reported_standard_deviation",
+        "value_text": "1.03",
+        "number": "1.03",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "scope": "Table 7 SLS Reference tensile-strength group only; no SE, CI or allowable is inferred.",
+        "coverage_factor": null,
+        "confidence_level": null,
+        "evidence": [
+          {
+            "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+            "locator": "XML Table 7 (materials-18-04478-t007), SLS / Reference, Powershot C + DM60 + Powershot S, sigma (MPa) Mean/Std/CV columns",
+            "supports": [
+              "uncertainty"
+            ]
+          }
+        ]
+      },
+      "uncertainty_status": "reported_standard_deviation",
+      "uncertainty_note": "Table 7 explicitly labels Mean 43.72 MPa and Std 1.03 MPa; it separately reports CV 2.36%. All three selected strength numbers are retained without recalculation. The excluded modulus discrepancy does not receive a numerical repair.",
+      "sample_count": {
+        "value": 6,
+        "relation": "exact",
+        "scope": "Selected SLS treatment and unaged reference tensile group.",
+        "source_statement": "Six tensile strength specimens per printing technology, post-processing route and ageing time.",
+        "evidence": [
+          {
+            "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+            "locator": "XML section 2.2 (sec2dot2-materials-18-04478), six tensile specimens per technology/treatment/age group; Table 5",
+            "supports": [
+              "sample_count"
+            ]
+          }
+        ]
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Source-reported tensile testing on an Instron 5969 according to EN ISO 527-1, at 1 mm/min, with a source-described test section length of 115 mm. Nominal printed specimen dimensions are 160 x 20 x 4 mm. The source does not specify the exact strength-extraction rule, stress definition or strain-measurement implementation; 115 mm is not relabeled as a verified extensometer gauge length.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+            "locator": "XML section 2.3 (sec2dot3-materials-18-04478), tensile-testing paragraph",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "The same Table 7 SLS Reference row reports Youngs modulus mean 1.41 GPa, SD 0.04 GPa and CV 3.48%; the displayed mean/SD and their rounding interval do not support that CV.",
+          "disposition": "Preserve this unresolved source discrepancy and exclude the modulus. The selected tensile-strength mean/SD/CV are a separate reported quantity; no source-wide scientific validation is claimed.",
+          "evidence": [
+            {
+              "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+              "locator": "XML Table 7 (materials-18-04478-t007), SLS / Reference, E (GPa) Mean/Std/CV columns",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Table 5 and Table 7 label the selected post-processing C + DM60 + S; section 2.4 lists the equipment in a different order.",
+          "disposition": "Keep the selected table treatment label without inferring a precise operation sequence or times.",
+          "evidence": [
+            {
+              "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+              "locator": "XML Tables 5 and 7, selected SLS treatment; section 2.4",
+              "supports": [
+                "source_discrepancy",
+                "state"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+      "evidence": [
+        {
+          "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+          "locator": "XML Table 7 (materials-18-04478-t007), SLS / Reference, Powershot C + DM60 + Powershot S, sigma (MPa) Mean/Std/CV columns",
+          "supports": [
+            "reported_value",
+            "summary_statistic",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+          "locator": "XML section 2.3 (sec2dot3-materials-18-04478), tensile-testing paragraph",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ],
+      "source_document": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML",
+        "revision": null,
+        "inspected_on": "2026-10-19",
+        "sha256": "4d930d221c67d38199460f1f80b86a2a724a0b2986a77e09081172d5a83c42d7",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Previously retained Europe PMC full-text XML inspected on 2026-10-19: article metadata and permissions; sections 2.1-2.3 and 2.4; Table 5 identity/treatment/sample count; Table 7 SLS Reference tensile-strength Mean 43.72 MPa, Std 1.03 MPa and CV 2.36%. The selected facts were independently cross-checked in the retained XML. No new network retrieval, PDF visual inspection, raw-data reanalysis, experimental replication, scientific approval or medical-certification verification is claimed.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "scope_note": "One source-qualified PA12 polymer representative identified in the study by the EOS PA2200 trade designation. Composition, not supplier name, print technology, post-processing or age, defines identity. No existing unfilled PA12 identity was identified in the frozen catalog; its PA12-CF15 observations are separate filled-formulation evidence and are not admitted here. This representative does not establish chemical purity, an additive-free formulation, or universal equivalence among PA12 grades. HP PA12 and all other PA12 products remain outside this packet; different manufacturer labels alone do not support additional identities. Selected dyed SLS reference state only; no universal material constant, engineering allowable, automatic calculator input or medical suitability/certification claim.",
+      "verification": {
+        "source_inspection_scope": "Previously retained Europe PMC full-text XML inspected on 2026-10-19: article metadata and permissions; sections 2.1-2.3 and 2.4; Table 5 identity/treatment/sample count; Table 7 SLS Reference tensile-strength Mean 43.72 MPa, Std 1.03 MPa and CV 2.36%. The selected facts were independently cross-checked in the retained XML. No new network retrieval, PDF visual inspection, raw-data reanalysis, experimental replication, scientific approval or medical-certification verification is claimed.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      }
     }
   ]
 }
