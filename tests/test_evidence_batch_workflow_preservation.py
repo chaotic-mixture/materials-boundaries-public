@@ -5,6 +5,7 @@ import tempfile
 import unittest
 
 import evidence_batch_workflow_preservation as history
+from source_family_growth_preservation import project_growth_file
 from scripts import check_evidence_batch_scope as scope
 
 
@@ -14,7 +15,7 @@ HELPER_SHA256 = 'e43052745c55e1636766ffd65d33cd40d63e7e758c9b44fc1e406c0fd2784dc
 
 class EvidenceBatchWorkflowPreservationTests(unittest.TestCase):
     def test_helper_ledger_and_all_previous_ledgers_are_pinned(self):
-        self.assertEqual(history.digest((ROOT / "tests/evidence_batch_workflow_preservation.py").read_bytes()),
+        self.assertEqual(history.digest(project_growth_file("tests/evidence_batch_workflow_preservation.py", (ROOT / "tests/evidence_batch_workflow_preservation.py").read_bytes())),
                          HELPER_SHA256)
         ledger = history.load_ledger()
         self.assertEqual(ledger["baseline_commit"], "12cb89ca82b48ba444bdb921674c3d232d448720")
@@ -33,6 +34,7 @@ class EvidenceBatchWorkflowPreservationTests(unittest.TestCase):
         for path, entry in entries.items():
             with self.subTest(path=path):
                 raw = (ROOT / path).read_bytes()
+                raw = project_growth_file(path, raw)
                 previous = history.pre_evidence_batch_workflow_bytes(path, raw)
                 self.assertEqual(history.digest(raw), entry["sha256"])
                 self.assertEqual(history.digest(previous), entry["previous_sha256"])
@@ -75,6 +77,7 @@ class EvidenceBatchWorkflowPreservationTests(unittest.TestCase):
 
     def test_old_jobs_and_previous_experiment_are_preserved_exactly(self):
         raw = (ROOT / ".github/workflows/ci.yml").read_bytes()
+        raw = project_growth_file(".github/workflows/ci.yml", raw)
         previous = history.pre_evidence_batch_workflow_bytes(".github/workflows/ci.yml", raw).decode("utf-8")
         text = raw.decode("utf-8")
         self.assertEqual(text, scope.expected_workflow(previous))

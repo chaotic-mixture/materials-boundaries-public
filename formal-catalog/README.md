@@ -4,8 +4,8 @@ The released main baseline admits 1057 source-qualified identities and exactly
 24 reviewed computed composition buckets under formal-project-count-policy/1,
 for 1081 formal project admissions.
 
-This unmerged local experiment contains 1084 source-qualified identities and the
-same 24 computed buckets, totaling 1108. Main remains unchanged. Resource pins
+This unmerged local experiment contains 1090 source-qualified identities and the
+same 24 computed buckets, totaling 1114. Main remains unchanged. Resource pins
 match the local core for reproducible testing; they do not publish a release.
 Neither total is a global physical-uniqueness claim.
 
@@ -35,9 +35,25 @@ for this increment. The computed review and excluded records remain unchanged.
 The subsequent source-family increment adds one EOS PA2200 source-qualified PA12
 identity, one source-designated grade, one processed reference state and one
 tensile-strength record (43.72 MPa), using one newly registered CC BY 4.0 source.
-The current core polymer count is 16; the other categories above are unchanged.
-The project total is 1108 = 1084 + 24. A second supplier label does not count as
+That increment brought the core polymer count to 16; the other categories above were unchanged.
+Its project total was 1108 = 1084 + 24. A second supplier label does not count as
 an additional PA12 identity. See the [source-family packet](../experimental/material-batches/20261019-pa12-source-family/README.md).
 The property remains catalog-only, with independent scientific review and raw
 reanalysis false. Existing registries require their original installation; the
 new exact resource pins do not migrate a prior database.
+
+The next source-family batch adds six NBS source-qualified oxide references:
+BeO, MgO, CaO, rutile TiO2, CuO and CeO2, each with one source-reported
+crystallographic density derived from measured lattice parameters. The frozen
+data commit is `bc7bdeeff498c4186cdf86c33e88943c45ecfc75`.
+Core categories are natural 1010, metal 22, inorganic 32, polymer 16 and
+composite 10; the project view adds the unchanged 24 computed buckets, giving
+natural 1010, metal 34, inorganic 44, polymer 16 and composite 10.
+The core contains 1090 states, 1090 properties, 21 grades and 116 sources;
+this batch reuses one existing source and adds no grade or source record.
+See the [six-oxide packet](../experimental/material-batches/nbs-oxide-density-20261019/README.md).
+The values preserve their reported temperatures and precision. They remain
+catalog-only references, not direct bulk-density measurements or DFT predictions;
+scientific-review and raw-reanalysis flags remain false. The 62 excluded computed
+examples and every earlier registry anchor remain unchanged. These local
+resource pins neither publish a release nor migrate an older database.

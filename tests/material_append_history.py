@@ -1,0 +1,124 @@
+"""Test-only exact recovery of finite, hash-pinned material append packets.
+
+The engine is independent of a material family. A new append needs an explicit
+frozen ledger; this module never discovers or authorizes arbitrary additions.
+"""
+from copy import deepcopy
+from hashlib import sha256
+import json
+
+FILES = {"materials": "materials.json", "properties": "reference_properties.json", "sources": "sources.json"}
+TABLES = {"identities": ("materials", "identities"), "grades": ("materials", "grades"),
+          "states": ("materials", "records"), "properties": ("properties", "records"),
+          "sources": ("sources", "records")}
+
+
+def encoded(value):
+    return (json.dumps(value, ensure_ascii=False, indent=2, allow_nan=False) + "\n").encode("utf-8")
+
+
+def digest(raw):
+    return sha256(raw).hexdigest()
+
+
+def unique_keys(pairs):
+    value = {}
+    for key, item in pairs:
+        if key in value:
+            raise AssertionError("Duplicate append-history key")
+        value[key] = item
+    return value
+
+
+def load_frozen(root, path, expected):
+    raw = (root / path).read_bytes()
+    if digest(raw) != expected:
+        raise AssertionError("Unreviewed append-history ledger")
+    return json.loads(raw, object_pairs_hook=unique_keys)
+
+
+def appended_rows(root, ledger):
+    result = {name: [] for name in TABLES}
+    for descriptor in ledger["packets"]:
+        path = (root / descriptor["path"]).resolve()
+        if not path.is_relative_to((root / "experimental/material-batches").resolve()):
+            raise AssertionError("Append packet is outside the reviewed directory")
+        raw = path.read_bytes()
+        if digest(raw) != descriptor["sha256"]:
+            raise AssertionError("Unreviewed append packet bytes")
+        packet = json.loads(raw, object_pairs_hook=unique_keys)
+        if set(descriptor["added_ids"]) != set(TABLES):
+            raise AssertionError("Incomplete append collection inventory")
+        for name, (table, field) in TABLES.items():
+            ids = descriptor["added_ids"][name]
+            rows = [row for row in packet["catalogs"][table][field] if row["id"] in ids]
+            if (len(set(ids)) != len(ids) or len(rows) != len(ids)
+                    or {row["id"] for row in rows} != set(ids)):
+                raise AssertionError("Incomplete or duplicate append inventory")
+            result[name].extend(deepcopy(rows))
+    for rows in result.values():
+        if len({row["id"] for row in rows}) != len(rows):
+            raise AssertionError("Duplicate append ID between packets")
+    return result
+
+
+def graph_hashes(graph):
+    if type(graph) is not dict or set(graph) != set(FILES):
+        raise AssertionError("Incomplete append-history graph")
+    return {name: digest(encoded(graph[name])) for name in FILES}
+
+
+def recover_catalogs(root, current, ledger):
+    """Require either the exact predecessor or the complete exact successor."""
+    actual = graph_hashes(current)
+    if actual == ledger["baseline_sha256"]:
+        return deepcopy(current)
+    recovered = deepcopy(current)
+    for name, rows in appended_rows(root, ledger).items():
+        table, field = TABLES[name]
+        expected = {row["id"]: row for row in rows}
+        selected = [row for row in current[table][field] if row.get("id") in expected]
+        if (len(selected) != len(expected) or {row["id"] for row in selected} != set(expected)
+                or any(encoded(row) != encoded(expected[row["id"]]) for row in selected)):
+            raise AssertionError("Append recovery requires every complete pinned addition")
+        recovered[table][field] = [row for row in recovered[table][field] if row.get("id") not in expected]
+    if graph_hashes(recovered) != ledger["baseline_sha256"]:
+        raise AssertionError("Append predecessor catalog bytes changed")
+    if actual != ledger["current_sha256"]:
+        raise AssertionError("Unreviewed append successor catalog order or bytes")
+    return recovered
+
+
+def recover_file(raw, entry):
+    """Reverse only finite, offset-bound byte edits with a whole-file round trip."""
+    if type(raw) is not bytes:
+        raise AssertionError("Append-history file input must be bytes")
+    if digest(raw) == entry["previous_sha256"]:
+        return raw
+    if digest(raw) != entry["sha256"]:
+        raise AssertionError("Unreviewed append-history file bytes")
+    chunks, cursor, shift = [], 0, 0
+    for edit in entry["edits"]:
+        if type(edit["offset"]) is not int or edit["offset"] < 0:
+            raise AssertionError("Invalid append-history edit offset")
+        before, after = edit["before"].encode("utf-8"), edit["after"].encode("utf-8")
+        offset = edit["offset"] + shift
+        if offset < cursor or raw[offset:offset + len(after)] != after:
+            raise AssertionError("Append-history after image mismatch")
+        chunks.extend((raw[cursor:offset], before))
+        cursor = offset + len(after)
+        shift += len(after) - len(before)
+    previous = b"".join(chunks) + raw[cursor:]
+    if digest(previous) != entry["previous_sha256"]:
+        raise AssertionError("Append-history predecessor file bytes changed")
+    chunks, cursor = [], 0
+    for edit in entry["edits"]:
+        before, after = edit["before"].encode("utf-8"), edit["after"].encode("utf-8")
+        offset = edit["offset"]
+        if offset < cursor or previous[offset:offset + len(before)] != before:
+            raise AssertionError("Append-history before image mismatch")
+        chunks.extend((previous[cursor:offset], after))
+        cursor = offset + len(before)
+    if b"".join(chunks) + previous[cursor:] != raw:
+        raise AssertionError("Append-history file round trip failed")
+    return previous

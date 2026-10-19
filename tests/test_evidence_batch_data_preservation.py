@@ -6,6 +6,9 @@ import tempfile
 import unittest
 
 import evidence_batch_data_preservation as bridge
+from source_family_growth_preservation import (
+    project_growth_catalogs, project_growth_catalog_bytes, project_growth_file,
+)
 from materials_boundaries.material_references import material_quota_coverage
 from scripts.integrate_material_candidates import write_package
 
@@ -18,6 +21,7 @@ class EvidenceBatchDataPreservationTests(unittest.TestCase):
     def setUpClass(cls):
         cls.current = {key: json.loads((ROOT / "materials_boundaries/data" / filename).read_bytes())
                        for key, filename in bridge.FILES.items()}
+        cls.current = project_growth_catalogs(cls.current)
         cls.baseline = bridge.recover_pre_evidence_batch_catalogs(cls.current)
         cls.ledger = bridge.load_ledger()
 
@@ -42,6 +46,7 @@ class EvidenceBatchDataPreservationTests(unittest.TestCase):
         self.assertEqual(self.current, original)
         for key, filename in bridge.FILES.items():
             raw = (ROOT / "materials_boundaries/data" / filename).read_bytes()
+            raw = project_growth_catalog_bytes(filename, raw)
             previous = bridge.pre_evidence_batch_catalog_bytes(filename, raw)
             self.assertEqual(bridge.digest(previous), self.ledger["baseline_sha256"][key])
             self.assertEqual(previous, bridge.serialized(self.baseline[key]))
@@ -104,10 +109,11 @@ class EvidenceBatchDataPreservationTests(unittest.TestCase):
             self.assertTrue(package["report"]["pending_gates"])
             for key, filename in bridge.FILES.items():
                 self.assertEqual(bridge.serialized(package["catalogs"][key]),
-                                 (ROOT / "materials_boundaries/data" / filename).read_bytes())
+                                 project_growth_catalog_bytes(filename, (ROOT / "materials_boundaries/data" / filename).read_bytes()))
 
     def test_readme_and_resource_bridges_reject_unknown_byte_images(self):
         current = (ROOT / "README.md").read_bytes()
+        current = project_growth_file("README.md", current)
         previous = bridge.pre_evidence_batch_readme_bytes(current)
         self.assertEqual(bridge.digest(previous), self.ledger["readme"]["previous_sha256"])
         self.assertIn(b"**1083 material identities**", previous)

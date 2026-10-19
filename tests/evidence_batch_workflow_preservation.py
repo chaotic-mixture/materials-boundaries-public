@@ -9,6 +9,7 @@ import json
 from pathlib import Path
 
 from evidence_dedup_preservation import apply_exact_edits
+from source_family_growth_preservation import project_growth_file
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -72,6 +73,7 @@ def pre_evidence_batch_workflow_bytes(filename, raw, *, ledger=None):
     """Restore only the pinned 12cb89c predecessor; reject all other bytes."""
     if type(filename) is not str or filename not in ALLOWED_PATHS or type(raw) is not bytes:
         raise AssertionError("Unknown evidence-batch workflow path or input type")
+    raw = project_growth_file(filename, raw)
     entries = validate_ledger(load_ledger() if ledger is None else ledger)
     entry = entries[filename]
     if digest(raw) == entry["previous_sha256"]:

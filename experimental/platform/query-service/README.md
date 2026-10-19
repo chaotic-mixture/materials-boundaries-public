@@ -142,11 +142,11 @@ to this batch's validation evidence; no new full-suite or browser pass is implie
 
 ## Source-family packet increment, 2026-10-19
 
-The current experiment adds one EOS PA2200 source-qualified PA12 identity with
+The preceding experiment added one EOS PA2200 source-qualified PA12 identity with
 one source-designated grade, processed reference state, tensile-strength property
 and source. The packet does not count another supplier label as a second PA12
 identity. See the [source-family packet](../../material-batches/20261019-pa12-source-family/README.md).
-The current snapshot contains **1108 project entries = 1084 source-qualified
+That snapshot contained **1108 project entries = 1084 source-qualified
 identities + 24 reviewed computed compositions**. Core categories are natural
 1010, metal 22, inorganic 26, polymer 16 and composite 10; project categories
 are natural 1010, metal 34, inorganic 38, polymer 16 and composite 10. The
@@ -154,7 +154,7 @@ relationship view has 1084 identities, 1089 supported memberships (including
 17 polymer memberships) and the same one identity relationship. Memberships
 are overlapping evidence and do not add identities.
 
-The current complete core manifest anchor is
+That complete core manifest anchor is
 `8fda4f7a4355c88f0e4e9e713c01f236a907985b4720454e338d8d95eff4770e`.
 The preceding `3782f403f120f22b5287e01f4e207419e2f576a28dfda33a89a85580b936c0f6`
 anchor remains historical. Compatibility checks bind the immutable prepared
@@ -169,3 +169,34 @@ tensile strength, its reported 1.03 MPa standard deviation and six-specimen
 scope. The value remains catalog-only with unknown tensile-test temperature,
 independent scientific review false and raw-data reanalysis false. Released
 main remains at 1081; the 62 excluded computed examples remain excluded.
+
+## Six-oxide source-family growth, 2026-10-19
+
+The current local snapshot contains **1114 project entries = 1090 source-qualified
+identities + 24 reviewed computed compositions** after six NBS oxide references:
+BeO, MgO, CaO, rutile TiO2, CuO and CeO2. Core categories are natural 1010,
+metal 22, inorganic 32, polymer 16 and composite 10; project categories are
+natural 1010, metal 34, inorganic 44, polymer 16 and composite 10. The relationship
+view has 1090 identities and 1095 supported memberships, with 32 inorganic
+memberships and the same one identity relationship. Memberships overlap and do
+not create identities. There are 1090 reference states and properties, 21 grades
+and 116 sources; the six records reuse an existing source.
+
+The exact query manifest anchor is
+`0d2f515260b78841249f5b48331f8a80fc9164bd58bb57c592f7adfed3d96277`,
+bound to data commit `bc7bdeeff498c4186cdf86c33e88943c45ecfc75`.
+The independent query test reads the frozen six-oxide ledger and packet, removes
+only the 6 identities, 6 states and 6 properties listed as additions, and recovers
+the exact c901 resources and 64-file manifest before the PA12-to-12cb and older
+historical chain. Shared source rows and all grades are retained. Partial,
+modified, duplicated or reordered additions and unrelated edits are rejected.
+Old pins and databases are not rewritten or migrated.
+
+Each API result preserves one source-reported measured-lattice-derived density,
+its exact g/cm^3 value and temperature, unknown uncertainty and specimen count,
+and catalog-only scope. It is neither a direct bulk-density measurement nor a
+DFT prediction, experimental replication or independent scientific review.
+See the [six-oxide packet](../../material-batches/nbs-oxide-density-20261019/README.md).
+Released main and the 62 excluded computed examples remain unchanged. Validation
+is reported in the batch evidence; this section does not claim a new full-suite,
+live-provider or browser run.

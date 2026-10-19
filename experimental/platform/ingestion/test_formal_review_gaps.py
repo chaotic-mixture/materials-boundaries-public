@@ -85,7 +85,7 @@ class FormalReviewGapTests(unittest.TestCase):
         report = gaps.build_report()
         self.assertEqual(canonical(report), canonical(gaps.build_report()))
         self.assert_held(report)
-        self.assertEqual(report['review_boundary']['formal_project_total'], 1108)
+        self.assertEqual(report['review_boundary']['formal_project_total'], 1114)
         self.assertEqual(report['review_boundary']['excluded_example_count'], 62)
         self.assertEqual(report['historical_acceptance']['decision'], 'accepted_exact_scoped_metadata_only')
         self.assertEqual(report['historical_acceptance']['persistent_admissions'], 0)

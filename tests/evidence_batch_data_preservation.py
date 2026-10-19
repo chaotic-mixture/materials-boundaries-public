@@ -10,6 +10,9 @@ import json
 from pathlib import Path
 
 from evidence_dedup_preservation import apply_exact_edits
+from source_family_growth_preservation import (
+    project_growth_catalogs, project_growth_catalog_bytes, project_growth_file,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 BASELINE_COMMIT = "12cb89ca82b48ba444bdb921674c3d232d448720"
@@ -79,6 +82,7 @@ def has_evidence_batch(current):
 
 def recover_pre_evidence_batch_catalogs(current):
     """Accept exact predecessor or exactly the complete reviewed append only."""
+    current = project_growth_catalogs(current)
     ledger = load_ledger()
     if type(current) is not dict or set(current) != set(FILES):
         raise AssertionError("Incomplete evidence-batch graph")
@@ -104,6 +108,7 @@ def recover_pre_evidence_batch_catalogs(current):
 def pre_evidence_batch_catalog_bytes(filename, raw):
     if filename not in FILES.values() or type(raw) is not bytes:
         raise AssertionError("Unknown evidence-batch catalog path or input type")
+    raw = project_growth_catalog_bytes(filename, raw)
     ledger = load_ledger()
     name = next(key for key, value in FILES.items() if value == filename)
     if digest(raw) == ledger["baseline_sha256"][name]:
@@ -112,6 +117,7 @@ def pre_evidence_batch_catalog_bytes(filename, raw):
         raise AssertionError("Unreviewed evidence-batch catalog bytes")
     graph = {key: json.loads((ROOT / "materials_boundaries/data" / path).read_bytes(), object_pairs_hook=unique_keys)
              for key, path in FILES.items()}
+    graph = project_growth_catalogs(graph)
     graph[name] = json.loads(raw, object_pairs_hook=unique_keys)
     return serialized(recover_pre_evidence_batch_catalogs(graph)[name])
 
@@ -119,6 +125,7 @@ def pre_evidence_batch_catalog_bytes(filename, raw):
 def pre_evidence_batch_readme_bytes(raw):
     if type(raw) is not bytes:
         raise AssertionError("Evidence-batch README input must be bytes")
+    raw = project_growth_file("README.md", raw)
     entry = load_ledger()["readme"]
     if digest(raw) == entry["previous_sha256"]:
         return raw
