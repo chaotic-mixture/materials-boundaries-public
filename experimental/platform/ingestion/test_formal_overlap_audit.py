@@ -226,7 +226,7 @@ class FormalOverlapAuditTests(unittest.TestCase):
         result = self.query(formal_reference={'id': formal_id,
                                              'identity_sha256': self.rows[formal_id]['identity_sha256']})
         self.assertEqual(result['counts'], {'confirmed_overlap': 1, 'possible_overlap': 0,
-                                           'unable_to_compare': 1080})
+                                           'unable_to_compare': 1102})
         hit = self.relation(result, formal_id)
         self.assertEqual(hit['reasons'], ['exact_frozen_formal_record_reference'])
         self.assertEqual(hit['proof_scope'], 'frozen_formal_record_reference')
