@@ -394390,6 +394390,424 @@
         }
       ],
       "scope_note": "TiO2, tetragonal rutile phase, represented by NBS experimental powder-XRD measurements. The source reports measured-lattice-derived crystallographic density at 26 degrees C. This does not establish bulk specimen density, powder-packing density, porosity or an engineering allowable. Sample, preparation, impurity and provenance limitations are retained in the linked state."
+    },
+    {
+      "version": "1.0.0",
+      "quantity": "mass_density",
+      "quantity_dimension": "mass_per_volume",
+      "source_property_label": "Apparent density",
+      "reported_value": {
+        "kind": "scalar",
+        "unit_text": "kg/m³",
+        "unit_code": "kg/m^3",
+        "value_text": "43.5",
+        "number": "43.5"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Table 10 gives measured experimental characterization of optimized foams, not the modeled 45 kg/m3 target or the 40 kg/m3 compression-normalization density. No statistical aggregation is named.",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Density-test temperature is not stated. Do not substitute room-temperature curing, thermal-conductivity plate temperatures or polyol rheometry temperature."
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "ISO 845:2006",
+          "evidence": [
+            {
+              "source_id": "ivdre_2024_lpo_rigid_pur",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+              "locator": "Section 2.8 (XML id sec2dot8-polymers-16-00942), apparent-density paragraph explicitly citing ISO 845:2006.",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source-reported standard; no independent compliance certification."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Apparent density measured following ISO 845:2006; the source does not give a detailed measurement subprocedure.",
+          "evidence": [
+            {
+              "source_id": "ivdre_2024_lpo_rigid_pur",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+              "locator": "Section 2.8 (XML id sec2dot8-polymers-16-00942), apparent-density paragraph explicitly citing ISO 845:2006.",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "direction": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading direction is not applicable to scalar apparent density; no isotropy inference."
+        },
+        "conditioning": {
+          "status": "reported",
+          "text": "Cured for 24 h at room temperature before additional testing",
+          "evidence": [
+            {
+              "source_id": "ivdre_2024_lpo_rigid_pur",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+              "locator": "Section 2.7 (XML id sec2dot7-polymers-16-00942), optimized larger-sample preparation and 24-hour cure paragraphs.",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Cure conditions are not density-test conditions."
+        },
+        "loading_rate": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading rate does not apply to the selected apparent density."
+        },
+        "additional_conditions": [
+          {
+            "name": "density_test_humidity",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Actual relative humidity during density measurement is not stated."
+            }
+          },
+          {
+            "name": "density_test_pressure",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Density-test pressure is not reported."
+            }
+          },
+          {
+            "name": "density_specimen_dimensions",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "The 30 x 30 x 10 cm mold and specimens for other tests do not establish selected density-specimen dimensions."
+            }
+          }
+        ]
+      },
+      "density_basis": "apparent",
+      "summary_statistic": "reported_value",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "Table 10 supplies no density uncertainty. Water-absorption plus/minus entries and uncertainty from other tests are not transferred.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "source_statement": "No unambiguous density-specific specimen or repeat count is stated for these optimized larger-mold results. Three cup-test samples per formulation, six compression cylinders and TGA replicates are not assigned to the selected density.",
+        "evidence": [
+          {
+            "source_id": "ivdre_2024_lpo_rigid_pur",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+            "locator": "Sections 2.7 and 2.8 (XML ids sec2dot7-polymers-16-00942 and sec2dot8-polymers-16-00942), cup-test samples, optimized specimens, density-method paragraph, compression cylinders and TGA replicates.",
+            "supports": [
+              "sample_count"
+            ]
+          }
+        ],
+        "scope": "Selected optimized LPO-2 apparent-density value in Table 10; density-specific count unreported."
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Source-reported apparent density according to ISO 845:2006; no additional standard procedure, calculation, specimen geometry or certified compliance is inferred.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "ivdre_2024_lpo_rigid_pur",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+            "locator": "Section 2.8 (XML id sec2dot8-polymers-16-00942), apparent-density paragraph explicitly citing ISO 845:2006.",
+            "supports": [
+              "method",
+              "condition",
+              "classification"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Table 10 reports SPO-1 apparent density 43.9 kg/m3 while Section 3.4 states an overall density range of 40.7-43.5 kg/m3.",
+          "disposition": "Preserve the unresolved discrepancy without correction. SPO-1 is excluded; the selected LPO-2 value 43.5 and SPO-3 value 43.2 lie within the stated range. This does not assert that the complete article is internally consistent.",
+          "evidence": [
+            {
+              "source_id": "ivdre_2024_lpo_rigid_pur",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+              "locator": "Table 10, Apparent density row, SPO-1 column; Section 3.4 (sec3dot4-polymers-16-00942), paragraph beginning The apparent density varied.",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "ivdre_2024_lpo_rigid_pur",
+      "source_document": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+        "revision": "Retained article XML reread on 2026-10-19; bytes match the previously registered asset; no formal revision number verified.",
+        "inspected_on": "2026-10-19",
+        "sha256": "4e0c1a91a9ae26d814576961a3805f9371b46498d4861fb578e7a413bb4c726d",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Selected retained primary XML independently source-transcription checked on 2026-10-19: article permissions; Tables 9 and 10 LPO-2/SPO-3 input formulations and apparent densities; Sections 2.4, 2.7, 2.8 and 3.4 for identity, preparation, ISO 845:2006, statistical limits and excluded SPO-1 discrepancy. The XML digest matches the existing registry. No new retrieval, PDF visual inspection, experimental replication, raw-data reanalysis, independent scientific approval or comprehensive errata/retraction audit is claimed.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Selected retained primary XML independently source-transcription checked on 2026-10-19: article permissions; Tables 9 and 10 LPO-2/SPO-3 input formulations and apparent densities; Sections 2.4, 2.7, 2.8 and 3.4 for identity, preparation, ISO 845:2006, statistical limits and excluded SPO-1 discrepancy. The XML digest matches the existing registry. No new retrieval, PDF visual inspection, experimental replication, raw-data reanalysis, independent scientific approval or comprehensive errata/retraction audit is claimed.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      },
+      "id": "refprop_ivdre2024_lpo2_rigid_pur_mass_density",
+      "material_state_id": "state_ivdre2024_lpo2_rigid_pur",
+      "evidence": [
+        {
+          "source_id": "ivdre_2024_lpo_rigid_pur",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+          "locator": "Table 10 (polymers-16-00942-t010), Apparent density, kg/m3 row, LPO-2 column.",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "ivdre_2024_lpo_rigid_pur",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+          "locator": "Section 2.8 (XML id sec2dot8-polymers-16-00942), apparent-density paragraph explicitly citing ISO 845:2006.",
+          "supports": [
+            "method",
+            "condition",
+            "classification"
+          ]
+        }
+      ],
+      "scope_note": "Study-defined LPO-2 rigid polyurethane input formulation. The principal reactive Lupranol 3300/3422 input ratio is 66/34 g, distinct from the existing LPO-1 40/60 g ratio. This explicit input-formulation difference, not a label or catalyst/blowing-agent change alone, supports the selected identity. The study label is not a certified grade. No final cured-network molecular formula, elemental composition, purity or universal material equivalence is inferred. Preserve unreported density aggregation, sample count, uncertainty, test temperature, humidity, pressure and specimen dimensions."
+    },
+    {
+      "version": "1.0.0",
+      "quantity": "mass_density",
+      "quantity_dimension": "mass_per_volume",
+      "source_property_label": "Apparent density",
+      "reported_value": {
+        "kind": "scalar",
+        "unit_text": "kg/m³",
+        "unit_code": "kg/m^3",
+        "value_text": "43.2",
+        "number": "43.2"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Table 10 gives measured experimental characterization of optimized foams, not the modeled 45 kg/m3 target or the 40 kg/m3 compression-normalization density. No statistical aggregation is named.",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Density-test temperature is not stated. Do not substitute room-temperature curing, thermal-conductivity plate temperatures or polyol rheometry temperature."
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "ISO 845:2006",
+          "evidence": [
+            {
+              "source_id": "ivdre_2024_lpo_rigid_pur",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+              "locator": "Section 2.8 (XML id sec2dot8-polymers-16-00942), apparent-density paragraph explicitly citing ISO 845:2006.",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source-reported standard; no independent compliance certification."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Apparent density measured following ISO 845:2006; the source does not give a detailed measurement subprocedure.",
+          "evidence": [
+            {
+              "source_id": "ivdre_2024_lpo_rigid_pur",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+              "locator": "Section 2.8 (XML id sec2dot8-polymers-16-00942), apparent-density paragraph explicitly citing ISO 845:2006.",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "direction": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading direction is not applicable to scalar apparent density; no isotropy inference."
+        },
+        "conditioning": {
+          "status": "reported",
+          "text": "Cured for 24 h at room temperature before additional testing",
+          "evidence": [
+            {
+              "source_id": "ivdre_2024_lpo_rigid_pur",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+              "locator": "Section 2.7 (XML id sec2dot7-polymers-16-00942), optimized larger-sample preparation and 24-hour cure paragraphs.",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Cure conditions are not density-test conditions."
+        },
+        "loading_rate": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading rate does not apply to the selected apparent density."
+        },
+        "additional_conditions": [
+          {
+            "name": "density_test_humidity",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Actual relative humidity during density measurement is not stated."
+            }
+          },
+          {
+            "name": "density_test_pressure",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Density-test pressure is not reported."
+            }
+          },
+          {
+            "name": "density_specimen_dimensions",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "The 30 x 30 x 10 cm mold and specimens for other tests do not establish selected density-specimen dimensions."
+            }
+          }
+        ]
+      },
+      "density_basis": "apparent",
+      "summary_statistic": "reported_value",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "Table 10 supplies no density uncertainty. Water-absorption plus/minus entries and uncertainty from other tests are not transferred.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "source_statement": "No unambiguous density-specific specimen or repeat count is stated for these optimized larger-mold results. Three cup-test samples per formulation, six compression cylinders and TGA replicates are not assigned to the selected density.",
+        "evidence": [
+          {
+            "source_id": "ivdre_2024_lpo_rigid_pur",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+            "locator": "Sections 2.7 and 2.8 (XML ids sec2dot7-polymers-16-00942 and sec2dot8-polymers-16-00942), cup-test samples, optimized specimens, density-method paragraph, compression cylinders and TGA replicates.",
+            "supports": [
+              "sample_count"
+            ]
+          }
+        ],
+        "scope": "Selected optimized SPO-3 apparent-density value in Table 10; density-specific count unreported."
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Source-reported apparent density according to ISO 845:2006; no additional standard procedure, calculation, specimen geometry or certified compliance is inferred.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "ivdre_2024_lpo_rigid_pur",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+            "locator": "Section 2.8 (XML id sec2dot8-polymers-16-00942), apparent-density paragraph explicitly citing ISO 845:2006.",
+            "supports": [
+              "method",
+              "condition",
+              "classification"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Table 10 reports SPO-1 apparent density 43.9 kg/m3 while Section 3.4 states an overall density range of 40.7-43.5 kg/m3.",
+          "disposition": "Preserve the unresolved discrepancy without correction. SPO-1 is excluded; the selected LPO-2 value 43.5 and SPO-3 value 43.2 lie within the stated range. This does not assert that the complete article is internally consistent.",
+          "evidence": [
+            {
+              "source_id": "ivdre_2024_lpo_rigid_pur",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+              "locator": "Table 10, Apparent density row, SPO-1 column; Section 3.4 (sec3dot4-polymers-16-00942), paragraph beginning The apparent density varied.",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "ivdre_2024_lpo_rigid_pur",
+      "source_document": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+        "revision": "Retained article XML reread on 2026-10-19; bytes match the previously registered asset; no formal revision number verified.",
+        "inspected_on": "2026-10-19",
+        "sha256": "4e0c1a91a9ae26d814576961a3805f9371b46498d4861fb578e7a413bb4c726d",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Selected retained primary XML independently source-transcription checked on 2026-10-19: article permissions; Tables 9 and 10 LPO-2/SPO-3 input formulations and apparent densities; Sections 2.4, 2.7, 2.8 and 3.4 for identity, preparation, ISO 845:2006, statistical limits and excluded SPO-1 discrepancy. The XML digest matches the existing registry. No new retrieval, PDF visual inspection, experimental replication, raw-data reanalysis, independent scientific approval or comprehensive errata/retraction audit is claimed.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Selected retained primary XML independently source-transcription checked on 2026-10-19: article permissions; Tables 9 and 10 LPO-2/SPO-3 input formulations and apparent densities; Sections 2.4, 2.7, 2.8 and 3.4 for identity, preparation, ISO 845:2006, statistical limits and excluded SPO-1 discrepancy. The XML digest matches the existing registry. No new retrieval, PDF visual inspection, experimental replication, raw-data reanalysis, independent scientific approval or comprehensive errata/retraction audit is claimed.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      },
+      "id": "refprop_ivdre2024_spo3_rigid_pur_mass_density",
+      "material_state_id": "state_ivdre2024_spo3_rigid_pur",
+      "evidence": [
+        {
+          "source_id": "ivdre_2024_lpo_rigid_pur",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+          "locator": "Table 10 (polymers-16-00942-t010), Apparent density, kg/m3 row, SPO-3 column.",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "ivdre_2024_lpo_rigid_pur",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+          "locator": "Section 2.8 (XML id sec2dot8-polymers-16-00942), apparent-density paragraph explicitly citing ISO 845:2006.",
+          "supports": [
+            "method",
+            "condition",
+            "classification"
+          ]
+        }
+      ],
+      "scope_note": "Study-defined SPO-3 rigid polyurethane input formulation. The principal reactive SA-C_TOFA(50:50)/TMP and SA-E_ETOFA(50:50)/TMP input ratio is 40/60 g, distinct from the existing SPO-2 67/33 g ratio. The 50:50 values label precursor feeds, not the final 40/60 foam-polyol input ratio. This explicit input-formulation difference, not a label or catalyst/blowing-agent change alone, supports the selected identity. The study label is not a certified grade. No final cured-network molecular formula, elemental composition, purity or universal material equivalence is inferred. Preserve unreported density aggregation, sample count, uncertainty, test temperature, humidity, pressure and specimen dimensions."
     }
   ]
 }
