@@ -1,0 +1,155 @@
+{
+  "schema": "candidate-preparation-receipt/1",
+  "started_at_utc": "2026-10-19T22:23:41.046533+00:00",
+  "command": [
+    "python",
+    "scripts/prepare_formulation_packet.py",
+    "--spec",
+    "experimental\\material-batches\\nbs-rca-density-20261019\\packet-spec.json",
+    "--baseline-dir",
+    "materials_boundaries/data",
+    "--output",
+    "experimental\\material-batches\\nbs-rca-density-20261019\\prepared-packet.json"
+  ],
+  "runs": [
+    {
+      "ordinal": 1,
+      "exit_code": 0,
+      "stdout": "Created review-only formulation packet: experimental\\material-batches\\nbs-rca-density-20261019\\prepared-packet.json\nCandidate identity delta: 3\nHandoff ready: yes\nFormal admitted delta: 0. Source transcription is not scientific approval; runtime catalogs unchanged.\n",
+      "stderr": "",
+      "artifact": {
+        "sha256": "6d906eec144e3908941f7c6f3c91646d4d905a7134fdc5086a95c4e59f1ca41c",
+        "bytes": 104737,
+        "mtime_ns": 1792448625562478600
+      }
+    },
+    {
+      "ordinal": 2,
+      "exit_code": 0,
+      "stdout": "Unchanged review-only formulation packet: experimental\\material-batches\\nbs-rca-density-20261019\\prepared-packet.json\nCandidate identity delta: 3\nHandoff ready: yes\nFormal admitted delta: 0. Source transcription is not scientific approval; runtime catalogs unchanged.\n",
+      "stderr": "",
+      "artifact": {
+        "sha256": "6d906eec144e3908941f7c6f3c91646d4d905a7134fdc5086a95c4e59f1ca41c",
+        "bytes": 104737,
+        "mtime_ns": 1792448625562478600
+      }
+    }
+  ],
+  "product_tests_run": false,
+  "network_used": false,
+  "same_bytes_and_mtime": true,
+  "finished_at_utc": "2026-10-19T22:23:50.139825+00:00",
+  "spec_sha256": "e866e9396ca2eb6e14535a85137dd8dcac86cbff087055b76849bad5cc13aede",
+  "canonical_spec_sha256": "9a312c94fb15f437b6563b526930d2b2131051db8e8d149ff60dddcccf630644",
+  "report": {
+    "baseline_sha256": {
+      "materials": "86a5e6253ebb6a93154fef86280b94efd332a5a2eab8eb6c92827ce4e25c6590",
+      "reference_properties": "6c6007825f5e3a4942f434a52e0fed9f5a039a9e80a30fbbd7f4d0225b61a91f",
+      "sources": "4ba9dcd9258cd1e2d9e17bdf20b4fdaa39e081e77779d12eb726ee91b19835ae"
+    },
+    "before": {
+      "identities": 1100,
+      "grades": 21,
+      "states": 1100,
+      "properties": 1100,
+      "sources": 116,
+      "categories": {
+        "metal": 22,
+        "inorganic": 40,
+        "polymer": 18,
+        "composite": 10,
+        "natural": 1010
+      }
+    },
+    "after": {
+      "identities": 1103,
+      "grades": 21,
+      "states": 1103,
+      "properties": 1103,
+      "sources": 116,
+      "categories": {
+        "metal": 22,
+        "inorganic": 43,
+        "polymer": 18,
+        "composite": 10,
+        "natural": 1010
+      }
+    },
+    "delta": {
+      "identities": 3,
+      "grades": 0,
+      "states": 3,
+      "properties": 3,
+      "sources": 0,
+      "categories": {
+        "metal": 0,
+        "inorganic": 3,
+        "polymer": 0,
+        "composite": 0,
+        "natural": 0
+      }
+    },
+    "formal_admitted_delta": 0,
+    "handoff_ready": true,
+    "pending_gates": [],
+    "identity_crosswalk": [
+      {
+        "identity_id": "mat_nbs1953_mg2sio4",
+        "source_id": "swanson_tatge_1953_nbs_circ539v1",
+        "source_designations": [
+          "Mg2SiO4 forsterite, Radio Corporation of America sample X-9, solid-state preparation at 1500 degrees C"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "swanson_tatge_1953_nbs_circ539v1",
+            "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+            "locator": "Section 2.53, printed p. 83 / one-based PDF p. 87, lower-left heading and right column: RCA sample X-9, qualitative high purity, solid-state reaction at 1500 degrees C for a phosphor project, and orthorhombic forsterite description with presumed space-group comparison.",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "Mg2SiO4 has no standalone composition identity match among the pinned 1100 core identities or 24 accepted computed reduced compositions. Names, aliases, state/source composition descriptions and computed element maps were checked. Constituent mentions, suppliers, phases and preparation temperatures do not add identity credit. The source only presumes the forsterite space group by comparison with olivine; this is not an independently established space-group assignment. Historical natural Vesuvius forsterite and iron-bearing olivine comparisons are not the selected RCA specimen and do not establish iron in it. High purity remains qualitative. No numerical particle size is inferred from the finely powdered description."
+      },
+      {
+        "identity_id": "mat_nbs1953_mgwo4",
+        "source_id": "swanson_tatge_1953_nbs_circ539v1",
+        "source_designations": [
+          "MgWO4, Radio Corporation of America material marked No. 4, prepared at 1000 degrees C"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "swanson_tatge_1953_nbs_circ539v1",
+            "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+            "locator": "Section 2.54, printed p. 84 / one-based PDF p. 88, right column: monoclinic MgWO4 heading, RCA material marked No. 4, qualitative exceptionally high purity and preparation at 1000 degrees C.",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "MgWO4 has no standalone composition identity match among the pinned 1100 core identities or 24 accepted computed reduced compositions. Names, aliases, state/source composition descriptions and computed element maps were checked. Constituent mentions, suppliers, phases and preparation temperatures do not add identity credit. Exceptionally high purity remains a qualitative source description, not an exact purity or certified grade. Surrounding third-party patterns and structure claims are not promoted to fresh NBS determinations. No numerical particle size is inferred from the finely powdered description; preparation duration and complete synthesis recipe remain unknown."
+      },
+      {
+        "identity_id": "mat_nbs1953_znb2o4",
+        "source_id": "swanson_tatge_1953_nbs_circ539v1",
+        "source_designations": [
+          "ZnB2O4, Radio Corporation of America phosphor preparation, sample XII-17"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "swanson_tatge_1953_nbs_circ539v1",
+            "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf",
+            "locator": "Section 2.52, printed p. 83 / one-based PDF p. 87, upper left: zinc borate ZnB2O4 heading, RCA phosphor preparation XII-17, qualitative high purity and body-centered cubic lattice description.",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "ZnB2O4 has no standalone composition identity match among the pinned 1100 core identities or 24 accepted computed reduced compositions. Names, aliases, state/source composition descriptions and computed element maps were checked. Constituent mentions, suppliers, phases and preparation temperatures do not add identity credit. Preserve the historical source formula ZnB2O4 and qualitative high-purity description without replacing them with another zinc-borate composition, a hydrate or a certified grade. RCA phosphor preparation is research context, not an established preparation temperature or duration. The averaged five diffraction lines and six molecules per unit cell are not independent sample counts."
+      }
+    ]
+  }
+}
