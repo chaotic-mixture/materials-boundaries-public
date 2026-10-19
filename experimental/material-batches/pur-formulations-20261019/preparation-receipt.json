@@ -1,0 +1,136 @@
+{
+  "schema": "candidate-preparation-receipt/1",
+  "started_at_utc": "2026-10-19T20:22:09.303471+00:00",
+  "command": [
+    "python",
+    "scripts/prepare_formulation_packet.py",
+    "--spec",
+    "experimental\\material-batches\\pur-formulations-20261019\\packet-spec.json",
+    "--baseline-dir",
+    "materials_boundaries/data",
+    "--output",
+    "experimental\\material-batches\\pur-formulations-20261019\\prepared-packet.json"
+  ],
+  "runs": [
+    {
+      "ordinal": 1,
+      "exit_code": 0,
+      "stdout": "Created review-only formulation packet: experimental\\material-batches\\pur-formulations-20261019\\prepared-packet.json\nCandidate identity delta: 2\nHandoff ready: yes\nFormal admitted delta: 0. Source transcription is not scientific approval; runtime catalogs unchanged.\n",
+      "stderr": "",
+      "artifact": {
+        "sha256": "2c5320856ba07892eac6b35d6b881bb3ab21126e801beefa2b887c77abd93be7",
+        "bytes": 78468,
+        "mtime_ns": 1792441333813909000
+      }
+    },
+    {
+      "ordinal": 2,
+      "exit_code": 0,
+      "stdout": "Unchanged review-only formulation packet: experimental\\material-batches\\pur-formulations-20261019\\prepared-packet.json\nCandidate identity delta: 2\nHandoff ready: yes\nFormal admitted delta: 0. Source transcription is not scientific approval; runtime catalogs unchanged.\n",
+      "stderr": "",
+      "artifact": {
+        "sha256": "2c5320856ba07892eac6b35d6b881bb3ab21126e801beefa2b887c77abd93be7",
+        "bytes": 78468,
+        "mtime_ns": 1792441333813909000
+      }
+    }
+  ],
+  "product_tests_run": false,
+  "network_used": false,
+  "same_bytes_and_mtime": true,
+  "finished_at_utc": "2026-10-19T20:22:18.360834+00:00",
+  "spec_sha256": "cc985e68df59719db4072b235001352fa57972d392f4fe4a79922bd00f24622a",
+  "report": {
+    "baseline_sha256": {
+      "materials": "1241e7e60513cbf1df4929d4b2bbc972b8b6a1c592e22cfbfa1c9e39ce8a7471",
+      "reference_properties": "5d275d4de23a2fe28541c739b91c1c496ab4bc69ed63f8843fc5a1902c72025d",
+      "sources": "4ba9dcd9258cd1e2d9e17bdf20b4fdaa39e081e77779d12eb726ee91b19835ae"
+    },
+    "before": {
+      "identities": 1090,
+      "grades": 21,
+      "states": 1090,
+      "properties": 1090,
+      "sources": 116,
+      "categories": {
+        "metal": 22,
+        "inorganic": 32,
+        "polymer": 16,
+        "composite": 10,
+        "natural": 1010
+      }
+    },
+    "after": {
+      "identities": 1092,
+      "grades": 21,
+      "states": 1092,
+      "properties": 1092,
+      "sources": 116,
+      "categories": {
+        "metal": 22,
+        "inorganic": 32,
+        "polymer": 18,
+        "composite": 10,
+        "natural": 1010
+      }
+    },
+    "delta": {
+      "identities": 2,
+      "grades": 0,
+      "states": 2,
+      "properties": 2,
+      "sources": 0,
+      "categories": {
+        "metal": 0,
+        "inorganic": 0,
+        "polymer": 2,
+        "composite": 0,
+        "natural": 0
+      }
+    },
+    "formal_admitted_delta": 0,
+    "handoff_ready": true,
+    "pending_gates": [],
+    "identity_crosswalk": [
+      {
+        "identity_id": "mat_ivdre2024_lpo2_rigid_pur",
+        "source_id": "ivdre_2024_lpo_rigid_pur",
+        "source_designations": [
+          "LPO-2, Table 9 formulation and Table 10 experimental characterization"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "ivdre_2024_lpo_rigid_pur",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+            "locator": "Section 2.4; Table 9 (polymers-16-00942-t009), LPO-2 column, named principal polyols and all ingredient rows; Section 3.4 Table 10.",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "The principal reactive Lupranol 3300/3422 input ratio is 66/34 g, distinct from the existing LPO-1 40/60 g ratio. This explicit input-formulation difference, not a label or catalyst/blowing-agent change alone, supports the selected identity. Compared explicitly with mat_ivdre2024_lpo1_rigid_pur in the pinned baseline. Full input recipe remains source-scoped. No source label, processing change, specimen, translation or unreviewed calculation creates additional identity credit."
+      },
+      {
+        "identity_id": "mat_ivdre2024_spo3_rigid_pur",
+        "source_id": "ivdre_2024_lpo_rigid_pur",
+        "source_designations": [
+          "SPO-3, Table 9 formulation and Table 10 experimental characterization"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "ivdre_2024_lpo_rigid_pur",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+            "locator": "Section 2.4; Table 9 (polymers-16-00942-t009), SPO-3 column, named principal polyols and all ingredient rows; Section 3.4 Table 10.",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "The principal reactive SA-C_TOFA(50:50)/TMP and SA-E_ETOFA(50:50)/TMP input ratio is 40/60 g, distinct from the existing SPO-2 67/33 g ratio. The 50:50 values label precursor feeds, not the final 40/60 foam-polyol input ratio. This explicit input-formulation difference, not a label or catalyst/blowing-agent change alone, supports the selected identity. Compared explicitly with mat_ivdre2024_spo2_rigid_pur in the pinned baseline. Full input recipe remains source-scoped. No source label, processing change, specimen, translation or unreviewed calculation creates additional identity credit."
+      }
+    ]
+  },
+  "canonical_spec_sha256": "c37a71afcc6c20f90de5ada61b0f0ec16807bdbb5e67dbc66d005cff8ceeb58e"
+}
