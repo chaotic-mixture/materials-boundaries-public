@@ -5,6 +5,8 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
+from material_append_successors import project_successor_file
+
 
 ROOT = Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location("primary_table_growth_ci", ROOT / "scripts/run_primary_table_growth_ci.py")
@@ -15,7 +17,9 @@ SPEC.loader.exec_module(ci)
 class PrimaryTableGrowthCITests(unittest.TestCase):
     def test_previous_jobs_keep_every_step_and_only_new_branch_is_gated(self):
         prior = ci.git("show", ci.BASE_COMMIT + ":.github/workflows/ci.yml").decode("utf-8")
-        current = (ROOT / ".github/workflows/ci.yml").read_bytes().decode("utf-8")
+        current = project_successor_file(
+            ".github/workflows/ci.yml", (ROOT / ".github/workflows/ci.yml").read_bytes(),
+            before="nbs-salt-densities-20261019").decode("utf-8")
         self.assertEqual(current, ci.expected_workflow(prior))
         restored = current.removesuffix(ci.TARGETED_JOB).replace(ci.FULL_JOB_IF, ci.PREVIOUS_FULL_JOB_IF)
         self.assertEqual(restored, prior)

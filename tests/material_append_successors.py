@@ -16,8 +16,14 @@ DATA_LEDGER = "tests/fixtures/primary_table_growth_data_20261019.json"
 DATA_SHA256 = "faa453c3d57bb4a9040fac084cb9a96ad6c3437c237f80ea8eff4cc3e3fe261f"
 FILE_LEDGER = "tests/fixtures/primary_table_growth_files_20261019.json"
 FILE_SHA256 = "5af92f8baeb78cf21ea0098b13bfc0241de3623df5989897964426f0ffb33938"
+DATA_2_LEDGER = "tests/fixtures/primary_table_growth_2_data_20261019.json"
+DATA_2_SHA256 = "f3fcc3e8fdcdb292a2f3cf0b13c50de6bc90604ed2ac28b8938c9334e45933fc"
+FILE_2_LEDGER = "tests/fixtures/primary_table_growth_2_files_20261019.json"
+FILE_2_SHA256 = "95553e15c07be8aa7d1540875e83c52505fd472a73417a4e78ff0a29edf6fb3c"
 
 FROZEN_SUCCESSORS = (
+    {"batch_id": "nbs-rca-density-20261019",
+     "data": (DATA_2_LEDGER, DATA_2_SHA256), "files": (FILE_2_LEDGER, FILE_2_SHA256)},
     {"batch_id": "nbs-salt-densities-20261019",
      "data": (DATA_LEDGER, DATA_SHA256), "files": (FILE_LEDGER, FILE_SHA256)},
 )

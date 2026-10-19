@@ -243,7 +243,7 @@ not silently migrated or relabeled.
 
 ## Eight-salt primary-table increment, 2026-10-19
 
-The current local snapshot contains **1124 project entries = 1100 source-qualified
+The preceding eight-salt snapshot contained **1124 project entries = 1100 source-qualified
 identities + 24 reviewed computed compositions** after eight NBS salt references:
 Hg2Cl2, HgCl2, HgI2, PbFCl, KCN, cubic NaCN, Sr(NO3)2 and Ba(NO3)2. Core categories
 are natural 1010, metal 22, inorganic 40, polymer 18 and composite 10; project
@@ -264,7 +264,7 @@ scientific-review/raw-reanalysis flags. Released main and the 62 excluded
 computed examples remain unchanged. Validation belongs to this bounded batch;
 no full-suite, browser or live-provider run is implied.
 
-The current complete query manifest anchor is `9090f061483cefde2d6255f057078b7700d3e22c85db7191ec00bc30de78f2ad`,
+That complete query manifest anchor is `9090f061483cefde2d6255f057078b7700d3e22c85db7191ec00bc30de78f2ad`,
 bound to data commit `0d642c6773263ab36f52c9ace5b27133a05f8bf0`. The preceding
 `73b8b455042290c0f752e784f23687eaf3bbc8dc7631ced311af7af216f08d6e`
 anchor stays historical. The independent query test adds one frozen descriptor
@@ -276,3 +276,31 @@ all grades remain intact. Previous wrappers retain their exact historical scope;
 partial, modified, duplicated, reordered or unrelated changes fail closed.
 Old registry and NOMAD stores retain their saved scope without migration.
 See the [eight-salt packet](../../material-batches/nbs-salt-densities-20261019/README.md).
+
+## Final RCA reference increment, 2026-10-19
+
+The current local snapshot contains **1127 project entries = 1103 source-qualified
+identities + 24 reviewed computed compositions**. ZnB2O4, Mg2SiO4 and MgWO4 add
+three inorganic identities, states and properties. Core/project inorganic counts
+are 43/55; natural 1010, metal 22/34, polymer 18 and composite 10 are unchanged.
+There are 116 sources and 21 grades. The relationship view has 1103 identities,
+1108 supported memberships and the same one identity relationship; memberships
+remain overlapping evidence.
+
+All three API references preserve their exact g/cm^3 values and 26 degrees C
+density temperature, crystallographic-density classification and source-reported
+calculation basis. The Mg2SiO4 and MgWO4 preparation temperatures remain separate;
+ZnB2O4 preparation is unreported. Purity remains qualitative, uncertainty and
+specimen count unknown, and scientific-review/raw-reanalysis flags false.
+The 62 computed examples remain excluded. Validation is bounded to this batch.
+
+The current query manifest anchor is `148c38cfa1819b8103ffa6c0f856d824b9fc54a3e9f8a5eecc50943fd19b27bd`,
+bound to data commit `3ea9e25aa67226518282e7804c8e98c89453046d`. The preceding
+`9090f061483cefde2d6255f057078b7700d3e22c85db7191ec00bc30de78f2ad`
+anchor stays historical. One new frozen descriptor reuses the unchanged exact-
+append helper and binds the three-record RCA packet and ledger. It recovers the
+exact 799ca7a resources and 64-file manifest before the existing eight-salt and
+older layers. Shared source rows and grades remain intact; all previous wrappers
+retain their exact scope. Partial, changed, duplicated, reordered or unrelated
+edits fail closed. Old registry and NOMAD stores retain their saved scope.
+See the [RCA packet](../../material-batches/nbs-rca-density-20261019/README.md).

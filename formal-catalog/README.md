@@ -4,8 +4,8 @@ The released main baseline admits 1057 source-qualified identities and exactly
 24 reviewed computed composition buckets under formal-project-count-policy/1,
 for 1081 formal project admissions.
 
-This unmerged local experiment contains 1100 source-qualified identities and the
-same 24 computed buckets, totaling 1124. Main remains unchanged. Resource pins
+This unmerged local experiment contains 1103 source-qualified identities and the
+same 24 computed buckets, totaling 1127. Main remains unchanged. Resource pins
 match the local core for reproducible testing; they do not publish a release.
 Neither total is a global physical-uniqueness claim.
 
@@ -74,11 +74,11 @@ independent scientific review and raw-data reanalysis remain false.
 
 The PUR data commit is `4361b6018fcac09571b261983ce286c84f3841e5`.
 
-The next bounded primary-table batch adds eight NBS source-qualified salts:
+The preceding primary-table batch added eight NBS source-qualified salts:
 Hg2Cl2, HgCl2, HgI2, PbFCl, KCN, cubic NaCN, Sr(NO3)2 and Ba(NO3)2. Each has
 one source-reported crystallographic density derived from measured lattice
-parameters. The core contains 1100 identities, states and properties, including
-40 inorganic identities; the project view contains 1124 entries, including 52
+parameters. The core then contained 1100 identities, states and properties, including
+40 inorganic identities; that project view contained 1124 entries, including 52
 inorganic entries. Natural 1010, core/project metal 22/34, polymer 18 and composite
 10 counts are unchanged. The batch reuses an existing source and adds no grade;
 116 sources, 21 grades, 24 reviewed computed buckets and 62 excluded examples
@@ -91,3 +91,16 @@ scope and false scientific-review/raw-reanalysis flags remain.
 
 The eight-salt data commit is `0d642c6773263ab36f52c9ace5b27133a05f8bf0`.
 See the [primary-table packet](../experimental/material-batches/nbs-salt-densities-20261019/README.md).
+
+The final three RCA-supplied sections of the same NBS volume add ZnB2O4,
+Mg2SiO4 and MgWO4 references, each with one source-reported crystallographic
+density at 26 degrees C. The core now contains 1103 identities, states and
+properties, including 43 inorganic identities; the project view contains 1127
+entries, including 55 inorganic entries. All other category counts, 116 sources,
+21 grades, 24 computed buckets and 62 excluded examples are unchanged.
+Preparation temperatures qualify the samples separately from density temperature.
+Purity is qualitative; uncertainty and specimen counts remain unknown. These
+references remain catalog-only with false scientific-review/raw-reanalysis flags.
+
+The RCA data commit is `3ea9e25aa67226518282e7804c8e98c89453046d`.
+See the [RCA packet](../experimental/material-batches/nbs-rca-density-20261019/README.md).

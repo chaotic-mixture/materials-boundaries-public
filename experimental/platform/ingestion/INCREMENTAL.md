@@ -6,7 +6,7 @@ delta after each complete acquisition cycle. It uses Python 3.11+ and the standa
 library; it does not require a service, account or credentials.
 
 Automatic acquisition is not scientific review, license clearance or admission.
-The current experiment's formal project total is **1124 = 1100 legacy identities + 24 reviewed
+The current experiment's formal project total is **1127 = 1103 legacy identities + 24 reviewed
 computed composition buckets**. The 62 unadmitted computed examples, the older
 seven-record example and their known related provider IDs are excluded from new
 candidate admission claims. This command never changes the formal catalog.
@@ -14,13 +14,13 @@ Candidate groups and calculations contribute **zero** admissions and do not coun
 toward the goal of at least 1000 materials in each of five categories.
 
 The current boundary names the exact data commit
-`0d642c6773263ab36f52c9ace5b27133a05f8bf0` and binds the exact appended experimental
+`3ea9e25aa67226518282e7804c8e98c89453046d` and binds the exact appended experimental
 catalog bytes plus the unchanged 24-reviewed/62-excluded example resources. Use a new state directory when moving from an earlier
-1081-entry, 1103-entry, 1107-entry, 1108-entry, 1114-entry or 1116-entry boundary. `update` and `abandon` reject a different
+1081-entry, 1103-entry, 1107-entry, 1108-entry, 1114-entry, 1116-entry or 1124-entry boundary. `update` and `abandon` reject a different
 stored scope before dispatching a request, charging a budget or changing cycle
 state; they never migrate an old store silently. `status`, `report` and `compare`
 remain read-only and retain the saved scope, so historical 1081-entry,
-1103-entry, 1107-entry, 1108-entry, 1114-entry and 1116-entry reports are not relabeled as 1124. Saved-report counts
+1103-entry, 1107-entry, 1108-entry, 1114-entry, 1116-entry and 1124-entry reports are not relabeled as 1127. Saved-report counts
 must agree with that store's hash-bound boundary. Explicit Python boundary injection is available for
 synthetic test identities only within the same exact pinned scope; the CLI has
 no boundary override or bypass flag.
@@ -122,7 +122,7 @@ produce identical stdout bytes. Concurrent reads describe their transaction's
 snapshot, not subsequent updates. The report is local review evidence; inspect
 source-specific scope before any redistribution.
 
-Comparisons retain their store's formal total: **1124 = 1100 + 24** for a new
+Comparisons retain their store's formal total: **1127 = 1103 + 24** for a new
 current store, or the saved historical total for an older store. The **62 examples stay excluded**.
 `admitted_delta` is always `0` and `release_authorized` is always `false`.
 The comparison is separate from the existing formal-review gap report and does

@@ -37,7 +37,7 @@ class CatalogAPI(unittest.TestCase):
         self.assertEqual(self.client.get('/openapi.json').json()['info']['version'],'0.5.0.dev0')
         from materials_platform import __version__ as umbrella_version
         self.assertEqual(umbrella_version,'0.5.0.dev0')
-        self.assertEqual(self.status['counts']['local_catalog_unique_material_count'],1100)
+        self.assertEqual(self.status['counts']['local_catalog_unique_material_count'],1103)
         self.assertFalse(self.status['provider_counts_combined'])
         for name in ('version','content_digest','runtime_digest'): self.assertRegex(self.status[name],r'^[a-f0-9]{64}$')
     def test_03_exact_baseline_parity(self):
@@ -252,6 +252,64 @@ class CatalogAPI(unittest.TestCase):
                 self.assertEqual(prop['reported_value']['unit_code'], 'g/cm^3')
                 self.assertEqual(prop['conditions']['temperature']['text'], temperature)
                 self.assertEqual(prop['density_basis'], 'crystallographic')
+                self.assertEqual(prop['determination_basis'], 'source_reports_calculation')
+                self.assertEqual(prop['evidence_kind'], 'published_measurement_derived_reference')
+                self.assertEqual(prop['evaluation_support'], 'catalog_only')
+                self.assertIsNone(prop['uncertainty'])
+                self.assertIsNone(prop['sample_count']['value'])
+                self.assertFalse(prop['engineering_allowable'])
+                self.assertFalse(prop['verification']['independent_scientific_review'])
+                self.assertFalse(prop['verification']['raw_data_reanalysis'])
+                exact = self.post('record', kind='reference-properties', record_id=property_id)
+                self.assertEqual(exact.status_code, 200)
+                self.assertEqual(exact.json()['result'], prop)
+                formal = self.client.post('/api/catalog/project/list', json={
+                    'version': formal_status['version'], 'record_id': 'legacy:' + identity_id})
+                self.assertEqual(formal.status_code, 200)
+                self.assertEqual(formal.json()['matched_count'], 1)
+                self.assertEqual(formal.json()['records'][0]['identity'], value['identity'])
+        self.assertEqual(self.client.get('/api/catalog/status').json(), self.status)
+        self.assertEqual(self.client.get('/api/catalog/project/status').json(), formal_status)
+
+    def test_rca_table_growth_three_reference_resolutions(self):
+        cases = (
+            ('znb2o4', 'znb2o4_rca_xii17', '3.605', '26 degrees C'),
+            ('mg2sio4', 'mg2sio4_rca_x9', '3.213', '26 degrees C'),
+            ('mgwo4', 'mgwo4_rca4', '6.897', '26 degrees C'),
+        )
+        formal_status = self.client.get('/api/catalog/project/status').json()
+        for identity_suffix, state_suffix, number, temperature in cases:
+            with self.subTest(identity=identity_suffix):
+                identity_id = 'mat_nbs1953_' + identity_suffix
+                state_id = 'state_nbs1953_' + state_suffix + '_xrd'
+                property_id = 'refprop_nbs1953_' + state_suffix + '_crystallographic_density'
+                resolved = self.post('resolve', state_id=state_id)
+                self.assertEqual(resolved.status_code, 200)
+                value = resolved.json()['result']
+                self.assertEqual(value['identity']['id'], identity_id)
+                self.assertEqual(value['identity']['category'], 'inorganic')
+                self.assertIsNone(value['grade'])
+                state = value['state']['state']
+                phase = {'znb2o4': 'body-centered cubic', 'mg2sio4': 'orthorhombic forsterite',
+                         'mgwo4': 'monoclinic'}[identity_suffix]
+                self.assertIn(phase, state['product_form']['text'])
+                if identity_suffix == 'znb2o4':
+                    self.assertEqual(state['processing']['status'], 'not_reported_in_inspected_source')
+                    self.assertIsNone(state['processing']['text'])
+                else:
+                    preparation = {'mg2sio4': '1500 degrees C', 'mgwo4': '1000 degrees C'}
+                    self.assertIn(preparation[identity_suffix], state['processing']['text'])
+                self.assertEqual([source['id'] for source in value['sources']],
+                                 ['swanson_tatge_1953_nbs_circ539v1'])
+                self.assertEqual(len(value['properties']), 1)
+                prop = value['properties'][0]
+                self.assertEqual(prop['id'], property_id)
+                self.assertEqual(prop['quantity'], 'mass_density')
+                self.assertEqual(prop['reported_value']['number'], number)
+                self.assertEqual(prop['reported_value']['unit_code'], 'g/cm^3')
+                self.assertEqual(prop['conditions']['temperature']['text'], temperature)
+                self.assertEqual(prop['density_basis'], 'crystallographic')
+                self.assertEqual(prop['summary_statistic'], 'reported_value')
                 self.assertEqual(prop['determination_basis'], 'source_reports_calculation')
                 self.assertEqual(prop['evidence_kind'], 'published_measurement_derived_reference')
                 self.assertEqual(prop['evaluation_support'], 'catalog_only')

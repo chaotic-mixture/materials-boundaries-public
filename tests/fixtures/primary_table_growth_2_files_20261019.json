@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "baseline_commit": "799ca7a74fe1d0d92ac588b08350a39e2d0a9a79",
+  "updates": {
+    "README.md": {
+      "previous_sha256": "bb66f40172deac4cd714024c864962cbc543aef8967d98fe7f14c21ca4ee7d1d",
+      "sha256": "35476a2dcbe5507d6329b931cbdfa8a7cb1977a419cfda702f30d1dbd2f619cb",
+      "edits": [
+        {
+          "offset": 1835,
+          "before": "0",
+          "after": "3"
+        },
+        {
+          "offset": 1890,
+          "before": "0",
+          "after": "3"
+        },
+        {
+          "offset": 1924,
+          "before": "0",
+          "after": "3"
+        }
+      ]
+    },
+    ".github/workflows/ci.yml": {
+      "previous_sha256": "617636cff613f60cae4eb141684b196a7f673b0baf63413d7905b0bd0d3902e9",
+      "sha256": "ca0af419243a464056bbaf555183720d3524a4bc7de91a27f46dcaab5bf90d1b",
+      "edits": [
+        {
+          "offset": 480,
+          "before": "",
+          "after": "-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-2"
+        },
+        {
+          "offset": 1601,
+          "before": "",
+          "after": "-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-2"
+        },
+        {
+          "offset": 11144,
+          "before": "",
+          "after": "  primary-table-growth-2-targeted:\n    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/experiment/primary-table-growth-2-20261019' }}\n    runs-on: ${{ matrix.os }}\n    timeout-minutes: 60\n    strategy:\n      fail-fast: false\n      matrix:\n        include:\n          - os: ubuntu-latest\n            python-version: '3.11'\n          - os: windows-latest\n            python-version: '3.12'\n    env:\n      PYTHONUTF8: '1'\n      PYTHONDONTWRITEBYTECODE: '1'\n    steps:\n      - run: git config --global core.autocrlf false\n      - uses: actions/checkout@v4\n        with:\n          fetch-depth: 0\n          persist-credentials: false\n      - uses: actions/setup-python@v5\n        with:\n          python-version: ${{ matrix.python-version }}\n      - run: python scripts/run_primary_table_growth_2_ci.py --validate-scope\n      - run: \"python -m pip install --no-deps --only-binary=:all: -r experimental/platform/ci/build-requirements.txt\"\n      - run: python -m pip install --no-build-isolation -e '.[dev]'\n      - run: python scripts/run_primary_table_growth_2_ci.py --test\n      - run: python scripts/validate_catalogs.py\n      - run: python -m pip wheel --no-index --no-deps --no-build-isolation --wheel-dir dist . ./formal-catalog ./experimental/platform/federation ./experimental/platform/query-service ./experimental/platform/lifecycle ./experimental/platform\n      - run: \"python -m pip download --no-deps --only-binary=:all: --dest dist/dependencies -r experimental/platform/requirements-lock.txt -r experimental/platform/ci/projection-requirements.txt\"\n      - run: python scripts/run_primary_table_growth_2_ci.py --wheel-dir dist --dependency-dir dist/dependencies\n"
+        }
+      ]
+    },
+    "tests/test_primary_table_growth_ci.py": {
+      "previous_sha256": "3d295eb4fa26a13099af13e71b86ddce730cc5be6d31ee3edc8c75928e804d70",
+      "sha256": "111a4edd0326a69b3b2b2715a8170267ec0c5eeb8685a3f1a51a19463d109acb",
+      "edits": [
+        {
+          "offset": 199,
+          "before": "",
+          "after": "\n\nfrom material_append_successors import project_successor_file"
+        },
+        {
+          "offset": 682,
+          "before": "",
+          "after": "project_successor_file(\n            \".github/workflows/ci.yml\", "
+        },
+        {
+          "offset": 729,
+          "before": "",
+          "after": "),\n            before=\"nbs-salt-densities-20261019\""
+        }
+      ]
+    }
+  }
+}
