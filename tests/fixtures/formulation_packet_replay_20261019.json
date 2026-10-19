@@ -1,0 +1,46 @@
+{
+  "schema": "formulation-packet-replay-fixture/1",
+  "purpose": "Replay four already cataloged formulations without new source retrieval, scientific approval or formal admission. Existing packet bytes are the transcription oracle; mutation cases are synthetic software checks.",
+  "baseline_sha256": {
+    "materials": "193f431190af502eb5c2121ff077bf59ddc9b708ae5ad786160bdc8287c83c83",
+    "reference_properties": "03f9d1062c7e94f6c5078eea2309f016da0eac1c305fde6afeff1029757bf22d",
+    "sources": "3d8b8c6d4891400504ea9bedbafaa06d05698b5324e9cbd7f5686ebc1ac1736f"
+  },
+  "packets": [
+    {
+      "directory": "experimental/material-batches/20261019-pbs-lignin45",
+      "sha256": {
+        "materials.append.json": "4533e5537bd762eb1146658d7101124b150e5305f02b1795e94a45048cbe83bc",
+        "reference-properties.append.json": "8ebbd19e8b887cacef392527ac53a3a0eda000f316d37f4d65d0b16eb3d393dc",
+        "sources.reused.json": "f53ed3774ecb48e5c817396c91fcab8e4b95ec91154f4bd1d6415dfa194dd735",
+        "review.json": "d7af6ae30e6558e342247db06a423076bddf5932bbbaa3429974bfe542efa189"
+      },
+      "source_record_sha256": "358d6486d107da45ed76c3aa7c7a448213957c7b94afc811e9ad75e294641ca0",
+      "identity_ids": ["mat_ewurum2025_pbs_lignin45"],
+      "source_designations": ["B45"]
+    },
+    {
+      "directory": "experimental/material-batches/20261019-epdm-pcm-hostatron",
+      "sha256": {
+        "materials.append.json": "8af3769d88e3aa6754df11acc7feecbe70e7bcc69254427663847c617fca6142",
+        "reference-properties.append.json": "81631683fd8b6074561227e63a0a0cd270e143bc3b35cf84592f476b69d35ed2",
+        "sources.reused.json": "4037dd17141ada92de3ca3d575a103bcb43b98322d67be440606bb6441abb058",
+        "review.json": "979c9185a746e02b7de04060f5e95ced4ec43d0e986ac939c024502e2b615aa3"
+      },
+      "source_record_sha256": "361e553cf952939ecb1fd6871243cb3a8c77f50ee495daec87cb9ae79d043bda",
+      "identity_ids": ["mat_bianchi2022_epdm_h_p20", "mat_bianchi2022_epdm_h_p40", "mat_bianchi2022_epdm_h_p60"],
+      "source_designations": ["EPDM_H_P20", "EPDM_H_P40", "EPDM_H_P60"]
+    }
+  ],
+  "expected_source_qualified_count": 1083,
+  "reviewed_computed_count": 24,
+  "excluded_computed_examples": 62,
+  "expected_formal_project_count": 1107,
+  "expected_categories": {"natural": 1010, "metal": 22, "inorganic": 26, "polymer": 15, "composite": 10},
+  "context_fields": {
+    "identity": ["version", "category"],
+    "state": ["version", "evaluation_support"],
+    "state_facts": ["product_form", "processing", "temper_or_heat_treatment", "conditioning", "porosity", "orientation"],
+    "property": ["version", "quantity", "quantity_dimension", "conditions", "density_basis", "summary_statistic", "evaluation_support", "universal_bound", "engineering_allowable"]
+  }
+}

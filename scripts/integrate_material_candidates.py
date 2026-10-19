@@ -161,7 +161,9 @@ def build_package(baseline_dir, manifest_path, *, repository_root=ROOT):
     manifest, manifest_digest = read_document(manifest_path)
     object_keys(manifest, {"schema", "scope", "baseline_sha256", "batches", "status_adjustments",
                            "pending_gates", "released_main_count"}, "manifest")
-    require(manifest["schema"] == "experimental-material-integration/1", "unsupported manifest schema")
+    require(manifest["schema"] in {"experimental-material-integration/1", "experimental-material-integration/2"},
+            "unsupported manifest schema")
+    prepared = manifest["schema"] == "experimental-material-integration/2"
     require(manifest["scope"] == "local-experimental-only", "only local experimental integration is supported")
     require(type(manifest["released_main_count"]) is int and manifest["released_main_count"] == 1081,
             "released main count must remain 1081")
@@ -174,20 +176,36 @@ def build_package(baseline_dir, manifest_path, *, repository_root=ROOT):
                 for name, filename in FILES.items()}
     batches = manifest["batches"]
     require(isinstance(batches, list) and batches, "batches must be a nonempty list")
-    packets = {}
+    packets, packet_inputs = {}, {}
+    if prepared:
+        require(manifest["status_adjustments"] == [], "prepared packets cannot apply status adjustments")
     for batch in batches:
-        object_keys(batch, {"id", "candidate_commit", "materials", "properties", "sources", "review"}, "batch")
+        fields = {"id", "candidate_commit", "packet"} if prepared else {
+            "id", "candidate_commit", "materials", "properties", "sources", "review"}
+        object_keys(batch, fields, "batch")
         nonempty_text(batch["id"], "batch id")
         require(batch["id"] not in packets, "duplicate batch id")
         require(isinstance(batch["candidate_commit"], str)
                 and re.fullmatch(r"[0-9a-f]{40}", batch["candidate_commit"]) is not None,
                 "candidate_commit must be a full commit ID")
         packet = {}
-        for name in ("materials", "properties", "sources", "review"):
+        input_names = ("packet",) if prepared else ("materials", "properties", "sources", "review")
+        for name in input_names:
             path = packet_path(manifest_path, batch[name], repository_root)
             require(path != manifest_path and not path.is_relative_to(baseline_dir),
                     "candidate inputs must be separate from manifest and baseline")
             packet[name] = read_document(path, batch[name]["sha256"])[0]
+        packet_inputs[batch["id"]] = {name: deepcopy(batch[name]) for name in input_names}
+        if prepared:
+            # Runtime-only import avoids a module initialization cycle: the
+            # checkout compiler reuses this module's strict reader and writer.
+            from scripts.prepare_formulation_packet import validate_identity_collisions, validate_prepared_packet
+            replay = validate_prepared_packet(packet["packet"], baseline_dir)
+            require(replay["input"]["batch_id"] == batch["id"], "prepared packet batch id differs from manifest")
+            require(replay["input"]["baseline_sha256"] == manifest["baseline_sha256"],
+                    "prepared packet baseline differs from manifest")
+            require(replay["report"]["handoff_ready"], "prepared packet has pending identity/source review")
+            packet = {**replay["catalogs"], "review": replay["review"]}
         packets[batch["id"]] = packet
     # All original files have now been read and hash-verified. Adjustments modify
     # only two explicit editorial status fields, never the frozen packet bytes.
@@ -199,6 +217,8 @@ def build_package(baseline_dir, manifest_path, *, repository_root=ROOT):
     for batch in batches:
         append = {name: packets[batch["id"]][name] for name in FILES}
         previous = current
+        if prepared:
+            validate_identity_collisions(previous, append)
         current = merge_material_catalogs(previous["materials"], previous["properties"], previous["sources"], append)
         added, existing = {}, {}
         for name, (table, field) in TABLES.items():
@@ -206,7 +226,7 @@ def build_package(baseline_dir, manifest_path, *, repository_root=ROOT):
             new_ids = {row["id"] for row in append[table][field]}
             added[name], existing[name] = sorted(new_ids - old_ids), sorted(new_ids & old_ids)
         reports.append({"id": batch["id"], "candidate_commit": batch["candidate_commit"],
-                        "inputs": {name: deepcopy(batch[name]) for name in (*FILES, "review")},
+                        "inputs": packet_inputs[batch["id"]],
                         "added_ids": added, "existing_ids": existing,
                         "added_counts": {name: len(ids) for name, ids in added.items()},
                         "existing_counts": {name: len(ids) for name, ids in existing.items()},

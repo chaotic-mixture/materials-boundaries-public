@@ -108,8 +108,8 @@ no additional full-suite, browser or completed remote-CI run is implied.
 
 ## Local composite increment, 2026-10-19
 
-The current experiment adds the source-qualified PBS/lignin B45 formulation and
-EPDM_H_P20/P40/P60 composites. The installed snapshot contains 1107 project
+The preceding experiment added the source-qualified PBS/lignin B45 formulation and
+EPDM_H_P20/P40/P60 composites. That snapshot contained 1107 project
 entries: 1083 source-qualified identities plus the unchanged 24 reviewed
 computed compositions. Core categories are natural 1010, metal 22, inorganic
 26, polymer 15 and composite 10; project categories are natural 1010, metal 34,
@@ -123,7 +123,7 @@ memberships and one identity relationship. The four composites contribute
 their primary category only; additional polymer memberships or constituent
 edges require separate evidence and review.
 
-The current complete core manifest anchor is
+That snapshot's complete core manifest anchor is
 `3782f403f120f22b5287e01f4e207419e2f576a28dfda33a89a85580b936c0f6`.
 The preceding a592 catalog anchor
 `f1a1e3e379f9b7befba595b54477f15a26364548798b28dd65be8bc4326c0df4`
@@ -139,3 +139,33 @@ the 62 excluded computed examples, fetch raw assets, publish a release, register
 a DOI or deploy a service. Candidate review records retain their explicit
 scientific-review and raw-reanalysis limitations. Targeted test outcomes belong
 to this batch's validation evidence; no new full-suite or browser pass is implied.
+
+## Source-family packet increment, 2026-10-19
+
+The current experiment adds one EOS PA2200 source-qualified PA12 identity with
+one source-designated grade, processed reference state, tensile-strength property
+and source. The packet does not count another supplier label as a second PA12
+identity. See the [source-family packet](../../material-batches/20261019-pa12-source-family/README.md).
+The current snapshot contains **1108 project entries = 1084 source-qualified
+identities + 24 reviewed computed compositions**. Core categories are natural
+1010, metal 22, inorganic 26, polymer 16 and composite 10; project categories
+are natural 1010, metal 34, inorganic 38, polymer 16 and composite 10. The
+relationship view has 1084 identities, 1089 supported memberships (including
+17 polymer memberships) and the same one identity relationship. Memberships
+are overlapping evidence and do not add identities.
+
+The current complete core manifest anchor is
+`8fda4f7a4355c88f0e4e9e713c01f236a907985b4720454e338d8d95eff4770e`.
+The preceding `3782f403f120f22b5287e01f4e207419e2f576a28dfda33a89a85580b936c0f6`
+anchor remains historical. Compatibility checks bind the immutable prepared
+packet, remove only its complete unchanged append graph, and recover the exact
+12cb predecessor resources and 64-file manifest before the older a592/main
+recovery chain. Partial additions, modified rows and unrelated resource edits
+are refused. Keep old databases with their original installation and create a
+separate registry for this snapshot; no automatic migration is provided.
+
+The local API resolves the single PA2200 identity with the selected 43.72 MPa
+tensile strength, its reported 1.03 MPa standard deviation and six-specimen
+scope. The value remains catalog-only with unknown tensile-test temperature,
+independent scientific review false and raw-data reanalysis false. Released
+main remains at 1081; the 62 excluded computed examples remain excluded.

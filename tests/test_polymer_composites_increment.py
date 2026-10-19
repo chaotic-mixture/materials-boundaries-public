@@ -8,6 +8,9 @@ import unittest
 
 from materials_boundaries.material_references import material_quota_coverage, merge_material_catalogs
 from scripts.integrate_material_candidates import write_package
+from evidence_batch_data_preservation import (
+    has_evidence_batch, pre_evidence_batch_catalog_bytes, recover_pre_evidence_batch_catalogs,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "experimental/material-batches/20261019-polymer-composites-incremental/integration.json"
@@ -46,6 +49,8 @@ def recover_a592_catalogs(current):
     enlarge the removal list; partial batches, metadata/grade/source mutations
     and unrelated append records fail. The input graph is never changed.
     """
+    if has_evidence_batch(current):
+        current = recover_pre_evidence_batch_catalogs(current)
     recovered = deepcopy(current)
     has_batch = has_composite_increment(current)
     for table, field, identifiers in REMOVALS:
@@ -65,6 +70,7 @@ class PolymerCompositesIncrementTests(unittest.TestCase):
     def setUpClass(cls):
         cls.current = {name: json.loads((ROOT / "materials_boundaries/data" / filename).read_bytes())
                        for name, filename in FILES.items()}
+        cls.current = recover_pre_evidence_batch_catalogs(cls.current)
         cls.baseline = recover_a592_catalogs(cls.current)
         cls.manifest = json.loads(MANIFEST.read_bytes())
         cls.packets = [{name: json.loads((MANIFEST.parent / batch[name]["path"]).read_bytes())
@@ -126,7 +132,8 @@ class PolymerCompositesIncrementTests(unittest.TestCase):
             self.assertEqual((output.read_bytes(), output.stat().st_mtime_ns), stored)
             self.assertEqual(package["catalogs"], self.current)
             for name, filename in FILES.items():
-                self.assertEqual(serialized(package["catalogs"][name]), (ROOT / "materials_boundaries/data" / filename).read_bytes())
+                self.assertEqual(serialized(package["catalogs"][name]), pre_evidence_batch_catalog_bytes(
+                    filename, (ROOT / "materials_boundaries/data" / filename).read_bytes()))
             self.assertEqual(package["report"]["delta"], {"identities": 4, "grades": 0, "states": 4,
                 "properties": 4, "sources": 0, "categories": {"natural": 0, "metal": 0, "inorganic": 0, "polymer": 0, "composite": 4}})
             self.assertEqual(package["report"]["formal_admitted_delta"], 0)

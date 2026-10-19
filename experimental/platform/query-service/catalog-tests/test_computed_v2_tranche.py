@@ -68,7 +68,7 @@ class ReviewedTrancheTests(unittest.TestCase):
         self.assertEqual(s['selected_model_count'],24);self.assertEqual(s['selected_entry_count'],24)
         self.assertEqual(s['related_source_provider_group_count'],30)
         self.assertEqual(s['related_source_calculation_count'],118)
-        self.assertEqual(s['legacy_unique_material_count'],1083)
+        self.assertEqual(s['legacy_unique_material_count'],1084)
         self.assertFalse(s['cross_namespace_equivalence'])
         self.assertEqual(sum(r['primary_category']=='metal' for r in s['records']),12)
         self.assertEqual(sum(r['primary_category']=='inorganic' for r in s['records']),12)

@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "baseline_commit": "12cb89ca82b48ba444bdb921674c3d232d448720",
+  "preserved_ledger_sha256": {
+    "tests/fixtures/material_batch_updates_v0300.json": "39f0c79c9197deee7dc09ee14130754341faddd7a1376ab298b3a3aec87ac380",
+    "tests/fixtures/material_bulk_updates_v0350.json": "fa5b5d010dff9dd12e859a41ad02077b5350acc01bac50d001e1fa48184747d4",
+    "tests/fixtures/material_catalog_updates_v0290.json": "a6dbb49725c2c527bc02340e252c111bfd1ce9e393b0163aaf48f53ed156bb52",
+    "tests/fixtures/material_fiber_updates_v0310.json": "598f255b9fd494481b52206fe8c1d133a11c525c5a1120b4eb9a8d8229f94d54",
+    "tests/fixtures/material_measures_updates_v0320.json": "87995a4c1d7c724c88476783585f9f232fa07cc1a3a2530d91e48961093763de",
+    "tests/fixtures/material_polymer_updates_v0340.json": "9c78b514d0aee2b8aa2fe78c621387636ca3e0782e43fb89bba781f5c22f8c11",
+    "tests/fixtures/material_porous_updates_v0330.json": "c9fdb94a8d4f2e730cf76e72f1bff2292071b4d6de0642547ff99a4d041bcdf3",
+    "tests/fixtures/presentation_fast_path_updates_v1.json": "cb21d602f80d59f66889908de1c8a025de5080570c76db4eb4cf5ae3df437544",
+    "tests/fixtures/evidence_dedup_updates_v1.json": "3c7ecc146f216e113a99c636815cce7df9b4c1ee06ec55a736cc781f16c77890",
+    "tests/fixtures/material_class_counts_updates_20261019.json": "6903abbfe027266b2e8f3ea90261600fd72982390c2431e836861b92a17fd894"
+  },
+  "updates": [
+    {
+      "filename": ".github/workflows/ci.yml",
+      "previous_sha256": "a737176a1d2ff06268264814da7d0186e29a1c58518ec253bffeb2759a8da6cd",
+      "sha256": "3d5ea4e62e6f57f2e6729c9af7e673b613dac5c16645181cf2b63292e620532e",
+      "edits": [
+        {
+          "offset": 92,
+          "before": "    if: ${{ github.event_name != 'push' || github.ref != 'refs/heads/experiment/polymer-composites-20261019' }}\n",
+          "after": "    if: ${{ github.event_name != 'push' || (github.ref != 'refs/heads/experiment/polymer-composites-20261019' && github.ref != 'refs/heads/experiment/evidence-batch-ingestion-20261019') }}\n"
+        },
+        {
+          "offset": 922,
+          "before": "    if: ${{ github.event_name != 'push' || github.ref != 'refs/heads/experiment/polymer-composites-20261019' }}\n",
+          "after": "    if: ${{ github.event_name != 'push' || (github.ref != 'refs/heads/experiment/polymer-composites-20261019' && github.ref != 'refs/heads/experiment/evidence-batch-ingestion-20261019') }}\n"
+        },
+        {
+          "offset": 3891,
+          "before": "",
+          "after": "  evidence-batch-targeted:\n    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/experiment/evidence-batch-ingestion-20261019' }}\n    runs-on: ${{ matrix.os }}\n    timeout-minutes: 60\n    strategy:\n      fail-fast: false\n      matrix:\n        include:\n          - os: ubuntu-latest\n            python-version: '3.11'\n          - os: windows-latest\n            python-version: '3.12'\n    env:\n      PYTHONUTF8: '1'\n      PYTHONDONTWRITEBYTECODE: '1'\n    steps:\n      - run: git config --global core.autocrlf false\n      - uses: actions/checkout@v4\n        with:\n          fetch-depth: 0\n          persist-credentials: false\n      - uses: actions/setup-python@v5\n        with:\n          python-version: ${{ matrix.python-version }}\n      - run: python scripts/run_evidence_batch_ci.py --validate-scope\n      - run: \"python -m pip install --no-deps --only-binary=:all: -r experimental/platform/ci/build-requirements.txt\"\n      - run: python -m pip install --no-build-isolation -e '.[dev]'\n      - run: python scripts/run_evidence_batch_ci.py --test\n      - run: python scripts/validate_catalogs.py\n      - run: python -m pip wheel --no-index --no-deps --no-build-isolation --wheel-dir dist . ./formal-catalog ./experimental/platform/federation ./experimental/platform/query-service ./experimental/platform/lifecycle ./experimental/platform\n      - run: \"python -m pip download --no-deps --only-binary=:all: --dest dist/dependencies -r experimental/platform/requirements-lock.txt -r experimental/platform/ci/projection-requirements.txt\"\n      - run: python scripts/run_evidence_batch_ci.py --wheel-dir dist --dependency-dir dist/dependencies\n"
+        }
+      ]
+    },
+    {
+      "filename": "tests/material_class_counts_preservation.py",
+      "previous_sha256": "74d3ec919c4ed769e2e0fc6b10149b27a3375f703646e10850084fed3812fe26",
+      "sha256": "63a4cdf9527783270e2113752f3f47d17c8f388241e1b427afe6db4622e2ae2e",
+      "edits": [
+        {
+          "offset": 472,
+          "before": "",
+          "after": "from evidence_batch_data_preservation import pre_evidence_batch_readme_bytes\nfrom evidence_batch_workflow_preservation import pre_evidence_batch_workflow_bytes\n"
+        },
+        {
+          "offset": 3804,
+          "before": "",
+          "after": "    if digest(current) != entry['sha256'] and filename == '.github/workflows/ci.yml':\n        current = pre_evidence_batch_workflow_bytes(filename, current)\n    if digest(current) != entry['sha256'] and filename == 'README.md':\n        current = pre_evidence_batch_readme_bytes(current)\n"
+        }
+      ]
+    },
+    {
+      "filename": "tests/test_material_class_counts_preservation.py",
+      "previous_sha256": "182c2ce4deb99ab6b1cd505d15704428e47237586d9411a770fdc9b57f9af2b7",
+      "sha256": "aea125da7dbe50955036453f2d2e20dd9b7452d1da211e9eba5f6acee7c274f2",
+      "edits": [
+        {
+          "offset": 415,
+          "before": "",
+          "after": "from evidence_batch_data_preservation import pre_evidence_batch_catalog_bytes, pre_evidence_batch_readme_bytes\nfrom evidence_batch_workflow_preservation import pre_evidence_batch_workflow_bytes\n"
+        },
+        {
+          "offset": 1302,
+          "before": "        self.assertEqual(bridge.digest((ROOT / 'tests/material_class_counts_preservation.py').read_bytes()),\n",
+          "after": "        self.assertEqual(bridge.digest(pre_evidence_batch_workflow_bytes(\n            'tests/material_class_counts_preservation.py', (ROOT / 'tests/material_class_counts_preservation.py').read_bytes())),\n"
+        },
+        {
+          "offset": 1810,
+          "before": "            self.assertEqual(bridge.digest((ROOT / 'materials_boundaries/data' / filename).read_bytes()), expected)\n",
+          "after": "            self.assertEqual(bridge.digest(pre_evidence_batch_catalog_bytes(\n                filename, (ROOT / 'materials_boundaries/data' / filename).read_bytes())), expected)\n"
+        },
+        {
+          "offset": 2023,
+          "before": "        materials = json.loads((ROOT / 'materials_boundaries/data/materials.json').read_text(encoding='utf-8'))\n",
+          "after": "        materials = json.loads(pre_evidence_batch_catalog_bytes(\n            'materials.json', (ROOT / 'materials_boundaries/data/materials.json').read_bytes()))\n"
+        },
+        {
+          "offset": 2655,
+          "before": "        text = raw.decode('utf-8')\n",
+          "after": "        text = pre_evidence_batch_readme_bytes(raw).decode('utf-8')\n"
+        },
+        {
+          "offset": 8695,
+          "before": "",
+          "after": "                if filename == 'README.md':\n                    current = pre_evidence_batch_readme_bytes(current)\n                elif filename == '.github/workflows/ci.yml':\n                    current = pre_evidence_batch_workflow_bytes(filename, current)\n"
+        }
+      ]
+    }
+  ]
+}

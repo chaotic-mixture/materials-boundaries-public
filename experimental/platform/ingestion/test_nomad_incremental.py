@@ -14,8 +14,8 @@ from nomad_review_boundary import BASELINE_COMMIT, LEGACY, SOURCES
 from test_nomad_batch import fixture
 
 BOUNDARY = {'provider_material_ids': [], 'provider_entry_ids': [], 'sha256': 'test-boundary',
-            'baseline_commit': BASELINE_COMMIT, 'formal_project_total': 1107,
-            'formal_legacy_count': 1083, 'formal_computed_composition_count': 24,
+            'baseline_commit': BASELINE_COMMIT, 'formal_project_total': 1108,
+            'formal_legacy_count': 1084, 'formal_computed_composition_count': 24,
             'excluded_example_count': 62, 'legacy_example_count': 7,
             'source_sha256': {LEGACY[0]: LEGACY[1],
                               **{path: expected for path, expected, _ in SOURCES.values()}}}
@@ -85,7 +85,7 @@ class IncrementalTests(unittest.TestCase):
         self.assertEqual(third['input_changes'][0]['change'], 'changed')
         self.assertEqual(third['candidate_changes'][0]['change'], 'changed')
         self.assertEqual(third['admitted_delta'], 0)
-        self.assertEqual(third['formal_project_total'], 1107)
+        self.assertEqual(third['formal_project_total'], 1108)
 
     def test_crash_after_archive_response_is_reused(self):
         self.init()
@@ -449,11 +449,13 @@ class IncrementalTests(unittest.TestCase):
 
     def test_new_store_requires_exact_current_catalog_scope_before_creation(self):
         mutations = [('formal_project_total', 1081), ('formal_project_total', 1104),
+                     ('formal_project_total', 1107), ('formal_legacy_count', 1083),
                      ('formal_project_total', 1103), ('formal_legacy_count', 1079),
                      ('formal_legacy_count', 1057), ('formal_computed_composition_count', 62),
                      ('excluded_example_count', 0), ('legacy_example_count', 0),
                      ('baseline_commit', '4c5656cf6ba0ad1a54b736e0568e97abe4815c29'),
                      ('baseline_commit', 'a592c89ede0dcced22579e56fc68b6fab4c55f49'),
+                     ('baseline_commit', '5396fd1cc9df72507785a112a21c2990fb4a7c50'),
                      ('source_sha256', {**BOUNDARY['source_sha256'], LEGACY[0]: '0' * 64})]
         for index, (key, value) in enumerate(mutations):
             root = self.root / str(index)
@@ -499,24 +501,33 @@ class IncrementalTests(unittest.TestCase):
         self.assertEqual((self.root / inc.DB_NAME).read_bytes(), before)
 
     def test_a592_predecessor_scope_stays_read_only_without_migration(self):
+        self.assert_predecessor_scope_stays_read_only(
+            'a592c89ede0dcced22579e56fc68b6fab4c55f49', 1103, 1079,
+            'd078f1fb726289bdd6c7faff6f9a4a84d46eed5cd83ba586cd9c2f6ae0256739')
+
+    def test_evidence_batch_predecessor_scope_stays_read_only_without_migration(self):
+        # The 12cb checkout used the earlier 5396 boundary origin label.
+        self.assert_predecessor_scope_stays_read_only(
+            '5396fd1cc9df72507785a112a21c2990fb4a7c50', 1107, 1083,
+            '193f431190af502eb5c2121ff077bf59ddc9b708ae5ad786160bdc8287c83c83')
+
+    def assert_predecessor_scope_stays_read_only(self, origin, total, legacy_count, materials_sha256):
         from nomad_review_boundary import load_review_boundary
 
         current = load_review_boundary()
-        self.assertEqual(current['baseline_commit'], '5396fd1cc9df72507785a112a21c2990fb4a7c50')
-        self.assertEqual(current['formal_legacy_count'], 1083)
-        self.assertEqual(current['formal_project_total'], 1107)
+        self.assertEqual(current['baseline_commit'], 'e2a8bc7f7297c95b9ddd883275a1c807ff4b038d')
+        self.assertEqual(current['formal_legacy_count'], 1084)
+        self.assertEqual(current['formal_project_total'], 1108)
         self.init()
         self.assertEqual(self.first_cycle()['status'], 'complete')
         self.now += 100
         self.assertEqual(self.first_cycle()['status'], 'complete')
-        # Explicitly synthetic a592-scoped predecessor store. The older helper
-        # used a 5a11cac boundary tag; no real archived store is relabeled here.
+        # Explicitly synthetic predecessor store; no real archive is relabeled.
         with inc.connect(self.root) as db, db:
             predecessor = copy.deepcopy(inc.meta(db, 'review_boundary'))
-            predecessor.update(baseline_commit='a592c89ede0dcced22579e56fc68b6fab4c55f49',
-                               formal_project_total=1103, formal_legacy_count=1079)
-            predecessor['source_sha256'][LEGACY[0]] = (
-                'd078f1fb726289bdd6c7faff6f9a4a84d46eed5cd83ba586cd9c2f6ae0256739')
+            predecessor.update(baseline_commit=origin,
+                               formal_project_total=total, formal_legacy_count=legacy_count)
+            predecessor['source_sha256'][LEGACY[0]] = materials_sha256
             predecessor.pop('sha256')
             predecessor['sha256'] = inc.digest(predecessor)
             inc.set_meta(db, 'review_boundary', predecessor)
@@ -524,7 +535,7 @@ class IncrementalTests(unittest.TestCase):
             saved_reports = {}
             for row in db.execute('SELECT state FROM cycles').fetchall():
                 cycle = inc.decode(row['state'])
-                cycle['report']['formal_project_total'] = 1103
+                cycle['report']['formal_project_total'] = total
                 cycle['report']['review_boundary_sha256'] = predecessor['sha256']
                 cycle['report']['candidate_packet']['baseline_commit'] = predecessor['baseline_commit']
                 inc.save_cycle(db, cycle)
@@ -537,14 +548,14 @@ class IncrementalTests(unittest.TestCase):
         before = snapshot()
         before_status = inc.status(self.root)
         before_comparison = inc.compare(self.root, before=1, after=2)
-        self.assertEqual(before_status['formal_project_total'], 1103)
-        self.assertEqual(before_comparison['formal_project_total'], 1103)
+        self.assertEqual(before_status['formal_project_total'], total)
+        self.assertEqual(before_comparison['formal_project_total'], total)
         self.assertEqual(before_comparison['excluded_example_count'], 62)
         self.assertEqual(before_comparison['review_boundary_sha256'], predecessor['sha256'])
         self.assertEqual(before_comparison['review_boundary_content_sha256'], inc.digest(predecessor))
         for cycle_id, saved_report in saved_reports.items():
             self.assertEqual(inc.report(self.root, cycle=cycle_id), saved_report)
-            self.assertEqual(saved_report['formal_project_total'], 1103)
+            self.assertEqual(saved_report['formal_project_total'], total)
             self.assertEqual(saved_report['excluded_example_count'], 62)
             self.assertEqual(saved_report['candidate_packet']['baseline_commit'], predecessor['baseline_commit'])
         self.assertEqual(snapshot(), before)

@@ -37,7 +37,7 @@ class CatalogAPI(unittest.TestCase):
         self.assertEqual(self.client.get('/openapi.json').json()['info']['version'],'0.5.0.dev0')
         from materials_platform import __version__ as umbrella_version
         self.assertEqual(umbrella_version,'0.5.0.dev0')
-        self.assertEqual(self.status['counts']['local_catalog_unique_material_count'],1083)
+        self.assertEqual(self.status['counts']['local_catalog_unique_material_count'],1084)
         self.assertFalse(self.status['provider_counts_combined'])
         for name in ('version','content_digest','runtime_digest'): self.assertRegex(self.status[name],r'^[a-f0-9]{64}$')
     def test_03_exact_baseline_parity(self):
@@ -72,6 +72,45 @@ class CatalogAPI(unittest.TestCase):
                 self.assertIsNone(prop['uncertainty'])
                 self.assertIsNone(prop['sample_count']['value'])
                 self.assertFalse(prop['engineering_allowable'])
+    def test_pa12_source_family_single_identity_resolution(self):
+        identity_id = 'mat_zakrecki2025_pa12_pa2200'
+        state_id = 'state_zakrecki2025_pa2200_sls_dyed_reference'
+        found = self.post('search', query='PA2200', limit=100)
+        self.assertEqual(found.status_code, 200)
+        self.assertEqual([row['id'] for row in found.json()['result']['records']], [state_id])
+        self.assertFalse(found.json()['result']['truncated'])
+        response = self.post('resolve', state_id=state_id)
+        self.assertEqual(response.status_code, 200)
+        value = response.json()['result']
+        self.assertEqual(value['identity']['id'], identity_id)
+        self.assertEqual(value['identity']['category'], 'polymer')
+        self.assertEqual(value['grade']['id'], 'grade_zakrecki2025_eos_pa2200')
+        self.assertEqual(value['grade']['authority']['kind'], 'source_designation')
+        self.assertEqual([source['id'] for source in value['sources']],
+                         ['zakrecki_cieslik_2025_pa12_ageing'])
+        self.assertEqual(len(value['properties']), 1)
+        prop = value['properties'][0]
+        self.assertEqual(prop['id'], 'refprop_zakrecki2025_pa2200_sls_reference_tensile_strength')
+        self.assertEqual(prop['quantity'], 'tensile_strength')
+        self.assertEqual(prop['reported_value']['number'], '43.72')
+        self.assertEqual(prop['reported_value']['unit_code'], 'MPa')
+        self.assertEqual(prop['uncertainty']['type'], 'reported_standard_deviation')
+        self.assertEqual(prop['uncertainty']['number'], '1.03')
+        self.assertEqual(prop['uncertainty']['unit_code'], 'MPa')
+        self.assertEqual(prop['sample_count']['value'], 6)
+        self.assertIsNone(prop['conditions']['temperature']['text'])
+        self.assertEqual(prop['evaluation_support'], 'catalog_only')
+        self.assertFalse(prop['engineering_allowable'])
+        self.assertFalse(prop['verification']['independent_scientific_review'])
+        self.assertFalse(prop['verification']['raw_data_reanalysis'])
+        status = self.client.get('/api/catalog/project/status').json()
+        selected = self.client.post('/api/catalog/project/list', json={
+            'version': status['version'], 'query': 'PA2200',
+            'partition': 'legacy-source-qualified', 'limit': 100})
+        self.assertEqual(selected.status_code, 200)
+        self.assertEqual(selected.json()['matched_count'], 1)
+        self.assertEqual(selected.json()['records'][0]['identity']['id'], identity_id)
+
     def test_05_copy_isolation(self):
         expected=self.post('resolve',state_id=self.first['id']).json()
         mutated=copy.deepcopy(expected); mutated['result']['state'].clear();mutated['result']['sources'].clear()

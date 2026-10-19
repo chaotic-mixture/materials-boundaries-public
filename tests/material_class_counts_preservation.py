@@ -10,6 +10,8 @@ import json
 from pathlib import Path
 
 from evidence_dedup_preservation import apply_exact_edits
+from evidence_batch_data_preservation import pre_evidence_batch_readme_bytes
+from evidence_batch_workflow_preservation import pre_evidence_batch_workflow_bytes
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -90,6 +92,10 @@ def pre_class_counts_bytes(filename, current, *, ledger=None):
     entry = entries[filename]
     if digest(current) == entry['previous_sha256']:
         return current
+    if digest(current) != entry['sha256'] and filename == '.github/workflows/ci.yml':
+        current = pre_evidence_batch_workflow_bytes(filename, current)
+    if digest(current) != entry['sha256'] and filename == 'README.md':
+        current = pre_evidence_batch_readme_bytes(current)
     if digest(current) != entry['sha256']:
         raise AssertionError('Unreviewed class-count successor bytes')
     chunks, cursor, shift = [], 0, 0

@@ -12,6 +12,8 @@ import unittest
 import material_bulk_preservation as bulk
 import material_class_counts_preservation as bridge
 from materials_boundaries.material_references import material_coverage
+from evidence_batch_data_preservation import pre_evidence_batch_catalog_bytes, pre_evidence_batch_readme_bytes
+from evidence_batch_workflow_preservation import pre_evidence_batch_workflow_bytes
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -31,17 +33,20 @@ def serialized(value):
 
 class MaterialClassCountsPreservationTests(unittest.TestCase):
     def test_helper_ledger_and_three_snapshot_resources_are_pinned(self):
-        self.assertEqual(bridge.digest((ROOT / 'tests/material_class_counts_preservation.py').read_bytes()),
+        self.assertEqual(bridge.digest(pre_evidence_batch_workflow_bytes(
+            'tests/material_class_counts_preservation.py', (ROOT / 'tests/material_class_counts_preservation.py').read_bytes())),
                          HELPER_SHA256)
         ledger = bridge.load_ledger()
         self.assertEqual(ledger['baseline_commit'], 'a592c89ede0dcced22579e56fc68b6fab4c55f49')
         self.assertEqual(ledger['snapshot']['data_commit'], bridge.DATA_COMMIT)
         self.assertEqual(ledger['snapshot']['catalog_sha256'], SNAPSHOT_RESOURCES)
         for filename, expected in SNAPSHOT_RESOURCES.items():
-            self.assertEqual(bridge.digest((ROOT / 'materials_boundaries/data' / filename).read_bytes()), expected)
+            self.assertEqual(bridge.digest(pre_evidence_batch_catalog_bytes(
+                filename, (ROOT / 'materials_boundaries/data' / filename).read_bytes())), expected)
 
     def test_snapshot_sentence_matches_actual_core_classes_and_only_natural_reaches_goal(self):
-        materials = json.loads((ROOT / 'materials_boundaries/data/materials.json').read_text(encoding='utf-8'))
+        materials = json.loads(pre_evidence_batch_catalog_bytes(
+            'materials.json', (ROOT / 'materials_boundaries/data/materials.json').read_bytes()))
         counts = dict(Counter(row['category'] for row in materials['identities']))
         self.assertEqual(counts, SNAPSHOT_COUNTS)
         self.assertEqual(sum(counts.values()), 1083)
@@ -50,7 +55,7 @@ class MaterialClassCountsPreservationTests(unittest.TestCase):
         self.assertEqual(ledger['snapshot']['core_category_counts'], counts)
         self.assertEqual(ledger['snapshot']['core_identity_count'], 1083)
         raw = (ROOT / 'README.md').read_bytes()
-        text = raw.decode('utf-8')
+        text = pre_evidence_batch_readme_bytes(raw).decode('utf-8')
         self.assertEqual(text.count(bridge.SNAPSHOT_CLASS_SENTENCE), 1)
         self.assertNotIn(bridge.HISTORICAL_CLASS_SENTENCE, text)
         self.assertIn('**1083 material identities**', text)
@@ -145,6 +150,10 @@ class MaterialClassCountsPreservationTests(unittest.TestCase):
         for filename, entry in entries.items():
             with self.subTest(filename=filename):
                 current = (ROOT / filename).read_bytes()
+                if filename == 'README.md':
+                    current = pre_evidence_batch_readme_bytes(current)
+                elif filename == '.github/workflows/ci.yml':
+                    current = pre_evidence_batch_workflow_bytes(filename, current)
                 previous = bridge.pre_class_counts_bytes(filename, current)
                 self.assertEqual(bridge.digest(current), entry['sha256'])
                 self.assertEqual(bridge.digest(previous), entry['previous_sha256'])

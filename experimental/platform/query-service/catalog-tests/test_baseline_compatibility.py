@@ -24,7 +24,23 @@ from test_computed_v2 import INPUT, review_fixture as rich_review
 
 PIN_SHA256 = '259d5d0e87635fec6f87ce544c8a252494038cbb1643228eeb685d5501f17897'
 INTEGRATED_PIN_SHA256 = 'f1a1e3e379f9b7befba595b54477f15a26364548798b28dd65be8bc4326c0df4'
-CURRENT_PIN_SHA256 = '3782f403f120f22b5287e01f4e207419e2f576a28dfda33a89a85580b936c0f6'
+PRE_EVIDENCE_BATCH_PIN_SHA256 = '3782f403f120f22b5287e01f4e207419e2f576a28dfda33a89a85580b936c0f6'
+CURRENT_PIN_SHA256 = '8fda4f7a4355c88f0e4e9e713c01f236a907985b4720454e338d8d95eff4770e'
+PRE_EVIDENCE_BATCH_DATA_SHA256 = {
+    'materials.json': '193f431190af502eb5c2121ff077bf59ddc9b708ae5ad786160bdc8287c83c83',
+    'reference_properties.json': '03f9d1062c7e94f6c5078eea2309f016da0eac1c305fde6afeff1029757bf22d',
+    'sources.json': '3d8b8c6d4891400504ea9bedbafaa06d05698b5324e9cbd7f5686ebc1ac1736f',
+}
+EVIDENCE_BATCH_PACKET = (Path(__file__).resolve().parents[4] / 'experimental'
+    / 'material-batches/20261019-pa12-source-family/prepared-packet.json')
+EVIDENCE_BATCH_PACKET_SHA256 = '50f979965279a87410843518040429a59cc32a2204a5926478126024b32bc08c'
+EVIDENCE_BATCH_COLLECTIONS = (
+    ('materials.json', 'materials', 'identities'),
+    ('materials.json', 'materials', 'grades'),
+    ('materials.json', 'materials', 'records'),
+    ('reference_properties.json', 'properties', 'records'),
+    ('sources.json', 'sources', 'records'),
+)
 A592_DATA_SHA256 = {
     'materials.json': 'd078f1fb726289bdd6c7faff6f9a4a84d46eed5cd83ba586cd9c2f6ae0256739',
     'reference_properties.json': '4a5242f87beab3e07b0e5667e2fdb77b4b984baa71468978aec01092bb0aaad8',
@@ -209,6 +225,47 @@ def manifest(root):
             for p in root.rglob('*') if p.is_file() and p.suffix in {'.py', '.json'}}
 
 
+def evidence_batch_catalogs():
+    """Read the immutable append graph without importing a compiler or core helper."""
+    raw = EVIDENCE_BATCH_PACKET.read_bytes()
+    if sha256(raw).hexdigest() != EVIDENCE_BATCH_PACKET_SHA256:
+        raise AssertionError('Evidence batch packet bytes differ')
+    packet = json.loads(raw)
+    expected = {name.removesuffix('.json'): digest
+                for name, digest in PRE_EVIDENCE_BATCH_DATA_SHA256.items()}
+    if packet['input']['baseline_sha256'] != expected:
+        raise AssertionError('Evidence batch parent resource pins differ')
+    return packet['catalogs']
+
+
+def recover_pre_evidence_batch_catalogs(current):
+    """Recover exact 12cb bytes only from the whole pinned append graph or parent."""
+    appended = evidence_batch_catalogs()
+    catalogs = deepcopy(current)
+    observed, required = 0, 0
+    for filename, section, collection in EVIDENCE_BATCH_COLLECTIONS:
+        candidates = appended[section][collection]
+        identifiers = {row['id'] for row in candidates}
+        if len(identifiers) != len(candidates):
+            raise AssertionError('Evidence batch duplicate candidate IDs')
+        required += len(candidates)
+        rows = catalogs[filename][collection]
+        for candidate in candidates:
+            matches = [row for row in rows if row['id'] == candidate['id']]
+            if len(matches) > 1 or (matches and registry.canonical(matches[0]) != registry.canonical(candidate)):
+                raise AssertionError('Evidence batch candidate rows differ')
+            observed += len(matches)
+        catalogs[filename][collection] = [row for row in rows if row['id'] not in identifiers]
+    if not required or observed not in (0, required):
+        raise AssertionError('Evidence batch is incomplete')
+    for name, expected in PRE_EVIDENCE_BATCH_DATA_SHA256.items():
+        raw = (json.dumps(catalogs[name], ensure_ascii=False, indent=2,
+                          allow_nan=False) + '\n').encode('utf-8')
+        if sha256(raw).hexdigest() != expected:
+            raise AssertionError('Recovered pre-evidence-batch catalog bytes differ: ' + name)
+    return catalogs
+
+
 def recover_a592_catalogs(current):
     """Remove only this fixed batch and require every parent resource byte."""
     catalogs = deepcopy(current)
@@ -275,9 +332,23 @@ class BaselineCompatibility(unittest.TestCase):
 
     @classmethod
     def recover_integrated_anchor(cls):
-        """Recover the exact a592 data and its complete 64-file logical pin."""
+        """Recover the exact 12cb parent before the existing a592/historical chain."""
+        cls.evidence_parent_root = cls.fixture_root / 'pre-evidence-batch-data'
+        shutil.copytree(cls.original_root, cls.evidence_parent_root)
+        data_root = cls.evidence_parent_root / 'data'
+        current = {name: json.loads((data_root / name).read_bytes())
+                   for name in PRE_EVIDENCE_BATCH_DATA_SHA256}
+        for name, value in recover_pre_evidence_batch_catalogs(current).items():
+            (data_root / name).write_bytes((json.dumps(value, ensure_ascii=False,
+                indent=2, allow_nan=False) + '\n').encode('utf-8'))
+        cls.evidence_parent_pin = registry.canonical(manifest(cls.evidence_parent_root))
+        if sha256(cls.evidence_parent_pin).hexdigest() != PRE_EVIDENCE_BATCH_PIN_SHA256:
+            raise AssertionError('Recovered pre-evidence-batch complete pin bytes differ')
+        cls.evidence_parent_query_root = cls.fixture_root / 'pre-evidence-batch-query'
+        (cls.evidence_parent_query_root / 'pins').mkdir(parents=True)
+        (cls.evidence_parent_query_root / 'pins/legacy_baseline.json').write_bytes(cls.evidence_parent_pin)
         cls.integrated_root = cls.fixture_root / 'a592-data'
-        shutil.copytree(cls.original_root, cls.integrated_root)
+        shutil.copytree(cls.evidence_parent_root, cls.integrated_root)
         data_root = cls.integrated_root / 'data'
         current = {name: json.loads((data_root / name).read_bytes())
                    for name in A592_DATA_SHA256}
@@ -414,6 +485,52 @@ class BaselineCompatibility(unittest.TestCase):
         changed['materials.json']['identities'][0]['name'] += ' unreviewed'
         with self.assertRaisesRegex(AssertionError, 'Recovered a592 catalog bytes differ'):
             recover_a592_catalogs(changed)
+
+    def test_evidence_batch_parent_manifest_and_catalog_recovery_remain_exact(self):
+        expected = dict(self.expected)
+        expected.update({'data/' + name: digest for name, digest in PRE_EVIDENCE_BATCH_DATA_SHA256.items()})
+        self.assertEqual(len(manifest(self.evidence_parent_root)), 64)
+        self.assertEqual(manifest(self.evidence_parent_root), expected)
+        current = {name: json.loads((self.current_root / 'data' / name).read_bytes())
+                   for name in PRE_EVIDENCE_BATCH_DATA_SHA256}
+        parent = {name: json.loads((self.evidence_parent_root / 'data' / name).read_bytes())
+                  for name in PRE_EVIDENCE_BATCH_DATA_SHA256}
+        self.assertEqual(recover_pre_evidence_batch_catalogs(current), parent)
+        self.assertEqual(recover_pre_evidence_batch_catalogs(parent), parent)
+        appended = evidence_batch_catalogs()
+        for filename, section, collection in EVIDENCE_BATCH_COLLECTIONS:
+            candidate = appended[section][collection][0]
+            for mutation in ('missing', 'changed', 'duplicate'):
+                with self.subTest(collection=(filename, collection), mutation=mutation):
+                    changed = deepcopy(current)
+                    rows = changed[filename][collection]
+                    row = next(row for row in rows if row['id'] == candidate['id'])
+                    if mutation == 'missing':
+                        rows.remove(row)
+                    elif mutation == 'changed':
+                        row['version'] = 'unreviewed'
+                    else:
+                        rows.append(deepcopy(row))
+                    with self.assertRaisesRegex(AssertionError, 'Evidence batch'):
+                        recover_pre_evidence_batch_catalogs(changed)
+        changed = deepcopy(current)
+        changed['materials.json']['identities'][0]['name'] += ' unreviewed'
+        with self.assertRaisesRegex(AssertionError, 'Recovered pre-evidence-batch catalog bytes differ'):
+            recover_pre_evidence_batch_catalogs(changed)
+        original_read = Path.read_bytes
+        def replaced_packet(path):
+            return original_read(path) + (b' ' if path == EVIDENCE_BATCH_PACKET else b'')
+        with patch.object(Path, 'read_bytes', replaced_packet), self.assertRaisesRegex(
+                AssertionError, 'Evidence batch packet bytes differ'):
+            recover_pre_evidence_batch_catalogs(current)
+        with self.resources(self.evidence_parent_root, self.evidence_parent_query_root):
+            with self.assertRaisesRegex(ValueError, 'Baseline pin was replaced'):
+                registry.baseline_digest()
+            with patch.object(registry, 'BASELINE_PIN', PRE_EVIDENCE_BATCH_PIN_SHA256):
+                self.assertEqual(registry.baseline_digest(), PRE_EVIDENCE_BATCH_PIN_SHA256)
+        with self.resources(self.evidence_parent_root), self.assertRaisesRegex(
+                ValueError, 'Installed legacy baseline differs'):
+            registry.baseline_digest()
 
     def test_a592_pin_cannot_replace_current_anchor(self):
         self.assertNotEqual(CURRENT_PIN_SHA256, INTEGRATED_PIN_SHA256)

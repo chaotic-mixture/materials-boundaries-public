@@ -15,7 +15,8 @@ PREVIOUS_BASELINE = 'c03c48c4b0b2196ba77ea439df01d5a5e8191925bbfafaa63ab1212aa2d
 EAF_BASELINE = '8da7a2000110021ad0a20b2a83dc1b02420a0bf9e3d1b68eb71b70f127965efe'
 NC2_BASELINE = 'a38937d66a5d6c8f99eae6c05747e60a90f7647a737a1dc4d1cebc983fafcca3'
 INTEGRATED_BASELINE = 'f1a1e3e379f9b7befba595b54477f15a26364548798b28dd65be8bc4326c0df4'
-NEW_BASELINE = '3782f403f120f22b5287e01f4e207419e2f576a28dfda33a89a85580b936c0f6'
+PRE_EVIDENCE_BATCH_BASELINE = '3782f403f120f22b5287e01f4e207419e2f576a28dfda33a89a85580b936c0f6'
+NEW_BASELINE = '8fda4f7a4355c88f0e4e9e713c01f236a907985b4720454e338d8d95eff4770e'
 
 
 class IntegratedBaselineTests(unittest.TestCase):
@@ -26,6 +27,7 @@ class IntegratedBaselineTests(unittest.TestCase):
         self.assertNotEqual(NEW_BASELINE, EAF_BASELINE)
         self.assertNotEqual(NEW_BASELINE, NC2_BASELINE)
         self.assertNotEqual(NEW_BASELINE, INTEGRATED_BASELINE)
+        self.assertNotEqual(NEW_BASELINE, PRE_EVIDENCE_BATCH_BASELINE)
 
     def test_windows_paths_use_the_same_manifest_key(self):
         payload = b'synthetic catalog bytes'
@@ -50,7 +52,8 @@ class IntegratedBaselineTests(unittest.TestCase):
         review = {'schema': 'computed-review-recovery/1', 'packet_sha256': '0' * 64,
                   'reviewer': 'Synthetic baseline compatibility test',
                   'rationale': 'No real material admission', 'records': []}
-        for old_baseline in (OLD_BASELINE, PREVIOUS_BASELINE, EAF_BASELINE, NC2_BASELINE, INTEGRATED_BASELINE):
+        for old_baseline in (OLD_BASELINE, PREVIOUS_BASELINE, EAF_BASELINE, NC2_BASELINE,
+                             INTEGRATED_BASELINE, PRE_EVIDENCE_BATCH_BASELINE):
             with self.subTest(old_baseline=old_baseline):
                 with tempfile.TemporaryDirectory() as temporary:
                     database = Path(temporary) / 'old-baseline.db'
