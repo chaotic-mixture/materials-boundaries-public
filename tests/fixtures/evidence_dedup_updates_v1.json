@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "baseline_commit": "a360bd15291f6e197f7b7f97eb8dd9063017f63d",
+  "updates": [
+    {
+      "filename": "docs/MATERIAL_REFERENCE_CATALOG.md",
+      "previous_sha256": "45d6b53caa9e6c54b2a4e2b0818a5f451f68c1cb3986092f9522ff8bf700a2ca",
+      "sha256": "132b5215c3bfc26e7b3831bfefefd37101b4c4081aed01f099b44a559f95d629",
+      "edits": [
+        {
+          "offset": 6288,
+          "before": "",
+          "after": "\nStructural duplicate checks treat recursively normalized evidence as an unordered\nset: repeating a citation, reordering citations or reordering their support tags\ncannot make a cloned identity or state distinct. This affects comparison signatures\nonly; source records retain their original evidence arrays. Other array order and\nmultiplicity are unchanged, and support tags still require unique items.\n"
+        }
+      ]
+    },
+    {
+      "filename": "materials_boundaries/material_references.py",
+      "previous_sha256": "f485759f92bac90a655cbdf9328855c6a863552c258e645e63171dc3a625f82e",
+      "sha256": "c22295a7e8ab4e360201eb57cb6fc13eba7f8b8ac5e419f35fcf42e8aa81a264",
+      "edits": [
+        {
+          "offset": 22498,
+          "before": "    \"\"\"Stable factual signature; evidence/support array ordering is immaterial.\"\"\"\n",
+          "after": "    \"\"\"Stable factual signature; repeated evidence and evidence/support order are immaterial.\"\"\"\n"
+        },
+        {
+          "offset": 22804,
+          "before": "        if field in {\"evidence\", \"supports\"}:\n",
+          "after": "        if field == \"evidence\":\n            unique = {json.dumps(item, sort_keys=True, ensure_ascii=False,\n                                 separators=(\",\", \":\")): item for item in values}\n            return [unique[key] for key in sorted(unique)]\n        if field == \"supports\":\n"
+        }
+      ]
+    },
+    {
+      "filename": "tests/material_bulk_preservation.py",
+      "previous_sha256": "19c340da6daff24910d271b81dec3fc24bd8c5a87bc4b3a7f6514fa7cc289b27",
+      "sha256": "f16b5245a7648975490cee20cac8f56a615e4b2d7bbdf278cd2b546d085b2264",
+      "edits": [
+        {
+          "offset": 459,
+          "before": "",
+          "after": "from evidence_dedup_preservation import ALLOWED_PATHS as DEDUP_PATHS, pre_evidence_dedup_bytes\n"
+        },
+        {
+          "offset": 18420,
+          "before": "",
+          "after": "    if filename in DEDUP_PATHS and digest(current) != expected:\n        current = pre_evidence_dedup_bytes(filename, current)\n"
+        }
+      ]
+    },
+    {
+      "filename": "tests/test_material_bulk_preservation.py",
+      "previous_sha256": "4d7edef717edfce39b222f175c5c5a33c349b871e1dd052a84b8d0caef4327f3",
+      "sha256": "ea9305577f28407ad94fde2474326d6b9d222a8f51b828b03e65e29dfac0eb59",
+      "edits": [
+        {
+          "offset": 478,
+          "before": "",
+          "after": "from evidence_dedup_preservation import pre_evidence_dedup_bytes\n"
+        },
+        {
+          "offset": 1749,
+          "before": "            self.assertEqual(history.digest((ROOT / filename).read_bytes()), expected)\n",
+          "after": "            raw = (ROOT / filename).read_bytes()\n            if filename == 'tests/material_bulk_preservation.py':\n                raw = pre_evidence_dedup_bytes(filename, raw)\n            self.assertEqual(history.digest(raw), expected)\n"
+        }
+      ]
+    },
+    {
+      "filename": "tests/test_material_reference_contract.py",
+      "previous_sha256": "87f2cb629b0c23126b18f1f68da652b165ea6e27ce250b4d327589a3c5f98252",
+      "sha256": "88aa39d138977d9bd5a6da0266e6b8110a03830292a4f8cd9547f4fcc24fd960",
+      "edits": [
+        {
+          "offset": 214,
+          "before": "    _MATERIALS_SCHEMA, _PROPERTIES_SCHEMA, material_coverage, resolve_material,\n    validate_material_catalog,\n",
+          "after": "    _MATERIALS_SCHEMA, _PROPERTIES_SCHEMA, _structural_signature, material_coverage,\n    material_quota_coverage, resolve_material, validate_material_catalog,\n"
+        },
+        {
+          "offset": 26647,
+          "before": "",
+          "after": "    def test_duplicate_or_reordered_identity_evidence_cannot_meet_quota(self):\n        for variant in (\"duplicate\", \"reordered\", \"duplicate_reordered_supports\"):\n            with self.subTest(variant=variant):\n                m, p, s = synthetic_material_catalog()\n                evidence = m[\"identities\"][0][\"evidence\"]\n                evidence[0][\"supports\"].append(\"classification\")\n                second = deepcopy(evidence[0])\n                second[\"locator\"] = \"Synthetic table 2, same SYN-A identity\"\n                evidence.append(second)\n                before = deepcopy((m, p, s))\n                quota = material_quota_coverage(m, p, s, target=2)\n                self.assertEqual(quota[\"classes\"][\"metal\"][\"admitted_unique_identity_count\"], 1)\n                self.assertFalse(quota[\"classes\"][\"metal\"][\"target_met\"])\n                self.assertEqual((m, p, s), before)\n\n                identity = deepcopy(m[\"identities\"][0]); identity[\"id\"] = \"mat_clone\"\n                grade = deepcopy(m[\"grades\"][0]); grade.update(id=\"grade_clone\", identity_id=identity[\"id\"])\n                state = deepcopy(m[\"records\"][0]); state.update(id=\"state_clone\", identity_id=identity[\"id\"], grade_id=grade[\"id\"], property_ids=[\"refprop_clone\"])\n                prop = deepcopy(p[\"records\"][0]); prop.update(id=\"refprop_clone\", material_state_id=state[\"id\"])\n                if variant == \"reordered\":\n                    identity[\"evidence\"].reverse()\n                    for item in identity[\"evidence\"]:\n                        item[\"supports\"].reverse()\n                else:\n                    duplicate = deepcopy(identity[\"evidence\"][0])\n                    if variant == \"duplicate_reordered_supports\":\n                        duplicate[\"supports\"].reverse()\n                    identity[\"evidence\"].append(duplicate)\n                self.assertNotEqual(identity[\"evidence\"], evidence)\n                m[\"identities\"].append(identity); m[\"grades\"].append(grade)\n                m[\"records\"].append(state); p[\"records\"].append(prop)\n                before = deepcopy((m, p, s))\n                calls = (\n                    (validate_material_catalog, (m, p, s)),\n                    (material_coverage, (m, p)),\n                    (material_quota_coverage, (m, p, s, 2)),\n                )\n                for operation, args in calls:\n                    with self.subTest(operation=operation.__name__):\n                        self.assertRaisesRegex(ValueError, \"duplicate structural identity\", operation, *args)\n                        self.assertEqual((m, p, s), before)\n\n    def test_duplicate_state_evidence_is_rejected_at_top_and_nested_paths(self):\n        for nested in (False, True):\n            with self.subTest(nested=nested):\n                m, p, s = synthetic_material_catalog()\n                original = m[\"records\"][0]\n                if nested:\n                    original[\"state\"][\"processing\"] = {\n                        \"status\": \"reported\", \"text\": \"Cold worked\",\n                        \"evidence\": deepcopy(original[\"evidence\"]), \"notes\": None}\n                    original[\"state\"][\"processing\"][\"evidence\"][0][\"supports\"].append(\"classification\")\n                validate_material_catalog(m, p, s)\n                state = deepcopy(original); state.update(id=\"state_clone\", property_ids=[\"refprop_clone\"])\n                prop = deepcopy(p[\"records\"][0]); prop.update(id=\"refprop_clone\", material_state_id=state[\"id\"])\n                evidence = state[\"state\"][\"processing\"][\"evidence\"] if nested else state[\"evidence\"]\n                duplicate = deepcopy(evidence[0]); duplicate[\"supports\"].reverse()\n                evidence.append(duplicate)\n                m[\"records\"].append(state); p[\"records\"].append(prop)\n                before = deepcopy((m, p, s))\n                for operation, args in (\n                    (validate_material_catalog, (m, p, s)),\n                    (material_coverage, (m, p)),\n                    (material_quota_coverage, (m, p, s, 2)),\n                ):\n                    with self.subTest(operation=operation.__name__):\n                        self.assertRaisesRegex(ValueError, \"duplicate structural state\", operation, *args)\n                        self.assertEqual((m, p, s), before)\n\n    def test_signature_preserves_non_evidence_array_order_and_multiplicity(self):\n        # Evidence repetition is immaterial, but ordered protocol steps are not.\n        value = {\"evidence\": [{\"supports\": [\"state\", \"classification\"]}],\n                 \"protocol_steps\": [\"heat\", \"cool\", \"cool\"]}\n        repeated = deepcopy(value)\n        duplicate = deepcopy(repeated[\"evidence\"][0]); duplicate[\"supports\"].reverse()\n        repeated[\"evidence\"].append(duplicate)\n        before = deepcopy(repeated)\n        self.assertEqual(_structural_signature(value), _structural_signature(repeated))\n        for steps in ([\"cool\", \"heat\", \"cool\"], [\"heat\", \"cool\"]):\n            reordered = deepcopy(value); reordered[\"protocol_steps\"] = steps\n            self.assertNotEqual(_structural_signature(value), _structural_signature(reordered))\n        duplicate_support = deepcopy(value)\n        duplicate_support[\"evidence\"][0][\"supports\"].append(\"state\")\n        self.assertNotEqual(_structural_signature(value), _structural_signature(duplicate_support))\n        self.assertEqual(repeated, before)\n\n"
+        },
+        {
+          "offset": 28511,
+          "before": "",
+          "after": "        for record in m[\"identities\"]:\n            record[\"evidence\"].append(deepcopy(record[\"evidence\"][0]))\n        before = deepcopy((m, p, s))\n"
+        },
+        {
+          "offset": 28634,
+          "before": "",
+          "after": "        self.assertTrue(material_quota_coverage(m, p, s, target=2)[\"classes\"][\"metal\"][\"target_met\"])\n        resolved = resolve_material(state[\"id\"], m, p, s)\n        self.assertEqual(resolved[\"identity\"][\"evidence\"], identity[\"evidence\"])\n        self.assertEqual(len(resolved[\"identity\"][\"evidence\"]), 2)\n        self.assertEqual((m, p, s), before)\n"
+        }
+      ]
+    }
+  ]
+}

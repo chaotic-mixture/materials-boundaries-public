@@ -238,6 +238,13 @@ class MaterialBatchRuntimeTests(unittest.TestCase):
                     with fixture_reads(graph), patch("materials_boundaries.material_references.validate_material_catalog",
                             wraps=validate_material_catalog) as validate:
                         render_material_catalog(graph[index], kind)
+                    self.assertEqual(validate.call_count, 1)
+                    changed = deepcopy(graph[index])
+                    scope = "source_scope" if kind == "materials" else "scope_note"
+                    changed["records"][0][scope] += " Revised synthetic presentation scope."
+                    with fixture_reads(graph), patch("materials_boundaries.material_references.validate_material_catalog",
+                            wraps=validate_material_catalog) as validate:
+                        render_material_catalog(changed, kind)
                     self.assertEqual(validate.call_count, 2)
 
     def test_render_rechecks_mutation_after_a_successful_call(self):

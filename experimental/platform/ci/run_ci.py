@@ -43,6 +43,8 @@ def main():
             ROOT / 'federation', ROOT / 'query-service', ROOT / 'lifecycle', ROOT, cwd=work, env=env)
         run(python, '-m', 'pip', 'install', '--no-deps', '--only-binary=:all:', 'pip==26.2.1', cwd=work, env=env)
         run(python, '-m', 'pip', 'install', '--no-deps', '--only-binary=:all:', '-r', ROOT / 'requirements-lock.txt', cwd=work, env=env)
+        # Checkout-only projection QA; these are not product runtime dependencies.
+        run(python, '-m', 'pip', 'install', '--no-deps', '--only-binary=:all:', '-r', CI / 'projection-requirements.txt', cwd=work, env=env)
         local_wheels = sorted(wheels.glob('*.whl'))
         if len(local_wheels) != 4:
             raise RuntimeError('Expected exactly four local package wheels')
@@ -51,7 +53,9 @@ def main():
         env['PYTHONPATH'] = str(CI)  # Only the offline guard, never package source roots.
         checker = CI / 'check_offline.py'
         run(python, checker, 'wheels', '--wheel-dir', wheels, cwd=work, env=env)
-        for stage in ('provider-fixtures', 'api-fixtures', 'lifecycle', 'linked-integration', 'nomad-ingestion', 'installed-smoke'):
+        # Each stage gets a separate process; checkout-only projection imports
+        # cannot affect the following installed-wheel smoke's module origins.
+        for stage in ('provider-fixtures', 'api-fixtures', 'lifecycle', 'linked-integration', 'nomad-ingestion', 'hbn-projection', 'installed-smoke'):
             run(python, checker, stage, cwd=work, env=env)
     print('Experimental platform CI passed; live integrations and publication were not run.', flush=True)
 

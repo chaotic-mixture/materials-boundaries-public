@@ -8,10 +8,11 @@ from pathlib import Path
 import sqlite3
 import tempfile
 import unittest
+from unittest.mock import patch
 from fastapi.testclient import TestClient
 from materials_query.app import create_app
 from materials_query.computed_registry import ComputedRegistry, digest, validate_review
-from materials_query.computed_schema_v2 import COUNT_POLICY, reduced_composition, composition_bucket
+from materials_query.computed_schema_v2 import COUNT_POLICY, reduced_composition, composition_bucket, validate_review_v2
 
 INPUT = b'Synthetic metadata only; not a scientific source packet.\n'
 
@@ -98,15 +99,81 @@ class RichRegistryTests(unittest.TestCase):
         a=self.review['records'][0];b=deepcopy(a)
         b.update(candidate_id='synthetic2',provider_material_id='model2',project_material_id='computed:nomad:model2',provider_entry_id='entry3',source_url='https://nomad-lab.eu/prod/v1/gui/entry/id/entry3')
         b['material_scope']['provider_material_id']='model2'
+        b['material_scope']['space_group_number_provider_reported']=225
+        b['provenance']['mainfile']='synthetic/alternate'
         for r in (a,b):
             rel=r['overlap_relations'];rel['same_composition_rows_current_OQMD']=3
             rel['same_composition_provider_groups']['model2']=['entry3']
-            rel['group_details'].append({'provider_material_id':'model2','entry_count':1,'selected_group':False,'space_groups':[227],'mainfiles':['synthetic/alternate']})
+            rel['group_details'].append({'provider_material_id':'model2','entry_count':1,'selected_group':False,'space_groups':[225],'mainfiles':['synthetic/alternate']})
             for g in rel['group_details']:g['selected_group']=g['provider_material_id']==r['provider_material_id']
         self.review['records'].append(b)
         s=self.registry().admit(['synthetic1','synthetic2'])
         self.assertEqual(s['scoped_accepted_identity_bucket_count'],1)
         self.assertEqual((s['selected_entry_count'],s['selected_model_count'],s['related_source_calculation_count'],s['related_source_provider_group_count']),(2,2,3,2))
+
+    def test_selected_group_requires_reported_symmetry_membership(self):
+        for path, value in [(('overlap_relations','group_details',0,'space_groups'), [225]),
+                            (('material_scope','space_group_number_provider_reported'), 225)]:
+            review=deepcopy(self.review); target=review['records'][0]
+            for key in path[:-1]:target=target[key]
+            target[path[-1]]=value
+            self.assertTrue(review['records'][0]['checks']['source_symmetry_exact_match'])
+            with self.subTest(path=path),self.assertRaisesRegex(ValueError, 'Selected group symmetry mismatch'):
+                validate_review_v2(review)
+
+    def test_selected_group_requires_source_mainfile_membership(self):
+        for path, value in [(('overlap_relations','group_details',0,'mainfiles'), ['synthetic/alternate']),
+                            (('provenance','mainfile'), 'synthetic/alternate')]:
+            review=deepcopy(self.review); target=review['records'][0]
+            for key in path[:-1]:target=target[key]
+            target[path[-1]]=value
+            self.assertTrue(review['records'][0]['checks']['source_mainfile_exact_match'])
+            with self.subTest(path=path),self.assertRaisesRegex(ValueError, 'Selected group mainfile mismatch'):
+                validate_review_v2(review)
+
+    def test_selected_group_membership_allows_additional_sources_and_symmetries(self):
+        group=self.review['records'][0]['overlap_relations']['group_details'][0]
+        group['space_groups']=[225,227]
+        group['mainfiles']=['synthetic/alternate','synthetic/OUTCAR']
+        validate_review_v2(self.review)
+        snapshot=self.registry().admit(['synthetic1'])
+        self.assertEqual(snapshot['records'], self.review['records'])
+        self.assertEqual(snapshot['scoped_accepted_identity_bucket_count'], 1)
+
+    def test_nonselected_group_cannot_supply_selected_source_membership(self):
+        for field, value, message in [('space_groups',[225],'Selected group symmetry mismatch'),
+                                     ('mainfiles',['synthetic/alternate'],'Selected group mainfile mismatch')]:
+            review=deepcopy(self.review)
+            relations=review['records'][0]['overlap_relations']
+            relations['same_composition_rows_current_OQMD']=3
+            relations['same_composition_provider_groups']['model2']=['entry3']
+            other=deepcopy(relations['group_details'][0])
+            other.update(provider_material_id='model2',entry_count=1,selected_group=False)
+            relations['group_details'][0][field]=value
+            relations['group_details'].insert(0,other)
+            with self.subTest(field=field),self.assertRaisesRegex(ValueError, message):
+                validate_review_v2(review)
+
+    def test_incomplete_overlap_query_flag_remains_supported(self):
+        self.review['records'][0]['overlap_relations']['query_complete']=False
+        validate_review_v2(self.review)
+
+    def test_selected_group_conflicts_fail_before_registry_persistence(self):
+        existing=self.registry(); existing.admit(['synthetic1'])
+        original_bytes=self.path.read_bytes()
+        for field, value, message in [('space_groups',[225],'Selected group symmetry mismatch'),
+                                     ('mainfiles',['synthetic/alternate'],'Selected group mainfile mismatch')]:
+            review=deepcopy(self.review)
+            review['records'][0]['overlap_relations']['group_details'][0][field]=value
+            new_path=Path(self.temp.name)/(field+'.db')
+            for path in (new_path,self.path):
+                with self.subTest(field=field,existing=path==self.path):
+                    with patch.object(ComputedRegistry, '_connect') as connection:
+                        with self.assertRaisesRegex(ValueError, message):
+                            self.registry(review,path=path)
+                        connection.assert_not_called()
+                    self.assertFalse(new_path.exists())
+                    self.assertEqual(self.path.read_bytes(), original_bytes)
 
     def test_atomic_replay_concurrency(self):
         r=self.registry()

@@ -12,6 +12,8 @@ import unittest
 from unittest.mock import patch
 
 import material_bulk_preservation as history
+from evidence_dedup_preservation import pre_evidence_dedup_bytes
+from presentation_fast_path_preservation import pre_presentation_fast_path_bytes
 from materials_boundaries.catalog import read_catalog
 from materials_boundaries import material_references as references
 
@@ -37,7 +39,11 @@ class MaterialBulkPreservationTests(unittest.TestCase):
         for filename, expected in ((history.LEDGER_PATH, LEDGER_SHA256),
                                    ('tests/material_bulk_preservation.py', HELPER_SHA256),
                                    (history.ADMISSION_PATH, ADMISSION_SHA256)):
-            self.assertEqual(history.digest((ROOT / filename).read_bytes()), expected)
+            raw = (ROOT / filename).read_bytes()
+            if filename == 'tests/material_bulk_preservation.py':
+                raw = pre_presentation_fast_path_bytes(filename, raw)
+                raw = pre_evidence_dedup_bytes(filename, raw)
+            self.assertEqual(history.digest(raw), expected)
         ledger = history.load_ledger()
         history.validate_ledger(ledger)
         self.assertEqual(ledger['baseline_commit'], '7e37be919ee97f1275249dcf745f9f55e951986a')

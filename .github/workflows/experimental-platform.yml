@@ -2,7 +2,7 @@ name: experimental-platform-offline
 
 on:
   push:
-    branches: ['experimental/platform-integration', 'experiment/material-growth-nbs-integrated', 'experiment/material-growth-incremental-20261016']
+    branches: ['experimental/platform-integration', 'experiment/nomad-incremental-review', 'experiment/reviewed-subset-audit', 'experiment/evidence-signature-dedup', 'experiment/presentation-exact-subset-local', 'experiment/nomad-evidence-diff-local', 'experiment/formal-overlap-audit-local', 'experiment/hbn-relationship-projection', 'experiment/material-growth-nbs-integrated', 'experiment/material-growth-incremental-20261016', 'experiment/materials-integration-20261019']
     paths:
       - 'experimental/platform/**'
       - 'formal-catalog/**'
@@ -12,7 +12,7 @@ on:
       - 'THIRD_PARTY_NOTICES.md'
       - '.github/workflows/experimental-platform.yml'
   pull_request:
-    branches: ['experimental/platform-integration', 'experiment/material-growth-nbs-integrated', 'experiment/material-growth-incremental-20261016']
+    branches: ['experimental/platform-integration', 'experiment/nomad-incremental-review', 'experiment/reviewed-subset-audit', 'experiment/evidence-signature-dedup', 'experiment/hbn-relationship-projection', 'experiment/material-growth-nbs-integrated', 'experiment/material-growth-incremental-20261016', 'experiment/materials-integration-20261019']
     paths:
       - 'experimental/platform/**'
       - 'formal-catalog/**'
@@ -28,7 +28,7 @@ permissions:
 
 jobs:
   offline-fixtures-and-wheels:
-    if: github.event_name != 'workflow_dispatch' || github.ref == 'refs/heads/experimental/platform-integration' || github.ref == 'refs/heads/experiment/material-growth-nbs-integrated' || github.ref == 'refs/heads/experiment/material-growth-incremental-20261016'
+    if: github.event_name != 'workflow_dispatch' || github.ref == 'refs/heads/experimental/platform-integration' || github.ref == 'refs/heads/experiment/nomad-incremental-review' || github.ref == 'refs/heads/experiment/reviewed-subset-audit' || github.ref == 'refs/heads/experiment/evidence-signature-dedup' || github.ref == 'refs/heads/experiment/hbn-relationship-projection' || github.ref == 'refs/heads/experiment/material-growth-nbs-integrated' || github.ref == 'refs/heads/experiment/material-growth-incremental-20261016' || github.ref == 'refs/heads/experiment/materials-integration-20261019'
     name: Offline fixtures and wheels (Python ${{ matrix.python-version }})
     runs-on: ubuntu-24.04
     timeout-minutes: 20
@@ -54,7 +54,7 @@ jobs:
         run: python experimental/platform/ci/run_ci.py
 
   optional-core-catalog:
-    if: github.event_name != 'workflow_dispatch' || github.ref == 'refs/heads/experimental/platform-integration' || github.ref == 'refs/heads/experiment/material-growth-nbs-integrated' || github.ref == 'refs/heads/experiment/material-growth-incremental-20261016'
+    if: github.event_name != 'workflow_dispatch' || github.ref == 'refs/heads/experimental/platform-integration' || github.ref == 'refs/heads/experiment/nomad-incremental-review' || github.ref == 'refs/heads/experiment/reviewed-subset-audit' || github.ref == 'refs/heads/experiment/evidence-signature-dedup' || github.ref == 'refs/heads/experiment/hbn-relationship-projection' || github.ref == 'refs/heads/experiment/material-growth-nbs-integrated' || github.ref == 'refs/heads/experiment/material-growth-incremental-20261016' || github.ref == 'refs/heads/experiment/materials-integration-20261019'
     name: Optional installed-core catalog (Python ${{ matrix.python-version }})
     runs-on: ubuntu-24.04
     timeout-minutes: 20

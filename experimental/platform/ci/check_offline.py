@@ -20,10 +20,11 @@ PACKAGES = {
 }
 SUITES = {
     'provider-fixtures': ('federation/tests', 19),
-    'api-fixtures': ('query-service/tests', 21),
+    'api-fixtures': ('query-service/tests', 37),
     'lifecycle': ('lifecycle/tests', 25),
     'linked-integration': ('tests', 18),
-    'nomad-ingestion': ('ingestion', 25),
+    'nomad-ingestion': ('ingestion', 106),
+    'hbn-projection': ('relationships', 14),  # Checkout-only; isolated from installed smoke.
 }
 
 
@@ -51,15 +52,43 @@ def check_wheels(directory):
         print('License/notice bytes and metadata verified:', matches[0].name, flush=True)
 
 
-def run_suite(name):
-    relative, minimum = SUITES[name]
-    suite = unittest.TestLoader().discover(str(ROOT / relative), pattern='test*.py')
-    count = suite.countTestCases()
+def test_ids(suite):
+    for test in suite:
+        if isinstance(test, unittest.TestSuite):
+            yield from test_ids(test)
+        else:
+            yield test.id()
+
+
+def discover_suite(name, directory, minimum):
+    loader = unittest.TestLoader()
+    suite = loader.discover(str(directory), pattern='test*.py')
+    require(not loader.errors, name + ': discovery errors: ' + '\n'.join(loader.errors))
+    ids = list(test_ids(suite))
+    count = len(ids)
+    require(count == len(set(ids)), name + ': duplicate discovered test IDs')
     require(count >= minimum, f'{name}: expected at least {minimum} tests, found {count}')
+    inventory = json.loads((Path(__file__).with_name('required_test_ids.json')).read_text(encoding='utf-8'))
+    required_ids = inventory[name] if name in ('nomad-ingestion', 'local-catalog', 'hbn-projection') else []
+    missing = sorted(set(required_ids) - set(ids))
+    require(not missing, name + ': missing required test IDs: ' + ', '.join(missing))
+    print('DISCOVERED ' + json.dumps({'suite': name, 'count': count, 'test_ids': ids}, sort_keys=True), flush=True)
+    return suite
+
+
+def run_discovered_suite(name, directory, minimum):
+    suite = discover_suite(name, directory, minimum)
+    count = suite.countTestCases()
     result = unittest.TextTestRunner(verbosity=2).run(suite)
+    require(result.testsRun == count, name + ': not every discovered test ran')
     require(result.wasSuccessful() and not result.skipped and not result.expectedFailures,
             name + ': failures, errors, skips or expected failures are not a full pass')
     print(f'OFFLINE {name}: {count} tests passed (minimum {minimum})', flush=True)
+
+
+def run_suite(name):
+    relative, minimum = SUITES[name]
+    run_discovered_suite(name, ROOT / relative, minimum)
 
 
 def run_cli(command, *args):

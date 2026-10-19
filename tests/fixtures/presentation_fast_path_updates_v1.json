@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "baseline_commit": "73f3b0b56f764736e1d4368d0da8fabf1cdf9c7b",
+  "updates": [
+    {
+      "filename": "materials_boundaries/material_presentation.py",
+      "previous_sha256": "55de108d53fea5ac74dbaad21807a8ff38247d534410d6513173664c56c7610c",
+      "sha256": "d4a74cbf65db1f457b8df0e77ae56fa25379b3c5ff09fefb4a1e823cb9685050",
+      "edits": [
+        {
+          "offset": 120,
+          "before": "",
+          "after": "import math\n"
+        },
+        {
+          "offset": 5047,
+          "before": "",
+          "after": "def _same_json_value(left, right, depth=0):\n    \"\"\"Conservatively recognize unchanged plain JSON without coercing types.\"\"\"\n    if depth > 64 or type(left) is not type(right):\n        return False\n    if type(left) is dict:\n        if (any(type(key) is not str for key in left)\n                or any(type(key) is not str for key in right)\n                or tuple(left) != tuple(right)):\n            return False\n        return all(_same_json_value(left[key], right[key], depth + 1) for key in left)\n    if type(left) is list:\n        return len(left) == len(right) and all(\n            _same_json_value(a, b, depth + 1) for a, b in zip(left, right))\n    if type(left) is float:\n        return math.isfinite(left) and math.isfinite(right) and left.hex() == right.hex()\n    if type(left) in (str, int, bool, type(None)):\n        return left == right\n    return False\n\n\n"
+        },
+        {
+          "offset": 5202,
+          "before": "    Incoming records replace records of the same ID. The resulting entire\n    graph is validated again, so display cannot bypass semantic protections.\n",
+          "after": "    Incoming records replace records of the same ID. Changed or uncertain\n    inputs require full graph validation again. An exact unchanged subset\n    reuses only the complete graph freshly read and validated in this call.\n"
+        },
+        {
+          "offset": 6034,
+          "before": "    target = deepcopy(materials if kind == \"materials\" else properties)\n",
+          "after": "    original = materials if kind == \"materials\" else properties\n"
+        },
+        {
+          "offset": 6666,
+          "before": "",
+          "after": "\n    unchanged = (type(catalog) is dict and type(catalog[\"schema_version\"]) is str\n                 and all(type(key) is str for key in catalog))\n    for key in keys - {\"schema_version\"}:\n        incoming = catalog[key]\n        if type(incoming) is not list:\n            unchanged = False\n            continue\n        index = {item[\"id\"]: (position, item) for position, item in enumerate(original[key])}\n        previous_position = -1\n        for item in incoming:\n            if (type(item) is not dict or type(item[\"id\"]) is not str\n                    or item[\"id\"] not in index):\n                unchanged = False\n                break\n            position, original_item = index[item[\"id\"]]\n            if position <= previous_position or not _same_json_value(item, original_item):\n                unchanged = False\n                break\n            previous_position = position\n    if unchanged:\n        return materials, properties, sources\n\n    target = deepcopy(original)\n    for key in keys - {\"schema_version\"}:\n        incoming = catalog[key]\n"
+        }
+      ]
+    },
+    {
+      "filename": "tests/material_bulk_preservation.py",
+      "previous_sha256": "f16b5245a7648975490cee20cac8f56a615e4b2d7bbdf278cd2b546d085b2264",
+      "sha256": "e0578211864d426a96121cee180514b1ece162fe780178ac3737a97b10fd8c1e",
+      "edits": [
+        {
+          "offset": 554,
+          "before": "",
+          "after": "from presentation_fast_path_preservation import ALLOWED_PATHS as PRESENTATION_PATHS, pre_presentation_fast_path_bytes\n"
+        },
+        {
+          "offset": 18515,
+          "before": "",
+          "after": "    if filename in PRESENTATION_PATHS and digest(current) != expected:\n        current = pre_presentation_fast_path_bytes(filename, current)\n"
+        }
+      ]
+    },
+    {
+      "filename": "tests/test_material_bulk_preservation.py",
+      "previous_sha256": "ea9305577f28407ad94fde2474326d6b9d222a8f51b828b03e65e29dfac0eb59",
+      "sha256": "a48aec0b22d64004705e3d6bdc4a68dce3e1eb481b3d8e177ae43039b41f7848",
+      "edits": [
+        {
+          "offset": 543,
+          "before": "",
+          "after": "from presentation_fast_path_preservation import pre_presentation_fast_path_bytes\n"
+        },
+        {
+          "offset": 1929,
+          "before": "",
+          "after": "                raw = pre_presentation_fast_path_bytes(filename, raw)\n"
+        }
+      ]
+    },
+    {
+      "filename": "tests/test_evidence_dedup_preservation.py",
+      "previous_sha256": "2788ecc21f172ceb553fad47f61c6d39a78173547f0a210c3b04bf15dafe614e",
+      "sha256": "bb3ac86bccccb0174d4cef7243dc9fa93a7adeca5b31da4fdd79cdf5cac92210",
+      "edits": [
+        {
+          "offset": 285,
+          "before": "",
+          "after": "from presentation_fast_path_preservation import ALLOWED_PATHS as PRESENTATION_PATHS, pre_presentation_fast_path_bytes\n"
+        },
+        {
+          "offset": 1104,
+          "before": "",
+          "after": "                if name in PRESENTATION_PATHS:\n                    current = pre_presentation_fast_path_bytes(name, current)\n"
+        },
+        {
+          "offset": 2272,
+          "before": "",
+          "after": "            if name in PRESENTATION_PATHS:\n                current = pre_presentation_fast_path_bytes(name, current)\n"
+        }
+      ]
+    }
+  ]
+}

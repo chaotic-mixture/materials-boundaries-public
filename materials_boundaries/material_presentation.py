@@ -1,6 +1,7 @@
 """Presentation-only, source-preserving views for the reference-material lane."""
 from copy import deepcopy
 import json
+import math
 
 
 LANGUAGES = ("en", "zh", "ja", "de")
@@ -46,11 +47,32 @@ def material_labels(language: str = "en") -> dict:
     return locales["languages"][language]
 
 
+def _same_json_value(left, right, depth=0):
+    """Conservatively recognize unchanged plain JSON without coercing types."""
+    if depth > 64 or type(left) is not type(right):
+        return False
+    if type(left) is dict:
+        if (any(type(key) is not str for key in left)
+                or any(type(key) is not str for key in right)
+                or tuple(left) != tuple(right)):
+            return False
+        return all(_same_json_value(left[key], right[key], depth + 1) for key in left)
+    if type(left) is list:
+        return len(left) == len(right) and all(
+            _same_json_value(a, b, depth + 1) for a, b in zip(left, right))
+    if type(left) is float:
+        return math.isfinite(left) and math.isfinite(right) and left.hex() == right.hex()
+    if type(left) in (str, int, bool, type(None)):
+        return left == right
+    return False
+
+
 def _resolved_graph(catalog: dict, kind: str) -> tuple[dict, dict, dict]:
     """Resolve a canonical subset against the complete validated offline graph.
 
-    Incoming records replace records of the same ID. The resulting entire
-    graph is validated again, so display cannot bypass semantic protections.
+    Incoming records replace records of the same ID. Changed or uncertain
+    inputs require full graph validation again. An exact unchanged subset
+    reuses only the complete graph freshly read and validated in this call.
     Catalogues remain raw envelopes; resolved objects never become records.
     """
     from .catalog import read_catalog
@@ -64,7 +86,7 @@ def _resolved_graph(catalog: dict, kind: str) -> tuple[dict, dict, dict]:
         keys |= {"identities", "grades"}
     if not isinstance(catalog, dict) or set(catalog) != keys or catalog["schema_version"] != "1.0.0":
         raise ValueError("material presentation: invalid canonical catalogue envelope")
-    target = deepcopy(materials if kind == "materials" else properties)
+    original = materials if kind == "materials" else properties
     for key in keys - {"schema_version"}:
         incoming = catalog[key]
         if not isinstance(incoming, list):
@@ -74,6 +96,32 @@ def _resolved_graph(catalog: dict, kind: str) -> tuple[dict, dict, dict]:
         identifiers = [item["id"] for item in incoming]
         if len(identifiers) != len(set(identifiers)):
             raise ValueError(f"material presentation: duplicate {key} ID")
+
+    unchanged = (type(catalog) is dict and type(catalog["schema_version"]) is str
+                 and all(type(key) is str for key in catalog))
+    for key in keys - {"schema_version"}:
+        incoming = catalog[key]
+        if type(incoming) is not list:
+            unchanged = False
+            continue
+        index = {item["id"]: (position, item) for position, item in enumerate(original[key])}
+        previous_position = -1
+        for item in incoming:
+            if (type(item) is not dict or type(item["id"]) is not str
+                    or item["id"] not in index):
+                unchanged = False
+                break
+            position, original_item = index[item["id"]]
+            if position <= previous_position or not _same_json_value(item, original_item):
+                unchanged = False
+                break
+            previous_position = position
+    if unchanged:
+        return materials, properties, sources
+
+    target = deepcopy(original)
+    for key in keys - {"schema_version"}:
+        incoming = catalog[key]
         replacements = {item["id"]: item for item in incoming}
         existing = {item["id"] for item in target[key]}
         target[key] = [deepcopy(replacements[item["id"]]) if item["id"] in replacements else item

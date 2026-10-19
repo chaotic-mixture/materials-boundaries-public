@@ -75,7 +75,10 @@ Scientific review must independently approve the normalized artifact.
 V1 remains available with its historical signature and semantics. There is no
 implicit migration or combined registry. A v2 review must use a new database;
 opening a pinned v1 database with v2 (or vice versa), replacing the initial
-review, or changing the installed legacy baseline fails closed. This preserves
+review, or changing the installed legacy baseline outside the
+[exact runtime successors](RECOVERY_CANDIDATE.md#trust-and-integrity-boundaries)
+fails closed. Those successors retain the original logical baseline digest and
+do not rewrite either registry schema or stored anchors. This preserves
 prior admissions rather than reinterpreting them. Re-review a legacy tranche
 explicitly before ever assigning a different count policy to it.
 

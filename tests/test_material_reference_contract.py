@@ -5,8 +5,8 @@ from pathlib import Path
 import unittest
 
 from materials_boundaries.material_references import (
-    _MATERIALS_SCHEMA, _PROPERTIES_SCHEMA, material_coverage, resolve_material,
-    validate_material_catalog,
+    _MATERIALS_SCHEMA, _PROPERTIES_SCHEMA, _structural_signature, material_coverage,
+    material_quota_coverage, resolve_material, validate_material_catalog,
 )
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -364,6 +364,92 @@ class MaterialReferenceContractTests(unittest.TestCase):
         identity["evidence"][0]["supports"].reverse()
         self.assertRaisesRegex(ValueError, "duplicate structural identity", material_coverage, m, p)
 
+    def test_duplicate_or_reordered_identity_evidence_cannot_meet_quota(self):
+        for variant in ("duplicate", "reordered", "duplicate_reordered_supports"):
+            with self.subTest(variant=variant):
+                m, p, s = synthetic_material_catalog()
+                evidence = m["identities"][0]["evidence"]
+                evidence[0]["supports"].append("classification")
+                second = deepcopy(evidence[0])
+                second["locator"] = "Synthetic table 2, same SYN-A identity"
+                evidence.append(second)
+                before = deepcopy((m, p, s))
+                quota = material_quota_coverage(m, p, s, target=2)
+                self.assertEqual(quota["classes"]["metal"]["admitted_unique_identity_count"], 1)
+                self.assertFalse(quota["classes"]["metal"]["target_met"])
+                self.assertEqual((m, p, s), before)
+
+                identity = deepcopy(m["identities"][0]); identity["id"] = "mat_clone"
+                grade = deepcopy(m["grades"][0]); grade.update(id="grade_clone", identity_id=identity["id"])
+                state = deepcopy(m["records"][0]); state.update(id="state_clone", identity_id=identity["id"], grade_id=grade["id"], property_ids=["refprop_clone"])
+                prop = deepcopy(p["records"][0]); prop.update(id="refprop_clone", material_state_id=state["id"])
+                if variant == "reordered":
+                    identity["evidence"].reverse()
+                    for item in identity["evidence"]:
+                        item["supports"].reverse()
+                else:
+                    duplicate = deepcopy(identity["evidence"][0])
+                    if variant == "duplicate_reordered_supports":
+                        duplicate["supports"].reverse()
+                    identity["evidence"].append(duplicate)
+                self.assertNotEqual(identity["evidence"], evidence)
+                m["identities"].append(identity); m["grades"].append(grade)
+                m["records"].append(state); p["records"].append(prop)
+                before = deepcopy((m, p, s))
+                calls = (
+                    (validate_material_catalog, (m, p, s)),
+                    (material_coverage, (m, p)),
+                    (material_quota_coverage, (m, p, s, 2)),
+                )
+                for operation, args in calls:
+                    with self.subTest(operation=operation.__name__):
+                        self.assertRaisesRegex(ValueError, "duplicate structural identity", operation, *args)
+                        self.assertEqual((m, p, s), before)
+
+    def test_duplicate_state_evidence_is_rejected_at_top_and_nested_paths(self):
+        for nested in (False, True):
+            with self.subTest(nested=nested):
+                m, p, s = synthetic_material_catalog()
+                original = m["records"][0]
+                if nested:
+                    original["state"]["processing"] = {
+                        "status": "reported", "text": "Cold worked",
+                        "evidence": deepcopy(original["evidence"]), "notes": None}
+                    original["state"]["processing"]["evidence"][0]["supports"].append("classification")
+                validate_material_catalog(m, p, s)
+                state = deepcopy(original); state.update(id="state_clone", property_ids=["refprop_clone"])
+                prop = deepcopy(p["records"][0]); prop.update(id="refprop_clone", material_state_id=state["id"])
+                evidence = state["state"]["processing"]["evidence"] if nested else state["evidence"]
+                duplicate = deepcopy(evidence[0]); duplicate["supports"].reverse()
+                evidence.append(duplicate)
+                m["records"].append(state); p["records"].append(prop)
+                before = deepcopy((m, p, s))
+                for operation, args in (
+                    (validate_material_catalog, (m, p, s)),
+                    (material_coverage, (m, p)),
+                    (material_quota_coverage, (m, p, s, 2)),
+                ):
+                    with self.subTest(operation=operation.__name__):
+                        self.assertRaisesRegex(ValueError, "duplicate structural state", operation, *args)
+                        self.assertEqual((m, p, s), before)
+
+    def test_signature_preserves_non_evidence_array_order_and_multiplicity(self):
+        # Evidence repetition is immaterial, but ordered protocol steps are not.
+        value = {"evidence": [{"supports": ["state", "classification"]}],
+                 "protocol_steps": ["heat", "cool", "cool"]}
+        repeated = deepcopy(value)
+        duplicate = deepcopy(repeated["evidence"][0]); duplicate["supports"].reverse()
+        repeated["evidence"].append(duplicate)
+        before = deepcopy(repeated)
+        self.assertEqual(_structural_signature(value), _structural_signature(repeated))
+        for steps in (["cool", "heat", "cool"], ["heat", "cool"]):
+            reordered = deepcopy(value); reordered["protocol_steps"] = steps
+            self.assertNotEqual(_structural_signature(value), _structural_signature(reordered))
+        duplicate_support = deepcopy(value)
+        duplicate_support["evidence"][0]["supports"].append("state")
+        self.assertNotEqual(_structural_signature(value), _structural_signature(duplicate_support))
+        self.assertEqual(repeated, before)
+
     def test_exact_grade_and_state_clones_rejected(self):
         for clone_grade in (True, False):
             m, p, s = synthetic_material_catalog()
@@ -387,8 +473,16 @@ class MaterialReferenceContractTests(unittest.TestCase):
         state["source_scope"] = "Fictional formulation B source scope"
         prop = deepcopy(p["records"][0]); prop.update(id="refprop_distinct", material_state_id=state["id"])
         m["identities"].append(identity); m["records"].append(state); p["records"].append(prop)
+        for record in m["identities"]:
+            record["evidence"].append(deepcopy(record["evidence"][0]))
+        before = deepcopy((m, p, s))
         validate_material_catalog(m, p, s)
         self.assertEqual(material_coverage(m, p)["material_identity_count"], 2)
+        self.assertTrue(material_quota_coverage(m, p, s, target=2)["classes"]["metal"]["target_met"])
+        resolved = resolve_material(state["id"], m, p, s)
+        self.assertEqual(resolved["identity"]["evidence"], identity["evidence"])
+        self.assertEqual(len(resolved["identity"]["evidence"]), 2)
+        self.assertEqual((m, p, s), before)
 
     def test_optional_condition_presence_and_order_do_not_create_new_properties(self):
         for populated in (False, True):

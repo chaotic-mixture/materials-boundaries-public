@@ -1,0 +1,198 @@
+{
+  "schema": "hbn-relationship-review/1",
+  "baseline_commit": "d8007feed4dc7b26043d486dc1b390b645bc00f0",
+  "source_observations": [
+    {
+      "source_observation_id": "falin_2017_hbn_monolayer_in_plane_stiffness_2d",
+      "study_id": "falin_et_al_2017_hbn_mechanical_properties",
+      "method_family": "falin_2017_hbn_monolayer_indentation_v1",
+      "quantity": "in_plane_stiffness_2d",
+      "scientific_payload_sha256": "3d410cceb120420eecb93dbec3d545411667146fcceeba5de68a2273660ca179"
+    },
+    {
+      "source_observation_id": "falin_2017_hbn_monolayer_breaking_strength_2d",
+      "study_id": "falin_et_al_2017_hbn_mechanical_properties",
+      "method_family": "falin_2017_hbn_monolayer_indentation_v1",
+      "quantity": "breaking_strength_2d",
+      "scientific_payload_sha256": "3435e2d4dd8b31ffca65e37a96ca7ffeb486afab13bdbd90a7922d8557c92bb6"
+    }
+  ],
+  "existing_edges": [
+    {
+      "id": "rel_12310d1dd1f0579581fb",
+      "sha256": "352b30a86c1418d2b828422c2c1c8efb50d3a1c52afaed7ef1917764256aeab1"
+    },
+    {
+      "id": "rel_bc06fc4aefc24d5edd13",
+      "sha256": "b6002b266929ca642d4be2a5aafe96cfdb53ac375935d0be06fc737ba4eb472d"
+    },
+    {
+      "id": "rel_c0ba0a7d977388e71cc9",
+      "sha256": "e5ac07fc012a4416871a6023d0968ef5981520c9af1b70474264b1bae64d18db"
+    },
+    {
+      "id": "rel_c70a276e31f743546e6e",
+      "sha256": "578070337c9ff492944c7d6312ab529b4902feb36261a855d767b3f7048e7871"
+    },
+    {
+      "id": "rel_cb9987d0619121e84209",
+      "sha256": "855cfab116c9c2aa3ab3b6e02449b25f95da1fa8fd1865be9b5ad85adb87fa25"
+    }
+  ],
+  "bridge_edges": [
+    {
+      "id": "rel_hbn_projection_material_has_state_v1",
+      "subject": "proposal:material:falin_et_al_2017_hbn_mechanical_properties",
+      "subject_revision": 1,
+      "predicate": "has_state",
+      "object": "proposal:state:falin_et_al_2017_hbn_mechanical_properties:1L",
+      "object_revision": 1,
+      "status": "supported",
+      "curation": "proposed",
+      "evidence": [
+        {
+          "source_id": "falin_et_al_2017_hbn_mechanical_properties",
+          "locator": "Results > Preparation and characterization; Figure 1 caption; Methods > Materials and fabrication",
+          "url": "https://www.nature.com/articles/ncomms15815",
+          "verification": "inherited_audit_evidence_not_rechecked_here"
+        }
+      ],
+      "conditions": {
+        "scope": "source suspended monolayer cohort",
+        "layer_count": 1,
+        "dimensionality": 2,
+        "preparation": "Scotch-tape mechanical exfoliation from high-quality hBN single crystals onto prepatterned SiO2/Si",
+        "test_temperature": null,
+        "missing": "test temperature numeric value not assigned; preserve original observation conditions"
+      },
+      "qualifiers": {
+        "review_basis": "Explicit proposed mapping from fixed source-bound observation fields and user-verified primary preparation context; not a preexisting catalog join.",
+        "reviewed_catalog_fields": [
+          "study_id",
+          "material.formula",
+          "material.phase",
+          "material.layer_count",
+          "material.dimensionality",
+          "material.specimen_form"
+        ],
+        "individual_specimen_overlap": "unknown",
+        "evaluation_support": "catalog_only"
+      },
+      "valid_from": null,
+      "valid_to": null,
+      "supersedes": []
+    },
+    {
+      "id": "rel_hbn_projection_cohort_realizes_state_v1",
+      "subject": "proposal:cohort:falin_et_al_2017_hbn_mechanical_properties",
+      "subject_revision": 1,
+      "predicate": "realizes_state",
+      "object": "proposal:state:falin_et_al_2017_hbn_mechanical_properties:1L",
+      "object_revision": 1,
+      "status": "supported",
+      "curation": "proposed",
+      "evidence": [
+        {
+          "source_id": "falin_et_al_2017_hbn_mechanical_properties",
+          "locator": "Results > Preparation and characterization; Figure 1 caption; Methods > Materials and fabrication",
+          "url": "https://www.nature.com/articles/ncomms15815",
+          "verification": "inherited_audit_evidence_not_rechecked_here"
+        },
+        {
+          "source_id": "falin_et_al_2017_hbn_mechanical_properties",
+          "locator": "Results > Elastic modulus and breaking strength, first paragraph associated with Fig. 3 and strength paragraph associated with Fig. 4",
+          "url": "https://www.nature.com/articles/ncomms15815",
+          "verification": "inherited_audit_evidence_not_rechecked_here"
+        }
+      ],
+      "conditions": {
+        "scope": "source suspended monolayer cohort",
+        "layer_count": 1,
+        "dimensionality": 2,
+        "preparation": "Scotch-tape mechanical exfoliation from high-quality hBN single crystals onto prepatterned SiO2/Si",
+        "test_temperature": null,
+        "missing": "test temperature numeric value not assigned; preserve original observation conditions"
+      },
+      "qualifiers": {
+        "review_basis": "Explicit proposed mapping from fixed source-bound observation fields and user-verified primary preparation context; not a preexisting catalog join.",
+        "reviewed_catalog_fields": [
+          "study_id",
+          "material",
+          "sample_metadata.counts.study_monolayer_tested_sheets"
+        ],
+        "individual_specimen_overlap": "unknown",
+        "evaluation_support": "catalog_only"
+      },
+      "valid_from": null,
+      "valid_to": null,
+      "supersedes": []
+    }
+  ],
+  "nodes": [
+    {
+      "id": "proposal:material:falin_et_al_2017_hbn_mechanical_properties",
+      "kind": "material_identity",
+      "label": "Proposed Falin source-qualified hexagonal BN material"
+    },
+    {
+      "id": "proposal:state:falin_et_al_2017_hbn_mechanical_properties:1L",
+      "kind": "state",
+      "label": "Proposed suspended monolayer hBN state"
+    },
+    {
+      "id": "proposal:cohort:falin_et_al_2017_hbn_mechanical_properties",
+      "kind": "specimen_cohort",
+      "label": "Proposed Falin monolayer study cohort; individual overlap unknown"
+    },
+    {
+      "id": "proposal:feedstock:falin_et_al_2017_hbn_mechanical_properties",
+      "kind": "feedstock",
+      "label": "Proposed study hBN single-crystal feedstock"
+    },
+    {
+      "id": "system:BN",
+      "kind": "chemical_system",
+      "label": "BN chemical-system context; no polymorph equivalence"
+    },
+    {
+      "id": "layer_state:monolayer",
+      "kind": "layer_state",
+      "label": "Monolayer context; not an additional material"
+    }
+  ],
+  "review_scope": {
+    "status": "proposed_companion_mapping_only",
+    "existing_gap": "Five typed-edge examples had three disconnected components and endpoint references, not complete node records or material/state/cohort joins.",
+    "new_review": "Two explicit bridges and six node-kind definitions use fixed source-bound observations, inherited main-article locators, user-verified preparation context, and bounded local identity audit.",
+    "source_access": "A bounded main HTML inspection supported visible Figure 1, indentation and property passages. Follow-up publisher requests failed. No complete new article or preparation-method reinspection is claimed.",
+    "individual_specimen_overlap": "unknown",
+    "independent_replication": false,
+    "new_primary_source_audit": false,
+    "main_source_url": "https://www.nature.com/articles/ncomms15815",
+    "counting": "Two quantities from one study and one proposed material context; sheet counts, aliases, node counts, layers and reverse traversal do not add material admissions."
+  },
+  "identity_mapping": {
+    "legacy_identity_id": null,
+    "formal_admission_id": null,
+    "ancestor_catalogue_identity": null,
+    "status": "unresolved_no_local_target_identity_found",
+    "scope": "Main 1057 identities, 20 grades and 1057 states; formal 24 computed admissions. Local catalog/archive copies were also compared: 487 copies, 11 unique byte contents, no read errors.",
+    "incidental_match": {
+      "identity_id": "mat_ozog2020_aln90_y6_a4_pressed",
+      "state_id": "state_ozog2020_aln90_y6_a4_pressed",
+      "decision": "Not mapped: BN/AlN powder-bed and residual-phase context does not identify Falin hBN or establish a polymorph."
+    },
+    "identity_audit_receipt_sha256": "7859d766a439acf099c57b308ed742f6f094cc82ce9a4b4c246484583cbe7df3",
+    "global_physical_uniqueness": "not_asserted",
+    "formal_admitted_delta": 0
+  },
+  "rights_scope": {
+    "main_article": "CC BY 4.0; source attribution retained",
+    "supplement_license": "unverified",
+    "peer_review_author_response_license": "unverified",
+    "inspection_metadata": "Observation inspection and author-response SD metadata are inherited from the frozen catalog; this projection did not re-inspect those assets.",
+    "raw_assets_copied": false,
+    "license_review_completed": false,
+    "automatic_admission": false
+  }
+}
