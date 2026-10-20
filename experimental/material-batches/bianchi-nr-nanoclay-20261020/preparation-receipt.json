@@ -1,0 +1,226 @@
+{
+  "schema": "formulation-preparation-receipt/1",
+  "batch_id": "bianchi-nr-nanoclay-20261020",
+  "baseline_commit": "8981840519f611e62490ce4e9a614381201fe7e3",
+  "command": [
+    "C:\\Users\\pc\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "scripts/prepare_formulation_packet.py",
+    "--spec",
+    "experimental/material-batches/bianchi-nr-nanoclay-20261020/packet-spec.json",
+    "--baseline-dir",
+    "materials_boundaries/data",
+    "--output",
+    "experimental/material-batches/bianchi-nr-nanoclay-20261020/prepared-packet.json"
+  ],
+  "execution_environment": "Native Windows immutable-writer environment; no product tests",
+  "attempts": [
+    {
+      "purpose": "first_creation",
+      "started_utc": "2026-10-20T00:49:16.686376+00:00",
+      "finished_utc": "2026-10-20T00:49:21.371439+00:00",
+      "exit_code": 0,
+      "stdout": "Created review-only formulation packet: experimental\\material-batches\\bianchi-nr-nanoclay-20261020\\prepared-packet.json\nCandidate identity delta: 6\nHandoff ready: yes\nFormal admitted delta: 0. Source transcription is not scientific approval; runtime catalogs unchanged.\n",
+      "stderr": "",
+      "output_sha256": "a09f6d768b71667e045efa85d3c79de8ce3db49a926dcda55eb5421efc99d55f",
+      "output_bytes": 214141,
+      "output_mtime_ns": 1792457361360757300
+    },
+    {
+      "purpose": "identical_repeat",
+      "started_utc": "2026-10-20T00:49:21.383458+00:00",
+      "finished_utc": "2026-10-20T00:49:25.950375+00:00",
+      "exit_code": 0,
+      "stdout": "Unchanged review-only formulation packet: experimental\\material-batches\\bianchi-nr-nanoclay-20261020\\prepared-packet.json\nCandidate identity delta: 6\nHandoff ready: yes\nFormal admitted delta: 0. Source transcription is not scientific approval; runtime catalogs unchanged.\n",
+      "stderr": "",
+      "output_sha256": "a09f6d768b71667e045efa85d3c79de8ce3db49a926dcda55eb5421efc99d55f",
+      "output_bytes": 214141,
+      "output_mtime_ns": 1792457361360757300
+    }
+  ],
+  "formal_admitted_delta": 0,
+  "status": "created_then_unchanged",
+  "byte_identity_preserved": true,
+  "mtime_preserved": true,
+  "compiler_report": {
+    "baseline_sha256": {
+      "materials": "ef824b85d31554f5d72aa1de7463d7d8187168419709dd676b7aee35cca433ee",
+      "reference_properties": "2074da4cb05a106d338a704bb11c5d448cd476bb5b110def3d4cce358f5013be",
+      "sources": "4ba9dcd9258cd1e2d9e17bdf20b4fdaa39e081e77779d12eb726ee91b19835ae"
+    },
+    "before": {
+      "identities": 1112,
+      "grades": 21,
+      "states": 1112,
+      "properties": 1112,
+      "sources": 116,
+      "categories": {
+        "metal": 22,
+        "inorganic": 49,
+        "polymer": 18,
+        "composite": 13,
+        "natural": 1010
+      }
+    },
+    "after": {
+      "identities": 1118,
+      "grades": 21,
+      "states": 1118,
+      "properties": 1118,
+      "sources": 116,
+      "categories": {
+        "metal": 22,
+        "inorganic": 49,
+        "polymer": 18,
+        "composite": 19,
+        "natural": 1010
+      }
+    },
+    "delta": {
+      "identities": 6,
+      "grades": 0,
+      "states": 6,
+      "properties": 6,
+      "sources": 0,
+      "categories": {
+        "metal": 0,
+        "inorganic": 0,
+        "polymer": 0,
+        "composite": 6,
+        "natural": 0
+      }
+    },
+    "formal_admitted_delta": 0,
+    "handoff_ready": true,
+    "pending_gates": [],
+    "identity_crosswalk": [
+      {
+        "identity_id": "mat_bianchi2025_nr_1mmt",
+        "source_id": "bianchi_2025_nr_nanoclay",
+        "source_designations": [
+          "NR_1MMT"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "bianchi_2025_nr_nanoclay",
+            "url": "https://www.mdpi.com/1420-3049/30/14/3035/pdf",
+            "locator": "PDF p.16 sections 3.1-3.2; p.17 Table 8, NR_1MMT row",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "The frozen 1112 core identities and 24 accepted computed compositions contain no matching nanoclay-filled rubber formulation. The existing same-source NR recipe explicitly has no nanoclay. Distinction is the declared 1/3/5 phr clay loading and natural-versus-organic-modifier input composition, not grade, specimen, cure, typo or branding. The identity is the source-defined cured rubber formulation, not raw SMR 10, a supplier grade, another specimen or a processing treatment. Natural MMT and organo-modified O-MMT are distinct input-composition categories described in section 3.1 and the authors discussion on pp.3-4; an organic modifier is part of the O-MMT input, not an added identity based only on its trade name or treatment history. Exact clay stoichiometry, modifier identity/amount in the finished composite, impurities and full constituent mass fractions are not established within the selected article-authored evidence. Table 7 contains a producer-derived modifier drawing, which is not imported; no claim is made that the complete PDF lacks such a drawing. No producer-derived Table 7 density, spacing, modifier structure or supplier specification is imported."
+      },
+      {
+        "identity_id": "mat_bianchi2025_nr_1ommt",
+        "source_id": "bianchi_2025_nr_nanoclay",
+        "source_designations": [
+          "NR_1O-MMT"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "bianchi_2025_nr_nanoclay",
+            "url": "https://www.mdpi.com/1420-3049/30/14/3035/pdf",
+            "locator": "PDF p.16 sections 3.1-3.2; p.17 Table 8, NR_1O-MMT row",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "The frozen 1112 core identities and 24 accepted computed compositions contain no matching nanoclay-filled rubber formulation. The existing same-source NR recipe explicitly has no nanoclay. Distinction is the declared 1/3/5 phr clay loading and natural-versus-organic-modifier input composition, not grade, specimen, cure, typo or branding. The identity is the source-defined cured rubber formulation, not raw SMR 10, a supplier grade, another specimen or a processing treatment. Natural MMT and organo-modified O-MMT are distinct input-composition categories described in section 3.1 and the authors discussion on pp.3-4; an organic modifier is part of the O-MMT input, not an added identity based only on its trade name or treatment history. Exact clay stoichiometry, modifier identity/amount in the finished composite, impurities and full constituent mass fractions are not established within the selected article-authored evidence. Table 7 contains a producer-derived modifier drawing, which is not imported; no claim is made that the complete PDF lacks such a drawing. No producer-derived Table 7 density, spacing, modifier structure or supplier specification is imported."
+      },
+      {
+        "identity_id": "mat_bianchi2025_nr_3mmt",
+        "source_id": "bianchi_2025_nr_nanoclay",
+        "source_designations": [
+          "NR_3MMT"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "bianchi_2025_nr_nanoclay",
+            "url": "https://www.mdpi.com/1420-3049/30/14/3035/pdf",
+            "locator": "PDF p.16 sections 3.1-3.2; p.17 Table 8, NR_3MMT row",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "The frozen 1112 core identities and 24 accepted computed compositions contain no matching nanoclay-filled rubber formulation. The existing same-source NR recipe explicitly has no nanoclay. Distinction is the declared 1/3/5 phr clay loading and natural-versus-organic-modifier input composition, not grade, specimen, cure, typo or branding. The identity is the source-defined cured rubber formulation, not raw SMR 10, a supplier grade, another specimen or a processing treatment. Natural MMT and organo-modified O-MMT are distinct input-composition categories described in section 3.1 and the authors discussion on pp.3-4; an organic modifier is part of the O-MMT input, not an added identity based only on its trade name or treatment history. Exact clay stoichiometry, modifier identity/amount in the finished composite, impurities and full constituent mass fractions are not established within the selected article-authored evidence. Table 7 contains a producer-derived modifier drawing, which is not imported; no claim is made that the complete PDF lacks such a drawing. No producer-derived Table 7 density, spacing, modifier structure or supplier specification is imported."
+      },
+      {
+        "identity_id": "mat_bianchi2025_nr_3ommt",
+        "source_id": "bianchi_2025_nr_nanoclay",
+        "source_designations": [
+          "NR_3O-MMT"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "bianchi_2025_nr_nanoclay",
+            "url": "https://www.mdpi.com/1420-3049/30/14/3035/pdf",
+            "locator": "PDF p.16 sections 3.1-3.2; p.17 Table 8, NR_3O-MMT row",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "The frozen 1112 core identities and 24 accepted computed compositions contain no matching nanoclay-filled rubber formulation. The existing same-source NR recipe explicitly has no nanoclay. Distinction is the declared 1/3/5 phr clay loading and natural-versus-organic-modifier input composition, not grade, specimen, cure, typo or branding. The identity is the source-defined cured rubber formulation, not raw SMR 10, a supplier grade, another specimen or a processing treatment. Natural MMT and organo-modified O-MMT are distinct input-composition categories described in section 3.1 and the authors discussion on pp.3-4; an organic modifier is part of the O-MMT input, not an added identity based only on its trade name or treatment history. Exact clay stoichiometry, modifier identity/amount in the finished composite, impurities and full constituent mass fractions are not established within the selected article-authored evidence. Table 7 contains a producer-derived modifier drawing, which is not imported; no claim is made that the complete PDF lacks such a drawing. No producer-derived Table 7 density, spacing, modifier structure or supplier specification is imported."
+      },
+      {
+        "identity_id": "mat_bianchi2025_nr_5mmt",
+        "source_id": "bianchi_2025_nr_nanoclay",
+        "source_designations": [
+          "NR_5MMT"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "bianchi_2025_nr_nanoclay",
+            "url": "https://www.mdpi.com/1420-3049/30/14/3035/pdf",
+            "locator": "PDF p.16 sections 3.1-3.2; p.17 Table 8, NR_5MMT row",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "The frozen 1112 core identities and 24 accepted computed compositions contain no matching nanoclay-filled rubber formulation. The existing same-source NR recipe explicitly has no nanoclay. Distinction is the declared 1/3/5 phr clay loading and natural-versus-organic-modifier input composition, not grade, specimen, cure, typo or branding. The identity is the source-defined cured rubber formulation, not raw SMR 10, a supplier grade, another specimen or a processing treatment. Natural MMT and organo-modified O-MMT are distinct input-composition categories described in section 3.1 and the authors discussion on pp.3-4; an organic modifier is part of the O-MMT input, not an added identity based only on its trade name or treatment history. Exact clay stoichiometry, modifier identity/amount in the finished composite, impurities and full constituent mass fractions are not established within the selected article-authored evidence. Table 7 contains a producer-derived modifier drawing, which is not imported; no claim is made that the complete PDF lacks such a drawing. No producer-derived Table 7 density, spacing, modifier structure or supplier specification is imported."
+      },
+      {
+        "identity_id": "mat_bianchi2025_nr_5ommt",
+        "source_id": "bianchi_2025_nr_nanoclay",
+        "source_designations": [
+          "NR_5O-MMT"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "bianchi_2025_nr_nanoclay",
+            "url": "https://www.mdpi.com/1420-3049/30/14/3035/pdf",
+            "locator": "PDF p.16 sections 3.1-3.2; p.17 Table 8, NR_5O-MMT row",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "The frozen 1112 core identities and 24 accepted computed compositions contain no matching nanoclay-filled rubber formulation. The existing same-source NR recipe explicitly has no nanoclay. Distinction is the declared 1/3/5 phr clay loading and natural-versus-organic-modifier input composition, not grade, specimen, cure, typo or branding. The identity is the source-defined cured rubber formulation, not raw SMR 10, a supplier grade, another specimen or a processing treatment. Natural MMT and organo-modified O-MMT are distinct input-composition categories described in section 3.1 and the authors discussion on pp.3-4; an organic modifier is part of the O-MMT input, not an added identity based only on its trade name or treatment history. Exact clay stoichiometry, modifier identity/amount in the finished composite, impurities and full constituent mass fractions are not established within the selected article-authored evidence. Table 7 contains a producer-derived modifier drawing, which is not imported; no claim is made that the complete PDF lacks such a drawing. No producer-derived Table 7 density, spacing, modifier structure or supplier specification is imported."
+      }
+    ]
+  },
+  "bound_files": {
+    "packet-spec.json": {
+      "sha256": "525d9822d685bc96048108a5848560357a729ba2498307fd9e3eeda6dd091454",
+      "bytes": 110082
+    },
+    "source-review.json": {
+      "sha256": "7b7bd5252e081b526c34c94e4ac6690fe3dcecd623229756cbf38a309eee6ed0",
+      "bytes": 18810
+    },
+    "README.md": {
+      "sha256": "cc6f9afb3362526d69a998e210ba41fe1f3c41c65b588b8b362dd0614d49910f",
+      "bytes": 7225
+    }
+  }
+}
