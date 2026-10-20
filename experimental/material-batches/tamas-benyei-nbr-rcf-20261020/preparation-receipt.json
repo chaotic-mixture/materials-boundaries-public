@@ -1,0 +1,244 @@
+{
+  "schema": "formulation-preparation-receipt/1",
+  "batch_id": "tamas-benyei-nbr-rcf-20261020",
+  "baseline_commit": "f5bdcc44a4743f7da6220871dbf3857224a925b0",
+  "command": [
+    "C:\\Users\\pc\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "scripts/prepare_formulation_packet.py",
+    "--spec",
+    "experimental/material-batches/tamas-benyei-nbr-rcf-20261020/packet-spec.json",
+    "--baseline-dir",
+    "materials_boundaries/data",
+    "--output",
+    "experimental/material-batches/tamas-benyei-nbr-rcf-20261020/prepared-packet.json"
+  ],
+  "execution_environment": "Native Windows immutable-writer environment; no product tests",
+  "formal_admitted_delta": 0,
+  "attempts": [
+    {
+      "purpose": "first_creation",
+      "started_utc": "2026-10-20T08:50:25.257055+00:00",
+      "finished_utc": "2026-10-20T08:50:29.857439+00:00",
+      "exit_code": 0,
+      "stdout": "Created review-only formulation packet: experimental\\material-batches\\tamas-benyei-nbr-rcf-20261020\\prepared-packet.json\nCandidate identity delta: 6\nHandoff ready: yes\nFormal admitted delta: 0. Source transcription is not scientific approval; runtime catalogs unchanged.\n",
+      "stderr": "",
+      "output_sha256": "ae401d2ab8b565acf5772bba10833176f46293ec025a9552d15aafd6a68c8ee3",
+      "output_bytes": 223516,
+      "output_mtime_ns": 1792486229845424200
+    },
+    {
+      "purpose": "identical_repeat",
+      "started_utc": "2026-10-20T08:50:29.871955+00:00",
+      "finished_utc": "2026-10-20T08:50:34.566024+00:00",
+      "exit_code": 0,
+      "stdout": "Unchanged review-only formulation packet: experimental\\material-batches\\tamas-benyei-nbr-rcf-20261020\\prepared-packet.json\nCandidate identity delta: 6\nHandoff ready: yes\nFormal admitted delta: 0. Source transcription is not scientific approval; runtime catalogs unchanged.\n",
+      "stderr": "",
+      "output_sha256": "ae401d2ab8b565acf5772bba10833176f46293ec025a9552d15aafd6a68c8ee3",
+      "output_bytes": 223516,
+      "output_mtime_ns": 1792486229845424200
+    }
+  ],
+  "superseded_candidate": {
+    "reason": "Independent review CRLF normalized to LF; parsed review JSON, scientific fields and four-language names unchanged. Parent commit preflight failed before commit; this agent did not touch the Git index.",
+    "archive_path": "incremental-evidence\\primary-table-growth-6-20261020\\candidate-preparation\\crlf-review-superseded",
+    "packet_sha256": "6c2f658ff08f30c3f93a4753960d888156b4e434df7c2100c0d25d10ff2e9662",
+    "preparation_receipt_sha256": "96b586ac4411e57fb47397ce0d9f21cdc40a421ffd22a29318c26149adc7c925",
+    "supersession_receipt_sha256": "67ba5d5179d639a8a695309d1bad2ddd7f3f14fb9c88775b7019108da72c7e18",
+    "previous_revision_evidence": {
+      "reason": "Display names revised to authored en/zh/ja/de labels; scientific fields and source review unchanged.",
+      "archive_path": "incremental-evidence\\primary-table-growth-6-20261020\\candidate-preparation\\english-fallback-superseded",
+      "packet_sha256": "a371f706bc0ed5e726c6df75927a4505baa2284b1f6eb098e2a6afe27d2f62a5",
+      "preparation_receipt_sha256": "1798b01aeb31d586f740de8232a7bdb383501867ac2f636261808bb9ccd0a93b",
+      "supersession_receipt_sha256": "b6a4aa4b11ccf90be541911ceb842b622ad847210cfa4a99bb99ebdc073fc78c"
+    },
+    "review_normalization_receipt": {
+      "path": "incremental-evidence/primary-table-growth-6-20261020/source-research/nbr-independent-source-review.line-ending-normalization.json",
+      "sha256": "4f4014f3bde53b14db8ed0398ec59f06ba87573f316f3680f40b4e49df651d50"
+    }
+  },
+  "status": "created_then_unchanged",
+  "byte_identity_preserved": true,
+  "mtime_preserved": true,
+  "compiler_report": {
+    "baseline_sha256": {
+      "materials": "8d5489af4e090f5310c22d21c6f385020f6d9b1d097b3d4b6ac964178e6afa81",
+      "reference_properties": "d0e0ad9c2036b4617842525951db51257623c564ad4b1ffcfaa36eaa28481407",
+      "sources": "4ba9dcd9258cd1e2d9e17bdf20b4fdaa39e081e77779d12eb726ee91b19835ae"
+    },
+    "before": {
+      "identities": 1118,
+      "grades": 21,
+      "states": 1118,
+      "properties": 1118,
+      "sources": 116,
+      "categories": {
+        "metal": 22,
+        "inorganic": 49,
+        "polymer": 18,
+        "composite": 19,
+        "natural": 1010
+      }
+    },
+    "after": {
+      "identities": 1124,
+      "grades": 21,
+      "states": 1124,
+      "properties": 1124,
+      "sources": 116,
+      "categories": {
+        "metal": 22,
+        "inorganic": 49,
+        "polymer": 18,
+        "composite": 25,
+        "natural": 1010
+      }
+    },
+    "delta": {
+      "identities": 6,
+      "grades": 0,
+      "states": 6,
+      "properties": 6,
+      "sources": 0,
+      "categories": {
+        "metal": 0,
+        "inorganic": 0,
+        "polymer": 0,
+        "composite": 6,
+        "natural": 0
+      }
+    },
+    "formal_admitted_delta": 0,
+    "handoff_ready": true,
+    "pending_gates": [],
+    "identity_crosswalk": [
+      {
+        "identity_id": "mat_tamas_benyei2025_nbr_mcf10",
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "source_designations": [
+          "C"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.pt.bme.hu/publikaciok/2010_publ_sustainable-reinforcement-for-rubbers-potential-application-of-recycled-carbon-fibers_1229.pdf",
+            "locator": "PDF p.3 / article p.61278, section 2.1/Table 2; p.4 / article p.61279, Table 3 C column and section 2.3",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "The pinned 1118 core identities and 24 accepted computed compositions contain no matching solid NBR/mCF 10 phr formulation. Existing same-source REF has mCF=0; standalone Toray carbon fiber and other rubber/filler families are not these mixtures. Fiber loading, not label, supplier grade, orientation, cure or foam morphology, supports the identity distinction. Identity is the source-defined solid NBR/recycled-milled-carbon-fiber formulation, not a specimen, test direction, curing condition, supplier grade or foam state. PERBUNAN 3445 in Table 2 abbreviates the section 2.1 PERBUNAN 3445 F input, not a second material. Sul is ACTMIX S-80 product input as added; no conversion to elemental sulfur or to a fully specified chemical composition is made. The recycled fiber input is not assumed to be pure carbon, and no source-unstated final mass fractions or filler-purity correction are inferred. Table 3 loadings are retained in phr without normalization."
+      },
+      {
+        "identity_id": "mat_tamas_benyei2025_nbr_mcf20",
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "source_designations": [
+          "D"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.pt.bme.hu/publikaciok/2010_publ_sustainable-reinforcement-for-rubbers-potential-application-of-recycled-carbon-fibers_1229.pdf",
+            "locator": "PDF p.3 / article p.61278, section 2.1/Table 2; p.4 / article p.61279, Table 3 D column and section 2.3",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "The pinned 1118 core identities and 24 accepted computed compositions contain no matching solid NBR/mCF 20 phr formulation. Existing same-source REF has mCF=0; standalone Toray carbon fiber and other rubber/filler families are not these mixtures. Fiber loading, not label, supplier grade, orientation, cure or foam morphology, supports the identity distinction. Identity is the source-defined solid NBR/recycled-milled-carbon-fiber formulation, not a specimen, test direction, curing condition, supplier grade or foam state. PERBUNAN 3445 in Table 2 abbreviates the section 2.1 PERBUNAN 3445 F input, not a second material. Sul is ACTMIX S-80 product input as added; no conversion to elemental sulfur or to a fully specified chemical composition is made. The recycled fiber input is not assumed to be pure carbon, and no source-unstated final mass fractions or filler-purity correction are inferred. Table 3 loadings are retained in phr without normalization."
+      },
+      {
+        "identity_id": "mat_tamas_benyei2025_nbr_mcf30",
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "source_designations": [
+          "E"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.pt.bme.hu/publikaciok/2010_publ_sustainable-reinforcement-for-rubbers-potential-application-of-recycled-carbon-fibers_1229.pdf",
+            "locator": "PDF p.3 / article p.61278, section 2.1/Table 2; p.4 / article p.61279, Table 3 E column and section 2.3",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "The pinned 1118 core identities and 24 accepted computed compositions contain no matching solid NBR/mCF 30 phr formulation. Existing same-source REF has mCF=0; standalone Toray carbon fiber and other rubber/filler families are not these mixtures. Fiber loading, not label, supplier grade, orientation, cure or foam morphology, supports the identity distinction. Identity is the source-defined solid NBR/recycled-milled-carbon-fiber formulation, not a specimen, test direction, curing condition, supplier grade or foam state. PERBUNAN 3445 in Table 2 abbreviates the section 2.1 PERBUNAN 3445 F input, not a second material. Sul is ACTMIX S-80 product input as added; no conversion to elemental sulfur or to a fully specified chemical composition is made. The recycled fiber input is not assumed to be pure carbon, and no source-unstated final mass fractions or filler-purity correction are inferred. Table 3 loadings are retained in phr without normalization."
+      },
+      {
+        "identity_id": "mat_tamas_benyei2025_nbr_mcf40",
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "source_designations": [
+          "F"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.pt.bme.hu/publikaciok/2010_publ_sustainable-reinforcement-for-rubbers-potential-application-of-recycled-carbon-fibers_1229.pdf",
+            "locator": "PDF p.3 / article p.61278, section 2.1/Table 2; p.4 / article p.61279, Table 3 F column and section 2.3",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "The pinned 1118 core identities and 24 accepted computed compositions contain no matching solid NBR/mCF 40 phr formulation. Existing same-source REF has mCF=0; standalone Toray carbon fiber and other rubber/filler families are not these mixtures. Fiber loading, not label, supplier grade, orientation, cure or foam morphology, supports the identity distinction. Identity is the source-defined solid NBR/recycled-milled-carbon-fiber formulation, not a specimen, test direction, curing condition, supplier grade or foam state. PERBUNAN 3445 in Table 2 abbreviates the section 2.1 PERBUNAN 3445 F input, not a second material. Sul is ACTMIX S-80 product input as added; no conversion to elemental sulfur or to a fully specified chemical composition is made. The recycled fiber input is not assumed to be pure carbon, and no source-unstated final mass fractions or filler-purity correction are inferred. Table 3 loadings are retained in phr without normalization."
+      },
+      {
+        "identity_id": "mat_tamas_benyei2025_nbr_mcf5",
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "source_designations": [
+          "B"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.pt.bme.hu/publikaciok/2010_publ_sustainable-reinforcement-for-rubbers-potential-application-of-recycled-carbon-fibers_1229.pdf",
+            "locator": "PDF p.3 / article p.61278, section 2.1/Table 2; p.4 / article p.61279, Table 3 B column and section 2.3",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "The pinned 1118 core identities and 24 accepted computed compositions contain no matching solid NBR/mCF 5 phr formulation. Existing same-source REF has mCF=0; standalone Toray carbon fiber and other rubber/filler families are not these mixtures. Fiber loading, not label, supplier grade, orientation, cure or foam morphology, supports the identity distinction. Identity is the source-defined solid NBR/recycled-milled-carbon-fiber formulation, not a specimen, test direction, curing condition, supplier grade or foam state. PERBUNAN 3445 in Table 2 abbreviates the section 2.1 PERBUNAN 3445 F input, not a second material. Sul is ACTMIX S-80 product input as added; no conversion to elemental sulfur or to a fully specified chemical composition is made. The recycled fiber input is not assumed to be pure carbon, and no source-unstated final mass fractions or filler-purity correction are inferred. Table 3 loadings are retained in phr without normalization."
+      },
+      {
+        "identity_id": "mat_tamas_benyei2025_nbr_mcf50",
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "source_designations": [
+          "G"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.pt.bme.hu/publikaciok/2010_publ_sustainable-reinforcement-for-rubbers-potential-application-of-recycled-carbon-fibers_1229.pdf",
+            "locator": "PDF p.3 / article p.61278, section 2.1/Table 2; p.4 / article p.61279, Table 3 G column and section 2.3",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "The pinned 1118 core identities and 24 accepted computed compositions contain no matching solid NBR/mCF 50 phr formulation. Existing same-source REF has mCF=0; standalone Toray carbon fiber and other rubber/filler families are not these mixtures. Fiber loading, not label, supplier grade, orientation, cure or foam morphology, supports the identity distinction. Identity is the source-defined solid NBR/recycled-milled-carbon-fiber formulation, not a specimen, test direction, curing condition, supplier grade or foam state. PERBUNAN 3445 in Table 2 abbreviates the section 2.1 PERBUNAN 3445 F input, not a second material. Sul is ACTMIX S-80 product input as added; no conversion to elemental sulfur or to a fully specified chemical composition is made. The recycled fiber input is not assumed to be pure carbon, and no source-unstated final mass fractions or filler-purity correction are inferred. Table 3 loadings are retained in phr without normalization."
+      }
+    ]
+  },
+  "bound_files": {
+    "packet-spec.json": {
+      "sha256": "9d63b9b8dace7d927d36425f42d02d25db031e7a3ecd210f66283b565dc079a7",
+      "bytes": 103017
+    },
+    "source-review.json": {
+      "sha256": "a3e3aa30c5dcbc850e818275e44dc3c6b504ea93a5c63fe944a9c644f3cdccdd",
+      "bytes": 14355
+    },
+    "README.md": {
+      "sha256": "189bf4e2b7a0a261fe76d460beb292bab5eaf7c6ef0a207ef5e6479079362323",
+      "bytes": 8153
+    }
+  }
+}
