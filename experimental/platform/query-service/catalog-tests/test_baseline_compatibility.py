@@ -31,7 +31,8 @@ PRE_TABLE_BATCH_PIN_SHA256 = '73b8b455042290c0f752e784f23687eaf3bbc8dc7631ced311
 PRE_RCA_BATCH_PIN_SHA256 = '9090f061483cefde2d6255f057078b7700d3e22c85db7191ec00bc30de78f2ad'
 PRE_BINARY_BATCH_PIN_SHA256 = '148c38cfa1819b8103ffa6c0f856d824b9fc54a3e9f8a5eecc50943fd19b27bd'
 PRE_MTIBE_BATCH_PIN_SHA256 = '15c0619c3a55984550ecd564692c4588f777a10d60a4e9a01b91079c12978c2f'
-CURRENT_PIN_SHA256 = 'c127bf69ccca825e1b2ca3fd496f6ead65bf68478fc232d27f087b7e551b6909'
+PRE_NR_BATCH_PIN_SHA256 = 'c127bf69ccca825e1b2ca3fd496f6ead65bf68478fc232d27f087b7e551b6909'
+CURRENT_PIN_SHA256 = '7dd99df2a6ec06d6a0d6f72b31378cff5b49908113df4d78bee2ee3ffec09112'
 GROWTH_ROOT = Path(__file__).resolve().parents[4]
 GROWTH_LEDGER = GROWTH_ROOT / 'tests/fixtures/source_family_growth_data_20261019.json'
 GROWTH_LEDGER_SHA256 = '9dfc8d71e89041f05e11a870ad29aea34cb3ab90586bcea8f1d717adc9878ac3'
@@ -92,6 +93,15 @@ MTIBE_PACKET_SHA256 = '8c0dad86412f0708f72a3866cae5a7766db01be99df38f85defd3ba05
 PRE_MTIBE_BATCH_DATA_SHA256 = {
     'materials.json': 'd7517f3c4abb76e7275a7291381459e2123eb165d67710744209a979ef20f61b',
     'reference_properties.json': '4ca430bf31f24321527f42098b0009aa2648efa14c794c4a6e93617fca9f54b0',
+    'sources.json': '4ba9dcd9258cd1e2d9e17bdf20b4fdaa39e081e77779d12eb726ee91b19835ae',
+}
+NR_LEDGER = GROWTH_ROOT / 'tests/fixtures/primary_table_growth_5_data_20261020.json'
+NR_LEDGER_SHA256 = 'ced45ed6989e8988d461b0256c3ef7781c0f04b8364c6c991e3cacf36b064ff9'
+NR_PACKET = GROWTH_ROOT / 'experimental/material-batches/bianchi-nr-nanoclay-20261020/prepared-packet.json'
+NR_PACKET_SHA256 = 'a09f6d768b71667e045efa85d3c79de8ce3db49a926dcda55eb5421efc99d55f'
+PRE_NR_BATCH_DATA_SHA256 = {
+    'materials.json': 'ef824b85d31554f5d72aa1de7463d7d8187168419709dd676b7aee35cca433ee',
+    'reference_properties.json': '2074da4cb05a106d338a704bb11c5d448cd476bb5b110def3d4cce358f5013be',
     'sources.json': '4ba9dcd9258cd1e2d9e17bdf20b4fdaa39e081e77779d12eb726ee91b19835ae',
 }
 PRE_EVIDENCE_BATCH_DATA_SHA256 = {
@@ -418,6 +428,21 @@ def recover_pre_table_batch_catalogs(current):
     return recover_exact_append_catalogs(current, table_batch_descriptor())
 
 
+def nr_batch_descriptor():
+    return {'label': 'NR batch', 'ledger': NR_LEDGER,
+            'ledger_sha256': NR_LEDGER_SHA256, 'packet': NR_PACKET,
+            'packet_sha256': NR_PACKET_SHA256,
+            'parent_commit': '8981840519f611e62490ce4e9a614381201fe7e3',
+            'parent_data': PRE_NR_BATCH_DATA_SHA256,
+            'addition_counts': {'identities': 6, 'grades': 0, 'states': 6,
+                                'properties': 6, 'sources': 0}}
+
+def nr_batch_inventory():
+    return frozen_append_inventory(nr_batch_descriptor())
+
+def recover_pre_nr_batch_catalogs(current):
+    return recover_exact_append_catalogs(current, nr_batch_descriptor())
+
 def mtibe_batch_descriptor():
     return {'label': 'Mtibe batch', 'ledger': MTIBE_LEDGER,
             'ledger_sha256': MTIBE_LEDGER_SHA256, 'packet': MTIBE_PACKET,
@@ -568,6 +593,7 @@ class BaselineCompatibility(unittest.TestCase):
         cls.original_identity = sha256(json.dumps(
             cls.expected, sort_keys=True, separators=(',', ':'), ensure_ascii=False,
             allow_nan=False).encode()).hexdigest()
+        cls.recover_nr_anchor()
         cls.recover_mtibe_anchor()
         cls.recover_binary_anchor()
         cls.recover_rca_anchor()
@@ -578,10 +604,28 @@ class BaselineCompatibility(unittest.TestCase):
         cls.recover_historical_anchor()
 
     @classmethod
+    def recover_nr_anchor(cls):
+        """Recover the exact 8981840 data and complete pin before older append layers."""
+        cls.nr_parent_root = cls.fixture_root / 'pre-nr-batch-data'
+        shutil.copytree(cls.original_root, cls.nr_parent_root)
+        data_root = cls.nr_parent_root / 'data'
+        current = {name: json.loads((data_root / name).read_bytes())
+                   for name in PRE_NR_BATCH_DATA_SHA256}
+        for name, value in recover_pre_nr_batch_catalogs(current).items():
+            (data_root / name).write_bytes((json.dumps(value, ensure_ascii=False,
+                indent=2, allow_nan=False) + '\n').encode('utf-8'))
+        cls.nr_parent_pin = registry.canonical(manifest(cls.nr_parent_root))
+        if sha256(cls.nr_parent_pin).hexdigest() != PRE_NR_BATCH_PIN_SHA256:
+            raise AssertionError('Recovered 8981840 complete pin bytes differ')
+        cls.nr_parent_query_root = cls.fixture_root / 'pre-nr-batch-query'
+        (cls.nr_parent_query_root / 'pins').mkdir(parents=True)
+        (cls.nr_parent_query_root / 'pins/legacy_baseline.json').write_bytes(cls.nr_parent_pin)
+
+    @classmethod
     def recover_mtibe_anchor(cls):
         """Recover the exact a5cc3f6 data and complete pin before older append layers."""
         cls.mtibe_parent_root = cls.fixture_root / 'pre-mtibe-batch-data'
-        shutil.copytree(cls.original_root, cls.mtibe_parent_root)
+        shutil.copytree(cls.nr_parent_root, cls.mtibe_parent_root)
         data_root = cls.mtibe_parent_root / 'data'
         current = {name: json.loads((data_root / name).read_bytes())
                    for name in PRE_MTIBE_BATCH_DATA_SHA256}
@@ -841,12 +885,88 @@ class BaselineCompatibility(unittest.TestCase):
         with self.assertRaisesRegex(AssertionError, 'Recovered a592 catalog bytes differ'):
             recover_a592_catalogs(changed)
 
+    def test_nr_batch_parent_manifest_and_catalog_recovery_remain_exact(self):
+        expected = dict(self.expected)
+        expected.update({'data/' + name: digest for name, digest in PRE_NR_BATCH_DATA_SHA256.items()})
+        self.assertEqual(len(manifest(self.nr_parent_root)), 64)
+        self.assertEqual(manifest(self.nr_parent_root), expected)
+        current = {name: json.loads((self.current_root / 'data' / name).read_bytes())
+                   for name in PRE_NR_BATCH_DATA_SHA256}
+        parent = {name: json.loads((self.nr_parent_root / 'data' / name).read_bytes())
+                  for name in PRE_NR_BATCH_DATA_SHA256}
+        self.assertEqual(recover_pre_nr_batch_catalogs(current), parent)
+        self.assertEqual(recover_pre_nr_batch_catalogs(parent), parent)
+        self.assertEqual(current['sources.json'], parent['sources.json'])
+        self.assertEqual(current['materials.json']['grades'], parent['materials.json']['grades'])
+        with self.assertRaisesRegex(AssertionError, 'Mtibe batch predecessor catalog bytes differ'):
+            recover_pre_mtibe_batch_catalogs(current)
+        ledger, additions = nr_batch_inventory()
+        for filename, section, collection, label in GROWTH_COLLECTIONS:
+            if not additions[label]:
+                continue
+            candidate = additions[label][0]
+            for mutation in ('missing', 'changed', 'duplicate'):
+                with self.subTest(collection=label, mutation=mutation):
+                    changed = deepcopy(current)
+                    rows = changed[filename][collection]
+                    row = next(row for row in rows if row['id'] == candidate['id'])
+                    if mutation == 'missing':
+                        rows.remove(row)
+                    elif mutation == 'changed':
+                        row['version'] = 'unreviewed'
+                    else:
+                        rows.append(deepcopy(row))
+                    with self.assertRaisesRegex(AssertionError, 'NR batch'):
+                        recover_pre_nr_batch_catalogs(changed)
+        for filename, collection in [('materials.json', 'identities'), ('sources.json', 'records')]:
+            changed = deepcopy(current)
+            changed[filename][collection][0]['version'] = 'unreviewed'
+            with self.subTest(retained_collection=collection), self.assertRaisesRegex(
+                    AssertionError, 'NR batch predecessor catalog bytes differ'):
+                recover_pre_nr_batch_catalogs(changed)
+        changed = deepcopy(current)
+        changed['materials.json']['identities'][-6:] = reversed(changed['materials.json']['identities'][-6:])
+        with self.assertRaisesRegex(AssertionError, 'NR batch successor catalog order or bytes differ'):
+            recover_pre_nr_batch_catalogs(changed)
+        original_read = Path.read_bytes
+        for target in (NR_LEDGER, NR_PACKET):
+            def replaced(path):
+                return original_read(path) + (b' ' if path == target else b'')
+            with self.subTest(binding=target.name), patch.object(Path, 'read_bytes', replaced), \
+                    self.assertRaisesRegex(AssertionError, 'NR batch .* bytes differ'):
+                recover_pre_nr_batch_catalogs(current)
+        with self.resources(self.nr_parent_root, self.nr_parent_query_root):
+            with self.assertRaisesRegex(ValueError, 'Baseline pin was replaced'):
+                registry.baseline_digest()
+            with patch.object(registry, 'BASELINE_PIN', PRE_NR_BATCH_PIN_SHA256):
+                self.assertEqual(registry.baseline_digest(), PRE_NR_BATCH_PIN_SHA256)
+        with self.resources(self.nr_parent_root), self.assertRaisesRegex(
+                ValueError, 'Installed legacy baseline differs'):
+            registry.baseline_digest()
+
+    def test_nr_batch_parent_database_rejected_without_migration(self):
+        for rich in (False, True):
+            with self.subTest(rich=rich):
+                review = self.review(rich)
+                path = self.work / ('8981840-v2.db' if rich else '8981840-legacy.db')
+                with self.resources(self.nr_parent_root, self.nr_parent_query_root), \
+                        patch.object(registry, 'BASELINE_PIN', PRE_NR_BATCH_PIN_SHA256):
+                    historical = self.make_registry(path, review, rich)
+                    before = historical.admit([review['records'][0]['candidate_id']])
+                raw = path.read_bytes()
+                rows = self.database_rows(path)
+                with self.assertRaisesRegex(ValueError, 'Initial baseline and review input cannot be replaced'):
+                    self.make_registry(path, review, rich)
+                self.assertEqual(path.read_bytes(), raw)
+                self.assertEqual(self.database_rows(path), rows)
+                self.assertEqual(historical.snapshot(), before)
+
     def test_mtibe_batch_parent_manifest_and_catalog_recovery_remain_exact(self):
         expected = dict(self.expected)
         expected.update({'data/' + name: digest for name, digest in PRE_MTIBE_BATCH_DATA_SHA256.items()})
         self.assertEqual(len(manifest(self.mtibe_parent_root)), 64)
         self.assertEqual(manifest(self.mtibe_parent_root), expected)
-        current = {name: json.loads((self.current_root / 'data' / name).read_bytes())
+        current = {name: json.loads((self.nr_parent_root / 'data' / name).read_bytes())
                    for name in PRE_MTIBE_BATCH_DATA_SHA256}
         parent = {name: json.loads((self.mtibe_parent_root / 'data' / name).read_bytes())
                   for name in PRE_MTIBE_BATCH_DATA_SHA256}

@@ -28,8 +28,14 @@ DATA_4_LEDGER = "tests/fixtures/primary_table_growth_4_data_20261019.json"
 DATA_4_SHA256 = "d57a1014e6d9e66f3f6c031e3a56abda909acc924fb9ab16835948989f4ce89c"
 FILE_4_LEDGER = "tests/fixtures/primary_table_growth_4_files_20261019.json"
 FILE_4_SHA256 = "a0bd763d3524ce9f453d53cc060c3ec993a69c011450db0a00bc76b13597e16b"
+DATA_5_LEDGER = "tests/fixtures/primary_table_growth_5_data_20261020.json"
+DATA_5_SHA256 = "ced45ed6989e8988d461b0256c3ef7781c0f04b8364c6c991e3cacf36b064ff9"
+FILE_5_LEDGER = "tests/fixtures/primary_table_growth_5_files_20261020.json"
+FILE_5_SHA256 = "1f2c64f12b385228a8f7360da50bb85e2746b6fbd7adfdb5fb64d3a6624d34a2"
 
 FROZEN_SUCCESSORS = (
+    {"batch_id": "bianchi-nr-nanoclay-20261020",
+     "data": (DATA_5_LEDGER, DATA_5_SHA256), "files": (FILE_5_LEDGER, FILE_5_SHA256)},
     {"batch_id": "mtibe-pbs-pbat-hybrids-20261019",
      "data": (DATA_4_LEDGER, DATA_4_SHA256), "files": (FILE_4_LEDGER, FILE_4_SHA256)},
     {"batch_id": "nbs-binary-oxide-density-20261019",

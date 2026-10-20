@@ -331,7 +331,7 @@ See the [binary-oxide packet](../../material-batches/nbs-binary-oxide-density-20
 
 ## Three Mtibe hybrid formulations, 2026-10-19
 
-The current snapshot contains **1136 project entries = 1112 source-qualified
+The preceding Mtibe snapshot contained **1136 project entries = 1112 source-qualified
 identities + 24 reviewed computed compositions**. The three PBS/PBAT-matrix
 lignosulphonate/ZnO recipes add three composite identities, states and modulus
 references, bringing composites to 13. All other category counts, 116 sources,
@@ -355,3 +355,31 @@ The independent recovery descriptor binds the frozen packet and data ledger and
 recovers the complete `a5cc3f6` predecessor before the existing binary-oxide layer.
 Historical pins remain test-only and are rejected by the current registry.
 See the [Mtibe hybrid packet](../../material-batches/mtibe-pbs-pbat-hybrids-20261019/README.md).
+
+## Six NR/nanoclay formulations, 2026-10-20
+
+The current snapshot contains **1142 project entries = 1118 source-qualified
+identities + 24 reviewed computed compositions**. MMT and organically modified
+O-MMT at 1, 3 and 5 phr add six NR-based composite identities, states and
+mass-density references, bringing composites to 19. All other category counts,
+116 sources, 21 grades and the 62 excluded computed examples are unchanged.
+
+The six density strings are 0.960, 0.973, 0.981, 0.959, 0.966 and 0.971 g/cm^3,
+with corresponding reported plus/minus strings 0.003, 0.001, 0.005, 0.001, 0.001
+and 0.003. Three specimens apply to density; four crosslinking-density specimens
+do not. Room temperature has no assigned numerical value. The central statistic
+remains a reported value and the plus/minus meaning is unspecified. The API
+retains catalog-only scope and false scientific-review/raw-reanalysis flags.
+
+O-MMT is a different source-described organic-modifier-containing input, not a
+second identity for processing the same finished specimen. Modifier fraction and
+complete cured composition remain unknown. Shared SMR 10 and raw filler brands
+do not become finished-material grades. The NR_3MMsT source-table typo maps only
+to NR_3MMT and adds no identity. The unfilled NR baseline stays distinct.
+
+The NR/nanoclay data commit is `e4f2118050379e860e7c2fdcdb4646f70dbd6f97`. The exact 64-file query
+pin is `7dd99df2a6ec06d6a0d6f72b31378cff5b49908113df4d78bee2ee3ffec09112`.
+The independent recovery descriptor binds the frozen packet and data ledger and
+recovers the complete `8981840` predecessor before the existing Mtibe layer.
+Historical pins remain test-only and are rejected by the current registry.
+See the [NR/nanoclay packet](../../material-batches/bianchi-nr-nanoclay-20261020/README.md).

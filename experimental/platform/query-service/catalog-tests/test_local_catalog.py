@@ -37,7 +37,7 @@ class CatalogAPI(unittest.TestCase):
         self.assertEqual(self.client.get('/openapi.json').json()['info']['version'],'0.5.0.dev0')
         from materials_platform import __version__ as umbrella_version
         self.assertEqual(umbrella_version,'0.5.0.dev0')
-        self.assertEqual(self.status['counts']['local_catalog_unique_material_count'],1112)
+        self.assertEqual(self.status['counts']['local_catalog_unique_material_count'],1118)
         self.assertFalse(self.status['provider_counts_combined'])
         for name in ('version','content_digest','runtime_digest'): self.assertRegex(self.status[name],r'^[a-f0-9]{64}$')
     def test_03_exact_baseline_parity(self):
@@ -315,6 +315,77 @@ class CatalogAPI(unittest.TestCase):
                 self.assertEqual(prop['evaluation_support'], 'catalog_only')
                 self.assertIsNone(prop['uncertainty'])
                 self.assertIsNone(prop['sample_count']['value'])
+                self.assertFalse(prop['engineering_allowable'])
+                self.assertFalse(prop['verification']['independent_scientific_review'])
+                self.assertFalse(prop['verification']['raw_data_reanalysis'])
+                exact = self.post('record', kind='reference-properties', record_id=property_id)
+                self.assertEqual(exact.status_code, 200)
+                self.assertEqual(exact.json()['result'], prop)
+                formal = self.client.post('/api/catalog/project/list', json={
+                    'version': formal_status['version'], 'record_id': 'legacy:' + identity_id})
+                self.assertEqual(formal.status_code, 200)
+                self.assertEqual(formal.json()['matched_count'], 1)
+                self.assertEqual(formal.json()['records'][0]['identity'], value['identity'])
+        self.assertEqual(self.client.get('/api/catalog/status').json(), self.status)
+        self.assertEqual(self.client.get('/api/catalog/project/status').json(), formal_status)
+
+    def test_nr_nanoclay_six_reference_resolutions(self):
+        cases = (('1mmt', 'NR_1MMT', 'MMT', '1.0', '0.960', '0.003'),
+                 ('3mmt', 'NR_3MMT', 'MMT', '3.0', '0.973', '0.001'),
+                 ('5mmt', 'NR_5MMT', 'MMT', '5.0', '0.981', '0.005'),
+                 ('1ommt', 'NR_1O-MMT', 'O-MMT', '1.0', '0.959', '0.001'),
+                 ('3ommt', 'NR_3O-MMT', 'O-MMT', '3.0', '0.966', '0.001'),
+                 ('5ommt', 'NR_5O-MMT', 'O-MMT', '5.0', '0.971', '0.003'))
+        formal_status = self.client.get('/api/catalog/project/status').json()
+        for suffix, label, filler, loading, number, plus_minus in cases:
+            with self.subTest(formulation=label):
+                stem = 'bianchi2025_nr_' + suffix
+                identity_id, state_id = 'mat_' + stem, 'state_' + stem
+                property_id = 'refprop_' + stem + '_mass_density'
+                response = self.post('resolve', state_id=state_id)
+                self.assertEqual(response.status_code, 200)
+                value = response.json()['result']
+                self.assertEqual(value['identity']['id'], identity_id)
+                self.assertEqual(value['identity']['category'], 'composite')
+                self.assertIsNone(value['grade'])
+                self.assertEqual(value['state']['source_designation'], label)
+                composition = value['state']['state']['composition_or_purity']
+                self.assertIn('phr = parts per hundred rubber', composition['text'])
+                self.assertIn('SMR 10 natural rubber 100.0; sulfur 1.5; ZnO 5.0; '
+                              'stearic acid 2.0; ZDBC 0.7', composition['text'])
+                self.assertIn('; ' + filler + ' ' + loading + '.', composition['text'])
+                self.assertIn('other nanoclay input with a dash', composition['text'])
+                self.assertIn('modifier identity/amount in the finished composite', composition['notes'])
+                self.assertIn('not established', composition['notes'])
+                self.assertEqual([source['id'] for source in value['sources']],
+                                 ['bianchi_2025_nr_nanoclay'])
+                self.assertEqual(len(value['properties']), 1)
+                prop = value['properties'][0]
+                self.assertEqual(prop['id'], property_id)
+                self.assertEqual(prop['quantity'], 'mass_density')
+                self.assertEqual(prop['reported_value']['number'], number)
+                self.assertEqual(prop['reported_value']['unit_code'], 'g/cm^3')
+                self.assertEqual(prop['reporting_basis'], 'reported_summary')
+                self.assertEqual(prop['summary_statistic'], 'reported_value')
+                self.assertEqual(prop['density_basis'], 'not_stated')
+                self.assertEqual(prop['determination_basis'], 'source_reports_measurement')
+                self.assertEqual(prop['evidence_kind'], 'published_experimental_reference')
+                self.assertEqual(prop['conditions']['temperature']['text'],
+                                 'Room temperature; numerical temperature unspecified')
+                self.assertEqual(prop['sample_count']['value'], 3)
+                self.assertEqual(prop['sample_count']['relation'], 'exact')
+                self.assertEqual(prop['uncertainty_status'], 'reported_plus_minus_unspecified')
+                self.assertEqual(prop['uncertainty']['type'], 'reported_plus_minus_unspecified')
+                self.assertEqual(prop['uncertainty']['number'], plus_minus)
+                self.assertEqual(prop['uncertainty']['unit_code'], 'g/cm^3')
+                self.assertIsNone(prop['uncertainty']['coverage_factor'])
+                self.assertIsNone(prop['uncertainty']['confidence_level'])
+                if suffix == '3mmt':
+                    self.assertIn('NR_3MMsT', [row['text'] for row in value['state']['aliases']])
+                    self.assertIn('NR_3MMsT', prop['evidence'][0]['locator'])
+                    self.assertTrue(prop['source_discrepancies'])
+                    self.assertIn('unique 3 phr natural-MMT formulation in Table 8', prop['source_discrepancies'][0]['disposition'])
+                self.assertEqual(prop['evaluation_support'], 'catalog_only')
                 self.assertFalse(prop['engineering_allowable'])
                 self.assertFalse(prop['verification']['independent_scientific_review'])
                 self.assertFalse(prop['verification']['raw_data_reanalysis'])

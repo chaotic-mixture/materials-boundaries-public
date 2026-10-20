@@ -4,8 +4,8 @@ The released main baseline admits 1057 source-qualified identities and exactly
 24 reviewed computed composition buckets under formal-project-count-policy/1,
 for 1081 formal project admissions.
 
-This unmerged local experiment contains 1112 source-qualified identities and the
-same 24 computed buckets, totaling 1136. Main remains unchanged. Resource pins
+This unmerged local experiment contains 1118 source-qualified identities and the
+same 24 computed buckets, totaling 1142. Main remains unchanged. Resource pins
 match the local core for reproducible testing; they do not publish a release.
 Neither total is a global physical-uniqueness claim.
 
@@ -123,8 +123,8 @@ historical pins remain test-only and are rejected by the current registry.
 See the [binary-oxide packet](../experimental/material-batches/nbs-binary-oxide-density-20261019/README.md).
 
 Three source-qualified Mtibe PBS/PBAT-lignosulphonate-ZnO formulations add three
-composite identities, states and tensile-modulus references. The current core
-contains 1112 identities, states and properties; the project view contains 1136
+composite identities, states and tensile-modulus references. That core snapshot
+contained 1112 identities, states and properties; its project view contained 1136
 entries, including 13 composites. Other categories, 116 sources, 21 grades,
 24 computed buckets and 62 excluded examples are unchanged.
 
@@ -140,3 +140,24 @@ The independent recovery descriptor binds the frozen packet and data ledger and
 recovers the complete `a5cc3f6` predecessor before the existing binary-oxide layer.
 Historical pins remain test-only and are rejected by the current registry.
 See the [Mtibe hybrid packet](../experimental/material-batches/mtibe-pbs-pbat-hybrids-20261019/README.md).
+
+Six source-qualified Bianchi NR/nanoclay formulations add six composite identities,
+states and mass-density references. The current core contains 1118 identities,
+states and properties; the project view contains 1142 entries, including 19
+composites. Other categories, 116 sources, 21 grades, 24 computed buckets and
+62 excluded examples are unchanged.
+
+The six recipes share the SMR 10 NR/curative base and add MMT or organically
+modified O-MMT at 1, 3 or 5 phr. Distinct filler inputs and recipe loadings define
+the source-qualified formulations; raw-material grades, brands, specimens and
+processing labels do not add identities. The organic-modifier fraction and
+complete final chemical composition remain unknown. Density uses three specimens
+at room temperature with no numerical temperature, mean or standard deviation
+inferred. The source Table 1 NR_3MMsT typo maps to the single NR_3MMT formulation.
+
+The NR/nanoclay data commit is `e4f2118050379e860e7c2fdcdb4646f70dbd6f97`. The exact 64-file query
+pin is `7dd99df2a6ec06d6a0d6f72b31378cff5b49908113df4d78bee2ee3ffec09112`.
+The independent recovery descriptor binds the frozen packet and data ledger and
+recovers the complete `8981840` predecessor before the existing Mtibe layer.
+Historical pins remain test-only and are rejected by the current registry.
+See the [NR/nanoclay packet](../experimental/material-batches/bianchi-nr-nanoclay-20261020/README.md).

@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "baseline_commit": "8981840519f611e62490ce4e9a614381201fe7e3",
+  "updates": {
+    "README.md": {
+      "previous_sha256": "1c5defa40980b8b0d737cd76395c6d92b63d9c0b842f23ca248e38c0261e1324",
+      "sha256": "623289997404a9a4200b6134c90cded406c5428f93c10c5a0d600ba976daaf9c",
+      "edits": [
+        {
+          "offset": 1835,
+          "before": "2",
+          "after": "8"
+        },
+        {
+          "offset": 1890,
+          "before": "2",
+          "after": "8"
+        },
+        {
+          "offset": 1924,
+          "before": "2",
+          "after": "8"
+        }
+      ]
+    },
+    ".github/workflows/ci.yml": {
+      "previous_sha256": "ea84c9e0dd33dcd31e361492b7322edf884a12d46178c9b08396b2763fa84b8b",
+      "sha256": "340881e4177ec2dc42d1be606fc2b17f7e2b4baa8c098bfb773b3e810a263a9a",
+      "edits": [
+        {
+          "offset": 708,
+          "before": "",
+          "after": "' && github.ref != 'refs/heads/experiment/primary-table-growth-5-20261020"
+        },
+        {
+          "offset": 2048,
+          "before": "",
+          "after": "' && github.ref != 'refs/heads/experiment/primary-table-growth-5-20261020"
+        },
+        {
+          "offset": 16631,
+          "before": "",
+          "after": "  primary-table-growth-5-targeted:\n    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/experiment/primary-table-growth-5-20261020' }}\n    runs-on: ${{ matrix.os }}\n    timeout-minutes: 60\n    strategy:\n      fail-fast: false\n      matrix:\n        include:\n          - os: ubuntu-latest\n            python-version: '3.11'\n          - os: windows-latest\n            python-version: '3.12'\n    env:\n      PYTHONUTF8: '1'\n      PYTHONDONTWRITEBYTECODE: '1'\n    steps:\n      - run: git config --global core.autocrlf false\n      - uses: actions/checkout@v4\n        with:\n          fetch-depth: 0\n          persist-credentials: false\n      - uses: actions/setup-python@v5\n        with:\n          python-version: ${{ matrix.python-version }}\n      - run: python scripts/run_primary_table_growth_5_ci.py --validate-scope\n      - run: \"python -m pip install --no-deps --only-binary=:all: -r experimental/platform/ci/build-requirements.txt\"\n      - run: python -m pip install --no-build-isolation -e '.[dev]'\n      - run: python scripts/run_primary_table_growth_5_ci.py --test\n      - run: python scripts/validate_catalogs.py\n      - run: python -m pip wheel --no-index --no-deps --no-build-isolation --wheel-dir dist . ./formal-catalog ./experimental/platform/federation ./experimental/platform/query-service ./experimental/platform/lifecycle ./experimental/platform\n      - run: \"python -m pip download --no-deps --only-binary=:all: --dest dist/dependencies -r experimental/platform/requirements-lock.txt -r experimental/platform/ci/projection-requirements.txt\"\n      - run: python scripts/run_primary_table_growth_5_ci.py --wheel-dir dist --dependency-dir dist/dependencies\n"
+        }
+      ]
+    }
+  }
+}
