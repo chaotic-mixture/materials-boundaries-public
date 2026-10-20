@@ -1,0 +1,310 @@
+{
+  "schema": "formulation-preparation-receipt/1",
+  "batch_id": "outokumpu-core-moduli-20261020",
+  "baseline_commit": "eee77b5033d7671bbaa2d3b4eca57c88d52fc411",
+  "command": [
+    "C:\\Users\\pc\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "scripts/prepare_formulation_packet.py",
+    "--spec",
+    "experimental/material-batches/outokumpu-core-moduli-20261020/packet-spec.json",
+    "--baseline-dir",
+    "materials_boundaries/data",
+    "--output",
+    "experimental/material-batches/outokumpu-core-moduli-20261020/prepared-packet.json"
+  ],
+  "execution_environment": "Native Windows immutable-writer environment; no product tests",
+  "preparer_sha256": "274c067d2ca0c2033322e294cb81ae4c83a89914933df43e6a2c9e956bb18910",
+  "attempts": [
+    {
+      "purpose": "first_creation",
+      "started_utc": "2026-10-20T12:38:39.857318+00:00",
+      "finished_utc": "2026-10-20T12:38:44.547432+00:00",
+      "exit_code": 0,
+      "stdout": "Created review-only formulation packet: experimental\\material-batches\\outokumpu-core-moduli-20261020\\prepared-packet.json\nCandidate identity delta: 10\nHandoff ready: yes\nFormal admitted delta: 0. Source transcription is not scientific approval; runtime catalogs unchanged.\n",
+      "stderr": "",
+      "output_sha256": "c7317758ae4c1a4025ac00c6b288770e61cf33056caaf1771a638af66d32b84f",
+      "output_bytes": 299262,
+      "output_mtime_ns": 1792499924536414000
+    },
+    {
+      "purpose": "identical_repeat",
+      "started_utc": "2026-10-20T12:38:44.561894+00:00",
+      "finished_utc": "2026-10-20T12:38:49.235943+00:00",
+      "exit_code": 0,
+      "stdout": "Unchanged review-only formulation packet: experimental\\material-batches\\outokumpu-core-moduli-20261020\\prepared-packet.json\nCandidate identity delta: 10\nHandoff ready: yes\nFormal admitted delta: 0. Source transcription is not scientific approval; runtime catalogs unchanged.\n",
+      "stderr": "",
+      "output_sha256": "c7317758ae4c1a4025ac00c6b288770e61cf33056caaf1771a638af66d32b84f",
+      "output_bytes": 299262,
+      "output_mtime_ns": 1792499924536414000
+    }
+  ],
+  "formal_admitted_delta": 0,
+  "prior_input_correction": {
+    "failed_preparer_receipt_path": "incremental-evidence/primary-table-growth-7-20261020/source-research/preparation-failed-receipt.json",
+    "failed_preparer_receipt_sha256": "6e3a25b8b3f0363a43cc6482cebbef9fdbe2c11e630209196dee561ddb2434f8",
+    "correction_receipt_path": "incremental-evidence/primary-table-growth-7-20261020/candidate-preparation/preparer-input-correction/correction-receipt.json",
+    "correction_receipt_sha256": "32f184e869d10d32d15fe1c0732c35535526a3d76ba3bcc6d83aa481af9e6cfa",
+    "scope": "Preserve the earlier exit2/no-output canonical-JSON rejection. Only operational wall-time type and inspection-scope equality were corrected; scientific facts and source review unchanged."
+  },
+  "status": "created_then_unchanged",
+  "byte_identity_preserved": true,
+  "mtime_preserved": true,
+  "compiler_report": {
+    "baseline_sha256": {
+      "materials": "f32c62bab9e950f8cd4f3fbe19c3c5b9a8e915a0e086be48c7108b54b8f30312",
+      "reference_properties": "9a9cdfebe0f660d7a6266f8a7b51fb99b23bc7996fff58564cbe9f05ae6c91f2",
+      "sources": "4ba9dcd9258cd1e2d9e17bdf20b4fdaa39e081e77779d12eb726ee91b19835ae"
+    },
+    "before": {
+      "identities": 1124,
+      "grades": 21,
+      "states": 1124,
+      "properties": 1124,
+      "sources": 116,
+      "categories": {
+        "metal": 22,
+        "inorganic": 49,
+        "polymer": 18,
+        "composite": 25,
+        "natural": 1010
+      }
+    },
+    "after": {
+      "identities": 1134,
+      "grades": 31,
+      "states": 1134,
+      "properties": 1134,
+      "sources": 116,
+      "categories": {
+        "metal": 32,
+        "inorganic": 49,
+        "polymer": 18,
+        "composite": 25,
+        "natural": 1010
+      }
+    },
+    "delta": {
+      "identities": 10,
+      "grades": 10,
+      "states": 10,
+      "properties": 10,
+      "sources": 0,
+      "categories": {
+        "metal": 10,
+        "inorganic": 0,
+        "polymer": 0,
+        "composite": 0,
+        "natural": 0
+      }
+    },
+    "formal_admitted_delta": 0,
+    "handoff_ready": true,
+    "pending_gates": [],
+    "identity_crosswalk": [
+      {
+        "identity_id": "mat_outokumpu_201",
+        "source_id": "outokumpu_core_1560en4_202211",
+        "source_designations": [
+          "Core 201/4372"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "outokumpu_core_1560en4_202211",
+            "url": "https://www.outokumpu.com/en/products/product-ranges/-/media/files/products/core/outokumpu-core-range-datasheet.pdf?hash=0DB21994AD31F93E9C62A531BE9C36E6&modified=20251117111909&revision=025e9931-a1d5-4c8f-8ff5-f881d38916da",
+            "locator": "PDF p.1 Table 1, Core 201/4372 row: EN/UNS designations and typical composition; p.3 Table 2, Core 201/4372 description",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "Named alloy's UNS designation and source typical-composition evidence distinguish the selected formulation from the frozen catalog. The exact source-qualified manufacturer grade is attached to this identity without adding a second material count. The source assigns EN 1.4372 to both Core 201/4372 and Core 201LN/4372. Their different UNS designations and typical C/Cr/Ni/N compositions support separate source-qualified formulations; the shared EN designation alone is not a unique identity key. Qualified EN/UNS labels preserve the shared EN value without installing a duplicate bare-EN synonym or weakening collision checks. The source Others cell is retained as 'Cu 6.6Mn': Cu has no stated amount; 6.6 is associated with Mn, not Cu."
+      },
+      {
+        "identity_id": "mat_outokumpu_201ln",
+        "source_id": "outokumpu_core_1560en4_202211",
+        "source_designations": [
+          "Core 201LN/4372"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "outokumpu_core_1560en4_202211",
+            "url": "https://www.outokumpu.com/en/products/product-ranges/-/media/files/products/core/outokumpu-core-range-datasheet.pdf?hash=0DB21994AD31F93E9C62A531BE9C36E6&modified=20251117111909&revision=025e9931-a1d5-4c8f-8ff5-f881d38916da",
+            "locator": "PDF p.1 Table 1, Core 201LN/4372 row: EN/UNS designations and typical composition; p.3 Table 2, Core 201LN/4372 description",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "Named alloy's UNS designation and source typical-composition evidence distinguish the selected formulation from the frozen catalog. The exact source-qualified manufacturer grade is attached to this identity without adding a second material count. The source assigns EN 1.4372 to both Core 201/4372 and Core 201LN/4372. Their different UNS designations and typical C/Cr/Ni/N compositions support separate source-qualified formulations; the shared EN designation alone is not a unique identity key. Qualified EN/UNS labels preserve the shared EN value without installing a duplicate bare-EN synonym or weakening collision checks. The source Others cell is retained as 'Cu 6.6Mn': Cu has no stated amount; 6.6 is associated with Mn, not Cu."
+      },
+      {
+        "identity_id": "mat_outokumpu_301",
+        "source_id": "outokumpu_core_1560en4_202211",
+        "source_designations": [
+          "Core 301/4310"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "outokumpu_core_1560en4_202211",
+            "url": "https://www.outokumpu.com/en/products/product-ranges/-/media/files/products/core/outokumpu-core-range-datasheet.pdf?hash=0DB21994AD31F93E9C62A531BE9C36E6&modified=20251117111909&revision=025e9931-a1d5-4c8f-8ff5-f881d38916da",
+            "locator": "PDF p.1 Table 1, Core 301/4310 row: EN/UNS designations and typical composition; p.3 Table 2, Core 301/4310 description",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "Named alloy's UNS designation and source typical-composition evidence distinguish the selected formulation from the frozen catalog. The exact source-qualified manufacturer grade is attached to this identity without adding a second material count."
+      },
+      {
+        "identity_id": "mat_outokumpu_301ln",
+        "source_id": "outokumpu_core_1560en4_202211",
+        "source_designations": [
+          "Core 301LN/4318"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "outokumpu_core_1560en4_202211",
+            "url": "https://www.outokumpu.com/en/products/product-ranges/-/media/files/products/core/outokumpu-core-range-datasheet.pdf?hash=0DB21994AD31F93E9C62A531BE9C36E6&modified=20251117111909&revision=025e9931-a1d5-4c8f-8ff5-f881d38916da",
+            "locator": "PDF p.1 Table 1, Core 301LN/4318 row: EN/UNS designations and typical composition; p.3 Table 2, Core 301LN/4318 description",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "Named alloy's UNS designation and source typical-composition evidence distinguish the selected formulation from the frozen catalog. The exact source-qualified manufacturer grade is attached to this identity without adding a second material count."
+      },
+      {
+        "identity_id": "mat_outokumpu_304",
+        "source_id": "outokumpu_core_1560en4_202211",
+        "source_designations": [
+          "Core 304/4301"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "outokumpu_core_1560en4_202211",
+            "url": "https://www.outokumpu.com/en/products/product-ranges/-/media/files/products/core/outokumpu-core-range-datasheet.pdf?hash=0DB21994AD31F93E9C62A531BE9C36E6&modified=20251117111909&revision=025e9931-a1d5-4c8f-8ff5-f881d38916da",
+            "locator": "PDF p.1 Table 1, Core 304/4301 row: EN/UNS designations and typical composition; p.2 Table 2, Core 304/4301 description",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "Named alloy's UNS designation and source typical-composition evidence distinguish the selected formulation from the frozen catalog. The exact source-qualified manufacturer grade is attached to this identity without adding a second material count."
+      },
+      {
+        "identity_id": "mat_outokumpu_304ln",
+        "source_id": "outokumpu_core_1560en4_202211",
+        "source_designations": [
+          "Core 304LN/4311"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "outokumpu_core_1560en4_202211",
+            "url": "https://www.outokumpu.com/en/products/product-ranges/-/media/files/products/core/outokumpu-core-range-datasheet.pdf?hash=0DB21994AD31F93E9C62A531BE9C36E6&modified=20251117111909&revision=025e9931-a1d5-4c8f-8ff5-f881d38916da",
+            "locator": "PDF p.1 Table 1, Core 304LN/4311 row: EN/UNS designations and typical composition; p.2 Table 2, Core 304LN/4311 description",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "Named alloy's UNS designation and source typical-composition evidence distinguish the selected formulation from the frozen catalog. The exact source-qualified manufacturer grade is attached to this identity without adding a second material count."
+      },
+      {
+        "identity_id": "mat_outokumpu_305",
+        "source_id": "outokumpu_core_1560en4_202211",
+        "source_designations": [
+          "Core 305/4303"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "outokumpu_core_1560en4_202211",
+            "url": "https://www.outokumpu.com/en/products/product-ranges/-/media/files/products/core/outokumpu-core-range-datasheet.pdf?hash=0DB21994AD31F93E9C62A531BE9C36E6&modified=20251117111909&revision=025e9931-a1d5-4c8f-8ff5-f881d38916da",
+            "locator": "PDF p.1 Table 1, Core 305/4303 row: EN/UNS designations and typical composition; p.2 Table 2, Core 305/4303 description",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "Named alloy's UNS designation and source typical-composition evidence distinguish the selected formulation from the frozen catalog. The exact source-qualified manufacturer grade is attached to this identity without adding a second material count."
+      },
+      {
+        "identity_id": "mat_outokumpu_321",
+        "source_id": "outokumpu_core_1560en4_202211",
+        "source_designations": [
+          "Core 321/4541"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "outokumpu_core_1560en4_202211",
+            "url": "https://www.outokumpu.com/en/products/product-ranges/-/media/files/products/core/outokumpu-core-range-datasheet.pdf?hash=0DB21994AD31F93E9C62A531BE9C36E6&modified=20251117111909&revision=025e9931-a1d5-4c8f-8ff5-f881d38916da",
+            "locator": "PDF p.1 Table 1, Core 321/4541 row: EN/UNS designations and typical composition; p.3 Table 2, Core 321/4541 description",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "Named alloy's UNS designation and source typical-composition evidence distinguish the selected formulation from the frozen catalog. The exact source-qualified manufacturer grade is attached to this identity without adding a second material count."
+      },
+      {
+        "identity_id": "mat_outokumpu_347",
+        "source_id": "outokumpu_core_1560en4_202211",
+        "source_designations": [
+          "Core 347/4550"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "outokumpu_core_1560en4_202211",
+            "url": "https://www.outokumpu.com/en/products/product-ranges/-/media/files/products/core/outokumpu-core-range-datasheet.pdf?hash=0DB21994AD31F93E9C62A531BE9C36E6&modified=20251117111909&revision=025e9931-a1d5-4c8f-8ff5-f881d38916da",
+            "locator": "PDF p.1 Table 1, Core 347/4550 row: EN/UNS designations and typical composition; p.3 Table 2, Core 347/4550 description",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "Named alloy's UNS designation and source typical-composition evidence distinguish the selected formulation from the frozen catalog. The exact source-qualified manufacturer grade is attached to this identity without adding a second material count."
+      },
+      {
+        "identity_id": "mat_outokumpu_4622",
+        "source_id": "outokumpu_core_1560en4_202211",
+        "source_designations": [
+          "Core 4622"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "outokumpu_core_1560en4_202211",
+            "url": "https://www.outokumpu.com/en/products/product-ranges/-/media/files/products/core/outokumpu-core-range-datasheet.pdf?hash=0DB21994AD31F93E9C62A531BE9C36E6&modified=20251117111909&revision=025e9931-a1d5-4c8f-8ff5-f881d38916da",
+            "locator": "PDF p.1 Table 1, Core 4622 row: EN/UNS designations and typical composition; p.4 Table 3, Core 4622 description",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "Named alloy's UNS designation and source typical-composition evidence distinguish the selected formulation from the frozen catalog. The exact source-qualified manufacturer grade is attached to this identity without adding a second material count."
+      }
+    ]
+  },
+  "bound_files": {
+    "packet-spec.json": {
+      "sha256": "e7643002581f816f4fd5e6bf53d43071f88156d1baf6918384de4fd7283ddee1",
+      "bytes": 159560
+    },
+    "source-review.json": {
+      "sha256": "a952e53651273e91f46d77e7a45d8211f24db02f25d64ca5d023ea6fb804b8af",
+      "bytes": 16139
+    },
+    "README.md": {
+      "sha256": "7c4558bd96fc61db7ac1aaeedce4aa92079d33011cfa5e00eb8d592a154b4320",
+      "bytes": 7600
+    }
+  }
+}
