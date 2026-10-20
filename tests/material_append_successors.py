@@ -32,8 +32,14 @@ DATA_5_LEDGER = "tests/fixtures/primary_table_growth_5_data_20261020.json"
 DATA_5_SHA256 = "ced45ed6989e8988d461b0256c3ef7781c0f04b8364c6c991e3cacf36b064ff9"
 FILE_5_LEDGER = "tests/fixtures/primary_table_growth_5_files_20261020.json"
 FILE_5_SHA256 = "1f2c64f12b385228a8f7360da50bb85e2746b6fbd7adfdb5fb64d3a6624d34a2"
+DATA_6_LEDGER = "tests/fixtures/primary_table_growth_6_data_20261020.json"
+DATA_6_SHA256 = "3d3335edadae838524756ad1b33efb733d48893a123e6637c461dc79d59861b5"
+FILE_6_LEDGER = "tests/fixtures/primary_table_growth_6_files_20261020.json"
+FILE_6_SHA256 = "e13d5e02e863da91ea6318b598c69df73cc37af72b092ba502d466adba7244ab"
 
 FROZEN_SUCCESSORS = (
+    {"batch_id": "tamas-benyei-nbr-rcf-20261020",
+     "data": (DATA_6_LEDGER, DATA_6_SHA256), "files": (FILE_6_LEDGER, FILE_6_SHA256)},
     {"batch_id": "bianchi-nr-nanoclay-20261020",
      "data": (DATA_5_LEDGER, DATA_5_SHA256), "files": (FILE_5_LEDGER, FILE_5_SHA256)},
     {"batch_id": "mtibe-pbs-pbat-hybrids-20261019",

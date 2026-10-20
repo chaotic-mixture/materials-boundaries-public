@@ -358,7 +358,7 @@ See the [Mtibe hybrid packet](../../material-batches/mtibe-pbs-pbat-hybrids-2026
 
 ## Six NR/nanoclay formulations, 2026-10-20
 
-The current snapshot contains **1142 project entries = 1118 source-qualified
+The NR/nanoclay snapshot contains **1142 project entries = 1118 source-qualified
 identities + 24 reviewed computed compositions**. MMT and organically modified
 O-MMT at 1, 3 and 5 phr add six NR-based composite identities, states and
 mass-density references, bringing composites to 19. All other category counts,
@@ -383,3 +383,27 @@ The independent recovery descriptor binds the frozen packet and data ledger and
 recovers the complete `8981840` predecessor before the existing Mtibe layer.
 Historical pins remain test-only and are rejected by the current registry.
 See the [NR/nanoclay packet](../../material-batches/bianchi-nr-nanoclay-20261020/README.md).
+
+## Six solid NBR/mCF formulations, 2026-10-20
+
+Six solid NBR/milled-recycled-carbon-fibre formulations (Table 3 B-G) add six
+composite identities, states and tensile-strength references. The current core
+contains **1124 identities** and the project view **1148 = 1124 + 24** entries,
+including 25 composites. Other categories, 116 sources, 21 grades and 62 excluded
+computed examples remain unchanged. Loadings are 5, 10, 20, 30, 40 and 50 phr;
+the existing REF (0 phr), D_Fo foam and direction-specific specimens add no identities.
+
+Table 4 retains 5.26, 5.11, 5.33, 5.47, 4.60 and 4.57 MPa with reported plus/minus
+0.78, 1.27, 0.74, 1.05, 0.68 and 0.72 MPa. The source reports means pooled across
+two orthogonal specimen directions. The plus/minus statistic, sample count,
+numerical test temperature, humidity and conditioning remain unknown. The
+abstract's improvement statement is retained as a discrepancy with the selected
+Table 4 values; no improvement or isotropy is inferred. Supplier constituent
+grades and ACTMIX S-80 product input do not become new finished-material grades.
+
+The NBR/mCF data commit is `13703d881836a50f290865448a8e8289779c5bd1`. The exact 64-file query
+pin is `8c47bf8592437932508298417ed4c6e93e92091a0e25266bee3816acec797da8`. The independent descriptor binds
+the frozen packet and data ledger and recovers the complete `f5bdcc4` predecessor
+before the existing NR/nanoclay layer. Historical pins remain test-only and are
+rejected by the current registry.
+See the [NBR/mCF packet](../../material-batches/tamas-benyei-nbr-rcf-20261020/README.md).

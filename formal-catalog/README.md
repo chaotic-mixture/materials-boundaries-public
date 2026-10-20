@@ -4,8 +4,8 @@ The released main baseline admits 1057 source-qualified identities and exactly
 24 reviewed computed composition buckets under formal-project-count-policy/1,
 for 1081 formal project admissions.
 
-This unmerged local experiment contains 1118 source-qualified identities and the
-same 24 computed buckets, totaling 1142. Main remains unchanged. Resource pins
+This unmerged local experiment contains 1124 source-qualified identities and the
+same 24 computed buckets, totaling 1148. Main remains unchanged. Resource pins
 match the local core for reproducible testing; they do not publish a release.
 Neither total is a global physical-uniqueness claim.
 
@@ -142,7 +142,7 @@ Historical pins remain test-only and are rejected by the current registry.
 See the [Mtibe hybrid packet](../experimental/material-batches/mtibe-pbs-pbat-hybrids-20261019/README.md).
 
 Six source-qualified Bianchi NR/nanoclay formulations add six composite identities,
-states and mass-density references. The current core contains 1118 identities,
+states and mass-density references. The NR/nanoclay core contains 1118 identities,
 states and properties; the project view contains 1142 entries, including 19
 composites. Other categories, 116 sources, 21 grades, 24 computed buckets and
 62 excluded examples are unchanged.
@@ -161,3 +161,25 @@ The independent recovery descriptor binds the frozen packet and data ledger and
 recovers the complete `8981840` predecessor before the existing Mtibe layer.
 Historical pins remain test-only and are rejected by the current registry.
 See the [NR/nanoclay packet](../experimental/material-batches/bianchi-nr-nanoclay-20261020/README.md).
+
+Six solid NBR/milled-recycled-carbon-fibre formulations (Table 3 B-G) add six
+composite identities, states and tensile-strength references. The current core
+contains **1124 identities** and the project view **1148 = 1124 + 24** entries,
+including 25 composites. Other categories, 116 sources, 21 grades and 62 excluded
+computed examples remain unchanged. Loadings are 5, 10, 20, 30, 40 and 50 phr;
+the existing REF (0 phr), D_Fo foam and direction-specific specimens add no identities.
+
+Table 4 retains 5.26, 5.11, 5.33, 5.47, 4.60 and 4.57 MPa with reported plus/minus
+0.78, 1.27, 0.74, 1.05, 0.68 and 0.72 MPa. The source reports means pooled across
+two orthogonal specimen directions. The plus/minus statistic, sample count,
+numerical test temperature, humidity and conditioning remain unknown. The
+abstract's improvement statement is retained as a discrepancy with the selected
+Table 4 values; no improvement or isotropy is inferred. Supplier constituent
+grades and ACTMIX S-80 product input do not become new finished-material grades.
+
+The NBR/mCF data commit is `13703d881836a50f290865448a8e8289779c5bd1`. The exact 64-file query
+pin is `8c47bf8592437932508298417ed4c6e93e92091a0e25266bee3816acec797da8`. The independent descriptor binds
+the frozen packet and data ledger and recovers the complete `f5bdcc4` predecessor
+before the existing NR/nanoclay layer. Historical pins remain test-only and are
+rejected by the current registry.
+See the [NBR/mCF packet](../experimental/material-batches/tamas-benyei-nbr-rcf-20261020/README.md).
