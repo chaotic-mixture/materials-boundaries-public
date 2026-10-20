@@ -33,7 +33,8 @@ PRE_BINARY_BATCH_PIN_SHA256 = '148c38cfa1819b8103ffa6c0f856d824b9fc54a3e9f8a5eec
 PRE_MTIBE_BATCH_PIN_SHA256 = '15c0619c3a55984550ecd564692c4588f777a10d60a4e9a01b91079c12978c2f'
 PRE_NR_BATCH_PIN_SHA256 = 'c127bf69ccca825e1b2ca3fd496f6ead65bf68478fc232d27f087b7e551b6909'
 PRE_NBR_BATCH_PIN_SHA256 = '7dd99df2a6ec06d6a0d6f72b31378cff5b49908113df4d78bee2ee3ffec09112'
-CURRENT_PIN_SHA256 = '8c47bf8592437932508298417ed4c6e93e92091a0e25266bee3816acec797da8'
+PRE_OUTOKUMPU_BATCH_PIN_SHA256 = '8c47bf8592437932508298417ed4c6e93e92091a0e25266bee3816acec797da8'
+CURRENT_PIN_SHA256 = 'b228d514b2b1dbb8bad428d6f0be7f300947ee2e1c3c64a6f9f0e55df132ade7'
 GROWTH_ROOT = Path(__file__).resolve().parents[4]
 GROWTH_LEDGER = GROWTH_ROOT / 'tests/fixtures/source_family_growth_data_20261019.json'
 GROWTH_LEDGER_SHA256 = '9dfc8d71e89041f05e11a870ad29aea34cb3ab90586bcea8f1d717adc9878ac3'
@@ -112,6 +113,15 @@ NBR_PACKET_SHA256 = 'ae401d2ab8b565acf5772bba10833176f46293ec025a9552d15aafd6a68
 PRE_NBR_BATCH_DATA_SHA256 = {
     'materials.json': '8d5489af4e090f5310c22d21c6f385020f6d9b1d097b3d4b6ac964178e6afa81',
     'reference_properties.json': 'd0e0ad9c2036b4617842525951db51257623c564ad4b1ffcfaa36eaa28481407',
+    'sources.json': '4ba9dcd9258cd1e2d9e17bdf20b4fdaa39e081e77779d12eb726ee91b19835ae',
+}
+OUTOKUMPU_LEDGER = GROWTH_ROOT / 'tests/fixtures/primary_table_growth_7_data_20261020.json'
+OUTOKUMPU_LEDGER_SHA256 = '26c80c5274504af2e0adbb55b4346d395e7c13e7009c504229f9c9dc32ca01fe'
+OUTOKUMPU_PACKET = GROWTH_ROOT / 'experimental/material-batches/outokumpu-core-moduli-20261020/prepared-packet.json'
+OUTOKUMPU_PACKET_SHA256 = 'c7317758ae4c1a4025ac00c6b288770e61cf33056caaf1771a638af66d32b84f'
+PRE_OUTOKUMPU_BATCH_DATA_SHA256 = {
+    'materials.json': 'f32c62bab9e950f8cd4f3fbe19c3c5b9a8e915a0e086be48c7108b54b8f30312',
+    'reference_properties.json': '9a9cdfebe0f660d7a6266f8a7b51fb99b23bc7996fff58564cbe9f05ae6c91f2',
     'sources.json': '4ba9dcd9258cd1e2d9e17bdf20b4fdaa39e081e77779d12eb726ee91b19835ae',
 }
 PRE_EVIDENCE_BATCH_DATA_SHA256 = {
@@ -438,6 +448,21 @@ def recover_pre_table_batch_catalogs(current):
     return recover_exact_append_catalogs(current, table_batch_descriptor())
 
 
+def outokumpu_batch_descriptor():
+    return {'label': 'Outokumpu batch', 'ledger': OUTOKUMPU_LEDGER,
+            'ledger_sha256': OUTOKUMPU_LEDGER_SHA256, 'packet': OUTOKUMPU_PACKET,
+            'packet_sha256': OUTOKUMPU_PACKET_SHA256,
+            'parent_commit': 'eee77b5033d7671bbaa2d3b4eca57c88d52fc411',
+            'parent_data': PRE_OUTOKUMPU_BATCH_DATA_SHA256,
+            'addition_counts': {'identities': 10, 'grades': 10, 'states': 10,
+                                'properties': 10, 'sources': 0}}
+
+def outokumpu_batch_inventory():
+    return frozen_append_inventory(outokumpu_batch_descriptor())
+
+def recover_pre_outokumpu_batch_catalogs(current):
+    return recover_exact_append_catalogs(current, outokumpu_batch_descriptor())
+
 def nbr_batch_descriptor():
     return {'label': 'NBR batch', 'ledger': NBR_LEDGER,
             'ledger_sha256': NBR_LEDGER_SHA256, 'packet': NBR_PACKET,
@@ -618,6 +643,7 @@ class BaselineCompatibility(unittest.TestCase):
         cls.original_identity = sha256(json.dumps(
             cls.expected, sort_keys=True, separators=(',', ':'), ensure_ascii=False,
             allow_nan=False).encode()).hexdigest()
+        cls.recover_outokumpu_anchor()
         cls.recover_nbr_anchor()
         cls.recover_nr_anchor()
         cls.recover_mtibe_anchor()
@@ -630,10 +656,28 @@ class BaselineCompatibility(unittest.TestCase):
         cls.recover_historical_anchor()
 
     @classmethod
+    def recover_outokumpu_anchor(cls):
+        """Recover the exact eee77b5 data and complete pin before older append layers."""
+        cls.outokumpu_parent_root = cls.fixture_root / 'pre-outokumpu-batch-data'
+        shutil.copytree(cls.original_root, cls.outokumpu_parent_root)
+        data_root = cls.outokumpu_parent_root / 'data'
+        current = {name: json.loads((data_root / name).read_bytes())
+                   for name in PRE_OUTOKUMPU_BATCH_DATA_SHA256}
+        for name, value in recover_pre_outokumpu_batch_catalogs(current).items():
+            (data_root / name).write_bytes((json.dumps(value, ensure_ascii=False,
+                indent=2, allow_nan=False) + '\n').encode('utf-8'))
+        cls.outokumpu_parent_pin = registry.canonical(manifest(cls.outokumpu_parent_root))
+        if sha256(cls.outokumpu_parent_pin).hexdigest() != PRE_OUTOKUMPU_BATCH_PIN_SHA256:
+            raise AssertionError('Recovered eee77b5 complete pin bytes differ')
+        cls.outokumpu_parent_query_root = cls.fixture_root / 'pre-outokumpu-batch-query'
+        (cls.outokumpu_parent_query_root / 'pins').mkdir(parents=True)
+        (cls.outokumpu_parent_query_root / 'pins/legacy_baseline.json').write_bytes(cls.outokumpu_parent_pin)
+
+    @classmethod
     def recover_nbr_anchor(cls):
         """Recover the exact f5bdcc4 data and complete pin before older append layers."""
         cls.nbr_parent_root = cls.fixture_root / 'pre-nbr-batch-data'
-        shutil.copytree(cls.original_root, cls.nbr_parent_root)
+        shutil.copytree(cls.outokumpu_parent_root, cls.nbr_parent_root)
         data_root = cls.nbr_parent_root / 'data'
         current = {name: json.loads((data_root / name).read_bytes())
                    for name in PRE_NBR_BATCH_DATA_SHA256}
@@ -929,12 +973,89 @@ class BaselineCompatibility(unittest.TestCase):
         with self.assertRaisesRegex(AssertionError, 'Recovered a592 catalog bytes differ'):
             recover_a592_catalogs(changed)
 
+    def test_outokumpu_batch_parent_manifest_and_catalog_recovery_remain_exact(self):
+        expected = dict(self.expected)
+        expected.update({'data/' + name: digest for name, digest in PRE_OUTOKUMPU_BATCH_DATA_SHA256.items()})
+        self.assertEqual(len(manifest(self.outokumpu_parent_root)), 64)
+        self.assertEqual(manifest(self.outokumpu_parent_root), expected)
+        current = {name: json.loads((self.current_root / 'data' / name).read_bytes())
+                   for name in PRE_OUTOKUMPU_BATCH_DATA_SHA256}
+        parent = {name: json.loads((self.outokumpu_parent_root / 'data' / name).read_bytes())
+                  for name in PRE_OUTOKUMPU_BATCH_DATA_SHA256}
+        self.assertEqual(recover_pre_outokumpu_batch_catalogs(current), parent)
+        self.assertEqual(recover_pre_outokumpu_batch_catalogs(parent), parent)
+        self.assertEqual(current['sources.json'], parent['sources.json'])
+        self.assertEqual(len(current['materials.json']['grades']), len(parent['materials.json']['grades']) + 10)
+        self.assertEqual(current['materials.json']['grades'][:-10], parent['materials.json']['grades'])
+        with self.assertRaisesRegex(AssertionError, 'NBR batch predecessor catalog bytes differ'):
+            recover_pre_nbr_batch_catalogs(current)
+        ledger, additions = outokumpu_batch_inventory()
+        for filename, section, collection, label in GROWTH_COLLECTIONS:
+            if not additions[label]:
+                continue
+            candidate = additions[label][0]
+            for mutation in ('missing', 'changed', 'duplicate'):
+                with self.subTest(collection=label, mutation=mutation):
+                    changed = deepcopy(current)
+                    rows = changed[filename][collection]
+                    row = next(row for row in rows if row['id'] == candidate['id'])
+                    if mutation == 'missing':
+                        rows.remove(row)
+                    elif mutation == 'changed':
+                        row['version'] = 'unreviewed'
+                    else:
+                        rows.append(deepcopy(row))
+                    with self.assertRaisesRegex(AssertionError, 'Outokumpu batch'):
+                        recover_pre_outokumpu_batch_catalogs(changed)
+        for filename, collection in [('materials.json', 'identities'), ('sources.json', 'records')]:
+            changed = deepcopy(current)
+            changed[filename][collection][0]['version'] = 'unreviewed'
+            with self.subTest(retained_collection=collection), self.assertRaisesRegex(
+                    AssertionError, 'Outokumpu batch predecessor catalog bytes differ'):
+                recover_pre_outokumpu_batch_catalogs(changed)
+        changed = deepcopy(current)
+        changed['materials.json']['identities'][-10:] = reversed(changed['materials.json']['identities'][-10:])
+        with self.assertRaisesRegex(AssertionError, 'Outokumpu batch successor catalog order or bytes differ'):
+            recover_pre_outokumpu_batch_catalogs(changed)
+        original_read = Path.read_bytes
+        for target in (OUTOKUMPU_LEDGER, OUTOKUMPU_PACKET):
+            def replaced(path):
+                return original_read(path) + (b' ' if path == target else b'')
+            with self.subTest(binding=target.name), patch.object(Path, 'read_bytes', replaced), \
+                    self.assertRaisesRegex(AssertionError, 'Outokumpu batch .* bytes differ'):
+                recover_pre_outokumpu_batch_catalogs(current)
+        with self.resources(self.outokumpu_parent_root, self.outokumpu_parent_query_root):
+            with self.assertRaisesRegex(ValueError, 'Baseline pin was replaced'):
+                registry.baseline_digest()
+            with patch.object(registry, 'BASELINE_PIN', PRE_OUTOKUMPU_BATCH_PIN_SHA256):
+                self.assertEqual(registry.baseline_digest(), PRE_OUTOKUMPU_BATCH_PIN_SHA256)
+        with self.resources(self.outokumpu_parent_root), self.assertRaisesRegex(
+                ValueError, 'Installed legacy baseline differs'):
+            registry.baseline_digest()
+
+    def test_outokumpu_batch_parent_database_rejected_without_migration(self):
+        for rich in (False, True):
+            with self.subTest(rich=rich):
+                review = self.review(rich)
+                path = self.work / ('eee77b5-v2.db' if rich else 'eee77b5-legacy.db')
+                with self.resources(self.outokumpu_parent_root, self.outokumpu_parent_query_root), \
+                        patch.object(registry, 'BASELINE_PIN', PRE_OUTOKUMPU_BATCH_PIN_SHA256):
+                    historical = self.make_registry(path, review, rich)
+                    before = historical.admit([review['records'][0]['candidate_id']])
+                raw = path.read_bytes()
+                rows = self.database_rows(path)
+                with self.assertRaisesRegex(ValueError, 'Initial baseline and review input cannot be replaced'):
+                    self.make_registry(path, review, rich)
+                self.assertEqual(path.read_bytes(), raw)
+                self.assertEqual(self.database_rows(path), rows)
+                self.assertEqual(historical.snapshot(), before)
+
     def test_nbr_batch_parent_manifest_and_catalog_recovery_remain_exact(self):
         expected = dict(self.expected)
         expected.update({'data/' + name: digest for name, digest in PRE_NBR_BATCH_DATA_SHA256.items()})
         self.assertEqual(len(manifest(self.nbr_parent_root)), 64)
         self.assertEqual(manifest(self.nbr_parent_root), expected)
-        current = {name: json.loads((self.current_root / 'data' / name).read_bytes())
+        current = {name: json.loads((self.outokumpu_parent_root / 'data' / name).read_bytes())
                    for name in PRE_NBR_BATCH_DATA_SHA256}
         parent = {name: json.loads((self.nbr_parent_root / 'data' / name).read_bytes())
                   for name in PRE_NBR_BATCH_DATA_SHA256}

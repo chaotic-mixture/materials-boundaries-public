@@ -4,8 +4,8 @@ The released main baseline admits 1057 source-qualified identities and exactly
 24 reviewed computed composition buckets under formal-project-count-policy/1,
 for 1081 formal project admissions.
 
-This unmerged local experiment contains 1124 source-qualified identities and the
-same 24 computed buckets, totaling 1148. Main remains unchanged. Resource pins
+This unmerged local experiment contains 1134 source-qualified identities and the
+same 24 computed buckets, totaling 1158. Main remains unchanged. Resource pins
 match the local core for reproducible testing; they do not publish a release.
 Neither total is a global physical-uniqueness claim.
 
@@ -163,7 +163,7 @@ Historical pins remain test-only and are rejected by the current registry.
 See the [NR/nanoclay packet](../experimental/material-batches/bianchi-nr-nanoclay-20261020/README.md).
 
 Six solid NBR/milled-recycled-carbon-fibre formulations (Table 3 B-G) add six
-composite identities, states and tensile-strength references. The current core
+composite identities, states and tensile-strength references. The NBR/mCF core
 contains **1124 identities** and the project view **1148 = 1124 + 24** entries,
 including 25 composites. Other categories, 116 sources, 21 grades and 62 excluded
 computed examples remain unchanged. Loadings are 5, 10, 20, 30, 40 and 50 phr;
@@ -183,3 +183,30 @@ the frozen packet and data ledger and recovers the complete `f5bdcc4` predecesso
 before the existing NR/nanoclay layer. Historical pins remain test-only and are
 rejected by the current registry.
 See the [NBR/mCF packet](../experimental/material-batches/tamas-benyei-nbr-rcf-20261020/README.md).
+
+Ten source-qualified Outokumpu Core alloy formulations add ten identities, grades,
+states and Young's-modulus references. The current core contains **1134 identities**
+and the project view **1158 = 1134 + 24** entries. Metals total 32 in the core and
+44 in the project view; grades total 31. Other category counts, 116 sources,
+24 accepted computed compositions and 62 excluded examples remain unchanged.
+
+The selected Table 7 modulus references retain GPa units and the reported
+20 degrees C condition. Their source basis distinguishes EN reference rows from
+the manufacturer-tested footnoted row; it does not turn all entries into new
+measurements. Table 1 typical mass percentages are not specification limits or
+complete alloy formulas. Dashes are not zero and an iron remainder is not inferred.
+
+Core 201/4372 and Core 201LN/4372 retain the shared EN 1.4372 designation with
+separate qualified EN/UNS aliases. Different source-reported UNS and typical
+C/Cr/Ni/N values support two formulations. Searching 1.4372 returns both;
+that shared code is not a unique identity key. Existing 304L/4307 and 441/4509
+are retained; 304L/4306 and unresolved 439M add no new identities. Grade records
+are linked designations, not an additional material count.
+
+The Outokumpu data commit is `7f814e4905ad58bcc66999046d04ca1311ceba9d`. The exact 64-file query
+pin is `b228d514b2b1dbb8bad428d6f0be7f300947ee2e1c3c64a6f9f0e55df132ade7`. The independent descriptor binds the
+frozen packet and data ledger and recovers the complete `eee77b5` predecessor
+before the existing NBR/mCF layer. Historical pins remain test-only and are
+rejected by the current registry. Existing source rights metadata is unchanged;
+only limited factual references and original curation are included.
+See the [Outokumpu Core packet](../experimental/material-batches/outokumpu-core-moduli-20261020/README.md).

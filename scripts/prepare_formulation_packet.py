@@ -33,6 +33,15 @@ NBS_SOURCE_ID = "swanson_tatge_1953_nbs_circ539v1"
 NBS_SOURCE_SHA256 = "af69ed341f5d81b6cd651b984ce489462f8ea798dfa95a98ace78a91b153bade"
 NBS_DOCUMENT_URL = "https://nvlpubs.nist.gov/nistpubs/Legacy/circ/nbscircular539v1.pdf"
 NBS_DOCUMENT_SHA256 = "003b872fbe7d403d38bbd1d752568ee92a96bdb010b6e381bdc82566929e2a6c"
+# This frozen manufacturer record permits only its already-curated limited
+# factual scope. Reuse-license status stays unverified; a hash grants no rights.
+OUTOKUMPU_SOURCE_ID = "outokumpu_core_1560en4_202211"
+OUTOKUMPU_SOURCE_SHA256 = "8495de101d6ce62a9f720cf5c5245aad4349989b0b9a68fee8c81aca501e5154"
+OUTOKUMPU_DOCUMENT_URL = (
+    "https://www.outokumpu.com/en/products/product-ranges/-/media/files/products/core/"
+    "outokumpu-core-range-datasheet.pdf?hash=0DB21994AD31F93E9C62A531BE9C36E6"
+    "&modified=20251117111909&revision=025e9931-a1d5-4c8f-8ff5-f881d38916da")
+OUTOKUMPU_DOCUMENT_SHA256 = "91d2f4b1340562b0d692a3921a5b0ea2518ddcb6cbdcc9ec97a3d7ad886d7ad9"
 
 
 def record_sha256(value):
@@ -78,8 +87,8 @@ def _catalogs(spec, baseline):
     for row in spec["formulations"]:
         object_keys(row, {"identity", "grades", "states"}, "formulation")
         identity = _expand(row["identity"], "identity", contexts)
-        require(identity.get("category") in {"polymer", "composite", "inorganic"},
-                "formulation must be polymer, composite or inorganic")
+        require(identity.get("category") in {"polymer", "composite", "inorganic", "metal"},
+                "formulation must be polymer, composite, inorganic or metal")
         materials["identities"].append(identity)
         array(row["grades"], "grades")
         for item in row["grades"]:
@@ -223,7 +232,55 @@ def _identity_checks(spec, baseline, catalogs):
     return report, pending
 
 
+def _outokumpu_reference_scope(source, baseline, catalogs):
+    if (record_sha256(source) != OUTOKUMPU_SOURCE_SHA256
+            or source not in baseline["sources"]["records"]):
+        return False
+    identities = {row["id"]: row for row in catalogs["materials"]["identities"]}
+    states = {row["id"]: row for row in catalogs["materials"]["records"]}
+    properties = [row for row in catalogs["properties"]["records"] if row["source_id"] == OUTOKUMPU_SOURCE_ID]
+    # Table 7 source attribution, including the marked manufacturer-tested row,
+    # stays an authored review obligation. No grade/value whitelist infers it.
+    # Adding another quantity, revision or reported condition needs a separate
+    # scoped review; neither an input rehash nor a claimed license expands this.
+    return bool(properties) and all(
+        identities[states[prop["material_state_id"]]["identity_id"]]["category"] == "metal"
+        and prop["quantity"] == "youngs_modulus"
+        and prop["quantity_dimension"] == "pressure"
+        and prop["reported_value"]["kind"] == "scalar"
+        and prop["reported_value"]["unit_code"] == "GPa"
+        and prop["reported_value"]["unit_text"] == "GPa"
+        and prop["evidence_kind"] == "manufacturer_reference"
+        and prop["reporting_basis"] == "not_stated"
+        and prop["summary_statistic"] == "not_stated"
+        and prop["determination_basis"] in {"not_stated", "source_reports_measurement"}
+        and prop["density_basis"] is None
+        and prop["method_definition"]["type"] == "source_reported_conventional"
+        and prop["method_definition"]["extraction_window"] is None
+        and prop["conditions"]["temperature"]["status"] == "reported"
+        and prop["conditions"]["temperature"]["text"] == "20 \u00b0C"
+        and all(prop["conditions"][field]["status"] == "not_reported_in_inspected_source"
+                and prop["conditions"][field]["text"] is None
+                for field in ("test_method", "direction", "conditioning", "loading_rate"))
+        and not prop["conditions"].get("additional_conditions")
+        and prop["uncertainty"] is None
+        and prop["uncertainty_status"] == "not_reported_in_inspected_source"
+        and prop["sample_count"]["value"] is None
+        and prop["sample_count"]["relation"] == "not_reported"
+        and prop["source_document"]["url"] == OUTOKUMPU_DOCUMENT_URL
+        and prop["source_document"]["sha256"] == OUTOKUMPU_DOCUMENT_SHA256
+        and prop["source_document"]["revision"] == "1560EN:4. November, 2022."
+        and prop["evaluation_support"] == "catalog_only"
+        and prop["universal_bound"] is False
+        and prop["engineering_allowable"] is False
+        and prop["verification"]["independent_scientific_review"] is False
+        and prop["verification"]["raw_data_reanalysis"] is False
+        for prop in properties)
+
+
 def _source_rights_available(source, baseline, catalogs):
+    if source["id"] == OUTOKUMPU_SOURCE_ID:
+        return _outokumpu_reference_scope(source, baseline, catalogs)
     if source["id"] != NBS_SOURCE_ID:
         license = source.get("license")
         return (isinstance(license, dict) and license.get("status") == "explicit_reuse_license_verified"

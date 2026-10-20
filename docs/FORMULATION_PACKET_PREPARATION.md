@@ -74,8 +74,8 @@ This is a shape illustration, not a complete scientific fixture. The expanded
 records must satisfy the existing material-reference schemas. All IDs, names in
 four language slots, links, source designations, original numeric strings,
 units, method/condition evidence, statistics and explicit unknowns are authored.
-The compiler does not fill missing schema fields. It accepts polymer, composite
-and inorganic identities. Grades remain explicit; an unknown grade stays null.
+The compiler does not fill missing schema fields. It accepts polymer, composite,
+inorganic and metal identities. Grades remain explicit; an unknown grade stays null.
 Several compositions may share one source record and common explicitly authored
 context. An empty `grades` list and one state per identity require no special
 case. Composition, phase and sample qualifiers still require source evidence;
@@ -138,7 +138,7 @@ or missing/pending source review keeps handoff pending. Normally this bounded la
 requires an explicit source reuse-license status and identifier; it does not infer
 a grant from a URL, DOI, hash, or a compiler-generated label.
 
-One existing source-specific notice can also be reused: the complete registry
+An existing source-specific notice can also be reused: the complete registry
 record `swanson_tatge_1953_nbs_circ539v1`, canonical SHA-256
 `af69ed341f5d81b6cd651b984ce489462f8ea798dfa95a98ace78a91b153bade`,
 must already occur unchanged in the pinned baseline. Its NIST employee-authored
@@ -162,6 +162,37 @@ Density values and units remain exactly authored; direct bulk measurement,
 crystallographic calculation and empirical conversion are distinct contracts.
 Thermal conductivity and its units are not supported by the current runtime
 property contract and cannot be introduced through a context or category change.
+
+A separate narrow profile reuses the unchanged manufacturer source
+`outokumpu_core_1560en4_202211`, canonical SHA-256
+`8495de101d6ce62a9f720cf5c5245aad4349989b0b9a68fee8c81aca501e5154`,
+already present in the pinned baseline. Its status remains
+`no_explicit_reuse_license_verified_limited_factual_curation_only`, with a null
+license identifier. The profile supplies no open license, legal clearance or
+general exception for manufacturer sources. A new or rehashed source record,
+even one claiming a license, keeps this known source's handoff pending.
+
+Only selected metal `youngs_modulus` scalar references in `GPa`, explicitly at
+`20 °C`, fit this profile. Each property must bind the exact registered official
+PDF URL, revision `1560EN:4. November, 2022.`, and document SHA-256
+`91d2f4b1340562b0d692a3921a5b0ea2518ddcb6cbdcc9ec97a3d7ad886d7ad9`.
+It retains `manufacturer_reference`, `catalog_only`, unstated reporting and
+summary statistics, and unknown uncertainty, specimen count, test method,
+direction, conditioning and loading rate. Determination may be `not_stated` or
+`source_reports_measurement`; the latter preserves the marked manufacturer-tested
+row's attribution without converting it into published specimen evidence.
+There is no material-ID or numerical-value whitelist. The selected source
+review must establish the actual row, grade, composition and applicable notes.
+Mechanical-table processing conditions cannot silently become conditions of a
+physical-property reference. Other quantities, document versions or asserted
+conditions remain outside this bounded profile.
+
+Only sparse selected facts, attribution and original curation are included;
+no PDF, screenshot, full table or extended source prose is bundled. Source and
+identity reviews remain explicit, and scientific review and raw-data reanalysis
+remain false. Existing collision checks for identities, linked grades and aliases
+also apply to metals; shared designations do not automatically establish chemical
+equivalence or justify duplicate identities.
 
 The `handoff_ready` report means these authored declarations and machine contracts
 passed. It is not independent scientific review, legal certification, main

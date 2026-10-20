@@ -36,8 +36,14 @@ DATA_6_LEDGER = "tests/fixtures/primary_table_growth_6_data_20261020.json"
 DATA_6_SHA256 = "3d3335edadae838524756ad1b33efb733d48893a123e6637c461dc79d59861b5"
 FILE_6_LEDGER = "tests/fixtures/primary_table_growth_6_files_20261020.json"
 FILE_6_SHA256 = "e13d5e02e863da91ea6318b598c69df73cc37af72b092ba502d466adba7244ab"
+DATA_7_LEDGER = "tests/fixtures/primary_table_growth_7_data_20261020.json"
+DATA_7_SHA256 = "26c80c5274504af2e0adbb55b4346d395e7c13e7009c504229f9c9dc32ca01fe"
+FILE_7_LEDGER = "tests/fixtures/primary_table_growth_7_files_20261020.json"
+FILE_7_SHA256 = "9731afe6a6df8a668d2821f571e4cef337084c34dbfff60ccd4deb459c60d2ff"
 
 FROZEN_SUCCESSORS = (
+    {"batch_id": "outokumpu-core-moduli-20261020",
+     "data": (DATA_7_LEDGER, DATA_7_SHA256), "files": (FILE_7_LEDGER, FILE_7_SHA256)},
     {"batch_id": "tamas-benyei-nbr-rcf-20261020",
      "data": (DATA_6_LEDGER, DATA_6_SHA256), "files": (FILE_6_LEDGER, FILE_6_SHA256)},
     {"batch_id": "bianchi-nr-nanoclay-20261020",

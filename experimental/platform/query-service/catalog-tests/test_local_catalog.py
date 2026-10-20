@@ -37,7 +37,7 @@ class CatalogAPI(unittest.TestCase):
         self.assertEqual(self.client.get('/openapi.json').json()['info']['version'],'0.5.0.dev0')
         from materials_platform import __version__ as umbrella_version
         self.assertEqual(umbrella_version,'0.5.0.dev0')
-        self.assertEqual(self.status['counts']['local_catalog_unique_material_count'],1124)
+        self.assertEqual(self.status['counts']['local_catalog_unique_material_count'],1134)
         self.assertFalse(self.status['provider_counts_combined'])
         for name in ('version','content_digest','runtime_digest'): self.assertRegex(self.status[name],r'^[a-f0-9]{64}$')
     def test_03_exact_baseline_parity(self):
@@ -326,6 +326,98 @@ class CatalogAPI(unittest.TestCase):
                 self.assertEqual(formal.status_code, 200)
                 self.assertEqual(formal.json()['matched_count'], 1)
                 self.assertEqual(formal.json()['records'][0]['identity'], value['identity'])
+        self.assertEqual(self.client.get('/api/catalog/status').json(), self.status)
+        self.assertEqual(self.client.get('/api/catalog/project/status').json(), formal_status)
+
+    def test_outokumpu_core_ten_reference_resolutions(self):
+        cases = (('304', '304/4301', '1.4301', 'S30400', '200'),
+                 ('304ln', '304LN/4311', '1.4311', 'S30453', '200'),
+                 ('305', '305/4303', '1.4303', 'S30500', '200'),
+                 ('321', '321/4541', '1.4541', 'S32100', '200'),
+                 ('347', '347/4550', '1.4550', 'S34700', '200'),
+                 ('301ln', '301LN/4318', '1.4318', 'S30153', '200'),
+                 ('301', '301/4310', '1.4310', 'S30100', '200'),
+                 ('201', '201/4372', '1.4372', 'S20100', '200'),
+                 ('201ln', '201LN/4372', '1.4372', 'S20153', '200'),
+                 ('4622', '4622', '1.4622', 'S44330', '220'))
+        source_id = 'outokumpu_core_1560en4_202211'
+        formal_status = self.client.get('/api/catalog/project/status').json()
+        for suffix, designation, en, uns, number in cases:
+            with self.subTest(formulation=suffix):
+                stem = 'outokumpu_' + suffix
+                identity_id, grade_id, state_id = 'mat_' + stem, 'grade_' + stem, 'state_' + stem
+                property_id = 'refprop_' + stem + '_youngs_modulus'
+                response = self.post('resolve', state_id=state_id)
+                self.assertEqual(response.status_code, 200)
+                value = response.json()['result']
+                self.assertEqual(value['identity']['id'], identity_id)
+                self.assertEqual(value['identity']['category'], 'metal')
+                self.assertEqual(value['grade']['id'], grade_id)
+                self.assertEqual(value['grade']['identity_id'], identity_id)
+                self.assertEqual(value['grade']['authority'], {'kind': 'manufacturer', 'name': 'Outokumpu'})
+                self.assertEqual(value['grade']['designation'], 'Core ' + designation)
+                self.assertEqual([alias['text'] for alias in value['grade']['aliases']],
+                                 ['EN ' + en + ' / UNS ' + uns, 'UNS ' + uns])
+                self.assertEqual(value['state']['id'], state_id)
+                self.assertEqual(value['state']['identity_id'], identity_id)
+                self.assertEqual(value['state']['grade_id'], grade_id)
+                self.assertEqual(value['state']['source_designation'], 'Core ' + designation)
+                self.assertEqual(value['state']['property_ids'], [property_id])
+                composition = value['state']['state']['composition_or_purity']
+                self.assertEqual(composition['status'], 'reported')
+                self.assertIn('EN ' + en, composition['text'])
+                self.assertIn('UNS ' + uns, composition['text'])
+                self.assertEqual([source['id'] for source in value['sources']], [source_id])
+                self.assertEqual(value['sources'][0]['license']['status'],
+                                 'no_explicit_reuse_license_verified_limited_factual_curation_only')
+                self.assertIsNone(value['sources'][0]['license']['identifier'])
+                self.assertEqual(len(value['properties']), 1)
+                prop = value['properties'][0]
+                self.assertEqual(prop['id'], property_id)
+                self.assertEqual(prop['material_state_id'], state_id)
+                self.assertEqual(prop['quantity'], 'youngs_modulus')
+                self.assertEqual(prop['quantity_dimension'], 'pressure')
+                self.assertEqual(prop['reported_value']['number'], number)
+                self.assertEqual(prop['reported_value']['unit_code'], 'GPa')
+                self.assertEqual(prop['evidence_kind'], 'manufacturer_reference')
+                self.assertEqual(prop['reporting_basis'], 'not_stated')
+                self.assertEqual(prop['summary_statistic'], 'not_stated')
+                self.assertEqual(prop['determination_basis'],
+                                 'source_reports_measurement' if suffix == '4622' else 'not_stated')
+                self.assertEqual(prop['source_id'], source_id)
+                self.assertEqual(prop['conditions']['temperature']['status'], 'reported')
+                self.assertEqual(prop['conditions']['temperature']['text'], '20 \u00b0C')
+                self.assertEqual(prop['conditions']['test_standard']['text'], 'EN 10088-1')
+                for field in ('test_method', 'direction', 'conditioning', 'loading_rate'):
+                    self.assertEqual(prop['conditions'][field]['status'], 'not_reported_in_inspected_source')
+                    self.assertIsNone(prop['conditions'][field]['text'])
+                self.assertIsNone(prop['density_basis'])
+                self.assertIsNone(prop['uncertainty'])
+                self.assertEqual(prop['uncertainty_status'], 'not_reported_in_inspected_source')
+                self.assertIsNone(prop['sample_count']['value'])
+                self.assertEqual(prop['sample_count']['relation'], 'not_reported')
+                self.assertEqual(prop['source_document']['sha256'],
+                                 '91d2f4b1340562b0d692a3921a5b0ea2518ddcb6cbdcc9ec97a3d7ad886d7ad9')
+                self.assertEqual(prop['evaluation_support'], 'catalog_only')
+                self.assertFalse(prop['universal_bound'])
+                self.assertFalse(prop['engineering_allowable'])
+                self.assertFalse(prop['verification']['independent_scientific_review'])
+                self.assertFalse(prop['verification']['raw_data_reanalysis'])
+                exact = self.post('record', kind='reference-properties', record_id=property_id)
+                self.assertEqual(exact.status_code, 200)
+                self.assertEqual(exact.json()['result'], prop)
+                formal = self.client.post('/api/catalog/project/list', json={
+                    'version': formal_status['version'], 'record_id': 'legacy:' + identity_id})
+                self.assertEqual(formal.status_code, 200)
+                self.assertEqual(formal.json()['matched_count'], 1)
+                self.assertEqual(formal.json()['records'][0]['identity'], value['identity'])
+        # Bounded API search indexes designations, not EN aliases or composition prose.
+        # The shared designation fragment 4372 must retain both distinct states.
+        shared = self.post('search', query='4372', limit=100)
+        self.assertEqual(shared.status_code, 200)
+        self.assertEqual({row['id'] for row in shared.json()['result']['records']},
+                         {'state_outokumpu_201', 'state_outokumpu_201ln'})
+        self.assertFalse(shared.json()['result']['truncated'])
         self.assertEqual(self.client.get('/api/catalog/status').json(), self.status)
         self.assertEqual(self.client.get('/api/catalog/project/status').json(), formal_status)
 
