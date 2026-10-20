@@ -307,7 +307,7 @@ See the [RCA packet](../../material-batches/nbs-rca-density-20261019/README.md).
 
 ## Six binary-oxide references, 2026-10-19
 
-The current local snapshot contains **1133 project entries = 1109 source-qualified
+The preceding binary-oxide snapshot contained **1133 project entries = 1109 source-qualified
 identities + 24 reviewed computed compositions**. NiO, GeO2, As2O3, SeO2, SnO2
 and ThO2 add six inorganic identities, states and properties. Core/project
 inorganic counts are 49/61; natural 1010, metal 22/34, polymer 18 and composite
@@ -328,3 +328,30 @@ The independent recovery descriptor binds the frozen packet and data ledger and
 recovers the complete `4db4ab5` predecessor before the existing RCA layer;
 historical pins remain test-only and are rejected by the current registry.
 See the [binary-oxide packet](../../material-batches/nbs-binary-oxide-density-20261019/README.md).
+
+## Three Mtibe hybrid formulations, 2026-10-19
+
+The current snapshot contains **1136 project entries = 1112 source-qualified
+identities + 24 reviewed computed compositions**. The three PBS/PBAT-matrix
+lignosulphonate/ZnO recipes add three composite identities, states and modulus
+references, bringing composites to 13. All other category counts, 116 sources,
+21 grades and the 62 excluded computed examples remain unchanged.
+
+API references preserve tensile moduli 261.88, 304.52 and 347.44 MPa, the
+reported plus/minus strings 14.78, 5.22 and 16.92 MPa, five specimens, testing
+at 25 degrees C and 48 h conditioning at that temperature. The central statistic
+remains a reported value and the plus/minus meaning remains unspecified; no mean,
+standard deviation or confidence interval is inferred. Catalog-only and false
+scientific-review/raw-reanalysis flags remain.
+
+Printed recipes 95/5/1.5, 90/10/1.5 and 85/15/1.5 sum to 101.5 and are not
+normalized. Matrix PBS/PBAT 70/30 ratio basis and ZnO percentage denominator
+remain unspecified. The existing PBAT and unfilled PBS/PBAT references and
+Ewurum PBS/kraft-lignin blends retain their separate source-qualified scope.
+
+The Mtibe data commit is `b21f405f5ec59033a2c31cc83616cbd16e59fed0`. The exact 64-file query
+pin is `c127bf69ccca825e1b2ca3fd496f6ead65bf68478fc232d27f087b7e551b6909`.
+The independent recovery descriptor binds the frozen packet and data ledger and
+recovers the complete `a5cc3f6` predecessor before the existing binary-oxide layer.
+Historical pins remain test-only and are rejected by the current registry.
+See the [Mtibe hybrid packet](../../material-batches/mtibe-pbs-pbat-hybrids-20261019/README.md).

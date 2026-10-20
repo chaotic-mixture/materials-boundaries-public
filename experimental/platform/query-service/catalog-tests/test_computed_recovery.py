@@ -34,7 +34,7 @@ class RegistryTests(unittest.TestCase):
         self.assertEqual(self.registry.snapshot()['provider_entry_count'],0)
         a=self.registry.admit(['fixture-entry']); b=self.registry.admit(['fixture-entry'])
         self.assertEqual(a,b); self.assertEqual(a['project_unique_material_count'],1)
-        self.assertEqual(a['legacy_unique_material_count'],1109)
+        self.assertEqual(a['legacy_unique_material_count'],1112)
 
     def test_concurrent_replay(self):
         with concurrent.futures.ThreadPoolExecutor(8) as pool:

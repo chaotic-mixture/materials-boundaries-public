@@ -37,7 +37,7 @@ class CatalogAPI(unittest.TestCase):
         self.assertEqual(self.client.get('/openapi.json').json()['info']['version'],'0.5.0.dev0')
         from materials_platform import __version__ as umbrella_version
         self.assertEqual(umbrella_version,'0.5.0.dev0')
-        self.assertEqual(self.status['counts']['local_catalog_unique_material_count'],1109)
+        self.assertEqual(self.status['counts']['local_catalog_unique_material_count'],1112)
         self.assertFalse(self.status['provider_counts_combined'])
         for name in ('version','content_digest','runtime_digest'): self.assertRegex(self.status[name],r'^[a-f0-9]{64}$')
     def test_03_exact_baseline_parity(self):
@@ -315,6 +315,66 @@ class CatalogAPI(unittest.TestCase):
                 self.assertEqual(prop['evaluation_support'], 'catalog_only')
                 self.assertIsNone(prop['uncertainty'])
                 self.assertIsNone(prop['sample_count']['value'])
+                self.assertFalse(prop['engineering_allowable'])
+                self.assertFalse(prop['verification']['independent_scientific_review'])
+                self.assertFalse(prop['verification']['raw_data_reanalysis'])
+                exact = self.post('record', kind='reference-properties', record_id=property_id)
+                self.assertEqual(exact.status_code, 200)
+                self.assertEqual(exact.json()['result'], prop)
+                formal = self.client.post('/api/catalog/project/list', json={
+                    'version': formal_status['version'], 'record_id': 'legacy:' + identity_id})
+                self.assertEqual(formal.status_code, 200)
+                self.assertEqual(formal.json()['matched_count'], 1)
+                self.assertEqual(formal.json()['records'][0]['identity'], value['identity'])
+        self.assertEqual(self.client.get('/api/catalog/status').json(), self.status)
+        self.assertEqual(self.client.get('/api/catalog/project/status').json(), formal_status)
+
+    def test_mtibe_hybrid_three_reference_resolutions(self):
+        cases = (('5', '95/5/1.5', '261.88', '14.78'),
+                 ('10', '90/10/1.5', '304.52', '5.22'),
+                 ('15', '85/15/1.5', '347.44', '16.92'))
+        formal_status = self.client.get('/api/catalog/project/status').json()
+        for loading, recipe, number, plus_minus in cases:
+            with self.subTest(formulation=recipe):
+                stem = 'mtibe2022_pbs_pbat_lignin' + loading + '_zno'
+                identity_id, state_id = 'mat_' + stem, 'state_' + stem
+                property_id = 'refprop_' + stem + '_tensile_modulus'
+                response = self.post('resolve', state_id=state_id)
+                self.assertEqual(response.status_code, 200)
+                value = response.json()['result']
+                self.assertEqual(value['identity']['id'], identity_id)
+                self.assertEqual(value['identity']['category'], 'composite')
+                self.assertIsNone(value['grade'])
+                composition = value['state']['state']['composition_or_purity']['text']
+                self.assertIn('= ' + recipe + ' as printed', composition)
+                self.assertIn('70/30, ratio basis unspecified', composition)
+                self.assertIn('entries total 101.5 and the ZnO denominator is unspecified', composition)
+                self.assertIn('No normalization is performed.', composition)
+                self.assertEqual([source['id'] for source in value['sources']],
+                                 ['mtibe_2022_pbs_pbat_lignin_zno'])
+                self.assertEqual(len(value['properties']), 1)
+                prop = value['properties'][0]
+                self.assertEqual(prop['id'], property_id)
+                self.assertEqual(prop['quantity'], 'tensile_modulus')
+                self.assertEqual(prop['reported_value']['number'], number)
+                self.assertEqual(prop['reported_value']['unit_code'], 'MPa')
+                self.assertEqual(prop['reporting_basis'], 'reported_summary')
+                self.assertEqual(prop['summary_statistic'], 'reported_value')
+                self.assertIsNone(prop['density_basis'])
+                self.assertEqual(prop['determination_basis'], 'source_reports_measurement')
+                self.assertEqual(prop['evidence_kind'], 'published_experimental_reference')
+                self.assertEqual(prop['conditions']['temperature']['text'], '25 °C')
+                self.assertEqual(prop['conditions']['conditioning']['text'],
+                                 '48 h at 25 °C before tensile testing')
+                self.assertEqual(prop['sample_count']['value'], 5)
+                self.assertEqual(prop['sample_count']['relation'], 'exact')
+                self.assertEqual(prop['uncertainty_status'], 'reported_plus_minus_unspecified')
+                self.assertEqual(prop['uncertainty']['type'], 'reported_plus_minus_unspecified')
+                self.assertEqual(prop['uncertainty']['number'], plus_minus)
+                self.assertEqual(prop['uncertainty']['unit_code'], 'MPa')
+                self.assertIsNone(prop['uncertainty']['coverage_factor'])
+                self.assertIsNone(prop['uncertainty']['confidence_level'])
+                self.assertEqual(prop['evaluation_support'], 'catalog_only')
                 self.assertFalse(prop['engineering_allowable'])
                 self.assertFalse(prop['verification']['independent_scientific_review'])
                 self.assertFalse(prop['verification']['raw_data_reanalysis'])

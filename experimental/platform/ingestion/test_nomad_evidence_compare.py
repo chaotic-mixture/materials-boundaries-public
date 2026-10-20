@@ -130,7 +130,7 @@ class EvidenceComparisonTests(unittest.TestCase):
                 old['candidate_packet']['candidates'][0].items() if key != 'evidence'}),
             'new_sha256': inc.digest({key: value for key, value in
                 new['candidate_packet']['candidates'][0].items() if key != 'evidence'})}])
-        self.assertEqual(result['formal_project_total'], 1133)
+        self.assertEqual(result['formal_project_total'], 1136)
         self.assertEqual(result['admitted_delta'], 0)
         self.assertIs(result['release_authorized'], False)
 

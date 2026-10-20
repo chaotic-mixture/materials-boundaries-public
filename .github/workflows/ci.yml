@@ -4,7 +4,7 @@ permissions:
   contents: read
 jobs:
   unit-and-schema:
-    if: ${{ github.event_name != 'push' || (github.ref != 'refs/heads/experiment/polymer-composites-20261019' && github.ref != 'refs/heads/experiment/evidence-batch-ingestion-20261019' && github.ref != 'refs/heads/experiment/source-family-growth-20261019' && github.ref != 'refs/heads/experiment/pur-formulation-batch-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-2-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-3-20261019') }}
+    if: ${{ github.event_name != 'push' || (github.ref != 'refs/heads/experiment/polymer-composites-20261019' && github.ref != 'refs/heads/experiment/evidence-batch-ingestion-20261019' && github.ref != 'refs/heads/experiment/source-family-growth-20261019' && github.ref != 'refs/heads/experiment/pur-formulation-batch-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-2-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-3-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-4-20261019') }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -22,7 +22,7 @@ jobs:
       - run: python -m unittest discover -s tests -v
       - run: python -m materials_boundaries evaluate examples/synthetic-two-phase.json --json
   windows-composite:
-    if: ${{ github.event_name != 'push' || (github.ref != 'refs/heads/experiment/polymer-composites-20261019' && github.ref != 'refs/heads/experiment/evidence-batch-ingestion-20261019' && github.ref != 'refs/heads/experiment/source-family-growth-20261019' && github.ref != 'refs/heads/experiment/pur-formulation-batch-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-2-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-3-20261019') }}
+    if: ${{ github.event_name != 'push' || (github.ref != 'refs/heads/experiment/polymer-composites-20261019' && github.ref != 'refs/heads/experiment/evidence-batch-ingestion-20261019' && github.ref != 'refs/heads/experiment/source-family-growth-20261019' && github.ref != 'refs/heads/experiment/pur-formulation-batch-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-2-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-3-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-4-20261019') }}
     runs-on: windows-latest
     strategy:
       fail-fast: false
@@ -273,3 +273,35 @@ jobs:
       - run: python -m pip wheel --no-index --no-deps --no-build-isolation --wheel-dir dist . ./formal-catalog ./experimental/platform/federation ./experimental/platform/query-service ./experimental/platform/lifecycle ./experimental/platform
       - run: "python -m pip download --no-deps --only-binary=:all: --dest dist/dependencies -r experimental/platform/requirements-lock.txt -r experimental/platform/ci/projection-requirements.txt"
       - run: python scripts/run_primary_table_growth_3_ci.py --wheel-dir dist --dependency-dir dist/dependencies
+  primary-table-growth-4-targeted:
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/experiment/primary-table-growth-4-20261019' }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            python-version: '3.11'
+          - os: windows-latest
+            python-version: '3.12'
+    env:
+      PYTHONUTF8: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - run: git config --global core.autocrlf false
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python scripts/run_primary_table_growth_4_ci.py --validate-scope
+      - run: "python -m pip install --no-deps --only-binary=:all: -r experimental/platform/ci/build-requirements.txt"
+      - run: python -m pip install --no-build-isolation -e '.[dev]'
+      - run: python scripts/run_primary_table_growth_4_ci.py --test
+      - run: python scripts/validate_catalogs.py
+      - run: python -m pip wheel --no-index --no-deps --no-build-isolation --wheel-dir dist . ./formal-catalog ./experimental/platform/federation ./experimental/platform/query-service ./experimental/platform/lifecycle ./experimental/platform
+      - run: "python -m pip download --no-deps --only-binary=:all: --dest dist/dependencies -r experimental/platform/requirements-lock.txt -r experimental/platform/ci/projection-requirements.txt"
+      - run: python scripts/run_primary_table_growth_4_ci.py --wheel-dir dist --dependency-dir dist/dependencies

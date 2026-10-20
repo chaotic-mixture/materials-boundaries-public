@@ -4,8 +4,8 @@ The released main baseline admits 1057 source-qualified identities and exactly
 24 reviewed computed composition buckets under formal-project-count-policy/1,
 for 1081 formal project admissions.
 
-This unmerged local experiment contains 1109 source-qualified identities and the
-same 24 computed buckets, totaling 1133. Main remains unchanged. Resource pins
+This unmerged local experiment contains 1112 source-qualified identities and the
+same 24 computed buckets, totaling 1136. Main remains unchanged. Resource pins
 match the local core for reproducible testing; they do not publish a release.
 Neither total is a global physical-uniqueness claim.
 
@@ -106,8 +106,8 @@ The RCA data commit is `3ea9e25aa67226518282e7804c8e98c89453046d`.
 See the [RCA packet](../experimental/material-batches/nbs-rca-density-20261019/README.md).
 
 A separate six-binary-oxide batch from the same NBS volume adds NiO, GeO2,
-As2O3, SeO2, SnO2 and ThO2. The core now contains 1109 identities, states and
-properties, including 49 inorganic identities; the project view contains 1133
+As2O3, SeO2, SnO2 and ThO2. That core snapshot contained 1109 identities, states and
+properties, including 49 inorganic identities; its project view contained 1133
 entries, including 61 inorganic entries. Other categories, 116 sources, 21 grades,
 24 computed buckets and 62 excluded examples are unchanged. Existing elemental
 Ni, Ge and Sn references are distinct compositions; no new source row is added.
@@ -121,3 +121,22 @@ The independent recovery descriptor binds the frozen packet and data ledger and
 recovers the complete `4db4ab5` predecessor before the existing RCA layer;
 historical pins remain test-only and are rejected by the current registry.
 See the [binary-oxide packet](../experimental/material-batches/nbs-binary-oxide-density-20261019/README.md).
+
+Three source-qualified Mtibe PBS/PBAT-lignosulphonate-ZnO formulations add three
+composite identities, states and tensile-modulus references. The current core
+contains 1112 identities, states and properties; the project view contains 1136
+entries, including 13 composites. Other categories, 116 sources, 21 grades,
+24 computed buckets and 62 excluded examples are unchanged.
+
+The printed matrix/lignosulphonate/ZnO recipes are 95/5/1.5, 90/10/1.5 and
+85/15/1.5. Their sum of 101.5 is not normalized. The PBS/PBAT 70/30 ratio basis
+and the ZnO percentage denominator remain unspecified. Five specimens do not
+establish a mean; the reported plus/minus values have unspecified statistical
+meaning. No formulation, brand or processing-state synonym adds another identity.
+
+The Mtibe data commit is `b21f405f5ec59033a2c31cc83616cbd16e59fed0`. The exact 64-file query
+pin is `c127bf69ccca825e1b2ca3fd496f6ead65bf68478fc232d27f087b7e551b6909`.
+The independent recovery descriptor binds the frozen packet and data ledger and
+recovers the complete `a5cc3f6` predecessor before the existing binary-oxide layer.
+Historical pins remain test-only and are rejected by the current registry.
+See the [Mtibe hybrid packet](../experimental/material-batches/mtibe-pbs-pbat-hybrids-20261019/README.md).
