@@ -1,0 +1,334 @@
+{
+  "schema": "zenodo-8089569-tough-pla-followup-source-review/1",
+  "batch_id": "zenodo-8089569-tough-pla-followup-20261021",
+  "status": "selected_original_measurements_and_bounded_identity_evidence_checked",
+  "review_boundary": "Source transcription, finite identity review and product-family applicability only; no independent scientific validation or exact-lot assay. Candidate preparation admits zero runtime materials.",
+  "evidence_availability": "Public source URLs, hashes, exact locators, sparse facts and original qualification notes are included. Original PDFs/workbook, rendered pages, full text, acquisition receipts and full finite-inventory payloads are not bundled; see ../zenodo-8089569-filaments-20261021/EVIDENCE_AVAILABILITY.md.",
+  "independent_review_sha256": "69cf7534e2ea64eca986876a6e7533308413353c6c3894cd519b5d3299e8eab2",
+  "identity_review_sha256": "6732902590498ac2c14ae30a4e536e3727d75b74177f374f1e9b3f95162ea2f6",
+  "finite_inventory_sha256": "aa1d13fd486cf719a9d5fccc2afd749664995652a4253c4e4375982fb37b317b",
+  "original_workbook": {
+    "version_doi": "10.5281/zenodo.8089569",
+    "bytes": 1391320,
+    "sha256": "830b2c9277dcc2d03265b63e311a5e7089c258ebb6a389b45d07601ae4b2e4e7",
+    "method": "Fresh stdlib ZIP/XML read of the already retained hash-bound original, compared with the retained sparse extraction. No formula evaluation or numeric recalculation.",
+    "joins": [
+      {
+        "tested_row": 10,
+        "tensile_row": 8,
+        "source_designation": "PLA Tough White 20231"
+      },
+      {
+        "tested_row": 11,
+        "tensile_row": 7,
+        "source_designation": "PLA Tough Black 202300"
+      },
+      {
+        "tested_row": 25,
+        "tensile_row": 9,
+        "source_designation": "PA, Nylon Transparent 1647"
+      }
+    ],
+    "numeric_cells_checked": 12,
+    "all_exact_xml_lexical_matches": true,
+    "all_literal_numeric_no_formula": true,
+    "source_code_boundary": "White 20231 and Black 202300 are retained exactly as workbook literals. Neither code is independently authenticated as an official SKU by the inspected Tough PLA SDS; the SDS does not list either code.",
+    "measurement_context": {
+      "measurement_sheet": "Tensile modulus",
+      "identity_sheet": "Tested materials",
+      "specimen_state": {
+        "value": "Reference filament 2.8 mm",
+        "locators": [
+          "'Tensile modulus'!E2",
+          "Samples!C4"
+        ]
+      },
+      "loading_rate": {
+        "value_text": "10",
+        "unit_text": "mm/min",
+        "locators": [
+          "'Tensile modulus'!E5",
+          "'Tensile modulus'!G5"
+        ]
+      },
+      "mean_basis": {
+        "value": "source-reported series average",
+        "locator": "Samples!C27",
+        "sample_count": null,
+        "series_sample_range_text": "Three to five specimens",
+        "limit": "The workbook gives a series-level range, not an exact n for each reported row."
+      },
+      "avedev": {
+        "source_label": "avedev",
+        "locators": [
+          "'Tensile modulus'!F3",
+          "'Tensile modulus'!H3"
+        ],
+        "definition": null,
+        "typed_uncertainty": null,
+        "handling": "Keep the exact F/H number and MPa unit as a source-labelled deviation note. Do not infer SD, SE, confidence level or an implemented spreadsheet function."
+      },
+      "unknowns": [
+        "test_temperature",
+        "humidity",
+        "conditioning",
+        "gauge_length",
+        "grip_separation",
+        "extensometry",
+        "measurement_standard",
+        "row_specific_replicate_count",
+        "avedev_definition"
+      ],
+      "exclusions": [
+        "ISO 527-2-labelled reference column C",
+        "single-extruded fibre properties",
+        "printed dog-bone properties",
+        "printing temperatures and layer thicknesses as reference-filament test conditions",
+        "density properties"
+      ]
+    },
+    "color_state_boundary": "Black and white have separate measured rows. Color and differing measurements alone do not establish distinct material identities; if the composition evidence supports one Tough PLA formulation family, retain color as source-qualified states without pooling the measurements.",
+    "no_workbook_download": true
+  },
+  "inspection": {
+    "pdf_text": "Text extracted from all 9 Tough PLA and all 10 Nylon SDS pages; selected identity/composition statements reviewed.",
+    "pdf_visual": "Rendered PDF pages 1 and 2 of each SDS were visually checked against extracted source text.",
+    "web_text": "Retained HTML from the two substantive Nylon pages was parsed to inspect visible text and metadata; Marketplace and the exact store-linked technical-data article returned loading shells. The latter was the sixth and final bounded acquisition; no dependent resources were fetched.",
+    "source_dates": "Printed SDS revision dates are distinct from the 2026 acquisition date. The original publication/revision dates of the current PA6/66 web wording are unknown. No year is inferred from HTTP capture timestamps, image names or general website copyright.",
+    "no_browser_dependent_fetches": true,
+    "no_new_dependencies": true
+  },
+  "applicability_decisions": {
+    "tough_pla": {
+      "decision": "sufficient_new_primary_constituent_evidence_for_bounded_identity_reconsideration",
+      "supported_scope": "One source-qualified Tough PLA PLA/acrylic-polymer formulation family, with separately retained Black and White reference-filament measurement states. Do not count two identities solely from colors or different measured values.",
+      "bridge": "The manufacturer SDS explicitly names Tough PLA and both colors and predates the dataset deposit. Workbook source designations/supplier and this manufacturer description provide a product-family bridge.",
+      "limits": [
+        "SDS does not authenticate 20231 or 202300 as product codes.",
+        "Specimen manufacture/test date and exact lot composition remain unknown.",
+        "No PMMA, acrylic-polymer fraction, constituent function, toughening mechanism or complete recipe is inferred.",
+        "No proof of identical complete formulation or pigment recipe across Black and White is claimed.",
+        "Final taxonomy, existing-identity overlap and policy/code admission remain separate owner decisions."
+      ]
+    },
+    "nylon_transparent_1647": {
+      "decision": "historical_subtype_bridge_unresolved_keep_identity_admission_deferred",
+      "supported_scope": "The workbook and 2022 SDS support a source-qualified polyamide/Nylon Transparent product. Current official web descriptions support only the current product family's PA6/66-based label.",
+      "blocking_gap": "No inspected dated source binds the PA6/66 subtype to the study's historical Nylon Transparent 1647 specimen or demonstrates unchanged formulation across revisions. The dated SDS identifies only Polyamide. The last acquisition followed the store's actual Technical Data Sheet link but returned a loading shell without historical data.",
+      "limits": [
+        "Do not certify historical PA6/66, PA6, PA66 or PA12.",
+        "Do not use the 1647 image filename as recipe/version evidence.",
+        "Do not infer a specific blend/copolymer ratio, purity or full formulation from based on PA6/66.",
+        "The Marketplace loading shell supplies no additional positive material claim.",
+        "Generic Polyamide remains insufficient by itself to establish non-overlap with existing PA12 representatives."
+      ]
+    }
+  },
+  "rights_and_publishable_scope": {
+    "status": "no_explicit_reuse_license_verified_limited_factual_curation_only",
+    "identifier": null,
+    "boundary": "Manufacturer content has no verified open reuse grant. Only brief attributed constituent/classification facts, exact locators and original qualification notes are proposed; no source assets or extended text. The Zenodo dataset CC BY 4.0 grant does not license these separate manufacturer documents."
+  },
+  "identity_decisions": {
+    "tough_pla": {
+      "scientific_curation_disposition": "supported_one_source_qualified_polymer_formulation_family",
+      "historical_applicability": "qualified_product_family_bridge_supported_not_lot_recipe_certified",
+      "identity_id_proposal": "mat_aniskevich_2023_ultimaker_tough_pla",
+      "category": "polymer",
+      "names_proposal": {
+        "en": "Ultimaker Tough PLA (source-qualified PLA/acrylic-polymer formulation)",
+        "zh": "Ultimaker Tough PLA（来源限定的 PLA／丙烯酸类聚合物配方）",
+        "ja": "Ultimaker Tough PLA（資料で特定された PLA・アクリルポリマー配合物）",
+        "de": "Ultimaker Tough PLA (quellenbezogene PLA/Acrylpolymer-Rezeptur)"
+      },
+      "aliases_proposal": [
+        {
+          "language": "en",
+          "text": "Tough PLA"
+        },
+        {
+          "language": "en",
+          "text": "PLA Tough"
+        }
+      ],
+      "identity_scope_proposal": "One source-qualified Ultimaker Tough PLA formulation family represented by the Black and White reference-filament series in Aniskevich and Bulderberga (2023). The 22 December 2022 manufacturer SDS names polylactic acid and an unspecified acrylic polymer and covers both colors. This constituent evidence supports a curated formulation distinction from the generic PLA representative; no absence of acrylic additives in other PLA products is asserted. Supplier, product name, color, numeric code and differing measured values alone do not establish identity. The document supports product-family applicability and does not authenticate workbook codes 20231 or 202300, the tested lots, or identical complete color recipes. Acrylic-polymer chemistry, constituent proportions/functions, pigment/additive recipe and chemical purity remain unknown. No PMMA or constituent fraction is inferred.",
+      "basis": "The official SDS revision dated 2022-12-22 names Tough PLA, Black and White, and PLA plus an acrylic polymer. The dated document precedes the 2023 dataset deposit and bridges the workbook supplier/product names to the manufacturer formulation family. No experiment or manufacture date is established, so temporal applicability is expressly family-level.",
+      "manufacturer_source_id_proposal": "ultimaker_tough_pla_sds_20221222",
+      "sparse_source_key": "ultimaker_tough_pla_sds_20221222_v2",
+      "identity_evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "locator": "Tested materials!B10; C10:D11; Tensile modulus!B7:B8",
+          "supports": [
+            "material_identity"
+          ]
+        },
+        {
+          "source_id": "ultimaker_tough_pla_sds_20221222",
+          "locator": "PDF p.1 section 1.1, Tough PLA trade name and Black/White color coverage; PDF p.2 section 3.2, mixture comments",
+          "supports": [
+            "material_identity"
+          ]
+        }
+      ],
+      "state_grouping_proposal": [
+        {
+          "state_id_proposal": "state_aniskevich_2023_ultimaker_tough_pla_white_filament",
+          "tested_materials_row": 10,
+          "measurement_sheet": "Tensile modulus",
+          "measurement_row": 8,
+          "source_designation": "PLA Tough White 20231",
+          "grade_id": null,
+          "properties_proposed": [
+            "tensile_modulus",
+            "tensile_strength"
+          ]
+        },
+        {
+          "state_id_proposal": "state_aniskevich_2023_ultimaker_tough_pla_black_filament",
+          "tested_materials_row": 11,
+          "measurement_sheet": "Tensile modulus",
+          "measurement_row": 7,
+          "source_designation": "PLA Tough Black 202300",
+          "grade_id": null,
+          "properties_proposed": [
+            "tensile_modulus",
+            "tensile_strength"
+          ]
+        }
+      ],
+      "two_state_rationale": "The independent original-XML readback confirms two distinct measured color series and exact workbook joins. Both names fall within the dated manufacturer product/color coverage. Including both states preserves source groups rather than certifying either numeric code as a SKU. Black-only selection has no superior SKU verification; the SDS authenticates neither code. Do not average or pool the rows.",
+      "maximum_new_identities": 1,
+      "no_inferences": [
+        "PMMA",
+        "acrylic subtype",
+        "constituent fractions",
+        "ingredient function or toughening mechanism",
+        "complete recipe",
+        "chemical purity",
+        "verified official SKU 20231",
+        "verified official SKU 202300",
+        "tested-lot formulation",
+        "identical color additive or pigment recipes"
+      ],
+      "handoff_at_pinned_compiler": "pending_separate_source_gate_handling_and_validated_integration"
+    },
+    "nylon_transparent_1647": {
+      "tested_materials_row": 25,
+      "measurement_sheet": "Tensile modulus",
+      "measurement_row": 9,
+      "source_designation": "PA, Nylon Transparent 1647",
+      "disposition": "defer_new_identity",
+      "basis": "The historical SDS supports only Polyamide and Transparent color. Current official PA6/66 descriptions do not establish when that formulation description applied or bind it to the study specimen. The source owner final review records the bounded technical-data-sheet follow-up separately.",
+      "missing_requirement": "A defensible dated or version-linked historical PA6/66 subtype bridge to the study product, sufficient to resolve possible overlap with existing PA12, remains unestablished in the source-owner final applicability decision.",
+      "not_a_measurement_gap": "The original measurement row and values are transcribed. The blocking issue is identity/historical subtype, not missing mechanical data.",
+      "prohibited_shortcuts": [
+        "infer subtype from brand/color/code",
+        "treat a current image filename as historical recipe evidence",
+        "infer PA6/66 from the broad Polyamide SDS label",
+        "merge into PA12 without evidence",
+        "promote a current product claim to a historical lot claim"
+      ]
+    }
+  },
+  "source_records": [
+    {
+      "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+      "canonical_sha256": "3d517f3c1b775db9b7dd65349e85cf6e8609760fc13b2398b9393d6777c25a86",
+      "disposition": "reuse_exact_baseline_record"
+    },
+    {
+      "source_id": "ultimaker_tough_pla_sds_20221222",
+      "canonical_sha256": "c7cab63a20b2db1b692a066f30f8c22f04600b7e7acb7408c07b7e54aa2e9023",
+      "disposition": "one_new_pinned_manufacturer_source_for_identity_evidence_only"
+    }
+  ],
+  "selected_workbook_facts": [
+    {
+      "tested_materials_row": 10,
+      "tensile_modulus_row": 8,
+      "material_name": "Polylactic acid",
+      "material_name_cell": "B10",
+      "source_grade": "PLA Tough White 20231",
+      "source_grade_cell": "C10",
+      "supplier": "Ultimaker",
+      "supplier_cell": "D10",
+      "measurement_row_label": "PLA Tough White",
+      "measurement_row_label_cell": "B8",
+      "modulus": {
+        "cell": "E8",
+        "value_text": "1952.8040383954526",
+        "unit_text": "MPa ",
+        "storage": "literal_numeric",
+        "excel_number_format": "0"
+      },
+      "modulus_avedev": {
+        "cell": "F8",
+        "value_text": "119.08536932981231",
+        "unit_text": "MPa ",
+        "storage": "literal_numeric",
+        "excel_number_format": "0"
+      },
+      "tensile_strength": {
+        "cell": "G8",
+        "value_text": "48.770237778441711",
+        "unit_text": "MPa ",
+        "storage": "literal_numeric",
+        "excel_number_format": "#,##0.0"
+      },
+      "tensile_strength_avedev": {
+        "cell": "H8",
+        "value_text": "0.31063412976455568",
+        "unit_text": "MPa ",
+        "storage": "literal_numeric",
+        "excel_number_format": "#,##0.0"
+      },
+      "identity_admission": "one_reviewed_tough_pla_identity_two_original_color_series_states_pending_packet_integration",
+      "original_xml_recheck": "exact_match_literal_numeric_no_formula"
+    },
+    {
+      "tested_materials_row": 11,
+      "tensile_modulus_row": 7,
+      "material_name": "Polylactic acid",
+      "material_name_cell": "B10",
+      "source_grade": "PLA Tough Black 202300",
+      "source_grade_cell": "C11",
+      "supplier": "Ultimaker",
+      "supplier_cell": "D11",
+      "measurement_row_label": "PLA Tough Black",
+      "measurement_row_label_cell": "B7",
+      "modulus": {
+        "cell": "E7",
+        "value_text": "2251.0910289257272",
+        "unit_text": "MPa ",
+        "storage": "literal_numeric",
+        "excel_number_format": "0"
+      },
+      "modulus_avedev": {
+        "cell": "F7",
+        "value_text": "194.28002770731121",
+        "unit_text": "MPa ",
+        "storage": "literal_numeric",
+        "excel_number_format": "0"
+      },
+      "tensile_strength": {
+        "cell": "G7",
+        "value_text": "41.745899122457502",
+        "unit_text": "MPa ",
+        "storage": "literal_numeric",
+        "excel_number_format": "#,##0.0"
+      },
+      "tensile_strength_avedev": {
+        "cell": "H7",
+        "value_text": "2.4433159119274221",
+        "unit_text": "MPa ",
+        "storage": "literal_numeric",
+        "excel_number_format": "#,##0.0"
+      },
+      "identity_admission": "one_reviewed_tough_pla_identity_two_original_color_series_states_pending_packet_integration",
+      "original_xml_recheck": "exact_match_literal_numeric_no_formula"
+    }
+  ],
+  "excluded_scope": "Nylon Transparent 1647 remains deferred because historical subtype applicability is unresolved; CPE and all other previously reviewed rows are unchanged. No density, reference-column, fiber or printed-specimen property is admitted.",
+  "translation_review": "Four-language display names are original machine-assisted curation; native-language and independent scientific review are not claimed."
+}

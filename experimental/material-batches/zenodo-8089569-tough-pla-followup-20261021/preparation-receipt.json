@@ -1,0 +1,84 @@
+{
+  "schema": "tough-pla-followup-preparation-receipt/1",
+  "base": "5cc1418392696dc8115581ad693dabfc2695422e",
+  "scope": "Actual immutable candidate creation and replay; not product tests, scientific approval or formal admission",
+  "portable_command": [
+    "python",
+    "-B",
+    "-X",
+    "utf8",
+    "scripts/prepare_formulation_packet.py",
+    "--spec",
+    "experimental/material-batches/zenodo-8089569-tough-pla-followup-20261021/packet-spec.json",
+    "--baseline-dir",
+    "materials_boundaries/data",
+    "--output",
+    "experimental/material-batches/zenodo-8089569-tough-pla-followup-20261021/prepared-packet.json"
+  ],
+  "command_note": "The portable command substitutes python for the local executable; exact executable, cwd and logs are retained outside the repository.",
+  "python_version": "3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]",
+  "input_sha256": {
+    "scripts/prepare_formulation_packet.py": "fa0b63ad1cbfc6b2b1bd784d297994b09ce52f085ae9392c5fd6a9c664a99030",
+    "scripts/extract_curated_filament_cells.py": "fe7991d6d85f32bb668e3bb73ad758fd9d83612319686eebcf56ee17ae0ba362",
+    "experimental/material-batches/zenodo-8089569-tough-pla-followup-20261021/README.md": "e1fd9738034ca46bf3e819fffa6bfb7bb74914c70e95be71084ee7b226df4baf",
+    "experimental/material-batches/zenodo-8089569-tough-pla-followup-20261021/packet-spec.json": "24b9a90eb734eece53ac0f375e92d2610ee9f627bbd5ef6ea488c9077c23120a",
+    "experimental/material-batches/zenodo-8089569-tough-pla-followup-20261021/source-review.json": "25fb93bd5529d28779cd3e985dd315da2fdacf1229169e83096a53983f12de02",
+    "materials_boundaries/data/materials.json": "07ee36eaffda8a76dbffe275caa7b875dfa7a3dbcb0bfb642003c55330b5b223",
+    "materials_boundaries/data/reference_properties.json": "b46d6a378e8e1195a99514954e75060dd3992703069ea655f66f0638171f8170",
+    "materials_boundaries/data/sources.json": "8a045cfc13fc62f292ca3e488edf6823045721b9f884967773eba1707faabe1c"
+  },
+  "packet_sha256": "919c387b4cf0b586c36e2d922a45b0a64832831d659f755049a4be3bbea3be44",
+  "runs": [
+    {
+      "attempt": 1,
+      "exit_code": 0,
+      "before": null,
+      "after": {
+        "sha256": "919c387b4cf0b586c36e2d922a45b0a64832831d659f755049a4be3bbea3be44",
+        "bytes": 86121,
+        "mtime_ns": 1792586695241240700
+      },
+      "stdout_sha256": "c0331df0b530926f1820289847960cc0cd11a5eba4d1fe85ac204fe9dd6f5d2d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reported_operation": "Created"
+    },
+    {
+      "attempt": 2,
+      "exit_code": 0,
+      "before": {
+        "sha256": "919c387b4cf0b586c36e2d922a45b0a64832831d659f755049a4be3bbea3be44",
+        "bytes": 86121,
+        "mtime_ns": 1792586695241240700
+      },
+      "after": {
+        "sha256": "919c387b4cf0b586c36e2d922a45b0a64832831d659f755049a4be3bbea3be44",
+        "bytes": 86121,
+        "mtime_ns": 1792586695241240700
+      },
+      "stdout_sha256": "5e8aef5fd50a1b78ce4901326ab448701e18c1f39d68a602bc47457346676e75",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reported_operation": "Unchanged"
+    }
+  ],
+  "created_then_unchanged": true,
+  "candidate_reference_sources": 2,
+  "delta": {
+    "identities": 1,
+    "grades": 0,
+    "states": 2,
+    "properties": 4,
+    "sources": 1,
+    "categories": {
+      "metal": 0,
+      "inorganic": 0,
+      "polymer": 1,
+      "composite": 0,
+      "natural": 0
+    }
+  },
+  "formal_admitted_delta": 0,
+  "runtime_unchanged": true,
+  "product_tests_executed": false,
+  "network_requests": 0,
+  "prior_batch_failure_history_imported": false
+}
