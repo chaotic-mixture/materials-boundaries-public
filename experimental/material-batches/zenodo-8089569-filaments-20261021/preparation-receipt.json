@@ -1,0 +1,78 @@
+{
+  "schema": "filament-packet-preparation-receipt/1",
+  "scope": "Actual review-only authoring validation, not product tests, scientific approval or runtime admission",
+  "spec_sha256": "33b5fd4f40b46e83e49e254120401199a5e3f6839c75f9de17a8fcb335ed75b2",
+  "source_review_sha256": "1d8b8574c662bc2a638e4e26723e4f042fb31e47932e0050e44d96b623b3420e",
+  "prior_failed_authoring_attempts": [
+    {
+      "path": "candidate-preparation/preparation-attempt-1.json",
+      "sha256": "c0a1f694769a5496983c64f11b6458128b7b7ade11c924f475c3c99e8151df16"
+    },
+    {
+      "path": "candidate-preparation/preparation-attempt-2.json",
+      "sha256": "a05c96c0f0ffe90352a2861e8bb1f525ed2eb3f6678969ffe6639225579cdfdb"
+    }
+  ],
+  "execution_context": "Native authorized execution after read-only confirmation that the sandbox hard-link failure left no packet or temporary file. No approval-review rejection occurred.",
+  "correction": "Added required dataset-primary classification/condition evidence tags; recorded hash_note is null; document and verification inspection-scope text is identical. No numerical values, identity decisions or scientific qualifiers changed.",
+  "runs": [
+    {
+      "attempt": 1,
+      "started_at_utc": "2026-10-21T11:22:55.925064+00:00",
+      "ended_at_utc": "2026-10-21T11:23:00.615816+00:00",
+      "command": [
+        "C:\\Users\\pc\\Documents\\Codex\\2026-10-11\\task\\materials-boundaries-incremental\\.venv\\Scripts\\python.exe",
+        "scripts/prepare_formulation_packet.py",
+        "--spec",
+        "C:\\Users\\pc\\Documents\\Codex\\2026-10-11\\task\\materials-boundaries-table-growth-8-20261021\\experimental\\material-batches\\zenodo-8089569-filaments-20261021\\packet-spec.json",
+        "--baseline-dir",
+        "materials_boundaries/data",
+        "--output",
+        "C:\\Users\\pc\\Documents\\Codex\\2026-10-11\\task\\materials-boundaries-table-growth-8-20261021\\experimental\\material-batches\\zenodo-8089569-filaments-20261021\\prepared-packet.json"
+      ],
+      "exit_code": 0,
+      "stdout": "Created review-only formulation packet: C:\\Users\\pc\\Documents\\Codex\\2026-10-11\\task\\materials-boundaries-table-growth-8-20261021\\experimental\\material-batches\\zenodo-8089569-filaments-20261021\\prepared-packet.json\nCandidate identity delta: 8\nHandoff ready: yes\nFormal admitted delta: 0. Source transcription is not scientific approval; runtime catalogs unchanged.\n",
+      "stderr": "",
+      "before": null,
+      "after": {
+        "sha256": "aaa94bd1f752e00f37268f8b786326dcb98011648985f8bc77cb92362f4c57e8",
+        "mtime_ns": 1792581780572449200
+      }
+    },
+    {
+      "attempt": 2,
+      "started_at_utc": "2026-10-21T11:23:00.617471+00:00",
+      "ended_at_utc": "2026-10-21T11:23:05.438092+00:00",
+      "command": [
+        "C:\\Users\\pc\\Documents\\Codex\\2026-10-11\\task\\materials-boundaries-incremental\\.venv\\Scripts\\python.exe",
+        "scripts/prepare_formulation_packet.py",
+        "--spec",
+        "C:\\Users\\pc\\Documents\\Codex\\2026-10-11\\task\\materials-boundaries-table-growth-8-20261021\\experimental\\material-batches\\zenodo-8089569-filaments-20261021\\packet-spec.json",
+        "--baseline-dir",
+        "materials_boundaries/data",
+        "--output",
+        "C:\\Users\\pc\\Documents\\Codex\\2026-10-11\\task\\materials-boundaries-table-growth-8-20261021\\experimental\\material-batches\\zenodo-8089569-filaments-20261021\\prepared-packet.json"
+      ],
+      "exit_code": 0,
+      "stdout": "Unchanged review-only formulation packet: C:\\Users\\pc\\Documents\\Codex\\2026-10-11\\task\\materials-boundaries-table-growth-8-20261021\\experimental\\material-batches\\zenodo-8089569-filaments-20261021\\prepared-packet.json\nCandidate identity delta: 8\nHandoff ready: yes\nFormal admitted delta: 0. Source transcription is not scientific approval; runtime catalogs unchanged.\n",
+      "stderr": "",
+      "before": {
+        "sha256": "aaa94bd1f752e00f37268f8b786326dcb98011648985f8bc77cb92362f4c57e8",
+        "mtime_ns": 1792581780572449200
+      },
+      "after": {
+        "sha256": "aaa94bd1f752e00f37268f8b786326dcb98011648985f8bc77cb92362f4c57e8",
+        "mtime_ns": 1792581780572449200
+      }
+    }
+  ],
+  "created_then_unchanged": true,
+  "initial_preparation_spec_sha256": "f3ce0d58fbabd184ba2fe54d9aed11af57bdd6babefa0d482919b06d89dfbea9",
+  "format_normalization": {
+    "path": "candidate-preparation/candidate-lf-correction.json",
+    "sha256": "cb8ef20d46ee512c156d4fe7b09771ac42ddb629efb4ff3f61c07eca2666efd9",
+    "parsed_json_identical": true,
+    "post_normalization_replay": "Unchanged",
+    "packet_bytes_and_mtime_preserved": true
+  }
+}
