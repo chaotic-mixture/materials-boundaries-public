@@ -4,8 +4,8 @@ The released main baseline admits 1057 source-qualified identities and exactly
 24 reviewed computed composition buckets under formal-project-count-policy/1,
 for 1081 formal project admissions.
 
-This unmerged local experiment contains 1143 source-qualified identities and the
-same 24 computed buckets, totaling 1167. Main remains unchanged. Resource pins
+This unmerged local experiment contains 1144 source-qualified identities and the
+same 24 computed buckets, totaling 1168. Main remains unchanged. Resource pins
 match the local core for reproducible testing; they do not publish a release.
 Neither total is a global physical-uniqueness claim.
 
@@ -254,3 +254,27 @@ query pin is `a6b5e9835807a397c81f668cb3c1f19fe70d62074899bdf6365892543220d4b2`.
 `5cc1418` batch8 predecessor before all unchanged older layers. Historical
 pins and the original filament test facts remain unchanged.
 See the [reviewed follow-up packet](../experimental/material-batches/zenodo-8089569-tough-pla-followup-20261021/README.md).
+
+## Nylon historical-family follow-up, 2026-10-21
+
+The reviewed continuation of the same Zenodo workbook adds one manufacturer-family
+polymer identity, one measured reference-filament state and two tensile properties.
+The current core contains **1144 identities, 1145 states, 1156 properties,
+31 grades and 123 sources**. The project view contains **1168 = 1144 + 24**
+identity entries; the 62 excluded examples remain separate and main stays at 1081.
+
+The 2019 manufacturer SDS supports a family described as based on PA6/PA66;
+the 2021 manufacturer pricing submission maps stock code 1647 to Transparent
+Nylon. These historical sources do not identify the study lot, establish recipe
+continuity, composition ratio or molecular architecture. The state composition
+remains unknown and its grade is null. Neither source supplies numerical
+properties: the unchanged Zenodo source supports both measured filament values.
+ISO reference values and printed or extruded states do not replace those values.
+The two new identity-only sources and one reused numerical source are counted
+separately. Manufacturer PDFs and the workbook are not distributed.
+
+The actual DATA commit is `cbd68da88d7bba461dce15ee5a71e43ef577e8c3` and the exact 64-file
+query pin is `124044eb8afcaf927ec9ff4770da66dfedc641391cd58e4b873735ee7424db4e`. The new finite descriptor recovers the complete
+`2c8ddac` predecessor before the unchanged Tough, batch8 and older layers.
+Historical evidence, pins and dedicated prior tests remain unchanged.
+See the [reviewed follow-up packet](../experimental/material-batches/zenodo-8089569-nylon-followup-20261021/README.md).

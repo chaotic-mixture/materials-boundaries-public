@@ -50,7 +50,14 @@ TOUGH_DATA_SHA256 = "46d33c7bfc8abb32b341a5c026ed8cb03e47350feeb17e2b0c478999aea
 TOUGH_FILE_LEDGER = "tests/fixtures/tough_pla_followup_files_20261021.json"
 TOUGH_FILE_SHA256 = "7c1ff7be1ffb8f5085e004f465ca52e936e9068bfc1357e46925e150eb08bfef"
 
+NYLON_DATA_LEDGER = "tests/fixtures/nylon_followup_data_20261021.json"
+NYLON_DATA_SHA256 = "88f7303d6e8b4234555548ea39fdfb286380c72ea2f7f5edce990e1a0d733b97"
+NYLON_FILE_LEDGER = "tests/fixtures/nylon_followup_files_20261021.json"
+NYLON_FILE_SHA256 = "b35d130af81b437dfc2248f55e0c99b01c31da71d74a562dc754334b96dfde93"
+
 FROZEN_SUCCESSORS = (
+    {"batch_id": "zenodo-8089569-nylon-followup-20261021",
+     "data": (NYLON_DATA_LEDGER, NYLON_DATA_SHA256), "files": (NYLON_FILE_LEDGER, NYLON_FILE_SHA256)},
     {"batch_id": "zenodo-8089569-tough-pla-followup-20261021",
      "data": (TOUGH_DATA_LEDGER, TOUGH_DATA_SHA256), "files": (TOUGH_FILE_LEDGER, TOUGH_FILE_SHA256)},
     {"batch_id": "zenodo-8089569-filaments-20261021",

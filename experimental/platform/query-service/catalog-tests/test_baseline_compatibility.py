@@ -36,7 +36,8 @@ PRE_NBR_BATCH_PIN_SHA256 = '7dd99df2a6ec06d6a0d6f72b31378cff5b49908113df4d78bee2
 PRE_OUTOKUMPU_BATCH_PIN_SHA256 = '8c47bf8592437932508298417ed4c6e93e92091a0e25266bee3816acec797da8'
 PRE_FILAMENT_BATCH_PIN_SHA256 = 'b228d514b2b1dbb8bad428d6f0be7f300947ee2e1c3c64a6f9f0e55df132ade7'
 PRE_TOUGH_PLA_PIN_SHA256 = '393af99b3a9ef08e6d73c87bde302af74e66dd59628e86b368b88882462057a5'
-CURRENT_PIN_SHA256 = 'a6b5e9835807a397c81f668cb3c1f19fe70d62074899bdf6365892543220d4b2'
+PRE_NYLON_PIN_SHA256 = 'a6b5e9835807a397c81f668cb3c1f19fe70d62074899bdf6365892543220d4b2'
+CURRENT_PIN_SHA256 = '124044eb8afcaf927ec9ff4770da66dfedc641391cd58e4b873735ee7424db4e'
 GROWTH_ROOT = Path(__file__).resolve().parents[4]
 GROWTH_LEDGER = GROWTH_ROOT / 'tests/fixtures/source_family_growth_data_20261019.json'
 GROWTH_LEDGER_SHA256 = '9dfc8d71e89041f05e11a870ad29aea34cb3ab90586bcea8f1d717adc9878ac3'
@@ -143,6 +144,15 @@ PRE_TOUGH_PLA_DATA_SHA256 = {
     'materials.json': '07ee36eaffda8a76dbffe275caa7b875dfa7a3dbcb0bfb642003c55330b5b223',
     'reference_properties.json': 'b46d6a378e8e1195a99514954e75060dd3992703069ea655f66f0638171f8170',
     'sources.json': '8a045cfc13fc62f292ca3e488edf6823045721b9f884967773eba1707faabe1c',
+}
+NYLON_LEDGER = GROWTH_ROOT / 'tests/fixtures/nylon_followup_data_20261021.json'
+NYLON_LEDGER_SHA256 = '88f7303d6e8b4234555548ea39fdfb286380c72ea2f7f5edce990e1a0d733b97'
+NYLON_PACKET = GROWTH_ROOT / 'experimental/material-batches/zenodo-8089569-nylon-followup-20261021/prepared-packet.json'
+NYLON_PACKET_SHA256 = 'b18d7fc70bc5da537672f20a1682594c36c8d2d1e4c9e0ac05f9647d586e5172'
+PRE_NYLON_DATA_SHA256 = {
+    'materials.json': 'a3dc74dc74dfd6c667ab44bd127379f37d9b79f4b3e79c1051d3474e75c4db56',
+    'reference_properties.json': '0bc8608de3150e11b578e151d2c6d3b8f6179c9136ef10b4eff7ffce62d9afb1',
+    'sources.json': '6e23776fd59ac3f8153f589378b00877c80cbe4d061aa22e3bc41f358daf373f',
 }
 PRE_EVIDENCE_BATCH_DATA_SHA256 = {
     'materials.json': '193f431190af502eb5c2121ff077bf59ddc9b708ae5ad786160bdc8287c83c83',
@@ -468,6 +478,20 @@ def recover_pre_table_batch_catalogs(current):
     return recover_exact_append_catalogs(current, table_batch_descriptor())
 
 
+def nylon_descriptor():
+    return {'label': 'Nylon follow-up', 'ledger': NYLON_LEDGER,
+            'ledger_sha256': NYLON_LEDGER_SHA256, 'packet': NYLON_PACKET,
+            'packet_sha256': NYLON_PACKET_SHA256,
+            'parent_commit': '2c8ddac78f5cd43dfa071ad23639b826561a043b',
+            'parent_data': PRE_NYLON_DATA_SHA256,
+            'addition_counts': {'identities': 1, 'grades': 0, 'states': 1, 'properties': 2, 'sources': 2}}
+
+def nylon_inventory():
+    return frozen_append_inventory(nylon_descriptor())
+
+def recover_pre_nylon_catalogs(current):
+    return recover_exact_append_catalogs(current, nylon_descriptor())
+
 def tough_pla_descriptor():
     return {'label': 'Tough PLA follow-up', 'ledger': TOUGH_PLA_LEDGER,
             'ledger_sha256': TOUGH_PLA_LEDGER_SHA256, 'packet': TOUGH_PLA_PACKET,
@@ -691,6 +715,7 @@ class BaselineCompatibility(unittest.TestCase):
         cls.original_identity = sha256(json.dumps(
             cls.expected, sort_keys=True, separators=(',', ':'), ensure_ascii=False,
             allow_nan=False).encode()).hexdigest()
+        cls.recover_nylon_anchor()
         cls.recover_tough_pla_anchor()
         cls.recover_filament_anchor()
         cls.recover_outokumpu_anchor()
@@ -706,10 +731,28 @@ class BaselineCompatibility(unittest.TestCase):
         cls.recover_historical_anchor()
 
     @classmethod
+    def recover_nylon_anchor(cls):
+        """Recover the exact 2c8ddac data and complete pin before older append layers."""
+        cls.nylon_parent_root = cls.fixture_root / 'pre-nylon-batch-data'
+        shutil.copytree(cls.original_root, cls.nylon_parent_root)
+        data_root = cls.nylon_parent_root / 'data'
+        current = {name: json.loads((data_root / name).read_bytes())
+                   for name in PRE_NYLON_DATA_SHA256}
+        for name, value in recover_pre_nylon_catalogs(current).items():
+            (data_root / name).write_bytes((json.dumps(value, ensure_ascii=False,
+                indent=2, allow_nan=False) + '\n').encode('utf-8'))
+        cls.nylon_parent_pin = registry.canonical(manifest(cls.nylon_parent_root))
+        if sha256(cls.nylon_parent_pin).hexdigest() != PRE_NYLON_PIN_SHA256:
+            raise AssertionError('Recovered 2c8ddac complete pin bytes differ')
+        cls.nylon_parent_query_root = cls.fixture_root / 'pre-nylon-batch-query'
+        (cls.nylon_parent_query_root / 'pins').mkdir(parents=True)
+        (cls.nylon_parent_query_root / 'pins/legacy_baseline.json').write_bytes(cls.nylon_parent_pin)
+
+    @classmethod
     def recover_tough_pla_anchor(cls):
         """Recover the exact 5cc1418 data and complete pin before older append layers."""
         cls.tough_pla_parent_root = cls.fixture_root / 'pre-tough-pla-batch-data'
-        shutil.copytree(cls.original_root, cls.tough_pla_parent_root)
+        shutil.copytree(cls.nylon_parent_root, cls.tough_pla_parent_root)
         data_root = cls.tough_pla_parent_root / 'data'
         current = {name: json.loads((data_root / name).read_bytes())
                    for name in PRE_TOUGH_PLA_DATA_SHA256}
@@ -977,6 +1020,8 @@ class BaselineCompatibility(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
         self.work = Path(self.temp.name)
+        if self._testMethodName == 'test_tough_pla_parent_manifest_and_catalog_recovery_remain_exact':
+            self.current_root = self.nylon_parent_root
         if self._testMethodName == 'test_filament_batch_parent_manifest_and_catalog_recovery_remain_exact':
             self.current_root = self.tough_pla_parent_root
 
@@ -1060,6 +1105,88 @@ class BaselineCompatibility(unittest.TestCase):
         changed['materials.json']['identities'][0]['name'] += ' unreviewed'
         with self.assertRaisesRegex(AssertionError, 'Recovered a592 catalog bytes differ'):
             recover_a592_catalogs(changed)
+
+    def test_nylon_parent_manifest_and_catalog_recovery_remain_exact(self):
+        expected = dict(self.expected)
+        expected.update({'data/' + name: digest for name, digest in PRE_NYLON_DATA_SHA256.items()})
+        self.assertEqual(len(manifest(self.nylon_parent_root)), 64)
+        self.assertEqual(manifest(self.nylon_parent_root), expected)
+        current = {name: json.loads((self.current_root / 'data' / name).read_bytes())
+                   for name in PRE_NYLON_DATA_SHA256}
+        parent = {name: json.loads((self.nylon_parent_root / 'data' / name).read_bytes())
+                  for name in PRE_NYLON_DATA_SHA256}
+        self.assertEqual(recover_pre_nylon_catalogs(current), parent)
+        self.assertEqual(recover_pre_nylon_catalogs(parent), parent)
+        self.assertEqual(current['sources.json']['records'][:-2], parent['sources.json']['records'])
+        self.assertEqual(current['materials.json']['grades'], parent['materials.json']['grades'])
+        with self.assertRaisesRegex(AssertionError, 'Tough PLA follow-up predecessor catalog bytes differ'):
+            recover_pre_tough_pla_catalogs(current)
+        ledger, additions = nylon_inventory()
+        for filename, section, collection, label in GROWTH_COLLECTIONS:
+            if not additions[label]:
+                continue
+            candidate = additions[label][0]
+            for mutation in ('missing', 'changed', 'duplicate'):
+                with self.subTest(collection=label, mutation=mutation):
+                    changed = deepcopy(current)
+                    rows = changed[filename][collection]
+                    row = next(row for row in rows if row['id'] == candidate['id'])
+                    if mutation == 'missing':
+                        rows.remove(row)
+                    elif mutation == 'changed':
+                        row['version'] = 'unreviewed'
+                    else:
+                        rows.append(deepcopy(row))
+                    with self.assertRaisesRegex(AssertionError, 'Nylon follow-up'):
+                        recover_pre_nylon_catalogs(changed)
+        for filename, collection in [('materials.json', 'identities'), ('sources.json', 'records')]:
+            changed = deepcopy(current)
+            changed[filename][collection][0]['version'] = 'unreviewed'
+            with self.subTest(retained_collection=collection), self.assertRaisesRegex(
+                    AssertionError, 'Nylon follow-up predecessor catalog bytes differ'):
+                recover_pre_nylon_catalogs(changed)
+        for filename, label in [('reference_properties.json', 'properties'), ('sources.json', 'sources')]:
+            changed = deepcopy(current)
+            self.assertEqual(len(additions[label]), 2)
+            self.assertEqual({row['id'] for row in changed[filename]['records'][-2:]},
+                             {row['id'] for row in additions[label]})
+            changed[filename]['records'][-2:] = reversed(changed[filename]['records'][-2:])
+            self.assertNotEqual(changed, current)
+            with self.subTest(order=label), self.assertRaisesRegex(
+                    AssertionError, 'Nylon follow-up successor catalog order or bytes differ'):
+                recover_pre_nylon_catalogs(changed)
+        original_read = Path.read_bytes
+        for target in (NYLON_LEDGER, NYLON_PACKET):
+            def replaced(path):
+                return original_read(path) + (b' ' if path == target else b'')
+            with self.subTest(binding=target.name), patch.object(Path, 'read_bytes', replaced), \
+                    self.assertRaisesRegex(AssertionError, 'Nylon follow-up .* bytes differ'):
+                recover_pre_nylon_catalogs(current)
+        with self.resources(self.nylon_parent_root, self.nylon_parent_query_root):
+            with self.assertRaisesRegex(ValueError, 'Baseline pin was replaced'):
+                registry.baseline_digest()
+            with patch.object(registry, 'BASELINE_PIN', PRE_NYLON_PIN_SHA256):
+                self.assertEqual(registry.baseline_digest(), PRE_NYLON_PIN_SHA256)
+        with self.resources(self.nylon_parent_root), self.assertRaisesRegex(
+                ValueError, 'Installed legacy baseline differs'):
+            registry.baseline_digest()
+
+    def test_nylon_parent_database_rejected_without_migration(self):
+        for rich in (False, True):
+            with self.subTest(rich=rich):
+                review = self.review(rich)
+                path = self.work / ('2c8ddac-v2.db' if rich else '2c8ddac-legacy.db')
+                with self.resources(self.nylon_parent_root, self.nylon_parent_query_root), \
+                        patch.object(registry, 'BASELINE_PIN', PRE_NYLON_PIN_SHA256):
+                    historical = self.make_registry(path, review, rich)
+                    before = historical.admit([review['records'][0]['candidate_id']])
+                raw = path.read_bytes()
+                rows = self.database_rows(path)
+                with self.assertRaisesRegex(ValueError, 'Initial baseline and review input cannot be replaced'):
+                    self.make_registry(path, review, rich)
+                self.assertEqual(path.read_bytes(), raw)
+                self.assertEqual(self.database_rows(path), rows)
+                self.assertEqual(historical.snapshot(), before)
 
     def test_tough_pla_parent_manifest_and_catalog_recovery_remain_exact(self):
         expected = dict(self.expected)

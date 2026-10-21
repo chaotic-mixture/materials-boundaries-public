@@ -15,15 +15,15 @@ class FormalProjectCatalog(unittest.TestCase):
         cls.snapshot = formal_project_catalog()
 
     def test_exact_counts_and_categories(self):
-        self.assertEqual(self.snapshot['counts'], {'formal_project_admission_count':1167,
-            'legacy_source_qualified_identity_count':1143,'reviewed_computed_composition_count':24,
-            'categories':{'natural':1010,'metal':44,'inorganic':61,'polymer':24,'composite':28}})
-        self.assertEqual(len({r['id'] for r in self.snapshot['records']}),1167)
+        self.assertEqual(self.snapshot['counts'], {'formal_project_admission_count':1168,
+            'legacy_source_qualified_identity_count':1144,'reviewed_computed_composition_count':24,
+            'categories':{'natural':1010,'metal':44,'inorganic':61,'polymer':25,'composite':28}})
+        self.assertEqual(len({r['id'] for r in self.snapshot['records']}),1168)
 
     def test_full_legacy_identity_parity(self):
         self.assertEqual([r['identity'] for r in self.snapshot['records'] if r['partition']=='legacy-source-qualified'],read_catalog('materials')['identities'])
         coverage=material_quota_coverage(*(read_catalog(k) for k in ('materials','reference_properties','sources')))
-        self.assertEqual(coverage['distinct_material_count'],1143)
+        self.assertEqual(coverage['distinct_material_count'],1144)
 
     def test_exact_normalized_review_bytes(self):
         from importlib.resources import files
@@ -50,7 +50,7 @@ class FormalProjectCatalog(unittest.TestCase):
 
     def test_pagination_complete_and_detached(self):
         rows=[]
-        for offset in range(0,1167,100):
+        for offset in range(0,1168,100):
             rows.extend(select_formal_catalog(self.snapshot,offset=offset)['records'])
         self.assertEqual(rows,self.snapshot['records'])
         rows[0]['identity'].clear()

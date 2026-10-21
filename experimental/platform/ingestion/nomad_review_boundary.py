@@ -11,9 +11,9 @@ from nomad_batch import ID, composition, digest
 
 
 ROOT = Path(__file__).resolve().parents[3]
-BASELINE_COMMIT = "0338481fe3492476d8fe046ed6dd9a733662a076"
-LEGACY_COUNT = 1143
-PROJECT_TOTAL = 1167
+BASELINE_COMMIT = "cbd68da88d7bba461dce15ee5a71e43ef577e8c3"
+LEGACY_COUNT = 1144
+PROJECT_TOTAL = 1168
 SOURCES = {
     "formal_admitted24": (
         "formal-catalog/materials_project_catalog/data/formal_computed_review.json",
@@ -26,7 +26,7 @@ SOURCES = {
         "298e94d77f5166650f66c17ff83e859c6e654f6739745d779a4461310437bb33", 7),
 }
 LEGACY = ("materials_boundaries/data/materials.json",
-          "a3dc74dc74dfd6c667ab44bd127379f37d9b79f4b3e79c1051d3474e75c4db56")
+          "d228c3b8f0c45fd56809891213d1d1acd73964357b579c51f8b9c731031a3ec5")
 
 
 def _pinned(root, relative, expected):

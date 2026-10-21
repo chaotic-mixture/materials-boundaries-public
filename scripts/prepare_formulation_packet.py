@@ -67,6 +67,21 @@ TOUGH_PLA_CLASSIFICATION_SOURCE = {
     "identity_ids": {"mat_aniskevich_2023_ultimaker_tough_pla"},
     "category": "polymer",
 }
+# These two historical manufacturer documents jointly support one qualified
+# Nylon family identity. Neither alone binds family classification to the
+# workbook product. They grant no asset-reuse license or tested-lot claim.
+NYLON_IDENTITY_SOURCES = {
+    "ultimaker_nylon_sds_20190114": {
+        "sha256": "99d952f9ccb8d1be5689e4391cba7b2310fbb48b96cc12624dacc2b8c6804e7a",
+        "identity_ids": {"mat_aniskevich_2023_ultimaker_nylon"},
+        "category": "polymer",
+    },
+    "ultimaker_nylon_pricing_20210504": {
+        "sha256": "849c460350b8c8f6b5dda0101138b6041b90a21efcb5b052ae8940403e0f2180",
+        "identity_ids": {"mat_aniskevich_2023_ultimaker_nylon"},
+        "category": "polymer",
+    },
+}
 
 
 def record_sha256(value):
@@ -333,7 +348,20 @@ def _classification_only_scope(source, catalogs, expected=None):
     return identities == set(expected["identity_ids"])
 
 
+def _nylon_identity_scope(source, catalogs):
+    """Require both frozen notices and their identity-only evidence together."""
+    selected = [row for row in catalogs["sources"]["records"] if row["id"] in NYLON_IDENTITY_SOURCES]
+    if (len(selected) != len(NYLON_IDENTITY_SOURCES)
+            or {row["id"] for row in selected} != set(NYLON_IDENTITY_SOURCES)
+            or source not in selected):
+        return False
+    return all(_classification_only_scope(row, catalogs, NYLON_IDENTITY_SOURCES[row["id"]])
+               for row in selected)
+
+
 def _source_rights_available(source, baseline, catalogs):
+    if source["id"] in NYLON_IDENTITY_SOURCES:
+        return _nylon_identity_scope(source, catalogs)
     if source["id"] == TOUGH_PLA_CLASSIFICATION_SOURCE["id"]:
         return _classification_only_scope(source, catalogs, TOUGH_PLA_CLASSIFICATION_SOURCE)
     if source["id"] in CLASSIFICATION_ONLY_SOURCES:
@@ -387,6 +415,12 @@ def _review_checks(review, catalogs, baseline):
         nonempty_text(row["note"], "source review note")
         reviewed[row["source_id"]] = row["status"]
     pending = []
+    # Checking only supplied sources would miss removal/renaming of the entire
+    # historical bridge. The fixed reviewed identity requires it independently.
+    if any(row["id"] == "mat_aniskevich_2023_ultimaker_nylon" for row in catalogs["materials"]["identities"]):
+        historical = next((row for row in sources["records"] if row["id"] in NYLON_IDENTITY_SOURCES), None)
+        if historical is None or not _nylon_identity_scope(historical, catalogs):
+            pending.append("Historical Nylon identity requires both exact identity-only sources.")
     for source in sources["records"]:
         if not _source_rights_available(source, baseline, catalogs):
             pending.append("Source-specific rights remain pending: " + source["id"])
