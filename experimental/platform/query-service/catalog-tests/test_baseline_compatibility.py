@@ -35,7 +35,8 @@ PRE_NR_BATCH_PIN_SHA256 = 'c127bf69ccca825e1b2ca3fd496f6ead65bf68478fc232d27f087
 PRE_NBR_BATCH_PIN_SHA256 = '7dd99df2a6ec06d6a0d6f72b31378cff5b49908113df4d78bee2ee3ffec09112'
 PRE_OUTOKUMPU_BATCH_PIN_SHA256 = '8c47bf8592437932508298417ed4c6e93e92091a0e25266bee3816acec797da8'
 PRE_FILAMENT_BATCH_PIN_SHA256 = 'b228d514b2b1dbb8bad428d6f0be7f300947ee2e1c3c64a6f9f0e55df132ade7'
-CURRENT_PIN_SHA256 = '393af99b3a9ef08e6d73c87bde302af74e66dd59628e86b368b88882462057a5'
+PRE_TOUGH_PLA_PIN_SHA256 = '393af99b3a9ef08e6d73c87bde302af74e66dd59628e86b368b88882462057a5'
+CURRENT_PIN_SHA256 = 'a6b5e9835807a397c81f668cb3c1f19fe70d62074899bdf6365892543220d4b2'
 GROWTH_ROOT = Path(__file__).resolve().parents[4]
 GROWTH_LEDGER = GROWTH_ROOT / 'tests/fixtures/source_family_growth_data_20261019.json'
 GROWTH_LEDGER_SHA256 = '9dfc8d71e89041f05e11a870ad29aea34cb3ab90586bcea8f1d717adc9878ac3'
@@ -133,6 +134,15 @@ PRE_FILAMENT_BATCH_DATA_SHA256 = {
     'materials.json': 'e784d9deffb496ff097f3b888c9e16e0fb64780272644aa6a6731d5cd5233b5d',
     'reference_properties.json': '81a7af1d8f522c41307fedbf0e3258b2b1cdaa40b142b4d4982544a17a5d727b',
     'sources.json': '4ba9dcd9258cd1e2d9e17bdf20b4fdaa39e081e77779d12eb726ee91b19835ae',
+}
+TOUGH_PLA_LEDGER = GROWTH_ROOT / 'tests/fixtures/tough_pla_followup_data_20261021.json'
+TOUGH_PLA_LEDGER_SHA256 = '46d33c7bfc8abb32b341a5c026ed8cb03e47350feeb17e2b0c478999aeacf1f4'
+TOUGH_PLA_PACKET = GROWTH_ROOT / 'experimental/material-batches/zenodo-8089569-tough-pla-followup-20261021/prepared-packet.json'
+TOUGH_PLA_PACKET_SHA256 = '919c387b4cf0b586c36e2d922a45b0a64832831d659f755049a4be3bbea3be44'
+PRE_TOUGH_PLA_DATA_SHA256 = {
+    'materials.json': '07ee36eaffda8a76dbffe275caa7b875dfa7a3dbcb0bfb642003c55330b5b223',
+    'reference_properties.json': 'b46d6a378e8e1195a99514954e75060dd3992703069ea655f66f0638171f8170',
+    'sources.json': '8a045cfc13fc62f292ca3e488edf6823045721b9f884967773eba1707faabe1c',
 }
 PRE_EVIDENCE_BATCH_DATA_SHA256 = {
     'materials.json': '193f431190af502eb5c2121ff077bf59ddc9b708ae5ad786160bdc8287c83c83',
@@ -458,6 +468,20 @@ def recover_pre_table_batch_catalogs(current):
     return recover_exact_append_catalogs(current, table_batch_descriptor())
 
 
+def tough_pla_descriptor():
+    return {'label': 'Tough PLA follow-up', 'ledger': TOUGH_PLA_LEDGER,
+            'ledger_sha256': TOUGH_PLA_LEDGER_SHA256, 'packet': TOUGH_PLA_PACKET,
+            'packet_sha256': TOUGH_PLA_PACKET_SHA256,
+            'parent_commit': '5cc1418392696dc8115581ad693dabfc2695422e',
+            'parent_data': PRE_TOUGH_PLA_DATA_SHA256,
+            'addition_counts': {'identities': 1, 'grades': 0, 'states': 2, 'properties': 4, 'sources': 1}}
+
+def tough_pla_inventory():
+    return frozen_append_inventory(tough_pla_descriptor())
+
+def recover_pre_tough_pla_catalogs(current):
+    return recover_exact_append_catalogs(current, tough_pla_descriptor())
+
 def filament_batch_descriptor():
     return {'label': 'Filament batch', 'ledger': FILAMENT_LEDGER,
             'ledger_sha256': FILAMENT_LEDGER_SHA256, 'packet': FILAMENT_PACKET,
@@ -667,6 +691,7 @@ class BaselineCompatibility(unittest.TestCase):
         cls.original_identity = sha256(json.dumps(
             cls.expected, sort_keys=True, separators=(',', ':'), ensure_ascii=False,
             allow_nan=False).encode()).hexdigest()
+        cls.recover_tough_pla_anchor()
         cls.recover_filament_anchor()
         cls.recover_outokumpu_anchor()
         cls.recover_nbr_anchor()
@@ -681,10 +706,28 @@ class BaselineCompatibility(unittest.TestCase):
         cls.recover_historical_anchor()
 
     @classmethod
+    def recover_tough_pla_anchor(cls):
+        """Recover the exact 5cc1418 data and complete pin before older append layers."""
+        cls.tough_pla_parent_root = cls.fixture_root / 'pre-tough-pla-batch-data'
+        shutil.copytree(cls.original_root, cls.tough_pla_parent_root)
+        data_root = cls.tough_pla_parent_root / 'data'
+        current = {name: json.loads((data_root / name).read_bytes())
+                   for name in PRE_TOUGH_PLA_DATA_SHA256}
+        for name, value in recover_pre_tough_pla_catalogs(current).items():
+            (data_root / name).write_bytes((json.dumps(value, ensure_ascii=False,
+                indent=2, allow_nan=False) + '\n').encode('utf-8'))
+        cls.tough_pla_parent_pin = registry.canonical(manifest(cls.tough_pla_parent_root))
+        if sha256(cls.tough_pla_parent_pin).hexdigest() != PRE_TOUGH_PLA_PIN_SHA256:
+            raise AssertionError('Recovered 5cc1418 complete pin bytes differ')
+        cls.tough_pla_parent_query_root = cls.fixture_root / 'pre-tough-pla-batch-query'
+        (cls.tough_pla_parent_query_root / 'pins').mkdir(parents=True)
+        (cls.tough_pla_parent_query_root / 'pins/legacy_baseline.json').write_bytes(cls.tough_pla_parent_pin)
+
+    @classmethod
     def recover_filament_anchor(cls):
         """Recover the exact 5e8d63d data and complete pin before older append layers."""
         cls.filament_parent_root = cls.fixture_root / 'pre-filament-batch-data'
-        shutil.copytree(cls.original_root, cls.filament_parent_root)
+        shutil.copytree(cls.tough_pla_parent_root, cls.filament_parent_root)
         data_root = cls.filament_parent_root / 'data'
         current = {name: json.loads((data_root / name).read_bytes())
                    for name in PRE_FILAMENT_BATCH_DATA_SHA256}
@@ -934,6 +977,8 @@ class BaselineCompatibility(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
         self.work = Path(self.temp.name)
+        if self._testMethodName == 'test_filament_batch_parent_manifest_and_catalog_recovery_remain_exact':
+            self.current_root = self.tough_pla_parent_root
 
     @contextmanager
     def resources(self, core_root, query_root=None):
@@ -1015,6 +1060,84 @@ class BaselineCompatibility(unittest.TestCase):
         changed['materials.json']['identities'][0]['name'] += ' unreviewed'
         with self.assertRaisesRegex(AssertionError, 'Recovered a592 catalog bytes differ'):
             recover_a592_catalogs(changed)
+
+    def test_tough_pla_parent_manifest_and_catalog_recovery_remain_exact(self):
+        expected = dict(self.expected)
+        expected.update({'data/' + name: digest for name, digest in PRE_TOUGH_PLA_DATA_SHA256.items()})
+        self.assertEqual(len(manifest(self.tough_pla_parent_root)), 64)
+        self.assertEqual(manifest(self.tough_pla_parent_root), expected)
+        current = {name: json.loads((self.current_root / 'data' / name).read_bytes())
+                   for name in PRE_TOUGH_PLA_DATA_SHA256}
+        parent = {name: json.loads((self.tough_pla_parent_root / 'data' / name).read_bytes())
+                  for name in PRE_TOUGH_PLA_DATA_SHA256}
+        self.assertEqual(recover_pre_tough_pla_catalogs(current), parent)
+        self.assertEqual(recover_pre_tough_pla_catalogs(parent), parent)
+        self.assertEqual(current['sources.json']['records'][:-1], parent['sources.json']['records'])
+        self.assertEqual(current['materials.json']['grades'], parent['materials.json']['grades'])
+        with self.assertRaisesRegex(AssertionError, 'Filament batch predecessor catalog bytes differ'):
+            recover_pre_filament_batch_catalogs(current)
+        ledger, additions = tough_pla_inventory()
+        for filename, section, collection, label in GROWTH_COLLECTIONS:
+            if not additions[label]:
+                continue
+            candidate = additions[label][0]
+            for mutation in ('missing', 'changed', 'duplicate'):
+                with self.subTest(collection=label, mutation=mutation):
+                    changed = deepcopy(current)
+                    rows = changed[filename][collection]
+                    row = next(row for row in rows if row['id'] == candidate['id'])
+                    if mutation == 'missing':
+                        rows.remove(row)
+                    elif mutation == 'changed':
+                        row['version'] = 'unreviewed'
+                    else:
+                        rows.append(deepcopy(row))
+                    with self.assertRaisesRegex(AssertionError, 'Tough PLA follow-up'):
+                        recover_pre_tough_pla_catalogs(changed)
+        for filename, collection in [('materials.json', 'identities'), ('sources.json', 'records')]:
+            changed = deepcopy(current)
+            changed[filename][collection][0]['version'] = 'unreviewed'
+            with self.subTest(retained_collection=collection), self.assertRaisesRegex(
+                    AssertionError, 'Tough PLA follow-up predecessor catalog bytes differ'):
+                recover_pre_tough_pla_catalogs(changed)
+        changed = deepcopy(current)
+        self.assertEqual({row['id'] for row in changed['materials.json']['records'][-2:]},
+                         {row['id'] for row in additions['states']})
+        changed['materials.json']['records'][-2:] = reversed(changed['materials.json']['records'][-2:])
+        with self.assertRaisesRegex(AssertionError, 'Tough PLA follow-up successor catalog order or bytes differ'):
+            recover_pre_tough_pla_catalogs(changed)
+        original_read = Path.read_bytes
+        for target in (TOUGH_PLA_LEDGER, TOUGH_PLA_PACKET):
+            def replaced(path):
+                return original_read(path) + (b' ' if path == target else b'')
+            with self.subTest(binding=target.name), patch.object(Path, 'read_bytes', replaced), \
+                    self.assertRaisesRegex(AssertionError, 'Tough PLA follow-up .* bytes differ'):
+                recover_pre_tough_pla_catalogs(current)
+        with self.resources(self.tough_pla_parent_root, self.tough_pla_parent_query_root):
+            with self.assertRaisesRegex(ValueError, 'Baseline pin was replaced'):
+                registry.baseline_digest()
+            with patch.object(registry, 'BASELINE_PIN', PRE_TOUGH_PLA_PIN_SHA256):
+                self.assertEqual(registry.baseline_digest(), PRE_TOUGH_PLA_PIN_SHA256)
+        with self.resources(self.tough_pla_parent_root), self.assertRaisesRegex(
+                ValueError, 'Installed legacy baseline differs'):
+            registry.baseline_digest()
+
+    def test_tough_pla_parent_database_rejected_without_migration(self):
+        for rich in (False, True):
+            with self.subTest(rich=rich):
+                review = self.review(rich)
+                path = self.work / ('5cc1418-v2.db' if rich else '5cc1418-legacy.db')
+                with self.resources(self.tough_pla_parent_root, self.tough_pla_parent_query_root), \
+                        patch.object(registry, 'BASELINE_PIN', PRE_TOUGH_PLA_PIN_SHA256):
+                    historical = self.make_registry(path, review, rich)
+                    before = historical.admit([review['records'][0]['candidate_id']])
+                raw = path.read_bytes()
+                rows = self.database_rows(path)
+                with self.assertRaisesRegex(ValueError, 'Initial baseline and review input cannot be replaced'):
+                    self.make_registry(path, review, rich)
+                self.assertEqual(path.read_bytes(), raw)
+                self.assertEqual(self.database_rows(path), rows)
+                self.assertEqual(historical.snapshot(), before)
 
     def test_filament_batch_parent_manifest_and_catalog_recovery_remain_exact(self):
         expected = dict(self.expected)

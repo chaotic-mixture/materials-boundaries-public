@@ -37,7 +37,7 @@ class CatalogAPI(unittest.TestCase):
         self.assertEqual(self.client.get('/openapi.json').json()['info']['version'],'0.5.0.dev0')
         from materials_platform import __version__ as umbrella_version
         self.assertEqual(umbrella_version,'0.5.0.dev0')
-        self.assertEqual(self.status['counts']['local_catalog_unique_material_count'],1142)
+        self.assertEqual(self.status['counts']['local_catalog_unique_material_count'],1143)
         self.assertFalse(self.status['provider_counts_combined'])
         for name in ('version','content_digest','runtime_digest'): self.assertRegex(self.status[name],r'^[a-f0-9]{64}$')
     def test_03_exact_baseline_parity(self):
@@ -326,6 +326,1061 @@ class CatalogAPI(unittest.TestCase):
                 self.assertEqual(formal.status_code, 200)
                 self.assertEqual(formal.json()['matched_count'], 1)
                 self.assertEqual(formal.json()['records'][0]['identity'], value['identity'])
+        self.assertEqual(self.client.get('/api/catalog/status').json(), self.status)
+        self.assertEqual(self.client.get('/api/catalog/project/status').json(), formal_status)
+
+    def test_tough_pla_two_states_share_one_identity(self):
+        frozen = {'materials': {'schema_version': '1.0.0',
+                       'identities': [{'version': '1.0.0',
+                                       'id': 'mat_aniskevich_2023_ultimaker_tough_pla',
+                                       'category': 'polymer',
+                                       'name': 'Ultimaker Tough PLA (source-qualified PLA/acrylic-polymer '
+                                               'formulation)',
+                                       'names': {'en': 'Ultimaker Tough PLA (source-qualified '
+                                                       'PLA/acrylic-polymer formulation)',
+                                                 'zh': 'Ultimaker Tough PLA（来源限定的 PLA／丙烯酸类聚合物配方）',
+                                                 'ja': 'Ultimaker Tough PLA（資料で特定された PLA・アクリルポリマー配合物）',
+                                                 'de': 'Ultimaker Tough PLA (quellenbezogene '
+                                                       'PLA/Acrylpolymer-Rezeptur)'},
+                                       'aliases': [{'language': 'en', 'text': 'Tough PLA'},
+                                                   {'language': 'en', 'text': 'PLA Tough'}],
+                                       'identity_scope': 'One source-qualified Ultimaker Tough PLA formulation '
+                                                         'family represented by the Black and White '
+                                                         'reference-filament series in Aniskevich and '
+                                                         'Bulderberga (2023). The 22 December 2022 manufacturer '
+                                                         'SDS names polylactic acid and an unspecified acrylic '
+                                                         'polymer and covers both colors. This constituent '
+                                                         'evidence supports a curated formulation distinction '
+                                                         'from the generic PLA representative; no absence of '
+                                                         'acrylic additives in other PLA products is asserted. '
+                                                         'Supplier, product name, color, numeric code and '
+                                                         'differing measured values alone do not establish '
+                                                         'identity. The document supports product-family '
+                                                         'applicability and does not authenticate workbook '
+                                                         'codes 20231 or 202300, the tested lots, or identical '
+                                                         'complete color recipes. Acrylic-polymer chemistry, '
+                                                         'constituent proportions/functions, pigment/additive '
+                                                         'recipe and chemical purity remain unknown. No PMMA or '
+                                                         'constituent fraction is inferred.',
+                                       'evidence': [{'source_id': 'aniskevich_bulderberga_2023_polymer_mechanical_characterisation',
+                                                     'locator': 'Tested materials!B10; C10:D11; Tensile '
+                                                                'modulus!B7:B8',
+                                                     'supports': ['material_identity'],
+                                                     'url': 'https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content'},
+                                                    {'source_id': 'ultimaker_tough_pla_sds_20221222',
+                                                     'locator': 'PDF p.1 section 1.1, Tough PLA trade name and '
+                                                                'Black/White color coverage; PDF p.2 section '
+                                                                '3.2, mixture comments',
+                                                     'supports': ['material_identity'],
+                                                     'url': 'https://um-support-files.ultimaker.com/materials/2.85mm/sds/TOUGH-PLA/UM_Tough%20PLA_EU_en_SDSv2.0.pdf'}]}],
+                       'grades': [],
+                       'records': [{'version': '1.0.0',
+                                    'grade_id': None,
+                                    'aliases': [],
+                                    'state': {'product_form': {'status': 'reported',
+                                                               'text': 'Reference filament 2.8 mm',
+                                                               'evidence': [{'source_id': 'aniskevich_bulderberga_2023_polymer_mechanical_characterisation',
+                                                                             'url': 'https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content',
+                                                                             'locator': 'Tensile modulus!E2; '
+                                                                                        'Samples!C4',
+                                                                             'supports': ['state']}],
+                                                               'notes': 'Source-reported nominal form; no '
+                                                                        'independent diameter measurement or '
+                                                                        'substitution of later product '
+                                                                        'diameters.'},
+                                              'processing': {'status': 'not_reported_in_inspected_source',
+                                                             'text': None,
+                                                             'evidence': [],
+                                                             'notes': 'Reference-filament manufacturing history '
+                                                                      'is not stated. Nozzle/bed temperatures '
+                                                                      'and layer thickness in Tested '
+                                                                      'materials!E:G describe printing and are '
+                                                                      'not imported here.'},
+                                              'temper_or_heat_treatment': {'status': 'not_reported_in_inspected_source',
+                                                                           'text': None,
+                                                                           'evidence': [],
+                                                                           'notes': 'No reference-filament '
+                                                                                    'heat-treatment or '
+                                                                                    'annealing history is '
+                                                                                    'stated.'},
+                                              'conditioning': {'status': 'not_reported_in_inspected_source',
+                                                               'text': None,
+                                                               'evidence': [],
+                                                               'notes': 'Pre-test drying, storage time, '
+                                                                        'temperature and humidity for this '
+                                                                        'filament series are not stated.'},
+                                              'reinforcement': {'status': 'not_reported_in_inspected_source',
+                                                                'text': None,
+                                                                'evidence': [],
+                                                                'notes': 'The workbook does not report a '
+                                                                         'quantitative filler assay. Separate '
+                                                                         'manufacturer identity evidence is '
+                                                                         'restricted to classification; no '
+                                                                         'filler fraction, morphology or '
+                                                                         'exact-lot certification is inferred.'},
+                                              'porosity': {'status': 'not_reported_in_inspected_source',
+                                                           'text': None,
+                                                           'evidence': [],
+                                                           'notes': 'No physical porosity or void fraction is '
+                                                                    'reported for the reference filament; no '
+                                                                    'zero porosity is inferred.'},
+                                              'orientation': {'status': 'not_reported_in_inspected_source',
+                                                              'text': None,
+                                                              'evidence': [],
+                                                              'notes': 'A source-specific orientation '
+                                                                       'convention, gauge geometry and '
+                                                                       'anisotropy characterization are not '
+                                                                       'stated for the reference-filament '
+                                                                       'measurements.'},
+                                              'composition_or_purity': {'status': 'reported',
+                                                                        'text': 'Workbook family: Polylactic '
+                                                                                'acid; supplier: Ultimaker; '
+                                                                                'source designation: PLA Tough '
+                                                                                'White 20231',
+                                                                        'evidence': [{'source_id': 'aniskevich_bulderberga_2023_polymer_mechanical_characterisation',
+                                                                                      'url': 'https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content',
+                                                                                      'locator': 'Tested '
+                                                                                                 'materials!B10; '
+                                                                                                 'C10:D10; '
+                                                                                                 'Tensile '
+                                                                                                 'modulus!B8',
+                                                                                      'supports': ['state']}],
+                                                                        'notes': 'This preserves the workbook '
+                                                                                 'family/product label, not a '
+                                                                                 'pure-PLA assay or complete '
+                                                                                 'recipe. Manufacturer identity '
+                                                                                 'evidence does not '
+                                                                                 'authenticate this code or '
+                                                                                 'exact tested lot.'}},
+                                    'evaluation_support': 'catalog_only',
+                                    'id': 'state_aniskevich_2023_ultimaker_tough_pla_white_filament',
+                                    'identity_id': 'mat_aniskevich_2023_ultimaker_tough_pla',
+                                    'name': 'Ultimaker Tough PLA White 20231 - reference filament 2.8 mm',
+                                    'names': {'en': 'Ultimaker Tough PLA White 20231 - reference filament 2.8 '
+                                                    'mm',
+                                              'zh': 'Ultimaker Tough PLA 白色 20231 - 2.8 mm 参考丝材',
+                                              'ja': 'Ultimaker Tough PLA 白色 20231 - 2.8 mm 参照フィラメント',
+                                              'de': 'Ultimaker Tough PLA Weiß 20231 - Referenzfilament 2.8 mm'},
+                                    'source_designation': 'PLA Tough White 20231',
+                                    'source_scope': 'The original white reference-filament measurement series '
+                                                    'is retained separately under one qualified Tough PLA '
+                                                    'identity. Exact join: Tested materials!B10; C10:D10; '
+                                                    'Tensile modulus!B8. The literal code 20231 is not '
+                                                    'corrected or certified as a SKU. Grade is null. No pooling '
+                                                    'across colors, identical pigment/additive recipe, or '
+                                                    'independent material identity is inferred.',
+                                    'evidence': [{'source_id': 'aniskevich_bulderberga_2023_polymer_mechanical_characterisation',
+                                                  'url': 'https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content',
+                                                  'locator': 'Tested materials!B10; C10:D10; Tensile '
+                                                             'modulus!B8; Tensile modulus!E2; Samples!C4',
+                                                  'supports': ['state']}],
+                                    'property_ids': ['refprop_aniskevich_2023_ultimaker_tough_pla_white_filament_tensile_modulus',
+                                                     'refprop_aniskevich_2023_ultimaker_tough_pla_white_filament_tensile_strength']},
+                                   {'version': '1.0.0',
+                                    'grade_id': None,
+                                    'aliases': [],
+                                    'state': {'product_form': {'status': 'reported',
+                                                               'text': 'Reference filament 2.8 mm',
+                                                               'evidence': [{'source_id': 'aniskevich_bulderberga_2023_polymer_mechanical_characterisation',
+                                                                             'url': 'https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content',
+                                                                             'locator': 'Tensile modulus!E2; '
+                                                                                        'Samples!C4',
+                                                                             'supports': ['state']}],
+                                                               'notes': 'Source-reported nominal form; no '
+                                                                        'independent diameter measurement or '
+                                                                        'substitution of later product '
+                                                                        'diameters.'},
+                                              'processing': {'status': 'not_reported_in_inspected_source',
+                                                             'text': None,
+                                                             'evidence': [],
+                                                             'notes': 'Reference-filament manufacturing history '
+                                                                      'is not stated. Nozzle/bed temperatures '
+                                                                      'and layer thickness in Tested '
+                                                                      'materials!E:G describe printing and are '
+                                                                      'not imported here.'},
+                                              'temper_or_heat_treatment': {'status': 'not_reported_in_inspected_source',
+                                                                           'text': None,
+                                                                           'evidence': [],
+                                                                           'notes': 'No reference-filament '
+                                                                                    'heat-treatment or '
+                                                                                    'annealing history is '
+                                                                                    'stated.'},
+                                              'conditioning': {'status': 'not_reported_in_inspected_source',
+                                                               'text': None,
+                                                               'evidence': [],
+                                                               'notes': 'Pre-test drying, storage time, '
+                                                                        'temperature and humidity for this '
+                                                                        'filament series are not stated.'},
+                                              'reinforcement': {'status': 'not_reported_in_inspected_source',
+                                                                'text': None,
+                                                                'evidence': [],
+                                                                'notes': 'The workbook does not report a '
+                                                                         'quantitative filler assay. Separate '
+                                                                         'manufacturer identity evidence is '
+                                                                         'restricted to classification; no '
+                                                                         'filler fraction, morphology or '
+                                                                         'exact-lot certification is inferred.'},
+                                              'porosity': {'status': 'not_reported_in_inspected_source',
+                                                           'text': None,
+                                                           'evidence': [],
+                                                           'notes': 'No physical porosity or void fraction is '
+                                                                    'reported for the reference filament; no '
+                                                                    'zero porosity is inferred.'},
+                                              'orientation': {'status': 'not_reported_in_inspected_source',
+                                                              'text': None,
+                                                              'evidence': [],
+                                                              'notes': 'A source-specific orientation '
+                                                                       'convention, gauge geometry and '
+                                                                       'anisotropy characterization are not '
+                                                                       'stated for the reference-filament '
+                                                                       'measurements.'},
+                                              'composition_or_purity': {'status': 'reported',
+                                                                        'text': 'Workbook family: Polylactic '
+                                                                                'acid; supplier: Ultimaker; '
+                                                                                'source designation: PLA Tough '
+                                                                                'Black 202300',
+                                                                        'evidence': [{'source_id': 'aniskevich_bulderberga_2023_polymer_mechanical_characterisation',
+                                                                                      'url': 'https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content',
+                                                                                      'locator': 'Tested '
+                                                                                                 'materials!B10; '
+                                                                                                 'C11:D11; '
+                                                                                                 'Tensile '
+                                                                                                 'modulus!B7',
+                                                                                      'supports': ['state']}],
+                                                                        'notes': 'This preserves the workbook '
+                                                                                 'family/product label, not a '
+                                                                                 'pure-PLA assay or complete '
+                                                                                 'recipe. Manufacturer identity '
+                                                                                 'evidence does not '
+                                                                                 'authenticate this code or '
+                                                                                 'exact tested lot.'}},
+                                    'evaluation_support': 'catalog_only',
+                                    'id': 'state_aniskevich_2023_ultimaker_tough_pla_black_filament',
+                                    'identity_id': 'mat_aniskevich_2023_ultimaker_tough_pla',
+                                    'name': 'Ultimaker Tough PLA Black 202300 - reference filament 2.8 mm',
+                                    'names': {'en': 'Ultimaker Tough PLA Black 202300 - reference filament 2.8 '
+                                                    'mm',
+                                              'zh': 'Ultimaker Tough PLA 黑色 202300 - 2.8 mm 参考丝材',
+                                              'ja': 'Ultimaker Tough PLA 黒色 202300 - 2.8 mm 参照フィラメント',
+                                              'de': 'Ultimaker Tough PLA Schwarz 202300 - Referenzfilament 2.8 '
+                                                    'mm'},
+                                    'source_designation': 'PLA Tough Black 202300',
+                                    'source_scope': 'The original black reference-filament measurement series '
+                                                    'is retained separately under one qualified Tough PLA '
+                                                    'identity. Exact join: Tested materials!B10; C11:D11; '
+                                                    'Tensile modulus!B7. The literal code 202300 is not '
+                                                    'corrected or certified as a SKU. Grade is null. No pooling '
+                                                    'across colors, identical pigment/additive recipe, or '
+                                                    'independent material identity is inferred.',
+                                    'evidence': [{'source_id': 'aniskevich_bulderberga_2023_polymer_mechanical_characterisation',
+                                                  'url': 'https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content',
+                                                  'locator': 'Tested materials!B10; C11:D11; Tensile '
+                                                             'modulus!B7; Tensile modulus!E2; Samples!C4',
+                                                  'supports': ['state']}],
+                                    'property_ids': ['refprop_aniskevich_2023_ultimaker_tough_pla_black_filament_tensile_modulus',
+                                                     'refprop_aniskevich_2023_ultimaker_tough_pla_black_filament_tensile_strength']}]},
+         'properties': {'schema_version': '1.0.0',
+                        'records': [{'version': '1.0.0',
+                                     'quantity_dimension': 'pressure',
+                                     'reported_value': {'kind': 'scalar',
+                                                        'unit_text': 'MPa ',
+                                                        'unit_code': 'MPa',
+                                                        'value_text': '1952.8040383954526',
+                                                        'number': '1952.8040383954526'},
+                                     'evidence_kind': 'published_experimental_reference',
+                                     'reporting_basis': 'reported_summary',
+                                     'determination_basis': 'source_reports_measurement',
+                                     'basis_note': 'Tensile modulus!E:H reports measured reference-filament '
+                                                   'tensile results at the source-stated rate. Samples!C27 says '
+                                                   'three to five specimens were tested per series and average '
+                                                   'data were used. The source-reported average is retained '
+                                                   'without assigning exact row-specific n, pooling weights or '
+                                                   'a statistical definition of avedev.',
+                                     'conditions': {'temperature': {'status': 'not_reported_in_inspected_source',
+                                                                    'text': None,
+                                                                    'evidence': [],
+                                                                    'notes': 'Numerical tensile-test '
+                                                                             'temperature is not stated. '
+                                                                             'Printing nozzle/bed temperatures '
+                                                                             'are not test temperatures.'},
+                                                    'test_standard': {'status': 'not_reported_in_inspected_source',
+                                                                      'text': None,
+                                                                      'evidence': [],
+                                                                      'notes': 'The ISO 527-2 label belongs to '
+                                                                               'the separate reference column '
+                                                                               'C; it does not establish the '
+                                                                               'method for measured columns '
+                                                                               'E:H.'},
+                                                    'test_method': {'status': 'reported',
+                                                                    'text': 'Tensile testing of reference '
+                                                                            'filament 2.8 mm; source reports '
+                                                                            'E-mod and tensile strength',
+                                                                    'evidence': [{'source_id': 'aniskevich_bulderberga_2023_polymer_mechanical_characterisation',
+                                                                                  'url': 'https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content',
+                                                                                  'locator': 'Tensile '
+                                                                                             'modulus!E2:H5; '
+                                                                                             'Samples!C4',
+                                                                                  'supports': ['method',
+                                                                                               'condition']}],
+                                                                    'notes': 'Instrument, extensometry, gauge '
+                                                                             'length, grip separation and '
+                                                                             'modulus extraction window are not '
+                                                                             'stated; no yield/ultimate '
+                                                                             'qualifier or isotropic '
+                                                                             "Young's-modulus interpretation is "
+                                                                             'added.'},
+                                                    'direction': {'status': 'not_reported_in_inspected_source',
+                                                                  'text': None,
+                                                                  'evidence': [],
+                                                                  'notes': 'No additional source-specific '
+                                                                           'tensile direction convention is '
+                                                                           'stated for the reference filament.'},
+                                                    'conditioning': {'status': 'not_reported_in_inspected_source',
+                                                                     'text': None,
+                                                                     'evidence': [],
+                                                                     'notes': 'Test conditioning, numerical '
+                                                                              'humidity and reference-filament '
+                                                                              'pre-test drying protocol are not '
+                                                                              'stated.'},
+                                                    'loading_rate': {'status': 'reported',
+                                                                     'text': '10 mm/min',
+                                                                     'evidence': [{'source_id': 'aniskevich_bulderberga_2023_polymer_mechanical_characterisation',
+                                                                                   'url': 'https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content',
+                                                                                   'locator': 'Tensile '
+                                                                                              'modulus!E5 and '
+                                                                                              'G5',
+                                                                                   'supports': ['condition']}],
+                                                                     'notes': 'The header says data from 10 '
+                                                                              'mm/min tests. It does not '
+                                                                              'explicitly identify crosshead '
+                                                                              'speed, strain rate or '
+                                                                              'gauge-normalized rate.'}},
+                                     'density_basis': None,
+                                     'summary_statistic': 'reported_mean',
+                                     'uncertainty': None,
+                                     'uncertainty_status': 'not_reported_in_inspected_source',
+                                     'sample_count': {'value': None,
+                                                      'relation': 'not_reported',
+                                                      'scope': 'Row-specific reference-filament series',
+                                                      'source_statement': 'Three to five specimens were tested '
+                                                                          'for each series, and average data '
+                                                                          'were used; exact row-specific n is '
+                                                                          'not stated.',
+                                                      'evidence': [{'source_id': 'aniskevich_bulderberga_2023_polymer_mechanical_characterisation',
+                                                                    'url': 'https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content',
+                                                                    'locator': 'Samples!C27',
+                                                                    'supports': ['sample_count',
+                                                                                 'summary_statistic']}]},
+                                     'method_definition': {'type': 'source_reported_conventional',
+                                                           'definition': 'Source-reported series-average '
+                                                                         'tensile reference-filament '
+                                                                         'measurements in Tensile modulus!E:H. '
+                                                                         'E-mod is retained as tensile_modulus. '
+                                                                         'The separate ISO-labelled reference '
+                                                                         'column C, extruded fibers and printed '
+                                                                         'dogbones are excluded; no '
+                                                                         'recalculation from raw specimens is '
+                                                                         'performed.',
+                                                           'extraction_window': None,
+                                                           'evidence': [{'source_id': 'aniskevich_bulderberga_2023_polymer_mechanical_characterisation',
+                                                                         'url': 'https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content',
+                                                                         'locator': 'Tensile modulus!E2:H5; '
+                                                                                    'Samples!C4 and C27',
+                                                                         'supports': ['method',
+                                                                                      'summary_statistic']}]},
+                                     'source_discrepancies': [],
+                                     'source_id': 'aniskevich_bulderberga_2023_polymer_mechanical_characterisation',
+                                     'source_document': {'url': 'https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content',
+                                                         'revision': 'Zenodo version DOI '
+                                                                     '10.5281/zenodo.8089569; record revision 2',
+                                                         'inspected_on': '2026-10-21',
+                                                         'sha256': '830b2c9277dcc2d03265b63e311a5e7089c258ebb6a389b45d07601ae4b2e4e7',
+                                                         'hash_status': 'recorded',
+                                                         'hash_note': None,
+                                                         'inspection_scope': 'Selected source identity cells, '
+                                                                             'reference-filament E/F/G/H '
+                                                                             'results and headers, Samples '
+                                                                             'C4/C27, and official metadata '
+                                                                             'license evidence.',
+                                                         'inspection_status': 'selected_content_inspected'},
+                                     'scope_note': 'Source-qualified commercial product and reference-filament '
+                                                   'series only; no pure-polymer constant, printing-state '
+                                                   'transfer, interpolation, comparison ranking, calculation '
+                                                   'input, universal bound or engineering allowable.',
+                                     'evaluation_support': 'catalog_only',
+                                     'universal_bound': False,
+                                     'engineering_allowable': False,
+                                     'verification': {'source_inspection_scope': 'Selected source identity '
+                                                                                 'cells, reference-filament '
+                                                                                 'E/F/G/H results and headers, '
+                                                                                 'Samples C4/C27, and official '
+                                                                                 'metadata license evidence.',
+                                                      'transcription_cross_check': 'completed',
+                                                      'independent_scientific_review': False,
+                                                      'raw_data_reanalysis': False},
+                                     'id': 'refprop_aniskevich_2023_ultimaker_tough_pla_white_filament_tensile_modulus',
+                                     'material_state_id': 'state_aniskevich_2023_ultimaker_tough_pla_white_filament',
+                                     'quantity': 'tensile_modulus',
+                                     'source_property_label': 'E-mod',
+                                     'uncertainty_note': 'The source reports avedev = 119.08536932981231 MPa at '
+                                                         'Tensile modulus!F8 (header Tensile modulus!F3). No '
+                                                         'definition or supported statistical uncertainty type '
+                                                         'is reported. uncertainty=null records that typing '
+                                                         'limitation, not absence of the source deviation. This '
+                                                         'value is not labelled SD, SEM, confidence interval or '
+                                                         'printed plus/minus; no such interpretation or '
+                                                         'calculation is supplied.',
+                                     'evidence': [{'source_id': 'aniskevich_bulderberga_2023_polymer_mechanical_characterisation',
+                                                   'url': 'https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content',
+                                                   'locator': 'Tensile modulus!E8; Tensile modulus!F8; Tensile '
+                                                              'modulus!E2:H5; Samples!C27',
+                                                   'supports': ['reported_value',
+                                                                'summary_statistic',
+                                                                'uncertainty',
+                                                                'classification']}]},
+                                    {'version': '1.0.0',
+                                     'quantity_dimension': 'pressure',
+                                     'reported_value': {'kind': 'scalar',
+                                                        'unit_text': 'MPa ',
+                                                        'unit_code': 'MPa',
+                                                        'value_text': '48.770237778441711',
+                                                        'number': '48.770237778441711'},
+                                     'evidence_kind': 'published_experimental_reference',
+                                     'reporting_basis': 'reported_summary',
+                                     'determination_basis': 'source_reports_measurement',
+                                     'basis_note': 'Tensile modulus!E:H reports measured reference-filament '
+                                                   'tensile results at the source-stated rate. Samples!C27 says '
+                                                   'three to five specimens were tested per series and average '
+                                                   'data were used. The source-reported average is retained '
+                                                   'without assigning exact row-specific n, pooling weights or '
+                                                   'a statistical definition of avedev.',
+                                     'conditions': {'temperature': {'status': 'not_reported_in_inspected_source',
+                                                                    'text': None,
+                                                                    'evidence': [],
+                                                                    'notes': 'Numerical tensile-test '
+                                                                             'temperature is not stated. '
+                                                                             'Printing nozzle/bed temperatures '
+                                                                             'are not test temperatures.'},
+                                                    'test_standard': {'status': 'not_reported_in_inspected_source',
+                                                                      'text': None,
+                                                                      'evidence': [],
+                                                                      'notes': 'The ISO 527-2 label belongs to '
+                                                                               'the separate reference column '
+                                                                               'C; it does not establish the '
+                                                                               'method for measured columns '
+                                                                               'E:H.'},
+                                                    'test_method': {'status': 'reported',
+                                                                    'text': 'Tensile testing of reference '
+                                                                            'filament 2.8 mm; source reports '
+                                                                            'E-mod and tensile strength',
+                                                                    'evidence': [{'source_id': 'aniskevich_bulderberga_2023_polymer_mechanical_characterisation',
+                                                                                  'url': 'https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content',
+                                                                                  'locator': 'Tensile '
+                                                                                             'modulus!E2:H5; '
+                                                                                             'Samples!C4',
+                                                                                  'supports': ['method',
+                                                                                               'condition']}],
+                                                                    'notes': 'Instrument, extensometry, gauge '
+                                                                             'length, grip separation and '
+                                                                             'modulus extraction window are not '
+                                                                             'stated; no yield/ultimate '
+                                                                             'qualifier or isotropic '
+                                                                             "Young's-modulus interpretation is "
+                                                                             'added.'},
+                                                    'direction': {'status': 'not_reported_in_inspected_source',
+                                                                  'text': None,
+                                                                  'evidence': [],
+                                                                  'notes': 'No additional source-specific '
+                                                                           'tensile direction convention is '
+                                                                           'stated for the reference filament.'},
+                                                    'conditioning': {'status': 'not_reported_in_inspected_source',
+                                                                     'text': None,
+                                                                     'evidence': [],
+                                                                     'notes': 'Test conditioning, numerical '
+                                                                              'humidity and reference-filament '
+                                                                              'pre-test drying protocol are not '
+                                                                              'stated.'},
+                                                    'loading_rate': {'status': 'reported',
+                                                                     'text': '10 mm/min',
+                                                                     'evidence': [{'source_id': 'aniskevich_bulderberga_2023_polymer_mechanical_characterisation',
+                                                                                   'url': 'https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content',
+                                                                                   'locator': 'Tensile '
+                                                                                              'modulus!E5 and '
+                                                                                              'G5',
+                                                                                   'supports': ['condition']}],
+                                                                     'notes': 'The header says data from 10 '
+                                                                              'mm/min tests. It does not '
+                                                                              'explicitly identify crosshead '
+                                                                              'speed, strain rate or '
+                                                                              'gauge-normalized rate.'}},
+                                     'density_basis': None,
+                                     'summary_statistic': 'reported_mean',
+                                     'uncertainty': None,
+                                     'uncertainty_status': 'not_reported_in_inspected_source',
+                                     'sample_count': {'value': None,
+                                                      'relation': 'not_reported',
+                                                      'scope': 'Row-specific reference-filament series',
+                                                      'source_statement': 'Three to five specimens were tested '
+                                                                          'for each series, and average data '
+                                                                          'were used; exact row-specific n is '
+                                                                          'not stated.',
+                                                      'evidence': [{'source_id': 'aniskevich_bulderberga_2023_polymer_mechanical_characterisation',
+                                                                    'url': 'https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content',
+                                                                    'locator': 'Samples!C27',
+                                                                    'supports': ['sample_count',
+                                                                                 'summary_statistic']}]},
+                                     'method_definition': {'type': 'source_reported_conventional',
+                                                           'definition': 'Source-reported series-average '
+                                                                         'tensile reference-filament '
+                                                                         'measurements in Tensile modulus!E:H. '
+                                                                         'E-mod is retained as tensile_modulus. '
+                                                                         'The separate ISO-labelled reference '
+                                                                         'column C, extruded fibers and printed '
+                                                                         'dogbones are excluded; no '
+                                                                         'recalculation from raw specimens is '
+                                                                         'performed.',
+                                                           'extraction_window': None,
+                                                           'evidence': [{'source_id': 'aniskevich_bulderberga_2023_polymer_mechanical_characterisation',
+                                                                         'url': 'https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content',
+                                                                         'locator': 'Tensile modulus!E2:H5; '
+                                                                                    'Samples!C4 and C27',
+                                                                         'supports': ['method',
+                                                                                      'summary_statistic']}]},
+                                     'source_discrepancies': [],
+                                     'source_id': 'aniskevich_bulderberga_2023_polymer_mechanical_characterisation',
+                                     'source_document': {'url': 'https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content',
+                                                         'revision': 'Zenodo version DOI '
+                                                                     '10.5281/zenodo.8089569; record revision 2',
+                                                         'inspected_on': '2026-10-21',
+                                                         'sha256': '830b2c9277dcc2d03265b63e311a5e7089c258ebb6a389b45d07601ae4b2e4e7',
+                                                         'hash_status': 'recorded',
+                                                         'hash_note': None,
+                                                         'inspection_scope': 'Selected source identity cells, '
+                                                                             'reference-filament E/F/G/H '
+                                                                             'results and headers, Samples '
+                                                                             'C4/C27, and official metadata '
+                                                                             'license evidence.',
+                                                         'inspection_status': 'selected_content_inspected'},
+                                     'scope_note': 'Source-qualified commercial product and reference-filament '
+                                                   'series only; no pure-polymer constant, printing-state '
+                                                   'transfer, interpolation, comparison ranking, calculation '
+                                                   'input, universal bound or engineering allowable.',
+                                     'evaluation_support': 'catalog_only',
+                                     'universal_bound': False,
+                                     'engineering_allowable': False,
+                                     'verification': {'source_inspection_scope': 'Selected source identity '
+                                                                                 'cells, reference-filament '
+                                                                                 'E/F/G/H results and headers, '
+                                                                                 'Samples C4/C27, and official '
+                                                                                 'metadata license evidence.',
+                                                      'transcription_cross_check': 'completed',
+                                                      'independent_scientific_review': False,
+                                                      'raw_data_reanalysis': False},
+                                     'id': 'refprop_aniskevich_2023_ultimaker_tough_pla_white_filament_tensile_strength',
+                                     'material_state_id': 'state_aniskevich_2023_ultimaker_tough_pla_white_filament',
+                                     'quantity': 'tensile_strength',
+                                     'source_property_label': 'Tensile strength',
+                                     'uncertainty_note': 'The source reports avedev = 0.31063412976455568 MPa '
+                                                         'at Tensile modulus!H8 (header Tensile modulus!H3). No '
+                                                         'definition or supported statistical uncertainty type '
+                                                         'is reported. uncertainty=null records that typing '
+                                                         'limitation, not absence of the source deviation. This '
+                                                         'value is not labelled SD, SEM, confidence interval or '
+                                                         'printed plus/minus; no such interpretation or '
+                                                         'calculation is supplied.',
+                                     'evidence': [{'source_id': 'aniskevich_bulderberga_2023_polymer_mechanical_characterisation',
+                                                   'url': 'https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content',
+                                                   'locator': 'Tensile modulus!G8; Tensile modulus!H8; Tensile '
+                                                              'modulus!E2:H5; Samples!C27',
+                                                   'supports': ['reported_value',
+                                                                'summary_statistic',
+                                                                'uncertainty',
+                                                                'classification']}]},
+                                    {'version': '1.0.0',
+                                     'quantity_dimension': 'pressure',
+                                     'reported_value': {'kind': 'scalar',
+                                                        'unit_text': 'MPa ',
+                                                        'unit_code': 'MPa',
+                                                        'value_text': '2251.0910289257272',
+                                                        'number': '2251.0910289257272'},
+                                     'evidence_kind': 'published_experimental_reference',
+                                     'reporting_basis': 'reported_summary',
+                                     'determination_basis': 'source_reports_measurement',
+                                     'basis_note': 'Tensile modulus!E:H reports measured reference-filament '
+                                                   'tensile results at the source-stated rate. Samples!C27 says '
+                                                   'three to five specimens were tested per series and average '
+                                                   'data were used. The source-reported average is retained '
+                                                   'without assigning exact row-specific n, pooling weights or '
+                                                   'a statistical definition of avedev.',
+                                     'conditions': {'temperature': {'status': 'not_reported_in_inspected_source',
+                                                                    'text': None,
+                                                                    'evidence': [],
+                                                                    'notes': 'Numerical tensile-test '
+                                                                             'temperature is not stated. '
+                                                                             'Printing nozzle/bed temperatures '
+                                                                             'are not test temperatures.'},
+                                                    'test_standard': {'status': 'not_reported_in_inspected_source',
+                                                                      'text': None,
+                                                                      'evidence': [],
+                                                                      'notes': 'The ISO 527-2 label belongs to '
+                                                                               'the separate reference column '
+                                                                               'C; it does not establish the '
+                                                                               'method for measured columns '
+                                                                               'E:H.'},
+                                                    'test_method': {'status': 'reported',
+                                                                    'text': 'Tensile testing of reference '
+                                                                            'filament 2.8 mm; source reports '
+                                                                            'E-mod and tensile strength',
+                                                                    'evidence': [{'source_id': 'aniskevich_bulderberga_2023_polymer_mechanical_characterisation',
+                                                                                  'url': 'https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content',
+                                                                                  'locator': 'Tensile '
+                                                                                             'modulus!E2:H5; '
+                                                                                             'Samples!C4',
+                                                                                  'supports': ['method',
+                                                                                               'condition']}],
+                                                                    'notes': 'Instrument, extensometry, gauge '
+                                                                             'length, grip separation and '
+                                                                             'modulus extraction window are not '
+                                                                             'stated; no yield/ultimate '
+                                                                             'qualifier or isotropic '
+                                                                             "Young's-modulus interpretation is "
+                                                                             'added.'},
+                                                    'direction': {'status': 'not_reported_in_inspected_source',
+                                                                  'text': None,
+                                                                  'evidence': [],
+                                                                  'notes': 'No additional source-specific '
+                                                                           'tensile direction convention is '
+                                                                           'stated for the reference filament.'},
+                                                    'conditioning': {'status': 'not_reported_in_inspected_source',
+                                                                     'text': None,
+                                                                     'evidence': [],
+                                                                     'notes': 'Test conditioning, numerical '
+                                                                              'humidity and reference-filament '
+                                                                              'pre-test drying protocol are not '
+                                                                              'stated.'},
+                                                    'loading_rate': {'status': 'reported',
+                                                                     'text': '10 mm/min',
+                                                                     'evidence': [{'source_id': 'aniskevich_bulderberga_2023_polymer_mechanical_characterisation',
+                                                                                   'url': 'https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content',
+                                                                                   'locator': 'Tensile '
+                                                                                              'modulus!E5 and '
+                                                                                              'G5',
+                                                                                   'supports': ['condition']}],
+                                                                     'notes': 'The header says data from 10 '
+                                                                              'mm/min tests. It does not '
+                                                                              'explicitly identify crosshead '
+                                                                              'speed, strain rate or '
+                                                                              'gauge-normalized rate.'}},
+                                     'density_basis': None,
+                                     'summary_statistic': 'reported_mean',
+                                     'uncertainty': None,
+                                     'uncertainty_status': 'not_reported_in_inspected_source',
+                                     'sample_count': {'value': None,
+                                                      'relation': 'not_reported',
+                                                      'scope': 'Row-specific reference-filament series',
+                                                      'source_statement': 'Three to five specimens were tested '
+                                                                          'for each series, and average data '
+                                                                          'were used; exact row-specific n is '
+                                                                          'not stated.',
+                                                      'evidence': [{'source_id': 'aniskevich_bulderberga_2023_polymer_mechanical_characterisation',
+                                                                    'url': 'https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content',
+                                                                    'locator': 'Samples!C27',
+                                                                    'supports': ['sample_count',
+                                                                                 'summary_statistic']}]},
+                                     'method_definition': {'type': 'source_reported_conventional',
+                                                           'definition': 'Source-reported series-average '
+                                                                         'tensile reference-filament '
+                                                                         'measurements in Tensile modulus!E:H. '
+                                                                         'E-mod is retained as tensile_modulus. '
+                                                                         'The separate ISO-labelled reference '
+                                                                         'column C, extruded fibers and printed '
+                                                                         'dogbones are excluded; no '
+                                                                         'recalculation from raw specimens is '
+                                                                         'performed.',
+                                                           'extraction_window': None,
+                                                           'evidence': [{'source_id': 'aniskevich_bulderberga_2023_polymer_mechanical_characterisation',
+                                                                         'url': 'https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content',
+                                                                         'locator': 'Tensile modulus!E2:H5; '
+                                                                                    'Samples!C4 and C27',
+                                                                         'supports': ['method',
+                                                                                      'summary_statistic']}]},
+                                     'source_discrepancies': [],
+                                     'source_id': 'aniskevich_bulderberga_2023_polymer_mechanical_characterisation',
+                                     'source_document': {'url': 'https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content',
+                                                         'revision': 'Zenodo version DOI '
+                                                                     '10.5281/zenodo.8089569; record revision 2',
+                                                         'inspected_on': '2026-10-21',
+                                                         'sha256': '830b2c9277dcc2d03265b63e311a5e7089c258ebb6a389b45d07601ae4b2e4e7',
+                                                         'hash_status': 'recorded',
+                                                         'hash_note': None,
+                                                         'inspection_scope': 'Selected source identity cells, '
+                                                                             'reference-filament E/F/G/H '
+                                                                             'results and headers, Samples '
+                                                                             'C4/C27, and official metadata '
+                                                                             'license evidence.',
+                                                         'inspection_status': 'selected_content_inspected'},
+                                     'scope_note': 'Source-qualified commercial product and reference-filament '
+                                                   'series only; no pure-polymer constant, printing-state '
+                                                   'transfer, interpolation, comparison ranking, calculation '
+                                                   'input, universal bound or engineering allowable.',
+                                     'evaluation_support': 'catalog_only',
+                                     'universal_bound': False,
+                                     'engineering_allowable': False,
+                                     'verification': {'source_inspection_scope': 'Selected source identity '
+                                                                                 'cells, reference-filament '
+                                                                                 'E/F/G/H results and headers, '
+                                                                                 'Samples C4/C27, and official '
+                                                                                 'metadata license evidence.',
+                                                      'transcription_cross_check': 'completed',
+                                                      'independent_scientific_review': False,
+                                                      'raw_data_reanalysis': False},
+                                     'id': 'refprop_aniskevich_2023_ultimaker_tough_pla_black_filament_tensile_modulus',
+                                     'material_state_id': 'state_aniskevich_2023_ultimaker_tough_pla_black_filament',
+                                     'quantity': 'tensile_modulus',
+                                     'source_property_label': 'E-mod',
+                                     'uncertainty_note': 'The source reports avedev = 194.28002770731121 MPa at '
+                                                         'Tensile modulus!F7 (header Tensile modulus!F3). No '
+                                                         'definition or supported statistical uncertainty type '
+                                                         'is reported. uncertainty=null records that typing '
+                                                         'limitation, not absence of the source deviation. This '
+                                                         'value is not labelled SD, SEM, confidence interval or '
+                                                         'printed plus/minus; no such interpretation or '
+                                                         'calculation is supplied.',
+                                     'evidence': [{'source_id': 'aniskevich_bulderberga_2023_polymer_mechanical_characterisation',
+                                                   'url': 'https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content',
+                                                   'locator': 'Tensile modulus!E7; Tensile modulus!F7; Tensile '
+                                                              'modulus!E2:H5; Samples!C27',
+                                                   'supports': ['reported_value',
+                                                                'summary_statistic',
+                                                                'uncertainty',
+                                                                'classification']}]},
+                                    {'version': '1.0.0',
+                                     'quantity_dimension': 'pressure',
+                                     'reported_value': {'kind': 'scalar',
+                                                        'unit_text': 'MPa ',
+                                                        'unit_code': 'MPa',
+                                                        'value_text': '41.745899122457502',
+                                                        'number': '41.745899122457502'},
+                                     'evidence_kind': 'published_experimental_reference',
+                                     'reporting_basis': 'reported_summary',
+                                     'determination_basis': 'source_reports_measurement',
+                                     'basis_note': 'Tensile modulus!E:H reports measured reference-filament '
+                                                   'tensile results at the source-stated rate. Samples!C27 says '
+                                                   'three to five specimens were tested per series and average '
+                                                   'data were used. The source-reported average is retained '
+                                                   'without assigning exact row-specific n, pooling weights or '
+                                                   'a statistical definition of avedev.',
+                                     'conditions': {'temperature': {'status': 'not_reported_in_inspected_source',
+                                                                    'text': None,
+                                                                    'evidence': [],
+                                                                    'notes': 'Numerical tensile-test '
+                                                                             'temperature is not stated. '
+                                                                             'Printing nozzle/bed temperatures '
+                                                                             'are not test temperatures.'},
+                                                    'test_standard': {'status': 'not_reported_in_inspected_source',
+                                                                      'text': None,
+                                                                      'evidence': [],
+                                                                      'notes': 'The ISO 527-2 label belongs to '
+                                                                               'the separate reference column '
+                                                                               'C; it does not establish the '
+                                                                               'method for measured columns '
+                                                                               'E:H.'},
+                                                    'test_method': {'status': 'reported',
+                                                                    'text': 'Tensile testing of reference '
+                                                                            'filament 2.8 mm; source reports '
+                                                                            'E-mod and tensile strength',
+                                                                    'evidence': [{'source_id': 'aniskevich_bulderberga_2023_polymer_mechanical_characterisation',
+                                                                                  'url': 'https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content',
+                                                                                  'locator': 'Tensile '
+                                                                                             'modulus!E2:H5; '
+                                                                                             'Samples!C4',
+                                                                                  'supports': ['method',
+                                                                                               'condition']}],
+                                                                    'notes': 'Instrument, extensometry, gauge '
+                                                                             'length, grip separation and '
+                                                                             'modulus extraction window are not '
+                                                                             'stated; no yield/ultimate '
+                                                                             'qualifier or isotropic '
+                                                                             "Young's-modulus interpretation is "
+                                                                             'added.'},
+                                                    'direction': {'status': 'not_reported_in_inspected_source',
+                                                                  'text': None,
+                                                                  'evidence': [],
+                                                                  'notes': 'No additional source-specific '
+                                                                           'tensile direction convention is '
+                                                                           'stated for the reference filament.'},
+                                                    'conditioning': {'status': 'not_reported_in_inspected_source',
+                                                                     'text': None,
+                                                                     'evidence': [],
+                                                                     'notes': 'Test conditioning, numerical '
+                                                                              'humidity and reference-filament '
+                                                                              'pre-test drying protocol are not '
+                                                                              'stated.'},
+                                                    'loading_rate': {'status': 'reported',
+                                                                     'text': '10 mm/min',
+                                                                     'evidence': [{'source_id': 'aniskevich_bulderberga_2023_polymer_mechanical_characterisation',
+                                                                                   'url': 'https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content',
+                                                                                   'locator': 'Tensile '
+                                                                                              'modulus!E5 and '
+                                                                                              'G5',
+                                                                                   'supports': ['condition']}],
+                                                                     'notes': 'The header says data from 10 '
+                                                                              'mm/min tests. It does not '
+                                                                              'explicitly identify crosshead '
+                                                                              'speed, strain rate or '
+                                                                              'gauge-normalized rate.'}},
+                                     'density_basis': None,
+                                     'summary_statistic': 'reported_mean',
+                                     'uncertainty': None,
+                                     'uncertainty_status': 'not_reported_in_inspected_source',
+                                     'sample_count': {'value': None,
+                                                      'relation': 'not_reported',
+                                                      'scope': 'Row-specific reference-filament series',
+                                                      'source_statement': 'Three to five specimens were tested '
+                                                                          'for each series, and average data '
+                                                                          'were used; exact row-specific n is '
+                                                                          'not stated.',
+                                                      'evidence': [{'source_id': 'aniskevich_bulderberga_2023_polymer_mechanical_characterisation',
+                                                                    'url': 'https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content',
+                                                                    'locator': 'Samples!C27',
+                                                                    'supports': ['sample_count',
+                                                                                 'summary_statistic']}]},
+                                     'method_definition': {'type': 'source_reported_conventional',
+                                                           'definition': 'Source-reported series-average '
+                                                                         'tensile reference-filament '
+                                                                         'measurements in Tensile modulus!E:H. '
+                                                                         'E-mod is retained as tensile_modulus. '
+                                                                         'The separate ISO-labelled reference '
+                                                                         'column C, extruded fibers and printed '
+                                                                         'dogbones are excluded; no '
+                                                                         'recalculation from raw specimens is '
+                                                                         'performed.',
+                                                           'extraction_window': None,
+                                                           'evidence': [{'source_id': 'aniskevich_bulderberga_2023_polymer_mechanical_characterisation',
+                                                                         'url': 'https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content',
+                                                                         'locator': 'Tensile modulus!E2:H5; '
+                                                                                    'Samples!C4 and C27',
+                                                                         'supports': ['method',
+                                                                                      'summary_statistic']}]},
+                                     'source_discrepancies': [],
+                                     'source_id': 'aniskevich_bulderberga_2023_polymer_mechanical_characterisation',
+                                     'source_document': {'url': 'https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content',
+                                                         'revision': 'Zenodo version DOI '
+                                                                     '10.5281/zenodo.8089569; record revision 2',
+                                                         'inspected_on': '2026-10-21',
+                                                         'sha256': '830b2c9277dcc2d03265b63e311a5e7089c258ebb6a389b45d07601ae4b2e4e7',
+                                                         'hash_status': 'recorded',
+                                                         'hash_note': None,
+                                                         'inspection_scope': 'Selected source identity cells, '
+                                                                             'reference-filament E/F/G/H '
+                                                                             'results and headers, Samples '
+                                                                             'C4/C27, and official metadata '
+                                                                             'license evidence.',
+                                                         'inspection_status': 'selected_content_inspected'},
+                                     'scope_note': 'Source-qualified commercial product and reference-filament '
+                                                   'series only; no pure-polymer constant, printing-state '
+                                                   'transfer, interpolation, comparison ranking, calculation '
+                                                   'input, universal bound or engineering allowable.',
+                                     'evaluation_support': 'catalog_only',
+                                     'universal_bound': False,
+                                     'engineering_allowable': False,
+                                     'verification': {'source_inspection_scope': 'Selected source identity '
+                                                                                 'cells, reference-filament '
+                                                                                 'E/F/G/H results and headers, '
+                                                                                 'Samples C4/C27, and official '
+                                                                                 'metadata license evidence.',
+                                                      'transcription_cross_check': 'completed',
+                                                      'independent_scientific_review': False,
+                                                      'raw_data_reanalysis': False},
+                                     'id': 'refprop_aniskevich_2023_ultimaker_tough_pla_black_filament_tensile_strength',
+                                     'material_state_id': 'state_aniskevich_2023_ultimaker_tough_pla_black_filament',
+                                     'quantity': 'tensile_strength',
+                                     'source_property_label': 'Tensile strength',
+                                     'uncertainty_note': 'The source reports avedev = 2.4433159119274221 MPa at '
+                                                         'Tensile modulus!H7 (header Tensile modulus!H3). No '
+                                                         'definition or supported statistical uncertainty type '
+                                                         'is reported. uncertainty=null records that typing '
+                                                         'limitation, not absence of the source deviation. This '
+                                                         'value is not labelled SD, SEM, confidence interval or '
+                                                         'printed plus/minus; no such interpretation or '
+                                                         'calculation is supplied.',
+                                     'evidence': [{'source_id': 'aniskevich_bulderberga_2023_polymer_mechanical_characterisation',
+                                                   'url': 'https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content',
+                                                   'locator': 'Tensile modulus!G7; Tensile modulus!H7; Tensile '
+                                                              'modulus!E2:H5; Samples!C27',
+                                                   'supports': ['reported_value',
+                                                                'summary_statistic',
+                                                                'uncertainty',
+                                                                'classification']}]}]},
+         'sources': {'schema_version': '1.0.0',
+                     'records': [{'id': 'aniskevich_bulderberga_2023_polymer_mechanical_characterisation',
+                                  'title': 'Characterisation of mechanical properties of materials used in 3D '
+                                           'printing',
+                                  'authors': ['Aniskevich Andrey', 'Bulderberga Olga'],
+                                  'year': 2023,
+                                  'doi': '10.5281/zenodo.8089569',
+                                  'urls': ['https://zenodo.org/records/8089569',
+                                           'https://doi.org/10.5281/zenodo.8089569',
+                                           'https://doi.org/10.5281/zenodo.8089568',
+                                           'https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content',
+                                           'https://creativecommons.org/licenses/by/4.0/'],
+                                  'read_status': 'official_metadata_and_hash_bound_selected_original_workbook_cells_inspected',
+                                  'license': {'status': 'explicit_reuse_license_verified',
+                                              'identifier': 'CC-BY-4.0'},
+                                  'role': 'published_experimental_reference',
+                                  'claim_notes': ['Attribution: Aniskevich Andrey and Bulderberga Olga (2023), '
+                                                  'Characterisation of mechanical properties of materials used '
+                                                  'in 3D printing, Zenodo dataset, version DOI '
+                                                  '10.5281/zenodo.8089569; concept DOI 10.5281/zenodo.8089568. '
+                                                  'Creator order and spelling follow the Zenodo version record.',
+                                                  'Annex 3.1. Characterisation of mechanical properties.xlsx: '
+                                                  '1391320 bytes; published MD5 '
+                                                  'c4842898d2c389ccd7a902691d8a4fa3; independently computed '
+                                                  'SHA-256 '
+                                                  '830b2c9277dcc2d03265b63e311a5e7089c258ebb6a389b45d07601ae4b2e4e7.',
+                                                  'Only sparse reference-filament measurements and '
+                                                  'identification cells are curated. Numeric XML lexical values '
+                                                  'are preserved without changing or recalculating them; source '
+                                                  'text is organized and summarized into catalog fields. The '
+                                                  'raw workbook, images, full worksheets and extensive prose '
+                                                  'are excluded.',
+                                                  'The selected measured cells are Tensile modulus E:H: '
+                                                  'reference filament 2.8 mm, testing at 10 mm/min, MPa. The '
+                                                  'ISO 527-2-labelled C column is separate and does not '
+                                                  'establish the measured E:H method.',
+                                                  'Samples C27 states that three to five specimens were tested '
+                                                  'per series and average data were used. Exact row-specific n '
+                                                  'is unstated. The avedev columns are retained as '
+                                                  'source-labelled deviations without assuming SD, SE, '
+                                                  'confidence intervals or a defined calculation.',
+                                                  'Zenodo version metadata.license.id and DataCite concept '
+                                                  'rightsList independently report CC BY 4.0; DataCite '
+                                                  'HasVersion identifies 10.5281/zenodo.8089569. Attribution, '
+                                                  'source/version links and license link are retained. Catalog '
+                                                  'organization and original qualification notes are '
+                                                  'adaptations; no source endorsement or relicensing under the '
+                                                  'project MIT license is asserted. Manufacturer evidence has '
+                                                  'its own rights scope.'],
+                                  'provenance': {'curation_date': '2026-10-21',
+                                                 'method': 'Official Zenodo version metadata and DataCite '
+                                                           'concept metadata checked; one bounded workbook '
+                                                           'download independently matched the published size '
+                                                           'and MD5. Original worksheet cells and XML numeric '
+                                                           'storage were inspected without formula execution, '
+                                                           'raw-data reanalysis, new experiments or independent '
+                                                           'scientific approval.'},
+                                  'bundled_content': 'sparse_source_qualified_facts_bibliographic_metadata_exact_locators_and_original_curation_only_no_raw_workbook_or_source_images'},
+                                 {'id': 'ultimaker_tough_pla_sds_20221222',
+                                  'title': 'Tough PLA Safety Data Sheet',
+                                  'authors': ['Ultimaker'],
+                                  'year': 2022,
+                                  'doi': None,
+                                  'urls': ['https://um-support-files.ultimaker.com/materials/2.85mm/sds/TOUGH-PLA/UM_Tough%20PLA_EU_en_SDSv2.0.pdf'],
+                                  'read_status': 'selected_manufacturer_SDS_product_color_and_constituent_passages_checked_with_rendered_pages_original_bytes_external_only',
+                                  'license': {'status': 'no_explicit_reuse_license_verified_limited_factual_curation_only',
+                                              'identifier': None},
+                                  'role': 'manufacturer_reference',
+                                  'claim_notes': ['SDS ID UM00009, version 2.0, revised 2022-12-22 and '
+                                                  'superseding 2019-01-14. The year/date identify the document '
+                                                  "revision, not its original publication or the study's "
+                                                  'experiment date.',
+                                                  'PDF page 1, section 1.1, identifies Tough PLA as a mixture '
+                                                  'and explicitly covers Black and White among the listed '
+                                                  'colors. PDF page 2, section 3.2, names Polylactic acid and '
+                                                  'Acrylic polymer in the mixture comments.',
+                                                  'Only the brief constituent/product-family classification '
+                                                  'fact supports mat_aniskevich_2023_ultimaker_tough_pla. Black '
+                                                  'and White remain separate measured workbook states under '
+                                                  'that qualified identity; their color, source code or '
+                                                  'differing measurements alone do not create extra identities.',
+                                                  'The dated source supplies product-family context before the '
+                                                  '2023 dataset deposit; no specimen manufacture date, '
+                                                  'experimental date, exact lot recipe or identical complete '
+                                                  'pigment/additive recipe across colors is established.',
+                                                  'Neither workbook code 20231 nor 202300 appears in this SDS. '
+                                                  'Both remain uncorrected workbook literals, not independently '
+                                                  'authenticated manufacturer SKUs. No PMMA identity, '
+                                                  'constituent fraction, ingredient function, numerical '
+                                                  'manufacturer property, purity or complete formulation is '
+                                                  'imported.',
+                                                  'Inspected PDF: 496191 bytes; SHA-256 '
+                                                  '3b97d600b92f44da56a4c5c8bae029dddbc4b2d400d3c7501cafed9b7aaf69cf. '
+                                                  'Raw PDF, rendered pages and full extracted text remain '
+                                                  'external evidence only.',
+                                                  'No explicit open reuse license was verified for this '
+                                                  'manufacturer SDS. Only sparse attributed '
+                                                  'identity/classification facts and original qualification '
+                                                  'notes are proposed. The separate Zenodo dataset CC BY 4.0 '
+                                                  'license is not inherited by this source; no blanket asset '
+                                                  'reuse, MIT relicensing or legal-clearance claim is made.'],
+                                  'provenance': {'curation_date': '2026-10-21',
+                                                 'method': 'One bounded direct acquisition from the official '
+                                                           'Ultimaker support-files origin; exact bytes hashed, '
+                                                           'all-page text inspected for source identifiers, and '
+                                                           'selected PDF pages 1 and 2 rendered and visually '
+                                                           'cross-checked. This is '
+                                                           'source-transcription/identity context only, not a '
+                                                           'tested-lot composition assay or independent '
+                                                           'scientific validation.'},
+                                  'bundled_content': 'selected_constituent_and_product_family_identity_facts_bibliographic_metadata_and_original_curation_only_no_source_assets'}]}}
+        source_order = {'state_aniskevich_2023_ultimaker_tough_pla_white_filament': ['aniskevich_bulderberga_2023_polymer_mechanical_characterisation',
+                                                                      'ultimaker_tough_pla_sds_20221222'],
+         'state_aniskevich_2023_ultimaker_tough_pla_black_filament': ['aniskevich_bulderberga_2023_polymer_mechanical_characterisation',
+                                                                      'ultimaker_tough_pla_sds_20221222']}
+        self.assertEqual(self.status['counts'], {
+            'local_catalog_unique_material_count': 1143,
+            'local_material_state_count': 1144,
+            'local_reference_property_count': 1154})
+        self.assertEqual(len(frozen['materials']['identities']), 1)
+        identity = frozen['materials']['identities'][0]
+        states = frozen['materials']['records']
+        properties = {row['id']: row for row in frozen['properties']['records']}
+        sources = {row['id']: row for row in frozen['sources']['records']}
+        self.assertEqual(len(states), 2)
+        self.assertEqual(len(properties), 4)
+        self.assertEqual({row['identity_id'] for row in states}, {identity['id']})
+        self.assertEqual({row['source_designation'] for row in states},
+                         {'PLA Tough White 20231', 'PLA Tough Black 202300'})
+        resolved_identities = set()
+        for state in states:
+            with self.subTest(state=state['id']):
+                expected = {'schema_version': '1.0.0', 'identity': identity, 'grade': None,
+                            'state': state, 'properties': [properties[pid] for pid in state['property_ids']],
+                            'sources': [sources[sid] for sid in source_order[state['id']]]}
+                response = self.post('resolve', state_id=state['id'])
+                self.assertEqual(response.status_code, 200)
+                actual = response.json()['result']
+                self.assertEqual(actual, expected)
+                resolved_identities.add(actual['identity']['id'])
+                self.assertEqual(len(actual['properties']), 2)
+                for prop in actual['properties']:
+                    self.assertEqual(prop['material_state_id'], state['id'])
+                    self.assertEqual(prop['source_id'], 'aniskevich_bulderberga_2023_polymer_mechanical_characterisation')
+                    self.assertIsNone(prop['sample_count']['value'])
+                    self.assertEqual(prop['evaluation_support'], 'catalog_only')
+                    self.assertFalse(prop['universal_bound'])
+                    self.assertFalse(prop['engineering_allowable'])
+                    exact = self.post('record', kind='reference-properties', record_id=prop['id'])
+                    self.assertEqual(exact.status_code, 200)
+                    self.assertEqual(exact.json()['result'], properties[prop['id']])
+                search = self.post('search', query=state['id'], limit=100)
+                self.assertEqual(search.status_code, 200)
+                self.assertEqual({row['id'] for row in search.json()['result']['records']}, {state['id']})
+                self.assertFalse(search.json()['result']['truncated'])
+        self.assertEqual(resolved_identities, {identity['id']})
+        search = self.post('search', query=identity['id'], limit=100)
+        self.assertEqual(search.status_code, 200)
+        self.assertEqual({row['id'] for row in search.json()['result']['records']}, {row['id'] for row in states})
+        self.assertFalse(search.json()['result']['truncated'])
+        formal_status = self.client.get('/api/catalog/project/status').json()
+        self.assertEqual(formal_status['counts']['formal_project_admission_count'], 1167)
+        self.assertEqual(formal_status['counts']['legacy_source_qualified_identity_count'], 1143)
+        self.assertEqual(formal_status['counts']['reviewed_computed_composition_count'], 24)
+        formal = self.client.post('/api/catalog/project/list', json={
+            'version': formal_status['version'], 'record_id': 'legacy:' + identity['id']})
+        self.assertEqual(formal.status_code, 200)
+        self.assertEqual(formal.json()['matched_count'], 1)
+        self.assertEqual(formal.json()['records'][0]['identity'], identity)
         self.assertEqual(self.client.get('/api/catalog/status').json(), self.status)
         self.assertEqual(self.client.get('/api/catalog/project/status').json(), formal_status)
 

@@ -45,6 +45,7 @@ SERIES_STATEMENT = (
     "Testing: Three to five specimens were tested for each series, and average data were used. "
 )
 SELECTION_KEYS = {"identity_id", "tested_row", "tested_designation", "measurement_row", "measurement_designation"}
+STATE_SELECTION_KEYS = (SELECTION_KEYS - {"identity_id"}) | {"material_state_id"}
 
 
 @dataclass(frozen=True)
@@ -110,20 +111,44 @@ def _number(cells, address):
     return cell.value
 
 
+def _selection_rows(selection):
+    """Keep legacy identities unique; grouped selections name each state explicitly."""
+    require(isinstance(selection, list) and selection, "explicit nonempty workbook selection is required")
+    if all(isinstance(choice, dict) and set(choice) == SELECTION_KEYS for choice in selection):
+        return selection, False
+    require(all(isinstance(group, dict) and set(group) == {"identity_id", "states"} for group in selection),
+            "unexpected selection fields")
+    identities, rows = set(), []
+    for group in selection:
+        identity_id = group["identity_id"]
+        require(isinstance(identity_id, str) and re.fullmatch(r"mat_[a-z0-9_]+", identity_id),
+                "selection must name an explicitly reviewed identity")
+        require(identity_id not in identities, "duplicate identity selection group")
+        identities.add(identity_id)
+        require(isinstance(group["states"], list) and group["states"], "selection group requires explicit states")
+        for state in group["states"]:
+            require(isinstance(state, dict) and set(state) == STATE_SELECTION_KEYS, "unexpected state selection fields")
+            require(isinstance(state["material_state_id"], str)
+                    and re.fullmatch(r"state_[a-z0-9_]+", state["material_state_id"]),
+                    "selection must name an explicitly reviewed state")
+            rows.append({"identity_id": identity_id, **state})
+    return rows, True
+
+
 def extract_filament_facts(sheets, selection):
     """Apply explicit reviewed row pairs; no fuzzy joins or state-to-identity inference."""
-    require(isinstance(selection, list) and selection, "explicit nonempty workbook selection is required")
+    choices, grouped = _selection_rows(selection)
     materials, measured, samples = (sheets[name] for name in SHEETS)
     for address, expected in HEADERS.items():
         require(_text(measured, address) == expected, "filament header changed: " + address)
     require(_text(samples, "C27") == SERIES_STATEMENT, "series-average statement changed")
-    seen = {key: set() for key in SELECTION_KEYS}
+    unique_keys = STATE_SELECTION_KEYS if grouped else SELECTION_KEYS
+    seen = {key: set() for key in unique_keys}
     selected = []
-    for choice in selection:
-        require(isinstance(choice, dict) and set(choice) == SELECTION_KEYS, "unexpected selection fields")
+    for choice in choices:
         require(isinstance(choice["identity_id"], str) and re.fullmatch(r"mat_[a-z0-9_]+", choice["identity_id"]),
                 "selection must name an explicitly reviewed identity")
-        for key in SELECTION_KEYS:
+        for key in unique_keys:
             value = choice[key]
             require(isinstance(value, (str, int)) and not isinstance(value, bool), "invalid selection key: " + key)
             require(value not in seen[key], "duplicate identity or source/state selection: " + key)
@@ -151,7 +176,7 @@ def extract_filament_facts(sheets, selection):
                          "identity_locator": "Tested materials!B" + str(source_row) + ":D" + str(source_row),
                          "state": "reference_filament_2_8_mm", "measurements": facts})
     selected.sort(key=lambda row: row["measurement_row"])
-    return {"schema": "curated-filament-cells/1", "workbook": WORKBOOK_NAME,
+    return {"schema": "curated-filament-cells/2" if grouped else "curated-filament-cells/1", "workbook": WORKBOOK_NAME,
             "extraction_policy": {
                 "selection": "Explicit reviewed row pairs with both exact source labels; no fuzzy joins.",
                 "measurements": "Only literal positive E/F/G/H cells; no formula evaluation or display rounding.",
@@ -167,37 +192,64 @@ def extract_filament_facts(sheets, selection):
 def verify_spec_values(facts, specification):
     """Bind selected original cells to authored values, units, sources and locators."""
     formulations = specification.get("formulations", [])
-    require(len(formulations) == len(facts["selected"]), "workbook selection must cover exactly the authored formulations")
-    by_identity = {choice["identity_id"]: choice for choice in facts["selected"]}
+    grouped = facts["schema"] == "curated-filament-cells/2"
+    by_identity = {}
+    for choice in facts["selected"]:
+        by_identity.setdefault(choice["identity_id"], []).append(choice)
+    require(len(formulations) == len(by_identity), "workbook selection must cover exactly the authored formulations")
+    authored_identities = set()
     for row in formulations:
         identity_id = row["identity"]["fields"]["id"]
-        require(identity_id in by_identity and len(row["states"]) == 1,
-                "each selected identity must have exactly one authored filament state")
-        selected = by_identity[identity_id]
-        state = _expand(row["states"][0]["record"], "state", specification["contexts"])
-        require(state["identity_id"] == identity_id
-                and state["source_designation"] == selected["tested_designation"],
-                "authored state does not match the reviewed source identity join")
-        properties = [_expand(prop, "property", specification["contexts"]) for prop in row["states"][0]["properties"]]
-        require(len(properties) == 2 and {prop["quantity"] for prop in properties}
-                == {"tensile_modulus", "tensile_strength"}, "exactly two measured filament properties are required")
-        for measured in selected["measurements"]:
-            prop = next(prop for prop in properties if prop["quantity"] == measured["quantity"])
-            expected = {"kind": "scalar", **{key: measured[key] for key in ("value_text", "number", "unit_text", "unit_code")}}
-            require(prop["reported_value"] == expected and prop["source_property_label"] == measured["source_label"],
-                    "authored property differs from selected measured cell: " + measured["locator"])
-            require(prop["source_id"] == DATASET_SOURCE_ID and prop["source_document"]["url"] == WORKBOOK_URL
-                    and prop["source_document"]["sha256"] == WORKBOOK_SHA256, "measured property source differs from pinned workbook")
-            locators = {part.strip() for entry in prop["evidence"]
-                        if entry["source_id"] == DATASET_SOURCE_ID and entry["url"] == WORKBOOK_URL
-                        for part in entry["locator"].split(";")}
-            companion = measured["reported_companion"]
-            require(measured["locator"] in locators and companion["locator"] in locators
-                    and not any(re.search(r"Tensile modulus!C[0-9]", locator) for locator in locators),
-                    "authored measured-property locator differs from E/F/G/H selection")
-            require(prop["uncertainty"] is None and prop["uncertainty_status"] == "not_reported_in_inspected_source"
-                    and ("avedev = " + companion["value_text"] + " MPa at " + companion["locator"]) in prop["uncertainty_note"],
-                    "authored avedev note differs from source or invents a statistical type")
+        require(identity_id in by_identity and identity_id not in authored_identities,
+                "unknown or duplicate authored identity")
+        authored_identities.add(identity_id)
+        choices = by_identity[identity_id]
+        if grouped:
+            selected_states = {choice["material_state_id"]: choice for choice in choices}
+            authored_states = [_expand(item["record"], "state", specification["contexts"])["id"]
+                               for item in row["states"]]
+            require(len(set(authored_states)) == len(authored_states)
+                    and set(authored_states) == set(selected_states),
+                    "selection must cover exactly the authored states of its identity")
+        else:
+            require(len(choices) == len(row["states"]) == 1,
+                    "each selected identity must have exactly one authored filament state")
+        for item in row["states"]:
+            state = _expand(item["record"], "state", specification["contexts"])
+            selected = selected_states[state["id"]] if grouped else choices[0]
+            properties = [_expand(prop, "property", specification["contexts"]) for prop in item["properties"]]
+            if grouped:
+                property_ids = [prop["id"] for prop in properties]
+                require(len(set(property_ids)) == len(property_ids)
+                        and set(state["property_ids"]) == set(property_ids)
+                        and all(prop["material_state_id"] == state["id"] for prop in properties),
+                        "authored property ownership differs from selected state")
+            _verify_state_values(selected, state, properties, identity_id)
+
+
+def _verify_state_values(selected, state, properties, identity_id):
+    require(state["identity_id"] == identity_id
+            and state["source_designation"] == selected["tested_designation"],
+            "authored state does not match the reviewed source identity join")
+    require(len(properties) == 2 and {prop["quantity"] for prop in properties}
+            == {"tensile_modulus", "tensile_strength"}, "exactly two measured filament properties are required")
+    for measured in selected["measurements"]:
+        prop = next(prop for prop in properties if prop["quantity"] == measured["quantity"])
+        expected = {"kind": "scalar", **{key: measured[key] for key in ("value_text", "number", "unit_text", "unit_code")}}
+        require(prop["reported_value"] == expected and prop["source_property_label"] == measured["source_label"],
+                "authored property differs from selected measured cell: " + measured["locator"])
+        require(prop["source_id"] == DATASET_SOURCE_ID and prop["source_document"]["url"] == WORKBOOK_URL
+                and prop["source_document"]["sha256"] == WORKBOOK_SHA256, "measured property source differs from pinned workbook")
+        locators = {part.strip() for entry in prop["evidence"]
+                    if entry["source_id"] == DATASET_SOURCE_ID and entry["url"] == WORKBOOK_URL
+                    for part in entry["locator"].split(";")}
+        companion = measured["reported_companion"]
+        require(measured["locator"] in locators and companion["locator"] in locators
+                and not any(re.search(r"Tensile modulus!C[0-9]", locator) for locator in locators),
+                "authored measured-property locator differs from E/F/G/H selection")
+        require(prop["uncertainty"] is None and prop["uncertainty_status"] == "not_reported_in_inspected_source"
+                and ("avedev = " + companion["value_text"] + " MPa at " + companion["locator"]) in prop["uncertainty_note"],
+                "authored avedev note differs from source or invents a statistical type")
 
 
 def build_selection(workbook, spec):

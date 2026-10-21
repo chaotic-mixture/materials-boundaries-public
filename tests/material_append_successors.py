@@ -45,7 +45,14 @@ DATA_8_SHA256 = "de662ffe08378402a224b4ee4180252b620278dfb79164b58a20884d68e82c5
 FILE_8_LEDGER = "tests/fixtures/primary_table_growth_8_files_20261021.json"
 FILE_8_SHA256 = "ad37d06723db7e66a071fe1f6584f28f16f7a386626db8778e5fa3045f27d5ea"
 
+TOUGH_DATA_LEDGER = "tests/fixtures/tough_pla_followup_data_20261021.json"
+TOUGH_DATA_SHA256 = "46d33c7bfc8abb32b341a5c026ed8cb03e47350feeb17e2b0c478999aeacf1f4"
+TOUGH_FILE_LEDGER = "tests/fixtures/tough_pla_followup_files_20261021.json"
+TOUGH_FILE_SHA256 = "7c1ff7be1ffb8f5085e004f465ca52e936e9068bfc1357e46925e150eb08bfef"
+
 FROZEN_SUCCESSORS = (
+    {"batch_id": "zenodo-8089569-tough-pla-followup-20261021",
+     "data": (TOUGH_DATA_LEDGER, TOUGH_DATA_SHA256), "files": (TOUGH_FILE_LEDGER, TOUGH_FILE_SHA256)},
     {"batch_id": "zenodo-8089569-filaments-20261021",
      "data": (DATA_8_LEDGER, DATA_8_SHA256), "files": (FILE_8_LEDGER, FILE_8_SHA256)},
     {"batch_id": "outokumpu-core-moduli-20261020",

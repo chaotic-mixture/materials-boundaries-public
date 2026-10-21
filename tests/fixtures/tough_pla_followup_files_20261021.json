@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "baseline_commit": "5cc1418392696dc8115581ad693dabfc2695422e",
+  "updates": {
+    "README.md": {
+      "previous_sha256": "7a29f1e19175277ea9180fd653770dfa5c8c147eba4641b78bb34a3a098c1014",
+      "sha256": "fc7051914bc64ef2cb88096164196d79de945c7e7c07dbbe3b308224fbf23037",
+      "edits": [
+        {
+          "offset": 698,
+          "before": "0",
+          "after": "1"
+        },
+        {
+          "offset": 1341,
+          "before": "0",
+          "after": "1"
+        },
+        {
+          "offset": 1361,
+          "before": "19",
+          "after": "20"
+        },
+        {
+          "offset": 1835,
+          "before": "2",
+          "after": "3"
+        },
+        {
+          "offset": 1890,
+          "before": "2",
+          "after": "4"
+        },
+        {
+          "offset": 1924,
+          "before": "0",
+          "after": "4"
+        },
+        {
+          "offset": 65869,
+          "before": "",
+          "after": "\nThe bounded [Tough PLA identity follow-up](experimental/material-batches/zenodo-8089569-tough-pla-followup-20261021/README.md) records the reconsideration of two color rows as one source-qualified identity. The [original batch evidence availability note](experimental/material-batches/zenodo-8089569-filaments-20261021/EVIDENCE_AVAILABILITY.md) clarifies which finite-review artifacts remain local-only.\n"
+        }
+      ]
+    },
+    ".github/workflows/ci.yml": {
+      "previous_sha256": "2bef8e1cbba097b8bca4f43cc44db0a73d34f1a782ce59db6240f651296ab77d",
+      "sha256": "e9fec3bcfa9929fea6655532b8d3920426b468b5fe01fe491348c4fb6f3bd943",
+      "edits": [
+        {
+          "offset": 991,
+          "before": "",
+          "after": "-20261021' && github.ref != 'refs/heads/experiment/zenodo-8089569-identity-followup"
+        },
+        {
+          "offset": 2623,
+          "before": "",
+          "after": "-20261021' && github.ref != 'refs/heads/experiment/zenodo-8089569-identity-followup"
+        },
+        {
+          "offset": 23947,
+          "before": "",
+          "after": "  zenodo-identity-followup-targeted:\n    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/experiment/zenodo-8089569-identity-followup-20261021' }}\n    runs-on: ${{ matrix.os }}\n    timeout-minutes: 60\n    strategy:\n      fail-fast: false\n      matrix:\n        include:\n          - os: ubuntu-latest\n            python-version: '3.11'\n          - os: windows-latest\n            python-version: '3.12'\n    env:\n      PYTHONUTF8: '1'\n      PYTHONDONTWRITEBYTECODE: '1'\n    steps:\n      - run: git config --global core.autocrlf false\n      - uses: actions/checkout@v4\n        with:\n          fetch-depth: 0\n          persist-credentials: false\n      - uses: actions/setup-python@v5\n        with:\n          python-version: ${{ matrix.python-version }}\n      - run: python scripts/run_zenodo_identity_followup_ci.py --validate-scope\n      - run: \"python -m pip install --no-deps --only-binary=:all: -r experimental/platform/ci/build-requirements.txt\"\n      - run: python -m pip install --no-build-isolation -e '.[dev]'\n      - run: python scripts/run_zenodo_identity_followup_ci.py --test\n      - run: python scripts/validate_catalogs.py\n      - run: python -m pip wheel --no-index --no-deps --no-build-isolation --wheel-dir dist . ./formal-catalog ./experimental/platform/federation ./experimental/platform/query-service ./experimental/platform/lifecycle ./experimental/platform\n      - run: \"python -m pip download --no-deps --only-binary=:all: --dest dist/dependencies -r experimental/platform/requirements-lock.txt -r experimental/platform/ci/projection-requirements.txt\"\n      - run: python scripts/run_zenodo_identity_followup_ci.py --wheel-dir dist --dependency-dir dist/dependencies\n"
+        }
+      ]
+    }
+  }
+}

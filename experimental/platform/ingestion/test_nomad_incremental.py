@@ -14,8 +14,8 @@ from nomad_review_boundary import BASELINE_COMMIT, LEGACY, SOURCES
 from test_nomad_batch import fixture
 
 BOUNDARY = {'provider_material_ids': [], 'provider_entry_ids': [], 'sha256': 'test-boundary',
-            'baseline_commit': BASELINE_COMMIT, 'formal_project_total': 1166,
-            'formal_legacy_count': 1142, 'formal_computed_composition_count': 24,
+            'baseline_commit': BASELINE_COMMIT, 'formal_project_total': 1167,
+            'formal_legacy_count': 1143, 'formal_computed_composition_count': 24,
             'excluded_example_count': 62, 'legacy_example_count': 7,
             'source_sha256': {LEGACY[0]: LEGACY[1],
                               **{path: expected for path, expected, _ in SOURCES.values()}}}
@@ -85,7 +85,7 @@ class IncrementalTests(unittest.TestCase):
         self.assertEqual(third['input_changes'][0]['change'], 'changed')
         self.assertEqual(third['candidate_changes'][0]['change'], 'changed')
         self.assertEqual(third['admitted_delta'], 0)
-        self.assertEqual(third['formal_project_total'], 1166)
+        self.assertEqual(third['formal_project_total'], 1167)
 
     def test_crash_after_archive_response_is_reused(self):
         self.init()
@@ -571,13 +571,19 @@ class IncrementalTests(unittest.TestCase):
             '7f814e4905ad58bcc66999046d04ca1311ceba9d', 1158, 1134,
             'e784d9deffb496ff097f3b888c9e16e0fb64780272644aa6a6731d5cd5233b5d')
 
+    def test_tough_pla_predecessor_scope_stays_read_only_without_migration(self):
+        # Batch8's report remains at its original identity count and data pin.
+        self.assert_predecessor_scope_stays_read_only(
+            'f1163db5030e81b163bd4cb90041d28e5961155c', 1166, 1142,
+            '07ee36eaffda8a76dbffe275caa7b875dfa7a3dbcb0bfb642003c55330b5b223')
+
     def assert_predecessor_scope_stays_read_only(self, origin, total, legacy_count, materials_sha256):
         from nomad_review_boundary import load_review_boundary
 
         current = load_review_boundary()
-        self.assertEqual(current['baseline_commit'], 'f1163db5030e81b163bd4cb90041d28e5961155c')
-        self.assertEqual(current['formal_legacy_count'], 1142)
-        self.assertEqual(current['formal_project_total'], 1166)
+        self.assertEqual(current['baseline_commit'], '0338481fe3492476d8fe046ed6dd9a733662a076')
+        self.assertEqual(current['formal_legacy_count'], 1143)
+        self.assertEqual(current['formal_project_total'], 1167)
         self.init()
         self.assertEqual(self.first_cycle()['status'], 'complete')
         self.now += 100

@@ -461,3 +461,25 @@ ledger and recovers the complete `5e8d63d` predecessor before the unchanged
 Outokumpu and earlier history. Historical pins remain test-only and are rejected
 by the current registry.
 See the [measured filament packet](../../material-batches/zenodo-8089569-filaments-20261021/README.md).
+
+## Tough PLA identity follow-up, 2026-10-21
+
+The reviewed follow-up within the same Zenodo workbook adds one polymer identity
+with two separate measured filament states and four tensile-property references.
+The current core contains **1143 identities, 1144 states, 1154 properties,
+31 grades and 121 sources**. The project view contains **1167 = 1143 + 24**
+identity entries; the 62 excluded examples remain separate.
+
+The exact source designations `PLA Tough White 20231` and
+`PLA Tough Black 202300` remain separate states of one source-qualified Tough PLA
+identity. The workbook codes are unverified literals, not authenticated product
+SKUs. Both grades remain null. No averaging, code correction, PMMA assignment,
+composition fraction or printed-part property is inferred. The 2022 SDS supports
+classification only; the existing Zenodo record supports the measured values.
+Nylon remains deferred.
+
+The actual DATA commit is `0338481fe3492476d8fe046ed6dd9a733662a076` and the exact 64-file
+query pin is `a6b5e9835807a397c81f668cb3c1f19fe70d62074899bdf6365892543220d4b2`. A new finite descriptor recovers the complete
+`5cc1418` batch8 predecessor before all unchanged older layers. Historical
+pins and the original filament test facts remain unchanged.
+See the [reviewed follow-up packet](../../material-batches/zenodo-8089569-tough-pla-followup-20261021/README.md).

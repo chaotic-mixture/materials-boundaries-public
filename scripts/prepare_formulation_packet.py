@@ -59,6 +59,14 @@ CLASSIFICATION_ONLY_SOURCES = {
         "identity_ids": {"mat_aniskevich_2023_kimya_abs_esd"},
     },
 }
+# This separately reviewed SDS permits one polymer formulation identity only.
+# The original three composite permissions above remain unchanged.
+TOUGH_PLA_CLASSIFICATION_SOURCE = {
+    "id": "ultimaker_tough_pla_sds_20221222",
+    "sha256": "c7cab63a20b2db1b692a066f30f8c22f04600b7e7acb7408c07b7e54aa2e9023",
+    "identity_ids": {"mat_aniskevich_2023_ultimaker_tough_pla"},
+    "category": "polymer",
+}
 
 
 def record_sha256(value):
@@ -304,8 +312,8 @@ def _references_source(value, source_id, urls):
     return False
 
 
-def _classification_only_scope(source, catalogs):
-    expected = CLASSIFICATION_ONLY_SOURCES[source["id"]]
+def _classification_only_scope(source, catalogs, expected=None):
+    expected = CLASSIFICATION_ONLY_SOURCES[source["id"]] if expected is None else expected
     if record_sha256(source) != expected["sha256"]:
         return False
     source_id, urls = source["id"], set(source["urls"])
@@ -314,7 +322,7 @@ def _classification_only_scope(source, catalogs):
         if not _references_source(identity, source_id, urls):
             continue
         references = [entry for entry in identity["evidence"] if _references_source(entry, source_id, urls)]
-        if (identity["id"] not in expected["identity_ids"] or identity["category"] != "composite"
+        if (identity["id"] not in expected["identity_ids"] or identity["category"] != expected.get("category", "composite")
                 or not references or any(entry["source_id"] != source_id
                     or entry["supports"] != ["material_identity"] for entry in references)):
             return False
@@ -326,6 +334,8 @@ def _classification_only_scope(source, catalogs):
 
 
 def _source_rights_available(source, baseline, catalogs):
+    if source["id"] == TOUGH_PLA_CLASSIFICATION_SOURCE["id"]:
+        return _classification_only_scope(source, catalogs, TOUGH_PLA_CLASSIFICATION_SOURCE)
     if source["id"] in CLASSIFICATION_ONLY_SOURCES:
         return _classification_only_scope(source, catalogs)
     if source["id"] == OUTOKUMPU_SOURCE_ID:

@@ -1079,3 +1079,27 @@ extended prose, numerical properties, filler fractions or complete formulations
 are bundled or inferred. The dataset's CC BY 4.0 license does not cover these
 separate sources. Limited factual curation does not assert blanket reuse rights
 or legal clearance.
+
+
+## Selected Tough PLA constituent context (2026-10-21)
+
+Ultimaker, *Tough PLA Safety Data Sheet*, SDS ID UM00009, version 2.0,
+revised 2022-12-22 (superseding 2019-01-14),
+[official manufacturer SDS](https://um-support-files.ultimaker.com/materials/2.85mm/sds/TOUGH-PLA/UM_Tough%20PLA_EU_en_SDSv2.0.pdf).
+The date identifies the document revision, not the experiment or original
+publication. PDF page 1, section 1.1, covers Tough PLA Black and White;
+page 2, section 3.2, names PLA and an unspecified acrylic polymer.
+
+Only sparse constituent/product-family classification facts and original
+qualification notes are included. The manufacturer information supports one
+source-qualified Tough PLA identity; the two colors retain their separate
+workbook measurements. The SDS does not verify the workbook codes `20231`
+or `202300` as manufacturer SKUs or certify the tested lots. No PMMA,
+constituent fraction, ingredient function or complete formulation is inferred.
+
+No explicit open reuse license was verified for this SDS. The raw PDF,
+rendered pages and full extracted text are excluded. The Zenodo dataset's
+CC BY 4.0 license applies separately and does not license this manufacturer
+document. No blanket source-asset reuse, project MIT relicensing or legal
+clearance is asserted. The reviewed PDF is 496191 bytes, SHA-256
+`3b97d600b92f44da56a4c5c8bae029dddbc4b2d400d3c7501cafed9b7aaf69cf`.
