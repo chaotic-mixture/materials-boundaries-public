@@ -42,6 +42,23 @@ OUTOKUMPU_DOCUMENT_URL = (
     "outokumpu-core-range-datasheet.pdf?hash=0DB21994AD31F93E9C62A531BE9C36E6"
     "&modified=20251117111909&revision=025e9931-a1d5-4c8f-8ff5-f881d38916da")
 OUTOKUMPU_DOCUMENT_SHA256 = "91d2f4b1340562b0d692a3921a5b0ea2518ddcb6cbdcc9ec97a3d7ad886d7ad9"
+# Exact reviewed manufacturer notices support only the listed source-scoped
+# composite identities. This is not an open-license grant or a generic source
+# exception; numerical properties, state conditions and grades are excluded.
+CLASSIFICATION_ONLY_SOURCES = {
+    "protopasta_conductive_pla_faq": {
+        "sha256": "96984ca2e0e41c994583974a53beecfebd8f97e5fbe6a62aa8df9b3ca64b5936",
+        "identity_ids": {"mat_aniskevich_2023_protopasta_conductive_pla"},
+    },
+    "addnorth_product_catalogue_2022": {
+        "sha256": "18b5baed94ec9db53f5d2bff5e875ee578a7e7de27c5de372b6037ca2f323621",
+        "identity_ids": {"mat_aniskevich_2023_addnorth_koltron_g1"},
+    },
+    "makerbot_method_materials_20191119": {
+        "sha256": "e723fb715b9df6d54eee177614095d907e1d59afef2dc0662c3a9649e4f0d7ad",
+        "identity_ids": {"mat_aniskevich_2023_kimya_abs_esd"},
+    },
+}
 
 
 def record_sha256(value):
@@ -278,7 +295,39 @@ def _outokumpu_reference_scope(source, baseline, catalogs):
         for prop in properties)
 
 
+def _references_source(value, source_id, urls):
+    if isinstance(value, dict):
+        return (value.get("source_id") == source_id or value.get("url") in urls
+                or any(_references_source(item, source_id, urls) for item in value.values()))
+    if isinstance(value, list):
+        return any(_references_source(item, source_id, urls) for item in value)
+    return False
+
+
+def _classification_only_scope(source, catalogs):
+    expected = CLASSIFICATION_ONLY_SOURCES[source["id"]]
+    if record_sha256(source) != expected["sha256"]:
+        return False
+    source_id, urls = source["id"], set(source["urls"])
+    identities = set()
+    for identity in catalogs["materials"]["identities"]:
+        if not _references_source(identity, source_id, urls):
+            continue
+        references = [entry for entry in identity["evidence"] if _references_source(entry, source_id, urls)]
+        if (identity["id"] not in expected["identity_ids"] or identity["category"] != "composite"
+                or not references or any(entry["source_id"] != source_id
+                    or entry["supports"] != ["material_identity"] for entry in references)):
+            return False
+        identities.add(identity["id"])
+    for rows in (catalogs["materials"]["grades"], catalogs["materials"]["records"], catalogs["properties"]["records"]):
+        if any(_references_source(row, source_id, urls) for row in rows):
+            return False
+    return identities == set(expected["identity_ids"])
+
+
 def _source_rights_available(source, baseline, catalogs):
+    if source["id"] in CLASSIFICATION_ONLY_SOURCES:
+        return _classification_only_scope(source, catalogs)
     if source["id"] == OUTOKUMPU_SOURCE_ID:
         return _outokumpu_reference_scope(source, baseline, catalogs)
     if source["id"] != NBS_SOURCE_ID:

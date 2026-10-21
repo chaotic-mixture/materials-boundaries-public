@@ -40,8 +40,14 @@ DATA_7_LEDGER = "tests/fixtures/primary_table_growth_7_data_20261020.json"
 DATA_7_SHA256 = "26c80c5274504af2e0adbb55b4346d395e7c13e7009c504229f9c9dc32ca01fe"
 FILE_7_LEDGER = "tests/fixtures/primary_table_growth_7_files_20261020.json"
 FILE_7_SHA256 = "9731afe6a6df8a668d2821f571e4cef337084c34dbfff60ccd4deb459c60d2ff"
+DATA_8_LEDGER = "tests/fixtures/primary_table_growth_8_data_20261021.json"
+DATA_8_SHA256 = "de662ffe08378402a224b4ee4180252b620278dfb79164b58a20884d68e82c51"
+FILE_8_LEDGER = "tests/fixtures/primary_table_growth_8_files_20261021.json"
+FILE_8_SHA256 = "ad37d06723db7e66a071fe1f6584f28f16f7a386626db8778e5fa3045f27d5ea"
 
 FROZEN_SUCCESSORS = (
+    {"batch_id": "zenodo-8089569-filaments-20261021",
+     "data": (DATA_8_LEDGER, DATA_8_SHA256), "files": (FILE_8_LEDGER, FILE_8_SHA256)},
     {"batch_id": "outokumpu-core-moduli-20261020",
      "data": (DATA_7_LEDGER, DATA_7_SHA256), "files": (FILE_7_LEDGER, FILE_7_SHA256)},
     {"batch_id": "tamas-benyei-nbr-rcf-20261020",

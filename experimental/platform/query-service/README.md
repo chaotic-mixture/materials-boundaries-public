@@ -439,3 +439,25 @@ before the existing NBR/mCF layer. Historical pins remain test-only and are
 rejected by the current registry. Existing source rights metadata is unchanged;
 only limited factual references and original curation are included.
 See the [Outokumpu Core packet](../../material-batches/outokumpu-core-moduli-20261020/README.md).
+
+## Measured commercial filaments, 2026-10-21
+
+The reviewed filament packet adds 8 source-qualified identities,
+0 linked grades, 8 filament states and
+16 measured tensile-property references. The current core
+contains **1142 identities** and the project view **1166 = 1142 + 24** entries.
+The core has 31 grades and 120 sources. The 24 accepted
+computed compositions and 62 excluded examples remain separate.
+
+The source reports filament tensile modulus and tensile strength. Workbook
+`avedev` labels remain literal source descriptions; they are not standard deviations
+or inferred confidence intervals. Source-average sample counts do not establish
+an exact per-record sample count. These values describe the measured filament
+states and do not establish printed-part properties or engineering allowables.
+
+The filament data commit is `f1163db5030e81b163bd4cb90041d28e5961155c`. The exact 64-file query pin is
+`393af99b3a9ef08e6d73c87bde302af74e66dd59628e86b368b88882462057a5`. The independent descriptor binds the frozen packet and data
+ledger and recovers the complete `5e8d63d` predecessor before the unchanged
+Outokumpu and earlier history. Historical pins remain test-only and are rejected
+by the current registry.
+See the [measured filament packet](../../material-batches/zenodo-8089569-filaments-20261021/README.md).

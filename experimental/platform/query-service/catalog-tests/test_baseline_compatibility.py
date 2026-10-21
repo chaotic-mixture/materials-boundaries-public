@@ -34,7 +34,8 @@ PRE_MTIBE_BATCH_PIN_SHA256 = '15c0619c3a55984550ecd564692c4588f777a10d60a4e9a01b
 PRE_NR_BATCH_PIN_SHA256 = 'c127bf69ccca825e1b2ca3fd496f6ead65bf68478fc232d27f087b7e551b6909'
 PRE_NBR_BATCH_PIN_SHA256 = '7dd99df2a6ec06d6a0d6f72b31378cff5b49908113df4d78bee2ee3ffec09112'
 PRE_OUTOKUMPU_BATCH_PIN_SHA256 = '8c47bf8592437932508298417ed4c6e93e92091a0e25266bee3816acec797da8'
-CURRENT_PIN_SHA256 = 'b228d514b2b1dbb8bad428d6f0be7f300947ee2e1c3c64a6f9f0e55df132ade7'
+PRE_FILAMENT_BATCH_PIN_SHA256 = 'b228d514b2b1dbb8bad428d6f0be7f300947ee2e1c3c64a6f9f0e55df132ade7'
+CURRENT_PIN_SHA256 = '393af99b3a9ef08e6d73c87bde302af74e66dd59628e86b368b88882462057a5'
 GROWTH_ROOT = Path(__file__).resolve().parents[4]
 GROWTH_LEDGER = GROWTH_ROOT / 'tests/fixtures/source_family_growth_data_20261019.json'
 GROWTH_LEDGER_SHA256 = '9dfc8d71e89041f05e11a870ad29aea34cb3ab90586bcea8f1d717adc9878ac3'
@@ -122,6 +123,15 @@ OUTOKUMPU_PACKET_SHA256 = 'c7317758ae4c1a4025ac00c6b288770e61cf33056caaf1771a638
 PRE_OUTOKUMPU_BATCH_DATA_SHA256 = {
     'materials.json': 'f32c62bab9e950f8cd4f3fbe19c3c5b9a8e915a0e086be48c7108b54b8f30312',
     'reference_properties.json': '9a9cdfebe0f660d7a6266f8a7b51fb99b23bc7996fff58564cbe9f05ae6c91f2',
+    'sources.json': '4ba9dcd9258cd1e2d9e17bdf20b4fdaa39e081e77779d12eb726ee91b19835ae',
+}
+FILAMENT_LEDGER = GROWTH_ROOT / 'tests/fixtures/primary_table_growth_8_data_20261021.json'
+FILAMENT_LEDGER_SHA256 = 'de662ffe08378402a224b4ee4180252b620278dfb79164b58a20884d68e82c51'
+FILAMENT_PACKET = GROWTH_ROOT / 'experimental/material-batches/zenodo-8089569-filaments-20261021/prepared-packet.json'
+FILAMENT_PACKET_SHA256 = 'aaa94bd1f752e00f37268f8b786326dcb98011648985f8bc77cb92362f4c57e8'
+PRE_FILAMENT_BATCH_DATA_SHA256 = {
+    'materials.json': 'e784d9deffb496ff097f3b888c9e16e0fb64780272644aa6a6731d5cd5233b5d',
+    'reference_properties.json': '81a7af1d8f522c41307fedbf0e3258b2b1cdaa40b142b4d4982544a17a5d727b',
     'sources.json': '4ba9dcd9258cd1e2d9e17bdf20b4fdaa39e081e77779d12eb726ee91b19835ae',
 }
 PRE_EVIDENCE_BATCH_DATA_SHA256 = {
@@ -448,6 +458,20 @@ def recover_pre_table_batch_catalogs(current):
     return recover_exact_append_catalogs(current, table_batch_descriptor())
 
 
+def filament_batch_descriptor():
+    return {'label': 'Filament batch', 'ledger': FILAMENT_LEDGER,
+            'ledger_sha256': FILAMENT_LEDGER_SHA256, 'packet': FILAMENT_PACKET,
+            'packet_sha256': FILAMENT_PACKET_SHA256,
+            'parent_commit': '5e8d63dc9b7832cab893a5d849346d42b02e3c85',
+            'parent_data': PRE_FILAMENT_BATCH_DATA_SHA256,
+            'addition_counts': {'identities': 8, 'grades': 0, 'states': 8, 'properties': 16, 'sources': 4}}
+
+def filament_batch_inventory():
+    return frozen_append_inventory(filament_batch_descriptor())
+
+def recover_pre_filament_batch_catalogs(current):
+    return recover_exact_append_catalogs(current, filament_batch_descriptor())
+
 def outokumpu_batch_descriptor():
     return {'label': 'Outokumpu batch', 'ledger': OUTOKUMPU_LEDGER,
             'ledger_sha256': OUTOKUMPU_LEDGER_SHA256, 'packet': OUTOKUMPU_PACKET,
@@ -643,6 +667,7 @@ class BaselineCompatibility(unittest.TestCase):
         cls.original_identity = sha256(json.dumps(
             cls.expected, sort_keys=True, separators=(',', ':'), ensure_ascii=False,
             allow_nan=False).encode()).hexdigest()
+        cls.recover_filament_anchor()
         cls.recover_outokumpu_anchor()
         cls.recover_nbr_anchor()
         cls.recover_nr_anchor()
@@ -656,10 +681,28 @@ class BaselineCompatibility(unittest.TestCase):
         cls.recover_historical_anchor()
 
     @classmethod
+    def recover_filament_anchor(cls):
+        """Recover the exact 5e8d63d data and complete pin before older append layers."""
+        cls.filament_parent_root = cls.fixture_root / 'pre-filament-batch-data'
+        shutil.copytree(cls.original_root, cls.filament_parent_root)
+        data_root = cls.filament_parent_root / 'data'
+        current = {name: json.loads((data_root / name).read_bytes())
+                   for name in PRE_FILAMENT_BATCH_DATA_SHA256}
+        for name, value in recover_pre_filament_batch_catalogs(current).items():
+            (data_root / name).write_bytes((json.dumps(value, ensure_ascii=False,
+                indent=2, allow_nan=False) + '\n').encode('utf-8'))
+        cls.filament_parent_pin = registry.canonical(manifest(cls.filament_parent_root))
+        if sha256(cls.filament_parent_pin).hexdigest() != PRE_FILAMENT_BATCH_PIN_SHA256:
+            raise AssertionError('Recovered 5e8d63d complete pin bytes differ')
+        cls.filament_parent_query_root = cls.fixture_root / 'pre-filament-batch-query'
+        (cls.filament_parent_query_root / 'pins').mkdir(parents=True)
+        (cls.filament_parent_query_root / 'pins/legacy_baseline.json').write_bytes(cls.filament_parent_pin)
+
+    @classmethod
     def recover_outokumpu_anchor(cls):
         """Recover the exact eee77b5 data and complete pin before older append layers."""
         cls.outokumpu_parent_root = cls.fixture_root / 'pre-outokumpu-batch-data'
-        shutil.copytree(cls.original_root, cls.outokumpu_parent_root)
+        shutil.copytree(cls.filament_parent_root, cls.outokumpu_parent_root)
         data_root = cls.outokumpu_parent_root / 'data'
         current = {name: json.loads((data_root / name).read_bytes())
                    for name in PRE_OUTOKUMPU_BATCH_DATA_SHA256}
@@ -973,12 +1016,88 @@ class BaselineCompatibility(unittest.TestCase):
         with self.assertRaisesRegex(AssertionError, 'Recovered a592 catalog bytes differ'):
             recover_a592_catalogs(changed)
 
+    def test_filament_batch_parent_manifest_and_catalog_recovery_remain_exact(self):
+        expected = dict(self.expected)
+        expected.update({'data/' + name: digest for name, digest in PRE_FILAMENT_BATCH_DATA_SHA256.items()})
+        self.assertEqual(len(manifest(self.filament_parent_root)), 64)
+        self.assertEqual(manifest(self.filament_parent_root), expected)
+        current = {name: json.loads((self.current_root / 'data' / name).read_bytes())
+                   for name in PRE_FILAMENT_BATCH_DATA_SHA256}
+        parent = {name: json.loads((self.filament_parent_root / 'data' / name).read_bytes())
+                  for name in PRE_FILAMENT_BATCH_DATA_SHA256}
+        self.assertEqual(recover_pre_filament_batch_catalogs(current), parent)
+        self.assertEqual(recover_pre_filament_batch_catalogs(parent), parent)
+        self.assertEqual(current['sources.json']['records'][:-4], parent['sources.json']['records'])
+        self.assertEqual(current['materials.json']['grades'], parent['materials.json']['grades'])
+        with self.assertRaisesRegex(AssertionError, 'Outokumpu batch predecessor catalog bytes differ'):
+            recover_pre_outokumpu_batch_catalogs(current)
+        ledger, additions = filament_batch_inventory()
+        for filename, section, collection, label in GROWTH_COLLECTIONS:
+            if not additions[label]:
+                continue
+            candidate = additions[label][0]
+            for mutation in ('missing', 'changed', 'duplicate'):
+                with self.subTest(collection=label, mutation=mutation):
+                    changed = deepcopy(current)
+                    rows = changed[filename][collection]
+                    row = next(row for row in rows if row['id'] == candidate['id'])
+                    if mutation == 'missing':
+                        rows.remove(row)
+                    elif mutation == 'changed':
+                        row['version'] = 'unreviewed'
+                    else:
+                        rows.append(deepcopy(row))
+                    with self.assertRaisesRegex(AssertionError, 'Filament batch'):
+                        recover_pre_filament_batch_catalogs(changed)
+        for filename, collection in [('materials.json', 'identities'), ('sources.json', 'records')]:
+            changed = deepcopy(current)
+            changed[filename][collection][0]['version'] = 'unreviewed'
+            with self.subTest(retained_collection=collection), self.assertRaisesRegex(
+                    AssertionError, 'Filament batch predecessor catalog bytes differ'):
+                recover_pre_filament_batch_catalogs(changed)
+        changed = deepcopy(current)
+        changed['materials.json']['identities'][-8 :] = reversed(changed['materials.json']['identities'][-8 :])
+        with self.assertRaisesRegex(AssertionError, 'Filament batch successor catalog order or bytes differ'):
+            recover_pre_filament_batch_catalogs(changed)
+        original_read = Path.read_bytes
+        for target in (FILAMENT_LEDGER, FILAMENT_PACKET):
+            def replaced(path):
+                return original_read(path) + (b' ' if path == target else b'')
+            with self.subTest(binding=target.name), patch.object(Path, 'read_bytes', replaced), \
+                    self.assertRaisesRegex(AssertionError, 'Filament batch .* bytes differ'):
+                recover_pre_filament_batch_catalogs(current)
+        with self.resources(self.filament_parent_root, self.filament_parent_query_root):
+            with self.assertRaisesRegex(ValueError, 'Baseline pin was replaced'):
+                registry.baseline_digest()
+            with patch.object(registry, 'BASELINE_PIN', PRE_FILAMENT_BATCH_PIN_SHA256):
+                self.assertEqual(registry.baseline_digest(), PRE_FILAMENT_BATCH_PIN_SHA256)
+        with self.resources(self.filament_parent_root), self.assertRaisesRegex(
+                ValueError, 'Installed legacy baseline differs'):
+            registry.baseline_digest()
+
+    def test_filament_batch_parent_database_rejected_without_migration(self):
+        for rich in (False, True):
+            with self.subTest(rich=rich):
+                review = self.review(rich)
+                path = self.work / ('5e8d63d-v2.db' if rich else '5e8d63d-legacy.db')
+                with self.resources(self.filament_parent_root, self.filament_parent_query_root), \
+                        patch.object(registry, 'BASELINE_PIN', PRE_FILAMENT_BATCH_PIN_SHA256):
+                    historical = self.make_registry(path, review, rich)
+                    before = historical.admit([review['records'][0]['candidate_id']])
+                raw = path.read_bytes()
+                rows = self.database_rows(path)
+                with self.assertRaisesRegex(ValueError, 'Initial baseline and review input cannot be replaced'):
+                    self.make_registry(path, review, rich)
+                self.assertEqual(path.read_bytes(), raw)
+                self.assertEqual(self.database_rows(path), rows)
+                self.assertEqual(historical.snapshot(), before)
+
     def test_outokumpu_batch_parent_manifest_and_catalog_recovery_remain_exact(self):
         expected = dict(self.expected)
         expected.update({'data/' + name: digest for name, digest in PRE_OUTOKUMPU_BATCH_DATA_SHA256.items()})
         self.assertEqual(len(manifest(self.outokumpu_parent_root)), 64)
         self.assertEqual(manifest(self.outokumpu_parent_root), expected)
-        current = {name: json.loads((self.current_root / 'data' / name).read_bytes())
+        current = {name: json.loads((self.filament_parent_root / 'data' / name).read_bytes())
                    for name in PRE_OUTOKUMPU_BATCH_DATA_SHA256}
         parent = {name: json.loads((self.outokumpu_parent_root / 'data' / name).read_bytes())
                   for name in PRE_OUTOKUMPU_BATCH_DATA_SHA256}

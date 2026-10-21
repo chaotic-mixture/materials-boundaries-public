@@ -1036,3 +1036,46 @@ water-density convention of 1 g/cm³ and inclusion of tree-like monocot tissues.
 The derivation retains an explicit source dependency for these basis conventions.
 This entry is bibliographic/factual method provenance only; the PDF is not bundled
 and its citation does not grant reuse of paper assets.
+
+## Selected Zenodo reference-filament facts (2026-10-21)
+
+Aniskevich Andrey and Bulderberga Olga (creator names as deposited),
+*Characterisation of mechanical properties of materials used in 3D printing*,
+Zenodo, 2023-06-28. [Version DOI 10.5281/zenodo.8089569](https://doi.org/10.5281/zenodo.8089569);
+[concept DOI 10.5281/zenodo.8089568](https://doi.org/10.5281/zenodo.8089568).
+The official Zenodo version metadata and DataCite concept metadata identify
+[Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
+The concept and version identifiers refer to one dataset.
+
+Selected facts come from `Annex 3.1. Characterisation of mechanical properties.xlsx`
+(1391320 bytes, MD5 `c4842898d2c389ccd7a902691d8a4fa3`, SHA-256
+`830b2c9277dcc2d03265b63e311a5e7089c258ebb6a389b45d07601ae4b2e4e7`).
+The retained scope is the selected reference-filament measurements, identity
+locators and applicable source qualifications. Adaptations consist of structured
+transcription, authored interface names and original scope notes; source numeric
+values and units are preserved. The raw workbook, full worksheets, source
+images, drawings and extended source text are excluded. Source content is not
+relicensed under project MIT, and no source endorsement is asserted.
+
+Three separate manufacturer sources support constituent classification only:
+
+- ProtoPlant / Protopasta, [Conductive PLA FAQ](https://proto-pasta.com/pages/conductive-pla),
+  supports the PLA/dispersant/conductive-carbon-black description. Selected
+  indexed official-page text was inspected; direct retrieval returned HTTP 429,
+  so no original-byte hash or page revision date is claimed.
+- Add North, [Product catalogue 2022](https://storage.googleapis.com/addnorth-com-public/catalog/addnorth_product_catalogue_2022.pdf),
+  PDF page 19 / printed page 37, supports graphene in Koltron G1. The study
+  workbook separately identifies its PVDF polymer. The adjacent Adamant S1
+  description and its purity statement are excluded.
+- MakerBot / Stratasys, [MakerBot Launches METHOD Materials Development Program](https://investors.stratasys.com/news-events/press-releases/detail/537/makerbot-launches-method-materials-development-program),
+  2019-11-19, identifies carbon nanotubes in the named KIMYA ABS ESD product.
+  This historical manufacturer-platform partner statement is not a tested-lot
+  composition assay, and equivalence across product revisions is not asserted.
+
+No explicit open reuse license was verified for these three manufacturer
+sources. Only sparse attributed constituent facts, exact locators and original
+qualification notes are included. No manufacturer pages, PDFs, images, tables,
+extended prose, numerical properties, filler fractions or complete formulations
+are bundled or inferred. The dataset's CC BY 4.0 license does not cover these
+separate sources. Limited factual curation does not assert blanket reuse rights
+or legal clearance.

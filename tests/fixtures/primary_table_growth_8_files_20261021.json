@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "baseline_commit": "5e8d63dc9b7832cab893a5d849346d42b02e3c85",
+  "updates": {
+    "README.md": {
+      "previous_sha256": "d714554f9ec363747d101276c4e4b2d7bc321de2ccf7cc6c3f7142380a2ee055",
+      "sha256": "7a29f1e19175277ea9180fd653770dfa5c8c147eba4641b78bb34a3a098c1014",
+      "edits": [
+        {
+          "offset": 697,
+          "before": "16",
+          "after": "20"
+        },
+        {
+          "offset": 1340,
+          "before": "16",
+          "after": "20"
+        },
+        {
+          "offset": 1362,
+          "before": "5",
+          "after": "9"
+        },
+        {
+          "offset": 1834,
+          "before": "3",
+          "after": ""
+        },
+        {
+          "offset": 1836,
+          "before": "",
+          "after": "2"
+        },
+        {
+          "offset": 1889,
+          "before": "3",
+          "after": ""
+        },
+        {
+          "offset": 1891,
+          "before": "",
+          "after": "2"
+        },
+        {
+          "offset": 1923,
+          "before": "34",
+          "after": "50"
+        }
+      ]
+    },
+    ".github/workflows/ci.yml": {
+      "previous_sha256": "b8f914dc673fe3cdd370da66d6c7cc4662fad3f016f9c868e3dfba2e438dbe5f",
+      "sha256": "2bef8e1cbba097b8bca4f43cc44db0a73d34f1a782ce59db6240f651296ab77d",
+      "edits": [
+        {
+          "offset": 927,
+          "before": "",
+          "after": "' && github.ref != 'refs/heads/experiment/primary-table-growth-8-20261021"
+        },
+        {
+          "offset": 2486,
+          "before": "",
+          "after": "' && github.ref != 'refs/heads/experiment/primary-table-growth-8-20261021"
+        },
+        {
+          "offset": 22118,
+          "before": "",
+          "after": "  primary-table-growth-8-targeted:\n    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/experiment/primary-table-growth-8-20261021' }}\n    runs-on: ${{ matrix.os }}\n    timeout-minutes: 60\n    strategy:\n      fail-fast: false\n      matrix:\n        include:\n          - os: ubuntu-latest\n            python-version: '3.11'\n          - os: windows-latest\n            python-version: '3.12'\n    env:\n      PYTHONUTF8: '1'\n      PYTHONDONTWRITEBYTECODE: '1'\n    steps:\n      - run: git config --global core.autocrlf false\n      - uses: actions/checkout@v4\n        with:\n          fetch-depth: 0\n          persist-credentials: false\n      - uses: actions/setup-python@v5\n        with:\n          python-version: ${{ matrix.python-version }}\n      - run: python scripts/run_primary_table_growth_8_ci.py --validate-scope\n      - run: \"python -m pip install --no-deps --only-binary=:all: -r experimental/platform/ci/build-requirements.txt\"\n      - run: python -m pip install --no-build-isolation -e '.[dev]'\n      - run: python scripts/run_primary_table_growth_8_ci.py --test\n      - run: python scripts/validate_catalogs.py\n      - run: python -m pip wheel --no-index --no-deps --no-build-isolation --wheel-dir dist . ./formal-catalog ./experimental/platform/federation ./experimental/platform/query-service ./experimental/platform/lifecycle ./experimental/platform\n      - run: \"python -m pip download --no-deps --only-binary=:all: --dest dist/dependencies -r experimental/platform/requirements-lock.txt -r experimental/platform/ci/projection-requirements.txt\"\n      - run: python scripts/run_primary_table_growth_8_ci.py --wheel-dir dist --dependency-dir dist/dependencies\n"
+        }
+      ]
+    }
+  }
+}

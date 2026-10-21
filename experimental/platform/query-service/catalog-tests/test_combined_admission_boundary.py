@@ -36,13 +36,13 @@ class CombinedAdmissionBoundary(unittest.TestCase):
                 with self.subTest(process='original' if client is before else 'restarted'):
                     status = client.get('/api/catalog/project/status').json()
                     self.assertEqual(status, formal_before)
-                    self.assertEqual(status['counts']['formal_project_admission_count'], 1158)
+                    self.assertEqual(status['counts']['formal_project_admission_count'], 1166)
                     self.assertEqual(status['counts']['reviewed_computed_composition_count'], 24)
-                    self.assertEqual(status['counts']['legacy_source_qualified_identity_count'], 1134)
+                    self.assertEqual(status['counts']['legacy_source_qualified_identity_count'], 1142)
                     self.assertEqual(status['version'], expected['version'])
                     self.assertEqual(status['resource_sha256'], expected['resource_sha256'])
                     self.assertEqual(status['review_sha256'], expected['review_sha256'])
-                    self.assertEqual(client.get('/api/catalog/status').json()['counts']['local_catalog_unique_material_count'], 1134)
+                    self.assertEqual(client.get('/api/catalog/status').json()['counts']['local_catalog_unique_material_count'], 1142)
                     response = client.post('/api/catalog/project/list', json={
                         'version': status['version'], 'partition': 'reviewed-computed', 'limit': 100})
                     self.assertEqual(response.status_code, 200)

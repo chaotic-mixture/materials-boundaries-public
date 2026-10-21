@@ -37,7 +37,7 @@ class CatalogAPI(unittest.TestCase):
         self.assertEqual(self.client.get('/openapi.json').json()['info']['version'],'0.5.0.dev0')
         from materials_platform import __version__ as umbrella_version
         self.assertEqual(umbrella_version,'0.5.0.dev0')
-        self.assertEqual(self.status['counts']['local_catalog_unique_material_count'],1134)
+        self.assertEqual(self.status['counts']['local_catalog_unique_material_count'],1142)
         self.assertFalse(self.status['provider_counts_combined'])
         for name in ('version','content_digest','runtime_digest'): self.assertRegex(self.status[name],r'^[a-f0-9]{64}$')
     def test_03_exact_baseline_parity(self):
@@ -321,6 +321,203 @@ class CatalogAPI(unittest.TestCase):
                 exact = self.post('record', kind='reference-properties', record_id=property_id)
                 self.assertEqual(exact.status_code, 200)
                 self.assertEqual(exact.json()['result'], prop)
+                formal = self.client.post('/api/catalog/project/list', json={
+                    'version': formal_status['version'], 'record_id': 'legacy:' + identity_id})
+                self.assertEqual(formal.status_code, 200)
+                self.assertEqual(formal.json()['matched_count'], 1)
+                self.assertEqual(formal.json()['records'][0]['identity'], value['identity'])
+        self.assertEqual(self.client.get('/api/catalog/status').json(), self.status)
+        self.assertEqual(self.client.get('/api/catalog/project/status').json(), formal_status)
+
+    def test_filament_measured_reference_resolutions(self):
+        cases = [('state_aniskevich_2023_ultimaker_pc_filament',
+          'mat_aniskevich_2023_ultimaker_pc',
+          'polymer',
+          None,
+          'PC, White 1642',
+          (('refprop_aniskevich_2023_ultimaker_pc_filament_tensile_modulus',
+            'tensile_modulus',
+            '2118.92060622187',
+            'MPa'),
+           ('refprop_aniskevich_2023_ultimaker_pc_filament_tensile_strength',
+            'tensile_strength',
+            '62.629195615958977',
+            'MPa')),
+          ('aniskevich_bulderberga_2023_polymer_mechanical_characterisation',)),
+         ('state_aniskevich_2023_ultimaker_pp_filament',
+          'mat_aniskevich_2023_ultimaker_pp',
+          'polymer',
+          None,
+          'PP, Natural',
+          (('refprop_aniskevich_2023_ultimaker_pp_filament_tensile_modulus',
+            'tensile_modulus',
+            '413.57473001954821',
+            'MPa'),
+           ('refprop_aniskevich_2023_ultimaker_pp_filament_tensile_strength',
+            'tensile_strength',
+            '15.984863319060555',
+            'MPa')),
+          ('aniskevich_bulderberga_2023_polymer_mechanical_characterisation',)),
+         ('state_aniskevich_2023_ultimaker_tpu95a_filament',
+          'mat_aniskevich_2023_ultimaker_tpu95a',
+          'polymer',
+          None,
+          'TPU95A, White 1755',
+          (('refprop_aniskevich_2023_ultimaker_tpu95a_filament_tensile_modulus',
+            'tensile_modulus',
+            '141.82919658635231',
+            'MPa'),
+           ('refprop_aniskevich_2023_ultimaker_tpu95a_filament_tensile_strength',
+            'tensile_strength',
+            '31.701601361675458',
+            'MPa')),
+          ('aniskevich_bulderberga_2023_polymer_mechanical_characterisation',)),
+         ('state_aniskevich_2023_protopasta_conductive_pla_filament',
+          'mat_aniskevich_2023_protopasta_conductive_pla',
+          'composite',
+          None,
+          'PLA conductive, CDP12805 Batch 171201',
+          (('refprop_aniskevich_2023_protopasta_conductive_pla_filament_tensile_modulus',
+            'tensile_modulus',
+            '1664.6684808244395',
+            'MPa'),
+           ('refprop_aniskevich_2023_protopasta_conductive_pla_filament_tensile_strength',
+            'tensile_strength',
+            '25.64018578078505',
+            'MPa')),
+          ('aniskevich_bulderberga_2023_polymer_mechanical_characterisation', 'protopasta_conductive_pla_faq')),
+         ('state_aniskevich_2023_kimya_abs_esd_filament',
+          'mat_aniskevich_2023_kimya_abs_esd',
+          'composite',
+          None,
+          'ABS ESD',
+          (('refprop_aniskevich_2023_kimya_abs_esd_filament_tensile_modulus',
+            'tensile_modulus',
+            '1346.1998101456204',
+            'MPa'),
+           ('refprop_aniskevich_2023_kimya_abs_esd_filament_tensile_strength',
+            'tensile_strength',
+            '28.849993772107013',
+            'MPa')),
+          ('aniskevich_bulderberga_2023_polymer_mechanical_characterisation',
+           'makerbot_method_materials_20191119')),
+         ('state_aniskevich_2023_addnorth_koltron_g1_filament',
+          'mat_aniskevich_2023_addnorth_koltron_g1',
+          'composite',
+          None,
+          'Koltron G1',
+          (('refprop_aniskevich_2023_addnorth_koltron_g1_filament_tensile_modulus',
+            'tensile_modulus',
+            '1145.4193020117505',
+            'MPa'),
+           ('refprop_aniskevich_2023_addnorth_koltron_g1_filament_tensile_strength',
+            'tensile_strength',
+            '23.911741539390583',
+            'MPa')),
+          ('addnorth_product_catalogue_2022',
+           'aniskevich_bulderberga_2023_polymer_mechanical_characterisation')),
+         ('state_aniskevich_2023_stratasys_antero800na_filament',
+          'mat_aniskevich_2023_stratasys_antero800na',
+          'polymer',
+          None,
+          'PEKK, Antero 800NA',
+          (('refprop_aniskevich_2023_stratasys_antero800na_filament_tensile_modulus',
+            'tensile_modulus',
+            '2916.2651226028183',
+            'MPa'),
+           ('refprop_aniskevich_2023_stratasys_antero800na_filament_tensile_strength',
+            'tensile_strength',
+            '82.71385816891096',
+            'MPa')),
+          ('aniskevich_bulderberga_2023_polymer_mechanical_characterisation',)),
+         ('state_aniskevich_2023_stratasys_ultem9085cg_filament',
+          'mat_aniskevich_2023_stratasys_ultem9085cg',
+          'polymer',
+          None,
+          'PEI, ULTEM 9085 CG',
+          (('refprop_aniskevich_2023_stratasys_ultem9085cg_filament_tensile_modulus',
+            'tensile_modulus',
+            '2623.780515411815',
+            'MPa'),
+           ('refprop_aniskevich_2023_stratasys_ultem9085cg_filament_tensile_strength',
+            'tensile_strength',
+            '82.600893124060548',
+            'MPa')),
+          ('aniskevich_bulderberga_2023_polymer_mechanical_characterisation',))]
+        common = {'evidence_kind': 'published_experimental_reference',
+         'reporting_basis': 'reported_summary',
+         'summary_statistic': 'reported_mean',
+         'determination_basis': 'source_reports_measurement',
+         'source_id': 'aniskevich_bulderberga_2023_polymer_mechanical_characterisation',
+         'uncertainty': None,
+         'uncertainty_status': 'not_reported_in_inspected_source',
+         'source_document_sha256': '830b2c9277dcc2d03265b63e311a5e7089c258ebb6a389b45d07601ae4b2e4e7',
+         'conditions': {'temperature': {'status': 'not_reported_in_inspected_source', 'text': None},
+                        'test_standard': {'status': 'not_reported_in_inspected_source', 'text': None},
+                        'test_method': {'status': 'reported',
+                                        'text': 'Tensile testing of reference filament 2.8 mm; source reports '
+                                                'E-mod and tensile strength'},
+                        'direction': {'status': 'not_reported_in_inspected_source', 'text': None},
+                        'conditioning': {'status': 'not_reported_in_inspected_source', 'text': None},
+                        'loading_rate': {'status': 'reported', 'text': '10 mm/min'}},
+         'sample_count': {'value': None, 'relation': 'not_reported'}}
+        source_licenses = {'aniskevich_bulderberga_2023_polymer_mechanical_characterisation': {'status': 'explicit_reuse_license_verified',
+                                                                             'identifier': 'CC-BY-4.0'},
+         'protopasta_conductive_pla_faq': {'status': 'no_explicit_reuse_license_verified_limited_factual_curation_only',
+                                           'identifier': None},
+         'addnorth_product_catalogue_2022': {'status': 'no_explicit_reuse_license_verified_limited_factual_curation_only',
+                                             'identifier': None},
+         'makerbot_method_materials_20191119': {'status': 'no_explicit_reuse_license_verified_limited_factual_curation_only',
+                                                'identifier': None}}
+        formal_status = self.client.get('/api/catalog/project/status').json()
+        for state_id, identity_id, category, grade_id, designation, properties, source_ids in cases:
+            with self.subTest(filament=state_id):
+                response = self.post('resolve', state_id=state_id)
+                self.assertEqual(response.status_code, 200)
+                value = response.json()['result']
+                self.assertEqual(value['identity']['id'], identity_id)
+                self.assertEqual(value['identity']['category'], category)
+                if grade_id is None:
+                    self.assertIsNone(value['grade'])
+                else:
+                    self.assertEqual(value['grade']['id'], grade_id)
+                    self.assertEqual(value['grade']['identity_id'], identity_id)
+                self.assertEqual(value['state']['id'], state_id)
+                self.assertEqual(value['state']['identity_id'], identity_id)
+                self.assertEqual(value['state']['grade_id'], grade_id)
+                self.assertEqual(value['state']['source_designation'], designation)
+                self.assertEqual(value['state']['property_ids'], [row[0] for row in properties])
+                self.assertEqual([row['id'] for row in value['sources']], list(source_ids))
+                for source in value['sources']:
+                    self.assertEqual(source['license'], source_licenses[source['id']])
+                self.assertEqual(len(value['properties']), 2)
+                for prop, (pid, quantity, number, unit) in zip(value['properties'], properties):
+                    self.assertEqual(prop['id'], pid)
+                    self.assertEqual(prop['material_state_id'], state_id)
+                    self.assertEqual(prop['quantity'], quantity)
+                    self.assertEqual(prop['quantity_dimension'], 'pressure')
+                    self.assertEqual(prop['reported_value']['number'], number)
+                    self.assertEqual(prop['reported_value']['unit_code'], unit)
+                    ordinary = set(common) - {'conditions', 'sample_count', 'source_document_sha256'}
+                    self.assertEqual({key: prop[key] for key in ordinary}, {key: common[key] for key in ordinary})
+                    self.assertEqual({key: {field: item[field] for field in ('status', 'text')}
+                                      for key, item in prop['conditions'].items()}, common['conditions'])
+                    self.assertEqual({key: prop['sample_count'][key] for key in ('value', 'relation')}, common['sample_count'])
+                    self.assertEqual(prop['source_document']['sha256'], common['source_document_sha256'])
+                    self.assertIsNone(prop['sample_count']['value'])
+                    self.assertEqual(prop['evaluation_support'], 'catalog_only')
+                    self.assertFalse(prop['universal_bound'])
+                    self.assertFalse(prop['engineering_allowable'])
+                    self.assertFalse(prop['verification']['independent_scientific_review'])
+                    self.assertFalse(prop['verification']['raw_data_reanalysis'])
+                    exact = self.post('record', kind='reference-properties', record_id=pid)
+                    self.assertEqual(exact.status_code, 200)
+                    self.assertEqual(exact.json()['result'], prop)
+                # Exact state IDs are within the bounded API's indexed search fields.
+                search = self.post('search', query=state_id, limit=100)
+                self.assertEqual(search.status_code, 200)
+                self.assertIn(state_id, {row['id'] for row in search.json()['result']['records']})
+                self.assertFalse(search.json()['result']['truncated'])
                 formal = self.client.post('/api/catalog/project/list', json={
                     'version': formal_status['version'], 'record_id': 'legacy:' + identity_id})
                 self.assertEqual(formal.status_code, 200)
