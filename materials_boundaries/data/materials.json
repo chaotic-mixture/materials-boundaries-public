@@ -87742,6 +87742,55 @@
           "url": "https://um-support-files.ultimaker.com/materials/2.85mm/sds/TOUGH-PLA/UM_Tough%20PLA_EU_en_SDSv2.0.pdf"
         }
       ]
+    },
+    {
+      "version": "1.0.0",
+      "id": "mat_aniskevich_2023_ultimaker_nylon",
+      "category": "polymer",
+      "name": "Ultimaker Nylon (historically documented PA6/PA66-based family)",
+      "names": {
+        "en": "Ultimaker Nylon (historically documented PA6/PA66-based family)",
+        "zh": "Ultimaker Nylon（历史文献所述 PA6/PA66 基聚酰胺家族）",
+        "ja": "Ultimaker Nylon（過去の資料に記載された PA6/PA66 系ポリアミド群）",
+        "de": "Ultimaker Nylon (historisch dokumentierte PA6/PA66-basierte Familie)"
+      },
+      "aliases": [
+        {
+          "language": "en",
+          "text": "Ultimaker Nylon"
+        },
+        {
+          "language": "en",
+          "text": "PA (Nylon) Transparent"
+        }
+      ],
+      "identity_scope": "One source-qualified historical Ultimaker Nylon family represented by the Transparent 1647 reference-filament series in Aniskevich and Bulderberga (2023). The manufacturer-authored 2019 SDS describes its Nylon family as polyamide based on PA6/PA66 and covers transparent and black; the manufacturer-authored 2021 pricing submission ties part number 1647 to transparent Nylon. These third-party-hosted historical documents support family classification and product-code correspondence, not the exact studied lot, tested-state composition, manufacture date or formula continuity. Distinction from the existing PA12 representative is based on the documented nominal polymer family, not supplier, SKU, color or measured values. No exact PA6/PA66 ratio, copolymer/blend architecture, constituent functions, additive-free status, purity or universal equivalence of other Nylon products is inferred. M2085 is only a source description token, not a chemical grade. State composition remains unknown.",
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Tested materials!B25:D25; Tensile modulus!B9",
+          "supports": [
+            "material_identity"
+          ]
+        },
+        {
+          "source_id": "ultimaker_nylon_sds_20190114",
+          "url": "https://www.matterhackers.com/r/vq1Soq",
+          "locator": "PDF p.1 sections 1.1-1.3 and 3.1; p.3 section 9.1; p.5 section 16",
+          "supports": [
+            "material_identity"
+          ]
+        },
+        {
+          "source_id": "ultimaker_nylon_pricing_20210504",
+          "url": "https://online.ogs.ny.gov/purchase/spg/pdfdocs/2310623185PL_Ultimaker.pdf",
+          "locator": "PDF p.1 bidder and printed 5/4/2021 date; p.3 table header; p.4 transparent Nylon row, manufacturer part number and bidder stock number 1647",
+          "supports": [
+            "material_identity"
+          ]
+        }
+      ]
     }
   ],
   "grades": [
@@ -200954,6 +201003,96 @@
       "property_ids": [
         "refprop_aniskevich_2023_ultimaker_tough_pla_white_filament_tensile_modulus",
         "refprop_aniskevich_2023_ultimaker_tough_pla_white_filament_tensile_strength"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Reference filament 2.8 mm",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Tensile modulus!E2; Samples!C4",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Source-reported nominal form; no independent diameter measurement or substitution of later product diameters."
+        },
+        "processing": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Reference-filament manufacturing history is not stated. Nozzle/bed temperatures and layer thickness in Tested materials!E:G describe printing and are not imported here."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No reference-filament heat-treatment or annealing history is stated."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Pre-test drying, storage time, temperature and humidity for this filament series are not stated."
+        },
+        "reinforcement": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "The workbook does not report a quantitative filler assay. Separate manufacturer identity evidence is restricted to classification; no filler fraction, morphology or exact-lot certification is inferred."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No physical porosity or void fraction is reported for the reference filament; no zero porosity is inferred."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "A source-specific orientation convention, gauge geometry and anisotropy characterization are not stated for the reference-filament measurements."
+        },
+        "composition_or_purity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "The workbook labels this product Polyamide but reports no studied-state composition assay, subtype, ratio, architecture, purity or additive recipe. Historical manufacturer-family evidence is restricted to identity and does not certify this measured lot or formulation continuity."
+        }
+      },
+      "evaluation_support": "catalog_only",
+      "id": "state_aniskevich_2023_ultimaker_nylon_transparent_filament",
+      "identity_id": "mat_aniskevich_2023_ultimaker_nylon",
+      "name": "Ultimaker Nylon Transparent 1647 - reference filament 2.8 mm",
+      "names": {
+        "en": "Ultimaker Nylon Transparent 1647 - reference filament 2.8 mm",
+        "zh": "Ultimaker Nylon 透明 1647 - 2.8 mm 参考丝材",
+        "ja": "Ultimaker Nylon 透明 1647 - 2.8 mm 参照フィラメント",
+        "de": "Ultimaker Nylon Transparent 1647 - Referenzfilament 2.8 mm"
+      },
+      "source_designation": "PA, Nylon Transparent 1647",
+      "source_scope": "One original transparent reference-filament series. Exact join: Tested materials!B25:D25; Tensile modulus!B9. The literal 1647 code is retained; external historical product-code correspondence does not authenticate the studied lot. Grade is null and state composition remains unknown. No black state, printed/extruded state, lot continuity or color-based additional identity is inferred.",
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Tested materials!B25:D25; Tensile modulus!B9; Tensile modulus!E2; Samples!C4",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_aniskevich_2023_ultimaker_nylon_transparent_filament_tensile_modulus",
+        "refprop_aniskevich_2023_ultimaker_nylon_transparent_filament_tensile_strength"
       ]
     }
   ]
