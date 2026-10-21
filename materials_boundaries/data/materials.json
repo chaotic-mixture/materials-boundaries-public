@@ -87701,6 +87701,47 @@
           ]
         }
       ]
+    },
+    {
+      "version": "1.0.0",
+      "id": "mat_aniskevich_2023_ultimaker_tough_pla",
+      "category": "polymer",
+      "name": "Ultimaker Tough PLA (source-qualified PLA/acrylic-polymer formulation)",
+      "names": {
+        "en": "Ultimaker Tough PLA (source-qualified PLA/acrylic-polymer formulation)",
+        "zh": "Ultimaker Tough PLA（来源限定的 PLA／丙烯酸类聚合物配方）",
+        "ja": "Ultimaker Tough PLA（資料で特定された PLA・アクリルポリマー配合物）",
+        "de": "Ultimaker Tough PLA (quellenbezogene PLA/Acrylpolymer-Rezeptur)"
+      },
+      "aliases": [
+        {
+          "language": "en",
+          "text": "Tough PLA"
+        },
+        {
+          "language": "en",
+          "text": "PLA Tough"
+        }
+      ],
+      "identity_scope": "One source-qualified Ultimaker Tough PLA formulation family represented by the Black and White reference-filament series in Aniskevich and Bulderberga (2023). The 22 December 2022 manufacturer SDS names polylactic acid and an unspecified acrylic polymer and covers both colors. This constituent evidence supports a curated formulation distinction from the generic PLA representative; no absence of acrylic additives in other PLA products is asserted. Supplier, product name, color, numeric code and differing measured values alone do not establish identity. The document supports product-family applicability and does not authenticate workbook codes 20231 or 202300, the tested lots, or identical complete color recipes. Acrylic-polymer chemistry, constituent proportions/functions, pigment/additive recipe and chemical purity remain unknown. No PMMA or constituent fraction is inferred.",
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "locator": "Tested materials!B10; C10:D11; Tensile modulus!B7:B8",
+          "supports": [
+            "material_identity"
+          ],
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content"
+        },
+        {
+          "source_id": "ultimaker_tough_pla_sds_20221222",
+          "locator": "PDF p.1 section 1.1, Tough PLA trade name and Black/White color coverage; PDF p.2 section 3.2, mixture comments",
+          "supports": [
+            "material_identity"
+          ],
+          "url": "https://um-support-files.ultimaker.com/materials/2.85mm/sds/TOUGH-PLA/UM_Tough%20PLA_EU_en_SDSv2.0.pdf"
+        }
+      ]
     }
   ],
   "grades": [
@@ -200715,6 +200756,204 @@
       "property_ids": [
         "refprop_aniskevich_2023_ultimaker_tpu95a_filament_tensile_modulus",
         "refprop_aniskevich_2023_ultimaker_tpu95a_filament_tensile_strength"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Reference filament 2.8 mm",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Tensile modulus!E2; Samples!C4",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Source-reported nominal form; no independent diameter measurement or substitution of later product diameters."
+        },
+        "processing": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Reference-filament manufacturing history is not stated. Nozzle/bed temperatures and layer thickness in Tested materials!E:G describe printing and are not imported here."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No reference-filament heat-treatment or annealing history is stated."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Pre-test drying, storage time, temperature and humidity for this filament series are not stated."
+        },
+        "reinforcement": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "The workbook does not report a quantitative filler assay. Separate manufacturer identity evidence is restricted to classification; no filler fraction, morphology or exact-lot certification is inferred."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No physical porosity or void fraction is reported for the reference filament; no zero porosity is inferred."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "A source-specific orientation convention, gauge geometry and anisotropy characterization are not stated for the reference-filament measurements."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "Workbook family: Polylactic acid; supplier: Ultimaker; source designation: PLA Tough Black 202300",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Tested materials!B10; C11:D11; Tensile modulus!B7",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "This preserves the workbook family/product label, not a pure-PLA assay or complete recipe. Manufacturer identity evidence does not authenticate this code or exact tested lot."
+        }
+      },
+      "evaluation_support": "catalog_only",
+      "id": "state_aniskevich_2023_ultimaker_tough_pla_black_filament",
+      "identity_id": "mat_aniskevich_2023_ultimaker_tough_pla",
+      "name": "Ultimaker Tough PLA Black 202300 - reference filament 2.8 mm",
+      "names": {
+        "en": "Ultimaker Tough PLA Black 202300 - reference filament 2.8 mm",
+        "zh": "Ultimaker Tough PLA 黑色 202300 - 2.8 mm 参考丝材",
+        "ja": "Ultimaker Tough PLA 黒色 202300 - 2.8 mm 参照フィラメント",
+        "de": "Ultimaker Tough PLA Schwarz 202300 - Referenzfilament 2.8 mm"
+      },
+      "source_designation": "PLA Tough Black 202300",
+      "source_scope": "The original black reference-filament measurement series is retained separately under one qualified Tough PLA identity. Exact join: Tested materials!B10; C11:D11; Tensile modulus!B7. The literal code 202300 is not corrected or certified as a SKU. Grade is null. No pooling across colors, identical pigment/additive recipe, or independent material identity is inferred.",
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Tested materials!B10; C11:D11; Tensile modulus!B7; Tensile modulus!E2; Samples!C4",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_aniskevich_2023_ultimaker_tough_pla_black_filament_tensile_modulus",
+        "refprop_aniskevich_2023_ultimaker_tough_pla_black_filament_tensile_strength"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Reference filament 2.8 mm",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Tensile modulus!E2; Samples!C4",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Source-reported nominal form; no independent diameter measurement or substitution of later product diameters."
+        },
+        "processing": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Reference-filament manufacturing history is not stated. Nozzle/bed temperatures and layer thickness in Tested materials!E:G describe printing and are not imported here."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No reference-filament heat-treatment or annealing history is stated."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Pre-test drying, storage time, temperature and humidity for this filament series are not stated."
+        },
+        "reinforcement": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "The workbook does not report a quantitative filler assay. Separate manufacturer identity evidence is restricted to classification; no filler fraction, morphology or exact-lot certification is inferred."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No physical porosity or void fraction is reported for the reference filament; no zero porosity is inferred."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "A source-specific orientation convention, gauge geometry and anisotropy characterization are not stated for the reference-filament measurements."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "Workbook family: Polylactic acid; supplier: Ultimaker; source designation: PLA Tough White 20231",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Tested materials!B10; C10:D10; Tensile modulus!B8",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "This preserves the workbook family/product label, not a pure-PLA assay or complete recipe. Manufacturer identity evidence does not authenticate this code or exact tested lot."
+        }
+      },
+      "evaluation_support": "catalog_only",
+      "id": "state_aniskevich_2023_ultimaker_tough_pla_white_filament",
+      "identity_id": "mat_aniskevich_2023_ultimaker_tough_pla",
+      "name": "Ultimaker Tough PLA White 20231 - reference filament 2.8 mm",
+      "names": {
+        "en": "Ultimaker Tough PLA White 20231 - reference filament 2.8 mm",
+        "zh": "Ultimaker Tough PLA 白色 20231 - 2.8 mm 参考丝材",
+        "ja": "Ultimaker Tough PLA 白色 20231 - 2.8 mm 参照フィラメント",
+        "de": "Ultimaker Tough PLA Weiß 20231 - Referenzfilament 2.8 mm"
+      },
+      "source_designation": "PLA Tough White 20231",
+      "source_scope": "The original white reference-filament measurement series is retained separately under one qualified Tough PLA identity. Exact join: Tested materials!B10; C10:D10; Tensile modulus!B8. The literal code 20231 is not corrected or certified as a SKU. Grade is null. No pooling across colors, identical pigment/additive recipe, or independent material identity is inferred.",
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Tested materials!B10; C10:D10; Tensile modulus!B8; Tensile modulus!E2; Samples!C4",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_aniskevich_2023_ultimaker_tough_pla_white_filament_tensile_modulus",
+        "refprop_aniskevich_2023_ultimaker_tough_pla_white_filament_tensile_strength"
       ]
     }
   ]

@@ -9,17 +9,17 @@ Repository: [chaotic-mixture/materials-boundaries-public](https://github.com/cha
 ## Public-release scope
 
 <!-- current-catalog-summary:start -->
-- **41 mechanics claims**, **120 source records**, **16 observations from 5 studies**, **12 published computational predictions in 2 scientific families and 3 explicit groups**, and **5 synthetic temperature demos with 7 branches**
+- **41 mechanics claims**, **121 source records**, **16 observations from 5 studies**, **12 published computational predictions in 2 scientific families and 3 explicit groups**, and **5 synthetic temperature demos with 7 branches**
 - Exactly **8 executable composite calculation rules**: HS/Reuss/Voigt bulk and shear bounds plus conservative derived Young's-modulus and Poisson-ratio envelopes
 - Other mechanics records, including initial-yield criteria and their function comparison, scalar viscoelasticity, bulk elastic waves, hydrostatic compressibility, directional Poisson ratio, anisotropy, fatigue, fracture, stability and porous relations, are catalog-only
-- The 120 sources comprise 119 bibliographic/source records plus 1 original synthetic-demo provenance record; a source record is not a redistribution of its publication or dataset
+- The 121 sources comprise 120 bibliographic/source records plus 1 original synthetic-demo provenance record; a source record is not a redistribution of its publication or dataset
 - All five temperature demos use intentionally invented coefficients and ranges. They do not describe real materials, measured properties or engineering allowables
 <!-- current-catalog-summary:end -->
 
 ## Concrete material references
 
 <!-- material-catalog-summary:start -->
-The separate reference catalogue contains **1142 material identities**, **31 qualified grades**, **1142 source-scoped states** and **1150 reference properties**. Counts describe this registry only; aliases, categories, prior observations and computational model cells are not additional materials.
+The separate reference catalogue contains **1143 material identities**, **31 qualified grades**, **1144 source-scoped states** and **1154 reference properties**. Counts describe this registry only; aliases, categories, prior observations and computational model cells are not additional materials.
 <!-- material-catalog-summary:end -->
 
 The five primary classes are metal, inorganic, polymer, composite and natural biological tissues/fibers. The exact reviewed v2 batch adds 1,000 distinct historical WFO species identities, each with one selected-accession conversion-derived basic-density property. The 2026-10-19 experimental core snapshot (data commit `5396fd1cc9df72507785a112a21c2990fb4a7c50`) has natural 1,010; metal 22, inorganic 26, polymer 15 and composite 10. Only natural reaches the 1,000-per-class goal in this snapshot. Ten existing biological identities migrate to natural through an exact versioned ledger. Processed biopolymers remain polymer; minerals and rocks remain inorganic. A material counts once by its admitted canonical identity, irrespective of aliases, states or measurements.
@@ -443,3 +443,5 @@ python -m unittest discover -s tests -v
 测试涵盖合成基准、文献模型原始参数/换算/证据一致性、独立有理数算例、相标号交换、单位/尺度变换、相等模量、纯相、未知/冲突条件、极端对比度、数值溢出/下溢、推导依赖及无量纲泊松比边界、JSON schema、来源引用一致性和四语言输出一致性。v0.8.1 的完整开发流程不允许静默跳过目录校验：缺少 `jsonschema` 或所需格式校验器会失败；无第三方依赖的运行时输入校验仍有效。CI 配置针对 Python 3.11/3.12。新增目录录入与合成追加测试见 [贡献指南](CONTRIBUTING.md)。
 
 下一步应先做独立科学复核、补齐原始文献核验，再考虑经独立审查的孔隙数值评价、联合可达域或更广的外部数据导入。不要把增加记录数当作验证质量。
+
+The bounded [Tough PLA identity follow-up](experimental/material-batches/zenodo-8089569-tough-pla-followup-20261021/README.md) records the reconsideration of two color rows as one source-qualified identity. The [original batch evidence availability note](experimental/material-batches/zenodo-8089569-filaments-20261021/EVIDENCE_AVAILABILITY.md) clarifies which finite-review artifacts remain local-only.
