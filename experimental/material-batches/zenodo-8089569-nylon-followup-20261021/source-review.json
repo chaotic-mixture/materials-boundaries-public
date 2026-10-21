@@ -1,0 +1,171 @@
+{
+  "schema": "zenodo8089569-nylon-source-review-summary/1",
+  "batch_id": "zenodo-8089569-nylon-followup-20261021",
+  "status": "source_and_identity_facts_checked_pipeline_validation_separate",
+  "baseline_commit": "2c8ddac78f5cd43dfa071ad23639b826561a043b",
+  "availability": "Full source acquisition, identity review, original-XML readback and finite inventory are local-only external evidence, not public repository paths or URLs. Hashes below identify those local artifacts; sanitized summaries are published here. Raw PDFs, workbook, rendered pages and full extracted text are excluded.",
+  "local_only_evidence": [
+    {
+      "locator": "source-review/historical-source-review.json",
+      "sha256": "958d46d8efcfba394fc594d0fde800effe5635bcafc737af0b95b72c19c6ef48"
+    },
+    {
+      "locator": "source-review/proposed-source-records.json",
+      "sha256": "343476b0aa74500ed81cdb24d6e04c0cede82aec5af9efeff212e727ac323945"
+    },
+    {
+      "locator": "identity-review/identity-admission-adjudication.json",
+      "sha256": "ea56cf2e38c1ad845b41ac32343f3b7e34891e6bf88bb14193e9076ebd64d43f"
+    },
+    {
+      "locator": "identity-review/finite-identity-recheck.json",
+      "sha256": "d18ca03e905eb478cdf8271a3d100ac06dbab18e826282066b9504a5d08865a1"
+    },
+    {
+      "locator": "identity-review/original-nylon-cells-recheck.json",
+      "sha256": "2e950893aac6ae2580dc835e0bb468e9d300dd500bc789344874f39ed56b741a"
+    }
+  ],
+  "source_records": [
+    {
+      "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+      "canonical_sha256": "3d517f3c1b775db9b7dd65349e85cf6e8609760fc13b2398b9393d6777c25a86"
+    },
+    {
+      "source_id": "ultimaker_nylon_sds_20190114",
+      "canonical_sha256": "99d952f9ccb8d1be5689e4391cba7b2310fbb48b96cc12624dacc2b8c6804e7a"
+    },
+    {
+      "source_id": "ultimaker_nylon_pricing_20210504",
+      "canonical_sha256": "849c460350b8c8f6b5dda0101138b6041b90a21efcb5b052ae8940403e0f2180"
+    }
+  ],
+  "canonicalization": "Project descriptor/gate hashes: UTF-8 JSON, sort_keys=True, separators=(',', ':'), ensure_ascii=False, allow_nan=False, plus one trailing LF.",
+  "external_review_record_sha256_without_trailing_newline": {
+    "ultimaker_nylon_sds_20190114": "7f41012eeff777e0d0b3e6a5d69b2846cfc1e8d5d78bb0e5f0dedeca71e7a0fa",
+    "ultimaker_nylon_pricing_20210504": "02f1733f3a8cabf27b0f567e238675393c3b8ecff8cd84bec2767ed350a54ba2"
+  },
+  "external_review_canonicalization": "Frozen external review uses the same compact sorted UTF-8 JSON without the trailing LF. The scientific records are unchanged; these hash conventions are intentionally distinguished.",
+  "verified_historical_facts": [
+    {
+      "source_id": "ultimaker_nylon_sds_20190114",
+      "locators": [
+        "PDF p.1 sections 1.1-1.3 and 3.1",
+        "PDF p.3 section 9.1",
+        "PDF p.5 section 16"
+      ],
+      "family_literal": "Polyamide (grade based on PA6/PA66)",
+      "supplier": "Ultimaker B.V.",
+      "colors": [
+        "transparent",
+        "black"
+      ],
+      "version": "4.002",
+      "document_date": "2019-01-14",
+      "1647_or_M2085_found": false,
+      "bytes": 78202,
+      "sha256": "a25c0275486ca9639fc89ee6a351d29e6e34d0938fa936bf10a9b8e2c42c2863"
+    },
+    {
+      "source_id": "ultimaker_nylon_pricing_20210504",
+      "locators": [
+        "PDF p.1 bidder and printed date",
+        "PDF p.3 table header",
+        "PDF p.4 transparent Nylon row"
+      ],
+      "bidder": "Ultimaker USA, Inc.",
+      "manufacturer": "Ultimaker",
+      "printed_document_date": "5/4/2021",
+      "metadata_creation_date": "2021-05-04",
+      "bidder_stock_number": "1647",
+      "manufacturer_part_number": "1647",
+      "description_token": "M2085",
+      "description_token_is_chemical_grade": false,
+      "package_mass": null,
+      "package_mass_reason": "750 has no mass unit in the description; UOM is Each and quantity field is blank.",
+      "bytes": 233996,
+      "sha256": "113a0e9157044000a08311bd0d10081ae81fa045197812d41f9393d167d3d1cc"
+    }
+  ],
+  "original_measurement_facts": {
+    "workbook_bytes": 1391320,
+    "workbook_md5": "c4842898d2c389ccd7a902691d8a4fa3",
+    "workbook_sha256": "830b2c9277dcc2d03265b63e311a5e7089c258ebb6a389b45d07601ae4b2e4e7",
+    "selection": [
+      {
+        "identity_id": "mat_aniskevich_2023_ultimaker_nylon",
+        "states": [
+          {
+            "material_state_id": "state_aniskevich_2023_ultimaker_nylon_transparent_filament",
+            "tested_row": 25,
+            "tested_designation": "PA, Nylon Transparent 1647",
+            "measurement_row": 9,
+            "measurement_designation": "PA (Nylon) Transparent"
+          }
+        ]
+      }
+    ],
+    "tensile_modulus_MPa_lexeme": "2774.8837867501061",
+    "modulus_avedev_MPa_lexeme": "39.07712093742888",
+    "tensile_strength_MPa_lexeme": "209.43237576723914",
+    "strength_avedev_MPa_lexeme": "3.6781068579660881",
+    "excluded_reference_C9": "579",
+    "reference_filament_diameter": "2.8 mm",
+    "loading_rate": "10 mm/min",
+    "series_summary": "Source reports averages of 3-5 specimens per series; exact Nylon-series n and avedev statistic type are unknown."
+  },
+  "identity_review": {
+    "status": "supported_one_bounded_family_conditional_on_pipeline_validation",
+    "material_id": "mat_aniskevich_2023_ultimaker_nylon",
+    "category": "polymer",
+    "grade_id": null,
+    "studied_state_composition": "unknown",
+    "historical_scope": "Manufacturer-family classification and product-code correspondence only; no exact studied-lot composition or continuity claim.",
+    "novelty_basis": "The historical nominal PA6/PA66-based family is not the existing source-qualified PA12 representative. No supplier-only new identity or claim that all PA6/PA66 products share an identical formulation is made.",
+    "relevant_existing_identity": "mat_zakrecki2025_pa12_pa2200",
+    "finite_inventory": {
+      "distinct_paths": 1790,
+      "unique_payloads": 316,
+      "prior_paths_missing": 0,
+      "prior_paths_changed": 0,
+      "parse_errors": 0,
+      "finding": "No existing admitted PA6/PA66-based, PA6, PA66, generic Nylon/polyamide, M2085 or 1647 identity was identified in this finite inventory. The only related admitted identity is the PA12 source-qualified representative.",
+      "limitations": "A complete read of the specified finite inventory is not a global proof of chemical inequivalence, an exhaustive literature search, or proof that all possible aliases are covered. Full local inventory paths and payloads remain external-only."
+    },
+    "unchanged_deferrals": "CPE and all other unresolved identities remain deferred; prior Nylon deferral reports remain dated evidence."
+  },
+  "rights_boundary": {
+    "explicit_open_license_verified_for_manufacturer_documents": false,
+    "curation_scope": "Sparse attributed identity/classification facts, bibliography, hashes and original qualification notes only.",
+    "no_inherited_licenses": [
+      "Zenodo CC BY 4.0",
+      "repository MIT",
+      "government-hosted public-domain assumption"
+    ],
+    "source_assets": "Raw workbook, PDFs, rendered pages and full extracted text remain local external evidence, excluded from repository publication.",
+    "gate_status_at_review": "The candidate requires a separately tested dual-source identity-only gate; this source summary is not compiler or integration execution evidence.",
+    "legal_clearance_claimed": false
+  },
+  "acquisition_accounting": {
+    "attempts": 3,
+    "successes": 2,
+    "failures": 1,
+    "retries": 0,
+    "redirects": 1,
+    "unverified_2017_attempt": "TLS handshake timeout after 30.094 seconds; no verified bytes, factual claim, corroboration credit or runtime source."
+  },
+  "exclusions_and_nonclaims": [
+    "No black Nylon state, color-based second identity, or any other Nylon product is proposed.",
+    "No 750 g claim: the pricing description has an unqualified 750 token, which is not a verified mass.",
+    "No exact studied-lot PA6/PA66, recipe continuity, architecture, constituent ratio or verified purity claim.",
+    "No generic PA6 or PA66 identity, universal Nylon equivalence, PA12 reclassification or observation-family admission.",
+    "No 2017 source facts or corroboration credit; the single bounded attempt timed out during TLS handshake after 30.094 seconds, with zero retries.",
+    "CPE, all other deferred identities and prior Tough PLA source code 20231 remain unchanged.",
+    "No computed-example promotion, main change, DOI, deployment, credentials, permissions or raw-source upload."
+  ],
+  "verification": {
+    "independent_scientific_review": false,
+    "raw_data_reanalysis": false
+  },
+  "actual_admissions_by_this_summary": 0
+}

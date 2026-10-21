@@ -1,0 +1,92 @@
+{
+  "schema": "nylon-followup-preparation-receipt/1",
+  "base": "2c8ddac78f5cd43dfa071ad23639b826561a043b",
+  "scope": "Actual immutable candidate creation and replay; not product tests, scientific approval or formal admission",
+  "portable_command": [
+    "python",
+    "-B",
+    "-X",
+    "utf8",
+    "scripts/prepare_formulation_packet.py",
+    "--spec",
+    "experimental/material-batches/zenodo-8089569-nylon-followup-20261021/packet-spec.json",
+    "--baseline-dir",
+    "materials_boundaries/data",
+    "--output",
+    "../incremental-evidence/zenodo-8089569-nylon-followup-20261021/candidate-preparation-gate-review/revalidated-prepared-packet.json"
+  ],
+  "command_note": "The portable command substitutes python for the exact local executable. The output is a new external validation file; its bytes must equal the committed-candidate input. Original preparation evidence remains retained externally.",
+  "python_version": "3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]",
+  "input_sha256": {
+    "scripts/prepare_formulation_packet.py": "00bbed369214f2ca125432c406a41e28abe4aa2f911912e10666428cde102035",
+    "scripts/extract_curated_filament_cells.py": "fe7991d6d85f32bb668e3bb73ad758fd9d83612319686eebcf56ee17ae0ba362",
+    "experimental/material-batches/zenodo-8089569-nylon-followup-20261021/README.md": "50cb337ea75866dfc2909a787f0df128ca93b6dcb55c21041d6e909107b6934b",
+    "experimental/material-batches/zenodo-8089569-nylon-followup-20261021/packet-spec.json": "0c1a7e19ecc719dfd068a42621867e993ebb5648e8785dde8dac07c6a33c9a39",
+    "experimental/material-batches/zenodo-8089569-nylon-followup-20261021/source-review.json": "425c809803de573b36699fbb58bc121a982bc00b5edbc32f8debcc5c5c41fe22",
+    "materials_boundaries/data/materials.json": "a3dc74dc74dfd6c667ab44bd127379f37d9b79f4b3e79c1051d3474e75c4db56",
+    "materials_boundaries/data/reference_properties.json": "0bc8608de3150e11b578e151d2c6d3b8f6179c9136ef10b4eff7ffce62d9afb1",
+    "materials_boundaries/data/sources.json": "6e23776fd59ac3f8153f589378b00877c80cbe4d061aa22e3bc41f358daf373f"
+  },
+  "packet_sha256": "b18d7fc70bc5da537672f20a1682594c36c8d2d1e4c9e0ac05f9647d586e5172",
+  "runs": [
+    {
+      "attempt": 1,
+      "exit_code": 0,
+      "before": null,
+      "after": {
+        "sha256": "b18d7fc70bc5da537672f20a1682594c36c8d2d1e4c9e0ac05f9647d586e5172",
+        "bytes": 64133,
+        "mtime_ns": 1792615987859952500
+      },
+      "stdout_sha256": "0b1b5a8707cbf99b5fb99d26139dbf6985f13eacd613511ee7f2541896c293db",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reported_operation": "Created"
+    },
+    {
+      "attempt": 2,
+      "exit_code": 0,
+      "before": {
+        "sha256": "b18d7fc70bc5da537672f20a1682594c36c8d2d1e4c9e0ac05f9647d586e5172",
+        "bytes": 64133,
+        "mtime_ns": 1792615987859952500
+      },
+      "after": {
+        "sha256": "b18d7fc70bc5da537672f20a1682594c36c8d2d1e4c9e0ac05f9647d586e5172",
+        "bytes": 64133,
+        "mtime_ns": 1792615987859952500
+      },
+      "stdout_sha256": "9f897242fc7e53879bfc17a46ef6b0f7ae0d0f82c4d8b58522f9402367283862",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reported_operation": "Unchanged"
+    }
+  ],
+  "created_then_unchanged": true,
+  "candidate_reference_sources": 3,
+  "delta": {
+    "identities": 1,
+    "grades": 0,
+    "states": 1,
+    "properties": 2,
+    "sources": 2,
+    "categories": {
+      "metal": 0,
+      "inorganic": 0,
+      "polymer": 1,
+      "composite": 0,
+      "natural": 0
+    }
+  },
+  "formal_admitted_delta": 0,
+  "runtime_unchanged": true,
+  "product_tests_executed": false,
+  "network_requests": 0,
+  "prior_batch_failure_history_imported": false,
+  "superseded_preparation_receipt_sha256": "dd026d23348879eca90c39cdea3ef58263209eadc8131e3d7fce0ea264eb0330",
+  "superseded_preparation_receipt_archived_externally": true,
+  "current_batch_gate_review_revalidation": {
+    "compiler_sha256": "00bbed369214f2ca125432c406a41e28abe4aa2f911912e10666428cde102035",
+    "candidate_packet_bytes_unchanged": true,
+    "first_success_evidence_preserved": true,
+    "reason": "Independent current-batch review required source descriptors even when both manufacturer sources were removed. The corrected compiler must reproduce the exact already reviewed candidate."
+  }
+}
