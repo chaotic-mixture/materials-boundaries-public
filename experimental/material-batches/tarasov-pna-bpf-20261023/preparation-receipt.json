@@ -1,0 +1,196 @@
+{
+  "schema": "formulation-preparation-receipt/1",
+  "batch_id": "tarasov-pna-bpf-20261023",
+  "baseline_commit": "faa002c55b7ad2d1bd962e905275894231ab8350",
+  "executed_on": "2026-10-23",
+  "execution_environment": "Native Windows; CPython 3.11.0 development environment; restricted-sandbox hard-link errors retained separately",
+  "command": [
+    "python",
+    "scripts/prepare_formulation_packet.py",
+    "--spec",
+    "experimental/material-batches/tarasov-pna-bpf-20261023/packet-spec.json",
+    "--baseline-dir",
+    "materials_boundaries/data",
+    "--output",
+    "experimental/material-batches/tarasov-pna-bpf-20261023/prepared-packet.json"
+  ],
+  "first_creation": "passed",
+  "identical_replay": "passed; command reported Unchanged",
+  "candidate_schema_validation": "Full merged candidate catalog passed the existing strict Draft 2020-12, format and integrity validation; runtime data unchanged.",
+  "report": {
+    "baseline_sha256": {
+      "materials": "9df59cfdf94b35854255222d2a75f419859b269c5670c8eb18d8e9dc5eaa7a70",
+      "reference_properties": "728c863756c35860b4dee25b64f5df10c1b5273bcb83ed1f35d60cf6ad85aa77",
+      "sources": "c06c9bcee46eac59839c51f84b252970f1da46f98cf2f2c08de0b33479b5ba71"
+    },
+    "before": {
+      "identities": 1148,
+      "grades": 31,
+      "states": 1149,
+      "properties": 1160,
+      "sources": 124,
+      "categories": {
+        "metal": 32,
+        "inorganic": 53,
+        "polymer": 25,
+        "composite": 28,
+        "natural": 1010
+      }
+    },
+    "after": {
+      "identities": 1153,
+      "grades": 31,
+      "states": 1154,
+      "properties": 1165,
+      "sources": 125,
+      "categories": {
+        "metal": 32,
+        "inorganic": 53,
+        "polymer": 30,
+        "composite": 28,
+        "natural": 1010
+      }
+    },
+    "delta": {
+      "identities": 5,
+      "grades": 0,
+      "states": 5,
+      "properties": 5,
+      "sources": 1,
+      "categories": {
+        "metal": 0,
+        "inorganic": 0,
+        "polymer": 5,
+        "composite": 0,
+        "natural": 0
+      }
+    },
+    "formal_admitted_delta": 0,
+    "handoff_ready": true,
+    "pending_gates": [],
+    "identity_crosswalk": [
+      {
+        "identity_id": "mat_tarasov2022_pna_bpf_1",
+        "source_id": "tarasov_2022_pna_bpf_epoxy",
+        "source_designations": [
+          "PNA-BPF-1"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "PDF p.4, Table 1, PNA-BPF-1 row; p.1 abstract mixture description",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "Distinct source-qualified nominal recipe within the selected five-recipe study series, conditional on candidate validation and parent review. See identity-review.json for the finite current-catalog, grade/state, 24 admitted computed and 62 excluded-example comparison. This is a bounded curation judgment, not global chemical-equivalence proof. Differences in tensile values, specimens, cure states or source labels alone do not establish novelty; unresolved source stoichiometry is retained."
+      },
+      {
+        "identity_id": "mat_tarasov2022_pna_bpf_2",
+        "source_id": "tarasov_2022_pna_bpf_epoxy",
+        "source_designations": [
+          "PNA-BPF-2"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "PDF p.4, Table 1, PNA-BPF-2 row; p.1 abstract mixture description",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "Distinct source-qualified nominal recipe within the selected five-recipe study series, conditional on candidate validation and parent review. See identity-review.json for the finite current-catalog, grade/state, 24 admitted computed and 62 excluded-example comparison. This is a bounded curation judgment, not global chemical-equivalence proof. Differences in tensile values, specimens, cure states or source labels alone do not establish novelty; unresolved source stoichiometry is retained."
+      },
+      {
+        "identity_id": "mat_tarasov2022_pna_bpf_3",
+        "source_id": "tarasov_2022_pna_bpf_epoxy",
+        "source_designations": [
+          "PNA-BPF-3"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "PDF p.4, Table 1, PNA-BPF-3 row; p.1 abstract mixture description",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "Distinct source-qualified nominal recipe within the selected five-recipe study series, conditional on candidate validation and parent review. See identity-review.json for the finite current-catalog, grade/state, 24 admitted computed and 62 excluded-example comparison. This is a bounded curation judgment, not global chemical-equivalence proof. Differences in tensile values, specimens, cure states or source labels alone do not establish novelty; unresolved source stoichiometry is retained."
+      },
+      {
+        "identity_id": "mat_tarasov2022_pna_bpf_4",
+        "source_id": "tarasov_2022_pna_bpf_epoxy",
+        "source_designations": [
+          "PNA-BPF-4"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "PDF p.4, Table 1, PNA-BPF-4 row; p.1 abstract mixture description",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "Distinct source-qualified nominal recipe within the selected five-recipe study series, conditional on candidate validation and parent review. See identity-review.json for the finite current-catalog, grade/state, 24 admitted computed and 62 excluded-example comparison. This is a bounded curation judgment, not global chemical-equivalence proof. Differences in tensile values, specimens, cure states or source labels alone do not establish novelty; unresolved source stoichiometry is retained."
+      },
+      {
+        "identity_id": "mat_tarasov2022_pna_bpf_5",
+        "source_id": "tarasov_2022_pna_bpf_epoxy",
+        "source_designations": [
+          "PNA-BPF-5"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "PDF p.4, Table 1, PNA-BPF-5 row; p.1 abstract mixture description",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "Distinct source-qualified nominal recipe within the selected five-recipe study series, conditional on candidate validation and parent review. See identity-review.json for the finite current-catalog, grade/state, 24 admitted computed and 62 excluded-example comparison. This is a bounded curation judgment, not global chemical-equivalence proof. Differences in tensile values, specimens, cure states or source labels alone do not establish novelty; unresolved source stoichiometry is retained."
+      }
+    ]
+  },
+  "bound_files": {
+    "packet-spec.json": {
+      "sha256": "194d6f06576fdf8f546e9060c9e7bd836b98e2726599c48a113b98fecfa4575f",
+      "bytes": 73401
+    },
+    "prepared-packet.json": {
+      "sha256": "e9096077c7d6a206cf3a54a14272f838722187e10481588a1e3c07e5ab345997",
+      "bytes": 156093
+    },
+    "source-review.json": {
+      "sha256": "06dc1cde87d1c921d84833e9ffddfc7b6e3b2adcf029b6eef51674377ffa7589",
+      "bytes": 14061
+    },
+    "identity-review.json": {
+      "sha256": "c27e3250d9b5f83c825add04132b5b9d2148c983f2c3db9b6374be287a484070",
+      "bytes": 30819
+    },
+    "README.md": {
+      "sha256": "bc0b6e93d85bf60a7a4fef0172a4e4a64faa644a3551584230ed62952e63f267",
+      "bytes": 6605
+    }
+  },
+  "limits": [
+    "Review-only candidate; formal_admitted_delta remains zero.",
+    "Source inspection is not independent scientific review or raw-data reanalysis.",
+    "Parent review required before runtime admission or experimental publication."
+  ]
+}

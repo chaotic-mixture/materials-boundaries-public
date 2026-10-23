@@ -1,0 +1,694 @@
+{
+  "schema": "material-batch-finite-identity-review/1",
+  "batch_id": "tarasov-pna-bpf-20261023",
+  "baseline_commit": "faa002c55b7ad2d1bd962e905275894231ab8350",
+  "review_date": "2026-10-23",
+  "review_scope": "Read-only finite identity, alias, source-scope and relationship audit of immutable repository data. This artifact is candidate review evidence only and does not admit materials.",
+  "scientific_review": false,
+  "scientific_replication": false,
+  "global_chemical_uniqueness_established": false,
+  "primary_source_and_rights_review_performed_by_this_audit": false,
+  "baseline_counts": {
+    "source_qualified_identities": 1148,
+    "grades": 31,
+    "states": 1149,
+    "reference_properties": 1160,
+    "sources": 124,
+    "source_qualified_categories": {
+      "composite": 28,
+      "inorganic": 53,
+      "metal": 32,
+      "natural": 1010,
+      "polymer": 25
+    },
+    "existing_formal_computed_records": 24,
+    "experimental_project_total": 1172,
+    "main_total_last_verified_by_parent": 1081,
+    "new_admissions_in_this_audit": 0
+  },
+  "immutable_inputs": [
+    {
+      "path": "materials_boundaries/data/materials.json",
+      "sha256": "9df59cfdf94b35854255222d2a75f419859b269c5670c8eb18d8e9dc5eaa7a70",
+      "bytes": 9674153
+    },
+    {
+      "path": "materials_boundaries/data/reference_properties.json",
+      "sha256": "728c863756c35860b4dee25b64f5df10c1b5273bcb83ed1f35d60cf6ad85aa77",
+      "bytes": 22271154
+    },
+    {
+      "path": "materials_boundaries/data/sources.json",
+      "sha256": "c06c9bcee46eac59839c51f84b252970f1da46f98cf2f2c08de0b33479b5ba71",
+      "bytes": 285615
+    },
+    {
+      "path": "materials_boundaries/data/taxonomy_migration_v1.json",
+      "sha256": "78f2c8f078856568d049aa9649101c0291d1c819e6dbb35e29f26c5da0cb0541",
+      "bytes": 80226
+    },
+    {
+      "path": "materials_boundaries/data/wood_baseline_crosswalk_v2.json",
+      "sha256": "cddecb6f388814c0e85f64ab580cb9e551673240d2a182929a48e40b94079afa",
+      "bytes": 8563
+    },
+    {
+      "path": "materials_boundaries/data/wood_source_registry_v2.json",
+      "sha256": "c48e70d4b6406e569d7468285e5e2458d7ba8cca8972f6e96b8c4001bfce0c20",
+      "bytes": 209560
+    },
+    {
+      "path": "formal-catalog/materials_project_catalog/data/formal_computed_review.json",
+      "sha256": "a285523b2b2fdbf0d750ce6ac56e3abfb80d5c42056229a2352b016a787fd875",
+      "bytes": 193563
+    },
+    {
+      "path": "experimental/platform/examples/reviewed-computed-v2/eligible-metadata-input.json",
+      "sha256": "c4130e39d4b698b233fdcf07ad5c3325391479902f41a5a2b80f8d802f6f7ef2",
+      "bytes": 176367
+    },
+    {
+      "path": "experimental/platform/examples/reviewed-computed-v2/normalized-review.json",
+      "sha256": "a285523b2b2fdbf0d750ce6ac56e3abfb80d5c42056229a2352b016a787fd875",
+      "bytes": 193563
+    },
+    {
+      "path": "experimental/platform/examples/reviewed-computed-v2/acceptance-pin.json",
+      "sha256": "b5dbe30eaa152c0249a5595bfe28457b86110c3da41815a4dfceb278341fa47d",
+      "bytes": 2036
+    },
+    {
+      "path": "experimental/platform/examples/reviewed-computed-v2-second/eligible-metadata-input.json",
+      "sha256": "41d0691a8289c6d30fc24a5ecaef1f3b3e4b3ded57eac15ea8d64adc8a8398d6",
+      "bytes": 488492
+    },
+    {
+      "path": "experimental/platform/examples/reviewed-computed-v2-second/normalized-review.json",
+      "sha256": "f47b5612797661aae68f5d360aeee85c7b6eb3945dad4aeb210b65933bfcc279",
+      "bytes": 536161
+    },
+    {
+      "path": "experimental/platform/examples/reviewed-computed-v2-second/acceptance-pin.json",
+      "sha256": "47d21e9237a62ce4b2eda806cd2163b7d7bc576f1577deff623caf5e54efd543",
+      "bytes": 2337
+    },
+    {
+      "path": "experimental/platform/examples/reviewed-computed-seed/scoped-review-input.json",
+      "sha256": "298e94d77f5166650f66c17ff83e859c6e654f6739745d779a4461310437bb33",
+      "bytes": 17756
+    },
+    {
+      "path": "experimental/platform/query-service/materials_query/pins/family_relationships.json",
+      "sha256": "0fc51786cfb4eb61b8a67403174b50fa3742e9b895bccb535d2a4c471c47da42",
+      "bytes": 2250
+    },
+    {
+      "path": "experimental/platform/relationships/typed_edge_examples.json",
+      "sha256": "2e735e857846700eb16b5f892690f19e91d0735e390ca73c364f666979ce4a65",
+      "bytes": 30293
+    },
+    {
+      "path": "experimental/platform/relationships/hbn_projection_review.json",
+      "sha256": "26466e3692777f782f69f7e40e9968d7806b57f929c83e6f301c50d45db42cb1",
+      "bytes": 8864
+    },
+    {
+      "path": "docs/MATERIAL_REFERENCE_CATALOG.md",
+      "sha256": "132b5215c3bfc26e7b3831bfefefd37101b4c4081aed01f099b44a559f95d629",
+      "bytes": 34444
+    },
+    {
+      "path": "scripts/prepare_formulation_packet.py",
+      "sha256": "00bbed369214f2ca125432c406a41e28abe4aa2f911912e10666428cde102035",
+      "bytes": 28337
+    },
+    {
+      "path": "materials_boundaries/material_references.py",
+      "sha256": "c22295a7e8ab4e360201eb57cb6fc13eba7f8b8ac5e419f35fcf42e8aa81a264",
+      "bytes": 52466
+    },
+    {
+      "path": "experimental/platform/query-service/materials_query/family_relationships.py",
+      "sha256": "d8a8f3b811ff8775c6df3d6cf8ed4f6bb48f2b8488540c10e4f34c396c51b009",
+      "bytes": 13795
+    },
+    {
+      "path": "formal-catalog/materials_project_catalog/catalog.py",
+      "sha256": "26c42838f7a0bd33cd096f33a42c4ff6369c9d4476c17e851ce38be1b6439af0",
+      "bytes": 5535
+    }
+  ],
+  "reproduction": {
+    "input_acquisition": "Read each listed repository path using git show <baseline_commit>:<path>; hash the resulting bytes with SHA-256. Do not substitute the current working tree.",
+    "collections": "Read all identities, grades and records from materials.json, all reference-property and source records, the three computed record collections, and all finite relationship and taxonomy/wood crosswalk inputs.",
+    "labels": "Collect nonblank strings from name, source_designation, designation, every names value and every aliases[].text. Occurrence counts include repeated multilingual names; they are not unique identities.",
+    "comparison": "Compare PNA-BPF-1 through PNA-BPF-5 with each label using strip/casefold, Unicode NFKC plus casefold and collapsed whitespace, and an additional ASCII alphanumeric-only comparison. Normalization is a conservative collision screen, not chemical equivalence.",
+    "text_screen": {
+      "regular_expression": "tarasov|pna[ -]?bpf|phosphazene|cyclotriphos|bisphenol[ -]?f|\\bdgeb[af]\\b|\\bepox(?:y|ide)|\\bbpf\\b",
+      "flags": [
+        "IGNORECASE"
+      ],
+      "scope": "Serialize complete identity, grade, state, source and computed records as JSON, preserving scope and evidence text; inspect contextual hits. Also inspect every polymer/composite identity and the finite relationship endpoints."
+    },
+    "existing_gate": "scripts/prepare_formulation_packet.py::_labels and validate_identity_collisions inspect live source/state/property links and grade evidence. This audit did not invoke candidate-packet admission or replace that gate.",
+    "structural_gate": "materials_boundaries/material_references.py rejects exact structural identity/state clones. A clean textual screen alone is insufficient for admission."
+  },
+  "label_inventory": {
+    "field_occurrences_by_collection": {
+      "identities": 6962,
+      "grades": 62,
+      "records": 6955
+    },
+    "field_occurrences_total": 13979,
+    "unique_nfkc_casefold_whitespace_labels": 8197,
+    "alias_records_by_collection": {
+      "identities": 1222,
+      "grades": 31,
+      "records": 61
+    }
+  },
+  "full_record_text_screen": {
+    "identities": [],
+    "grades": [],
+    "records": [
+      {
+        "id": "state_deutsche_basalt_faser_a76_9_2_messmer2024",
+        "matched_terms": [
+          "epoxy"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "genin_birman_2009",
+        "matched_terms": [
+          "Epoxy"
+        ]
+      }
+    ]
+  },
+  "contextual_hits": [
+    {
+      "path": "materials_boundaries/data/materials.json",
+      "record_id": "state_deutsche_basalt_faser_a76_9_2_messmer2024",
+      "finding": "The epoxy/vitrimer text explicitly describes an unselected later composite; the admitted object is a standalone sized basalt filament. It is not a PNA-BPF epoxy identity."
+    },
+    {
+      "path": "materials_boundaries/data/sources.json",
+      "record_id": "genin_birman_2009",
+      "finding": "Generic epoxy elastic model parameters are marked literature_model_constituent_parameters_not_measurement_dataset. This bibliographic model source does not register a source-qualified PNA-BPF material."
+    }
+  ],
+  "polymer_and_composite_identity_inventory": [
+    {
+      "id": "mat_porima_pla_sahin_2026",
+      "category": "polymer",
+      "name": "Porima PLA filament (Şahin 2026)"
+    },
+    {
+      "id": "mat_porima_abs_sahin_2026",
+      "category": "polymer",
+      "name": "Porima ABS filament (Şahin 2026)"
+    },
+    {
+      "id": "mat_porima_petg_sahin_2026",
+      "category": "polymer",
+      "name": "Porima PETG filament (Şahin 2026)"
+    },
+    {
+      "id": "mat_porima_asa_sahin_2026",
+      "category": "polymer",
+      "name": "Porima ASA filament (Şahin 2026)"
+    },
+    {
+      "id": "mat_porima_pc_abs_sahin_2026",
+      "category": "polymer",
+      "name": "Porima PC/ABS filament (Şahin 2026)"
+    },
+    {
+      "id": "mat_domagala2024_nc1_concrete",
+      "category": "composite",
+      "name": "NC1 normal-weight concrete (Domagała 2024)"
+    },
+    {
+      "id": "mat_dow_corning_sylgard184",
+      "category": "polymer",
+      "name": "Dow Corning Sylgard 184 silicone kit"
+    },
+    {
+      "id": "mat_smr10_bianchi2025_nr",
+      "category": "polymer",
+      "name": "SMR 10 natural-rubber study compound (Bianchi 2025)"
+    },
+    {
+      "id": "mat_vistalon2504_n550_bianchi2022_epdm",
+      "category": "composite",
+      "name": "Vistalon 2504/N550 EPDM study compound (Bianchi 2022)"
+    },
+    {
+      "id": "mat_perbunan3445f_tamas_benyei2025_ref",
+      "category": "polymer",
+      "name": "PERBUNAN 3445 F NBR study REF compound (Tamás-Bényei 2025)"
+    },
+    {
+      "id": "mat_ivdre2024_lpo1_rigid_pur",
+      "category": "polymer",
+      "name": "LPO-1 rigid polyurethane foam (Ivdre 2024)"
+    },
+    {
+      "id": "mat_ewurum2025_biopbs",
+      "category": "polymer",
+      "name": "BioPBS polybutylene succinate, Ewurum study B0"
+    },
+    {
+      "id": "mat_ewurum2025_pbs_lignin20",
+      "category": "composite",
+      "name": "PBS / 20 wt.% Indulin AT kraft-lignin blend, B20"
+    },
+    {
+      "id": "mat_ewurum2025_indulin_at",
+      "category": "polymer",
+      "name": "Indulin AT softwood kraft lignin"
+    },
+    {
+      "id": "mat_abbasi2022_manure_phbv39",
+      "category": "polymer",
+      "name": "Dairy-manure-derived PHBV, operational-day sample PHBV-39"
+    },
+    {
+      "id": "mat_mtibe2022_pbat_ecoflex_c1200",
+      "category": "polymer",
+      "name": "BASF Ecoflex C1200 PBAT"
+    },
+    {
+      "id": "mat_mtibe2022_pbs_pbat_70_30",
+      "category": "polymer",
+      "name": "BioPBS FZ91 / Ecoflex C1200 PBS/PBAT 70/30 blend"
+    },
+    {
+      "id": "mat_domagala2024_nc2_concrete",
+      "category": "composite",
+      "name": "NC2 normal-weight concrete (Domagała 2024)"
+    },
+    {
+      "id": "mat_ivdre2024_spo2_rigid_pur",
+      "category": "polymer",
+      "name": "SPO-2 suberin/tall-oil-polyol rigid polyurethane foam (Ivdre 2024)"
+    },
+    {
+      "id": "mat_ewurum2025_pbs_lignin10",
+      "category": "composite",
+      "name": "PBS / 10 wt.% Indulin AT kraft-lignin blend, B10"
+    },
+    {
+      "id": "mat_ewurum2025_pbs_lignin30",
+      "category": "composite",
+      "name": "PBS / 30 wt.% Indulin AT kraft-lignin blend, B30"
+    },
+    {
+      "id": "mat_ewurum2025_pbs_lignin45",
+      "category": "composite",
+      "name": "PBS / 45 wt.% Indulin AT kraft-lignin blend, B45"
+    },
+    {
+      "id": "mat_bianchi2022_epdm_h_p20",
+      "category": "composite",
+      "name": "Vistalon 2504/N550/RT70HC Hostatron foam, EPDM_H_P20"
+    },
+    {
+      "id": "mat_bianchi2022_epdm_h_p40",
+      "category": "composite",
+      "name": "Vistalon 2504/N550/RT70HC Hostatron foam, EPDM_H_P40"
+    },
+    {
+      "id": "mat_bianchi2022_epdm_h_p60",
+      "category": "composite",
+      "name": "Vistalon 2504/N550/RT70HC Hostatron foam, EPDM_H_P60"
+    },
+    {
+      "id": "mat_zakrecki2025_pa12_pa2200",
+      "category": "polymer",
+      "name": "PA12 polymer, EOS PA2200 source-qualified representative"
+    },
+    {
+      "id": "mat_ivdre2024_lpo2_rigid_pur",
+      "category": "polymer",
+      "name": "LPO-2 Lupranol 66/34 rigid polyurethane foam (Ivdre 2024)"
+    },
+    {
+      "id": "mat_ivdre2024_spo3_rigid_pur",
+      "category": "polymer",
+      "name": "SPO-3 suberin/tall-oil-polyol 40/60 rigid polyurethane foam (Ivdre 2024)"
+    },
+    {
+      "id": "mat_mtibe2022_pbs_pbat_lignin10_zno",
+      "category": "composite",
+      "name": "PBS/PBAT-lignosulphonate-ZnO hybrid, 90/10/1.5 (Mtibe 2022)"
+    },
+    {
+      "id": "mat_mtibe2022_pbs_pbat_lignin15_zno",
+      "category": "composite",
+      "name": "PBS/PBAT-lignosulphonate-ZnO hybrid, 85/15/1.5 (Mtibe 2022)"
+    },
+    {
+      "id": "mat_mtibe2022_pbs_pbat_lignin5_zno",
+      "category": "composite",
+      "name": "PBS/PBAT-lignosulphonate-ZnO hybrid, 95/5/1.5 (Mtibe 2022)"
+    },
+    {
+      "id": "mat_bianchi2025_nr_1mmt",
+      "category": "composite",
+      "name": "Natural-rubber/MMT composite, 1 phr (Bianchi 2025)"
+    },
+    {
+      "id": "mat_bianchi2025_nr_1ommt",
+      "category": "composite",
+      "name": "Natural-rubber/O-MMT composite, 1 phr (Bianchi 2025)"
+    },
+    {
+      "id": "mat_bianchi2025_nr_3mmt",
+      "category": "composite",
+      "name": "Natural-rubber/MMT composite, 3 phr (Bianchi 2025)"
+    },
+    {
+      "id": "mat_bianchi2025_nr_3ommt",
+      "category": "composite",
+      "name": "Natural-rubber/O-MMT composite, 3 phr (Bianchi 2025)"
+    },
+    {
+      "id": "mat_bianchi2025_nr_5mmt",
+      "category": "composite",
+      "name": "Natural-rubber/MMT composite, 5 phr (Bianchi 2025)"
+    },
+    {
+      "id": "mat_bianchi2025_nr_5ommt",
+      "category": "composite",
+      "name": "Natural-rubber/O-MMT composite, 5 phr (Bianchi 2025)"
+    },
+    {
+      "id": "mat_tamas_benyei2025_nbr_mcf10",
+      "category": "composite",
+      "name": "NBR composite with 10 phr recycled milled carbon fiber (Tamás-Bényei 2025)"
+    },
+    {
+      "id": "mat_tamas_benyei2025_nbr_mcf20",
+      "category": "composite",
+      "name": "NBR composite with 20 phr recycled milled carbon fiber (Tamás-Bényei 2025)"
+    },
+    {
+      "id": "mat_tamas_benyei2025_nbr_mcf30",
+      "category": "composite",
+      "name": "NBR composite with 30 phr recycled milled carbon fiber (Tamás-Bényei 2025)"
+    },
+    {
+      "id": "mat_tamas_benyei2025_nbr_mcf40",
+      "category": "composite",
+      "name": "NBR composite with 40 phr recycled milled carbon fiber (Tamás-Bényei 2025)"
+    },
+    {
+      "id": "mat_tamas_benyei2025_nbr_mcf5",
+      "category": "composite",
+      "name": "NBR composite with 5 phr recycled milled carbon fiber (Tamás-Bényei 2025)"
+    },
+    {
+      "id": "mat_tamas_benyei2025_nbr_mcf50",
+      "category": "composite",
+      "name": "NBR composite with 50 phr recycled milled carbon fiber (Tamás-Bényei 2025)"
+    },
+    {
+      "id": "mat_aniskevich_2023_addnorth_koltron_g1",
+      "category": "composite",
+      "name": "Add:North Koltron G1 (source-qualified PVDF/graphene formulation)"
+    },
+    {
+      "id": "mat_aniskevich_2023_kimya_abs_esd",
+      "category": "composite",
+      "name": "KIMYA ABS ESD (source-qualified ABS/carbon-nanotube formulation)"
+    },
+    {
+      "id": "mat_aniskevich_2023_protopasta_conductive_pla",
+      "category": "composite",
+      "name": "Proto-pasta PLA conductive, CDP12805 Batch 171201 (source-qualified conductive PLA/carbon-black formulation)"
+    },
+    {
+      "id": "mat_aniskevich_2023_stratasys_antero800na",
+      "category": "polymer",
+      "name": "Stratasys PEKK, Antero 800NA (source-qualified PEKK-based product)"
+    },
+    {
+      "id": "mat_aniskevich_2023_stratasys_ultem9085cg",
+      "category": "polymer",
+      "name": "Stratasys PEI, ULTEM 9085 CG (source-qualified PEI-based product)"
+    },
+    {
+      "id": "mat_aniskevich_2023_ultimaker_pc",
+      "category": "polymer",
+      "name": "Ultimaker PC, White 1642 (source-qualified polycarbonate)"
+    },
+    {
+      "id": "mat_aniskevich_2023_ultimaker_pp",
+      "category": "polymer",
+      "name": "Ultimaker PP, Natural (source-qualified polypropylene)"
+    },
+    {
+      "id": "mat_aniskevich_2023_ultimaker_tpu95a",
+      "category": "polymer",
+      "name": "Ultimaker TPU95A, White 1755 (source-qualified thermoplastic polyurethane)"
+    },
+    {
+      "id": "mat_aniskevich_2023_ultimaker_tough_pla",
+      "category": "polymer",
+      "name": "Ultimaker Tough PLA (source-qualified PLA/acrylic-polymer formulation)"
+    },
+    {
+      "id": "mat_aniskevich_2023_ultimaker_nylon",
+      "category": "polymer",
+      "name": "Ultimaker Nylon (historically documented PA6/PA66-based family)"
+    }
+  ],
+  "source_scope_comparison": {
+    "result": "No existing registered PNA-BPF, phosphazene or bisphenol-F epoxy formulation was identified in this finite catalog.",
+    "relevant_precedents": [
+      {
+        "identity_id": "mat_ivdre2024_lpo2_rigid_pur",
+        "path": "materials_boundaries/data/materials.json",
+        "identity_scope": "Study-defined LPO-2 rigid polyurethane input formulation. The principal reactive Lupranol 3300/3422 input ratio is 66/34 g, distinct from the existing LPO-1 40/60 g ratio. This explicit input-formulation difference, not a label or catalyst/blowing-agent change alone, supports the selected identity. The study label is not a certified grade. No final cured-network molecular formula, elemental composition, purity or universal material equivalence is inferred."
+      },
+      {
+        "identity_id": "mat_ivdre2024_spo3_rigid_pur",
+        "path": "materials_boundaries/data/materials.json",
+        "identity_scope": "Study-defined SPO-3 rigid polyurethane input formulation. The principal reactive SA-C_TOFA(50:50)/TMP and SA-E_ETOFA(50:50)/TMP input ratio is 40/60 g, distinct from the existing SPO-2 67/33 g ratio. The 50:50 values label precursor feeds, not the final 40/60 foam-polyol input ratio. This explicit input-formulation difference, not a label or catalyst/blowing-agent change alone, supports the selected identity. The study label is not a certified grade. No final cured-network molecular formula, elemental composition, purity or universal material equivalence is inferred."
+      },
+      {
+        "identity_id": "mat_mtibe2022_pbs_pbat_70_30",
+        "path": "materials_boundaries/data/materials.json",
+        "identity_scope": "Specific unfilled PBS/PBAT 70/30 blend from Bio PBS FZ 91 (PTT MCC BIOCHEM) and Eco flex C1200 (BASF). Source ratio basis is not explicitly stated: do not relabel 70/30 as wt/wt, mass fraction or volume fraction. Table 2 unfilled 100/0/0 formulation excludes added lignin and ZnO. Broad polymer category includes this polymer blend; constituent designations are not a finished-blend grade."
+      }
+    ],
+    "policy": "docs/MATERIAL_REFERENCE_CATALOG.md defines a material identity as a curated source-supported composition or formulation. Aliases, grades, states, property rows and processing variations do not independently increase identity counts.",
+    "application": "Five different nominal principal reactive input recipes may support five source-qualified formulation identities if the separate source review confirms applicability. Final cured-network composition and global equivalence remain unresolved."
+  },
+  "computed_inventory": [
+    {
+      "path": "formal-catalog/materials_project_catalog/data/formal_computed_review.json",
+      "scope": "24 existing formal computed records; unchanged",
+      "records": 24,
+      "categories": {
+        "metal": 12,
+        "inorganic": 12
+      },
+      "distinct_related_provider_groups": 30,
+      "distinct_related_calculation_ids": 118,
+      "candidate_text_matches": 0,
+      "recorded_cross_namespace_overlap_hits": [],
+      "limitation": "Existing overlap metadata describes finite historical provider searches, not a new live provider search or global chemical equivalence proof."
+    },
+    {
+      "path": "experimental/platform/examples/reviewed-computed-v2-second/normalized-review.json",
+      "scope": "62 excluded examples; not admitted and not counted as growth",
+      "records": 62,
+      "categories": {
+        "metal": 47,
+        "inorganic": 15
+      },
+      "distinct_related_provider_groups": 133,
+      "distinct_related_calculation_ids": 444,
+      "candidate_text_matches": 0,
+      "recorded_cross_namespace_overlap_hits": [],
+      "limitation": "Existing overlap metadata describes finite historical provider searches, not a new live provider search or global chemical equivalence proof."
+    },
+    {
+      "path": "experimental/platform/examples/reviewed-computed-seed/scoped-review-input.json",
+      "scope": "7 separately pinned historical seed records; not additional formal growth",
+      "records": 7,
+      "categories": {
+        "legacy_scope_unspecified": 7
+      },
+      "distinct_related_provider_groups": 0,
+      "distinct_related_calculation_ids": 0,
+      "candidate_text_matches": 0,
+      "recorded_cross_namespace_overlap_hits": [],
+      "limitation": "Existing overlap metadata describes finite historical provider searches, not a new live provider search or global chemical equivalence proof."
+    }
+  ],
+  "relationship_inventory": {
+    "runtime_overlay_path": "experimental/platform/query-service/materials_query/pins/family_relationships.json",
+    "runtime_memberships": 5,
+    "runtime_relationships": 1,
+    "runtime_relationship_types": {
+      "has_constituent": 1
+    },
+    "example_path": "experimental/platform/relationships/typed_edge_examples.json",
+    "example_edges": 19,
+    "example_predicates": {
+      "member_of": 4,
+      "component_of": 2,
+      "has_layer_state": 3,
+      "derived_from": 3,
+      "observed_on": 6,
+      "phase_of": 1
+    },
+    "result": "No candidate endpoint, candidate alias or equivalence edge was found. Runtime constituent navigation does not imply equivalence, property inheritance or propagated membership.",
+    "additional_hbn_projection_scope": "Existing hBN source-state projection concerns boron nitride, not PNA-BPF; no equivalence inference."
+  },
+  "taxonomy_and_wood_inventory": {
+    "taxonomy_migration_path": "materials_boundaries/data/taxonomy_migration_v1.json",
+    "wood_registry_path": "materials_boundaries/data/wood_source_registry_v2.json",
+    "reviewed_wood_row_hashes": 1000,
+    "wood_physical_locators": 1000,
+    "baseline_crosswalk_path": "materials_boundaries/data/wood_baseline_crosswalk_v2.json",
+    "baseline_crosswalk_rows": 6,
+    "result": "No candidate or relevant polymer-formulation identity was found."
+  },
+  "candidate_decisions": [
+    {
+      "source_designation": "PNA-BPF-1",
+      "source_doi": "10.3390/polym14214547",
+      "nominal_source_qualified_input_ratio": {
+        "HCP": 1,
+        "BPF": 8,
+        "ECH": 16
+      },
+      "exact_or_normalized_label_collisions": [],
+      "finite_inventory_decision": "conditionally_distinct_source_qualified_input_formulation",
+      "basis": "A different reported principal reactive input recipe, not a distinct name, measurement, processing state or specimen.",
+      "conditions": [
+        "Verify the primary-source recipe-to-property join and source-specific rights in the separate source review.",
+        "Preserve the nominal recipe and all source inconsistencies; do not infer validated final stoichiometry, purity, mass fractions or molecular architecture.",
+        "Use a null grade reference and retain one selected cured state per identity in this bounded packet.",
+        "Run the existing full-graph source-scoped collision and structural-duplicate gates on the actual candidate packet."
+      ]
+    },
+    {
+      "source_designation": "PNA-BPF-2",
+      "source_doi": "10.3390/polym14214547",
+      "nominal_source_qualified_input_ratio": {
+        "HCP": 1,
+        "BPF": 9,
+        "ECH": 16
+      },
+      "exact_or_normalized_label_collisions": [],
+      "finite_inventory_decision": "conditionally_distinct_source_qualified_input_formulation",
+      "basis": "A different reported principal reactive input recipe, not a distinct name, measurement, processing state or specimen.",
+      "conditions": [
+        "Verify the primary-source recipe-to-property join and source-specific rights in the separate source review.",
+        "Preserve the nominal recipe and all source inconsistencies; do not infer validated final stoichiometry, purity, mass fractions or molecular architecture.",
+        "Use a null grade reference and retain one selected cured state per identity in this bounded packet.",
+        "Run the existing full-graph source-scoped collision and structural-duplicate gates on the actual candidate packet."
+      ]
+    },
+    {
+      "source_designation": "PNA-BPF-3",
+      "source_doi": "10.3390/polym14214547",
+      "nominal_source_qualified_input_ratio": {
+        "HCP": 1,
+        "BPF": 12,
+        "ECH": 16
+      },
+      "exact_or_normalized_label_collisions": [],
+      "finite_inventory_decision": "conditionally_distinct_source_qualified_input_formulation",
+      "basis": "A different reported principal reactive input recipe, not a distinct name, measurement, processing state or specimen.",
+      "conditions": [
+        "Verify the primary-source recipe-to-property join and source-specific rights in the separate source review.",
+        "Preserve the nominal recipe and all source inconsistencies; do not infer validated final stoichiometry, purity, mass fractions or molecular architecture.",
+        "Use a null grade reference and retain one selected cured state per identity in this bounded packet.",
+        "Run the existing full-graph source-scoped collision and structural-duplicate gates on the actual candidate packet."
+      ]
+    },
+    {
+      "source_designation": "PNA-BPF-4",
+      "source_doi": "10.3390/polym14214547",
+      "nominal_source_qualified_input_ratio": {
+        "HCP": 1,
+        "BPF": 18,
+        "ECH": 16
+      },
+      "exact_or_normalized_label_collisions": [],
+      "finite_inventory_decision": "conditionally_distinct_source_qualified_input_formulation",
+      "basis": "A different reported principal reactive input recipe, not a distinct name, measurement, processing state or specimen.",
+      "conditions": [
+        "Verify the primary-source recipe-to-property join and source-specific rights in the separate source review.",
+        "Preserve the nominal recipe and all source inconsistencies; do not infer validated final stoichiometry, purity, mass fractions or molecular architecture.",
+        "Use a null grade reference and retain one selected cured state per identity in this bounded packet.",
+        "Run the existing full-graph source-scoped collision and structural-duplicate gates on the actual candidate packet."
+      ]
+    },
+    {
+      "source_designation": "PNA-BPF-5",
+      "source_doi": "10.3390/polym14214547",
+      "nominal_source_qualified_input_ratio": {
+        "HCP": 1,
+        "BPF": 24,
+        "ECH": 16
+      },
+      "exact_or_normalized_label_collisions": [],
+      "finite_inventory_decision": "conditionally_distinct_source_qualified_input_formulation",
+      "basis": "A different reported principal reactive input recipe, not a distinct name, measurement, processing state or specimen.",
+      "conditions": [
+        "Verify the primary-source recipe-to-property join and source-specific rights in the separate source review.",
+        "Preserve the nominal recipe and all source inconsistencies; do not infer validated final stoichiometry, purity, mass fractions or molecular architecture.",
+        "Use a null grade reference and retain one selected cured state per identity in this bounded packet.",
+        "Run the existing full-graph source-scoped collision and structural-duplicate gates on the actual candidate packet."
+      ]
+    }
+  ],
+  "required_preserved_qualifications": [
+    "Nominal source-qualified HCP:BPF:ECH labels are not validated final stoichiometry.",
+    "Retain the Table 1 mass/mole inconsistencies, including the PNA-BPF-2 HCP entry, without silently correcting or deriving mass fractions.",
+    "Retain the KOH wording in section 2.1 versus NaOH wording in headings, Table 1 and procedure as a source inconsistency.",
+    "The alkali discrepancy and recipe inconsistencies remain limitations of the source-qualified identity claim; the separate source review must assess their applicability.",
+    "Use polymer classification for the source-described cured resin; do not infer a reinforced composite from the presence of phosphorus or nitrogen.",
+    "A study label is not a certified commercial or standard grade; use null grade.",
+    "Missing temperature, humidity, sample count, uncertainty and aggregation are not inferred from the tensile value.",
+    "Source review and permission to reproduce curated facts do not constitute scientific replication or an independent scientific review."
+  ],
+  "exclusions": [
+    {
+      "source_designation": "PNA-BPF-S",
+      "reason": "Alternate alkali process with the same nominal recipe is outside this packet; process variation alone is not a new identity."
+    },
+    {
+      "source_designation": "DGEBA",
+      "reason": "Control outside the five selected source-qualified recipes."
+    },
+    {
+      "source_designation": "DGEBF",
+      "reason": "Control outside the five selected source-qualified recipes."
+    }
+  ],
+  "acceptance_dependencies": [
+    "Separate source-specific attribution, rights, source identity and recipe-to-Table-7 measurement review.",
+    "Actual packet validation of complete evidence links, units, unknowns and source-qualified state boundaries.",
+    "Full-graph collision, structural-clone and replay/idempotency checks on the actual packet.",
+    "Independent review before experimental publication; no change to main or material counts is performed by this artifact."
+  ],
+  "execution_scope": {
+    "tests_run": false,
+    "catalog_modified": false,
+    "committed": false,
+    "published": false,
+    "raw_source_assets_included": false,
+    "credentials_or_private_notes_included": false,
+    "repository_guidance": "No AGENTS.md or .agents/skills guidance was found in the audited baseline checkout; existing catalog and packet policies were inspected."
+  }
+}
