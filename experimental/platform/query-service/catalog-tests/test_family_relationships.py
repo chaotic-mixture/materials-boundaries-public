@@ -58,8 +58,51 @@ class FamilyRelationshipTests(unittest.TestCase):
         self.assertEqual(self.supported(self.row('mat_hydro_6061')), {'metal', 'alloy'})
         response = self.post('search', concepts=['metal', 'alloy', 'alloy'], limit=100)
         result = response.json()['result']['data']
-        self.assertEqual(result['matching_unique_identity_count'], 32)
-        self.assertEqual(len({r['identity_id'] for r in result['records']}), 32)
+        # Exact unchanged 7248dcd metal identities; alloy is a reviewed subset.
+        expected_metal_ids = {
+            'mat_aurubis_c11000',
+            'mat_aurubis_c26000',
+            'mat_cezairliyan1970_molybdenum_tube',
+            'mat_cezairliyan1971_tungsten_tube',
+            'mat_chen2023_az31',
+            'mat_hydro_6061',
+            'mat_kosenko2022_amd5_sps_foam',
+            'mat_kulczyk2022_zinc_99_9',
+            'mat_nbs1953_ag',
+            'mat_nbs1953_au',
+            'mat_nbs1953_pb',
+            'mat_nbs1953_pd',
+            'mat_nbs1953_pt',
+            'mat_nbs1953_sn',
+            'mat_nbs1953_ta',
+            'mat_outokumpu_201',
+            'mat_outokumpu_201ln',
+            'mat_outokumpu_301',
+            'mat_outokumpu_301ln',
+            'mat_outokumpu_304',
+            'mat_outokumpu_304l',
+            'mat_outokumpu_304ln',
+            'mat_outokumpu_305',
+            'mat_outokumpu_321',
+            'mat_outokumpu_347',
+            'mat_outokumpu_441',
+            'mat_outokumpu_4622',
+            'mat_puga2015_az91d',
+            'mat_specialmetals_monel400',
+            'mat_specialmetals_nickel200',
+            'mat_timet_timetal6_4_grade5',
+            'mat_watanabe2026_niobium_cylinder',
+        }
+        category_ids = {row['id'] for row in self.snapshot._graph['materials']['identities']
+                        if row['category'] == 'metal'}
+        self.assertEqual(category_ids, expected_metal_ids)
+        alloy_rows = self.post('search', concepts=['alloy'], limit=100).json()['result']['data']
+        alloy_ids = {row['identity_id'] for row in alloy_rows['records']}
+        self.assertEqual(alloy_ids, {'mat_hydro_6061', 'mat_timet_timetal6_4_grade5'})
+        self.assertTrue(alloy_ids <= expected_metal_ids)
+        self.assertEqual({row['identity_id'] for row in result['records']}, expected_metal_ids)
+        self.assertEqual(result['matching_unique_identity_count'], len(expected_metal_ids))
+        self.assertEqual(len(result['records']), len(expected_metal_ids))
         self.assertEqual(result['concepts'], ['alloy', 'metal'])
         self.assertFalse(result['truncated'])
 
