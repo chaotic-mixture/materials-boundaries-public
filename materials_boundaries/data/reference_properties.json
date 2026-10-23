@@ -406764,6 +406764,1201 @@
         }
       ],
       "scope_note": "Catalog-only furnace-cooled experimental mass-density reference. Quenched states and all mechanical, spectroscopic and computed values are excluded. Density-test temperature, pressure and conditioning are unknown; room temperature and about 33% RH in the nanoindentation method are not transferred. Archimedes measurement does not establish a true/bulk/apparent density classification or zero porosity. Nominal oxide recipes define these source-qualified identities, not certified final stoichiometry. Table 1 ICP-OES results remain distinct from nominal values; the authors discuss possible incomplete dissolution/silica underrepresentation, boron/silicon disagreement and sodium loss during melting. No assay correction, recipe normalization or exact final purity is inferred. Furnace-cooled assignment follows the p.3 default and this explicit exception. No graphite-mold casting, numerical preheat or separately verified 30 K/h rate is assigned to this row."
+    },
+    {
+      "version": "1.0.0",
+      "quantity": "tensile_strength",
+      "quantity_dimension": "pressure",
+      "source_property_label": "Tensile Strength (MPa)",
+      "reported_value": {
+        "kind": "scalar",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "value_text": "66.7",
+        "number": "66.7"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "not_stated",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Table 7 reports tensile strength for cured epoxy resins; section 2.5.1 describes tensile testing. The reported scalars are measured-source results, without a stated summary statistic or replicate count. They are not declared means, individual-specimen values, predictions, universal bounds or engineering allowables.",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Tensile-test temperature is not reported in the inspected method or Table 7. Cure and rheology temperatures do not establish it."
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "GOST 11262-2017 (ISO 527-2:2012).",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.6, section 2.5.1",
+              "supports": [
+                "method",
+                "condition"
+              ]
+            }
+          ],
+          "notes": "This is the source-reported standard citation, not independent compliance verification or a source for missing temperature, humidity, specimen count or statistics."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Tensile testing on a 50ST universal electromechanical testing machine (Tinius Olsen), using cured binder specimens milled from a 4 mm-thick plate.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.6, section 2.5.1",
+              "supports": [
+                "method",
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Only tensile strength is selected; no modulus extraction, engineering-versus-true stress convention or additional property is inferred."
+        },
+        "direction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Loading orientation relative to the plate or processing direction is not specified; isotropy is not inferred."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Tensile-specific conditioning, moisture, humidity and storage duration are not reported in the inspected passages."
+        },
+        "loading_rate": {
+          "status": "reported",
+          "text": "Stretching speed 10 mm/min.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.6, section 2.5.1",
+              "supports": [
+                "condition",
+                "method"
+              ]
+            }
+          ],
+          "notes": "Preserve the source-reported stretching speed; it is not a strain rate in inverse seconds."
+        },
+        "additional_conditions": [
+          {
+            "name": "relative_humidity",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "No tensile-test relative humidity is stated in the inspected passages."
+            }
+          },
+          {
+            "name": "specimen_plate_thickness",
+            "fact": {
+              "status": "reported",
+              "text": "4 mm-thick plate.",
+              "evidence": [
+                {
+                  "source_id": "tarasov_2022_pna_bpf_epoxy",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+                  "locator": "PDF p.6, section 2.5.1",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Source plate thickness only; no per-specimen metrology or tolerance is inferred."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "not_stated",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "The inspected tensile method and Table 7 do not state specimen/replicate count, aggregation or central-statistic definition, uncertainty, standard deviation, standard error or confidence interval. A cited test standard does not supply these missing facts.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Specimen and independent replicate counts for the selected cured formulation tensile result are unknown.",
+        "source_statement": "The inspected tensile method and Table 7 do not state specimen/replicate count, aggregation or central-statistic definition, uncertainty, standard deviation, standard error or confidence interval. A cited test standard does not supply these missing facts.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Source-reported tensile testing under GOST 11262-2017 (ISO 527-2:2012), on a 50ST machine at a stretching speed of 10 mm/min, using specimens cut from a 4 mm-thick cured binder plate. No strain-extraction window is assigned to this tensile-strength record.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "PDF p.6, section 2.5.1",
+            "supports": [
+              "method",
+              "condition",
+              "classification"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Table 1 labels the nominal feeds HCP:BPF:ECH as 1:8:16 through 1:24:16, while the listed reagent mole amounts and the section 2.2.1 statement about a constant 16-fold ECH excess do not establish a consistent normalized ratio.",
+          "disposition": "Preserve the printed ratio labels as nominal source recipe labels. Do not recompute ECH amounts, repair the ratios, infer the intended denominator or claim validated feed stoichiometry or final composition.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, section 2.2.1 opening paragraph and Table 1",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Table 1 lists HCP as 35 (0.086) g (Mole) for PNA-BPF-2, but as 35 (0.101) for PNA-BPF-1 and PNA-BPF-S.",
+          "disposition": "Keep the PNA-BPF-2 source label and its printed nominal 1:9:16 recipe without silently correcting the mass or mole entry. No recalculated composition is emitted.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, Table 1, HCP g (Mole) column, PNA-BPF-2 versus PNA-BPF-1 and PNA-BPF-S",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Section 2.1 names potassium hydroxide, whereas the synthesis headings, Table 1 and sections 2.2.1-2.2.2 describe NaOH or sodium hydroxide.",
+          "disposition": "Retain the contradiction. The selected route is source-described batch addition of solid alkali; the alkali chemical identity is not independently resolved or silently changed from KOH to NaOH.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, section 2.1 alkali entry, section 2.2.1 heading and Table 1; p.5, sections 2.2.1-2.2.2",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "tarasov_2022_pna_bpf_epoxy",
+      "source_document": {
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+        "revision": "Polymers 2022, 14, 4547; publisher PDF published 27 October 2022, 22 pages; URL version=1666858817.",
+        "inspected_on": "2026-10-23",
+        "sha256": "1f06bc0667c7c5575a0e88772868a95cd27ba01a264d3b3a0b9c859a8a6423aa",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Publisher PDF p.1 title, authors, abstract and article-specific CC BY 4.0 notice; p.4 section 2.1 and Table 1; pp.4-5 sections 2.2.1-2.2.2; p.5 section 2.4; p.6 section 2.5.1; p.16 Table 7 selected five tensile-strength cells and row labels. Selected transcription and rights inspection only, not independent scientific review or raw-data reanalysis.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Publisher PDF p.1 title, authors, abstract and article-specific CC BY 4.0 notice; p.4 section 2.1 and Table 1; pp.4-5 sections 2.2.1-2.2.2; p.5 section 2.4; p.6 section 2.5.1; p.16 Table 7 selected five tensile-strength cells and row labels. Selected transcription and rights inspection only, not independent scientific review or raw-data reanalysis.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      },
+      "id": "refprop_tarasov2022_pna_bpf_1_tensile_strength",
+      "material_state_id": "state_tarasov2022_pna_bpf_1_dds_cured",
+      "evidence": [
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "PDF p.16, Table 7, PNA-BPF-1 (1:8:16) row, Tensile Strength (MPa) column",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "PDF p.6, section 2.5.1",
+          "supports": [
+            "method",
+            "condition",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "PDF p.5, section 2.4",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "scope_note": "Source-qualified PNA-BPF-1 formulation, nominal HCP:BPF:ECH label 1:8:16. The HCP:BPF:ECH labels are source-reported nominal feed labels only. Table 1 reagent amounts and ratio labels are internally inconsistent; no correction, normalized stoichiometry, final network composition, purity, conversion or molecular architecture is inferred. These are source-qualified mixed phosphazene-containing epoxy formulations, not pure molecular species. Cure conditions, test specimens and property differences do not create additional identities. DDS-cured plate state for the selected Table 7 tensile-strength result. Exact DDS fraction, tensile-test temperature, humidity, orientation, specimen count and statistics remain unknown. The scalar is retained exactly as printed, including trailing decimal precision. The inspected tensile method and Table 7 do not state specimen/replicate count, aggregation or central-statistic definition, uncertainty, standard deviation, standard error or confidence interval. A cited test standard does not supply these missing facts."
+    },
+    {
+      "version": "1.0.0",
+      "quantity": "tensile_strength",
+      "quantity_dimension": "pressure",
+      "source_property_label": "Tensile Strength (MPa)",
+      "reported_value": {
+        "kind": "scalar",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "value_text": "66.0",
+        "number": "66.0"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "not_stated",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Table 7 reports tensile strength for cured epoxy resins; section 2.5.1 describes tensile testing. The reported scalars are measured-source results, without a stated summary statistic or replicate count. They are not declared means, individual-specimen values, predictions, universal bounds or engineering allowables.",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Tensile-test temperature is not reported in the inspected method or Table 7. Cure and rheology temperatures do not establish it."
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "GOST 11262-2017 (ISO 527-2:2012).",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.6, section 2.5.1",
+              "supports": [
+                "method",
+                "condition"
+              ]
+            }
+          ],
+          "notes": "This is the source-reported standard citation, not independent compliance verification or a source for missing temperature, humidity, specimen count or statistics."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Tensile testing on a 50ST universal electromechanical testing machine (Tinius Olsen), using cured binder specimens milled from a 4 mm-thick plate.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.6, section 2.5.1",
+              "supports": [
+                "method",
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Only tensile strength is selected; no modulus extraction, engineering-versus-true stress convention or additional property is inferred."
+        },
+        "direction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Loading orientation relative to the plate or processing direction is not specified; isotropy is not inferred."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Tensile-specific conditioning, moisture, humidity and storage duration are not reported in the inspected passages."
+        },
+        "loading_rate": {
+          "status": "reported",
+          "text": "Stretching speed 10 mm/min.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.6, section 2.5.1",
+              "supports": [
+                "condition",
+                "method"
+              ]
+            }
+          ],
+          "notes": "Preserve the source-reported stretching speed; it is not a strain rate in inverse seconds."
+        },
+        "additional_conditions": [
+          {
+            "name": "relative_humidity",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "No tensile-test relative humidity is stated in the inspected passages."
+            }
+          },
+          {
+            "name": "specimen_plate_thickness",
+            "fact": {
+              "status": "reported",
+              "text": "4 mm-thick plate.",
+              "evidence": [
+                {
+                  "source_id": "tarasov_2022_pna_bpf_epoxy",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+                  "locator": "PDF p.6, section 2.5.1",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Source plate thickness only; no per-specimen metrology or tolerance is inferred."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "not_stated",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "The inspected tensile method and Table 7 do not state specimen/replicate count, aggregation or central-statistic definition, uncertainty, standard deviation, standard error or confidence interval. A cited test standard does not supply these missing facts.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Specimen and independent replicate counts for the selected cured formulation tensile result are unknown.",
+        "source_statement": "The inspected tensile method and Table 7 do not state specimen/replicate count, aggregation or central-statistic definition, uncertainty, standard deviation, standard error or confidence interval. A cited test standard does not supply these missing facts.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Source-reported tensile testing under GOST 11262-2017 (ISO 527-2:2012), on a 50ST machine at a stretching speed of 10 mm/min, using specimens cut from a 4 mm-thick cured binder plate. No strain-extraction window is assigned to this tensile-strength record.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "PDF p.6, section 2.5.1",
+            "supports": [
+              "method",
+              "condition",
+              "classification"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Table 1 labels the nominal feeds HCP:BPF:ECH as 1:8:16 through 1:24:16, while the listed reagent mole amounts and the section 2.2.1 statement about a constant 16-fold ECH excess do not establish a consistent normalized ratio.",
+          "disposition": "Preserve the printed ratio labels as nominal source recipe labels. Do not recompute ECH amounts, repair the ratios, infer the intended denominator or claim validated feed stoichiometry or final composition.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, section 2.2.1 opening paragraph and Table 1",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Table 1 lists HCP as 35 (0.086) g (Mole) for PNA-BPF-2, but as 35 (0.101) for PNA-BPF-1 and PNA-BPF-S.",
+          "disposition": "Keep the PNA-BPF-2 source label and its printed nominal 1:9:16 recipe without silently correcting the mass or mole entry. No recalculated composition is emitted.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, Table 1, HCP g (Mole) column, PNA-BPF-2 versus PNA-BPF-1 and PNA-BPF-S",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Section 2.1 names potassium hydroxide, whereas the synthesis headings, Table 1 and sections 2.2.1-2.2.2 describe NaOH or sodium hydroxide.",
+          "disposition": "Retain the contradiction. The selected route is source-described batch addition of solid alkali; the alkali chemical identity is not independently resolved or silently changed from KOH to NaOH.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, section 2.1 alkali entry, section 2.2.1 heading and Table 1; p.5, sections 2.2.1-2.2.2",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "tarasov_2022_pna_bpf_epoxy",
+      "source_document": {
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+        "revision": "Polymers 2022, 14, 4547; publisher PDF published 27 October 2022, 22 pages; URL version=1666858817.",
+        "inspected_on": "2026-10-23",
+        "sha256": "1f06bc0667c7c5575a0e88772868a95cd27ba01a264d3b3a0b9c859a8a6423aa",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Publisher PDF p.1 title, authors, abstract and article-specific CC BY 4.0 notice; p.4 section 2.1 and Table 1; pp.4-5 sections 2.2.1-2.2.2; p.5 section 2.4; p.6 section 2.5.1; p.16 Table 7 selected five tensile-strength cells and row labels. Selected transcription and rights inspection only, not independent scientific review or raw-data reanalysis.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Publisher PDF p.1 title, authors, abstract and article-specific CC BY 4.0 notice; p.4 section 2.1 and Table 1; pp.4-5 sections 2.2.1-2.2.2; p.5 section 2.4; p.6 section 2.5.1; p.16 Table 7 selected five tensile-strength cells and row labels. Selected transcription and rights inspection only, not independent scientific review or raw-data reanalysis.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      },
+      "id": "refprop_tarasov2022_pna_bpf_2_tensile_strength",
+      "material_state_id": "state_tarasov2022_pna_bpf_2_dds_cured",
+      "evidence": [
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "PDF p.16, Table 7, PNA-BPF-2 (1:9:16) row, Tensile Strength (MPa) column",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "PDF p.6, section 2.5.1",
+          "supports": [
+            "method",
+            "condition",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "PDF p.5, section 2.4",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "scope_note": "Source-qualified PNA-BPF-2 formulation, nominal HCP:BPF:ECH label 1:9:16. The HCP:BPF:ECH labels are source-reported nominal feed labels only. Table 1 reagent amounts and ratio labels are internally inconsistent; no correction, normalized stoichiometry, final network composition, purity, conversion or molecular architecture is inferred. These are source-qualified mixed phosphazene-containing epoxy formulations, not pure molecular species. Cure conditions, test specimens and property differences do not create additional identities. DDS-cured plate state for the selected Table 7 tensile-strength result. Exact DDS fraction, tensile-test temperature, humidity, orientation, specimen count and statistics remain unknown. The scalar is retained exactly as printed, including trailing decimal precision. The inspected tensile method and Table 7 do not state specimen/replicate count, aggregation or central-statistic definition, uncertainty, standard deviation, standard error or confidence interval. A cited test standard does not supply these missing facts."
+    },
+    {
+      "version": "1.0.0",
+      "quantity": "tensile_strength",
+      "quantity_dimension": "pressure",
+      "source_property_label": "Tensile Strength (MPa)",
+      "reported_value": {
+        "kind": "scalar",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "value_text": "70.2",
+        "number": "70.2"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "not_stated",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Table 7 reports tensile strength for cured epoxy resins; section 2.5.1 describes tensile testing. The reported scalars are measured-source results, without a stated summary statistic or replicate count. They are not declared means, individual-specimen values, predictions, universal bounds or engineering allowables.",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Tensile-test temperature is not reported in the inspected method or Table 7. Cure and rheology temperatures do not establish it."
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "GOST 11262-2017 (ISO 527-2:2012).",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.6, section 2.5.1",
+              "supports": [
+                "method",
+                "condition"
+              ]
+            }
+          ],
+          "notes": "This is the source-reported standard citation, not independent compliance verification or a source for missing temperature, humidity, specimen count or statistics."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Tensile testing on a 50ST universal electromechanical testing machine (Tinius Olsen), using cured binder specimens milled from a 4 mm-thick plate.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.6, section 2.5.1",
+              "supports": [
+                "method",
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Only tensile strength is selected; no modulus extraction, engineering-versus-true stress convention or additional property is inferred."
+        },
+        "direction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Loading orientation relative to the plate or processing direction is not specified; isotropy is not inferred."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Tensile-specific conditioning, moisture, humidity and storage duration are not reported in the inspected passages."
+        },
+        "loading_rate": {
+          "status": "reported",
+          "text": "Stretching speed 10 mm/min.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.6, section 2.5.1",
+              "supports": [
+                "condition",
+                "method"
+              ]
+            }
+          ],
+          "notes": "Preserve the source-reported stretching speed; it is not a strain rate in inverse seconds."
+        },
+        "additional_conditions": [
+          {
+            "name": "relative_humidity",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "No tensile-test relative humidity is stated in the inspected passages."
+            }
+          },
+          {
+            "name": "specimen_plate_thickness",
+            "fact": {
+              "status": "reported",
+              "text": "4 mm-thick plate.",
+              "evidence": [
+                {
+                  "source_id": "tarasov_2022_pna_bpf_epoxy",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+                  "locator": "PDF p.6, section 2.5.1",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Source plate thickness only; no per-specimen metrology or tolerance is inferred."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "not_stated",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "The inspected tensile method and Table 7 do not state specimen/replicate count, aggregation or central-statistic definition, uncertainty, standard deviation, standard error or confidence interval. A cited test standard does not supply these missing facts.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Specimen and independent replicate counts for the selected cured formulation tensile result are unknown.",
+        "source_statement": "The inspected tensile method and Table 7 do not state specimen/replicate count, aggregation or central-statistic definition, uncertainty, standard deviation, standard error or confidence interval. A cited test standard does not supply these missing facts.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Source-reported tensile testing under GOST 11262-2017 (ISO 527-2:2012), on a 50ST machine at a stretching speed of 10 mm/min, using specimens cut from a 4 mm-thick cured binder plate. No strain-extraction window is assigned to this tensile-strength record.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "PDF p.6, section 2.5.1",
+            "supports": [
+              "method",
+              "condition",
+              "classification"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Table 1 labels the nominal feeds HCP:BPF:ECH as 1:8:16 through 1:24:16, while the listed reagent mole amounts and the section 2.2.1 statement about a constant 16-fold ECH excess do not establish a consistent normalized ratio.",
+          "disposition": "Preserve the printed ratio labels as nominal source recipe labels. Do not recompute ECH amounts, repair the ratios, infer the intended denominator or claim validated feed stoichiometry or final composition.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, section 2.2.1 opening paragraph and Table 1",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Table 1 lists HCP as 35 (0.086) g (Mole) for PNA-BPF-2, but as 35 (0.101) for PNA-BPF-1 and PNA-BPF-S.",
+          "disposition": "Keep the PNA-BPF-2 source label and its printed nominal 1:9:16 recipe without silently correcting the mass or mole entry. No recalculated composition is emitted.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, Table 1, HCP g (Mole) column, PNA-BPF-2 versus PNA-BPF-1 and PNA-BPF-S",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Section 2.1 names potassium hydroxide, whereas the synthesis headings, Table 1 and sections 2.2.1-2.2.2 describe NaOH or sodium hydroxide.",
+          "disposition": "Retain the contradiction. The selected route is source-described batch addition of solid alkali; the alkali chemical identity is not independently resolved or silently changed from KOH to NaOH.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, section 2.1 alkali entry, section 2.2.1 heading and Table 1; p.5, sections 2.2.1-2.2.2",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "tarasov_2022_pna_bpf_epoxy",
+      "source_document": {
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+        "revision": "Polymers 2022, 14, 4547; publisher PDF published 27 October 2022, 22 pages; URL version=1666858817.",
+        "inspected_on": "2026-10-23",
+        "sha256": "1f06bc0667c7c5575a0e88772868a95cd27ba01a264d3b3a0b9c859a8a6423aa",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Publisher PDF p.1 title, authors, abstract and article-specific CC BY 4.0 notice; p.4 section 2.1 and Table 1; pp.4-5 sections 2.2.1-2.2.2; p.5 section 2.4; p.6 section 2.5.1; p.16 Table 7 selected five tensile-strength cells and row labels. Selected transcription and rights inspection only, not independent scientific review or raw-data reanalysis.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Publisher PDF p.1 title, authors, abstract and article-specific CC BY 4.0 notice; p.4 section 2.1 and Table 1; pp.4-5 sections 2.2.1-2.2.2; p.5 section 2.4; p.6 section 2.5.1; p.16 Table 7 selected five tensile-strength cells and row labels. Selected transcription and rights inspection only, not independent scientific review or raw-data reanalysis.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      },
+      "id": "refprop_tarasov2022_pna_bpf_3_tensile_strength",
+      "material_state_id": "state_tarasov2022_pna_bpf_3_dds_cured",
+      "evidence": [
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "PDF p.16, Table 7, PNA-BPF-3 (1:12:16) row, Tensile Strength (MPa) column",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "PDF p.6, section 2.5.1",
+          "supports": [
+            "method",
+            "condition",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "PDF p.5, section 2.4",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "scope_note": "Source-qualified PNA-BPF-3 formulation, nominal HCP:BPF:ECH label 1:12:16. The HCP:BPF:ECH labels are source-reported nominal feed labels only. Table 1 reagent amounts and ratio labels are internally inconsistent; no correction, normalized stoichiometry, final network composition, purity, conversion or molecular architecture is inferred. These are source-qualified mixed phosphazene-containing epoxy formulations, not pure molecular species. Cure conditions, test specimens and property differences do not create additional identities. DDS-cured plate state for the selected Table 7 tensile-strength result. Exact DDS fraction, tensile-test temperature, humidity, orientation, specimen count and statistics remain unknown. The scalar is retained exactly as printed, including trailing decimal precision. The inspected tensile method and Table 7 do not state specimen/replicate count, aggregation or central-statistic definition, uncertainty, standard deviation, standard error or confidence interval. A cited test standard does not supply these missing facts."
+    },
+    {
+      "version": "1.0.0",
+      "quantity": "tensile_strength",
+      "quantity_dimension": "pressure",
+      "source_property_label": "Tensile Strength (MPa)",
+      "reported_value": {
+        "kind": "scalar",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "value_text": "74.5",
+        "number": "74.5"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "not_stated",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Table 7 reports tensile strength for cured epoxy resins; section 2.5.1 describes tensile testing. The reported scalars are measured-source results, without a stated summary statistic or replicate count. They are not declared means, individual-specimen values, predictions, universal bounds or engineering allowables.",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Tensile-test temperature is not reported in the inspected method or Table 7. Cure and rheology temperatures do not establish it."
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "GOST 11262-2017 (ISO 527-2:2012).",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.6, section 2.5.1",
+              "supports": [
+                "method",
+                "condition"
+              ]
+            }
+          ],
+          "notes": "This is the source-reported standard citation, not independent compliance verification or a source for missing temperature, humidity, specimen count or statistics."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Tensile testing on a 50ST universal electromechanical testing machine (Tinius Olsen), using cured binder specimens milled from a 4 mm-thick plate.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.6, section 2.5.1",
+              "supports": [
+                "method",
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Only tensile strength is selected; no modulus extraction, engineering-versus-true stress convention or additional property is inferred."
+        },
+        "direction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Loading orientation relative to the plate or processing direction is not specified; isotropy is not inferred."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Tensile-specific conditioning, moisture, humidity and storage duration are not reported in the inspected passages."
+        },
+        "loading_rate": {
+          "status": "reported",
+          "text": "Stretching speed 10 mm/min.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.6, section 2.5.1",
+              "supports": [
+                "condition",
+                "method"
+              ]
+            }
+          ],
+          "notes": "Preserve the source-reported stretching speed; it is not a strain rate in inverse seconds."
+        },
+        "additional_conditions": [
+          {
+            "name": "relative_humidity",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "No tensile-test relative humidity is stated in the inspected passages."
+            }
+          },
+          {
+            "name": "specimen_plate_thickness",
+            "fact": {
+              "status": "reported",
+              "text": "4 mm-thick plate.",
+              "evidence": [
+                {
+                  "source_id": "tarasov_2022_pna_bpf_epoxy",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+                  "locator": "PDF p.6, section 2.5.1",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Source plate thickness only; no per-specimen metrology or tolerance is inferred."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "not_stated",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "The inspected tensile method and Table 7 do not state specimen/replicate count, aggregation or central-statistic definition, uncertainty, standard deviation, standard error or confidence interval. A cited test standard does not supply these missing facts.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Specimen and independent replicate counts for the selected cured formulation tensile result are unknown.",
+        "source_statement": "The inspected tensile method and Table 7 do not state specimen/replicate count, aggregation or central-statistic definition, uncertainty, standard deviation, standard error or confidence interval. A cited test standard does not supply these missing facts.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Source-reported tensile testing under GOST 11262-2017 (ISO 527-2:2012), on a 50ST machine at a stretching speed of 10 mm/min, using specimens cut from a 4 mm-thick cured binder plate. No strain-extraction window is assigned to this tensile-strength record.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "PDF p.6, section 2.5.1",
+            "supports": [
+              "method",
+              "condition",
+              "classification"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Table 1 labels the nominal feeds HCP:BPF:ECH as 1:8:16 through 1:24:16, while the listed reagent mole amounts and the section 2.2.1 statement about a constant 16-fold ECH excess do not establish a consistent normalized ratio.",
+          "disposition": "Preserve the printed ratio labels as nominal source recipe labels. Do not recompute ECH amounts, repair the ratios, infer the intended denominator or claim validated feed stoichiometry or final composition.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, section 2.2.1 opening paragraph and Table 1",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Table 1 lists HCP as 35 (0.086) g (Mole) for PNA-BPF-2, but as 35 (0.101) for PNA-BPF-1 and PNA-BPF-S.",
+          "disposition": "Keep the PNA-BPF-2 source label and its printed nominal 1:9:16 recipe without silently correcting the mass or mole entry. No recalculated composition is emitted.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, Table 1, HCP g (Mole) column, PNA-BPF-2 versus PNA-BPF-1 and PNA-BPF-S",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Section 2.1 names potassium hydroxide, whereas the synthesis headings, Table 1 and sections 2.2.1-2.2.2 describe NaOH or sodium hydroxide.",
+          "disposition": "Retain the contradiction. The selected route is source-described batch addition of solid alkali; the alkali chemical identity is not independently resolved or silently changed from KOH to NaOH.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, section 2.1 alkali entry, section 2.2.1 heading and Table 1; p.5, sections 2.2.1-2.2.2",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "tarasov_2022_pna_bpf_epoxy",
+      "source_document": {
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+        "revision": "Polymers 2022, 14, 4547; publisher PDF published 27 October 2022, 22 pages; URL version=1666858817.",
+        "inspected_on": "2026-10-23",
+        "sha256": "1f06bc0667c7c5575a0e88772868a95cd27ba01a264d3b3a0b9c859a8a6423aa",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Publisher PDF p.1 title, authors, abstract and article-specific CC BY 4.0 notice; p.4 section 2.1 and Table 1; pp.4-5 sections 2.2.1-2.2.2; p.5 section 2.4; p.6 section 2.5.1; p.16 Table 7 selected five tensile-strength cells and row labels. Selected transcription and rights inspection only, not independent scientific review or raw-data reanalysis.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Publisher PDF p.1 title, authors, abstract and article-specific CC BY 4.0 notice; p.4 section 2.1 and Table 1; pp.4-5 sections 2.2.1-2.2.2; p.5 section 2.4; p.6 section 2.5.1; p.16 Table 7 selected five tensile-strength cells and row labels. Selected transcription and rights inspection only, not independent scientific review or raw-data reanalysis.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      },
+      "id": "refprop_tarasov2022_pna_bpf_4_tensile_strength",
+      "material_state_id": "state_tarasov2022_pna_bpf_4_dds_cured",
+      "evidence": [
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "PDF p.16, Table 7, PNA-BPF-4 (1:18:16) row, Tensile Strength (MPa) column",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "PDF p.6, section 2.5.1",
+          "supports": [
+            "method",
+            "condition",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "PDF p.5, section 2.4",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "scope_note": "Source-qualified PNA-BPF-4 formulation, nominal HCP:BPF:ECH label 1:18:16. The HCP:BPF:ECH labels are source-reported nominal feed labels only. Table 1 reagent amounts and ratio labels are internally inconsistent; no correction, normalized stoichiometry, final network composition, purity, conversion or molecular architecture is inferred. These are source-qualified mixed phosphazene-containing epoxy formulations, not pure molecular species. Cure conditions, test specimens and property differences do not create additional identities. DDS-cured plate state for the selected Table 7 tensile-strength result. Exact DDS fraction, tensile-test temperature, humidity, orientation, specimen count and statistics remain unknown. The scalar is retained exactly as printed, including trailing decimal precision. The inspected tensile method and Table 7 do not state specimen/replicate count, aggregation or central-statistic definition, uncertainty, standard deviation, standard error or confidence interval. A cited test standard does not supply these missing facts."
+    },
+    {
+      "version": "1.0.0",
+      "quantity": "tensile_strength",
+      "quantity_dimension": "pressure",
+      "source_property_label": "Tensile Strength (MPa)",
+      "reported_value": {
+        "kind": "scalar",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "value_text": "72.7",
+        "number": "72.7"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "not_stated",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Table 7 reports tensile strength for cured epoxy resins; section 2.5.1 describes tensile testing. The reported scalars are measured-source results, without a stated summary statistic or replicate count. They are not declared means, individual-specimen values, predictions, universal bounds or engineering allowables.",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Tensile-test temperature is not reported in the inspected method or Table 7. Cure and rheology temperatures do not establish it."
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "GOST 11262-2017 (ISO 527-2:2012).",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.6, section 2.5.1",
+              "supports": [
+                "method",
+                "condition"
+              ]
+            }
+          ],
+          "notes": "This is the source-reported standard citation, not independent compliance verification or a source for missing temperature, humidity, specimen count or statistics."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Tensile testing on a 50ST universal electromechanical testing machine (Tinius Olsen), using cured binder specimens milled from a 4 mm-thick plate.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.6, section 2.5.1",
+              "supports": [
+                "method",
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Only tensile strength is selected; no modulus extraction, engineering-versus-true stress convention or additional property is inferred."
+        },
+        "direction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Loading orientation relative to the plate or processing direction is not specified; isotropy is not inferred."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Tensile-specific conditioning, moisture, humidity and storage duration are not reported in the inspected passages."
+        },
+        "loading_rate": {
+          "status": "reported",
+          "text": "Stretching speed 10 mm/min.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.6, section 2.5.1",
+              "supports": [
+                "condition",
+                "method"
+              ]
+            }
+          ],
+          "notes": "Preserve the source-reported stretching speed; it is not a strain rate in inverse seconds."
+        },
+        "additional_conditions": [
+          {
+            "name": "relative_humidity",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "No tensile-test relative humidity is stated in the inspected passages."
+            }
+          },
+          {
+            "name": "specimen_plate_thickness",
+            "fact": {
+              "status": "reported",
+              "text": "4 mm-thick plate.",
+              "evidence": [
+                {
+                  "source_id": "tarasov_2022_pna_bpf_epoxy",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+                  "locator": "PDF p.6, section 2.5.1",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Source plate thickness only; no per-specimen metrology or tolerance is inferred."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "not_stated",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "The inspected tensile method and Table 7 do not state specimen/replicate count, aggregation or central-statistic definition, uncertainty, standard deviation, standard error or confidence interval. A cited test standard does not supply these missing facts.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Specimen and independent replicate counts for the selected cured formulation tensile result are unknown.",
+        "source_statement": "The inspected tensile method and Table 7 do not state specimen/replicate count, aggregation or central-statistic definition, uncertainty, standard deviation, standard error or confidence interval. A cited test standard does not supply these missing facts.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Source-reported tensile testing under GOST 11262-2017 (ISO 527-2:2012), on a 50ST machine at a stretching speed of 10 mm/min, using specimens cut from a 4 mm-thick cured binder plate. No strain-extraction window is assigned to this tensile-strength record.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "PDF p.6, section 2.5.1",
+            "supports": [
+              "method",
+              "condition",
+              "classification"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Table 1 labels the nominal feeds HCP:BPF:ECH as 1:8:16 through 1:24:16, while the listed reagent mole amounts and the section 2.2.1 statement about a constant 16-fold ECH excess do not establish a consistent normalized ratio.",
+          "disposition": "Preserve the printed ratio labels as nominal source recipe labels. Do not recompute ECH amounts, repair the ratios, infer the intended denominator or claim validated feed stoichiometry or final composition.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, section 2.2.1 opening paragraph and Table 1",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Table 1 lists HCP as 35 (0.086) g (Mole) for PNA-BPF-2, but as 35 (0.101) for PNA-BPF-1 and PNA-BPF-S.",
+          "disposition": "Keep the PNA-BPF-2 source label and its printed nominal 1:9:16 recipe without silently correcting the mass or mole entry. No recalculated composition is emitted.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, Table 1, HCP g (Mole) column, PNA-BPF-2 versus PNA-BPF-1 and PNA-BPF-S",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Section 2.1 names potassium hydroxide, whereas the synthesis headings, Table 1 and sections 2.2.1-2.2.2 describe NaOH or sodium hydroxide.",
+          "disposition": "Retain the contradiction. The selected route is source-described batch addition of solid alkali; the alkali chemical identity is not independently resolved or silently changed from KOH to NaOH.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, section 2.1 alkali entry, section 2.2.1 heading and Table 1; p.5, sections 2.2.1-2.2.2",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "tarasov_2022_pna_bpf_epoxy",
+      "source_document": {
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+        "revision": "Polymers 2022, 14, 4547; publisher PDF published 27 October 2022, 22 pages; URL version=1666858817.",
+        "inspected_on": "2026-10-23",
+        "sha256": "1f06bc0667c7c5575a0e88772868a95cd27ba01a264d3b3a0b9c859a8a6423aa",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Publisher PDF p.1 title, authors, abstract and article-specific CC BY 4.0 notice; p.4 section 2.1 and Table 1; pp.4-5 sections 2.2.1-2.2.2; p.5 section 2.4; p.6 section 2.5.1; p.16 Table 7 selected five tensile-strength cells and row labels. Selected transcription and rights inspection only, not independent scientific review or raw-data reanalysis.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Publisher PDF p.1 title, authors, abstract and article-specific CC BY 4.0 notice; p.4 section 2.1 and Table 1; pp.4-5 sections 2.2.1-2.2.2; p.5 section 2.4; p.6 section 2.5.1; p.16 Table 7 selected five tensile-strength cells and row labels. Selected transcription and rights inspection only, not independent scientific review or raw-data reanalysis.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      },
+      "id": "refprop_tarasov2022_pna_bpf_5_tensile_strength",
+      "material_state_id": "state_tarasov2022_pna_bpf_5_dds_cured",
+      "evidence": [
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "PDF p.16, Table 7, PNA-BPF-5 (1:24:16) row, Tensile Strength (MPa) column",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "PDF p.6, section 2.5.1",
+          "supports": [
+            "method",
+            "condition",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "PDF p.5, section 2.4",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "scope_note": "Source-qualified PNA-BPF-5 formulation, nominal HCP:BPF:ECH label 1:24:16. The HCP:BPF:ECH labels are source-reported nominal feed labels only. Table 1 reagent amounts and ratio labels are internally inconsistent; no correction, normalized stoichiometry, final network composition, purity, conversion or molecular architecture is inferred. These are source-qualified mixed phosphazene-containing epoxy formulations, not pure molecular species. Cure conditions, test specimens and property differences do not create additional identities. DDS-cured plate state for the selected Table 7 tensile-strength result. Exact DDS fraction, tensile-test temperature, humidity, orientation, specimen count and statistics remain unknown. The scalar is retained exactly as printed, including trailing decimal precision. The inspected tensile method and Table 7 do not state specimen/replicate count, aggregation or central-statistic definition, uncertainty, standard deviation, standard error or confidence interval. A cited test standard does not supply these missing facts."
     }
   ]
 }
