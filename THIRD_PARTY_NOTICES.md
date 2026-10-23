@@ -1116,3 +1116,27 @@ Canonical source-record hashes use UTF-8 JSON with sorted keys, compact separato
 The historical family fact and product-code correspondence support identity qualification only. They do not authenticate the studied lot, its manufacture date or composition, formula continuity, PA6:PA66 ratio, molecular architecture, purity or an exact chemical grade. The measured reference-filament state's composition remains unknown. Colors do not create separate identities, and these references do not add a black measured state. The pricing description's `750` token has no explicit mass unit, so no package mass is imported. No 2017 SDS is relied upon, and no manufacturer numerical properties or prices are imported.
 
 No explicit open reuse license was verified for either manufacturer-authored document. Third-party hosting, including government hosting, does not establish a public-domain status or asset reuse permission. The separate Zenodo dataset's CC BY 4.0 license and this repository's MIT license are not inherited by these documents. The distributed curation is limited to sparse attributed identity facts, bibliographic metadata, hashes and original qualification notes; original PDFs, rendered pages and full extracted text remain external review evidence and are not bundled. This limited factual curation does not assert broader reuse rights or legal clearance.
+
+### Bruns 2020 NBS2 borosilicate experimental candidate
+
+The review-only packet `experimental/material-batches/bruns-nbs2-borosilicate-20261023`
+uses selected facts from Sebastian Bruns, Tobias Uesbeck, Dominik Weil,
+Doris Möncke, Leo van Wüllen, Karsten Durst and Dominique de Ligny (2020),
+*Influence of Al2O3 Addition on Structure and Mechanical Properties of
+Borosilicate Glasses*, Frontiers in Materials 7:189,
+[DOI 10.3389/fmats.2020.00189](https://doi.org/10.3389/fmats.2020.00189).
+Copyright 2020 the authors. The article-specific notice on PDF p.14 and the
+[publisher article](https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/full)
+identify the [Creative Commons Attribution 4.0 International license](https://creativecommons.org/licenses/by/4.0/).
+
+Changes consist of selected nominal and separately qualified ICP-OES oxide
+composition facts from Table 1, four furnace-cooled density means/SDs from
+Table 3, supporting preparation/method facts and original curation notes.
+No endorsement by the authors or publisher is implied. No separate third-party
+credit appears in the inspected selected table captions or density passage;
+this scope does not extend to referenced works or other credited content.
+The source PDF, page images, full text, figures and raw measurements are not
+bundled or relicensed under the project MIT license. The reviewed publisher
+PDF SHA-256 is `c6268f9f14320e9355bfe04bf02f47eb3d7ca00e30c7281a16fd3b1289913da6`.
+These are source-level transcription and rights checks, not legal clearance,
+experimental replication or independent scientific approval.

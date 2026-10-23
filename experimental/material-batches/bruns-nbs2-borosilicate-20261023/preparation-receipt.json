@@ -1,0 +1,95 @@
+{
+  "schema": "formulation-preparation-receipt/1",
+  "batch_id": "bruns-nbs2-borosilicate-20261023",
+  "baseline_commit": "46674771ab851d4c267425b985c8f29c8aea25df",
+  "executed_on": "2026-10-23",
+  "execution_environment": "dot cloud isolated git worktree; Python 3.11 development environment",
+  "command": [
+    "python",
+    "scripts/prepare_formulation_packet.py",
+    "--spec",
+    "experimental/material-batches/bruns-nbs2-borosilicate-20261023/packet-spec.json",
+    "--baseline-dir",
+    "materials_boundaries/data",
+    "--output",
+    "experimental/material-batches/bruns-nbs2-borosilicate-20261023/prepared-packet.json"
+  ],
+  "first_creation": "passed",
+  "identical_replay": "passed; no write",
+  "candidate_schema_validation": "materials, reference_properties and sources passed Draft 2020-12 with format checker",
+  "report": {
+    "baseline_sha256": {
+      "materials": "d228c3b8f0c45fd56809891213d1d1acd73964357b579c51f8b9c731031a3ec5",
+      "reference_properties": "66802278a29cdcc4a5fe468b5681d87893a8a10a7c6c4c57f83c4753fe807839",
+      "sources": "67e068041af0cd8dbaba1126e6ffe2e39d2f8d26f8d2c8ceefc42240e5eefe76"
+    },
+    "before": {
+      "identities": 1144,
+      "grades": 31,
+      "states": 1145,
+      "properties": 1156,
+      "sources": 123,
+      "categories": {
+        "metal": 32,
+        "inorganic": 49,
+        "polymer": 25,
+        "composite": 28,
+        "natural": 1010
+      }
+    },
+    "after": {
+      "identities": 1148,
+      "grades": 31,
+      "states": 1149,
+      "properties": 1160,
+      "sources": 124,
+      "categories": {
+        "metal": 32,
+        "inorganic": 53,
+        "polymer": 25,
+        "composite": 28,
+        "natural": 1010
+      }
+    },
+    "delta": {
+      "identities": 4,
+      "grades": 0,
+      "states": 4,
+      "properties": 4,
+      "sources": 1,
+      "categories": {
+        "metal": 0,
+        "inorganic": 4,
+        "polymer": 0,
+        "composite": 0,
+        "natural": 0
+      }
+    },
+    "formal_admitted_delta": 0,
+    "handoff_ready": true,
+    "pending_gates": []
+  },
+  "bound_files": {
+    "packet-spec.json": {
+      "sha256": "ce191382925acad73eb07d37e21a935877c3509f8c3f31bfea928fb9f0d5abaa",
+      "bytes": 68929
+    },
+    "source-review.json": {
+      "sha256": "01f9e4efa57d9f8ddc00610c287f132faf403ff1b1b8e4e177b6b79e3ec78cc0",
+      "bytes": 10361
+    },
+    "prepared-packet.json": {
+      "sha256": "7bc0fb2ba2dc3512abb95b7bf27b9f25d12c868d4bba041f667421572e5eccde",
+      "bytes": 127966
+    },
+    "README.md": {
+      "sha256": "1216fb7ffffe615d7da1643260ab8a9fd2a21eb6774493b006e8a1aa90f46faa",
+      "bytes": 4892
+    }
+  },
+  "limits": [
+    "No runtime/formal catalog integration or admission.",
+    "Source transcription is not independent scientific review.",
+    "No branch push, main merge, deployment or DOI action."
+  ]
+}
