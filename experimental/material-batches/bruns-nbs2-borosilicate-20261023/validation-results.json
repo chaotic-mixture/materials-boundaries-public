@@ -1,0 +1,71 @@
+{
+  "schema": "bruns-candidate-validation/1",
+  "executed_on": "2026-10-23",
+  "python": "3.12.14",
+  "baseline_commit": "46674771ab851d4c267425b985c8f29c8aea25df",
+  "candidate_commit": "068a3d504783e042e2d7258014ddbf0ce1981db1",
+  "status": "candidate_and_detached_integration_checks_passed",
+  "tests": [
+    {
+      "name": "candidate_packet",
+      "command": "python -m unittest discover -s tests -p test_bruns_borosilicate_packet.py -v",
+      "tests": 8,
+      "seconds": 150.993,
+      "result": "passed",
+      "log_sha256": "173ebe360cb0f5244e32812240db37c67f8ea966a1ab6dcbbe0d1faa16d4a4b9"
+    },
+    {
+      "name": "compiler_integrator_regression",
+      "command": "python -m unittest discover -s tests -p 'test_formulation_packet_*.py' -v",
+      "tests": 30,
+      "seconds": 39.425,
+      "result": "passed",
+      "log_sha256": "61fdcc4e711d25cb6d64555108e6587d7e23a5dcc7d3543333760c1e2681ec4f"
+    },
+    {
+      "name": "predecessor_history",
+      "command": "PYTHONPATH=tests:. python -m unittest test_nylon_followup_preservation.NylonFollowupPreservationTests.test_selected_catalog_bytes_and_legacy_chain_remain_exact test_family_adjacency_history -v",
+      "tests": 6,
+      "seconds": 48.171,
+      "result": "passed",
+      "log_sha256": "ef999bcc455887ca5f4227c4dc6a9f525660df543bbee858f7ca424e992cf359"
+    }
+  ],
+  "test_total": 44,
+  "additional_checks": {
+    "candidate_materials_properties_sources_json_schema": "passed Draft 2020-12 with format checker",
+    "unchanged_current_catalog_validation": "passed scripts/validate_catalogs.py",
+    "deterministic_compiler_and_integrator_replay": "passed; identical output is unchanged",
+    "full_predecessor_catalog_byte_recovery": "passed; every baseline record and JSON byte restored by removing only appended records",
+    "git_diff_check": "passed"
+  },
+  "packet_sha256": "7bc0fb2ba2dc3512abb95b7bf27b9f25d12c868d4bba041f667421572e5eccde",
+  "isolated_integration_sha256": "e8bd87cd547253333a2912cb61f350898e3a5e8a7bd52b0e6b10cec0b6173306",
+  "proposed_catalog_sha256": {
+    "materials": "9df59cfdf94b35854255222d2a75f419859b269c5670c8eb18d8e9dc5eaa7a70",
+    "properties": "728c863756c35860b4dee25b64f5df10c1b5273bcb83ed1f35d60cf6ad85aa77",
+    "sources": "c06c9bcee46eac59839c51f84b252970f1da46f98cf2f2c08de0b33479b5ba71"
+  },
+  "candidate_delta": {
+    "identities": 4,
+    "grades": 0,
+    "states": 4,
+    "properties": 4,
+    "sources": 1,
+    "categories": {
+      "metal": 0,
+      "inorganic": 4,
+      "polymer": 0,
+      "composite": 0,
+      "natural": 0
+    }
+  },
+  "runtime_catalogs_changed": false,
+  "formal_admitted_delta": 0,
+  "not_run": [
+    "Full repository aggregate test suite",
+    "Six-package installed-wheel/offline aggregate checks",
+    "Remote CI; no push performed"
+  ],
+  "next_stage": "After internal review, append the exact detached graph and update current query/formal/ingestion pins and preservation ledgers, then validate usable experimental catalog lookups. This does not authorize main merge, deployment or DOI activity."
+}
