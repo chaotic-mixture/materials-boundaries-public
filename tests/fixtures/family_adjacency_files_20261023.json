@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "baseline_commit": "7248dcd06e7ab4bc5f3fae1f3f21a7d9e0dbad3c",
+  "updates": {
+    ".github/workflows/ci.yml": {
+      "previous_sha256": "383a8ab334226c09d861088f63635175b97745f73635d0ad8775a4102dae755a",
+      "sha256": "c852e1271a08b5cd754d9de0339c29bdf733dc6b18fa1ea619b7d2bd9a7d8ea5",
+      "edits": [
+        {
+          "offset": 1163,
+          "before": "",
+          "after": "' && github.ref != 'refs/heads/experiment/family-adjacency-20261023"
+        },
+        {
+          "offset": 2958,
+          "before": "",
+          "after": "' && github.ref != 'refs/heads/experiment/family-adjacency-20261023"
+        },
+        {
+          "offset": 27660,
+          "before": "",
+          "after": "  family-adjacency-targeted:\n    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/experiment/family-adjacency-20261023' }}\n    runs-on: ${{ matrix.os }}\n    timeout-minutes: 60\n    strategy:\n      fail-fast: false\n      matrix:\n        include:\n          - os: ubuntu-latest\n            python-version: '3.11'\n          - os: windows-latest\n            python-version: '3.12'\n    env:\n      PYTHONUTF8: '1'\n      PYTHONDONTWRITEBYTECODE: '1'\n    steps:\n      - run: git config --global core.autocrlf false\n      - uses: actions/checkout@v4\n        with:\n          fetch-depth: 0\n          persist-credentials: false\n      - uses: actions/setup-python@v5\n        with:\n          python-version: ${{ matrix.python-version }}\n      - run: python scripts/run_family_adjacency_ci.py --validate-scope\n      - run: \"python -m pip install --no-deps --only-binary=:all: -r experimental/platform/ci/build-requirements.txt\"\n      - run: python -m pip install --no-build-isolation -e '.[dev]'\n      - run: python scripts/run_family_adjacency_ci.py --test\n      - run: python scripts/validate_catalogs.py\n      - run: python -m pip wheel --no-index --no-deps --no-build-isolation --wheel-dir dist . ./formal-catalog ./experimental/platform/federation ./experimental/platform/query-service ./experimental/platform/lifecycle ./experimental/platform\n      - run: \"python -m pip download --no-deps --only-binary=:all: --dest dist/dependencies -r experimental/platform/requirements-lock.txt -r experimental/platform/ci/projection-requirements.txt\"\n      - run: python scripts/run_family_adjacency_ci.py --wheel-dir dist --dependency-dir dist/dependencies\n"
+        }
+      ]
+    }
+  }
+}

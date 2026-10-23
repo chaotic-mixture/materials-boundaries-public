@@ -55,6 +55,11 @@ NYLON_DATA_SHA256 = "88f7303d6e8b4234555548ea39fdfb286380c72ea2f7f5edce990e1a0d7
 NYLON_FILE_LEDGER = "tests/fixtures/nylon_followup_files_20261021.json"
 NYLON_FILE_SHA256 = "b35d130af81b437dfc2248f55e0c99b01c31da71d74a562dc754334b96dfde93"
 
+# This code-only successor changes no catalog, packet or admission chronology.
+# Keep its finite workflow recovery separate from the material append registry.
+CODE_FILE_LEDGER = "tests/fixtures/family_adjacency_files_20261023.json"
+CODE_FILE_SHA256 = "5cf1cfe7b367b42703cc027a000a4da1673cf2ee9d1717aee3578f094e2785e1"
+
 FROZEN_SUCCESSORS = (
     {"batch_id": "zenodo-8089569-nylon-followup-20261021",
      "data": (NYLON_DATA_LEDGER, NYLON_DATA_SHA256), "files": (NYLON_FILE_LEDGER, NYLON_FILE_SHA256)},
@@ -115,7 +120,9 @@ def data_ledgers(*, before=None):
 
 
 def file_ledgers(*, before=None):
-    return [load_frozen(ROOT, *descriptor["files"]) for descriptor in _prefix(before)]
+    descriptors = _prefix(before)  # Reject unknown historical boundaries first.
+    return [load_frozen(ROOT, CODE_FILE_LEDGER, CODE_FILE_SHA256),
+            *(load_frozen(ROOT, *descriptor["files"]) for descriptor in descriptors)]
 
 
 def recover_latest_catalogs(current):

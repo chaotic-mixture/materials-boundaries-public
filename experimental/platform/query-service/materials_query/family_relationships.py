@@ -93,6 +93,9 @@ class FamilyRelationships:
             rows[identity['id']]['memberships'][concept] = self._membership(
                 identity, concept, 'reviewed_catalog_text', assertion['field'], assertion['quote'])
         relationship_keys = set()
+        relations = {}
+        adjacency = {identity_id: {'outgoing': [], 'incoming': []}
+                     for identity_id in identities}
         for assertion in overlay['relationships']:
             identity = self._checked_identity(identities, assertion)
             target = identities[assertion['target_identity_id']]
@@ -109,6 +112,19 @@ class FamilyRelationships:
                 raise ValueError('Duplicate identity relationship')
             relationship_keys.add(key)
             rows[identity['id']]['relationships'].append(edge)
+            # Navigation indexes the original assertion; it does not construct
+            # an inverse scientific predicate or modify the legacy row shape.
+            endpoints = {'source_identity_id': identity['id'],
+                         'relation': edge['relation'], 'target_identity_id': target['id']}
+            relation_key = 'family-relation:' + digest(endpoints)
+            relations[relation_key] = {
+                **edge, 'source_identity_id': identity['id'],
+                'source_identity_sha256': assertion['identity_sha256'],
+                'target_identity_sha256': assertion['target_identity_sha256'],
+                'relation_key': relation_key,
+            }
+            adjacency[identity['id']]['outgoing'].append(relation_key)
+            adjacency[target['id']]['incoming'].append(relation_key)
         for row in rows.values():
             if 'alloy' in row['memberships'] and 'metal' not in row['memberships']:
                 raise ValueError('Reviewed alloy must have explicit metal membership')
@@ -120,6 +136,8 @@ class FamilyRelationships:
         if sha256(Path(__file__).read_bytes()).hexdigest() != _IMPLEMENTATION_SHA256:
             raise ValueError('Relationship implementation changed during initialization')
         self._rows = rows
+        self._relations = relations
+        self._adjacency = adjacency
         self.catalog_version = snapshot.version
         self.version = digest({'policy': POLICY_VERSION, 'catalog_version': snapshot.version,
             'overlay': overlay, 'implementation_sha256': _IMPLEMENTATION_SHA256})
@@ -174,6 +192,42 @@ class FamilyRelationships:
                 'truncated': len(selected) > limit,
                 'records': deepcopy(selected[:limit]),
                 'count_scope': 'Unique existing catalog identity IDs; no scientific deduplication across sources'}
+
+    def neighbors(self, identity_id, *, direction='both', limit=20):
+        """Return bounded single-hop navigation over captured directed assertions.
+
+        Keys identify an assertion's original endpoints and predicate, not a
+        particular evidence revision. Use both snapshot pins with the key when
+        caching. Incoming navigation never reverses the scientific assertion.
+        """
+        from materials_boundaries.catalog import CatalogLookupError
+        if (type(identity_id) is not str or not 1 <= len(identity_id) <= 512
+                or type(direction) is not str or direction not in ('outgoing', 'incoming', 'both')
+                or type(limit) is not int or not 1 <= limit <= 100):
+            raise ValueError('Invalid relationship adjacency query')
+        if identity_id not in self._rows:
+            raise CatalogLookupError('Unknown material identity')
+        directions = ('outgoing', 'incoming') if direction == 'both' else (direction,)
+        matching = {}
+        for traversal_direction in directions:
+            for key in self._adjacency[identity_id][traversal_direction]:
+                matching.setdefault(key, []).append(traversal_direction)
+        keys = sorted(matching, key=lambda key: (
+            self._relations[key]['source_identity_id'],
+            self._relations[key]['relation'], self._relations[key]['target_identity_id']))
+        records = []
+        for key in keys[:limit]:
+            record = deepcopy(self._relations[key])
+            record['neighbor_identity_id'] = (
+                record['target_identity_id'] if record['source_identity_id'] == identity_id
+                else record['source_identity_id'])
+            record['traversal_directions'] = matching[key]
+            records.append(record)
+        return {'identity_id': identity_id, 'direction': direction, 'max_hops': 1,
+                'matching_relation_count': len(keys), 'returned_relation_count': len(records),
+                'truncated': len(keys) > limit, 'records': records,
+                'count_scope': 'Unique existing directed relationship assertions; not material identities',
+                'traversal_scope': 'Single-hop adjacency only; no inverse assertions, property inheritance, or membership propagation'}
 
     def status(self):
         coverage = {}

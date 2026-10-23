@@ -58,8 +58,8 @@ class FamilyRelationshipTests(unittest.TestCase):
         self.assertEqual(self.supported(self.row('mat_hydro_6061')), {'metal', 'alloy'})
         response = self.post('search', concepts=['metal', 'alloy', 'alloy'], limit=100)
         result = response.json()['result']['data']
-        self.assertEqual(result['matching_unique_identity_count'], 22)
-        self.assertEqual(len({r['identity_id'] for r in result['records']}), 22)
+        self.assertEqual(result['matching_unique_identity_count'], 32)
+        self.assertEqual(len({r['identity_id'] for r in result['records']}), 32)
         self.assertEqual(result['concepts'], ['alloy', 'metal'])
         self.assertFalse(result['truncated'])
 

@@ -18,6 +18,10 @@ class RelationshipPinned(Pinned):
 class RelationshipIdentityRequest(RelationshipPinned):
     identity_id: str = Field(min_length=1, max_length=512)
 
+class RelationshipNeighborsRequest(RelationshipIdentityRequest):
+    direction: Literal['outgoing', 'incoming', 'both'] = 'both'
+    limit: int = Field(default=20, ge=1, le=100, strict=True)
+
 class RelationshipSearchRequest(RelationshipPinned):
     concepts: list[Literal['metal', 'alloy', 'inorganic', 'ceramic', 'polymer',
         'composite', 'natural', 'semiconductor', 'battery', 'catalyst',
@@ -155,3 +159,8 @@ def install_routes(app, *, enabled=False):
     @app.post('/api/catalog/relationships/search')
     def relationship_search(req: RelationshipSearchRequest):
         return relationship_result(req, lambda r: r.select(req.concepts, match=req.match, limit=req.limit))
+
+    @app.post('/api/catalog/relationships/neighbors')
+    def relationship_neighbors(req: RelationshipNeighborsRequest):
+        return relationship_result(req, lambda r: r.neighbors(
+            req.identity_id, direction=req.direction, limit=req.limit))
