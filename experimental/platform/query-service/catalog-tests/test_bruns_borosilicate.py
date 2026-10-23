@@ -42,9 +42,9 @@ class BrunsBorosilicateQuery(unittest.TestCase):
         return response.json()['result']
 
     def cli(self, kind, *args):
-        result = subprocess.run([sys.executable, '-m', 'materials_boundaries',
+        result = subprocess.run([sys.executable, '-X', 'utf8', '-m', 'materials_boundaries',
                                  'catalog', kind, '--json', *args],
-                                capture_output=True, text=True, check=True)
+                                capture_output=True, text=True, encoding='utf-8', check=True)
         return json.loads(result.stdout)
 
     def test_four_recipes_have_exact_independent_identity_state_property_links(self):
