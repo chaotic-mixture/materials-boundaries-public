@@ -12,6 +12,7 @@ from pathlib import Path
 from evidence_dedup_preservation import apply_exact_edits
 from evidence_batch_data_preservation import pre_evidence_batch_readme_bytes
 from evidence_batch_workflow_preservation import pre_evidence_batch_workflow_bytes
+from legacy_document_recovery import project_legacy_code_bytes
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -88,6 +89,7 @@ def pre_class_counts_bytes(filename, current, *, ledger=None):
     """Reverse only enumerated whole-byte successors, with exact round trips."""
     if type(filename) is not str or filename not in ALLOWED_PATHS or type(current) is not bytes:
         raise AssertionError('Unknown class-count preservation path or input type')
+    current = project_legacy_code_bytes(filename, current)
     entries = validate_ledger(load_ledger() if ledger is None else ledger)
     entry = entries[filename]
     if digest(current) == entry['previous_sha256']:

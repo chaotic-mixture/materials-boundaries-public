@@ -4,6 +4,7 @@
 Only the named experimental push skips the unchanged general jobs. Every source
 and platform suite has a frozen sorted-ID fingerprint, not a test-count minimum.
 Checkout-only ingestion/projection helpers are not installed product interfaces.
+Platform/external-fixture skips have exact IDs/reasons and are not counted as passes.
 """
 import argparse
 import ast
@@ -50,68 +51,78 @@ PREVIOUS_JOBS = (
     'zenodo-identity-followup-targeted', 'zenodo-nylon-followup-targeted',
     'family-adjacency-targeted',
 )
-APPROVED_FILES = frozenset(['.github/workflows/ci.yml',
- 'README.md',
- 'THIRD_PARTY_NOTICES.md',
- 'experimental/material-batches/bruns-nbs2-borosilicate-20261023/INTEGRATION.md',
- 'experimental/material-batches/bruns-nbs2-borosilicate-20261023/integration-validation-results.json',
- 'experimental/material-batches/bruns-nbs2-borosilicate-20261023/README.md',
- 'experimental/material-batches/bruns-nbs2-borosilicate-20261023/VALIDATION.md',
- 'experimental/material-batches/bruns-nbs2-borosilicate-20261023/integration-report.json',
- 'experimental/material-batches/bruns-nbs2-borosilicate-20261023/integration.json',
- 'experimental/material-batches/bruns-nbs2-borosilicate-20261023/packet-spec.json',
- 'experimental/material-batches/bruns-nbs2-borosilicate-20261023/preparation-receipt.json',
- 'experimental/material-batches/bruns-nbs2-borosilicate-20261023/prepared-packet.json',
- 'experimental/material-batches/bruns-nbs2-borosilicate-20261023/source-review.json',
- 'experimental/material-batches/bruns-nbs2-borosilicate-20261023/validation-results.json',
- 'experimental/platform/ci/required_test_ids.json',
- 'experimental/platform/ingestion/FORMAL_OVERLAP_AUDIT.md',
- 'experimental/platform/ingestion/FORMAL_REVIEW_GAPS.md',
- 'experimental/platform/ingestion/INCREMENTAL.md',
- 'experimental/platform/ingestion/README.md',
- 'experimental/platform/ingestion/nomad_review_boundary.py',
- 'experimental/platform/ingestion/test_formal_overlap_audit.py',
- 'experimental/platform/ingestion/test_formal_review_gaps.py',
- 'experimental/platform/ingestion/test_incremental_independent.py',
- 'experimental/platform/ingestion/test_nomad_evidence_compare.py',
- 'experimental/platform/ingestion/test_nomad_incremental.py',
- 'experimental/platform/ingestion/test_review_boundary.py',
- 'experimental/platform/query-service/README.md',
- 'experimental/platform/query-service/catalog-tests/test_baseline_compatibility.py',
- 'experimental/platform/query-service/catalog-tests/test_bruns_borosilicate.py',
- 'experimental/platform/query-service/catalog-tests/test_catalog_baseline.py',
- 'experimental/platform/query-service/catalog-tests/test_combined_admission_boundary.py',
- 'experimental/platform/query-service/catalog-tests/test_computed_recovery.py',
- 'experimental/platform/query-service/catalog-tests/test_computed_v2_second_tranche.py',
- 'experimental/platform/query-service/catalog-tests/test_computed_v2_tranche.py',
- 'experimental/platform/query-service/catalog-tests/test_family_adjacency.py',
- 'experimental/platform/query-service/catalog-tests/test_family_relationships.py',
- 'experimental/platform/query-service/catalog-tests/test_formal_project_catalog.py',
- 'experimental/platform/query-service/catalog-tests/test_local_catalog.py',
- 'experimental/platform/query-service/materials_query/computed_registry.py',
- 'experimental/platform/query-service/materials_query/pins/legacy_baseline.json',
- 'experimental/platform/relationships/HBN_PROJECTION.md',
- 'experimental/platform/relationships/test_hbn_relationship_projection.py',
- 'formal-catalog/README.md',
- 'formal-catalog/materials_project_catalog/catalog.py',
- 'formal-catalog/tests/test_formal_project_core.py',
- 'materials_boundaries/data/materials.json',
- 'materials_boundaries/data/reference_properties.json',
- 'materials_boundaries/data/sources.json',
- 'scripts/run_bruns_borosilicate_ci.py',
- 'tests/fixtures/bruns_borosilicate_data_20261023.json',
- 'tests/fixtures/bruns_borosilicate_files_20261023.json',
- 'tests/material_append_successors.py',
- 'tests/test_bruns_borosilicate_ci.py',
- 'tests/test_bruns_borosilicate_packet.py',
- 'tests/test_bruns_borosilicate_preservation.py',
- 'tests/test_family_adjacency_ci.py',
- 'tests/test_family_adjacency_history.py'])
+APPROVED_FILES = frozenset([
+    '.github/workflows/ci.yml',
+    'README.md',
+    'THIRD_PARTY_NOTICES.md',
+    'experimental/material-batches/bruns-nbs2-borosilicate-20261023/INTEGRATION.md',
+    'experimental/material-batches/bruns-nbs2-borosilicate-20261023/README.md',
+    'experimental/material-batches/bruns-nbs2-borosilicate-20261023/VALIDATION.md',
+    'experimental/material-batches/bruns-nbs2-borosilicate-20261023/integration-report.json',
+    'experimental/material-batches/bruns-nbs2-borosilicate-20261023/integration-validation-results.json',
+    'experimental/material-batches/bruns-nbs2-borosilicate-20261023/integration.json',
+    'experimental/material-batches/bruns-nbs2-borosilicate-20261023/packet-spec.json',
+    'experimental/material-batches/bruns-nbs2-borosilicate-20261023/preparation-receipt.json',
+    'experimental/material-batches/bruns-nbs2-borosilicate-20261023/prepared-packet.json',
+    'experimental/material-batches/bruns-nbs2-borosilicate-20261023/source-review.json',
+    'experimental/material-batches/bruns-nbs2-borosilicate-20261023/validation-results.json',
+    'experimental/platform/ci/required_test_ids.json',
+    'experimental/platform/ingestion/FORMAL_OVERLAP_AUDIT.md',
+    'experimental/platform/ingestion/FORMAL_REVIEW_GAPS.md',
+    'experimental/platform/ingestion/INCREMENTAL.md',
+    'experimental/platform/ingestion/README.md',
+    'experimental/platform/ingestion/nomad_review_boundary.py',
+    'experimental/platform/ingestion/test_formal_overlap_audit.py',
+    'experimental/platform/ingestion/test_formal_review_gaps.py',
+    'experimental/platform/ingestion/test_incremental_independent.py',
+    'experimental/platform/ingestion/test_nomad_evidence_compare.py',
+    'experimental/platform/ingestion/test_nomad_incremental.py',
+    'experimental/platform/ingestion/test_review_boundary.py',
+    'experimental/platform/query-service/README.md',
+    'experimental/platform/query-service/catalog-tests/test_baseline_compatibility.py',
+    'experimental/platform/query-service/catalog-tests/test_bruns_borosilicate.py',
+    'experimental/platform/query-service/catalog-tests/test_catalog_baseline.py',
+    'experimental/platform/query-service/catalog-tests/test_combined_admission_boundary.py',
+    'experimental/platform/query-service/catalog-tests/test_computed_recovery.py',
+    'experimental/platform/query-service/catalog-tests/test_computed_v2_second_tranche.py',
+    'experimental/platform/query-service/catalog-tests/test_computed_v2_tranche.py',
+    'experimental/platform/query-service/catalog-tests/test_family_adjacency.py',
+    'experimental/platform/query-service/catalog-tests/test_family_relationships.py',
+    'experimental/platform/query-service/catalog-tests/test_formal_project_catalog.py',
+    'experimental/platform/query-service/catalog-tests/test_local_catalog.py',
+    'experimental/platform/query-service/materials_query/computed_registry.py',
+    'experimental/platform/query-service/materials_query/pins/legacy_baseline.json',
+    'experimental/platform/relationships/HBN_PROJECTION.md',
+    'experimental/platform/relationships/test_hbn_relationship_projection.py',
+    'formal-catalog/README.md',
+    'formal-catalog/materials_project_catalog/catalog.py',
+    'formal-catalog/tests/test_formal_project_core.py',
+    'materials_boundaries/data/materials.json',
+    'materials_boundaries/data/reference_properties.json',
+    'materials_boundaries/data/sources.json',
+    'scripts/run_bruns_borosilicate_ci.py',
+    'tests/fixtures/bruns_borosilicate_data_20261023.json',
+    'tests/fixtures/bruns_borosilicate_files_20261023.json',
+    'tests/fixtures/legacy_document_call_sites_20261023.json',
+    'tests/fixtures/legacy_document_recovery_20261023.json',
+    'tests/legacy_document_recovery.py',
+    'tests/material_append_successors.py',
+    'tests/material_bulk_preservation.py',
+    'tests/material_class_counts_preservation.py',
+    'tests/test_bruns_borosilicate_ci.py',
+    'tests/test_bruns_borosilicate_packet.py',
+    'tests/test_bruns_borosilicate_preservation.py',
+    'tests/test_family_adjacency_ci.py',
+    'tests/test_family_adjacency_history.py',
+    'tests/test_legacy_document_recovery.py',
+    'tests/test_material_class_counts_preservation.py',
+])
 
 # Complete suite inventories: directory, exact count, SHA-256 of sorted IDs
 # encoded as UTF-8 with one trailing newline per ID. No discovered test may
-# disappear, be renamed, skip execution, or be substituted by another case.
-TEST_GROUPS = {'core': ('tests', 1705, '736560c3b813ba715f14e124b4b4963fc836ad1ab14c271816988a757d3b85d4'),
+# disappear, be renamed, or be substituted; every skip needs its exact policy.
+TEST_GROUPS = {'core': ('tests', 1716,
+          '828a83dbc4a78f07ac115f472436c888242ea7e5642985c05f0d4afcc36e533d'),
  'query': ('experimental/platform/query-service/catalog-tests',
            214,
            '53f6774fd72799d0abdb9038924eb74b3298018094408e154ab3f69208ca2450'),
@@ -256,6 +267,92 @@ def declared_test_ids(relative, *, predecessor=False):
                               and method.name.startswith('test'))
     return sorted(result)
 
+# These are unavailable test executions, never successful platform evidence.
+WINDOWS_ONLY_TESTS = dict.fromkeys((
+    'test_composite_windows.NativeWindowsExportTests.test_blank_demo_report_replay_and_existing_output_refusal',
+    'test_composite_windows.NativeWindowsExportTests.test_every_pinned_ancestor_refuses_rename_and_handles_close',
+    'test_composite_windows.NativeWindowsExportTests.test_existing_empty_destination_and_staging_file_collision',
+    'test_composite_windows.NativeWindowsExportTests.test_extended_length_local_path',
+    'test_composite_windows.NativeWindowsExportTests.test_junction_ancestor_and_output_refused',
+    'test_composite_windows.NativeWindowsExportTests.test_partial_directory_open_failure_closes_ancestors',
+    'test_composite_windows.NativeWindowsExportTests.test_publish_failure_manifest_last_rollback_all_positions',
+    'test_composite_windows.NativeWindowsExportTests.test_published_replacement_and_unrelated_addition_preserved',
+    'test_composite_windows.NativeWindowsExportTests.test_relative_and_unicode_paths',
+    'test_composite_windows.NativeWindowsExportTests.test_replaced_input_stage_is_rejected_before_publication',
+    'test_composite_windows.NativeWindowsExportTests.test_replaced_stage_is_rejected_before_publication',
+    'test_composite_windows.NativeWindowsExportTests.test_root_and_stage_open_failure_cleanup_and_release',
+    'test_composite_windows.NativeWindowsExportTests.test_stage_write_failures_and_input_fsync_close_before_cleanup',
+    'test_composite_windows.NativeWindowsExportTests.test_staging_collision_and_replacement_are_not_deleted',
+    'test_composite_windows.NativeWindowsExportTests.test_symlink_and_dangling_leaf_refused',
+    'test_composite_windows.NativeWindowsExportTests.test_transient_cleanup_failure_rolls_back_manifest_and_retries',
+    'test_composite_windows.NativeWindowsExportTests.test_zero_file_identity_fails_closed_without_deleting_unknown_file',
+), 'requires actual native Windows on local NTFS')
+POSIX_ONLY_TESTS = {
+    **dict.fromkeys((
+        'test_composite_export.ExportTests.test_cleanup_failure_rolls_back_manifest_then_retries_owned_stage',
+        'test_composite_export.ExportTests.test_concurrent_unrelated_file_is_preserved',
+        'test_composite_export.ExportTests.test_exclusive_name_collision_does_not_delete_other_input',
+        'test_composite_export.ExportTests.test_publish_failures_manifest_last_and_rollback',
+        'test_composite_export.ExportTests.test_rollback_does_not_delete_replacement',
+        'test_composite_export.ExportTests.test_stage_failures_clean_only_own_data',
+        'test_composite_export.ExportTests.test_stage_open_failure_removes_created_empty_stage',
+        'test_composite_export.ExportTests.test_symlink_output_and_ancestor_and_traversal_refused',
+    ), 'POSIX backend; native Windows coverage is separate'),
+    **dict.fromkeys((
+        'test_composite_intake.CompositeIntakePTYTests.test_cli_redirected_input_is_rejected_without_file',
+        'test_composite_intake.CompositeIntakePTYTests.test_real_terminal_back_edit_and_confirm_save',
+        'test_composite_intake.CompositeIntakePTYTests.test_real_terminal_cancel_and_sigint_leave_no_file',
+    ), 'requires POSIX pseudo-terminal'),
+    **dict.fromkeys((
+        'test_material_coverage.RuntimeBenchmarkFixtureTests.test_fictional_fixture_limits_reject_invalid_sizes',
+        'test_material_coverage.RuntimeBenchmarkFixtureTests.test_fictional_scaling_is_valid_deterministic_detached_and_clearly_labeled',
+    ), 'RSS benchmark uses the POSIX resource module'),
+}
+NON_WINDOWS_GUARD = (
+    'test_composite_windows.WindowsSpellingTests.test_native_api_is_not_emulated_as_platform_support'
+)
+EXTERNAL_DOSSIER_TEST = (
+    'test_wood_bulk_adapter.ReviewedWoodAdapterTests.test_full_external_dossier_source_support_without_admission'
+)
+WINDOWS_SYMLINK_TEST = (
+    'test_composite_windows.NativeWindowsExportTests.test_symlink_and_dangling_leaf_refused'
+)
+
+
+def source_skip_contract(*, platform_name=None, dossier_enabled=None):
+    platform_name = os.name if platform_name is None else platform_name
+    dossier_enabled = bool(os.environ.get('WOOD_REVIEW_DOSSIER')) if dossier_enabled is None else dossier_enabled
+    require(platform_name in {'posix', 'nt'}, 'Unreviewed platform skip policy')
+    mandatory = dict(WINDOWS_ONLY_TESTS if platform_name == 'posix' else POSIX_ONLY_TESTS)
+    optional = {}
+    if platform_name == 'nt':
+        mandatory[NON_WINDOWS_GUARD] = 'non-Windows guard only'
+        optional[WINDOWS_SYMLINK_TEST] = 'Windows symlink privilege unavailable; mandatory junction tests still run'
+    if not dossier_enabled:
+        mandatory[EXTERNAL_DOSSIER_TEST] = 'external frozen source-cache integration is opt-in'
+    return mandatory, optional
+
+
+def validate_result(name, discovered, result, *, skip_contract=None):
+    mandatory, optional = skip_contract if skip_contract is not None else ({}, {})
+    require(name == 'core' or not (mandatory or optional), 'Installed suites cannot allow skips')
+    observed = [(test.id(), reason) for test, reason in result.skipped]
+    skipped = dict(observed)
+    require(len(observed) == len(skipped), 'Duplicate skipped test ID')
+    require(set(mandatory).issubset(skipped), 'Missing mandatory unavailable-platform/fixture skip')
+    allowed = {**mandatory, **optional}
+    require(all(identifier in discovered and identifier in allowed and reason == allowed[identifier]
+                for identifier, reason in observed), 'Unexpected skip, reason drift or wrong platform')
+    passed = [identifier for identifier in discovered if identifier not in skipped]
+    require(result.testsRun == len(discovered) and result.started_ids == discovered
+            and result.passed_ids == passed and result.wasSuccessful()
+            and not result.expectedFailures and not result.unexpectedSuccesses,
+            name + ': discovered/started/passed/skipped IDs differ, or failures/errors occurred')
+    return {'group': name, 'discovered': len(discovered), 'started': result.testsRun,
+            'passed': len(result.passed_ids), 'skipped': len(skipped), 'failed': 0, 'errors': 0,
+            'skipped_tests': [{'test_id': identifier, 'reason': reason} for identifier, reason in observed],
+            'inventory_sha256': inventory_fingerprint(discovered)}
+
 
 def run_group(name):
     install_offline_guard()
@@ -267,6 +364,7 @@ def run_group(name):
     else:
         raise RuntimeError('Offline guard did not block DNS')
     relative, _, _ = TEST_GROUPS[name]
+    skip_policy = source_skip_contract() if name == 'core' else ({}, {})
     if name == 'core':
         sys.path.insert(0, str(ROOT))
     else:
@@ -280,14 +378,10 @@ def run_group(name):
     validate_inventory(name, discovered)
     print('DISCOVERED ' + json.dumps({'group': name, 'count': len(discovered), 'test_ids': discovered}, sort_keys=True), flush=True)
     result = unittest.TextTestRunner(verbosity=2, resultclass=ExactResult, failfast=False).run(suite)
-    require(result.testsRun == len(discovered) and result.started_ids == discovered
-            and result.passed_ids == discovered and result.wasSuccessful()
-            and not result.skipped and not result.expectedFailures and not result.unexpectedSuccesses,
-            name + ': discovered/started/passed IDs differ, or failures/errors/skips occurred')
+    summary = validate_result(name, discovered, result, skip_contract=skip_policy)
     if name != 'core':
         installed_origins()
-    print('COMPLETE ' + json.dumps({'group': name, 'passed': result.testsRun, 'skipped': 0,
-                                    'failed': 0, 'errors': 0, 'inventory_sha256': inventory_fingerprint(discovered)}, sort_keys=True), flush=True)
+    print('COMPLETE ' + json.dumps(summary, sort_keys=True), flush=True)
 
 
 def table_rows(graphs):

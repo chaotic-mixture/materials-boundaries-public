@@ -14,6 +14,7 @@ import material_class_counts_preservation as bridge
 from materials_boundaries.material_references import material_coverage
 from evidence_batch_data_preservation import pre_evidence_batch_catalog_bytes, pre_evidence_batch_readme_bytes
 from evidence_batch_workflow_preservation import pre_evidence_batch_workflow_bytes
+from legacy_document_recovery import project_legacy_code_bytes
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -150,6 +151,7 @@ class MaterialClassCountsPreservationTests(unittest.TestCase):
         for filename, entry in entries.items():
             with self.subTest(filename=filename):
                 current = (ROOT / filename).read_bytes()
+                current = project_legacy_code_bytes(filename, current)
                 if filename == 'README.md':
                     current = pre_evidence_batch_readme_bytes(current)
                 elif filename == '.github/workflows/ci.yml':

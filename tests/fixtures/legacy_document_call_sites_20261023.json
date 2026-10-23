@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "baseline_commit": "e3ca1cab18851bf648ffee0277182ca80a33b123",
+  "updates": {
+    "tests/material_bulk_preservation.py": {
+      "previous_sha256": "110554c25ce2d0b94abb508e22957a581d4a4b1179b5dd195efdb3a674c97b1c",
+      "sha256": "1d42ae4740d9d0cdcd9c1db8d0f4c8a6db791f55bf537c25b4fc8ce38cb6c86f",
+      "edits": [
+        {
+          "offset": 769,
+          "before": "",
+          "after": "from legacy_document_recovery import project_legacy_document_bytes\n"
+        },
+        {
+          "offset": 19260,
+          "before": "",
+          "after": "        current = project_legacy_document_bytes(filename, current)\n    elif filename == 'THIRD_PARTY_NOTICES.md':\n        current = project_legacy_document_bytes(filename, current)\n"
+        }
+      ]
+    },
+    "tests/material_class_counts_preservation.py": {
+      "previous_sha256": "63a4cdf9527783270e2113752f3f47d17c8f388241e1b427afe6db4622e2ae2e",
+      "sha256": "d7537ec0724d25e94395839e7ecece1d069dae7dc6265777cfc55c3fab169069",
+      "edits": [
+        {
+          "offset": 632,
+          "before": "",
+          "after": "from legacy_document_recovery import project_legacy_code_bytes\n"
+        },
+        {
+          "offset": 3784,
+          "before": "",
+          "after": "    current = project_legacy_code_bytes(filename, current)\n"
+        }
+      ]
+    },
+    "tests/test_material_class_counts_preservation.py": {
+      "previous_sha256": "aea125da7dbe50955036453f2d2e20dd9b7452d1da211e9eba5f6acee7c274f2",
+      "sha256": "215ba9dcd8ba595dcd002e0d41b83406a3f0f215d5197f6c8f332e7cf955ac3c",
+      "edits": [
+        {
+          "offset": 609,
+          "before": "",
+          "after": "from legacy_document_recovery import project_legacy_code_bytes\n"
+        },
+        {
+          "offset": 9128,
+          "before": "",
+          "after": "                current = project_legacy_code_bytes(filename, current)\n"
+        }
+      ]
+    }
+  }
+}

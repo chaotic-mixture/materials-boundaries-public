@@ -131,7 +131,10 @@ def file_ledgers(*, before=None):
     descriptors = _prefix(before)  # Reject unknown historical boundaries first.
     # The adjacency-only workflow boundary sits between Bruns and Nylon.
     # Insert it at that explicit chronological point, never before newer edits.
-    result = []
+    # Full-chain callers also recover the finite documentation call sites.
+    # Named material boundaries retain their original exact ledger views.
+    from legacy_document_recovery import code_ledger
+    result = [code_ledger()] if before is None else []
     for descriptor in descriptors:
         result.append(load_frozen(ROOT, *descriptor["files"]))
         if descriptor["batch_id"] == BRUNS_BATCH_ID:

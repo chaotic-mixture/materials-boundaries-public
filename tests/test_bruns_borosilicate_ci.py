@@ -6,6 +6,7 @@ from pathlib import Path
 import tempfile
 import unittest
 from unittest.mock import patch
+from types import SimpleNamespace
 
 ROOT = Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location('bruns_borosilicate_ci', ROOT / 'scripts/run_bruns_borosilicate_ci.py')
@@ -187,6 +188,101 @@ class BrunsBorosilicateCITests(unittest.TestCase):
         self.assertTrue(all('-I' in command for command, _ in calls if '--installed-group' in command))
         self.assertTrue(any(command[-1] == 'installed-smoke' for command, _ in calls))
         self.assertTrue(all(kwargs['cwd'] != ROOT for _, kwargs in calls))
+
+
+def synthetic_result(ids, skips):
+    skipped_ids = {identifier for identifier, _ in skips}
+    return SimpleNamespace(
+        testsRun=len(ids),
+        started_ids=list(ids),
+        passed_ids=[identifier for identifier in ids if identifier not in skipped_ids],
+        skipped=[
+            (SimpleNamespace(id=lambda identifier=identifier: identifier), reason)
+            for identifier, reason in skips
+        ],
+        expectedFailures=[],
+        unexpectedSuccesses=[],
+        wasSuccessful=lambda: True,
+    )
+
+
+class BrunsBorosilicateSkipPolicyTests(unittest.TestCase):
+
+    def test_platform_and_opt_in_counts_are_exact(self):
+        self.assertEqual(len(ci.source_skip_contract(platform_name='posix', dossier_enabled=False)[0]), 18)
+        self.assertEqual(len(ci.source_skip_contract(platform_name='posix', dossier_enabled=True)[0]), 17)
+        self.assertEqual(len(ci.source_skip_contract(platform_name='nt', dossier_enabled=False)[0]), 15)
+        self.assertEqual(len(ci.source_skip_contract(platform_name='nt', dossier_enabled=True)[0]), 14)
+        with self.assertRaises(RuntimeError):
+            ci.source_skip_contract(platform_name='unknown')
+
+    def test_known_skips_never_increment_passed_count(self):
+        for platform in ('posix', 'nt'):
+            for dossier in (True, False):
+                contract = ci.source_skip_contract(platform_name=platform, dossier_enabled=dossier)
+                ids = sorted([*contract[0], 'extra.Case.test_pass'])
+                summary = ci.validate_result(
+                    'core', ids, synthetic_result(ids, list(contract[0].items())),
+                    skip_contract=contract,
+                )
+                self.assertEqual(summary['passed'], 1)
+                self.assertEqual(summary['skipped'], len(contract[0]))
+
+    def test_missing_unexpected_duplicate_reason_and_os_drift_fail(self):
+        contract = ci.source_skip_contract(platform_name='posix', dossier_enabled=False)
+        mandatory = list(contract[0].items())
+        ids = sorted([*contract[0], 'extra.Case.test_pass'])
+        for changed in (
+            mandatory[:-1],
+            mandatory + [mandatory[0]],
+            mandatory + [('extra.Case.test_pass', 'optional jsonschema dev dependency not installed')],
+            mandatory + [('extra.Case.test_pass', None)],
+            [(mandatory[0][0], 'different reason'), *mandatory[1:]],
+            list(ci.source_skip_contract(platform_name='nt', dossier_enabled=False)[0].items()),
+        ):
+            with self.assertRaises(RuntimeError):
+                ci.validate_result('core', ids, synthetic_result(ids, changed), skip_contract=contract)
+
+    def test_windows_privilege_exception_is_one_exact_case_and_reason(self):
+        contract = ci.source_skip_contract(platform_name='nt', dossier_enabled=False)
+        ids = sorted([*contract[0], ci.WINDOWS_SYMLINK_TEST, 'extra.Case.test_pass'])
+        mandatory = list(contract[0].items())
+        optional = list(contract[1].items())
+        for observed in (mandatory, mandatory + optional):
+            summary = ci.validate_result('core', ids, synthetic_result(ids, observed), skip_contract=contract)
+            self.assertEqual(summary['passed'], len(ids) - len(observed))
+        for wrong in (
+            [(ci.WINDOWS_SYMLINK_TEST, 'different reason')],
+            [('extra.Case.test_pass', optional[0][1])],
+        ):
+            with self.assertRaises(RuntimeError):
+                ci.validate_result(
+                    'core', ids, synthetic_result(ids, mandatory + wrong), skip_contract=contract,
+                )
+
+    def test_installed_suites_cannot_use_source_skip_exceptions(self):
+        contract = ci.source_skip_contract(platform_name='posix', dossier_enabled=False)
+        ids = sorted(contract[0])
+        r = synthetic_result(ids, list(contract[0].items()))
+        with self.assertRaises(RuntimeError):
+            ci.validate_result('query', ids, r, skip_contract=contract)
+        with self.assertRaises(RuntimeError):
+            ci.validate_result('query', ids, r)
+
+    def test_missing_execution_or_pass_and_failure_cannot_hide_behind_skips(self):
+        ids = ['extra.Case.test_pass']
+        for attribute, value in (
+            ('testsRun', 0),
+            ('started_ids', []),
+            ('passed_ids', []),
+            ('expectedFailures', [('test', 'expected')]),
+            ('unexpectedSuccesses', ['test']),
+            ('wasSuccessful', lambda: False),
+        ):
+            r = synthetic_result(ids, [])
+            setattr(r, attribute, value)
+            with self.assertRaises(RuntimeError):
+                ci.validate_result('query', ids, r)
 
 
 if __name__ == '__main__':

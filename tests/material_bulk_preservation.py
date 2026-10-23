@@ -13,6 +13,7 @@ import re
 from evidence_dedup_preservation import ALLOWED_PATHS as DEDUP_PATHS, pre_evidence_dedup_bytes
 from presentation_fast_path_preservation import ALLOWED_PATHS as PRESENTATION_PATHS, pre_presentation_fast_path_bytes
 from material_class_counts_preservation import normalize_readme_snapshot, pre_class_counts_bytes
+from legacy_document_recovery import project_legacy_document_bytes
 
 ROOT = Path(__file__).resolve().parents[1]
 LEDGER_PATH = 'tests/fixtures/material_bulk_updates_v0350.json'
@@ -316,6 +317,9 @@ def release_bytes(filename, current, *, ledger=None, allow_historical_summary=Fa
         current = pre_evidence_dedup_bytes(filename, current)
     if filename == 'README.md':
         current = truthful_readme(current, ledger, allow_historical_summary=allow_historical_summary, root=root)
+        current = project_legacy_document_bytes(filename, current)
+    elif filename == 'THIRD_PARTY_NOTICES.md':
+        current = project_legacy_document_bytes(filename, current)
     elif filename in ledger['catalog_preservation']:
         try:
             value = json.loads(current.decode('utf-8'), object_pairs_hook=unique_keys)
