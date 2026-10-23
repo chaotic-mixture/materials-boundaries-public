@@ -124,8 +124,12 @@ class BrunsBorosilicatePreservationTests(unittest.TestCase):
         for filename in ('README.md', 'packet-spec.json', 'prepared-packet.json', 'source-review.json',
                          'preparation-receipt.json', 'integration.json', 'integration-report.json',
                          'VALIDATION.md', 'validation-results.json'):
-            old = subprocess.check_output(['git', 'show', 'ab458b08d388b0ac4009a7f9c98138211ae46fa4:' + str((batch / filename).relative_to(ROOT))], cwd=ROOT)
-            self.assertEqual((batch / filename).read_bytes(), old, filename)
+            with self.subTest(filename=filename):
+                git_path = (batch / filename).relative_to(ROOT).as_posix()
+                self.assertEqual(git_path, f'experimental/material-batches/{BATCH_ID}/{filename}')
+                old = subprocess.check_output(
+                    ['git', 'show', 'ab458b08d388b0ac4009a7f9c98138211ae46fa4:' + git_path], cwd=ROOT)
+                self.assertEqual((batch / filename).read_bytes(), old, filename)
         self.assertFalse(any(path.suffix in ('.pdf', '.png', '.jpg') for path in batch.rglob('*')))
         self.assertFalse(any(row['verification']['independent_scientific_review'] for row in self.additions['properties']))
         self.assertFalse(any(row['verification']['raw_data_reanalysis'] for row in self.additions['properties']))
