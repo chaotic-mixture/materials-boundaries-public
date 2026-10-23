@@ -405840,6 +405840,930 @@
           ]
         }
       ]
+    },
+    {
+      "version": "1.0.0",
+      "quantity": "mass_density",
+      "quantity_dimension": "mass_per_volume",
+      "source_property_label": "ρ [g/cm³]",
+      "reported_value": {
+        "kind": "scalar",
+        "unit_text": "g/cm³",
+        "unit_code": "g/cm^3",
+        "value_text": "2.131",
+        "number": "2.131"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "The density-method paragraph explicitly identifies the Table 3 central values as means and the accompanying amplitudes as standard deviations. They are kept separate, not converted to a physical range, confidence interval or standard error.",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Density measurement temperature is not stated. Cooling to room temperature and room-temperature nanoindentation do not establish it."
+        },
+        "test_standard": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No density-test standard or independent compliance claim is reported."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Archimedes method in toluene.",
+          "evidence": [
+            {
+              "source_id": "bruns_2020_alumina_borosilicate",
+              "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+              "locator": "PDF p.3, Experimental Procedures / Glass Melting/Preparation, density-method paragraph",
+              "supports": [
+                "method",
+                "condition"
+              ]
+            }
+          ],
+          "notes": "The density method uses at least five pieces, each 0.1-1.0 g. Exact piece count, independent preparation-batch count and readings per piece are not reported. These pieces are not asserted to be five independent experimental replicates."
+        },
+        "direction": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Loading direction is not applicable to scalar density."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Density-specific conditioning, humidity and moisture are not reported."
+        },
+        "loading_rate": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading rate does not apply to this density result."
+        },
+        "additional_conditions": [
+          {
+            "name": "density_pressure",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Density measurement pressure is not reported."
+            }
+          },
+          {
+            "name": "piece_count_lower_bound",
+            "fact": {
+              "status": "reported",
+              "text": "At least five pieces, each weighing 0.1-1.0 g.",
+              "evidence": [
+                {
+                  "source_id": "bruns_2020_alumina_borosilicate",
+                  "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+                  "locator": "PDF p.3, Experimental Procedures / Glass Melting/Preparation, density-method paragraph",
+                  "supports": [
+                    "sample_count",
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "The density method uses at least five pieces, each 0.1-1.0 g. Exact piece count, independent preparation-batch count and readings per piece are not reported. These pieces are not asserted to be five independent experimental replicates."
+            }
+          }
+        ]
+      },
+      "density_basis": "not_stated",
+      "summary_statistic": "reported_mean",
+      "uncertainty": {
+        "type": "reported_standard_deviation",
+        "unit_text": "g/cm³",
+        "unit_code": "g/cm^3",
+        "scope": "Source-reported standard deviation of density results, explicitly identified by the density-method paragraph. Statistical independence and exact count are not established.",
+        "coverage_factor": null,
+        "confidence_level": null,
+        "value_text": "0.006",
+        "number": "0.006",
+        "evidence": [
+          {
+            "source_id": "bruns_2020_alumina_borosilicate",
+            "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+            "locator": "PDF p.8 Table 3, Al2O3 [mol%] row 1.0 (without qu.), ρ [g/cm³] column",
+            "supports": [
+              "uncertainty"
+            ]
+          },
+          {
+            "source_id": "bruns_2020_alumina_borosilicate",
+            "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+            "locator": "PDF p.3, Experimental Procedures / Glass Melting/Preparation, density-method paragraph",
+            "supports": [
+              "uncertainty",
+              "summary_statistic"
+            ]
+          }
+        ]
+      },
+      "uncertainty_status": "reported_standard_deviation",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "The density method uses at least five pieces, each 0.1-1.0 g. Exact piece count, independent preparation-batch count and readings per piece are not reported. These pieces are not asserted to be five independent experimental replicates.",
+        "source_statement": "The density method uses at least five pieces, each 0.1-1.0 g. Exact piece count, independent preparation-batch count and readings per piece are not reported. These pieces are not asserted to be five independent experimental replicates.",
+        "evidence": [
+          {
+            "source_id": "bruns_2020_alumina_borosilicate",
+            "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+            "locator": "PDF p.3, Experimental Procedures / Glass Melting/Preparation, density-method paragraph",
+            "supports": [
+              "sample_count"
+            ]
+          }
+        ]
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Archimedes density in toluene. At least five pieces of 0.1-1.0 g; exact independent sample n and measurement temperature are unknown.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "bruns_2020_alumina_borosilicate",
+            "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+            "locator": "PDF p.3, Experimental Procedures / Glass Melting/Preparation, density-method paragraph",
+            "supports": [
+              "method",
+              "summary_statistic",
+              "uncertainty"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Table 1 gives nominal and ICP-OES oxide compositions that differ; the p.3 discussion notes analysis limitations and sodium loss.",
+          "disposition": "Nominal oxide recipes define these source-qualified identities, not certified final stoichiometry. Table 1 ICP-OES results remain distinct from nominal values; the authors discuss possible incomplete dissolution/silica underrepresentation, boron/silicon disagreement and sodium loss during melting. No assay correction, recipe normalization or exact final purity is inferred.",
+          "evidence": [
+            {
+              "source_id": "bruns_2020_alumina_borosilicate",
+              "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+              "locator": "PDF p.3, composition-analysis discussion; p.4 Table 1",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "bruns_2020_alumina_borosilicate",
+      "source_document": {
+        "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+        "revision": "Frontiers in Materials 7:189 publisher PDF, 28 July 2020; 14 pages.",
+        "inspected_on": "2026-10-23",
+        "sha256": "c6268f9f14320e9355bfe04bf02f47eb3d7ca00e30c7281a16fd3b1289913da6",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Publisher PDF pp.2-3 preparation and Archimedes-density method; p.4 Table 1 nominal and ICP-OES compositions; p.8 Table 3 non-qu. density rows; p.14 article copyright/CC BY notice. Tables 1 and 3 visually checked; publisher HTML license link resolves to CC BY 4.0. Selected factual transcription only, not scientific validation or raw-data reanalysis.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Publisher PDF pp.2-3 preparation and Archimedes-density method; p.4 Table 1 nominal and ICP-OES compositions; p.8 Table 3 non-qu. density rows; p.14 article copyright/CC BY notice. Tables 1 and 3 visually checked; publisher HTML license link resolves to CC BY 4.0. Selected factual transcription only, not scientific validation or raw-data reanalysis.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      },
+      "id": "refprop_bruns2020_nbs2_al1p0_mass_density",
+      "material_state_id": "state_bruns2020_nbs2_al1p0_furnace_cooled",
+      "uncertainty_note": "2.131 ± 0.006 g/cm³ means reported mean ± standard deviation. Not a confidence interval, SEM or material bound. The density method uses at least five pieces, each 0.1-1.0 g. Exact piece count, independent preparation-batch count and readings per piece are not reported. These pieces are not asserted to be five independent experimental replicates.",
+      "evidence": [
+        {
+          "source_id": "bruns_2020_alumina_borosilicate",
+          "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+          "locator": "PDF p.8 Table 3, Al2O3 [mol%] row 1.0 (without qu.), ρ [g/cm³] column",
+          "supports": [
+            "reported_value",
+            "uncertainty",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "bruns_2020_alumina_borosilicate",
+          "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+          "locator": "PDF p.3, Experimental Procedures / Glass Melting/Preparation, density-method paragraph",
+          "supports": [
+            "method",
+            "condition",
+            "summary_statistic",
+            "sample_count"
+          ]
+        },
+        {
+          "source_id": "bruns_2020_alumina_borosilicate",
+          "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+          "locator": "PDF p.3, Glass Melting/Preparation, cooling and 4.0 mol% Al2O3 exception paragraphs",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "scope_note": "Catalog-only furnace-cooled experimental mass-density reference. Quenched states and all mechanical, spectroscopic and computed values are excluded. Density-test temperature, pressure and conditioning are unknown; room temperature and about 33% RH in the nanoindentation method are not transferred. Archimedes measurement does not establish a true/bulk/apparent density classification or zero porosity. Nominal oxide recipes define these source-qualified identities, not certified final stoichiometry. Table 1 ICP-OES results remain distinct from nominal values; the authors discuss possible incomplete dissolution/silica underrepresentation, boron/silicon disagreement and sodium loss during melting. No assay correction, recipe normalization or exact final purity is inferred. Source furnace-cooled route (fc); Table 3 rows without qu. follow the p.3 default. This is not a density-test temperature."
+    },
+    {
+      "version": "1.0.0",
+      "quantity": "mass_density",
+      "quantity_dimension": "mass_per_volume",
+      "source_property_label": "ρ [g/cm³]",
+      "reported_value": {
+        "kind": "scalar",
+        "unit_text": "g/cm³",
+        "unit_code": "g/cm^3",
+        "value_text": "2.133",
+        "number": "2.133"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "The density-method paragraph explicitly identifies the Table 3 central values as means and the accompanying amplitudes as standard deviations. They are kept separate, not converted to a physical range, confidence interval or standard error.",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Density measurement temperature is not stated. Cooling to room temperature and room-temperature nanoindentation do not establish it."
+        },
+        "test_standard": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No density-test standard or independent compliance claim is reported."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Archimedes method in toluene.",
+          "evidence": [
+            {
+              "source_id": "bruns_2020_alumina_borosilicate",
+              "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+              "locator": "PDF p.3, Experimental Procedures / Glass Melting/Preparation, density-method paragraph",
+              "supports": [
+                "method",
+                "condition"
+              ]
+            }
+          ],
+          "notes": "The density method uses at least five pieces, each 0.1-1.0 g. Exact piece count, independent preparation-batch count and readings per piece are not reported. These pieces are not asserted to be five independent experimental replicates."
+        },
+        "direction": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Loading direction is not applicable to scalar density."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Density-specific conditioning, humidity and moisture are not reported."
+        },
+        "loading_rate": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading rate does not apply to this density result."
+        },
+        "additional_conditions": [
+          {
+            "name": "density_pressure",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Density measurement pressure is not reported."
+            }
+          },
+          {
+            "name": "piece_count_lower_bound",
+            "fact": {
+              "status": "reported",
+              "text": "At least five pieces, each weighing 0.1-1.0 g.",
+              "evidence": [
+                {
+                  "source_id": "bruns_2020_alumina_borosilicate",
+                  "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+                  "locator": "PDF p.3, Experimental Procedures / Glass Melting/Preparation, density-method paragraph",
+                  "supports": [
+                    "sample_count",
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "The density method uses at least five pieces, each 0.1-1.0 g. Exact piece count, independent preparation-batch count and readings per piece are not reported. These pieces are not asserted to be five independent experimental replicates."
+            }
+          }
+        ]
+      },
+      "density_basis": "not_stated",
+      "summary_statistic": "reported_mean",
+      "uncertainty": {
+        "type": "reported_standard_deviation",
+        "unit_text": "g/cm³",
+        "unit_code": "g/cm^3",
+        "scope": "Source-reported standard deviation of density results, explicitly identified by the density-method paragraph. Statistical independence and exact count are not established.",
+        "coverage_factor": null,
+        "confidence_level": null,
+        "value_text": "0.010",
+        "number": "0.010",
+        "evidence": [
+          {
+            "source_id": "bruns_2020_alumina_borosilicate",
+            "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+            "locator": "PDF p.8 Table 3, Al2O3 [mol%] row 1.5 (without qu.), ρ [g/cm³] column",
+            "supports": [
+              "uncertainty"
+            ]
+          },
+          {
+            "source_id": "bruns_2020_alumina_borosilicate",
+            "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+            "locator": "PDF p.3, Experimental Procedures / Glass Melting/Preparation, density-method paragraph",
+            "supports": [
+              "uncertainty",
+              "summary_statistic"
+            ]
+          }
+        ]
+      },
+      "uncertainty_status": "reported_standard_deviation",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "The density method uses at least five pieces, each 0.1-1.0 g. Exact piece count, independent preparation-batch count and readings per piece are not reported. These pieces are not asserted to be five independent experimental replicates.",
+        "source_statement": "The density method uses at least five pieces, each 0.1-1.0 g. Exact piece count, independent preparation-batch count and readings per piece are not reported. These pieces are not asserted to be five independent experimental replicates.",
+        "evidence": [
+          {
+            "source_id": "bruns_2020_alumina_borosilicate",
+            "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+            "locator": "PDF p.3, Experimental Procedures / Glass Melting/Preparation, density-method paragraph",
+            "supports": [
+              "sample_count"
+            ]
+          }
+        ]
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Archimedes density in toluene. At least five pieces of 0.1-1.0 g; exact independent sample n and measurement temperature are unknown.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "bruns_2020_alumina_borosilicate",
+            "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+            "locator": "PDF p.3, Experimental Procedures / Glass Melting/Preparation, density-method paragraph",
+            "supports": [
+              "method",
+              "summary_statistic",
+              "uncertainty"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Table 1 gives nominal and ICP-OES oxide compositions that differ; the p.3 discussion notes analysis limitations and sodium loss.",
+          "disposition": "Nominal oxide recipes define these source-qualified identities, not certified final stoichiometry. Table 1 ICP-OES results remain distinct from nominal values; the authors discuss possible incomplete dissolution/silica underrepresentation, boron/silicon disagreement and sodium loss during melting. No assay correction, recipe normalization or exact final purity is inferred.",
+          "evidence": [
+            {
+              "source_id": "bruns_2020_alumina_borosilicate",
+              "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+              "locator": "PDF p.3, composition-analysis discussion; p.4 Table 1",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "bruns_2020_alumina_borosilicate",
+      "source_document": {
+        "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+        "revision": "Frontiers in Materials 7:189 publisher PDF, 28 July 2020; 14 pages.",
+        "inspected_on": "2026-10-23",
+        "sha256": "c6268f9f14320e9355bfe04bf02f47eb3d7ca00e30c7281a16fd3b1289913da6",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Publisher PDF pp.2-3 preparation and Archimedes-density method; p.4 Table 1 nominal and ICP-OES compositions; p.8 Table 3 non-qu. density rows; p.14 article copyright/CC BY notice. Tables 1 and 3 visually checked; publisher HTML license link resolves to CC BY 4.0. Selected factual transcription only, not scientific validation or raw-data reanalysis.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Publisher PDF pp.2-3 preparation and Archimedes-density method; p.4 Table 1 nominal and ICP-OES compositions; p.8 Table 3 non-qu. density rows; p.14 article copyright/CC BY notice. Tables 1 and 3 visually checked; publisher HTML license link resolves to CC BY 4.0. Selected factual transcription only, not scientific validation or raw-data reanalysis.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      },
+      "id": "refprop_bruns2020_nbs2_al1p5_mass_density",
+      "material_state_id": "state_bruns2020_nbs2_al1p5_furnace_cooled",
+      "uncertainty_note": "2.133 ± 0.010 g/cm³ means reported mean ± standard deviation. Not a confidence interval, SEM or material bound. The density method uses at least five pieces, each 0.1-1.0 g. Exact piece count, independent preparation-batch count and readings per piece are not reported. These pieces are not asserted to be five independent experimental replicates.",
+      "evidence": [
+        {
+          "source_id": "bruns_2020_alumina_borosilicate",
+          "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+          "locator": "PDF p.8 Table 3, Al2O3 [mol%] row 1.5 (without qu.), ρ [g/cm³] column",
+          "supports": [
+            "reported_value",
+            "uncertainty",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "bruns_2020_alumina_borosilicate",
+          "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+          "locator": "PDF p.3, Experimental Procedures / Glass Melting/Preparation, density-method paragraph",
+          "supports": [
+            "method",
+            "condition",
+            "summary_statistic",
+            "sample_count"
+          ]
+        },
+        {
+          "source_id": "bruns_2020_alumina_borosilicate",
+          "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+          "locator": "PDF p.3, Glass Melting/Preparation, cooling and 4.0 mol% Al2O3 exception paragraphs",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "scope_note": "Catalog-only furnace-cooled experimental mass-density reference. Quenched states and all mechanical, spectroscopic and computed values are excluded. Density-test temperature, pressure and conditioning are unknown; room temperature and about 33% RH in the nanoindentation method are not transferred. Archimedes measurement does not establish a true/bulk/apparent density classification or zero porosity. Nominal oxide recipes define these source-qualified identities, not certified final stoichiometry. Table 1 ICP-OES results remain distinct from nominal values; the authors discuss possible incomplete dissolution/silica underrepresentation, boron/silicon disagreement and sodium loss during melting. No assay correction, recipe normalization or exact final purity is inferred. Source furnace-cooled route (fc); Table 3 rows without qu. follow the p.3 default. This is not a density-test temperature."
+    },
+    {
+      "version": "1.0.0",
+      "quantity": "mass_density",
+      "quantity_dimension": "mass_per_volume",
+      "source_property_label": "ρ [g/cm³]",
+      "reported_value": {
+        "kind": "scalar",
+        "unit_text": "g/cm³",
+        "unit_code": "g/cm^3",
+        "value_text": "2.130",
+        "number": "2.130"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "The density-method paragraph explicitly identifies the Table 3 central values as means and the accompanying amplitudes as standard deviations. They are kept separate, not converted to a physical range, confidence interval or standard error.",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Density measurement temperature is not stated. Cooling to room temperature and room-temperature nanoindentation do not establish it."
+        },
+        "test_standard": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No density-test standard or independent compliance claim is reported."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Archimedes method in toluene.",
+          "evidence": [
+            {
+              "source_id": "bruns_2020_alumina_borosilicate",
+              "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+              "locator": "PDF p.3, Experimental Procedures / Glass Melting/Preparation, density-method paragraph",
+              "supports": [
+                "method",
+                "condition"
+              ]
+            }
+          ],
+          "notes": "The density method uses at least five pieces, each 0.1-1.0 g. Exact piece count, independent preparation-batch count and readings per piece are not reported. These pieces are not asserted to be five independent experimental replicates."
+        },
+        "direction": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Loading direction is not applicable to scalar density."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Density-specific conditioning, humidity and moisture are not reported."
+        },
+        "loading_rate": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading rate does not apply to this density result."
+        },
+        "additional_conditions": [
+          {
+            "name": "density_pressure",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Density measurement pressure is not reported."
+            }
+          },
+          {
+            "name": "piece_count_lower_bound",
+            "fact": {
+              "status": "reported",
+              "text": "At least five pieces, each weighing 0.1-1.0 g.",
+              "evidence": [
+                {
+                  "source_id": "bruns_2020_alumina_borosilicate",
+                  "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+                  "locator": "PDF p.3, Experimental Procedures / Glass Melting/Preparation, density-method paragraph",
+                  "supports": [
+                    "sample_count",
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "The density method uses at least five pieces, each 0.1-1.0 g. Exact piece count, independent preparation-batch count and readings per piece are not reported. These pieces are not asserted to be five independent experimental replicates."
+            }
+          }
+        ]
+      },
+      "density_basis": "not_stated",
+      "summary_statistic": "reported_mean",
+      "uncertainty": {
+        "type": "reported_standard_deviation",
+        "unit_text": "g/cm³",
+        "unit_code": "g/cm^3",
+        "scope": "Source-reported standard deviation of density results, explicitly identified by the density-method paragraph. Statistical independence and exact count are not established.",
+        "coverage_factor": null,
+        "confidence_level": null,
+        "value_text": "0.002",
+        "number": "0.002",
+        "evidence": [
+          {
+            "source_id": "bruns_2020_alumina_borosilicate",
+            "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+            "locator": "PDF p.8 Table 3, Al2O3 [mol%] row 2.0 (without qu.), ρ [g/cm³] column",
+            "supports": [
+              "uncertainty"
+            ]
+          },
+          {
+            "source_id": "bruns_2020_alumina_borosilicate",
+            "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+            "locator": "PDF p.3, Experimental Procedures / Glass Melting/Preparation, density-method paragraph",
+            "supports": [
+              "uncertainty",
+              "summary_statistic"
+            ]
+          }
+        ]
+      },
+      "uncertainty_status": "reported_standard_deviation",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "The density method uses at least five pieces, each 0.1-1.0 g. Exact piece count, independent preparation-batch count and readings per piece are not reported. These pieces are not asserted to be five independent experimental replicates.",
+        "source_statement": "The density method uses at least five pieces, each 0.1-1.0 g. Exact piece count, independent preparation-batch count and readings per piece are not reported. These pieces are not asserted to be five independent experimental replicates.",
+        "evidence": [
+          {
+            "source_id": "bruns_2020_alumina_borosilicate",
+            "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+            "locator": "PDF p.3, Experimental Procedures / Glass Melting/Preparation, density-method paragraph",
+            "supports": [
+              "sample_count"
+            ]
+          }
+        ]
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Archimedes density in toluene. At least five pieces of 0.1-1.0 g; exact independent sample n and measurement temperature are unknown.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "bruns_2020_alumina_borosilicate",
+            "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+            "locator": "PDF p.3, Experimental Procedures / Glass Melting/Preparation, density-method paragraph",
+            "supports": [
+              "method",
+              "summary_statistic",
+              "uncertainty"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Table 1 gives nominal and ICP-OES oxide compositions that differ; the p.3 discussion notes analysis limitations and sodium loss.",
+          "disposition": "Nominal oxide recipes define these source-qualified identities, not certified final stoichiometry. Table 1 ICP-OES results remain distinct from nominal values; the authors discuss possible incomplete dissolution/silica underrepresentation, boron/silicon disagreement and sodium loss during melting. No assay correction, recipe normalization or exact final purity is inferred.",
+          "evidence": [
+            {
+              "source_id": "bruns_2020_alumina_borosilicate",
+              "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+              "locator": "PDF p.3, composition-analysis discussion; p.4 Table 1",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "bruns_2020_alumina_borosilicate",
+      "source_document": {
+        "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+        "revision": "Frontiers in Materials 7:189 publisher PDF, 28 July 2020; 14 pages.",
+        "inspected_on": "2026-10-23",
+        "sha256": "c6268f9f14320e9355bfe04bf02f47eb3d7ca00e30c7281a16fd3b1289913da6",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Publisher PDF pp.2-3 preparation and Archimedes-density method; p.4 Table 1 nominal and ICP-OES compositions; p.8 Table 3 non-qu. density rows; p.14 article copyright/CC BY notice. Tables 1 and 3 visually checked; publisher HTML license link resolves to CC BY 4.0. Selected factual transcription only, not scientific validation or raw-data reanalysis.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Publisher PDF pp.2-3 preparation and Archimedes-density method; p.4 Table 1 nominal and ICP-OES compositions; p.8 Table 3 non-qu. density rows; p.14 article copyright/CC BY notice. Tables 1 and 3 visually checked; publisher HTML license link resolves to CC BY 4.0. Selected factual transcription only, not scientific validation or raw-data reanalysis.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      },
+      "id": "refprop_bruns2020_nbs2_al2p0_mass_density",
+      "material_state_id": "state_bruns2020_nbs2_al2p0_furnace_cooled",
+      "uncertainty_note": "2.130 ± 0.002 g/cm³ means reported mean ± standard deviation. Not a confidence interval, SEM or material bound. The density method uses at least five pieces, each 0.1-1.0 g. Exact piece count, independent preparation-batch count and readings per piece are not reported. These pieces are not asserted to be five independent experimental replicates.",
+      "evidence": [
+        {
+          "source_id": "bruns_2020_alumina_borosilicate",
+          "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+          "locator": "PDF p.8 Table 3, Al2O3 [mol%] row 2.0 (without qu.), ρ [g/cm³] column",
+          "supports": [
+            "reported_value",
+            "uncertainty",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "bruns_2020_alumina_borosilicate",
+          "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+          "locator": "PDF p.3, Experimental Procedures / Glass Melting/Preparation, density-method paragraph",
+          "supports": [
+            "method",
+            "condition",
+            "summary_statistic",
+            "sample_count"
+          ]
+        },
+        {
+          "source_id": "bruns_2020_alumina_borosilicate",
+          "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+          "locator": "PDF p.3, Glass Melting/Preparation, cooling and 4.0 mol% Al2O3 exception paragraphs",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "scope_note": "Catalog-only furnace-cooled experimental mass-density reference. Quenched states and all mechanical, spectroscopic and computed values are excluded. Density-test temperature, pressure and conditioning are unknown; room temperature and about 33% RH in the nanoindentation method are not transferred. Archimedes measurement does not establish a true/bulk/apparent density classification or zero porosity. Nominal oxide recipes define these source-qualified identities, not certified final stoichiometry. Table 1 ICP-OES results remain distinct from nominal values; the authors discuss possible incomplete dissolution/silica underrepresentation, boron/silicon disagreement and sodium loss during melting. No assay correction, recipe normalization or exact final purity is inferred. Source furnace-cooled route (fc); Table 3 rows without qu. follow the p.3 default. This is not a density-test temperature."
+    },
+    {
+      "version": "1.0.0",
+      "quantity": "mass_density",
+      "quantity_dimension": "mass_per_volume",
+      "source_property_label": "ρ [g/cm³]",
+      "reported_value": {
+        "kind": "scalar",
+        "unit_text": "g/cm³",
+        "unit_code": "g/cm^3",
+        "value_text": "2.137",
+        "number": "2.137"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "The density-method paragraph explicitly identifies the Table 3 central values as means and the accompanying amplitudes as standard deviations. They are kept separate, not converted to a physical range, confidence interval or standard error.",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Density measurement temperature is not stated. Cooling to room temperature and room-temperature nanoindentation do not establish it."
+        },
+        "test_standard": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No density-test standard or independent compliance claim is reported."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Archimedes method in toluene.",
+          "evidence": [
+            {
+              "source_id": "bruns_2020_alumina_borosilicate",
+              "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+              "locator": "PDF p.3, Experimental Procedures / Glass Melting/Preparation, density-method paragraph",
+              "supports": [
+                "method",
+                "condition"
+              ]
+            }
+          ],
+          "notes": "The density method uses at least five pieces, each 0.1-1.0 g. Exact piece count, independent preparation-batch count and readings per piece are not reported. These pieces are not asserted to be five independent experimental replicates."
+        },
+        "direction": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Loading direction is not applicable to scalar density."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Density-specific conditioning, humidity and moisture are not reported."
+        },
+        "loading_rate": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading rate does not apply to this density result."
+        },
+        "additional_conditions": [
+          {
+            "name": "density_pressure",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Density measurement pressure is not reported."
+            }
+          },
+          {
+            "name": "piece_count_lower_bound",
+            "fact": {
+              "status": "reported",
+              "text": "At least five pieces, each weighing 0.1-1.0 g.",
+              "evidence": [
+                {
+                  "source_id": "bruns_2020_alumina_borosilicate",
+                  "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+                  "locator": "PDF p.3, Experimental Procedures / Glass Melting/Preparation, density-method paragraph",
+                  "supports": [
+                    "sample_count",
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "The density method uses at least five pieces, each 0.1-1.0 g. Exact piece count, independent preparation-batch count and readings per piece are not reported. These pieces are not asserted to be five independent experimental replicates."
+            }
+          }
+        ]
+      },
+      "density_basis": "not_stated",
+      "summary_statistic": "reported_mean",
+      "uncertainty": {
+        "type": "reported_standard_deviation",
+        "unit_text": "g/cm³",
+        "unit_code": "g/cm^3",
+        "scope": "Source-reported standard deviation of density results, explicitly identified by the density-method paragraph. Statistical independence and exact count are not established.",
+        "coverage_factor": null,
+        "confidence_level": null,
+        "value_text": "0.004",
+        "number": "0.004",
+        "evidence": [
+          {
+            "source_id": "bruns_2020_alumina_borosilicate",
+            "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+            "locator": "PDF p.8 Table 3, Al2O3 [mol%] row 4.0 (without qu.), ρ [g/cm³] column",
+            "supports": [
+              "uncertainty"
+            ]
+          },
+          {
+            "source_id": "bruns_2020_alumina_borosilicate",
+            "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+            "locator": "PDF p.3, Experimental Procedures / Glass Melting/Preparation, density-method paragraph",
+            "supports": [
+              "uncertainty",
+              "summary_statistic"
+            ]
+          }
+        ]
+      },
+      "uncertainty_status": "reported_standard_deviation",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "The density method uses at least five pieces, each 0.1-1.0 g. Exact piece count, independent preparation-batch count and readings per piece are not reported. These pieces are not asserted to be five independent experimental replicates.",
+        "source_statement": "The density method uses at least five pieces, each 0.1-1.0 g. Exact piece count, independent preparation-batch count and readings per piece are not reported. These pieces are not asserted to be five independent experimental replicates.",
+        "evidence": [
+          {
+            "source_id": "bruns_2020_alumina_borosilicate",
+            "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+            "locator": "PDF p.3, Experimental Procedures / Glass Melting/Preparation, density-method paragraph",
+            "supports": [
+              "sample_count"
+            ]
+          }
+        ]
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Archimedes density in toluene. At least five pieces of 0.1-1.0 g; exact independent sample n and measurement temperature are unknown.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "bruns_2020_alumina_borosilicate",
+            "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+            "locator": "PDF p.3, Experimental Procedures / Glass Melting/Preparation, density-method paragraph",
+            "supports": [
+              "method",
+              "summary_statistic",
+              "uncertainty"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Table 1 gives nominal and ICP-OES oxide compositions that differ; the p.3 discussion notes analysis limitations and sodium loss.",
+          "disposition": "Nominal oxide recipes define these source-qualified identities, not certified final stoichiometry. Table 1 ICP-OES results remain distinct from nominal values; the authors discuss possible incomplete dissolution/silica underrepresentation, boron/silicon disagreement and sodium loss during melting. No assay correction, recipe normalization or exact final purity is inferred.",
+          "evidence": [
+            {
+              "source_id": "bruns_2020_alumina_borosilicate",
+              "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+              "locator": "PDF p.3, composition-analysis discussion; p.4 Table 1",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "bruns_2020_alumina_borosilicate",
+      "source_document": {
+        "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+        "revision": "Frontiers in Materials 7:189 publisher PDF, 28 July 2020; 14 pages.",
+        "inspected_on": "2026-10-23",
+        "sha256": "c6268f9f14320e9355bfe04bf02f47eb3d7ca00e30c7281a16fd3b1289913da6",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Publisher PDF pp.2-3 preparation and Archimedes-density method; p.4 Table 1 nominal and ICP-OES compositions; p.8 Table 3 non-qu. density rows; p.14 article copyright/CC BY notice. Tables 1 and 3 visually checked; publisher HTML license link resolves to CC BY 4.0. Selected factual transcription only, not scientific validation or raw-data reanalysis.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Publisher PDF pp.2-3 preparation and Archimedes-density method; p.4 Table 1 nominal and ICP-OES compositions; p.8 Table 3 non-qu. density rows; p.14 article copyright/CC BY notice. Tables 1 and 3 visually checked; publisher HTML license link resolves to CC BY 4.0. Selected factual transcription only, not scientific validation or raw-data reanalysis.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      },
+      "id": "refprop_bruns2020_nbs2_al4p0_mass_density",
+      "material_state_id": "state_bruns2020_nbs2_al4p0_furnace_cooled",
+      "uncertainty_note": "2.137 ± 0.004 g/cm³ means reported mean ± standard deviation. Not a confidence interval, SEM or material bound. The density method uses at least five pieces, each 0.1-1.0 g. Exact piece count, independent preparation-batch count and readings per piece are not reported. These pieces are not asserted to be five independent experimental replicates.",
+      "evidence": [
+        {
+          "source_id": "bruns_2020_alumina_borosilicate",
+          "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+          "locator": "PDF p.8 Table 3, Al2O3 [mol%] row 4.0 (without qu.), ρ [g/cm³] column",
+          "supports": [
+            "reported_value",
+            "uncertainty",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "bruns_2020_alumina_borosilicate",
+          "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+          "locator": "PDF p.3, Experimental Procedures / Glass Melting/Preparation, density-method paragraph",
+          "supports": [
+            "method",
+            "condition",
+            "summary_statistic",
+            "sample_count"
+          ]
+        },
+        {
+          "source_id": "bruns_2020_alumina_borosilicate",
+          "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2020.00189/pdf",
+          "locator": "PDF p.3, Glass Melting/Preparation, cooling and 4.0 mol% Al2O3 exception paragraphs",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "scope_note": "Catalog-only furnace-cooled experimental mass-density reference. Quenched states and all mechanical, spectroscopic and computed values are excluded. Density-test temperature, pressure and conditioning are unknown; room temperature and about 33% RH in the nanoindentation method are not transferred. Archimedes measurement does not establish a true/bulk/apparent density classification or zero porosity. Nominal oxide recipes define these source-qualified identities, not certified final stoichiometry. Table 1 ICP-OES results remain distinct from nominal values; the authors discuss possible incomplete dissolution/silica underrepresentation, boron/silicon disagreement and sodium loss during melting. No assay correction, recipe normalization or exact final purity is inferred. Furnace-cooled assignment follows the p.3 default and this explicit exception. No graphite-mold casting, numerical preheat or separately verified 30 K/h rate is assigned to this row."
     }
   ]
 }
