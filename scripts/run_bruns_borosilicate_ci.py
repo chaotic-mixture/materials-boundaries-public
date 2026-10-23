@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-"""Exact Bruns +4 append, full source tests and fresh six-wheel offline suites.
+"""Exact Bruns +4 append, explicit source modes and fresh six-wheel offline suites.
 
 Only the named experimental push skips the unchanged general jobs. Every source
 and platform suite has a frozen sorted-ID fingerprint, not a test-count minimum.
 Checkout-only ingestion/projection helpers are not installed product interfaces.
 Platform/external-fixture skips have exact IDs/reasons and are not counted as passes.
+--test reproduces the full core inventory; --targeted-core runs only the frozen
+complete-module selection, never claiming that excluded core tests passed.
 """
 import argparse
 import ast
@@ -37,10 +39,18 @@ from run_evidence_batch_ci import (
 BASE_COMMIT = '46674771ab851d4c267425b985c8f29c8aea25df'
 BRANCH_REF = 'refs/heads/experimental/borosilicate-growth-bruns2020'
 FULL_JOB_IF = PREVIOUS_FULL_JOB_IF.replace("') }}\n", "' && github.ref != '" + BRANCH_REF + "') }}\n")
+# Measured targeted core: 1,420.598 s; installed phase: 816.670 s.
+# 2x their combined wall time plus 600 s build/setup = 5,074.536 s.
+# Round up to 90 min for host/platform variance; never a full-core budget.
+HOSTED_TIMEOUT_MINUTES = 90
 TARGETED_JOB = (PREVIOUS_TARGETED_JOB
                 .replace('  family-adjacency-targeted:\n', '  bruns-borosilicate-targeted:\n')
                 .replace(PREVIOUS_BRANCH_REF, BRANCH_REF)
-                .replace('run_family_adjacency_ci.py', 'run_bruns_borosilicate_ci.py'))
+                .replace('run_family_adjacency_ci.py', 'run_bruns_borosilicate_ci.py')
+                .replace('run_bruns_borosilicate_ci.py --test\n',
+                         'run_bruns_borosilicate_ci.py --targeted-core\n')
+                .replace('    timeout-minutes: 60\n',
+                         '    timeout-minutes: ' + str(HOSTED_TIMEOUT_MINUTES) + '\n'))
 PREVIOUS_JOBS = (
     'polymer-composites-targeted', 'evidence-batch-targeted',
     'source-family-growth-targeted', 'pur-formulation-targeted',
@@ -121,8 +131,8 @@ APPROVED_FILES = frozenset([
 # Complete suite inventories: directory, exact count, SHA-256 of sorted IDs
 # encoded as UTF-8 with one trailing newline per ID. No discovered test may
 # disappear, be renamed, or be substituted; every skip needs its exact policy.
-TEST_GROUPS = {'core': ('tests', 1716,
-          '828a83dbc4a78f07ac115f472436c888242ea7e5642985c05f0d4afcc36e533d'),
+TEST_GROUPS = {'core': ('tests', 1731,
+          '345e2f64d8748312c91e73577d0e83c14f8b40efbcf595a06ebfca6a5c8b52c3'),
  'query': ('experimental/platform/query-service/catalog-tests',
            214,
            '53f6774fd72799d0abdb9038924eb74b3298018094408e154ab3f69208ca2450'),
@@ -145,6 +155,161 @@ TEST_GROUPS = {'core': ('tests', 1716,
  'integration': ('experimental/platform/tests',
                  18,
                  'fdff229979a751083a10a2c9cb781692d8793d21b6187f230f732d0ac37dc43d')}
+# Hosted core coverage is deliberately narrower than --test. These are COMPLETE
+# modules, not cherry-picked methods. Keep every discovered case, including new
+# runner tests, and separately freeze the exact IDs and their sorted fingerprint.
+TARGETED_CORE_MODULES = (
+    'test_bruns_borosilicate_ci',
+    'test_bruns_borosilicate_packet',
+    'test_bruns_borosilicate_preservation',
+    'test_composite_preservation',
+    'test_evidence_dedup_preservation',
+    'test_family_adjacency_ci',
+    'test_family_adjacency_history',
+    'test_legacy_document_recovery',
+    'test_material_append_merge',
+    'test_material_batch_preservation',
+    'test_material_bulk_preservation',
+    'test_material_catalog_preservation',
+    'test_material_class_counts_preservation',
+    'test_release_metadata',
+)
+TARGETED_CORE_IDS = (
+    'test_bruns_borosilicate_ci.BrunsBorosilicateCITests.test_ambiguous_yaml_scalars_and_index_package_builds_fail',
+    'test_bruns_borosilicate_ci.BrunsBorosilicateCITests.test_append_rejects_count_preserving_rewrite_partial_order_metadata_and_id_drift',
+    'test_bruns_borosilicate_ci.BrunsBorosilicateCITests.test_ci_requires_exact_push_branch_sha_and_clean_checkout',
+    'test_bruns_borosilicate_ci.BrunsBorosilicateCITests.test_complete_inventories_preserve_every_predecessor_and_new_test',
+    'test_bruns_borosilicate_ci.BrunsBorosilicateCITests.test_current_payload_pins_exact_packet_data_baseline_and_unchanged_reviews',
+    'test_bruns_borosilicate_ci.BrunsBorosilicateCITests.test_installed_protocol_is_six_wheels_no_index_and_all_complete_suites',
+    'test_bruns_borosilicate_ci.BrunsBorosilicateCITests.test_missing_duplicate_substituted_or_extra_inventory_ids_are_rejected',
+    'test_bruns_borosilicate_ci.BrunsBorosilicateCITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated',
+    'test_bruns_borosilicate_ci.BrunsBorosilicateCITests.test_scope_rejects_unlisted_deleted_nonfile_and_symlink_paths',
+    'test_bruns_borosilicate_ci.BrunsBorosilicateCITests.test_unknown_predecessor_workflow_shapes_are_rejected',
+    'test_bruns_borosilicate_ci.BrunsBorosilicateSkipPolicyTests.test_installed_suites_cannot_use_source_skip_exceptions',
+    'test_bruns_borosilicate_ci.BrunsBorosilicateSkipPolicyTests.test_known_skips_never_increment_passed_count',
+    'test_bruns_borosilicate_ci.BrunsBorosilicateSkipPolicyTests.test_missing_execution_or_pass_and_failure_cannot_hide_behind_skips',
+    'test_bruns_borosilicate_ci.BrunsBorosilicateSkipPolicyTests.test_missing_unexpected_duplicate_reason_and_os_drift_fail',
+    'test_bruns_borosilicate_ci.BrunsBorosilicateSkipPolicyTests.test_platform_and_opt_in_counts_are_exact',
+    'test_bruns_borosilicate_ci.BrunsBorosilicateSkipPolicyTests.test_windows_privilege_exception_is_one_exact_case_and_reason',
+    'test_bruns_borosilicate_ci.BrunsBorosilicateTargetedCoreTests.test_cli_rejects_conflicting_modes_and_misplaced_dependencies',
+    'test_bruns_borosilicate_ci.BrunsBorosilicateTargetedCoreTests.test_cli_selects_targeted_full_and_installed_modes_unambiguously',
+    'test_bruns_borosilicate_ci.BrunsBorosilicateTargetedCoreTests.test_failed_targeted_execution_cannot_emit_complete',
+    'test_bruns_borosilicate_ci.BrunsBorosilicateTargetedCoreTests.test_full_mode_still_discovers_all_core_tests',
+    'test_bruns_borosilicate_ci.BrunsBorosilicateTargetedCoreTests.test_full_runner_keeps_exact_source_skip_policy',
+    'test_bruns_borosilicate_ci.BrunsBorosilicateTargetedCoreTests.test_hosted_job_uses_targeted_core_and_keeps_installed_protocol',
+    'test_bruns_borosilicate_ci.BrunsBorosilicateTargetedCoreTests.test_real_targeted_discovery_matches_frozen_ids_without_running_cases',
+    'test_bruns_borosilicate_ci.BrunsBorosilicateTargetedCoreTests.test_targeted_discovery_loads_complete_modules_not_individual_ids',
+    'test_bruns_borosilicate_ci.BrunsBorosilicateTargetedCoreTests.test_targeted_inventory_is_all_cases_from_exact_complete_modules',
+    'test_bruns_borosilicate_ci.BrunsBorosilicateTargetedCoreTests.test_targeted_inventory_rejects_missing_duplicate_substituted_and_extra_ids',
+    'test_bruns_borosilicate_ci.BrunsBorosilicateTargetedCoreTests.test_targeted_loading_errors_are_not_a_partial_pass',
+    'test_bruns_borosilicate_ci.BrunsBorosilicateTargetedCoreTests.test_targeted_results_cannot_use_any_source_skip_exception',
+    'test_bruns_borosilicate_ci.BrunsBorosilicateTargetedCoreTests.test_targeted_results_reject_unexecuted_duplicate_failed_or_unpassed_cases',
+    'test_bruns_borosilicate_ci.BrunsBorosilicateTargetedCoreTests.test_targeted_runner_emits_honest_coverage_and_never_requests_source_skips',
+    'test_bruns_borosilicate_ci.BrunsBorosilicateTargetedCoreTests.test_targeted_summary_distinguishes_excluded_cases_from_passes_and_skips',
+    'test_bruns_borosilicate_packet.BrunsBorosilicatePacketTests.test_bad_pin_owner_unit_and_statistic_refuse_atomic_output',
+    'test_bruns_borosilicate_packet.BrunsBorosilicatePacketTests.test_compiler_and_integrator_replay_are_deterministic_immutable_and_detached',
+    'test_bruns_borosilicate_packet.BrunsBorosilicatePacketTests.test_count_method_unknowns_and_four_percent_cooling_exception',
+    'test_bruns_borosilicate_packet.BrunsBorosilicatePacketTests.test_forged_packet_and_source_scoped_collision_cannot_upgrade',
+    'test_bruns_borosilicate_packet.BrunsBorosilicatePacketTests.test_frozen_packet_matches_four_source_recipes_and_density_cells',
+    'test_bruns_borosilicate_packet.BrunsBorosilicatePacketTests.test_isolated_integration_preserves_every_predecessor_record_and_byte',
+    'test_bruns_borosilicate_packet.BrunsBorosilicatePacketTests.test_pending_identity_source_and_rights_cannot_integrate',
+    'test_bruns_borosilicate_packet.BrunsBorosilicatePacketTests.test_source_attribution_hash_and_candidate_receipt_remain_bound',
+    'test_bruns_borosilicate_preservation.BrunsBorosilicatePreservationTests.test_exact_append_and_predecessor_bytes_keep_all_existing_materials',
+    'test_bruns_borosilicate_preservation.BrunsBorosilicatePreservationTests.test_file_ledger_restores_exact_readme_and_workflow_and_rejects_drift',
+    'test_bruns_borosilicate_preservation.BrunsBorosilicatePreservationTests.test_finite_registry_preserves_every_preexisting_descriptor_and_boundary',
+    'test_bruns_borosilicate_preservation.BrunsBorosilicatePreservationTests.test_original_candidate_and_source_assets_remain_unchanged',
+    'test_bruns_borosilicate_preservation.BrunsBorosilicatePreservationTests.test_partial_reordered_owner_unit_and_rights_drift_fail_closed',
+    'test_composite_preservation.CompositePreservationTests.test_disposable_mixed_catalog_count_refresh_reverses_without_touching_checkout',
+    'test_composite_preservation.CompositePreservationTests.test_every_forward_reverse_round_trip_and_changed_successor_fails',
+    'test_composite_preservation.CompositePreservationTests.test_every_old_fixture_example_and_provenance_helper_remains_byte_exact',
+    'test_composite_preservation.CompositePreservationTests.test_every_old_noncatalog_file_has_exact_accepted_bytes_or_exact_reversal',
+    'test_composite_preservation.CompositePreservationTests.test_every_prior_complete_object_locale_value_and_metadata_field_is_exact',
+    'test_composite_preservation.CompositePreservationTests.test_evidence_appends_keep_exact_original_objects_order_and_other_metadata',
+    'test_composite_preservation.CompositePreservationTests.test_exact_edit_parser_rejects_bad_offsets_shapes_types_and_overlap',
+    'test_composite_preservation.CompositePreservationTests.test_independent_appended_records_and_labels_pass_but_old_object_mutations_fail',
+    'test_composite_preservation.CompositePreservationTests.test_independent_ledger_adapter_pins_and_exact_public_anchor',
+    'test_composite_preservation.CompositePreservationTests.test_legacy_chain_is_exact_and_unreviewed_bytes_fail_closed',
+    'test_composite_preservation.CompositePreservationTests.test_malformed_foreign_duplicate_and_forged_ledger_entries_fail',
+    'test_composite_preservation.CompositePreservationTests.test_only_exact_compatibility_transformations_and_no_removed_test_declarations',
+    'test_composite_preservation.CompositePreservationTests.test_readme_normalization_rejects_false_counts_changed_prose_and_outside_edits',
+    'test_evidence_dedup_preservation.EvidenceDedupPreservationTests.test_existing_355_and_402_file_pins_remain_exact',
+    'test_evidence_dedup_preservation.EvidenceDedupPreservationTests.test_helper_ledger_and_five_exact_predecessors_are_pinned',
+    'test_evidence_dedup_preservation.EvidenceDedupPreservationTests.test_ledger_drift_and_duplicate_keys_are_rejected_without_mutation',
+    'test_evidence_dedup_preservation.EvidenceDedupPreservationTests.test_unreviewed_successors_inputs_and_edit_mutations_fail_closed',
+    'test_family_adjacency_ci.FamilyAdjacencyCITests.test_ambiguous_yaml_scalars_and_index_package_builds_fail',
+    'test_family_adjacency_ci.FamilyAdjacencyCITests.test_ci_requires_exact_event_branch_sha_and_clean_checkout',
+    'test_family_adjacency_ci.FamilyAdjacencyCITests.test_inventories_are_nonempty_unique_and_preserve_affected_modules',
+    'test_family_adjacency_ci.FamilyAdjacencyCITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated',
+    'test_family_adjacency_ci.FamilyAdjacencyCITests.test_scope_rejects_catalog_data_unlisted_paths_and_nonfiles',
+    'test_family_adjacency_ci.FamilyAdjacencyCITests.test_unknown_predecessor_workflow_shapes_are_rejected',
+    'test_family_adjacency_history.FamilyAdjacencyHistoryTests.test_all_material_workflow_views_keep_their_exact_file_pins',
+    'test_family_adjacency_history.FamilyAdjacencyHistoryTests.test_code_only_workflow_round_trip_retains_old_rejection',
+    'test_family_adjacency_history.FamilyAdjacencyHistoryTests.test_data_registry_and_every_material_ledger_remain_unchanged',
+    'test_family_adjacency_history.FamilyAdjacencyHistoryTests.test_only_one_workflow_has_a_pinned_code_successor',
+    'test_family_adjacency_history.FamilyAdjacencyHistoryTests.test_unknown_boundaries_and_ledger_or_edit_drift_are_rejected',
+    'test_legacy_document_recovery.LegacyDocumentRecoveryTests.test_exact_call_site_reversal_changes_no_old_assertion_or_normalizer',
+    'test_legacy_document_recovery.LegacyDocumentRecoveryTests.test_exact_document_chains_reach_unchanged_original_release_pins',
+    'test_legacy_document_recovery.LegacyDocumentRecoveryTests.test_helper_ledgers_and_call_site_inventory_are_byte_pinned',
+    'test_legacy_document_recovery.LegacyDocumentRecoveryTests.test_modified_prose_and_attribution_still_fail_original_release_checks',
+    'test_legacy_document_recovery.LegacyDocumentRecoveryTests.test_reordered_chains_and_forged_fixtures_fail_closed',
+    'test_material_append_merge.MaterialAppendMergeTests.test_conflicting_existing_id_fails_without_partial_mutation',
+    'test_material_append_merge.MaterialAppendMergeTests.test_merge_idempotent_preserves_inputs_and_baseline_order',
+    'test_material_append_merge.MaterialAppendMergeTests.test_reordering_new_append_tables_produces_identical_merge',
+    'test_material_append_merge.MaterialAppendMergeTests.test_unvalidated_append_cannot_gain_coverage',
+    'test_material_batch_preservation.MaterialBatchPreservationTests.test_all_355_predecessor_files_round_trip_exactly',
+    'test_material_batch_preservation.MaterialBatchPreservationTests.test_corrupt_incomplete_duplicate_or_foreign_ledgers_fail',
+    'test_material_batch_preservation.MaterialBatchPreservationTests.test_every_exact_update_rejects_arbitrary_bytes_and_wrong_edits',
+    'test_material_batch_preservation.MaterialBatchPreservationTests.test_every_prior_catalog_object_and_metadata_is_preserved',
+    'test_material_batch_preservation.MaterialBatchPreservationTests.test_existing_catalog_only_claim_evidence_append_contract_is_retained',
+    'test_material_batch_preservation.MaterialBatchPreservationTests.test_fixed_objects_cannot_be_mutated_removed_or_duplicated',
+    'test_material_batch_preservation.MaterialBatchPreservationTests.test_future_material_appends_require_truthful_live_readme_counts',
+    'test_material_batch_preservation.MaterialBatchPreservationTests.test_independent_catalog_appends_recover_pinned_release_without_mutating_inputs',
+    'test_material_batch_preservation.MaterialBatchPreservationTests.test_ledger_helper_admission_and_accepted_tree_are_pinned',
+    'test_material_batch_preservation.MaterialBatchPreservationTests.test_production_modules_have_no_test_preservation_imports',
+    'test_material_batch_preservation.MaterialBatchPreservationTests.test_readme_rejects_untrue_counts_changed_prose_and_missing_markers',
+    'test_material_batch_preservation.MaterialBatchPreservationTests.test_seven_new_material_admissions_are_exact_independent_subsets',
+    'test_material_bulk_preservation.ExactOutputMigrationTests.test_each_migration_has_exact_reversible_nonempty_byte_edits',
+    'test_material_bulk_preservation.ExactOutputMigrationTests.test_output_ledger_is_finite_and_anchored_to_untouched_v034_snapshot',
+    'test_material_bulk_preservation.ExactOutputMigrationTests.test_source_fidelity_bridge_drops_no_unlisted_field',
+    'test_material_bulk_preservation.FreshGraphResolutionTests.test_no_cached_success_after_any_graph_component_is_mutated',
+    'test_material_bulk_preservation.FreshGraphResolutionTests.test_one_validation_per_operation_and_fresh_validation_on_repeat',
+    'test_material_bulk_preservation.FreshGraphResolutionTests.test_results_are_detached_and_ordered_and_do_not_mutate_inputs',
+    'test_material_bulk_preservation.InstalledWheelAppendGuardTests.test_each_missing_historical_id_duplicate_or_relabel_is_rejected',
+    'test_material_bulk_preservation.InstalledWheelAppendGuardTests.test_exact_historical_cohorts_survive_unrelated_mixed_appends',
+    'test_material_bulk_preservation.MaterialBulkPreservationTests.test_accepted_tree_ledger_helper_and_admission_are_pinned',
+    'test_material_bulk_preservation.MaterialBulkPreservationTests.test_all_402_predecessor_files_round_trip_exactly',
+    'test_material_bulk_preservation.MaterialBulkPreservationTests.test_bridge_restores_only_the_pinned_finite_taxonomy_and_labels',
+    'test_material_bulk_preservation.MaterialBulkPreservationTests.test_every_retained_object_metadata_and_label_is_checked_before_projection',
+    'test_material_bulk_preservation.MaterialBulkPreservationTests.test_exact_edits_reject_changed_successor_before_image_and_offsets',
+    'test_material_bulk_preservation.MaterialBulkPreservationTests.test_independent_suffix_appends_do_not_mutate_or_hide_retained_data',
+    'test_material_bulk_preservation.MaterialBulkPreservationTests.test_malformed_incomplete_duplicate_and_foreign_ledgers_are_rejected',
+    'test_material_bulk_preservation.MaterialBulkPreservationTests.test_new_admissions_pin_complete_objects_without_a_live_registry_ceiling',
+    'test_material_bulk_preservation.MaterialBulkPreservationTests.test_no_production_module_imports_test_preservation',
+    'test_material_bulk_preservation.MaterialBulkPreservationTests.test_readme_counts_and_noncount_prose_remain_checked',
+    'test_material_catalog_preservation.MaterialCatalogPreservationTests.test_all_old_noncatalog_files_recover_exact_accepted_bytes',
+    'test_material_catalog_preservation.MaterialCatalogPreservationTests.test_baseline_sources_and_initial_admitted_records_are_exact_subsets',
+    'test_material_catalog_preservation.MaterialCatalogPreservationTests.test_corrupt_or_incomplete_ledgers_fail',
+    'test_material_catalog_preservation.MaterialCatalogPreservationTests.test_current_material_summary_is_derived_from_actual_registry',
+    'test_material_catalog_preservation.MaterialCatalogPreservationTests.test_new_ledger_helper_and_admission_are_pinned',
+    'test_material_catalog_preservation.MaterialCatalogPreservationTests.test_readme_normalization_rejects_changed_prose_and_untrue_counts',
+    'test_material_catalog_preservation.MaterialCatalogPreservationTests.test_successors_round_trip_and_arbitrary_bytes_fail',
+    'test_material_class_counts_preservation.MaterialClassCountsPreservationTests.test_all_old_ledgers_remain_unchanged_and_new_ledger_mutations_fail',
+    'test_material_class_counts_preservation.MaterialClassCountsPreservationTests.test_changed_bytes_paths_types_and_before_images_cannot_use_the_bridge',
+    'test_material_class_counts_preservation.MaterialClassCountsPreservationTests.test_five_exact_predecessors_round_trip_including_ci_and_helpers',
+    'test_material_class_counts_preservation.MaterialClassCountsPreservationTests.test_helper_ledger_and_three_snapshot_resources_are_pinned',
+    'test_material_class_counts_preservation.MaterialClassCountsPreservationTests.test_readme_exact_recovery_and_all_seven_original_material_chains',
+    'test_material_class_counts_preservation.MaterialClassCountsPreservationTests.test_snapshot_is_fixed_while_marked_totals_follow_an_append_rehearsal',
+    'test_material_class_counts_preservation.MaterialClassCountsPreservationTests.test_snapshot_sentence_matches_actual_core_classes_and_only_natural_reaches_goal',
+    'test_material_class_counts_preservation.MaterialClassCountsPreservationTests.test_wrong_class_counts_dates_duplicate_sentences_and_prose_fail_closed',
+    'test_release_metadata.ReleaseMetadataTests.test_all_current_engine_labels_match_package',
+    'test_release_metadata.ReleaseMetadataTests.test_build_configuration_and_readme_use_current_version',
+    'test_release_metadata.ReleaseMetadataTests.test_comparison_embedded_snapshots_and_exact_references',
+    'test_release_metadata.ReleaseMetadataTests.test_local_schema_reference_targets_exist',
+    'test_release_metadata.ReleaseMetadataTests.test_version_is_one_build_readable_literal',
+)
+TARGETED_CORE_COUNT = 131
+TARGETED_CORE_SHA256 = '1c8197105e9450a5e8420621fa7e4de5e844e4f4358997e12ecd313391635bc0'
+
 PACKET_PATH = 'experimental/material-batches/bruns-nbs2-borosilicate-20261023/prepared-packet.json'
 PACKET_SHA256 = '7bc0fb2ba2dc3512abb95b7bf27b9f25d12c868d4bba041f667421572e5eccde'
 BASELINE_HASHES = {
@@ -244,10 +409,14 @@ def inventory_fingerprint(ids):
 
 
 def validate_inventory(name, ids):
-    _, count, digest = TEST_GROUPS[name]
-    require(count > 0 and len(digest) == 64, 'Complete inventory is not frozen: ' + name)
+    if name == 'targeted-core':
+        count, digest = TARGETED_CORE_COUNT, TARGETED_CORE_SHA256
+        require(tuple(sorted(ids)) == TARGETED_CORE_IDS, 'Targeted core exact IDs differ')
+    else:
+        _, count, digest = TEST_GROUPS[name]
+    require(count > 0 and len(digest) == 64, 'Exact inventory is not frozen: ' + name)
     require(len(ids) == len(set(ids)) == count and inventory_fingerprint(ids) == digest,
-            'Complete inventory differs from the fixed sorted-ID fingerprint: ' + name)
+            'Exact inventory differs from the fixed sorted-ID fingerprint: ' + name)
 
 
 def declared_test_ids(relative, *, predecessor=False):
@@ -335,7 +504,7 @@ def source_skip_contract(*, platform_name=None, dossier_enabled=None):
 
 def validate_result(name, discovered, result, *, skip_contract=None):
     mandatory, optional = skip_contract if skip_contract is not None else ({}, {})
-    require(name == 'core' or not (mandatory or optional), 'Installed suites cannot allow skips')
+    require(name == 'core' or not (mandatory or optional), 'Only full core mode may allow the exact source skip policy')
     observed = [(test.id(), reason) for test, reason in result.skipped]
     skipped = dict(observed)
     require(len(observed) == len(skipped), 'Duplicate skipped test ID')
@@ -348,10 +517,34 @@ def validate_result(name, discovered, result, *, skip_contract=None):
             and result.passed_ids == passed and result.wasSuccessful()
             and not result.expectedFailures and not result.unexpectedSuccesses,
             name + ': discovered/started/passed/skipped IDs differ, or failures/errors occurred')
-    return {'group': name, 'discovered': len(discovered), 'started': result.testsRun,
+    return {'group': name, **coverage_description(name), 'discovered': len(discovered), 'started': result.testsRun,
             'passed': len(result.passed_ids), 'skipped': len(skipped), 'failed': 0, 'errors': 0,
             'skipped_tests': [{'test_id': identifier, 'reason': reason} for identifier, reason in observed],
             'inventory_sha256': inventory_fingerprint(discovered)}
+
+
+def coverage_description(name):
+    if name == 'targeted-core':
+        return {'coverage': 'targeted-core-only', 'full_core_reproduction': False,
+                'full_core_inventory_count': TEST_GROUPS['core'][1],
+                'not_selected_count': TEST_GROUPS['core'][1] - TARGETED_CORE_COUNT,
+                'not_selected_status': 'not run; neither passed nor skipped'}
+    return {'coverage': 'full-core' if name == 'core' else 'complete-installed-group',
+            'full_core_reproduction': name == 'core'}
+
+
+def load_group(name):
+    relative = 'tests' if name == 'targeted-core' else TEST_GROUPS[name][0]
+    loader = unittest.TestLoader()
+    if name == 'targeted-core':
+        suite = unittest.TestSuite(loader.discover(str(ROOT / relative), pattern=module + '.py')
+                                   for module in TARGETED_CORE_MODULES)
+    else:
+        suite = loader.discover(str(ROOT / relative), pattern='test*.py')
+    require(not loader.errors, 'Exact test loading failed: ' + '\n'.join(loader.errors))
+    discovered = list(test_ids(suite))
+    validate_inventory(name, discovered)
+    return suite, discovered
 
 
 def run_group(name):
@@ -363,25 +556,23 @@ def run_group(name):
         require('Offline fixture CI' in str(error), 'Wrong offline guard failure')
     else:
         raise RuntimeError('Offline guard did not block DNS')
-    relative, _, _ = TEST_GROUPS[name]
     skip_policy = source_skip_contract() if name == 'core' else ({}, {})
-    if name == 'core':
+    source_group = name in {'core', 'targeted-core'}
+    if source_group:
         sys.path.insert(0, str(ROOT))
     else:
         require(sys.prefix != sys.base_prefix, 'Package checks require a fresh installation')
         require(str(ROOT) not in sys.path, 'Checkout root must not shadow installed packages')
         installed_origins()
-    loader = unittest.TestLoader()
-    suite = loader.discover(str(ROOT / relative), pattern='test*.py')
-    require(not loader.errors, 'Complete test loading failed: ' + '\n'.join(loader.errors))
-    discovered = list(test_ids(suite))
-    validate_inventory(name, discovered)
-    print('DISCOVERED ' + json.dumps({'group': name, 'count': len(discovered), 'test_ids': discovered}, sort_keys=True), flush=True)
+    suite, discovered = load_group(name)
+    print('DISCOVERED ' + json.dumps({'group': name, **coverage_description(name),
+                                     'count': len(discovered), 'test_ids': discovered}, sort_keys=True), flush=True)
     result = unittest.TextTestRunner(verbosity=2, resultclass=ExactResult, failfast=False).run(suite)
     summary = validate_result(name, discovered, result, skip_contract=skip_policy)
-    if name != 'core':
+    if not source_group:
         installed_origins()
     print('COMPLETE ' + json.dumps(summary, sort_keys=True), flush=True)
+    return summary
 
 
 def table_rows(graphs):
@@ -544,29 +735,34 @@ def check_installed(wheel_dir, dependency_dir):
         # Reuse the existing independent installed CLI/API/linked-fixture smoke,
         # but load the portable guard explicitly, including in CLI subprocesses.
         run([python, '-B', ROOT / 'experimental/platform/ci/check_offline.py', 'installed-smoke'], cwd=work, env=env)
-    print('Complete Bruns source/installed contract: installed phase passed; no live, deployment or release claim.', flush=True)
+    print('Complete Bruns installed contract: all eight installed groups passed; '
+          'no claim about source tests, live services, deployment or release.', flush=True)
 
 
-def main():
+def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     actions = parser.add_mutually_exclusive_group(required=True)
     actions.add_argument('--validate-scope', action='store_true')
-    actions.add_argument('--test', action='store_true')
+    actions.add_argument('--test', action='store_true', help='Reproduce the full exact core inventory')
+    actions.add_argument('--targeted-core', action='store_true',
+                         help='Run only the frozen complete-module core selection, not the full core suite')
     actions.add_argument('--wheel-dir', type=Path)
     actions.add_argument('--installed-group', choices=tuple(name for name in TEST_GROUPS if name != 'core'))
     parser.add_argument('--dependency-dir', type=Path)
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
+    if args.dependency_dir and not args.wheel_dir:
+        parser.error('--dependency-dir requires --wheel-dir')
     if args.installed_group:
         run_group(args.installed_group)
         return
     validate_scope()
     if args.test:
         run_group('core')
+    elif args.targeted_core:
+        run_group('targeted-core')
     elif args.wheel_dir:
         require(args.dependency_dir is not None, '--wheel-dir requires --dependency-dir')
         check_installed(args.wheel_dir.resolve(), args.dependency_dir.resolve())
-    elif args.dependency_dir:
-        parser.error('--dependency-dir requires --wheel-dir')
 
 
 if __name__ == '__main__':

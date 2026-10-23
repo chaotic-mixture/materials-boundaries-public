@@ -1,5 +1,7 @@
 """Fail-closed CI scope, complete inventories and exact Bruns append contract."""
 from copy import deepcopy
+import contextlib
+import io
 import importlib.util
 import json
 from pathlib import Path
@@ -283,6 +285,190 @@ class BrunsBorosilicateSkipPolicyTests(unittest.TestCase):
             setattr(r, attribute, value)
             with self.assertRaises(RuntimeError):
                 ci.validate_result('query', ids, r)
+
+class BrunsBorosilicateTargetedCoreTests(unittest.TestCase):
+    def test_targeted_inventory_is_all_cases_from_exact_complete_modules(self):
+        expected_modules = {
+            'test_release_metadata', 'test_bruns_borosilicate_packet',
+            'test_bruns_borosilicate_preservation', 'test_bruns_borosilicate_ci',
+            'test_legacy_document_recovery', 'test_material_class_counts_preservation',
+            'test_material_bulk_preservation', 'test_composite_preservation',
+            'test_evidence_dedup_preservation', 'test_material_batch_preservation',
+            'test_material_catalog_preservation', 'test_family_adjacency_history',
+            'test_family_adjacency_ci', 'test_material_append_merge',
+        }
+        self.assertEqual(set(ci.TARGETED_CORE_MODULES), expected_modules)
+        self.assertEqual(len(ci.TARGETED_CORE_MODULES), len(expected_modules))
+        all_ids = ci.declared_test_ids('tests')
+        selected = [identifier for identifier in all_ids if identifier.split('.')[0] in expected_modules]
+        self.assertEqual(tuple(selected), ci.TARGETED_CORE_IDS)
+        self.assertEqual(len(selected), ci.TARGETED_CORE_COUNT)
+        self.assertEqual(ci.inventory_fingerprint(selected), ci.TARGETED_CORE_SHA256)
+        self.assertTrue(set(selected) < set(all_ids))
+        ci.validate_inventory('core', all_ids)
+        ci.validate_inventory('targeted-core', selected)
+        self.assertIn(self.id().split('tests.')[-1], selected)
+
+    def test_targeted_discovery_loads_complete_modules_not_individual_ids(self):
+        with patch.object(ci.unittest.TestLoader, 'discover', autospec=True,
+                          wraps=None) as discover, patch.object(ci, 'validate_inventory'):
+            discover.return_value = unittest.TestSuite()
+            ci.load_group('targeted-core')
+        self.assertEqual([call.kwargs['pattern'] for call in discover.call_args_list],
+                         [module + '.py' for module in ci.TARGETED_CORE_MODULES])
+        self.assertTrue(all(call.args[1] == str(ROOT / 'tests') for call in discover.call_args_list))
+
+    def test_real_targeted_discovery_matches_frozen_ids_without_running_cases(self):
+        _, discovered = ci.load_group('targeted-core')
+        self.assertEqual(tuple(sorted(discovered)), ci.TARGETED_CORE_IDS)
+        self.assertEqual(len(discovered), len(set(discovered)))
+
+    def test_targeted_inventory_rejects_missing_duplicate_substituted_and_extra_ids(self):
+        ids = list(ci.TARGETED_CORE_IDS)
+        for altered in (ids[:-1], ids + ids[:1], ids[1:] + ['replacement.Case.test_other'],
+                        ids + ['test_bruns_borosilicate_ci.NewCase.test_new']):
+            with self.subTest(count=len(altered)), self.assertRaises(RuntimeError):
+                ci.validate_inventory('targeted-core', altered)
+        with patch.object(ci, 'TARGETED_CORE_SHA256', '0' * 64), self.assertRaises(RuntimeError):
+            ci.validate_inventory('targeted-core', ids)
+        with patch.object(ci, 'TARGETED_CORE_COUNT', len(ids) - 1), self.assertRaises(RuntimeError):
+            ci.validate_inventory('targeted-core', ids)
+
+    def test_targeted_loading_errors_are_not_a_partial_pass(self):
+        loader = SimpleNamespace(errors=['broken module'], discover=lambda *args, **kwargs: unittest.TestSuite())
+        with patch.object(ci.unittest, 'TestLoader', return_value=loader), self.assertRaisesRegex(RuntimeError, 'loading failed'):
+            ci.load_group('targeted-core')
+
+    def test_full_mode_still_discovers_all_core_tests(self):
+        with patch.object(ci.unittest.TestLoader, 'discover', return_value=unittest.TestSuite()) as discover, \
+                patch.object(ci, 'validate_inventory') as validate:
+            ci.load_group('core')
+        discover.assert_called_once_with(str(ROOT / 'tests'), pattern='test*.py')
+        validate.assert_called_once_with('core', [])
+
+    def test_cli_selects_targeted_full_and_installed_modes_unambiguously(self):
+        for arguments, selected in ((['--targeted-core'], 'targeted-core'), (['--test'], 'core'),
+                                    (['--installed-group', 'query'], 'query')):
+            with self.subTest(arguments=arguments), patch.object(ci, 'validate_scope') as scope, \
+                    patch.object(ci, 'run_group') as run_group, patch.object(ci, 'check_installed') as installed:
+                ci.main(arguments)
+                run_group.assert_called_once_with(selected)
+                self.assertEqual(scope.call_count, 0 if selected == 'query' else 1)
+                installed.assert_not_called()
+        with patch.object(ci, 'validate_scope') as scope, patch.object(ci, 'run_group') as group:
+            ci.main(['--validate-scope'])
+            scope.assert_called_once_with()
+            group.assert_not_called()
+
+    def test_cli_rejects_conflicting_modes_and_misplaced_dependencies(self):
+        for arguments in (['--test', '--targeted-core'], ['--targeted-core', '--installed-group', 'query'],
+                          ['--targeted-core', '--wheel-dir', 'dist'],
+                          ['--targeted-core', '--dependency-dir', 'deps'],
+                          ['--test', '--dependency-dir', 'deps'], ['--installed-group', 'targeted-core']):
+            with self.subTest(arguments=arguments), patch.object(ci, 'validate_scope') as scope, \
+                    patch.object(ci, 'run_group') as group, contextlib.redirect_stderr(io.StringIO()), \
+                    self.assertRaises(SystemExit) as error:
+                ci.main(arguments)
+            self.assertEqual(error.exception.code, 2)
+            scope.assert_not_called()
+            group.assert_not_called()
+
+    def test_targeted_results_cannot_use_any_source_skip_exception(self):
+        ids = list(ci.TARGETED_CORE_IDS)
+        for reason in ('optional dependency missing', 'requires actual native Windows on local NTFS', None):
+            result = synthetic_result(ids, [(ids[0], reason)])
+            with self.subTest(reason=reason), self.assertRaises(RuntimeError):
+                ci.validate_result('targeted-core', ids, result)
+        contract = ci.source_skip_contract(platform_name='posix', dossier_enabled=False)
+        with self.assertRaises(RuntimeError):
+            ci.validate_result('targeted-core', ids, synthetic_result(ids, []), skip_contract=contract)
+
+    def test_targeted_results_reject_unexecuted_duplicate_failed_or_unpassed_cases(self):
+        ids = list(ci.TARGETED_CORE_IDS)
+        for attribute, value in (('testsRun', len(ids) - 1), ('started_ids', ids[:-1]),
+                                 ('started_ids', ids[:-1] + ids[:1]), ('passed_ids', ids[:-1]),
+                                 ('passed_ids', ids[:-1] + ids[:1]), ('wasSuccessful', lambda: False),
+                                 ('expectedFailures', [('test', 'expected')]), ('unexpectedSuccesses', ['test'])):
+            result = synthetic_result(ids, [])
+            setattr(result, attribute, value)
+            with self.subTest(attribute=attribute), self.assertRaises(RuntimeError):
+                ci.validate_result('targeted-core', ids, result)
+
+    def test_targeted_summary_distinguishes_excluded_cases_from_passes_and_skips(self):
+        ids = list(ci.TARGETED_CORE_IDS)
+        summary = ci.validate_result('targeted-core', ids, synthetic_result(ids, []))
+        self.assertEqual(summary['coverage'], 'targeted-core-only')
+        self.assertFalse(summary['full_core_reproduction'])
+        self.assertEqual(summary['passed'], ci.TARGETED_CORE_COUNT)
+        self.assertEqual(summary['skipped'], 0)
+        self.assertEqual(summary['not_selected_count'], ci.TEST_GROUPS['core'][1] - len(ids))
+        self.assertGreater(summary['not_selected_count'], 0)
+        self.assertEqual(summary['not_selected_status'], 'not run; neither passed nor skipped')
+        self.assertEqual(ci.coverage_description('core')['coverage'], 'full-core')
+        self.assertTrue(ci.coverage_description('core')['full_core_reproduction'])
+        self.assertEqual(ci.coverage_description('query')['coverage'], 'complete-installed-group')
+        self.assertFalse(ci.coverage_description('query')['full_core_reproduction'])
+
+    def test_targeted_runner_emits_honest_coverage_and_never_requests_source_skips(self):
+        ids = list(ci.TARGETED_CORE_IDS)
+        output = io.StringIO()
+        runner = SimpleNamespace(run=lambda suite: synthetic_result(ids, []))
+        with patch.object(ci, 'install_offline_guard'), \
+                patch('socket.getaddrinfo', side_effect=RuntimeError('Offline fixture CI')), \
+                patch.object(ci, 'load_group', return_value=(unittest.TestSuite(), ids)), \
+                patch.object(ci.unittest, 'TextTestRunner', return_value=runner), \
+                patch.object(ci, 'source_skip_contract') as skips, \
+                patch.object(ci, 'installed_origins') as origins, contextlib.redirect_stdout(output):
+            ci.run_group('targeted-core')
+        skips.assert_not_called()
+        origins.assert_not_called()
+        records = [json.loads(line.split(' ', 1)[1]) for line in output.getvalue().splitlines()]
+        self.assertEqual(len(records), 2)
+        for record in records:
+            self.assertEqual(record['group'], 'targeted-core')
+            self.assertEqual(record['coverage'], 'targeted-core-only')
+            self.assertFalse(record['full_core_reproduction'])
+            self.assertEqual(record['not_selected_status'], 'not run; neither passed nor skipped')
+        self.assertEqual(records[-1]['passed'], len(ids))
+
+    def test_failed_targeted_execution_cannot_emit_complete(self):
+        ids = list(ci.TARGETED_CORE_IDS)
+        failed = synthetic_result(ids, [])
+        failed.wasSuccessful = lambda: False
+        output = io.StringIO()
+        with patch.object(ci, 'install_offline_guard'), \
+                patch('socket.getaddrinfo', side_effect=RuntimeError('Offline fixture CI')), \
+                patch.object(ci, 'load_group', return_value=(unittest.TestSuite(), ids)), \
+                patch.object(ci.unittest, 'TextTestRunner', return_value=SimpleNamespace(run=lambda suite: failed)), \
+                contextlib.redirect_stdout(output), self.assertRaises(RuntimeError):
+            ci.run_group('targeted-core')
+        self.assertNotIn('COMPLETE ', output.getvalue())
+
+    def test_hosted_job_uses_targeted_core_and_keeps_installed_protocol(self):
+        self.assertIn('run_bruns_borosilicate_ci.py --targeted-core\n', ci.TARGETED_JOB)
+        self.assertNotIn('run_bruns_borosilicate_ci.py --test\n', ci.TARGETED_JOB)
+        self.assertIn('run_bruns_borosilicate_ci.py --wheel-dir dist --dependency-dir dist/dependencies', ci.TARGETED_JOB)
+        self.assertEqual(len(ci.TEST_GROUPS) - 1, 8)
+        self.assertEqual(sum(count for name, (_, count, _) in ci.TEST_GROUPS.items() if name != 'core'), 535)
+        self.assertEqual(len(ci.PACKAGES), 6)
+        self.assertIn('    timeout-minutes: ' + str(ci.HOSTED_TIMEOUT_MINUTES) + '\n', ci.TARGETED_JOB)
+        self.assertEqual(ci.HOSTED_TIMEOUT_MINUTES, 90)
+
+    def test_full_runner_keeps_exact_source_skip_policy(self):
+        contract = ci.source_skip_contract(platform_name='posix', dossier_enabled=False)
+        ids = sorted([*contract[0], 'extra.Case.test_pass'])
+        result = synthetic_result(ids, list(contract[0].items()))
+        with patch.object(ci, 'install_offline_guard'), \
+                patch('socket.getaddrinfo', side_effect=RuntimeError('Offline fixture CI')), \
+                patch.object(ci, 'load_group', return_value=(unittest.TestSuite(), ids)), \
+                patch.object(ci.unittest, 'TextTestRunner', return_value=SimpleNamespace(run=lambda suite: result)), \
+                patch.object(ci, 'source_skip_contract', return_value=contract) as skips, \
+                contextlib.redirect_stdout(io.StringIO()):
+            summary = ci.run_group('core')
+        skips.assert_called_once_with()
+        self.assertEqual(summary['coverage'], 'full-core')
+        self.assertEqual(summary['passed'], 1)
+        self.assertEqual(summary['skipped'], 18)
 
 
 if __name__ == '__main__':

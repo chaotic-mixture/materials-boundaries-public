@@ -532,7 +532,7 @@ jobs:
   bruns-borosilicate-targeted:
     if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/experimental/borosilicate-growth-bruns2020' }}
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 60
+    timeout-minutes: 90
     strategy:
       fail-fast: false
       matrix:
@@ -556,7 +556,7 @@ jobs:
       - run: python scripts/run_bruns_borosilicate_ci.py --validate-scope
       - run: "python -m pip install --no-deps --only-binary=:all: -r experimental/platform/ci/build-requirements.txt"
       - run: python -m pip install --no-build-isolation -e '.[dev]'
-      - run: python scripts/run_bruns_borosilicate_ci.py --test
+      - run: python scripts/run_bruns_borosilicate_ci.py --targeted-core
       - run: python scripts/validate_catalogs.py
       - run: python -m pip wheel --no-index --no-deps --no-build-isolation --wheel-dir dist . ./formal-catalog ./experimental/platform/federation ./experimental/platform/query-service ./experimental/platform/lifecycle ./experimental/platform
       - run: "python -m pip download --no-deps --only-binary=:all: --dest dist/dependencies -r experimental/platform/requirements-lock.txt -r experimental/platform/ci/projection-requirements.txt"

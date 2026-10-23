@@ -64,7 +64,7 @@ BRUNS_BATCH_ID = "bruns-nbs2-borosilicate-20261023"
 BRUNS_DATA_LEDGER = "tests/fixtures/bruns_borosilicate_data_20261023.json"
 BRUNS_DATA_SHA256 = "6eded8614db38dcd26ad1e570d7ad783110dd690296e59a9270300bfd3a0a016"
 BRUNS_FILE_LEDGER = "tests/fixtures/bruns_borosilicate_files_20261023.json"
-BRUNS_FILE_SHA256 = "62f8b59780986e2f318ead897d6bb7097856642133433ed8e08b45dc83852267"
+BRUNS_FILE_SHA256 = "90e4d8910339118162fea9eb96ecf1e3bfe4c4b6becb348f92bb0cab65ca3d2c"
 
 FROZEN_SUCCESSORS = (
     {"batch_id": BRUNS_BATCH_ID,
