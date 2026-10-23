@@ -72,8 +72,8 @@ class FormalOverlapAuditTests(unittest.TestCase):
     def query(self, **fields):
         report = audit.build_report(document({'probe_id': 'synthetic_probe', **fields}))
         result = report['probe_results'][0]
-        self.assertEqual(sum(result['counts'].values()), 1172)
-        self.assertEqual(len(result['relations']), 1172)
+        self.assertEqual(sum(result['counts'].values()), 1177)
+        self.assertEqual(len(result['relations']), 1177)
         self.assertIsNone(result['new_material_count'])
         self.assertEqual(result['admitted_delta'], 0)
         return result
@@ -85,14 +85,14 @@ class FormalOverlapAuditTests(unittest.TestCase):
         # Retain the historical test ID; the runtime inventory uses the exact
         # current experiment, while archived 1081-entry reports stay unchanged.
         self.assertEqual(self.inventory['formal_counts'], {
-            'formal_project_admission_count': 1172,
-            'legacy_source_qualified_identity_count': 1148,
+            'formal_project_admission_count': 1177,
+            'legacy_source_qualified_identity_count': 1153,
             'reviewed_computed_composition_count': 24,
             'categories': {'natural': 1010, 'metal': 44, 'inorganic': 65,
-                           'polymer': 25, 'composite': 28}})
-        self.assertEqual(len(self.rows), 1172)
+                           'polymer': 30, 'composite': 28}})
+        self.assertEqual(len(self.rows), 1177)
         self.assertEqual(sum(row['partition'] == 'legacy-source-qualified'
-                             for row in self.rows.values()), 1148)
+                             for row in self.rows.values()), 1153)
         self.assertEqual(sum(row['partition'] == 'reviewed-computed'
                              for row in self.rows.values()), 24)
         self.assertEqual([row['formal_id'] for row in self.inventory['rows']],
@@ -103,13 +103,13 @@ class FormalOverlapAuditTests(unittest.TestCase):
     def test_primary_partition_and_overlapping_dimensions_are_distinct(self):
         self.assertEqual(self.report['primary_comparability_partition'], {
             'structured_composition': 24, 'scoped_taxon_identity': 1000,
-            'advisory_taxon_crosswalk': 6, 'source_qualified_text_only': 142})
-        self.assertEqual(sum(self.report['primary_comparability_partition'].values()), 1172)
+            'advisory_taxon_crosswalk': 6, 'source_qualified_text_only': 147})
+        self.assertEqual(sum(self.report['primary_comparability_partition'].values()), 1177)
         self.assertEqual(self.report['overlapping_field_coverage_dimensions'], {
             'structured_integer_composition': 24, 'scoped_canonical_taxon': 1000,
-            'advisory_taxon_crosswalk': 6, 'reported_composition_prose': 139,
+            'advisory_taxon_crosswalk': 6, 'reported_composition_prose': 144,
             'associated_grade': 31, 'composite_category': 28})
-        self.assertGreater(sum(self.report['overlapping_field_coverage_dimensions'].values()), 1172)
+        self.assertGreater(sum(self.report['overlapping_field_coverage_dimensions'].values()), 1177)
 
     def test_each_reported_identity_digest_binds_the_frozen_source_record(self):
         legacy = json.loads(self.pinned_paths[0].read_bytes())['identities']
@@ -134,15 +134,15 @@ class FormalOverlapAuditTests(unittest.TestCase):
         self.assertIsNone(row['structured_composition'])
         self.assertEqual(row['composition_prose_paths'], [])
         materials = json.loads(self.pinned_paths[0].read_bytes())
-        self.assertEqual(len(materials['identities']), 1148)
-        self.assertEqual(len(materials['records']), 1149)
+        self.assertEqual(len(materials['identities']), 1153)
+        self.assertEqual(len(materials['records']), 1154)
         linked = [state for state in materials['records'] if state['identity_id'] == 'mat_aniskevich_2023_ultimaker_nylon']
         self.assertEqual([state['id'] for state in linked], ['state_aniskevich_2023_ultimaker_nylon_transparent_filament'])
         self.assertEqual(linked[0]['source_designation'], 'PA, Nylon Transparent 1647')
         self.assertEqual(len(linked[0]['property_ids']), 2)
         self.assertEqual(linked[0]['state']['composition_or_purity']['status'], 'not_reported_in_inspected_source')
         self.assertIsNone(linked[0]['state']['composition_or_purity']['text'])
-        self.assertEqual(self.inventory['formal_counts']['formal_project_admission_count'], 1172)
+        self.assertEqual(self.inventory['formal_counts']['formal_project_admission_count'], 1177)
 
     def test_tough_pla_two_states_form_one_formal_identity(self):
         formal_id = 'legacy:mat_aniskevich_2023_ultimaker_tough_pla'
@@ -157,13 +157,13 @@ class FormalOverlapAuditTests(unittest.TestCase):
         self.assertIsNone(row['structured_composition'])
         self.assertEqual(row['composition_prose_paths'], ['/records/1142/state/composition_or_purity', '/records/1143/state/composition_or_purity'])
         materials = json.loads(self.pinned_paths[0].read_bytes())
-        self.assertEqual(len(materials['identities']), 1148)
-        self.assertEqual(len(materials['records']), 1149)
+        self.assertEqual(len(materials['identities']), 1153)
+        self.assertEqual(len(materials['records']), 1154)
         linked = [state for state in materials['records'] if state['identity_id'] == 'mat_aniskevich_2023_ultimaker_tough_pla']
         self.assertEqual({state['id'] for state in linked}, set(['state_aniskevich_2023_ultimaker_tough_pla_black_filament', 'state_aniskevich_2023_ultimaker_tough_pla_white_filament']))
         self.assertEqual({state['source_designation'] for state in linked},
                          {'PLA Tough White 20231', 'PLA Tough Black 202300'})
-        self.assertEqual(self.inventory['formal_counts']['formal_project_admission_count'], 1172)
+        self.assertEqual(self.inventory['formal_counts']['formal_project_admission_count'], 1177)
 
     def test_legacy_names_grades_and_composites_never_become_stoichiometry(self):
         legacy = [row for row in self.rows.values() if row['partition'] == 'legacy-source-qualified']
@@ -238,7 +238,50 @@ class FormalOverlapAuditTests(unittest.TestCase):
                               state['source_scope'])
                 relation = audit.compare_probe(row, {'probe_id': 'excluded_state', 'terms': ['quenched']})
                 self.assertEqual(relation['status'], 'unable_to_compare')
-        self.assertEqual(self.inventory['formal_counts']['formal_project_admission_count'], 1172)
+        self.assertEqual(self.inventory['formal_counts']['formal_project_admission_count'], 1177)
+
+    def test_tarasov_nominal_recipes_remain_qualified_text(self):
+        materials = json.loads(self.pinned_paths[0].read_bytes())
+        states = {row['identity_id']: row for row in materials['records']
+                  if row['id'].startswith('state_tarasov2022_pna_bpf_')}
+        expected_ids = {'mat_tarasov2022_pna_bpf_' + str(index) for index in range(1, 6)}
+        self.assertEqual(set(states), expected_ids)
+        self.assertEqual({row['id'] for row in materials['identities']
+                          if row['id'].startswith('mat_tarasov2022_pna_bpf_')}, expected_ids)
+        self.assertEqual(len([row for row in materials['records']
+                              if row['id'].startswith('state_tarasov2022_pna_bpf_')]), 5)
+        for index, nominal in enumerate(('1:8:16', '1:9:16', '1:12:16', '1:18:16', '1:24:16'), 1):
+            identity_id = 'mat_tarasov2022_pna_bpf_' + str(index)
+            row = self.rows['legacy:' + identity_id]
+            state = states[identity_id]
+            with self.subTest(identity_id=identity_id):
+                self.assertEqual(row['partition'], 'legacy-source-qualified')
+                self.assertEqual(row['category'], 'polymer')
+                self.assertEqual(row['state_count'], 1)
+                self.assertEqual(row['grade_count'], 0)
+                self.assertEqual(row['primary_comparability'], 'source_qualified_text_only')
+                self.assertIsNone(row['structured_composition'])
+                self.assertIsNone(row['provider_reference'])
+                self.assertIsNone(state['grade_id'])
+                self.assertEqual(state['state']['reinforcement']['status'], 'not_applicable')
+                self.assertEqual(state['property_ids'], [
+                    'refprop_tarasov2022_pna_bpf_' + str(index) + '_tensile_strength'])
+                cues = [cue for cue in row['comparison_cues'] if cue['kind'] == 'composition_or_purity']
+                self.assertEqual(len(cues), 1)
+                cue = cues[0]
+                self.assertEqual(cue['text'], 'Nominal source feed label HCP:BPF:ECH = ' + nominal
+                                 + '; mixed phosphazene-containing epoxy resin based on bisphenol F, '
+                                 + 'cured using source-described stoichiometric DDS.')
+                self.assertIn('internally inconsistent', cue['context']['identity_scope'])
+                self.assertIn('not pure molecular species', cue['context']['identity_scope'])
+                self.assertIn('The exact DDS fraction and final cured composition are not established',
+                              cue['context']['composition_notes'])
+                relation = audit.compare_probe(row, {'probe_id': 'nominal_feed', 'terms': [nominal]})
+                self.assertEqual(relation['status'], 'possible_overlap')
+                self.assertEqual(relation['physical_equivalence'], 'unasserted')
+                self.assertEqual(relation['reasons'], ['literal_text_cue_not_composition_or_identity'])
+                self.assertIn(cue['text'], [item.get('text') for item in relation['evidence']])
+        self.assertEqual(self.inventory['formal_counts']['formal_project_admission_count'], 1177)
 
     def test_alexandria_formula_exposes_three_distinct_qualified_relations(self):
         # Keep the historical test ID and original three relations; the four
@@ -254,7 +297,7 @@ class FormalOverlapAuditTests(unittest.TestCase):
                         for suffix in ('al1p0', 'al1p5', 'al2p0', 'al4p0'))
         self.assertEqual(set(possible), expected)
         self.assertEqual(result['counts'], {'confirmed_overlap': 0, 'possible_overlap': 7,
-                                           'unable_to_compare': 1165})
+                                           'unable_to_compare': 1170})
         for row in possible.values():
             self.assertIn('literal_text_cue_not_composition_or_identity', row['reasons'])
             self.assertNotIn('same_structured_composition_identity_unresolved', row['reasons'])
@@ -339,7 +382,7 @@ class FormalOverlapAuditTests(unittest.TestCase):
         result = self.query(formal_reference={'id': formal_id,
                                              'identity_sha256': self.rows[formal_id]['identity_sha256']})
         self.assertEqual(result['counts'], {'confirmed_overlap': 1, 'possible_overlap': 0,
-                                           'unable_to_compare': 1171})
+                                           'unable_to_compare': 1176})
         hit = self.relation(result, formal_id)
         self.assertEqual(hit['reasons'], ['exact_frozen_formal_record_reference'])
         self.assertEqual(hit['proof_scope'], 'frozen_formal_record_reference')
@@ -354,7 +397,7 @@ class FormalOverlapAuditTests(unittest.TestCase):
             with self.subTest(formal_id=formal_id):
                 result = self.query(formal_reference={'id': formal_id, 'identity_sha256': digest})
                 self.assertEqual(result['counts']['confirmed_overlap'], 0)
-                self.assertEqual(result['counts']['unable_to_compare'], 1172)
+                self.assertEqual(result['counts']['unable_to_compare'], 1177)
         result = self.query(formal_reference={'id': 'legacy:mat_aurubis_c11000',
                                              'identity_sha256': '0' * 64})
         self.assertIn('formal_reference_digest_differs',
@@ -454,7 +497,7 @@ class FormalOverlapAuditTests(unittest.TestCase):
     def test_unmatched_and_missing_composition_leave_novelty_unknown(self):
         result = self.query(terms=['synthetic_absent_material_label_8417'])
         self.assertEqual(result['counts'], {'confirmed_overlap': 0, 'possible_overlap': 0,
-                                           'unable_to_compare': 1172})
+                                           'unable_to_compare': 1177})
         row = synthetic_row()
         self.assertEqual(audit.compare_probe(row, {'probe_id': 'missing', 'formula': 'Al2O3'})['status'],
                          'unable_to_compare')

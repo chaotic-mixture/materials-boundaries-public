@@ -50,6 +50,7 @@ class BrunsBorosilicatePacketTests(unittest.TestCase):
         cls.spec = read(BATCH / 'packet-spec.json')
         cls.packet = read(BATCH / 'prepared-packet.json')
         cls.current = {key: read(BASELINE / filename) for key, filename in FILES.items()}
+        cls.current = successors.project_successor_catalogs(cls.current, before=BATCH.name)
         cls.baseline = recover_catalogs(ROOT, cls.current, successors.data_ledger(BATCH.name))
         temporary = tempfile.TemporaryDirectory()
         cls.addClassCleanup(temporary.cleanup)

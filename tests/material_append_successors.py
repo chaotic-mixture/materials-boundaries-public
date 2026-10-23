@@ -66,7 +66,15 @@ BRUNS_DATA_SHA256 = "6eded8614db38dcd26ad1e570d7ad783110dd690296e59a9270300bfd3a
 BRUNS_FILE_LEDGER = "tests/fixtures/bruns_borosilicate_files_20261023.json"
 BRUNS_FILE_SHA256 = "90e4d8910339118162fea9eb96ecf1e3bfe4c4b6becb348f92bb0cab65ca3d2c"
 
+TARASOV_BATCH_ID = "tarasov-pna-bpf-20261023"
+TARASOV_DATA_LEDGER = "tests/fixtures/tarasov_pna_bpf_data_20261023.json"
+TARASOV_DATA_SHA256 = "ff13299c063b805d4cb36e73fe8db1521e88cab51aff2af13d2f4afab0a30773"
+TARASOV_FILE_LEDGER = "tests/fixtures/tarasov_pna_bpf_files_20261023.json"
+TARASOV_FILE_SHA256 = "688774855249682624bda92b9cf0daf3c96f234d8eba7befee70676d1bcc4bec"
+
 FROZEN_SUCCESSORS = (
+    {"batch_id": TARASOV_BATCH_ID,
+     "data": (TARASOV_DATA_LEDGER, TARASOV_DATA_SHA256), "files": (TARASOV_FILE_LEDGER, TARASOV_FILE_SHA256)},
     {"batch_id": BRUNS_BATCH_ID,
      "data": (BRUNS_DATA_LEDGER, BRUNS_DATA_SHA256), "files": (BRUNS_FILE_LEDGER, BRUNS_FILE_SHA256)},
     {"batch_id": "zenodo-8089569-nylon-followup-20261021",

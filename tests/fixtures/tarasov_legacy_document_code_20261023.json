@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "baseline_commit": "faa002c55b7ad2d1bd962e905275894231ab8350",
+  "scope": "exact_legacy_document_helper_successor_without_normalizer_or_old_ledger_changes",
+  "updates": {
+    "tests/legacy_document_recovery.py": {
+      "previous_sha256": "8f9e40f41de596ebeffdad024dedc211def31bef008c4e3d1f442b6d2082c0e0",
+      "sha256": "f29130047bb59b30e560b365b90aff91890ec15ae01901095e052c6362675179",
+      "edits": [
+        {
+          "offset": 854,
+          "before": "",
+          "after": "TARASOV_DOCUMENT_LEDGER = 'tests/fixtures/tarasov_legacy_document_recovery_20261023.json'\nTARASOV_DOCUMENT_SHA256 = '12c3b9e7686c0e3c45e394065ee1363b242529630b73830d2327196d5d2c0bbc'\n"
+        },
+        {
+          "offset": 1450,
+          "before": "    return project_file_chain(filename, raw, ledger['ledgers'])\n",
+          "after": "    successor = load_frozen(ROOT, TARASOV_DOCUMENT_LEDGER, TARASOV_DOCUMENT_SHA256)\n    return project_file_chain(filename, raw, successor['ledgers'] + ledger['ledgers'])\n"
+        }
+      ]
+    }
+  }
+}

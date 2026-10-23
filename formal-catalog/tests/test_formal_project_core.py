@@ -15,15 +15,15 @@ class FormalProjectCatalog(unittest.TestCase):
         cls.snapshot = formal_project_catalog()
 
     def test_exact_counts_and_categories(self):
-        self.assertEqual(self.snapshot['counts'], {'formal_project_admission_count':1172,
-            'legacy_source_qualified_identity_count':1148,'reviewed_computed_composition_count':24,
-            'categories':{'natural':1010,'metal':44,'inorganic':65,'polymer':25,'composite':28}})
-        self.assertEqual(len({r['id'] for r in self.snapshot['records']}),1172)
+        self.assertEqual(self.snapshot['counts'], {'formal_project_admission_count':1177,
+            'legacy_source_qualified_identity_count':1153,'reviewed_computed_composition_count':24,
+            'categories':{'natural':1010,'metal':44,'inorganic':65,'polymer':30,'composite':28}})
+        self.assertEqual(len({r['id'] for r in self.snapshot['records']}),1177)
 
     def test_full_legacy_identity_parity(self):
         self.assertEqual([r['identity'] for r in self.snapshot['records'] if r['partition']=='legacy-source-qualified'],read_catalog('materials')['identities'])
         coverage=material_quota_coverage(*(read_catalog(k) for k in ('materials','reference_properties','sources')))
-        self.assertEqual(coverage['distinct_material_count'],1148)
+        self.assertEqual(coverage['distinct_material_count'],1153)
 
     def test_exact_normalized_review_bytes(self):
         from importlib.resources import files
@@ -50,7 +50,7 @@ class FormalProjectCatalog(unittest.TestCase):
 
     def test_pagination_complete_and_detached(self):
         rows=[]
-        for offset in range(0,1172,100):
+        for offset in range(0,1177,100):
             rows.extend(select_formal_catalog(self.snapshot,offset=offset)['records'])
         self.assertEqual(rows,self.snapshot['records'])
         rows[0]['identity'].clear()
@@ -105,3 +105,31 @@ class FormalProjectCatalog(unittest.TestCase):
         self.assertEqual(json.loads(cli.stdout), selected)
         self.assertEqual(select_formal_catalog(self.snapshot, query='bruns2020_nbs2',
                                               partition='reviewed-computed')['matched_count'], 0)
+
+    def test_tarasov_nominal_formulations_match_formal_cli_exactly(self):
+        selected = select_formal_catalog(self.snapshot, query='tarasov2022_pna_bpf',
+                                         partition='legacy-source-qualified')
+        expected_ids = {'legacy:mat_tarasov2022_pna_bpf_' + str(index)
+                        for index in range(1, 6)}
+        self.assertEqual(selected['matched_count'], 5)
+        self.assertFalse(selected['truncated'])
+        self.assertEqual({row['id'] for row in selected['records']}, expected_ids)
+        identities = {row['id']: row for row in read_catalog('materials')['identities']}
+        for row in selected['records']:
+            with self.subTest(formal_id=row['id']):
+                self.assertEqual(row['category'], 'polymer')
+                self.assertEqual(row['identity'], identities[row['id'].removeprefix('legacy:')])
+                self.assertIn('nominal HCP:BPF:ECH label', row['identity']['identity_scope'])
+                self.assertIn('not pure molecular species', row['identity']['identity_scope'])
+                self.assertIn('no correction, normalized stoichiometry', row['identity']['identity_scope'])
+        cli = subprocess.run([sys.executable, '-X', 'utf8', '-m', 'materials_project_catalog',
+                              '--query', 'tarasov2022_pna_bpf', '--partition', 'legacy-source-qualified'],
+                             capture_output=True, text=True, encoding='utf-8', check=True)
+        self.assertEqual(json.loads(cli.stdout), selected)
+        self.assertEqual(select_formal_catalog(self.snapshot, query='tarasov2022_pna_bpf',
+                                              partition='reviewed-computed')['matched_count'], 0)
+        self.assertEqual(select_formal_catalog(self.snapshot, query='PNA-BPF-S')['matched_count'], 0)
+        selected['records'][0]['identity']['identity_scope'] = 'Changed only in this output copy'
+        self.assertNotEqual(select_formal_catalog(self.snapshot, query='tarasov2022_pna_bpf')
+                            ['records'][0]['identity']['identity_scope'],
+                            'Changed only in this output copy')

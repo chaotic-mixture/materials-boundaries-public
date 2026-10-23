@@ -1,8 +1,8 @@
 # Offline formal-catalog overlap diagnostics
 
-This standard-library-only command audits the pinned **1172 formal entries** and
+This standard-library-only command audits the pinned **1177 formal entries** and
 compares explicitly supplied local clues. It addresses a gap in
-`nomad_review_boundary`: that index checks the 1148 legacy bytes and count but
+`nomad_review_boundary`: that index checks the 1153 legacy bytes and count but
 indexes only the computed composition groups. The existing catalog text search
 does not search all reported composition text. The new command reuses the formal
 catalog's admission pins, the existing composition parser, canonical hashes,
@@ -58,15 +58,21 @@ source file label and JSON pointer. The mutually exclusive
 | Structured integer composition | 24 | Reviewed computed composition and NOMAD references; phase/site-order and global equivalence remain unresolved. |
 | Scoped canonical taxon identity | 1000 | Accepted WFO ID, tissue scope and historical backbone; no formula is inferred. |
 | Advisory taxon crosswalk | 6 | Five conservative wood/culm exclusions and one cork-versus-wood non-merge rule; these do not repair or replace legacy taxonomy. |
-| Source-qualified text only | 142 | Names, aliases, source/processing scope and sometimes grades or composition prose; no typed composition or canonical taxon key. |
+| Source-qualified text only | 147 | Names, aliases, source/processing scope and sometimes grades or composition prose; no typed composition or canonical taxon key. |
 
-These four classes sum to 1172. Separate field dimensions **overlap**: 139 legacy
+These four classes sum to 1177. Separate field dimensions **overlap**: 144 legacy
 entries have source-supported composition/purity prose, 31 have linked grades,
 and 28 are composites. Do not add those dimensions to estimate coverage. All
-1148 legacy identities lack a structured stoichiometric-composition field.
+1153 legacy identities lack a structured stoichiometric-composition field.
 The prose is useful evidence for manual comparison, not a trustworthy machine
 formula. Purity ranges, starting powders, additives, constituent ratios, supplier
 grades, specimen state and final retained phases are different claims.
+
+The five Tarasov PNA-BPF formulations contribute five qualified-text entries,
+each with one DDS-cured state and no grade. Their nominal HCP:BPF:ECH feed
+labels remain literal source prose, with inconsistent reagent entries and
+unknown final composition. They do not become structured compositions or pure
+molecular species, and a shared feed-label clue remains only a possible overlap.
 
 `composition_prose_paths`, linked grade/state counts, canonical taxon fields,
 crosswalk dispositions and source pointers identify exactly which formal records
@@ -136,16 +142,16 @@ recipe normalization or final purity is inferred. Each recipe has one linked
 furnace-cooled state; quenched states are excluded, and thermal history does not
 create extra identities. Their actual composition text and qualification notes
 remain attached. None is treated as an ideal pure Al2O3 crystal. The other
-1165 entries are `unable_to_compare` for this probe; that count is a diagnostic
+1170 entries are `unable_to_compare` for this probe; that count is a diagnostic
 coverage gap, not a count of novel materials or an assertion that overlap is
 impossible. No new Alexandria network read is performed.
 
-The complete output inventories only formal 1148 + 24 entries. The 62 excluded
+The complete output inventories only formal 1153 + 24 entries. The 62 excluded
 examples, the older seven examples, related provider groups and calculation
 counts are never added to the formal total. This local diagnosis changes no
 scientific, licensing or admission decision and generates no approval workflow.
 
 These are the appended experimental catalog boundaries at data commit
-`2d940bcbbe13aa0cd0c0726bb5766e98edf62306`.
-Previously retained 1081-entry, 1103-entry, 1107-entry, 1108-entry, 1114-entry, 1116-entry, 1124-entry, 1127-entry, 1133-entry, 1136-entry, 1148-entry and 1168-entry diagnostic reports
+`ff28631faf1d1af804171378953b570313e35b83`.
+Previously retained 1081-entry, 1103-entry, 1107-entry, 1108-entry, 1114-entry, 1116-entry, 1124-entry, 1127-entry, 1133-entry, 1136-entry, 1148-entry, 1168-entry and 1172-entry diagnostic reports
 remain historical evidence and are not rewritten.

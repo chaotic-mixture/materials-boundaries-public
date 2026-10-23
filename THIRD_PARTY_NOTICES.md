@@ -1140,3 +1140,27 @@ bundled or relicensed under the project MIT license. The reviewed publisher
 PDF SHA-256 is `c6268f9f14320e9355bfe04bf02f47eb3d7ca00e30c7281a16fd3b1289913da6`.
 These are source-level transcription and rights checks, not legal clearance,
 experimental replication or independent scientific approval.
+
+### Tarasov 2022 PNA-BPF epoxy formulation facts
+
+Ilya V. Tarasov, Anastasiya V. Oboishchikova, Roman S. Borisov,
+Vyacheslav V. Kireev and Igor S. Sirotin (2022), *Phosphazene-Containing
+Epoxy Resins Based on Bisphenol F with Enhanced Heat Resistance and
+Mechanical Properties: Synthesis and Properties*, Polymers 14(21), 4547,
+[DOI 10.3390/polym14214547](https://doi.org/10.3390/polym14214547).
+Copyright 2022 by the authors; licensee MDPI, Basel, Switzerland. The
+article-specific notice on publisher PDF page 1 identifies the
+[Creative Commons Attribution 4.0 International license](https://creativecommons.org/licenses/by/4.0/).
+
+Changes are transcription of five selected Table 7 tensile-strength cells,
+nominal formulation labels and supporting preparation/test conditions,
+together with original source qualifications and structured curation.
+The study-qualified DDS-cured mixtures are not pure molecular species.
+Table 1 feed inconsistencies and the KOH/NaOH conflict are retained rather
+than resolved by inference. No endorsement by the authors or publisher is
+implied. The source PDF, screenshots, full text and raw experimental data
+are excluded and are not relicensed under the project MIT license.
+Reviewed publisher PDF: 1,780,571 bytes; SHA-256
+`1f06bc0667c7c5575a0e88772868a95cd27ba01a264d3b3a0b9c859a8a6423aa`.
+Selected-content transcription and rights checks do not establish independent
+scientific review, experimental replication or broader legal clearance.

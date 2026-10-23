@@ -19,7 +19,9 @@ class FamilyAdjacencyCITests(unittest.TestCase):
     def test_previous_jobs_keep_every_step_and_only_new_branch_is_gated(self):
         prior = ci.git('show', ci.BASE_COMMIT + ':.github/workflows/ci.yml').decode('utf-8')
         current = recover_file(
-            (ROOT / '.github/workflows/ci.yml').read_bytes(),
+            successors.project_successor_file(
+                '.github/workflows/ci.yml', (ROOT / '.github/workflows/ci.yml').read_bytes(),
+                before=successors.BRUNS_BATCH_ID),
             successors.file_ledger(successors.BRUNS_BATCH_ID)['updates']['.github/workflows/ci.yml']
         ).decode('utf-8')
         self.assertEqual(current, ci.expected_workflow(prior))

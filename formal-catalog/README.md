@@ -4,8 +4,8 @@ The released main baseline admits 1057 source-qualified identities and exactly
 24 reviewed computed composition buckets under formal-project-count-policy/1,
 for 1081 formal project admissions.
 
-This unmerged local experiment contains 1148 source-qualified identities and the
-same 24 computed buckets, totaling 1172. Main remains unchanged. Resource pins
+This unmerged local experiment contains 1153 source-qualified identities and the
+same 24 computed buckets, totaling 1177. Main remains unchanged. Resource pins
 match the local core for reproducible testing; they do not publish a release.
 Neither total is a global physical-uniqueness claim.
 
@@ -282,8 +282,8 @@ See the [reviewed follow-up packet](../experimental/material-batches/zenodo-8089
 ## Bruns NBS2 borosilicate recipes, 2026-10-23
 
 The reviewed append adds four source-qualified nominal oxide recipes, each with
-one furnace-cooled state and one measured mass-density reference. The current
-core contains **1148 identities, 1149 states, 1160 properties, 31 grades and
+one furnace-cooled state and one measured mass-density reference. That
+core snapshot contained **1148 identities, 1149 states, 1160 properties, 31 grades and
 124 sources**. Formal project admissions total **1172 = 1148 + 24**, with
 metal 44, inorganic 65, polymer 25, composite 28 and natural 1010. The 24
 computed buckets, 62 excluded examples and released main count of 1081 are
@@ -308,3 +308,29 @@ snapshot. Existing code-only successor compatibility remains exact.
 Only selected attributed facts and original qualifications are included under
 the article-specific CC BY 4.0 notice. Source PDFs, figures and raw measurements
 are not distributed. See the [reviewed Bruns packet](../experimental/material-batches/bruns-nbs2-borosilicate-20261023/README.md).
+
+## Tarasov PNA-BPF cured formulations, 2026-10-23
+
+The local append contains five source-qualified nominal phosphazene-containing
+epoxy formulations, PNA-BPF-1 through PNA-BPF-5, each with one DDS-cured state
+and one measured-source tensile-strength reference. The current core contains
+1153 identities, 1154 states, 1165 properties, 31 grades and 125 sources. Its
+categories are natural 1010, metal 32, inorganic 53, polymer 30 and composite 28.
+Adding the unchanged 24 reviewed computed buckets gives 1177 project entries;
+the 62 excluded examples and main's 1081 entries remain separate.
+
+The five strengths are 66.7, 66.0, 70.2, 74.5 and 72.7 MPa. Source-reported
+nominal HCP:BPF:ECH labels are retained verbatim; inconsistent reagent amounts
+and the KOH/NaOH contradiction are unresolved. Neither final stoichiometry nor
+pure-species identity is inferred. The DDS cure of 180 degrees C for 8 hours
+qualifies the state, not tensile-test temperature. Uncertainty, sample count,
+aggregation, temperature and humidity remain unknown; these facts remain
+catalog-only, with scientific-review and raw-reanalysis flags false.
+
+PNA-BPF-S and the DGEBA/DGEBF controls are not added. Selected facts and
+attribution follow the article's CC BY 4.0 notice; original source assets are
+not distributed. Candidate history remains unchanged in the
+[review packet](../experimental/material-batches/tarasov-pna-bpf-20261023/README.md).
+Local integration and experimental publication do not merge main or deploy it.
+
+The Tarasov data append is pinned to `ff28631faf1d1af804171378953b570313e35b83`.

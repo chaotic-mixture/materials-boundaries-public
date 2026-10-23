@@ -7,6 +7,9 @@ import subprocess
 import tempfile
 import unittest
 
+import material_append_successors as successors
+from material_append_history import recover_catalogs, recover_file
+
 from scripts.integrate_material_candidates import FILES, PIN_KEYS, TABLES, build_package, write_package
 from scripts.prepare_formulation_packet import compile_spec, record_sha256, validate_prepared_packet, write_packet
 
@@ -50,8 +53,15 @@ class TarasovPnaBpfPacketTests(unittest.TestCase):
     def setUpClass(cls):
         cls.spec = read(BATCH / 'packet-spec.json')
         cls.packet = read(BATCH / 'prepared-packet.json')
-        cls.baseline = {key: read(BASELINE / filename) for key, filename in FILES.items()}
-        cls.package = build_package(BASELINE, BATCH / 'integration.json')
+        cls.current = {key: read(BASELINE / filename) for key, filename in FILES.items()}
+        cls.current = successors.project_successor_catalogs(cls.current, before=BATCH.name)
+        cls.baseline = recover_catalogs(ROOT, cls.current, successors.data_ledger(BATCH.name))
+        temporary = tempfile.TemporaryDirectory()
+        cls.addClassCleanup(temporary.cleanup)
+        cls.baseline_dir = Path(temporary.name)
+        for key, filename in FILES.items():
+            (cls.baseline_dir / filename).write_bytes(encoded(cls.baseline[key]))
+        cls.package = build_package(cls.baseline_dir, BATCH / 'integration.json')
 
     def test_exact_five_source_rows_and_decimal_precision(self):
         self.assertEqual(self.spec['baseline_sha256'], BASELINE_HASHES)
@@ -149,12 +159,23 @@ class TarasovPnaBpfPacketTests(unittest.TestCase):
         self.assertEqual(identity_review['baseline_counts']['new_admissions_in_this_audit'], 0)
         for field in ('scientific_review', 'scientific_replication', 'global_chemical_uniqueness_established'):
             self.assertIs(identity_review[field], False)
+        self.assertEqual(len(identity_review['immutable_inputs']), 22)
+        file_ledger = successors.file_ledger(BATCH.name)
         for descriptor in identity_review['immutable_inputs']:
             raw = subprocess.check_output(['git', 'show', BASE_COMMIT + ':' + descriptor['path']], cwd=ROOT)
             with self.subTest(input=descriptor['path']):
                 self.assertEqual(len(raw), descriptor['bytes'])
                 self.assertEqual(sha256(raw).hexdigest(), descriptor['sha256'])
-                self.assertEqual((ROOT / descriptor['path']).read_bytes(), raw)
+                path = descriptor['path']
+                current = (ROOT / path).read_bytes()
+                if path in {'materials_boundaries/data/' + filename for filename in FILES.values()}:
+                    current = successors.project_successor_catalog_bytes(
+                        Path(path).name, current, before=successors.BRUNS_BATCH_ID)
+                else:
+                    current = successors.project_successor_file(path, current, before=BATCH.name)
+                    if path in file_ledger['updates']:
+                        current = recover_file(current, file_ledger['updates'][path])
+                self.assertEqual(current, raw)
         crosswalk = self.spec['identity_crosswalk']
         self.assertEqual(len(crosswalk), 5)
         self.assertEqual({r['disposition'] for r in crosswalk}, {'distinct'})
@@ -180,7 +201,7 @@ class TarasovPnaBpfPacketTests(unittest.TestCase):
             self.assertEqual(recovered[section][collection][:len(old)], old)
             recovered[section][collection] = recovered[section][collection][:len(old)]
         for key, filename in FILES.items():
-            raw = (BASELINE / filename).read_bytes()
+            raw = (self.baseline_dir / filename).read_bytes()
             self.assertEqual(sha256(raw).hexdigest(), BASELINE_HASHES[PIN_KEYS[key]])
             self.assertEqual(encoded(recovered[key]), raw)
             self.assertEqual(subprocess.check_output(['git', 'show', BASE_COMMIT + ':materials_boundaries/data/' + filename], cwd=ROOT), raw)
@@ -209,10 +230,10 @@ class TarasovPnaBpfPacketTests(unittest.TestCase):
             for writer, input_name, output_name in ((write_packet, 'packet-spec.json', 'packet.json'),
                                                     (write_package, 'integration.json', 'integrated.json')):
                 output = root / output_name
-                first, created = writer(BASELINE, BATCH / input_name, output)
+                first, created = writer(self.baseline_dir, BATCH / input_name, output)
                 self.assertTrue(created)
                 raw, mtime = output.read_bytes(), output.stat().st_mtime_ns
-                again, created = writer(BASELINE, BATCH / input_name, output)
+                again, created = writer(self.baseline_dir, BATCH / input_name, output)
                 self.assertFalse(created)
                 self.assertEqual(first, again)
                 self.assertEqual(output.read_bytes(), raw)
@@ -221,11 +242,14 @@ class TarasovPnaBpfPacketTests(unittest.TestCase):
                     self.assertEqual(raw, (BATCH / 'prepared-packet.json').read_bytes())
                 output.write_bytes(b'sentinel\n')
                 with self.assertRaisesRegex(ValueError, 'already exists'):
-                    writer(BASELINE, BATCH / input_name, output)
+                    writer(self.baseline_dir, BATCH / input_name, output)
                 self.assertEqual(output.read_bytes(), b'sentinel\n')
         self.assertEqual(before, {f: (BASELINE / f).read_bytes() for f in FILES.values()})
         with self.assertRaisesRegex(ValueError, 'outside baseline'):
-            write_packet(BASELINE, BATCH / 'packet-spec.json', BASELINE / 'forbidden.json')
+            write_packet(self.baseline_dir, BATCH / 'packet-spec.json', self.baseline_dir / 'forbidden.json')
+        for writer, input_name in ((write_packet, 'packet-spec.json'), (write_package, 'integration.json')):
+            with self.subTest(writer=writer.__name__), self.assertRaisesRegex(ValueError, 'runtime catalog data'):
+                writer(self.baseline_dir, BATCH / input_name, BASELINE / 'forbidden.json')
 
     def test_invalid_pin_owner_missing_property_unit_and_scientific_upgrade_fail_atomically(self):
         for mutation in ('baseline_pin', 'source_pin', 'owner', 'missing_property', 'unit', 'scientific_upgrade'):
@@ -251,7 +275,7 @@ class TarasovPnaBpfPacketTests(unittest.TestCase):
                 path.write_bytes(encoded(spec))
                 output = Path(directory) / 'packet.json'
                 with self.assertRaises(ValueError):
-                    write_packet(BASELINE, path, output)
+                    write_packet(self.baseline_dir, path, output)
                 self.assertFalse(output.exists())
                 self.assertEqual(list(Path(directory).iterdir()), [path])
 
@@ -272,14 +296,14 @@ class TarasovPnaBpfPacketTests(unittest.TestCase):
                 batch.mkdir(parents=True)
                 path = batch / 'spec.json'
                 path.write_bytes(encoded(spec))
-                packet, _ = write_packet(BASELINE, path, batch / 'packet.json', repository_root=root)
+                packet, _ = write_packet(self.baseline_dir, path, batch / 'packet.json', repository_root=root)
                 self.assertFalse(packet['report']['handoff_ready'])
                 self.assertTrue(packet['report']['pending_gates'])
                 manifest = read(BATCH / 'integration.json')
                 manifest['batches'][0]['packet'] = {'path': 'packet.json', 'sha256': sha256((batch / 'packet.json').read_bytes()).hexdigest()}
                 (batch / 'integration.json').write_bytes(encoded(manifest))
                 with self.assertRaisesRegex(ValueError, 'pending identity/source review'):
-                    write_package(BASELINE, batch / 'integration.json', root / 'output.json', repository_root=root)
+                    write_package(self.baseline_dir, batch / 'integration.json', root / 'output.json', repository_root=root)
                 self.assertFalse((root / 'output.json').exists())
 
     def test_duplicate_alias_or_designation_cannot_manufacture_an_identity(self):
@@ -294,7 +318,7 @@ class TarasovPnaBpfPacketTests(unittest.TestCase):
                 state['source_designation'] = 'PNA-BPF-1'
                 spec['formulations'][1]['states'][0]['record'] = explicit(spec, 'state', state)
             with self.subTest(mutation=mutation), self.assertRaisesRegex(ValueError, 'collides'):
-                compile_spec(spec, BASELINE)
+                compile_spec(spec, self.baseline_dir)
 
     def test_additional_state_does_not_increase_identity_count(self):
         spec = deepcopy(self.spec)
@@ -310,12 +334,12 @@ class TarasovPnaBpfPacketTests(unittest.TestCase):
             'properties': [explicit(spec, 'property', prop)],
         })
         with self.assertRaisesRegex(ValueError, 'duplicate structural state'):
-            compile_spec(spec, BASELINE)
+            compile_spec(spec, self.baseline_dir)
         # A deliberately fictional second specimen form exercises state counting;
         # this altered fixture is never saved as a source-supported candidate.
         state['state']['product_form']['text'] = 'Synthetic alternate specimen form for state-count regression only.'
         spec['formulations'][0]['states'][-1]['record'] = explicit(spec, 'state', state)
-        report = compile_spec(spec, BASELINE)['report']
+        report = compile_spec(spec, self.baseline_dir)['report']
         self.assertEqual(report['delta']['identities'], 5)
         self.assertEqual(report['delta']['states'], 6)
         self.assertEqual(report['delta']['properties'], 6)
@@ -333,7 +357,7 @@ class TarasovPnaBpfPacketTests(unittest.TestCase):
             else:
                 packet['report']['handoff_ready'] = False
             with self.subTest(mutation=mutation), self.assertRaisesRegex(ValueError, 'differs from exact replay'):
-                validate_prepared_packet(packet, BASELINE)
+                validate_prepared_packet(packet, self.baseline_dir)
 
 
 if __name__ == '__main__':

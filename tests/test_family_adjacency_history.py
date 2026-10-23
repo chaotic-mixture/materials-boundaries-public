@@ -35,7 +35,8 @@ class FamilyAdjacencyHistoryTests(unittest.TestCase):
     def test_code_only_workflow_round_trip_retains_old_rejection(self):
         entry = self.ledger['updates'][WORKFLOW]
         current = recover_file(
-            (ROOT / WORKFLOW).read_bytes(),
+            successors.project_successor_file(
+                WORKFLOW, (ROOT / WORKFLOW).read_bytes(), before=successors.BRUNS_BATCH_ID),
             successors.file_ledger(successors.BRUNS_BATCH_ID)['updates'][WORKFLOW])
         baseline = baseline_bytes(WORKFLOW)
         self.assertEqual(recover_file(current, entry), baseline)
@@ -68,15 +69,16 @@ class FamilyAdjacencyHistoryTests(unittest.TestCase):
         previous.__file__ = str(ROOT / 'tests/material_append_successors.py')
         code = baseline_bytes('tests/material_append_successors.py')
         exec(compile(code, previous.__file__, 'exec'), previous.__dict__)
-        self.assertEqual(successors.FROZEN_SUCCESSORS[0]["batch_id"], successors.BRUNS_BATCH_ID)
-        self.assertEqual(successors.FROZEN_SUCCESSORS[1:], previous.FROZEN_SUCCESSORS)
-        self.assertEqual(successors.data_ledgers()[1:], previous.data_ledgers())
+        checkpoint = successors._index(successors.BRUNS_BATCH_ID)
+        self.assertEqual(successors.FROZEN_SUCCESSORS[checkpoint]["batch_id"], successors.BRUNS_BATCH_ID)
+        self.assertEqual(successors.FROZEN_SUCCESSORS[checkpoint + 1:], previous.FROZEN_SUCCESSORS)
+        self.assertEqual(successors.data_ledgers()[checkpoint + 1:], previous.data_ledgers())
         self.assertEqual(successors.data_ledger(LATEST_MATERIAL_BATCH), previous.data_ledger())
         self.assertEqual(successors.file_ledger(LATEST_MATERIAL_BATCH), previous.file_ledger())
         for descriptor in previous.FROZEN_SUCCESSORS:
             batch_id = descriptor['batch_id']
             with self.subTest(batch_id=batch_id):
-                self.assertEqual(successors.data_ledgers(before=batch_id)[1:],
+                self.assertEqual(successors.data_ledgers(before=batch_id)[checkpoint + 1:],
                                  previous.data_ledgers(before=batch_id))
                 self.assertEqual(successors.file_ledger(batch_id),
                                  previous.file_ledger(batch_id))
@@ -87,7 +89,8 @@ class FamilyAdjacencyHistoryTests(unittest.TestCase):
         self.assertEqual(self.ledger['baseline_commit'], BASE_COMMIT)
         self.assertEqual(set(self.ledger['updates']), {WORKFLOW})
         self.assertEqual(successors.file_ledgers(before=LATEST_MATERIAL_BATCH),
-                         [successors.file_ledger(successors.BRUNS_BATCH_ID), self.ledger])
+                         successors.file_ledgers(before=successors.BRUNS_BATCH_ID)
+                         + [successors.file_ledger(successors.BRUNS_BATCH_ID), self.ledger])
         untouched = b'An unrelated file is not a workflow successor.\n'
         self.assertEqual(successors.project_successor_file(
             'unrelated.txt', untouched, before=LATEST_MATERIAL_BATCH), untouched)
@@ -107,9 +110,13 @@ class FamilyAdjacencyHistoryTests(unittest.TestCase):
             path = temporary / successors.CODE_FILE_LEDGER
             path.parent.mkdir(parents=True)
             path.write_bytes((ROOT / successors.CODE_FILE_LEDGER).read_bytes() + b' ')
-            bruns_path = temporary / successors.BRUNS_FILE_LEDGER
-            bruns_path.parent.mkdir(parents=True, exist_ok=True)
-            bruns_path.write_bytes((ROOT / successors.BRUNS_FILE_LEDGER).read_bytes())
+            # Copy the complete newer prefix so the intentional code-ledger
+            # hash drift, rather than a missing successor file, causes failure.
+            for descriptor in successors._prefix(LATEST_MATERIAL_BATCH):
+                filename = descriptor['files'][0]
+                target = temporary / filename
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes((ROOT / filename).read_bytes())
             with patch.object(successors, 'ROOT', temporary), self.assertRaises(AssertionError):
                 successors.file_ledgers(before=LATEST_MATERIAL_BATCH)
 

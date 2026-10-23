@@ -537,3 +537,41 @@ snapshot. Existing code-only successor compatibility remains exact.
 Only selected attributed facts and original qualifications are included under
 the article-specific CC BY 4.0 notice. Source PDFs, figures and raw measurements
 are not distributed. See the [reviewed Bruns packet](../../material-batches/bruns-nbs2-borosilicate-20261023/README.md).
+
+## Tarasov PNA-BPF nominal formulations, 2026-10-23
+
+The runtime append contains five source-qualified polymer formulations, each
+with one DDS-cured state and one Table 7 tensile-strength reference. Current
+core counts are **1153 identities, 1154 states, 1165 properties, 31 grades and
+125 sources**. The experimental formal project view is **1177 = 1153 + 24**,
+with metal 44, inorganic 65, polymer 30, composite 28 and natural 1010. The 24
+reviewed computed records remain separate; the 62 unadmitted examples and main
+count of 1081 remain unchanged. Publication and validation status are recorded
+separately from these local runtime counts.
+
+PNA-BPF-1 through PNA-BPF-5 preserve strengths of 66.7, 66.0, 70.2, 74.5 and
+72.7 MPa respectively. Their HCP:BPF:ECH labels of 1:8:16, 1:9:16, 1:12:16,
+1:18:16 and 1:24:16 remain author-reported nominal labels. The inconsistent ECH
+ratios, PNA-BPF-2 HCP mass/mole entry and KOH/NaOH descriptions remain explicit
+discrepancies. They do not establish exact stoichiometry, final composition,
+purity, conversion or molecular architecture. PNA-BPF-S and DGEBA/DGEBF controls
+are excluded; its changed alkali delivery does not prove PNA-BPF-S identical
+to PNA-BPF-1. No grade or reinforcing phase is inferred.
+
+The selected state is cured at 180 deg C for 8 h. Tensile testing retains the
+reported GOST 11262-2017 (ISO 527-2:2012) citation, 10 mm/min stretching speed
+and source plate thickness of 4 mm. Test temperature, humidity, sample count,
+aggregation and uncertainty remain unknown. These are measured-source scalars,
+not declared means, engineering allowables or independently reviewed science.
+
+DATA commit `ff28631faf1d1af804171378953b570313e35b83` appends the exact approved
+candidate facts. Query manifest `f77658c4df1434de7dd9d9d8d0e9d4ab31eef200477ec748f80c1a7acd371dbf`
+changes only the three catalog entries of the existing 64-file anchor. The
+Tarasov recovery descriptor restores the exact `faa002c` Bruns predecessor
+before the unchanged historical recovery chain. Earlier persistent registries
+are rejected without automatic migration or metadata rewriting.
+
+Only selected attributed facts and original curation are distributed under the
+article-specific CC BY 4.0 notice. The PDF and rendered pages are excluded.
+See the [reviewed candidate packet](../../material-batches/tarasov-pna-bpf-20261023/README.md)
+and its separate runtime integration evidence for testing and review status.

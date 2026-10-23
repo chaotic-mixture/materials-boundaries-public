@@ -13,6 +13,8 @@ DOCUMENT_LEDGER = 'tests/fixtures/legacy_document_recovery_20261023.json'
 DOCUMENT_SHA256 = '7262e5f5a7ba6e6ab7d0093f8bc612bd2008be536f20685c2beba7358c4a9001'
 CODE_LEDGER = 'tests/fixtures/legacy_document_call_sites_20261023.json'
 CODE_SHA256 = '9510bff71fdd667d35ae3798ed80948f2a6e807487551f7fc49f15d1fd9f47af'
+TARASOV_DOCUMENT_LEDGER = 'tests/fixtures/tarasov_legacy_document_recovery_20261023.json'
+TARASOV_DOCUMENT_SHA256 = '12c3b9e7686c0e3c45e394065ee1363b242529630b73830d2327196d5d2c0bbc'
 
 
 def code_ledger():
@@ -29,4 +31,5 @@ def project_legacy_document_bytes(filename, raw):
     if filename not in {'README.md', 'THIRD_PARTY_NOTICES.md'}:
         raise AssertionError('Unknown legacy documentation path')
     ledger = load_frozen(ROOT, DOCUMENT_LEDGER, DOCUMENT_SHA256)
-    return project_file_chain(filename, raw, ledger['ledgers'])
+    successor = load_frozen(ROOT, TARASOV_DOCUMENT_LEDGER, TARASOV_DOCUMENT_SHA256)
+    return project_file_chain(filename, raw, successor['ledgers'] + ledger['ledgers'])

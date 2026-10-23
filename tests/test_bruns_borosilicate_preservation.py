@@ -25,6 +25,7 @@ class BrunsBorosilicatePreservationTests(unittest.TestCase):
         cls.ledger = successors.data_ledger(BATCH_ID)
         cls.current = {name: json.loads((ROOT / 'materials_boundaries/data' / filename).read_bytes())
                        for name, filename in FILES.items()}
+        cls.current = successors.project_successor_catalogs(cls.current, before=BATCH_ID)
         cls.baseline = recover_catalogs(ROOT, cls.current, cls.ledger)
         cls.additions = appended_rows(ROOT, cls.ledger)
 
@@ -81,9 +82,10 @@ class BrunsBorosilicatePreservationTests(unittest.TestCase):
         ledger = successors.file_ledger(BATCH_ID)
         self.assertEqual(set(ledger['updates']), {'README.md', '.github/workflows/ci.yml'})
         self.assertEqual(ledger['baseline_commit'], BASE_COMMIT)
-        self.assertEqual(successors.file_ledgers(before=BATCH_ID), [])
+        newer = successors.file_ledgers(before=BATCH_ID)
         for filename, entry in ledger['updates'].items():
-            raw = (ROOT / filename).read_bytes()
+            raw = successors.project_successor_file(
+                filename, (ROOT / filename).read_bytes(), before=BATCH_ID)
             previous = subprocess.check_output(['git', 'show', BASE_COMMIT + ':' + filename], cwd=ROOT)
             with self.subTest(filename=filename):
                 self.assertEqual(recover_file(raw, entry), previous)
@@ -96,16 +98,18 @@ class BrunsBorosilicatePreservationTests(unittest.TestCase):
                 with self.assertRaises(AssertionError):
                     recover_file(raw, changed)
         self.assertEqual(successors.file_ledgers(before=PREVIOUS),
-                         [ledger, successors.load_frozen(ROOT, successors.CODE_FILE_LEDGER, successors.CODE_FILE_SHA256)])
+                         newer + [ledger, successors.load_frozen(
+                             ROOT, successors.CODE_FILE_LEDGER, successors.CODE_FILE_SHA256)])
 
     def test_finite_registry_preserves_every_preexisting_descriptor_and_boundary(self):
         old = types.ModuleType('bruns_predecessor_registry')
         old.__file__ = str(ROOT / 'tests/material_append_successors.py')
         code = subprocess.check_output(['git', 'show', BASE_COMMIT + ':tests/material_append_successors.py'], cwd=ROOT)
         exec(compile(code, old.__file__, 'exec'), old.__dict__)
-        self.assertEqual(successors.FROZEN_SUCCESSORS[1:], old.FROZEN_SUCCESSORS)
-        self.assertEqual(successors.FROZEN_SUCCESSORS[0]['batch_id'], BATCH_ID)
-        self.assertEqual(successors.data_ledgers()[1:], old.data_ledgers())
+        checkpoint = successors._index(BATCH_ID)
+        self.assertEqual(successors.FROZEN_SUCCESSORS[checkpoint + 1:], old.FROZEN_SUCCESSORS)
+        self.assertEqual(successors.FROZEN_SUCCESSORS[checkpoint]['batch_id'], BATCH_ID)
+        self.assertEqual(successors.data_ledgers()[checkpoint + 1:], old.data_ledgers())
         for descriptor in old.FROZEN_SUCCESSORS:
             batch = descriptor['batch_id']
             self.assertEqual(successors.data_ledger(batch), old.data_ledger(batch))

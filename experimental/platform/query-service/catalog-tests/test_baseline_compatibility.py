@@ -38,7 +38,8 @@ PRE_FILAMENT_BATCH_PIN_SHA256 = 'b228d514b2b1dbb8bad428d6f0be7f300947ee2e1c3c64a
 PRE_TOUGH_PLA_PIN_SHA256 = '393af99b3a9ef08e6d73c87bde302af74e66dd59628e86b368b88882462057a5'
 PRE_NYLON_PIN_SHA256 = 'a6b5e9835807a397c81f668cb3c1f19fe70d62074899bdf6365892543220d4b2'
 PRE_BRUNS_PIN_SHA256 = '124044eb8afcaf927ec9ff4770da66dfedc641391cd58e4b873735ee7424db4e'
-CURRENT_PIN_SHA256 = '09b57c7410b7b6c858abd566153dd932a451c9b5d4ed56b0963cbe4064543a05'
+PRE_TARASOV_PIN_SHA256 = '09b57c7410b7b6c858abd566153dd932a451c9b5d4ed56b0963cbe4064543a05'
+CURRENT_PIN_SHA256 = 'f77658c4df1434de7dd9d9d8d0e9d4ab31eef200477ec748f80c1a7acd371dbf'
 GROWTH_ROOT = Path(__file__).resolve().parents[4]
 GROWTH_LEDGER = GROWTH_ROOT / 'tests/fixtures/source_family_growth_data_20261019.json'
 GROWTH_LEDGER_SHA256 = '9dfc8d71e89041f05e11a870ad29aea34cb3ab90586bcea8f1d717adc9878ac3'
@@ -163,6 +164,15 @@ PRE_BRUNS_DATA_SHA256 = {
     'materials.json': 'd228c3b8f0c45fd56809891213d1d1acd73964357b579c51f8b9c731031a3ec5',
     'reference_properties.json': '66802278a29cdcc4a5fe468b5681d87893a8a10a7c6c4c57f83c4753fe807839',
     'sources.json': '67e068041af0cd8dbaba1126e6ffe2e39d2f8d26f8d2c8ceefc42240e5eefe76',
+}
+TARASOV_LEDGER = GROWTH_ROOT / 'tests/fixtures/tarasov_pna_bpf_data_20261023.json'
+TARASOV_LEDGER_SHA256 = 'ff13299c063b805d4cb36e73fe8db1521e88cab51aff2af13d2f4afab0a30773'
+TARASOV_PACKET = GROWTH_ROOT / 'experimental/material-batches/tarasov-pna-bpf-20261023/prepared-packet.json'
+TARASOV_PACKET_SHA256 = 'e9096077c7d6a206cf3a54a14272f838722187e10481588a1e3c07e5ab345997'
+PRE_TARASOV_DATA_SHA256 = {
+    'materials.json': '9df59cfdf94b35854255222d2a75f419859b269c5670c8eb18d8e9dc5eaa7a70',
+    'reference_properties.json': '728c863756c35860b4dee25b64f5df10c1b5273bcb83ed1f35d60cf6ad85aa77',
+    'sources.json': 'c06c9bcee46eac59839c51f84b252970f1da46f98cf2f2c08de0b33479b5ba71',
 }
 PRE_EVIDENCE_BATCH_DATA_SHA256 = {
     'materials.json': '193f431190af502eb5c2121ff077bf59ddc9b708ae5ad786160bdc8287c83c83',
@@ -488,6 +498,23 @@ def recover_pre_table_batch_catalogs(current):
     return recover_exact_append_catalogs(current, table_batch_descriptor())
 
 
+def tarasov_descriptor():
+    return {'label': 'Tarasov PNA-BPF', 'ledger': TARASOV_LEDGER,
+            'ledger_sha256': TARASOV_LEDGER_SHA256, 'packet': TARASOV_PACKET,
+            'packet_sha256': TARASOV_PACKET_SHA256,
+            'parent_commit': 'faa002c55b7ad2d1bd962e905275894231ab8350',
+            'parent_data': PRE_TARASOV_DATA_SHA256,
+            'addition_counts': {'identities': 5, 'grades': 0, 'states': 5, 'properties': 5, 'sources': 1}}
+
+
+def tarasov_inventory():
+    return frozen_append_inventory(tarasov_descriptor())
+
+
+def recover_pre_tarasov_catalogs(current):
+    return recover_exact_append_catalogs(current, tarasov_descriptor())
+
+
 def bruns_descriptor():
     return {'label': 'Bruns borosilicate', 'ledger': BRUNS_LEDGER,
             'ledger_sha256': BRUNS_LEDGER_SHA256, 'packet': BRUNS_PACKET,
@@ -742,6 +769,7 @@ class BaselineCompatibility(unittest.TestCase):
         cls.original_identity = sha256(json.dumps(
             cls.expected, sort_keys=True, separators=(',', ':'), ensure_ascii=False,
             allow_nan=False).encode()).hexdigest()
+        cls.recover_tarasov_anchor()
         cls.recover_bruns_anchor()
         cls.recover_nylon_anchor()
         cls.recover_tough_pla_anchor()
@@ -759,10 +787,28 @@ class BaselineCompatibility(unittest.TestCase):
         cls.recover_historical_anchor()
 
     @classmethod
+    def recover_tarasov_anchor(cls):
+        """Recover the exact faa002c data before the unchanged Bruns anchor."""
+        cls.tarasov_parent_root = cls.fixture_root / 'pre-tarasov-batch-data'
+        shutil.copytree(cls.original_root, cls.tarasov_parent_root)
+        data_root = cls.tarasov_parent_root / 'data'
+        current = {name: json.loads((data_root / name).read_bytes())
+                   for name in PRE_TARASOV_DATA_SHA256}
+        for name, value in recover_pre_tarasov_catalogs(current).items():
+            (data_root / name).write_bytes((json.dumps(value, ensure_ascii=False,
+                indent=2, allow_nan=False) + '\n').encode('utf-8'))
+        cls.tarasov_parent_pin = registry.canonical(manifest(cls.tarasov_parent_root))
+        if sha256(cls.tarasov_parent_pin).hexdigest() != PRE_TARASOV_PIN_SHA256:
+            raise AssertionError('Recovered faa002c complete pin bytes differ')
+        cls.tarasov_parent_query_root = cls.fixture_root / 'pre-tarasov-batch-query'
+        (cls.tarasov_parent_query_root / 'pins').mkdir(parents=True)
+        (cls.tarasov_parent_query_root / 'pins/legacy_baseline.json').write_bytes(cls.tarasov_parent_pin)
+
+    @classmethod
     def recover_bruns_anchor(cls):
         """Recover the exact 4667477 data and complete pin before older append layers."""
         cls.bruns_parent_root = cls.fixture_root / 'pre-bruns-batch-data'
-        shutil.copytree(cls.original_root, cls.bruns_parent_root)
+        shutil.copytree(cls.tarasov_parent_root, cls.bruns_parent_root)
         data_root = cls.bruns_parent_root / 'data'
         current = {name: json.loads((data_root / name).read_bytes())
                    for name in PRE_BRUNS_DATA_SHA256}
@@ -1066,6 +1112,8 @@ class BaselineCompatibility(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
         self.work = Path(self.temp.name)
+        if self._testMethodName == 'test_bruns_parent_manifest_and_catalog_recovery_remain_exact':
+            self.current_root = self.tarasov_parent_root
         if self._testMethodName == 'test_nylon_parent_manifest_and_catalog_recovery_remain_exact':
             self.current_root = self.bruns_parent_root
         if self._testMethodName == 'test_tough_pla_parent_manifest_and_catalog_recovery_remain_exact':
@@ -1153,6 +1201,92 @@ class BaselineCompatibility(unittest.TestCase):
         changed['materials.json']['identities'][0]['name'] += ' unreviewed'
         with self.assertRaisesRegex(AssertionError, 'Recovered a592 catalog bytes differ'):
             recover_a592_catalogs(changed)
+
+    def test_tarasov_parent_manifest_and_catalog_recovery_remain_exact(self):
+        expected = dict(self.expected)
+        expected.update({'data/' + name: digest for name, digest in PRE_TARASOV_DATA_SHA256.items()})
+        self.assertEqual(len(manifest(self.tarasov_parent_root)), 64)
+        self.assertEqual(manifest(self.tarasov_parent_root), expected)
+        current = {name: json.loads((self.current_root / 'data' / name).read_bytes())
+                   for name in PRE_TARASOV_DATA_SHA256}
+        parent = {name: json.loads((self.tarasov_parent_root / 'data' / name).read_bytes())
+                  for name in PRE_TARASOV_DATA_SHA256}
+        self.assertEqual(recover_pre_tarasov_catalogs(current), parent)
+        self.assertEqual(recover_pre_tarasov_catalogs(parent), parent)
+        self.assertEqual(current['sources.json']['records'][:-1], parent['sources.json']['records'])
+        self.assertEqual(current['materials.json']['grades'], parent['materials.json']['grades'])
+        self.assertEqual(len(parent['materials.json']['identities']), 1148)
+        self.assertEqual(len(current['materials.json']['identities']), 1153)
+        with self.assertRaisesRegex(AssertionError, 'Bruns borosilicate predecessor catalog bytes differ'):
+            recover_pre_bruns_catalogs(current)
+        ledger, additions = tarasov_inventory()
+        for filename, section, collection, label in GROWTH_COLLECTIONS:
+            if not additions[label]:
+                continue
+            candidate = additions[label][0]
+            for mutation in ('missing', 'changed', 'duplicate'):
+                with self.subTest(collection=label, mutation=mutation):
+                    changed = deepcopy(current)
+                    rows = changed[filename][collection]
+                    row = next(row for row in rows if row['id'] == candidate['id'])
+                    if mutation == 'missing':
+                        rows.remove(row)
+                    elif mutation == 'changed':
+                        row['version'] = 'unreviewed'
+                    else:
+                        rows.append(deepcopy(row))
+                    with self.assertRaisesRegex(AssertionError, 'Tarasov PNA-BPF'):
+                        recover_pre_tarasov_catalogs(changed)
+        for filename, collection in [('materials.json', 'identities'), ('sources.json', 'records')]:
+            changed = deepcopy(current)
+            changed[filename][collection][0]['version'] = 'unreviewed'
+            with self.subTest(retained_collection=collection), self.assertRaisesRegex(
+                    AssertionError, 'Tarasov PNA-BPF predecessor catalog bytes differ'):
+                recover_pre_tarasov_catalogs(changed)
+        for filename, collection, label in [('materials.json', 'identities', 'identities'),
+                                             ('materials.json', 'records', 'states'),
+                                             ('reference_properties.json', 'records', 'properties')]:
+            changed = deepcopy(current)
+            self.assertEqual(len(additions[label]), 5)
+            self.assertEqual({row['id'] for row in changed[filename][collection][-5:]},
+                             {row['id'] for row in additions[label]})
+            changed[filename][collection][-5:] = reversed(changed[filename][collection][-5:])
+            self.assertNotEqual(changed, current)
+            with self.subTest(order=label), self.assertRaisesRegex(
+                    AssertionError, 'Tarasov PNA-BPF successor catalog order or bytes differ'):
+                recover_pre_tarasov_catalogs(changed)
+        original_read = Path.read_bytes
+        for target in (TARASOV_LEDGER, TARASOV_PACKET):
+            def replaced(path):
+                return original_read(path) + (b' ' if path == target else b'')
+            with self.subTest(binding=target.name), patch.object(Path, 'read_bytes', replaced), \
+                    self.assertRaisesRegex(AssertionError, 'Tarasov PNA-BPF .* bytes differ'):
+                recover_pre_tarasov_catalogs(current)
+        with self.resources(self.tarasov_parent_root, self.tarasov_parent_query_root):
+            with self.assertRaisesRegex(ValueError, 'Baseline pin was replaced'):
+                registry.baseline_digest()
+            with patch.object(registry, 'BASELINE_PIN', PRE_TARASOV_PIN_SHA256):
+                self.assertEqual(registry.baseline_digest(), PRE_TARASOV_PIN_SHA256)
+        with self.resources(self.tarasov_parent_root), self.assertRaisesRegex(
+                ValueError, 'Installed legacy baseline differs'):
+            registry.baseline_digest()
+
+    def test_tarasov_parent_database_rejected_without_migration(self):
+        for rich in (False, True):
+            with self.subTest(rich=rich):
+                review = self.review(rich)
+                path = self.work / ('faa002c-v2.db' if rich else 'faa002c-legacy.db')
+                with self.resources(self.tarasov_parent_root, self.tarasov_parent_query_root), \
+                        patch.object(registry, 'BASELINE_PIN', PRE_TARASOV_PIN_SHA256):
+                    historical = self.make_registry(path, review, rich)
+                    before = historical.admit([review['records'][0]['candidate_id']])
+                raw = path.read_bytes()
+                rows = self.database_rows(path)
+                with self.assertRaisesRegex(ValueError, 'Initial baseline and review input cannot be replaced'):
+                    self.make_registry(path, review, rich)
+                self.assertEqual(path.read_bytes(), raw)
+                self.assertEqual(self.database_rows(path), rows)
+                self.assertEqual(historical.snapshot(), before)
 
     def test_bruns_parent_manifest_and_catalog_recovery_remain_exact(self):
         expected = dict(self.expected)

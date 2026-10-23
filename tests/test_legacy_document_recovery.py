@@ -12,6 +12,8 @@ from material_append_history import recover_file, project_file_chain
 
 ROOT = Path(__file__).resolve().parents[1]
 HELPER_SHA256 = '8f9e40f41de596ebeffdad024dedc211def31bef008c4e3d1f442b6d2082c0e0'
+SUCCESSOR_CODE_LEDGER = 'tests/fixtures/tarasov_legacy_document_code_20261023.json'
+SUCCESSOR_CODE_SHA256 = '4098ca4c95477d7502765ded63876e59089c78c248a754ab64a2b29cf994e577'
 CODE_PATHS = {
     'tests/material_bulk_preservation.py',
     'tests/material_class_counts_preservation.py',
@@ -25,16 +27,31 @@ def digest(raw):
 
 class LegacyDocumentRecoveryTests(unittest.TestCase):
     def test_helper_ledgers_and_call_site_inventory_are_byte_pinned(self):
-        self.assertEqual(digest((ROOT / 'tests/legacy_document_recovery.py').read_bytes()), HELPER_SHA256)
+        helper = (ROOT / 'tests/legacy_document_recovery.py').read_bytes()
+        successor_code = recovery.load_frozen(ROOT, SUCCESSOR_CODE_LEDGER, SUCCESSOR_CODE_SHA256)
+        self.assertEqual(successor_code['baseline_commit'], 'faa002c55b7ad2d1bd962e905275894231ab8350')
+        self.assertEqual(set(successor_code['updates']), {'tests/legacy_document_recovery.py'})
+        entry = successor_code['updates']['tests/legacy_document_recovery.py']
+        self.assertEqual(digest(helper), entry['sha256'])
+        self.assertEqual(digest(recover_file(helper, entry)), HELPER_SHA256)
+        for changed in (helper + b'!', helper[:-1], b'!' + helper[1:]):
+            with self.subTest(helper_bytes=digest(changed)), self.assertRaises(AssertionError):
+                recover_file(changed, entry)
         code = recovery.code_ledger()
         self.assertEqual(set(code['updates']), CODE_PATHS)
         self.assertEqual(code['baseline_commit'], 'e3ca1cab18851bf648ffee0277182ca80a33b123')
         document = recovery.load_frozen(ROOT, recovery.DOCUMENT_LEDGER, recovery.DOCUMENT_SHA256)
         self.assertEqual(len(document['ledgers']), 7)
         self.assertEqual({path for ledger in document['ledgers'] for path in ledger['updates']}, {'README.md', 'THIRD_PARTY_NOTICES.md'})
+        successor = recovery.load_frozen(ROOT, recovery.TARASOV_DOCUMENT_LEDGER, recovery.TARASOV_DOCUMENT_SHA256)
+        self.assertEqual(successor['baseline_commit'], 'faa002c55b7ad2d1bd962e905275894231ab8350')
+        self.assertEqual(len(successor['ledgers']), 1)
+        self.assertEqual(successor['ledgers'][0]['batch_id'], 'tarasov-pna-bpf-20261023')
+        self.assertEqual(set(successor['ledgers'][0]['updates']), {'README.md', 'THIRD_PARTY_NOTICES.md'})
 
     def test_exact_document_chains_reach_unchanged_original_release_pins(self):
         frozen = recovery.load_frozen(ROOT, recovery.DOCUMENT_LEDGER, recovery.DOCUMENT_SHA256)
+        successor = recovery.load_frozen(ROOT, recovery.TARASOV_DOCUMENT_LEDGER, recovery.TARASOV_DOCUMENT_SHA256)
         expected = {entry['filename']: entry['sha256'] for entry in bulk.load_ledger()['approved_existing_updates']}
         for filename in ('README.md', 'THIRD_PARTY_NOTICES.md'):
             raw = (ROOT / filename).read_bytes()
@@ -43,7 +60,10 @@ class LegacyDocumentRecoveryTests(unittest.TestCase):
             self.assertEqual(digest(recovery.project_legacy_document_bytes(filename, raw)), expected[filename])
             entries = [ledger['updates'][filename] for ledger in frozen['ledgers'] if filename in ledger['updates']]
             self.assertEqual(len(entries), 3 if filename == 'README.md' else 4)
-            for entry in entries:
+            prefix = [ledger['updates'][filename] for ledger in successor['ledgers'] if filename in ledger['updates']]
+            self.assertEqual(len(prefix), 1)
+            self.assertEqual(prefix[-1]['previous_sha256'], entries[0]['sha256'])
+            for entry in prefix + entries:
                 self.assertEqual(digest(raw), entry['sha256'])
                 previous = recover_file(raw, entry)
                 self.assertEqual(digest(previous), entry['previous_sha256'])
@@ -62,7 +82,8 @@ class LegacyDocumentRecoveryTests(unittest.TestCase):
         for filename in ('README.md', 'THIRD_PARTY_NOTICES.md'):
             raw = (ROOT / filename).read_bytes()
             for changed in (raw + b'unknown prose\n', raw[:-1], b'!' + raw[1:],
-                            raw.replace(b'Bruns', b'Unreviewed', 1)):
+                            raw.replace(b'Bruns', b'Unreviewed', 1),
+                            raw.replace(b'Tarasov', b'Unreviewed', 1)):
                 self.assertNotEqual(changed, raw)
                 with self.subTest(filename=filename), self.assertRaises(AssertionError):
                     bulk.release_bytes(filename, changed)
@@ -90,8 +111,17 @@ class LegacyDocumentRecoveryTests(unittest.TestCase):
 
     def test_reordered_chains_and_forged_fixtures_fail_closed(self):
         frozen = recovery.load_frozen(ROOT, recovery.DOCUMENT_LEDGER, recovery.DOCUMENT_SHA256)
+        successor = recovery.load_frozen(ROOT, recovery.TARASOV_DOCUMENT_LEDGER, recovery.TARASOV_DOCUMENT_SHA256)
         with self.assertRaises(AssertionError):
             project_file_chain('THIRD_PARTY_NOTICES.md', b'', list(reversed(frozen['ledgers'])))
+        for filename in ('README.md', 'THIRD_PARTY_NOTICES.md'):
+            with self.subTest(filename=filename), self.assertRaises(AssertionError):
+                project_file_chain(filename, b'', frozen['ledgers'] + successor['ledgers'])
+        with patch.object(recovery, 'TARASOV_DOCUMENT_SHA256', '0' * 64):
+            with self.assertRaises(AssertionError):
+                recovery.project_legacy_document_bytes('README.md', b'anything')
+        with self.assertRaises(AssertionError):
+            recovery.load_frozen(ROOT, SUCCESSOR_CODE_LEDGER, '0' * 64)
         with patch.object(recovery, 'DOCUMENT_SHA256', '0' * 64):
             with self.assertRaises(AssertionError):
                 recovery.project_legacy_document_bytes('README.md', b'anything')
