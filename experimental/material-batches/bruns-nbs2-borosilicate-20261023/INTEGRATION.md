@@ -72,18 +72,65 @@ enlarged current catalogs. Recover that baseline through the pinned ledger or
 read the three data files from commit `46674771ab851d4c267425b985c8f29c8aea25df`
 into a separate directory, then use the existing compiler/integrator commands.
 
-## Validation status
+## Validation results and limits
 
-The prior candidate stage passed 44 tests. After runtime integration, current
-catalog/schema validation, exact runtime/predecessor smoke checks, the 16-case
-history/adjacency/preservation suite, the complete 196-case ingestion suite,
-14-case relationship suite, 12-case formal suite, 37-case query transport suite
-and the 161-case query catalog subset have passed. The full exact-inventory
-source aggregate and fresh six-package installed/offline aggregate are in
-progress; this checkpoint does not claim they have passed. Final execution
-results will be recorded in `integration-validation-results.json`.
+The machine-readable record is [integration-validation-results.json](integration-validation-results.json).
+It keeps the exact final source IDs, outcomes, all skip IDs/reasons, execution
+hashes, six-wheel metadata, earlier failure evidence and distinct snapshot bounds.
 
-No push, main merge, deployment or DOI operation is part of this local record.
-Publication remains withheld for the parent's post-integration implementation
-review; this is an internal review checkpoint, not a request for additional
-user permission for the already-authorized experimental work.
+- The original candidate stage passed 44 tests. Catalog/schema validation,
+  deterministic compiler/integrator replay, predecessor recovery and four-recipe
+  source-qualified lookup checks passed.
+- On immutable `9b354ef37433878ec1e976c9c7f66b378d70b3b6`, all 1716 source IDs
+  are accounted for: **1698 passed, 18 unavailable, zero failures or errors**.
+  The unavailable cases are 17 native-Windows cases on Linux and one external
+  wood-dossier opt-in case. That wood case separately passed with its frozen
+  external fixture; this does not erase the skip inside the aggregate.
+- Source coverage was completed across three guarded executions after two
+  transport interruptions: 373, 1038 and 305 disjoint terminal IDs. Unfinished
+  cases were rerun, not counted as passes. All 895 tracked inputs, dependency
+  bytes and interpreter were checked unchanged; abandoned logs/journals and
+  terminal markers remained guarded. This establishes exact-ID segmented
+  coverage, **not uninterrupted execution or process-global-state equivalence**.
+  Abandoned-process closure remains unknown. The observed span, including
+  interruptions and recovery, was 24808.496 seconds, not a single-run runtime.
+- The initial incomplete run exposed 16 failing cases with 24 failure events.
+  Every one reproduced on the clean original baseline. A finite historical
+  document-image recovery repair retained the original release pins and
+  fail-closed behavior; all 16 cases then passed in final source coverage.
+  Original failures remain recorded rather than being relabeled as skips.
+- The fresh isolated six-wheel/offline installed aggregate passed all **535**
+  cases with zero skips, plus package/license-byte verification, `pip check`,
+  32 localized density CLI outputs and the independent installed smoke checks.
+  Those tested package bytes remain identical at the later CI checkpoint.
+  Separately executed checkout-source platform groups also cover all 535 IDs;
+  they are not represented as one aggregate invocation.
+- The later CI checkpoint `cc651206d794a1890d3d7101f3541aa9fc79dc38` has a
+  1731-case full inventory and a 131-case complete-module hosted selection.
+  The initial 131-case targeted benchmark passed with zero skips in 1420.598
+  seconds. After the timeout/ledger-only delta, 31 runner cases and 36 exact
+  affected workflow/preservation cases passed, with unchanged-input evidence
+  for the retained benchmark. These are separate results, **not a full 1731-case
+  run or a claim that the final targeted bytes were all rerun together**.
+- Hosted CI is explicitly targeted: 131 selected source cases plus all 535
+  installed cases per matrix cell. Its 1600 unselected full-source cases are
+  **not run**, not passed or skipped. The bounded 90-minute timeout uses twice
+  measured targeted-plus-installed runtime plus ten minutes setup margin,
+  rounded up. Ubuntu/Python 3.11 and Windows/Python 3.12 hosted cells remain
+  **not run at this local checkpoint**; local execution used Linux/Python 3.12.14.
+
+The complete source reproduction path remains:
+
+```sh
+python scripts/run_bruns_borosilicate_ci.py --test
+```
+
+At this later checkpoint it discovers 1731 source IDs. The distinct bounded
+hosted selection is `--targeted-core`; neither mode silently substitutes for
+the other. The workflow builds all six local packages and runs the installed
+contract with `--wheel-dir dist --dependency-dir dist/dependencies`.
+
+This is an experimental local-validation record, not a main release,
+deployment, DOI action or independent scientific approval. No push has
+occurred at this checkpoint. Publication and its hosted CI result require
+separate confirmation by their actual commit/run evidence.
