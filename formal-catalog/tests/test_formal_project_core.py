@@ -15,15 +15,15 @@ class FormalProjectCatalog(unittest.TestCase):
         cls.snapshot = formal_project_catalog()
 
     def test_exact_counts_and_categories(self):
-        self.assertEqual(self.snapshot['counts'], {'formal_project_admission_count':1168,
-            'legacy_source_qualified_identity_count':1144,'reviewed_computed_composition_count':24,
-            'categories':{'natural':1010,'metal':44,'inorganic':61,'polymer':25,'composite':28}})
-        self.assertEqual(len({r['id'] for r in self.snapshot['records']}),1168)
+        self.assertEqual(self.snapshot['counts'], {'formal_project_admission_count':1172,
+            'legacy_source_qualified_identity_count':1148,'reviewed_computed_composition_count':24,
+            'categories':{'natural':1010,'metal':44,'inorganic':65,'polymer':25,'composite':28}})
+        self.assertEqual(len({r['id'] for r in self.snapshot['records']}),1172)
 
     def test_full_legacy_identity_parity(self):
         self.assertEqual([r['identity'] for r in self.snapshot['records'] if r['partition']=='legacy-source-qualified'],read_catalog('materials')['identities'])
         coverage=material_quota_coverage(*(read_catalog(k) for k in ('materials','reference_properties','sources')))
-        self.assertEqual(coverage['distinct_material_count'],1144)
+        self.assertEqual(coverage['distinct_material_count'],1148)
 
     def test_exact_normalized_review_bytes(self):
         from importlib.resources import files
@@ -50,7 +50,7 @@ class FormalProjectCatalog(unittest.TestCase):
 
     def test_pagination_complete_and_detached(self):
         rows=[]
-        for offset in range(0,1168,100):
+        for offset in range(0,1172,100):
             rows.extend(select_formal_catalog(self.snapshot,offset=offset)['records'])
         self.assertEqual(rows,self.snapshot['records'])
         rows[0]['identity'].clear()
@@ -86,3 +86,22 @@ class FormalProjectCatalog(unittest.TestCase):
         for flags in (['--offset','-1'], ['--limit','999'], ['--query','']):
             result=subprocess.run([sys.executable,'-m','materials_project_catalog',*flags],capture_output=True,text=True)
             self.assertEqual(result.returncode,2)
+
+    def test_bruns_four_recipe_identities_match_formal_cli_exactly(self):
+        expected_ids = {'legacy:mat_bruns2020_nbs2_' + suffix
+                        for suffix in ('al1p0', 'al1p5', 'al2p0', 'al4p0')}
+        selected = select_formal_catalog(self.snapshot, query='bruns2020_nbs2',
+                                         partition='legacy-source-qualified')
+        self.assertEqual(selected['matched_count'], 4)
+        self.assertFalse(selected['truncated'])
+        self.assertEqual({row['id'] for row in selected['records']}, expected_ids)
+        self.assertTrue(all(row['category'] == 'inorganic' for row in selected['records']))
+        for row in selected['records']:
+            self.assertIn('Source-qualified nominal oxide recipe', row['identity']['identity_scope'])
+            self.assertIn('not certified final stoichiometry', row['identity']['identity_scope'])
+        cli = subprocess.run([sys.executable, '-m', 'materials_project_catalog',
+                              '--query', 'bruns2020_nbs2', '--partition', 'legacy-source-qualified'],
+                             capture_output=True, text=True, check=True)
+        self.assertEqual(json.loads(cli.stdout), selected)
+        self.assertEqual(select_formal_catalog(self.snapshot, query='bruns2020_nbs2',
+                                              partition='reviewed-computed')['matched_count'], 0)

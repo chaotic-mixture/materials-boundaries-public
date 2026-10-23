@@ -60,7 +60,15 @@ NYLON_FILE_SHA256 = "b35d130af81b437dfc2248f55e0c99b01c31da71d74a562dc754334b96d
 CODE_FILE_LEDGER = "tests/fixtures/family_adjacency_files_20261023.json"
 CODE_FILE_SHA256 = "5cf1cfe7b367b42703cc027a000a4da1673cf2ee9d1717aee3578f094e2785e1"
 
+BRUNS_BATCH_ID = "bruns-nbs2-borosilicate-20261023"
+BRUNS_DATA_LEDGER = "tests/fixtures/bruns_borosilicate_data_20261023.json"
+BRUNS_DATA_SHA256 = "6eded8614db38dcd26ad1e570d7ad783110dd690296e59a9270300bfd3a0a016"
+BRUNS_FILE_LEDGER = "tests/fixtures/bruns_borosilicate_files_20261023.json"
+BRUNS_FILE_SHA256 = "62f8b59780986e2f318ead897d6bb7097856642133433ed8e08b45dc83852267"
+
 FROZEN_SUCCESSORS = (
+    {"batch_id": BRUNS_BATCH_ID,
+     "data": (BRUNS_DATA_LEDGER, BRUNS_DATA_SHA256), "files": (BRUNS_FILE_LEDGER, BRUNS_FILE_SHA256)},
     {"batch_id": "zenodo-8089569-nylon-followup-20261021",
      "data": (NYLON_DATA_LEDGER, NYLON_DATA_SHA256), "files": (NYLON_FILE_LEDGER, NYLON_FILE_SHA256)},
     {"batch_id": "zenodo-8089569-tough-pla-followup-20261021",
@@ -121,8 +129,14 @@ def data_ledgers(*, before=None):
 
 def file_ledgers(*, before=None):
     descriptors = _prefix(before)  # Reject unknown historical boundaries first.
-    return [load_frozen(ROOT, CODE_FILE_LEDGER, CODE_FILE_SHA256),
-            *(load_frozen(ROOT, *descriptor["files"]) for descriptor in descriptors)]
+    # The adjacency-only workflow boundary sits between Bruns and Nylon.
+    # Insert it at that explicit chronological point, never before newer edits.
+    result = []
+    for descriptor in descriptors:
+        result.append(load_frozen(ROOT, *descriptor["files"]))
+        if descriptor["batch_id"] == BRUNS_BATCH_ID:
+            result.append(load_frozen(ROOT, CODE_FILE_LEDGER, CODE_FILE_SHA256))
+    return result
 
 
 def recover_latest_catalogs(current):

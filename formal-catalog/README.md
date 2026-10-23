@@ -4,8 +4,8 @@ The released main baseline admits 1057 source-qualified identities and exactly
 24 reviewed computed composition buckets under formal-project-count-policy/1,
 for 1081 formal project admissions.
 
-This unmerged local experiment contains 1144 source-qualified identities and the
-same 24 computed buckets, totaling 1168. Main remains unchanged. Resource pins
+This unmerged local experiment contains 1148 source-qualified identities and the
+same 24 computed buckets, totaling 1172. Main remains unchanged. Resource pins
 match the local core for reproducible testing; they do not publish a release.
 Neither total is a global physical-uniqueness claim.
 
@@ -237,7 +237,7 @@ See the [measured filament packet](../experimental/material-batches/zenodo-80895
 
 The reviewed follow-up within the same Zenodo workbook adds one polymer identity
 with two separate measured filament states and four tensile-property references.
-The current core contains **1143 identities, 1144 states, 1154 properties,
+The preceding Tough PLA snapshot contains **1143 identities, 1144 states, 1154 properties,
 31 grades and 121 sources**. The project view contains **1167 = 1143 + 24**
 identity entries; the 62 excluded examples remain separate.
 
@@ -259,7 +259,7 @@ See the [reviewed follow-up packet](../experimental/material-batches/zenodo-8089
 
 The reviewed continuation of the same Zenodo workbook adds one manufacturer-family
 polymer identity, one measured reference-filament state and two tensile properties.
-The current core contains **1144 identities, 1145 states, 1156 properties,
+The preceding Nylon snapshot contains **1144 identities, 1145 states, 1156 properties,
 31 grades and 123 sources**. The project view contains **1168 = 1144 + 24**
 identity entries; the 62 excluded examples remain separate and main stays at 1081.
 
@@ -278,3 +278,33 @@ query pin is `124044eb8afcaf927ec9ff4770da66dfedc641391cd58e4b873735ee7424db4e`.
 `2c8ddac` predecessor before the unchanged Tough, batch8 and older layers.
 Historical evidence, pins and dedicated prior tests remain unchanged.
 See the [reviewed follow-up packet](../experimental/material-batches/zenodo-8089569-nylon-followup-20261021/README.md).
+
+## Bruns NBS2 borosilicate recipes, 2026-10-23
+
+The reviewed append adds four source-qualified nominal oxide recipes, each with
+one furnace-cooled state and one measured mass-density reference. The current
+core contains **1148 identities, 1149 states, 1160 properties, 31 grades and
+124 sources**. Formal project admissions total **1172 = 1148 + 24**, with
+metal 44, inorganic 65, polymer 25, composite 28 and natural 1010. The 24
+computed buckets, 62 excluded examples and released main count of 1081 are
+unchanged. Core inorganic identities increase from 49 to 53.
+
+Nominal Al2O3 recipes of 1.0, 1.5, 2.0 and 4.0 mol% retain Table 3 density
+means of 2.131, 2.133, 2.130 and 2.137 g/cm³ and reported standard deviations
+of 0.006, 0.010, 0.002 and 0.004 g/cm³ respectively. These are not bounds,
+confidence intervals, SEMs or engineering allowables. Density-test temperature,
+pressure, conditioning and exact independent sample count remain unknown.
+The 4.0 mol% preparation exception is retained; neither graphite-mold casting
+nor the other recipes' cooling rate is assigned to it. Nominal and ICP-OES
+compositions remain distinct, without asserting final stoichiometry.
+
+The runtime DATA commit is `2d940bcbbe13aa0cd0c0726bb5766e98edf62306`. The
+new complete 64-file query pin is `09b57c7410b7b6c858abd566153dd932a451c9b5d4ed56b0963cbe4064543a05`.
+The finite Bruns descriptor recovers the exact `46674771` predecessor before
+the unchanged Nylon and older layers. Earlier databases are rejected without
+implicit migration or metadata rewrites; use a separate registry for this
+snapshot. Existing code-only successor compatibility remains exact.
+
+Only selected attributed facts and original qualifications are included under
+the article-specific CC BY 4.0 notice. Source PDFs, figures and raw measurements
+are not distributed. See the [reviewed Bruns packet](../experimental/material-batches/bruns-nbs2-borosilicate-20261023/README.md).

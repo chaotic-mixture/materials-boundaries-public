@@ -37,7 +37,8 @@ PRE_OUTOKUMPU_BATCH_PIN_SHA256 = '8c47bf8592437932508298417ed4c6e93e92091a0e2526
 PRE_FILAMENT_BATCH_PIN_SHA256 = 'b228d514b2b1dbb8bad428d6f0be7f300947ee2e1c3c64a6f9f0e55df132ade7'
 PRE_TOUGH_PLA_PIN_SHA256 = '393af99b3a9ef08e6d73c87bde302af74e66dd59628e86b368b88882462057a5'
 PRE_NYLON_PIN_SHA256 = 'a6b5e9835807a397c81f668cb3c1f19fe70d62074899bdf6365892543220d4b2'
-CURRENT_PIN_SHA256 = '124044eb8afcaf927ec9ff4770da66dfedc641391cd58e4b873735ee7424db4e'
+PRE_BRUNS_PIN_SHA256 = '124044eb8afcaf927ec9ff4770da66dfedc641391cd58e4b873735ee7424db4e'
+CURRENT_PIN_SHA256 = '09b57c7410b7b6c858abd566153dd932a451c9b5d4ed56b0963cbe4064543a05'
 GROWTH_ROOT = Path(__file__).resolve().parents[4]
 GROWTH_LEDGER = GROWTH_ROOT / 'tests/fixtures/source_family_growth_data_20261019.json'
 GROWTH_LEDGER_SHA256 = '9dfc8d71e89041f05e11a870ad29aea34cb3ab90586bcea8f1d717adc9878ac3'
@@ -153,6 +154,15 @@ PRE_NYLON_DATA_SHA256 = {
     'materials.json': 'a3dc74dc74dfd6c667ab44bd127379f37d9b79f4b3e79c1051d3474e75c4db56',
     'reference_properties.json': '0bc8608de3150e11b578e151d2c6d3b8f6179c9136ef10b4eff7ffce62d9afb1',
     'sources.json': '6e23776fd59ac3f8153f589378b00877c80cbe4d061aa22e3bc41f358daf373f',
+}
+BRUNS_LEDGER = GROWTH_ROOT / 'tests/fixtures/bruns_borosilicate_data_20261023.json'
+BRUNS_LEDGER_SHA256 = '6eded8614db38dcd26ad1e570d7ad783110dd690296e59a9270300bfd3a0a016'
+BRUNS_PACKET = GROWTH_ROOT / 'experimental/material-batches/bruns-nbs2-borosilicate-20261023/prepared-packet.json'
+BRUNS_PACKET_SHA256 = '7bc0fb2ba2dc3512abb95b7bf27b9f25d12c868d4bba041f667421572e5eccde'
+PRE_BRUNS_DATA_SHA256 = {
+    'materials.json': 'd228c3b8f0c45fd56809891213d1d1acd73964357b579c51f8b9c731031a3ec5',
+    'reference_properties.json': '66802278a29cdcc4a5fe468b5681d87893a8a10a7c6c4c57f83c4753fe807839',
+    'sources.json': '67e068041af0cd8dbaba1126e6ffe2e39d2f8d26f8d2c8ceefc42240e5eefe76',
 }
 PRE_EVIDENCE_BATCH_DATA_SHA256 = {
     'materials.json': '193f431190af502eb5c2121ff077bf59ddc9b708ae5ad786160bdc8287c83c83',
@@ -478,6 +488,23 @@ def recover_pre_table_batch_catalogs(current):
     return recover_exact_append_catalogs(current, table_batch_descriptor())
 
 
+def bruns_descriptor():
+    return {'label': 'Bruns borosilicate', 'ledger': BRUNS_LEDGER,
+            'ledger_sha256': BRUNS_LEDGER_SHA256, 'packet': BRUNS_PACKET,
+            'packet_sha256': BRUNS_PACKET_SHA256,
+            'parent_commit': '46674771ab851d4c267425b985c8f29c8aea25df',
+            'parent_data': PRE_BRUNS_DATA_SHA256,
+            'addition_counts': {'identities': 4, 'grades': 0, 'states': 4, 'properties': 4, 'sources': 1}}
+
+
+def bruns_inventory():
+    return frozen_append_inventory(bruns_descriptor())
+
+
+def recover_pre_bruns_catalogs(current):
+    return recover_exact_append_catalogs(current, bruns_descriptor())
+
+
 def nylon_descriptor():
     return {'label': 'Nylon follow-up', 'ledger': NYLON_LEDGER,
             'ledger_sha256': NYLON_LEDGER_SHA256, 'packet': NYLON_PACKET,
@@ -715,6 +742,7 @@ class BaselineCompatibility(unittest.TestCase):
         cls.original_identity = sha256(json.dumps(
             cls.expected, sort_keys=True, separators=(',', ':'), ensure_ascii=False,
             allow_nan=False).encode()).hexdigest()
+        cls.recover_bruns_anchor()
         cls.recover_nylon_anchor()
         cls.recover_tough_pla_anchor()
         cls.recover_filament_anchor()
@@ -731,10 +759,28 @@ class BaselineCompatibility(unittest.TestCase):
         cls.recover_historical_anchor()
 
     @classmethod
+    def recover_bruns_anchor(cls):
+        """Recover the exact 4667477 data and complete pin before older append layers."""
+        cls.bruns_parent_root = cls.fixture_root / 'pre-bruns-batch-data'
+        shutil.copytree(cls.original_root, cls.bruns_parent_root)
+        data_root = cls.bruns_parent_root / 'data'
+        current = {name: json.loads((data_root / name).read_bytes())
+                   for name in PRE_BRUNS_DATA_SHA256}
+        for name, value in recover_pre_bruns_catalogs(current).items():
+            (data_root / name).write_bytes((json.dumps(value, ensure_ascii=False,
+                indent=2, allow_nan=False) + '\n').encode('utf-8'))
+        cls.bruns_parent_pin = registry.canonical(manifest(cls.bruns_parent_root))
+        if sha256(cls.bruns_parent_pin).hexdigest() != PRE_BRUNS_PIN_SHA256:
+            raise AssertionError('Recovered 4667477 complete pin bytes differ')
+        cls.bruns_parent_query_root = cls.fixture_root / 'pre-bruns-batch-query'
+        (cls.bruns_parent_query_root / 'pins').mkdir(parents=True)
+        (cls.bruns_parent_query_root / 'pins/legacy_baseline.json').write_bytes(cls.bruns_parent_pin)
+
+    @classmethod
     def recover_nylon_anchor(cls):
         """Recover the exact 2c8ddac data and complete pin before older append layers."""
         cls.nylon_parent_root = cls.fixture_root / 'pre-nylon-batch-data'
-        shutil.copytree(cls.original_root, cls.nylon_parent_root)
+        shutil.copytree(cls.bruns_parent_root, cls.nylon_parent_root)
         data_root = cls.nylon_parent_root / 'data'
         current = {name: json.loads((data_root / name).read_bytes())
                    for name in PRE_NYLON_DATA_SHA256}
@@ -1020,6 +1066,8 @@ class BaselineCompatibility(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
         self.work = Path(self.temp.name)
+        if self._testMethodName == 'test_nylon_parent_manifest_and_catalog_recovery_remain_exact':
+            self.current_root = self.bruns_parent_root
         if self._testMethodName == 'test_tough_pla_parent_manifest_and_catalog_recovery_remain_exact':
             self.current_root = self.nylon_parent_root
         if self._testMethodName == 'test_filament_batch_parent_manifest_and_catalog_recovery_remain_exact':
@@ -1105,6 +1153,90 @@ class BaselineCompatibility(unittest.TestCase):
         changed['materials.json']['identities'][0]['name'] += ' unreviewed'
         with self.assertRaisesRegex(AssertionError, 'Recovered a592 catalog bytes differ'):
             recover_a592_catalogs(changed)
+
+    def test_bruns_parent_manifest_and_catalog_recovery_remain_exact(self):
+        expected = dict(self.expected)
+        expected.update({'data/' + name: digest for name, digest in PRE_BRUNS_DATA_SHA256.items()})
+        self.assertEqual(len(manifest(self.bruns_parent_root)), 64)
+        self.assertEqual(manifest(self.bruns_parent_root), expected)
+        current = {name: json.loads((self.current_root / 'data' / name).read_bytes())
+                   for name in PRE_BRUNS_DATA_SHA256}
+        parent = {name: json.loads((self.bruns_parent_root / 'data' / name).read_bytes())
+                  for name in PRE_BRUNS_DATA_SHA256}
+        self.assertEqual(recover_pre_bruns_catalogs(current), parent)
+        self.assertEqual(recover_pre_bruns_catalogs(parent), parent)
+        self.assertEqual(current['sources.json']['records'][:-1], parent['sources.json']['records'])
+        self.assertEqual(current['materials.json']['grades'], parent['materials.json']['grades'])
+        with self.assertRaisesRegex(AssertionError, 'Nylon follow-up predecessor catalog bytes differ'):
+            recover_pre_nylon_catalogs(current)
+        ledger, additions = bruns_inventory()
+        for filename, section, collection, label in GROWTH_COLLECTIONS:
+            if not additions[label]:
+                continue
+            candidate = additions[label][0]
+            for mutation in ('missing', 'changed', 'duplicate'):
+                with self.subTest(collection=label, mutation=mutation):
+                    changed = deepcopy(current)
+                    rows = changed[filename][collection]
+                    row = next(row for row in rows if row['id'] == candidate['id'])
+                    if mutation == 'missing':
+                        rows.remove(row)
+                    elif mutation == 'changed':
+                        row['version'] = 'unreviewed'
+                    else:
+                        rows.append(deepcopy(row))
+                    with self.assertRaisesRegex(AssertionError, 'Bruns borosilicate'):
+                        recover_pre_bruns_catalogs(changed)
+        for filename, collection in [('materials.json', 'identities'), ('sources.json', 'records')]:
+            changed = deepcopy(current)
+            changed[filename][collection][0]['version'] = 'unreviewed'
+            with self.subTest(retained_collection=collection), self.assertRaisesRegex(
+                    AssertionError, 'Bruns borosilicate predecessor catalog bytes differ'):
+                recover_pre_bruns_catalogs(changed)
+        for filename, collection, label in [('materials.json', 'identities', 'identities'),
+                                             ('materials.json', 'records', 'states'),
+                                             ('reference_properties.json', 'records', 'properties')]:
+            changed = deepcopy(current)
+            self.assertEqual(len(additions[label]), 4)
+            self.assertEqual({row['id'] for row in changed[filename][collection][-4:]},
+                             {row['id'] for row in additions[label]})
+            changed[filename][collection][-4:] = reversed(changed[filename][collection][-4:])
+            self.assertNotEqual(changed, current)
+            with self.subTest(order=label), self.assertRaisesRegex(
+                    AssertionError, 'Bruns borosilicate successor catalog order or bytes differ'):
+                recover_pre_bruns_catalogs(changed)
+        original_read = Path.read_bytes
+        for target in (BRUNS_LEDGER, BRUNS_PACKET):
+            def replaced(path):
+                return original_read(path) + (b' ' if path == target else b'')
+            with self.subTest(binding=target.name), patch.object(Path, 'read_bytes', replaced), \
+                    self.assertRaisesRegex(AssertionError, 'Bruns borosilicate .* bytes differ'):
+                recover_pre_bruns_catalogs(current)
+        with self.resources(self.bruns_parent_root, self.bruns_parent_query_root):
+            with self.assertRaisesRegex(ValueError, 'Baseline pin was replaced'):
+                registry.baseline_digest()
+            with patch.object(registry, 'BASELINE_PIN', PRE_BRUNS_PIN_SHA256):
+                self.assertEqual(registry.baseline_digest(), PRE_BRUNS_PIN_SHA256)
+        with self.resources(self.bruns_parent_root), self.assertRaisesRegex(
+                ValueError, 'Installed legacy baseline differs'):
+            registry.baseline_digest()
+
+    def test_bruns_parent_database_rejected_without_migration(self):
+        for rich in (False, True):
+            with self.subTest(rich=rich):
+                review = self.review(rich)
+                path = self.work / ('4667477-v2.db' if rich else '4667477-legacy.db')
+                with self.resources(self.bruns_parent_root, self.bruns_parent_query_root), \
+                        patch.object(registry, 'BASELINE_PIN', PRE_BRUNS_PIN_SHA256):
+                    historical = self.make_registry(path, review, rich)
+                    before = historical.admit([review['records'][0]['candidate_id']])
+                raw = path.read_bytes()
+                rows = self.database_rows(path)
+                with self.assertRaisesRegex(ValueError, 'Initial baseline and review input cannot be replaced'):
+                    self.make_registry(path, review, rich)
+                self.assertEqual(path.read_bytes(), raw)
+                self.assertEqual(self.database_rows(path), rows)
+                self.assertEqual(historical.snapshot(), before)
 
     def test_nylon_parent_manifest_and_catalog_recovery_remain_exact(self):
         expected = dict(self.expected)

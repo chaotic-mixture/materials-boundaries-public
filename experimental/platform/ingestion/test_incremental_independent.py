@@ -80,7 +80,7 @@ class IndependentIncrementalTests(unittest.TestCase):
                 row = fixture(entry_id, 'synthetic_changed_provider_identity')
                 result = inc.update(directory, transport=Transport(payload([row]), authors(entry_id)))
                 self.assertEqual(result['status'], 'complete')
-                self.assertEqual(result['formal_project_total'], 1168)
+                self.assertEqual(result['formal_project_total'], 1172)
                 self.assertEqual(result['admitted_delta'], 0)
                 self.assertEqual(result['candidate_packet']['candidates'], [])
                 exclusion = result['gate_exclusions'][0]

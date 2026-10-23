@@ -9,17 +9,17 @@ Repository: [chaotic-mixture/materials-boundaries-public](https://github.com/cha
 ## Public-release scope
 
 <!-- current-catalog-summary:start -->
-- **41 mechanics claims**, **123 source records**, **16 observations from 5 studies**, **12 published computational predictions in 2 scientific families and 3 explicit groups**, and **5 synthetic temperature demos with 7 branches**
+- **41 mechanics claims**, **124 source records**, **16 observations from 5 studies**, **12 published computational predictions in 2 scientific families and 3 explicit groups**, and **5 synthetic temperature demos with 7 branches**
 - Exactly **8 executable composite calculation rules**: HS/Reuss/Voigt bulk and shear bounds plus conservative derived Young's-modulus and Poisson-ratio envelopes
 - Other mechanics records, including initial-yield criteria and their function comparison, scalar viscoelasticity, bulk elastic waves, hydrostatic compressibility, directional Poisson ratio, anisotropy, fatigue, fracture, stability and porous relations, are catalog-only
-- The 123 sources comprise 122 bibliographic/source records plus 1 original synthetic-demo provenance record; a source record is not a redistribution of its publication or dataset
+- The 124 sources comprise 123 bibliographic/source records plus 1 original synthetic-demo provenance record; a source record is not a redistribution of its publication or dataset
 - All five temperature demos use intentionally invented coefficients and ranges. They do not describe real materials, measured properties or engineering allowables
 <!-- current-catalog-summary:end -->
 
 ## Concrete material references
 
 <!-- material-catalog-summary:start -->
-The separate reference catalogue contains **1144 material identities**, **31 qualified grades**, **1145 source-scoped states** and **1156 reference properties**. Counts describe this registry only; aliases, categories, prior observations and computational model cells are not additional materials.
+The separate reference catalogue contains **1148 material identities**, **31 qualified grades**, **1149 source-scoped states** and **1160 reference properties**. Counts describe this registry only; aliases, categories, prior observations and computational model cells are not additional materials.
 <!-- material-catalog-summary:end -->
 
 The five primary classes are metal, inorganic, polymer, composite and natural biological tissues/fibers. The exact reviewed v2 batch adds 1,000 distinct historical WFO species identities, each with one selected-accession conversion-derived basic-density property. The 2026-10-19 experimental core snapshot (data commit `5396fd1cc9df72507785a112a21c2990fb4a7c50`) has natural 1,010; metal 22, inorganic 26, polymer 15 and composite 10. Only natural reaches the 1,000-per-class goal in this snapshot. Ten existing biological identities migrate to natural through an exact versioned ledger. Processed biopolymers remain polymer; minerals and rocks remain inorganic. A material counts once by its admitted canonical identity, irrespective of aliases, states or measurements.
@@ -447,3 +447,5 @@ python -m unittest discover -s tests -v
 The bounded [Tough PLA identity follow-up](experimental/material-batches/zenodo-8089569-tough-pla-followup-20261021/README.md) records the reconsideration of two color rows as one source-qualified identity. The [original batch evidence availability note](experimental/material-batches/zenodo-8089569-filaments-20261021/EVIDENCE_AVAILABILITY.md) clarifies which finite-review artifacts remain local-only.
 
 The bounded [Nylon historical-identity follow-up](experimental/material-batches/zenodo-8089569-nylon-followup-20261021/README.md) records one source-qualified historical manufacturer family and its separately measured transparent-filament state. The historical documents do not establish the studied lot, formula continuity, ratio or molecular architecture.
+
+The bounded [Bruns NBS2 borosilicate increment](experimental/material-batches/bruns-nbs2-borosilicate-20261023/INTEGRATION.md) adds four nominal oxide recipes with one furnace-cooled density mean and SD each. Nominal and ICP-OES compositions remain separate; exact independent n and density-test temperature are unknown, and the 4.0 mol% sample retains its crucible-cooling exception. No quenched state creates another identity.

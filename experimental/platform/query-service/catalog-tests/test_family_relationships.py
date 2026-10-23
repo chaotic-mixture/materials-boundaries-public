@@ -41,16 +41,16 @@ class FamilyRelationshipTests(unittest.TestCase):
         return {m['concept'] for m in row['memberships'] if m['status'] == 'supported'}
 
     def test_coverage_exact_and_no_count_inflation(self):
-        self.assertEqual(self.status['unique_identity_count'], 1144)
-        self.assertEqual(self.status['membership_assertion_count'], 1149)
+        self.assertEqual(self.status['unique_identity_count'], 1148)
+        self.assertEqual(self.status['membership_assertion_count'], 1153)
         self.assertEqual(self.status['identity_relationship_count'], 1)
-        expected = dict(metal=32, alloy=2, inorganic=49, ceramic=2, polymer=26,
+        expected = dict(metal=32, alloy=2, inorganic=53, ceramic=2, polymer=26,
                         composite=28, natural=1010, semiconductor=0, battery=0,
                         catalyst=0, two_dimensional=0, nanoscale=0)
         for concept, supported in expected.items():
             with self.subTest(concept=concept):
                 self.assertEqual(self.status['coverage'][concept]['supported'], supported)
-                self.assertEqual(self.status['coverage'][concept]['unknown'], 1144 - supported)
+                self.assertEqual(self.status['coverage'][concept]['unknown'], 1148 - supported)
         self.assertEqual(self.status['new_identities_admitted'], 0)
         self.assertFalse(self.status['provider_counts_combined'])
 
@@ -262,7 +262,7 @@ class FamilyRelationshipTests(unittest.TestCase):
         from materials_boundaries.catalog import read_catalog
         original = read_catalog('materials')
         self.assertEqual(Counter(i['category'] for i in original['identities']),
-                         dict(natural=1010, metal=32, inorganic=49, polymer=25, composite=28))
+                         dict(natural=1010, metal=32, inorganic=53, polymer=25, composite=28))
         for identity in original['identities']:
             self.assertEqual(self.snapshot.record('identities', identity['id']), identity)
             self.assertEqual(self.index.identity(identity['id'])['legacy_category'], identity['category'])

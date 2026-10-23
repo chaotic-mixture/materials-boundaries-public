@@ -37,7 +37,7 @@ class CatalogAPI(unittest.TestCase):
         self.assertEqual(self.client.get('/openapi.json').json()['info']['version'],'0.5.0.dev0')
         from materials_platform import __version__ as umbrella_version
         self.assertEqual(umbrella_version,'0.5.0.dev0')
-        self.assertEqual(self.status['counts']['local_catalog_unique_material_count'],1144)
+        self.assertEqual(self.status['counts']['local_catalog_unique_material_count'],1148)
         self.assertFalse(self.status['provider_counts_combined'])
         for name in ('version','content_digest','runtime_digest'): self.assertRegex(self.status[name],r'^[a-f0-9]{64}$')
     def test_03_exact_baseline_parity(self):
@@ -1328,9 +1328,9 @@ class CatalogAPI(unittest.TestCase):
          'state_aniskevich_2023_ultimaker_tough_pla_black_filament': ['aniskevich_bulderberga_2023_polymer_mechanical_characterisation',
                                                                       'ultimaker_tough_pla_sds_20221222']}
         self.assertEqual(self.status['counts'], {
-            'local_catalog_unique_material_count': 1144,
-            'local_material_state_count': 1145,
-            'local_reference_property_count': 1156})
+            'local_catalog_unique_material_count': 1148,
+            'local_material_state_count': 1149,
+            'local_reference_property_count': 1160})
         self.assertEqual(len(frozen['materials']['identities']), 1)
         identity = frozen['materials']['identities'][0]
         states = frozen['materials']['records']
@@ -1373,8 +1373,8 @@ class CatalogAPI(unittest.TestCase):
         self.assertEqual({row['id'] for row in search.json()['result']['records']}, {row['id'] for row in states})
         self.assertFalse(search.json()['result']['truncated'])
         formal_status = self.client.get('/api/catalog/project/status').json()
-        self.assertEqual(formal_status['counts']['formal_project_admission_count'], 1168)
-        self.assertEqual(formal_status['counts']['legacy_source_qualified_identity_count'], 1144)
+        self.assertEqual(formal_status['counts']['formal_project_admission_count'], 1172)
+        self.assertEqual(formal_status['counts']['legacy_source_qualified_identity_count'], 1148)
         self.assertEqual(formal_status['counts']['reviewed_computed_composition_count'], 24)
         formal = self.client.post('/api/catalog/project/list', json={
             'version': formal_status['version'], 'record_id': 'legacy:' + identity['id']})
@@ -2030,9 +2030,9 @@ class CatalogAPI(unittest.TestCase):
                                                                         'ultimaker_nylon_pricing_20210504',
                                                                         'ultimaker_nylon_sds_20190114']}
         self.assertEqual(self.status['counts'], {
-            'local_catalog_unique_material_count': 1144,
-            'local_material_state_count': 1145,
-            'local_reference_property_count': 1156})
+            'local_catalog_unique_material_count': 1148,
+            'local_material_state_count': 1149,
+            'local_reference_property_count': 1160})
         self.assertEqual(len(frozen['materials']['identities']), 1)
         identity = frozen['materials']['identities'][0]
         states = frozen['materials']['records']
@@ -2077,8 +2077,8 @@ class CatalogAPI(unittest.TestCase):
         self.assertEqual({row['id'] for row in search.json()['result']['records']}, {row['id'] for row in states})
         self.assertFalse(search.json()['result']['truncated'])
         formal_status = self.client.get('/api/catalog/project/status').json()
-        self.assertEqual(formal_status['counts']['formal_project_admission_count'], 1168)
-        self.assertEqual(formal_status['counts']['legacy_source_qualified_identity_count'], 1144)
+        self.assertEqual(formal_status['counts']['formal_project_admission_count'], 1172)
+        self.assertEqual(formal_status['counts']['legacy_source_qualified_identity_count'], 1148)
         self.assertEqual(formal_status['counts']['reviewed_computed_composition_count'], 24)
         formal = self.client.post('/api/catalog/project/list', json={
             'version': formal_status['version'], 'record_id': 'legacy:' + identity['id']})

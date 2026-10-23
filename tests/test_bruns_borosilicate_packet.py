@@ -7,6 +7,9 @@ from pathlib import Path
 import tempfile
 import unittest
 
+import material_append_successors as successors
+from material_append_history import recover_catalogs
+
 from scripts.integrate_material_candidates import (
     FILES, PIN_KEYS, TABLES, build_package, write_package,
 )
@@ -46,8 +49,14 @@ class BrunsBorosilicatePacketTests(unittest.TestCase):
     def setUpClass(cls):
         cls.spec = read(BATCH / 'packet-spec.json')
         cls.packet = read(BATCH / 'prepared-packet.json')
-        cls.baseline = {key: read(BASELINE / filename) for key, filename in FILES.items()}
-        cls.package = build_package(BASELINE, BATCH / 'integration.json')
+        cls.current = {key: read(BASELINE / filename) for key, filename in FILES.items()}
+        cls.baseline = recover_catalogs(ROOT, cls.current, successors.data_ledger(BATCH.name))
+        temporary = tempfile.TemporaryDirectory()
+        cls.addClassCleanup(temporary.cleanup)
+        cls.baseline_dir = Path(temporary.name)
+        for key, filename in FILES.items():
+            (cls.baseline_dir / filename).write_bytes(encoded(cls.baseline[key]))
+        cls.package = build_package(cls.baseline_dir, BATCH / 'integration.json')
 
     def test_frozen_packet_matches_four_source_recipes_and_density_cells(self):
         self.assertEqual(self.spec['baseline_sha256'], BASELINE_HASHES)
@@ -147,6 +156,7 @@ class BrunsBorosilicatePacketTests(unittest.TestCase):
         self.assertFalse(any(p.suffix in ('.pdf', '.png', '.jpg') for p in BATCH.rglob('*')))
 
     def test_isolated_integration_preserves_every_predecessor_record_and_byte(self):
+        self.assertEqual(self.current, self.package['catalogs'])
         report = self.package['report']
         self.assertEqual(report['delta'], self.packet['report']['delta'])
         self.assertEqual(report['after']['identities'], 1148)
@@ -161,33 +171,33 @@ class BrunsBorosilicatePacketTests(unittest.TestCase):
             self.assertEqual(recovered[section][collection][:len(baseline_rows)], baseline_rows)
             recovered[section][collection] = recovered[section][collection][:len(baseline_rows)]
         for section, filename in FILES.items():
-            original = (BASELINE / filename).read_bytes()
+            original = (self.baseline_dir / filename).read_bytes()
             self.assertEqual(encoded(recovered[section]), original)
             self.assertEqual(sha256(original).hexdigest(), BASELINE_HASHES[PIN_KEYS[section]])
         self.assertEqual(read(BATCH / 'integration-report.json'), report)
 
     def test_compiler_and_integrator_replay_are_deterministic_immutable_and_detached(self):
-        before = {filename: (BASELINE / filename).read_bytes() for filename in FILES.values()}
+        before = {filename: (self.baseline_dir / filename).read_bytes() for filename in FILES.values()}
         with tempfile.TemporaryDirectory() as directory:
             output = Path(directory) / 'packet.json'
-            packet, created = write_packet(BASELINE, BATCH / 'packet-spec.json', output)
+            packet, created = write_packet(self.baseline_dir, BATCH / 'packet-spec.json', output)
             self.assertTrue(created)
             self.assertEqual(output.read_bytes(), (BATCH / 'prepared-packet.json').read_bytes())
-            self.assertFalse(write_packet(BASELINE, BATCH / 'packet-spec.json', output)[1])
+            self.assertFalse(write_packet(self.baseline_dir, BATCH / 'packet-spec.json', output)[1])
             integrated = Path(directory) / 'integrated.json'
-            package, created = write_package(BASELINE, BATCH / 'integration.json', integrated)
+            package, created = write_package(self.baseline_dir, BATCH / 'integration.json', integrated)
             self.assertTrue(created)
             self.assertEqual(package, self.package)
-            self.assertFalse(write_package(BASELINE, BATCH / 'integration.json', integrated)[1])
+            self.assertFalse(write_package(self.baseline_dir, BATCH / 'integration.json', integrated)[1])
             output.write_text('sentinel\n')
             with self.assertRaisesRegex(ValueError, 'already exists'):
-                write_packet(BASELINE, BATCH / 'packet-spec.json', output)
+                write_packet(self.baseline_dir, BATCH / 'packet-spec.json', output)
             self.assertEqual(output.read_text(), 'sentinel\n')
             integrated.write_text('sentinel\n')
             with self.assertRaisesRegex(ValueError, 'already exists'):
-                write_package(BASELINE, BATCH / 'integration.json', integrated)
+                write_package(self.baseline_dir, BATCH / 'integration.json', integrated)
             self.assertEqual(integrated.read_text(), 'sentinel\n')
-        self.assertEqual(before, {filename: (BASELINE / filename).read_bytes() for filename in FILES.values()})
+        self.assertEqual(before, {filename: (self.baseline_dir / filename).read_bytes() for filename in FILES.values()})
 
     def test_bad_pin_owner_unit_and_statistic_refuse_atomic_output(self):
         for mutation in ('baseline_pin', 'source_pin', 'owner', 'unit', 'sd_as_value', 'scientific_upgrade'):
@@ -210,7 +220,7 @@ class BrunsBorosilicatePacketTests(unittest.TestCase):
                 path.write_bytes(encoded(spec))
                 output = Path(directory) / 'packet.json'
                 with self.assertRaises(ValueError):
-                    write_packet(BASELINE, path, output)
+                    write_packet(self.baseline_dir, path, output)
                 self.assertFalse(output.exists())
                 self.assertEqual(list(Path(directory).iterdir()), [path])
 
@@ -231,29 +241,29 @@ class BrunsBorosilicatePacketTests(unittest.TestCase):
                 batch.mkdir(parents=True)
                 path = batch / 'spec.json'
                 path.write_bytes(encoded(spec))
-                packet, _ = write_packet(BASELINE, path, batch / 'packet.json', repository_root=root)
+                packet, _ = write_packet(self.baseline_dir, path, batch / 'packet.json', repository_root=root)
                 self.assertFalse(packet['report']['handoff_ready'])
                 self.assertTrue(packet['report']['pending_gates'])
                 manifest = read(BATCH / 'integration.json')
                 manifest['batches'][0]['packet'] = {'path': 'packet.json', 'sha256': sha256((batch / 'packet.json').read_bytes()).hexdigest()}
                 (batch / 'integration.json').write_bytes(encoded(manifest))
                 with self.assertRaisesRegex(ValueError, 'pending identity/source review'):
-                    write_package(BASELINE, batch / 'integration.json', root / 'output.json', repository_root=root)
+                    write_package(self.baseline_dir, batch / 'integration.json', root / 'output.json', repository_root=root)
                 self.assertFalse((root / 'output.json').exists())
 
     def test_forged_packet_and_source_scoped_collision_cannot_upgrade(self):
         packet = deepcopy(self.packet)
         packet['report']['formal_admitted_delta'] = 4
         with self.assertRaisesRegex(ValueError, 'differs from exact replay'):
-            validate_prepared_packet(packet, BASELINE)
+            validate_prepared_packet(packet, self.baseline_dir)
         spec = deepcopy(self.spec)
         spec['formulations'][1]['states'][0]['record']['fields']['source_designation'] = spec['formulations'][0]['states'][0]['record']['fields']['source_designation']
         with self.assertRaises(ValueError):
-            compile_spec(spec, BASELINE)
+            compile_spec(spec, self.baseline_dir)
         with self.assertRaisesRegex(ValueError, 'outside baseline'):
-            write_packet(BASELINE, BATCH / 'packet-spec.json', BASELINE / 'forbidden.json')
+            write_packet(self.baseline_dir, BATCH / 'packet-spec.json', self.baseline_dir / 'forbidden.json')
         with self.assertRaisesRegex(ValueError, 'formal catalog data'):
-            write_package(BASELINE, BATCH / 'integration.json', ROOT / 'formal-catalog/materials_project_catalog/data/forbidden.json')
+            write_package(self.baseline_dir, BATCH / 'integration.json', ROOT / 'formal-catalog/materials_project_catalog/data/forbidden.json')
 
 
 if __name__ == '__main__':
