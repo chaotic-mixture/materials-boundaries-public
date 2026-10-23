@@ -1,0 +1,217 @@
+{
+  "schema": "bounded-candidate-validation/1",
+  "batch_id": "tarasov-pna-bpf-20261023",
+  "baseline_commit": "faa002c55b7ad2d1bd962e905275894231ab8350",
+  "candidate_commit": "eb044bb024dff2a99c514605d3942a1769f77f80",
+  "execution_date": "2026-10-23",
+  "environment": "Native Windows; CPython 3.11.0; test subprocesses use -X utf8; offline existing development dependencies.",
+  "scope": "Review-only candidate preparation and detached integration; no runtime/catalog publication.",
+  "test_groups": [
+    {
+      "module": "test_formulation_packet_preparation",
+      "passed": 11,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 29.722,
+      "log_sha256": "ed1db0b12b34e7223cb9d8b20f5755adcf22bbd52785f1da09d98da145aa9f28"
+    },
+    {
+      "module": "test_formulation_packet_integration",
+      "passed": 7,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 0.957,
+      "log_sha256": "47e577b00b6de7fa07893451a6f9ec1d49ff7d69767221b9463c54efe7f073b1"
+    },
+    {
+      "module": "test_material_append_merge",
+      "passed": 4,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 0.028,
+      "log_sha256": "3c94109434d9162f0223a63668d261fa4b508c65262ea2239aaf05ba0aca38f9"
+    },
+    {
+      "module": "test_release_metadata",
+      "passed": 5,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 0.587,
+      "log_sha256": "af913a56c216c21e015749183f7cdd03243834881b378555772f8401dd3ba092"
+    },
+    {
+      "module": "test_tarasov_pna_bpf_packet",
+      "passed": 12,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 119.978,
+      "log_sha256": "758e46fb773a10d2a6c491d3b391b60994ecbdbc0cfd0919886107cacfcd5f89"
+    }
+  ],
+  "unique_final_tests": {
+    "passed": 39,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "preserved_failed_attempts": [
+    {
+      "attempt": "existing-preparation",
+      "passed": 10,
+      "failed": 0,
+      "errors": 1,
+      "skipped": 0,
+      "error": "PermissionError [WinError 5] at os.link in write_immutable_package; restricted Windows sandbox denied hard-link creation.",
+      "log_sha256": "cc1eedda73db5485558f53038faa0f92999e911347723c0ebecc3f2a7c052d21"
+    },
+    {
+      "attempt": "existing-preparation-task-temp",
+      "passed": 10,
+      "failed": 0,
+      "errors": 1,
+      "skipped": 0,
+      "error": "PermissionError [WinError 5] at os.link in write_immutable_package; restricted Windows sandbox denied hard-link creation.",
+      "log_sha256": "d3f38b0bfb890a5986b4cd99fb6115d8f8352e037e240856d35a42750ac2bb67"
+    }
+  ],
+  "core_inventory": {
+    "discovered_core_count": 1743,
+    "discovered_core_sha256": "c497d3b90cf42bca306787abbc505826f6eabac34bcd4230798ab8823e563e5e",
+    "selected_count": 39,
+    "selected_ids": [
+      "test_formulation_packet_integration.FormulationPacketIntegrationTests.test_closed_manifest_binding_hash_and_no_adjustment_contract",
+      "test_formulation_packet_integration.FormulationPacketIntegrationTests.test_cross_batch_source_designation_collision_is_atomic",
+      "test_formulation_packet_integration.FormulationPacketIntegrationTests.test_linked_grade_designation_and_alias_cannot_create_another_identity",
+      "test_formulation_packet_integration.FormulationPacketIntegrationTests.test_missing_crosswalk_is_reportable_but_not_integrable",
+      "test_formulation_packet_integration.FormulationPacketIntegrationTests.test_rehashed_tampering_cannot_replace_full_packet_replay",
+      "test_formulation_packet_integration.FormulationPacketIntegrationTests.test_single_packet_replays_then_integrates_idempotently",
+      "test_formulation_packet_integration.FormulationPacketIntegrationTests.test_v1_still_accepts_its_original_four_descriptors_and_encoding",
+      "test_formulation_packet_preparation.FormulationPacketPreparationTests.test_context_collisions_and_wrong_row_ownership_fail_atomically",
+      "test_formulation_packet_preparation.FormulationPacketPreparationTests.test_frozen_four_formulation_replay_preserves_all_facts_and_zero_increment",
+      "test_formulation_packet_preparation.FormulationPacketPreparationTests.test_missing_crosswalk_review_and_license_remain_pending_without_upgrade",
+      "test_formulation_packet_preparation.FormulationPacketPreparationTests.test_missing_properties_wrong_units_and_untraceable_provenance_are_rejected",
+      "test_formulation_packet_preparation.FormulationPacketPreparationTests.test_output_path_and_existing_artifact_refusals_preserve_input_bytes",
+      "test_formulation_packet_preparation.FormulationPacketPreparationTests.test_prepared_packet_validation_recompiles_input_instead_of_trusting_report",
+      "test_formulation_packet_preparation.FormulationPacketPreparationTests.test_reidentified_designation_or_alias_cannot_evade_existing_identity",
+      "test_formulation_packet_preparation.FormulationPacketPreparationTests.test_repeated_write_and_cli_keep_identical_bytes_and_mtime",
+      "test_formulation_packet_preparation.FormulationPacketPreparationTests.test_shared_contexts_and_explicit_grade_multiple_states_do_not_multiply_identity",
+      "test_formulation_packet_preparation.FormulationPacketPreparationTests.test_source_and_baseline_pins_reject_changed_inputs_before_writing",
+      "test_formulation_packet_preparation.FormulationPacketPreparationTests.test_strict_json_rejects_duplicate_nonfinite_and_overflow_values",
+      "test_material_append_merge.MaterialAppendMergeTests.test_conflicting_existing_id_fails_without_partial_mutation",
+      "test_material_append_merge.MaterialAppendMergeTests.test_merge_idempotent_preserves_inputs_and_baseline_order",
+      "test_material_append_merge.MaterialAppendMergeTests.test_reordering_new_append_tables_produces_identical_merge",
+      "test_material_append_merge.MaterialAppendMergeTests.test_unvalidated_append_cannot_gain_coverage",
+      "test_release_metadata.ReleaseMetadataTests.test_all_current_engine_labels_match_package",
+      "test_release_metadata.ReleaseMetadataTests.test_build_configuration_and_readme_use_current_version",
+      "test_release_metadata.ReleaseMetadataTests.test_comparison_embedded_snapshots_and_exact_references",
+      "test_release_metadata.ReleaseMetadataTests.test_local_schema_reference_targets_exist",
+      "test_release_metadata.ReleaseMetadataTests.test_version_is_one_build_readable_literal",
+      "test_tarasov_pna_bpf_packet.TarasovPnaBpfPacketTests.test_additional_state_does_not_increase_identity_count",
+      "test_tarasov_pna_bpf_packet.TarasovPnaBpfPacketTests.test_cured_state_and_tensile_method_do_not_supply_missing_statistics",
+      "test_tarasov_pna_bpf_packet.TarasovPnaBpfPacketTests.test_duplicate_alias_or_designation_cannot_manufacture_an_identity",
+      "test_tarasov_pna_bpf_packet.TarasovPnaBpfPacketTests.test_exact_five_source_rows_and_decimal_precision",
+      "test_tarasov_pna_bpf_packet.TarasovPnaBpfPacketTests.test_forged_values_counts_or_readiness_do_not_replace_replay",
+      "test_tarasov_pna_bpf_packet.TarasovPnaBpfPacketTests.test_invalid_pin_owner_missing_property_unit_and_scientific_upgrade_fail_atomically",
+      "test_tarasov_pna_bpf_packet.TarasovPnaBpfPacketTests.test_isolated_report_preserves_all_baseline_bytes_and_does_not_admit",
+      "test_tarasov_pna_bpf_packet.TarasovPnaBpfPacketTests.test_nominal_formulations_preserve_all_three_source_conflicts_and_exclusions",
+      "test_tarasov_pna_bpf_packet.TarasovPnaBpfPacketTests.test_pending_identity_transcription_and_rights_cannot_integrate",
+      "test_tarasov_pna_bpf_packet.TarasovPnaBpfPacketTests.test_receipt_and_candidate_commit_bind_actual_packet_bytes",
+      "test_tarasov_pna_bpf_packet.TarasovPnaBpfPacketTests.test_replay_is_deterministic_immutable_and_outside_runtime",
+      "test_tarasov_pna_bpf_packet.TarasovPnaBpfPacketTests.test_source_attribution_document_hash_and_finite_identity_review"
+    ],
+    "not_run_core_count": 1704,
+    "discovery_is_not_execution": true,
+    "execution_mode": "CPython 3.11.0 -X utf8",
+    "prior_discovery_error": "Without -X utf8, existing test_composite_acceptance fixture read_text() used gbk and raised UnicodeDecodeError byte 0x92 at position 4440; no tests executed in that discovery."
+  },
+  "checks": {
+    "baseline_full_catalog": "passed",
+    "detached_candidate_full_catalog": "passed; existing strict schema, format and integrity checks",
+    "prepared_packet": "first creation and identical replay passed",
+    "detached_integration": "first creation and exact repeat bytes/mtime passed",
+    "wheel_build": "passed; --no-index --no-deps --no-build-isolation",
+    "wheel_payload": "exact unchanged baseline catalogs; candidate files and raw source assets excluded",
+    "fresh_installed_wheel_smoke": "timed_out_not_passed after 900 seconds"
+  },
+  "not_run": {
+    "other_core_tests": 1704,
+    "full_installed_test_groups": 535,
+    "new_hosted_ci": "not created; branch is local and unpublished",
+    "runtime_append_and_product_pins": "not implemented in this review-only candidate phase"
+  },
+  "runtime_counts_unchanged": {
+    "source_qualified": 1148,
+    "computed": 24,
+    "project_total": 1172,
+    "source_qualified_categories": {
+      "metal": 32,
+      "inorganic": 53,
+      "polymer": 25,
+      "composite": 28,
+      "natural": 1010
+    },
+    "released_main": 1081,
+    "excluded_computed_examples": 62
+  },
+  "candidate_delta_only": {
+    "identities": 5,
+    "grades": 0,
+    "states": 5,
+    "properties": 5,
+    "sources": 1,
+    "categories": {
+      "metal": 0,
+      "inorganic": 0,
+      "polymer": 5,
+      "composite": 0,
+      "natural": 0
+    }
+  },
+  "formal_admitted_delta": 0,
+  "artifact_pins": {
+    "experimental/material-batches/tarasov-pna-bpf-20261023/prepared-packet.json": {
+      "bytes": 156093,
+      "sha256": "e9096077c7d6a206cf3a54a14272f838722187e10481588a1e3c07e5ab345997"
+    },
+    "experimental/material-batches/tarasov-pna-bpf-20261023/integration.json": {
+      "bytes": 1131,
+      "sha256": "ee5f66a9c60be6af09f50b8defe570056b6eef17135a09d35c6c1d18cf5c0921"
+    },
+    "experimental/material-batches/tarasov-pna-bpf-20261023/integration-report.json": {
+      "bytes": 3346,
+      "sha256": "fad494215dd76e0e28e3e5407f4a8267b7669f2bb12acaead3ba8c7ab05adea8"
+    },
+    "tests/test_tarasov_pna_bpf_packet.py": {
+      "bytes": 20785,
+      "sha256": "ca979ae2847931467019ca9605a5758648621c9d6333ebdcccd78a10141a7afc"
+    }
+  },
+  "review_boundary": "Source transcription, finite identity comparison and software tests are not scientific replication, independent scientific review or legal clearance. Parent review is required before publication.",
+  "wheel_validation": {
+    "stage": "fresh-wheel-installed-smoke",
+    "status": "timed_out_not_passed",
+    "timeout_seconds": 900,
+    "error": "subprocess.TimeoutExpired: scripts/check_wheel_metadata.py exceeded 900.0 seconds. No terminal success output was returned.",
+    "wheel": "materials_boundaries-0.35.0-py3-none-any.whl",
+    "wheel_build": "passed offline",
+    "payload_check": "passed; exact baseline catalogs and candidate/raw-asset exclusion",
+    "cleanup": "Verified task-owned installed_check.py worker stopped after timeout; no unrelated process changed.",
+    "rerun": "not performed",
+    "worker_last_measurement": {
+      "user_cpu_seconds": 890.1875,
+      "kernel_cpu_seconds": 30.0625,
+      "working_set_bytes": 318083072,
+      "interpretation": "Read-only final process snapshot, not peak memory or a successful test result."
+    }
+  },
+  "remaining_blockers": [
+    "Parent independent review of this candidate packet.",
+    "Fresh-installed core-wheel smoke did not finish within its 900-second budget; reproduce boundedly on dot before any publication acceptance.",
+    "Runtime append, product/history integration, complete fresh-installed API test groups and a new CI profile are not implemented in this candidate phase."
+  ]
+}
