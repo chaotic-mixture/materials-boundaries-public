@@ -8,6 +8,8 @@ import subprocess
 import tempfile
 import unittest
 
+import material_append_successors as successors
+from material_append_history import recover_catalogs
 from scripts.integrate_material_candidates import FILES, PIN_KEYS
 from scripts.prepare_formulation_packet import (
     compile_spec, record_sha256, validate_prepared_packet, write_packet,
@@ -54,9 +56,16 @@ class KapoorPhosphatePacketTests(unittest.TestCase):
     def setUpClass(cls):
         cls.spec = read(BATCH / 'packet-spec.json')
         cls.saved_packet = read(BATCH / 'prepared-packet.json')
-        cls.baseline_bytes = {filename: (BASELINE / filename).read_bytes() for filename in FILES.values()}
-        cls.baseline = {key: json.loads(cls.baseline_bytes[filename]) for key, filename in FILES.items()}
-        cls.packet = compile_spec(cls.spec, BASELINE)
+        current = {key: read(BASELINE / filename) for key, filename in FILES.items()}
+        current = successors.project_successor_catalogs(current, before=BATCH.name)
+        cls.baseline = recover_catalogs(ROOT, current, successors.data_ledger(BATCH.name))
+        cls.baseline_bytes = {filename: encoded(cls.baseline[key]) for key, filename in FILES.items()}
+        temporary = tempfile.TemporaryDirectory()
+        cls.addClassCleanup(temporary.cleanup)
+        cls.baseline_dir = Path(temporary.name)
+        for filename, raw in cls.baseline_bytes.items():
+            (cls.baseline_dir / filename).write_bytes(raw)
+        cls.packet = compile_spec(cls.spec, cls.baseline_dir)
         cls.graph = cls.packet['catalogs']
         cls.properties = cls.graph['properties']['records']
         cls.states = cls.graph['materials']['records']
@@ -212,7 +221,14 @@ class KapoorPhosphatePacketTests(unittest.TestCase):
                 ).stdout
                 self.assertEqual(len(baseline), descriptor['bytes'])
                 self.assertEqual(sha256(baseline).hexdigest(), descriptor['sha256'])
-                self.assertEqual(path.read_bytes(), baseline)
+                current = path.read_bytes()
+                if descriptor['path'] in {'materials_boundaries/data/' + filename for filename in FILES.values()}:
+                    current = successors.project_successor_catalog_bytes(
+                        path.name, current, before=successors.TARASOV_BATCH_ID)
+                else:
+                    current = successors.project_successor_file(
+                        descriptor['path'], current, before=successors.TARASOV_BATCH_ID)
+                self.assertEqual(current, baseline)
         self.assertEqual([row['source_designations'] for row in self.spec['identity_crosswalk']],
                          [[row[0]] for row in ROWS])
 
@@ -221,7 +237,9 @@ class KapoorPhosphatePacketTests(unittest.TestCase):
         for key, filename in FILES.items():
             with self.subTest(filename=filename):
                 self.assertEqual(sha256(self.baseline_bytes[filename]).hexdigest(), BASELINE_HASHES[PIN_KEYS[key]])
-                self.assertEqual((BASELINE / filename).read_bytes(), self.baseline_bytes[filename])
+                self.assertEqual(successors.project_successor_catalog_bytes(
+                    filename, (BASELINE / filename).read_bytes(), before=successors.TARASOV_BATCH_ID),
+                    self.baseline_bytes[filename])
         self.assertEqual(len(self.baseline['materials']['identities']), 1153)
         self.assertFalse(any(row['id'].startswith('mat_kapoor2019_') for row in self.baseline['materials']['identities']))
 
@@ -230,28 +248,28 @@ class KapoorPhosphatePacketTests(unittest.TestCase):
         self.assertEqual(self.spec, self.packet['input'])
         with tempfile.TemporaryDirectory() as directory:
             output = Path(directory) / 'candidate.json'
-            first, created = write_packet(BASELINE, BATCH / 'packet-spec.json', output)
+            first, created = write_packet(self.baseline_dir, BATCH / 'packet-spec.json', output)
             self.assertTrue(created)
             before = output.read_bytes(), output.stat().st_mtime_ns
-            again, created = write_packet(BASELINE, BATCH / 'packet-spec.json', output)
+            again, created = write_packet(self.baseline_dir, BATCH / 'packet-spec.json', output)
             self.assertFalse(created)
             self.assertEqual(first, again)
             self.assertEqual(before, (output.read_bytes(), output.stat().st_mtime_ns))
             self.assertEqual(output.read_bytes(), (BATCH / 'prepared-packet.json').read_bytes())
             output.write_bytes(b'sentinel\n')
             with self.assertRaisesRegex(ValueError, 'already exists'):
-                write_packet(BASELINE, BATCH / 'packet-spec.json', output)
+                write_packet(self.baseline_dir, BATCH / 'packet-spec.json', output)
             self.assertEqual(output.read_bytes(), b'sentinel\n')
 
     def test_baseline_hash_drift_is_refused(self):
         spec = deepcopy(self.spec)
         spec['baseline_sha256']['materials'] = '0' * 64
         with self.assertRaises(ValueError):
-            compile_spec(spec, BASELINE)
+            compile_spec(spec, self.baseline_dir)
         spec = deepcopy(self.spec)
         spec['source_records'][0]['record']['title'] += ' unreviewed edit'
         with self.assertRaisesRegex(ValueError, 'source record hash mismatch'):
-            compile_spec(spec, BASELINE)
+            compile_spec(spec, self.baseline_dir)
 
     def test_missing_property_cannot_write_partial_candidate(self):
         spec = deepcopy(self.spec)
@@ -260,7 +278,7 @@ class KapoorPhosphatePacketTests(unittest.TestCase):
             path, output = Path(directory) / 'spec.json', Path(directory) / 'packet.json'
             path.write_bytes(encoded(spec))
             with self.assertRaises(ValueError):
-                write_packet(BASELINE, path, output)
+                write_packet(self.baseline_dir, path, output)
             self.assertFalse(output.exists())
             self.assertEqual(list(Path(directory).iterdir()), [path])
 
@@ -270,7 +288,7 @@ class KapoorPhosphatePacketTests(unittest.TestCase):
         prop['reported_value'].update(unit_code='MPa', unit_text='MPa')
         spec['formulations'][0]['states'][0]['properties'][0] = explicit(spec, 'property', prop)
         with self.assertRaises(ValueError):
-            compile_spec(spec, BASELINE)
+            compile_spec(spec, self.baseline_dir)
 
     def test_duplicate_source_alias_and_designation_do_not_create_materials(self):
         for mutation in ('alias', 'designation'):
@@ -284,7 +302,7 @@ class KapoorPhosphatePacketTests(unittest.TestCase):
                 state['source_designation'] = 'P60'
                 spec['formulations'][1]['states'][0]['record'] = explicit(spec, 'state', state)
             with self.subTest(mutation=mutation), self.assertRaises(ValueError):
-                compile_spec(spec, BASELINE)
+                compile_spec(spec, self.baseline_dir)
 
     def test_pending_source_identity_or_rights_never_become_handoff_ready(self):
         for gate in ('source', 'identity', 'rights'):
@@ -298,7 +316,7 @@ class KapoorPhosphatePacketTests(unittest.TestCase):
                 descriptor['record']['license'] = {'status': 'unverified', 'identifier': None}
                 descriptor['sha256'] = record_sha256(descriptor['record'])
             with self.subTest(gate=gate):
-                packet = compile_spec(spec, BASELINE)
+                packet = compile_spec(spec, self.baseline_dir)
                 self.assertFalse(packet['report']['handoff_ready'])
                 self.assertTrue(packet['report']['pending_gates'])
                 self.assertEqual(packet['report']['formal_admitted_delta'], 0)
@@ -313,7 +331,7 @@ class KapoorPhosphatePacketTests(unittest.TestCase):
             else:
                 packet['report']['handoff_ready'] = not packet['report']['handoff_ready']
             with self.subTest(mutation=mutation), self.assertRaisesRegex(ValueError, 'differs from exact replay'):
-                validate_prepared_packet(packet, BASELINE)
+                validate_prepared_packet(packet, self.baseline_dir)
 
 
 if __name__ == '__main__':

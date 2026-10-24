@@ -1164,3 +1164,31 @@ Reviewed publisher PDF: 1,780,571 bytes; SHA-256
 `1f06bc0667c7c5575a0e88772868a95cd27ba01a264d3b3a0b9c859a8a6423aa`.
 Selected-content transcription and rights checks do not establish independent
 scientific review, experimental replication or broader legal clearance.
+
+### Kapoor 2019 calcium phosphate/aluminophosphate glass facts
+
+Saurabh Kapoor, Randall E. Youngman, Lina Ma, Nadja Lönnroth,
+Sylwester J. Rzoska, Michal Bockowski, Lars R. Jensen, Mathieu Bauchy and
+Morten M. Smedskjaer (2019), *Permanent Densification of Calcium
+Aluminophosphate Glasses*, Frontiers in Materials 6:63,
+[DOI 10.3389/fmats.2019.00063](https://doi.org/10.3389/fmats.2019.00063).
+Copyright 2019 by the listed authors. The article-specific notice on
+publisher PDF page 13 and the publisher HTML copyright link identify the
+[Creative Commons Attribution 4.0 International license](https://creativecommons.org/licenses/by/4.0/).
+
+Changes are transcription of six selected Table 1 density cells and analyzed
+ICP-OES oxide compositions, with supporting preparation/method facts and
+original structured scope qualifications. The reported compositions are not
+nominal recipes or independently certified final stoichiometries. These are
+as-prepared, annealed/reannealed glass states; compressed variants and
+calculated molar volumes or packing densities are excluded. The source-wide
+SD bound is not assigned as individual row SDs. Repeated measurements do not
+establish independent specimen counts, and missing conditions remain unknown.
+No separate restriction was observed on the selected table or method; this
+review does not import referenced works or separately credited content.
+No author or publisher endorsement is implied. The source PDF, screenshots,
+full text and raw measurements are not distributed or relicensed under MIT.
+Reviewed publisher PDF: 5,036,175 bytes; SHA-256
+`ca831de841ebc22e52157474e491ca2151d8e4f6d68576a75376af47203d38a0`.
+Source transcription and license checks do not establish scientific replication,
+independent scientific review or legal clearance.

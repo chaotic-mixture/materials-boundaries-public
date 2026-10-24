@@ -39,7 +39,8 @@ PRE_TOUGH_PLA_PIN_SHA256 = '393af99b3a9ef08e6d73c87bde302af74e66dd59628e86b368b8
 PRE_NYLON_PIN_SHA256 = 'a6b5e9835807a397c81f668cb3c1f19fe70d62074899bdf6365892543220d4b2'
 PRE_BRUNS_PIN_SHA256 = '124044eb8afcaf927ec9ff4770da66dfedc641391cd58e4b873735ee7424db4e'
 PRE_TARASOV_PIN_SHA256 = '09b57c7410b7b6c858abd566153dd932a451c9b5d4ed56b0963cbe4064543a05'
-CURRENT_PIN_SHA256 = 'f77658c4df1434de7dd9d9d8d0e9d4ab31eef200477ec748f80c1a7acd371dbf'
+PRE_KAPOOR_PIN_SHA256 = 'f77658c4df1434de7dd9d9d8d0e9d4ab31eef200477ec748f80c1a7acd371dbf'
+CURRENT_PIN_SHA256 = '23be9c9f3716f824ea79872167ff5f80d991ea5d222d702ad41d40188c871f4a'
 GROWTH_ROOT = Path(__file__).resolve().parents[4]
 GROWTH_LEDGER = GROWTH_ROOT / 'tests/fixtures/source_family_growth_data_20261019.json'
 GROWTH_LEDGER_SHA256 = '9dfc8d71e89041f05e11a870ad29aea34cb3ab90586bcea8f1d717adc9878ac3'
@@ -164,6 +165,15 @@ PRE_BRUNS_DATA_SHA256 = {
     'materials.json': 'd228c3b8f0c45fd56809891213d1d1acd73964357b579c51f8b9c731031a3ec5',
     'reference_properties.json': '66802278a29cdcc4a5fe468b5681d87893a8a10a7c6c4c57f83c4753fe807839',
     'sources.json': '67e068041af0cd8dbaba1126e6ffe2e39d2f8d26f8d2c8ceefc42240e5eefe76',
+}
+KAPOOR_LEDGER = GROWTH_ROOT / 'tests/fixtures/kapoor_phosphate_data_20261024.json'
+KAPOOR_LEDGER_SHA256 = 'd30ed8fd0d823a96d2285b9ecbc9b1e25f40c963fc4a45576862568ddfd28e69'
+KAPOOR_PACKET = GROWTH_ROOT / 'experimental/material-batches/kapoor-phosphate-glasses-20261024/prepared-packet.json'
+KAPOOR_PACKET_SHA256 = '03284799a8d5c34a7927c56823339bb0067d2d98582c57e0e0c52ec701e29c6b'
+PRE_KAPOOR_DATA_SHA256 = {
+    'materials.json': '93da1d629da8244853b3e6ad30d556137d57e3f639baffdd3c5bc34a3a1c9107',
+    'reference_properties.json': '275671a5f1a447d0cb071de361a8a515f60da60213edd076d725dd03d305b307',
+    'sources.json': '3828f53f5b946a4a90d1cb92630b141d496a02838a9dceb519730831c56cc8c1',
 }
 TARASOV_LEDGER = GROWTH_ROOT / 'tests/fixtures/tarasov_pna_bpf_data_20261023.json'
 TARASOV_LEDGER_SHA256 = 'ff13299c063b805d4cb36e73fe8db1521e88cab51aff2af13d2f4afab0a30773'
@@ -498,6 +508,87 @@ def recover_pre_table_batch_catalogs(current):
     return recover_exact_append_catalogs(current, table_batch_descriptor())
 
 
+def kapoor_descriptor():
+    return {'label': 'Kapoor phosphate', 'ledger': KAPOOR_LEDGER,
+            'ledger_sha256': KAPOOR_LEDGER_SHA256, 'packet': KAPOOR_PACKET,
+            'packet_sha256': KAPOOR_PACKET_SHA256,
+            'parent_commit': '196995256836db2d8f870ac9a91f664bfdd03e7f',
+            'parent_data': PRE_KAPOOR_DATA_SHA256,
+            'addition_counts': {'identities': 6, 'grades': 0, 'states': 6, 'properties': 6, 'sources': 1}}
+
+
+def kapoor_inventory():
+    """Validate only the fixed six selections from the one reviewed packet."""
+    descriptor = kapoor_descriptor()
+    raw = KAPOOR_LEDGER.read_bytes()
+    if sha256(raw).hexdigest() != KAPOOR_LEDGER_SHA256:
+        raise AssertionError('Kapoor phosphate ledger bytes differ')
+    ledger = json.loads(raw)
+    names = {'materials.json': 'materials', 'reference_properties.json': 'properties',
+             'sources.json': 'sources'}
+    if (ledger['baseline_commit'] != descriptor['parent_commit']
+            or ledger['baseline_sha256'] != {names[k]: v for k, v in PRE_KAPOOR_DATA_SHA256.items()}
+            or len(ledger['packets']) != 6):
+        raise AssertionError('Kapoor phosphate parent or packet inventory differs')
+    raw = KAPOOR_PACKET.read_bytes()
+    if sha256(raw).hexdigest() != KAPOOR_PACKET_SHA256:
+        raise AssertionError('Kapoor phosphate packet bytes differ')
+    packet = json.loads(raw)
+    if packet['input']['baseline_sha256'] != {
+            'materials': ledger['baseline_sha256']['materials'],
+            'reference_properties': ledger['baseline_sha256']['properties'],
+            'sources': ledger['baseline_sha256']['sources']}:
+        raise AssertionError('Kapoor phosphate packet parent resources differ')
+    additions = {kind: [] for _, _, _, kind in GROWTH_COLLECTIONS}
+    for index, (key, entry) in enumerate(zip(('al10', 'al15', 'al5', 'p46', 'p50', 'p60'), ledger['packets'])):
+        ids = {'identities': ['mat_kapoor2019_' + key], 'grades': [],
+               'states': ['state_kapoor2019_' + key + '_as_prepared'],
+               'properties': ['refprop_kapoor2019_' + key + '_mass_density'],
+               'sources': ['kapoor_2019_calcium_aluminophosphate'] if index == 0 else []}
+        if entry != {'path': KAPOOR_PACKET.relative_to(GROWTH_ROOT).as_posix(),
+                     'sha256': KAPOOR_PACKET_SHA256, 'added_ids': ids}:
+            raise AssertionError('Kapoor phosphate ordered packet selection differs')
+        for _, section, collection, kind in GROWTH_COLLECTIONS:
+            rows = [row for row in packet['catalogs'][section][collection] if row['id'] in ids[kind]]
+            if len(rows) != len(ids[kind]):
+                raise AssertionError('Kapoor phosphate duplicate or missing addition')
+            additions[kind].extend(rows)
+    if {kind: len(rows) for kind, rows in additions.items()} != descriptor['addition_counts']:
+        raise AssertionError('Kapoor phosphate exact addition counts differ')
+    return ledger, additions
+
+
+def recover_pre_kapoor_catalogs(current):
+    """Accept only the complete predecessor or successor of one frozen append."""
+    ledger, additions = kapoor_inventory()
+    label = 'Kapoor phosphate'
+    names = {'materials.json': 'materials', 'reference_properties.json': 'properties',
+             'sources.json': 'sources'}
+    def hashes(catalogs):
+        return {names[name]: sha256((json.dumps(value, ensure_ascii=False, indent=2,
+                allow_nan=False) + '\n').encode('utf-8')).hexdigest()
+                for name, value in catalogs.items()}
+    actual = hashes(current)
+    if actual == ledger['baseline_sha256']:
+        return deepcopy(current)
+    catalogs = deepcopy(current)
+    for filename, section, collection, kind in GROWTH_COLLECTIONS:
+        candidates = additions[kind]
+        identifiers = {row['id'] for row in candidates}
+        rows = catalogs[filename][collection]
+        for candidate in candidates:
+            matches = [row for row in rows if row['id'] == candidate['id']]
+            if len(matches) != 1 or registry.canonical(matches[0]) != registry.canonical(candidate):
+                raise AssertionError(label + ' requires every unchanged addition')
+        # Shared source rows are absent from added_ids and always retained.
+        catalogs[filename][collection] = [row for row in rows if row['id'] not in identifiers]
+    if hashes(catalogs) != ledger['baseline_sha256']:
+        raise AssertionError(label + ' predecessor catalog bytes differ')
+    if actual != ledger['current_sha256']:
+        raise AssertionError(label + ' successor catalog order or bytes differ')
+    return catalogs
+
+
 def tarasov_descriptor():
     return {'label': 'Tarasov PNA-BPF', 'ledger': TARASOV_LEDGER,
             'ledger_sha256': TARASOV_LEDGER_SHA256, 'packet': TARASOV_PACKET,
@@ -769,6 +860,7 @@ class BaselineCompatibility(unittest.TestCase):
         cls.original_identity = sha256(json.dumps(
             cls.expected, sort_keys=True, separators=(',', ':'), ensure_ascii=False,
             allow_nan=False).encode()).hexdigest()
+        cls.recover_kapoor_anchor()
         cls.recover_tarasov_anchor()
         cls.recover_bruns_anchor()
         cls.recover_nylon_anchor()
@@ -787,10 +879,29 @@ class BaselineCompatibility(unittest.TestCase):
         cls.recover_historical_anchor()
 
     @classmethod
+    def recover_kapoor_anchor(cls):
+        """Recover the exact 196995 data before the unchanged Tarasov anchor."""
+        cls.kapoor_parent_root = cls.fixture_root / 'pre-kapoor-batch-data'
+        shutil.copytree(cls.original_root, cls.kapoor_parent_root)
+        data_root = cls.kapoor_parent_root / 'data'
+        current = {name: json.loads((data_root / name).read_bytes())
+                   for name in PRE_KAPOOR_DATA_SHA256}
+        for name, value in recover_pre_kapoor_catalogs(current).items():
+            (data_root / name).write_bytes((json.dumps(value, ensure_ascii=False,
+                indent=2, allow_nan=False) + '\n').encode('utf-8'))
+        cls.kapoor_parent_pin = registry.canonical(manifest(cls.kapoor_parent_root))
+        if sha256(cls.kapoor_parent_pin).hexdigest() != PRE_KAPOOR_PIN_SHA256:
+            raise AssertionError('Recovered 196995 complete pin bytes differ')
+        cls.kapoor_parent_query_root = cls.fixture_root / 'pre-kapoor-batch-query'
+        (cls.kapoor_parent_query_root / 'pins').mkdir(parents=True)
+        (cls.kapoor_parent_query_root / 'pins/legacy_baseline.json').write_bytes(cls.kapoor_parent_pin)
+
+
+    @classmethod
     def recover_tarasov_anchor(cls):
         """Recover the exact faa002c data before the unchanged Bruns anchor."""
         cls.tarasov_parent_root = cls.fixture_root / 'pre-tarasov-batch-data'
-        shutil.copytree(cls.original_root, cls.tarasov_parent_root)
+        shutil.copytree(cls.kapoor_parent_root, cls.tarasov_parent_root)
         data_root = cls.tarasov_parent_root / 'data'
         current = {name: json.loads((data_root / name).read_bytes())
                    for name in PRE_TARASOV_DATA_SHA256}
@@ -1202,12 +1313,100 @@ class BaselineCompatibility(unittest.TestCase):
         with self.assertRaisesRegex(AssertionError, 'Recovered a592 catalog bytes differ'):
             recover_a592_catalogs(changed)
 
+    def test_kapoor_parent_manifest_and_catalog_recovery_remain_exact(self):
+        expected = dict(self.expected)
+        expected.update({'data/' + name: digest for name, digest in PRE_KAPOOR_DATA_SHA256.items()})
+        self.assertEqual(len(manifest(self.kapoor_parent_root)), 64)
+        self.assertEqual(manifest(self.kapoor_parent_root), expected)
+        current = {name: json.loads((self.current_root / 'data' / name).read_bytes())
+                   for name in PRE_KAPOOR_DATA_SHA256}
+        parent = {name: json.loads((self.kapoor_parent_root / 'data' / name).read_bytes())
+                  for name in PRE_KAPOOR_DATA_SHA256}
+        self.assertEqual(recover_pre_kapoor_catalogs(current), parent)
+        self.assertEqual(recover_pre_kapoor_catalogs(parent), parent)
+        self.assertEqual(current['sources.json']['records'][:-1], parent['sources.json']['records'])
+        self.assertEqual(current['materials.json']['grades'], parent['materials.json']['grades'])
+        self.assertEqual(len(parent['materials.json']['identities']), 1153)
+        self.assertEqual(len(current['materials.json']['identities']), 1159)
+        with self.assertRaisesRegex(AssertionError, 'Tarasov PNA-BPF predecessor catalog bytes differ'):
+            recover_pre_tarasov_catalogs(current)
+        ledger, additions = kapoor_inventory()
+        for filename, section, collection, label in GROWTH_COLLECTIONS:
+            if not additions[label]:
+                continue
+            candidate = additions[label][0]
+            for mutation in ('missing', 'changed', 'duplicate'):
+                with self.subTest(collection=label, mutation=mutation):
+                    changed = deepcopy(current)
+                    rows = changed[filename][collection]
+                    row = next(row for row in rows if row['id'] == candidate['id'])
+                    if mutation == 'missing':
+                        rows.remove(row)
+                    elif mutation == 'changed':
+                        row['version'] = 'unreviewed'
+                    else:
+                        rows.append(deepcopy(row))
+                    with self.assertRaisesRegex(AssertionError, 'Kapoor phosphate'):
+                        recover_pre_kapoor_catalogs(changed)
+        for filename, collection in [('materials.json', 'identities'), ('sources.json', 'records')]:
+            changed = deepcopy(current)
+            changed[filename][collection][0]['version'] = 'unreviewed'
+            with self.subTest(retained_collection=collection), self.assertRaisesRegex(
+                    AssertionError, 'Kapoor phosphate predecessor catalog bytes differ'):
+                recover_pre_kapoor_catalogs(changed)
+        for filename, collection, label in [('materials.json', 'identities', 'identities'),
+                                             ('materials.json', 'records', 'states'),
+                                             ('reference_properties.json', 'records', 'properties')]:
+            changed = deepcopy(current)
+            self.assertEqual(len(additions[label]), 6)
+            self.assertEqual({row['id'] for row in changed[filename][collection][-6:]},
+                             {row['id'] for row in additions[label]})
+            changed[filename][collection][-6:] = reversed(changed[filename][collection][-6:])
+            self.assertNotEqual(changed, current)
+            with self.subTest(order=label), self.assertRaisesRegex(
+                    AssertionError, 'Kapoor phosphate successor catalog order or bytes differ'):
+                recover_pre_kapoor_catalogs(changed)
+        original_read = Path.read_bytes
+        for target in (KAPOOR_LEDGER, KAPOOR_PACKET):
+            def replaced(path):
+                return original_read(path) + (b' ' if path == target else b'')
+            with self.subTest(binding=target.name), patch.object(Path, 'read_bytes', replaced), \
+                    self.assertRaisesRegex(AssertionError, 'Kapoor phosphate .* bytes differ'):
+                recover_pre_kapoor_catalogs(current)
+        with self.resources(self.kapoor_parent_root, self.kapoor_parent_query_root):
+            with self.assertRaisesRegex(ValueError, 'Baseline pin was replaced'):
+                registry.baseline_digest()
+            with patch.object(registry, 'BASELINE_PIN', PRE_KAPOOR_PIN_SHA256):
+                self.assertEqual(registry.baseline_digest(), PRE_KAPOOR_PIN_SHA256)
+        with self.resources(self.kapoor_parent_root), self.assertRaisesRegex(
+                ValueError, 'Installed legacy baseline differs'):
+            registry.baseline_digest()
+
+
+    def test_kapoor_parent_database_rejected_without_migration(self):
+        for rich in (False, True):
+            with self.subTest(rich=rich):
+                review = self.review(rich)
+                path = self.work / ('196995-v2.db' if rich else '196995-legacy.db')
+                with self.resources(self.kapoor_parent_root, self.kapoor_parent_query_root), \
+                        patch.object(registry, 'BASELINE_PIN', PRE_KAPOOR_PIN_SHA256):
+                    historical = self.make_registry(path, review, rich)
+                    before = historical.admit([review['records'][0]['candidate_id']])
+                raw = path.read_bytes()
+                rows = self.database_rows(path)
+                with self.assertRaisesRegex(ValueError, 'Initial baseline and review input cannot be replaced'):
+                    self.make_registry(path, review, rich)
+                self.assertEqual(path.read_bytes(), raw)
+                self.assertEqual(self.database_rows(path), rows)
+                self.assertEqual(historical.snapshot(), before)
+
+
     def test_tarasov_parent_manifest_and_catalog_recovery_remain_exact(self):
         expected = dict(self.expected)
         expected.update({'data/' + name: digest for name, digest in PRE_TARASOV_DATA_SHA256.items()})
         self.assertEqual(len(manifest(self.tarasov_parent_root)), 64)
         self.assertEqual(manifest(self.tarasov_parent_root), expected)
-        current = {name: json.loads((self.current_root / 'data' / name).read_bytes())
+        current = {name: json.loads((self.kapoor_parent_root / 'data' / name).read_bytes())
                    for name in PRE_TARASOV_DATA_SHA256}
         parent = {name: json.loads((self.tarasov_parent_root / 'data' / name).read_bytes())
                   for name in PRE_TARASOV_DATA_SHA256}

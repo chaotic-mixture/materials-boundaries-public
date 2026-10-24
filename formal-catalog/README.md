@@ -4,8 +4,8 @@ The released main baseline admits 1057 source-qualified identities and exactly
 24 reviewed computed composition buckets under formal-project-count-policy/1,
 for 1081 formal project admissions.
 
-This unmerged local experiment contains 1153 source-qualified identities and the
-same 24 computed buckets, totaling 1177. Main remains unchanged. Resource pins
+This unmerged local experiment contains 1159 source-qualified identities and the
+same 24 computed buckets, totaling 1183. Main remains unchanged. Resource pins
 match the local core for reproducible testing; they do not publish a release.
 Neither total is a global physical-uniqueness claim.
 
@@ -313,7 +313,7 @@ are not distributed. See the [reviewed Bruns packet](../experimental/material-ba
 
 The local append contains five source-qualified nominal phosphazene-containing
 epoxy formulations, PNA-BPF-1 through PNA-BPF-5, each with one DDS-cured state
-and one measured-source tensile-strength reference. The current core contains
+and one measured-source tensile-strength reference. That core snapshot contained
 1153 identities, 1154 states, 1165 properties, 31 grades and 125 sources. Its
 categories are natural 1010, metal 32, inorganic 53, polymer 30 and composite 28.
 Adding the unchanged 24 reviewed computed buckets gives 1177 project entries;
@@ -334,3 +334,25 @@ not distributed. Candidate history remains unchanged in the
 Local integration and experimental publication do not merge main or deploy it.
 
 The Tarasov data append is pinned to `ff28631faf1d1af804171378953b570313e35b83`.
+
+
+## Kapoor analyzed phosphate glasses, 2026-10-24
+
+The local append adds six study-qualified inorganic glass identities, six
+as-prepared annealed/reannealed states, six measured-density references and
+one source, with no grade. Source-qualified counts are natural 1010, metal 32,
+inorganic 59, polymer 30 and composite 28: 1159 identities. The unchanged 24
+reviewed computed buckets give 1183 experimental project entries. Main stays
+1081; the 62 unadmitted examples stay excluded.
+
+Analyzed ICP-OES mol% and reported density remain source-qualified facts.
+Neither the source-wide SD bound nor measurement repetitions provide individual
+SDs, independent specimen counts or known means. Compressed-state variants and
+calculated properties are excluded; bare P60 is not an identity alias. Full
+qualifiers and nulls are retained by the exact resource pins and read-only API.
+
+Data append `76cae67a9401b916c1409ad3c2212fa3c103be6f` preserves the
+[reviewed candidate packet](../experimental/material-batches/kapoor-phosphate-glasses-20261024/README.md)
+unchanged. Only attributed facts and original curation are distributed; no PDF
+or screenshots. Local implementation and candidate review do not establish
+scientific replication, deployment or a main merge.

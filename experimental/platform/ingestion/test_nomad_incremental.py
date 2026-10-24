@@ -14,8 +14,8 @@ from nomad_review_boundary import BASELINE_COMMIT, LEGACY, SOURCES
 from test_nomad_batch import fixture
 
 BOUNDARY = {'provider_material_ids': [], 'provider_entry_ids': [], 'sha256': 'test-boundary',
-            'baseline_commit': BASELINE_COMMIT, 'formal_project_total': 1177,
-            'formal_legacy_count': 1153, 'formal_computed_composition_count': 24,
+            'baseline_commit': BASELINE_COMMIT, 'formal_project_total': 1183,
+            'formal_legacy_count': 1159, 'formal_computed_composition_count': 24,
             'excluded_example_count': 62, 'legacy_example_count': 7,
             'source_sha256': {LEGACY[0]: LEGACY[1],
                               **{path: expected for path, expected, _ in SOURCES.values()}}}
@@ -85,7 +85,7 @@ class IncrementalTests(unittest.TestCase):
         self.assertEqual(third['input_changes'][0]['change'], 'changed')
         self.assertEqual(third['candidate_changes'][0]['change'], 'changed')
         self.assertEqual(third['admitted_delta'], 0)
-        self.assertEqual(third['formal_project_total'], 1177)
+        self.assertEqual(third['formal_project_total'], 1183)
 
     def test_crash_after_archive_response_is_reused(self):
         self.init()
@@ -589,6 +589,12 @@ class IncrementalTests(unittest.TestCase):
             'cbd68da88d7bba461dce15ee5a71e43ef577e8c3', 1168, 1144,
             'd228c3b8f0c45fd56809891213d1d1acd73964357b579c51f8b9c731031a3ec5')
 
+    def test_kapoor_predecessor_scope_stays_read_only_without_migration(self):
+        # The Tarasov store retains its original data anchor, counts and bytes.
+        self.assert_predecessor_scope_stays_read_only(
+            'ff28631faf1d1af804171378953b570313e35b83', 1177, 1153,
+            '93da1d629da8244853b3e6ad30d556137d57e3f639baffdd3c5bc34a3a1c9107')
+
     def test_tarasov_predecessor_scope_stays_read_only_without_migration(self):
         # The Bruns store retains its original data anchor, counts and bytes.
         self.assert_predecessor_scope_stays_read_only(
@@ -599,9 +605,9 @@ class IncrementalTests(unittest.TestCase):
         from nomad_review_boundary import load_review_boundary
 
         current = load_review_boundary()
-        self.assertEqual(current['baseline_commit'], 'ff28631faf1d1af804171378953b570313e35b83')
-        self.assertEqual(current['formal_legacy_count'], 1153)
-        self.assertEqual(current['formal_project_total'], 1177)
+        self.assertEqual(current['baseline_commit'], '76cae67a9401b916c1409ad3c2212fa3c103be6f')
+        self.assertEqual(current['formal_legacy_count'], 1159)
+        self.assertEqual(current['formal_project_total'], 1183)
         self.init()
         self.assertEqual(self.first_cycle()['status'], 'complete')
         self.now += 100

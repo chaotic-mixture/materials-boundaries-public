@@ -541,9 +541,9 @@ are not distributed. See the [reviewed Bruns packet](../../material-batches/brun
 ## Tarasov PNA-BPF nominal formulations, 2026-10-23
 
 The runtime append contains five source-qualified polymer formulations, each
-with one DDS-cured state and one Table 7 tensile-strength reference. Current
-core counts are **1153 identities, 1154 states, 1165 properties, 31 grades and
-125 sources**. The experimental formal project view is **1177 = 1153 + 24**,
+with one DDS-cured state and one Table 7 tensile-strength reference. That
+core snapshot contained **1153 identities, 1154 states, 1165 properties, 31 grades and
+125 sources**. That experimental formal project view was **1177 = 1153 + 24**,
 with metal 44, inorganic 65, polymer 30, composite 28 and natural 1010. The 24
 reviewed computed records remain separate; the 62 unadmitted examples and main
 count of 1081 remain unchanged. Publication and validation status are recorded
@@ -575,3 +575,36 @@ Only selected attributed facts and original curation are distributed under the
 article-specific CC BY 4.0 notice. The PDF and rendered pages are excluded.
 See the [reviewed candidate packet](../../material-batches/tarasov-pna-bpf-20261023/README.md)
 and its separate runtime integration evidence for testing and review status.
+
+
+## Kapoor analyzed phosphate glasses, 2026-10-24
+
+The local runtime append adds six inorganic formulations with one as-prepared,
+annealed/reannealed state and one reported measured density each, no grades,
+and one attributed CC BY 4.0 source. Current core counts are 1159 identities,
+1160 states, 1171 properties, 31 grades and 126 sources. The experimental
+project view is 1183 = 1159 source-qualified identities + 24 unchanged reviewed
+computed records: metal 44, inorganic 71, polymer 30, composite 28, natural 1010.
+The excluded 62 examples and main's 1081 entries remain separate.
+
+P60/P50/P46/Al5/Al10/Al15 retain 2.521/2.654/2.718/2.614/2.585/2.583 g/cm3
+respectively. ICP-OES oxide mol% is analyzed composition, not a nominal recipe
+or independently validated final stoichiometry. Density uses air/ethanol
+Archimedes weighing at room temperature. At least ten repetitions per sample
+is not an independent specimen count; <=0.002 g/cm3 is a source-wide SD bound,
+not six measured SDs. Aggregation, individual uncertainty, specimen count,
+exact temperature, pressure, humidity and porosity remain unknown. Compressed
+states, calculated molar volumes and packing densities are excluded. P60 is
+study-qualified and does not alias the unrelated EPDM_H_P60 identity.
+
+The data append is `76cae67a9401b916c1409ad3c2212fa3c103be6f`. Query pin
+`23be9c9f3716f824ea79872167ff5f80d991ea5d222d702ad41d40188c871f4a`
+changes only the three data entries; the other 61 manifest entries and exact
+code compatibility remain unchanged. Kapoor recovery restores the exact
+196995 Tarasov snapshot before the retained older recovery chain. Old stores
+fail closed without migration, while saved historical reports keep their scope.
+
+The [unchanged candidate packet](../../material-batches/kapoor-phosphate-glasses-20261024/README.md)
+retains its zero-admission history. Runtime validation and publication require
+separate evidence and review; local counts do not claim a main release.
+Source assets are not distributed.

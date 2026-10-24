@@ -19,7 +19,7 @@ SPEC.loader.exec_module(ci)
 class TarasovPNABPFCITests(unittest.TestCase):
     def test_previous_jobs_keep_every_step_and_only_new_branch_is_gated(self):
         prior = ci.git('show', ci.BASE_COMMIT + ':.github/workflows/ci.yml').decode('utf-8')
-        current = (ROOT / '.github/workflows/ci.yml').read_bytes().decode('utf-8')
+        current = ci.regression_checkpoint_bytes('.github/workflows/ci.yml').decode('utf-8')
         self.assertEqual(current, ci.expected_workflow(prior))
         restored = current.removesuffix(ci.TARGETED_JOB).replace(ci.FULL_JOB_IF, ci.PREVIOUS_FULL_JOB_IF)
         self.assertEqual(restored, prior)
@@ -101,7 +101,7 @@ class TarasovPNABPFCITests(unittest.TestCase):
                                              'provider', 'transport', 'lifecycle', 'integration'})
         for name, (relative, _, _) in ci.TEST_GROUPS.items():
             with self.subTest(group=name):
-                declared = ci.declared_test_ids(relative)
+                declared = ci.declared_test_ids(relative, regression_checkpoint=True)
                 ci.validate_inventory(name, declared)
                 prior = ci.declared_test_ids(relative, predecessor=True)
                 self.assertTrue(prior)
@@ -114,7 +114,7 @@ class TarasovPNABPFCITests(unittest.TestCase):
 
     def test_missing_duplicate_substituted_or_extra_inventory_ids_are_rejected(self):
         for name, (relative, _, _) in ci.TEST_GROUPS.items():
-            ids = ci.declared_test_ids(relative)
+            ids = ci.declared_test_ids(relative, regression_checkpoint=True)
             for changed in (ids[:-1], ids + ids[:1], ids[1:] + ['different.Case.test_replacement'],
                             ids + ['different.Case.test_extra']):
                 with self.subTest(group=name, count=len(changed)), self.assertRaises(RuntimeError):
@@ -122,7 +122,7 @@ class TarasovPNABPFCITests(unittest.TestCase):
         self.assertEqual(ci.inventory_fingerprint(['b', 'a']), ci.inventory_fingerprint(['a', 'b']))
 
     def test_current_payload_pins_exact_packet_data_baseline_and_unchanged_reviews(self):
-        payload = ci.installation_payload()
+        payload = ci.installation_payload(regression_checkpoint=True)
         self.assertEqual(payload['delta_counts'], {'identity': 5, 'grade': 0, 'state': 5, 'property': 5, 'source': 1})
         self.assertEqual(payload['graph_counts'], {'identity': 1153, 'grade': 31, 'state': 1154, 'property': 1165, 'source': 125})
         self.assertEqual(payload['formal_counts']['formal_project_admission_count'], 1177)
@@ -131,9 +131,9 @@ class TarasovPNABPFCITests(unittest.TestCase):
         self.assertEqual(set(payload['preserved_resources']), set(ci.PRESERVED_RESOURCES))
         for name in ('PACKET_SHA256', 'QUERY_BASELINE_SHA256'):
             with self.subTest(pin=name), patch.object(ci, name, '0' * 64), self.assertRaises(RuntimeError):
-                ci.installation_payload()
+                ci.installation_payload(regression_checkpoint=True)
         with patch.dict(ci.RESOURCE_HASHES, {'materials.json': '0' * 64}), self.assertRaises(RuntimeError):
-            ci.installation_payload()
+            ci.installation_payload(regression_checkpoint=True)
 
     def test_append_rejects_count_preserving_rewrite_partial_order_metadata_and_id_drift(self):
         before = {'materials': {'identities': [{'id': 'old', 'category': 'inorganic'}], 'grades': [], 'records': [], 'version': '1'},
@@ -224,7 +224,7 @@ class TarasovPNABPFTargetedCoreTests(unittest.TestCase):
         }
         self.assertEqual(set(ci.TARGETED_CORE_MODULES), expected_modules)
         self.assertEqual(len(ci.TARGETED_CORE_MODULES), len(expected_modules))
-        all_ids = ci.declared_test_ids('tests')
+        all_ids = ci.declared_test_ids('tests', regression_checkpoint=True)
         selected = [identifier for identifier in all_ids if identifier.split('.')[0] in expected_modules]
         self.assertEqual(tuple(selected), ci.TARGETED_CORE_IDS)
         self.assertEqual(len(selected), ci.TARGETED_CORE_COUNT)

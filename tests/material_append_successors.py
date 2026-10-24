@@ -72,7 +72,15 @@ TARASOV_DATA_SHA256 = "ff13299c063b805d4cb36e73fe8db1521e88cab51aff2af13d2f4afab
 TARASOV_FILE_LEDGER = "tests/fixtures/tarasov_pna_bpf_files_20261023.json"
 TARASOV_FILE_SHA256 = "688774855249682624bda92b9cf0daf3c96f234d8eba7befee70676d1bcc4bec"
 
+KAPOOR_BATCH_ID = "kapoor-phosphate-glasses-20261024"
+KAPOOR_DATA_LEDGER = "tests/fixtures/kapoor_phosphate_data_20261024.json"
+KAPOOR_DATA_SHA256 = "d30ed8fd0d823a96d2285b9ecbc9b1e25f40c963fc4a45576862568ddfd28e69"
+KAPOOR_FILE_LEDGER = "tests/fixtures/kapoor_phosphate_files_20261024.json"
+KAPOOR_FILE_SHA256 = "3e253f3397252c4fd923ed11f2a8f5d9eddb70daac35896ee527b5610f247f7f"
+
 FROZEN_SUCCESSORS = (
+    {"batch_id": KAPOOR_BATCH_ID,
+     "data": (KAPOOR_DATA_LEDGER, KAPOOR_DATA_SHA256), "files": (KAPOOR_FILE_LEDGER, KAPOOR_FILE_SHA256)},
     {"batch_id": TARASOV_BATCH_ID,
      "data": (TARASOV_DATA_LEDGER, TARASOV_DATA_SHA256), "files": (TARASOV_FILE_LEDGER, TARASOV_FILE_SHA256)},
     {"batch_id": BRUNS_BATCH_ID,

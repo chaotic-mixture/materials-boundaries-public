@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "baseline_commit": "c275ae6051277ad6d08077b2937527907eb2380f",
+  "scope": "exact_legacy_document_helper_successor_without_normalizer_or_old_ledger_changes",
+  "updates": {
+    "tests/legacy_document_recovery.py": {
+      "previous_sha256": "f29130047bb59b30e560b365b90aff91890ec15ae01901095e052c6362675179",
+      "sha256": "a6bd575c63251659ce4d828a0ce36417129c824a633cc1bb6b7acfd0e94dc597",
+      "edits": [
+        {
+          "offset": 1037,
+          "before": "",
+          "after": "KAPOOR_DOCUMENT_LEDGER = 'tests/fixtures/kapoor_legacy_document_recovery_20261024.json'\nKAPOOR_DOCUMENT_SHA256 = '44523656c736f8b23bfd068e7295ae681a22c3f55c4d1daa879c8bc1e8fce9c2'\n"
+        },
+        {
+          "offset": 1717,
+          "before": "    return project_file_chain(filename, raw, successor['ledgers'] + ledger['ledgers'])\n",
+          "after": "    latest = load_frozen(ROOT, KAPOOR_DOCUMENT_LEDGER, KAPOOR_DOCUMENT_SHA256)\n    return project_file_chain(filename, raw, latest['ledgers'] + successor['ledgers'] + ledger['ledgers'])\n"
+        }
+      ]
+    }
+  }
+}
