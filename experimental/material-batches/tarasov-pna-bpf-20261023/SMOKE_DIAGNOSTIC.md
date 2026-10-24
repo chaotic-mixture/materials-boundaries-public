@@ -75,9 +75,15 @@ The first 1,500-second attempt was interrupted by execution disconnection:
 its saved receipt still said running, its outer log had no terminal output,
 and no corresponding worker remained when the connection returned. It is
 incomplete, not a confirmed timeout or pass. After inspecting those outcomes,
-one fresh attempt resumed with the same 1,500-second cap; its terminal result
-is pending. The successful baseline result is not counted as validation of
-this new wheel.
+one fresh attempt resumed with the same 1,500-second cap. This new-wheel
+attempt completed successfully in 1,157.359 seconds with exit code zero.
+Its terminal log SHA-256 is
+`168b3b91379600a248ec11f49aafbccd668f8532d4b287eef66391547eac9de7`.
+The structured summary matches the baseline because this legacy smoke reports
+the same existing selections. The new wheel's distinct hash above was checked
+before its fresh installation; the baseline execution is not substituted for
+this result. Tarasov-specific records are separately covered by the 544-test
+installed suites and 40 exact CLI selections in the validation ledger.
 
 The separate historical class-count test repeatedly replays prefixes of its
 recovery ledger. Those test-only recovery helpers are not imported by the
