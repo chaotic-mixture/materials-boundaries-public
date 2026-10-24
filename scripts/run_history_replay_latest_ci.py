@@ -176,7 +176,12 @@ def general_workflow_predecessor(raw):
     if str(ROOT / 'tests') not in sys.path:
         sys.path.insert(0, str(ROOT / 'tests'))
     from replay_checkout_history import code_ledger, project_checkout_file
+    from ci_partition_history import code_ledger as partition_code_ledger, project_partition_file
     path = '.github/workflows/ci.yml'
+    partition_entry = partition_code_ledger()['updates'][path]
+    require(type(raw) is bytes and sha256(raw).hexdigest() == partition_entry['sha256'],
+            'General CI requires the exact complete-core partition workflow')
+    raw = project_partition_file(path, raw)
     entry = code_ledger()['updates'][path]
     require(type(raw) is bytes and sha256(raw).hexdigest() == entry['sha256'],
             'General CI requires the exact full-history checkout correction')

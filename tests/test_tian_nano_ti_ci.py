@@ -10,6 +10,7 @@ import unittest
 from unittest.mock import patch
 from types import SimpleNamespace
 from replay_checkout_history import project_checkout_file
+from ci_partition_history import project_partition_file
 
 ROOT = Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location('tian_nano_ti_ci', ROOT / 'scripts/run_tian_nano_ti_ci.py')
@@ -20,7 +21,7 @@ SPEC.loader.exec_module(ci)
 class TianNanoTiCITests(unittest.TestCase):
     def test_previous_jobs_keep_every_step_and_only_new_branch_is_gated(self):
         prior = ci.git('show', ci.BASE_COMMIT + ':.github/workflows/ci.yml').decode('utf-8')
-        current = project_checkout_file('.github/workflows/ci.yml', (ROOT / '.github/workflows/ci.yml').read_bytes()).decode('utf-8')
+        current = project_checkout_file('.github/workflows/ci.yml', project_partition_file('.github/workflows/ci.yml', (ROOT / '.github/workflows/ci.yml').read_bytes())).decode('utf-8')
         self.assertEqual(current, ci.expected_workflow(prior))
         restored = current.removesuffix(ci.TARGETED_JOB).replace(ci.FULL_JOB_IF, ci.PREVIOUS_FULL_JOB_IF)
         self.assertEqual(restored, prior)

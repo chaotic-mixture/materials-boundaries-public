@@ -20,6 +20,7 @@ sys.path.insert(0, str(ROOT / 'tests'))
 import material_append_successors as successors
 from material_append_history import recover_file
 import replay_checkout_history as history
+from ci_partition_history import project_partition_file, predecessor_registry
 
 BASE = 'e39b6d8a19576a05408b7da0e3faa8499b9f35f6'
 TIAN = '826333c73a420b7d254c469d9f6f65155983cde1'
@@ -50,6 +51,11 @@ def baseline(path):
     return git('show', BASE + ':' + path)
 
 
+def checkout_checkpoint_bytes(path):
+    """Recover only the reviewed later CI edit before historical assertions."""
+    return project_partition_file(path, (ROOT / path).read_bytes())
+
+
 def jobs(raw):
     matches = list(re.finditer(rb'^  ([a-z0-9-]+):\n', raw, re.MULTILINE))
     return {match[1].decode(): raw[match.start():matches[index + 1].start()
@@ -69,7 +75,7 @@ class CheckoutHistoryTests(unittest.TestCase):
         for path, (old_pin, new_pin) in PINS.items():
             with self.subTest(path=path):
                 entry = ledger['updates'][path]
-                old, new = baseline(path), (ROOT / path).read_bytes()
+                old, new = baseline(path), checkout_checkpoint_bytes(path)
                 self.assertEqual(sha256(old).hexdigest(), old_pin)
                 self.assertEqual(sha256(new).hexdigest(), new_pin)
                 self.assertEqual((entry['previous_sha256'], entry['sha256']), (old_pin, new_pin))
@@ -78,7 +84,7 @@ class CheckoutHistoryTests(unittest.TestCase):
                 self.assertEqual(history.project_checkout_file(path, new), old)
 
     def test_only_two_generic_checkouts_change_and_all_other_jobs_are_exact(self):
-        old, new = baseline(WORKFLOW), (ROOT / WORKFLOW).read_bytes()
+        old, new = baseline(WORKFLOW), checkout_checkpoint_bytes(WORKFLOW)
         self.assertEqual(old.count(CHECKOUT_BEFORE), 2)
         self.assertEqual(new, old.replace(CHECKOUT_BEFORE, CHECKOUT_AFTER))
         old_jobs, new_jobs = jobs(old), jobs(new)
@@ -122,12 +128,13 @@ class CheckoutHistoryTests(unittest.TestCase):
                     return node.args[1]
                 return node
         transform = StripWrapper()
-        projected = transform.visit(ast.parse((ROOT / CALLER).read_bytes()))
+        projected = transform.visit(ast.parse(checkout_checkpoint_bytes(CALLER)))
         self.assertEqual((transform.imports, transform.calls), (1, 1))
         self.assertEqual(ast.dump(projected), ast.dump(ast.parse(baseline(CALLER))))
 
     def test_registry_changes_only_the_finite_file_prefix_not_material_chronology(self):
-        old_raw, new_raw = baseline(REGISTRY), (ROOT / REGISTRY).read_bytes()
+        successors = predecessor_registry()
+        old_raw, new_raw = baseline(REGISTRY), checkout_checkpoint_bytes(REGISTRY)
         before = b'    result = [code_ledger()] if before is None else []\n'
         after = (b'    from replay_checkout_history import code_ledger as checkout_code_ledger\n'
                  b'    result = [checkout_code_ledger()] + ([code_ledger()] if before is None else [])\n')
@@ -144,7 +151,7 @@ class CheckoutHistoryTests(unittest.TestCase):
                 self.assertEqual(successors.data_ledgers(before=boundary), old.data_ledgers(before=boundary))
 
     def test_unknown_partial_mutated_and_reordered_workflows_cannot_recover(self):
-        raw = (ROOT / WORKFLOW).read_bytes()
+        raw = checkout_checkpoint_bytes(WORKFLOW)
         entry = history.code_ledger()['updates'][WORKFLOW]
         blocks = jobs(raw)
         first, second = blocks['unit-and-schema'], blocks['windows-composite']
@@ -161,7 +168,7 @@ class CheckoutHistoryTests(unittest.TestCase):
                     recover_file(history.project_checkout_file(WORKFLOW, value), entry)
         for path in (REGISTRY, CALLER):
             entry = history.code_ledger()['updates'][path]
-            value = (ROOT / path).read_bytes() + b' changed'
+            value = checkout_checkpoint_bytes(path) + b' changed'
             self.assertIs(history.project_checkout_file(path, value), value)
             with self.assertRaises(AssertionError):
                 recover_file(value, entry)
@@ -202,7 +209,7 @@ class CheckoutHistoryTests(unittest.TestCase):
 
     def test_offset_before_after_and_hash_drift_cannot_pass_exact_round_trip(self):
         for path, entry in history.code_ledger()['updates'].items():
-            raw = (ROOT / path).read_bytes()
+            raw = checkout_checkpoint_bytes(path)
             for field in ('offset', 'before', 'after', 'previous_sha256', 'sha256'):
                 changed = deepcopy(entry)
                 if field == 'offset': changed['edits'][0][field] += 1

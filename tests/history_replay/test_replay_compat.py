@@ -182,7 +182,8 @@ class ReplayCodeCompatibilityTests(unittest.TestCase):
                         cwd=ROOT, check=True, capture_output=True, timeout=30).stdout
                     self.assertEqual(digest(latest), "df5250b9d9e7b67bd8ec92cdfbc2d2efce99db5ff1a4dea0631431cbad5d886f")
                     from replay_checkout_history import project_checkout_file
-                    self.assertEqual(project_checkout_file(name, (ROOT / name).read_bytes()), latest)
+                    from ci_partition_history import project_partition_file
+                    self.assertEqual(project_checkout_file(name, project_partition_file(name, (ROOT / name).read_bytes())), latest)
                 else:
                     self.assertEqual((ROOT / name).read_bytes(), baseline_bytes(name))
 

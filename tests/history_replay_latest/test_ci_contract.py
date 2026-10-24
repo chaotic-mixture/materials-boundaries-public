@@ -83,7 +83,9 @@ class ReplayLatestCIContracts(unittest.TestCase):
         prior = ci.git('show', ci.BASE_COMMIT + ':.github/workflows/ci.yml')
         current = (ROOT / '.github/workflows/ci.yml').read_bytes()
         self.assertEqual(ci.general_workflow_predecessor(current), prior)
-        for changed in (prior, current + b' ', current[:-1], b'unknown'):
+        from ci_partition_history import project_partition_file
+        checkout_only = project_partition_file('.github/workflows/ci.yml', current)
+        for changed in (prior, checkout_only, current + b' ', current[:-1], b'unknown'):
             with self.subTest(length=len(changed)), self.assertRaises(RuntimeError):
                 ci.general_workflow_predecessor(changed)
         self.assertNotIn(ci.BRANCH_REF.encode(), prior)
