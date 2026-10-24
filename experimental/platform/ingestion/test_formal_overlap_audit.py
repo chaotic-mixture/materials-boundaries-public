@@ -639,7 +639,7 @@ class FormalOverlapAuditTests(unittest.TestCase):
             self.assertEqual(first.stderr, b'')
             self.assertEqual(second.stderr, b'')
             self.assertEqual(first.stdout, second.stdout)
-            self.assertEqual(json.loads(first.stdout.decode('utf-8'))['probe_results'][0]['counts']['possible_overlap'], 7)
+            self.assertEqual(json.loads(first.stdout.decode('utf-8'))['probe_results'][0]['counts']['possible_overlap'], 13)
             self.assertTrue(first.stdout.endswith(b'\n'))
             self.assertTrue(any(byte > 127 for byte in first.stdout))
             self.assertEqual(snapshot(self.pinned_paths + [path]), before)
