@@ -1,0 +1,696 @@
+{
+  "schema_version": 1,
+  "status": "local corrected candidate; independent review pending; unpublished",
+  "previous_reviewed_artifact": "e39b6d8a19576a05408b7da0e3faa8499b9f35f6",
+  "published_data_baseline": "826333c73a420b7d254c469d9f6f65155983cde1",
+  "scope": "Full-history checkout for two generic jobs, exact test-only compatibility and explicit regression execution.",
+  "scientific_and_runtime_delta": 0,
+  "source_qualified_identity_count": 1161,
+  "category_counts": {
+    "composite": 30,
+    "inorganic": 59,
+    "metal": 32,
+    "natural": 1010,
+    "polymer": 30
+  },
+  "computed_records_separate": 24,
+  "experimental_project_total_unchanged": 1185,
+  "main_total_last_verified": 1081,
+  "environment": {
+    "platform": "native Windows",
+    "python": "3.11.0",
+    "final_retry_temp_location": "task-owned writable directory; child-process TEMP and TMP only",
+    "assertions_or_system_settings_changed": false
+  },
+  "shallow_clone_reproduction": {
+    "original_commit": "e39b6d8a19576a05408b7da0e3faa8499b9f35f6",
+    "steps": [
+      {
+        "name": "clone-depth-one",
+        "returncode": 0,
+        "seconds": 2.782726899982663,
+        "log_sha256": "22cdb2cb1b2fe891e30787694855895f841e290c75564b28c856cbffd4bc6c96"
+      },
+      {
+        "name": "original-shallow-failure",
+        "returncode": 1,
+        "seconds": 0.5136017999902833,
+        "log_sha256": "fad2aa399f2efb8074b361dd3230f602bf40df76394f05908a6216a4825eb026"
+      },
+      {
+        "name": "fetch-full-history",
+        "returncode": 0,
+        "seconds": 14.811725100007607,
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "original-full-history-pass",
+        "returncode": 0,
+        "seconds": 0.23714949999703094,
+        "log_sha256": "922eeab58c7408355f46b4d900b2b8f16136bc9c85df12b5e710c2f65f513596"
+      }
+    ],
+    "status": "expected shallow failure reproduced; unchanged full-history method passed",
+    "test_id": "test_tian_nano_ti_ci.TianNanoTiCITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+    "clone_clean": true
+  },
+  "test_history": {
+    "initial_selected_run": {
+      "tests_run": 70,
+      "passed_methods": 66,
+      "method_errors": 4,
+      "unittest_error_entries": 6,
+      "assertion_failures": 0,
+      "skipped": 0,
+      "returncode": 1,
+      "error_ids": [
+        "test_benchmark_budget.BenchmarkScheduleBudgetTests.test_budget_exhaustion_after_one_pass_preserves_partial_success",
+        "test_benchmark_budget.BenchmarkScheduleBudgetTests.test_exhausted_total_budget_never_starts_a_worker",
+        "test_benchmark_budget.BenchmarkScheduleBudgetTests.test_nonzero_exit_and_launch_failure_stop_following_cases",
+        "test_benchmark_budget.BenchmarkScheduleBudgetTests.test_timeout_cannot_be_reported_as_passed_or_start_a_later_case"
+      ],
+      "cause": "WinError 5 on atomic report replacement in the sandbox-provided temporary directory.",
+      "record": {
+        "status": "failed",
+        "input_sha256": {
+          ".github/workflows/ci.yml": "126dda53574573de098826a39a3d4c6dab373012193563e3760cd84e6f100982",
+          "scripts/run_history_replay_latest_ci.py": "4fa6426cc89a4bd04571280db72e7fa6ec1435161d6a3259b1f0e4a90593c50b",
+          "tests/history_replay/test_replay_compat.py": "a9e909ff3df0fe0160cb713a6f5ee6ff753e0acbbb91e21898f59236df7665d6",
+          "tests/history_replay_latest/checkout-history.json": "847d86d5e5004cdc4ab786f4d3239ec5cb6c6fb3b2ab5acd6a8e5bbcbed42e52",
+          "tests/history_replay_latest/ci-inventory.json": "fe852dfb4c050813f640cd3cf2e8d5b1d162b5eb0508251e509a4c2d3c61b7fc",
+          "tests/history_replay_latest/test_checkout_history.py": "cc22edb4b2ba4077f7d83e678fba504c6f361d621ecbe490fbdaee9812c27b05",
+          "tests/history_replay_latest/test_ci_contract.py": "2877c7a34150f6d5762295cfa463f4a9997618751e2766805ca6e5dfdde3e666",
+          "tests/material_append_successors.py": "748ecbb5cb2f04ca4ffd7432bded505a6e14d48c2119500e0b8e579346cf56b4",
+          "tests/replay_checkout_history.py": "24d244d06b84142a6633760df977a9fe221c29d2c3eb5ac03cfc2c8756ace38f",
+          "tests/test_tian_nano_ti_ci.py": "0c1e351ae81ffe7ce1e38d646f5515b80fd1c270a10639bee58dbc3c7bf65de6"
+        },
+        "phases": [
+          {
+            "name": "validate-inventory",
+            "status": "passed",
+            "returncode": 0,
+            "seconds": 0.3956504999950994,
+            "log_sha256": "b3c119decd605063e80ce8d480a80b56f72563d0303c6064c9b2b2427cd045a7"
+          },
+          {
+            "name": "selected70",
+            "status": "failed",
+            "returncode": 1,
+            "seconds": 36.87491769998451,
+            "log_sha256": "93a52736cc9eaea6266cd65d1138d1d00ac692dc99b1e2297340299322103b00"
+          }
+        ]
+      }
+    },
+    "minimal_replace_probe": [
+      {
+        "location": "sandbox_default",
+        "status": "failed",
+        "exception": "PermissionError",
+        "winerror": 5,
+        "errno": 13
+      },
+      {
+        "location": "owned_workspace",
+        "status": "passed"
+      }
+    ],
+    "source_change_between_attempts": "Only the runner summary wording changed to clarify that original job conditions are preserved and generic jobs remain eligible; test logic, assertions and method IDs were unchanged.",
+    "historical_regressions": {
+      "status": "passed",
+      "groups": [
+        {
+          "name": "historical-workflow-methods",
+          "ids": [
+            "test_bruns_borosilicate_ci.BrunsBorosilicateCITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+            "test_bruns_borosilicate_ci.BrunsBorosilicateCITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+            "test_family_adjacency_ci.FamilyAdjacencyCITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+            "test_family_adjacency_ci.FamilyAdjacencyCITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+            "test_kapoor_phosphate_ci.KapoorPhosphateCITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+            "test_kapoor_phosphate_ci.KapoorPhosphateCITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+            "test_primary_table_growth_2_ci.PrimaryTableGrowth2CITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+            "test_primary_table_growth_2_ci.PrimaryTableGrowth2CITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+            "test_primary_table_growth_3_ci.PrimaryTableGrowth3CITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+            "test_primary_table_growth_3_ci.PrimaryTableGrowth3CITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+            "test_primary_table_growth_4_ci.PrimaryTableGrowth4CITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+            "test_primary_table_growth_4_ci.PrimaryTableGrowth4CITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+            "test_primary_table_growth_5_ci.PrimaryTableGrowth5CITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+            "test_primary_table_growth_5_ci.PrimaryTableGrowth5CITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+            "test_primary_table_growth_6_ci.PrimaryTableGrowth6CITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+            "test_primary_table_growth_6_ci.PrimaryTableGrowth6CITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+            "test_primary_table_growth_7_ci.PrimaryTableGrowth7CITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+            "test_primary_table_growth_7_ci.PrimaryTableGrowth7CITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+            "test_primary_table_growth_8_ci.PrimaryTableGrowth8CITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+            "test_primary_table_growth_8_ci.PrimaryTableGrowth8CITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+            "test_primary_table_growth_ci.PrimaryTableGrowthCITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+            "test_primary_table_growth_ci.PrimaryTableGrowthCITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+            "test_pur_formulation_batch_ci.PURFormulationBatchCITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+            "test_pur_formulation_batch_ci.PURFormulationBatchCITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+            "test_source_family_growth_ci.SourceFamilyGrowthCITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+            "test_source_family_growth_ci.SourceFamilyGrowthCITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+            "test_tarasov_pna_bpf_ci.TarasovPNABPFCITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+            "test_tarasov_pna_bpf_ci.TarasovPNABPFCITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+            "test_tian_nano_ti_ci.TianNanoTiCITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+            "test_tian_nano_ti_ci.TianNanoTiCITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+            "test_zenodo_identity_followup_ci.ZenodoIdentityFollowupCITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+            "test_zenodo_identity_followup_ci.ZenodoIdentityFollowupCITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+            "test_zenodo_nylon_followup_ci.ZenodoNylonFollowupCITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+            "test_zenodo_nylon_followup_ci.ZenodoNylonFollowupCITests.test_unknown_predecessor_workflow_shapes_are_rejected"
+          ],
+          "status": "passed",
+          "returncode": 0,
+          "seconds": 1.3366898999956902,
+          "log_sha256": "f90c66d9894833512e8156d21dd90dd9804192cdca13568fcce4b6cd556b1c13",
+          "result": {
+            "passed_ids": [
+              "test_bruns_borosilicate_ci.BrunsBorosilicateCITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+              "test_bruns_borosilicate_ci.BrunsBorosilicateCITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+              "test_family_adjacency_ci.FamilyAdjacencyCITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+              "test_family_adjacency_ci.FamilyAdjacencyCITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+              "test_kapoor_phosphate_ci.KapoorPhosphateCITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+              "test_kapoor_phosphate_ci.KapoorPhosphateCITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+              "test_primary_table_growth_2_ci.PrimaryTableGrowth2CITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+              "test_primary_table_growth_2_ci.PrimaryTableGrowth2CITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+              "test_primary_table_growth_3_ci.PrimaryTableGrowth3CITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+              "test_primary_table_growth_3_ci.PrimaryTableGrowth3CITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+              "test_primary_table_growth_4_ci.PrimaryTableGrowth4CITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+              "test_primary_table_growth_4_ci.PrimaryTableGrowth4CITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+              "test_primary_table_growth_5_ci.PrimaryTableGrowth5CITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+              "test_primary_table_growth_5_ci.PrimaryTableGrowth5CITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+              "test_primary_table_growth_6_ci.PrimaryTableGrowth6CITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+              "test_primary_table_growth_6_ci.PrimaryTableGrowth6CITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+              "test_primary_table_growth_7_ci.PrimaryTableGrowth7CITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+              "test_primary_table_growth_7_ci.PrimaryTableGrowth7CITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+              "test_primary_table_growth_8_ci.PrimaryTableGrowth8CITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+              "test_primary_table_growth_8_ci.PrimaryTableGrowth8CITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+              "test_primary_table_growth_ci.PrimaryTableGrowthCITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+              "test_primary_table_growth_ci.PrimaryTableGrowthCITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+              "test_pur_formulation_batch_ci.PURFormulationBatchCITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+              "test_pur_formulation_batch_ci.PURFormulationBatchCITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+              "test_source_family_growth_ci.SourceFamilyGrowthCITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+              "test_source_family_growth_ci.SourceFamilyGrowthCITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+              "test_tarasov_pna_bpf_ci.TarasovPNABPFCITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+              "test_tarasov_pna_bpf_ci.TarasovPNABPFCITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+              "test_tian_nano_ti_ci.TianNanoTiCITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+              "test_tian_nano_ti_ci.TianNanoTiCITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+              "test_zenodo_identity_followup_ci.ZenodoIdentityFollowupCITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+              "test_zenodo_identity_followup_ci.ZenodoIdentityFollowupCITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+              "test_zenodo_nylon_followup_ci.ZenodoNylonFollowupCITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+              "test_zenodo_nylon_followup_ci.ZenodoNylonFollowupCITests.test_unknown_predecessor_workflow_shapes_are_rejected"
+            ],
+            "passed": 34,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "name": "test_bruns_borosilicate_preservation",
+          "ids": [
+            "test_bruns_borosilicate_preservation.BrunsBorosilicatePreservationTests.test_file_ledger_restores_exact_readme_and_workflow_and_rejects_drift",
+            "test_bruns_borosilicate_preservation.BrunsBorosilicatePreservationTests.test_finite_registry_preserves_every_preexisting_descriptor_and_boundary"
+          ],
+          "status": "passed",
+          "returncode": 0,
+          "seconds": 7.375749300001189,
+          "log_sha256": "0e3ae7693bcdde710c293784f4ab0688c0bf15875c7c822748acbd30cecec254",
+          "result": {
+            "passed_ids": [
+              "test_bruns_borosilicate_preservation.BrunsBorosilicatePreservationTests.test_file_ledger_restores_exact_readme_and_workflow_and_rejects_drift",
+              "test_bruns_borosilicate_preservation.BrunsBorosilicatePreservationTests.test_finite_registry_preserves_every_preexisting_descriptor_and_boundary"
+            ],
+            "passed": 2,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "name": "test_tarasov_pna_bpf_preservation",
+          "ids": [
+            "test_tarasov_pna_bpf_preservation.TarasovPnaBpfPreservationTests.test_file_ledger_restores_exact_predecessor_files_and_rejects_drift",
+            "test_tarasov_pna_bpf_preservation.TarasovPnaBpfPreservationTests.test_registry_preserves_all_predecessor_descriptors_and_chronology"
+          ],
+          "status": "passed",
+          "returncode": 0,
+          "seconds": 5.7181895000103395,
+          "log_sha256": "22024c672b2f65ab280930550f38317f03f701c557b52741926c6ec8151a2be3",
+          "result": {
+            "passed_ids": [
+              "test_tarasov_pna_bpf_preservation.TarasovPnaBpfPreservationTests.test_file_ledger_restores_exact_predecessor_files_and_rejects_drift",
+              "test_tarasov_pna_bpf_preservation.TarasovPnaBpfPreservationTests.test_registry_preserves_all_predecessor_descriptors_and_chronology"
+            ],
+            "passed": 2,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "name": "test_kapoor_phosphate_preservation",
+          "ids": [
+            "test_kapoor_phosphate_preservation.KapoorPhosphatePreservationTests.test_file_ledger_restores_exact_predecessor_files_and_rejects_drift",
+            "test_kapoor_phosphate_preservation.KapoorPhosphatePreservationTests.test_registry_preserves_all_predecessor_descriptors_and_chronology"
+          ],
+          "status": "passed",
+          "returncode": 0,
+          "seconds": 4.374893500003964,
+          "log_sha256": "6bde40ab51a60fd7661eb28f9fe163b0827f250e1ff88edf8aa09e43ce32af21",
+          "result": {
+            "passed_ids": [
+              "test_kapoor_phosphate_preservation.KapoorPhosphatePreservationTests.test_file_ledger_restores_exact_predecessor_files_and_rejects_drift",
+              "test_kapoor_phosphate_preservation.KapoorPhosphatePreservationTests.test_registry_preserves_all_predecessor_descriptors_and_chronology"
+            ],
+            "passed": 2,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "name": "test_tian_nano_ti_preservation",
+          "ids": [
+            "test_tian_nano_ti_preservation.TianNanoTiPreservationTests.test_file_ledger_restores_exact_predecessor_files_and_rejects_drift",
+            "test_tian_nano_ti_preservation.TianNanoTiPreservationTests.test_registry_preserves_all_predecessor_descriptors_and_chronology"
+          ],
+          "status": "passed",
+          "returncode": 0,
+          "seconds": 2.8028164000133984,
+          "log_sha256": "e8e97a987f1e19adbc3323466583c1d577665389fb3b1730f07b20cf415e3aff",
+          "result": {
+            "passed_ids": [
+              "test_tian_nano_ti_preservation.TianNanoTiPreservationTests.test_file_ledger_restores_exact_predecessor_files_and_rejects_drift",
+              "test_tian_nano_ti_preservation.TianNanoTiPreservationTests.test_registry_preserves_all_predecessor_descriptors_and_chronology"
+            ],
+            "passed": 2,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "name": "family-history",
+          "ids": [
+            "test_family_adjacency_history.FamilyAdjacencyHistoryTests.test_code_only_workflow_round_trip_retains_old_rejection",
+            "test_family_adjacency_history.FamilyAdjacencyHistoryTests.test_all_material_workflow_views_keep_their_exact_file_pins",
+            "test_family_adjacency_history.FamilyAdjacencyHistoryTests.test_data_registry_and_every_material_ledger_remain_unchanged",
+            "test_family_adjacency_history.FamilyAdjacencyHistoryTests.test_only_one_workflow_has_a_pinned_code_successor",
+            "test_family_adjacency_history.FamilyAdjacencyHistoryTests.test_unknown_boundaries_and_ledger_or_edit_drift_are_rejected"
+          ],
+          "status": "passed",
+          "returncode": 0,
+          "seconds": 0.32211710000410676,
+          "log_sha256": "9ad79a7cb123f857e87f69dc91cc269e7a843bb1a9aa7895efa1f01712dd75e0",
+          "result": {
+            "passed_ids": [
+              "test_family_adjacency_history.FamilyAdjacencyHistoryTests.test_code_only_workflow_round_trip_retains_old_rejection",
+              "test_family_adjacency_history.FamilyAdjacencyHistoryTests.test_all_material_workflow_views_keep_their_exact_file_pins",
+              "test_family_adjacency_history.FamilyAdjacencyHistoryTests.test_data_registry_and_every_material_ledger_remain_unchanged",
+              "test_family_adjacency_history.FamilyAdjacencyHistoryTests.test_only_one_workflow_has_a_pinned_code_successor",
+              "test_family_adjacency_history.FamilyAdjacencyHistoryTests.test_unknown_boundaries_and_ledger_or_edit_drift_are_rejected"
+            ],
+            "passed": 5,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        }
+      ],
+      "input_sha256": {
+        ".github/workflows/ci.yml": "126dda53574573de098826a39a3d4c6dab373012193563e3760cd84e6f100982",
+        "tests/material_append_successors.py": "748ecbb5cb2f04ca4ffd7432bded505a6e14d48c2119500e0b8e579346cf56b4",
+        "tests/replay_checkout_history.py": "24d244d06b84142a6633760df977a9fe221c29d2c3eb5ac03cfc2c8756ace38f",
+        "tests/history_replay_latest/checkout-history.json": "847d86d5e5004cdc4ab786f4d3239ec5cb6c6fb3b2ab5acd6a8e5bbcbed42e52",
+        "tests/test_tian_nano_ti_ci.py": "0c1e351ae81ffe7ce1e38d646f5515b80fd1c270a10639bee58dbc3c7bf65de6"
+      }
+    },
+    "final_retry": {
+      "status": "passed",
+      "input_sha256": {
+        ".github/workflows/ci.yml": "126dda53574573de098826a39a3d4c6dab373012193563e3760cd84e6f100982",
+        "scripts/run_history_replay_latest_ci.py": "445415e4f40e83645b58e9917d6df36de7adfac1f8f52690140b427f19c6e361",
+        "tests/history_replay/test_replay_compat.py": "a9e909ff3df0fe0160cb713a6f5ee6ff753e0acbbb91e21898f59236df7665d6",
+        "tests/history_replay_latest/checkout-history.json": "847d86d5e5004cdc4ab786f4d3239ec5cb6c6fb3b2ab5acd6a8e5bbcbed42e52",
+        "tests/history_replay_latest/ci-inventory.json": "fe852dfb4c050813f640cd3cf2e8d5b1d162b5eb0508251e509a4c2d3c61b7fc",
+        "tests/history_replay_latest/test_checkout_history.py": "cc22edb4b2ba4077f7d83e678fba504c6f361d621ecbe490fbdaee9812c27b05",
+        "tests/history_replay_latest/test_ci_contract.py": "2877c7a34150f6d5762295cfa463f4a9997618751e2766805ca6e5dfdde3e666",
+        "tests/material_append_successors.py": "748ecbb5cb2f04ca4ffd7432bded505a6e14d48c2119500e0b8e579346cf56b4",
+        "tests/replay_checkout_history.py": "24d244d06b84142a6633760df977a9fe221c29d2c3eb5ac03cfc2c8756ace38f",
+        "tests/test_tian_nano_ti_ci.py": "0c1e351ae81ffe7ce1e38d646f5515b80fd1c270a10639bee58dbc3c7bf65de6"
+      },
+      "phases": [
+        {
+          "name": "validate-inventory",
+          "status": "passed",
+          "returncode": 0,
+          "seconds": 0.3943435000255704,
+          "log_sha256": "b3c119decd605063e80ce8d480a80b56f72563d0303c6064c9b2b2427cd045a7"
+        },
+        {
+          "name": "selected70",
+          "status": "passed",
+          "returncode": 0,
+          "seconds": 37.24643040000228,
+          "log_sha256": "a36efd64d448611d5de558c504c61dfb466ff865558d9d9cd192192f60c99e98",
+          "result": {
+            "coverage": "explicit-replay-directories-and-five-historical-methods",
+            "passed": 70,
+            "passed_ids": [
+              "test_benchmark_budget.BenchmarkProcessBudgetTests.test_cleanup_success_without_launcher_exit_still_remains_unconfirmed",
+              "test_benchmark_budget.BenchmarkProcessBudgetTests.test_exited_launcher_is_never_retargeted_and_descendants_remain_unconfirmed",
+              "test_benchmark_budget.BenchmarkProcessBudgetTests.test_failed_launch_is_not_a_success_or_cleanup_target",
+              "test_benchmark_budget.BenchmarkProcessBudgetTests.test_normal_exit_never_attempts_cleanup_on_either_simulated_platform",
+              "test_benchmark_budget.BenchmarkProcessBudgetTests.test_simulated_posix_signal_errors_existing_groups_and_check_errors_stay_unconfirmed",
+              "test_benchmark_budget.BenchmarkProcessBudgetTests.test_simulated_posix_uses_owned_new_group_and_requires_its_absence",
+              "test_benchmark_budget.BenchmarkProcessBudgetTests.test_windows_cleanup_failure_or_timeout_does_not_confirm_tree_cleanup",
+              "test_benchmark_budget.BenchmarkProcessBudgetTests.test_windows_timeout_targets_only_the_live_owned_launcher_tree",
+              "test_benchmark_budget.BenchmarkScheduleBudgetTests.test_budget_exhaustion_after_one_pass_preserves_partial_success",
+              "test_benchmark_budget.BenchmarkScheduleBudgetTests.test_exhausted_total_budget_never_starts_a_worker",
+              "test_benchmark_budget.BenchmarkScheduleBudgetTests.test_nonzero_exit_and_launch_failure_stop_following_cases",
+              "test_benchmark_budget.BenchmarkScheduleBudgetTests.test_timeout_cannot_be_reported_as_passed_or_start_a_later_case",
+              "test_material_append_replay.MaterialAppendReplayTests.test_all_current_and_historical_table_images_match_exactly",
+              "test_material_append_replay.MaterialAppendReplayTests.test_alternate_roots_do_not_share_graph_or_packet_state",
+              "test_material_append_replay.MaterialAppendReplayTests.test_corrupted_disk_metadata_json_and_duplicate_keys_are_rejected",
+              "test_material_append_replay.MaterialAppendReplayTests.test_disk_and_supplied_historical_stages_have_identical_outcomes",
+              "test_material_append_replay.MaterialAppendReplayTests.test_empty_prefix_still_checks_nan_and_duplicate_keys_before_substitution",
+              "test_material_append_replay.MaterialAppendReplayTests.test_invalid_arguments_and_empty_chain_preserve_behavior",
+              "test_material_append_replay.MaterialAppendReplayTests.test_late_first_match_and_unmatched_tail_keep_legacy_behavior",
+              "test_material_append_replay.MaterialAppendReplayTests.test_mutated_missing_duplicate_and_reordered_disk_additions_are_rejected",
+              "test_material_append_replay.MaterialAppendReplayTests.test_packet_bytes_paths_and_collection_inventories_keep_strict_checks",
+              "test_material_append_replay.MaterialAppendReplayTests.test_repeated_calls_reread_changed_graph_packet_and_ledger",
+              "test_material_append_replay.MaterialAppendReplayTests.test_single_match_keeps_exact_raw_substitution_without_extra_rejection",
+              "test_material_append_replay.MaterialAppendReplayTests.test_thirteen_step_counts_preserve_separate_disk_validation",
+              "test_material_append_replay.MaterialAppendReplayTests.test_unchanged_source_gaps_keep_complete_graph_alignment",
+              "test_material_append_replay.MaterialAppendReplayTests.test_unknown_and_noncanonical_bytes_pass_to_historical_rejection_without_io",
+              "test_material_append_replay.MaterialAppendReplayTests.test_valid_raw_must_not_hide_corrupted_disk_table_from_later_prefix",
+              "test_material_append_replay.MaterialAppendReplayTests.test_wrong_reordered_duplicate_and_partial_chains_fail_equally",
+              "test_replay_compat.ReplayCodeCompatibilityTests.test_exact_new_and_old_bytes_round_trip_without_authorizing_other_paths",
+              "test_replay_compat.ReplayCodeCompatibilityTests.test_helper_ledger_and_two_engine_images_are_exactly_pinned",
+              "test_replay_compat.ReplayCodeCompatibilityTests.test_invalid_input_and_wrong_chain_fail_before_the_bridge",
+              "test_replay_compat.ReplayCodeCompatibilityTests.test_later_matching_calls_reread_root_and_reject_changed_ledger_bytes",
+              "test_replay_compat.ReplayCodeCompatibilityTests.test_ledger_shape_image_edit_and_duplicate_key_mutations_fail_closed",
+              "test_replay_compat.ReplayCodeCompatibilityTests.test_unchanged_pur_fixture_and_assertion_pins_accept_only_exact_recovery",
+              "test_replay_compat.ReplayCodeCompatibilityTests.test_unknown_or_changed_bytes_pass_unchanged_to_old_rejection",
+              "test_call_site_compat.LatestCallerCompatibilityTests.test_mutated_callers_edits_and_engine_bytes_cannot_recover_old_pins",
+              "test_call_site_compat.LatestCallerCompatibilityTests.test_only_the_two_input_wrappers_change_and_all_assertions_remain",
+              "test_call_site_compat.LatestCallerCompatibilityTests.test_two_whole_file_images_and_original_hashes_are_frozen",
+              "test_checkout_history.CheckoutHistoryTests.test_exact_helper_ledger_and_three_whole_file_images_are_pinned",
+              "test_checkout_history.CheckoutHistoryTests.test_ledger_and_root_are_reread_and_missing_or_changed_inputs_fail_closed",
+              "test_checkout_history.CheckoutHistoryTests.test_offset_before_after_and_hash_drift_cannot_pass_exact_round_trip",
+              "test_checkout_history.CheckoutHistoryTests.test_old_fixtures_engine_and_both_benchmarks_remain_byte_exact",
+              "test_checkout_history.CheckoutHistoryTests.test_only_two_generic_checkouts_change_and_all_other_jobs_are_exact",
+              "test_checkout_history.CheckoutHistoryTests.test_registry_changes_only_the_finite_file_prefix_not_material_chronology",
+              "test_checkout_history.CheckoutHistoryTests.test_required_historical_git_objects_exist_without_fetching",
+              "test_checkout_history.CheckoutHistoryTests.test_tian_input_wrapper_preserves_every_original_ast_assertion",
+              "test_checkout_history.CheckoutHistoryTests.test_unknown_boundaries_precede_loading_and_old_drift_keeps_its_cause",
+              "test_checkout_history.CheckoutHistoryTests.test_unknown_partial_mutated_and_reordered_workflows_cannot_recover",
+              "test_ci_contract.ReplayLatestCIContracts.test_actual_unittest_failures_subtests_skips_and_expected_failures_are_rejected",
+              "test_ci_contract.ReplayLatestCIContracts.test_frozen_inventory_explicitly_discovers_both_directories_and_five_old_methods",
+              "test_ci_contract.ReplayLatestCIContracts.test_hosted_context_rejects_wrong_event_branch_sha_or_dirty_tree",
+              "test_ci_contract.ReplayLatestCIContracts.test_incomplete_or_substituted_success_cannot_pass_or_claim_full_coverage",
+              "test_ci_contract.ReplayLatestCIContracts.test_manifest_bytes_shape_and_exact_historical_selection_are_pinned",
+              "test_ci_contract.ReplayLatestCIContracts.test_missing_duplicate_extra_substituted_and_reordered_manifest_ids_fail_closed",
+              "test_ci_contract.ReplayLatestCIContracts.test_workflow_executes_tests_and_preserves_all_existing_full_ci_steps",
+              "test_replay_16.SixteenLayerConfigurationTests.test_configuration_rereads_and_rejects_byte_shape_and_order_drift",
+              "test_replay_16.SixteenLayerConfigurationTests.test_exact_configuration_ledgers_engine_and_shared_runner_pins",
+              "test_replay_16.SixteenLayerConfigurationTests.test_inventory_binds_all_sixteen_inputs_and_rereads_drift",
+              "test_replay_16.SixteenLayerConfigurationTests.test_shared_runner_and_candidate_engine_drift_fail_before_measurement",
+              "test_replay_16.SixteenLayerDifferentialTests.test_all_seventeen_images_and_source_gaps_match_exactly",
+              "test_replay_16.SixteenLayerDifferentialTests.test_later_calls_and_other_roots_reread_graph_packet_and_ledger",
+              "test_replay_16.SixteenLayerDifferentialTests.test_mutated_duplicate_missing_reordered_additions_and_disk_corruption",
+              "test_replay_16.SixteenLayerDifferentialTests.test_selected_disk_and_supplied_historical_crossings_preserve_outcomes",
+              "test_replay_16.SixteenLayerDifferentialTests.test_sixteen_step_operation_counts_retain_separate_disk_validation",
+              "test_replay_16.SixteenLayerDifferentialTests.test_unknown_bytes_and_wrong_chains_keep_old_rejection",
+              "test_kapoor_phosphate_preservation.KapoorPhosphatePreservationTests.test_six_finite_descriptors_preserve_one_packet_and_runtime_id_order",
+              "test_tian_nano_ti_preservation.TianNanoTiPreservationTests.test_single_descriptor_preserves_exact_packet_and_runtime_order",
+              "test_tian_nano_ti_ci.TianNanoTiCITests.test_complete_inventories_preserve_every_predecessor_and_new_test",
+              "test_tian_nano_ti_ci.TianNanoTiTargetedCoreTests.test_targeted_inventory_is_all_cases_from_exact_complete_modules",
+              "test_tian_nano_ti_ci.TianNanoTiCITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated"
+            ],
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0,
+            "fingerprint": "90d7b151772f2d39f090ef6d49fdac011a35730072ed1d67f9925570ab3ddaca",
+            "full_core_run": false,
+            "installed_package_run": false,
+            "existing_general_workflow": "full-history generic checkouts; all existing job conditions preserved; generic jobs remain eligible"
+          }
+        },
+        {
+          "name": "earlier-workflow11",
+          "status": "passed",
+          "returncode": 0,
+          "seconds": 8.115843400009908,
+          "log_sha256": "8e49c76bcc213accff95e4b7366e563ceff13844646460f09b41269f1b024ede",
+          "ids": [
+            "test_evidence_batch_workflow_preservation.EvidenceBatchWorkflowPreservationTests.test_helper_ledger_and_all_previous_ledgers_are_pinned",
+            "test_evidence_batch_workflow_preservation.EvidenceBatchWorkflowPreservationTests.test_three_complete_predecessor_files_round_trip_exactly",
+            "test_evidence_batch_workflow_preservation.EvidenceBatchWorkflowPreservationTests.test_changed_bytes_paths_types_and_before_images_fail_closed",
+            "test_evidence_batch_workflow_preservation.EvidenceBatchWorkflowPreservationTests.test_ledger_drift_and_duplicate_keys_fail_without_mutating_original",
+            "test_evidence_batch_workflow_preservation.EvidenceBatchWorkflowPreservationTests.test_old_jobs_and_previous_experiment_are_preserved_exactly",
+            "test_evidence_batch_workflow_preservation.EvidenceBatchWorkflowPreservationTests.test_unquoted_yaml_scalars_and_nonlocal_wheel_arguments_are_rejected",
+            "test_evidence_batch_workflow_preservation.EvidenceBatchWorkflowPreservationTests.test_scope_rejects_unknown_paths_deletions_and_nonfiles",
+            "test_material_class_counts_preservation.MaterialClassCountsPreservationTests.test_five_exact_predecessors_round_trip_including_ci_and_helpers",
+            "test_material_class_counts_preservation.MaterialClassCountsPreservationTests.test_changed_bytes_paths_types_and_before_images_cannot_use_the_bridge",
+            "test_windows_export_preservation.WindowsExportPreservationTests.test_every_prior_noncatalog_file_is_exact_or_exactly_reversible",
+            "test_windows_export_preservation.WindowsExportPreservationTests.test_older_adapter_chain_is_exact_and_unreviewed_bytes_fail_closed"
+          ],
+          "result": {
+            "passed_ids": [
+              "test_evidence_batch_workflow_preservation.EvidenceBatchWorkflowPreservationTests.test_helper_ledger_and_all_previous_ledgers_are_pinned",
+              "test_evidence_batch_workflow_preservation.EvidenceBatchWorkflowPreservationTests.test_three_complete_predecessor_files_round_trip_exactly",
+              "test_evidence_batch_workflow_preservation.EvidenceBatchWorkflowPreservationTests.test_changed_bytes_paths_types_and_before_images_fail_closed",
+              "test_evidence_batch_workflow_preservation.EvidenceBatchWorkflowPreservationTests.test_ledger_drift_and_duplicate_keys_fail_without_mutating_original",
+              "test_evidence_batch_workflow_preservation.EvidenceBatchWorkflowPreservationTests.test_old_jobs_and_previous_experiment_are_preserved_exactly",
+              "test_evidence_batch_workflow_preservation.EvidenceBatchWorkflowPreservationTests.test_unquoted_yaml_scalars_and_nonlocal_wheel_arguments_are_rejected",
+              "test_evidence_batch_workflow_preservation.EvidenceBatchWorkflowPreservationTests.test_scope_rejects_unknown_paths_deletions_and_nonfiles",
+              "test_material_class_counts_preservation.MaterialClassCountsPreservationTests.test_five_exact_predecessors_round_trip_including_ci_and_helpers",
+              "test_material_class_counts_preservation.MaterialClassCountsPreservationTests.test_changed_bytes_paths_types_and_before_images_cannot_use_the_bridge",
+              "test_windows_export_preservation.WindowsExportPreservationTests.test_every_prior_noncatalog_file_is_exact_or_exactly_reversible",
+              "test_windows_export_preservation.WindowsExportPreservationTests.test_older_adapter_chain_is_exact_and_unreviewed_bytes_fail_closed"
+            ],
+            "passed": 11,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        }
+      ]
+    },
+    "new_helper_separate_probe": {
+      "passed": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "record": {
+        "returncode": 0,
+        "elapsed_seconds": 1.0392332000192255,
+        "log_sha256": "f778708034d6f84c2f3da52438236af1c0c2ffbcdb0978b7a54d9992441cad6a"
+      },
+      "overlaps_final_selected_run": true
+    }
+  },
+  "verified_distinct_methods": 127,
+  "passed_ids": [
+    "test_benchmark_budget.BenchmarkProcessBudgetTests.test_cleanup_success_without_launcher_exit_still_remains_unconfirmed",
+    "test_benchmark_budget.BenchmarkProcessBudgetTests.test_exited_launcher_is_never_retargeted_and_descendants_remain_unconfirmed",
+    "test_benchmark_budget.BenchmarkProcessBudgetTests.test_failed_launch_is_not_a_success_or_cleanup_target",
+    "test_benchmark_budget.BenchmarkProcessBudgetTests.test_normal_exit_never_attempts_cleanup_on_either_simulated_platform",
+    "test_benchmark_budget.BenchmarkProcessBudgetTests.test_simulated_posix_signal_errors_existing_groups_and_check_errors_stay_unconfirmed",
+    "test_benchmark_budget.BenchmarkProcessBudgetTests.test_simulated_posix_uses_owned_new_group_and_requires_its_absence",
+    "test_benchmark_budget.BenchmarkProcessBudgetTests.test_windows_cleanup_failure_or_timeout_does_not_confirm_tree_cleanup",
+    "test_benchmark_budget.BenchmarkProcessBudgetTests.test_windows_timeout_targets_only_the_live_owned_launcher_tree",
+    "test_benchmark_budget.BenchmarkScheduleBudgetTests.test_budget_exhaustion_after_one_pass_preserves_partial_success",
+    "test_benchmark_budget.BenchmarkScheduleBudgetTests.test_exhausted_total_budget_never_starts_a_worker",
+    "test_benchmark_budget.BenchmarkScheduleBudgetTests.test_nonzero_exit_and_launch_failure_stop_following_cases",
+    "test_benchmark_budget.BenchmarkScheduleBudgetTests.test_timeout_cannot_be_reported_as_passed_or_start_a_later_case",
+    "test_bruns_borosilicate_ci.BrunsBorosilicateCITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+    "test_bruns_borosilicate_ci.BrunsBorosilicateCITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+    "test_bruns_borosilicate_preservation.BrunsBorosilicatePreservationTests.test_file_ledger_restores_exact_readme_and_workflow_and_rejects_drift",
+    "test_bruns_borosilicate_preservation.BrunsBorosilicatePreservationTests.test_finite_registry_preserves_every_preexisting_descriptor_and_boundary",
+    "test_call_site_compat.LatestCallerCompatibilityTests.test_mutated_callers_edits_and_engine_bytes_cannot_recover_old_pins",
+    "test_call_site_compat.LatestCallerCompatibilityTests.test_only_the_two_input_wrappers_change_and_all_assertions_remain",
+    "test_call_site_compat.LatestCallerCompatibilityTests.test_two_whole_file_images_and_original_hashes_are_frozen",
+    "test_checkout_history.CheckoutHistoryTests.test_exact_helper_ledger_and_three_whole_file_images_are_pinned",
+    "test_checkout_history.CheckoutHistoryTests.test_ledger_and_root_are_reread_and_missing_or_changed_inputs_fail_closed",
+    "test_checkout_history.CheckoutHistoryTests.test_offset_before_after_and_hash_drift_cannot_pass_exact_round_trip",
+    "test_checkout_history.CheckoutHistoryTests.test_old_fixtures_engine_and_both_benchmarks_remain_byte_exact",
+    "test_checkout_history.CheckoutHistoryTests.test_only_two_generic_checkouts_change_and_all_other_jobs_are_exact",
+    "test_checkout_history.CheckoutHistoryTests.test_registry_changes_only_the_finite_file_prefix_not_material_chronology",
+    "test_checkout_history.CheckoutHistoryTests.test_required_historical_git_objects_exist_without_fetching",
+    "test_checkout_history.CheckoutHistoryTests.test_tian_input_wrapper_preserves_every_original_ast_assertion",
+    "test_checkout_history.CheckoutHistoryTests.test_unknown_boundaries_precede_loading_and_old_drift_keeps_its_cause",
+    "test_checkout_history.CheckoutHistoryTests.test_unknown_partial_mutated_and_reordered_workflows_cannot_recover",
+    "test_ci_contract.ReplayLatestCIContracts.test_actual_unittest_failures_subtests_skips_and_expected_failures_are_rejected",
+    "test_ci_contract.ReplayLatestCIContracts.test_frozen_inventory_explicitly_discovers_both_directories_and_five_old_methods",
+    "test_ci_contract.ReplayLatestCIContracts.test_hosted_context_rejects_wrong_event_branch_sha_or_dirty_tree",
+    "test_ci_contract.ReplayLatestCIContracts.test_incomplete_or_substituted_success_cannot_pass_or_claim_full_coverage",
+    "test_ci_contract.ReplayLatestCIContracts.test_manifest_bytes_shape_and_exact_historical_selection_are_pinned",
+    "test_ci_contract.ReplayLatestCIContracts.test_missing_duplicate_extra_substituted_and_reordered_manifest_ids_fail_closed",
+    "test_ci_contract.ReplayLatestCIContracts.test_workflow_executes_tests_and_preserves_all_existing_full_ci_steps",
+    "test_evidence_batch_workflow_preservation.EvidenceBatchWorkflowPreservationTests.test_changed_bytes_paths_types_and_before_images_fail_closed",
+    "test_evidence_batch_workflow_preservation.EvidenceBatchWorkflowPreservationTests.test_helper_ledger_and_all_previous_ledgers_are_pinned",
+    "test_evidence_batch_workflow_preservation.EvidenceBatchWorkflowPreservationTests.test_ledger_drift_and_duplicate_keys_fail_without_mutating_original",
+    "test_evidence_batch_workflow_preservation.EvidenceBatchWorkflowPreservationTests.test_old_jobs_and_previous_experiment_are_preserved_exactly",
+    "test_evidence_batch_workflow_preservation.EvidenceBatchWorkflowPreservationTests.test_scope_rejects_unknown_paths_deletions_and_nonfiles",
+    "test_evidence_batch_workflow_preservation.EvidenceBatchWorkflowPreservationTests.test_three_complete_predecessor_files_round_trip_exactly",
+    "test_evidence_batch_workflow_preservation.EvidenceBatchWorkflowPreservationTests.test_unquoted_yaml_scalars_and_nonlocal_wheel_arguments_are_rejected",
+    "test_family_adjacency_ci.FamilyAdjacencyCITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+    "test_family_adjacency_ci.FamilyAdjacencyCITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+    "test_family_adjacency_history.FamilyAdjacencyHistoryTests.test_all_material_workflow_views_keep_their_exact_file_pins",
+    "test_family_adjacency_history.FamilyAdjacencyHistoryTests.test_code_only_workflow_round_trip_retains_old_rejection",
+    "test_family_adjacency_history.FamilyAdjacencyHistoryTests.test_data_registry_and_every_material_ledger_remain_unchanged",
+    "test_family_adjacency_history.FamilyAdjacencyHistoryTests.test_only_one_workflow_has_a_pinned_code_successor",
+    "test_family_adjacency_history.FamilyAdjacencyHistoryTests.test_unknown_boundaries_and_ledger_or_edit_drift_are_rejected",
+    "test_kapoor_phosphate_ci.KapoorPhosphateCITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+    "test_kapoor_phosphate_ci.KapoorPhosphateCITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+    "test_kapoor_phosphate_preservation.KapoorPhosphatePreservationTests.test_file_ledger_restores_exact_predecessor_files_and_rejects_drift",
+    "test_kapoor_phosphate_preservation.KapoorPhosphatePreservationTests.test_registry_preserves_all_predecessor_descriptors_and_chronology",
+    "test_kapoor_phosphate_preservation.KapoorPhosphatePreservationTests.test_six_finite_descriptors_preserve_one_packet_and_runtime_id_order",
+    "test_material_append_replay.MaterialAppendReplayTests.test_all_current_and_historical_table_images_match_exactly",
+    "test_material_append_replay.MaterialAppendReplayTests.test_alternate_roots_do_not_share_graph_or_packet_state",
+    "test_material_append_replay.MaterialAppendReplayTests.test_corrupted_disk_metadata_json_and_duplicate_keys_are_rejected",
+    "test_material_append_replay.MaterialAppendReplayTests.test_disk_and_supplied_historical_stages_have_identical_outcomes",
+    "test_material_append_replay.MaterialAppendReplayTests.test_empty_prefix_still_checks_nan_and_duplicate_keys_before_substitution",
+    "test_material_append_replay.MaterialAppendReplayTests.test_invalid_arguments_and_empty_chain_preserve_behavior",
+    "test_material_append_replay.MaterialAppendReplayTests.test_late_first_match_and_unmatched_tail_keep_legacy_behavior",
+    "test_material_append_replay.MaterialAppendReplayTests.test_mutated_missing_duplicate_and_reordered_disk_additions_are_rejected",
+    "test_material_append_replay.MaterialAppendReplayTests.test_packet_bytes_paths_and_collection_inventories_keep_strict_checks",
+    "test_material_append_replay.MaterialAppendReplayTests.test_repeated_calls_reread_changed_graph_packet_and_ledger",
+    "test_material_append_replay.MaterialAppendReplayTests.test_single_match_keeps_exact_raw_substitution_without_extra_rejection",
+    "test_material_append_replay.MaterialAppendReplayTests.test_thirteen_step_counts_preserve_separate_disk_validation",
+    "test_material_append_replay.MaterialAppendReplayTests.test_unchanged_source_gaps_keep_complete_graph_alignment",
+    "test_material_append_replay.MaterialAppendReplayTests.test_unknown_and_noncanonical_bytes_pass_to_historical_rejection_without_io",
+    "test_material_append_replay.MaterialAppendReplayTests.test_valid_raw_must_not_hide_corrupted_disk_table_from_later_prefix",
+    "test_material_append_replay.MaterialAppendReplayTests.test_wrong_reordered_duplicate_and_partial_chains_fail_equally",
+    "test_material_class_counts_preservation.MaterialClassCountsPreservationTests.test_changed_bytes_paths_types_and_before_images_cannot_use_the_bridge",
+    "test_material_class_counts_preservation.MaterialClassCountsPreservationTests.test_five_exact_predecessors_round_trip_including_ci_and_helpers",
+    "test_primary_table_growth_2_ci.PrimaryTableGrowth2CITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+    "test_primary_table_growth_2_ci.PrimaryTableGrowth2CITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+    "test_primary_table_growth_3_ci.PrimaryTableGrowth3CITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+    "test_primary_table_growth_3_ci.PrimaryTableGrowth3CITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+    "test_primary_table_growth_4_ci.PrimaryTableGrowth4CITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+    "test_primary_table_growth_4_ci.PrimaryTableGrowth4CITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+    "test_primary_table_growth_5_ci.PrimaryTableGrowth5CITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+    "test_primary_table_growth_5_ci.PrimaryTableGrowth5CITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+    "test_primary_table_growth_6_ci.PrimaryTableGrowth6CITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+    "test_primary_table_growth_6_ci.PrimaryTableGrowth6CITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+    "test_primary_table_growth_7_ci.PrimaryTableGrowth7CITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+    "test_primary_table_growth_7_ci.PrimaryTableGrowth7CITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+    "test_primary_table_growth_8_ci.PrimaryTableGrowth8CITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+    "test_primary_table_growth_8_ci.PrimaryTableGrowth8CITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+    "test_primary_table_growth_ci.PrimaryTableGrowthCITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+    "test_primary_table_growth_ci.PrimaryTableGrowthCITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+    "test_pur_formulation_batch_ci.PURFormulationBatchCITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+    "test_pur_formulation_batch_ci.PURFormulationBatchCITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+    "test_replay_16.SixteenLayerConfigurationTests.test_configuration_rereads_and_rejects_byte_shape_and_order_drift",
+    "test_replay_16.SixteenLayerConfigurationTests.test_exact_configuration_ledgers_engine_and_shared_runner_pins",
+    "test_replay_16.SixteenLayerConfigurationTests.test_inventory_binds_all_sixteen_inputs_and_rereads_drift",
+    "test_replay_16.SixteenLayerConfigurationTests.test_shared_runner_and_candidate_engine_drift_fail_before_measurement",
+    "test_replay_16.SixteenLayerDifferentialTests.test_all_seventeen_images_and_source_gaps_match_exactly",
+    "test_replay_16.SixteenLayerDifferentialTests.test_later_calls_and_other_roots_reread_graph_packet_and_ledger",
+    "test_replay_16.SixteenLayerDifferentialTests.test_mutated_duplicate_missing_reordered_additions_and_disk_corruption",
+    "test_replay_16.SixteenLayerDifferentialTests.test_selected_disk_and_supplied_historical_crossings_preserve_outcomes",
+    "test_replay_16.SixteenLayerDifferentialTests.test_sixteen_step_operation_counts_retain_separate_disk_validation",
+    "test_replay_16.SixteenLayerDifferentialTests.test_unknown_bytes_and_wrong_chains_keep_old_rejection",
+    "test_replay_compat.ReplayCodeCompatibilityTests.test_exact_new_and_old_bytes_round_trip_without_authorizing_other_paths",
+    "test_replay_compat.ReplayCodeCompatibilityTests.test_helper_ledger_and_two_engine_images_are_exactly_pinned",
+    "test_replay_compat.ReplayCodeCompatibilityTests.test_invalid_input_and_wrong_chain_fail_before_the_bridge",
+    "test_replay_compat.ReplayCodeCompatibilityTests.test_later_matching_calls_reread_root_and_reject_changed_ledger_bytes",
+    "test_replay_compat.ReplayCodeCompatibilityTests.test_ledger_shape_image_edit_and_duplicate_key_mutations_fail_closed",
+    "test_replay_compat.ReplayCodeCompatibilityTests.test_unchanged_pur_fixture_and_assertion_pins_accept_only_exact_recovery",
+    "test_replay_compat.ReplayCodeCompatibilityTests.test_unknown_or_changed_bytes_pass_unchanged_to_old_rejection",
+    "test_source_family_growth_ci.SourceFamilyGrowthCITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+    "test_source_family_growth_ci.SourceFamilyGrowthCITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+    "test_tarasov_pna_bpf_ci.TarasovPNABPFCITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+    "test_tarasov_pna_bpf_ci.TarasovPNABPFCITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+    "test_tarasov_pna_bpf_preservation.TarasovPnaBpfPreservationTests.test_file_ledger_restores_exact_predecessor_files_and_rejects_drift",
+    "test_tarasov_pna_bpf_preservation.TarasovPnaBpfPreservationTests.test_registry_preserves_all_predecessor_descriptors_and_chronology",
+    "test_tian_nano_ti_ci.TianNanoTiCITests.test_complete_inventories_preserve_every_predecessor_and_new_test",
+    "test_tian_nano_ti_ci.TianNanoTiCITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+    "test_tian_nano_ti_ci.TianNanoTiCITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+    "test_tian_nano_ti_ci.TianNanoTiTargetedCoreTests.test_targeted_inventory_is_all_cases_from_exact_complete_modules",
+    "test_tian_nano_ti_preservation.TianNanoTiPreservationTests.test_file_ledger_restores_exact_predecessor_files_and_rejects_drift",
+    "test_tian_nano_ti_preservation.TianNanoTiPreservationTests.test_registry_preserves_all_predecessor_descriptors_and_chronology",
+    "test_tian_nano_ti_preservation.TianNanoTiPreservationTests.test_single_descriptor_preserves_exact_packet_and_runtime_order",
+    "test_windows_export_preservation.WindowsExportPreservationTests.test_every_prior_noncatalog_file_is_exact_or_exactly_reversible",
+    "test_windows_export_preservation.WindowsExportPreservationTests.test_older_adapter_chain_is_exact_and_unreviewed_bytes_fail_closed",
+    "test_zenodo_identity_followup_ci.ZenodoIdentityFollowupCITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+    "test_zenodo_identity_followup_ci.ZenodoIdentityFollowupCITests.test_unknown_predecessor_workflow_shapes_are_rejected",
+    "test_zenodo_nylon_followup_ci.ZenodoNylonFollowupCITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated",
+    "test_zenodo_nylon_followup_ci.ZenodoNylonFollowupCITests.test_unknown_predecessor_workflow_shapes_are_rejected"
+  ],
+  "distinct_existing_core_methods": 62,
+  "distinct_explicit_directory_methods": 65,
+  "final_scope_failures": 0,
+  "final_scope_errors": 0,
+  "final_scope_skips": 0,
+  "execution_shape": "47 methods in six fresh groups, then one uninterrupted 70-method command and one 11-method group; one overlapping Tian workflow method counted once.",
+  "not_run": {
+    "existing_core_methods": 1825,
+    "existing_core_inventory": 1887,
+    "full_core_suite": true,
+    "complete_305_method_targeted_core": true,
+    "installed_methods": 561,
+    "latest_real_benchmark_cases_rerun": 0,
+    "native_linux_for_this_correction": true,
+    "hosted_ci": true
+  },
+  "prior_benchmarks": "Original 14-layer and reviewed e39b6d8 16-layer evidence retained unchanged; no new timing or speed factor claimed.",
+  "preservation": {
+    "tian_fixture_count": 119,
+    "unchanged_runtime_data_and_fixture_files": 567,
+    "unchanged_historical_docs": [
+      "docs/HISTORY_PREFIX_REPLAY_20261024.md",
+      "docs/HISTORY_PREFIX_REPLAY_CONTINUATION_20261024.md",
+      "docs/HISTORY_REPLAY_TIAN_20261024.md",
+      "docs/history-prefix-replay-20261024-continuation.json",
+      "docs/history-prefix-replay-20261024-results.json",
+      "docs/history-replay-tian-20261024-results.json"
+    ],
+    "engine_bridge_and_benchmark_bytes": "unchanged from e39b6d8"
+  },
+  "workflow_audit": {
+    "general_jobs_updated": [
+      "unit-and-schema",
+      "windows-composite"
+    ],
+    "proven_shallow_git_failure": "Ubuntu full-discovery command, reproduced locally on native Windows with the same method",
+    "windows_generic_boundary": "Selected historical byte/ledger checks were inspected; no matching direct git-show failure was found. Full history is an explicit symmetric checkout choice, not a reproduced Windows CI repair.",
+    "other_ci_jobs_unchanged": 19,
+    "dedicated_replay_job_full_history_unchanged": true,
+    "installed_only_experimental_workflow_unchanged": true,
+    "job_conditions_steps_matrices_unchanged": true,
+    "future_push": "Generic full-core/Windows jobs remain eligible; branch-specific jobs keep their original predicates. No total hosted runtime bound is claimed."
+  },
+  "remote_readback": {
+    "recorded_at_utc": "2026-10-24T09:58:50.817121+00:00",
+    "returncode": 0,
+    "refs": {
+      "refs/heads/experimental/tian2023-composite-runtime": "826333c73a420b7d254c469d9f6f65155983cde1",
+      "refs/heads/main": "4c5656cf6ba0ad1a54b736e0568e97abe4815c29"
+    },
+    "main_unchanged": true,
+    "tian_unchanged": true,
+    "both_review_branches_unpublished": true
+  },
+  "setup_limitations": [
+    {
+      "operation": "initial local shallow clone",
+      "status": "failed before tests",
+      "reason": "MSYS NtCreateDirectoryObject returned 0xC0000022 inside sandbox; bounded local retry outside sandbox succeeded."
+    },
+    {
+      "operation": "initial public ref read",
+      "status": "failed before results",
+      "reason": "Sandbox getaddrinfo thread failed to start; one bounded read outside sandbox succeeded without credential helpers."
+    }
+  ],
+  "publication": {
+    "pushed": false,
+    "main_merge": false,
+    "deployment": false,
+    "doi": false,
+    "new_credentials": false
+  }
+}

@@ -158,7 +158,8 @@ def file_ledgers(*, before=None):
     # Full-chain callers also recover the finite documentation call sites.
     # Named material boundaries retain their original exact ledger views.
     from legacy_document_recovery import code_ledger
-    result = [code_ledger()] if before is None else []
+    from replay_checkout_history import code_ledger as checkout_code_ledger
+    result = [checkout_code_ledger()] + ([code_ledger()] if before is None else [])
     for descriptor in descriptors:
         result.append(load_frozen(ROOT, *descriptor["files"]))
         if descriptor["batch_id"] == BRUNS_BATCH_ID:

@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "baseline_commit": "e39b6d8a19576a05408b7da0e3faa8499b9f35f6",
+  "updates": {
+    ".github/workflows/ci.yml": {
+      "previous_sha256": "365b7e88441bc038de956f23ea1216cf90129469312330ce23f27d8a17b5e2eb",
+      "sha256": "126dda53574573de098826a39a3d4c6dab373012193563e3760cd84e6f100982",
+      "edits": [
+        {
+          "offset": 1672,
+          "before": "- uses: actions/setup-python@v5\n        with:\n          python-version: ${{ matrix.python-version }}\n      - run: python -m unittest discover -s tests -p test_release_metadata.py -v\n      - run: python -m pip install -e '.[dev]'\n      - run: python -m pip wheel --no-deps --wheel-dir dist .\n      - run: python scripts/check_wheel_metadata.py dist/*.whl\n      - run: python scripts/validate_catalogs.py\n      - run: python -m unittest discover -s tests -v\n      - run: python -m materials_boundaries evaluate examples/synthetic-two-phase.json --json\n  windows-composite:\n    if: ${{ github.event_name != 'push' || (github.ref != 'refs/heads/experiment/polymer-composites-20261019' && github.ref != 'refs/heads/experiment/evidence-batch-ingestion-20261019' && github.ref != 'refs/heads/experiment/source-family-growth-20261019' && github.ref != 'refs/heads/experiment/pur-formulation-batch-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-2-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-3-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-4-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-5-20261020' && github.ref != 'refs/heads/experiment/primary-table-growth-6-20261020' && github.ref != 'refs/heads/experiment/primary-table-growth-7-20261020' && github.ref != 'refs/heads/experiment/primary-table-growth-8-20261021' && github.ref != 'refs/heads/experiment/zenodo-8089569-identity-followup-20261021' && github.ref != 'refs/heads/experiment/zenodo-8089569-nylon-followup-20261021' && github.ref != 'refs/heads/experiment/family-adjacency-20261023' && github.ref != 'refs/heads/experimental/borosilicate-growth-bruns2020' && github.ref != 'refs/heads/experimental/polymer-growth-tarasov2022-runtime' && github.ref != 'refs/heads/experimental/kapoor2019-glass-runtime' && github.ref != 'refs/heads/experimental/tian2023-composite-runtime') }}\n    runs-on: windows-latest\n    strategy:\n      fail-fast: false\n      matrix:\n        python-version: ['3.10', '3.13']\n    env:\n      PYTHONUTF8: '1'\n    steps:\n      # Exact historical byte checks must not be altered by checkout line endings.\n      - run: git config --global core.autocrlf false\n      - uses: actions/checkout@v4",
+          "after": "  with:\n          fetch-depth: 0\n      - uses: actions/setup-python@v5\n        with:\n          python-version: ${{ matrix.python-version }}\n      - run: python -m unittest discover -s tests -p test_release_metadata.py -v\n      - run: python -m pip install -e '.[dev]'\n      - run: python -m pip wheel --no-deps --wheel-dir dist .\n      - run: python scripts/check_wheel_metadata.py dist/*.whl\n      - run: python scripts/validate_catalogs.py\n      - run: python -m unittest discover -s tests -v\n      - run: python -m materials_boundaries evaluate examples/synthetic-two-phase.json --json\n  windows-composite:\n    if: ${{ github.event_name != 'push' || (github.ref != 'refs/heads/experiment/polymer-composites-20261019' && github.ref != 'refs/heads/experiment/evidence-batch-ingestion-20261019' && github.ref != 'refs/heads/experiment/source-family-growth-20261019' && github.ref != 'refs/heads/experiment/pur-formulation-batch-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-2-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-3-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-4-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-5-20261020' && github.ref != 'refs/heads/experiment/primary-table-growth-6-20261020' && github.ref != 'refs/heads/experiment/primary-table-growth-7-20261020' && github.ref != 'refs/heads/experiment/primary-table-growth-8-20261021' && github.ref != 'refs/heads/experiment/zenodo-8089569-identity-followup-20261021' && github.ref != 'refs/heads/experiment/zenodo-8089569-nylon-followup-20261021' && github.ref != 'refs/heads/experiment/family-adjacency-20261023' && github.ref != 'refs/heads/experimental/borosilicate-growth-bruns2020' && github.ref != 'refs/heads/experimental/polymer-growth-tarasov2022-runtime' && github.ref != 'refs/heads/experimental/kapoor2019-glass-runtime' && github.ref != 'refs/heads/experimental/tian2023-composite-runtime') }}\n    runs-on: windows-latest\n    strategy:\n      fail-fast: false\n      matrix:\n        python-version: ['3.10', '3.13']\n    env:\n      PYTHONUTF8: '1'\n    steps:\n      # Exact historical byte checks must not be altered by checkout line endings.\n      - run: git config --global core.autocrlf false\n      - uses: actions/checkout@v4\n        with:\n          fetch-depth: 0"
+        }
+      ]
+    },
+    "tests/material_append_successors.py": {
+      "previous_sha256": "df5250b9d9e7b67bd8ec92cdfbc2d2efce99db5ff1a4dea0631431cbad5d886f",
+      "sha256": "748ecbb5cb2f04ca4ffd7432bded505a6e14d48c2119500e0b8e579346cf56b4",
+      "edits": [
+        {
+          "offset": 9189,
+          "before": "result = [code_ledger()] if before is None else []",
+          "after": "from replay_checkout_history import code_ledger as checkout_code_ledger\n    result = [checkout_code_ledger()] + ([code_ledger()] if before is None else [])"
+        }
+      ]
+    },
+    "tests/test_tian_nano_ti_ci.py": {
+      "previous_sha256": "07cbd6a9c4fead4d3169a541e182d2d4154dd470917f9a76f33afdf53a7e4374",
+      "sha256": "0c1e351ae81ffe7ce1e38d646f5515b80fd1c270a10639bee58dbc3c7bf65de6",
+      "edits": [
+        {
+          "offset": 292,
+          "before": "\nROOT = Path(__file__).resolve().parents[1]\nSPEC = importlib.util.spec_from_file_location('tian_nano_ti_ci', ROOT / 'scripts/run_tian_nano_ti_ci.py')\nci = importlib.util.module_from_spec(SPEC)\nSPEC.loader.exec_module(ci)\n\n\nclass TianNanoTiCITests(unittest.TestCase):\n    def test_previous_jobs_keep_every_step_and_only_new_branch_is_gated(self):\n        prior = ci.git('show', ci.BASE_COMMIT + ':.github/workflows/ci.yml').decode('utf-8')\n        current = (ROOT / '.github/workflows/ci.yml').read_bytes(",
+          "after": "from replay_checkout_history import project_checkout_file\n\nROOT = Path(__file__).resolve().parents[1]\nSPEC = importlib.util.spec_from_file_location('tian_nano_ti_ci', ROOT / 'scripts/run_tian_nano_ti_ci.py')\nci = importlib.util.module_from_spec(SPEC)\nSPEC.loader.exec_module(ci)\n\n\nclass TianNanoTiCITests(unittest.TestCase):\n    def test_previous_jobs_keep_every_step_and_only_new_branch_is_gated(self):\n        prior = ci.git('show', ci.BASE_COMMIT + ':.github/workflows/ci.yml').decode('utf-8')\n        current = project_checkout_file('.github/workflows/ci.yml', (ROOT / '.github/workflows/ci.yml').read_bytes()"
+        }
+      ]
+    }
+  }
+}

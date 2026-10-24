@@ -23,12 +23,12 @@ def fixture_manifest():
 
 
 class ReplayLatestCIContracts(unittest.TestCase):
-    def test_frozen_inventory_explicitly_discovers_both_directories_and_four_old_methods(self):
+    def test_frozen_inventory_explicitly_discovers_both_directories_and_five_old_methods(self):
         manifest = ci.load_manifest()
         ids = list(ci.test_ids(ci.load_suite()))
         ci.validate_discovery(ids, manifest)
         self.assertEqual(set(ci.EXPLICIT_IDS), set(manifest['explicit_ids']))
-        self.assertEqual(len(ci.EXPLICIT_IDS), 4)
+        self.assertEqual(len(ci.EXPLICIT_IDS), 5)
         self.assertEqual(manifest['directories'], ['tests/history_replay', 'tests/history_replay_latest'])
         self.assertIn(self.id(), ids)
         for relative in ci.DIRECTORIES:
@@ -71,7 +71,7 @@ class ReplayLatestCIContracts(unittest.TestCase):
         with self.assertRaises(RuntimeError):
             ci.unique_keys([('ids', []), ('ids', [])])
 
-    def test_workflow_executes_tests_and_keeps_existing_full_ci_unchanged(self):
+    def test_workflow_executes_tests_and_preserves_all_existing_full_ci_steps(self):
         raw = (ROOT / ci.WORKFLOW_PATH).read_bytes()
         self.assertEqual(raw, ci.WORKFLOW.encode())
         self.assertIn(b'python scripts/run_history_replay_latest_ci.py --tests\n', raw)
@@ -81,7 +81,11 @@ class ReplayLatestCIContracts(unittest.TestCase):
         self.assertIn(b"python-version: '3.12'", raw)
         self.assertIn(b'contents: read\n', raw)
         prior = ci.git('show', ci.BASE_COMMIT + ':.github/workflows/ci.yml')
-        self.assertEqual((ROOT / '.github/workflows/ci.yml').read_bytes(), prior)
+        current = (ROOT / '.github/workflows/ci.yml').read_bytes()
+        self.assertEqual(ci.general_workflow_predecessor(current), prior)
+        for changed in (prior, current + b' ', current[:-1], b'unknown'):
+            with self.subTest(length=len(changed)), self.assertRaises(RuntimeError):
+                ci.general_workflow_predecessor(changed)
         self.assertNotIn(ci.BRANCH_REF.encode(), prior)
         # Existing generic jobs are intentionally still eligible on this push.
         self.assertEqual(prior.count(b"github.event_name != 'push' ||"), 2)
@@ -90,7 +94,7 @@ class ReplayLatestCIContracts(unittest.TestCase):
     def test_hosted_context_rejects_wrong_event_branch_sha_or_dirty_tree(self):
         expected = {'GITHUB_ACTIONS': 'true', 'GITHUB_EVENT_NAME': 'push',
                     'GITHUB_REF': ci.BRANCH_REF, 'GITHUB_SHA': 'f' * 40}
-        original_workflow = (ROOT / '.github/workflows/ci.yml').read_bytes()
+        original_workflow = ci.general_workflow_predecessor((ROOT / '.github/workflows/ci.yml').read_bytes())
         def fake_git(*args):
             if args[0] == 'show': return original_workflow
             if args[0] == 'rev-parse': return b'f' * 40

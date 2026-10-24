@@ -2,7 +2,7 @@
 """Explicit, exact-inventory execution of the package-less replay test suites.
 
 This additional workflow does not disable or replace any existing CI job.
-A future push to this branch also triggers the unchanged general CI workflow.
+A future push also triggers general CI, with full-history generic checkouts.
 This runner claims neither full core nor installed-package coverage.
 """
 import argparse
@@ -23,9 +23,10 @@ EXPLICIT_IDS = (
     'test_tian_nano_ti_preservation.TianNanoTiPreservationTests.test_single_descriptor_preserves_exact_packet_and_runtime_order',
     'test_tian_nano_ti_ci.TianNanoTiCITests.test_complete_inventories_preserve_every_predecessor_and_new_test',
     'test_tian_nano_ti_ci.TianNanoTiTargetedCoreTests.test_targeted_inventory_is_all_cases_from_exact_complete_modules',
+    'test_tian_nano_ti_ci.TianNanoTiCITests.test_previous_jobs_keep_every_step_and_only_new_branch_is_gated',
 )
 MANIFEST_PATH = 'tests/history_replay_latest/ci-inventory.json'
-INVENTORY_SHA256 = 'f53c0a6c54b22698f163a77dbff9d3b0fe5439b9d9fa991a5377b3cbdfc23151'
+INVENTORY_SHA256 = 'fe852dfb4c050813f640cd3cf2e8d5b1d162b5eb0508251e509a4c2d3c61b7fc'
 WORKFLOW_PATH = '.github/workflows/history-replay-latest.yml'
 WORKFLOW = '''name: history-replay-latest
 on:
@@ -157,9 +158,9 @@ def validate_discovery(ids, manifest):
 def validate_context():
     require((ROOT / WORKFLOW_PATH).read_bytes() == WORKFLOW.encode('utf-8'),
             'Replay workflow differs from its exact execution contract')
-    require((ROOT / '.github/workflows/ci.yml').read_bytes() ==
+    require(general_workflow_predecessor((ROOT / '.github/workflows/ci.yml').read_bytes()) ==
             git('show', BASE_COMMIT + ':.github/workflows/ci.yml'),
-            'Existing general CI must remain byte-identical')
+            'General CI must recover its exact predecessor')
     head = git('rev-parse', 'HEAD').decode().strip()
     git('merge-base', '--is-ancestor', BASE_COMMIT, head)
     if os.environ.get('GITHUB_ACTIONS') == 'true':
@@ -168,6 +169,18 @@ def validate_context():
         require(os.environ.get('GITHUB_SHA') == head, 'Replay checkout differs from the pushed SHA')
         require(not git('status', '--porcelain', '--untracked-files=normal'),
                 'Hosted replay checkout must be clean')
+
+
+def general_workflow_predecessor(raw):
+    """Require the corrected whole image before testing historical equality."""
+    if str(ROOT / 'tests') not in sys.path:
+        sys.path.insert(0, str(ROOT / 'tests'))
+    from replay_checkout_history import code_ledger, project_checkout_file
+    path = '.github/workflows/ci.yml'
+    entry = code_ledger()['updates'][path]
+    require(type(raw) is bytes and sha256(raw).hexdigest() == entry['sha256'],
+            'General CI requires the exact full-history checkout correction')
+    return project_checkout_file(path, raw)
 
 
 class ExactResult(unittest.TextTestResult):
@@ -213,10 +226,10 @@ def main(argv=None):
     result = unittest.TextTestRunner(verbosity=2, resultclass=ExactResult).run(suite)
     validate_result(result, ids)
     print('HISTORY_REPLAY_LATEST_COMPLETE ' + json.dumps({
-        'coverage': 'explicit-replay-directories-and-four-historical-methods',
+        'coverage': 'explicit-replay-directories-and-five-historical-methods',
         'passed': len(ids), 'passed_ids': ids, 'failures': 0, 'errors': 0, 'skipped': 0,
         'fingerprint': fingerprint(ids), 'full_core_run': False, 'installed_package_run': False,
-        'existing_general_workflow': 'unchanged; also runs on a future push to this branch'}))
+        'existing_general_workflow': 'full-history generic checkouts; all existing job conditions preserved; generic jobs remain eligible'}))
     return 0
 
 
