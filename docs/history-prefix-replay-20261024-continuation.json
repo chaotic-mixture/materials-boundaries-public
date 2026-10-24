@@ -1,0 +1,1843 @@
+{
+  "schema": "history-prefix-replay-continuation/1",
+  "recorded_at_utc": "2026-10-24T08:52:22.877930+00:00",
+  "baseline_commit": "196995256836db2d8f870ac9a91f664bfdd03e7f",
+  "tested_implementation_commit": "a6d3e5e384c7cb6cc29c5d56ba51d6bd959dff96",
+  "status": "bounded_original_baseline_validation_complete_for_independent_review",
+  "pushed": false,
+  "publication_ready": false,
+  "latest_baseline_integrated": false,
+  "platform": {
+    "system": "Windows",
+    "python": "3.11.0",
+    "implementation": "CPython"
+  },
+  "prior_checkpoint": {
+    "path": "docs/history-prefix-replay-20261024-results.json",
+    "sha256": "3982388ded66a37bd3e2970d837d17902514f9e45f0731a962119dd17fd08bea",
+    "unchanged": true
+  },
+  "current_continuation_passed_distinct_methods": 73,
+  "retained_previously_passed_inventory_methods": [
+    "test_tarasov_pna_bpf_ci.TarasovPNABPFCITests.test_complete_inventories_preserve_every_predecessor_and_new_test",
+    "test_tarasov_pna_bpf_ci.TarasovPNABPFTargetedCoreTests.test_targeted_inventory_is_all_cases_from_exact_complete_modules"
+  ],
+  "combined_distinct_methods_passed": 75,
+  "failures": 0,
+  "errors": 0,
+  "test_skips": 0,
+  "scope": "35 explicit new methods plus all 40 planned existing methods, including two retained earlier inventory passes; multiple fresh processes, not one uninterrupted suite",
+  "runs": {
+    "new": {
+      "mode": "new",
+      "tested_commit": "a6d3e5e384c7cb6cc29c5d56ba51d6bd959dff96",
+      "selected_ids": [
+        "test_material_append_replay.MaterialAppendReplayTests.test_all_current_and_historical_table_images_match_exactly",
+        "test_material_append_replay.MaterialAppendReplayTests.test_alternate_roots_do_not_share_graph_or_packet_state",
+        "test_material_append_replay.MaterialAppendReplayTests.test_corrupted_disk_metadata_json_and_duplicate_keys_are_rejected",
+        "test_material_append_replay.MaterialAppendReplayTests.test_disk_and_supplied_historical_stages_have_identical_outcomes",
+        "test_material_append_replay.MaterialAppendReplayTests.test_empty_prefix_still_checks_nan_and_duplicate_keys_before_substitution",
+        "test_material_append_replay.MaterialAppendReplayTests.test_invalid_arguments_and_empty_chain_preserve_behavior",
+        "test_material_append_replay.MaterialAppendReplayTests.test_late_first_match_and_unmatched_tail_keep_legacy_behavior",
+        "test_material_append_replay.MaterialAppendReplayTests.test_mutated_missing_duplicate_and_reordered_disk_additions_are_rejected",
+        "test_material_append_replay.MaterialAppendReplayTests.test_packet_bytes_paths_and_collection_inventories_keep_strict_checks",
+        "test_material_append_replay.MaterialAppendReplayTests.test_repeated_calls_reread_changed_graph_packet_and_ledger",
+        "test_material_append_replay.MaterialAppendReplayTests.test_single_match_keeps_exact_raw_substitution_without_extra_rejection",
+        "test_material_append_replay.MaterialAppendReplayTests.test_thirteen_step_counts_preserve_separate_disk_validation",
+        "test_material_append_replay.MaterialAppendReplayTests.test_unchanged_source_gaps_keep_complete_graph_alignment",
+        "test_material_append_replay.MaterialAppendReplayTests.test_unknown_and_noncanonical_bytes_pass_to_historical_rejection_without_io",
+        "test_material_append_replay.MaterialAppendReplayTests.test_valid_raw_must_not_hide_corrupted_disk_table_from_later_prefix",
+        "test_material_append_replay.MaterialAppendReplayTests.test_wrong_reordered_duplicate_and_partial_chains_fail_equally",
+        "test_replay_compat.ReplayCodeCompatibilityTests.test_exact_new_and_old_bytes_round_trip_without_authorizing_other_paths",
+        "test_replay_compat.ReplayCodeCompatibilityTests.test_helper_ledger_and_two_engine_images_are_exactly_pinned",
+        "test_replay_compat.ReplayCodeCompatibilityTests.test_invalid_input_and_wrong_chain_fail_before_the_bridge",
+        "test_replay_compat.ReplayCodeCompatibilityTests.test_later_matching_calls_reread_root_and_reject_changed_ledger_bytes",
+        "test_replay_compat.ReplayCodeCompatibilityTests.test_ledger_shape_image_edit_and_duplicate_key_mutations_fail_closed",
+        "test_replay_compat.ReplayCodeCompatibilityTests.test_unchanged_pur_fixture_and_assertion_pins_accept_only_exact_recovery",
+        "test_replay_compat.ReplayCodeCompatibilityTests.test_unknown_or_changed_bytes_pass_unchanged_to_old_rejection",
+        "test_benchmark_budget.BenchmarkProcessBudgetTests.test_cleanup_success_without_launcher_exit_still_remains_unconfirmed",
+        "test_benchmark_budget.BenchmarkProcessBudgetTests.test_exited_launcher_is_never_retargeted_and_descendants_remain_unconfirmed",
+        "test_benchmark_budget.BenchmarkProcessBudgetTests.test_failed_launch_is_not_a_success_or_cleanup_target",
+        "test_benchmark_budget.BenchmarkProcessBudgetTests.test_normal_exit_never_attempts_cleanup_on_either_simulated_platform",
+        "test_benchmark_budget.BenchmarkProcessBudgetTests.test_simulated_posix_signal_errors_existing_groups_and_check_errors_stay_unconfirmed",
+        "test_benchmark_budget.BenchmarkProcessBudgetTests.test_simulated_posix_uses_owned_new_group_and_requires_its_absence",
+        "test_benchmark_budget.BenchmarkProcessBudgetTests.test_windows_cleanup_failure_or_timeout_does_not_confirm_tree_cleanup",
+        "test_benchmark_budget.BenchmarkProcessBudgetTests.test_windows_timeout_targets_only_the_live_owned_launcher_tree",
+        "test_benchmark_budget.BenchmarkScheduleBudgetTests.test_budget_exhaustion_after_one_pass_preserves_partial_success",
+        "test_benchmark_budget.BenchmarkScheduleBudgetTests.test_exhausted_total_budget_never_starts_a_worker",
+        "test_benchmark_budget.BenchmarkScheduleBudgetTests.test_nonzero_exit_and_launch_failure_stop_following_cases",
+        "test_benchmark_budget.BenchmarkScheduleBudgetTests.test_timeout_cannot_be_reported_as_passed_or_start_a_later_case"
+      ],
+      "results": [
+        {
+          "group": "synthetic-differential",
+          "test_ids": [
+            "test_material_append_replay.MaterialAppendReplayTests.test_all_current_and_historical_table_images_match_exactly",
+            "test_material_append_replay.MaterialAppendReplayTests.test_alternate_roots_do_not_share_graph_or_packet_state",
+            "test_material_append_replay.MaterialAppendReplayTests.test_corrupted_disk_metadata_json_and_duplicate_keys_are_rejected",
+            "test_material_append_replay.MaterialAppendReplayTests.test_disk_and_supplied_historical_stages_have_identical_outcomes",
+            "test_material_append_replay.MaterialAppendReplayTests.test_empty_prefix_still_checks_nan_and_duplicate_keys_before_substitution",
+            "test_material_append_replay.MaterialAppendReplayTests.test_invalid_arguments_and_empty_chain_preserve_behavior",
+            "test_material_append_replay.MaterialAppendReplayTests.test_late_first_match_and_unmatched_tail_keep_legacy_behavior",
+            "test_material_append_replay.MaterialAppendReplayTests.test_mutated_missing_duplicate_and_reordered_disk_additions_are_rejected",
+            "test_material_append_replay.MaterialAppendReplayTests.test_packet_bytes_paths_and_collection_inventories_keep_strict_checks",
+            "test_material_append_replay.MaterialAppendReplayTests.test_repeated_calls_reread_changed_graph_packet_and_ledger",
+            "test_material_append_replay.MaterialAppendReplayTests.test_single_match_keeps_exact_raw_substitution_without_extra_rejection",
+            "test_material_append_replay.MaterialAppendReplayTests.test_thirteen_step_counts_preserve_separate_disk_validation",
+            "test_material_append_replay.MaterialAppendReplayTests.test_unchanged_source_gaps_keep_complete_graph_alignment",
+            "test_material_append_replay.MaterialAppendReplayTests.test_unknown_and_noncanonical_bytes_pass_to_historical_rejection_without_io",
+            "test_material_append_replay.MaterialAppendReplayTests.test_valid_raw_must_not_hide_corrupted_disk_table_from_later_prefix",
+            "test_material_append_replay.MaterialAppendReplayTests.test_wrong_reordered_duplicate_and_partial_chains_fail_equally"
+          ],
+          "test_file_sha256": {
+            "tests/history_replay/test_material_append_replay.py": "02aaf3d90b750803b168a4e20455ef3881da53583d6a5b649ae7ca3ecb6f84d5"
+          },
+          "started_at_utc": "2026-10-24T08:23:00.816897+00:00",
+          "budget_seconds": 900,
+          "status": "passed",
+          "stack_observation_seconds": 120,
+          "returncode": 0,
+          "timed_out": false,
+          "elapsed_seconds": 1.96090269999695,
+          "log_sha256": "92e6b1571c40b95ec43a440937c0a89e1d3141aed7e0fa48d3757b5e39e8060e",
+          "result": {
+            "passed_ids": [
+              "test_material_append_replay.MaterialAppendReplayTests.test_all_current_and_historical_table_images_match_exactly",
+              "test_material_append_replay.MaterialAppendReplayTests.test_alternate_roots_do_not_share_graph_or_packet_state",
+              "test_material_append_replay.MaterialAppendReplayTests.test_corrupted_disk_metadata_json_and_duplicate_keys_are_rejected",
+              "test_material_append_replay.MaterialAppendReplayTests.test_disk_and_supplied_historical_stages_have_identical_outcomes",
+              "test_material_append_replay.MaterialAppendReplayTests.test_empty_prefix_still_checks_nan_and_duplicate_keys_before_substitution",
+              "test_material_append_replay.MaterialAppendReplayTests.test_invalid_arguments_and_empty_chain_preserve_behavior",
+              "test_material_append_replay.MaterialAppendReplayTests.test_late_first_match_and_unmatched_tail_keep_legacy_behavior",
+              "test_material_append_replay.MaterialAppendReplayTests.test_mutated_missing_duplicate_and_reordered_disk_additions_are_rejected",
+              "test_material_append_replay.MaterialAppendReplayTests.test_packet_bytes_paths_and_collection_inventories_keep_strict_checks",
+              "test_material_append_replay.MaterialAppendReplayTests.test_repeated_calls_reread_changed_graph_packet_and_ledger",
+              "test_material_append_replay.MaterialAppendReplayTests.test_single_match_keeps_exact_raw_substitution_without_extra_rejection",
+              "test_material_append_replay.MaterialAppendReplayTests.test_thirteen_step_counts_preserve_separate_disk_validation",
+              "test_material_append_replay.MaterialAppendReplayTests.test_unchanged_source_gaps_keep_complete_graph_alignment",
+              "test_material_append_replay.MaterialAppendReplayTests.test_unknown_and_noncanonical_bytes_pass_to_historical_rejection_without_io",
+              "test_material_append_replay.MaterialAppendReplayTests.test_valid_raw_must_not_hide_corrupted_disk_table_from_later_prefix",
+              "test_material_append_replay.MaterialAppendReplayTests.test_wrong_reordered_duplicate_and_partial_chains_fail_equally"
+            ],
+            "passed": 16,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "group": "finite-engine-bridge",
+          "test_ids": [
+            "test_replay_compat.ReplayCodeCompatibilityTests.test_exact_new_and_old_bytes_round_trip_without_authorizing_other_paths",
+            "test_replay_compat.ReplayCodeCompatibilityTests.test_helper_ledger_and_two_engine_images_are_exactly_pinned",
+            "test_replay_compat.ReplayCodeCompatibilityTests.test_invalid_input_and_wrong_chain_fail_before_the_bridge",
+            "test_replay_compat.ReplayCodeCompatibilityTests.test_later_matching_calls_reread_root_and_reject_changed_ledger_bytes",
+            "test_replay_compat.ReplayCodeCompatibilityTests.test_ledger_shape_image_edit_and_duplicate_key_mutations_fail_closed",
+            "test_replay_compat.ReplayCodeCompatibilityTests.test_unchanged_pur_fixture_and_assertion_pins_accept_only_exact_recovery",
+            "test_replay_compat.ReplayCodeCompatibilityTests.test_unknown_or_changed_bytes_pass_unchanged_to_old_rejection"
+          ],
+          "test_file_sha256": {
+            "tests/history_replay/test_replay_compat.py": "09bc49f56ec644ae1a6c34dc8ccaf8d2e869557031bf0ffa4badeda853010627"
+          },
+          "started_at_utc": "2026-10-24T08:23:02.808859+00:00",
+          "budget_seconds": 900,
+          "status": "passed",
+          "stack_observation_seconds": 120,
+          "returncode": 0,
+          "timed_out": false,
+          "elapsed_seconds": 0.348129499994684,
+          "log_sha256": "42fed57dd93615898599f471bafa2785918f287afd5f2615382cec9b54e04910",
+          "result": {
+            "passed_ids": [
+              "test_replay_compat.ReplayCodeCompatibilityTests.test_exact_new_and_old_bytes_round_trip_without_authorizing_other_paths",
+              "test_replay_compat.ReplayCodeCompatibilityTests.test_helper_ledger_and_two_engine_images_are_exactly_pinned",
+              "test_replay_compat.ReplayCodeCompatibilityTests.test_invalid_input_and_wrong_chain_fail_before_the_bridge",
+              "test_replay_compat.ReplayCodeCompatibilityTests.test_later_matching_calls_reread_root_and_reject_changed_ledger_bytes",
+              "test_replay_compat.ReplayCodeCompatibilityTests.test_ledger_shape_image_edit_and_duplicate_key_mutations_fail_closed",
+              "test_replay_compat.ReplayCodeCompatibilityTests.test_unchanged_pur_fixture_and_assertion_pins_accept_only_exact_recovery",
+              "test_replay_compat.ReplayCodeCompatibilityTests.test_unknown_or_changed_bytes_pass_unchanged_to_old_rejection"
+            ],
+            "passed": 7,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "group": "mocked-benchmark-budget",
+          "test_ids": [
+            "test_benchmark_budget.BenchmarkProcessBudgetTests.test_cleanup_success_without_launcher_exit_still_remains_unconfirmed",
+            "test_benchmark_budget.BenchmarkProcessBudgetTests.test_exited_launcher_is_never_retargeted_and_descendants_remain_unconfirmed",
+            "test_benchmark_budget.BenchmarkProcessBudgetTests.test_failed_launch_is_not_a_success_or_cleanup_target",
+            "test_benchmark_budget.BenchmarkProcessBudgetTests.test_normal_exit_never_attempts_cleanup_on_either_simulated_platform",
+            "test_benchmark_budget.BenchmarkProcessBudgetTests.test_simulated_posix_signal_errors_existing_groups_and_check_errors_stay_unconfirmed",
+            "test_benchmark_budget.BenchmarkProcessBudgetTests.test_simulated_posix_uses_owned_new_group_and_requires_its_absence",
+            "test_benchmark_budget.BenchmarkProcessBudgetTests.test_windows_cleanup_failure_or_timeout_does_not_confirm_tree_cleanup",
+            "test_benchmark_budget.BenchmarkProcessBudgetTests.test_windows_timeout_targets_only_the_live_owned_launcher_tree",
+            "test_benchmark_budget.BenchmarkScheduleBudgetTests.test_budget_exhaustion_after_one_pass_preserves_partial_success",
+            "test_benchmark_budget.BenchmarkScheduleBudgetTests.test_exhausted_total_budget_never_starts_a_worker",
+            "test_benchmark_budget.BenchmarkScheduleBudgetTests.test_nonzero_exit_and_launch_failure_stop_following_cases",
+            "test_benchmark_budget.BenchmarkScheduleBudgetTests.test_timeout_cannot_be_reported_as_passed_or_start_a_later_case"
+          ],
+          "test_file_sha256": {
+            "tests/history_replay/test_benchmark_budget.py": "6005150c0054b47caa88fa05eea4318a801465f6ad42064fdbe68bff45644660"
+          },
+          "started_at_utc": "2026-10-24T08:23:03.185859+00:00",
+          "budget_seconds": 900,
+          "status": "passed",
+          "stack_observation_seconds": 120,
+          "returncode": 0,
+          "timed_out": false,
+          "elapsed_seconds": 0.3040390000096522,
+          "log_sha256": "94af3cd31361251a6993c526cd6934047c5b95f56619f767126b705915130dcd",
+          "result": {
+            "passed_ids": [
+              "test_benchmark_budget.BenchmarkProcessBudgetTests.test_cleanup_success_without_launcher_exit_still_remains_unconfirmed",
+              "test_benchmark_budget.BenchmarkProcessBudgetTests.test_exited_launcher_is_never_retargeted_and_descendants_remain_unconfirmed",
+              "test_benchmark_budget.BenchmarkProcessBudgetTests.test_failed_launch_is_not_a_success_or_cleanup_target",
+              "test_benchmark_budget.BenchmarkProcessBudgetTests.test_normal_exit_never_attempts_cleanup_on_either_simulated_platform",
+              "test_benchmark_budget.BenchmarkProcessBudgetTests.test_simulated_posix_signal_errors_existing_groups_and_check_errors_stay_unconfirmed",
+              "test_benchmark_budget.BenchmarkProcessBudgetTests.test_simulated_posix_uses_owned_new_group_and_requires_its_absence",
+              "test_benchmark_budget.BenchmarkProcessBudgetTests.test_windows_cleanup_failure_or_timeout_does_not_confirm_tree_cleanup",
+              "test_benchmark_budget.BenchmarkProcessBudgetTests.test_windows_timeout_targets_only_the_live_owned_launcher_tree",
+              "test_benchmark_budget.BenchmarkScheduleBudgetTests.test_budget_exhaustion_after_one_pass_preserves_partial_success",
+              "test_benchmark_budget.BenchmarkScheduleBudgetTests.test_exhausted_total_budget_never_starts_a_worker",
+              "test_benchmark_budget.BenchmarkScheduleBudgetTests.test_nonzero_exit_and_launch_failure_stop_following_cases",
+              "test_benchmark_budget.BenchmarkScheduleBudgetTests.test_timeout_cannot_be_reported_as_passed_or_start_a_later_case"
+            ],
+            "passed": 12,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        }
+      ],
+      "status": "passed",
+      "total_budget_seconds": 2000,
+      "elapsed_seconds": 2.7114006000047084,
+      "unrun_ids": []
+    },
+    "remaining": {
+      "mode": "remaining",
+      "tested_commit": "a6d3e5e384c7cb6cc29c5d56ba51d6bd959dff96",
+      "selected_ids": [
+        "test_pur_formulation_preservation.PURFormulationPreservationTests.test_ordered_chain_reaches_exact_c901_and_12cb_without_mutation",
+        "test_pur_formulation_preservation.PURFormulationPreservationTests.test_finite_file_chain_preserves_old_pins_and_rejects_drift",
+        "test_pur_formulation_preservation.PURFormulationPreservationTests.test_frozen_inventory_and_chain_order_cannot_be_substituted",
+        "test_source_family_growth_preservation.SourceFamilyGrowthPreservationTests.test_all_finite_file_images_round_trip_and_reject_drift",
+        "test_source_family_growth_preservation.SourceFamilyGrowthPreservationTests.test_old_data_and_workflow_layers_still_recover_exactly",
+        "test_tarasov_pna_bpf_preservation.TarasovPnaBpfPreservationTests.test_file_ledger_restores_exact_predecessor_files_and_rejects_drift",
+        "test_tarasov_pna_bpf_preservation.TarasovPnaBpfPreservationTests.test_registry_preserves_all_predecessor_descriptors_and_chronology",
+        "test_bruns_borosilicate_preservation.BrunsBorosilicatePreservationTests.test_file_ledger_restores_exact_readme_and_workflow_and_rejects_drift",
+        "test_bruns_borosilicate_preservation.BrunsBorosilicatePreservationTests.test_finite_registry_preserves_every_preexisting_descriptor_and_boundary",
+        "test_family_adjacency_history.FamilyAdjacencyHistoryTests.test_all_material_workflow_views_keep_their_exact_file_pins",
+        "test_family_adjacency_history.FamilyAdjacencyHistoryTests.test_code_only_workflow_round_trip_retains_old_rejection",
+        "test_family_adjacency_history.FamilyAdjacencyHistoryTests.test_data_registry_and_every_material_ledger_remain_unchanged",
+        "test_family_adjacency_history.FamilyAdjacencyHistoryTests.test_only_one_workflow_has_a_pinned_code_successor",
+        "test_family_adjacency_history.FamilyAdjacencyHistoryTests.test_unknown_boundaries_and_ledger_or_edit_drift_are_rejected",
+        "test_legacy_document_recovery.LegacyDocumentRecoveryTests.test_exact_call_site_reversal_changes_no_old_assertion_or_normalizer",
+        "test_legacy_document_recovery.LegacyDocumentRecoveryTests.test_exact_document_chains_reach_unchanged_original_release_pins",
+        "test_legacy_document_recovery.LegacyDocumentRecoveryTests.test_helper_ledgers_and_call_site_inventory_are_byte_pinned",
+        "test_legacy_document_recovery.LegacyDocumentRecoveryTests.test_modified_prose_and_attribution_still_fail_original_release_checks",
+        "test_legacy_document_recovery.LegacyDocumentRecoveryTests.test_reordered_chains_and_forged_fixtures_fail_closed",
+        "test_material_class_counts_preservation.MaterialClassCountsPreservationTests.test_all_old_ledgers_remain_unchanged_and_new_ledger_mutations_fail",
+        "test_material_class_counts_preservation.MaterialClassCountsPreservationTests.test_changed_bytes_paths_types_and_before_images_cannot_use_the_bridge",
+        "test_material_class_counts_preservation.MaterialClassCountsPreservationTests.test_five_exact_predecessors_round_trip_including_ci_and_helpers",
+        "test_material_class_counts_preservation.MaterialClassCountsPreservationTests.test_helper_ledger_and_three_snapshot_resources_are_pinned",
+        "test_material_class_counts_preservation.MaterialClassCountsPreservationTests.test_readme_exact_recovery_and_all_seven_original_material_chains",
+        "test_material_class_counts_preservation.MaterialClassCountsPreservationTests.test_snapshot_is_fixed_while_marked_totals_follow_an_append_rehearsal",
+        "test_material_class_counts_preservation.MaterialClassCountsPreservationTests.test_snapshot_sentence_matches_actual_core_classes_and_only_natural_reaches_goal",
+        "test_material_class_counts_preservation.MaterialClassCountsPreservationTests.test_wrong_class_counts_dates_duplicate_sentences_and_prose_fail_closed",
+        "test_evidence_dedup_preservation.EvidenceDedupPreservationTests.test_existing_355_and_402_file_pins_remain_exact",
+        "test_evidence_dedup_preservation.EvidenceDedupPreservationTests.test_helper_ledger_and_five_exact_predecessors_are_pinned",
+        "test_evidence_dedup_preservation.EvidenceDedupPreservationTests.test_ledger_drift_and_duplicate_keys_are_rejected_without_mutation",
+        "test_evidence_dedup_preservation.EvidenceDedupPreservationTests.test_unreviewed_successors_inputs_and_edit_mutations_fail_closed",
+        "test_material_batch_preservation.MaterialBatchPreservationTests.test_all_355_predecessor_files_round_trip_exactly",
+        "test_material_bulk_preservation.MaterialBulkPreservationTests.test_all_402_predecessor_files_round_trip_exactly",
+        "test_material_catalog_preservation.MaterialCatalogPreservationTests.test_all_old_noncatalog_files_recover_exact_accepted_bytes",
+        "test_composite_preservation.CompositePreservationTests.test_every_old_fixture_example_and_provenance_helper_remains_byte_exact",
+        "test_composite_preservation.CompositePreservationTests.test_only_exact_compatibility_transformations_and_no_removed_test_declarations",
+        "test_composite_preservation.CompositePreservationTests.test_legacy_chain_is_exact_and_unreviewed_bytes_fail_closed"
+      ],
+      "results": [
+        {
+          "group": "pur",
+          "test_ids": [
+            "test_pur_formulation_preservation.PURFormulationPreservationTests.test_ordered_chain_reaches_exact_c901_and_12cb_without_mutation",
+            "test_pur_formulation_preservation.PURFormulationPreservationTests.test_finite_file_chain_preserves_old_pins_and_rejects_drift",
+            "test_pur_formulation_preservation.PURFormulationPreservationTests.test_frozen_inventory_and_chain_order_cannot_be_substituted"
+          ],
+          "test_file_sha256": {
+            "tests/test_pur_formulation_preservation.py": "b5d88d6eb2f6ed04856dc0646107d6a0cb1aa79340d11c98fb75027db883febc"
+          },
+          "started_at_utc": "2026-10-24T08:21:57.932678+00:00",
+          "budget_seconds": 1800,
+          "status": "passed",
+          "stack_observation_seconds": 120,
+          "returncode": 0,
+          "timed_out": false,
+          "elapsed_seconds": 62.88471389998449,
+          "log_sha256": "423c985d05bca0c78fb413d4e70e9c5952db4afe5b74330dd4112ae87dff7c85",
+          "result": {
+            "passed_ids": [
+              "test_pur_formulation_preservation.PURFormulationPreservationTests.test_ordered_chain_reaches_exact_c901_and_12cb_without_mutation",
+              "test_pur_formulation_preservation.PURFormulationPreservationTests.test_finite_file_chain_preserves_old_pins_and_rejects_drift",
+              "test_pur_formulation_preservation.PURFormulationPreservationTests.test_frozen_inventory_and_chain_order_cannot_be_substituted"
+            ],
+            "passed": 3,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "group": "growth",
+          "test_ids": [
+            "test_source_family_growth_preservation.SourceFamilyGrowthPreservationTests.test_all_finite_file_images_round_trip_and_reject_drift",
+            "test_source_family_growth_preservation.SourceFamilyGrowthPreservationTests.test_old_data_and_workflow_layers_still_recover_exactly"
+          ],
+          "test_file_sha256": {
+            "tests/test_source_family_growth_preservation.py": "1e63a14d7d26d7f4dca5f498790cb2c3bf1b1521d93a5942c2eba30a28631c2c"
+          },
+          "started_at_utc": "2026-10-24T08:23:00.857917+00:00",
+          "budget_seconds": 1800,
+          "status": "passed",
+          "stack_observation_seconds": 120,
+          "returncode": 0,
+          "timed_out": false,
+          "elapsed_seconds": 37.56637139999657,
+          "log_sha256": "0a347a1116c883b0019f4fa0ccb6cf6dc1ec3e5e877802623f960e71558d5f51",
+          "result": {
+            "passed_ids": [
+              "test_source_family_growth_preservation.SourceFamilyGrowthPreservationTests.test_all_finite_file_images_round_trip_and_reject_drift",
+              "test_source_family_growth_preservation.SourceFamilyGrowthPreservationTests.test_old_data_and_workflow_layers_still_recover_exactly"
+            ],
+            "passed": 2,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "group": "tarasov",
+          "test_ids": [
+            "test_tarasov_pna_bpf_preservation.TarasovPnaBpfPreservationTests.test_file_ledger_restores_exact_predecessor_files_and_rejects_drift",
+            "test_tarasov_pna_bpf_preservation.TarasovPnaBpfPreservationTests.test_registry_preserves_all_predecessor_descriptors_and_chronology"
+          ],
+          "test_file_sha256": {
+            "tests/test_tarasov_pna_bpf_preservation.py": "02fa2e49996d8b64f0025219e5975fd175905528bac2300ef8485dfff48a0944"
+          },
+          "started_at_utc": "2026-10-24T08:23:38.466348+00:00",
+          "budget_seconds": 900,
+          "status": "passed",
+          "stack_observation_seconds": 120,
+          "returncode": 0,
+          "timed_out": false,
+          "elapsed_seconds": 2.5615064000012353,
+          "log_sha256": "9145b81a0d75480291dbb600cc543ce5083278e805a881fdbaa27396669f7e4f",
+          "result": {
+            "passed_ids": [
+              "test_tarasov_pna_bpf_preservation.TarasovPnaBpfPreservationTests.test_file_ledger_restores_exact_predecessor_files_and_rejects_drift",
+              "test_tarasov_pna_bpf_preservation.TarasovPnaBpfPreservationTests.test_registry_preserves_all_predecessor_descriptors_and_chronology"
+            ],
+            "passed": 2,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "group": "bruns",
+          "test_ids": [
+            "test_bruns_borosilicate_preservation.BrunsBorosilicatePreservationTests.test_file_ledger_restores_exact_readme_and_workflow_and_rejects_drift",
+            "test_bruns_borosilicate_preservation.BrunsBorosilicatePreservationTests.test_finite_registry_preserves_every_preexisting_descriptor_and_boundary"
+          ],
+          "test_file_sha256": {
+            "tests/test_bruns_borosilicate_preservation.py": "15f54f507660fbb74c84582219db3a2c16a3db2d550f27d7551e5bd1c451bc9d"
+          },
+          "started_at_utc": "2026-10-24T08:23:41.060503+00:00",
+          "budget_seconds": 900,
+          "status": "passed",
+          "stack_observation_seconds": 120,
+          "returncode": 0,
+          "timed_out": false,
+          "elapsed_seconds": 4.053666299994802,
+          "log_sha256": "5008f0d65d306e73e77da498711967b4ac16b7d477e1abc6c535430a3ff07ef5",
+          "result": {
+            "passed_ids": [
+              "test_bruns_borosilicate_preservation.BrunsBorosilicatePreservationTests.test_file_ledger_restores_exact_readme_and_workflow_and_rejects_drift",
+              "test_bruns_borosilicate_preservation.BrunsBorosilicatePreservationTests.test_finite_registry_preserves_every_preexisting_descriptor_and_boundary"
+            ],
+            "passed": 2,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "group": "adjacency",
+          "test_ids": [
+            "test_family_adjacency_history.FamilyAdjacencyHistoryTests.test_all_material_workflow_views_keep_their_exact_file_pins",
+            "test_family_adjacency_history.FamilyAdjacencyHistoryTests.test_code_only_workflow_round_trip_retains_old_rejection",
+            "test_family_adjacency_history.FamilyAdjacencyHistoryTests.test_data_registry_and_every_material_ledger_remain_unchanged",
+            "test_family_adjacency_history.FamilyAdjacencyHistoryTests.test_only_one_workflow_has_a_pinned_code_successor",
+            "test_family_adjacency_history.FamilyAdjacencyHistoryTests.test_unknown_boundaries_and_ledger_or_edit_drift_are_rejected"
+          ],
+          "test_file_sha256": {
+            "tests/test_family_adjacency_history.py": "c0acaae917d4e43eada1130132975daebbcf11a0bd105f3f0f19c08cb9f0d026"
+          },
+          "started_at_utc": "2026-10-24T08:23:45.142859+00:00",
+          "budget_seconds": 900,
+          "status": "passed",
+          "stack_observation_seconds": 120,
+          "returncode": 0,
+          "timed_out": false,
+          "elapsed_seconds": 0.21616700000595301,
+          "log_sha256": "6de2eb7deecb90a5f4489d33e46f1e76323282d307a67b7e5961d7c0cd1fb8c7",
+          "result": {
+            "passed_ids": [
+              "test_family_adjacency_history.FamilyAdjacencyHistoryTests.test_all_material_workflow_views_keep_their_exact_file_pins",
+              "test_family_adjacency_history.FamilyAdjacencyHistoryTests.test_code_only_workflow_round_trip_retains_old_rejection",
+              "test_family_adjacency_history.FamilyAdjacencyHistoryTests.test_data_registry_and_every_material_ledger_remain_unchanged",
+              "test_family_adjacency_history.FamilyAdjacencyHistoryTests.test_only_one_workflow_has_a_pinned_code_successor",
+              "test_family_adjacency_history.FamilyAdjacencyHistoryTests.test_unknown_boundaries_and_ledger_or_edit_drift_are_rejected"
+            ],
+            "passed": 5,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "group": "documents",
+          "test_ids": [
+            "test_legacy_document_recovery.LegacyDocumentRecoveryTests.test_exact_call_site_reversal_changes_no_old_assertion_or_normalizer",
+            "test_legacy_document_recovery.LegacyDocumentRecoveryTests.test_exact_document_chains_reach_unchanged_original_release_pins",
+            "test_legacy_document_recovery.LegacyDocumentRecoveryTests.test_helper_ledgers_and_call_site_inventory_are_byte_pinned",
+            "test_legacy_document_recovery.LegacyDocumentRecoveryTests.test_modified_prose_and_attribution_still_fail_original_release_checks",
+            "test_legacy_document_recovery.LegacyDocumentRecoveryTests.test_reordered_chains_and_forged_fixtures_fail_closed"
+          ],
+          "test_file_sha256": {
+            "tests/test_legacy_document_recovery.py": "3f92246c1ed2772161305e1c5d0e3d47bcef6004a09585ed4bd1ee29563b7ba4"
+          },
+          "started_at_utc": "2026-10-24T08:23:45.394053+00:00",
+          "budget_seconds": 900,
+          "status": "passed",
+          "stack_observation_seconds": 120,
+          "returncode": 0,
+          "timed_out": false,
+          "elapsed_seconds": 6.235854900005506,
+          "log_sha256": "ec254590d94e8ccf684a3de7b87f17837a669bac316f94c0b8679eb9f3594c0f",
+          "result": {
+            "passed_ids": [
+              "test_legacy_document_recovery.LegacyDocumentRecoveryTests.test_exact_call_site_reversal_changes_no_old_assertion_or_normalizer",
+              "test_legacy_document_recovery.LegacyDocumentRecoveryTests.test_exact_document_chains_reach_unchanged_original_release_pins",
+              "test_legacy_document_recovery.LegacyDocumentRecoveryTests.test_helper_ledgers_and_call_site_inventory_are_byte_pinned",
+              "test_legacy_document_recovery.LegacyDocumentRecoveryTests.test_modified_prose_and_attribution_still_fail_original_release_checks",
+              "test_legacy_document_recovery.LegacyDocumentRecoveryTests.test_reordered_chains_and_forged_fixtures_fail_closed"
+            ],
+            "passed": 5,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "group": "class-counts",
+          "test_ids": [
+            "test_material_class_counts_preservation.MaterialClassCountsPreservationTests.test_all_old_ledgers_remain_unchanged_and_new_ledger_mutations_fail",
+            "test_material_class_counts_preservation.MaterialClassCountsPreservationTests.test_changed_bytes_paths_types_and_before_images_cannot_use_the_bridge",
+            "test_material_class_counts_preservation.MaterialClassCountsPreservationTests.test_five_exact_predecessors_round_trip_including_ci_and_helpers",
+            "test_material_class_counts_preservation.MaterialClassCountsPreservationTests.test_helper_ledger_and_three_snapshot_resources_are_pinned",
+            "test_material_class_counts_preservation.MaterialClassCountsPreservationTests.test_readme_exact_recovery_and_all_seven_original_material_chains",
+            "test_material_class_counts_preservation.MaterialClassCountsPreservationTests.test_snapshot_is_fixed_while_marked_totals_follow_an_append_rehearsal",
+            "test_material_class_counts_preservation.MaterialClassCountsPreservationTests.test_snapshot_sentence_matches_actual_core_classes_and_only_natural_reaches_goal",
+            "test_material_class_counts_preservation.MaterialClassCountsPreservationTests.test_wrong_class_counts_dates_duplicate_sentences_and_prose_fail_closed"
+          ],
+          "test_file_sha256": {
+            "tests/test_material_class_counts_preservation.py": "215ba9dcd8ba595dcd002e0d41b83406a3f0f215d5197f6c8f332e7cf955ac3c"
+          },
+          "started_at_utc": "2026-10-24T08:23:51.668897+00:00",
+          "budget_seconds": 900,
+          "status": "passed",
+          "stack_observation_seconds": 120,
+          "returncode": 0,
+          "timed_out": false,
+          "elapsed_seconds": 292.98854940000456,
+          "log_sha256": "6d1a767fc25b4d0909c2624bb6d28dc71cef9e98275773f604607d0d15cee444",
+          "result": {
+            "passed_ids": [
+              "test_material_class_counts_preservation.MaterialClassCountsPreservationTests.test_all_old_ledgers_remain_unchanged_and_new_ledger_mutations_fail",
+              "test_material_class_counts_preservation.MaterialClassCountsPreservationTests.test_changed_bytes_paths_types_and_before_images_cannot_use_the_bridge",
+              "test_material_class_counts_preservation.MaterialClassCountsPreservationTests.test_five_exact_predecessors_round_trip_including_ci_and_helpers",
+              "test_material_class_counts_preservation.MaterialClassCountsPreservationTests.test_helper_ledger_and_three_snapshot_resources_are_pinned",
+              "test_material_class_counts_preservation.MaterialClassCountsPreservationTests.test_readme_exact_recovery_and_all_seven_original_material_chains",
+              "test_material_class_counts_preservation.MaterialClassCountsPreservationTests.test_snapshot_is_fixed_while_marked_totals_follow_an_append_rehearsal",
+              "test_material_class_counts_preservation.MaterialClassCountsPreservationTests.test_snapshot_sentence_matches_actual_core_classes_and_only_natural_reaches_goal",
+              "test_material_class_counts_preservation.MaterialClassCountsPreservationTests.test_wrong_class_counts_dates_duplicate_sentences_and_prose_fail_closed"
+            ],
+            "passed": 8,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "group": "dedup",
+          "test_ids": [
+            "test_evidence_dedup_preservation.EvidenceDedupPreservationTests.test_existing_355_and_402_file_pins_remain_exact",
+            "test_evidence_dedup_preservation.EvidenceDedupPreservationTests.test_helper_ledger_and_five_exact_predecessors_are_pinned",
+            "test_evidence_dedup_preservation.EvidenceDedupPreservationTests.test_ledger_drift_and_duplicate_keys_are_rejected_without_mutation",
+            "test_evidence_dedup_preservation.EvidenceDedupPreservationTests.test_unreviewed_successors_inputs_and_edit_mutations_fail_closed"
+          ],
+          "test_file_sha256": {
+            "tests/test_evidence_dedup_preservation.py": "bb3ac86bccccb0174d4cef7243dc9fa93a7adeca5b31da4fdd79cdf5cac92210"
+          },
+          "started_at_utc": "2026-10-24T08:28:44.695356+00:00",
+          "budget_seconds": 900,
+          "status": "passed",
+          "stack_observation_seconds": 120,
+          "returncode": 0,
+          "timed_out": false,
+          "elapsed_seconds": 16.768800899997586,
+          "log_sha256": "0d5d81c169327114aaa9967fcddbae7533e5e9146e279901cef5adb80ca10d57",
+          "result": {
+            "passed_ids": [
+              "test_evidence_dedup_preservation.EvidenceDedupPreservationTests.test_existing_355_and_402_file_pins_remain_exact",
+              "test_evidence_dedup_preservation.EvidenceDedupPreservationTests.test_helper_ledger_and_five_exact_predecessors_are_pinned",
+              "test_evidence_dedup_preservation.EvidenceDedupPreservationTests.test_ledger_drift_and_duplicate_keys_are_rejected_without_mutation",
+              "test_evidence_dedup_preservation.EvidenceDedupPreservationTests.test_unreviewed_successors_inputs_and_edit_mutations_fail_closed"
+            ],
+            "passed": 4,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "group": "batch-anchor",
+          "test_ids": [
+            "test_material_batch_preservation.MaterialBatchPreservationTests.test_all_355_predecessor_files_round_trip_exactly"
+          ],
+          "test_file_sha256": {
+            "tests/test_material_batch_preservation.py": "9d465551b08e9a2496aaa24f8b4ac3a2f602fe000f4197165e01300ab98bff9c"
+          },
+          "started_at_utc": "2026-10-24T08:29:01.519301+00:00",
+          "budget_seconds": 1800,
+          "status": "passed",
+          "stack_observation_seconds": 120,
+          "returncode": 0,
+          "timed_out": false,
+          "elapsed_seconds": 11.856268300005468,
+          "log_sha256": "74b041cfaeba5dbb71196a23a1eb64832803e29d745a8fc6dac17012cbba817b",
+          "result": {
+            "passed_ids": [
+              "test_material_batch_preservation.MaterialBatchPreservationTests.test_all_355_predecessor_files_round_trip_exactly"
+            ],
+            "passed": 1,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "group": "bulk-anchor",
+          "test_ids": [
+            "test_material_bulk_preservation.MaterialBulkPreservationTests.test_all_402_predecessor_files_round_trip_exactly"
+          ],
+          "test_file_sha256": {
+            "tests/test_material_bulk_preservation.py": "a48aec0b22d64004705e3d6bdc4a68dce3e1eb481b3d8e177ae43039b41f7848"
+          },
+          "started_at_utc": "2026-10-24T08:29:13.425131+00:00",
+          "budget_seconds": 1800,
+          "status": "passed",
+          "stack_observation_seconds": 120,
+          "returncode": 0,
+          "timed_out": false,
+          "elapsed_seconds": 9.164141300017945,
+          "log_sha256": "e3fe86300f8fe896f8e85df27fbaad0ecfb4397347a0ec2fcec16e16bcef5285",
+          "result": {
+            "passed_ids": [
+              "test_material_bulk_preservation.MaterialBulkPreservationTests.test_all_402_predecessor_files_round_trip_exactly"
+            ],
+            "passed": 1,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "group": "catalog-anchor",
+          "test_ids": [
+            "test_material_catalog_preservation.MaterialCatalogPreservationTests.test_all_old_noncatalog_files_recover_exact_accepted_bytes"
+          ],
+          "test_file_sha256": {
+            "tests/test_material_catalog_preservation.py": "4a3752f286711028d3835a2e9a858d1691df0ce2750a48972df0dfa30dc4aac3"
+          },
+          "started_at_utc": "2026-10-24T08:29:22.629371+00:00",
+          "budget_seconds": 1800,
+          "status": "passed",
+          "stack_observation_seconds": 120,
+          "returncode": 0,
+          "timed_out": false,
+          "elapsed_seconds": 5.548366900009569,
+          "log_sha256": "1eb408533be28c32564be64e73f7d6bebc4d5be6a1548bf101f6c1d78e7fac22",
+          "result": {
+            "passed_ids": [
+              "test_material_catalog_preservation.MaterialCatalogPreservationTests.test_all_old_noncatalog_files_recover_exact_accepted_bytes"
+            ],
+            "passed": 1,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "group": "composite-anchors",
+          "test_ids": [
+            "test_composite_preservation.CompositePreservationTests.test_every_old_fixture_example_and_provenance_helper_remains_byte_exact",
+            "test_composite_preservation.CompositePreservationTests.test_only_exact_compatibility_transformations_and_no_removed_test_declarations",
+            "test_composite_preservation.CompositePreservationTests.test_legacy_chain_is_exact_and_unreviewed_bytes_fail_closed"
+          ],
+          "test_file_sha256": {
+            "tests/test_composite_preservation.py": "36a5e9cb9b964733d1059002577ef00bca558c69a212f3d9aac2ab0caf60ff59"
+          },
+          "started_at_utc": "2026-10-24T08:29:28.210722+00:00",
+          "budget_seconds": 1800,
+          "status": "passed",
+          "stack_observation_seconds": 120,
+          "returncode": 0,
+          "timed_out": false,
+          "elapsed_seconds": 5.709516499977326,
+          "log_sha256": "903f6e6b6321c6083c1b236eb49fe31120141af7bc9e6be40624934062f31738",
+          "result": {
+            "passed_ids": [
+              "test_composite_preservation.CompositePreservationTests.test_every_old_fixture_example_and_provenance_helper_remains_byte_exact",
+              "test_composite_preservation.CompositePreservationTests.test_only_exact_compatibility_transformations_and_no_removed_test_declarations",
+              "test_composite_preservation.CompositePreservationTests.test_legacy_chain_is_exact_and_unreviewed_bytes_fail_closed"
+            ],
+            "passed": 3,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        }
+      ],
+      "status": "passed",
+      "total_budget_seconds": 7200,
+      "elapsed_seconds": 456.014093100006,
+      "unrun_ids": []
+    },
+    "heavy": {
+      "mode": "heavy",
+      "tested_commit": "a6d3e5e384c7cb6cc29c5d56ba51d6bd959dff96",
+      "selected_ids": [
+        "test_pur_formulation_preservation.PURFormulationPreservationTests.test_catalog_byte_projection_aligns_current_and_predecessor_graphs"
+      ],
+      "results": [
+        {
+          "group": "pur-byte-projection",
+          "test_ids": [
+            "test_pur_formulation_preservation.PURFormulationPreservationTests.test_catalog_byte_projection_aligns_current_and_predecessor_graphs"
+          ],
+          "test_file_sha256": {
+            "tests/test_pur_formulation_preservation.py": "b5d88d6eb2f6ed04856dc0646107d6a0cb1aa79340d11c98fb75027db883febc"
+          },
+          "started_at_utc": "2026-10-24T08:29:37.673745+00:00",
+          "budget_seconds": 1800,
+          "status": "passed",
+          "stack_observation_seconds": 120,
+          "returncode": 0,
+          "timed_out": false,
+          "elapsed_seconds": 649.9031549000065,
+          "log_sha256": "b4716751fdc00b44dd147cd2f8dd205ae175f59fd6012a421d911b5ce0e454f1",
+          "result": {
+            "passed_ids": [
+              "test_pur_formulation_preservation.PURFormulationPreservationTests.test_catalog_byte_projection_aligns_current_and_predecessor_graphs"
+            ],
+            "passed": 1,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        }
+      ],
+      "status": "passed",
+      "total_budget_seconds": 2000,
+      "elapsed_seconds": 649.9337819999782,
+      "unrun_ids": []
+    }
+  },
+  "remaining_previously_planned_methods": [],
+  "earlier_unsuccessful_attempts_preserved": [
+    {
+      "attempt": "naive invocation cache",
+      "methods_run": 12,
+      "failure_events": 4,
+      "reason": "Three subtests showed supplied raw hid disk-table corruption; an operation-count assertion also failed. Cache was changed to preserve the unmodified disk graph.",
+      "log_sha256": "14f6d4ed63a3af2c502ddc01d637ecc355e7cac4a9869f844e4271e3d3e2d3c0"
+    },
+    {
+      "attempt": "broader PUR group",
+      "budget_seconds": 600,
+      "elapsed_seconds": 600.018,
+      "outcome": "timed_out; first method unfinished; no group pass",
+      "assertion_failure_observed": false,
+      "worker_after_timeout": "Specific previously observed child PID was already absent; no process was stopped",
+      "log_sha256": "d3855d8dc4adde945bb5b3f76194dd800c986416618ee1f9631110785be9235e"
+    },
+    {
+      "attempt": "initial benchmark budget tests",
+      "methods_run": 12,
+      "failure_events": 6,
+      "reason": "Windows platform metadata probing reached the deliberately forbidden real subprocess mock; fixed only metadata mocks.",
+      "log_sha256": "5fc63c43b43c5ff936894f75d92ba4ce533716b5acdea256809e8d5c17573dca"
+    },
+    {
+      "attempt": "metadata-repaired budget tests in sandbox",
+      "methods_run": 12,
+      "error_events": 6,
+      "reason": "Sandbox denied atomic JSON replacement with WinError 5. Assertions and benchmark were unchanged for the later successful native Windows run.",
+      "child_returncode_not_retained": true,
+      "postprocessing_error": "UTF-8 log decoding failed for the locale-encoded native error; original bytes retained and inspected as GB18030.",
+      "log_sha256": "12c881d5dc05a79cc9cc121e402a0ab426fc76b283afd8afb1d178a091889100"
+    }
+  ],
+  "old_timeout_seconds": 600.018,
+  "old_timeout_reclassified_as_pass": false,
+  "retry_budget_reason": "The unchanged PUR method makes 36 direct projection-wrapper calls over three tables, with recursive disk-graph alignment and class setup; the single diagnostic retry had a fixed 1800-second budget and 120-second stack observations.",
+  "benchmark_retained_current_materials": {
+    "schema": "material-history-replay-benchmark/1",
+    "recorded_at_utc": "2026-10-24T01:35:53.363394+00:00",
+    "baseline_commit": "196995256836db2d8f870ac9a91f664bfdd03e7f",
+    "old_engine_sha256": "38d9b1768121f84cc5b45d21d8d992b8d62cf6ed62ad0ed1ec78f7760ece9ea9",
+    "candidate_engine_sha256": "2379867c0fe4ec89cf4f450b10bf84e48986783d50396c6f593316de78ad3251",
+    "benchmark_script_sha256": "0fcba8efa14a6753e3409d0e4f2d5a5836bce3b76d919ba470516cb8d27074ce",
+    "platform": {
+      "system": "Windows",
+      "python": "3.11.0",
+      "implementation": "CPython"
+    },
+    "selected_cases": [
+      "current-materials"
+    ],
+    "case_timeout_seconds": 600,
+    "total_budget_seconds": 650,
+    "timeout_cleanup_grace_seconds": 25,
+    "scope": "Single observations of test-only projections; no installed smoke or CLI tests",
+    "limitations": [
+      "Inputs must remain stable during each invocation.",
+      "Cold OS or filesystem caches are not guaranteed; old always runs first.",
+      "Measured times include counter instrumentation, but exclude image preparation and input hashing.",
+      "No speed claim is extrapolated beyond the selected observations.",
+      "This optimization does not establish the cause of the original installed smoke timeout."
+    ],
+    "cases": [
+      {
+        "case": "current-materials",
+        "stage_after_ledgers": 0,
+        "table": "materials",
+        "status": "passed",
+        "phase": "completed",
+        "candidate_engine_sha256": "2379867c0fe4ec89cf4f450b10bf84e48986783d50396c6f593316de78ad3251",
+        "input_sha256_before": {
+          "tests/fixtures/tarasov_pna_bpf_data_20261023.json": "ff13299c063b805d4cb36e73fe8db1521e88cab51aff2af13d2f4afab0a30773",
+          "experimental/material-batches/tarasov-pna-bpf-20261023/prepared-packet.json": "e9096077c7d6a206cf3a54a14272f838722187e10481588a1e3c07e5ab345997",
+          "tests/fixtures/bruns_borosilicate_data_20261023.json": "6eded8614db38dcd26ad1e570d7ad783110dd690296e59a9270300bfd3a0a016",
+          "experimental/material-batches/bruns-nbs2-borosilicate-20261023/prepared-packet.json": "7bc0fb2ba2dc3512abb95b7bf27b9f25d12c868d4bba041f667421572e5eccde",
+          "tests/fixtures/nylon_followup_data_20261021.json": "88f7303d6e8b4234555548ea39fdfb286380c72ea2f7f5edce990e1a0d733b97",
+          "experimental/material-batches/zenodo-8089569-nylon-followup-20261021/prepared-packet.json": "b18d7fc70bc5da537672f20a1682594c36c8d2d1e4c9e0ac05f9647d586e5172",
+          "tests/fixtures/tough_pla_followup_data_20261021.json": "46d33c7bfc8abb32b341a5c026ed8cb03e47350feeb17e2b0c478999aeacf1f4",
+          "experimental/material-batches/zenodo-8089569-tough-pla-followup-20261021/prepared-packet.json": "919c387b4cf0b586c36e2d922a45b0a64832831d659f755049a4be3bbea3be44",
+          "tests/fixtures/primary_table_growth_8_data_20261021.json": "de662ffe08378402a224b4ee4180252b620278dfb79164b58a20884d68e82c51",
+          "experimental/material-batches/zenodo-8089569-filaments-20261021/prepared-packet.json": "aaa94bd1f752e00f37268f8b786326dcb98011648985f8bc77cb92362f4c57e8",
+          "tests/fixtures/primary_table_growth_7_data_20261020.json": "26c80c5274504af2e0adbb55b4346d395e7c13e7009c504229f9c9dc32ca01fe",
+          "experimental/material-batches/outokumpu-core-moduli-20261020/prepared-packet.json": "c7317758ae4c1a4025ac00c6b288770e61cf33056caaf1771a638af66d32b84f",
+          "tests/fixtures/primary_table_growth_6_data_20261020.json": "3d3335edadae838524756ad1b33efb733d48893a123e6637c461dc79d59861b5",
+          "experimental/material-batches/tamas-benyei-nbr-rcf-20261020/prepared-packet.json": "ae401d2ab8b565acf5772bba10833176f46293ec025a9552d15aafd6a68c8ee3",
+          "tests/fixtures/primary_table_growth_5_data_20261020.json": "ced45ed6989e8988d461b0256c3ef7781c0f04b8364c6c991e3cacf36b064ff9",
+          "experimental/material-batches/bianchi-nr-nanoclay-20261020/prepared-packet.json": "a09f6d768b71667e045efa85d3c79de8ce3db49a926dcda55eb5421efc99d55f",
+          "tests/fixtures/primary_table_growth_4_data_20261019.json": "d57a1014e6d9e66f3f6c031e3a56abda909acc924fb9ab16835948989f4ce89c",
+          "experimental/material-batches/mtibe-pbs-pbat-hybrids-20261019/prepared-packet.json": "8c0dad86412f0708f72a3866cae5a7766db01be99df38f85defd3ba052da388c",
+          "tests/fixtures/primary_table_growth_3_data_20261019.json": "4ae9986cc914d9ff06a40875c19d606c0502a28527488151e6c71ec5f27eb0fe",
+          "experimental/material-batches/nbs-binary-oxide-density-20261019/prepared-packet.json": "0511e82ef9279928629f8e05076ba5050988de4e18081593d3bb8cbd1bfaa28e",
+          "tests/fixtures/primary_table_growth_2_data_20261019.json": "f3fcc3e8fdcdb292a2f3cf0b13c50de6bc90604ed2ac28b8938c9334e45933fc",
+          "experimental/material-batches/nbs-rca-density-20261019/prepared-packet.json": "6d906eec144e3908941f7c6f3c91646d4d905a7134fdc5086a95c4e59f1ca41c",
+          "tests/fixtures/primary_table_growth_data_20261019.json": "faa453c3d57bb4a9040fac084cb9a96ad6c3437c237f80ea8eff4cc3e3fe261f",
+          "experimental/material-batches/nbs-salt-densities-20261019/prepared-packet.json": "091239fd1cc6e4d7d8429aab381f1a9525f62293339fc4fbea230142f53b541f",
+          "tests/fixtures/pur_formulation_data_20261019.json": "541a4e325834ed992246489846bcfcf83480bfb86494ec2a212d78de821bf167",
+          "experimental/material-batches/pur-formulations-20261019/prepared-packet.json": "2c5320856ba07892eac6b35d6b881bb3ab21126e801beefa2b887c77abd93be7",
+          "tests/fixtures/source_family_growth_data_20261019.json": "9dfc8d71e89041f05e11a870ad29aea34cb3ab90586bcea8f1d717adc9878ac3",
+          "experimental/material-batches/nbs-oxide-density-20261019/prepared-packet.json": "21aaed2df59b0ab9301d1573aabd6fd8bd87354c01fdf11323cdee62b600aab3",
+          "materials_boundaries/data/materials.json": "93da1d629da8244853b3e6ad30d556137d57e3f639baffdd3c5bc34a3a1c9107",
+          "materials_boundaries/data/reference_properties.json": "275671a5f1a447d0cb071de361a8a515f60da60213edd076d725dd03d305b307",
+          "materials_boundaries/data/sources.json": "3828f53f5b946a4a90d1cb92630b141d496a02838a9dceb519730831c56cc8c1",
+          "tests/material_append_history.py": "2379867c0fe4ec89cf4f450b10bf84e48986783d50396c6f593316de78ad3251",
+          "tests/history_replay/benchmark_replay.py": "0fcba8efa14a6753e3409d0e4f2d5a5836bce3b76d919ba470516cb8d27074ce"
+        },
+        "preparation_seconds_not_timed_as_projection": 0.003244999999878928,
+        "input_raw_sha256": "93da1d629da8244853b3e6ad30d556137d57e3f639baffdd3c5bc34a3a1c9107",
+        "input_raw_bytes": 9717602,
+        "old": {
+          "status": "passed",
+          "elapsed_seconds": 172.78645770001458,
+          "counts": {
+            "recover_catalogs": 105,
+            "appended_rows": 196,
+            "catalog_read_bytes": 42,
+            "packet_read_bytes": 196,
+            "other_read_bytes": 0
+          },
+          "output_sha256": "410efabb24dad7ed377ac7b94d35bccc40afe91194f0323e0298f500314e02f3",
+          "output_bytes": 9125298
+        },
+        "new": {
+          "status": "passed",
+          "elapsed_seconds": 46.852640500001144,
+          "counts": {
+            "recover_catalogs": 27,
+            "appended_rows": 40,
+            "catalog_read_bytes": 3,
+            "packet_read_bytes": 40,
+            "other_read_bytes": 0
+          },
+          "output_sha256": "410efabb24dad7ed377ac7b94d35bccc40afe91194f0323e0298f500314e02f3",
+          "output_bytes": 9125298
+        },
+        "input_sha256_after": {
+          "tests/fixtures/tarasov_pna_bpf_data_20261023.json": "ff13299c063b805d4cb36e73fe8db1521e88cab51aff2af13d2f4afab0a30773",
+          "experimental/material-batches/tarasov-pna-bpf-20261023/prepared-packet.json": "e9096077c7d6a206cf3a54a14272f838722187e10481588a1e3c07e5ab345997",
+          "tests/fixtures/bruns_borosilicate_data_20261023.json": "6eded8614db38dcd26ad1e570d7ad783110dd690296e59a9270300bfd3a0a016",
+          "experimental/material-batches/bruns-nbs2-borosilicate-20261023/prepared-packet.json": "7bc0fb2ba2dc3512abb95b7bf27b9f25d12c868d4bba041f667421572e5eccde",
+          "tests/fixtures/nylon_followup_data_20261021.json": "88f7303d6e8b4234555548ea39fdfb286380c72ea2f7f5edce990e1a0d733b97",
+          "experimental/material-batches/zenodo-8089569-nylon-followup-20261021/prepared-packet.json": "b18d7fc70bc5da537672f20a1682594c36c8d2d1e4c9e0ac05f9647d586e5172",
+          "tests/fixtures/tough_pla_followup_data_20261021.json": "46d33c7bfc8abb32b341a5c026ed8cb03e47350feeb17e2b0c478999aeacf1f4",
+          "experimental/material-batches/zenodo-8089569-tough-pla-followup-20261021/prepared-packet.json": "919c387b4cf0b586c36e2d922a45b0a64832831d659f755049a4be3bbea3be44",
+          "tests/fixtures/primary_table_growth_8_data_20261021.json": "de662ffe08378402a224b4ee4180252b620278dfb79164b58a20884d68e82c51",
+          "experimental/material-batches/zenodo-8089569-filaments-20261021/prepared-packet.json": "aaa94bd1f752e00f37268f8b786326dcb98011648985f8bc77cb92362f4c57e8",
+          "tests/fixtures/primary_table_growth_7_data_20261020.json": "26c80c5274504af2e0adbb55b4346d395e7c13e7009c504229f9c9dc32ca01fe",
+          "experimental/material-batches/outokumpu-core-moduli-20261020/prepared-packet.json": "c7317758ae4c1a4025ac00c6b288770e61cf33056caaf1771a638af66d32b84f",
+          "tests/fixtures/primary_table_growth_6_data_20261020.json": "3d3335edadae838524756ad1b33efb733d48893a123e6637c461dc79d59861b5",
+          "experimental/material-batches/tamas-benyei-nbr-rcf-20261020/prepared-packet.json": "ae401d2ab8b565acf5772bba10833176f46293ec025a9552d15aafd6a68c8ee3",
+          "tests/fixtures/primary_table_growth_5_data_20261020.json": "ced45ed6989e8988d461b0256c3ef7781c0f04b8364c6c991e3cacf36b064ff9",
+          "experimental/material-batches/bianchi-nr-nanoclay-20261020/prepared-packet.json": "a09f6d768b71667e045efa85d3c79de8ce3db49a926dcda55eb5421efc99d55f",
+          "tests/fixtures/primary_table_growth_4_data_20261019.json": "d57a1014e6d9e66f3f6c031e3a56abda909acc924fb9ab16835948989f4ce89c",
+          "experimental/material-batches/mtibe-pbs-pbat-hybrids-20261019/prepared-packet.json": "8c0dad86412f0708f72a3866cae5a7766db01be99df38f85defd3ba052da388c",
+          "tests/fixtures/primary_table_growth_3_data_20261019.json": "4ae9986cc914d9ff06a40875c19d606c0502a28527488151e6c71ec5f27eb0fe",
+          "experimental/material-batches/nbs-binary-oxide-density-20261019/prepared-packet.json": "0511e82ef9279928629f8e05076ba5050988de4e18081593d3bb8cbd1bfaa28e",
+          "tests/fixtures/primary_table_growth_2_data_20261019.json": "f3fcc3e8fdcdb292a2f3cf0b13c50de6bc90604ed2ac28b8938c9334e45933fc",
+          "experimental/material-batches/nbs-rca-density-20261019/prepared-packet.json": "6d906eec144e3908941f7c6f3c91646d4d905a7134fdc5086a95c4e59f1ca41c",
+          "tests/fixtures/primary_table_growth_data_20261019.json": "faa453c3d57bb4a9040fac084cb9a96ad6c3437c237f80ea8eff4cc3e3fe261f",
+          "experimental/material-batches/nbs-salt-densities-20261019/prepared-packet.json": "091239fd1cc6e4d7d8429aab381f1a9525f62293339fc4fbea230142f53b541f",
+          "tests/fixtures/pur_formulation_data_20261019.json": "541a4e325834ed992246489846bcfcf83480bfb86494ec2a212d78de821bf167",
+          "experimental/material-batches/pur-formulations-20261019/prepared-packet.json": "2c5320856ba07892eac6b35d6b881bb3ab21126e801beefa2b887c77abd93be7",
+          "tests/fixtures/source_family_growth_data_20261019.json": "9dfc8d71e89041f05e11a870ad29aea34cb3ab90586bcea8f1d717adc9878ac3",
+          "experimental/material-batches/nbs-oxide-density-20261019/prepared-packet.json": "21aaed2df59b0ab9301d1573aabd6fd8bd87354c01fdf11323cdee62b600aab3",
+          "materials_boundaries/data/materials.json": "93da1d629da8244853b3e6ad30d556137d57e3f639baffdd3c5bc34a3a1c9107",
+          "materials_boundaries/data/reference_properties.json": "275671a5f1a447d0cb071de361a8a515f60da60213edd076d725dd03d305b307",
+          "materials_boundaries/data/sources.json": "3828f53f5b946a4a90d1cb92630b141d496a02838a9dceb519730831c56cc8c1",
+          "tests/material_append_history.py": "2379867c0fe4ec89cf4f450b10bf84e48986783d50396c6f593316de78ad3251",
+          "tests/history_replay/benchmark_replay.py": "0fcba8efa14a6753e3409d0e4f2d5a5836bce3b76d919ba470516cb8d27074ce"
+        },
+        "inputs_unchanged": true,
+        "byte_equal": true,
+        "worker_returncode": 0,
+        "worker_termination": {
+          "attempted": false
+        }
+      }
+    ],
+    "status": "passed",
+    "inputs_unchanged_through_final_check": true,
+    "elapsed_seconds_including_preparation_and_checks": 220.93021190000582
+  },
+  "benchmark_remaining_eight": {
+    "schema": "material-history-replay-benchmark/1",
+    "recorded_at_utc": "2026-10-24T08:40:27.731743+00:00",
+    "baseline_commit": "196995256836db2d8f870ac9a91f664bfdd03e7f",
+    "old_engine_sha256": "38d9b1768121f84cc5b45d21d8d992b8d62cf6ed62ad0ed1ec78f7760ece9ea9",
+    "candidate_engine_sha256": "2379867c0fe4ec89cf4f450b10bf84e48986783d50396c6f593316de78ad3251",
+    "benchmark_script_sha256": "0fcba8efa14a6753e3409d0e4f2d5a5836bce3b76d919ba470516cb8d27074ce",
+    "platform": {
+      "system": "Windows",
+      "python": "3.11.0",
+      "implementation": "CPython"
+    },
+    "selected_cases": [
+      "current-properties",
+      "current-sources",
+      "after5-materials",
+      "after5-properties",
+      "after5-sources",
+      "oldest-materials",
+      "oldest-properties",
+      "oldest-sources"
+    ],
+    "case_timeout_seconds": 600,
+    "total_budget_seconds": 3600,
+    "timeout_cleanup_grace_seconds": 25,
+    "scope": "Single observations of test-only projections; no installed smoke or CLI tests",
+    "limitations": [
+      "Inputs must remain stable during each invocation.",
+      "Cold OS or filesystem caches are not guaranteed; old always runs first.",
+      "Measured times include counter instrumentation, but exclude image preparation and input hashing.",
+      "No speed claim is extrapolated beyond the selected observations.",
+      "This optimization does not establish the cause of the original installed smoke timeout."
+    ],
+    "cases": [
+      {
+        "case": "current-properties",
+        "stage_after_ledgers": 0,
+        "table": "properties",
+        "status": "passed",
+        "phase": "completed",
+        "candidate_engine_sha256": "2379867c0fe4ec89cf4f450b10bf84e48986783d50396c6f593316de78ad3251",
+        "input_sha256_before": {
+          "tests/fixtures/tarasov_pna_bpf_data_20261023.json": "ff13299c063b805d4cb36e73fe8db1521e88cab51aff2af13d2f4afab0a30773",
+          "experimental/material-batches/tarasov-pna-bpf-20261023/prepared-packet.json": "e9096077c7d6a206cf3a54a14272f838722187e10481588a1e3c07e5ab345997",
+          "tests/fixtures/bruns_borosilicate_data_20261023.json": "6eded8614db38dcd26ad1e570d7ad783110dd690296e59a9270300bfd3a0a016",
+          "experimental/material-batches/bruns-nbs2-borosilicate-20261023/prepared-packet.json": "7bc0fb2ba2dc3512abb95b7bf27b9f25d12c868d4bba041f667421572e5eccde",
+          "tests/fixtures/nylon_followup_data_20261021.json": "88f7303d6e8b4234555548ea39fdfb286380c72ea2f7f5edce990e1a0d733b97",
+          "experimental/material-batches/zenodo-8089569-nylon-followup-20261021/prepared-packet.json": "b18d7fc70bc5da537672f20a1682594c36c8d2d1e4c9e0ac05f9647d586e5172",
+          "tests/fixtures/tough_pla_followup_data_20261021.json": "46d33c7bfc8abb32b341a5c026ed8cb03e47350feeb17e2b0c478999aeacf1f4",
+          "experimental/material-batches/zenodo-8089569-tough-pla-followup-20261021/prepared-packet.json": "919c387b4cf0b586c36e2d922a45b0a64832831d659f755049a4be3bbea3be44",
+          "tests/fixtures/primary_table_growth_8_data_20261021.json": "de662ffe08378402a224b4ee4180252b620278dfb79164b58a20884d68e82c51",
+          "experimental/material-batches/zenodo-8089569-filaments-20261021/prepared-packet.json": "aaa94bd1f752e00f37268f8b786326dcb98011648985f8bc77cb92362f4c57e8",
+          "tests/fixtures/primary_table_growth_7_data_20261020.json": "26c80c5274504af2e0adbb55b4346d395e7c13e7009c504229f9c9dc32ca01fe",
+          "experimental/material-batches/outokumpu-core-moduli-20261020/prepared-packet.json": "c7317758ae4c1a4025ac00c6b288770e61cf33056caaf1771a638af66d32b84f",
+          "tests/fixtures/primary_table_growth_6_data_20261020.json": "3d3335edadae838524756ad1b33efb733d48893a123e6637c461dc79d59861b5",
+          "experimental/material-batches/tamas-benyei-nbr-rcf-20261020/prepared-packet.json": "ae401d2ab8b565acf5772bba10833176f46293ec025a9552d15aafd6a68c8ee3",
+          "tests/fixtures/primary_table_growth_5_data_20261020.json": "ced45ed6989e8988d461b0256c3ef7781c0f04b8364c6c991e3cacf36b064ff9",
+          "experimental/material-batches/bianchi-nr-nanoclay-20261020/prepared-packet.json": "a09f6d768b71667e045efa85d3c79de8ce3db49a926dcda55eb5421efc99d55f",
+          "tests/fixtures/primary_table_growth_4_data_20261019.json": "d57a1014e6d9e66f3f6c031e3a56abda909acc924fb9ab16835948989f4ce89c",
+          "experimental/material-batches/mtibe-pbs-pbat-hybrids-20261019/prepared-packet.json": "8c0dad86412f0708f72a3866cae5a7766db01be99df38f85defd3ba052da388c",
+          "tests/fixtures/primary_table_growth_3_data_20261019.json": "4ae9986cc914d9ff06a40875c19d606c0502a28527488151e6c71ec5f27eb0fe",
+          "experimental/material-batches/nbs-binary-oxide-density-20261019/prepared-packet.json": "0511e82ef9279928629f8e05076ba5050988de4e18081593d3bb8cbd1bfaa28e",
+          "tests/fixtures/primary_table_growth_2_data_20261019.json": "f3fcc3e8fdcdb292a2f3cf0b13c50de6bc90604ed2ac28b8938c9334e45933fc",
+          "experimental/material-batches/nbs-rca-density-20261019/prepared-packet.json": "6d906eec144e3908941f7c6f3c91646d4d905a7134fdc5086a95c4e59f1ca41c",
+          "tests/fixtures/primary_table_growth_data_20261019.json": "faa453c3d57bb4a9040fac084cb9a96ad6c3437c237f80ea8eff4cc3e3fe261f",
+          "experimental/material-batches/nbs-salt-densities-20261019/prepared-packet.json": "091239fd1cc6e4d7d8429aab381f1a9525f62293339fc4fbea230142f53b541f",
+          "tests/fixtures/pur_formulation_data_20261019.json": "541a4e325834ed992246489846bcfcf83480bfb86494ec2a212d78de821bf167",
+          "experimental/material-batches/pur-formulations-20261019/prepared-packet.json": "2c5320856ba07892eac6b35d6b881bb3ab21126e801beefa2b887c77abd93be7",
+          "tests/fixtures/source_family_growth_data_20261019.json": "9dfc8d71e89041f05e11a870ad29aea34cb3ab90586bcea8f1d717adc9878ac3",
+          "experimental/material-batches/nbs-oxide-density-20261019/prepared-packet.json": "21aaed2df59b0ab9301d1573aabd6fd8bd87354c01fdf11323cdee62b600aab3",
+          "materials_boundaries/data/materials.json": "93da1d629da8244853b3e6ad30d556137d57e3f639baffdd3c5bc34a3a1c9107",
+          "materials_boundaries/data/reference_properties.json": "275671a5f1a447d0cb071de361a8a515f60da60213edd076d725dd03d305b307",
+          "materials_boundaries/data/sources.json": "3828f53f5b946a4a90d1cb92630b141d496a02838a9dceb519730831c56cc8c1",
+          "tests/material_append_history.py": "2379867c0fe4ec89cf4f450b10bf84e48986783d50396c6f593316de78ad3251",
+          "tests/history_replay/benchmark_replay.py": "0fcba8efa14a6753e3409d0e4f2d5a5836bce3b76d919ba470516cb8d27074ce"
+        },
+        "preparation_seconds_not_timed_as_projection": 0.005942199990386143,
+        "input_raw_sha256": "275671a5f1a447d0cb071de361a8a515f60da60213edd076d725dd03d305b307",
+        "input_raw_bytes": 22338020,
+        "old": {
+          "status": "passed",
+          "elapsed_seconds": 174.49760430000606,
+          "counts": {
+            "recover_catalogs": 105,
+            "appended_rows": 196,
+            "catalog_read_bytes": 42,
+            "packet_read_bytes": 196,
+            "other_read_bytes": 0
+          },
+          "output_sha256": "c3f69e692a0dfb4ced72aea30794a7ee7b032ac99231db517397e0575dbc4bb0",
+          "output_bytes": 21515534
+        },
+        "new": {
+          "status": "passed",
+          "elapsed_seconds": 47.843761399999494,
+          "counts": {
+            "recover_catalogs": 27,
+            "appended_rows": 40,
+            "catalog_read_bytes": 3,
+            "packet_read_bytes": 40,
+            "other_read_bytes": 0
+          },
+          "output_sha256": "c3f69e692a0dfb4ced72aea30794a7ee7b032ac99231db517397e0575dbc4bb0",
+          "output_bytes": 21515534
+        },
+        "input_sha256_after": {
+          "tests/fixtures/tarasov_pna_bpf_data_20261023.json": "ff13299c063b805d4cb36e73fe8db1521e88cab51aff2af13d2f4afab0a30773",
+          "experimental/material-batches/tarasov-pna-bpf-20261023/prepared-packet.json": "e9096077c7d6a206cf3a54a14272f838722187e10481588a1e3c07e5ab345997",
+          "tests/fixtures/bruns_borosilicate_data_20261023.json": "6eded8614db38dcd26ad1e570d7ad783110dd690296e59a9270300bfd3a0a016",
+          "experimental/material-batches/bruns-nbs2-borosilicate-20261023/prepared-packet.json": "7bc0fb2ba2dc3512abb95b7bf27b9f25d12c868d4bba041f667421572e5eccde",
+          "tests/fixtures/nylon_followup_data_20261021.json": "88f7303d6e8b4234555548ea39fdfb286380c72ea2f7f5edce990e1a0d733b97",
+          "experimental/material-batches/zenodo-8089569-nylon-followup-20261021/prepared-packet.json": "b18d7fc70bc5da537672f20a1682594c36c8d2d1e4c9e0ac05f9647d586e5172",
+          "tests/fixtures/tough_pla_followup_data_20261021.json": "46d33c7bfc8abb32b341a5c026ed8cb03e47350feeb17e2b0c478999aeacf1f4",
+          "experimental/material-batches/zenodo-8089569-tough-pla-followup-20261021/prepared-packet.json": "919c387b4cf0b586c36e2d922a45b0a64832831d659f755049a4be3bbea3be44",
+          "tests/fixtures/primary_table_growth_8_data_20261021.json": "de662ffe08378402a224b4ee4180252b620278dfb79164b58a20884d68e82c51",
+          "experimental/material-batches/zenodo-8089569-filaments-20261021/prepared-packet.json": "aaa94bd1f752e00f37268f8b786326dcb98011648985f8bc77cb92362f4c57e8",
+          "tests/fixtures/primary_table_growth_7_data_20261020.json": "26c80c5274504af2e0adbb55b4346d395e7c13e7009c504229f9c9dc32ca01fe",
+          "experimental/material-batches/outokumpu-core-moduli-20261020/prepared-packet.json": "c7317758ae4c1a4025ac00c6b288770e61cf33056caaf1771a638af66d32b84f",
+          "tests/fixtures/primary_table_growth_6_data_20261020.json": "3d3335edadae838524756ad1b33efb733d48893a123e6637c461dc79d59861b5",
+          "experimental/material-batches/tamas-benyei-nbr-rcf-20261020/prepared-packet.json": "ae401d2ab8b565acf5772bba10833176f46293ec025a9552d15aafd6a68c8ee3",
+          "tests/fixtures/primary_table_growth_5_data_20261020.json": "ced45ed6989e8988d461b0256c3ef7781c0f04b8364c6c991e3cacf36b064ff9",
+          "experimental/material-batches/bianchi-nr-nanoclay-20261020/prepared-packet.json": "a09f6d768b71667e045efa85d3c79de8ce3db49a926dcda55eb5421efc99d55f",
+          "tests/fixtures/primary_table_growth_4_data_20261019.json": "d57a1014e6d9e66f3f6c031e3a56abda909acc924fb9ab16835948989f4ce89c",
+          "experimental/material-batches/mtibe-pbs-pbat-hybrids-20261019/prepared-packet.json": "8c0dad86412f0708f72a3866cae5a7766db01be99df38f85defd3ba052da388c",
+          "tests/fixtures/primary_table_growth_3_data_20261019.json": "4ae9986cc914d9ff06a40875c19d606c0502a28527488151e6c71ec5f27eb0fe",
+          "experimental/material-batches/nbs-binary-oxide-density-20261019/prepared-packet.json": "0511e82ef9279928629f8e05076ba5050988de4e18081593d3bb8cbd1bfaa28e",
+          "tests/fixtures/primary_table_growth_2_data_20261019.json": "f3fcc3e8fdcdb292a2f3cf0b13c50de6bc90604ed2ac28b8938c9334e45933fc",
+          "experimental/material-batches/nbs-rca-density-20261019/prepared-packet.json": "6d906eec144e3908941f7c6f3c91646d4d905a7134fdc5086a95c4e59f1ca41c",
+          "tests/fixtures/primary_table_growth_data_20261019.json": "faa453c3d57bb4a9040fac084cb9a96ad6c3437c237f80ea8eff4cc3e3fe261f",
+          "experimental/material-batches/nbs-salt-densities-20261019/prepared-packet.json": "091239fd1cc6e4d7d8429aab381f1a9525f62293339fc4fbea230142f53b541f",
+          "tests/fixtures/pur_formulation_data_20261019.json": "541a4e325834ed992246489846bcfcf83480bfb86494ec2a212d78de821bf167",
+          "experimental/material-batches/pur-formulations-20261019/prepared-packet.json": "2c5320856ba07892eac6b35d6b881bb3ab21126e801beefa2b887c77abd93be7",
+          "tests/fixtures/source_family_growth_data_20261019.json": "9dfc8d71e89041f05e11a870ad29aea34cb3ab90586bcea8f1d717adc9878ac3",
+          "experimental/material-batches/nbs-oxide-density-20261019/prepared-packet.json": "21aaed2df59b0ab9301d1573aabd6fd8bd87354c01fdf11323cdee62b600aab3",
+          "materials_boundaries/data/materials.json": "93da1d629da8244853b3e6ad30d556137d57e3f639baffdd3c5bc34a3a1c9107",
+          "materials_boundaries/data/reference_properties.json": "275671a5f1a447d0cb071de361a8a515f60da60213edd076d725dd03d305b307",
+          "materials_boundaries/data/sources.json": "3828f53f5b946a4a90d1cb92630b141d496a02838a9dceb519730831c56cc8c1",
+          "tests/material_append_history.py": "2379867c0fe4ec89cf4f450b10bf84e48986783d50396c6f593316de78ad3251",
+          "tests/history_replay/benchmark_replay.py": "0fcba8efa14a6753e3409d0e4f2d5a5836bce3b76d919ba470516cb8d27074ce"
+        },
+        "inputs_unchanged": true,
+        "byte_equal": true,
+        "worker_returncode": 0,
+        "worker_termination": {
+          "attempted": false
+        }
+      },
+      {
+        "case": "current-sources",
+        "stage_after_ledgers": 0,
+        "table": "sources",
+        "status": "passed",
+        "phase": "completed",
+        "candidate_engine_sha256": "2379867c0fe4ec89cf4f450b10bf84e48986783d50396c6f593316de78ad3251",
+        "input_sha256_before": {
+          "tests/fixtures/tarasov_pna_bpf_data_20261023.json": "ff13299c063b805d4cb36e73fe8db1521e88cab51aff2af13d2f4afab0a30773",
+          "experimental/material-batches/tarasov-pna-bpf-20261023/prepared-packet.json": "e9096077c7d6a206cf3a54a14272f838722187e10481588a1e3c07e5ab345997",
+          "tests/fixtures/bruns_borosilicate_data_20261023.json": "6eded8614db38dcd26ad1e570d7ad783110dd690296e59a9270300bfd3a0a016",
+          "experimental/material-batches/bruns-nbs2-borosilicate-20261023/prepared-packet.json": "7bc0fb2ba2dc3512abb95b7bf27b9f25d12c868d4bba041f667421572e5eccde",
+          "tests/fixtures/nylon_followup_data_20261021.json": "88f7303d6e8b4234555548ea39fdfb286380c72ea2f7f5edce990e1a0d733b97",
+          "experimental/material-batches/zenodo-8089569-nylon-followup-20261021/prepared-packet.json": "b18d7fc70bc5da537672f20a1682594c36c8d2d1e4c9e0ac05f9647d586e5172",
+          "tests/fixtures/tough_pla_followup_data_20261021.json": "46d33c7bfc8abb32b341a5c026ed8cb03e47350feeb17e2b0c478999aeacf1f4",
+          "experimental/material-batches/zenodo-8089569-tough-pla-followup-20261021/prepared-packet.json": "919c387b4cf0b586c36e2d922a45b0a64832831d659f755049a4be3bbea3be44",
+          "tests/fixtures/primary_table_growth_8_data_20261021.json": "de662ffe08378402a224b4ee4180252b620278dfb79164b58a20884d68e82c51",
+          "experimental/material-batches/zenodo-8089569-filaments-20261021/prepared-packet.json": "aaa94bd1f752e00f37268f8b786326dcb98011648985f8bc77cb92362f4c57e8",
+          "tests/fixtures/primary_table_growth_7_data_20261020.json": "26c80c5274504af2e0adbb55b4346d395e7c13e7009c504229f9c9dc32ca01fe",
+          "experimental/material-batches/outokumpu-core-moduli-20261020/prepared-packet.json": "c7317758ae4c1a4025ac00c6b288770e61cf33056caaf1771a638af66d32b84f",
+          "tests/fixtures/primary_table_growth_6_data_20261020.json": "3d3335edadae838524756ad1b33efb733d48893a123e6637c461dc79d59861b5",
+          "experimental/material-batches/tamas-benyei-nbr-rcf-20261020/prepared-packet.json": "ae401d2ab8b565acf5772bba10833176f46293ec025a9552d15aafd6a68c8ee3",
+          "tests/fixtures/primary_table_growth_5_data_20261020.json": "ced45ed6989e8988d461b0256c3ef7781c0f04b8364c6c991e3cacf36b064ff9",
+          "experimental/material-batches/bianchi-nr-nanoclay-20261020/prepared-packet.json": "a09f6d768b71667e045efa85d3c79de8ce3db49a926dcda55eb5421efc99d55f",
+          "tests/fixtures/primary_table_growth_4_data_20261019.json": "d57a1014e6d9e66f3f6c031e3a56abda909acc924fb9ab16835948989f4ce89c",
+          "experimental/material-batches/mtibe-pbs-pbat-hybrids-20261019/prepared-packet.json": "8c0dad86412f0708f72a3866cae5a7766db01be99df38f85defd3ba052da388c",
+          "tests/fixtures/primary_table_growth_3_data_20261019.json": "4ae9986cc914d9ff06a40875c19d606c0502a28527488151e6c71ec5f27eb0fe",
+          "experimental/material-batches/nbs-binary-oxide-density-20261019/prepared-packet.json": "0511e82ef9279928629f8e05076ba5050988de4e18081593d3bb8cbd1bfaa28e",
+          "tests/fixtures/primary_table_growth_2_data_20261019.json": "f3fcc3e8fdcdb292a2f3cf0b13c50de6bc90604ed2ac28b8938c9334e45933fc",
+          "experimental/material-batches/nbs-rca-density-20261019/prepared-packet.json": "6d906eec144e3908941f7c6f3c91646d4d905a7134fdc5086a95c4e59f1ca41c",
+          "tests/fixtures/primary_table_growth_data_20261019.json": "faa453c3d57bb4a9040fac084cb9a96ad6c3437c237f80ea8eff4cc3e3fe261f",
+          "experimental/material-batches/nbs-salt-densities-20261019/prepared-packet.json": "091239fd1cc6e4d7d8429aab381f1a9525f62293339fc4fbea230142f53b541f",
+          "tests/fixtures/pur_formulation_data_20261019.json": "541a4e325834ed992246489846bcfcf83480bfb86494ec2a212d78de821bf167",
+          "experimental/material-batches/pur-formulations-20261019/prepared-packet.json": "2c5320856ba07892eac6b35d6b881bb3ab21126e801beefa2b887c77abd93be7",
+          "tests/fixtures/source_family_growth_data_20261019.json": "9dfc8d71e89041f05e11a870ad29aea34cb3ab90586bcea8f1d717adc9878ac3",
+          "experimental/material-batches/nbs-oxide-density-20261019/prepared-packet.json": "21aaed2df59b0ab9301d1573aabd6fd8bd87354c01fdf11323cdee62b600aab3",
+          "materials_boundaries/data/materials.json": "93da1d629da8244853b3e6ad30d556137d57e3f639baffdd3c5bc34a3a1c9107",
+          "materials_boundaries/data/reference_properties.json": "275671a5f1a447d0cb071de361a8a515f60da60213edd076d725dd03d305b307",
+          "materials_boundaries/data/sources.json": "3828f53f5b946a4a90d1cb92630b141d496a02838a9dceb519730831c56cc8c1",
+          "tests/material_append_history.py": "2379867c0fe4ec89cf4f450b10bf84e48986783d50396c6f593316de78ad3251",
+          "tests/history_replay/benchmark_replay.py": "0fcba8efa14a6753e3409d0e4f2d5a5836bce3b76d919ba470516cb8d27074ce"
+        },
+        "preparation_seconds_not_timed_as_projection": 0.0001303000026382506,
+        "input_raw_sha256": "3828f53f5b946a4a90d1cb92630b141d496a02838a9dceb519730831c56cc8c1",
+        "input_raw_bytes": 288480,
+        "old": {
+          "status": "passed",
+          "elapsed_seconds": 24.864215699984925,
+          "counts": {
+            "recover_catalogs": 15,
+            "appended_rows": 25,
+            "catalog_read_bytes": 15,
+            "packet_read_bytes": 25,
+            "other_read_bytes": 0
+          },
+          "output_sha256": "4ba9dcd9258cd1e2d9e17bdf20b4fdaa39e081e77779d12eb726ee91b19835ae",
+          "output_bytes": 264796
+        },
+        "new": {
+          "status": "passed",
+          "elapsed_seconds": 14.39354629997979,
+          "counts": {
+            "recover_catalogs": 9,
+            "appended_rows": 13,
+            "catalog_read_bytes": 3,
+            "packet_read_bytes": 13,
+            "other_read_bytes": 0
+          },
+          "output_sha256": "4ba9dcd9258cd1e2d9e17bdf20b4fdaa39e081e77779d12eb726ee91b19835ae",
+          "output_bytes": 264796
+        },
+        "input_sha256_after": {
+          "tests/fixtures/tarasov_pna_bpf_data_20261023.json": "ff13299c063b805d4cb36e73fe8db1521e88cab51aff2af13d2f4afab0a30773",
+          "experimental/material-batches/tarasov-pna-bpf-20261023/prepared-packet.json": "e9096077c7d6a206cf3a54a14272f838722187e10481588a1e3c07e5ab345997",
+          "tests/fixtures/bruns_borosilicate_data_20261023.json": "6eded8614db38dcd26ad1e570d7ad783110dd690296e59a9270300bfd3a0a016",
+          "experimental/material-batches/bruns-nbs2-borosilicate-20261023/prepared-packet.json": "7bc0fb2ba2dc3512abb95b7bf27b9f25d12c868d4bba041f667421572e5eccde",
+          "tests/fixtures/nylon_followup_data_20261021.json": "88f7303d6e8b4234555548ea39fdfb286380c72ea2f7f5edce990e1a0d733b97",
+          "experimental/material-batches/zenodo-8089569-nylon-followup-20261021/prepared-packet.json": "b18d7fc70bc5da537672f20a1682594c36c8d2d1e4c9e0ac05f9647d586e5172",
+          "tests/fixtures/tough_pla_followup_data_20261021.json": "46d33c7bfc8abb32b341a5c026ed8cb03e47350feeb17e2b0c478999aeacf1f4",
+          "experimental/material-batches/zenodo-8089569-tough-pla-followup-20261021/prepared-packet.json": "919c387b4cf0b586c36e2d922a45b0a64832831d659f755049a4be3bbea3be44",
+          "tests/fixtures/primary_table_growth_8_data_20261021.json": "de662ffe08378402a224b4ee4180252b620278dfb79164b58a20884d68e82c51",
+          "experimental/material-batches/zenodo-8089569-filaments-20261021/prepared-packet.json": "aaa94bd1f752e00f37268f8b786326dcb98011648985f8bc77cb92362f4c57e8",
+          "tests/fixtures/primary_table_growth_7_data_20261020.json": "26c80c5274504af2e0adbb55b4346d395e7c13e7009c504229f9c9dc32ca01fe",
+          "experimental/material-batches/outokumpu-core-moduli-20261020/prepared-packet.json": "c7317758ae4c1a4025ac00c6b288770e61cf33056caaf1771a638af66d32b84f",
+          "tests/fixtures/primary_table_growth_6_data_20261020.json": "3d3335edadae838524756ad1b33efb733d48893a123e6637c461dc79d59861b5",
+          "experimental/material-batches/tamas-benyei-nbr-rcf-20261020/prepared-packet.json": "ae401d2ab8b565acf5772bba10833176f46293ec025a9552d15aafd6a68c8ee3",
+          "tests/fixtures/primary_table_growth_5_data_20261020.json": "ced45ed6989e8988d461b0256c3ef7781c0f04b8364c6c991e3cacf36b064ff9",
+          "experimental/material-batches/bianchi-nr-nanoclay-20261020/prepared-packet.json": "a09f6d768b71667e045efa85d3c79de8ce3db49a926dcda55eb5421efc99d55f",
+          "tests/fixtures/primary_table_growth_4_data_20261019.json": "d57a1014e6d9e66f3f6c031e3a56abda909acc924fb9ab16835948989f4ce89c",
+          "experimental/material-batches/mtibe-pbs-pbat-hybrids-20261019/prepared-packet.json": "8c0dad86412f0708f72a3866cae5a7766db01be99df38f85defd3ba052da388c",
+          "tests/fixtures/primary_table_growth_3_data_20261019.json": "4ae9986cc914d9ff06a40875c19d606c0502a28527488151e6c71ec5f27eb0fe",
+          "experimental/material-batches/nbs-binary-oxide-density-20261019/prepared-packet.json": "0511e82ef9279928629f8e05076ba5050988de4e18081593d3bb8cbd1bfaa28e",
+          "tests/fixtures/primary_table_growth_2_data_20261019.json": "f3fcc3e8fdcdb292a2f3cf0b13c50de6bc90604ed2ac28b8938c9334e45933fc",
+          "experimental/material-batches/nbs-rca-density-20261019/prepared-packet.json": "6d906eec144e3908941f7c6f3c91646d4d905a7134fdc5086a95c4e59f1ca41c",
+          "tests/fixtures/primary_table_growth_data_20261019.json": "faa453c3d57bb4a9040fac084cb9a96ad6c3437c237f80ea8eff4cc3e3fe261f",
+          "experimental/material-batches/nbs-salt-densities-20261019/prepared-packet.json": "091239fd1cc6e4d7d8429aab381f1a9525f62293339fc4fbea230142f53b541f",
+          "tests/fixtures/pur_formulation_data_20261019.json": "541a4e325834ed992246489846bcfcf83480bfb86494ec2a212d78de821bf167",
+          "experimental/material-batches/pur-formulations-20261019/prepared-packet.json": "2c5320856ba07892eac6b35d6b881bb3ab21126e801beefa2b887c77abd93be7",
+          "tests/fixtures/source_family_growth_data_20261019.json": "9dfc8d71e89041f05e11a870ad29aea34cb3ab90586bcea8f1d717adc9878ac3",
+          "experimental/material-batches/nbs-oxide-density-20261019/prepared-packet.json": "21aaed2df59b0ab9301d1573aabd6fd8bd87354c01fdf11323cdee62b600aab3",
+          "materials_boundaries/data/materials.json": "93da1d629da8244853b3e6ad30d556137d57e3f639baffdd3c5bc34a3a1c9107",
+          "materials_boundaries/data/reference_properties.json": "275671a5f1a447d0cb071de361a8a515f60da60213edd076d725dd03d305b307",
+          "materials_boundaries/data/sources.json": "3828f53f5b946a4a90d1cb92630b141d496a02838a9dceb519730831c56cc8c1",
+          "tests/material_append_history.py": "2379867c0fe4ec89cf4f450b10bf84e48986783d50396c6f593316de78ad3251",
+          "tests/history_replay/benchmark_replay.py": "0fcba8efa14a6753e3409d0e4f2d5a5836bce3b76d919ba470516cb8d27074ce"
+        },
+        "inputs_unchanged": true,
+        "byte_equal": true,
+        "worker_returncode": 0,
+        "worker_termination": {
+          "attempted": false
+        }
+      },
+      {
+        "case": "after5-materials",
+        "stage_after_ledgers": 5,
+        "table": "materials",
+        "status": "passed",
+        "phase": "completed",
+        "candidate_engine_sha256": "2379867c0fe4ec89cf4f450b10bf84e48986783d50396c6f593316de78ad3251",
+        "input_sha256_before": {
+          "tests/fixtures/tarasov_pna_bpf_data_20261023.json": "ff13299c063b805d4cb36e73fe8db1521e88cab51aff2af13d2f4afab0a30773",
+          "experimental/material-batches/tarasov-pna-bpf-20261023/prepared-packet.json": "e9096077c7d6a206cf3a54a14272f838722187e10481588a1e3c07e5ab345997",
+          "tests/fixtures/bruns_borosilicate_data_20261023.json": "6eded8614db38dcd26ad1e570d7ad783110dd690296e59a9270300bfd3a0a016",
+          "experimental/material-batches/bruns-nbs2-borosilicate-20261023/prepared-packet.json": "7bc0fb2ba2dc3512abb95b7bf27b9f25d12c868d4bba041f667421572e5eccde",
+          "tests/fixtures/nylon_followup_data_20261021.json": "88f7303d6e8b4234555548ea39fdfb286380c72ea2f7f5edce990e1a0d733b97",
+          "experimental/material-batches/zenodo-8089569-nylon-followup-20261021/prepared-packet.json": "b18d7fc70bc5da537672f20a1682594c36c8d2d1e4c9e0ac05f9647d586e5172",
+          "tests/fixtures/tough_pla_followup_data_20261021.json": "46d33c7bfc8abb32b341a5c026ed8cb03e47350feeb17e2b0c478999aeacf1f4",
+          "experimental/material-batches/zenodo-8089569-tough-pla-followup-20261021/prepared-packet.json": "919c387b4cf0b586c36e2d922a45b0a64832831d659f755049a4be3bbea3be44",
+          "tests/fixtures/primary_table_growth_8_data_20261021.json": "de662ffe08378402a224b4ee4180252b620278dfb79164b58a20884d68e82c51",
+          "experimental/material-batches/zenodo-8089569-filaments-20261021/prepared-packet.json": "aaa94bd1f752e00f37268f8b786326dcb98011648985f8bc77cb92362f4c57e8",
+          "tests/fixtures/primary_table_growth_7_data_20261020.json": "26c80c5274504af2e0adbb55b4346d395e7c13e7009c504229f9c9dc32ca01fe",
+          "experimental/material-batches/outokumpu-core-moduli-20261020/prepared-packet.json": "c7317758ae4c1a4025ac00c6b288770e61cf33056caaf1771a638af66d32b84f",
+          "tests/fixtures/primary_table_growth_6_data_20261020.json": "3d3335edadae838524756ad1b33efb733d48893a123e6637c461dc79d59861b5",
+          "experimental/material-batches/tamas-benyei-nbr-rcf-20261020/prepared-packet.json": "ae401d2ab8b565acf5772bba10833176f46293ec025a9552d15aafd6a68c8ee3",
+          "tests/fixtures/primary_table_growth_5_data_20261020.json": "ced45ed6989e8988d461b0256c3ef7781c0f04b8364c6c991e3cacf36b064ff9",
+          "experimental/material-batches/bianchi-nr-nanoclay-20261020/prepared-packet.json": "a09f6d768b71667e045efa85d3c79de8ce3db49a926dcda55eb5421efc99d55f",
+          "tests/fixtures/primary_table_growth_4_data_20261019.json": "d57a1014e6d9e66f3f6c031e3a56abda909acc924fb9ab16835948989f4ce89c",
+          "experimental/material-batches/mtibe-pbs-pbat-hybrids-20261019/prepared-packet.json": "8c0dad86412f0708f72a3866cae5a7766db01be99df38f85defd3ba052da388c",
+          "tests/fixtures/primary_table_growth_3_data_20261019.json": "4ae9986cc914d9ff06a40875c19d606c0502a28527488151e6c71ec5f27eb0fe",
+          "experimental/material-batches/nbs-binary-oxide-density-20261019/prepared-packet.json": "0511e82ef9279928629f8e05076ba5050988de4e18081593d3bb8cbd1bfaa28e",
+          "tests/fixtures/primary_table_growth_2_data_20261019.json": "f3fcc3e8fdcdb292a2f3cf0b13c50de6bc90604ed2ac28b8938c9334e45933fc",
+          "experimental/material-batches/nbs-rca-density-20261019/prepared-packet.json": "6d906eec144e3908941f7c6f3c91646d4d905a7134fdc5086a95c4e59f1ca41c",
+          "tests/fixtures/primary_table_growth_data_20261019.json": "faa453c3d57bb4a9040fac084cb9a96ad6c3437c237f80ea8eff4cc3e3fe261f",
+          "experimental/material-batches/nbs-salt-densities-20261019/prepared-packet.json": "091239fd1cc6e4d7d8429aab381f1a9525f62293339fc4fbea230142f53b541f",
+          "tests/fixtures/pur_formulation_data_20261019.json": "541a4e325834ed992246489846bcfcf83480bfb86494ec2a212d78de821bf167",
+          "experimental/material-batches/pur-formulations-20261019/prepared-packet.json": "2c5320856ba07892eac6b35d6b881bb3ab21126e801beefa2b887c77abd93be7",
+          "tests/fixtures/source_family_growth_data_20261019.json": "9dfc8d71e89041f05e11a870ad29aea34cb3ab90586bcea8f1d717adc9878ac3",
+          "experimental/material-batches/nbs-oxide-density-20261019/prepared-packet.json": "21aaed2df59b0ab9301d1573aabd6fd8bd87354c01fdf11323cdee62b600aab3",
+          "materials_boundaries/data/materials.json": "93da1d629da8244853b3e6ad30d556137d57e3f639baffdd3c5bc34a3a1c9107",
+          "materials_boundaries/data/reference_properties.json": "275671a5f1a447d0cb071de361a8a515f60da60213edd076d725dd03d305b307",
+          "materials_boundaries/data/sources.json": "3828f53f5b946a4a90d1cb92630b141d496a02838a9dceb519730831c56cc8c1",
+          "tests/material_append_history.py": "2379867c0fe4ec89cf4f450b10bf84e48986783d50396c6f593316de78ad3251",
+          "tests/history_replay/benchmark_replay.py": "0fcba8efa14a6753e3409d0e4f2d5a5836bce3b76d919ba470516cb8d27074ce"
+        },
+        "preparation_seconds_not_timed_as_projection": 5.840121499990346,
+        "input_raw_sha256": "e784d9deffb496ff097f3b888c9e16e0fb64780272644aa6a6731d5cd5233b5d",
+        "input_raw_bytes": 9561713,
+        "old": {
+          "status": "passed",
+          "elapsed_seconds": 143.55563310001162,
+          "counts": {
+            "recover_catalogs": 90,
+            "appended_rows": 171,
+            "catalog_read_bytes": 27,
+            "packet_read_bytes": 171,
+            "other_read_bytes": 0
+          },
+          "output_sha256": "410efabb24dad7ed377ac7b94d35bccc40afe91194f0323e0298f500314e02f3",
+          "output_bytes": 9125298
+        },
+        "new": {
+          "status": "passed",
+          "elapsed_seconds": 35.87145779997809,
+          "counts": {
+            "recover_catalogs": 22,
+            "appended_rows": 35,
+            "catalog_read_bytes": 3,
+            "packet_read_bytes": 35,
+            "other_read_bytes": 0
+          },
+          "output_sha256": "410efabb24dad7ed377ac7b94d35bccc40afe91194f0323e0298f500314e02f3",
+          "output_bytes": 9125298
+        },
+        "input_sha256_after": {
+          "tests/fixtures/tarasov_pna_bpf_data_20261023.json": "ff13299c063b805d4cb36e73fe8db1521e88cab51aff2af13d2f4afab0a30773",
+          "experimental/material-batches/tarasov-pna-bpf-20261023/prepared-packet.json": "e9096077c7d6a206cf3a54a14272f838722187e10481588a1e3c07e5ab345997",
+          "tests/fixtures/bruns_borosilicate_data_20261023.json": "6eded8614db38dcd26ad1e570d7ad783110dd690296e59a9270300bfd3a0a016",
+          "experimental/material-batches/bruns-nbs2-borosilicate-20261023/prepared-packet.json": "7bc0fb2ba2dc3512abb95b7bf27b9f25d12c868d4bba041f667421572e5eccde",
+          "tests/fixtures/nylon_followup_data_20261021.json": "88f7303d6e8b4234555548ea39fdfb286380c72ea2f7f5edce990e1a0d733b97",
+          "experimental/material-batches/zenodo-8089569-nylon-followup-20261021/prepared-packet.json": "b18d7fc70bc5da537672f20a1682594c36c8d2d1e4c9e0ac05f9647d586e5172",
+          "tests/fixtures/tough_pla_followup_data_20261021.json": "46d33c7bfc8abb32b341a5c026ed8cb03e47350feeb17e2b0c478999aeacf1f4",
+          "experimental/material-batches/zenodo-8089569-tough-pla-followup-20261021/prepared-packet.json": "919c387b4cf0b586c36e2d922a45b0a64832831d659f755049a4be3bbea3be44",
+          "tests/fixtures/primary_table_growth_8_data_20261021.json": "de662ffe08378402a224b4ee4180252b620278dfb79164b58a20884d68e82c51",
+          "experimental/material-batches/zenodo-8089569-filaments-20261021/prepared-packet.json": "aaa94bd1f752e00f37268f8b786326dcb98011648985f8bc77cb92362f4c57e8",
+          "tests/fixtures/primary_table_growth_7_data_20261020.json": "26c80c5274504af2e0adbb55b4346d395e7c13e7009c504229f9c9dc32ca01fe",
+          "experimental/material-batches/outokumpu-core-moduli-20261020/prepared-packet.json": "c7317758ae4c1a4025ac00c6b288770e61cf33056caaf1771a638af66d32b84f",
+          "tests/fixtures/primary_table_growth_6_data_20261020.json": "3d3335edadae838524756ad1b33efb733d48893a123e6637c461dc79d59861b5",
+          "experimental/material-batches/tamas-benyei-nbr-rcf-20261020/prepared-packet.json": "ae401d2ab8b565acf5772bba10833176f46293ec025a9552d15aafd6a68c8ee3",
+          "tests/fixtures/primary_table_growth_5_data_20261020.json": "ced45ed6989e8988d461b0256c3ef7781c0f04b8364c6c991e3cacf36b064ff9",
+          "experimental/material-batches/bianchi-nr-nanoclay-20261020/prepared-packet.json": "a09f6d768b71667e045efa85d3c79de8ce3db49a926dcda55eb5421efc99d55f",
+          "tests/fixtures/primary_table_growth_4_data_20261019.json": "d57a1014e6d9e66f3f6c031e3a56abda909acc924fb9ab16835948989f4ce89c",
+          "experimental/material-batches/mtibe-pbs-pbat-hybrids-20261019/prepared-packet.json": "8c0dad86412f0708f72a3866cae5a7766db01be99df38f85defd3ba052da388c",
+          "tests/fixtures/primary_table_growth_3_data_20261019.json": "4ae9986cc914d9ff06a40875c19d606c0502a28527488151e6c71ec5f27eb0fe",
+          "experimental/material-batches/nbs-binary-oxide-density-20261019/prepared-packet.json": "0511e82ef9279928629f8e05076ba5050988de4e18081593d3bb8cbd1bfaa28e",
+          "tests/fixtures/primary_table_growth_2_data_20261019.json": "f3fcc3e8fdcdb292a2f3cf0b13c50de6bc90604ed2ac28b8938c9334e45933fc",
+          "experimental/material-batches/nbs-rca-density-20261019/prepared-packet.json": "6d906eec144e3908941f7c6f3c91646d4d905a7134fdc5086a95c4e59f1ca41c",
+          "tests/fixtures/primary_table_growth_data_20261019.json": "faa453c3d57bb4a9040fac084cb9a96ad6c3437c237f80ea8eff4cc3e3fe261f",
+          "experimental/material-batches/nbs-salt-densities-20261019/prepared-packet.json": "091239fd1cc6e4d7d8429aab381f1a9525f62293339fc4fbea230142f53b541f",
+          "tests/fixtures/pur_formulation_data_20261019.json": "541a4e325834ed992246489846bcfcf83480bfb86494ec2a212d78de821bf167",
+          "experimental/material-batches/pur-formulations-20261019/prepared-packet.json": "2c5320856ba07892eac6b35d6b881bb3ab21126e801beefa2b887c77abd93be7",
+          "tests/fixtures/source_family_growth_data_20261019.json": "9dfc8d71e89041f05e11a870ad29aea34cb3ab90586bcea8f1d717adc9878ac3",
+          "experimental/material-batches/nbs-oxide-density-20261019/prepared-packet.json": "21aaed2df59b0ab9301d1573aabd6fd8bd87354c01fdf11323cdee62b600aab3",
+          "materials_boundaries/data/materials.json": "93da1d629da8244853b3e6ad30d556137d57e3f639baffdd3c5bc34a3a1c9107",
+          "materials_boundaries/data/reference_properties.json": "275671a5f1a447d0cb071de361a8a515f60da60213edd076d725dd03d305b307",
+          "materials_boundaries/data/sources.json": "3828f53f5b946a4a90d1cb92630b141d496a02838a9dceb519730831c56cc8c1",
+          "tests/material_append_history.py": "2379867c0fe4ec89cf4f450b10bf84e48986783d50396c6f593316de78ad3251",
+          "tests/history_replay/benchmark_replay.py": "0fcba8efa14a6753e3409d0e4f2d5a5836bce3b76d919ba470516cb8d27074ce"
+        },
+        "inputs_unchanged": true,
+        "byte_equal": true,
+        "worker_returncode": 0,
+        "worker_termination": {
+          "attempted": false
+        }
+      },
+      {
+        "case": "after5-properties",
+        "stage_after_ledgers": 5,
+        "table": "properties",
+        "status": "passed",
+        "phase": "completed",
+        "candidate_engine_sha256": "2379867c0fe4ec89cf4f450b10bf84e48986783d50396c6f593316de78ad3251",
+        "input_sha256_before": {
+          "tests/fixtures/tarasov_pna_bpf_data_20261023.json": "ff13299c063b805d4cb36e73fe8db1521e88cab51aff2af13d2f4afab0a30773",
+          "experimental/material-batches/tarasov-pna-bpf-20261023/prepared-packet.json": "e9096077c7d6a206cf3a54a14272f838722187e10481588a1e3c07e5ab345997",
+          "tests/fixtures/bruns_borosilicate_data_20261023.json": "6eded8614db38dcd26ad1e570d7ad783110dd690296e59a9270300bfd3a0a016",
+          "experimental/material-batches/bruns-nbs2-borosilicate-20261023/prepared-packet.json": "7bc0fb2ba2dc3512abb95b7bf27b9f25d12c868d4bba041f667421572e5eccde",
+          "tests/fixtures/nylon_followup_data_20261021.json": "88f7303d6e8b4234555548ea39fdfb286380c72ea2f7f5edce990e1a0d733b97",
+          "experimental/material-batches/zenodo-8089569-nylon-followup-20261021/prepared-packet.json": "b18d7fc70bc5da537672f20a1682594c36c8d2d1e4c9e0ac05f9647d586e5172",
+          "tests/fixtures/tough_pla_followup_data_20261021.json": "46d33c7bfc8abb32b341a5c026ed8cb03e47350feeb17e2b0c478999aeacf1f4",
+          "experimental/material-batches/zenodo-8089569-tough-pla-followup-20261021/prepared-packet.json": "919c387b4cf0b586c36e2d922a45b0a64832831d659f755049a4be3bbea3be44",
+          "tests/fixtures/primary_table_growth_8_data_20261021.json": "de662ffe08378402a224b4ee4180252b620278dfb79164b58a20884d68e82c51",
+          "experimental/material-batches/zenodo-8089569-filaments-20261021/prepared-packet.json": "aaa94bd1f752e00f37268f8b786326dcb98011648985f8bc77cb92362f4c57e8",
+          "tests/fixtures/primary_table_growth_7_data_20261020.json": "26c80c5274504af2e0adbb55b4346d395e7c13e7009c504229f9c9dc32ca01fe",
+          "experimental/material-batches/outokumpu-core-moduli-20261020/prepared-packet.json": "c7317758ae4c1a4025ac00c6b288770e61cf33056caaf1771a638af66d32b84f",
+          "tests/fixtures/primary_table_growth_6_data_20261020.json": "3d3335edadae838524756ad1b33efb733d48893a123e6637c461dc79d59861b5",
+          "experimental/material-batches/tamas-benyei-nbr-rcf-20261020/prepared-packet.json": "ae401d2ab8b565acf5772bba10833176f46293ec025a9552d15aafd6a68c8ee3",
+          "tests/fixtures/primary_table_growth_5_data_20261020.json": "ced45ed6989e8988d461b0256c3ef7781c0f04b8364c6c991e3cacf36b064ff9",
+          "experimental/material-batches/bianchi-nr-nanoclay-20261020/prepared-packet.json": "a09f6d768b71667e045efa85d3c79de8ce3db49a926dcda55eb5421efc99d55f",
+          "tests/fixtures/primary_table_growth_4_data_20261019.json": "d57a1014e6d9e66f3f6c031e3a56abda909acc924fb9ab16835948989f4ce89c",
+          "experimental/material-batches/mtibe-pbs-pbat-hybrids-20261019/prepared-packet.json": "8c0dad86412f0708f72a3866cae5a7766db01be99df38f85defd3ba052da388c",
+          "tests/fixtures/primary_table_growth_3_data_20261019.json": "4ae9986cc914d9ff06a40875c19d606c0502a28527488151e6c71ec5f27eb0fe",
+          "experimental/material-batches/nbs-binary-oxide-density-20261019/prepared-packet.json": "0511e82ef9279928629f8e05076ba5050988de4e18081593d3bb8cbd1bfaa28e",
+          "tests/fixtures/primary_table_growth_2_data_20261019.json": "f3fcc3e8fdcdb292a2f3cf0b13c50de6bc90604ed2ac28b8938c9334e45933fc",
+          "experimental/material-batches/nbs-rca-density-20261019/prepared-packet.json": "6d906eec144e3908941f7c6f3c91646d4d905a7134fdc5086a95c4e59f1ca41c",
+          "tests/fixtures/primary_table_growth_data_20261019.json": "faa453c3d57bb4a9040fac084cb9a96ad6c3437c237f80ea8eff4cc3e3fe261f",
+          "experimental/material-batches/nbs-salt-densities-20261019/prepared-packet.json": "091239fd1cc6e4d7d8429aab381f1a9525f62293339fc4fbea230142f53b541f",
+          "tests/fixtures/pur_formulation_data_20261019.json": "541a4e325834ed992246489846bcfcf83480bfb86494ec2a212d78de821bf167",
+          "experimental/material-batches/pur-formulations-20261019/prepared-packet.json": "2c5320856ba07892eac6b35d6b881bb3ab21126e801beefa2b887c77abd93be7",
+          "tests/fixtures/source_family_growth_data_20261019.json": "9dfc8d71e89041f05e11a870ad29aea34cb3ab90586bcea8f1d717adc9878ac3",
+          "experimental/material-batches/nbs-oxide-density-20261019/prepared-packet.json": "21aaed2df59b0ab9301d1573aabd6fd8bd87354c01fdf11323cdee62b600aab3",
+          "materials_boundaries/data/materials.json": "93da1d629da8244853b3e6ad30d556137d57e3f639baffdd3c5bc34a3a1c9107",
+          "materials_boundaries/data/reference_properties.json": "275671a5f1a447d0cb071de361a8a515f60da60213edd076d725dd03d305b307",
+          "materials_boundaries/data/sources.json": "3828f53f5b946a4a90d1cb92630b141d496a02838a9dceb519730831c56cc8c1",
+          "tests/material_append_history.py": "2379867c0fe4ec89cf4f450b10bf84e48986783d50396c6f593316de78ad3251",
+          "tests/history_replay/benchmark_replay.py": "0fcba8efa14a6753e3409d0e4f2d5a5836bce3b76d919ba470516cb8d27074ce"
+        },
+        "preparation_seconds_not_timed_as_projection": 6.0354703000048175,
+        "input_raw_sha256": "81a7af1d8f522c41307fedbf0e3258b2b1cdaa40b142b4d4982544a17a5d727b",
+        "input_raw_bytes": 22046943,
+        "old": {
+          "status": "passed",
+          "elapsed_seconds": 151.52045650000218,
+          "counts": {
+            "recover_catalogs": 90,
+            "appended_rows": 171,
+            "catalog_read_bytes": 27,
+            "packet_read_bytes": 171,
+            "other_read_bytes": 0
+          },
+          "output_sha256": "c3f69e692a0dfb4ced72aea30794a7ee7b032ac99231db517397e0575dbc4bb0",
+          "output_bytes": 21515534
+        },
+        "new": {
+          "status": "passed",
+          "elapsed_seconds": 38.31516679999186,
+          "counts": {
+            "recover_catalogs": 22,
+            "appended_rows": 35,
+            "catalog_read_bytes": 3,
+            "packet_read_bytes": 35,
+            "other_read_bytes": 0
+          },
+          "output_sha256": "c3f69e692a0dfb4ced72aea30794a7ee7b032ac99231db517397e0575dbc4bb0",
+          "output_bytes": 21515534
+        },
+        "input_sha256_after": {
+          "tests/fixtures/tarasov_pna_bpf_data_20261023.json": "ff13299c063b805d4cb36e73fe8db1521e88cab51aff2af13d2f4afab0a30773",
+          "experimental/material-batches/tarasov-pna-bpf-20261023/prepared-packet.json": "e9096077c7d6a206cf3a54a14272f838722187e10481588a1e3c07e5ab345997",
+          "tests/fixtures/bruns_borosilicate_data_20261023.json": "6eded8614db38dcd26ad1e570d7ad783110dd690296e59a9270300bfd3a0a016",
+          "experimental/material-batches/bruns-nbs2-borosilicate-20261023/prepared-packet.json": "7bc0fb2ba2dc3512abb95b7bf27b9f25d12c868d4bba041f667421572e5eccde",
+          "tests/fixtures/nylon_followup_data_20261021.json": "88f7303d6e8b4234555548ea39fdfb286380c72ea2f7f5edce990e1a0d733b97",
+          "experimental/material-batches/zenodo-8089569-nylon-followup-20261021/prepared-packet.json": "b18d7fc70bc5da537672f20a1682594c36c8d2d1e4c9e0ac05f9647d586e5172",
+          "tests/fixtures/tough_pla_followup_data_20261021.json": "46d33c7bfc8abb32b341a5c026ed8cb03e47350feeb17e2b0c478999aeacf1f4",
+          "experimental/material-batches/zenodo-8089569-tough-pla-followup-20261021/prepared-packet.json": "919c387b4cf0b586c36e2d922a45b0a64832831d659f755049a4be3bbea3be44",
+          "tests/fixtures/primary_table_growth_8_data_20261021.json": "de662ffe08378402a224b4ee4180252b620278dfb79164b58a20884d68e82c51",
+          "experimental/material-batches/zenodo-8089569-filaments-20261021/prepared-packet.json": "aaa94bd1f752e00f37268f8b786326dcb98011648985f8bc77cb92362f4c57e8",
+          "tests/fixtures/primary_table_growth_7_data_20261020.json": "26c80c5274504af2e0adbb55b4346d395e7c13e7009c504229f9c9dc32ca01fe",
+          "experimental/material-batches/outokumpu-core-moduli-20261020/prepared-packet.json": "c7317758ae4c1a4025ac00c6b288770e61cf33056caaf1771a638af66d32b84f",
+          "tests/fixtures/primary_table_growth_6_data_20261020.json": "3d3335edadae838524756ad1b33efb733d48893a123e6637c461dc79d59861b5",
+          "experimental/material-batches/tamas-benyei-nbr-rcf-20261020/prepared-packet.json": "ae401d2ab8b565acf5772bba10833176f46293ec025a9552d15aafd6a68c8ee3",
+          "tests/fixtures/primary_table_growth_5_data_20261020.json": "ced45ed6989e8988d461b0256c3ef7781c0f04b8364c6c991e3cacf36b064ff9",
+          "experimental/material-batches/bianchi-nr-nanoclay-20261020/prepared-packet.json": "a09f6d768b71667e045efa85d3c79de8ce3db49a926dcda55eb5421efc99d55f",
+          "tests/fixtures/primary_table_growth_4_data_20261019.json": "d57a1014e6d9e66f3f6c031e3a56abda909acc924fb9ab16835948989f4ce89c",
+          "experimental/material-batches/mtibe-pbs-pbat-hybrids-20261019/prepared-packet.json": "8c0dad86412f0708f72a3866cae5a7766db01be99df38f85defd3ba052da388c",
+          "tests/fixtures/primary_table_growth_3_data_20261019.json": "4ae9986cc914d9ff06a40875c19d606c0502a28527488151e6c71ec5f27eb0fe",
+          "experimental/material-batches/nbs-binary-oxide-density-20261019/prepared-packet.json": "0511e82ef9279928629f8e05076ba5050988de4e18081593d3bb8cbd1bfaa28e",
+          "tests/fixtures/primary_table_growth_2_data_20261019.json": "f3fcc3e8fdcdb292a2f3cf0b13c50de6bc90604ed2ac28b8938c9334e45933fc",
+          "experimental/material-batches/nbs-rca-density-20261019/prepared-packet.json": "6d906eec144e3908941f7c6f3c91646d4d905a7134fdc5086a95c4e59f1ca41c",
+          "tests/fixtures/primary_table_growth_data_20261019.json": "faa453c3d57bb4a9040fac084cb9a96ad6c3437c237f80ea8eff4cc3e3fe261f",
+          "experimental/material-batches/nbs-salt-densities-20261019/prepared-packet.json": "091239fd1cc6e4d7d8429aab381f1a9525f62293339fc4fbea230142f53b541f",
+          "tests/fixtures/pur_formulation_data_20261019.json": "541a4e325834ed992246489846bcfcf83480bfb86494ec2a212d78de821bf167",
+          "experimental/material-batches/pur-formulations-20261019/prepared-packet.json": "2c5320856ba07892eac6b35d6b881bb3ab21126e801beefa2b887c77abd93be7",
+          "tests/fixtures/source_family_growth_data_20261019.json": "9dfc8d71e89041f05e11a870ad29aea34cb3ab90586bcea8f1d717adc9878ac3",
+          "experimental/material-batches/nbs-oxide-density-20261019/prepared-packet.json": "21aaed2df59b0ab9301d1573aabd6fd8bd87354c01fdf11323cdee62b600aab3",
+          "materials_boundaries/data/materials.json": "93da1d629da8244853b3e6ad30d556137d57e3f639baffdd3c5bc34a3a1c9107",
+          "materials_boundaries/data/reference_properties.json": "275671a5f1a447d0cb071de361a8a515f60da60213edd076d725dd03d305b307",
+          "materials_boundaries/data/sources.json": "3828f53f5b946a4a90d1cb92630b141d496a02838a9dceb519730831c56cc8c1",
+          "tests/material_append_history.py": "2379867c0fe4ec89cf4f450b10bf84e48986783d50396c6f593316de78ad3251",
+          "tests/history_replay/benchmark_replay.py": "0fcba8efa14a6753e3409d0e4f2d5a5836bce3b76d919ba470516cb8d27074ce"
+        },
+        "inputs_unchanged": true,
+        "byte_equal": true,
+        "worker_returncode": 0,
+        "worker_termination": {
+          "attempted": false
+        }
+      },
+      {
+        "case": "after5-sources",
+        "stage_after_ledgers": 5,
+        "table": "sources",
+        "status": "passed",
+        "phase": "completed",
+        "candidate_engine_sha256": "2379867c0fe4ec89cf4f450b10bf84e48986783d50396c6f593316de78ad3251",
+        "input_sha256_before": {
+          "tests/fixtures/tarasov_pna_bpf_data_20261023.json": "ff13299c063b805d4cb36e73fe8db1521e88cab51aff2af13d2f4afab0a30773",
+          "experimental/material-batches/tarasov-pna-bpf-20261023/prepared-packet.json": "e9096077c7d6a206cf3a54a14272f838722187e10481588a1e3c07e5ab345997",
+          "tests/fixtures/bruns_borosilicate_data_20261023.json": "6eded8614db38dcd26ad1e570d7ad783110dd690296e59a9270300bfd3a0a016",
+          "experimental/material-batches/bruns-nbs2-borosilicate-20261023/prepared-packet.json": "7bc0fb2ba2dc3512abb95b7bf27b9f25d12c868d4bba041f667421572e5eccde",
+          "tests/fixtures/nylon_followup_data_20261021.json": "88f7303d6e8b4234555548ea39fdfb286380c72ea2f7f5edce990e1a0d733b97",
+          "experimental/material-batches/zenodo-8089569-nylon-followup-20261021/prepared-packet.json": "b18d7fc70bc5da537672f20a1682594c36c8d2d1e4c9e0ac05f9647d586e5172",
+          "tests/fixtures/tough_pla_followup_data_20261021.json": "46d33c7bfc8abb32b341a5c026ed8cb03e47350feeb17e2b0c478999aeacf1f4",
+          "experimental/material-batches/zenodo-8089569-tough-pla-followup-20261021/prepared-packet.json": "919c387b4cf0b586c36e2d922a45b0a64832831d659f755049a4be3bbea3be44",
+          "tests/fixtures/primary_table_growth_8_data_20261021.json": "de662ffe08378402a224b4ee4180252b620278dfb79164b58a20884d68e82c51",
+          "experimental/material-batches/zenodo-8089569-filaments-20261021/prepared-packet.json": "aaa94bd1f752e00f37268f8b786326dcb98011648985f8bc77cb92362f4c57e8",
+          "tests/fixtures/primary_table_growth_7_data_20261020.json": "26c80c5274504af2e0adbb55b4346d395e7c13e7009c504229f9c9dc32ca01fe",
+          "experimental/material-batches/outokumpu-core-moduli-20261020/prepared-packet.json": "c7317758ae4c1a4025ac00c6b288770e61cf33056caaf1771a638af66d32b84f",
+          "tests/fixtures/primary_table_growth_6_data_20261020.json": "3d3335edadae838524756ad1b33efb733d48893a123e6637c461dc79d59861b5",
+          "experimental/material-batches/tamas-benyei-nbr-rcf-20261020/prepared-packet.json": "ae401d2ab8b565acf5772bba10833176f46293ec025a9552d15aafd6a68c8ee3",
+          "tests/fixtures/primary_table_growth_5_data_20261020.json": "ced45ed6989e8988d461b0256c3ef7781c0f04b8364c6c991e3cacf36b064ff9",
+          "experimental/material-batches/bianchi-nr-nanoclay-20261020/prepared-packet.json": "a09f6d768b71667e045efa85d3c79de8ce3db49a926dcda55eb5421efc99d55f",
+          "tests/fixtures/primary_table_growth_4_data_20261019.json": "d57a1014e6d9e66f3f6c031e3a56abda909acc924fb9ab16835948989f4ce89c",
+          "experimental/material-batches/mtibe-pbs-pbat-hybrids-20261019/prepared-packet.json": "8c0dad86412f0708f72a3866cae5a7766db01be99df38f85defd3ba052da388c",
+          "tests/fixtures/primary_table_growth_3_data_20261019.json": "4ae9986cc914d9ff06a40875c19d606c0502a28527488151e6c71ec5f27eb0fe",
+          "experimental/material-batches/nbs-binary-oxide-density-20261019/prepared-packet.json": "0511e82ef9279928629f8e05076ba5050988de4e18081593d3bb8cbd1bfaa28e",
+          "tests/fixtures/primary_table_growth_2_data_20261019.json": "f3fcc3e8fdcdb292a2f3cf0b13c50de6bc90604ed2ac28b8938c9334e45933fc",
+          "experimental/material-batches/nbs-rca-density-20261019/prepared-packet.json": "6d906eec144e3908941f7c6f3c91646d4d905a7134fdc5086a95c4e59f1ca41c",
+          "tests/fixtures/primary_table_growth_data_20261019.json": "faa453c3d57bb4a9040fac084cb9a96ad6c3437c237f80ea8eff4cc3e3fe261f",
+          "experimental/material-batches/nbs-salt-densities-20261019/prepared-packet.json": "091239fd1cc6e4d7d8429aab381f1a9525f62293339fc4fbea230142f53b541f",
+          "tests/fixtures/pur_formulation_data_20261019.json": "541a4e325834ed992246489846bcfcf83480bfb86494ec2a212d78de821bf167",
+          "experimental/material-batches/pur-formulations-20261019/prepared-packet.json": "2c5320856ba07892eac6b35d6b881bb3ab21126e801beefa2b887c77abd93be7",
+          "tests/fixtures/source_family_growth_data_20261019.json": "9dfc8d71e89041f05e11a870ad29aea34cb3ab90586bcea8f1d717adc9878ac3",
+          "experimental/material-batches/nbs-oxide-density-20261019/prepared-packet.json": "21aaed2df59b0ab9301d1573aabd6fd8bd87354c01fdf11323cdee62b600aab3",
+          "materials_boundaries/data/materials.json": "93da1d629da8244853b3e6ad30d556137d57e3f639baffdd3c5bc34a3a1c9107",
+          "materials_boundaries/data/reference_properties.json": "275671a5f1a447d0cb071de361a8a515f60da60213edd076d725dd03d305b307",
+          "materials_boundaries/data/sources.json": "3828f53f5b946a4a90d1cb92630b141d496a02838a9dceb519730831c56cc8c1",
+          "tests/material_append_history.py": "2379867c0fe4ec89cf4f450b10bf84e48986783d50396c6f593316de78ad3251",
+          "tests/history_replay/benchmark_replay.py": "0fcba8efa14a6753e3409d0e4f2d5a5836bce3b76d919ba470516cb8d27074ce"
+        },
+        "preparation_seconds_not_timed_as_projection": 5.727348499989603,
+        "input_raw_sha256": "4ba9dcd9258cd1e2d9e17bdf20b4fdaa39e081e77779d12eb726ee91b19835ae",
+        "input_raw_bytes": 264796,
+        "old": {
+          "status": "passed",
+          "elapsed_seconds": 0.0005524999869521707,
+          "counts": {
+            "recover_catalogs": 0,
+            "appended_rows": 0,
+            "catalog_read_bytes": 0,
+            "packet_read_bytes": 0,
+            "other_read_bytes": 0
+          },
+          "output_sha256": "4ba9dcd9258cd1e2d9e17bdf20b4fdaa39e081e77779d12eb726ee91b19835ae",
+          "output_bytes": 264796
+        },
+        "new": {
+          "status": "passed",
+          "elapsed_seconds": 0.000516800006153062,
+          "counts": {
+            "recover_catalogs": 0,
+            "appended_rows": 0,
+            "catalog_read_bytes": 0,
+            "packet_read_bytes": 0,
+            "other_read_bytes": 0
+          },
+          "output_sha256": "4ba9dcd9258cd1e2d9e17bdf20b4fdaa39e081e77779d12eb726ee91b19835ae",
+          "output_bytes": 264796
+        },
+        "input_sha256_after": {
+          "tests/fixtures/tarasov_pna_bpf_data_20261023.json": "ff13299c063b805d4cb36e73fe8db1521e88cab51aff2af13d2f4afab0a30773",
+          "experimental/material-batches/tarasov-pna-bpf-20261023/prepared-packet.json": "e9096077c7d6a206cf3a54a14272f838722187e10481588a1e3c07e5ab345997",
+          "tests/fixtures/bruns_borosilicate_data_20261023.json": "6eded8614db38dcd26ad1e570d7ad783110dd690296e59a9270300bfd3a0a016",
+          "experimental/material-batches/bruns-nbs2-borosilicate-20261023/prepared-packet.json": "7bc0fb2ba2dc3512abb95b7bf27b9f25d12c868d4bba041f667421572e5eccde",
+          "tests/fixtures/nylon_followup_data_20261021.json": "88f7303d6e8b4234555548ea39fdfb286380c72ea2f7f5edce990e1a0d733b97",
+          "experimental/material-batches/zenodo-8089569-nylon-followup-20261021/prepared-packet.json": "b18d7fc70bc5da537672f20a1682594c36c8d2d1e4c9e0ac05f9647d586e5172",
+          "tests/fixtures/tough_pla_followup_data_20261021.json": "46d33c7bfc8abb32b341a5c026ed8cb03e47350feeb17e2b0c478999aeacf1f4",
+          "experimental/material-batches/zenodo-8089569-tough-pla-followup-20261021/prepared-packet.json": "919c387b4cf0b586c36e2d922a45b0a64832831d659f755049a4be3bbea3be44",
+          "tests/fixtures/primary_table_growth_8_data_20261021.json": "de662ffe08378402a224b4ee4180252b620278dfb79164b58a20884d68e82c51",
+          "experimental/material-batches/zenodo-8089569-filaments-20261021/prepared-packet.json": "aaa94bd1f752e00f37268f8b786326dcb98011648985f8bc77cb92362f4c57e8",
+          "tests/fixtures/primary_table_growth_7_data_20261020.json": "26c80c5274504af2e0adbb55b4346d395e7c13e7009c504229f9c9dc32ca01fe",
+          "experimental/material-batches/outokumpu-core-moduli-20261020/prepared-packet.json": "c7317758ae4c1a4025ac00c6b288770e61cf33056caaf1771a638af66d32b84f",
+          "tests/fixtures/primary_table_growth_6_data_20261020.json": "3d3335edadae838524756ad1b33efb733d48893a123e6637c461dc79d59861b5",
+          "experimental/material-batches/tamas-benyei-nbr-rcf-20261020/prepared-packet.json": "ae401d2ab8b565acf5772bba10833176f46293ec025a9552d15aafd6a68c8ee3",
+          "tests/fixtures/primary_table_growth_5_data_20261020.json": "ced45ed6989e8988d461b0256c3ef7781c0f04b8364c6c991e3cacf36b064ff9",
+          "experimental/material-batches/bianchi-nr-nanoclay-20261020/prepared-packet.json": "a09f6d768b71667e045efa85d3c79de8ce3db49a926dcda55eb5421efc99d55f",
+          "tests/fixtures/primary_table_growth_4_data_20261019.json": "d57a1014e6d9e66f3f6c031e3a56abda909acc924fb9ab16835948989f4ce89c",
+          "experimental/material-batches/mtibe-pbs-pbat-hybrids-20261019/prepared-packet.json": "8c0dad86412f0708f72a3866cae5a7766db01be99df38f85defd3ba052da388c",
+          "tests/fixtures/primary_table_growth_3_data_20261019.json": "4ae9986cc914d9ff06a40875c19d606c0502a28527488151e6c71ec5f27eb0fe",
+          "experimental/material-batches/nbs-binary-oxide-density-20261019/prepared-packet.json": "0511e82ef9279928629f8e05076ba5050988de4e18081593d3bb8cbd1bfaa28e",
+          "tests/fixtures/primary_table_growth_2_data_20261019.json": "f3fcc3e8fdcdb292a2f3cf0b13c50de6bc90604ed2ac28b8938c9334e45933fc",
+          "experimental/material-batches/nbs-rca-density-20261019/prepared-packet.json": "6d906eec144e3908941f7c6f3c91646d4d905a7134fdc5086a95c4e59f1ca41c",
+          "tests/fixtures/primary_table_growth_data_20261019.json": "faa453c3d57bb4a9040fac084cb9a96ad6c3437c237f80ea8eff4cc3e3fe261f",
+          "experimental/material-batches/nbs-salt-densities-20261019/prepared-packet.json": "091239fd1cc6e4d7d8429aab381f1a9525f62293339fc4fbea230142f53b541f",
+          "tests/fixtures/pur_formulation_data_20261019.json": "541a4e325834ed992246489846bcfcf83480bfb86494ec2a212d78de821bf167",
+          "experimental/material-batches/pur-formulations-20261019/prepared-packet.json": "2c5320856ba07892eac6b35d6b881bb3ab21126e801beefa2b887c77abd93be7",
+          "tests/fixtures/source_family_growth_data_20261019.json": "9dfc8d71e89041f05e11a870ad29aea34cb3ab90586bcea8f1d717adc9878ac3",
+          "experimental/material-batches/nbs-oxide-density-20261019/prepared-packet.json": "21aaed2df59b0ab9301d1573aabd6fd8bd87354c01fdf11323cdee62b600aab3",
+          "materials_boundaries/data/materials.json": "93da1d629da8244853b3e6ad30d556137d57e3f639baffdd3c5bc34a3a1c9107",
+          "materials_boundaries/data/reference_properties.json": "275671a5f1a447d0cb071de361a8a515f60da60213edd076d725dd03d305b307",
+          "materials_boundaries/data/sources.json": "3828f53f5b946a4a90d1cb92630b141d496a02838a9dceb519730831c56cc8c1",
+          "tests/material_append_history.py": "2379867c0fe4ec89cf4f450b10bf84e48986783d50396c6f593316de78ad3251",
+          "tests/history_replay/benchmark_replay.py": "0fcba8efa14a6753e3409d0e4f2d5a5836bce3b76d919ba470516cb8d27074ce"
+        },
+        "inputs_unchanged": true,
+        "byte_equal": true,
+        "worker_returncode": 0,
+        "worker_termination": {
+          "attempted": false
+        }
+      },
+      {
+        "case": "oldest-materials",
+        "stage_after_ledgers": 14,
+        "table": "materials",
+        "status": "passed",
+        "phase": "completed",
+        "candidate_engine_sha256": "2379867c0fe4ec89cf4f450b10bf84e48986783d50396c6f593316de78ad3251",
+        "input_sha256_before": {
+          "tests/fixtures/tarasov_pna_bpf_data_20261023.json": "ff13299c063b805d4cb36e73fe8db1521e88cab51aff2af13d2f4afab0a30773",
+          "experimental/material-batches/tarasov-pna-bpf-20261023/prepared-packet.json": "e9096077c7d6a206cf3a54a14272f838722187e10481588a1e3c07e5ab345997",
+          "tests/fixtures/bruns_borosilicate_data_20261023.json": "6eded8614db38dcd26ad1e570d7ad783110dd690296e59a9270300bfd3a0a016",
+          "experimental/material-batches/bruns-nbs2-borosilicate-20261023/prepared-packet.json": "7bc0fb2ba2dc3512abb95b7bf27b9f25d12c868d4bba041f667421572e5eccde",
+          "tests/fixtures/nylon_followup_data_20261021.json": "88f7303d6e8b4234555548ea39fdfb286380c72ea2f7f5edce990e1a0d733b97",
+          "experimental/material-batches/zenodo-8089569-nylon-followup-20261021/prepared-packet.json": "b18d7fc70bc5da537672f20a1682594c36c8d2d1e4c9e0ac05f9647d586e5172",
+          "tests/fixtures/tough_pla_followup_data_20261021.json": "46d33c7bfc8abb32b341a5c026ed8cb03e47350feeb17e2b0c478999aeacf1f4",
+          "experimental/material-batches/zenodo-8089569-tough-pla-followup-20261021/prepared-packet.json": "919c387b4cf0b586c36e2d922a45b0a64832831d659f755049a4be3bbea3be44",
+          "tests/fixtures/primary_table_growth_8_data_20261021.json": "de662ffe08378402a224b4ee4180252b620278dfb79164b58a20884d68e82c51",
+          "experimental/material-batches/zenodo-8089569-filaments-20261021/prepared-packet.json": "aaa94bd1f752e00f37268f8b786326dcb98011648985f8bc77cb92362f4c57e8",
+          "tests/fixtures/primary_table_growth_7_data_20261020.json": "26c80c5274504af2e0adbb55b4346d395e7c13e7009c504229f9c9dc32ca01fe",
+          "experimental/material-batches/outokumpu-core-moduli-20261020/prepared-packet.json": "c7317758ae4c1a4025ac00c6b288770e61cf33056caaf1771a638af66d32b84f",
+          "tests/fixtures/primary_table_growth_6_data_20261020.json": "3d3335edadae838524756ad1b33efb733d48893a123e6637c461dc79d59861b5",
+          "experimental/material-batches/tamas-benyei-nbr-rcf-20261020/prepared-packet.json": "ae401d2ab8b565acf5772bba10833176f46293ec025a9552d15aafd6a68c8ee3",
+          "tests/fixtures/primary_table_growth_5_data_20261020.json": "ced45ed6989e8988d461b0256c3ef7781c0f04b8364c6c991e3cacf36b064ff9",
+          "experimental/material-batches/bianchi-nr-nanoclay-20261020/prepared-packet.json": "a09f6d768b71667e045efa85d3c79de8ce3db49a926dcda55eb5421efc99d55f",
+          "tests/fixtures/primary_table_growth_4_data_20261019.json": "d57a1014e6d9e66f3f6c031e3a56abda909acc924fb9ab16835948989f4ce89c",
+          "experimental/material-batches/mtibe-pbs-pbat-hybrids-20261019/prepared-packet.json": "8c0dad86412f0708f72a3866cae5a7766db01be99df38f85defd3ba052da388c",
+          "tests/fixtures/primary_table_growth_3_data_20261019.json": "4ae9986cc914d9ff06a40875c19d606c0502a28527488151e6c71ec5f27eb0fe",
+          "experimental/material-batches/nbs-binary-oxide-density-20261019/prepared-packet.json": "0511e82ef9279928629f8e05076ba5050988de4e18081593d3bb8cbd1bfaa28e",
+          "tests/fixtures/primary_table_growth_2_data_20261019.json": "f3fcc3e8fdcdb292a2f3cf0b13c50de6bc90604ed2ac28b8938c9334e45933fc",
+          "experimental/material-batches/nbs-rca-density-20261019/prepared-packet.json": "6d906eec144e3908941f7c6f3c91646d4d905a7134fdc5086a95c4e59f1ca41c",
+          "tests/fixtures/primary_table_growth_data_20261019.json": "faa453c3d57bb4a9040fac084cb9a96ad6c3437c237f80ea8eff4cc3e3fe261f",
+          "experimental/material-batches/nbs-salt-densities-20261019/prepared-packet.json": "091239fd1cc6e4d7d8429aab381f1a9525f62293339fc4fbea230142f53b541f",
+          "tests/fixtures/pur_formulation_data_20261019.json": "541a4e325834ed992246489846bcfcf83480bfb86494ec2a212d78de821bf167",
+          "experimental/material-batches/pur-formulations-20261019/prepared-packet.json": "2c5320856ba07892eac6b35d6b881bb3ab21126e801beefa2b887c77abd93be7",
+          "tests/fixtures/source_family_growth_data_20261019.json": "9dfc8d71e89041f05e11a870ad29aea34cb3ab90586bcea8f1d717adc9878ac3",
+          "experimental/material-batches/nbs-oxide-density-20261019/prepared-packet.json": "21aaed2df59b0ab9301d1573aabd6fd8bd87354c01fdf11323cdee62b600aab3",
+          "materials_boundaries/data/materials.json": "93da1d629da8244853b3e6ad30d556137d57e3f639baffdd3c5bc34a3a1c9107",
+          "materials_boundaries/data/reference_properties.json": "275671a5f1a447d0cb071de361a8a515f60da60213edd076d725dd03d305b307",
+          "materials_boundaries/data/sources.json": "3828f53f5b946a4a90d1cb92630b141d496a02838a9dceb519730831c56cc8c1",
+          "tests/material_append_history.py": "2379867c0fe4ec89cf4f450b10bf84e48986783d50396c6f593316de78ad3251",
+          "tests/history_replay/benchmark_replay.py": "0fcba8efa14a6753e3409d0e4f2d5a5836bce3b76d919ba470516cb8d27074ce"
+        },
+        "preparation_seconds_not_timed_as_projection": 15.955979999998817,
+        "input_raw_sha256": "410efabb24dad7ed377ac7b94d35bccc40afe91194f0323e0298f500314e02f3",
+        "input_raw_bytes": 9125298,
+        "old": {
+          "status": "passed",
+          "elapsed_seconds": 0.048084599984576926,
+          "counts": {
+            "recover_catalogs": 0,
+            "appended_rows": 0,
+            "catalog_read_bytes": 0,
+            "packet_read_bytes": 0,
+            "other_read_bytes": 0
+          },
+          "output_sha256": "410efabb24dad7ed377ac7b94d35bccc40afe91194f0323e0298f500314e02f3",
+          "output_bytes": 9125298
+        },
+        "new": {
+          "status": "passed",
+          "elapsed_seconds": 0.04867509999894537,
+          "counts": {
+            "recover_catalogs": 0,
+            "appended_rows": 0,
+            "catalog_read_bytes": 0,
+            "packet_read_bytes": 0,
+            "other_read_bytes": 0
+          },
+          "output_sha256": "410efabb24dad7ed377ac7b94d35bccc40afe91194f0323e0298f500314e02f3",
+          "output_bytes": 9125298
+        },
+        "input_sha256_after": {
+          "tests/fixtures/tarasov_pna_bpf_data_20261023.json": "ff13299c063b805d4cb36e73fe8db1521e88cab51aff2af13d2f4afab0a30773",
+          "experimental/material-batches/tarasov-pna-bpf-20261023/prepared-packet.json": "e9096077c7d6a206cf3a54a14272f838722187e10481588a1e3c07e5ab345997",
+          "tests/fixtures/bruns_borosilicate_data_20261023.json": "6eded8614db38dcd26ad1e570d7ad783110dd690296e59a9270300bfd3a0a016",
+          "experimental/material-batches/bruns-nbs2-borosilicate-20261023/prepared-packet.json": "7bc0fb2ba2dc3512abb95b7bf27b9f25d12c868d4bba041f667421572e5eccde",
+          "tests/fixtures/nylon_followup_data_20261021.json": "88f7303d6e8b4234555548ea39fdfb286380c72ea2f7f5edce990e1a0d733b97",
+          "experimental/material-batches/zenodo-8089569-nylon-followup-20261021/prepared-packet.json": "b18d7fc70bc5da537672f20a1682594c36c8d2d1e4c9e0ac05f9647d586e5172",
+          "tests/fixtures/tough_pla_followup_data_20261021.json": "46d33c7bfc8abb32b341a5c026ed8cb03e47350feeb17e2b0c478999aeacf1f4",
+          "experimental/material-batches/zenodo-8089569-tough-pla-followup-20261021/prepared-packet.json": "919c387b4cf0b586c36e2d922a45b0a64832831d659f755049a4be3bbea3be44",
+          "tests/fixtures/primary_table_growth_8_data_20261021.json": "de662ffe08378402a224b4ee4180252b620278dfb79164b58a20884d68e82c51",
+          "experimental/material-batches/zenodo-8089569-filaments-20261021/prepared-packet.json": "aaa94bd1f752e00f37268f8b786326dcb98011648985f8bc77cb92362f4c57e8",
+          "tests/fixtures/primary_table_growth_7_data_20261020.json": "26c80c5274504af2e0adbb55b4346d395e7c13e7009c504229f9c9dc32ca01fe",
+          "experimental/material-batches/outokumpu-core-moduli-20261020/prepared-packet.json": "c7317758ae4c1a4025ac00c6b288770e61cf33056caaf1771a638af66d32b84f",
+          "tests/fixtures/primary_table_growth_6_data_20261020.json": "3d3335edadae838524756ad1b33efb733d48893a123e6637c461dc79d59861b5",
+          "experimental/material-batches/tamas-benyei-nbr-rcf-20261020/prepared-packet.json": "ae401d2ab8b565acf5772bba10833176f46293ec025a9552d15aafd6a68c8ee3",
+          "tests/fixtures/primary_table_growth_5_data_20261020.json": "ced45ed6989e8988d461b0256c3ef7781c0f04b8364c6c991e3cacf36b064ff9",
+          "experimental/material-batches/bianchi-nr-nanoclay-20261020/prepared-packet.json": "a09f6d768b71667e045efa85d3c79de8ce3db49a926dcda55eb5421efc99d55f",
+          "tests/fixtures/primary_table_growth_4_data_20261019.json": "d57a1014e6d9e66f3f6c031e3a56abda909acc924fb9ab16835948989f4ce89c",
+          "experimental/material-batches/mtibe-pbs-pbat-hybrids-20261019/prepared-packet.json": "8c0dad86412f0708f72a3866cae5a7766db01be99df38f85defd3ba052da388c",
+          "tests/fixtures/primary_table_growth_3_data_20261019.json": "4ae9986cc914d9ff06a40875c19d606c0502a28527488151e6c71ec5f27eb0fe",
+          "experimental/material-batches/nbs-binary-oxide-density-20261019/prepared-packet.json": "0511e82ef9279928629f8e05076ba5050988de4e18081593d3bb8cbd1bfaa28e",
+          "tests/fixtures/primary_table_growth_2_data_20261019.json": "f3fcc3e8fdcdb292a2f3cf0b13c50de6bc90604ed2ac28b8938c9334e45933fc",
+          "experimental/material-batches/nbs-rca-density-20261019/prepared-packet.json": "6d906eec144e3908941f7c6f3c91646d4d905a7134fdc5086a95c4e59f1ca41c",
+          "tests/fixtures/primary_table_growth_data_20261019.json": "faa453c3d57bb4a9040fac084cb9a96ad6c3437c237f80ea8eff4cc3e3fe261f",
+          "experimental/material-batches/nbs-salt-densities-20261019/prepared-packet.json": "091239fd1cc6e4d7d8429aab381f1a9525f62293339fc4fbea230142f53b541f",
+          "tests/fixtures/pur_formulation_data_20261019.json": "541a4e325834ed992246489846bcfcf83480bfb86494ec2a212d78de821bf167",
+          "experimental/material-batches/pur-formulations-20261019/prepared-packet.json": "2c5320856ba07892eac6b35d6b881bb3ab21126e801beefa2b887c77abd93be7",
+          "tests/fixtures/source_family_growth_data_20261019.json": "9dfc8d71e89041f05e11a870ad29aea34cb3ab90586bcea8f1d717adc9878ac3",
+          "experimental/material-batches/nbs-oxide-density-20261019/prepared-packet.json": "21aaed2df59b0ab9301d1573aabd6fd8bd87354c01fdf11323cdee62b600aab3",
+          "materials_boundaries/data/materials.json": "93da1d629da8244853b3e6ad30d556137d57e3f639baffdd3c5bc34a3a1c9107",
+          "materials_boundaries/data/reference_properties.json": "275671a5f1a447d0cb071de361a8a515f60da60213edd076d725dd03d305b307",
+          "materials_boundaries/data/sources.json": "3828f53f5b946a4a90d1cb92630b141d496a02838a9dceb519730831c56cc8c1",
+          "tests/material_append_history.py": "2379867c0fe4ec89cf4f450b10bf84e48986783d50396c6f593316de78ad3251",
+          "tests/history_replay/benchmark_replay.py": "0fcba8efa14a6753e3409d0e4f2d5a5836bce3b76d919ba470516cb8d27074ce"
+        },
+        "inputs_unchanged": true,
+        "byte_equal": true,
+        "worker_returncode": 0,
+        "worker_termination": {
+          "attempted": false
+        }
+      },
+      {
+        "case": "oldest-properties",
+        "stage_after_ledgers": 14,
+        "table": "properties",
+        "status": "passed",
+        "phase": "completed",
+        "candidate_engine_sha256": "2379867c0fe4ec89cf4f450b10bf84e48986783d50396c6f593316de78ad3251",
+        "input_sha256_before": {
+          "tests/fixtures/tarasov_pna_bpf_data_20261023.json": "ff13299c063b805d4cb36e73fe8db1521e88cab51aff2af13d2f4afab0a30773",
+          "experimental/material-batches/tarasov-pna-bpf-20261023/prepared-packet.json": "e9096077c7d6a206cf3a54a14272f838722187e10481588a1e3c07e5ab345997",
+          "tests/fixtures/bruns_borosilicate_data_20261023.json": "6eded8614db38dcd26ad1e570d7ad783110dd690296e59a9270300bfd3a0a016",
+          "experimental/material-batches/bruns-nbs2-borosilicate-20261023/prepared-packet.json": "7bc0fb2ba2dc3512abb95b7bf27b9f25d12c868d4bba041f667421572e5eccde",
+          "tests/fixtures/nylon_followup_data_20261021.json": "88f7303d6e8b4234555548ea39fdfb286380c72ea2f7f5edce990e1a0d733b97",
+          "experimental/material-batches/zenodo-8089569-nylon-followup-20261021/prepared-packet.json": "b18d7fc70bc5da537672f20a1682594c36c8d2d1e4c9e0ac05f9647d586e5172",
+          "tests/fixtures/tough_pla_followup_data_20261021.json": "46d33c7bfc8abb32b341a5c026ed8cb03e47350feeb17e2b0c478999aeacf1f4",
+          "experimental/material-batches/zenodo-8089569-tough-pla-followup-20261021/prepared-packet.json": "919c387b4cf0b586c36e2d922a45b0a64832831d659f755049a4be3bbea3be44",
+          "tests/fixtures/primary_table_growth_8_data_20261021.json": "de662ffe08378402a224b4ee4180252b620278dfb79164b58a20884d68e82c51",
+          "experimental/material-batches/zenodo-8089569-filaments-20261021/prepared-packet.json": "aaa94bd1f752e00f37268f8b786326dcb98011648985f8bc77cb92362f4c57e8",
+          "tests/fixtures/primary_table_growth_7_data_20261020.json": "26c80c5274504af2e0adbb55b4346d395e7c13e7009c504229f9c9dc32ca01fe",
+          "experimental/material-batches/outokumpu-core-moduli-20261020/prepared-packet.json": "c7317758ae4c1a4025ac00c6b288770e61cf33056caaf1771a638af66d32b84f",
+          "tests/fixtures/primary_table_growth_6_data_20261020.json": "3d3335edadae838524756ad1b33efb733d48893a123e6637c461dc79d59861b5",
+          "experimental/material-batches/tamas-benyei-nbr-rcf-20261020/prepared-packet.json": "ae401d2ab8b565acf5772bba10833176f46293ec025a9552d15aafd6a68c8ee3",
+          "tests/fixtures/primary_table_growth_5_data_20261020.json": "ced45ed6989e8988d461b0256c3ef7781c0f04b8364c6c991e3cacf36b064ff9",
+          "experimental/material-batches/bianchi-nr-nanoclay-20261020/prepared-packet.json": "a09f6d768b71667e045efa85d3c79de8ce3db49a926dcda55eb5421efc99d55f",
+          "tests/fixtures/primary_table_growth_4_data_20261019.json": "d57a1014e6d9e66f3f6c031e3a56abda909acc924fb9ab16835948989f4ce89c",
+          "experimental/material-batches/mtibe-pbs-pbat-hybrids-20261019/prepared-packet.json": "8c0dad86412f0708f72a3866cae5a7766db01be99df38f85defd3ba052da388c",
+          "tests/fixtures/primary_table_growth_3_data_20261019.json": "4ae9986cc914d9ff06a40875c19d606c0502a28527488151e6c71ec5f27eb0fe",
+          "experimental/material-batches/nbs-binary-oxide-density-20261019/prepared-packet.json": "0511e82ef9279928629f8e05076ba5050988de4e18081593d3bb8cbd1bfaa28e",
+          "tests/fixtures/primary_table_growth_2_data_20261019.json": "f3fcc3e8fdcdb292a2f3cf0b13c50de6bc90604ed2ac28b8938c9334e45933fc",
+          "experimental/material-batches/nbs-rca-density-20261019/prepared-packet.json": "6d906eec144e3908941f7c6f3c91646d4d905a7134fdc5086a95c4e59f1ca41c",
+          "tests/fixtures/primary_table_growth_data_20261019.json": "faa453c3d57bb4a9040fac084cb9a96ad6c3437c237f80ea8eff4cc3e3fe261f",
+          "experimental/material-batches/nbs-salt-densities-20261019/prepared-packet.json": "091239fd1cc6e4d7d8429aab381f1a9525f62293339fc4fbea230142f53b541f",
+          "tests/fixtures/pur_formulation_data_20261019.json": "541a4e325834ed992246489846bcfcf83480bfb86494ec2a212d78de821bf167",
+          "experimental/material-batches/pur-formulations-20261019/prepared-packet.json": "2c5320856ba07892eac6b35d6b881bb3ab21126e801beefa2b887c77abd93be7",
+          "tests/fixtures/source_family_growth_data_20261019.json": "9dfc8d71e89041f05e11a870ad29aea34cb3ab90586bcea8f1d717adc9878ac3",
+          "experimental/material-batches/nbs-oxide-density-20261019/prepared-packet.json": "21aaed2df59b0ab9301d1573aabd6fd8bd87354c01fdf11323cdee62b600aab3",
+          "materials_boundaries/data/materials.json": "93da1d629da8244853b3e6ad30d556137d57e3f639baffdd3c5bc34a3a1c9107",
+          "materials_boundaries/data/reference_properties.json": "275671a5f1a447d0cb071de361a8a515f60da60213edd076d725dd03d305b307",
+          "materials_boundaries/data/sources.json": "3828f53f5b946a4a90d1cb92630b141d496a02838a9dceb519730831c56cc8c1",
+          "tests/material_append_history.py": "2379867c0fe4ec89cf4f450b10bf84e48986783d50396c6f593316de78ad3251",
+          "tests/history_replay/benchmark_replay.py": "0fcba8efa14a6753e3409d0e4f2d5a5836bce3b76d919ba470516cb8d27074ce"
+        },
+        "preparation_seconds_not_timed_as_projection": 16.312715400010347,
+        "input_raw_sha256": "c3f69e692a0dfb4ced72aea30794a7ee7b032ac99231db517397e0575dbc4bb0",
+        "input_raw_bytes": 21515534,
+        "old": {
+          "status": "passed",
+          "elapsed_seconds": 0.13184210000326857,
+          "counts": {
+            "recover_catalogs": 0,
+            "appended_rows": 0,
+            "catalog_read_bytes": 0,
+            "packet_read_bytes": 0,
+            "other_read_bytes": 0
+          },
+          "output_sha256": "c3f69e692a0dfb4ced72aea30794a7ee7b032ac99231db517397e0575dbc4bb0",
+          "output_bytes": 21515534
+        },
+        "new": {
+          "status": "passed",
+          "elapsed_seconds": 0.1449315000209026,
+          "counts": {
+            "recover_catalogs": 0,
+            "appended_rows": 0,
+            "catalog_read_bytes": 0,
+            "packet_read_bytes": 0,
+            "other_read_bytes": 0
+          },
+          "output_sha256": "c3f69e692a0dfb4ced72aea30794a7ee7b032ac99231db517397e0575dbc4bb0",
+          "output_bytes": 21515534
+        },
+        "input_sha256_after": {
+          "tests/fixtures/tarasov_pna_bpf_data_20261023.json": "ff13299c063b805d4cb36e73fe8db1521e88cab51aff2af13d2f4afab0a30773",
+          "experimental/material-batches/tarasov-pna-bpf-20261023/prepared-packet.json": "e9096077c7d6a206cf3a54a14272f838722187e10481588a1e3c07e5ab345997",
+          "tests/fixtures/bruns_borosilicate_data_20261023.json": "6eded8614db38dcd26ad1e570d7ad783110dd690296e59a9270300bfd3a0a016",
+          "experimental/material-batches/bruns-nbs2-borosilicate-20261023/prepared-packet.json": "7bc0fb2ba2dc3512abb95b7bf27b9f25d12c868d4bba041f667421572e5eccde",
+          "tests/fixtures/nylon_followup_data_20261021.json": "88f7303d6e8b4234555548ea39fdfb286380c72ea2f7f5edce990e1a0d733b97",
+          "experimental/material-batches/zenodo-8089569-nylon-followup-20261021/prepared-packet.json": "b18d7fc70bc5da537672f20a1682594c36c8d2d1e4c9e0ac05f9647d586e5172",
+          "tests/fixtures/tough_pla_followup_data_20261021.json": "46d33c7bfc8abb32b341a5c026ed8cb03e47350feeb17e2b0c478999aeacf1f4",
+          "experimental/material-batches/zenodo-8089569-tough-pla-followup-20261021/prepared-packet.json": "919c387b4cf0b586c36e2d922a45b0a64832831d659f755049a4be3bbea3be44",
+          "tests/fixtures/primary_table_growth_8_data_20261021.json": "de662ffe08378402a224b4ee4180252b620278dfb79164b58a20884d68e82c51",
+          "experimental/material-batches/zenodo-8089569-filaments-20261021/prepared-packet.json": "aaa94bd1f752e00f37268f8b786326dcb98011648985f8bc77cb92362f4c57e8",
+          "tests/fixtures/primary_table_growth_7_data_20261020.json": "26c80c5274504af2e0adbb55b4346d395e7c13e7009c504229f9c9dc32ca01fe",
+          "experimental/material-batches/outokumpu-core-moduli-20261020/prepared-packet.json": "c7317758ae4c1a4025ac00c6b288770e61cf33056caaf1771a638af66d32b84f",
+          "tests/fixtures/primary_table_growth_6_data_20261020.json": "3d3335edadae838524756ad1b33efb733d48893a123e6637c461dc79d59861b5",
+          "experimental/material-batches/tamas-benyei-nbr-rcf-20261020/prepared-packet.json": "ae401d2ab8b565acf5772bba10833176f46293ec025a9552d15aafd6a68c8ee3",
+          "tests/fixtures/primary_table_growth_5_data_20261020.json": "ced45ed6989e8988d461b0256c3ef7781c0f04b8364c6c991e3cacf36b064ff9",
+          "experimental/material-batches/bianchi-nr-nanoclay-20261020/prepared-packet.json": "a09f6d768b71667e045efa85d3c79de8ce3db49a926dcda55eb5421efc99d55f",
+          "tests/fixtures/primary_table_growth_4_data_20261019.json": "d57a1014e6d9e66f3f6c031e3a56abda909acc924fb9ab16835948989f4ce89c",
+          "experimental/material-batches/mtibe-pbs-pbat-hybrids-20261019/prepared-packet.json": "8c0dad86412f0708f72a3866cae5a7766db01be99df38f85defd3ba052da388c",
+          "tests/fixtures/primary_table_growth_3_data_20261019.json": "4ae9986cc914d9ff06a40875c19d606c0502a28527488151e6c71ec5f27eb0fe",
+          "experimental/material-batches/nbs-binary-oxide-density-20261019/prepared-packet.json": "0511e82ef9279928629f8e05076ba5050988de4e18081593d3bb8cbd1bfaa28e",
+          "tests/fixtures/primary_table_growth_2_data_20261019.json": "f3fcc3e8fdcdb292a2f3cf0b13c50de6bc90604ed2ac28b8938c9334e45933fc",
+          "experimental/material-batches/nbs-rca-density-20261019/prepared-packet.json": "6d906eec144e3908941f7c6f3c91646d4d905a7134fdc5086a95c4e59f1ca41c",
+          "tests/fixtures/primary_table_growth_data_20261019.json": "faa453c3d57bb4a9040fac084cb9a96ad6c3437c237f80ea8eff4cc3e3fe261f",
+          "experimental/material-batches/nbs-salt-densities-20261019/prepared-packet.json": "091239fd1cc6e4d7d8429aab381f1a9525f62293339fc4fbea230142f53b541f",
+          "tests/fixtures/pur_formulation_data_20261019.json": "541a4e325834ed992246489846bcfcf83480bfb86494ec2a212d78de821bf167",
+          "experimental/material-batches/pur-formulations-20261019/prepared-packet.json": "2c5320856ba07892eac6b35d6b881bb3ab21126e801beefa2b887c77abd93be7",
+          "tests/fixtures/source_family_growth_data_20261019.json": "9dfc8d71e89041f05e11a870ad29aea34cb3ab90586bcea8f1d717adc9878ac3",
+          "experimental/material-batches/nbs-oxide-density-20261019/prepared-packet.json": "21aaed2df59b0ab9301d1573aabd6fd8bd87354c01fdf11323cdee62b600aab3",
+          "materials_boundaries/data/materials.json": "93da1d629da8244853b3e6ad30d556137d57e3f639baffdd3c5bc34a3a1c9107",
+          "materials_boundaries/data/reference_properties.json": "275671a5f1a447d0cb071de361a8a515f60da60213edd076d725dd03d305b307",
+          "materials_boundaries/data/sources.json": "3828f53f5b946a4a90d1cb92630b141d496a02838a9dceb519730831c56cc8c1",
+          "tests/material_append_history.py": "2379867c0fe4ec89cf4f450b10bf84e48986783d50396c6f593316de78ad3251",
+          "tests/history_replay/benchmark_replay.py": "0fcba8efa14a6753e3409d0e4f2d5a5836bce3b76d919ba470516cb8d27074ce"
+        },
+        "inputs_unchanged": true,
+        "byte_equal": true,
+        "worker_returncode": 0,
+        "worker_termination": {
+          "attempted": false
+        }
+      },
+      {
+        "case": "oldest-sources",
+        "stage_after_ledgers": 14,
+        "table": "sources",
+        "status": "passed",
+        "phase": "completed",
+        "candidate_engine_sha256": "2379867c0fe4ec89cf4f450b10bf84e48986783d50396c6f593316de78ad3251",
+        "input_sha256_before": {
+          "tests/fixtures/tarasov_pna_bpf_data_20261023.json": "ff13299c063b805d4cb36e73fe8db1521e88cab51aff2af13d2f4afab0a30773",
+          "experimental/material-batches/tarasov-pna-bpf-20261023/prepared-packet.json": "e9096077c7d6a206cf3a54a14272f838722187e10481588a1e3c07e5ab345997",
+          "tests/fixtures/bruns_borosilicate_data_20261023.json": "6eded8614db38dcd26ad1e570d7ad783110dd690296e59a9270300bfd3a0a016",
+          "experimental/material-batches/bruns-nbs2-borosilicate-20261023/prepared-packet.json": "7bc0fb2ba2dc3512abb95b7bf27b9f25d12c868d4bba041f667421572e5eccde",
+          "tests/fixtures/nylon_followup_data_20261021.json": "88f7303d6e8b4234555548ea39fdfb286380c72ea2f7f5edce990e1a0d733b97",
+          "experimental/material-batches/zenodo-8089569-nylon-followup-20261021/prepared-packet.json": "b18d7fc70bc5da537672f20a1682594c36c8d2d1e4c9e0ac05f9647d586e5172",
+          "tests/fixtures/tough_pla_followup_data_20261021.json": "46d33c7bfc8abb32b341a5c026ed8cb03e47350feeb17e2b0c478999aeacf1f4",
+          "experimental/material-batches/zenodo-8089569-tough-pla-followup-20261021/prepared-packet.json": "919c387b4cf0b586c36e2d922a45b0a64832831d659f755049a4be3bbea3be44",
+          "tests/fixtures/primary_table_growth_8_data_20261021.json": "de662ffe08378402a224b4ee4180252b620278dfb79164b58a20884d68e82c51",
+          "experimental/material-batches/zenodo-8089569-filaments-20261021/prepared-packet.json": "aaa94bd1f752e00f37268f8b786326dcb98011648985f8bc77cb92362f4c57e8",
+          "tests/fixtures/primary_table_growth_7_data_20261020.json": "26c80c5274504af2e0adbb55b4346d395e7c13e7009c504229f9c9dc32ca01fe",
+          "experimental/material-batches/outokumpu-core-moduli-20261020/prepared-packet.json": "c7317758ae4c1a4025ac00c6b288770e61cf33056caaf1771a638af66d32b84f",
+          "tests/fixtures/primary_table_growth_6_data_20261020.json": "3d3335edadae838524756ad1b33efb733d48893a123e6637c461dc79d59861b5",
+          "experimental/material-batches/tamas-benyei-nbr-rcf-20261020/prepared-packet.json": "ae401d2ab8b565acf5772bba10833176f46293ec025a9552d15aafd6a68c8ee3",
+          "tests/fixtures/primary_table_growth_5_data_20261020.json": "ced45ed6989e8988d461b0256c3ef7781c0f04b8364c6c991e3cacf36b064ff9",
+          "experimental/material-batches/bianchi-nr-nanoclay-20261020/prepared-packet.json": "a09f6d768b71667e045efa85d3c79de8ce3db49a926dcda55eb5421efc99d55f",
+          "tests/fixtures/primary_table_growth_4_data_20261019.json": "d57a1014e6d9e66f3f6c031e3a56abda909acc924fb9ab16835948989f4ce89c",
+          "experimental/material-batches/mtibe-pbs-pbat-hybrids-20261019/prepared-packet.json": "8c0dad86412f0708f72a3866cae5a7766db01be99df38f85defd3ba052da388c",
+          "tests/fixtures/primary_table_growth_3_data_20261019.json": "4ae9986cc914d9ff06a40875c19d606c0502a28527488151e6c71ec5f27eb0fe",
+          "experimental/material-batches/nbs-binary-oxide-density-20261019/prepared-packet.json": "0511e82ef9279928629f8e05076ba5050988de4e18081593d3bb8cbd1bfaa28e",
+          "tests/fixtures/primary_table_growth_2_data_20261019.json": "f3fcc3e8fdcdb292a2f3cf0b13c50de6bc90604ed2ac28b8938c9334e45933fc",
+          "experimental/material-batches/nbs-rca-density-20261019/prepared-packet.json": "6d906eec144e3908941f7c6f3c91646d4d905a7134fdc5086a95c4e59f1ca41c",
+          "tests/fixtures/primary_table_growth_data_20261019.json": "faa453c3d57bb4a9040fac084cb9a96ad6c3437c237f80ea8eff4cc3e3fe261f",
+          "experimental/material-batches/nbs-salt-densities-20261019/prepared-packet.json": "091239fd1cc6e4d7d8429aab381f1a9525f62293339fc4fbea230142f53b541f",
+          "tests/fixtures/pur_formulation_data_20261019.json": "541a4e325834ed992246489846bcfcf83480bfb86494ec2a212d78de821bf167",
+          "experimental/material-batches/pur-formulations-20261019/prepared-packet.json": "2c5320856ba07892eac6b35d6b881bb3ab21126e801beefa2b887c77abd93be7",
+          "tests/fixtures/source_family_growth_data_20261019.json": "9dfc8d71e89041f05e11a870ad29aea34cb3ab90586bcea8f1d717adc9878ac3",
+          "experimental/material-batches/nbs-oxide-density-20261019/prepared-packet.json": "21aaed2df59b0ab9301d1573aabd6fd8bd87354c01fdf11323cdee62b600aab3",
+          "materials_boundaries/data/materials.json": "93da1d629da8244853b3e6ad30d556137d57e3f639baffdd3c5bc34a3a1c9107",
+          "materials_boundaries/data/reference_properties.json": "275671a5f1a447d0cb071de361a8a515f60da60213edd076d725dd03d305b307",
+          "materials_boundaries/data/sources.json": "3828f53f5b946a4a90d1cb92630b141d496a02838a9dceb519730831c56cc8c1",
+          "tests/material_append_history.py": "2379867c0fe4ec89cf4f450b10bf84e48986783d50396c6f593316de78ad3251",
+          "tests/history_replay/benchmark_replay.py": "0fcba8efa14a6753e3409d0e4f2d5a5836bce3b76d919ba470516cb8d27074ce"
+        },
+        "preparation_seconds_not_timed_as_projection": 16.07627630000934,
+        "input_raw_sha256": "4ba9dcd9258cd1e2d9e17bdf20b4fdaa39e081e77779d12eb726ee91b19835ae",
+        "input_raw_bytes": 264796,
+        "old": {
+          "status": "passed",
+          "elapsed_seconds": 0.0006031999946571887,
+          "counts": {
+            "recover_catalogs": 0,
+            "appended_rows": 0,
+            "catalog_read_bytes": 0,
+            "packet_read_bytes": 0,
+            "other_read_bytes": 0
+          },
+          "output_sha256": "4ba9dcd9258cd1e2d9e17bdf20b4fdaa39e081e77779d12eb726ee91b19835ae",
+          "output_bytes": 264796
+        },
+        "new": {
+          "status": "passed",
+          "elapsed_seconds": 0.0005332999862730503,
+          "counts": {
+            "recover_catalogs": 0,
+            "appended_rows": 0,
+            "catalog_read_bytes": 0,
+            "packet_read_bytes": 0,
+            "other_read_bytes": 0
+          },
+          "output_sha256": "4ba9dcd9258cd1e2d9e17bdf20b4fdaa39e081e77779d12eb726ee91b19835ae",
+          "output_bytes": 264796
+        },
+        "input_sha256_after": {
+          "tests/fixtures/tarasov_pna_bpf_data_20261023.json": "ff13299c063b805d4cb36e73fe8db1521e88cab51aff2af13d2f4afab0a30773",
+          "experimental/material-batches/tarasov-pna-bpf-20261023/prepared-packet.json": "e9096077c7d6a206cf3a54a14272f838722187e10481588a1e3c07e5ab345997",
+          "tests/fixtures/bruns_borosilicate_data_20261023.json": "6eded8614db38dcd26ad1e570d7ad783110dd690296e59a9270300bfd3a0a016",
+          "experimental/material-batches/bruns-nbs2-borosilicate-20261023/prepared-packet.json": "7bc0fb2ba2dc3512abb95b7bf27b9f25d12c868d4bba041f667421572e5eccde",
+          "tests/fixtures/nylon_followup_data_20261021.json": "88f7303d6e8b4234555548ea39fdfb286380c72ea2f7f5edce990e1a0d733b97",
+          "experimental/material-batches/zenodo-8089569-nylon-followup-20261021/prepared-packet.json": "b18d7fc70bc5da537672f20a1682594c36c8d2d1e4c9e0ac05f9647d586e5172",
+          "tests/fixtures/tough_pla_followup_data_20261021.json": "46d33c7bfc8abb32b341a5c026ed8cb03e47350feeb17e2b0c478999aeacf1f4",
+          "experimental/material-batches/zenodo-8089569-tough-pla-followup-20261021/prepared-packet.json": "919c387b4cf0b586c36e2d922a45b0a64832831d659f755049a4be3bbea3be44",
+          "tests/fixtures/primary_table_growth_8_data_20261021.json": "de662ffe08378402a224b4ee4180252b620278dfb79164b58a20884d68e82c51",
+          "experimental/material-batches/zenodo-8089569-filaments-20261021/prepared-packet.json": "aaa94bd1f752e00f37268f8b786326dcb98011648985f8bc77cb92362f4c57e8",
+          "tests/fixtures/primary_table_growth_7_data_20261020.json": "26c80c5274504af2e0adbb55b4346d395e7c13e7009c504229f9c9dc32ca01fe",
+          "experimental/material-batches/outokumpu-core-moduli-20261020/prepared-packet.json": "c7317758ae4c1a4025ac00c6b288770e61cf33056caaf1771a638af66d32b84f",
+          "tests/fixtures/primary_table_growth_6_data_20261020.json": "3d3335edadae838524756ad1b33efb733d48893a123e6637c461dc79d59861b5",
+          "experimental/material-batches/tamas-benyei-nbr-rcf-20261020/prepared-packet.json": "ae401d2ab8b565acf5772bba10833176f46293ec025a9552d15aafd6a68c8ee3",
+          "tests/fixtures/primary_table_growth_5_data_20261020.json": "ced45ed6989e8988d461b0256c3ef7781c0f04b8364c6c991e3cacf36b064ff9",
+          "experimental/material-batches/bianchi-nr-nanoclay-20261020/prepared-packet.json": "a09f6d768b71667e045efa85d3c79de8ce3db49a926dcda55eb5421efc99d55f",
+          "tests/fixtures/primary_table_growth_4_data_20261019.json": "d57a1014e6d9e66f3f6c031e3a56abda909acc924fb9ab16835948989f4ce89c",
+          "experimental/material-batches/mtibe-pbs-pbat-hybrids-20261019/prepared-packet.json": "8c0dad86412f0708f72a3866cae5a7766db01be99df38f85defd3ba052da388c",
+          "tests/fixtures/primary_table_growth_3_data_20261019.json": "4ae9986cc914d9ff06a40875c19d606c0502a28527488151e6c71ec5f27eb0fe",
+          "experimental/material-batches/nbs-binary-oxide-density-20261019/prepared-packet.json": "0511e82ef9279928629f8e05076ba5050988de4e18081593d3bb8cbd1bfaa28e",
+          "tests/fixtures/primary_table_growth_2_data_20261019.json": "f3fcc3e8fdcdb292a2f3cf0b13c50de6bc90604ed2ac28b8938c9334e45933fc",
+          "experimental/material-batches/nbs-rca-density-20261019/prepared-packet.json": "6d906eec144e3908941f7c6f3c91646d4d905a7134fdc5086a95c4e59f1ca41c",
+          "tests/fixtures/primary_table_growth_data_20261019.json": "faa453c3d57bb4a9040fac084cb9a96ad6c3437c237f80ea8eff4cc3e3fe261f",
+          "experimental/material-batches/nbs-salt-densities-20261019/prepared-packet.json": "091239fd1cc6e4d7d8429aab381f1a9525f62293339fc4fbea230142f53b541f",
+          "tests/fixtures/pur_formulation_data_20261019.json": "541a4e325834ed992246489846bcfcf83480bfb86494ec2a212d78de821bf167",
+          "experimental/material-batches/pur-formulations-20261019/prepared-packet.json": "2c5320856ba07892eac6b35d6b881bb3ab21126e801beefa2b887c77abd93be7",
+          "tests/fixtures/source_family_growth_data_20261019.json": "9dfc8d71e89041f05e11a870ad29aea34cb3ab90586bcea8f1d717adc9878ac3",
+          "experimental/material-batches/nbs-oxide-density-20261019/prepared-packet.json": "21aaed2df59b0ab9301d1573aabd6fd8bd87354c01fdf11323cdee62b600aab3",
+          "materials_boundaries/data/materials.json": "93da1d629da8244853b3e6ad30d556137d57e3f639baffdd3c5bc34a3a1c9107",
+          "materials_boundaries/data/reference_properties.json": "275671a5f1a447d0cb071de361a8a515f60da60213edd076d725dd03d305b307",
+          "materials_boundaries/data/sources.json": "3828f53f5b946a4a90d1cb92630b141d496a02838a9dceb519730831c56cc8c1",
+          "tests/material_append_history.py": "2379867c0fe4ec89cf4f450b10bf84e48986783d50396c6f593316de78ad3251",
+          "tests/history_replay/benchmark_replay.py": "0fcba8efa14a6753e3409d0e4f2d5a5836bce3b76d919ba470516cb8d27074ce"
+        },
+        "inputs_unchanged": true,
+        "byte_equal": true,
+        "worker_returncode": 0,
+        "worker_termination": {
+          "attempted": false
+        }
+      }
+    ],
+    "status": "passed",
+    "inputs_unchanged_through_final_check": true,
+    "elapsed_seconds_including_preparation_and_checks": 702.4481926000153
+  },
+  "real_benchmark_cases_passed": 9,
+  "real_benchmark_cases_not_run": [],
+  "all_case_outputs_match_frozen_oldest_table_sha256": {
+    "materials": "410efabb24dad7ed377ac7b94d35bccc40afe91194f0323e0298f500314e02f3",
+    "properties": "c3f69e692a0dfb4ced72aea30794a7ee7b032ac99231db517397e0575dbc4bb0",
+    "sources": "4ba9dcd9258cd1e2d9e17bdf20b4fdaa39e081e77779d12eb726ee91b19835ae"
+  },
+  "preservation": {
+    "all_111_baseline_fixtures_byte_identical": true,
+    "all_seven_checkpoint_code_and_test_pins_unchanged": true,
+    "all_benchmark_inputs_unchanged": true,
+    "production_catalog_workflow_and_installed_smoke_unchanged": true,
+    "cross_call_cache_added": false,
+    "code_modified_in_continuation": false
+  },
+  "latest_baseline_compatibility_required": [
+    {
+      "path": "tests/test_kapoor_phosphate_preservation.py",
+      "line": 111,
+      "requirement": "Preserve original engine hash and assertion; separately review finite exact recovery before the direct raw-engine hash check."
+    },
+    {
+      "path": "tests/test_tian_nano_ti_preservation.py",
+      "line": 106,
+      "requirement": "Preserve original engine hash and assertion; separately review finite exact recovery before the direct raw-engine hash check."
+    },
+    {
+      "requirement": "Separately pin and validate the 16-ledger Kapoor/Tian chain and its current disk images; the benchmark here intentionally requires the original 14-ledger 196995 chain."
+    }
+  ],
+  "coverage_limits": [
+    "The remaining 1738 of 1778 baseline core methods were not run in this task; the full and targeted suites were not run as complete suites.",
+    "No installed-package smoke, CLI subprocess, native Linux, or hosted CI run for this isolated patch; their production/test contracts remain unchanged.",
+    "Windows and POSIX process-budget branches in the new tests are simulations running on Windows, not native POSIX tests.",
+    "Benchmarks are single instrumented old-before-new observations with uncontrolled filesystem caches and machine load. No general speed factor is claimed.",
+    "Inputs must remain stable during one invocation; no atomic concurrent-edit guarantee.",
+    "This does not establish the cause of the earlier 900-second installed wheel-smoke timeout.",
+    "Latest Tian integration and independent final review remain pending; no push."
+  ],
+  "catalog_counts_on_original_isolated_baseline": {
+    "experimental_total": 1177,
+    "source_qualified": 1153,
+    "existing_computed": 24,
+    "main": 1081,
+    "new_admissions": 0
+  }
+}

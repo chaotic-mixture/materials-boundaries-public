@@ -160,6 +160,9 @@ def project_file_chain(filename, raw, ledgers):
     for newer, older in zip(entries, entries[1:]):
         if newer["previous_sha256"] != older["sha256"]:
             raise AssertionError("Append-history file chain is not adjacent or ordered")
+    if filename == "tests/material_append_history.py":
+        from material_append_replay_compat import project_engine_bytes
+        raw = project_engine_bytes(raw)
     for entry in entries:
         if digest(raw) == entry["sha256"]:
             raw = recover_file(raw, entry)
@@ -170,20 +173,27 @@ def project_catalog_bytes_chain(root, filename, raw, ledgers):
     """Align the whole disk graph before substituting a known historical file.
 
     Replacing one current table with an older image before projecting the other
-    tables would create a partial append. Each prefix is therefore recovered on
-    the complete graph first, before the matching single-file image is used.
+    tables would create a partial append. Recover each intervening prefix on
+    the complete graph before substituting the matching single-file image.
+    The unmodified disk graph and cursor belong to this invocation only; later
+    calls reread disk inputs. A substituted input must not repair the cached
+    disk graph and hide a later prefix failure. Unknown images do not load it.
     """
     if filename not in FILES.values() or type(raw) is not bytes:
         raise AssertionError("Unknown append-history catalog path or input type")
     ledgers = _ordered_catalog_ledgers(ledgers)
     name = next(key for key, value in FILES.items() if value == filename)
+    graph, processed = None, 0
     for index, ledger in enumerate(ledgers):
         if (ledger["current_sha256"][name] != ledger["baseline_sha256"][name]
                 and digest(raw) == ledger["current_sha256"][name]):
-            graph = {key: json.loads((root / "materials_boundaries/data" / path).read_bytes(),
-                                    object_pairs_hook=unique_keys)
-                     for key, path in FILES.items()}
-            graph = project_catalog_chain(root, graph, ledgers[:index])
-            graph[name] = json.loads(raw, object_pairs_hook=unique_keys)
-            raw = encoded(recover_catalogs(root, graph, ledger)[name])
+            if graph is None:
+                graph = {key: json.loads((root / "materials_boundaries/data" / path).read_bytes(),
+                                        object_pairs_hook=unique_keys)
+                         for key, path in FILES.items()}
+            graph = project_catalog_chain(root, graph, ledgers[processed:index])
+            processed = index
+            selected = dict(graph)
+            selected[name] = json.loads(raw, object_pairs_hook=unique_keys)
+            raw = encoded(recover_catalogs(root, selected, ledger)[name])
     return raw

@@ -108,7 +108,8 @@ class KapoorPhosphatePreservationTests(unittest.TestCase):
             if mutation != 'reordered':
                 with self.subTest(recovery_mutation=mutation), self.assertRaises(AssertionError):
                     recover_catalogs(ROOT, self.current, ledger)
-        self.assertEqual(sha256((ROOT / 'tests/material_append_history.py').read_bytes()).hexdigest(), ENGINE_SHA256)
+        from material_append_replay_compat import project_engine_bytes
+        self.assertEqual(sha256(project_engine_bytes((ROOT / 'tests/material_append_history.py').read_bytes())).hexdigest(), ENGINE_SHA256)
 
     def test_partial_reordered_duplicate_and_fact_drift_fail_closed(self):
         for collection, rows in self.additions.items():

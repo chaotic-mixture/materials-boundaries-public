@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "baseline_commit": "826333c73a420b7d254c469d9f6f65155983cde1",
+  "updates": {
+    "tests/test_kapoor_phosphate_preservation.py": {
+      "previous_sha256": "ab15d14cd2ba5b86f2ae8a996f9c015302b89bbcb181250237892bb91a1cfffb",
+      "sha256": "ec52a46401da69fca2ad20fb88714f22ac6925213513c8a6cd0c7779e51e114f",
+      "edits": [
+        {
+          "offset": 6429,
+          "before": "        self.assertEqual(sha256((ROOT / 'tests/material_append_history.py').read_bytes()).hexdigest(), ENGINE_SHA256)\n",
+          "after": "        from material_append_replay_compat import project_engine_bytes\n        self.assertEqual(sha256(project_engine_bytes((ROOT / 'tests/material_append_history.py').read_bytes())).hexdigest(), ENGINE_SHA256)\n"
+        }
+      ]
+    },
+    "tests/test_tian_nano_ti_preservation.py": {
+      "previous_sha256": "7d890d497b701193830e4ec5458efc563ec1011e236d5edbb8a26ca0ebc7a401",
+      "sha256": "70642b3f08156cacf622ed337fdc6c9af88dbba2ba56d6b21782a96089a2c66e",
+      "edits": [
+        {
+          "offset": 5997,
+          "before": "        self.assertEqual(sha256((ROOT / 'tests/material_append_history.py').read_bytes()).hexdigest(), ENGINE_SHA256)\n",
+          "after": "        from material_append_replay_compat import project_engine_bytes\n        self.assertEqual(sha256(project_engine_bytes((ROOT / 'tests/material_append_history.py').read_bytes())).hexdigest(), ENGINE_SHA256)\n"
+        }
+      ]
+    }
+  }
+}

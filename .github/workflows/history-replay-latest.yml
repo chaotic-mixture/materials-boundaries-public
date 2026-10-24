@@ -1,0 +1,33 @@
+name: history-replay-latest
+on:
+  push:
+    branches: [experiment/test-history-replay-tian-20261024]
+permissions:
+  contents: read
+jobs:
+  replay-targeted:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            python-version: '3.11'
+          - os: windows-latest
+            python-version: '3.12'
+    env:
+      PYTHONUTF8: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - run: git config --global core.autocrlf false
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m pip install -e '.[dev]'
+      - run: python scripts/run_history_replay_latest_ci.py --validate-inventory
+      - run: python scripts/run_history_replay_latest_ci.py --tests
