@@ -210,7 +210,7 @@ class ComputedRegistry:
                 'selected_entry_count': len(records),
                 'related_source_calculation_count': len(calculations),
                 'related_source_provider_group_count': len(groups),
-                'legacy_unique_material_count': 1153,
+                'legacy_unique_material_count': 1159,
                 'cross_namespace_equivalence': False, 'relationship_graph_reconstructed': False}
             if len(canonical(result)) > MAX_EXPORT_BYTES:
                 raise ValueError('Overlay exceeds fixed export budget')
@@ -218,7 +218,7 @@ class ComputedRegistry:
         result = {'schema':'computed-overlay-recovery/1', 'namespace':'computed', 'baseline_version':self.baseline,
                   'review_version':self.review_digest, 'overlay_version':digest(records), 'records':records,
                   'project_unique_material_count':len({r['project_material_id'] for r in records}),
-                  'provider_entry_count':len(records), 'legacy_unique_material_count':1153,
+                  'provider_entry_count':len(records), 'legacy_unique_material_count':1159,
                   'cross_namespace_equivalence':False, 'relationship_graph_reconstructed':False}
         if len(canonical(result)) > MAX_EXPORT_BYTES:
             raise ValueError('Overlay exceeds fixed export budget')
