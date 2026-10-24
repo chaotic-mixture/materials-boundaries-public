@@ -1,0 +1,372 @@
+{
+  "schema": "material-batch-candidate-validation/1",
+  "batch_id": "kapoor-phosphate-glasses-20261024",
+  "baseline_commit": "196995256836db2d8f870ac9a91f664bfdd03e7f",
+  "platform": "Native Windows, CPython 3.11",
+  "scope": "Candidate-only source-qualified facts and finite identity review. No runtime material admission.",
+  "test_ledger": {
+    "test_file": "tests/test_kapoor_phosphate_packet.py",
+    "final_test_sha256": "13eb9369a1738510c9535acc7a153a285c26ebcab15fded1564c0ff4237d491e",
+    "final_test_bytes": 18122,
+    "unique_test_methods": 17,
+    "first_full_module": {
+      "passed": 17,
+      "unittest_seconds": 54.822,
+      "wall_seconds": 55.01500000001397,
+      "returncode": 0,
+      "input_changes_during_run": {
+        "experimental/material-batches/kapoor-phosphate-glasses-20261024/identity-review.json": {
+          "before": "d8957d41012136853cb3baccf78d48ade8232ab01fe67b2cac76dd23e0c3a37e",
+          "after": "963f43558409159fa81d368b5ca403c36f6fea584de70b8caf5cf26a71d50818"
+        }
+      },
+      "log_sha256": "806ee109af48bb69939547f70a887fff2399c2e80681d46ca39d23d44e83f0fe"
+    },
+    "final_focused_run": {
+      "passed": 2,
+      "unittest_seconds": 8.113,
+      "wall_seconds": 8.344000000011874,
+      "returncode": 0,
+      "inputs_unchanged": true,
+      "log_sha256": "3effef888c2e79b02aa75cb174ccf44cf6f9983e8f9d489d64a430f43454e1de",
+      "methods": [
+        "KapoorPhosphatePacketTests.test_baseline_hash_drift_is_refused",
+        "KapoorPhosphatePacketTests.test_p60_contextual_collision_stays_source_qualified_and_separate"
+      ],
+      "scope_note": "Earlier focused run after strengthening two methods; later superseded for final-tree coverage by the full 17-method run."
+    },
+    "unchanged_method_bodies_verified_against_first_test_source": [
+      "KapoorPhosphatePacketTests.test_baseline_pins_and_runtime_catalog_bytes_remain_unchanged",
+      "KapoorPhosphatePacketTests.test_duplicate_source_alias_and_designation_do_not_create_materials",
+      "KapoorPhosphatePacketTests.test_forged_prepared_values_or_report_cannot_replace_exact_replay",
+      "KapoorPhosphatePacketTests.test_icp_oes_compositions_are_exact_analyzed_mol_percent",
+      "KapoorPhosphatePacketTests.test_measurement_evidence_does_not_claim_scientific_validation",
+      "KapoorPhosphatePacketTests.test_missing_property_cannot_write_partial_candidate",
+      "KapoorPhosphatePacketTests.test_one_state_and_property_per_identity_do_not_admit_materials",
+      "KapoorPhosphatePacketTests.test_pending_source_identity_or_rights_never_become_handoff_ready",
+      "KapoorPhosphatePacketTests.test_repeated_measurements_do_not_become_independent_sample_count",
+      "KapoorPhosphatePacketTests.test_replay_and_idempotent_write_preserve_bytes_and_mtime",
+      "KapoorPhosphatePacketTests.test_room_temperature_and_prepared_state_do_not_supply_unknown_conditions",
+      "KapoorPhosphatePacketTests.test_six_labels_and_density_cells_preserve_reported_precision",
+      "KapoorPhosphatePacketTests.test_source_attribution_and_original_document_hash_are_bound",
+      "KapoorPhosphatePacketTests.test_source_wide_sd_ceiling_is_not_a_row_uncertainty_or_mean",
+      "KapoorPhosphatePacketTests.test_wrong_density_unit_is_rejected"
+    ],
+    "earlier_test_source_reconstruction_matches_observed_run_hash": true,
+    "single_full_module_run_on_final_tree": true,
+    "failures_errors_skips_in_both_runs": 0,
+    "runtime_catalog_changes": false,
+    "runtime_admissions": 0,
+    "broader_or_historical_suites_run": false,
+    "committed_or_pushed": false,
+    "final_full_module_run": {
+      "passed": 17,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "unittest_seconds": 69.76,
+      "wall_seconds": 69.93799999999464,
+      "returncode": 0,
+      "budget_seconds": 600,
+      "timed_out": false,
+      "inputs_unchanged": true,
+      "input_count": 10,
+      "input_sha256": {
+        "tests/test_kapoor_phosphate_packet.py": "13eb9369a1738510c9535acc7a153a285c26ebcab15fded1564c0ff4237d491e",
+        "scripts/prepare_formulation_packet.py": "00bbed369214f2ca125432c406a41e28abe4aa2f911912e10666428cde102035",
+        "experimental/material-batches/kapoor-phosphate-glasses-20261024/packet-spec.json": "5da4e65064a9109e11eb4e1fef3e35aa41426de767bc7c5f80fa184bf202912f",
+        "experimental/material-batches/kapoor-phosphate-glasses-20261024/prepared-packet.json": "03284799a8d5c34a7927c56823339bb0067d2d98582c57e0e0c52ec701e29c6b",
+        "experimental/material-batches/kapoor-phosphate-glasses-20261024/identity-review.json": "963f43558409159fa81d368b5ca403c36f6fea584de70b8caf5cf26a71d50818",
+        "materials_boundaries/data/materials.json": "93da1d629da8244853b3e6ad30d556137d57e3f639baffdd3c5bc34a3a1c9107",
+        "materials_boundaries/data/reference_properties.json": "275671a5f1a447d0cb071de361a8a515f60da60213edd076d725dd03d305b307",
+        "materials_boundaries/data/sources.json": "3828f53f5b946a4a90d1cb92630b141d496a02838a9dceb519730831c56cc8c1",
+        "experimental/material-batches/kapoor-phosphate-glasses-20261024/source-review.json": "8e8a5e235f01e4487550a45a8583e88fb6170ea16851d2548d65bdb01a2144cd",
+        "experimental/material-batches/kapoor-phosphate-glasses-20261024/build_identity_review.py": "73ac4f4d2625023658d285a477fe570e04887c4f2f1cd433e0eebe993097dc49"
+      },
+      "log_sha256": "cf6a0d78cf2c36f1bd2e2460f7f0c5037810cc4acc18373b4ac5713b655a789e",
+      "test_ids": [
+        "test_kapoor_phosphate_packet.KapoorPhosphatePacketTests.test_baseline_hash_drift_is_refused",
+        "test_kapoor_phosphate_packet.KapoorPhosphatePacketTests.test_baseline_pins_and_runtime_catalog_bytes_remain_unchanged",
+        "test_kapoor_phosphate_packet.KapoorPhosphatePacketTests.test_duplicate_source_alias_and_designation_do_not_create_materials",
+        "test_kapoor_phosphate_packet.KapoorPhosphatePacketTests.test_forged_prepared_values_or_report_cannot_replace_exact_replay",
+        "test_kapoor_phosphate_packet.KapoorPhosphatePacketTests.test_icp_oes_compositions_are_exact_analyzed_mol_percent",
+        "test_kapoor_phosphate_packet.KapoorPhosphatePacketTests.test_measurement_evidence_does_not_claim_scientific_validation",
+        "test_kapoor_phosphate_packet.KapoorPhosphatePacketTests.test_missing_property_cannot_write_partial_candidate",
+        "test_kapoor_phosphate_packet.KapoorPhosphatePacketTests.test_one_state_and_property_per_identity_do_not_admit_materials",
+        "test_kapoor_phosphate_packet.KapoorPhosphatePacketTests.test_p60_contextual_collision_stays_source_qualified_and_separate",
+        "test_kapoor_phosphate_packet.KapoorPhosphatePacketTests.test_pending_source_identity_or_rights_never_become_handoff_ready",
+        "test_kapoor_phosphate_packet.KapoorPhosphatePacketTests.test_repeated_measurements_do_not_become_independent_sample_count",
+        "test_kapoor_phosphate_packet.KapoorPhosphatePacketTests.test_replay_and_idempotent_write_preserve_bytes_and_mtime",
+        "test_kapoor_phosphate_packet.KapoorPhosphatePacketTests.test_room_temperature_and_prepared_state_do_not_supply_unknown_conditions",
+        "test_kapoor_phosphate_packet.KapoorPhosphatePacketTests.test_six_labels_and_density_cells_preserve_reported_precision",
+        "test_kapoor_phosphate_packet.KapoorPhosphatePacketTests.test_source_attribution_and_original_document_hash_are_bound",
+        "test_kapoor_phosphate_packet.KapoorPhosphatePacketTests.test_source_wide_sd_ceiling_is_not_a_row_uncertainty_or_mean",
+        "test_kapoor_phosphate_packet.KapoorPhosphatePacketTests.test_wrong_density_unit_is_rejected"
+      ],
+      "reason": "Final complete 17-method run after source/spec LF normalization; prior full and focused attempts retained separately."
+    },
+    "historical_ledger_archive": {
+      "file": "packet-tests-ledger-before-final.json",
+      "sha256": "38cd9ea5e0243970ea33f5d69c41db2ff2b422f57a0685f6571c53386c692f4b"
+    },
+    "coverage_note": "17 unique test methods; the earlier 17-method and 2-method executions are retained as attempts, not added to the unique test count.",
+    "updated_at_utc": "2026-10-24T02:12:25.468356+00:00"
+  },
+  "test_runs": [
+    {
+      "started_at_utc": "2026-10-24T02:02:43.961818+00:00",
+      "completed_at_utc": "2026-10-24T02:03:38.974740+00:00",
+      "command": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_kapoor_phosphate_packet.py",
+        "-v"
+      ],
+      "budget_seconds": 600,
+      "elapsed_seconds": 55.01500000001397,
+      "returncode": 0,
+      "timed_out": false,
+      "reported_tests": [
+        [
+          "17",
+          "54.822"
+        ]
+      ],
+      "log_sha256": "806ee109af48bb69939547f70a887fff2399c2e80681d46ca39d23d44e83f0fe",
+      "input_sha256_before": {
+        "tests/test_kapoor_phosphate_packet.py": "45ea318cbf1cb167a3ef97278e1d986f4893b0286c083a6dec0284a4ca25b909",
+        "scripts/prepare_formulation_packet.py": "00bbed369214f2ca125432c406a41e28abe4aa2f911912e10666428cde102035",
+        "experimental/material-batches/kapoor-phosphate-glasses-20261024/packet-spec.json": "e67947114648a908addaa91a644ba486073b437d87ddd16b89f56d0dcec311ad",
+        "experimental/material-batches/kapoor-phosphate-glasses-20261024/prepared-packet.json": "03284799a8d5c34a7927c56823339bb0067d2d98582c57e0e0c52ec701e29c6b",
+        "experimental/material-batches/kapoor-phosphate-glasses-20261024/identity-review.json": "d8957d41012136853cb3baccf78d48ade8232ab01fe67b2cac76dd23e0c3a37e",
+        "materials_boundaries/data/materials.json": "93da1d629da8244853b3e6ad30d556137d57e3f639baffdd3c5bc34a3a1c9107",
+        "materials_boundaries/data/reference_properties.json": "275671a5f1a447d0cb071de361a8a515f60da60213edd076d725dd03d305b307",
+        "materials_boundaries/data/sources.json": "3828f53f5b946a4a90d1cb92630b141d496a02838a9dceb519730831c56cc8c1"
+      },
+      "input_sha256_after": {
+        "tests/test_kapoor_phosphate_packet.py": "45ea318cbf1cb167a3ef97278e1d986f4893b0286c083a6dec0284a4ca25b909",
+        "scripts/prepare_formulation_packet.py": "00bbed369214f2ca125432c406a41e28abe4aa2f911912e10666428cde102035",
+        "experimental/material-batches/kapoor-phosphate-glasses-20261024/packet-spec.json": "e67947114648a908addaa91a644ba486073b437d87ddd16b89f56d0dcec311ad",
+        "experimental/material-batches/kapoor-phosphate-glasses-20261024/prepared-packet.json": "03284799a8d5c34a7927c56823339bb0067d2d98582c57e0e0c52ec701e29c6b",
+        "experimental/material-batches/kapoor-phosphate-glasses-20261024/identity-review.json": "963f43558409159fa81d368b5ca403c36f6fea584de70b8caf5cf26a71d50818",
+        "materials_boundaries/data/materials.json": "93da1d629da8244853b3e6ad30d556137d57e3f639baffdd3c5bc34a3a1c9107",
+        "materials_boundaries/data/reference_properties.json": "275671a5f1a447d0cb071de361a8a515f60da60213edd076d725dd03d305b307",
+        "materials_boundaries/data/sources.json": "3828f53f5b946a4a90d1cb92630b141d496a02838a9dceb519730831c56cc8c1"
+      },
+      "inputs_unchanged": false,
+      "tests_only": true,
+      "runtime_admissions": 0
+    },
+    {
+      "started_at_utc": "2026-10-24T02:05:00.755945+00:00",
+      "completed_at_utc": "2026-10-24T02:05:09.110934+00:00",
+      "selected_methods": [
+        "test_baseline_hash_drift_is_refused",
+        "test_p60_contextual_collision_stays_source_qualified_and_separate"
+      ],
+      "budget_seconds": 600,
+      "elapsed_seconds": 8.344000000011874,
+      "returncode": 0,
+      "timed_out": false,
+      "reported_tests": [
+        [
+          "2",
+          "8.113"
+        ]
+      ],
+      "log_sha256": "3effef888c2e79b02aa75cb174ccf44cf6f9983e8f9d489d64a430f43454e1de",
+      "input_sha256_before": {
+        "tests/test_kapoor_phosphate_packet.py": "13eb9369a1738510c9535acc7a153a285c26ebcab15fded1564c0ff4237d491e",
+        "scripts/prepare_formulation_packet.py": "00bbed369214f2ca125432c406a41e28abe4aa2f911912e10666428cde102035",
+        "experimental/material-batches/kapoor-phosphate-glasses-20261024/packet-spec.json": "e67947114648a908addaa91a644ba486073b437d87ddd16b89f56d0dcec311ad",
+        "experimental/material-batches/kapoor-phosphate-glasses-20261024/prepared-packet.json": "03284799a8d5c34a7927c56823339bb0067d2d98582c57e0e0c52ec701e29c6b",
+        "experimental/material-batches/kapoor-phosphate-glasses-20261024/identity-review.json": "963f43558409159fa81d368b5ca403c36f6fea584de70b8caf5cf26a71d50818",
+        "materials_boundaries/data/materials.json": "93da1d629da8244853b3e6ad30d556137d57e3f639baffdd3c5bc34a3a1c9107",
+        "materials_boundaries/data/reference_properties.json": "275671a5f1a447d0cb071de361a8a515f60da60213edd076d725dd03d305b307",
+        "materials_boundaries/data/sources.json": "3828f53f5b946a4a90d1cb92630b141d496a02838a9dceb519730831c56cc8c1"
+      },
+      "input_sha256_after": {
+        "tests/test_kapoor_phosphate_packet.py": "13eb9369a1738510c9535acc7a153a285c26ebcab15fded1564c0ff4237d491e",
+        "scripts/prepare_formulation_packet.py": "00bbed369214f2ca125432c406a41e28abe4aa2f911912e10666428cde102035",
+        "experimental/material-batches/kapoor-phosphate-glasses-20261024/packet-spec.json": "e67947114648a908addaa91a644ba486073b437d87ddd16b89f56d0dcec311ad",
+        "experimental/material-batches/kapoor-phosphate-glasses-20261024/prepared-packet.json": "03284799a8d5c34a7927c56823339bb0067d2d98582c57e0e0c52ec701e29c6b",
+        "experimental/material-batches/kapoor-phosphate-glasses-20261024/identity-review.json": "963f43558409159fa81d368b5ca403c36f6fea584de70b8caf5cf26a71d50818",
+        "materials_boundaries/data/materials.json": "93da1d629da8244853b3e6ad30d556137d57e3f639baffdd3c5bc34a3a1c9107",
+        "materials_boundaries/data/reference_properties.json": "275671a5f1a447d0cb071de361a8a515f60da60213edd076d725dd03d305b307",
+        "materials_boundaries/data/sources.json": "3828f53f5b946a4a90d1cb92630b141d496a02838a9dceb519730831c56cc8c1"
+      },
+      "inputs_unchanged": true,
+      "tests_only": true,
+      "runtime_admissions": 0,
+      "reason": "Strengthened source-record hash and 22 frozen-input assertions; rerun identity review after its final update. Earlier full module result is preserved separately."
+    },
+    {
+      "started_at_utc": "2026-10-24T02:10:38.103025+00:00",
+      "completed_at_utc": "2026-10-24T02:11:48.077169+00:00",
+      "command": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_kapoor_phosphate_packet.py",
+        "-v"
+      ],
+      "budget_seconds": 600,
+      "elapsed_seconds": 69.93799999999464,
+      "returncode": 0,
+      "timed_out": false,
+      "reported_tests": [
+        [
+          "17",
+          "69.760"
+        ]
+      ],
+      "log_sha256": "cf6a0d78cf2c36f1bd2e2460f7f0c5037810cc4acc18373b4ac5713b655a789e",
+      "input_sha256_before": {
+        "tests/test_kapoor_phosphate_packet.py": "13eb9369a1738510c9535acc7a153a285c26ebcab15fded1564c0ff4237d491e",
+        "scripts/prepare_formulation_packet.py": "00bbed369214f2ca125432c406a41e28abe4aa2f911912e10666428cde102035",
+        "experimental/material-batches/kapoor-phosphate-glasses-20261024/packet-spec.json": "5da4e65064a9109e11eb4e1fef3e35aa41426de767bc7c5f80fa184bf202912f",
+        "experimental/material-batches/kapoor-phosphate-glasses-20261024/prepared-packet.json": "03284799a8d5c34a7927c56823339bb0067d2d98582c57e0e0c52ec701e29c6b",
+        "experimental/material-batches/kapoor-phosphate-glasses-20261024/identity-review.json": "963f43558409159fa81d368b5ca403c36f6fea584de70b8caf5cf26a71d50818",
+        "materials_boundaries/data/materials.json": "93da1d629da8244853b3e6ad30d556137d57e3f639baffdd3c5bc34a3a1c9107",
+        "materials_boundaries/data/reference_properties.json": "275671a5f1a447d0cb071de361a8a515f60da60213edd076d725dd03d305b307",
+        "materials_boundaries/data/sources.json": "3828f53f5b946a4a90d1cb92630b141d496a02838a9dceb519730831c56cc8c1",
+        "experimental/material-batches/kapoor-phosphate-glasses-20261024/source-review.json": "8e8a5e235f01e4487550a45a8583e88fb6170ea16851d2548d65bdb01a2144cd",
+        "experimental/material-batches/kapoor-phosphate-glasses-20261024/build_identity_review.py": "73ac4f4d2625023658d285a477fe570e04887c4f2f1cd433e0eebe993097dc49"
+      },
+      "input_sha256_after": {
+        "tests/test_kapoor_phosphate_packet.py": "13eb9369a1738510c9535acc7a153a285c26ebcab15fded1564c0ff4237d491e",
+        "scripts/prepare_formulation_packet.py": "00bbed369214f2ca125432c406a41e28abe4aa2f911912e10666428cde102035",
+        "experimental/material-batches/kapoor-phosphate-glasses-20261024/packet-spec.json": "5da4e65064a9109e11eb4e1fef3e35aa41426de767bc7c5f80fa184bf202912f",
+        "experimental/material-batches/kapoor-phosphate-glasses-20261024/prepared-packet.json": "03284799a8d5c34a7927c56823339bb0067d2d98582c57e0e0c52ec701e29c6b",
+        "experimental/material-batches/kapoor-phosphate-glasses-20261024/identity-review.json": "963f43558409159fa81d368b5ca403c36f6fea584de70b8caf5cf26a71d50818",
+        "materials_boundaries/data/materials.json": "93da1d629da8244853b3e6ad30d556137d57e3f639baffdd3c5bc34a3a1c9107",
+        "materials_boundaries/data/reference_properties.json": "275671a5f1a447d0cb071de361a8a515f60da60213edd076d725dd03d305b307",
+        "materials_boundaries/data/sources.json": "3828f53f5b946a4a90d1cb92630b141d496a02838a9dceb519730831c56cc8c1",
+        "experimental/material-batches/kapoor-phosphate-glasses-20261024/source-review.json": "8e8a5e235f01e4487550a45a8583e88fb6170ea16851d2548d65bdb01a2144cd",
+        "experimental/material-batches/kapoor-phosphate-glasses-20261024/build_identity_review.py": "73ac4f4d2625023658d285a477fe570e04887c4f2f1cd433e0eebe993097dc49"
+      },
+      "inputs_unchanged": true,
+      "tests_only": true,
+      "runtime_admissions": 0,
+      "reason": "Final complete 17-method run after source/spec LF normalization; prior full and focused attempts retained separately."
+    }
+  ],
+  "final_source_and_test_artifacts": {
+    "build_identity_review.py": {
+      "bytes": 21070,
+      "sha256": "73ac4f4d2625023658d285a477fe570e04887c4f2f1cd433e0eebe993097dc49"
+    },
+    "identity-review.json": {
+      "bytes": 203506,
+      "sha256": "963f43558409159fa81d368b5ca403c36f6fea584de70b8caf5cf26a71d50818"
+    },
+    "packet-spec.json": {
+      "bytes": 77364,
+      "sha256": "5da4e65064a9109e11eb4e1fef3e35aa41426de767bc7c5f80fa184bf202912f"
+    },
+    "preparation-receipt.json": {
+      "bytes": 9598,
+      "sha256": "f3862b021b6f554dbce5ebae2341554475e7132dc3bb8a9bf2662b38be608901"
+    },
+    "prepared-packet.json": {
+      "bytes": 157789,
+      "sha256": "03284799a8d5c34a7927c56823339bb0067d2d98582c57e0e0c52ec701e29c6b"
+    },
+    "README.md": {
+      "bytes": 5598,
+      "sha256": "2adf96ebc02c8f7b24358499b420690426bc57c02d9a9d718b3abdbaa2535055"
+    },
+    "source-review.json": {
+      "bytes": 7361,
+      "sha256": "8e8a5e235f01e4487550a45a8583e88fb6170ea16851d2548d65bdb01a2144cd"
+    }
+  },
+  "additional_checks": {
+    "strict_candidate_cli_initial_native_compile": "passed; six candidate identities, zero formal admissions",
+    "strict_candidate_cli_repeat": "passed; exact packet bytes and mtime unchanged; see preparation-receipt.json",
+    "finite_identity_inventory_exact_replay": {
+      "result": "passed",
+      "inputs": 22,
+      "field_occurrences": 14039,
+      "normalized_labels": 8217,
+      "identity_review_sha256": "963f43558409159fa81d368b5ca403c36f6fea584de70b8caf5cf26a71d50818"
+    },
+    "json_and_python_syntax": "passed",
+    "runtime_three_table_pins": "unchanged and exact baseline bytes checked",
+    "source_bytes": {
+      "bytes": 5036175,
+      "sha256": "ca831de841ebc22e52157474e491ca2151d8e4f6d68576a75376af47203d38a0",
+      "bounded_public_download": {
+        "timeout_seconds": 90,
+        "maximum_bytes": 15000000,
+        "attempts": 1
+      },
+      "visual_page_checks": [
+        2,
+        3,
+        13
+      ],
+      "raw_assets_included": false
+    },
+    "separate_internal_source_fidelity_review": "no blocking findings; not independent scientific review or parent approval"
+  },
+  "failed_attempts": [
+    {
+      "operation": "initial strict candidate compiler atomic output rename in filesystem sandbox",
+      "result": "WinError 5; no prepared packet created",
+      "recovery": "Same exact inputs and unchanged compiler completed natively; original error retained, no assertion weakened."
+    },
+    {
+      "operation": "pre-commit git diff --cached --check",
+      "result": "CRLF in newly authored JSON flagged as trailing whitespace",
+      "recovery": "Only new JSON files normalized to LF; parsed JSON objects and canonical prepared packet unchanged. Receipts refreshed; complete final 17-method module rerun."
+    }
+  ],
+  "line_ending_normalization": [
+    {
+      "path": "experimental/material-batches/kapoor-phosphate-glasses-20261024/packet-spec.json",
+      "before_sha256": "e67947114648a908addaa91a644ba486073b437d87ddd16b89f56d0dcec311ad",
+      "after_sha256": "5da4e65064a9109e11eb4e1fef3e35aa41426de767bc7c5f80fa184bf202912f",
+      "json_semantics_unchanged": true
+    },
+    {
+      "path": "experimental/material-batches/kapoor-phosphate-glasses-20261024/preparation-receipt.json",
+      "before_sha256": "f82aa13b9b18b23eef4807beb629303b2fdf9a9ec36788ee02f64240d3c35464",
+      "after_sha256": "350ad904f1622d346a6764adab09812569a93824d2559c2a323f40998e420ace",
+      "json_semantics_unchanged": true
+    },
+    {
+      "path": "experimental/material-batches/kapoor-phosphate-glasses-20261024/source-review.json",
+      "before_sha256": "4ecbebbea31da527f29b30d9dc089b0545092a0c2110f5266c3cd4a207e0d9c7",
+      "after_sha256": "8e8a5e235f01e4487550a45a8583e88fb6170ea16851d2548d65bdb01a2144cd",
+      "json_semantics_unchanged": true
+    },
+    {
+      "path": "experimental/material-batches/kapoor-phosphate-glasses-20261024/validation-results.json",
+      "before_sha256": "5576ba348977011c1a13cc0fa1719aa3ebc58f9510af09b0f867bd8ff76784c9",
+      "after_sha256": "b6a6d3b2facc3a5b279bc7797f1d2bf0811d1e1724160530b65fcfd0da748ea6",
+      "json_semantics_unchanged": true
+    }
+  ],
+  "not_run": [
+    "The pre-existing 1778-method core inventory, including historical preservation suites.",
+    "Installed package/wheel/CLI smoke suites; no runtime package changes were made.",
+    "Linux validation or hosted CI; no branch was pushed."
+  ],
+  "conditional_skips": 0,
+  "formal_admitted_delta": 0,
+  "source_review_stage_note": "source-review.json preserves source-stage dependencies; this ledger records the subsequent finite audit and candidate tests. Parent review remains pending.",
+  "publication": {
+    "performed": false,
+    "main_changed": false,
+    "deployment_performed": false,
+    "doi_registered": false
+  }
+}

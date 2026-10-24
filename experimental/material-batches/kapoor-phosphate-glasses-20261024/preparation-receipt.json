@@ -1,0 +1,224 @@
+{
+  "schema": "material-batch-preparation-receipt/1",
+  "batch_id": "kapoor-phosphate-glasses-20261024",
+  "baseline_commit": "196995256836db2d8f870ac9a91f664bfdd03e7f",
+  "prepared_packet_sha256": "03284799a8d5c34a7927c56823339bb0067d2d98582c57e0e0c52ec701e29c6b",
+  "prepared_packet_bytes": 157789,
+  "spec_canonical_sha256": "be0dbc96a55921ea84cec241942fff6fa5add8b03f88291290c502d265600c74",
+  "inputs": {
+    "experimental/material-batches/kapoor-phosphate-glasses-20261024/packet-spec.json": {
+      "sha256": "5da4e65064a9109e11eb4e1fef3e35aa41426de767bc7c5f80fa184bf202912f",
+      "bytes": 77364
+    },
+    "experimental/material-batches/kapoor-phosphate-glasses-20261024/source-review.json": {
+      "sha256": "8e8a5e235f01e4487550a45a8583e88fb6170ea16851d2548d65bdb01a2144cd",
+      "bytes": 7361
+    },
+    "experimental/material-batches/kapoor-phosphate-glasses-20261024/identity-review.json": {
+      "sha256": "963f43558409159fa81d368b5ca403c36f6fea584de70b8caf5cf26a71d50818",
+      "bytes": 203506
+    },
+    "experimental/material-batches/kapoor-phosphate-glasses-20261024/build_identity_review.py": {
+      "sha256": "73ac4f4d2625023658d285a477fe570e04887c4f2f1cd433e0eebe993097dc49",
+      "bytes": 21070
+    },
+    "materials_boundaries/data/materials.json": {
+      "sha256": "93da1d629da8244853b3e6ad30d556137d57e3f639baffdd3c5bc34a3a1c9107",
+      "bytes": 9717602
+    },
+    "materials_boundaries/data/reference_properties.json": {
+      "sha256": "275671a5f1a447d0cb071de361a8a515f60da60213edd076d725dd03d305b307",
+      "bytes": 22338020
+    },
+    "materials_boundaries/data/sources.json": {
+      "sha256": "3828f53f5b946a4a90d1cb92630b141d496a02838a9dceb519730831c56cc8c1",
+      "bytes": 288480
+    }
+  },
+  "repeat_command": "python -X utf8 scripts/prepare_formulation_packet.py --spec experimental/material-batches/kapoor-phosphate-glasses-20261024/packet-spec.json --baseline-dir materials_boundaries/data --output experimental/material-batches/kapoor-phosphate-glasses-20261024/prepared-packet.json",
+  "repeat_started_utc": "2026-10-24T02:09:53.226577+00:00",
+  "repeat_seconds": 4.82151600002544,
+  "repeat_exit_code": 0,
+  "repeat_stdout": "Unchanged review-only formulation packet: experimental/material-batches/kapoor-phosphate-glasses-20261024/prepared-packet.json\nCandidate identity delta: 6\nHandoff ready: yes\nFormal admitted delta: 0. Source transcription is not scientific approval; runtime catalogs unchanged.\n",
+  "repeat_stderr": "",
+  "output_bytes_and_mtime_unchanged": true,
+  "inputs_unchanged": true,
+  "runtime_catalogs_unchanged": true,
+  "report": {
+    "baseline_sha256": {
+      "materials": "93da1d629da8244853b3e6ad30d556137d57e3f639baffdd3c5bc34a3a1c9107",
+      "reference_properties": "275671a5f1a447d0cb071de361a8a515f60da60213edd076d725dd03d305b307",
+      "sources": "3828f53f5b946a4a90d1cb92630b141d496a02838a9dceb519730831c56cc8c1"
+    },
+    "before": {
+      "identities": 1153,
+      "grades": 31,
+      "states": 1154,
+      "properties": 1165,
+      "sources": 125,
+      "categories": {
+        "metal": 32,
+        "inorganic": 53,
+        "polymer": 30,
+        "composite": 28,
+        "natural": 1010
+      }
+    },
+    "after": {
+      "identities": 1159,
+      "grades": 31,
+      "states": 1160,
+      "properties": 1171,
+      "sources": 126,
+      "categories": {
+        "metal": 32,
+        "inorganic": 59,
+        "polymer": 30,
+        "composite": 28,
+        "natural": 1010
+      }
+    },
+    "delta": {
+      "identities": 6,
+      "grades": 0,
+      "states": 6,
+      "properties": 6,
+      "sources": 1,
+      "categories": {
+        "metal": 0,
+        "inorganic": 6,
+        "polymer": 0,
+        "composite": 0,
+        "natural": 0
+      }
+    },
+    "formal_admitted_delta": 0,
+    "handoff_ready": true,
+    "pending_gates": [],
+    "identity_crosswalk": [
+      {
+        "identity_id": "mat_kapoor2019_al10",
+        "source_id": "kapoor_2019_calcium_aluminophosphate",
+        "source_designations": [
+          "Al10"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "kapoor_2019_calcium_aluminophosphate",
+            "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2019.00063/pdf",
+            "locator": "PDF p.3 Table 1, Al10 row, analyzed composition and density columns",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "Distinct study-qualified analyzed formulation within the pinned finite repository inventory; see identity-review.json. No global chemical uniqueness is established. Bare source codes are not used as unqualified identity aliases."
+      },
+      {
+        "identity_id": "mat_kapoor2019_al15",
+        "source_id": "kapoor_2019_calcium_aluminophosphate",
+        "source_designations": [
+          "Al15"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "kapoor_2019_calcium_aluminophosphate",
+            "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2019.00063/pdf",
+            "locator": "PDF p.3 Table 1, Al15 row, analyzed composition and density columns",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "Distinct study-qualified analyzed formulation within the pinned finite repository inventory; see identity-review.json. No global chemical uniqueness is established. Bare source codes are not used as unqualified identity aliases."
+      },
+      {
+        "identity_id": "mat_kapoor2019_al5",
+        "source_id": "kapoor_2019_calcium_aluminophosphate",
+        "source_designations": [
+          "Al5"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "kapoor_2019_calcium_aluminophosphate",
+            "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2019.00063/pdf",
+            "locator": "PDF p.3 Table 1, Al5 row, analyzed composition and density columns",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "Distinct study-qualified analyzed formulation within the pinned finite repository inventory; see identity-review.json. No global chemical uniqueness is established. Bare source codes are not used as unqualified identity aliases."
+      },
+      {
+        "identity_id": "mat_kapoor2019_p46",
+        "source_id": "kapoor_2019_calcium_aluminophosphate",
+        "source_designations": [
+          "P46"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "kapoor_2019_calcium_aluminophosphate",
+            "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2019.00063/pdf",
+            "locator": "PDF p.3 Table 1, P46 row, analyzed composition and density columns",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "Distinct study-qualified analyzed formulation within the pinned finite repository inventory; see identity-review.json. No global chemical uniqueness is established. Bare source codes are not used as unqualified identity aliases."
+      },
+      {
+        "identity_id": "mat_kapoor2019_p50",
+        "source_id": "kapoor_2019_calcium_aluminophosphate",
+        "source_designations": [
+          "P50"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "kapoor_2019_calcium_aluminophosphate",
+            "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2019.00063/pdf",
+            "locator": "PDF p.3 Table 1, P50 row, analyzed composition and density columns",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "Distinct study-qualified analyzed formulation within the pinned finite repository inventory; see identity-review.json. No global chemical uniqueness is established. Bare source codes are not used as unqualified identity aliases."
+      },
+      {
+        "identity_id": "mat_kapoor2019_p60",
+        "source_id": "kapoor_2019_calcium_aluminophosphate",
+        "source_designations": [
+          "P60"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "kapoor_2019_calcium_aluminophosphate",
+            "url": "https://www.frontiersin.org/journals/materials/articles/10.3389/fmats.2019.00063/pdf",
+            "locator": "PDF p.3 Table 1, P60 row, analyzed composition and density columns",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "Distinct study-qualified analyzed formulation within the pinned finite repository inventory; see identity-review.json. No global chemical uniqueness is established. P60 is also a token in unrelated EPDM_H_P60; the existing carbon-black/EPDM/paraffin/Hostatron formulation is not equated with this calcium phosphate glass."
+      }
+    ]
+  },
+  "formal_admitted_delta": 0,
+  "scientific_approval": false,
+  "publication_performed": false,
+  "independent_parent_review": "pending",
+  "prior_attempt": {
+    "operation": "initial candidate compile/write under filesystem sandbox",
+    "outcome": "failed at atomic rename with WinError 5 after validation; no prepared packet created",
+    "recovery": "same compiler and inputs, native Windows filesystem; created successfully; no validation changes"
+  }
+}
