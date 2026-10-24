@@ -409141,6 +409141,366 @@
         }
       ],
       "scope_note": "Catalog-only source-reported measured density of the as-prepared, annealed and reannealed glass. No pressure-compressed variant is included. Calculated molar volumes and atomic packing densities and all other properties are excluded. Exact density-test temperature, pressure, humidity, porosity and independent specimen count are unknown. Room temperature is preserved without numeric conversion. The hardness humidity and viscosity standard do not qualify this density measurement. Archimedes measurement does not establish true/bulk/apparent density classification or zero porosity. Table 1 reports analyzed ICP-OES oxide composition in mol%, not nominal batch recipes. Source labels qualify these glass formulations; no normalization, analytical correction, certified purity, exact final stoichiometry or molecular-species identity is inferred. Reported zero Al2O3 is a table entry, not proof of absolute absence at every detection limit."
+    },
+    {
+      "version": "1.0.0",
+      "quantity": "mass_density",
+      "quantity_dimension": "mass_per_volume",
+      "source_property_label": "Actual Density (g/cm3)",
+      "reported_value": {
+        "kind": "scalar",
+        "unit_text": "g/cm3",
+        "unit_code": "g/cm^3",
+        "value_text": "1.7425",
+        "number": "1.7425"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "not_stated",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Table 2 Actual Density is measured by digital densimeter. Theoretical Density is excluded; aggregation is not stated.",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No density temperature is stated. Room temperature in section 2.3 belongs to tensile testing, not density."
+        },
+        "test_standard": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No density test standard is stated."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Digital densimeter.",
+          "evidence": [
+            {
+              "source_id": "tian_2023_nano_ti_az31",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10054318/fullTextXML",
+              "locator": "Section 2.2, final density sentences; PDF p.4",
+              "supports": [
+                "method",
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Instrument model, measurement medium and calibration procedure are not specified; Archimedes method is not inferred."
+        },
+        "direction": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading direction does not apply to scalar density."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No density humidity or conditioning schedule is reported."
+        },
+        "loading_rate": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading rate does not apply to this density result."
+        },
+        "additional_conditions": [
+          {
+            "name": "density_pressure",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "No density pressure is stated; no ambient numerical default is assigned."
+            }
+          },
+          {
+            "name": "measurement_repetitions",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Density repetitions are not stated. Three tensile specimens do not supply density repetitions."
+            }
+          }
+        ]
+      },
+      "density_basis": "not_stated",
+      "summary_statistic": "not_stated",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "No density uncertainty is reported; no zero uncertainty, SD, error bar or precision-based uncertainty is inferred.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Density specimen count and repetitions are unknown; the three tensile specimens in section 2.3 do not apply.",
+        "source_statement": "Density specimen count is not stated in the selected source.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Density measured by digital densimeter; no additional density method detail is inferred.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "tian_2023_nano_ti_az31",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10054318/fullTextXML",
+            "locator": "Section 2.2, final density sentences; PDF p.4",
+            "supports": [
+              "method"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Table 2 prints the second selected row as 1 wt Ti, omitting the percent symbol.",
+          "disposition": "Preserve the literal 1 wt Ti designation. Sections 2.1 and 2.2 separately establish nominal 1 wt% nano-Ti loading; do not silently correct the table or infer analyzed final composition.",
+          "evidence": [
+            {
+              "source_id": "tian_2023_nano_ti_az31",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10054318/fullTextXML",
+              "locator": "Table 2, 1 wt Ti row, and sections 2.1-2.2; PDF p.4 table and pp.2-4 methods",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "tian_2023_nano_ti_az31",
+      "source_document": {
+        "url": "https://pdfs.semanticscholar.org/f581/6846789d5f4cf89555778ceca9a2a6435347.pdf",
+        "revision": "Materials 2023, 16(6), 2407; publisher-formatted mirror PDF; 14 pages.",
+        "inspected_on": "2026-10-24",
+        "sha256": "8df98d0b465e5bef857d9eaa0ff0969e0c22b4f35aa5a7c64e6e59150b08afad",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Official Europe PMC fullTextXML archive version PMC10054318.1 was read and its exact bytes hashed. The article title, DOI, authors, article-specific CC BY 4.0 notice, Table 2 Actual Density cells and sections 2.1-2.3 were cross-checked. A separate source reviewer visually inspected the publisher-formatted mirror PDF pages 1 and 4. Local mirror PDF SHA-256, MD5 and size were independently verified. The official archive PDF manifest MD5 and size match the mirror bytes. Direct primary-host PDF download and primary-host SHA-256 byte equivalence remain unverified. This is source transcription review, not scientific replication, independent scientific review or legal clearance.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Official Europe PMC fullTextXML archive version PMC10054318.1 was read and its exact bytes hashed. The article title, DOI, authors, article-specific CC BY 4.0 notice, Table 2 Actual Density cells and sections 2.1-2.3 were cross-checked. A separate source reviewer visually inspected the publisher-formatted mirror PDF pages 1 and 4. Local mirror PDF SHA-256, MD5 and size were independently verified. The official archive PDF manifest MD5 and size match the mirror bytes. Direct primary-host PDF download and primary-host SHA-256 byte equivalence remain unverified. This is source transcription review, not scientific replication, independent scientific review or legal clearance.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      },
+      "id": "refprop_tian2023_az31_ti_0p5wt_mass_density",
+      "material_state_id": "state_tian2023_az31_ti_0p5wt_as_extruded",
+      "evidence": [
+        {
+          "source_id": "tian_2023_nano_ti_az31",
+          "url": "https://pdfs.semanticscholar.org/f581/6846789d5f4cf89555778ceca9a2a6435347.pdf",
+          "locator": "Table 2, 0.5 wt% Ti row, Actual Density column; PDF p.4",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "tian_2023_nano_ti_az31",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10054318/fullTextXML",
+          "locator": "Table 2, 0.5 wt% Ti row, Actual Density column; PDF p.4",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "tian_2023_nano_ti_az31",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10054318/fullTextXML",
+          "locator": "Section 2.2; PDF p.4",
+          "supports": [
+            "method",
+            "state"
+          ]
+        }
+      ],
+      "scope_note": "Only Table 2 Actual Density for the two as-extruded nano-Ti/Mg-3Al-1Zn composites is selected. Theoretical density, tensile data and the unreinforced 0 wt% Ti comparator are excluded. Density temperature, pressure, humidity, specimen count, repetitions, aggregation, uncertainty, density basis and porosity are unknown. The three tensile specimens and room temperature in section 2.3 do not qualify density in section 2.2. No tensile-specimen dimensions, zero porosity, mean or zero uncertainty is inferred. Nominal source-qualified reinforcement loading in Mg-3Al-1Zn (AZ31) matrix powder, not an analyzed final composition, certified purity or exact phase fraction. Starting-powder purity and nominal matrix designation do not establish the purity or composition of the finished composite. Table 2 prints the second selected row as 1 wt Ti, omitting the percent symbol. The literal designation is preserved. Sections 2.1 and 2.2 separately specify the nominal 1 wt% nano-Ti loading; the table text is not silently corrected and final composition is not inferred."
+    },
+    {
+      "version": "1.0.0",
+      "quantity": "mass_density",
+      "quantity_dimension": "mass_per_volume",
+      "source_property_label": "Actual Density (g/cm3)",
+      "reported_value": {
+        "kind": "scalar",
+        "unit_text": "g/cm3",
+        "unit_code": "g/cm^3",
+        "value_text": "1.7442",
+        "number": "1.7442"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "not_stated",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Table 2 Actual Density is measured by digital densimeter. Theoretical Density is excluded; aggregation is not stated.",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No density temperature is stated. Room temperature in section 2.3 belongs to tensile testing, not density."
+        },
+        "test_standard": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No density test standard is stated."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Digital densimeter.",
+          "evidence": [
+            {
+              "source_id": "tian_2023_nano_ti_az31",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10054318/fullTextXML",
+              "locator": "Section 2.2, final density sentences; PDF p.4",
+              "supports": [
+                "method",
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Instrument model, measurement medium and calibration procedure are not specified; Archimedes method is not inferred."
+        },
+        "direction": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading direction does not apply to scalar density."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No density humidity or conditioning schedule is reported."
+        },
+        "loading_rate": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading rate does not apply to this density result."
+        },
+        "additional_conditions": [
+          {
+            "name": "density_pressure",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "No density pressure is stated; no ambient numerical default is assigned."
+            }
+          },
+          {
+            "name": "measurement_repetitions",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Density repetitions are not stated. Three tensile specimens do not supply density repetitions."
+            }
+          }
+        ]
+      },
+      "density_basis": "not_stated",
+      "summary_statistic": "not_stated",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "No density uncertainty is reported; no zero uncertainty, SD, error bar or precision-based uncertainty is inferred.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Density specimen count and repetitions are unknown; the three tensile specimens in section 2.3 do not apply.",
+        "source_statement": "Density specimen count is not stated in the selected source.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Density measured by digital densimeter; no additional density method detail is inferred.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "tian_2023_nano_ti_az31",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10054318/fullTextXML",
+            "locator": "Section 2.2, final density sentences; PDF p.4",
+            "supports": [
+              "method"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Table 2 prints the second selected row as 1 wt Ti, omitting the percent symbol.",
+          "disposition": "Preserve the literal 1 wt Ti designation. Sections 2.1 and 2.2 separately establish nominal 1 wt% nano-Ti loading; do not silently correct the table or infer analyzed final composition.",
+          "evidence": [
+            {
+              "source_id": "tian_2023_nano_ti_az31",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10054318/fullTextXML",
+              "locator": "Table 2, 1 wt Ti row, and sections 2.1-2.2; PDF p.4 table and pp.2-4 methods",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "tian_2023_nano_ti_az31",
+      "source_document": {
+        "url": "https://pdfs.semanticscholar.org/f581/6846789d5f4cf89555778ceca9a2a6435347.pdf",
+        "revision": "Materials 2023, 16(6), 2407; publisher-formatted mirror PDF; 14 pages.",
+        "inspected_on": "2026-10-24",
+        "sha256": "8df98d0b465e5bef857d9eaa0ff0969e0c22b4f35aa5a7c64e6e59150b08afad",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Official Europe PMC fullTextXML archive version PMC10054318.1 was read and its exact bytes hashed. The article title, DOI, authors, article-specific CC BY 4.0 notice, Table 2 Actual Density cells and sections 2.1-2.3 were cross-checked. A separate source reviewer visually inspected the publisher-formatted mirror PDF pages 1 and 4. Local mirror PDF SHA-256, MD5 and size were independently verified. The official archive PDF manifest MD5 and size match the mirror bytes. Direct primary-host PDF download and primary-host SHA-256 byte equivalence remain unverified. This is source transcription review, not scientific replication, independent scientific review or legal clearance.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Official Europe PMC fullTextXML archive version PMC10054318.1 was read and its exact bytes hashed. The article title, DOI, authors, article-specific CC BY 4.0 notice, Table 2 Actual Density cells and sections 2.1-2.3 were cross-checked. A separate source reviewer visually inspected the publisher-formatted mirror PDF pages 1 and 4. Local mirror PDF SHA-256, MD5 and size were independently verified. The official archive PDF manifest MD5 and size match the mirror bytes. Direct primary-host PDF download and primary-host SHA-256 byte equivalence remain unverified. This is source transcription review, not scientific replication, independent scientific review or legal clearance.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      },
+      "id": "refprop_tian2023_az31_ti_1wt_mass_density",
+      "material_state_id": "state_tian2023_az31_ti_1wt_as_extruded",
+      "evidence": [
+        {
+          "source_id": "tian_2023_nano_ti_az31",
+          "url": "https://pdfs.semanticscholar.org/f581/6846789d5f4cf89555778ceca9a2a6435347.pdf",
+          "locator": "Table 2, 1 wt Ti row, Actual Density column; PDF p.4",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "tian_2023_nano_ti_az31",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10054318/fullTextXML",
+          "locator": "Table 2, 1 wt Ti row, Actual Density column; PDF p.4",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "tian_2023_nano_ti_az31",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10054318/fullTextXML",
+          "locator": "Section 2.2; PDF p.4",
+          "supports": [
+            "method",
+            "state"
+          ]
+        }
+      ],
+      "scope_note": "Only Table 2 Actual Density for the two as-extruded nano-Ti/Mg-3Al-1Zn composites is selected. Theoretical density, tensile data and the unreinforced 0 wt% Ti comparator are excluded. Density temperature, pressure, humidity, specimen count, repetitions, aggregation, uncertainty, density basis and porosity are unknown. The three tensile specimens and room temperature in section 2.3 do not qualify density in section 2.2. No tensile-specimen dimensions, zero porosity, mean or zero uncertainty is inferred. Nominal source-qualified reinforcement loading in Mg-3Al-1Zn (AZ31) matrix powder, not an analyzed final composition, certified purity or exact phase fraction. Starting-powder purity and nominal matrix designation do not establish the purity or composition of the finished composite. Table 2 prints the second selected row as 1 wt Ti, omitting the percent symbol. The literal designation is preserved. Sections 2.1 and 2.2 separately specify the nominal 1 wt% nano-Ti loading; the table text is not silently corrected and final composition is not inferred."
     }
   ]
 }
