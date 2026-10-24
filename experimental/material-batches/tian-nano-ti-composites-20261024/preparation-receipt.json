@@ -2,17 +2,17 @@
   "schema": "material-batch-preparation-receipt/1",
   "batch_id": "tian-nano-ti-composites-20261024",
   "baseline_commit": "5a9a85c573f590d206cddb4cb7c085f334a0fbc0",
-  "prepared_packet_sha256": "cf5df75a8f8fbe27ac380771d5f5b5fae70668ddf365414a029acaa952458f80",
-  "prepared_packet_bytes": 61469,
-  "spec_canonical_sha256": "5a4fea102a5f4c88d03a99e31b90371972c8dc02683baaa43969ab97814fff9b",
+  "prepared_packet_sha256": "eec719edfb9803551df5337c31430faf916169c0bd2e4bac1b8f72d2f79e69ab",
+  "prepared_packet_bytes": 61445,
+  "spec_canonical_sha256": "eff303f8ac5016c1a22c5ce0531142a57db708df8f01e467aa775405a52d6e4a",
   "inputs": {
     "experimental/material-batches/tian-nano-ti-composites-20261024/packet-spec.json": {
-      "bytes": 36432,
-      "sha256": "0b399620dfbbef494d691759f10700bb5197c3ff6da1255aa63c162832de0dbf"
+      "bytes": 36409,
+      "sha256": "750acae68b3e808d5f3ec2aae4babd9954bc2a050ffbca09b33711e65921fb10"
     },
     "experimental/material-batches/tian-nano-ti-composites-20261024/source-review.json": {
-      "bytes": 6088,
-      "sha256": "bc199ac40637bb47036819fdb993892537a8eaea28b21ff281061e0fc63745c7"
+      "bytes": 7410,
+      "sha256": "f84dedf6f0f9bcea685121a00ab32a185768ac4bb96852b63d40e6e7a011b587"
     },
     "experimental/material-batches/tian-nano-ti-composites-20261024/identity-review.json": {
       "bytes": 471836,
@@ -47,8 +47,8 @@
     "--output",
     "experimental/material-batches/tian-nano-ti-composites-20261024/prepared-packet.json"
   ],
-  "repeat_started_utc": "2026-10-24T05:01:19.977274+00:00",
-  "repeat_seconds": 4.906,
+  "repeat_started_utc": "2026-10-24T05:11:49.354132+00:00",
+  "repeat_seconds": 4.781,
   "repeat_exit_code": 0,
   "repeat_stdout": "Unchanged review-only formulation packet: experimental/material-batches/tian-nano-ti-composites-20261024/prepared-packet.json\nCandidate identity delta: 2\nHandoff ready: yes\nFormal admitted delta: 0. Source transcription is not scientific approval; runtime catalogs unchanged.\n",
   "repeat_stderr": "",
@@ -173,5 +173,206 @@
       "reason": "sandbox atomic rename returned WinError 5; no prepared packet was created",
       "recovery": "verified output absent, then ran the unchanged strict compiler with native filesystem access; packet created successfully"
     }
-  ]
+  ],
+  "prior_candidate_preparation": {
+    "commit": "4ea8ceee701a22e753e8a76aeddb03277a0725ab",
+    "receipt_sha256": "9b713c2839dca331b3621fe9dd09e96844b425251d7b3ab0c8dcfd85ab5c32a2",
+    "receipt": {
+      "schema": "material-batch-preparation-receipt/1",
+      "batch_id": "tian-nano-ti-composites-20261024",
+      "baseline_commit": "5a9a85c573f590d206cddb4cb7c085f334a0fbc0",
+      "prepared_packet_sha256": "cf5df75a8f8fbe27ac380771d5f5b5fae70668ddf365414a029acaa952458f80",
+      "prepared_packet_bytes": 61469,
+      "spec_canonical_sha256": "5a4fea102a5f4c88d03a99e31b90371972c8dc02683baaa43969ab97814fff9b",
+      "inputs": {
+        "experimental/material-batches/tian-nano-ti-composites-20261024/packet-spec.json": {
+          "bytes": 36432,
+          "sha256": "0b399620dfbbef494d691759f10700bb5197c3ff6da1255aa63c162832de0dbf"
+        },
+        "experimental/material-batches/tian-nano-ti-composites-20261024/source-review.json": {
+          "bytes": 6088,
+          "sha256": "bc199ac40637bb47036819fdb993892537a8eaea28b21ff281061e0fc63745c7"
+        },
+        "experimental/material-batches/tian-nano-ti-composites-20261024/identity-review.json": {
+          "bytes": 471836,
+          "sha256": "2cbc312665c4af05b39a5baf546e6599a39d33f7de73a3aa3a6296395dbc686a"
+        },
+        "experimental/material-batches/tian-nano-ti-composites-20261024/build_identity_review.py": {
+          "bytes": 22646,
+          "sha256": "da4acc9352bf34222f636decd5591b2a93db04849ba0723535c4b8239a10f8eb"
+        },
+        "materials_boundaries/data/materials.json": {
+          "bytes": 9768926,
+          "sha256": "ec6a73ea89a267a55eb77d8b189f27deee75b5aaabf24941a9b4da5e2ac85c33"
+        },
+        "materials_boundaries/data/reference_properties.json": {
+          "bytes": 22400024,
+          "sha256": "29c826fc9a1bd67d0012384ee956740ab91fd2a87be7ab33aa7cc548c1be3e1f"
+        },
+        "materials_boundaries/data/sources.json": {
+          "bytes": 291044,
+          "sha256": "a02ac67aadae86e118065e97cae95013b6d7edd85516e3fcf66396deefdd58c2"
+        }
+      },
+      "repeat_command": [
+        "python",
+        "-X",
+        "utf8",
+        "scripts/prepare_formulation_packet.py",
+        "--spec",
+        "experimental/material-batches/tian-nano-ti-composites-20261024/packet-spec.json",
+        "--baseline-dir",
+        "materials_boundaries/data",
+        "--output",
+        "experimental/material-batches/tian-nano-ti-composites-20261024/prepared-packet.json"
+      ],
+      "repeat_started_utc": "2026-10-24T05:01:19.977274+00:00",
+      "repeat_seconds": 4.906,
+      "repeat_exit_code": 0,
+      "repeat_stdout": "Unchanged review-only formulation packet: experimental/material-batches/tian-nano-ti-composites-20261024/prepared-packet.json\nCandidate identity delta: 2\nHandoff ready: yes\nFormal admitted delta: 0. Source transcription is not scientific approval; runtime catalogs unchanged.\n",
+      "repeat_stderr": "",
+      "output_bytes_and_mtime_unchanged": true,
+      "inputs_unchanged": true,
+      "runtime_catalogs_unchanged": true,
+      "report": {
+        "baseline_sha256": {
+          "materials": "ec6a73ea89a267a55eb77d8b189f27deee75b5aaabf24941a9b4da5e2ac85c33",
+          "reference_properties": "29c826fc9a1bd67d0012384ee956740ab91fd2a87be7ab33aa7cc548c1be3e1f",
+          "sources": "a02ac67aadae86e118065e97cae95013b6d7edd85516e3fcf66396deefdd58c2"
+        },
+        "before": {
+          "identities": 1159,
+          "grades": 31,
+          "states": 1160,
+          "properties": 1171,
+          "sources": 126,
+          "categories": {
+            "metal": 32,
+            "inorganic": 59,
+            "polymer": 30,
+            "composite": 28,
+            "natural": 1010
+          }
+        },
+        "after": {
+          "identities": 1161,
+          "grades": 31,
+          "states": 1162,
+          "properties": 1173,
+          "sources": 127,
+          "categories": {
+            "metal": 32,
+            "inorganic": 59,
+            "polymer": 30,
+            "composite": 30,
+            "natural": 1010
+          }
+        },
+        "delta": {
+          "identities": 2,
+          "grades": 0,
+          "states": 2,
+          "properties": 2,
+          "sources": 1,
+          "categories": {
+            "metal": 0,
+            "inorganic": 0,
+            "polymer": 0,
+            "composite": 2,
+            "natural": 0
+          }
+        },
+        "formal_admitted_delta": 0,
+        "handoff_ready": true,
+        "pending_gates": [],
+        "identity_crosswalk": [
+          {
+            "identity_id": "mat_tian2023_az31_ti_0p5wt",
+            "source_id": "tian_2023_nano_ti_az31",
+            "source_designations": [
+              "0.5 wt% Ti"
+            ],
+            "disposition": "distinct",
+            "evidence": [
+              {
+                "source_id": "tian_2023_nano_ti_az31",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10054318/fullTextXML",
+                "locator": "Sections 2.1-2.2 and Table 2, 0.5 wt% Ti row, Actual Density column; PDF p.4",
+                "supports": [
+                  "material_identity"
+                ]
+              }
+            ],
+            "note": "Distinct nominal nano-Ti loading within the frozen finite repository inventory; see identity-review.json. The existing mat_chen2023_az31 is an unreinforced different-study comparator, not proof of matching lot or composite equivalence. No global chemical uniqueness is established."
+          },
+          {
+            "identity_id": "mat_tian2023_az31_ti_1wt",
+            "source_id": "tian_2023_nano_ti_az31",
+            "source_designations": [
+              "1 wt Ti"
+            ],
+            "disposition": "distinct",
+            "evidence": [
+              {
+                "source_id": "tian_2023_nano_ti_az31",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10054318/fullTextXML",
+                "locator": "Sections 2.1-2.2 and Table 2, 1 wt Ti row, Actual Density column; PDF p.4",
+                "supports": [
+                  "material_identity"
+                ]
+              }
+            ],
+            "note": "Distinct nominal nano-Ti loading within the frozen finite repository inventory; see identity-review.json. The existing mat_chen2023_az31 is an unreinforced different-study comparator, not proof of matching lot or composite equivalence. No global chemical uniqueness is established."
+          }
+        ]
+      },
+      "formal_admitted_delta": 0,
+      "scientific_approval": false,
+      "publication_performed": false,
+      "independent_parent_review": "pending",
+      "earlier_compile_attempts": [
+        {
+          "outcome": "rejected",
+          "reason": "sample_count.source_statement was null instead of the required nonempty explanatory text; unknown numeric count preserved during correction"
+        },
+        {
+          "outcome": "rejected",
+          "reason": "source_discrepancies entry was a string instead of the existing description/disposition/evidence object contract"
+        },
+        {
+          "outcome": "rejected",
+          "reason": "primary value evidence referenced the XML but not the inspected mirror document URL; added the separately reviewed PDF cell locator while retaining archive corroboration"
+        },
+        {
+          "outcome": "rejected",
+          "reason": "reported test_method evidence lacked the condition support tag; added that tag; also retained the mirror qualification in inspection_scope while setting recorded hash_note null as required"
+        },
+        {
+          "outcome": "filesystem failure after validation",
+          "reason": "sandbox atomic rename returned WinError 5; no prepared packet was created",
+          "recovery": "verified output absent, then ran the unchanged strict compiler with native filesystem access; packet created successfully"
+        }
+      ]
+    }
+  },
+  "authorship_correction": {
+    "original_commit": "4ea8ceee701a22e753e8a76aeddb03277a0725ab",
+    "original_source_record_sha256": "6149a0865a662f7cf9204c86e0b3e94c01a3156be913a7829281c8d03f33b4e8",
+    "corrected_source_record_sha256": "f123297296ccf8bf102c51c5bff22d1ce10304be85075a6cf902ffeb88154024",
+    "corrected_spec_canonical_sha256": "eff303f8ac5016c1a22c5ce0531142a57db708df8f01e467aa775405a52d6e4a",
+    "corrected_prepared_packet_sha256": "eec719edfb9803551df5337c31430faf916169c0bd2e4bac1b8f72d2f79e69ab",
+    "corrected_prepared_packet_bytes": 61445,
+    "identities_states_properties_reviews_and_report_unchanged": true,
+    "only_source_record_field_changed": "authors",
+    "source_authors": [
+      "Wei Tian",
+      "Pengfei Gao",
+      "Shengli Han",
+      "Xiaohong Chen",
+      "Fuwei Zhang",
+      "Yuhui Zhang",
+      "Tiegang Luo",
+      "Kaihong Zheng"
+    ]
+  }
 }

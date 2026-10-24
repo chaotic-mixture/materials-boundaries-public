@@ -40,7 +40,7 @@
     "license_url": "https://creativecommons.org/licenses/by/4.0/",
     "article_specific_notice": "Official archive article permissions and publisher-formatted PDF page 1.",
     "table_2_separate_restriction_observed": false,
-    "attribution": "Wei Tian, Pengfei Gao, Shengli Han, Xiaohong Chen, Fuwei Zhang, Yuhui Zhang, Tiegang Luo, Kaihong Zheng, Bolv Xiao (2023), Materials 16(6), 2407. Copyright 2023 by the authors.",
+    "attribution": "Wei Tian, Pengfei Gao, Shengli Han, Xiaohong Chen, Fuwei Zhang, Yuhui Zhang, Tiegang Luo, Kaihong Zheng (2023), Materials 16(6), 2407. Copyright 2023 by the authors.",
     "changes": "Changes: selected nominal formulation, state and measured density facts transcribed into structured candidate records with explicit unknowns and source qualifications. No author or publisher endorsement is implied."
   },
   "selected_facts": [
@@ -97,5 +97,36 @@
   "separate_source_transcription_review": "A separate read-only source audit cleared these two factual selections, article-specific rights and archive-manifest corroboration. Candidate, runtime and publication review remain separate gates.",
   "pending": [
     "Independent parent review of the immutable candidate packet before any runtime admission or publication."
+  ],
+  "authorship": {
+    "author_names": [
+      "Wei Tian",
+      "Pengfei Gao",
+      "Shengli Han",
+      "Xiaohong Chen",
+      "Fuwei Zhang",
+      "Yuhui Zhang",
+      "Tiegang Luo",
+      "Kaihong Zheng"
+    ],
+    "selection": "Official JATS front/article-meta/contrib-group/contrib[@contrib-type=\"author\"]/name; preserve document order.",
+    "non_author_contributors": [
+      {
+        "name": "Bolv Xiao",
+        "contrib_type": "editor",
+        "role": "Academic Editor"
+      }
+    ],
+    "evidence": "Official archive PMC10054318.1 contributor role attributes; corroborated by original PDF author list and Academic Editor line."
+  },
+  "review_history": [
+    {
+      "reviewed_commit": "4ea8ceee701a22e753e8a76aeddb03277a0725ab",
+      "finding": "P2: Academic Editor Bolv Xiao was incorrectly listed as a ninth author.",
+      "cause": "The initial private XML extraction selected contributor names without filtering contrib-type.",
+      "correction": "Retain exactly the eight ordered author contributors; exclude the editor from all authorship representations; regenerate canonical source and prepared bindings.",
+      "independent_consolidated_verdict": "Request changes for this sole blocker; density, identity and rights scope otherwise accepted.",
+      "replacement_candidate_review": "pending"
+    }
   ]
 }

@@ -4,7 +4,37 @@ Baseline: `5a9a85c573f590d206cddb4cb7c085f334a0fbc0`.
 Scope: candidate evidence, compiler input/output and focused tests only. There
 is no runtime admission, catalog edit, package change, workflow change or push.
 
-## Executed tests
+## Authorship review correction
+
+Independent review of `4ea8ceee701a22e753e8a76aeddb03277a0725ab`
+identified one P2 blocker: Academic Editor Bolv Xiao was incorrectly included
+as a ninth author. Official JATS marks eight contributors as `author` and Bolv
+Xiao as `editor`. The original private extraction did not filter that role.
+The original tests checked source hash consistency without an independent
+author-name oracle, so their passes did not establish correct attribution.
+
+The strengthened source test first failed against the original candidate:
+one test, one assertion failure, 4.862 seconds. Its log hash and exact finding
+are retained in `validation-results.json`. The correction keeps exactly the
+eight ordered authors across the spec, prepared input/source output, README
+and source-review attribution. The editor remains identified only by his actual
+role. The source hash and prepared packet were regenerated with the unchanged
+compiler. Identity, state, property, review and count-report objects are unchanged.
+
+Fresh corrected-candidate validation on native Windows CPython 3.11.0:
+
+| Selection | Passed | Failed/errors/skipped | Unittest elapsed |
+| --- | ---: | ---: | ---: |
+| Complete candidate module, including strengthened authorship oracle | 18 | 0/0/0 | 59.689 s |
+| Selected existing compiler gate methods | 10 | 0/0/0 | 1.568 s |
+
+Both fresh processes returned 0 within their 600-second budgets. Exact method
+inventories, logs and unchanged input hashes, including the README read by the
+new assertion, were verified. No original failure or review finding was erased.
+Independent re-review of this corrected candidate remains pending. Linux passes
+reported by the original reviewer apply to the old candidate, not this correction.
+
+## Earlier candidate testing at 4ea8ceee
 
 Native Windows, CPython 3.11.0, with a 600-second budget per fresh process:
 
@@ -15,7 +45,7 @@ Native Windows, CPython 3.11.0, with a 600-second budget per fresh process:
 
 All 28 distinct methods completed with child exit code 0. Exact method IDs,
 commands, start/end times, log hashes and before/after input hashes are retained
-in `validation-results.json`. Input hashes remained unchanged during and after
+under `prior_candidate_validation` in `validation-results.json`. Input hashes remained unchanged during and after
 the runs. Tests cover the two selected Actual Density cells, literal source
 labels, nominal composition, state/identity separation, density unknowns,
 tensile-condition isolation, source/rights gates, archive-manifest provenance,
@@ -39,9 +69,10 @@ unrun checks, not passing or skipped tests. Installed CLI coverage is unchanged.
 The finite audit's exact 22-object replay passed and left the generated review
 bytes and mtime unchanged. It covers 14111 label occurrences, 8241 normalized
 labels and all 60 existing metal/composite identities. Packet replay took
-4.906 seconds and preserved both output bytes and mtime. The prepared packet
-is 61469 bytes, SHA-256
-`cf5df75a8f8fbe27ac380771d5f5b5fae70668ddf365414a029acaa952458f80`.
+4.781 seconds after the authorship correction and preserved both output bytes
+and mtime. The corrected prepared packet is 61445 bytes, SHA-256
+`eec719edfb9803551df5337c31430faf916169c0bd2e4bac1b8f72d2f79e69ab`.
+The original preparation receipt is retained under `prior_candidate_preparation`.
 The three runtime tables match the exact baseline bytes; no Tian identity is
 present in them.
 

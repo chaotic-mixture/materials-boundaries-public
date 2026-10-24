@@ -22,6 +22,10 @@ SOURCE = 'tian_2023_nano_ti_az31'
 DOCUMENT_HASH = '8df98d0b465e5bef857d9eaa0ff0969e0c22b4f35aa5a7c64e6e59150b08afad'
 XML_HASH = '80b9020e8a4878adf439977478551214b1130982331d81a17fc85a072f2ac598'
 PDF_MD5 = 'aea07249f6eb98a284067ea7a466012a'
+AUTHORS = [
+    'Wei Tian', 'Pengfei Gao', 'Shengli Han', 'Xiaohong Chen',
+    'Fuwei Zhang', 'Yuhui Zhang', 'Tiegang Luo', 'Kaihong Zheng',
+]
 BASELINE_HASHES = {
     'materials': 'ec6a73ea89a267a55eb77d8b189f27deee75b5aaabf24941a9b4da5e2ac85c33',
     'reference_properties': '29c826fc9a1bd67d0012384ee956740ab91fd2a87be7ab33aa7cc548c1be3e1f',
@@ -190,6 +194,21 @@ class TianNanoTiPacketTests(unittest.TestCase):
         source, = self.graph['sources']['records']
         self.assertEqual(source['id'], SOURCE)
         self.assertEqual(source['doi'], '10.3390/ma16062407')
+        # The archive lists Bolv Xiao as contrib-type="editor", not author.
+        # This independent eight-name oracle prevents hash-consistent misattribution.
+        self.assertEqual(source['authors'], AUTHORS)
+        self.assertEqual(self.spec['source_records'][0]['record']['authors'], AUTHORS)
+        self.assertEqual(self.saved_packet['input']['source_records'][0]['record']['authors'], AUTHORS)
+        self.assertEqual(self.saved_packet['catalogs']['sources']['records'][0]['authors'], AUTHORS)
+        review = read(BATCH / 'source-review.json')
+        self.assertEqual(review['authorship']['author_names'], AUTHORS)
+        self.assertEqual(review['authorship']['non_author_contributors'], [
+            {'name': 'Bolv Xiao', 'contrib_type': 'editor', 'role': 'Academic Editor'},
+        ])
+        self.assertEqual(review['rights']['attribution'], ', '.join(AUTHORS)
+                         + ' (2023), Materials 16(6), 2407. Copyright 2023 by the authors.')
+        self.assertIn('Tiegang Luo and Kaihong Zheng (2023)',
+                      (BATCH / 'README.md').read_text(encoding='utf-8'))
         self.assertEqual(source['license'], {
             'status': 'explicit_reuse_license_verified', 'identifier': 'CC-BY-4.0',
         })

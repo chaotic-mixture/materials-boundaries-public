@@ -18,7 +18,7 @@ an actual catalog count or a publication claim.
 ## Selected facts
 
 Wei Tian, Pengfei Gao, Shengli Han, Xiaohong Chen, Fuwei Zhang, Yuhui Zhang,
-Tiegang Luo, Kaihong Zheng and Bolv Xiao (2023), *Effect of Nano-Ti Particles on
+Tiegang Luo and Kaihong Zheng (2023), *Effect of Nano-Ti Particles on
 Microstructure and Mechanical Properties of Mg-3Al-1Zn Matrix Composites*,
 Materials 16(6), 2407, [DOI 10.3390/ma16062407](https://doi.org/10.3390/ma16062407).
 
