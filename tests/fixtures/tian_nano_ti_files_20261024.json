@@ -1,0 +1,394 @@
+{
+  "schema_version": 1,
+  "baseline_commit": "497dcc8495c32b16f02cdedce8b99f6b7d05f2c4",
+  "updates": {
+    "README.md": {
+      "previous_sha256": "3e522ce1169797baddf5990d37267c97368f8c01a4bd8d68956a635d29bea037",
+      "sha256": "d3464f28784ffa484eedb43e132ef2e83c12882683885b8f147170f5f0c65b41",
+      "edits": [
+        {
+          "offset": 667,
+          "before": "- **41 mechanics claims**, **126 source records**, **16 observations from 5 studies**, **12 published computational predictions in 2 scientific families and 3 explicit groups**, and **5 synthetic temperature demos with 7 branches**\n",
+          "after": "- **41 mechanics claims**, **127 source records**, **16 observations from 5 studies**, **12 published computational predictions in 2 scientific families and 3 explicit groups**, and **5 synthetic temperature demos with 7 branches**\n"
+        },
+        {
+          "offset": 1333,
+          "before": "- The 126 sources comprise 125 bibliographic/source records plus 1 original synthetic-demo provenance record; a source record is not a redistribution of its publication or dataset\n",
+          "after": "- The 127 sources comprise 126 bibliographic/source records plus 1 original synthetic-demo provenance record; a source record is not a redistribution of its publication or dataset\n"
+        },
+        {
+          "offset": 1788,
+          "before": "The separate reference catalogue contains **1159 material identities**, **31 qualified grades**, **1160 source-scoped states** and **1171 reference properties**. Counts describe this registry only; aliases, categories, prior observations and computational model cells are not additional materials.\n",
+          "after": "The separate reference catalogue contains **1161 material identities**, **31 qualified grades**, **1162 source-scoped states** and **1173 reference properties**. Counts describe this registry only; aliases, categories, prior observations and computational model cells are not additional materials.\n"
+        },
+        {
+          "offset": 67973,
+          "before": "",
+          "after": "\nThe bounded [Tian nano-Ti composite increment](experimental/material-batches/tian-nano-ti-composites-20261024/INTEGRATION.md) adds two study-qualified nominal Mg-3Al-1Zn/nano-Ti formulations with one as-extruded measured density each. Nominal reinforcement loadings are not analyzed final compositions. Density conditions and statistics remain unknown; tensile-only conditions, theoretical densities and the unreinforced comparator are excluded.\n"
+        }
+      ]
+    },
+    "THIRD_PARTY_NOTICES.md": {
+      "previous_sha256": "af1ae483630a62f754f251662953da2bfd97f959ad5c427e3a4e456131eb2146",
+      "sha256": "8fcce66d84b7b1054625e8f26d7fe1e2338e07ff2402aafddbc34142c2c4572e",
+      "edits": [
+        {
+          "offset": 88278,
+          "before": "",
+          "after": "\n### Tian 2023 nominal nano-Ti composite density facts\n\nWei Tian, Pengfei Gao, Shengli Han, Xiaohong Chen, Fuwei Zhang, Yuhui Zhang,\nTiegang Luo and Kaihong Zheng (2023), *Effect of Nano-Ti Particles on\nMicrostructure and Mechanical Properties of Mg-3Al-1Zn Matrix Composites*,\nMaterials 16(6), 2407, [DOI 10.3390/ma16062407](https://doi.org/10.3390/ma16062407).\nThese are the eight author contributors. Bolv Xiao is the Academic Editor.\nCopyright 2023 by the authors; licensee MDPI, Basel, Switzerland. The\narticle-specific permissions in the official archive and the publisher-formatted\nPDF page 1 identify [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).\n\nChanges are transcription of two selected Table 2 Actual Density cells and\nnominal reinforcement/state qualifications, with explicit unknowns. The 0.5 wt%\nand 1 wt% nano-Ti additions are nominal formulations, not analyzed final\ncompositions. The literal second source label `1 wt Ti` is preserved; methods\nprovide its separate nominal 1 wt% qualification. The densities describe the\nas-extruded composites. Density temperature, pressure, humidity, specimen count,\nrepetitions, aggregation, uncertainty, density basis and porosity are unknown.\nTensile n=3 and room temperature are not assigned to density. Theoretical\ndensity, tensile properties and the unreinforced comparator are excluded.\n\nThe official Europe PMC XML, archive version `PMC10054318.1`, was inspected:\n143168 bytes, SHA-256\n`80b9020e8a4878adf439977478551214b1130982331d81a17fc85a072f2ac598`.\nThe inspected publisher-formatted mirror PDF is 5497847 bytes, SHA-256\n`8df98d0b465e5bef857d9eaa0ff0969e0c22b4f35aa5a7c64e6e59150b08afad`.\nIts MD5 `aea07249f6eb98a284067ea7a466012a` and size match the official archive\nPDF manifest. Direct primary-host PDF download and primary-host SHA-256 byte\nequivalence remain unverified. No separate restriction was observed for the\nselected table and method. No source PDF, XML full text, images or raw assets\nare distributed or relicensed under MIT. Attribution and the license link are\nretained; no endorsement, scientific replication or independent scientific\napproval is implied.\n"
+        }
+      ]
+    },
+    ".github/workflows/ci.yml": {
+      "previous_sha256": "c818bacbb01b6f4dc963b762208c6a4f61c366164b0cc11ad11dd162d9926ea1",
+      "sha256": "365b7e88441bc038de956f23ea1216cf90129469312330ce23f27d8a17b5e2eb",
+      "edits": [
+        {
+          "offset": 92,
+          "before": "    if: ${{ github.event_name != 'push' || (github.ref != 'refs/heads/experiment/polymer-composites-20261019' && github.ref != 'refs/heads/experiment/evidence-batch-ingestion-20261019' && github.ref != 'refs/heads/experiment/source-family-growth-20261019' && github.ref != 'refs/heads/experiment/pur-formulation-batch-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-2-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-3-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-4-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-5-20261020' && github.ref != 'refs/heads/experiment/primary-table-growth-6-20261020' && github.ref != 'refs/heads/experiment/primary-table-growth-7-20261020' && github.ref != 'refs/heads/experiment/primary-table-growth-8-20261021' && github.ref != 'refs/heads/experiment/zenodo-8089569-identity-followup-20261021' && github.ref != 'refs/heads/experiment/zenodo-8089569-nylon-followup-20261021' && github.ref != 'refs/heads/experiment/family-adjacency-20261023' && github.ref != 'refs/heads/experimental/borosilicate-growth-bruns2020' && github.ref != 'refs/heads/experimental/polymer-growth-tarasov2022-runtime' && github.ref != 'refs/heads/experimental/kapoor2019-glass-runtime') }}\n",
+          "after": "    if: ${{ github.event_name != 'push' || (github.ref != 'refs/heads/experiment/polymer-composites-20261019' && github.ref != 'refs/heads/experiment/evidence-batch-ingestion-20261019' && github.ref != 'refs/heads/experiment/source-family-growth-20261019' && github.ref != 'refs/heads/experiment/pur-formulation-batch-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-2-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-3-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-4-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-5-20261020' && github.ref != 'refs/heads/experiment/primary-table-growth-6-20261020' && github.ref != 'refs/heads/experiment/primary-table-growth-7-20261020' && github.ref != 'refs/heads/experiment/primary-table-growth-8-20261021' && github.ref != 'refs/heads/experiment/zenodo-8089569-identity-followup-20261021' && github.ref != 'refs/heads/experiment/zenodo-8089569-nylon-followup-20261021' && github.ref != 'refs/heads/experiment/family-adjacency-20261023' && github.ref != 'refs/heads/experimental/borosilicate-growth-bruns2020' && github.ref != 'refs/heads/experimental/polymer-growth-tarasov2022-runtime' && github.ref != 'refs/heads/experimental/kapoor2019-glass-runtime' && github.ref != 'refs/heads/experimental/tian2023-composite-runtime') }}\n"
+        },
+        {
+          "offset": 2173,
+          "before": "    if: ${{ github.event_name != 'push' || (github.ref != 'refs/heads/experiment/polymer-composites-20261019' && github.ref != 'refs/heads/experiment/evidence-batch-ingestion-20261019' && github.ref != 'refs/heads/experiment/source-family-growth-20261019' && github.ref != 'refs/heads/experiment/pur-formulation-batch-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-2-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-3-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-4-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-5-20261020' && github.ref != 'refs/heads/experiment/primary-table-growth-6-20261020' && github.ref != 'refs/heads/experiment/primary-table-growth-7-20261020' && github.ref != 'refs/heads/experiment/primary-table-growth-8-20261021' && github.ref != 'refs/heads/experiment/zenodo-8089569-identity-followup-20261021' && github.ref != 'refs/heads/experiment/zenodo-8089569-nylon-followup-20261021' && github.ref != 'refs/heads/experiment/family-adjacency-20261023' && github.ref != 'refs/heads/experimental/borosilicate-growth-bruns2020' && github.ref != 'refs/heads/experimental/polymer-growth-tarasov2022-runtime' && github.ref != 'refs/heads/experimental/kapoor2019-glass-runtime') }}\n",
+          "after": "    if: ${{ github.event_name != 'push' || (github.ref != 'refs/heads/experiment/polymer-composites-20261019' && github.ref != 'refs/heads/experiment/evidence-batch-ingestion-20261019' && github.ref != 'refs/heads/experiment/source-family-growth-20261019' && github.ref != 'refs/heads/experiment/pur-formulation-batch-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-2-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-3-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-4-20261019' && github.ref != 'refs/heads/experiment/primary-table-growth-5-20261020' && github.ref != 'refs/heads/experiment/primary-table-growth-6-20261020' && github.ref != 'refs/heads/experiment/primary-table-growth-7-20261020' && github.ref != 'refs/heads/experiment/primary-table-growth-8-20261021' && github.ref != 'refs/heads/experiment/zenodo-8089569-identity-followup-20261021' && github.ref != 'refs/heads/experiment/zenodo-8089569-nylon-followup-20261021' && github.ref != 'refs/heads/experiment/family-adjacency-20261023' && github.ref != 'refs/heads/experimental/borosilicate-growth-bruns2020' && github.ref != 'refs/heads/experimental/polymer-growth-tarasov2022-runtime' && github.ref != 'refs/heads/experimental/kapoor2019-glass-runtime' && github.ref != 'refs/heads/experimental/tian2023-composite-runtime') }}\n"
+        },
+        {
+          "offset": 34893,
+          "before": "",
+          "after": "  tian-nano-ti-targeted:\n    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/experimental/tian2023-composite-runtime' }}\n    runs-on: ${{ matrix.os }}\n    timeout-minutes: 90\n    strategy:\n      fail-fast: false\n      matrix:\n        include:\n          - os: ubuntu-latest\n            python-version: '3.11'\n          - os: windows-latest\n            python-version: '3.12'\n    env:\n      PYTHONUTF8: '1'\n      PYTHONDONTWRITEBYTECODE: '1'\n    steps:\n      - run: git config --global core.autocrlf false\n      - uses: actions/checkout@v4\n        with:\n          fetch-depth: 0\n          persist-credentials: false\n      - uses: actions/setup-python@v5\n        with:\n          python-version: ${{ matrix.python-version }}\n      - run: python scripts/run_tian_nano_ti_ci.py --validate-scope\n      - run: \"python -m pip install --no-deps --only-binary=:all: -r experimental/platform/ci/build-requirements.txt\"\n      - run: python -m pip install --no-build-isolation -e '.[dev]'\n      - run: python scripts/run_tian_nano_ti_ci.py --targeted-core\n      - run: python scripts/validate_catalogs.py\n      - run: python -m pip wheel --no-index --no-deps --no-build-isolation --wheel-dir dist . ./formal-catalog ./experimental/platform/federation ./experimental/platform/query-service ./experimental/platform/lifecycle ./experimental/platform\n      - run: \"python -m pip download --no-deps --only-binary=:all: --dest dist/dependencies -r experimental/platform/requirements-lock.txt -r experimental/platform/ci/projection-requirements.txt\"\n      - run: python scripts/run_tian_nano_ti_ci.py --wheel-dir dist --dependency-dir dist/dependencies\n"
+        }
+      ]
+    },
+    "formal-catalog/materials_project_catalog/catalog.py": {
+      "previous_sha256": "ce691def237a23057e5d6a5fd99b4b452bf7cfd4985bcd8afe57d9a48ac03f0c",
+      "sha256": "9ac8c8eb63cf1287a3d380b9cd04c2db984b1d9897383376e3cdbeba5f8bf798",
+      "edits": [
+        {
+          "offset": 386,
+          "before": "RESOURCE_SHA256 = {'materials': 'ec6a73ea89a267a55eb77d8b189f27deee75b5aaabf24941a9b4da5e2ac85c33', 'reference_properties': '29c826fc9a1bd67d0012384ee956740ab91fd2a87be7ab33aa7cc548c1be3e1f', 'sources': 'a02ac67aadae86e118065e97cae95013b6d7edd85516e3fcf66396deefdd58c2', 'formal_computed_review': 'a285523b2b2fdbf0d750ce6ac56e3abfb80d5c42056229a2352b016a787fd875'}\n",
+          "after": "RESOURCE_SHA256 = {'materials': '8ad95e381232906bce1c0e2df777ed7856f2ad27e25200913fc3ad50482e5293', 'reference_properties': '32327221035bd9cc439a2107b4c857629f69276ace7d54df21ce3013720d7c8a', 'sources': '360d0fc46605805173773ae30a01efcd5ba08cc262b140460a6b39c3b9434bd1', 'formal_computed_review': 'a285523b2b2fdbf0d750ce6ac56e3abfb80d5c42056229a2352b016a787fd875'}\n"
+        }
+      ]
+    },
+    "experimental/platform/query-service/materials_query/pins/legacy_baseline.json": {
+      "previous_sha256": "23be9c9f3716f824ea79872167ff5f80d991ea5d222d702ad41d40188c871f4a",
+      "sha256": "8aa3073504462d2e892c12565a30db1d4df189f21ffaeba57fdbe7bb7ed83093",
+      "edits": [
+        {
+          "offset": 0,
+          "before": "{\"__init__.py\":\"27905b38e8ba494c97f5e0532a8434b92f5d562aefd65716bb9ef62e3c50c504\",\"__main__.py\":\"935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d\",\"_composite_cli_labels.py\":\"e4b2b67da5d36989025d50d88ab98e98af3d8ed5cdd15b63ea6d2d79ad3da170\",\"_composite_intake_labels.py\":\"ff63c8de21a4f354515370b10d0ff1b55c24fc80798d02093a2857832d7e870b\",\"_composite_labels.py\":\"57ffd1146b8c80aa8b426a2c9590c3e6061b0550a1f42f2be3c7993385d3f0b9\",\"_composite_windows.py\":\"353e172794436cfefe47aaacd81e343a70597e46b345b2d9a04636dfa7becaf2\",\"_compressibility_contract.py\":\"c4e582a5aab521555e229394071ec4329e637be8be7f5a6e5efb731410c04281\",\"_directional_contract.py\":\"9f5747c5657ef51f34d34ebc2541cd0b923d2c15b5cd3bfd20213257f1e9c7c6\",\"_hbn_observation_contract.py\":\"1d9e5bedd31b2adb6fb094314a6c6d8ff1c82b08555bb57e29287d334c10b0d4\",\"_material_derivation.py\":\"3bbea69321cd59ee702235bb84553dc89616c280efece6663605b81770704180\",\"_observation_contract.py\":\"f26477665179a7747fdd538bd15747540901d2b7527587ff3766bae29e99e2b7\",\"_observation_inspection_labels.py\":\"94d42b02f5d98ab6fc7c8d5e20d48eba8bdeb1556918785b5132b7ac29120e16\",\"_observation_study_comparison_labels.py\":\"50024a2ef76d9b0de835f3d1dedc1af9e98165575e90c6387f2121d48b676239\",\"_observation_study_comparison_rendering.py\":\"7eaa94c77420ad9cfc61644ea9f666d4b4dbade1ab5b829af8c906ed23c7b8a7\",\"_observation_temperature_labels.py\":\"80df0a20a766c86a1397dcc3f2fe2ad7965087e3dd129d52aa665a463f015ce0\",\"_observation_temperature_rendering.py\":\"a753a4d943910d0501bb92bd1dee542446c28d03c3275b41bdd5aebac630c823\",\"_pa12_cf15_observation_contract.py\":\"680563e2a6d403650d534414ceb872c2f45288145a82b34e630413054d79d6ac\",\"_paht_cf_observation_contract.py\":\"2c58b4adf593d352c26b66543cb38d777b735b38f445245be731837f0bbbc328\",\"_paht_observation_labels.py\":\"46f6f3291d04034bd16f075edb06bfa13f03b9a7900aa4ada92c60343577255c\",\"_version.py\":\"38f9a9fcc19d2183cb65740ce16e757793a9e351647eb0dc016901f4eb723316\",\"_viscoelastic_contract.py\":\"725d13e6202805c4048d5b7f5484f1f59eb5fa54f6e692d616f9e95de1e28656\",\"_wave_contract.py\":\"340fd4d24f0666bf2a9c66b4d7c2ff58a50b1706212af19f699499a6447fb8f1\",\"_yield_contract.py\":\"2240a29cd29285853c107a50bf89e1fae1fb182d73d71310d6b57b646d68ea7c\",\"bulk_ingestion.py\":\"c40ae3c5084e0c730419227b80e5542a681f030bfe42c04df41bf2b353d44554\",\"catalog.py\":\"9897c6228886475e681d6ebd8b9c4bc9ee03d7b86954538ff450f64bdcdf2c03\",\"catalog_output.py\":\"9b26bf998fd6d6bd7c9a923c757142dd5407a1e847ca740189c953a278868f6d\",\"cli.py\":\"a5ba8a63071c4776fd32d43c87045b3e8ceea84a1cd27a9cdcf311062e0cb255\",\"composite.py\":\"c09fccdca401a8dea4e728c889122f3236a5fbf5ac7ddaa17a8e10db2d29dcea\",\"composite_export.py\":\"df4433823c220f73986ec2c0fca1d8f1e87af12750467db658ff6085c9ba75e6\",\"composite_intake.py\":\"ccc3164358ff5fccb6da15ef32dd3feeed1034e3b75693fbf39569a967db562d\",\"composite_render.py\":\"c85cebc92780bc784f6b60bf1c0f688d328d77635d36dcf431e79daa316d5203\",\"conversions.py\":\"5d52973d3444fba29665b198754dfb8100ebcaa10da2e7e9dbfbb04e4fd81d99\",\"data/claims.json\":\"e7bf9be30dd2c535d24a932d8960025e66f7b53b08215063a9ba972af895e0f3\",\"data/computational_predictions.json\":\"f7c279a04a143322169bb234081716b3ec099a62f1894e01aa3ee48cc9bb927f\",\"data/locales.json\":\"557abb7cd8ea963fb45134b12372ad898d96f6bd0a0954188a2226b3ee8ef34e\",\"data/material_locales.json\":\"be2f7c0a47ad1022bd8ef5c874d0f9a91327ebe70103114f50daa743fe27da2d\",\"data/materials.json\":\"ec6a73ea89a267a55eb77d8b189f27deee75b5aaabf24941a9b4da5e2ac85c33\",\"data/observations.json\":\"12638d0f5e29eddcb80b674ce1b4067b6f358ed967fbad6bbbba8a689a85ee00\",\"data/prediction_locales.json\":\"a7e1a32ec06bcf4c0c3138be8386a89536ff21b318dba3b5f2bf6c29d646830d\",\"data/reference_properties.json\":\"29c826fc9a1bd67d0012384ee956740ab91fd2a87be7ab33aa7cc548c1be3e1f\",\"data/sources.json\":\"a02ac67aadae86e118065e97cae95013b6d7edd85516e3fcf66396deefdd58c2\",\"data/taxonomy_migration_v1.json\":\"78f2c8f078856568d049aa9649101c0291d1c819e6dbb35e29f26c5da0cb0541\",\"data/temperature_locales.json\":\"496bc16aafd29a29f9f15deb039a46db65ee3351e3e61122be57633511ecd7e5\",\"data/temperature_models.json\":\"b683c5f2dc087a2d77cd51692e3779cb071732a8961606e736cf11788f41875c\",\"data/visualization_locales.json\":\"7d5779be213a99c7ddcdd0481537e29bf4ab30cc1c1b9a15c00f301502eb0db3\",\"data/wood_baseline_crosswalk_v2.json\":\"cddecb6f388814c0e85f64ab580cb9e551673240d2a182929a48e40b94079afa\",\"data/wood_source_registry_v2.json\":\"c48e70d4b6406e569d7468285e5e2458d7ba8cca8972f6e96b8c4001bfce0c20\",\"engine.py\":\"d61d56b294184afc401a20d26334fa6afb7667c8e115efc82c28016fa18874d9\",\"i18n.py\":\"603513bfa9a8ff5111cc40047a34c33b2d9352a2447def87e860de444a8e2d9d\",\"material_presentation.py\":\"55de108d53fea5ac74dbaad21807a8ff38247d534410d6513173664c56c7610c\",\"material_references.py\":\"f485759f92bac90a655cbdf9328855c6a863552c258e645e63171dc3a625f82e\",\"material_taxonomy.py\":\"67e5b77ff6ee3ed0b80fe1a0c2787d31f0ce3812b21bd693fe9cf236063d337b\",\"observation_study_comparison.py\":\"1e7491b925b5d33b55612062c340031b15b695a64c76ca52f2cd55e8fa46557c\",\"observation_temperature_plot.py\":\"344bc4ffedf8d04519c3f1f1d2472d47116ceeb2b40274b9ee3988733a517cb0\",\"observation_visualization.py\":\"78c8d67d1082fde4d092ca27e178a559bf3c63f8aaaf247e29c063ebdd6cf304\",\"prediction_visualization.py\":\"a6ea19e0a3398e60d8d3da004686545d347411b1b1778309bff8894f88e51507\",\"predictions.py\":\"660fceb3a06baad97e82c6af3ea5b9c3d829c32d939e5db202f45134701e3727\",\"silicon_predictions.py\":\"e55662a0d34716c296e8e204e57b4463563b4c0a6ceaa52baf46edea44e3b768\",\"temperature.py\":\"84c78b5ba3dcdf19a9d12c1da51beb9d21e7be387bb8f4a942da201f426e294e\",\"temperature_presentation.py\":\"9800081276c8c6b76deb420789978e1b26bff4805c39d9df055624e0ce696acb\",\"temperature_visualization.py\":\"ab2f1cc5aea08d273d2e5eff5ad297f041b3b5b8480f838c202fcb995512720e\",\"validation.py\":\"dba4a0036955179bebcbb50fd2c801a02daf8f88ed630bc2493f65bd5fca10fa\",\"visualization.py\":\"ffd52b47759b3ddb57a496d15e2a9bfcf0b8b6245a47933b290975d4ec5c40d3\",\"wood_bulk_adapter.py\":\"b98ab6519ae47a107a7052ec1c3744b3fd04f0b4174312157fea4c2db2944a93\"}",
+          "after": "{\"__init__.py\":\"27905b38e8ba494c97f5e0532a8434b92f5d562aefd65716bb9ef62e3c50c504\",\"__main__.py\":\"935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d\",\"_composite_cli_labels.py\":\"e4b2b67da5d36989025d50d88ab98e98af3d8ed5cdd15b63ea6d2d79ad3da170\",\"_composite_intake_labels.py\":\"ff63c8de21a4f354515370b10d0ff1b55c24fc80798d02093a2857832d7e870b\",\"_composite_labels.py\":\"57ffd1146b8c80aa8b426a2c9590c3e6061b0550a1f42f2be3c7993385d3f0b9\",\"_composite_windows.py\":\"353e172794436cfefe47aaacd81e343a70597e46b345b2d9a04636dfa7becaf2\",\"_compressibility_contract.py\":\"c4e582a5aab521555e229394071ec4329e637be8be7f5a6e5efb731410c04281\",\"_directional_contract.py\":\"9f5747c5657ef51f34d34ebc2541cd0b923d2c15b5cd3bfd20213257f1e9c7c6\",\"_hbn_observation_contract.py\":\"1d9e5bedd31b2adb6fb094314a6c6d8ff1c82b08555bb57e29287d334c10b0d4\",\"_material_derivation.py\":\"3bbea69321cd59ee702235bb84553dc89616c280efece6663605b81770704180\",\"_observation_contract.py\":\"f26477665179a7747fdd538bd15747540901d2b7527587ff3766bae29e99e2b7\",\"_observation_inspection_labels.py\":\"94d42b02f5d98ab6fc7c8d5e20d48eba8bdeb1556918785b5132b7ac29120e16\",\"_observation_study_comparison_labels.py\":\"50024a2ef76d9b0de835f3d1dedc1af9e98165575e90c6387f2121d48b676239\",\"_observation_study_comparison_rendering.py\":\"7eaa94c77420ad9cfc61644ea9f666d4b4dbade1ab5b829af8c906ed23c7b8a7\",\"_observation_temperature_labels.py\":\"80df0a20a766c86a1397dcc3f2fe2ad7965087e3dd129d52aa665a463f015ce0\",\"_observation_temperature_rendering.py\":\"a753a4d943910d0501bb92bd1dee542446c28d03c3275b41bdd5aebac630c823\",\"_pa12_cf15_observation_contract.py\":\"680563e2a6d403650d534414ceb872c2f45288145a82b34e630413054d79d6ac\",\"_paht_cf_observation_contract.py\":\"2c58b4adf593d352c26b66543cb38d777b735b38f445245be731837f0bbbc328\",\"_paht_observation_labels.py\":\"46f6f3291d04034bd16f075edb06bfa13f03b9a7900aa4ada92c60343577255c\",\"_version.py\":\"38f9a9fcc19d2183cb65740ce16e757793a9e351647eb0dc016901f4eb723316\",\"_viscoelastic_contract.py\":\"725d13e6202805c4048d5b7f5484f1f59eb5fa54f6e692d616f9e95de1e28656\",\"_wave_contract.py\":\"340fd4d24f0666bf2a9c66b4d7c2ff58a50b1706212af19f699499a6447fb8f1\",\"_yield_contract.py\":\"2240a29cd29285853c107a50bf89e1fae1fb182d73d71310d6b57b646d68ea7c\",\"bulk_ingestion.py\":\"c40ae3c5084e0c730419227b80e5542a681f030bfe42c04df41bf2b353d44554\",\"catalog.py\":\"9897c6228886475e681d6ebd8b9c4bc9ee03d7b86954538ff450f64bdcdf2c03\",\"catalog_output.py\":\"9b26bf998fd6d6bd7c9a923c757142dd5407a1e847ca740189c953a278868f6d\",\"cli.py\":\"a5ba8a63071c4776fd32d43c87045b3e8ceea84a1cd27a9cdcf311062e0cb255\",\"composite.py\":\"c09fccdca401a8dea4e728c889122f3236a5fbf5ac7ddaa17a8e10db2d29dcea\",\"composite_export.py\":\"df4433823c220f73986ec2c0fca1d8f1e87af12750467db658ff6085c9ba75e6\",\"composite_intake.py\":\"ccc3164358ff5fccb6da15ef32dd3feeed1034e3b75693fbf39569a967db562d\",\"composite_render.py\":\"c85cebc92780bc784f6b60bf1c0f688d328d77635d36dcf431e79daa316d5203\",\"conversions.py\":\"5d52973d3444fba29665b198754dfb8100ebcaa10da2e7e9dbfbb04e4fd81d99\",\"data/claims.json\":\"e7bf9be30dd2c535d24a932d8960025e66f7b53b08215063a9ba972af895e0f3\",\"data/computational_predictions.json\":\"f7c279a04a143322169bb234081716b3ec099a62f1894e01aa3ee48cc9bb927f\",\"data/locales.json\":\"557abb7cd8ea963fb45134b12372ad898d96f6bd0a0954188a2226b3ee8ef34e\",\"data/material_locales.json\":\"be2f7c0a47ad1022bd8ef5c874d0f9a91327ebe70103114f50daa743fe27da2d\",\"data/materials.json\":\"8ad95e381232906bce1c0e2df777ed7856f2ad27e25200913fc3ad50482e5293\",\"data/observations.json\":\"12638d0f5e29eddcb80b674ce1b4067b6f358ed967fbad6bbbba8a689a85ee00\",\"data/prediction_locales.json\":\"a7e1a32ec06bcf4c0c3138be8386a89536ff21b318dba3b5f2bf6c29d646830d\",\"data/reference_properties.json\":\"32327221035bd9cc439a2107b4c857629f69276ace7d54df21ce3013720d7c8a\",\"data/sources.json\":\"360d0fc46605805173773ae30a01efcd5ba08cc262b140460a6b39c3b9434bd1\",\"data/taxonomy_migration_v1.json\":\"78f2c8f078856568d049aa9649101c0291d1c819e6dbb35e29f26c5da0cb0541\",\"data/temperature_locales.json\":\"496bc16aafd29a29f9f15deb039a46db65ee3351e3e61122be57633511ecd7e5\",\"data/temperature_models.json\":\"b683c5f2dc087a2d77cd51692e3779cb071732a8961606e736cf11788f41875c\",\"data/visualization_locales.json\":\"7d5779be213a99c7ddcdd0481537e29bf4ab30cc1c1b9a15c00f301502eb0db3\",\"data/wood_baseline_crosswalk_v2.json\":\"cddecb6f388814c0e85f64ab580cb9e551673240d2a182929a48e40b94079afa\",\"data/wood_source_registry_v2.json\":\"c48e70d4b6406e569d7468285e5e2458d7ba8cca8972f6e96b8c4001bfce0c20\",\"engine.py\":\"d61d56b294184afc401a20d26334fa6afb7667c8e115efc82c28016fa18874d9\",\"i18n.py\":\"603513bfa9a8ff5111cc40047a34c33b2d9352a2447def87e860de444a8e2d9d\",\"material_presentation.py\":\"55de108d53fea5ac74dbaad21807a8ff38247d534410d6513173664c56c7610c\",\"material_references.py\":\"f485759f92bac90a655cbdf9328855c6a863552c258e645e63171dc3a625f82e\",\"material_taxonomy.py\":\"67e5b77ff6ee3ed0b80fe1a0c2787d31f0ce3812b21bd693fe9cf236063d337b\",\"observation_study_comparison.py\":\"1e7491b925b5d33b55612062c340031b15b695a64c76ca52f2cd55e8fa46557c\",\"observation_temperature_plot.py\":\"344bc4ffedf8d04519c3f1f1d2472d47116ceeb2b40274b9ee3988733a517cb0\",\"observation_visualization.py\":\"78c8d67d1082fde4d092ca27e178a559bf3c63f8aaaf247e29c063ebdd6cf304\",\"prediction_visualization.py\":\"a6ea19e0a3398e60d8d3da004686545d347411b1b1778309bff8894f88e51507\",\"predictions.py\":\"660fceb3a06baad97e82c6af3ea5b9c3d829c32d939e5db202f45134701e3727\",\"silicon_predictions.py\":\"e55662a0d34716c296e8e204e57b4463563b4c0a6ceaa52baf46edea44e3b768\",\"temperature.py\":\"84c78b5ba3dcdf19a9d12c1da51beb9d21e7be387bb8f4a942da201f426e294e\",\"temperature_presentation.py\":\"9800081276c8c6b76deb420789978e1b26bff4805c39d9df055624e0ce696acb\",\"temperature_visualization.py\":\"ab2f1cc5aea08d273d2e5eff5ad297f041b3b5b8480f838c202fcb995512720e\",\"validation.py\":\"dba4a0036955179bebcbb50fd2c801a02daf8f88ed630bc2493f65bd5fca10fa\",\"visualization.py\":\"ffd52b47759b3ddb57a496d15e2a9bfcf0b8b6245a47933b290975d4ec5c40d3\",\"wood_bulk_adapter.py\":\"b98ab6519ae47a107a7052ec1c3744b3fd04f0b4174312157fea4c2db2944a93\"}"
+        }
+      ]
+    },
+    "experimental/platform/ci/required_test_ids.json": {
+      "previous_sha256": "e0d295f8a4882473f9da16eec6384f53f7775203b8096a765722ce2c5af4d5dd",
+      "sha256": "99ced49edd4f9816879c74d9335eed96ec2f07c1c013536c909f944c900130d9",
+      "edits": [
+        {
+          "offset": 12989,
+          "before": "    \"test_nomad_incremental.IncrementalTests.test_kapoor_predecessor_scope_stays_read_only_without_migration\"\n",
+          "after": "    \"test_nomad_incremental.IncrementalTests.test_kapoor_predecessor_scope_stays_read_only_without_migration\",\n    \"test_formal_overlap_audit.FormalOverlapAuditTests.test_tian_nominal_composites_remain_qualified_text\",\n    \"test_nomad_incremental.IncrementalTests.test_tian_predecessor_scope_stays_read_only_without_migration\"\n"
+        },
+        {
+          "offset": 24213,
+          "before": "    \"test_kapoor_phosphate.KapoorPhosphateQuery.test_six_analyzed_glasses_keep_exact_density_joins_and_unknowns\"\n",
+          "after": "    \"test_kapoor_phosphate.KapoorPhosphateQuery.test_six_analyzed_glasses_keep_exact_density_joins_and_unknowns\",\n    \"test_baseline_compatibility.BaselineCompatibility.test_tian_parent_database_rejected_without_migration\",\n    \"test_baseline_compatibility.BaselineCompatibility.test_tian_parent_manifest_and_catalog_recovery_remain_exact\",\n    \"test_tian_nano_ti.TianNanoTiQuery.test_composite_category_does_not_infer_alloy_or_nanoscale_membership\",\n    \"test_tian_nano_ti.TianNanoTiQuery.test_formal_count_excludes_computed_and_rejects_stale_versions\",\n    \"test_tian_nano_ti.TianNanoTiQuery.test_installed_cli_and_api_preserve_exact_objects_and_authorship\",\n    \"test_tian_nano_ti.TianNanoTiQuery.test_resolved_objects_are_detached_and_cannot_rewrite_qualifications\",\n    \"test_tian_nano_ti.TianNanoTiQuery.test_two_nominal_composites_keep_exact_density_joins_and_unknowns\"\n"
+        }
+      ]
+    },
+    "scripts/run_bruns_borosilicate_ci.py": {
+      "previous_sha256": "72f1ab14b0f616c3cf6f2f6dd4e37a4fe35011e3703a4d8c43606e863c200eb0",
+      "sha256": "9a74794a922d453b92b63c6fe7c318cd0d0e43724987a60aa2bac90a91b14651",
+      "edits": [
+        {
+          "offset": 35335,
+          "before": "        import run_kapoor_phosphate_ci as successor\n        require(Path(successor.__file__).resolve() == (SCRIPT_DIR / 'run_kapoor_phosphate_ci.py').resolve(),\n",
+          "after": "        import run_tian_nano_ti_ci as successor\n        require(Path(successor.__file__).resolve() == (SCRIPT_DIR / 'run_tian_nano_ti_ci.py').resolve(),\n"
+        }
+      ]
+    },
+    "scripts/run_tarasov_pna_bpf_ci.py": {
+      "previous_sha256": "74f10233a7e0e81f5b4d044201fcfe84c905d05e9df5a510e79b2b52b9caeae5",
+      "sha256": "d93fccb162b421dd75b40247a35ee40d8a5d3d20dcc6d7d6467f363a2e1f9797",
+      "edits": [
+        {
+          "offset": 45449,
+          "before": "        import run_kapoor_phosphate_ci as successor\n        require(Path(successor.__file__).resolve() == (SCRIPT_DIR / 'run_kapoor_phosphate_ci.py').resolve(),\n",
+          "after": "        import run_tian_nano_ti_ci as successor\n        require(Path(successor.__file__).resolve() == (SCRIPT_DIR / 'run_tian_nano_ti_ci.py').resolve(),\n"
+        }
+      ]
+    },
+    "scripts/run_kapoor_phosphate_ci.py": {
+      "previous_sha256": "5adad156b8ad925be4da57a98065b3db87ea38c4e146830286c71d46ef1b36cd",
+      "sha256": "ee13c035f91dab3e9d00d205f34d0b7178388aa525a65e48211f44dd8e4cb8ce",
+      "edits": [
+        {
+          "offset": 1618,
+          "before": "",
+          "after": "REGRESSION_CHECKPOINT = '5a9a85c573f590d206cddb4cb7c085f334a0fbc0'\nKAPOOR_BATCH_ID = 'kapoor-phosphate-glasses-20261024'\n"
+        },
+        {
+          "offset": 44407,
+          "before": "def validate_candidate_artifacts():\n",
+          "after": "def validate_candidate_artifacts(*, regression_checkpoint=False):\n"
+        },
+        {
+          "offset": 44695,
+          "before": "        raw = path.read_bytes()\n",
+          "after": "        raw = regression_checkpoint_bytes(name) if regression_checkpoint else path.read_bytes()\n"
+        },
+        {
+          "offset": 46541,
+          "before": "",
+          "after": "\n\ndef regression_checkpoint_bytes(relative):\n    \"\"\"Recover only a frozen Kapoor resource for historical regression assertions.\n\n    Execution paths never opt into this view. Successor helpers must first\n    validate the actual current graph or file; immutable Git bytes are only\n    the final equality check, never a fallback for unknown current content.\n    \"\"\"\n    data_paths = {'materials_boundaries/data/' + name for name in RESOURCE_HASHES}\n    allowed = data_paths | set(CANDIDATE_ARTIFACTS) | {\n        '.github/workflows/ci.yml',\n        'experimental/platform/ci/required_test_ids.json',\n        'experimental/platform/query-service/materials_query/pins/legacy_baseline.json',\n    }\n    require(type(relative) is str and relative in allowed,\n            'Unknown Kapoor regression checkpoint resource')\n    import material_append_successors as successors\n    require(Path(successors.__file__).resolve() == (ROOT / 'tests/material_append_successors.py').resolve(),\n            'Historical recovery must use the checkout test-only successor registry')\n    path = ROOT / relative\n    require(not path.is_symlink() and path.is_file() and path.resolve().is_relative_to(ROOT.resolve()),\n            'Historical regression resource must be a regular repository file')\n    raw = path.read_bytes()\n    if relative in data_paths:\n        raw = successors.project_successor_catalog_bytes(\n            Path(relative).name, raw, before=KAPOOR_BATCH_ID)\n    else:\n        raw = successors.project_successor_file(relative, raw, before=KAPOOR_BATCH_ID)\n    require(raw == git('show', REGRESSION_CHECKPOINT + ':' + relative),\n            'Unreviewed Kapoor regression checkpoint successor: ' + relative)\n    return raw\n"
+        },
+        {
+          "offset": 50903,
+          "before": "def declared_test_ids(relative, *, predecessor=False):\n",
+          "after": "def declared_test_ids(relative, *, predecessor=False, regression_checkpoint=False):\n"
+        },
+        {
+          "offset": 51040,
+          "before": "    names = (git('ls-tree', '-r', '--name-only', BASE_COMMIT, '--', relative).decode().splitlines()\n             if predecessor else [path.relative_to(ROOT).as_posix() for path in (ROOT / relative).glob('test*.py')])\n",
+          "after": "    require(not (predecessor and regression_checkpoint), 'Choose one historical inventory boundary')\n    require(relative in {group[0] for group in TEST_GROUPS.values()}, 'Unknown test inventory directory')\n    if regression_checkpoint:\n        # The new profile owns every current ID, including its new modules.\n        # A historical view must not silently discard unknown additions.\n        import run_tian_nano_ti_ci as successor\n        require(Path(successor.__file__).resolve() == (SCRIPT_DIR / 'run_tian_nano_ti_ci.py').resolve(),\n                'Historical inventory requires the checkout successor profile')\n        groups = [name for name, group in successor.TEST_GROUPS.items() if group[0] == relative]\n        require(len(groups) == 1, 'Missing or duplicate successor inventory directory')\n        current_ids = declared_test_ids(relative)\n        successor.validate_inventory(groups[0], current_ids)\n        names = git('ls-tree', '-r', '--name-only', REGRESSION_CHECKPOINT, '--', relative).decode('utf-8').splitlines()\n    else:\n        names = (git('ls-tree', '-r', '--name-only', BASE_COMMIT, '--', relative).decode().splitlines()\n                 if predecessor else [path.relative_to(ROOT).as_posix() for path in (ROOT / relative).glob('test*.py')])\n"
+        },
+        {
+          "offset": 51458,
+          "before": "        raw = git('show', BASE_COMMIT + ':' + name) if predecessor else (ROOT / name).read_bytes()\n        for node in ast.parse(raw).body:\n            if isinstance(node, ast.ClassDef):\n                result.extend(path.stem + '.' + node.name + '.' + method.name for method in node.body\n                              if isinstance(method, (ast.FunctionDef, ast.AsyncFunctionDef))\n                              and method.name.startswith('test'))\n",
+          "after": "        boundary = REGRESSION_CHECKPOINT if regression_checkpoint else BASE_COMMIT\n        raw = git('show', boundary + ':' + name) if predecessor or regression_checkpoint else (ROOT / name).read_bytes()\n        def identifiers(content):\n            return [path.stem + '.' + node.name + '.' + method.name\n                    for node in ast.parse(content).body if isinstance(node, ast.ClassDef)\n                    for method in node.body if isinstance(method, (ast.FunctionDef, ast.AsyncFunctionDef))\n                    and method.name.startswith('test')]\n        old_ids = identifiers(raw)\n        if regression_checkpoint:\n            current_path = ROOT / name\n            require(not current_path.is_symlink() and current_path.is_file(),\n                    'Historical test module disappeared: ' + name)\n            actual_ids = identifiers(current_path.read_bytes())\n            require(len(actual_ids) == len(set(actual_ids)) and set(old_ids).issubset(actual_ids),\n                    'Historical test methods disappeared or changed module: ' + name)\n        result.extend(old_ids)\n    if regression_checkpoint:\n        groups = [name for name, group in TEST_GROUPS.items() if group[0] == relative]\n        require(len(groups) == 1, 'Missing or duplicate Kapoor inventory directory')\n        validate_inventory(groups[0], result)\n"
+        },
+        {
+          "offset": 57702,
+          "before": "def installation_payload():\n",
+          "after": "def installation_payload(*, regression_checkpoint=False):\n    \"\"\"Validate live installation inputs, or an explicitly labelled regression view.\n\n    main/check_installed retain the live default. Historical assertions opt in\n    explicitly after validating the current successor bytes; this view cannot\n    supply present installed verification evidence.\n    \"\"\"\n"
+        },
+        {
+          "offset": 58252,
+          "before": "        new = (ROOT / 'materials_boundaries/data' / filename).read_bytes()\n",
+          "after": "        relative = 'materials_boundaries/data/' + filename\n        new = (regression_checkpoint_bytes(relative) if regression_checkpoint\n               else (ROOT / relative).read_bytes())\n"
+        },
+        {
+          "offset": 58681,
+          "before": "    baseline = ROOT / 'experimental/platform/query-service/materials_query/pins/legacy_baseline.json'\n    require(sha256(baseline.read_bytes()).hexdigest() == QUERY_BASELINE_SHA256, 'Current query baseline pin changed')\n    validate_candidate_artifacts()\n",
+          "after": "    baseline = 'experimental/platform/query-service/materials_query/pins/legacy_baseline.json'\n    baseline_raw = (regression_checkpoint_bytes(baseline) if regression_checkpoint\n                    else (ROOT / baseline).read_bytes())\n    require(sha256(baseline_raw).hexdigest() == QUERY_BASELINE_SHA256, 'Current query baseline pin changed')\n    validate_candidate_artifacts(regression_checkpoint=regression_checkpoint)\n"
+        },
+        {
+          "offset": 59734,
+          "before": "    return {'candidate': packet['catalogs'], 'resource_hashes': RESOURCE_HASHES,\n",
+          "after": "    payload = {'candidate': packet['catalogs'], 'resource_hashes': RESOURCE_HASHES,\n"
+        },
+        {
+          "offset": 60183,
+          "before": "",
+          "after": "    if regression_checkpoint:\n        payload['historical_regression_checkpoint'] = REGRESSION_CHECKPOINT\n    return payload\n"
+        },
+        {
+          "offset": 60581,
+          "before": "",
+          "after": "require('historical_regression_checkpoint' not in expected,\n        'Installed smoke requires live payload, not a historical regression view')\n"
+        }
+      ]
+    },
+    "tests/test_kapoor_phosphate_ci.py": {
+      "previous_sha256": "7ae15a8dd6810e6be0570d56a9e4cae123787bc78d9f3cfa1745cbc41114fbde",
+      "sha256": "7dad3cea0a60e6d65ebba1a0c7f63dbdd33b0638031fcd0d91fbdf1d89e83979",
+      "edits": [
+        {
+          "offset": 746,
+          "before": "        current = (ROOT / '.github/workflows/ci.yml').read_bytes().decode('utf-8')\n",
+          "after": "        current = ci.regression_checkpoint_bytes('.github/workflows/ci.yml').decode('utf-8')\n"
+        },
+        {
+          "offset": 6197,
+          "before": "                declared = ci.declared_test_ids(relative)\n",
+          "after": "                declared = ci.declared_test_ids(relative, regression_checkpoint=True)\n"
+        },
+        {
+          "offset": 6898,
+          "before": "        required = json.loads((ROOT / required_path).read_bytes())\n",
+          "after": "        required = json.loads(ci.regression_checkpoint_bytes(required_path))\n"
+        },
+        {
+          "offset": 7590,
+          "before": "        query_ids = ci.declared_test_ids('experimental/platform/query-service/catalog-tests')\n        ingestion_ids = ci.declared_test_ids('experimental/platform/ingestion')\n",
+          "after": "        query_ids = ci.declared_test_ids('experimental/platform/query-service/catalog-tests', regression_checkpoint=True)\n        ingestion_ids = ci.declared_test_ids('experimental/platform/ingestion', regression_checkpoint=True)\n"
+        },
+        {
+          "offset": 8278,
+          "before": "            ids = ci.declared_test_ids(relative)\n",
+          "after": "            ids = ci.declared_test_ids(relative, regression_checkpoint=True)\n"
+        },
+        {
+          "offset": 8842,
+          "before": "        payload = ci.installation_payload()\n",
+          "after": "        payload = ci.installation_payload(regression_checkpoint=True)\n        self.assertEqual(payload['historical_regression_checkpoint'], ci.REGRESSION_CHECKPOINT)\n"
+        },
+        {
+          "offset": 9638,
+          "before": "                ci.installation_payload()\n",
+          "after": "                ci.installation_payload(regression_checkpoint=True)\n"
+        },
+        {
+          "offset": 9788,
+          "before": "            ci.installation_payload()\n",
+          "after": "            ci.installation_payload(regression_checkpoint=True)\n"
+        },
+        {
+          "offset": 16124,
+          "before": "        all_ids = ci.declared_test_ids('tests')\n",
+          "after": "        all_ids = ci.declared_test_ids('tests', regression_checkpoint=True)\n"
+        },
+        {
+          "offset": 30003,
+          "before": "        ci.validate_candidate_artifacts()\n",
+          "after": "        ci.validate_candidate_artifacts(regression_checkpoint=True)\n"
+        },
+        {
+          "offset": 30160,
+          "before": "            ci.validate_candidate_artifacts()\n",
+          "after": "            ci.validate_candidate_artifacts(regression_checkpoint=True)\n"
+        },
+        {
+          "offset": 30305,
+          "before": "            ci.validate_candidate_artifacts()\n",
+          "after": "            ci.validate_candidate_artifacts(regression_checkpoint=True)\n"
+        },
+        {
+          "offset": 31410,
+          "before": "",
+          "after": "            historical = directory / 'historical.json'\n            historical.write_text(json.dumps({'historical_regression_checkpoint': ci.REGRESSION_CHECKPOINT}),\n                                  encoding='utf-8')\n            with patch.object(ci.sys, 'argv', ['installed-smoke', str(historical)]), \\\n                    self.assertRaisesRegex(RuntimeError, 'Installed smoke requires live payload'):\n                exec(compile(ci.INSTALLED_SMOKE, '<installed-smoke>', 'exec'), {'__name__': '__main__'})\n"
+        }
+      ]
+    },
+    "tests/test_tian_nano_ti_packet.py": {
+      "previous_sha256": "00a9f3a02f21e06847ae9640da2d6fcc685276df05fe5ee444779fead4f2a2aa",
+      "sha256": "cc4d8cf6cc4cc4b3ef7f780f254f84bbb8cd370e34fd666f80cc103e2bc728cb",
+      "edits": [
+        {
+          "offset": 247,
+          "before": "",
+          "after": "\nimport material_append_successors as successors\nfrom material_append_history import recover_catalogs\n"
+        },
+        {
+          "offset": 2126,
+          "before": "        cls.baseline_materials = read(BASELINE / FILES['materials'])\n        cls.packet = compile_spec(cls.spec, BASELINE)\n",
+          "after": "        current = {key: read(BASELINE / filename) for key, filename in FILES.items()}\n        current = successors.project_successor_catalogs(current, before=BATCH.name)\n        baseline = recover_catalogs(ROOT, current, successors.data_ledger(BATCH.name))\n        cls.baseline_materials = baseline['materials']\n        cls.baseline_bytes = {filename: encoded(baseline[key]) for key, filename in FILES.items()}\n        temporary = tempfile.TemporaryDirectory()\n        cls.addClassCleanup(temporary.cleanup)\n        cls.baseline_dir = Path(temporary.name)\n        for filename, raw in cls.baseline_bytes.items():\n            (cls.baseline_dir / filename).write_bytes(raw)\n        cls.packet = compile_spec(cls.spec, cls.baseline_dir)\n"
+        },
+        {
+          "offset": 16015,
+          "before": "                self.assertEqual(path.read_bytes(), frozen)\n",
+          "after": "                current = path.read_bytes()\n                if descriptor['path'] in {'materials_boundaries/data/' + filename for filename in FILES.values()}:\n                    current = successors.project_successor_catalog_bytes(path.name, current, before=successors.KAPOOR_BATCH_ID)\n                else:\n                    current = successors.project_successor_file(descriptor['path'], current, before=successors.KAPOOR_BATCH_ID)\n                self.assertEqual(current, frozen)\n"
+        },
+        {
+          "offset": 16316,
+          "before": "                self.assertEqual(sha256((BASELINE / filename).read_bytes()).hexdigest(),\n",
+          "after": "                self.assertEqual(sha256(self.baseline_bytes[filename]).hexdigest(),\n"
+        },
+        {
+          "offset": 17431,
+          "before": "            first, created = write_packet(BASELINE, BATCH / 'packet-spec.json', output)\n",
+          "after": "            first, created = write_packet(self.baseline_dir, BATCH / 'packet-spec.json', output)\n"
+        },
+        {
+          "offset": 17624,
+          "before": "            again, created = write_packet(BASELINE, BATCH / 'packet-spec.json', output)\n",
+          "after": "            again, created = write_packet(self.baseline_dir, BATCH / 'packet-spec.json', output)\n"
+        },
+        {
+          "offset": 18094,
+          "before": "                write_packet(BASELINE, BATCH / 'packet-spec.json', output)\n",
+          "after": "                write_packet(self.baseline_dir, BATCH / 'packet-spec.json', output)\n"
+        },
+        {
+          "offset": 18438,
+          "before": "            compile_spec(spec, BASELINE)\n",
+          "after": "            compile_spec(spec, self.baseline_dir)\n"
+        },
+        {
+          "offset": 18669,
+          "before": "            compile_spec(spec, BASELINE)\n",
+          "after": "            compile_spec(spec, self.baseline_dir)\n"
+        },
+        {
+          "offset": 19117,
+          "before": "                write_packet(BASELINE, path, output)\n",
+          "after": "                write_packet(self.baseline_dir, path, output)\n"
+        },
+        {
+          "offset": 19630,
+          "before": "            compile_spec(spec, BASELINE)\n",
+          "after": "            compile_spec(spec, self.baseline_dir)\n"
+        },
+        {
+          "offset": 20416,
+          "before": "                compile_spec(spec, BASELINE)\n",
+          "after": "                compile_spec(spec, self.baseline_dir)\n"
+        },
+        {
+          "offset": 21127,
+          "before": "                packet = compile_spec(spec, BASELINE)\n",
+          "after": "                packet = compile_spec(spec, self.baseline_dir)\n"
+        },
+        {
+          "offset": 22197,
+          "before": "                validate_prepared_packet(packet, BASELINE)\n",
+          "after": "                validate_prepared_packet(packet, self.baseline_dir)\n"
+        }
+      ]
+    },
+    "tests/legacy_document_recovery.py": {
+      "previous_sha256": "a6bd575c63251659ce4d828a0ce36417129c824a633cc1bb6b7acfd0e94dc597",
+      "sha256": "302a74d4b6c7e22cf36db3c7546930e4864cdc1284f1f02be6bbed2b9c56fa1b",
+      "edits": [
+        {
+          "offset": 1217,
+          "before": "",
+          "after": "TIAN_DOCUMENT_LEDGER = 'tests/fixtures/tian_legacy_document_recovery_20261024.json'\nTIAN_DOCUMENT_SHA256 = '40b3ed8bac3b3ea89f198b3855cd95b04677670c3de0fe91e6f2b6bda3f8b698'\n"
+        },
+        {
+          "offset": 1976,
+          "before": "    return project_file_chain(filename, raw, latest['ledgers'] + successor['ledgers'] + ledger['ledgers'])\n",
+          "after": "    tian = load_frozen(ROOT, TIAN_DOCUMENT_LEDGER, TIAN_DOCUMENT_SHA256)\n    return project_file_chain(filename, raw, tian['ledgers'] + latest['ledgers'] + successor['ledgers'] + ledger['ledgers'])\n"
+        }
+      ]
+    },
+    "tests/test_legacy_document_recovery.py": {
+      "previous_sha256": "86f59ad0c4f1be40dc1f4dfca0d1f3fdf17d5c85da8dfa4af4f3b5ea3b10aa87",
+      "sha256": "0442b5bddbc6efbb523356a41b6dd0304c4371c1372f6effbde4beea8c586cdd",
+      "edits": [
+        {
+          "offset": 848,
+          "before": "",
+          "after": "TIAN_CODE_LEDGER = 'tests/fixtures/tian_legacy_document_code_20261024.json'\nTIAN_CODE_SHA256 = 'e6508272858741e96cc2a40f507e134bd5c80611fed13e6b1a35108b888151af'\n"
+        },
+        {
+          "offset": 1275,
+          "before": "",
+          "after": "        tian_code = recovery.load_frozen(ROOT, TIAN_CODE_LEDGER, TIAN_CODE_SHA256)\n        self.assertEqual(tian_code['baseline_commit'], '497dcc8495c32b16f02cdedce8b99f6b7d05f2c4')\n        self.assertEqual(set(tian_code['updates']), {'tests/legacy_document_recovery.py'})\n        tian_entry = tian_code['updates']['tests/legacy_document_recovery.py']\n        for changed in (helper + b'!', helper[:-1], b'!' + helper[1:]):\n            with self.subTest(tian_helper_bytes=digest(changed)), self.assertRaises(AssertionError):\n                recover_file(changed, tian_entry)\n        helper = recover_file(helper, tian_entry)\n"
+        },
+        {
+          "offset": 4050,
+          "before": "",
+          "after": "        tian = recovery.load_frozen(ROOT, recovery.TIAN_DOCUMENT_LEDGER, recovery.TIAN_DOCUMENT_SHA256)\n        self.assertEqual(tian['baseline_commit'], '497dcc8495c32b16f02cdedce8b99f6b7d05f2c4')\n        self.assertEqual(len(tian['ledgers']), 1)\n        self.assertEqual(tian['ledgers'][0]['batch_id'], 'tian-nano-ti-composites-20261024')\n        self.assertEqual(set(tian['ledgers'][0]['updates']), {'README.md', 'THIRD_PARTY_NOTICES.md'})\n"
+        },
+        {
+          "offset": 4903,
+          "before": "",
+          "after": "            tian = recovery.load_frozen(ROOT, recovery.TIAN_DOCUMENT_LEDGER, recovery.TIAN_DOCUMENT_SHA256)\n            tian_entry = tian['ledgers'][0]['updates'][filename]\n            self.assertEqual(digest(raw), tian_entry['sha256'])\n            self.assertEqual(tian_entry['previous_sha256'], latest['ledgers'][0]['updates'][filename]['sha256'])\n            for changed in (raw + b'!', raw[:-1], b'!' + raw[1:]):\n                with self.subTest(tian_document=filename), self.assertRaises(AssertionError):\n                    recover_file(changed, tian_entry)\n            raw = recover_file(raw, tian_entry)\n"
+        },
+        {
+          "offset": 7075,
+          "before": "                            raw.replace(b'Kapoor', b'Unreviewed', 1)):\n",
+          "after": "                            raw.replace(b'Kapoor', b'Unreviewed', 1),\n                            raw.replace(b'Tian', b'Unreviewed', 1)):\n"
+        },
+        {
+          "offset": 9775,
+          "before": "",
+          "after": "        tian = recovery.load_frozen(ROOT, recovery.TIAN_DOCUMENT_LEDGER, recovery.TIAN_DOCUMENT_SHA256)\n        for filename in ('README.md', 'THIRD_PARTY_NOTICES.md'):\n            with self.subTest(tian_order=filename), self.assertRaises(AssertionError):\n                project_file_chain(filename, b'', latest['ledgers'] + tian['ledgers'] + successor['ledgers'])\n        with patch.object(recovery, 'TIAN_DOCUMENT_SHA256', '0' * 64):\n            with self.assertRaises(AssertionError):\n                recovery.project_legacy_document_bytes('README.md', b'anything')\n        with self.assertRaises(AssertionError):\n            recovery.load_frozen(ROOT, TIAN_CODE_LEDGER, '0' * 64)\n"
+        }
+      ]
+    }
+  }
+}

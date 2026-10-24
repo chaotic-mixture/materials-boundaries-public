@@ -15,8 +15,8 @@ class FormalAPI(unittest.TestCase):
         return self.client.post('/api/catalog/project/list',json={'version':self.version,**kw})
 
     def test_counts_and_no_legacy_rewrite(self):
-        self.assertEqual(self.status['counts']['formal_project_admission_count'],1183)
-        self.assertEqual(self.client.get('/api/catalog/status').json()['counts']['local_catalog_unique_material_count'],1159)
+        self.assertEqual(self.status['counts']['formal_project_admission_count'],1185)
+        self.assertEqual(self.client.get('/api/catalog/status').json()['counts']['local_catalog_unique_material_count'],1161)
         self.assertFalse(self.client.get('/api/computed/status').json()['enabled'])
 
     def test_disabled_by_default(self):
@@ -30,7 +30,7 @@ class FormalAPI(unittest.TestCase):
         self.assertEqual(len(value['records']),24)
         self.assertIn('rights',value['records'][0]['model'])
         self.assertIn('overlap_relations',value['records'][0]['model'])
-        self.assertEqual(self.post(partition='legacy-source-qualified').json()['matched_count'],1159)
+        self.assertEqual(self.post(partition='legacy-source-qualified').json()['matched_count'],1161)
 
     def test_stale_and_missing_pin(self):
         self.assertEqual(self.post(version='0'*64).status_code,409)

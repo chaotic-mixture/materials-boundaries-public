@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "baseline_commit": "497dcc8495c32b16f02cdedce8b99f6b7d05f2c4",
+  "scope": "exact_legacy_document_helper_successor_without_normalizer_or_old_ledger_changes",
+  "updates": {
+    "tests/legacy_document_recovery.py": {
+      "previous_sha256": "a6bd575c63251659ce4d828a0ce36417129c824a633cc1bb6b7acfd0e94dc597",
+      "sha256": "302a74d4b6c7e22cf36db3c7546930e4864cdc1284f1f02be6bbed2b9c56fa1b",
+      "edits": [
+        {
+          "offset": 1217,
+          "before": "",
+          "after": "TIAN_DOCUMENT_LEDGER = 'tests/fixtures/tian_legacy_document_recovery_20261024.json'\nTIAN_DOCUMENT_SHA256 = '40b3ed8bac3b3ea89f198b3855cd95b04677670c3de0fe91e6f2b6bda3f8b698'\n"
+        },
+        {
+          "offset": 1976,
+          "before": "    return project_file_chain(filename, raw, latest['ledgers'] + successor['ledgers'] + ledger['ledgers'])\n",
+          "after": "    tian = load_frozen(ROOT, TIAN_DOCUMENT_LEDGER, TIAN_DOCUMENT_SHA256)\n    return project_file_chain(filename, raw, tian['ledgers'] + latest['ledgers'] + successor['ledgers'] + ledger['ledgers'])\n"
+        }
+      ]
+    }
+  }
+}

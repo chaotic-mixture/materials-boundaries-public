@@ -1192,3 +1192,37 @@ Reviewed publisher PDF: 5,036,175 bytes; SHA-256
 `ca831de841ebc22e52157474e491ca2151d8e4f6d68576a75376af47203d38a0`.
 Source transcription and license checks do not establish scientific replication,
 independent scientific review or legal clearance.
+
+### Tian 2023 nominal nano-Ti composite density facts
+
+Wei Tian, Pengfei Gao, Shengli Han, Xiaohong Chen, Fuwei Zhang, Yuhui Zhang,
+Tiegang Luo and Kaihong Zheng (2023), *Effect of Nano-Ti Particles on
+Microstructure and Mechanical Properties of Mg-3Al-1Zn Matrix Composites*,
+Materials 16(6), 2407, [DOI 10.3390/ma16062407](https://doi.org/10.3390/ma16062407).
+These are the eight author contributors. Bolv Xiao is the Academic Editor.
+Copyright 2023 by the authors; licensee MDPI, Basel, Switzerland. The
+article-specific permissions in the official archive and the publisher-formatted
+PDF page 1 identify [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+Changes are transcription of two selected Table 2 Actual Density cells and
+nominal reinforcement/state qualifications, with explicit unknowns. The 0.5 wt%
+and 1 wt% nano-Ti additions are nominal formulations, not analyzed final
+compositions. The literal second source label `1 wt Ti` is preserved; methods
+provide its separate nominal 1 wt% qualification. The densities describe the
+as-extruded composites. Density temperature, pressure, humidity, specimen count,
+repetitions, aggregation, uncertainty, density basis and porosity are unknown.
+Tensile n=3 and room temperature are not assigned to density. Theoretical
+density, tensile properties and the unreinforced comparator are excluded.
+
+The official Europe PMC XML, archive version `PMC10054318.1`, was inspected:
+143168 bytes, SHA-256
+`80b9020e8a4878adf439977478551214b1130982331d81a17fc85a072f2ac598`.
+The inspected publisher-formatted mirror PDF is 5497847 bytes, SHA-256
+`8df98d0b465e5bef857d9eaa0ff0969e0c22b4f35aa5a7c64e6e59150b08afad`.
+Its MD5 `aea07249f6eb98a284067ea7a466012a` and size match the official archive
+PDF manifest. Direct primary-host PDF download and primary-host SHA-256 byte
+equivalence remain unverified. No separate restriction was observed for the
+selected table and method. No source PDF, XML full text, images or raw assets
+are distributed or relicensed under MIT. Attribution and the license link are
+retained; no endorsement, scientific replication or independent scientific
+approval is implied.

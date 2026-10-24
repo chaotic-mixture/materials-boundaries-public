@@ -16,6 +16,8 @@ SUCCESSOR_CODE_LEDGER = 'tests/fixtures/tarasov_legacy_document_code_20261023.js
 SUCCESSOR_CODE_SHA256 = '4098ca4c95477d7502765ded63876e59089c78c248a754ab64a2b29cf994e577'
 KAPOOR_CODE_LEDGER = 'tests/fixtures/kapoor_legacy_document_code_20261024.json'
 KAPOOR_CODE_SHA256 = '514a499c633c5f89134d8784a1977122c499cdef2c4caad5fdf87fcf69ad9e70'
+TIAN_CODE_LEDGER = 'tests/fixtures/tian_legacy_document_code_20261024.json'
+TIAN_CODE_SHA256 = 'e6508272858741e96cc2a40f507e134bd5c80611fed13e6b1a35108b888151af'
 CODE_PATHS = {
     'tests/material_bulk_preservation.py',
     'tests/material_class_counts_preservation.py',
@@ -30,6 +32,14 @@ def digest(raw):
 class LegacyDocumentRecoveryTests(unittest.TestCase):
     def test_helper_ledgers_and_call_site_inventory_are_byte_pinned(self):
         helper = (ROOT / 'tests/legacy_document_recovery.py').read_bytes()
+        tian_code = recovery.load_frozen(ROOT, TIAN_CODE_LEDGER, TIAN_CODE_SHA256)
+        self.assertEqual(tian_code['baseline_commit'], '497dcc8495c32b16f02cdedce8b99f6b7d05f2c4')
+        self.assertEqual(set(tian_code['updates']), {'tests/legacy_document_recovery.py'})
+        tian_entry = tian_code['updates']['tests/legacy_document_recovery.py']
+        for changed in (helper + b'!', helper[:-1], b'!' + helper[1:]):
+            with self.subTest(tian_helper_bytes=digest(changed)), self.assertRaises(AssertionError):
+                recover_file(changed, tian_entry)
+        helper = recover_file(helper, tian_entry)
         latest_code = recovery.load_frozen(ROOT, KAPOOR_CODE_LEDGER, KAPOOR_CODE_SHA256)
         self.assertEqual(latest_code['baseline_commit'], 'c275ae6051277ad6d08077b2937527907eb2380f')
         self.assertEqual(set(latest_code['updates']), {'tests/legacy_document_recovery.py'})
@@ -63,6 +73,11 @@ class LegacyDocumentRecoveryTests(unittest.TestCase):
         self.assertEqual(len(latest['ledgers']), 1)
         self.assertEqual(latest['ledgers'][0]['batch_id'], 'kapoor-phosphate-glasses-20261024')
         self.assertEqual(set(latest['ledgers'][0]['updates']), {'README.md', 'THIRD_PARTY_NOTICES.md'})
+        tian = recovery.load_frozen(ROOT, recovery.TIAN_DOCUMENT_LEDGER, recovery.TIAN_DOCUMENT_SHA256)
+        self.assertEqual(tian['baseline_commit'], '497dcc8495c32b16f02cdedce8b99f6b7d05f2c4')
+        self.assertEqual(len(tian['ledgers']), 1)
+        self.assertEqual(tian['ledgers'][0]['batch_id'], 'tian-nano-ti-composites-20261024')
+        self.assertEqual(set(tian['ledgers'][0]['updates']), {'README.md', 'THIRD_PARTY_NOTICES.md'})
 
     def test_exact_document_chains_reach_unchanged_original_release_pins(self):
         frozen = recovery.load_frozen(ROOT, recovery.DOCUMENT_LEDGER, recovery.DOCUMENT_SHA256)
@@ -74,6 +89,14 @@ class LegacyDocumentRecoveryTests(unittest.TestCase):
             if filename == 'README.md':
                 raw = bulk.truthful_readme(raw, bulk.load_ledger())
             self.assertEqual(digest(recovery.project_legacy_document_bytes(filename, raw)), expected[filename])
+            tian = recovery.load_frozen(ROOT, recovery.TIAN_DOCUMENT_LEDGER, recovery.TIAN_DOCUMENT_SHA256)
+            tian_entry = tian['ledgers'][0]['updates'][filename]
+            self.assertEqual(digest(raw), tian_entry['sha256'])
+            self.assertEqual(tian_entry['previous_sha256'], latest['ledgers'][0]['updates'][filename]['sha256'])
+            for changed in (raw + b'!', raw[:-1], b'!' + raw[1:]):
+                with self.subTest(tian_document=filename), self.assertRaises(AssertionError):
+                    recover_file(changed, tian_entry)
+            raw = recover_file(raw, tian_entry)
             latest_entry = latest['ledgers'][0]['updates'][filename]
             self.assertEqual(digest(raw), latest_entry['sha256'])
             self.assertEqual(latest_entry['previous_sha256'], successor['ledgers'][0]['updates'][filename]['sha256'])
@@ -107,7 +130,8 @@ class LegacyDocumentRecoveryTests(unittest.TestCase):
             for changed in (raw + b'unknown prose\n', raw[:-1], b'!' + raw[1:],
                             raw.replace(b'Bruns', b'Unreviewed', 1),
                             raw.replace(b'Tarasov', b'Unreviewed', 1),
-                            raw.replace(b'Kapoor', b'Unreviewed', 1)):
+                            raw.replace(b'Kapoor', b'Unreviewed', 1),
+                            raw.replace(b'Tian', b'Unreviewed', 1)):
                 self.assertNotEqual(changed, raw)
                 with self.subTest(filename=filename), self.assertRaises(AssertionError):
                     bulk.release_bytes(filename, changed)
@@ -144,6 +168,15 @@ class LegacyDocumentRecoveryTests(unittest.TestCase):
                 project_file_chain(filename, b'', frozen['ledgers'] + successor['ledgers'])
             with self.subTest(latest_order=filename), self.assertRaises(AssertionError):
                 project_file_chain(filename, b'', successor['ledgers'] + latest['ledgers'] + frozen['ledgers'])
+        tian = recovery.load_frozen(ROOT, recovery.TIAN_DOCUMENT_LEDGER, recovery.TIAN_DOCUMENT_SHA256)
+        for filename in ('README.md', 'THIRD_PARTY_NOTICES.md'):
+            with self.subTest(tian_order=filename), self.assertRaises(AssertionError):
+                project_file_chain(filename, b'', latest['ledgers'] + tian['ledgers'] + successor['ledgers'])
+        with patch.object(recovery, 'TIAN_DOCUMENT_SHA256', '0' * 64):
+            with self.assertRaises(AssertionError):
+                recovery.project_legacy_document_bytes('README.md', b'anything')
+        with self.assertRaises(AssertionError):
+            recovery.load_frozen(ROOT, TIAN_CODE_LEDGER, '0' * 64)
         with patch.object(recovery, 'KAPOOR_DOCUMENT_SHA256', '0' * 64):
             with self.assertRaises(AssertionError):
                 recovery.project_legacy_document_bytes('README.md', b'anything')

@@ -5,11 +5,11 @@ to their proposed material, state, study cohort and physical feedstock context.
 It is a bounded companion view, with `curation=proposed` and
 `evaluation_support=catalog_only` throughout. It creates no catalog observation
 or admitted material. The formal reader independently verifies its resource
-hashes and reports the current experimental **1,183 = 1,159 legacy identities + 24 reviewed computed
+hashes and reports the current experimental **1,185 = 1,161 legacy identities + 24 reviewed computed
 composition admissions**. The separate 62 unadmitted computed examples remain
 excluded. This change's admitted delta is **0**.
 
-The current formal resource pins also include six Kapoor source-qualified analyzed oxide-glass formulations.
+The current formal resource pins also include two Tian source-qualified nominal nano-Ti composite formulations.
 They do not change this hBN view's reviewed nodes, edges or historical review
 anchor. Earlier 1,103-entry projection reports retain their original formal scope;
 the retained main boundary remains 1,081 rather than this experimental count.

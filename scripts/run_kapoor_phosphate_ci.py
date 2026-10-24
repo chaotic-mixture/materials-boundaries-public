@@ -40,6 +40,8 @@ from run_evidence_batch_ci import (
 BASE_COMMIT = 'c275ae6051277ad6d08077b2937527907eb2380f'
 DATA_BASE_COMMIT = '196995256836db2d8f870ac9a91f664bfdd03e7f'
 CANDIDATE_COMMIT = 'c275ae6051277ad6d08077b2937527907eb2380f'
+REGRESSION_CHECKPOINT = '5a9a85c573f590d206cddb4cb7c085f334a0fbc0'
+KAPOOR_BATCH_ID = 'kapoor-phosphate-glasses-20261024'
 BRANCH_REF = 'refs/heads/experimental/kapoor2019-glass-runtime'
 FULL_JOB_IF = PREVIOUS_FULL_JOB_IF.replace("') }}\n", "' && github.ref != '" + BRANCH_REF + "') }}\n")
 # Keep the existing 90-minute ceiling; do not enlarge it to hide a failure.
@@ -483,12 +485,12 @@ def require_frozen():
             'Workflow budget differs from the frozen inherited ceiling')
 
 
-def validate_candidate_artifacts():
+def validate_candidate_artifacts(*, regression_checkpoint=False):
     for name in CANDIDATE_ARTIFACTS:
         path = ROOT / name
         require(not path.is_symlink() and path.is_file() and path.resolve().is_relative_to(ROOT.resolve()),
                 'Candidate artifact is not a regular repository file: ' + name)
-        raw = path.read_bytes()
+        raw = regression_checkpoint_bytes(name) if regression_checkpoint else path.read_bytes()
         if name == 'tests/test_kapoor_phosphate_packet.py':
             # Only the frozen test adapter may differ from the reviewed candidate.
             # Its exact byte reversal is checked before the immutable comparison.
@@ -519,6 +521,38 @@ def validate_manifest(manifest):
 
 def git(*args):
     return subprocess.check_output(['git', *args], cwd=ROOT, timeout=30)
+
+
+def regression_checkpoint_bytes(relative):
+    """Recover only a frozen Kapoor resource for historical regression assertions.
+
+    Execution paths never opt into this view. Successor helpers must first
+    validate the actual current graph or file; immutable Git bytes are only
+    the final equality check, never a fallback for unknown current content.
+    """
+    data_paths = {'materials_boundaries/data/' + name for name in RESOURCE_HASHES}
+    allowed = data_paths | set(CANDIDATE_ARTIFACTS) | {
+        '.github/workflows/ci.yml',
+        'experimental/platform/ci/required_test_ids.json',
+        'experimental/platform/query-service/materials_query/pins/legacy_baseline.json',
+    }
+    require(type(relative) is str and relative in allowed,
+            'Unknown Kapoor regression checkpoint resource')
+    import material_append_successors as successors
+    require(Path(successors.__file__).resolve() == (ROOT / 'tests/material_append_successors.py').resolve(),
+            'Historical recovery must use the checkout test-only successor registry')
+    path = ROOT / relative
+    require(not path.is_symlink() and path.is_file() and path.resolve().is_relative_to(ROOT.resolve()),
+            'Historical regression resource must be a regular repository file')
+    raw = path.read_bytes()
+    if relative in data_paths:
+        raw = successors.project_successor_catalog_bytes(
+            Path(relative).name, raw, before=KAPOOR_BATCH_ID)
+    else:
+        raw = successors.project_successor_file(relative, raw, before=KAPOOR_BATCH_ID)
+    require(raw == git('show', REGRESSION_CHECKPOINT + ':' + relative),
+            'Unreviewed Kapoor regression checkpoint successor: ' + relative)
+    return raw
 
 
 def expected_workflow(baseline):
@@ -596,21 +630,49 @@ def validate_inventory(name, ids):
             'Exact inventory differs from the fixed sorted-ID fingerprint: ' + name)
 
 
-def declared_test_ids(relative, *, predecessor=False):
+def declared_test_ids(relative, *, predecessor=False, regression_checkpoint=False):
     """Independent declared-ID oracle used by regression tests, not discovery."""
-    names = (git('ls-tree', '-r', '--name-only', BASE_COMMIT, '--', relative).decode().splitlines()
-             if predecessor else [path.relative_to(ROOT).as_posix() for path in (ROOT / relative).glob('test*.py')])
+    require(not (predecessor and regression_checkpoint), 'Choose one historical inventory boundary')
+    require(relative in {group[0] for group in TEST_GROUPS.values()}, 'Unknown test inventory directory')
+    if regression_checkpoint:
+        # The new profile owns every current ID, including its new modules.
+        # A historical view must not silently discard unknown additions.
+        import run_tian_nano_ti_ci as successor
+        require(Path(successor.__file__).resolve() == (SCRIPT_DIR / 'run_tian_nano_ti_ci.py').resolve(),
+                'Historical inventory requires the checkout successor profile')
+        groups = [name for name, group in successor.TEST_GROUPS.items() if group[0] == relative]
+        require(len(groups) == 1, 'Missing or duplicate successor inventory directory')
+        current_ids = declared_test_ids(relative)
+        successor.validate_inventory(groups[0], current_ids)
+        names = git('ls-tree', '-r', '--name-only', REGRESSION_CHECKPOINT, '--', relative).decode('utf-8').splitlines()
+    else:
+        names = (git('ls-tree', '-r', '--name-only', BASE_COMMIT, '--', relative).decode().splitlines()
+                 if predecessor else [path.relative_to(ROOT).as_posix() for path in (ROOT / relative).glob('test*.py')])
     result = []
     for name in sorted(names):
         path = Path(name)
         if path.parent.as_posix() != relative or not path.name.startswith('test') or path.suffix != '.py':
             continue
-        raw = git('show', BASE_COMMIT + ':' + name) if predecessor else (ROOT / name).read_bytes()
-        for node in ast.parse(raw).body:
-            if isinstance(node, ast.ClassDef):
-                result.extend(path.stem + '.' + node.name + '.' + method.name for method in node.body
-                              if isinstance(method, (ast.FunctionDef, ast.AsyncFunctionDef))
-                              and method.name.startswith('test'))
+        boundary = REGRESSION_CHECKPOINT if regression_checkpoint else BASE_COMMIT
+        raw = git('show', boundary + ':' + name) if predecessor or regression_checkpoint else (ROOT / name).read_bytes()
+        def identifiers(content):
+            return [path.stem + '.' + node.name + '.' + method.name
+                    for node in ast.parse(content).body if isinstance(node, ast.ClassDef)
+                    for method in node.body if isinstance(method, (ast.FunctionDef, ast.AsyncFunctionDef))
+                    and method.name.startswith('test')]
+        old_ids = identifiers(raw)
+        if regression_checkpoint:
+            current_path = ROOT / name
+            require(not current_path.is_symlink() and current_path.is_file(),
+                    'Historical test module disappeared: ' + name)
+            actual_ids = identifiers(current_path.read_bytes())
+            require(len(actual_ids) == len(set(actual_ids)) and set(old_ids).issubset(actual_ids),
+                    'Historical test methods disappeared or changed module: ' + name)
+        result.extend(old_ids)
+    if regression_checkpoint:
+        groups = [name for name, group in TEST_GROUPS.items() if group[0] == relative]
+        require(len(groups) == 1, 'Missing or duplicate Kapoor inventory directory')
+        validate_inventory(groups[0], result)
     return sorted(result)
 
 def validate_result(name, discovered, result, *, skip_contract=None):
@@ -714,7 +776,13 @@ def validate_append(candidate, before, current):
             'Current exclusive primary categories changed')
 
 
-def installation_payload():
+def installation_payload(*, regression_checkpoint=False):
+    """Validate live installation inputs, or an explicitly labelled regression view.
+
+    main/check_installed retain the live default. Historical assertions opt in
+    explicitly after validating the current successor bytes; this view cannot
+    supply present installed verification evidence.
+    """
     raw = (ROOT / PACKET_PATH).read_bytes()
     require(sha256(raw).hexdigest() == PACKET_SHA256, 'Reviewed Kapoor packet bytes changed')
     packet = json.loads(raw)
@@ -722,14 +790,18 @@ def installation_payload():
     before, current = {}, {}
     for kind, filename in (('materials', 'materials.json'), ('properties', 'reference_properties.json'), ('sources', 'sources.json')):
         old = git('show', DATA_BASE_COMMIT + ':materials_boundaries/data/' + filename)
-        new = (ROOT / 'materials_boundaries/data' / filename).read_bytes()
+        relative = 'materials_boundaries/data/' + filename
+        new = (regression_checkpoint_bytes(relative) if regression_checkpoint
+               else (ROOT / relative).read_bytes())
         require(sha256(old).hexdigest() == BASELINE_HASHES[filename[:-5]], 'Predecessor resource pin differs')
         require(sha256(new).hexdigest() == RESOURCE_HASHES[filename], 'Current resource pin differs: ' + filename)
         before[kind], current[kind] = json.loads(old), json.loads(new)
     validate_append(packet['catalogs'], before, current)
-    baseline = ROOT / 'experimental/platform/query-service/materials_query/pins/legacy_baseline.json'
-    require(sha256(baseline.read_bytes()).hexdigest() == QUERY_BASELINE_SHA256, 'Current query baseline pin changed')
-    validate_candidate_artifacts()
+    baseline = 'experimental/platform/query-service/materials_query/pins/legacy_baseline.json'
+    baseline_raw = (regression_checkpoint_bytes(baseline) if regression_checkpoint
+                    else (ROOT / baseline).read_bytes())
+    require(sha256(baseline_raw).hexdigest() == QUERY_BASELINE_SHA256, 'Current query baseline pin changed')
+    validate_candidate_artifacts(regression_checkpoint=regression_checkpoint)
     preserved = {}
     for name in PRESERVED_RESOURCES:
         raw = (ROOT / name).read_bytes()
@@ -741,12 +813,15 @@ def installation_payload():
     validate_manifest(manifest)
     require(packet['review']['formal_admitted_delta'] == packet['report']['formal_admitted_delta'] == 0,
             'Historical candidate phase was rewritten as runtime admission')
-    return {'candidate': packet['catalogs'], 'resource_hashes': RESOURCE_HASHES,
+    payload = {'candidate': packet['catalogs'], 'resource_hashes': RESOURCE_HASHES,
             'excluded_examples': 62, 'released_main_count': 1081,
             'delta_counts': DELTA_COUNTS, 'graph_counts': GRAPH_COUNTS,
             'primary_counts': PRIMARY_COUNTS, 'formal_counts': FORMAL_COUNTS,
             'query_baseline': QUERY_BASELINE_SHA256, 'preserved_resources': preserved,
             'packages': [package for _, _, package in PACKAGES]}
+    if regression_checkpoint:
+        payload['historical_regression_checkpoint'] = REGRESSION_CHECKPOINT
+    return payload
 
 
 INSTALLED_SMOKE = r'''
@@ -765,6 +840,8 @@ def require(condition, message):
         raise RuntimeError(message)
 
 expected = json.loads(Path(sys.argv[1]).read_text(encoding='utf-8'))
+require('historical_regression_checkpoint' not in expected,
+        'Installed smoke requires live payload, not a historical regression view')
 for name in expected['packages']:
     package = importlib.import_module(name)
     require(Path(package.__file__).resolve().is_relative_to(Path(sys.prefix).resolve()), 'Checkout package imported: ' + name)

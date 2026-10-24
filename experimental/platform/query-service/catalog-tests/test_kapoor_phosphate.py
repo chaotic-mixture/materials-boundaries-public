@@ -55,9 +55,9 @@ class KapoorPhosphateQuery(unittest.TestCase):
 
     def test_six_analyzed_glasses_keep_exact_density_joins_and_unknowns(self):
         self.assertEqual(self.status['counts'], {
-            'local_catalog_unique_material_count': 1159,
-            'local_material_state_count': 1160,
-            'local_reference_property_count': 1171})
+            'local_catalog_unique_material_count': 1161,
+            'local_material_state_count': 1162,
+            'local_reference_property_count': 1173})
         for label, composition, value in FACTS:
             with self.subTest(glass=label):
                 key = label.lower()
@@ -142,11 +142,11 @@ class KapoorPhosphateQuery(unittest.TestCase):
         status = self.client.get('/api/catalog/project/status').json()
         self.assertTrue(status['enabled'])
         self.assertEqual(status['counts'], {
-            'formal_project_admission_count': 1183,
-            'legacy_source_qualified_identity_count': 1159,
+            'formal_project_admission_count': 1185,
+            'legacy_source_qualified_identity_count': 1161,
             'reviewed_computed_composition_count': 24,
             'categories': {'metal': 44, 'inorganic': 71, 'polymer': 30,
-                           'composite': 28, 'natural': 1010}})
+                           'composite': 30, 'natural': 1010}})
         data = {'version': status['version'], 'query': 'kapoor2019',
                 'partition': 'legacy-source-qualified', 'limit': 100}
         selected = self.client.post('/api/catalog/project/list', json=data)

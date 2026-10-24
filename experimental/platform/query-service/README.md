@@ -581,9 +581,9 @@ and its separate runtime integration evidence for testing and review status.
 
 The local runtime append adds six inorganic formulations with one as-prepared,
 annealed/reannealed state and one reported measured density each, no grades,
-and one attributed CC BY 4.0 source. Current core counts are 1159 identities,
+and one attributed CC BY 4.0 source. The Kapoor checkpoint core counts were 1159 identities,
 1160 states, 1171 properties, 31 grades and 126 sources. The experimental
-project view is 1183 = 1159 source-qualified identities + 24 unchanged reviewed
+project view at that checkpoint was 1183 = 1159 source-qualified identities + 24 unchanged reviewed
 computed records: metal 44, inorganic 71, polymer 30, composite 28, natural 1010.
 The excluded 62 examples and main's 1081 entries remain separate.
 
@@ -608,3 +608,19 @@ The [unchanged candidate packet](../../material-batches/kapoor-phosphate-glasses
 retains its zero-admission history. Runtime validation and publication require
 separate evidence and review; local counts do not claim a main release.
 Source assets are not distributed.
+
+## Tian 2023 nominal nano-Ti composite increment
+
+Current core counts are 1161 identities, 1162 states, 1173 properties, 31 grades
+and 127 source/provenance records. The experimental project projection is
+1185 = 1161 source-qualified identities + 24 unchanged computed records; main
+remains 1081. The two new composite formulations use study-qualified IDs and
+nominal nano-Ti loadings of 0.5 wt% and 1 wt%, each with one Table 2 Actual
+Density in the as-extruded state. They do not add alloy/nanoscale family
+memberships, scientific inverse claims or propagated properties.
+
+Installed query/CLI regression tests bind the complete resolved objects and
+correct eight-author attribution. They preserve literal `1 wt Ti`, all density
+unknowns, source-rights and mirror/manifest limitations. Theoretical densities,
+tensile-only test conditions and the unreinforced comparator are excluded.
+Stale catalog versions and old computed stores remain rejected without migration.

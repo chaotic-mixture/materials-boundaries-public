@@ -17,6 +17,8 @@ TARASOV_DOCUMENT_LEDGER = 'tests/fixtures/tarasov_legacy_document_recovery_20261
 TARASOV_DOCUMENT_SHA256 = '12c3b9e7686c0e3c45e394065ee1363b242529630b73830d2327196d5d2c0bbc'
 KAPOOR_DOCUMENT_LEDGER = 'tests/fixtures/kapoor_legacy_document_recovery_20261024.json'
 KAPOOR_DOCUMENT_SHA256 = '44523656c736f8b23bfd068e7295ae681a22c3f55c4d1daa879c8bc1e8fce9c2'
+TIAN_DOCUMENT_LEDGER = 'tests/fixtures/tian_legacy_document_recovery_20261024.json'
+TIAN_DOCUMENT_SHA256 = '40b3ed8bac3b3ea89f198b3855cd95b04677670c3de0fe91e6f2b6bda3f8b698'
 
 
 def code_ledger():
@@ -35,4 +37,5 @@ def project_legacy_document_bytes(filename, raw):
     ledger = load_frozen(ROOT, DOCUMENT_LEDGER, DOCUMENT_SHA256)
     successor = load_frozen(ROOT, TARASOV_DOCUMENT_LEDGER, TARASOV_DOCUMENT_SHA256)
     latest = load_frozen(ROOT, KAPOOR_DOCUMENT_LEDGER, KAPOOR_DOCUMENT_SHA256)
-    return project_file_chain(filename, raw, latest['ledgers'] + successor['ledgers'] + ledger['ledgers'])
+    tian = load_frozen(ROOT, TIAN_DOCUMENT_LEDGER, TIAN_DOCUMENT_SHA256)
+    return project_file_chain(filename, raw, tian['ledgers'] + latest['ledgers'] + successor['ledgers'] + ledger['ledgers'])

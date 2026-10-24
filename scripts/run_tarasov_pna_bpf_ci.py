@@ -566,8 +566,8 @@ def declared_test_ids(relative, *, predecessor=False, regression_checkpoint=Fals
     if regression_checkpoint:
         # The new profile owns every current ID, including its new modules.
         # A historical view must not silently discard unknown additions.
-        import run_kapoor_phosphate_ci as successor
-        require(Path(successor.__file__).resolve() == (SCRIPT_DIR / 'run_kapoor_phosphate_ci.py').resolve(),
+        import run_tian_nano_ti_ci as successor
+        require(Path(successor.__file__).resolve() == (SCRIPT_DIR / 'run_tian_nano_ti_ci.py').resolve(),
                 'Historical inventory requires the checkout successor profile')
         groups = [name for name, group in successor.TEST_GROUPS.items() if group[0] == relative]
         require(len(groups) == 1, 'Missing or duplicate successor inventory directory')

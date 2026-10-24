@@ -4,8 +4,8 @@ The released main baseline admits 1057 source-qualified identities and exactly
 24 reviewed computed composition buckets under formal-project-count-policy/1,
 for 1081 formal project admissions.
 
-This unmerged local experiment contains 1159 source-qualified identities and the
-same 24 computed buckets, totaling 1183. Main remains unchanged. Resource pins
+This unmerged local experiment contains 1161 source-qualified identities and the
+same 24 computed buckets, totaling 1185. Main remains unchanged. Resource pins
 match the local core for reproducible testing; they do not publish a release.
 Neither total is a global physical-uniqueness claim.
 
@@ -340,9 +340,9 @@ The Tarasov data append is pinned to `ff28631faf1d1af804171378953b570313e35b83`.
 
 The local append adds six study-qualified inorganic glass identities, six
 as-prepared annealed/reannealed states, six measured-density references and
-one source, with no grade. Source-qualified counts are natural 1010, metal 32,
+one source, with no grade. At the Kapoor checkpoint, source-qualified counts were natural 1010, metal 32,
 inorganic 59, polymer 30 and composite 28: 1159 identities. The unchanged 24
-reviewed computed buckets give 1183 experimental project entries. Main stays
+reviewed computed buckets gave 1183 experimental project entries. Main stays
 1081; the 62 unadmitted examples stay excluded.
 
 Analyzed ICP-OES mol% and reported density remain source-qualified facts.
@@ -356,3 +356,24 @@ Data append `76cae67a9401b916c1409ad3c2212fa3c103be6f` preserves the
 unchanged. Only attributed facts and original curation are distributed; no PDF
 or screenshots. Local implementation and candidate review do not establish
 scientific replication, deployment or a main merge.
+
+## Tian 2023 nominal nano-Ti composite increment
+
+The current source-qualified graph contains 1161 identities: natural 1010,
+metal 32, inorganic 59, polymer 30 and composite 30. The unchanged 24 computed
+buckets yield 1185 experimental project entries; main remains 1081. Two nominal
+Mg-3Al-1Zn/nano-Ti formulations each supply one as-extruded measured density,
+with no grade or unreinforced comparator added.
+
+The source-qualified 0.5 wt% and 1 wt% nano-Ti loadings are not analyzed final
+compositions. The literal Table 2 label `1 wt Ti` remains unchanged; methods
+support the separate nominal 1 wt% interpretation. Density temperature,
+pressure, humidity, specimen count, repetitions, aggregation, uncertainty,
+density basis and porosity remain unknown. Tensile n=3 and room temperature
+are not applied to density. Theoretical density and tensile properties are
+excluded. Eight authors are retained; Bolv Xiao is the Academic Editor.
+
+See the [reviewed candidate](../experimental/material-batches/tian-nano-ti-composites-20261024/README.md)
+and [runtime integration](../experimental/material-batches/tian-nano-ti-composites-20261024/INTEGRATION.md).
+The XML and mirror/manifest provenance limits, CC BY 4.0 attribution and
+scientific-review limitations remain explicit. No main merge or deployment is implied.
