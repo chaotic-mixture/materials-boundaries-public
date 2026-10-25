@@ -1,6 +1,134 @@
-# Curauá runtime validation
+# Curaua runtime integration validation
 
-Implementation and validation are in progress. No final runtime test or
-publication claim is made by this placeholder. The immutable candidate evidence
-remains unchanged. Actual final results and unrun boundaries will replace this
-placeholder before independent implementation review.
+The reviewed candidate `fa170104195e573c868c57006ac77e7d866c28e9` was appended locally and validated on
+native Windows CPython 3.11.0. The tested implementation is
+`04f4c7be4b67f29df4eae0f82a36f8f8ef592846`, tree `09b1c5c156c55f61585ad86b6bb5abb51fba3e41`. The checkout was clean and unchanged before and after
+each final bounded run. A later documentation-only commit records these results;
+all 67 changed non-report files are byte-bound in `integration-validation-results.json`.
+
+This is a local experimental result pending independent runtime review. No push,
+main merge, deployment, DOI registration or raw-asset publication occurred.
+
+## Executed validation
+
+| Scope | Passed | Failures | Errors | Skips |
+| --- | ---: | ---: | ---: | ---: |
+| Candidate | 18 | 0 | 0 | 0 |
+| Append/history | 12 | 0 | 0 | 0 |
+| New CI contracts | 15 | 0 | 0 | 0 |
+| Complete selected legacy modules | 60 | 0 | 0 | 0 |
+| Core partition contracts | 50 | 0 | 0 | 0 |
+| Existing replay gate | 70 | 0 | 0 | 0 |
+| Release metadata | 5 | 0 | 0 | 0 |
+| Fresh installed groups | 569 | 0 | 0 | 0 |
+
+The 155-method source run completed as one invocation with five fresh-process
+groups, not one uninterrupted Python test process. The 70-method replay run is
+separate and overlaps four source-selected methods. The five release metadata
+methods are separate. These execute 66 distinct root IDs;
+1821 of the 1887 root IDs were not executed locally. Discovery of
+all 147 modules and 1887 IDs and the four disjoint partitions is not execution.
+No skipped or merely discovered method is counted as a pass.
+
+Six wheels were built offline at `05688153b9859fafa8089bc1e7df6ed6d99338a3`.
+The full existing core wheel smoke passed in a separate fresh isolated
+environment in 1152.344 seconds. A subsequent test-only expectation correction
+preserved all six wheel hashes and all 319 protected build/smoke input files;
+the exact seven changed test/history paths are recorded in the JSON ledger.
+No package rebuild or repeated core wheel smoke was needed. All eight complete
+installed groups passed in another fresh offline environment: 241 query,
+13 formal, 202 ingestion, 14 relationships, 19 provider, 37 transport,
+25 lifecycle and 18 integration methods. All 561 prior installed IDs remain;
+the eight additions bring the total to 569. Installed package origins, resource
+hashes and `pip check` passed. Existing independent API/CLI smoke and actual CLI
+subprocess coverage remain intact. An additional 24 Curaua CLI outputs were
+checked by full JSON equality and text value/caveat checks, not whole-text byte
+equality. They are outputs, not distinct identities or additional test methods.
+
+Catalog validation, exact append and reapplication checks, frozen scope,
+runtime/query pins, stale-store rejection, candidate/source unknowns, prior
+fixture recovery and strict negative cases passed. Exact machine-readable IDs,
+durations, log hashes, budgets and input hashes are in the adjacent JSON ledger.
+
+## Reproduce the checks
+
+Use the pinned build and dependency requirements and the six package build
+commands in `.github/workflows/curaua-runtime.yml`. On Linux or Windows, from
+the checkout and an environment with the declared dependencies:
+
+```text
+python -X utf8 scripts/run_curaua_runtime_ci.py --validate-scope
+python -X utf8 scripts/run_curaua_runtime_ci.py --validate-inventory
+python -X utf8 scripts/run_curaua_runtime_ci.py --source-tests
+python -X utf8 scripts/run_history_replay_latest_ci.py --tests
+python -X utf8 scripts/validate_catalogs.py
+python -X utf8 -m unittest discover -s tests -p test_release_metadata.py -v
+python -X utf8 scripts/check_wheel_metadata.py <fresh-core-wheel>
+python -X utf8 scripts/run_curaua_runtime_ci.py --wheel-dir <six-fresh-wheels> --dependency-dir <locked-dependency-wheels>
+```
+
+Angle-bracket arguments are local directories/files produced by the checked-in
+workflow; they are not private paths or remote services. Full history is
+required by the existing preservation checks. The wheel runner creates new
+isolated environments and disallows installed-package fallback to the checkout.
+Run durations above are observations, not portable timeout guarantees.
+
+## Earlier unsuccessful attempts retained
+
+Sandbox TestClient setup stalled in native Windows socketpair acceptance before
+methods began; bounded task-owned processes were stopped, and subsequent native
+runs passed without changing system settings or test contracts. An initial new
+product test confused primary polymer 30 with overlapping family 31; the
+existing PBS/lignin overlap was verified and only that new oracle was corrected.
+An initial new document test wrongly required normalized prose to differ;
+requiring its exact predecessor digest fixed the oracle while keeping the
+false-count rejection.
+
+The first full replay run on `47e46eebf8e82de7a70abfac0e0a95c79a5c9fbe`
+completed 70 methods with 68 passes and two failed subtests. One old byte-equality
+caller needed the finite pinned benchmark projection. The other already rejected
+changed input but returned a different assertion message. The narrow repair
+retains the original baseline equality and error contract, chains the original
+rejection, and adds no fallback. The failed immutable commit and logs are
+preserved. The repaired source and complete replay suites were rerun rather
+than relabeling the earlier failure as a pass.
+
+The first installed attempt on `05688153b9859fafa8089bc1e7df6ed6d99338a3`
+passed query 241 and formal 13, then ran ingestion 202 with 199 passes and three
+failures; the remaining 113 methods were unstarted. Two current overlap counts
+and a snapshot anchor were stale. Complete before/after identity-set comparison
+proved that the old 1185 classifications were unchanged and only the three new
+text-qualified identities were added as unable to compare. Direct Git-object
+comparison verified the current data anchor and material hash. Two related
+current-hash assertions were also stale, one hidden by the first failing anchor
+and one in a previously unstarted relationship method. Exactly five literals
+in three tests were corrected, without changing any production behavior.
+Historical predecessor hashes remain recoverable through the finite ledger.
+The selected four methods passed, then the complete 155, 70 and 569 groups were
+rerun on the final tested implementation. The failed attempt remains recorded;
+its 113 unstarted methods were never counted as skips or passes.
+
+## Scientific and release boundaries
+
+The exact runtime delta is three source-qualified composites, three states,
+three apparent-density properties and one source, with zero new grades or
+computed records. Local totals are 1164 source-qualified plus 24 unchanged
+computed records = 1188; main remains 1081. Primary source-qualified categories
+are natural 1010, metal 32, inorganic 59, polymer 30 and composite 33. The 62
+unadmitted computed examples remain excluded.
+
+The nine approved candidate artifacts, 122 historical fixtures, full generic
+partition workflow and 1887/70 frozen inventories remain intact. Test-only
+historical projections retain old hash assertions and reject unknown images.
+They do not alter runtime scientific claims or add a cross-call cache. There is
+no claim of atomic protection against concurrent input edits within one call.
+
+Independent review verified the official XML and facts; its publisher PDF
+request returned 403. PDF hashes and page checks remain producer evidence.
+Unknown CV units and density age remain explicit. Finite identity screening
+is not global equivalence proof or independent scientific replication.
+
+Hosted CI, other Python/OS combinations, the remaining root IDs, new real
+17-layer performance cases and live-provider checks remain unrun. No new
+performance factor is claimed. The original full core partition workflow must
+complete after any separately reviewed experimental publication.
