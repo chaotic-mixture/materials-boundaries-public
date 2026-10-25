@@ -198,3 +198,78 @@ No material growth accompanies this correction: the experiment remains
 remains 1081. The source's unknown CV units and density measurement age, and
 the independent PDF access 403, remain unchanged limitations. The correction
 is locally committed for independent review and has not been pushed.
+
+
+## Integrated historical compatibility correction
+
+This section extends the retained Kapoor-only checkpoint after the original
+general CI exposed the same strict inventory boundary in Bruns and Tarasov,
+plus a separate family workflow assumption. It does not replace earlier failed
+attempts or claim that the Kapoor-only checkpoint fixed these later failures.
+
+The tested implementation is `a3fb74ff795f1c60205e738e002e407ec430cd6b`, tree `c687387c8db89d633fe42eaf2dba93df84160423`. The complete
+repair from `434b7875dae88f95f6c5c279a29c4f562ec57a08` changes 11 code/test/binding files plus these two evidence
+documents. Material data, production validators, all old runners, workflows,
+the partition manifest, 122 fixtures and the 1887/70/155/569 inventories are
+unchanged. Original Bruns/Tarasov/Kapoor classes retain all 91 methods and 373
+assert calls; all five family methods remain present. Four finite exact file
+recoveries preserve the original images and hashes; all 48 old ledger entries
+remain unchanged within the resulting 52-entry ledger.
+
+The three private historical runners now validate the complete current
+241-ID query image, exact file list and pinned bytes before projecting the
+233-ID Tian checkpoint. Original Tian and 214/220/226 historical fingerprints
+remain strict. The adapter is scoped to the recursive historical read and
+restores its private function after success or exceptions. Ordinary and
+predecessor reads and shared imported runners are unchanged.
+
+The family oracle validates the exact pre-Curaua registry and the current
+descriptor tuple, then runs its original historical workflow loop unchanged.
+A separate check proves that Curaua leaves the general workflow byte-identical.
+There is no fabricated workflow update, generic missing-entry skip, relaxed
+hash or discarded assertion. Negative checks call the actual affected methods,
+cover changed bytes and descriptors, and confirm restored clean calls.
+
+Native Windows CPython 3.11.0 completed these bounded fresh-process stages:
+
+| Stage | Methods passed | Elapsed seconds |
+| --- | ---: | ---: |
+| Full Bruns, Tarasov, Kapoor and family modules | 96 | 252.078 |
+| Reverse imports and actual nested negative guards | 11 | 55.016 |
+| Curaua source groups | 155 | 273.093 |
+| Replay regression profile | 70 | 58.031 |
+| Preflight plus metadata methods | 5 | 18.016 |
+
+All final stages passed with zero failures, errors or skips and the identical
+clean implementation before and after. The 337 executions cover 322 distinct
+methods, including 162 of 1887 root IDs; 1725 root IDs were not run locally for
+this repair. This is segmented scoped validation, not a continuous full-core
+run. The five-method pre-fix reproduction on `e705517` produced five errors;
+its failure log and the earlier Kapoor failures remain separately recorded.
+All 319 packaging and core-smoke inputs match their previously tested hashes
+and exact commit blobs. Installed 569 and full wheel smoke were not rerun for
+this test-only repair; prior hosted results belong to the original commit.
+
+Original hosted evidence is frozen in the accompanying JSON at
+2026-10-25T13:03:05.756169+00:00. Both Curaua-specific jobs succeeded with 155 source
+and 569 installed passes each, zero failures/errors/skips, and 24 CLI outputs
+checked by full JSON equality plus text value/caveat assertions. They did not
+execute the separate 70-method replay profile.
+
+The original general workflow remains in progress and already has four failed
+jobs. For each Python version, partition 0 completed 459 methods with 439 passes,
+18 policy skips and two bad root outcomes (three unittest error records).
+Partition 2 completed 417 with 412 passes and five bad root outcomes, no skips.
+Python 3.12 partition 3 completed all 519 methods successfully, including the
+other required job steps. Windows 3.13 completed 526 methods: 512 passes and
+14 exact policy skips. Python 3.11 partition 3, both partition 1 jobs and
+Windows 3.10 are still running at this snapshot; the aggregate is pending.
+Nineteen unrelated conditional job skips are not test passes. Missing terminal
+results are not successes, and original failed receipts remain retained.
+
+This immutable repair is handed over for independent review while those jobs
+continue. It has not been pushed and has no hosted repair result. No material
+growth accompanies it: experiment 1188 = 1164 source-qualified + 24 reviewed
+computed records; main stays 1081. Unknown CV units and density age, independent
+PDF access 403, and the stable-input-per-invocation limitation remain explicit.
+No main merge, deployment, DOI registration or authentication change is included.
