@@ -9,11 +9,33 @@ import tempfile
 import unittest
 from unittest.mock import patch
 from types import SimpleNamespace
+from curaua_history import checkpoint_inventory
 
 ROOT = Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location('bruns_borosilicate_ci', ROOT / 'scripts/run_bruns_borosilicate_ci.py')
 ci = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(ci)
+
+
+_original_declared_test_ids = ci.declared_test_ids
+
+
+def _current_checkpoint_ids(relative):
+    return checkpoint_inventory(relative, _original_declared_test_ids(relative))
+
+
+def _checkpoint_declared_test_ids(relative, *, predecessor=False, regression_checkpoint=False):
+    if not regression_checkpoint:
+        return _original_declared_test_ids(relative, predecessor=predecessor)
+    # Validate every current ID and file image before restoring the exact Tian
+    # boundary used by this privately loaded historical runner.
+    with patch.object(ci, 'declared_test_ids', _current_checkpoint_ids):
+        return _original_declared_test_ids(relative, predecessor=predecessor,
+                                          regression_checkpoint=True)
+
+
+ci.declared_test_ids = _checkpoint_declared_test_ids
+
 
 
 class BrunsBorosilicateCITests(unittest.TestCase):

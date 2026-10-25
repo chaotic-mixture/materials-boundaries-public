@@ -90,6 +90,30 @@ class CurauaAppendPreservationTests(unittest.TestCase):
             self.assertEqual(sha256(current).hexdigest(), entry['sha256'])
             self.assertEqual(recover_file(current, entry), git('show', history.BASELINE + ':' + relative))
 
+        import test_family_adjacency_history as family
+        case = family.FamilyAdjacencyHistoryTests()
+        verify = case.test_all_material_workflow_views_keep_their_exact_file_pins
+        verify()
+        descriptors = successors.FROZEN_SUCCESSORS
+        for altered in (tuple(reversed(descriptors)), descriptors + descriptors[:1],
+                        descriptors + ({'batch_id': 'unknown'},)):
+            with self.subTest(descriptors=altered), \
+                    patch.object(successors, 'FROZEN_SUCCESSORS', altered), \
+                    self.assertRaises(AssertionError):
+                verify()
+        original_read = Path.read_bytes
+        workflow = '.github/workflows/ci.yml'
+        old_workflow = git('show', 'bf1c7a86068c37c2733ac4d25c268144090f9aad:' + workflow)
+        for relative, replacement in ((workflow, original_read(ROOT / workflow) + b' '),
+                (workflow, old_workflow), ('tests/material_append_successors.py',
+                 original_read(ROOT / 'tests/material_append_successors.py') + b' ')):
+            def changed(path):
+                return replacement if path == ROOT / relative else original_read(path)
+            with self.subTest(path=relative, digest=sha256(replacement).hexdigest()), \
+                    patch.object(Path, 'read_bytes', changed), self.assertRaises(AssertionError):
+                verify()
+        verify()
+
     def test_unknown_file_images_remain_unknown_and_strict_reads_reject_them(self):
         for relative in ('README.md', 'tests/ci_partition_history.py',
                          'tests/history_replay_latest/benchmark_replay_16.py',
@@ -139,43 +163,46 @@ class CurauaCheckpointGuardTests(unittest.TestCase):
             history.checkpoint_inventory(relative, entry['current'])
         self.assertEqual(history.checkpoint_inventory(relative, entry['current']), entry['previous'])
 
+        import test_bruns_borosilicate_ci as bruns
+        import test_tarasov_pna_bpf_ci as tarasov
         import test_kapoor_phosphate_ci as kapoor
         import run_tian_nano_ti_ci as successor
-        adapter = kapoor.ci.declared_test_ids
-        original_declared = kapoor._original_declared_test_ids
         successor_declared = successor.declared_test_ids
         successor_validate = successor.validate_inventory
-        self.assertEqual(adapter(relative), entry['current'])
-        restored = adapter(relative, regression_checkpoint=True)
-        kapoor.ci.validate_inventory('query', restored)
-        self.assertIs(kapoor.ci.declared_test_ids, adapter)
-        for mutation in ('missing', 'duplicate', 'extra', 'substituted', 'reordered'):
-            def altered(path, **kwargs):
-                ids = original_declared(path, **kwargs)
-                if kwargs or path != relative:
-                    return ids
-                return {'missing': ids[:-1], 'duplicate': ids + ids[:1],
-                        'extra': ids + ['unknown.Case.test_extra'],
-                        'substituted': ids[1:] + ['unknown.Case.test_replacement'],
-                        'reordered': list(reversed(ids))}[mutation]
-            with self.subTest(kapoor_inventory=mutation), \
-                    patch.object(kapoor, '_original_declared_test_ids', altered), \
+        for module in (bruns, tarasov, kapoor):
+            adapter = module.ci.declared_test_ids
+            original_declared = module._original_declared_test_ids
+            self.assertEqual(adapter(relative), entry['current'])
+            restored = adapter(relative, regression_checkpoint=True)
+            module.ci.validate_inventory('query', restored)
+            self.assertIs(module.ci.declared_test_ids, adapter)
+            for mutation in ('missing', 'duplicate', 'extra', 'substituted', 'reordered'):
+                def altered(path, **kwargs):
+                    ids = original_declared(path, **kwargs)
+                    if kwargs or path != relative:
+                        return ids
+                    return {'missing': ids[:-1], 'duplicate': ids + ids[:1],
+                            'extra': ids + ['unknown.Case.test_extra'],
+                            'substituted': ids[1:] + ['unknown.Case.test_replacement'],
+                            'reordered': list(reversed(ids))}[mutation]
+                with self.subTest(module=module.__name__, inventory=mutation), \
+                        patch.object(module, '_original_declared_test_ids', altered), \
+                        self.assertRaises(AssertionError):
+                    adapter(relative, regression_checkpoint=True)
+                self.assertIs(module.ci.declared_test_ids, adapter)
+            with patch.object(Path, 'read_bytes', changed), self.assertRaises(AssertionError):
+                adapter(relative, regression_checkpoint=True)
+            self.assertIs(module.ci.declared_test_ids, adapter)
+            def extra_bytes(path):
+                return b'' if path == ROOT / relative / 'test_unreviewed.py' else original(path)
+            with patch.object(Path, 'glob', extra), patch.object(Path, 'read_bytes', extra_bytes), \
                     self.assertRaises(AssertionError):
                 adapter(relative, regression_checkpoint=True)
-            self.assertIs(kapoor.ci.declared_test_ids, adapter)
-        with patch.object(Path, 'read_bytes', changed), self.assertRaises(AssertionError):
-            adapter(relative, regression_checkpoint=True)
-        self.assertIs(kapoor.ci.declared_test_ids, adapter)
-        def extra_bytes(path):
-            return b'' if path == ROOT / relative / 'test_unreviewed.py' else original(path)
-        with patch.object(Path, 'glob', extra), patch.object(Path, 'read_bytes', extra_bytes), \
-                self.assertRaises(AssertionError):
-            adapter(relative, regression_checkpoint=True)
-        self.assertIs(kapoor.ci.declared_test_ids, adapter)
-        with self.assertRaises(RuntimeError):
-            adapter(relative, predecessor=True, regression_checkpoint=True)
-        self.assertIs(kapoor.ci.declared_test_ids, adapter)
-        self.assertEqual(adapter(relative), entry['current'])
+            self.assertIs(module.ci.declared_test_ids, adapter)
+            with self.assertRaises(RuntimeError):
+                adapter(relative, predecessor=True, regression_checkpoint=True)
+            self.assertIs(module.ci.declared_test_ids, adapter)
+            self.assertEqual(adapter(relative), entry['current'])
         self.assertIs(successor.declared_test_ids, successor_declared)
         self.assertIs(successor.validate_inventory, successor_validate)
 

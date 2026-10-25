@@ -13,6 +13,7 @@ from unittest.mock import patch
 
 import material_append_successors as successors
 from material_append_history import load_frozen, recover_file
+from curaua_history import checkpoint_registry, require_checkpoint_bytes
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -54,7 +55,15 @@ class FamilyAdjacencyHistoryTests(unittest.TestCase):
 
     def test_all_material_workflow_views_keep_their_exact_file_pins(self):
         current = (ROOT / WORKFLOW).read_bytes()
-        for descriptor in successors.FROZEN_SUCCESSORS:
+        historical = checkpoint_registry()
+        curaua = {'batch_id': successors.CURAUA_BATCH_ID,
+                  'data': (successors.CURAUA_DATA_LEDGER, successors.CURAUA_DATA_SHA256),
+                  'files': (successors.CURAUA_FILE_LEDGER, successors.CURAUA_FILE_SHA256)}
+        self.assertEqual(successors.FROZEN_SUCCESSORS, (curaua,) + historical.FROZEN_SUCCESSORS)
+        # Curaua leaves this workflow unchanged; it has no material-edit entry.
+        # Verify that exact boundary separately, then retain every older pin.
+        self.assertEqual(current, require_checkpoint_bytes(WORKFLOW, current))
+        for descriptor in historical.FROZEN_SUCCESSORS:
             batch_id = descriptor['batch_id']
             entry = successors.file_ledger(batch_id)['updates'][WORKFLOW]
             with self.subTest(batch_id=batch_id):

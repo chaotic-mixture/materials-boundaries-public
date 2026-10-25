@@ -1015,6 +1015,54 @@
           "after": "\n\n_original_declared_test_ids = ci.declared_test_ids\n\n\ndef _current_checkpoint_ids(relative):\n    return checkpoint_inventory(relative, _original_declared_test_ids(relative))\n\n\ndef _checkpoint_declared_test_ids(relative, *, predecessor=False, regression_checkpoint=False):\n    if not regression_checkpoint:\n        return _original_declared_test_ids(relative, predecessor=predecessor)\n    # The Kapoor oracle validates its successor's historical inventory. Verify\n    # every current ID and file image before restoring that exact boundary.\n    # Only this privately loaded runner's recursive read is projected.\n    with patch.object(ci, 'declared_test_ids', _current_checkpoint_ids):\n        return _original_declared_test_ids(relative, predecessor=predecessor,\n                                          regression_checkpoint=True)\n\n\nci.declared_test_ids = _checkpoint_declared_test_ids\n"
         }
       ]
+    },
+    "tests/test_bruns_borosilicate_ci.py": {
+      "previous_sha256": "a3bea57103e745781d7b9cf6787c16cf890256e5af57f1153b44dc64ed5614c0",
+      "sha256": "bd4e6b9003d012e232e539dd5a32cb141eb3b8bbe224df8ea0388432831d79ea",
+      "edits": [
+        {
+          "offset": 293,
+          "before": "",
+          "after": "from curaua_history import checkpoint_inventory\n"
+        },
+        {
+          "offset": 526,
+          "before": "",
+          "after": "\n\n_original_declared_test_ids = ci.declared_test_ids\n\n\ndef _current_checkpoint_ids(relative):\n    return checkpoint_inventory(relative, _original_declared_test_ids(relative))\n\n\ndef _checkpoint_declared_test_ids(relative, *, predecessor=False, regression_checkpoint=False):\n    if not regression_checkpoint:\n        return _original_declared_test_ids(relative, predecessor=predecessor)\n    # Validate every current ID and file image before restoring the exact Tian\n    # boundary used by this privately loaded historical runner.\n    with patch.object(ci, 'declared_test_ids', _current_checkpoint_ids):\n        return _original_declared_test_ids(relative, predecessor=predecessor,\n                                          regression_checkpoint=True)\n\n\nci.declared_test_ids = _checkpoint_declared_test_ids\n\n"
+        }
+      ]
+    },
+    "tests/test_tarasov_pna_bpf_ci.py": {
+      "previous_sha256": "170fab04dec80152a71c44425deefbdb8e7c4e926bfbc5bfba9160bec06ab690",
+      "sha256": "9a74f320b1662ecf9c4310f8d5fac23a3638b5324ba1cc884fedcd0bef7bffd3",
+      "edits": [
+        {
+          "offset": 295,
+          "before": "",
+          "after": "from curaua_history import checkpoint_inventory\n"
+        },
+        {
+          "offset": 522,
+          "before": "",
+          "after": "\n\n_original_declared_test_ids = ci.declared_test_ids\n\n\ndef _current_checkpoint_ids(relative):\n    return checkpoint_inventory(relative, _original_declared_test_ids(relative))\n\n\ndef _checkpoint_declared_test_ids(relative, *, predecessor=False, regression_checkpoint=False):\n    if not regression_checkpoint:\n        return _original_declared_test_ids(relative, predecessor=predecessor)\n    # Validate every current ID and file image before restoring the exact Tian\n    # boundary used by this privately loaded historical runner.\n    with patch.object(ci, 'declared_test_ids', _current_checkpoint_ids):\n        return _original_declared_test_ids(relative, predecessor=predecessor,\n                                          regression_checkpoint=True)\n\n\nci.declared_test_ids = _checkpoint_declared_test_ids\n\n"
+        }
+      ]
+    },
+    "tests/test_family_adjacency_history.py": {
+      "previous_sha256": "c0acaae917d4e43eada1130132975daebbcf11a0bd105f3f0f19c08cb9f0d026",
+      "sha256": "65ac358ec0b173f68b39141a6e22ec823d0e74c730f35798b1f307697653af23",
+      "edits": [
+        {
+          "offset": 437,
+          "before": "",
+          "after": "from curaua_history import checkpoint_registry, require_checkpoint_bytes\n"
+        },
+        {
+          "offset": 2310,
+          "before": "        for descriptor in successors.FROZEN_SUCCESSORS:\n",
+          "after": "        historical = checkpoint_registry()\n        curaua = {'batch_id': successors.CURAUA_BATCH_ID,\n                  'data': (successors.CURAUA_DATA_LEDGER, successors.CURAUA_DATA_SHA256),\n                  'files': (successors.CURAUA_FILE_LEDGER, successors.CURAUA_FILE_SHA256)}\n        self.assertEqual(successors.FROZEN_SUCCESSORS, (curaua,) + historical.FROZEN_SUCCESSORS)\n        # Curaua leaves this workflow unchanged; it has no material-edit entry.\n        # Verify that exact boundary separately, then retain every older pin.\n        self.assertEqual(current, require_checkpoint_bytes(WORKFLOW, current))\n        for descriptor in historical.FROZEN_SUCCESSORS:\n"
+        }
+      ]
     }
   }
 }
