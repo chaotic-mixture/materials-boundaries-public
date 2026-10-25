@@ -213,8 +213,10 @@ class CurauaCheckpointGuardTests(unittest.TestCase):
 
     def test_document_bridge_retains_false_count_and_unknown_prose_rejection(self):
         import material_bulk_preservation as bulk
-        raw = ewurum.require_checkpoint_bytes('README.md')
-        normalized = bulk.truthful_readme(raw, bulk.load_ledger())
+        current = (ROOT / 'README.md').read_bytes()
+        normalized = bulk.truthful_readme(current, bulk.load_ledger())
+        normalized = ewurum.checkpoint_document('README.md', normalized)
+        raw = ewurum.require_checkpoint_bytes('README.md', current)
         ledger = history.load_frozen(ROOT, history.DIRECTORY + 'document-history.json', history.DOCUMENTS_SHA256)
         self.assertEqual(sha256(history.checkpoint_document('README.md', normalized)).hexdigest(),
                          ledger['updates']['README.md']['previous_sha256'])
@@ -224,6 +226,10 @@ class CurauaCheckpointGuardTests(unittest.TestCase):
         self.assertNotEqual(false, raw)
         with self.assertRaises(AssertionError):
             bulk.release_bytes('README.md', false)
+        false_current = current.replace(b'**1168 material identities**', b'**1169 material identities**')
+        self.assertNotEqual(false_current, current)
+        with self.assertRaises(AssertionError):
+            bulk.release_bytes('README.md', false_current)
 
     def test_historical_tian_payload_restores_its_local_root_on_success_or_failure(self):
         import test_tian_nano_ti_ci as tian
