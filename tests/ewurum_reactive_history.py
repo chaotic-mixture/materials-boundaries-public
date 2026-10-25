@@ -17,7 +17,7 @@ DATA_SHA256 = "1fc44b8bc6f121a3323b632a1cdce8f7511bdbd2421bd33768529f359976b513"
 FILES_SHA256 = "2f7a1b0b71f4c35411bab466398df1dc3abfcef8bf74b14b6cff33717e032857"
 REGISTRY_SHA256 = "2274c5f525ea74a11cfa461ef42f04bf5366420bc27e05c21a6f3761b08c7ec7"
 DOCUMENTS_SHA256 = "c58d7dd5a777c62d98a2ebf3d3c5947436dac4414e4f2051c0df437402f2124c"
-INPUTS_SHA256 = "60d10267025be222c163a84a0e6812385441fc10c6f80d3b80026aefe40d56d7"
+INPUTS_SHA256 = "dcf64bcc29744a1d371662a424a2ba6af9f8399821d428f4b4acee0bdca752d9"
 CATALOG_PATHS = {
     "materials": "materials_boundaries/data/materials.json",
     "properties": "materials_boundaries/data/reference_properties.json",

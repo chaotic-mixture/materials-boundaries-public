@@ -51,6 +51,19 @@ SOURCE_PROPERTY_SHA256 = {
     'refprop_ewurum2025_pbs_lignin_r45_youngs_modulus': '757a0547c12bbb6a3483a5e616407f1ddfaa49852b525bf603c1a3c5e17d125f',
 }
 SOURCE_PROPERTY_UNION_SHA256 = 'c633168284f98f6c524907aa9c8053011123bf3d57c15cf70f2a129983b57e76'
+# Exact packaged order: six unchanged earlier facts followed by four R facts.
+SOURCE_PROPERTY_ORDER = (
+    'refprop_ewurum2025_biopbs_youngs_modulus',
+    'refprop_ewurum2025_pbs_lignin20_youngs_modulus',
+    'refprop_ewurum2025_indulin_at_mass_density',
+    'refprop_ewurum2025_pbs_lignin10_youngs_modulus',
+    'refprop_ewurum2025_pbs_lignin30_youngs_modulus',
+    'refprop_ewurum2025_pbs_lignin45_youngs_modulus',
+    'refprop_ewurum2025_pbs_lignin_r10_youngs_modulus',
+    'refprop_ewurum2025_pbs_lignin_r20_youngs_modulus',
+    'refprop_ewurum2025_pbs_lignin_r30_youngs_modulus',
+    'refprop_ewurum2025_pbs_lignin_r45_youngs_modulus',
+)
 
 
 def canonical_digest(value, *, newline=False):
@@ -200,6 +213,8 @@ class EwurumReactiveQuery(unittest.TestCase):
         self.assertEqual(len(expected_properties), 10)
         self.assertEqual({row['id']: canonical_digest(row) for row in expected_properties}, SOURCE_PROPERTY_SHA256)
         self.assertEqual(canonical_digest(expected_properties), SOURCE_PROPERTY_UNION_SHA256)
+        expected_by_id = {row['id']: row for row in expected_properties}
+        expected_canonical = [expected_by_id[property_id] for property_id in SOURCE_PROPERTY_ORDER]
         # One reused source owns six unchanged earlier facts plus four R facts.
         selected = self.post('search', kind='reference-properties', query=SOURCE, limit=100)
         self.assertFalse(selected['truncated'])
@@ -207,7 +222,7 @@ class EwurumReactiveQuery(unittest.TestCase):
         for language in ('en', 'zh', 'ja', 'de'):
             with self.subTest(language=language):
                 self.assertEqual(self.cli('reference-properties', '--source-id', SOURCE,
-                                         '--lang', language)['records'], expected_properties)
+                                         '--lang', language)['records'], expected_canonical)
         source = self.post('record', kind='sources', record_id=SOURCE)
         self.assertEqual(canonical_digest(source, newline=True), SOURCE_SHA256)
         self.assertEqual(self.cli('sources', '--id', SOURCE)['records'], [source])

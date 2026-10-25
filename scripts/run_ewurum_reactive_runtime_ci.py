@@ -358,7 +358,9 @@ states = {r['id']: r for r in frozen['state']}
 props = {r['id']: r for r in frozen['property']}
 previous = expected['existing_source_properties']
 require(len(previous) == 6 and len({r['id'] for r in previous}) == 6, 'Existing source property scope changed')
-source_union = sorted(previous + frozen['property'], key=lambda row: row['id'])
+# Core catalog queries preserve packaged order: unchanged baseline prefix,
+# followed by the exact ID-sorted append. Do not sort the actual CLI output.
+source_union = previous + sorted(frozen['property'], key=lambda row: row['id'])
 require(len(source_union) == len({r['id'] for r in source_union}) == 10,
         'Six preserved source properties and four new properties must be distinct')
 require(query_catalog('reference-properties', source_id=source_id)['records'] == source_union,

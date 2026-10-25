@@ -232,6 +232,11 @@ class EwurumReactiveCIContracts(unittest.TestCase):
         self.assertIn('not the injection-molded tensile dog-bones', ci.INSTALLED_SMOKE)
         self.assertIn("expected['delta_counts']['source'] == 0", ci.INSTALLED_SMOKE)
         self.assertIn('len(previous) == 6', ci.INSTALLED_SMOKE)
+        self.assertIn("source_union = previous + sorted(frozen['property'], key=lambda row: row['id'])",
+                      ci.INSTALLED_SMOKE)
+        self.assertNotIn("sorted(previous + frozen['property']", ci.INSTALLED_SMOKE)
+        self.assertIn("query_catalog('reference-properties', source_id=source_id)['records'] == source_union",
+                      ci.INSTALLED_SMOKE)
         self.assertIn('== 10', ci.INSTALLED_SMOKE)
         self.assertIn('full JSON equality and text value/caveat checks', ci.INSTALLED_SMOKE)
         self.assertIn('outputs == 32', ci.INSTALLED_SMOKE)
