@@ -371,7 +371,7 @@ class FormalOverlapAuditTests(unittest.TestCase):
                         for suffix in ('p60', 'p50', 'p46', 'al5', 'al10', 'al15'))
         self.assertEqual(set(possible), expected)
         self.assertEqual(result['counts'], {'confirmed_overlap': 0, 'possible_overlap': 13,
-                                           'unable_to_compare': 1172})
+                                           'unable_to_compare': 1175})
         for row in possible.values():
             self.assertIn('literal_text_cue_not_composition_or_identity', row['reasons'])
             self.assertNotIn('same_structured_composition_identity_unresolved', row['reasons'])
@@ -456,7 +456,7 @@ class FormalOverlapAuditTests(unittest.TestCase):
         result = self.query(formal_reference={'id': formal_id,
                                              'identity_sha256': self.rows[formal_id]['identity_sha256']})
         self.assertEqual(result['counts'], {'confirmed_overlap': 1, 'possible_overlap': 0,
-                                           'unable_to_compare': 1184})
+                                           'unable_to_compare': 1187})
         hit = self.relation(result, formal_id)
         self.assertEqual(hit['reasons'], ['exact_frozen_formal_record_reference'])
         self.assertEqual(hit['proof_scope'], 'frozen_formal_record_reference')

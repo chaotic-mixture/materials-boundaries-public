@@ -37,7 +37,7 @@ class HBNRelationshipProjectionTests(unittest.TestCase):
         self.assertEqual(p['formal_counts']['categories'], {
             'metal': 44, 'inorganic': 71, 'polymer': 30, 'composite': 33, 'natural': 1010})
         self.assertEqual(p['formal_resource_sha256']['materials'],
-                         '8ad95e381232906bce1c0e2df777ed7856f2ad27e25200913fc3ad50482e5293')
+                         'f65d332bc0a67838bbba0f936ba8134243e75123d720417fa7af873502c0976b')
         self.assertEqual(p['counts'], {
             'node_count': 8, 'edge_count': 7, 'proposed_material_count': 1,
             'state_count': 1, 'cohort_count': 1, 'feedstock_count': 1,

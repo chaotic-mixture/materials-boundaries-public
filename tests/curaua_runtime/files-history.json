@@ -179,7 +179,7 @@
     },
     "experimental/platform/ingestion/test_formal_overlap_audit.py": {
       "previous_sha256": "880a2d9c57e7b48aba58b42ede00752339a37d3af7b0c931dec56cfcf22f17d5",
-      "sha256": "a0a5ceb3a673b4121d0de89c89d163bcfa62adfbe817793787cc67a6de746505",
+      "sha256": "70a836931db20ed402064856e0ed5ff97ec4e492475b17cae6ddaff117bc3fc8",
       "edits": [
         {
           "offset": 2940,
@@ -257,6 +257,16 @@
           "after": "        self.assertEqual(self.inventory['formal_counts']['formal_project_admission_count'], 1188)\n"
         },
         {
+          "offset": 23776,
+          "before": "                                           'unable_to_compare': 1172})\n",
+          "after": "                                           'unable_to_compare': 1175})\n"
+        },
+        {
+          "offset": 29142,
+          "before": "                                           'unable_to_compare': 1184})\n",
+          "after": "                                           'unable_to_compare': 1187})\n"
+        },
+        {
           "offset": 30214,
           "before": "                self.assertEqual(result['counts']['unable_to_compare'], 1185)\n",
           "after": "                self.assertEqual(result['counts']['unable_to_compare'], 1188)\n"
@@ -329,12 +339,17 @@
     },
     "experimental/platform/ingestion/test_review_boundary.py": {
       "previous_sha256": "efade4dfadd61bab4c3f205117c7ab50bf52ec7a3ad8ccc1eca0e3906d70a428",
-      "sha256": "8459b85cfcc3fa983a8e186d4c67f1a3088b22bd7754410507032f9eeb069b93",
+      "sha256": "878023d869b617ab595b2bd63dc83f69efd26239189b8478917baf5d1262c55c",
       "edits": [
         {
           "offset": 429,
-          "before": "        self.assertEqual(boundary['formal_project_total'], 1185)\n        self.assertEqual(boundary['formal_legacy_count'], 1161)\n",
-          "after": "        self.assertEqual(boundary['formal_project_total'], 1188)\n        self.assertEqual(boundary['formal_legacy_count'], 1164)\n"
+          "before": "        self.assertEqual(boundary['formal_project_total'], 1185)\n        self.assertEqual(boundary['formal_legacy_count'], 1161)\n        self.assertEqual(boundary['baseline_commit'], 'f7086fc049dc40319d7daa9ffb9bd5fdece55856')\n",
+          "after": "        self.assertEqual(boundary['formal_project_total'], 1188)\n        self.assertEqual(boundary['formal_legacy_count'], 1164)\n        self.assertEqual(boundary['baseline_commit'], '2bd55831513abcf60161ab9de7fb78ea8f844586')\n"
+        },
+        {
+          "offset": 719,
+          "before": "                         '8ad95e381232906bce1c0e2df777ed7856f2ad27e25200913fc3ad50482e5293')\n",
+          "after": "                         'f65d332bc0a67838bbba0f936ba8134243e75123d720417fa7af873502c0976b')\n"
         }
       ]
     },
@@ -719,7 +734,7 @@
     },
     "experimental/platform/relationships/test_hbn_relationship_projection.py": {
       "previous_sha256": "218348a93861fd15c59500bf1a0d75cae3d457ab59c8683b8c121cd208b53513",
-      "sha256": "917e8c444278f25f6bfe280f8a0c6b372528b06b00f1e902770cd0a72e325ee7",
+      "sha256": "129099f3d2f9401b99aabbc0a74983a00f02aaf9c97a5b7f8e7a148cc7d6998a",
       "edits": [
         {
           "offset": 1178,
@@ -730,6 +745,11 @@
           "offset": 1505,
           "before": "            'metal': 44, 'inorganic': 71, 'polymer': 30, 'composite': 30, 'natural': 1010})\n",
           "after": "            'metal': 44, 'inorganic': 71, 'polymer': 30, 'composite': 33, 'natural': 1010})\n"
+        },
+        {
+          "offset": 1664,
+          "before": "                         '8ad95e381232906bce1c0e2df777ed7856f2ad27e25200913fc3ad50482e5293')\n",
+          "after": "                         'f65d332bc0a67838bbba0f936ba8134243e75123d720417fa7af873502c0976b')\n"
         }
       ]
     },
