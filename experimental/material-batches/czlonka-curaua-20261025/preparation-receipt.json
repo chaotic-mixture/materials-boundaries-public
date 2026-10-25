@@ -1,0 +1,182 @@
+{
+  "schema": "material-batch-preparation-receipt/1",
+  "batch_id": "czlonka-curaua-20261025",
+  "baseline_commit": "ee8c2cd3d410db10449951fa069e746804d1c937",
+  "prepared_packet_sha256": "272f524862d9dac790dfcf218745627598554c67d4f667c37c40f7adcaa54e43",
+  "prepared_packet_bytes": 109660,
+  "spec_canonical_sha256": "4a26a7ce8e47ea82de90517ffecab8883df4263b5f4986a4a3f0d51941e33979",
+  "inputs": {
+    "experimental/material-batches/czlonka-curaua-20261025/packet-spec.json": {
+      "bytes": 57955,
+      "sha256": "134e961a9f5968b9970c157da437f4f1ecdccf3e9e51d0b808bc928ec30b4a6c"
+    },
+    "experimental/material-batches/czlonka-curaua-20261025/source-review.json": {
+      "bytes": 7866,
+      "sha256": "4f1ff980e4ddd9fedc5d94ffd7c1b82ff51f52e223f111dc16c2a434999e1cc8"
+    },
+    "experimental/material-batches/czlonka-curaua-20261025/identity-review.json": {
+      "bytes": 487994,
+      "sha256": "ba1256f63c7702e1de33002dcc18112bc1a325ab50cbcaa433fbccae0e70e29f"
+    },
+    "experimental/material-batches/czlonka-curaua-20261025/build_identity_review.py": {
+      "bytes": 22166,
+      "sha256": "dd6e05b41a2ed4439d791efb8d8b37bcef906ae4624e87107f9e1e6fb41dc913"
+    },
+    "materials_boundaries/data/materials.json": {
+      "bytes": 9783881,
+      "sha256": "8ad95e381232906bce1c0e2df777ed7856f2ad27e25200913fc3ad50482e5293"
+    },
+    "materials_boundaries/data/reference_properties.json": {
+      "bytes": 22419178,
+      "sha256": "32327221035bd9cc439a2107b4c857629f69276ace7d54df21ce3013720d7c8a"
+    },
+    "materials_boundaries/data/sources.json": {
+      "bytes": 294171,
+      "sha256": "360d0fc46605805173773ae30a01efcd5ba08cc262b140460a6b39c3b9434bd1"
+    }
+  },
+  "repeat_command": [
+    "python",
+    "-X",
+    "utf8",
+    "scripts/prepare_formulation_packet.py",
+    "--spec",
+    "experimental/material-batches/czlonka-curaua-20261025/packet-spec.json",
+    "--baseline-dir",
+    "materials_boundaries/data",
+    "--output",
+    "experimental/material-batches/czlonka-curaua-20261025/prepared-packet.json"
+  ],
+  "attempts": [
+    {
+      "index": 0,
+      "started_utc": "2026-10-25T08:29:03.541041+00:00",
+      "seconds": 4.797,
+      "exit_code": 0,
+      "stdout": "Unchanged review-only formulation packet: experimental\\material-batches\\czlonka-curaua-20261025\\prepared-packet.json\nCandidate identity delta: 3\nHandoff ready: yes\nFormal admitted delta: 0. Source transcription is not scientific approval; runtime catalogs unchanged.\n",
+      "stderr": ""
+    },
+    {
+      "index": 1,
+      "started_utc": "2026-10-25T08:29:08.344003+00:00",
+      "seconds": 4.828,
+      "exit_code": 0,
+      "stdout": "Unchanged review-only formulation packet: experimental\\material-batches\\czlonka-curaua-20261025\\prepared-packet.json\nCandidate identity delta: 3\nHandoff ready: yes\nFormal admitted delta: 0. Source transcription is not scientific approval; runtime catalogs unchanged.\n",
+      "stderr": ""
+    }
+  ],
+  "output_bytes_and_mtime_unchanged": true,
+  "inputs_unchanged": true,
+  "runtime_catalogs_unchanged": true,
+  "report": {
+    "baseline_sha256": {
+      "materials": "8ad95e381232906bce1c0e2df777ed7856f2ad27e25200913fc3ad50482e5293",
+      "reference_properties": "32327221035bd9cc439a2107b4c857629f69276ace7d54df21ce3013720d7c8a",
+      "sources": "360d0fc46605805173773ae30a01efcd5ba08cc262b140460a6b39c3b9434bd1"
+    },
+    "before": {
+      "identities": 1161,
+      "grades": 31,
+      "states": 1162,
+      "properties": 1173,
+      "sources": 127,
+      "categories": {
+        "metal": 32,
+        "inorganic": 59,
+        "polymer": 30,
+        "composite": 30,
+        "natural": 1010
+      }
+    },
+    "after": {
+      "identities": 1164,
+      "grades": 31,
+      "states": 1165,
+      "properties": 1176,
+      "sources": 128,
+      "categories": {
+        "metal": 32,
+        "inorganic": 59,
+        "polymer": 30,
+        "composite": 33,
+        "natural": 1010
+      }
+    },
+    "delta": {
+      "identities": 3,
+      "grades": 0,
+      "states": 3,
+      "properties": 3,
+      "sources": 1,
+      "categories": {
+        "metal": 0,
+        "inorganic": 0,
+        "polymer": 0,
+        "composite": 3,
+        "natural": 0
+      }
+    },
+    "formal_admitted_delta": 0,
+    "handoff_ready": true,
+    "pending_gates": [],
+    "identity_crosswalk": [
+      {
+        "identity_id": "mat_czlonka2021_curaua_cf0p1",
+        "source_id": "czlonka_2021_curaua_rpuf",
+        "source_designations": [
+          "CF 0.1"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "czlonka_2021_curaua_rpuf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8538972/fullTextXML",
+            "locator": "Sections 3.1-3.2, Conclusions, and Table 2, CF 0.1 row, Apparent Density column and footnote; PDF pp.5, 10-12",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "The adjacent identity-review.json reproduces the finite exact ee8c2cd 22-input audit, including all 30 polymer and 30 composite identity scopes and composition facts. No matching bleached Curaua/RPUF loading formulation is recorded. Nominal fiber and loading distinguish these source-qualified candidates; new paper, labels, values or processing states alone do not. This is not proof of global chemical uniqueness."
+      },
+      {
+        "identity_id": "mat_czlonka2021_curaua_cf0p5",
+        "source_id": "czlonka_2021_curaua_rpuf",
+        "source_designations": [
+          "CF 0.5"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "czlonka_2021_curaua_rpuf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8538972/fullTextXML",
+            "locator": "Sections 3.1-3.2, Conclusions, and Table 2, CF 0.5 row, Apparent Density column and footnote; PDF pp.5, 10-12",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "The adjacent identity-review.json reproduces the finite exact ee8c2cd 22-input audit, including all 30 polymer and 30 composite identity scopes and composition facts. No matching bleached Curaua/RPUF loading formulation is recorded. Nominal fiber and loading distinguish these source-qualified candidates; new paper, labels, values or processing states alone do not. This is not proof of global chemical uniqueness."
+      },
+      {
+        "identity_id": "mat_czlonka2021_curaua_cf1",
+        "source_id": "czlonka_2021_curaua_rpuf",
+        "source_designations": [
+          "CF 1"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "czlonka_2021_curaua_rpuf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8538972/fullTextXML",
+            "locator": "Sections 3.1-3.2, Conclusions, and Table 2, CF 1 row, Apparent Density column and footnote; PDF pp.5, 10-12",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "The adjacent identity-review.json reproduces the finite exact ee8c2cd 22-input audit, including all 30 polymer and 30 composite identity scopes and composition facts. No matching bleached Curaua/RPUF loading formulation is recorded. Nominal fiber and loading distinguish these source-qualified candidates; new paper, labels, values or processing states alone do not. This is not proof of global chemical uniqueness."
+      }
+    ]
+  }
+}
