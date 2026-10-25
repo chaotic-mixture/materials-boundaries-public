@@ -4,8 +4,8 @@ The released main baseline admits 1057 source-qualified identities and exactly
 24 reviewed computed composition buckets under formal-project-count-policy/1,
 for 1081 formal project admissions.
 
-This unmerged local experiment contains 1161 source-qualified identities and the
-same 24 computed buckets, totaling 1185. Main remains unchanged. Resource pins
+This unmerged local experiment contains 1164 source-qualified identities and the
+same 24 computed buckets, totaling 1188. Main remains unchanged. Resource pins
 match the local core for reproducible testing; they do not publish a release.
 Neither total is a global physical-uniqueness claim.
 
@@ -359,7 +359,7 @@ scientific replication, deployment or a main merge.
 
 ## Tian 2023 nominal nano-Ti composite increment
 
-The current source-qualified graph contains 1161 identities: natural 1010,
+The Tian checkpoint source-qualified graph contains 1161 identities: natural 1010,
 metal 32, inorganic 59, polymer 30 and composite 30. The unchanged 24 computed
 buckets yield 1185 experimental project entries; main remains 1081. Two nominal
 Mg-3Al-1Zn/nano-Ti formulations each supply one as-extruded measured density,
@@ -377,3 +377,30 @@ See the [reviewed candidate](../experimental/material-batches/tian-nano-ti-compo
 and [runtime integration](../experimental/material-batches/tian-nano-ti-composites-20261024/INTEGRATION.md).
 The XML and mirror/manifest provenance limits, CC BY 4.0 attribution and
 scientific-review limitations remain explicit. No main merge or deployment is implied.
+
+## Curaua 2021 nominal foam-composite increment
+
+The current experimental graph contains 1164 source-qualified identities,
+1165 source-scoped states, 1176 reference properties, 31 grades and 128 source
+records. Primary category counts are natural 1010, metal 32, inorganic 59,
+polymer 30 and composite 33. The project view is 1188 = 1164 source-qualified
+identities + 24 unchanged reviewed computed buckets. Main remains 1081.
+
+Three study-qualified bleached Curaua/RPUF nominal formulations each contribute
+one apparent-density mean: CF 0.1, CF 0.5 and CF 1. Fiber loading is relative to
+total RPUF mass, not analyzed final composition. ISO 845 and ten density samples
+per group are recorded. Literal CV superscripts have unknown units; they are
+not percent CV, SD or zero uncertainty. Density measurement age remains unknown
+across the source's 24 h cure and at least 7 day post-cure statements. Temperature,
+pressure, humidity and independently produced specimen counts are not inferred.
+Only composite membership is supported; no constituent membership, scientific
+inverse relationship or property propagation is added.
+
+The exact query baseline is
+`974f22632699247d5821a57323ab5de0d559b99959086e32ebdb660197db9431`.
+Old computed stores remain rejected without migration. The unchanged reviewed
+candidate retains its zero-admission history; current runtime admission is a
+separate step. Source PDF visual evidence remains producer evidence, with the
+official XML independently verified. CC BY 4.0 attribution and all scientific
+limitations remain explicit. This experimental integration is not a main merge
+or deployment.

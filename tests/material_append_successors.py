@@ -84,7 +84,15 @@ TIAN_DATA_SHA256 = "242cb5734a0323fbda3684dc6409692b28696e85a3a1d165b0f6d9fd86e6
 TIAN_FILE_LEDGER = "tests/fixtures/tian_nano_ti_files_20261024.json"
 TIAN_FILE_SHA256 = "4b2a98114a44f0d794f89b7e368859948b70789b12a25b6d70524e53360d3d83"
 
+CURAUA_BATCH_ID = "czlonka-curaua-20261025"
+CURAUA_DATA_LEDGER = "tests/curaua_runtime/data-history.json"
+CURAUA_DATA_SHA256 = "ce10a8972b4935677db755e25e8b00239513207b83c877de57ae63218fbab375"
+CURAUA_FILE_LEDGER = "tests/curaua_runtime/files-history.json"
+CURAUA_FILE_SHA256 = "e06e65a8730a1d1c654afc816f8b4ed91090262d0a4b2d2de18644730a298071"
+
 FROZEN_SUCCESSORS = (
+    {"batch_id": CURAUA_BATCH_ID,
+     "data": (CURAUA_DATA_LEDGER, CURAUA_DATA_SHA256), "files": (CURAUA_FILE_LEDGER, CURAUA_FILE_SHA256)},
     {"batch_id": TIAN_BATCH_ID,
      "data": (TIAN_DATA_LEDGER, TIAN_DATA_SHA256), "files": (TIAN_FILE_LEDGER, TIAN_FILE_SHA256)},
     {"batch_id": KAPOOR_BATCH_ID,
@@ -160,8 +168,14 @@ def file_ledgers(*, before=None):
     from legacy_document_recovery import code_ledger
     from replay_checkout_history import code_ledger as checkout_code_ledger
     from ci_partition_history import code_ledger as partition_code_ledger
-    result = [partition_code_ledger(), checkout_code_ledger()] + ([code_ledger()] if before is None else [])
+    from curaua_history import registry_ledger
+    result = [registry_ledger()] if any(item["batch_id"] == CURAUA_BATCH_ID for item in descriptors) else []
+    result += [load_frozen(ROOT, *descriptor["files"]) for descriptor in descriptors
+              if descriptor["batch_id"] == CURAUA_BATCH_ID]
+    result += [partition_code_ledger(), checkout_code_ledger()] + ([code_ledger()] if before is None else [])
     for descriptor in descriptors:
+        if descriptor["batch_id"] == CURAUA_BATCH_ID:
+            continue
         result.append(load_frozen(ROOT, *descriptor["files"]))
         if descriptor["batch_id"] == BRUNS_BATCH_ID:
             result.append(load_frozen(ROOT, CODE_FILE_LEDGER, CODE_FILE_SHA256))

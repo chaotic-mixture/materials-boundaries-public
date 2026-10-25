@@ -10,6 +10,13 @@ from hashlib import sha256
 import json
 from pathlib import Path
 from types import ModuleType
+import sys
+import tempfile
+
+TESTS = Path(__file__).resolve().parents[1]
+if str(TESTS) not in sys.path:
+    sys.path.insert(0, str(TESTS))
+from curaua_history import checkpoint_bytes, checkpoint_catalogs, CATALOG_PATHS
 
 ROOT = Path(__file__).resolve().parents[2]
 SCRIPT_PATH = "tests/history_replay_latest/benchmark_replay_16.py"
@@ -94,7 +101,7 @@ def build_runner():
         old._ordered_catalog_ledgers(ledgers)
         for table, filename in runner.FILES.items():
             relative = "materials_boundaries/data/" + filename
-            raw = (ROOT / relative).read_bytes()
+            raw = checkpoint_bytes(relative, (ROOT / relative).read_bytes())
             if digest(raw) != ledgers[0]["current_sha256"][table]:
                 raise AssertionError("A disk catalog differs from the frozen Tian image")
             manifest[relative] = digest(raw)
@@ -108,8 +115,56 @@ def build_runner():
             raise AssertionError("The sixteen-ledger configuration changed during verification")
         return ledgers, manifest, packets
 
+    original_measure = runner.measure
+
+    def check_inputs(manifest):
+        after = {name: digest(checkpoint_bytes(name, (ROOT / name).read_bytes()))
+                 if name in CATALOG_PATHS.values() else digest((ROOT / name).read_bytes())
+                 for name in manifest}
+        if after != manifest:
+            raise AssertionError("Benchmark input bytes changed during execution")
+        return after
+
+    def prepare_raw(old, ledgers, stage, name):
+        graph = checkpoint_catalogs()
+        for ledger in ledgers[:runner.STAGES[stage]]:
+            graph = old.recover_catalogs(ROOT, graph, ledger)
+        return old.encoded(graph[name])
+
+    def measure(module, filename, raw, ledgers, packet_paths):
+        # Materialize the exact Tian image per measurement, outside projection
+        # timing. The old engine and original counters run against real files.
+        # This retains the sixteen-layer experiment; it is not a new timing
+        # claim for the seventeen-layer Curaua catalog.
+        graph = checkpoint_catalogs()
+        with tempfile.TemporaryDirectory() as directory:
+            checkpoint = Path(directory)
+            for table, relative in CATALOG_PATHS.items():
+                target = checkpoint / relative
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes(module.encoded(graph[table]))
+            copied = set()
+            for source in packet_paths:
+                target = checkpoint / source.relative_to(ROOT)
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes(source.read_bytes())
+                copied.add(target.resolve())
+            original_root = runner.ROOT
+            try:
+                runner.ROOT = checkpoint
+                result, output = original_measure(module, filename, raw, ledgers, copied)
+            finally:
+                runner.ROOT = original_root
+        if checkpoint_catalogs() != graph:
+            raise AssertionError("Benchmark input bytes changed during execution")
+        result["curaua_checkpoint_preparation_excluded_from_projection_timing"] = True
+        return result, output
+
     runner.engines = engines
     runner.input_inventory = inventory
+    runner.check_inputs = check_inputs
+    runner.prepare_raw = prepare_raw
+    runner.measure = measure
     return runner
 
 

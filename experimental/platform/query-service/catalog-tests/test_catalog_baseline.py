@@ -26,12 +26,14 @@ PRE_NR_BATCH_BASELINE = 'c127bf69ccca825e1b2ca3fd496f6ead65bf68478fc232d27f087b7
 PRE_BRUNS_BASELINE = '124044eb8afcaf927ec9ff4770da66dfedc641391cd58e4b873735ee7424db4e'
 PRE_TARASOV_BASELINE = '09b57c7410b7b6c858abd566153dd932a451c9b5d4ed56b0963cbe4064543a05'
 PRE_KAPOOR_BASELINE = 'f77658c4df1434de7dd9d9d8d0e9d4ab31eef200477ec748f80c1a7acd371dbf'
-NEW_BASELINE = '8aa3073504462d2e892c12565a30db1d4df189f21ffaeba57fdbe7bb7ed83093'
+PRE_CURAUA_BASELINE = '8aa3073504462d2e892c12565a30db1d4df189f21ffaeba57fdbe7bb7ed83093'
+NEW_BASELINE = '974f22632699247d5821a57323ab5de0d559b99959086e32ebdb660197db9431'
 
 
 class IntegratedBaselineTests(unittest.TestCase):
     def test_installed_package_matches_exact_new_anchor(self):
         self.assertEqual(registry.baseline_digest(), NEW_BASELINE)
+        self.assertNotEqual(NEW_BASELINE, PRE_CURAUA_BASELINE)
         self.assertNotEqual(NEW_BASELINE, PRE_KAPOOR_BASELINE)
         self.assertNotEqual(NEW_BASELINE, PRE_TARASOV_BASELINE)
         self.assertNotEqual(NEW_BASELINE, PRE_BRUNS_BASELINE)
@@ -72,7 +74,7 @@ class IntegratedBaselineTests(unittest.TestCase):
         review = {'schema': 'computed-review-recovery/1', 'packet_sha256': '0' * 64,
                   'reviewer': 'Synthetic baseline compatibility test',
                   'rationale': 'No real material admission', 'records': []}
-        for old_baseline in (PRE_KAPOOR_BASELINE, PRE_TARASOV_BASELINE, PRE_BRUNS_BASELINE, OLD_BASELINE, PREVIOUS_BASELINE, EAF_BASELINE, NC2_BASELINE,
+        for old_baseline in (PRE_CURAUA_BASELINE, PRE_KAPOOR_BASELINE, PRE_TARASOV_BASELINE, PRE_BRUNS_BASELINE, OLD_BASELINE, PREVIOUS_BASELINE, EAF_BASELINE, NC2_BASELINE,
                              INTEGRATED_BASELINE, PRE_EVIDENCE_BATCH_BASELINE, PRE_GROWTH_BATCH_BASELINE, PRE_PUR_BATCH_BASELINE, PRE_TABLE_BATCH_BASELINE, PRE_RCA_BATCH_BASELINE, PRE_BINARY_BATCH_BASELINE, PRE_MTIBE_BATCH_BASELINE, PRE_NR_BATCH_BASELINE):
             with self.subTest(old_baseline=old_baseline):
                 with tempfile.TemporaryDirectory() as temporary:

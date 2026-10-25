@@ -44,9 +44,9 @@ class TianNanoTiQuery(unittest.TestCase):
 
     def test_two_nominal_composites_keep_exact_density_joins_and_unknowns(self):
         self.assertEqual(self.status['counts'], {
-            'local_catalog_unique_material_count': 1161,
-            'local_material_state_count': 1162,
-            'local_reference_property_count': 1173})
+            'local_catalog_unique_material_count': 1164,
+            'local_material_state_count': 1165,
+            'local_reference_property_count': 1176})
         for key, label, loading, density in FACTS:
             with self.subTest(formulation=key):
                 identity_id = 'mat_tian2023_az31_ti_' + key
@@ -136,11 +136,11 @@ class TianNanoTiQuery(unittest.TestCase):
         status = self.client.get('/api/catalog/project/status').json()
         self.assertTrue(status['enabled'])
         self.assertEqual(status['counts'], {
-            'formal_project_admission_count': 1185,
-            'legacy_source_qualified_identity_count': 1161,
+            'formal_project_admission_count': 1188,
+            'legacy_source_qualified_identity_count': 1164,
             'reviewed_computed_composition_count': 24,
             'categories': {'metal': 44, 'inorganic': 71, 'polymer': 30,
-                           'composite': 30, 'natural': 1010}})
+                           'composite': 33, 'natural': 1010}})
         data = {'version': status['version'], 'query': 'tian2023',
                 'partition': 'legacy-source-qualified', 'limit': 100}
         selected = self.client.post('/api/catalog/project/list', json=data)
@@ -182,9 +182,9 @@ class TianNanoTiQuery(unittest.TestCase):
     def test_composite_category_does_not_infer_alloy_or_nanoscale_membership(self):
         status = self.client.get('/api/catalog/relationships/status').json()
         pin = {'version': status['catalog_version'], 'relationship_version': status['relationship_version']}
-        self.assertEqual(status['unique_identity_count'], 1161)
-        self.assertEqual(status['membership_assertion_count'], 1166)
-        self.assertEqual(status['coverage']['composite']['supported'], 30)
+        self.assertEqual(status['unique_identity_count'], 1164)
+        self.assertEqual(status['membership_assertion_count'], 1169)
+        self.assertEqual(status['coverage']['composite']['supported'], 33)
         self.assertEqual(status['coverage']['metal']['supported'], 32)
         self.assertEqual(status['coverage']['alloy']['supported'], 2)
         self.assertEqual(status['coverage']['nanoscale']['supported'], 0)

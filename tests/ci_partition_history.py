@@ -8,6 +8,7 @@ from pathlib import Path
 from types import ModuleType
 
 from material_append_history import digest, load_frozen, recover_file
+from curaua_history import checkpoint_bytes
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_COMMIT = 'bf1c7a86068c37c2733ac4d25c268144090f9aad'
@@ -40,6 +41,7 @@ def project_partition_file(filename, raw):
         raise AssertionError('Invalid CI partition history file input')
     if filename not in PATHS:
         return raw
+    raw = checkpoint_bytes(filename, raw)
     entry = code_ledger()['updates'][filename]
     if digest(raw) == entry['sha256']:
         return recover_file(raw, entry)
@@ -50,6 +52,7 @@ def require_partition_file(filename, raw):
     """Accept only the current whole image before returning its predecessor."""
     if type(filename) is not str or type(raw) is not bytes or filename not in PATHS:
         raise AssertionError('Invalid required CI partition history file input')
+    raw = checkpoint_bytes(filename, raw)
     entry = code_ledger()['updates'][filename]
     if digest(raw) != entry['sha256']:
         raise AssertionError('Unreviewed current CI partition history file')

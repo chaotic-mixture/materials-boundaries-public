@@ -14,6 +14,8 @@ sys.path.insert(0, str(ROOT / 'tests'))
 import ci_partition_history as history
 import material_append_successors as successors
 from material_append_history import recover_file
+from curaua_history import checkpoint_bytes, checkpoint_registry
+successors = checkpoint_registry()
 
 BASE = 'bf1c7a86068c37c2733ac4d25c268144090f9aad'
 WORKFLOW = '.github/workflows/ci.yml'
@@ -73,7 +75,7 @@ class StripHistoricalInputAdapters(ast.NodeTransformer):
 
 class PartitionHistoryTests(unittest.TestCase):
     def test_pinned_helper_ledger_and_all_whole_file_round_trips(self):
-        self.assertEqual(sha256((ROOT / 'tests/ci_partition_history.py').read_bytes()).hexdigest(), HELPER_SHA256)
+        self.assertEqual(sha256(checkpoint_bytes('tests/ci_partition_history.py')).hexdigest(), HELPER_SHA256)
         self.assertEqual(history.LEDGER_SHA256, LEDGER_SHA256)
         ledger = history.code_ledger()
         self.assertEqual(ledger['baseline_commit'], BASE)
@@ -81,7 +83,7 @@ class PartitionHistoryTests(unittest.TestCase):
         self.assertEqual(len(ledger['updates']), 7)
         for path, entry in ledger['updates'].items():
             with self.subTest(path=path):
-                old, new = baseline(path), (ROOT / path).read_bytes()
+                old, new = baseline(path), checkpoint_bytes(path)
                 self.assertNotEqual(old, new)
                 self.assertEqual(sha256(old).hexdigest(), entry['previous_sha256'])
                 self.assertEqual(sha256(new).hexdigest(), entry['sha256'])
@@ -116,7 +118,7 @@ class PartitionHistoryTests(unittest.TestCase):
         for path in paths:
             with self.subTest(path=path):
                 original = ast.parse(baseline(path))
-                current = ast.parse((ROOT / path).read_bytes())
+                current = ast.parse(checkpoint_bytes(path))
                 normalized = StripHistoricalInputAdapters().visit(current)
                 self.assertEqual(ast.dump(normalized), ast.dump(original))
         old_runner = ast.parse(baseline('scripts/run_history_replay_latest_ci.py'))
@@ -227,7 +229,7 @@ class PartitionHistoryTests(unittest.TestCase):
                      'tests/fixtures/material_append_replay_16_20261024.json',
                      '.github/workflows/history-replay-latest.yml'):
             with self.subTest(path=path):
-                self.assertEqual((ROOT / path).read_bytes(), baseline(path))
+                self.assertEqual(checkpoint_bytes(path), baseline(path))
 
 
 if __name__ == '__main__':

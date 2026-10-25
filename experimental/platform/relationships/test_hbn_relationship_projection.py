@@ -31,11 +31,11 @@ class HBNRelationshipProjectionTests(unittest.TestCase):
 
     def test_actual_counts_are_separate_from_proposed_graph(self):
         p = self.projection
-        self.assertEqual(p['formal_counts']['formal_project_admission_count'], 1185)
-        self.assertEqual(p['formal_counts']['legacy_source_qualified_identity_count'], 1161)
+        self.assertEqual(p['formal_counts']['formal_project_admission_count'], 1188)
+        self.assertEqual(p['formal_counts']['legacy_source_qualified_identity_count'], 1164)
         self.assertEqual(p['formal_counts']['reviewed_computed_composition_count'], 24)
         self.assertEqual(p['formal_counts']['categories'], {
-            'metal': 44, 'inorganic': 71, 'polymer': 30, 'composite': 30, 'natural': 1010})
+            'metal': 44, 'inorganic': 71, 'polymer': 30, 'composite': 33, 'natural': 1010})
         self.assertEqual(p['formal_resource_sha256']['materials'],
                          '8ad95e381232906bce1c0e2df777ed7856f2ad27e25200913fc3ad50482e5293')
         self.assertEqual(p['counts'], {

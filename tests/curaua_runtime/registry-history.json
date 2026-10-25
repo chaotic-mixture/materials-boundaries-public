@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "baseline_commit": "fa170104195e573c868c57006ac77e7d866c28e9",
+  "updates": {
+    "tests/material_append_successors.py": {
+      "previous_sha256": "7450cc763b6861743488930586e3198de1fa90a7026cb923016d24536c9bea13",
+      "sha256": "7e0bee4185d90c579dba0581963dc4adb059c7a6ebc28933694bc1588d5268aa",
+      "edits": [
+        {
+          "offset": 5510,
+          "before": "",
+          "after": "CURAUA_BATCH_ID = \"czlonka-curaua-20261025\"\nCURAUA_DATA_LEDGER = \"tests/curaua_runtime/data-history.json\"\nCURAUA_DATA_SHA256 = \"ce10a8972b4935677db755e25e8b00239513207b83c877de57ae63218fbab375\"\nCURAUA_FILE_LEDGER = \"tests/curaua_runtime/files-history.json\"\nCURAUA_FILE_SHA256 = \"e06e65a8730a1d1c654afc816f8b4ed91090262d0a4b2d2de18644730a298071\"\n\n"
+        },
+        {
+          "offset": 5532,
+          "before": "",
+          "after": "    {\"batch_id\": CURAUA_BATCH_ID,\n     \"data\": (CURAUA_DATA_LEDGER, CURAUA_DATA_SHA256), \"files\": (CURAUA_FILE_LEDGER, CURAUA_FILE_SHA256)},\n"
+        },
+        {
+          "offset": 9335,
+          "before": "    result = [partition_code_ledger(), checkout_code_ledger()] + ([code_ledger()] if before is None else [])\n",
+          "after": "    from curaua_history import registry_ledger\n    result = [registry_ledger()] if any(item[\"batch_id\"] == CURAUA_BATCH_ID for item in descriptors) else []\n    result += [load_frozen(ROOT, *descriptor[\"files\"]) for descriptor in descriptors\n              if descriptor[\"batch_id\"] == CURAUA_BATCH_ID]\n    result += [partition_code_ledger(), checkout_code_ledger()] + ([code_ledger()] if before is None else [])\n"
+        },
+        {
+          "offset": 9479,
+          "before": "",
+          "after": "        if descriptor[\"batch_id\"] == CURAUA_BATCH_ID:\n            continue\n"
+        }
+      ]
+    }
+  }
+}

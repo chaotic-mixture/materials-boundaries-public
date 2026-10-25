@@ -17,6 +17,8 @@ import unittest
 ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / 'tests'))
+from curaua_history import checkpoint_catalogs, checkpoint_bytes, checkpoint_changed_paths
 
 from scripts.integrate_material_candidates import FILES, PIN_KEYS
 from scripts.prepare_formulation_packet import (
@@ -71,6 +73,14 @@ def git_bytes(path):
 class CurauaCandidatePacketTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        global BASELINE
+        original_baseline = BASELINE
+        directory = tempfile.TemporaryDirectory()
+        cls.addClassCleanup(directory.cleanup)
+        cls.addClassCleanup(lambda: globals().__setitem__('BASELINE', original_baseline))
+        BASELINE = Path(directory.name)
+        for table, value in checkpoint_catalogs().items():
+            (BASELINE / FILES[table]).write_bytes(encoded(value))
         cls.spec = read(BATCH / 'packet-spec.json')
         cls.saved_packet = read(BATCH / 'prepared-packet.json')
         cls.baseline_bytes = {filename: (BASELINE / filename).read_bytes()
@@ -267,7 +277,7 @@ class CurauaCandidatePacketTests(unittest.TestCase):
                 frozen = git_bytes(descriptor['path'])
                 self.assertEqual(len(frozen), descriptor['bytes'])
                 self.assertEqual(sha256(frozen).hexdigest(), descriptor['sha256'])
-                self.assertEqual(path.read_bytes(), frozen)
+                self.assertEqual(checkpoint_bytes(descriptor['path'], path.read_bytes()), frozen)
         helper_spec = importlib.util.spec_from_file_location('curaua_identity_review', BATCH / 'build_identity_review.py')
         helper = importlib.util.module_from_spec(helper_spec)
         helper_spec.loader.exec_module(helper)
@@ -289,6 +299,7 @@ class CurauaCandidatePacketTests(unittest.TestCase):
             ['git', 'diff', BASE_COMMIT, '--name-only', '--diff-filter=CDMRTUXB'],
             cwd=ROOT, check=True, capture_output=True, timeout=30,
         ).stdout
+        changed_old = checkpoint_changed_paths(changed_old)
         self.assertEqual(changed_old, b'')
         manifest = read(ROOT / 'tests/core_partition/manifest.json')
         self.assertEqual((manifest['module_count'], manifest['test_count']), (147, 1887))
@@ -315,7 +326,7 @@ class CurauaCandidatePacketTests(unittest.TestCase):
             resolved = (ROOT / path).resolve()
             with self.subTest(input=path):
                 self.assertTrue(resolved.is_relative_to(ROOT.resolve()))
-                data = resolved.read_bytes()
+                data = checkpoint_bytes(path, resolved.read_bytes())
                 self.assertEqual(descriptor['bytes'], len(data))
                 self.assertEqual(descriptor['sha256'], sha256(data).hexdigest())
 

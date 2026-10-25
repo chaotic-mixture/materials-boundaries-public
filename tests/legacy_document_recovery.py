@@ -7,6 +7,7 @@ release hash. Attribution recovery is whole-file exact and independent of data.
 """
 from pathlib import Path
 from material_append_history import load_frozen, project_file_chain
+from curaua_history import checkpoint_document
 
 ROOT = Path(__file__).resolve().parents[1]
 DOCUMENT_LEDGER = 'tests/fixtures/legacy_document_recovery_20261023.json'
@@ -34,6 +35,7 @@ def project_legacy_document_bytes(filename, raw):
     """Unknown or changed bytes pass through to the original fail-closed pin."""
     if filename not in {'README.md', 'THIRD_PARTY_NOTICES.md'}:
         raise AssertionError('Unknown legacy documentation path')
+    raw = checkpoint_document(filename, raw)
     ledger = load_frozen(ROOT, DOCUMENT_LEDGER, DOCUMENT_SHA256)
     successor = load_frozen(ROOT, TARASOV_DOCUMENT_LEDGER, TARASOV_DOCUMENT_SHA256)
     latest = load_frozen(ROOT, KAPOOR_DOCUMENT_LEDGER, KAPOOR_DOCUMENT_SHA256)

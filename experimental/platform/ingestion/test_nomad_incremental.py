@@ -14,8 +14,8 @@ from nomad_review_boundary import BASELINE_COMMIT, LEGACY, SOURCES
 from test_nomad_batch import fixture
 
 BOUNDARY = {'provider_material_ids': [], 'provider_entry_ids': [], 'sha256': 'test-boundary',
-            'baseline_commit': BASELINE_COMMIT, 'formal_project_total': 1185,
-            'formal_legacy_count': 1161, 'formal_computed_composition_count': 24,
+            'baseline_commit': BASELINE_COMMIT, 'formal_project_total': 1188,
+            'formal_legacy_count': 1164, 'formal_computed_composition_count': 24,
             'excluded_example_count': 62, 'legacy_example_count': 7,
             'source_sha256': {LEGACY[0]: LEGACY[1],
                               **{path: expected for path, expected, _ in SOURCES.values()}}}
@@ -85,7 +85,7 @@ class IncrementalTests(unittest.TestCase):
         self.assertEqual(third['input_changes'][0]['change'], 'changed')
         self.assertEqual(third['candidate_changes'][0]['change'], 'changed')
         self.assertEqual(third['admitted_delta'], 0)
-        self.assertEqual(third['formal_project_total'], 1185)
+        self.assertEqual(third['formal_project_total'], 1188)
 
     def test_crash_after_archive_response_is_reused(self):
         self.init()
@@ -456,7 +456,8 @@ class IncrementalTests(unittest.TestCase):
                      ('baseline_commit', '4c5656cf6ba0ad1a54b736e0568e97abe4815c29'),
                      ('baseline_commit', 'a592c89ede0dcced22579e56fc68b6fab4c55f49'),
                      ('baseline_commit', '5396fd1cc9df72507785a112a21c2990fb4a7c50'),
-                     ('source_sha256', {**BOUNDARY['source_sha256'], LEGACY[0]: '0' * 64})]
+                     ('source_sha256', {**BOUNDARY['source_sha256'], LEGACY[0]: '0' * 64}),
+                     ('formal_project_total', 1185)]
         for index, (key, value) in enumerate(mutations):
             root = self.root / str(index)
             boundary = dict(BOUNDARY, **{key: value})
@@ -611,9 +612,9 @@ class IncrementalTests(unittest.TestCase):
         from nomad_review_boundary import load_review_boundary
 
         current = load_review_boundary()
-        self.assertEqual(current['baseline_commit'], 'f7086fc049dc40319d7daa9ffb9bd5fdece55856')
-        self.assertEqual(current['formal_legacy_count'], 1161)
-        self.assertEqual(current['formal_project_total'], 1185)
+        self.assertEqual(current['baseline_commit'], '2bd55831513abcf60161ab9de7fb78ea8f844586')
+        self.assertEqual(current['formal_legacy_count'], 1164)
+        self.assertEqual(current['formal_project_total'], 1188)
         self.init()
         self.assertEqual(self.first_cycle()['status'], 'complete')
         self.now += 100

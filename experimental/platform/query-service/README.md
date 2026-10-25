@@ -611,7 +611,7 @@ Source assets are not distributed.
 
 ## Tian 2023 nominal nano-Ti composite increment
 
-Current core counts are 1161 identities, 1162 states, 1173 properties, 31 grades
+The Tian checkpoint core counts are 1161 identities, 1162 states, 1173 properties, 31 grades
 and 127 source/provenance records. The experimental project projection is
 1185 = 1161 source-qualified identities + 24 unchanged computed records; main
 remains 1081. The two new composite formulations use study-qualified IDs and
@@ -624,3 +624,30 @@ correct eight-author attribution. They preserve literal `1 wt Ti`, all density
 unknowns, source-rights and mirror/manifest limitations. Theoretical densities,
 tensile-only test conditions and the unreinforced comparator are excluded.
 Stale catalog versions and old computed stores remain rejected without migration.
+
+## Curaua 2021 nominal foam-composite increment
+
+The current experimental graph contains 1164 source-qualified identities,
+1165 source-scoped states, 1176 reference properties, 31 grades and 128 source
+records. Primary category counts are natural 1010, metal 32, inorganic 59,
+polymer 30 and composite 33. The project view is 1188 = 1164 source-qualified
+identities + 24 unchanged reviewed computed buckets. Main remains 1081.
+
+Three study-qualified bleached Curaua/RPUF nominal formulations each contribute
+one apparent-density mean: CF 0.1, CF 0.5 and CF 1. Fiber loading is relative to
+total RPUF mass, not analyzed final composition. ISO 845 and ten density samples
+per group are recorded. Literal CV superscripts have unknown units; they are
+not percent CV, SD or zero uncertainty. Density measurement age remains unknown
+across the source's 24 h cure and at least 7 day post-cure statements. Temperature,
+pressure, humidity and independently produced specimen counts are not inferred.
+Only composite membership is supported; no constituent membership, scientific
+inverse relationship or property propagation is added.
+
+The exact query baseline is
+`974f22632699247d5821a57323ab5de0d559b99959086e32ebdb660197db9431`.
+Old computed stores remain rejected without migration. The unchanged reviewed
+candidate retains its zero-admission history; current runtime admission is a
+separate step. Source PDF visual evidence remains producer evidence, with the
+official XML independently verified. CC BY 4.0 attribution and all scientific
+limitations remain explicit. This experimental integration is not a main merge
+or deployment.

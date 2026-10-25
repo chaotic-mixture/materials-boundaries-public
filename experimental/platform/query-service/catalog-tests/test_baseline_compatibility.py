@@ -41,7 +41,8 @@ PRE_BRUNS_PIN_SHA256 = '124044eb8afcaf927ec9ff4770da66dfedc641391cd58e4b873735ee
 PRE_TARASOV_PIN_SHA256 = '09b57c7410b7b6c858abd566153dd932a451c9b5d4ed56b0963cbe4064543a05'
 PRE_KAPOOR_PIN_SHA256 = 'f77658c4df1434de7dd9d9d8d0e9d4ab31eef200477ec748f80c1a7acd371dbf'
 PRE_TIAN_PIN_SHA256 = '23be9c9f3716f824ea79872167ff5f80d991ea5d222d702ad41d40188c871f4a'
-CURRENT_PIN_SHA256 = '8aa3073504462d2e892c12565a30db1d4df189f21ffaeba57fdbe7bb7ed83093'
+PRE_CURAUA_PIN_SHA256 = '8aa3073504462d2e892c12565a30db1d4df189f21ffaeba57fdbe7bb7ed83093'
+CURRENT_PIN_SHA256 = '974f22632699247d5821a57323ab5de0d559b99959086e32ebdb660197db9431'
 GROWTH_ROOT = Path(__file__).resolve().parents[4]
 GROWTH_LEDGER = GROWTH_ROOT / 'tests/fixtures/source_family_growth_data_20261019.json'
 GROWTH_LEDGER_SHA256 = '9dfc8d71e89041f05e11a870ad29aea34cb3ab90586bcea8f1d717adc9878ac3'
@@ -167,6 +168,16 @@ PRE_BRUNS_DATA_SHA256 = {
     'reference_properties.json': '66802278a29cdcc4a5fe468b5681d87893a8a10a7c6c4c57f83c4753fe807839',
     'sources.json': '67e068041af0cd8dbaba1126e6ffe2e39d2f8d26f8d2c8ceefc42240e5eefe76',
 }
+CURAUA_LEDGER = GROWTH_ROOT / 'tests/curaua_runtime/data-history.json'
+CURAUA_LEDGER_SHA256 = 'ce10a8972b4935677db755e25e8b00239513207b83c877de57ae63218fbab375'
+CURAUA_PACKET = GROWTH_ROOT / 'experimental/material-batches/czlonka-curaua-20261025/prepared-packet.json'
+CURAUA_PACKET_SHA256 = '272f524862d9dac790dfcf218745627598554c67d4f667c37c40f7adcaa54e43'
+PRE_CURAUA_DATA_SHA256 = {
+    'materials.json': '8ad95e381232906bce1c0e2df777ed7856f2ad27e25200913fc3ad50482e5293',
+    'reference_properties.json': '32327221035bd9cc439a2107b4c857629f69276ace7d54df21ce3013720d7c8a',
+    'sources.json': '360d0fc46605805173773ae30a01efcd5ba08cc262b140460a6b39c3b9434bd1',
+}
+
 TIAN_LEDGER = GROWTH_ROOT / 'tests/fixtures/tian_nano_ti_data_20261024.json'
 TIAN_LEDGER_SHA256 = '242cb5734a0323fbda3684dc6409692b28696e85a3a1d165b0f6d9fd86e643ce'
 TIAN_PACKET = GROWTH_ROOT / 'experimental/material-batches/tian-nano-ti-composites-20261024/prepared-packet.json'
@@ -516,6 +527,23 @@ def table_batch_inventory():
 
 def recover_pre_table_batch_catalogs(current):
     return recover_exact_append_catalogs(current, table_batch_descriptor())
+
+
+def curaua_descriptor():
+    return {'label': 'Curaua RPUF', 'ledger': CURAUA_LEDGER,
+            'ledger_sha256': CURAUA_LEDGER_SHA256, 'packet': CURAUA_PACKET,
+            'packet_sha256': CURAUA_PACKET_SHA256,
+            'parent_commit': 'fa170104195e573c868c57006ac77e7d866c28e9',
+            'parent_data': PRE_CURAUA_DATA_SHA256,
+            'addition_counts': {'identities': 3, 'grades': 0, 'states': 3, 'properties': 3, 'sources': 1}}
+
+
+def curaua_inventory():
+    return frozen_append_inventory(curaua_descriptor())
+
+
+def recover_pre_curaua_catalogs(current):
+    return recover_exact_append_catalogs(current, curaua_descriptor())
 
 
 def tian_descriptor():
@@ -887,6 +915,7 @@ class BaselineCompatibility(unittest.TestCase):
         cls.original_identity = sha256(json.dumps(
             cls.expected, sort_keys=True, separators=(',', ':'), ensure_ascii=False,
             allow_nan=False).encode()).hexdigest()
+        cls.recover_curaua_anchor()
         cls.recover_tian_anchor()
         cls.recover_kapoor_anchor()
         cls.recover_tarasov_anchor()
@@ -907,10 +936,28 @@ class BaselineCompatibility(unittest.TestCase):
         cls.recover_historical_anchor()
 
     @classmethod
+    def recover_curaua_anchor(cls):
+        """Recover the exact fa17010 data and full pin before older append layers."""
+        cls.curaua_parent_root = cls.fixture_root / 'pre-curaua-batch-data'
+        shutil.copytree(cls.original_root, cls.curaua_parent_root)
+        data_root = cls.curaua_parent_root / 'data'
+        current = {name: json.loads((data_root / name).read_bytes())
+                   for name in PRE_CURAUA_DATA_SHA256}
+        for name, value in recover_pre_curaua_catalogs(current).items():
+            (data_root / name).write_bytes((json.dumps(value, ensure_ascii=False,
+                indent=2, allow_nan=False) + '\n').encode('utf-8'))
+        cls.curaua_parent_pin = registry.canonical(manifest(cls.curaua_parent_root))
+        if sha256(cls.curaua_parent_pin).hexdigest() != PRE_CURAUA_PIN_SHA256:
+            raise AssertionError('Recovered fa17010 complete pin bytes differ')
+        cls.curaua_parent_query_root = cls.fixture_root / 'pre-curaua-batch-query'
+        (cls.curaua_parent_query_root / 'pins').mkdir(parents=True)
+        (cls.curaua_parent_query_root / 'pins/legacy_baseline.json').write_bytes(cls.curaua_parent_pin)
+
+    @classmethod
     def recover_tian_anchor(cls):
         """Recover the exact 5a9a85c data and full pin before older append layers."""
         cls.tian_parent_root = cls.fixture_root / 'pre-tian-batch-data'
-        shutil.copytree(cls.original_root, cls.tian_parent_root)
+        shutil.copytree(cls.curaua_parent_root, cls.tian_parent_root)
         data_root = cls.tian_parent_root / 'data'
         current = {name: json.loads((data_root / name).read_bytes())
                    for name in PRE_TIAN_DATA_SHA256}
@@ -1359,12 +1406,100 @@ class BaselineCompatibility(unittest.TestCase):
         with self.assertRaisesRegex(AssertionError, 'Recovered a592 catalog bytes differ'):
             recover_a592_catalogs(changed)
 
+    def test_curaua_parent_manifest_and_catalog_recovery_remain_exact(self):
+        expected = dict(self.expected)
+        expected.update({'data/' + name: digest for name, digest in PRE_CURAUA_DATA_SHA256.items()})
+        self.assertEqual(len(manifest(self.curaua_parent_root)), 64)
+        self.assertEqual(manifest(self.curaua_parent_root), expected)
+        current = {name: json.loads((self.current_root / 'data' / name).read_bytes())
+                   for name in PRE_CURAUA_DATA_SHA256}
+        parent = {name: json.loads((self.curaua_parent_root / 'data' / name).read_bytes())
+                  for name in PRE_CURAUA_DATA_SHA256}
+        self.assertEqual(recover_pre_curaua_catalogs(current), parent)
+        self.assertEqual(recover_pre_curaua_catalogs(parent), parent)
+        self.assertEqual(current['sources.json']['records'][:-1], parent['sources.json']['records'])
+        self.assertEqual(current['materials.json']['grades'], parent['materials.json']['grades'])
+        self.assertEqual(len(parent['materials.json']['identities']), 1161)
+        self.assertEqual(len(current['materials.json']['identities']), 1164)
+        with self.assertRaisesRegex(AssertionError, 'Tian nano-Ti predecessor catalog bytes differ'):
+            recover_pre_tian_catalogs(current)
+        ledger, additions = curaua_inventory()
+        self.assertEqual(len(ledger['packets']), 1)
+        self.assertEqual([row['id'] for row in additions['identities']],
+                         ['mat_czlonka2021_curaua_cf0p1', 'mat_czlonka2021_curaua_cf0p5', 'mat_czlonka2021_curaua_cf1'])
+        for filename, section, collection, label in GROWTH_COLLECTIONS:
+            if not additions[label]:
+                continue
+            candidate = additions[label][0]
+            for mutation in ('missing', 'changed', 'duplicate'):
+                with self.subTest(collection=label, mutation=mutation):
+                    changed = deepcopy(current)
+                    rows = changed[filename][collection]
+                    row = next(row for row in rows if row['id'] == candidate['id'])
+                    if mutation == 'missing':
+                        rows.remove(row)
+                    elif mutation == 'changed':
+                        row['version'] = 'unreviewed'
+                    else:
+                        rows.append(deepcopy(row))
+                    with self.assertRaisesRegex(AssertionError, 'Curaua RPUF'):
+                        recover_pre_curaua_catalogs(changed)
+        for filename, collection in [('materials.json', 'identities'), ('sources.json', 'records')]:
+            changed = deepcopy(current)
+            changed[filename][collection][0]['version'] = 'unreviewed'
+            with self.subTest(retained_collection=collection), self.assertRaisesRegex(
+                    AssertionError, 'Curaua RPUF predecessor catalog bytes differ'):
+                recover_pre_curaua_catalogs(changed)
+        for filename, collection, label in [('materials.json', 'identities', 'identities'),
+                                             ('materials.json', 'records', 'states'),
+                                             ('reference_properties.json', 'records', 'properties')]:
+            changed = deepcopy(current)
+            self.assertEqual(len(additions[label]), 3)
+            self.assertEqual(changed[filename][collection][-3:], additions[label])
+            changed[filename][collection][-3:] = reversed(changed[filename][collection][-3:])
+            self.assertNotEqual(changed, current)
+            with self.subTest(order=label), self.assertRaisesRegex(
+                    AssertionError, 'Curaua RPUF successor catalog order or bytes differ'):
+                recover_pre_curaua_catalogs(changed)
+        original_read = Path.read_bytes
+        for target in (CURAUA_LEDGER, CURAUA_PACKET):
+            def replaced(path):
+                return original_read(path) + (b' ' if path == target else b'')
+            with self.subTest(binding=target.name), patch.object(Path, 'read_bytes', replaced), \
+                    self.assertRaisesRegex(AssertionError, 'Curaua RPUF .* bytes differ'):
+                recover_pre_curaua_catalogs(current)
+        with self.resources(self.curaua_parent_root, self.curaua_parent_query_root):
+            with self.assertRaisesRegex(ValueError, 'Baseline pin was replaced'):
+                registry.baseline_digest()
+            with patch.object(registry, 'BASELINE_PIN', PRE_CURAUA_PIN_SHA256):
+                self.assertEqual(registry.baseline_digest(), PRE_CURAUA_PIN_SHA256)
+        with self.resources(self.curaua_parent_root), self.assertRaisesRegex(
+                ValueError, 'Installed legacy baseline differs'):
+            registry.baseline_digest()
+
+    def test_curaua_parent_database_rejected_without_migration(self):
+        for rich in (False, True):
+            with self.subTest(rich=rich):
+                review = self.review(rich)
+                path = self.work / ('fa17010-v2.db' if rich else 'fa17010-legacy.db')
+                with self.resources(self.curaua_parent_root, self.curaua_parent_query_root), \
+                        patch.object(registry, 'BASELINE_PIN', PRE_CURAUA_PIN_SHA256):
+                    historical = self.make_registry(path, review, rich)
+                    before = historical.admit([review['records'][0]['candidate_id']])
+                raw = path.read_bytes()
+                rows = self.database_rows(path)
+                with self.assertRaisesRegex(ValueError, 'Initial baseline and review input cannot be replaced'):
+                    self.make_registry(path, review, rich)
+                self.assertEqual(path.read_bytes(), raw)
+                self.assertEqual(self.database_rows(path), rows)
+                self.assertEqual(historical.snapshot(), before)
+
     def test_tian_parent_manifest_and_catalog_recovery_remain_exact(self):
         expected = dict(self.expected)
         expected.update({'data/' + name: digest for name, digest in PRE_TIAN_DATA_SHA256.items()})
         self.assertEqual(len(manifest(self.tian_parent_root)), 64)
         self.assertEqual(manifest(self.tian_parent_root), expected)
-        current = {name: json.loads((self.current_root / 'data' / name).read_bytes())
+        current = {name: json.loads((self.curaua_parent_root / 'data' / name).read_bytes())
                    for name in PRE_TIAN_DATA_SHA256}
         parent = {name: json.loads((self.tian_parent_root / 'data' / name).read_bytes())
                   for name in PRE_TIAN_DATA_SHA256}

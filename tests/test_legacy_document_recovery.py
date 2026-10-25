@@ -9,6 +9,7 @@ from unittest.mock import patch
 import legacy_document_recovery as recovery
 import material_bulk_preservation as bulk
 from material_append_history import recover_file, project_file_chain
+from curaua_history import checkpoint_bytes, checkpoint_document
 
 ROOT = Path(__file__).resolve().parents[1]
 HELPER_SHA256 = '8f9e40f41de596ebeffdad024dedc211def31bef008c4e3d1f442b6d2082c0e0'
@@ -31,7 +32,7 @@ def digest(raw):
 
 class LegacyDocumentRecoveryTests(unittest.TestCase):
     def test_helper_ledgers_and_call_site_inventory_are_byte_pinned(self):
-        helper = (ROOT / 'tests/legacy_document_recovery.py').read_bytes()
+        helper = checkpoint_bytes('tests/legacy_document_recovery.py')
         tian_code = recovery.load_frozen(ROOT, TIAN_CODE_LEDGER, TIAN_CODE_SHA256)
         self.assertEqual(tian_code['baseline_commit'], '497dcc8495c32b16f02cdedce8b99f6b7d05f2c4')
         self.assertEqual(set(tian_code['updates']), {'tests/legacy_document_recovery.py'})
@@ -88,6 +89,7 @@ class LegacyDocumentRecoveryTests(unittest.TestCase):
             raw = (ROOT / filename).read_bytes()
             if filename == 'README.md':
                 raw = bulk.truthful_readme(raw, bulk.load_ledger())
+            raw = checkpoint_document(filename, raw)
             self.assertEqual(digest(recovery.project_legacy_document_bytes(filename, raw)), expected[filename])
             tian = recovery.load_frozen(ROOT, recovery.TIAN_DOCUMENT_LEDGER, recovery.TIAN_DOCUMENT_SHA256)
             tian_entry = tian['ledgers'][0]['updates'][filename]

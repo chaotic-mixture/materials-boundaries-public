@@ -11,11 +11,42 @@ from unittest.mock import patch
 from types import SimpleNamespace
 from replay_checkout_history import project_checkout_file
 from ci_partition_history import project_partition_file
+from curaua_history import checkpoint_inventory, require_checkpoint_bytes
 
 ROOT = Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location('tian_nano_ti_ci', ROOT / 'scripts/run_tian_nano_ti_ci.py')
 ci = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(ci)
+
+
+class _TianCheckpointPath(type(Path())):
+    """Project only this loaded historical runner's exact, pinned file reads."""
+
+    def read_bytes(self):
+        relative = Path(self).relative_to(ROOT).as_posix()
+        return require_checkpoint_bytes(relative)
+
+
+_current_declared_test_ids = ci.declared_test_ids
+_original_installation_payload = ci.installation_payload
+
+
+def _checkpoint_declared_test_ids(relative, *, predecessor=False):
+    actual = _current_declared_test_ids(relative, predecessor=predecessor)
+    if predecessor:
+        return actual
+    return checkpoint_inventory(relative, actual)
+
+
+def _checkpoint_installation_payload():
+    # The current Curaua runner separately checks the actual installed payload.
+    # Keep the Tian oracle and all of its original pins and count assertions.
+    with patch.object(ci, 'ROOT', _TianCheckpointPath(ROOT)):
+        return _original_installation_payload()
+
+
+ci.declared_test_ids = _checkpoint_declared_test_ids
+ci.installation_payload = _checkpoint_installation_payload
 
 
 class TianNanoTiCITests(unittest.TestCase):
@@ -114,7 +145,7 @@ class TianNanoTiCITests(unittest.TestCase):
                        'test_tian_nano_ti_ci'):
             self.assertTrue(any(identifier.startswith(module + '.') for identifier in all_ids))
         required_path = 'experimental/platform/ci/required_test_ids.json'
-        required = json.loads((ROOT / required_path).read_bytes())
+        required = json.loads(require_checkpoint_bytes(required_path))
         prior_required = json.loads(ci.git('show', ci.DATA_BASE_COMMIT + ':' + required_path))
         self.assertEqual(set(required), set(prior_required))
         for group, old_ids in prior_required.items():
