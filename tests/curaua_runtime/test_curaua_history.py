@@ -140,19 +140,23 @@ class CurauaCheckpointGuardTests(unittest.TestCase):
         self.assertEqual(history.checkpoint_inventory(relative, entry['current']), entry['previous'])
 
         import test_kapoor_phosphate_ci as kapoor
+        import run_tian_nano_ti_ci as successor
         adapter = kapoor.ci.declared_test_ids
         original_declared = kapoor._original_declared_test_ids
+        successor_declared = successor.declared_test_ids
+        successor_validate = successor.validate_inventory
         self.assertEqual(adapter(relative), entry['current'])
         restored = adapter(relative, regression_checkpoint=True)
         kapoor.ci.validate_inventory('query', restored)
         self.assertIs(kapoor.ci.declared_test_ids, adapter)
-        for mutation in ('missing', 'duplicate', 'extra', 'reordered'):
+        for mutation in ('missing', 'duplicate', 'extra', 'substituted', 'reordered'):
             def altered(path, **kwargs):
                 ids = original_declared(path, **kwargs)
                 if kwargs or path != relative:
                     return ids
                 return {'missing': ids[:-1], 'duplicate': ids + ids[:1],
                         'extra': ids + ['unknown.Case.test_extra'],
+                        'substituted': ids[1:] + ['unknown.Case.test_replacement'],
                         'reordered': list(reversed(ids))}[mutation]
             with self.subTest(kapoor_inventory=mutation), \
                     patch.object(kapoor, '_original_declared_test_ids', altered), \
@@ -162,10 +166,18 @@ class CurauaCheckpointGuardTests(unittest.TestCase):
         with patch.object(Path, 'read_bytes', changed), self.assertRaises(AssertionError):
             adapter(relative, regression_checkpoint=True)
         self.assertIs(kapoor.ci.declared_test_ids, adapter)
+        def extra_bytes(path):
+            return b'' if path == ROOT / relative / 'test_unreviewed.py' else original(path)
+        with patch.object(Path, 'glob', extra), patch.object(Path, 'read_bytes', extra_bytes), \
+                self.assertRaises(AssertionError):
+            adapter(relative, regression_checkpoint=True)
+        self.assertIs(kapoor.ci.declared_test_ids, adapter)
         with self.assertRaises(RuntimeError):
             adapter(relative, predecessor=True, regression_checkpoint=True)
         self.assertIs(kapoor.ci.declared_test_ids, adapter)
         self.assertEqual(adapter(relative), entry['current'])
+        self.assertIs(successor.declared_test_ids, successor_declared)
+        self.assertIs(successor.validate_inventory, successor_validate)
 
     def test_document_bridge_retains_false_count_and_unknown_prose_rejection(self):
         import material_bulk_preservation as bulk
