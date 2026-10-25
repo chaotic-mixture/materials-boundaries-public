@@ -164,7 +164,16 @@ class EwurumReactiveCandidatePacketTests(unittest.TestCase):
                 self.assertIn(gel + '%', scope)
                 self.assertIn('not a certified final network', scope)
                 self.assertIn('not an analyzed final', state['state']['reinforcement']['notes'])
-        self.assertIn('contextual identity evidence only', self.source_review['identity_review']['gel_fraction_scope'])
+                for scoped_text in (scope, state['source_scope'], prop['scope_note']):
+                    scoped_text = scoped_text.casefold()
+                    self.assertIn('hot-pressed', scoped_text)
+                    self.assertIn('section 2.4', scoped_text)
+                    self.assertRegex(scoped_text, r'not [^.]*tensile dog-bones')
+        gel_scope = self.source_review['identity_review']['gel_fraction_scope'].casefold()
+        self.assertIn('contextual identity evidence only', gel_scope)
+        self.assertIn('hot-pressed', gel_scope)
+        self.assertIn('section 2.4', gel_scope)
+        self.assertRegex(gel_scope, r'not [^.]*tensile dog-bones')
 
     def test_existing_b_blends_are_preserved_and_not_renamed_as_r_candidates(self):
         by_id = {row['id']: row for row in self.baseline_materials['identities']}
@@ -184,15 +193,36 @@ class EwurumReactiveCandidatePacketTests(unittest.TestCase):
                 self.assertEqual(prop['sample_count']['value'], 10)
                 self.assertEqual(prop['sample_count']['relation'], 'exact')
                 self.assertIn('independent production-batch count is not reported', prop['sample_count']['scope'])
-                self.assertEqual(prop['conditions']['test_standard']['status'], 'reported')
-                self.assertIn('ASTM D1708', prop['conditions']['test_standard']['text'])
+                standard = prop['conditions']['test_standard']
+                self.assertEqual(standard['status'], 'reported')
+                self.assertEqual(standard['text'],
+                                 'ASTM D1708-18 (2018), source-cited edition in reference [32]')
+                self.assertEqual([entry['locator'] for entry in standard['evidence']],
+                                 ['PDF p.5 section 2.9 and p.15 reference [32]'])
+                standard_notes = standard['notes'].casefold()
+                self.assertIn('source-cited only', standard_notes)
+                self.assertIn('independent standard compliance remains unverified', standard_notes)
+                self.assertIn('no specimen dimensions or conditioning are inferred', standard_notes)
                 self.assertIn('1 mm/min', prop['conditions']['loading_rate']['text'])
                 method = prop['conditions']['test_method']['text']
                 for text in ('Instron 5500R-1132', 'Epsilon', '3542', 'dog-bone'):
                     self.assertIn(text, method)
+                for description in (method, prop['method_definition']['definition']):
+                    self.assertIn('ASTM D1708-18', description)
+                    self.assertIn('source-cited', description)
                 self.assertIn('Injection-molded', state['state']['product_form']['text'])
                 self.assertIn('DCP', state['state']['processing']['text'])
                 self.assertIn('separate route', state['state']['processing']['notes'])
+        contract = self.source_review['property_contract']
+        self.assertEqual(contract['standard'], 'ASTM D1708-18')
+        self.assertIs(type(contract['standard_edition']), int)
+        self.assertEqual(contract['standard_edition'], 2018)
+        self.assertEqual(contract['standard_locator'], 'PDF p.5 section 2.9 and p.15 reference [32]')
+        self.assertFalse(contract['standard_compliance_verified'])
+        edition_basis = contract['standard_edition_basis'].casefold()
+        self.assertIn('source-cited edition only', edition_basis)
+        self.assertIn('independent compliance remains unverified', edition_basis)
+        self.assertIn('no dimensions or conditioning are inferred', edition_basis)
 
     def test_grade_test_conditions_and_modulus_fit_unknowns_stay_null(self):
         for identity, state, prop in zip(self.identities, self.states, self.properties):
@@ -214,7 +244,7 @@ class EwurumReactiveCandidatePacketTests(unittest.TestCase):
                 self.assertIn('not assigned to the test', prop['conditions']['temperature']['notes'])
         contract = self.source_review['property_contract']
         for field in ('test_temperature', 'relative_humidity', 'post_molding_conditioning',
-                      'numerical_modulus_fit_interval', 'standard_edition'):
+                      'numerical_modulus_fit_interval'):
             self.assertIsNone(contract[field])
 
     def test_exact_existing_source_authorship_license_and_document_are_reused(self):

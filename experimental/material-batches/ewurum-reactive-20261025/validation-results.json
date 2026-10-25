@@ -37,8 +37,8 @@
     "separate_process_groups": [
       {
         "group": "candidate",
-        "attempt": "attempt-02",
-        "execution_method": "A private bounded parent process ran unittest discovery in a fresh Python process, recording exact started, stopped and passed IDs without changing test assertions.",
+        "attempt": "attempt-03-correction",
+        "execution_method": "A private bounded parent process ran the same 20 unittest methods in a fresh Python process; assertions were not altered by the runner.",
         "reproduction_command": [
           "python",
           "-X",
@@ -54,9 +54,9 @@
         ],
         "python": "3.11.0",
         "platform": "Windows-10-10.0.26100-SP0",
-        "finished_utc": "2026-10-25T17:34:30.408880+00:00",
-        "elapsed_seconds": 95.312,
-        "process_elapsed_seconds": 95.469,
+        "finished_utc": "2026-10-25T17:50:58.528683+00:00",
+        "elapsed_seconds": 94.906,
+        "process_elapsed_seconds": 95.047,
         "expected_ids": [
           "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_an_additional_synthetic_state_does_not_add_a_material_identity",
           "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_baseline_drift_and_pending_source_or_identity_block_handoff",
@@ -150,16 +150,17 @@
         "skipped": [],
         "expected_failures": [],
         "unexpected_successes": [],
-        "test_file_sha256": "2fa6ccc89899ad3212c16e148785d91fdfea99cc2f8baaac84974b5a09920c9d",
+        "test_file_sha256": "bae3f8c1f94336a714666d27392346828931bdb15482b729a0af1b5d1bf3eefb",
         "terminal_status": "completed",
         "process_exit_code": 0,
         "timed_out": false,
         "log": {
           "bytes": 4175,
-          "sha256": "5b31b732e33d6c12835617eac1f80894a8cf7110667bd89d158d2d40deb357a4",
+          "sha256": "ffd8c062dc12bf3abfed9e05cf47302bf792eab8234ed6ca1b9820e2dea0456c",
           "retained_privately": true
         },
-        "all_expected_methods_passed_without_skips": true
+        "all_expected_methods_passed_without_skips": true,
+        "executed_this_correction_round": true
       },
       {
         "group": "compiler",
@@ -249,13 +250,17 @@
           "sha256": "88e03e541eec92baa1e81e79cfbe80d70c27e52a5a78448db171ab0ea546fbc4",
           "retained_privately": true
         },
-        "all_expected_methods_passed_without_skips": true
+        "all_expected_methods_passed_without_skips": true,
+        "executed_this_correction_round": false,
+        "scope_note": "Prior completed 11-method run retained; compiler, original fixture inputs and all baseline files are unchanged. Not rerun for this candidate metadata correction."
       }
     ],
     "root_core_ids_executed": 11,
     "root_core_inventory": 1887,
     "root_core_unrun": 1876,
-    "new_candidate_ids_outside_root_inventory": 20
+    "new_candidate_ids_outside_root_inventory": 20,
+    "newly_executed_in_correction_round": 20,
+    "previous_unchanged_compiler_methods_retained_without_rerun": 11
   },
   "retained_failed_attempt": {
     "run": {
@@ -408,8 +413,6 @@
       "elapsed_seconds": 4.75
     }
   ],
-  "all_attempts_method_executions": 51,
-  "all_attempts_successful_method_executions": 50,
   "preservation": {
     "unchanged_baseline_files_total": 1030,
     "fixtures_included_in_total": 122,
@@ -441,36 +444,252 @@
   ],
   "immutable_candidate_inputs": {
     "experimental/material-batches/ewurum-reactive-20261025/build_identity_review.py": {
-      "bytes": 26458,
-      "sha256": "9fa73ea7d3b945c5ae584cccd9aa174f3608239053805d363e6f6763f5f7b9f0"
+      "bytes": 26622,
+      "sha256": "e202e10ad4249bc10582a65f0ad3252d365439a36b537134a3d9ee083d3a94eb"
     },
     "experimental/material-batches/ewurum-reactive-20261025/identity-review.json": {
-      "bytes": 583822,
-      "sha256": "72b32d78a8d88a3334593469c65efbb9aea5633bbe92fe69ddbd9019aafb2edf"
+      "bytes": 584478,
+      "sha256": "84cc3244d6ad26d99739697ca4e2de1735222dd7be4bfd125239695f56c5f73f"
     },
     "experimental/material-batches/ewurum-reactive-20261025/packet-spec.json": {
-      "bytes": 109960,
-      "sha256": "a22c7a07f812c45e01fd27eb353ecc83cb905042dff664f1f35809f84b2dcb92"
+      "bytes": 116860,
+      "sha256": "f72a85270ef8502ac6d912fd8e9202ef8470c4e3b802be59abcbe638da0d244e"
     },
     "experimental/material-batches/ewurum-reactive-20261025/preparation-receipt.json": {
-      "bytes": 8340,
-      "sha256": "2dcd8546536e24cfb0e6f2d1eea547224e9d1ed9df751494e61f0a8847ae10e0"
+      "bytes": 9186,
+      "sha256": "633ed3f2165ced6de115a37380c75b6307c4983aaa7a873bc239e0492022bb3a"
     },
     "experimental/material-batches/ewurum-reactive-20261025/prepared-packet.json": {
-      "bytes": 154976,
-      "sha256": "11dc08f8f86b5f6865eeda790fe93f69834b0c90d60215c2bf558a5b50dd94ac"
+      "bytes": 168592,
+      "sha256": "e36ecbe9e46d097e0bd28471e743d2b1760f1d015190962f0f6cd7e3f1383467"
     },
     "experimental/material-batches/ewurum-reactive-20261025/README.md": {
-      "bytes": 6790,
-      "sha256": "479d9686f7d14627e892cca5037bb25cf0a112a0c1c36e01b048a64e1c7e0328"
+      "bytes": 7716,
+      "sha256": "de549b83a71bfd5d3ac62531acd544d092555257d2f8fc3c2a7a2eeb3bff7305"
     },
     "experimental/material-batches/ewurum-reactive-20261025/source-review.json": {
-      "bytes": 13249,
-      "sha256": "57f564122eea129915d6713fe6cecbe902213d8730b6d01bf6d6959f2819ac9d"
+      "bytes": 14987,
+      "sha256": "4fa03793b328b6f0291f4a7bcc8f6ec9194b9b828eb413e73ce177cace12a1fa"
     },
     "tests/ewurum_reactive_candidate/test_ewurum_reactive_packet.py": {
-      "bytes": 29620,
-      "sha256": "2fa6ccc89899ad3212c16e148785d91fdfea99cc2f8baaac84974b5a09920c9d"
+      "bytes": 31677,
+      "sha256": "bae3f8c1f94336a714666d27392346828931bdb15482b729a0af1b5d1bf3eefb"
     }
+  },
+  "prior_successful_candidate_run": {
+    "group": "candidate",
+    "attempt": "attempt-02",
+    "execution_method": "A private bounded parent process ran unittest discovery in a fresh Python process, recording exact started, stopped and passed IDs without changing test assertions.",
+    "reproduction_command": [
+      "python",
+      "-X",
+      "utf8",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests/ewurum_reactive_candidate",
+      "-p",
+      "test_ewurum_reactive_packet.py",
+      "-v"
+    ],
+    "python": "3.11.0",
+    "platform": "Windows-10-10.0.26100-SP0",
+    "finished_utc": "2026-10-25T17:34:30.408880+00:00",
+    "elapsed_seconds": 95.312,
+    "process_elapsed_seconds": 95.469,
+    "expected_ids": [
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_an_additional_synthetic_state_does_not_add_a_material_identity",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_baseline_drift_and_pending_source_or_identity_block_handoff",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_baseline_raw_bytes_counts_and_frozen_inventories_are_unchanged",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_exact_existing_source_authorship_license_and_document_are_reused",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_exact_original_modulus_means_sds_and_tukey_labels",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_existing_b_blends_are_preserved_and_not_renamed_as_r_candidates",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_finite_identity_review_replays_twenty_two_direct_baseline_inputs",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_forged_values_sds_counts_and_admission_cannot_replace_exact_replay",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_four_reactive_formulations_have_four_exact_state_property_joins",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_grade_test_conditions_and_modulus_fit_unknowns_stay_null",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_measured_candidate_preparation_is_not_scientific_or_formal_admission",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_missing_property_cannot_write_a_partial_candidate",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_nominal_loading_dcp_basis_and_contextual_gel_evidence_are_exact",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_preparation_receipt_binds_packet_and_every_declared_input",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_r_alias_b_alias_designation_and_cloned_identity_cannot_create_growth",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_replay_and_idempotent_write_preserve_exact_bytes_and_mtime",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_source_drift_cannot_be_authorized_by_rehashing_existing_record",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_tensile_method_replicates_and_specimen_state_are_source_qualified",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_wrong_identity_or_property_state_join_is_rejected",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_wrong_modulus_or_sd_units_are_rejected"
+    ],
+    "started_ids": [
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_an_additional_synthetic_state_does_not_add_a_material_identity",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_baseline_drift_and_pending_source_or_identity_block_handoff",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_baseline_raw_bytes_counts_and_frozen_inventories_are_unchanged",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_exact_existing_source_authorship_license_and_document_are_reused",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_exact_original_modulus_means_sds_and_tukey_labels",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_existing_b_blends_are_preserved_and_not_renamed_as_r_candidates",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_finite_identity_review_replays_twenty_two_direct_baseline_inputs",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_forged_values_sds_counts_and_admission_cannot_replace_exact_replay",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_four_reactive_formulations_have_four_exact_state_property_joins",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_grade_test_conditions_and_modulus_fit_unknowns_stay_null",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_measured_candidate_preparation_is_not_scientific_or_formal_admission",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_missing_property_cannot_write_a_partial_candidate",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_nominal_loading_dcp_basis_and_contextual_gel_evidence_are_exact",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_preparation_receipt_binds_packet_and_every_declared_input",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_r_alias_b_alias_designation_and_cloned_identity_cannot_create_growth",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_replay_and_idempotent_write_preserve_exact_bytes_and_mtime",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_source_drift_cannot_be_authorized_by_rehashing_existing_record",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_tensile_method_replicates_and_specimen_state_are_source_qualified",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_wrong_identity_or_property_state_join_is_rejected",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_wrong_modulus_or_sd_units_are_rejected"
+    ],
+    "completed_ids": [
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_an_additional_synthetic_state_does_not_add_a_material_identity",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_baseline_drift_and_pending_source_or_identity_block_handoff",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_baseline_raw_bytes_counts_and_frozen_inventories_are_unchanged",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_exact_existing_source_authorship_license_and_document_are_reused",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_exact_original_modulus_means_sds_and_tukey_labels",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_existing_b_blends_are_preserved_and_not_renamed_as_r_candidates",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_finite_identity_review_replays_twenty_two_direct_baseline_inputs",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_forged_values_sds_counts_and_admission_cannot_replace_exact_replay",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_four_reactive_formulations_have_four_exact_state_property_joins",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_grade_test_conditions_and_modulus_fit_unknowns_stay_null",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_measured_candidate_preparation_is_not_scientific_or_formal_admission",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_missing_property_cannot_write_a_partial_candidate",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_nominal_loading_dcp_basis_and_contextual_gel_evidence_are_exact",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_preparation_receipt_binds_packet_and_every_declared_input",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_r_alias_b_alias_designation_and_cloned_identity_cannot_create_growth",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_replay_and_idempotent_write_preserve_exact_bytes_and_mtime",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_source_drift_cannot_be_authorized_by_rehashing_existing_record",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_tensile_method_replicates_and_specimen_state_are_source_qualified",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_wrong_identity_or_property_state_join_is_rejected",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_wrong_modulus_or_sd_units_are_rejected"
+    ],
+    "passed_ids": [
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_an_additional_synthetic_state_does_not_add_a_material_identity",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_baseline_drift_and_pending_source_or_identity_block_handoff",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_baseline_raw_bytes_counts_and_frozen_inventories_are_unchanged",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_exact_existing_source_authorship_license_and_document_are_reused",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_exact_original_modulus_means_sds_and_tukey_labels",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_existing_b_blends_are_preserved_and_not_renamed_as_r_candidates",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_finite_identity_review_replays_twenty_two_direct_baseline_inputs",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_forged_values_sds_counts_and_admission_cannot_replace_exact_replay",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_four_reactive_formulations_have_four_exact_state_property_joins",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_grade_test_conditions_and_modulus_fit_unknowns_stay_null",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_measured_candidate_preparation_is_not_scientific_or_formal_admission",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_missing_property_cannot_write_a_partial_candidate",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_nominal_loading_dcp_basis_and_contextual_gel_evidence_are_exact",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_preparation_receipt_binds_packet_and_every_declared_input",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_r_alias_b_alias_designation_and_cloned_identity_cannot_create_growth",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_replay_and_idempotent_write_preserve_exact_bytes_and_mtime",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_source_drift_cannot_be_authorized_by_rehashing_existing_record",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_tensile_method_replicates_and_specimen_state_are_source_qualified",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_wrong_identity_or_property_state_join_is_rejected",
+      "test_ewurum_reactive_packet.EwurumReactiveCandidatePacketTests.test_wrong_modulus_or_sd_units_are_rejected"
+    ],
+    "failures": [],
+    "errors": [],
+    "skipped": [],
+    "expected_failures": [],
+    "unexpected_successes": [],
+    "test_file_sha256": "2fa6ccc89899ad3212c16e148785d91fdfea99cc2f8baaac84974b5a09920c9d",
+    "terminal_status": "completed",
+    "process_exit_code": 0,
+    "timed_out": false,
+    "log": {
+      "bytes": 4175,
+      "sha256": "5b31b732e33d6c12835617eac1f80894a8cf7110667bd89d158d2d40deb357a4",
+      "retained_privately": true
+    },
+    "all_expected_methods_passed_without_skips": true
+  },
+  "correction_preparation": [
+    {
+      "stage": "correction_generate_separate_candidate",
+      "exit_code": 0,
+      "created": true
+    },
+    {
+      "stage": "correction_repeat_after_explicit_owned_candidate_replacement",
+      "exit_code": 0,
+      "created": false,
+      "result": "identical_bytes_and_mtime",
+      "elapsed_seconds": 4.968
+    }
+  ],
+  "normal_suite_attempt_method_executions": 71,
+  "normal_suite_attempt_successful_method_executions": 70,
+  "original_candidate_rejection_probe": {
+    "original_commit": "f55af18be0f809b5c8f06fba3fcbeb9db5fb1206",
+    "new_test_sha256": "bae3f8c1f94336a714666d27392346828931bdb15482b729a0af1b5d1bf3eefb",
+    "methods_run": [
+      "test_nominal_loading_dcp_basis_and_contextual_gel_evidence_are_exact",
+      "test_tensile_method_replicates_and_specimen_state_are_source_qualified",
+      "test_grade_test_conditions_and_modulus_fit_unknowns_stay_null"
+    ],
+    "method_count": 3,
+    "passed_method_count": 1,
+    "rejected_original_candidate_method_count": 2,
+    "rejected_methods": [
+      "test_nominal_loading_dcp_basis_and_contextual_gel_evidence_are_exact",
+      "test_tensile_method_replicates_and_specimen_state_are_source_qualified"
+    ],
+    "assertion_failure_outcomes_including_subtests": 10,
+    "errors": 0,
+    "skips": 0,
+    "elapsed_seconds": 4.829,
+    "status": "exact_original_defects_rejected",
+    "not_counted_as_corrected_candidate_passing_tests": true,
+    "original_input_hashes": {
+      "experimental/material-batches/ewurum-reactive-20261025/README.md": {
+        "bytes": 6790,
+        "sha256": "479d9686f7d14627e892cca5037bb25cf0a112a0c1c36e01b048a64e1c7e0328"
+      },
+      "experimental/material-batches/ewurum-reactive-20261025/VALIDATION.md": {
+        "bytes": 4481,
+        "sha256": "d627ce1b14d0c28efd907bf1e123e9e85f3972831c5ace4895e69f19bbca7ddd"
+      },
+      "experimental/material-batches/ewurum-reactive-20261025/build_identity_review.py": {
+        "bytes": 26458,
+        "sha256": "9fa73ea7d3b945c5ae584cccd9aa174f3608239053805d363e6f6763f5f7b9f0"
+      },
+      "experimental/material-batches/ewurum-reactive-20261025/identity-review.json": {
+        "bytes": 583822,
+        "sha256": "72b32d78a8d88a3334593469c65efbb9aea5633bbe92fe69ddbd9019aafb2edf"
+      },
+      "experimental/material-batches/ewurum-reactive-20261025/packet-spec.json": {
+        "bytes": 109960,
+        "sha256": "a22c7a07f812c45e01fd27eb353ecc83cb905042dff664f1f35809f84b2dcb92"
+      },
+      "experimental/material-batches/ewurum-reactive-20261025/preparation-receipt.json": {
+        "bytes": 8340,
+        "sha256": "2dcd8546536e24cfb0e6f2d1eea547224e9d1ed9df751494e61f0a8847ae10e0"
+      },
+      "experimental/material-batches/ewurum-reactive-20261025/prepared-packet.json": {
+        "bytes": 154976,
+        "sha256": "11dc08f8f86b5f6865eeda790fe93f69834b0c90d60215c2bf558a5b50dd94ac"
+      },
+      "experimental/material-batches/ewurum-reactive-20261025/source-review.json": {
+        "bytes": 13249,
+        "sha256": "57f564122eea129915d6713fe6cecbe902213d8730b6d01bf6d6959f2819ac9d"
+      },
+      "experimental/material-batches/ewurum-reactive-20261025/validation-results.json": {
+        "bytes": 38845,
+        "sha256": "b57e557b135192460b059619537a677e1940880ad4b2b40317c2fd4bc079828e"
+      }
+    },
+    "log_sha256": "859d4287438e6132b344ae1975173205d51806b4422191abc9635c249bbb58b6",
+    "log_bytes": 16325
+  },
+  "review_correction": {
+    "supersedes_candidate_commit": "f55af18be0f809b5c8f06fba3fcbeb9db5fb1206",
+    "prior_validation_sha256": "b57e557b135192460b059619537a677e1940880ad4b2b40317c2fd4bc079828e",
+    "finding": "The earlier candidate incorrectly treated the standard edition as unknown and did not explicitly delimit hot-pressed gel-test material from tensile dog-bones.",
+    "verified_evidence": "Cached original PDF p.15 reference [32] cites ASTM D 1708-18 (2018); p.4 section 2.4 specifies hot-pressed material for gel fraction.",
+    "correction": "Record the source-cited edition only; retain independent compliance as unverified and all dimensional/conditioning unknowns. Explicitly limit gel evidence to its separate hot-pressed state.",
+    "original_values_sds_sample_counts_ids_and_source_records_unchanged": true,
+    "old1030_files_including122_fixtures_unchanged": true,
+    "original_artifact_and_review_failure_history_preserved": true,
+    "additional_source_requests": 0,
+    "inspection_note": "The optional text extractor was unavailable; installed Poppler rendered pages 4 and 15 for direct visual verification. No dependency was installed and no source URL was retried."
   }
 }
