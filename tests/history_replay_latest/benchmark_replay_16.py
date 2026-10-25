@@ -118,9 +118,12 @@ def build_runner():
     original_measure = runner.measure
 
     def check_inputs(manifest):
-        after = {name: digest(checkpoint_bytes(name, (ROOT / name).read_bytes()))
-                 if name in CATALOG_PATHS.values() else digest((ROOT / name).read_bytes())
-                 for name in manifest}
+        try:
+            after = {name: digest(checkpoint_bytes(name, (ROOT / name).read_bytes()))
+                     if name in CATALOG_PATHS.values() else digest((ROOT / name).read_bytes())
+                     for name in manifest}
+        except AssertionError as cause:
+            raise AssertionError("Benchmark input bytes changed during execution") from cause
         if after != manifest:
             raise AssertionError("Benchmark input bytes changed during execution")
         return after

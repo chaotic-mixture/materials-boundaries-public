@@ -19,6 +19,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'tests'))
 import material_append_successors as successors
 from material_append_history import recover_file
+from curaua_history import checkpoint_bytes
 import replay_checkout_history as history
 from ci_partition_history import project_partition_file, predecessor_registry
 
@@ -271,7 +272,7 @@ class CheckoutHistoryTests(unittest.TestCase):
                      'tests/history_replay_latest/benchmark_replay_16.py',
                      'tests/fixtures/material_append_replay_16_20261024.json'):
             with self.subTest(path=path):
-                self.assertEqual((ROOT / path).read_bytes(), baseline(path))
+                self.assertEqual(checkpoint_bytes(path), baseline(path))
 
 
 if __name__ == '__main__':

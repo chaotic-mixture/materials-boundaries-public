@@ -92,6 +92,8 @@ class CurauaAppendPreservationTests(unittest.TestCase):
 
     def test_unknown_file_images_remain_unknown_and_strict_reads_reject_them(self):
         for relative in ('README.md', 'tests/ci_partition_history.py',
+                         'tests/history_replay_latest/benchmark_replay_16.py',
+                         'tests/history_replay_latest/test_checkout_history.py',
                          'experimental/platform/ci/required_test_ids.json',
                          'materials_boundaries/data/sources.json'):
             raw = (ROOT / relative).read_bytes()

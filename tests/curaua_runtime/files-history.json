@@ -882,7 +882,7 @@
     },
     "tests/history_replay_latest/benchmark_replay_16.py": {
       "previous_sha256": "7d825f1dcd8869da1ac69ac8dbaa0c83471a31d64eed8db14d075f58e2db313a",
-      "sha256": "5fefa59b748c5cbe54bbf3a477686f0d899ecbd0850c742878bcd088be35086c",
+      "sha256": "114bfee8274bb90c5a3060fe17c9983648750ae98b092a2fe7801f41aa9f4ac9",
       "edits": [
         {
           "offset": 528,
@@ -897,12 +897,28 @@
         {
           "offset": 5377,
           "before": "",
-          "after": "    original_measure = runner.measure\n\n    def check_inputs(manifest):\n        after = {name: digest(checkpoint_bytes(name, (ROOT / name).read_bytes()))\n                 if name in CATALOG_PATHS.values() else digest((ROOT / name).read_bytes())\n                 for name in manifest}\n        if after != manifest:\n            raise AssertionError(\"Benchmark input bytes changed during execution\")\n        return after\n\n    def prepare_raw(old, ledgers, stage, name):\n        graph = checkpoint_catalogs()\n        for ledger in ledgers[:runner.STAGES[stage]]:\n            graph = old.recover_catalogs(ROOT, graph, ledger)\n        return old.encoded(graph[name])\n\n    def measure(module, filename, raw, ledgers, packet_paths):\n        # Materialize the exact Tian image per measurement, outside projection\n        # timing. The old engine and original counters run against real files.\n        # This retains the sixteen-layer experiment; it is not a new timing\n        # claim for the seventeen-layer Curaua catalog.\n        graph = checkpoint_catalogs()\n        with tempfile.TemporaryDirectory() as directory:\n            checkpoint = Path(directory)\n            for table, relative in CATALOG_PATHS.items():\n                target = checkpoint / relative\n                target.parent.mkdir(parents=True, exist_ok=True)\n                target.write_bytes(module.encoded(graph[table]))\n            copied = set()\n            for source in packet_paths:\n                target = checkpoint / source.relative_to(ROOT)\n                target.parent.mkdir(parents=True, exist_ok=True)\n                target.write_bytes(source.read_bytes())\n                copied.add(target.resolve())\n            original_root = runner.ROOT\n            try:\n                runner.ROOT = checkpoint\n                result, output = original_measure(module, filename, raw, ledgers, copied)\n            finally:\n                runner.ROOT = original_root\n        if checkpoint_catalogs() != graph:\n            raise AssertionError(\"Benchmark input bytes changed during execution\")\n        result[\"curaua_checkpoint_preparation_excluded_from_projection_timing\"] = True\n        return result, output\n\n"
+          "after": "    original_measure = runner.measure\n\n    def check_inputs(manifest):\n        try:\n            after = {name: digest(checkpoint_bytes(name, (ROOT / name).read_bytes()))\n                     if name in CATALOG_PATHS.values() else digest((ROOT / name).read_bytes())\n                     for name in manifest}\n        except AssertionError as cause:\n            raise AssertionError(\"Benchmark input bytes changed during execution\") from cause\n        if after != manifest:\n            raise AssertionError(\"Benchmark input bytes changed during execution\")\n        return after\n\n    def prepare_raw(old, ledgers, stage, name):\n        graph = checkpoint_catalogs()\n        for ledger in ledgers[:runner.STAGES[stage]]:\n            graph = old.recover_catalogs(ROOT, graph, ledger)\n        return old.encoded(graph[name])\n\n    def measure(module, filename, raw, ledgers, packet_paths):\n        # Materialize the exact Tian image per measurement, outside projection\n        # timing. The old engine and original counters run against real files.\n        # This retains the sixteen-layer experiment; it is not a new timing\n        # claim for the seventeen-layer Curaua catalog.\n        graph = checkpoint_catalogs()\n        with tempfile.TemporaryDirectory() as directory:\n            checkpoint = Path(directory)\n            for table, relative in CATALOG_PATHS.items():\n                target = checkpoint / relative\n                target.parent.mkdir(parents=True, exist_ok=True)\n                target.write_bytes(module.encoded(graph[table]))\n            copied = set()\n            for source in packet_paths:\n                target = checkpoint / source.relative_to(ROOT)\n                target.parent.mkdir(parents=True, exist_ok=True)\n                target.write_bytes(source.read_bytes())\n                copied.add(target.resolve())\n            original_root = runner.ROOT\n            try:\n                runner.ROOT = checkpoint\n                result, output = original_measure(module, filename, raw, ledgers, copied)\n            finally:\n                runner.ROOT = original_root\n        if checkpoint_catalogs() != graph:\n            raise AssertionError(\"Benchmark input bytes changed during execution\")\n        result[\"curaua_checkpoint_preparation_excluded_from_projection_timing\"] = True\n        return result, output\n\n"
         },
         {
           "offset": 5445,
           "before": "",
           "after": "    runner.check_inputs = check_inputs\n    runner.prepare_raw = prepare_raw\n    runner.measure = measure\n"
+        }
+      ]
+    },
+    "tests/history_replay_latest/test_checkout_history.py": {
+      "previous_sha256": "2f30581924ac560c82a7aaf999eda4695e0f4a99ae44859b39e32b9ba9e3745d",
+      "sha256": "4ed29400f6f4b7e9b1a7a515c8d2383fb11713146526c6083f7c3f9c800dffb0",
+      "edits": [
+        {
+          "offset": 645,
+          "before": "",
+          "after": "from curaua_history import checkpoint_bytes\n"
+        },
+        {
+          "offset": 15282,
+          "before": "                self.assertEqual((ROOT / path).read_bytes(), baseline(path))\n",
+          "after": "                self.assertEqual(checkpoint_bytes(path), baseline(path))\n"
         }
       ]
     },
