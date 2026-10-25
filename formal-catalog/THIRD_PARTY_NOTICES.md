@@ -1069,3 +1069,27 @@ was observed for selected Table 2 and methods. Only attributed selected facts
 and original curation are distributed, without PDF, XML full text, screenshots
 or raw data. No endorsement, scientific replication, independent scientific
 review or engineering allowable is implied.
+
+## Ewurum 2025 DCP-reactive PBS / kraft-lignin formulations
+
+Nnaemeka Ewurum and Armando G. McDonald, *Lignin Reinforcement in Polybutylene
+Succinate Copolymers*, Polymers 17, 194 (2025),
+[DOI 10.3390/polym17020194](https://doi.org/10.3390/polym17020194).
+The inspected article carries an article-specific
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) notice. No separate
+third-party restriction was identified on the selected original Table 6 facts
+or the contextual Table 1 facts.
+
+This increment reuses the existing source record without changing its bytes.
+Selected R10/R20/R30/R45 measured modulus means, reported standard deviations,
+Tukey labels, source-cited ASTM D1708-18, ten tensile replicates and explicit
+unknowns are transcribed into structured, study-qualified records. Curatorial
+changes comprise identifiers, metadata and scope qualifications. Contextual
+gel fractions refer to separately hot-pressed specimens and do not establish
+the tensile dog-bones' network architecture. Nominal DCP and lignin additions
+are not certified final composition; the DCP denominator remains unresolved.
+
+The source PDF, screenshots, complete tables, figures and raw measurements are
+not bundled. Project MIT does not replace the source's CC BY attribution terms.
+This is source-qualified factual curation, not independent scientific validation
+or certification of standards compliance.

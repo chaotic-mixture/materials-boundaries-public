@@ -1,7 +1,7 @@
 """Source oracles and preparation gates for four review-only R formulations.
 
 Run this directory explicitly. No frozen root or replay inventory is expanded.
-The baseline is the original 8ccd217 catalog image, without history projection.
+The original 8ccd217 image is recovered through the exact Ewurum successor ledger.
 """
 from collections import Counter
 from copy import deepcopy
@@ -17,6 +17,8 @@ import unittest
 ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / 'tests'))
+from ewurum_reactive_history import checkpoint_catalogs, checkpoint_bytes, checkpoint_changed_paths
 
 from scripts.integrate_material_candidates import FILES, PIN_KEYS
 from scripts.prepare_formulation_packet import (
@@ -71,6 +73,14 @@ def git_bytes(path):
 class EwurumReactiveCandidatePacketTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        global BASELINE
+        original_baseline = BASELINE
+        directory = tempfile.TemporaryDirectory()
+        cls.addClassCleanup(directory.cleanup)
+        cls.addClassCleanup(lambda: globals().__setitem__('BASELINE', original_baseline))
+        BASELINE = Path(directory.name)
+        for table, value in checkpoint_catalogs().items():
+            (BASELINE / FILES[table]).write_bytes(encoded(value))
         cls.spec = read(BATCH / 'packet-spec.json')
         cls.saved_packet = read(BATCH / 'prepared-packet.json')
         cls.source_review = read(BATCH / 'source-review.json')
@@ -333,7 +343,7 @@ class EwurumReactiveCandidatePacketTests(unittest.TestCase):
             with self.subTest(input=descriptor['path']):
                 self.assertTrue(path.resolve().is_relative_to(ROOT.resolve()))
                 frozen = git_bytes(descriptor['path'])
-                self.assertEqual(path.read_bytes(), frozen)
+                self.assertEqual(checkpoint_bytes(descriptor['path'], path.read_bytes()), frozen)
                 self.assertEqual(len(frozen), descriptor['bytes'])
                 self.assertEqual(sha256(frozen).hexdigest(), descriptor['sha256'])
         helper_spec = importlib.util.spec_from_file_location('ewurum_reactive_identity_review', BATCH / 'build_identity_review.py')
@@ -357,6 +367,7 @@ class EwurumReactiveCandidatePacketTests(unittest.TestCase):
             ['git', 'diff', BASE_COMMIT, '--name-only', '--diff-filter=CDMRTUXB'],
             cwd=ROOT, check=True, capture_output=True, timeout=30,
         ).stdout
+        changed_old = checkpoint_changed_paths(changed_old)
         self.assertEqual(changed_old, b'')
         manifest = read(ROOT / 'tests/core_partition/manifest.json')
         self.assertEqual((manifest['module_count'], manifest['test_count']), (147, 1887))
@@ -386,7 +397,7 @@ class EwurumReactiveCandidatePacketTests(unittest.TestCase):
             path = (ROOT / relative).resolve()
             with self.subTest(input=relative):
                 self.assertTrue(path.is_relative_to(ROOT.resolve()))
-                data = path.read_bytes()
+                data = checkpoint_bytes(relative, path.read_bytes())
                 self.assertEqual(descriptor['bytes'], len(data))
                 self.assertEqual(descriptor['sha256'], sha256(data).hexdigest())
 

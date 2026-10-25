@@ -15,6 +15,7 @@ from unittest.mock import patch
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'tests'))
 import curaua_history as history
+import ewurum_reactive_history as ewurum
 import material_append_successors as successors
 from material_append_history import encoded, graph_hashes, recover_catalogs, recover_file
 
@@ -30,8 +31,7 @@ def git(*args):
 
 
 def current_graph():
-    return {name: json.loads((ROOT / relative).read_bytes())
-            for name, relative in history.CATALOG_PATHS.items()}
+    return ewurum.checkpoint_catalogs()
 
 
 class CurauaAppendPreservationTests(unittest.TestCase):
@@ -79,14 +79,16 @@ class CurauaAppendPreservationTests(unittest.TestCase):
                              metadata.split()[2])
 
     def test_registry_extends_only_the_reviewed_material_boundary(self):
+        current_successors = successors
+        successors_checkpoint = ewurum.checkpoint_registry()
         previous = history.checkpoint_registry()
-        self.assertEqual(successors.FROZEN_SUCCESSORS[1:], previous.FROZEN_SUCCESSORS)
-        self.assertEqual(successors.FROZEN_SUCCESSORS[0]['batch_id'], 'czlonka-curaua-20261025')
-        self.assertEqual(successors.data_ledgers(before=successors.CURAUA_BATCH_ID), [])
-        self.assertEqual(successors.data_ledgers()[0], history.data_ledger())
-        self.assertEqual(successors.data_ledgers()[1:], previous.data_ledgers())
+        self.assertEqual(successors_checkpoint.FROZEN_SUCCESSORS[1:], previous.FROZEN_SUCCESSORS)
+        self.assertEqual(successors_checkpoint.FROZEN_SUCCESSORS[0]['batch_id'], 'czlonka-curaua-20261025')
+        self.assertEqual(successors_checkpoint.data_ledgers(before=successors_checkpoint.CURAUA_BATCH_ID), [])
+        self.assertEqual(successors_checkpoint.data_ledgers()[0], history.data_ledger())
+        self.assertEqual(successors_checkpoint.data_ledgers()[1:], previous.data_ledgers())
         for relative, entry in history.file_ledger()['updates'].items():
-            current = (ROOT / relative).read_bytes()
+            current = ewurum.checkpoint_bytes(relative)
             self.assertEqual(sha256(current).hexdigest(), entry['sha256'])
             self.assertEqual(recover_file(current, entry), git('show', history.BASELINE + ':' + relative))
 
@@ -94,11 +96,11 @@ class CurauaAppendPreservationTests(unittest.TestCase):
         case = family.FamilyAdjacencyHistoryTests()
         verify = case.test_all_material_workflow_views_keep_their_exact_file_pins
         verify()
-        descriptors = successors.FROZEN_SUCCESSORS
+        descriptors = current_successors.FROZEN_SUCCESSORS
         for altered in (tuple(reversed(descriptors)), descriptors + descriptors[:1],
                         descriptors + ({'batch_id': 'unknown'},)):
             with self.subTest(descriptors=altered), \
-                    patch.object(successors, 'FROZEN_SUCCESSORS', altered), \
+                    patch.object(current_successors, 'FROZEN_SUCCESSORS', altered), \
                     self.assertRaises(AssertionError):
                 verify()
         original_read = Path.read_bytes
@@ -145,8 +147,11 @@ class CurauaCheckpointGuardTests(unittest.TestCase):
         manifest = history.load_frozen(ROOT, history.DIRECTORY + 'checkpoint-inputs.json', history.INPUTS_SHA256)
         relative = 'experimental/platform/query-service/catalog-tests'
         entry = manifest['inventories'][relative]
-        self.assertEqual(history.checkpoint_inventory(relative, entry['current']), entry['previous'])
-        for ids in (entry['current'][:-1], entry['current'] + ['unknown.test'], list(reversed(entry['current']))):
+        current_entry = ewurum.load_frozen(ROOT, ewurum.DIRECTORY + 'checkpoint-inputs.json', ewurum.INPUTS_SHA256)['inventories'][relative]
+        current_ids = current_entry['current']
+        self.assertEqual(ewurum.checkpoint_inventory(relative, current_ids), entry['current'])
+        self.assertEqual(history.checkpoint_inventory(relative, current_ids), entry['previous'])
+        for ids in (current_ids[:-1], current_ids + ['unknown.test'], list(reversed(current_ids))):
             with self.assertRaises(AssertionError):
                 history.checkpoint_inventory(relative, ids)
         original = Path.read_bytes
@@ -154,14 +159,14 @@ class CurauaCheckpointGuardTests(unittest.TestCase):
         def changed(path):
             return original(path) + (b' ' if path == target else b'')
         with patch.object(Path, 'read_bytes', changed), self.assertRaises(AssertionError):
-            history.checkpoint_inventory(relative, entry['current'])
+            history.checkpoint_inventory(relative, current_ids)
         original_glob = Path.glob
         def extra(path, pattern):
             values = list(original_glob(path, pattern))
             return iter(values + [path / 'test_unreviewed.py']) if path == ROOT / relative else iter(values)
         with patch.object(Path, 'glob', extra), self.assertRaises(AssertionError):
-            history.checkpoint_inventory(relative, entry['current'])
-        self.assertEqual(history.checkpoint_inventory(relative, entry['current']), entry['previous'])
+            history.checkpoint_inventory(relative, current_ids)
+        self.assertEqual(history.checkpoint_inventory(relative, current_ids), entry['previous'])
 
         import test_bruns_borosilicate_ci as bruns
         import test_tarasov_pna_bpf_ci as tarasov
@@ -172,7 +177,7 @@ class CurauaCheckpointGuardTests(unittest.TestCase):
         for module in (bruns, tarasov, kapoor):
             adapter = module.ci.declared_test_ids
             original_declared = module._original_declared_test_ids
-            self.assertEqual(adapter(relative), entry['current'])
+            self.assertEqual(adapter(relative), current_ids)
             restored = adapter(relative, regression_checkpoint=True)
             module.ci.validate_inventory('query', restored)
             self.assertIs(module.ci.declared_test_ids, adapter)
@@ -202,13 +207,13 @@ class CurauaCheckpointGuardTests(unittest.TestCase):
             with self.assertRaises(RuntimeError):
                 adapter(relative, predecessor=True, regression_checkpoint=True)
             self.assertIs(module.ci.declared_test_ids, adapter)
-            self.assertEqual(adapter(relative), entry['current'])
+            self.assertEqual(adapter(relative), current_ids)
         self.assertIs(successor.declared_test_ids, successor_declared)
         self.assertIs(successor.validate_inventory, successor_validate)
 
     def test_document_bridge_retains_false_count_and_unknown_prose_rejection(self):
         import material_bulk_preservation as bulk
-        raw = (ROOT / 'README.md').read_bytes()
+        raw = ewurum.require_checkpoint_bytes('README.md')
         normalized = bulk.truthful_readme(raw, bulk.load_ledger())
         ledger = history.load_frozen(ROOT, history.DIRECTORY + 'document-history.json', history.DOCUMENTS_SHA256)
         self.assertEqual(sha256(history.checkpoint_document('README.md', normalized)).hexdigest(),

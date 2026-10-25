@@ -90,7 +90,16 @@ CURAUA_DATA_SHA256 = "ce10a8972b4935677db755e25e8b00239513207b83c877de57ae63218f
 CURAUA_FILE_LEDGER = "tests/curaua_runtime/files-history.json"
 CURAUA_FILE_SHA256 = "74ab59414a6ca31f3bd41688e89dfd4db965b9effb6485e5b97685a8f95fe617"
 
+EWURUM_REACTIVE_BATCH_ID = "ewurum-reactive-20261025"
+EWURUM_REACTIVE_DATA_LEDGER = "tests/ewurum_reactive_runtime/data-history.json"
+EWURUM_REACTIVE_DATA_SHA256 = "1fc44b8bc6f121a3323b632a1cdce8f7511bdbd2421bd33768529f359976b513"
+EWURUM_REACTIVE_FILE_LEDGER = "tests/ewurum_reactive_runtime/files-history.json"
+EWURUM_REACTIVE_FILE_SHA256 = "989af8429f046bafd74d51f510b1b2c2e95f6103926f994b6b539b76a0c426fa"
+
 FROZEN_SUCCESSORS = (
+    {"batch_id": EWURUM_REACTIVE_BATCH_ID,
+     "data": (EWURUM_REACTIVE_DATA_LEDGER, EWURUM_REACTIVE_DATA_SHA256),
+     "files": (EWURUM_REACTIVE_FILE_LEDGER, EWURUM_REACTIVE_FILE_SHA256)},
     {"batch_id": CURAUA_BATCH_ID,
      "data": (CURAUA_DATA_LEDGER, CURAUA_DATA_SHA256), "files": (CURAUA_FILE_LEDGER, CURAUA_FILE_SHA256)},
     {"batch_id": TIAN_BATCH_ID,
@@ -169,12 +178,16 @@ def file_ledgers(*, before=None):
     from replay_checkout_history import code_ledger as checkout_code_ledger
     from ci_partition_history import code_ledger as partition_code_ledger
     from curaua_history import registry_ledger
-    result = [registry_ledger()] if any(item["batch_id"] == CURAUA_BATCH_ID for item in descriptors) else []
+    from ewurum_reactive_history import registry_ledger as ewurum_registry_ledger
+    result = [ewurum_registry_ledger()] if any(item["batch_id"] == EWURUM_REACTIVE_BATCH_ID for item in descriptors) else []
+    result += [load_frozen(ROOT, *descriptor["files"]) for descriptor in descriptors
+               if descriptor["batch_id"] == EWURUM_REACTIVE_BATCH_ID]
+    result += [registry_ledger()] if any(item["batch_id"] == CURAUA_BATCH_ID for item in descriptors) else []
     result += [load_frozen(ROOT, *descriptor["files"]) for descriptor in descriptors
               if descriptor["batch_id"] == CURAUA_BATCH_ID]
     result += [partition_code_ledger(), checkout_code_ledger()] + ([code_ledger()] if before is None else [])
     for descriptor in descriptors:
-        if descriptor["batch_id"] == CURAUA_BATCH_ID:
+        if descriptor["batch_id"] in {EWURUM_REACTIVE_BATCH_ID, CURAUA_BATCH_ID}:
             continue
         result.append(load_frozen(ROOT, *descriptor["files"]))
         if descriptor["batch_id"] == BRUNS_BATCH_ID:

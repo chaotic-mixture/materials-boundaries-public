@@ -627,10 +627,10 @@ Stale catalog versions and old computed stores remain rejected without migration
 
 ## Curaua 2021 nominal foam-composite increment
 
-The current experimental graph contains 1164 source-qualified identities,
+The preceding experimental graph contained 1164 source-qualified identities,
 1165 source-scoped states, 1176 reference properties, 31 grades and 128 source
 records. Primary category counts are natural 1010, metal 32, inorganic 59,
-polymer 30 and composite 33. The project view is 1188 = 1164 source-qualified
+polymer 30 and composite 33. The project view was 1188 = 1164 source-qualified
 identities + 24 unchanged reviewed computed buckets. Main remains 1081.
 
 Three study-qualified bleached Curaua/RPUF nominal formulations each contribute
@@ -651,3 +651,35 @@ separate step. Source PDF visual evidence remains producer evidence, with the
 official XML independently verified. CC BY 4.0 attribution and all scientific
 limitations remain explicit. This experimental integration is not a main merge
 or deployment.
+
+## Ewurum 2025 reactive PBS/lignin increment
+
+The current experimental graph contains **1168 source-qualified identities,
+1169 states, 1180 reference properties, 31 grades and 128 source records**.
+The exclusive source-qualified categories are natural 1010, metal 32, inorganic
+59, polymer 30 and composite 37. The project view is **1192 = 1168 + 24 unchanged
+reviewed computed composition records**; main remains at 1081.
+
+Four source-qualified DCP-reactive PBS/Indulin AT formulations, R10, R20, R30
+and R45, add one measured Young's-modulus record each: 751 +/- 40, 716 +/- 49,
+910 +/- 85 and 1256 +/- 162 MPa (source-reported means and rounded standard
+deviations). Lignin loadings are nominal 10, 20, 30 and 45 wt.% of total polymer
+mass. The denominator of the source's 0.25 wt.% DCP addition to PBS is unresolved;
+these are not analyzed final compositions or certified network structures.
+
+The source cites ASTM D1708-18 and ten tensile replicates at 1 mm/min.
+Independent standards compliance, tensile temperature/humidity, conditioning
+and numerical fit interval remain unverified or unreported. Contextual gel
+fractions concern separately hot-pressed material, not the injection-molded
+microtensile dog-bones. The original B-series, B0 and Indulin AT records remain
+unchanged; R0 is excluded. No additional polymer membership or constituent
+relationship is inferred for these four composite identities.
+
+The existing Ewurum source record is reused byte-for-byte under its reviewed
+CC BY 4.0 scope; there is no added source or grade. Data commit `e6d39e39184ab333045ae3ae2d001ab6b41bd53f` contains
+the exact append. The current 64-file query pin is `2f1865dda9cd6a66f21330afa1dad383750bffdf3e5455710d4e1936b44e0204`. Previous databases and
+saved reports retain their original versions and counts; they are not migrated
+or relabeled. Candidate evidence and the frozen pre-append history remain
+available in `experimental/material-batches/ewurum-reactive-20261025/`.
+No main merge, deployment, DOI registration or raw source asset publication is
+part of this experimental integration.

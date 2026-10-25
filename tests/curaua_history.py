@@ -8,6 +8,7 @@ from pathlib import Path
 from types import ModuleType
 
 from material_append_history import digest, encoded, load_frozen, recover_catalogs, recover_file
+import ewurum_reactive_history as ewurum
 
 ROOT = Path(__file__).resolve().parents[1]
 BASELINE = "fa170104195e573c868c57006ac77e7d866c28e9"
@@ -36,6 +37,11 @@ def checkpoint_catalogs(root=ROOT):
     ledger = data_ledger(root)
     raw = {key: (root / path).read_bytes() for key, path in CATALOG_PATHS.items()}
     hashes = {key: digest(value) for key, value in raw.items()}
+    # Keep the original complete Tian predecessor image valid. A later
+    # successor must first pass the separate whole-Ewurum graph checks.
+    if hashes != ledger["baseline_sha256"]:
+        raw = {key: encoded(value) for key, value in ewurum.checkpoint_catalogs(root).items()}
+        hashes = {key: digest(value) for key, value in raw.items()}
     if hashes not in (ledger["current_sha256"], ledger["baseline_sha256"]):
         raise AssertionError("Unrecognized complete Curaua catalog image")
     graph = {key: json.loads(value) for key, value in raw.items()}
@@ -52,6 +58,7 @@ def checkpoint_bytes(relative, raw=None, *, root=ROOT):
     relative = Path(relative).as_posix()
     if raw is None:
         raw = (root / relative).read_bytes()
+    raw = ewurum.checkpoint_bytes(relative, raw, root=root)
     keys = [key for key, path in CATALOG_PATHS.items() if relative == path]
     if keys:
         key = keys[0]
@@ -70,6 +77,7 @@ def checkpoint_bytes(relative, raw=None, *, root=ROOT):
 
 
 def checkpoint_document(relative, raw, *, root=ROOT):
+    raw = ewurum.checkpoint_document(relative, raw, root=root)
     ledger = load_frozen(root, DIRECTORY + "document-history.json", DOCUMENTS_SHA256)
     entry = ledger["updates"].get(relative)
     return _project(raw, entry) if entry is not None else raw
@@ -91,6 +99,7 @@ def checkpoint_new_file(relative, raw=None, *, root=ROOT):
     manifest = load_frozen(root, DIRECTORY + "checkpoint-inputs.json", INPUTS_SHA256)
     if raw is None:
         raw = (root / relative).read_bytes()
+    raw = ewurum.checkpoint_bytes(relative, raw, root=root)
     if relative not in manifest["added_files"] or digest(raw) != manifest["added_files"][relative]:
         raise AssertionError("Unknown or changed Curaua checkpoint addition")
     return raw
@@ -99,10 +108,9 @@ def checkpoint_new_file(relative, raw=None, *, root=ROOT):
 def checkpoint_inventory(relative, actual_ids, *, root=ROOT):
     manifest = load_frozen(root, DIRECTORY + "checkpoint-inputs.json", INPUTS_SHA256)
     entry = manifest["inventories"][relative]
+    actual_ids, actual_paths = ewurum.checkpoint_inventory_view(relative, actual_ids, root=root)
     if list(actual_ids) != entry["current"]:
         raise AssertionError("Unknown Curaua checkpoint test inventory")
-    actual_paths = sorted(path.relative_to(root).as_posix()
-                          for path in (root / relative).glob("test*.py"))
     if actual_paths != entry["current_paths"]:
         raise AssertionError("Unknown Curaua checkpoint test file inventory")
     for path in actual_paths:

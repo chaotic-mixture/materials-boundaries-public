@@ -4,6 +4,7 @@ from contextlib import redirect_stdout
 from copy import deepcopy
 from hashlib import sha256
 import io
+import importlib.util
 import json
 import os
 from pathlib import Path
@@ -16,7 +17,28 @@ from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'scripts'))
-import run_curaua_runtime_ci as ci
+_spec = importlib.util.spec_from_file_location('ewurum_curaua_checkpoint_ci', ROOT / 'scripts/run_curaua_runtime_ci.py')
+ci = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(ci)
+sys.path.insert(0, str(ROOT / 'tests'))
+import ewurum_reactive_history as ewurum
+
+
+class _CurauaCheckpointPath(type(ROOT)):
+    def read_bytes(self):
+        raw = super().read_bytes()
+        return ewurum.require_checkpoint_bytes(self.relative_to(ROOT).as_posix(), raw)
+
+
+_original_installation_payload = ci.installation_payload
+
+
+def _checkpoint_installation_payload(*args, **kwargs):
+    with patch.object(ci, 'ROOT', _CurauaCheckpointPath(ROOT)):
+        return _original_installation_payload(*args, **kwargs)
+
+
+ci.installation_payload = _checkpoint_installation_payload
 
 
 def git_bytes(path):
@@ -37,7 +59,7 @@ class CurauaCIContracts(unittest.TestCase):
             expected = []
             directory = ROOT / group['directory']
             for module in group['modules']:
-                for node in ast.parse((directory / (module + '.py')).read_bytes()).body:
+                for node in ast.parse(ewurum.require_checkpoint_bytes((directory / (module + '.py')).relative_to(ROOT).as_posix())).body:
                     if isinstance(node, ast.ClassDef):
                         expected.extend(module + '.' + node.name + '.' + child.name for child in node.body
                             if isinstance(child, (ast.FunctionDef, ast.AsyncFunctionDef)) and child.name.startswith('test'))
@@ -46,7 +68,13 @@ class CurauaCIContracts(unittest.TestCase):
                 self.assertEqual(len(expected), group['count'])
                 self.assertEqual(ci.fingerprint(expected), group['sha256'])
                 if group.get('selection') != 'explicit_whole_modules':
-                    self.assertEqual(group['modules'], sorted(p.stem for p in directory.glob('test*.py')))
+                    entry = ewurum.load_frozen(ROOT, ewurum.DIRECTORY + 'checkpoint-inputs.json', ewurum.INPUTS_SHA256)['inventories'].get(group['directory'])
+                    if entry is None:
+                        modules = sorted(p.stem for p in directory.glob('test*.py'))
+                    else:
+                        _, paths = ewurum.checkpoint_inventory_view(group['directory'], entry['current'])
+                        modules = sorted(Path(path).stem for path in paths)
+                    self.assertEqual(group['modules'], modules)
 
     def test_frozen_inventory_rejects_missing_extra_duplicate_substituted_ids(self):
         group = ci.load_manifest()['source_groups']['candidate']
@@ -199,7 +227,7 @@ class CurauaCIContracts(unittest.TestCase):
         before, current = {}, {}
         for key, filename in (('materials', 'materials.json'), ('properties', 'reference_properties.json'), ('sources', 'sources.json')):
             before[key] = json.loads(git_bytes('materials_boundaries/data/' + filename))
-            current[key] = json.loads((ROOT / 'materials_boundaries/data' / filename).read_bytes())
+            current[key] = json.loads(ewurum.require_checkpoint_bytes('materials_boundaries/data/' + filename))
         ci.validate_append(candidate, before, current)
         for mutation in ('previous_value', 'partial', 'order', 'metadata', 'duplicate_candidate'):
             changed, supplied = deepcopy(current), deepcopy(candidate)
@@ -246,7 +274,7 @@ class CurauaCIContracts(unittest.TestCase):
 
     def test_installed_required_ids_keep_all_previous_entries_and_exact_new_eight(self):
         path = 'experimental/platform/ci/required_test_ids.json'
-        old, new = json.loads(git_bytes(path)), json.loads((ROOT / path).read_bytes())
+        old, new = json.loads(git_bytes(path)), json.loads(ewurum.require_checkpoint_bytes(path))
         self.assertEqual(set(old), set(new))
         for key in old:
             with self.subTest(group=key):

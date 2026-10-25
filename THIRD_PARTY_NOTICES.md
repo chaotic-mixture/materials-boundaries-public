@@ -1259,3 +1259,31 @@ was observed for selected Table 2 and methods. Only attributed selected facts
 and original curation are distributed, without PDF, XML full text, screenshots
 or raw data. No endorsement, scientific replication, independent scientific
 review or engineering allowable is implied.
+
+## Ewurum 2025 reactive PBS/lignin R-series formulations
+
+Selected additional facts are transcribed and curated from Nnaemeka Ewurum and
+Armando G. McDonald, *Lignin Reinforcement in Polybutylene Succinate Copolymers*,
+Polymers 2025, 17, 194,
+[DOI 10.3390/polym17020194](https://doi.org/10.3390/polym17020194).
+Copyright 2025 by the authors; article-specific
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Luis Alves is the
+academic editor, not an author. The existing source record is reused unchanged.
+
+Changes are transcription and condition-aware curation of four Table 6
+Young's modulus means and standard deviations for the source-defined R10,
+R20, R30 and R45 reactive PBS/lignin formulations. Ten tensile replicates and
+source-cited ASTM D1708-18 (2018) are retained; independent standard compliance
+is unverified. No standard-derived test conditions are inferred. The unknown
+DCP denominator, final network chemistry, inconsistent PBS grade and unknown
+tensile environment/conditioning/fit window remain explicit. Contextual gel
+fractions concern separately hot-pressed material, not the tensile dog-bones.
+They are not additional catalog properties.
+
+The producer reused the retained official publisher PDF (3211541 bytes,
+SHA-256 `766d17f0e92c7e93cd57a3a5e97dddff0cb66a84bba6bf9118fbd0796d4c2e6f`).
+Independent source review corroborated official indexed text but did not
+independently verify current raw PDF bytes. Only selected attributed facts and
+original curation are included; no PDF, screenshots, full-text copy or raw
+experimental assets are distributed. No endorsement, scientific replication,
+independent scientific approval or engineering allowable is implied.

@@ -14,8 +14,8 @@ from nomad_review_boundary import BASELINE_COMMIT, LEGACY, SOURCES
 from test_nomad_batch import fixture
 
 BOUNDARY = {'provider_material_ids': [], 'provider_entry_ids': [], 'sha256': 'test-boundary',
-            'baseline_commit': BASELINE_COMMIT, 'formal_project_total': 1188,
-            'formal_legacy_count': 1164, 'formal_computed_composition_count': 24,
+            'baseline_commit': BASELINE_COMMIT, 'formal_project_total': 1192,
+            'formal_legacy_count': 1168, 'formal_computed_composition_count': 24,
             'excluded_example_count': 62, 'legacy_example_count': 7,
             'source_sha256': {LEGACY[0]: LEGACY[1],
                               **{path: expected for path, expected, _ in SOURCES.values()}}}
@@ -85,7 +85,7 @@ class IncrementalTests(unittest.TestCase):
         self.assertEqual(third['input_changes'][0]['change'], 'changed')
         self.assertEqual(third['candidate_changes'][0]['change'], 'changed')
         self.assertEqual(third['admitted_delta'], 0)
-        self.assertEqual(third['formal_project_total'], 1188)
+        self.assertEqual(third['formal_project_total'], 1192)
 
     def test_crash_after_archive_response_is_reused(self):
         self.init()
@@ -612,9 +612,9 @@ class IncrementalTests(unittest.TestCase):
         from nomad_review_boundary import load_review_boundary
 
         current = load_review_boundary()
-        self.assertEqual(current['baseline_commit'], '2bd55831513abcf60161ab9de7fb78ea8f844586')
-        self.assertEqual(current['formal_legacy_count'], 1164)
-        self.assertEqual(current['formal_project_total'], 1188)
+        self.assertEqual(current['baseline_commit'], 'e6d39e39184ab333045ae3ae2d001ab6b41bd53f')
+        self.assertEqual(current['formal_legacy_count'], 1168)
+        self.assertEqual(current['formal_project_total'], 1192)
         self.init()
         self.assertEqual(self.first_cycle()['status'], 'complete')
         self.now += 100

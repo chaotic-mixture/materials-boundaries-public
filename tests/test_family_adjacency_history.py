@@ -14,6 +14,7 @@ from unittest.mock import patch
 import material_append_successors as successors
 from material_append_history import load_frozen, recover_file
 from curaua_history import checkpoint_registry, require_checkpoint_bytes
+import ewurum_reactive_history as ewurum
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -56,10 +57,15 @@ class FamilyAdjacencyHistoryTests(unittest.TestCase):
     def test_all_material_workflow_views_keep_their_exact_file_pins(self):
         current = (ROOT / WORKFLOW).read_bytes()
         historical = checkpoint_registry()
+        current_checkpoint = ewurum.checkpoint_registry()
+        latest = {'batch_id': successors.EWURUM_REACTIVE_BATCH_ID,
+                  'data': (successors.EWURUM_REACTIVE_DATA_LEDGER, successors.EWURUM_REACTIVE_DATA_SHA256),
+                  'files': (successors.EWURUM_REACTIVE_FILE_LEDGER, successors.EWURUM_REACTIVE_FILE_SHA256)}
+        self.assertEqual(successors.FROZEN_SUCCESSORS, (latest,) + current_checkpoint.FROZEN_SUCCESSORS)
         curaua = {'batch_id': successors.CURAUA_BATCH_ID,
                   'data': (successors.CURAUA_DATA_LEDGER, successors.CURAUA_DATA_SHA256),
                   'files': (successors.CURAUA_FILE_LEDGER, successors.CURAUA_FILE_SHA256)}
-        self.assertEqual(successors.FROZEN_SUCCESSORS, (curaua,) + historical.FROZEN_SUCCESSORS)
+        self.assertEqual(current_checkpoint.FROZEN_SUCCESSORS, (curaua,) + historical.FROZEN_SUCCESSORS)
         # Curaua leaves this workflow unchanged; it has no material-edit entry.
         # Verify that exact boundary separately, then retain every older pin.
         self.assertEqual(current, require_checkpoint_bytes(WORKFLOW, current))

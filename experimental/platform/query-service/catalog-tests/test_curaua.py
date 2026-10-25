@@ -46,9 +46,9 @@ class CurauaQuery(unittest.TestCase):
 
     def test_three_nominal_composites_keep_density_cv_and_age_qualifications(self):
         self.assertEqual(self.status['counts'], {
-            'local_catalog_unique_material_count': 1164,
-            'local_material_state_count': 1165,
-            'local_reference_property_count': 1176})
+            'local_catalog_unique_material_count': 1168,
+            'local_material_state_count': 1169,
+            'local_reference_property_count': 1180})
         for key, label, loading, density, cv, group in FACTS:
             with self.subTest(formulation=key):
                 identity_id = 'mat_czlonka2021_curaua_cf' + key
@@ -144,11 +144,11 @@ class CurauaQuery(unittest.TestCase):
         status = self.client.get('/api/catalog/project/status').json()
         self.assertTrue(status['enabled'])
         self.assertEqual(status['counts'], {
-            'formal_project_admission_count': 1188,
-            'legacy_source_qualified_identity_count': 1164,
+            'formal_project_admission_count': 1192,
+            'legacy_source_qualified_identity_count': 1168,
             'reviewed_computed_composition_count': 24,
             'categories': {'metal': 44, 'inorganic': 71, 'polymer': 30,
-                           'composite': 33, 'natural': 1010}})
+                           'composite': 37, 'natural': 1010}})
         data = {'version': status['version'], 'query': 'czlonka2021',
                 'partition': 'legacy-source-qualified', 'limit': 100}
         selected = self.client.post('/api/catalog/project/list', json=data)
@@ -187,9 +187,9 @@ class CurauaQuery(unittest.TestCase):
     def test_composite_category_does_not_infer_constituent_membership(self):
         status = self.client.get('/api/catalog/relationships/status').json()
         pin = {'version': status['catalog_version'], 'relationship_version': status['relationship_version']}
-        self.assertEqual(status['unique_identity_count'], 1164)
-        self.assertEqual(status['membership_assertion_count'], 1169)
-        self.assertEqual(status['coverage']['composite']['supported'], 33)
+        self.assertEqual(status['unique_identity_count'], 1168)
+        self.assertEqual(status['membership_assertion_count'], 1173)
+        self.assertEqual(status['coverage']['composite']['supported'], 37)
         self.assertEqual(status['coverage']['natural']['supported'], 1010)
         # The reviewed overlay also supports the existing PBS/lignin composite.
         self.assertEqual(status['coverage']['polymer']['supported'], 31)
