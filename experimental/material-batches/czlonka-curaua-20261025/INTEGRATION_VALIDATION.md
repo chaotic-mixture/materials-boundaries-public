@@ -132,3 +132,69 @@ Hosted CI, other Python/OS combinations, the remaining root IDs, new real
 17-layer performance cases and live-provider checks remain unrun. No new
 performance factor is claimed. The original full core partition workflow must
 complete after any separately reviewed experimental publication.
+
+
+## Kapoor historical inventory correction
+
+The published parent `434b7875dae88f95f6c5c279a29c4f562ec57a08` passed both Curaua-specific hosted jobs: each
+platform completed 155 source and 569 installed methods, zero failures,
+errors or skips, plus the independent CLI/API smoke. These jobs did not run
+the separate 70-method replay profile.
+
+The unchanged general workflow exposed a historical test input boundary bug.
+Both Python 3.11 and 3.12 partition 0 jobs ran all 459 root methods: 439 passed,
+18 policy skips, one root error and one invalid root outcome. The latter
+contains a query subtest error and a root error, so the three unittest error
+records belong to two root methods. The original failed logs, receipts and
+journals are retained and hashed in the accompanying JSON. The other six
+Ubuntu partitions and two Windows general jobs remain under observation at
+this report; they are not recorded as passing here.
+
+The Kapoor regression oracle received 241 current query IDs but validated its
+Tian successor's frozen 233-ID boundary before its own 226-ID historical
+boundary. The correction applies the existing exact Curaua checkpoint only
+to the private Kapoor test runner's recursive current-ID read. It verifies
+all current IDs, the exact file list and pinned bytes before projection. The
+original Tian fingerprint, Kapoor historical checks, all 30 Kapoor methods
+and 131 assert calls remain unchanged. Ordinary and predecessor reads and
+the shared Tian module are unchanged; context cleanup restores the local
+function on success and exceptions.
+
+Tested implementation: `4031144bfa8679de7d3d2eb2e35373d4911ec098`; tree `ec3539837e3d903a3ccd35ad8f40d154fb91e2b8`. The eight-file
+change adds one finite recovery entry for the exact original Kapoor test
+image, preserves all 48 prior entries, and updates dependent hashes plus
+one approved path. All 122 fixtures, material catalogs, workflows and frozen
+1887/70/155/569 method inventories remain unchanged.
+
+Native Windows CPython 3.11.0 validation used bounded fresh processes:
+
+| Stage | Actual methods passed | Elapsed seconds |
+| --- | ---: | ---: |
+| Full Kapoor module, Tian imported first | 30 | 64.016 |
+| Reverse import order and nested guards | 5 | 25.016 |
+| Curaua source groups | 155 | 270.093 |
+| Replay regression profile | 70 | 56.015 |
+| Scope, inventory, catalog checks and metadata | 5 metadata methods | 17.000 |
+
+Every final stage had zero failures, errors and skips and an identical clean
+checkout before and after. This is segmented execution, not an uninterrupted
+full suite. Overlapping methods are not additional coverage: 265 executions
+represent 256 distinct methods, including 96 of 1887 root IDs; 1791 root IDs
+were not executed locally for this repair. The original two-method failure
+reproduction and the earlier three-method working-patch check are retained
+separately and do not inflate final-commit coverage.
+
+The nested historical call rejects missing, extra, duplicate, substituted or
+reordered IDs, changed known bytes and an extra empty test file. Tests also
+cover conflicting historical modes, exception restoration and unchanged
+shared successor functions. Scope, exact inventories and catalog validation
+passed. All 319 packaging/core-smoke inputs match the earlier tested bytes;
+the 569 installed methods and full wheel smoke were not rerun for this
+test-only repair. Earlier local and hosted results remain evidence for their
+respective commits, not new repair executions. No hosted repair result exists.
+
+No material growth accompanies this correction: the experiment remains
+1188 = 1164 source-qualified identities + 24 reviewed computed records; main
+remains 1081. The source's unknown CV units and density measurement age, and
+the independent PDF access 403, remain unchanged limitations. The correction
+is locally committed for independent review and has not been pushed.
