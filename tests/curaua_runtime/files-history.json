@@ -999,6 +999,22 @@
           "after": "        required = json.loads(require_checkpoint_bytes(required_path))\n"
         }
       ]
+    },
+    "tests/test_kapoor_phosphate_ci.py": {
+      "previous_sha256": "7dad3cea0a60e6d65ebba1a0c7f63dbdd33b0638031fcd0d91fbdf1d89e83979",
+      "sha256": "02043289af2092e3f6ac0ea3dbea7c09364fd778e8996010d5c275793e98cd79",
+      "edits": [
+        {
+          "offset": 294,
+          "before": "",
+          "after": "from curaua_history import checkpoint_inventory\n"
+        },
+        {
+          "offset": 523,
+          "before": "",
+          "after": "\n\n_original_declared_test_ids = ci.declared_test_ids\n\n\ndef _current_checkpoint_ids(relative):\n    return checkpoint_inventory(relative, _original_declared_test_ids(relative))\n\n\ndef _checkpoint_declared_test_ids(relative, *, predecessor=False, regression_checkpoint=False):\n    if not regression_checkpoint:\n        return _original_declared_test_ids(relative, predecessor=predecessor)\n    # The Kapoor oracle validates its successor's historical inventory. Verify\n    # every current ID and file image before restoring that exact boundary.\n    # Only this privately loaded runner's recursive read is projected.\n    with patch.object(ci, 'declared_test_ids', _current_checkpoint_ids):\n        return _original_declared_test_ids(relative, predecessor=predecessor,\n                                          regression_checkpoint=True)\n\n\nci.declared_test_ids = _checkpoint_declared_test_ids\n"
+        }
+      ]
     }
   }
 }
