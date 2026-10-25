@@ -14,10 +14,10 @@ ROOT = Path(__file__).resolve().parents[1]
 BASELINE = "29a33009d763c0ef52943c1bce28e24c436c74ac"
 DIRECTORY = "tests/ewurum_reactive_runtime/"
 DATA_SHA256 = "1fc44b8bc6f121a3323b632a1cdce8f7511bdbd2421bd33768529f359976b513"
-FILES_SHA256 = "2f7a1b0b71f4c35411bab466398df1dc3abfcef8bf74b14b6cff33717e032857"
-REGISTRY_SHA256 = "2274c5f525ea74a11cfa461ef42f04bf5366420bc27e05c21a6f3761b08c7ec7"
+FILES_SHA256 = "12997fbad7e6eae8f278be917da32341663f4052605ed939e2341ce199799c9f"
+REGISTRY_SHA256 = "a3482d09ed5c50285541389fee406d01b55f965645c0231773fba96d2c9da9ed"
 DOCUMENTS_SHA256 = "c58d7dd5a777c62d98a2ebf3d3c5947436dac4414e4f2051c0df437402f2124c"
-INPUTS_SHA256 = "dcf64bcc29744a1d371662a424a2ba6af9f8399821d428f4b4acee0bdca752d9"
+INPUTS_SHA256 = "8cb626a05f86a2cde558c3a6a036224969e772c36294b1191ce72cc02167b6bb"
 CATALOG_PATHS = {
     "materials": "materials_boundaries/data/materials.json",
     "properties": "materials_boundaries/data/reference_properties.json",
