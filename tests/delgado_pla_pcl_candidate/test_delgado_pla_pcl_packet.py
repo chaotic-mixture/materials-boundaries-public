@@ -453,7 +453,7 @@ class DelgadoPlaPclCandidatePacketTests(unittest.TestCase):
                 self.assert_invalid_property(change)
 
     def test_alias_designation_and_cloned_identity_cannot_create_growth(self):
-        for mutation in ('alias', 'designation', 'clone'):
+        for mutation in ('alias', 'designation', 'clone', 'fresh_clone'):
             spec = deepcopy(self.spec)
             if mutation == 'alias':
                 identity = deepcopy(self.identities[1])
@@ -463,10 +463,44 @@ class DelgadoPlaPclCandidatePacketTests(unittest.TestCase):
                 state = deepcopy(self.states[1])
                 state['source_designation'] = 'B95/5'
                 spec['formulations'][1]['states'][0]['record'] = explicit(spec, 'state', state)
-            else:
+            elif mutation == 'clone':
                 spec['formulations'].append(deepcopy(spec['formulations'][0]))
-            with self.subTest(mutation=mutation), self.assertRaises(ValueError):
-                compile_spec(spec, BASELINE)
+            else:
+                # New IDs, labels and reciprocal links bypass duplicate-ID and
+                # alias checks while retaining the exact factual identity.
+                identity = deepcopy(self.identities[0])
+                state, prop = deepcopy(self.states[0]), deepcopy(self.properties[0])
+                identity['id'] += '_synthetic_clone'
+                identity['name'] = 'Synthetic renamed clone identity'
+                identity['names'] = {language: identity['name'] for language in identity['names']}
+                identity['aliases'] = []
+                state['id'] += '_synthetic_clone'
+                state['identity_id'] = identity['id']
+                state['name'] = 'Synthetic renamed clone state'
+                state['names'] = {language: state['name'] for language in state['names']}
+                state['aliases'] = []
+                state['source_designation'] = 'SYNTHETIC-CLONE'
+                prop['id'] += '_synthetic_clone'
+                prop['material_state_id'] = state['id']
+                state['property_ids'] = [prop['id']]
+                spec['formulations'].append({
+                    'identity': explicit(spec, 'identity', identity), 'grades': [],
+                    'states': [{
+                        'record': explicit(spec, 'state', state),
+                        'properties': [explicit(spec, 'property', prop)],
+                    }],
+                })
+                crosswalk = deepcopy(spec['identity_crosswalk'][0])
+                crosswalk['identity_id'] = identity['id']
+                crosswalk['source_designations'] = [state['source_designation']]
+                spec['identity_crosswalk'].append(crosswalk)
+            with self.subTest(mutation=mutation):
+                if mutation == 'fresh_clone':
+                    with self.assertRaisesRegex(ValueError, 'duplicate structural identity'):
+                        compile_spec(spec, BASELINE)
+                else:
+                    with self.assertRaises(ValueError):
+                        compile_spec(spec, BASELINE)
 
     def test_wrong_identity_property_or_crosswalk_join_is_rejected(self):
         for mutation in ('identity', 'property', 'crosswalk'):
@@ -553,6 +587,9 @@ class DelgadoPlaPclCandidatePacketTests(unittest.TestCase):
             elif mutation == 'source':
                 packet['catalogs']['sources']['records'][0]['authors'].reverse()
             elif mutation == 'rehash_source':
+                # Rehashing only the input leaves the prepared source stale.
+                # This tests exact replay consistency, not scientific detection
+                # of a fully coherent reauthored source and regenerated packet.
                 descriptor = packet['input']['source_records'][0]
                 descriptor['record']['authors'].reverse()
                 descriptor['sha256'] = record_sha256(descriptor['record'])
