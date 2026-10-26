@@ -1,0 +1,122 @@
+{
+  "schema_version": "materials-boundaries-task-envelope/0.1-draft",
+  "status": "draft",
+  "task_id": "REPLACE_BATCH_AND_ONE_STAGE",
+  "stage": "candidate",
+  "objective": "REPLACE_WITH_ONE_SUPPORTED_CONTRACT_AND_EXPLICIT_SELECTED_RECORDS; this is not an execution request.",
+  "repository": {
+    "url": "https://github.com/chaotic-mixture/materials-boundaries-public",
+    "baseline_commit": null,
+    "baseline_tree": null,
+    "baseline_catalog_sha256": {
+      "materials": null,
+      "reference_properties": null,
+      "sources": null
+    },
+    "checkout_commit": null,
+    "checkout_tree": null
+  },
+  "authority": {
+    "instruction_reference": null,
+    "allowed_actions": [],
+    "network_allowed": false,
+    "credential_actions_allowed": false,
+    "publication_target": null,
+    "resume_authorization_reference": null,
+    "required_ci": []
+  },
+  "selection": {
+    "source_ids": [],
+    "record_ids": [],
+    "existing_contract_paths": [
+      "docs/MATERIAL_REFERENCE_CATALOG.md",
+      "docs/FORMULATION_PACKET_PREPARATION.md"
+    ],
+    "proposed_delta": {
+      "identities": 0,
+      "grades": 0,
+      "states": 0,
+      "properties": 0,
+      "sources": 0
+    },
+    "actual_admitted_delta_at_start": {
+      "identities": 0,
+      "grades": 0,
+      "states": 0,
+      "properties": 0,
+      "sources": 0
+    }
+  },
+  "inputs": [
+    {
+      "path": "REPLACE_APPROVED_SOURCE_EVIDENCE_REFERENCE",
+      "raw_sha256": null,
+      "purpose": "Selected source facts and identity/rights decisions; not a full paper dump",
+      "consumer_path": null,
+      "required": true,
+      "role": "source_evidence"
+    }
+  ],
+  "read_paths": [
+    "CONTRIBUTING.md",
+    "docs/MATERIAL_REFERENCE_CATALOG.md",
+    "docs/FORMULATION_PACKET_PREPARATION.md",
+    "schemas/materials.schema.json",
+    "schemas/reference_properties.schema.json",
+    "schemas/sources.schema.json"
+  ],
+  "write_paths": [],
+  "checks": [
+    {
+      "id": "candidate_compile",
+      "verified_command_source": "docs/FORMULATION_PACKET_PREPARATION.md at 437950c414ea340eda340babe7b63dee9fcee535",
+      "execution_authorized": false,
+      "expected_inventory_path": null,
+      "expected_inventory_sha256": null,
+      "required_for_gate": true,
+      "kind": "script",
+      "inventory_json_pointer": null,
+      "argv": [
+        "python",
+        "scripts/prepare_formulation_packet.py",
+        "--spec",
+        "experimental/material-batches/REPLACE_BATCH/packet-spec.json",
+        "--baseline-dir",
+        "REPLACE_PINNED_BASELINE_DATA",
+        "--output",
+        "experimental/material-batches/REPLACE_BATCH/prepared-packet.json"
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "path": "REPLACE_TASK_OUTPUT_DIR/result.json",
+      "purpose": "Outcome receipt with actual output hashes, all attempts and next gate"
+    }
+  ],
+  "independent_review": {
+    "reviewer_assignment": null,
+    "reviewer_is_not_author": null,
+    "approval_receipts": []
+  },
+  "limits": {
+    "max_changed_paths": 0,
+    "max_repair_iterations": 1,
+    "wall_time_minutes_before_escalation": 30
+  },
+  "stop_boundary": "Candidate handoff only. No runtime edits, new material selection, next-stage task, publication or scheduling.",
+  "unresolved": [
+    "Current seven-PLA/PCL stage is not closed by this template.",
+    "Coordinator must issue a new explicitly authorized task after the pause boundary.",
+    "Replace every REPLACE_ marker, fill hashes, select exact output/check inventories and independent reviewer, and approve concrete write paths.",
+    "Zero proposed deltas and max_changed_paths are placeholders, not scientific/count conclusions."
+  ],
+  "assignee_id": null,
+  "artifact_author_id": null,
+  "execution": {
+    "cwd": null,
+    "python_executable": null,
+    "dependencies": "preinstalled-only",
+    "python_prefix": null
+  }
+}

@@ -1,0 +1,329 @@
+{
+  "scope": "Synthetic local template cases only; no Materials Boundaries tests, task commands, network or publication executed",
+  "cases": 46,
+  "passed": 46,
+  "failed": 0,
+  "outcomes": [
+    {
+      "case": "ready_candidate_nonexecuting",
+      "expected_dispatch_ready": true,
+      "observed_dispatch_ready": true,
+      "passed": true,
+      "detail": "Accidental-error guard only, not a sandbox or security validator. Actual current coordinator authorization and argv review are still required."
+    },
+    {
+      "case": "deny_draft",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true,
+      "detail": "Not dispatchable: status must be ready, never draft or archival"
+    },
+    {
+      "case": "deny_archival",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true,
+      "detail": "Not dispatchable: status must be ready, never draft or archival"
+    },
+    {
+      "case": "placeholder_output",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true,
+      "detail": "{'schema_version': 'materials-boundaries-task-envelope/0.1-draft', 'status': 'ready', 'task_id': 'synthetic-preflight', 'stage': 'candidate', 'objective': 'Inspect synthetic fixture only', 'repository': {'url': 'https://github.com/chaotic-mixture/materials-boundaries-public', 'baseline_commit': '807d0ec34b5501bb087809258b4675f66e8b835e', 'baseline_tree': 'c10fb86732ada4421a031959498d7cd38db11ab3', 'baseline_catalog_sha256': {'materials': 'ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356', 'reference_properties': 'ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356', 'sources': 'ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356'}, 'checkout_commit': '807d0ec34b5501bb087809258b4675f66e8b835e', 'checkout_tree': 'c10fb86732ada4421a031959498d7cd38db11ab3'}, 'authority': {'instruction_reference': 'Synthetic case only, not real user authority', 'allowed_actions': ['read_inputs', 'write_candidate', 'run_approved_checks'], 'network_allowed': False, 'credential_actions_allowed': False, 'publication_target': None, 'resume_authorization_reference': 'Synthetic coordinator fixture', 'required_ci': []}, 'selection': {'source_ids': ['source_one'], 'record_ids': ['record_one'], 'existing_contract_paths': ['guide.md'], 'proposed_delta': {'identities': 0, 'grades': 0, 'states': 0, 'properties': 0, 'sources': 0}, 'actual_admitted_delta_at_start': {'identities': 0, 'grades': 0, 'states': 0, 'properties': 0, 'sources': 0}}, 'inputs': [{'path': 'selected-evidence.json', 'raw_sha256': '729cd4435656683931ea719191f6786bbca51754bd7e573f413a655d71fdde49', 'purpose': 'Synthetic input', 'consumer_path': 'SYNTHETIC_WORKSPACE/fixture/selected-evidence.json', 'required': True, 'role': 'source_evidence'}], 'read_paths': ['guide.md'], 'write_paths': ['outputs/result.json'], 'checks': [{'id': 'script_check', 'argv': ['PYTHON_EXECUTABLE', 'scripts/check_fixture.py'], 'verified_command_source': 'guide.md', 'execution_authorized': True, 'kind': 'script', 'expected_inventory_path': None, 'expected_inventory_sha256': None, 'inventory_json_pointer': None, 'required_for_gate': True}], 'outputs': [{'path': 'REPLACE_OUTPUT.json', 'purpose': 'Synthetic result'}], 'independent_review': {'reviewer_assignment': 'reviewer-one', 'reviewer_is_not_author': True, 'approval_receipts': []}, 'limits': {'max_changed_paths': 1, 'max_repair_iterations': 1, 'wall_time_minutes_before_escalation': 30}, 'stop_boundary': 'Return one candidate and stop', 'unresolved': [], 'assignee_id': 'worker-one', 'artifact_author_id': 'author-one', 'execution': {'cwd': 'SYNTHETIC_WORKSPACE/fixture', 'python_executable': 'PYTHON_EXECUTABLE', 'dependencies': 'preinstalled-only', 'python_prefix': '/opt/codex/runtimes/codex-primary-runtime/dependencies/python'}} is not valid under any of the given schemas"
+    },
+    {
+      "case": "placeholder_command",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true,
+      "detail": "{'schema_version': 'materials-boundaries-task-envelope/0.1-draft', 'status': 'ready', 'task_id': 'synthetic-preflight', 'stage': 'candidate', 'objective': 'Inspect synthetic fixture only', 'repository': {'url': 'https://github.com/chaotic-mixture/materials-boundaries-public', 'baseline_commit': '807d0ec34b5501bb087809258b4675f66e8b835e', 'baseline_tree': 'c10fb86732ada4421a031959498d7cd38db11ab3', 'baseline_catalog_sha256': {'materials': 'ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356', 'reference_properties': 'ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356', 'sources': 'ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356'}, 'checkout_commit': '807d0ec34b5501bb087809258b4675f66e8b835e', 'checkout_tree': 'c10fb86732ada4421a031959498d7cd38db11ab3'}, 'authority': {'instruction_reference': 'Synthetic case only, not real user authority', 'allowed_actions': ['read_inputs', 'write_candidate', 'run_approved_checks'], 'network_allowed': False, 'credential_actions_allowed': False, 'publication_target': None, 'resume_authorization_reference': 'Synthetic coordinator fixture', 'required_ci': []}, 'selection': {'source_ids': ['source_one'], 'record_ids': ['record_one'], 'existing_contract_paths': ['guide.md'], 'proposed_delta': {'identities': 0, 'grades': 0, 'states': 0, 'properties': 0, 'sources': 0}, 'actual_admitted_delta_at_start': {'identities': 0, 'grades': 0, 'states': 0, 'properties': 0, 'sources': 0}}, 'inputs': [{'path': 'selected-evidence.json', 'raw_sha256': '729cd4435656683931ea719191f6786bbca51754bd7e573f413a655d71fdde49', 'purpose': 'Synthetic input', 'consumer_path': 'SYNTHETIC_WORKSPACE/fixture/selected-evidence.json', 'required': True, 'role': 'source_evidence'}], 'read_paths': ['guide.md'], 'write_paths': ['outputs/result.json'], 'checks': [{'id': 'script_check', 'argv': ['PYTHON_EXECUTABLE', 'REPLACE_SCRIPT.py'], 'verified_command_source': 'guide.md', 'execution_authorized': True, 'kind': 'script', 'expected_inventory_path': None, 'expected_inventory_sha256': None, 'inventory_json_pointer': None, 'required_for_gate': True}], 'outputs': [{'path': 'outputs/result.json', 'purpose': 'Synthetic result'}], 'independent_review': {'reviewer_assignment': 'reviewer-one', 'reviewer_is_not_author': True, 'approval_receipts': []}, 'limits': {'max_changed_paths': 1, 'max_repair_iterations': 1, 'wall_time_minutes_before_escalation': 30}, 'stop_boundary': 'Return one candidate and stop', 'unresolved': [], 'assignee_id': 'worker-one', 'artifact_author_id': 'author-one', 'execution': {'cwd': 'SYNTHETIC_WORKSPACE/fixture', 'python_executable': 'PYTHON_EXECUTABLE', 'dependencies': 'preinstalled-only', 'python_prefix': '/opt/codex/runtimes/codex-primary-runtime/dependencies/python'}} is not valid under any of the given schemas"
+    },
+    {
+      "case": "empty_sources",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true,
+      "detail": "[] should be non-empty"
+    },
+    {
+      "case": "duplicate_record_ids",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true,
+      "detail": "['one', 'one'] has non-unique elements"
+    },
+    {
+      "case": "wildcard_write",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true,
+      "detail": "'scripts/**' does not match '^(?!/)(?!.*(?:^|/)\\\\.{1,2}(?:/|$))[A-Za-z0-9_.@+-]+(?:/[A-Za-z0-9_.@+-]+)*$'"
+    },
+    {
+      "case": "traversal_write",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true,
+      "detail": "'../../outside' does not match '^(?!/)(?!.*(?:^|/)\\\\.{1,2}(?:/|$))[A-Za-z0-9_.@+-]+(?:/[A-Za-z0-9_.@+-]+)*$'"
+    },
+    {
+      "case": "uncovered_output",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true,
+      "detail": "Outputs must be unique and covered by exact write paths"
+    },
+    {
+      "case": "all_inputs_optional",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true,
+      "detail": "[{'path': 'selected-evidence.json', 'raw_sha256': None, 'purpose': 'Synthetic input', 'consumer_path': None, 'required': False, 'role': 'source_evidence'}] does not contain items matching the given schema"
+    },
+    {
+      "case": "input_hash_mismatch",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true,
+      "detail": "Required input hash mismatch: SYNTHETIC_WORKSPACE/fixture/selected-evidence.json"
+    },
+    {
+      "case": "missing_consumer_file",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true,
+      "detail": "Required input missing: SYNTHETIC_WORKSPACE/missing"
+    },
+    {
+      "case": "input_escape",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true,
+      "detail": "Path escapes workspace: /etc/passwd"
+    },
+    {
+      "case": "wrong_interpreter",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true,
+      "detail": "Run preflight with the exact declared interpreter invocation path, without resolving venv symlinks"
+    },
+    {
+      "case": "resolved_interpreter_alias_rejected",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true,
+      "detail": "Run preflight with the exact declared interpreter invocation path, without resolving venv symlinks"
+    },
+    {
+      "case": "wrong_python_prefix",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true,
+      "detail": "Declared Python environment prefix differs from the running environment"
+    },
+    {
+      "case": "unapproved_required_check",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true,
+      "detail": "True was expected"
+    },
+    {
+      "case": "missing_resume_reference",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true,
+      "detail": "None is not of type 'string'"
+    },
+    {
+      "case": "next_stage_action",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true,
+      "detail": "Action is outside selected stage"
+    },
+    {
+      "case": "credential_action",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true,
+      "detail": "False was expected"
+    },
+    {
+      "case": "network_candidate",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true,
+      "detail": "Network is outside this bounded lane"
+    },
+    {
+      "case": "unresolved_decision",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true,
+      "detail": "['Identity unresolved'] is expected to be empty"
+    },
+    {
+      "case": "wrong_baseline_hash",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true,
+      "detail": "Baseline bytes mismatch: materials"
+    },
+    {
+      "case": "runtime_missing_approval",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true,
+      "detail": "[] does not contain items matching the given schema"
+    },
+    {
+      "case": "ready_runtime_with_independent_receipt",
+      "expected_dispatch_ready": true,
+      "observed_dispatch_ready": true,
+      "passed": true,
+      "detail": "Accidental-error guard only, not a sandbox or security validator. Actual current coordinator authorization and argv review are still required."
+    },
+    {
+      "case": "runtime_self_approval",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true,
+      "detail": "Approval absent or self-reviewed"
+    },
+    {
+      "case": "runtime_untyped_source_substitution",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true,
+      "detail": "Exact candidate_packet input is required"
+    },
+    {
+      "case": "runtime_wrong_subject",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true,
+      "detail": "Approval does not bind the exact typed gate subject"
+    },
+    {
+      "case": "ready_publication_preconditions_only",
+      "expected_dispatch_ready": true,
+      "observed_dispatch_ready": true,
+      "passed": true,
+      "detail": "Accidental-error guard only, not a sandbox or security validator. Actual current coordinator authorization and argv review are still required."
+    },
+    {
+      "case": "publication_null_target",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true,
+      "detail": "None is not of type 'string'"
+    },
+    {
+      "case": "publication_main_target",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true,
+      "detail": "'refs/heads/main' does not match '^refs/heads/(experiment|experimental)/.+$'"
+    },
+    {
+      "case": "publication_missing_implementation_review",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true,
+      "detail": "[{'stage': 'candidate', 'path': 'approvals/candidate.json', 'raw_sha256': '4597abffa059b74f5ebfc42df9ff25a7f6b3e1d98b464b234aa8a04a14f0b400', 'subject_sha256': '89a7663a67a64abbf0427bc9e00bee8c9f8722f6faa632da9f5d78a3cb2772b4'}] does not contain items matching the given schema"
+    },
+    {
+      "case": "implementation_subject_author_mismatch",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true,
+      "detail": "Implementation subject image/author mismatch"
+    },
+    {
+      "case": "publication_unknown_ci",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true,
+      "detail": "[] should be non-empty"
+    },
+    {
+      "case": "ready_exact_unittest_inventory_without_execution",
+      "expected_dispatch_ready": true,
+      "observed_dispatch_ready": true,
+      "passed": true,
+      "detail": "Accidental-error guard only, not a sandbox or security validator. Actual current coordinator authorization and argv review are still required."
+    },
+    {
+      "case": "false_unittest_pip_install",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true,
+      "detail": "Unittest kind/entrypoint mismatch"
+    },
+    {
+      "case": "false_build_script_tokens",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true,
+      "detail": "Build kind/entrypoint or preinstalled-dependency flags mismatch"
+    },
+    {
+      "case": "unittest_no_pointer",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true,
+      "detail": "None is not of type 'string'"
+    },
+    {
+      "case": "unittest_wrong_selector",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true,
+      "detail": "'absent'"
+    },
+    {
+      "case": "inline_code",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true,
+      "detail": "Inline code is outside supported check patterns"
+    },
+    {
+      "case": "shell_operator",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true,
+      "detail": "Script check must directly name a Python script"
+    },
+    {
+      "case": "ready_independent_candidate_review",
+      "expected_dispatch_ready": true,
+      "observed_dispatch_ready": true,
+      "passed": true,
+      "detail": "Accidental-error guard only, not a sandbox or security validator. Actual current coordinator authorization and argv review are still required."
+    },
+    {
+      "case": "self_review_assignment",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true,
+      "detail": "Reviewer is not independent/assigned"
+    },
+    {
+      "case": "dirty_tracked_checkout",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true,
+      "detail": "Tracked checkout is dirty"
+    },
+    {
+      "case": "duplicate_json_keys",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "passed": true
+    }
+  ]
+}

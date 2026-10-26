@@ -1,0 +1,1048 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Draft Materials Boundaries small task envelope",
+  "description": "Proposed operator envelope only. It is not supported by repository CLIs and does not replace source, scientific, rights, authority or independent review. Validate offline; no remote references are needed.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "materials-boundaries-task-envelope/0.1-draft"
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "ready",
+        "archival"
+      ]
+    },
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stage": {
+      "enum": [
+        "candidate",
+        "independent_candidate_review",
+        "runtime_integration",
+        "validation",
+        "independent_implementation_review",
+        "publication"
+      ]
+    },
+    "objective": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repository": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "url": {
+          "type": "string",
+          "minLength": 1
+        },
+        "baseline_commit": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{40}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "baseline_tree": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{40}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "baseline_catalog_sha256": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "materials": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "reference_properties": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "sources": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "materials",
+            "reference_properties",
+            "sources"
+          ]
+        },
+        "checkout_commit": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{40}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "checkout_tree": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{40}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "url",
+        "baseline_commit",
+        "baseline_tree",
+        "baseline_catalog_sha256",
+        "checkout_commit",
+        "checkout_tree"
+      ]
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "instruction_reference": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "allowed_actions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "network_allowed": {
+          "type": "boolean"
+        },
+        "credential_actions_allowed": {
+          "const": false
+        },
+        "publication_target": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "resume_authorization_reference": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "required_ci": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "instruction_reference",
+        "allowed_actions",
+        "network_allowed",
+        "credential_actions_allowed",
+        "publication_target",
+        "resume_authorization_reference",
+        "required_ci"
+      ]
+    },
+    "selection": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "source_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "record_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "existing_contract_paths": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "proposed_delta": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "identities": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "grades": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "states": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "properties": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "sources": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "identities",
+            "grades",
+            "states",
+            "properties",
+            "sources"
+          ]
+        },
+        "actual_admitted_delta_at_start": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "identities": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "grades": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "states": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "properties": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "sources": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "identities",
+            "grades",
+            "states",
+            "properties",
+            "sources"
+          ]
+        }
+      },
+      "required": [
+        "source_ids",
+        "record_ids",
+        "existing_contract_paths",
+        "proposed_delta",
+        "actual_admitted_delta_at_start"
+      ]
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "raw_sha256": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "purpose": {
+            "type": "string",
+            "minLength": 1
+          },
+          "consumer_path": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "role": {
+            "enum": [
+              "source_evidence",
+              "candidate_packet",
+              "implementation_subject",
+              "test_inventory",
+              "other"
+            ]
+          }
+        },
+        "required": [
+          "path",
+          "raw_sha256",
+          "purpose",
+          "consumer_path",
+          "required",
+          "role"
+        ]
+      }
+    },
+    "read_paths": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "write_paths": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "verified_command_source": {
+            "type": "string",
+            "minLength": 1
+          },
+          "execution_authorized": {
+            "type": "boolean"
+          },
+          "expected_inventory_path": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "expected_inventory_sha256": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "required_for_gate": {
+            "type": "boolean"
+          },
+          "kind": {
+            "enum": [
+              "script",
+              "unittest",
+              "build"
+            ]
+          },
+          "inventory_json_pointer": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "argv": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "required": [
+          "id",
+          "verified_command_source",
+          "execution_authorized",
+          "expected_inventory_path",
+          "expected_inventory_sha256",
+          "required_for_gate",
+          "kind",
+          "inventory_json_pointer",
+          "argv"
+        ]
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "purpose": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "path",
+          "purpose"
+        ]
+      }
+    },
+    "independent_review": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "reviewer_assignment": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reviewer_is_not_author": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "approval_receipts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "stage": {
+                "enum": [
+                  "candidate",
+                  "implementation"
+                ]
+              },
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "raw_sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "subject_sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            },
+            "required": [
+              "stage",
+              "path",
+              "raw_sha256",
+              "subject_sha256"
+            ]
+          }
+        }
+      },
+      "required": [
+        "reviewer_assignment",
+        "reviewer_is_not_author",
+        "approval_receipts"
+      ]
+    },
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "max_changed_paths": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "max_repair_iterations": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "wall_time_minutes_before_escalation": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "max_changed_paths",
+        "max_repair_iterations",
+        "wall_time_minutes_before_escalation"
+      ]
+    },
+    "stop_boundary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "unresolved": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "assignee_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "artifact_author_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "cwd": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "python_executable": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "dependencies": {
+          "const": "preinstalled-only"
+        },
+        "python_prefix": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "cwd",
+        "python_executable",
+        "dependencies",
+        "python_prefix"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "status",
+    "task_id",
+    "stage",
+    "objective",
+    "repository",
+    "authority",
+    "selection",
+    "inputs",
+    "read_paths",
+    "write_paths",
+    "checks",
+    "outputs",
+    "independent_review",
+    "limits",
+    "stop_boundary",
+    "unresolved",
+    "assignee_id",
+    "artifact_author_id",
+    "execution"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "ready"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "repository": {
+            "properties": {
+              "baseline_commit": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{40}$"
+              },
+              "baseline_tree": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{40}$"
+              },
+              "baseline_catalog_sha256": {
+                "properties": {
+                  "materials": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  "reference_properties": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  "sources": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  }
+                }
+              },
+              "checkout_commit": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{40}$"
+              },
+              "checkout_tree": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{40}$"
+              }
+            }
+          },
+          "authority": {
+            "properties": {
+              "instruction_reference": {
+                "type": "string",
+                "minLength": 1
+              },
+              "allowed_actions": {
+                "minItems": 1
+              },
+              "resume_authorization_reference": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "selection": {
+            "properties": {
+              "record_ids": {
+                "minItems": 1
+              },
+              "existing_contract_paths": {
+                "minItems": 1
+              },
+              "source_ids": {
+                "minItems": 1
+              }
+            }
+          },
+          "inputs": {
+            "minItems": 1,
+            "items": {
+              "if": {
+                "properties": {
+                  "required": {
+                    "const": true
+                  }
+                }
+              },
+              "then": {
+                "properties": {
+                  "raw_sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  "consumer_path": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            },
+            "contains": {
+              "properties": {
+                "required": {
+                  "const": true
+                }
+              },
+              "required": [
+                "required"
+              ]
+            }
+          },
+          "outputs": {
+            "minItems": 1,
+            "items": {
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "pattern": "^(?!/)(?!.*(?:^|/)\\.{1,2}(?:/|$))[A-Za-z0-9_.@+-]+(?:/[A-Za-z0-9_.@+-]+)*$"
+                }
+              }
+            }
+          },
+          "unresolved": {
+            "maxItems": 0
+          },
+          "assignee_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "artifact_author_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "execution": {
+            "properties": {
+              "cwd": {
+                "type": "string",
+                "minLength": 1
+              },
+              "python_executable": {
+                "type": "string",
+                "minLength": 1
+              },
+              "python_prefix": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "independent_review": {
+            "properties": {
+              "reviewer_assignment": {
+                "type": "string",
+                "minLength": 1
+              },
+              "reviewer_is_not_author": {
+                "const": true
+              }
+            }
+          },
+          "checks": {
+            "items": {
+              "properties": {
+                "execution_authorized": {
+                  "const": true
+                }
+              },
+              "allOf": [
+                {
+                  "if": {
+                    "properties": {
+                      "kind": {
+                        "const": "unittest"
+                      }
+                    }
+                  },
+                  "then": {
+                    "properties": {
+                      "expected_inventory_path": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "expected_inventory_sha256": {
+                        "type": "string",
+                        "pattern": "^[0-9a-f]{64}$"
+                      },
+                      "inventory_json_pointer": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "write_paths": {
+            "items": {
+              "type": "string",
+              "pattern": "^(?!/)(?!.*(?:^|/)\\.{1,2}(?:/|$))[A-Za-z0-9_.@+-]+(?:/[A-Za-z0-9_.@+-]+)*$"
+            }
+          }
+        },
+        "allOf": [
+          {
+            "$ref": "#/$defs/no_placeholders"
+          }
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "ready"
+          },
+          "stage": {
+            "const": "runtime_integration"
+          }
+        },
+        "required": [
+          "status",
+          "stage"
+        ]
+      },
+      "then": {
+        "properties": {
+          "independent_review": {
+            "properties": {
+              "approval_receipts": {
+                "allOf": [
+                  {
+                    "contains": {
+                      "properties": {
+                        "stage": {
+                          "const": "candidate"
+                        }
+                      },
+                      "required": [
+                        "stage"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "ready"
+          },
+          "stage": {
+            "const": "validation"
+          }
+        },
+        "required": [
+          "status",
+          "stage"
+        ]
+      },
+      "then": {
+        "properties": {
+          "independent_review": {
+            "properties": {
+              "approval_receipts": {
+                "allOf": [
+                  {
+                    "contains": {
+                      "properties": {
+                        "stage": {
+                          "const": "candidate"
+                        }
+                      },
+                      "required": [
+                        "stage"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "ready"
+          },
+          "stage": {
+            "const": "independent_implementation_review"
+          }
+        },
+        "required": [
+          "status",
+          "stage"
+        ]
+      },
+      "then": {
+        "properties": {
+          "independent_review": {
+            "properties": {
+              "approval_receipts": {
+                "allOf": [
+                  {
+                    "contains": {
+                      "properties": {
+                        "stage": {
+                          "const": "candidate"
+                        }
+                      },
+                      "required": [
+                        "stage"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "ready"
+          },
+          "stage": {
+            "const": "publication"
+          }
+        },
+        "required": [
+          "status",
+          "stage"
+        ]
+      },
+      "then": {
+        "properties": {
+          "independent_review": {
+            "properties": {
+              "approval_receipts": {
+                "allOf": [
+                  {
+                    "contains": {
+                      "properties": {
+                        "stage": {
+                          "const": "candidate"
+                        }
+                      },
+                      "required": [
+                        "stage"
+                      ]
+                    }
+                  },
+                  {
+                    "contains": {
+                      "properties": {
+                        "stage": {
+                          "const": "implementation"
+                        }
+                      },
+                      "required": [
+                        "stage"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "authority": {
+            "properties": {
+              "publication_target": {
+                "type": "string",
+                "pattern": "^refs/heads/(experiment|experimental)/.+$"
+              },
+              "network_allowed": {
+                "const": true
+              },
+              "required_ci": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "no_placeholders": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/no_placeholders"
+          }
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/no_placeholders"
+          }
+        },
+        {
+          "type": "string",
+          "not": {
+            "pattern": "REPLACE_|PATH_TO_|YOUR_|PLACEHOLDER|\\bTBD\\b|\\bTODO\\b|<[^>]+>"
+          }
+        },
+        {
+          "type": [
+            "number",
+            "boolean",
+            "null"
+          ]
+        }
+      ]
+    }
+  }
+}

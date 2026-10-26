@@ -1,0 +1,172 @@
+{
+  "schema_version": "materials-boundaries-task-envelope/0.1-draft",
+  "status": "archival",
+  "task_id": "ewurum-reactive-20261025-independent-candidate-review-example",
+  "stage": "independent_candidate_review",
+  "objective": "Archival filled example: independently review only R10/R20/R30/R45 reactive PBS/lignin candidate at 29a33009d763c0ef52943c1bce28e24c436c74ac. Not a new review or execution assignment.",
+  "repository": {
+    "url": "https://github.com/chaotic-mixture/materials-boundaries-public",
+    "baseline_commit": "8ccd217599fd462d13d7435bdfb02a0825e4eacd",
+    "baseline_tree": "43aab4464dff62eb4c2a29c76fabf23c187e3230",
+    "baseline_catalog_sha256": {
+      "materials": "f65d332bc0a67838bbba0f936ba8134243e75123d720417fa7af873502c0976b",
+      "reference_properties": "1feeaec49643cf3ee560c29f91f91eb7674a8ee769639558930dfc8b4cfbd3c2",
+      "sources": "c5eecc0e7c64d9ef4af623f0800d947cec8a7f91570633b45b053d6ecb0c75aa"
+    },
+    "checkout_commit": "29a33009d763c0ef52943c1bce28e24c436c74ac",
+    "checkout_tree": "3db7406f71731f79f0771ceeaeef60766eb7e4f3"
+  },
+  "authority": {
+    "instruction_reference": "Historical illustration only; no current execution authority.",
+    "allowed_actions": [
+      "Read this archival example; do not execute its historical checks."
+    ],
+    "network_allowed": false,
+    "credential_actions_allowed": false,
+    "publication_target": null,
+    "resume_authorization_reference": null,
+    "required_ci": []
+  },
+  "selection": {
+    "source_ids": [
+      "ewurum_mcdonald_2025_pbs_lignin"
+    ],
+    "record_ids": [
+      "mat_ewurum2025_pbs_lignin_r10",
+      "mat_ewurum2025_pbs_lignin_r20",
+      "mat_ewurum2025_pbs_lignin_r30",
+      "mat_ewurum2025_pbs_lignin_r45"
+    ],
+    "existing_contract_paths": [
+      "docs/MATERIAL_REFERENCE_CATALOG.md",
+      "docs/FORMULATION_PACKET_PREPARATION.md"
+    ],
+    "proposed_delta": {
+      "identities": 4,
+      "grades": 0,
+      "states": 4,
+      "properties": 4,
+      "sources": 0
+    },
+    "actual_admitted_delta_at_start": {
+      "identities": 0,
+      "grades": 0,
+      "states": 0,
+      "properties": 0,
+      "sources": 0
+    }
+  },
+  "inputs": [
+    {
+      "path": "experimental/material-batches/ewurum-reactive-20261025/packet-spec.json",
+      "raw_sha256": "f72a85270ef8502ac6d912fd8e9202ef8470c4e3b802be59abcbe638da0d244e",
+      "purpose": "Exact authored source/identity/property inputs and baseline pins",
+      "consumer_path": null,
+      "required": true,
+      "role": "source_evidence"
+    },
+    {
+      "path": "experimental/material-batches/ewurum-reactive-20261025/prepared-packet.json",
+      "raw_sha256": "e36ecbe9e46d097e0bd28471e743d2b1760f1d015190962f0f6cd7e3f1383467",
+      "purpose": "Immutable candidate at reviewed candidate commit",
+      "consumer_path": null,
+      "required": true,
+      "role": "candidate_packet"
+    },
+    {
+      "path": "experimental/material-batches/ewurum-reactive-20261025/source-review.json",
+      "raw_sha256": "4fa03793b328b6f0291f4a7bcc8f6ec9194b9b828eb413e73ce177cace12a1fa",
+      "purpose": "Source fact, rights and unknown-condition decisions; not raw source bytes",
+      "consumer_path": null,
+      "required": true,
+      "role": "source_evidence"
+    },
+    {
+      "path": "experimental/material-batches/ewurum-reactive-20261025/identity-review.json",
+      "raw_sha256": "84cc3244d6ad26d99739697ca4e2de1735222dd7be4bfd125239695f56c5f73f",
+      "purpose": "Finite pinned-baseline identity audit",
+      "consumer_path": null,
+      "required": true,
+      "role": "source_evidence"
+    },
+    {
+      "path": "experimental/material-batches/ewurum-reactive-20261025/validation-results.json",
+      "raw_sha256": "6d2be9f082963adbc2dfff21817a51db6cdceb717dda21cc6f6c0572b8fb1666",
+      "purpose": "Candidate check inventory, outcomes and retained failures",
+      "consumer_path": null,
+      "required": true,
+      "role": "source_evidence"
+    }
+  ],
+  "read_paths": [
+    "CONTRIBUTING.md",
+    "docs/MATERIAL_REFERENCE_CATALOG.md",
+    "docs/FORMULATION_PACKET_PREPARATION.md",
+    "schemas/materials.schema.json",
+    "schemas/reference_properties.schema.json",
+    "schemas/sources.schema.json",
+    "experimental/material-batches/ewurum-reactive-20261025/README.md",
+    "experimental/material-batches/ewurum-reactive-20261025/VALIDATION.md",
+    "experimental/material-batches/ewurum-reactive-20261025/packet-spec.json",
+    "experimental/material-batches/ewurum-reactive-20261025/prepared-packet.json",
+    "experimental/material-batches/ewurum-reactive-20261025/source-review.json",
+    "experimental/material-batches/ewurum-reactive-20261025/identity-review.json",
+    "experimental/material-batches/ewurum-reactive-20261025/validation-results.json"
+  ],
+  "write_paths": [],
+  "checks": [
+    {
+      "id": "historical_candidate_module",
+      "verified_command_source": "experimental/material-batches/ewurum-reactive-20261025/VALIDATION.md at 437950c414ea340eda340babe7b63dee9fcee535",
+      "execution_authorized": false,
+      "expected_inventory_path": "experimental/material-batches/ewurum-reactive-20261025/validation-results.json",
+      "expected_inventory_sha256": "6d2be9f082963adbc2dfff21817a51db6cdceb717dda21cc6f6c0572b8fb1666",
+      "required_for_gate": true,
+      "kind": "unittest",
+      "inventory_json_pointer": "/final_validation/separate_process_groups/0/expected_ids",
+      "argv": [
+        "python",
+        "-X",
+        "utf8",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/ewurum_reactive_candidate",
+        "-p",
+        "test_ewurum_reactive_packet.py",
+        "-v"
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "path": "REPLACE_CONSUMER_LOCAL_REVIEW_OUTPUT/result.json",
+      "purpose": "Illustrative independent review receipt only; no output is requested by this archival manifest."
+    }
+  ],
+  "independent_review": {
+    "reviewer_assignment": null,
+    "reviewer_is_not_author": true,
+    "approval_receipts": []
+  },
+  "limits": {
+    "max_changed_paths": 0,
+    "max_repair_iterations": 0,
+    "wall_time_minutes_before_escalation": 30
+  },
+  "stop_boundary": "Archival example only. No new paper inspection, tests, edits, review approval, integration or publication.",
+  "unresolved": [
+    "No current execution authority.",
+    "Consumer paths and reviewer are intentionally unassigned because this is not a task.",
+    "Original source bytes are not included; actual future source review must obtain approved readable evidence and disclose its route."
+  ],
+  "assignee_id": null,
+  "artifact_author_id": null,
+  "execution": {
+    "cwd": null,
+    "python_executable": null,
+    "dependencies": "preinstalled-only",
+    "python_prefix": null
+  }
+}
