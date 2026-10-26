@@ -16,6 +16,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'tests'))
 import curaua_history as history
 import ewurum_reactive_history as ewurum
+import delgado_pla_pcl_history as delgado
 import material_append_successors as successors
 from material_append_history import encoded, graph_hashes, recover_catalogs, recover_file
 
@@ -147,7 +148,7 @@ class CurauaCheckpointGuardTests(unittest.TestCase):
         manifest = history.load_frozen(ROOT, history.DIRECTORY + 'checkpoint-inputs.json', history.INPUTS_SHA256)
         relative = 'experimental/platform/query-service/catalog-tests'
         entry = manifest['inventories'][relative]
-        current_entry = ewurum.load_frozen(ROOT, ewurum.DIRECTORY + 'checkpoint-inputs.json', ewurum.INPUTS_SHA256)['inventories'][relative]
+        current_entry = delgado.load_frozen(ROOT, delgado.DIRECTORY + 'checkpoint-inputs.json', delgado.INPUTS_SHA256)['inventories'][relative]
         current_ids = current_entry['current']
         self.assertEqual(ewurum.checkpoint_inventory(relative, current_ids), entry['current'])
         self.assertEqual(history.checkpoint_inventory(relative, current_ids), entry['previous'])
@@ -226,7 +227,7 @@ class CurauaCheckpointGuardTests(unittest.TestCase):
         self.assertNotEqual(false, raw)
         with self.assertRaises(AssertionError):
             bulk.release_bytes('README.md', false)
-        false_current = current.replace(b'**1168 material identities**', b'**1169 material identities**')
+        false_current = current.replace(b'**1175 material identities**', b'**1176 material identities**')
         self.assertNotEqual(false_current, current)
         with self.assertRaises(AssertionError):
             bulk.release_bytes('README.md', false_current)

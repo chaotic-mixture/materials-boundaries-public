@@ -19,6 +19,7 @@ from unittest.mock import patch
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'tests'))
 import ewurum_reactive_history as history
+import delgado_pla_pcl_history as delgado
 import curaua_history as curaua
 import material_append_successors as successors
 from material_append_history import encoded, graph_hashes, recover_catalogs, recover_file
@@ -36,8 +37,7 @@ def git(*args):
 
 
 def graph():
-    return {name: json.loads((ROOT / relative).read_bytes())
-            for name, relative in history.CATALOG_PATHS.items()}
+    return delgado.checkpoint_catalogs()
 
 
 def manifest():
@@ -61,7 +61,7 @@ class EwurumReactiveAppendPreservationTests(unittest.TestCase):
         self.assertEqual(len(current['materials']['identities']), 1168)
         self.assertEqual(Counter(row['category'] for row in current['materials']['identities']),
                          {'natural': 1010, 'metal': 32, 'inorganic': 59, 'polymer': 30, 'composite': 37})
-        self.assertEqual((ROOT / history.CATALOG_PATHS['sources']).read_bytes(),
+        self.assertEqual(delgado.checkpoint_bytes(history.CATALOG_PATHS['sources']),
                          git('show', history.BASELINE + ':' + history.CATALOG_PATHS['sources']))
 
     def test_partial_duplicate_reordered_mutated_and_unknown_graphs_are_rejected(self):
@@ -91,18 +91,19 @@ class EwurumReactiveAppendPreservationTests(unittest.TestCase):
                              metadata.split()[2])
 
     def test_registry_adds_exactly_one_boundary_and_every_file_recovers_exact_bytes(self):
+        current_registry = delgado.checkpoint_registry()
         previous = history.checkpoint_registry()
         descriptor = {'batch_id': successors.EWURUM_REACTIVE_BATCH_ID,
             'data': (successors.EWURUM_REACTIVE_DATA_LEDGER, successors.EWURUM_REACTIVE_DATA_SHA256),
             'files': (successors.EWURUM_REACTIVE_FILE_LEDGER, successors.EWURUM_REACTIVE_FILE_SHA256)}
-        self.assertEqual(successors.FROZEN_SUCCESSORS, (descriptor,) + previous.FROZEN_SUCCESSORS)
+        self.assertEqual(current_registry.FROZEN_SUCCESSORS, (descriptor,) + previous.FROZEN_SUCCESSORS)
         self.assertEqual(len(previous.FROZEN_SUCCESSORS), 15)
-        self.assertEqual(successors.data_ledgers(before=successors.EWURUM_REACTIVE_BATCH_ID), [])
-        self.assertEqual(successors.data_ledgers()[0], history.data_ledger())
-        self.assertEqual(successors.data_ledgers()[1:], previous.data_ledgers())
+        self.assertEqual(current_registry.data_ledgers(before=current_registry.EWURUM_REACTIVE_BATCH_ID), [])
+        self.assertEqual(current_registry.data_ledgers()[0], history.data_ledger())
+        self.assertEqual(current_registry.data_ledgers()[1:], previous.data_ledgers())
         for ledger in (history.file_ledger(), history.registry_ledger()):
             for relative, entry in ledger['updates'].items():
-                raw = (ROOT / relative).read_bytes()
+                raw = delgado.checkpoint_bytes(relative)
                 with self.subTest(path=relative):
                     self.assertEqual(sha256(raw).hexdigest(), entry['sha256'])
                     self.assertEqual(recover_file(raw, entry), git('show', history.BASELINE + ':' + relative))
@@ -152,10 +153,12 @@ class EwurumReactiveCheckpointGuardTests(unittest.TestCase):
     def test_current_inventory_projects_249_to_241_to_233_without_accepting_stale_ids(self):
         entry = manifest()['inventories'][QUERY]
         self.assertEqual((len(entry['current']), len(entry['previous'])), (249, 241))
-        ids, paths = history.checkpoint_inventory_view(QUERY, entry['current'])
+        latest = delgado.load_frozen(ROOT, delgado.DIRECTORY + 'checkpoint-inputs.json', delgado.INPUTS_SHA256)['inventories'][QUERY]
+        self.assertEqual(delgado.checkpoint_inventory(QUERY, latest['current']), entry['current'])
+        ids, paths = history.checkpoint_inventory_view(QUERY, latest['current'])
         self.assertEqual(ids, entry['previous'])
         self.assertEqual(paths, entry['previous_paths'])
-        self.assertEqual(len(curaua.checkpoint_inventory(QUERY, entry['current'])), 233)
+        self.assertEqual(len(curaua.checkpoint_inventory(QUERY, latest['current'])), 233)
         previous_bytes = {ROOT / relative: history.require_checkpoint_bytes(relative)
                           for relative in entry['previous_paths']}
         original_read, original_glob = Path.read_bytes, Path.glob
@@ -175,7 +178,7 @@ class EwurumReactiveCheckpointGuardTests(unittest.TestCase):
                 curaua.checkpoint_inventory(QUERY, ids)
 
     def test_inventory_rejects_changed_known_bytes_and_unlisted_new_files(self):
-        entry = manifest()['inventories'][QUERY]
+        entry = delgado.load_frozen(ROOT, delgado.DIRECTORY + 'checkpoint-inputs.json', delgado.INPUTS_SHA256)['inventories'][QUERY]
         original = Path.read_bytes
         for target in (QUERY + '/test_ewurum_reactive.py', QUERY + '/test_curaua.py',
                        QUERY + '/test_baseline_compatibility.py'):
@@ -189,7 +192,7 @@ class EwurumReactiveCheckpointGuardTests(unittest.TestCase):
             return iter(values + [path / 'test_unreviewed.py']) if path == ROOT / QUERY else iter(values)
         with patch.object(Path, 'glob', extra), self.assertRaises(AssertionError):
             curaua.checkpoint_inventory(QUERY, entry['current'])
-        self.assertEqual(history.checkpoint_inventory(QUERY, entry['current']), entry['previous'])
+        self.assertEqual(history.checkpoint_inventory(QUERY, entry['current']), manifest()['inventories'][QUERY]['previous'])
 
     def test_actual_nested_bruns_tarasov_kapoor_calls_keep_all_fixed_fingerprints(self):
         import test_bruns_borosilicate_ci as bruns
@@ -197,7 +200,7 @@ class EwurumReactiveCheckpointGuardTests(unittest.TestCase):
         import test_kapoor_phosphate_ci as kapoor
         import run_tian_nano_ti_ci as tian
         original_tian = tian.declared_test_ids, tian.validate_inventory
-        expected = manifest()['inventories'][QUERY]['current']
+        expected = delgado.load_frozen(ROOT, delgado.DIRECTORY + 'checkpoint-inputs.json', delgado.INPUTS_SHA256)['inventories'][QUERY]['current']
         for module, count in ((bruns, 214), (tarasov, 220), (kapoor, 226)):
             adapter = module.ci.declared_test_ids
             self.assertEqual(adapter(QUERY), expected)
@@ -238,12 +241,13 @@ class EwurumReactiveCheckpointGuardTests(unittest.TestCase):
         import material_bulk_preservation as bulk
         raw = (ROOT / 'README.md').read_bytes()
         normalized = bulk.truthful_readme(raw, bulk.load_ledger())
+        normalized = delgado.checkpoint_document('README.md', normalized)
         previous = history.checkpoint_document('README.md', normalized)
         ledger = history.load_frozen(ROOT, history.DIRECTORY + 'document-history.json', history.DOCUMENTS_SHA256)
         self.assertEqual(sha256(previous).hexdigest(), ledger['updates']['README.md']['previous_sha256'])
         unknown = normalized + b'unknown prose\n'
         self.assertIs(history.checkpoint_document('README.md', unknown), unknown)
-        false = raw.replace(b'**1168 material identities**', b'**1169 material identities**')
+        false = raw.replace(b'**1175 material identities**', b'**1176 material identities**')
         self.assertNotEqual(false, raw)
         with self.assertRaises(AssertionError):
             bulk.release_bytes('README.md', false)

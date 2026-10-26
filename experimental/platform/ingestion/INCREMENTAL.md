@@ -6,7 +6,7 @@ delta after each complete acquisition cycle. It uses Python 3.11+ and the standa
 library; it does not require a service, account or credentials.
 
 Automatic acquisition is not scientific review, license clearance or admission.
-The current experiment's formal project total is **1192 = 1168 legacy identities + 24 reviewed
+The current experiment's formal project total is **1199 = 1175 legacy identities + 24 reviewed
 computed composition buckets**. The 62 unadmitted computed examples, the older
 seven-record example and their known related provider IDs are excluded from new
 candidate admission claims. This command never changes the formal catalog.
@@ -14,13 +14,13 @@ Candidate groups and calculations contribute **zero** admissions and do not coun
 toward the goal of at least 1000 materials in each of five categories.
 
 The current boundary names the exact data commit
-`e6d39e39184ab333045ae3ae2d001ab6b41bd53f` and binds the exact appended experimental
+`bdb1e081d5860c4c69fbcd4ee41e01450dc7a921` and binds the exact appended experimental
 catalog bytes plus the unchanged 24-reviewed/62-excluded example resources. Use a new state directory when moving from an earlier
-1081-entry, 1103-entry, 1107-entry, 1108-entry, 1114-entry, 1116-entry, 1124-entry, 1127-entry, 1133-entry, 1136-entry, 1142-entry, 1148-entry, 1158-entry, 1166-entry, 1167-entry, 1168-entry, 1172-entry, 1177-entry, 1183-entry, 1185-entry or 1188-entry boundary. `update` and `abandon` reject a different
+1081-entry, 1103-entry, 1107-entry, 1108-entry, 1114-entry, 1116-entry, 1124-entry, 1127-entry, 1133-entry, 1136-entry, 1142-entry, 1148-entry, 1158-entry, 1166-entry, 1167-entry, 1168-entry, 1172-entry, 1177-entry, 1183-entry, 1185-entry, 1188-entry or 1192-entry boundary. `update` and `abandon` reject a different
 stored scope before dispatching a request, charging a budget or changing cycle
 state; they never migrate an old store silently. `status`, `report` and `compare`
 remain read-only and retain the saved scope, so historical 1081-entry,
-1103-entry, 1107-entry, 1108-entry, 1114-entry, 1116-entry, 1124-entry, 1127-entry, 1133-entry, 1136-entry, 1142-entry, 1148-entry, 1158-entry, 1166-entry, 1167-entry, 1168-entry, 1172-entry, 1177-entry, 1183-entry, 1185-entry and 1188-entry reports are not relabeled as 1192. Saved-report counts
+1103-entry, 1107-entry, 1108-entry, 1114-entry, 1116-entry, 1124-entry, 1127-entry, 1133-entry, 1136-entry, 1142-entry, 1148-entry, 1158-entry, 1166-entry, 1167-entry, 1168-entry, 1172-entry, 1177-entry, 1183-entry, 1185-entry, 1188-entry and 1192-entry reports are not relabeled as 1199. Saved-report counts
 must agree with that store's hash-bound boundary. Explicit Python boundary injection is available for
 synthetic test identities only within the same exact pinned scope; the CLI has
 no boundary override or bypass flag.
@@ -122,7 +122,7 @@ produce identical stdout bytes. Concurrent reads describe their transaction's
 snapshot, not subsequent updates. The report is local review evidence; inspect
 source-specific scope before any redistribution.
 
-Comparisons retain their store's formal total: **1192 = 1168 + 24** for a new
+Comparisons retain their store's formal total: **1199 = 1175 + 24** for a new
 current store, or the saved historical total for an older store. The **62 examples stay excluded**.
 `admitted_delta` is always `0` and `release_authorized` is always `false`.
 The comparison is separate from the existing formal-review gap report and does

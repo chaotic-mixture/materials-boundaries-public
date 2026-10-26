@@ -10,6 +10,8 @@ from types import ModuleType
 
 from material_append_history import digest, encoded, load_frozen, recover_catalogs, recover_file
 
+import delgado_pla_pcl_history as delgado
+
 ROOT = Path(__file__).resolve().parents[1]
 BASELINE = "29a33009d763c0ef52943c1bce28e24c436c74ac"
 DIRECTORY = "tests/ewurum_reactive_runtime/"
@@ -49,6 +51,9 @@ def checkpoint_catalogs(root=ROOT):
     raw = {key: (root / path).read_bytes() for key, path in CATALOG_PATHS.items()}
     hashes = {key: digest(value) for key, value in raw.items()}
     if hashes not in (ledger["current_sha256"], ledger["baseline_sha256"]):
+        raw = {key: encoded(value) for key, value in delgado.checkpoint_catalogs(root).items()}
+        hashes = {key: digest(value) for key, value in raw.items()}
+    if hashes not in (ledger["current_sha256"], ledger["baseline_sha256"]):
         raise AssertionError("Unrecognized complete Ewurum reactive catalog image")
     graph = {key: json.loads(value) for key, value in raw.items()}
     return recover_catalogs(root, graph, ledger)
@@ -68,6 +73,7 @@ def checkpoint_bytes(relative, raw=None, *, root=ROOT):
         raw = (root / relative).read_bytes()
     if type(raw) is not bytes:
         raise AssertionError("Ewurum checkpoint file input must be bytes")
+    raw = delgado.checkpoint_bytes(relative, raw, root=root)
     keys = [key for key, path in CATALOG_PATHS.items() if relative == path]
     if keys:
         key = keys[0]
@@ -98,6 +104,7 @@ def require_checkpoint_bytes(relative, raw=None, *, root=ROOT):
 def checkpoint_document(relative, raw, *, root=ROOT):
     """Recover documentation after the existing truthful README normalizer."""
     relative = _relative(relative)
+    raw = delgado.checkpoint_document(relative, raw, root=root)
     ledger = load_frozen(root, DIRECTORY + "document-history.json", DOCUMENTS_SHA256)
     entry = ledger["updates"].get(relative)
     return _project(raw, entry) if entry is not None else raw
@@ -120,6 +127,7 @@ def checkpoint_new_file(relative, raw=None, *, root=ROOT):
     manifest = load_frozen(root, DIRECTORY + "checkpoint-inputs.json", INPUTS_SHA256)
     if raw is None:
         raw = (root / relative).read_bytes()
+    raw = delgado.checkpoint_bytes(relative, raw, root=root)
     if relative not in manifest["added_files"] or digest(raw) != manifest["added_files"][relative]:
         raise AssertionError("Unknown or changed Ewurum reactive checkpoint addition")
     return raw
@@ -147,7 +155,16 @@ def checkpoint_inventory_view(relative, actual_ids, *, root=ROOT):
     previous_image = (actual_ids == entry["previous"] and actual_paths == entry["previous_paths"]
                       and actual_hashes == previous_hashes)
     if not (current_image or previous_image):
-        raise AssertionError("Ewurum checkpoint IDs, paths and bytes are not one complete current or previous inventory image")
+        # Only the complete pinned successor image can enter this old boundary.
+        # Original complete current/previous images remain independently valid.
+        actual_ids, actual_paths = delgado.checkpoint_inventory_view(relative, actual_ids, root=root)
+        raw_files = {path: delgado.checkpoint_bytes(path, (root / path).read_bytes(), root=root)
+                     for path in actual_paths}
+        actual_hashes = {path: digest(raw) for path, raw in raw_files.items()}
+        current_image = (actual_ids == entry["current"] and actual_paths == entry["current_paths"]
+                         and actual_hashes == entry["current_file_sha256"])
+        if not current_image:
+            raise AssertionError("Ewurum checkpoint IDs, paths and bytes are not one complete current or previous inventory image")
     if current_image:
         updates = file_ledger(root)["updates"]
         for path, raw in raw_files.items():

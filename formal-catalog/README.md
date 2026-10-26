@@ -4,8 +4,8 @@ The released main baseline admits 1057 source-qualified identities and exactly
 24 reviewed computed composition buckets under formal-project-count-policy/1,
 for 1081 formal project admissions.
 
-This unmerged local experiment contains 1168 source-qualified identities and the
-same 24 computed buckets, totaling 1192. Main remains unchanged. Resource pins
+This unmerged local experiment contains 1175 source-qualified identities and the
+same 24 computed buckets, totaling 1199. Main remains unchanged. Resource pins
 match the local core for reproducible testing; they do not publish a release.
 Neither total is a global physical-uniqueness claim.
 
@@ -407,10 +407,10 @@ or deployment.
 
 ## Ewurum 2025 reactive PBS/lignin increment
 
-The current experimental graph contains **1168 source-qualified identities,
+At the Ewurum checkpoint the experimental graph contained **1168 source-qualified identities,
 1169 states, 1180 reference properties, 31 grades and 128 source records**.
 The exclusive source-qualified categories are natural 1010, metal 32, inorganic
-59, polymer 30 and composite 37. The project view is **1192 = 1168 + 24 unchanged
+59, polymer 30 and composite 37. The checkpoint project view was **1192 = 1168 + 24 unchanged
 reviewed computed composition records**; main remains at 1081.
 
 Four source-qualified DCP-reactive PBS/Indulin AT formulations, R10, R20, R30
@@ -430,9 +430,41 @@ relationship is inferred for these four composite identities.
 
 The existing Ewurum source record is reused byte-for-byte under its reviewed
 CC BY 4.0 scope; there is no added source or grade. Data commit `e6d39e39184ab333045ae3ae2d001ab6b41bd53f` contains
-the exact append. The current 64-file query pin is `2f1865dda9cd6a66f21330afa1dad383750bffdf3e5455710d4e1936b44e0204`. Previous databases and
+the exact append. The checkpoint 64-file query pin was `2f1865dda9cd6a66f21330afa1dad383750bffdf3e5455710d4e1936b44e0204`. Previous databases and
 saved reports retain their original versions and counts; they are not migrated
 or relabeled. Candidate evidence and the frozen pre-append history remain
 available in `experimental/material-batches/ewurum-reactive-20261025/`.
 No main merge, deployment, DOI registration or raw source asset publication is
 part of this experimental integration.
+
+## Delgado-Aguilar 2020 PLA/PCL increment
+
+The current local experimental graph contains **1175 source-qualified identities,
+1176 states, 1187 reference properties, 31 grades and 129 sources**. Exclusive
+categories are natural 1010, metal 32, inorganic 59, polymer 37 and composite 37.
+The project view is **1199 = 1175 + 24 unchanged reviewed computed records**;
+main remains 1081. Publication remains subject to independent implementation
+review; this local append is not a main merge.
+
+Exactly seven nominal PLA/PCL mass-ratio formulations from Delgado-Aguilar et al.
+(2020), DOI 10.3390/ma13112655, add one injection-molded state and one measured
+Young modulus each. Original values and standard deviations remain in GPa.
+The central aggregation and sample count are unstated, so numeric SD uses
+reported measures without inferring a mean, SEM, confidence interval or count.
+Calculated PCL volume fractions join Tables 1 and 2 only; no measured final
+composition, finished-blend grade, constituent relationship or exact lot is
+inferred. Pure PLA/PCL endpoints and model values are excluded.
+
+ISO 527-1:2012, 2 mm/min and 115 mm clamp separation are source-qualified.
+Clamp separation is not gauge length; test temperature, humidity, pressure,
+post-molding conditioning, specimen dimensions and modulus-fit interval remain
+unknown. Molding settings varied with melt flow index; no universal recipe is
+assigned. Official PMC HTML/XML supply the selected facts and CC BY 4.0 rights.
+The PDF CAPTCHA was not bypassed; no PDF bytes or visual equivalence were verified.
+
+Data anchor `bdb1e081d5860c4c69fbcd4ee41e01450dc7a921` and 64-file query pin
+`6e5f9e91ec2cdaec488bdb603b8e7577fee424e0219f9b3a76941f1d92bd9e08`
+identify this append. Historical stores retain their original pins/counts and
+reject use against the new baseline without migration. Frozen candidate evidence
+remains under `experimental/material-batches/delgado-pla-pcl-20261026/`.
+No raw source assets, main merge, deployment or DOI registration are included.

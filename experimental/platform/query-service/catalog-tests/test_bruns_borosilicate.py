@@ -49,9 +49,9 @@ class BrunsBorosilicateQuery(unittest.TestCase):
 
     def test_four_recipes_have_exact_independent_identity_state_property_links(self):
         self.assertEqual(self.status['counts'], {
-            'local_catalog_unique_material_count': 1168,
-            'local_material_state_count': 1169,
-            'local_reference_property_count': 1180})
+            'local_catalog_unique_material_count': 1175,
+            'local_material_state_count': 1176,
+            'local_reference_property_count': 1187})
         expected_states = set()
         identities = set()
         for suffix, label, mean, deviation in FACTS:
@@ -148,10 +148,10 @@ class BrunsBorosilicateQuery(unittest.TestCase):
         status = self.client.get('/api/catalog/project/status').json()
         self.assertTrue(status['enabled'])
         self.assertEqual(status['counts'], {
-            'formal_project_admission_count': 1192,
-            'legacy_source_qualified_identity_count': 1168,
+            'formal_project_admission_count': 1199,
+            'legacy_source_qualified_identity_count': 1175,
             'reviewed_computed_composition_count': 24,
-            'categories': {'metal': 44, 'inorganic': 71, 'polymer': 30,
+            'categories': {'metal': 44, 'inorganic': 71, 'polymer': 37,
                            'composite': 37, 'natural': 1010}})
         selected = self.client.post('/api/catalog/project/list', json={
             'version': status['version'], 'query': 'bruns2020_nbs2',

@@ -94,9 +94,9 @@ class EwurumReactiveQuery(unittest.TestCase):
 
     def test_four_reactive_formulations_keep_exact_means_sds_and_scope(self):
         self.assertEqual(self.status['counts'], {
-            'local_catalog_unique_material_count': 1168,
-            'local_material_state_count': 1169,
-            'local_reference_property_count': 1180})
+            'local_catalog_unique_material_count': 1175,
+            'local_material_state_count': 1176,
+            'local_reference_property_count': 1187})
         for loading, modulus, sd, tukey, gel in FACTS:
             with self.subTest(formulation='R' + loading):
                 identity_id = 'mat_ewurum2025_pbs_lignin_r' + loading
@@ -232,10 +232,10 @@ class EwurumReactiveQuery(unittest.TestCase):
         status = self.client.get('/api/catalog/project/status').json()
         self.assertTrue(status['enabled'])
         self.assertEqual(status['counts'], {
-            'formal_project_admission_count': 1192,
-            'legacy_source_qualified_identity_count': 1168,
+            'formal_project_admission_count': 1199,
+            'legacy_source_qualified_identity_count': 1175,
             'reviewed_computed_composition_count': 24,
-            'categories': {'metal': 44, 'inorganic': 71, 'polymer': 30,
+            'categories': {'metal': 44, 'inorganic': 71, 'polymer': 37,
                            'composite': 37, 'natural': 1010}})
         query = 'ewurum2025_pbs_lignin_r'
         data = {'version': status['version'], 'query': query,
@@ -267,7 +267,7 @@ class EwurumReactiveQuery(unittest.TestCase):
                           'state': len(graph['materials']['records']),
                           'property': len(graph['reference_properties']['records']),
                           'source': len(graph['sources']['records'])},
-                         {'identity': 1168, 'grade': 31, 'state': 1169, 'property': 1180, 'source': 128})
+                         {'identity': 1175, 'grade': 31, 'state': 1176, 'property': 1187, 'source': 129})
         state_id = 'state_ewurum2025_pbs_lignin_r10_injection_molded'
         before = snapshot.resolve(state_id)
         self.assertEqual(canonical_digest(before), RESOLVED_SHA256[state_id])
@@ -290,10 +290,10 @@ class EwurumReactiveQuery(unittest.TestCase):
         status = self.client.get('/api/catalog/relationships/status').json()
         self.assertTrue(status['enabled'])
         pin = {'version': status['catalog_version'], 'relationship_version': status['relationship_version']}
-        self.assertEqual(status['unique_identity_count'], 1168)
-        self.assertEqual(status['membership_assertion_count'], 1173)
+        self.assertEqual(status['unique_identity_count'], 1175)
+        self.assertEqual(status['membership_assertion_count'], 1180)
         self.assertEqual(status['identity_relationship_count'], 1)
-        for category, count in {'metal': 32, 'inorganic': 59, 'polymer': 31,
+        for category, count in {'metal': 32, 'inorganic': 59, 'polymer': 38,
                                 'composite': 37, 'natural': 1010}.items():
             self.assertEqual(status['coverage'][category]['supported'], count)
         self.assertEqual(status['new_identities_admitted'], 0)

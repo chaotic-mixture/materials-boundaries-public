@@ -23,6 +23,9 @@ from scripts.prepare_formulation_packet import (
     compile_spec, record_sha256, validate_prepared_packet, write_packet,
 )
 
+sys.path.insert(0, str(ROOT / 'tests'))
+from delgado_pla_pcl_history import checkpoint_bytes, checkpoint_catalogs, checkpoint_changed_paths
+
 BATCH = ROOT / 'experimental/material-batches/delgado-pla-pcl-20261026'
 BASELINE = ROOT / 'materials_boundaries/data'
 BASE_COMMIT = '437950c414ea340eda340babe7b63dee9fcee535'
@@ -73,10 +76,18 @@ def git(*args):
 class DelgadoPlaPclCandidatePacketTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        global BASELINE
+        original_baseline = BASELINE
+        directory = tempfile.TemporaryDirectory()
+        cls.addClassCleanup(directory.cleanup)
+        cls.addClassCleanup(lambda: globals().__setitem__('BASELINE', original_baseline))
+        BASELINE = Path(directory.name)
+        for table, value in checkpoint_catalogs().items():
+            (BASELINE / FILES[table]).write_bytes(encoded(value))
         cls.spec = read(BATCH / 'packet-spec.json')
         cls.saved_packet = read(BATCH / 'prepared-packet.json')
         cls.source_review = read(BATCH / 'source-review.json')
-        cls.baseline_bytes = {name: (BASELINE / name).read_bytes() for name in FILES.values()}
+        cls.baseline_bytes = {name: checkpoint_bytes('materials_boundaries/data/' + name) for name in FILES.values()}
         cls.baseline = {key: json.loads(cls.baseline_bytes[name]) for key, name in FILES.items()}
         cls.packet = compile_spec(cls.spec, BASELINE)
         cls.graph = cls.packet['catalogs']
@@ -298,7 +309,7 @@ class DelgadoPlaPclCandidatePacketTests(unittest.TestCase):
             with self.subTest(input=descriptor['path']):
                 self.assertTrue(path.is_relative_to(ROOT.resolve()))
                 frozen = git('show', BASE_COMMIT + ':' + descriptor['path'])
-                self.assertEqual(path.read_bytes(), frozen)
+                self.assertEqual(checkpoint_bytes(descriptor["path"], path.read_bytes()), frozen)
                 self.assertEqual(len(frozen), descriptor['bytes'])
                 self.assertEqual(sha256(frozen).hexdigest(), descriptor['sha256'])
         helper_spec = importlib.util.spec_from_file_location('delgado_identity_review', BATCH / 'build_identity_review.py')
@@ -316,7 +327,7 @@ class DelgadoPlaPclCandidatePacketTests(unittest.TestCase):
                 raw = self.baseline_bytes[filename]
                 self.assertEqual(sha256(raw).hexdigest(), BASELINE_HASHES[PIN_KEYS[key]])
                 self.assertEqual(raw, git('show', BASE_COMMIT + ':materials_boundaries/data/' + filename))
-                self.assertEqual((BASELINE / filename).read_bytes(), raw)
+                self.assertEqual(checkpoint_bytes("materials_boundaries/data/" + filename), raw)
         identities = self.baseline['materials']['identities']
         self.assertEqual(len(identities), 1168)
         self.assertEqual(Counter(row['category'] for row in identities),
@@ -333,7 +344,7 @@ class DelgadoPlaPclCandidatePacketTests(unittest.TestCase):
         tracked = git('ls-tree', '-r', '--name-only', BASE_COMMIT).decode('utf-8').splitlines()
         self.assertEqual(len(tracked), 1057)
         self.assertEqual(sum(path.startswith('tests/fixtures/') for path in tracked), 122)
-        self.assertEqual(git('diff', BASE_COMMIT, '--name-only', '--diff-filter=CDMRTUXB'), b'')
+        self.assertEqual(checkpoint_changed_paths(git('diff', BASE_COMMIT, '--name-only', '--diff-filter=CDMRTUXB')), b'')
         manifest = read(ROOT / 'tests/core_partition/manifest.json')
         self.assertEqual((manifest['module_count'], manifest['test_count']), (147, 1887))
         self.assertEqual(manifest['root_inventory_sha256'],
@@ -365,7 +376,7 @@ class DelgadoPlaPclCandidatePacketTests(unittest.TestCase):
             path = (ROOT / relative).resolve()
             with self.subTest(input=relative):
                 self.assertTrue(path.is_relative_to(ROOT.resolve()))
-                raw = path.read_bytes()
+                raw = checkpoint_bytes(path.relative_to(ROOT).as_posix(), path.read_bytes())
                 self.assertEqual(descriptor, {'bytes': len(raw), 'sha256': sha256(raw).hexdigest()})
         for key in ('output_bytes_and_mtime_unchanged', 'inputs_unchanged', 'runtime_catalogs_unchanged'):
             self.assertIs(receipt[key], True)

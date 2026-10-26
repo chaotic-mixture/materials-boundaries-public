@@ -96,7 +96,16 @@ EWURUM_REACTIVE_DATA_SHA256 = "1fc44b8bc6f121a3323b632a1cdce8f7511bdbd2421bd3376
 EWURUM_REACTIVE_FILE_LEDGER = "tests/ewurum_reactive_runtime/files-history.json"
 EWURUM_REACTIVE_FILE_SHA256 = "12997fbad7e6eae8f278be917da32341663f4052605ed939e2341ce199799c9f"
 
+DELGADO_PLA_PCL_BATCH_ID = "delgado-pla-pcl-20261026"
+DELGADO_PLA_PCL_DATA_LEDGER = "tests/delgado_pla_pcl_runtime/data-history.json"
+DELGADO_PLA_PCL_DATA_SHA256 = "d7388982f3a037e764270538684c33e5d5af8c884559bbd1dba311637ac67c3d"
+DELGADO_PLA_PCL_FILE_LEDGER = "tests/delgado_pla_pcl_runtime/files-history.json"
+DELGADO_PLA_PCL_FILE_SHA256 = "a28f78a39c21adb90e869f40cc8b18f337bffad155c18ff0a9584a3dc794d681"
+
 FROZEN_SUCCESSORS = (
+    {"batch_id": DELGADO_PLA_PCL_BATCH_ID,
+     "data": (DELGADO_PLA_PCL_DATA_LEDGER, DELGADO_PLA_PCL_DATA_SHA256),
+     "files": (DELGADO_PLA_PCL_FILE_LEDGER, DELGADO_PLA_PCL_FILE_SHA256)},
     {"batch_id": EWURUM_REACTIVE_BATCH_ID,
      "data": (EWURUM_REACTIVE_DATA_LEDGER, EWURUM_REACTIVE_DATA_SHA256),
      "files": (EWURUM_REACTIVE_FILE_LEDGER, EWURUM_REACTIVE_FILE_SHA256)},
@@ -179,7 +188,11 @@ def file_ledgers(*, before=None):
     from ci_partition_history import code_ledger as partition_code_ledger
     from curaua_history import registry_ledger
     from ewurum_reactive_history import registry_ledger as ewurum_registry_ledger
-    result = [ewurum_registry_ledger()] if any(item["batch_id"] == EWURUM_REACTIVE_BATCH_ID for item in descriptors) else []
+    from delgado_pla_pcl_history import registry_ledger as delgado_registry_ledger
+    result = [delgado_registry_ledger()] if any(item["batch_id"] == DELGADO_PLA_PCL_BATCH_ID for item in descriptors) else []
+    result += [load_frozen(ROOT, *descriptor["files"]) for descriptor in descriptors
+               if descriptor["batch_id"] == DELGADO_PLA_PCL_BATCH_ID]
+    result += [ewurum_registry_ledger()] if any(item["batch_id"] == EWURUM_REACTIVE_BATCH_ID for item in descriptors) else []
     result += [load_frozen(ROOT, *descriptor["files"]) for descriptor in descriptors
                if descriptor["batch_id"] == EWURUM_REACTIVE_BATCH_ID]
     result += [registry_ledger()] if any(item["batch_id"] == CURAUA_BATCH_ID for item in descriptors) else []
@@ -187,7 +200,7 @@ def file_ledgers(*, before=None):
               if descriptor["batch_id"] == CURAUA_BATCH_ID]
     result += [partition_code_ledger(), checkout_code_ledger()] + ([code_ledger()] if before is None else [])
     for descriptor in descriptors:
-        if descriptor["batch_id"] in {EWURUM_REACTIVE_BATCH_ID, CURAUA_BATCH_ID}:
+        if descriptor["batch_id"] in {DELGADO_PLA_PCL_BATCH_ID, EWURUM_REACTIVE_BATCH_ID, CURAUA_BATCH_ID}:
             continue
         result.append(load_frozen(ROOT, *descriptor["files"]))
         if descriptor["batch_id"] == BRUNS_BATCH_ID:

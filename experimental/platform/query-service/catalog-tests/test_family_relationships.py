@@ -41,16 +41,16 @@ class FamilyRelationshipTests(unittest.TestCase):
         return {m['concept'] for m in row['memberships'] if m['status'] == 'supported'}
 
     def test_coverage_exact_and_no_count_inflation(self):
-        self.assertEqual(self.status['unique_identity_count'], 1168)
-        self.assertEqual(self.status['membership_assertion_count'], 1173)
+        self.assertEqual(self.status['unique_identity_count'], 1175)
+        self.assertEqual(self.status['membership_assertion_count'], 1180)
         self.assertEqual(self.status['identity_relationship_count'], 1)
-        expected = dict(metal=32, alloy=2, inorganic=59, ceramic=2, polymer=31,
+        expected = dict(metal=32, alloy=2, inorganic=59, ceramic=2, polymer=38,
                         composite=37, natural=1010, semiconductor=0, battery=0,
                         catalyst=0, two_dimensional=0, nanoscale=0)
         for concept, supported in expected.items():
             with self.subTest(concept=concept):
                 self.assertEqual(self.status['coverage'][concept]['supported'], supported)
-                self.assertEqual(self.status['coverage'][concept]['unknown'], 1168 - supported)
+                self.assertEqual(self.status['coverage'][concept]['unknown'], 1175 - supported)
         self.assertEqual(self.status['new_identities_admitted'], 0)
         self.assertFalse(self.status['provider_counts_combined'])
 

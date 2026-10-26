@@ -9,20 +9,20 @@ Repository: [chaotic-mixture/materials-boundaries-public](https://github.com/cha
 ## Public-release scope
 
 <!-- current-catalog-summary:start -->
-- **41 mechanics claims**, **128 source records**, **16 observations from 5 studies**, **12 published computational predictions in 2 scientific families and 3 explicit groups**, and **5 synthetic temperature demos with 7 branches**
+- **41 mechanics claims**, **129 source records**, **16 observations from 5 studies**, **12 published computational predictions in 2 scientific families and 3 explicit groups**, and **5 synthetic temperature demos with 7 branches**
 - Exactly **8 executable composite calculation rules**: HS/Reuss/Voigt bulk and shear bounds plus conservative derived Young's-modulus and Poisson-ratio envelopes
 - Other mechanics records, including initial-yield criteria and their function comparison, scalar viscoelasticity, bulk elastic waves, hydrostatic compressibility, directional Poisson ratio, anisotropy, fatigue, fracture, stability and porous relations, are catalog-only
-- The 128 sources comprise 127 bibliographic/source records plus 1 original synthetic-demo provenance record; a source record is not a redistribution of its publication or dataset
+- The 129 sources comprise 128 bibliographic/source records plus 1 original synthetic-demo provenance record; a source record is not a redistribution of its publication or dataset
 - All five temperature demos use intentionally invented coefficients and ranges. They do not describe real materials, measured properties or engineering allowables
 <!-- current-catalog-summary:end -->
 
 ## Concrete material references
 
 <!-- material-catalog-summary:start -->
-The separate reference catalogue contains **1168 material identities**, **31 qualified grades**, **1169 source-scoped states** and **1180 reference properties**. Counts describe this registry only; aliases, categories, prior observations and computational model cells are not additional materials.
+The separate reference catalogue contains **1175 material identities**, **31 qualified grades**, **1176 source-scoped states** and **1187 reference properties**. Counts describe this registry only; aliases, categories, prior observations and computational model cells are not additional materials.
 <!-- material-catalog-summary:end -->
 
-The local experimental Ewurum R-series append adds four source-qualified reactive PBS/lignin formulations and four measured Young's moduli, reusing an unchanged existing source. The experimental project total is **1192 = 1168 source-qualified identities + 24 reviewed computed records**; published main remains **1081**. [Evidence, conditions and count boundaries](docs/MATERIAL_GROWTH_EWURUM_REACTIVE_20261025.md).
+The local experimental Delgado PLA/PCL append adds seven source-qualified nominal-ratio polymer blends with seven measured Young's moduli and one source. The local experimental project total is **1199 = 1175 source-qualified identities + 24 reviewed computed records**; the last published experimental baseline remains **1192** pending review and publication, and published main remains **1081**. [Evidence, conditions and count boundaries](docs/MATERIAL_GROWTH_DELGADO_PLA_PCL_20261026.md).
 
 The five primary classes are metal, inorganic, polymer, composite and natural biological tissues/fibers. The exact reviewed v2 batch adds 1,000 distinct historical WFO species identities, each with one selected-accession conversion-derived basic-density property. The 2026-10-19 experimental core snapshot (data commit `5396fd1cc9df72507785a112a21c2990fb4a7c50`) has natural 1,010; metal 22, inorganic 26, polymer 15 and composite 10. Only natural reaches the 1,000-per-class goal in this snapshot. Ten existing biological identities migrate to natural through an exact versioned ledger. Processed biopolymers remain polymer; minerals and rocks remain inorganic. A material counts once by its admitted canonical identity, irrespective of aliases, states or measurements.
 

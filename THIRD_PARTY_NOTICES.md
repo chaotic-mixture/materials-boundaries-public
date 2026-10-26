@@ -1287,3 +1287,24 @@ independently verify current raw PDF bytes. Only selected attributed facts and
 original curation are included; no PDF, screenshots, full-text copy or raw
 experimental assets are distributed. No endorsement, scientific replication,
 independent scientific approval or engineering allowable is implied.
+
+## Delgado 2020 PLA/PCL blend modulus facts
+
+Marc Delgado-Aguilar, Rita Puig, Ilija Sazdovski and Pere Fullana-i-Palmer,
+*Polylactic Acid/Polycaprolactone Blends: On the Path to Circular Economy,
+Substituting Single-Use Commodity Plastic Products*, Materials 2020, 13, 2655.
+[DOI 10.3390/ma13112655](https://doi.org/10.3390/ma13112655);
+[official PMC article](https://pmc.ncbi.nlm.nih.gov/articles/PMC7321633/).
+The inspected official article and XML state [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Selected Table 1 formulation labels and Table 2 experimental Young's modulus
+facts are transcribed and curated with project identifiers and scope notes.
+These changes do not imply author endorsement. No raw article asset is bundled.
+
+Seven nominal PLA/PCL ratios are polymer blends, not pure molecular species.
+Original GPa values and standard deviations remain separate from unknown
+central aggregation and sample count. Calculated volume fractions are joins,
+not measured properties. No per-formulation molding settings, final chemical
+composition, purity, missing conditions or global uniqueness are inferred.
+The PDF presented CAPTCHA and was not downloaded or visually verified.
+Source ID: `delgado_aguilar_2020_pla_pcl`.
+[Full conditions and exclusions](docs/MATERIAL_GROWTH_DELGADO_PLA_PCL_20261026.md).

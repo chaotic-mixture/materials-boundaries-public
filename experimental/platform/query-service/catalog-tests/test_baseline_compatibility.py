@@ -43,7 +43,8 @@ PRE_KAPOOR_PIN_SHA256 = 'f77658c4df1434de7dd9d9d8d0e9d4ab31eef200477ec748f80c1a7
 PRE_TIAN_PIN_SHA256 = '23be9c9f3716f824ea79872167ff5f80d991ea5d222d702ad41d40188c871f4a'
 PRE_CURAUA_PIN_SHA256 = '8aa3073504462d2e892c12565a30db1d4df189f21ffaeba57fdbe7bb7ed83093'
 PRE_EWURUM_REACTIVE_PIN_SHA256 = '974f22632699247d5821a57323ab5de0d559b99959086e32ebdb660197db9431'
-CURRENT_PIN_SHA256 = '2f1865dda9cd6a66f21330afa1dad383750bffdf3e5455710d4e1936b44e0204'
+PRE_DELGADO_PLA_PCL_PIN_SHA256 = '2f1865dda9cd6a66f21330afa1dad383750bffdf3e5455710d4e1936b44e0204'
+CURRENT_PIN_SHA256 = '6e5f9e91ec2cdaec488bdb603b8e7577fee424e0219f9b3a76941f1d92bd9e08'
 GROWTH_ROOT = Path(__file__).resolve().parents[4]
 GROWTH_LEDGER = GROWTH_ROOT / 'tests/fixtures/source_family_growth_data_20261019.json'
 GROWTH_LEDGER_SHA256 = '9dfc8d71e89041f05e11a870ad29aea34cb3ab90586bcea8f1d717adc9878ac3'
@@ -168,6 +169,15 @@ PRE_BRUNS_DATA_SHA256 = {
     'materials.json': 'd228c3b8f0c45fd56809891213d1d1acd73964357b579c51f8b9c731031a3ec5',
     'reference_properties.json': '66802278a29cdcc4a5fe468b5681d87893a8a10a7c6c4c57f83c4753fe807839',
     'sources.json': '67e068041af0cd8dbaba1126e6ffe2e39d2f8d26f8d2c8ceefc42240e5eefe76',
+}
+DELGADO_PLA_PCL_LEDGER = GROWTH_ROOT / 'tests/delgado_pla_pcl_runtime/data-history.json'
+DELGADO_PLA_PCL_LEDGER_SHA256 = 'd7388982f3a037e764270538684c33e5d5af8c884559bbd1dba311637ac67c3d'
+DELGADO_PLA_PCL_PACKET = GROWTH_ROOT / 'experimental/material-batches/delgado-pla-pcl-20261026/prepared-packet.json'
+DELGADO_PLA_PCL_PACKET_SHA256 = 'f617a9f279b285895545de7d74e082123a9879906af40f25eb81b3db48f1f481'
+PRE_DELGADO_PLA_PCL_DATA_SHA256 = {
+    'materials.json': '01e04f88e13685e5e5624abeee4dd0ffce8f6f7e32708e4b30420180c70c5000',
+    'reference_properties.json': '8daa3b067fc166e25bdf89e9585c4ea4b6f421a918780c2a83e395461dc1c454',
+    'sources.json': 'c5eecc0e7c64d9ef4af623f0800d947cec8a7f91570633b45b053d6ecb0c75aa',
 }
 EWURUM_REACTIVE_LEDGER = GROWTH_ROOT / 'tests/ewurum_reactive_runtime/data-history.json'
 EWURUM_REACTIVE_LEDGER_SHA256 = '1fc44b8bc6f121a3323b632a1cdce8f7511bdbd2421bd33768529f359976b513'
@@ -537,6 +547,23 @@ def table_batch_inventory():
 
 def recover_pre_table_batch_catalogs(current):
     return recover_exact_append_catalogs(current, table_batch_descriptor())
+
+
+def delgado_pla_pcl_descriptor():
+    return {'label': 'Delgado PLA/PCL', 'ledger': DELGADO_PLA_PCL_LEDGER,
+            'ledger_sha256': DELGADO_PLA_PCL_LEDGER_SHA256, 'packet': DELGADO_PLA_PCL_PACKET,
+            'packet_sha256': DELGADO_PLA_PCL_PACKET_SHA256,
+            'parent_commit': '73a5d872c210bbde5b3c0548d710869e87626691',
+            'parent_data': PRE_DELGADO_PLA_PCL_DATA_SHA256,
+            'addition_counts': {'identities': 7, 'grades': 0, 'states': 7, 'properties': 7, 'sources': 1}}
+
+
+def delgado_pla_pcl_inventory():
+    return frozen_append_inventory(delgado_pla_pcl_descriptor())
+
+
+def recover_pre_delgado_pla_pcl_catalogs(current):
+    return recover_exact_append_catalogs(current, delgado_pla_pcl_descriptor())
 
 
 def ewurum_reactive_descriptor():
@@ -942,6 +969,7 @@ class BaselineCompatibility(unittest.TestCase):
         cls.original_identity = sha256(json.dumps(
             cls.expected, sort_keys=True, separators=(',', ':'), ensure_ascii=False,
             allow_nan=False).encode()).hexdigest()
+        cls.recover_delgado_pla_pcl_anchor()
         cls.recover_ewurum_reactive_anchor()
         cls.recover_curaua_anchor()
         cls.recover_tian_anchor()
@@ -964,10 +992,28 @@ class BaselineCompatibility(unittest.TestCase):
         cls.recover_historical_anchor()
 
     @classmethod
+    def recover_delgado_pla_pcl_anchor(cls):
+        """Recover the exact reviewed candidate data before the earlier appends."""
+        cls.delgado_pla_pcl_parent_root = cls.fixture_root / 'pre-delgado-pla-pcl-data'
+        shutil.copytree(cls.original_root, cls.delgado_pla_pcl_parent_root)
+        data_root = cls.delgado_pla_pcl_parent_root / 'data'
+        current = {name: json.loads((data_root / name).read_bytes())
+                   for name in PRE_DELGADO_PLA_PCL_DATA_SHA256}
+        for name, value in recover_pre_delgado_pla_pcl_catalogs(current).items():
+            (data_root / name).write_bytes((json.dumps(value, ensure_ascii=False,
+                indent=2, allow_nan=False) + '\n').encode('utf-8'))
+        cls.delgado_pla_pcl_parent_pin = registry.canonical(manifest(cls.delgado_pla_pcl_parent_root))
+        if sha256(cls.delgado_pla_pcl_parent_pin).hexdigest() != PRE_DELGADO_PLA_PCL_PIN_SHA256:
+            raise AssertionError('Recovered 73a5d872 complete pin bytes differ')
+        cls.delgado_pla_pcl_parent_query_root = cls.fixture_root / 'pre-delgado-pla-pcl-query'
+        (cls.delgado_pla_pcl_parent_query_root / 'pins').mkdir(parents=True)
+        (cls.delgado_pla_pcl_parent_query_root / 'pins/legacy_baseline.json').write_bytes(cls.delgado_pla_pcl_parent_pin)
+
+    @classmethod
     def recover_ewurum_reactive_anchor(cls):
         """Recover the exact 29a33009 data and full pin before older append layers."""
         cls.ewurum_reactive_parent_root = cls.fixture_root / 'pre-ewurum_reactive-batch-data'
-        shutil.copytree(cls.original_root, cls.ewurum_reactive_parent_root)
+        shutil.copytree(cls.delgado_pla_pcl_parent_root, cls.ewurum_reactive_parent_root)
         data_root = cls.ewurum_reactive_parent_root / 'data'
         current = {name: json.loads((data_root / name).read_bytes())
                    for name in PRE_EWURUM_REACTIVE_DATA_SHA256}
@@ -1452,12 +1498,102 @@ class BaselineCompatibility(unittest.TestCase):
         with self.assertRaisesRegex(AssertionError, 'Recovered a592 catalog bytes differ'):
             recover_a592_catalogs(changed)
 
+    def assert_delgado_pla_pcl_parent_and_negative_guards(self):
+        """Check the new boundary without weakening the older frozen methods."""
+        expected = dict(self.expected)
+        expected.update({'data/' + name: digest for name, digest in PRE_DELGADO_PLA_PCL_DATA_SHA256.items()})
+        self.assertEqual(len(manifest(self.delgado_pla_pcl_parent_root)), 64)
+        self.assertEqual(manifest(self.delgado_pla_pcl_parent_root), expected)
+        current = {name: json.loads((self.current_root / 'data' / name).read_bytes())
+                   for name in PRE_DELGADO_PLA_PCL_DATA_SHA256}
+        parent = {name: json.loads((self.delgado_pla_pcl_parent_root / 'data' / name).read_bytes())
+                  for name in PRE_DELGADO_PLA_PCL_DATA_SHA256}
+        self.assertEqual(recover_pre_delgado_pla_pcl_catalogs(current), parent)
+        self.assertEqual(recover_pre_delgado_pla_pcl_catalogs(parent), parent)
+        self.assertEqual(len(current['materials.json']['identities']), 1175)
+        self.assertEqual(len(parent['materials.json']['identities']), 1168)
+        self.assertEqual(current['materials.json']['grades'], parent['materials.json']['grades'])
+        self.assertEqual(current['sources.json']['records'][:-1], parent['sources.json']['records'])
+        ledger, additions = delgado_pla_pcl_inventory()
+        self.assertEqual(len(ledger['packets']), 1)
+        self.assertEqual(additions['grades'], [])
+        self.assertEqual([row['id'] for row in additions['sources']], ['delgado_aguilar_2020_pla_pcl'])
+        self.assertEqual([row['id'] for row in additions['identities']], [
+            'mat_delgado2020_pla_pcl_b95_5', 'mat_delgado2020_pla_pcl_b90_10',
+            'mat_delgado2020_pla_pcl_b85_15', 'mat_delgado2020_pla_pcl_b80_20',
+            'mat_delgado2020_pla_pcl_b60_40', 'mat_delgado2020_pla_pcl_b40_60',
+            'mat_delgado2020_pla_pcl_b20_80'])
+        for filename, section, collection, kind in GROWTH_COLLECTIONS:
+            candidates = additions[kind]
+            if not candidates:
+                continue
+            for mutation in ('missing', 'changed', 'duplicate', 'old_record', 'metadata', 'mixed'):
+                changed = deepcopy(current)
+                rows = changed[filename][collection]
+                candidate = next(row for row in rows if row['id'] == candidates[0]['id'])
+                if mutation == 'missing':
+                    rows.remove(candidate)
+                elif mutation == 'changed':
+                    candidate['version'] = 'unreviewed'
+                elif mutation == 'duplicate':
+                    rows.append(deepcopy(candidate))
+                elif mutation == 'old_record':
+                    rows[0]['version'] = 'unreviewed'
+                elif mutation == 'metadata':
+                    changed[filename]['unreviewed'] = True
+                else:
+                    changed[filename] = deepcopy(parent[filename])
+                with self.subTest(delgado_collection=kind, mutation=mutation), self.assertRaisesRegex(
+                        AssertionError, 'Delgado PLA/PCL'):
+                    recover_pre_delgado_pla_pcl_catalogs(changed)
+            if len(candidates) > 1:
+                changed = deepcopy(current)
+                canonical_additions = sorted(candidates, key=lambda row: row['id'])
+                self.assertEqual(changed[filename][collection][-len(candidates):], canonical_additions)
+                changed[filename][collection][-len(candidates):] = reversed(canonical_additions)
+                with self.subTest(delgado_collection=kind, mutation='reordered'), self.assertRaisesRegex(
+                        AssertionError, 'Delgado PLA/PCL successor catalog order or bytes differ'):
+                    recover_pre_delgado_pla_pcl_catalogs(changed)
+        original_read = Path.read_bytes
+        for target in (DELGADO_PLA_PCL_LEDGER, DELGADO_PLA_PCL_PACKET):
+            def replaced(path):
+                return original_read(path) + (b' ' if path == target else b'')
+            with self.subTest(delgado_binding=target.name), patch.object(Path, 'read_bytes', replaced), \
+                    self.assertRaisesRegex(AssertionError, 'Delgado PLA/PCL .* bytes differ'):
+                recover_pre_delgado_pla_pcl_catalogs(current)
+        with self.resources(self.delgado_pla_pcl_parent_root, self.delgado_pla_pcl_parent_query_root):
+            with self.assertRaisesRegex(ValueError, 'Baseline pin was replaced'):
+                registry.baseline_digest()
+            with patch.object(registry, 'BASELINE_PIN', PRE_DELGADO_PLA_PCL_PIN_SHA256):
+                self.assertEqual(registry.baseline_digest(), PRE_DELGADO_PLA_PCL_PIN_SHA256)
+        with self.resources(self.delgado_pla_pcl_parent_root), self.assertRaisesRegex(
+                ValueError, 'Installed legacy baseline differs'):
+            registry.baseline_digest()
+
+    def assert_delgado_pla_pcl_parent_database_rejected(self):
+        for rich in (False, True):
+            with self.subTest(delgado_database_rich=rich):
+                review = self.review(rich)
+                path = self.work / ('73a5d872-v2.db' if rich else '73a5d872-legacy.db')
+                with self.resources(self.delgado_pla_pcl_parent_root, self.delgado_pla_pcl_parent_query_root), \
+                        patch.object(registry, 'BASELINE_PIN', PRE_DELGADO_PLA_PCL_PIN_SHA256):
+                    historical = self.make_registry(path, review, rich)
+                    before = historical.admit([review['records'][0]['candidate_id']])
+                raw = path.read_bytes()
+                rows = self.database_rows(path)
+                with self.assertRaisesRegex(ValueError, 'Initial baseline and review input cannot be replaced'):
+                    self.make_registry(path, review, rich)
+                self.assertEqual(path.read_bytes(), raw)
+                self.assertEqual(self.database_rows(path), rows)
+                self.assertEqual(historical.snapshot(), before)
+
     def test_ewurum_reactive_parent_manifest_and_catalog_recovery_remain_exact(self):
+        self.assert_delgado_pla_pcl_parent_and_negative_guards()
         expected = dict(self.expected)
         expected.update({'data/' + name: digest for name, digest in PRE_EWURUM_REACTIVE_DATA_SHA256.items()})
         self.assertEqual(len(manifest(self.ewurum_reactive_parent_root)), 64)
         self.assertEqual(manifest(self.ewurum_reactive_parent_root), expected)
-        current = {name: json.loads((self.current_root / 'data' / name).read_bytes())
+        current = {name: json.loads((self.delgado_pla_pcl_parent_root / 'data' / name).read_bytes())
                    for name in PRE_EWURUM_REACTIVE_DATA_SHA256}
         parent = {name: json.loads((self.ewurum_reactive_parent_root / 'data' / name).read_bytes())
                   for name in PRE_EWURUM_REACTIVE_DATA_SHA256}
@@ -1540,6 +1676,7 @@ class BaselineCompatibility(unittest.TestCase):
             registry.baseline_digest()
 
     def test_ewurum_reactive_parent_database_rejected_without_migration(self):
+        self.assert_delgado_pla_pcl_parent_database_rejected()
         for rich in (False, True):
             with self.subTest(rich=rich):
                 review = self.review(rich)

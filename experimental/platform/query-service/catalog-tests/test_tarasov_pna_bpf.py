@@ -50,9 +50,9 @@ class TarasovPNABPFQuery(unittest.TestCase):
 
     def test_five_nominal_recipes_keep_exact_measured_joins_and_unknowns(self):
         self.assertEqual(self.status['counts'], {
-            'local_catalog_unique_material_count': 1168,
-            'local_material_state_count': 1169,
-            'local_reference_property_count': 1180})
+            'local_catalog_unique_material_count': 1175,
+            'local_material_state_count': 1176,
+            'local_reference_property_count': 1187})
         for number, ratio, value in FACTS:
             with self.subTest(recipe=number):
                 identity_id = f'mat_tarasov2022_pna_bpf_{number}'
@@ -144,10 +144,10 @@ class TarasovPNABPFQuery(unittest.TestCase):
         status = self.client.get('/api/catalog/project/status').json()
         self.assertTrue(status['enabled'])
         self.assertEqual(status['counts'], {
-            'formal_project_admission_count': 1192,
-            'legacy_source_qualified_identity_count': 1168,
+            'formal_project_admission_count': 1199,
+            'legacy_source_qualified_identity_count': 1175,
             'reviewed_computed_composition_count': 24,
-            'categories': {'metal': 44, 'inorganic': 71, 'polymer': 30,
+            'categories': {'metal': 44, 'inorganic': 71, 'polymer': 37,
                            'composite': 37, 'natural': 1010}})
         data = {'version': status['version'], 'query': 'tarasov2022_pna_bpf',
                 'partition': 'legacy-source-qualified', 'limit': 100}

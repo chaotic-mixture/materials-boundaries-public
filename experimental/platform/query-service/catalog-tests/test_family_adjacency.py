@@ -366,9 +366,9 @@ class FamilyAdjacencyTests(unittest.TestCase):
                 self.index.neighbors(identity, direction=direction)
                 self.data(identity_id=identity, direction=direction)
         self.assertEqual(self.index.status(), before_status)
-        self.assertEqual(before_status['unique_identity_count'], 1168)
+        self.assertEqual(before_status['unique_identity_count'], 1175)
         self.assertEqual(before_status['identity_relationship_count'], 1)
-        self.assertEqual(before_status['membership_assertion_count'], 1173)
+        self.assertEqual(before_status['membership_assertion_count'], 1180)
         self.assertEqual(before_status['new_identities_admitted'], 0)
         self.assertFalse(before_status['provider_counts_combined'])
         for identity, before in before_rows.items():
