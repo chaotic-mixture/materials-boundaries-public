@@ -1,67 +1,37 @@
 {
   "schema_version": "template-kit-validation/1",
-  "status": "portability_correction_local_checks_passed_native_windows_pending",
-  "frozen_at_utc": "2026-10-26T07:28:50Z",
+  "status": "material_stage_closed_kit_validated_final_status_commit_ci_external",
+  "frozen_at_utc": "2026-10-26T07:57:47Z",
   "repository_path": "docs/development-handoff",
-  "correction_base_commit": "f8c83a08868594f7dc27bf5ea490f645b19b811a",
-  "correction_base_tree": "569b41d0654a3ba7732edeb9c6906382e8e6ec63",
+  "status_update_base_commit": "62e6395be066a2c69f33920c0f8567ee8f7965f3",
+  "status_update_base_tree": "49073341748f1b31ddd7446399e22a6f4bdf34d3",
   "material_base_commit": "3829ec97e396a73168951b7868b9a03d533948b8",
   "material_base_tree": "2846e3a7e80ca81e96849f7b1f9a6a7db419018a",
   "initial_contract_commit": "437950c414ea340eda340babe7b63dee9fcee535",
-  "prior_validation_sha256": "b9c6a176c5fb5bf3882864dcf4f91c114e5b214ebcc25739f614e0f411e2e08e",
-  "root_handoff_sha256": "782577235c0e3805027ed539abfd89c1c99852330b39b7cdebc5d2b296cc745e",
-  "scope": "Synthetic handoff harness portability and accurate gate/count accounting only. No project tests or manifest argv executed.",
+  "prior_validation_sha256": "7d4a94a9cbe7743d247a9916ae32e7d96db910d282e86d44d59c3d4bc29ea7a6",
+  "root_handoff_sha256": "6deba2767767bc5fb405e0ccc549c90d9e0b0a6c50bd82ec68bff36fe072a932",
+  "scope": "One status-only closure update. No executable, schema, task-contract, material or workflow change; no project tests or manifest argv executed.",
   "checks": {
     "schema_meta_validation": "passed",
-    "examples": {
-      "task-input.example.json": "structure_valid_not_dispatchable",
-      "task-input.ewurum.archival.json": "structure_valid_not_dispatchable"
-    },
+    "draft_and_archival_examples": "structure_valid_not_dispatchable",
     "python_syntax": "passed_without_bytecode_writes",
-    "corrected_synthetic_profiles": [
-      {
-        "path": "preflight-case-results.json",
-        "planned_cases": 46,
-        "executed_cases": 46,
-        "passed": 46,
-        "failed": 0,
-        "not_applicable": 0,
-        "negative_gates_certified": 41
-      },
-      {
-        "path": "preflight-case-results-autocrlf.json",
-        "planned_cases": 46,
-        "executed_cases": 46,
-        "passed": 46,
-        "failed": 0,
-        "not_applicable": 0,
-        "negative_gates_certified": 41
-      },
-      {
-        "path": "preflight-case-results-no-alias.json",
-        "planned_cases": 46,
-        "executed_cases": 45,
-        "passed": 45,
-        "failed": 0,
-        "not_applicable": 1,
-        "negative_gates_certified": 40
-      }
-    ],
-    "legacy_crlf_fault_experiment": "expected_failure_all_46_cases_failed_zero_negative_gates_certified",
-    "production_preflight_schema_and_pause_snapshot_unchanged": true,
+    "prior_synthetic_evidence_reused_only_for_exact_unchanged_source": true,
+    "native_windows_report": "45_passed_0_failed_1_not_applicable_5_positive_40_negative_gates",
+    "native_windows_summary_bytes_locally_read": false,
+    "hosted_material_ci_status_directly_rechecked": "both_completed_success_exact_material_sha",
+    "hosted_material_aggregate": "independently_reviewed_hosted_logs_reconcile_8_receipts_not_local_zip_replay",
     "markdown_local_or_base_links_verified": 26,
     "markdown_fences": "balanced",
     "material_base_checkout_unchanged": true,
     "public_path_identifier_scan": "passed_for_specified_internal_markers"
   },
   "limitations": [
-    "Original native Windows run reported 45 executions, 40 passes and 5 failures; later-gate coverage was not certified. The failure is preserved in portability-validation.json.",
-    "Corrected native Windows execution remains pending. Linux process-scoped CRLF Git configuration is not Windows certification.",
-    "The alias probe is not applicable when there is no distinct resolved target; 46 planned cases do not imply 46 executions.",
-    "The existing material pause/CI snapshot is unchanged, not refreshed; material-stage completion is not claimed.",
-    "This local candidate has not been published and no correction-commit hosted CI result exists here.",
-    "Preflight is an accidental-error guard, not a sandbox, user-authority authentication, scientific approval or source-rights review.",
-    "No material/workflow/runtime file or global Git configuration is changed."
+    "Material results certify 3829ec97; native handoff execution certifies unchanged code at 62e6395. Neither is relabelled as CI for the future status-documentation commit.",
+    "Final documentation commit/ref and hosted CI must be verified externally after publication. No recursive status commit is needed.",
+    "The native executor reported its summary hash; the authoring workspace read its final report, not the desktop-local summary/raw-log bytes.",
+    "Ubuntu full-root, Windows root subset, dedicated source/installed scopes and synthetic kit probes remain separate counts; skips are not passes.",
+    "Original Windows failure, masked-gate evidence and reported sandbox-initialization failure remain unsuccessful attempts.",
+    "The kit is an accidental-error guard, not a sandbox, scientific/rights approval or transfer of user authority. Engineering remains paused."
   ],
   "artifacts": {
     "ONBOARDING.md": {
@@ -69,20 +39,20 @@
       "sha256": "ab2c3a56a32510495560961d1899ee4bed5a957f62e575446331da4d24c82046"
     },
     "OPERATOR.zh.md": {
-      "bytes": 3432,
-      "sha256": "ab672b1c36c6fdc4c98f94ce781ef1e33d22c6fb8f533e39280a0384cd9e4468"
+      "bytes": 3817,
+      "sha256": "36fb3b1a98dfaaee0a00b14c4715cd9e3c456bf2820e732a3e243277e9e8b95a"
     },
     "PORTABILITY.md": {
-      "bytes": 4446,
-      "sha256": "4321513528b8f08323974ce06d00778adf0053f4cd564565492d54011714807e"
+      "bytes": 6001,
+      "sha256": "c80acee79c7c8ee73970d293edf1f916d1eb4b7838e376ec43a1b0eb811d0ef3"
     },
     "PROMPTS.md": {
       "bytes": 5242,
       "sha256": "a224314660ec502ab8c640934760c7f6a955a93dc9fb5b4c3a170f0a9d969724"
     },
     "README.md": {
-      "bytes": 3488,
-      "sha256": "3e30f983fb06d3ac5f502544b91d16636ee148502dc0cc0bc09d1db5b1868fac"
+      "bytes": 4034,
+      "sha256": "19fd0583deaa52ab343ba2e617301d6e1c428cb01a2b78e90d4a07f5f6d14e96"
     },
     "TASK_CONTRACT.md": {
       "bytes": 17574,
@@ -101,12 +71,12 @@
       "sha256": "e0b2bf4184a1da72968bdc5c702da3f9f22947287519801d24c13bdbe63b7e4d"
     },
     "pause-state.json": {
-      "bytes": 2799,
-      "sha256": "631117449773ca752f5ce8afba80524ba327739cc889b908ab73fbfa8cda57fa"
+      "bytes": 6374,
+      "sha256": "86f8e89dddf95498e3dda31fc3fbe7a860d31206572ea801b43426441f070cae"
     },
     "portability-validation.json": {
-      "bytes": 4597,
-      "sha256": "415458ac3c73ad6ad265166a8a5dc8f4ec63a6912af602cb22e8ca22ad8a39de"
+      "bytes": 6986,
+      "sha256": "d0fef34ca899abef110df07c78ea11c60e73a3950579d8ae5d94f032f484d7fb"
     },
     "preflight-case-results-autocrlf.json": {
       "bytes": 28158,

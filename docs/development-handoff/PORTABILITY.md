@@ -1,6 +1,6 @@
 # Synthetic fixture portability correction
 
-This corrects the local handoff-kit check harness from commit `f8c83a08868594f7dc27bf5ea490f645b19b811a`. It does not change `dispatch_preflight.py`, its schema, strict baseline hashing, material records, runtime behavior or workflows. A native Windows rerun of the correction is still required; Linux Git-setting emulation is not Windows certification.
+This corrects the local handoff-kit check harness from commit `f8c83a08868594f7dc27bf5ea490f645b19b811a`. It does not change `dispatch_preflight.py`, its schema, strict baseline hashing, material records, runtime behavior or workflows. The corrected native Windows profile has now passed as reported below; Linux Git-setting emulation remains separate evidence, not a substitute for Windows execution.
 
 ## Preserved failure
 
@@ -32,3 +32,11 @@ An intentionally faulty temporary copy replaced the corrected fixture writer wit
 Exact profile outcomes and hashes are in [the portability validation record](portability-validation.json), [the default Linux outcomes](preflight-case-results.json), [the CRLF Git-setting outcomes](preflight-case-results-autocrlf.json) and [the non-alias outcomes](preflight-case-results-no-alias.json). The unbundled native Windows failure and the Linux emulation are explicitly separate evidence.
 
 Run the corrected harness only in an authorized environment with existing development dependencies. Use the same pinned kit checkout and selected interpreter described in [onboarding](ONBOARDING.md). Record the actual planned/executed/not-applicable counts and intended-gate results; never require a fixed 46 executions on every platform or interpret a denial from the wrong gate as success.
+
+## Native Windows closure
+
+The native validation executor reported a successful run of the unchanged kit at `62e6395be066a2c69f33920c0f8567ee8f7965f3`, with independent read-only local review: **45 executions, 45 passes, zero failures and 1 not-applicable alias case**, all 5 positive controls and 40 negative gates correct. Exit code was 0; elapsed time was 6.140 seconds. The profile was CPython 3.11.0, Windows build 26200, jsonschema 4.26.0, inheriting `core.autocrlf=true`. All 20 source-file hashes matched the commit/manifest and the tracked checkout was clean.
+
+The authoring workspace read the executor's final report, **not** its Windows-local summary or raw log bytes. The executor-reported sanitized-summary SHA-256 is `35f0461370392865719c851f4f19353c0357282c97a8e9919e5cbafa47b87bad`; that unbundled artifact's bytes were not independently hashed here. Exact source hashes and these evidence limits are recorded in `portability-validation.json` under `corrected_native_windows`. This is one native profile, not a claim about every Windows/Python combination.
+
+The executor retained the original Windows failure, masked-gate evidence and a separate sandbox-initialization failure. These remain unsuccessful attempts, not successful test executions. The successful unchanged-source run closes the stated portability gate. It does not certify the later status-documentation commit's hosted CI; that must be verified externally after publication without a further self-referential status commit.

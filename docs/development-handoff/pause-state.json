@@ -1,7 +1,7 @@
 {
   "schema_version": "materials-boundaries-pause-snapshot/1",
   "material_expansion_paused": true,
-  "scope": "Public handoff snapshot, not a new task or a claim that the current stage is complete. No standing authority is transferred to readers or agents.",
+  "scope": "Material stage closed at the verified experimental boundary; engineering/material expansion stays paused. The validated handoff kit transfers no standing authority to readers or agents.",
   "runtime_snapshot": {
     "commit": "3829ec97e396a73168951b7868b9a03d533948b8",
     "tree": "2846e3a7e80ca81e96849f7b1f9a6a7db419018a",
@@ -30,31 +30,113 @@
       "conclusion": "success",
       "attempt": 1,
       "url": "https://github.com/chaotic-mixture/materials-boundaries-public/actions/runs/40264855280",
-      "observed_at_utc": "2026-10-26T06:08:47Z"
+      "observed_at_utc": "2026-10-26T07:53:11Z",
+      "completed_at_utc": "2026-10-26T04:45:17Z"
     },
     "general_ci": {
       "run_id": 40264855167,
       "name": "tests",
       "head_sha": "3829ec97e396a73168951b7868b9a03d533948b8",
-      "status": "in_progress",
-      "conclusion": null,
+      "status": "completed",
+      "conclusion": "success",
       "attempt": 1,
       "url": "https://github.com/chaotic-mixture/materials-boundaries-public/actions/runs/40264855167",
-      "observed_at_utc": "2026-10-26T06:08:47Z"
+      "observed_at_utc": "2026-10-26T07:53:11Z",
+      "completed_at_utc": "2026-10-26T07:21:32Z"
     },
-    "all_required_ci_complete": false,
-    "required_ci_terminal_result": null,
-    "stage_closed": false,
-    "stage_closed_utc": null,
-    "pending_gates": [
-      "General CI must reach its actual terminal result and required aggregate evidence must be reconciled.",
-      "Handoff publication does not establish material-stage closure or authorize another material batch."
-    ]
+    "all_required_ci_complete": true,
+    "required_ci_terminal_result": "success",
+    "stage_closed": true,
+    "stage_closed_utc": "2026-10-26T07:30:04Z",
+    "pending_gates": [],
+    "closure_evidence": {
+      "scope_commit": "3829ec97e396a73168951b7868b9a03d533948b8",
+      "review_basis": "Independent review of hosted job logs and the hosted aggregate; no local receipt-ZIP replay or bundled raw-log archive is claimed.",
+      "general_job_outcomes": {
+        "successful": 11,
+        "conditional_skipped": 19,
+        "skips_are_passes": false
+      },
+      "ubuntu_full_core": {
+        "python_versions": [
+          "3.11",
+          "3.12"
+        ],
+        "per_version": {
+          "root_ids": 1887,
+          "completed": 1887,
+          "passed": 1869,
+          "policy_skipped": 18,
+          "not_completed": 0
+        },
+        "root_inventory_sha256": "19a735217c29533c1137a6cfd95b2b58cf88e8cf649848e41012c510434446f7",
+        "hosted_receipts_reconciled": 8,
+        "aggregate_marker": "FULL_CORE_PARTITIONS_COMPLETE",
+        "aggregate_job_url": "https://github.com/chaotic-mixture/materials-boundaries-public/actions/runs/40264855167/job/121447346966",
+        "aggregate_artifact_id": 12633468367,
+        "reported_artifact_bytes": 1228,
+        "artifact_downloaded_and_replayed_locally": false
+      },
+      "windows_core_subset": {
+        "python_versions": [
+          "3.10",
+          "3.13"
+        ],
+        "per_version": {
+          "selected_methods": 526,
+          "passed": 512,
+          "platform_skipped": 14,
+          "root_ids_unselected": 1361,
+          "wheel_smoke": "success"
+        },
+        "job_urls": [
+          "https://github.com/chaotic-mixture/materials-boundaries-public/actions/runs/40264855167/job/121384910819",
+          "https://github.com/chaotic-mixture/materials-boundaries-public/actions/runs/40264855167/job/121384911013"
+        ],
+        "full_root_claim": false
+      },
+      "dedicated_runtime": {
+        "profiles": [
+          "Ubuntu Python 3.11",
+          "Windows Python 3.12"
+        ],
+        "per_profile": {
+          "source_groups": 14,
+          "source_executions": 439,
+          "source_distinct_methods": 435,
+          "replay_methods_already_included": 70,
+          "installed_groups": 8,
+          "installed_distinct_tests": 585,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cli_api_smoke": "success"
+        },
+        "job_urls": [
+          "https://github.com/chaotic-mixture/materials-boundaries-public/actions/runs/40264855280/job/121384911063",
+          "https://github.com/chaotic-mixture/materials-boundaries-public/actions/runs/40264855280/job/121384910855"
+        ]
+      },
+      "limits": [
+        "These results certify runtime commit 3829ec97 only, not later handoff/documentation commits.",
+        "Hosted conditional skips and policy/platform skips are not passes.",
+        "Distinct methods, repeated executions, installed tests and CLI/API smoke remain separate scopes."
+      ]
+    }
   },
   "handoff_artifact": {
-    "publication_status": "pending_independent_review_and_publication",
-    "published_commit": null,
-    "publication_note": "These CI records apply to the runtime base, not an uncreated documentation commit."
+    "readiness": "ready_within_verified_scope_for_new_explicitly_authorized_bounded_tasks",
+    "validated_published_commit": "62e6395be066a2c69f33920c0f8567ee8f7965f3",
+    "validated_published_tree": "49073341748f1b31ddd7446399e22a6f4bdf34d3",
+    "native_windows_validation": "passed_45_executions_plus_1_not_applicable",
+    "native_windows_evidence_reference": "portability-validation.json#/corrected_native_windows",
+    "closure_documentation_ci": {
+      "state_at_freeze": "pending_external_verification_after_publication",
+      "embedded_terminal_result": null,
+      "rule": "Verify the actual final documentation commit and its hosted CI externally. Do not recursively create another status commit merely to embed its own CI result."
+    },
+    "publication_note": "The pinned commit is the already-published, validated kit implementation. This later status snapshot does not self-certify its own future commit or CI."
   },
-  "resume_rule": "Do not start another material batch or reactivate development automatically. A new bounded task requires a current coordinator instruction and independently reviewed ready manifest after the relevant stopping condition is established."
+  "resume_rule": "Do not start another material batch or reactivate development automatically. A new bounded task requires a current coordinator instruction and independently reviewed ready manifest after the relevant stopping condition is established.",
+  "engineering_paused": true
 }

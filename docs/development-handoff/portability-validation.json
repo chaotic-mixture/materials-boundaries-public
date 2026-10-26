@@ -112,8 +112,53 @@
     "No global Git configuration changed.",
     "No strict baseline hashing, dispatch guard, schema, material file or workflow was relaxed or changed.",
     "Linux Git CRLF emulation is not native Windows certification.",
-    "Corrected native Windows execution remains pending.",
+    "Corrected native Windows execution passed on the stated CPython 3.11.0 / Windows build 26200 profile; see source-bound report and access limitations.",
     "Not-applicable alias cases are not executed passes; negative cases need their intended rejection gate and a successful matching positive control."
   ],
-  "harness_sha256": "4fc0d0711744cabbe6e9c0bd32d443421f07a8e05d73c2b961d05a407db4fab9"
+  "harness_sha256": "4fc0d0711744cabbe6e9c0bd32d443421f07a8e05d73c2b961d05a407db4fab9",
+  "corrected_native_windows": {
+    "tested_commit": "62e6395be066a2c69f33920c0f8567ee8f7965f3",
+    "tested_tree": "49073341748f1b31ddd7446399e22a6f4bdf34d3",
+    "evidence_kind": "Native validation executor final report, including a reported independent read-only local review; not a rerun by this documentation author.",
+    "report_read_at_utc": "2026-10-26T07:52:12Z",
+    "environment": {
+      "python_implementation": "CPython",
+      "python_version": "3.11.0",
+      "platform": "Windows",
+      "windows_build": 26200,
+      "jsonschema_version": "4.26.0",
+      "core.autocrlf": "true"
+    },
+    "planned_cases": 46,
+    "executed_cases": 45,
+    "passed": 45,
+    "failed": 0,
+    "not_applicable": 1,
+    "not_applicable_case": "resolved_interpreter_alias_rejected",
+    "positive_controls_passed": 5,
+    "negative_gates_certified": 40,
+    "unexpected_gate_rejections": 0,
+    "exit_code": 0,
+    "duration_seconds": 6.14,
+    "source_files_verified": 20,
+    "source_bytes_match_commit_and_manifest": true,
+    "tracked_checkout_clean": true,
+    "source_sha256": {
+      "check_preflight_cases.py": "4fc0d0711744cabbe6e9c0bd32d443421f07a8e05d73c2b961d05a407db4fab9",
+      "dispatch_preflight.py": "e0b2bf4184a1da72968bdc5c702da3f9f22947287519801d24c13bdbe63b7e4d",
+      "task-input.schema.json": "15ab477e9e7cf6055330e5438916bde8395d7597d873074eaa6198827068cbff"
+    },
+    "executor_reported_sanitized_summary": {
+      "sha256": "35f0461370392865719c851f4f19353c0357282c97a8e9919e5cbafa47b87bad",
+      "bytes_materialized_in_authoring_workspace": false,
+      "raw_bytes_hash_independently_verified_here": false,
+      "bundled": false
+    },
+    "retained_attempt_history": "The executor retained the original Windows failure, masked-gate evidence and a separate sandbox-initialization failure. Those failures are not removed or counted as successful test executions.",
+    "limits": [
+      "The report certifies the unchanged harness/preflight/schema at the tested commit, not every Windows/Python combination.",
+      "The author read the executor final report, not the Windows-local summary file or raw logs. The reported summary hash is provenance, not a claim of local byte access.",
+      "No private machine paths or credentials are transferred."
+    ]
+  }
 }
