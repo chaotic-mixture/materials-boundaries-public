@@ -1,0 +1,252 @@
+{
+  "schema": "material-batch-preparation-receipt/1",
+  "batch_id": "delgado-pla-pcl-20261026",
+  "baseline_commit": "437950c414ea340eda340babe7b63dee9fcee535",
+  "prepared_packet_sha256": "f617a9f279b285895545de7d74e082123a9879906af40f25eb81b3db48f1f481",
+  "prepared_packet_bytes": 261225,
+  "spec_canonical_sha256": "24de7492f68e111abed0b629ee418f2ad08c8105daaf5d91a98b67a38f4ad44f",
+  "inputs": {
+    "experimental/material-batches/delgado-pla-pcl-20261026/packet-spec.json": {
+      "bytes": 125376,
+      "sha256": "e33dfbadc9b03f1b69c96214de0c94ba473270abe3a74e324b6b7d4e234ffee4"
+    },
+    "experimental/material-batches/delgado-pla-pcl-20261026/source-review.json": {
+      "bytes": 15790,
+      "sha256": "48fba3088d281857d26db6da6a9565f73497344217ac6ccfec2fa03a0e67815c"
+    },
+    "experimental/material-batches/delgado-pla-pcl-20261026/identity-review.json": {
+      "bytes": 1305534,
+      "sha256": "d95e1fcbc15d12a33c967c9e85decf859f5455a9ebc4a8a11a24f0fcf375ca0b"
+    },
+    "experimental/material-batches/delgado-pla-pcl-20261026/build_identity_review.py": {
+      "bytes": 28796,
+      "sha256": "5c491e52e9c4e411abf9f54040d83f43cd8dd05769e862169b5e548ff16b2e2b"
+    },
+    "experimental/material-batches/delgado-pla-pcl-20261026/README.md": {
+      "bytes": 8975,
+      "sha256": "3d9ccb80bae8fdac7ef50cdea21a227c1b72c25ac3054c51e387271697feb76a"
+    },
+    "materials_boundaries/data/materials.json": {
+      "bytes": 9848887,
+      "sha256": "01e04f88e13685e5e5624abeee4dd0ffce8f6f7e32708e4b30420180c70c5000"
+    },
+    "materials_boundaries/data/reference_properties.json": {
+      "bytes": 22512910,
+      "sha256": "8daa3b067fc166e25bdf89e9585c4ea4b6f421a918780c2a83e395461dc1c454"
+    },
+    "materials_boundaries/data/sources.json": {
+      "bytes": 297220,
+      "sha256": "c5eecc0e7c64d9ef4af623f0800d947cec8a7f91570633b45b053d6ecb0c75aa"
+    }
+  },
+  "output_bytes_and_mtime_unchanged": true,
+  "inputs_unchanged": true,
+  "runtime_catalogs_unchanged": true,
+  "report": {
+    "baseline_sha256": {
+      "materials": "01e04f88e13685e5e5624abeee4dd0ffce8f6f7e32708e4b30420180c70c5000",
+      "reference_properties": "8daa3b067fc166e25bdf89e9585c4ea4b6f421a918780c2a83e395461dc1c454",
+      "sources": "c5eecc0e7c64d9ef4af623f0800d947cec8a7f91570633b45b053d6ecb0c75aa"
+    },
+    "before": {
+      "identities": 1168,
+      "grades": 31,
+      "states": 1169,
+      "properties": 1180,
+      "sources": 128,
+      "categories": {
+        "metal": 32,
+        "inorganic": 59,
+        "polymer": 30,
+        "composite": 37,
+        "natural": 1010
+      }
+    },
+    "after": {
+      "identities": 1175,
+      "grades": 31,
+      "states": 1176,
+      "properties": 1187,
+      "sources": 129,
+      "categories": {
+        "metal": 32,
+        "inorganic": 59,
+        "polymer": 37,
+        "composite": 37,
+        "natural": 1010
+      }
+    },
+    "delta": {
+      "identities": 7,
+      "grades": 0,
+      "states": 7,
+      "properties": 7,
+      "sources": 1,
+      "categories": {
+        "metal": 0,
+        "inorganic": 0,
+        "polymer": 7,
+        "composite": 0,
+        "natural": 0
+      }
+    },
+    "formal_admitted_delta": 0,
+    "handoff_ready": true,
+    "pending_gates": [],
+    "identity_crosswalk": [
+      {
+        "identity_id": "mat_delgado2020_pla_pcl_b20_80",
+        "source_id": "delgado_aguilar_2020_pla_pcl",
+        "source_designations": [
+          "B20/80"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "delgado_aguilar_2020_pla_pcl",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+            "locator": "Table 1, B20/80 row, PLA and PCL wt% and V_PCL columns; Section 2.2",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "The finite 22-input audit at baseline 437950c414ea340eda340babe7b63dee9fcee535 is reproducible with the adjacent build_identity_review.py and identity-review.json. The seven explicit nominal PLA/PCL mass recipes are absent from recorded formulation scopes. Existing Porima PLA, Ultimaker Tough PLA and Proto-pasta conductive PLA have incomplete full-composition disclosure; unknown additives do not prove PCL absence or global non-equivalence. Tough PLA is one identity with Black and White states and unspecified acrylic chemistry, not verified PMMA. Nominal recipe differences support conditional distinct candidate identities; source year, labels, suppliers, processing, specimens and differing modulus values alone do not."
+      },
+      {
+        "identity_id": "mat_delgado2020_pla_pcl_b40_60",
+        "source_id": "delgado_aguilar_2020_pla_pcl",
+        "source_designations": [
+          "B40/60"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "delgado_aguilar_2020_pla_pcl",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+            "locator": "Table 1, B40/60 row, PLA and PCL wt% and V_PCL columns; Section 2.2",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "The finite 22-input audit at baseline 437950c414ea340eda340babe7b63dee9fcee535 is reproducible with the adjacent build_identity_review.py and identity-review.json. The seven explicit nominal PLA/PCL mass recipes are absent from recorded formulation scopes. Existing Porima PLA, Ultimaker Tough PLA and Proto-pasta conductive PLA have incomplete full-composition disclosure; unknown additives do not prove PCL absence or global non-equivalence. Tough PLA is one identity with Black and White states and unspecified acrylic chemistry, not verified PMMA. Nominal recipe differences support conditional distinct candidate identities; source year, labels, suppliers, processing, specimens and differing modulus values alone do not."
+      },
+      {
+        "identity_id": "mat_delgado2020_pla_pcl_b60_40",
+        "source_id": "delgado_aguilar_2020_pla_pcl",
+        "source_designations": [
+          "B60/40"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "delgado_aguilar_2020_pla_pcl",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+            "locator": "Table 1, B60/40 row, PLA and PCL wt% and V_PCL columns; Section 2.2",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "The finite 22-input audit at baseline 437950c414ea340eda340babe7b63dee9fcee535 is reproducible with the adjacent build_identity_review.py and identity-review.json. The seven explicit nominal PLA/PCL mass recipes are absent from recorded formulation scopes. Existing Porima PLA, Ultimaker Tough PLA and Proto-pasta conductive PLA have incomplete full-composition disclosure; unknown additives do not prove PCL absence or global non-equivalence. Tough PLA is one identity with Black and White states and unspecified acrylic chemistry, not verified PMMA. Nominal recipe differences support conditional distinct candidate identities; source year, labels, suppliers, processing, specimens and differing modulus values alone do not."
+      },
+      {
+        "identity_id": "mat_delgado2020_pla_pcl_b80_20",
+        "source_id": "delgado_aguilar_2020_pla_pcl",
+        "source_designations": [
+          "B80/20"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "delgado_aguilar_2020_pla_pcl",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+            "locator": "Table 1, B80/20 row, PLA and PCL wt% and V_PCL columns; Section 2.2",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "The finite 22-input audit at baseline 437950c414ea340eda340babe7b63dee9fcee535 is reproducible with the adjacent build_identity_review.py and identity-review.json. The seven explicit nominal PLA/PCL mass recipes are absent from recorded formulation scopes. Existing Porima PLA, Ultimaker Tough PLA and Proto-pasta conductive PLA have incomplete full-composition disclosure; unknown additives do not prove PCL absence or global non-equivalence. Tough PLA is one identity with Black and White states and unspecified acrylic chemistry, not verified PMMA. Nominal recipe differences support conditional distinct candidate identities; source year, labels, suppliers, processing, specimens and differing modulus values alone do not."
+      },
+      {
+        "identity_id": "mat_delgado2020_pla_pcl_b85_15",
+        "source_id": "delgado_aguilar_2020_pla_pcl",
+        "source_designations": [
+          "B85/15"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "delgado_aguilar_2020_pla_pcl",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+            "locator": "Table 1, B85/15 row, PLA and PCL wt% and V_PCL columns; Section 2.2",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "The finite 22-input audit at baseline 437950c414ea340eda340babe7b63dee9fcee535 is reproducible with the adjacent build_identity_review.py and identity-review.json. The seven explicit nominal PLA/PCL mass recipes are absent from recorded formulation scopes. Existing Porima PLA, Ultimaker Tough PLA and Proto-pasta conductive PLA have incomplete full-composition disclosure; unknown additives do not prove PCL absence or global non-equivalence. Tough PLA is one identity with Black and White states and unspecified acrylic chemistry, not verified PMMA. Nominal recipe differences support conditional distinct candidate identities; source year, labels, suppliers, processing, specimens and differing modulus values alone do not."
+      },
+      {
+        "identity_id": "mat_delgado2020_pla_pcl_b90_10",
+        "source_id": "delgado_aguilar_2020_pla_pcl",
+        "source_designations": [
+          "B90/10"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "delgado_aguilar_2020_pla_pcl",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+            "locator": "Table 1, B90/10 row, PLA and PCL wt% and V_PCL columns; Section 2.2",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "The finite 22-input audit at baseline 437950c414ea340eda340babe7b63dee9fcee535 is reproducible with the adjacent build_identity_review.py and identity-review.json. The seven explicit nominal PLA/PCL mass recipes are absent from recorded formulation scopes. Existing Porima PLA, Ultimaker Tough PLA and Proto-pasta conductive PLA have incomplete full-composition disclosure; unknown additives do not prove PCL absence or global non-equivalence. Tough PLA is one identity with Black and White states and unspecified acrylic chemistry, not verified PMMA. Nominal recipe differences support conditional distinct candidate identities; source year, labels, suppliers, processing, specimens and differing modulus values alone do not."
+      },
+      {
+        "identity_id": "mat_delgado2020_pla_pcl_b95_5",
+        "source_id": "delgado_aguilar_2020_pla_pcl",
+        "source_designations": [
+          "B95/5"
+        ],
+        "disposition": "distinct",
+        "evidence": [
+          {
+            "source_id": "delgado_aguilar_2020_pla_pcl",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+            "locator": "Table 1, B95/5 row, PLA and PCL wt% and V_PCL columns; Section 2.2",
+            "supports": [
+              "material_identity"
+            ]
+          }
+        ],
+        "note": "The finite 22-input audit at baseline 437950c414ea340eda340babe7b63dee9fcee535 is reproducible with the adjacent build_identity_review.py and identity-review.json. The seven explicit nominal PLA/PCL mass recipes are absent from recorded formulation scopes. Existing Porima PLA, Ultimaker Tough PLA and Proto-pasta conductive PLA have incomplete full-composition disclosure; unknown additives do not prove PCL absence or global non-equivalence. Tough PLA is one identity with Black and White states and unspecified acrylic chemistry, not verified PMMA. Nominal recipe differences support conditional distinct candidate identities; source year, labels, suppliers, processing, specimens and differing modulus values alone do not."
+      }
+    ]
+  },
+  "formal_admitted_delta": 0,
+  "preparation_attempts": [
+    {
+      "attempt": 1,
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_seconds": 5.016,
+      "log_sha256": "c7ec2c13c6d361e013b5d3e00976b28df446b7051f8cd05c62e0a88c1e156016",
+      "finished_utc": "2026-10-26T00:36:29.512034+00:00"
+    },
+    {
+      "attempt": 2,
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_seconds": 5.156,
+      "log_sha256": "8bc749d5904a8d2bbcdd87f55ae3ff22cc1fdff47ba2226fd875722baf29534d",
+      "finished_utc": "2026-10-26T00:36:34.691842+00:00"
+    }
+  ],
+  "boundary": "Candidate-only compiler replay; parent independent review remains required before runtime admission or publication."
+}
