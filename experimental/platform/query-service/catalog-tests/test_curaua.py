@@ -192,7 +192,7 @@ class CurauaQuery(unittest.TestCase):
         self.assertEqual(status['coverage']['composite']['supported'], 37)
         self.assertEqual(status['coverage']['natural']['supported'], 1010)
         # The reviewed overlay also supports the existing PBS/lignin composite.
-        self.assertEqual(status['coverage']['polymer']['supported'], 31)
+        self.assertEqual(status['coverage']['polymer']['supported'], 38)
         for key, _, _, _, _, _ in FACTS:
             identity_id = 'mat_czlonka2021_curaua_cf' + key
             response = self.client.post('/api/catalog/relationships/identity', json={**pin, 'identity_id': identity_id})

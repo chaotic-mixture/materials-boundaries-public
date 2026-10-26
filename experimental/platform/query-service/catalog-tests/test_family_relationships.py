@@ -262,7 +262,7 @@ class FamilyRelationshipTests(unittest.TestCase):
         from materials_boundaries.catalog import read_catalog
         original = read_catalog('materials')
         self.assertEqual(Counter(i['category'] for i in original['identities']),
-                         dict(natural=1010, metal=32, inorganic=59, polymer=30, composite=37))
+                         dict(natural=1010, metal=32, inorganic=59, polymer=37, composite=37))
         for identity in original['identities']:
             self.assertEqual(self.snapshot.record('identities', identity['id']), identity)
             self.assertEqual(self.index.identity(identity['id'])['legacy_category'], identity['category'])

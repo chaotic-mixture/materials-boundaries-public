@@ -14,7 +14,7 @@ class ReviewBoundaryTests(unittest.TestCase):
         self.assertEqual(boundary['formal_legacy_count'], 1175)
         self.assertEqual(boundary['baseline_commit'], 'bdb1e081d5860c4c69fbcd4ee41e01450dc7a921')
         self.assertEqual(boundary['source_sha256'][LEGACY[0]],
-                         '01e04f88e13685e5e5624abeee4dd0ffce8f6f7e32708e4b30420180c70c5000')
+                         'c3b19b50ffa13a018856538734444fa7ff5a510f00f7cc961077f137bbc63ec7')
         self.assertEqual(boundary['formal_computed_composition_count'], 24)
         self.assertEqual(boundary['excluded_example_count'], 62)
         self.assertEqual(boundary['legacy_example_count'], 7)

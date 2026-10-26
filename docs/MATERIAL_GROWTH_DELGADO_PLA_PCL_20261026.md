@@ -101,4 +101,3 @@ and reject unknown images; no cross-call cache is introduced.
 Executed, failed, skipped and unrun coverage is recorded separately in
 [the integration validation report](../experimental/material-batches/delgado-pla-pcl-20261026/INTEGRATION_VALIDATION.md). No main merge, deployment, DOI registration
 or new authentication is included.
-

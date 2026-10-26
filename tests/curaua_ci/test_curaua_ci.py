@@ -22,6 +22,7 @@ ci = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(ci)
 sys.path.insert(0, str(ROOT / 'tests'))
 import ewurum_reactive_history as ewurum
+import delgado_pla_pcl_history as delgado
 
 
 class _CurauaCheckpointPath(type(ROOT)):
@@ -72,7 +73,13 @@ class CurauaCIContracts(unittest.TestCase):
                     if entry is None:
                         modules = sorted(p.stem for p in directory.glob('test*.py'))
                     else:
-                        _, paths = ewurum.checkpoint_inventory_view(group['directory'], entry['current'])
+                        latest = delgado.load_frozen(ROOT, delgado.DIRECTORY + 'checkpoint-inputs.json',
+                                                     delgado.INPUTS_SHA256)['inventories'][group['directory']]
+                        predecessor_ids, predecessor_paths = delgado.checkpoint_inventory_view(
+                            group['directory'], latest['current'])
+                        self.assertEqual(predecessor_ids, entry['current'])
+                        self.assertEqual(predecessor_paths, entry['current_paths'])
+                        _, paths = ewurum.checkpoint_inventory_view(group['directory'], latest['current'])
                         modules = sorted(Path(path).stem for path in paths)
                     self.assertEqual(group['modules'], modules)
 

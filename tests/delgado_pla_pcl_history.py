@@ -14,10 +14,10 @@ ROOT = Path(__file__).resolve().parents[1]
 BASELINE = "73a5d872c210bbde5b3c0548d710869e87626691"
 DIRECTORY = "tests/delgado_pla_pcl_runtime/"
 DATA_SHA256 = "d7388982f3a037e764270538684c33e5d5af8c884559bbd1dba311637ac67c3d"
-FILES_SHA256 = "a28f78a39c21adb90e869f40cc8b18f337bffad155c18ff0a9584a3dc794d681"
-REGISTRY_SHA256 = "8f3b0b3c7ddb9ee2cf31bfdc2fe411c5b2ef0c3c6ded25438f05aba14f68fca9"
+FILES_SHA256 = "417d01209289ce08e0ea827657f8d63ea366324a2be5c64aa8a2b22065042b9e"
+REGISTRY_SHA256 = "33c389e892b5185bf780f439adc4ca64fc4ec0616fe304f7418325e3e51ea1ae"
 DOCUMENTS_SHA256 = "a8418b9c3e585397dd9c458791f3da679e5c8067b79a45525aa80cf4f61f3b04"
-INPUTS_SHA256 = "b653294a80074d113cdd9408f88b03b2bf8a1ff82c1db6b7fae9ae3aaf5152c2"
+INPUTS_SHA256 = "70085ceeb09a144e8c457391ae41ecf7ac6e0f774305a9156def6e52937336a1"
 CATALOG_PATHS = {
     "materials": "materials_boundaries/data/materials.json",
     "properties": "materials_boundaries/data/reference_properties.json",

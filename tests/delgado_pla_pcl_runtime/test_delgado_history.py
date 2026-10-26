@@ -44,6 +44,19 @@ def manifest():
     return history.load_frozen(ROOT, history.DIRECTORY + 'checkpoint-inputs.json', history.INPUTS_SHA256)
 
 
+def curaua_inventory_contract():
+    spec = importlib.util.spec_from_file_location(
+        'delgado_curaua_inventory_probe', ROOT / 'tests/curaua_ci/test_curaua_ci.py')
+    module = importlib.util.module_from_spec(spec)
+    previous_path = list(sys.path)
+    try:
+        spec.loader.exec_module(module)
+    finally:
+        sys.path[:] = previous_path
+    case = module.CurauaCIContracts()
+    return module, case.test_whole_group_inventories_are_explicit_and_have_no_missing_or_duplicate_ids
+
+
 class DelgadoPlaPclAppendPreservationTests(unittest.TestCase):
     def test_complete_exact_append_recovers_every_old_object_order_and_metadata(self):
         current = graph()
@@ -172,6 +185,25 @@ class DelgadoPlaPclCheckpointGuardTests(unittest.TestCase):
                     entry['current'][1:] + ['unknown.C.test_substituted']):
             with self.subTest(ids=ids), self.assertRaises(AssertionError):
                 curaua.checkpoint_inventory(QUERY, ids)
+        # Exercise the repaired historical caller, not only its lower-level helper.
+        previous, verify = curaua_inventory_contract()
+        verify()
+        saved_root = previous.ci.ROOT
+        original_projection = history.checkpoint_inventory_view
+        for malformed in (entry['previous'], entry['current'][:-1],
+                          entry['current'] + entry['current'][:1],
+                          entry['current'] + ['unknown.C.test_extra'],
+                          list(reversed(entry['current'])),
+                          entry['current'][1:] + ['unknown.C.test_substituted']):
+            def altered(relative, actual_ids, *, root=ROOT):
+                supplied = malformed if relative == QUERY else actual_ids
+                return original_projection(relative, supplied, root=root)
+            with self.subTest(actual_caller_ids=malformed), \
+                    patch.object(history, 'checkpoint_inventory_view', altered), self.assertRaises(AssertionError):
+                verify()
+            self.assertIs(history.checkpoint_inventory_view, original_projection)
+            self.assertIs(previous.ci.ROOT, saved_root)
+        verify()
 
     def test_inventory_rejects_changed_known_bytes_and_unlisted_new_files(self):
         entry = manifest()['inventories'][QUERY]
@@ -189,6 +221,21 @@ class DelgadoPlaPclCheckpointGuardTests(unittest.TestCase):
         with patch.object(Path, 'glob', extra), self.assertRaises(AssertionError):
             curaua.checkpoint_inventory(QUERY, entry['current'])
         self.assertEqual(history.checkpoint_inventory(QUERY, entry['current']), entry['previous'])
+        previous, verify = curaua_inventory_contract()
+        saved_root = previous.ci.ROOT
+        for target in (QUERY + '/test_delgado_pla_pcl.py', QUERY + '/test_baseline_compatibility.py'):
+            def changed(path):
+                return original(path) + (b' ' if path == ROOT / target else b'')
+            with self.subTest(actual_caller_path=target), patch.object(Path, 'read_bytes', changed), \
+                    self.assertRaises(AssertionError):
+                verify()
+            self.assertIs(Path.read_bytes, original)
+            self.assertIs(previous.ci.ROOT, saved_root)
+        with patch.object(Path, 'glob', extra), self.assertRaises(AssertionError):
+            verify()
+        self.assertIs(Path.glob, original_glob)
+        self.assertIs(previous.ci.ROOT, saved_root)
+        verify()
 
     def test_actual_nested_bruns_tarasov_kapoor_calls_keep_all_fixed_fingerprints(self):
         import test_bruns_borosilicate_ci as bruns

@@ -33,7 +33,7 @@ BRANCH_REF = 'refs/heads/experimental/delgado2020-pla-pcl-runtime'
 BATCH = 'experimental/material-batches/delgado-pla-pcl-20261026'
 PACKET_SHA256 = 'f617a9f279b285895545de7d74e082123a9879906af40f25eb81b3db48f1f481'
 MANIFEST_PATH = 'tests/delgado_pla_pcl_ci/manifest.json'
-MANIFEST_SHA256 = '7f10de1a5b01b33f915301b671891ba18f1879d3e3198d97d28abc9109cc7acf'
+MANIFEST_SHA256 = 'f76addb1e529c7938f195c559c7c1c10e3d81b4a2ac7b13b320990b7dffbd1d0'
 WORKFLOW_PATH = '.github/workflows/delgado-pla-pcl-runtime.yml'
 SOURCE_GROUPS = ('candidate', 'preservation', 'contracts', 'compatibility', 'partition-contracts',
                  'prior-candidate', 'prior-preservation', 'prior-contracts',
