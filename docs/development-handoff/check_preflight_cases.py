@@ -3,12 +3,93 @@
 from copy import deepcopy
 import hashlib
 import json
+import os
+import platform
 from pathlib import Path
 import subprocess
 import sys
 import tempfile
 sys.dont_write_bytecode = True
 from dispatch_preflight import inspect_manifest
+from jsonschema.exceptions import ValidationError
+
+# Fixed rejection oracles: an unrelated earlier rejection is a failure, not a pass.
+EXPECTED_REJECTIONS = {
+    'deny_draft': {'error_type': 'ValueError', 'message_prefix': 'Not dispatchable: status must be ready, never draft or archival'},
+    'deny_archival': {'error_type': 'ValueError', 'message_prefix': 'Not dispatchable: status must be ready, never draft or archival'},
+    'placeholder_output': {'error_type': 'ValidationError', 'validator': 'anyOf', 'instance_path': []},
+    'placeholder_command': {'error_type': 'ValidationError', 'validator': 'anyOf', 'instance_path': []},
+    'empty_sources': {'error_type': 'ValidationError', 'validator': 'minItems', 'instance_path': ['selection', 'source_ids']},
+    'duplicate_record_ids': {'error_type': 'ValidationError', 'validator': 'uniqueItems', 'instance_path': ['selection', 'record_ids']},
+    'wildcard_write': {'error_type': 'ValidationError', 'validator': 'pattern', 'instance_path': ['write_paths', 0]},
+    'traversal_write': {'error_type': 'ValidationError', 'validator': 'pattern', 'instance_path': ['write_paths', 0]},
+    'uncovered_output': {'error_type': 'ValueError', 'message_prefix': 'Outputs must be unique and covered by exact write paths'},
+    'all_inputs_optional': {'error_type': 'ValidationError', 'validator': 'contains', 'instance_path': ['inputs']},
+    'input_hash_mismatch': {'error_type': 'ValueError', 'message_prefix': 'Required input hash mismatch:'},
+    'missing_consumer_file': {'error_type': 'ValueError', 'message_prefix': 'Required input missing:'},
+    'input_escape': {'error_type': 'ValueError', 'message_prefix': 'Path escapes workspace:'},
+    'wrong_interpreter': {'error_type': 'ValueError', 'message_prefix': 'Run preflight with the exact declared interpreter invocation path'},
+    'resolved_interpreter_alias_rejected': {'error_type': 'ValueError', 'message_prefix': 'Run preflight with the exact declared interpreter invocation path'},
+    'wrong_python_prefix': {'error_type': 'ValueError', 'message_prefix': 'Declared Python environment prefix differs from the running environment'},
+    'unapproved_required_check': {'error_type': 'ValidationError', 'validator': 'const', 'instance_path': ['checks', 0, 'execution_authorized']},
+    'missing_resume_reference': {'error_type': 'ValidationError', 'validator': 'type', 'instance_path': ['authority', 'resume_authorization_reference']},
+    'next_stage_action': {'error_type': 'ValueError', 'message_prefix': 'Action is outside selected stage'},
+    'credential_action': {'error_type': 'ValidationError', 'validator': 'const', 'instance_path': ['authority', 'credential_actions_allowed']},
+    'network_candidate': {'error_type': 'ValueError', 'message_prefix': 'Network is outside this bounded lane'},
+    'unresolved_decision': {'error_type': 'ValidationError', 'validator': 'maxItems', 'instance_path': ['unresolved']},
+    'wrong_baseline_hash': {'error_type': 'ValueError', 'message_prefix': 'Baseline bytes mismatch: materials'},
+    'runtime_missing_approval': {'error_type': 'ValidationError', 'validator': 'contains', 'instance_path': ['independent_review', 'approval_receipts']},
+    'runtime_self_approval': {'error_type': 'ValueError', 'message_prefix': 'Approval absent or self-reviewed'},
+    'runtime_untyped_source_substitution': {'error_type': 'ValueError', 'message_prefix': 'Exact candidate_packet input is required'},
+    'runtime_wrong_subject': {'error_type': 'ValueError', 'message_prefix': 'Approval does not bind the exact typed gate subject'},
+    'publication_null_target': {'error_type': 'ValidationError', 'validator': 'type', 'instance_path': ['authority', 'publication_target']},
+    'publication_main_target': {'error_type': 'ValidationError', 'validator': 'pattern', 'instance_path': ['authority', 'publication_target']},
+    'publication_missing_implementation_review': {'error_type': 'ValidationError', 'validator': 'contains', 'instance_path': ['independent_review', 'approval_receipts']},
+    'implementation_subject_author_mismatch': {'error_type': 'ValueError', 'message_prefix': 'Implementation subject image/author mismatch'},
+    'publication_unknown_ci': {'error_type': 'ValidationError', 'validator': 'minItems', 'instance_path': ['authority', 'required_ci']},
+    'false_unittest_pip_install': {'error_type': 'ValueError', 'message_prefix': 'Unittest kind/entrypoint mismatch'},
+    'false_build_script_tokens': {'error_type': 'ValueError', 'message_prefix': 'Build kind/entrypoint or preinstalled-dependency flags mismatch'},
+    'unittest_no_pointer': {'error_type': 'ValidationError', 'validator': 'type', 'instance_path': ['checks', 0, 'inventory_json_pointer']},
+    'unittest_wrong_selector': {'error_type': 'KeyError', 'message_prefix': "'absent'"},
+    'inline_code': {'error_type': 'ValueError', 'message_prefix': 'Inline code is outside supported check patterns'},
+    'shell_operator': {'error_type': 'ValueError', 'message_prefix': 'Script check must directly name a Python script'},
+    'self_review_assignment': {'error_type': 'ValueError', 'message_prefix': 'Reviewer is not independent/assigned'},
+    'dirty_tracked_checkout': {'error_type': 'ValueError', 'message_prefix': 'Tracked checkout is dirty'},
+    'duplicate_json_keys': {'error_type': 'ValueError', 'message_prefix': 'Duplicate JSON key: status'},
+}
+
+POSITIVE_CASES = {
+    "ready_candidate_nonexecuting", "ready_runtime_with_independent_receipt",
+    "ready_publication_preconditions_only", "ready_exact_unittest_inventory_without_execution",
+    "ready_independent_candidate_review",
+}
+
+def observed_gate(error, root):
+    if isinstance(error, ValidationError):
+        return {"error_type": "ValidationError", "validator": error.validator,
+                "instance_path": list(error.absolute_path)}
+    return {"error_type": type(error).__name__,
+            "message": str(error).splitlines()[0].replace(str(root), "SYNTHETIC_WORKSPACE").replace(sys.executable, "PYTHON_EXECUTABLE")}
+
+def gate_matches(expected, observed):
+    for key, value in expected.items():
+        if key == "message_prefix":
+            if not observed.get("message", "").startswith(value):
+                return False
+        elif observed.get(key) != value:
+            return False
+    return True
+
+def control_for(name):
+    if name.startswith("runtime_"):
+        return "ready_runtime_with_independent_receipt"
+    if name.startswith("publication_") or name == "implementation_subject_author_mismatch":
+        return "ready_publication_preconditions_only"
+    if name.startswith("unittest_") or name == "false_unittest_pip_install":
+        return "ready_exact_unittest_inventory_without_execution"
+    if name == "self_review_assignment":
+        return "ready_independent_candidate_review"
+    return "ready_candidate_nonexecuting"
 
 
 def main():
@@ -17,7 +98,7 @@ def main():
         root = Path(tmp); repo = root / 'fixture'; repo.mkdir()
         def write(path, content):
             p = repo / path; p.parent.mkdir(parents=True, exist_ok=True)
-            p.write_text(content, encoding='utf-8'); return p
+            p.write_bytes(content.encode('utf-8')); return p
         def sha(p):
             return hashlib.sha256(p.read_bytes()).hexdigest()
         for name in ['materials','reference_properties','sources']:
@@ -31,6 +112,14 @@ def main():
             return subprocess.check_output(['git', *args], cwd=repo, stderr=subprocess.DEVNULL).decode().strip()
         git('init','-q'); git('add','.'); git('-c','user.name=Template QA','-c','user.email=qa@example.invalid','commit','-qm','Synthetic fixture')
         commit = git('rev-parse','HEAD'); tree = git('rev-parse','HEAD^{tree}')
+        # Compare raw bytes with committed blobs; do not relax or repin the production guard.
+        fixture_bytes_match = all((repo/'materials_boundaries/data'/f'{n}.json').read_bytes() ==
+                                  subprocess.check_output(['git','show',commit+':materials_boundaries/data/'+n+'.json'],cwd=repo)
+                                  for n in ['materials','reference_properties','sources'])
+        def config_value(name):
+            result = subprocess.run(['git','config','--get',name],cwd=repo,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+            return result.stdout.decode().strip() if result.returncode == 0 else None
+        git_settings = {'core.autocrlf': config_value('core.autocrlf'), 'core.eol': config_value('core.eol')}
         m = json.loads(Path(__file__).with_name('task-input.example.json').read_text())
         m.update(status='ready',task_id='synthetic-preflight',objective='Inspect synthetic fixture only',
                  assignee_id='worker-one',artifact_author_id='author-one',unresolved=[],stop_boundary='Return one candidate and stop')
@@ -49,13 +138,23 @@ def main():
                       'execution_authorized':True,'kind':'script','expected_inventory_path':None,'expected_inventory_sha256':None,
                       'inventory_json_pointer':None,'required_for_gate':True}]
         task = root / 'task.json'
+        def record(name, expected_accept, actual_accept, observed):
+            expected = {'kind': 'accepted_without_execution'} if expected_accept else EXPECTED_REJECTIONS[name]
+            matched = gate_matches(expected, observed)
+            outcomes.append({'case': name, 'status': 'executed', 'expected_dispatch_ready': expected_accept,
+                             'observed_dispatch_ready': actual_accept, 'expected_gate': expected,
+                             'observed_gate': observed, 'gate_matched': matched,
+                             'control_case': None if expected_accept else control_for(name)})
         def case(name, change=lambda x:None, accept=False):
-            value=deepcopy(m); change(value); task.write_text(json.dumps(value))
+            value=deepcopy(m); change(value); task.write_bytes(json.dumps(value).encode('utf-8'))
             try:
-                result=inspect_manifest(task,root); actual=True; detail=result['note']
-            except Exception as e:
-                actual=False; detail=str(e).splitlines()[0].replace(str(root), 'SYNTHETIC_WORKSPACE').replace(sys.executable, 'PYTHON_EXECUTABLE')
-            outcomes.append({'case':name,'expected_dispatch_ready':accept,'observed_dispatch_ready':actual,'passed':actual==accept,'detail':detail})
+                result=inspect_manifest(task,root)
+                actual=result.get('dispatch_ready') is True
+                observed={'kind':'accepted_without_execution'} if (actual and result.get('commands_executed') == 0 and
+                          result.get('authorization_verified') is False) else {'kind':'unexpected_result'}
+            except Exception as error:
+                actual=False; observed=observed_gate(error,root)
+            record(name,accept,actual,observed)
         case('ready_candidate_nonexecuting',accept=True)
         for status in ['draft','archival']:
             case('deny_'+status,lambda x,status=status:x.update(status=status))
@@ -71,8 +170,13 @@ def main():
         case('missing_consumer_file',lambda x:x['inputs'][0].update(consumer_path=str(root/'missing')))
         case('input_escape',lambda x:x['inputs'][0].update(consumer_path='/etc/passwd'))
         case('wrong_interpreter',lambda x:x['execution'].update(python_executable='/missing/python'))
-        if str(Path(sys.executable).resolve()) != sys.executable:
+        resolved_interpreter = str(Path(sys.executable).resolve())
+        if os.path.normcase(os.path.abspath(resolved_interpreter)) != os.path.normcase(os.path.abspath(sys.executable)):
             case('resolved_interpreter_alias_rejected',lambda x:(x['execution'].update(python_executable=str(Path(sys.executable).resolve())),x['checks'][0]['argv'].__setitem__(0,str(Path(sys.executable).resolve()))))
+        else:
+            outcomes.append({'case':'resolved_interpreter_alias_rejected','status':'not_applicable',
+                             'reason':'The current interpreter invocation has no distinct resolved alias target.',
+                             'expected_dispatch_ready':False,'observed_dispatch_ready':None,'passed':None})
         case('wrong_python_prefix',lambda x:x['execution'].update(python_prefix='/synthetic-wrong-prefix'))
         case('unapproved_required_check',lambda x:x['checks'][0].update(execution_authorized=False))
         case('missing_resume_reference',lambda x:x['authority'].update(resume_authorization_reference=None))
@@ -126,15 +230,37 @@ def main():
         case('self_review_assignment',lambda x:(independent(x),x.update(artifact_author_id='reviewer-one')))
         write('guide.md','Dirty tracked fixture\n');case('dirty_tracked_checkout')
         git('checkout','--','guide.md')
-        # Strict parser must reject duplicate keys before schema or dispatch.
-        task.write_text('{"status":"ready","status":"ready"}')
+        # Strict parser must reject the intended duplicate-key defect, not another failure.
+        task.write_bytes(b'{"status":"ready","status":"ready"}')
         try:
-            inspect_manifest(task,root); accepted=True
-        except Exception:
-            accepted=False
-        outcomes.append({'case':'duplicate_json_keys','expected_dispatch_ready':False,'observed_dispatch_ready':accepted,'passed':not accepted})
-    report={'scope':'Synthetic local template cases only; no Materials Boundaries tests, task commands, network or publication executed',
-            'cases':len(outcomes),'passed':sum(x['passed'] for x in outcomes),'failed':sum(not x['passed'] for x in outcomes),'outcomes':outcomes}
+            result=inspect_manifest(task,root)
+            record('duplicate_json_keys',False,True,{'kind':'unexpected_acceptance'})
+        except Exception as error:
+            record('duplicate_json_keys',False,False,observed_gate(error,root))
+    expected_ids = set(EXPECTED_REJECTIONS) | POSITIVE_CASES
+    actual_ids = [row['case'] for row in outcomes]
+    assert len(actual_ids) == len(set(actual_ids)) and set(actual_ids) == expected_ids
+    controls = {row['case']: (row['observed_dispatch_ready'] is True and row.get('gate_matched') is True and fixture_bytes_match)
+                for row in outcomes if row['case'] in POSITIVE_CASES}
+    for row in outcomes:
+        if row['status'] != 'executed':
+            continue
+        control_passed = True if row['control_case'] is None else controls.get(row['control_case'],False)
+        row['control_passed'] = control_passed
+        row['passed'] = (row['expected_dispatch_ready'] == row['observed_dispatch_ready'] and
+                         row['gate_matched'] and control_passed and fixture_bytes_match)
+    executed = [row for row in outcomes if row['status'] == 'executed']
+    report={'scope':'Synthetic local template checks only; no Materials Boundaries tests, task argv, network or publication executed',
+            'platform':sys.platform,'python_version':platform.python_version(),
+            'fixture_encoding':'UTF-8 bytes with explicitly authored LF; no platform text-mode translation',
+            'git_settings':git_settings,'fixture_bytes_equal_committed_baseline':fixture_bytes_match,
+            'planned_cases':len(outcomes),'cases':len(executed),'case_count_definition':'cases counts executions only; not_applicable is never a pass',
+            'passed':sum(row['passed'] for row in executed),'failed':sum(not row['passed'] for row in executed),
+            'not_applicable':len(outcomes)-len(executed),
+            'positive_controls_passed':sum(controls.values()),
+            'negative_gates_certified':sum(row['passed'] for row in executed if not row['expected_dispatch_ready']),
+            'unexpected_gate_rejections':[row['case'] for row in executed if not row['observed_dispatch_ready'] and not row['gate_matched']],
+            'outcomes':outcomes}
     print(json.dumps(report,indent=2))
     return 0 if not report['failed'] else 1
 

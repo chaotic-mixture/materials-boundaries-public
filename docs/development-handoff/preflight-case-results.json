@@ -1,328 +1,963 @@
 {
-  "scope": "Synthetic local template cases only; no Materials Boundaries tests, task commands, network or publication executed",
+  "scope": "Synthetic local template checks only; no Materials Boundaries tests, task argv, network or publication executed",
+  "platform": "linux",
+  "python_version": "3.12.14",
+  "fixture_encoding": "UTF-8 bytes with explicitly authored LF; no platform text-mode translation",
+  "git_settings": {
+    "core.autocrlf": null,
+    "core.eol": null
+  },
+  "fixture_bytes_equal_committed_baseline": true,
+  "planned_cases": 46,
   "cases": 46,
+  "case_count_definition": "cases counts executions only; not_applicable is never a pass",
   "passed": 46,
   "failed": 0,
+  "not_applicable": 0,
+  "positive_controls_passed": 5,
+  "negative_gates_certified": 41,
+  "unexpected_gate_rejections": [],
   "outcomes": [
     {
       "case": "ready_candidate_nonexecuting",
+      "status": "executed",
       "expected_dispatch_ready": true,
       "observed_dispatch_ready": true,
-      "passed": true,
-      "detail": "Accidental-error guard only, not a sandbox or security validator. Actual current coordinator authorization and argv review are still required."
+      "expected_gate": {
+        "kind": "accepted_without_execution"
+      },
+      "observed_gate": {
+        "kind": "accepted_without_execution"
+      },
+      "gate_matched": true,
+      "control_case": null,
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "deny_draft",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
-      "passed": true,
-      "detail": "Not dispatchable: status must be ready, never draft or archival"
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Not dispatchable: status must be ready, never draft or archival"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Not dispatchable: status must be ready, never draft or archival"
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "deny_archival",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
-      "passed": true,
-      "detail": "Not dispatchable: status must be ready, never draft or archival"
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Not dispatchable: status must be ready, never draft or archival"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Not dispatchable: status must be ready, never draft or archival"
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "placeholder_output",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
-      "passed": true,
-      "detail": "{'schema_version': 'materials-boundaries-task-envelope/0.1-draft', 'status': 'ready', 'task_id': 'synthetic-preflight', 'stage': 'candidate', 'objective': 'Inspect synthetic fixture only', 'repository': {'url': 'https://github.com/chaotic-mixture/materials-boundaries-public', 'baseline_commit': '807d0ec34b5501bb087809258b4675f66e8b835e', 'baseline_tree': 'c10fb86732ada4421a031959498d7cd38db11ab3', 'baseline_catalog_sha256': {'materials': 'ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356', 'reference_properties': 'ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356', 'sources': 'ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356'}, 'checkout_commit': '807d0ec34b5501bb087809258b4675f66e8b835e', 'checkout_tree': 'c10fb86732ada4421a031959498d7cd38db11ab3'}, 'authority': {'instruction_reference': 'Synthetic case only, not real user authority', 'allowed_actions': ['read_inputs', 'write_candidate', 'run_approved_checks'], 'network_allowed': False, 'credential_actions_allowed': False, 'publication_target': None, 'resume_authorization_reference': 'Synthetic coordinator fixture', 'required_ci': []}, 'selection': {'source_ids': ['source_one'], 'record_ids': ['record_one'], 'existing_contract_paths': ['guide.md'], 'proposed_delta': {'identities': 0, 'grades': 0, 'states': 0, 'properties': 0, 'sources': 0}, 'actual_admitted_delta_at_start': {'identities': 0, 'grades': 0, 'states': 0, 'properties': 0, 'sources': 0}}, 'inputs': [{'path': 'selected-evidence.json', 'raw_sha256': '729cd4435656683931ea719191f6786bbca51754bd7e573f413a655d71fdde49', 'purpose': 'Synthetic input', 'consumer_path': 'SYNTHETIC_WORKSPACE/fixture/selected-evidence.json', 'required': True, 'role': 'source_evidence'}], 'read_paths': ['guide.md'], 'write_paths': ['outputs/result.json'], 'checks': [{'id': 'script_check', 'argv': ['PYTHON_EXECUTABLE', 'scripts/check_fixture.py'], 'verified_command_source': 'guide.md', 'execution_authorized': True, 'kind': 'script', 'expected_inventory_path': None, 'expected_inventory_sha256': None, 'inventory_json_pointer': None, 'required_for_gate': True}], 'outputs': [{'path': 'REPLACE_OUTPUT.json', 'purpose': 'Synthetic result'}], 'independent_review': {'reviewer_assignment': 'reviewer-one', 'reviewer_is_not_author': True, 'approval_receipts': []}, 'limits': {'max_changed_paths': 1, 'max_repair_iterations': 1, 'wall_time_minutes_before_escalation': 30}, 'stop_boundary': 'Return one candidate and stop', 'unresolved': [], 'assignee_id': 'worker-one', 'artifact_author_id': 'author-one', 'execution': {'cwd': 'SYNTHETIC_WORKSPACE/fixture', 'python_executable': 'PYTHON_EXECUTABLE', 'dependencies': 'preinstalled-only', 'python_prefix': '/opt/codex/runtimes/codex-primary-runtime/dependencies/python'}} is not valid under any of the given schemas"
+      "expected_gate": {
+        "error_type": "ValidationError",
+        "validator": "anyOf",
+        "instance_path": []
+      },
+      "observed_gate": {
+        "error_type": "ValidationError",
+        "validator": "anyOf",
+        "instance_path": []
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "placeholder_command",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
-      "passed": true,
-      "detail": "{'schema_version': 'materials-boundaries-task-envelope/0.1-draft', 'status': 'ready', 'task_id': 'synthetic-preflight', 'stage': 'candidate', 'objective': 'Inspect synthetic fixture only', 'repository': {'url': 'https://github.com/chaotic-mixture/materials-boundaries-public', 'baseline_commit': '807d0ec34b5501bb087809258b4675f66e8b835e', 'baseline_tree': 'c10fb86732ada4421a031959498d7cd38db11ab3', 'baseline_catalog_sha256': {'materials': 'ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356', 'reference_properties': 'ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356', 'sources': 'ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356'}, 'checkout_commit': '807d0ec34b5501bb087809258b4675f66e8b835e', 'checkout_tree': 'c10fb86732ada4421a031959498d7cd38db11ab3'}, 'authority': {'instruction_reference': 'Synthetic case only, not real user authority', 'allowed_actions': ['read_inputs', 'write_candidate', 'run_approved_checks'], 'network_allowed': False, 'credential_actions_allowed': False, 'publication_target': None, 'resume_authorization_reference': 'Synthetic coordinator fixture', 'required_ci': []}, 'selection': {'source_ids': ['source_one'], 'record_ids': ['record_one'], 'existing_contract_paths': ['guide.md'], 'proposed_delta': {'identities': 0, 'grades': 0, 'states': 0, 'properties': 0, 'sources': 0}, 'actual_admitted_delta_at_start': {'identities': 0, 'grades': 0, 'states': 0, 'properties': 0, 'sources': 0}}, 'inputs': [{'path': 'selected-evidence.json', 'raw_sha256': '729cd4435656683931ea719191f6786bbca51754bd7e573f413a655d71fdde49', 'purpose': 'Synthetic input', 'consumer_path': 'SYNTHETIC_WORKSPACE/fixture/selected-evidence.json', 'required': True, 'role': 'source_evidence'}], 'read_paths': ['guide.md'], 'write_paths': ['outputs/result.json'], 'checks': [{'id': 'script_check', 'argv': ['PYTHON_EXECUTABLE', 'REPLACE_SCRIPT.py'], 'verified_command_source': 'guide.md', 'execution_authorized': True, 'kind': 'script', 'expected_inventory_path': None, 'expected_inventory_sha256': None, 'inventory_json_pointer': None, 'required_for_gate': True}], 'outputs': [{'path': 'outputs/result.json', 'purpose': 'Synthetic result'}], 'independent_review': {'reviewer_assignment': 'reviewer-one', 'reviewer_is_not_author': True, 'approval_receipts': []}, 'limits': {'max_changed_paths': 1, 'max_repair_iterations': 1, 'wall_time_minutes_before_escalation': 30}, 'stop_boundary': 'Return one candidate and stop', 'unresolved': [], 'assignee_id': 'worker-one', 'artifact_author_id': 'author-one', 'execution': {'cwd': 'SYNTHETIC_WORKSPACE/fixture', 'python_executable': 'PYTHON_EXECUTABLE', 'dependencies': 'preinstalled-only', 'python_prefix': '/opt/codex/runtimes/codex-primary-runtime/dependencies/python'}} is not valid under any of the given schemas"
+      "expected_gate": {
+        "error_type": "ValidationError",
+        "validator": "anyOf",
+        "instance_path": []
+      },
+      "observed_gate": {
+        "error_type": "ValidationError",
+        "validator": "anyOf",
+        "instance_path": []
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "empty_sources",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
-      "passed": true,
-      "detail": "[] should be non-empty"
+      "expected_gate": {
+        "error_type": "ValidationError",
+        "validator": "minItems",
+        "instance_path": [
+          "selection",
+          "source_ids"
+        ]
+      },
+      "observed_gate": {
+        "error_type": "ValidationError",
+        "validator": "minItems",
+        "instance_path": [
+          "selection",
+          "source_ids"
+        ]
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "duplicate_record_ids",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
-      "passed": true,
-      "detail": "['one', 'one'] has non-unique elements"
+      "expected_gate": {
+        "error_type": "ValidationError",
+        "validator": "uniqueItems",
+        "instance_path": [
+          "selection",
+          "record_ids"
+        ]
+      },
+      "observed_gate": {
+        "error_type": "ValidationError",
+        "validator": "uniqueItems",
+        "instance_path": [
+          "selection",
+          "record_ids"
+        ]
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "wildcard_write",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
-      "passed": true,
-      "detail": "'scripts/**' does not match '^(?!/)(?!.*(?:^|/)\\\\.{1,2}(?:/|$))[A-Za-z0-9_.@+-]+(?:/[A-Za-z0-9_.@+-]+)*$'"
+      "expected_gate": {
+        "error_type": "ValidationError",
+        "validator": "pattern",
+        "instance_path": [
+          "write_paths",
+          0
+        ]
+      },
+      "observed_gate": {
+        "error_type": "ValidationError",
+        "validator": "pattern",
+        "instance_path": [
+          "write_paths",
+          0
+        ]
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "traversal_write",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
-      "passed": true,
-      "detail": "'../../outside' does not match '^(?!/)(?!.*(?:^|/)\\\\.{1,2}(?:/|$))[A-Za-z0-9_.@+-]+(?:/[A-Za-z0-9_.@+-]+)*$'"
+      "expected_gate": {
+        "error_type": "ValidationError",
+        "validator": "pattern",
+        "instance_path": [
+          "write_paths",
+          0
+        ]
+      },
+      "observed_gate": {
+        "error_type": "ValidationError",
+        "validator": "pattern",
+        "instance_path": [
+          "write_paths",
+          0
+        ]
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "uncovered_output",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
-      "passed": true,
-      "detail": "Outputs must be unique and covered by exact write paths"
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Outputs must be unique and covered by exact write paths"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Outputs must be unique and covered by exact write paths"
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "all_inputs_optional",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
-      "passed": true,
-      "detail": "[{'path': 'selected-evidence.json', 'raw_sha256': None, 'purpose': 'Synthetic input', 'consumer_path': None, 'required': False, 'role': 'source_evidence'}] does not contain items matching the given schema"
+      "expected_gate": {
+        "error_type": "ValidationError",
+        "validator": "contains",
+        "instance_path": [
+          "inputs"
+        ]
+      },
+      "observed_gate": {
+        "error_type": "ValidationError",
+        "validator": "contains",
+        "instance_path": [
+          "inputs"
+        ]
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "input_hash_mismatch",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
-      "passed": true,
-      "detail": "Required input hash mismatch: SYNTHETIC_WORKSPACE/fixture/selected-evidence.json"
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Required input hash mismatch:"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Required input hash mismatch: SYNTHETIC_WORKSPACE/fixture/selected-evidence.json"
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "missing_consumer_file",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
-      "passed": true,
-      "detail": "Required input missing: SYNTHETIC_WORKSPACE/missing"
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Required input missing:"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Required input missing: SYNTHETIC_WORKSPACE/missing"
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "input_escape",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
-      "passed": true,
-      "detail": "Path escapes workspace: /etc/passwd"
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Path escapes workspace:"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Path escapes workspace: /etc/passwd"
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "wrong_interpreter",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
-      "passed": true,
-      "detail": "Run preflight with the exact declared interpreter invocation path, without resolving venv symlinks"
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Run preflight with the exact declared interpreter invocation path"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Run preflight with the exact declared interpreter invocation path, without resolving venv symlinks"
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "resolved_interpreter_alias_rejected",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
-      "passed": true,
-      "detail": "Run preflight with the exact declared interpreter invocation path, without resolving venv symlinks"
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Run preflight with the exact declared interpreter invocation path"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Run preflight with the exact declared interpreter invocation path, without resolving venv symlinks"
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "wrong_python_prefix",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
-      "passed": true,
-      "detail": "Declared Python environment prefix differs from the running environment"
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Declared Python environment prefix differs from the running environment"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Declared Python environment prefix differs from the running environment"
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "unapproved_required_check",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
-      "passed": true,
-      "detail": "True was expected"
+      "expected_gate": {
+        "error_type": "ValidationError",
+        "validator": "const",
+        "instance_path": [
+          "checks",
+          0,
+          "execution_authorized"
+        ]
+      },
+      "observed_gate": {
+        "error_type": "ValidationError",
+        "validator": "const",
+        "instance_path": [
+          "checks",
+          0,
+          "execution_authorized"
+        ]
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "missing_resume_reference",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
-      "passed": true,
-      "detail": "None is not of type 'string'"
+      "expected_gate": {
+        "error_type": "ValidationError",
+        "validator": "type",
+        "instance_path": [
+          "authority",
+          "resume_authorization_reference"
+        ]
+      },
+      "observed_gate": {
+        "error_type": "ValidationError",
+        "validator": "type",
+        "instance_path": [
+          "authority",
+          "resume_authorization_reference"
+        ]
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "next_stage_action",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
-      "passed": true,
-      "detail": "Action is outside selected stage"
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Action is outside selected stage"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Action is outside selected stage"
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "credential_action",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
-      "passed": true,
-      "detail": "False was expected"
+      "expected_gate": {
+        "error_type": "ValidationError",
+        "validator": "const",
+        "instance_path": [
+          "authority",
+          "credential_actions_allowed"
+        ]
+      },
+      "observed_gate": {
+        "error_type": "ValidationError",
+        "validator": "const",
+        "instance_path": [
+          "authority",
+          "credential_actions_allowed"
+        ]
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "network_candidate",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
-      "passed": true,
-      "detail": "Network is outside this bounded lane"
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Network is outside this bounded lane"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Network is outside this bounded lane"
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "unresolved_decision",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
-      "passed": true,
-      "detail": "['Identity unresolved'] is expected to be empty"
+      "expected_gate": {
+        "error_type": "ValidationError",
+        "validator": "maxItems",
+        "instance_path": [
+          "unresolved"
+        ]
+      },
+      "observed_gate": {
+        "error_type": "ValidationError",
+        "validator": "maxItems",
+        "instance_path": [
+          "unresolved"
+        ]
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "wrong_baseline_hash",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
-      "passed": true,
-      "detail": "Baseline bytes mismatch: materials"
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Baseline bytes mismatch: materials"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Baseline bytes mismatch: materials"
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "runtime_missing_approval",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
-      "passed": true,
-      "detail": "[] does not contain items matching the given schema"
+      "expected_gate": {
+        "error_type": "ValidationError",
+        "validator": "contains",
+        "instance_path": [
+          "independent_review",
+          "approval_receipts"
+        ]
+      },
+      "observed_gate": {
+        "error_type": "ValidationError",
+        "validator": "contains",
+        "instance_path": [
+          "independent_review",
+          "approval_receipts"
+        ]
+      },
+      "gate_matched": true,
+      "control_case": "ready_runtime_with_independent_receipt",
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "ready_runtime_with_independent_receipt",
+      "status": "executed",
       "expected_dispatch_ready": true,
       "observed_dispatch_ready": true,
-      "passed": true,
-      "detail": "Accidental-error guard only, not a sandbox or security validator. Actual current coordinator authorization and argv review are still required."
+      "expected_gate": {
+        "kind": "accepted_without_execution"
+      },
+      "observed_gate": {
+        "kind": "accepted_without_execution"
+      },
+      "gate_matched": true,
+      "control_case": null,
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "runtime_self_approval",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
-      "passed": true,
-      "detail": "Approval absent or self-reviewed"
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Approval absent or self-reviewed"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Approval absent or self-reviewed"
+      },
+      "gate_matched": true,
+      "control_case": "ready_runtime_with_independent_receipt",
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "runtime_untyped_source_substitution",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
-      "passed": true,
-      "detail": "Exact candidate_packet input is required"
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Exact candidate_packet input is required"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Exact candidate_packet input is required"
+      },
+      "gate_matched": true,
+      "control_case": "ready_runtime_with_independent_receipt",
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "runtime_wrong_subject",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
-      "passed": true,
-      "detail": "Approval does not bind the exact typed gate subject"
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Approval does not bind the exact typed gate subject"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Approval does not bind the exact typed gate subject"
+      },
+      "gate_matched": true,
+      "control_case": "ready_runtime_with_independent_receipt",
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "ready_publication_preconditions_only",
+      "status": "executed",
       "expected_dispatch_ready": true,
       "observed_dispatch_ready": true,
-      "passed": true,
-      "detail": "Accidental-error guard only, not a sandbox or security validator. Actual current coordinator authorization and argv review are still required."
+      "expected_gate": {
+        "kind": "accepted_without_execution"
+      },
+      "observed_gate": {
+        "kind": "accepted_without_execution"
+      },
+      "gate_matched": true,
+      "control_case": null,
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "publication_null_target",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
-      "passed": true,
-      "detail": "None is not of type 'string'"
+      "expected_gate": {
+        "error_type": "ValidationError",
+        "validator": "type",
+        "instance_path": [
+          "authority",
+          "publication_target"
+        ]
+      },
+      "observed_gate": {
+        "error_type": "ValidationError",
+        "validator": "type",
+        "instance_path": [
+          "authority",
+          "publication_target"
+        ]
+      },
+      "gate_matched": true,
+      "control_case": "ready_publication_preconditions_only",
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "publication_main_target",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
-      "passed": true,
-      "detail": "'refs/heads/main' does not match '^refs/heads/(experiment|experimental)/.+$'"
+      "expected_gate": {
+        "error_type": "ValidationError",
+        "validator": "pattern",
+        "instance_path": [
+          "authority",
+          "publication_target"
+        ]
+      },
+      "observed_gate": {
+        "error_type": "ValidationError",
+        "validator": "pattern",
+        "instance_path": [
+          "authority",
+          "publication_target"
+        ]
+      },
+      "gate_matched": true,
+      "control_case": "ready_publication_preconditions_only",
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "publication_missing_implementation_review",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
-      "passed": true,
-      "detail": "[{'stage': 'candidate', 'path': 'approvals/candidate.json', 'raw_sha256': '4597abffa059b74f5ebfc42df9ff25a7f6b3e1d98b464b234aa8a04a14f0b400', 'subject_sha256': '89a7663a67a64abbf0427bc9e00bee8c9f8722f6faa632da9f5d78a3cb2772b4'}] does not contain items matching the given schema"
+      "expected_gate": {
+        "error_type": "ValidationError",
+        "validator": "contains",
+        "instance_path": [
+          "independent_review",
+          "approval_receipts"
+        ]
+      },
+      "observed_gate": {
+        "error_type": "ValidationError",
+        "validator": "contains",
+        "instance_path": [
+          "independent_review",
+          "approval_receipts"
+        ]
+      },
+      "gate_matched": true,
+      "control_case": "ready_publication_preconditions_only",
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "implementation_subject_author_mismatch",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
-      "passed": true,
-      "detail": "Implementation subject image/author mismatch"
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Implementation subject image/author mismatch"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Implementation subject image/author mismatch"
+      },
+      "gate_matched": true,
+      "control_case": "ready_publication_preconditions_only",
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "publication_unknown_ci",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
-      "passed": true,
-      "detail": "[] should be non-empty"
+      "expected_gate": {
+        "error_type": "ValidationError",
+        "validator": "minItems",
+        "instance_path": [
+          "authority",
+          "required_ci"
+        ]
+      },
+      "observed_gate": {
+        "error_type": "ValidationError",
+        "validator": "minItems",
+        "instance_path": [
+          "authority",
+          "required_ci"
+        ]
+      },
+      "gate_matched": true,
+      "control_case": "ready_publication_preconditions_only",
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "ready_exact_unittest_inventory_without_execution",
+      "status": "executed",
       "expected_dispatch_ready": true,
       "observed_dispatch_ready": true,
-      "passed": true,
-      "detail": "Accidental-error guard only, not a sandbox or security validator. Actual current coordinator authorization and argv review are still required."
+      "expected_gate": {
+        "kind": "accepted_without_execution"
+      },
+      "observed_gate": {
+        "kind": "accepted_without_execution"
+      },
+      "gate_matched": true,
+      "control_case": null,
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "false_unittest_pip_install",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
-      "passed": true,
-      "detail": "Unittest kind/entrypoint mismatch"
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Unittest kind/entrypoint mismatch"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Unittest kind/entrypoint mismatch"
+      },
+      "gate_matched": true,
+      "control_case": "ready_exact_unittest_inventory_without_execution",
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "false_build_script_tokens",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
-      "passed": true,
-      "detail": "Build kind/entrypoint or preinstalled-dependency flags mismatch"
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Build kind/entrypoint or preinstalled-dependency flags mismatch"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Build kind/entrypoint or preinstalled-dependency flags mismatch"
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "unittest_no_pointer",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
-      "passed": true,
-      "detail": "None is not of type 'string'"
+      "expected_gate": {
+        "error_type": "ValidationError",
+        "validator": "type",
+        "instance_path": [
+          "checks",
+          0,
+          "inventory_json_pointer"
+        ]
+      },
+      "observed_gate": {
+        "error_type": "ValidationError",
+        "validator": "type",
+        "instance_path": [
+          "checks",
+          0,
+          "inventory_json_pointer"
+        ]
+      },
+      "gate_matched": true,
+      "control_case": "ready_exact_unittest_inventory_without_execution",
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "unittest_wrong_selector",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
-      "passed": true,
-      "detail": "'absent'"
+      "expected_gate": {
+        "error_type": "KeyError",
+        "message_prefix": "'absent'"
+      },
+      "observed_gate": {
+        "error_type": "KeyError",
+        "message": "'absent'"
+      },
+      "gate_matched": true,
+      "control_case": "ready_exact_unittest_inventory_without_execution",
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "inline_code",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
-      "passed": true,
-      "detail": "Inline code is outside supported check patterns"
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Inline code is outside supported check patterns"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Inline code is outside supported check patterns"
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "shell_operator",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
-      "passed": true,
-      "detail": "Script check must directly name a Python script"
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Script check must directly name a Python script"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Script check must directly name a Python script"
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "ready_independent_candidate_review",
+      "status": "executed",
       "expected_dispatch_ready": true,
       "observed_dispatch_ready": true,
-      "passed": true,
-      "detail": "Accidental-error guard only, not a sandbox or security validator. Actual current coordinator authorization and argv review are still required."
+      "expected_gate": {
+        "kind": "accepted_without_execution"
+      },
+      "observed_gate": {
+        "kind": "accepted_without_execution"
+      },
+      "gate_matched": true,
+      "control_case": null,
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "self_review_assignment",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
-      "passed": true,
-      "detail": "Reviewer is not independent/assigned"
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Reviewer is not independent/assigned"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Reviewer is not independent/assigned"
+      },
+      "gate_matched": true,
+      "control_case": "ready_independent_candidate_review",
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "dirty_tracked_checkout",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
-      "passed": true,
-      "detail": "Tracked checkout is dirty"
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Tracked checkout is dirty"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Tracked checkout is dirty"
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
     },
     {
       "case": "duplicate_json_keys",
+      "status": "executed",
       "expected_dispatch_ready": false,
       "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Duplicate JSON key: status"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Duplicate JSON key: status"
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
       "passed": true
     }
   ]

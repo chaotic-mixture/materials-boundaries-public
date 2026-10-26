@@ -19,3 +19,7 @@ The [timestamped pause state](docs/development-handoff/pause-state.json) records
 5. Report exact outcomes and unrun scope, then stop. Do not start the next material batch automatically.
 
 Public access transfers no credentials, private evidence or standing permissions. Main merges, releases, deployments and DOI actions require separate authorization. Reading or publishing this kit does not resume material development or make pending CI successful.
+
+## Platform check scope
+
+The handoff harness has a [narrow fixture-portability correction](docs/development-handoff/PORTABILITY.md). Its original Windows failure is preserved; corrected Linux and CRLF Git-setting checks do not substitute for the pending native Windows rerun. Planned and executed case counts are reported separately.

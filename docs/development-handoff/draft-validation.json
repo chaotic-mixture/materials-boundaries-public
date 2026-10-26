@@ -1,48 +1,88 @@
 {
   "schema_version": "template-kit-validation/1",
-  "status": "template_checks_passed_material_stage_and_publication_not_closed",
-  "frozen_at_utc": "2026-10-26T06:16:39Z",
+  "status": "portability_correction_local_checks_passed_native_windows_pending",
+  "frozen_at_utc": "2026-10-26T07:28:50Z",
   "repository_path": "docs/development-handoff",
+  "correction_base_commit": "f8c83a08868594f7dc27bf5ea490f645b19b811a",
+  "correction_base_tree": "569b41d0654a3ba7732edeb9c6906382e8e6ec63",
   "material_base_commit": "3829ec97e396a73168951b7868b9a03d533948b8",
   "material_base_tree": "2846e3a7e80ca81e96849f7b1f9a6a7db419018a",
   "initial_contract_commit": "437950c414ea340eda340babe7b63dee9fcee535",
-  "native_source_manifest_sha256": "0ab03a4c36afb2dd646a7ac2c0252b99153be64dac3aba1701c91177fd69b09e",
-  "root_handoff_sha256": "dfb6d1d2f323ead14ccb7ec3056d454b7b210f527436cd5605ef8448f15c8e09",
-  "scope": "Original native authoring source finalized for a documentation-only GitHub handoff. No project tests or manifest argv executed.",
+  "prior_validation_sha256": "b9c6a176c5fb5bf3882864dcf4f91c114e5b214ebcc25739f614e0f411e2e08e",
+  "root_handoff_sha256": "782577235c0e3805027ed539abfd89c1c99852330b39b7cdebc5d2b296cc745e",
+  "scope": "Synthetic handoff harness portability and accurate gate/count accounting only. No project tests or manifest argv executed.",
   "checks": {
     "schema_meta_validation": "passed",
-    "draft_and_archival_examples": "structure_valid_not_dispatchable",
-    "synthetic_preflight_cases": 46,
-    "synthetic_passed": 46,
-    "synthetic_failed": 0,
-    "reviewed_preflight_and_contract_source_unchanged": true,
-    "markdown_local_or_base_links_verified": 18,
+    "examples": {
+      "task-input.example.json": "structure_valid_not_dispatchable",
+      "task-input.ewurum.archival.json": "structure_valid_not_dispatchable"
+    },
+    "python_syntax": "passed_without_bytecode_writes",
+    "corrected_synthetic_profiles": [
+      {
+        "path": "preflight-case-results.json",
+        "planned_cases": 46,
+        "executed_cases": 46,
+        "passed": 46,
+        "failed": 0,
+        "not_applicable": 0,
+        "negative_gates_certified": 41
+      },
+      {
+        "path": "preflight-case-results-autocrlf.json",
+        "planned_cases": 46,
+        "executed_cases": 46,
+        "passed": 46,
+        "failed": 0,
+        "not_applicable": 0,
+        "negative_gates_certified": 41
+      },
+      {
+        "path": "preflight-case-results-no-alias.json",
+        "planned_cases": 46,
+        "executed_cases": 45,
+        "passed": 45,
+        "failed": 0,
+        "not_applicable": 1,
+        "negative_gates_certified": 40
+      }
+    ],
+    "legacy_crlf_fault_experiment": "expected_failure_all_46_cases_failed_zero_negative_gates_certified",
+    "production_preflight_schema_and_pause_snapshot_unchanged": true,
+    "markdown_local_or_base_links_verified": 26,
     "markdown_fences": "balanced",
     "material_base_checkout_unchanged": true,
     "public_path_identifier_scan": "passed_for_specified_internal_markers"
   },
   "limitations": [
-    "General CI for the material base remained in progress at the recorded observation.",
-    "No full material-stage completion or future documentation-commit CI result is claimed.",
+    "Original native Windows run reported 45 executions, 40 passes and 5 failures; later-gate coverage was not certified. The failure is preserved in portability-validation.json.",
+    "Corrected native Windows execution remains pending. Linux process-scoped CRLF Git configuration is not Windows certification.",
+    "The alias probe is not applicable when there is no distinct resolved target; 46 planned cases do not imply 46 executions.",
+    "The existing material pause/CI snapshot is unchanged, not refreshed; material-stage completion is not claimed.",
+    "This local candidate has not been published and no correction-commit hosted CI result exists here.",
     "Preflight is an accidental-error guard, not a sandbox, user-authority authentication, scientific approval or source-rights review.",
-    "No material/workflow/runtime file is changed by this handoff."
+    "No material/workflow/runtime file or global Git configuration is changed."
   ],
   "artifacts": {
     "ONBOARDING.md": {
-      "bytes": 11881,
-      "sha256": "3d93ae38fb348880fb87d4bb182f5c166736cb80061818c16447e1757c741a69"
+      "bytes": 12244,
+      "sha256": "ab2c3a56a32510495560961d1899ee4bed5a957f62e575446331da4d24c82046"
     },
     "OPERATOR.zh.md": {
       "bytes": 3432,
       "sha256": "ab672b1c36c6fdc4c98f94ce781ef1e33d22c6fb8f533e39280a0384cd9e4468"
+    },
+    "PORTABILITY.md": {
+      "bytes": 4446,
+      "sha256": "4321513528b8f08323974ce06d00778adf0053f4cd564565492d54011714807e"
     },
     "PROMPTS.md": {
       "bytes": 5242,
       "sha256": "a224314660ec502ab8c640934760c7f6a955a93dc9fb5b4c3a170f0a9d969724"
     },
     "README.md": {
-      "bytes": 3069,
-      "sha256": "d82130b5edd61a35da72c5190026de9c9e1b50547aa1aa466146bb6ae407f1c5"
+      "bytes": 3488,
+      "sha256": "3e30f983fb06d3ac5f502544b91d16636ee148502dc0cc0bc09d1db5b1868fac"
     },
     "TASK_CONTRACT.md": {
       "bytes": 17574,
@@ -53,8 +93,8 @@
       "sha256": "d441bcdb1b2a3157165078a87ed808f33fe11034d1dbb73152bf2b82fc2b6f92"
     },
     "check_preflight_cases.py": {
-      "bytes": 12139,
-      "sha256": "f4c73a8c540bcf93636565daeaf76af34bafb5c1e31e335fbb19d0c0d0c665b2"
+      "bytes": 22665,
+      "sha256": "4fc0d0711744cabbe6e9c0bd32d443421f07a8e05d73c2b961d05a407db4fab9"
     },
     "dispatch_preflight.py": {
       "bytes": 13661,
@@ -64,9 +104,21 @@
       "bytes": 2799,
       "sha256": "631117449773ca752f5ce8afba80524ba327739cc889b908ab73fbfa8cda57fa"
     },
+    "portability-validation.json": {
+      "bytes": 4597,
+      "sha256": "415458ac3c73ad6ad265166a8a5dc8f4ec63a6912af602cb22e8ca22ad8a39de"
+    },
+    "preflight-case-results-autocrlf.json": {
+      "bytes": 28158,
+      "sha256": "fdf035bedeace375a00a6049cb591278a1f4cce60c02a9480877b532a4f6850f"
+    },
+    "preflight-case-results-no-alias.json": {
+      "bytes": 27786,
+      "sha256": "45c051bfbf945dae6aaf6d3987afc1fe42ca199ca1970a053f42a6a1f26c927c"
+    },
     "preflight-case-results.json": {
-      "bytes": 16743,
-      "sha256": "a48e31ad6779c4b63f811a7ee96c6f1262758683fd77c0bdd40ba2e5d50c7b90"
+      "bytes": 28154,
+      "sha256": "25b29a10f28a4c63a20e1cceba155eca61230cbcb9bfe2753be0d7dbd915300c"
     },
     "result.template.json": {
       "bytes": 2904,

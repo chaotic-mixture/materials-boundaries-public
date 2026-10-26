@@ -20,3 +20,7 @@ The [worked Ewurum example](WORKED_EWURUM.md) and [filled archival manifest](tas
 The underlying repository contracts were inspected at `437950c414ea340eda340babe7b63dee9fcee535`, tree `1131a517c7dcf6b0bea74b1951df45d1d18a2e45`. The handoff publication base is runtime commit `3829ec97e396a73168951b7868b9a03d533948b8` (tree `2846e3a7e80ca81e96849f7b1f9a6a7db419018a`), containing 1199 experimental project records. Its dedicated CI has passed; its general CI was still in progress at the timestamp in `pause-state.json`. The material stage is not declared closed. The earlier candidate is `73a5d872c210bbde5b3c0548d710869e87626691`. Current task inputs must be pinned independently; do not reuse these historical hashes as a default baseline.
 
 The optional [synthetic preflight cases](check_preflight_cases.py) exercise the kit guards without running project tests or task commands. Project test commands in the guides were verified against repository documentation/scripts, not executed as part of writing this kit. A successful template check is not software acceptance, scientific review, reuse permission or publication approval.
+
+## Platform validation
+
+The synthetic harness has a [documented Windows fixture correction](PORTABILITY.md). It always plans 46 cases but executes 45 or 46 according to interpreter-alias applicability. A negative case must reach its intended rejection gate with a passing positive control. Linux and process-scoped CRLF Git-setting checks are recorded separately from the still-pending corrected native Windows rerun.

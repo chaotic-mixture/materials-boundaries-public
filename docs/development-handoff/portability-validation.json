@@ -1,0 +1,119 @@
+{
+  "schema_version": "handoff-portability-validation/1",
+  "correction_base_commit": "f8c83a08868594f7dc27bf5ea490f645b19b811a",
+  "changes": "Only synthetic fixture byte generation, expected-gate assertions, platform-conditional case accounting, and documentation/evidence. Production preflight/schema hashing guards unchanged.",
+  "prior_native_windows_attempt": {
+    "source": "Publisher-reported execution of the original f8c83a0 harness; original logs retained by the publisher, not rerun here.",
+    "planned_case_count_in_original_code": 46,
+    "executed_cases": 45,
+    "script_reported_passed": 40,
+    "script_reported_failed": 5,
+    "baseline_gate_hits": 20,
+    "positive_controls_failed": 5,
+    "interpreter_alias_case_executed": false,
+    "source_worktree_bytes_hex": "7b7d0d0a",
+    "git_blob_bytes_hex": "7b7d0a",
+    "failure_reason": "Windows text-mode write_text created CRLF while Git core.autocrlf=true stored LF; later negative gates were not thereby certified."
+  },
+  "corrected_runs": [
+    {
+      "path": "preflight-case-results.json",
+      "sha256": "25b29a10f28a4c63a20e1cceba155eca61230cbcb9bfe2753be0d7dbd915300c",
+      "platform": "linux",
+      "python_version": "3.12.14",
+      "git_settings": {
+        "core.autocrlf": null,
+        "core.eol": null
+      },
+      "planned_cases": 46,
+      "passed": 46,
+      "failed": 0,
+      "not_applicable": 0,
+      "positive_controls_passed": 5,
+      "negative_gates_certified": 41,
+      "unexpected_gate_rejections": [],
+      "executed_cases": 46
+    },
+    {
+      "path": "preflight-case-results-autocrlf.json",
+      "sha256": "fdf035bedeace375a00a6049cb591278a1f4cce60c02a9480877b532a4f6850f",
+      "platform": "linux",
+      "python_version": "3.12.14",
+      "git_settings": {
+        "core.autocrlf": "true",
+        "core.eol": "crlf"
+      },
+      "planned_cases": 46,
+      "passed": 46,
+      "failed": 0,
+      "not_applicable": 0,
+      "positive_controls_passed": 5,
+      "negative_gates_certified": 41,
+      "unexpected_gate_rejections": [],
+      "executed_cases": 46
+    },
+    {
+      "path": "preflight-case-results-no-alias.json",
+      "sha256": "45c051bfbf945dae6aaf6d3987afc1fe42ca199ca1970a053f42a6a1f26c927c",
+      "platform": "linux",
+      "python_version": "3.12.14",
+      "git_settings": {
+        "core.autocrlf": null,
+        "core.eol": null
+      },
+      "planned_cases": 46,
+      "passed": 45,
+      "failed": 0,
+      "not_applicable": 1,
+      "positive_controls_passed": 5,
+      "negative_gates_certified": 40,
+      "unexpected_gate_rejections": [],
+      "executed_cases": 45
+    }
+  ],
+  "legacy_fault_emulation": {
+    "platform": "linux",
+    "python_version": "3.12.14",
+    "mode": "Disposable LF-to-CRLF fixture-writer fault with process-scoped Git autocrlf=true/eol=crlf; not native Windows execution.",
+    "expected_exit_code": 1,
+    "observed_exit_code": 1,
+    "cases": 46,
+    "passed": 0,
+    "failed": 46,
+    "fixture_bytes_equal_committed_baseline": false,
+    "positive_controls_passed": 0,
+    "negative_gates_certified": 0,
+    "unexpected_gate_rejection_ids": [
+      "ready_candidate_nonexecuting",
+      "uncovered_output",
+      "input_hash_mismatch",
+      "missing_consumer_file",
+      "input_escape",
+      "ready_runtime_with_independent_receipt",
+      "runtime_self_approval",
+      "runtime_untyped_source_substitution",
+      "runtime_wrong_subject",
+      "ready_publication_preconditions_only",
+      "implementation_subject_author_mismatch",
+      "ready_exact_unittest_inventory_without_execution",
+      "false_unittest_pip_install",
+      "false_build_script_tokens",
+      "unittest_wrong_selector",
+      "inline_code",
+      "shell_operator",
+      "ready_independent_candidate_review",
+      "self_review_assignment"
+    ],
+    "full_local_output_sha256": "b23b03886ccc826b813f4bfef14e8fed2090de5fd1508cf7722a1795bc3732b0",
+    "temporary_fault_harness_sha256": "ec4937d322df643493c2d225bf25b2b8e25682bd460faa570d3ae7d02b517376",
+    "full_output_bundled": false
+  },
+  "boundaries": [
+    "No global Git configuration changed.",
+    "No strict baseline hashing, dispatch guard, schema, material file or workflow was relaxed or changed.",
+    "Linux Git CRLF emulation is not native Windows certification.",
+    "Corrected native Windows execution remains pending.",
+    "Not-applicable alias cases are not executed passes; negative cases need their intended rejection gate and a successful matching positive control."
+  ],
+  "harness_sha256": "4fc0d0711744cabbe6e9c0bd32d443421f07a8e05d73c2b961d05a407db4fab9"
+}

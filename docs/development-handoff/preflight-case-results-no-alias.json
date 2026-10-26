@@ -1,0 +1,954 @@
+{
+  "scope": "Synthetic local template checks only; no Materials Boundaries tests, task argv, network or publication executed",
+  "platform": "linux",
+  "python_version": "3.12.14",
+  "fixture_encoding": "UTF-8 bytes with explicitly authored LF; no platform text-mode translation",
+  "git_settings": {
+    "core.autocrlf": null,
+    "core.eol": null
+  },
+  "fixture_bytes_equal_committed_baseline": true,
+  "planned_cases": 46,
+  "cases": 45,
+  "case_count_definition": "cases counts executions only; not_applicable is never a pass",
+  "passed": 45,
+  "failed": 0,
+  "not_applicable": 1,
+  "positive_controls_passed": 5,
+  "negative_gates_certified": 40,
+  "unexpected_gate_rejections": [],
+  "outcomes": [
+    {
+      "case": "ready_candidate_nonexecuting",
+      "status": "executed",
+      "expected_dispatch_ready": true,
+      "observed_dispatch_ready": true,
+      "expected_gate": {
+        "kind": "accepted_without_execution"
+      },
+      "observed_gate": {
+        "kind": "accepted_without_execution"
+      },
+      "gate_matched": true,
+      "control_case": null,
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "deny_draft",
+      "status": "executed",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Not dispatchable: status must be ready, never draft or archival"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Not dispatchable: status must be ready, never draft or archival"
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "deny_archival",
+      "status": "executed",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Not dispatchable: status must be ready, never draft or archival"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Not dispatchable: status must be ready, never draft or archival"
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "placeholder_output",
+      "status": "executed",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "ValidationError",
+        "validator": "anyOf",
+        "instance_path": []
+      },
+      "observed_gate": {
+        "error_type": "ValidationError",
+        "validator": "anyOf",
+        "instance_path": []
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "placeholder_command",
+      "status": "executed",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "ValidationError",
+        "validator": "anyOf",
+        "instance_path": []
+      },
+      "observed_gate": {
+        "error_type": "ValidationError",
+        "validator": "anyOf",
+        "instance_path": []
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "empty_sources",
+      "status": "executed",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "ValidationError",
+        "validator": "minItems",
+        "instance_path": [
+          "selection",
+          "source_ids"
+        ]
+      },
+      "observed_gate": {
+        "error_type": "ValidationError",
+        "validator": "minItems",
+        "instance_path": [
+          "selection",
+          "source_ids"
+        ]
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "duplicate_record_ids",
+      "status": "executed",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "ValidationError",
+        "validator": "uniqueItems",
+        "instance_path": [
+          "selection",
+          "record_ids"
+        ]
+      },
+      "observed_gate": {
+        "error_type": "ValidationError",
+        "validator": "uniqueItems",
+        "instance_path": [
+          "selection",
+          "record_ids"
+        ]
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "wildcard_write",
+      "status": "executed",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "ValidationError",
+        "validator": "pattern",
+        "instance_path": [
+          "write_paths",
+          0
+        ]
+      },
+      "observed_gate": {
+        "error_type": "ValidationError",
+        "validator": "pattern",
+        "instance_path": [
+          "write_paths",
+          0
+        ]
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "traversal_write",
+      "status": "executed",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "ValidationError",
+        "validator": "pattern",
+        "instance_path": [
+          "write_paths",
+          0
+        ]
+      },
+      "observed_gate": {
+        "error_type": "ValidationError",
+        "validator": "pattern",
+        "instance_path": [
+          "write_paths",
+          0
+        ]
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "uncovered_output",
+      "status": "executed",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Outputs must be unique and covered by exact write paths"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Outputs must be unique and covered by exact write paths"
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "all_inputs_optional",
+      "status": "executed",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "ValidationError",
+        "validator": "contains",
+        "instance_path": [
+          "inputs"
+        ]
+      },
+      "observed_gate": {
+        "error_type": "ValidationError",
+        "validator": "contains",
+        "instance_path": [
+          "inputs"
+        ]
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "input_hash_mismatch",
+      "status": "executed",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Required input hash mismatch:"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Required input hash mismatch: SYNTHETIC_WORKSPACE/fixture/selected-evidence.json"
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "missing_consumer_file",
+      "status": "executed",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Required input missing:"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Required input missing: SYNTHETIC_WORKSPACE/missing"
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "input_escape",
+      "status": "executed",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Path escapes workspace:"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Path escapes workspace: /etc/passwd"
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "wrong_interpreter",
+      "status": "executed",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Run preflight with the exact declared interpreter invocation path"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Run preflight with the exact declared interpreter invocation path, without resolving venv symlinks"
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "resolved_interpreter_alias_rejected",
+      "status": "not_applicable",
+      "reason": "The current interpreter invocation has no distinct resolved alias target.",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": null,
+      "passed": null
+    },
+    {
+      "case": "wrong_python_prefix",
+      "status": "executed",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Declared Python environment prefix differs from the running environment"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Declared Python environment prefix differs from the running environment"
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "unapproved_required_check",
+      "status": "executed",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "ValidationError",
+        "validator": "const",
+        "instance_path": [
+          "checks",
+          0,
+          "execution_authorized"
+        ]
+      },
+      "observed_gate": {
+        "error_type": "ValidationError",
+        "validator": "const",
+        "instance_path": [
+          "checks",
+          0,
+          "execution_authorized"
+        ]
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "missing_resume_reference",
+      "status": "executed",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "ValidationError",
+        "validator": "type",
+        "instance_path": [
+          "authority",
+          "resume_authorization_reference"
+        ]
+      },
+      "observed_gate": {
+        "error_type": "ValidationError",
+        "validator": "type",
+        "instance_path": [
+          "authority",
+          "resume_authorization_reference"
+        ]
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "next_stage_action",
+      "status": "executed",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Action is outside selected stage"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Action is outside selected stage"
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "credential_action",
+      "status": "executed",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "ValidationError",
+        "validator": "const",
+        "instance_path": [
+          "authority",
+          "credential_actions_allowed"
+        ]
+      },
+      "observed_gate": {
+        "error_type": "ValidationError",
+        "validator": "const",
+        "instance_path": [
+          "authority",
+          "credential_actions_allowed"
+        ]
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "network_candidate",
+      "status": "executed",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Network is outside this bounded lane"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Network is outside this bounded lane"
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "unresolved_decision",
+      "status": "executed",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "ValidationError",
+        "validator": "maxItems",
+        "instance_path": [
+          "unresolved"
+        ]
+      },
+      "observed_gate": {
+        "error_type": "ValidationError",
+        "validator": "maxItems",
+        "instance_path": [
+          "unresolved"
+        ]
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "wrong_baseline_hash",
+      "status": "executed",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Baseline bytes mismatch: materials"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Baseline bytes mismatch: materials"
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "runtime_missing_approval",
+      "status": "executed",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "ValidationError",
+        "validator": "contains",
+        "instance_path": [
+          "independent_review",
+          "approval_receipts"
+        ]
+      },
+      "observed_gate": {
+        "error_type": "ValidationError",
+        "validator": "contains",
+        "instance_path": [
+          "independent_review",
+          "approval_receipts"
+        ]
+      },
+      "gate_matched": true,
+      "control_case": "ready_runtime_with_independent_receipt",
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "ready_runtime_with_independent_receipt",
+      "status": "executed",
+      "expected_dispatch_ready": true,
+      "observed_dispatch_ready": true,
+      "expected_gate": {
+        "kind": "accepted_without_execution"
+      },
+      "observed_gate": {
+        "kind": "accepted_without_execution"
+      },
+      "gate_matched": true,
+      "control_case": null,
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "runtime_self_approval",
+      "status": "executed",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Approval absent or self-reviewed"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Approval absent or self-reviewed"
+      },
+      "gate_matched": true,
+      "control_case": "ready_runtime_with_independent_receipt",
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "runtime_untyped_source_substitution",
+      "status": "executed",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Exact candidate_packet input is required"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Exact candidate_packet input is required"
+      },
+      "gate_matched": true,
+      "control_case": "ready_runtime_with_independent_receipt",
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "runtime_wrong_subject",
+      "status": "executed",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Approval does not bind the exact typed gate subject"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Approval does not bind the exact typed gate subject"
+      },
+      "gate_matched": true,
+      "control_case": "ready_runtime_with_independent_receipt",
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "ready_publication_preconditions_only",
+      "status": "executed",
+      "expected_dispatch_ready": true,
+      "observed_dispatch_ready": true,
+      "expected_gate": {
+        "kind": "accepted_without_execution"
+      },
+      "observed_gate": {
+        "kind": "accepted_without_execution"
+      },
+      "gate_matched": true,
+      "control_case": null,
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "publication_null_target",
+      "status": "executed",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "ValidationError",
+        "validator": "type",
+        "instance_path": [
+          "authority",
+          "publication_target"
+        ]
+      },
+      "observed_gate": {
+        "error_type": "ValidationError",
+        "validator": "type",
+        "instance_path": [
+          "authority",
+          "publication_target"
+        ]
+      },
+      "gate_matched": true,
+      "control_case": "ready_publication_preconditions_only",
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "publication_main_target",
+      "status": "executed",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "ValidationError",
+        "validator": "pattern",
+        "instance_path": [
+          "authority",
+          "publication_target"
+        ]
+      },
+      "observed_gate": {
+        "error_type": "ValidationError",
+        "validator": "pattern",
+        "instance_path": [
+          "authority",
+          "publication_target"
+        ]
+      },
+      "gate_matched": true,
+      "control_case": "ready_publication_preconditions_only",
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "publication_missing_implementation_review",
+      "status": "executed",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "ValidationError",
+        "validator": "contains",
+        "instance_path": [
+          "independent_review",
+          "approval_receipts"
+        ]
+      },
+      "observed_gate": {
+        "error_type": "ValidationError",
+        "validator": "contains",
+        "instance_path": [
+          "independent_review",
+          "approval_receipts"
+        ]
+      },
+      "gate_matched": true,
+      "control_case": "ready_publication_preconditions_only",
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "implementation_subject_author_mismatch",
+      "status": "executed",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Implementation subject image/author mismatch"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Implementation subject image/author mismatch"
+      },
+      "gate_matched": true,
+      "control_case": "ready_publication_preconditions_only",
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "publication_unknown_ci",
+      "status": "executed",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "ValidationError",
+        "validator": "minItems",
+        "instance_path": [
+          "authority",
+          "required_ci"
+        ]
+      },
+      "observed_gate": {
+        "error_type": "ValidationError",
+        "validator": "minItems",
+        "instance_path": [
+          "authority",
+          "required_ci"
+        ]
+      },
+      "gate_matched": true,
+      "control_case": "ready_publication_preconditions_only",
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "ready_exact_unittest_inventory_without_execution",
+      "status": "executed",
+      "expected_dispatch_ready": true,
+      "observed_dispatch_ready": true,
+      "expected_gate": {
+        "kind": "accepted_without_execution"
+      },
+      "observed_gate": {
+        "kind": "accepted_without_execution"
+      },
+      "gate_matched": true,
+      "control_case": null,
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "false_unittest_pip_install",
+      "status": "executed",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Unittest kind/entrypoint mismatch"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Unittest kind/entrypoint mismatch"
+      },
+      "gate_matched": true,
+      "control_case": "ready_exact_unittest_inventory_without_execution",
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "false_build_script_tokens",
+      "status": "executed",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Build kind/entrypoint or preinstalled-dependency flags mismatch"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Build kind/entrypoint or preinstalled-dependency flags mismatch"
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "unittest_no_pointer",
+      "status": "executed",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "ValidationError",
+        "validator": "type",
+        "instance_path": [
+          "checks",
+          0,
+          "inventory_json_pointer"
+        ]
+      },
+      "observed_gate": {
+        "error_type": "ValidationError",
+        "validator": "type",
+        "instance_path": [
+          "checks",
+          0,
+          "inventory_json_pointer"
+        ]
+      },
+      "gate_matched": true,
+      "control_case": "ready_exact_unittest_inventory_without_execution",
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "unittest_wrong_selector",
+      "status": "executed",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "KeyError",
+        "message_prefix": "'absent'"
+      },
+      "observed_gate": {
+        "error_type": "KeyError",
+        "message": "'absent'"
+      },
+      "gate_matched": true,
+      "control_case": "ready_exact_unittest_inventory_without_execution",
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "inline_code",
+      "status": "executed",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Inline code is outside supported check patterns"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Inline code is outside supported check patterns"
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "shell_operator",
+      "status": "executed",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Script check must directly name a Python script"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Script check must directly name a Python script"
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "ready_independent_candidate_review",
+      "status": "executed",
+      "expected_dispatch_ready": true,
+      "observed_dispatch_ready": true,
+      "expected_gate": {
+        "kind": "accepted_without_execution"
+      },
+      "observed_gate": {
+        "kind": "accepted_without_execution"
+      },
+      "gate_matched": true,
+      "control_case": null,
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "self_review_assignment",
+      "status": "executed",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Reviewer is not independent/assigned"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Reviewer is not independent/assigned"
+      },
+      "gate_matched": true,
+      "control_case": "ready_independent_candidate_review",
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "dirty_tracked_checkout",
+      "status": "executed",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Tracked checkout is dirty"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Tracked checkout is dirty"
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
+    },
+    {
+      "case": "duplicate_json_keys",
+      "status": "executed",
+      "expected_dispatch_ready": false,
+      "observed_dispatch_ready": false,
+      "expected_gate": {
+        "error_type": "ValueError",
+        "message_prefix": "Duplicate JSON key: status"
+      },
+      "observed_gate": {
+        "error_type": "ValueError",
+        "message": "Duplicate JSON key: status"
+      },
+      "gate_matched": true,
+      "control_case": "ready_candidate_nonexecuting",
+      "control_passed": true,
+      "passed": true
+    }
+  ]
+}

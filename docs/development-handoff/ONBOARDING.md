@@ -116,7 +116,7 @@ The guard catches accidental handoff mistakes; it is not a sandbox, general comm
 
 A successful result contains `dispatch_ready: true`, **`authorization_verified: false`** and `commands_executed: 0`. Require actual current coordinator authorization before using the selected role prompt. Never treat a successful schema check alone as a dispatch decision.
 
-The optional `check_preflight_cases.py` checks the kit using disposable synthetic local Git fixtures; it does not run Materials Boundaries tests or task commands. Its results are a guard regression check, not a scientific, project-CI or permission certificate.
+The optional `check_preflight_cases.py` checks the kit using disposable synthetic local Git fixtures; it does not run Materials Boundaries tests or task commands. Its results are a guard regression check, not a scientific, project-CI or permission certificate. The harness writes explicit UTF-8 fixture bytes and certifies a negative case only at its declared rejection gate with a successful matching positive control. It lists 46 planned cases, but executes 45 when no distinct interpreter alias exists; that case is not applicable, not a pass. See [the preserved Windows failure and correction evidence](PORTABILITY.md).
 
 ## Complete only the assigned stage
 
