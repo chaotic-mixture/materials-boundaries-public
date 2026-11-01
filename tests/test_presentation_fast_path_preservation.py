@@ -8,6 +8,7 @@ import evidence_dedup_preservation as dedup
 import material_bulk_preservation as bulk
 import presentation_fast_path_preservation as successor
 from material_class_counts_preservation import pre_class_counts_bytes
+from sanchez_al_mea_history import checkpoint_bytes
 
 ROOT = Path(__file__).resolve().parents[1]
 HELPER_SHA256 = '38ba1d0fd76af94664b3e6c4288a6b7fe3b335f3055bb357333e68c404ec482f'
@@ -25,7 +26,7 @@ class PresentationFastPathPreservationTests(unittest.TestCase):
         self.assertEqual(successor.BASELINE_COMMIT, '73f3b0b56f764736e1d4368d0da8fabf1cdf9c7b')
         for name, entry in entries.items():
             with self.subTest(filename=name):
-                current = (ROOT / name).read_bytes()
+                current = checkpoint_bytes(name, (ROOT / name).read_bytes())
                 if name == 'tests/material_bulk_preservation.py':
                     current = pre_class_counts_bytes(name, current)
                 previous = successor.pre_presentation_fast_path_bytes(name, current)
@@ -43,18 +44,18 @@ class PresentationFastPathPreservationTests(unittest.TestCase):
             with self.subTest(filename=filename):
                 self.assertEqual(successor.digest((ROOT / filename).read_bytes()), expected)
         filename = 'materials_boundaries/material_presentation.py'
-        current = (ROOT / filename).read_bytes()
+        current = checkpoint_bytes(filename, (ROOT / filename).read_bytes())
         original = successor.pre_presentation_fast_path_bytes(filename, current)
         self.assertEqual(bulk.release_bytes(filename, current), bulk.release_bytes(filename, original))
         self.assertEqual(successor.digest(bulk.pre_material_bulk_bytes(filename, current)),
                          bulk.load_ledger()['baseline_sha256'][filename])
         for filename in ('tests/material_bulk_preservation.py', 'tests/test_material_bulk_preservation.py'):
-            original = successor.pre_presentation_fast_path_bytes(filename, (ROOT / filename).read_bytes())
+            original = successor.pre_presentation_fast_path_bytes(filename, checkpoint_bytes(filename, (ROOT / filename).read_bytes()))
             self.assertEqual(successor.digest(original), dedup.validate_ledger(dedup.load_ledger())[filename]['sha256'])
 
     def test_unreviewed_bytes_types_paths_and_edit_mutations_fail_closed(self):
         for name, entry in successor.validate_ledger(successor.load_ledger()).items():
-            current = (ROOT / name).read_bytes()
+            current = checkpoint_bytes(name, (ROOT / name).read_bytes())
             previous = successor.pre_presentation_fast_path_bytes(name, current)
             for bad in (current + b'!', current[:-1], b'arbitrary replacement', current.decode('utf-8'),
                         bytearray(current), memoryview(current)):
@@ -113,7 +114,7 @@ class PresentationFastPathPreservationTests(unittest.TestCase):
             return methods, calls
 
         for filename in ('tests/test_material_bulk_preservation.py', 'tests/test_evidence_dedup_preservation.py'):
-            current = (ROOT / filename).read_bytes()
+            current = checkpoint_bytes(filename, (ROOT / filename).read_bytes())
             previous = successor.pre_presentation_fast_path_bytes(filename, current)
             self.assertEqual(contracts(current), contracts(previous))
 

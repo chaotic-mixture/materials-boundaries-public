@@ -1,6 +1,6 @@
 """Public bibliography/rights boundaries, without excluded coefficient datasets."""
 import copy
-from decimal import Context, Decimal, InvalidOperation, localcontext
+from decimal import Context, Decimal, InvalidOperation, MAX_EMAX, localcontext
 from hashlib import sha256
 import json
 from pathlib import Path
@@ -96,7 +96,7 @@ class PublicReuseBoundaryTests(unittest.TestCase):
                 text = path.read_text(encoding='utf-8')
             except UnicodeDecodeError:
                 continue
-            with localcontext(Context(prec=28)):
+            with localcontext(Context(prec=28, Emax=MAX_EMAX)):
                 for token in set(numeric.findall(text)):
                     try:
                         fingerprint = sha256(str(Decimal(token).normalize()).encode()).hexdigest()

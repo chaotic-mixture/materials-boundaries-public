@@ -28,6 +28,8 @@ def code_ledger():
 
 def project_legacy_code_bytes(filename, raw):
     """Project finite helper edits; never change an older assertion or ledger."""
+    from sanchez_al_mea_history import checkpoint_bytes
+    raw = checkpoint_bytes(filename, raw)
     return project_file_chain(filename, raw, [code_ledger()])
 
 

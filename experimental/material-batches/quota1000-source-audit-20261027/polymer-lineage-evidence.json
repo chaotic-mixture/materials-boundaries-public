@@ -1,0 +1,78 @@
+{
+  "schema": "polymer-lineage-evidence/1",
+  "checked_on": "2026-10-27",
+  "status": "held_no_admission",
+  "polymetrix": {
+    "repository": "lamalab-org/PolyMetriX",
+    "commit": "5b89d4e7487959cfa2f7a47e876cb4066d630d2d",
+    "source_mapping_document": "docs/datasets.md",
+    "source_mapping_git_blob_sha1": "bda90e7385aa098f99c78f39c6c0da65816200ef",
+    "dataset_record_inspected": "10.5281/zenodo.15789599",
+    "documentation_default_dataset_record": "10.5281/zenodo.15210035",
+    "paper_data_availability_record": "10.5281/zenodo.14980914",
+    "equivalence_between_records": "not_verified",
+    "aggregation": "Documentation identifies labels.Exp_Tg(K) as the median across contributing Tg values. Contribution counts and curator SD are not independently measured specimen counts or uncertainties.",
+    "source_links": {
+      "GREA": "https://github.com/liugangcode/GREA/blob/main/data/tg_prop/raw/tg_raw.csv",
+      "Qiu": "https://github.com/HKQiu/PPP-1_PredictionTg4Polyimides/blob/main/Train%20data/GNN%E6%95%B0%E6%8D%AE%E5%BA%93.csv",
+      "Xie": "https://github.com/figotj/Polymer_Tg_/blob/main/Data/32_Conjugate_Polymer.txt",
+      "Uchicago": "https://pppdb.uchicago.edu/tg",
+      "Schrodinger": "https://pubs.acs.org/doi/10.1021/acsapm.0c00524",
+      "Nguyen": "https://pubs.acs.org/doi/10.1021/acs.iecr.2c01302"
+    },
+    "row_specific_upstream_reference_chain": "not_resolved"
+  },
+  "upstream_observations": [
+    {
+      "label": "GREA",
+      "repository": "liugangcode/GREA",
+      "commit": "ce02bf1930fa01161dacca0f4cca74c0a31a26aa",
+      "commit_message": "delete polymer datasets",
+      "readme_url": "https://github.com/liugangcode/GREA/blob/ce02bf1930fa01161dacca0f4cca74c0a31a26aa/README.md",
+      "readme_notice_date": "2025-03-26",
+      "observed_notice": "README attributes removal of GlassTemp, MeltingTemp and PolyDensit datasets to a request from NIMS Materials Database, MatNavi; commit and current tree show Tg data deletion.",
+      "downstream_rows_with_this_label": 7170,
+      "disposition": "held_until_upstream_reuse_scope_is_resolved",
+      "deleted_data_restored_or_downloaded": false,
+      "scope": "An observed removal notice, not an independent legal determination. The code MIT license and downstream dataset CC BY label do not resolve the upstream scope."
+    },
+    {
+      "label": "Qiu",
+      "commit": "27e402dde48b96d2e1ce3acc29439242b0f739b6",
+      "documented_data_link": "404 observed; Train data path is absent from the current recursive tree",
+      "upstream_reuse_scope": "unresolved"
+    },
+    {
+      "label": "Xie",
+      "commit": "e91499ff22b250b2f5d9f806bd3784f26c525241",
+      "documented_data_link": "Publicly readable text observed",
+      "upstream_reuse_scope": "unresolved; no dataset-specific grant verified"
+    },
+    {
+      "label": "Uchicago",
+      "documented_data_link": "Public page includes names, Kelvin values and DOI references",
+      "upstream_reuse_scope": "unresolved; exact match to the two downstream-labelled rows not established"
+    },
+    {
+      "labels": ["Schrodinger", "Nguyen"],
+      "documented_publisher_access": "403 observed for both linked ACS pages",
+      "upstream_reuse_scope": "unresolved"
+    }
+  ],
+  "radonpy": {
+    "repository": "RadonPy/RadonPy",
+    "commit": "8834b9071ae93d9af36558a3c24545dd52e5ba1a",
+    "file": "data/PI1070.csv",
+    "git_blob_sha1": "109a773f3da95043cc7861aad3e4e67140865ace",
+    "sha256": "4ee41d526db3d03eb5b83010672b4e63a4d51a114871a2187ca7fd57d30556a4",
+    "bytes": 1598888,
+    "actual_csv_data_records": 1077,
+    "evidence": "Author README links this CSV under MD calculated data. The related paper is 10.1038/s41524-022-00906-4, Hayashi, Shiomi, Morikawa and Yoshida (2022).",
+    "repository_license_observed": "BSD-3-Clause",
+    "paper_license_observed": "CC-BY-4.0",
+    "dataset_specific_reuse_scope": "pending_review; no blanket scope is inferred from the software or paper license",
+    "experimental_validation_values_selected": false,
+    "equivalence_to_paper_1070_identity_set": "not_verified",
+    "admitted_increment": 0
+  }
+}

@@ -1,8 +1,119 @@
 # Materials Boundaries development handoff
 
+## Current local development scope
+
+The user has resumed material expansion toward at least 1,000 admitted unique
+material identities in each of the five primary classes. The local baseline
+commit is `f13586759af6a391635fa81da20c73eb6a6c1c6c`; later experimental work is
+uncommitted. No push, main merge, release, deployment or DOI action is authorized
+by this handoff. Current remote/main/published counts have not been verified here.
+
+The completed local JARVIS checkpoint accepted a 2,000-identity increment after
+independent source/identity/implementation review, installed verification and
+complete reconciliation of 1,887 original local methods: 1,871 passed, 16 policy
+skips and no failed, errored or incomplete methods (Windows Python 3.11).
+That frozen checkpoint contains 3,180 identities. It is a completed predecessor
+checkpoint, not a claim about the latest successor or any published release.
+The earlier five-identity Sanchez acceptance remains part of that history.
+
+The completed finite local PolyOmics checkpoint accepted 1,000 source-qualified
+hypothetical linear constitution models, forming 4,180 identities. Actual
+validation covered 1,887 original methods plus 40 disjoint dedicated methods:
+1,911 passed, 16 exact policy skips, no failures/errors/incomplete methods.
+Independent final review rehashed all 213 evidence files and the 1,281-file
+snapshot. Original failed attempts and full failed-partition retries are retained;
+P0/P2 successes were reused only for identical inputs. This finite registry
+acceptance did not certify the frozen status prose or any remote publication.
+
+The SCC working graph contains 5,180 source-qualified identities, including
+1,000 nominal cementitious recipe representatives. Its exact 24-file application
+(16 replacements, eight additions) was independently cleared after the accepted
+4,180 predecessor, backed up and fully read back into a 1,289-file snapshot.
+Acceptance of that successor is established only by its own 1,887 original
+methods plus 48 disjoint dedicated methods, installed/source/history/current
+documentation evidence, independent final review and an explicit local decision.
+Neither catalogue counts nor the earlier preview checks establish that decision.
+
+Use the immutable local `LOCAL_ACCEPTANCE.json` records and their pinned evidence
+in the supplied handoff evidence package to determine which exact snapshots are
+accepted. Those records may be outside the source checkout; a missing record
+does not establish acceptance. Later edits require their own applicable input
+and test accounting. This document does not turn a predecessor result into a
+successor, hosted-CI or publication result.
+
+The [growth record](docs/MATERIAL_GROWTH_1000_PER_CLASS.zh.md) separates the
+completed JARVIS checkpoint from SCC working counts and required gates.
+The [reference walkthrough](docs/MATERIAL_REFERENCE_WALKTHROUGH.zh.md) and
+[source/condition notes](docs/MATERIAL_SOURCE_CONDITIONS.zh.md) explain the
+measured, DFT, MD and compiled SCC reading paths and their unknown conditions.
+Independent source/transcription checks do not certify independent scientific
+peer review, experimental existence, engineering allowables or universal bounds.
+Unverified SCM mirror provenance/rights and other held sources remain held.
+
+## Archived growth preparation notes
+
+The following notes retain the preparation-time source and review narrative.
+Their stage words such as pending, unapplied and running refer to that archived
+preparation snapshot. Use the completed checkpoint and explicit successor gates
+above together with actual immutable evidence to interpret later progress.
+
+### Coordinator growth notes prepared during 2026-10-27–28
+
+Material expansion has resumed under the user's goal of at least 1,000 admitted
+unique material identities in each of the five primary classes. The
+[growth record](docs/MATERIAL_GROWTH_1000_PER_CLASS.zh.md) pins local baseline
+coverage, source inventories and remaining review/admission gates. The source
+audit admits zero new identities. No push, main merge or deployment is authorized.
+The pause snapshot below remains a historical account of the 2026-10-26 closure.
+
+The five revised Sanchez aluminium-alloy identities are accepted in the local
+experimental worktree after independent source/implementation review, installed
+checks and reconciliation of all 1887 frozen local root IDs: 1871 passed,
+16 skipped, zero failures/errors/incomplete IDs (Windows Python 3.11).
+The [acceptance record](experimental/material-batches/sanchez-al-mea-revised-20261027/LOCAL_ACCEPTANCE.json)
+pins the exact identities and evidence; the
+[verification report](experimental/material-batches/sanchez-al-mea-revised-20261027/INTEGRATION_VALIDATION.md)
+retains repaired failures, cancelled attempts and unrun hosted/cross-platform
+scope. This is local acceptance, not a main merge, release or hosted CI pass.
+
+The JARVIS source audit, frozen 2,000 source-fact selection, corrected native
+mapping, finite hypothetical-model identity/compositional classification and
+four-file isolated method implementation now have scoped independent approval.
+The [current native batch](experimental/material-batches/jarvis-density-native-draft-20261028/README.md)
+retains the rejected locator version, repaired review, exact hashes and isolated
+compiler replay. These decisions do not establish experimental existence,
+metallic electronic behavior or cross-provider phase equivalence. Runtime
+registry/helper wiring and local integration are now independently reviewed.
+Focused history checks and real isolated installed checks passed; the frozen
+1887-ID full-root regression is running. Read the
+[current integration report](experimental/material-batches/jarvis-density-native-draft-20261028/INTEGRATION_VALIDATION.md)
+for exact scopes, build failure/retry and pending coverage. Final acceptance
+remains pending; all 2,000 candidates still contribute zero to the completed quota.
+The earlier JARVIS r1/r2 rounds failed and were stopped; their partial results
+are retained, with no passing aggregate. The reviewed Emax-only correction is
+preparing for r3. Its whole-public-tree freeze, external live receipt and exact
+unrun scope are recorded in the integration report; the earlier running status
+above is historical and does not certify r3 launch or completion.
+
+The [PolyOmics source/identity review](experimental/material-batches/polyomics-density-candidates-20261028/REVIEW_STATUS.md)
+approves 1,000 frozen source facts and finite hypothetical linear constitution-model
+identities. The [separate MD implementation review](experimental/material-batches/polyomics-md-native-draft-20261028/independent-implementation-review.json)
+approves four isolated files only; they remain unapplied. Native mapping,
+historical integration, full regression, installed checks and admission remain
+pending. PolyOmics contributes zero to the completed quota. The
+[SCM mirror audit](experimental/material-batches/scm-mirror-source-audit-20261028/README.md)
+is held because official-file equivalence and rights/provenance remain unverified.
+
+For browsing the existing material records, start with the
+[Chinese material-reference walkthrough](docs/MATERIAL_REFERENCE_WALKTHROUGH.zh.md).
+It covers exact queries, source locators, reported uncertainty and unknown conditions;
+it does not add material records or resume material expansion.
+The [Chinese source and condition notes](docs/MATERIAL_SOURCE_CONDITIONS.zh.md)
+explain the existing PLA/PCL, reactive PBS/lignin and curauá/RPUF records.
+
 Start with the [bounded development kit](docs/development-handoff/README.md) and its [portable onboarding guide](docs/development-handoff/ONBOARDING.md). They provide ready-manifest checks, small-task contracts, independent reviewer prompts and reproducible evidence accounting. The [Chinese operator guide](docs/development-handoff/OPERATOR.zh.md) gives the short operational version.
 
-## Current material boundary
+## Historical material pause (2026-10-26)
 
 Material expansion is paused. The runtime base for this documentation addition is [`3829ec97e396a73168951b7868b9a03d533948b8`](https://github.com/chaotic-mixture/materials-boundaries-public/commit/3829ec97e396a73168951b7868b9a03d533948b8), on `experimental/delgado2020-pla-pcl-runtime`. It contains **1199 experimental project records = 1175 source-qualified identities + 24 reviewed computed compositions**; 62 unadmitted examples remain excluded. This is not a main release.
 

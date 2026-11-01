@@ -9,6 +9,7 @@ from pathlib import Path
 from types import ModuleType
 
 from material_append_history import digest, encoded, load_frozen, recover_catalogs, recover_file
+import sanchez_al_mea_history as sanchez
 
 ROOT = Path(__file__).resolve().parents[1]
 BASELINE = "73a5d872c210bbde5b3c0548d710869e87626691"
@@ -49,6 +50,9 @@ def checkpoint_catalogs(root=ROOT):
     raw = {key: (root / path).read_bytes() for key, path in CATALOG_PATHS.items()}
     hashes = {key: digest(value) for key, value in raw.items()}
     if hashes not in (ledger["current_sha256"], ledger["baseline_sha256"]):
+        raw = {key: encoded(value) for key, value in sanchez.checkpoint_catalogs(root).items()}
+        hashes = {key: digest(value) for key, value in raw.items()}
+    if hashes not in (ledger["current_sha256"], ledger["baseline_sha256"]):
         raise AssertionError("Unrecognized complete Delgado PLA/PCL catalog image")
     graph = {key: json.loads(value) for key, value in raw.items()}
     return recover_catalogs(root, graph, ledger)
@@ -68,6 +72,7 @@ def checkpoint_bytes(relative, raw=None, *, root=ROOT):
         raw = (root / relative).read_bytes()
     if type(raw) is not bytes:
         raise AssertionError("Delgado checkpoint file input must be bytes")
+    raw = sanchez.checkpoint_bytes(relative, raw, root=root)
     keys = [key for key, path in CATALOG_PATHS.items() if relative == path]
     if keys:
         key = keys[0]
@@ -98,6 +103,7 @@ def require_checkpoint_bytes(relative, raw=None, *, root=ROOT):
 def checkpoint_document(relative, raw, *, root=ROOT):
     """Recover documentation after the existing truthful README normalizer."""
     relative = _relative(relative)
+    raw = sanchez.checkpoint_document(relative, raw, root=root)
     ledger = load_frozen(root, DIRECTORY + "document-history.json", DOCUMENTS_SHA256)
     entry = ledger["updates"].get(relative)
     return _project(raw, entry) if entry is not None else raw
@@ -139,7 +145,7 @@ def checkpoint_inventory_view(relative, actual_ids, *, root=ROOT):
     actual_paths = sorted(path.relative_to(root).as_posix() for path in actual_files)
     if set(entry["current_file_sha256"]) != set(entry["current_paths"]):
         raise AssertionError("Incomplete Delgado PLA/PCL checkpoint file hash inventory")
-    raw_files = {path: (root / path).read_bytes() for path in actual_paths}
+    raw_files = {path: sanchez.checkpoint_bytes(path, (root / path).read_bytes(), root=root) for path in actual_paths}
     actual_hashes = {path: digest(raw) for path, raw in raw_files.items()}
     previous_hashes = {path: manifest["baseline_files"][path] for path in entry["previous_paths"]}
     current_image = (actual_ids == entry["current"] and actual_paths == entry["current_paths"]

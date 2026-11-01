@@ -1308,3 +1308,47 @@ composition, purity, missing conditions or global uniqueness are inferred.
 The PDF presented CAPTCHA and was not downloaded or visually verified.
 Source ID: `delgado_aguilar_2020_pla_pcl`.
 [Full conditions and exclusions](docs/MATERIAL_GROWTH_DELGADO_PLA_PCL_20261026.md).
+
+## Sanchez 2019 cast aluminium medium-entropy alloys
+
+Jon Mikel Sanchez, Iban Vicario, Joseba Albizuri, Teresa Guraya and
+Eva Maria Acuña, *Design, Microstructure and Mechanical Properties of Cast
+Medium Entropy Aluminium Alloys*, Scientific Reports 9, 6792 (2019).
+[DOI 10.1038/s41598-019-43329-w](https://doi.org/10.1038/s41598-019-43329-w);
+[official PMC article](https://pmc.ncbi.nlm.nih.gov/articles/PMC6494811/).
+The inspected official article XML states
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+Changes comprise transcription and condition-aware curation of five nominal
+alloy recipes, five Archimedes density values and five compression-derived
+elastic moduli with separately reported standard deviations. Nominal recipes
+are kept distinct from SEM-EDS compositions. The original article governs
+three Cr/Mn/Zr recipe conflicts with the secondary MPEA dataset. Printed
+integer standard deviations `04`, `03` and `02` retain their source text while
+being represented numerically as 4, 3 and 2 GPa. The central aggregation is
+not stated. Missing density conditions and quantitative temperature remain
+unknown; compression conditions are not assigned to the density measurements.
+
+Independent review verified the official XML evidence and selected facts;
+PDF byte identity and visual inspection remain unverified. No article XML,
+PDF, screenshots or raw experimental assets are bundled. Attribution does not
+imply author endorsement, scientific replication or engineering allowables.
+Source ID: `sanchez_2019_cast_al_mea`.
+
+
+## JARVIS-DFT fixed Figshare v11 selected computational densities
+
+Kamal Choudhary, JARVIS-DFT 3D dataset, fixed version DOI [10.6084/m9.figshare.6815699.v11](https://doi.org/10.6084/m9.figshare.6815699.v11). The deposited dataset metadata marks [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Selected file: `jdft_3d-9-24-2025.json.zip`, file ID 64391379; complete ZIP SHA-256 `f9e0a3309f0000d5de1ec9e49c93963109ea45e63f451103f8f6595d2eabf7f5`.
+
+Changes: selected reported density, composition and model facts structured with exact file/member/row bindings; one minimum-numeric-JID model per conservative reduced composition, unknown conditions preserved. No density was recomputed. No endorsement is implied. Hypothetical model identity and compositional metal-family classification do not establish experimental existence, stability, electronic behavior or cross-provider phase equivalence. Dataset licensing is separate from JARVIS software licensing. Parent database identifiers are citations only; parent database assets and the complete source archive are not redistributed.
+
+
+## PolyOmics fixed PFAS source-qualified molecular simulation data
+
+RadonPy Consortium, PolyOmics, DOI 10.57967/hf/7475; fixed revision cbab9483395a32dd968fbeb047808031fb0f3a13. PFAS.csv SHA256 2e80ce549bd6c6e4dfc765d842416278a18422d169859939dd88ec41b61c5529. Data licensed CC BY 4.0: https://creativecommons.org/licenses/by/4.0/ . Source: https://huggingface.co/datasets/yhayashi1986/PolyOmics/tree/cbab9483395a32dd968fbeb047808031fb0f3a13 . Changes: selected factual fields and restricted hypothetical linear model grouping/native structuring; no endorsement. Full CSV, upstream experimental PoLyInfo assets and software are not bundled or relicensed. The original density strings are retained, with unknown export windows, errors and generator lineage. Source attribution and model/mapping descriptions are independent of snapshot admission. The completed finite local PolyOmics registry checkpoint is documented in the handoff evidence; it does not certify experimental existence, publication or deployment.
+
+
+## SCC fixed Zenodo10569517 v1 source-qualified nominal recipe data
+
+SAFHI, Amine el Mahdi; publication_date2024-01-27; DOI10.5281/zenodo.10569517; https://zenodo.org/records/10569517 . Dataset metadata grants CC BY4.0: https://creativecommons.org/licenses/by/4.0/ . Data rights are separate from article DOI10.1016/j.dib.2024.110256 and its cited publications.
+Modifications: selected factual CSV/workbook images and bibliographic references, conservative finite recipe grouping/holds, explicit unknowns, native structuring and localized quantity labels. No endorsement. CSV SHA25671629f3ba531cc2d236abaf9921bc943a0e187fdc74710d2e57b8e401efb981a; original XLSX SHA2562af7f5057f4b059f54c8ce1cae8716b452c86d8bbbcc8af43950c83e72b17cc8. Full CSV/XLSX, source article and original cited papers are not bundled. Original scalar strings, both ingredient images, discrepancies and limits remain distinct. No inferred correction, new averages, precision/error or specimen count. Historical private compiled/runtime previews did not establish admission or publication. Source attribution does not determine the acceptance state of later integrated snapshots; consult their exact-input acceptance records.

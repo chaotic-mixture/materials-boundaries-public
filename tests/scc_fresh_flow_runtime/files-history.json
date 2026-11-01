@@ -1,0 +1,325 @@
+{
+  "schema_version": 1,
+  "baseline_scope": "Exact frozen pending4180PolyOmics image; no predecessor acceptance claim",
+  "updates": {
+    "materials_boundaries/material_references.py": {
+      "previous_sha256": "b3065ecab1fe0646dbd6bd841519cee26f5db6894801d856d5c6981cac3fb369",
+      "sha256": "baa2f4abb2f2b6515c7b0e98a1791a3f54764c1baa9aabc282a9a4a0c9f116e3",
+      "edits": [
+        {
+          "offset": 1240,
+          "before": "",
+          "after": "    \"slump_flow_spread\": \"length\",\n"
+        },
+        {
+          "offset": 1262,
+          "before": "",
+          "after": "    \"mm\": \"length\",\n"
+        },
+        {
+          "offset": 26291,
+          "before": "",
+          "after": "    \"mm\": {\"mm\"},\n"
+        }
+      ]
+    },
+    "schemas/reference_properties.schema.json": {
+      "previous_sha256": "4ed10cc0ced80e8f9b38453583d71cd96d3828a7b7cd9eef0dfcb239f7bda534",
+      "sha256": "2f9508fb2219ce6c8e7e1c75a971fc80bf86664e0b015bf6725d7a2d114312ca",
+      "edits": [
+        {
+          "offset": 32838,
+          "before": "",
+          "after": "                \"mm\",\n"
+        },
+        {
+          "offset": 34083,
+          "before": "",
+          "after": "                \"mm\",\n"
+        },
+        {
+          "offset": 35684,
+          "before": "",
+          "after": "                \"mm\",\n"
+        },
+        {
+          "offset": 40988,
+          "before": "",
+          "after": "                    \"mm\",\n"
+        },
+        {
+          "offset": 53779,
+          "before": "",
+          "after": "                \"mm\",\n"
+        },
+        {
+          "offset": 55683,
+          "before": "",
+          "after": "                \"mm\",\n"
+        },
+        {
+          "offset": 57846,
+          "before": "",
+          "after": "                \"mm\",\n"
+        },
+        {
+          "offset": 64516,
+          "before": "            \"tensile_strength\"\n",
+          "after": "            \"tensile_strength\",\n            \"slump_flow_spread\"\n"
+        },
+        {
+          "offset": 64650,
+          "before": "",
+          "after": "            \"length\",\n"
+        }
+      ]
+    },
+    "materials_boundaries/material_presentation.py": {
+      "previous_sha256": "22939febe069e6c8763b8ae5d26516803ccca31d167789db0b49db4667ca5261",
+      "sha256": "ac579c304351bbceb53864579da1020e33bcfb3efd6c4bcb31afebbc344250bc",
+      "edits": [
+        {
+          "offset": 2818,
+          "before": "",
+          "after": "REQUIRED_LABELS |= frozenset(('code_slump_flow_spread',))\n"
+        }
+      ]
+    },
+    "materials_boundaries/data/material_locales.json": {
+      "previous_sha256": "997912119b1ca5e7d60a0c99aef905ef79441b971930472a8da74aea9e689a14",
+      "sha256": "025d2fcf9adae6de80f82618b6688bb4f0a7ee82f049483174aa4f6c3bf09cb9",
+      "edits": [
+        {
+          "offset": 9967,
+          "before": "      \"code_simulation_cell\": \"Simulation cell\"\n",
+          "after": "      \"code_simulation_cell\": \"Simulation cell\",\n      \"code_slump_flow_spread\": \"Slump-flow spread\"\n"
+        },
+        {
+          "offset": 19234,
+          "before": "      \"code_simulation_cell\": \"模拟单元\"\n",
+          "after": "      \"code_simulation_cell\": \"模拟单元\",\n      \"code_slump_flow_spread\": \"坍落扩展度\"\n"
+        },
+        {
+          "offset": 29756,
+          "before": "      \"code_simulation_cell\": \"シミュレーションセル\"\n",
+          "after": "      \"code_simulation_cell\": \"シミュレーションセル\",\n      \"code_slump_flow_spread\": \"スランプフロー値\"\n"
+        },
+        {
+          "offset": 40601,
+          "before": "      \"code_simulation_cell\": \"Simulationszelle\"\n",
+          "after": "      \"code_simulation_cell\": \"Simulationszelle\",\n      \"code_slump_flow_spread\": \"Setzfließmaß\"\n"
+        }
+      ]
+    },
+    "README.md": {
+      "previous_sha256": "f815b39c47b489508a07f4f29903c7bb524f7f4614a9b1613063a11aadf16fe1",
+      "sha256": "0045c1d22b558e2b0f901a6e8e018d76de822c2fa2ed3b72f15390e8eecaf898",
+      "edits": [
+        {
+          "offset": 40,
+          "before": "Current software release: **v0.35.0** · **Natural materials and reviewed bulk ingestion** · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)\n",
+          "after": "Package version in this local source snapshot: **v0.35.0** · **Natural materials and reviewed bulk ingestion** · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)\n"
+        },
+        {
+          "offset": 603,
+          "before": "## Public-release scope\n",
+          "after": "## Local catalogue scope\n"
+        },
+        {
+          "offset": 667,
+          "before": "- **41 mechanics claims**, **132 source records**, **16 observations from 5 studies**, **12 published computational predictions in 2 scientific families and 3 explicit groups**, and **5 synthetic temperature demos with 7 branches**\n",
+          "after": "- **41 mechanics claims**, **133 source records**, **16 observations from 5 studies**, **12 published computational predictions in 2 scientific families and 3 explicit groups**, and **5 synthetic temperature demos with 7 branches**\n"
+        },
+        {
+          "offset": 1333,
+          "before": "- The 132 sources comprise 131 bibliographic/source records plus 1 original synthetic-demo provenance record; a source record is not a redistribution of its publication or dataset\n",
+          "after": "- The 133 sources comprise 132 bibliographic/source records plus 1 original synthetic-demo provenance record; a source record is not a redistribution of its publication or dataset\n"
+        },
+        {
+          "offset": 1788,
+          "before": "The separate reference catalogue contains **4180 material identities**, **31 qualified grades**, **4181 source-scoped states** and **4197 reference properties**. Counts describe this registry only; aliases, categories, prior observations and computational model cells are not additional materials.\n",
+          "after": "The separate reference catalogue contains **5180 material identities**, **31 qualified grades**, **5181 source-scoped states** and **5197 reference properties**. Counts describe this registry only; aliases, categories, prior observations and computational model cells are not additional materials.\n"
+        },
+        {
+          "offset": 2125,
+          "before": "The local JARVIS working graph additionally contains 2,000 source-qualified hypothetical computational crystal-model identity candidates (1,000 metal-family compositions and 1,000 inorganic compositions), each with one reported optimized-structure density. The working-graph counts above include these pending candidates; they are not yet admitted quota entries. Finite composition-based classification does not establish metallic electronic behavior, experimental existence or stable phases. Historical preservation, full regression and installed checks remain pending. [Frozen review and integration evidence](experimental/material-batches/jarvis-density-native-draft-20261028/README.md).\n",
+          "after": "The working graph includes 2,000 source-qualified hypothetical computational crystal-model identities from JARVIS (1,000 metal-family compositions and 1,000 inorganic compositions), each with one reported optimized-structure density. A completed local JARVIS checkpoint accepted this increment after historical preservation, full regression and installed checks. That decision covers its frozen local experimental snapshot; it does not establish the current remote main, hosted CI, release or deployment state. Finite composition-based classification does not establish metallic electronic behavior, experimental existence or stable phases. [Frozen review and integration evidence](experimental/material-batches/jarvis-density-native-draft-20261028/README.md).\n"
+        },
+        {
+          "offset": 69791,
+          "before": "## Unreleased isolated PolyOmics preview\n",
+          "after": "## Local experimental SCC integration scope\n"
+        },
+        {
+          "offset": 69833,
+          "before": "This disposable preview adds 1000 source-qualified hypothetical linear polymer constitution models. Its 4180 working identities include pending JARVIS and PolyOmics candidates; the latest completed local acceptance remains 1180. No full MD regression, historical runtime integration or material admission is certified by this wheel. Molecular-simulation density is not an experimental value, engineering allowable or universal bound. Export estimator, window, engine version and error remain unknown.\n",
+          "after": "This SCC working snapshot contains 5,180 source-qualified identities, including 1,000 PolyOmics models and 1,000 nominal cementitious recipe representatives. Catalogue counts alone do not certify material admission. Applying the SCC increment requires an independently accepted predecessor snapshot containing 4,180 identities; SCC then requires its own complete live regression, independent evidence audit and explicit local acceptance decision. Completed checkpoints are recorded in separate immutable local acceptance evidence. This README does not certify the current remote main, hosted CI, release or deployment state, and it claims no push, merge or deployment.\n\nSCC data: SAFHI, Amine el Mahdi; fixed Zenodo10569517 version1, DOI10.5281/zenodo.10569517; CC BY4.0 data. Slump-flow spread is a source-defined fresh-state length in mm from an explicit literature compilation. It is not compressive strength, slump height, a universal material constant or certified SCC compliance. Exact test standard, temperature, geometry/aggregation, independent n and uncertainty remain unknown.\n\nBoth official ingredient images and all selected discrepancies are retained.156 flagged rows are held from selection but remain in the conservative duplicate-risk graph. Risk envelopes are project curation tools, never measurement errors or proof all grouped recipes are equivalent. No CSV value is repaired from workbook values or averaged. Original cited papers were not independently reanalyzed.\n\nPolyOmics molecular-simulation density is not an experimental measurement, engineering allowable or universal bound. Export estimator/window, actual trajectories, engine/generator lineage and errors remain unknown. Finite checks of frozen runtime/history wiring and installed resources are recorded separately. Those checks do not replace complete regression or an explicit local acceptance decision, and this README itself certifies neither gate.\n"
+        }
+      ]
+    },
+    "THIRD_PARTY_NOTICES.md": {
+      "previous_sha256": "db2edb491f94e472ce13678747e4ecd5cb430f1ce797cf2959b6f5490f6c9c08",
+      "sha256": "27df83fbe7c1f2b94093c5d6f5269f4476d5fff655227887df07e013ed90cd0f",
+      "edits": [
+        {
+          "offset": 98213,
+          "before": "## PolyOmics fixed PFAS data preview (unadmitted)\n",
+          "after": "## PolyOmics fixed PFAS source-qualified molecular simulation data\n"
+        },
+        {
+          "offset": 98264,
+          "before": "RadonPy Consortium, PolyOmics, DOI 10.57967/hf/7475; fixed revision cbab9483395a32dd968fbeb047808031fb0f3a13. PFAS.csv SHA256 2e80ce549bd6c6e4dfc765d842416278a18422d169859939dd88ec41b61c5529. Data licensed CC BY 4.0: https://creativecommons.org/licenses/by/4.0/ . Source: https://huggingface.co/datasets/yhayashi1986/PolyOmics/tree/cbab9483395a32dd968fbeb047808031fb0f3a13 . Changes: selected factual fields and restricted hypothetical linear model grouping/native structuring; no endorsement. Full CSV, upstream experimental PoLyInfo assets and software are not bundled or relicensed. The original density strings are retained, with unknown export windows, errors and generator lineage. Source/model/mapping and four-file method approval do not constitute final runtime admission.\n",
+          "after": "RadonPy Consortium, PolyOmics, DOI 10.57967/hf/7475; fixed revision cbab9483395a32dd968fbeb047808031fb0f3a13. PFAS.csv SHA256 2e80ce549bd6c6e4dfc765d842416278a18422d169859939dd88ec41b61c5529. Data licensed CC BY 4.0: https://creativecommons.org/licenses/by/4.0/ . Source: https://huggingface.co/datasets/yhayashi1986/PolyOmics/tree/cbab9483395a32dd968fbeb047808031fb0f3a13 . Changes: selected factual fields and restricted hypothetical linear model grouping/native structuring; no endorsement. Full CSV, upstream experimental PoLyInfo assets and software are not bundled or relicensed. The original density strings are retained, with unknown export windows, errors and generator lineage. Source attribution and model/mapping descriptions are independent of snapshot admission. The completed finite local PolyOmics registry checkpoint is documented in the handoff evidence; it does not certify experimental existence, publication or deployment.\n\n\n## SCC fixed Zenodo10569517 v1 source-qualified nominal recipe data\n\nSAFHI, Amine el Mahdi; publication_date2024-01-27; DOI10.5281/zenodo.10569517; https://zenodo.org/records/10569517 . Dataset metadata grants CC BY4.0: https://creativecommons.org/licenses/by/4.0/ . Data rights are separate from article DOI10.1016/j.dib.2024.110256 and its cited publications.\nModifications: selected factual CSV/workbook images and bibliographic references, conservative finite recipe grouping/holds, explicit unknowns, native structuring and localized quantity labels. No endorsement. CSV SHA25671629f3ba531cc2d236abaf9921bc943a0e187fdc74710d2e57b8e401efb981a; original XLSX SHA2562af7f5057f4b059f54c8ce1cae8716b452c86d8bbbcc8af43950c83e72b17cc8. Full CSV/XLSX, source article and original cited papers are not bundled. Original scalar strings, both ingredient images, discrepancies and limits remain distinct. No inferred correction, new averages, precision/error or specimen count. Historical private compiled/runtime previews did not establish admission or publication. Source attribution does not determine the acceptance state of later integrated snapshots; consult their exact-input acceptance records.\n"
+        }
+      ]
+    },
+    "docs/MATERIAL_SOURCE_CONDITIONS.zh.md": {
+      "previous_sha256": "6d692fcc8a23d601bd452b8fa926777a279e62eacd474e118b858cade09c9138",
+      "sha256": "64a731c39a15fa13723f60dea5c92a3f177a0f41787853facd1daa3c71cc9967",
+      "edits": [
+        {
+          "offset": 49,
+          "before": "本页整理已有 PLA/PCL、反应型 PBS/木质素和 curauá 纤维增强硬质聚氨酯泡沫记录，\n帮助使用者把属性值与对应的试样、方法和未知条件一起阅读。\n依据为实验提交 `f13586759af6a391635fa81da20c73eb6a6c1c6c` 中的规范目录及集成说明。\n这是对已有内容的中文整理，没有新增材料、属性、来源或审核状态。\n本轮未重新获取原文、验证原始文献哈希或复核标准条款。\n",
+          "after": "本页整理已有配方参考属性，并说明 JARVIS、PolyOmics 计算来源参考密度的阅读方式。\n前三组配方说明以实验提交 `f13586759af6a391635fa81da20c73eb6a6c1c6c` 中的规范目录及原有集成说明为背景；\n计算来源按各自固定版本与记录字段限定，接纳及发布以对应验收决定为准。\n本页只解释已有字段与使用边界，不新增材料、属性、来源或接纳决定。\n本轮文字整理不重新获取原文、核实标准符合性或补齐未知实验/轨迹条件。\n"
+        },
+        {
+          "offset": 8203,
+          "before": "",
+          "after": "\n## 计算来源参考密度：模型条件与适用范围\n\nJARVIS 与 PolyOmics 的这类记录存放于 `reference-properties`，其证据类别为\n`published_computational_reference`，判定基础为 `source_reports_calculation`。\n`catalog predictions` 则查询另一个预测对象目录。先依据记录类型选入口，再阅读方法和来源。\n命令需要包含相应来源记录及方法契约的工作目录或安装；检索得到记录并不等于完成接纳或发布。\n源码提交号、包版本号、工作数据快照及验收决定应分别记录。\n\n| 来源与固定版本 | 属性及方法字段 | 密度基础的含义 | 阅读时保留的未知项 |\n| --- | --- | --- | --- |\n| JARVIS-DFT，Figshare `10.6084/m9.figshare.6815699.v11` | `mass_density`；`source_reported_computational_structure_density` | `crystallographic` 描述基于结构胞的质量/体积约定；证据仍为计算来源 | 每条模型的实际生成程序版本、收敛、稳定性、实验存在性及温压条件 |\n| PolyOmics，Hugging Face 固定提交 `cbab9483395a32dd968fbeb047808031fb0f3a13` | `mass_density`；`source_reported_molecular_simulation_density` | `simulation_cell` 指分子模拟周期盒 | 实际 CSV 聚合口径、采样/导出窗口、真实生成程序与引擎版本、逐条轨迹条件及误差 |\n\nJARVIS 的 `crystallographic` 基础字段本身不证明衍射实测或实验晶相。\n目录保留来源报告的 OptB88vdW 优化结构密度，没有据结构重新计算数值。\n所选模型和组成范围按固定规则限定；代表模型的选择不建立最低能量相或稳定相结论。\n`metal` 作为组成分类时也不能单独证明金属电子行为。\n\nPolyOmics 的身份遵从所选有限连接图范围。UUID 定位模型状态，链/分子输入数保持为模型输入，\n不能改作独立试样数、牌号或生产批号。记录中的输入字面值与论文处方只能支持各自陈述，\n不补齐逐条实际轨迹条件；空白引擎版本也不能用软件默认值代替。\n未指定的立构、跨来源化学等价、商业产品或实验存在性仍受原有范围限制。\n\n两类记录的 `reported_value` 保留来源标量；`summary_statistic=reported_value` 不等于已核实均值。\n`sample_count.value=null` 和缺失不确定度都不表示零误差或某个默认样本数。\n引用 g/cm³ 单位时应保留相应固定方法/文档的证据定位，不把方法证据写成每个 CSV 单元格自带的单位声明。\n同一单位也不提供不同模型、密度基础、温压、统计口径之间的可比性保证。\n\nPolyOmics 的固定论文写出质量除以时间平均体积 `m / mean(V)`，所检查代码使用瞬时密度的时间平均\n`mean(m/V)`；两者一般不能直接视为相同估计量。本项目保留源标量，不据此改算密度、误差或平均窗口。\n论文目标条件、代码处方和源记录输入不替代实际轨迹；输入处方版本与所检查发布代码不同的情况也继续保留。\n数据集年份未知时，不从版权年份、修订日期或论文年份补写。\n\n先精确查看一个 JARVIS 状态：\n\n```sh\npython -m materials_boundaries catalog reference-properties --source-id jarvis_dft_figshare_v11_2025_3d --material-id state_jarvis_v11_jvasp_10073 --evidence-kind published_computational_reference --quantity mass_density --text --lang zh\n```\n\n再查看一个 PolyOmics 模型状态：\n\n```sh\npython -m materials_boundaries catalog reference-properties --source-id polyomics_hf_7475_pfas_cbab9483395a --material-id state_polyomics_005f1275_8238_4e0b_a43c_e55fc933d46e --evidence-kind published_computational_reference --quantity mass_density --text --lang zh\n```\n\n保留输出中的来源定位、固定版本、原始字符串、密度基础、方法、差异说明和未知条件。\n这些数值仍为 `catalog_only`，不会自动成为复合材料计算器输入、工程许用值或普适材料界。\n来源转录核对、软件检查和独立科学同行评审分别记载，不能相互升级。\n\n来源归属：JARVIS-DFT 为 Kamal Choudhary 的固定\n[Figshare v11 数据](https://doi.org/10.6084/m9.figshare.6815699.v11)；PolyOmics 为 RadonPy Consortium 的固定\n[数据记录](https://doi.org/10.57967/hf/7475)。两者的数据许可按各自固定记录保留\n[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) 归属和修改说明；数据许可不自动覆盖软件及上游资产。\n上述说明整理已检查的字段与限定，不重新获取原文、不重分析轨迹，也不替代各自的最终接纳决定。\n\n\n## SCC 鲜态配方的流动扩展度\n\n固定来源为 SAFHI, Amine el Mahdi 的 Zenodo 10569517 version1 数据（DOI 10.5281/zenodo.10569517），数据元数据标记 CC BY 4.0。2024-01-27 是数据集公开日期，不是逐条实验日期；原论文完整引文保留，但本项目没有重新核验每篇原实验。数据许可与汇编方法论文 DOI 10.1016/j.dib.2024.110256 的许可分别处理。\n\n参考属性 `slump_flow_spread` 的量纲为长度，本批单位为 mm，表示来源明确报告的鲜态 slump-flow spread。它不是坍落高度、J-Ring 扩展度、压缩强度、黏度或密度，也不证明配方符合某项 SCC 标准。记录采用文献汇编证据 `published_handbook_reference`、`source_reports_compiled_measurements`、`source_reported_compilation`；不表示汇编者进行了新实验。\n\n测试标准、具体几何/直径聚合口径、温度、加载条件、独立试样 n、均值与误差仍按记录保留未知。不能由配料用量推算硬化后密度或最终化学组成，也不能把来源行数当重复试验数。\n\nCSV 配料字面量和原工作簿存值分别保留，差异列入 `source_discrepancies`，完整双视图列在 `original_ingredient_dual_views`。不自行决定哪份正确，不平均、归一化或把储存位数当测量精度。可选成分空白为未知，不能当零。\n\n材料身份是明确限定的来源名义配方代表。保守双视图风险分组、156 条来源行暂缓选择和代表选择属于本项目策展；完整信息在 `scope_note` 的 Project curation selection metadata 段，不是原作者报告的测试条件。被暂缓行仍参与重复风险连通；分组可能合并不同配方，不证明组内化学等价。配方代码、流动值或来源行本身不增加材料身份。候选、隔离目录、最终接纳与发布仍须区分。\n\n只读取一个具备真实差异的示例状态：\n\n```sh\npython -m materials_boundaries catalog reference-properties --source-id scc_zenodo_10569517_v1 --material-id state_scc10569517_04cd95308a290a9191e0e255_reported_fresh --quantity slump_flow_spread --text --lang zh\n```\n\n该例的流动值 CSV 字面量为 `720 mm`，原工作簿存值为 `719.86699999999996`；两者并列保留，不作为两次试验或误差范围。使用时同时读取原引文、配料差异、未知条件及适用范围。\n"
+        }
+      ]
+    },
+    "docs/MATERIAL_REFERENCE_WALKTHROUGH.zh.md": {
+      "previous_sha256": "aa281af7ef8ddbf6d295a6fe16ea2607327834dd4acd7930944dd4cd938b7f72",
+      "sha256": "4c6f3db7e8fc688ef37b0e2e2b60b6a2a9dead54dfc6ccd075479e907213f253",
+      "edits": [
+        {
+          "offset": 164,
+          "before": "示例依据实验提交 `f13586759af6a391635fa81da20c73eb6a6c1c6c` 中的已接纳记录，\n",
+          "after": "传统配方示例依据实验提交 `f13586759af6a391635fa81da20c73eb6a6c1c6c` 中的已接纳记录；\n计算来源入口及字段按各自固定来源版本说明，接纳状态以对应验收决定为准。本文\n"
+        },
+        {
+          "offset": 721,
+          "before": "| 已发表的计算预测 | `catalog predictions` | 模型结果与实测结果分开 |\n",
+          "after": "| 计算来源参考密度（JARVIS、PolyOmics） | `catalog reference-properties --evidence-kind published_computational_reference` | 保留具体模型、密度基础、方法和未知条件 |\n| 预测目录中的模型结果 | `catalog predictions` | 预测对象与材料参考对象分别阅读 |\n"
+        },
+        {
+          "offset": 1052,
+          "before": "",
+          "after": "\n计算来源参考密度的固定版本与使用边界，见[来源和条件说明](MATERIAL_SOURCE_CONDITIONS.zh.md)。\n"
+        },
+        {
+          "offset": 7198,
+          "before": "",
+          "after": "\n\n## 检索鲜态配方的流动扩展度\n\nSCC 文献汇编记录从 `reference-properties` 读取，筛选独立长度量 `slump_flow_spread`，不能改走压缩强度、密度或计算预测入口。单状态示例：\n\n```sh\npython -m materials_boundaries catalog reference-properties --source-id scc_zenodo_10569517_v1 --material-id state_scc10569517_04cd95308a290a9191e0e255_reported_fresh --quantity slump_flow_spread --text --lang zh\n```\n\n核对 mm 原标量、compiled 汇编证据、原引文、CSV/工作簿差异和未知 n/标准/温度；项目风险分组信息在策展范围说明中，不充当作者试验条件。见[来源与条件说明](MATERIAL_SOURCE_CONDITIONS.zh.md#scc-鲜态配方的流动扩展度)。这条检索命令和隔离目录计数不构成最终接纳或发布证据。\n"
+        }
+      ]
+    },
+    "tests/polyomics_md_history.py": {
+      "previous_sha256": "ccbbb74ab01d9c8b09ec6e1260baa65c1afd730bab3e07ae1c92287760590414",
+      "sha256": "40e87d20ef7a3f48fe913e4ca9e3cbedd878e025954ad205e481698807cb94e5",
+      "edits": [
+        {
+          "offset": 98,
+          "before": "",
+          "after": "import scc_flow_history as scc\n"
+        },
+        {
+          "offset": 1309,
+          "before": "    raw = {key: (root / path).read_bytes() for key, path in CATALOG_PATHS.items()}\n",
+          "after": "    raw = {key: encoded(value) for key, value in scc.checkpoint_catalogs(root).items()}\n"
+        },
+        {
+          "offset": 2280,
+          "before": "",
+          "after": "    raw = scc.checkpoint_bytes(relative, raw, root=root)\n"
+        },
+        {
+          "offset": 3740,
+          "before": "",
+          "after": "    actual = scc.predecessor_descriptors(actual, root=root)\n"
+        },
+        {
+          "offset": 4194,
+          "before": "",
+          "after": "    raw = scc.checkpoint_document(relative, raw, root=root)\n"
+        },
+        {
+          "offset": 5271,
+          "before": "        return module.predecessor_descriptors((descriptor,) + actual, root=root)\n",
+          "after": "        return module.predecessor_descriptors(scc.successor_descriptors((descriptor,) + actual, root=root), root=root)\n"
+        }
+      ]
+    },
+    "tests/polyomics_md_runtime/test_polyomics_history.py": {
+      "previous_sha256": "72b8466d63ecc4773e9f47f76ba9302fb3326371b81ad69ad598686f6edcc8d4",
+      "sha256": "0a01aee468e00dca756cc35ad1a5aad84a625bced19c8e0e83aebd0bc238fa9e",
+      "edits": [
+        {
+          "offset": 323,
+          "before": "import polyomics_md_history as history\n",
+          "after": "import polyomics_md_history as _polyomics_history\nimport scc_flow_history as scc\nhistory = scc.polyomics_test_scope(_polyomics_history)\n"
+        },
+        {
+          "offset": 443,
+          "before": "import material_append_successors as successors\n",
+          "after": "successors = scc.checkpoint_registry()\n"
+        },
+        {
+          "offset": 738,
+          "before": "    return {key:json.loads((ROOT/path).read_bytes()) for key,path in history.CATALOG_PATHS.items()}\n",
+          "after": "    return scc.checkpoint_catalogs()\n"
+        },
+        {
+          "offset": 4198,
+          "before": "                raw=(ROOT/path).read_bytes()\n",
+          "after": "                raw=scc.checkpoint_bytes(path,(ROOT/path).read_bytes())\n"
+        }
+      ]
+    },
+    "HANDOFF.md": {
+      "previous_sha256": "80b82a1e11dd70953781a4363fbab5e3e54451411dfeb074bdff89e97111a4a4",
+      "sha256": "73480c0f584ed9b4cac6f9d61e7d1f31e6622368302cbd148cfb683baf9a1a47",
+      "edits": [
+        {
+          "offset": 0,
+          "before": "# Materials Boundaries development handoff\r\n\r\n## Current coordinator instruction (2026-10-27)\r\n\r\nMaterial expansion has resumed under the user's goal of at least 1,000 admitted\r\nunique material identities in each of the five primary classes. The\r\n[growth record](docs/MATERIAL_GROWTH_1000_PER_CLASS.zh.md) pins local baseline\r\ncoverage, source inventories and remaining review/admission gates. The source\r\naudit admits zero new identities. No push, main merge or deployment is authorized.\r\nThe pause snapshot below remains a historical account of the 2026-10-26 closure.\r\n\r\nThe five revised Sanchez aluminium-alloy identities are accepted in the local\r\nexperimental worktree after independent source/implementation review, installed\r\nchecks and reconciliation of all 1887 frozen local root IDs: 1871 passed,\r\n16 skipped, zero failures/errors/incomplete IDs (Windows Python 3.11).\r\nThe [acceptance record](experimental/material-batches/sanchez-al-mea-revised-20261027/LOCAL_ACCEPTANCE.json)\r\npins the exact identities and evidence; the\r\n[verification report](experimental/material-batches/sanchez-al-mea-revised-20261027/INTEGRATION_VALIDATION.md)\r\nretains repaired failures, cancelled attempts and unrun hosted/cross-platform\r\nscope. This is local acceptance, not a main merge, release or hosted CI pass.\r\n\r\nThe JARVIS source audit, frozen 2,000 source-fact selection, corrected native\r\nmapping, finite hypothetical-model identity/compositional classification and\r\nfour-file isolated method implementation now have scoped independent approval.\r\nThe [current native batch](experimental/material-batches/jarvis-density-native-draft-20261028/README.md)\r\nretains the rejected locator version, repaired review, exact hashes and isolated\r\ncompiler replay. These decisions do not establish experimental existence,\r\nmetallic electronic behavior or cross-provider phase equivalence. Runtime\r\nregistry/helper wiring and local integration are now independently reviewed.\r\nFocused history checks and real isolated installed checks passed; the frozen\r\n1887-ID full-root regression is running. Read the\r\n[current integration report](experimental/material-batches/jarvis-density-native-draft-20261028/INTEGRATION_VALIDATION.md)\r\nfor exact scopes, build failure/retry and pending coverage. Final acceptance\r\nremains pending; all 2,000 candidates still contribute zero to the completed quota.\r\nThe earlier JARVIS r1/r2 rounds failed and were stopped; their partial results\r\nare retained, with no passing aggregate. The reviewed Emax-only correction is\r\npreparing for r3. Its whole-public-tree freeze, external live receipt and exact\r\nunrun scope are recorded in the integration report; the earlier running status\r\nabove is historical and does not certify r3 launch or completion.\r\n\r\nThe [PolyOmics source/identity review](experimental/material-batches/polyomics-density-candidates-20261028/REVIEW_STATUS.md)\r\napproves 1,000 frozen source facts and finite hypothetical linear constitution-model\r\nidentities. The [separate MD implementation review](experimental/material-batches/polyomics-md-native-draft-20261028/independent-implementation-review.json)\r\napproves four isolated files only; they remain unapplied. Native mapping,\r\nhistorical integration, full regression, installed checks and admission remain\r\npending. PolyOmics contributes zero to the completed quota. The\r\n[SCM mirror audit](experimental/material-batches/scm-mirror-source-audit-20261028/README.md)\r\nis held because official-file equivalence and rights/provenance remain unverified.\r\n\r\nFor browsing the existing material records, start with the\r\n[Chinese material-reference walkthrough](docs/MATERIAL_REFERENCE_WALKTHROUGH.zh.md).\r\nIt covers exact queries, source locators, reported uncertainty and unknown conditions;\r\nit does not add material records or resume material expansion.\r\nThe [Chinese source and condition notes](docs/MATERIAL_SOURCE_CONDITIONS.zh.md)\r\nexplain the existing PLA/PCL, reactive PBS/lignin and curauá/RPUF records.\r\n\r\nStart with the [bounded development kit](docs/development-handoff/README.md) and its [portable onboarding guide](docs/development-handoff/ONBOARDING.md). They provide ready-manifest checks, small-task contracts, independent reviewer prompts and reproducible evidence accounting. The [Chinese operator guide](docs/development-handoff/OPERATOR.zh.md) gives the short operational version.\r\n\r\n",
+          "after": "# Materials Boundaries development handoff\n\n## Current local development scope\n\nThe user has resumed material expansion toward at least 1,000 admitted unique\nmaterial identities in each of the five primary classes. The local baseline\ncommit is `f13586759af6a391635fa81da20c73eb6a6c1c6c`; later experimental work is\nuncommitted. No push, main merge, release, deployment or DOI action is authorized\nby this handoff. Current remote/main/published counts have not been verified here.\n\nThe completed local JARVIS checkpoint accepted a 2,000-identity increment after\nindependent source/identity/implementation review, installed verification and\ncomplete reconciliation of 1,887 original local methods: 1,871 passed, 16 policy\nskips and no failed, errored or incomplete methods (Windows Python 3.11).\nThat frozen checkpoint contains 3,180 identities. It is a completed predecessor\ncheckpoint, not a claim about the latest successor or any published release.\nThe earlier five-identity Sanchez acceptance remains part of that history.\n\nThe completed finite local PolyOmics checkpoint accepted 1,000 source-qualified\nhypothetical linear constitution models, forming 4,180 identities. Actual\nvalidation covered 1,887 original methods plus 40 disjoint dedicated methods:\n1,911 passed, 16 exact policy skips, no failures/errors/incomplete methods.\nIndependent final review rehashed all 213 evidence files and the 1,281-file\nsnapshot. Original failed attempts and full failed-partition retries are retained;\nP0/P2 successes were reused only for identical inputs. This finite registry\nacceptance did not certify the frozen status prose or any remote publication.\n\nThe SCC working graph contains 5,180 source-qualified identities, including\n1,000 nominal cementitious recipe representatives. Its exact 24-file application\n(16 replacements, eight additions) was independently cleared after the accepted\n4,180 predecessor, backed up and fully read back into a 1,289-file snapshot.\nAcceptance of that successor is established only by its own 1,887 original\nmethods plus 48 disjoint dedicated methods, installed/source/history/current\ndocumentation evidence, independent final review and an explicit local decision.\nNeither catalogue counts nor the earlier preview checks establish that decision.\n\nUse the immutable local `LOCAL_ACCEPTANCE.json` records and their pinned evidence\nin the supplied handoff evidence package to determine which exact snapshots are\naccepted. Those records may be outside the source checkout; a missing record\ndoes not establish acceptance. Later edits require their own applicable input\nand test accounting. This document does not turn a predecessor result into a\nsuccessor, hosted-CI or publication result.\n\nThe [growth record](docs/MATERIAL_GROWTH_1000_PER_CLASS.zh.md) separates the\ncompleted JARVIS checkpoint from SCC working counts and required gates.\nThe [reference walkthrough](docs/MATERIAL_REFERENCE_WALKTHROUGH.zh.md) and\n[source/condition notes](docs/MATERIAL_SOURCE_CONDITIONS.zh.md) explain the\nmeasured, DFT, MD and compiled SCC reading paths and their unknown conditions.\nIndependent source/transcription checks do not certify independent scientific\npeer review, experimental existence, engineering allowables or universal bounds.\nUnverified SCM mirror provenance/rights and other held sources remain held.\n\n## Archived growth preparation notes\n\nThe following notes retain the preparation-time source and review narrative.\nTheir stage words such as pending, unapplied and running refer to that archived\npreparation snapshot. Use the completed checkpoint and explicit successor gates\nabove together with actual immutable evidence to interpret later progress.\n\n### Coordinator growth notes prepared during 2026-10-27–28\n\nMaterial expansion has resumed under the user's goal of at least 1,000 admitted\nunique material identities in each of the five primary classes. The\n[growth record](docs/MATERIAL_GROWTH_1000_PER_CLASS.zh.md) pins local baseline\ncoverage, source inventories and remaining review/admission gates. The source\naudit admits zero new identities. No push, main merge or deployment is authorized.\nThe pause snapshot below remains a historical account of the 2026-10-26 closure.\n\nThe five revised Sanchez aluminium-alloy identities are accepted in the local\nexperimental worktree after independent source/implementation review, installed\nchecks and reconciliation of all 1887 frozen local root IDs: 1871 passed,\n16 skipped, zero failures/errors/incomplete IDs (Windows Python 3.11).\nThe [acceptance record](experimental/material-batches/sanchez-al-mea-revised-20261027/LOCAL_ACCEPTANCE.json)\npins the exact identities and evidence; the\n[verification report](experimental/material-batches/sanchez-al-mea-revised-20261027/INTEGRATION_VALIDATION.md)\nretains repaired failures, cancelled attempts and unrun hosted/cross-platform\nscope. This is local acceptance, not a main merge, release or hosted CI pass.\n\nThe JARVIS source audit, frozen 2,000 source-fact selection, corrected native\nmapping, finite hypothetical-model identity/compositional classification and\nfour-file isolated method implementation now have scoped independent approval.\nThe [current native batch](experimental/material-batches/jarvis-density-native-draft-20261028/README.md)\nretains the rejected locator version, repaired review, exact hashes and isolated\ncompiler replay. These decisions do not establish experimental existence,\nmetallic electronic behavior or cross-provider phase equivalence. Runtime\nregistry/helper wiring and local integration are now independently reviewed.\nFocused history checks and real isolated installed checks passed; the frozen\n1887-ID full-root regression is running. Read the\n[current integration report](experimental/material-batches/jarvis-density-native-draft-20261028/INTEGRATION_VALIDATION.md)\nfor exact scopes, build failure/retry and pending coverage. Final acceptance\nremains pending; all 2,000 candidates still contribute zero to the completed quota.\nThe earlier JARVIS r1/r2 rounds failed and were stopped; their partial results\nare retained, with no passing aggregate. The reviewed Emax-only correction is\npreparing for r3. Its whole-public-tree freeze, external live receipt and exact\nunrun scope are recorded in the integration report; the earlier running status\nabove is historical and does not certify r3 launch or completion.\n\nThe [PolyOmics source/identity review](experimental/material-batches/polyomics-density-candidates-20261028/REVIEW_STATUS.md)\napproves 1,000 frozen source facts and finite hypothetical linear constitution-model\nidentities. The [separate MD implementation review](experimental/material-batches/polyomics-md-native-draft-20261028/independent-implementation-review.json)\napproves four isolated files only; they remain unapplied. Native mapping,\nhistorical integration, full regression, installed checks and admission remain\npending. PolyOmics contributes zero to the completed quota. The\n[SCM mirror audit](experimental/material-batches/scm-mirror-source-audit-20261028/README.md)\nis held because official-file equivalence and rights/provenance remain unverified.\n\nFor browsing the existing material records, start with the\n[Chinese material-reference walkthrough](docs/MATERIAL_REFERENCE_WALKTHROUGH.zh.md).\nIt covers exact queries, source locators, reported uncertainty and unknown conditions;\nit does not add material records or resume material expansion.\nThe [Chinese source and condition notes](docs/MATERIAL_SOURCE_CONDITIONS.zh.md)\nexplain the existing PLA/PCL, reactive PBS/lignin and curauá/RPUF records.\n\nStart with the [bounded development kit](docs/development-handoff/README.md) and its [portable onboarding guide](docs/development-handoff/ONBOARDING.md). They provide ready-manifest checks, small-task contracts, independent reviewer prompts and reproducible evidence accounting. The [Chinese operator guide](docs/development-handoff/OPERATOR.zh.md) gives the short operational version.\n\n"
+        }
+      ]
+    },
+    "docs/MATERIAL_GROWTH_1000_PER_CLASS.zh.md": {
+      "previous_sha256": "e7ecbe1c0870bcfc71ab8b4f9349ad4a537da049cb2040f1ddce17fdc172b9b0",
+      "sha256": "cae10fdd40779e33d27ff88bccb4c44ebd5ffc7fe21d4db53b50ce8d1bf6b488",
+      "edits": [
+        {
+          "offset": 0,
+          "before": "# 每类至少 1000 个材料：推进记录\r\n\r\n## 目标与计数依据\r\n\r\n本轮协调指令恢复材料扩充，目标保持为五个大类各至少 1000 个已接纳材料身份。\r\n不推送、不合并 main、不部署的既有权限边界继续有效。\r\n2026-10-26 的暂停记录是历史状态，不应覆盖本轮恢复指令。\r\n\r\n本地实验基线是 `f13586759af6a391635fa81da20c73eb6a6c1c6c`。\r\n以下已完成接纳计数由 `material_quota_coverage` 对完整 1180 身份接纳快照核验，\r\n固定于 Sanchez 的 `LOCAL_ACCEPTANCE.json`。当前工作图含待验 JARVIS 追加，须先通过\r\n其精确检查点恢复该接纳快照；直接对工作图运行 coverage 不替代最终接纳。\r\n这些都不是远端 main 或发布版本计数。\r\n\r\n| 大类 | 已接纳唯一身份 | 距离 1000 的缺口 | 当前状态 |\r\n| --- | ---: | ---: | --- |\r\n| 金属 `metal` | 37 | 963 | 待扩充 |\r\n| 无机 `inorganic` | 59 | 941 | 待扩充 |\r\n| 聚合物 `polymer` | 37 | 963 | 待扩充 |\r\n| 复合材料 `composite` | 37 | 963 | 待扩充 |\r\n| 天然材料 `natural` | 1010 | 0 | 已达到本地实验目录数量目标 |\r\n\r\n四类合计还缺 3830 个。天然材料的超额数量不能抵消其他类别的缺口。\r\n5 个修订后的 Sanchez 铝合金已完成本地接纳：独立来源与实现审阅、完整 Windows Python\r\n3.11 回归（1887 ID：1871 通过、16 跳过、零失败/错误）及安装核验均已完成。\r\n[接纳记录](../experimental/material-batches/sanchez-al-mea-revised-20261027/LOCAL_ACCEPTANCE.json)\r\n固定 5 个身份与证据摘要。当前本地实验目录有 1180 个身份；这不是远端 main 或发布计数。\r\n实际通过、失败修正、取消与未运行范围见[批次核验记录](../experimental/material-batches/sanchez-al-mea-revised-20261027/INTEGRATION_VALIDATION.md)。\r\n牌号、状态、重复试样、数据行、别名、预测值和候选均不能代替已接纳唯一身份。\r\n分类继续遵循[现有五类政策](MATERIAL_TAXONOMY.md)。\r\n\r\n## 已完成的来源准备\r\n\r\n第一阶段取得两个公开来源的固定文件，核对完整字节并生成 8912 行暂存记录。\r\n完整源文件及逐行事实暂存在仓库外的本地缓存；仓库内保存校验和、统计和复现程序。\r\n这些是来源盘点，尚未经过接纳流程，也不计入上述配额。\r\n\r\n后续已取得 [JARVIS 固定 v11 来源包](../experimental/material-batches/quota1000-jarvis-source-audit-20261027/README.md)，\r\n完整核对官方 MD5 和 SHA-256，实际解析 93,902 行。筛选得到 45,909 个明确三维体相、\r\n正有限计算密度且公式/原子计数一致的源行；按精确组成比去重后，全金属元素桶有\r\n14,028 组，含 O 且无 C/H 桶有 5,320 组。它们仍是待审来源储备，不能按组数计入配额。\r\n来源异常、排除项与 10 项通过的解析检查均已留档。\r\n[独立审阅](../experimental/material-batches/quota1000-jarvis-source-audit-20261027/REVIEW_STATUS.md)\r\n已复算完整索引，并通过来源审计与计算晶胞密度契约提案。\r\n随后冻结的[金属、无机各 1000 条来源事实候选](../experimental/material-batches/jarvis-density-candidates-20261027/REVIEW_STATUS.md)\r\n也通过独立逐行核对和选择重放，6 项选择检查通过。来源事实阶段不代替后续身份、分类和\r\n接纳裁决；这些候选的接纳增量为零。全金属元素组成不自动证明金属电子行为。\r\n现有 schema 尚不能诚实表达 DFT 优化晶胞密度，另有\r\n[未应用的隔离实现草案](../experimental/material-batches/jarvis-computed-density-contract-draft-20261027/README.md)：\r\n10 项新方法检查和 29 项原契约检查通过；该早期草案后续由下述四语言修订与独立审阅接续。\r\n上述隔离预备阶段未修改当时的运行契约与铝合金回归输入；后续实际整合状态见下文。\r\n2026-10-28 进一步整理了[未接纳的原生目录与四语言方法草案](../experimental/material-batches/jarvis-density-native-draft-20261028/README.md)：\r\n6 项目录预览检查、10 项新契约检查和 29 项原契约检查通过，但这些不是安装或完整 CI。\r\n扩展独立审阅已发现并确认修复 0/1-based 来源定位错误；全部 2000 条、10,000 处定位\r\n经复核正确，修订后的 9 项预览检查通过。隔离实现和逐组成身份/分类裁决均已获有限批准，\r\n明确假设计算晶体模型范围和电子行为未知，不表示实验存在或跨提供者物相等价。\r\n现有通用编译器已在隔离环境完成整合包编译与精确重放，目录与获批草案一致；\r\n该派生包的全部 2000 个身份交叉映射及重放也已通过只读独立核验。\r\n编译器准备状态不等于运行接纳。历史保留、真实整合、完整回归与安装核验仍待完成，\r\n这 2000 条的当前接纳增量保持零。\r\n后续隔离数据恢复层已获独立批准：前瞻图的全部旧对象、顺序和根元数据保持，能精确恢复\r\n1180 身份原始字节并继续恢复到 1175 检查点；7 类图篡改与 3 个空白文件变体均拒绝。\r\n前瞻图的金属 1037、无机 1059 仍是未接纳预览，不能更新上方当前配额。\r\n六个文件与两份规范化文档的精确恢复预览也已通过独立复核，包括重叠账本邻接与未知图像拒绝；\r\n该预览阶段尚未接入注册表/辅助层，也未完成完整历史回归。\r\n现已接入注册表与辅助层，并获只读独立实现批准；新专项 8 项、旧铝合金 8 项、契约/历史\r\n39 项和 PLA/PCL 历史 15 项通过。安装包核对全部 2000 条新增身份/属性，并通过四语言\r\n40 次 CLI 核查。覆盖原有 1887 ID 的四个完整本地回归分区正在运行，汇总结果仍未知；\r\n这 2000 条仍未登记最终接纳。见[当前整合核验](../experimental/material-batches/jarvis-density-native-draft-20261028/INTEGRATION_VALIDATION.md)。\r\n\r\n聚合物方向新增[作者 PolyOmics 固定提交审计](../experimental/material-batches/quota1000-polyomics-source-audit-20261027/README.md)。\r\n截至 2026-10-28 的后续[独立审阅](../experimental/material-batches/polyomics-density-candidates-20261028/REVIEW_STATUS.md)\r\n已批准冻结的 1000 条来源事实、限定范围内的假想线性聚合物组成模型身份与现有 37 个\r\n身份的交叉判定，以及 MD 密度契约提案。独立桥块算法与全部 3690 个保留图组一致，\r\n选中的 1000 个模型通过 2000 次边界平移/非最小重复表示检查；这不是普适化学规范化证明。\r\n另有[四文件隔离实现批准](../experimental/material-batches/polyomics-md-native-draft-20261028/independent-implementation-review.json)：\r\n10 项局部检查通过，1050 个旧分支组合无接受/拒绝变化，240 个 MD 组合保持方法/基础约束。\r\n实现未应用，1000 条原生映射、历史整合、完整回归及真实安装仍待完成，新增接纳数为零。\r\n下列旧审计阶段的“待审”描述保留为过程记录，由上述限定范围的后续审阅取代；\r\n密度导出窗口、生成版本链及论文/代码的聚合差异仍未知。\r\n已核对两份公开计算属性 CSV，实际共 6,182 行；源说明明确标记数据集 CC BY 4.0。\r\n源模拟 UUID、立构和重复单元字符串不能直接充当材料身份。7 项解析检查通过，\r\n周期重复单元的规范化、与现有身份去重、版本化单位/统计语义及独立审阅仍待完成；\r\n新增接纳数仍为零，不替代旧来源的权利链阻塞记录。\r\n另有未独立审阅的周期图原型：9 项用例和 7,380 次实际源表示变换检查通过，得到\r\n3,690 个操作性图组，尚不等于规范材料身份，也不计入配额。\r\n已补充[密度单位、条件及统计定义证据](../experimental/material-batches/quota1000-polyomics-source-audit-20261027/MD_METHOD_NOTES.zh.md)：\r\n固定论文与代码佐证 g/cm³、300 K 与 1 atm；论文的质量除以平均体积和代码的瞬时密度\r\n滑动平均存在定义差异，数值影响及逐记录实际导出窗口未知。不能自行统一为已核实的均值。\r\n\r\n最新的[聚合物来源链与 COD 无机来源核查](../experimental/material-batches/quota1000-source-audit-20261027/LINEAGE_AND_COD.zh.md)\r\n进一步标记了 GREA 上游移除通知，核算了 279 个 Tg 聚合值，并盘点作者公开的 1077 行\r\nRadonPy 计算数据；这些记录仍未接纳。新增 COD 来源已取得 3902 条元数据及 50 个 CIF\r\n可行性样本，组成比筛选得到 2788 组，但规范身份和可接纳属性数仍待审核。\r\n\r\n后续原文核查已生成 [Sanchez 2019 铝合金修订候选包](../experimental/material-batches/sanchez-al-mea-revised-20261027/README.md)：\r\n5 个标称配方、5 个铸态、10 条密度/压缩模量属性，独立审阅与本地完整回归已通过，已本地接纳。\r\n原文与 MPEA 汇编对照发现其中 3 个配方标签有冲突，候选采用原文的 Al70/Si10 配方，\r\n并保留汇编原字面值及差异说明；没有把错误配方静默带入目录。\r\n\r\n| 方向 | 本轮实际取得的文件 | 文件行数 | 字面身份字符串数 | 尚需解决 |\r\n| --- | --- | ---: | ---: | --- |\r\n| 聚合物 | Kunchapu / Jablonka，Zenodo `15789599`，含结构与嵌入的 Tg 表 | 7367 | 7367 个 PSMILES 字符串 | 化学规范化与现有身份交叉映射、上游来源与权利链、Tg 测量及聚合统计契约 |\r\n| 金属 | Borg 等 MPEA 数据仓库，固定提交 `d31e2510cccc3fb9e79d43ad62652f64ef8c2c5e` | 1545 | 630 个配方字符串 | 配方规范化、状态去重、实验/计算分离、拉伸/压缩分离、逐项原始证据 |\r\n\r\nPSMILES 或配方字符串不等于已解决的规范材料身份。MPEA 的 1545 行中有 915 行重复使用\r\n配方字面键，不能计为 1545 种材料。该表有 112 行正有限数的实验密度和 145 行正有限数的\r\n实验 Young's modulus；这些只是字段完整性统计，重叠行未扣除，不能相加作为材料数。\r\n计算密度和计算模量列保持独立。\r\n\r\n聚合物文件已与 Zenodo 发布的 MD5 `31400a5f499394e3a6e0658488a464bb` 匹配，\r\n长度为 43615282 字节，并另存 SHA-256。首次下载曾因传输 EOF 失败，续传后的完整文件\r\n才用于盘点；不完整文件未进入暂存结果。\r\n来源标签包含 GREA 7170 行、Qiu 152 行、Xie 21 行、Schrodinger 15 行、Nguyen 7 行、\r\nUchicago 2 行。标签尚不是逐项原始论文定位，不能当作六个独立实验或已核验权利链。\r\n`meta.std`、`meta.num_of_points` 和可靠性颜色保留原字面值，不自动解释为试样 SD、独立 n\r\n或本项目质量审核结果。\r\n\r\nZenodo 元数据标记 CC BY 4.0；MPEA 固定仓库保留 Apache 2.0 许可证。\r\n这两条许可观察均不替代上游来源与事实提取范围的审阅。\r\n来源：[聚合物发布记录](https://zenodo.org/records/15789599)、\r\n[MPEA 固定仓库](https://github.com/CitrineInformatics/MPEA_dataset/tree/d31e2510cccc3fb9e79d43ad62652f64ef8c2c5e)。\r\n\r\n详细证据、校验和与命令见[本轮来源盘点包](../experimental/material-batches/quota1000-source-audit-20261027/README.md)。\r\n\r\n## 无机与复合材料的来源队列\r\n\r\n无机方向已新增 COD 的有限 CC0 查询与 CIF 样本，详见上方最新核查。\r\n下列 Gong 与 ComposiLator 两项仍处在获取队列。\r\n\r\n这两项目前只核验了官方页面，没有下载并解析完整数据文件，候选数量及可接纳身份数均未知。\r\n最新[获取记录](../experimental/material-batches/quota1000-source-audit-20261027/acquisition-status.json)\r\n保留了玻璃官方附件返回 HTTP 403，以及 ComposiLator 页面版本/许可和文件清单尚未解决的情况。\r\n不能把未取得文件报告为已核验，也不能把一次空列表解释为来源没有数据。\r\n\r\n- 无机：Gong / Olivetti 的[多组分硅酸盐玻璃密度研究](https://ceramics.onlinelibrary.wiley.com/doi/10.1111/jace.19072)。\r\n  官方页面列有 Supplementary Material A 工作簿，并说明资料中混有 133 个分子动力学估计值。\r\n  下一步先核实附件权利、取得原始工作簿、分离实验与模拟，再按组成和状态去重。\r\n- 复合材料：[ComposiLator，Mendeley v1](https://data.mendeley.com/datasets/ygzg4rdxs8/1)。\r\n  官方页面标记 CC BY 4.0，并明确部分剪切/体积模量由其他弹性参数计算。\r\n  下一步取得版本文件清单，检查配方、原文引用、加工状态、测量条件及派生属性标记。\r\n\r\n另有 [SCM 混凝土来源获取记录](../experimental/material-batches/quota1000-source-audit-20261027/scm-concrete-acquisition.json)：\r\n官方 v2 说明声明 1456 个配方并标记数据集 CC BY 4.0；原文 XML 的文章许可为\r\nCC BY-NC-ND，两者分别记录。尚未取得工作簿或核算实际独立配方，不能把声明数量计入配额。\r\n还需核验引用链、编译值身份、年龄/状态去重和当前不支持的抗压等物理量契约；\r\n不能把配方 kg/m³ 求和冒充实测密度，也不能将缺失值 `-1` 纳入属性。\r\n后续取得[第三方镜像的只读盘点](../experimental/material-batches/scm-mirror-source-audit-20261028/README.md)：\r\n实际有 1456 个数据行、1447 个字面 MixID 和 1365 个八成分数值向量，部分成分是带缓存值的\r\n公式。向量数不等于材料身份数，非公式属性也不自动成为实验数据。\r\n与作者 v2 原始工作簿的字节等价、镜像权利链及逐项原文忠实性尚未核实；不据此接纳。\r\n\r\n## 接下来的执行顺序与验收\r\n\r\n1. 优先检查 MPEA 中已有契约支持的实验密度和 Young's modulus，生成明确配方、状态、\r\n   属性及来源定位的候选包；缺项保留未知，重复身份只补状态或证据。\r\n2. 完成聚合物六组上游来源映射，审阅 Tg 的定义、单位、统计聚合与实验条件。\r\n   当前参考属性 schema 没有 Tg 量，先形成独立科学契约并审阅，不能改名塞进模量或密度字段。\r\n3. 取得并盘点无机和复合材料文件，为四个未达标类别分别补足可接纳来源。\r\n   来源行数或潜在配方空间不作为供给已经足够的证明。\r\n4. 对冻结的候选、契约与权利说明进行独立审阅，然后按\r\n   [现有批量接纳流程](BULK_INGESTION.md)绑定准确摘要和明确身份集合。\r\n5. 每批接纳后重跑完整目录校验、来源忠实性、历史保留及相应运行/安装检查，\r\n   用配额函数重新计算五类进度。失败、跳过、未运行和未知分别报告。\r\n\r\n本轮已完成来源盘点、5 个原文支持的铝合金本地接纳及相应完整本地回归，目标仍在推进中。\r\n独立科学同行评审、原始数据重分析、远端 CI 与发布未由本轮完成。\r\n",
+          "after": "# 每类至少 1000 个材料：推进记录\n\n## 目标、快照与计数\n\n用户已恢复材料扩充，目标为五个主类各至少 1000 个已接纳的唯一材料身份。\n既有边界仍是不推送、不合并 main、不发布或部署；2026-10-26 的暂停是历史记录。\n本地基础提交为 `f13586759af6a391635fa81da20c73eb6a6c1c6c`，后续实验改动尚未提交。\n本文未核实远端 main、公开发行或部署中的材料数量。\n\n已经完成的本地 JARVIS 检查点含 3180 个身份，包含 2000 个来源限定计算模型身份增量；\n其来源、有限身份/分类与实现独审、安装检查及完整本地 1887 方法核对均已完成\n（Windows Python 3.11：1871 通过、16 项精确政策跳过、零失败/错误/未完成）。\n这是一个明确的已完成前序检查点，不把它写成所有后继快照的当前验收结果。\nSanchez 的五个铝合金身份已包含在此前序，保留原来的独立审阅和接纳记录。\n\nPolyOmics 的 1000 个来源限定假想线性构成模型已完成有限本地注册表接纳，\n形成 4180 身份检查点。实际 1927 个唯一方法中 1911 通过、16 项精确政策跳过，\n无失败、错误或未完成；独立终态审阅核对了全部 213 项证据及 1281 文件快照。\n原 MemoryError 失败与完整分区重跑分别保留，原成功分区仅对完全相同输入复用。\n\n下表分列两个已完成的历史检查点与 SCC 后继工作图；工作图数量不替代其接纳记录。\n\n| 大类 | 已完成 JARVIS 检查点 | 已完成 PolyOmics 检查点 | SCC 工作图（非验收声明） |\n| --- | ---: | ---: | ---: |\n| 金属 `metal` | 1037 | 1037 | 1037 |\n| 无机 `inorganic` | 1059 | 1059 | 1059 |\n| 聚合物 `polymer` | 37 | 1037 | 1037 |\n| 复合材料 `composite` | 37 | 37 | 1037 |\n| 天然材料 `natural` | 1010 | 1010 | 1010 |\n\n只有相应冻结快照的明确接纳记录才能证明各类已达到已接纳配额。\n`material_quota_coverage` 应对实际完整图重新计算唯一身份，结果须绑定输入哈希并与\n接纳证据对应。牌号、状态、数据行、别名、试样、重复观察和计算单元格不能增加身份数；\n一类的超额不能抵消另一类缺口。身份和分类采用[现有五类政策](MATERIAL_TAXONOMY.md)\n及每个来源所限定的有限判定，不声称普适化学唯一性或计算模型的实验存在。\n\n## 接纳顺序与完整交付条件\n\n1. PolyOmics 已形成上述 4180 身份前序；其有限接纳记录绑定完整 1887 加 40 个互不\n   重叠专项方法、精确 skip 清单、来源/实现/安装证据及独立终态审阅。该记录不认证\n   当时冻结的过时状态文字，也不代替任何后继快照的新输入验证。\n2. SCC 的 1000 个名义配方代表需要已验收的 4180 前序、新快照的精确文件差异与受控\n   写入核验，再完成自己的原始 1887 加 48 个互不重叠专项方法、来源/安装/历史证据与\n   独立终态审阅。其工作图为 5180 身份，不由本表认证最终接纳。\n3. 交接证据包中的不可变 `LOCAL_ACCEPTANCE.json` 和所引用的实际收据决定已接纳范围；\n   该证据包可能位于源码目录外，缺失收据须保持未知。原失败、取消、完整重跑与复用\n   的相同输入结果分别保留，CLI 命令数不计为额外 unittest 方法。\n4. README、交接入口和本记录的现行状态说明须与相应验收范围一致，明确区分冻结历史\n   与当前工作图。任何后续编辑都须检查原测试对新输入的适用范围；旧输入 CI 不认证\n   新文档或新后继。每类 1000 的完成判定同时要求真实接纳和完整文档纠正。\n\n未核实的来源条件、统计口径、独立 n、不确定性、生成版本或权利链继续保持未知。\n独立来源/逐字转录检查不升级为科学同行评审、原始数据重分析或工程适用值。\nSCM 镜像、NC 数据及其他被暂缓的来源保持各自权利与原文忠实性限制。\n实测、DFT、MD 和 SCC 的使用边界见[来源与条件说明](MATERIAL_SOURCE_CONDITIONS.zh.md)。\n\n## 历史来源准备记录（2026-10-27 至 2026-10-28）\n\n以下保留原阶段正文，并降低其标题层级以明确历史范围。“待审”“尚未应用”“正在运行”\n和“接纳增量零”等文字是各准备阶段的记录；后续精确检查点及其接纳由上文所述不可变\n证据另行证明。这里保留的旧来源计划不授权启动新批次或改变推送、main、发布、部署权限。\n\n### 目标与计数依据\n\n本轮协调指令恢复材料扩充，目标保持为五个大类各至少 1000 个已接纳材料身份。\n不推送、不合并 main、不部署的既有权限边界继续有效。\n2026-10-26 的暂停记录是历史状态，不应覆盖本轮恢复指令。\n\n本地实验基线是 `f13586759af6a391635fa81da20c73eb6a6c1c6c`。\n以下已完成接纳计数由 `material_quota_coverage` 对完整 1180 身份接纳快照核验，\n固定于 Sanchez 的 `LOCAL_ACCEPTANCE.json`。当前工作图含待验 JARVIS 追加，须先通过\n其精确检查点恢复该接纳快照；直接对工作图运行 coverage 不替代最终接纳。\n这些都不是远端 main 或发布版本计数。\n\n| 大类 | 已接纳唯一身份 | 距离 1000 的缺口 | 当前状态 |\n| --- | ---: | ---: | --- |\n| 金属 `metal` | 37 | 963 | 待扩充 |\n| 无机 `inorganic` | 59 | 941 | 待扩充 |\n| 聚合物 `polymer` | 37 | 963 | 待扩充 |\n| 复合材料 `composite` | 37 | 963 | 待扩充 |\n| 天然材料 `natural` | 1010 | 0 | 已达到本地实验目录数量目标 |\n\n四类合计还缺 3830 个。天然材料的超额数量不能抵消其他类别的缺口。\n5 个修订后的 Sanchez 铝合金已完成本地接纳：独立来源与实现审阅、完整 Windows Python\n3.11 回归（1887 ID：1871 通过、16 跳过、零失败/错误）及安装核验均已完成。\n[接纳记录](../experimental/material-batches/sanchez-al-mea-revised-20261027/LOCAL_ACCEPTANCE.json)\n固定 5 个身份与证据摘要。当前本地实验目录有 1180 个身份；这不是远端 main 或发布计数。\n实际通过、失败修正、取消与未运行范围见[批次核验记录](../experimental/material-batches/sanchez-al-mea-revised-20261027/INTEGRATION_VALIDATION.md)。\n牌号、状态、重复试样、数据行、别名、预测值和候选均不能代替已接纳唯一身份。\n分类继续遵循[现有五类政策](MATERIAL_TAXONOMY.md)。\n\n### 已完成的来源准备\n\n第一阶段取得两个公开来源的固定文件，核对完整字节并生成 8912 行暂存记录。\n完整源文件及逐行事实暂存在仓库外的本地缓存；仓库内保存校验和、统计和复现程序。\n这些是来源盘点，尚未经过接纳流程，也不计入上述配额。\n\n后续已取得 [JARVIS 固定 v11 来源包](../experimental/material-batches/quota1000-jarvis-source-audit-20261027/README.md)，\n完整核对官方 MD5 和 SHA-256，实际解析 93,902 行。筛选得到 45,909 个明确三维体相、\n正有限计算密度且公式/原子计数一致的源行；按精确组成比去重后，全金属元素桶有\n14,028 组，含 O 且无 C/H 桶有 5,320 组。它们仍是待审来源储备，不能按组数计入配额。\n来源异常、排除项与 10 项通过的解析检查均已留档。\n[独立审阅](../experimental/material-batches/quota1000-jarvis-source-audit-20261027/REVIEW_STATUS.md)\n已复算完整索引，并通过来源审计与计算晶胞密度契约提案。\n随后冻结的[金属、无机各 1000 条来源事实候选](../experimental/material-batches/jarvis-density-candidates-20261027/REVIEW_STATUS.md)\n也通过独立逐行核对和选择重放，6 项选择检查通过。来源事实阶段不代替后续身份、分类和\n接纳裁决；这些候选的接纳增量为零。全金属元素组成不自动证明金属电子行为。\n现有 schema 尚不能诚实表达 DFT 优化晶胞密度，另有\n[未应用的隔离实现草案](../experimental/material-batches/jarvis-computed-density-contract-draft-20261027/README.md)：\n10 项新方法检查和 29 项原契约检查通过；该早期草案后续由下述四语言修订与独立审阅接续。\n上述隔离预备阶段未修改当时的运行契约与铝合金回归输入；后续实际整合状态见下文。\n2026-10-28 进一步整理了[未接纳的原生目录与四语言方法草案](../experimental/material-batches/jarvis-density-native-draft-20261028/README.md)：\n6 项目录预览检查、10 项新契约检查和 29 项原契约检查通过，但这些不是安装或完整 CI。\n扩展独立审阅已发现并确认修复 0/1-based 来源定位错误；全部 2000 条、10,000 处定位\n经复核正确，修订后的 9 项预览检查通过。隔离实现和逐组成身份/分类裁决均已获有限批准，\n明确假设计算晶体模型范围和电子行为未知，不表示实验存在或跨提供者物相等价。\n现有通用编译器已在隔离环境完成整合包编译与精确重放，目录与获批草案一致；\n该派生包的全部 2000 个身份交叉映射及重放也已通过只读独立核验。\n编译器准备状态不等于运行接纳。历史保留、真实整合、完整回归与安装核验仍待完成，\n这 2000 条的当前接纳增量保持零。\n后续隔离数据恢复层已获独立批准：前瞻图的全部旧对象、顺序和根元数据保持，能精确恢复\n1180 身份原始字节并继续恢复到 1175 检查点；7 类图篡改与 3 个空白文件变体均拒绝。\n前瞻图的金属 1037、无机 1059 仍是未接纳预览，不能更新上方当前配额。\n六个文件与两份规范化文档的精确恢复预览也已通过独立复核，包括重叠账本邻接与未知图像拒绝；\n该预览阶段尚未接入注册表/辅助层，也未完成完整历史回归。\n现已接入注册表与辅助层，并获只读独立实现批准；新专项 8 项、旧铝合金 8 项、契约/历史\n39 项和 PLA/PCL 历史 15 项通过。安装包核对全部 2000 条新增身份/属性，并通过四语言\n40 次 CLI 核查。覆盖原有 1887 ID 的四个完整本地回归分区正在运行，汇总结果仍未知；\n这 2000 条仍未登记最终接纳。见[当前整合核验](../experimental/material-batches/jarvis-density-native-draft-20261028/INTEGRATION_VALIDATION.md)。\n\n聚合物方向新增[作者 PolyOmics 固定提交审计](../experimental/material-batches/quota1000-polyomics-source-audit-20261027/README.md)。\n截至 2026-10-28 的后续[独立审阅](../experimental/material-batches/polyomics-density-candidates-20261028/REVIEW_STATUS.md)\n已批准冻结的 1000 条来源事实、限定范围内的假想线性聚合物组成模型身份与现有 37 个\n身份的交叉判定，以及 MD 密度契约提案。独立桥块算法与全部 3690 个保留图组一致，\n选中的 1000 个模型通过 2000 次边界平移/非最小重复表示检查；这不是普适化学规范化证明。\n另有[四文件隔离实现批准](../experimental/material-batches/polyomics-md-native-draft-20261028/independent-implementation-review.json)：\n10 项局部检查通过，1050 个旧分支组合无接受/拒绝变化，240 个 MD 组合保持方法/基础约束。\n实现未应用，1000 条原生映射、历史整合、完整回归及真实安装仍待完成，新增接纳数为零。\n下列旧审计阶段的“待审”描述保留为过程记录，由上述限定范围的后续审阅取代；\n密度导出窗口、生成版本链及论文/代码的聚合差异仍未知。\n已核对两份公开计算属性 CSV，实际共 6,182 行；源说明明确标记数据集 CC BY 4.0。\n源模拟 UUID、立构和重复单元字符串不能直接充当材料身份。7 项解析检查通过，\n周期重复单元的规范化、与现有身份去重、版本化单位/统计语义及独立审阅仍待完成；\n新增接纳数仍为零，不替代旧来源的权利链阻塞记录。\n另有未独立审阅的周期图原型：9 项用例和 7,380 次实际源表示变换检查通过，得到\n3,690 个操作性图组，尚不等于规范材料身份，也不计入配额。\n已补充[密度单位、条件及统计定义证据](../experimental/material-batches/quota1000-polyomics-source-audit-20261027/MD_METHOD_NOTES.zh.md)：\n固定论文与代码佐证 g/cm³、300 K 与 1 atm；论文的质量除以平均体积和代码的瞬时密度\n滑动平均存在定义差异，数值影响及逐记录实际导出窗口未知。不能自行统一为已核实的均值。\n\n最新的[聚合物来源链与 COD 无机来源核查](../experimental/material-batches/quota1000-source-audit-20261027/LINEAGE_AND_COD.zh.md)\n进一步标记了 GREA 上游移除通知，核算了 279 个 Tg 聚合值，并盘点作者公开的 1077 行\nRadonPy 计算数据；这些记录仍未接纳。新增 COD 来源已取得 3902 条元数据及 50 个 CIF\n可行性样本，组成比筛选得到 2788 组，但规范身份和可接纳属性数仍待审核。\n\n后续原文核查已生成 [Sanchez 2019 铝合金修订候选包](../experimental/material-batches/sanchez-al-mea-revised-20261027/README.md)：\n5 个标称配方、5 个铸态、10 条密度/压缩模量属性，独立审阅与本地完整回归已通过，已本地接纳。\n原文与 MPEA 汇编对照发现其中 3 个配方标签有冲突，候选采用原文的 Al70/Si10 配方，\n并保留汇编原字面值及差异说明；没有把错误配方静默带入目录。\n\n| 方向 | 本轮实际取得的文件 | 文件行数 | 字面身份字符串数 | 尚需解决 |\n| --- | --- | ---: | ---: | --- |\n| 聚合物 | Kunchapu / Jablonka，Zenodo `15789599`，含结构与嵌入的 Tg 表 | 7367 | 7367 个 PSMILES 字符串 | 化学规范化与现有身份交叉映射、上游来源与权利链、Tg 测量及聚合统计契约 |\n| 金属 | Borg 等 MPEA 数据仓库，固定提交 `d31e2510cccc3fb9e79d43ad62652f64ef8c2c5e` | 1545 | 630 个配方字符串 | 配方规范化、状态去重、实验/计算分离、拉伸/压缩分离、逐项原始证据 |\n\nPSMILES 或配方字符串不等于已解决的规范材料身份。MPEA 的 1545 行中有 915 行重复使用\n配方字面键，不能计为 1545 种材料。该表有 112 行正有限数的实验密度和 145 行正有限数的\n实验 Young's modulus；这些只是字段完整性统计，重叠行未扣除，不能相加作为材料数。\n计算密度和计算模量列保持独立。\n\n聚合物文件已与 Zenodo 发布的 MD5 `31400a5f499394e3a6e0658488a464bb` 匹配，\n长度为 43615282 字节，并另存 SHA-256。首次下载曾因传输 EOF 失败，续传后的完整文件\n才用于盘点；不完整文件未进入暂存结果。\n来源标签包含 GREA 7170 行、Qiu 152 行、Xie 21 行、Schrodinger 15 行、Nguyen 7 行、\nUchicago 2 行。标签尚不是逐项原始论文定位，不能当作六个独立实验或已核验权利链。\n`meta.std`、`meta.num_of_points` 和可靠性颜色保留原字面值，不自动解释为试样 SD、独立 n\n或本项目质量审核结果。\n\nZenodo 元数据标记 CC BY 4.0；MPEA 固定仓库保留 Apache 2.0 许可证。\n这两条许可观察均不替代上游来源与事实提取范围的审阅。\n来源：[聚合物发布记录](https://zenodo.org/records/15789599)、\n[MPEA 固定仓库](https://github.com/CitrineInformatics/MPEA_dataset/tree/d31e2510cccc3fb9e79d43ad62652f64ef8c2c5e)。\n\n详细证据、校验和与命令见[本轮来源盘点包](../experimental/material-batches/quota1000-source-audit-20261027/README.md)。\n\n### 无机与复合材料的来源队列\n\n无机方向已新增 COD 的有限 CC0 查询与 CIF 样本，详见上方最新核查。\n下列 Gong 与 ComposiLator 两项仍处在获取队列。\n\n这两项目前只核验了官方页面，没有下载并解析完整数据文件，候选数量及可接纳身份数均未知。\n最新[获取记录](../experimental/material-batches/quota1000-source-audit-20261027/acquisition-status.json)\n保留了玻璃官方附件返回 HTTP 403，以及 ComposiLator 页面版本/许可和文件清单尚未解决的情况。\n不能把未取得文件报告为已核验，也不能把一次空列表解释为来源没有数据。\n\n- 无机：Gong / Olivetti 的[多组分硅酸盐玻璃密度研究](https://ceramics.onlinelibrary.wiley.com/doi/10.1111/jace.19072)。\n  官方页面列有 Supplementary Material A 工作簿，并说明资料中混有 133 个分子动力学估计值。\n  下一步先核实附件权利、取得原始工作簿、分离实验与模拟，再按组成和状态去重。\n- 复合材料：[ComposiLator，Mendeley v1](https://data.mendeley.com/datasets/ygzg4rdxs8/1)。\n  官方页面标记 CC BY 4.0，并明确部分剪切/体积模量由其他弹性参数计算。\n  下一步取得版本文件清单，检查配方、原文引用、加工状态、测量条件及派生属性标记。\n\n另有 [SCM 混凝土来源获取记录](../experimental/material-batches/quota1000-source-audit-20261027/scm-concrete-acquisition.json)：\n官方 v2 说明声明 1456 个配方并标记数据集 CC BY 4.0；原文 XML 的文章许可为\nCC BY-NC-ND，两者分别记录。尚未取得工作簿或核算实际独立配方，不能把声明数量计入配额。\n还需核验引用链、编译值身份、年龄/状态去重和当前不支持的抗压等物理量契约；\n不能把配方 kg/m³ 求和冒充实测密度，也不能将缺失值 `-1` 纳入属性。\n后续取得[第三方镜像的只读盘点](../experimental/material-batches/scm-mirror-source-audit-20261028/README.md)：\n实际有 1456 个数据行、1447 个字面 MixID 和 1365 个八成分数值向量，部分成分是带缓存值的\n公式。向量数不等于材料身份数，非公式属性也不自动成为实验数据。\n与作者 v2 原始工作簿的字节等价、镜像权利链及逐项原文忠实性尚未核实；不据此接纳。\n\n### 接下来的执行顺序与验收\n\n1. 优先检查 MPEA 中已有契约支持的实验密度和 Young's modulus，生成明确配方、状态、\n   属性及来源定位的候选包；缺项保留未知，重复身份只补状态或证据。\n2. 完成聚合物六组上游来源映射，审阅 Tg 的定义、单位、统计聚合与实验条件。\n   当前参考属性 schema 没有 Tg 量，先形成独立科学契约并审阅，不能改名塞进模量或密度字段。\n3. 取得并盘点无机和复合材料文件，为四个未达标类别分别补足可接纳来源。\n   来源行数或潜在配方空间不作为供给已经足够的证明。\n4. 对冻结的候选、契约与权利说明进行独立审阅，然后按\n   [现有批量接纳流程](BULK_INGESTION.md)绑定准确摘要和明确身份集合。\n5. 每批接纳后重跑完整目录校验、来源忠实性、历史保留及相应运行/安装检查，\n   用配额函数重新计算五类进度。失败、跳过、未运行和未知分别报告。\n\n本轮已完成来源盘点、5 个原文支持的铝合金本地接纳及相应完整本地回归，目标仍在推进中。\n独立科学同行评审、原始数据重分析、远端 CI 与发布未由本轮完成。\n"
+        }
+      ]
+    },
+    "tests/test_release_metadata.py": {
+      "previous_sha256": "3a10efe730a8138a6ec19199317de840c458832ebaa45779e96a03e72aa9ae78",
+      "sha256": "3c46f2e77ce7571ee1195d88585f96e4da1df779ba5c205fafe22f0135217d3f",
+      "edits": [
+        {
+          "offset": 2225,
+          "before": "        self.assertIn(f\"Current software release: **v{__version__}**\", readme)\n",
+          "after": "        self.assertIn(f\"Package version in this local source snapshot: **v{__version__}**\", readme)\n"
+        }
+      ]
+    },
+    "tests/material_bulk_preservation.py": {
+      "previous_sha256": "44fa17648e780c6ddb55aa5b4219eb0e44134e765bde5b6d48d3f7d340c089ad",
+      "sha256": "2f5f67e4f9f7fd7843604be428bcbdcfc4dee3e9814d6b9c417acf31410968de",
+      "edits": [
+        {
+          "offset": 18901,
+          "before": "                    'tests/test_nist_reuse_provenance.py'}:\n",
+          "after": "                    'tests/test_nist_reuse_provenance.py',\n                    'tests/test_release_metadata.py'}:\n"
+        }
+      ]
+    }
+  }
+}

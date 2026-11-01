@@ -1,0 +1,40 @@
+{
+  "schema": "jarvis-native-independent-revision-review/1",
+  "reviewer": "/root/review_jarvis_contract",
+  "recorded_by": "root transcribed authorized read-only independent final report",
+  "decision": "approve_frozen_native_mapping_r2",
+  "reviewed_sha256": {
+    "native-candidate.json": "82a2d8332f934b31567cac4d50960871792841321a94bd4357500604f6184e85",
+    "build_native_draft.py": "b4af51203f26cce33c023743e48f1b36db9b80fb7d54f5a03df87212d6fc2615",
+    "test_native_preview.py": "3b48b2580eace4db949247fbfc68909cf93d39e6c45bf6a9aede373f90bcb31a"
+  },
+  "confirmed": {
+    "candidate_records": 2000,
+    "one_based_locator_occurrences": 10000,
+    "all_locators_match_zero_based_index_plus_one": true,
+    "byte_differences_from_archived_r1_are_locator_increment_only": true,
+    "generator_change_is_index_plus_one_only": true,
+    "archived_r1_decompressed_digest_matches": true,
+    "source_facts_sidecar_four_file_patch_manifest_and_implementation_unchanged": true
+  },
+  "read_only_checks": {
+    "passed": 4,
+    "failed": 0,
+    "skipped": 0,
+    "scope": [
+      "exhaustive locator numbers",
+      "rejected-r1 negative regression",
+      "sidecar binding",
+      "byte-identical mapping replay"
+    ]
+  },
+  "continued_approvals": "See independent-review-r1.json for finite model identity/composition taxonomy and isolated method implementation approval",
+  "outside_scope": [
+    "Historical recovery",
+    "Full regression for new implementation",
+    "Real installed tests",
+    "Hosted CI",
+    "Runtime integration/admission"
+  ],
+  "admitted_increment": 0
+}

@@ -1,0 +1,54 @@
+{
+  "schema": "jarvis-native-independent-review/1",
+  "reviewer": "/root/review_jarvis_contract",
+  "recorded_by": "root transcribed authorized read-only independent final report",
+  "reviewed_sha256": {
+    "native-candidate.json": "58de2ef4ab0ba6b87101fa4b9daf14f4460369e7ebbb3f5c29e0f55faeee4e20",
+    "build_native_draft.py": "2125897ea4fb61ace9fd6c0af50b3960639ea50780e303643f637d833b4b0e64",
+    "implementation.patch": "df4c2afb2760c8cc0fa84571ee1572058e4ddfd458f77a49110b4ce6ac3a85ca",
+    "draft-manifest.json": "32ae691e71afa5e1d41b66ab302af73caad022d1b2db52b08e1ae95417489ea8",
+    "test_native_preview.py": "c333d7c54bddb49130566fac6e49c9692a292322ddff22201d528593be077a20",
+    "identity-taxonomy-decisions.json": "bbff41bdb46d1c69b6c4bc491f60b64ad00535cb3587457896289a4488536a1e",
+    "build_identity_decisions.py": "65161550dfb8846e6949d73b2e23b14b97ca65e044a38111ed65f59cb8a3889e"
+  },
+  "native_mapping_decision": "changes_required",
+  "blocking_finding": {
+    "scope": "2000/2000 candidates",
+    "issue": "Zero-based source_row_index labelled as 1-based in evidence locators",
+    "required_fix": "Display source_row_index + 1 and independently check every locator",
+    "example": "JVASP-1082 source index 29112 must display data record 29113"
+  },
+  "implementation_decision": "approve_scoped_four_file_isolated_implementation",
+  "identity_taxonomy_sidecar_decision": "approve_finite_project_model_identity_and_compositional_classification",
+  "approved_classification_counts": {
+    "metal": 1000,
+    "inorganic": 1000
+  },
+  "independent_checks": {
+    "new_contract_passed": 10,
+    "new_contract_failed": 0,
+    "new_contract_skipped": 0,
+    "in_memory_language_renders": 8,
+    "source_rows_mapped_checked": 2000,
+    "identity_taxonomy_rows_recomputed": 2000,
+    "native_graph_validation": "passed"
+  },
+  "outside_scope": [
+    "Historical recovery",
+    "Full regression for new method",
+    "Installed package",
+    "Hosted CI",
+    "Runtime integration/admission"
+  ],
+  "limits": [
+    "Compositional metal-family category does not establish metallic electronic behavior",
+    "Hypothetical source-qualified model identity is not experimental existence or stable phase",
+    "Cross-provider phase equivalence remains unresolved"
+  ],
+  "rejected_native_archive": {
+    "path": "rejected-r1/native-candidate.json.gz",
+    "gzip_sha256": "89d93e2fca35b1495f894c535822732e5bed44b4620d09dc661b1fd90ec8db0d",
+    "decompressed_sha256": "58de2ef4ab0ba6b87101fa4b9daf14f4460369e7ebbb3f5c29e0f55faeee4e20"
+  },
+  "admitted_increment": 0
+}

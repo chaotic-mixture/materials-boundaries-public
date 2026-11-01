@@ -1,0 +1,281 @@
+{
+  "schema": "sanchez-runtime-verification/1",
+  "status": "local_acceptance_verified",
+  "baseline_head": "f13586759af6a391635fa81da20c73eb6a6c1c6c",
+  "branch": "detached HEAD",
+  "new_commit": null,
+  "push_performed": false,
+  "main_merge_performed": false,
+  "deployment_performed": false,
+  "final_acceptance": true,
+  "source_candidate_identity_count": 5,
+  "source_candidate_property_count": 10,
+  "verified_checks": {
+    "source_candidate": {
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0
+    },
+    "final_runtime": {
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 13.444
+    },
+    "material_reference_contracts": {
+      "passed": 62
+    },
+    "porous_after_repair": {
+      "passed": 14,
+      "failed": 0,
+      "skipped": 0
+    },
+    "legacy_after_repair": {
+      "passed": 15,
+      "failed": 0,
+      "skipped": 0
+    },
+    "catalogs": {
+      "passed": true
+    },
+    "final_installed_wheel": {
+      "passed": true,
+      "cli_outputs": 24,
+      "languages": [
+        "en",
+        "zh",
+        "ja",
+        "de"
+      ]
+    },
+    "final_pla_pcl_history": {
+      "passed": 15,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 89.918
+    },
+    "broad_installed_wheel": {
+      "passed": true,
+      "exit_code": 0,
+      "receipt": "broad-wheel-verification.json",
+      "scope": "Existing broad installed checker passed on ecda0bef pre-README-format wheel; runtime catalogs, validator and notice match final wheel. Final README metadata checked separately on final wheel.",
+      "pip_stdout_encoding_diagnostic": true
+    }
+  },
+  "full_root": {
+    "status": "completed_passed_with_skips",
+    "expected_ids": 1887,
+    "partitions": 4,
+    "platform": "Windows",
+    "python": "3.11",
+    "final_passed": 1871,
+    "final_failed": 0,
+    "final_skipped": 16,
+    "result_files": [
+      "F:\\材料边界\\growth-source-cache\\sanchez-runtime-integration\\partition-0-native-r4.json",
+      "F:\\材料边界\\growth-source-cache\\sanchez-runtime-integration\\partition-1-native-r4.json",
+      "F:\\材料边界\\growth-source-cache\\sanchez-runtime-integration\\partition-2-native-r4.json",
+      "F:\\材料边界\\growth-source-cache\\sanchez-runtime-integration\\partition-3-native-r4.json"
+    ],
+    "sessions": [
+      30590,
+      6499,
+      30555,
+      34423
+    ],
+    "round": "native-r4",
+    "completed_partition_summaries": [
+      {
+        "partition": 0,
+        "tests_run": 459,
+        "outcomes": {
+          "passed": 456,
+          "skipped": 3
+        },
+        "skipped": [
+          {
+            "test_id": "test_composite_windows.NativeWindowsExportTests.test_symlink_and_dangling_leaf_refused",
+            "status": "skipped",
+            "reason": "Windows symlink privilege unavailable; mandatory junction tests still run"
+          },
+          {
+            "test_id": "test_composite_windows.WindowsSpellingTests.test_native_api_is_not_emulated_as_platform_support",
+            "status": "skipped",
+            "reason": "non-Windows guard only"
+          },
+          {
+            "test_id": "test_wood_bulk_adapter.ReviewedWoodAdapterTests.test_full_external_dossier_source_support_without_admission",
+            "status": "skipped",
+            "reason": "external frozen source-cache integration is opt-in"
+          }
+        ],
+        "seconds": 1905.952026999992,
+        "input_fingerprint": "3365a0fb00e498e965150eaabe24146ada3dc7c6e093431ccc0fd47645976786",
+        "receipt_sha256": "36335882a61d878174f9c93666a80fc583616a9ecdace42b5f44ff8ff62ef8dc",
+        "current_inputs_match": true
+      },
+      {
+        "partition": 1,
+        "tests_run": 492,
+        "outcomes": {
+          "passed": 479,
+          "skipped": 13
+        },
+        "skipped": [
+          {
+            "test_id": "test_composite_export.ExportTests.test_cleanup_failure_rolls_back_manifest_then_retries_owned_stage",
+            "status": "skipped",
+            "reason": "POSIX backend; native Windows coverage is separate"
+          },
+          {
+            "test_id": "test_composite_export.ExportTests.test_concurrent_unrelated_file_is_preserved",
+            "status": "skipped",
+            "reason": "POSIX backend; native Windows coverage is separate"
+          },
+          {
+            "test_id": "test_composite_export.ExportTests.test_exclusive_name_collision_does_not_delete_other_input",
+            "status": "skipped",
+            "reason": "POSIX backend; native Windows coverage is separate"
+          },
+          {
+            "test_id": "test_composite_export.ExportTests.test_publish_failures_manifest_last_and_rollback",
+            "status": "skipped",
+            "reason": "POSIX backend; native Windows coverage is separate"
+          },
+          {
+            "test_id": "test_composite_export.ExportTests.test_rollback_does_not_delete_replacement",
+            "status": "skipped",
+            "reason": "POSIX backend; native Windows coverage is separate"
+          },
+          {
+            "test_id": "test_composite_export.ExportTests.test_stage_failures_clean_only_own_data",
+            "status": "skipped",
+            "reason": "POSIX backend; native Windows coverage is separate"
+          },
+          {
+            "test_id": "test_composite_export.ExportTests.test_stage_open_failure_removes_created_empty_stage",
+            "status": "skipped",
+            "reason": "POSIX backend; native Windows coverage is separate"
+          },
+          {
+            "test_id": "test_composite_export.ExportTests.test_symlink_output_and_ancestor_and_traversal_refused",
+            "status": "skipped",
+            "reason": "POSIX backend; native Windows coverage is separate"
+          },
+          {
+            "test_id": "test_composite_intake.CompositeIntakePTYTests.test_cli_redirected_input_is_rejected_without_file",
+            "status": "skipped",
+            "reason": "requires POSIX pseudo-terminal"
+          },
+          {
+            "test_id": "test_composite_intake.CompositeIntakePTYTests.test_real_terminal_back_edit_and_confirm_save",
+            "status": "skipped",
+            "reason": "requires POSIX pseudo-terminal"
+          },
+          {
+            "test_id": "test_composite_intake.CompositeIntakePTYTests.test_real_terminal_cancel_and_sigint_leave_no_file",
+            "status": "skipped",
+            "reason": "requires POSIX pseudo-terminal"
+          },
+          {
+            "test_id": "test_material_coverage.RuntimeBenchmarkFixtureTests.test_fictional_fixture_limits_reject_invalid_sizes",
+            "status": "skipped",
+            "reason": "RSS benchmark uses the POSIX resource module"
+          },
+          {
+            "test_id": "test_material_coverage.RuntimeBenchmarkFixtureTests.test_fictional_scaling_is_valid_deterministic_detached_and_clearly_labeled",
+            "status": "skipped",
+            "reason": "RSS benchmark uses the POSIX resource module"
+          }
+        ],
+        "seconds": 7182.031560799995,
+        "input_fingerprint": "3365a0fb00e498e965150eaabe24146ada3dc7c6e093431ccc0fd47645976786",
+        "receipt_sha256": "5197aa9959f1df90450f47298674448bf28ff3a6673c7c4feda4515a0c53ebca",
+        "current_inputs_match": true
+      },
+      {
+        "partition": 2,
+        "tests_run": 417,
+        "outcomes": {
+          "passed": 417
+        },
+        "skipped": [],
+        "seconds": 2753.2844608000014,
+        "input_fingerprint": "3365a0fb00e498e965150eaabe24146ada3dc7c6e093431ccc0fd47645976786",
+        "receipt_sha256": "44cc7b76a03ef6067e3c4f6056364ea75733b470906deb7b1715f99699efd3fe",
+        "current_inputs_match": true
+      },
+      {
+        "partition": 3,
+        "tests_run": 519,
+        "outcomes": {
+          "passed": 519
+        },
+        "skipped": [],
+        "seconds": 6537.193662399994,
+        "input_fingerprint": "3365a0fb00e498e965150eaabe24146ada3dc7c6e093431ccc0fd47645976786",
+        "receipt_sha256": "8b580ea57b9cc73ac82be2defebac5b756e929644f5f24922ea43bd7da276c16",
+        "current_inputs_match": true
+      }
+    ],
+    "final_errors": 0,
+    "not_completed": 0,
+    "aggregate_receipt": "full-root-aggregate.json",
+    "aggregate_sha256": "e3c4b10c519ed1895b02dd74c522ca1e8cf1ca8e316fca3c74bf38408711426a",
+    "sessions_terminal": true
+  },
+  "other_running_tasks": {},
+  "cancelled_attempts": [
+    "sandbox-r1: verified NTFS os.link permission error",
+    "native-r2: reproduced old recovery and duplicate-bold-label failures; repaired",
+    "native-r3: cancelled after dedicated old-README negative fixture failed; exact predecessor input adapter added; final dedicated 15 and runtime 8 subsequently passed"
+  ],
+  "other_failures": [
+    "old setuptools 65.5.0 lacks bdist_wheel; isolated fixed backend used",
+    "first focused legacy run: three failures; corrected frozen input projections then 15 passed",
+    "external metadata check: CRLF/LF comparison error; corrected harness and final wheel check passed"
+  ],
+  "not_run": [
+    "Hosted CI for uncommitted changes",
+    "Ubuntu and other Python versions for these changes"
+  ],
+  "unknown": [
+    "Current remote main material counts",
+    "Current release and deployment state"
+  ],
+  "frozen_review_inputs_sha256": {
+    "experimental/material-batches/sanchez-al-mea-revised-20261027/candidate.json": "58f418dcfe265b14e296a21be6c28c8531aa91c4c1919889c19d9f91cfc201c4",
+    "experimental/material-batches/sanchez-al-mea-revised-20261027/prepared-packet.json": "715a2e7a534e14cf5fd4cd6cd425b613ffa305f20cf1c0229b61c54ef08529ff",
+    "experimental/material-batches/sanchez-al-mea-revised-20261027/packet-spec.json": "c135cdb8ab6fb81612c870bb55862bd44775a7a721e05ea2224c093467265a92",
+    "README.md": "e9b97c664a54109b657098d0fa0937d69237f840496fad389897c2092e263d5e",
+    "THIRD_PARTY_NOTICES.md": "6d339b447c68ab8f2bc25f2401d70c60eb7b06f2a893d2693a442b3bd9e49c07",
+    "materials_boundaries/material_references.py": "1d881c47c7bd9c0406b37121ec9190fcd7f9263e833038ce0009b216fda5ad76",
+    "tests/sanchez_al_mea_history.py": "0b820d08e6467d91b9f8001ca9e084055dcd5a92f6e63ba39104f00382443a1f",
+    "tests/material_append_successors.py": "4059d3a5277096b873bf011ee044d3f1c0cee9d4480b3a827bfe22c7ee59cf09",
+    "tests/material_bulk_preservation.py": "32e2c40cfff5df4b3a78bebaf358fbef113240d08d67c7c3eb4bf1f8e0ff5db1",
+    "tests/legacy_document_recovery.py": "e2beecbda2cad8fd23ca18ea83e92314c8736b03fb1935b7953dde34aff7304c",
+    "tests/test_evidence_dedup_preservation.py": "605572f9ba8e229c9b5be8e1ed95804d0ee2c5100ece4f2ca3053d8dd773b6bb",
+    "tests/test_legacy_document_recovery.py": "6e56e74c93224ae0a9e75047802663a75a1555a36461ac66b67e61bb6b1d00bd",
+    "tests/test_presentation_fast_path_preservation.py": "9fb0842df0f355589e1470dbc9b144aa885920be0c9d9cb95f6f62e622aecac0",
+    "tests/sanchez_al_mea_runtime/files-history.json": "bec3bd497d04b7ad95432cbe9e71f46e5aa81fbe937057327e05271aa6bb038c",
+    "tests/sanchez_al_mea_runtime/registry-history.json": "b3bb3bf3a923838a72f925e88daf501baf6555f75cd5723a0488dd06a77aa95a",
+    "tests/sanchez_al_mea_runtime/document-history.json": "80e15e83c854c9161e6ec74018f6efd76b00499ae055e9f7b5ed78512aaa7fae",
+    "tests/delgado_pla_pcl_runtime/test_delgado_history.py": "62ba9d9fe92d289231ff235ad37d917e08a692dfcc513deed50a66aad1f45860"
+  },
+  "acceptance_scope": "Local experimental worktree only; no main/release/hosted CI claim",
+  "acceptance_record": "LOCAL_ACCEPTANCE.json",
+  "accepted_local_counts": {
+    "identities": 1180,
+    "grades": 31,
+    "states": 1181,
+    "properties": 1197,
+    "sources": 130,
+    "classes": {
+      "metal": 37,
+      "inorganic": 59,
+      "polymer": 37,
+      "composite": 37,
+      "natural": 1010
+    }
+  }
+}

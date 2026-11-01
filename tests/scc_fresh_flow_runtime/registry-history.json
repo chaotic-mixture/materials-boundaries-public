@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "updates": {
+    "tests/material_append_successors.py": {
+      "previous_sha256": "7bb9d85fcc9ec1340e287ff1c2109e435d62de208c271299367742bdbe6bb364",
+      "sha256": "6dbf1a7550d0c2c9575baa54571b2db0b05906aaa7730e73eb4b41e9d99f63d5",
+      "edits": [
+        {
+          "offset": 6698,
+          "before": "",
+          "after": "    {\"batch_id\": \"scc-fresh-flow-nominal-recipes-20261029\",\n     \"data\": (\"tests/scc_fresh_flow_runtime/data-history.json\", \"e6448c679dccdc7cbc54bee880c5e582242abbf9e233386bb461fa8c58cfc0cb\"),\n     \"files\": (\"tests/scc_fresh_flow_runtime/files-history.json\", \"8975b1d04a696694c539700087d50fdb9f9361ba16af0dcfe9209fcd198a20f3\")},\n"
+        },
+        {
+          "offset": 12760,
+          "before": "    result = [polyomics_registry_ledger()] if has_polyomics else []\n",
+          "after": "    from scc_flow_history import registry_ledger as scc_registry_ledger\n    has_scc = any(item[\"batch_id\"] == \"scc-fresh-flow-nominal-recipes-20261029\" for item in descriptors)\n    result = [scc_registry_ledger()] if has_scc else []\n    result += [load_frozen(ROOT, *item[\"files\"]) for item in descriptors if item[\"batch_id\"] == \"scc-fresh-flow-nominal-recipes-20261029\"]\n    result += [polyomics_registry_ledger()] if has_polyomics else []\n"
+        },
+        {
+          "offset": 14320,
+          "before": "        if descriptor[\"batch_id\"] in {\"polyomics-md-native-draft-20261028\", \"jarvis-density-native-draft-20261028\", \"sanchez-al-mea-revised-20261027\", DELGADO_PLA_PCL_BATCH_ID, EWURUM_REACTIVE_BATCH_ID, CURAUA_BATCH_ID}:\n",
+          "after": "        if descriptor[\"batch_id\"] in {\"scc-fresh-flow-nominal-recipes-20261029\", \"polyomics-md-native-draft-20261028\", \"jarvis-density-native-draft-20261028\", \"sanchez-al-mea-revised-20261027\", DELGADO_PLA_PCL_BATCH_ID, EWURUM_REACTIVE_BATCH_ID, CURAUA_BATCH_ID}:\n"
+        }
+      ]
+    }
+  }
+}

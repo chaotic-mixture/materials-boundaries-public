@@ -1,0 +1,124 @@
+{
+  "schema": "local-core-partition-aggregate/1",
+  "success": true,
+  "scope": "Local Windows Python 3.11 only; not hosted CI or publication",
+  "round": "native-r4",
+  "total_expected": 1887,
+  "total_completed": 1887,
+  "outcomes": {
+    "passed": 1871,
+    "skipped": 16
+  },
+  "failed": 0,
+  "errors": 0,
+  "not_completed": 0,
+  "skipped_records": [
+    {
+      "test_id": "test_composite_windows.NativeWindowsExportTests.test_symlink_and_dangling_leaf_refused",
+      "status": "skipped",
+      "reason": "Windows symlink privilege unavailable; mandatory junction tests still run"
+    },
+    {
+      "test_id": "test_composite_windows.WindowsSpellingTests.test_native_api_is_not_emulated_as_platform_support",
+      "status": "skipped",
+      "reason": "non-Windows guard only"
+    },
+    {
+      "test_id": "test_wood_bulk_adapter.ReviewedWoodAdapterTests.test_full_external_dossier_source_support_without_admission",
+      "status": "skipped",
+      "reason": "external frozen source-cache integration is opt-in"
+    },
+    {
+      "test_id": "test_composite_export.ExportTests.test_cleanup_failure_rolls_back_manifest_then_retries_owned_stage",
+      "status": "skipped",
+      "reason": "POSIX backend; native Windows coverage is separate"
+    },
+    {
+      "test_id": "test_composite_export.ExportTests.test_concurrent_unrelated_file_is_preserved",
+      "status": "skipped",
+      "reason": "POSIX backend; native Windows coverage is separate"
+    },
+    {
+      "test_id": "test_composite_export.ExportTests.test_exclusive_name_collision_does_not_delete_other_input",
+      "status": "skipped",
+      "reason": "POSIX backend; native Windows coverage is separate"
+    },
+    {
+      "test_id": "test_composite_export.ExportTests.test_publish_failures_manifest_last_and_rollback",
+      "status": "skipped",
+      "reason": "POSIX backend; native Windows coverage is separate"
+    },
+    {
+      "test_id": "test_composite_export.ExportTests.test_rollback_does_not_delete_replacement",
+      "status": "skipped",
+      "reason": "POSIX backend; native Windows coverage is separate"
+    },
+    {
+      "test_id": "test_composite_export.ExportTests.test_stage_failures_clean_only_own_data",
+      "status": "skipped",
+      "reason": "POSIX backend; native Windows coverage is separate"
+    },
+    {
+      "test_id": "test_composite_export.ExportTests.test_stage_open_failure_removes_created_empty_stage",
+      "status": "skipped",
+      "reason": "POSIX backend; native Windows coverage is separate"
+    },
+    {
+      "test_id": "test_composite_export.ExportTests.test_symlink_output_and_ancestor_and_traversal_refused",
+      "status": "skipped",
+      "reason": "POSIX backend; native Windows coverage is separate"
+    },
+    {
+      "test_id": "test_composite_intake.CompositeIntakePTYTests.test_cli_redirected_input_is_rejected_without_file",
+      "status": "skipped",
+      "reason": "requires POSIX pseudo-terminal"
+    },
+    {
+      "test_id": "test_composite_intake.CompositeIntakePTYTests.test_real_terminal_back_edit_and_confirm_save",
+      "status": "skipped",
+      "reason": "requires POSIX pseudo-terminal"
+    },
+    {
+      "test_id": "test_composite_intake.CompositeIntakePTYTests.test_real_terminal_cancel_and_sigint_leave_no_file",
+      "status": "skipped",
+      "reason": "requires POSIX pseudo-terminal"
+    },
+    {
+      "test_id": "test_material_coverage.RuntimeBenchmarkFixtureTests.test_fictional_fixture_limits_reject_invalid_sizes",
+      "status": "skipped",
+      "reason": "RSS benchmark uses the POSIX resource module"
+    },
+    {
+      "test_id": "test_material_coverage.RuntimeBenchmarkFixtureTests.test_fictional_scaling_is_valid_deterministic_detached_and_clearly_labeled",
+      "status": "skipped",
+      "reason": "RSS benchmark uses the POSIX resource module"
+    }
+  ],
+  "input_fingerprint": "3365a0fb00e498e965150eaabe24146ada3dc7c6e093431ccc0fd47645976786",
+  "partition_receipts": [
+    {
+      "path": "F:\\材料边界\\growth-source-cache\\sanchez-runtime-integration\\partition-0-native-r4.json",
+      "sha256": "36335882a61d878174f9c93666a80fc583616a9ecdace42b5f44ff8ff62ef8dc",
+      "tests_run": 459,
+      "seconds": 1905.952026999992
+    },
+    {
+      "path": "F:\\材料边界\\growth-source-cache\\sanchez-runtime-integration\\partition-1-native-r4.json",
+      "sha256": "5197aa9959f1df90450f47298674448bf28ff3a6673c7c4feda4515a0c53ebca",
+      "tests_run": 492,
+      "seconds": 7182.031560799995
+    },
+    {
+      "path": "F:\\材料边界\\growth-source-cache\\sanchez-runtime-integration\\partition-2-native-r4.json",
+      "sha256": "44cc7b76a03ef6067e3c4f6056364ea75733b470906deb7b1715f99699efd3fe",
+      "tests_run": 417,
+      "seconds": 2753.2844608000014
+    },
+    {
+      "path": "F:\\材料边界\\growth-source-cache\\sanchez-runtime-integration\\partition-3-native-r4.json",
+      "sha256": "8b580ea57b9cc73ac82be2defebac5b756e929644f5f24922ea43bd7da276c16",
+      "tests_run": 519,
+      "seconds": 6537.193662399994
+    }
+  ]
+}

@@ -149,12 +149,14 @@ class LegacyDocumentRecoveryTests(unittest.TestCase):
                      and node.func.attr.startswith('assert'))]
         for path, entry in recovery.code_ledger()['updates'].items():
             current = (ROOT / path).read_bytes()
+            current = checkpoint_bytes(path, current)
             previous = recover_file(current, entry)
             self.assertEqual(assertions(previous), assertions(current))
             for raw in (current + b'!', current[:-1]):
                 self.assertEqual(recovery.project_legacy_code_bytes(path, raw), raw)
-        current = ast.parse((ROOT / 'tests/material_bulk_preservation.py').read_bytes())
-        previous = ast.parse(recover_file((ROOT / 'tests/material_bulk_preservation.py').read_bytes(),
+        current_bytes = checkpoint_bytes('tests/material_bulk_preservation.py')
+        current = ast.parse(current_bytes)
+        previous = ast.parse(recover_file(current_bytes,
             recovery.code_ledger()['updates']['tests/material_bulk_preservation.py']))
         function = lambda tree: next(n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name == 'truthful_readme')
         self.assertEqual(ast.dump(function(current)), ast.dump(function(previous)))

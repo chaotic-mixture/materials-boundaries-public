@@ -1,0 +1,61 @@
+{
+  "schema": "independent-candidate-review/1",
+  "reviewer": "/root/review_sanchez_candidates",
+  "review_mode": "User-authorized read-only subagent; report transcribed into this receipt by the root agent",
+  "decision": "approve",
+  "candidate_sha256": "58f418dcfe265b14e296a21be6c28c8531aa91c4c1919889c19d9f91cfc201c4",
+  "validator_sha256": "1d881c47c7bd9c0406b37121ec9190fcd7f9263e833038ce0009b216fda5ad76",
+  "source_xml_sha256": "9feae72296d930c220b99b57bf79047d9760911718ab007f6f95e2d3a6c0a8dc",
+  "mpea_sha256": "c5504d93fd324d1be26cf814d0694ee9ee95578d68a0b38aba6813b939fa2c5d",
+  "baseline_commit": "f13586759af6a391635fa81da20c73eb6a6c1c6c",
+  "approved_identity_ids": [
+    "mat_sanchez2019_al_mea_fe",
+    "mat_sanchez2019_al_mea_ni",
+    "mat_sanchez2019_al_mea_cr",
+    "mat_sanchez2019_al_mea_mn",
+    "mat_sanchez2019_al_mea_zr"
+  ],
+  "approved_scope": "Five candidate identities, five as-cast states, ten reference properties, one source, finite baseline identity distinction and the generic leading-zero integer source-token matcher change.",
+  "review_rounds": [
+    {
+      "candidate_sha256": "0eb4fbab67abc0905cb928eb4dc458b563605063de25abcf56e4c201b50c20c5",
+      "decision": "changes_required",
+      "findings": [
+        "Par25 SD definition omitted; earlier passing test incorrectly protected the omission.",
+        "Par14/Par25 qualitative porosity and Par31 as-cast state omitted."
+      ],
+      "tests_passed": 7,
+      "tests_failed": 0,
+      "tests_skipped": 0
+    },
+    {
+      "candidate_sha256": "a9c64d8f5f46bf05614106762cc881e049f1bb40d09e5122ec3d6d167290d3e8",
+      "decision": "approve_after_locator_correction",
+      "remaining_finding": "Change Conclusions, Par31 to Discussion, Par31.",
+      "tests_passed": 9,
+      "tests_failed": 0,
+      "tests_skipped": 0,
+      "old_new_matcher_cases_compared": 23,
+      "invalid_candidate_value_mutations_rejected": 5
+    },
+    {
+      "candidate_sha256": "58f418dcfe265b14e296a21be6c28c8531aa91c4c1919889c19d9f91cfc201c4",
+      "decision": "approve",
+      "final_difference": "Only five candidate locator replacements and one corresponding builder replacement; original inputs replay exactly.",
+      "tests_passed": 9,
+      "tests_failed": 0,
+      "tests_skipped": 0,
+      "new_findings": []
+    }
+  ],
+  "baseline_identity_review": "Read all 32 metal identities and their composition/state scopes; no matching six-element nominal recipes found. This is finite baseline review, not global chemical uniqueness.",
+  "pdf_scope": "Reviewer read publisher PDF text, but PDF byte hashes and visual page inspection remain unverified.",
+  "independent_scientific_peer_review": false,
+  "raw_data_reanalysis": false,
+  "not_approved_by_this_receipt": [
+    "Subsequent integration and historical-projection implementation",
+    "Full regression or installed wheel",
+    "Hosted CI",
+    "Remote publication, main merge, release or deployment"
+  ]
+}

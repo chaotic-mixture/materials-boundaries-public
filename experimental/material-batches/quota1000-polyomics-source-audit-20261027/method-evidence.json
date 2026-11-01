@@ -1,0 +1,55 @@
+{
+  "schema": "polyomics-md-method-evidence/1",
+  "status": "producer_source_evidence_not_independently_reviewed",
+  "paper": {
+    "url": "https://arxiv.org/pdf/2511.11626v1",
+    "bytes": 8448990,
+    "sha256": "0f53f21129b172396901d078948158390805c78fd53195c3df52ff4e9a6b0c8a",
+    "scope": "Downloaded official fixed v1 bytes; selected methods/table text inspected through official web parser; no local PDF visual check claimed"
+  },
+  "paper_selected_locators": [
+    "Main Methods: Equilibration simulation, PDF page 13",
+    "Table S3 density-unit row, PDF page 25",
+    "Supplementary Note 1.4, PDF page 54",
+    "Supplementary Note 1.5 Eq.1, PDF page 55"
+  ],
+  "observed_paper_facts": {
+    "density_unit": "g/cm^3",
+    "npt_target_temperature_K": "300",
+    "npt_target_pressure_atm": "1",
+    "density_formula": "m / time_mean(V)",
+    "paper_means_scope": "time averaging after equilibrium"
+  },
+  "inspected_code_commit": "956877f1c1be6098dd85c796786d6fadcdba878e",
+  "code_tag": "v0.2.10",
+  "code_files": [
+    {
+      "url": "https://github.com/RadonPy/RadonPy/blob/956877f1c1be6098dd85c796786d6fadcdba878e/radonpy/sim/md.py",
+      "connector_lf_utf8_sha256": "9ff7aa959eac504ca60686432d8b2fde3f293ecf5eee2b3c9796351dfa597364"
+    },
+    {
+      "url": "https://github.com/RadonPy/RadonPy/blob/956877f1c1be6098dd85c796786d6fadcdba878e/radonpy/sim/lammps.py",
+      "connector_lf_utf8_sha256": "d0f334125127452a5030cc3aab32a43ef62042059805bb5ad3225d7dd57b6128"
+    },
+    {
+      "url": "https://github.com/RadonPy/RadonPy/blob/956877f1c1be6098dd85c796786d6fadcdba878e/radonpy/sim/preset/eq.py",
+      "connector_lf_utf8_sha256": "84a741ffa7809fb442e933e7650c844e6331b21956853e7fa2f9ef186d6367aa"
+    }
+  ],
+  "observed_code_facts": {
+    "MD_units_default": "real, overrideable keyword argument",
+    "density_output_label": "Density [g/cm^3]",
+    "density_output_mapping": "get_all_prop: density from dens_data mean",
+    "density_mean_construction": "analyze_thermo: final rolling mean of instantaneous Density over caller-selected width",
+    "density_uncertainty_construction": "Separate rolling sd/se and moving-mean sd/se; not independent specimen variability",
+    "default_width_not_assigned_to_dataset": true
+  },
+  "discrepancies_and_unknowns": [
+    "The paper m/time_mean(V) and code time_mean(m/V) are generally different estimators. Their numerical difference for these records is unknown; no trajectory was reanalyzed and no source value was corrected.",
+    "CSV export aggregation across times/replicas and its exact window are not established. Do not upgrade the dataset scalar to a proven specific mean/SD/n.",
+    "The selected source cohort reports RadonPy 0.2.10 but eq preset 0.2.1; inspected release eq.py reports 0.2.10. Exact generator commit and local preset modifications are unknown.",
+    "All selected cohort rows have blank LAMMPS_ver. A current LAMMPS unit convention or code default is not a record-level engine-version verification.",
+    "General 300 K/1 atm workflow is supported by the paper and corroborates the raw temp/press fields; actual instantaneous temperature/pressure trajectories are not verified.",
+    "No packing/cooling schedule, sampling width or convergence bound is filled from code defaults."
+  ]
+}

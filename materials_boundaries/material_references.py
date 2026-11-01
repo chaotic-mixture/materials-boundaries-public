@@ -28,8 +28,10 @@ QUANTITY_DIMENSIONS = {
     "flexural_modulus": "pressure",
     "elastic_modulus_unspecified": "pressure",
     "tensile_strength": "pressure",
+    "slump_flow_spread": "length",
 }
 UNIT_DIMENSIONS = {
+    "mm": "length",
     "g/cm^3": "mass_per_volume", "kg/m^3": "mass_per_volume",
     "kg/dm^3": "mass_per_volume", "lb/in^3": "mass_per_volume",
     "MPa": "pressure", "GPa": "pressure", "N/mm^2": "pressure",
@@ -255,13 +257,15 @@ def _make_properties_schema():
         "evidence_kind": _enum(EVIDENCE_KINDS), "reporting_basis": _enum(REPORTING_BASES),
         "determination_basis": _enum(("source_reports_measurement", "source_reports_calculation", "source_reports_compiled_measurements", "not_stated", "mixed_or_unclear")),
         "basis_note": TEXT, "conditions": _object(conditions, ("additional_conditions",)),
-        "density_basis": {"anyOf": [_enum(("apparent", "bulk", "true", "crystallographic", "oven_dry_mass_over_fresh_or_water_saturated_volume", "not_stated")), NULL]},
+        "density_basis": {"anyOf": [_enum(("apparent", "bulk", "true", "crystallographic", "simulation_cell", "oven_dry_mass_over_fresh_or_water_saturated_volume", "not_stated")), NULL]},
         "summary_statistic": _enum(("not_stated", "reported_value", "reported_mean")),
         "uncertainty": {"anyOf": [_ref("uncertainty"), NULL]},
         "uncertainty_status": _enum((*REPORTED_UNCERTAINTIES, "not_reported_in_inspected_source", "not_applicable")),
         "uncertainty_note": TEXT, "sample_count": _ref("sample_count"),
         "method_definition": _object({"type": _enum(("source_reported_conventional", "source_reported_compilation",
-                                                       "source_reported_crystallographic_derivation", "source_reported_empirical_conversion")),
+                                                       "source_reported_crystallographic_derivation", "source_reported_empirical_conversion",
+                                                       "source_reported_computational_structure_density",
+                                                       "source_reported_molecular_simulation_density")),
                                        "definition": TEXT, "extraction_window": {"anyOf": [_ref("reported_window"), NULL]}, "evidence": evidence}),
         "source_discrepancies": _array(_object({"description": TEXT, "disposition": TEXT, "evidence": evidence})),
         "source_id": TEXT, "evidence": evidence, "source_document": _ref("source_document"),
@@ -531,6 +535,7 @@ def _validate_links(materials, properties, indices):
 # Only spelling/typography normalization; these mappings never change a unit or
 # infer a quantity. Unknown spellings need deliberate capability review.
 _UNIT_SPELLINGS = {
+    "mm": {"mm"},
     "g/cm^3": {"g/cm^3", "g/cm³", "g/cm3", "g cm^-3", "g.cm-3", "g cm⁻³", "g·cm⁻³", "g cm−3", "g cm-3", "grams per cubic centimeter"},
     "kg/m^3": {"kg/m^3", "kg/m³", "kg/m3", "kg m^-3", "kg.m-3", "kg m⁻³", "kg·m⁻³", "kg m−3", "kg m-3"},
     "kg/dm^3": {"kg/dm^3", "kg/dm³", "kg/dm3", "kg dm^-3", "kg.dm-3", "kg dm⁻³", "kg·dm⁻³", "kg dm−3", "kg dm-3"},
@@ -599,6 +604,11 @@ def _numeric_token_matches(token, canonical):
     # without deleting arbitrary whitespace or relaxing decimal precision.
     if re.fullmatch(r"(?:0|[1-9][0-9]*)\.[0-9]{3}(?: [0-9]{3})* [0-9]{1,4}", token):
         candidates.add(token.replace(" ", ""))
+    # A source may print an integer SD as 04, 03 or 02. Preserve that source
+    # token while matching its exact integer value; no decimal rescaling or
+    # fractional-precision change is implied by leading integer zeroes.
+    if re.fullmatch(r"0[0-9]+", token):
+        candidates.add(token.lstrip("0") or "0")
     return canonical in candidates
 
 
@@ -727,10 +737,20 @@ def _validate_property(prop):
     is_empirical = method == "source_reported_empirical_conversion"
     if is_derived != (is_crystallographic or is_empirical):
         _fail(path, "measured-input-derived evidence requires an admitted derivation method")
-    if (prop["density_basis"] == "crystallographic") != is_crystallographic:
-        _fail(path, "crystallographic density requires its source-reported derivation method")
-    if is_crystallographic and prop["quantity"] != "mass_density":
-        _fail(path, "crystallographic derivation requires mass density")
+    is_computational_crystal = method == "source_reported_computational_structure_density"
+    if (prop["density_basis"] == "crystallographic") != (is_crystallographic or is_computational_crystal):
+        _fail(path, "crystallographic density requires its source-reported structural method")
+    if (is_crystallographic or is_computational_crystal) and prop["quantity"] != "mass_density":
+        _fail(path, "crystallographic density requires mass density")
+    if is_computational_crystal and prop["evidence_kind"] != "published_computational_reference":
+        _fail(path, "computed-structure density requires computational evidence")
+    is_molecular_simulation = method == "source_reported_molecular_simulation_density"
+    if (prop["density_basis"] == "simulation_cell") != is_molecular_simulation:
+        _fail(path, "simulation-cell density requires its molecular-simulation method")
+    if is_molecular_simulation and prop["quantity"] != "mass_density":
+        _fail(path, "molecular-simulation density requires mass density")
+    if is_molecular_simulation and prop["evidence_kind"] != "published_computational_reference":
+        _fail(path, "molecular-simulation density requires computational evidence")
     from ._material_derivation import validate_derivation
     validate_derivation(prop)
     if prop["quantity"] == "basic_wood_density" and not is_empirical:

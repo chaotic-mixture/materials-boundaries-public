@@ -7,6 +7,7 @@ import evidence_dedup_preservation as successor
 import material_batch_preservation as batch
 import material_bulk_preservation as bulk
 from presentation_fast_path_preservation import ALLOWED_PATHS as PRESENTATION_PATHS, pre_presentation_fast_path_bytes
+from sanchez_al_mea_history import checkpoint_bytes
 
 ROOT = Path(__file__).resolve().parents[1]
 HELPER_SHA256 = '4c6c17b3310057faf4b7d80dd9bfc77ec5fdc6f28fe8f0ef102c2ebe85c8b245'
@@ -22,6 +23,7 @@ class EvidenceDedupPreservationTests(unittest.TestCase):
         for name, entry in entries.items():
             with self.subTest(filename=name):
                 current = (ROOT / name).read_bytes()
+                current = checkpoint_bytes(name, current)
                 if name in PRESENTATION_PATHS:
                     current = pre_presentation_fast_path_bytes(name, current)
                 previous = successor.pre_evidence_dedup_bytes(name, current)
@@ -41,6 +43,7 @@ class EvidenceDedupPreservationTests(unittest.TestCase):
     def test_unreviewed_successors_inputs_and_edit_mutations_fail_closed(self):
         for name, entry in successor.validate_ledger(successor.load_ledger()).items():
             current = (ROOT / name).read_bytes()
+            current = checkpoint_bytes(name, current)
             if name in PRESENTATION_PATHS:
                 current = pre_presentation_fast_path_bytes(name, current)
             previous = successor.pre_evidence_dedup_bytes(name, current)

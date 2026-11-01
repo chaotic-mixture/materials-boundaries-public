@@ -1,0 +1,36 @@
+{
+  "schema": "polyomics-source-audit-validation/1",
+  "scope": "CSV integrity, selected source fact preservation and separation from chemical material identity",
+  "passed": 7,
+  "failed": 0,
+  "skipped": 0,
+  "command": "python -B -m unittest discover -s experimental/material-batches/quota1000-polyomics-source-audit-20261027 -p test_inspect_polyomics.py -v",
+  "script_sha256": "97a44113b6dacfa25a490832901cf192083b4d13cb4a0507afd1a3c5d3bb7d14",
+  "audit_sha256": "998856e82a4dc50e19b91437e4f0e9da1e420b72ebb3db34c871fe3b4fd40529",
+  "prior_failed_attempt": "First audit command failed on misspelled utf8-sig codec; corrected to utf-8-sig and reran successfully.",
+  "not_run": [
+    "Independent periodic algorithm and identity review",
+    "Baseline identity overlap review",
+    "Version-specific method/units and aggregation review",
+    "Runtime integration",
+    "Hosted CI for these changes"
+  ],
+  "admitted_increment": 0,
+  "periodic_graph_prototype": {
+    "passed": 9,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 0.016,
+    "command": "python -B -m unittest discover -s experimental/material-batches/quota1000-polyomics-source-audit-20261027 -p test_periodic_repeat_graph.py -v",
+    "rdkit_version": "2025.09.6",
+    "method": "unreviewed-linear-two-port-four-repeat-graph/1",
+    "script_sha256": "dc876ffd51f7aa303f09888229922097648f3937f933254856508357de75fb2d",
+    "source_run_receipt": "periodic-graph-summary.json",
+    "metamorphic_verification": "relabeling-verification.json",
+    "metamorphic_source_literals": 3690,
+    "metamorphic_comparisons": 7380,
+    "metamorphic_failures": 0,
+    "independent_review": "not_run",
+    "admitted_increment": 0
+  }
+}

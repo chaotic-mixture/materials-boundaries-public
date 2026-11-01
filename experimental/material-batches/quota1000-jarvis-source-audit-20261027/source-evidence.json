@@ -1,0 +1,71 @@
+{
+  "schema": "jarvis-source-evidence/1",
+  "status": "producer_inspected_not_independently_reviewed",
+  "checked_on": "2026-10-27",
+  "dataset": {
+    "doi": "10.6084/m9.figshare.6815699.v11",
+    "version": 11,
+    "title": "JARVIS-DFT 3D dataset (jdft_3d.json)",
+    "authors": [
+      {
+        "id": 4445539,
+        "full_name": "Kamal Choudhary",
+        "first_name": "Kamal",
+        "last_name": "Choudhary",
+        "is_active": true,
+        "url_name": "Kamal_Choudhary",
+        "orcid_id": ""
+      }
+    ],
+    "license": {
+      "value": 1,
+      "name": "CC BY 4.0",
+      "url": "https://creativecommons.org/licenses/by/4.0/"
+    },
+    "published_date": "2026-05-09T07:44:20Z",
+    "metadata_url": "https://api.figshare.com/v2/articles/6815699/versions/11",
+    "metadata_sha256": "8456edaa9e774267dd9db1c5176c25f6075747efab6ada25df446b7cca20d726"
+  },
+  "code_commit": "3b0c9d0f0c15759135de857dbc93e010db01eb29",
+  "code_evidence": [
+    {
+      "url": "https://github.com/usnistgov/jarvis/blob/3b0c9d0f0c15759135de857dbc93e010db01eb29/jarvis/core/atoms.py",
+      "cache_filename": "pinned-atoms.py",
+      "connector_utf8_text_sha256": "e53f371fd923e783b569fbd6742947ee0a38ba809a8897510e4b853dd4e0ad46",
+      "observation": "Atoms.density docstring specifies g/cm3; implementation uses formula mass and cell volume."
+    },
+    {
+      "url": "https://github.com/usnistgov/jarvis/blob/3b0c9d0f0c15759135de857dbc93e010db01eb29/jarvis/db/figshare.py",
+      "cache_filename": "pinned-figshare.py",
+      "connector_utf8_text_sha256": "aa6c2654c3a5d4c4aea3a96410accbc4889cb1340d1a00a43a20c0a156b8fcac",
+      "observation": "The dft_3d loader names the 2022 file id 38521619; this audit instead pins Figshare v11 file 64391379."
+    },
+    {
+      "url": "https://github.com/usnistgov/jarvis/blob/3b0c9d0f0c15759135de857dbc93e010db01eb29/LICENSE.rst",
+      "cache_filename": "pinned-LICENSE.rst",
+      "connector_utf8_text_sha256": "087427ef9f17ffa094defeb04cbea6300f20c5e89ded7bf33885161dc09a1915",
+      "observation": "NIST software Terms of Use are separate from the Figshare dataset CC BY 4.0 grant."
+    }
+  ],
+  "methods_url": "https://jarvis-materials-design.github.io/dbdocs/jarvisdft/",
+  "methods_sections_inspected": [
+    "Methodology / Input structure",
+    "Methodology / Geometric optimization",
+    "Methodology / Functional selection",
+    "Property Details / Atomic structure and derived properties"
+  ],
+  "observations": [
+    "DFT optimized structures and their scalar density are computed references, not experimental specimen densities.",
+    "General methodology documents OptB88vdW and relaxed geometry. Specific per-row convergence, generator commit, equilibrium temperature and pressure are not established by this audit.",
+    "The pinned Atoms.density property defines g/cm3. Its exact generator-version relationship to the September 2025 file remains unverified.",
+    "Structural parents may include ICSD, Materials Project, OQMD, AFLOW and COD. This screening exports no parent atomic coordinates.",
+    "Version 11 contains a 2025-named file. The older jarvis/db/figshare.py loader points to a separate 2022 file; byte or record equivalence is not asserted."
+  ],
+  "scope_limits": [
+    "No independent source review yet",
+    "No full source asset redistribution",
+    "No scientific replication or geometry reoptimization",
+    "No per-material synthesis, stability, metallic behavior or engineering allowable claims",
+    "No formal admission or runtime modification"
+  ]
+}

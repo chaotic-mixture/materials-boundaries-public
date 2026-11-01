@@ -1,0 +1,232 @@
+{
+  "schema_version": 1,
+  "baseline_commit": "f13586759af6a391635fa81da20c73eb6a6c1c6c",
+  "updates": {
+    "README.md": {
+      "previous_sha256": "e1c795aaa0106271bd2ee5c40b902e901ae50b847b74a29935c78b638e7ea450",
+      "sha256": "e9b97c664a54109b657098d0fa0937d69237f840496fad389897c2092e263d5e",
+      "edits": [
+        {
+          "offset": 667,
+          "before": "- **41 mechanics claims**, **129 source records**, **16 observations from 5 studies**, **12 published computational predictions in 2 scientific families and 3 explicit groups**, and **5 synthetic temperature demos with 7 branches**\n",
+          "after": "- **41 mechanics claims**, **130 source records**, **16 observations from 5 studies**, **12 published computational predictions in 2 scientific families and 3 explicit groups**, and **5 synthetic temperature demos with 7 branches**\n"
+        },
+        {
+          "offset": 1333,
+          "before": "- The 129 sources comprise 128 bibliographic/source records plus 1 original synthetic-demo provenance record; a source record is not a redistribution of its publication or dataset\n",
+          "after": "- The 130 sources comprise 129 bibliographic/source records plus 1 original synthetic-demo provenance record; a source record is not a redistribution of its publication or dataset\n"
+        },
+        {
+          "offset": 1788,
+          "before": "The separate reference catalogue contains **1175 material identities**, **31 qualified grades**, **1176 source-scoped states** and **1187 reference properties**. Counts describe this registry only; aliases, categories, prior observations and computational model cells are not additional materials.\n",
+          "after": "The separate reference catalogue contains **1180 material identities**, **31 qualified grades**, **1181 source-scoped states** and **1197 reference properties**. Counts describe this registry only; aliases, categories, prior observations and computational model cells are not additional materials.\n"
+        },
+        {
+          "offset": 2125,
+          "before": "The local experimental Delgado PLA/PCL append adds seven source-qualified nominal-ratio polymer blends with seven measured Young's moduli and one source. The local experimental project total is **1199 = 1175 source-qualified identities + 24 reviewed computed records**; the last published experimental baseline remains **1192** pending review and publication, and published main remains **1081**. [Evidence, conditions and count boundaries](docs/MATERIAL_GROWTH_DELGADO_PLA_PCL_20261026.md).\n",
+          "after": "The local experimental Sanchez aluminium-alloy append adds five source-qualified as-cast nominal recipes, five measured densities and five compression Young's moduli with source-reported SD. The local experimental project inventory is **1204 = 1180 source-qualified identities + 24 reviewed computed records**. Integration verification is recorded separately; current main, release and deployment status has not been rechecked. The preceding experimental checkpoint had 1175 material identities and 1199 project records. [Independent source review and integration evidence](experimental/material-batches/sanchez-al-mea-revised-20261027/README.md).\n"
+        }
+      ]
+    },
+    "materials_boundaries/material_references.py": {
+      "previous_sha256": "c22295a7e8ab4e360201eb57cb6fc13eba7f8b8ac5e419f35fcf42e8aa81a264",
+      "sha256": "1d881c47c7bd9c0406b37121ec9190fcd7f9263e833038ce0009b216fda5ad76",
+      "edits": [
+        {
+          "offset": 29939,
+          "before": "",
+          "after": "    # A source may print an integer SD as 04, 03 or 02. Preserve that source\n    # token while matching its exact integer value; no decimal rescaling or\n    # fractional-precision change is implied by leading integer zeroes.\n    if re.fullmatch(r\"0[0-9]+\", token):\n        candidates.add(token.lstrip(\"0\") or \"0\")\n"
+        }
+      ]
+    },
+    "tests/delgado_pla_pcl_history.py": {
+      "previous_sha256": "225159e89f418eaa2dc6692d8a73a4a1efdc9c8201252d6fda765fd0602a6963",
+      "sha256": "a48f2bddcc8a4ed42607f60657cd4481c4724429d66fcac3bfa579263d0f7edb",
+      "edits": [
+        {
+          "offset": 472,
+          "before": "",
+          "after": "import sanchez_al_mea_history as sanchez\n"
+        },
+        {
+          "offset": 2092,
+          "before": "",
+          "after": "        raw = {key: encoded(value) for key, value in sanchez.checkpoint_catalogs(root).items()}\n        hashes = {key: digest(value) for key, value in raw.items()}\n    if hashes not in (ledger[\"current_sha256\"], ledger[\"baseline_sha256\"]):\n"
+        },
+        {
+          "offset": 2818,
+          "before": "",
+          "after": "    raw = sanchez.checkpoint_bytes(relative, raw, root=root)\n"
+        },
+        {
+          "offset": 4167,
+          "before": "",
+          "after": "    raw = sanchez.checkpoint_document(relative, raw, root=root)\n"
+        },
+        {
+          "offset": 6236,
+          "before": "    raw_files = {path: (root / path).read_bytes() for path in actual_paths}\n",
+          "after": "    raw_files = {path: sanchez.checkpoint_bytes(path, (root / path).read_bytes(), root=root) for path in actual_paths}\n"
+        }
+      ]
+    },
+    "tests/delgado_pla_pcl_runtime/test_delgado_history.py": {
+      "previous_sha256": "2641ac83ec9c4d62099ff38ab5a37963ca85515a923862fa3dc15ab6448b5a69",
+      "sha256": "62ba9d9fe92d289231ff235ad37d917e08a692dfcc513deed50a66aad1f45860",
+      "edits": [
+        {
+          "offset": 691,
+          "before": "",
+          "after": "import sanchez_al_mea_history as sanchez\n"
+        },
+        {
+          "offset": 1331,
+          "before": "    return {name: json.loads((ROOT / relative).read_bytes())\n            for name, relative in history.CATALOG_PATHS.items()}\n",
+          "after": "    return sanchez.checkpoint_catalogs()\n"
+        },
+        {
+          "offset": 5667,
+          "before": "        self.assertEqual(successors.FROZEN_SUCCESSORS, (descriptor,) + previous.FROZEN_SUCCESSORS)\n",
+          "after": "        self.assertEqual(sanchez.predecessor_descriptors(successors.FROZEN_SUCCESSORS), (descriptor,) + previous.FROZEN_SUCCESSORS)\n"
+        },
+        {
+          "offset": 5828,
+          "before": "        self.assertEqual(successors.data_ledgers(before=successors.DELGADO_PLA_PCL_BATCH_ID), [])\n        self.assertEqual(successors.data_ledgers()[0], history.data_ledger())\n        self.assertEqual(successors.data_ledgers()[1:], previous.data_ledgers())\n",
+          "after": "        current_checkpoint = sanchez.checkpoint_registry()\n        self.assertEqual(current_checkpoint.data_ledgers(before=successors.DELGADO_PLA_PCL_BATCH_ID), [])\n        self.assertEqual(current_checkpoint.data_ledgers()[0], history.data_ledger())\n        self.assertEqual(current_checkpoint.data_ledgers()[1:], previous.data_ledgers())\n"
+        },
+        {
+          "offset": 6221,
+          "before": "                raw = (ROOT / relative).read_bytes()\n",
+          "after": "                raw = sanchez.checkpoint_bytes(relative, (ROOT / relative).read_bytes())\n"
+        },
+        {
+          "offset": 17308,
+          "before": "",
+          "after": "        # This older negative fixture targets its exact pre-Sanchez README.\n        raw = history.sanchez.checkpoint_bytes('README.md', raw)\n"
+        }
+      ]
+    },
+    "tests/test_family_adjacency_history.py": {
+      "previous_sha256": "5b3660c6d91eda0e1cd4ddfce18162088f618d8155a9fd3655ea7dffafa1dad6",
+      "sha256": "b115beefbab35f0406d283c402e80177c24336c9a587a23ae3cffc7925c854cc",
+      "edits": [
+        {
+          "offset": 593,
+          "before": "",
+          "after": "import sanchez_al_mea_history as sanchez\n"
+        },
+        {
+          "offset": 2872,
+          "before": "        self.assertEqual(successors.FROZEN_SUCCESSORS, (delgado_entry,) + latest_checkpoint.FROZEN_SUCCESSORS)\n",
+          "after": "        self.assertEqual(sanchez.predecessor_descriptors(successors.FROZEN_SUCCESSORS), (delgado_entry,) + latest_checkpoint.FROZEN_SUCCESSORS)\n"
+        }
+      ]
+    },
+    "THIRD_PARTY_NOTICES.md": {
+      "previous_sha256": "eb3a83e5460b165f3ae3050492dad9db46c963169b361eb2f5106a4e0615a342",
+      "sha256": "6d339b447c68ab8f2bc25f2401d70c60eb7b06f2a893d2693a442b3bd9e49c07",
+      "edits": [
+        {
+          "offset": 95567,
+          "before": "",
+          "after": "\n## Sanchez 2019 cast aluminium medium-entropy alloys\n\nJon Mikel Sanchez, Iban Vicario, Joseba Albizuri, Teresa Guraya and\nEva Maria Acuña, *Design, Microstructure and Mechanical Properties of Cast\nMedium Entropy Aluminium Alloys*, Scientific Reports 9, 6792 (2019).\n[DOI 10.1038/s41598-019-43329-w](https://doi.org/10.1038/s41598-019-43329-w);\n[official PMC article](https://pmc.ncbi.nlm.nih.gov/articles/PMC6494811/).\nThe inspected official article XML states\n[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).\n\nChanges comprise transcription and condition-aware curation of five nominal\nalloy recipes, five Archimedes density values and five compression-derived\nelastic moduli with separately reported standard deviations. Nominal recipes\nare kept distinct from SEM-EDS compositions. The original article governs\nthree Cr/Mn/Zr recipe conflicts with the secondary MPEA dataset. Printed\ninteger standard deviations `04`, `03` and `02` retain their source text while\nbeing represented numerically as 4, 3 and 2 GPa. The central aggregation is\nnot stated. Missing density conditions and quantitative temperature remain\nunknown; compression conditions are not assigned to the density measurements.\n\nIndependent review verified the official XML evidence and selected facts;\nPDF byte identity and visual inspection remain unverified. No article XML,\nPDF, screenshots or raw experimental assets are bundled. Attribution does not\nimply author endorsement, scientific replication or engineering allowables.\nSource ID: `sanchez_2019_cast_al_mea`.\n"
+        }
+      ]
+    },
+    "tests/material_bulk_preservation.py": {
+      "previous_sha256": "1d42ae4740d9d0cdcd9c1db8d0f4c8a6db791f55bf537c25b4fc8ce38cb6c86f",
+      "sha256": "32e2c40cfff5df4b3a78bebaf358fbef113240d08d67c7c3eb4bf1f8e0ff5db1",
+      "edits": [
+        {
+          "offset": 18701,
+          "before": "",
+          "after": "    if filename == 'materials_boundaries/material_references.py':\n        from sanchez_al_mea_history import checkpoint_bytes\n        current = checkpoint_bytes(filename, current)\n"
+        }
+      ]
+    },
+    "tests/legacy_document_recovery.py": {
+      "previous_sha256": "8612fbe2c5091820d6673d6a82cb458f1baccee85da66581d6798ad847725316",
+      "sha256": "e2beecbda2cad8fd23ca18ea83e92314c8736b03fb1935b7953dde34aff7304c",
+      "edits": [
+        {
+          "offset": 1644,
+          "before": "",
+          "after": "    from sanchez_al_mea_history import checkpoint_bytes\n    raw = checkpoint_bytes(filename, raw)\n"
+        }
+      ]
+    },
+    "tests/test_legacy_document_recovery.py": {
+      "previous_sha256": "a18898c48dec67434935fd069dec8861a6bffdcf1c10e4a076e027fe77d1784f",
+      "sha256": "6e56e74c93224ae0a9e75047802663a75a1555a36461ac66b67e61bb6b1d00bd",
+      "edits": [
+        {
+          "offset": 10069,
+          "before": "",
+          "after": "            current = checkpoint_bytes(path, current)\n"
+        },
+        {
+          "offset": 10333,
+          "before": "        current = ast.parse((ROOT / 'tests/material_bulk_preservation.py').read_bytes())\n        previous = ast.parse(recover_file((ROOT / 'tests/material_bulk_preservation.py').read_bytes(),\n",
+          "after": "        current_bytes = checkpoint_bytes('tests/material_bulk_preservation.py')\n        current = ast.parse(current_bytes)\n        previous = ast.parse(recover_file(current_bytes,\n"
+        }
+      ]
+    },
+    "tests/test_evidence_dedup_preservation.py": {
+      "previous_sha256": "bb3ac86bccccb0174d4cef7243dc9fa93a7adeca5b31da4fdd79cdf5cac92210",
+      "sha256": "605572f9ba8e229c9b5be8e1ed95804d0ee2c5100ece4f2ca3053d8dd773b6bb",
+      "edits": [
+        {
+          "offset": 403,
+          "before": "",
+          "after": "from sanchez_al_mea_history import checkpoint_bytes\n"
+        },
+        {
+          "offset": 1222,
+          "before": "",
+          "after": "                current = checkpoint_bytes(name, current)\n"
+        },
+        {
+          "offset": 2515,
+          "before": "",
+          "after": "            current = checkpoint_bytes(name, current)\n"
+        }
+      ]
+    },
+    "tests/test_presentation_fast_path_preservation.py": {
+      "previous_sha256": "50e58003a6ae796fcc4079939517da5d0a19f17975598b846b64bef2f72419fe",
+      "sha256": "9fb0842df0f355589e1470dbc9b144aa885920be0c9d9cb95f6f62e622aecac0",
+      "edits": [
+        {
+          "offset": 364,
+          "before": "",
+          "after": "from sanchez_al_mea_history import checkpoint_bytes\n"
+        },
+        {
+          "offset": 1376,
+          "before": "                current = (ROOT / name).read_bytes()\n",
+          "after": "                current = checkpoint_bytes(name, (ROOT / name).read_bytes())\n"
+        },
+        {
+          "offset": 2739,
+          "before": "        current = (ROOT / filename).read_bytes()\n",
+          "after": "        current = checkpoint_bytes(filename, (ROOT / filename).read_bytes())\n"
+        },
+        {
+          "offset": 3248,
+          "before": "            original = successor.pre_presentation_fast_path_bytes(filename, (ROOT / filename).read_bytes())\n",
+          "after": "            original = successor.pre_presentation_fast_path_bytes(filename, checkpoint_bytes(filename, (ROOT / filename).read_bytes()))\n"
+        },
+        {
+          "offset": 3645,
+          "before": "            current = (ROOT / name).read_bytes()\n",
+          "after": "            current = checkpoint_bytes(name, (ROOT / name).read_bytes())\n"
+        },
+        {
+          "offset": 7436,
+          "before": "            current = (ROOT / filename).read_bytes()\n",
+          "after": "            current = checkpoint_bytes(filename, (ROOT / filename).read_bytes())\n"
+        }
+      ]
+    }
+  }
+}

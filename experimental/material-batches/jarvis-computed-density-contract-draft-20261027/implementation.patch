@@ -1,0 +1,42 @@
+--- a/materials_boundaries/material_references.py
++++ b/materials_boundaries/material_references.py
+@@ -261,7 +261,8 @@
+         "uncertainty_status": _enum((*REPORTED_UNCERTAINTIES, "not_reported_in_inspected_source", "not_applicable")),
+         "uncertainty_note": TEXT, "sample_count": _ref("sample_count"),
+         "method_definition": _object({"type": _enum(("source_reported_conventional", "source_reported_compilation",
+-                                                       "source_reported_crystallographic_derivation", "source_reported_empirical_conversion")),
++                                                       "source_reported_crystallographic_derivation", "source_reported_empirical_conversion",
++                                                       "source_reported_computational_structure_density")),
+                                        "definition": TEXT, "extraction_window": {"anyOf": [_ref("reported_window"), NULL]}, "evidence": evidence}),
+         "source_discrepancies": _array(_object({"description": TEXT, "disposition": TEXT, "evidence": evidence})),
+         "source_id": TEXT, "evidence": evidence, "source_document": _ref("source_document"),
+@@ -732,10 +733,13 @@
+     is_empirical = method == "source_reported_empirical_conversion"
+     if is_derived != (is_crystallographic or is_empirical):
+         _fail(path, "measured-input-derived evidence requires an admitted derivation method")
+-    if (prop["density_basis"] == "crystallographic") != is_crystallographic:
+-        _fail(path, "crystallographic density requires its source-reported derivation method")
+-    if is_crystallographic and prop["quantity"] != "mass_density":
+-        _fail(path, "crystallographic derivation requires mass density")
++    is_computational_crystal = method == "source_reported_computational_structure_density"
++    if (prop["density_basis"] == "crystallographic") != (is_crystallographic or is_computational_crystal):
++        _fail(path, "crystallographic density requires its source-reported structural method")
++    if (is_crystallographic or is_computational_crystal) and prop["quantity"] != "mass_density":
++        _fail(path, "crystallographic density requires mass density")
++    if is_computational_crystal and prop["evidence_kind"] != "published_computational_reference":
++        _fail(path, "computed-structure density requires computational evidence")
+     from ._material_derivation import validate_derivation
+     validate_derivation(prop)
+     if prop["quantity"] == "basic_wood_density" and not is_empirical:
+--- a/schemas/reference_properties.schema.json
++++ b/schemas/reference_properties.schema.json
+@@ -2370,7 +2370,8 @@
+                 "source_reported_conventional",
+                 "source_reported_compilation",
+                 "source_reported_crystallographic_derivation",
+-                "source_reported_empirical_conversion"
++                "source_reported_empirical_conversion",
++                "source_reported_computational_structure_density"
+               ]
+             },
+             "definition": {

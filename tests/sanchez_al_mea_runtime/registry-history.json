@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "baseline_commit": "f13586759af6a391635fa81da20c73eb6a6c1c6c",
+  "updates": {
+    "tests/material_append_successors.py": {
+      "previous_sha256": "18adfbbc1ab570ac40e3d895548720745806b15c2348dca1b97dcddaee706949",
+      "sha256": "4059d3a5277096b873bf011ee044d3f1c0cee9d4480b3a827bfe22c7ee59cf09",
+      "edits": [
+        {
+          "offset": 6698,
+          "before": "",
+          "after": "    {\"batch_id\": \"sanchez-al-mea-revised-20261027\",\n     \"data\": (\"tests/sanchez_al_mea_runtime/data-history.json\", \"0554b5416d827264b4aff4c52e646a6c01e6210eff88d39343b75f7e9c6aa18f\"),\n     \"files\": (\"tests/sanchez_al_mea_runtime/files-history.json\", \"bec3bd497d04b7ad95432cbe9e71f46e5aa81fbe937057327e05271aa6bb038c\")},\n"
+        },
+        {
+          "offset": 11236,
+          "before": "    result = [delgado_registry_ledger()] if any(item[\"batch_id\"] == DELGADO_PLA_PCL_BATCH_ID for item in descriptors) else []\n",
+          "after": "    from sanchez_al_mea_history import registry_ledger as sanchez_registry_ledger\n    has_sanchez = any(item[\"batch_id\"] == \"sanchez-al-mea-revised-20261027\" for item in descriptors)\n    result = [sanchez_registry_ledger()] if has_sanchez else []\n    result += [load_frozen(ROOT, *item[\"files\"]) for item in descriptors if item[\"batch_id\"] == \"sanchez-al-mea-revised-20261027\"]\n    result += [delgado_registry_ledger()] if any(item[\"batch_id\"] == DELGADO_PLA_PCL_BATCH_ID for item in descriptors) else []\n"
+        },
+        {
+          "offset": 12198,
+          "before": "        if descriptor[\"batch_id\"] in {DELGADO_PLA_PCL_BATCH_ID, EWURUM_REACTIVE_BATCH_ID, CURAUA_BATCH_ID}:\n",
+          "after": "        if descriptor[\"batch_id\"] in {\"sanchez-al-mea-revised-20261027\", DELGADO_PLA_PCL_BATCH_ID, EWURUM_REACTIVE_BATCH_ID, CURAUA_BATCH_ID}:\n"
+        }
+      ]
+    }
+  }
+}

@@ -308,6 +308,13 @@ def release_bytes(filename, current, *, ledger=None, allow_historical_summary=Fa
     entries = validate_ledger(ledger)
     if type(current) is not bytes or filename not in ledger['baseline_sha256']:
         raise AssertionError('Unknown v0.35 release file')
+    if filename in {'materials_boundaries/material_references.py',
+                    'materials_boundaries/material_presentation.py',
+                    'schemas/reference_properties.schema.json',
+                    'tests/test_nist_reuse_provenance.py',
+                    'tests/test_release_metadata.py'}:
+        from sanchez_al_mea_history import checkpoint_bytes
+        current = checkpoint_bytes(filename, current)
     if filename == '.github/workflows/ci.yml':
         current = pre_class_counts_bytes(filename, current)
     expected = entries[filename]['sha256'] if filename in entries else ledger['baseline_sha256'][filename]

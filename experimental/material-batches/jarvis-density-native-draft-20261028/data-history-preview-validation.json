@@ -1,0 +1,66 @@
+{
+  "schema": "jarvis-isolated-data-history-preview/1",
+  "status": "producer_data_recovery_checks_passed",
+  "scope": "Exact catalog append, idempotence and data-layer recovery only; no file/registry/document history or full runtime admission.",
+  "output_dir": "F:\\材料边界\\growth-source-cache\\jarvis-integration-history-preview-r1",
+  "native_sha256": "82a2d8332f934b31567cac4d50960871792841321a94bd4357500604f6184e85",
+  "data_history_sha256": "8cd7307d48573fc1d7612154793040e191299abc147b58fbf328adaa99bd34fc",
+  "baseline_sha256": {
+    "materials": "e6cead9a5f06d2334788d82c459f6e9ade9ccf94ac2625c7a3132812b7974479",
+    "properties": "5b2e5fb3f8b57d0535cfe6d854a9a86b1f7fa8addf73dd933492242836a51c1a",
+    "sources": "e7a7609a21f65b4838f146fccefeaa2ab8964b84d18c50252d16dd329bfda43e"
+  },
+  "prospective_catalog_sha256": {
+    "materials": "6f19d6482176edfa4ea62a0d3e28073830c81386811a6c44080732904b8ac9ea",
+    "properties": "1068a4451545b655ff97b86c6b2dbfa00a0a76e18cbdfa8b4bf507e8d48ade7a",
+    "sources": "631ab54896290662dac765bb02b0275ecf6879d79993a400231b7049a13c432d"
+  },
+  "prospective_counts": {
+    "identities": 3180,
+    "grades": 31,
+    "states": 3181,
+    "properties": 3197,
+    "sources": 131
+  },
+  "exact_recovery_to_1180_identity_snapshot": true,
+  "adjacent_recovery_to_1175_identity_checkpoint": true,
+  "prefix_objects_order_and_root_metadata_preserved": true,
+  "append_idempotent": true,
+  "rejected_graph_mutations": [
+    "partial_identity",
+    "partial_property",
+    "reorder_additions",
+    "changed_new_value",
+    "changed_old_value",
+    "changed_metadata",
+    "duplicate_addition"
+  ],
+  "rejected_raw_whitespace_images": 3,
+  "live_runtime_changed": false,
+  "admitted_increment": 0,
+  "pending": [
+    "Independent data-history review",
+    "File/registry/document exact recovery",
+    "Live runtime integration",
+    "Full regression",
+    "Real installed checks",
+    "Runtime admission"
+  ],
+  "verified_actual_prospective_counts": {
+    "identities": 3180,
+    "grades": 31,
+    "states": 3181,
+    "properties": 3197,
+    "sources": 131
+  },
+  "verified_actual_prospective_classes": {
+    "metal": 1037,
+    "polymer": 37,
+    "inorganic": 1059,
+    "natural": 1010,
+    "composite": 37
+  },
+  "prefix_and_root_metadata_checked_against_actual_live_baseline": true,
+  "producer_script_sha256": "427f64ee5d5d0dc27cf8a82a33ab1b631365d1ac7bf7651270664f5dcf33da10",
+  "log_sha256": "574f2106123d1c751811046223f8d79a43a855d10185bf4c4e75959cb85c5dd9"
+}

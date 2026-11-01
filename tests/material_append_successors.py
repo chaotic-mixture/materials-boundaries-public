@@ -103,6 +103,18 @@ DELGADO_PLA_PCL_FILE_LEDGER = "tests/delgado_pla_pcl_runtime/files-history.json"
 DELGADO_PLA_PCL_FILE_SHA256 = "417d01209289ce08e0ea827657f8d63ea366324a2be5c64aa8a2b22065042b9e"
 
 FROZEN_SUCCESSORS = (
+    {"batch_id": "scc-fresh-flow-nominal-recipes-20261029",
+     "data": ("tests/scc_fresh_flow_runtime/data-history.json", "e6448c679dccdc7cbc54bee880c5e582242abbf9e233386bb461fa8c58cfc0cb"),
+     "files": ("tests/scc_fresh_flow_runtime/files-history.json", "8975b1d04a696694c539700087d50fdb9f9361ba16af0dcfe9209fcd198a20f3")},
+    {"batch_id": "polyomics-md-native-draft-20261028",
+     "data": ("tests/polyomics_md_runtime/data-history.json", "25800896a359d0f610bcae5f9dc26b3509a6f6e07bc78bbbac5b5c7a47f73d5f"),
+     "files": ("tests/polyomics_md_runtime/files-history.json", "bcfbeacec52f52a452bdbd3efba303374462c5232d61d32dfafcfce9943e53ab")},
+    {"batch_id": "jarvis-density-native-draft-20261028",
+     "data": ("tests/jarvis_density_runtime/data-history.json", "8cd7307d48573fc1d7612154793040e191299abc147b58fbf328adaa99bd34fc"),
+     "files": ("tests/jarvis_density_runtime/files-history.json", "4cfbf789975e3340e1d0d7950a07822fb87b59b4da1068d1476b22cad14a6e41")},
+    {"batch_id": "sanchez-al-mea-revised-20261027",
+     "data": ("tests/sanchez_al_mea_runtime/data-history.json", "0554b5416d827264b4aff4c52e646a6c01e6210eff88d39343b75f7e9c6aa18f"),
+     "files": ("tests/sanchez_al_mea_runtime/files-history.json", "bec3bd497d04b7ad95432cbe9e71f46e5aa81fbe937057327e05271aa6bb038c")},
     {"batch_id": DELGADO_PLA_PCL_BATCH_ID,
      "data": (DELGADO_PLA_PCL_DATA_LEDGER, DELGADO_PLA_PCL_DATA_SHA256),
      "files": (DELGADO_PLA_PCL_FILE_LEDGER, DELGADO_PLA_PCL_FILE_SHA256)},
@@ -189,7 +201,23 @@ def file_ledgers(*, before=None):
     from curaua_history import registry_ledger
     from ewurum_reactive_history import registry_ledger as ewurum_registry_ledger
     from delgado_pla_pcl_history import registry_ledger as delgado_registry_ledger
-    result = [delgado_registry_ledger()] if any(item["batch_id"] == DELGADO_PLA_PCL_BATCH_ID for item in descriptors) else []
+    from jarvis_density_history import registry_ledger as jarvis_registry_ledger
+    from sanchez_al_mea_history import registry_ledger as sanchez_registry_ledger
+    has_sanchez = any(item["batch_id"] == "sanchez-al-mea-revised-20261027" for item in descriptors)
+    has_jarvis = any(item["batch_id"] == "jarvis-density-native-draft-20261028" for item in descriptors)
+    from polyomics_md_history import registry_ledger as polyomics_registry_ledger
+    has_polyomics = any(item["batch_id"] == "polyomics-md-native-draft-20261028" for item in descriptors)
+    from scc_flow_history import registry_ledger as scc_registry_ledger
+    has_scc = any(item["batch_id"] == "scc-fresh-flow-nominal-recipes-20261029" for item in descriptors)
+    result = [scc_registry_ledger()] if has_scc else []
+    result += [load_frozen(ROOT, *item["files"]) for item in descriptors if item["batch_id"] == "scc-fresh-flow-nominal-recipes-20261029"]
+    result += [polyomics_registry_ledger()] if has_polyomics else []
+    result += [load_frozen(ROOT, *item["files"]) for item in descriptors if item["batch_id"] == "polyomics-md-native-draft-20261028"]
+    result += [jarvis_registry_ledger()] if has_jarvis else []
+    result += [load_frozen(ROOT, *item["files"]) for item in descriptors if item["batch_id"] == "jarvis-density-native-draft-20261028"]
+    result += [sanchez_registry_ledger()] if has_sanchez else []
+    result += [load_frozen(ROOT, *item["files"]) for item in descriptors if item["batch_id"] == "sanchez-al-mea-revised-20261027"]
+    result += [delgado_registry_ledger()] if any(item["batch_id"] == DELGADO_PLA_PCL_BATCH_ID for item in descriptors) else []
     result += [load_frozen(ROOT, *descriptor["files"]) for descriptor in descriptors
                if descriptor["batch_id"] == DELGADO_PLA_PCL_BATCH_ID]
     result += [ewurum_registry_ledger()] if any(item["batch_id"] == EWURUM_REACTIVE_BATCH_ID for item in descriptors) else []
@@ -200,7 +228,7 @@ def file_ledgers(*, before=None):
               if descriptor["batch_id"] == CURAUA_BATCH_ID]
     result += [partition_code_ledger(), checkout_code_ledger()] + ([code_ledger()] if before is None else [])
     for descriptor in descriptors:
-        if descriptor["batch_id"] in {DELGADO_PLA_PCL_BATCH_ID, EWURUM_REACTIVE_BATCH_ID, CURAUA_BATCH_ID}:
+        if descriptor["batch_id"] in {"scc-fresh-flow-nominal-recipes-20261029", "polyomics-md-native-draft-20261028", "jarvis-density-native-draft-20261028", "sanchez-al-mea-revised-20261027", DELGADO_PLA_PCL_BATCH_ID, EWURUM_REACTIVE_BATCH_ID, CURAUA_BATCH_ID}:
             continue
         result.append(load_frozen(ROOT, *descriptor["files"]))
         if descriptor["batch_id"] == BRUNS_BATCH_ID:

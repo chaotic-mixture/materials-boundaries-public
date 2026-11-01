@@ -1,0 +1,55 @@
+{
+  "schema": "sanchez-independent-integration-review/1",
+  "reviewer": "/root/review_sanchez_candidates",
+  "recorded_by": "root transcribed from independent read-only subagent messages",
+  "decision": "approve_scoped_source_and_implementation",
+  "scope": "Five source-reviewed alloys, exact append and recovery implementation, attribution and legacy test input projections; not full-regression or publication approval",
+  "reviewed_inputs_sha256": {
+    "experimental/material-batches/sanchez-al-mea-revised-20261027/candidate.json": "58f418dcfe265b14e296a21be6c28c8531aa91c4c1919889c19d9f91cfc201c4",
+    "experimental/material-batches/sanchez-al-mea-revised-20261027/prepared-packet.json": "715a2e7a534e14cf5fd4cd6cd425b613ffa305f20cf1c0229b61c54ef08529ff",
+    "experimental/material-batches/sanchez-al-mea-revised-20261027/packet-spec.json": "c135cdb8ab6fb81612c870bb55862bd44775a7a721e05ea2224c093467265a92",
+    "README.md": "e9b97c664a54109b657098d0fa0937d69237f840496fad389897c2092e263d5e",
+    "THIRD_PARTY_NOTICES.md": "6d339b447c68ab8f2bc25f2401d70c60eb7b06f2a893d2693a442b3bd9e49c07",
+    "materials_boundaries/material_references.py": "1d881c47c7bd9c0406b37121ec9190fcd7f9263e833038ce0009b216fda5ad76",
+    "tests/sanchez_al_mea_history.py": "0b820d08e6467d91b9f8001ca9e084055dcd5a92f6e63ba39104f00382443a1f",
+    "tests/material_append_successors.py": "4059d3a5277096b873bf011ee044d3f1c0cee9d4480b3a827bfe22c7ee59cf09",
+    "tests/material_bulk_preservation.py": "32e2c40cfff5df4b3a78bebaf358fbef113240d08d67c7c3eb4bf1f8e0ff5db1",
+    "tests/legacy_document_recovery.py": "e2beecbda2cad8fd23ca18ea83e92314c8736b03fb1935b7953dde34aff7304c",
+    "tests/test_evidence_dedup_preservation.py": "605572f9ba8e229c9b5be8e1ed95804d0ee2c5100ece4f2ca3053d8dd773b6bb",
+    "tests/test_legacy_document_recovery.py": "6e56e74c93224ae0a9e75047802663a75a1555a36461ac66b67e61bb6b1d00bd",
+    "tests/test_presentation_fast_path_preservation.py": "9fb0842df0f355589e1470dbc9b144aa885920be0c9d9cb95f6f62e622aecac0",
+    "tests/sanchez_al_mea_runtime/files-history.json": "bec3bd497d04b7ad95432cbe9e71f46e5aa81fbe937057327e05271aa6bb038c",
+    "tests/sanchez_al_mea_runtime/registry-history.json": "b3bb3bf3a923838a72f925e88daf501baf6555f75cd5723a0488dd06a77aa95a",
+    "tests/sanchez_al_mea_runtime/document-history.json": "80e15e83c854c9161e6ec74018f6efd76b00499ae055e9f7b5ed78512aaa7fae",
+    "tests/delgado_pla_pcl_runtime/test_delgado_history.py": "62ba9d9fe92d289231ff235ad37d917e08a692dfcc513deed50a66aad1f45860"
+  },
+  "confirmed": {
+    "old_objects_order_and_metadata_preserved": true,
+    "unchanged_fixture_git_blobs": 122,
+    "exact_recoverable_existing_files": 11,
+    "old_test_method_and_assertion_ast_unchanged": {
+      "test_evidence_dedup_preservation.py": {
+        "methods": 4,
+        "assertion_ast": 14
+      },
+      "test_legacy_document_recovery.py": {
+        "methods": 5,
+        "assertion_ast": 61
+      },
+      "test_presentation_fast_path_preservation.py": {
+        "methods": 6,
+        "assertion_ast": 21
+      }
+    },
+    "unknown_mutations_do_not_inherit_approval": true,
+    "final_dedicated_negative_fixture_restores_exact_predecessor": true,
+    "all_assertions_in_final_negative_fixture_unchanged": true
+  },
+  "outside_approval_scope": [
+    "Full native root regression",
+    "Hosted CI",
+    "Publication",
+    "Scientific replication",
+    "PDF bytes and visual verification"
+  ]
+}

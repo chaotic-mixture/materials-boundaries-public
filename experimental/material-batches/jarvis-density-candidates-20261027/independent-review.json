@@ -1,0 +1,47 @@
+{
+  "schema": "jarvis-candidate-facts-independent-review/1",
+  "reviewer": "/root/review_jarvis_contract",
+  "recorded_by": "root transcribed authorized read-only reviewer final message",
+  "baseline_head": "f13586759af6a391635fa81da20c73eb6a6c1c6c",
+  "decision": "approve_frozen_source_fact_selection_only",
+  "reviewed_sha256": {
+    "source-fact-candidates.json": "70e6664d18250098ac28cb2e7fd7eff745427a30cbdf69cf972c01529976afdb",
+    "select_candidates.py": "d65b1f443511f70d4c11f1c257aff4116cf30b42cc621eb86c76e002ed73d31d",
+    "test_selection.py": "f0569f7625f0930ad3b6b0391f7acf924254e2acc1ef6d867d7275424d4bef1a",
+    "README.md": "ec58dd9689ed35d26f18144127c71a7c4bd981a9b32d2edfe1e21cac90fc52a9"
+  },
+  "independent_checks": {
+    "complete_composition_groups_recomputed": 33830,
+    "metal_reserve": 13934,
+    "inorganic_reserve": 3848,
+    "raw_zip_rows_scanned": 93902,
+    "selected_records_verified": 2000,
+    "source_facts_and_raw_row_hashes_match": true,
+    "selection_replay_byte_identical": true,
+    "duplicate_selected_compositions": 0,
+    "duplicate_selected_jids": 0,
+    "formal_composition_exclusions": 24,
+    "obvious_unhandled_current_formula_conflicts_found": 0
+  },
+  "producer_tests_not_rerun_by_reviewer": {
+    "passed": 6,
+    "failed": 0,
+    "skipped": 0
+  },
+  "unapproved": [
+    "runtime implementation",
+    "final material identity",
+    "final taxonomy",
+    "admission",
+    "publication"
+  ],
+  "boundaries": [
+    "All-metal composition does not prove metallic electronic behavior; Mg2Sn and ZrNiSn need final classification rationale.",
+    "Minimum numeric JID does not establish phase stability, lowest energy or experimental existence.",
+    "Bind final identity to fixed version, JID, raw row hash and full computational model; space group alone is insufficient.",
+    "Standalone exports require author Kamal Choudhary, version DOI, CC BY 4.0 link and modification notice. Software and parent database rights are separate.",
+    "Per-record convergence, stability, temperature, pressure, experimental existence and actual generator version remain unknown."
+  ],
+  "handoff_ready": false,
+  "admitted_increment": 0
+}

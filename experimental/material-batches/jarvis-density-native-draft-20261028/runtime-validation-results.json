@@ -1,0 +1,190 @@
+{
+  "schema": "jarvis-live-runtime-validation/1",
+  "status": "ready_for_frozen_full_root_r3_pending_aggregate",
+  "baseline_head": "f13586759af6a391635fa81da20c73eb6a6c1c6c",
+  "branch": "detached HEAD",
+  "working_integration_present": true,
+  "final_acceptance": false,
+  "admitted_increment": 0,
+  "verified_scoped_checks": {
+    "jarvis_runtime": {
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 47.721,
+      "log_sha256": "7774e71c7b34ff70929edbd55c6d23e6133c6bec1c02d2bf4487fee236f7ecc5"
+    },
+    "sanchez_history": {
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 55.59,
+      "log_sha256": "50d59155f8cf053144e9a04bc5acf7c73d051712cd07d70b3b6c5725d55ef01c"
+    },
+    "reference_family_and_legacy": {
+      "passed": 39,
+      "failed": 0,
+      "skipped": 0,
+      "log_sha256": "866fdc3218f82a853f4d5eb172929a0c6ede0cb6779699f270ec2dc64fa027fd"
+    },
+    "delgado_history": {
+      "passed": 15,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 184.573,
+      "log_sha256": "dc8145c54db14e6912fd9cdecfd1fe86c3664b5cbd119cc312ceb8b7b4aeaa90"
+    },
+    "porous_and_legacy_after_repair": {
+      "passed": 34,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 118.244,
+      "log_sha256": "09abc8198b443b9bdc5f43d8cd93d3f63460fd13efabe9e02505ccd4e4f3e451"
+    }
+  },
+  "independent_wiring_review": "independent-live-wiring-review.json",
+  "installed_wheel": {
+    "success": true,
+    "wheel_sha256": "d567ef4332fe1c76adf5c0981209e853593328e60bcaa057ad58bb8255062ce7",
+    "native_identities_and_properties_checked": 2000,
+    "cli_outputs": 40,
+    "languages": [
+      "en",
+      "zh",
+      "ja",
+      "de"
+    ],
+    "receipt": "wheel-verification.json"
+  },
+  "full_root": {
+    "round": "jarvis-r3",
+    "status": "ready_for_launch_not_completion",
+    "expected_ids": 1887,
+    "expected_partition_ids": [
+      459,
+      492,
+      417,
+      519
+    ],
+    "scope": "Local native Windows Python3.11 only; whole public tree frozen",
+    "session_receipt": "F:\\材料边界\\growth-source-cache\\jarvis-runtime-integration\\sessions-jarvis-r3.json",
+    "freeze_receipt": "F:\\材料边界\\growth-source-cache\\jarvis-runtime-integration\\freeze-jarvis-r3.json",
+    "result_files": [
+      "F:\\材料边界\\growth-source-cache\\jarvis-runtime-integration\\partition-0-jarvis-r3.json",
+      "F:\\材料边界\\growth-source-cache\\jarvis-runtime-integration\\partition-1-jarvis-r3.json",
+      "F:\\材料边界\\growth-source-cache\\jarvis-runtime-integration\\partition-2-jarvis-r3.json",
+      "F:\\材料边界\\growth-source-cache\\jarvis-runtime-integration\\partition-3-jarvis-r3.json"
+    ],
+    "final_passed": null,
+    "final_failed": null,
+    "final_skipped": null
+  },
+  "observed_failures": [
+    {
+      "scope": "first wheel build metadata step",
+      "reason": "WinError5 renaming PKG-INFO under sandbox C Temp",
+      "disposition": "Retained failure log; workspace TEMP/TMP retry built and installed verified wheel successfully",
+      "log_sha256": "c44e8ca70f4f309ad8f002f7986e0cfd1f7b6bc9501a8dc4a1c5cf5485af706e"
+    }
+  ],
+  "not_run": [
+    "Hosted CI for this uncommitted snapshot",
+    "Other OS/Python versions for this snapshot"
+  ],
+  "unknown": [
+    "Current remote main material counts",
+    "Current release/deployment status"
+  ],
+  "working_graph_counts_not_final_acceptance": {
+    "identities": 3180,
+    "grades": 31,
+    "states": 3181,
+    "properties": 3197,
+    "sources": 131,
+    "classes": {
+      "metal": 1037,
+      "inorganic": 1059,
+      "polymer": 37,
+      "composite": 37,
+      "natural": 1010
+    }
+  },
+  "latest_completed_local_acceptance": {
+    "batch": "sanchez-al-mea-revised-20261027",
+    "identities": 1180,
+    "classes": {
+      "metal": 37,
+      "inorganic": 59,
+      "polymer": 37,
+      "composite": 37,
+      "natural": 1010
+    }
+  },
+  "new_commit": null,
+  "push_performed": false,
+  "main_merge_performed": false,
+  "deployment_performed": false,
+  "previous_cancelled_full_root_rounds": [
+    {
+      "round": "jarvis-r1",
+      "status": "cancelled_after_two_observed_failing_subtests_in_one_root_method",
+      "expected_ids": 1887,
+      "completed_aggregate": "not_available",
+      "cancellation_receipt": "F:\\材料边界\\growth-source-cache\\jarvis-runtime-integration\\jarvis-r1-cancellation.json",
+      "cancellation_receipt_sha256": "346313097f3dc7c8a60f5098be434b6529f5acc1fcf75dc20e90db6d3be289d9",
+      "observed_failed_subtests": 2,
+      "reproduced_failing_method_log_sha256": "6c4d9f2e193de06ad7c07d145c1d4cfd2740311e670e2d1e77a8938f2f1e79bd"
+    },
+    {
+      "round": "jarvis-r2",
+      "status": "cancelled_after_actual_decimal_Overflow",
+      "completed_aggregate": null,
+      "completed_partition_0": {
+        "tests_run": 459,
+        "passed": 456,
+        "skipped": 3
+      },
+      "other_partitions": "stopped; incomplete results are not passes",
+      "cancellation_receipt": "F:\\材料边界\\growth-source-cache\\jarvis-runtime-integration\\jarvis-r2-cancellation.json",
+      "cancellation_receipt_sha256": "52556a38ba923197d53ba969c29d0f03c5ba6f0a94762f7cc1616ab60359b9a9",
+      "reproduced_failure_log_sha256": "0a71d88b7b8097a82073152c61a3fdf3538c68cd5f39609275be8ec30b5c0b42"
+    }
+  ],
+  "independent_porous_repair_review": "independent-porous-repair-review.json",
+  "verified_installed_scope_unchanged_after_test_helper_repair": true,
+  "verified_scoped_checks_r3_final": {
+    "nist-and-legacy": {
+      "passed": 43,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 122.373,
+      "log": "F:\\材料边界\\jarvis-nist-and-legacy-r3-final.log",
+      "log_sha256": "a69d253264887f13b768e10488b578b0ecc6236ab0f6e1da7a281d563c3203a2"
+    },
+    "live-history": {
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 45.47,
+      "log": "F:\\材料边界\\jarvis-live-history-r3-final.log",
+      "log_sha256": "4a30b76004279c82734d87f3c7af861f39a65bfcdc3f51633779c7687bf33e3d"
+    },
+    "sanchez-history": {
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 54.175,
+      "log": "F:\\材料边界\\jarvis-sanchez-history-r3-final.log",
+      "log_sha256": "b1535b38ae1fa8c19fe6056ba79d88320e1d5fc04117004cffdaa5ed2f3433de"
+    },
+    "delgado-history": {
+      "passed": 15,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 195.12,
+      "log": "F:\\材料边界\\jarvis-delgado-history-r3-final.log",
+      "log_sha256": "34e195e090134ddfeb37d5fefc3a5c1cf45ab2f74d5f95aab4c925c228231e9a"
+    }
+  },
+  "independent_uuid_repair_review": "independent-uuid-repair-review.json"
+}

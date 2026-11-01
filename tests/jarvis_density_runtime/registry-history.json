@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "updates": {
+    "tests/material_append_successors.py": {
+      "previous_sha256": "4059d3a5277096b873bf011ee044d3f1c0cee9d4480b3a827bfe22c7ee59cf09",
+      "sha256": "c091a7dc933df5c88132ae20dd67afa3857c367edb82cfb528deda1ba6f06ef9",
+      "edits": [
+        {
+          "offset": 6698,
+          "before": "",
+          "after": "    {\"batch_id\": \"jarvis-density-native-draft-20261028\",\n     \"data\": (\"tests/jarvis_density_runtime/data-history.json\", \"8cd7307d48573fc1d7612154793040e191299abc147b58fbf328adaa99bd34fc\"),\n     \"files\": (\"tests/jarvis_density_runtime/files-history.json\", \"4cfbf789975e3340e1d0d7950a07822fb87b59b4da1068d1476b22cad14a6e41\")},\n"
+        },
+        {
+          "offset": 11557,
+          "before": "",
+          "after": "    from jarvis_density_history import registry_ledger as jarvis_registry_ledger\n"
+        },
+        {
+          "offset": 11740,
+          "before": "    result = [sanchez_registry_ledger()] if has_sanchez else []\n",
+          "after": "    has_jarvis = any(item[\"batch_id\"] == \"jarvis-density-native-draft-20261028\" for item in descriptors)\n    result = [jarvis_registry_ledger()] if has_jarvis else []\n    result += [load_frozen(ROOT, *item[\"files\"]) for item in descriptors if item[\"batch_id\"] == \"jarvis-density-native-draft-20261028\"]\n    result += [sanchez_registry_ledger()] if has_sanchez else []\n"
+        },
+        {
+          "offset": 12898,
+          "before": "        if descriptor[\"batch_id\"] in {\"sanchez-al-mea-revised-20261027\", DELGADO_PLA_PCL_BATCH_ID, EWURUM_REACTIVE_BATCH_ID, CURAUA_BATCH_ID}:\n",
+          "after": "        if descriptor[\"batch_id\"] in {\"jarvis-density-native-draft-20261028\", \"sanchez-al-mea-revised-20261027\", DELGADO_PLA_PCL_BATCH_ID, EWURUM_REACTIVE_BATCH_ID, CURAUA_BATCH_ID}:\n"
+        }
+      ]
+    }
+  }
+}

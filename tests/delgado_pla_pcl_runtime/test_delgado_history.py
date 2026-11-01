@@ -21,6 +21,7 @@ sys.path.insert(0, str(ROOT / 'tests'))
 import delgado_pla_pcl_history as history
 import curaua_history as curaua
 import material_append_successors as successors
+import sanchez_al_mea_history as sanchez
 from material_append_history import encoded, graph_hashes, recover_catalogs, recover_file
 
 BATCH = 'experimental/material-batches/delgado-pla-pcl-20261026/'
@@ -36,8 +37,7 @@ def git(*args):
 
 
 def graph():
-    return {name: json.loads((ROOT / relative).read_bytes())
-            for name, relative in history.CATALOG_PATHS.items()}
+    return sanchez.checkpoint_catalogs()
 
 
 def manifest():
@@ -107,14 +107,15 @@ class DelgadoPlaPclAppendPreservationTests(unittest.TestCase):
         descriptor = {'batch_id': successors.DELGADO_PLA_PCL_BATCH_ID,
             'data': (successors.DELGADO_PLA_PCL_DATA_LEDGER, successors.DELGADO_PLA_PCL_DATA_SHA256),
             'files': (successors.DELGADO_PLA_PCL_FILE_LEDGER, successors.DELGADO_PLA_PCL_FILE_SHA256)}
-        self.assertEqual(successors.FROZEN_SUCCESSORS, (descriptor,) + previous.FROZEN_SUCCESSORS)
+        self.assertEqual(sanchez.predecessor_descriptors(successors.FROZEN_SUCCESSORS), (descriptor,) + previous.FROZEN_SUCCESSORS)
         self.assertEqual(len(previous.FROZEN_SUCCESSORS), 16)
-        self.assertEqual(successors.data_ledgers(before=successors.DELGADO_PLA_PCL_BATCH_ID), [])
-        self.assertEqual(successors.data_ledgers()[0], history.data_ledger())
-        self.assertEqual(successors.data_ledgers()[1:], previous.data_ledgers())
+        current_checkpoint = sanchez.checkpoint_registry()
+        self.assertEqual(current_checkpoint.data_ledgers(before=successors.DELGADO_PLA_PCL_BATCH_ID), [])
+        self.assertEqual(current_checkpoint.data_ledgers()[0], history.data_ledger())
+        self.assertEqual(current_checkpoint.data_ledgers()[1:], previous.data_ledgers())
         for ledger in (history.file_ledger(), history.registry_ledger()):
             for relative, entry in ledger['updates'].items():
-                raw = (ROOT / relative).read_bytes()
+                raw = sanchez.checkpoint_bytes(relative, (ROOT / relative).read_bytes())
                 with self.subTest(path=relative):
                     self.assertEqual(sha256(raw).hexdigest(), entry['sha256'])
                     self.assertEqual(recover_file(raw, entry), git('show', history.BASELINE + ':' + relative))
@@ -289,6 +290,8 @@ class DelgadoPlaPclCheckpointGuardTests(unittest.TestCase):
         self.assertEqual(sha256(previous).hexdigest(), ledger['updates']['README.md']['previous_sha256'])
         unknown = normalized + b'unknown prose\n'
         self.assertIs(history.checkpoint_document('README.md', unknown), unknown)
+        # This older negative fixture targets its exact pre-Sanchez README.
+        raw = history.sanchez.checkpoint_bytes('README.md', raw)
         false = raw.replace(b'**1175 material identities**', b'**1176 material identities**')
         self.assertNotEqual(false, raw)
         with self.assertRaises(AssertionError):

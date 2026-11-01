@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "updates": {
+    "tests/material_append_successors.py": {
+      "previous_sha256": "c091a7dc933df5c88132ae20dd67afa3857c367edb82cfb528deda1ba6f06ef9",
+      "sha256": "7bb9d85fcc9ec1340e287ff1c2109e435d62de208c271299367742bdbe6bb364",
+      "edits": [
+        {
+          "offset": 6698,
+          "before": "",
+          "after": "    {\"batch_id\": \"polyomics-md-native-draft-20261028\",\n     \"data\": (\"tests/polyomics_md_runtime/data-history.json\", \"25800896a359d0f610bcae5f9dc26b3509a6f6e07bc78bbbac5b5c7a47f73d5f\"),\n     \"files\": (\"tests/polyomics_md_runtime/files-history.json\", \"bcfbeacec52f52a452bdbd3efba303374462c5232d61d32dfafcfce9943e53ab\")},\n"
+        },
+        {
+          "offset": 12252,
+          "before": "    result = [jarvis_registry_ledger()] if has_jarvis else []\n",
+          "after": "    from polyomics_md_history import registry_ledger as polyomics_registry_ledger\n    has_polyomics = any(item[\"batch_id\"] == \"polyomics-md-native-draft-20261028\" for item in descriptors)\n    result = [polyomics_registry_ledger()] if has_polyomics else []\n    result += [load_frozen(ROOT, *item[\"files\"]) for item in descriptors if item[\"batch_id\"] == \"polyomics-md-native-draft-20261028\"]\n    result += [jarvis_registry_ledger()] if has_jarvis else []\n"
+        },
+        {
+          "offset": 13609,
+          "before": "        if descriptor[\"batch_id\"] in {\"jarvis-density-native-draft-20261028\", \"sanchez-al-mea-revised-20261027\", DELGADO_PLA_PCL_BATCH_ID, EWURUM_REACTIVE_BATCH_ID, CURAUA_BATCH_ID}:\n",
+          "after": "        if descriptor[\"batch_id\"] in {\"polyomics-md-native-draft-20261028\", \"jarvis-density-native-draft-20261028\", \"sanchez-al-mea-revised-20261027\", DELGADO_PLA_PCL_BATCH_ID, EWURUM_REACTIVE_BATCH_ID, CURAUA_BATCH_ID}:\n"
+        }
+      ]
+    }
+  }
+}

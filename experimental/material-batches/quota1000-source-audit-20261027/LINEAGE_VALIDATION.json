@@ -1,0 +1,48 @@
+{
+  "schema": "lineage-and-cod-validation/1",
+  "baseline_commit": "f13586759af6a391635fa81da20c73eb6a6c1c6c",
+  "scope": "Offline source inventory and lineage checks; no source profile registration or runtime admission",
+  "polymer_audit_exact_replay": "passed",
+  "cod_probe_exact_replay": "passed",
+  "focused_tests": {
+    "passed": 18,
+    "failed": 0,
+    "skipped": 0,
+    "output": "test_changed_metadata_and_archive_fail_closed (test_cod_probe.CodProbeTests.test_changed_metadata_and_archive_fail_closed) ... ok\ntest_coefficient_scaled_and_decimal_formulas_group_without_float (test_cod_probe.CodProbeTests.test_coefficient_scaled_and_decimal_formulas_group_without_float) ... ok\ntest_distinct_stoichiometry_not_collapsed (test_cod_probe.CodProbeTests.test_distinct_stoichiometry_not_collapsed) ... ok\ntest_frozen_probe_is_not_identity_or_density_approval (test_cod_probe.CodProbeTests.test_frozen_probe_is_not_identity_or_density_approval) ... ok\ntest_invalid_or_ambiguous_formula_rejected (test_cod_probe.CodProbeTests.test_invalid_or_ambiguous_formula_rejected) ... ok\ntest_changed_source_rejected_before_parse (test_inspect_sources.InventoryTests.test_changed_source_rejected_before_parse) ... ok\ntest_duplicate_identity_does_not_inflate_count_or_admit (test_inspect_sources.InventoryTests.test_duplicate_identity_does_not_inflate_count_or_admit) ... ok\ntest_experimental_and_calculated_columns_preserved_separately (test_inspect_sources.InventoryTests.test_experimental_and_calculated_columns_preserved_separately) ... ok\ntest_malformed_row_rejected (test_inspect_sources.InventoryTests.test_malformed_row_rejected) ... ok\ntest_missing_fields_rejected (test_inspect_sources.InventoryTests.test_missing_fields_rejected) ... ok\ntest_nonfinite_not_accepted_as_positive_numeric_value (test_inspect_sources.InventoryTests.test_nonfinite_not_accepted_as_positive_numeric_value) ... ok\ntest_computational_out_of_range_density_is_flagged (test_polymer_lineage.PolymerLineageTests.test_computational_out_of_range_density_is_flagged) ... ok\ntest_count_and_median_mismatches_are_visible (test_polymer_lineage.PolymerLineageTests.test_count_and_median_mismatches_are_visible) ... ok\ntest_exact_decimal_even_median (test_polymer_lineage.PolymerLineageTests.test_exact_decimal_even_median) ... ok\ntest_frozen_audit_counts_remain_unadmitted (test_polymer_lineage.PolymerLineageTests.test_frozen_audit_counts_remain_unadmitted) ... ok\ntest_grea_hold_does_not_clear_other_sources (test_polymer_lineage.PolymerLineageTests.test_grea_hold_does_not_clear_other_sources) ... ok\ntest_nonfinite_boolean_and_nonpositive_values_rejected (test_polymer_lineage.PolymerLineageTests.test_nonfinite_boolean_and_nonpositive_values_rejected) ... ok\ntest_source_mutation_rejected_before_parsing (test_polymer_lineage.PolymerLineageTests.test_source_mutation_rejected_before_parsing) ... ok\n\n----------------------------------------------------------------------\nRan 18 tests in 0.003s\n\nOK\n"
+  },
+  "tracked_blobs_compared": 1104,
+  "tracked_changed_files": [
+    "HANDOFF.md"
+  ],
+  "runtime_schema_and_workflow_changes": false,
+  "admitted_increment": 0,
+  "checked_local_links": 9,
+  "git_diff_check": "passed",
+  "unrun": [
+    "Independent source/scientific/rights review",
+    "Canonical identity and baseline overlap resolution",
+    "Semantic CIF quantity/unit validation",
+    "Material admission/integration",
+    "Full runtime regression and installed-wheel checks",
+    "Hosted CI",
+    "Publication"
+  ],
+  "files_sha256": {
+    "experimental/material-batches/quota1000-source-audit-20261027/acquisition-status.json": "8694e87e505b897b5b58c662da61359a4c2a390d436be06cb28cb5708d0250ef",
+    "experimental/material-batches/quota1000-source-audit-20261027/audit_cod_probe.py": "24a7222428c34077fd9b6accc5d5fc56b922e571e7cf8a21b91bfc16e13862f6",
+    "experimental/material-batches/quota1000-source-audit-20261027/audit_polymer_lineage.py": "03348ed9524c973b1636133fdba8e36a9b982a8cb7d3da4e28c88c4dfc1923b0",
+    "experimental/material-batches/quota1000-source-audit-20261027/baseline-coverage.json": "45785cf0af78b1b58d78c8e488a2fab2bdf845b5436ba5d254eafa7dfd309161",
+    "experimental/material-batches/quota1000-source-audit-20261027/cod-source-probe.json": "4de3204124e49958549f0a914525e7f273eaf5b16baa734509e0e3177cbbc4f5",
+    "experimental/material-batches/quota1000-source-audit-20261027/inspect_sources.py": "18ab4757cf8114fdff18d76fce3d26587fbed353f99436a3ec6e39410fe94b1a",
+    "experimental/material-batches/quota1000-source-audit-20261027/LINEAGE_AND_COD.zh.md": "27c9d959a895e6654fa7e3625f011eaa67a6823dd5b0abde51c974a99169bca0",
+    "experimental/material-batches/quota1000-source-audit-20261027/mpea-inventory.json": "b0a5b5ae13c702efacf08da0e8f1723f1a3a5a040a8e6a0a1799351b806e59b9",
+    "experimental/material-batches/quota1000-source-audit-20261027/polymer-lineage-audit.json": "cc0e5db9e0ec310776e84df1a16d834f3c659fe6d7c6df095ff8c488519e7b86",
+    "experimental/material-batches/quota1000-source-audit-20261027/polymer-lineage-evidence.json": "8da938ab5c598503ad09742fad1e35fe468d049d6788f6599edea83783d4da84",
+    "experimental/material-batches/quota1000-source-audit-20261027/polymetrix-inventory.json": "fac95a84a399ca7de95239156f998d4c2a3dd60958f9125945a75f78fe6bd8e6",
+    "experimental/material-batches/quota1000-source-audit-20261027/README.md": "a4d3aba2bbb223a260d28c6a76d7474256e6ea6bfa8ca31be1966e4278838246",
+    "experimental/material-batches/quota1000-source-audit-20261027/test_cod_probe.py": "770d0aa360ef47c65be1cae8185f73d68cc1f550bdeb2e58f4719c89f6131e24",
+    "experimental/material-batches/quota1000-source-audit-20261027/test_inspect_sources.py": "111953db721481c6959b4f382db5ad1ae25d066a4fb923ecb6e342134cd88d04",
+    "experimental/material-batches/quota1000-source-audit-20261027/test_polymer_lineage.py": "8a1c511f58ee85d037297145e587d8b5851c3637c9898ce2cee62e78be3cec70",
+    "experimental/material-batches/quota1000-source-audit-20261027/VALIDATION.json": "c94f69e9195b4dff8272b9b3c8c0905c5f0ec632e58d7349b936481666907ee2"
+  }
+}

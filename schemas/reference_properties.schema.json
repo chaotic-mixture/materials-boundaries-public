@@ -1060,6 +1060,7 @@
             "unit_code": {
               "type": "string",
               "enum": [
+                "mm",
                 "g/cm^3",
                 "kg/m^3",
                 "kg/dm^3",
@@ -1104,6 +1105,7 @@
             "unit_code": {
               "type": "string",
               "enum": [
+                "mm",
                 "g/cm^3",
                 "kg/m^3",
                 "kg/dm^3",
@@ -1158,6 +1160,7 @@
             "unit_code": {
               "type": "string",
               "enum": [
+                "mm",
                 "g/cm^3",
                 "kg/m^3",
                 "kg/dm^3",
@@ -1362,6 +1365,7 @@
                 "unit_code": {
                   "type": "string",
                   "enum": [
+                    "mm",
                     "g/cm^3",
                     "kg/m^3",
                     "kg/dm^3",
@@ -1802,6 +1806,7 @@
             "unit_code": {
               "type": "string",
               "enum": [
+                "mm",
                 "g/cm^3",
                 "kg/m^3",
                 "kg/dm^3",
@@ -1868,6 +1873,7 @@
             "unit_code": {
               "type": "string",
               "enum": [
+                "mm",
                 "g/cm^3",
                 "kg/m^3",
                 "kg/dm^3",
@@ -1942,6 +1948,7 @@
             "unit_code": {
               "type": "string",
               "enum": [
+                "mm",
                 "g/cm^3",
                 "kg/m^3",
                 "kg/dm^3",
@@ -2196,12 +2203,14 @@
             "tensile_modulus",
             "flexural_modulus",
             "elastic_modulus_unspecified",
-            "tensile_strength"
+            "tensile_strength",
+            "slump_flow_spread"
           ]
         },
         "quantity_dimension": {
           "type": "string",
           "enum": [
+            "length",
             "mass_per_volume",
             "pressure"
           ]
@@ -2314,6 +2323,7 @@
                 "bulk",
                 "true",
                 "crystallographic",
+                "simulation_cell",
                 "oven_dry_mass_over_fresh_or_water_saturated_volume",
                 "not_stated"
               ]
@@ -2370,7 +2380,9 @@
                 "source_reported_conventional",
                 "source_reported_compilation",
                 "source_reported_crystallographic_derivation",
-                "source_reported_empirical_conversion"
+                "source_reported_empirical_conversion",
+                "source_reported_computational_structure_density",
+                "source_reported_molecular_simulation_density"
               ]
             },
             "definition": {

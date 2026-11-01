@@ -47,7 +47,7 @@ class ReleaseMetadataTests(unittest.TestCase):
         self.assertRegex(section(text, "tool.setuptools.dynamic"),
                          r'(?m)^version\s*=\s*\{attr\s*=\s*"materials_boundaries\._version\.__version__"\}\s*$')
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
-        self.assertIn(f"Current software release: **v{__version__}**", readme)
+        self.assertIn(f"Package version in this local source snapshot: **v{__version__}**", readme)
 
     def test_all_current_engine_labels_match_package(self):
         from materials_boundaries.catalog import read_catalog

@@ -1,28 +1,30 @@
 # 材料边界 · Materials Boundaries
 
-Current software release: **v0.35.0** · **Natural materials and reviewed bulk ingestion** · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
+Package version in this local source snapshot: **v0.35.0** · **Natural materials and reviewed bulk ingestion** · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
 
 A condition-aware, source-traceable materials-mechanics catalog and offline Python toolkit. It separates conditional mathematical bounds, model relations, published observations, computational predictions and synthetic demonstrations. Python 3.10+; no third-party runtime dependencies.
 
 Repository: [chaotic-mixture/materials-boundaries-public](https://github.com/chaotic-mixture/materials-boundaries-public)
 
-## Public-release scope
+## Local catalogue scope
 
 <!-- current-catalog-summary:start -->
-- **41 mechanics claims**, **129 source records**, **16 observations from 5 studies**, **12 published computational predictions in 2 scientific families and 3 explicit groups**, and **5 synthetic temperature demos with 7 branches**
+- **41 mechanics claims**, **133 source records**, **16 observations from 5 studies**, **12 published computational predictions in 2 scientific families and 3 explicit groups**, and **5 synthetic temperature demos with 7 branches**
 - Exactly **8 executable composite calculation rules**: HS/Reuss/Voigt bulk and shear bounds plus conservative derived Young's-modulus and Poisson-ratio envelopes
 - Other mechanics records, including initial-yield criteria and their function comparison, scalar viscoelasticity, bulk elastic waves, hydrostatic compressibility, directional Poisson ratio, anisotropy, fatigue, fracture, stability and porous relations, are catalog-only
-- The 129 sources comprise 128 bibliographic/source records plus 1 original synthetic-demo provenance record; a source record is not a redistribution of its publication or dataset
+- The 133 sources comprise 132 bibliographic/source records plus 1 original synthetic-demo provenance record; a source record is not a redistribution of its publication or dataset
 - All five temperature demos use intentionally invented coefficients and ranges. They do not describe real materials, measured properties or engineering allowables
 <!-- current-catalog-summary:end -->
 
 ## Concrete material references
 
 <!-- material-catalog-summary:start -->
-The separate reference catalogue contains **1175 material identities**, **31 qualified grades**, **1176 source-scoped states** and **1187 reference properties**. Counts describe this registry only; aliases, categories, prior observations and computational model cells are not additional materials.
+The separate reference catalogue contains **5180 material identities**, **31 qualified grades**, **5181 source-scoped states** and **5197 reference properties**. Counts describe this registry only; aliases, categories, prior observations and computational model cells are not additional materials.
 <!-- material-catalog-summary:end -->
 
-The local experimental Delgado PLA/PCL append adds seven source-qualified nominal-ratio polymer blends with seven measured Young's moduli and one source. The local experimental project total is **1199 = 1175 source-qualified identities + 24 reviewed computed records**; the last published experimental baseline remains **1192** pending review and publication, and published main remains **1081**. [Evidence, conditions and count boundaries](docs/MATERIAL_GROWTH_DELGADO_PLA_PCL_20261026.md).
+The working graph includes 2,000 source-qualified hypothetical computational crystal-model identities from JARVIS (1,000 metal-family compositions and 1,000 inorganic compositions), each with one reported optimized-structure density. A completed local JARVIS checkpoint accepted this increment after historical preservation, full regression and installed checks. That decision covers its frozen local experimental snapshot; it does not establish the current remote main, hosted CI, release or deployment state. Finite composition-based classification does not establish metallic electronic behavior, experimental existence or stable phases. [Frozen review and integration evidence](experimental/material-batches/jarvis-density-native-draft-20261028/README.md).
+
+The preceding locally accepted Sanchez aluminium-alloy append added five source-qualified as-cast nominal recipes, five measured densities and five compression Young's moduli with source-reported SD. That preceding local experimental checkpoint had 1204 project records: 1180 source-qualified identities plus 24 reviewed computed records. Integration verification is recorded separately; current main, release and deployment status has not been rechecked. The preceding experimental checkpoint had 1175 material identities and 1199 project records. [Independent source review and integration evidence](experimental/material-batches/sanchez-al-mea-revised-20261027/README.md).
 
 The five primary classes are metal, inorganic, polymer, composite and natural biological tissues/fibers. The exact reviewed v2 batch adds 1,000 distinct historical WFO species identities, each with one selected-accession conversion-derived basic-density property. The 2026-10-19 experimental core snapshot (data commit `5396fd1cc9df72507785a112a21c2990fb4a7c50`) has natural 1,010; metal 22, inorganic 26, polymer 15 and composite 10. Only natural reaches the 1,000-per-class goal in this snapshot. Ten existing biological identities migrate to natural through an exact versioned ledger. Processed biopolymers remain polymer; minerals and rocks remain inorganic. A material counts once by its admitted canonical identity, irrespective of aliases, states or measurements.
 
@@ -457,3 +459,14 @@ The bounded [Tarasov PNA-BPF increment](experimental/material-batches/tarasov-pn
 The bounded [Kapoor phosphate-glass increment](experimental/material-batches/kapoor-phosphate-glasses-20261024/INTEGRATION.md) adds six study-qualified analyzed calcium phosphate/aluminophosphate formulations with one as-prepared density each. ICP-OES oxide compositions are not nominal recipes. The source-wide SD ceiling is not six individual SDs, and repeated measurements do not establish independent specimen counts. Compressed states and calculated properties are excluded.
 
 The bounded [Tian nano-Ti composite increment](experimental/material-batches/tian-nano-ti-composites-20261024/INTEGRATION.md) adds two study-qualified nominal Mg-3Al-1Zn/nano-Ti formulations with one as-extruded measured density each. Nominal reinforcement loadings are not analyzed final compositions. Density conditions and statistics remain unknown; tensile-only conditions, theoretical densities and the unreinforced comparator are excluded.
+
+
+## Local experimental SCC integration scope
+
+This SCC working snapshot contains 5,180 source-qualified identities, including 1,000 PolyOmics models and 1,000 nominal cementitious recipe representatives. Catalogue counts alone do not certify material admission. Applying the SCC increment requires an independently accepted predecessor snapshot containing 4,180 identities; SCC then requires its own complete live regression, independent evidence audit and explicit local acceptance decision. Completed checkpoints are recorded in separate immutable local acceptance evidence. This README does not certify the current remote main, hosted CI, release or deployment state, and it claims no push, merge or deployment.
+
+SCC data: SAFHI, Amine el Mahdi; fixed Zenodo10569517 version1, DOI10.5281/zenodo.10569517; CC BY4.0 data. Slump-flow spread is a source-defined fresh-state length in mm from an explicit literature compilation. It is not compressive strength, slump height, a universal material constant or certified SCC compliance. Exact test standard, temperature, geometry/aggregation, independent n and uncertainty remain unknown.
+
+Both official ingredient images and all selected discrepancies are retained.156 flagged rows are held from selection but remain in the conservative duplicate-risk graph. Risk envelopes are project curation tools, never measurement errors or proof all grouped recipes are equivalent. No CSV value is repaired from workbook values or averaged. Original cited papers were not independently reanalyzed.
+
+PolyOmics molecular-simulation density is not an experimental measurement, engineering allowable or universal bound. Export estimator/window, actual trajectories, engine/generator lineage and errors remain unknown. Finite checks of frozen runtime/history wiring and installed resources are recorded separately. Those checks do not replace complete regression or an explicit local acceptance decision, and this README itself certifies neither gate.

@@ -1,0 +1,110 @@
+--- a/materials_boundaries/material_references.py
++++ b/materials_boundaries/material_references.py
+@@ -255,14 +255,15 @@
+         "evidence_kind": _enum(EVIDENCE_KINDS), "reporting_basis": _enum(REPORTING_BASES),
+         "determination_basis": _enum(("source_reports_measurement", "source_reports_calculation", "source_reports_compiled_measurements", "not_stated", "mixed_or_unclear")),
+         "basis_note": TEXT, "conditions": _object(conditions, ("additional_conditions",)),
+-        "density_basis": {"anyOf": [_enum(("apparent", "bulk", "true", "crystallographic", "oven_dry_mass_over_fresh_or_water_saturated_volume", "not_stated")), NULL]},
++        "density_basis": {"anyOf": [_enum(("apparent", "bulk", "true", "crystallographic", "simulation_cell", "oven_dry_mass_over_fresh_or_water_saturated_volume", "not_stated")), NULL]},
+         "summary_statistic": _enum(("not_stated", "reported_value", "reported_mean")),
+         "uncertainty": {"anyOf": [_ref("uncertainty"), NULL]},
+         "uncertainty_status": _enum((*REPORTED_UNCERTAINTIES, "not_reported_in_inspected_source", "not_applicable")),
+         "uncertainty_note": TEXT, "sample_count": _ref("sample_count"),
+         "method_definition": _object({"type": _enum(("source_reported_conventional", "source_reported_compilation",
+                                                        "source_reported_crystallographic_derivation", "source_reported_empirical_conversion",
+-                                                       "source_reported_computational_structure_density")),
++                                                       "source_reported_computational_structure_density",
++                                                       "source_reported_molecular_simulation_density")),
+                                        "definition": TEXT, "extraction_window": {"anyOf": [_ref("reported_window"), NULL]}, "evidence": evidence}),
+         "source_discrepancies": _array(_object({"description": TEXT, "disposition": TEXT, "evidence": evidence})),
+         "source_id": TEXT, "evidence": evidence, "source_document": _ref("source_document"),
+@@ -740,6 +741,13 @@
+         _fail(path, "crystallographic density requires mass density")
+     if is_computational_crystal and prop["evidence_kind"] != "published_computational_reference":
+         _fail(path, "computed-structure density requires computational evidence")
++    is_molecular_simulation = method == "source_reported_molecular_simulation_density"
++    if (prop["density_basis"] == "simulation_cell") != is_molecular_simulation:
++        _fail(path, "simulation-cell density requires its molecular-simulation method")
++    if is_molecular_simulation and prop["quantity"] != "mass_density":
++        _fail(path, "molecular-simulation density requires mass density")
++    if is_molecular_simulation and prop["evidence_kind"] != "published_computational_reference":
++        _fail(path, "molecular-simulation density requires computational evidence")
+     from ._material_derivation import validate_derivation
+     validate_derivation(prop)
+     if prop["quantity"] == "basic_wood_density" and not is_empirical:
+--- a/schemas/reference_properties.schema.json
++++ b/schemas/reference_properties.schema.json
+@@ -2314,6 +2314,7 @@
+                 "bulk",
+                 "true",
+                 "crystallographic",
++                "simulation_cell",
+                 "oven_dry_mass_over_fresh_or_water_saturated_volume",
+                 "not_stated"
+               ]
+@@ -2371,7 +2372,8 @@
+                 "source_reported_compilation",
+                 "source_reported_crystallographic_derivation",
+                 "source_reported_empirical_conversion",
+-                "source_reported_computational_structure_density"
++                "source_reported_computational_structure_density",
++                "source_reported_molecular_simulation_density"
+               ]
+             },
+             "definition": {
+--- a/materials_boundaries/material_presentation.py
++++ b/materials_boundaries/material_presentation.py
+@@ -7,6 +7,7 @@
+ LANGUAGES = ("en", "zh", "ja", "de")
+ REQUIRED_LABELS = frozenset(('materials', 'reference_properties', 'count', 'empty', 'unknown', 'identity', 'grade', 'category', 'state', 'original_name', 'source_designation', 'source_scope', 'identity_scope', 'authority', 'manufacturer', 'product_form', 'processing', 'temper_or_heat_treatment', 'conditioning', 'composition_or_purity', 'reinforcement', 'porosity', 'orientation', 'property_label', 'quantity', 'evidence_kind', 'reporting_basis', 'determination_basis', 'basis_note', 'reported_value', 'conditions', 'temperature', 'test_standard', 'test_method', 'direction', 'loading_rate', 'density_basis', 'summary_statistic', 'uncertainty', 'uncertainty_status', 'uncertainty_note', 'standard_deviation', 'confidence_interval', 'plus_minus_unspecified', 'confidence_level', 'estimand', 'construction', 'reported_uncertainty_notice', 'sample_count', 'scope', 'method_definition', 'source_document', 'source_discrepancies', 'verification', 'scope_note', 'evaluation_support', 'source', 'source_title', 'source_locator', 'source_url', 'source_read_status', 'source_rights', 'evidence', 'caveat', 'reference_notice', 'statistics_notice', 'unknown_notice', 'range_notice', 'comparison_notice', 'translation_notice', 'cli_catalog_extra', 'cli_material_id', 'cli_identity_id', 'cli_grade_id', 'cli_category', 'cli_evidence_kind', 'cli_reporting_basis', 'cli_source_id', 'cli_quantity', 'cli_filter_notice', 'code_catalog_only', 'code_reported', 'code_not_reported_in_inspected_source', 'code_not_verified', 'code_not_applicable', 'code_manufacturer_reference', 'code_technical_association_reference', 'code_published_experimental_reference', 'code_published_computational_reference', 'code_typical', 'code_nominal', 'code_guideline', 'code_specification_limit', 'code_reported_summary', 'code_not_stated', 'code_source_reports_measurement', 'code_source_reports_calculation', 'code_mixed_or_unclear', 'code_reported_mean', 'code_reported_value', 'code_mass_density', 'code_youngs_modulus', 'code_tensile_modulus', 'code_flexural_modulus', 'code_elastic_modulus_unspecified', 'code_tensile_strength', 'code_metal', 'code_polymer', 'code_inorganic', 'code_composite', 'code_apparent', 'code_bulk', 'code_true', 'code_published_handbook_reference', 'code_published_measurement_derived_reference', 'code_source_reports_compiled_measurements', 'code_crystallographic', 'code_source_reported_compilation', 'code_source_reported_crystallographic_derivation'))
+ REQUIRED_LABELS |= frozenset(('code_source_reported_computational_structure_density',))
++REQUIRED_LABELS |= frozenset(('code_source_reported_molecular_simulation_density', 'code_simulation_cell'))
+ REQUIRED_LABELS |= frozenset(('coverage', 'coverage_notice', 'coverage_target', 'coverage_admitted', 'coverage_remaining'))
+ REQUIRED_LABELS |= frozenset(('code_natural', 'code_basic_wood_density', 'code_source_reported_empirical_conversion', 'code_oven_dry_mass_over_fresh_or_water_saturated_volume', 'derivation', 'canonical_taxon', 'derived_notice'))
+ REQUIRED_LABELS |= frozenset((
+--- a/materials_boundaries/data/material_locales.json
++++ b/materials_boundaries/data/material_locales.json
+@@ -152,7 +152,9 @@
+       "coverage_target": "Target per primary class",
+       "coverage_admitted": "Admitted unique identities",
+       "coverage_remaining": "Remaining",
+-      "code_source_reported_computational_structure_density": "Source-reported computational structure density"
++      "code_source_reported_computational_structure_density": "Source-reported computational structure density",
++      "code_source_reported_molecular_simulation_density": "Source-reported molecular-simulation density",
++      "code_simulation_cell": "Simulation cell"
+     },
+     "zh": {
+       "materials": "材料参考目录",
+@@ -303,7 +305,9 @@
+       "coverage_target": "每个主类的目标",
+       "coverage_admitted": "已收录独立材料",
+       "coverage_remaining": "尚缺",
+-      "code_source_reported_computational_structure_density": "来源报告的计算结构密度"
++      "code_source_reported_computational_structure_density": "来源报告的计算结构密度",
++      "code_source_reported_molecular_simulation_density": "来源报告的分子模拟密度",
++      "code_simulation_cell": "模拟单元"
+     },
+     "ja": {
+       "materials": "材料参照カタログ",
+@@ -454,7 +458,9 @@
+       "coverage_target": "主分類ごとの目標",
+       "coverage_admitted": "収録済み固有材料",
+       "coverage_remaining": "残り",
+-      "code_source_reported_computational_structure_density": "出典に記載された計算構造の密度"
++      "code_source_reported_computational_structure_density": "出典に記載された計算構造の密度",
++      "code_source_reported_molecular_simulation_density": "出典に記載された分子シミュレーション密度",
++      "code_simulation_cell": "シミュレーションセル"
+     },
+     "de": {
+       "materials": "Materialreferenzkatalog",
+@@ -605,7 +611,9 @@
+       "coverage_target": "Ziel je Hauptklasse",
+       "coverage_admitted": "Aufgenommene eindeutige Identitäten",
+       "coverage_remaining": "Noch fehlend",
+-      "code_source_reported_computational_structure_density": "In der Quelle berichtete Dichte einer berechneten Struktur"
++      "code_source_reported_computational_structure_density": "In der Quelle berichtete Dichte einer berechneten Struktur",
++      "code_source_reported_molecular_simulation_density": "In der Quelle berichtete Dichte aus molekularer Simulation",
++      "code_simulation_cell": "Simulationszelle"
+     }
+   }
+ }

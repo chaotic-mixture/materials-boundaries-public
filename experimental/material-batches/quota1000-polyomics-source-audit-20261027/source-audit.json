@@ -1,0 +1,133 @@
+{
+  "schema": "polyomics-source-audit/1",
+  "status": "held_source_audit_only",
+  "revision": "cbab9483395a32dd968fbeb047808031fb0f3a13",
+  "dataset_doi": "10.57967/hf/7475",
+  "source_files": {
+    "PFAS.csv": {
+      "source_rows": 5810,
+      "source_valid_density_rows": 5810,
+      "unique_source_uuid": 5810,
+      "literal_unique_smiles_1": 3818,
+      "literal_unique_smiles_list": 3995,
+      "single_component_two_star_text_rows": 4868,
+      "single_component_two_star_literal_unique_smiles": 3817,
+      "source_condition_literals": {
+        "temp": {
+          "300.0": 5810
+        },
+        "press": {
+          "1.0": 5810
+        },
+        "forcefield": {
+          "GAFF2_mod": 5810
+        },
+        "RadonPy_ver": {
+          "0.1.3": 9,
+          "0.2.10": 3115,
+          "0.2.9": 1279,
+          "0.2.0b2": 106,
+          "0.2.1": 157,
+          "0.2.2": 7,
+          "0.2.0a1": 4,
+          "0.2.0a2": 4,
+          "0.2.8": 57,
+          "0.1.1": 3,
+          "0.2.0b1": 8,
+          "0.2.0b3": 110,
+          "0.2.0_2": 2,
+          "0.2.0a4": 1,
+          "0.1.0": 6,
+          "0.3.0b3": 942
+        },
+        "preset_eq_ver": {
+          "0.1.3": 9,
+          "0.2.9": 81,
+          "0.2.1": 3326,
+          "0.2.8": 491,
+          "0.2.0b2": 260,
+          "0.2.0a1": 4,
+          "0.2.0a2": 4,
+          "0.1.1": 3,
+          "0.2.0b1": 8,
+          "0.2.0b3": 628,
+          "0.2.0": 47,
+          "0.2.0a3": 1,
+          "0.1.0": 6,
+          "0.3.0b3": 942
+        },
+        "check_eq": {
+          "True": 5810
+        },
+        "tacticity": {
+          "": 27,
+          "none": 2991,
+          "atactic": 2768,
+          "isotactic": 23,
+          "syndiotactic": 1
+        }
+      },
+      "rejected_by_reason": {},
+      "canonical_polymer_identity_count": null,
+      "admitted_increment": 0,
+      "source_sha256": "2e80ce549bd6c6e4dfc765d842416278a18422d169859939dd88ec41b61c5529",
+      "source_bytes": 13714504
+    },
+    "biodegradable_candidate_polyester.csv": {
+      "source_rows": 372,
+      "source_valid_density_rows": 372,
+      "unique_source_uuid": 372,
+      "literal_unique_smiles_1": 323,
+      "literal_unique_smiles_list": 364,
+      "single_component_two_star_text_rows": 372,
+      "single_component_two_star_literal_unique_smiles": 323,
+      "source_condition_literals": {
+        "temp": {
+          "300.0": 372
+        },
+        "press": {
+          "1.0": 372
+        },
+        "forcefield": {
+          "GAFF2_mod": 372
+        },
+        "RadonPy_ver": {
+          "0.3.0b3": 372
+        },
+        "preset_eq_ver": {
+          "0.3.0b3": 372
+        },
+        "check_eq": {
+          "True": 372
+        },
+        "tacticity": {
+          "isotactic": 266,
+          "atactic": 88,
+          "syndiotactic": 18
+        }
+      },
+      "rejected_by_reason": {},
+      "canonical_polymer_identity_count": null,
+      "admitted_increment": 0,
+      "source_sha256": "fd94f1d2c15640ad13b99ba1821fc9e75191db38cd2f40cdbeb433609d4eb91d",
+      "source_bytes": 778096
+    }
+  },
+  "cross_file_unique_uuid_count": 6182,
+  "cross_file_repeated_uuid_count": 0,
+  "cross_file_conflicting_selected_fact_uuids": [],
+  "canonical_polymer_identity_count": null,
+  "admitted_increment": 0,
+  "outstanding": [
+    "RDKit parsing and periodic repeat-unit equivalence, including atom maps, end reversal and nonprimitive repeat units",
+    "Finite identity overlap and source-qualified crosswalk against the existing polymer catalog",
+    "Version-specific units, trajectory aggregation and simulation-condition interpretation",
+    "Independent source and identity review, then a frozen candidate and runtime gates"
+  ],
+  "limits": [
+    "UUID is a simulation/source record identity, not automatically a new polymer.",
+    "Two asterisks and one component are lexical screening only, not validated polymer connectivity.",
+    "Tacticity, simulation repeats, states and software versions cannot by themselves inflate identity counts.",
+    "MD values are not experimental facts or certified performance; no experimental validation values were downloaded."
+  ]
+}

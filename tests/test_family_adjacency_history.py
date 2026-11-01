@@ -16,6 +16,7 @@ from material_append_history import load_frozen, recover_file
 from curaua_history import checkpoint_registry, require_checkpoint_bytes
 import ewurum_reactive_history as ewurum
 import delgado_pla_pcl_history as delgado
+import sanchez_al_mea_history as sanchez
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -62,7 +63,7 @@ class FamilyAdjacencyHistoryTests(unittest.TestCase):
         delgado_entry = {'batch_id': successors.DELGADO_PLA_PCL_BATCH_ID,
                          'data': (successors.DELGADO_PLA_PCL_DATA_LEDGER, successors.DELGADO_PLA_PCL_DATA_SHA256),
                          'files': (successors.DELGADO_PLA_PCL_FILE_LEDGER, successors.DELGADO_PLA_PCL_FILE_SHA256)}
-        self.assertEqual(successors.FROZEN_SUCCESSORS, (delgado_entry,) + latest_checkpoint.FROZEN_SUCCESSORS)
+        self.assertEqual(sanchez.predecessor_descriptors(successors.FROZEN_SUCCESSORS), (delgado_entry,) + latest_checkpoint.FROZEN_SUCCESSORS)
         current_checkpoint = ewurum.checkpoint_registry()
         latest = {'batch_id': successors.EWURUM_REACTIVE_BATCH_ID,
                   'data': (successors.EWURUM_REACTIVE_DATA_LEDGER, successors.EWURUM_REACTIVE_DATA_SHA256),

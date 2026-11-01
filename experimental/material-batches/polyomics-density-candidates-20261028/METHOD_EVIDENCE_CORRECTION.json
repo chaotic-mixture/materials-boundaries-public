@@ -1,0 +1,44 @@
+{
+  "schema": "polyomics-method-source-locator-correction/1",
+  "status": "producer_correction_pending_independent_confirmation",
+  "supersedes_locator_fields_only_in": {
+    "method_evidence_path": "../quota1000-polyomics-source-audit-20261027/method-evidence.json",
+    "method_evidence_sha256": "f21dd2138d6538702eeeb8e9fb6c67b1f32f2e65169d4c1d760ac0479af26037",
+    "method_notes_path": "../quota1000-polyomics-source-audit-20261027/MD_METHOD_NOTES.zh.md",
+    "method_notes_sha256": "6f202533676c3fbd4ac8cdbae6453d7ce24861a16fceeb754e43576c61b6fdc5"
+  },
+  "primary_paper": {
+    "url": "https://arxiv.org/pdf/2511.11626v1",
+    "sha256": "0f53f21129b172396901d078948158390805c78fd53195c3df52ff4e9a6b0c8a",
+    "pages": 65,
+    "page_numbering": "Physical PDF pages, 1-based"
+  },
+  "corrections": [
+    {
+      "fact": "General molecular-simulation target of 300 K and 1 atm",
+      "old_incorrect_section_label": "Supplementary Note 1.4, PDF page 54",
+      "correct_locator": "Supplementary section 1.9, physical PDF page 54",
+      "explanation": "Section 1.4 describes conformational search, not this MD target."
+    },
+    {
+      "fact": "Density formula m / time_mean(V), Equation (1)",
+      "old_incorrect_section_label": "Supplementary Note 1.5 Eq.1, PDF page 55",
+      "correct_locator": "Supplementary section 1.10, Equation (1), physical PDF page 55; section heading begins at end of page 54",
+      "explanation": "Section 1.5 describes repeat-unit electronic properties, not the density equation."
+    }
+  ],
+  "unchanged_evidence": [
+    "Density unit g/cm3, Table S3, physical PDF page 25",
+    "General equilibration target in Main Methods, physical PDF page 13",
+    "Paper m/time_mean(V) versus inspected code time_mean(m/V) discrepancy remains unresolved",
+    "The original frozen evidence files remain byte-identical historical artifacts; only the mistaken section labels above are superseded"
+  ],
+  "claims_not_upgraded": [
+    "No per-record trajectory, sampling window or generator-version verification",
+    "No density recalculation or numerical equivalence claim",
+    "No new mean, SD, SEM or independent-specimen count",
+    "No visual PDF page inspection claimed by this producer correction"
+  ],
+  "source_values_changed": false,
+  "admitted_increment": 0
+}
