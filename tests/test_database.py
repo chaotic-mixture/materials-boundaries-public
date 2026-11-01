@@ -22,6 +22,18 @@ def fixture():
 
 
 class DatabaseTests(unittest.TestCase):
+    def test_in_memory_mutation_cannot_reuse_old_snapshot(self):
+        db = Database(fixture())
+        db.data['sources']['records'][0]['license']['identifier'] = 'changed'
+        with self.assertRaisesRegex(ValueError, 'changed after construction'):
+            list(db.records())
+        with tempfile.TemporaryDirectory() as temp:
+            destination = Path(temp)/'export'
+            with self.assertRaises(ValueError): db.export(destination)
+            self.assertFalse(destination.exists())
+        refreshed = Database(db.data)
+        self.assertNotEqual(db.snapshot, refreshed.snapshot)
+
     def test_diff_ignores_snapshot_only_change_but_tracks_source_edits(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp); data = fixture(); Database(data).export(root/'a')

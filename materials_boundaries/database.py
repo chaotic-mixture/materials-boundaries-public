@@ -70,6 +70,7 @@ class Database:
 
     def records(self, *, query='', quantity=None, category=None, source=None):
         """Yield detached records with complete native evidence and unknowns."""
+        self._require_unchanged()
         for identifier in sorted(self.properties):
             prop = self.properties[identifier]
             state = self.states[prop['material_state_id']]
@@ -104,6 +105,7 @@ class Database:
 
     def validate_scientific_contracts(self):
         """Run existing source/condition/value contracts once, not history replay."""
+        self._require_unchanged()
         from .material_references import validate_material_catalog
         validate_material_catalog(self.data['materials'], self.data['reference_properties'],
                                   self.data['sources'])
@@ -111,8 +113,13 @@ class Database:
                 'properties': len(self.properties), 'independent_scientific_review': False,
                 'scope': 'current_material_graph_once_no_history_replay'}
 
+    def _require_unchanged(self):
+        if sha256(canonical(self.data)).hexdigest() != self.snapshot:
+            raise ValueError('Database changed after construction; create a new Database snapshot')
+
     def export(self, destination, **filters):
         """Create a new deterministic JSONL snapshot and integrity manifest."""
+        self._require_unchanged()
         destination = Path(destination)
         destination.mkdir(parents=True, exist_ok=False)
         digest = sha256(); count = 0
