@@ -48,3 +48,24 @@ class IncrementalDatabaseTests(unittest.TestCase):
         db = Database(data)
         with self.assertRaises(ValueError): db.validate_scientific_contracts()
         with self.assertRaises(ValueError): self.session.validate(db)
+
+
+class EvidenceClassCoverageTests(unittest.TestCase):
+    def test_all_current_evidence_classes_match_full_validation(self):
+        original = Database()
+        session = ValidationSession(original)
+        candidate_data = deepcopy(original.data)
+        selected = {}
+        for prop in candidate_data['reference_properties']['records']:
+            if prop['evidence_kind'] not in selected:
+                selected[prop['evidence_kind']] = prop['id']
+                prop['scope_note'] += ' Database curation annotation; scientific value unchanged.'
+        self.assertEqual(set(selected), {'manufacturer_reference', 'published_experimental_reference',
+            'published_measurement_derived_reference', 'published_handbook_reference',
+            'published_computational_reference'})
+        candidate = Database(candidate_data)
+        candidate.validate_scientific_contracts()
+        report = session.validate(candidate)
+        self.assertEqual(report['executed_property_checks'], len(selected))
+        self.assertEqual(report['reused_property_checks'], len(original.properties)-len(selected))
+
