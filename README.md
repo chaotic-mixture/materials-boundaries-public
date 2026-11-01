@@ -1,3 +1,26 @@
+# Materials Boundaries — source-qualified materials database
+
+Find a material property together with its source, conditions and unknowns. Download reproducible JSONL snapshots for analysis; use the existing mechanics tools when their applicability conditions are satisfied.
+
+## Try a real record
+
+```sh
+python -m pip install .
+python -m materials_boundaries.database query --query C11000 --quantity mass_density
+python -m materials_boundaries.database export --query C11000 --quantity mass_density --output copper-snapshot
+python -m materials_boundaries.database verify --snapshot copper-snapshot
+```
+
+The source-qualified Aurubis C11000 copper record reports **8.9 g/cm³**. Temperature, sample count and numerical uncertainty are not reported for this value. It is a manufacturer reference, not an engineering allowable or a universal bound. The output includes the source URL, page/table locator, inspection metadata and reuse information.
+
+Downloads contain `records.jsonl` plus a checksum manifest. The database snapshot identifier is separate from the software version. A local export is not automatically an approved release, and an accessible source is not automatically openly licensed.
+
+[Download format and fields](docs/DATABASE_FORMAT.md) · [Contribute data](docs/DATABASE_CONTRIBUTING.zh.md) · [Database transition progress](docs/OPEN_DATABASE_ROADMAP.zh.md)
+
+## Existing scientific tools and historical project notes
+
+The following documentation retains the existing engine scope and historical milestones. These historical counts and validation decisions are not new database release claims.
+
 # 材料边界 · Materials Boundaries
 
 Package version in this local source snapshot: **v0.35.0** · **Natural materials and reviewed bulk ingestion** · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)

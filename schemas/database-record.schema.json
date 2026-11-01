@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:materials-boundaries:schema:database-record:1",
+  "title": "Database export envelope v1 (native records use their table schemas)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "record_id",
+    "record_version",
+    "database_snapshot",
+    "identity",
+    "state",
+    "grade",
+    "property",
+    "sources",
+    "review",
+    "rights_note"
+  ],
+  "properties": {
+    "record_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "record_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rights_note": {
+      "type": "string",
+      "minLength": 1
+    },
+    "database_snapshot": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "identity": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "state": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "property": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "grade": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "transcription",
+        "independent_scientific_review"
+      ],
+      "properties": {
+        "transcription": {
+          "type": "string"
+        },
+        "independent_scientific_review": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

@@ -1,5 +1,8 @@
-name: tests
-on: [push, pull_request]
+name: full-release-acceptance
+on:
+  workflow_dispatch:
+  push:
+    tags: ['v*']
 permissions:
   contents: read
 jobs:

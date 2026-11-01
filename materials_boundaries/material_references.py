@@ -832,6 +832,15 @@ def validate_material_catalog(materials: dict, properties: dict, sources: dict) 
     the release validator additionally checks historical record/metadata IDs.
     No input is mutated, no source is fetched, and no value is converted.
     """
+    _validate_material_catalog(materials, properties, sources)
+
+
+def _validate_material_catalog(materials, properties, sources, *, property_is_valid=None):
+    """Internal hook for a previously validated, content-bound local baseline.
+
+    All structural, global uniqueness, evidence and source-class checks still run.
+    Only property-local scientific checks may reuse an exact dependency match.
+    """
     indices = _validate_structure(materials, properties)
     _validate_links(materials, properties, indices)
     source_index = _source_index(sources)
@@ -868,9 +877,11 @@ def validate_material_catalog(materials: dict, properties: dict, sources: dict) 
     for prop in properties["records"]:
         if prop["source_id"] not in source_index:
             _fail(prop["id"], "unknown primary source")
-        _validate_property(prop)
         state = indices[2][prop["material_state_id"]]
-        validate_derivation(prop, indices[0][state["identity_id"]], source_index)
+        identity = indices[0][state["identity_id"]]
+        if property_is_valid is None or not property_is_valid(prop, state, identity):
+            _validate_property(prop)
+            validate_derivation(prop, identity, source_index)
         source_class = source_index[prop["source_id"]].get("role", "").casefold()
         if "manufacturer" in source_class and prop["evidence_kind"] != "manufacturer_reference":
             _fail(prop["id"], "manufacturer source cannot become published specimen evidence")
