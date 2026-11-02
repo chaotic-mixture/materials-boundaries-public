@@ -22,6 +22,23 @@ def fixture():
 
 
 class DatabaseTests(unittest.TestCase):
+    def test_correction_keeps_id_and_exports_new_record_revision(self):
+        data = fixture()
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            Database(data).export(root/'before')
+            prop = data['reference_properties']['records'][0]
+            prop['version'] = '1.0.1'
+            prop['conditions']['temperature'] = {'status':'not_reported_in_inspected_source'}
+            Database(data).export(root/'after')
+            diff = compare_snapshots(root/'before', root/'after')
+            self.assertEqual(diff['modified'], ['p'])
+            self.assertEqual(diff['added'], [])
+            self.assertEqual(diff['deleted'], [])
+            record = read_snapshot(root/'after')[1]['p']
+            self.assertEqual(record['record_version'], '1.0.1')
+            self.assertEqual(record['property']['id'], 'p')
+
     def test_summary_counts_identities_separately_and_retains_native_statuses(self):
         data = fixture()
         first = data['reference_properties']['records'][0]

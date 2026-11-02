@@ -83,6 +83,30 @@ def synthetic_mean_catalog():
 
 
 class MaterialReferenceContractTests(unittest.TestCase):
+    def test_record_corrections_accept_patch_revisions_with_stable_ids(self):
+        import jsonschema
+        m, p, s = synthetic_material_catalog()
+        for records in (m['identities'], m['grades'], m['records'], p['records']):
+            records[0]['version'] = '1.0.12'
+        validate_material_catalog(m, p, s)
+        jsonschema.Draft202012Validator(_MATERIALS_SCHEMA).validate(m)
+        jsonschema.Draft202012Validator(_PROPERTIES_SCHEMA).validate(p)
+
+    def test_record_revisions_do_not_accept_malformed_or_new_contract_versions(self):
+        import jsonschema
+        for version in ('1.0.01', '1.0.-1', '1.0.1\n', '1.0.1suffix', '1.1.0', '2.0.0', 1, None):
+            for table, field, schema in ((0, 'identities', _MATERIALS_SCHEMA),
+                                         (0, 'grades', _MATERIALS_SCHEMA),
+                                         (0, 'records', _MATERIALS_SCHEMA),
+                                         (1, 'records', _PROPERTIES_SCHEMA)):
+                with self.subTest(version=version, table=table, field=field):
+                    graph = synthetic_material_catalog()
+                    graph[table][field][0]['version'] = version
+                    with self.assertRaises(ValueError):
+                        validate_material_catalog(*graph)
+                    with self.assertRaises(jsonschema.ValidationError):
+                        jsonschema.Draft202012Validator(schema).validate(graph[table])
+
     def assert_rejected(self, mutate, mean=False):
         graph = synthetic_mean_catalog() if mean else synthetic_material_catalog()
         mutate(*graph)

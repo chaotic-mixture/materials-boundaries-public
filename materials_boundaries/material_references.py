@@ -104,6 +104,11 @@ def _id(prefix):
     return {"type": "string", "pattern": "^" + prefix + r"_[a-z0-9][a-z0-9_]*(?![\s\S])", "maxLength": 160}
 
 
+def _record_revision():
+    """Allow factual corrections within the existing 1.0 record contract."""
+    return {"type": "string", "pattern": r"^1\.0\.(0|[1-9][0-9]*)(?![\s\S])"}
+
+
 def _defs():
     evidence = _object({"source_id": TEXT, "url": HTTPS, "locator": TEXT,
                         "supports": _array(_enum(SUPPORT_TAGS), 1, True)})
@@ -130,7 +135,7 @@ def _bulk_definitions():
 
 def _make_materials_schema():
     definitions = {**_defs(), **_bulk_definitions()}
-    common = {"version": {"const": "1.0.0"}}
+    common = {"version": _record_revision()}
     aliases = _array(_ref("alias"), unique=True)
     evidence = _array(_ref("evidence"), 1)
     definitions["identity"] = _object({
@@ -250,7 +255,7 @@ def _make_properties_schema():
     conditions = {key: _ref("fact") for key in CONDITION_FIELDS}
     conditions["additional_conditions"] = _array(_object({"name": TEXT, "fact": _ref("fact")}))
     definitions["property"] = _object({
-        "id": _id("refprop"), "version": {"const": "1.0.0"}, "material_state_id": _id("state"),
+        "id": _id("refprop"), "version": _record_revision(), "material_state_id": _id("state"),
         "quantity": _enum(QUANTITY_DIMENSIONS),
         "quantity_dimension": _enum(sorted(set(QUANTITY_DIMENSIONS.values()))),
         "source_property_label": TEXT, "reported_value": _ref("reported_value"),

@@ -38,6 +38,13 @@ numeric strings and explicit unknowns rather than silently converting them.
 | `review` | Existing transcription status and independent scientific review flag; export does not promote either |
 | `rights_note` | Reminder that software licensing does not relicense external sources |
 
+Within the unchanged 1.0 native field contract, identity, grade, state and
+property record revisions accept `1.0.N` (nonnegative patch number, no leading
+zeros). Corrections retain IDs and increment the affected record's patch
+revision. Table `schema_version` remains `1.0.0`; a record correction does not
+change the database schema or software version. Incompatible field contracts,
+prerelease labels and malformed versions are not authorized by this allowance.
+
 Native table contracts: [materials](../schemas/materials.schema.json),
 [properties](../schemas/reference_properties.schema.json),
 [sources](../schemas/sources.schema.json). State `property_ids` may refer to

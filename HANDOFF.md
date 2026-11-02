@@ -1,5 +1,24 @@
 # Materials Boundaries development handoff
 
+## Local existing-record follow-up (2026-11-02, reviewed data)
+
+After delivered commit `e89d079fbdf46937a043b34f7cb73a442a814b20`, local work
+rechecks 15 existing density records from NBS and Watanabe. The
+[source/condition guide](docs/MATERIAL_SOURCE_CONDITIONS.zh.md) and
+[field-level candidate](experimental/data-updates/source-conditions-20261102/source-review.json)
+separate 17 scoped absence checks from 14 conditioning fields that remain
+unverified. Numerical facts and material identities are unchanged. The candidate
+data fingerprint is `84c1dbb84bce4f79172521a831126bc37ae9c079bb12cc8deae6ff11c7a86ba5`.
+Compatible `1.0.N` record revisions now permit an explicit correction without
+changing IDs or the table schema version. The
+[independent review](experimental/data-updates/source-conditions-20261102/INDEPENDENT_REVIEW.json)
+approved this exact finite amendment at 2026-11-02 03:40:41 UTC, after rehashing
+52 evidence files and reviewing the source scope, implementation and actual
+checks. Frozen candidate inputs retain their preparation-time pending status.
+Consolidated experimental delivery and its exact hosted CI are separate evidence;
+the predecessor's green CI does not certify this successor. No main merge,
+stable release or deployment is included.
+
 ## Database development continuation (2026-11-02)
 
 Continue from `experimental/open-database`, baseline commit
