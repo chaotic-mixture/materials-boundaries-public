@@ -1,0 +1,128 @@
+{
+  "schema": "polymer-pa12-ageing-method-readback/1",
+  "stage": "curator_source_audit_not_native_candidate",
+  "checked_at_utc": "2026-11-02T20:12:49.920682+00:00",
+  "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+  "doi": "10.3390/ma18194478",
+  "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+  "xml_bytes": 229979,
+  "xml_sha256": "4d930d221c67d38199460f1f80b86a2a724a0b2986a77e09081172d5a83c42d7",
+  "matches_existing_source_xml_fingerprint": true,
+  "inspection_scope": [
+    "Sections2.1,2.2,2.3,2.4",
+    "Tables5,6,7,8",
+    "Article-specific permissions"
+  ],
+  "source_license": {
+    "identifier": "CC-BY-4.0",
+    "locator": "article/front/article-meta/permissions/license",
+    "source_assets_external_only": true
+  },
+  "printed_groups": {
+    "SLS": {
+      "material": "EOS PA2200",
+      "machine": "EOS P396"
+    },
+    "HP MJF": {
+      "material": "HP 3D High Reusability PA12",
+      "machine": "HP5200"
+    },
+    "nominal_specimen_dimensions_mm": [
+      "160",
+      "20",
+      "4"
+    ],
+    "build_orientation": "HorizontalXY; longest sideX as source describes",
+    "specimens_per_tensile_technology_treatment_age_group_reported": 6,
+    "source_n_locator": "sec2dot2-materials-18-04478;Table5",
+    "n_limitation": "Table5 route total18 spans reference and two aged groups; not n18 per condition or proof of independent print batches."
+  },
+  "ageing_protocol": {
+    "locator": "sec2dot3-materials-18-04478",
+    "apparatus": "Q-Lab Q-SUN Xenon TestXe-3",
+    "air_temperature_C": "38",
+    "black_standard_temperature_C": "55",
+    "black_standard_source_symbol": "IBP",
+    "cycle_description": "Mixed dry irradiation and irradiation with50%RH",
+    "humid_phase_relative_humidity_percent": "50",
+    "uv_irradiance_W_m2": "60",
+    "uv_spectral_range_nm": [
+      "300",
+      "400"
+    ],
+    "source_standard_literal": "ISO4892",
+    "unknowns": [
+      "ExactISO4892part/edition and independently verified conformity",
+      "Dry-phaseRH and individual phase durations",
+      "Actual specimen temperature and achieved chamber uniformity",
+      "Cumulative spectral dose and independent lamp calibration"
+    ]
+  },
+  "ageing_labels": [
+    {
+      "label": "Reference",
+      "meaning": "Before accelerated chamber ageing, after selected post-processing; not unprocessed virgin powder or moisture-conditioned reference",
+      "chamber_time_hours": null
+    },
+    {
+      "label": "1S—6 months",
+      "reported_chamber_time_hours": "375",
+      "interpretation": "Author-proposed approximate natural-age equivalence,not observed6months outdoor service"
+    },
+    {
+      "label": "2S—12 months",
+      "reported_chamber_time_hours": "750",
+      "interpretation": "Author-proposed approximate natural-age equivalence,not observed12months outdoor service"
+    }
+  ],
+  "equivalence_calculator": {
+    "source_inputs": {
+      "accelerated_environment_temperature_C": "55",
+      "ambient_reference_temperature_C": "23",
+      "ageing_factor": "2.15"
+    },
+    "policy": "Retain authors calculation inputs without validating kinetics or translating to field lifetime.23C is not a reported tensile-test temperature;55C is not substituted for38C air temperature."
+  },
+  "tensile_testing": {
+    "locator": "sec2dot3-materials-18-04478",
+    "machine": "Instron5969",
+    "maximum_load_capacity_kN": "50",
+    "source_standard": "ENISO527-1",
+    "test_speed_mm_min": "1",
+    "source_test_section_length_mm": "115",
+    "length_interpretation": "Source test-section length,not a verified extensometer gauge length",
+    "temperature": "not_reported_in_inspected_source",
+    "relative_humidity": "not_reported_in_inspected_source",
+    "moisture_equilibration": "not_reported_in_inspected_source",
+    "unknowns": [
+      "Exact strength extraction/stress convention",
+      "Strain-measurement implementation",
+      "Specimen recovery or storage interval after chamber ageing",
+      "Standard edition and independent compliance"
+    ]
+  },
+  "source_label_discrepancies": [
+    {
+      "locator": "Table5 first route versus Table6 caption and rows",
+      "facts": "Table5 lists PowershotC;Table6 caption says C+S,itsSLSrow says C+S,but HP MJF row says C.",
+      "policy": "Do not silently assign a single harmonized treatment sequence."
+    },
+    {
+      "locator": "Tables5/7/8 versus section2.4",
+      "facts": "Tables list C+DM60+S;statistical-methods paragraph lists C+S+DM60.",
+      "policy": "Retain source labels; exact operation order and run parameters remain unverified."
+    }
+  ],
+  "scope_boundary": "No finished-device biocompatibility,clinical durability,certification or engineering allowable claim. ManufacturerTables1-4are not admitted as new original measurements.",
+  "native_value_crosscheck": {
+    "record_id": "refprop_zakrecki2025_pa2200_sls_reference_tensile_strength",
+    "strength_mean_MPa": "43.72",
+    "strength_sd_MPa": "1.03",
+    "source_cv_percent": "2.36",
+    "reported_n": 6,
+    "native_change_needed_for_selected_value": false
+  },
+  "current_native_snapshot": "aa8308dbec8817ee6551078ed91bedb2a9fb05c7924fd76a9131cc680617a95f",
+  "new_native_admission": 0,
+  "PDF_visual_inspection_this_round": false
+}

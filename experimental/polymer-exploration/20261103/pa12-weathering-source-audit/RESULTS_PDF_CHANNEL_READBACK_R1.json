@@ -1,0 +1,229 @@
+{
+  "schema": "polymer-results-pdf-channel-readback/1",
+  "stage": "curator_visual_and_numeric_crosscheck_pending_independent_review",
+  "checked_at_utc": "2026-11-02T19:48:53.920795+00:00",
+  "results_pdf_sha256": "7a79a905bd7dd5e5fd82add586d09197282e465f40692a31353c526ef09fcefd",
+  "external_diagnostic_sha256": "b1da4b85e56dffd5407a216c4e55fcf9983fa2bd609c6784a33696430ea70559",
+  "diagnostic_script_sha256": "118282f99eb1648db9da626c0c840457ee5441447aa0573704fe097292ea324b",
+  "summary": {
+    "groups": 40,
+    "individual_comparisons": 240,
+    "individual_outside_pdf_rounding": 4,
+    "aggregate_comparisons": 160,
+    "aggregate_outside_pdf_rounding": 4,
+    "results_pdf_to_article_rounding_mismatches": 3
+  },
+  "scope": "All40 source groups,120 source-specified specimen files, strength and modulus only;400 comparisons, not400 unit tests or80 admitted properties.",
+  "visual_evidence": {
+    "results-visual-006.png": "7c5204aae51280c88da34f0dd69c2df65a81c5cce533d16ff2260ff1d8d38993",
+    "results-visual-008.png": "7b0107a4d9b2c67b4334542ae25cf63607493fd67f550695a4b7516f51de8be5",
+    "results-visual-010.png": "babeeb1ce2a015f3343cf0a2d518db9629933dc5a80f98880d4131060d6e3405",
+    "results-visual-012.png": "511bb8f67b73a0bb528b30fe9af5868c371455fc6a85f20eb24f98431db20ff6",
+    "results-visual-014.png": "396f63dbc3606ada02bbd8464413e1235e640b0c30599f002931b1c35e99c2f6",
+    "results-visual-016.png": "eae4cf4e43fa6dba9558d5e96469b5ef709d0d61758197a9f8a3ee24cf2178c9",
+    "results-visual-018.png": "a3f2c4976d6aa91b4b10e15fd1bb043f14f4533e4ea8f39dc30d95bdeae70845",
+    "results-visual-020.png": "60b40294708b2898e548b4be9627f03fa24b8316c7d7461e357c2b8d79252e97",
+    "results-visual-022.png": "33749aad5d3b2302ba18888850233d7b91e8752e1a844df249a598f3741701b3",
+    "results-visual-024.png": "17c95b9699097e8de98c04d13b8c74a5ebd674a264b91a415b408a9cba3b6e17",
+    "results-visual-026.png": "c9d9594cc102b2ab88a20b58ee85f40a2a573cc2524905ce8b31f9a8d1884877"
+  },
+  "earlier_visual_pages": [
+    2,
+    4
+  ],
+  "individual_csv_to_results_pdf_discrepancies": [
+    {
+      "sample": "PA2200 X",
+      "phase": "non_weathered",
+      "page": 2,
+      "source_variable": "data1",
+      "csv_file": "CSVs/SLS_XY_BLACK/01_SLS_XY_black_Corrected.txt",
+      "channel": "peak_stress_mpa",
+      "comparison": {
+        "source_literal": "45,889",
+        "diagnostic": "45.8880",
+        "difference": "-0.0010",
+        "half_last_place": "0.0005",
+        "within_rounding_interval": false
+      }
+    },
+    {
+      "sample": "PA12 X",
+      "phase": "non_weathered",
+      "page": 6,
+      "source_variable": "data26",
+      "csv_file": "CSVs/MJF_XY_BLACK/02_MJF_XY_black.txt",
+      "channel": "modulus_mpa",
+      "comparison": {
+        "source_literal": "1349,538",
+        "diagnostic": "1349.583333333333333333333333333333333333",
+        "difference": "0.04533333333333333333333333333",
+        "half_last_place": "0.0005",
+        "within_rounding_interval": false
+      }
+    },
+    {
+      "sample": "PA3200GF X",
+      "phase": "non_weathered",
+      "page": 12,
+      "source_variable": "data62",
+      "csv_file": "CSVs/PA3200GF_XY/02_PA3200GF_XY.txt",
+      "channel": "modulus_mpa",
+      "comparison": {
+        "source_literal": "3376,934",
+        "diagnostic": "3375.933609958506224066390041493775933610",
+        "difference": "-1.000390041493775933609958506",
+        "half_last_place": "0.0005",
+        "within_rounding_interval": false
+      }
+    },
+    {
+      "sample": "PMMA",
+      "phase": "non_weathered",
+      "page": 16,
+      "source_variable": "data79",
+      "csv_file": "CSVs/PMMAP_PCUV_NUM2/01_PMMA_PCUV_NUM2.txt",
+      "channel": "peak_stress_mpa",
+      "comparison": {
+        "source_literal": "71,355",
+        "diagnostic": "71.335",
+        "difference": "-0.020",
+        "half_last_place": "0.0005",
+        "within_rounding_interval": false
+      }
+    }
+  ],
+  "aggregate_csv_to_results_pdf_discrepancies": [
+    {
+      "sample": "PA2200 X",
+      "phase": "non_weathered",
+      "page": 2,
+      "channel": "tensile_strength_mpa",
+      "statistic": "reported_mean",
+      "comparison": {
+        "source_literal": "46,612",
+        "diagnostic": "46.61566666666666666666666666666666666667",
+        "difference": "0.003666666666666666666666666667",
+        "half_last_place": "0.0005",
+        "within_rounding_interval": false,
+        "pdf_text_line": 6,
+        "article_literal": "46.62",
+        "results_pdf_rounds_to_article": false
+      }
+    },
+    {
+      "sample": "PA12 Z",
+      "phase": "non_weathered",
+      "page": 6,
+      "channel": "tensile_strength_mpa",
+      "statistic": "reported_mean",
+      "comparison": {
+        "source_literal": "46,564",
+        "diagnostic": "46.15566666666666666666666666666666666667",
+        "difference": "-0.4083333333333333333333333333",
+        "half_last_place": "0.0005",
+        "within_rounding_interval": false,
+        "pdf_text_line": 28,
+        "article_literal": "46.16",
+        "results_pdf_rounds_to_article": false
+      }
+    },
+    {
+      "sample": "PC UV",
+      "phase": "weathered",
+      "page": 14,
+      "channel": "tensile_strength_mpa",
+      "statistic": "reported_sample_sd",
+      "comparison": {
+        "source_literal": "0,344",
+        "diagnostic": "0.3339765460827052348258209387340318632601",
+        "difference": "-0.01002345391729476517417906127",
+        "half_last_place": "0.0005",
+        "within_rounding_interval": false,
+        "pdf_text_line": 17,
+        "article_literal": "0.33",
+        "results_pdf_rounds_to_article": false
+      }
+    },
+    {
+      "sample": "PA12G",
+      "phase": "weathered",
+      "page": 24,
+      "channel": "tensile_strength_mpa",
+      "statistic": "reported_mean",
+      "comparison": {
+        "source_literal": "36,037",
+        "diagnostic": "36.03866666666666666666666666666666666667",
+        "difference": "0.001666666666666666666666666667",
+        "half_last_place": "0.0005",
+        "within_rounding_interval": false,
+        "pdf_text_line": 17,
+        "article_literal": "36.04",
+        "results_pdf_rounds_to_article": true
+      }
+    }
+  ],
+  "results_pdf_to_article_discrepancies": [
+    {
+      "sample": "PA2200 X",
+      "phase": "non_weathered",
+      "page": 2,
+      "channel": "tensile_strength_mpa",
+      "statistic": "reported_mean",
+      "comparison": {
+        "source_literal": "46,612",
+        "diagnostic": "46.61566666666666666666666666666666666667",
+        "difference": "0.003666666666666666666666666667",
+        "half_last_place": "0.0005",
+        "within_rounding_interval": false,
+        "pdf_text_line": 6,
+        "article_literal": "46.62",
+        "results_pdf_rounds_to_article": false
+      }
+    },
+    {
+      "sample": "PA12 Z",
+      "phase": "non_weathered",
+      "page": 6,
+      "channel": "tensile_strength_mpa",
+      "statistic": "reported_mean",
+      "comparison": {
+        "source_literal": "46,564",
+        "diagnostic": "46.15566666666666666666666666666666666667",
+        "difference": "-0.4083333333333333333333333333",
+        "half_last_place": "0.0005",
+        "within_rounding_interval": false,
+        "pdf_text_line": 28,
+        "article_literal": "46.16",
+        "results_pdf_rounds_to_article": false
+      }
+    },
+    {
+      "sample": "PC UV",
+      "phase": "weathered",
+      "page": 14,
+      "channel": "tensile_strength_mpa",
+      "statistic": "reported_sample_sd",
+      "comparison": {
+        "source_literal": "0,344",
+        "diagnostic": "0.3339765460827052348258209387340318632601",
+        "difference": "-0.01002345391729476517417906127",
+        "half_last_place": "0.0005",
+        "within_rounding_interval": false,
+        "pdf_text_line": 17,
+        "article_literal": "0.33",
+        "results_pdf_rounds_to_article": false
+      }
+    }
+  ],
+  "interpretation": [
+    "Numerical correspondence does not establish which source statement is scientifically correct.",
+    "Do not silently repair purported typographical errors, substitute computed values or count a revised/archive file as another specimen.",
+    "The previously recorded seven two-step-rounding-compatible comparisons remain separate from these source contradictions.",
+    "A visually matching source value verifies extraction; it does not verify the experimental measurement."
+  ],
+  "usage_boundary": "Retain article, results PDF and independent CSV diagnostics as distinct evidence channels. No engineering allowable, lifetime conversion or standard compliance claim.",
+  "native_snapshot_unchanged": "aa8308dbec8817ee6551078ed91bedb2a9fb05c7924fd76a9131cc680617a95f",
+  "PA12_native_increment": 0,
+  "source_plotting_code_executed": false
+}

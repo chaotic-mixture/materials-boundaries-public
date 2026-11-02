@@ -1,0 +1,78 @@
+{
+  "schema": "polymer-modulus-method-static-readback/1",
+  "source_code_sha256": "0ac624ef38dd109c94da3acafa411425252b6826aaae700149081f0d7f6fee0c",
+  "source_code_executed": false,
+  "method_observed_in_source": {
+    "function": "tensile_mod",
+    "lines": [
+      373,
+      391
+    ],
+    "strain_channel": "Extensometer (mm/mm)",
+    "upper_selection": "global nearest observation to0.0025; first minimum on tie",
+    "lower_selection": "zero-based observation6; no fixed lower strain prescribed",
+    "formula": "stress difference divided by measured strain difference",
+    "standard_compliance": "not established by a code comment"
+  },
+  "distinct_plotting_method": {
+    "function": "polynomial_fit",
+    "lines": [
+      465,
+      472
+    ],
+    "x_channel": "Crosshead (mm)",
+    "purpose": "combined-curve polynomial for plotting, not the tensile_mod calculation"
+  },
+  "statistics_observed_in_source": {
+    "lines": [
+      394,
+      427
+    ],
+    "mean": "arithmetic mean of three supplied sample values",
+    "stdev": "statistics.stdev across those values; not proof that every reported table used identical inputs"
+  },
+  "diagnostic_policy": "Independent Decimal arithmetic on three selected CSVs only; neither execution of source code nor new experimental property admission.",
+  "selected_group_diagnostics": [
+    {
+      "file": "CSVs/SLS_XY_BLACK/01_SLS_XY_black_Corrected.txt",
+      "lower_observation_index_zero_based": 6,
+      "upper_observation_index_zero_based": 175,
+      "lower_strain": "0.0001",
+      "upper_strain": "0.0025",
+      "lower_stress_mpa": "0.6321",
+      "upper_stress_mpa": "4.9807",
+      "independent_diagnostic_secant_mpa": "1811.916666666666666666666667",
+      "pdf_reported_modulus_mpa": "1811.917",
+      "difference_mpa": "-0.000333333333333333333333",
+      "matches_rounding_to_pdf_3_decimal_places": true
+    },
+    {
+      "file": "CSVs/SLS_XY_BLACK/02_SLS_XY_black.txt",
+      "lower_observation_index_zero_based": 6,
+      "upper_observation_index_zero_based": 69,
+      "lower_strain": "0.00024",
+      "upper_strain": "0.00250",
+      "lower_stress_mpa": "0.843",
+      "upper_stress_mpa": "5.077",
+      "independent_diagnostic_secant_mpa": "1873.451327433628318584070796",
+      "pdf_reported_modulus_mpa": "1873.451",
+      "difference_mpa": "0.000327433628318584070796",
+      "matches_rounding_to_pdf_3_decimal_places": true
+    },
+    {
+      "file": "CSVs/SLS_XY_BLACK/03_SLS_XY_black.txt",
+      "lower_observation_index_zero_based": 6,
+      "upper_observation_index_zero_based": 70,
+      "lower_strain": "0.00021",
+      "upper_strain": "0.00251",
+      "lower_stress_mpa": "0.671",
+      "upper_stress_mpa": "4.977",
+      "independent_diagnostic_secant_mpa": "1872.173913043478260869565217",
+      "pdf_reported_modulus_mpa": "1872.174",
+      "difference_mpa": "-0.000086956521739130434783",
+      "matches_rounding_to_pdf_3_decimal_places": true
+    }
+  ],
+  "native_tables_modified": false,
+  "independent_scientific_review": false
+}

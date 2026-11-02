@@ -1,5 +1,17 @@
 # Materials Boundaries development handoff
 
+## Polymer experimental delivery (2026-11-03)
+
+The [consolidated delivery entry](experimental/polymer-exploration/20261103/DELIVERY.md)
+separates the reviewed Sylgard addition (four states and four moduli, zero new
+identities) from the PA12 source audits and the unreviewed filament/ageing
+candidates. The actual native fingerprint is
+`aa8308dbec8817ee6551078ed91bedb2a9fb05c7924fd76a9131cc680617a95f`.
+Source values, unresolved discrepancies and frozen failed checks remain visible.
+An isolated Windows wheel installation matches this native fingerprint.
+Exact commit delivery and hosted CI must be checked separately; no main merge,
+stable release or deployment is authorized by these local results.
+
 ## Local existing-record follow-up (2026-11-02, reviewed data)
 
 After delivered commit `e89d079fbdf46937a043b34f7cb73a442a814b20`, local work

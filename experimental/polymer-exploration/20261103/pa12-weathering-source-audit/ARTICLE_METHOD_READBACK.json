@@ -1,0 +1,100 @@
+{
+  "schema": "polymer-article-method-readback/1",
+  "stage": "curator_text_and_visual_readback_pending_independent_review",
+  "checked_at_utc": "2026-11-02T19:34:44.824629+00:00",
+  "doi": "10.1016/j.polymertesting.2021.107376",
+  "pdf_sha256": "7e82fd9c9dd77e36f516b56b1f5c374f0658c75d18da9cd09fbba4cdfea649fb",
+  "pdf_bytes": 18181466,
+  "pdf_pages": 15,
+  "retained_acquisition": "article-acquisition-r4.json",
+  "earlier_failed_attempts_preserved": [
+    "article-acquisition-r1.json",
+    "article-acquisition-r2.json",
+    "article-acquisition-r3.json"
+  ],
+  "visual_pdf_pages": [
+    4,
+    5,
+    6
+  ],
+  "printed_pages": [
+    3,
+    4,
+    5
+  ],
+  "article_license": {
+    "identifier": "CC-BY-4.0",
+    "locator": "PDF page2, first article page footer; repository cover states CC BY",
+    "scope": "Article authored content; not blanket certification of third-party assets"
+  },
+  "sample_preparation": {
+    "locator": "PDF page4, printed p3, section2.1 and Table1; page5 Fig1",
+    "specimen_description": "Source reports ISO-527 A1 geometry with ends extended to total190mm, thickness4mm; not unmodified standard geometry certification.",
+    "per_group_n_reported": 3,
+    "reference_storage": "Dark cabinet at room temperature; duration, measured temperature and RH unknown",
+    "sls_machine": "EOS P396 for described SLS preparation; Table1 explicitly lists PA3200GF machine Unknown; retain specific exception",
+    "sls_parameters": "Machine-provider recommendations; actual settings unknown",
+    "mjf_machine": "HP Jet Fusion4200, Balanced parameter set",
+    "finishing": "AM parts de-powdered and dyed black; Table1 exceptions retained per row",
+    "coating_1": "Commercial clear spray varnish; alkyd-based; product, thickness, application and cure unknown",
+    "coating_2": "Hydrophobic thin-film coating; exact chemistry, product, thickness, application and cure unknown"
+  },
+  "weathering": {
+    "locator": "PDF page4, printed p3, section2.2",
+    "source_standard_literal": "ISO-4982-3",
+    "source_method": "A",
+    "source_cycle_number": "1",
+    "standard_compliance": "Source claim retained literally; designation and edition not independently certified or silently corrected",
+    "apparatus": "QUV accelerated weathering tester, Q-Lab",
+    "lamps": "UVA-340 fluorescent",
+    "irradiance_literal": "0.76 W/m2/340 nm",
+    "irradiance_interpretation": "Original notation retained; no integrated UV dose or independent calibration claim",
+    "cycle_hours": "12",
+    "uv_phase": {
+      "hours": "8",
+      "temperature_C": "60"
+    },
+    "condensation_phase": {
+      "hours": "4",
+      "temperature_C": "50",
+      "uv_exposure": false
+    },
+    "cycles_reported": 125,
+    "total_elapsed_hours": "1500",
+    "midtest_rotation": {
+      "at_elapsed_hours": "750",
+      "degrees": "180"
+    },
+    "held_unknown": [
+      "Temperature sensor/control definition",
+      "Humidity setpoint or measured relative humidity",
+      "Accumulated spectral UV dose",
+      "Outdoor service-life conversion"
+    ]
+  },
+  "tensile_testing": {
+    "locator": "PDF pages4-5, printed pp3-4, section2.3",
+    "source_standard_literal": "ISO-527",
+    "edition_unknown": true,
+    "instrument": "MTS Insight,30kN",
+    "software": "TestWorks",
+    "temperature_description": "Room temperature; exact temperature and relative humidity not reported",
+    "axial_extensometer_gauge_mm": "25",
+    "extensometer_use": "Local strain up to0.3% extension; test paused to remove extensometer, then continued to failure",
+    "dimension_measurement": "Thickness and width each averaged from three manual caliper measurements; these are not three tensile replicates",
+    "logging_Hz": "20",
+    "speed_description": "Generally2mm/min; no automatic assertion of exact speed for every individual file",
+    "operator": "Same operator reported",
+    "source_statistics": "Means and sample SD of three samples, Table2; source Python statistics package",
+    "plotting": "Polynomial fit visualizes combined stress/crosshead data; not modulus fit"
+  },
+  "remaining_discrepancies": [
+    "Article X vs dataset table/filename XY retained as separate literal labels pending explicit crosswalk",
+    "First PA2200 corrected specimen/footnote and peak-stress channel remain unresolved",
+    "Table1 carbon reinforced PA description and matrix chemistry require source clarification; no guessed composition",
+    "Table2 coated-row relative changes compare against highlighted uncoated references, not automatically matched before/after coated states"
+  ],
+  "prior_artifacts": "ACQUISITION_READBACK.json describes its earlier stage; new evidence supersedes only previously unknown facts explicitly listed here",
+  "native_increment": 0,
+  "independent_scientific_review": false
+}

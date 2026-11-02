@@ -1404099,6 +1404099,1406 @@
         "independent_scientific_review": false,
         "raw_data_reanalysis": false
       }
+    },
+    {
+      "id": "refprop_dow_corning_sylgard184_johnston2014_125c_youngs_modulus",
+      "version": "1.0.0",
+      "material_state_id": "state_dow_corning_sylgard184_johnston2014_125c",
+      "quantity": "youngs_modulus",
+      "quantity_dimension": "pressure",
+      "source_property_label": "Young’s modulus (MPa)",
+      "reported_value": {
+        "kind": "scalar",
+        "value_text": "2.46",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "number": "2.46"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Source §4.1 says data from six tensile test samples at each curing temperature were averaged. It does not state whether specimen-wise fitted moduli were averaged or a modulus was fitted to an averaged curve; retain reported_value and do not assert a specific modulus-mean estimand.",
+      "conditions": {
+        "temperature": {
+          "status": "reported",
+          "text": "21 °C average tensile-test ambient temperature",
+          "evidence": [
+            {
+              "source_id": "johnston_2014_bulk_sylgard184",
+              "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+              "locator": "PDF pp.3–4, §3.1 tensile testing and geometry correction; p.4 §§4–4.1 and p.5 Table 2",
+              "supports": [
+                "method",
+                "condition",
+                "classification"
+              ]
+            }
+          ],
+          "notes": "This is an average during consecutive tests, not a controlled setpoint or the 125 °C cure temperature."
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "ASTM D412, Type C dumbbell",
+          "evidence": [
+            {
+              "source_id": "johnston_2014_bulk_sylgard184",
+              "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+              "locator": "PDF pp.3–4, §3.1 tensile testing and geometry correction; p.4 §§4–4.1 and p.5 Table 2",
+              "supports": [
+                "method",
+                "condition",
+                "classification"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Uniaxial tensile test; Hounsfield Universal 10 kN testing machine",
+          "evidence": [
+            {
+              "source_id": "johnston_2014_bulk_sylgard184",
+              "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+              "locator": "PDF pp.3–4, §3.1 tensile testing and geometry correction; p.4 §§4–4.1 and p.5 Table 2",
+              "supports": [
+                "method",
+                "condition",
+                "classification"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "direction": {
+          "status": "reported",
+          "text": "Tension along the dumbbell test section",
+          "evidence": [
+            {
+              "source_id": "johnston_2014_bulk_sylgard184",
+              "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+              "locator": "PDF pp.3–4, §3.1 tensile testing and geometry correction; p.4 §§4–4.1 and p.5 Table 2",
+              "supports": [
+                "method",
+                "condition",
+                "classification"
+              ]
+            }
+          ],
+          "notes": "Geometry-supported loading direction; material axes and isotropy are not established."
+        },
+        "conditioning": {
+          "status": "reported",
+          "text": "Samples tested within 2 h after curing, following 1 h cooling at laboratory 22 °C",
+          "evidence": [
+            {
+              "source_id": "johnston_2014_bulk_sylgard184",
+              "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+              "locator": "PDF p.3 §3, cooling and testing interval",
+              "supports": [
+                "condition",
+                "state"
+              ]
+            }
+          ],
+          "notes": "Preconditioning/cyclic loading history and humidity-control tolerance are not reported."
+        },
+        "loading_rate": {
+          "status": "reported",
+          "text": "254 mm/min crosshead velocity",
+          "evidence": [
+            {
+              "source_id": "johnston_2014_bulk_sylgard184",
+              "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+              "locator": "PDF pp.3–4, §3.1 tensile testing and geometry correction; p.4 §§4–4.1 and p.5 Table 2",
+              "supports": [
+                "method",
+                "condition",
+                "classification"
+              ]
+            }
+          ],
+          "notes": "Do not convert to strain rate without a verified gauge length."
+        },
+        "additional_conditions": [
+          {
+            "name": "humidity",
+            "fact": {
+              "status": "reported",
+              "text": "39% average ambient relative humidity",
+              "evidence": [
+                {
+                  "source_id": "johnston_2014_bulk_sylgard184",
+                  "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+                  "locator": "PDF pp.3–4, §3.1 tensile testing and geometry correction; p.4 §§4–4.1 and p.5 Table 2",
+                  "supports": [
+                    "method",
+                    "condition",
+                    "classification"
+                  ]
+                }
+              ],
+              "notes": "Average over the consecutive tensile tests, not a controlled tolerance."
+            }
+          },
+          {
+            "name": "source_applied_geometry_correction",
+            "fact": {
+              "status": "reported",
+              "text": "0.40 strain correction factor for deformation of the wider dumbbell ends",
+              "evidence": [
+                {
+                  "source_id": "johnston_2014_bulk_sylgard184",
+                  "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+                  "locator": "PDF pp.3–4, §3.1 tensile testing and geometry correction; p.4 §§4–4.1 and p.5 Table 2",
+                  "supports": [
+                    "method",
+                    "condition",
+                    "classification"
+                  ]
+                }
+              ],
+              "notes": "Derived and already applied by the source using its ANSYS Workbench 13.0 geometry study. Preserve the reported scalar unchanged; do not apply the factor again."
+            }
+          },
+          {
+            "name": "ratio_basis",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "10:1 is reported as parts, without an explicit mass or volume basis."
+            }
+          },
+          {
+            "name": "exact_fitting_algorithm",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "The source does not specify the lower strain endpoint, endpoint handling or exact regression/fitting implementation."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "reported_value",
+      "uncertainty": {
+        "type": "reported_confidence_interval",
+        "value_text": "0.16",
+        "number": "0.16",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "scope": "Reported symmetric ± amplitude of the source 95% confidence interval for the selected Young’s-modulus result. Statistical estimand and construction are unspecified.",
+        "coverage_factor": null,
+        "confidence_level": {
+          "value_text": "95%",
+          "number": "95",
+          "unit_code": "percent"
+        },
+        "evidence": [
+          {
+            "source_id": "johnston_2014_bulk_sylgard184",
+            "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+            "locator": "PDF p.4 §4, stated 95% confidence interval for specified errors; §4.1, data from six test samples at each cure temperature averaged",
+            "supports": [
+              "uncertainty",
+              "sample_count",
+              "summary_statistic"
+            ]
+          }
+        ],
+        "estimand": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [
+            {
+              "source_id": "johnston_2014_bulk_sylgard184",
+              "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+              "locator": "PDF p.4 §4, stated 95% confidence interval for specified errors; §4.1, data from six test samples at each cure temperature averaged",
+              "supports": [
+                "uncertainty",
+                "sample_count",
+                "summary_statistic"
+              ]
+            }
+          ],
+          "notes": "The source does not explicitly identify the CI estimand; averaging six samples does not establish a CI of the mean of specimen-wise fitted moduli."
+        },
+        "construction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [
+            {
+              "source_id": "johnston_2014_bulk_sylgard184",
+              "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+              "locator": "PDF p.4 §4, stated 95% confidence interval for specified errors; §4.1, data from six test samples at each cure temperature averaged",
+              "supports": [
+                "uncertainty",
+                "sample_count",
+                "summary_statistic"
+              ]
+            }
+          ],
+          "notes": "CI formula, fitting/averaging order and distributional assumptions are not specified. No SD, SE, t multiplier or coverage factor is inferred."
+        }
+      },
+      "uncertainty_status": "reported_confidence_interval",
+      "uncertainty_note": "2.46 ± 0.16 MPa: source-reported 95% confidence interval. Estimand and statistical construction are not explicitly specified. No SD, SE, mean-specific interval, confidence endpoints or coverage factor is derived.",
+      "sample_count": {
+        "value": 6,
+        "relation": "exact",
+        "scope": "Six tensile test samples at the selected 125 °C curing temperature; this count does not establish a mean of six independently fitted moduli.",
+        "source_statement": "Section 4.1 reports averaging data from six tensile test samples at each curing temperature.",
+        "evidence": [
+          {
+            "source_id": "johnston_2014_bulk_sylgard184",
+            "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+            "locator": "PDF p.4 §4, stated 95% confidence interval for specified errors; §4.1, data from six test samples at each cure temperature averaged",
+            "supports": [
+              "uncertainty",
+              "sample_count",
+              "summary_statistic"
+            ]
+          }
+        ]
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Source tensile Young’s modulus calculated using Hooke’s law in the source linear region below 40% strain, after the source-applied 0.40 specimen-geometry strain correction. Lower endpoint, endpoint handling and exact fitting algorithm are not stated. No additional correction is applied.",
+        "extraction_window": {
+          "status": "reported",
+          "text": "Source linear region below 40% strain",
+          "evidence": [
+            {
+              "source_id": "johnston_2014_bulk_sylgard184",
+              "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+              "locator": "PDF pp.3–4, §3.1 tensile testing and geometry correction; p.4 §§4–4.1 and p.5 Table 2",
+              "supports": [
+                "method",
+                "condition",
+                "classification"
+              ]
+            }
+          ],
+          "notes": "Lower endpoint and exact fitting algorithm are unspecified; do not silently insert a zero endpoint or replace percent with an unlabelled fraction."
+        },
+        "evidence": [
+          {
+            "source_id": "johnston_2014_bulk_sylgard184",
+            "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+            "locator": "PDF pp.3–4, §3.1 tensile testing and geometry correction; p.4 §§4–4.1 and p.5 Table 2",
+            "supports": [
+              "method",
+              "condition",
+              "classification"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [],
+      "source_id": "johnston_2014_bulk_sylgard184",
+      "evidence": [
+        {
+          "source_id": "johnston_2014_bulk_sylgard184",
+          "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+          "locator": "PDF p.5 Table 2, 125 °C row, Young’s modulus (MPa) column",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "johnston_2014_bulk_sylgard184",
+          "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+          "locator": "PDF p.4 §4, stated 95% confidence interval for specified errors; §4.1, data from six test samples at each cure temperature averaged",
+          "supports": [
+            "uncertainty",
+            "sample_count",
+            "summary_statistic"
+          ]
+        },
+        {
+          "source_id": "johnston_2014_bulk_sylgard184",
+          "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+          "locator": "PDF pp.3–4, §3.1 tensile testing and geometry correction; p.4 §§4–4.1 and p.5 Table 2",
+          "supports": [
+            "method",
+            "condition",
+            "classification"
+          ]
+        }
+      ],
+      "source_document": {
+        "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+        "revision": "Published seven-page article; institutional-repository PDF retrieved 2026-10-04. PDF metadata created 2014-02-26, modified 2018-03-02; no content revision number stated.",
+        "inspected_on": "2026-11-03",
+        "sha256": "10bda5e6f13ab0e2b7912bff5062a701e0d32ffc4e01d15b0184c578c2d271db",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Curator text/visual check of retained seven-page PDF pp.1,3-5: license, Table 1 tensile cure, methods, statistics, Table 2 selected Young modulus cell. Independent review pending.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "scope_note": "Source-qualified tensile-cure state, not a new material identity. CI estimand and construction remain unknown; no SD/SE or extra geometry correction inferred. Finite strain-window property, not a global hyperelastic constant. Candidate pending independent review.",
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Curator text/visual check of retained seven-page PDF pp.1,3-5: license, Table 1 tensile cure, methods, statistics, Table 2 selected Young modulus cell. Independent review pending.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      }
+    },
+    {
+      "id": "refprop_dow_corning_sylgard184_johnston2014_150c_youngs_modulus",
+      "version": "1.0.0",
+      "material_state_id": "state_dow_corning_sylgard184_johnston2014_150c",
+      "quantity": "youngs_modulus",
+      "quantity_dimension": "pressure",
+      "source_property_label": "Young’s modulus (MPa)",
+      "reported_value": {
+        "kind": "scalar",
+        "value_text": "2.59",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "number": "2.59"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Source §4.1 says data from six tensile test samples at each curing temperature were averaged. It does not state whether specimen-wise fitted moduli were averaged or a modulus was fitted to an averaged curve; retain reported_value and do not assert a specific modulus-mean estimand.",
+      "conditions": {
+        "temperature": {
+          "status": "reported",
+          "text": "21 °C average tensile-test ambient temperature",
+          "evidence": [
+            {
+              "source_id": "johnston_2014_bulk_sylgard184",
+              "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+              "locator": "PDF pp.3–4, §3.1 tensile testing and geometry correction; p.4 §§4–4.1 and p.5 Table 2",
+              "supports": [
+                "method",
+                "condition",
+                "classification"
+              ]
+            }
+          ],
+          "notes": "This is an average during consecutive tests, not a controlled setpoint or the 150 °C cure temperature."
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "ASTM D412, Type C dumbbell",
+          "evidence": [
+            {
+              "source_id": "johnston_2014_bulk_sylgard184",
+              "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+              "locator": "PDF pp.3–4, §3.1 tensile testing and geometry correction; p.4 §§4–4.1 and p.5 Table 2",
+              "supports": [
+                "method",
+                "condition",
+                "classification"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Uniaxial tensile test; Hounsfield Universal 10 kN testing machine",
+          "evidence": [
+            {
+              "source_id": "johnston_2014_bulk_sylgard184",
+              "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+              "locator": "PDF pp.3–4, §3.1 tensile testing and geometry correction; p.4 §§4–4.1 and p.5 Table 2",
+              "supports": [
+                "method",
+                "condition",
+                "classification"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "direction": {
+          "status": "reported",
+          "text": "Tension along the dumbbell test section",
+          "evidence": [
+            {
+              "source_id": "johnston_2014_bulk_sylgard184",
+              "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+              "locator": "PDF pp.3–4, §3.1 tensile testing and geometry correction; p.4 §§4–4.1 and p.5 Table 2",
+              "supports": [
+                "method",
+                "condition",
+                "classification"
+              ]
+            }
+          ],
+          "notes": "Geometry-supported loading direction; material axes and isotropy are not established."
+        },
+        "conditioning": {
+          "status": "reported",
+          "text": "Samples tested within 2 h after curing, following 1 h cooling at laboratory 22 °C",
+          "evidence": [
+            {
+              "source_id": "johnston_2014_bulk_sylgard184",
+              "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+              "locator": "PDF p.3 §3, cooling and testing interval",
+              "supports": [
+                "condition",
+                "state"
+              ]
+            }
+          ],
+          "notes": "Preconditioning/cyclic loading history and humidity-control tolerance are not reported."
+        },
+        "loading_rate": {
+          "status": "reported",
+          "text": "254 mm/min crosshead velocity",
+          "evidence": [
+            {
+              "source_id": "johnston_2014_bulk_sylgard184",
+              "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+              "locator": "PDF pp.3–4, §3.1 tensile testing and geometry correction; p.4 §§4–4.1 and p.5 Table 2",
+              "supports": [
+                "method",
+                "condition",
+                "classification"
+              ]
+            }
+          ],
+          "notes": "Do not convert to strain rate without a verified gauge length."
+        },
+        "additional_conditions": [
+          {
+            "name": "humidity",
+            "fact": {
+              "status": "reported",
+              "text": "39% average ambient relative humidity",
+              "evidence": [
+                {
+                  "source_id": "johnston_2014_bulk_sylgard184",
+                  "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+                  "locator": "PDF pp.3–4, §3.1 tensile testing and geometry correction; p.4 §§4–4.1 and p.5 Table 2",
+                  "supports": [
+                    "method",
+                    "condition",
+                    "classification"
+                  ]
+                }
+              ],
+              "notes": "Average over the consecutive tensile tests, not a controlled tolerance."
+            }
+          },
+          {
+            "name": "source_applied_geometry_correction",
+            "fact": {
+              "status": "reported",
+              "text": "0.40 strain correction factor for deformation of the wider dumbbell ends",
+              "evidence": [
+                {
+                  "source_id": "johnston_2014_bulk_sylgard184",
+                  "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+                  "locator": "PDF pp.3–4, §3.1 tensile testing and geometry correction; p.4 §§4–4.1 and p.5 Table 2",
+                  "supports": [
+                    "method",
+                    "condition",
+                    "classification"
+                  ]
+                }
+              ],
+              "notes": "Derived and already applied by the source using its ANSYS Workbench 13.0 geometry study. Preserve the reported scalar unchanged; do not apply the factor again."
+            }
+          },
+          {
+            "name": "ratio_basis",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "10:1 is reported as parts, without an explicit mass or volume basis."
+            }
+          },
+          {
+            "name": "exact_fitting_algorithm",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "The source does not specify the lower strain endpoint, endpoint handling or exact regression/fitting implementation."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "reported_value",
+      "uncertainty": {
+        "type": "reported_confidence_interval",
+        "value_text": "0.08",
+        "number": "0.08",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "scope": "Reported symmetric ± amplitude of the source 95% confidence interval for the selected Young’s-modulus result. Statistical estimand and construction are unspecified.",
+        "coverage_factor": null,
+        "confidence_level": {
+          "value_text": "95%",
+          "number": "95",
+          "unit_code": "percent"
+        },
+        "evidence": [
+          {
+            "source_id": "johnston_2014_bulk_sylgard184",
+            "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+            "locator": "PDF p.4 §4, stated 95% confidence interval for specified errors; §4.1, data from six test samples at each cure temperature averaged",
+            "supports": [
+              "uncertainty",
+              "sample_count",
+              "summary_statistic"
+            ]
+          }
+        ],
+        "estimand": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [
+            {
+              "source_id": "johnston_2014_bulk_sylgard184",
+              "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+              "locator": "PDF p.4 §4, stated 95% confidence interval for specified errors; §4.1, data from six test samples at each cure temperature averaged",
+              "supports": [
+                "uncertainty",
+                "sample_count",
+                "summary_statistic"
+              ]
+            }
+          ],
+          "notes": "The source does not explicitly identify the CI estimand; averaging six samples does not establish a CI of the mean of specimen-wise fitted moduli."
+        },
+        "construction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [
+            {
+              "source_id": "johnston_2014_bulk_sylgard184",
+              "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+              "locator": "PDF p.4 §4, stated 95% confidence interval for specified errors; §4.1, data from six test samples at each cure temperature averaged",
+              "supports": [
+                "uncertainty",
+                "sample_count",
+                "summary_statistic"
+              ]
+            }
+          ],
+          "notes": "CI formula, fitting/averaging order and distributional assumptions are not specified. No SD, SE, t multiplier or coverage factor is inferred."
+        }
+      },
+      "uncertainty_status": "reported_confidence_interval",
+      "uncertainty_note": "2.59 ± 0.08 MPa: source-reported 95% confidence interval. Estimand and statistical construction are not explicitly specified. No SD, SE, mean-specific interval, confidence endpoints or coverage factor is derived.",
+      "sample_count": {
+        "value": 6,
+        "relation": "exact",
+        "scope": "Six tensile test samples at the selected 150 °C curing temperature; this count does not establish a mean of six independently fitted moduli.",
+        "source_statement": "Section 4.1 reports averaging data from six tensile test samples at each curing temperature.",
+        "evidence": [
+          {
+            "source_id": "johnston_2014_bulk_sylgard184",
+            "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+            "locator": "PDF p.4 §4, stated 95% confidence interval for specified errors; §4.1, data from six test samples at each cure temperature averaged",
+            "supports": [
+              "uncertainty",
+              "sample_count",
+              "summary_statistic"
+            ]
+          }
+        ]
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Source tensile Young’s modulus calculated using Hooke’s law in the source linear region below 40% strain, after the source-applied 0.40 specimen-geometry strain correction. Lower endpoint, endpoint handling and exact fitting algorithm are not stated. No additional correction is applied.",
+        "extraction_window": {
+          "status": "reported",
+          "text": "Source linear region below 40% strain",
+          "evidence": [
+            {
+              "source_id": "johnston_2014_bulk_sylgard184",
+              "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+              "locator": "PDF pp.3–4, §3.1 tensile testing and geometry correction; p.4 §§4–4.1 and p.5 Table 2",
+              "supports": [
+                "method",
+                "condition",
+                "classification"
+              ]
+            }
+          ],
+          "notes": "Lower endpoint and exact fitting algorithm are unspecified; do not silently insert a zero endpoint or replace percent with an unlabelled fraction."
+        },
+        "evidence": [
+          {
+            "source_id": "johnston_2014_bulk_sylgard184",
+            "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+            "locator": "PDF pp.3–4, §3.1 tensile testing and geometry correction; p.4 §§4–4.1 and p.5 Table 2",
+            "supports": [
+              "method",
+              "condition",
+              "classification"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [],
+      "source_id": "johnston_2014_bulk_sylgard184",
+      "evidence": [
+        {
+          "source_id": "johnston_2014_bulk_sylgard184",
+          "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+          "locator": "PDF p.5 Table 2, 150 °C row, Young’s modulus (MPa) column",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "johnston_2014_bulk_sylgard184",
+          "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+          "locator": "PDF p.4 §4, stated 95% confidence interval for specified errors; §4.1, data from six test samples at each cure temperature averaged",
+          "supports": [
+            "uncertainty",
+            "sample_count",
+            "summary_statistic"
+          ]
+        },
+        {
+          "source_id": "johnston_2014_bulk_sylgard184",
+          "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+          "locator": "PDF pp.3–4, §3.1 tensile testing and geometry correction; p.4 §§4–4.1 and p.5 Table 2",
+          "supports": [
+            "method",
+            "condition",
+            "classification"
+          ]
+        }
+      ],
+      "source_document": {
+        "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+        "revision": "Published seven-page article; institutional-repository PDF retrieved 2026-10-04. PDF metadata created 2014-02-26, modified 2018-03-02; no content revision number stated.",
+        "inspected_on": "2026-11-03",
+        "sha256": "10bda5e6f13ab0e2b7912bff5062a701e0d32ffc4e01d15b0184c578c2d271db",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Curator text/visual check of retained seven-page PDF pp.1,3-5: license, Table 1 tensile cure, methods, statistics, Table 2 selected Young modulus cell. Independent review pending.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "scope_note": "Source-qualified tensile-cure state, not a new material identity. CI estimand and construction remain unknown; no SD/SE or extra geometry correction inferred. Finite strain-window property, not a global hyperelastic constant. Candidate pending independent review.",
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Curator text/visual check of retained seven-page PDF pp.1,3-5: license, Table 1 tensile cure, methods, statistics, Table 2 selected Young modulus cell. Independent review pending.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      }
+    },
+    {
+      "id": "refprop_dow_corning_sylgard184_johnston2014_200c_youngs_modulus",
+      "version": "1.0.0",
+      "material_state_id": "state_dow_corning_sylgard184_johnston2014_200c",
+      "quantity": "youngs_modulus",
+      "quantity_dimension": "pressure",
+      "source_property_label": "Young’s modulus (MPa)",
+      "reported_value": {
+        "kind": "scalar",
+        "value_text": "2.97",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "number": "2.97"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Source §4.1 says data from six tensile test samples at each curing temperature were averaged. It does not state whether specimen-wise fitted moduli were averaged or a modulus was fitted to an averaged curve; retain reported_value and do not assert a specific modulus-mean estimand.",
+      "conditions": {
+        "temperature": {
+          "status": "reported",
+          "text": "21 °C average tensile-test ambient temperature",
+          "evidence": [
+            {
+              "source_id": "johnston_2014_bulk_sylgard184",
+              "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+              "locator": "PDF pp.3–4, §3.1 tensile testing and geometry correction; p.4 §§4–4.1 and p.5 Table 2",
+              "supports": [
+                "method",
+                "condition",
+                "classification"
+              ]
+            }
+          ],
+          "notes": "This is an average during consecutive tests, not a controlled setpoint or the 200 °C cure temperature."
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "ASTM D412, Type C dumbbell",
+          "evidence": [
+            {
+              "source_id": "johnston_2014_bulk_sylgard184",
+              "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+              "locator": "PDF pp.3–4, §3.1 tensile testing and geometry correction; p.4 §§4–4.1 and p.5 Table 2",
+              "supports": [
+                "method",
+                "condition",
+                "classification"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Uniaxial tensile test; Hounsfield Universal 10 kN testing machine",
+          "evidence": [
+            {
+              "source_id": "johnston_2014_bulk_sylgard184",
+              "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+              "locator": "PDF pp.3–4, §3.1 tensile testing and geometry correction; p.4 §§4–4.1 and p.5 Table 2",
+              "supports": [
+                "method",
+                "condition",
+                "classification"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "direction": {
+          "status": "reported",
+          "text": "Tension along the dumbbell test section",
+          "evidence": [
+            {
+              "source_id": "johnston_2014_bulk_sylgard184",
+              "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+              "locator": "PDF pp.3–4, §3.1 tensile testing and geometry correction; p.4 §§4–4.1 and p.5 Table 2",
+              "supports": [
+                "method",
+                "condition",
+                "classification"
+              ]
+            }
+          ],
+          "notes": "Geometry-supported loading direction; material axes and isotropy are not established."
+        },
+        "conditioning": {
+          "status": "reported",
+          "text": "Samples tested within 2 h after curing, following 1 h cooling at laboratory 22 °C",
+          "evidence": [
+            {
+              "source_id": "johnston_2014_bulk_sylgard184",
+              "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+              "locator": "PDF p.3 §3, cooling and testing interval",
+              "supports": [
+                "condition",
+                "state"
+              ]
+            }
+          ],
+          "notes": "Preconditioning/cyclic loading history and humidity-control tolerance are not reported."
+        },
+        "loading_rate": {
+          "status": "reported",
+          "text": "254 mm/min crosshead velocity",
+          "evidence": [
+            {
+              "source_id": "johnston_2014_bulk_sylgard184",
+              "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+              "locator": "PDF pp.3–4, §3.1 tensile testing and geometry correction; p.4 §§4–4.1 and p.5 Table 2",
+              "supports": [
+                "method",
+                "condition",
+                "classification"
+              ]
+            }
+          ],
+          "notes": "Do not convert to strain rate without a verified gauge length."
+        },
+        "additional_conditions": [
+          {
+            "name": "humidity",
+            "fact": {
+              "status": "reported",
+              "text": "39% average ambient relative humidity",
+              "evidence": [
+                {
+                  "source_id": "johnston_2014_bulk_sylgard184",
+                  "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+                  "locator": "PDF pp.3–4, §3.1 tensile testing and geometry correction; p.4 §§4–4.1 and p.5 Table 2",
+                  "supports": [
+                    "method",
+                    "condition",
+                    "classification"
+                  ]
+                }
+              ],
+              "notes": "Average over the consecutive tensile tests, not a controlled tolerance."
+            }
+          },
+          {
+            "name": "source_applied_geometry_correction",
+            "fact": {
+              "status": "reported",
+              "text": "0.40 strain correction factor for deformation of the wider dumbbell ends",
+              "evidence": [
+                {
+                  "source_id": "johnston_2014_bulk_sylgard184",
+                  "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+                  "locator": "PDF pp.3–4, §3.1 tensile testing and geometry correction; p.4 §§4–4.1 and p.5 Table 2",
+                  "supports": [
+                    "method",
+                    "condition",
+                    "classification"
+                  ]
+                }
+              ],
+              "notes": "Derived and already applied by the source using its ANSYS Workbench 13.0 geometry study. Preserve the reported scalar unchanged; do not apply the factor again."
+            }
+          },
+          {
+            "name": "ratio_basis",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "10:1 is reported as parts, without an explicit mass or volume basis."
+            }
+          },
+          {
+            "name": "exact_fitting_algorithm",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "The source does not specify the lower strain endpoint, endpoint handling or exact regression/fitting implementation."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "reported_value",
+      "uncertainty": {
+        "type": "reported_confidence_interval",
+        "value_text": "0.04",
+        "number": "0.04",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "scope": "Reported symmetric ± amplitude of the source 95% confidence interval for the selected Young’s-modulus result. Statistical estimand and construction are unspecified.",
+        "coverage_factor": null,
+        "confidence_level": {
+          "value_text": "95%",
+          "number": "95",
+          "unit_code": "percent"
+        },
+        "evidence": [
+          {
+            "source_id": "johnston_2014_bulk_sylgard184",
+            "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+            "locator": "PDF p.4 §4, stated 95% confidence interval for specified errors; §4.1, data from six test samples at each cure temperature averaged",
+            "supports": [
+              "uncertainty",
+              "sample_count",
+              "summary_statistic"
+            ]
+          }
+        ],
+        "estimand": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [
+            {
+              "source_id": "johnston_2014_bulk_sylgard184",
+              "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+              "locator": "PDF p.4 §4, stated 95% confidence interval for specified errors; §4.1, data from six test samples at each cure temperature averaged",
+              "supports": [
+                "uncertainty",
+                "sample_count",
+                "summary_statistic"
+              ]
+            }
+          ],
+          "notes": "The source does not explicitly identify the CI estimand; averaging six samples does not establish a CI of the mean of specimen-wise fitted moduli."
+        },
+        "construction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [
+            {
+              "source_id": "johnston_2014_bulk_sylgard184",
+              "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+              "locator": "PDF p.4 §4, stated 95% confidence interval for specified errors; §4.1, data from six test samples at each cure temperature averaged",
+              "supports": [
+                "uncertainty",
+                "sample_count",
+                "summary_statistic"
+              ]
+            }
+          ],
+          "notes": "CI formula, fitting/averaging order and distributional assumptions are not specified. No SD, SE, t multiplier or coverage factor is inferred."
+        }
+      },
+      "uncertainty_status": "reported_confidence_interval",
+      "uncertainty_note": "2.97 ± 0.04 MPa: source-reported 95% confidence interval. Estimand and statistical construction are not explicitly specified. No SD, SE, mean-specific interval, confidence endpoints or coverage factor is derived.",
+      "sample_count": {
+        "value": 6,
+        "relation": "exact",
+        "scope": "Six tensile test samples at the selected 200 °C curing temperature; this count does not establish a mean of six independently fitted moduli.",
+        "source_statement": "Section 4.1 reports averaging data from six tensile test samples at each curing temperature.",
+        "evidence": [
+          {
+            "source_id": "johnston_2014_bulk_sylgard184",
+            "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+            "locator": "PDF p.4 §4, stated 95% confidence interval for specified errors; §4.1, data from six test samples at each cure temperature averaged",
+            "supports": [
+              "uncertainty",
+              "sample_count",
+              "summary_statistic"
+            ]
+          }
+        ]
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Source tensile Young’s modulus calculated using Hooke’s law in the source linear region below 40% strain, after the source-applied 0.40 specimen-geometry strain correction. Lower endpoint, endpoint handling and exact fitting algorithm are not stated. No additional correction is applied.",
+        "extraction_window": {
+          "status": "reported",
+          "text": "Source linear region below 40% strain",
+          "evidence": [
+            {
+              "source_id": "johnston_2014_bulk_sylgard184",
+              "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+              "locator": "PDF pp.3–4, §3.1 tensile testing and geometry correction; p.4 §§4–4.1 and p.5 Table 2",
+              "supports": [
+                "method",
+                "condition",
+                "classification"
+              ]
+            }
+          ],
+          "notes": "Lower endpoint and exact fitting algorithm are unspecified; do not silently insert a zero endpoint or replace percent with an unlabelled fraction."
+        },
+        "evidence": [
+          {
+            "source_id": "johnston_2014_bulk_sylgard184",
+            "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+            "locator": "PDF pp.3–4, §3.1 tensile testing and geometry correction; p.4 §§4–4.1 and p.5 Table 2",
+            "supports": [
+              "method",
+              "condition",
+              "classification"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [],
+      "source_id": "johnston_2014_bulk_sylgard184",
+      "evidence": [
+        {
+          "source_id": "johnston_2014_bulk_sylgard184",
+          "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+          "locator": "PDF p.5 Table 2, 200 °C row, Young’s modulus (MPa) column",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "johnston_2014_bulk_sylgard184",
+          "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+          "locator": "PDF p.4 §4, stated 95% confidence interval for specified errors; §4.1, data from six test samples at each cure temperature averaged",
+          "supports": [
+            "uncertainty",
+            "sample_count",
+            "summary_statistic"
+          ]
+        },
+        {
+          "source_id": "johnston_2014_bulk_sylgard184",
+          "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+          "locator": "PDF pp.3–4, §3.1 tensile testing and geometry correction; p.4 §§4–4.1 and p.5 Table 2",
+          "supports": [
+            "method",
+            "condition",
+            "classification"
+          ]
+        }
+      ],
+      "source_document": {
+        "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+        "revision": "Published seven-page article; institutional-repository PDF retrieved 2026-10-04. PDF metadata created 2014-02-26, modified 2018-03-02; no content revision number stated.",
+        "inspected_on": "2026-11-03",
+        "sha256": "10bda5e6f13ab0e2b7912bff5062a701e0d32ffc4e01d15b0184c578c2d271db",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Curator text/visual check of retained seven-page PDF pp.1,3-5: license, Table 1 tensile cure, methods, statistics, Table 2 selected Young modulus cell. Independent review pending.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "scope_note": "Source-qualified tensile-cure state, not a new material identity. CI estimand and construction remain unknown; no SD/SE or extra geometry correction inferred. Finite strain-window property, not a global hyperelastic constant. Candidate pending independent review.",
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Curator text/visual check of retained seven-page PDF pp.1,3-5: license, Table 1 tensile cure, methods, statistics, Table 2 selected Young modulus cell. Independent review pending.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      }
+    },
+    {
+      "id": "refprop_dow_corning_sylgard184_johnston2014_25c_youngs_modulus",
+      "version": "1.0.0",
+      "material_state_id": "state_dow_corning_sylgard184_johnston2014_25c",
+      "quantity": "youngs_modulus",
+      "quantity_dimension": "pressure",
+      "source_property_label": "Young’s modulus (MPa)",
+      "reported_value": {
+        "kind": "scalar",
+        "value_text": "1.32",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "number": "1.32"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Source §4.1 says data from six tensile test samples at each curing temperature were averaged. It does not state whether specimen-wise fitted moduli were averaged or a modulus was fitted to an averaged curve; retain reported_value and do not assert a specific modulus-mean estimand.",
+      "conditions": {
+        "temperature": {
+          "status": "reported",
+          "text": "21 °C average tensile-test ambient temperature",
+          "evidence": [
+            {
+              "source_id": "johnston_2014_bulk_sylgard184",
+              "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+              "locator": "PDF pp.3–4, §3.1 tensile testing and geometry correction; p.4 §§4–4.1 and p.5 Table 2",
+              "supports": [
+                "method",
+                "condition",
+                "classification"
+              ]
+            }
+          ],
+          "notes": "This is an average during consecutive tests, not a controlled setpoint or the 25 °C cure temperature."
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "ASTM D412, Type C dumbbell",
+          "evidence": [
+            {
+              "source_id": "johnston_2014_bulk_sylgard184",
+              "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+              "locator": "PDF pp.3–4, §3.1 tensile testing and geometry correction; p.4 §§4–4.1 and p.5 Table 2",
+              "supports": [
+                "method",
+                "condition",
+                "classification"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Uniaxial tensile test; Hounsfield Universal 10 kN testing machine",
+          "evidence": [
+            {
+              "source_id": "johnston_2014_bulk_sylgard184",
+              "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+              "locator": "PDF pp.3–4, §3.1 tensile testing and geometry correction; p.4 §§4–4.1 and p.5 Table 2",
+              "supports": [
+                "method",
+                "condition",
+                "classification"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "direction": {
+          "status": "reported",
+          "text": "Tension along the dumbbell test section",
+          "evidence": [
+            {
+              "source_id": "johnston_2014_bulk_sylgard184",
+              "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+              "locator": "PDF pp.3–4, §3.1 tensile testing and geometry correction; p.4 §§4–4.1 and p.5 Table 2",
+              "supports": [
+                "method",
+                "condition",
+                "classification"
+              ]
+            }
+          ],
+          "notes": "Geometry-supported loading direction; material axes and isotropy are not established."
+        },
+        "conditioning": {
+          "status": "reported",
+          "text": "Samples tested within 2 h after curing, following 1 h cooling at laboratory 22 °C",
+          "evidence": [
+            {
+              "source_id": "johnston_2014_bulk_sylgard184",
+              "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+              "locator": "PDF p.3 §3, cooling and testing interval",
+              "supports": [
+                "condition",
+                "state"
+              ]
+            }
+          ],
+          "notes": "Preconditioning/cyclic loading history and humidity-control tolerance are not reported."
+        },
+        "loading_rate": {
+          "status": "reported",
+          "text": "254 mm/min crosshead velocity",
+          "evidence": [
+            {
+              "source_id": "johnston_2014_bulk_sylgard184",
+              "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+              "locator": "PDF pp.3–4, §3.1 tensile testing and geometry correction; p.4 §§4–4.1 and p.5 Table 2",
+              "supports": [
+                "method",
+                "condition",
+                "classification"
+              ]
+            }
+          ],
+          "notes": "Do not convert to strain rate without a verified gauge length."
+        },
+        "additional_conditions": [
+          {
+            "name": "humidity",
+            "fact": {
+              "status": "reported",
+              "text": "39% average ambient relative humidity",
+              "evidence": [
+                {
+                  "source_id": "johnston_2014_bulk_sylgard184",
+                  "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+                  "locator": "PDF pp.3–4, §3.1 tensile testing and geometry correction; p.4 §§4–4.1 and p.5 Table 2",
+                  "supports": [
+                    "method",
+                    "condition",
+                    "classification"
+                  ]
+                }
+              ],
+              "notes": "Average over the consecutive tensile tests, not a controlled tolerance."
+            }
+          },
+          {
+            "name": "source_applied_geometry_correction",
+            "fact": {
+              "status": "reported",
+              "text": "0.40 strain correction factor for deformation of the wider dumbbell ends",
+              "evidence": [
+                {
+                  "source_id": "johnston_2014_bulk_sylgard184",
+                  "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+                  "locator": "PDF pp.3–4, §3.1 tensile testing and geometry correction; p.4 §§4–4.1 and p.5 Table 2",
+                  "supports": [
+                    "method",
+                    "condition",
+                    "classification"
+                  ]
+                }
+              ],
+              "notes": "Derived and already applied by the source using its ANSYS Workbench 13.0 geometry study. Preserve the reported scalar unchanged; do not apply the factor again."
+            }
+          },
+          {
+            "name": "ratio_basis",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "10:1 is reported as parts, without an explicit mass or volume basis."
+            }
+          },
+          {
+            "name": "exact_fitting_algorithm",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "The source does not specify the lower strain endpoint, endpoint handling or exact regression/fitting implementation."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "reported_value",
+      "uncertainty": {
+        "type": "reported_confidence_interval",
+        "value_text": "0.07",
+        "number": "0.07",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "scope": "Reported symmetric ± amplitude of the source 95% confidence interval for the selected Young’s-modulus result. Statistical estimand and construction are unspecified.",
+        "coverage_factor": null,
+        "confidence_level": {
+          "value_text": "95%",
+          "number": "95",
+          "unit_code": "percent"
+        },
+        "evidence": [
+          {
+            "source_id": "johnston_2014_bulk_sylgard184",
+            "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+            "locator": "PDF p.4 §4, stated 95% confidence interval for specified errors; §4.1, data from six test samples at each cure temperature averaged",
+            "supports": [
+              "uncertainty",
+              "sample_count",
+              "summary_statistic"
+            ]
+          }
+        ],
+        "estimand": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [
+            {
+              "source_id": "johnston_2014_bulk_sylgard184",
+              "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+              "locator": "PDF p.4 §4, stated 95% confidence interval for specified errors; §4.1, data from six test samples at each cure temperature averaged",
+              "supports": [
+                "uncertainty",
+                "sample_count",
+                "summary_statistic"
+              ]
+            }
+          ],
+          "notes": "The source does not explicitly identify the CI estimand; averaging six samples does not establish a CI of the mean of specimen-wise fitted moduli."
+        },
+        "construction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [
+            {
+              "source_id": "johnston_2014_bulk_sylgard184",
+              "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+              "locator": "PDF p.4 §4, stated 95% confidence interval for specified errors; §4.1, data from six test samples at each cure temperature averaged",
+              "supports": [
+                "uncertainty",
+                "sample_count",
+                "summary_statistic"
+              ]
+            }
+          ],
+          "notes": "CI formula, fitting/averaging order and distributional assumptions are not specified. No SD, SE, t multiplier or coverage factor is inferred."
+        }
+      },
+      "uncertainty_status": "reported_confidence_interval",
+      "uncertainty_note": "1.32 ± 0.07 MPa: source-reported 95% confidence interval. Estimand and statistical construction are not explicitly specified. No SD, SE, mean-specific interval, confidence endpoints or coverage factor is derived.",
+      "sample_count": {
+        "value": 6,
+        "relation": "exact",
+        "scope": "Six tensile test samples at the selected 25 °C curing temperature; this count does not establish a mean of six independently fitted moduli.",
+        "source_statement": "Section 4.1 reports averaging data from six tensile test samples at each curing temperature.",
+        "evidence": [
+          {
+            "source_id": "johnston_2014_bulk_sylgard184",
+            "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+            "locator": "PDF p.4 §4, stated 95% confidence interval for specified errors; §4.1, data from six test samples at each cure temperature averaged",
+            "supports": [
+              "uncertainty",
+              "sample_count",
+              "summary_statistic"
+            ]
+          }
+        ]
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Source tensile Young’s modulus calculated using Hooke’s law in the source linear region below 40% strain, after the source-applied 0.40 specimen-geometry strain correction. Lower endpoint, endpoint handling and exact fitting algorithm are not stated. No additional correction is applied.",
+        "extraction_window": {
+          "status": "reported",
+          "text": "Source linear region below 40% strain",
+          "evidence": [
+            {
+              "source_id": "johnston_2014_bulk_sylgard184",
+              "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+              "locator": "PDF pp.3–4, §3.1 tensile testing and geometry correction; p.4 §§4–4.1 and p.5 Table 2",
+              "supports": [
+                "method",
+                "condition",
+                "classification"
+              ]
+            }
+          ],
+          "notes": "Lower endpoint and exact fitting algorithm are unspecified; do not silently insert a zero endpoint or replace percent with an unlabelled fraction."
+        },
+        "evidence": [
+          {
+            "source_id": "johnston_2014_bulk_sylgard184",
+            "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+            "locator": "PDF pp.3–4, §3.1 tensile testing and geometry correction; p.4 §§4–4.1 and p.5 Table 2",
+            "supports": [
+              "method",
+              "condition",
+              "classification"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [],
+      "source_id": "johnston_2014_bulk_sylgard184",
+      "evidence": [
+        {
+          "source_id": "johnston_2014_bulk_sylgard184",
+          "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+          "locator": "PDF p.5 Table 2, 25 °C row, Young’s modulus (MPa) column",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "johnston_2014_bulk_sylgard184",
+          "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+          "locator": "PDF p.4 §4, stated 95% confidence interval for specified errors; §4.1, data from six test samples at each cure temperature averaged",
+          "supports": [
+            "uncertainty",
+            "sample_count",
+            "summary_statistic"
+          ]
+        },
+        {
+          "source_id": "johnston_2014_bulk_sylgard184",
+          "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+          "locator": "PDF pp.3–4, §3.1 tensile testing and geometry correction; p.4 §§4–4.1 and p.5 Table 2",
+          "supports": [
+            "method",
+            "condition",
+            "classification"
+          ]
+        }
+      ],
+      "source_document": {
+        "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+        "revision": "Published seven-page article; institutional-repository PDF retrieved 2026-10-04. PDF metadata created 2014-02-26, modified 2018-03-02; no content revision number stated.",
+        "inspected_on": "2026-11-03",
+        "sha256": "10bda5e6f13ab0e2b7912bff5062a701e0d32ffc4e01d15b0184c578c2d271db",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Curator text/visual check of retained seven-page PDF pp.1,3-5: license, Table 1 tensile cure, methods, statistics, Table 2 selected Young modulus cell. Independent review pending.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "scope_note": "Source-qualified tensile-cure state, not a new material identity. CI estimand and construction remain unknown; no SD/SE or extra geometry correction inferred. Finite strain-window property, not a global hyperelastic constant. Candidate pending independent review.",
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Curator text/visual check of retained seven-page PDF pp.1,3-5: license, Table 1 tensile cure, methods, statistics, Table 2 selected Young modulus cell. Independent review pending.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      }
     }
   ]
 }
