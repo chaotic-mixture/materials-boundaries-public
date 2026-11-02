@@ -1,5 +1,26 @@
 # Database download format, version 1
 
+Use `python -m materials_boundaries.database summary` to inspect the current
+property selection before planning data updates. The query, quantity, category
+and primary-source filters are the same as for query/export. The report binds
+the full database fingerprint and counts selected properties, distinct joined
+identities/states, evidence kinds, native condition statuses, uncertainty and
+sample-count statuses. Source-license counts cover distinct referenced sources,
+including secondary evidence; they are not property counts or a legal decision.
+`__missing__` means a status field was absent, null or empty. It remains distinct
+from source-reported unknown/not-applicable labels. Condition fields are the
+union of status objects present in the selected records; list-valued extensions
+such as `additional_conditions` are preserved in query/export, not interpreted
+as missing status fields here. Absent fields in the status union are counted
+as missing. Empty selections yield zero counts, not whole-database coverage.
+These descriptive counts do not establish admission, scientific approval or
+release. Identity counts cover identities with a selected property only.
+
+```sh
+python -m materials_boundaries.database summary --category composite
+python -m materials_boundaries.database summary --query C11000 --quantity mass_density
+```
+
 `python -m materials_boundaries.database export --output snapshot` creates
 `records.jsonl` and `manifest.json`. Each JSONL line is one source-qualified
 property; it is not a universal material constant. JSON preserves native units,

@@ -1,5 +1,6 @@
 """Source-qualified database access, independent of mechanics evaluation."""
 from copy import deepcopy
+from collections import Counter
 from hashlib import sha256
 from importlib.resources import files
 import argparse
@@ -102,6 +103,60 @@ class Database:
                 'review': {'transcription': prop.get('verification', {}).get('transcription_cross_check', 'unknown'),
                            'independent_scientific_review': prop.get('verification', {}).get('independent_scientific_review', False)},
                 'rights_note': 'Source license metadata is preserved; the software license does not relicense sources.'})
+
+    def summary(self, **filters):
+        """Describe selected source records without inferring missing facts or approval."""
+        identities = set(); states = set(); sources = {}
+        categories = {}; quantities = Counter(); evidence = Counter()
+        conditions = {}; uncertainty = Counter(); sample_counts = Counter()
+        transcription = Counter(); scientific_review = Counter(); count = 0
+        def label(value):
+            return value if isinstance(value, str) and value else '__missing__'
+        for record in self.records(**filters):
+            count += 1
+            identity, prop = record['identity'], record['property']
+            identities.add(identity['id']); states.add(record['state']['id'])
+            categories.setdefault(identity['category'], set()).add(identity['id'])
+            quantities[label(prop.get('quantity'))] += 1
+            evidence[label(prop.get('evidence_kind'))] += 1
+            # Account for absent condition fields as well as explicit native statuses.
+            native_conditions = prop.get('conditions', {})
+            status_fields = {field for field, value in native_conditions.items()
+                             if isinstance(value, dict) or value is None}
+            for field in set(conditions) | status_fields:
+                if field not in conditions:
+                    conditions[field] = Counter({'__missing__': count - 1})
+                value = native_conditions.get(field)
+                conditions[field][label(value.get('status') if isinstance(value, dict) else None)] += 1
+            uncertainty[label(prop.get('uncertainty_status'))] += 1
+            sample = prop.get('sample_count')
+            sample_counts[label(sample.get('relation') if isinstance(sample, dict) else None)] += 1
+            transcription[label(record['review']['transcription'])] += 1
+            review = record['review']['independent_scientific_review']
+            scientific_review['true' if review is True else 'false' if review is False else '__missing__'] += 1
+            for source in record['sources']:
+                sources[source['id']] = source
+        rights = Counter()
+        for source in sources.values():
+            license_info = source.get('license')
+            rights[label(license_info.get('status') if isinstance(license_info, dict) else None)] += 1
+        def ordered(counter):
+            return dict(sorted((key, value) for key, value in counter.items() if value))
+        return {'format': 'materials-database-summary/1', 'database_snapshot': self.snapshot,
+                'filters': filters, 'property_records': count, 'material_identities': len(identities),
+                'material_states': len(states), 'referenced_sources': len(sources),
+                'identities_by_category': {k: len(v) for k, v in sorted(categories.items())},
+                'properties_by_quantity': ordered(quantities),
+                'properties_by_evidence_kind': ordered(evidence),
+                'condition_statuses': {k: ordered(v) for k, v in sorted(conditions.items())},
+                'uncertainty_statuses': ordered(uncertainty),
+                'sample_count_relations': ordered(sample_counts),
+                'transcription_statuses': ordered(transcription),
+                'independent_scientific_review_flags': ordered(scientific_review),
+                'source_license_statuses': ordered(rights),
+                'scope': 'selected_property_records_and_their_joined_metadata',
+                'review_status': 'descriptive_only_not_admission_or_release',
+                'missing_status_label': '__missing__'}
 
     def validate_scientific_contracts(self):
         """Run existing source/condition/value contracts once, not history replay."""
@@ -215,7 +270,7 @@ def compare_snapshots(before, after):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('action', choices=['query', 'export', 'check', 'verify', 'diff', 'validate-update'])
+    parser.add_argument('action', choices=['query', 'summary', 'export', 'check', 'verify', 'diff', 'validate-update'])
     parser.add_argument('--query', default='')
     parser.add_argument('--quantity')
     parser.add_argument('--category')
@@ -247,6 +302,8 @@ def main():
     filters = {k: getattr(args, k) for k in ('query', 'quantity', 'category', 'source')}
     if args.action == 'export':
         print(json.dumps(database.export(args.output, **filters), ensure_ascii=False))
+    elif args.action == 'summary':
+        print(json.dumps(database.summary(**filters), ensure_ascii=False))
     elif args.action == 'check':
         result = (database.validate_scientific_contracts() if args.scientific_contracts else
                   {'status': 'reference_integrity_passed', 'snapshot': database.snapshot,

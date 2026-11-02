@@ -22,6 +22,14 @@
 
 ## 日常验证
 
+先用概览定位需要核对的现有记录，再查询原始条件及来源。概览直接统计原生状态，
+不会把未知改为已报告，也不授予审核或发布状态；来源许可按关联来源去重统计。
+
+```sh
+python -m materials_boundaries.database summary --category composite
+python -m materials_boundaries.database query --query C11000 --quantity mass_density
+```
+
 ```sh
 python -m materials_boundaries.database check
 python -m materials_boundaries.database verify --snapshot new-snapshot

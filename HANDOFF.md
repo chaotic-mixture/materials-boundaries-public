@@ -1,5 +1,32 @@
 # Materials Boundaries development handoff
 
+## Database development continuation (2026-11-02)
+
+Continue from `experimental/open-database`, baseline commit
+`a35928deaf3a1b5ad89211a798bcf0eaf5e02929`, using
+[database contribution stages](docs/DATABASE_CONTRIBUTING.zh.md) and
+[layered database checks](docs/DATABASE_CI.md). The current
+[coverage and SCC review account](docs/DATABASE_COVERAGE.zh.md) binds the native
+database fingerprint and separates working counts from reviewed data.
+The user requested continued work under this database standard and consolidated
+GitHub delivery after substantial local progress; main merge, stable release and
+deployment remain separate. The older scope and validation narrative below is
+retained as historical software-checkpoint evidence. Its complete-history gates
+do not replace the current database contribution workflow, and daily database
+checks do not certify those historical release gates.
+
+The [SCC independent data review](experimental/material-batches/scc-fresh-flow-recipes-20261029/DATABASE_DATA_REVIEW.json)
+approved the exact 1,000 candidate identities/states/properties and one source as
+reviewed data on 2026-11-02. It binds database fingerprint
+`b931d7f94c8e40a73fcc918f47c9a8e9a0cffd5e5f31224aa97dafd48e045ff4`
+and 38 reviewed evidence files. It grants no software acceptance or publication
+clearance. This completes the finite local data increment under the new database
+workflow; the old SCC software-acceptance record below remains historical.
+The new summary
+command reports native conditions, evidence and source-rights statuses without
+granting admission or publication status. No historical failed or incomplete
+regression is reclassified as passing by this transition.
+
 ## Current local development scope
 
 The user has resumed material expansion toward at least 1,000 admitted unique

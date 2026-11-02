@@ -22,6 +22,50 @@ def fixture():
 
 
 class DatabaseTests(unittest.TestCase):
+    def test_summary_counts_identities_separately_and_retains_native_statuses(self):
+        data = fixture()
+        first = data['reference_properties']['records'][0]
+        first['conditions'] = {'temperature': {'status': 'not_reported_in_inspected_source'},
+                               'additional_conditions': []}
+        first['evidence_kind'] = 'manufacturer_reference'
+        second = deepcopy(first)
+        second.update(id='p2', quantity='elastic_modulus',
+                      conditions={'direction': {'status': 'reported'}},
+                      uncertainty_status='not_reported_in_inspected_source',
+                      sample_count={'relation': 'not_reported', 'value': None})
+        data['reference_properties']['records'].append(second)
+        data['materials']['records'][0]['property_ids'].append('p2')
+        data['sources']['records'].append({'id': 'unused', 'license': {'status': 'not_used'}})
+        data['sources']['records'][0]['license']['status'] = 'no_explicit_reuse_license_verified'
+        db = Database(data); result = db.summary()
+        self.assertEqual(result['property_records'], 2)
+        self.assertEqual(result['material_identities'], 1)
+        self.assertEqual(result['material_states'], 1)
+        self.assertEqual(result['identities_by_category'], {'metal': 1})
+        self.assertEqual(result['referenced_sources'], 1)
+        self.assertEqual(result['source_license_statuses'], {'no_explicit_reuse_license_verified': 1})
+        self.assertEqual(result['condition_statuses'], {
+            'temperature': {'__missing__': 1, 'not_reported_in_inspected_source': 1},
+            'direction': {'__missing__': 1, 'reported': 1}})
+        self.assertEqual(result['sample_count_relations'], {'__missing__': 1, 'not_reported': 1})
+        self.assertEqual(result['independent_scientific_review_flags'], {'false': 2})
+        self.assertEqual(result['database_snapshot'], db.snapshot)
+        self.assertEqual(db.data, data)
+        filtered = db.summary(quantity='elastic_modulus')
+        self.assertEqual(filtered['property_records'], 1)
+        self.assertEqual(filtered['condition_statuses'], {'direction': {'reported': 1}})
+
+    def test_summary_empty_selection_and_drift(self):
+        db = Database(fixture())
+        result = db.summary(query='absent')
+        self.assertEqual(result['property_records'], 0)
+        self.assertEqual(result['material_identities'], 0)
+        self.assertEqual(result['condition_statuses'], {})
+        self.assertEqual(result['source_license_statuses'], {})
+        db.data['materials']['identities'][0]['name'] = 'changed'
+        with self.assertRaisesRegex(ValueError, 'changed after construction'):
+            db.summary()
+
     def test_in_memory_mutation_cannot_reuse_old_snapshot(self):
         db = Database(fixture())
         db.data['sources']['records'][0]['license']['identifier'] = 'changed'
