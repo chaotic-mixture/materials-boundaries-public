@@ -1,0 +1,232 @@
+{
+  "id": "refprop_abbasi2022_manure_phbv39_flexural_modulus",
+  "version": "1.0.0",
+  "material_state_id": "state_abbasi2022_manure_phbv39",
+  "quantity": "flexural_modulus",
+  "quantity_dimension": "pressure",
+  "source_property_label": "Flexural Modulus (GPa)",
+  "reported_value": {
+    "kind": "scalar",
+    "value_text": "1.02",
+    "unit_text": "GPa",
+    "unit_code": "GPa",
+    "number": "1.02"
+  },
+  "evidence_kind": "published_experimental_reference",
+  "reporting_basis": "reported_summary",
+  "determination_basis": "source_reports_measurement",
+  "basis_note": "Table 9 PHBV-39 flexural modulus, mean ± SD per table footnote; at least five replicates under section 2.2.8. No conversion to tensile/Young modulus or specimen-level reanalysis.",
+  "conditions": {
+    "temperature": {
+      "status": "reported",
+      "text": "Room temperature; numerical setpoint not reported",
+      "evidence": [
+        {
+          "source_id": "abbasi_2022_manure_phbv",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9571417/fullTextXML",
+          "locator": "Section 2.2.8, common specimen preparation and three-point bending method",
+          "supports": [
+            "condition"
+          ]
+        }
+      ],
+      "notes": null
+    },
+    "test_standard": {
+      "status": "not_reported_in_inspected_source",
+      "text": null,
+      "evidence": [],
+      "notes": "Not reported for this selected source-qualified result."
+    },
+    "test_method": {
+      "status": "reported",
+      "text": "Three-point bending on DMA Q800 at source-described room temperature, span 10 mm, source wording constant strain of 1% until yield; Universal Analysis v4.5A stress–strain analysis. Exact modulus fit window/algorithm and a per-time bending rate are not specified.",
+      "evidence": [
+        {
+          "source_id": "abbasi_2022_manure_phbv",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9571417/fullTextXML",
+          "locator": "Section 2.2.8, common specimen preparation and three-point bending method",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ],
+      "notes": null
+    },
+    "direction": {
+      "status": "not_reported_in_inspected_source",
+      "text": null,
+      "evidence": [],
+      "notes": "Not reported for this selected source-qualified result."
+    },
+    "conditioning": {
+      "status": "reported",
+      "text": "Vacuum dried at 60 °C overnight before hot pressing",
+      "evidence": [
+        {
+          "source_id": "abbasi_2022_manure_phbv",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9571417/fullTextXML",
+          "locator": "Section 2.2.8, common specimen preparation and three-point bending method",
+          "supports": [
+            "state",
+            "condition"
+          ]
+        }
+      ],
+      "notes": "Post-molding conditioning time and relative humidity are not specified."
+    },
+    "loading_rate": {
+      "status": "not_reported_in_inspected_source",
+      "text": null,
+      "evidence": [],
+      "notes": "Source states constant strain of 1% until yield, without a per-time rate. Do not borrow the tensile 3 N/min ramp or treat 1% as a fit window."
+    },
+    "additional_conditions": [
+      {
+        "name": "test_relative_humidity",
+        "fact": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Not reported; no laboratory humidity default."
+        }
+      },
+      {
+        "name": "support_span",
+        "fact": {
+          "status": "reported",
+          "text": "10 mm",
+          "evidence": [
+            {
+              "source_id": "abbasi_2022_manure_phbv",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9571417/fullTextXML",
+              "locator": "Section 2.2.8, common specimen preparation and three-point bending method",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Literal source value; not a tensile gauge length."
+        }
+      },
+      {
+        "name": "bending_strain_setting",
+        "fact": {
+          "status": "reported",
+          "text": "Source wording: constant strain of 1% until yield",
+          "evidence": [
+            {
+              "source_id": "abbasi_2022_manure_phbv",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9571417/fullTextXML",
+              "locator": "Section 2.2.8, common specimen preparation and three-point bending method",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Keep source wording; not a verified strain rate, fitting interval or oscillatory amplitude."
+        }
+      }
+    ]
+  },
+  "density_basis": null,
+  "summary_statistic": "reported_mean",
+  "uncertainty": {
+    "type": "reported_standard_deviation",
+    "value_text": "0.08",
+    "number": "0.08",
+    "unit_text": "GPa",
+    "unit_code": "GPa",
+    "scope": "Selected source result only; no confidence interval, min/max bound or engineering allowable is inferred.",
+    "coverage_factor": null,
+    "confidence_level": null,
+    "evidence": [
+      {
+        "source_id": "abbasi_2022_manure_phbv",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9571417/fullTextXML",
+        "locator": "Table 9, PHBV-39 row, Flexural Modulus (GPa), mean/SD footnote; section 2.2.8",
+        "supports": [
+          "uncertainty"
+        ]
+      }
+    ]
+  },
+  "uncertainty_status": "reported_standard_deviation",
+  "uncertainty_note": "1.02 ± 0.08 GPa: reported mean ± SD; source notes SD rounded up to mean precision where necessary. No SEM/CI conversion.",
+  "sample_count": {
+    "value": 5,
+    "relation": "at_least",
+    "scope": "At least five mechanical-test replicates for the selected source group; exact count and independent production-batch count not stated.",
+    "source_statement": "At least 5 replicates.",
+    "evidence": [
+      {
+        "source_id": "abbasi_2022_manure_phbv",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9571417/fullTextXML",
+        "locator": "Section 2.2.8, common specimen preparation and three-point bending method",
+        "supports": [
+          "sample_count"
+        ]
+      }
+    ]
+  },
+  "method_definition": {
+    "type": "source_reported_conventional",
+    "definition": "Three-point bending on DMA Q800 at source-described room temperature, span 10 mm, source wording constant strain of 1% until yield; Universal Analysis v4.5A stress–strain analysis. Exact modulus fit window/algorithm and a per-time bending rate are not specified.",
+    "extraction_window": null,
+    "evidence": [
+      {
+        "source_id": "abbasi_2022_manure_phbv",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9571417/fullTextXML",
+        "locator": "Section 2.2.8, common specimen preparation and three-point bending method",
+        "supports": [
+          "method",
+          "condition"
+        ]
+      }
+    ]
+  },
+  "source_discrepancies": [],
+  "source_id": "abbasi_2022_manure_phbv",
+  "evidence": [
+    {
+      "source_id": "abbasi_2022_manure_phbv",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9571417/fullTextXML",
+      "locator": "Table 9, PHBV-39 row, Flexural Modulus (GPa), mean/SD footnote; section 2.2.8",
+      "supports": [
+        "reported_value",
+        "summary_statistic",
+        "classification"
+      ]
+    },
+    {
+      "source_id": "abbasi_2022_manure_phbv",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9571417/fullTextXML",
+      "locator": "Section 2.2.8, common specimen preparation and three-point bending method",
+      "supports": [
+        "method",
+        "condition"
+      ]
+    }
+  ],
+  "source_document": {
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9571417/fullTextXML",
+    "revision": "Retained PMC9571417 XML; PDF hash is a different asset.",
+    "inspected_on": "2026-11-03",
+    "sha256": "a37eac0af73559b942f680a671d41a4d870d66d94b76e825cdaf61cc6cd3a3a5",
+    "hash_status": "recorded",
+    "hash_note": null,
+    "inspection_scope": "Retained primary XML Table 9 PHBV-39 flexural modulus and footnotes; section 2.2.8 common preparation/bending; article permission notice. No fresh PDF visual inspection or independent review this round.",
+    "inspection_status": "selected_content_inspected"
+  },
+  "scope_note": "Only existing purified PHBV-39 operational-day sample and common hot-pressed cut specimen preparation from section 2.2.8. 39 is not 39% HV. This is source-reported flexural modulus, not Young modulus or oscillatory storage modulus. Post-press conditioning/RH, exact numerical room temperature, fit algorithm and per-time bending rate remain unknown; no clinical/biodegradation qualification inferred.",
+  "evaluation_support": "catalog_only",
+  "universal_bound": false,
+  "engineering_allowable": false,
+  "verification": {
+    "source_inspection_scope": "Retained primary XML Table 9 PHBV-39 flexural modulus and footnotes; section 2.2.8 common preparation/bending; article permission notice. No fresh PDF visual inspection or independent review this round.",
+    "transcription_cross_check": "completed",
+    "independent_scientific_review": false,
+    "raw_data_reanalysis": false
+  }
+}

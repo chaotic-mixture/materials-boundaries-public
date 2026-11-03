@@ -1,0 +1,87 @@
+{
+  "schema": "existing-PHBV39-second-heating-melting-peaks-proposal/1",
+  "baseline_snapshot": "ee1b29bd4c1a4dbe7b7aea476dcbbb054eb0fe8928ecf3ada2b6d50ef2533c6d",
+  "baseline_git_head": "4d4f8fa84451ab0481ec6c2cfbe3495209dad4b8",
+  "source_id": "abbasi_2022_manure_phbv",
+  "doi": "10.3390/polym14194140",
+  "primary_XML_sha256": "a37eac0af73559b942f680a671d41a4d870d66d94b76e825cdaf61cc6cd3a3a5",
+  "primary_XML_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9571417/fullTextXML",
+  "license": "Article CCBY4authoredcontent;uninspectedGuho prior-work/rawdata/SI rightsnotexpanded",
+  "identity_id": "mat_abbasi2022_manure_phbv39",
+  "state_id": "state_abbasi2022_manure_phbv39_dsc_second_heating",
+  "rows": [
+    {
+      "source_label": "Tm1",
+      "source_column": "DSC Tm1(°C)",
+      "number": "159.7",
+      "value_text": "159.7",
+      "unit_code": "degC",
+      "unit_text": "°C",
+      "new_property_id": "refprop_abbasi2022_manure_phbv39_melting_peak_1_temperature"
+    },
+    {
+      "source_label": "Tm2",
+      "source_column": "DSC Tm2(°C)",
+      "number": "170.1",
+      "value_text": "170.1",
+      "unit_code": "degC",
+      "unit_text": "°C",
+      "new_property_id": "refprop_abbasi2022_manure_phbv39_melting_peak_2_temperature"
+    }
+  ],
+  "method": {
+    "locator": "Section2.2.5 DSC method;Table4;section3.4 meltingdiscussion",
+    "criterion": "Source endothermal peak ofsecondheatingscan forTm,notTg inflection,onset/endset/crystallization orTGAdecomposition.",
+    "program": "Reuse exact common DSC programasr27,without inventingsecondscanstart,actualtrace orcompletethermalhistoryerasure.",
+    "instrument": "TA Q200 DSC;Tzeroaluminum pans;4–6mg;N250mLmin",
+    "calibration_and_software": "Indium/sapphirecalibration statement;TAUniversalAnalysisv4.5A;accuracy/certificateunknown",
+    "peak_labels": "Retain authorTm1/Tm2labels;no sorting/relabelingrule inferred forother materials.",
+    "n": "Selected-cell nnull;common in-duplicate onlymethodcontext perr27review.",
+    "unknown": [
+      "Selectedcellrun provenance/independentexperimentstatus",
+      "Exactpeakpicking/baseline/rounding/peakuncertainty",
+      "Individualpan/samplemass/moisture/storage",
+      "n,aggregation,SD-SE-CI,correlation andpairingofindividualmeasurements"
+    ]
+  },
+  "source_provenance": "Section3.4 jointlyreferencesGuho2020results/reanalysis;selectedtwoTable4literals only,no newindependent2022experiment/prior-papercontents/SI/rawdataclaim.",
+  "contract_proposal": {
+    "quantity": "melting_peak_temperature",
+    "dimension": "temperature",
+    "central_units": [
+      "degC",
+      "K"
+    ],
+    "branch_plan": "Keep fivecomplete mutuallyexclusivebranches;temperaturebranch quantityenum(Tg,melting_peak_temperature),other excludesboth. No six-branchcount churn.",
+    "signed_coordinates": "Reuseexactexistingtemperaturecentralregex/signprecision/signedzero/interval/comparison/floorsK0/C−273.15;no broadeningunsignedlegacydomains.",
+    "uncertainty": "ClosedtemperaturequantitiesallowC/Kabsolute differences nonnegativeandwithoutoffset;otherquantitysam-unitruleunchanged. Relativepercentrequiresorigin/scale noteorunknowncaveat.",
+    "peak_identity": "SeparatepropertyIDswithsource_property_labelTm1/Tm2 andadditionalconditionthermal_peak_label,source evidence andexplicitmethodrole. Samequantity/sameDSCstate returnsbothrecords;no collapse byquantity.",
+    "not_inferred": [
+      "Tm1–Tm2 interval",
+      "Singleaverage/globalmeltingpoint",
+      "Twoindependentmaterials/states/runs",
+      "Tg/Tc/Tonset/Td/Tendset ormechanicalallowable",
+      "Pairedcurves/orderingbounds/automaticconversion/engineinput"
+    ]
+  },
+  "state_plan": {
+    "new_states": 0,
+    "existing_DSC_state_change": "version1.0.0to1.0.1;appendtwo propertyIDs andsource_scope only. Allstatefacts/names/identity/grade existingTgproperty remaincompleteequal.",
+    "all_old5333_properties": "completeunchanged",
+    "all_other5217_states": "completeunchanged",
+    "new_identities_grades_sources": 0,
+    "source_change": "Oneappend-onlyclaimnote"
+  },
+  "anticipated_after": {
+    "properties": 5335,
+    "states": 5218,
+    "Abbasi_source_export": 7,
+    "Tg_global": 6,
+    "melting_peak_global": 2
+  },
+  "native_applied": false,
+  "production_changed": false,
+  "pushed": false,
+  "fresh_PDF_review": false,
+  "full_history_regression": "not_run"
+}

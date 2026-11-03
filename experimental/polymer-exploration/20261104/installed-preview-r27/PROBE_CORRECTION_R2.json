@@ -1,0 +1,17 @@
+{
+  "schema": "installed-render-assertion-correction/1",
+  "original_builder_sha256": "c3e2ca796c32f204d01d107e13b33514b81b11c6fe69124dcc394a94317e19f0",
+  "corrected_builder_sha256": "322cec90128abb3880a9dd166e0ef8c95909923d1e3265b146c363f1fd03f062",
+  "change": {
+    "before": "assert all(p['reported_value']['number'] in text for p in rows)",
+    "after": "assert all(p['reported_value']['value_text'] in text for p in rows)",
+    "count": 1
+  },
+  "cause": "Renderer correctly retains sourceUnicode−5.3 while canonicalnumber isASCII-5.3;old assertionincorrectly demanded canonicaltypography inrenderedsource text.",
+  "failed_evidence": "External FAILED_ORIGINAL_PROBE_REPLAY_R1.json binds originalprobehash/line38 andcapturedstderr. Originalinitialbuildfailedat sameprobe;replayisclearlylabeled.",
+  "data_or_runtime_changes": false,
+  "not_weakened": "Completeinstalledpropertyobjects,canonicalnumber/sourcevalue_text andglobal6query stillmustexactlyequalfrozenmappingfacts;onlypresentation assertioncomparessourcetext.",
+  "resume": "Use alreadybuilt/installed exactwheel with --resume-existing;all69/staged/wheel/payload/provenanceguards retained;no rebuild/reinstall.",
+  "unit_tests": "Notrun;failurewas installationprobe/assertion,not172tests.",
+  "independent_install_review": "pending"
+}

@@ -1,0 +1,88 @@
+{
+  "schema": "existing-PHBV39-negative-DSC-Tg-source-proposal/1",
+  "baseline_snapshot": "9a00c6f56ca0773d1afbdfaae1561567e264aec130d23349e18317b39519a72d",
+  "baseline_git_head": "4d4f8fa84451ab0481ec6c2cfbe3495209dad4b8",
+  "source_id": "abbasi_2022_manure_phbv",
+  "doi": "10.3390/polym14194140",
+  "primary_XML_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9571417/fullTextXML",
+  "primary_XML_sha256": "a37eac0af73559b942f680a671d41a4d870d66d94b76e825cdaf61cc6cd3a3a5",
+  "primary_XML_bytes": 231051,
+  "license": "CC BY4.0 author-created content;prior referenced results not independently licensed or verified by this audit",
+  "row": {
+    "source_label": "PHBV-39",
+    "identity_id": "mat_abbasi2022_manure_phbv39",
+    "base_state_id": "state_abbasi2022_manure_phbv39",
+    "base_property_id": "refprop_abbasi2022_manure_phbv39_flexural_modulus",
+    "new_state_id": "state_abbasi2022_manure_phbv39_dsc_second_heating",
+    "new_property_id": "refprop_abbasi2022_manure_phbv39_glass_transition_temperature",
+    "table": "Table4",
+    "column": "DSC Tg(°C)",
+    "source_value_text": "−5.3",
+    "number": "-5.3",
+    "unit_code": "degC",
+    "unit_text": "°C"
+  },
+  "method": {
+    "locator": "JATS section2.2.5 ThermalAnalysis",
+    "sample": "Purified PHBV,4–6mg,Tzero aluminum pans",
+    "instrument": "TA Q200 DSC,refrigerated cooling",
+    "atmosphere": "Nitrogen50mL/min",
+    "calibration": "Indium andsapphire per manufacturerprotocols,as stated;certificate/accuracy unknown",
+    "initial_equilibration": "40°C3min",
+    "first_heating": "10°C/min to180°C,hold3min",
+    "cooling": "to−50°C at−10°C/min,hold3min",
+    "cycle": "cycle repeated;Tg inflectionpoint ofsecondheating scan",
+    "software": "TA Universal Analysis v4.5A",
+    "replication": "in duplicate",
+    "standard": "No DSCteststandard named in inspectedmethod;mechanicalstandardnottransferred"
+  },
+  "sample_count_proposal": {
+    "value": 2,
+    "relation": "exact",
+    "scope": "Two source-reported DSC measurement replicates under common section2.2.5;independent specimens/preparations/batches unknown.",
+    "adjudication_requested": "Is source in-duplicate sufficient for measurement-replicate count2 while retaining independence unknown?Not inferred from mass,cycles,Table9 or numberofmaterials."
+  },
+  "statistics": {
+    "summary_statistic": "not_stated",
+    "reporting_basis": "not_stated",
+    "uncertainty": null,
+    "numeric_dispersion": "unknown;Table9 mean-SD footnote doesnotapply toTable4;duplicate method doesnotestablish an arithmeticmean"
+  },
+  "state_plan": {
+    "identity": "Existing operational-day39 identity;not39%HV,no new identity",
+    "product_form": "Purified extracted PHBV DSC sample4–6mg in Tzero aluminum pan;actualmass/lid geometryunknown",
+    "processing": "section2.2.1 extraction/purification andvacuumdrying only;no180Chotpress/0.3gmechanicaldisc/60Covernight/cutbars inherited",
+    "thermal_state": "DSC specifiedheating/coolingcycle;notmechanicalhotpress or permanentconversion certification",
+    "conditioning": "Postextraction moisture/storage and DSCspecificpreconditioningunknown;40C3min thermalprogramnotRHconditioning",
+    "composition": "Existing Table1 GC-MS context0.21±0.01 andpurity88.5±4.7% remain sourcequalified;39operationaldaynotHVfraction;compositionuncertainty notTable9SD"
+  },
+  "provenance_boundary": {
+    "locator": "Section3.4 opening paragraph;reference6",
+    "issue": "Text groups resultsobtained fromGuho2020 andreanalyzeddata inTable4/FigureS1;percellrun/originaldata ownership andindependence unresolved.",
+    "prior_reference": {
+      "title": "Pilot-scale production of poly-3-hydroxybutyrate-co-3-hydroxyvalerate from fermented dairy manure: Process performance, polymer characterization, and scale-up implications",
+      "doi": "10.1016/j.biteb.2020.100588",
+      "year": 2020,
+      "inspected": false
+    },
+    "disposition": "Select only Abbasi2022 Table4 PHBV39 literal−5.3°C;do not claim newindependent2022experiment or addGuhoas secondexperiment/copy data fromuninspectedwork;priorpaper/rawdata/SI notchecked"
+  },
+  "unknown": [
+    "Exact individualsamplemass/lidtype",
+    "Actualtemperatureprofile/calibrationcertificate/accuracy",
+    "Preciseinflectionalgorithm/baseline/rounding",
+    "Independent specimens/preparations/batches andpercellrunprovenance",
+    "Table4aggregation/mean/SD/SE/CI",
+    "RH/moisture/storage beforeDSC"
+  ],
+  "invariants": [
+    "All5332oldproperties5217oldstates completeunchanged",
+    "One newDSCstate1property,sameexistingidentity,noIDs/grades/sourcesadded",
+    "Abbasi sourceappendoneclaimnote only",
+    "Existing temperaturecontract reused withoutproductioncodechanges;noautomaticconversion/engine/allowable/service-limit"
+  ],
+  "native_applied": false,
+  "pushed": false,
+  "fresh_PDF_review": false,
+  "full_history_regression": "not_run"
+}

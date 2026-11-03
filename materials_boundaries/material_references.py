@@ -31,6 +31,8 @@ QUANTITY_DIMENSIONS = {
     "compressive_strength": "pressure",
     "tear_strength": "force_per_length",
     "izod_impact_strength": "energy_per_area",
+    "glass_transition_temperature": "temperature",
+    "melting_peak_temperature": "temperature",
     "elastic_modulus_unspecified": "pressure",
     "tensile_strength": "pressure",
     "tensile_stress_at_break": "pressure",
@@ -43,6 +45,7 @@ QUANTITY_DIMENSIONS = {
     "slump_flow_spread": "length",
 }
 UNIT_DIMENSIONS = {
+    "degC": "temperature", "K": "temperature",
     "mm": "length",
     "kJ/m^2": "energy_per_area", "J/m^2": "energy_per_area",
     "kN/m": "force_per_length", "N/m": "force_per_length", "N/mm": "force_per_length",
@@ -96,6 +99,12 @@ TEXT = {"type": "string", "minLength": 1,
 NULL = {"type": "null"}
 NULLABLE_TEXT = {"anyOf": [TEXT, NULL]}
 DECIMAL = {"type": "string", "maxLength": 49, "pattern": DECIMAL_PATTERN}
+# Signed coordinates belong only to the dedicated temperature-result branch.
+# Signed zero retains source polarity; uncertainty magnitudes remain unsigned.
+SIGNED_DECIMAL = {"type": "string", "maxLength": 50,
+                  "pattern": r"^-?(?:0|[1-9][0-9]{0,23})(?:\.[0-9]{1,24})?(?![\s\S])"}
+TEMPERATURE_UNITS = ("degC", "K")
+TEMPERATURE_QUANTITIES = ("glass_transition_temperature", "melting_peak_temperature")
 HTTPS = {"type": "string", "format": "uri", "pattern": r"^(?![\s\S]*[\x00-\x1f\x7f-\x9f\ud800-\udfff])https://[^\s/?#]+(?:[/?#][^\s]*)?(?![\s\S])"}
 
 
@@ -206,12 +215,19 @@ def _make_properties_schema():
     definitions["legacy_reported_value"] = deepcopy(definitions["reported_value"])
     definitions["elongation_reported_value"] = deepcopy(definitions["reported_value"])
     definitions["shore_a_reported_value"] = deepcopy(definitions["reported_value"])
+    definitions["temperature_reported_value"] = deepcopy(definitions["reported_value"])
+    for branch in definitions["temperature_reported_value"]["oneOf"]:
+        branch["properties"]["unit_code"] = _enum(TEMPERATURE_UNITS)
+        for key in ("number", "lower", "upper"):
+            if key in branch["properties"]:
+                branch["properties"][key] = SIGNED_DECIMAL
     definitions["shore_a_reported_value"]["oneOf"] = definitions["shore_a_reported_value"]["oneOf"][:2]
     for branch in definitions["shore_a_reported_value"]["oneOf"]:
         branch["properties"]["unit_code"] = {"const": "shore_a_scale"}
     for branch in definitions["legacy_reported_value"]["oneOf"]:
         branch["properties"]["unit_code"] = _enum(
-            code for code in UNIT_DIMENSIONS if code not in {"percent_elongation", "shore_a_scale"})
+            code for code in UNIT_DIMENSIONS
+            if code not in {"percent_elongation", "shore_a_scale", *TEMPERATURE_UNITS})
     for branch in definitions["elongation_reported_value"]["oneOf"]:
         branch["properties"]["unit_code"] = {"const": "percent_elongation"}
     # Closed source-reported uncertainty variants. An amplitude alone never
@@ -338,12 +354,18 @@ def _make_properties_schema():
     shore["properties"]["quantity_dimension"] = {"const": "dimensionless"}
     shore["properties"]["reported_value"] = _ref("shore_a_reported_value")
     del shore["properties"]["specified_elongation"]
+    temperature = deepcopy(definitions["property"])
+    temperature["properties"]["quantity"] = _enum(TEMPERATURE_QUANTITIES)
+    temperature["properties"]["quantity_dimension"] = {"const": "temperature"}
+    temperature["properties"]["reported_value"] = _ref("temperature_reported_value")
+    del temperature["properties"]["specified_elongation"]
     other = definitions["property"]
     other["properties"]["quantity"] = _enum(
         q for q in QUANTITY_DIMENSIONS
-        if q not in {"tensile_stress_at_specified_elongation", "shore_a_hardness"} and q not in PERCENT_ELONGATION_QUANTITIES)
+        if q not in {"tensile_stress_at_specified_elongation", "shore_a_hardness", *TEMPERATURE_QUANTITIES}
+        and q not in PERCENT_ELONGATION_QUANTITIES)
     del other["properties"]["specified_elongation"]
-    definitions["property"] = {"oneOf": [other, stress, elongation, shore]}
+    definitions["property"] = {"oneOf": [other, stress, elongation, shore, temperature]}
     return {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "$id": "urn:materials-boundaries:schema:reference_properties:1.0.0",
@@ -602,6 +624,7 @@ def _validate_links(materials, properties, indices):
 # Only spelling/typography normalization; these mappings never change a unit or
 # infer a quantity. Unknown spellings need deliberate capability review.
 _UNIT_SPELLINGS = {
+    "degC": {"°C", "° C", "degC"}, "K": {"K"},
     "mm": {"mm"},
     "kJ/m^2": {"kJ/m^2", "kJ/m2", "kJ/m²"},
     "J/m^2": {"J/m^2", "J/m2", "J/m²"},
@@ -710,6 +733,60 @@ def _validate_value(value, path, dimension=None, nonnegative=False):
         _fail(path, "source text does not preserve scalar value/precision")
 
 
+def _temperature_token_matches(token, canonical):
+    """Preserve temperature polarity; reuse exact unsigned magnitude spelling."""
+    token = token.strip()
+    negative = canonical.startswith("-")
+    if negative:
+        if not token.startswith(("-", "−")):
+            return False
+        return _numeric_token_matches(token[1:], canonical[1:])
+    if token.startswith(("-", "−")):
+        return False
+    return _numeric_token_matches(token[1:] if token.startswith("+") else token, canonical)
+
+
+def _validate_temperature_value(value, path):
+    """Check source coordinates, not a thermal criterion or physical attainability."""
+    unit = value["unit_code"]
+    if unit not in TEMPERATURE_UNITS or value["unit_text"].strip() not in _UNIT_SPELLINGS[unit]:
+        _fail(path, "unsupported temperature unit or spelling")
+    kind = value["kind"]
+    numbers = [value["lower"], value["upper"]] if kind == "interval" else [value["number"]]
+    floor = Decimal("-273.15") if unit == "degC" else Decimal("0")
+    if any(Decimal(n) < floor for n in numbers):
+        _fail(path, "temperature coordinate below absolute zero")
+    text = value["value_text"].strip()
+    if kind == "interval":
+        if Decimal(value["lower"]) >= Decimal(value["upper"]):
+            _fail(path, "temperature interval endpoints must be strictly ordered")
+        # Unary minus is never an unspaced separator for signed endpoints.
+        # Distinct en/em dash, 'to', or a spaced hyphen are unambiguous.
+        separators = r"\bto\b|[–—]|\s+[-−]\s+"
+        if not any(n.startswith("-") for n in numbers):
+            separators += r"|[-−]"
+        matches = 0
+        for sep in re.finditer(separators, text):
+            if (_temperature_token_matches(text[:sep.start()], value["lower"])
+                    and _temperature_token_matches(text[sep.end():], value["upper"])):
+                matches += 1
+        if matches != 1:
+            _fail(path, "temperature interval text must preserve unambiguous signed endpoints/precision")
+    elif kind == "comparison":
+        match = re.fullmatch(r"(>=|<=|>|<|≥|≤)\s*(.+)", text)
+        if (not match or {"≥": ">=", "≤": "<="}.get(match[1], match[1]) != value["operator"]
+                or not _temperature_token_matches(match[2], value["number"])):
+            _fail(path, "temperature comparison text must preserve operator/polarity/precision")
+    elif not _temperature_token_matches(text, value["number"]):
+        _fail(path, "temperature scalar text must preserve polarity/precision")
+
+
+def _absolute_uncertainty_unit_matches(prop, unit):
+    central = prop["reported_value"]["unit_code"]
+    return (unit == central or (prop["quantity"] in TEMPERATURE_QUANTITIES
+            and central in TEMPERATURE_UNITS and unit in TEMPERATURE_UNITS))
+
+
 def _validate_reported_measures(prop, path):
     """Check declared measure metadata, not the truth of source prose.
 
@@ -744,10 +821,12 @@ def _validate_reported_measures(prop, path):
             continue
         value = measure["reported_value"]
         if measure["basis"] == "absolute":
-            if value["unit_code"] != prop["reported_value"]["unit_code"]:
+            if not _absolute_uncertainty_unit_matches(prop, value["unit_code"]):
                 _fail(measure_path, "absolute measure unit must equal result unit")
             _validate_value(value, measure_path, prop["quantity_dimension"], nonnegative=True)
         else:
+            if prop["quantity"] in TEMPERATURE_QUANTITIES and measure["note"] is None:
+                _fail(measure_path, "relative temperature measure needs a source-scale/origin caveat")
             _validate_value(value, measure_path, nonnegative=True)
 
 
@@ -757,9 +836,12 @@ def _validate_property(prop):
     dimension = QUANTITY_DIMENSIONS[prop["quantity"]]
     if prop["quantity_dimension"] != dimension:
         _fail(path, "quantity dimension mismatch")
-    _validate_value(prop["reported_value"], path + ".reported_value", dimension,
-                    nonnegative=(prop["quantity"] in PERCENT_ELONGATION_QUANTITIES or
-                                 prop["quantity"] == "shore_a_hardness"))
+    if prop["quantity"] in TEMPERATURE_QUANTITIES:
+        _validate_temperature_value(prop["reported_value"], path + ".reported_value")
+    else:
+        _validate_value(prop["reported_value"], path + ".reported_value", dimension,
+                        nonnegative=(prop["quantity"] in PERCENT_ELONGATION_QUANTITIES or
+                                     prop["quantity"] == "shore_a_hardness"))
     if prop["quantity"] == "shore_a_hardness":
         value = prop["reported_value"]
         numbers = [value["lower"], value["upper"]] if value["kind"] == "interval" else [value["number"]]
@@ -857,7 +939,7 @@ def _validate_property(prop):
         if kind == "reported_standard_deviation" and not is_mean:
             _fail(path, "SD requires explicit reported mean and uncertainty status")
         if kind != "reported_measures":
-            if uncertainty["unit_code"] != prop["reported_value"]["unit_code"]:
+            if not _absolute_uncertainty_unit_matches(prop, uncertainty["unit_code"]):
                 _fail(path, "uncertainty unit must equal result unit")
             _validate_value(uncertainty, path + ".uncertainty", dimension, nonnegative=True)
             _require_tag(uncertainty["evidence"], "uncertainty", path, source)

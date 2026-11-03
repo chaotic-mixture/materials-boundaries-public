@@ -1,0 +1,135 @@
+{
+  "schema": "existing-epoxy-DSC-Tg-source-contract-proposal/1",
+  "baseline_git_head": "4d4f8fa84451ab0481ec6c2cfbe3495209dad4b8",
+  "baseline_snapshot": "a5c0c67e51e471294363c9d30db9af82a73f1dd619e1d1a4ecb5c2a276e42ea1",
+  "source_id": "tarasov_2022_pna_bpf_epoxy",
+  "doi": "10.3390/polym14214547",
+  "rows": [
+    {
+      "source_label": "PNA-BPF-1",
+      "base_state_id": "state_tarasov2022_pna_bpf_1_dds_cured",
+      "base_property_id": "refprop_tarasov2022_pna_bpf_1_tensile_strength",
+      "new_state_id": "state_tarasov2022_pna_bpf_1_dds_cured_dsc",
+      "new_property_id": "refprop_tarasov2022_pna_bpf_1_glass_transition_temperature",
+      "table7_number": "160.0",
+      "source_unit_text": "°C",
+      "unit_code": "degC"
+    },
+    {
+      "source_label": "PNA-BPF-2",
+      "base_state_id": "state_tarasov2022_pna_bpf_2_dds_cured",
+      "base_property_id": "refprop_tarasov2022_pna_bpf_2_tensile_strength",
+      "new_state_id": "state_tarasov2022_pna_bpf_2_dds_cured_dsc",
+      "new_property_id": "refprop_tarasov2022_pna_bpf_2_glass_transition_temperature",
+      "table7_number": "153.0",
+      "source_unit_text": "°C",
+      "unit_code": "degC"
+    },
+    {
+      "source_label": "PNA-BPF-3",
+      "base_state_id": "state_tarasov2022_pna_bpf_3_dds_cured",
+      "base_property_id": "refprop_tarasov2022_pna_bpf_3_tensile_strength",
+      "new_state_id": "state_tarasov2022_pna_bpf_3_dds_cured_dsc",
+      "new_property_id": "refprop_tarasov2022_pna_bpf_3_glass_transition_temperature",
+      "table7_number": "174.7",
+      "source_unit_text": "°C",
+      "unit_code": "degC"
+    },
+    {
+      "source_label": "PNA-BPF-4",
+      "base_state_id": "state_tarasov2022_pna_bpf_4_dds_cured",
+      "base_property_id": "refprop_tarasov2022_pna_bpf_4_tensile_strength",
+      "new_state_id": "state_tarasov2022_pna_bpf_4_dds_cured_dsc",
+      "new_property_id": "refprop_tarasov2022_pna_bpf_4_glass_transition_temperature",
+      "table7_number": "169.3",
+      "source_unit_text": "°C",
+      "unit_code": "degC"
+    },
+    {
+      "source_label": "PNA-BPF-5",
+      "base_state_id": "state_tarasov2022_pna_bpf_5_dds_cured",
+      "base_property_id": "refprop_tarasov2022_pna_bpf_5_tensile_strength",
+      "new_state_id": "state_tarasov2022_pna_bpf_5_dds_cured_dsc",
+      "new_property_id": "refprop_tarasov2022_pna_bpf_5_glass_transition_temperature",
+      "table7_number": "156.7",
+      "source_unit_text": "°C",
+      "unit_code": "degC"
+    }
+  ],
+  "primary_PDF_sha256": "1f06bc0667c7c5575a0e88772868a95cd27ba01a264d3b3a0b9c859a8a6423aa",
+  "method": {
+    "locator": "PDFp6section2.5.4",
+    "instrument": "DSC204F1Phoenix(Netzsch)",
+    "standard": "GOST R55135-2012(ISO11357-2:1999),as cited only",
+    "scan": "Dynamic heating40-270°C,10°C/min",
+    "atmosphere": "Nitrogen60-100mL/minflow",
+    "sample_mass": "5-10mg range,not replicatecount",
+    "calibration": "Source says temperature/enthalpy calibration usinggallium,indium,tin,bismuth,zinc;actualcertificate/accuracy/currentcalibrationunknown",
+    "unknown": [
+      "Tg extraction criterion:onset/midpoint/inflection/notstated",
+      "first/second/laterheat,cycles,coolingrate andprecedingthermalhistory",
+      "baseline/reductionsoftware/calibrationuncertainty",
+      "exact mass,pans,lids,geometry,actualheatingprofile",
+      "RH/moistureconditioning/storage,n/replicates/batches/centralestimator/SD-SE-CI"
+    ]
+  },
+  "source_discrepancies": {
+    "inherit": "Threeexistingnominalfeed/mole/alkalicontradictionsonly;notbendingtrend orIzod4.1/4.01as aTg-specificdiscrepancy.",
+    "Tg_max": "Abstractup-to174.5°C vsTable7PNA3=174.7°C;reasonunresolved. ProposeTable7literal sourcequalifiedtranscription,notresolvewhichtrue/priority,norepair/average/uncertaintyinterval/secondexperiment.",
+    "cross_reference": "p19TgparagraphcitesTable8,butTgcolumnisTable7whileTable8flexural;preservecrossrefissue,notrelocatesourcevalues."
+  },
+  "statistics": {
+    "summary_statistic": "not_stated",
+    "reporting_basis": "not_stated",
+    "uncertainty": null,
+    "sample_count": null,
+    "limits": "Source5-10mgis mass,notn;selectedmethod/Table7doesnotdefinegroupstats. Unknownnotzero."
+  },
+  "state_plan": {
+    "new_states": 5,
+    "new_identity_grade_source": 0,
+    "scope": "FiveindependentDSCsample states underexistingidentities;onlycommonrecipe/DDSprep/180C8hcurefacts reused. Unknowngeometry/thermalhistory;no4mmtensileor3.6mmbending/Izodbartransfer.",
+    "old_objects": "All5327properties and5212states completeunchanged;onesourceappend only.",
+    "temperature_condition": "Reportnonisothermal40-270°C scanrangeascondition,clearlynotambient/cure/Tg itself;unknownexactprofile.",
+    "rate_condition": "Mechanical loading_rate not_applicable;record10°C/min inadditionalthermal_heating_rate,notstrain/crossheadrate."
+  },
+  "contract_proposal": {
+    "quantity": "glass_transition_temperature",
+    "dimension": "temperature",
+    "central_units": {
+      "degC": [
+        "°C",
+        "° C",
+        "degC"
+      ],
+      "K": [
+        "K"
+      ]
+    },
+    "schema": "Addexplicitfifthcompletepropertybranch forTg,closedtemperatureunits/signedfixed-pointcentralvalue. PreservealloldunsignedDECIMAL/legacyconstraints;excludeTg/tempunitsfromlegacycentralbranch. Archivefiveoldtests beforeupdatingexplicitbranchcount4to5,not hidebranch orweakendomainassertions.",
+    "value_shapes": "Scalar/interval/comparison. SignedCelsius inclbelow0;Kelvincoordinate>=0/Celsius>=-273.15 inclabsolute-zero boundaryasrepresentablecoordinate,notphysicalattainability/realTgcertification. No upperuniversalbound. Signedzeroallowedonlynewtemperaturecentralrepresentation;fixedpointprecision andsourcepolaritypreserved;nonfinite/exponentcanonical rejected.",
+    "lexical": "Dedicatedtemperaturesource matcher permitsASCII-/Unicode-minus,sourceplus fornonnegativecanonical,comma/grouped/scientificsourcelexemes viaexistingmagnitude matcher;negativeinterval parsingmustnot splitunaryminus incorrectly. Oldmatcher unchanged.",
+    "central_vs_uncertainty": "Temperaturecoordinates differbyoffset,amplitudesare differences. No automaticoffset/conversion onstoredvalues. Keepuncertaintycanonicalunsigned/nonnegativeandtypedpercentconfidencelevel. Permittemperatureabsoluteamplitude ineitherdegC orK onlyforthisquantity,retainrawunit/nooffset/norescaling;otherquantities retainsameunitrule.",
+    "relative_percent": "Source-reported relativepercent descriptors mayremainonlywithexplicitnote onreference-scale/origin orunknown origin;noCVrecomputeCelsiusvsKelvin.",
+    "separation": "Notmelting/decomposition/service/curetemperature,thermalexpansionorengine/evaluatorinput. Forbidtarget/pressure/energy/percent/hardnesscentralunits."
+  },
+  "official_units_reference": {
+    "url": "https://www.nist.gov/pml/special-publication-330/sp-330-section-2",
+    "retained_notes_sha256": "b4dd571390969c1338cbe3b221a200653aff2790c94635799ed5d2018487621d",
+    "scope": "Unitrelationshipsonly;no rawHTMLhash ornewTgdefinition."
+  },
+  "inspection": {
+    "date": "2026-11-04",
+    "visual_pages": [
+      1,
+      5,
+      6,
+      16,
+      19
+    ],
+    "rawPDF": "Same retainedpublisherPDF,notfreshdownload.",
+    "licence": "ArticleCCBY4.0,p1;title/authors/journal/DOI retained,rawPDF/PNGexternal.",
+    "latestnotices_SI_or_originaldata": "Unknown/notretrieved;noauthorcontact."
+  },
+  "stage": "Source/concept/stateplanonly;no newbatchimplementation/native/install/push."
+}

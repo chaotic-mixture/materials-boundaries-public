@@ -1,0 +1,74 @@
+test_absolute_uncertainty_keeps_difference_role_without_offset (test_melting_peak_temperature_contract.MeltingPeakTemperatureContractTests.test_absolute_uncertainty_keeps_difference_role_without_offset) ... ok
+test_closed_quantity_units_and_target_roles (test_melting_peak_temperature_contract.MeltingPeakTemperatureContractTests.test_closed_quantity_units_and_target_roles) ... ok
+test_four_language_rendering_retains_source_glyph_and_peak_labels (test_melting_peak_temperature_contract.MeltingPeakTemperatureContractTests.test_four_language_rendering_retains_source_glyph_and_peak_labels) ... ERROR
+test_generated_schema_retains_five_branches_and_existing_Tg (test_melting_peak_temperature_contract.MeltingPeakTemperatureContractTests.test_generated_schema_retains_five_branches_and_existing_Tg) ... ERROR
+test_relative_measures_require_source_scale_or_unknown_origin_note (test_melting_peak_temperature_contract.MeltingPeakTemperatureContractTests.test_relative_measures_require_source_scale_or_unknown_origin_note) ... ok
+test_same_state_same_quantity_query_export_keeps_both_complete_peaks (test_melting_peak_temperature_contract.MeltingPeakTemperatureContractTests.test_same_state_same_quantity_query_export_keeps_both_complete_peaks) ... ok
+test_signed_coordinates_and_temperature_floors_are_reused (test_melting_peak_temperature_contract.MeltingPeakTemperatureContractTests.test_signed_coordinates_and_temperature_floors_are_reused) ... ERROR
+test_two_peaks_are_two_properties_not_two_materials_or_implicit_interval (test_melting_peak_temperature_contract.MeltingPeakTemperatureContractTests.test_two_peaks_are_two_properties_not_two_materials_or_implicit_interval) ... ok
+
+======================================================================
+ERROR: test_four_language_rendering_retains_source_glyph_and_peak_labels (test_melting_peak_temperature_contract.MeltingPeakTemperatureContractTests.test_four_language_rendering_retains_source_glyph_and_peak_labels)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "F:\材料边界\open-database\tests\test_melting_peak_temperature_contract.py", line 99, in test_four_language_rendering_retains_source_glyph_and_peak_labels
+    text=render_material_catalog(graph[1],'reference-properties',language)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\材料边界\open-database\materials_boundaries\material_presentation.py", line 155, in render_material_catalog
+    materials, properties, sources = _resolved_graph(catalog, kind)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\材料边界\open-database\materials_boundaries\material_presentation.py", line 96, in _resolved_graph
+    validate_material_catalog(materials, properties, sources)
+  File "F:\材料边界\open-database\materials_boundaries\material_references.py", line 1011, in validate_material_catalog
+    _validate_material_catalog(materials, properties, sources)
+  File "F:\材料边界\open-database\materials_boundaries\material_references.py", line 1059, in _validate_material_catalog
+    _validate_property(prop)
+  File "F:\材料边界\open-database\materials_boundaries\material_references.py", line 869, in _validate_property
+    _require_tag(item["evidence"], "condition", path, source)
+  File "F:\材料边界\open-database\materials_boundaries\material_references.py", line 509, in _require_tag
+    _fail(path, "missing primary evidence support: " + tag)
+  File "F:\材料边界\open-database\materials_boundaries\material_references.py", line 385, in _fail
+    raise ValueError(f"{path}: {message}")
+ValueError: refprop_synthetic_a_density: missing primary evidence support: condition
+
+======================================================================
+ERROR: test_generated_schema_retains_five_branches_and_existing_Tg (test_melting_peak_temperature_contract.MeltingPeakTemperatureContractTests.test_generated_schema_retains_five_branches_and_existing_Tg)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "F:\材料边界\open-database\tests\test_melting_peak_temperature_contract.py", line 117, in test_generated_schema_retains_five_branches_and_existing_Tg
+    Draft202012Validator(schema).validate(graph[1]);validate_material_catalog(*graph)
+                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\材料边界\open-database\materials_boundaries\material_references.py", line 1011, in validate_material_catalog
+    _validate_material_catalog(materials, properties, sources)
+  File "F:\材料边界\open-database\materials_boundaries\material_references.py", line 1059, in _validate_material_catalog
+    _validate_property(prop)
+  File "F:\材料边界\open-database\materials_boundaries\material_references.py", line 869, in _validate_property
+    _require_tag(item["evidence"], "condition", path, source)
+  File "F:\材料边界\open-database\materials_boundaries\material_references.py", line 509, in _require_tag
+    _fail(path, "missing primary evidence support: " + tag)
+  File "F:\材料边界\open-database\materials_boundaries\material_references.py", line 385, in _fail
+    raise ValueError(f"{path}: {message}")
+ValueError: refprop_synthetic_a_density: missing primary evidence support: condition
+
+======================================================================
+ERROR: test_signed_coordinates_and_temperature_floors_are_reused (test_melting_peak_temperature_contract.MeltingPeakTemperatureContractTests.test_signed_coordinates_and_temperature_floors_are_reused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "F:\材料边界\open-database\tests\test_melting_peak_temperature_contract.py", line 54, in test_signed_coordinates_and_temperature_floors_are_reused
+    validate_material_catalog(*fixture(number,unit,text))
+  File "F:\材料边界\open-database\materials_boundaries\material_references.py", line 1011, in validate_material_catalog
+    _validate_material_catalog(materials, properties, sources)
+  File "F:\材料边界\open-database\materials_boundaries\material_references.py", line 1059, in _validate_material_catalog
+    _validate_property(prop)
+  File "F:\材料边界\open-database\materials_boundaries\material_references.py", line 869, in _validate_property
+    _require_tag(item["evidence"], "condition", path, source)
+  File "F:\材料边界\open-database\materials_boundaries\material_references.py", line 509, in _require_tag
+    _fail(path, "missing primary evidence support: " + tag)
+  File "F:\材料边界\open-database\materials_boundaries\material_references.py", line 385, in _fail
+    raise ValueError(f"{path}: {message}")
+ValueError: refprop_synthetic_a_density: missing primary evidence support: condition
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.207s
+
+FAILED (errors=3)

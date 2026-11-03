@@ -1,0 +1,306 @@
+{
+  "id": "refprop_abbasi2022_manure_phbv39_glass_transition_temperature",
+  "version": "1.0.0",
+  "material_state_id": "state_abbasi2022_manure_phbv39_dsc_second_heating",
+  "quantity": "glass_transition_temperature",
+  "quantity_dimension": "temperature",
+  "source_property_label": "Tg (°C)",
+  "reported_value": {
+    "kind": "scalar",
+    "number": "-5.3",
+    "value_text": "−5.3",
+    "unit_code": "degC",
+    "unit_text": "°C"
+  },
+  "evidence_kind": "published_experimental_reference",
+  "reporting_basis": "not_stated",
+  "determination_basis": "source_reports_measurement",
+  "basis_note": "Exact selected Abbasi2022 Table4 literal −5.3°C;central estimator and numerical dispersion unknown. Source groups Guho2020 results and reanalyzed data;per-cell run provenance and independence unresolved. Not certified as a new independent2022 experiment.",
+  "conditions": {
+    "temperature": {
+      "status": "reported",
+      "text": "Nonisothermal DSC program:initial40°C3min,heating to180°C,cooling to−50°C,cycle repeated;Tg from second heating.",
+      "evidence": [
+        {
+          "source_id": "abbasi_2022_manure_phbv",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9571417/fullTextXML",
+          "locator": "Retained primary JATS section2.2.5 Thermal Analysis,DSC paragraph only",
+          "supports": [
+            "condition"
+          ]
+        }
+      ],
+      "notes": "Program settings only,not ambient,Tg value,a hot-pressing operation or an actual logged profile. Exact second-scan implementation not reconstructed beyond source wording."
+    },
+    "test_standard": {
+      "status": "not_reported_in_inspected_source",
+      "text": null,
+      "evidence": [],
+      "notes": "No DSC test standard named in inspected section2.2.5;no ASTM/ISO or mechanical-test standard inferred."
+    },
+    "test_method": {
+      "status": "reported",
+      "text": "Source-reported DSC Tg from the inflection point of the second heating scan;TA Q200 DSC with refrigerated cooling, 4–6mg purified PHBV in Tzero aluminum pans,nitrogen50mL/min. Source initially equilibrates40°C3min, heats10°C/min to180°C with3min hold,cools to−50°C at−10°C/min with3min hold,and repeats the cycle. TA Universal Analysis v4.5A;precise baseline/inflection algorithm unknown. Method says in duplicate,but the selected Table4 cell actual n/run provenance is not established.",
+      "evidence": [
+        {
+          "source_id": "abbasi_2022_manure_phbv",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9571417/fullTextXML",
+          "locator": "Retained primary JATS section2.2.5 Thermal Analysis,DSC paragraph only",
+          "supports": [
+            "condition"
+          ]
+        }
+      ],
+      "notes": "Common method context;selected-cell run provenance not established. Tg is not melting,cure or service-temperature limit."
+    },
+    "direction": {
+      "status": "not_applicable",
+      "text": null,
+      "evidence": [],
+      "notes": "Mechanical loading direction not applicable to DSC;sample orientation/isotropy not established."
+    },
+    "conditioning": {
+      "status": "not_reported_in_inspected_source",
+      "text": null,
+      "evidence": [],
+      "notes": "DSC-specific moisture,RH,postextraction storage and drying time/temperature unknown. Extraction vacuum drying does not establish mechanical60°Covernight conditioning for DSC."
+    },
+    "loading_rate": {
+      "status": "not_applicable",
+      "text": null,
+      "evidence": [],
+      "notes": "Mechanical loading rate not applicable;heating and cooling rates recorded separately."
+    },
+    "additional_conditions": [
+      {
+        "name": "thermal_heating_rate",
+        "fact": {
+          "status": "reported",
+          "text": "10°C/min",
+          "evidence": [
+            {
+              "source_id": "abbasi_2022_manure_phbv",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9571417/fullTextXML",
+              "locator": "Retained primary JATS section2.2.5 Thermal Analysis,DSC paragraph only",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source nominal heating rate,not mechanical rate or verified actual profile."
+        }
+      },
+      {
+        "name": "thermal_cooling_rate",
+        "fact": {
+          "status": "reported",
+          "text": "−10°C/min to−50°C",
+          "evidence": [
+            {
+              "source_id": "abbasi_2022_manure_phbv",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9571417/fullTextXML",
+              "locator": "Retained primary JATS section2.2.5 Thermal Analysis,DSC paragraph only",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source signed cooling ramp,not a second Tg or mechanical strain rate."
+        }
+      },
+      {
+        "name": "Tg_extraction_criterion",
+        "fact": {
+          "status": "reported",
+          "text": "Inflection point of the second heating scan",
+          "evidence": [
+            {
+              "source_id": "abbasi_2022_manure_phbv",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9571417/fullTextXML",
+              "locator": "Retained primary JATS section2.2.5 Thermal Analysis,DSC paragraph only",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Precise algorithm,fit window,baseline and rounding unknown."
+        }
+      },
+      {
+        "name": "pan_and_sample_mass",
+        "fact": {
+          "status": "reported",
+          "text": "Tzero aluminum pans;4–6mg purified PHBV",
+          "evidence": [
+            {
+              "source_id": "abbasi_2022_manure_phbv",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9571417/fullTextXML",
+              "locator": "Retained primary JATS section2.2.5 Thermal Analysis,DSC paragraph only",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Exact individualmass,lid details and sample/pan geometry unknown;mass is not n."
+        }
+      },
+      {
+        "name": "purge_atmosphere_and_flow",
+        "fact": {
+          "status": "reported",
+          "text": "Nitrogen50mL/min",
+          "evidence": [
+            {
+              "source_id": "abbasi_2022_manure_phbv",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9571417/fullTextXML",
+              "locator": "Retained primary JATS section2.2.5 Thermal Analysis,DSC paragraph only",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Nominal flow,not gas purity or dry-equilibrium moisture evidence."
+        }
+      },
+      {
+        "name": "calibration_and_software",
+        "fact": {
+          "status": "reported",
+          "text": "Indium and sapphire standards following manufacturer protocols;TA Universal Analysis v4.5A",
+          "evidence": [
+            {
+              "source_id": "abbasi_2022_manure_phbv",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9571417/fullTextXML",
+              "locator": "Retained primary JATS section2.2.5 Thermal Analysis,DSC paragraph only",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source statement,not calibration certificate,accuracy or uncertainty verification."
+        }
+      },
+      {
+        "name": "common_method_duplicate_measurements",
+        "fact": {
+          "status": "reported",
+          "text": "DSC method states in duplicate (two measurement repeats)",
+          "evidence": [
+            {
+              "source_id": "abbasi_2022_manure_phbv",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9571417/fullTextXML",
+              "locator": "Retained primary JATS section2.2.5 Thermal Analysis,DSC paragraph only",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Common method metadata only. Per-cell Table4 run linkage unresolved;not selected-result n=2,not two independent specimens/batches,and not inferred from two heating cycles."
+        }
+      },
+      {
+        "name": "thermal_holds",
+        "fact": {
+          "status": "reported",
+          "text": "Initial40°C3min;180°C3min;−50°C3min,then source says cycle repeated",
+          "evidence": [
+            {
+              "source_id": "abbasi_2022_manure_phbv",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9571417/fullTextXML",
+              "locator": "Retained primary JATS section2.2.5 Thermal Analysis,DSC paragraph only",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Preserve stated sequence without reconstructing an unreported actual trace or asserting complete erasure of all thermal history."
+        }
+      }
+    ]
+  },
+  "density_basis": null,
+  "summary_statistic": "not_stated",
+  "uncertainty": null,
+  "uncertainty_status": "not_reported_in_inspected_source",
+  "uncertainty_note": "Table4 reports a single literal without central aggregation or numerical SD/SE/CI. The common duplicate DSC method does not establish selected-cell n or an arithmetic mean. Table9 mechanical mean/SD/at-least5 replication is not transferred;unknown is not zero scatter.",
+  "sample_count": {
+    "value": null,
+    "relation": "not_reported",
+    "scope": "Selected PHBV-39 Table4 Tg cell:actual contributing measurement/specimen and independent batch counts unknown because per-cell run provenance is unresolved.",
+    "source_statement": "Section2.2.5 states a common in-duplicate DSC method;section3.4 jointly cites Guho results and reanalysis. Common duplication is retained separately,not asserted as this scalar n.",
+    "evidence": []
+  },
+  "method_definition": {
+    "type": "source_reported_conventional",
+    "definition": "Source-reported DSC Tg from the inflection point of the second heating scan;TA Q200 DSC with refrigerated cooling, 4–6mg purified PHBV in Tzero aluminum pans,nitrogen50mL/min. Source initially equilibrates40°C3min, heats10°C/min to180°C with3min hold,cools to−50°C at−10°C/min with3min hold,and repeats the cycle. TA Universal Analysis v4.5A;precise baseline/inflection algorithm unknown. Method says in duplicate,but the selected Table4 cell actual n/run provenance is not established.",
+    "extraction_window": null,
+    "evidence": [
+      {
+        "source_id": "abbasi_2022_manure_phbv",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9571417/fullTextXML",
+        "locator": "Retained primary JATS section2.2.5 Thermal Analysis,DSC paragraph only",
+        "supports": [
+          "method",
+          "classification"
+        ]
+      }
+    ]
+  },
+  "source_discrepancies": [
+    {
+      "description": "Section3.4 associates Table4/FigureS1 with results obtained from Guho2020 and reanalyzed data. The original run/data provenance of the selected −5.3°C cell is not resolved.",
+      "disposition": "Retain only the Abbasi2022 Table4 PHBV-39 literal as source-qualified context. Do not label a new independent2022 experiment,add uninspected Guho measurements,transfer duplicate count to selected n,repair/average values or broaden prior-work licensing.",
+      "evidence": [
+        {
+          "source_id": "abbasi_2022_manure_phbv",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9571417/fullTextXML",
+          "locator": "Retained JATS section3.4 opening paragraph,Table4 andreference6 DOI10.1016/j.biteb.2020.100588",
+          "supports": [
+            "source_discrepancy"
+          ]
+        }
+      ]
+    }
+  ],
+  "source_id": "abbasi_2022_manure_phbv",
+  "evidence": [
+    {
+      "source_id": "abbasi_2022_manure_phbv",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9571417/fullTextXML",
+      "locator": "Retained primary JATS Table4,PHBV-39 row,DSC Tg(°C) column",
+      "supports": [
+        "reported_value",
+        "classification"
+      ]
+    },
+    {
+      "source_id": "abbasi_2022_manure_phbv",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9571417/fullTextXML",
+      "locator": "Retained primary JATS section2.2.5 Thermal Analysis,DSC paragraph only",
+      "supports": [
+        "method",
+        "condition"
+      ]
+    }
+  ],
+  "source_document": {
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9571417/fullTextXML",
+    "revision": "Retained PMC9571417 primary XML;not a fresh PDF asset.",
+    "inspected_on": "2026-11-04",
+    "sha256": "a37eac0af73559b942f680a671d41a4d870d66d94b76e825cdaf61cc6cd3a3a5",
+    "hash_status": "recorded",
+    "hash_note": null,
+    "inspection_scope": "Retained primary PMC9571417 XML selected Table4 PHBV-39 Tg,sections2.1/2.2.1/2.2.5/3.4,Table1 composition andarticlepermission notice. Current PMC HTML readback agrees selected cell/provenance wording. Guho DOI inaccessible;no prior-paper contents,SI figures/rawdata,fresh PDFvisual or latestnotice/completeness audit.",
+    "inspection_status": "selected_content_inspected"
+  },
+  "scope_note": "Source-qualified operational-day39 PHBV Tg−5.3°C,not39%HV. Second-heating inflection/common DSC program are reported;selected-cell run provenance,n/aggregation/dispersion,moisture/storage and exact inflection algorithm unknown. In-duplicate is common-method context only. No hot-pressed mechanical-disc geometry/drying/rate or Table9 statistics transferred. No new independent experiment,melting temperature,service limit,engineering allowable,universal bound,automatic conversion or engine input.",
+  "evaluation_support": "catalog_only",
+  "universal_bound": false,
+  "engineering_allowable": false,
+  "verification": {
+    "source_inspection_scope": "Retained primary PMC9571417 XML selected Table4 PHBV-39 Tg,sections2.1/2.2.1/2.2.5/3.4,Table1 composition andarticlepermission notice. Current PMC HTML readback agrees selected cell/provenance wording. Guho DOI inaccessible;no prior-paper contents,SI figures/rawdata,fresh PDFvisual or latestnotice/completeness audit.",
+    "transcription_cross_check": "completed",
+    "independent_scientific_review": false,
+    "raw_data_reanalysis": false
+  }
+}

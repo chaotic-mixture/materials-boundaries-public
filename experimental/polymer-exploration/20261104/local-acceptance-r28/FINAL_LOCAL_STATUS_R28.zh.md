@@ -1,0 +1,17 @@
+# r28 PHBV-39两个熔融峰本地接纳
+
+同一既有PHBV-39纯化DSC第二次升温状态，新增Table4两个源标签熔融峰Tm1=159.7°C、Tm2=170.1°C。各有独立property ID、source_property_label、thermal_peak_label和对应列证据，不按quantity覆盖；不是温区、平均值、两种材料或两次独立实验。没有新身份、状态、牌号或来源。
+
+全部5333旧性质完整保持，包括既有Tg−5.3°C；其他5217状态完整不变。原DSC状态仅从1.0.0修订到1.0.1，追加两个性质ID和范围说明，全部状态事实／名称保持。Abbasi来源仅追加说明。第二次升温吸热峰判据有源支持，不转用Tg拐点、熔融起始／终止、冷却结晶或TGA失重温度。选定单元n、中心聚合、数值不确定度和Guho／重分析原始运行归属继续未知；共同duplicate只作方法背景，不当选定n。
+
+闭合温度分支支持Tg和melting_peak两量，仍五个完整互斥分支；原无符号数域及非温度量同单位不确定度规则保持。本轮180项组合检查通过，零失败／错误／跳过，包含8项新熔融峰检查，不与先前独立运行重复累计。首次8项检查中虚构夹具缺condition证据标签产生3个错误，失败版本／重放日志保留，修正夹具后整组重跑通过。180项运行的三表输入是接纳前ee1b快照；新增5335性质数据另由图、实际安装和对象等价核验，不宣称整组已在接纳后数据重跑。
+
+三表schema／format、5335性质完整图、同状态双峰2条联合筛选与完整导出、全库Tg6条旧性质、Abbasi来源5→7条完整joined和四语通过。真实离线隔离安装、RECORD、64项非版本原生包文件及三表等价通过；本地应用实际5335项性质检查、0复用。精确独审回执见本目录，不作为科学认证、工程允许值或使用温度。
+
+本批仅本地接纳，未提交／推送，无本批远端CI；完整历史回归、HTTP及全平台测试未运行。未新读Guho原文、SI、原始曲线、校准证书或最新通知；不扩大先前数据作品许可。未合并main、稳定发布或部署。历史远端成功不代表本批CI。
+
+Git HEAD：`4d4f8fa84451ab0481ec6c2cfbe3495209dad4b8`；数据库快照：`19079de9d0a0ad0808d77f9dc2c7681c88c1facc4c43e72ae7980eb64f35c491`。两者含义不同。
+
+当前全库：{'identities': 5180, 'grades': 31, 'states': 5218, 'properties': 5335, 'sources': 133}；聚合物：{'format': 'materials-database-summary/1', 'database_snapshot': '19079de9d0a0ad0808d77f9dc2c7681c88c1facc4c43e72ae7980eb64f35c491', 'filters': {'category': 'polymer'}, 'property_records': 1176, 'material_identities': 1037, 'material_states': 1075, 'referenced_sources': 16, 'identities_by_category': {'polymer': 1037}, 'properties_by_quantity': {'compressive_modulus': 5, 'compressive_strength': 5, 'flexural_elongation_at_break': 5, 'flexural_modulus': 6, 'flexural_strength': 6, 'glass_transition_temperature': 6, 'izod_impact_strength': 5, 'mass_density': 1007, 'melting_peak_temperature': 2, 'shore_a_hardness': 6, 'tear_strength': 1, 'tensile_elongation_at_break': 21, 'tensile_elongation_at_strength': 12, 'tensile_modulus': 21, 'tensile_strength': 37, 'tensile_stress_at_break': 6, 'tensile_stress_at_specified_elongation': 4, 'tensile_yield_strength': 2, 'youngs_modulus': 19}, 'properties_by_evidence_kind': {'published_computational_reference': 1000, 'published_experimental_reference': 176}, 'condition_statuses': {'conditioning': {'not_reported_in_inspected_source': 1124, 'reported': 52}, 'direction': {'not_applicable': 15, 'not_reported_in_inspected_source': 1124, 'reported': 37}, 'loading_rate': {'not_applicable': 15, 'not_reported_in_inspected_source': 1019, 'not_verified': 16, 'reported': 126}, 'temperature': {'not_reported_in_inspected_source': 111, 'reported': 1065}, 'test_method': {'not_reported_in_inspected_source': 1001, 'reported': 175}, 'test_standard': {'not_reported_in_inspected_source': 1025, 'reported': 151}}, 'uncertainty_statuses': {'not_reported_in_inspected_source': 1065, 'reported_confidence_interval': 25, 'reported_measures': 7, 'reported_plus_minus_unspecified': 29, 'reported_standard_deviation': 50}, 'sample_count_relations': {'at_least': 4, 'exact': 67, 'not_reported': 1105}, 'transcription_statuses': {'completed': 1176}, 'independent_scientific_review_flags': {'false': 1176}, 'source_license_statuses': {'explicit_article_authored_content_license_attribution_required': 1, 'explicit_reuse_license_verified': 12, 'no_explicit_reuse_license_verified_limited_factual_curation_only': 3}, 'scope': 'selected_property_records_and_their_joined_metadata', 'review_status': 'descriptive_only_not_admission_or_release', 'missing_status_label': '__missing__'}。
+
+实验标签性质176条，温度字段明确未报告111条，调湿字段明确未报告124条，确切n未确认109条。按性质对象计数，非独立试验组；非等温扫描范围不等于环境温度，标签数量不作科学认证。

@@ -641,3 +641,50 @@ is silently promoted to record-level uncertainty.
 设备名称包含Charpy不等于Charpy试验。缺口／未缺口、剩余韧带、冲击速度、摆锤能量、面积公式、破坏模式、方向与环境须有来源支持，不能从标准、名义试条尺寸或相邻弯曲试验补齐。相同单位不证明与Gc、J积分或断裂能常数可互换，也不转换为KIC、原始冲击能量、力、压力或撕裂强度；不带specified_elongation，不进engine、不作许用值／通用边界。
 
 选定表格与摘要／图形不一致时，将各原文写法和未解决原因随记录保存；来源限定转录不裁定真实实验值，不以差异构造测量不确定度、区间或第二个独立试验，不平均、补精度或修所谓笔误。数值离散度、样本数和统计未报告继续未知，不表示零散布；未知缺口模式的记录不能宣称与其他结果条件相当。
+
+
+### Source-reported DSC glass transition temperature
+
+`glass_transition_temperature` and `melting_peak_temperature` share the closed fifth property branch with dimension
+`temperature` and central units `degC` or `K`. Signed fixed-point coordinates
+preserve source polarity, signed zero and precision. The lexical validator
+separates unary minus from an unambiguous interval separator. Coordinates below
+−273.15 °C or 0 K are rejected; this coordinate check does not certify physical
+attainability, a Tg criterion or the source measurement. No upper bound is inferred.
+
+Absolute uncertainty and absolute reported-measure amplitudes remain unsigned
+nonnegative differences; only the closed temperature quantities permit either °C or K for those
+amplitudes. Their source units and values are retained without automatic conversion.
+A Celsius coordinate and a kelvin coordinate differ by 273.15, whereas a one-degree
+difference has the same magnitude in both scales (NIST SP 330, section 2.3.4:
+https://www.nist.gov/pml/special-publication-330/sp-330-section-2).
+Relative percent descriptors require a source-scale/origin note or an explicit
+unknown-origin caveat; no Celsius/kelvin coefficient of variation is calculated.
+Other quantities retain their existing unsigned number and same-unit uncertainty
+rules. Thermal scan rate is separate from mechanical loading rate.
+
+A transcribed DSC Tg is catalogue context only: unknown onset/midpoint/inflection,
+scan cycle, thermal history, conditioning, replicate count or dispersion remain
+unknown. Tg is not a melting point, cure temperature, service-temperature limit,
+engineering allowable, universal bound or evaluation-engine input. Source table,
+abstract and cross-reference disagreements must remain visible without repair.
+
+
+### Source-labelled melting peaks
+
+`melting_peak_temperature` records the source-selected endothermic melting peak,
+with its criterion and thermal program stated or explicitly unknown. Multiple
+peaks of one DSC sample remain separate property IDs, each with its source
+property label, `thermal_peak_label` additional condition and column-specific
+evidence. Query, export and rendering must keep every matching property object;
+quantity is not a unique key within a state. No universal peak numbering or
+ordering rule is inferred across sources.
+
+Two reported peaks are not an implicit temperature interval, an average, two
+materials, two independent runs, a universal single melting point or a service
+limit. Do not substitute glass-transition inflection, melting onset/endset,
+crystallization or TGA degradation. The shared temperature branch preserves
+signed coordinates and nonnegative C/K difference amplitudes without conversion;
+all non-temperature quantities retain their existing numerical and unit domains.
+Unknown selected-cell n, aggregation, dispersion and historical/reanalysis
+provenance remain attached even when the common method states duplicate tests.

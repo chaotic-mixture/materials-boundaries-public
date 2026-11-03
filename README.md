@@ -1,5 +1,18 @@
 # Materials Boundaries — source-qualified materials database
 
+## Current database checkpoint: polymer r26-r28 (2026-11-04)
+
+Current native tables contain **5,180 identities, 5,218 states and 5,335 properties**. Polymer coverage is **1,037 identities, 1,075 states and 1,176 properties**: 1,000 computational-reference and 176 experimental-reference labels, without scientific certification.
+
+Three accepted local rounds add eight thermal properties on existing identities: five epoxy Tg values, one PHBV-39 Tg and two separately labelled PHBV-39 melting peaks. Six DSC states are added. All 5,327 preceding property objects and 5,212 preceding state objects remain completely unchanged; two existing sources only append notes.
+
+Tg and melting peaks share a closed temperature branch. Source signs/precision and Celsius/kelvin difference roles are retained without automatic conversion. Two peaks stay separate records on the same DSC state, not an interval, average, two materials or two independent runs. Epoxy abstract 174.5 versus table 174.7 and its incorrect Table 8 reference remain unresolved. PHBV original/reanalysis attribution, selected n and numerical dispersion remain unknown; common duplicate testing does not establish selected-cell n.
+
+Among 176 experimental property objects, 111 temperature fields and 124 conditioning fields are unreported; exact n is unconfirmed for 109 (105 null, four lower bounds). Counts are properties, not independent test groups; a reported scan program is not ambient temperature.
+
+[Evidence and experimental delivery](experimental/polymer-exploration/20261104/delivery-r26-r28/README.zh.md). Snapshot `19079de9d0a0ad0808d77f9dc2c7681c88c1facc4c43e72ae7980eb64f35c491`; native software remains 0.35.0. Consolidated tests, installation, commit and remote CI require their exact subsequent receipts. No main merge, stable release or deployment is claimed. Earlier checkpoints retain historical context.
+
+
 ## Current database checkpoint: polymer r23-r25 (2026-11-04)
 
 Current native tables contain **5,180 identities, 5,212 states and 5,327 properties**. Polymer coverage is **1,037 identities, 1,069 states and 1,168 properties**: 1,000 computational-reference and 168 experimental-reference labels, without scientific certification.

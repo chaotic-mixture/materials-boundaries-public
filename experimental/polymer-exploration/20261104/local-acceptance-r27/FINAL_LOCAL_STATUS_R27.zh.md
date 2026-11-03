@@ -1,0 +1,17 @@
+# r27 PHBV-39负温度Tg本地接纳
+
+既有运行日PHBV-39新增Table4 DSC Tg −5.3°C及1个独立纯化DSC状态，无新身份、牌号或来源。全部5332旧性质、5217旧状态完整保持，Abbasi来源仅追加说明。39不是39%HV；第二次升温和拐点判据有原文支持，精确算法／曲线、湿度、存储、选定单元样本数和数值不确定度未知。
+
+原文将Guho2020结果和重分析数据共同引向Table4／FigureS1，单格运行归属及独立性未解。共同DSC方法的duplicate=2仅保留为附加条件，不升级为选定标量n=2。未查看Guho原文／原始数据或补充图，不声称新的独立2022实验或扩张旧作品许可。未继承机械180°C热压、0.3g、60°C过夜、试条几何或至少5次重复。
+
+r26的172项组合测试仅按其历史冻结输入保留；本批运行时代码、schema和测试文件未变，但数据已变化，未重跑该套件，不将172宣称为本批或当前数据的完整测试结果。新增数据通过三表schema／format、完整5333性质图、来源4→5完整joined导出及四语；真实隔离安装的单来源Tg精确查询1条、全库Tg6条完整对象相等，来源5条完整导出一致。RECORD、64项非版本原生包文件及三表安装等价通过。本地应用实际执行5333项性质检查，0复用。最终独审回执另见本目录。
+
+另有Sahin Table1五个供应商丝材Tg范围完成排除审计：未当打印试样DSC实测、未映射或接纳，原始规格版本／方法和第三方许可未知。首次提取遗漏空方法列的断言失败和七列修正已保留，未当单元测试结果。
+
+本批仅本地接纳，未提交／推送、无本批远端CI；完整历史回归、HTTP、全平台测试未运行。网页只回读选定PMC表格／来源文字，非HTTP产品测试或最新通知审计。未合并main、未稳定发布、未部署；不作标准合规或实验真实性认证。此前远端成功不代表本批CI。
+
+Git HEAD：`4d4f8fa84451ab0481ec6c2cfbe3495209dad4b8`；数据库快照：`ee1b29bd4c1a4dbe7b7aea476dcbbb054eb0fe8928ecf3ada2b6d50ef2533c6d`。两者含义不同。
+
+当前全库：{'identities': 5180, 'grades': 31, 'states': 5218, 'properties': 5333, 'sources': 133}；聚合物：{'format': 'materials-database-summary/1', 'database_snapshot': 'ee1b29bd4c1a4dbe7b7aea476dcbbb054eb0fe8928ecf3ada2b6d50ef2533c6d', 'filters': {'category': 'polymer'}, 'property_records': 1174, 'material_identities': 1037, 'material_states': 1075, 'referenced_sources': 16, 'identities_by_category': {'polymer': 1037}, 'properties_by_quantity': {'compressive_modulus': 5, 'compressive_strength': 5, 'flexural_elongation_at_break': 5, 'flexural_modulus': 6, 'flexural_strength': 6, 'glass_transition_temperature': 6, 'izod_impact_strength': 5, 'mass_density': 1007, 'shore_a_hardness': 6, 'tear_strength': 1, 'tensile_elongation_at_break': 21, 'tensile_elongation_at_strength': 12, 'tensile_modulus': 21, 'tensile_strength': 37, 'tensile_stress_at_break': 6, 'tensile_stress_at_specified_elongation': 4, 'tensile_yield_strength': 2, 'youngs_modulus': 19}, 'properties_by_evidence_kind': {'published_computational_reference': 1000, 'published_experimental_reference': 174}, 'condition_statuses': {'conditioning': {'not_reported_in_inspected_source': 1122, 'reported': 52}, 'direction': {'not_applicable': 13, 'not_reported_in_inspected_source': 1124, 'reported': 37}, 'loading_rate': {'not_applicable': 13, 'not_reported_in_inspected_source': 1019, 'not_verified': 16, 'reported': 126}, 'temperature': {'not_reported_in_inspected_source': 111, 'reported': 1063}, 'test_method': {'not_reported_in_inspected_source': 1001, 'reported': 173}, 'test_standard': {'not_reported_in_inspected_source': 1023, 'reported': 151}}, 'uncertainty_statuses': {'not_reported_in_inspected_source': 1063, 'reported_confidence_interval': 25, 'reported_measures': 7, 'reported_plus_minus_unspecified': 29, 'reported_standard_deviation': 50}, 'sample_count_relations': {'at_least': 4, 'exact': 67, 'not_reported': 1103}, 'transcription_statuses': {'completed': 1174}, 'independent_scientific_review_flags': {'false': 1174}, 'source_license_statuses': {'explicit_article_authored_content_license_attribution_required': 1, 'explicit_reuse_license_verified': 12, 'no_explicit_reuse_license_verified_limited_factual_curation_only': 3}, 'scope': 'selected_property_records_and_their_joined_metadata', 'review_status': 'descriptive_only_not_admission_or_release', 'missing_status_label': '__missing__'}。
+
+实验标签性质174条，温度字段明确未报告111条，调湿字段明确未报告122条，确切n未确认107条。按性质对象计数，非独立试验组；非等温扫描范围不等于环境温度，标签数量不作科学认证。
