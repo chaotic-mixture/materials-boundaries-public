@@ -42,7 +42,7 @@ Repository: [chaotic-mixture/materials-boundaries-public](https://github.com/cha
 ## Concrete material references
 
 <!-- material-catalog-summary:start -->
-The separate reference catalogue contains **5180 material identities**, **31 qualified grades**, **5181 source-scoped states** and **5197 reference properties**. Counts describe this registry only; aliases, categories, prior observations and computational model cells are not additional materials.
+The separate reference catalogue currently contains **5180 material identities**, **31 qualified grades**, **5190 source-scoped states** and **5223 reference properties** in the local reviewed r4 database. The [local acceptance record](experimental/polymer-exploration/20261103/local-acceptance-r4/README.zh.md) separates this state from remote publication. Counts describe this registry only; aliases, categories, prior observations and computational model cells are not additional materials.
 <!-- material-catalog-summary:end -->
 
 The working graph includes 2,000 source-qualified hypothetical computational crystal-model identities from JARVIS (1,000 metal-family compositions and 1,000 inorganic compositions), each with one reported optimized-structure density. A completed local JARVIS checkpoint accepted this increment after historical preservation, full regression and installed checks. That decision covers its frozen local experimental snapshot; it does not establish the current remote main, hosted CI, release or deployment state. Finite composition-based classification does not establish metallic electronic behavior, experimental existence or stable phases. [Frozen review and integration evidence](experimental/material-batches/jarvis-density-native-draft-20261028/README.md).

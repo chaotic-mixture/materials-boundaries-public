@@ -1,6 +1,29 @@
 # Materials Boundaries development handoff
 
-## Polymer experimental delivery (2026-11-03)
+## Consolidated r4 experimental checkpoint (2026-11-03)
+
+The [r4 delivery entry](experimental/polymer-exploration/20261103/delivery-r4/README.zh.md)
+groups the reviewed native update, finite source audits, independent reviews,
+installation checks and retained failure history for delivery on
+`experimental/open-database`. Exact remote acceptance and hosted CI require
+the delivered commit; local checks do not establish those outcomes. Earlier
+acceptance-stage documentation bytes are archived with their original hashes.
+
+## Local polymer acceptance checkpoint (2026-11-03)
+
+The reviewed r4 data have been applied locally: **5180 identities, 5190 states,
+5223 properties**, snapshot
+`62502e5fe24d06f883228fe7d9fea3c579d03d97c25c0b3b8d33a87a9c767bd6`.
+See the [local acceptance evidence](experimental/polymer-exploration/20261103/local-acceptance-r4/README.zh.md).
+This adds 22 properties and five states, corrects 22 existing properties, and adds
+no identities. Unknown conditions and source discrepancies remain explicit.
+The r4 isolated installation and incremental validation passed; all 50 scoped
+unit tests passed, with no failures, errors or skips. Full historical replay
+was not run. This acceptance receipt predates consolidated delivery. No main
+merge, stable release or deployment is included.
+Earlier entries and frozen candidate manifests retain their historical stages.
+
+## Prior polymer experimental delivery (2026-11-03)
 
 The [consolidated delivery entry](experimental/polymer-exploration/20261103/DELIVERY.md)
 separates the reviewed Sylgard addition (four states and four moduli, zero new

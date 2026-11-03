@@ -1,0 +1,42 @@
+{
+  "schema": "pbs-r0-identity-decision/1",
+  "stage": "curator_defer_not_independent_review",
+  "checked_at_utc": "2026-11-02T21:33:30.317713+00:00",
+  "decision": "defer_native_identity_and_state_mapping",
+  "source_xml_sha256": "a16999d84b85e49d09979b2d32804e9e9763bc0478449d9a4a2c3c346d7a4a1a",
+  "source_xml_bytes": 140387,
+  "source_facts": {
+    "R0_strength_mean_MPa": "35.9",
+    "R0_strength_SD_MPa": "2.1",
+    "R0_modulus_mean_MPa": "801",
+    "R0_modulus_SD_MPa": "121",
+    "R0_gel_fraction_cell": "-",
+    "gel_fraction_interpretation": "not_a_numeric_zero_or_density_or_tensile_specimen_measurement"
+  },
+  "existing_identity_id": "mat_ewurum2025_biopbs",
+  "existing_identity_canonical_sha256": "841f9690aa629b3ba409939eb7047df8a327fabcd2c64617695fcbd98475ce54",
+  "existing_identity_scope": "Mitsubishi Chemical Group BioPBS, neat PBS comparator B0 in Ewurum and McDonald (2025). §2.1 gives the unresolved combined designation BioPBS FZ91PM/FZ91PB; no single grade is selected or inferred. B0/B20 are study formulation labels, not certified grades.",
+  "review_needed": [
+    "R0 identity boundary relative to source-restricted B0 and R-series identities",
+    "no quantitative network inference from DCP feed or blank gel cell",
+    "separate injection-molded tensile state from hot-pressed gel specimens"
+  ],
+  "evidence_files_sha256": {
+    "docs/DATABASE_CONTRIBUTING.zh.md": "44dce10fedbc40ca56de304e263420b2ace4e41347d9360103ddf18feb3cf82f",
+    "docs/MATERIAL_GROWTH_1000_PER_CLASS.zh.md": "cae10fdd40779e33d27ff88bccb4c44ebd5ffc7fe21d4db53b50ce8d1bf6b488",
+    "docs/MATERIAL_GROWTH_EWURUM_REACTIVE_20261025.md": "c8ad3274fc97394adfd18747a65e56803557251b0cb3827e60b7bd68d3eb4b86",
+    "experimental/polymer-exploration/20261103/pbs-existing-tensile-draft-r1/REVIEW_INPUTS_R1.json": "05128aba6a2b1238f7b476dfd889482945f34e4b10dd63165707a07432979584",
+    "experimental/polymer-exploration/20261103/combined-preview-r2/REVIEW_INPUTS_R2.json": "dbf502389e372bee7fc79916a0f8e15d6fa23f8bbc2b1611542f9bf669d64169"
+  },
+  "native_files_sha256": {
+    "materials.json": "ab18261605c2b430e3fa8c8d5acaba184205f3f58f5a85c0c16401c33528920e",
+    "reference_properties.json": "738d68b6b58233c977d52b7a3488c695bb6abc504110a1aa646be002ec1a85dc",
+    "sources.json": "bcb01a63fa660b433f4c62f763254c96e0e1c9e34461b5e25f55f02201efd373"
+  },
+  "README_sha256": "09dd1b415ef7dfd8a8d9d053ce4a5b6c9c1a1d604984d65688555a439701dd26",
+  "new_native_records": 0,
+  "original_candidates_modified": false,
+  "independent_review": false,
+  "pdf_visual_check": false,
+  "push": false
+}
