@@ -1,5 +1,16 @@
 # Materials Boundaries — source-qualified materials database
 
+## Current database checkpoint: polymer r15-r18 (2026-11-03)
+
+The current native tables contain **5,180 identities, 5,195 states and 5,298 properties**. Polymer coverage is **1,037 identities, 1,052 states and 1,139 properties**: 1,000 computational-reference and 139 experimental-reference labels, without independent scientific certification.
+
+This checkpoint adds 31 source-qualified properties on existing polymer states: 19 elongations at break and 12 elongations at tensile strength. Endpoints remain separate. Original percentage values are retained; absolute SD/plus-minus amplitudes use elongation percentage points, while CV remains relative percent. New application-context code percent_elongation does not introduce a physical unit or rescale values.
+
+Unknown conditions and statistics remain explicit. Among the 139 experimental property objects, 76 lack a numeric n and four only report a lower bound; exact n is therefore unconfirmed for 80 records. These are property-object counts, not independent test groups. Earlier R2 value-missing counters must not be interpreted as all unknown exact n.
+
+[Evidence, limitations and experimental delivery](experimental/polymer-exploration/20261103/delivery-r15-r18/README.zh.md). Snapshot `596b1f2b5cfd756c696429a243b98d8c059ab3be3fe76aae370fad5cba7f99fa`; software remains 0.35.0. Actual submission and remote CI require exact-commit receipts. No main merge, stable release or deployment is claimed. All following checkpoints retain historical context.
+
+
 ## Current database checkpoint — polymer r12–r14 (2026-11-03)
 
 The current native tables contain **5,180 identities, 5,195 states and 5,267 properties**. Polymer coverage is **1,037 identities, 1,052 states and 1,108 properties**: 1,000 computational-reference and108 experimental-reference labels, not independent scientific certification.

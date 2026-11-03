@@ -1,0 +1,29 @@
+{
+  "schema": "source-labelled-strength-elongation-contract-proposal/1",
+  "quantity": "tensile_elongation_at_strength",
+  "dimension": "dimensionless",
+  "unit_code": "percent_elongation",
+  "source_unit_text": "%",
+  "existing_unit_semantics": "Reuse acceptedr15 application-context percentage code,not new physical unit;preserve raw numeric percentage scale. Absolute SD/±in elongation-percentage points,relative measures remain legacypercent.",
+  "scope_change": "Add second endpoint quantity to existing closed elongation branch. Rename internal branch/definitions only if needed,retain disjointoneOf vocabulary;legacy central units still exclude bothpercentage codes.",
+  "numeric_domain": "Source-supported0allowed,no artificial100cap,bothsource-elongation endpoints;legacy other quantities retain positivity.",
+  "separations": [
+    "Break and strength endpoints remain separate quantity codes even when values/locators coincide.",
+    "specified_elongation forbidden;not controlled/imposed target.",
+    "No cross-endpoint ordering invariant,no cross-composition monotonic repair.",
+    "No stress/mean-strain ratio or individual paired-curve/correlation inference from group summaries.",
+    "No automatic engineering/nominal/true strain conversion or engine input."
+  ],
+  "schema_requirements": [
+    "Public/runtime equality;newquantity onlydimensionless+percent_elongation.",
+    "Existing break quantity/unit behavior preserved,legacypercentstill noncentral.",
+    "Absolute percentage points separate from relativepercent and confidence/target shapes.",
+    "Strict4labels,complete query/export/render without scaling."
+  ],
+  "new_properties_proposed": 12,
+  "modified_existing_states_proposed": 12,
+  "new_identity_grade_state_source_objects": 0,
+  "implementation": "not_started",
+  "native_changed": false,
+  "pushed": false
+}

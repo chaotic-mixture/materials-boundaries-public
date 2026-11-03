@@ -32,6 +32,8 @@ QUANTITY_DIMENSIONS = {
     "tensile_stress_at_break": "pressure",
     "tensile_yield_strength": "pressure",
     "tensile_stress_at_specified_elongation": "pressure",
+    "tensile_elongation_at_break": "dimensionless",
+    "tensile_elongation_at_strength": "dimensionless",
     "slump_flow_spread": "length",
 }
 UNIT_DIMENSIONS = {
@@ -40,7 +42,11 @@ UNIT_DIMENSIONS = {
     "kg/dm^3": "mass_per_volume", "lb/in^3": "mass_per_volume",
     "MPa": "pressure", "GPa": "pressure", "N/mm^2": "pressure",
     "kN/mm^2": "pressure",
+    "percent_elongation": "dimensionless",
 }
+PERCENT_ELONGATION_QUANTITIES = (
+    "tensile_elongation_at_break", "tensile_elongation_at_strength",
+)
 EVIDENCE_KINDS = (
     "manufacturer_reference", "technical_association_reference",
     "published_experimental_reference", "published_computational_reference",
@@ -184,6 +190,16 @@ def _make_properties_schema():
         _object({"kind": {"const": "comparison"}, **common_value,
                  "operator": _enum((">", ">=", "<", "<=")), "number": DECIMAL}),
     ]}
+    # A source percentage elongation is a result, whereas the legacy percent
+    # code denotes relative uncertainty, confidence or a loading target.
+    # Keep result units closed and quantity-specific with the same vocabulary.
+    definitions["legacy_reported_value"] = deepcopy(definitions["reported_value"])
+    definitions["elongation_reported_value"] = deepcopy(definitions["reported_value"])
+    for branch in definitions["legacy_reported_value"]["oneOf"]:
+        branch["properties"]["unit_code"] = _enum(
+            code for code in UNIT_DIMENSIONS if code != "percent_elongation")
+    for branch in definitions["elongation_reported_value"]["oneOf"]:
+        branch["properties"]["unit_code"] = {"const": "percent_elongation"}
     # Closed source-reported uncertainty variants. An amplitude alone never
     # establishes dispersion, mean aggregation or a confidence construction.
     # Keep the existing SD shape unchanged for old catalog/output compatibility.
@@ -268,7 +284,7 @@ def _make_properties_schema():
         "id": _id("refprop"), "version": _record_revision(), "material_state_id": _id("state"),
         "quantity": _enum(QUANTITY_DIMENSIONS),
         "quantity_dimension": _enum(sorted(set(QUANTITY_DIMENSIONS.values()))),
-        "source_property_label": TEXT, "reported_value": _ref("reported_value"),
+        "source_property_label": TEXT, "reported_value": _ref("legacy_reported_value"),
         "evidence_kind": _enum(EVIDENCE_KINDS), "reporting_basis": _enum(REPORTING_BASES),
         "determination_basis": _enum(("source_reports_measurement", "source_reports_calculation", "source_reports_compiled_measurements", "not_stated", "mixed_or_unclear")),
         "basis_note": TEXT, "conditions": _object(conditions, ("additional_conditions",)),
@@ -298,11 +314,17 @@ def _make_properties_schema():
     stress = deepcopy(definitions["property"])
     stress["properties"]["quantity"] = {"const": "tensile_stress_at_specified_elongation"}
     stress["required"].append("specified_elongation")
+    elongation = deepcopy(definitions["property"])
+    elongation["properties"]["quantity"] = _enum(PERCENT_ELONGATION_QUANTITIES)
+    elongation["properties"]["quantity_dimension"] = {"const": "dimensionless"}
+    elongation["properties"]["reported_value"] = _ref("elongation_reported_value")
+    del elongation["properties"]["specified_elongation"]
     other = definitions["property"]
     other["properties"]["quantity"] = _enum(
-        q for q in QUANTITY_DIMENSIONS if q != "tensile_stress_at_specified_elongation")
+        q for q in QUANTITY_DIMENSIONS
+        if q != "tensile_stress_at_specified_elongation" and q not in PERCENT_ELONGATION_QUANTITIES)
     del other["properties"]["specified_elongation"]
-    definitions["property"] = {"oneOf": [other, stress]}
+    definitions["property"] = {"oneOf": [other, stress, elongation]}
     return {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "$id": "urn:materials-boundaries:schema:reference_properties:1.0.0",
@@ -572,6 +594,7 @@ _UNIT_SPELLINGS = {
     # Relative measures and specified-elongation descriptors use this spelling;
     # UNIT_DIMENSIONS and central-result units deliberately exclude percent.
     "percent": {"%"},
+    "percent_elongation": {"%"},
 }
 
 
@@ -711,7 +734,8 @@ def _validate_property(prop):
     dimension = QUANTITY_DIMENSIONS[prop["quantity"]]
     if prop["quantity_dimension"] != dimension:
         _fail(path, "quantity dimension mismatch")
-    _validate_value(prop["reported_value"], path + ".reported_value", dimension)
+    _validate_value(prop["reported_value"], path + ".reported_value", dimension,
+                    nonnegative=prop["quantity"] in PERCENT_ELONGATION_QUANTITIES)
     if prop["quantity"] == "tensile_stress_at_specified_elongation":
         target = prop["specified_elongation"]
         _validate_value(target, path + ".specified_elongation")

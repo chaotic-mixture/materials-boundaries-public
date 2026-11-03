@@ -1,0 +1,98 @@
+{
+  "schema": "sample-count-reporting-clarification/1",
+  "current_snapshot": "596b1f2b5cfd756c696429a243b98d8c059ab3be3fe76aae370fad5cba7f99fa",
+  "problem": "Historical Chinese wording used exact-n missing for a value-is-null counter. Lower-bound values do not establish exact n either.",
+  "resolution": "Keep null/value-missing count separate from exact-n-unconfirmed count and reported lower bounds.",
+  "history": [
+    {
+      "stage": "r15",
+      "snapshot": "a0413960c6bb433dfcdc78d1226f617c8d9b64f33515f746b0e94fa37747c927",
+      "experimental_property_objects": 117,
+      "sample_count_value_missing": 63,
+      "sample_count_relation_counts": {
+        "at_least": 4,
+        "not_reported": 63,
+        "exact": 50
+      },
+      "sample_count_exact_confirmed": 50,
+      "sample_count_exact_unconfirmed": 67,
+      "lower_bound_record_ids": [
+        "refprop_abbasi2022_manure_phbv39_flexural_modulus",
+        "refprop_abbasi2022_manure_phbv39_flexural_strength",
+        "refprop_abbasi2022_manure_phbv39_tensile_strength",
+        "refprop_abbasi2022_manure_phbv39_youngs_modulus"
+      ],
+      "historical_input_sha256": "441c27a0cc7f3d4bb652f54b7c305f8f9ce22e5f62d3b55b5c171374fc8af8ef",
+      "evidence_scope": "Frozen historical R2 inventory objects; no new historical native validation run."
+    },
+    {
+      "stage": "r16",
+      "snapshot": "62b47bb10c6ea5ad08905dffa326c29f6dee894f530990c63f6bd3f9d86ecd19",
+      "experimental_property_objects": 129,
+      "sample_count_value_missing": 70,
+      "sample_count_relation_counts": {
+        "at_least": 4,
+        "not_reported": 70,
+        "exact": 55
+      },
+      "sample_count_exact_confirmed": 55,
+      "sample_count_exact_unconfirmed": 74,
+      "lower_bound_record_ids": [
+        "refprop_abbasi2022_manure_phbv39_flexural_modulus",
+        "refprop_abbasi2022_manure_phbv39_flexural_strength",
+        "refprop_abbasi2022_manure_phbv39_tensile_strength",
+        "refprop_abbasi2022_manure_phbv39_youngs_modulus"
+      ],
+      "historical_input_sha256": "2d49fe8be76a1bfb0ba85d6980faf8b98699122f8d59f213aedb17fcbb91e41a",
+      "evidence_scope": "Frozen historical R2 inventory objects; no new historical native validation run."
+    },
+    {
+      "stage": "r17",
+      "snapshot": "e0a39a5c4ebc98c622b4dae24e3607636be8a57659525b0345dffbecb8f36d7c",
+      "experimental_property_objects": 135,
+      "sample_count_value_missing": 76,
+      "sample_count_relation_counts": {
+        "at_least": 4,
+        "not_reported": 76,
+        "exact": 55
+      },
+      "sample_count_exact_confirmed": 55,
+      "sample_count_exact_unconfirmed": 80,
+      "lower_bound_record_ids": [
+        "refprop_abbasi2022_manure_phbv39_flexural_modulus",
+        "refprop_abbasi2022_manure_phbv39_flexural_strength",
+        "refprop_abbasi2022_manure_phbv39_tensile_strength",
+        "refprop_abbasi2022_manure_phbv39_youngs_modulus"
+      ],
+      "historical_input_sha256": "4bd35409999b9f4689e5a2f3be61725b369b8c3779129e0e591608c1a538bb9c",
+      "evidence_scope": "Frozen historical R2 inventory objects; no new historical native validation run."
+    },
+    {
+      "stage": "r18",
+      "snapshot": "596b1f2b5cfd756c696429a243b98d8c059ab3be3fe76aae370fad5cba7f99fa",
+      "experimental_property_objects": 139,
+      "sample_count_value_missing": 76,
+      "sample_count_relation_counts": {
+        "at_least": 4,
+        "not_reported": 76,
+        "exact": 59
+      },
+      "sample_count_exact_confirmed": 59,
+      "sample_count_exact_unconfirmed": 80,
+      "lower_bound_record_ids": [
+        "refprop_abbasi2022_manure_phbv39_flexural_modulus",
+        "refprop_abbasi2022_manure_phbv39_flexural_strength",
+        "refprop_abbasi2022_manure_phbv39_tensile_strength",
+        "refprop_abbasi2022_manure_phbv39_youngs_modulus"
+      ],
+      "historical_input_sha256": "cd6f3649aead6736eb0f75f30a2249cc3e437b88a84e88c7ce33d21bd40d2e4a",
+      "evidence_scope": "Frozen historical R2 inventory objects; no new historical native validation run."
+    }
+  ],
+  "native_data_changed": false,
+  "source_statistics_changed": false,
+  "scope": "Property-object counts, not independent specimen groups or materials. Four PHBV records share one source/formulation context; no independent-group count inferred.",
+  "historical_frozen_documents": "Preserved unchanged; interpret old sample_count_value_missing as numeric nulls, not all exact-n unknowns.",
+  "tests": "not_run; report semantics only",
+  "full_history_regression": "not_run"
+}

@@ -1,0 +1,1031 @@
+{
+  "refprop_zakrecki2025_pa2200_sls_dyed_375h_youngs_modulus": {
+    "version": "1.0.0",
+    "id": "refprop_zakrecki2025_pa2200_sls_dyed_375h_youngs_modulus",
+    "material_state_id": "state_zakrecki2025_pa2200_sls_dyed_375h",
+    "quantity": "youngs_modulus",
+    "quantity_dimension": "pressure",
+    "source_property_label": "E (GPa)",
+    "reported_value": {
+      "kind": "scalar",
+      "value_text": "1.40",
+      "unit_text": "GPa",
+      "unit_code": "GPa",
+      "number": "1.40"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Original selected SLS source table summary only; no raw-specimen reanalysis, repaired statistic, manufacturer-data substitution or pooled estimate.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Actual tensile-test temperature is not reported.23C calculator reference,38C chamber air and55C black standard are not substituted."
+      },
+      "test_standard": {
+        "status": "reported",
+        "text": "EN ISO527-1, source claim",
+        "evidence": [
+          {
+            "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+            "locator": "XML section2.3, sec2dot3-materials-18-04478, tensile-testing paragraph",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Edition and conformity not independently verified."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "Instron5969 tensile test, source speed1mm/min; nominal specimens160 x20 x4mm; source test-section length115mm",
+        "evidence": [
+          {
+            "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+            "locator": "XML section2.3, sec2dot3-materials-18-04478, tensile-testing paragraph",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "115mm is not certified extensometer gauge length. Stress definition, strain-measurement implementation and exact extraction algorithm are not specified."
+      },
+      "direction": {
+        "status": "reported",
+        "text": "HorizontalXY printing; longest specimen sideX",
+        "evidence": [
+          {
+            "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+            "locator": "XML sections2.1–2.2, sec2dot1-materials-18-04478 and sec2dot2-materials-18-04478; Table5",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "No isotropy or transverse result inferred."
+      },
+      "conditioning": {
+        "status": "reported",
+        "text": "375h accelerated chamber exposure; source label 1S—6 months is an author-proposed approximate equivalence, not observed natural service time; selected post-processing Powershot C + DM60 + Powershot S",
+        "evidence": [
+          {
+            "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+            "locator": "XML section2.3, sec2dot3-materials-18-04478, ageing-cycle and calculator paragraphs; XML Table7 (materials-18-04478-t007), SLS / 1S—6 months / Powershot C + DM60 + Powershot S",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Post-processing and exposure history are not a moisture-equilibration protocol."
+      },
+      "loading_rate": {
+        "status": "reported",
+        "text": "Source test speed1mm/min",
+        "evidence": [
+          {
+            "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+            "locator": "XML section2.3, sec2dot3-materials-18-04478, tensile-testing paragraph",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": null
+      },
+      "additional_conditions": [
+        {
+          "name": "test_relative_humidity",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Tensile-test RH not reported; exposure RH is not transferred."
+          }
+        },
+        {
+          "name": "post_processing_order",
+          "fact": {
+            "status": "not_verified",
+            "text": null,
+            "evidence": [],
+            "notes": "Table treatment and section2.4 list the equipment in different orders; precise operation sequence unresolved."
+          }
+        },
+        {
+          "name": "post_exposure_recovery",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Time and moisture state between selected treatment/exposure and tensile testing not reported."
+          }
+        },
+        {
+          "name": "accelerated_ageing_program",
+          "fact": {
+            "status": "reported",
+            "text": "Q-SUN Xe-3 xenon exposure: source air38C, black standard55C(IBP), mixed dry irradiation and irradiation at50%RH, irradiance60W/m2 over300–400nm; phase durations, dry-phaseRH and actual specimen temperature not reported",
+            "evidence": [
+              {
+                "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+                "locator": "XML section2.3, sec2dot3-materials-18-04478, ageing-cycle and calculator paragraphs",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": null
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "reported_mean",
+    "uncertainty": {
+      "type": "reported_standard_deviation",
+      "value_text": "0.04",
+      "number": "0.04",
+      "unit_text": "GPa",
+      "unit_code": "GPa",
+      "scope": "XML Table7 (materials-18-04478-t007), SLS / 1S—6 months / Powershot C + DM60 + Powershot S, selected youngs_modulus group only",
+      "coverage_factor": null,
+      "confidence_level": null,
+      "evidence": [
+        {
+          "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+          "locator": "XML Table7 (materials-18-04478-t007), SLS / 1S—6 months / Powershot C + DM60 + Powershot S, Std column",
+          "supports": [
+            "uncertainty"
+          ]
+        }
+      ]
+    },
+    "uncertainty_status": "reported_standard_deviation",
+    "uncertainty_note": "Source E Mean 1.40 GPa, Std 0.04 GPa; CV column literal 2.74. Preserve all source literals. The conditional conventional percent-CV rounding screen is compatible, not an independent error estimate or scientific validation.",
+    "sample_count": {
+      "value": 6,
+      "relation": "exact",
+      "scope": "Selected SLS treatment and ageing group, source claim only",
+      "source_statement": "Six tensile specimens per printing technology, post-processing route and ageing group; not independent printing batches.",
+      "evidence": [
+        {
+          "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+          "locator": "XML sections2.1–2.2, sec2dot1-materials-18-04478 and sec2dot2-materials-18-04478; Table5; XML Table7 (materials-18-04478-t007), SLS / 1S—6 months / Powershot C + DM60 + Powershot S",
+          "supports": [
+            "sample_count"
+          ]
+        }
+      ]
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source tensile E, labelled modulus of elasticity; strain implementation, fit/window and endpoint handling not reported.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+          "locator": "XML section2.3, sec2dot3-materials-18-04478, tensile-testing paragraph; XML Table7 (materials-18-04478-t007), SLS / 1S—6 months / Powershot C + DM60 + Powershot S",
+          "supports": [
+            "method"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [
+      {
+        "description": "Selected tables list C+DM60+S; section2.4 lists C+S+DM60.",
+        "disposition": "Keep the table label; no certified operation sequence or run time.",
+        "evidence": [
+          {
+            "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+            "locator": "XML Table7 (materials-18-04478-t007), SLS / 1S—6 months / Powershot C + DM60 + Powershot S; XML section2.4, sec2dot4-materials-18-04478",
+            "supports": [
+              "source_discrepancy",
+              "state"
+            ]
+          }
+        ]
+      },
+      {
+        "description": "Same-row strength mean/SD/CV literals 44.80/0.60/1.25 have no overlap under conventionalCV rounding assumptions.",
+        "disposition": "Defer that separate strength quantity. No repair and no source-wide scientific pass implied by selecting the modulus.",
+        "evidence": [
+          {
+            "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+            "locator": "XML Table7 (materials-18-04478-t007), SLS / 1S—6 months / Powershot C + DM60 + Powershot S, sigma Mean/Std/CV columns",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      }
+    ],
+    "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+    "evidence": [
+      {
+        "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+        "locator": "XML Table7 (materials-18-04478-t007), SLS / 1S—6 months / Powershot C + DM60 + Powershot S, selected Mean/Std/CV columns",
+        "supports": [
+          "reported_value",
+          "summary_statistic",
+          "uncertainty",
+          "classification"
+        ]
+      }
+    ],
+    "source_document": {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+      "revision": null,
+      "inspected_on": "2026-11-03",
+      "sha256": "4d930d221c67d38199460f1f80b86a2a724a0b2986a77e09081172d5a83c42d7",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Same-hash Europe PMC XML: sections2.1–2.4, Table5 group definitions, selected SLS rows of Tables7–8 and article-specific permissions. Original mean/SD/CV literals cross-checked directly against XML and frozen source index. No PDF visual inspection, raw-specimen reanalysis, clinical validation or independent scientific review.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Same source-qualified EOS PA2200 identity, selected treatment/exposure only. Reported accelerated-age equivalence is not field lifetime or clinical durability. No engineering allowable or automatic mechanics input.",
+    "verification": {
+      "source_inspection_scope": "Same-hash Europe PMC XML: sections2.1–2.4, Table5 group definitions, selected SLS rows of Tables7–8 and article-specific permissions. Original mean/SD/CV literals cross-checked directly against XML and frozen source index. No PDF visual inspection, raw-specimen reanalysis, clinical validation or independent scientific review.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    }
+  },
+  "refprop_zakrecki2025_pa2200_sls_dyed_smoothed_reference_tensile_strength": {
+    "version": "1.0.0",
+    "id": "refprop_zakrecki2025_pa2200_sls_dyed_smoothed_reference_tensile_strength",
+    "material_state_id": "state_zakrecki2025_pa2200_sls_dyed_smoothed_reference",
+    "quantity": "tensile_strength",
+    "quantity_dimension": "pressure",
+    "source_property_label": "σ (MPa)",
+    "reported_value": {
+      "kind": "scalar",
+      "value_text": "44.47",
+      "unit_text": "MPa",
+      "unit_code": "MPa",
+      "number": "44.47"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Original selected SLS source table summary only; no raw-specimen reanalysis, repaired statistic, manufacturer-data substitution or pooled estimate.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Actual tensile-test temperature is not reported.23C calculator reference,38C chamber air and55C black standard are not substituted."
+      },
+      "test_standard": {
+        "status": "reported",
+        "text": "EN ISO527-1, source claim",
+        "evidence": [
+          {
+            "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+            "locator": "XML section2.3, sec2dot3-materials-18-04478, tensile-testing paragraph",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Edition and conformity not independently verified."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "Instron5969 tensile test, source speed1mm/min; nominal specimens160 x20 x4mm; source test-section length115mm",
+        "evidence": [
+          {
+            "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+            "locator": "XML section2.3, sec2dot3-materials-18-04478, tensile-testing paragraph",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "115mm is not certified extensometer gauge length. Stress definition, strain-measurement implementation and exact extraction algorithm are not specified."
+      },
+      "direction": {
+        "status": "reported",
+        "text": "HorizontalXY printing; longest specimen sideX",
+        "evidence": [
+          {
+            "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+            "locator": "XML sections2.1–2.2, sec2dot1-materials-18-04478 and sec2dot2-materials-18-04478; Table5",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "No isotropy or transverse result inferred."
+      },
+      "conditioning": {
+        "status": "reported",
+        "text": "Unaged reference after selected post-processing; selected post-processing Powershot C+DM60+ Powershot S + Powerfuse S",
+        "evidence": [
+          {
+            "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+            "locator": "XML section2.3, sec2dot3-materials-18-04478, ageing-cycle and calculator paragraphs; XML Table8 (materials-18-04478-t008), SLS / Reference / Powershot C+DM60+ Powershot S + Powerfuse S",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Post-processing and exposure history are not a moisture-equilibration protocol."
+      },
+      "loading_rate": {
+        "status": "reported",
+        "text": "Source test speed1mm/min",
+        "evidence": [
+          {
+            "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+            "locator": "XML section2.3, sec2dot3-materials-18-04478, tensile-testing paragraph",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": null
+      },
+      "additional_conditions": [
+        {
+          "name": "test_relative_humidity",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Tensile-test RH not reported; exposure RH is not transferred."
+          }
+        },
+        {
+          "name": "post_processing_order",
+          "fact": {
+            "status": "not_verified",
+            "text": null,
+            "evidence": [],
+            "notes": "Table treatment and section2.4 list the equipment in different orders; precise operation sequence unresolved."
+          }
+        },
+        {
+          "name": "post_exposure_recovery",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Time and moisture state between selected treatment/exposure and tensile testing not reported."
+          }
+        },
+        {
+          "name": "accelerated_ageing_program",
+          "fact": {
+            "status": "not_applicable",
+            "text": null,
+            "evidence": [],
+            "notes": "Selected unaged reference is not assigned the accelerated exposure program."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "reported_mean",
+    "uncertainty": {
+      "type": "reported_standard_deviation",
+      "value_text": "0.70",
+      "number": "0.70",
+      "unit_text": "MPa",
+      "unit_code": "MPa",
+      "scope": "XML Table8 (materials-18-04478-t008), SLS / Reference / Powershot C+DM60+ Powershot S + Powerfuse S, selected tensile_strength group only",
+      "coverage_factor": null,
+      "confidence_level": null,
+      "evidence": [
+        {
+          "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+          "locator": "XML Table8 (materials-18-04478-t008), SLS / Reference / Powershot C+DM60+ Powershot S + Powerfuse S, Std column",
+          "supports": [
+            "uncertainty"
+          ]
+        }
+      ]
+    },
+    "uncertainty_status": "reported_standard_deviation",
+    "uncertainty_note": "Source sigma Mean 44.47 MPa, Std 0.70 MPa; CV column literal 1.57. Preserve all source literals. The conditional conventional percent-CV rounding screen is compatible, not an independent error estimate or scientific validation.",
+    "sample_count": {
+      "value": 6,
+      "relation": "exact",
+      "scope": "Selected SLS treatment and ageing group, source claim only",
+      "source_statement": "Six tensile specimens per printing technology, post-processing route and ageing group; not independent printing batches.",
+      "evidence": [
+        {
+          "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+          "locator": "XML sections2.1–2.2, sec2dot1-materials-18-04478 and sec2dot2-materials-18-04478; Table5; XML Table8 (materials-18-04478-t008), SLS / Reference / Powershot C+DM60+ Powershot S + Powerfuse S",
+          "supports": [
+            "sample_count"
+          ]
+        }
+      ]
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source tensile sigma strength; exact extraction rule, yield/ultimate qualifier and stress convention not reported.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+          "locator": "XML section2.3, sec2dot3-materials-18-04478, tensile-testing paragraph; XML Table8 (materials-18-04478-t008), SLS / Reference / Powershot C+DM60+ Powershot S + Powerfuse S",
+          "supports": [
+            "method"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [
+      {
+        "description": "Selected tables list C+DM60+S+PowerfuseS; section2.4 lists C+S+DM60+PowerfuseS.",
+        "disposition": "Keep the table label; no certified operation sequence or run time.",
+        "evidence": [
+          {
+            "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+            "locator": "XML Table8 (materials-18-04478-t008), SLS / Reference / Powershot C+DM60+ Powershot S + Powerfuse S; XML section2.4, sec2dot4-materials-18-04478",
+            "supports": [
+              "source_discrepancy",
+              "state"
+            ]
+          }
+        ]
+      }
+    ],
+    "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+    "evidence": [
+      {
+        "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+        "locator": "XML Table8 (materials-18-04478-t008), SLS / Reference / Powershot C+DM60+ Powershot S + Powerfuse S, selected Mean/Std/CV columns",
+        "supports": [
+          "reported_value",
+          "summary_statistic",
+          "uncertainty",
+          "classification"
+        ]
+      }
+    ],
+    "source_document": {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+      "revision": null,
+      "inspected_on": "2026-11-03",
+      "sha256": "4d930d221c67d38199460f1f80b86a2a724a0b2986a77e09081172d5a83c42d7",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Same-hash Europe PMC XML: sections2.1–2.4, Table5 group definitions, selected SLS rows of Tables7–8 and article-specific permissions. Original mean/SD/CV literals cross-checked directly against XML and frozen source index. No PDF visual inspection, raw-specimen reanalysis, clinical validation or independent scientific review.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Same source-qualified EOS PA2200 identity, selected treatment/exposure only. Reported accelerated-age equivalence is not field lifetime or clinical durability. No engineering allowable or automatic mechanics input.",
+    "verification": {
+      "source_inspection_scope": "Same-hash Europe PMC XML: sections2.1–2.4, Table5 group definitions, selected SLS rows of Tables7–8 and article-specific permissions. Original mean/SD/CV literals cross-checked directly against XML and frozen source index. No PDF visual inspection, raw-specimen reanalysis, clinical validation or independent scientific review.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    }
+  },
+  "refprop_zakrecki2025_pa2200_sls_dyed_smoothed_375h_tensile_strength": {
+    "version": "1.0.0",
+    "id": "refprop_zakrecki2025_pa2200_sls_dyed_smoothed_375h_tensile_strength",
+    "material_state_id": "state_zakrecki2025_pa2200_sls_dyed_smoothed_375h",
+    "quantity": "tensile_strength",
+    "quantity_dimension": "pressure",
+    "source_property_label": "σ (MPa)",
+    "reported_value": {
+      "kind": "scalar",
+      "value_text": "40.40",
+      "unit_text": "MPa",
+      "unit_code": "MPa",
+      "number": "40.40"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Original selected SLS source table summary only; no raw-specimen reanalysis, repaired statistic, manufacturer-data substitution or pooled estimate.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Actual tensile-test temperature is not reported.23C calculator reference,38C chamber air and55C black standard are not substituted."
+      },
+      "test_standard": {
+        "status": "reported",
+        "text": "EN ISO527-1, source claim",
+        "evidence": [
+          {
+            "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+            "locator": "XML section2.3, sec2dot3-materials-18-04478, tensile-testing paragraph",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Edition and conformity not independently verified."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "Instron5969 tensile test, source speed1mm/min; nominal specimens160 x20 x4mm; source test-section length115mm",
+        "evidence": [
+          {
+            "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+            "locator": "XML section2.3, sec2dot3-materials-18-04478, tensile-testing paragraph",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "115mm is not certified extensometer gauge length. Stress definition, strain-measurement implementation and exact extraction algorithm are not specified."
+      },
+      "direction": {
+        "status": "reported",
+        "text": "HorizontalXY printing; longest specimen sideX",
+        "evidence": [
+          {
+            "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+            "locator": "XML sections2.1–2.2, sec2dot1-materials-18-04478 and sec2dot2-materials-18-04478; Table5",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "No isotropy or transverse result inferred."
+      },
+      "conditioning": {
+        "status": "reported",
+        "text": "375h accelerated chamber exposure; source label 1S—6 months is an author-proposed approximate equivalence, not observed natural service time; selected post-processing Powershot C+DM60+ Powershot S + Powerfuse S",
+        "evidence": [
+          {
+            "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+            "locator": "XML section2.3, sec2dot3-materials-18-04478, ageing-cycle and calculator paragraphs; XML Table8 (materials-18-04478-t008), SLS / 1S—6 months / Powershot C+DM60+ Powershot S + Powerfuse S",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Post-processing and exposure history are not a moisture-equilibration protocol."
+      },
+      "loading_rate": {
+        "status": "reported",
+        "text": "Source test speed1mm/min",
+        "evidence": [
+          {
+            "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+            "locator": "XML section2.3, sec2dot3-materials-18-04478, tensile-testing paragraph",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": null
+      },
+      "additional_conditions": [
+        {
+          "name": "test_relative_humidity",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Tensile-test RH not reported; exposure RH is not transferred."
+          }
+        },
+        {
+          "name": "post_processing_order",
+          "fact": {
+            "status": "not_verified",
+            "text": null,
+            "evidence": [],
+            "notes": "Table treatment and section2.4 list the equipment in different orders; precise operation sequence unresolved."
+          }
+        },
+        {
+          "name": "post_exposure_recovery",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Time and moisture state between selected treatment/exposure and tensile testing not reported."
+          }
+        },
+        {
+          "name": "accelerated_ageing_program",
+          "fact": {
+            "status": "reported",
+            "text": "Q-SUN Xe-3 xenon exposure: source air38C, black standard55C(IBP), mixed dry irradiation and irradiation at50%RH, irradiance60W/m2 over300–400nm; phase durations, dry-phaseRH and actual specimen temperature not reported",
+            "evidence": [
+              {
+                "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+                "locator": "XML section2.3, sec2dot3-materials-18-04478, ageing-cycle and calculator paragraphs",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": null
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "reported_mean",
+    "uncertainty": {
+      "type": "reported_standard_deviation",
+      "value_text": "0.38",
+      "number": "0.38",
+      "unit_text": "MPa",
+      "unit_code": "MPa",
+      "scope": "XML Table8 (materials-18-04478-t008), SLS / 1S—6 months / Powershot C+DM60+ Powershot S + Powerfuse S, selected tensile_strength group only",
+      "coverage_factor": null,
+      "confidence_level": null,
+      "evidence": [
+        {
+          "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+          "locator": "XML Table8 (materials-18-04478-t008), SLS / 1S—6 months / Powershot C+DM60+ Powershot S + Powerfuse S, Std column",
+          "supports": [
+            "uncertainty"
+          ]
+        }
+      ]
+    },
+    "uncertainty_status": "reported_standard_deviation",
+    "uncertainty_note": "Source sigma Mean 40.40 MPa, Std 0.38 MPa; CV column literal 0.94. Preserve all source literals. The conditional conventional percent-CV rounding screen is compatible, not an independent error estimate or scientific validation.",
+    "sample_count": {
+      "value": 6,
+      "relation": "exact",
+      "scope": "Selected SLS treatment and ageing group, source claim only",
+      "source_statement": "Six tensile specimens per printing technology, post-processing route and ageing group; not independent printing batches.",
+      "evidence": [
+        {
+          "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+          "locator": "XML sections2.1–2.2, sec2dot1-materials-18-04478 and sec2dot2-materials-18-04478; Table5; XML Table8 (materials-18-04478-t008), SLS / 1S—6 months / Powershot C+DM60+ Powershot S + Powerfuse S",
+          "supports": [
+            "sample_count"
+          ]
+        }
+      ]
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source tensile sigma strength; exact extraction rule, yield/ultimate qualifier and stress convention not reported.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+          "locator": "XML section2.3, sec2dot3-materials-18-04478, tensile-testing paragraph; XML Table8 (materials-18-04478-t008), SLS / 1S—6 months / Powershot C+DM60+ Powershot S + Powerfuse S",
+          "supports": [
+            "method"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [
+      {
+        "description": "Selected tables list C+DM60+S+PowerfuseS; section2.4 lists C+S+DM60+PowerfuseS.",
+        "disposition": "Keep the table label; no certified operation sequence or run time.",
+        "evidence": [
+          {
+            "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+            "locator": "XML Table8 (materials-18-04478-t008), SLS / 1S—6 months / Powershot C+DM60+ Powershot S + Powerfuse S; XML section2.4, sec2dot4-materials-18-04478",
+            "supports": [
+              "source_discrepancy",
+              "state"
+            ]
+          }
+        ]
+      }
+    ],
+    "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+    "evidence": [
+      {
+        "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+        "locator": "XML Table8 (materials-18-04478-t008), SLS / 1S—6 months / Powershot C+DM60+ Powershot S + Powerfuse S, selected Mean/Std/CV columns",
+        "supports": [
+          "reported_value",
+          "summary_statistic",
+          "uncertainty",
+          "classification"
+        ]
+      }
+    ],
+    "source_document": {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+      "revision": null,
+      "inspected_on": "2026-11-03",
+      "sha256": "4d930d221c67d38199460f1f80b86a2a724a0b2986a77e09081172d5a83c42d7",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Same-hash Europe PMC XML: sections2.1–2.4, Table5 group definitions, selected SLS rows of Tables7–8 and article-specific permissions. Original mean/SD/CV literals cross-checked directly against XML and frozen source index. No PDF visual inspection, raw-specimen reanalysis, clinical validation or independent scientific review.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Same source-qualified EOS PA2200 identity, selected treatment/exposure only. Reported accelerated-age equivalence is not field lifetime or clinical durability. No engineering allowable or automatic mechanics input.",
+    "verification": {
+      "source_inspection_scope": "Same-hash Europe PMC XML: sections2.1–2.4, Table5 group definitions, selected SLS rows of Tables7–8 and article-specific permissions. Original mean/SD/CV literals cross-checked directly against XML and frozen source index. No PDF visual inspection, raw-specimen reanalysis, clinical validation or independent scientific review.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    }
+  },
+  "refprop_zakrecki2025_pa2200_sls_dyed_smoothed_750h_tensile_strength": {
+    "version": "1.0.0",
+    "id": "refprop_zakrecki2025_pa2200_sls_dyed_smoothed_750h_tensile_strength",
+    "material_state_id": "state_zakrecki2025_pa2200_sls_dyed_smoothed_750h",
+    "quantity": "tensile_strength",
+    "quantity_dimension": "pressure",
+    "source_property_label": "σ (MPa)",
+    "reported_value": {
+      "kind": "scalar",
+      "value_text": "35.52",
+      "unit_text": "MPa",
+      "unit_code": "MPa",
+      "number": "35.52"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Original selected SLS source table summary only; no raw-specimen reanalysis, repaired statistic, manufacturer-data substitution or pooled estimate.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Actual tensile-test temperature is not reported.23C calculator reference,38C chamber air and55C black standard are not substituted."
+      },
+      "test_standard": {
+        "status": "reported",
+        "text": "EN ISO527-1, source claim",
+        "evidence": [
+          {
+            "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+            "locator": "XML section2.3, sec2dot3-materials-18-04478, tensile-testing paragraph",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Edition and conformity not independently verified."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "Instron5969 tensile test, source speed1mm/min; nominal specimens160 x20 x4mm; source test-section length115mm",
+        "evidence": [
+          {
+            "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+            "locator": "XML section2.3, sec2dot3-materials-18-04478, tensile-testing paragraph",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "115mm is not certified extensometer gauge length. Stress definition, strain-measurement implementation and exact extraction algorithm are not specified."
+      },
+      "direction": {
+        "status": "reported",
+        "text": "HorizontalXY printing; longest specimen sideX",
+        "evidence": [
+          {
+            "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+            "locator": "XML sections2.1–2.2, sec2dot1-materials-18-04478 and sec2dot2-materials-18-04478; Table5",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "No isotropy or transverse result inferred."
+      },
+      "conditioning": {
+        "status": "reported",
+        "text": "750h accelerated chamber exposure; source label 2S—12 months is an author-proposed approximate equivalence, not observed natural service time; selected post-processing Powershot C+DM60+ Powershot S + Powerfuse S",
+        "evidence": [
+          {
+            "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+            "locator": "XML section2.3, sec2dot3-materials-18-04478, ageing-cycle and calculator paragraphs; XML Table8 (materials-18-04478-t008), SLS / 2S—12 months / Powershot C+DM60+ Powershot S + Powerfuse S",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Post-processing and exposure history are not a moisture-equilibration protocol."
+      },
+      "loading_rate": {
+        "status": "reported",
+        "text": "Source test speed1mm/min",
+        "evidence": [
+          {
+            "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+            "locator": "XML section2.3, sec2dot3-materials-18-04478, tensile-testing paragraph",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": null
+      },
+      "additional_conditions": [
+        {
+          "name": "test_relative_humidity",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Tensile-test RH not reported; exposure RH is not transferred."
+          }
+        },
+        {
+          "name": "post_processing_order",
+          "fact": {
+            "status": "not_verified",
+            "text": null,
+            "evidence": [],
+            "notes": "Table treatment and section2.4 list the equipment in different orders; precise operation sequence unresolved."
+          }
+        },
+        {
+          "name": "post_exposure_recovery",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Time and moisture state between selected treatment/exposure and tensile testing not reported."
+          }
+        },
+        {
+          "name": "accelerated_ageing_program",
+          "fact": {
+            "status": "reported",
+            "text": "Q-SUN Xe-3 xenon exposure: source air38C, black standard55C(IBP), mixed dry irradiation and irradiation at50%RH, irradiance60W/m2 over300–400nm; phase durations, dry-phaseRH and actual specimen temperature not reported",
+            "evidence": [
+              {
+                "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+                "locator": "XML section2.3, sec2dot3-materials-18-04478, ageing-cycle and calculator paragraphs",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": null
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "reported_mean",
+    "uncertainty": {
+      "type": "reported_standard_deviation",
+      "value_text": "5.98",
+      "number": "5.98",
+      "unit_text": "MPa",
+      "unit_code": "MPa",
+      "scope": "XML Table8 (materials-18-04478-t008), SLS / 2S—12 months / Powershot C+DM60+ Powershot S + Powerfuse S, selected tensile_strength group only",
+      "coverage_factor": null,
+      "confidence_level": null,
+      "evidence": [
+        {
+          "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+          "locator": "XML Table8 (materials-18-04478-t008), SLS / 2S—12 months / Powershot C+DM60+ Powershot S + Powerfuse S, Std column",
+          "supports": [
+            "uncertainty"
+          ]
+        }
+      ]
+    },
+    "uncertainty_status": "reported_standard_deviation",
+    "uncertainty_note": "Source sigma Mean 35.52 MPa, Std 5.98 MPa; CV column literal 16.84. Preserve all source literals. The conditional conventional percent-CV rounding screen is compatible, not an independent error estimate or scientific validation.",
+    "sample_count": {
+      "value": 6,
+      "relation": "exact",
+      "scope": "Selected SLS treatment and ageing group, source claim only",
+      "source_statement": "Six tensile specimens per printing technology, post-processing route and ageing group; not independent printing batches.",
+      "evidence": [
+        {
+          "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+          "locator": "XML sections2.1–2.2, sec2dot1-materials-18-04478 and sec2dot2-materials-18-04478; Table5; XML Table8 (materials-18-04478-t008), SLS / 2S—12 months / Powershot C+DM60+ Powershot S + Powerfuse S",
+          "supports": [
+            "sample_count"
+          ]
+        }
+      ]
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source tensile sigma strength; exact extraction rule, yield/ultimate qualifier and stress convention not reported.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+          "locator": "XML section2.3, sec2dot3-materials-18-04478, tensile-testing paragraph; XML Table8 (materials-18-04478-t008), SLS / 2S—12 months / Powershot C+DM60+ Powershot S + Powerfuse S",
+          "supports": [
+            "method"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [
+      {
+        "description": "Selected tables list C+DM60+S+PowerfuseS; section2.4 lists C+S+DM60+PowerfuseS.",
+        "disposition": "Keep the table label; no certified operation sequence or run time.",
+        "evidence": [
+          {
+            "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+            "locator": "XML Table8 (materials-18-04478-t008), SLS / 2S—12 months / Powershot C+DM60+ Powershot S + Powerfuse S; XML section2.4, sec2dot4-materials-18-04478",
+            "supports": [
+              "source_discrepancy",
+              "state"
+            ]
+          }
+        ]
+      }
+    ],
+    "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+    "evidence": [
+      {
+        "source_id": "zakrecki_cieslik_2025_pa12_ageing",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+        "locator": "XML Table8 (materials-18-04478-t008), SLS / 2S—12 months / Powershot C+DM60+ Powershot S + Powerfuse S, selected Mean/Std/CV columns",
+        "supports": [
+          "reported_value",
+          "summary_statistic",
+          "uncertainty",
+          "classification"
+        ]
+      }
+    ],
+    "source_document": {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12525880/fullTextXML?format=xml",
+      "revision": null,
+      "inspected_on": "2026-11-03",
+      "sha256": "4d930d221c67d38199460f1f80b86a2a724a0b2986a77e09081172d5a83c42d7",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Same-hash Europe PMC XML: sections2.1–2.4, Table5 group definitions, selected SLS rows of Tables7–8 and article-specific permissions. Original mean/SD/CV literals cross-checked directly against XML and frozen source index. No PDF visual inspection, raw-specimen reanalysis, clinical validation or independent scientific review.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Same source-qualified EOS PA2200 identity, selected treatment/exposure only. Reported accelerated-age equivalence is not field lifetime or clinical durability. No engineering allowable or automatic mechanics input.",
+    "verification": {
+      "source_inspection_scope": "Same-hash Europe PMC XML: sections2.1–2.4, Table5 group definitions, selected SLS rows of Tables7–8 and article-specific permissions. Original mean/SD/CV literals cross-checked directly against XML and frozen source index. No PDF visual inspection, raw-specimen reanalysis, clinical validation or independent scientific review.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    }
+  }
+}

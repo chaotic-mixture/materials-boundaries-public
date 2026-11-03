@@ -1,0 +1,36 @@
+{
+  "schema": "source-labelled-break-elongation-contract-proposal/1",
+  "quantity": "tensile_elongation_at_break",
+  "dimension": "dimensionless",
+  "central_unit_code": "percent_elongation",
+  "source_unit_text": "%",
+  "unit_code_meaning": "Application-context identifier for source percentage elongation,not a newly invented physical unit. Preserve numeric percentage scale;no divide/multiply100 or strain convention conversion.",
+  "existing_percent_code": "Remains reserved for relative uncertainty/confidence metadata and specified-elongation descriptors;never added to central unit enum.",
+  "central_boundary": {
+    "minimum": "nonnegative including source-reported0",
+    "maximum": "no invented100percent cap",
+    "representations": "Reuse existing closed scalar/interval/comparison shapes when explicitly source-supported;unbroken hyphens in this batch are not censored bounds."
+  },
+  "absolute_uncertainty": "Same percent_elongation code as central result;0.15 means an absolute SD/± amplitude in elongation-percentage points,not0.15percent relative error",
+  "relative_uncertainty": "Existing reported_measures relative_to_reported_value uses old percent code and closed shape;confidence percentages unchanged. No conversion between absolute and relative statistics.",
+  "typed_target": "specified_elongation forbidden on this result quantity;existing pressure-target descriptor unchanged",
+  "schema_changes_proposed": [
+    "Register one quantity/dimension and context-specific centralunit/spelling%.",
+    "Public quantity-specific restriction binds new quantity to dimensionless and percent_elongation,forbids this centralunit on legacy quantities.",
+    "Only new quantity central result may be0;existing density/pressure/length positivity and relative-percent tests preserved.",
+    "Existing numerical/ reported_measures uncertainty shapes retained;absolute unit must match result;no relative-to-absolute interpretation.",
+    "Strict four-language quantity label and actual JSON/query/export/render coverage."
+  ],
+  "identity_scope": "9properties on9existing states,0new identity/grade/state/source",
+  "independent_semantics_context": [
+    {
+      "url": "https://www.iso.org/obp/ui?_escaped_fragment_=iso%3Astd%3Aiso%3A527%3A-1%3Adis%3Aed-3%3Av1%3Aen",
+      "status": "ISO public draft preview,not confirmation of authors2012 edition or ASTM compliance",
+      "sections": "3.7/3.7.2/3.7.3/3.8/3.8.1",
+      "paraphrase": "Terminology distinguishes gauge-based strain,nominal strain and endpoint-specific values;these quantities can be dimensionless ratios or percentages. Do not import a measurement convention or break criterion into either study."
+    }
+  ],
+  "implementation": "not_started",
+  "native_changed": false,
+  "pushed": false
+}
