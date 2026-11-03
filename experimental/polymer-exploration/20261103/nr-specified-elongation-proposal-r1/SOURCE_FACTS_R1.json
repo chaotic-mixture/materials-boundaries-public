@@ -1,0 +1,53 @@
+{
+  "schema": "existing-NR-specified-elongation-source-proposal/1",
+  "stage": "source_facts_only_not_mapping_or_acceptance",
+  "existing_state_id": "state_smr10_bianchi2025_nr",
+  "existing_state_id_verification": "bound_to_current_native_base_property",
+  "source_id": "bianchi_2025_nr_nanoclay",
+  "source_XML_path_hint": "F:\\材料边界\\open-database-evidence\\polymer-nr-20261103\\article-r2.xml",
+  "source_XML_sha256": "97eb8a1e73e57b6fc64fcf3b0be6603db3f8dcb5fa927570e91eb033f1018f69",
+  "license": "article-specific CC BY4.0",
+  "locator": "Table4 unfilled NR row and section3.3.4 quasi-static tensile tests",
+  "rows": [
+    {
+      "source_label": "sigma_200%",
+      "target_percent": "200",
+      "mean_MPa": "1.08",
+      "SD_MPa": "0.13"
+    },
+    {
+      "source_label": "sigma_400%",
+      "target_percent": "400",
+      "mean_MPa": "2.10",
+      "SD_MPa": "0.23"
+    }
+  ],
+  "quantity_proposal": "tensile_stress_at_specified_elongation",
+  "new_quantity_needed": false,
+  "summary_statistic": "reported_mean",
+  "uncertainty": "reported_standard_deviation",
+  "sample_count": 5,
+  "sample_count_relation": "exact",
+  "methods": "ASTM D412 edition unknown;Instron5969/1kN;500mm/min crosshead;Instron2603/25mm",
+  "unknowns": [
+    "temperature,RH,post-cure conditioning/storage",
+    "processing/loading-axis relationship",
+    "prior history of quasi-static specimens",
+    "engineering versus true stress/strain convention and reduction algorithm",
+    "exact interpolation/point-selection algorithm",
+    "independent manufacturing batches",
+    "latest revision/correction/retraction status"
+  ],
+  "boundaries": [
+    "Unfilled formulation contains curatives;not pure raw NR.",
+    "Stress at reported strain target,not stress divided by strain and not tangent/secant/interval modulus.",
+    "No inference from cyclic125mm/min,n1,10cycles or relaxation25C,n3,pre-stretch3times.",
+    "NR break-strain header/magnitude issue preserved;no strain/energy repair or toughness mapping.",
+    "Targets200%/400% directly from column headers/method,not inferred from ambiguous break-strain values.",
+    "No six nanoclay formulations or new identities/states in this proposal."
+  ],
+  "independent_review": "pending",
+  "native_applied": false,
+  "pushed": false,
+  "native_snapshot_at_source_read": "58defa23d7fa9a5e28f1f1a30d8ba9a47c311ac7a7293b82284d178385a99af8"
+}

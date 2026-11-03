@@ -1,0 +1,131 @@
+{
+  "schema": "existing-polymers-tensile-break-stress-facts/1",
+  "baseline_commit": "5635e4c78754637f8cff0dbf4650d5637bb9eace",
+  "baseline_snapshot": "58defa23d7fa9a5e28f1f1a30d8ba9a47c311ac7a7293b82284d178385a99af8",
+  "source_assets": {
+    "NR": {
+      "path_hint": "F:\\材料边界\\open-database-evidence\\polymer-nr-20261103\\article-r2.xml",
+      "sha256": "97eb8a1e73e57b6fc64fcf3b0be6603db3f8dcb5fa927570e91eb033f1018f69",
+      "bytes": 153447,
+      "license": "CC BY4.0 per article-specific XML permissions",
+      "fresh_PDF_visual_review": false,
+      "web_latest_revision_verification": "unknown; PMC verification page this round, retained XML used"
+    },
+    "Sahin": {
+      "path_hint": "F:\\材料边界\\open-database-evidence\\polymer-sahin-20261103\\article-r1.xml",
+      "sha256": "0570b4cad935fcbf7363999960e40333d6a46fd2d113b3c9f87e7da9c4a9e7d3",
+      "bytes": 128622,
+      "license": "CC BY4.0 per article-specific XML permissions",
+      "fresh_PDF_visual_review": false,
+      "web_latest_revision_verification": "unknown; PMC verification page this round, retained XML used"
+    }
+  },
+  "rows": [
+    {
+      "source_id": "bianchi_2025_nr_nanoclay",
+      "source_label": "NR",
+      "base_property_id": "refprop_smr10_bianchi2025_nr_finite_strain_tensile_modulus",
+      "new_property_id": "refprop_smr10_bianchi2025_nr_tensile_stress_at_break",
+      "source_property_label": "σ_b — Stress at break (MPa)",
+      "mean_MPa": "21.28",
+      "SD_MPa": "3.73",
+      "sample_count": 5,
+      "sample_count_relation": "exact",
+      "locator": "Table4 unfilled NR row, σ_b(MPa); section3.3.4 quasi-static tensile tests"
+    },
+    {
+      "source_id": "sahin_2026_polymer_mechanical_dielectric",
+      "source_label": "PLA",
+      "base_property_id": "refprop_porima_pla_sahin_2026_fdm_tensile_strength",
+      "new_property_id": "refprop_porima_pla_sahin_2026_fdm_tensile_stress_at_break",
+      "source_property_label": "s_B—Stress at Break (MPa)",
+      "mean_MPa": "39.65",
+      "SD_MPa": "1.53",
+      "sample_count": 5,
+      "sample_count_relation": "exact",
+      "locator": "Table4 PLA column, s_B Stress at Break(MPa); section2.3 mean/SD,n=5",
+      "separate_s_M_tensile_strength_mean_MPa": "46.44"
+    },
+    {
+      "source_id": "sahin_2026_polymer_mechanical_dielectric",
+      "source_label": "ABS",
+      "base_property_id": "refprop_porima_abs_sahin_2026_fdm_tensile_strength",
+      "new_property_id": "refprop_porima_abs_sahin_2026_fdm_tensile_stress_at_break",
+      "source_property_label": "s_B—Stress at Break (MPa)",
+      "mean_MPa": "32.10",
+      "SD_MPa": "0.89",
+      "sample_count": 5,
+      "sample_count_relation": "exact",
+      "locator": "Table4 ABS column, s_B Stress at Break(MPa); section2.3 mean/SD,n=5",
+      "separate_s_M_tensile_strength_mean_MPa": "34.46"
+    },
+    {
+      "source_id": "sahin_2026_polymer_mechanical_dielectric",
+      "source_label": "PETG",
+      "base_property_id": "refprop_porima_petg_sahin_2026_fdm_tensile_strength",
+      "new_property_id": "refprop_porima_petg_sahin_2026_fdm_tensile_stress_at_break",
+      "source_property_label": "s_B—Stress at Break (MPa)",
+      "mean_MPa": "28.55",
+      "SD_MPa": "3.85",
+      "sample_count": 5,
+      "sample_count_relation": "exact",
+      "locator": "Table4 PETG column, s_B Stress at Break(MPa); section2.3 mean/SD,n=5",
+      "separate_s_M_tensile_strength_mean_MPa": "38.63"
+    },
+    {
+      "source_id": "sahin_2026_polymer_mechanical_dielectric",
+      "source_label": "ASA",
+      "base_property_id": "refprop_porima_asa_sahin_2026_fdm_tensile_strength",
+      "new_property_id": "refprop_porima_asa_sahin_2026_fdm_tensile_stress_at_break",
+      "source_property_label": "s_B—Stress at Break (MPa)",
+      "mean_MPa": "28.76",
+      "SD_MPa": "1.29",
+      "sample_count": 5,
+      "sample_count_relation": "exact",
+      "locator": "Table4 ASA column, s_B Stress at Break(MPa); section2.3 mean/SD,n=5",
+      "separate_s_M_tensile_strength_mean_MPa": "32.32"
+    },
+    {
+      "source_id": "sahin_2026_polymer_mechanical_dielectric",
+      "source_label": "PC/ABS",
+      "base_property_id": "refprop_porima_pc_abs_sahin_2026_fdm_tensile_strength",
+      "new_property_id": "refprop_porima_pc_abs_sahin_2026_fdm_tensile_stress_at_break",
+      "source_property_label": "s_B—Stress at Break (MPa)",
+      "mean_MPa": "25.04",
+      "SD_MPa": "0.72",
+      "sample_count": 5,
+      "sample_count_relation": "exact",
+      "locator": "Table4 PC/ABS column, s_B Stress at Break(MPa); section2.3 mean/SD,n=5",
+      "separate_s_M_tensile_strength_mean_MPa": "33.10"
+    }
+  ],
+  "NR_method": "Section3.3.4 quasi-static ASTM D412 (edition unknown),Instron5969/1kN,500mm/min,Instron2603/25mm;five specimens per composition,all mechanical properties mean±SD",
+  "NR_boundaries": [
+    "No density/hardness/relaxation25C temperature transfer",
+    "No cyclic pre-stretch/125mmmin or relaxation3specimens transfer",
+    "NR contains curatives,not raw pure polymer",
+    "Reported break-strain table header mm/mm conflicts with magnitude; strain/energy not mapped",
+    "No initial Young-modulus,peak stress or engineering/true stress equivalence"
+  ],
+  "Sahin_method": "Section2.3 ASTM D638-14,Zwick/RoellZ020/10kN,23C,5.0mm/min;five specimens per group,means/SD. Table4 s_B distinct s_M and E_t/E_Sec",
+  "Sahin_boundaries": [
+    "Unknown exact SKU/lot/colour/additives,post-print conditioning/RH,build-raster relation and stress-reduction/extensometry details",
+    "100%slicer infill not zero porosity",
+    "Section3.1 elongation Table1 cross-reference issue retained,not s_B numeric correction",
+    "Drying before printing not post-print conditioning"
+  ],
+  "shared_unknowns": [
+    "specific fracture-detection/point-selection algorithm",
+    "stress convention and reduction implementation",
+    "independent manufacturing batch count",
+    "latest correction/retraction or XML revision not verified"
+  ],
+  "excluded": [
+    "New identities/states/sources",
+    "Six NR nanoclay-composite groups",
+    "NR sigma200/400 target facts",
+    "Break strain/energy,toughness,secant modulus or peak-strength substitutions"
+  ],
+  "native_applied": false,
+  "pushed": false
+}

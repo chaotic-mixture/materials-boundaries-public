@@ -1420071,6 +1420071,3762 @@
         "independent_scientific_review": false,
         "raw_data_reanalysis": false
       }
+    },
+    {
+      "id": "refprop_smr10_bianchi2025_nr_tensile_stress_at_break",
+      "version": "1.0.0",
+      "material_state_id": "state_smr10_bianchi2025_nr",
+      "quantity": "tensile_stress_at_break",
+      "quantity_dimension": "pressure",
+      "source_property_label": "σ_b — Stress at break (MPa)",
+      "reported_value": {
+        "kind": "scalar",
+        "value_text": "21.28",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "number": "21.28"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Table4 unfilled NR row, σ_b(MPa); section3.3.4 quasi-static tensile tests; source-labelled tensile stress at break, mean ± SD, n=5 specimens. Not peak tensile strength, yield strength, modulus or toughness.",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Temperature of this quasi-static test is not stated; do not transfer density room temperature or hardness/relaxation 25C."
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "ASTM D412",
+          "evidence": [
+            {
+              "source_id": "bianchi_2025_nr_nanoclay",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+              "locator": "Section 3.3.4, quasi-static uniaxial tensile tests",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source statement only; exact edition and independent compliance unverified."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Section3.3.4 quasi-static ASTM D412 (edition unknown), Instron5969/1kN,500mm/min crosshead, Instron2603/25mm extensometer. Table4 source sigma_b stress at break; not E100-200 interval slope or sigma200/400. Exact fracture detection, stress convention and reduction implementation unspecified.",
+          "evidence": [
+            {
+              "source_id": "bianchi_2025_nr_nanoclay",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+              "locator": "Section 3.3.4, quasi-static uniaxial tensile tests",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source-labelled tensile stress at break only. Source standard citation is not independent compliance verification; fracture detection and stress convention unknown."
+        },
+        "direction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Loading axis relative to sheet processing direction is not specified; no isotropy inferred."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Post-cure humidity, conditioning and storage/recovery interval of the selected quasi-static tensile specimens are unspecified."
+        },
+        "loading_rate": {
+          "status": "reported",
+          "text": "500 mm/min crosshead speed",
+          "evidence": [
+            {
+              "source_id": "bianchi_2025_nr_nanoclay",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+              "locator": "Section 3.3.4, quasi-static uniaxial tensile tests",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Not converted to a verified specimen strain rate."
+        },
+        "additional_conditions": [
+          {
+            "name": "test_relative_humidity",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "No humidity value assigned."
+            }
+          },
+          {
+            "name": "prior_loading_history",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Cyclic tests and pre-stretching for relaxation are separate procedures, not assigned to quasi-static specimens."
+            }
+          },
+          {
+            "name": "stress_strain_convention",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Source does not explicitly identify engineering versus true stress/strain for the selected stress-at-break result."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "reported_mean",
+      "uncertainty": {
+        "type": "reported_standard_deviation",
+        "value_text": "3.73",
+        "number": "3.73",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "scope": "Selected mechanical result only; no SD-to-SE/CI conversion or density uncertainty inference.",
+        "coverage_factor": null,
+        "confidence_level": null,
+        "evidence": [
+          {
+            "source_id": "bianchi_2025_nr_nanoclay",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+            "locator": "Table4 unfilled NR row, σ_b(MPa); section3.3.4 quasi-static tensile tests",
+            "supports": [
+              "uncertainty"
+            ]
+          }
+        ]
+      },
+      "uncertainty_status": "reported_standard_deviation",
+      "uncertainty_note": "21.28 ± 3.73 MPa: source mean ± reported SD for five tensile specimens in the selected composition/group. No SE, CI or independent batch count inferred.",
+      "sample_count": {
+        "value": 5,
+        "relation": "exact",
+        "scope": "Five quasi-static tensile specimens per selected composition; independent batch count unspecified.",
+        "source_statement": "Five specimens were tested for each composition.",
+        "evidence": [
+          {
+            "source_id": "bianchi_2025_nr_nanoclay",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+            "locator": "Section 3.3.4, quasi-static uniaxial tensile tests",
+            "supports": [
+              "sample_count"
+            ]
+          }
+        ]
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Section3.3.4 quasi-static ASTM D412 (edition unknown), Instron5969/1kN,500mm/min crosshead, Instron2603/25mm extensometer. Table4 source sigma_b stress at break; not E100-200 interval slope or sigma200/400. Exact fracture detection, stress convention and reduction implementation unspecified.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "bianchi_2025_nr_nanoclay",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+            "locator": "Table4 unfilled NR row, σ_b(MPa); section3.3.4 quasi-static tensile tests",
+            "supports": [
+              "method"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [],
+      "source_id": "bianchi_2025_nr_nanoclay",
+      "evidence": [
+        {
+          "source_id": "bianchi_2025_nr_nanoclay",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+          "locator": "Table4 unfilled NR row, σ_b(MPa); section3.3.4 quasi-static tensile tests",
+          "supports": [
+            "reported_value",
+            "classification",
+            "method",
+            "summary_statistic",
+            "uncertainty",
+            "sample_count"
+          ]
+        }
+      ],
+      "source_document": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+        "revision": "Retained registered XML revision; latest online revision/correction/retraction status unknown.",
+        "inspected_on": "2026-11-03",
+        "sha256": "97eb8a1e73e57b6fc64fcf3b0be6603db3f8dcb5fa927570e91eb033f1018f69",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Retained exact primary XML: selected Table4 break-stress mean/SD cell, tensile method and five-specimen statement, existing identity/state and article permissions. No fresh PDF visual inspection or latest revision/correction/retraction audit; latest status unknown.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "scope_note": "Unfilled NR formulation includes curatives; not raw or pure NR. Temperature, humidity and post-cure conditioning remain unknown. Do not transfer density, hardness, cyclic or relaxation-test conditions. Table4 break-strain header/magnitude issue is outside this stress-only supplement; no strain or energy mapping/correction. Independent batch count and fracture-detection/point-selection algorithm unknown. No automatic engine input, engineering allowable, universal bound or independent scientific validation.",
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Retained exact primary XML: selected Table4 break-stress mean/SD cell, tensile method and five-specimen statement, existing identity/state and article permissions. No fresh PDF visual inspection or latest revision/correction/retraction audit; latest status unknown.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      }
+    },
+    {
+      "id": "refprop_porima_pla_sahin_2026_fdm_tensile_stress_at_break",
+      "version": "1.0.0",
+      "material_state_id": "state_porima_pla_sahin_2026_fdm",
+      "quantity": "tensile_stress_at_break",
+      "quantity_dimension": "pressure",
+      "source_property_label": "s_B—Stress at Break (MPa)",
+      "reported_value": {
+        "kind": "scalar",
+        "value_text": "39.65",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "number": "39.65"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Table4 PLA column, s_B Stress at Break(MPa); section2.3 mean/SD,n=5; source-labelled tensile stress at break, mean ± SD, n=5 specimens. Not peak tensile strength, yield strength, modulus or toughness.",
+      "conditions": {
+        "temperature": {
+          "status": "reported",
+          "text": "23 °C",
+          "evidence": [
+            {
+              "source_id": "sahin_2026_polymer_mechanical_dielectric",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+              "locator": "§2.3, tensile testing temperature",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "ASTM D638-14",
+          "evidence": [
+            {
+              "source_id": "sahin_2026_polymer_mechanical_dielectric",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+              "locator": "Table4 PLA column, s_B Stress at Break(MPa); section2.3 mean/SD,n=5",
+              "supports": [
+                "method",
+                "classification",
+                "summary_statistic",
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Section2.3 ASTM D638-14, Zwick/RoellZ020/10kN,23C,5.0mm/min crosshead. Table4 s_B stress at break, distinct from s_M tensile strength, E_t and E_Sec. Exact fracture detection, stress convention, extensometry and reduction implementation unspecified.",
+          "evidence": [
+            {
+              "source_id": "sahin_2026_polymer_mechanical_dielectric",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+              "locator": "Table4 PLA column, s_B Stress at Break(MPa); section2.3 mean/SD,n=5",
+              "supports": [
+                "method",
+                "classification",
+                "summary_statistic",
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source-labelled tensile stress at break only. Source standard citation is not independent compliance verification; fracture detection and stress convention unknown."
+        },
+        "direction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Tensile loading direction relative to the raster and build orientation is not reported."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Post-print specimen conditioning, humidity and interval are not reported; pre-print drying is retained in the material state."
+        },
+        "loading_rate": {
+          "status": "reported",
+          "text": "5.0 mm/min crosshead speed",
+          "evidence": [
+            {
+              "source_id": "sahin_2026_polymer_mechanical_dielectric",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+              "locator": "§2.3, tensile testing speed",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "additional_conditions": [
+          {
+            "name": "humidity",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": null
+            }
+          },
+          {
+            "name": "atmosphere",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": null
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "reported_mean",
+      "uncertainty": {
+        "type": "reported_standard_deviation",
+        "value_text": "1.53",
+        "number": "1.53",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "scope": "Reported SD for the five tensile specimens of the PLA material group in this study.",
+        "coverage_factor": null,
+        "confidence_level": null,
+        "evidence": [
+          {
+            "source_id": "sahin_2026_polymer_mechanical_dielectric",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+            "locator": "§2.3, five specimens per group and means/standard deviations; Table 4 caption n = 5",
+            "supports": [
+              "summary_statistic",
+              "uncertainty",
+              "sample_count"
+            ]
+          }
+        ]
+      },
+      "uncertainty_status": "reported_standard_deviation",
+      "uncertainty_note": "39.65 ± 1.53 MPa: source mean ± reported SD for five tensile specimens in the selected composition/group. No SE, CI or independent batch count inferred.",
+      "sample_count": {
+        "value": 5,
+        "relation": "exact",
+        "scope": "Tensile specimens in the PLA material group for Table 4.",
+        "source_statement": "Section 2.3 reports five specimens per material group; Table 4 caption states n = 5.",
+        "evidence": [
+          {
+            "source_id": "sahin_2026_polymer_mechanical_dielectric",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+            "locator": "§2.3, five specimens per group and means/standard deviations; Table 4 caption n = 5",
+            "supports": [
+              "summary_statistic",
+              "uncertainty",
+              "sample_count"
+            ]
+          }
+        ]
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Section2.3 ASTM D638-14, Zwick/RoellZ020/10kN,23C,5.0mm/min crosshead. Table4 s_B stress at break, distinct from s_M tensile strength, E_t and E_Sec. Exact fracture detection, stress convention, extensometry and reduction implementation unspecified.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "sahin_2026_polymer_mechanical_dielectric",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+            "locator": "Table4 PLA column, s_B Stress at Break(MPa); section2.3 mean/SD,n=5",
+            "supports": [
+              "method",
+              "classification",
+              "summary_statistic"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Section 3.1 points to Table 1 for elongation-at-break figures that appear in Table 4.",
+          "disposition": "Use Table4 for the selected s_B stress-at-break cell; preserve the section3.1 elongation-at-break cross-reference issue without numeric correction.",
+          "evidence": [
+            {
+              "source_id": "sahin_2026_polymer_mechanical_dielectric",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+              "locator": "§3.1, elongation-at-break table cross-reference; Tables 1 and 4",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "sahin_2026_polymer_mechanical_dielectric",
+      "evidence": [
+        {
+          "source_id": "sahin_2026_polymer_mechanical_dielectric",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+          "locator": "Table4 PLA column, s_B Stress at Break(MPa); section2.3 mean/SD,n=5",
+          "supports": [
+            "reported_value"
+          ]
+        },
+        {
+          "source_id": "sahin_2026_polymer_mechanical_dielectric",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+          "locator": "§2.1, supplier and filament identities; §§2.2–2.3 and Tables 2–4, PLA group",
+          "supports": [
+            "material_identity",
+            "state"
+          ]
+        },
+        {
+          "source_id": "sahin_2026_polymer_mechanical_dielectric",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+          "locator": "Table4 PLA column, s_B Stress at Break(MPa); section2.3 mean/SD,n=5",
+          "supports": [
+            "classification"
+          ]
+        },
+        {
+          "source_id": "sahin_2026_polymer_mechanical_dielectric",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+          "locator": "Table4 PLA column, s_B Stress at Break(MPa); section2.3 mean/SD,n=5",
+          "supports": [
+            "method",
+            "classification",
+            "summary_statistic"
+          ]
+        },
+        {
+          "source_id": "sahin_2026_polymer_mechanical_dielectric",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+          "locator": "§2.3, five specimens per group and means/standard deviations; Table 4 caption n = 5",
+          "supports": [
+            "summary_statistic",
+            "uncertainty",
+            "sample_count"
+          ]
+        }
+      ],
+      "source_document": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+        "revision": "Retained registered XML revision; latest online revision/correction/retraction status unknown.",
+        "inspected_on": "2026-11-03",
+        "sha256": "0570b4cad935fcbf7363999960e40333d6a46fd2d113b3c9f87e7da9c4a9e7d3",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Retained exact primary XML: selected Table4 break-stress mean/SD cell, tensile method and five-specimen statement, existing identity/state and article permissions. No fresh PDF visual inspection or latest revision/correction/retraction audit; latest status unknown.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "scope_note": "Only the existing printed specimen group and recipe. Grade/SKU, lot, colour, additives, post-print conditioning, humidity and build/raster relation remain unknown. Pre-print drying is not post-print conditioning;100% slicer infill is not verified zero porosity. Mechanical n=5 is separate from dielectric n=3. Retain the source elongation table cross-reference issue without numeric correction. Independent batch count and fracture-detection/point-selection algorithm unknown. No automatic engine input, engineering allowable, universal bound or independent scientific validation.",
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Retained exact primary XML: selected Table4 break-stress mean/SD cell, tensile method and five-specimen statement, existing identity/state and article permissions. No fresh PDF visual inspection or latest revision/correction/retraction audit; latest status unknown.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      }
+    },
+    {
+      "id": "refprop_porima_abs_sahin_2026_fdm_tensile_stress_at_break",
+      "version": "1.0.0",
+      "material_state_id": "state_porima_abs_sahin_2026_fdm",
+      "quantity": "tensile_stress_at_break",
+      "quantity_dimension": "pressure",
+      "source_property_label": "s_B—Stress at Break (MPa)",
+      "reported_value": {
+        "kind": "scalar",
+        "value_text": "32.10",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "number": "32.10"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Table4 ABS column, s_B Stress at Break(MPa); section2.3 mean/SD,n=5; source-labelled tensile stress at break, mean ± SD, n=5 specimens. Not peak tensile strength, yield strength, modulus or toughness.",
+      "conditions": {
+        "temperature": {
+          "status": "reported",
+          "text": "23 °C",
+          "evidence": [
+            {
+              "source_id": "sahin_2026_polymer_mechanical_dielectric",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+              "locator": "§2.3, tensile testing temperature",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "ASTM D638-14",
+          "evidence": [
+            {
+              "source_id": "sahin_2026_polymer_mechanical_dielectric",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+              "locator": "Table4 ABS column, s_B Stress at Break(MPa); section2.3 mean/SD,n=5",
+              "supports": [
+                "method",
+                "classification",
+                "summary_statistic",
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Section2.3 ASTM D638-14, Zwick/RoellZ020/10kN,23C,5.0mm/min crosshead. Table4 s_B stress at break, distinct from s_M tensile strength, E_t and E_Sec. Exact fracture detection, stress convention, extensometry and reduction implementation unspecified.",
+          "evidence": [
+            {
+              "source_id": "sahin_2026_polymer_mechanical_dielectric",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+              "locator": "Table4 ABS column, s_B Stress at Break(MPa); section2.3 mean/SD,n=5",
+              "supports": [
+                "method",
+                "classification",
+                "summary_statistic",
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source-labelled tensile stress at break only. Source standard citation is not independent compliance verification; fracture detection and stress convention unknown."
+        },
+        "direction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Tensile loading direction relative to the raster and build orientation is not reported."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Post-print specimen conditioning, humidity and interval are not reported; pre-print drying is retained in the material state."
+        },
+        "loading_rate": {
+          "status": "reported",
+          "text": "5.0 mm/min crosshead speed",
+          "evidence": [
+            {
+              "source_id": "sahin_2026_polymer_mechanical_dielectric",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+              "locator": "§2.3, tensile testing speed",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "additional_conditions": [
+          {
+            "name": "humidity",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": null
+            }
+          },
+          {
+            "name": "atmosphere",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": null
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "reported_mean",
+      "uncertainty": {
+        "type": "reported_standard_deviation",
+        "value_text": "0.89",
+        "number": "0.89",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "scope": "Reported SD for the five tensile specimens of the ABS material group in this study.",
+        "coverage_factor": null,
+        "confidence_level": null,
+        "evidence": [
+          {
+            "source_id": "sahin_2026_polymer_mechanical_dielectric",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+            "locator": "§2.3, five specimens per group and means/standard deviations; Table 4 caption n = 5",
+            "supports": [
+              "summary_statistic",
+              "uncertainty",
+              "sample_count"
+            ]
+          }
+        ]
+      },
+      "uncertainty_status": "reported_standard_deviation",
+      "uncertainty_note": "32.10 ± 0.89 MPa: source mean ± reported SD for five tensile specimens in the selected composition/group. No SE, CI or independent batch count inferred.",
+      "sample_count": {
+        "value": 5,
+        "relation": "exact",
+        "scope": "Tensile specimens in the ABS material group for Table 4.",
+        "source_statement": "Section 2.3 reports five specimens per material group; Table 4 caption states n = 5.",
+        "evidence": [
+          {
+            "source_id": "sahin_2026_polymer_mechanical_dielectric",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+            "locator": "§2.3, five specimens per group and means/standard deviations; Table 4 caption n = 5",
+            "supports": [
+              "summary_statistic",
+              "uncertainty",
+              "sample_count"
+            ]
+          }
+        ]
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Section2.3 ASTM D638-14, Zwick/RoellZ020/10kN,23C,5.0mm/min crosshead. Table4 s_B stress at break, distinct from s_M tensile strength, E_t and E_Sec. Exact fracture detection, stress convention, extensometry and reduction implementation unspecified.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "sahin_2026_polymer_mechanical_dielectric",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+            "locator": "Table4 ABS column, s_B Stress at Break(MPa); section2.3 mean/SD,n=5",
+            "supports": [
+              "method",
+              "classification",
+              "summary_statistic"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Section 3.1 points to Table 1 for elongation-at-break figures that appear in Table 4.",
+          "disposition": "Use Table4 for the selected s_B stress-at-break cell; preserve the section3.1 elongation-at-break cross-reference issue without numeric correction.",
+          "evidence": [
+            {
+              "source_id": "sahin_2026_polymer_mechanical_dielectric",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+              "locator": "§3.1, elongation-at-break table cross-reference; Tables 1 and 4",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "sahin_2026_polymer_mechanical_dielectric",
+      "evidence": [
+        {
+          "source_id": "sahin_2026_polymer_mechanical_dielectric",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+          "locator": "Table4 ABS column, s_B Stress at Break(MPa); section2.3 mean/SD,n=5",
+          "supports": [
+            "reported_value"
+          ]
+        },
+        {
+          "source_id": "sahin_2026_polymer_mechanical_dielectric",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+          "locator": "§2.1, supplier and filament identities; §§2.2–2.3 and Tables 2–4, ABS group",
+          "supports": [
+            "material_identity",
+            "state"
+          ]
+        },
+        {
+          "source_id": "sahin_2026_polymer_mechanical_dielectric",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+          "locator": "Table4 ABS column, s_B Stress at Break(MPa); section2.3 mean/SD,n=5",
+          "supports": [
+            "classification"
+          ]
+        },
+        {
+          "source_id": "sahin_2026_polymer_mechanical_dielectric",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+          "locator": "Table4 ABS column, s_B Stress at Break(MPa); section2.3 mean/SD,n=5",
+          "supports": [
+            "method",
+            "classification",
+            "summary_statistic"
+          ]
+        },
+        {
+          "source_id": "sahin_2026_polymer_mechanical_dielectric",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+          "locator": "§2.3, five specimens per group and means/standard deviations; Table 4 caption n = 5",
+          "supports": [
+            "summary_statistic",
+            "uncertainty",
+            "sample_count"
+          ]
+        }
+      ],
+      "source_document": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+        "revision": "Retained registered XML revision; latest online revision/correction/retraction status unknown.",
+        "inspected_on": "2026-11-03",
+        "sha256": "0570b4cad935fcbf7363999960e40333d6a46fd2d113b3c9f87e7da9c4a9e7d3",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Retained exact primary XML: selected Table4 break-stress mean/SD cell, tensile method and five-specimen statement, existing identity/state and article permissions. No fresh PDF visual inspection or latest revision/correction/retraction audit; latest status unknown.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "scope_note": "Only the existing printed specimen group and recipe. Grade/SKU, lot, colour, additives, post-print conditioning, humidity and build/raster relation remain unknown. Pre-print drying is not post-print conditioning;100% slicer infill is not verified zero porosity. Mechanical n=5 is separate from dielectric n=3. Retain the source elongation table cross-reference issue without numeric correction. Independent batch count and fracture-detection/point-selection algorithm unknown. No automatic engine input, engineering allowable, universal bound or independent scientific validation.",
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Retained exact primary XML: selected Table4 break-stress mean/SD cell, tensile method and five-specimen statement, existing identity/state and article permissions. No fresh PDF visual inspection or latest revision/correction/retraction audit; latest status unknown.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      }
+    },
+    {
+      "id": "refprop_porima_petg_sahin_2026_fdm_tensile_stress_at_break",
+      "version": "1.0.0",
+      "material_state_id": "state_porima_petg_sahin_2026_fdm",
+      "quantity": "tensile_stress_at_break",
+      "quantity_dimension": "pressure",
+      "source_property_label": "s_B—Stress at Break (MPa)",
+      "reported_value": {
+        "kind": "scalar",
+        "value_text": "28.55",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "number": "28.55"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Table4 PETG column, s_B Stress at Break(MPa); section2.3 mean/SD,n=5; source-labelled tensile stress at break, mean ± SD, n=5 specimens. Not peak tensile strength, yield strength, modulus or toughness.",
+      "conditions": {
+        "temperature": {
+          "status": "reported",
+          "text": "23 °C",
+          "evidence": [
+            {
+              "source_id": "sahin_2026_polymer_mechanical_dielectric",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+              "locator": "§2.3, tensile testing temperature",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "ASTM D638-14",
+          "evidence": [
+            {
+              "source_id": "sahin_2026_polymer_mechanical_dielectric",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+              "locator": "Table4 PETG column, s_B Stress at Break(MPa); section2.3 mean/SD,n=5",
+              "supports": [
+                "method",
+                "classification",
+                "summary_statistic",
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Section2.3 ASTM D638-14, Zwick/RoellZ020/10kN,23C,5.0mm/min crosshead. Table4 s_B stress at break, distinct from s_M tensile strength, E_t and E_Sec. Exact fracture detection, stress convention, extensometry and reduction implementation unspecified.",
+          "evidence": [
+            {
+              "source_id": "sahin_2026_polymer_mechanical_dielectric",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+              "locator": "Table4 PETG column, s_B Stress at Break(MPa); section2.3 mean/SD,n=5",
+              "supports": [
+                "method",
+                "classification",
+                "summary_statistic",
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source-labelled tensile stress at break only. Source standard citation is not independent compliance verification; fracture detection and stress convention unknown."
+        },
+        "direction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Tensile loading direction relative to the raster and build orientation is not reported."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Post-print specimen conditioning, humidity and interval are not reported; pre-print drying is retained in the material state."
+        },
+        "loading_rate": {
+          "status": "reported",
+          "text": "5.0 mm/min crosshead speed",
+          "evidence": [
+            {
+              "source_id": "sahin_2026_polymer_mechanical_dielectric",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+              "locator": "§2.3, tensile testing speed",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "additional_conditions": [
+          {
+            "name": "humidity",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": null
+            }
+          },
+          {
+            "name": "atmosphere",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": null
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "reported_mean",
+      "uncertainty": {
+        "type": "reported_standard_deviation",
+        "value_text": "3.85",
+        "number": "3.85",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "scope": "Reported SD for the five tensile specimens of the PETG material group in this study.",
+        "coverage_factor": null,
+        "confidence_level": null,
+        "evidence": [
+          {
+            "source_id": "sahin_2026_polymer_mechanical_dielectric",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+            "locator": "§2.3, five specimens per group and means/standard deviations; Table 4 caption n = 5",
+            "supports": [
+              "summary_statistic",
+              "uncertainty",
+              "sample_count"
+            ]
+          }
+        ]
+      },
+      "uncertainty_status": "reported_standard_deviation",
+      "uncertainty_note": "28.55 ± 3.85 MPa: source mean ± reported SD for five tensile specimens in the selected composition/group. No SE, CI or independent batch count inferred.",
+      "sample_count": {
+        "value": 5,
+        "relation": "exact",
+        "scope": "Tensile specimens in the PETG material group for Table 4.",
+        "source_statement": "Section 2.3 reports five specimens per material group; Table 4 caption states n = 5.",
+        "evidence": [
+          {
+            "source_id": "sahin_2026_polymer_mechanical_dielectric",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+            "locator": "§2.3, five specimens per group and means/standard deviations; Table 4 caption n = 5",
+            "supports": [
+              "summary_statistic",
+              "uncertainty",
+              "sample_count"
+            ]
+          }
+        ]
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Section2.3 ASTM D638-14, Zwick/RoellZ020/10kN,23C,5.0mm/min crosshead. Table4 s_B stress at break, distinct from s_M tensile strength, E_t and E_Sec. Exact fracture detection, stress convention, extensometry and reduction implementation unspecified.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "sahin_2026_polymer_mechanical_dielectric",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+            "locator": "Table4 PETG column, s_B Stress at Break(MPa); section2.3 mean/SD,n=5",
+            "supports": [
+              "method",
+              "classification",
+              "summary_statistic"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Section 3.1 points to Table 1 for elongation-at-break figures that appear in Table 4.",
+          "disposition": "Use Table4 for the selected s_B stress-at-break cell; preserve the section3.1 elongation-at-break cross-reference issue without numeric correction.",
+          "evidence": [
+            {
+              "source_id": "sahin_2026_polymer_mechanical_dielectric",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+              "locator": "§3.1, elongation-at-break table cross-reference; Tables 1 and 4",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "sahin_2026_polymer_mechanical_dielectric",
+      "evidence": [
+        {
+          "source_id": "sahin_2026_polymer_mechanical_dielectric",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+          "locator": "Table4 PETG column, s_B Stress at Break(MPa); section2.3 mean/SD,n=5",
+          "supports": [
+            "reported_value"
+          ]
+        },
+        {
+          "source_id": "sahin_2026_polymer_mechanical_dielectric",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+          "locator": "§2.1, supplier and filament identities; §§2.2–2.3 and Tables 2–4, PETG group",
+          "supports": [
+            "material_identity",
+            "state"
+          ]
+        },
+        {
+          "source_id": "sahin_2026_polymer_mechanical_dielectric",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+          "locator": "Table4 PETG column, s_B Stress at Break(MPa); section2.3 mean/SD,n=5",
+          "supports": [
+            "classification"
+          ]
+        },
+        {
+          "source_id": "sahin_2026_polymer_mechanical_dielectric",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+          "locator": "Table4 PETG column, s_B Stress at Break(MPa); section2.3 mean/SD,n=5",
+          "supports": [
+            "method",
+            "classification",
+            "summary_statistic"
+          ]
+        },
+        {
+          "source_id": "sahin_2026_polymer_mechanical_dielectric",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+          "locator": "§2.3, five specimens per group and means/standard deviations; Table 4 caption n = 5",
+          "supports": [
+            "summary_statistic",
+            "uncertainty",
+            "sample_count"
+          ]
+        }
+      ],
+      "source_document": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+        "revision": "Retained registered XML revision; latest online revision/correction/retraction status unknown.",
+        "inspected_on": "2026-11-03",
+        "sha256": "0570b4cad935fcbf7363999960e40333d6a46fd2d113b3c9f87e7da9c4a9e7d3",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Retained exact primary XML: selected Table4 break-stress mean/SD cell, tensile method and five-specimen statement, existing identity/state and article permissions. No fresh PDF visual inspection or latest revision/correction/retraction audit; latest status unknown.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "scope_note": "Only the existing printed specimen group and recipe. Grade/SKU, lot, colour, additives, post-print conditioning, humidity and build/raster relation remain unknown. Pre-print drying is not post-print conditioning;100% slicer infill is not verified zero porosity. Mechanical n=5 is separate from dielectric n=3. Retain the source elongation table cross-reference issue without numeric correction. Independent batch count and fracture-detection/point-selection algorithm unknown. No automatic engine input, engineering allowable, universal bound or independent scientific validation.",
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Retained exact primary XML: selected Table4 break-stress mean/SD cell, tensile method and five-specimen statement, existing identity/state and article permissions. No fresh PDF visual inspection or latest revision/correction/retraction audit; latest status unknown.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      }
+    },
+    {
+      "id": "refprop_porima_asa_sahin_2026_fdm_tensile_stress_at_break",
+      "version": "1.0.0",
+      "material_state_id": "state_porima_asa_sahin_2026_fdm",
+      "quantity": "tensile_stress_at_break",
+      "quantity_dimension": "pressure",
+      "source_property_label": "s_B—Stress at Break (MPa)",
+      "reported_value": {
+        "kind": "scalar",
+        "value_text": "28.76",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "number": "28.76"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Table4 ASA column, s_B Stress at Break(MPa); section2.3 mean/SD,n=5; source-labelled tensile stress at break, mean ± SD, n=5 specimens. Not peak tensile strength, yield strength, modulus or toughness.",
+      "conditions": {
+        "temperature": {
+          "status": "reported",
+          "text": "23 °C",
+          "evidence": [
+            {
+              "source_id": "sahin_2026_polymer_mechanical_dielectric",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+              "locator": "§2.3, tensile testing temperature",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "ASTM D638-14",
+          "evidence": [
+            {
+              "source_id": "sahin_2026_polymer_mechanical_dielectric",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+              "locator": "Table4 ASA column, s_B Stress at Break(MPa); section2.3 mean/SD,n=5",
+              "supports": [
+                "method",
+                "classification",
+                "summary_statistic",
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Section2.3 ASTM D638-14, Zwick/RoellZ020/10kN,23C,5.0mm/min crosshead. Table4 s_B stress at break, distinct from s_M tensile strength, E_t and E_Sec. Exact fracture detection, stress convention, extensometry and reduction implementation unspecified.",
+          "evidence": [
+            {
+              "source_id": "sahin_2026_polymer_mechanical_dielectric",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+              "locator": "Table4 ASA column, s_B Stress at Break(MPa); section2.3 mean/SD,n=5",
+              "supports": [
+                "method",
+                "classification",
+                "summary_statistic",
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source-labelled tensile stress at break only. Source standard citation is not independent compliance verification; fracture detection and stress convention unknown."
+        },
+        "direction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Tensile loading direction relative to the raster and build orientation is not reported."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Post-print specimen conditioning, humidity and interval are not reported; pre-print drying is retained in the material state."
+        },
+        "loading_rate": {
+          "status": "reported",
+          "text": "5.0 mm/min crosshead speed",
+          "evidence": [
+            {
+              "source_id": "sahin_2026_polymer_mechanical_dielectric",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+              "locator": "§2.3, tensile testing speed",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "additional_conditions": [
+          {
+            "name": "humidity",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": null
+            }
+          },
+          {
+            "name": "atmosphere",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": null
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "reported_mean",
+      "uncertainty": {
+        "type": "reported_standard_deviation",
+        "value_text": "1.29",
+        "number": "1.29",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "scope": "Reported SD for the five tensile specimens of the ASA material group in this study.",
+        "coverage_factor": null,
+        "confidence_level": null,
+        "evidence": [
+          {
+            "source_id": "sahin_2026_polymer_mechanical_dielectric",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+            "locator": "§2.3, five specimens per group and means/standard deviations; Table 4 caption n = 5",
+            "supports": [
+              "summary_statistic",
+              "uncertainty",
+              "sample_count"
+            ]
+          }
+        ]
+      },
+      "uncertainty_status": "reported_standard_deviation",
+      "uncertainty_note": "28.76 ± 1.29 MPa: source mean ± reported SD for five tensile specimens in the selected composition/group. No SE, CI or independent batch count inferred.",
+      "sample_count": {
+        "value": 5,
+        "relation": "exact",
+        "scope": "Tensile specimens in the ASA material group for Table 4.",
+        "source_statement": "Section 2.3 reports five specimens per material group; Table 4 caption states n = 5.",
+        "evidence": [
+          {
+            "source_id": "sahin_2026_polymer_mechanical_dielectric",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+            "locator": "§2.3, five specimens per group and means/standard deviations; Table 4 caption n = 5",
+            "supports": [
+              "summary_statistic",
+              "uncertainty",
+              "sample_count"
+            ]
+          }
+        ]
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Section2.3 ASTM D638-14, Zwick/RoellZ020/10kN,23C,5.0mm/min crosshead. Table4 s_B stress at break, distinct from s_M tensile strength, E_t and E_Sec. Exact fracture detection, stress convention, extensometry and reduction implementation unspecified.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "sahin_2026_polymer_mechanical_dielectric",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+            "locator": "Table4 ASA column, s_B Stress at Break(MPa); section2.3 mean/SD,n=5",
+            "supports": [
+              "method",
+              "classification",
+              "summary_statistic"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Section 3.1 points to Table 1 for elongation-at-break figures that appear in Table 4.",
+          "disposition": "Use Table4 for the selected s_B stress-at-break cell; preserve the section3.1 elongation-at-break cross-reference issue without numeric correction.",
+          "evidence": [
+            {
+              "source_id": "sahin_2026_polymer_mechanical_dielectric",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+              "locator": "§3.1, elongation-at-break table cross-reference; Tables 1 and 4",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "sahin_2026_polymer_mechanical_dielectric",
+      "evidence": [
+        {
+          "source_id": "sahin_2026_polymer_mechanical_dielectric",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+          "locator": "Table4 ASA column, s_B Stress at Break(MPa); section2.3 mean/SD,n=5",
+          "supports": [
+            "reported_value"
+          ]
+        },
+        {
+          "source_id": "sahin_2026_polymer_mechanical_dielectric",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+          "locator": "§2.1, supplier and filament identities; §§2.2–2.3 and Tables 2–4, ASA group",
+          "supports": [
+            "material_identity",
+            "state"
+          ]
+        },
+        {
+          "source_id": "sahin_2026_polymer_mechanical_dielectric",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+          "locator": "Table4 ASA column, s_B Stress at Break(MPa); section2.3 mean/SD,n=5",
+          "supports": [
+            "classification"
+          ]
+        },
+        {
+          "source_id": "sahin_2026_polymer_mechanical_dielectric",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+          "locator": "Table4 ASA column, s_B Stress at Break(MPa); section2.3 mean/SD,n=5",
+          "supports": [
+            "method",
+            "classification",
+            "summary_statistic"
+          ]
+        },
+        {
+          "source_id": "sahin_2026_polymer_mechanical_dielectric",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+          "locator": "§2.3, five specimens per group and means/standard deviations; Table 4 caption n = 5",
+          "supports": [
+            "summary_statistic",
+            "uncertainty",
+            "sample_count"
+          ]
+        }
+      ],
+      "source_document": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+        "revision": "Retained registered XML revision; latest online revision/correction/retraction status unknown.",
+        "inspected_on": "2026-11-03",
+        "sha256": "0570b4cad935fcbf7363999960e40333d6a46fd2d113b3c9f87e7da9c4a9e7d3",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Retained exact primary XML: selected Table4 break-stress mean/SD cell, tensile method and five-specimen statement, existing identity/state and article permissions. No fresh PDF visual inspection or latest revision/correction/retraction audit; latest status unknown.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "scope_note": "Only the existing printed specimen group and recipe. Grade/SKU, lot, colour, additives, post-print conditioning, humidity and build/raster relation remain unknown. Pre-print drying is not post-print conditioning;100% slicer infill is not verified zero porosity. Mechanical n=5 is separate from dielectric n=3. Retain the source elongation table cross-reference issue without numeric correction. Independent batch count and fracture-detection/point-selection algorithm unknown. No automatic engine input, engineering allowable, universal bound or independent scientific validation.",
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Retained exact primary XML: selected Table4 break-stress mean/SD cell, tensile method and five-specimen statement, existing identity/state and article permissions. No fresh PDF visual inspection or latest revision/correction/retraction audit; latest status unknown.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      }
+    },
+    {
+      "id": "refprop_porima_pc_abs_sahin_2026_fdm_tensile_stress_at_break",
+      "version": "1.0.0",
+      "material_state_id": "state_porima_pc_abs_sahin_2026_fdm",
+      "quantity": "tensile_stress_at_break",
+      "quantity_dimension": "pressure",
+      "source_property_label": "s_B—Stress at Break (MPa)",
+      "reported_value": {
+        "kind": "scalar",
+        "value_text": "25.04",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "number": "25.04"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Table4 PC/ABS column, s_B Stress at Break(MPa); section2.3 mean/SD,n=5; source-labelled tensile stress at break, mean ± SD, n=5 specimens. Not peak tensile strength, yield strength, modulus or toughness.",
+      "conditions": {
+        "temperature": {
+          "status": "reported",
+          "text": "23 °C",
+          "evidence": [
+            {
+              "source_id": "sahin_2026_polymer_mechanical_dielectric",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+              "locator": "§2.3, tensile testing temperature",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "ASTM D638-14",
+          "evidence": [
+            {
+              "source_id": "sahin_2026_polymer_mechanical_dielectric",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+              "locator": "Table4 PC/ABS column, s_B Stress at Break(MPa); section2.3 mean/SD,n=5",
+              "supports": [
+                "method",
+                "classification",
+                "summary_statistic",
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Section2.3 ASTM D638-14, Zwick/RoellZ020/10kN,23C,5.0mm/min crosshead. Table4 s_B stress at break, distinct from s_M tensile strength, E_t and E_Sec. Exact fracture detection, stress convention, extensometry and reduction implementation unspecified.",
+          "evidence": [
+            {
+              "source_id": "sahin_2026_polymer_mechanical_dielectric",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+              "locator": "Table4 PC/ABS column, s_B Stress at Break(MPa); section2.3 mean/SD,n=5",
+              "supports": [
+                "method",
+                "classification",
+                "summary_statistic",
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source-labelled tensile stress at break only. Source standard citation is not independent compliance verification; fracture detection and stress convention unknown."
+        },
+        "direction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Tensile loading direction relative to the raster and build orientation is not reported."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Post-print specimen conditioning, humidity and interval are not reported; pre-print drying is retained in the material state."
+        },
+        "loading_rate": {
+          "status": "reported",
+          "text": "5.0 mm/min crosshead speed",
+          "evidence": [
+            {
+              "source_id": "sahin_2026_polymer_mechanical_dielectric",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+              "locator": "§2.3, tensile testing speed",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "additional_conditions": [
+          {
+            "name": "humidity",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": null
+            }
+          },
+          {
+            "name": "atmosphere",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": null
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "reported_mean",
+      "uncertainty": {
+        "type": "reported_standard_deviation",
+        "value_text": "0.72",
+        "number": "0.72",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "scope": "Reported SD for the five tensile specimens of the PC/ABS material group in this study.",
+        "coverage_factor": null,
+        "confidence_level": null,
+        "evidence": [
+          {
+            "source_id": "sahin_2026_polymer_mechanical_dielectric",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+            "locator": "§2.3, five specimens per group and means/standard deviations; Table 4 caption n = 5",
+            "supports": [
+              "summary_statistic",
+              "uncertainty",
+              "sample_count"
+            ]
+          }
+        ]
+      },
+      "uncertainty_status": "reported_standard_deviation",
+      "uncertainty_note": "25.04 ± 0.72 MPa: source mean ± reported SD for five tensile specimens in the selected composition/group. No SE, CI or independent batch count inferred.",
+      "sample_count": {
+        "value": 5,
+        "relation": "exact",
+        "scope": "Tensile specimens in the PC/ABS material group for Table 4.",
+        "source_statement": "Section 2.3 reports five specimens per material group; Table 4 caption states n = 5.",
+        "evidence": [
+          {
+            "source_id": "sahin_2026_polymer_mechanical_dielectric",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+            "locator": "§2.3, five specimens per group and means/standard deviations; Table 4 caption n = 5",
+            "supports": [
+              "summary_statistic",
+              "uncertainty",
+              "sample_count"
+            ]
+          }
+        ]
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Section2.3 ASTM D638-14, Zwick/RoellZ020/10kN,23C,5.0mm/min crosshead. Table4 s_B stress at break, distinct from s_M tensile strength, E_t and E_Sec. Exact fracture detection, stress convention, extensometry and reduction implementation unspecified.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "sahin_2026_polymer_mechanical_dielectric",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+            "locator": "Table4 PC/ABS column, s_B Stress at Break(MPa); section2.3 mean/SD,n=5",
+            "supports": [
+              "method",
+              "classification",
+              "summary_statistic"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Section 3.1 points to Table 1 for elongation-at-break figures that appear in Table 4.",
+          "disposition": "Use Table4 for the selected s_B stress-at-break cell; preserve the section3.1 elongation-at-break cross-reference issue without numeric correction.",
+          "evidence": [
+            {
+              "source_id": "sahin_2026_polymer_mechanical_dielectric",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+              "locator": "§3.1, elongation-at-break table cross-reference; Tables 1 and 4",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "sahin_2026_polymer_mechanical_dielectric",
+      "evidence": [
+        {
+          "source_id": "sahin_2026_polymer_mechanical_dielectric",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+          "locator": "Table4 PC/ABS column, s_B Stress at Break(MPa); section2.3 mean/SD,n=5",
+          "supports": [
+            "reported_value"
+          ]
+        },
+        {
+          "source_id": "sahin_2026_polymer_mechanical_dielectric",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+          "locator": "§2.1, supplier and filament identities; §§2.2–2.3 and Tables 2–4, PC/ABS group",
+          "supports": [
+            "material_identity",
+            "state"
+          ]
+        },
+        {
+          "source_id": "sahin_2026_polymer_mechanical_dielectric",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+          "locator": "Table4 PC/ABS column, s_B Stress at Break(MPa); section2.3 mean/SD,n=5",
+          "supports": [
+            "classification"
+          ]
+        },
+        {
+          "source_id": "sahin_2026_polymer_mechanical_dielectric",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+          "locator": "Table4 PC/ABS column, s_B Stress at Break(MPa); section2.3 mean/SD,n=5",
+          "supports": [
+            "method",
+            "classification",
+            "summary_statistic"
+          ]
+        },
+        {
+          "source_id": "sahin_2026_polymer_mechanical_dielectric",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+          "locator": "§2.3, five specimens per group and means/standard deviations; Table 4 caption n = 5",
+          "supports": [
+            "summary_statistic",
+            "uncertainty",
+            "sample_count"
+          ]
+        }
+      ],
+      "source_document": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13259274/fullTextXML",
+        "revision": "Retained registered XML revision; latest online revision/correction/retraction status unknown.",
+        "inspected_on": "2026-11-03",
+        "sha256": "0570b4cad935fcbf7363999960e40333d6a46fd2d113b3c9f87e7da9c4a9e7d3",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Retained exact primary XML: selected Table4 break-stress mean/SD cell, tensile method and five-specimen statement, existing identity/state and article permissions. No fresh PDF visual inspection or latest revision/correction/retraction audit; latest status unknown.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "scope_note": "Only the existing printed specimen group and recipe. Grade/SKU, lot, colour, additives, post-print conditioning, humidity and build/raster relation remain unknown. Pre-print drying is not post-print conditioning;100% slicer infill is not verified zero porosity. Mechanical n=5 is separate from dielectric n=3. Retain the source elongation table cross-reference issue without numeric correction. Independent batch count and fracture-detection/point-selection algorithm unknown. No automatic engine input, engineering allowable, universal bound or independent scientific validation.",
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Retained exact primary XML: selected Table4 break-stress mean/SD cell, tensile method and five-specimen statement, existing identity/state and article permissions. No fresh PDF visual inspection or latest revision/correction/retraction audit; latest status unknown.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      }
+    },
+    {
+      "id": "refprop_smr10_bianchi2025_nr_tensile_stress_at_200_percent_elongation",
+      "version": "1.0.0",
+      "material_state_id": "state_smr10_bianchi2025_nr",
+      "quantity": "tensile_stress_at_specified_elongation",
+      "quantity_dimension": "pressure",
+      "source_property_label": "sigma_200% (MPa)",
+      "reported_value": {
+        "kind": "scalar",
+        "value_text": "1.08",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "number": "1.08"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Table4 unfilled NR row, sigma200%(MPa) column; section3.3.4 quasi-static tensile tests and explicit strain targets; source mean/SD for five specimens. Stress at source target, not finite-strain interval slope, initial/tangent/secant modulus or break stress.",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Temperature of this quasi-static test is not stated; do not transfer density room temperature or hardness/relaxation 25C."
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "ASTM D412",
+          "evidence": [
+            {
+              "source_id": "bianchi_2025_nr_nanoclay",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+              "locator": "Section 3.3.4, quasi-static uniaxial tensile tests",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source statement only; exact edition and independent compliance unverified."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Section3.3.4 quasi-static ASTM D412 (edition unknown),Instron5969/1kN,500mm/min crosshead;Instron2603/25mm. Direct stress at source strain target 200%. Exact point-selection/interpolation and engineering/true stress-strain conventions unknown; no strain-rate or modulus conversion.",
+          "evidence": [
+            {
+              "source_id": "bianchi_2025_nr_nanoclay",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+              "locator": "Section 3.3.4, quasi-static uniaxial tensile tests",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Reported tensile stress at the explicit source target only;standard citation is not independent compliance verification."
+        },
+        "direction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Loading axis relative to sheet processing direction is not specified; no isotropy inferred."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Post-cure humidity, conditioning and storage/recovery interval of the selected quasi-static tensile specimens are unspecified."
+        },
+        "loading_rate": {
+          "status": "reported",
+          "text": "500 mm/min crosshead speed",
+          "evidence": [
+            {
+              "source_id": "bianchi_2025_nr_nanoclay",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+              "locator": "Section 3.3.4, quasi-static uniaxial tensile tests",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Not converted to a verified specimen strain rate."
+        },
+        "additional_conditions": [
+          {
+            "name": "test_relative_humidity",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "No humidity value assigned."
+            }
+          },
+          {
+            "name": "prior_loading_history",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Cyclic tests and pre-stretching for relaxation are separate procedures, not assigned to quasi-static specimens."
+            }
+          },
+          {
+            "name": "stress_strain_convention",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Source does not explicitly identify engineering versus true stress/strain for the selected target-stress result."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "reported_mean",
+      "uncertainty": {
+        "type": "reported_standard_deviation",
+        "value_text": "0.13",
+        "number": "0.13",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "scope": "Selected mechanical result only; no SD-to-SE/CI conversion or density uncertainty inference.",
+        "coverage_factor": null,
+        "confidence_level": null,
+        "evidence": [
+          {
+            "source_id": "bianchi_2025_nr_nanoclay",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+            "locator": "Table4 unfilled NR row, sigma200%(MPa) column; section3.3.4 quasi-static tensile tests and explicit strain targets",
+            "supports": [
+              "uncertainty"
+            ]
+          }
+        ]
+      },
+      "uncertainty_status": "reported_standard_deviation",
+      "uncertainty_note": "1.08 plus/minus 0.13 MPa: source mean and SD,n5 tensile specimens;not independent batches,SE or CI.",
+      "sample_count": {
+        "value": 5,
+        "relation": "exact",
+        "scope": "Five quasi-static tensile specimens per selected composition; independent batch count unspecified.",
+        "source_statement": "Five specimens were tested for each composition.",
+        "evidence": [
+          {
+            "source_id": "bianchi_2025_nr_nanoclay",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+            "locator": "Section 3.3.4, quasi-static uniaxial tensile tests",
+            "supports": [
+              "sample_count"
+            ]
+          }
+        ]
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Section3.3.4 quasi-static ASTM D412 (edition unknown),Instron5969/1kN,500mm/min crosshead;Instron2603/25mm. Direct stress at source strain target 200%. Exact point-selection/interpolation and engineering/true stress-strain conventions unknown; no strain-rate or modulus conversion.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "bianchi_2025_nr_nanoclay",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+            "locator": "Section 3.3.4, quasi-static uniaxial tensile tests",
+            "supports": [
+              "method"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [],
+      "source_id": "bianchi_2025_nr_nanoclay",
+      "evidence": [
+        {
+          "source_id": "bianchi_2025_nr_nanoclay",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+          "locator": "Table4 unfilled NR row, sigma200%(MPa) column; section3.3.4 quasi-static tensile tests and explicit strain targets",
+          "supports": [
+            "reported_value",
+            "classification",
+            "method",
+            "summary_statistic",
+            "uncertainty",
+            "sample_count"
+          ]
+        }
+      ],
+      "source_document": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+        "revision": "Retained registered XML;latest online revision/correction/retraction status unknown.",
+        "inspected_on": "2026-11-03",
+        "sha256": "97eb8a1e73e57b6fc64fcf3b0be6603db3f8dcb5fa927570e91eb033f1018f69",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Retained registered primary XML Table4 unfilled NR sigma200%/sigma400% columns and section3.3.4,mean/SD,n5 and article permissions. No fresh PDF visual or latest revision/correction/retraction audit;latest status unknown.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "scope_note": "Existing unfilled vulcanizate contains curatives;not pure raw NR. Temperature,RH,post-cure conditioning/storage,processing axis,prior quasi-static loading and independent batches unknown. No transfer from hardness,density,cyclic or relaxation conditions. Explicit200%/400% targets do not repair the separate break-strain header/magnitude issue. Unknown stress/strain conventions and point-selection algorithm retained. Not modulus,break/peak/yield stress or toughness;no engine input,engineering allowable or universal bound.",
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Retained registered primary XML Table4 unfilled NR sigma200%/sigma400% columns and section3.3.4,mean/SD,n5 and article permissions. No fresh PDF visual or latest revision/correction/retraction audit;latest status unknown.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      },
+      "specified_elongation": {
+        "value_text": "200",
+        "number": "200",
+        "unit_text": "%",
+        "unit_code": "percent",
+        "basis": "source_reported_percent_elongation",
+        "evidence": [
+          {
+            "source_id": "bianchi_2025_nr_nanoclay",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+            "locator": "Table4 unfilled NR row, sigma200%(MPa) column; section3.3.4 quasi-static tensile tests and explicit strain targets",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Direct source strain target, not a certified specimen-level strain implementation, stretch ratio or logarithmic strain. Engineering/true strain convention and exact interpolation/point selection remain unknown. No stress/strain division or modulus inference."
+      }
+    },
+    {
+      "id": "refprop_smr10_bianchi2025_nr_tensile_stress_at_400_percent_elongation",
+      "version": "1.0.0",
+      "material_state_id": "state_smr10_bianchi2025_nr",
+      "quantity": "tensile_stress_at_specified_elongation",
+      "quantity_dimension": "pressure",
+      "source_property_label": "sigma_400% (MPa)",
+      "reported_value": {
+        "kind": "scalar",
+        "value_text": "2.10",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "number": "2.10"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Table4 unfilled NR row, sigma400%(MPa) column; section3.3.4 quasi-static tensile tests and explicit strain targets; source mean/SD for five specimens. Stress at source target, not finite-strain interval slope, initial/tangent/secant modulus or break stress.",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Temperature of this quasi-static test is not stated; do not transfer density room temperature or hardness/relaxation 25C."
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "ASTM D412",
+          "evidence": [
+            {
+              "source_id": "bianchi_2025_nr_nanoclay",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+              "locator": "Section 3.3.4, quasi-static uniaxial tensile tests",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source statement only; exact edition and independent compliance unverified."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Section3.3.4 quasi-static ASTM D412 (edition unknown),Instron5969/1kN,500mm/min crosshead;Instron2603/25mm. Direct stress at source strain target 400%. Exact point-selection/interpolation and engineering/true stress-strain conventions unknown; no strain-rate or modulus conversion.",
+          "evidence": [
+            {
+              "source_id": "bianchi_2025_nr_nanoclay",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+              "locator": "Section 3.3.4, quasi-static uniaxial tensile tests",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Reported tensile stress at the explicit source target only;standard citation is not independent compliance verification."
+        },
+        "direction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Loading axis relative to sheet processing direction is not specified; no isotropy inferred."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Post-cure humidity, conditioning and storage/recovery interval of the selected quasi-static tensile specimens are unspecified."
+        },
+        "loading_rate": {
+          "status": "reported",
+          "text": "500 mm/min crosshead speed",
+          "evidence": [
+            {
+              "source_id": "bianchi_2025_nr_nanoclay",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+              "locator": "Section 3.3.4, quasi-static uniaxial tensile tests",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Not converted to a verified specimen strain rate."
+        },
+        "additional_conditions": [
+          {
+            "name": "test_relative_humidity",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "No humidity value assigned."
+            }
+          },
+          {
+            "name": "prior_loading_history",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Cyclic tests and pre-stretching for relaxation are separate procedures, not assigned to quasi-static specimens."
+            }
+          },
+          {
+            "name": "stress_strain_convention",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Source does not explicitly identify engineering versus true stress/strain for the selected target-stress result."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "reported_mean",
+      "uncertainty": {
+        "type": "reported_standard_deviation",
+        "value_text": "0.23",
+        "number": "0.23",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "scope": "Selected mechanical result only; no SD-to-SE/CI conversion or density uncertainty inference.",
+        "coverage_factor": null,
+        "confidence_level": null,
+        "evidence": [
+          {
+            "source_id": "bianchi_2025_nr_nanoclay",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+            "locator": "Table4 unfilled NR row, sigma400%(MPa) column; section3.3.4 quasi-static tensile tests and explicit strain targets",
+            "supports": [
+              "uncertainty"
+            ]
+          }
+        ]
+      },
+      "uncertainty_status": "reported_standard_deviation",
+      "uncertainty_note": "2.10 plus/minus 0.23 MPa: source mean and SD,n5 tensile specimens;not independent batches,SE or CI.",
+      "sample_count": {
+        "value": 5,
+        "relation": "exact",
+        "scope": "Five quasi-static tensile specimens per selected composition; independent batch count unspecified.",
+        "source_statement": "Five specimens were tested for each composition.",
+        "evidence": [
+          {
+            "source_id": "bianchi_2025_nr_nanoclay",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+            "locator": "Section 3.3.4, quasi-static uniaxial tensile tests",
+            "supports": [
+              "sample_count"
+            ]
+          }
+        ]
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Section3.3.4 quasi-static ASTM D412 (edition unknown),Instron5969/1kN,500mm/min crosshead;Instron2603/25mm. Direct stress at source strain target 400%. Exact point-selection/interpolation and engineering/true stress-strain conventions unknown; no strain-rate or modulus conversion.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "bianchi_2025_nr_nanoclay",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+            "locator": "Section 3.3.4, quasi-static uniaxial tensile tests",
+            "supports": [
+              "method"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [],
+      "source_id": "bianchi_2025_nr_nanoclay",
+      "evidence": [
+        {
+          "source_id": "bianchi_2025_nr_nanoclay",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+          "locator": "Table4 unfilled NR row, sigma400%(MPa) column; section3.3.4 quasi-static tensile tests and explicit strain targets",
+          "supports": [
+            "reported_value",
+            "classification",
+            "method",
+            "summary_statistic",
+            "uncertainty",
+            "sample_count"
+          ]
+        }
+      ],
+      "source_document": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+        "revision": "Retained registered XML;latest online revision/correction/retraction status unknown.",
+        "inspected_on": "2026-11-03",
+        "sha256": "97eb8a1e73e57b6fc64fcf3b0be6603db3f8dcb5fa927570e91eb033f1018f69",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Retained registered primary XML Table4 unfilled NR sigma200%/sigma400% columns and section3.3.4,mean/SD,n5 and article permissions. No fresh PDF visual or latest revision/correction/retraction audit;latest status unknown.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "scope_note": "Existing unfilled vulcanizate contains curatives;not pure raw NR. Temperature,RH,post-cure conditioning/storage,processing axis,prior quasi-static loading and independent batches unknown. No transfer from hardness,density,cyclic or relaxation conditions. Explicit200%/400% targets do not repair the separate break-strain header/magnitude issue. Unknown stress/strain conventions and point-selection algorithm retained. Not modulus,break/peak/yield stress or toughness;no engine input,engineering allowable or universal bound.",
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Retained registered primary XML Table4 unfilled NR sigma200%/sigma400% columns and section3.3.4,mean/SD,n5 and article permissions. No fresh PDF visual or latest revision/correction/retraction audit;latest status unknown.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      },
+      "specified_elongation": {
+        "value_text": "400",
+        "number": "400",
+        "unit_text": "%",
+        "unit_code": "percent",
+        "basis": "source_reported_percent_elongation",
+        "evidence": [
+          {
+            "source_id": "bianchi_2025_nr_nanoclay",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+            "locator": "Table4 unfilled NR row, sigma400%(MPa) column; section3.3.4 quasi-static tensile tests and explicit strain targets",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Direct source strain target, not a certified specimen-level strain implementation, stretch ratio or logarithmic strain. Engineering/true strain convention and exact interpolation/point selection remain unknown. No stress/strain division or modulus inference."
+      }
+    },
+    {
+      "version": "1.0.0",
+      "quantity": "tensile_strength",
+      "quantity_dimension": "pressure",
+      "source_property_label": "sigma_t^B (MPa)",
+      "reported_value": {
+        "kind": "scalar",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "value_text": "59.22",
+        "number": "59.22"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "not_stated",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Table2 experimental tensile strength of the selected blend;Table3 experimental column repeats the same source expression. Central aggregation and n unknown;no theoretical RoM or commercial comparison value selected. SuperscriptB denotes blend,not break.",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Tensile-test temperature is not stated. Preparation and MFI temperatures are not transferred to tensile testing."
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "ISO 527-1:2012.",
+          "evidence": [
+            {
+              "source_id": "delgado_aguilar_2020_pla_pcl",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+              "locator": "Section 2.4, Mechanical Testing of the Blends",
+              "supports": [
+                "condition",
+                "method"
+              ]
+            }
+          ],
+          "notes": "Source-cited edition only; independent standard compliance is unverified. No standard-derived specimen, conditioning or temperature defaults are inferred."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Source experimental tensile strength of injection-molded blend,Instron1122/5kN,source-cited ISO527-1:2012,2mm/min crosshead and115mm clamp separation. Exact strength selection/reduction,engineering/true stress convention,strain estimator and extensometer gauge unspecified. Not Young modulus or stress at break.",
+          "evidence": [
+            {
+              "source_id": "delgado_aguilar_2020_pla_pcl",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+              "locator": "Section 2.4, Mechanical Testing of the Blends",
+              "supports": [
+                "method",
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Clamp separation is not an extensometer gauge length;no strain-rate conversion or standard-derived default conditions."
+        },
+        "direction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Loading direction relative to molding flow is not stated."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Post-molding tensile conditioning is not reported. Drying and oven storage of ingredients/pellets do not establish test conditioning."
+        },
+        "loading_rate": {
+          "status": "reported",
+          "text": "Crosshead speed 2 mm/min.",
+          "evidence": [
+            {
+              "source_id": "delgado_aguilar_2020_pla_pcl",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+              "locator": "Section 2.4, Mechanical Testing of the Blends",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "This is crosshead speed, not a derived specimen strain rate."
+        },
+        "additional_conditions": [
+          {
+            "name": "clamp_separation",
+            "fact": {
+              "status": "reported",
+              "text": "Gap between clamps: 115 mm.",
+              "evidence": [
+                {
+                  "source_id": "delgado_aguilar_2020_pla_pcl",
+                  "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+                  "locator": "Section 2.4, Mechanical Testing of the Blends",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Clamp separation is not an extensometer gauge length; no strain rate is derived."
+            }
+          },
+          {
+            "name": "test_relative_humidity",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Tensile-test relative humidity is not stated."
+            }
+          },
+          {
+            "name": "test_pressure",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Tensile-test pressure is not stated; injection pressure is a separate processing variable."
+            }
+          },
+          {
+            "name": "specimen_type_and_dimensions",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Injection-molded standard testing specimens are described, but the tensile specimen type and dimensions are not stated."
+            }
+          },
+          {
+            "name": "measurement_repetitions",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Tensile replicate count, repeat readings per specimen and independent production-batch count are not stated."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "not_stated",
+      "uncertainty_status": "reported_plus_minus_unspecified",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Specimens or measurements contributing to this selected tensile-strength result are not stated;independent manufacturing batches unknown.",
+        "source_statement": "Selected methods and Table2 do not state tensile specimen/replicate counts;number of blend formulations is not n.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Source experimental tensile strength of injection-molded blend,Instron1122/5kN,source-cited ISO527-1:2012,2mm/min crosshead and115mm clamp separation. Exact strength selection/reduction,engineering/true stress convention,strain estimator and extensometer gauge unspecified. Not Young modulus or stress at break.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "delgado_aguilar_2020_pla_pcl",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+            "locator": "Section 2.4, Mechanical Testing of the Blends",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Section 2.3 lists a heating-zone setup and pressure range, whereas Section 3.1 reports that molding temperature and pressure varied with MFI.",
+          "disposition": "Section 2.3 lists five heating zones at 175, 180, 185, 185 and 190 degrees C and an injection-pressure range of 330-600 bar. Section 3.1 says both injection-molding temperature and pressure were modified according to blend melt flow index. Retain these as reported setup/range context only; exact per-formulation temperature and pressure settings are unresolved, and no universal molding recipe is assigned to the seven states.",
+          "evidence": [
+            {
+              "source_id": "delgado_aguilar_2020_pla_pcl",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+              "locator": "Sections 2.3 and 3.1, injection-molding conditions",
+              "supports": [
+                "source_discrepancy",
+                "state"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "delgado_aguilar_2020_pla_pcl",
+      "source_document": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+        "revision": "Reacquired registered XML bytes;latest revision/correction/retraction status unknown.",
+        "inspected_on": "2026-11-03",
+        "sha256": "1fc618818e73292837129bd4bf9885b71982974d5e7fead0056276fb28f8cb6b",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Reacquired official EuropePMC XML byte-equal registered asset;article permissions,sections2.1-2.4 and3.1-3.2,Tables1/2/3;selected experimental tensile strengths and unspecified plus-minus expressions. No fresh PDF visual inspection,raw-data analysis or latest correction/retraction audit.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Reacquired official EuropePMC XML byte-equal registered asset;article permissions,sections2.1-2.4 and3.1-3.2,Tables1/2/3;selected experimental tensile strengths and unspecified plus-minus expressions. No fresh PDF visual inspection,raw-data analysis or latest correction/retraction audit.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      },
+      "id": "refprop_delgado2020_pla_pcl_b95_5_tensile_strength",
+      "material_state_id": "state_delgado2020_pla_pcl_b95_5_injection_molded",
+      "uncertainty": {
+        "type": "reported_plus_minus_unspecified",
+        "value_text": "2.03",
+        "number": "2.03",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "scope": "Source plus-minus amplitude for this selected tensile-strength expression only;statistical construction and central aggregation unspecified. Modulus-specific SD statement does not define strength dispersion.",
+        "coverage_factor": null,
+        "confidence_level": null,
+        "evidence": [
+          {
+            "source_id": "delgado_aguilar_2020_pla_pcl",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+            "locator": "Table2 V_PCL 0.054 row,sigma_t^B(MPa),joined to Table1 B95/5;Table3 experimental sigma_t^B corroborates same reported expression",
+            "supports": [
+              "uncertainty"
+            ]
+          }
+        ]
+      },
+      "uncertainty_note": "59.22 plus/minus 2.03 MPa: reported expression,not a verified mean/SD,SE,CI,tolerance or physical range. Section3.2 afterEq6 identifies only Young modulus variability as SD;do not transfer that definition to strength.",
+      "evidence": [
+        {
+          "source_id": "delgado_aguilar_2020_pla_pcl",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+          "locator": "Table2 V_PCL 0.054 row,sigma_t^B(MPa),joined to Table1 B95/5;Table3 experimental sigma_t^B corroborates same reported expression",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "delgado_aguilar_2020_pla_pcl",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+          "locator": "Table2 V_PCL 0.054 row,sigma_t^B(MPa),joined to Table1 B95/5;Table3 experimental sigma_t^B corroborates same reported expression",
+          "supports": [
+            "uncertainty"
+          ]
+        },
+        {
+          "source_id": "delgado_aguilar_2020_pla_pcl",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+          "locator": "Section 2.4, Mechanical Testing of the Blends",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ],
+      "scope_note": "Existing source-defined blend and injection-molded state only;reported mass ratio and PCL volume fraction are distinct. Central statistic,plus-minus definition,n and batches unknown. Tensile temperature,RH,pressure,post-molding conditioning,flow/loading relation,specimen geometry,stress convention and peak-selection algorithm unknown. Ingredient/pellet60C storage,molding175-190C/330-600bar and MFI210C do not supply tensile environment. Source molding-setting discrepancy retained;no universal per-blend recipe. Not break/yield strength,modulus,impact/toughness or modeled output;no automatic engine input,universal bound or engineering allowable."
+    },
+    {
+      "version": "1.0.0",
+      "quantity": "tensile_strength",
+      "quantity_dimension": "pressure",
+      "source_property_label": "sigma_t^B (MPa)",
+      "reported_value": {
+        "kind": "scalar",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "value_text": "56.38",
+        "number": "56.38"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "not_stated",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Table2 experimental tensile strength of the selected blend;Table3 experimental column repeats the same source expression. Central aggregation and n unknown;no theoretical RoM or commercial comparison value selected. SuperscriptB denotes blend,not break.",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Tensile-test temperature is not stated. Preparation and MFI temperatures are not transferred to tensile testing."
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "ISO 527-1:2012.",
+          "evidence": [
+            {
+              "source_id": "delgado_aguilar_2020_pla_pcl",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+              "locator": "Section 2.4, Mechanical Testing of the Blends",
+              "supports": [
+                "condition",
+                "method"
+              ]
+            }
+          ],
+          "notes": "Source-cited edition only; independent standard compliance is unverified. No standard-derived specimen, conditioning or temperature defaults are inferred."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Source experimental tensile strength of injection-molded blend,Instron1122/5kN,source-cited ISO527-1:2012,2mm/min crosshead and115mm clamp separation. Exact strength selection/reduction,engineering/true stress convention,strain estimator and extensometer gauge unspecified. Not Young modulus or stress at break.",
+          "evidence": [
+            {
+              "source_id": "delgado_aguilar_2020_pla_pcl",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+              "locator": "Section 2.4, Mechanical Testing of the Blends",
+              "supports": [
+                "method",
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Clamp separation is not an extensometer gauge length;no strain-rate conversion or standard-derived default conditions."
+        },
+        "direction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Loading direction relative to molding flow is not stated."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Post-molding tensile conditioning is not reported. Drying and oven storage of ingredients/pellets do not establish test conditioning."
+        },
+        "loading_rate": {
+          "status": "reported",
+          "text": "Crosshead speed 2 mm/min.",
+          "evidence": [
+            {
+              "source_id": "delgado_aguilar_2020_pla_pcl",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+              "locator": "Section 2.4, Mechanical Testing of the Blends",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "This is crosshead speed, not a derived specimen strain rate."
+        },
+        "additional_conditions": [
+          {
+            "name": "clamp_separation",
+            "fact": {
+              "status": "reported",
+              "text": "Gap between clamps: 115 mm.",
+              "evidence": [
+                {
+                  "source_id": "delgado_aguilar_2020_pla_pcl",
+                  "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+                  "locator": "Section 2.4, Mechanical Testing of the Blends",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Clamp separation is not an extensometer gauge length; no strain rate is derived."
+            }
+          },
+          {
+            "name": "test_relative_humidity",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Tensile-test relative humidity is not stated."
+            }
+          },
+          {
+            "name": "test_pressure",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Tensile-test pressure is not stated; injection pressure is a separate processing variable."
+            }
+          },
+          {
+            "name": "specimen_type_and_dimensions",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Injection-molded standard testing specimens are described, but the tensile specimen type and dimensions are not stated."
+            }
+          },
+          {
+            "name": "measurement_repetitions",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Tensile replicate count, repeat readings per specimen and independent production-batch count are not stated."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "not_stated",
+      "uncertainty_status": "reported_plus_minus_unspecified",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Specimens or measurements contributing to this selected tensile-strength result are not stated;independent manufacturing batches unknown.",
+        "source_statement": "Selected methods and Table2 do not state tensile specimen/replicate counts;number of blend formulations is not n.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Source experimental tensile strength of injection-molded blend,Instron1122/5kN,source-cited ISO527-1:2012,2mm/min crosshead and115mm clamp separation. Exact strength selection/reduction,engineering/true stress convention,strain estimator and extensometer gauge unspecified. Not Young modulus or stress at break.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "delgado_aguilar_2020_pla_pcl",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+            "locator": "Section 2.4, Mechanical Testing of the Blends",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Section 2.3 lists a heating-zone setup and pressure range, whereas Section 3.1 reports that molding temperature and pressure varied with MFI.",
+          "disposition": "Section 2.3 lists five heating zones at 175, 180, 185, 185 and 190 degrees C and an injection-pressure range of 330-600 bar. Section 3.1 says both injection-molding temperature and pressure were modified according to blend melt flow index. Retain these as reported setup/range context only; exact per-formulation temperature and pressure settings are unresolved, and no universal molding recipe is assigned to the seven states.",
+          "evidence": [
+            {
+              "source_id": "delgado_aguilar_2020_pla_pcl",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+              "locator": "Sections 2.3 and 3.1, injection-molding conditions",
+              "supports": [
+                "source_discrepancy",
+                "state"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "delgado_aguilar_2020_pla_pcl",
+      "source_document": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+        "revision": "Reacquired registered XML bytes;latest revision/correction/retraction status unknown.",
+        "inspected_on": "2026-11-03",
+        "sha256": "1fc618818e73292837129bd4bf9885b71982974d5e7fead0056276fb28f8cb6b",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Reacquired official EuropePMC XML byte-equal registered asset;article permissions,sections2.1-2.4 and3.1-3.2,Tables1/2/3;selected experimental tensile strengths and unspecified plus-minus expressions. No fresh PDF visual inspection,raw-data analysis or latest correction/retraction audit.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Reacquired official EuropePMC XML byte-equal registered asset;article permissions,sections2.1-2.4 and3.1-3.2,Tables1/2/3;selected experimental tensile strengths and unspecified plus-minus expressions. No fresh PDF visual inspection,raw-data analysis or latest correction/retraction audit.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      },
+      "id": "refprop_delgado2020_pla_pcl_b90_10_tensile_strength",
+      "material_state_id": "state_delgado2020_pla_pcl_b90_10_injection_molded",
+      "uncertainty": {
+        "type": "reported_plus_minus_unspecified",
+        "value_text": "2.96",
+        "number": "2.96",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "scope": "Source plus-minus amplitude for this selected tensile-strength expression only;statistical construction and central aggregation unspecified. Modulus-specific SD statement does not define strength dispersion.",
+        "coverage_factor": null,
+        "confidence_level": null,
+        "evidence": [
+          {
+            "source_id": "delgado_aguilar_2020_pla_pcl",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+            "locator": "Table2 V_PCL 0.108 row,sigma_t^B(MPa),joined to Table1 B90/10;Table3 experimental sigma_t^B corroborates same reported expression",
+            "supports": [
+              "uncertainty"
+            ]
+          }
+        ]
+      },
+      "uncertainty_note": "56.38 plus/minus 2.96 MPa: reported expression,not a verified mean/SD,SE,CI,tolerance or physical range. Section3.2 afterEq6 identifies only Young modulus variability as SD;do not transfer that definition to strength.",
+      "evidence": [
+        {
+          "source_id": "delgado_aguilar_2020_pla_pcl",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+          "locator": "Table2 V_PCL 0.108 row,sigma_t^B(MPa),joined to Table1 B90/10;Table3 experimental sigma_t^B corroborates same reported expression",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "delgado_aguilar_2020_pla_pcl",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+          "locator": "Table2 V_PCL 0.108 row,sigma_t^B(MPa),joined to Table1 B90/10;Table3 experimental sigma_t^B corroborates same reported expression",
+          "supports": [
+            "uncertainty"
+          ]
+        },
+        {
+          "source_id": "delgado_aguilar_2020_pla_pcl",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+          "locator": "Section 2.4, Mechanical Testing of the Blends",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ],
+      "scope_note": "Existing source-defined blend and injection-molded state only;reported mass ratio and PCL volume fraction are distinct. Central statistic,plus-minus definition,n and batches unknown. Tensile temperature,RH,pressure,post-molding conditioning,flow/loading relation,specimen geometry,stress convention and peak-selection algorithm unknown. Ingredient/pellet60C storage,molding175-190C/330-600bar and MFI210C do not supply tensile environment. Source molding-setting discrepancy retained;no universal per-blend recipe. Not break/yield strength,modulus,impact/toughness or modeled output;no automatic engine input,universal bound or engineering allowable."
+    },
+    {
+      "version": "1.0.0",
+      "quantity": "tensile_strength",
+      "quantity_dimension": "pressure",
+      "source_property_label": "sigma_t^B (MPa)",
+      "reported_value": {
+        "kind": "scalar",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "value_text": "53.39",
+        "number": "53.39"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "not_stated",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Table2 experimental tensile strength of the selected blend;Table3 experimental column repeats the same source expression. Central aggregation and n unknown;no theoretical RoM or commercial comparison value selected. SuperscriptB denotes blend,not break.",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Tensile-test temperature is not stated. Preparation and MFI temperatures are not transferred to tensile testing."
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "ISO 527-1:2012.",
+          "evidence": [
+            {
+              "source_id": "delgado_aguilar_2020_pla_pcl",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+              "locator": "Section 2.4, Mechanical Testing of the Blends",
+              "supports": [
+                "condition",
+                "method"
+              ]
+            }
+          ],
+          "notes": "Source-cited edition only; independent standard compliance is unverified. No standard-derived specimen, conditioning or temperature defaults are inferred."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Source experimental tensile strength of injection-molded blend,Instron1122/5kN,source-cited ISO527-1:2012,2mm/min crosshead and115mm clamp separation. Exact strength selection/reduction,engineering/true stress convention,strain estimator and extensometer gauge unspecified. Not Young modulus or stress at break.",
+          "evidence": [
+            {
+              "source_id": "delgado_aguilar_2020_pla_pcl",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+              "locator": "Section 2.4, Mechanical Testing of the Blends",
+              "supports": [
+                "method",
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Clamp separation is not an extensometer gauge length;no strain-rate conversion or standard-derived default conditions."
+        },
+        "direction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Loading direction relative to molding flow is not stated."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Post-molding tensile conditioning is not reported. Drying and oven storage of ingredients/pellets do not establish test conditioning."
+        },
+        "loading_rate": {
+          "status": "reported",
+          "text": "Crosshead speed 2 mm/min.",
+          "evidence": [
+            {
+              "source_id": "delgado_aguilar_2020_pla_pcl",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+              "locator": "Section 2.4, Mechanical Testing of the Blends",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "This is crosshead speed, not a derived specimen strain rate."
+        },
+        "additional_conditions": [
+          {
+            "name": "clamp_separation",
+            "fact": {
+              "status": "reported",
+              "text": "Gap between clamps: 115 mm.",
+              "evidence": [
+                {
+                  "source_id": "delgado_aguilar_2020_pla_pcl",
+                  "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+                  "locator": "Section 2.4, Mechanical Testing of the Blends",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Clamp separation is not an extensometer gauge length; no strain rate is derived."
+            }
+          },
+          {
+            "name": "test_relative_humidity",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Tensile-test relative humidity is not stated."
+            }
+          },
+          {
+            "name": "test_pressure",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Tensile-test pressure is not stated; injection pressure is a separate processing variable."
+            }
+          },
+          {
+            "name": "specimen_type_and_dimensions",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Injection-molded standard testing specimens are described, but the tensile specimen type and dimensions are not stated."
+            }
+          },
+          {
+            "name": "measurement_repetitions",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Tensile replicate count, repeat readings per specimen and independent production-batch count are not stated."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "not_stated",
+      "uncertainty_status": "reported_plus_minus_unspecified",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Specimens or measurements contributing to this selected tensile-strength result are not stated;independent manufacturing batches unknown.",
+        "source_statement": "Selected methods and Table2 do not state tensile specimen/replicate counts;number of blend formulations is not n.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Source experimental tensile strength of injection-molded blend,Instron1122/5kN,source-cited ISO527-1:2012,2mm/min crosshead and115mm clamp separation. Exact strength selection/reduction,engineering/true stress convention,strain estimator and extensometer gauge unspecified. Not Young modulus or stress at break.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "delgado_aguilar_2020_pla_pcl",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+            "locator": "Section 2.4, Mechanical Testing of the Blends",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Section 2.3 lists a heating-zone setup and pressure range, whereas Section 3.1 reports that molding temperature and pressure varied with MFI.",
+          "disposition": "Section 2.3 lists five heating zones at 175, 180, 185, 185 and 190 degrees C and an injection-pressure range of 330-600 bar. Section 3.1 says both injection-molding temperature and pressure were modified according to blend melt flow index. Retain these as reported setup/range context only; exact per-formulation temperature and pressure settings are unresolved, and no universal molding recipe is assigned to the seven states.",
+          "evidence": [
+            {
+              "source_id": "delgado_aguilar_2020_pla_pcl",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+              "locator": "Sections 2.3 and 3.1, injection-molding conditions",
+              "supports": [
+                "source_discrepancy",
+                "state"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "delgado_aguilar_2020_pla_pcl",
+      "source_document": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+        "revision": "Reacquired registered XML bytes;latest revision/correction/retraction status unknown.",
+        "inspected_on": "2026-11-03",
+        "sha256": "1fc618818e73292837129bd4bf9885b71982974d5e7fead0056276fb28f8cb6b",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Reacquired official EuropePMC XML byte-equal registered asset;article permissions,sections2.1-2.4 and3.1-3.2,Tables1/2/3;selected experimental tensile strengths and unspecified plus-minus expressions. No fresh PDF visual inspection,raw-data analysis or latest correction/retraction audit.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Reacquired official EuropePMC XML byte-equal registered asset;article permissions,sections2.1-2.4 and3.1-3.2,Tables1/2/3;selected experimental tensile strengths and unspecified plus-minus expressions. No fresh PDF visual inspection,raw-data analysis or latest correction/retraction audit.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      },
+      "id": "refprop_delgado2020_pla_pcl_b85_15_tensile_strength",
+      "material_state_id": "state_delgado2020_pla_pcl_b85_15_injection_molded",
+      "uncertainty": {
+        "type": "reported_plus_minus_unspecified",
+        "value_text": "3.01",
+        "number": "3.01",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "scope": "Source plus-minus amplitude for this selected tensile-strength expression only;statistical construction and central aggregation unspecified. Modulus-specific SD statement does not define strength dispersion.",
+        "coverage_factor": null,
+        "confidence_level": null,
+        "evidence": [
+          {
+            "source_id": "delgado_aguilar_2020_pla_pcl",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+            "locator": "Table2 V_PCL 0.162 row,sigma_t^B(MPa),joined to Table1 B85/15;Table3 experimental sigma_t^B corroborates same reported expression",
+            "supports": [
+              "uncertainty"
+            ]
+          }
+        ]
+      },
+      "uncertainty_note": "53.39 plus/minus 3.01 MPa: reported expression,not a verified mean/SD,SE,CI,tolerance or physical range. Section3.2 afterEq6 identifies only Young modulus variability as SD;do not transfer that definition to strength.",
+      "evidence": [
+        {
+          "source_id": "delgado_aguilar_2020_pla_pcl",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+          "locator": "Table2 V_PCL 0.162 row,sigma_t^B(MPa),joined to Table1 B85/15;Table3 experimental sigma_t^B corroborates same reported expression",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "delgado_aguilar_2020_pla_pcl",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+          "locator": "Table2 V_PCL 0.162 row,sigma_t^B(MPa),joined to Table1 B85/15;Table3 experimental sigma_t^B corroborates same reported expression",
+          "supports": [
+            "uncertainty"
+          ]
+        },
+        {
+          "source_id": "delgado_aguilar_2020_pla_pcl",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+          "locator": "Section 2.4, Mechanical Testing of the Blends",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ],
+      "scope_note": "Existing source-defined blend and injection-molded state only;reported mass ratio and PCL volume fraction are distinct. Central statistic,plus-minus definition,n and batches unknown. Tensile temperature,RH,pressure,post-molding conditioning,flow/loading relation,specimen geometry,stress convention and peak-selection algorithm unknown. Ingredient/pellet60C storage,molding175-190C/330-600bar and MFI210C do not supply tensile environment. Source molding-setting discrepancy retained;no universal per-blend recipe. Not break/yield strength,modulus,impact/toughness or modeled output;no automatic engine input,universal bound or engineering allowable."
+    },
+    {
+      "version": "1.0.0",
+      "quantity": "tensile_strength",
+      "quantity_dimension": "pressure",
+      "source_property_label": "sigma_t^B (MPa)",
+      "reported_value": {
+        "kind": "scalar",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "value_text": "49.37",
+        "number": "49.37"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "not_stated",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Table2 experimental tensile strength of the selected blend;Table3 experimental column repeats the same source expression. Central aggregation and n unknown;no theoretical RoM or commercial comparison value selected. SuperscriptB denotes blend,not break.",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Tensile-test temperature is not stated. Preparation and MFI temperatures are not transferred to tensile testing."
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "ISO 527-1:2012.",
+          "evidence": [
+            {
+              "source_id": "delgado_aguilar_2020_pla_pcl",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+              "locator": "Section 2.4, Mechanical Testing of the Blends",
+              "supports": [
+                "condition",
+                "method"
+              ]
+            }
+          ],
+          "notes": "Source-cited edition only; independent standard compliance is unverified. No standard-derived specimen, conditioning or temperature defaults are inferred."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Source experimental tensile strength of injection-molded blend,Instron1122/5kN,source-cited ISO527-1:2012,2mm/min crosshead and115mm clamp separation. Exact strength selection/reduction,engineering/true stress convention,strain estimator and extensometer gauge unspecified. Not Young modulus or stress at break.",
+          "evidence": [
+            {
+              "source_id": "delgado_aguilar_2020_pla_pcl",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+              "locator": "Section 2.4, Mechanical Testing of the Blends",
+              "supports": [
+                "method",
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Clamp separation is not an extensometer gauge length;no strain-rate conversion or standard-derived default conditions."
+        },
+        "direction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Loading direction relative to molding flow is not stated."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Post-molding tensile conditioning is not reported. Drying and oven storage of ingredients/pellets do not establish test conditioning."
+        },
+        "loading_rate": {
+          "status": "reported",
+          "text": "Crosshead speed 2 mm/min.",
+          "evidence": [
+            {
+              "source_id": "delgado_aguilar_2020_pla_pcl",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+              "locator": "Section 2.4, Mechanical Testing of the Blends",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "This is crosshead speed, not a derived specimen strain rate."
+        },
+        "additional_conditions": [
+          {
+            "name": "clamp_separation",
+            "fact": {
+              "status": "reported",
+              "text": "Gap between clamps: 115 mm.",
+              "evidence": [
+                {
+                  "source_id": "delgado_aguilar_2020_pla_pcl",
+                  "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+                  "locator": "Section 2.4, Mechanical Testing of the Blends",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Clamp separation is not an extensometer gauge length; no strain rate is derived."
+            }
+          },
+          {
+            "name": "test_relative_humidity",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Tensile-test relative humidity is not stated."
+            }
+          },
+          {
+            "name": "test_pressure",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Tensile-test pressure is not stated; injection pressure is a separate processing variable."
+            }
+          },
+          {
+            "name": "specimen_type_and_dimensions",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Injection-molded standard testing specimens are described, but the tensile specimen type and dimensions are not stated."
+            }
+          },
+          {
+            "name": "measurement_repetitions",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Tensile replicate count, repeat readings per specimen and independent production-batch count are not stated."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "not_stated",
+      "uncertainty_status": "reported_plus_minus_unspecified",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Specimens or measurements contributing to this selected tensile-strength result are not stated;independent manufacturing batches unknown.",
+        "source_statement": "Selected methods and Table2 do not state tensile specimen/replicate counts;number of blend formulations is not n.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Source experimental tensile strength of injection-molded blend,Instron1122/5kN,source-cited ISO527-1:2012,2mm/min crosshead and115mm clamp separation. Exact strength selection/reduction,engineering/true stress convention,strain estimator and extensometer gauge unspecified. Not Young modulus or stress at break.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "delgado_aguilar_2020_pla_pcl",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+            "locator": "Section 2.4, Mechanical Testing of the Blends",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Section 2.3 lists a heating-zone setup and pressure range, whereas Section 3.1 reports that molding temperature and pressure varied with MFI.",
+          "disposition": "Section 2.3 lists five heating zones at 175, 180, 185, 185 and 190 degrees C and an injection-pressure range of 330-600 bar. Section 3.1 says both injection-molding temperature and pressure were modified according to blend melt flow index. Retain these as reported setup/range context only; exact per-formulation temperature and pressure settings are unresolved, and no universal molding recipe is assigned to the seven states.",
+          "evidence": [
+            {
+              "source_id": "delgado_aguilar_2020_pla_pcl",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+              "locator": "Sections 2.3 and 3.1, injection-molding conditions",
+              "supports": [
+                "source_discrepancy",
+                "state"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "delgado_aguilar_2020_pla_pcl",
+      "source_document": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+        "revision": "Reacquired registered XML bytes;latest revision/correction/retraction status unknown.",
+        "inspected_on": "2026-11-03",
+        "sha256": "1fc618818e73292837129bd4bf9885b71982974d5e7fead0056276fb28f8cb6b",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Reacquired official EuropePMC XML byte-equal registered asset;article permissions,sections2.1-2.4 and3.1-3.2,Tables1/2/3;selected experimental tensile strengths and unspecified plus-minus expressions. No fresh PDF visual inspection,raw-data analysis or latest correction/retraction audit.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Reacquired official EuropePMC XML byte-equal registered asset;article permissions,sections2.1-2.4 and3.1-3.2,Tables1/2/3;selected experimental tensile strengths and unspecified plus-minus expressions. No fresh PDF visual inspection,raw-data analysis or latest correction/retraction audit.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      },
+      "id": "refprop_delgado2020_pla_pcl_b80_20_tensile_strength",
+      "material_state_id": "state_delgado2020_pla_pcl_b80_20_injection_molded",
+      "uncertainty": {
+        "type": "reported_plus_minus_unspecified",
+        "value_text": "1.86",
+        "number": "1.86",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "scope": "Source plus-minus amplitude for this selected tensile-strength expression only;statistical construction and central aggregation unspecified. Modulus-specific SD statement does not define strength dispersion.",
+        "coverage_factor": null,
+        "confidence_level": null,
+        "evidence": [
+          {
+            "source_id": "delgado_aguilar_2020_pla_pcl",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+            "locator": "Table2 V_PCL 0.214 row,sigma_t^B(MPa),joined to Table1 B80/20;Table3 experimental sigma_t^B corroborates same reported expression",
+            "supports": [
+              "uncertainty"
+            ]
+          }
+        ]
+      },
+      "uncertainty_note": "49.37 plus/minus 1.86 MPa: reported expression,not a verified mean/SD,SE,CI,tolerance or physical range. Section3.2 afterEq6 identifies only Young modulus variability as SD;do not transfer that definition to strength.",
+      "evidence": [
+        {
+          "source_id": "delgado_aguilar_2020_pla_pcl",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+          "locator": "Table2 V_PCL 0.214 row,sigma_t^B(MPa),joined to Table1 B80/20;Table3 experimental sigma_t^B corroborates same reported expression",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "delgado_aguilar_2020_pla_pcl",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+          "locator": "Table2 V_PCL 0.214 row,sigma_t^B(MPa),joined to Table1 B80/20;Table3 experimental sigma_t^B corroborates same reported expression",
+          "supports": [
+            "uncertainty"
+          ]
+        },
+        {
+          "source_id": "delgado_aguilar_2020_pla_pcl",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+          "locator": "Section 2.4, Mechanical Testing of the Blends",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ],
+      "scope_note": "Existing source-defined blend and injection-molded state only;reported mass ratio and PCL volume fraction are distinct. Central statistic,plus-minus definition,n and batches unknown. Tensile temperature,RH,pressure,post-molding conditioning,flow/loading relation,specimen geometry,stress convention and peak-selection algorithm unknown. Ingredient/pellet60C storage,molding175-190C/330-600bar and MFI210C do not supply tensile environment. Source molding-setting discrepancy retained;no universal per-blend recipe. Not break/yield strength,modulus,impact/toughness or modeled output;no automatic engine input,universal bound or engineering allowable."
+    },
+    {
+      "version": "1.0.0",
+      "quantity": "tensile_strength",
+      "quantity_dimension": "pressure",
+      "source_property_label": "sigma_t^B (MPa)",
+      "reported_value": {
+        "kind": "scalar",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "value_text": "34.51",
+        "number": "34.51"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "not_stated",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Table2 experimental tensile strength of the selected blend;Table3 experimental column repeats the same source expression. Central aggregation and n unknown;no theoretical RoM or commercial comparison value selected. SuperscriptB denotes blend,not break.",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Tensile-test temperature is not stated. Preparation and MFI temperatures are not transferred to tensile testing."
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "ISO 527-1:2012.",
+          "evidence": [
+            {
+              "source_id": "delgado_aguilar_2020_pla_pcl",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+              "locator": "Section 2.4, Mechanical Testing of the Blends",
+              "supports": [
+                "condition",
+                "method"
+              ]
+            }
+          ],
+          "notes": "Source-cited edition only; independent standard compliance is unverified. No standard-derived specimen, conditioning or temperature defaults are inferred."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Source experimental tensile strength of injection-molded blend,Instron1122/5kN,source-cited ISO527-1:2012,2mm/min crosshead and115mm clamp separation. Exact strength selection/reduction,engineering/true stress convention,strain estimator and extensometer gauge unspecified. Not Young modulus or stress at break.",
+          "evidence": [
+            {
+              "source_id": "delgado_aguilar_2020_pla_pcl",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+              "locator": "Section 2.4, Mechanical Testing of the Blends",
+              "supports": [
+                "method",
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Clamp separation is not an extensometer gauge length;no strain-rate conversion or standard-derived default conditions."
+        },
+        "direction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Loading direction relative to molding flow is not stated."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Post-molding tensile conditioning is not reported. Drying and oven storage of ingredients/pellets do not establish test conditioning."
+        },
+        "loading_rate": {
+          "status": "reported",
+          "text": "Crosshead speed 2 mm/min.",
+          "evidence": [
+            {
+              "source_id": "delgado_aguilar_2020_pla_pcl",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+              "locator": "Section 2.4, Mechanical Testing of the Blends",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "This is crosshead speed, not a derived specimen strain rate."
+        },
+        "additional_conditions": [
+          {
+            "name": "clamp_separation",
+            "fact": {
+              "status": "reported",
+              "text": "Gap between clamps: 115 mm.",
+              "evidence": [
+                {
+                  "source_id": "delgado_aguilar_2020_pla_pcl",
+                  "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+                  "locator": "Section 2.4, Mechanical Testing of the Blends",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Clamp separation is not an extensometer gauge length; no strain rate is derived."
+            }
+          },
+          {
+            "name": "test_relative_humidity",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Tensile-test relative humidity is not stated."
+            }
+          },
+          {
+            "name": "test_pressure",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Tensile-test pressure is not stated; injection pressure is a separate processing variable."
+            }
+          },
+          {
+            "name": "specimen_type_and_dimensions",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Injection-molded standard testing specimens are described, but the tensile specimen type and dimensions are not stated."
+            }
+          },
+          {
+            "name": "measurement_repetitions",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Tensile replicate count, repeat readings per specimen and independent production-batch count are not stated."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "not_stated",
+      "uncertainty_status": "reported_plus_minus_unspecified",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Specimens or measurements contributing to this selected tensile-strength result are not stated;independent manufacturing batches unknown.",
+        "source_statement": "Selected methods and Table2 do not state tensile specimen/replicate counts;number of blend formulations is not n.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Source experimental tensile strength of injection-molded blend,Instron1122/5kN,source-cited ISO527-1:2012,2mm/min crosshead and115mm clamp separation. Exact strength selection/reduction,engineering/true stress convention,strain estimator and extensometer gauge unspecified. Not Young modulus or stress at break.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "delgado_aguilar_2020_pla_pcl",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+            "locator": "Section 2.4, Mechanical Testing of the Blends",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Section 2.3 lists a heating-zone setup and pressure range, whereas Section 3.1 reports that molding temperature and pressure varied with MFI.",
+          "disposition": "Section 2.3 lists five heating zones at 175, 180, 185, 185 and 190 degrees C and an injection-pressure range of 330-600 bar. Section 3.1 says both injection-molding temperature and pressure were modified according to blend melt flow index. Retain these as reported setup/range context only; exact per-formulation temperature and pressure settings are unresolved, and no universal molding recipe is assigned to the seven states.",
+          "evidence": [
+            {
+              "source_id": "delgado_aguilar_2020_pla_pcl",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+              "locator": "Sections 2.3 and 3.1, injection-molding conditions",
+              "supports": [
+                "source_discrepancy",
+                "state"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "delgado_aguilar_2020_pla_pcl",
+      "source_document": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+        "revision": "Reacquired registered XML bytes;latest revision/correction/retraction status unknown.",
+        "inspected_on": "2026-11-03",
+        "sha256": "1fc618818e73292837129bd4bf9885b71982974d5e7fead0056276fb28f8cb6b",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Reacquired official EuropePMC XML byte-equal registered asset;article permissions,sections2.1-2.4 and3.1-3.2,Tables1/2/3;selected experimental tensile strengths and unspecified plus-minus expressions. No fresh PDF visual inspection,raw-data analysis or latest correction/retraction audit.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Reacquired official EuropePMC XML byte-equal registered asset;article permissions,sections2.1-2.4 and3.1-3.2,Tables1/2/3;selected experimental tensile strengths and unspecified plus-minus expressions. No fresh PDF visual inspection,raw-data analysis or latest correction/retraction audit.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      },
+      "id": "refprop_delgado2020_pla_pcl_b60_40_tensile_strength",
+      "material_state_id": "state_delgado2020_pla_pcl_b60_40_injection_molded",
+      "uncertainty": {
+        "type": "reported_plus_minus_unspecified",
+        "value_text": "2.56",
+        "number": "2.56",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "scope": "Source plus-minus amplitude for this selected tensile-strength expression only;statistical construction and central aggregation unspecified. Modulus-specific SD statement does not define strength dispersion.",
+        "coverage_factor": null,
+        "confidence_level": null,
+        "evidence": [
+          {
+            "source_id": "delgado_aguilar_2020_pla_pcl",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+            "locator": "Table2 V_PCL 0.421 row,sigma_t^B(MPa),joined to Table1 B60/40;Table3 experimental sigma_t^B corroborates same reported expression",
+            "supports": [
+              "uncertainty"
+            ]
+          }
+        ]
+      },
+      "uncertainty_note": "34.51 plus/minus 2.56 MPa: reported expression,not a verified mean/SD,SE,CI,tolerance or physical range. Section3.2 afterEq6 identifies only Young modulus variability as SD;do not transfer that definition to strength.",
+      "evidence": [
+        {
+          "source_id": "delgado_aguilar_2020_pla_pcl",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+          "locator": "Table2 V_PCL 0.421 row,sigma_t^B(MPa),joined to Table1 B60/40;Table3 experimental sigma_t^B corroborates same reported expression",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "delgado_aguilar_2020_pla_pcl",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+          "locator": "Table2 V_PCL 0.421 row,sigma_t^B(MPa),joined to Table1 B60/40;Table3 experimental sigma_t^B corroborates same reported expression",
+          "supports": [
+            "uncertainty"
+          ]
+        },
+        {
+          "source_id": "delgado_aguilar_2020_pla_pcl",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+          "locator": "Section 2.4, Mechanical Testing of the Blends",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ],
+      "scope_note": "Existing source-defined blend and injection-molded state only;reported mass ratio and PCL volume fraction are distinct. Central statistic,plus-minus definition,n and batches unknown. Tensile temperature,RH,pressure,post-molding conditioning,flow/loading relation,specimen geometry,stress convention and peak-selection algorithm unknown. Ingredient/pellet60C storage,molding175-190C/330-600bar and MFI210C do not supply tensile environment. Source molding-setting discrepancy retained;no universal per-blend recipe. Not break/yield strength,modulus,impact/toughness or modeled output;no automatic engine input,universal bound or engineering allowable."
+    },
+    {
+      "version": "1.0.0",
+      "quantity": "tensile_strength",
+      "quantity_dimension": "pressure",
+      "source_property_label": "sigma_t^B (MPa)",
+      "reported_value": {
+        "kind": "scalar",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "value_text": "21.77",
+        "number": "21.77"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "not_stated",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Table2 experimental tensile strength of the selected blend;Table3 experimental column repeats the same source expression. Central aggregation and n unknown;no theoretical RoM or commercial comparison value selected. SuperscriptB denotes blend,not break.",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Tensile-test temperature is not stated. Preparation and MFI temperatures are not transferred to tensile testing."
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "ISO 527-1:2012.",
+          "evidence": [
+            {
+              "source_id": "delgado_aguilar_2020_pla_pcl",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+              "locator": "Section 2.4, Mechanical Testing of the Blends",
+              "supports": [
+                "condition",
+                "method"
+              ]
+            }
+          ],
+          "notes": "Source-cited edition only; independent standard compliance is unverified. No standard-derived specimen, conditioning or temperature defaults are inferred."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Source experimental tensile strength of injection-molded blend,Instron1122/5kN,source-cited ISO527-1:2012,2mm/min crosshead and115mm clamp separation. Exact strength selection/reduction,engineering/true stress convention,strain estimator and extensometer gauge unspecified. Not Young modulus or stress at break.",
+          "evidence": [
+            {
+              "source_id": "delgado_aguilar_2020_pla_pcl",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+              "locator": "Section 2.4, Mechanical Testing of the Blends",
+              "supports": [
+                "method",
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Clamp separation is not an extensometer gauge length;no strain-rate conversion or standard-derived default conditions."
+        },
+        "direction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Loading direction relative to molding flow is not stated."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Post-molding tensile conditioning is not reported. Drying and oven storage of ingredients/pellets do not establish test conditioning."
+        },
+        "loading_rate": {
+          "status": "reported",
+          "text": "Crosshead speed 2 mm/min.",
+          "evidence": [
+            {
+              "source_id": "delgado_aguilar_2020_pla_pcl",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+              "locator": "Section 2.4, Mechanical Testing of the Blends",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "This is crosshead speed, not a derived specimen strain rate."
+        },
+        "additional_conditions": [
+          {
+            "name": "clamp_separation",
+            "fact": {
+              "status": "reported",
+              "text": "Gap between clamps: 115 mm.",
+              "evidence": [
+                {
+                  "source_id": "delgado_aguilar_2020_pla_pcl",
+                  "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+                  "locator": "Section 2.4, Mechanical Testing of the Blends",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Clamp separation is not an extensometer gauge length; no strain rate is derived."
+            }
+          },
+          {
+            "name": "test_relative_humidity",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Tensile-test relative humidity is not stated."
+            }
+          },
+          {
+            "name": "test_pressure",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Tensile-test pressure is not stated; injection pressure is a separate processing variable."
+            }
+          },
+          {
+            "name": "specimen_type_and_dimensions",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Injection-molded standard testing specimens are described, but the tensile specimen type and dimensions are not stated."
+            }
+          },
+          {
+            "name": "measurement_repetitions",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Tensile replicate count, repeat readings per specimen and independent production-batch count are not stated."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "not_stated",
+      "uncertainty_status": "reported_plus_minus_unspecified",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Specimens or measurements contributing to this selected tensile-strength result are not stated;independent manufacturing batches unknown.",
+        "source_statement": "Selected methods and Table2 do not state tensile specimen/replicate counts;number of blend formulations is not n.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Source experimental tensile strength of injection-molded blend,Instron1122/5kN,source-cited ISO527-1:2012,2mm/min crosshead and115mm clamp separation. Exact strength selection/reduction,engineering/true stress convention,strain estimator and extensometer gauge unspecified. Not Young modulus or stress at break.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "delgado_aguilar_2020_pla_pcl",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+            "locator": "Section 2.4, Mechanical Testing of the Blends",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Section 2.3 lists a heating-zone setup and pressure range, whereas Section 3.1 reports that molding temperature and pressure varied with MFI.",
+          "disposition": "Section 2.3 lists five heating zones at 175, 180, 185, 185 and 190 degrees C and an injection-pressure range of 330-600 bar. Section 3.1 says both injection-molding temperature and pressure were modified according to blend melt flow index. Retain these as reported setup/range context only; exact per-formulation temperature and pressure settings are unresolved, and no universal molding recipe is assigned to the seven states.",
+          "evidence": [
+            {
+              "source_id": "delgado_aguilar_2020_pla_pcl",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+              "locator": "Sections 2.3 and 3.1, injection-molding conditions",
+              "supports": [
+                "source_discrepancy",
+                "state"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "delgado_aguilar_2020_pla_pcl",
+      "source_document": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+        "revision": "Reacquired registered XML bytes;latest revision/correction/retraction status unknown.",
+        "inspected_on": "2026-11-03",
+        "sha256": "1fc618818e73292837129bd4bf9885b71982974d5e7fead0056276fb28f8cb6b",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Reacquired official EuropePMC XML byte-equal registered asset;article permissions,sections2.1-2.4 and3.1-3.2,Tables1/2/3;selected experimental tensile strengths and unspecified plus-minus expressions. No fresh PDF visual inspection,raw-data analysis or latest correction/retraction audit.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Reacquired official EuropePMC XML byte-equal registered asset;article permissions,sections2.1-2.4 and3.1-3.2,Tables1/2/3;selected experimental tensile strengths and unspecified plus-minus expressions. No fresh PDF visual inspection,raw-data analysis or latest correction/retraction audit.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      },
+      "id": "refprop_delgado2020_pla_pcl_b40_60_tensile_strength",
+      "material_state_id": "state_delgado2020_pla_pcl_b40_60_injection_molded",
+      "uncertainty": {
+        "type": "reported_plus_minus_unspecified",
+        "value_text": "1.79",
+        "number": "1.79",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "scope": "Source plus-minus amplitude for this selected tensile-strength expression only;statistical construction and central aggregation unspecified. Modulus-specific SD statement does not define strength dispersion.",
+        "coverage_factor": null,
+        "confidence_level": null,
+        "evidence": [
+          {
+            "source_id": "delgado_aguilar_2020_pla_pcl",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+            "locator": "Table2 V_PCL 0.621 row,sigma_t^B(MPa),joined to Table1 B40/60;Table3 experimental sigma_t^B corroborates same reported expression",
+            "supports": [
+              "uncertainty"
+            ]
+          }
+        ]
+      },
+      "uncertainty_note": "21.77 plus/minus 1.79 MPa: reported expression,not a verified mean/SD,SE,CI,tolerance or physical range. Section3.2 afterEq6 identifies only Young modulus variability as SD;do not transfer that definition to strength.",
+      "evidence": [
+        {
+          "source_id": "delgado_aguilar_2020_pla_pcl",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+          "locator": "Table2 V_PCL 0.621 row,sigma_t^B(MPa),joined to Table1 B40/60;Table3 experimental sigma_t^B corroborates same reported expression",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "delgado_aguilar_2020_pla_pcl",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+          "locator": "Table2 V_PCL 0.621 row,sigma_t^B(MPa),joined to Table1 B40/60;Table3 experimental sigma_t^B corroborates same reported expression",
+          "supports": [
+            "uncertainty"
+          ]
+        },
+        {
+          "source_id": "delgado_aguilar_2020_pla_pcl",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+          "locator": "Section 2.4, Mechanical Testing of the Blends",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ],
+      "scope_note": "Existing source-defined blend and injection-molded state only;reported mass ratio and PCL volume fraction are distinct. Central statistic,plus-minus definition,n and batches unknown. Tensile temperature,RH,pressure,post-molding conditioning,flow/loading relation,specimen geometry,stress convention and peak-selection algorithm unknown. Ingredient/pellet60C storage,molding175-190C/330-600bar and MFI210C do not supply tensile environment. Source molding-setting discrepancy retained;no universal per-blend recipe. Not break/yield strength,modulus,impact/toughness or modeled output;no automatic engine input,universal bound or engineering allowable."
+    },
+    {
+      "version": "1.0.0",
+      "quantity": "tensile_strength",
+      "quantity_dimension": "pressure",
+      "source_property_label": "sigma_t^B (MPa)",
+      "reported_value": {
+        "kind": "scalar",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "value_text": "19.95",
+        "number": "19.95"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "not_stated",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Table2 experimental tensile strength of the selected blend;Table3 experimental column repeats the same source expression. Central aggregation and n unknown;no theoretical RoM or commercial comparison value selected. SuperscriptB denotes blend,not break.",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Tensile-test temperature is not stated. Preparation and MFI temperatures are not transferred to tensile testing."
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "ISO 527-1:2012.",
+          "evidence": [
+            {
+              "source_id": "delgado_aguilar_2020_pla_pcl",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+              "locator": "Section 2.4, Mechanical Testing of the Blends",
+              "supports": [
+                "condition",
+                "method"
+              ]
+            }
+          ],
+          "notes": "Source-cited edition only; independent standard compliance is unverified. No standard-derived specimen, conditioning or temperature defaults are inferred."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Source experimental tensile strength of injection-molded blend,Instron1122/5kN,source-cited ISO527-1:2012,2mm/min crosshead and115mm clamp separation. Exact strength selection/reduction,engineering/true stress convention,strain estimator and extensometer gauge unspecified. Not Young modulus or stress at break.",
+          "evidence": [
+            {
+              "source_id": "delgado_aguilar_2020_pla_pcl",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+              "locator": "Section 2.4, Mechanical Testing of the Blends",
+              "supports": [
+                "method",
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Clamp separation is not an extensometer gauge length;no strain-rate conversion or standard-derived default conditions."
+        },
+        "direction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Loading direction relative to molding flow is not stated."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Post-molding tensile conditioning is not reported. Drying and oven storage of ingredients/pellets do not establish test conditioning."
+        },
+        "loading_rate": {
+          "status": "reported",
+          "text": "Crosshead speed 2 mm/min.",
+          "evidence": [
+            {
+              "source_id": "delgado_aguilar_2020_pla_pcl",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+              "locator": "Section 2.4, Mechanical Testing of the Blends",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "This is crosshead speed, not a derived specimen strain rate."
+        },
+        "additional_conditions": [
+          {
+            "name": "clamp_separation",
+            "fact": {
+              "status": "reported",
+              "text": "Gap between clamps: 115 mm.",
+              "evidence": [
+                {
+                  "source_id": "delgado_aguilar_2020_pla_pcl",
+                  "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+                  "locator": "Section 2.4, Mechanical Testing of the Blends",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Clamp separation is not an extensometer gauge length; no strain rate is derived."
+            }
+          },
+          {
+            "name": "test_relative_humidity",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Tensile-test relative humidity is not stated."
+            }
+          },
+          {
+            "name": "test_pressure",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Tensile-test pressure is not stated; injection pressure is a separate processing variable."
+            }
+          },
+          {
+            "name": "specimen_type_and_dimensions",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Injection-molded standard testing specimens are described, but the tensile specimen type and dimensions are not stated."
+            }
+          },
+          {
+            "name": "measurement_repetitions",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Tensile replicate count, repeat readings per specimen and independent production-batch count are not stated."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "not_stated",
+      "uncertainty_status": "reported_plus_minus_unspecified",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Specimens or measurements contributing to this selected tensile-strength result are not stated;independent manufacturing batches unknown.",
+        "source_statement": "Selected methods and Table2 do not state tensile specimen/replicate counts;number of blend formulations is not n.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Source experimental tensile strength of injection-molded blend,Instron1122/5kN,source-cited ISO527-1:2012,2mm/min crosshead and115mm clamp separation. Exact strength selection/reduction,engineering/true stress convention,strain estimator and extensometer gauge unspecified. Not Young modulus or stress at break.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "delgado_aguilar_2020_pla_pcl",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+            "locator": "Section 2.4, Mechanical Testing of the Blends",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Section 2.3 lists a heating-zone setup and pressure range, whereas Section 3.1 reports that molding temperature and pressure varied with MFI.",
+          "disposition": "Section 2.3 lists five heating zones at 175, 180, 185, 185 and 190 degrees C and an injection-pressure range of 330-600 bar. Section 3.1 says both injection-molding temperature and pressure were modified according to blend melt flow index. Retain these as reported setup/range context only; exact per-formulation temperature and pressure settings are unresolved, and no universal molding recipe is assigned to the seven states.",
+          "evidence": [
+            {
+              "source_id": "delgado_aguilar_2020_pla_pcl",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+              "locator": "Sections 2.3 and 3.1, injection-molding conditions",
+              "supports": [
+                "source_discrepancy",
+                "state"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "delgado_aguilar_2020_pla_pcl",
+      "source_document": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+        "revision": "Reacquired registered XML bytes;latest revision/correction/retraction status unknown.",
+        "inspected_on": "2026-11-03",
+        "sha256": "1fc618818e73292837129bd4bf9885b71982974d5e7fead0056276fb28f8cb6b",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Reacquired official EuropePMC XML byte-equal registered asset;article permissions,sections2.1-2.4 and3.1-3.2,Tables1/2/3;selected experimental tensile strengths and unspecified plus-minus expressions. No fresh PDF visual inspection,raw-data analysis or latest correction/retraction audit.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Reacquired official EuropePMC XML byte-equal registered asset;article permissions,sections2.1-2.4 and3.1-3.2,Tables1/2/3;selected experimental tensile strengths and unspecified plus-minus expressions. No fresh PDF visual inspection,raw-data analysis or latest correction/retraction audit.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      },
+      "id": "refprop_delgado2020_pla_pcl_b20_80_tensile_strength",
+      "material_state_id": "state_delgado2020_pla_pcl_b20_80_injection_molded",
+      "uncertainty": {
+        "type": "reported_plus_minus_unspecified",
+        "value_text": "0.96",
+        "number": "0.96",
+        "unit_text": "MPa",
+        "unit_code": "MPa",
+        "scope": "Source plus-minus amplitude for this selected tensile-strength expression only;statistical construction and central aggregation unspecified. Modulus-specific SD statement does not define strength dispersion.",
+        "coverage_factor": null,
+        "confidence_level": null,
+        "evidence": [
+          {
+            "source_id": "delgado_aguilar_2020_pla_pcl",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+            "locator": "Table2 V_PCL 0.814 row,sigma_t^B(MPa),joined to Table1 B20/80;Table3 experimental sigma_t^B corroborates same reported expression",
+            "supports": [
+              "uncertainty"
+            ]
+          }
+        ]
+      },
+      "uncertainty_note": "19.95 plus/minus 0.96 MPa: reported expression,not a verified mean/SD,SE,CI,tolerance or physical range. Section3.2 afterEq6 identifies only Young modulus variability as SD;do not transfer that definition to strength.",
+      "evidence": [
+        {
+          "source_id": "delgado_aguilar_2020_pla_pcl",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+          "locator": "Table2 V_PCL 0.814 row,sigma_t^B(MPa),joined to Table1 B20/80;Table3 experimental sigma_t^B corroborates same reported expression",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "delgado_aguilar_2020_pla_pcl",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+          "locator": "Table2 V_PCL 0.814 row,sigma_t^B(MPa),joined to Table1 B20/80;Table3 experimental sigma_t^B corroborates same reported expression",
+          "supports": [
+            "uncertainty"
+          ]
+        },
+        {
+          "source_id": "delgado_aguilar_2020_pla_pcl",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7321633/fullTextXML",
+          "locator": "Section 2.4, Mechanical Testing of the Blends",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ],
+      "scope_note": "Existing source-defined blend and injection-molded state only;reported mass ratio and PCL volume fraction are distinct. Central statistic,plus-minus definition,n and batches unknown. Tensile temperature,RH,pressure,post-molding conditioning,flow/loading relation,specimen geometry,stress convention and peak-selection algorithm unknown. Ingredient/pellet60C storage,molding175-190C/330-600bar and MFI210C do not supply tensile environment. Source molding-setting discrepancy retained;no universal per-blend recipe. Not break/yield strength,modulus,impact/toughness or modeled output;no automatic engine input,universal bound or engineering allowable."
     }
   ]
 }

@@ -1,5 +1,14 @@
 # Materials Boundaries — source-qualified materials database
 
+## Current database checkpoint — polymer r12–r14 (2026-11-03)
+
+The current native tables contain **5,180 identities, 5,195 states and 5,267 properties**. Polymer coverage is **1,037 identities, 1,052 states and 1,108 properties**: 1,000 computational-reference and108 experimental-reference labels, not independent scientific certification.
+
+This checkpoint adds15 properties on existing polymer states:6 tensile stresses at break,2 stresses at specified elongation, and7 PLA/PCL tensile strengths. Unknown conditions and statistics remain explicit; the7 PLA/PCL strength ± amplitudes are not assigned the modulus-specific SD definition.
+
+[Evidence, verification scope and experimental delivery](experimental/polymer-exploration/20261103/delivery-r12-r14/README.zh.md). The database snapshot is `7566389019ed828d24a5dd2329c01946f6c0640234680b77cc6b1d7b2c3f276e`. Software remains0.35.0. Submission and remote CI require exact-commit receipts; no main merge, stable release or deployment is claimed. Earlier sections retain their checkpoint context.
+
+
 Find a material property together with its source, conditions and unknowns. Download reproducible JSONL snapshots for analysis; use the existing mechanics tools when their applicability conditions are satisfied.
 
 ## Try a real record

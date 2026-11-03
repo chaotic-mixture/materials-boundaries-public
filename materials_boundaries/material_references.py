@@ -29,6 +29,7 @@ QUANTITY_DIMENSIONS = {
     "flexural_strength": "pressure",
     "elastic_modulus_unspecified": "pressure",
     "tensile_strength": "pressure",
+    "tensile_stress_at_break": "pressure",
     "tensile_yield_strength": "pressure",
     "tensile_stress_at_specified_elongation": "pressure",
     "slump_flow_spread": "length",

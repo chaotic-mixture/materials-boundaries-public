@@ -1,0 +1,36 @@
+{
+  "decision": "changes_required",
+  "reviewer": "/root/review_phbv39_flexural",
+  "review_inputs_sha256": "0c2c819b88167bed3f5b52d8213571dd36ba4e4dc2834d8511acfbe202cb2e3e",
+  "candidate_sha256": "8c5aef85987283ddd161f334fba48ee24ef17657143e4fc14d2fd72989399e78",
+  "preview_snapshot": "bc74f69b7a0582781be6ff6d46baabd94cd4f82465d2e1753072b1bae6357c39",
+  "issues": [
+    {
+      "id": "NR_BREAK_STRESS_SLOPE_WORDING",
+      "field": "NR conditions.additional_conditions[name=stress_strain_convention].fact.notes",
+      "required_change": "Replace selected slope with selected stress-at-break result; regenerate preview,exports,render and hashes in r2. Old modulus property unchanged.",
+      "test_scope": "No need to rerun entire127 for this wording correction."
+    }
+  ],
+  "checks": {
+    "frozen_repo": 26,
+    "frozen_preview_tables": 3,
+    "frozen_external": 14,
+    "old_property_objects_preserved": 5252,
+    "state_changes": "Only6 state version/source_scope/property_ids",
+    "source_changes": "Only2 source claim_notes",
+    "quantity_schema_dedup": "Independent pressure, quantity-sensitive signatures, no target descriptor or engine",
+    "six_mapping_mean_SD_n5": "matched",
+    "unknown_boundaries": "preserved",
+    "complete_joined_exports": "NR8->9,Sahin10->15;all fields/hashes/counts matched",
+    "four_languages": "correct labels,means,SDs,unknowns;also contain identified wording defect",
+    "test_evidence": "actual frozen log127 tests,OK;static new-test coverage review",
+    "install_script": "static only;no additional required defect"
+  },
+  "limits": [
+    "No producer/author/install code or test/history execution.",
+    "Only read/hash/JSON/public-schema checks independently executed.",
+    "No edits/application/push;r1 not approved for acceptance."
+  ],
+  "receipt_recording": "Root transcription of reviewer-returned findings and checks."
+}

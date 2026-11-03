@@ -1,0 +1,22 @@
+{
+  "reviewer": "/root/review_nr_finite_modulus",
+  "kind": "read_only_static_scope_assessment_not_final_delivery_approval",
+  "conclusion": "Old PLA/PCL tests are frozen historical snapshot regressions;they read the actual imported core and do not restore an old wheel automatically. They cannot be used unchanged as current5267-graph acceptance.",
+  "evidence": {
+    "experimental/platform/query-service/catalog-tests/test_delgado_pla_pcl.py": "Old joined/source hashes,single modulus link,1175identities/1176states/1187properties and7source properties.",
+    "experimental/platform/query-service/materials_query/catalog_snapshot.py": "from_packaged reads currently imported core3tables,no historical selection.",
+    "scripts/run_delgado_pla_pcl_runtime_ci.py": "Fixed73a5d872 baseline,manifest,counts/table hashes and old exact-append constraints.",
+    "tests/delgado_pla_pcl_ci/manifest.json": "Fixed query group includes8old methods and resource/query baseline pins.",
+    ".github/workflows/delgado-pla-pcl-runtime.yml": "Dedicatedexperimental/delgado2020-pla-pcl-runtime branch,not this delivery branch.",
+    "experimental/platform/query-service/README.md": "Historical PLA/PCL batch/data anchor and64-file pin;does not migrate pins automatically.",
+    "experimental/platform/ci/check_catalog.py": "Broad discovery includes historical tests;not a current-data-specific acceptance runner."
+  },
+  "independent_pins": {
+    "old_manifest_sha256": "f76addb1e529c7938f195c559c7c1c10e3d81b4a2ac7b13b320990b7dffbd1d0",
+    "old_query_pin_sha256": "6e5f9e91ec2cdaec488bdb603b8e7577fee424e0219f9b3a76941f1d92bd9e08",
+    "current_tables_match_old_resource_pins": false
+  },
+  "handling": "Retain historical tests,pins and assertions unchanged;separate exact current core/consumer evidence. No whole-platform claim from local catalogue checks.",
+  "execution_scope": "Static reads and JSON/hash checks only;no tests,old batch CI,producer or author code executed;no edits or push.",
+  "receipt_recording": "Root transcription of reviewer-returned scope assessment."
+}

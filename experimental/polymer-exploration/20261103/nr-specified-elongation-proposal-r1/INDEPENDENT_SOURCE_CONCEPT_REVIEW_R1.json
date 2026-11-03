@@ -1,0 +1,33 @@
+{
+  "decision": "approved",
+  "review_kind": "independent_source_and_concept_review",
+  "reviewer": "/root/review_nr_finite_modulus",
+  "review_inputs_sha256": "2ae4e3e45570e0972b86d36eee8f2908ca92ab66947c0b3e3ea7e8494fc267a6",
+  "scope": "Source facts and reuse of existing specified-elongation stress concept only; no concrete mapping,installation or acceptance approval",
+  "checks": {
+    "frozen_inputs": "Entry and two repository SHA256 bindings matched",
+    "retained_XML_sha256": "97eb8a1e73e57b6fc64fcf3b0be6603db3f8dcb5fa927570e91eb033f1018f69",
+    "license": "Directly inspected article-level CC BY4.0",
+    "table_and_method": "Table4 unfilled NR sigma200% and sigma400%; section3.3.4 explicitly defines corresponding strain targets",
+    "statistics": "Five tensile specimens per composition; mechanical properties mean plus/minus SD",
+    "state_binding": "state_smr10_bianchi2025_nr,existing finite-strain property and source match; vulcanizate contains curatives,no nanoclay"
+  },
+  "approved_facts": [
+    {"target_percent": "200", "mean_MPa": "1.08", "SD_MPa": "0.13", "n": 5, "relation": "exact"},
+    {"target_percent": "400", "mean_MPa": "2.10", "SD_MPa": "0.23", "n": 5, "relation": "exact"}
+  ],
+  "concept": "Reuse tensile_stress_at_specified_elongation pressure type and typed percent targets with primary condition evidence; not stress divided by strain or modulus,break/peak/yield stress or toughness",
+  "issues": [],
+  "required_later_checks": [
+    "Exact two-property mapping and typed targets; complete preservation of old properties and restricted state/source edits.",
+    "Unknown conventions retained; target labels do not certify specimen-level strain implementation.",
+    "Complete query/export,target-sensitive deduplication and installation."
+  ],
+  "limits": [
+    "Tensile temperature,RH,post-cure conditioning,storage,axis relation,prior history,stress/strain conventions,point-selection algorithm and independent batches remain unknown.",
+    "No transfer of hardness,cyclic or relaxation conditions; separate break-strain header/magnitude issue remains unresolved.",
+    "Retained XML directly inspected; no fresh PDF/visual or latest revision/correction/retraction audit.",
+    "No producer/author code,tests or historical regression executed; no edits/push;not scientific certification."
+  ],
+  "receipt_recording": "Root transcription of reviewer-returned conclusion and checks."
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "tensile-stress-at-break-contract-proposal/1",
+  "quantity": "tensile_stress_at_break",
+  "quantity_dimension": "pressure",
+  "meaning": "Source-reported tensile stress at specimen break; not an automatic maximum tensile/yield strength, modulus, fracture toughness or stress-at-prescribed-elongation fact",
+  "shape": "Existing closed scalar property with source-specific conditions/methods/statistics, no new descriptor or central unit",
+  "constraints": "Register independent pressure enum and strict4language label; generated public schema matches runtime; specified_elongation forbidden; no strain/stress conversion,geometry formula or engine wiring",
+  "uniqueness": "Existing quantity-sensitive signature separates break from peak strength/modulus; no cross-test ranking invariant inferred",
+  "mapping_scope": "6existing source-qualified polymer states,0new identities/grades/states/sources; all5252old properties exact",
+  "unknowns": "Source report of break point does not independently verify fracture-detection algorithm/stress convention/strain estimator; retain metadata gaps",
+  "workflow": "Source/concept approval only now; concrete implementation/mapping,install and native integration separately frozen/reviewed before acceptance",
+  "publication": "Local accumulation,not perbatch push;no main/stable/deploy"
+}
