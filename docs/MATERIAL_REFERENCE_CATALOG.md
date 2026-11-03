@@ -66,6 +66,14 @@ claims that whole chemical families have known universal properties.
 
 ## Evidence and interpretation
 
+`tensile_yield_strength` preserves a source-labelled tensile yield stress. It is
+distinct from maximum tensile strength, stress at break and elastic moduli.
+An unreported yield criterion remains unknown in `additional_conditions`
+(`yield_criterion`); a test-standard citation does not establish a 0.2% offset,
+upper/lower yield event or verified standard compliance. A reported specimen count
+does not establish that a printed ± value is SD, SE or a confidence interval.
+These records remain catalog-only and do not supply mechanics evaluator inputs.
+
 Manufacturer and technical-association references remain reference values,
 even when the source mentions a measurement. A typical value, guideline range
 or specification limit is not a theoretical material bound or an engineering

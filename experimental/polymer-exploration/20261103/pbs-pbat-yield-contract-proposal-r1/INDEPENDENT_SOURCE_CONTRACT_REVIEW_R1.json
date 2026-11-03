@@ -1,0 +1,55 @@
+{
+  "schema": "pbs-pbat-yield-source-contract-independent-review/1",
+  "reviewer": "/root/review_pbs_pbat_yield_proposal",
+  "decision": "approved",
+  "approved_scope": "source/contract proposal only",
+  "review_inputs_sha256": "d6ceda13d73f692aca04a72aff953f84136a2182cf6282e2ce995c984383564c",
+  "reviewed_files_sha256": {
+    "README.zh.md": "748e7e7339339f39ae44a006523e3c5885aeb870a53be55e8b8ce1a967122cb1",
+    "SOURCE_FACTS_R1.json": "bb09335313890eccbb47dd59e7eff2f043efd654bac59816245a6dbf968e7e64",
+    "CONTRACT_PROPOSAL_R1.json": "a3394f8c34fb39ad415ff2b049933984c0952635f7bc81e04aecea92d05eba1d",
+    "source_xml": "aa495787abc73a0d98b8c8adbb3c887816afe57076873010b04d41a6730b7f32"
+  },
+  "evidence": [
+    {
+      "locator": "XML permissions",
+      "finding": "CC BY4.0 explicit for article-original content"
+    },
+    {
+      "locator": "Tables1–3, sections2.3,2.6.2,3.2",
+      "finding": "Two existing unfilled polymer states match PBAT and PBS/PBAT70:30; no composite rows imported"
+    },
+    {
+      "locator": "Table3",
+      "finding": "Explicit Tensile Strength at Yield (MPa); PBAT8.38±0.11 and blend26.99±0.32. Same-row old moduli52.01±28.78 and253.49±13.40 match native IDs."
+    },
+    {
+      "locator": "Section2.6.2",
+      "finding": "Five tensile specimens;25C/48h conditioning;25C test;source ASTM D638. Standard edition, rate, RH, yield criterion/offset and independent batch count unreported."
+    },
+    {
+      "locator": "Full main body and tables",
+      "finding": "No mechanical mean or SD/SE/CI construction statement found. FTIR averaged16scans and ZnO average particle size unrelated. reported_value and reported_plus_minus_unspecified appropriate."
+    },
+    {
+      "locator": "Proposed contract and current mapping",
+      "finding": "tensile_yield_strength as pressure, separate from maximum tensile strength, break stress and moduli, is conceptually appropriate; current closed quantity mapping lacks it."
+    }
+  ],
+  "blocking_issues": [],
+  "implementation_recommendations": [
+    "Keep original yield label and explicit unknown yield_criterion; no inferred0.2% offset,upper/lower yield or proportional limit",
+    "Preserve n5 specimen scope and unknown statistics,batches,rate,RH,edition",
+    "Freeze and independently review concrete implementation/schema/query/export/display/native mapping later"
+  ],
+  "limits": [
+    "Source and concept proposal only, not runtime or native admission approval",
+    "Retained XML only; no new PDF or external supplements",
+    "No source code/full-history/new-quantity graph executed",
+    "No scientific,ASTM-compliance,engineering-allowable or universal-bound certification",
+    "catalog_only; no automatic mechanics or safety-factor inference"
+  ],
+  "files_written": false,
+  "native_applied": false,
+  "pushed": false
+}

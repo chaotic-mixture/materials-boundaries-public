@@ -4,11 +4,12 @@
 
 ## 2026-11-03聚合物后续
 
-最新本地状态见[r4接纳记录](../experimental/polymer-exploration/20261103/local-acceptance-r4/README.zh.md)。
-实际目录为5180身份、5190状态、5223性质；相对5baaf6c新增22条性质、5个状态，更正22条既有性质，身份不增。
-六项成果及整合已独审；PBS标准版本表述已保守更正并复核。PA12风化、R0映射和NR有限应变模量未随本次接纳。
-r4隔离安装、实际快照与增量验证通过；50项专项测试通过，无失败、错误或跳过。未知条件和原文矛盾保留。
-完整历史回归未运行；后续统一交付及精确提交CI见[r4交付入口](../experimental/polymer-exploration/20261103/delivery-r4/README.zh.md)，不继承旧提交CI。[早期交付记录](../experimental/polymer-exploration/20261103/DELIVERY.md)保留原阶段事实。
+最新状态见[r5–r7统一交付入口](../experimental/polymer-exploration/20261103/delivery-r5-r7/README.zh.md)。
+实际5180身份、5195状态、5242性质；相对e8c614a新增19条性质、5状态，原5223性质对象不变，身份不增。
+补充覆盖NR有限应变模量、PHBV弯曲模量、PBAT/PBS-PBAT屈服强度、五种PNA-BPF拉伸/弯曲模量、五个Sylgard固化态UTS。
+精确来源/实现/整合/安装均经只读独审。压力维度的tensile_yield_strength为独立量，不混入最大强度或模量；未知统计/条件和来源矛盾保持。
+统一112项专项检查通过，失败/错误/跳过0；每日数据库CI命令本地等效检查通过。完整历史回归未运行。
+实际远端提交和CI在交付后另核；不把本地结果或旧提交CI当作本轮发布结果。[r4历史交付](../experimental/polymer-exploration/20261103/delivery-r4/README.zh.md)保留原阶段事实。
 
 ## 实施与验收范围
 
@@ -37,7 +38,7 @@ JSONL 导出保留完整性质、材料状态、身份、牌号及关联来源�
 ## 当前落地与剩余事项
 
 已提供 query/export/verify/diff/check/validate-update。专项覆盖导出、关联、增量复用及失败拦截。
-最初5197条性质的检查属于历史落地检查点；本轮r4的5223条性质已完成当前图及增量检查，未运行历史回放。
+最初5197条性质的检查属于历史落地检查点；当前r7的5242条性质已完成当前图及增量检查，未运行历史回放。
 这不是独立科学审核，不是远端发布结果。
 
 字段字典、原生 schema 和导出封装 schema 已提供。真实导出通过封装验证，错误审核字段类型被拒绝。

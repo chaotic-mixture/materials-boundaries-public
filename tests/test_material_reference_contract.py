@@ -83,6 +83,60 @@ def synthetic_mean_catalog():
 
 
 class MaterialReferenceContractTests(unittest.TestCase):
+    def test_yield_stress_exports_unknown_criterion_and_unspecified_plus_minus(self):
+        from materials_boundaries.database import Database, read_snapshot
+        import tempfile
+        m, p, s = synthetic_mean_catalog()
+        prop = p['records'][0]
+        prop.update(quantity='tensile_yield_strength', source_property_label='Tensile strength at yield',
+                    summary_statistic='reported_value', uncertainty_status='reported_plus_minus_unspecified')
+        prop['uncertainty']['type'] = 'reported_plus_minus_unspecified'
+        prop['sample_count']['source_statement'] = 'Five specimens; statistical definition not stated'
+        prop['conditions']['additional_conditions'] = [{'name':'yield_criterion', 'fact':{
+            'status':'not_reported_in_inspected_source', 'text':None, 'evidence':[],
+            'notes':'Offset, upper/lower yield event and numerical criterion unknown'}}]
+        validate_material_catalog(m, p, s)
+        db = Database({'materials':m, 'reference_properties':p, 'sources':s})
+        self.assertEqual(len(list(db.records(quantity='tensile_yield_strength'))), 1)
+        for other in ('tensile_strength', 'youngs_modulus', 'tensile_modulus'):
+            self.assertEqual(list(db.records(quantity=other)), [])
+        self.assertEqual(db.summary()['properties_by_quantity'], {'tensile_yield_strength':1})
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp)/'yield'
+            db.export(path, quantity='tensile_yield_strength')
+            exported = read_snapshot(path)[1][prop['id']]['property']
+        self.assertEqual(exported, prop)
+        self.assertEqual(exported['summary_statistic'], 'reported_value')
+        self.assertFalse(exported['engineering_allowable'])
+        self.assertFalse(exported['universal_bound'])
+        self.assertEqual(exported['evaluation_support'], 'catalog_only')
+
+    def test_yield_stress_rejects_density_units_or_dimension(self):
+        for mutate in (
+            lambda prop: prop.update(quantity_dimension='mass_per_volume'),
+            lambda prop: prop['reported_value'].update(unit_code='g/cm^3', unit_text='g/cm³'),
+        ):
+            m, p, s = synthetic_mean_catalog()
+            p['records'][0]['quantity'] = 'tensile_yield_strength'
+            mutate(p['records'][0])
+            with self.assertRaises(ValueError):
+                validate_material_catalog(m, p, s)
+
+    def test_yield_stress_renders_in_all_languages_without_breaking_old_labels(self):
+        from unittest.mock import patch
+        from materials_boundaries.material_presentation import material_labels, render_material_catalog
+        m, p, s = synthetic_mean_catalog()
+        p['records'][0].update(quantity='tensile_yield_strength', source_property_label='Synthetic yield stress')
+        resources = dict(zip(('materials', 'reference_properties', 'sources'), (m, p, s)))
+        for language in ('en', 'zh', 'ja', 'de'):
+            labels = material_labels(language)
+            self.assertTrue(labels['code_tensile_strength'])
+            with patch('materials_boundaries.catalog.read_catalog', side_effect=lambda name:deepcopy(resources[name])):
+                text = render_material_catalog(p, 'reference-properties', language)
+            self.assertIn(labels['code_tensile_yield_strength']+' [tensile_yield_strength]', text)
+            self.assertIn('Synthetic yield stress', text)
+            self.assertIn('2500', text)
+
     def test_record_corrections_accept_patch_revisions_with_stable_ids(self):
         import jsonschema
         m, p, s = synthetic_material_catalog()

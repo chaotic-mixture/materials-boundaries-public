@@ -28,6 +28,7 @@ QUANTITY_DIMENSIONS = {
     "flexural_modulus": "pressure",
     "elastic_modulus_unspecified": "pressure",
     "tensile_strength": "pressure",
+    "tensile_yield_strength": "pressure",
     "slump_flow_spread": "length",
 }
 UNIT_DIMENSIONS = {

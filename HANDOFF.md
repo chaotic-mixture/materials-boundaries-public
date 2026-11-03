@@ -1,5 +1,99 @@
 # Materials Boundaries development handoff
 
+## Consolidated r5–r7 experimental delivery (2026-11-03)
+
+The [delivery entry](experimental/polymer-exploration/20261103/delivery-r5-r7/README.zh.md)
+groups 19 independently reviewed polymer property additions and five specimen states
+since `e8c614ae286708cf200c7bbca1fc9bc3ec6e419f`. All old 5223 property objects,
+5180 identities and 31 grades are unchanged; 14 existing state records and five
+source notes are amended within their reviewed scope. The current snapshot remains
+`a0068f8c22fc94cdfb893fda69585b1a416811b937ed2b2b558a803feded0456`.
+
+The additive tensile_yield_strength quantity keeps yield distinct from maximum
+strength and moduli. Unknown conditions/statistics and the Sylgard method-range
+contradiction remain explicit. Consolidated checks executed 112 scoped tests with
+zero failures/errors/skips plus the daily database CI command equivalents. This
+later execution does not rewrite earlier r6/r7 receipts saying tests were not rerun.
+Full historical replay remains unrun. Earlier bound documents are archived with
+original hashes before this delivery update.
+
+Delivery targets only experimental/open-database. Exact remote commit and Actions
+results require post-push verification; this pre-push text does not claim either.
+No main merge, release tag or deployment is included. The final operation receipt
+is retained outside the commit to avoid recursive status-only pushes.
+
+## Local r7 Sylgard strength supplement (2026-11-03)
+
+The [r7 local acceptance record](experimental/polymer-exploration/20261103/local-acceptance-r7/README.zh.md)
+updates native counts to **5180 identities, 31 grades, 5195 states,
+5242 properties, 133 sources**; polymer **1037 identities, 1052 states, 1083 properties**.
+Snapshot: `a0068f8c22fc94cdfb893fda69585b1a416811b937ed2b2b558a803feded0456`.
+Five source-labelled ultimate tensile strengths were added on existing Sylgard
+184 tensile-cure states; no new identities or states. All old 5237 property objects
+remain exact. Source/mapping, integration and actual isolated installation reviews passed.
+
+The original strength calculation-range contradiction remains unresolved: each
+record keeps a not_verified/null strength window and the source discrepancy.
+The below-40% Young-modulus window and source 0.40 strain factor are not assigned
+as a verified UTS extraction method or used to multiply stress/CI. The stated 95%
+CI and six samples remain reported facts, with unknown estimand/construction and
+peak-extraction/averaging order; no mean-of-six-peaks or SD/SE inferred.
+
+Current incremental validation executed all 5242 property checks (reuse 0).
+Runtime/test code is unchanged; prior 78-test evidence is inherited, not rerun or
+counted as new r7 executions. Full historical replay was not run. The preview wheel
+contains the archived preapplication r6 README, not later handoff documentation.
+This checkpoint is local and uncommitted; no push, new hosted CI, main merge,
+stable release or deployment was performed. Accumulate reviewed local progress
+for consolidated GitHub delivery; remote latest state was not reverified.
+
+## Local r6 epoxy supplement (2026-11-03)
+
+The [r6 local acceptance record](experimental/polymer-exploration/20261103/local-acceptance-r6/README.zh.md)
+updates the native registry to **5180 identities, 31 grades, 5195 states,
+5237 properties, 133 sources**; polymer **1037 identities, 1052 states, 1078 properties**.
+Snapshot: `13f837f4a1e02fd397432aab7e47f0d29a48b38211add517c27fd12d6bd0f56c`.
+Five existing PNA-BPF epoxy identities gain five tensile and five flexural moduli.
+Five new flexural specimen states preserve the 3.6 mm plate preparation separately
+from the existing 4 mm tensile states. No identities were added; all old 5227
+property objects remain unchanged, including the unresolved source discrepancies.
+
+Source/mapping, integration and actual isolated installation reviews passed.
+Current incremental validation executed all 5237 property checks (reuse 0).
+No runtime or test code changed; the prior 78-test receipt is inherited with exact
+file hashes, and was not rerun or relabelled as a new r6 test execution.
+Full historical replay was not run. Test environment, conditioning, statistics
+and modulus extraction details remain unknown where unreported.
+
+This is a local uncommitted checkpoint. No push, new hosted CI, main merge,
+stable release or deployment was performed. The installed preview contains the
+archived preapplication r5 README, not these later handoff documents. Continue
+accumulating reviewed local progress before consolidated GitHub delivery.
+
+## Local r5 polymer supplement (2026-11-03)
+
+The [r5 local acceptance record](experimental/polymer-exploration/20261103/local-acceptance-r5/README.zh.md)
+supersedes the native counts below: **5180 identities, 31 grades, 5190 states,
+5227 properties, 133 sources**; polymer **1037 identities, 1047 states, 1068 properties**.
+Snapshot: `044456eb1e9413ec819b7145543dab8dce4c6e7d1ea963d8c3a2e6f717edbaec`.
+Four existing-state properties were added (NR finite-strain tensile modulus,
+PHBV-39 flexural modulus, two PBAT/PBS-PBAT yield strengths); all old 5223
+property objects remain unchanged. New identities/states: zero.
+
+Source, implementation, combination and isolated installation reviews passed.
+The first implementation review found a missing required locale key; its rejection,
+exact implementation bytes, fix and four-language retest are retained. All 78 scoped
+unit tests passed (zero failures/errors/skips). Incremental validation executed all
+5227 property checks because source metadata changed; full historical replay was not run.
+The installed preview is a preapplication artifact; its original README is archived.
+Its 65 payload files match current native package files except the isolated preview
+version marker; later handoff documentation is not claimed to be in that wheel.
+
+This checkpoint is local and uncommitted. No new push, hosted CI, main merge,
+stable release or deployment was performed. Accumulate further reviewed local work
+before consolidated GitHub delivery. Unknown yield criterion, RH, method windows
+and statistical definitions remain explicit; none are engineering allowables.
+
 ## Consolidated r4 experimental checkpoint (2026-11-03)
 
 The [r4 delivery entry](experimental/polymer-exploration/20261103/delivery-r4/README.zh.md)

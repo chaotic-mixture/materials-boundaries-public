@@ -193953,7 +193953,7 @@
     },
     {
       "id": "state_dow_corning_sylgard184_johnston2014_100c",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "identity_id": "mat_dow_corning_sylgard184",
       "grade_id": "grade_dow_corning_sylgard184",
       "name": "Sylgard 184, 10:1 parts, 100 °C/48 min tensile cure (Johnston 2014)",
@@ -194071,7 +194071,7 @@
           "notes": "No material-axis characterization or proof of isotropy reported; dumbbell tensile direction is retained with the property."
         }
       },
-      "source_scope": "Selected Table 2 100 °C tensile-cure state only; source finite-window tensile result, not a global hyperelastic constant.",
+      "source_scope": "Selected Table 2 100 °C tensile-cure state only; source finite-window tensile result, not a global hyperelastic constant. 2026-11-03 supplement: same tensile cure/specimens also link the Table 2 source-labelled ultimate tensile strength. Finite Young-modulus window and strength calculation-range discrepancy are property-specific, not transferable method assumptions.",
       "evidence": [
         {
           "source_id": "johnston_2014_bulk_sylgard184",
@@ -194083,13 +194083,14 @@
         }
       ],
       "property_ids": [
-        "refprop_dow_corning_sylgard184_johnston2014_100c_youngs_modulus"
+        "refprop_dow_corning_sylgard184_johnston2014_100c_youngs_modulus",
+        "refprop_dow_corning_sylgard184_johnston2014_100c_tensile_strength"
       ],
       "evaluation_support": "catalog_only"
     },
     {
       "id": "state_smr10_bianchi2025_nr",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "identity_id": "mat_smr10_bianchi2025_nr",
       "grade_id": "grade_smr10_bianchi2025_nr",
       "name": "SMR 10 study NR vulcanizate, no nanoclay",
@@ -194210,13 +194211,13 @@
           "notes": "No quantitative void fraction is assigned to this selected scalar; nonfoamed preparation does not establish zero porosity."
         },
         "orientation": {
-          "status": "not_applicable",
+          "status": "not_reported_in_inspected_source",
           "text": null,
           "evidence": [],
-          "notes": "No directional material-axis claim is attached to this scalar density measurement; this is not proof of isotropy."
+          "notes": "Macroscopic processing/loading-axis relation is not specified. Density direction remains not_applicable in its own property; no isotropy inference."
         }
       },
-      "source_scope": "Study-specific NR vulcanizate with curatives; not raw SMR 10 or a no-additive pure polymer. The selected density uses three specimens, not the four crosslinking-density specimens. Arithmetic aggregation and meaning of ± remain unspecified. Do not import E100–200 finite-strain slope as Young’s modulus.",
+      "source_scope": "Study-specific NR vulcanizate with curatives; not raw SMR 10 or a no-additive pure polymer. The selected density uses three specimens, not the four crosslinking-density specimens. For the density result only, arithmetic aggregation and meaning of ± remain unspecified. Do not import E100–200 finite-strain slope as Young’s modulus. The additional E100–200 tensile slope uses five quasi-static specimens and mechanical mean ± SD only.",
       "evidence": [
         {
           "source_id": "bianchi_2025_nr_nanoclay",
@@ -194228,7 +194229,8 @@
         }
       ],
       "property_ids": [
-        "refprop_smr10_bianchi2025_nr_mass_density"
+        "refprop_smr10_bianchi2025_nr_mass_density",
+        "refprop_smr10_bianchi2025_nr_finite_strain_tensile_modulus"
       ],
       "evaluation_support": "catalog_only"
     },
@@ -196936,15 +196938,15 @@
     },
     {
       "id": "state_abbasi2022_manure_phbv39",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "identity_id": "mat_abbasi2022_manure_phbv39",
       "grade_id": null,
-      "name": "Purified PHBV-39, hot-pressed tensile specimens",
+      "name": "Purified PHBV-39, hot-pressed cut specimens",
       "names": {
-        "en": "Purified PHBV-39, hot-pressed tensile specimens",
-        "zh": "提纯 PHBV-39，热压拉伸试样",
-        "ja": "精製PHBV-39、熱プレス引張試験片",
-        "de": "Gereinigtes PHBV-39, heißgepresste Zugproben"
+        "en": "Purified PHBV-39, hot-pressed cut specimens",
+        "zh": "提纯PHBV-39，热压切割试样",
+        "ja": "精製PHBV-39、熱プレス切断試験片",
+        "de": "Gereinigtes PHBV-39, heißgepresste geschnittene Proben"
       },
       "aliases": [],
       "source_designation": "PHBV-39",
@@ -197046,13 +197048,14 @@
         }
       ],
       "property_ids": [
-        "refprop_abbasi2022_manure_phbv39_youngs_modulus"
+        "refprop_abbasi2022_manure_phbv39_youngs_modulus",
+        "refprop_abbasi2022_manure_phbv39_flexural_modulus"
       ],
       "evaluation_support": "catalog_only"
     },
     {
       "id": "state_mtibe2022_pbat_ecoflex_c1200",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "identity_id": "mat_mtibe2022_pbat_ecoflex_c1200",
       "grade_id": "grade_mtibe2022_ecoflex_c1200",
       "name": "Neat Ecoflex C1200 PBAT, injection-molded tensile specimens",
@@ -197171,13 +197174,14 @@
         }
       ],
       "property_ids": [
-        "refprop_mtibe2022_pbat_ecoflex_c1200_tensile_modulus"
+        "refprop_mtibe2022_pbat_ecoflex_c1200_tensile_modulus",
+        "refprop_mtibe2022_pbat_ecoflex_c1200_tensile_yield_strength"
       ],
       "evaluation_support": "catalog_only"
     },
     {
       "id": "state_mtibe2022_pbs_pbat_70_30",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "identity_id": "mat_mtibe2022_pbs_pbat_70_30",
       "grade_id": null,
       "name": "Unfilled PBS/PBAT 70/30, injection-molded tensile specimens",
@@ -197296,7 +197300,8 @@
         }
       ],
       "property_ids": [
-        "refprop_mtibe2022_pbs_pbat_70_30_tensile_modulus"
+        "refprop_mtibe2022_pbs_pbat_70_30_tensile_modulus",
+        "refprop_mtibe2022_pbs_pbat_70_30_tensile_yield_strength"
       ],
       "evaluation_support": "catalog_only"
     },
@@ -302657,7 +302662,7 @@
       ]
     },
     {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "grade_id": null,
       "aliases": [],
       "evaluation_support": "catalog_only",
@@ -302757,7 +302762,7 @@
         "de": "PNA-BPF-1, DDS-cured binder at 180 deg C for 8 h (Tarasov 2022)"
       },
       "source_designation": "PNA-BPF-1",
-      "source_scope": "Source-qualified PNA-BPF-1 formulation, nominal HCP:BPF:ECH label 1:8:16. The HCP:BPF:ECH labels are source-reported nominal feed labels only. Table 1 reagent amounts and ratio labels are internally inconsistent; no correction, normalized stoichiometry, final network composition, purity, conversion or molecular architecture is inferred. These are source-qualified mixed phosphazene-containing epoxy formulations, not pure molecular species. Cure conditions, test specimens and property differences do not create additional identities. DDS-cured plate state for the selected Table 7 tensile-strength result. Exact DDS fraction, tensile-test temperature, humidity, orientation, specimen count and statistics remain unknown.",
+      "source_scope": "Source-qualified PNA-BPF-1 formulation, nominal HCP:BPF:ECH label 1:8:16. The HCP:BPF:ECH labels are source-reported nominal feed labels only. Table 1 reagent amounts and ratio labels are internally inconsistent; no correction, normalized stoichiometry, final network composition, purity, conversion or molecular architecture is inferred. These are source-qualified mixed phosphazene-containing epoxy formulations, not pure molecular species. Cure conditions, test specimens and property differences do not create additional identities. DDS-cured plate state for the selected Table 7 tensile-strength and tensile-modulus results. Exact DDS fraction, tensile-test temperature, humidity, orientation, specimen count and statistics remain unknown.",
       "evidence": [
         {
           "source_id": "tarasov_2022_pna_bpf_epoxy",
@@ -302778,11 +302783,12 @@
         }
       ],
       "property_ids": [
-        "refprop_tarasov2022_pna_bpf_1_tensile_strength"
+        "refprop_tarasov2022_pna_bpf_1_tensile_strength",
+        "refprop_tarasov2022_pna_bpf_1_tensile_modulus"
       ]
     },
     {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "grade_id": null,
       "aliases": [],
       "evaluation_support": "catalog_only",
@@ -302882,7 +302888,7 @@
         "de": "PNA-BPF-2, DDS-cured binder at 180 deg C for 8 h (Tarasov 2022)"
       },
       "source_designation": "PNA-BPF-2",
-      "source_scope": "Source-qualified PNA-BPF-2 formulation, nominal HCP:BPF:ECH label 1:9:16. The HCP:BPF:ECH labels are source-reported nominal feed labels only. Table 1 reagent amounts and ratio labels are internally inconsistent; no correction, normalized stoichiometry, final network composition, purity, conversion or molecular architecture is inferred. These are source-qualified mixed phosphazene-containing epoxy formulations, not pure molecular species. Cure conditions, test specimens and property differences do not create additional identities. DDS-cured plate state for the selected Table 7 tensile-strength result. Exact DDS fraction, tensile-test temperature, humidity, orientation, specimen count and statistics remain unknown.",
+      "source_scope": "Source-qualified PNA-BPF-2 formulation, nominal HCP:BPF:ECH label 1:9:16. The HCP:BPF:ECH labels are source-reported nominal feed labels only. Table 1 reagent amounts and ratio labels are internally inconsistent; no correction, normalized stoichiometry, final network composition, purity, conversion or molecular architecture is inferred. These are source-qualified mixed phosphazene-containing epoxy formulations, not pure molecular species. Cure conditions, test specimens and property differences do not create additional identities. DDS-cured plate state for the selected Table 7 tensile-strength and tensile-modulus results. Exact DDS fraction, tensile-test temperature, humidity, orientation, specimen count and statistics remain unknown.",
       "evidence": [
         {
           "source_id": "tarasov_2022_pna_bpf_epoxy",
@@ -302903,11 +302909,12 @@
         }
       ],
       "property_ids": [
-        "refprop_tarasov2022_pna_bpf_2_tensile_strength"
+        "refprop_tarasov2022_pna_bpf_2_tensile_strength",
+        "refprop_tarasov2022_pna_bpf_2_tensile_modulus"
       ]
     },
     {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "grade_id": null,
       "aliases": [],
       "evaluation_support": "catalog_only",
@@ -303007,7 +303014,7 @@
         "de": "PNA-BPF-3, DDS-cured binder at 180 deg C for 8 h (Tarasov 2022)"
       },
       "source_designation": "PNA-BPF-3",
-      "source_scope": "Source-qualified PNA-BPF-3 formulation, nominal HCP:BPF:ECH label 1:12:16. The HCP:BPF:ECH labels are source-reported nominal feed labels only. Table 1 reagent amounts and ratio labels are internally inconsistent; no correction, normalized stoichiometry, final network composition, purity, conversion or molecular architecture is inferred. These are source-qualified mixed phosphazene-containing epoxy formulations, not pure molecular species. Cure conditions, test specimens and property differences do not create additional identities. DDS-cured plate state for the selected Table 7 tensile-strength result. Exact DDS fraction, tensile-test temperature, humidity, orientation, specimen count and statistics remain unknown.",
+      "source_scope": "Source-qualified PNA-BPF-3 formulation, nominal HCP:BPF:ECH label 1:12:16. The HCP:BPF:ECH labels are source-reported nominal feed labels only. Table 1 reagent amounts and ratio labels are internally inconsistent; no correction, normalized stoichiometry, final network composition, purity, conversion or molecular architecture is inferred. These are source-qualified mixed phosphazene-containing epoxy formulations, not pure molecular species. Cure conditions, test specimens and property differences do not create additional identities. DDS-cured plate state for the selected Table 7 tensile-strength and tensile-modulus results. Exact DDS fraction, tensile-test temperature, humidity, orientation, specimen count and statistics remain unknown.",
       "evidence": [
         {
           "source_id": "tarasov_2022_pna_bpf_epoxy",
@@ -303028,11 +303035,12 @@
         }
       ],
       "property_ids": [
-        "refprop_tarasov2022_pna_bpf_3_tensile_strength"
+        "refprop_tarasov2022_pna_bpf_3_tensile_strength",
+        "refprop_tarasov2022_pna_bpf_3_tensile_modulus"
       ]
     },
     {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "grade_id": null,
       "aliases": [],
       "evaluation_support": "catalog_only",
@@ -303132,7 +303140,7 @@
         "de": "PNA-BPF-4, DDS-cured binder at 180 deg C for 8 h (Tarasov 2022)"
       },
       "source_designation": "PNA-BPF-4",
-      "source_scope": "Source-qualified PNA-BPF-4 formulation, nominal HCP:BPF:ECH label 1:18:16. The HCP:BPF:ECH labels are source-reported nominal feed labels only. Table 1 reagent amounts and ratio labels are internally inconsistent; no correction, normalized stoichiometry, final network composition, purity, conversion or molecular architecture is inferred. These are source-qualified mixed phosphazene-containing epoxy formulations, not pure molecular species. Cure conditions, test specimens and property differences do not create additional identities. DDS-cured plate state for the selected Table 7 tensile-strength result. Exact DDS fraction, tensile-test temperature, humidity, orientation, specimen count and statistics remain unknown.",
+      "source_scope": "Source-qualified PNA-BPF-4 formulation, nominal HCP:BPF:ECH label 1:18:16. The HCP:BPF:ECH labels are source-reported nominal feed labels only. Table 1 reagent amounts and ratio labels are internally inconsistent; no correction, normalized stoichiometry, final network composition, purity, conversion or molecular architecture is inferred. These are source-qualified mixed phosphazene-containing epoxy formulations, not pure molecular species. Cure conditions, test specimens and property differences do not create additional identities. DDS-cured plate state for the selected Table 7 tensile-strength and tensile-modulus results. Exact DDS fraction, tensile-test temperature, humidity, orientation, specimen count and statistics remain unknown.",
       "evidence": [
         {
           "source_id": "tarasov_2022_pna_bpf_epoxy",
@@ -303153,11 +303161,12 @@
         }
       ],
       "property_ids": [
-        "refprop_tarasov2022_pna_bpf_4_tensile_strength"
+        "refprop_tarasov2022_pna_bpf_4_tensile_strength",
+        "refprop_tarasov2022_pna_bpf_4_tensile_modulus"
       ]
     },
     {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "grade_id": null,
       "aliases": [],
       "evaluation_support": "catalog_only",
@@ -303257,7 +303266,7 @@
         "de": "PNA-BPF-5, DDS-cured binder at 180 deg C for 8 h (Tarasov 2022)"
       },
       "source_designation": "PNA-BPF-5",
-      "source_scope": "Source-qualified PNA-BPF-5 formulation, nominal HCP:BPF:ECH label 1:24:16. The HCP:BPF:ECH labels are source-reported nominal feed labels only. Table 1 reagent amounts and ratio labels are internally inconsistent; no correction, normalized stoichiometry, final network composition, purity, conversion or molecular architecture is inferred. These are source-qualified mixed phosphazene-containing epoxy formulations, not pure molecular species. Cure conditions, test specimens and property differences do not create additional identities. DDS-cured plate state for the selected Table 7 tensile-strength result. Exact DDS fraction, tensile-test temperature, humidity, orientation, specimen count and statistics remain unknown.",
+      "source_scope": "Source-qualified PNA-BPF-5 formulation, nominal HCP:BPF:ECH label 1:24:16. The HCP:BPF:ECH labels are source-reported nominal feed labels only. Table 1 reagent amounts and ratio labels are internally inconsistent; no correction, normalized stoichiometry, final network composition, purity, conversion or molecular architecture is inferred. These are source-qualified mixed phosphazene-containing epoxy formulations, not pure molecular species. Cure conditions, test specimens and property differences do not create additional identities. DDS-cured plate state for the selected Table 7 tensile-strength and tensile-modulus results. Exact DDS fraction, tensile-test temperature, humidity, orientation, specimen count and statistics remain unknown.",
       "evidence": [
         {
           "source_id": "tarasov_2022_pna_bpf_epoxy",
@@ -303278,7 +303287,8 @@
         }
       ],
       "property_ids": [
-        "refprop_tarasov2022_pna_bpf_5_tensile_strength"
+        "refprop_tarasov2022_pna_bpf_5_tensile_strength",
+        "refprop_tarasov2022_pna_bpf_5_tensile_modulus"
       ]
     },
     {
@@ -671712,7 +671722,7 @@
     },
     {
       "id": "state_dow_corning_sylgard184_johnston2014_125c",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "identity_id": "mat_dow_corning_sylgard184",
       "grade_id": "grade_dow_corning_sylgard184",
       "name": "Sylgard 184, 10:1 parts, 125 °C/33 min tensile cure (Johnston 2014)",
@@ -671830,7 +671840,7 @@
           "notes": "No material-axis characterization or proof of isotropy reported; dumbbell tensile direction is retained with the property."
         }
       },
-      "source_scope": "Table 2 125 degrees C tensile-cure state; same commercial kit identity. Curator candidate, pending independent review.",
+      "source_scope": "Table 2 125 degrees C tensile-cure state; same commercial kit identity. Curator candidate, pending independent review. 2026-11-03 supplement: same tensile cure/specimens also link the Table 2 source-labelled ultimate tensile strength. Finite Young-modulus window and strength calculation-range discrepancy are property-specific, not transferable method assumptions.",
       "evidence": [
         {
           "source_id": "johnston_2014_bulk_sylgard184",
@@ -671842,13 +671852,14 @@
         }
       ],
       "property_ids": [
-        "refprop_dow_corning_sylgard184_johnston2014_125c_youngs_modulus"
+        "refprop_dow_corning_sylgard184_johnston2014_125c_youngs_modulus",
+        "refprop_dow_corning_sylgard184_johnston2014_125c_tensile_strength"
       ],
       "evaluation_support": "catalog_only"
     },
     {
       "id": "state_dow_corning_sylgard184_johnston2014_150c",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "identity_id": "mat_dow_corning_sylgard184",
       "grade_id": "grade_dow_corning_sylgard184",
       "name": "Sylgard 184, 10:1 parts, 150 °C/23 min tensile cure (Johnston 2014)",
@@ -671966,7 +671977,7 @@
           "notes": "No material-axis characterization or proof of isotropy reported; dumbbell tensile direction is retained with the property."
         }
       },
-      "source_scope": "Table 2 150 degrees C tensile-cure state; same commercial kit identity. Curator candidate, pending independent review.",
+      "source_scope": "Table 2 150 degrees C tensile-cure state; same commercial kit identity. Curator candidate, pending independent review. 2026-11-03 supplement: same tensile cure/specimens also link the Table 2 source-labelled ultimate tensile strength. Finite Young-modulus window and strength calculation-range discrepancy are property-specific, not transferable method assumptions.",
       "evidence": [
         {
           "source_id": "johnston_2014_bulk_sylgard184",
@@ -671978,13 +671989,14 @@
         }
       ],
       "property_ids": [
-        "refprop_dow_corning_sylgard184_johnston2014_150c_youngs_modulus"
+        "refprop_dow_corning_sylgard184_johnston2014_150c_youngs_modulus",
+        "refprop_dow_corning_sylgard184_johnston2014_150c_tensile_strength"
       ],
       "evaluation_support": "catalog_only"
     },
     {
       "id": "state_dow_corning_sylgard184_johnston2014_200c",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "identity_id": "mat_dow_corning_sylgard184",
       "grade_id": "grade_dow_corning_sylgard184",
       "name": "Sylgard 184, 10:1 parts, 200 °C/18 min tensile cure (Johnston 2014)",
@@ -672102,7 +672114,7 @@
           "notes": "No material-axis characterization or proof of isotropy reported; dumbbell tensile direction is retained with the property."
         }
       },
-      "source_scope": "Table 2 200 degrees C tensile-cure state; same commercial kit identity. Curator candidate, pending independent review.",
+      "source_scope": "Table 2 200 degrees C tensile-cure state; same commercial kit identity. Curator candidate, pending independent review. 2026-11-03 supplement: same tensile cure/specimens also link the Table 2 source-labelled ultimate tensile strength. Finite Young-modulus window and strength calculation-range discrepancy are property-specific, not transferable method assumptions.",
       "evidence": [
         {
           "source_id": "johnston_2014_bulk_sylgard184",
@@ -672114,13 +672126,14 @@
         }
       ],
       "property_ids": [
-        "refprop_dow_corning_sylgard184_johnston2014_200c_youngs_modulus"
+        "refprop_dow_corning_sylgard184_johnston2014_200c_youngs_modulus",
+        "refprop_dow_corning_sylgard184_johnston2014_200c_tensile_strength"
       ],
       "evaluation_support": "catalog_only"
     },
     {
       "id": "state_dow_corning_sylgard184_johnston2014_25c",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "identity_id": "mat_dow_corning_sylgard184",
       "grade_id": "grade_dow_corning_sylgard184",
       "name": "Sylgard 184, 10:1 parts, 25 °C/48 h tensile cure (Johnston 2014)",
@@ -672238,7 +672251,7 @@
           "notes": "No material-axis characterization or proof of isotropy reported; dumbbell tensile direction is retained with the property."
         }
       },
-      "source_scope": "Table 2 25 degrees C tensile-cure state; same commercial kit identity. Curator candidate, pending independent review.",
+      "source_scope": "Table 2 25 degrees C tensile-cure state; same commercial kit identity. Curator candidate, pending independent review. 2026-11-03 supplement: same tensile cure/specimens also link the Table 2 source-labelled ultimate tensile strength. Finite Young-modulus window and strength calculation-range discrepancy are property-specific, not transferable method assumptions.",
       "evidence": [
         {
           "source_id": "johnston_2014_bulk_sylgard184",
@@ -672250,7 +672263,8 @@
         }
       ],
       "property_ids": [
-        "refprop_dow_corning_sylgard184_johnston2014_25c_youngs_modulus"
+        "refprop_dow_corning_sylgard184_johnston2014_25c_youngs_modulus",
+        "refprop_dow_corning_sylgard184_johnston2014_25c_tensile_strength"
       ],
       "evaluation_support": "catalog_only"
     },
@@ -672881,6 +672895,631 @@
         "refprop_zakrecki2025_pa2200_sls_dyed_smoothed_750h_youngs_modulus"
       ],
       "evaluation_support": "catalog_only"
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "evaluation_support": "catalog_only",
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Flexural bars milled from 3.6 mm-thick cured binder plate, 80 × 9.8 × 3.6 mm.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.6, section 2.5.2",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Separate specimen form from the 4 mm tensile plate; no new material identity."
+        },
+        "processing": {
+          "status": "reported",
+          "text": "Selected PNA-BPF-1 through PNA-BPF-5 follow the source-described batch addition of solid alkali. DDS hardener was added in a calculated stoichiometric amount; the composition was stirred and degassed on an oil-bath rotor at 125 deg C under a vacuum of 100 mm Hg for 20-40 min until homogeneous, before casting.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF pp.4-5, section 2.2.1; p.5, section 2.4",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "The KOH/NaOH contradiction remains unresolved. No exact DDS mass fraction, fully specified recipe, conversion or independently verified stoichiometry is assigned."
+        },
+        "temper_or_heat_treatment": {
+          "status": "reported",
+          "text": "Cured at 180 deg C for 8 h.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.5, section 2.4",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Cure temperature/time qualifies the state, not test temperature or confirmed conversion."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Post-cure flexural storage, humidity, moisture and duration are not specified."
+        },
+        "reinforcement": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "The selected source records concern cured epoxy binders. No reinforcing phase, fiber loading or composite classification is assigned; the resin mixture is not claimed to be a pure substance."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Flexural-specimen porosity is not reported; zero porosity is not inferred."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No specimen orientation relative to plate processing or molecular alignment is reported; no isotropy claim is made."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "Nominal source feed label HCP:BPF:ECH = 1:8:16; mixed phosphazene-containing epoxy resin based on bisphenol F, cured using source-described stoichiometric DDS.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, Table 1, PNA-BPF-1 row; p.1 abstract mixture description; p.5 section 2.4",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "The HCP:BPF:ECH labels are source-reported nominal feed labels only. Table 1 reagent amounts and ratio labels are internally inconsistent; no correction, normalized stoichiometry, final network composition, purity, conversion or molecular architecture is inferred. These are source-qualified mixed phosphazene-containing epoxy formulations, not pure molecular species. The exact DDS fraction and final cured composition are not established."
+        }
+      },
+      "id": "state_tarasov2022_pna_bpf_1_dds_cured_flexural",
+      "identity_id": "mat_tarasov2022_pna_bpf_1",
+      "name": "PNA-BPF-1, DDS-cured flexural bars from 3.6 mm plate (Tarasov 2022)",
+      "names": {
+        "en": "PNA-BPF-1, DDS-cured flexural bars from 3.6 mm plate (Tarasov 2022)",
+        "zh": "PNA-BPF-1，DDS固化3.6 mm板铣切弯曲条形试样",
+        "ja": "PNA-BPF-1、DDS硬化3.6 mm板から切削した曲げ試験片",
+        "de": "PNA-BPF-1, DDS-gehärtete Biegeproben aus 3,6-mm-Platte"
+      },
+      "source_designation": "PNA-BPF-1",
+      "source_scope": "Only the existing PNA-BPF-1 source-qualified mixed epoxy identity and its DDS cure. Flexural bars milled from 3.6 mm plate are a separate source-scoped state from 4 mm tensile specimens. Inherited nominal-feed/mole-number/alkali discrepancies remain unresolved. Test T/RH, post-cure conditioning, fit algorithm and statistics remain unknown; no calculator input, engineering allowable or universal bound.",
+      "evidence": [
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "PDF p.4, Table 1, PNA-BPF-1 row; p.1 abstract mixture description",
+          "supports": [
+            "state",
+            "material_identity"
+          ]
+        },
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "PDF p.5 section 2.4; p.6 section 2.5.2; p.16 Table 8 PNA-BPF-1",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_tarasov2022_pna_bpf_1_flexural_modulus"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "evaluation_support": "catalog_only",
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Flexural bars milled from 3.6 mm-thick cured binder plate, 80 × 9.8 × 3.6 mm.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.6, section 2.5.2",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Separate specimen form from the 4 mm tensile plate; no new material identity."
+        },
+        "processing": {
+          "status": "reported",
+          "text": "Selected PNA-BPF-1 through PNA-BPF-5 follow the source-described batch addition of solid alkali. DDS hardener was added in a calculated stoichiometric amount; the composition was stirred and degassed on an oil-bath rotor at 125 deg C under a vacuum of 100 mm Hg for 20-40 min until homogeneous, before casting.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF pp.4-5, section 2.2.1; p.5, section 2.4",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "The KOH/NaOH contradiction remains unresolved. No exact DDS mass fraction, fully specified recipe, conversion or independently verified stoichiometry is assigned."
+        },
+        "temper_or_heat_treatment": {
+          "status": "reported",
+          "text": "Cured at 180 deg C for 8 h.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.5, section 2.4",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Cure temperature/time qualifies the state, not test temperature or confirmed conversion."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Post-cure flexural storage, humidity, moisture and duration are not specified."
+        },
+        "reinforcement": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "The selected source records concern cured epoxy binders. No reinforcing phase, fiber loading or composite classification is assigned; the resin mixture is not claimed to be a pure substance."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Flexural-specimen porosity is not reported; zero porosity is not inferred."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No specimen orientation relative to plate processing or molecular alignment is reported; no isotropy claim is made."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "Nominal source feed label HCP:BPF:ECH = 1:9:16; mixed phosphazene-containing epoxy resin based on bisphenol F, cured using source-described stoichiometric DDS.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, Table 1, PNA-BPF-2 row; p.1 abstract mixture description; p.5 section 2.4",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "The HCP:BPF:ECH labels are source-reported nominal feed labels only. Table 1 reagent amounts and ratio labels are internally inconsistent; no correction, normalized stoichiometry, final network composition, purity, conversion or molecular architecture is inferred. These are source-qualified mixed phosphazene-containing epoxy formulations, not pure molecular species. The exact DDS fraction and final cured composition are not established."
+        }
+      },
+      "id": "state_tarasov2022_pna_bpf_2_dds_cured_flexural",
+      "identity_id": "mat_tarasov2022_pna_bpf_2",
+      "name": "PNA-BPF-2, DDS-cured flexural bars from 3.6 mm plate (Tarasov 2022)",
+      "names": {
+        "en": "PNA-BPF-2, DDS-cured flexural bars from 3.6 mm plate (Tarasov 2022)",
+        "zh": "PNA-BPF-2，DDS固化3.6 mm板铣切弯曲条形试样",
+        "ja": "PNA-BPF-2、DDS硬化3.6 mm板から切削した曲げ試験片",
+        "de": "PNA-BPF-2, DDS-gehärtete Biegeproben aus 3,6-mm-Platte"
+      },
+      "source_designation": "PNA-BPF-2",
+      "source_scope": "Only the existing PNA-BPF-2 source-qualified mixed epoxy identity and its DDS cure. Flexural bars milled from 3.6 mm plate are a separate source-scoped state from 4 mm tensile specimens. Inherited nominal-feed/mole-number/alkali discrepancies remain unresolved. Test T/RH, post-cure conditioning, fit algorithm and statistics remain unknown; no calculator input, engineering allowable or universal bound.",
+      "evidence": [
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "PDF p.4, Table 1, PNA-BPF-2 row; p.1 abstract mixture description",
+          "supports": [
+            "state",
+            "material_identity"
+          ]
+        },
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "PDF p.5 section 2.4; p.6 section 2.5.2; p.16 Table 8 PNA-BPF-2",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_tarasov2022_pna_bpf_2_flexural_modulus"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "evaluation_support": "catalog_only",
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Flexural bars milled from 3.6 mm-thick cured binder plate, 80 × 9.8 × 3.6 mm.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.6, section 2.5.2",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Separate specimen form from the 4 mm tensile plate; no new material identity."
+        },
+        "processing": {
+          "status": "reported",
+          "text": "Selected PNA-BPF-1 through PNA-BPF-5 follow the source-described batch addition of solid alkali. DDS hardener was added in a calculated stoichiometric amount; the composition was stirred and degassed on an oil-bath rotor at 125 deg C under a vacuum of 100 mm Hg for 20-40 min until homogeneous, before casting.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF pp.4-5, section 2.2.1; p.5, section 2.4",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "The KOH/NaOH contradiction remains unresolved. No exact DDS mass fraction, fully specified recipe, conversion or independently verified stoichiometry is assigned."
+        },
+        "temper_or_heat_treatment": {
+          "status": "reported",
+          "text": "Cured at 180 deg C for 8 h.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.5, section 2.4",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Cure temperature/time qualifies the state, not test temperature or confirmed conversion."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Post-cure flexural storage, humidity, moisture and duration are not specified."
+        },
+        "reinforcement": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "The selected source records concern cured epoxy binders. No reinforcing phase, fiber loading or composite classification is assigned; the resin mixture is not claimed to be a pure substance."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Flexural-specimen porosity is not reported; zero porosity is not inferred."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No specimen orientation relative to plate processing or molecular alignment is reported; no isotropy claim is made."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "Nominal source feed label HCP:BPF:ECH = 1:12:16; mixed phosphazene-containing epoxy resin based on bisphenol F, cured using source-described stoichiometric DDS.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, Table 1, PNA-BPF-3 row; p.1 abstract mixture description; p.5 section 2.4",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "The HCP:BPF:ECH labels are source-reported nominal feed labels only. Table 1 reagent amounts and ratio labels are internally inconsistent; no correction, normalized stoichiometry, final network composition, purity, conversion or molecular architecture is inferred. These are source-qualified mixed phosphazene-containing epoxy formulations, not pure molecular species. The exact DDS fraction and final cured composition are not established."
+        }
+      },
+      "id": "state_tarasov2022_pna_bpf_3_dds_cured_flexural",
+      "identity_id": "mat_tarasov2022_pna_bpf_3",
+      "name": "PNA-BPF-3, DDS-cured flexural bars from 3.6 mm plate (Tarasov 2022)",
+      "names": {
+        "en": "PNA-BPF-3, DDS-cured flexural bars from 3.6 mm plate (Tarasov 2022)",
+        "zh": "PNA-BPF-3，DDS固化3.6 mm板铣切弯曲条形试样",
+        "ja": "PNA-BPF-3、DDS硬化3.6 mm板から切削した曲げ試験片",
+        "de": "PNA-BPF-3, DDS-gehärtete Biegeproben aus 3,6-mm-Platte"
+      },
+      "source_designation": "PNA-BPF-3",
+      "source_scope": "Only the existing PNA-BPF-3 source-qualified mixed epoxy identity and its DDS cure. Flexural bars milled from 3.6 mm plate are a separate source-scoped state from 4 mm tensile specimens. Inherited nominal-feed/mole-number/alkali discrepancies remain unresolved. Test T/RH, post-cure conditioning, fit algorithm and statistics remain unknown; no calculator input, engineering allowable or universal bound.",
+      "evidence": [
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "PDF p.4, Table 1, PNA-BPF-3 row; p.1 abstract mixture description",
+          "supports": [
+            "state",
+            "material_identity"
+          ]
+        },
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "PDF p.5 section 2.4; p.6 section 2.5.2; p.16 Table 8 PNA-BPF-3",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_tarasov2022_pna_bpf_3_flexural_modulus"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "evaluation_support": "catalog_only",
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Flexural bars milled from 3.6 mm-thick cured binder plate, 80 × 9.8 × 3.6 mm.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.6, section 2.5.2",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Separate specimen form from the 4 mm tensile plate; no new material identity."
+        },
+        "processing": {
+          "status": "reported",
+          "text": "Selected PNA-BPF-1 through PNA-BPF-5 follow the source-described batch addition of solid alkali. DDS hardener was added in a calculated stoichiometric amount; the composition was stirred and degassed on an oil-bath rotor at 125 deg C under a vacuum of 100 mm Hg for 20-40 min until homogeneous, before casting.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF pp.4-5, section 2.2.1; p.5, section 2.4",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "The KOH/NaOH contradiction remains unresolved. No exact DDS mass fraction, fully specified recipe, conversion or independently verified stoichiometry is assigned."
+        },
+        "temper_or_heat_treatment": {
+          "status": "reported",
+          "text": "Cured at 180 deg C for 8 h.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.5, section 2.4",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Cure temperature/time qualifies the state, not test temperature or confirmed conversion."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Post-cure flexural storage, humidity, moisture and duration are not specified."
+        },
+        "reinforcement": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "The selected source records concern cured epoxy binders. No reinforcing phase, fiber loading or composite classification is assigned; the resin mixture is not claimed to be a pure substance."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Flexural-specimen porosity is not reported; zero porosity is not inferred."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No specimen orientation relative to plate processing or molecular alignment is reported; no isotropy claim is made."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "Nominal source feed label HCP:BPF:ECH = 1:18:16; mixed phosphazene-containing epoxy resin based on bisphenol F, cured using source-described stoichiometric DDS.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, Table 1, PNA-BPF-4 row; p.1 abstract mixture description; p.5 section 2.4",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "The HCP:BPF:ECH labels are source-reported nominal feed labels only. Table 1 reagent amounts and ratio labels are internally inconsistent; no correction, normalized stoichiometry, final network composition, purity, conversion or molecular architecture is inferred. These are source-qualified mixed phosphazene-containing epoxy formulations, not pure molecular species. The exact DDS fraction and final cured composition are not established."
+        }
+      },
+      "id": "state_tarasov2022_pna_bpf_4_dds_cured_flexural",
+      "identity_id": "mat_tarasov2022_pna_bpf_4",
+      "name": "PNA-BPF-4, DDS-cured flexural bars from 3.6 mm plate (Tarasov 2022)",
+      "names": {
+        "en": "PNA-BPF-4, DDS-cured flexural bars from 3.6 mm plate (Tarasov 2022)",
+        "zh": "PNA-BPF-4，DDS固化3.6 mm板铣切弯曲条形试样",
+        "ja": "PNA-BPF-4、DDS硬化3.6 mm板から切削した曲げ試験片",
+        "de": "PNA-BPF-4, DDS-gehärtete Biegeproben aus 3,6-mm-Platte"
+      },
+      "source_designation": "PNA-BPF-4",
+      "source_scope": "Only the existing PNA-BPF-4 source-qualified mixed epoxy identity and its DDS cure. Flexural bars milled from 3.6 mm plate are a separate source-scoped state from 4 mm tensile specimens. Inherited nominal-feed/mole-number/alkali discrepancies remain unresolved. Test T/RH, post-cure conditioning, fit algorithm and statistics remain unknown; no calculator input, engineering allowable or universal bound.",
+      "evidence": [
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "PDF p.4, Table 1, PNA-BPF-4 row; p.1 abstract mixture description",
+          "supports": [
+            "state",
+            "material_identity"
+          ]
+        },
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "PDF p.5 section 2.4; p.6 section 2.5.2; p.16 Table 8 PNA-BPF-4",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_tarasov2022_pna_bpf_4_flexural_modulus"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "evaluation_support": "catalog_only",
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Flexural bars milled from 3.6 mm-thick cured binder plate, 80 × 9.8 × 3.6 mm.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.6, section 2.5.2",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Separate specimen form from the 4 mm tensile plate; no new material identity."
+        },
+        "processing": {
+          "status": "reported",
+          "text": "Selected PNA-BPF-1 through PNA-BPF-5 follow the source-described batch addition of solid alkali. DDS hardener was added in a calculated stoichiometric amount; the composition was stirred and degassed on an oil-bath rotor at 125 deg C under a vacuum of 100 mm Hg for 20-40 min until homogeneous, before casting.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF pp.4-5, section 2.2.1; p.5, section 2.4",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "The KOH/NaOH contradiction remains unresolved. No exact DDS mass fraction, fully specified recipe, conversion or independently verified stoichiometry is assigned."
+        },
+        "temper_or_heat_treatment": {
+          "status": "reported",
+          "text": "Cured at 180 deg C for 8 h.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.5, section 2.4",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Cure temperature/time qualifies the state, not test temperature or confirmed conversion."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Post-cure flexural storage, humidity, moisture and duration are not specified."
+        },
+        "reinforcement": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "The selected source records concern cured epoxy binders. No reinforcing phase, fiber loading or composite classification is assigned; the resin mixture is not claimed to be a pure substance."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Flexural-specimen porosity is not reported; zero porosity is not inferred."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No specimen orientation relative to plate processing or molecular alignment is reported; no isotropy claim is made."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "Nominal source feed label HCP:BPF:ECH = 1:24:16; mixed phosphazene-containing epoxy resin based on bisphenol F, cured using source-described stoichiometric DDS.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, Table 1, PNA-BPF-5 row; p.1 abstract mixture description; p.5 section 2.4",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "The HCP:BPF:ECH labels are source-reported nominal feed labels only. Table 1 reagent amounts and ratio labels are internally inconsistent; no correction, normalized stoichiometry, final network composition, purity, conversion or molecular architecture is inferred. These are source-qualified mixed phosphazene-containing epoxy formulations, not pure molecular species. The exact DDS fraction and final cured composition are not established."
+        }
+      },
+      "id": "state_tarasov2022_pna_bpf_5_dds_cured_flexural",
+      "identity_id": "mat_tarasov2022_pna_bpf_5",
+      "name": "PNA-BPF-5, DDS-cured flexural bars from 3.6 mm plate (Tarasov 2022)",
+      "names": {
+        "en": "PNA-BPF-5, DDS-cured flexural bars from 3.6 mm plate (Tarasov 2022)",
+        "zh": "PNA-BPF-5，DDS固化3.6 mm板铣切弯曲条形试样",
+        "ja": "PNA-BPF-5、DDS硬化3.6 mm板から切削した曲げ試験片",
+        "de": "PNA-BPF-5, DDS-gehärtete Biegeproben aus 3,6-mm-Platte"
+      },
+      "source_designation": "PNA-BPF-5",
+      "source_scope": "Only the existing PNA-BPF-5 source-qualified mixed epoxy identity and its DDS cure. Flexural bars milled from 3.6 mm plate are a separate source-scoped state from 4 mm tensile specimens. Inherited nominal-feed/mole-number/alkali discrepancies remain unresolved. Test T/RH, post-cure conditioning, fit algorithm and statistics remain unknown; no calculator input, engineering allowable or universal bound.",
+      "evidence": [
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "PDF p.4, Table 1, PNA-BPF-5 row; p.1 abstract mixture description",
+          "supports": [
+            "state",
+            "material_identity"
+          ]
+        },
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "PDF p.5 section 2.4; p.6 section 2.5.2; p.16 Table 8 PNA-BPF-5",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_tarasov2022_pna_bpf_5_flexural_modulus"
+      ]
     }
   ]
 }
