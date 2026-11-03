@@ -29,18 +29,23 @@ QUANTITY_DIMENSIONS = {
     "flexural_strength": "pressure",
     "compressive_modulus": "pressure",
     "compressive_strength": "pressure",
+    "tear_strength": "force_per_length",
+    "izod_impact_strength": "energy_per_area",
     "elastic_modulus_unspecified": "pressure",
     "tensile_strength": "pressure",
     "tensile_stress_at_break": "pressure",
     "tensile_yield_strength": "pressure",
     "tensile_stress_at_specified_elongation": "pressure",
     "tensile_elongation_at_break": "dimensionless",
+    "flexural_elongation_at_break": "dimensionless",
     "tensile_elongation_at_strength": "dimensionless",
     "shore_a_hardness": "dimensionless",
     "slump_flow_spread": "length",
 }
 UNIT_DIMENSIONS = {
     "mm": "length",
+    "kJ/m^2": "energy_per_area", "J/m^2": "energy_per_area",
+    "kN/m": "force_per_length", "N/m": "force_per_length", "N/mm": "force_per_length",
     "g/cm^3": "mass_per_volume", "kg/m^3": "mass_per_volume",
     "kg/dm^3": "mass_per_volume", "lb/in^3": "mass_per_volume",
     "MPa": "pressure", "GPa": "pressure", "N/mm^2": "pressure",
@@ -50,6 +55,7 @@ UNIT_DIMENSIONS = {
 }
 PERCENT_ELONGATION_QUANTITIES = (
     "tensile_elongation_at_break", "tensile_elongation_at_strength",
+    "flexural_elongation_at_break",
 )
 EVIDENCE_KINDS = (
     "manufacturer_reference", "technical_association_reference",
@@ -597,7 +603,10 @@ def _validate_links(materials, properties, indices):
 # infer a quantity. Unknown spellings need deliberate capability review.
 _UNIT_SPELLINGS = {
     "mm": {"mm"},
+    "kJ/m^2": {"kJ/m^2", "kJ/m2", "kJ/m²"},
+    "J/m^2": {"J/m^2", "J/m2", "J/m²"},
     "shore_a_scale": {"Shore A"},
+    "kN/m": {"kN/m"}, "N/m": {"N/m"}, "N/mm": {"N/mm"},
     "g/cm^3": {"g/cm^3", "g/cm³", "g/cm3", "g cm^-3", "g.cm-3", "g cm⁻³", "g·cm⁻³", "g cm−3", "g cm-3", "grams per cubic centimeter"},
     "kg/m^3": {"kg/m^3", "kg/m³", "kg/m3", "kg m^-3", "kg.m-3", "kg m⁻³", "kg·m⁻³", "kg m−3", "kg m-3"},
     "kg/dm^3": {"kg/dm^3", "kg/dm³", "kg/dm3", "kg dm^-3", "kg.dm-3", "kg dm⁻³", "kg·dm⁻³", "kg dm−3", "kg dm-3"},

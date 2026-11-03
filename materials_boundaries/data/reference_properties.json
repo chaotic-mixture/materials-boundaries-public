@@ -1437558,6 +1437558,3013 @@
         "independent_scientific_review": false,
         "raw_data_reanalysis": false
       }
+    },
+    {
+      "version": "1.0.0",
+      "quantity": "tear_strength",
+      "quantity_dimension": "force_per_length",
+      "source_property_label": "tear strength (kN/m)",
+      "reported_value": {
+        "kind": "scalar",
+        "unit_text": "kN/m",
+        "unit_code": "kN/m",
+        "value_text": "12.32",
+        "number": "12.32"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "reported_summary",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Exact REF scalar transcribed from section3.3 text, not a Figure7 pixel reading. Source plot has error bars and text discusses highSD; central estimator, exact REF amplitude and bar definition remain unknown. No inferred mean, peak-force algorithm or numerical scatter.",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Tear-test temperature unknown;170°C is processing/rheometry, not test ambient."
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "ISO34, MethodB, angle testpieces, as printed",
+          "evidence": [
+            {
+              "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+              "locator": "Retained primary XML/served PMC section2.2: ISO34 MethodB angle tear, ZwickZ005 and common tensile/tear 500mm/min",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Part/edition, exact notch geometry and independent compliance not verified."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Source ISO34 MethodB angle tear testing on REF specimens cut from nominal2mm vulcanized sheets; ZwickZ005 universal test machine,5kN load-cell capacity,500mm/min crosshead speed. Standard part/edition, notch geometry, actual thickness, peak/mean-force choice, normalization algorithm and calibration unverified. General two-direction method does not establish tear-specific groups or tensile-style pooling.",
+          "evidence": [
+            {
+              "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+              "locator": "Retained primary XML/served PMC section2.2: ISO34 MethodB angle tear, ZwickZ005 and common tensile/tear 500mm/min",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "5kN is load-cell capacity, not measured specimen force."
+        },
+        "direction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "General mechanical method describes two mutually perpendicular orientations; tear-specific axes, notch relation, pooling weights and isotropy unknown. No tensile ANOVA/pooling transfer."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Tear-specific pre-test temperature/RH, duration, moisture equilibrium and post-cure storage unknown."
+        },
+        "loading_rate": {
+          "status": "reported",
+          "text": "500mm/min crosshead speed",
+          "evidence": [
+            {
+              "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+              "locator": "Retained primary XML/served PMC section2.2: ISO34 MethodB angle tear, ZwickZ005 and common tensile/tear 500mm/min",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Common source statement explicitly covers both tensile and tear testing; not converted to strain rate."
+        },
+        "additional_conditions": [
+          {
+            "name": "test_relative_humidity",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Tear-test RH unknown; no standard default assigned."
+            }
+          },
+          {
+            "name": "actual_specimen_thickness",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Only nominal2mm source-sheet preparation is reported; measured tear-specimen thickness and its normalization implementation unknown."
+            }
+          },
+          {
+            "name": "load_cell_capacity",
+            "fact": {
+              "status": "reported",
+              "text": "5kN load-cell capacity",
+              "evidence": [
+                {
+                  "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+                  "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+                  "locator": "Retained primary XML/served PMC section2.2: ISO34 MethodB angle tear, ZwickZ005 and common tensile/tear 500mm/min",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Instrument range only, not test force or a record of calibration."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "reported_value",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Exact tear specimen, per-direction and independent-batch counts unknown.",
+        "source_statement": "10hardness points,3abrasion samples and tensile statistics do not establish tear n.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Source ISO34 MethodB angle tear testing on REF specimens cut from nominal2mm vulcanized sheets; ZwickZ005 universal test machine,5kN load-cell capacity,500mm/min crosshead speed. Standard part/edition, notch geometry, actual thickness, peak/mean-force choice, normalization algorithm and calibration unverified. General two-direction method does not establish tear-specific groups or tensile-style pooling.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "Retained primary XML/served PMC section2.2: ISO34 MethodB angle tear, ZwickZ005 and common tensile/tear 500mm/min",
+            "supports": [
+              "method",
+              "classification"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [],
+      "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+      "source_document": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "revision": "Primary Europe PMC full-text XML; distinct from the historically inspected university PDF.",
+        "inspected_on": "2026-11-04",
+        "sha256": "2d8008e2b16dd3fe14b91a6747fb3632c70b461ccee4ccc8dea546dc3c272347",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Retained primary XML sections2.1-2.3/3.2/3.3 and freshly served PMC HTML, title/DOI and Figures6/7 visually checked in frozen source audit. Exact REF12.32kN/m comes from text; Figure7 bar definition/amplitude remain unknown. Figure6 regression intercept is not a measured hardness scalar; hardness remains deferred. SI/rawdata/latest-notice completeness unknown; no claim of current fresh PDF inspection.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Retained primary XML sections2.1-2.3/3.2/3.3 and freshly served PMC HTML, title/DOI and Figures6/7 visually checked in frozen source audit. Exact REF12.32kN/m comes from text; Figure7 bar definition/amplitude remain unknown. Figure6 regression intercept is not a measured hardness scalar; hardness remains deferred. SI/rawdata/latest-notice completeness unknown; no claim of current fresh PDF inspection.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      },
+      "id": "refprop_perbunan3445f_tamas_benyei2025_ref_tear_strength",
+      "material_state_id": "state_perbunan3445f_tamas_benyei2025_ref_tear",
+      "uncertainty_note": "Figure7 contains error bars and section3.3 discusses highSD. Exact numeric REF SD/amplitude and error-bar definition were not obtained from inspected text/figure; null means numeric uncertainty unavailable, not no scatter or zero. No graph estimate, tensile ± or hardness statistics transferred.",
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "Retained primary XML/served PMC section3.3 tearing-test paragraph: reference0phr12.32kN/m; Figure7",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "Retained primary XML/served PMC section2.2: ISO34 MethodB angle tear, ZwickZ005 and common tensile/tear 500mm/min",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ],
+      "scope_note": "Source-qualified12.32kN/m tear strength for existing additive-containing nonfoamed REF, not pure/raw NBR or a new material identity. Force per length only; no raw-force, pressure, fracture-energy/Gc/J-per-area, stress-intensity/KIC or Young-modulus interpretation/conversion and no engine input. Numeric REF uncertainty, n, test temperature/RH, conditioning, actual notch/thickness and extraction algorithm unknown; Figure7 error bars/highSD retained. Tear direction/pooling is not inferred from tensile ANOVA. Pressing based on t90 does not verify actual381s hold or chemical90% conversion."
+    },
+    {
+      "version": "1.0.0",
+      "quantity": "flexural_elongation_at_break",
+      "quantity_dimension": "dimensionless",
+      "source_property_label": "Flexural Elongation at Break (%)",
+      "reported_value": {
+        "kind": "scalar",
+        "unit_text": "%",
+        "unit_code": "percent_elongation",
+        "value_text": "5.73",
+        "number": "5.73"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "not_stated",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Selected Table8 scalar crosschecked against Figure9 printed numerical label. Central estimator,independent specimens/batches and numeric dispersion unknown;not an inferredmean,SD,SE orCI. Original percent,not divided by100 or equated to tensile strain.",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected mechanical method does not specify this condition; cure/DSC/rheology conditions and assumed isotropy cannot supply it."
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "GOST R 56810-2015 (ASTM D790-10)",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.6, section 2.5.2",
+              "supports": [
+                "condition",
+                "method"
+              ]
+            }
+          ],
+          "notes": "Source citation only; no missing strain formula,deflection channel,support-count,environment,n or standard compliance inferred."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Author-labelled Flexural Elongation at Break(%),50ST/Tinius Olsen,GOST R56810-2015(ASTM D790-10),0.85mm/min machine/testing speed; 80x9.8x3.6mm bars milled from3.6mm curedplate; source span-to-depth wording64:3.6mm. Actual deflection/strain channel,outer-fiber/engineering/true strain convention,reduction formula,break detection and evaluation criterion,calibration and support-point count unknown;no standard-based reconstruction.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "Retained publisherPDFp6 section2.5.2 flexural testing; p16Table8 endpoint label",
+              "supports": [
+                "method",
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source bending-endpoint label only; actual strain convention and rupture detection unknown. Standard citation does not certify compliance."
+        },
+        "direction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected mechanical method does not specify this condition; cure/DSC/rheology conditions and assumed isotropy cannot supply it."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected mechanical method does not specify this condition; cure/DSC/rheology conditions and assumed isotropy cannot supply it."
+        },
+        "loading_rate": {
+          "status": "reported",
+          "text": "0.85 mm/min",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.6, section 2.5.2",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Reported machine/testing speed, not a measured strain rate; do not transfer between methods."
+        },
+        "additional_conditions": [
+          {
+            "name": "relative_humidity",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Test and post-cure conditioning RH are not reported."
+            }
+          },
+          {
+            "name": "specimen_plate_thickness",
+            "fact": {
+              "status": "reported",
+              "text": "3.6 mm",
+              "evidence": [
+                {
+                  "source_id": "tarasov_2022_pna_bpf_epoxy",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+                  "locator": "PDF p.6, section 2.5.2",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Source plate specification, not per-specimen metrology."
+            }
+          },
+          {
+            "name": "specimen_dimensions",
+            "fact": {
+              "status": "reported",
+              "text": "80 × 9.8 × 3.6 mm (length × width × thickness)",
+              "evidence": [
+                {
+                  "source_id": "tarasov_2022_pna_bpf_epoxy",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+                  "locator": "PDF p.6, section 2.5.2",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Source nominal bar dimensions; no transferred tensile geometry or measured tolerances."
+            }
+          },
+          {
+            "name": "span_to_depth_source_statement",
+            "fact": {
+              "status": "reported",
+              "text": "64:3.6 mm",
+              "evidence": [
+                {
+                  "source_id": "tarasov_2022_pna_bpf_epoxy",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+                  "locator": "PDF p.6, section 2.5.2",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Literal source wording; not recast as a dimensionless measured ratio or proof of support-point count."
+            }
+          },
+          {
+            "name": "strain_and_break_definition",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Actual deflection/strain channel,outer-fiber/engineering/true convention,reduction formula and rupture/evaluation criterion unknown;not supplied by standard citation."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "not_stated",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "Inspected section2.5.2/Table8/Figure9 do not define central aggregation,n,batches or numeric SD/SE/CI for this selected endpoint. Unknown numeric uncertainty does not mean zero scatter;no tensile/impact/DSC statistics borrowed.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Selected formulation and bending endpoint only;exact specimen and independent batch counts unknown.",
+        "source_statement": "Inspected bending method/Table8/Figure9 do not specify an exact count;other-test or standard-default counts not transferred.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Author-labelled Flexural Elongation at Break(%),50ST/Tinius Olsen,GOST R56810-2015(ASTM D790-10),0.85mm/min machine/testing speed; 80x9.8x3.6mm bars milled from3.6mm curedplate; source span-to-depth wording64:3.6mm. Actual deflection/strain channel,outer-fiber/engineering/true strain convention,reduction formula,break detection and evaluation criterion,calibration and support-point count unknown;no standard-based reconstruction.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "Retained publisherPDFp6 section2.5.2 flexural testing; p16Table8 endpoint label",
+            "supports": [
+              "method",
+              "classification"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Table 1 labels the nominal feeds HCP:BPF:ECH as 1:8:16 through 1:24:16, while the listed reagent mole amounts and the section 2.2.1 statement about a constant 16-fold ECH excess do not establish a consistent normalized ratio.",
+          "disposition": "Preserve the printed ratio labels as nominal source recipe labels. Do not recompute ECH amounts, repair the ratios, infer the intended denominator or claim validated feed stoichiometry or final composition.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, section 2.2.1 opening paragraph and Table 1",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Table 1 lists HCP as 35 (0.086) g (Mole) for PNA-BPF-2, but as 35 (0.101) for PNA-BPF-1 and PNA-BPF-S.",
+          "disposition": "Keep the PNA-BPF-2 source label and its printed nominal 1:9:16 recipe without silently correcting the mass or mole entry. No recalculated composition is emitted.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, Table 1, HCP g (Mole) column, PNA-BPF-2 versus PNA-BPF-1 and PNA-BPF-S",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Section 2.1 names potassium hydroxide, whereas the synthesis headings, Table 1 and sections 2.2.1-2.2.2 describe NaOH or sodium hydroxide.",
+          "disposition": "Retain the contradiction. The selected route is source-described batch addition of solid alkali; the alkali chemical identity is not independently resolved or silently changed from KOH to NaOH.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, section 2.1 alkali entry, section 2.2.1 heading and Table 1; p.5, sections 2.2.1-2.2.2",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Page18 describes flexural elongation as continuously decreasing with increasing phosphazene content. Table8/Figure9 give PNA-BPF-4=8.19% and PNA-BPF-3=8.23%, a local scalar ordering that is not strictly decreasing along the source Figure9 context.",
+          "disposition": "Retain all Table8 literals and the narrative caveat. No smoothing,repair,validated monotonic law or statistical significance from a small difference without n/dispersion;the author Figure9 composition axis is not independent composition verification.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "Retained publisherPDFp16 Table8; p18 section3.2 text andFigure9 printed labels",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "tarasov_2022_pna_bpf_epoxy",
+      "source_document": {
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+        "revision": "Polymers 2022, 14, 4547; publisher PDF published 27 October 2022, 22 pages; URL version=1666858817.",
+        "inspected_on": "2026-11-04",
+        "sha256": "1f06bc0667c7c5575a0e88772868a95cd27ba01a264d3b3a0b9c859a8a6423aa",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Retained exact publisherPDF visually inspected pp1,5,6,16,18: articleCCBY4,commonDDS cure,bending method,Table8 selected flexural-break-elongation column and Figure9 printed numeric labels/narrative ordering caveat. No fresh PDF download,latest-notice/SI completeness,rawdata reanalysis or certification.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Retained exact publisherPDF visually inspected pp1,5,6,16,18: articleCCBY4,commonDDS cure,bending method,Table8 selected flexural-break-elongation column and Figure9 printed numeric labels/narrative ordering caveat. No fresh PDF download,latest-notice/SI completeness,rawdata reanalysis or certification.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      },
+      "id": "refprop_tarasov2022_pna_bpf_1_flexural_elongation_at_break",
+      "material_state_id": "state_tarasov2022_pna_bpf_1_dds_cured_flexural",
+      "evidence": [
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "PDFp16 Table8 PNA-BPF-1 Flexural Elongation at Break(%); PDFp18 Figure9 labelled point crosscheck",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "Retained publisherPDFp6 section2.5.2 flexural testing; p16Table8 endpoint label",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ],
+      "scope_note": "Existing PNA-BPF-1 identity and its3.6mm bending state only,not4mm tensile state. Source-labelled flexural elongation at break,not tensile break/at-strength endpoint or bending modulus/strength;source percent retained without /100. Unknown actual strain/deflection convention,break criterion,T/RH,conditioning,n/dispersion and calibration remain. Existing composition/feed/alkali discrepancies and Table8/Figure9 versus continuous-decrease narrative caveat retained;no source repair,standard-based formula,statistical significance,engine input,allowable or universal bound."
+    },
+    {
+      "version": "1.0.0",
+      "quantity": "flexural_elongation_at_break",
+      "quantity_dimension": "dimensionless",
+      "source_property_label": "Flexural Elongation at Break (%)",
+      "reported_value": {
+        "kind": "scalar",
+        "unit_text": "%",
+        "unit_code": "percent_elongation",
+        "value_text": "6.66",
+        "number": "6.66"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "not_stated",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Selected Table8 scalar crosschecked against Figure9 printed numerical label. Central estimator,independent specimens/batches and numeric dispersion unknown;not an inferredmean,SD,SE orCI. Original percent,not divided by100 or equated to tensile strain.",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected mechanical method does not specify this condition; cure/DSC/rheology conditions and assumed isotropy cannot supply it."
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "GOST R 56810-2015 (ASTM D790-10)",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.6, section 2.5.2",
+              "supports": [
+                "condition",
+                "method"
+              ]
+            }
+          ],
+          "notes": "Source citation only; no missing strain formula,deflection channel,support-count,environment,n or standard compliance inferred."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Author-labelled Flexural Elongation at Break(%),50ST/Tinius Olsen,GOST R56810-2015(ASTM D790-10),0.85mm/min machine/testing speed; 80x9.8x3.6mm bars milled from3.6mm curedplate; source span-to-depth wording64:3.6mm. Actual deflection/strain channel,outer-fiber/engineering/true strain convention,reduction formula,break detection and evaluation criterion,calibration and support-point count unknown;no standard-based reconstruction.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "Retained publisherPDFp6 section2.5.2 flexural testing; p16Table8 endpoint label",
+              "supports": [
+                "method",
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source bending-endpoint label only; actual strain convention and rupture detection unknown. Standard citation does not certify compliance."
+        },
+        "direction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected mechanical method does not specify this condition; cure/DSC/rheology conditions and assumed isotropy cannot supply it."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected mechanical method does not specify this condition; cure/DSC/rheology conditions and assumed isotropy cannot supply it."
+        },
+        "loading_rate": {
+          "status": "reported",
+          "text": "0.85 mm/min",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.6, section 2.5.2",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Reported machine/testing speed, not a measured strain rate; do not transfer between methods."
+        },
+        "additional_conditions": [
+          {
+            "name": "relative_humidity",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Test and post-cure conditioning RH are not reported."
+            }
+          },
+          {
+            "name": "specimen_plate_thickness",
+            "fact": {
+              "status": "reported",
+              "text": "3.6 mm",
+              "evidence": [
+                {
+                  "source_id": "tarasov_2022_pna_bpf_epoxy",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+                  "locator": "PDF p.6, section 2.5.2",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Source plate specification, not per-specimen metrology."
+            }
+          },
+          {
+            "name": "specimen_dimensions",
+            "fact": {
+              "status": "reported",
+              "text": "80 × 9.8 × 3.6 mm (length × width × thickness)",
+              "evidence": [
+                {
+                  "source_id": "tarasov_2022_pna_bpf_epoxy",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+                  "locator": "PDF p.6, section 2.5.2",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Source nominal bar dimensions; no transferred tensile geometry or measured tolerances."
+            }
+          },
+          {
+            "name": "span_to_depth_source_statement",
+            "fact": {
+              "status": "reported",
+              "text": "64:3.6 mm",
+              "evidence": [
+                {
+                  "source_id": "tarasov_2022_pna_bpf_epoxy",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+                  "locator": "PDF p.6, section 2.5.2",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Literal source wording; not recast as a dimensionless measured ratio or proof of support-point count."
+            }
+          },
+          {
+            "name": "strain_and_break_definition",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Actual deflection/strain channel,outer-fiber/engineering/true convention,reduction formula and rupture/evaluation criterion unknown;not supplied by standard citation."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "not_stated",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "Inspected section2.5.2/Table8/Figure9 do not define central aggregation,n,batches or numeric SD/SE/CI for this selected endpoint. Unknown numeric uncertainty does not mean zero scatter;no tensile/impact/DSC statistics borrowed.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Selected formulation and bending endpoint only;exact specimen and independent batch counts unknown.",
+        "source_statement": "Inspected bending method/Table8/Figure9 do not specify an exact count;other-test or standard-default counts not transferred.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Author-labelled Flexural Elongation at Break(%),50ST/Tinius Olsen,GOST R56810-2015(ASTM D790-10),0.85mm/min machine/testing speed; 80x9.8x3.6mm bars milled from3.6mm curedplate; source span-to-depth wording64:3.6mm. Actual deflection/strain channel,outer-fiber/engineering/true strain convention,reduction formula,break detection and evaluation criterion,calibration and support-point count unknown;no standard-based reconstruction.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "Retained publisherPDFp6 section2.5.2 flexural testing; p16Table8 endpoint label",
+            "supports": [
+              "method",
+              "classification"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Table 1 labels the nominal feeds HCP:BPF:ECH as 1:8:16 through 1:24:16, while the listed reagent mole amounts and the section 2.2.1 statement about a constant 16-fold ECH excess do not establish a consistent normalized ratio.",
+          "disposition": "Preserve the printed ratio labels as nominal source recipe labels. Do not recompute ECH amounts, repair the ratios, infer the intended denominator or claim validated feed stoichiometry or final composition.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, section 2.2.1 opening paragraph and Table 1",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Table 1 lists HCP as 35 (0.086) g (Mole) for PNA-BPF-2, but as 35 (0.101) for PNA-BPF-1 and PNA-BPF-S.",
+          "disposition": "Keep the PNA-BPF-2 source label and its printed nominal 1:9:16 recipe without silently correcting the mass or mole entry. No recalculated composition is emitted.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, Table 1, HCP g (Mole) column, PNA-BPF-2 versus PNA-BPF-1 and PNA-BPF-S",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Section 2.1 names potassium hydroxide, whereas the synthesis headings, Table 1 and sections 2.2.1-2.2.2 describe NaOH or sodium hydroxide.",
+          "disposition": "Retain the contradiction. The selected route is source-described batch addition of solid alkali; the alkali chemical identity is not independently resolved or silently changed from KOH to NaOH.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, section 2.1 alkali entry, section 2.2.1 heading and Table 1; p.5, sections 2.2.1-2.2.2",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Page18 describes flexural elongation as continuously decreasing with increasing phosphazene content. Table8/Figure9 give PNA-BPF-4=8.19% and PNA-BPF-3=8.23%, a local scalar ordering that is not strictly decreasing along the source Figure9 context.",
+          "disposition": "Retain all Table8 literals and the narrative caveat. No smoothing,repair,validated monotonic law or statistical significance from a small difference without n/dispersion;the author Figure9 composition axis is not independent composition verification.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "Retained publisherPDFp16 Table8; p18 section3.2 text andFigure9 printed labels",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "tarasov_2022_pna_bpf_epoxy",
+      "source_document": {
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+        "revision": "Polymers 2022, 14, 4547; publisher PDF published 27 October 2022, 22 pages; URL version=1666858817.",
+        "inspected_on": "2026-11-04",
+        "sha256": "1f06bc0667c7c5575a0e88772868a95cd27ba01a264d3b3a0b9c859a8a6423aa",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Retained exact publisherPDF visually inspected pp1,5,6,16,18: articleCCBY4,commonDDS cure,bending method,Table8 selected flexural-break-elongation column and Figure9 printed numeric labels/narrative ordering caveat. No fresh PDF download,latest-notice/SI completeness,rawdata reanalysis or certification.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Retained exact publisherPDF visually inspected pp1,5,6,16,18: articleCCBY4,commonDDS cure,bending method,Table8 selected flexural-break-elongation column and Figure9 printed numeric labels/narrative ordering caveat. No fresh PDF download,latest-notice/SI completeness,rawdata reanalysis or certification.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      },
+      "id": "refprop_tarasov2022_pna_bpf_2_flexural_elongation_at_break",
+      "material_state_id": "state_tarasov2022_pna_bpf_2_dds_cured_flexural",
+      "evidence": [
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "PDFp16 Table8 PNA-BPF-2 Flexural Elongation at Break(%); PDFp18 Figure9 labelled point crosscheck",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "Retained publisherPDFp6 section2.5.2 flexural testing; p16Table8 endpoint label",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ],
+      "scope_note": "Existing PNA-BPF-2 identity and its3.6mm bending state only,not4mm tensile state. Source-labelled flexural elongation at break,not tensile break/at-strength endpoint or bending modulus/strength;source percent retained without /100. Unknown actual strain/deflection convention,break criterion,T/RH,conditioning,n/dispersion and calibration remain. Existing composition/feed/alkali discrepancies and Table8/Figure9 versus continuous-decrease narrative caveat retained;no source repair,standard-based formula,statistical significance,engine input,allowable or universal bound."
+    },
+    {
+      "version": "1.0.0",
+      "quantity": "flexural_elongation_at_break",
+      "quantity_dimension": "dimensionless",
+      "source_property_label": "Flexural Elongation at Break (%)",
+      "reported_value": {
+        "kind": "scalar",
+        "unit_text": "%",
+        "unit_code": "percent_elongation",
+        "value_text": "8.23",
+        "number": "8.23"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "not_stated",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Selected Table8 scalar crosschecked against Figure9 printed numerical label. Central estimator,independent specimens/batches and numeric dispersion unknown;not an inferredmean,SD,SE orCI. Original percent,not divided by100 or equated to tensile strain.",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected mechanical method does not specify this condition; cure/DSC/rheology conditions and assumed isotropy cannot supply it."
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "GOST R 56810-2015 (ASTM D790-10)",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.6, section 2.5.2",
+              "supports": [
+                "condition",
+                "method"
+              ]
+            }
+          ],
+          "notes": "Source citation only; no missing strain formula,deflection channel,support-count,environment,n or standard compliance inferred."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Author-labelled Flexural Elongation at Break(%),50ST/Tinius Olsen,GOST R56810-2015(ASTM D790-10),0.85mm/min machine/testing speed; 80x9.8x3.6mm bars milled from3.6mm curedplate; source span-to-depth wording64:3.6mm. Actual deflection/strain channel,outer-fiber/engineering/true strain convention,reduction formula,break detection and evaluation criterion,calibration and support-point count unknown;no standard-based reconstruction.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "Retained publisherPDFp6 section2.5.2 flexural testing; p16Table8 endpoint label",
+              "supports": [
+                "method",
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source bending-endpoint label only; actual strain convention and rupture detection unknown. Standard citation does not certify compliance."
+        },
+        "direction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected mechanical method does not specify this condition; cure/DSC/rheology conditions and assumed isotropy cannot supply it."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected mechanical method does not specify this condition; cure/DSC/rheology conditions and assumed isotropy cannot supply it."
+        },
+        "loading_rate": {
+          "status": "reported",
+          "text": "0.85 mm/min",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.6, section 2.5.2",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Reported machine/testing speed, not a measured strain rate; do not transfer between methods."
+        },
+        "additional_conditions": [
+          {
+            "name": "relative_humidity",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Test and post-cure conditioning RH are not reported."
+            }
+          },
+          {
+            "name": "specimen_plate_thickness",
+            "fact": {
+              "status": "reported",
+              "text": "3.6 mm",
+              "evidence": [
+                {
+                  "source_id": "tarasov_2022_pna_bpf_epoxy",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+                  "locator": "PDF p.6, section 2.5.2",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Source plate specification, not per-specimen metrology."
+            }
+          },
+          {
+            "name": "specimen_dimensions",
+            "fact": {
+              "status": "reported",
+              "text": "80 × 9.8 × 3.6 mm (length × width × thickness)",
+              "evidence": [
+                {
+                  "source_id": "tarasov_2022_pna_bpf_epoxy",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+                  "locator": "PDF p.6, section 2.5.2",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Source nominal bar dimensions; no transferred tensile geometry or measured tolerances."
+            }
+          },
+          {
+            "name": "span_to_depth_source_statement",
+            "fact": {
+              "status": "reported",
+              "text": "64:3.6 mm",
+              "evidence": [
+                {
+                  "source_id": "tarasov_2022_pna_bpf_epoxy",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+                  "locator": "PDF p.6, section 2.5.2",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Literal source wording; not recast as a dimensionless measured ratio or proof of support-point count."
+            }
+          },
+          {
+            "name": "strain_and_break_definition",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Actual deflection/strain channel,outer-fiber/engineering/true convention,reduction formula and rupture/evaluation criterion unknown;not supplied by standard citation."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "not_stated",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "Inspected section2.5.2/Table8/Figure9 do not define central aggregation,n,batches or numeric SD/SE/CI for this selected endpoint. Unknown numeric uncertainty does not mean zero scatter;no tensile/impact/DSC statistics borrowed.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Selected formulation and bending endpoint only;exact specimen and independent batch counts unknown.",
+        "source_statement": "Inspected bending method/Table8/Figure9 do not specify an exact count;other-test or standard-default counts not transferred.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Author-labelled Flexural Elongation at Break(%),50ST/Tinius Olsen,GOST R56810-2015(ASTM D790-10),0.85mm/min machine/testing speed; 80x9.8x3.6mm bars milled from3.6mm curedplate; source span-to-depth wording64:3.6mm. Actual deflection/strain channel,outer-fiber/engineering/true strain convention,reduction formula,break detection and evaluation criterion,calibration and support-point count unknown;no standard-based reconstruction.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "Retained publisherPDFp6 section2.5.2 flexural testing; p16Table8 endpoint label",
+            "supports": [
+              "method",
+              "classification"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Table 1 labels the nominal feeds HCP:BPF:ECH as 1:8:16 through 1:24:16, while the listed reagent mole amounts and the section 2.2.1 statement about a constant 16-fold ECH excess do not establish a consistent normalized ratio.",
+          "disposition": "Preserve the printed ratio labels as nominal source recipe labels. Do not recompute ECH amounts, repair the ratios, infer the intended denominator or claim validated feed stoichiometry or final composition.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, section 2.2.1 opening paragraph and Table 1",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Table 1 lists HCP as 35 (0.086) g (Mole) for PNA-BPF-2, but as 35 (0.101) for PNA-BPF-1 and PNA-BPF-S.",
+          "disposition": "Keep the PNA-BPF-2 source label and its printed nominal 1:9:16 recipe without silently correcting the mass or mole entry. No recalculated composition is emitted.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, Table 1, HCP g (Mole) column, PNA-BPF-2 versus PNA-BPF-1 and PNA-BPF-S",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Section 2.1 names potassium hydroxide, whereas the synthesis headings, Table 1 and sections 2.2.1-2.2.2 describe NaOH or sodium hydroxide.",
+          "disposition": "Retain the contradiction. The selected route is source-described batch addition of solid alkali; the alkali chemical identity is not independently resolved or silently changed from KOH to NaOH.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, section 2.1 alkali entry, section 2.2.1 heading and Table 1; p.5, sections 2.2.1-2.2.2",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Page18 describes flexural elongation as continuously decreasing with increasing phosphazene content. Table8/Figure9 give PNA-BPF-4=8.19% and PNA-BPF-3=8.23%, a local scalar ordering that is not strictly decreasing along the source Figure9 context.",
+          "disposition": "Retain all Table8 literals and the narrative caveat. No smoothing,repair,validated monotonic law or statistical significance from a small difference without n/dispersion;the author Figure9 composition axis is not independent composition verification.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "Retained publisherPDFp16 Table8; p18 section3.2 text andFigure9 printed labels",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "tarasov_2022_pna_bpf_epoxy",
+      "source_document": {
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+        "revision": "Polymers 2022, 14, 4547; publisher PDF published 27 October 2022, 22 pages; URL version=1666858817.",
+        "inspected_on": "2026-11-04",
+        "sha256": "1f06bc0667c7c5575a0e88772868a95cd27ba01a264d3b3a0b9c859a8a6423aa",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Retained exact publisherPDF visually inspected pp1,5,6,16,18: articleCCBY4,commonDDS cure,bending method,Table8 selected flexural-break-elongation column and Figure9 printed numeric labels/narrative ordering caveat. No fresh PDF download,latest-notice/SI completeness,rawdata reanalysis or certification.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Retained exact publisherPDF visually inspected pp1,5,6,16,18: articleCCBY4,commonDDS cure,bending method,Table8 selected flexural-break-elongation column and Figure9 printed numeric labels/narrative ordering caveat. No fresh PDF download,latest-notice/SI completeness,rawdata reanalysis or certification.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      },
+      "id": "refprop_tarasov2022_pna_bpf_3_flexural_elongation_at_break",
+      "material_state_id": "state_tarasov2022_pna_bpf_3_dds_cured_flexural",
+      "evidence": [
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "PDFp16 Table8 PNA-BPF-3 Flexural Elongation at Break(%); PDFp18 Figure9 labelled point crosscheck",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "Retained publisherPDFp6 section2.5.2 flexural testing; p16Table8 endpoint label",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ],
+      "scope_note": "Existing PNA-BPF-3 identity and its3.6mm bending state only,not4mm tensile state. Source-labelled flexural elongation at break,not tensile break/at-strength endpoint or bending modulus/strength;source percent retained without /100. Unknown actual strain/deflection convention,break criterion,T/RH,conditioning,n/dispersion and calibration remain. Existing composition/feed/alkali discrepancies and Table8/Figure9 versus continuous-decrease narrative caveat retained;no source repair,standard-based formula,statistical significance,engine input,allowable or universal bound."
+    },
+    {
+      "version": "1.0.0",
+      "quantity": "flexural_elongation_at_break",
+      "quantity_dimension": "dimensionless",
+      "source_property_label": "Flexural Elongation at Break (%)",
+      "reported_value": {
+        "kind": "scalar",
+        "unit_text": "%",
+        "unit_code": "percent_elongation",
+        "value_text": "8.19",
+        "number": "8.19"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "not_stated",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Selected Table8 scalar crosschecked against Figure9 printed numerical label. Central estimator,independent specimens/batches and numeric dispersion unknown;not an inferredmean,SD,SE orCI. Original percent,not divided by100 or equated to tensile strain.",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected mechanical method does not specify this condition; cure/DSC/rheology conditions and assumed isotropy cannot supply it."
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "GOST R 56810-2015 (ASTM D790-10)",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.6, section 2.5.2",
+              "supports": [
+                "condition",
+                "method"
+              ]
+            }
+          ],
+          "notes": "Source citation only; no missing strain formula,deflection channel,support-count,environment,n or standard compliance inferred."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Author-labelled Flexural Elongation at Break(%),50ST/Tinius Olsen,GOST R56810-2015(ASTM D790-10),0.85mm/min machine/testing speed; 80x9.8x3.6mm bars milled from3.6mm curedplate; source span-to-depth wording64:3.6mm. Actual deflection/strain channel,outer-fiber/engineering/true strain convention,reduction formula,break detection and evaluation criterion,calibration and support-point count unknown;no standard-based reconstruction.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "Retained publisherPDFp6 section2.5.2 flexural testing; p16Table8 endpoint label",
+              "supports": [
+                "method",
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source bending-endpoint label only; actual strain convention and rupture detection unknown. Standard citation does not certify compliance."
+        },
+        "direction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected mechanical method does not specify this condition; cure/DSC/rheology conditions and assumed isotropy cannot supply it."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected mechanical method does not specify this condition; cure/DSC/rheology conditions and assumed isotropy cannot supply it."
+        },
+        "loading_rate": {
+          "status": "reported",
+          "text": "0.85 mm/min",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.6, section 2.5.2",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Reported machine/testing speed, not a measured strain rate; do not transfer between methods."
+        },
+        "additional_conditions": [
+          {
+            "name": "relative_humidity",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Test and post-cure conditioning RH are not reported."
+            }
+          },
+          {
+            "name": "specimen_plate_thickness",
+            "fact": {
+              "status": "reported",
+              "text": "3.6 mm",
+              "evidence": [
+                {
+                  "source_id": "tarasov_2022_pna_bpf_epoxy",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+                  "locator": "PDF p.6, section 2.5.2",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Source plate specification, not per-specimen metrology."
+            }
+          },
+          {
+            "name": "specimen_dimensions",
+            "fact": {
+              "status": "reported",
+              "text": "80 × 9.8 × 3.6 mm (length × width × thickness)",
+              "evidence": [
+                {
+                  "source_id": "tarasov_2022_pna_bpf_epoxy",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+                  "locator": "PDF p.6, section 2.5.2",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Source nominal bar dimensions; no transferred tensile geometry or measured tolerances."
+            }
+          },
+          {
+            "name": "span_to_depth_source_statement",
+            "fact": {
+              "status": "reported",
+              "text": "64:3.6 mm",
+              "evidence": [
+                {
+                  "source_id": "tarasov_2022_pna_bpf_epoxy",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+                  "locator": "PDF p.6, section 2.5.2",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Literal source wording; not recast as a dimensionless measured ratio or proof of support-point count."
+            }
+          },
+          {
+            "name": "strain_and_break_definition",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Actual deflection/strain channel,outer-fiber/engineering/true convention,reduction formula and rupture/evaluation criterion unknown;not supplied by standard citation."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "not_stated",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "Inspected section2.5.2/Table8/Figure9 do not define central aggregation,n,batches or numeric SD/SE/CI for this selected endpoint. Unknown numeric uncertainty does not mean zero scatter;no tensile/impact/DSC statistics borrowed.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Selected formulation and bending endpoint only;exact specimen and independent batch counts unknown.",
+        "source_statement": "Inspected bending method/Table8/Figure9 do not specify an exact count;other-test or standard-default counts not transferred.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Author-labelled Flexural Elongation at Break(%),50ST/Tinius Olsen,GOST R56810-2015(ASTM D790-10),0.85mm/min machine/testing speed; 80x9.8x3.6mm bars milled from3.6mm curedplate; source span-to-depth wording64:3.6mm. Actual deflection/strain channel,outer-fiber/engineering/true strain convention,reduction formula,break detection and evaluation criterion,calibration and support-point count unknown;no standard-based reconstruction.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "Retained publisherPDFp6 section2.5.2 flexural testing; p16Table8 endpoint label",
+            "supports": [
+              "method",
+              "classification"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Table 1 labels the nominal feeds HCP:BPF:ECH as 1:8:16 through 1:24:16, while the listed reagent mole amounts and the section 2.2.1 statement about a constant 16-fold ECH excess do not establish a consistent normalized ratio.",
+          "disposition": "Preserve the printed ratio labels as nominal source recipe labels. Do not recompute ECH amounts, repair the ratios, infer the intended denominator or claim validated feed stoichiometry or final composition.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, section 2.2.1 opening paragraph and Table 1",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Table 1 lists HCP as 35 (0.086) g (Mole) for PNA-BPF-2, but as 35 (0.101) for PNA-BPF-1 and PNA-BPF-S.",
+          "disposition": "Keep the PNA-BPF-2 source label and its printed nominal 1:9:16 recipe without silently correcting the mass or mole entry. No recalculated composition is emitted.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, Table 1, HCP g (Mole) column, PNA-BPF-2 versus PNA-BPF-1 and PNA-BPF-S",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Section 2.1 names potassium hydroxide, whereas the synthesis headings, Table 1 and sections 2.2.1-2.2.2 describe NaOH or sodium hydroxide.",
+          "disposition": "Retain the contradiction. The selected route is source-described batch addition of solid alkali; the alkali chemical identity is not independently resolved or silently changed from KOH to NaOH.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, section 2.1 alkali entry, section 2.2.1 heading and Table 1; p.5, sections 2.2.1-2.2.2",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Page18 describes flexural elongation as continuously decreasing with increasing phosphazene content. Table8/Figure9 give PNA-BPF-4=8.19% and PNA-BPF-3=8.23%, a local scalar ordering that is not strictly decreasing along the source Figure9 context.",
+          "disposition": "Retain all Table8 literals and the narrative caveat. No smoothing,repair,validated monotonic law or statistical significance from a small difference without n/dispersion;the author Figure9 composition axis is not independent composition verification.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "Retained publisherPDFp16 Table8; p18 section3.2 text andFigure9 printed labels",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "tarasov_2022_pna_bpf_epoxy",
+      "source_document": {
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+        "revision": "Polymers 2022, 14, 4547; publisher PDF published 27 October 2022, 22 pages; URL version=1666858817.",
+        "inspected_on": "2026-11-04",
+        "sha256": "1f06bc0667c7c5575a0e88772868a95cd27ba01a264d3b3a0b9c859a8a6423aa",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Retained exact publisherPDF visually inspected pp1,5,6,16,18: articleCCBY4,commonDDS cure,bending method,Table8 selected flexural-break-elongation column and Figure9 printed numeric labels/narrative ordering caveat. No fresh PDF download,latest-notice/SI completeness,rawdata reanalysis or certification.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Retained exact publisherPDF visually inspected pp1,5,6,16,18: articleCCBY4,commonDDS cure,bending method,Table8 selected flexural-break-elongation column and Figure9 printed numeric labels/narrative ordering caveat. No fresh PDF download,latest-notice/SI completeness,rawdata reanalysis or certification.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      },
+      "id": "refprop_tarasov2022_pna_bpf_4_flexural_elongation_at_break",
+      "material_state_id": "state_tarasov2022_pna_bpf_4_dds_cured_flexural",
+      "evidence": [
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "PDFp16 Table8 PNA-BPF-4 Flexural Elongation at Break(%); PDFp18 Figure9 labelled point crosscheck",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "Retained publisherPDFp6 section2.5.2 flexural testing; p16Table8 endpoint label",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ],
+      "scope_note": "Existing PNA-BPF-4 identity and its3.6mm bending state only,not4mm tensile state. Source-labelled flexural elongation at break,not tensile break/at-strength endpoint or bending modulus/strength;source percent retained without /100. Unknown actual strain/deflection convention,break criterion,T/RH,conditioning,n/dispersion and calibration remain. Existing composition/feed/alkali discrepancies and Table8/Figure9 versus continuous-decrease narrative caveat retained;no source repair,standard-based formula,statistical significance,engine input,allowable or universal bound."
+    },
+    {
+      "version": "1.0.0",
+      "quantity": "flexural_elongation_at_break",
+      "quantity_dimension": "dimensionless",
+      "source_property_label": "Flexural Elongation at Break (%)",
+      "reported_value": {
+        "kind": "scalar",
+        "unit_text": "%",
+        "unit_code": "percent_elongation",
+        "value_text": "9.15",
+        "number": "9.15"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "not_stated",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Selected Table8 scalar crosschecked against Figure9 printed numerical label. Central estimator,independent specimens/batches and numeric dispersion unknown;not an inferredmean,SD,SE orCI. Original percent,not divided by100 or equated to tensile strain.",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected mechanical method does not specify this condition; cure/DSC/rheology conditions and assumed isotropy cannot supply it."
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "GOST R 56810-2015 (ASTM D790-10)",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.6, section 2.5.2",
+              "supports": [
+                "condition",
+                "method"
+              ]
+            }
+          ],
+          "notes": "Source citation only; no missing strain formula,deflection channel,support-count,environment,n or standard compliance inferred."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Author-labelled Flexural Elongation at Break(%),50ST/Tinius Olsen,GOST R56810-2015(ASTM D790-10),0.85mm/min machine/testing speed; 80x9.8x3.6mm bars milled from3.6mm curedplate; source span-to-depth wording64:3.6mm. Actual deflection/strain channel,outer-fiber/engineering/true strain convention,reduction formula,break detection and evaluation criterion,calibration and support-point count unknown;no standard-based reconstruction.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "Retained publisherPDFp6 section2.5.2 flexural testing; p16Table8 endpoint label",
+              "supports": [
+                "method",
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source bending-endpoint label only; actual strain convention and rupture detection unknown. Standard citation does not certify compliance."
+        },
+        "direction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected mechanical method does not specify this condition; cure/DSC/rheology conditions and assumed isotropy cannot supply it."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected mechanical method does not specify this condition; cure/DSC/rheology conditions and assumed isotropy cannot supply it."
+        },
+        "loading_rate": {
+          "status": "reported",
+          "text": "0.85 mm/min",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.6, section 2.5.2",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Reported machine/testing speed, not a measured strain rate; do not transfer between methods."
+        },
+        "additional_conditions": [
+          {
+            "name": "relative_humidity",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Test and post-cure conditioning RH are not reported."
+            }
+          },
+          {
+            "name": "specimen_plate_thickness",
+            "fact": {
+              "status": "reported",
+              "text": "3.6 mm",
+              "evidence": [
+                {
+                  "source_id": "tarasov_2022_pna_bpf_epoxy",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+                  "locator": "PDF p.6, section 2.5.2",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Source plate specification, not per-specimen metrology."
+            }
+          },
+          {
+            "name": "specimen_dimensions",
+            "fact": {
+              "status": "reported",
+              "text": "80 × 9.8 × 3.6 mm (length × width × thickness)",
+              "evidence": [
+                {
+                  "source_id": "tarasov_2022_pna_bpf_epoxy",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+                  "locator": "PDF p.6, section 2.5.2",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Source nominal bar dimensions; no transferred tensile geometry or measured tolerances."
+            }
+          },
+          {
+            "name": "span_to_depth_source_statement",
+            "fact": {
+              "status": "reported",
+              "text": "64:3.6 mm",
+              "evidence": [
+                {
+                  "source_id": "tarasov_2022_pna_bpf_epoxy",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+                  "locator": "PDF p.6, section 2.5.2",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Literal source wording; not recast as a dimensionless measured ratio or proof of support-point count."
+            }
+          },
+          {
+            "name": "strain_and_break_definition",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Actual deflection/strain channel,outer-fiber/engineering/true convention,reduction formula and rupture/evaluation criterion unknown;not supplied by standard citation."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "not_stated",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "Inspected section2.5.2/Table8/Figure9 do not define central aggregation,n,batches or numeric SD/SE/CI for this selected endpoint. Unknown numeric uncertainty does not mean zero scatter;no tensile/impact/DSC statistics borrowed.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Selected formulation and bending endpoint only;exact specimen and independent batch counts unknown.",
+        "source_statement": "Inspected bending method/Table8/Figure9 do not specify an exact count;other-test or standard-default counts not transferred.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Author-labelled Flexural Elongation at Break(%),50ST/Tinius Olsen,GOST R56810-2015(ASTM D790-10),0.85mm/min machine/testing speed; 80x9.8x3.6mm bars milled from3.6mm curedplate; source span-to-depth wording64:3.6mm. Actual deflection/strain channel,outer-fiber/engineering/true strain convention,reduction formula,break detection and evaluation criterion,calibration and support-point count unknown;no standard-based reconstruction.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "Retained publisherPDFp6 section2.5.2 flexural testing; p16Table8 endpoint label",
+            "supports": [
+              "method",
+              "classification"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Table 1 labels the nominal feeds HCP:BPF:ECH as 1:8:16 through 1:24:16, while the listed reagent mole amounts and the section 2.2.1 statement about a constant 16-fold ECH excess do not establish a consistent normalized ratio.",
+          "disposition": "Preserve the printed ratio labels as nominal source recipe labels. Do not recompute ECH amounts, repair the ratios, infer the intended denominator or claim validated feed stoichiometry or final composition.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, section 2.2.1 opening paragraph and Table 1",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Table 1 lists HCP as 35 (0.086) g (Mole) for PNA-BPF-2, but as 35 (0.101) for PNA-BPF-1 and PNA-BPF-S.",
+          "disposition": "Keep the PNA-BPF-2 source label and its printed nominal 1:9:16 recipe without silently correcting the mass or mole entry. No recalculated composition is emitted.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, Table 1, HCP g (Mole) column, PNA-BPF-2 versus PNA-BPF-1 and PNA-BPF-S",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Section 2.1 names potassium hydroxide, whereas the synthesis headings, Table 1 and sections 2.2.1-2.2.2 describe NaOH or sodium hydroxide.",
+          "disposition": "Retain the contradiction. The selected route is source-described batch addition of solid alkali; the alkali chemical identity is not independently resolved or silently changed from KOH to NaOH.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, section 2.1 alkali entry, section 2.2.1 heading and Table 1; p.5, sections 2.2.1-2.2.2",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Page18 describes flexural elongation as continuously decreasing with increasing phosphazene content. Table8/Figure9 give PNA-BPF-4=8.19% and PNA-BPF-3=8.23%, a local scalar ordering that is not strictly decreasing along the source Figure9 context.",
+          "disposition": "Retain all Table8 literals and the narrative caveat. No smoothing,repair,validated monotonic law or statistical significance from a small difference without n/dispersion;the author Figure9 composition axis is not independent composition verification.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "Retained publisherPDFp16 Table8; p18 section3.2 text andFigure9 printed labels",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "tarasov_2022_pna_bpf_epoxy",
+      "source_document": {
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+        "revision": "Polymers 2022, 14, 4547; publisher PDF published 27 October 2022, 22 pages; URL version=1666858817.",
+        "inspected_on": "2026-11-04",
+        "sha256": "1f06bc0667c7c5575a0e88772868a95cd27ba01a264d3b3a0b9c859a8a6423aa",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Retained exact publisherPDF visually inspected pp1,5,6,16,18: articleCCBY4,commonDDS cure,bending method,Table8 selected flexural-break-elongation column and Figure9 printed numeric labels/narrative ordering caveat. No fresh PDF download,latest-notice/SI completeness,rawdata reanalysis or certification.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Retained exact publisherPDF visually inspected pp1,5,6,16,18: articleCCBY4,commonDDS cure,bending method,Table8 selected flexural-break-elongation column and Figure9 printed numeric labels/narrative ordering caveat. No fresh PDF download,latest-notice/SI completeness,rawdata reanalysis or certification.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      },
+      "id": "refprop_tarasov2022_pna_bpf_5_flexural_elongation_at_break",
+      "material_state_id": "state_tarasov2022_pna_bpf_5_dds_cured_flexural",
+      "evidence": [
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "PDFp16 Table8 PNA-BPF-5 Flexural Elongation at Break(%); PDFp18 Figure9 labelled point crosscheck",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "Retained publisherPDFp6 section2.5.2 flexural testing; p16Table8 endpoint label",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ],
+      "scope_note": "Existing PNA-BPF-5 identity and its3.6mm bending state only,not4mm tensile state. Source-labelled flexural elongation at break,not tensile break/at-strength endpoint or bending modulus/strength;source percent retained without /100. Unknown actual strain/deflection convention,break criterion,T/RH,conditioning,n/dispersion and calibration remain. Existing composition/feed/alkali discrepancies and Table8/Figure9 versus continuous-decrease narrative caveat retained;no source repair,standard-based formula,statistical significance,engine input,allowable or universal bound."
+    },
+    {
+      "version": "1.0.0",
+      "quantity": "izod_impact_strength",
+      "quantity_dimension": "energy_per_area",
+      "source_property_label": "Izod Impact Strength (kJ/m²)",
+      "reported_value": {
+        "kind": "scalar",
+        "unit_text": "kJ/m²",
+        "unit_code": "kJ/m^2",
+        "value_text": "2.2",
+        "number": "2.2"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "not_stated",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Exact selected Table7 literal,not corrected or extended fromFigure10/abstract. Central estimator,n/batches and numeric uncertainty unknown. Source-qualified transcription does not establish the true experimental value or table superiority.",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Izod test temperature unknown;180C cure and DSCtemperatures are not impact ambient."
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "GOST19109-2017(ISO180:2000),source describesmodifiedISO180",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "Retained publisherPDFp6 section2.5.3 Izod Impact Test",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source citation only;notch/method subdesignation and independent compliance unknown."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Author-labelled Izodimpact strength,Izod-Charpy K1053(ATSFAAR),GOST19109-2017(ISO180:2000) as cited;nominal80x9.8x3.6mm bars. Notch status,type/radius/remainingligament,impactvelocity,pendulumcapacity/calibration/corrections,actualarea/normalization formula and breakmode unknown. Machine name does not establishCharpymethod;no bendingmilling/rate/span or DSCconditions transferred.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "Retained publisherPDFp6 section2.5.3 Izod Impact Test",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source Izodlabel,not Charpy or an intrinsic fracture-energy constant."
+        },
+        "direction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Impactbar orientation,notch/strikingface and processing-axis relationship unknown;no isotropy assigned."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Impact-specific postcure conditioning,humidity,moisture equilibrium and storage duration unknown."
+        },
+        "loading_rate": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Impactvelocity,releaseangle and pendulum kinetic setting unknown. Bending0.85mm/min and tensile10mm/min are not transferred."
+        },
+        "additional_conditions": [
+          {
+            "name": "notch_status",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Notched/unnotched mode unknown;do not choose a mode from ISO180citation."
+            }
+          },
+          {
+            "name": "notch_geometry",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Notch type,radius,depth and remaining ligament unknown;no standard-default geometry."
+            }
+          },
+          {
+            "name": "area_normalization",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Actual cross-section/ligament area and energy-area reduction/correction formula unknown;no re-normalization from nominal dimensions."
+            }
+          },
+          {
+            "name": "pendulum_capacity_and_calibration",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Pendulum energy capacity,calibration and loss corrections unknown;no raw absorbed energy inferred."
+            }
+          },
+          {
+            "name": "break_mode",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Failure/break classification and handling of partial or nonbreak events unknown."
+            }
+          },
+          {
+            "name": "nominal_specimen_dimensions",
+            "fact": {
+              "status": "reported",
+              "text": "80 × 9.8 × 3.6 mm (length × width × thickness)",
+              "evidence": [
+                {
+                  "source_id": "tarasov_2022_pna_bpf_epoxy",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+                  "locator": "Retained publisherPDFp6 section2.5.3 Izod Impact Test",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Nominal bars only;actual metrology and impact machining route unknown."
+            }
+          },
+          {
+            "name": "test_relative_humidity",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Izod test RH unknown;no assumed laboratory default."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "not_stated",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "Inspected Izod method/Table7/Figure10 do not define central aggregation,n,batches or numeric SD/SE/CI. Unknown does not mean zero scatter. Table/figure/abstract differences are source discrepancies,not measurement uncertainty or an interval.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Selected Izod formulation/test only;exact specimen and independent batch counts unknown.",
+        "source_statement": "No exact Izod count in inspected method/results;five formulations are not n=5 specimens and other-test counts are not transferred.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Author-labelled Izodimpact strength,Izod-Charpy K1053(ATSFAAR),GOST19109-2017(ISO180:2000) as cited;nominal80x9.8x3.6mm bars. Notch status,type/radius/remainingligament,impactvelocity,pendulumcapacity/calibration/corrections,actualarea/normalization formula and breakmode unknown. Machine name does not establishCharpymethod;no bendingmilling/rate/span or DSCconditions transferred.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "Retained publisherPDFp6 section2.5.3 Izod Impact Test",
+            "supports": [
+              "method",
+              "classification"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Table 1 labels the nominal feeds HCP:BPF:ECH as 1:8:16 through 1:24:16, while the listed reagent mole amounts and the section 2.2.1 statement about a constant 16-fold ECH excess do not establish a consistent normalized ratio.",
+          "disposition": "Preserve the printed ratio labels as nominal source recipe labels. Do not recompute ECH amounts, repair the ratios, infer the intended denominator or claim validated feed stoichiometry or final composition.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, section 2.2.1 opening paragraph and Table 1",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Table 1 lists HCP as 35 (0.086) g (Mole) for PNA-BPF-2, but as 35 (0.101) for PNA-BPF-1 and PNA-BPF-S.",
+          "disposition": "Keep the PNA-BPF-2 source label and its printed nominal 1:9:16 recipe without silently correcting the mass or mole entry. No recalculated composition is emitted.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, Table 1, HCP g (Mole) column, PNA-BPF-2 versus PNA-BPF-1 and PNA-BPF-S",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Section 2.1 names potassium hydroxide, whereas the synthesis headings, Table 1 and sections 2.2.1-2.2.2 describe NaOH or sodium hydroxide.",
+          "disposition": "Retain the contradiction. The selected route is source-described batch addition of solid alkali; the alkali chemical identity is not independently resolved or silently changed from KOH to NaOH.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, section 2.1 alkali entry, section 2.2.1 heading and Table 1; p.5, sections 2.2.1-2.2.2",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Selected PNA-BPF-1 Table7=2.2kJ/m²;Figure10 printed-label context=2.20kJ/m². The source PNA-BPF-5 additionally has Table7=4.1 versus abstract/Figure10=4.01,not ordinary one-decimal rounding;reason unresolved.",
+          "disposition": "Retain selected Table7 literal and all source alternatives as context,not as a second independent experiment. Do not add Figure10 precision,infer author rounding/rawdata,average,repair a supposedtypo,construct an uncertainty/interval or certify the true value. Figure10/Table6 composition context is not independent composition verification.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "RetainedPDFp1abstract; pp15-16 Table6 reportedfraction context; p16Table7; p19Figure10 printed labels",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "tarasov_2022_pna_bpf_epoxy",
+      "source_document": {
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+        "revision": "Polymers 2022, 14, 4547; publisher PDF published 27 October 2022, 22 pages; URL version=1666858817.",
+        "inspected_on": "2026-11-04",
+        "sha256": "1f06bc0667c7c5575a0e88772868a95cd27ba01a264d3b3a0b9c859a8a6423aa",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Retained same publisherPDF visually checked pp1,5,6,15,16,19: CCBY4,commonDDS preparation,Izodmethod,Table7 selected literals,Table6 author context andFigure10/abstract alternatives. No fresh PDFdownload,latestrevision/SI completeness,rawdata reanalysis or standards/scientific certification.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Retained same publisherPDF visually checked pp1,5,6,15,16,19: CCBY4,commonDDS preparation,Izodmethod,Table7 selected literals,Table6 author context andFigure10/abstract alternatives. No fresh PDFdownload,latestrevision/SI completeness,rawdata reanalysis or standards/scientific certification.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      },
+      "id": "refprop_tarasov2022_pna_bpf_1_izod_impact_strength",
+      "material_state_id": "state_tarasov2022_pna_bpf_1_dds_cured_izod",
+      "evidence": [
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "Retained publisherPDFp16 Table7 PNA-BPF-1 Izod Impact Strength(kJ/m²)",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "Retained publisherPDFp6 section2.5.3 Izod Impact Test",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ],
+      "scope_note": "Source-qualified PNA-BPF-1 Table7 2.2kJ/m² only. Unknown notch/velocity/normalization/breakmode,T/RH,conditioning,n/dispersion prevents matched-condition or intrinsic-material-constant claims. Table7PNA5 4.1 versus abstract/Figure10 4.01 unresolved;selected table does not override other representations. No conversion toCharpy,rawenergy,force,pressure,tear strength,Gc/J-integral/KIC or engineinput;no automaticunitconversion,allowable or universalbound. Existing nominalfeed/mole/alkali contradictions retained."
+    },
+    {
+      "version": "1.0.0",
+      "quantity": "izod_impact_strength",
+      "quantity_dimension": "energy_per_area",
+      "source_property_label": "Izod Impact Strength (kJ/m²)",
+      "reported_value": {
+        "kind": "scalar",
+        "unit_text": "kJ/m²",
+        "unit_code": "kJ/m^2",
+        "value_text": "2.9",
+        "number": "2.9"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "not_stated",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Exact selected Table7 literal,not corrected or extended fromFigure10/abstract. Central estimator,n/batches and numeric uncertainty unknown. Source-qualified transcription does not establish the true experimental value or table superiority.",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Izod test temperature unknown;180C cure and DSCtemperatures are not impact ambient."
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "GOST19109-2017(ISO180:2000),source describesmodifiedISO180",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "Retained publisherPDFp6 section2.5.3 Izod Impact Test",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source citation only;notch/method subdesignation and independent compliance unknown."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Author-labelled Izodimpact strength,Izod-Charpy K1053(ATSFAAR),GOST19109-2017(ISO180:2000) as cited;nominal80x9.8x3.6mm bars. Notch status,type/radius/remainingligament,impactvelocity,pendulumcapacity/calibration/corrections,actualarea/normalization formula and breakmode unknown. Machine name does not establishCharpymethod;no bendingmilling/rate/span or DSCconditions transferred.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "Retained publisherPDFp6 section2.5.3 Izod Impact Test",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source Izodlabel,not Charpy or an intrinsic fracture-energy constant."
+        },
+        "direction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Impactbar orientation,notch/strikingface and processing-axis relationship unknown;no isotropy assigned."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Impact-specific postcure conditioning,humidity,moisture equilibrium and storage duration unknown."
+        },
+        "loading_rate": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Impactvelocity,releaseangle and pendulum kinetic setting unknown. Bending0.85mm/min and tensile10mm/min are not transferred."
+        },
+        "additional_conditions": [
+          {
+            "name": "notch_status",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Notched/unnotched mode unknown;do not choose a mode from ISO180citation."
+            }
+          },
+          {
+            "name": "notch_geometry",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Notch type,radius,depth and remaining ligament unknown;no standard-default geometry."
+            }
+          },
+          {
+            "name": "area_normalization",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Actual cross-section/ligament area and energy-area reduction/correction formula unknown;no re-normalization from nominal dimensions."
+            }
+          },
+          {
+            "name": "pendulum_capacity_and_calibration",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Pendulum energy capacity,calibration and loss corrections unknown;no raw absorbed energy inferred."
+            }
+          },
+          {
+            "name": "break_mode",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Failure/break classification and handling of partial or nonbreak events unknown."
+            }
+          },
+          {
+            "name": "nominal_specimen_dimensions",
+            "fact": {
+              "status": "reported",
+              "text": "80 × 9.8 × 3.6 mm (length × width × thickness)",
+              "evidence": [
+                {
+                  "source_id": "tarasov_2022_pna_bpf_epoxy",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+                  "locator": "Retained publisherPDFp6 section2.5.3 Izod Impact Test",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Nominal bars only;actual metrology and impact machining route unknown."
+            }
+          },
+          {
+            "name": "test_relative_humidity",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Izod test RH unknown;no assumed laboratory default."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "not_stated",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "Inspected Izod method/Table7/Figure10 do not define central aggregation,n,batches or numeric SD/SE/CI. Unknown does not mean zero scatter. Table/figure/abstract differences are source discrepancies,not measurement uncertainty or an interval.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Selected Izod formulation/test only;exact specimen and independent batch counts unknown.",
+        "source_statement": "No exact Izod count in inspected method/results;five formulations are not n=5 specimens and other-test counts are not transferred.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Author-labelled Izodimpact strength,Izod-Charpy K1053(ATSFAAR),GOST19109-2017(ISO180:2000) as cited;nominal80x9.8x3.6mm bars. Notch status,type/radius/remainingligament,impactvelocity,pendulumcapacity/calibration/corrections,actualarea/normalization formula and breakmode unknown. Machine name does not establishCharpymethod;no bendingmilling/rate/span or DSCconditions transferred.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "Retained publisherPDFp6 section2.5.3 Izod Impact Test",
+            "supports": [
+              "method",
+              "classification"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Table 1 labels the nominal feeds HCP:BPF:ECH as 1:8:16 through 1:24:16, while the listed reagent mole amounts and the section 2.2.1 statement about a constant 16-fold ECH excess do not establish a consistent normalized ratio.",
+          "disposition": "Preserve the printed ratio labels as nominal source recipe labels. Do not recompute ECH amounts, repair the ratios, infer the intended denominator or claim validated feed stoichiometry or final composition.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, section 2.2.1 opening paragraph and Table 1",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Table 1 lists HCP as 35 (0.086) g (Mole) for PNA-BPF-2, but as 35 (0.101) for PNA-BPF-1 and PNA-BPF-S.",
+          "disposition": "Keep the PNA-BPF-2 source label and its printed nominal 1:9:16 recipe without silently correcting the mass or mole entry. No recalculated composition is emitted.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, Table 1, HCP g (Mole) column, PNA-BPF-2 versus PNA-BPF-1 and PNA-BPF-S",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Section 2.1 names potassium hydroxide, whereas the synthesis headings, Table 1 and sections 2.2.1-2.2.2 describe NaOH or sodium hydroxide.",
+          "disposition": "Retain the contradiction. The selected route is source-described batch addition of solid alkali; the alkali chemical identity is not independently resolved or silently changed from KOH to NaOH.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, section 2.1 alkali entry, section 2.2.1 heading and Table 1; p.5, sections 2.2.1-2.2.2",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Selected PNA-BPF-2 Table7=2.9kJ/m²;Figure10 printed-label context=2.91kJ/m². The source PNA-BPF-5 additionally has Table7=4.1 versus abstract/Figure10=4.01,not ordinary one-decimal rounding;reason unresolved.",
+          "disposition": "Retain selected Table7 literal and all source alternatives as context,not as a second independent experiment. Do not add Figure10 precision,infer author rounding/rawdata,average,repair a supposedtypo,construct an uncertainty/interval or certify the true value. Figure10/Table6 composition context is not independent composition verification.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "RetainedPDFp1abstract; pp15-16 Table6 reportedfraction context; p16Table7; p19Figure10 printed labels",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "tarasov_2022_pna_bpf_epoxy",
+      "source_document": {
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+        "revision": "Polymers 2022, 14, 4547; publisher PDF published 27 October 2022, 22 pages; URL version=1666858817.",
+        "inspected_on": "2026-11-04",
+        "sha256": "1f06bc0667c7c5575a0e88772868a95cd27ba01a264d3b3a0b9c859a8a6423aa",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Retained same publisherPDF visually checked pp1,5,6,15,16,19: CCBY4,commonDDS preparation,Izodmethod,Table7 selected literals,Table6 author context andFigure10/abstract alternatives. No fresh PDFdownload,latestrevision/SI completeness,rawdata reanalysis or standards/scientific certification.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Retained same publisherPDF visually checked pp1,5,6,15,16,19: CCBY4,commonDDS preparation,Izodmethod,Table7 selected literals,Table6 author context andFigure10/abstract alternatives. No fresh PDFdownload,latestrevision/SI completeness,rawdata reanalysis or standards/scientific certification.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      },
+      "id": "refprop_tarasov2022_pna_bpf_2_izod_impact_strength",
+      "material_state_id": "state_tarasov2022_pna_bpf_2_dds_cured_izod",
+      "evidence": [
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "Retained publisherPDFp16 Table7 PNA-BPF-2 Izod Impact Strength(kJ/m²)",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "Retained publisherPDFp6 section2.5.3 Izod Impact Test",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ],
+      "scope_note": "Source-qualified PNA-BPF-2 Table7 2.9kJ/m² only. Unknown notch/velocity/normalization/breakmode,T/RH,conditioning,n/dispersion prevents matched-condition or intrinsic-material-constant claims. Table7PNA5 4.1 versus abstract/Figure10 4.01 unresolved;selected table does not override other representations. No conversion toCharpy,rawenergy,force,pressure,tear strength,Gc/J-integral/KIC or engineinput;no automaticunitconversion,allowable or universalbound. Existing nominalfeed/mole/alkali contradictions retained."
+    },
+    {
+      "version": "1.0.0",
+      "quantity": "izod_impact_strength",
+      "quantity_dimension": "energy_per_area",
+      "source_property_label": "Izod Impact Strength (kJ/m²)",
+      "reported_value": {
+        "kind": "scalar",
+        "unit_text": "kJ/m²",
+        "unit_code": "kJ/m^2",
+        "value_text": "2.6",
+        "number": "2.6"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "not_stated",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Exact selected Table7 literal,not corrected or extended fromFigure10/abstract. Central estimator,n/batches and numeric uncertainty unknown. Source-qualified transcription does not establish the true experimental value or table superiority.",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Izod test temperature unknown;180C cure and DSCtemperatures are not impact ambient."
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "GOST19109-2017(ISO180:2000),source describesmodifiedISO180",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "Retained publisherPDFp6 section2.5.3 Izod Impact Test",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source citation only;notch/method subdesignation and independent compliance unknown."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Author-labelled Izodimpact strength,Izod-Charpy K1053(ATSFAAR),GOST19109-2017(ISO180:2000) as cited;nominal80x9.8x3.6mm bars. Notch status,type/radius/remainingligament,impactvelocity,pendulumcapacity/calibration/corrections,actualarea/normalization formula and breakmode unknown. Machine name does not establishCharpymethod;no bendingmilling/rate/span or DSCconditions transferred.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "Retained publisherPDFp6 section2.5.3 Izod Impact Test",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source Izodlabel,not Charpy or an intrinsic fracture-energy constant."
+        },
+        "direction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Impactbar orientation,notch/strikingface and processing-axis relationship unknown;no isotropy assigned."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Impact-specific postcure conditioning,humidity,moisture equilibrium and storage duration unknown."
+        },
+        "loading_rate": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Impactvelocity,releaseangle and pendulum kinetic setting unknown. Bending0.85mm/min and tensile10mm/min are not transferred."
+        },
+        "additional_conditions": [
+          {
+            "name": "notch_status",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Notched/unnotched mode unknown;do not choose a mode from ISO180citation."
+            }
+          },
+          {
+            "name": "notch_geometry",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Notch type,radius,depth and remaining ligament unknown;no standard-default geometry."
+            }
+          },
+          {
+            "name": "area_normalization",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Actual cross-section/ligament area and energy-area reduction/correction formula unknown;no re-normalization from nominal dimensions."
+            }
+          },
+          {
+            "name": "pendulum_capacity_and_calibration",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Pendulum energy capacity,calibration and loss corrections unknown;no raw absorbed energy inferred."
+            }
+          },
+          {
+            "name": "break_mode",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Failure/break classification and handling of partial or nonbreak events unknown."
+            }
+          },
+          {
+            "name": "nominal_specimen_dimensions",
+            "fact": {
+              "status": "reported",
+              "text": "80 × 9.8 × 3.6 mm (length × width × thickness)",
+              "evidence": [
+                {
+                  "source_id": "tarasov_2022_pna_bpf_epoxy",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+                  "locator": "Retained publisherPDFp6 section2.5.3 Izod Impact Test",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Nominal bars only;actual metrology and impact machining route unknown."
+            }
+          },
+          {
+            "name": "test_relative_humidity",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Izod test RH unknown;no assumed laboratory default."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "not_stated",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "Inspected Izod method/Table7/Figure10 do not define central aggregation,n,batches or numeric SD/SE/CI. Unknown does not mean zero scatter. Table/figure/abstract differences are source discrepancies,not measurement uncertainty or an interval.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Selected Izod formulation/test only;exact specimen and independent batch counts unknown.",
+        "source_statement": "No exact Izod count in inspected method/results;five formulations are not n=5 specimens and other-test counts are not transferred.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Author-labelled Izodimpact strength,Izod-Charpy K1053(ATSFAAR),GOST19109-2017(ISO180:2000) as cited;nominal80x9.8x3.6mm bars. Notch status,type/radius/remainingligament,impactvelocity,pendulumcapacity/calibration/corrections,actualarea/normalization formula and breakmode unknown. Machine name does not establishCharpymethod;no bendingmilling/rate/span or DSCconditions transferred.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "Retained publisherPDFp6 section2.5.3 Izod Impact Test",
+            "supports": [
+              "method",
+              "classification"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Table 1 labels the nominal feeds HCP:BPF:ECH as 1:8:16 through 1:24:16, while the listed reagent mole amounts and the section 2.2.1 statement about a constant 16-fold ECH excess do not establish a consistent normalized ratio.",
+          "disposition": "Preserve the printed ratio labels as nominal source recipe labels. Do not recompute ECH amounts, repair the ratios, infer the intended denominator or claim validated feed stoichiometry or final composition.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, section 2.2.1 opening paragraph and Table 1",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Table 1 lists HCP as 35 (0.086) g (Mole) for PNA-BPF-2, but as 35 (0.101) for PNA-BPF-1 and PNA-BPF-S.",
+          "disposition": "Keep the PNA-BPF-2 source label and its printed nominal 1:9:16 recipe without silently correcting the mass or mole entry. No recalculated composition is emitted.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, Table 1, HCP g (Mole) column, PNA-BPF-2 versus PNA-BPF-1 and PNA-BPF-S",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Section 2.1 names potassium hydroxide, whereas the synthesis headings, Table 1 and sections 2.2.1-2.2.2 describe NaOH or sodium hydroxide.",
+          "disposition": "Retain the contradiction. The selected route is source-described batch addition of solid alkali; the alkali chemical identity is not independently resolved or silently changed from KOH to NaOH.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, section 2.1 alkali entry, section 2.2.1 heading and Table 1; p.5, sections 2.2.1-2.2.2",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Selected PNA-BPF-3 Table7=2.6kJ/m²;Figure10 printed-label context=2.63kJ/m². The source PNA-BPF-5 additionally has Table7=4.1 versus abstract/Figure10=4.01,not ordinary one-decimal rounding;reason unresolved.",
+          "disposition": "Retain selected Table7 literal and all source alternatives as context,not as a second independent experiment. Do not add Figure10 precision,infer author rounding/rawdata,average,repair a supposedtypo,construct an uncertainty/interval or certify the true value. Figure10/Table6 composition context is not independent composition verification.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "RetainedPDFp1abstract; pp15-16 Table6 reportedfraction context; p16Table7; p19Figure10 printed labels",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "tarasov_2022_pna_bpf_epoxy",
+      "source_document": {
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+        "revision": "Polymers 2022, 14, 4547; publisher PDF published 27 October 2022, 22 pages; URL version=1666858817.",
+        "inspected_on": "2026-11-04",
+        "sha256": "1f06bc0667c7c5575a0e88772868a95cd27ba01a264d3b3a0b9c859a8a6423aa",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Retained same publisherPDF visually checked pp1,5,6,15,16,19: CCBY4,commonDDS preparation,Izodmethod,Table7 selected literals,Table6 author context andFigure10/abstract alternatives. No fresh PDFdownload,latestrevision/SI completeness,rawdata reanalysis or standards/scientific certification.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Retained same publisherPDF visually checked pp1,5,6,15,16,19: CCBY4,commonDDS preparation,Izodmethod,Table7 selected literals,Table6 author context andFigure10/abstract alternatives. No fresh PDFdownload,latestrevision/SI completeness,rawdata reanalysis or standards/scientific certification.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      },
+      "id": "refprop_tarasov2022_pna_bpf_3_izod_impact_strength",
+      "material_state_id": "state_tarasov2022_pna_bpf_3_dds_cured_izod",
+      "evidence": [
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "Retained publisherPDFp16 Table7 PNA-BPF-3 Izod Impact Strength(kJ/m²)",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "Retained publisherPDFp6 section2.5.3 Izod Impact Test",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ],
+      "scope_note": "Source-qualified PNA-BPF-3 Table7 2.6kJ/m² only. Unknown notch/velocity/normalization/breakmode,T/RH,conditioning,n/dispersion prevents matched-condition or intrinsic-material-constant claims. Table7PNA5 4.1 versus abstract/Figure10 4.01 unresolved;selected table does not override other representations. No conversion toCharpy,rawenergy,force,pressure,tear strength,Gc/J-integral/KIC or engineinput;no automaticunitconversion,allowable or universalbound. Existing nominalfeed/mole/alkali contradictions retained."
+    },
+    {
+      "version": "1.0.0",
+      "quantity": "izod_impact_strength",
+      "quantity_dimension": "energy_per_area",
+      "source_property_label": "Izod Impact Strength (kJ/m²)",
+      "reported_value": {
+        "kind": "scalar",
+        "unit_text": "kJ/m²",
+        "unit_code": "kJ/m^2",
+        "value_text": "3.7",
+        "number": "3.7"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "not_stated",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Exact selected Table7 literal,not corrected or extended fromFigure10/abstract. Central estimator,n/batches and numeric uncertainty unknown. Source-qualified transcription does not establish the true experimental value or table superiority.",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Izod test temperature unknown;180C cure and DSCtemperatures are not impact ambient."
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "GOST19109-2017(ISO180:2000),source describesmodifiedISO180",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "Retained publisherPDFp6 section2.5.3 Izod Impact Test",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source citation only;notch/method subdesignation and independent compliance unknown."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Author-labelled Izodimpact strength,Izod-Charpy K1053(ATSFAAR),GOST19109-2017(ISO180:2000) as cited;nominal80x9.8x3.6mm bars. Notch status,type/radius/remainingligament,impactvelocity,pendulumcapacity/calibration/corrections,actualarea/normalization formula and breakmode unknown. Machine name does not establishCharpymethod;no bendingmilling/rate/span or DSCconditions transferred.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "Retained publisherPDFp6 section2.5.3 Izod Impact Test",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source Izodlabel,not Charpy or an intrinsic fracture-energy constant."
+        },
+        "direction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Impactbar orientation,notch/strikingface and processing-axis relationship unknown;no isotropy assigned."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Impact-specific postcure conditioning,humidity,moisture equilibrium and storage duration unknown."
+        },
+        "loading_rate": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Impactvelocity,releaseangle and pendulum kinetic setting unknown. Bending0.85mm/min and tensile10mm/min are not transferred."
+        },
+        "additional_conditions": [
+          {
+            "name": "notch_status",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Notched/unnotched mode unknown;do not choose a mode from ISO180citation."
+            }
+          },
+          {
+            "name": "notch_geometry",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Notch type,radius,depth and remaining ligament unknown;no standard-default geometry."
+            }
+          },
+          {
+            "name": "area_normalization",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Actual cross-section/ligament area and energy-area reduction/correction formula unknown;no re-normalization from nominal dimensions."
+            }
+          },
+          {
+            "name": "pendulum_capacity_and_calibration",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Pendulum energy capacity,calibration and loss corrections unknown;no raw absorbed energy inferred."
+            }
+          },
+          {
+            "name": "break_mode",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Failure/break classification and handling of partial or nonbreak events unknown."
+            }
+          },
+          {
+            "name": "nominal_specimen_dimensions",
+            "fact": {
+              "status": "reported",
+              "text": "80 × 9.8 × 3.6 mm (length × width × thickness)",
+              "evidence": [
+                {
+                  "source_id": "tarasov_2022_pna_bpf_epoxy",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+                  "locator": "Retained publisherPDFp6 section2.5.3 Izod Impact Test",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Nominal bars only;actual metrology and impact machining route unknown."
+            }
+          },
+          {
+            "name": "test_relative_humidity",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Izod test RH unknown;no assumed laboratory default."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "not_stated",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "Inspected Izod method/Table7/Figure10 do not define central aggregation,n,batches or numeric SD/SE/CI. Unknown does not mean zero scatter. Table/figure/abstract differences are source discrepancies,not measurement uncertainty or an interval.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Selected Izod formulation/test only;exact specimen and independent batch counts unknown.",
+        "source_statement": "No exact Izod count in inspected method/results;five formulations are not n=5 specimens and other-test counts are not transferred.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Author-labelled Izodimpact strength,Izod-Charpy K1053(ATSFAAR),GOST19109-2017(ISO180:2000) as cited;nominal80x9.8x3.6mm bars. Notch status,type/radius/remainingligament,impactvelocity,pendulumcapacity/calibration/corrections,actualarea/normalization formula and breakmode unknown. Machine name does not establishCharpymethod;no bendingmilling/rate/span or DSCconditions transferred.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "Retained publisherPDFp6 section2.5.3 Izod Impact Test",
+            "supports": [
+              "method",
+              "classification"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Table 1 labels the nominal feeds HCP:BPF:ECH as 1:8:16 through 1:24:16, while the listed reagent mole amounts and the section 2.2.1 statement about a constant 16-fold ECH excess do not establish a consistent normalized ratio.",
+          "disposition": "Preserve the printed ratio labels as nominal source recipe labels. Do not recompute ECH amounts, repair the ratios, infer the intended denominator or claim validated feed stoichiometry or final composition.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, section 2.2.1 opening paragraph and Table 1",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Table 1 lists HCP as 35 (0.086) g (Mole) for PNA-BPF-2, but as 35 (0.101) for PNA-BPF-1 and PNA-BPF-S.",
+          "disposition": "Keep the PNA-BPF-2 source label and its printed nominal 1:9:16 recipe without silently correcting the mass or mole entry. No recalculated composition is emitted.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, Table 1, HCP g (Mole) column, PNA-BPF-2 versus PNA-BPF-1 and PNA-BPF-S",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Section 2.1 names potassium hydroxide, whereas the synthesis headings, Table 1 and sections 2.2.1-2.2.2 describe NaOH or sodium hydroxide.",
+          "disposition": "Retain the contradiction. The selected route is source-described batch addition of solid alkali; the alkali chemical identity is not independently resolved or silently changed from KOH to NaOH.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, section 2.1 alkali entry, section 2.2.1 heading and Table 1; p.5, sections 2.2.1-2.2.2",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Selected PNA-BPF-4 Table7=3.7kJ/m²;Figure10 printed-label context=3.68kJ/m². The source PNA-BPF-5 additionally has Table7=4.1 versus abstract/Figure10=4.01,not ordinary one-decimal rounding;reason unresolved.",
+          "disposition": "Retain selected Table7 literal and all source alternatives as context,not as a second independent experiment. Do not add Figure10 precision,infer author rounding/rawdata,average,repair a supposedtypo,construct an uncertainty/interval or certify the true value. Figure10/Table6 composition context is not independent composition verification.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "RetainedPDFp1abstract; pp15-16 Table6 reportedfraction context; p16Table7; p19Figure10 printed labels",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "tarasov_2022_pna_bpf_epoxy",
+      "source_document": {
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+        "revision": "Polymers 2022, 14, 4547; publisher PDF published 27 October 2022, 22 pages; URL version=1666858817.",
+        "inspected_on": "2026-11-04",
+        "sha256": "1f06bc0667c7c5575a0e88772868a95cd27ba01a264d3b3a0b9c859a8a6423aa",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Retained same publisherPDF visually checked pp1,5,6,15,16,19: CCBY4,commonDDS preparation,Izodmethod,Table7 selected literals,Table6 author context andFigure10/abstract alternatives. No fresh PDFdownload,latestrevision/SI completeness,rawdata reanalysis or standards/scientific certification.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Retained same publisherPDF visually checked pp1,5,6,15,16,19: CCBY4,commonDDS preparation,Izodmethod,Table7 selected literals,Table6 author context andFigure10/abstract alternatives. No fresh PDFdownload,latestrevision/SI completeness,rawdata reanalysis or standards/scientific certification.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      },
+      "id": "refprop_tarasov2022_pna_bpf_4_izod_impact_strength",
+      "material_state_id": "state_tarasov2022_pna_bpf_4_dds_cured_izod",
+      "evidence": [
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "Retained publisherPDFp16 Table7 PNA-BPF-4 Izod Impact Strength(kJ/m²)",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "Retained publisherPDFp6 section2.5.3 Izod Impact Test",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ],
+      "scope_note": "Source-qualified PNA-BPF-4 Table7 3.7kJ/m² only. Unknown notch/velocity/normalization/breakmode,T/RH,conditioning,n/dispersion prevents matched-condition or intrinsic-material-constant claims. Table7PNA5 4.1 versus abstract/Figure10 4.01 unresolved;selected table does not override other representations. No conversion toCharpy,rawenergy,force,pressure,tear strength,Gc/J-integral/KIC or engineinput;no automaticunitconversion,allowable or universalbound. Existing nominalfeed/mole/alkali contradictions retained."
+    },
+    {
+      "version": "1.0.0",
+      "quantity": "izod_impact_strength",
+      "quantity_dimension": "energy_per_area",
+      "source_property_label": "Izod Impact Strength (kJ/m²)",
+      "reported_value": {
+        "kind": "scalar",
+        "unit_text": "kJ/m²",
+        "unit_code": "kJ/m^2",
+        "value_text": "4.1",
+        "number": "4.1"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "not_stated",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Exact selected Table7 literal,not corrected or extended fromFigure10/abstract. Central estimator,n/batches and numeric uncertainty unknown. Source-qualified transcription does not establish the true experimental value or table superiority.",
+      "conditions": {
+        "temperature": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Izod test temperature unknown;180C cure and DSCtemperatures are not impact ambient."
+        },
+        "test_standard": {
+          "status": "reported",
+          "text": "GOST19109-2017(ISO180:2000),source describesmodifiedISO180",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "Retained publisherPDFp6 section2.5.3 Izod Impact Test",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source citation only;notch/method subdesignation and independent compliance unknown."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Author-labelled Izodimpact strength,Izod-Charpy K1053(ATSFAAR),GOST19109-2017(ISO180:2000) as cited;nominal80x9.8x3.6mm bars. Notch status,type/radius/remainingligament,impactvelocity,pendulumcapacity/calibration/corrections,actualarea/normalization formula and breakmode unknown. Machine name does not establishCharpymethod;no bendingmilling/rate/span or DSCconditions transferred.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "Retained publisherPDFp6 section2.5.3 Izod Impact Test",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source Izodlabel,not Charpy or an intrinsic fracture-energy constant."
+        },
+        "direction": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Impactbar orientation,notch/strikingface and processing-axis relationship unknown;no isotropy assigned."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Impact-specific postcure conditioning,humidity,moisture equilibrium and storage duration unknown."
+        },
+        "loading_rate": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Impactvelocity,releaseangle and pendulum kinetic setting unknown. Bending0.85mm/min and tensile10mm/min are not transferred."
+        },
+        "additional_conditions": [
+          {
+            "name": "notch_status",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Notched/unnotched mode unknown;do not choose a mode from ISO180citation."
+            }
+          },
+          {
+            "name": "notch_geometry",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Notch type,radius,depth and remaining ligament unknown;no standard-default geometry."
+            }
+          },
+          {
+            "name": "area_normalization",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Actual cross-section/ligament area and energy-area reduction/correction formula unknown;no re-normalization from nominal dimensions."
+            }
+          },
+          {
+            "name": "pendulum_capacity_and_calibration",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Pendulum energy capacity,calibration and loss corrections unknown;no raw absorbed energy inferred."
+            }
+          },
+          {
+            "name": "break_mode",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Failure/break classification and handling of partial or nonbreak events unknown."
+            }
+          },
+          {
+            "name": "nominal_specimen_dimensions",
+            "fact": {
+              "status": "reported",
+              "text": "80 × 9.8 × 3.6 mm (length × width × thickness)",
+              "evidence": [
+                {
+                  "source_id": "tarasov_2022_pna_bpf_epoxy",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+                  "locator": "Retained publisherPDFp6 section2.5.3 Izod Impact Test",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Nominal bars only;actual metrology and impact machining route unknown."
+            }
+          },
+          {
+            "name": "test_relative_humidity",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Izod test RH unknown;no assumed laboratory default."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "not_stated",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "Inspected Izod method/Table7/Figure10 do not define central aggregation,n,batches or numeric SD/SE/CI. Unknown does not mean zero scatter. Table/figure/abstract differences are source discrepancies,not measurement uncertainty or an interval.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Selected Izod formulation/test only;exact specimen and independent batch counts unknown.",
+        "source_statement": "No exact Izod count in inspected method/results;five formulations are not n=5 specimens and other-test counts are not transferred.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Author-labelled Izodimpact strength,Izod-Charpy K1053(ATSFAAR),GOST19109-2017(ISO180:2000) as cited;nominal80x9.8x3.6mm bars. Notch status,type/radius/remainingligament,impactvelocity,pendulumcapacity/calibration/corrections,actualarea/normalization formula and breakmode unknown. Machine name does not establishCharpymethod;no bendingmilling/rate/span or DSCconditions transferred.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "Retained publisherPDFp6 section2.5.3 Izod Impact Test",
+            "supports": [
+              "method",
+              "classification"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Table 1 labels the nominal feeds HCP:BPF:ECH as 1:8:16 through 1:24:16, while the listed reagent mole amounts and the section 2.2.1 statement about a constant 16-fold ECH excess do not establish a consistent normalized ratio.",
+          "disposition": "Preserve the printed ratio labels as nominal source recipe labels. Do not recompute ECH amounts, repair the ratios, infer the intended denominator or claim validated feed stoichiometry or final composition.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, section 2.2.1 opening paragraph and Table 1",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Table 1 lists HCP as 35 (0.086) g (Mole) for PNA-BPF-2, but as 35 (0.101) for PNA-BPF-1 and PNA-BPF-S.",
+          "disposition": "Keep the PNA-BPF-2 source label and its printed nominal 1:9:16 recipe without silently correcting the mass or mole entry. No recalculated composition is emitted.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, Table 1, HCP g (Mole) column, PNA-BPF-2 versus PNA-BPF-1 and PNA-BPF-S",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Section 2.1 names potassium hydroxide, whereas the synthesis headings, Table 1 and sections 2.2.1-2.2.2 describe NaOH or sodium hydroxide.",
+          "disposition": "Retain the contradiction. The selected route is source-described batch addition of solid alkali; the alkali chemical identity is not independently resolved or silently changed from KOH to NaOH.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "PDF p.4, section 2.1 alkali entry, section 2.2.1 heading and Table 1; p.5, sections 2.2.1-2.2.2",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Selected PNA-BPF-5 Table7=4.1kJ/m²;Figure10 printed-label context=4.01kJ/m². The source PNA-BPF-5 additionally has Table7=4.1 versus abstract/Figure10=4.01,not ordinary one-decimal rounding;reason unresolved.",
+          "disposition": "Retain selected Table7 literal and all source alternatives as context,not as a second independent experiment. Do not add Figure10 precision,infer author rounding/rawdata,average,repair a supposedtypo,construct an uncertainty/interval or certify the true value. Figure10/Table6 composition context is not independent composition verification.",
+          "evidence": [
+            {
+              "source_id": "tarasov_2022_pna_bpf_epoxy",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+              "locator": "RetainedPDFp1abstract; pp15-16 Table6 reportedfraction context; p16Table7; p19Figure10 printed labels",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "tarasov_2022_pna_bpf_epoxy",
+      "source_document": {
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+        "revision": "Polymers 2022, 14, 4547; publisher PDF published 27 October 2022, 22 pages; URL version=1666858817.",
+        "inspected_on": "2026-11-04",
+        "sha256": "1f06bc0667c7c5575a0e88772868a95cd27ba01a264d3b3a0b9c859a8a6423aa",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "Retained same publisherPDF visually checked pp1,5,6,15,16,19: CCBY4,commonDDS preparation,Izodmethod,Table7 selected literals,Table6 author context andFigure10/abstract alternatives. No fresh PDFdownload,latestrevision/SI completeness,rawdata reanalysis or standards/scientific certification.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "Retained same publisherPDF visually checked pp1,5,6,15,16,19: CCBY4,commonDDS preparation,Izodmethod,Table7 selected literals,Table6 author context andFigure10/abstract alternatives. No fresh PDFdownload,latestrevision/SI completeness,rawdata reanalysis or standards/scientific certification.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      },
+      "id": "refprop_tarasov2022_pna_bpf_5_izod_impact_strength",
+      "material_state_id": "state_tarasov2022_pna_bpf_5_dds_cured_izod",
+      "evidence": [
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "Retained publisherPDFp16 Table7 PNA-BPF-5 Izod Impact Strength(kJ/m²)",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "Retained publisherPDFp6 section2.5.3 Izod Impact Test",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ],
+      "scope_note": "Source-qualified PNA-BPF-5 Table7 4.1kJ/m² only. Unknown notch/velocity/normalization/breakmode,T/RH,conditioning,n/dispersion prevents matched-condition or intrinsic-material-constant claims. Table7PNA5 4.1 versus abstract/Figure10 4.01 unresolved;selected table does not override other representations. No conversion toCharpy,rawenergy,force,pressure,tear strength,Gc/J-integral/KIC or engineinput;no automaticunitconversion,allowable or universalbound. Existing nominalfeed/mole/alkali contradictions retained."
     }
   ]
 }

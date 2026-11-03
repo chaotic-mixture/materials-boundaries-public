@@ -1,0 +1,145 @@
+{
+  "schema": "existing-epoxy-Izod-source-contract-proposal/1",
+  "baseline_snapshot": "93165ce378158742ee6c4fc1374f5007ba0de1c81ac01b07c93b3be7c26deec4",
+  "baseline_git_head": "ba1dc2f0a06d306a92c89a3b32de33573907ace5",
+  "source_id": "tarasov_2022_pna_bpf_epoxy",
+  "doi": "10.3390/polym14214547",
+  "rows": [
+    {
+      "source_label": "PNA-BPF-1",
+      "base_state_id": "state_tarasov2022_pna_bpf_1_dds_cured_flexural",
+      "base_property_id": "refprop_tarasov2022_pna_bpf_1_tensile_strength",
+      "new_state_id": "state_tarasov2022_pna_bpf_1_dds_cured_izod",
+      "new_property_id": "refprop_tarasov2022_pna_bpf_1_izod_impact_strength",
+      "table7_number": "2.2",
+      "figure10_printed_label_context": "2.20",
+      "source_table6_phosphazene_fraction_context_wt_percent": "59",
+      "source_unit_text": "kJ/m²",
+      "unit_code": "kJ/m^2"
+    },
+    {
+      "source_label": "PNA-BPF-2",
+      "base_state_id": "state_tarasov2022_pna_bpf_2_dds_cured_flexural",
+      "base_property_id": "refprop_tarasov2022_pna_bpf_2_tensile_strength",
+      "new_state_id": "state_tarasov2022_pna_bpf_2_dds_cured_izod",
+      "new_property_id": "refprop_tarasov2022_pna_bpf_2_izod_impact_strength",
+      "table7_number": "2.9",
+      "figure10_printed_label_context": "2.91",
+      "source_table6_phosphazene_fraction_context_wt_percent": "52",
+      "source_unit_text": "kJ/m²",
+      "unit_code": "kJ/m^2"
+    },
+    {
+      "source_label": "PNA-BPF-3",
+      "base_state_id": "state_tarasov2022_pna_bpf_3_dds_cured_flexural",
+      "base_property_id": "refprop_tarasov2022_pna_bpf_3_tensile_strength",
+      "new_state_id": "state_tarasov2022_pna_bpf_3_dds_cured_izod",
+      "new_property_id": "refprop_tarasov2022_pna_bpf_3_izod_impact_strength",
+      "table7_number": "2.6",
+      "figure10_printed_label_context": "2.63",
+      "source_table6_phosphazene_fraction_context_wt_percent": "41",
+      "source_unit_text": "kJ/m²",
+      "unit_code": "kJ/m^2"
+    },
+    {
+      "source_label": "PNA-BPF-4",
+      "base_state_id": "state_tarasov2022_pna_bpf_4_dds_cured_flexural",
+      "base_property_id": "refprop_tarasov2022_pna_bpf_4_tensile_strength",
+      "new_state_id": "state_tarasov2022_pna_bpf_4_dds_cured_izod",
+      "new_property_id": "refprop_tarasov2022_pna_bpf_4_izod_impact_strength",
+      "table7_number": "3.7",
+      "figure10_printed_label_context": "3.68",
+      "source_table6_phosphazene_fraction_context_wt_percent": "28",
+      "source_unit_text": "kJ/m²",
+      "unit_code": "kJ/m^2"
+    },
+    {
+      "source_label": "PNA-BPF-5",
+      "base_state_id": "state_tarasov2022_pna_bpf_5_dds_cured_flexural",
+      "base_property_id": "refprop_tarasov2022_pna_bpf_5_tensile_strength",
+      "new_state_id": "state_tarasov2022_pna_bpf_5_dds_cured_izod",
+      "new_property_id": "refprop_tarasov2022_pna_bpf_5_izod_impact_strength",
+      "table7_number": "4.1",
+      "figure10_printed_label_context": "4.01",
+      "source_table6_phosphazene_fraction_context_wt_percent": "22",
+      "source_unit_text": "kJ/m²",
+      "unit_code": "kJ/m^2"
+    }
+  ],
+  "primary_PDF_sha256": "1f06bc0667c7c5575a0e88772868a95cd27ba01a264d3b3a0b9c859a8a6423aa",
+  "source_selection_proposal": {
+    "selected": "Table7 five Izod Impact Strength(kJ/m²) literals,not re-rounded Figure10 numbers",
+    "mandatory_discrepancy": "PNA-BPF-5 Table7=4.1 vs abstract/Figure10=4.01. Not ordinary one-decimal rounding;reason unknown. Ask independent reviewer whether explicit-conflict Table7 catalog transcription is admissible or row must remain deferred. No averaging,replacement or typo repair.",
+    "other_context": "Figure10 has printed numerical labels2.20/2.91/2.63/3.68/4.01 along source Table6 reportedfraction59/52/41/28/22 context. Firstfour consistent with fewer-decimal presentation but cause/underlyingrawvalues notestablished. No pixelestimate or newcompositioncertification."
+  },
+  "contract_proposal": {
+    "quantity": "izod_impact_strength",
+    "dimension": "energy_per_area",
+    "central_units": [
+      "kJ/m^2",
+      "J/m^2"
+    ],
+    "spellings": {
+      "kJ/m^2": [
+        "kJ/m^2",
+        "kJ/m2",
+        "kJ/m²"
+      ],
+      "J/m^2": [
+        "J/m^2",
+        "J/m2",
+        "J/m²"
+      ]
+    },
+    "semantics": "Author-labelled area-normalized Izodimpact result;exact area implementation unknown. Closedquantity,not Charpy,rawpendulumenergy,force,pressure,tensile/tear strength,fractureenergy/Gc/J-integral/KIC or engineinput. Do not infer notched/unnotchedmode,materialconstant/comparability,automaticunitconversion or renormalization.",
+    "shape": "Existingpositivelegacy scalar/interval/comparison,nonewbranch;energy_per_area alreadyexists elsewhere inproject butnewto materialreference lane. No specified_elongation.",
+    "old_test_adjustment": "OnceJ/m^2isregisteredcentrally,legacysharedstructuralschema mayacceptitsunitforwrongquantitywhile scientificvalidatorrejectsdimension. Preserveoldtear-testexactbytes beforeupdating structuralnegativeassertion;do notrelaxruntimeforce/length rejection."
+  },
+  "method": {
+    "locator": "PDFp6 section2.5.3",
+    "standard": "GOST19109-2017(ISO180:2000),as cited;source callsmodifiedISO180;not independentcomplianceverification",
+    "machine": "Izod-Charpy K1053(ATSFAAR),butmethodlabelisIzod,not Charpy",
+    "dimensions": "80x9.8x3.6mm bars;impactsectiondoesnot explicitlysay milledfrom3.6mm plate,so donotborrowbendingmillingroute",
+    "unknowns": [
+      "notched/unnotched status;notchtype,radius,remainingligament",
+      "pendulumcapacity,impactvelocity/angle,calibration/corrections",
+      "actualarea/normalizationformula,energyreduction andfailure/breaktype",
+      "T/RH,postcureconditioning andstorage",
+      "orientation ofbar/notch/strike,replicate/batchcount",
+      "centralestimator,SD/SE/CI/numericuncertainty"
+    ]
+  },
+  "preparation": "CommonPDFp5section2.4 DDS sourcecalculatedstoichiometry,125C100mmHg vacuum20-40min,180C8hcure;pressureabsolute/gauge,conversion andtestenvironmentnot inferred.",
+  "state_plan": {
+    "new_material_identities_grades_sources": 0,
+    "new_states": 5,
+    "same_existing_identity": "SeparateIzodspecimenstates using existing fiveidentities. Existingbending/tensileprocessing or rate/spannottransferred;clonecommoncure/formulationfacts only;reset impactform/conditioning/porosity/orientation/evidence/labels.",
+    "old_objects": "All5322oldproperties and5207oldstates completeunchanged",
+    "source": "Oneexisting source appendclaimnote only"
+  },
+  "statistics": {
+    "summary_statistic": "not_stated",
+    "reporting_basis": "not_stated",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "sample_count": null,
+    "scope": "Selectedimpactmethod/Table7/Figure10do notspecifycentralstat/n/SD/SE/CI;notzero or borrowedfromneighboringtests."
+  },
+  "inherited_source_discrepancies": "Threefeed/mole/alkalicontradictionsfromexistingtensilestrength records preserved;do notinheritbendingcontinuousdecrease issueas anIzod-specificclaim. AddTable7/Figure10/abstractIzodnumberboundary.",
+  "inspection": {
+    "date": "2026-11-04",
+    "visual_pages": [
+      1,
+      5,
+      6,
+      15,
+      16,
+      19
+    ],
+    "fresh_assets": "Newp15/p19PNGrenderedfromretainedsamepublisherPDF;notfreshPDFdownload",
+    "licence": "ArticleCCBY4.0 onp1;rawPDF/PNGexternalonly;author/title/journal/DOIattributionretained",
+    "latest_notice_revisions_SI_completeness": "unknown;notfreshchecked",
+    "rawdata": "Notobtained;p20authoronrequest statement, no authorcontact."
+  },
+  "stage": "Source/conceptonly;no newbatchcode/schema/native/install/push changes"
+}

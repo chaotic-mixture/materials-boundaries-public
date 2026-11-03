@@ -1,5 +1,18 @@
 # Materials Boundaries — source-qualified materials database
 
+## Current database checkpoint: polymer r23-r25 (2026-11-04)
+
+Current native tables contain **5,180 identities, 5,212 states and 5,327 properties**. Polymer coverage is **1,037 identities, 1,069 states and 1,168 properties**: 1,000 computational-reference and 168 experimental-reference labels, without scientific certification.
+
+Three accepted local rounds add 11 properties on existing identities: one NBR tear result, five epoxy flexural break elongations and five Izod impact results; six separate specimen states are added. All 5,316 preceding property objects remain unchanged. One REF state adds rheometer t90 context; five bending states only update revisions/links/scope; two existing sources append notes.
+
+Unknown conditions and source conflicts remain explicit. REF rheometer 381 s does not verify the actual press hold. Izod Table 7 value 4.1 versus abstract/Figure 10 value 4.01 is unresolved; notch status, impact speed and area reduction remain unknown. No source repair, automatic conversion, fracture-parameter inference or engineering input is made.
+
+Among 168 experimental property objects, 111 test-temperature fields and 116 conditioning fields are unreported; exact n is unconfirmed for 101 (97 null, four lower bounds). These are property counts, not independent test groups.
+
+[Evidence and experimental delivery](experimental/polymer-exploration/20261104/delivery-r23-r25/README.zh.md). Snapshot `a5c0c67e51e471294363c9d30db9af82a73f1dd619e1d1a4ecb5c2a276e42ea1`; native software remains 0.35.0. Commit, publication and remote CI require exact subsequent receipts. No main merge, stable release or deployment is claimed. Following checkpoints retain historical context.
+
+
 ## Current database checkpoint: polymer r19-r22 (2026-11-03)
 
 The current native tables contain **5,180 identities, 5,206 states and 5,316 properties**. Polymer coverage is **1,037 identities, 1,063 states and 1,157 properties**: 1,000 computational-reference and 157 experimental-reference labels, without scientific certification.

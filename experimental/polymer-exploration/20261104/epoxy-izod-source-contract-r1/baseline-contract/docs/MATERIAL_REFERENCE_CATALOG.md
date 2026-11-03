@@ -1,0 +1,635 @@
+# Concrete material identities and reference properties
+
+Version 0.29.0 adds a separate, offline catalogue of concrete source-scoped
+materials. Each admitted material state resolves at least one numerical property
+with its original value/unit strings, source URL and precise locator. These
+records are not added to the existing mathematical claims, specimen-observation
+families or computational predictions. No reference value becomes a calculator
+input automatically.
+
+## Browse and inspect
+
+```sh
+python -m materials_boundaries catalog materials --text --lang en
+python -m materials_boundaries catalog materials --category polymer --text --lang zh
+python -m materials_boundaries catalog materials --query "graphite" --text --lang ja
+python -m materials_boundaries catalog reference-properties --quantity mass_density --text --lang de
+python -m materials_boundaries catalog materials --json
+```
+
+Use `--id` for an exact state/property ID, `--source-id` for a primary property
+source, and `--quantity` or `--evidence-kind` for the supported exact property
+filters. Materials additionally accept `--identity-id`, `--grade-id` and
+`--category`. Reference properties additionally accept `--material-id` (the
+state ID) and `--reporting-basis`. All supplied filters combine with AND. When a
+material query supplies several property filters, the same linked property must
+satisfy all of them. An unrecognized or inapplicable filter fails rather than
+silently disappearing.
+
+Search is literal Unicode-casefold, all-term substring matching across IDs,
+canonical names, authored English/Chinese/Japanese/German names, explicit
+aliases, grade designations and source property labels. It does not infer
+chemical equivalence or translate a query. The selected display language never
+changes canonical JSON, scientific source wording, numeric precision or units.
+Exact IDs and filter codes remain case-sensitive. `--help --lang LANG` describes
+the new routes in each supported language.
+
+Text output resolves property-specific conditions and citations. Unknown test
+temperature, temper, orientation, porosity, conditioning and uncertainty remain
+explicit unknowns. A processing temperature is not a measurement temperature.
+A source’s disclaimer, limited inspection scope and reuse-license evidence must
+be read with the property.
+
+[Initial selected materials and exact source values](MATERIAL_COVERAGE_v0.29.0.md)
+
+## What is counted
+
+- An **identity** is the curated source-supported material composition or
+  formulation. Broad categories, names, translations and aliases do not add
+  identities
+- A **grade** is a qualified source designation belonging to an identity. A
+  missing grade remains null; it is not an invented generic grade
+- A **state** is the source-scoped product/form/processing context. Another
+  state or another temperature is not another material identity
+- A **property** is one source-reported value for one state. Two properties do
+  not count as two materials
+
+The `material_coverage(materials, properties)` API derives reachable identity,
+grade, state and property counts from the actual registry. Exact structural clones are rejected even when IDs or display aliases change.
+Chemical equivalence and genuinely distinct formulations still require source-based
+curation; software counts validated registry identities, not independently proven
+chemical species. No production count or material-name whitelist limits later
+valid contributions. The initial
+release deliberately selects one independently cross-checked property per
+identity. These are coverage counts, not counts of independent replications or
+claims that whole chemical families have known universal properties.
+
+## Evidence and interpretation
+
+`tensile_stress_at_specified_elongation` stores a source-reported stress at a
+specified percent elongation, including rubber M100/M200 when source-supported.
+Its required `specified_elongation` descriptor keeps the original target number,
+percent unit, source evidence and scope notes. The descriptor is forbidden on
+other quantities. Percent is never a central pressure-result unit.
+These are stresses, without division by elongation or automatic conversion to
+Young, tangent or secant modulus. Source test-standard edition/compliance,
+strain-measure implementation and missing test conditions remain separate
+questions. No evaluator input is derived from these catalog-only records.
+
+`tensile_yield_strength` preserves a source-labelled tensile yield stress. It is
+distinct from maximum tensile strength, stress at break and elastic moduli.
+An unreported yield criterion remains unknown in `additional_conditions`
+(`yield_criterion`); a test-standard citation does not establish a 0.2% offset,
+upper/lower yield event or verified standard compliance. A reported specimen count
+does not establish that a printed ± value is SD, SE or a confidence interval.
+These records remain catalog-only and do not supply mechanics evaluator inputs.
+
+Manufacturer and technical-association references remain reference values,
+even when the source mentions a measurement. A typical value, guideline range
+or specification limit is not a theoretical material bound or an engineering
+allowable. Published experimental summaries keep their separate evidence class.
+Source-reported calculation is never silently relabelled measurement.
+
+The printed-polymer tensile results retain the source’s mean, a separate
+reported standard deviation and exact test-group n=5. SD is neither SEM nor a
+confidence interval. The supplier product and print/drying/testing recipe limit
+applicability; 100% slicer infill does not establish zero physical porosity.
+Missing product SKU and lot information is not filled in by guessing.
+
+The ceramic entries are particular study specimens, including their additives,
+processing and porosity context, rather than constants for pure ceramic
+families. Apparent, bulk, Archimedes-method and helium-pycnometric density scopes
+are retained without treating them as interchangeable. A method name alone does
+not establish an unsupported density-basis classification.
+
+Every record remains `catalog_only`, with `universal_bound: false` and
+`engineering_allowable: false`. There is no autofill, interpolation, fitted curve, ranking, mixing calculation
+or engineering comparison. The separately reviewed empirical-conversion lane
+retains a source-deposited result, audits its documented conversion and exposes
+an exact SI unit conversion without inventing measurement precision. The eight pre-existing executable composite rules are unchanged.
+
+## Storage and validation
+
+`materials_boundaries/data/materials.json` holds identities, grades and states.
+`reference_properties.json` holds the separate source-reported facts.
+`material_locales.json` holds four-language interface labels; material names
+are authored in the registry. Bibliography reuses the existing append-only
+source registry.
+
+The new closed schemas and dependency-free runtime validator check record
+shape, supported quantities/units, finite decimal lexical values, evidence and
+source integrity, reciprocal state/property ownership, unique IDs and reachable
+identities/grades. They reject orphan states, dangling sources, unknown fields,
+incorrect SD units and unsupported evaluator capabilities. Every state needs at
+least one resolved property. A malformed unselected record is rejected before
+filtering. Validation is not independent scientific peer review, a specimen
+check, native-language certification or legal clearance.
+
+Structural duplicate checks treat recursively normalized evidence as an unordered
+set: repeating a citation, reordering citations or reordering their support tags
+cannot make a cloned identity or state distinct. This affects comparison signatures
+only; source records retain their original evidence arrays. Other array order and
+multiplicity are unchanged, and support tags still require unique items.
+
+`resolve_material(state_id, materials, properties, sources)` supplies an
+inspection envelope containing the identity, nullable grade, state, properties
+and referenced source records. This is an in-process inspection API; there is
+no separate stable inspection-file schema or engineering input format in this
+release.
+
+## Source and rights scope
+
+Only brief attributed facts, source locators and original curation are bundled.
+No source PDF, screenshot, copied table, article full text or extracted research
+prose is included. CC BY sources are attributed and linked; their articles are
+not relicensed by the project. Manufacturer/association sources with no verified
+open license retain that unknown status. Limited factual curation is not a
+blanket reuse permission or legal-clearance claim. Rights-held candidates stay
+outside the package. See [third-party notices](../THIRD_PARTY_NOTICES.md).
+
+## Add a material without a new Python family
+
+1. Identify and evidence a genuinely distinct identity, or reuse an existing
+   one. Qualify a real grade only when the source supplies it
+2. Create the source-scoped state, explicit unknowns and a nonempty property
+   list; append a bibliographic source only if it is genuinely new
+3. Preserve original values, decimal precision, unit strings, statistics,
+   comparators/ranges and per-property conditions. Never infer missing test
+   conditions or convert a source range into uncertainty
+4. Use only the already supported quantity/unit/representation contract. A new
+   scientific capability requires schema/runtime review, but a valid new grade
+   ID with supported facts requires no material-specific code
+5. Record source inspection, source-version/hash status, identity-distinction
+   rationale and rights admission. Provide all four authored names and retain
+   the machine-assisted/not-scientifically-reviewed label status
+6. Run `python scripts/validate_catalogs.py`, the complete unittest suite, wheel
+   metadata checks and an installed-wheel smoke test. Refresh only marked
+   current summary counts in a disposable contribution rehearsal
+
+Old scientific records and historical fixtures must remain unchanged. Source
+inspection and factual transcription review do not upgrade
+`independent_scientific_review` or claim raw-data reanalysis.
+
+## v0.30.0 second material batch
+
+The [v0.30.0 coverage](MATERIAL_COVERAGE_v0.30.0.md) adds seven distinct
+source-scoped identities and keeps the v0.29.0 discussion above as the initial
+release history. The additions use the same identity/grade/state/property graph,
+closed fields, source-preserving display and catalog-only safeguards.
+
+### Compilation and measured-input derivation
+
+`published_handbook_reference` with
+`determination_basis: source_reports_compiled_measurements` identifies a
+published handbook or analogous explicit compilation of empirical results.
+Its required method type, `source_reported_compilation`, explains the compilation
+and the selected property's method/reference-condition scope using source
+evidence. Compilation can include aggregation, source-side unit conversion and
+reference-condition adjustment; it is not a claim of new experimentation at
+publication or direct testing at every stated condition.
+
+`published_measurement_derived_reference` with
+`determination_basis: source_reports_calculation` separates properties explicitly
+derived from measured inputs from direct measured properties and purely
+computational predictions. The v0.30.0 supported combination is deliberately
+limited to `mass_density`, `density_basis: crystallographic` and
+`method_definition.type: source_reported_crystallographic_derivation`.
+The definition and evidence explain the measured unit-cell inputs, adopted cell
+content/atomic masses and the source's derivation. This gate is generic by
+physical method, not by material ID. Other measured-input-derived methods need
+an explicit reviewed contract before admission.
+
+`crystallographic` density is distinct from `bulk`, `apparent`, powder packing
+and a silently inferred `true` density. An experimental calibration correction
+or ordinary data reduction does not alone require this derived class: the
+historical silicon recalibration remains `published_experimental_reference`
+with `source_reports_measurement` and `source_reported_conventional`.
+The method-definition object still has only its existing keys. These new enums
+do not unlock calculation, mixing, interpolation or evaluator use.
+
+Examples of the new exact evidence filters:
+
+```sh
+python -m materials_boundaries catalog materials --evidence-kind published_handbook_reference --text --lang en
+python -m materials_boundaries catalog reference-properties --evidence-kind published_measurement_derived_reference --text --lang de
+```
+
+Source lexical fidelity also permits ASCII spaces between fractional digit
+groups in a decimal-point token: `2.329 1289` retains that `value_text`, while
+`number` is `2.3291289`. The first fractional group has three digits, any
+intermediate groups have three, and the final group has one to four; each
+separation is exactly one ASCII space. Matching preserves every digit and decimal
+place; it is not arbitrary whitespace removal, arithmetic parsing or permission
+to discard trailing zeroes. Existing integer thousands-grouping syntax stays separate.
+The unit spelling `grams per cubic centimeter` maps to `g/cm^3` without changing
+the number or original unit string.
+
+### Conditions belong to the selected result
+
+- Historical NBS silicon crystal X2 uses the corrected 1975 assigned value.
+  The direct 20 °C reference statement is in the 1974 companion; the 1975
+  introduction and §7 connect the same crystals to correction-only
+  recalculation. The chain establishes a reference basis, not a claim that the
+  1975 value table prints 20 °C or every determination occurred at 20 °C. X2 is
+  one physical crystal; repeated determinations are not additional specimens.
+  The value is not current certification, and old uncertainty is not carried
+  into the revised value
+- Germanium source number 4065 has a 25 °C crystallographic density derived
+  from measured powder-XRD lattice data. The diffraction-pattern temperature
+  of 26 °C has a different role. The identifier is not proven to be a batch,
+  stock code, unique specimen or grade; physical-specimen count is unknown.
+  It is neither weighed bulk density, powder packing density nor a DFT result
+- Sugar maple, northern red oak and Sitka spruce are species-average handbook
+  flexural references on a common 12% moisture basis. Some dry data were
+  adjusted by the source; direct-versus-adjusted history for each cell is
+  unknown. The simply supported center-loaded beam has span/depth 14:1, and
+  the reported longitudinal bending modulus includes shear deflection. No
+  approximate 10% correction is applied. This is not an axial or isotropic
+  Young's modulus. ASTM D 143 is a source-stated procedural basis, without a
+  cell-specific edition/compliance claim. The generic 22% green-wood
+  coefficient of variation is not these cells' SD or uncertainty
+- NC1 concrete is the study's nominal 28-day water-saturated formulation,
+  with a reported mean over three cylinders. Its 20 °C curing/storage
+  condition is not a density-test temperature. Preserve the source's nominal
+  age despite the demolding/storage chronology ambiguity; do not repair it to
+  29 days. CEM I 42.5 R identifies a cement constituent, not a concrete grade.
+  The maximum individual deviation statement is not SD or uncertainty
+- Carrara marble's bulk density belongs to disk specimen 13, not a pooled
+  group mean. Density procedure, instrument, temperature, moisture and
+  uncertainty remain unknown. Tabulated mass/dimensions do not establish a
+  geometric method; dry/environmental-temperature wording concerns P-wave
+  testing. The source's group-SD reversal and unselected group-geometry
+  conflict are recorded without assigning either group SD to this specimen
+
+All numerical-source hashes refer to the actual inspected asset. In particular,
+NC1's selected-value digest identifies Europe PMC XML, not publisher HTML/PDF.
+The 1974 silicon companion has inspected web-text support but no retained-byte
+hash; no checksum is invented. Recorded hashes require a null `hash_note`;
+revision/erratum information belongs in revision or inspection scope.
+
+Only selected facts, precise citations and original qualifications are included.
+NIST/NBS Technical Series, scoped USDA government-authored content and two
+article-specific CC BY 4.0 sources retain their distinct rights evidence in the
+[third-party supplement](../THIRD_PARTY_NOTICES.md#second-material-reference-batch-v0300).
+The independent check was source-transcription review, not independent
+scientific peer review or raw-data reanalysis. Optional GaAs remains excluded
+behind its indentation-specific quantity/method gate.
+
+
+## v0.31.0 fiber and elastomer batch
+
+Six further concrete identities add two tensile moduli, one Young's modulus and
+three mass-density values. Read the [source-specific limits](MATERIAL_COVERAGE_v0.31.0.md)
+before using any selected fact. All prior 28 records retain their original data.
+The material/reference envelopes remain 1.0.0, as in the preceding additive
+extension; clients must upgrade runtime, schema and locale labels together.
+
+### Closed uncertainty variants
+
+A numerical uncertainty has a matching `uncertainty_status` and `uncertainty.type`,
+a nonnegative finite exact-decimal amplitude, matching result unit, source evidence
+and a source-scoped note. It requires a scalar central result. It is never stored
+as a physical min/max range or confidence endpoints.
+
+- `reported_standard_deviation` retains the existing explicit `reported_mean`
+  evidence requirement and null confidence-level/coverage metadata
+- `reported_confidence_interval` stores a source-reported symmetric ± amplitude
+  plus `confidence_level` (`value_text`, exact decimal-string `number`,
+  `unit_code: percent`). The level is strictly between 0 and 100, with matching
+  percent text. `estimand` and `construction` are evidence-backed reported facts,
+  or explicitly not reported with explanatory notes. There is no default mean
+  estimand, distribution, formula, SD/SE conversion or coverage factor. A CI with
+  an unreported confidence level is not admitted by this version
+- `reported_plus_minus_unspecified` retains a reported ± amplitude whose
+  statistical meaning is unspecified. Confidence level and coverage factor stay
+  null. It does not require or imply arithmetic-mean aggregation
+
+The complete source expression belongs in `uncertainty_note`, alongside separate
+central and amplitude strings. Null uncertainty is allowed only for the existing
+nonnumerical statuses. Four-language text dispatches the actual kind, CI level,
+unknown estimand/construction and type-appropriate notice. Old SD output is
+unchanged. Source truth still requires independent review: structural validation
+cannot determine whether free text truthfully describes an experiment.
+
+### Source windows and normalization
+
+`method_definition.extraction_window` is null or a reported fact with text,
+evidence and optional notes. Non-null windows require primary method support;
+a linked primary-source entry can establish the supporting article's role, with
+actual detailed methods attributed to that article. Source strain units and
+qualifiers remain in the text. This field is not an executable fit definition,
+range evaluator or permission to reinterpret finite-extension rubber stress as
+Young's modulus.
+
+Normalization and correction facts use the existing condition/fact fields.
+Unknown, not verified and not applicable remain distinct. The source's applied
+Sylgard geometry/strain correction is not applied again. A circular-area formula
+for basalt strength does not verify its modulus-area estimator. T700S's selected
+dataset cell is not recomputed from diameter or replaced by a manufacturer value.
+
+Fresh, independently source-qualified identities can reuse these generic
+contracts, with new IDs and evidence. Holds for Kevlar 49, Dyneema SK76 and
+Sylgard 527 describe this batch's unresolved evidence only; there is no permanent
+ID or chemical-family ban. The eight-rule evaluator, existing scientific
+families, old observations/predictions and catalog-only boundary are unchanged.
+
+
+## v0.32.0 metals and natural-fiber batch
+
+The [v0.32.0 coverage](MATERIAL_COVERAGE_v0.32.0.md) adds nine distinct
+source-qualified identities, each with one original experimental reference
+property: **34 + 9 = 43 identities**. Five tensile strengths, two mass densities
+and two chord Young's moduli use existing physical quantities and broad
+categories. Eight original sources support the additions. The historical
+sections above describe their respective releases; this section extends the
+contract without reinterpreting old records.
+
+### Separately reported measures
+
+`reported_measures` is one closed alternative in the uncertainty union, with a
+matching `uncertainty_status` and a nonempty `measures` array. Its scalar central
+result remains separate from its uncertainty descriptors. Each descriptor
+requires `kind`, `availability`, `basis`, `reported_value`, `qualifier`, `scope`,
+nonempty primary-source `evidence`, null `confidence_level`, null
+`coverage_factor`, and nullable `note`. Unknown keys, nested envelopes and exact
+duplicate descriptors are rejected.
+
+The closed kinds are `standard_deviation`, `coefficient_of_variation`,
+`standard_error_of_mean` and `estimated_inaccuracy`. Numeric descriptors use
+`availability: numeric_reported`; their `reported_value` holds exact decimal
+`number`, source `value_text`, `unit_text` and `unit_code`. Standard deviation is
+absolute and has the central result's physical unit. CV, SEM and estimated
+inaccuracy are relative to the reported central value and use percent; percent
+does not become a physical result unit. CV has no arbitrary 100% cap. Relative
+SEM requires an explicitly evidenced reported mean.
+
+Graphical-only support is deliberately limited to SD. It has
+`availability: graphical_only`, absolute basis, **null** `reported_value`, an
+exact figure/panel/caption locator and a note stating that no numerical amplitude
+was transcribed or digitized. Numeric availability cannot omit its amplitude;
+graphical availability cannot invent one. Silk's graph-only SD is therefore
+neither zero uncertainty nor wholly unreported uncertainty.
+
+Central aggregation and descriptor kind have independent evidence. A numeric
+SD in the new envelope may accompany the existing unknown-center statistic
+when the source explicitly labels SD but does not name the displayed center's
+aggregation. Such a record requires an explanatory note. Wool's **163 MPa**
+center remains `not_stated` with separately evidenced **23 MPa SD**; the old
+`reported_standard_deviation` alternative retains its explicit-mean requirement.
+The CI and unspecified-± alternatives likewise remain unchanged.
+
+`qualifier` distinguishes `approximately` from `not_qualified_in_source`.
+Molybdenum's **0.02% SEM** and **approximately 0.1% estimated inaccuracy** remain
+two independently evidenced relative descriptors, not one uncertainty value.
+Their measurement/population scopes and distinct meanings must survive text and
+JSON output. Flax/hemp's **56.12% / 72.02% CV** remains relative dispersion.
+There is no SD/SEM conversion, CV-derived amplitude, quadrature, interval
+construction, inferred confidence level, coverage factor or graphical digitizing.
+A descriptor is not a physical min/max bound or an engineering allowable.
+
+All numeric descriptors follow the existing bounded nonnegative finite-decimal
+lexical rules and source-text matching. Signs, nonfinite values, hidden controls,
+excessive precision and mismatched units/text remain invalid. Structural
+validation cannot establish that a source statement is scientifically true.
+
+### Source scientific notation
+
+Source `value_text` can preserve a narrowly accepted mantissa-times-power-of-ten
+spelling while `number` remains fixed-point. The selected density tokens
+`10.21 × 10^3` / `10210` and `19.23 × 10^3` / `19230` retain the source
+mantissa precision and `kg m−3` unit text. Exact decimal equivalence checks the
+notation; it does not recalculate a measurement, convert units or authorize
+rewriting the source display. The matcher is bounded and accepts only supported
+spellings, not general mathematical expressions or arbitrary metadata/unit
+parsing. Both molybdenum and tungsten depend on this support.
+
+### Interpretation and backward compatibility
+
+- AZ31 is the unreinforced as-extruded comparator; composite-process details
+  remain study context. Zinc's ± and AZ31's ± remain statistically unspecified
+- Flax/hemp method text is on PDF p.8, with Figure 6 p.7. Their source's
+  standard-edition discrepancy stays explicit. The source chord window,
+  minimum circular area, slack correction and absence of compliance correction
+  are not replaced by an initial or isotropic modulus
+- Silk keeps intraspecific/intraindividual sampling scope, five-cocoon origin,
+  graph-only SD and the ANOVA/t-test discrepancy without a significance claim
+- Broad `composite` means natural hierarchical lignocellulosic bundles for
+  flax/hemp, and `polymer` means natural protein fibers for silk/wool. These
+  classifications do not claim resin matrices, purified chemistry or new enums
+- Numerical room temperatures, successful sample denominators, density-test
+  methods/pressure and density timing relative to annealing are not invented
+
+The compatibility requirement keeps all prior 34 records and outputs unchanged.
+The material/reference envelopes remain 1.0.0; runtime, generated schema and
+four-language labels must be upgraded together. Locale output distinguishes CV,
+graph-only SD, SD with unknown central aggregation, relative SEM and approximate
+inaccuracy, preserving source qualifications. New records are catalog-only; the
+eight-rule evaluator and model/claim/prediction catalogs are not expanded.
+
+Read the [migration gates](MIGRATION_v0.32.0.md) before admitting a contribution.
+Exact-payload validation, old-output parity, full tests and installed-wheel
+checks are still required; source-transcription acceptance alone is not their
+success. Full attribution and separately scoped CC BY 4.0/NBS rights are in
+[third-party notices](../THIRD_PARTY_NOTICES.md#metals-and-natural-fiber-references-v0320).
+Only selected facts and original curation are included, never source assets.
+
+
+## v0.33.0 porous, natural and mineral batch
+
+The [v0.33.0 coverage](MATERIAL_COVERAGE_v0.33.0.md) adds eight identities,
+each with one original experimental density fact: **43 + 8 = 51 identities**.
+The registry now has **19 qualified grades, 51 source-scoped states and 51
+reference properties**, supported by seven new original articles. The full
+source registry contains **105** records. This is an application of the existing
+v0.32.0 contract: **no schema or runtime capability extension** is introduced.
+The material/reference envelope versions remain 1.0.0. Historical sections
+above describe their respective releases and are not retroactively rewritten.
+
+### Density and statistical scope
+
+All eight additions use existing `mass_density`, source-preserved decimal/unit
+strings and `published_experimental_reference`. LPO-1 PUR and CP plaster have
+explicit apparent density; Boral control brick and K1 sandstone have explicit
+bulk density. The source basis remains `not_stated` for AMD5-derived foam,
+cork and both bamboos. A method-informed pore-inclusive interpretation does not
+authorize changing an absent source basis to apparent/bulk, or relabeling any of
+these results as skeletal density.
+
+Cork demonstrates the already-supported separation between central aggregation
+and uncertainty kind. Its **0.17 g/cm³** remains `reported_value`; Table 5
+explicitly labels the separate **0.01 g/cm³** as SD, not the center as a mean.
+Use `reported_measures` with numeric absolute `standard_deviation`, exact
+source evidence, and the required explanation of unnamed central aggregation.
+Do not change the legacy mean-only SD contract, claim a mean to fit it, or
+flatten the descriptor into min/max or confidence endpoints. Its **n=10** is
+the selected species/treatment group, not all 40 density specimens or ten trees.
+
+K1 retains `reported_mean` for the source's **reported average of five
+replicates**, without claiming an explicitly arithmetic estimator. The printed
+**2.34 ± 0.01 g/cm³** uses `reported_plus_minus_unspecified`; ± is not identified
+as SD, SE, CI, range or instrument error. No derived 2.33–2.35 interval is
+admitted. Dry mass / specimen volume is known, but dimensions versus hydrostatic
+volume remains an unresolved source-method ambiguity.
+
+Boral remains `reported_value` with unknown density-specific count and
+aggregation. The global triplicate/average statement belongs to the initial
+raw-material tests paragraph; its application to density is unclear. Do not
+promote it to a density mean or n=3. PUR, Al foam and plaster likewise retain
+unknown density aggregation/count/uncertainty. Both bamboo values are reported
+species averages with six study specimens each and unknown density uncertainty;
+the exact averaging estimator and repeated-density-measurement count are not
+stated. No uncertainty is reconstructed from geometry, mechanical CoVs or
+unrelated tests.
+
+### Source identity and exclusions
+
+- LPO-1 is the Lupranol recipe, not the suberin-based SPO series; 43.2 kg/m³
+  is its selected measurement, 40 kg/m³ is compression normalization, and
+  94 vol.% closed-cell content is not total porosity
+- AMD5 identifies the Al–Mg–Ti precursor, not a verified finished-foam grade
+  or Hydro 6061. Preserve the Table 4 underwater/ethanol discrepancy, Table 6
+  g/m³ discrepancy and unknown paraffin-coating correction. Do not import
+  another route, third-party comparison or mechanical property
+- Cork and bamboo use broad `composite` only as hierarchical natural tissue,
+  without an engineered resin-binder or laminate claim. No new material
+  category is added. Botanical species support distinct identities; nodal,
+  internodal and boiled states do not
+- Do not label bamboo generically untreated, assign study-average 15.8%
+  moisture to a species/specimen, infer exact test temperatures or reconstruct
+  density from table averages. Cork's untreated label is relative to the
+  study intervention. Do not import the other cork species' green density
+- CP's source formulation label does not establish pure dihydrate or a grade.
+  Boral's control is laboratory-fired 100% supplied soil / 0% biosolids,
+  not a marketed product. K1 is a source rock type, not a certified grade
+- All exact density-test temperatures stay unknown. Cure, conditioning,
+  drying, firing, thermal-test and reference-fluid temperatures remain in
+  their original scopes. Named standards do not establish independently
+  verified compliance or transfer from mechanical testing to density
+
+No new qualified grade is created by LPO-1, CP, K1, AMD5, supplier names or
+botanical labels. No supplementary compression, thermal or porosity fact adds
+a property; Boral's regression-estimated conductivity is not imported as a
+measurement. No density-strength inference, pooling, ranking, universal bound
+or automatic evaluator input is created.
+
+Independent source-transcription review accepted the eight numerical facts
+without correction, while clarifying Boral's count/average scope, K1's averaging
+wording and natural-material exclusions. It is not independent scientific
+review, raw-data reanalysis or experiment/standard verification. Every new
+record retains catalog-only, non-universal, non-allowable and false scientific-
+review/raw-reanalysis flags. The old 43 records, schemas, eight-rule evaluator,
+scientific families and historical outputs remain unchanged.
+
+Read [migration and verification gates](MIGRATION_v0.33.0.md) before admission.
+Source acceptance does not substitute for final-payload schema/runtime checks,
+regression parity, four-language inspection or installed-wheel tests. Full
+[attribution and rights](../THIRD_PARTY_NOTICES.md#porous-natural-and-mineral-references-v0330)
+retain all seven article-specific CC BY 4.0 notices and the bamboo generic
+metadata discrepancy. Public records contain only selected facts and original
+curation, never full source assets, tables, figures or source dumps.
+
+
+## v0.34.0 polymer and biogenic batch
+
+The [six new source-qualified materials](MATERIAL_COVERAGE_v0.34.0.md) extend
+the registry from 51 to 57 identities, with 20 grades, 57 states/properties
+and 108 sources. One nitrogen-pycnometry density, three Young's moduli and two
+tensile moduli use existing contracts; no runtime/schema alternative is added.
+
+The grade field remains null for unresolved BioPBS FZ91PM/FZ91PB, study labels,
+purified PHBV and finished blends. Ecoflex C1200 has a source-designated grade.
+B20's 20 wt.% basis is explicit; PBS/PBAT 70/30 has no stated ratio basis.
+PBAT/PBS-PBAT center aggregation and ± remain undefined. PHBV n≥5 is not n=5,
+and its composition ± does not inherit mechanical-table SD. Lignin density
+basis and statistics remain unknown. No source simulation or vendor reference
+is substituted for the selected original experimental facts.
+
+Existing data and four-language outputs are preserved through an exact
+test-only successor layer, with no production dependency on that layer.
+See the [migration gates](MIGRATION_v0.34.0.md) and
+[article-specific rights](../THIRD_PARTY_NOTICES.md#polymer-and-biogenic-references-v0340).
+Source review is not scientific replication, and validation is not publication.
+
+
+## v0.35.0 natural taxonomy and staged bulk admission
+
+See [the five-class taxonomy and exact migration](MATERIAL_TAXONOMY.md),
+[bulk source-staging and scientific contract](BULK_INGESTION_DESIGN.md), and
+[versioned migration/verification](MIGRATION_v0.35.0.md). Natural means biological
+tissue or fiber; a mineral origin is not a reason to leave inorganic, nor is a
+bio-based feedstock a reason to move a processed polymer.
+
+Run `python -m materials_boundaries coverage --text --lang zh` (or `--json`)
+for the five-class 1,000-identity target. An explicit positive `--target` changes
+only the coverage goal, never admission policy.
+
+`material_quota_coverage(materials, properties, sources, target=1000)` validates
+the actual graph, then reports admitted unique identities for every primary
+class. No proposed, held or merely source-supported staged candidate contributes
+to this runtime count. `resolve_materials(state_ids, ...)` validates once per
+request and returns detached source-complete views without a global cache.
+
+The `basic_wood_density` quantity is distinct from unqualified mass density.
+Its basis is oven-dry mass over fresh/water-saturated volume, its evidence is
+source-applied empirical conversion from measured dimensionless air-dry SG,
+and its authoritative value is the rounded deposited GWDD value. A 12% moisture
+assumption is nominal, not an accession measurement. Taxon identity, original
+authority/name, accepted WFO ID/chain, backbone version/hash, specimen accession,
+source locators, source-applied formula, original/deposited citations, rights and
+unknowns are retained in canonical JSON and all four-language text views.
+
+The raw CIRAD collection includes palms. Its unspecified collection tissue is
+not relabeled as universal secondary-growth wood or inferred trunk material.
+Source-reported plants or inherited v1 mechanical record counts are not validated
+independent sample n. Neither source-method uncertainty nor rounding resolution
+is silently promoted to record-level uncertainty.
+
+## 来源标称弯曲强度
+
+`flexural_strength`是独立pressure类型，使用既有MPa/GPa等压力单位。保留来源弯曲试验方法及强度提取判据的已知/未知状态，不自动解释为拉伸、屈服或断裂强度，也不是弯曲模量。标准引用不构成独立合规证明；不得由标准补造缺失的支承数、应力公式、最大挠度、屈服/破坏点、样本数或调湿条件。统计量按具体来源分别保留。该量不使用`specified_elongation`，不进入计算引擎，保持catalog_only、非普适界和非工程许用值。
+
+## 来源标称拉伸断裂应力
+
+`tensile_stress_at_break`为独立pressure类型，表示作者报告的拉伸试样断裂时应力，保留原文标签、试验与统计口径。不自动当作最大拉伸强度、屈服强度、模量或断裂韧度；也不是规定伸长率下应力，禁止`specified_elongation`。断裂点检测/选点算法、应力约定与应变测量未报告时保持未知。既有压力单位、闭合字段与量敏感去重沿用，不增加几何换算、工程/真应力转换、跨测试排序约束或引擎接线。仅来源限定目录参考，非工程许用值或普适界。
+
+## 来源标称拉伸断裂伸长率
+
+`tensile_elongation_at_break`为无量纲来源结果，应用上下文单位码`percent_elongation`保留原文`%`及百分数数值，不缩放为小数，也不是新物理单位。它不自动证明标距应变、名义/工程/真应变或伸长比的实现；具体标距、估计方式及断裂选点应按来源保留已知/未知。新量允许来源明确报告的零值，不设100%上限；其他量的正值要求不变。
+
+数值SD或未定义±使用相同`percent_elongation`，表示伸长百分数的绝对百分点幅度，不是中心结果的相对误差。旧`percent`仍仅用于相对不确定度、置信和规定伸长目标；不能作中心结果。新量不接受`specified_elongation`字段。未断裂横线不补零、数值下限或最大应力处伸长；统计量不跨列借用，不推导应变速率、模量、能量或韧度，不接入引擎。
+
+## 来源标称强度处伸长率
+
+`tensile_elongation_at_strength`表示来源报告的拉伸强度／最大应力处伸长，保留原文测试范围，不认证全局极大或首局部极大选点。它与断裂伸长是独立端点，即使数值相同也不合并；两者复用无量纲`percent_elongation`，保留百分数数值与绝对百分点不确定度，均允许明确源零值、不设100%上限。其他非伸长量的正值约束、旧`percent`角色和规定伸长目标分支不变。
+
+高PCL未断裂组可记录原文明示的最大应力处伸长，但不据此补造断裂值或下限。新量同样禁止`specified_elongation`，不加跨端点排序或配比单调规则，不认定应变约定、标距、屈服或控制目标，也不用强度除以汇总伸长推导割线模量、配对曲线、能量或韧度。来源统计、条件与提取算法缺口保留，不接入引擎。
+
+## 来源Shore A硬度：标尺与使用边界
+
+`shore_a_hardness`为无量纲经验压入标尺，应用上下文码`shore_a_scale`，原文单位文字`Shore A`；不是压力、百分数或新的物理单位。中央标量或来源区间端点限定0至100含端点，绝对SD/±为Shore A标尺点，不转换成percent、Shore D、IRHD、模量或强度。当前仅允许scalar/interval，不接比较符记录或规定伸长目标。
+
+标尺范围可表示不证明边缘测量可靠、厚度适用或标准合规；[制造商FAQ](https://hildebrand-gmbh.de/en/services-faq-gb/faq-gb/faq-durometer-gb.html)的一般量程/厚度建议不代替作者实际几何，[ASTM公开范围](https://store.astm.org/standards/d2240)不提供基本力学量通用换算。未经来源支持不从硬度反推Young模量或发动计算器。
+
+运行时语义校验用Decimal约束中央范围；JSONschema的形状/词汇校验不能独自证明数字语义。四互斥分支保留旧量正值、相对percent、压力目标和两种伸长量0及超过100规则。NR原文3mm硬度试样与通用1mm制样差异须单独映射、保留未知，不可复用1mm状态或擅补叠层/6mm。NR名义3mm硬度已完成r20本地映射、安装、接纳及终态独审，证据入口为`experimental/polymer-exploration/20261103/local-acceptance-r20/REVIEW_INPUTS_R20.json`；此契约不自动批准后续来源或状态。每条具体记录仍须按冻结来源、条件、统计与独审回执确认。来源所称95%置信区间的绝对幅度仍用Shore A标尺点，置信水平95%单独保留为typed percent元数据，不改成SD/SE，也不从测点数补造独立试样数。
+
+## 来源压缩模量与压缩强度
+
+`compressive_modulus`和`compressive_strength`分别保存来源明确标注的压缩模量、极限压缩强度，复用pressure及闭合压力单位和正值语义。它们不与Young／拉伸／弯曲模量、屈服、断裂或规定应变处应力合并；不接受`specified_elongation`、百分伸长率或硬度中央单位。不新增物理单位、维度或schema分支；既有硬度及伸长量规则不变。
+
+来源所称95%CI按绝对压力幅度保存，置信水平另用typed percent；未知估计对象、构造、样本数及拟合／峰值／平均顺序不补造。作者给出的模量标签不证明小应变、切线、割线或通用本构常数；摘要40%或正文约55%描述不自动成为实际拟合窗或失效判据。单位和应变范围的源歧义、异常量级及温度趋势主张与实际提取关系未知须在具体记录保留，不从Young值、导数、割线、倍率或假定泊松比修复。
+
+具体记录以冻结来源、映射、安装、应用及独审收据为准；契约或来源概念批准不代表数据已接纳。保持catalog_only，不认证科学正确性／标准合规，不作为工程许用值、通用边界或计算器输入。
+
+## 来源撕裂强度
+
+`tear_strength`保存来源明确标注的试样／方法限定撕裂强度，量纲`force_per_length`，闭合`kN/m`、`N/m`、`N/mm`及对应原文拼写；不自动换算或重新归一化源值。该物理维度已有其他科学观察通道使用，本次扩展材料参考词汇，不新增schema分支。中央值沿用既有正值语义，不带`specified_elongation`或硬度／伸长／压力中央单位。
+
+撕裂强度不是压力、原始试验力、Young模量、能量、Gc／J/m²或KIC；量纲等价也不允许跨量解释。几何、缺口、厚度归一化／峰值算法、方向、统计及制样过程按来源保留，未知项不从标准补齐，不输入计算器或作为工程许用值／通用边界。
+
+当原文有误差条或SD讨论但无法取得选定组的精确数值幅度时，可保持`uncertainty=null`及既有未知状态；备注必须说明该有限检查范围，不能表述为未测量／来源没有SD，也不能补零、像素读数或挪用其他试验统计。流变t90与压机制样关联不证明实际保持时间或化学转化率；具体记录仍以冻结来源、映射、安装、接纳和独审收据为准。
+
+## 来源弯曲断裂伸长
+
+`flexural_elongation_at_break`独立保存作者标注的弯曲断裂伸长，属于`dimensionless`，沿用`percent_elongation`中央结果码与`%`原文，不除以100或改为小数应变。加入既有伸长量分支，不新增物理单位或结构分支。0及超过100的源表示值不自动否决；负值、非有限值拒绝。绝对离散度用伸长百分点，与relative percent区别。
+
+弯曲与拉伸端点分别记录，不由同名百分数推定同一试验。实际挠度／应变通道、外纤维／工程／真实应变约定、几何归约与断裂判据均需来源支持，不能仅从标准引入公式或支承点数。不带`specified_elongation`，不映射引擎、许用值或通用边界。统计、环境、调湿及校准未知保留，未报数值不确定度不表示零散布。源表格／图形与趋势文字的差异逐记录保留，不平滑源数值或推显著性。

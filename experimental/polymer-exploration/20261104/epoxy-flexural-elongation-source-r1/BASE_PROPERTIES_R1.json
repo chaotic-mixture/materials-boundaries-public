@@ -1,0 +1,1367 @@
+[
+  {
+    "version": "1.0.0",
+    "quantity": "flexural_strength",
+    "quantity_dimension": "pressure",
+    "source_property_label": "Flexural Strength (MPa)",
+    "reported_value": {
+      "kind": "scalar",
+      "unit_text": "MPa",
+      "unit_code": "MPa",
+      "value_text": "128.0",
+      "number": "128.0"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "not_stated",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Table8 source flexural-strength scalar. Central estimator, n/batches and dispersion not reported; no mean, SD, SE or CI inferred. Source table precision retained.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Selected mechanical method does not specify this condition; cure/DSC/rheology conditions and assumed isotropy cannot supply it."
+      },
+      "test_standard": {
+        "status": "reported",
+        "text": "GOST R 56810-2015 (ASTM D790-10)",
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "PDF p.6, section 2.5.2",
+            "supports": [
+              "condition",
+              "method"
+            ]
+          }
+        ],
+        "notes": "Source citation only; does not supply missing environmental conditions, repeat counts, fitting method or independently verified compliance."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "Source flexural strength,50ST/Tinius Olsen, GOST R56810-2015(ASTM D790-10),0.85mm/min;80x9.8x3.6mm bars milled from3.6mm plate; literal span-to-depth statement64:3.6mm. Support-point count, stress formula, exact failure/deflection/strength extraction criterion and standards compliance not independently established.",
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "PDF p.6, section 2.5.2",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-labelled bending strength only; exact extraction criterion unknown. Source standard citation is not independent compliance verification."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Selected mechanical method does not specify this condition; cure/DSC/rheology conditions and assumed isotropy cannot supply it."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Selected mechanical method does not specify this condition; cure/DSC/rheology conditions and assumed isotropy cannot supply it."
+      },
+      "loading_rate": {
+        "status": "reported",
+        "text": "0.85 mm/min",
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "PDF p.6, section 2.5.2",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Reported machine/testing speed, not a measured strain rate; do not transfer between methods."
+      },
+      "additional_conditions": [
+        {
+          "name": "relative_humidity",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Test and post-cure conditioning RH are not reported."
+          }
+        },
+        {
+          "name": "modulus_extraction_algorithm",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "No numerical fit window, tangent/secant definition or actual strain estimator is reported; not automatically Young modulus."
+          }
+        },
+        {
+          "name": "specimen_plate_thickness",
+          "fact": {
+            "status": "reported",
+            "text": "3.6 mm",
+            "evidence": [
+              {
+                "source_id": "tarasov_2022_pna_bpf_epoxy",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+                "locator": "PDF p.6, section 2.5.2",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Source plate specification, not per-specimen metrology."
+          }
+        },
+        {
+          "name": "specimen_dimensions",
+          "fact": {
+            "status": "reported",
+            "text": "80 × 9.8 × 3.6 mm (length × width × thickness)",
+            "evidence": [
+              {
+                "source_id": "tarasov_2022_pna_bpf_epoxy",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+                "locator": "PDF p.6, section 2.5.2",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Source nominal bar dimensions; no transferred tensile geometry or measured tolerances."
+          }
+        },
+        {
+          "name": "span_to_depth_source_statement",
+          "fact": {
+            "status": "reported",
+            "text": "64:3.6 mm",
+            "evidence": [
+              {
+                "source_id": "tarasov_2022_pna_bpf_epoxy",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+                "locator": "PDF p.6, section 2.5.2",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Literal source wording; not recast as a dimensionless measured ratio or proof of support-point count."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "not_stated",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "uncertainty_note": "Inspected section 2.5.2 and Table 8 do not state central aggregation, exact specimen/independent batch count or numerical SD/SE/CI. Unknown does not mean zero uncertainty.",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "Selected formulation and mechanical method only; specimen and independent batch counts unknown.",
+      "source_statement": "Inspected section 2.5.2 and Table 8 do not state central aggregation, exact specimen/independent batch count or numerical SD/SE/CI. Unknown does not mean zero uncertainty.",
+      "evidence": []
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source flexural strength,50ST/Tinius Olsen, GOST R56810-2015(ASTM D790-10),0.85mm/min;80x9.8x3.6mm bars milled from3.6mm plate; literal span-to-depth statement64:3.6mm. Support-point count, stress formula, exact failure/deflection/strength extraction criterion and standards compliance not independently established.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "PDF p.6, section 2.5.2",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [
+      {
+        "description": "Table 1 labels the nominal feeds HCP:BPF:ECH as 1:8:16 through 1:24:16, while the listed reagent mole amounts and the section 2.2.1 statement about a constant 16-fold ECH excess do not establish a consistent normalized ratio.",
+        "disposition": "Preserve the printed ratio labels as nominal source recipe labels. Do not recompute ECH amounts, repair the ratios, infer the intended denominator or claim validated feed stoichiometry or final composition.",
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "PDF p.4, section 2.2.1 opening paragraph and Table 1",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      },
+      {
+        "description": "Table 1 lists HCP as 35 (0.086) g (Mole) for PNA-BPF-2, but as 35 (0.101) for PNA-BPF-1 and PNA-BPF-S.",
+        "disposition": "Keep the PNA-BPF-2 source label and its printed nominal 1:9:16 recipe without silently correcting the mass or mole entry. No recalculated composition is emitted.",
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "PDF p.4, Table 1, HCP g (Mole) column, PNA-BPF-2 versus PNA-BPF-1 and PNA-BPF-S",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      },
+      {
+        "description": "Section 2.1 names potassium hydroxide, whereas the synthesis headings, Table 1 and sections 2.2.1-2.2.2 describe NaOH or sodium hydroxide.",
+        "disposition": "Retain the contradiction. The selected route is source-described batch addition of solid alkali; the alkali chemical identity is not independently resolved or silently changed from KOH to NaOH.",
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "PDF p.4, section 2.1 alkali entry, section 2.2.1 heading and Table 1; p.5, sections 2.2.1-2.2.2",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      }
+    ],
+    "source_id": "tarasov_2022_pna_bpf_epoxy",
+    "source_document": {
+      "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+      "revision": "Polymers 2022, 14, 4547; publisher PDF published 27 October 2022, 22 pages; URL version=1666858817.",
+      "inspected_on": "2026-11-03",
+      "sha256": "1f06bc0667c7c5575a0e88772868a95cd27ba01a264d3b3a0b9c859a8a6423aa",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained exact publisher PDF visually inspected pp1,5,6,16: license, common DDS cure, section2.5.2 bending method, Table8 selected Flexural Strength(MPa) cell. No fresh PDF acquisition or raw-data reanalysis.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained exact publisher PDF visually inspected pp1,5,6,16: license, common DDS cure, section2.5.2 bending method, Table8 selected Flexural Strength(MPa) cell. No fresh PDF acquisition or raw-data reanalysis.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "id": "refprop_tarasov2022_pna_bpf_1_flexural_strength",
+    "material_state_id": "state_tarasov2022_pna_bpf_1_dds_cured_flexural",
+    "evidence": [
+      {
+        "source_id": "tarasov_2022_pna_bpf_epoxy",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+        "locator": "PDF p.16 Table8 PNA-BPF-1 Flexural Strength (MPa)",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "tarasov_2022_pna_bpf_epoxy",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+        "locator": "PDF p.6, section 2.5.2",
+        "supports": [
+          "method",
+          "condition"
+        ]
+      }
+    ],
+    "scope_note": "Existing PNA-BPF-1 identity and its reviewed bending specimen state only. Source-labelled flexural strength, not tensile/yield/break strength or a modulus slope. Exact strength extraction criterion and stress convention remain unknown; no support geometry, missing statistics, environment or conditioning inferred from standards or neighboring tests. Existing composition/nominal-feed discrepancies retained. No automatic engine mapping, engineering allowable or universal bound."
+  },
+  {
+    "version": "1.0.0",
+    "quantity": "flexural_strength",
+    "quantity_dimension": "pressure",
+    "source_property_label": "Flexural Strength (MPa)",
+    "reported_value": {
+      "kind": "scalar",
+      "unit_text": "MPa",
+      "unit_code": "MPa",
+      "value_text": "146.6",
+      "number": "146.6"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "not_stated",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Table8 source flexural-strength scalar. Central estimator, n/batches and dispersion not reported; no mean, SD, SE or CI inferred. Source table precision retained.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Selected mechanical method does not specify this condition; cure/DSC/rheology conditions and assumed isotropy cannot supply it."
+      },
+      "test_standard": {
+        "status": "reported",
+        "text": "GOST R 56810-2015 (ASTM D790-10)",
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "PDF p.6, section 2.5.2",
+            "supports": [
+              "condition",
+              "method"
+            ]
+          }
+        ],
+        "notes": "Source citation only; does not supply missing environmental conditions, repeat counts, fitting method or independently verified compliance."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "Source flexural strength,50ST/Tinius Olsen, GOST R56810-2015(ASTM D790-10),0.85mm/min;80x9.8x3.6mm bars milled from3.6mm plate; literal span-to-depth statement64:3.6mm. Support-point count, stress formula, exact failure/deflection/strength extraction criterion and standards compliance not independently established.",
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "PDF p.6, section 2.5.2",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-labelled bending strength only; exact extraction criterion unknown. Source standard citation is not independent compliance verification."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Selected mechanical method does not specify this condition; cure/DSC/rheology conditions and assumed isotropy cannot supply it."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Selected mechanical method does not specify this condition; cure/DSC/rheology conditions and assumed isotropy cannot supply it."
+      },
+      "loading_rate": {
+        "status": "reported",
+        "text": "0.85 mm/min",
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "PDF p.6, section 2.5.2",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Reported machine/testing speed, not a measured strain rate; do not transfer between methods."
+      },
+      "additional_conditions": [
+        {
+          "name": "relative_humidity",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Test and post-cure conditioning RH are not reported."
+          }
+        },
+        {
+          "name": "modulus_extraction_algorithm",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "No numerical fit window, tangent/secant definition or actual strain estimator is reported; not automatically Young modulus."
+          }
+        },
+        {
+          "name": "specimen_plate_thickness",
+          "fact": {
+            "status": "reported",
+            "text": "3.6 mm",
+            "evidence": [
+              {
+                "source_id": "tarasov_2022_pna_bpf_epoxy",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+                "locator": "PDF p.6, section 2.5.2",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Source plate specification, not per-specimen metrology."
+          }
+        },
+        {
+          "name": "specimen_dimensions",
+          "fact": {
+            "status": "reported",
+            "text": "80 × 9.8 × 3.6 mm (length × width × thickness)",
+            "evidence": [
+              {
+                "source_id": "tarasov_2022_pna_bpf_epoxy",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+                "locator": "PDF p.6, section 2.5.2",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Source nominal bar dimensions; no transferred tensile geometry or measured tolerances."
+          }
+        },
+        {
+          "name": "span_to_depth_source_statement",
+          "fact": {
+            "status": "reported",
+            "text": "64:3.6 mm",
+            "evidence": [
+              {
+                "source_id": "tarasov_2022_pna_bpf_epoxy",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+                "locator": "PDF p.6, section 2.5.2",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Literal source wording; not recast as a dimensionless measured ratio or proof of support-point count."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "not_stated",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "uncertainty_note": "Inspected section 2.5.2 and Table 8 do not state central aggregation, exact specimen/independent batch count or numerical SD/SE/CI. Unknown does not mean zero uncertainty.",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "Selected formulation and mechanical method only; specimen and independent batch counts unknown.",
+      "source_statement": "Inspected section 2.5.2 and Table 8 do not state central aggregation, exact specimen/independent batch count or numerical SD/SE/CI. Unknown does not mean zero uncertainty.",
+      "evidence": []
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source flexural strength,50ST/Tinius Olsen, GOST R56810-2015(ASTM D790-10),0.85mm/min;80x9.8x3.6mm bars milled from3.6mm plate; literal span-to-depth statement64:3.6mm. Support-point count, stress formula, exact failure/deflection/strength extraction criterion and standards compliance not independently established.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "PDF p.6, section 2.5.2",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [
+      {
+        "description": "Table 1 labels the nominal feeds HCP:BPF:ECH as 1:8:16 through 1:24:16, while the listed reagent mole amounts and the section 2.2.1 statement about a constant 16-fold ECH excess do not establish a consistent normalized ratio.",
+        "disposition": "Preserve the printed ratio labels as nominal source recipe labels. Do not recompute ECH amounts, repair the ratios, infer the intended denominator or claim validated feed stoichiometry or final composition.",
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "PDF p.4, section 2.2.1 opening paragraph and Table 1",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      },
+      {
+        "description": "Table 1 lists HCP as 35 (0.086) g (Mole) for PNA-BPF-2, but as 35 (0.101) for PNA-BPF-1 and PNA-BPF-S.",
+        "disposition": "Keep the PNA-BPF-2 source label and its printed nominal 1:9:16 recipe without silently correcting the mass or mole entry. No recalculated composition is emitted.",
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "PDF p.4, Table 1, HCP g (Mole) column, PNA-BPF-2 versus PNA-BPF-1 and PNA-BPF-S",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      },
+      {
+        "description": "Section 2.1 names potassium hydroxide, whereas the synthesis headings, Table 1 and sections 2.2.1-2.2.2 describe NaOH or sodium hydroxide.",
+        "disposition": "Retain the contradiction. The selected route is source-described batch addition of solid alkali; the alkali chemical identity is not independently resolved or silently changed from KOH to NaOH.",
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "PDF p.4, section 2.1 alkali entry, section 2.2.1 heading and Table 1; p.5, sections 2.2.1-2.2.2",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      }
+    ],
+    "source_id": "tarasov_2022_pna_bpf_epoxy",
+    "source_document": {
+      "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+      "revision": "Polymers 2022, 14, 4547; publisher PDF published 27 October 2022, 22 pages; URL version=1666858817.",
+      "inspected_on": "2026-11-03",
+      "sha256": "1f06bc0667c7c5575a0e88772868a95cd27ba01a264d3b3a0b9c859a8a6423aa",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained exact publisher PDF visually inspected pp1,5,6,16: license, common DDS cure, section2.5.2 bending method, Table8 selected Flexural Strength(MPa) cell. No fresh PDF acquisition or raw-data reanalysis.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained exact publisher PDF visually inspected pp1,5,6,16: license, common DDS cure, section2.5.2 bending method, Table8 selected Flexural Strength(MPa) cell. No fresh PDF acquisition or raw-data reanalysis.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "id": "refprop_tarasov2022_pna_bpf_2_flexural_strength",
+    "material_state_id": "state_tarasov2022_pna_bpf_2_dds_cured_flexural",
+    "evidence": [
+      {
+        "source_id": "tarasov_2022_pna_bpf_epoxy",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+        "locator": "PDF p.16 Table8 PNA-BPF-2 Flexural Strength (MPa)",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "tarasov_2022_pna_bpf_epoxy",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+        "locator": "PDF p.6, section 2.5.2",
+        "supports": [
+          "method",
+          "condition"
+        ]
+      }
+    ],
+    "scope_note": "Existing PNA-BPF-2 identity and its reviewed bending specimen state only. Source-labelled flexural strength, not tensile/yield/break strength or a modulus slope. Exact strength extraction criterion and stress convention remain unknown; no support geometry, missing statistics, environment or conditioning inferred from standards or neighboring tests. Existing composition/nominal-feed discrepancies retained. No automatic engine mapping, engineering allowable or universal bound."
+  },
+  {
+    "version": "1.0.0",
+    "quantity": "flexural_strength",
+    "quantity_dimension": "pressure",
+    "source_property_label": "Flexural Strength (MPa)",
+    "reported_value": {
+      "kind": "scalar",
+      "unit_text": "MPa",
+      "unit_code": "MPa",
+      "value_text": "130.6",
+      "number": "130.6"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "not_stated",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Table8 source flexural-strength scalar. Central estimator, n/batches and dispersion not reported; no mean, SD, SE or CI inferred. Source table precision retained.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Selected mechanical method does not specify this condition; cure/DSC/rheology conditions and assumed isotropy cannot supply it."
+      },
+      "test_standard": {
+        "status": "reported",
+        "text": "GOST R 56810-2015 (ASTM D790-10)",
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "PDF p.6, section 2.5.2",
+            "supports": [
+              "condition",
+              "method"
+            ]
+          }
+        ],
+        "notes": "Source citation only; does not supply missing environmental conditions, repeat counts, fitting method or independently verified compliance."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "Source flexural strength,50ST/Tinius Olsen, GOST R56810-2015(ASTM D790-10),0.85mm/min;80x9.8x3.6mm bars milled from3.6mm plate; literal span-to-depth statement64:3.6mm. Support-point count, stress formula, exact failure/deflection/strength extraction criterion and standards compliance not independently established.",
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "PDF p.6, section 2.5.2",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-labelled bending strength only; exact extraction criterion unknown. Source standard citation is not independent compliance verification."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Selected mechanical method does not specify this condition; cure/DSC/rheology conditions and assumed isotropy cannot supply it."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Selected mechanical method does not specify this condition; cure/DSC/rheology conditions and assumed isotropy cannot supply it."
+      },
+      "loading_rate": {
+        "status": "reported",
+        "text": "0.85 mm/min",
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "PDF p.6, section 2.5.2",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Reported machine/testing speed, not a measured strain rate; do not transfer between methods."
+      },
+      "additional_conditions": [
+        {
+          "name": "relative_humidity",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Test and post-cure conditioning RH are not reported."
+          }
+        },
+        {
+          "name": "modulus_extraction_algorithm",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "No numerical fit window, tangent/secant definition or actual strain estimator is reported; not automatically Young modulus."
+          }
+        },
+        {
+          "name": "specimen_plate_thickness",
+          "fact": {
+            "status": "reported",
+            "text": "3.6 mm",
+            "evidence": [
+              {
+                "source_id": "tarasov_2022_pna_bpf_epoxy",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+                "locator": "PDF p.6, section 2.5.2",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Source plate specification, not per-specimen metrology."
+          }
+        },
+        {
+          "name": "specimen_dimensions",
+          "fact": {
+            "status": "reported",
+            "text": "80 × 9.8 × 3.6 mm (length × width × thickness)",
+            "evidence": [
+              {
+                "source_id": "tarasov_2022_pna_bpf_epoxy",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+                "locator": "PDF p.6, section 2.5.2",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Source nominal bar dimensions; no transferred tensile geometry or measured tolerances."
+          }
+        },
+        {
+          "name": "span_to_depth_source_statement",
+          "fact": {
+            "status": "reported",
+            "text": "64:3.6 mm",
+            "evidence": [
+              {
+                "source_id": "tarasov_2022_pna_bpf_epoxy",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+                "locator": "PDF p.6, section 2.5.2",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Literal source wording; not recast as a dimensionless measured ratio or proof of support-point count."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "not_stated",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "uncertainty_note": "Inspected section 2.5.2 and Table 8 do not state central aggregation, exact specimen/independent batch count or numerical SD/SE/CI. Unknown does not mean zero uncertainty.",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "Selected formulation and mechanical method only; specimen and independent batch counts unknown.",
+      "source_statement": "Inspected section 2.5.2 and Table 8 do not state central aggregation, exact specimen/independent batch count or numerical SD/SE/CI. Unknown does not mean zero uncertainty.",
+      "evidence": []
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source flexural strength,50ST/Tinius Olsen, GOST R56810-2015(ASTM D790-10),0.85mm/min;80x9.8x3.6mm bars milled from3.6mm plate; literal span-to-depth statement64:3.6mm. Support-point count, stress formula, exact failure/deflection/strength extraction criterion and standards compliance not independently established.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "PDF p.6, section 2.5.2",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [
+      {
+        "description": "Table 1 labels the nominal feeds HCP:BPF:ECH as 1:8:16 through 1:24:16, while the listed reagent mole amounts and the section 2.2.1 statement about a constant 16-fold ECH excess do not establish a consistent normalized ratio.",
+        "disposition": "Preserve the printed ratio labels as nominal source recipe labels. Do not recompute ECH amounts, repair the ratios, infer the intended denominator or claim validated feed stoichiometry or final composition.",
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "PDF p.4, section 2.2.1 opening paragraph and Table 1",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      },
+      {
+        "description": "Table 1 lists HCP as 35 (0.086) g (Mole) for PNA-BPF-2, but as 35 (0.101) for PNA-BPF-1 and PNA-BPF-S.",
+        "disposition": "Keep the PNA-BPF-2 source label and its printed nominal 1:9:16 recipe without silently correcting the mass or mole entry. No recalculated composition is emitted.",
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "PDF p.4, Table 1, HCP g (Mole) column, PNA-BPF-2 versus PNA-BPF-1 and PNA-BPF-S",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      },
+      {
+        "description": "Section 2.1 names potassium hydroxide, whereas the synthesis headings, Table 1 and sections 2.2.1-2.2.2 describe NaOH or sodium hydroxide.",
+        "disposition": "Retain the contradiction. The selected route is source-described batch addition of solid alkali; the alkali chemical identity is not independently resolved or silently changed from KOH to NaOH.",
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "PDF p.4, section 2.1 alkali entry, section 2.2.1 heading and Table 1; p.5, sections 2.2.1-2.2.2",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      }
+    ],
+    "source_id": "tarasov_2022_pna_bpf_epoxy",
+    "source_document": {
+      "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+      "revision": "Polymers 2022, 14, 4547; publisher PDF published 27 October 2022, 22 pages; URL version=1666858817.",
+      "inspected_on": "2026-11-03",
+      "sha256": "1f06bc0667c7c5575a0e88772868a95cd27ba01a264d3b3a0b9c859a8a6423aa",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained exact publisher PDF visually inspected pp1,5,6,16: license, common DDS cure, section2.5.2 bending method, Table8 selected Flexural Strength(MPa) cell. No fresh PDF acquisition or raw-data reanalysis.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained exact publisher PDF visually inspected pp1,5,6,16: license, common DDS cure, section2.5.2 bending method, Table8 selected Flexural Strength(MPa) cell. No fresh PDF acquisition or raw-data reanalysis.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "id": "refprop_tarasov2022_pna_bpf_3_flexural_strength",
+    "material_state_id": "state_tarasov2022_pna_bpf_3_dds_cured_flexural",
+    "evidence": [
+      {
+        "source_id": "tarasov_2022_pna_bpf_epoxy",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+        "locator": "PDF p.16 Table8 PNA-BPF-3 Flexural Strength (MPa)",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "tarasov_2022_pna_bpf_epoxy",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+        "locator": "PDF p.6, section 2.5.2",
+        "supports": [
+          "method",
+          "condition"
+        ]
+      }
+    ],
+    "scope_note": "Existing PNA-BPF-3 identity and its reviewed bending specimen state only. Source-labelled flexural strength, not tensile/yield/break strength or a modulus slope. Exact strength extraction criterion and stress convention remain unknown; no support geometry, missing statistics, environment or conditioning inferred from standards or neighboring tests. Existing composition/nominal-feed discrepancies retained. No automatic engine mapping, engineering allowable or universal bound."
+  },
+  {
+    "version": "1.0.0",
+    "quantity": "flexural_strength",
+    "quantity_dimension": "pressure",
+    "source_property_label": "Flexural Strength (MPa)",
+    "reported_value": {
+      "kind": "scalar",
+      "unit_text": "MPa",
+      "unit_code": "MPa",
+      "value_text": "133.4",
+      "number": "133.4"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "not_stated",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Table8 source flexural-strength scalar. Central estimator, n/batches and dispersion not reported; no mean, SD, SE or CI inferred. Source table precision retained.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Selected mechanical method does not specify this condition; cure/DSC/rheology conditions and assumed isotropy cannot supply it."
+      },
+      "test_standard": {
+        "status": "reported",
+        "text": "GOST R 56810-2015 (ASTM D790-10)",
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "PDF p.6, section 2.5.2",
+            "supports": [
+              "condition",
+              "method"
+            ]
+          }
+        ],
+        "notes": "Source citation only; does not supply missing environmental conditions, repeat counts, fitting method or independently verified compliance."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "Source flexural strength,50ST/Tinius Olsen, GOST R56810-2015(ASTM D790-10),0.85mm/min;80x9.8x3.6mm bars milled from3.6mm plate; literal span-to-depth statement64:3.6mm. Support-point count, stress formula, exact failure/deflection/strength extraction criterion and standards compliance not independently established.",
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "PDF p.6, section 2.5.2",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-labelled bending strength only; exact extraction criterion unknown. Source standard citation is not independent compliance verification."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Selected mechanical method does not specify this condition; cure/DSC/rheology conditions and assumed isotropy cannot supply it."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Selected mechanical method does not specify this condition; cure/DSC/rheology conditions and assumed isotropy cannot supply it."
+      },
+      "loading_rate": {
+        "status": "reported",
+        "text": "0.85 mm/min",
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "PDF p.6, section 2.5.2",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Reported machine/testing speed, not a measured strain rate; do not transfer between methods."
+      },
+      "additional_conditions": [
+        {
+          "name": "relative_humidity",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Test and post-cure conditioning RH are not reported."
+          }
+        },
+        {
+          "name": "modulus_extraction_algorithm",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "No numerical fit window, tangent/secant definition or actual strain estimator is reported; not automatically Young modulus."
+          }
+        },
+        {
+          "name": "specimen_plate_thickness",
+          "fact": {
+            "status": "reported",
+            "text": "3.6 mm",
+            "evidence": [
+              {
+                "source_id": "tarasov_2022_pna_bpf_epoxy",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+                "locator": "PDF p.6, section 2.5.2",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Source plate specification, not per-specimen metrology."
+          }
+        },
+        {
+          "name": "specimen_dimensions",
+          "fact": {
+            "status": "reported",
+            "text": "80 × 9.8 × 3.6 mm (length × width × thickness)",
+            "evidence": [
+              {
+                "source_id": "tarasov_2022_pna_bpf_epoxy",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+                "locator": "PDF p.6, section 2.5.2",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Source nominal bar dimensions; no transferred tensile geometry or measured tolerances."
+          }
+        },
+        {
+          "name": "span_to_depth_source_statement",
+          "fact": {
+            "status": "reported",
+            "text": "64:3.6 mm",
+            "evidence": [
+              {
+                "source_id": "tarasov_2022_pna_bpf_epoxy",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+                "locator": "PDF p.6, section 2.5.2",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Literal source wording; not recast as a dimensionless measured ratio or proof of support-point count."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "not_stated",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "uncertainty_note": "Inspected section 2.5.2 and Table 8 do not state central aggregation, exact specimen/independent batch count or numerical SD/SE/CI. Unknown does not mean zero uncertainty.",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "Selected formulation and mechanical method only; specimen and independent batch counts unknown.",
+      "source_statement": "Inspected section 2.5.2 and Table 8 do not state central aggregation, exact specimen/independent batch count or numerical SD/SE/CI. Unknown does not mean zero uncertainty.",
+      "evidence": []
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source flexural strength,50ST/Tinius Olsen, GOST R56810-2015(ASTM D790-10),0.85mm/min;80x9.8x3.6mm bars milled from3.6mm plate; literal span-to-depth statement64:3.6mm. Support-point count, stress formula, exact failure/deflection/strength extraction criterion and standards compliance not independently established.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "PDF p.6, section 2.5.2",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [
+      {
+        "description": "Table 1 labels the nominal feeds HCP:BPF:ECH as 1:8:16 through 1:24:16, while the listed reagent mole amounts and the section 2.2.1 statement about a constant 16-fold ECH excess do not establish a consistent normalized ratio.",
+        "disposition": "Preserve the printed ratio labels as nominal source recipe labels. Do not recompute ECH amounts, repair the ratios, infer the intended denominator or claim validated feed stoichiometry or final composition.",
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "PDF p.4, section 2.2.1 opening paragraph and Table 1",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      },
+      {
+        "description": "Table 1 lists HCP as 35 (0.086) g (Mole) for PNA-BPF-2, but as 35 (0.101) for PNA-BPF-1 and PNA-BPF-S.",
+        "disposition": "Keep the PNA-BPF-2 source label and its printed nominal 1:9:16 recipe without silently correcting the mass or mole entry. No recalculated composition is emitted.",
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "PDF p.4, Table 1, HCP g (Mole) column, PNA-BPF-2 versus PNA-BPF-1 and PNA-BPF-S",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      },
+      {
+        "description": "Section 2.1 names potassium hydroxide, whereas the synthesis headings, Table 1 and sections 2.2.1-2.2.2 describe NaOH or sodium hydroxide.",
+        "disposition": "Retain the contradiction. The selected route is source-described batch addition of solid alkali; the alkali chemical identity is not independently resolved or silently changed from KOH to NaOH.",
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "PDF p.4, section 2.1 alkali entry, section 2.2.1 heading and Table 1; p.5, sections 2.2.1-2.2.2",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      }
+    ],
+    "source_id": "tarasov_2022_pna_bpf_epoxy",
+    "source_document": {
+      "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+      "revision": "Polymers 2022, 14, 4547; publisher PDF published 27 October 2022, 22 pages; URL version=1666858817.",
+      "inspected_on": "2026-11-03",
+      "sha256": "1f06bc0667c7c5575a0e88772868a95cd27ba01a264d3b3a0b9c859a8a6423aa",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained exact publisher PDF visually inspected pp1,5,6,16: license, common DDS cure, section2.5.2 bending method, Table8 selected Flexural Strength(MPa) cell. No fresh PDF acquisition or raw-data reanalysis.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained exact publisher PDF visually inspected pp1,5,6,16: license, common DDS cure, section2.5.2 bending method, Table8 selected Flexural Strength(MPa) cell. No fresh PDF acquisition or raw-data reanalysis.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "id": "refprop_tarasov2022_pna_bpf_4_flexural_strength",
+    "material_state_id": "state_tarasov2022_pna_bpf_4_dds_cured_flexural",
+    "evidence": [
+      {
+        "source_id": "tarasov_2022_pna_bpf_epoxy",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+        "locator": "PDF p.16 Table8 PNA-BPF-4 Flexural Strength (MPa)",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "tarasov_2022_pna_bpf_epoxy",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+        "locator": "PDF p.6, section 2.5.2",
+        "supports": [
+          "method",
+          "condition"
+        ]
+      }
+    ],
+    "scope_note": "Existing PNA-BPF-4 identity and its reviewed bending specimen state only. Source-labelled flexural strength, not tensile/yield/break strength or a modulus slope. Exact strength extraction criterion and stress convention remain unknown; no support geometry, missing statistics, environment or conditioning inferred from standards or neighboring tests. Existing composition/nominal-feed discrepancies retained. No automatic engine mapping, engineering allowable or universal bound."
+  },
+  {
+    "version": "1.0.0",
+    "quantity": "flexural_strength",
+    "quantity_dimension": "pressure",
+    "source_property_label": "Flexural Strength (MPa)",
+    "reported_value": {
+      "kind": "scalar",
+      "unit_text": "MPa",
+      "unit_code": "MPa",
+      "value_text": "131.8",
+      "number": "131.8"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "not_stated",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Table8 source flexural-strength scalar. Central estimator, n/batches and dispersion not reported; no mean, SD, SE or CI inferred. Source table precision retained.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Selected mechanical method does not specify this condition; cure/DSC/rheology conditions and assumed isotropy cannot supply it."
+      },
+      "test_standard": {
+        "status": "reported",
+        "text": "GOST R 56810-2015 (ASTM D790-10)",
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "PDF p.6, section 2.5.2",
+            "supports": [
+              "condition",
+              "method"
+            ]
+          }
+        ],
+        "notes": "Source citation only; does not supply missing environmental conditions, repeat counts, fitting method or independently verified compliance."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "Source flexural strength,50ST/Tinius Olsen, GOST R56810-2015(ASTM D790-10),0.85mm/min;80x9.8x3.6mm bars milled from3.6mm plate; literal span-to-depth statement64:3.6mm. Support-point count, stress formula, exact failure/deflection/strength extraction criterion and standards compliance not independently established.",
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "PDF p.6, section 2.5.2",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-labelled bending strength only; exact extraction criterion unknown. Source standard citation is not independent compliance verification."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Selected mechanical method does not specify this condition; cure/DSC/rheology conditions and assumed isotropy cannot supply it."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Selected mechanical method does not specify this condition; cure/DSC/rheology conditions and assumed isotropy cannot supply it."
+      },
+      "loading_rate": {
+        "status": "reported",
+        "text": "0.85 mm/min",
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "PDF p.6, section 2.5.2",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Reported machine/testing speed, not a measured strain rate; do not transfer between methods."
+      },
+      "additional_conditions": [
+        {
+          "name": "relative_humidity",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Test and post-cure conditioning RH are not reported."
+          }
+        },
+        {
+          "name": "modulus_extraction_algorithm",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "No numerical fit window, tangent/secant definition or actual strain estimator is reported; not automatically Young modulus."
+          }
+        },
+        {
+          "name": "specimen_plate_thickness",
+          "fact": {
+            "status": "reported",
+            "text": "3.6 mm",
+            "evidence": [
+              {
+                "source_id": "tarasov_2022_pna_bpf_epoxy",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+                "locator": "PDF p.6, section 2.5.2",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Source plate specification, not per-specimen metrology."
+          }
+        },
+        {
+          "name": "specimen_dimensions",
+          "fact": {
+            "status": "reported",
+            "text": "80 × 9.8 × 3.6 mm (length × width × thickness)",
+            "evidence": [
+              {
+                "source_id": "tarasov_2022_pna_bpf_epoxy",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+                "locator": "PDF p.6, section 2.5.2",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Source nominal bar dimensions; no transferred tensile geometry or measured tolerances."
+          }
+        },
+        {
+          "name": "span_to_depth_source_statement",
+          "fact": {
+            "status": "reported",
+            "text": "64:3.6 mm",
+            "evidence": [
+              {
+                "source_id": "tarasov_2022_pna_bpf_epoxy",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+                "locator": "PDF p.6, section 2.5.2",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Literal source wording; not recast as a dimensionless measured ratio or proof of support-point count."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "not_stated",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "uncertainty_note": "Inspected section 2.5.2 and Table 8 do not state central aggregation, exact specimen/independent batch count or numerical SD/SE/CI. Unknown does not mean zero uncertainty.",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "Selected formulation and mechanical method only; specimen and independent batch counts unknown.",
+      "source_statement": "Inspected section 2.5.2 and Table 8 do not state central aggregation, exact specimen/independent batch count or numerical SD/SE/CI. Unknown does not mean zero uncertainty.",
+      "evidence": []
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source flexural strength,50ST/Tinius Olsen, GOST R56810-2015(ASTM D790-10),0.85mm/min;80x9.8x3.6mm bars milled from3.6mm plate; literal span-to-depth statement64:3.6mm. Support-point count, stress formula, exact failure/deflection/strength extraction criterion and standards compliance not independently established.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "tarasov_2022_pna_bpf_epoxy",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+          "locator": "PDF p.6, section 2.5.2",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [
+      {
+        "description": "Table 1 labels the nominal feeds HCP:BPF:ECH as 1:8:16 through 1:24:16, while the listed reagent mole amounts and the section 2.2.1 statement about a constant 16-fold ECH excess do not establish a consistent normalized ratio.",
+        "disposition": "Preserve the printed ratio labels as nominal source recipe labels. Do not recompute ECH amounts, repair the ratios, infer the intended denominator or claim validated feed stoichiometry or final composition.",
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "PDF p.4, section 2.2.1 opening paragraph and Table 1",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      },
+      {
+        "description": "Table 1 lists HCP as 35 (0.086) g (Mole) for PNA-BPF-2, but as 35 (0.101) for PNA-BPF-1 and PNA-BPF-S.",
+        "disposition": "Keep the PNA-BPF-2 source label and its printed nominal 1:9:16 recipe without silently correcting the mass or mole entry. No recalculated composition is emitted.",
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "PDF p.4, Table 1, HCP g (Mole) column, PNA-BPF-2 versus PNA-BPF-1 and PNA-BPF-S",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      },
+      {
+        "description": "Section 2.1 names potassium hydroxide, whereas the synthesis headings, Table 1 and sections 2.2.1-2.2.2 describe NaOH or sodium hydroxide.",
+        "disposition": "Retain the contradiction. The selected route is source-described batch addition of solid alkali; the alkali chemical identity is not independently resolved or silently changed from KOH to NaOH.",
+        "evidence": [
+          {
+            "source_id": "tarasov_2022_pna_bpf_epoxy",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+            "locator": "PDF p.4, section 2.1 alkali entry, section 2.2.1 heading and Table 1; p.5, sections 2.2.1-2.2.2",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      }
+    ],
+    "source_id": "tarasov_2022_pna_bpf_epoxy",
+    "source_document": {
+      "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+      "revision": "Polymers 2022, 14, 4547; publisher PDF published 27 October 2022, 22 pages; URL version=1666858817.",
+      "inspected_on": "2026-11-03",
+      "sha256": "1f06bc0667c7c5575a0e88772868a95cd27ba01a264d3b3a0b9c859a8a6423aa",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained exact publisher PDF visually inspected pp1,5,6,16: license, common DDS cure, section2.5.2 bending method, Table8 selected Flexural Strength(MPa) cell. No fresh PDF acquisition or raw-data reanalysis.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained exact publisher PDF visually inspected pp1,5,6,16: license, common DDS cure, section2.5.2 bending method, Table8 selected Flexural Strength(MPa) cell. No fresh PDF acquisition or raw-data reanalysis.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "id": "refprop_tarasov2022_pna_bpf_5_flexural_strength",
+    "material_state_id": "state_tarasov2022_pna_bpf_5_dds_cured_flexural",
+    "evidence": [
+      {
+        "source_id": "tarasov_2022_pna_bpf_epoxy",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+        "locator": "PDF p.16 Table8 PNA-BPF-5 Flexural Strength (MPa)",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "tarasov_2022_pna_bpf_epoxy",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04547/article_deploy/polymers-14-04547.pdf?version=1666858817",
+        "locator": "PDF p.6, section 2.5.2",
+        "supports": [
+          "method",
+          "condition"
+        ]
+      }
+    ],
+    "scope_note": "Existing PNA-BPF-5 identity and its reviewed bending specimen state only. Source-labelled flexural strength, not tensile/yield/break strength or a modulus slope. Exact strength extraction criterion and stress convention remain unknown; no support geometry, missing statistics, environment or conditioning inferred from standards or neighboring tests. Existing composition/nominal-feed discrepancies retained. No automatic engine mapping, engineering allowable or universal bound."
+  }
+]

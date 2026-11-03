@@ -1,0 +1,88 @@
+{
+  "daily_tests": {
+    "executed_as_subset_of_scoped_run": 19,
+    "not_additional_to_164": true
+  },
+  "commands": [
+    {
+      "command": [
+        "python",
+        "-m",
+        "materials_boundaries.database",
+        "check",
+        "--scientific-contracts"
+      ],
+      "exit_code": 0,
+      "result": {
+        "status": "material_contracts_passed",
+        "snapshot": "a5c0c67e51e471294363c9d30db9af82a73f1dd619e1d1a4ecb5c2a276e42ea1",
+        "properties": 5327,
+        "independent_scientific_review": false,
+        "scope": "current_material_graph_once_no_history_replay"
+      }
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "materials_boundaries.database",
+        "export",
+        "--query",
+        "C11000",
+        "--quantity",
+        "mass_density",
+        "--output",
+        "F:\\材料边界\\open-database-evidence\\polymer-consolidated-delivery-20261104-r23-r25\\fresh-validation\\database-example"
+      ],
+      "exit_code": 0,
+      "result": {
+        "format": "materials-database/1",
+        "database_snapshot": "a5c0c67e51e471294363c9d30db9af82a73f1dd619e1d1a4ecb5c2a276e42ea1",
+        "record_count": 1,
+        "filters": {
+          "query": "C11000",
+          "quantity": "mass_density",
+          "category": null,
+          "source": null
+        },
+        "files": {
+          "records.jsonl": "0c46d9ea4474978312ba6a898b101e905caffeea906a01a931c76bfc0c8adaaa"
+        },
+        "review_status": "exported_local_snapshot_not_release_acceptance",
+        "source_rights": "per_source_metadata_no_blanket_relicense"
+      }
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "materials_boundaries.database",
+        "verify",
+        "--snapshot",
+        "F:\\材料边界\\open-database-evidence\\polymer-consolidated-delivery-20261104-r23-r25\\fresh-validation\\database-example"
+      ],
+      "exit_code": 0,
+      "result": {
+        "status": "snapshot_integrity_passed",
+        "manifest": {
+          "database_snapshot": "a5c0c67e51e471294363c9d30db9af82a73f1dd619e1d1a4ecb5c2a276e42ea1",
+          "files": {
+            "records.jsonl": "0c46d9ea4474978312ba6a898b101e905caffeea906a01a931c76bfc0c8adaaa"
+          },
+          "filters": {
+            "category": null,
+            "quantity": "mass_density",
+            "query": "C11000",
+            "source": null
+          },
+          "format": "materials-database/1",
+          "record_count": 1,
+          "review_status": "exported_local_snapshot_not_release_acceptance",
+          "source_rights": "per_source_metadata_no_blanket_relicense"
+        }
+      }
+    }
+  ],
+  "full_history_regression": "not_run",
+  "remote_CI": "pending_exact_commit"
+}

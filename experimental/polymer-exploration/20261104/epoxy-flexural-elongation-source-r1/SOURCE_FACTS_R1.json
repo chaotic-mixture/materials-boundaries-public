@@ -1,0 +1,120 @@
+{
+  "schema": "existing-epoxy-flexural-break-elongation-source-proposal/1",
+  "baseline_snapshot": "7109e8ad6a61c1dce5e37352418c6c27fd5370b08345cb48021f9bbf580713a6",
+  "baseline_git_head": "ba1dc2f0a06d306a92c89a3b32de33573907ace5",
+  "local_r23_approval_sha256": "31866322a0f93ccb73d6bd36e7ca80a037c2cdb98deb084513edb0e9d5aee4a2",
+  "source_id": "tarasov_2022_pna_bpf_epoxy",
+  "doi": "10.3390/polym14214547",
+  "rows": [
+    {
+      "source_label": "PNA-BPF-1",
+      "state_id": "state_tarasov2022_pna_bpf_1_dds_cured_flexural",
+      "old_state_version": "1.0.1",
+      "base_property_id": "refprop_tarasov2022_pna_bpf_1_flexural_strength",
+      "new_property_id": "refprop_tarasov2022_pna_bpf_1_flexural_elongation_at_break",
+      "number": "5.73",
+      "unit_text": "%",
+      "unit_code": "percent_elongation",
+      "locator": "PDFp16 Table8 PNA-BPF-1 Flexural Elongation at Break(%); PDFp18 Figure9 labelled point crosscheck"
+    },
+    {
+      "source_label": "PNA-BPF-2",
+      "state_id": "state_tarasov2022_pna_bpf_2_dds_cured_flexural",
+      "old_state_version": "1.0.1",
+      "base_property_id": "refprop_tarasov2022_pna_bpf_2_flexural_strength",
+      "new_property_id": "refprop_tarasov2022_pna_bpf_2_flexural_elongation_at_break",
+      "number": "6.66",
+      "unit_text": "%",
+      "unit_code": "percent_elongation",
+      "locator": "PDFp16 Table8 PNA-BPF-2 Flexural Elongation at Break(%); PDFp18 Figure9 labelled point crosscheck"
+    },
+    {
+      "source_label": "PNA-BPF-3",
+      "state_id": "state_tarasov2022_pna_bpf_3_dds_cured_flexural",
+      "old_state_version": "1.0.1",
+      "base_property_id": "refprop_tarasov2022_pna_bpf_3_flexural_strength",
+      "new_property_id": "refprop_tarasov2022_pna_bpf_3_flexural_elongation_at_break",
+      "number": "8.23",
+      "unit_text": "%",
+      "unit_code": "percent_elongation",
+      "locator": "PDFp16 Table8 PNA-BPF-3 Flexural Elongation at Break(%); PDFp18 Figure9 labelled point crosscheck"
+    },
+    {
+      "source_label": "PNA-BPF-4",
+      "state_id": "state_tarasov2022_pna_bpf_4_dds_cured_flexural",
+      "old_state_version": "1.0.1",
+      "base_property_id": "refprop_tarasov2022_pna_bpf_4_flexural_strength",
+      "new_property_id": "refprop_tarasov2022_pna_bpf_4_flexural_elongation_at_break",
+      "number": "8.19",
+      "unit_text": "%",
+      "unit_code": "percent_elongation",
+      "locator": "PDFp16 Table8 PNA-BPF-4 Flexural Elongation at Break(%); PDFp18 Figure9 labelled point crosscheck"
+    },
+    {
+      "source_label": "PNA-BPF-5",
+      "state_id": "state_tarasov2022_pna_bpf_5_dds_cured_flexural",
+      "old_state_version": "1.0.1",
+      "base_property_id": "refprop_tarasov2022_pna_bpf_5_flexural_strength",
+      "new_property_id": "refprop_tarasov2022_pna_bpf_5_flexural_elongation_at_break",
+      "number": "9.15",
+      "unit_text": "%",
+      "unit_code": "percent_elongation",
+      "locator": "PDFp16 Table8 PNA-BPF-5 Flexural Elongation at Break(%); PDFp18 Figure9 labelled point crosscheck"
+    }
+  ],
+  "contract_proposal": {
+    "quantity": "flexural_elongation_at_break",
+    "dimension": "dimensionless",
+    "context_unit": "percent_elongation",
+    "source_spelling": "%",
+    "plan": "Extend existing PERCENT_ELONGATION_QUANTITIES set and existing percent-elongation schema branch;no new branch or SI unit. Central0/above100 accepted as for source elongation;negative/nonfinite forbidden;absolute dispersion percentage points distinct from relative percent.",
+    "separation": "Not tensile break/at-strength elongation, flexural strength/modulus, specified_elongation or genericfraction;no /100,automaticconversion,engine/allowable/universalbound."
+  },
+  "method": {
+    "locator": "PDFp6 section2.5.2",
+    "source_standard": "GOST R56810-2015(ASTM D790-10),as cited;notindependentlyverifiedcompliance",
+    "machine": "50ST,Tinius Olsen",
+    "speed": "0.85mm/min testingmachine speed;not measured strain rate",
+    "geometry": "Bars80x9.8x3.6mm milledfrom3.6mm curedplate;literal span-to-depth64:3.6mm;no convertedmeasuredratio or supportpointnumber",
+    "endpoint": "Author-labelled Flexural Elongation at Break; actual deflection/strain channel,reductionformula,outerfiber/engineering/true strain convention,break-detection/evaluationcriterion and calibrationunknown. No standardformula inference."
+  },
+  "statistics": {
+    "summary_statistic": "not_stated",
+    "reporting_basis": "not_stated",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "sample_count": null,
+    "scope": "Selectedsection2.5.2/Table8/Figure9 do notdefine centralestimator,n/specimens/batches or SD/SE/CI;notzero scatter;no borrow tensile/impact/DSC."
+  },
+  "preparation": {
+    "locator": "PDFp5 section2.4",
+    "context": "DDSsource stoichiometricbasis;125C100mmHg vacuum20-40minuntilhomogeneous;180C8hcure;no verified absolute/gaugevacuum interpretation",
+    "not_test_conditions": "Cure/degassing/DSC temperatures not flexural T/RH;postcurestorage/moisture conditioningunknown."
+  },
+  "state_plan": {
+    "new_identities_grades_states_sources": 0,
+    "existing_five_bending_states": "Use existing3.6mm flexural states,not4mm tensile states. Oldstateonlyversion/property_ids/source_scope;no state facts changed.",
+    "old_properties": "All5317completeoldpropertyobjects unchanged",
+    "source": "Oneexisting source append claimnote only"
+  },
+  "source_discrepancy_plan": {
+    "inherit": "Existing nominalfeed/mole-number/NaOH-KOH source contradictions remainunresolved",
+    "new_scope": "PDFp18 text saysflexuralelongationcontinuouslydecreases withincreasingphosphazene;Table8/Figure9 selected PNA-BPF-3=8.23 and-4=8.19 do notstrictlyfollow that narrativeordering. Preserve alltablevalues;nosmoothing/repair/claimedmonotoniclaw/statisticalsignificance without n/dispersion. Figure9 x-axis is author sourcecontext,notnew independentcompositionverification."
+  },
+  "licence": "PDFp1 articleCCBY4.0,title/authors/journal/DOIattributionretained. RawPDF/PNGnotbundled.",
+  "inspection": {
+    "date": "2026-11-04",
+    "visual_pages": [
+      1,
+      5,
+      6,
+      16,
+      18
+    ],
+    "pdf": "Retained exact1f06bc...samepublisherPDF,notfreshdownload. Newp18PNG renderedfromsamePDF viaPoppler;existingp1/5/6/16 visualassetsinspected.",
+    "text_scope": "Readexistingp6/16/17/18/19/20text;full22pagekeywordscan onlylocatingaid,notvisualabsenceproof.",
+    "data_availability": "p20text sayscorrespondingauthorcanbeapproached;no authorcontact/rawdataobtained;notproofpublicdataset or samplesunavailable.",
+    "latest_notice_or_supplement_completeness": "unknown;notcheckedfresh"
+  },
+  "stage": "source/contractconceptonly;no code/schema/native/install/pushchanges forthisnewbatch"
+}
