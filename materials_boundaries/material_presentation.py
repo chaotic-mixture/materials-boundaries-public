@@ -9,7 +9,8 @@ REQUIRED_LABELS = frozenset(('materials', 'reference_properties', 'count', 'empt
 REQUIRED_LABELS |= frozenset(('code_source_reported_computational_structure_density',))
 REQUIRED_LABELS |= frozenset(('code_source_reported_molecular_simulation_density', 'code_simulation_cell'))
 REQUIRED_LABELS |= frozenset(('code_slump_flow_spread',))
-REQUIRED_LABELS |= frozenset(('code_tensile_yield_strength',))
+REQUIRED_LABELS |= frozenset(('code_tensile_yield_strength', 'code_flexural_strength'))
+REQUIRED_LABELS |= frozenset(('code_tensile_stress_at_specified_elongation', 'specified_elongation'))
 REQUIRED_LABELS |= frozenset(('coverage', 'coverage_notice', 'coverage_target', 'coverage_admitted', 'coverage_remaining'))
 REQUIRED_LABELS |= frozenset(('code_natural', 'code_basic_wood_density', 'code_source_reported_empirical_conversion', 'code_oven_dry_mass_over_fresh_or_water_saturated_volume', 'derivation', 'canonical_taxon', 'derived_notice'))
 REQUIRED_LABELS |= frozenset((
@@ -203,6 +204,11 @@ def render_material_catalog(catalog: dict, kind: str, language: str = "en") -> s
         if prop["density_basis"] is not None:
             output.append(field("density_basis", code(prop["density_basis"]), indent + "  "))
         output.append(field("conditions", "", indent + "  "))
+        if "specified_elongation" in prop:
+            target = prop["specified_elongation"]
+            output.append(field("specified_elongation", f'{target["value_text"]} {target["unit_text"]}', indent + "    "))
+            output.append(field("scope_note", target["notes"], indent + "      "))
+            output.extend(evidence(target["evidence"], indent + "      "))
         for key, condition in prop["conditions"].items():
             if key == "additional_conditions":
                 for extra in condition:

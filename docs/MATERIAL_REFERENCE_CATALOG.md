@@ -66,6 +66,16 @@ claims that whole chemical families have known universal properties.
 
 ## Evidence and interpretation
 
+`tensile_stress_at_specified_elongation` stores a source-reported stress at a
+specified percent elongation, including rubber M100/M200 when source-supported.
+Its required `specified_elongation` descriptor keeps the original target number,
+percent unit, source evidence and scope notes. The descriptor is forbidden on
+other quantities. Percent is never a central pressure-result unit.
+These are stresses, without division by elongation or automatic conversion to
+Young, tangent or secant modulus. Source test-standard edition/compliance,
+strain-measure implementation and missing test conditions remain separate
+questions. No evaluator input is derived from these catalog-only records.
+
 `tensile_yield_strength` preserves a source-labelled tensile yield stress. It is
 distinct from maximum tensile strength, stress at break and elastic moduli.
 An unreported yield criterion remains unknown in `additional_conditions`
@@ -573,3 +583,7 @@ not relabeled as universal secondary-growth wood or inferred trunk material.
 Source-reported plants or inherited v1 mechanical record counts are not validated
 independent sample n. Neither source-method uncertainty nor rounding resolution
 is silently promoted to record-level uncertainty.
+
+## 来源标称弯曲强度
+
+`flexural_strength`是独立pressure类型，使用既有MPa/GPa等压力单位。保留来源弯曲试验方法及强度提取判据的已知/未知状态，不自动解释为拉伸、屈服或断裂强度，也不是弯曲模量。标准引用不构成独立合规证明；不得由标准补造缺失的支承数、应力公式、最大挠度、屈服/破坏点、样本数或调湿条件。统计量按具体来源分别保留。该量不使用`specified_elongation`，不进入计算引擎，保持catalog_only、非普适界和非工程许用值。

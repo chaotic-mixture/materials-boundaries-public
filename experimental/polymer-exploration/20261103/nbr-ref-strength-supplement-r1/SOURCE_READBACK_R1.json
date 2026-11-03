@@ -1,0 +1,85 @@
+{
+  "schema": "existing-nbr-ref-strength-source-readback/1",
+  "baseline_commit": "8735dfcb1a7f813c457613cb8cb836eddeea71b7",
+  "baseline_snapshot": "a0068f8c22fc94cdfb893fda69585b1a416811b937ed2b2b558a803feded0456",
+  "primary_xml": {
+    "path_hint": "F:\\材料边界\\open-database-evidence\\polymer-nbr-strength-20261103-r1\\article.xml",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+    "sha256": "2d8008e2b16dd3fe14b91a6747fb3632c70b461ccee4ccc8dea546dc3c272347",
+    "bytes": 103384
+  },
+  "fresh_pdf_verified": false,
+  "fresh_pdf_visual_review": false,
+  "pdf_retrieval_attempts": [
+    "urllib university URL failed with Errno2",
+    "curl retry default TLS failed with schannel handshake error35; no usable PDF verified"
+  ],
+  "source_row": {
+    "REF_rCF_phr": "0",
+    "tensile_strength_MPa": "6.01",
+    "printed_plus_minus_MPa": "1.15",
+    "summary_statistic": "reported_mean",
+    "pooling": "Source section3.3 explicitly averages tensile results over all tested specimens regardless of two mutually perpendicular orientations; estimator/weights unspecified",
+    "uncertainty": "reported_plus_minus_unspecified",
+    "sample_count": "not_reported"
+  },
+  "existing_density": {
+    "id": "refprop_perbunan3445f_tamas_benyei2025_ref_mass_density",
+    "value_g_cm3": "1.031",
+    "plus_minus_g_cm3": "0.001",
+    "new_mechanical_mean_or_methods_not_transferred": true
+  },
+  "existing_six_composite_rows_crosschecked": [
+    {
+      "source_row": "B",
+      "existing_property_id": "refprop_tamas_benyei2025_nbr_mcf5_tensile_strength",
+      "strength_MPa": "5.26",
+      "plus_minus_MPa": "0.78"
+    },
+    {
+      "source_row": "C",
+      "existing_property_id": "refprop_tamas_benyei2025_nbr_mcf10_tensile_strength",
+      "strength_MPa": "5.11",
+      "plus_minus_MPa": "1.27"
+    },
+    {
+      "source_row": "D",
+      "existing_property_id": "refprop_tamas_benyei2025_nbr_mcf20_tensile_strength",
+      "strength_MPa": "5.33",
+      "plus_minus_MPa": "0.74"
+    },
+    {
+      "source_row": "E",
+      "existing_property_id": "refprop_tamas_benyei2025_nbr_mcf30_tensile_strength",
+      "strength_MPa": "5.47",
+      "plus_minus_MPa": "1.05"
+    },
+    {
+      "source_row": "F",
+      "existing_property_id": "refprop_tamas_benyei2025_nbr_mcf40_tensile_strength",
+      "strength_MPa": "4.60",
+      "plus_minus_MPa": "0.68"
+    },
+    {
+      "source_row": "G",
+      "existing_property_id": "refprop_tamas_benyei2025_nbr_mcf50_tensile_strength",
+      "strength_MPa": "4.57",
+      "plus_minus_MPa": "0.72"
+    }
+  ],
+  "source_discrepancy": "Abstract claims 15% tensile improvement at20phr, but Table4 D5.33MPa versus REF6.01MPa conflicts; preserve table and disagreement, no correction or improvement claim",
+  "method": "ISO37 Type2 dumbbells; nominal2mm vulcanized sheets; ZwickZ005/5kN load-cell capacity; crosshead500mm/min; two perpendicular orientations pooled",
+  "unknowns": [
+    "Tensile sample/per-direction/independent batch count",
+    "Test temperature/RH and postcure conditioning/storage",
+    "Tensile strength plus-minus statistical type",
+    "Gauge geometry, exact strength-extraction and stress convention, standard edition/compliance",
+    "Density method, n, aggregation and uncertainty remain separately unknown"
+  ],
+  "identity_scope": "Same cured additive-containing 0phr REF sheet identity/state as existing density; not raw NBR, pure rubber, another supplier grade, D, D_Fo or foam",
+  "M100_M200": "Finite-extension source measures, not Young modulus; not mapped in this supplement",
+  "license": "Article CC BY4.0 explicit in primary XML/PMC; separately credited Figure1 excluded",
+  "scope_correction": "Existing six composite discrepancy dispositions will clarify that REF is comparator within that property record, without denying separately admitted REF properties. Only version/disposition wording changes; all scientific fact fields remain unchanged.",
+  "native_applied": false,
+  "pushed": false
+}

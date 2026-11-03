@@ -1,0 +1,62 @@
+{
+  "platform": "Windows Python3.11 actual commands,not Ubuntu3.12 or remote CI",
+  "steps": {
+    "behavior": {
+      "exit_code": 0,
+      "command": [
+        "F:\\材料边界\\ci-optimization\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_database*.py",
+        "-v"
+      ]
+    },
+    "graph": {
+      "exit_code": 0,
+      "command": [
+        "F:\\材料边界\\ci-optimization\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-m",
+        "materials_boundaries.database",
+        "check",
+        "--scientific-contracts"
+      ]
+    },
+    "export": {
+      "exit_code": 0,
+      "command": [
+        "F:\\材料边界\\ci-optimization\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-m",
+        "materials_boundaries.database",
+        "export",
+        "--query",
+        "C11000",
+        "--quantity",
+        "mass_density",
+        "--output",
+        "F:\\材料边界\\open-database-evidence\\polymer-consolidated-delivery-20261103-r8-r11\\database-example"
+      ]
+    },
+    "verify": {
+      "exit_code": 0,
+      "command": [
+        "F:\\材料边界\\ci-optimization\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-m",
+        "materials_boundaries.database",
+        "verify",
+        "--snapshot",
+        "F:\\材料边界\\open-database-evidence\\polymer-consolidated-delivery-20261103-r8-r11\\database-example"
+      ]
+    }
+  },
+  "full_history_regression": "not_run",
+  "unit_suite_scope": "Database daily CI subset only,not added to124 unique broader suite",
+  "status": "passed"
+}

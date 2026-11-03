@@ -26,9 +26,11 @@ QUANTITY_DIMENSIONS = {
     "youngs_modulus": "pressure",
     "tensile_modulus": "pressure",
     "flexural_modulus": "pressure",
+    "flexural_strength": "pressure",
     "elastic_modulus_unspecified": "pressure",
     "tensile_strength": "pressure",
     "tensile_yield_strength": "pressure",
+    "tensile_stress_at_specified_elongation": "pressure",
     "slump_flow_spread": "length",
 }
 UNIT_DIMENSIONS = {
@@ -199,9 +201,15 @@ def _make_properties_schema():
         "status": {"const": "reported"}, "text": TEXT,
         "evidence": evidence, "notes": NULLABLE_TEXT,
     })
+    definitions["specified_elongation"] = _object({
+        "value_text": TEXT, "number": DECIMAL, "unit_text": TEXT,
+        "unit_code": {"const": "percent"},
+        "basis": {"const": "source_reported_percent_elongation"},
+        "evidence": evidence, "notes": TEXT,
+    })
     # A descriptor is not a symmetric interval. In particular, relative
     # measurement error, CV and graphical SD cannot be collapsed into +/- SD.
-    # Percent belongs only to this relative-measure branch, never result units.
+    # Within uncertainty, percent belongs only to relative measures, never results.
     measure_common = {
         "qualifier": _enum(("approximately", "not_qualified_in_source")),
         "scope": TEXT, "evidence": evidence,
@@ -282,7 +290,18 @@ def _make_properties_schema():
                                   "independent_scientific_review": {"const": False},
                                   "raw_data_reanalysis": {"const": False}}),
         "derivation": _ref("derivation"),
-    }, ("derivation",))
+        "specified_elongation": _ref("specified_elongation"),
+    }, ("derivation", "specified_elongation"))
+    # Disjoint complete branches keep the dependency-free shape validator and
+    # public JSON Schema aligned without adding conditional schema vocabulary.
+    stress = deepcopy(definitions["property"])
+    stress["properties"]["quantity"] = {"const": "tensile_stress_at_specified_elongation"}
+    stress["required"].append("specified_elongation")
+    other = definitions["property"]
+    other["properties"]["quantity"] = _enum(
+        q for q in QUANTITY_DIMENSIONS if q != "tensile_stress_at_specified_elongation")
+    del other["properties"]["specified_elongation"]
+    definitions["property"] = {"oneOf": [other, stress]}
     return {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "$id": "urn:materials-boundaries:schema:reference_properties:1.0.0",
@@ -549,8 +568,8 @@ _UNIT_SPELLINGS = {
     "MPa": {"MPa"}, "GPa": {"GPa"},
     "N/mm^2": {"N/mm^2", "N/mm²", "N/mm2"},
     "kN/mm^2": {"kN/mm^2", "kN/mm²", "kN/mm2"},
-    # Only relative reported measures use this spelling; UNIT_DIMENSIONS and
-    # the central-result schema deliberately do not contain percent.
+    # Relative measures and specified-elongation descriptors use this spelling;
+    # UNIT_DIMENSIONS and central-result units deliberately exclude percent.
     "percent": {"%"},
 }
 
@@ -692,6 +711,10 @@ def _validate_property(prop):
     if prop["quantity_dimension"] != dimension:
         _fail(path, "quantity dimension mismatch")
     _validate_value(prop["reported_value"], path + ".reported_value", dimension)
+    if prop["quantity"] == "tensile_stress_at_specified_elongation":
+        target = prop["specified_elongation"]
+        _validate_value(target, path + ".specified_elongation")
+        _require_tag(target["evidence"], "condition", path + ".specified_elongation", source)
     if (prop["density_basis"] is not None) != (prop["quantity"] in {"mass_density", "basic_wood_density"}):
         _fail(path, "density_basis required only for density")
     for tag in ("reported_value", "classification"):
@@ -820,11 +843,22 @@ def _unique_fact(prop, seen):
             )
         else:
             conditions[key] = {"status": fact["status"], "text": fact["text"]}
+    # Decimal tuples avoid rounding under an ambient low-precision context.
+    # Target typography is preserved in the record but cannot create a new fact.
+    elongation_key = None
+    if "specified_elongation" in prop:
+        target = Decimal(prop["specified_elongation"]["number"]).as_tuple()
+        digits, exponent = list(target.digits), target.exponent
+        while digits and digits[-1] == 0:
+            digits.pop()
+            exponent += 1
+        elongation_key = [target.sign, digits, exponent]
     signature = json.dumps({
         "state": prop["material_state_id"], "quantity": prop["quantity"],
         "document": prop["source_document"]["url"],
         "locators": sorted({entry["locator"] for entry in _tagged(prop["evidence"], "reported_value", prop["source_id"])}),
         "value": represented_value, "conditions": conditions,
+        "specified_elongation": elongation_key,
     }, sort_keys=True, ensure_ascii=False)
     if signature in seen:
         _fail(prop["id"], "duplicate source fact for the same material state")

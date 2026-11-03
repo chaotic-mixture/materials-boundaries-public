@@ -1,0 +1,2950 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:materials-boundaries:schema:reference_properties:1.0.0",
+  "title": "Catalog-only source-reported reference properties v1",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/property"
+      },
+      "minItems": 0
+    }
+  },
+  "required": [
+    "schema_version",
+    "records"
+  ],
+  "$defs": {
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "source_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^(?![\\s\\S]*[\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff])https://[^\\s/?#]+(?:[/?#][^\\s]*)?(?![\\s\\S])"
+        },
+        "locator": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "supports": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "material_identity",
+              "grade",
+              "state",
+              "reported_value",
+              "method",
+              "condition",
+              "classification",
+              "disclaimer",
+              "summary_statistic",
+              "uncertainty",
+              "sample_count",
+              "source_discrepancy"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "source_id",
+        "url",
+        "locator",
+        "supports"
+      ]
+    },
+    "fact": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "const": "reported"
+            },
+            "text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "notes": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "status",
+            "text",
+            "evidence",
+            "notes"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "const": "not_reported_in_inspected_source"
+            },
+            "text": {
+              "type": "null"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 0
+            },
+            "notes": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "status",
+            "text",
+            "evidence",
+            "notes"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "const": "not_verified"
+            },
+            "text": {
+              "type": "null"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 0
+            },
+            "notes": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "status",
+            "text",
+            "evidence",
+            "notes"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "const": "not_applicable"
+            },
+            "text": {
+              "type": "null"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 0
+            },
+            "notes": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            }
+          },
+          "required": [
+            "status",
+            "text",
+            "evidence",
+            "notes"
+          ]
+        }
+      ]
+    },
+    "names": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "en": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "zh": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "ja": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "de": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        }
+      },
+      "required": [
+        "en",
+        "zh",
+        "ja",
+        "de"
+      ]
+    },
+    "alias": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "language": {
+          "type": "string",
+          "enum": [
+            "en",
+            "zh",
+            "ja",
+            "de",
+            "und"
+          ]
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        }
+      },
+      "required": [
+        "language",
+        "text"
+      ]
+    },
+    "canonical_taxon": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "identity_key": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "tissue_scope": {
+          "const": "collection_woody_tissue_anatomy_unspecified"
+        },
+        "accepted_taxon_id": {
+          "type": "string",
+          "pattern": "^wfo-[0-9]{10}$",
+          "maxLength": 14
+        },
+        "accepted_name": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "accepted_authority": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "accepted_full_name": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "original_full_name": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "original_name_records": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "taxon_id": {
+                "type": "string",
+                "pattern": "^wfo-[0-9]{10}$",
+                "maxLength": 14
+              },
+              "scientific_name": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+              },
+              "authorship": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+              },
+              "rank": {
+                "const": "species"
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "Accepted",
+                  "Synonym"
+                ]
+              }
+            },
+            "required": [
+              "taxon_id",
+              "scientific_name",
+              "authorship",
+              "rank",
+              "status"
+            ]
+          },
+          "minItems": 1
+        },
+        "source_to_accepted_chains": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "source_name_wfo_id": {
+                "type": "string",
+                "pattern": "^wfo-[0-9]{10}$",
+                "maxLength": 14
+              },
+              "wfo_chain_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^wfo-[0-9]{10}$",
+                  "maxLength": 14
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "accepted_terminal_wfo_id": {
+                "type": "string",
+                "pattern": "^wfo-[0-9]{10}$",
+                "maxLength": 14
+              },
+              "error": {
+                "type": "null"
+              }
+            },
+            "required": [
+              "source_name_wfo_id",
+              "wfo_chain_ids",
+              "accepted_terminal_wfo_id",
+              "error"
+            ]
+          },
+          "minItems": 1
+        },
+        "mapping_method": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "mapping_disposition": {
+          "const": "reviewed_supported_historical_backbone"
+        },
+        "rank": {
+          "const": "species"
+        },
+        "hybrid": {
+          "const": false
+        },
+        "backbone": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "doi": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "version": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "archive_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$",
+              "maxLength": 64
+            },
+            "archive_member": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "accepted_record_1based": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "accepted_physical_line_start": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "accepted_physical_line_end": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "required": [
+            "doi",
+            "version",
+            "archive_sha256",
+            "archive_member",
+            "accepted_record_1based",
+            "accepted_physical_line_start",
+            "accepted_physical_line_end"
+          ]
+        },
+        "source_taxonomic_reference": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        }
+      },
+      "required": [
+        "identity_key",
+        "tissue_scope",
+        "accepted_taxon_id",
+        "accepted_name",
+        "accepted_authority",
+        "accepted_full_name",
+        "original_full_name",
+        "original_name_records",
+        "source_to_accepted_chains",
+        "mapping_method",
+        "mapping_disposition",
+        "rank",
+        "hybrid",
+        "backbone",
+        "source_taxonomic_reference"
+      ]
+    },
+    "derivation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0.0"
+        },
+        "kind": {
+          "const": "conversion_derived_estimate_from_measured_input"
+        },
+        "profile_id": {
+          "type": "string",
+          "enum": [
+            "gwdd_airdry_sg_to_basic_density_v2_1"
+          ]
+        },
+        "profile_version": {
+          "const": "1.0.0"
+        },
+        "formula_id": {
+          "const": "gwdd_v2_1_basic_from_airdry_sg"
+        },
+        "input": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "quantity": {
+              "const": "air_dry_specific_gravity"
+            },
+            "basis": {
+              "const": "air_dry_mass_over_air_dry_volume_relative_to_water_same_conditions"
+            },
+            "number": {
+              "type": "string",
+              "maxLength": 49,
+              "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+            },
+            "value_text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "unit_code": {
+              "const": "dimensionless"
+            },
+            "source_property_label": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "deposited_quantity_label": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evidence_type": {
+              "const": "source_reported_measured_input"
+            }
+          },
+          "required": [
+            "quantity",
+            "basis",
+            "number",
+            "value_text",
+            "unit_code",
+            "source_property_label",
+            "deposited_quantity_label",
+            "evidence_type"
+          ]
+        },
+        "deposited_output": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "number": {
+              "type": "string",
+              "maxLength": 49,
+              "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+            },
+            "unit_code": {
+              "const": "g/cm^3"
+            },
+            "rounding_increment": {
+              "type": "string",
+              "maxLength": 49,
+              "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+            }
+          },
+          "required": [
+            "number",
+            "unit_code",
+            "rounding_increment"
+          ]
+        },
+        "si_output": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "number": {
+              "type": "string",
+              "maxLength": 49,
+              "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+            },
+            "unit_code": {
+              "const": "kg/m^3"
+            },
+            "rounding_increment": {
+              "type": "string",
+              "maxLength": 49,
+              "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+            }
+          },
+          "required": [
+            "number",
+            "unit_code",
+            "rounding_increment"
+          ]
+        },
+        "formula": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "expression": {
+              "const": "deposited basic density = source-rounded (air-dry specific gravity * 0.8281316 * water-density convention 1 g/cm^3)"
+            },
+            "coefficient": {
+              "type": "string",
+              "maxLength": 49,
+              "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+            },
+            "coefficient_source_id": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "coefficient_source_field": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "calibration_source_id": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "basis_convention_source_id": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "water_density_convention_g_cm3": {
+              "type": "string",
+              "maxLength": 49,
+              "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+            },
+            "nominal_conversion_moisture_percent": {
+              "type": "string",
+              "maxLength": 49,
+              "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+            },
+            "measured_specimen_moisture_percent": {
+              "type": "null"
+            },
+            "calibration_context": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "rounding_audit_policy": {
+              "const": "absolute_difference_less_than_half_deposited_rounding_increment; halfway_ties_held"
+            },
+            "moisture_percent_basis": {
+              "const": "water_mass_over_oven_dry_mass"
+            }
+          },
+          "required": [
+            "expression",
+            "coefficient",
+            "coefficient_source_id",
+            "coefficient_source_field",
+            "calibration_source_id",
+            "basis_convention_source_id",
+            "water_density_convention_g_cm3",
+            "nominal_conversion_moisture_percent",
+            "measured_specimen_moisture_percent",
+            "calibration_context",
+            "rounding_audit_policy",
+            "moisture_percent_basis"
+          ]
+        },
+        "specimen_scope": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "accession": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "selection": {
+              "const": "selected_collection_accession"
+            },
+            "tissue_subtype": {
+              "type": "null"
+            },
+            "sample_anatomical_location": {
+              "type": "null"
+            },
+            "orientation": {
+              "type": "null"
+            },
+            "exact_test_temperature": {
+              "type": "null"
+            },
+            "exact_moisture": {
+              "type": "null"
+            },
+            "treatment": {
+              "type": "null"
+            },
+            "collection_date": {
+              "type": "null"
+            },
+            "measurement_date": {
+              "type": "null"
+            },
+            "missingness_reason": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            }
+          },
+          "required": [
+            "accession",
+            "selection",
+            "tissue_subtype",
+            "sample_anatomical_location",
+            "orientation",
+            "exact_test_temperature",
+            "exact_moisture",
+            "treatment",
+            "collection_date",
+            "measurement_date",
+            "missingness_reason"
+          ]
+        },
+        "counts": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "plants_sampled_as_reported": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "verified_independent_plants": {
+              "type": "null"
+            },
+            "collection_accessions_selected": {
+              "const": 1
+            },
+            "v1_mechanically_eligible_source_record_count": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "count_scope_note": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            }
+          },
+          "required": [
+            "plants_sampled_as_reported",
+            "verified_independent_plants",
+            "collection_accessions_selected",
+            "v1_mechanically_eligible_source_record_count",
+            "count_scope_note"
+          ]
+        },
+        "uncertainty": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "record_measurement_uncertainty": {
+              "type": "null"
+            },
+            "source_method_uncertainty_note": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "conversion_uncertainty": {
+              "type": "null"
+            },
+            "conversion_uncertainty_note": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "species_variation": {
+              "type": "null"
+            },
+            "rounding_is_uncertainty": {
+              "const": false
+            }
+          },
+          "required": [
+            "record_measurement_uncertainty",
+            "source_method_uncertainty_note",
+            "conversion_uncertainty",
+            "conversion_uncertainty_note",
+            "species_variation",
+            "rounding_is_uncertainty"
+          ]
+        },
+        "provenance": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "original": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "source_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "release_doi": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "release_version": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "file_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "file_name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "url": {
+                  "type": "string",
+                  "format": "uri",
+                  "pattern": "^(?![\\s\\S]*[\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff])https://[^\\s/?#]+(?:[/?#][^\\s]*)?(?![\\s\\S])"
+                },
+                "record_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "data_record_1based": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "physical_line_start": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "physical_line_end": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "fields": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                  },
+                  "minItems": 1,
+                  "uniqueItems": true
+                }
+              },
+              "required": [
+                "source_id",
+                "release_doi",
+                "release_version",
+                "file_id",
+                "file_name",
+                "sha256",
+                "url",
+                "record_id",
+                "data_record_1based",
+                "physical_line_start",
+                "physical_line_end",
+                "fields"
+              ]
+            },
+            "deposited": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "source_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "release_doi": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "release_version": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "file_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "file_name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "url": {
+                  "type": "string",
+                  "format": "uri",
+                  "pattern": "^(?![\\s\\S]*[\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff])https://[^\\s/?#]+(?:[/?#][^\\s]*)?(?![\\s\\S])"
+                },
+                "record_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "data_record_1based": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "physical_line_start": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "physical_line_end": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "fields": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                  },
+                  "minItems": 1,
+                  "uniqueItems": true
+                }
+              },
+              "required": [
+                "source_id",
+                "release_doi",
+                "release_version",
+                "file_id",
+                "file_name",
+                "sha256",
+                "url",
+                "record_id",
+                "data_record_1based",
+                "physical_line_start",
+                "physical_line_end",
+                "fields"
+              ]
+            },
+            "reviewed_batch_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$",
+              "maxLength": 64
+            },
+            "reviewed_candidate_key": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "original_citation": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "normalized_citation": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "license_identifiers": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            },
+            "attribution": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "source_scope_note": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            }
+          },
+          "required": [
+            "original",
+            "deposited",
+            "reviewed_batch_sha256",
+            "reviewed_candidate_key",
+            "original_citation",
+            "normalized_citation",
+            "license_identifiers",
+            "attribution",
+            "source_scope_note"
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "schema_version",
+        "kind",
+        "profile_id",
+        "profile_version",
+        "formula_id",
+        "input",
+        "deposited_output",
+        "si_output",
+        "formula",
+        "specimen_scope",
+        "counts",
+        "uncertainty",
+        "provenance",
+        "evidence"
+      ]
+    },
+    "reported_value": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "scalar"
+            },
+            "value_text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "unit_text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "unit_code": {
+              "type": "string",
+              "enum": [
+                "mm",
+                "g/cm^3",
+                "kg/m^3",
+                "kg/dm^3",
+                "lb/in^3",
+                "MPa",
+                "GPa",
+                "N/mm^2",
+                "kN/mm^2"
+              ]
+            },
+            "number": {
+              "type": "string",
+              "maxLength": 49,
+              "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+            }
+          },
+          "required": [
+            "kind",
+            "value_text",
+            "unit_text",
+            "unit_code",
+            "number"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "interval"
+            },
+            "value_text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "unit_text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "unit_code": {
+              "type": "string",
+              "enum": [
+                "mm",
+                "g/cm^3",
+                "kg/m^3",
+                "kg/dm^3",
+                "lb/in^3",
+                "MPa",
+                "GPa",
+                "N/mm^2",
+                "kN/mm^2"
+              ]
+            },
+            "lower": {
+              "type": "string",
+              "maxLength": 49,
+              "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+            },
+            "upper": {
+              "type": "string",
+              "maxLength": 49,
+              "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+            },
+            "endpoint_semantics": {
+              "const": "source_reported_not_a_confidence_interval"
+            }
+          },
+          "required": [
+            "kind",
+            "value_text",
+            "unit_text",
+            "unit_code",
+            "lower",
+            "upper",
+            "endpoint_semantics"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "comparison"
+            },
+            "value_text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "unit_text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "unit_code": {
+              "type": "string",
+              "enum": [
+                "mm",
+                "g/cm^3",
+                "kg/m^3",
+                "kg/dm^3",
+                "lb/in^3",
+                "MPa",
+                "GPa",
+                "N/mm^2",
+                "kN/mm^2"
+              ]
+            },
+            "operator": {
+              "type": "string",
+              "enum": [
+                ">",
+                ">=",
+                "<",
+                "<="
+              ]
+            },
+            "number": {
+              "type": "string",
+              "maxLength": 49,
+              "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+            }
+          },
+          "required": [
+            "kind",
+            "value_text",
+            "unit_text",
+            "unit_code",
+            "operator",
+            "number"
+          ]
+        }
+      ]
+    },
+    "confidence_level": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "value_text": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "number": {
+          "type": "string",
+          "maxLength": 49,
+          "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+        },
+        "unit_code": {
+          "const": "percent"
+        }
+      },
+      "required": [
+        "value_text",
+        "number",
+        "unit_code"
+      ]
+    },
+    "uncertainty_fact": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "const": "reported"
+            },
+            "text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "notes": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "status",
+            "text",
+            "evidence",
+            "notes"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "const": "not_reported_in_inspected_source"
+            },
+            "text": {
+              "type": "null"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 0
+            },
+            "notes": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            }
+          },
+          "required": [
+            "status",
+            "text",
+            "evidence",
+            "notes"
+          ]
+        }
+      ]
+    },
+    "reported_window": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "const": "reported"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          },
+          "minItems": 1
+        },
+        "notes": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "text",
+        "evidence",
+        "notes"
+      ]
+    },
+    "specified_elongation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "value_text": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "number": {
+          "type": "string",
+          "maxLength": 49,
+          "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+        },
+        "unit_text": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "unit_code": {
+          "const": "percent"
+        },
+        "basis": {
+          "const": "source_reported_percent_elongation"
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          },
+          "minItems": 1
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        }
+      },
+      "required": [
+        "value_text",
+        "number",
+        "unit_text",
+        "unit_code",
+        "basis",
+        "evidence",
+        "notes"
+      ]
+    },
+    "reported_measure": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "standard_deviation"
+            },
+            "availability": {
+              "const": "numeric_reported"
+            },
+            "basis": {
+              "const": "absolute"
+            },
+            "reported_value": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value_text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "unit_text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "unit_code": {
+                  "type": "string",
+                  "enum": [
+                    "mm",
+                    "g/cm^3",
+                    "kg/m^3",
+                    "kg/dm^3",
+                    "lb/in^3",
+                    "MPa",
+                    "GPa",
+                    "N/mm^2",
+                    "kN/mm^2"
+                  ]
+                },
+                "number": {
+                  "type": "string",
+                  "maxLength": 49,
+                  "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+                }
+              },
+              "required": [
+                "value_text",
+                "unit_text",
+                "unit_code",
+                "number"
+              ]
+            },
+            "qualifier": {
+              "type": "string",
+              "enum": [
+                "approximately",
+                "not_qualified_in_source"
+              ]
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "confidence_level": {
+              "type": "null"
+            },
+            "coverage_factor": {
+              "type": "null"
+            },
+            "note": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "availability",
+            "basis",
+            "reported_value",
+            "qualifier",
+            "scope",
+            "evidence",
+            "confidence_level",
+            "coverage_factor",
+            "note"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "coefficient_of_variation"
+            },
+            "availability": {
+              "const": "numeric_reported"
+            },
+            "basis": {
+              "const": "relative_to_reported_value"
+            },
+            "reported_value": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value_text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "unit_text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "unit_code": {
+                  "const": "percent"
+                },
+                "number": {
+                  "type": "string",
+                  "maxLength": 49,
+                  "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+                }
+              },
+              "required": [
+                "value_text",
+                "unit_text",
+                "unit_code",
+                "number"
+              ]
+            },
+            "qualifier": {
+              "type": "string",
+              "enum": [
+                "approximately",
+                "not_qualified_in_source"
+              ]
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "confidence_level": {
+              "type": "null"
+            },
+            "coverage_factor": {
+              "type": "null"
+            },
+            "note": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "availability",
+            "basis",
+            "reported_value",
+            "qualifier",
+            "scope",
+            "evidence",
+            "confidence_level",
+            "coverage_factor",
+            "note"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "standard_error_of_mean"
+            },
+            "availability": {
+              "const": "numeric_reported"
+            },
+            "basis": {
+              "const": "relative_to_reported_value"
+            },
+            "reported_value": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value_text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "unit_text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "unit_code": {
+                  "const": "percent"
+                },
+                "number": {
+                  "type": "string",
+                  "maxLength": 49,
+                  "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+                }
+              },
+              "required": [
+                "value_text",
+                "unit_text",
+                "unit_code",
+                "number"
+              ]
+            },
+            "qualifier": {
+              "type": "string",
+              "enum": [
+                "approximately",
+                "not_qualified_in_source"
+              ]
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "confidence_level": {
+              "type": "null"
+            },
+            "coverage_factor": {
+              "type": "null"
+            },
+            "note": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "availability",
+            "basis",
+            "reported_value",
+            "qualifier",
+            "scope",
+            "evidence",
+            "confidence_level",
+            "coverage_factor",
+            "note"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "estimated_inaccuracy"
+            },
+            "availability": {
+              "const": "numeric_reported"
+            },
+            "basis": {
+              "const": "relative_to_reported_value"
+            },
+            "reported_value": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value_text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "unit_text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "unit_code": {
+                  "const": "percent"
+                },
+                "number": {
+                  "type": "string",
+                  "maxLength": 49,
+                  "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+                }
+              },
+              "required": [
+                "value_text",
+                "unit_text",
+                "unit_code",
+                "number"
+              ]
+            },
+            "qualifier": {
+              "type": "string",
+              "enum": [
+                "approximately",
+                "not_qualified_in_source"
+              ]
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "confidence_level": {
+              "type": "null"
+            },
+            "coverage_factor": {
+              "type": "null"
+            },
+            "note": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "availability",
+            "basis",
+            "reported_value",
+            "qualifier",
+            "scope",
+            "evidence",
+            "confidence_level",
+            "coverage_factor",
+            "note"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "standard_deviation"
+            },
+            "availability": {
+              "const": "graphical_only"
+            },
+            "basis": {
+              "const": "absolute"
+            },
+            "reported_value": {
+              "type": "null"
+            },
+            "qualifier": {
+              "type": "string",
+              "enum": [
+                "approximately",
+                "not_qualified_in_source"
+              ]
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "confidence_level": {
+              "type": "null"
+            },
+            "coverage_factor": {
+              "type": "null"
+            },
+            "note": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            }
+          },
+          "required": [
+            "kind",
+            "availability",
+            "basis",
+            "reported_value",
+            "qualifier",
+            "scope",
+            "evidence",
+            "confidence_level",
+            "coverage_factor",
+            "note"
+          ]
+        }
+      ]
+    },
+    "uncertainty": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "const": "reported_standard_deviation"
+            },
+            "value_text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "unit_text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "unit_code": {
+              "type": "string",
+              "enum": [
+                "mm",
+                "g/cm^3",
+                "kg/m^3",
+                "kg/dm^3",
+                "lb/in^3",
+                "MPa",
+                "GPa",
+                "N/mm^2",
+                "kN/mm^2"
+              ]
+            },
+            "number": {
+              "type": "string",
+              "maxLength": 49,
+              "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "coverage_factor": {
+              "type": "null"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "confidence_level": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "type",
+            "value_text",
+            "unit_text",
+            "unit_code",
+            "number",
+            "scope",
+            "coverage_factor",
+            "evidence",
+            "confidence_level"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "const": "reported_confidence_interval"
+            },
+            "value_text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "unit_text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "unit_code": {
+              "type": "string",
+              "enum": [
+                "mm",
+                "g/cm^3",
+                "kg/m^3",
+                "kg/dm^3",
+                "lb/in^3",
+                "MPa",
+                "GPa",
+                "N/mm^2",
+                "kN/mm^2"
+              ]
+            },
+            "number": {
+              "type": "string",
+              "maxLength": 49,
+              "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "coverage_factor": {
+              "type": "null"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "confidence_level": {
+              "$ref": "#/$defs/confidence_level"
+            },
+            "estimand": {
+              "$ref": "#/$defs/uncertainty_fact"
+            },
+            "construction": {
+              "$ref": "#/$defs/uncertainty_fact"
+            }
+          },
+          "required": [
+            "type",
+            "value_text",
+            "unit_text",
+            "unit_code",
+            "number",
+            "scope",
+            "coverage_factor",
+            "evidence",
+            "confidence_level",
+            "estimand",
+            "construction"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "const": "reported_plus_minus_unspecified"
+            },
+            "value_text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "unit_text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "unit_code": {
+              "type": "string",
+              "enum": [
+                "mm",
+                "g/cm^3",
+                "kg/m^3",
+                "kg/dm^3",
+                "lb/in^3",
+                "MPa",
+                "GPa",
+                "N/mm^2",
+                "kN/mm^2"
+              ]
+            },
+            "number": {
+              "type": "string",
+              "maxLength": 49,
+              "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "coverage_factor": {
+              "type": "null"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "confidence_level": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "type",
+            "value_text",
+            "unit_text",
+            "unit_code",
+            "number",
+            "scope",
+            "coverage_factor",
+            "evidence",
+            "confidence_level"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "const": "reported_measures"
+            },
+            "measures": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/reported_measure"
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "type",
+            "measures"
+          ]
+        }
+      ]
+    },
+    "sample_count": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "value": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "relation": {
+              "type": "string",
+              "enum": [
+                "exact",
+                "at_least"
+              ]
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "source_statement": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "value",
+            "relation",
+            "scope",
+            "source_statement",
+            "evidence"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "value": {
+              "type": "null"
+            },
+            "relation": {
+              "const": "not_reported"
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "source_statement": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 0
+            }
+          },
+          "required": [
+            "value",
+            "relation",
+            "scope",
+            "source_statement",
+            "evidence"
+          ]
+        }
+      ]
+    },
+    "source_document": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^(?![\\s\\S]*[\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff])https://[^\\s/?#]+(?:[/?#][^\\s]*)?(?![\\s\\S])"
+        },
+        "revision": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "inspected_on": {
+          "type": "string",
+          "format": "date",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "sha256": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$",
+              "maxLength": 64
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "hash_status": {
+          "type": "string",
+          "enum": [
+            "recorded",
+            "not_retained",
+            "unavailable"
+          ]
+        },
+        "hash_note": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "inspection_scope": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "inspection_status": {
+          "const": "selected_content_inspected"
+        }
+      },
+      "required": [
+        "url",
+        "revision",
+        "inspected_on",
+        "sha256",
+        "hash_status",
+        "hash_note",
+        "inspection_scope",
+        "inspection_status"
+      ]
+    },
+    "property": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^refprop_[a-z0-9][a-z0-9_]*(?![\\s\\S])",
+              "maxLength": 160
+            },
+            "version": {
+              "type": "string",
+              "pattern": "^1\\.0\\.(0|[1-9][0-9]*)(?![\\s\\S])"
+            },
+            "material_state_id": {
+              "type": "string",
+              "pattern": "^state_[a-z0-9][a-z0-9_]*(?![\\s\\S])",
+              "maxLength": 160
+            },
+            "quantity": {
+              "type": "string",
+              "enum": [
+                "mass_density",
+                "basic_wood_density",
+                "youngs_modulus",
+                "tensile_modulus",
+                "flexural_modulus",
+                "elastic_modulus_unspecified",
+                "tensile_strength",
+                "tensile_yield_strength",
+                "slump_flow_spread"
+              ]
+            },
+            "quantity_dimension": {
+              "type": "string",
+              "enum": [
+                "length",
+                "mass_per_volume",
+                "pressure"
+              ]
+            },
+            "source_property_label": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "reported_value": {
+              "$ref": "#/$defs/reported_value"
+            },
+            "evidence_kind": {
+              "type": "string",
+              "enum": [
+                "manufacturer_reference",
+                "technical_association_reference",
+                "published_experimental_reference",
+                "published_computational_reference",
+                "published_handbook_reference",
+                "published_measurement_derived_reference"
+              ]
+            },
+            "reporting_basis": {
+              "type": "string",
+              "enum": [
+                "typical",
+                "nominal",
+                "guideline",
+                "specification_limit",
+                "reported_summary",
+                "not_stated"
+              ]
+            },
+            "determination_basis": {
+              "type": "string",
+              "enum": [
+                "source_reports_measurement",
+                "source_reports_calculation",
+                "source_reports_compiled_measurements",
+                "not_stated",
+                "mixed_or_unclear"
+              ]
+            },
+            "basis_note": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "conditions": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "temperature": {
+                  "$ref": "#/$defs/fact"
+                },
+                "test_standard": {
+                  "$ref": "#/$defs/fact"
+                },
+                "test_method": {
+                  "$ref": "#/$defs/fact"
+                },
+                "direction": {
+                  "$ref": "#/$defs/fact"
+                },
+                "conditioning": {
+                  "$ref": "#/$defs/fact"
+                },
+                "loading_rate": {
+                  "$ref": "#/$defs/fact"
+                },
+                "additional_conditions": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "minLength": 1,
+                        "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                      },
+                      "fact": {
+                        "$ref": "#/$defs/fact"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "fact"
+                    ]
+                  },
+                  "minItems": 0
+                }
+              },
+              "required": [
+                "temperature",
+                "test_standard",
+                "test_method",
+                "direction",
+                "conditioning",
+                "loading_rate"
+              ]
+            },
+            "density_basis": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "enum": [
+                    "apparent",
+                    "bulk",
+                    "true",
+                    "crystallographic",
+                    "simulation_cell",
+                    "oven_dry_mass_over_fresh_or_water_saturated_volume",
+                    "not_stated"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "summary_statistic": {
+              "type": "string",
+              "enum": [
+                "not_stated",
+                "reported_value",
+                "reported_mean"
+              ]
+            },
+            "uncertainty": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/uncertainty"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "uncertainty_status": {
+              "type": "string",
+              "enum": [
+                "reported_standard_deviation",
+                "reported_confidence_interval",
+                "reported_plus_minus_unspecified",
+                "reported_measures",
+                "not_reported_in_inspected_source",
+                "not_applicable"
+              ]
+            },
+            "uncertainty_note": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "sample_count": {
+              "$ref": "#/$defs/sample_count"
+            },
+            "method_definition": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "source_reported_conventional",
+                    "source_reported_compilation",
+                    "source_reported_crystallographic_derivation",
+                    "source_reported_empirical_conversion",
+                    "source_reported_computational_structure_density",
+                    "source_reported_molecular_simulation_density"
+                  ]
+                },
+                "definition": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "extraction_window": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/$defs/reported_window"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "evidence": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/evidence"
+                  },
+                  "minItems": 1
+                }
+              },
+              "required": [
+                "type",
+                "definition",
+                "extraction_window",
+                "evidence"
+              ]
+            },
+            "source_discrepancies": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "description": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                  },
+                  "disposition": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                  },
+                  "evidence": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/evidence"
+                    },
+                    "minItems": 1
+                  }
+                },
+                "required": [
+                  "description",
+                  "disposition",
+                  "evidence"
+                ]
+              },
+              "minItems": 0
+            },
+            "source_id": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "source_document": {
+              "$ref": "#/$defs/source_document"
+            },
+            "scope_note": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evaluation_support": {
+              "const": "catalog_only"
+            },
+            "universal_bound": {
+              "const": false
+            },
+            "engineering_allowable": {
+              "const": false
+            },
+            "verification": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "source_inspection_scope": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "transcription_cross_check": {
+                  "const": "completed"
+                },
+                "independent_scientific_review": {
+                  "const": false
+                },
+                "raw_data_reanalysis": {
+                  "const": false
+                }
+              },
+              "required": [
+                "source_inspection_scope",
+                "transcription_cross_check",
+                "independent_scientific_review",
+                "raw_data_reanalysis"
+              ]
+            },
+            "derivation": {
+              "$ref": "#/$defs/derivation"
+            }
+          },
+          "required": [
+            "id",
+            "version",
+            "material_state_id",
+            "quantity",
+            "quantity_dimension",
+            "source_property_label",
+            "reported_value",
+            "evidence_kind",
+            "reporting_basis",
+            "determination_basis",
+            "basis_note",
+            "conditions",
+            "density_basis",
+            "summary_statistic",
+            "uncertainty",
+            "uncertainty_status",
+            "uncertainty_note",
+            "sample_count",
+            "method_definition",
+            "source_discrepancies",
+            "source_id",
+            "evidence",
+            "source_document",
+            "scope_note",
+            "evaluation_support",
+            "universal_bound",
+            "engineering_allowable",
+            "verification"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^refprop_[a-z0-9][a-z0-9_]*(?![\\s\\S])",
+              "maxLength": 160
+            },
+            "version": {
+              "type": "string",
+              "pattern": "^1\\.0\\.(0|[1-9][0-9]*)(?![\\s\\S])"
+            },
+            "material_state_id": {
+              "type": "string",
+              "pattern": "^state_[a-z0-9][a-z0-9_]*(?![\\s\\S])",
+              "maxLength": 160
+            },
+            "quantity": {
+              "const": "tensile_stress_at_specified_elongation"
+            },
+            "quantity_dimension": {
+              "type": "string",
+              "enum": [
+                "length",
+                "mass_per_volume",
+                "pressure"
+              ]
+            },
+            "source_property_label": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "reported_value": {
+              "$ref": "#/$defs/reported_value"
+            },
+            "evidence_kind": {
+              "type": "string",
+              "enum": [
+                "manufacturer_reference",
+                "technical_association_reference",
+                "published_experimental_reference",
+                "published_computational_reference",
+                "published_handbook_reference",
+                "published_measurement_derived_reference"
+              ]
+            },
+            "reporting_basis": {
+              "type": "string",
+              "enum": [
+                "typical",
+                "nominal",
+                "guideline",
+                "specification_limit",
+                "reported_summary",
+                "not_stated"
+              ]
+            },
+            "determination_basis": {
+              "type": "string",
+              "enum": [
+                "source_reports_measurement",
+                "source_reports_calculation",
+                "source_reports_compiled_measurements",
+                "not_stated",
+                "mixed_or_unclear"
+              ]
+            },
+            "basis_note": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "conditions": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "temperature": {
+                  "$ref": "#/$defs/fact"
+                },
+                "test_standard": {
+                  "$ref": "#/$defs/fact"
+                },
+                "test_method": {
+                  "$ref": "#/$defs/fact"
+                },
+                "direction": {
+                  "$ref": "#/$defs/fact"
+                },
+                "conditioning": {
+                  "$ref": "#/$defs/fact"
+                },
+                "loading_rate": {
+                  "$ref": "#/$defs/fact"
+                },
+                "additional_conditions": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "minLength": 1,
+                        "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                      },
+                      "fact": {
+                        "$ref": "#/$defs/fact"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "fact"
+                    ]
+                  },
+                  "minItems": 0
+                }
+              },
+              "required": [
+                "temperature",
+                "test_standard",
+                "test_method",
+                "direction",
+                "conditioning",
+                "loading_rate"
+              ]
+            },
+            "density_basis": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "enum": [
+                    "apparent",
+                    "bulk",
+                    "true",
+                    "crystallographic",
+                    "simulation_cell",
+                    "oven_dry_mass_over_fresh_or_water_saturated_volume",
+                    "not_stated"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "summary_statistic": {
+              "type": "string",
+              "enum": [
+                "not_stated",
+                "reported_value",
+                "reported_mean"
+              ]
+            },
+            "uncertainty": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/uncertainty"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "uncertainty_status": {
+              "type": "string",
+              "enum": [
+                "reported_standard_deviation",
+                "reported_confidence_interval",
+                "reported_plus_minus_unspecified",
+                "reported_measures",
+                "not_reported_in_inspected_source",
+                "not_applicable"
+              ]
+            },
+            "uncertainty_note": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "sample_count": {
+              "$ref": "#/$defs/sample_count"
+            },
+            "method_definition": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "source_reported_conventional",
+                    "source_reported_compilation",
+                    "source_reported_crystallographic_derivation",
+                    "source_reported_empirical_conversion",
+                    "source_reported_computational_structure_density",
+                    "source_reported_molecular_simulation_density"
+                  ]
+                },
+                "definition": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "extraction_window": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/$defs/reported_window"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "evidence": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/evidence"
+                  },
+                  "minItems": 1
+                }
+              },
+              "required": [
+                "type",
+                "definition",
+                "extraction_window",
+                "evidence"
+              ]
+            },
+            "source_discrepancies": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "description": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                  },
+                  "disposition": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                  },
+                  "evidence": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/evidence"
+                    },
+                    "minItems": 1
+                  }
+                },
+                "required": [
+                  "description",
+                  "disposition",
+                  "evidence"
+                ]
+              },
+              "minItems": 0
+            },
+            "source_id": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "source_document": {
+              "$ref": "#/$defs/source_document"
+            },
+            "scope_note": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evaluation_support": {
+              "const": "catalog_only"
+            },
+            "universal_bound": {
+              "const": false
+            },
+            "engineering_allowable": {
+              "const": false
+            },
+            "verification": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "source_inspection_scope": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "transcription_cross_check": {
+                  "const": "completed"
+                },
+                "independent_scientific_review": {
+                  "const": false
+                },
+                "raw_data_reanalysis": {
+                  "const": false
+                }
+              },
+              "required": [
+                "source_inspection_scope",
+                "transcription_cross_check",
+                "independent_scientific_review",
+                "raw_data_reanalysis"
+              ]
+            },
+            "derivation": {
+              "$ref": "#/$defs/derivation"
+            },
+            "specified_elongation": {
+              "$ref": "#/$defs/specified_elongation"
+            }
+          },
+          "required": [
+            "id",
+            "version",
+            "material_state_id",
+            "quantity",
+            "quantity_dimension",
+            "source_property_label",
+            "reported_value",
+            "evidence_kind",
+            "reporting_basis",
+            "determination_basis",
+            "basis_note",
+            "conditions",
+            "density_basis",
+            "summary_statistic",
+            "uncertainty",
+            "uncertainty_status",
+            "uncertainty_note",
+            "sample_count",
+            "method_definition",
+            "source_discrepancies",
+            "source_id",
+            "evidence",
+            "source_document",
+            "scope_note",
+            "evaluation_support",
+            "universal_bound",
+            "engineering_allowable",
+            "verification",
+            "specified_elongation"
+          ]
+        }
+      ]
+    }
+  }
+}

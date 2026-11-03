@@ -1,5 +1,71 @@
 # Materials Boundaries development handoff
 
+## r8–r11 统一实验交付（2026-11-03）
+
+当前[统一交付入口](experimental/polymer-exploration/20261103/delivery-r8-r11/README.zh.md)覆盖10条新增聚合物性质、两个独立pressure类型和既有记录的来源/范围补充。数量仍为5180身份、5195状态、5252性质；聚合物1037身份、1052状态、1093性质。6个旧性质仅作版本/局部比较范围措辞更正；无新身份或状态。
+124专项为r11实际执行，本轮不与历史119累加。各本地接纳/独审已完成；统一当前文件安装、具体暂存/提交/远端CI另以交付收据核实，不把旧提交CI当新结果。当前仍为实验交付准备，未合并main、未稳定发布或部署。以下为各历史阶段，冻结收据不改写。
+
+## r11 独立弯曲强度类型及六条既有聚合物补充（2026-11-03）
+
+当前[r11本地接纳](experimental/polymer-exploration/20261103/local-acceptance-r11/README.zh.md)：5180身份、31牌号、5195状态、5252性质、133来源；聚合物1037身份、1052状态、1093性质（1000计算、93实验来源标签，不认证真实性）。快照`58defa23d7fa9a5e28f1f1a30d8ba9a47c311ac7a7293b82284d178385a99af8`。
+新增独立pressure类型flexural_strength及既有五个PNA-BPF弯曲状态与PHBV-39共6条性质；旧5246性质对象不变，无新身份或状态。弯曲强度不归弯曲模量或拉伸/屈服/断裂强度，不接引擎或specified_elongation描述符。环氧保留统计未知；PHBV保留mean±SD、至少5重复及1% until yield原文限制，不移用拉伸3N/min。具体提取判据、应力口径、环境/调湿及标准合规未知不补造，名义组成矛盾保留。
+本批实际124专项通过，失败/错误/跳过0，不与历史119累加。来源/概念、具体实现及隔离安装独审通过；5252增量检查执行、reuse0，三表已审预览schema通过精确字节转移至原生，两来源24条完整安装导出及四语展示核验通过。最终整合结论见接纳记录。完整历史回归及远端CI未运行；未提交/推送、未合并main、未稳定发布或部署。以下为前驱历史阶段，数量与测试不改写。
+
+## r10 PHBV-39 来源标称拉伸强度（2026-11-03）
+
+当前[r10本地接纳](experimental/polymer-exploration/20261103/local-acceptance-r10/README.zh.md)：5180身份、31牌号、5195状态、5246性质、133来源；聚合物1037身份、1052状态、1087性质（1000计算与87实验来源标签，非科学认证）。
+快照`59eb6d9e5ae56afbafd9a3413c456f8d060263d280f2664df00b551c0da69650`。新增既有PHBV-39拉伸强度12.7±1.9 MPa，来源mean±SD、至少5重复；旧5245性质对象不变，无新身份或状态。
+来源写加载至屈服，但具体强度提取判据未知；作者标签不自动证明最大/屈服/断裂应力。数值温度、RH、热压后调湿/储存、标准、精确n/批次、应力约定继续未知；不挪用弯曲参数或组成统计。catalog_only，不作计算器输入或工程许用值。
+来源/映射及安装独审已通过；5246增量检查、已审完整预览三表schema字节一致性、三条完整安装导出与四语展示已核验。r9的119项测试未在本批重跑；本批运行代码/schema未改。完整历史回归和远端CI未运行，最终整合状态见接纳记录。未提交/推送、未合并main、未稳定发布或部署。以下为各前驱阶段，不表示当前数量。
+
+## Local r9 specified-elongation stress supplement (2026-11-03)
+
+The [r9 local acceptance entry](experimental/polymer-exploration/20261103/local-acceptance-r9/README.zh.md)
+updates the registry to **5180 identities, 31 grades, 5195 states, 5245 properties,
+133 sources**; polymer **1037 identities, 1052 states, 1086 properties**.
+Snapshot: `06d8e433c7c28c7b3b10c7a8f9432082a6ccad789f3e0aac7fb50c08d717c7c5`.
+Two REF M100/M200 facts use an independent pressure quantity with a required typed
+specified_elongation descriptor. Central values stay MPa, targets stay source percent;
+no division, slope conversion or Young/strength reclassification occurs. All old
+5243 property objects remain exact; no identities/states/sources are added.
+
+Source/concept, concrete schema/runtime/labels/tests/mapping and actual installation
+reviews passed. New disjoint schema branches require targets for this quantity and
+forbid them elsewhere; runtime rejects invalid targets/evidence/units. Numerical
+fact identity includes target values without decimal-context rounding. Four-language
+rendering and complete query/export preserve targets and scope notes. Source-used
+ISO edition/compliance, strain estimator, target participants, averaging order,
+plus-minus type and n remain unverified; no scientific certification is claimed.
+
+This stage actually executed 119 scoped tests, all passing with zero failures/errors/
+skips; prior r8 inherited112 receipts retain their historical stage. Incremental
+validation executed 5245 checks, reuse0. Full historical replay was not run. Old r8
+code bindings resolve through Git8735dfc; preapplication documents are archived.
+This r9 checkpoint remains local and uncommitted. No new push/CI, main merge,
+release tag or deployment was performed; continue local accumulation before delivery.
+
+## Local r8 NBR REF supplement (2026-11-03)
+
+The [r8 local acceptance entry](experimental/polymer-exploration/20261103/local-acceptance-r8/README.zh.md)
+updates the registry to **5180 identities, 31 grades, 5195 states, 5243 properties,
+133 sources**; polymer **1037 identities, 1052 states, 1084 properties**.
+Snapshot: `8adff2c3c8e51f3fa1a6825349e870465998c680c0f5aa2dbf16c8ace5857471`.
+One tensile-strength mean is added to the existing nonfoamed NBR REF state; no new
+identity/state. Six old same-source composite properties change only revision and
+comparator-disposition wording, so their notes do not deny separately admitted REF
+properties. All their numerical/statistical/condition/method/evidence fields are
+unchanged. The whole REF density property remains exact.
+
+Fresh primary XML supports the REF Table 4 result and pooled orientations; no new
+PDF or visual inspection is claimed. Strength plus-minus kind, n, environmental
+conditions and pooling details remain unknown. Density does not inherit tensile
+statistics or methods. Abstract/table disagreement remains explicit.
+Source/full-preview and actual isolated installation reviews passed; incremental
+validation executed all 5243 property checks, reuse 0. The prior published 112-test
+receipt is inherited with unchanged code; it was not rerun for r8. Full historical
+replay was not run. This r8 checkpoint is local and uncommitted, beyond the earlier
+8735dfc delivery. No new push, CI, main merge, release or deployment was performed.
+
 ## Consolidated r5–r7 experimental delivery (2026-11-03)
 
 The [delivery entry](experimental/polymer-exploration/20261103/delivery-r5-r7/README.zh.md)

@@ -1,0 +1,25 @@
+{
+  "schema": "specified-elongation-stress-contract-proposal/1",
+  "quantity": "tensile_stress_at_specified_elongation",
+  "quantity_dimension": "pressure",
+  "meaning": "Source-reported tensile stress at an explicitly specified percent elongation; not a tangent/secant slope or Young modulus, strength, yield or break stress",
+  "field": "specified_elongation",
+  "field_shape": {
+    "value_text": "source number string, e.g.100",
+    "number": "positive decimal string, no upper100 limit",
+    "unit_text": "%",
+    "unit_code": "percent",
+    "basis": "source_reported_percent_elongation",
+    "evidence": "nonempty evidence with condition support from primary property source",
+    "notes": "required curation scope/unknown strain-measure implementation"
+  },
+  "presence": "Required for the new quantity and forbidden for all existing quantities; schema uses two closed disjoint quantity branches; existing property shapes unchanged",
+  "percent_scope": "Only target descriptor uses percent, central pressure result still forbids percent; no UNIT_DIMENSIONS change",
+  "validation": "Positive source-consistent numeric target and percent spelling; source-bound condition evidence. No inferred engineering/log strain, true-stress conversion or recalculation.",
+  "uniqueness": "Include numerical specified elongation in duplicate-fact signature so100 and200 targets differ even with same stress/locator; formatting does not create new facts",
+  "display": "Four-language quantity and target labels; show source percent target and scope/evidence with result",
+  "native_scope": "Only two existing unfilled REF properties; no six-composite extension, new identities/states/grades/sources or changes to existing property objects",
+  "implementation_review": "Required after concrete code/schema/labels/tests and mapping frozen",
+  "publication": "Local accumulation; no push/main/deploy",
+  "runtime_autowiring": "None, catalog_only/false bound/false allowable"
+}

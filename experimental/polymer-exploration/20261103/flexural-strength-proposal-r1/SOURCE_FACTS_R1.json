@@ -1,0 +1,113 @@
+{
+  "schema": "existing-polymers-flexural-strength-source-facts/1",
+  "baseline_snapshot": "59eb6d9e5ae56afbafd9a3413c456f8d060263d280f2664df00b551c0da69650",
+  "rows": [
+    {
+      "source_id": "tarasov_2022_pna_bpf_epoxy",
+      "source_label": "PNA-BPF-1",
+      "existing_modulus_id": "refprop_tarasov2022_pna_bpf_1_flexural_modulus",
+      "strength_MPa": "128.0",
+      "statistics": "not_stated",
+      "uncertainty": null,
+      "sample_count": null,
+      "locator": "PDF p.16 Table8 PNA-BPF-1 Flexural Strength (MPa)"
+    },
+    {
+      "source_id": "tarasov_2022_pna_bpf_epoxy",
+      "source_label": "PNA-BPF-2",
+      "existing_modulus_id": "refprop_tarasov2022_pna_bpf_2_flexural_modulus",
+      "strength_MPa": "146.6",
+      "statistics": "not_stated",
+      "uncertainty": null,
+      "sample_count": null,
+      "locator": "PDF p.16 Table8 PNA-BPF-2 Flexural Strength (MPa)"
+    },
+    {
+      "source_id": "tarasov_2022_pna_bpf_epoxy",
+      "source_label": "PNA-BPF-3",
+      "existing_modulus_id": "refprop_tarasov2022_pna_bpf_3_flexural_modulus",
+      "strength_MPa": "130.6",
+      "statistics": "not_stated",
+      "uncertainty": null,
+      "sample_count": null,
+      "locator": "PDF p.16 Table8 PNA-BPF-3 Flexural Strength (MPa)"
+    },
+    {
+      "source_id": "tarasov_2022_pna_bpf_epoxy",
+      "source_label": "PNA-BPF-4",
+      "existing_modulus_id": "refprop_tarasov2022_pna_bpf_4_flexural_modulus",
+      "strength_MPa": "133.4",
+      "statistics": "not_stated",
+      "uncertainty": null,
+      "sample_count": null,
+      "locator": "PDF p.16 Table8 PNA-BPF-4 Flexural Strength (MPa)"
+    },
+    {
+      "source_id": "tarasov_2022_pna_bpf_epoxy",
+      "source_label": "PNA-BPF-5",
+      "existing_modulus_id": "refprop_tarasov2022_pna_bpf_5_flexural_modulus",
+      "strength_MPa": "131.8",
+      "statistics": "not_stated",
+      "uncertainty": null,
+      "sample_count": null,
+      "locator": "PDF p.16 Table8 PNA-BPF-5 Flexural Strength (MPa)"
+    },
+    {
+      "source_id": "abbasi_2022_manure_phbv",
+      "source_label": "PHBV-39",
+      "existing_modulus_id": "refprop_abbasi2022_manure_phbv39_flexural_modulus",
+      "strength_MPa": "20.8",
+      "statistics": "reported_mean",
+      "SD_MPa": "1.4",
+      "sample_count": 5,
+      "sample_count_relation": "at_least",
+      "locator": "Primary XML Table9 PHBV-39 Flexural Strength (MPa) and footnotes"
+    }
+  ],
+  "epoxy_source": {
+    "PDF_path_hint": "F:\\材料边界\\open-database-evidence\\polymer-epoxy-20261103\\tarasov2022-r1.pdf",
+    "PDF_sha256": "1f06bc0667c7c5575a0e88772868a95cd27ba01a264d3b3a0b9c859a8a6423aa",
+    "pages": 22,
+    "visual_pages_this_round": [
+      1,
+      5,
+      6,
+      16
+    ],
+    "page_image_sha256": {
+      "license-r11-01.png": "0e291d52397acc84a9eae2ca4174447482cfe60bf60e6ac72a11948b7660fa59",
+      "method-visual-05.png": "2009bed341787b4d83b119151ed637242e3f5e01ca72cfca2a37b54d57d73be3",
+      "method-visual-06.png": "283cd7ce9330014a25ccd3e5cbd505bc523e0a6a0fe6b2133a51ffc257576e2c",
+      "results-visual-16.png": "7f1581ff7101223f25d472065d7f15a4f2ee9441f3aff29528d71906550a72ac"
+    },
+    "license": "Article-specific CC BY4.0 p1",
+    "method": "Section2.5.2:50ST/Tinius Olsen, GOST R56810-2015(ASTM D790-10),0.85mm/min,80x9.8x3.6mm bars milled from3.6mm plate, literal span-to-depth64:3.6mm",
+    "unknowns": [
+      "support point count not independently established",
+      "failure/deflection/strength extraction criterion",
+      "actual T/RH and post-cure conditioning",
+      "exact n/batches",
+      "central estimator and dispersion"
+    ],
+    "inherited_discrepancies": "nominal feed/mole-number/KOH-NaOH conflicts retained",
+    "web_this_round": "MDPI429, no fresh PDF download; retained exact PDF visually reread"
+  },
+  "phbv_source": {
+    "XML_path_hint": "F:\\材料边界\\open-database-evidence\\polymer-property-source-rechecks-20261103\\phbv\\article-r1.xml",
+    "XML_sha256": "a37eac0af73559b942f680a671d41a4d870d66d94b76e825cdaf61cc6cd3a3a5",
+    "XML_bytes": 231051,
+    "license": "Article-specific CC BY4.0",
+    "method": "Section2.2.8:three-point bending,DMA Q800,10mm span,source constant strain of1% until yield,room temperature,Universal Analysis v4.5A,atleast5replicates",
+    "unknowns": [
+      "precise flexural strength extraction criterion",
+      "per-time bending rate",
+      "numeric T/RH and post-press conditioning/storage",
+      "exact n/batches and standard"
+    ],
+    "statistics": "Table9 mean/SD plus SD rounding-up qualification",
+    "fresh_PDF_review": false
+  },
+  "native_applied": false,
+  "pushed": false,
+  "raw_data_reanalysis": false
+}
