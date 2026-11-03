@@ -1,0 +1,116 @@
+{
+  "schema": "existing-sylgard-hardness-source-state-proposal/1",
+  "baseline_snapshot": "e7232add6232ee5f36d3b66543746b9cd5a43906ac5cd7587bc8ce6178c1c9a4",
+  "source_id": "johnston_2014_bulk_sylgard184",
+  "doi": "10.1088/0960-1317/24/3/035017",
+  "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+  "source_asset": {
+    "path_hint": "F:\\材料边界\\open-database-evidence\\polymer-sylgard-20261103\\johnston2014-retained.pdf",
+    "bytes": 780455,
+    "sha256": "10bda5e6f13ab0e2b7912bff5062a701e0d32ffc4e01d15b0184c578c2d271db"
+  },
+  "visual_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "selected_table": "PDF p.6 Table5 Hardness(Shore A),five cure temperatures;not Figure8 digitization",
+  "rows": [
+    {
+      "cure_temperature_C": 25,
+      "number": "43.8",
+      "uncertainty_number": "0.76",
+      "source_unit_text": "Shore A",
+      "proposed_state_id": "state_dow_corning_sylgard184_johnston2014_25c_hardness",
+      "new_property_id": "refprop_dow_corning_sylgard184_johnston2014_25c_shore_a_hardness",
+      "compression_table1_duration_context_only": "48 h",
+      "hardness_specific_cure_duration_status": "not_reported_separately_in_inspected_source"
+    },
+    {
+      "cure_temperature_C": 100,
+      "number": "48.3",
+      "uncertainty_number": "0.65",
+      "source_unit_text": "Shore A",
+      "proposed_state_id": "state_dow_corning_sylgard184_johnston2014_100c_hardness",
+      "new_property_id": "refprop_dow_corning_sylgard184_johnston2014_100c_shore_a_hardness",
+      "compression_table1_duration_context_only": "53 min",
+      "hardness_specific_cure_duration_status": "not_reported_separately_in_inspected_source"
+    },
+    {
+      "cure_temperature_C": 125,
+      "number": "49.8",
+      "uncertainty_number": "0.45",
+      "source_unit_text": "Shore A",
+      "proposed_state_id": "state_dow_corning_sylgard184_johnston2014_125c_hardness",
+      "new_property_id": "refprop_dow_corning_sylgard184_johnston2014_125c_shore_a_hardness",
+      "compression_table1_duration_context_only": "38 min",
+      "hardness_specific_cure_duration_status": "not_reported_separately_in_inspected_source"
+    },
+    {
+      "cure_temperature_C": 150,
+      "number": "52.8",
+      "uncertainty_number": "0.73",
+      "source_unit_text": "Shore A",
+      "proposed_state_id": "state_dow_corning_sylgard184_johnston2014_150c_hardness",
+      "new_property_id": "refprop_dow_corning_sylgard184_johnston2014_150c_shore_a_hardness",
+      "compression_table1_duration_context_only": "28 min",
+      "hardness_specific_cure_duration_status": "not_reported_separately_in_inspected_source"
+    },
+    {
+      "cure_temperature_C": 200,
+      "number": "54.0",
+      "uncertainty_number": "0.08",
+      "source_unit_text": "Shore A",
+      "proposed_state_id": "state_dow_corning_sylgard184_johnston2014_200c_hardness",
+      "new_property_id": "refprop_dow_corning_sylgard184_johnston2014_200c_shore_a_hardness",
+      "compression_table1_duration_context_only": "24 min",
+      "hardness_specific_cure_duration_status": "not_reported_separately_in_inspected_source"
+    }
+  ],
+  "statistics": {
+    "summary_statistic": "reported_value",
+    "uncertainty_type": "reported_confidence_interval",
+    "confidence_level": "95%",
+    "sample_count": 4,
+    "sample_count_relation": "exact",
+    "locations_per_sample": 8,
+    "sampling_scope": "Section4.3 p.5 to p.6:four samples per cure temperature,eight locations each;32 locations not32 independent specimens/batches.",
+    "aggregation": "Section3.3 reports repeated surface readings averaged;Table5 group construction/CI estimand and formula/coverage factor unknown. No mean-of-specimen-means,SD/SE or t conversion inferred."
+  },
+  "method": {
+    "test_standard": "ASTM D2240-05(2010) type A;source citation only,independent compliance unknown",
+    "instrument": "Hand-held Durometer,Shore Instruments,Type A-2,as printed;calibration and exactserial unknown",
+    "timing": "Recorded on complete indentation,source says immediately to mitigate5-15s relaxation;no exact numerical dwell/trigger or approach rate supplied",
+    "temperature": "Hardness-test temperature not stated separately;no transfer of21C tensile,20C compression,22C cooling or cure temperature",
+    "humidity": "Hardness-test RH not stated separately;39% belongs to tensile/compression methods",
+    "applied_force": "Not stated for hardness;no transfer ofNR488g/10s or NBR8.05N/3s",
+    "face_direction": "Indentation face/materialaxis/isotropy not established"
+  },
+  "state_plan": {
+    "identity_id": "mat_dow_corning_sylgard184",
+    "grade_id": "grade_dow_corning_sylgard184",
+    "new_identities": 0,
+    "new_grades": 0,
+    "new_states": 5,
+    "old_tensile_states": "All five remain complete unchanged;hardness is separate specimen/test state,not attached to3mmD412dumbbell.",
+    "product_form": "Source links compression-mold specimens to hardness criteria(§2);§2.3 center thermocouple includes compression/hardness.No numerical specimen dimensions imported from uninspected standard.",
+    "processing": "All three test types explicitly10partsbase:1curingagent;mix1min195rpm,vacuum30min,closedmolds suspended30min;ratio mass/volume basis unknown.",
+    "cure": "Temperature directly fromTable5;hardness-specific duration not separately tabulated.Table1 compression durations retained as context only pending independent adjudication of applicability.",
+    "conditioning": "General cured-sample1h cooling at22C before demold and allmechanicaltests within2h aftercure;exacthardnessRH/equilibration/order/cyclichistory unknown.",
+    "composition": "CommercialPDMSkit,not certifiedpure/unfilled/finalnetworkcomposition;independentlots unknown.",
+    "porosity": "Visual defect screening only;not measuredzero porosity."
+  },
+  "source_discrepancies_and_exclusions": [
+    "Table1 corrected compression duration200C printed24min;do not repair by arithmetic18min heatpropagation offset or transfer tensile18min.",
+    "Source total60testpieces andexplicit4hardnesssamples/group do not establish separateproductionbatches,totalindependenthardnesspoints orwhetherhardnesssamples were reused fromcompression;testorder unknown.",
+    "No compressionproperties admitted:Table3/5 useMPa whileabstractUCS printsGPa;modulusfit/strain-window questions are separate.Defer rather than resolve via adjacenthardness.",
+    "No shear/bulk/Poissonproperties admitted;Table4 results depend on assumedPoisson0.499,not independent measurements."
+  ],
+  "license": "PDF p.1 article-specificCC BY3.0,author/title/journal/DOIattribution retained;sourcePDF/images not packaged",
+  "native_applied": false,
+  "new_contract": "None;reuse reviewed shore_a_hardness/dimensionless/shore_a_scale,0..100central scalar/interval and typed95percentconfidence metadata.",
+  "review_focus": "Independently adjudicate hardnessstate/cure-duration scope rather than silently importing compression times. Exact mapping/installation/acceptance require later frozen review."
+}

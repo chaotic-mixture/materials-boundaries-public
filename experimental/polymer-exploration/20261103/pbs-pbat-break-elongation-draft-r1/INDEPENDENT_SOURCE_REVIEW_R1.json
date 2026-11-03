@@ -1,0 +1,72 @@
+{
+  "decision": "approved",
+  "reviewer": "/root/review_nr_finite_modulus",
+  "review_kind": "independent_source_and_existing_contract_review",
+  "review_inputs_sha256": "b050b741dcf61d802a2477938fe0ac012c254c1d73e549b5fcdd5cff0e27152a",
+  "scope": "Two source facts and existing break-elongation contract only; mapping/install/native acceptance separate.",
+  "receipt_form": "Root transcription of returned independent review",
+  "issues": [],
+  "approved_facts": [
+    {
+      "base_property_id": "refprop_mtibe2022_pbat_ecoflex_c1200_tensile_yield_strength",
+      "new_property_id": "refprop_mtibe2022_pbat_ecoflex_c1200_tensile_elongation_at_break",
+      "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+      "existing_state_id": "state_mtibe2022_pbat_ecoflex_c1200",
+      "source_property_label": "Tensile Strain at Break %",
+      "number": "1040",
+      "uncertainty_number": "9.76",
+      "summary_statistic": "reported_value",
+      "uncertainty_type": "reported_plus_minus_unspecified",
+      "sample_count": 5,
+      "locator": "XML Table3(polymers-14-05065-t003), PBAT row x Tensile Strain at Break %; section2.6.2 protocol and n5; section3.2 source narrative"
+    },
+    {
+      "base_property_id": "refprop_mtibe2022_pbs_pbat_70_30_tensile_yield_strength",
+      "new_property_id": "refprop_mtibe2022_pbs_pbat_70_30_tensile_elongation_at_break",
+      "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+      "existing_state_id": "state_mtibe2022_pbs_pbat_70_30",
+      "source_property_label": "Tensile Strain at Break %",
+      "number": "367.01",
+      "uncertainty_number": "86.87",
+      "summary_statistic": "reported_value",
+      "uncertainty_type": "reported_plus_minus_unspecified",
+      "sample_count": 5,
+      "locator": "XML Table3(polymers-14-05065-t003), PBS-PBAT (70/30) row x Tensile Strain at Break %; section2.6.2 protocol and n5; section3.2 source narrative"
+    }
+  ],
+  "checks": {
+    "repo_files": 6,
+    "external_XML": 1,
+    "all_hashes": "matched",
+    "direct_source_read": "Table3,sections2.6.2/3.2,permissions/statistical wording.",
+    "license": "Article-specific CC BY4.0.",
+    "base_properties": "Both complete yield-property objects equal actual native.",
+    "state_bindings": "Existing yield/modulus match selected PBAT/unfilledPBS-PBAT70/30 Table3 rows/states."
+  },
+  "statistical_conclusion": "Five specimens per selected group; central aggregation and plus-minus construction unknown. No mean/SD/SE/CI or independent-batch inference.",
+  "method_conditions": [
+    "25C/48h conditioning and25C tensile test explicitly reported.",
+    "Instron/ASTMD638 source citation;model/edition/compliance unverified.",
+    "Rate/RH/gauge/strain/rupture/batches unknown;conditioning not moisture equilibration.",
+    "Keep existing unfilled source-qualified formulations."
+  ],
+  "narrative_issue": "Section3.2 approximately167%decrease confirmed as source text;formula/comparator/claim unverified,outside selected rows. No table repair,metric or filled-material benefit admission.",
+  "contract_conclusion": {
+    "quantity": "tensile_elongation_at_break",
+    "dimension": "dimensionless",
+    "unit_code": "percent_elongation",
+    "new_contract_required": false,
+    "scale": "Original percentages,no scaling/cap;absolute percentage-point amplitudes,notrelative error.",
+    "specified_elongation": "forbidden"
+  },
+  "required_later_checks": [
+    "Exact2 mappings/conservative statistics/narrative boundary",
+    "Preserveall5298old objects and sets",
+    "Exports/render/install/native acceptance separately"
+  ],
+  "limits": [
+    "RetainedXML only,no freshdownload/PDF/visual/latestrevision/compliance audit.",
+    "Ewurum/PHBV selected-table exclusion wording appropriately limited;separate assets not independently reread.",
+    "No producer/authorcode/tests/history,writes orpush;not scientific certification."
+  ]
+}

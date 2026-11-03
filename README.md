@@ -1,5 +1,18 @@
 # Materials Boundaries — source-qualified materials database
 
+## Current database checkpoint: polymer r19-r22 (2026-11-03)
+
+The current native tables contain **5,180 identities, 5,206 states and 5,316 properties**. Polymer coverage is **1,037 identities, 1,063 states and 1,157 properties**: 1,000 computational-reference and 157 experimental-reference labels, without scientific certification.
+
+Four accepted local rounds add 18 properties and 11 specimen states on existing identities: two PBS/PBAT break elongations, six NR/Sylgard Shore A hardness results, and five Sylgard compression moduli plus five compressive strengths. All 5,298 preceding property objects are preserved. Two existing states only update revisions/links/scope; three sources append notes.
+
+Shore A is a distinct empirical scale; absolute SD/CI amplitudes use scale points while confidence percentages retain their typed role. Source pressure values and 95% CIs are preserved despite explicit unit/range/extraction conflicts. No unit repair, Young-modulus conversion or engineering input is inferred.
+
+Unknown conditions and statistics remain explicit: among 157 experimental property objects, 86 lack numeric n and four report only a lower bound; exact n is unconfirmed for 90 objects. These counts are not independent test groups.
+
+[Evidence, limitations and experimental delivery](experimental/polymer-exploration/20261103/delivery-r19-r22/README.zh.md). Snapshot `25d66658d21c8aebad75b875b2da82c121a99f893ddde3965a837cc955f12ba6`; native software remains 0.35.0. Submission and remote CI require exact-commit receipts. No main merge, stable release or deployment is claimed. Following checkpoints retain historical context.
+
+
 ## Current database checkpoint: polymer r15-r18 (2026-11-03)
 
 The current native tables contain **5,180 identities, 5,195 states and 5,298 properties**. Polymer coverage is **1,037 identities, 1,052 states and 1,139 properties**: 1,000 computational-reference and 139 experimental-reference labels, without independent scientific certification.

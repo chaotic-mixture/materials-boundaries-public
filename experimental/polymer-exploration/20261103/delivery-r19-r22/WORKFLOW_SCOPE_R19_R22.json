@@ -1,0 +1,30 @@
+{
+  "branch": "experimental/open-database",
+  "workflow_files_sha256": {
+    ".github/workflows/ci.yml": "855261fab560343eb67f1e7c8e9872ec88f07b20c55d537fe53b89449672f65a",
+    ".github/workflows/curaua-runtime.yml": "2360443a42b9e1a0c8a9afaedccc471cb44c6fe7783d474d99b9eb957a9ea690",
+    ".github/workflows/database.yml": "efe3e2ffa230e4b8fab1c0f7bd2e8686afc2cd6810809446d7c003b729dd4ba6",
+    ".github/workflows/delgado-pla-pcl-runtime.yml": "5441ffa5b089f31d11da6dac6cfff0ab8ec03f655ce9b339bfd14aa0c05453ff",
+    ".github/workflows/ewurum-reactive-runtime.yml": "e5bb4eac86c8dc5639c9e7bda4f96cbd137fd574f7f78b27ccc78fa46e1fe914",
+    ".github/workflows/experimental-platform.yml": "be005353d2615c34a89775d2d5f8ab239b925f7f720001878f29cc0d9c825895",
+    ".github/workflows/history-replay-latest.yml": "7a7be524ca080f60b8ab489858a609ac57a460d3275e53030b1f396287a5e18c"
+  },
+  "workflow_changes": false,
+  "observed_matching_branch_push_workflow": "database.yml",
+  "database_matrix": [
+    "3.11",
+    "3.12"
+  ],
+  "test_pattern": "test_database*.py",
+  "local_daily_subset_count": 19,
+  "additional_steps": [
+    "currentgraphonce_nohistory",
+    "C11000export",
+    "snapshotverify",
+    "uploadexampleartifact"
+  ],
+  "does_not_claim_remote_full146_execution": true,
+  "other_push_triggers": "Dedicated experimentalbranches orv*tags;no newworkflow/merge/tag/manualdispatch/deploymentactionincluded.",
+  "remote_CI": "pending_exact_commit",
+  "scope": "Read configured branch-push workflow scope;actual runs and jobs requireexactcommit APIverification."
+}

@@ -27,6 +27,8 @@ QUANTITY_DIMENSIONS = {
     "tensile_modulus": "pressure",
     "flexural_modulus": "pressure",
     "flexural_strength": "pressure",
+    "compressive_modulus": "pressure",
+    "compressive_strength": "pressure",
     "elastic_modulus_unspecified": "pressure",
     "tensile_strength": "pressure",
     "tensile_stress_at_break": "pressure",
@@ -34,6 +36,7 @@ QUANTITY_DIMENSIONS = {
     "tensile_stress_at_specified_elongation": "pressure",
     "tensile_elongation_at_break": "dimensionless",
     "tensile_elongation_at_strength": "dimensionless",
+    "shore_a_hardness": "dimensionless",
     "slump_flow_spread": "length",
 }
 UNIT_DIMENSIONS = {
@@ -43,6 +46,7 @@ UNIT_DIMENSIONS = {
     "MPa": "pressure", "GPa": "pressure", "N/mm^2": "pressure",
     "kN/mm^2": "pressure",
     "percent_elongation": "dimensionless",
+    "shore_a_scale": "dimensionless",
 }
 PERCENT_ELONGATION_QUANTITIES = (
     "tensile_elongation_at_break", "tensile_elongation_at_strength",
@@ -195,9 +199,13 @@ def _make_properties_schema():
     # Keep result units closed and quantity-specific with the same vocabulary.
     definitions["legacy_reported_value"] = deepcopy(definitions["reported_value"])
     definitions["elongation_reported_value"] = deepcopy(definitions["reported_value"])
+    definitions["shore_a_reported_value"] = deepcopy(definitions["reported_value"])
+    definitions["shore_a_reported_value"]["oneOf"] = definitions["shore_a_reported_value"]["oneOf"][:2]
+    for branch in definitions["shore_a_reported_value"]["oneOf"]:
+        branch["properties"]["unit_code"] = {"const": "shore_a_scale"}
     for branch in definitions["legacy_reported_value"]["oneOf"]:
         branch["properties"]["unit_code"] = _enum(
-            code for code in UNIT_DIMENSIONS if code != "percent_elongation")
+            code for code in UNIT_DIMENSIONS if code not in {"percent_elongation", "shore_a_scale"})
     for branch in definitions["elongation_reported_value"]["oneOf"]:
         branch["properties"]["unit_code"] = {"const": "percent_elongation"}
     # Closed source-reported uncertainty variants. An amplitude alone never
@@ -319,12 +327,17 @@ def _make_properties_schema():
     elongation["properties"]["quantity_dimension"] = {"const": "dimensionless"}
     elongation["properties"]["reported_value"] = _ref("elongation_reported_value")
     del elongation["properties"]["specified_elongation"]
+    shore = deepcopy(definitions["property"])
+    shore["properties"]["quantity"] = {"const": "shore_a_hardness"}
+    shore["properties"]["quantity_dimension"] = {"const": "dimensionless"}
+    shore["properties"]["reported_value"] = _ref("shore_a_reported_value")
+    del shore["properties"]["specified_elongation"]
     other = definitions["property"]
     other["properties"]["quantity"] = _enum(
         q for q in QUANTITY_DIMENSIONS
-        if q != "tensile_stress_at_specified_elongation" and q not in PERCENT_ELONGATION_QUANTITIES)
+        if q not in {"tensile_stress_at_specified_elongation", "shore_a_hardness"} and q not in PERCENT_ELONGATION_QUANTITIES)
     del other["properties"]["specified_elongation"]
-    definitions["property"] = {"oneOf": [other, stress, elongation]}
+    definitions["property"] = {"oneOf": [other, stress, elongation, shore]}
     return {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "$id": "urn:materials-boundaries:schema:reference_properties:1.0.0",
@@ -584,6 +597,7 @@ def _validate_links(materials, properties, indices):
 # infer a quantity. Unknown spellings need deliberate capability review.
 _UNIT_SPELLINGS = {
     "mm": {"mm"},
+    "shore_a_scale": {"Shore A"},
     "g/cm^3": {"g/cm^3", "g/cm³", "g/cm3", "g cm^-3", "g.cm-3", "g cm⁻³", "g·cm⁻³", "g cm−3", "g cm-3", "grams per cubic centimeter"},
     "kg/m^3": {"kg/m^3", "kg/m³", "kg/m3", "kg m^-3", "kg.m-3", "kg m⁻³", "kg·m⁻³", "kg m−3", "kg m-3"},
     "kg/dm^3": {"kg/dm^3", "kg/dm³", "kg/dm3", "kg dm^-3", "kg.dm-3", "kg dm⁻³", "kg·dm⁻³", "kg dm−3", "kg dm-3"},
@@ -735,7 +749,13 @@ def _validate_property(prop):
     if prop["quantity_dimension"] != dimension:
         _fail(path, "quantity dimension mismatch")
     _validate_value(prop["reported_value"], path + ".reported_value", dimension,
-                    nonnegative=prop["quantity"] in PERCENT_ELONGATION_QUANTITIES)
+                    nonnegative=(prop["quantity"] in PERCENT_ELONGATION_QUANTITIES or
+                                 prop["quantity"] == "shore_a_hardness"))
+    if prop["quantity"] == "shore_a_hardness":
+        value = prop["reported_value"]
+        numbers = [value["lower"], value["upper"]] if value["kind"] == "interval" else [value["number"]]
+        if any(Decimal(number) > 100 for number in numbers):
+            _fail(path, "Shore A central values must be between 0 and 100 inclusive")
     if prop["quantity"] == "tensile_stress_at_specified_elongation":
         target = prop["specified_elongation"]
         _validate_value(target, path + ".specified_elongation")

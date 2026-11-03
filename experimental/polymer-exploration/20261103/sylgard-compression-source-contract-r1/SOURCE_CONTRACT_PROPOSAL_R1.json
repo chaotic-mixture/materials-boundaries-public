@@ -1,0 +1,108 @@
+{
+  "schema": "existing-sylgard-compression-source-contract-proposal/1",
+  "source_id": "johnston_2014_bulk_sylgard184",
+  "doi": "10.1088/0960-1317/24/3/035017",
+  "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+  "source_asset": {
+    "path_hint": "F:\\材料边界\\open-database-evidence\\polymer-sylgard-20261103\\johnston2014-retained.pdf",
+    "sha256": "10bda5e6f13ab0e2b7912bff5062a701e0d32ffc4e01d15b0184c578c2d271db",
+    "bytes": 780455
+  },
+  "inspection": "RetainedPDFvisual pp.1-6 thisturn;Table3 p.5 andTable5 p.6 agree onMPa values. No newdownload or latestnotice audit.",
+  "rows": [
+    {
+      "cure_temperature_C": 25,
+      "corrected_compression_cure_duration": "48 h",
+      "compressive_modulus_MPa": "186.9",
+      "compressive_modulus_CI_amplitude_MPa": "5.39",
+      "ultimate_compressive_strength_MPa": "51.7",
+      "strength_CI_amplitude_MPa": "9.60"
+    },
+    {
+      "cure_temperature_C": 100,
+      "corrected_compression_cure_duration": "53 min",
+      "compressive_modulus_MPa": "148.9",
+      "compressive_modulus_CI_amplitude_MPa": "5.47",
+      "ultimate_compressive_strength_MPa": "40.1",
+      "strength_CI_amplitude_MPa": "4.30"
+    },
+    {
+      "cure_temperature_C": 125,
+      "corrected_compression_cure_duration": "38 min",
+      "compressive_modulus_MPa": "137.7",
+      "compressive_modulus_CI_amplitude_MPa": "2.82",
+      "ultimate_compressive_strength_MPa": "36.8",
+      "strength_CI_amplitude_MPa": "3.84"
+    },
+    {
+      "cure_temperature_C": 150,
+      "corrected_compression_cure_duration": "28 min",
+      "compressive_modulus_MPa": "136.1",
+      "compressive_modulus_CI_amplitude_MPa": "2.68",
+      "ultimate_compressive_strength_MPa": "28.4",
+      "strength_CI_amplitude_MPa": "4.46"
+    },
+    {
+      "cure_temperature_C": 200,
+      "corrected_compression_cure_duration": "24 min",
+      "compressive_modulus_MPa": "117.8",
+      "compressive_modulus_CI_amplitude_MPa": "2.17",
+      "ultimate_compressive_strength_MPa": "31.4",
+      "strength_CI_amplitude_MPa": "2.04"
+    }
+  ],
+  "statistics": {
+    "summary_statistic": "reported_value",
+    "uncertainty_type": "reported_confidence_interval",
+    "confidence_level": "95%",
+    "estimand": "unknown",
+    "construction": "unknown",
+    "compression_sample_count": "not_reported_explicitly_in_selected_method/result;do not infer6from60total,6tensile or4hardness",
+    "batch_count": "unknown",
+    "averaging": "Figure6 labelled averagedengineeringstress/strain;per-specimenpeak/fit versus averaging order unknown"
+  },
+  "method": {
+    "source_standard": "ASTM D1229-03(2008)(lowtemperature)insection3.2;do not silentlyreplacewithD575",
+    "mold_standard_context": "Section2.1 compressionmold ASTM D575-91;testmethodcitation andmoldgeometrycitationdistinct,independentcomplianceunverified",
+    "instrument": "Avery Denison,T42U universaltestingmachine",
+    "crosshead": "20 mm/min maximumsetting,notdirectstrainrate",
+    "test_ambient": "20C and39%RH average during consecutivecompressiontests,notcontrolled tolerance or cure/coolingtemperature",
+    "contact": "A drop ofmachineoil appliedtoparallelsurfaces beforetest toreducefriction/barrelling;notproofartifactsremoved",
+    "stress_convention": "Figure6 explicitlyengineeringstress/strain;raw area,evolvingarea,exactpeak/extractionalgorithm unknown",
+    "strain_window": "Section4.2 describesapproximatelylinearregionbelow55%strain;notexplicitmodulusfitwindow/evaluationalgorithm. Do notinfer0.55exactinterval,secant/tangent,Youngmodulus orglobalhyperelasticconstant."
+  },
+  "state_plan": {
+    "new_material_identities": 0,
+    "new_grades": 0,
+    "existing_identity": "mat_dow_corning_sylgard184",
+    "existing_grade": "grade_dow_corning_sylgard184",
+    "candidate_states": "Five distinctcompression-specimenstates ifaccepted,usingexplicitTable1compressioncures,notexistingtensileorhardnessstates.",
+    "cure": "Table1explicitcompressiondurations48h/53/38/28/24min;200C24asprinted,norepairfromheatpropagationarithmetic. Sourceassumedfullycurednotanalyticaldegreeofcure.",
+    "preparation": "Commercial10:1parts,samecommonmix/vacuum/moldhandling. Ratio mass/volume basis andkitcomposition/lotunknown.",
+    "conditioning": "Common22C1hcoldbeforemoldremoval;testedwithin2haftercure;notmoistureequilibrium.",
+    "geometry": "Compressionmoldfamilyreported;noactualnumericgeometryfromuninspectedstandard,axis/isotropy/quantporosityunknown."
+  },
+  "discrepancies_requiring_adjudication": [
+    "Abstract UCSunitGPa conflictswithTable3andTable5 MPa andFigure6axisMPa.ProposedretainTablesMPaandexplicitsource-discrepancy;do notconvertx1000orrepairabstract.Severity/admissibilityneedindependentadjudication.",
+    "Section4.2approx55%linearity wording doesnotestablishactualEc fitwindow;curvesnonlinearacrossrange.Source Ec isnotYoungmodulus/pressureuniversalbound.Needadjudicatewhethersource-qualifiedcompressive_moduluswithunknownextractionwindowcanbeadmittedorheld.",
+    "MoldASTMD575-91 versuscompressiontestASTMD1229-03(2008)sourcecitationsaretwocontexts;donotdeclarestandardcompliance/replaceedition.",
+    "Averagedcurves,total60testpieces andhardnessreuseunknown donotestablishcompressionn,independentbatches,CIformula/testorder."
+  ],
+  "contract_proposal": {
+    "new_quantities": {
+      "compressive_modulus": "pressure",
+      "compressive_strength": "pressure"
+    },
+    "unit_codes": "ReuseclosedpressureunitsMPa/GPa/Nmm2etc,sourceMPaforthisbatch.",
+    "scope": "Source-reportedcompressionresultsonly,positivecentralexistingpressuresemantics;conventionalmethodandtypedCIreuseexistingframework.No new branch/unit/dimensionrequired.",
+    "source_modulus_label": "Compressive modulus,notYoungmodulus orverifiedtangent/secant/constitutiveconstant.",
+    "source_strength_label": "Ultimate compressive strength,notyield/stressatprescribedstrain,unknownpeakaveraging/extraction.",
+    "shape": "Bothlegacyotherquantitybranch;forbidpercent_elongation/shore_a_scale andspecified_elongation;nohardnesscomparisonmodelinheritance.",
+    "required_before_native": "Independent source/admissibility adjudication,then exactcode/schema/labels/tests andmapping review,thenisolatedinstall/application/finalreview.",
+    "engine": "catalog_only,noengineeringallowable/universalbound,notautomaticinput,noE/K/G/Poisson/crossscaleconversion"
+  },
+  "license": "Article-specificCC BY3.0;attributionretained,PDF/pagesnotredistributedinpackage",
+  "native_applied": false,
+  "implementation_started": false,
+  "pushed": false
+}

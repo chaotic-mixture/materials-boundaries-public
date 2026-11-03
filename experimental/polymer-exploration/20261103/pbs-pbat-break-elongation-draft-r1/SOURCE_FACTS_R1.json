@@ -1,0 +1,73 @@
+{
+  "schema": "two-existing-pbs-pbat-break-elongation-source-facts/1",
+  "baseline_commit": "676df1abd3379f6c6d28bffe8c3685edd63d9b10",
+  "baseline_snapshot": "596b1f2b5cfd756c696429a243b98d8c059ab3be3fe76aae370fad5cba7f99fa",
+  "source_asset": {
+    "path_hint": "F:\\材料边界\\open-database-evidence\\polymer-property-source-rechecks-20261103\\pbs-pbat\\article-r1.xml",
+    "sha256": "aa495787abc73a0d98b8c8adbb3c887816afe57076873010b04d41a6730b7f32",
+    "bytes": 117806
+  },
+  "rows": [
+    {
+      "base_property_id": "refprop_mtibe2022_pbat_ecoflex_c1200_tensile_yield_strength",
+      "new_property_id": "refprop_mtibe2022_pbat_ecoflex_c1200_tensile_elongation_at_break",
+      "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+      "existing_state_id": "state_mtibe2022_pbat_ecoflex_c1200",
+      "source_property_label": "Tensile Strain at Break %",
+      "number": "1040",
+      "uncertainty_number": "9.76",
+      "summary_statistic": "reported_value",
+      "uncertainty_type": "reported_plus_minus_unspecified",
+      "sample_count": 5,
+      "locator": "XML Table3(polymers-14-05065-t003), PBAT row x Tensile Strain at Break %; section2.6.2 protocol and n5; section3.2 source narrative"
+    },
+    {
+      "base_property_id": "refprop_mtibe2022_pbs_pbat_70_30_tensile_yield_strength",
+      "new_property_id": "refprop_mtibe2022_pbs_pbat_70_30_tensile_elongation_at_break",
+      "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+      "existing_state_id": "state_mtibe2022_pbs_pbat_70_30",
+      "source_property_label": "Tensile Strain at Break %",
+      "number": "367.01",
+      "uncertainty_number": "86.87",
+      "summary_statistic": "reported_value",
+      "uncertainty_type": "reported_plus_minus_unspecified",
+      "sample_count": 5,
+      "locator": "XML Table3(polymers-14-05065-t003), PBS-PBAT (70/30) row x Tensile Strain at Break %; section2.6.2 protocol and n5; section3.2 source narrative"
+    }
+  ],
+  "source_protocol_context": [
+    "Five specimens from each biopolymer (PBS and PBAT), biopolymer blends (PBS/PBAT), and hybrid composites reinforced with various loadings (5, 10, and 15 wt.%) of lignin and 1.5 wt.% ZnO nanoparticles were tested for mechanical properties after they were conditioned at room temperature (25 °C) for 48 h. The tensile test was carried out using an Instron tensile tester, in compliance with the standard ASTM D638, at room temperature (25 °C).",
+    "Tensile tests were carried out on the dog bone specimens, and the results are listed in Table 3. From the results, it was observed that PBS was stiffer with a high tensile modulus and low elongation at break, while PBAT was ductile with a low tensile modulus and very high elongation at break. As anticipated, the introduction of PBAT into PBS decreased the tensile strength and modulus of the resultant blend, as well as elongation at break. To increase the PBAT content further resulted in further decreased tensile strength and modulus, while the elongation at break was increasing (Table S1). A blend ratio of PBS and PBAT (70:30) was selected because it was comparable in terms of performance with the commercially available high-density polyethylene (HDPE). The tensile properties (tensile strength, tensile modulus, and elongation at break) of the blend and hybrid composites developed, represented in Table 3, displayed a similar behaviour to that which was reported in other studies when lignin was incorporated in neat PBS and in the blend of PBAT and poly(lactic acid) (PLA), respectively [5,38]. The decrease in tensile strength and elongation at break was noticeable in the hybrid composites. However, increasing the filler loading resulted in a further decrease in tensile strength and elongation at break. The decrease in both tensile strength and elongation at break was more pronounced when a great amount of fillers was introduced. The tensile strength and elongation at break when 15 wt.% was added in the blend were 22.57 MPa and 32.94%, which were decreased by approximately 18 and 167%, respectively. This drop in properties was attributed to the low aspect ratio of the filler, which is comprised of aromatic rings [5]. In contrast, the stiffness of the resultant hybrid composites represented by the tensile modulus increased. Similar results were reported in another study [27]. This stiffness was mainly due to the introduction of rigid filler particles. In addition, when the filler loading increased further, the tensile modulus of the resultant hybrid composites gradually increased. The tensile modulus when 15 wt.% was added was 347.44 MPa, which improved by approximately 31%, which was close to that obtained from the neat PBS."
+  ],
+  "source_permissions": [
+    "© 2022 by the authors.2022https://creativecommons.org/licenses/by/4.0/Licensee MDPI, Basel, Switzerland. This article is an open access article distributed under the terms and conditions of the Creative Commons Attribution (CC BY) license (https://creativecommons.org/licenses/by/4.0/)."
+  ],
+  "contract": {
+    "quantity": "tensile_elongation_at_break",
+    "quantity_dimension": "dimensionless",
+    "central_unit_code": "percent_elongation",
+    "original_unit_text": "%",
+    "plus_minus": "Absolute elongation percentage-point amplitude; unknown statistical construction,not relative error or SD inferred from n5"
+  },
+  "conditions": {
+    "tensile_temperature": "25°C source report",
+    "prior_conditioning": "25°C/48h,source report;RH not stated,does not prove equilibrium",
+    "n": "five specimens per selected group,not independent batches",
+    "standard": "ASTM D638 source citation;edition/compliance not verified",
+    "machine": "Instron tester,model not stated in selected method",
+    "loading_rate": "not reported in selected tensile paragraph",
+    "actual_gauge_strain_estimator_convention_rupture_criterion": "unknown"
+  },
+  "source_narrative_issue": {
+    "statement": "Section3.2 reports approximately18% strength and167% elongation decrease for15wt%lignin composition.",
+    "scope": "Context outside the two selected unfilled rows;no new filled material or performance metric admitted.",
+    "disposition": "Reference formula/comparator and claimed167%decrease unverified;do not repair Table3 numbers or adopt quantified improvement/decrease claims."
+  },
+  "exclusions": [
+    "No new neatPBS,filledlignin/ZnO or additionalblend identity/state;TableS1 not admitted.",
+    "SelectedEwurumPBS Table6 andAbbasiPHBV Table9 provide no elongation column;not proof of absence elsewhere. No curve digitization or modulus/strength division.",
+    "No verified mean/SD/SE/CI, strain convention/gauge/rupture selection, n-derived uncertainty or n-independent batch inference.",
+    "No engine/universalbound/engineeringallowable/biomedical or biodegradability certification.",
+    "No freshdownload/PDFvisual/latestrevision/correction/retraction audit;latest status unknown."
+  ]
+}

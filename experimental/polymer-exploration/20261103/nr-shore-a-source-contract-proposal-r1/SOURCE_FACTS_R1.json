@@ -1,0 +1,53 @@
+{
+  "schema": "existing-NR-Shore-A-source-facts/1",
+  "baseline_commit": "676df1abd3379f6c6d28bffe8c3685edd63d9b10",
+  "baseline_local_snapshot": "35c10b8bcde2e5d0c5c1266dc98e428962683009d0a4d4511ba3f2f301cf6153",
+  "existing_identity_id": "mat_smr10_bianchi2025_nr",
+  "existing_grade_id": "grade_smr10_bianchi2025_nr",
+  "existing_1mm_state_id": "state_smr10_bianchi2025_nr",
+  "source_id": "bianchi_2025_nr_nanoclay",
+  "source_asset": {
+    "path_hint": "F:\\材料边界\\open-database-evidence\\polymer-nr-20261103\\article-r2.xml",
+    "sha256": "97eb8a1e73e57b6fc64fcf3b0be6603db3f8dcb5fa927570e91eb033f1018f69",
+    "bytes": 153447
+  },
+  "selected_result": {
+    "table_id": "molecules-30-03035-t004",
+    "row": "NR",
+    "source_property_label": "Shore A",
+    "number": "38.0",
+    "uncertainty_number": "0.8",
+    "summary_statistic": "reported_mean",
+    "uncertainty_type": "reported_standard_deviation",
+    "sample_count": 5,
+    "sample_count_relation": "exact",
+    "statistics_locator": "Section3.3.4 hardness paragraph n5 and final common mechanical mean/SD statement",
+    "not_asserted": "Five independent batches,known within-specimen indentation count or certified scale calibration."
+  },
+  "method": {
+    "source_standard": "ASTM D2240;edition and independent compliance unknown",
+    "source_instrument_spelling": "Hilderbrand Durometer (Prüf-und Meßtechnik GmbH,Wendlingen am Neckar,Germany)",
+    "model_serial_calibration": "unknown",
+    "test_temperature": "25°C",
+    "source_nominal_specimen": "Square specimens15mm wide,3mm thick",
+    "reported_contact_time": "10s; exact trigger and approach rate not stated",
+    "reported_load_setting": "488g as printed; not converted to force or treated as a calibrated normal load",
+    "relative_humidity_conditioning_storage": "unknown",
+    "loading_rate": "unknown; tensile500mm/min not transferred"
+  },
+  "geometry_discrepancy": {
+    "general_preparation": "Section3.2 reports120×120×1mm produced sheets",
+    "hardness_protocol": "Section3.3.4 reports3mm thick specimens",
+    "manufacturer_general_guidance": "FAQ says thickness≥6mm or layered2+2+2mm; not proof of the source device/model or applicable standard edition",
+    "disposition": "No stacking,count,layers,6mm correction or route inferred. No attachment to existing1mm tensile/density state. Any future native candidate requires a separately reviewed nominal3mm hardness state retaining the discrepancy and unknown preparation path."
+  },
+  "no_inference": [
+    "No hardness-to-Young-modulus/stress conversion or interchange with ShoreD/IRHD/Rockwell.",
+    "Source-named scale does not certify instrument,standard compliance,3mm representativeness or bulk-grade hardness.",
+    "No new material identity or nanoclay formulation; existing NR has curatives and is not raw/pure SMR10.",
+    "NR epsilon_b730±14 mm/mm issue remains deferred; hardness does not repair it."
+  ],
+  "implemented": false,
+  "native_applied": false,
+  "pushed": false
+}

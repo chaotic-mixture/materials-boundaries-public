@@ -1,0 +1,423 @@
+{
+  "baseline_snapshot": "35c10b8bcde2e5d0c5c1266dc98e428962683009d0a4d4511ba3f2f301cf6153",
+  "stage": "not_applied",
+  "materials": {
+    "identities": [],
+    "grades": [],
+    "records": [
+      {
+        "id": "state_smr10_bianchi2025_nr_shore_a_nominal_3mm",
+        "version": "1.0.0",
+        "identity_id": "mat_smr10_bianchi2025_nr",
+        "grade_id": "grade_smr10_bianchi2025_nr",
+        "name": "Study NR, source-nominal3mm Shore A specimens",
+        "names": {
+          "en": "Study NR, source-nominal3mm Shore A specimens",
+          "zh": "研究NR，源称名义3mm邵氏A试样",
+          "ja": "研究NR、原文公称3mmショアA試験片",
+          "de": "Studien-NR, nominelle3mm-Proben für Shore A laut Quelle"
+        },
+        "aliases": [],
+        "source_designation": "NR; source-nominal square15mm wide and3mm thick hardness specimens",
+        "state": {
+          "product_form": {
+            "status": "reported",
+            "text": "Source-nominal square hardness specimens,15mm wide and3mm thick",
+            "evidence": [
+              {
+                "source_id": "bianchi_2025_nr_nanoclay",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+                "locator": "Retained XML section3.3.4 first hardness paragraph;Table4 NR row x Shore A",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "General1mm sheet statement differs; actual preparation/stacking unresolved."
+          },
+          "processing": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Specific3mm specimen preparation path is not stated. General1mm compound-sheet process does not establish stacking or3mm manufacture."
+          },
+          "temper_or_heat_treatment": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Specific3mm specimen cure route/time is not established; do not upgrade general1mm preparation120C/3bar into confirmed3mm history."
+          },
+          "conditioning": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Hardness-specific storage/conditioning/RH/equilibration is not stated; test25C and10s contact are not conditioning."
+          },
+          "composition_or_purity": {
+            "status": "reported",
+            "text": "Recipe (phr): SMR 10 natural rubber 100.0; sulfur 1.5; ZnO 5.0; stearic acid 2.0; ZDBC 0.7; no nanoclay",
+            "evidence": [
+              {
+                "source_id": "bianchi_2025_nr_nanoclay",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+                "locator": "Retained XML section3.1 SMR10 and Table8 NR reference recipe;no nanoclay",
+                "supports": [
+                  "state",
+                  "material_identity",
+                  "grade"
+                ]
+              }
+            ],
+            "notes": "Exact selected study formulation; not a pure/raw matrix-polymer identity."
+          },
+          "reinforcement": {
+            "status": "reported",
+            "text": "No nanoclay is added to the selected NR formulation",
+            "evidence": [
+              {
+                "source_id": "bianchi_2025_nr_nanoclay",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+                "locator": "Retained XML section3.1 SMR10 and Table8 NR reference recipe;no nanoclay",
+                "supports": [
+                  "state",
+                  "material_identity",
+                  "grade"
+                ]
+              }
+            ],
+            "notes": null
+          },
+          "porosity": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "No quantitative void fraction is assigned to this selected scalar; nonfoamed preparation does not establish zero porosity."
+          },
+          "orientation": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Source does not establish indentation face or its relation to processing axes; no isotropy inference."
+          }
+        },
+        "source_scope": "Separate source-nominal3mm hardness specimen state under the same study NR formulation/grade. General1mm sheet preparation and3mm hardness geometry remain unreconciled; route,cure,stacking,actual thickness and conditioning not confirmed. Hardness mean/SD/n5 and25C/10s/488g are property-specific source reports,not independent certification. No old tensile/density property is moved or reinterpreted.",
+        "evidence": [
+          {
+            "source_id": "bianchi_2025_nr_nanoclay",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+            "locator": "Retained XML section3.3.4 first hardness paragraph;Table4 NR row x Shore A",
+            "supports": [
+              "state"
+            ]
+          },
+          {
+            "source_id": "bianchi_2025_nr_nanoclay",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+            "locator": "Retained XML section3.2 general120x120x1mm sheets versus section3.3.4 hardness square15mm wide,3mm thick",
+            "supports": [
+              "state"
+            ]
+          }
+        ],
+        "property_ids": [
+          "refprop_smr10_bianchi2025_nr_shore_a_hardness"
+        ],
+        "evaluation_support": "catalog_only"
+      }
+    ]
+  },
+  "reference_properties": {
+    "records": [
+      {
+        "id": "refprop_smr10_bianchi2025_nr_shore_a_hardness",
+        "version": "1.0.0",
+        "material_state_id": "state_smr10_bianchi2025_nr_shore_a_nominal_3mm",
+        "quantity": "shore_a_hardness",
+        "quantity_dimension": "dimensionless",
+        "source_property_label": "Shore A",
+        "reported_value": {
+          "kind": "scalar",
+          "value_text": "38.0",
+          "unit_text": "Shore A",
+          "unit_code": "shore_a_scale",
+          "number": "38.0"
+        },
+        "evidence_kind": "published_experimental_reference",
+        "reporting_basis": "reported_summary",
+        "determination_basis": "source_reports_measurement",
+        "basis_note": "Source Table4 NR Shore A scalar and section3.3.4 common mechanical mean/SD statement. Reported group mean only, no calibrated bulk-grade hardness, sample-level curve or constitutive conversion.",
+        "conditions": {
+          "temperature": {
+            "status": "reported",
+            "text": "25°C",
+            "evidence": [
+              {
+                "source_id": "bianchi_2025_nr_nanoclay",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+                "locator": "Retained XML section3.3.4 first hardness paragraph;Table4 NR row x Shore A",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Hardness temperature only; not transferred to quasi-static tensile properties."
+          },
+          "test_standard": {
+            "status": "reported",
+            "text": "ASTM D2240; edition not stated",
+            "evidence": [
+              {
+                "source_id": "bianchi_2025_nr_nanoclay",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+                "locator": "Retained XML section3.3.4 first hardness paragraph;Table4 NR row x Shore A",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Source citation only; independent compliance not verified."
+          },
+          "test_method": {
+            "status": "reported",
+            "text": "Source-labelled Shore A durometer hardness at25C, after10s pressing an indenter; source load setting488g retained without conversion to force. Source instrument spelling Hilderbrand Durometer, model/calibration unknown; ASTM D2240 cited without edition or independent compliance. Nominal square15mm wide,3mm thick; its preparation/stacking/cure route is unreported and differs from general1mm sheet description. RH, conditioning, approach/loading rate and indentation face/processing axis remain unknown.",
+            "evidence": [
+              {
+                "source_id": "bianchi_2025_nr_nanoclay",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+                "locator": "Retained XML section3.3.4 first hardness paragraph;Table4 NR row x Shore A",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Nominal source geometry; no thickness repair, layer inference or actual-load certification."
+          },
+          "direction": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Indentation face and orientation relative to processing axes are not established; no isotropy inference."
+          },
+          "conditioning": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Hardness-specific post-cure storage, RH and equilibration are not stated;25C testing and10s indentation do not supply conditioning."
+          },
+          "loading_rate": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Approach/application/loading rate is not stated;10s duration is not a rate, and tensile500mm/min is not transferred."
+          },
+          "additional_conditions": [
+            {
+              "name": "reported_contact_time",
+              "fact": {
+                "status": "reported",
+                "text": "10s after pressing the indenter",
+                "evidence": [
+                  {
+                    "source_id": "bianchi_2025_nr_nanoclay",
+                    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+                    "locator": "Retained XML section3.3.4 first hardness paragraph;Table4 NR row x Shore A",
+                    "supports": [
+                      "condition"
+                    ]
+                  }
+                ],
+                "notes": "Exact contact/timer trigger unverified."
+              }
+            },
+            {
+              "name": "source_reported_load_setting",
+              "fact": {
+                "status": "reported",
+                "text": "488g",
+                "evidence": [
+                  {
+                    "source_id": "bianchi_2025_nr_nanoclay",
+                    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+                    "locator": "Retained XML section3.3.4 first hardness paragraph;Table4 NR row x Shore A",
+                    "supports": [
+                      "condition"
+                    ]
+                  }
+                ],
+                "notes": "As printed; not converted toN or asserted as calibrated normal force."
+              }
+            },
+            {
+              "name": "test_relative_humidity",
+              "fact": {
+                "status": "not_reported_in_inspected_source",
+                "text": null,
+                "evidence": [],
+                "notes": "Hardness-test relative humidity is not stated."
+              }
+            }
+          ]
+        },
+        "density_basis": null,
+        "summary_statistic": "reported_mean",
+        "uncertainty": {
+          "type": "reported_standard_deviation",
+          "value_text": "0.8",
+          "number": "0.8",
+          "unit_text": "Shore A",
+          "unit_code": "shore_a_scale",
+          "scope": "Source SD in absolute Shore A scale points for this nominal specimen group, not relative percent, pressure, confidence interval or a material bound.",
+          "coverage_factor": null,
+          "confidence_level": null,
+          "evidence": [
+            {
+              "source_id": "bianchi_2025_nr_nanoclay",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+              "locator": "Retained XML section3.3.4 hardness paragraph five specimens and final mechanical mean plus/minus standard-deviation statement;Table4 NR Shore A cell",
+              "supports": [
+                "uncertainty"
+              ]
+            }
+          ]
+        },
+        "uncertainty_status": "reported_standard_deviation",
+        "uncertainty_note": "38.0 plus/minus0.8 Shore A: source-reported mean and SD, absolute scale points, not percent or MPa. Five specimens are not five independent batches; indentation counts per specimen, calibration and stacking are unknown.",
+        "sample_count": {
+          "value": 5,
+          "relation": "exact",
+          "scope": "Five source-reported hardness specimens per formulation; not independent batches or a known count of repeated indentations.",
+          "source_statement": "Five specimens were tested for each formulation in the hardness paragraph.",
+          "evidence": [
+            {
+              "source_id": "bianchi_2025_nr_nanoclay",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+              "locator": "Retained XML section3.3.4 hardness paragraph five specimens and final mechanical mean plus/minus standard-deviation statement;Table4 NR Shore A cell",
+              "supports": [
+                "sample_count"
+              ]
+            }
+          ]
+        },
+        "method_definition": {
+          "type": "source_reported_conventional",
+          "definition": "Source-labelled Shore A durometer hardness at25C, after10s pressing an indenter; source load setting488g retained without conversion to force. Source instrument spelling Hilderbrand Durometer, model/calibration unknown; ASTM D2240 cited without edition or independent compliance. Nominal square15mm wide,3mm thick; its preparation/stacking/cure route is unreported and differs from general1mm sheet description. RH, conditioning, approach/loading rate and indentation face/processing axis remain unknown.",
+          "extraction_window": null,
+          "evidence": [
+            {
+              "source_id": "bianchi_2025_nr_nanoclay",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+              "locator": "Retained XML section3.3.4 first hardness paragraph;Table4 NR row x Shore A",
+              "supports": [
+                "method",
+                "condition"
+              ]
+            }
+          ]
+        },
+        "source_discrepancies": [
+          {
+            "description": "General sample preparation states120x120x1mm sheets, while the hardness protocol states3mm-thick square specimens. The source does not reconcile the specific3mm preparation route.",
+            "disposition": "Retain a separate source-nominal3mm hardness state. Do not attach this result to1mm tensile/density state, infer stacking/layers, replace3mm with6mm, or certify geometry/standard compliance.",
+            "evidence": [
+              {
+                "source_id": "bianchi_2025_nr_nanoclay",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+                "locator": "Retained XML section3.2 general120x120x1mm sheets versus section3.3.4 hardness square15mm wide,3mm thick",
+                "supports": [
+                  "source_discrepancy",
+                  "state"
+                ]
+              }
+            ]
+          }
+        ],
+        "source_id": "bianchi_2025_nr_nanoclay",
+        "evidence": [
+          {
+            "source_id": "bianchi_2025_nr_nanoclay",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+            "locator": "Retained XML section3.3.4 first hardness paragraph;Table4 NR row x Shore A",
+            "supports": [
+              "reported_value",
+              "classification",
+              "method",
+              "condition"
+            ]
+          },
+          {
+            "source_id": "bianchi_2025_nr_nanoclay",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+            "locator": "Retained XML section3.3.4 hardness paragraph five specimens and final mechanical mean plus/minus standard-deviation statement;Table4 NR Shore A cell",
+            "supports": [
+              "summary_statistic",
+              "uncertainty",
+              "sample_count"
+            ]
+          }
+        ],
+        "source_document": {
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML",
+          "revision": "Retained registered XML revision; latest online revision/correction/retraction status unknown.",
+          "inspected_on": "2026-11-03",
+          "sha256": "97eb8a1e73e57b6fc64fcf3b0be6603db3f8dcb5fa927570e91eb033f1018f69",
+          "hash_status": "recorded",
+          "hash_note": null,
+          "inspection_scope": "Retained exact primary XML Table4 NR Shore A38.0+/-0.8,section3.3.4 hardness protocol/n5/common mechanical mean-SD,section3.2 geometry discrepancy,Table8 NR formulation and permissions. No new PDF visual,calibration,raw-data or latest-revision/correction/retraction audit.",
+          "inspection_status": "selected_content_inspected"
+        },
+        "scope_note": "Source-qualified NR vulcanizate with curatives, no nanoclay, not raw/pure SMR10. Empirical Shore A reading on source-nominal3mm specimens only; specific preparation/cure/stacking,actual thickness,calibration,face/RH/conditioning and independent batches unverified. General1mm sheet preparation is not confirmed3mm manufacture;488g is source setting,not converted force. Scale domain0..100 does not certify edge reliability or method compliance. No cross-scale,Young-modulus,stress,energy,engine,universal-bound or engineering-allowable inference. NR break-strain unit ambiguity remains deferred.",
+        "evaluation_support": "catalog_only",
+        "universal_bound": false,
+        "engineering_allowable": false,
+        "verification": {
+          "source_inspection_scope": "Retained exact primary XML Table4 NR Shore A38.0+/-0.8,section3.3.4 hardness protocol/n5/common mechanical mean-SD,section3.2 geometry discrepancy,Table8 NR formulation and permissions. No new PDF visual,calibration,raw-data or latest-revision/correction/retraction audit.",
+          "transcription_cross_check": "completed",
+          "independent_scientific_review": false,
+          "raw_data_reanalysis": false
+        }
+      }
+    ]
+  },
+  "sources": {
+    "records": [
+      {
+        "id": "bianchi_2025_nr_nanoclay",
+        "title": "Elastocaloric Performance of Natural Rubber: The Role of Nanoclay Addition",
+        "authors": [
+          "Marica Bianchi",
+          "Luca Fambri",
+          "Mauro Bortolotti",
+          "Alessandro Pegoretti",
+          "Andrea Dorigato"
+        ],
+        "year": 2025,
+        "doi": "10.3390/molecules30143035",
+        "urls": [
+          "https://doi.org/10.3390/molecules30143035",
+          "https://www.mdpi.com/1420-3049/30/14/3035/pdf",
+          "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12300880/fullTextXML"
+        ],
+        "read_status": "selected_primary_pdf_identity_recipe_method_result_statistics_and_license_inspected",
+        "license": {
+          "status": "explicit_reuse_license_verified",
+          "identifier": "CC-BY-4.0"
+        },
+        "role": "published_experimental_reference",
+        "claim_notes": [
+          "Publisher version of record PDF; 23 pages; no printed revision label. PDF CreationDate 2025-07-19; hash pins acquired bytes.",
+          "Retained numerical-source PDF SHA-256 2e729bb58b361568d27ab772ec1c031648cb6a858f58a6e4ece9ce45b74c3ea2 belongs to https://www.mdpi.com/1420-3049/30/14/3035/pdf.",
+          "License CC-BY-4.0: https://creativecommons.org/licenses/by/4.0/. Selected original facts are transcribed with original project scope notes; no source assets are bundled or relicensed under project MIT.",
+          "2026-11-03 retained primary XML selected finite-strain E100–200 supplement draft: source mechanical mean/SD and n=5 are distinct from density statistics. No new source assets or third-party supplier data bundled; draft pending independent source/mapping review.",
+          "2026-11-03 stress-at-break supplement: selected existing NR or five printed polymer states, Table4 break-stress mean/SD,n=5 tensile specimens. Not peak/yield strength, modulus, strain or toughness. Unknown fracture criterion, stress convention and independent batches retained. Latest online revision/correction/retraction status not verified. No new identities or engine input.",
+          "2026-11-03 NR target-stress supplement:Table4 unfilled NR only,sigma200% and sigma400%,mean/SD,n5 quasi-static tensile specimens. Explicit source targets;not stress/strain division or modulus. Unknown conventions,point selection and batches retained;no neighboring-test condition transfer or break-strain correction.",
+          "2026-11-03 separate source-nominal3mm NR Shore A state and38.0+/-0.8 mean/SD/n5 reference.25C,10s,488g source setting preserved. General1mm sheet description does not establish3mm preparation/cure/stacking; no thickness repair or compliance/calibration certification. Empirical scale only,no modulus/cross-scale/engine conversion. NR break-strain unit issue remains deferred."
+        ],
+        "provenance": {
+          "curation_date": "2026-10-04",
+          "method": "Selected original source facts and notices independently cross-checked against retained PDF text and rendered pages; source-transcription review only, not experimental validation, raw-data reanalysis or legal clearance."
+        },
+        "bundled_content": "selected_source_qualified_facts_bibliographic_metadata_and_original_curation_only_no_source_assets"
+      }
+    ]
+  }
+}

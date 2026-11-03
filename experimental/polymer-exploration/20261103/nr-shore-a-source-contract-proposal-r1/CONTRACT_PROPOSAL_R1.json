@@ -1,0 +1,40 @@
+{
+  "schema": "shore-a-catalog-contract-proposal/1",
+  "stage": "source_and_contract_proposal_only_not_implemented",
+  "quantity": "shore_a_hardness",
+  "quantity_dimension": "dimensionless",
+  "unit_code": "shore_a_scale",
+  "source_unit_text": "Shore A",
+  "unit_interpretation": "Application-context scale identifier,not SI pressure,percent or a new physical unit.",
+  "central_domain": {
+    "min_inclusive": "0",
+    "max_inclusive": "100",
+    "scope": "Scalar or every source-reported interval endpoint;not a reliability/compliance assertion or universal material bound."
+  },
+  "uncertainty_domain": "Absolute SD/plus-minus uses shore_a_scale points and remains nonnegative;no percent conversion or inferred confidence interval. Relative reported statistics remain separately typed.",
+  "schema_plan": [
+    "Use existing vocabulary with4mutuallyexclusive branches:legacyother,pressurepointstress,percentelongation,ShoreA.",
+    "Exclude shore_a_scale from all other central units;keep percent_elongation only for two elongation quantities.",
+    "ShoreA branch forbids specified_elongation and other tensile targets.",
+    "Semantic Decimal validation enforces0..100 inclusive for central scalar/interval endpoints;schema structure alone not sufficient.",
+    "Keep legacy positive-value requirements and existing zero/>100 elongation semantics."
+  ],
+  "state_plan": {
+    "identity": "reuse existing qualified NR identity andgrade only",
+    "proposed_state_id": "state_smr10_bianchi2025_nr_shore_a_nominal_3mm",
+    "new_state_required": true,
+    "name_scope": "Source-reported nominal3mm hardness specimen;no certified preparation route or stacking inferred.",
+    "old_state_handling": "Do not change1mm state/product form or attach hardness there.",
+    "unknowns": "Specific3mm preparation/cure route,thickness reconciliation,conditioning/RH,indentation face/axis,calibration andindependent batches."
+  },
+  "native_support": "catalog_only;universal_boundfalse;engineering_allowablefalse;no evaluator/constitutive conversions.",
+  "required_gates": [
+    "Independent source/contract review before implementation.",
+    "Freeze/review exact code/schema/localization/docs/new tests before native admission.",
+    "Independently review final identity/state/geometry mapping;source approval alone does not approve newstate.",
+    "Meaningful tests:0/100 boundaries,-negative/>100 reject,scalar/interval endpoints,wrongShoreD/pressure/percent/elongation units andtargets reject,oldpositivity/relative statistics preserved.",
+    "Then schema/currentgraph/export/fourlanguages/actualisolatedinstallation/native acceptance,old5300completeproperties preserved."
+  ],
+  "native_applied": false,
+  "pushed": false
+}
