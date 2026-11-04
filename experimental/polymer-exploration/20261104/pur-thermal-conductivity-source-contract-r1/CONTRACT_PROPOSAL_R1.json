@@ -1,0 +1,33 @@
+{
+  "status": "unimplemented_closed_contract_concept",
+  "quantity": "thermal_conductivity",
+  "quantity_dimension": "power_per_length_temperature",
+  "unit_codes": [
+    "W/(m*K)",
+    "mW/(m*K)"
+  ],
+  "source_typographic_spellings": {
+    "W/(m*K)": [
+      "W/(m·K)",
+      "W/(m*K)"
+    ],
+    "mW/(m*K)": [
+      "mW/(m·K)",
+      "mW/(m*K)"
+    ]
+  },
+  "central_domain": "Strictly positive source scalar/interval/comparison;preserve precision and original units,not conversion",
+  "uncertainty": "Reuse closed absolute/relative roles;nonnegative absolute amplitudes with exact same unitcode as centre;no automatic milli/base conversion",
+  "schema_plan": "Explicit7thcomplete mutuallyexclusive branch;keepold6branchobjects andlegacy centralunitdomain literallyunchanged;extendshared uncertainty vocab only through role checks",
+  "forbidden": [
+    "Temperatureunit as central conductivity",
+    "Watt alone,heattransfercoefficientW/(m^2*K),thermalresistance orconductance units",
+    "Negative/zero central values under thispositive-reference contract",
+    "density_basis exceptnull orspecified_elongation",
+    "inferredisotropy",
+    "engineeringallowable/universalbound/engineinput",
+    "automatic0.01984Wrewrite of19.84mW sourcecell"
+  ],
+  "source_default": "catalog_only;summarynot_stated,nunknown,nulluncertainty",
+  "unit_reference": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-4-two-classes-si-units-and-si-prefixes"
+}

@@ -707,3 +707,39 @@ signed coordinates and nonnegative C/K difference amplitudes without conversion;
 all non-temperature quantities retain their existing numerical and unit domains.
 Unknown selected-cell n, aggregation, dispersion and historical/reanalysis
 provenance remain attached even when the common method states duplicate tests.
+
+
+## Electric breakdown field references
+
+`dielectric_breakdown_strength` preserves a source-reported dielectric breakdown
+field magnitude, with the original positive scalar, interval or comparison and
+literal `V/m` or `kV/mm` unit. Its quantity dimension is `electric_field`.
+Voltage values require their own quantity semantics; source capacity and voltage
+ramp remain method context. The catalogue performs no voltage/thickness
+calculation or unit normalization.
+
+AC/DC/impulse mode, frequency, peak/RMS convention, electrode geometry, specimen
+thickness, medium, test environment and conditioning stay source qualified.
+Missing information remains explicit. Absolute dispersion requires a nonnegative
+amplitude in the same unit code as the central result, retaining the declared
+source statistic and evidence. Unknown numeric dispersion stays unknown.
+A fitted breakdown-probability quantile does not establish a confidence interval
+for a mean. Source-specific curation checks these statistical meanings.
+
+These catalogue records retain source inspection and interpretation limits.
+They do not supply engineering allowables, certified insulation ratings or
+mechanics evaluator inputs. Existing mechanical, density, temperature and other
+quantity unit roles remain closed.
+
+
+### Thermal-conductivity references
+
+`thermal_conductivity` uses the separate `power_per_length_temperature` dimension
+and closed `W/(m*K)` / `mW/(m*K)` unit codes. Original middle-dot unit labels and
+decimal precision are retained; milli/base units are never automatically converted.
+Positive source central values and nonnegative absolute uncertainty amplitudes
+use the same unit code; existing relative uncertainty roles remain distinct.
+These are condition-qualified catalogue references, not thermal-engine inputs
+or engineering allowables. Mean plate temperature is not evidence of a group
+mean, isotropy, replicate count or a complete specimen-conditioning procedure.
+Do not transfer counts or density normalization from neighbouring mechanical tests.

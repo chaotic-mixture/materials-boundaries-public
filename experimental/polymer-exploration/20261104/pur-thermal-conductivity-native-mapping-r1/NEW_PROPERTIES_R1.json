@@ -1,0 +1,742 @@
+[
+  {
+    "id": "refprop_ivdre2024_lpo1_rigid_pur_thermal_conductivity",
+    "version": "1.0.0",
+    "material_state_id": "state_ivdre2024_lpo1_rigid_pur_heat_flow_plate",
+    "quantity": "thermal_conductivity",
+    "quantity_dimension": "power_per_length_temperature",
+    "source_property_label": "Thermal conductivity, mW/(m·K) (0…20 °C)",
+    "reported_value": {
+      "kind": "scalar",
+      "value_text": "19.84",
+      "number": "19.84",
+      "unit_code": "mW/(m*K)",
+      "unit_text": "mW/(m·K)"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "not_stated",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Selected optimized-foam Table10 thermal-conductivity cell, not a modeled target, intrinsic solid-polymer constant or density-normalized compression result. Statistical estimator is not specified; average test temperature is not a group-mean statement.",
+    "conditions": {
+      "temperature": {
+        "status": "reported",
+        "text": "Mean test temperature 10 °C; cold plate 0 °C and hot plate +20 °C",
+        "evidence": [
+          {
+            "source_id": "ivdre_2024_lpo_rigid_pur",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+            "locator": "PDF p7 §2.8; p17 Table10 thermal-conductivity row",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Apparatus temperatures as reported; not ambient temperature or a statistical aggregation claim."
+      },
+      "test_standard": {
+        "status": "reported",
+        "text": "ISO 8301:1991, source-reported",
+        "evidence": [
+          {
+            "source_id": "ivdre_2024_lpo_rigid_pur",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+            "locator": "PDF p7 §2.8; p23 reference36",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Standard text, calibration and compliance not independently verified."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "FOX 200 heat-flow apparatus; 200 × 200 × 30 mm foam specimens",
+        "evidence": [
+          {
+            "source_id": "ivdre_2024_lpo_rigid_pur",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+            "locator": "PDF p7 §2.8",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-reported method; exact calibration, reduction implementation and contact treatment unknown."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "RH, moisture, post-cure equilibration interval and gas ageing unknown. 24 h room-temperature curing is processing; four-day water immersion belongs to water absorption."
+      },
+      "loading_rate": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "No thermal scan/loading rate assigned; compression10%/min, DSC and TGA ramp rates are other tests and not transferred."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Heat-flow direction relative to foam rise unknown; no isotropy inference from geometric anisotropy or nominal plate geometry."
+      },
+      "additional_conditions": [
+        {
+          "name": "skin_location_and_contact",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Foam skin removal, location in casting, plate-contact pressure and interface treatment unknown."
+          }
+        },
+        {
+          "name": "ambient_pressure_and_atmosphere",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Thermal-test ambient pressure and atmosphere unknown; other-test nitrogen not transferred."
+          }
+        },
+        {
+          "name": "density_normalization",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Source40kg/m³ normalization explicitly applies to compressive strength/modulus; no such correction inferred for selected thermal-conductivity cells."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "not_stated",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "uncertainty_note": "No numerical dispersion stated for selected thermal-conductivity cells; neighbouring water-absorption plus-minus values and other thermal/mechanical repeats are not transferred.",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "No unambiguous n for this selected optimized-foam heat-flow result; cup screening3, compression6 and TGA3ormore are separate.",
+      "source_statement": "The inspected thermal-conductivity method and selected Table10 cell do not identify a specific replicate count.",
+      "evidence": [
+        {
+          "source_id": "ivdre_2024_lpo_rigid_pur",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+          "locator": "PDF pp7–8 §2.7–2.8; p17 Table10",
+          "supports": [
+            "sample_count"
+          ]
+        }
+      ]
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source-reported foam heat-flow thermal-conductivity coefficient measured with FOX200 at average test temperature10°C, cold plate0°C and hot plate20°C, per author ISO8301:1991 claim. Literal Table10 value retained; not intrinsic neat-polymer conductivity, heat-transfer coefficient or density-normalized mechanical value.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "ivdre_2024_lpo_rigid_pur",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+          "locator": "PDF p7 §2.8; p17 Table10; p23 reference36",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [],
+    "source_id": "ivdre_2024_lpo_rigid_pur",
+    "evidence": [
+      {
+        "source_id": "ivdre_2024_lpo_rigid_pur",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+        "locator": "PDF p17 Table10 thermal-conductivity row/LPO-1; p7 §2.8",
+        "supports": [
+          "reported_value",
+          "classification",
+          "condition",
+          "method"
+        ]
+      }
+    ],
+    "source_document": {
+      "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+      "revision": "Official article-deploy PDF retrieved2026-11-04; latest revision/correction/retraction unknown",
+      "inspected_on": "2026-11-04",
+      "sha256": "70b6da773e757f43557ed69bb651ce14e8ff82c1f09d39de1f50671343239e0e",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Official23-pagePDF selectedpages1,6–8,16–18,22–23 visually checked; retainedJATS corroborated. Selected4 thermal-conductivity cells, preparation, plate geometry/temperatures, method, bibliography and author license. No raw data, plot digitization, fullstandard or latest-notice review.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Selected study-specific optimized-foam plate reference only. Original mW/(m·K), precision, unknown summary/n and null numerical uncertainty retained. Apparatus average temperature does not identify an estimator. RH/equilibration, gas ageing, heat-flow/foam-rise direction, skin/location/contact and calibration unknown. No cup/compression/TGA n, neighbouring plus-minus value, four-day immersion or density normalization transferred; no engineering allowable, isotropy certification or engine input.",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Official23-pagePDF selectedpages1,6–8,16–18,22–23 visually checked; retainedJATS corroborated. Selected4 thermal-conductivity cells, preparation, plate geometry/temperatures, method, bibliography and author license. No raw data, plot digitization, fullstandard or latest-notice review.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    }
+  },
+  {
+    "version": "1.0.0",
+    "quantity": "thermal_conductivity",
+    "quantity_dimension": "power_per_length_temperature",
+    "source_property_label": "Thermal conductivity, mW/(m·K) (0…20 °C)",
+    "reported_value": {
+      "kind": "scalar",
+      "value_text": "20.26",
+      "number": "20.26",
+      "unit_code": "mW/(m*K)",
+      "unit_text": "mW/(m·K)"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "not_stated",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Selected optimized-foam Table10 thermal-conductivity cell, not a modeled target, intrinsic solid-polymer constant or density-normalized compression result. Statistical estimator is not specified; average test temperature is not a group-mean statement.",
+    "conditions": {
+      "temperature": {
+        "status": "reported",
+        "text": "Mean test temperature 10 °C; cold plate 0 °C and hot plate +20 °C",
+        "evidence": [
+          {
+            "source_id": "ivdre_2024_lpo_rigid_pur",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+            "locator": "PDF p7 §2.8; p17 Table10 thermal-conductivity row",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Apparatus temperatures as reported; not ambient temperature or a statistical aggregation claim."
+      },
+      "test_standard": {
+        "status": "reported",
+        "text": "ISO 8301:1991, source-reported",
+        "evidence": [
+          {
+            "source_id": "ivdre_2024_lpo_rigid_pur",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+            "locator": "PDF p7 §2.8; p23 reference36",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Standard text, calibration and compliance not independently verified."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "FOX 200 heat-flow apparatus; 200 × 200 × 30 mm foam specimens",
+        "evidence": [
+          {
+            "source_id": "ivdre_2024_lpo_rigid_pur",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+            "locator": "PDF p7 §2.8",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-reported method; exact calibration, reduction implementation and contact treatment unknown."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "RH, moisture, post-cure equilibration interval and gas ageing unknown. 24 h room-temperature curing is processing; four-day water immersion belongs to water absorption."
+      },
+      "loading_rate": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "No thermal scan/loading rate assigned; compression10%/min, DSC and TGA ramp rates are other tests and not transferred."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Heat-flow direction relative to foam rise unknown; no isotropy inference from geometric anisotropy or nominal plate geometry."
+      },
+      "additional_conditions": [
+        {
+          "name": "skin_location_and_contact",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Foam skin removal, location in casting, plate-contact pressure and interface treatment unknown."
+          }
+        },
+        {
+          "name": "ambient_pressure_and_atmosphere",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Thermal-test ambient pressure and atmosphere unknown; other-test nitrogen not transferred."
+          }
+        },
+        {
+          "name": "density_normalization",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Source40kg/m³ normalization explicitly applies to compressive strength/modulus; no such correction inferred for selected thermal-conductivity cells."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "not_stated",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "uncertainty_note": "No numerical dispersion stated for selected thermal-conductivity cells; neighbouring water-absorption plus-minus values and other thermal/mechanical repeats are not transferred.",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "No unambiguous n for this selected optimized-foam heat-flow result; cup screening3, compression6 and TGA3ormore are separate.",
+      "source_statement": "The inspected thermal-conductivity method and selected Table10 cell do not identify a specific replicate count.",
+      "evidence": [
+        {
+          "source_id": "ivdre_2024_lpo_rigid_pur",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+          "locator": "PDF pp7–8 §2.7–2.8; p17 Table10",
+          "supports": [
+            "sample_count"
+          ]
+        }
+      ]
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source-reported foam heat-flow thermal-conductivity coefficient measured with FOX200 at average test temperature10°C, cold plate0°C and hot plate20°C, per author ISO8301:1991 claim. Literal Table10 value retained; not intrinsic neat-polymer conductivity, heat-transfer coefficient or density-normalized mechanical value.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "ivdre_2024_lpo_rigid_pur",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+          "locator": "PDF p7 §2.8; p17 Table10; p23 reference36",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [],
+    "source_id": "ivdre_2024_lpo_rigid_pur",
+    "source_document": {
+      "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+      "revision": "Official article-deploy PDF retrieved2026-11-04; latest revision/correction/retraction unknown",
+      "inspected_on": "2026-11-04",
+      "sha256": "70b6da773e757f43557ed69bb651ce14e8ff82c1f09d39de1f50671343239e0e",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Official23-pagePDF selectedpages1,6–8,16–18,22–23 visually checked; retainedJATS corroborated. Selected4 thermal-conductivity cells, preparation, plate geometry/temperatures, method, bibliography and author license. No raw data, plot digitization, fullstandard or latest-notice review.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Official23-pagePDF selectedpages1,6–8,16–18,22–23 visually checked; retainedJATS corroborated. Selected4 thermal-conductivity cells, preparation, plate geometry/temperatures, method, bibliography and author license. No raw data, plot digitization, fullstandard or latest-notice review.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "id": "refprop_ivdre2024_lpo2_rigid_pur_thermal_conductivity",
+    "material_state_id": "state_ivdre2024_lpo2_rigid_pur_heat_flow_plate",
+    "evidence": [
+      {
+        "source_id": "ivdre_2024_lpo_rigid_pur",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+        "locator": "PDF p17 Table10 thermal-conductivity row/LPO-2; p7 §2.8",
+        "supports": [
+          "reported_value",
+          "classification",
+          "condition",
+          "method"
+        ]
+      }
+    ],
+    "scope_note": "Selected study-specific optimized-foam plate reference only. Original mW/(m·K), precision, unknown summary/n and null numerical uncertainty retained. Apparatus average temperature does not identify an estimator. RH/equilibration, gas ageing, heat-flow/foam-rise direction, skin/location/contact and calibration unknown. No cup/compression/TGA n, neighbouring plus-minus value, four-day immersion or density normalization transferred; no engineering allowable, isotropy certification or engine input."
+  },
+  {
+    "id": "refprop_ivdre2024_spo2_rigid_pur_thermal_conductivity",
+    "version": "1.0.0",
+    "material_state_id": "state_ivdre2024_spo2_rigid_pur_heat_flow_plate",
+    "quantity": "thermal_conductivity",
+    "quantity_dimension": "power_per_length_temperature",
+    "source_property_label": "Thermal conductivity, mW/(m·K) (0…20 °C)",
+    "reported_value": {
+      "kind": "scalar",
+      "value_text": "19.07",
+      "number": "19.07",
+      "unit_code": "mW/(m*K)",
+      "unit_text": "mW/(m·K)"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "not_stated",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Selected optimized-foam Table10 thermal-conductivity cell, not a modeled target, intrinsic solid-polymer constant or density-normalized compression result. Statistical estimator is not specified; average test temperature is not a group-mean statement.",
+    "conditions": {
+      "temperature": {
+        "status": "reported",
+        "text": "Mean test temperature 10 °C; cold plate 0 °C and hot plate +20 °C",
+        "evidence": [
+          {
+            "source_id": "ivdre_2024_lpo_rigid_pur",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+            "locator": "PDF p7 §2.8; p17 Table10 thermal-conductivity row",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Apparatus temperatures as reported; not ambient temperature or a statistical aggregation claim."
+      },
+      "test_standard": {
+        "status": "reported",
+        "text": "ISO 8301:1991, source-reported",
+        "evidence": [
+          {
+            "source_id": "ivdre_2024_lpo_rigid_pur",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+            "locator": "PDF p7 §2.8; p23 reference36",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Standard text, calibration and compliance not independently verified."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "FOX 200 heat-flow apparatus; 200 × 200 × 30 mm foam specimens",
+        "evidence": [
+          {
+            "source_id": "ivdre_2024_lpo_rigid_pur",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+            "locator": "PDF p7 §2.8",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-reported method; exact calibration, reduction implementation and contact treatment unknown."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "RH, moisture, post-cure equilibration interval and gas ageing unknown. 24 h room-temperature curing is processing; four-day water immersion belongs to water absorption."
+      },
+      "loading_rate": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "No thermal scan/loading rate assigned; compression10%/min, DSC and TGA ramp rates are other tests and not transferred."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Heat-flow direction relative to foam rise unknown; no isotropy inference from geometric anisotropy or nominal plate geometry."
+      },
+      "additional_conditions": [
+        {
+          "name": "skin_location_and_contact",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Foam skin removal, location in casting, plate-contact pressure and interface treatment unknown."
+          }
+        },
+        {
+          "name": "ambient_pressure_and_atmosphere",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Thermal-test ambient pressure and atmosphere unknown; other-test nitrogen not transferred."
+          }
+        },
+        {
+          "name": "density_normalization",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Source40kg/m³ normalization explicitly applies to compressive strength/modulus; no such correction inferred for selected thermal-conductivity cells."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "not_stated",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "uncertainty_note": "No numerical dispersion stated for selected thermal-conductivity cells; neighbouring water-absorption plus-minus values and other thermal/mechanical repeats are not transferred.",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "No unambiguous n for this selected optimized-foam heat-flow result; cup screening3, compression6 and TGA3ormore are separate.",
+      "source_statement": "The inspected thermal-conductivity method and selected Table10 cell do not identify a specific replicate count.",
+      "evidence": [
+        {
+          "source_id": "ivdre_2024_lpo_rigid_pur",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+          "locator": "PDF pp7–8 §2.7–2.8; p17 Table10",
+          "supports": [
+            "sample_count"
+          ]
+        }
+      ]
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source-reported foam heat-flow thermal-conductivity coefficient measured with FOX200 at average test temperature10°C, cold plate0°C and hot plate20°C, per author ISO8301:1991 claim. Literal Table10 value retained; not intrinsic neat-polymer conductivity, heat-transfer coefficient or density-normalized mechanical value.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "ivdre_2024_lpo_rigid_pur",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+          "locator": "PDF p7 §2.8; p17 Table10; p23 reference36",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [],
+    "source_id": "ivdre_2024_lpo_rigid_pur",
+    "evidence": [
+      {
+        "source_id": "ivdre_2024_lpo_rigid_pur",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+        "locator": "PDF p17 Table10 thermal-conductivity row/SPO-2; p7 §2.8",
+        "supports": [
+          "reported_value",
+          "classification",
+          "condition",
+          "method"
+        ]
+      }
+    ],
+    "source_document": {
+      "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+      "revision": "Official article-deploy PDF retrieved2026-11-04; latest revision/correction/retraction unknown",
+      "inspected_on": "2026-11-04",
+      "sha256": "70b6da773e757f43557ed69bb651ce14e8ff82c1f09d39de1f50671343239e0e",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Official23-pagePDF selectedpages1,6–8,16–18,22–23 visually checked; retainedJATS corroborated. Selected4 thermal-conductivity cells, preparation, plate geometry/temperatures, method, bibliography and author license. No raw data, plot digitization, fullstandard or latest-notice review.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Selected study-specific optimized-foam plate reference only. Original mW/(m·K), precision, unknown summary/n and null numerical uncertainty retained. Apparatus average temperature does not identify an estimator. RH/equilibration, gas ageing, heat-flow/foam-rise direction, skin/location/contact and calibration unknown. No cup/compression/TGA n, neighbouring plus-minus value, four-day immersion or density normalization transferred; no engineering allowable, isotropy certification or engine input.",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Official23-pagePDF selectedpages1,6–8,16–18,22–23 visually checked; retainedJATS corroborated. Selected4 thermal-conductivity cells, preparation, plate geometry/temperatures, method, bibliography and author license. No raw data, plot digitization, fullstandard or latest-notice review.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    }
+  },
+  {
+    "version": "1.0.0",
+    "quantity": "thermal_conductivity",
+    "quantity_dimension": "power_per_length_temperature",
+    "source_property_label": "Thermal conductivity, mW/(m·K) (0…20 °C)",
+    "reported_value": {
+      "kind": "scalar",
+      "value_text": "19.34",
+      "number": "19.34",
+      "unit_code": "mW/(m*K)",
+      "unit_text": "mW/(m·K)"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "not_stated",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Selected optimized-foam Table10 thermal-conductivity cell, not a modeled target, intrinsic solid-polymer constant or density-normalized compression result. Statistical estimator is not specified; average test temperature is not a group-mean statement.",
+    "conditions": {
+      "temperature": {
+        "status": "reported",
+        "text": "Mean test temperature 10 °C; cold plate 0 °C and hot plate +20 °C",
+        "evidence": [
+          {
+            "source_id": "ivdre_2024_lpo_rigid_pur",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+            "locator": "PDF p7 §2.8; p17 Table10 thermal-conductivity row",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Apparatus temperatures as reported; not ambient temperature or a statistical aggregation claim."
+      },
+      "test_standard": {
+        "status": "reported",
+        "text": "ISO 8301:1991, source-reported",
+        "evidence": [
+          {
+            "source_id": "ivdre_2024_lpo_rigid_pur",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+            "locator": "PDF p7 §2.8; p23 reference36",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Standard text, calibration and compliance not independently verified."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "FOX 200 heat-flow apparatus; 200 × 200 × 30 mm foam specimens",
+        "evidence": [
+          {
+            "source_id": "ivdre_2024_lpo_rigid_pur",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+            "locator": "PDF p7 §2.8",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-reported method; exact calibration, reduction implementation and contact treatment unknown."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "RH, moisture, post-cure equilibration interval and gas ageing unknown. 24 h room-temperature curing is processing; four-day water immersion belongs to water absorption."
+      },
+      "loading_rate": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "No thermal scan/loading rate assigned; compression10%/min, DSC and TGA ramp rates are other tests and not transferred."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Heat-flow direction relative to foam rise unknown; no isotropy inference from geometric anisotropy or nominal plate geometry."
+      },
+      "additional_conditions": [
+        {
+          "name": "skin_location_and_contact",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Foam skin removal, location in casting, plate-contact pressure and interface treatment unknown."
+          }
+        },
+        {
+          "name": "ambient_pressure_and_atmosphere",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Thermal-test ambient pressure and atmosphere unknown; other-test nitrogen not transferred."
+          }
+        },
+        {
+          "name": "density_normalization",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Source40kg/m³ normalization explicitly applies to compressive strength/modulus; no such correction inferred for selected thermal-conductivity cells."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "not_stated",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "uncertainty_note": "No numerical dispersion stated for selected thermal-conductivity cells; neighbouring water-absorption plus-minus values and other thermal/mechanical repeats are not transferred.",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "No unambiguous n for this selected optimized-foam heat-flow result; cup screening3, compression6 and TGA3ormore are separate.",
+      "source_statement": "The inspected thermal-conductivity method and selected Table10 cell do not identify a specific replicate count.",
+      "evidence": [
+        {
+          "source_id": "ivdre_2024_lpo_rigid_pur",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+          "locator": "PDF pp7–8 §2.7–2.8; p17 Table10",
+          "supports": [
+            "sample_count"
+          ]
+        }
+      ]
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source-reported foam heat-flow thermal-conductivity coefficient measured with FOX200 at average test temperature10°C, cold plate0°C and hot plate20°C, per author ISO8301:1991 claim. Literal Table10 value retained; not intrinsic neat-polymer conductivity, heat-transfer coefficient or density-normalized mechanical value.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "ivdre_2024_lpo_rigid_pur",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+          "locator": "PDF p7 §2.8; p17 Table10; p23 reference36",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [],
+    "source_id": "ivdre_2024_lpo_rigid_pur",
+    "source_document": {
+      "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+      "revision": "Official article-deploy PDF retrieved2026-11-04; latest revision/correction/retraction unknown",
+      "inspected_on": "2026-11-04",
+      "sha256": "70b6da773e757f43557ed69bb651ce14e8ff82c1f09d39de1f50671343239e0e",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Official23-pagePDF selectedpages1,6–8,16–18,22–23 visually checked; retainedJATS corroborated. Selected4 thermal-conductivity cells, preparation, plate geometry/temperatures, method, bibliography and author license. No raw data, plot digitization, fullstandard or latest-notice review.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Official23-pagePDF selectedpages1,6–8,16–18,22–23 visually checked; retainedJATS corroborated. Selected4 thermal-conductivity cells, preparation, plate geometry/temperatures, method, bibliography and author license. No raw data, plot digitization, fullstandard or latest-notice review.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "id": "refprop_ivdre2024_spo3_rigid_pur_thermal_conductivity",
+    "material_state_id": "state_ivdre2024_spo3_rigid_pur_heat_flow_plate",
+    "evidence": [
+      {
+        "source_id": "ivdre_2024_lpo_rigid_pur",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+        "locator": "PDF p17 Table10 thermal-conductivity row/SPO-3; p7 §2.8",
+        "supports": [
+          "reported_value",
+          "classification",
+          "condition",
+          "method"
+        ]
+      }
+    ],
+    "scope_note": "Selected study-specific optimized-foam plate reference only. Original mW/(m·K), precision, unknown summary/n and null numerical uncertainty retained. Apparatus average temperature does not identify an estimator. RH/equilibration, gas ageing, heat-flow/foam-rise direction, skin/location/contact and calibration unknown. No cup/compression/TGA n, neighbouring plus-minus value, four-day immersion or density normalization transferred; no engineering allowable, isotropy certification or engine input."
+  }
+]

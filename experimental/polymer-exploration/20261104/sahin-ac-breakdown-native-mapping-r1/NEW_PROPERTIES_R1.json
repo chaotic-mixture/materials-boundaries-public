@@ -1,0 +1,1267 @@
+[
+  {
+    "id": "refprop_porima_pla_sahin_2026_ac_dielectric_breakdown_strength",
+    "version": "1.0.0",
+    "material_state_id": "state_porima_pla_sahin_2026_fdm_ac_breakdown_disc",
+    "quantity": "dielectric_breakdown_strength",
+    "quantity_dimension": "electric_field",
+    "source_property_label": "Breakdown strength (kV/mm)",
+    "reported_value": {
+      "kind": "scalar",
+      "value_text": "23.45",
+      "number": "23.45",
+      "unit_code": "kV/mm",
+      "unit_text": "kV/mm"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "not_stated",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Selected §3.2 prose centre; ASA explicitly described as average. The other four individual centres have no unambiguous estimator identification; generic later average-values wording is insufficient. No figure digitization or Weibull substitution.",
+    "conditions": {
+      "test_method": {
+        "status": "reported",
+        "text": "AC short-duration rapid-rise electrical breakdown test in mineral oil with opposing cylindrical electrodes",
+        "evidence": [
+          {
+            "source_id": "sahin_2026_polymer_mechanical_dielectric",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+            "locator": "PDF pp7–8, §2.4",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-reported field definition; exact reduction algorithm, AC frequency and RMS/peak convention unknown."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Electrical field direction relative to the printing/build layers unknown; opposing electrodes alone do not define that relation."
+      },
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Electrical-test/oil temperature unknown. The 23 °C all-tests statement belongs to tensile §2.3; printing ambient is a separate processing fact."
+      },
+      "test_standard": {
+        "status": "reported",
+        "text": "Method refers to IEC60243-1 §10 short-duration rapid-rise and IEC60243/IEC60060 series; applied edition and verified compliance unknown.",
+        "evidence": [
+          {
+            "source_id": "sahin_2026_polymer_mechanical_dielectric",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+            "locator": "PDF pp7–8, §2.4; pp18–20, references27–29,33–34",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "References33–34 identify IEC60060, while references27–29 identify BS EN60243 editions. Bibliography does not establish the applied edition, frequency or RMS/peak convention."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Post-print RH, duration, equilibration and oil immersion time unknown; pre-print filament drying is processing only."
+      },
+      "loading_rate": {
+        "status": "reported",
+        "text": "Applied AC voltage rise rate 500 V/s",
+        "evidence": [
+          {
+            "source_id": "sahin_2026_polymer_mechanical_dielectric",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+            "locator": "PDF p8, §2.4",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Voltage ramp, not a derived field ramp; no division by nominal thickness."
+      },
+      "additional_conditions": [
+        {
+          "name": "medium_and_container",
+          "fact": {
+            "status": "reported",
+            "text": "Nytro Lyra X mineral oil; 200 × 200 × 200 mm container",
+            "evidence": [
+              {
+                "source_id": "sahin_2026_polymer_mechanical_dielectric",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+                "locator": "PDF pp7–8, §2.4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Oil temperature, water content, degassing and immersion duration unknown."
+          }
+        },
+        {
+          "name": "electrodes",
+          "fact": {
+            "status": "reported",
+            "text": "Two identical cylindrical electrodes, diameter 25 mm, height 25 mm, corner radius 3 mm, with disc between them",
+            "evidence": [
+              {
+                "source_id": "sahin_2026_polymer_mechanical_dielectric",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+                "locator": "PDF pp7–8, §2.4 and Figures5–6",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Contact load and individual failure classification unknown."
+          }
+        },
+        {
+          "name": "AC_frequency_and_convention",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "AC frequency and RMS versus peak convention unknown; no standard-default inference."
+          }
+        },
+        {
+          "name": "geometry_and_field_reduction",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "State gives nominal 50 mm diameter and 1.2 mm thickness; individual actual thicknesses and field reduction algorithm unknown."
+          }
+        },
+        {
+          "name": "source_capacity",
+          "fact": {
+            "status": "reported",
+            "text": "AC source capacity 90 kV",
+            "evidence": [
+              {
+                "source_id": "sahin_2026_polymer_mechanical_dielectric",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+                "locator": "PDF p8, §2.4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Equipment capacity, not observed breakdown voltage or engineering allowable."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "not_stated",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "uncertainty_note": "Qualitative low standard deviations and boxplots supply no numerical SD, SE or CI. No borrowing of tensile SD/n or interpretation of Weibull 95% probability as a confidence level.",
+    "sample_count": {
+      "value": 3,
+      "relation": "exact",
+      "scope": "Three destructive electrical measurements for the PLA material group; not independent printing batches or laboratories.",
+      "source_statement": "Sections2.4 and3.2 report three electrical measurements per material.",
+      "evidence": [
+        {
+          "source_id": "sahin_2026_polymer_mechanical_dielectric",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+          "locator": "PDF pp8,11, §§2.4 and3.2",
+          "supports": [
+            "sample_count"
+          ]
+        }
+      ]
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source-reported AC short-duration rapid-rise electrical breakdown field in mineral oil using opposing cylindrical electrodes; field values transcribed literally from §3.2. Frequency, RMS/peak convention, actual individual thickness reduction and numerical failure-selection algorithm unknown.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "sahin_2026_polymer_mechanical_dielectric",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+          "locator": "PDF pp7–8,10–11, §§2.4 and3.2",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [
+      {
+        "description": "Method series citation points to references33–34 (IEC60060), while references27–29 contain BS EN60243 editions.",
+        "disposition": "Retain the method wording and bibliography context without selecting an applied edition or importing default test conditions.",
+        "evidence": [
+          {
+            "source_id": "sahin_2026_polymer_mechanical_dielectric",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+            "locator": "PDF pp7–8,18–20, §2.4 and references27–29,33–34",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      }
+    ],
+    "source_id": "sahin_2026_polymer_mechanical_dielectric",
+    "evidence": [
+      {
+        "source_id": "sahin_2026_polymer_mechanical_dielectric",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+        "locator": "PDF pp10–11, §3.2 prose",
+        "supports": [
+          "reported_value",
+          "classification",
+          "summary_statistic"
+        ]
+      },
+      {
+        "source_id": "sahin_2026_polymer_mechanical_dielectric",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+        "locator": "PDF pp7–8,11, §§2.4 and3.2",
+        "supports": [
+          "method",
+          "sample_count"
+        ]
+      }
+    ],
+    "source_document": {
+      "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+      "revision": "Official article-deploy PDF, 20 pages, retrieved 2026-11-04; latest revision/correction/retraction unknown",
+      "inspected_on": "2026-11-04",
+      "sha256": "8a3c3d83962a3c8269ed2e3d30bfe79710c645b81cda97c7e46cbb0fe22b832d",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Official 20-page PDF selected pages1,4–8,10–11,18–20 visually checked; retained JATS corroborated. Selected electrical prose values, method, nominal geometry, statistics and permissions; no plot digitization, raw-data reanalysis or latest-revision verification.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Selected study-specific electrical-disc result only. ASA explicitly mean; other four central estimator identities unknown; n=3 electrical measurements per group, not n=5 tensile specimens or three independent batches. No numerical dispersion supplied. Test/oil temperature, frequency, RMS/peak, humidity, conditioning, immersion time, actual thickness, field/build relation and applied standard edition unknown. No supplier Table1, figure digitization, Weibull quantiles, engineering allowables or engine input.",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Official 20-page PDF selected pages1,4–8,10–11,18–20 visually checked; retained JATS corroborated. Selected electrical prose values, method, nominal geometry, statistics and permissions; no plot digitization, raw-data reanalysis or latest-revision verification.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    }
+  },
+  {
+    "id": "refprop_porima_abs_sahin_2026_ac_dielectric_breakdown_strength",
+    "version": "1.0.0",
+    "material_state_id": "state_porima_abs_sahin_2026_fdm_ac_breakdown_disc",
+    "quantity": "dielectric_breakdown_strength",
+    "quantity_dimension": "electric_field",
+    "source_property_label": "Breakdown strength (kV/mm)",
+    "reported_value": {
+      "kind": "scalar",
+      "value_text": "30.28",
+      "number": "30.28",
+      "unit_code": "kV/mm",
+      "unit_text": "kV/mm"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "not_stated",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Selected §3.2 prose centre; ASA explicitly described as average. The other four individual centres have no unambiguous estimator identification; generic later average-values wording is insufficient. No figure digitization or Weibull substitution.",
+    "conditions": {
+      "test_method": {
+        "status": "reported",
+        "text": "AC short-duration rapid-rise electrical breakdown test in mineral oil with opposing cylindrical electrodes",
+        "evidence": [
+          {
+            "source_id": "sahin_2026_polymer_mechanical_dielectric",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+            "locator": "PDF pp7–8, §2.4",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-reported field definition; exact reduction algorithm, AC frequency and RMS/peak convention unknown."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Electrical field direction relative to the printing/build layers unknown; opposing electrodes alone do not define that relation."
+      },
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Electrical-test/oil temperature unknown. The 23 °C all-tests statement belongs to tensile §2.3; printing ambient is a separate processing fact."
+      },
+      "test_standard": {
+        "status": "reported",
+        "text": "Method refers to IEC60243-1 §10 short-duration rapid-rise and IEC60243/IEC60060 series; applied edition and verified compliance unknown.",
+        "evidence": [
+          {
+            "source_id": "sahin_2026_polymer_mechanical_dielectric",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+            "locator": "PDF pp7–8, §2.4; pp18–20, references27–29,33–34",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "References33–34 identify IEC60060, while references27–29 identify BS EN60243 editions. Bibliography does not establish the applied edition, frequency or RMS/peak convention."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Post-print RH, duration, equilibration and oil immersion time unknown; pre-print filament drying is processing only."
+      },
+      "loading_rate": {
+        "status": "reported",
+        "text": "Applied AC voltage rise rate 500 V/s",
+        "evidence": [
+          {
+            "source_id": "sahin_2026_polymer_mechanical_dielectric",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+            "locator": "PDF p8, §2.4",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Voltage ramp, not a derived field ramp; no division by nominal thickness."
+      },
+      "additional_conditions": [
+        {
+          "name": "medium_and_container",
+          "fact": {
+            "status": "reported",
+            "text": "Nytro Lyra X mineral oil; 200 × 200 × 200 mm container",
+            "evidence": [
+              {
+                "source_id": "sahin_2026_polymer_mechanical_dielectric",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+                "locator": "PDF pp7–8, §2.4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Oil temperature, water content, degassing and immersion duration unknown."
+          }
+        },
+        {
+          "name": "electrodes",
+          "fact": {
+            "status": "reported",
+            "text": "Two identical cylindrical electrodes, diameter 25 mm, height 25 mm, corner radius 3 mm, with disc between them",
+            "evidence": [
+              {
+                "source_id": "sahin_2026_polymer_mechanical_dielectric",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+                "locator": "PDF pp7–8, §2.4 and Figures5–6",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Contact load and individual failure classification unknown."
+          }
+        },
+        {
+          "name": "AC_frequency_and_convention",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "AC frequency and RMS versus peak convention unknown; no standard-default inference."
+          }
+        },
+        {
+          "name": "geometry_and_field_reduction",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "State gives nominal 50 mm diameter and 1.2 mm thickness; individual actual thicknesses and field reduction algorithm unknown."
+          }
+        },
+        {
+          "name": "source_capacity",
+          "fact": {
+            "status": "reported",
+            "text": "AC source capacity 90 kV",
+            "evidence": [
+              {
+                "source_id": "sahin_2026_polymer_mechanical_dielectric",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+                "locator": "PDF p8, §2.4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Equipment capacity, not observed breakdown voltage or engineering allowable."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "not_stated",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "uncertainty_note": "Qualitative low standard deviations and boxplots supply no numerical SD, SE or CI. No borrowing of tensile SD/n or interpretation of Weibull 95% probability as a confidence level.",
+    "sample_count": {
+      "value": 3,
+      "relation": "exact",
+      "scope": "Three destructive electrical measurements for the ABS material group; not independent printing batches or laboratories.",
+      "source_statement": "Sections2.4 and3.2 report three electrical measurements per material.",
+      "evidence": [
+        {
+          "source_id": "sahin_2026_polymer_mechanical_dielectric",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+          "locator": "PDF pp8,11, §§2.4 and3.2",
+          "supports": [
+            "sample_count"
+          ]
+        }
+      ]
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source-reported AC short-duration rapid-rise electrical breakdown field in mineral oil using opposing cylindrical electrodes; field values transcribed literally from §3.2. Frequency, RMS/peak convention, actual individual thickness reduction and numerical failure-selection algorithm unknown.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "sahin_2026_polymer_mechanical_dielectric",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+          "locator": "PDF pp7–8,10–11, §§2.4 and3.2",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [
+      {
+        "description": "Method series citation points to references33–34 (IEC60060), while references27–29 contain BS EN60243 editions.",
+        "disposition": "Retain the method wording and bibliography context without selecting an applied edition or importing default test conditions.",
+        "evidence": [
+          {
+            "source_id": "sahin_2026_polymer_mechanical_dielectric",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+            "locator": "PDF pp7–8,18–20, §2.4 and references27–29,33–34",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      }
+    ],
+    "source_id": "sahin_2026_polymer_mechanical_dielectric",
+    "evidence": [
+      {
+        "source_id": "sahin_2026_polymer_mechanical_dielectric",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+        "locator": "PDF pp10–11, §3.2 prose",
+        "supports": [
+          "reported_value",
+          "classification",
+          "summary_statistic"
+        ]
+      },
+      {
+        "source_id": "sahin_2026_polymer_mechanical_dielectric",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+        "locator": "PDF pp7–8,11, §§2.4 and3.2",
+        "supports": [
+          "method",
+          "sample_count"
+        ]
+      }
+    ],
+    "source_document": {
+      "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+      "revision": "Official article-deploy PDF, 20 pages, retrieved 2026-11-04; latest revision/correction/retraction unknown",
+      "inspected_on": "2026-11-04",
+      "sha256": "8a3c3d83962a3c8269ed2e3d30bfe79710c645b81cda97c7e46cbb0fe22b832d",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Official 20-page PDF selected pages1,4–8,10–11,18–20 visually checked; retained JATS corroborated. Selected electrical prose values, method, nominal geometry, statistics and permissions; no plot digitization, raw-data reanalysis or latest-revision verification.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Selected study-specific electrical-disc result only. ASA explicitly mean; other four central estimator identities unknown; n=3 electrical measurements per group, not n=5 tensile specimens or three independent batches. No numerical dispersion supplied. Test/oil temperature, frequency, RMS/peak, humidity, conditioning, immersion time, actual thickness, field/build relation and applied standard edition unknown. No supplier Table1, figure digitization, Weibull quantiles, engineering allowables or engine input.",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Official 20-page PDF selected pages1,4–8,10–11,18–20 visually checked; retained JATS corroborated. Selected electrical prose values, method, nominal geometry, statistics and permissions; no plot digitization, raw-data reanalysis or latest-revision verification.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    }
+  },
+  {
+    "id": "refprop_porima_petg_sahin_2026_ac_dielectric_breakdown_strength",
+    "version": "1.0.0",
+    "material_state_id": "state_porima_petg_sahin_2026_fdm_ac_breakdown_disc",
+    "quantity": "dielectric_breakdown_strength",
+    "quantity_dimension": "electric_field",
+    "source_property_label": "Breakdown strength (kV/mm)",
+    "reported_value": {
+      "kind": "scalar",
+      "value_text": "27.55",
+      "number": "27.55",
+      "unit_code": "kV/mm",
+      "unit_text": "kV/mm"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "not_stated",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Selected §3.2 prose centre; ASA explicitly described as average. The other four individual centres have no unambiguous estimator identification; generic later average-values wording is insufficient. No figure digitization or Weibull substitution.",
+    "conditions": {
+      "test_method": {
+        "status": "reported",
+        "text": "AC short-duration rapid-rise electrical breakdown test in mineral oil with opposing cylindrical electrodes",
+        "evidence": [
+          {
+            "source_id": "sahin_2026_polymer_mechanical_dielectric",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+            "locator": "PDF pp7–8, §2.4",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-reported field definition; exact reduction algorithm, AC frequency and RMS/peak convention unknown."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Electrical field direction relative to the printing/build layers unknown; opposing electrodes alone do not define that relation."
+      },
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Electrical-test/oil temperature unknown. The 23 °C all-tests statement belongs to tensile §2.3; printing ambient is a separate processing fact."
+      },
+      "test_standard": {
+        "status": "reported",
+        "text": "Method refers to IEC60243-1 §10 short-duration rapid-rise and IEC60243/IEC60060 series; applied edition and verified compliance unknown.",
+        "evidence": [
+          {
+            "source_id": "sahin_2026_polymer_mechanical_dielectric",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+            "locator": "PDF pp7–8, §2.4; pp18–20, references27–29,33–34",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "References33–34 identify IEC60060, while references27–29 identify BS EN60243 editions. Bibliography does not establish the applied edition, frequency or RMS/peak convention."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Post-print RH, duration, equilibration and oil immersion time unknown; pre-print filament drying is processing only."
+      },
+      "loading_rate": {
+        "status": "reported",
+        "text": "Applied AC voltage rise rate 500 V/s",
+        "evidence": [
+          {
+            "source_id": "sahin_2026_polymer_mechanical_dielectric",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+            "locator": "PDF p8, §2.4",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Voltage ramp, not a derived field ramp; no division by nominal thickness."
+      },
+      "additional_conditions": [
+        {
+          "name": "medium_and_container",
+          "fact": {
+            "status": "reported",
+            "text": "Nytro Lyra X mineral oil; 200 × 200 × 200 mm container",
+            "evidence": [
+              {
+                "source_id": "sahin_2026_polymer_mechanical_dielectric",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+                "locator": "PDF pp7–8, §2.4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Oil temperature, water content, degassing and immersion duration unknown."
+          }
+        },
+        {
+          "name": "electrodes",
+          "fact": {
+            "status": "reported",
+            "text": "Two identical cylindrical electrodes, diameter 25 mm, height 25 mm, corner radius 3 mm, with disc between them",
+            "evidence": [
+              {
+                "source_id": "sahin_2026_polymer_mechanical_dielectric",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+                "locator": "PDF pp7–8, §2.4 and Figures5–6",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Contact load and individual failure classification unknown."
+          }
+        },
+        {
+          "name": "AC_frequency_and_convention",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "AC frequency and RMS versus peak convention unknown; no standard-default inference."
+          }
+        },
+        {
+          "name": "geometry_and_field_reduction",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "State gives nominal 50 mm diameter and 1.2 mm thickness; individual actual thicknesses and field reduction algorithm unknown."
+          }
+        },
+        {
+          "name": "source_capacity",
+          "fact": {
+            "status": "reported",
+            "text": "AC source capacity 90 kV",
+            "evidence": [
+              {
+                "source_id": "sahin_2026_polymer_mechanical_dielectric",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+                "locator": "PDF p8, §2.4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Equipment capacity, not observed breakdown voltage or engineering allowable."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "not_stated",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "uncertainty_note": "Qualitative low standard deviations and boxplots supply no numerical SD, SE or CI. No borrowing of tensile SD/n or interpretation of Weibull 95% probability as a confidence level.",
+    "sample_count": {
+      "value": 3,
+      "relation": "exact",
+      "scope": "Three destructive electrical measurements for the PETG material group; not independent printing batches or laboratories.",
+      "source_statement": "Sections2.4 and3.2 report three electrical measurements per material.",
+      "evidence": [
+        {
+          "source_id": "sahin_2026_polymer_mechanical_dielectric",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+          "locator": "PDF pp8,11, §§2.4 and3.2",
+          "supports": [
+            "sample_count"
+          ]
+        }
+      ]
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source-reported AC short-duration rapid-rise electrical breakdown field in mineral oil using opposing cylindrical electrodes; field values transcribed literally from §3.2. Frequency, RMS/peak convention, actual individual thickness reduction and numerical failure-selection algorithm unknown.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "sahin_2026_polymer_mechanical_dielectric",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+          "locator": "PDF pp7–8,10–11, §§2.4 and3.2",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [
+      {
+        "description": "Method series citation points to references33–34 (IEC60060), while references27–29 contain BS EN60243 editions.",
+        "disposition": "Retain the method wording and bibliography context without selecting an applied edition or importing default test conditions.",
+        "evidence": [
+          {
+            "source_id": "sahin_2026_polymer_mechanical_dielectric",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+            "locator": "PDF pp7–8,18–20, §2.4 and references27–29,33–34",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      }
+    ],
+    "source_id": "sahin_2026_polymer_mechanical_dielectric",
+    "evidence": [
+      {
+        "source_id": "sahin_2026_polymer_mechanical_dielectric",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+        "locator": "PDF pp10–11, §3.2 prose",
+        "supports": [
+          "reported_value",
+          "classification",
+          "summary_statistic"
+        ]
+      },
+      {
+        "source_id": "sahin_2026_polymer_mechanical_dielectric",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+        "locator": "PDF pp7–8,11, §§2.4 and3.2",
+        "supports": [
+          "method",
+          "sample_count"
+        ]
+      }
+    ],
+    "source_document": {
+      "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+      "revision": "Official article-deploy PDF, 20 pages, retrieved 2026-11-04; latest revision/correction/retraction unknown",
+      "inspected_on": "2026-11-04",
+      "sha256": "8a3c3d83962a3c8269ed2e3d30bfe79710c645b81cda97c7e46cbb0fe22b832d",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Official 20-page PDF selected pages1,4–8,10–11,18–20 visually checked; retained JATS corroborated. Selected electrical prose values, method, nominal geometry, statistics and permissions; no plot digitization, raw-data reanalysis or latest-revision verification.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Selected study-specific electrical-disc result only. ASA explicitly mean; other four central estimator identities unknown; n=3 electrical measurements per group, not n=5 tensile specimens or three independent batches. No numerical dispersion supplied. Test/oil temperature, frequency, RMS/peak, humidity, conditioning, immersion time, actual thickness, field/build relation and applied standard edition unknown. No supplier Table1, figure digitization, Weibull quantiles, engineering allowables or engine input.",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Official 20-page PDF selected pages1,4–8,10–11,18–20 visually checked; retained JATS corroborated. Selected electrical prose values, method, nominal geometry, statistics and permissions; no plot digitization, raw-data reanalysis or latest-revision verification.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    }
+  },
+  {
+    "id": "refprop_porima_asa_sahin_2026_ac_dielectric_breakdown_strength",
+    "version": "1.0.0",
+    "material_state_id": "state_porima_asa_sahin_2026_fdm_ac_breakdown_disc",
+    "quantity": "dielectric_breakdown_strength",
+    "quantity_dimension": "electric_field",
+    "source_property_label": "Breakdown strength (kV/mm)",
+    "reported_value": {
+      "kind": "scalar",
+      "value_text": "20.35",
+      "number": "20.35",
+      "unit_code": "kV/mm",
+      "unit_text": "kV/mm"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Selected §3.2 prose centre; ASA explicitly described as average. The other four individual centres have no unambiguous estimator identification; generic later average-values wording is insufficient. No figure digitization or Weibull substitution.",
+    "conditions": {
+      "test_method": {
+        "status": "reported",
+        "text": "AC short-duration rapid-rise electrical breakdown test in mineral oil with opposing cylindrical electrodes",
+        "evidence": [
+          {
+            "source_id": "sahin_2026_polymer_mechanical_dielectric",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+            "locator": "PDF pp7–8, §2.4",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-reported field definition; exact reduction algorithm, AC frequency and RMS/peak convention unknown."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Electrical field direction relative to the printing/build layers unknown; opposing electrodes alone do not define that relation."
+      },
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Electrical-test/oil temperature unknown. The 23 °C all-tests statement belongs to tensile §2.3; printing ambient is a separate processing fact."
+      },
+      "test_standard": {
+        "status": "reported",
+        "text": "Method refers to IEC60243-1 §10 short-duration rapid-rise and IEC60243/IEC60060 series; applied edition and verified compliance unknown.",
+        "evidence": [
+          {
+            "source_id": "sahin_2026_polymer_mechanical_dielectric",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+            "locator": "PDF pp7–8, §2.4; pp18–20, references27–29,33–34",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "References33–34 identify IEC60060, while references27–29 identify BS EN60243 editions. Bibliography does not establish the applied edition, frequency or RMS/peak convention."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Post-print RH, duration, equilibration and oil immersion time unknown; pre-print filament drying is processing only."
+      },
+      "loading_rate": {
+        "status": "reported",
+        "text": "Applied AC voltage rise rate 500 V/s",
+        "evidence": [
+          {
+            "source_id": "sahin_2026_polymer_mechanical_dielectric",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+            "locator": "PDF p8, §2.4",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Voltage ramp, not a derived field ramp; no division by nominal thickness."
+      },
+      "additional_conditions": [
+        {
+          "name": "medium_and_container",
+          "fact": {
+            "status": "reported",
+            "text": "Nytro Lyra X mineral oil; 200 × 200 × 200 mm container",
+            "evidence": [
+              {
+                "source_id": "sahin_2026_polymer_mechanical_dielectric",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+                "locator": "PDF pp7–8, §2.4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Oil temperature, water content, degassing and immersion duration unknown."
+          }
+        },
+        {
+          "name": "electrodes",
+          "fact": {
+            "status": "reported",
+            "text": "Two identical cylindrical electrodes, diameter 25 mm, height 25 mm, corner radius 3 mm, with disc between them",
+            "evidence": [
+              {
+                "source_id": "sahin_2026_polymer_mechanical_dielectric",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+                "locator": "PDF pp7–8, §2.4 and Figures5–6",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Contact load and individual failure classification unknown."
+          }
+        },
+        {
+          "name": "AC_frequency_and_convention",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "AC frequency and RMS versus peak convention unknown; no standard-default inference."
+          }
+        },
+        {
+          "name": "geometry_and_field_reduction",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "State gives nominal 50 mm diameter and 1.2 mm thickness; individual actual thicknesses and field reduction algorithm unknown."
+          }
+        },
+        {
+          "name": "source_capacity",
+          "fact": {
+            "status": "reported",
+            "text": "AC source capacity 90 kV",
+            "evidence": [
+              {
+                "source_id": "sahin_2026_polymer_mechanical_dielectric",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+                "locator": "PDF p8, §2.4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Equipment capacity, not observed breakdown voltage or engineering allowable."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "reported_mean",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "uncertainty_note": "Qualitative low standard deviations and boxplots supply no numerical SD, SE or CI. No borrowing of tensile SD/n or interpretation of Weibull 95% probability as a confidence level.",
+    "sample_count": {
+      "value": 3,
+      "relation": "exact",
+      "scope": "Three destructive electrical measurements for the ASA material group; not independent printing batches or laboratories.",
+      "source_statement": "Sections2.4 and3.2 report three electrical measurements per material.",
+      "evidence": [
+        {
+          "source_id": "sahin_2026_polymer_mechanical_dielectric",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+          "locator": "PDF pp8,11, §§2.4 and3.2",
+          "supports": [
+            "sample_count"
+          ]
+        }
+      ]
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source-reported AC short-duration rapid-rise electrical breakdown field in mineral oil using opposing cylindrical electrodes; field values transcribed literally from §3.2. Frequency, RMS/peak convention, actual individual thickness reduction and numerical failure-selection algorithm unknown.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "sahin_2026_polymer_mechanical_dielectric",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+          "locator": "PDF pp7–8,10–11, §§2.4 and3.2",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [
+      {
+        "description": "Method series citation points to references33–34 (IEC60060), while references27–29 contain BS EN60243 editions.",
+        "disposition": "Retain the method wording and bibliography context without selecting an applied edition or importing default test conditions.",
+        "evidence": [
+          {
+            "source_id": "sahin_2026_polymer_mechanical_dielectric",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+            "locator": "PDF pp7–8,18–20, §2.4 and references27–29,33–34",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      }
+    ],
+    "source_id": "sahin_2026_polymer_mechanical_dielectric",
+    "evidence": [
+      {
+        "source_id": "sahin_2026_polymer_mechanical_dielectric",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+        "locator": "PDF pp10–11, §3.2 prose",
+        "supports": [
+          "reported_value",
+          "classification",
+          "summary_statistic"
+        ]
+      },
+      {
+        "source_id": "sahin_2026_polymer_mechanical_dielectric",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+        "locator": "PDF pp7–8,11, §§2.4 and3.2",
+        "supports": [
+          "method",
+          "sample_count"
+        ]
+      }
+    ],
+    "source_document": {
+      "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+      "revision": "Official article-deploy PDF, 20 pages, retrieved 2026-11-04; latest revision/correction/retraction unknown",
+      "inspected_on": "2026-11-04",
+      "sha256": "8a3c3d83962a3c8269ed2e3d30bfe79710c645b81cda97c7e46cbb0fe22b832d",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Official 20-page PDF selected pages1,4–8,10–11,18–20 visually checked; retained JATS corroborated. Selected electrical prose values, method, nominal geometry, statistics and permissions; no plot digitization, raw-data reanalysis or latest-revision verification.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Selected study-specific electrical-disc result only. ASA explicitly mean; other four central estimator identities unknown; n=3 electrical measurements per group, not n=5 tensile specimens or three independent batches. No numerical dispersion supplied. Test/oil temperature, frequency, RMS/peak, humidity, conditioning, immersion time, actual thickness, field/build relation and applied standard edition unknown. No supplier Table1, figure digitization, Weibull quantiles, engineering allowables or engine input.",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Official 20-page PDF selected pages1,4–8,10–11,18–20 visually checked; retained JATS corroborated. Selected electrical prose values, method, nominal geometry, statistics and permissions; no plot digitization, raw-data reanalysis or latest-revision verification.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    }
+  },
+  {
+    "id": "refprop_porima_pc_abs_sahin_2026_ac_dielectric_breakdown_strength",
+    "version": "1.0.0",
+    "material_state_id": "state_porima_pc_abs_sahin_2026_fdm_ac_breakdown_disc",
+    "quantity": "dielectric_breakdown_strength",
+    "quantity_dimension": "electric_field",
+    "source_property_label": "Breakdown strength (kV/mm)",
+    "reported_value": {
+      "kind": "scalar",
+      "value_text": "30.14",
+      "number": "30.14",
+      "unit_code": "kV/mm",
+      "unit_text": "kV/mm"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "not_stated",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Selected §3.2 prose centre; ASA explicitly described as average. The other four individual centres have no unambiguous estimator identification; generic later average-values wording is insufficient. No figure digitization or Weibull substitution.",
+    "conditions": {
+      "test_method": {
+        "status": "reported",
+        "text": "AC short-duration rapid-rise electrical breakdown test in mineral oil with opposing cylindrical electrodes",
+        "evidence": [
+          {
+            "source_id": "sahin_2026_polymer_mechanical_dielectric",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+            "locator": "PDF pp7–8, §2.4",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-reported field definition; exact reduction algorithm, AC frequency and RMS/peak convention unknown."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Electrical field direction relative to the printing/build layers unknown; opposing electrodes alone do not define that relation."
+      },
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Electrical-test/oil temperature unknown. The 23 °C all-tests statement belongs to tensile §2.3; printing ambient is a separate processing fact."
+      },
+      "test_standard": {
+        "status": "reported",
+        "text": "Method refers to IEC60243-1 §10 short-duration rapid-rise and IEC60243/IEC60060 series; applied edition and verified compliance unknown.",
+        "evidence": [
+          {
+            "source_id": "sahin_2026_polymer_mechanical_dielectric",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+            "locator": "PDF pp7–8, §2.4; pp18–20, references27–29,33–34",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "References33–34 identify IEC60060, while references27–29 identify BS EN60243 editions. Bibliography does not establish the applied edition, frequency or RMS/peak convention."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Post-print RH, duration, equilibration and oil immersion time unknown; pre-print filament drying is processing only."
+      },
+      "loading_rate": {
+        "status": "reported",
+        "text": "Applied AC voltage rise rate 500 V/s",
+        "evidence": [
+          {
+            "source_id": "sahin_2026_polymer_mechanical_dielectric",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+            "locator": "PDF p8, §2.4",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Voltage ramp, not a derived field ramp; no division by nominal thickness."
+      },
+      "additional_conditions": [
+        {
+          "name": "medium_and_container",
+          "fact": {
+            "status": "reported",
+            "text": "Nytro Lyra X mineral oil; 200 × 200 × 200 mm container",
+            "evidence": [
+              {
+                "source_id": "sahin_2026_polymer_mechanical_dielectric",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+                "locator": "PDF pp7–8, §2.4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Oil temperature, water content, degassing and immersion duration unknown."
+          }
+        },
+        {
+          "name": "electrodes",
+          "fact": {
+            "status": "reported",
+            "text": "Two identical cylindrical electrodes, diameter 25 mm, height 25 mm, corner radius 3 mm, with disc between them",
+            "evidence": [
+              {
+                "source_id": "sahin_2026_polymer_mechanical_dielectric",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+                "locator": "PDF pp7–8, §2.4 and Figures5–6",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Contact load and individual failure classification unknown."
+          }
+        },
+        {
+          "name": "AC_frequency_and_convention",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "AC frequency and RMS versus peak convention unknown; no standard-default inference."
+          }
+        },
+        {
+          "name": "geometry_and_field_reduction",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "State gives nominal 50 mm diameter and 1.2 mm thickness; individual actual thicknesses and field reduction algorithm unknown."
+          }
+        },
+        {
+          "name": "source_capacity",
+          "fact": {
+            "status": "reported",
+            "text": "AC source capacity 90 kV",
+            "evidence": [
+              {
+                "source_id": "sahin_2026_polymer_mechanical_dielectric",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+                "locator": "PDF p8, §2.4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Equipment capacity, not observed breakdown voltage or engineering allowable."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "not_stated",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "uncertainty_note": "Qualitative low standard deviations and boxplots supply no numerical SD, SE or CI. No borrowing of tensile SD/n or interpretation of Weibull 95% probability as a confidence level.",
+    "sample_count": {
+      "value": 3,
+      "relation": "exact",
+      "scope": "Three destructive electrical measurements for the PC/ABS material group; not independent printing batches or laboratories.",
+      "source_statement": "Sections2.4 and3.2 report three electrical measurements per material.",
+      "evidence": [
+        {
+          "source_id": "sahin_2026_polymer_mechanical_dielectric",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+          "locator": "PDF pp8,11, §§2.4 and3.2",
+          "supports": [
+            "sample_count"
+          ]
+        }
+      ]
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source-reported AC short-duration rapid-rise electrical breakdown field in mineral oil using opposing cylindrical electrodes; field values transcribed literally from §3.2. Frequency, RMS/peak convention, actual individual thickness reduction and numerical failure-selection algorithm unknown.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "sahin_2026_polymer_mechanical_dielectric",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+          "locator": "PDF pp7–8,10–11, §§2.4 and3.2",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [
+      {
+        "description": "Method series citation points to references33–34 (IEC60060), while references27–29 contain BS EN60243 editions.",
+        "disposition": "Retain the method wording and bibliography context without selecting an applied edition or importing default test conditions.",
+        "evidence": [
+          {
+            "source_id": "sahin_2026_polymer_mechanical_dielectric",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+            "locator": "PDF pp7–8,18–20, §2.4 and references27–29,33–34",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      }
+    ],
+    "source_id": "sahin_2026_polymer_mechanical_dielectric",
+    "evidence": [
+      {
+        "source_id": "sahin_2026_polymer_mechanical_dielectric",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+        "locator": "PDF pp10–11, §3.2 prose",
+        "supports": [
+          "reported_value",
+          "classification",
+          "summary_statistic"
+        ]
+      },
+      {
+        "source_id": "sahin_2026_polymer_mechanical_dielectric",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+        "locator": "PDF pp7–8,11, §§2.4 and3.2",
+        "supports": [
+          "method",
+          "sample_count"
+        ]
+      }
+    ],
+    "source_document": {
+      "url": "https://mdpi-res.com/d_attachment/polymers/polymers-18-01345/article_deploy/polymers-18-01345.pdf",
+      "revision": "Official article-deploy PDF, 20 pages, retrieved 2026-11-04; latest revision/correction/retraction unknown",
+      "inspected_on": "2026-11-04",
+      "sha256": "8a3c3d83962a3c8269ed2e3d30bfe79710c645b81cda97c7e46cbb0fe22b832d",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Official 20-page PDF selected pages1,4–8,10–11,18–20 visually checked; retained JATS corroborated. Selected electrical prose values, method, nominal geometry, statistics and permissions; no plot digitization, raw-data reanalysis or latest-revision verification.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Selected study-specific electrical-disc result only. ASA explicitly mean; other four central estimator identities unknown; n=3 electrical measurements per group, not n=5 tensile specimens or three independent batches. No numerical dispersion supplied. Test/oil temperature, frequency, RMS/peak, humidity, conditioning, immersion time, actual thickness, field/build relation and applied standard edition unknown. No supplier Table1, figure digitization, Weibull quantiles, engineering allowables or engine input.",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Official 20-page PDF selected pages1,4–8,10–11,18–20 visually checked; retained JATS corroborated. Selected electrical prose values, method, nominal geometry, statistics and permissions; no plot digitization, raw-data reanalysis or latest-revision verification.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    }
+  }
+]

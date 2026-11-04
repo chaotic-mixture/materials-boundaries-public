@@ -1,5 +1,9 @@
 # Materials Boundaries — source-qualified materials database
 
+## 当前本地进展：r33–r35（尚未统一推送）
+
+以[最新本地接手入口](experimental/polymer-exploration/20261104/local-progress-r33-r35/README.zh.md)的当前数量、来源/条件边界和精确验收回执为准。旧安装和CI不覆盖本轮；未知项不补默认值。本轮不合并main、不稳定发布、不部署。以下各历史检查点仅代表各自冻结范围。
+
 
 ## r29–r32聚合物累计交付核验（2026-11-04）
 

@@ -1,0 +1,974 @@
+--- a/materials_boundaries/material_references.py
++++ b/materials_boundaries/material_references.py
+@@ -21,6 +21,7 @@
+ LANGUAGES = ("en", "zh", "ja", "de")
+ CATEGORIES = ("metal", "inorganic", "polymer", "composite", "natural")
+ QUANTITY_DIMENSIONS = {
++    "thermal_conductivity": "power_per_length_temperature",
+     "dielectric_breakdown_strength": "electric_field",
+     "mass_density": "mass_per_volume",
+     "basic_wood_density": "mass_per_volume",
+@@ -46,6 +47,7 @@
+     "slump_flow_spread": "length",
+ }
+ UNIT_DIMENSIONS = {
++    "W/(m*K)": "power_per_length_temperature", "mW/(m*K)": "power_per_length_temperature",
+     "V/m": "electric_field", "kV/mm": "electric_field",
+     "degC": "temperature", "K": "temperature",
+     "mm": "length",
+@@ -58,6 +60,7 @@
+     "percent_elongation": "dimensionless",
+     "shore_a_scale": "dimensionless",
+ }
++THERMAL_CONDUCTIVITY_UNITS = ("W/(m*K)", "mW/(m*K)")
+ ELECTRIC_FIELD_UNITS = ("V/m", "kV/mm")
+ PERCENT_ELONGATION_QUANTITIES = (
+     "tensile_elongation_at_break", "tensile_elongation_at_strength",
+@@ -219,6 +222,9 @@
+     definitions["elongation_reported_value"] = deepcopy(definitions["reported_value"])
+     definitions["shore_a_reported_value"] = deepcopy(definitions["reported_value"])
+     definitions["temperature_reported_value"] = deepcopy(definitions["reported_value"])
++    definitions["thermal_conductivity_reported_value"] = deepcopy(definitions["reported_value"])
++    for branch in definitions["thermal_conductivity_reported_value"]["oneOf"]:
++        branch["properties"]["unit_code"] = _enum(THERMAL_CONDUCTIVITY_UNITS)
+     definitions["electric_field_reported_value"] = deepcopy(definitions["reported_value"])
+     for branch in definitions["electric_field_reported_value"]["oneOf"]:
+         branch["properties"]["unit_code"] = _enum(ELECTRIC_FIELD_UNITS)
+@@ -233,7 +239,7 @@
+     for branch in definitions["legacy_reported_value"]["oneOf"]:
+         branch["properties"]["unit_code"] = _enum(
+             code for code in UNIT_DIMENSIONS
+-            if code not in {"percent_elongation", "shore_a_scale", *TEMPERATURE_UNITS, *ELECTRIC_FIELD_UNITS})
++            if code not in {"percent_elongation", "shore_a_scale", *TEMPERATURE_UNITS, *ELECTRIC_FIELD_UNITS, *THERMAL_CONDUCTIVITY_UNITS})
+     for branch in definitions["elongation_reported_value"]["oneOf"]:
+         branch["properties"]["unit_code"] = {"const": "percent_elongation"}
+     # Closed source-reported uncertainty variants. An amplitude alone never
+@@ -320,7 +326,7 @@
+         "id": _id("refprop"), "version": _record_revision(), "material_state_id": _id("state"),
+         "quantity": _enum(QUANTITY_DIMENSIONS),
+         "quantity_dimension": _enum(sorted({dimension for quantity, dimension in QUANTITY_DIMENSIONS.items()
+-                                             if quantity != "dielectric_breakdown_strength"})),
++                                             if quantity not in {"dielectric_breakdown_strength", "thermal_conductivity"}})),
+         "source_property_label": TEXT, "reported_value": _ref("legacy_reported_value"),
+         "evidence_kind": _enum(EVIDENCE_KINDS), "reporting_basis": _enum(REPORTING_BASES),
+         "determination_basis": _enum(("source_reports_measurement", "source_reports_calculation", "source_reports_compiled_measurements", "not_stated", "mixed_or_unclear")),
+@@ -371,13 +377,18 @@
+     electric["properties"]["quantity_dimension"] = {"const": "electric_field"}
+     electric["properties"]["reported_value"] = _ref("electric_field_reported_value")
+     del electric["properties"]["specified_elongation"]
++    thermal = deepcopy(definitions["property"])
++    thermal["properties"]["quantity"] = {"const": "thermal_conductivity"}
++    thermal["properties"]["quantity_dimension"] = {"const": "power_per_length_temperature"}
++    thermal["properties"]["reported_value"] = _ref("thermal_conductivity_reported_value")
++    del thermal["properties"]["specified_elongation"]
+     other = definitions["property"]
+     other["properties"]["quantity"] = _enum(
+         q for q in QUANTITY_DIMENSIONS
+-        if q not in {"dielectric_breakdown_strength", "tensile_stress_at_specified_elongation", "shore_a_hardness", *TEMPERATURE_QUANTITIES}
++        if q not in {"thermal_conductivity", "dielectric_breakdown_strength", "tensile_stress_at_specified_elongation", "shore_a_hardness", *TEMPERATURE_QUANTITIES}
+         and q not in PERCENT_ELONGATION_QUANTITIES)
+     del other["properties"]["specified_elongation"]
+-    definitions["property"] = {"oneOf": [other, stress, elongation, shore, temperature, electric]}
++    definitions["property"] = {"oneOf": [other, stress, elongation, shore, temperature, electric, thermal]}
+     return {
+         "$schema": "https://json-schema.org/draft/2020-12/schema",
+         "$id": "urn:materials-boundaries:schema:reference_properties:1.0.0",
+@@ -636,6 +647,8 @@
+ # Only spelling/typography normalization; these mappings never change a unit or
+ # infer a quantity. Unknown spellings need deliberate capability review.
+ _UNIT_SPELLINGS = {
++    "W/(m*K)": {"W/(m*K)", "W/(m·K)"},
++    "mW/(m*K)": {"mW/(m*K)", "mW/(m·K)"},
+     "V/m": {"V/m"}, "kV/mm": {"kV/mm"},
+     "degC": {"°C", "° C", "degC"}, "K": {"K"},
+     "mm": {"mm"},
+--- a/materials_boundaries/material_presentation.py
++++ b/materials_boundaries/material_presentation.py
+@@ -20,6 +20,7 @@
+ REQUIRED_LABELS |= frozenset(('code_glass_transition_temperature',))
+ REQUIRED_LABELS |= frozenset(('code_melting_peak_temperature',))
+ REQUIRED_LABELS |= frozenset(('code_dielectric_breakdown_strength',))
++REQUIRED_LABELS |= frozenset(('code_thermal_conductivity',))
+ REQUIRED_LABELS |= frozenset(('coverage', 'coverage_notice', 'coverage_target', 'coverage_admitted', 'coverage_remaining'))
+ REQUIRED_LABELS |= frozenset(('code_natural', 'code_basic_wood_density', 'code_source_reported_empirical_conversion', 'code_oven_dry_mass_over_fresh_or_water_saturated_volume', 'derivation', 'canonical_taxon', 'derived_notice'))
+ REQUIRED_LABELS |= frozenset((
+--- a/materials_boundaries/data/material_locales.json
++++ b/materials_boundaries/data/material_locales.json
+@@ -171,7 +171,8 @@
+       "code_izod_impact_strength": "Izod impact strength",
+       "code_glass_transition_temperature": "Glass transition temperature",
+       "code_melting_peak_temperature": "Melting peak temperature",
+-      "code_dielectric_breakdown_strength": "Dielectric breakdown strength"
++      "code_dielectric_breakdown_strength": "Dielectric breakdown strength",
++      "code_thermal_conductivity": "Thermal conductivity"
+     },
+     "zh": {
+       "materials": "材料参考目录",
+@@ -341,7 +342,8 @@
+       "code_izod_impact_strength": "Izod悬臂梁冲击强度",
+       "code_glass_transition_temperature": "玻璃化转变温度",
+       "code_melting_peak_temperature": "熔融峰温度",
+-      "code_dielectric_breakdown_strength": "介电击穿强度"
++      "code_dielectric_breakdown_strength": "介电击穿强度",
++      "code_thermal_conductivity": "热导率"
+     },
+     "ja": {
+       "materials": "材料参照カタログ",
+@@ -511,7 +513,8 @@
+       "code_izod_impact_strength": "アイゾット衝撃強さ",
+       "code_glass_transition_temperature": "ガラス転移温度",
+       "code_melting_peak_temperature": "融解ピーク温度",
+-      "code_dielectric_breakdown_strength": "絶縁破壊強度"
++      "code_dielectric_breakdown_strength": "絶縁破壊強度",
++      "code_thermal_conductivity": "熱伝導率"
+     },
+     "de": {
+       "materials": "Materialreferenzkatalog",
+@@ -681,7 +684,8 @@
+       "code_izod_impact_strength": "Izod-Schlagzähigkeit",
+       "code_glass_transition_temperature": "Glasübergangstemperatur",
+       "code_melting_peak_temperature": "Schmelzpeaktemperatur",
+-      "code_dielectric_breakdown_strength": "Elektrische Durchschlagsfestigkeit"
++      "code_dielectric_breakdown_strength": "Elektrische Durchschlagsfestigkeit",
++      "code_thermal_conductivity": "Wärmeleitfähigkeit"
+     }
+   }
+ }
+--- a/schemas/reference_properties.schema.json
++++ b/schemas/reference_properties.schema.json
+@@ -1060,6 +1060,8 @@
+             "unit_code": {
+               "type": "string",
+               "enum": [
++                "W/(m*K)",
++                "mW/(m*K)",
+                 "V/m",
+                 "kV/mm",
+                 "degC",
+@@ -1116,6 +1118,8 @@
+             "unit_code": {
+               "type": "string",
+               "enum": [
++                "W/(m*K)",
++                "mW/(m*K)",
+                 "V/m",
+                 "kV/mm",
+                 "degC",
+@@ -1182,6 +1186,8 @@
+             "unit_code": {
+               "type": "string",
+               "enum": [
++                "W/(m*K)",
++                "mW/(m*K)",
+                 "V/m",
+                 "kV/mm",
+                 "degC",
+@@ -1737,6 +1743,144 @@
+               "type": "string",
+               "maxLength": 50,
+               "pattern": "^-?(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
++            }
++          },
++          "required": [
++            "kind",
++            "value_text",
++            "unit_text",
++            "unit_code",
++            "operator",
++            "number"
++          ]
++        }
++      ]
++    },
++    "thermal_conductivity_reported_value": {
++      "oneOf": [
++        {
++          "type": "object",
++          "additionalProperties": false,
++          "properties": {
++            "kind": {
++              "const": "scalar"
++            },
++            "value_text": {
++              "type": "string",
++              "minLength": 1,
++              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
++            },
++            "unit_text": {
++              "type": "string",
++              "minLength": 1,
++              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
++            },
++            "unit_code": {
++              "type": "string",
++              "enum": [
++                "W/(m*K)",
++                "mW/(m*K)"
++              ]
++            },
++            "number": {
++              "type": "string",
++              "maxLength": 49,
++              "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
++            }
++          },
++          "required": [
++            "kind",
++            "value_text",
++            "unit_text",
++            "unit_code",
++            "number"
++          ]
++        },
++        {
++          "type": "object",
++          "additionalProperties": false,
++          "properties": {
++            "kind": {
++              "const": "interval"
++            },
++            "value_text": {
++              "type": "string",
++              "minLength": 1,
++              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
++            },
++            "unit_text": {
++              "type": "string",
++              "minLength": 1,
++              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
++            },
++            "unit_code": {
++              "type": "string",
++              "enum": [
++                "W/(m*K)",
++                "mW/(m*K)"
++              ]
++            },
++            "lower": {
++              "type": "string",
++              "maxLength": 49,
++              "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
++            },
++            "upper": {
++              "type": "string",
++              "maxLength": 49,
++              "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
++            },
++            "endpoint_semantics": {
++              "const": "source_reported_not_a_confidence_interval"
++            }
++          },
++          "required": [
++            "kind",
++            "value_text",
++            "unit_text",
++            "unit_code",
++            "lower",
++            "upper",
++            "endpoint_semantics"
++          ]
++        },
++        {
++          "type": "object",
++          "additionalProperties": false,
++          "properties": {
++            "kind": {
++              "const": "comparison"
++            },
++            "value_text": {
++              "type": "string",
++              "minLength": 1,
++              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
++            },
++            "unit_text": {
++              "type": "string",
++              "minLength": 1,
++              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
++            },
++            "unit_code": {
++              "type": "string",
++              "enum": [
++                "W/(m*K)",
++                "mW/(m*K)"
++              ]
++            },
++            "operator": {
++              "type": "string",
++              "enum": [
++                ">",
++                ">=",
++                "<",
++                "<="
++              ]
++            },
++            "number": {
++              "type": "string",
++              "maxLength": 49,
++              "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+             }
+           },
+           "required": [
+@@ -2104,6 +2248,8 @@
+                 "unit_code": {
+                   "type": "string",
+                   "enum": [
++                    "W/(m*K)",
++                    "mW/(m*K)",
+                     "V/m",
+                     "kV/mm",
+                     "degC",
+@@ -2556,6 +2702,8 @@
+             "unit_code": {
+               "type": "string",
+               "enum": [
++                "W/(m*K)",
++                "mW/(m*K)",
+                 "V/m",
+                 "kV/mm",
+                 "degC",
+@@ -2634,6 +2782,8 @@
+             "unit_code": {
+               "type": "string",
+               "enum": [
++                "W/(m*K)",
++                "mW/(m*K)",
+                 "V/m",
+                 "kV/mm",
+                 "degC",
+@@ -2720,6 +2870,8 @@
+             "unit_code": {
+               "type": "string",
+               "enum": [
++                "W/(m*K)",
++                "mW/(m*K)",
+                 "V/m",
+                 "kV/mm",
+                 "degC",
+@@ -5085,6 +5237,352 @@
+             "engineering_allowable",
+             "verification"
+           ]
++        },
++        {
++          "type": "object",
++          "additionalProperties": false,
++          "properties": {
++            "id": {
++              "type": "string",
++              "pattern": "^refprop_[a-z0-9][a-z0-9_]*(?![\\s\\S])",
++              "maxLength": 160
++            },
++            "version": {
++              "type": "string",
++              "pattern": "^1\\.0\\.(0|[1-9][0-9]*)(?![\\s\\S])"
++            },
++            "material_state_id": {
++              "type": "string",
++              "pattern": "^state_[a-z0-9][a-z0-9_]*(?![\\s\\S])",
++              "maxLength": 160
++            },
++            "quantity": {
++              "const": "thermal_conductivity"
++            },
++            "quantity_dimension": {
++              "const": "power_per_length_temperature"
++            },
++            "source_property_label": {
++              "type": "string",
++              "minLength": 1,
++              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
++            },
++            "reported_value": {
++              "$ref": "#/$defs/thermal_conductivity_reported_value"
++            },
++            "evidence_kind": {
++              "type": "string",
++              "enum": [
++                "manufacturer_reference",
++                "technical_association_reference",
++                "published_experimental_reference",
++                "published_computational_reference",
++                "published_handbook_reference",
++                "published_measurement_derived_reference"
++              ]
++            },
++            "reporting_basis": {
++              "type": "string",
++              "enum": [
++                "typical",
++                "nominal",
++                "guideline",
++                "specification_limit",
++                "reported_summary",
++                "not_stated"
++              ]
++            },
++            "determination_basis": {
++              "type": "string",
++              "enum": [
++                "source_reports_measurement",
++                "source_reports_calculation",
++                "source_reports_compiled_measurements",
++                "not_stated",
++                "mixed_or_unclear"
++              ]
++            },
++            "basis_note": {
++              "type": "string",
++              "minLength": 1,
++              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
++            },
++            "conditions": {
++              "type": "object",
++              "additionalProperties": false,
++              "properties": {
++                "temperature": {
++                  "$ref": "#/$defs/fact"
++                },
++                "test_standard": {
++                  "$ref": "#/$defs/fact"
++                },
++                "test_method": {
++                  "$ref": "#/$defs/fact"
++                },
++                "direction": {
++                  "$ref": "#/$defs/fact"
++                },
++                "conditioning": {
++                  "$ref": "#/$defs/fact"
++                },
++                "loading_rate": {
++                  "$ref": "#/$defs/fact"
++                },
++                "additional_conditions": {
++                  "type": "array",
++                  "items": {
++                    "type": "object",
++                    "additionalProperties": false,
++                    "properties": {
++                      "name": {
++                        "type": "string",
++                        "minLength": 1,
++                        "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
++                      },
++                      "fact": {
++                        "$ref": "#/$defs/fact"
++                      }
++                    },
++                    "required": [
++                      "name",
++                      "fact"
++                    ]
++                  },
++                  "minItems": 0
++                }
++              },
++              "required": [
++                "temperature",
++                "test_standard",
++                "test_method",
++                "direction",
++                "conditioning",
++                "loading_rate"
++              ]
++            },
++            "density_basis": {
++              "anyOf": [
++                {
++                  "type": "string",
++                  "enum": [
++                    "apparent",
++                    "bulk",
++                    "true",
++                    "crystallographic",
++                    "simulation_cell",
++                    "oven_dry_mass_over_fresh_or_water_saturated_volume",
++                    "not_stated"
++                  ]
++                },
++                {
++                  "type": "null"
++                }
++              ]
++            },
++            "summary_statistic": {
++              "type": "string",
++              "enum": [
++                "not_stated",
++                "reported_value",
++                "reported_mean"
++              ]
++            },
++            "uncertainty": {
++              "anyOf": [
++                {
++                  "$ref": "#/$defs/uncertainty"
++                },
++                {
++                  "type": "null"
++                }
++              ]
++            },
++            "uncertainty_status": {
++              "type": "string",
++              "enum": [
++                "reported_standard_deviation",
++                "reported_confidence_interval",
++                "reported_plus_minus_unspecified",
++                "reported_measures",
++                "not_reported_in_inspected_source",
++                "not_applicable"
++              ]
++            },
++            "uncertainty_note": {
++              "type": "string",
++              "minLength": 1,
++              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
++            },
++            "sample_count": {
++              "$ref": "#/$defs/sample_count"
++            },
++            "method_definition": {
++              "type": "object",
++              "additionalProperties": false,
++              "properties": {
++                "type": {
++                  "type": "string",
++                  "enum": [
++                    "source_reported_conventional",
++                    "source_reported_compilation",
++                    "source_reported_crystallographic_derivation",
++                    "source_reported_empirical_conversion",
++                    "source_reported_computational_structure_density",
++                    "source_reported_molecular_simulation_density"
++                  ]
++                },
++                "definition": {
++                  "type": "string",
++                  "minLength": 1,
++                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
++                },
++                "extraction_window": {
++                  "anyOf": [
++                    {
++                      "$ref": "#/$defs/reported_window"
++                    },
++                    {
++                      "type": "null"
++                    }
++                  ]
++                },
++                "evidence": {
++                  "type": "array",
++                  "items": {
++                    "$ref": "#/$defs/evidence"
++                  },
++                  "minItems": 1
++                }
++              },
++              "required": [
++                "type",
++                "definition",
++                "extraction_window",
++                "evidence"
++              ]
++            },
++            "source_discrepancies": {
++              "type": "array",
++              "items": {
++                "type": "object",
++                "additionalProperties": false,
++                "properties": {
++                  "description": {
++                    "type": "string",
++                    "minLength": 1,
++                    "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
++                  },
++                  "disposition": {
++                    "type": "string",
++                    "minLength": 1,
++                    "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
++                  },
++                  "evidence": {
++                    "type": "array",
++                    "items": {
++                      "$ref": "#/$defs/evidence"
++                    },
++                    "minItems": 1
++                  }
++                },
++                "required": [
++                  "description",
++                  "disposition",
++                  "evidence"
++                ]
++              },
++              "minItems": 0
++            },
++            "source_id": {
++              "type": "string",
++              "minLength": 1,
++              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
++            },
++            "evidence": {
++              "type": "array",
++              "items": {
++                "$ref": "#/$defs/evidence"
++              },
++              "minItems": 1
++            },
++            "source_document": {
++              "$ref": "#/$defs/source_document"
++            },
++            "scope_note": {
++              "type": "string",
++              "minLength": 1,
++              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
++            },
++            "evaluation_support": {
++              "const": "catalog_only"
++            },
++            "universal_bound": {
++              "const": false
++            },
++            "engineering_allowable": {
++              "const": false
++            },
++            "verification": {
++              "type": "object",
++              "additionalProperties": false,
++              "properties": {
++                "source_inspection_scope": {
++                  "type": "string",
++                  "minLength": 1,
++                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
++                },
++                "transcription_cross_check": {
++                  "const": "completed"
++                },
++                "independent_scientific_review": {
++                  "const": false
++                },
++                "raw_data_reanalysis": {
++                  "const": false
++                }
++              },
++              "required": [
++                "source_inspection_scope",
++                "transcription_cross_check",
++                "independent_scientific_review",
++                "raw_data_reanalysis"
++              ]
++            },
++            "derivation": {
++              "$ref": "#/$defs/derivation"
++            }
++          },
++          "required": [
++            "id",
++            "version",
++            "material_state_id",
++            "quantity",
++            "quantity_dimension",
++            "source_property_label",
++            "reported_value",
++            "evidence_kind",
++            "reporting_basis",
++            "determination_basis",
++            "basis_note",
++            "conditions",
++            "density_basis",
++            "summary_statistic",
++            "uncertainty",
++            "uncertainty_status",
++            "uncertainty_note",
++            "sample_count",
++            "method_definition",
++            "source_discrepancies",
++            "source_id",
++            "evidence",
++            "source_document",
++            "scope_note",
++            "evaluation_support",
++            "universal_bound",
++            "engineering_allowable",
++            "verification"
++          ]
+         }
+       ]
+     }
+--- a/docs/MATERIAL_REFERENCE_CATALOG.md
++++ b/docs/MATERIAL_REFERENCE_CATALOG.md
+@@ -730,3 +730,16 @@
+ They do not supply engineering allowables, certified insulation ratings or
+ mechanics evaluator inputs. Existing mechanical, density, temperature and other
+ quantity unit roles remain closed.
++
++
++### Thermal-conductivity references
++
++`thermal_conductivity` uses the separate `power_per_length_temperature` dimension
++and closed `W/(m*K)` / `mW/(m*K)` unit codes. Original middle-dot unit labels and
++decimal precision are retained; milli/base units are never automatically converted.
++Positive source central values and nonnegative absolute uncertainty amplitudes
++use the same unit code; existing relative uncertainty roles remain distinct.
++These are condition-qualified catalogue references, not thermal-engine inputs
++or engineering allowables. Mean plate temperature is not evidence of a group
++mean, isotropy, replicate count or a complete specimen-conditioning procedure.
++Do not transfer counts or density normalization from neighbouring mechanical tests.
+--- /dev/null
++++ b/tests/test_thermal_conductivity_contract.py
+@@ -0,0 +1,176 @@
++"""Fictional heat-flow records; no laboratory or engineering assertions."""
++from copy import deepcopy
++from pathlib import Path
++import tempfile
++import unittest
++from unittest.mock import patch
++from jsonschema import Draft202012Validator, ValidationError
++from materials_boundaries.database import Database, read_snapshot
++from materials_boundaries.material_references import _PROPERTIES_SCHEMA, validate_material_catalog
++from materials_boundaries.material_presentation import material_labels, render_material_catalog
++from test_material_reference_contract import synthetic_mean_catalog, synthetic_material_catalog
++from test_material_reported_measures_contract import synthetic_reported_measures_catalog
++from test_dielectric_breakdown_strength_contract import fixture as electric_fixture
++
++
++def unit_label(code):
++    return code.replace('*', '·')
++
++
++def fixture(unit='mW/(m*K)', number='19.8400'):
++    graph = synthetic_mean_catalog()
++    prop = graph[1]['records'][0]
++    prop.update(quantity='thermal_conductivity', quantity_dimension='power_per_length_temperature',
++                source_property_label='Fictional plate thermal conductivity', reporting_basis='not_stated',
++                summary_statistic='not_stated', uncertainty=None,
++                uncertainty_status='not_reported_in_inspected_source')
++    prop['reported_value'].update(number=number, value_text=number, unit_code=unit, unit_text=unit_label(unit))
++    prop['uncertainty_note'] = 'No numeric dispersion; mean apparatus temperature is not a group mean.'
++    prop['method_definition'].update(definition='Fictional heat-flow plate result; direction relative to foam rise and moisture unknown.', extraction_window=None)
++    prop['sample_count'].update(value=None, relation='not_reported', scope='Fictional thermal measurement count unknown.', source_statement='No thermal n in fictional source.', evidence=[])
++    return graph
++
++
++def shape(graph):
++    Draft202012Validator(_PROPERTIES_SCHEMA).validate(graph[1])
++
++
++class ThermalConductivityContractTests(unittest.TestCase):
++    def test_query_export_preserves_precision_original_units_and_unknowns(self):
++        for unit in ['W/(m*K)', 'mW/(m*K)']:
++            graph = fixture(unit)
++            original = deepcopy(graph)
++            shape(graph)
++            validate_material_catalog(*graph)
++            db = Database(dict(zip(('materials', 'reference_properties', 'sources'), graph)))
++            records = list(db.records(quantity='thermal_conductivity'))
++            self.assertEqual([row['property'] for row in records], graph[1]['records'])
++            prop = records[0]['property']
++            self.assertEqual(prop['reported_value']['value_text'], '19.8400')
++            self.assertEqual(prop['reported_value']['unit_text'], unit_label(unit))
++            self.assertIsNone(prop['uncertainty'])
++            self.assertIsNone(prop['sample_count']['value'])
++            self.assertEqual(prop['summary_statistic'], 'not_stated')
++            self.assertEqual(prop['evaluation_support'], 'catalog_only')
++            with tempfile.TemporaryDirectory() as folder:
++                destination = Path(folder) / 'conductivity'
++                db.export(destination, quantity='thermal_conductivity')
++                self.assertEqual(read_snapshot(destination)[1], {row['record_id']: row for row in records})
++            self.assertEqual(graph, original)
++
++    def test_positive_scalar_interval_and_comparison_source_forms(self):
++        values = [dict(kind='scalar', number='2.500', value_text='2.500'),
++                  dict(kind='interval', lower='2.00', upper='3.00', value_text='2.00–3.00', endpoint_semantics='source_reported_not_a_confidence_interval'),
++                  dict(kind='comparison', operator='>=', number='2.00', value_text='≥2.00')]
++        for value in values:
++            graph = fixture()
++            graph[1]['records'][0]['reported_value'] = {**value, 'unit_code': 'mW/(m*K)', 'unit_text': 'mW/(m·K)'}
++            shape(graph)
++            validate_material_catalog(*graph)
++
++    def test_nonpositive_centres_and_precision_rewrites_are_rejected(self):
++        for number, displayed in [('0', '0'), ('-1.00', '-1.00'), ('19.8400', '19.84'), ('2.00', '2.00 approximate')]:
++            graph = fixture(number=number)
++            graph[1]['records'][0]['reported_value']['value_text'] = displayed
++            with self.assertRaises(ValueError):
++                validate_material_catalog(*graph)
++
++    def test_heat_flux_conductance_resistance_temperature_and_unreviewed_units_rejected(self):
++        for unit in ['W', 'W/(m^2*K)', 'W/K', 'K/W', 'J/(kg*K)', 'degC', 'K', 'MPa', 'kV/mm', 'kW/(m*K)', 'W/(mm*K)']:
++            graph = fixture(unit)
++            with self.assertRaises(ValidationError):
++                shape(graph)
++            with self.assertRaises(ValueError):
++                validate_material_catalog(*graph)
++        for dimension in ['electric_field', 'pressure', 'temperature', 'mass_per_volume', 'dimensionless']:
++            graph = fixture()
++            graph[1]['records'][0]['quantity_dimension'] = dimension
++            with self.assertRaises(ValidationError):
++                shape(graph)
++            with self.assertRaises(ValueError):
++                validate_material_catalog(*graph)
++
++    def test_thermal_units_and_dimension_do_not_enter_legacy_or_electric_quantities(self):
++        for make in [synthetic_mean_catalog, synthetic_material_catalog, electric_fixture]:
++            for unit in ['W/(m*K)', 'mW/(m*K)']:
++                graph = make()
++                graph[1]['records'][0]['reported_value'].update(unit_code=unit, unit_text=unit_label(unit))
++                with self.assertRaises(ValidationError):
++                    shape(graph)
++                with self.assertRaises(ValueError):
++                    validate_material_catalog(*graph)
++            graph = make()
++            graph[1]['records'][0]['quantity_dimension'] = 'power_per_length_temperature'
++            with self.assertRaises(ValidationError):
++                shape(graph)
++            with self.assertRaises(ValueError):
++                validate_material_catalog(*graph)
++
++    def test_absolute_sd_zero_allowed_but_negative_or_different_scale_rejected(self):
++        graph = fixture()
++        prop = graph[1]['records'][0]
++        prop.update(summary_statistic='reported_mean', reporting_basis='reported_summary', uncertainty_status='reported_standard_deviation')
++        prop['uncertainty'] = deepcopy(synthetic_mean_catalog()[1]['records'][0]['uncertainty'])
++        prop['uncertainty'].update(number='0.00', value_text='0.00', unit_code='mW/(m*K)', unit_text='mW/(m·K)')
++        shape(graph)
++        validate_material_catalog(*graph)
++        for unit in ['W/(m*K)', 'MPa', 'kV/mm']:
++            bad = deepcopy(graph)
++            bad[1]['records'][0]['uncertainty'].update(unit_code=unit, unit_text=unit_label(unit))
++            with self.assertRaises(ValueError):
++                validate_material_catalog(*bad)
++        bad = deepcopy(graph)
++        bad[1]['records'][0]['uncertainty'].update(number='-0.01', value_text='-0.01')
++        with self.assertRaises(ValueError):
++            validate_material_catalog(*bad)
++
++    def test_reported_measure_envelope_preserves_unknown_estimator_and_absolute_role(self):
++        graph = synthetic_reported_measures_catalog('unnamed_center_sd')
++        prop = graph[1]['records'][0]
++        prop.update(quantity='thermal_conductivity', quantity_dimension='power_per_length_temperature', source_property_label='Fictional heat-flow result')
++        prop['reported_value'].update(unit_code='mW/(m*K)', unit_text='mW/(m·K)')
++        amplitudes = [m for m in prop['uncertainty']['measures'] if m['basis'] == 'absolute' and m['availability'] == 'numeric_reported']
++        self.assertTrue(amplitudes)
++        for amplitude in amplitudes:
++            amplitude['reported_value'].update(unit_code='mW/(m*K)', unit_text='mW/(m·K)')
++        shape(graph)
++        validate_material_catalog(*graph)
++        self.assertEqual(prop['summary_statistic'], 'not_stated')
++        bad = deepcopy(graph)
++        next(m for m in bad[1]['records'][0]['uncertainty']['measures'] if m['basis'] == 'absolute' and m['availability'] == 'numeric_reported')['reported_value'].update(unit_code='W/(m*K)', unit_text='W/(m·K)')
++        with self.assertRaises(ValueError):
++            validate_material_catalog(*bad)
++
++    def test_typographic_aliases_cannot_reinterpret_unit_scale_or_add_temperature_offsets(self):
++        for spelling in ['mW/(m·K)', 'mW/(m*K)']:
++            graph = fixture()
++            graph[1]['records'][0]['reported_value']['unit_text'] = spelling
++            validate_material_catalog(*graph)
++        for spelling in ['W/(m·K)', 'MW/(m·K)', 'mW/(m·°C)', 'mW/mK']:
++            graph = fixture()
++            graph[1]['records'][0]['reported_value']['unit_text'] = spelling
++            with self.assertRaises(ValueError):
++                validate_material_catalog(*graph)
++
++    def test_irrelevant_descriptors_and_engineering_claims_rejected(self):
++        for field, value in [('specified_elongation', {'number': '100'}), ('density_basis', 'bulk'), ('engineering_allowable', True), ('universal_bound', True)]:
++            graph = fixture()
++            graph[1]['records'][0][field] = value
++            with self.assertRaises(ValueError):
++                validate_material_catalog(*graph)
++
++    def test_four_language_render_keeps_original_middle_dot_units_and_unknown_method(self):
++        graph = fixture()
++        resources = dict(zip(('materials', 'reference_properties', 'sources'), graph))
++        for language in ['en', 'zh', 'ja', 'de']:
++            labels = material_labels(language)
++            with patch('materials_boundaries.catalog.read_catalog', side_effect=lambda name: deepcopy(resources[name])):
++                rendered = render_material_catalog(graph[1], 'reference-properties', language)
++            self.assertIn(labels['code_thermal_conductivity'] + ' [thermal_conductivity]', rendered)
++            self.assertIn('19.8400', rendered)
++            self.assertIn('mW/(m·K)', rendered)
++            self.assertIn('direction relative to foam rise and moisture unknown', rendered)
++
++
++if __name__ == '__main__':
++    unittest.main()
+--- a/tests/test_glass_transition_temperature_contract.py
++++ b/tests/test_glass_transition_temperature_contract.py
+@@ -125,7 +125,7 @@
+ 
+     def test_generated_schema_fifth_branch_and_catalog_only_contract(self):
+         schema=json.loads((Path(__file__).resolve().parents[1]/'schemas/reference_properties.schema.json').read_bytes())
+-        self.assertEqual(schema,_PROPERTIES_SCHEMA);self.assertEqual(len(schema['$defs']['property']['oneOf']),6)
++        self.assertEqual(schema,_PROPERTIES_SCHEMA);self.assertEqual(len(schema['$defs']['property']['oneOf']),7)
+         Draft202012Validator.check_schema(schema);Draft202012Validator(schema).validate(fixture()[1])
+         for update in ({'engineering_allowable':True},{'universal_bound':True},{'evaluation_support':'evaluator_input'},{'quantity_dimension':'pressure'}):
+             graph=fixture();graph[1]['records'][0].update(update)
+--- a/tests/test_izod_impact_contract.py
++++ b/tests/test_izod_impact_contract.py
+@@ -103,7 +103,7 @@
+ 
+     def test_public_schema_legacy_domains_and_no_target_or_engine_use(self):
+         schema=json.loads((Path(__file__).resolve().parents[1]/'schemas/reference_properties.schema.json').read_bytes())
+-        self.assertEqual(schema,_PROPERTIES_SCHEMA);self.assertEqual(len(schema['$defs']['property']['oneOf']),6)
++        self.assertEqual(schema,_PROPERTIES_SCHEMA);self.assertEqual(len(schema['$defs']['property']['oneOf']),7)
+         Draft202012Validator.check_schema(schema)
+         for update in [{'specified_elongation':target_fixture()[1]['records'][0]['specified_elongation']},
+                        {'quantity':'charpy_impact_strength'},{'quantity':'mode_i_energy_release_rate'},
+--- a/tests/test_tear_strength_contract.py
++++ b/tests/test_tear_strength_contract.py
+@@ -112,7 +112,7 @@
+     def test_public_schema_and_other_quantity_domains_remain_closed(self):
+         stored = json.loads((Path(__file__).resolve().parents[1] / 'schemas/reference_properties.schema.json').read_bytes())
+         self.assertEqual(stored, _PROPERTIES_SCHEMA)
+-        self.assertEqual(len(stored['$defs']['property']['oneOf']), 6)
++        self.assertEqual(len(stored['$defs']['property']['oneOf']), 7)
+         Draft202012Validator.check_schema(stored)
+         for factory in (synthetic_mean_catalog, hardness_fixture, lambda: elongation_fixture('1040'), target_fixture):
+             graph = factory()
+--- a/tests/test_shore_a_hardness_contract.py
++++ b/tests/test_shore_a_hardness_contract.py
+@@ -60,7 +60,7 @@
+     def test_closed_units_targets_shapes_and_generated_public_schema(self):
+         m,p,s=fixture();stored=json.loads((Path(__file__).resolve().parents[1]/'schemas/reference_properties.schema.json').read_bytes())
+         self.assertEqual(stored,_PROPERTIES_SCHEMA);Draft202012Validator.check_schema(stored)
+-        self.assertEqual(len(stored['$defs']['property']['oneOf']),6)
++        self.assertEqual(len(stored['$defs']['property']['oneOf']),7)
+         for unit in [{'unit_code':'percent','unit_text':'%'},{'unit_code':'percent_elongation','unit_text':'%'},{'unit_code':'MPa','unit_text':'MPa'},{'unit_code':'shore_d_scale','unit_text':'Shore D'}]:
+             bad=deepcopy(p);bad['records'][0]['reported_value'].update(unit)
+             self.assertFalse(Draft202012Validator(stored).is_valid(bad))
+--- a/tests/test_flexural_elongation_contract.py
++++ b/tests/test_flexural_elongation_contract.py
+@@ -110,7 +110,7 @@
+     def test_generated_schema_and_existing_quantity_domains_unchanged(self):
+         schema = json.loads((Path(__file__).resolve().parents[1]/'schemas/reference_properties.schema.json').read_bytes())
+         self.assertEqual(schema, _PROPERTIES_SCHEMA)
+-        self.assertEqual(len(schema['$defs']['property']['oneOf']), 6)
++        self.assertEqual(len(schema['$defs']['property']['oneOf']), 7)
+         Draft202012Validator.check_schema(schema)
+         for factory in (synthetic_mean_catalog, tensile_fixture, target_fixture, hardness_fixture, tear_fixture):
+             graph = factory()
+--- a/tests/test_melting_peak_temperature_contract.py
++++ b/tests/test_melting_peak_temperature_contract.py
+@@ -112,7 +112,7 @@
+ 
+     def test_generated_schema_retains_five_branches_and_existing_Tg(self):
+         schema=json.loads((Path(__file__).resolve().parents[1]/'schemas/reference_properties.schema.json').read_bytes())
+-        self.assertEqual(schema,_PROPERTIES_SCHEMA);self.assertEqual(len(schema['$defs']['property']['oneOf']),6)
++        self.assertEqual(schema,_PROPERTIES_SCHEMA);self.assertEqual(len(schema['$defs']['property']['oneOf']),7)
+         Draft202012Validator.check_schema(schema)
+         for graph in (fixture(),two_peaks(),tg_fixture(),synthetic_mean_catalog(),target_fixture()):
+             Draft202012Validator(schema).validate(graph[1]);validate_material_catalog(*graph)
+--- a/tests/test_compression_reference_contract.py
++++ b/tests/test_compression_reference_contract.py
+@@ -149,7 +149,7 @@
+     def test_public_schema_legacy_domains_and_catalog_only_gate(self):
+         stored = json.loads((Path(__file__).resolve().parents[1] / 'schemas/reference_properties.schema.json').read_bytes())
+         self.assertEqual(stored, _PROPERTIES_SCHEMA)
+-        self.assertEqual(len(stored['$defs']['property']['oneOf']), 6)
++        self.assertEqual(len(stored['$defs']['property']['oneOf']), 7)
+         Draft202012Validator.check_schema(stored)
+         for factory in (fixture, lambda: fixture(QUANTITIES[1]), hardness_fixture, lambda: elongation_fixture('1040'), target_fixture):
+             graph = factory()

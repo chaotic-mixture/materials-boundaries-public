@@ -1,0 +1,927 @@
+{
+  "schema": "r33-r35-review-R1-guard-revision-resolution/1",
+  "original_entry_sha256": "6a80decfb7c3c86f5c2936691094a4998afa0fd36e6016c72322821418cbccdf",
+  "scope": "Readonlymanifestgeneratorguardfix,notruntime/data/test/installchange",
+  "finding": "R1 generator didnot explicitlyrequireemptyindex/expectedHEAD/experimentalbranch",
+  "fix": "Three explicit readonly guards;helper nowconsumesR2frozenentry",
+  "archived_helpers": "Referencebytes only;do notexecute copies",
+  "resolved": {
+    "HANDOFF.md": {
+      "sha256": "c80395f5c1c719e21db0ac0decb476d8096e9f43266de5e23db1889e7df4599c",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\HANDOFF.md",
+      "current": true
+    },
+    "README.md": {
+      "sha256": "e7fb540d4b58b4cfbbc2a1fdc3678fbb4f2089647c55f438f41308c7c003ddaf",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\README.md",
+      "current": true
+    },
+    "docs/DATABASE_COVERAGE.zh.md": {
+      "sha256": "bec68477953717bb3742d60958a98f07e317bfd999ad0b1f04b58f6429ffdc07",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\docs\\DATABASE_COVERAGE.zh.md",
+      "current": true
+    },
+    "docs/MATERIAL_REFERENCE_CATALOG.md": {
+      "sha256": "2624655abccf3ae40bc47a106f7943c08b8afa8a6755827526afa5b5201958cf",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\docs\\MATERIAL_REFERENCE_CATALOG.md",
+      "current": true
+    },
+    "docs/MATERIAL_SOURCE_CONDITIONS.zh.md": {
+      "sha256": "b32dcf95d9544a27e810431f7c8172c89d014ad7a8712114f441e933fcc7a19b",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\docs\\MATERIAL_SOURCE_CONDITIONS.zh.md",
+      "current": true
+    },
+    "docs/OPEN_DATABASE_ROADMAP.zh.md": {
+      "sha256": "5d7ee725e6441b45b9553c65e3b13fa991a8778ffc741ee0c8b8f075368e7ee1",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\docs\\OPEN_DATABASE_ROADMAP.zh.md",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/ac-breakdown-contract-implementation-r1/CURRENT_OLD_DATA_GRAPH_R1.json": {
+      "sha256": "d01866df508391adf50cc477464725d29036b4e2dec757190db479756c2bfdd7",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\ac-breakdown-contract-implementation-r1\\CURRENT_OLD_DATA_GRAPH_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/ac-breakdown-contract-implementation-r1/INDEPENDENT_IMPLEMENTATION_REVIEW_R1.json": {
+      "sha256": "085677f073dd4076f38c4990640dd465ccb5e10f1f83f070effeb3148f45c33d",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\ac-breakdown-contract-implementation-r1\\INDEPENDENT_IMPLEMENTATION_REVIEW_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/ac-breakdown-contract-implementation-r1/LEGACY_SCHEMA_COMPATIBILITY_R1.json": {
+      "sha256": "237608fa12523f81bbe6d26cca8d80e47d8b65d059aa5fa8fb22aa2c3d96e96c",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\ac-breakdown-contract-implementation-r1\\LEGACY_SCHEMA_COMPATIBILITY_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/ac-breakdown-contract-implementation-r1/PATCH_INPUTS_R1.json": {
+      "sha256": "49efba385c6a06f96b278d436b6222ef0f51d36ef1be8b7956ff343ddc9896ae",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\ac-breakdown-contract-implementation-r1\\PATCH_INPUTS_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/ac-breakdown-contract-implementation-r1/README.zh.md": {
+      "sha256": "4a9138716479681dd63972ae0eb40ce7c1804902f89b139c152b50f7d4560a65",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\ac-breakdown-contract-implementation-r1\\README.zh.md",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/ac-breakdown-contract-implementation-r1/REVIEW_INPUTS_R1.json": {
+      "sha256": "971b1fa6197ca5c9672e5d039bf62377fb3807069deb866436c116d4b01a4250",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\ac-breakdown-contract-implementation-r1\\REVIEW_INPUTS_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/ac-breakdown-contract-implementation-r1/SCOPED_TEST_RESULTS_R1.json": {
+      "sha256": "0021de538a363355722e32e4bfa9d99387eb173e4dde3433f3aaea1be460925e",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\ac-breakdown-contract-implementation-r1\\SCOPED_TEST_RESULTS_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/ac-breakdown-contract-implementation-r1/implementation.patch": {
+      "sha256": "83271ce375ee61f4bbd9c79e8cae1775da95aa373b27aa895b1602e0f118e6a9",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\ac-breakdown-contract-implementation-r1\\implementation.patch",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/ac-breakdown-contract-implementation-r1/payload/docs/MATERIAL_REFERENCE_CATALOG.md": {
+      "sha256": "1874757444c3d04cbad5bf4808bed5f5b16a2772f1129663bac741384a65781b",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\ac-breakdown-contract-implementation-r1\\payload\\docs\\MATERIAL_REFERENCE_CATALOG.md",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/ac-breakdown-contract-implementation-r1/payload/materials_boundaries/data/material_locales.json": {
+      "sha256": "9c840c9afb78dc2234a865af024f65d1bbccdc1611601b6c9f5eb76290c8ccb7",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\ac-breakdown-contract-implementation-r1\\payload\\materials_boundaries\\data\\material_locales.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/ac-breakdown-contract-implementation-r1/payload/materials_boundaries/material_presentation.py": {
+      "sha256": "fd87bcfc1c64776b99e50b39edf1cadb80224df6b9acc9a18cd4d78eb7d648b0",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\ac-breakdown-contract-implementation-r1\\payload\\materials_boundaries\\material_presentation.py",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/ac-breakdown-contract-implementation-r1/payload/materials_boundaries/material_references.py": {
+      "sha256": "6d9b1c3e99acd7f068a29889e13806e9f8cdf94effe187ae4f9e4f19a84a58e1",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\ac-breakdown-contract-implementation-r1\\payload\\materials_boundaries\\material_references.py",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/ac-breakdown-contract-implementation-r1/payload/schemas/reference_properties.schema.json": {
+      "sha256": "7c864134cf3d424530fb4d480c0616b7b1a32a5d6d926114ff94bc77abedc5c3",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\ac-breakdown-contract-implementation-r1\\payload\\schemas\\reference_properties.schema.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/ac-breakdown-contract-implementation-r1/payload/tests/test_compression_reference_contract.py": {
+      "sha256": "6f8155376bc9cb4ce6aa1d3a3f3bf58c57d3cea881f6d1b3bd6030adc628ce50",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\ac-breakdown-contract-implementation-r1\\payload\\tests\\test_compression_reference_contract.py",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/ac-breakdown-contract-implementation-r1/payload/tests/test_dielectric_breakdown_strength_contract.py": {
+      "sha256": "0bbd2377b171e9185c2abbc9d43b91f3f3cedff571f0f1b410b7c31588122a96",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\ac-breakdown-contract-implementation-r1\\payload\\tests\\test_dielectric_breakdown_strength_contract.py",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/ac-breakdown-contract-implementation-r1/payload/tests/test_flexural_elongation_contract.py": {
+      "sha256": "d84b2cc5d8ef2a9f6c6b5ceec3c868ff3d6b270b089e5b3cedb5d7ac104d856e",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\ac-breakdown-contract-implementation-r1\\payload\\tests\\test_flexural_elongation_contract.py",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/ac-breakdown-contract-implementation-r1/payload/tests/test_glass_transition_temperature_contract.py": {
+      "sha256": "836eaf8f6877a31e4312f4ea7883ff2b80d0269e952600cefc533addd6f22b3a",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\ac-breakdown-contract-implementation-r1\\payload\\tests\\test_glass_transition_temperature_contract.py",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/ac-breakdown-contract-implementation-r1/payload/tests/test_izod_impact_contract.py": {
+      "sha256": "9c272b6fd662d5c4eff4e1904b675c1b0fb3cab8aa7bdce363ddf1782133ac92",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\ac-breakdown-contract-implementation-r1\\payload\\tests\\test_izod_impact_contract.py",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/ac-breakdown-contract-implementation-r1/payload/tests/test_melting_peak_temperature_contract.py": {
+      "sha256": "cebb1290d62fc7b251cafcf7346834252fb8e4f3452591a6e5bd545b7b86d050",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\ac-breakdown-contract-implementation-r1\\payload\\tests\\test_melting_peak_temperature_contract.py",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/ac-breakdown-contract-implementation-r1/payload/tests/test_shore_a_hardness_contract.py": {
+      "sha256": "1bdb3ef7aa3c4b3ce4eb84053297d00bf6d2a3b5f57e8bd597da5a7a6eac54c2",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\ac-breakdown-contract-implementation-r1\\payload\\tests\\test_shore_a_hardness_contract.py",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/ac-breakdown-contract-implementation-r1/payload/tests/test_tear_strength_contract.py": {
+      "sha256": "6e0114acda043fcd77c51b095dc64566dce9ad29bac6d3feff91810bc5ae8bf8",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\ac-breakdown-contract-implementation-r1\\payload\\tests\\test_tear_strength_contract.py",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/delivery-r33-r35/ACTUAL_CONSUMER_R33_R35.json": {
+      "sha256": "e362c1255a107d98758d9cf678dae51fcd5a605ff0cdf32f99463ec64df3ba8d",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\delivery-r33-r35\\ACTUAL_CONSUMER_R33_R35.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/delivery-r33-r35/CURRENT_INSTALL_REUSE_R33_R35.json": {
+      "sha256": "5920d91ed1abe700bb9552e8a037e936a4b4eae8faa9cb0f48a18250b68b1164",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\delivery-r33-r35\\CURRENT_INSTALL_REUSE_R33_R35.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/delivery-r33-r35/DATABASE_CI_LOCAL_EQUIVALENT_R33_R35.json": {
+      "sha256": "ca044145373c59e86bb475bae4d0a4cb3d9d86ad73b27b11f79cf0f28a618b77",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\delivery-r33-r35\\DATABASE_CI_LOCAL_EQUIVALENT_R33_R35.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/delivery-r33-r35/EXTERNAL_EVIDENCE_BINDING_R33_R35.json": {
+      "sha256": "0c845317b7d5a2051d169492b7294b96f47b61c82e73d15029fddf58fe68c131",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\delivery-r33-r35\\EXTERNAL_EVIDENCE_BINDING_R33_R35.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/delivery-r33-r35/HISTORICAL_INPUT_RESOLUTION_R33_R35.json": {
+      "sha256": "c6307988e13290446a14689cefeca846f5299c3b318605284f122e19bce9036d",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\delivery-r33-r35\\HISTORICAL_INPUT_RESOLUTION_R33_R35.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/delivery-r33-r35/NATIVE_DELTA_R33_R35.json": {
+      "sha256": "a7eed53df575e37111a26b62c5966c7d45989c586ae628a92c88f9190efdb18d",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\delivery-r33-r35\\NATIVE_DELTA_R33_R35.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/delivery-r33-r35/README.zh.md": {
+      "sha256": "3b8058a209ec9e29f64e952dfe477b765d328d3346d60cbd195f99b0bfdb6b37",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\delivery-r33-r35\\review-r1-inputs\\README.zh.md",
+      "current": false
+    },
+    "experimental/polymer-exploration/20261104/delivery-r33-r35/SCOPED_TESTS_R33_R35.json": {
+      "sha256": "dedaccf4e9b4a2115c4a7ec97c73a5af2d46ceb2a94642048a479b5153ba5d9b",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\delivery-r33-r35\\SCOPED_TESTS_R33_R35.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/delivery-r33-r35/SCOPED_TEST_INPUTS_R33_R35.json": {
+      "sha256": "3c68b314531b30c8a3ac12e047c7b726da426501448dd81f019be4cc117da378",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\delivery-r33-r35\\SCOPED_TEST_INPUTS_R33_R35.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/delivery-r33-r35/freeze_content.py": {
+      "sha256": "c5a9759107c00e1bd970bc0dde23d563da802a24189c0ddb234ebb1405aa2fb2",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\delivery-r33-r35\\freeze_content.py",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/delivery-r33-r35/freeze_delivery_manifest.py": {
+      "sha256": "1561131ce517338e7b21001d24b2ab621390c75e49e485395a2eb4db02fcde6f",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\delivery-r33-r35\\review-r1-inputs\\freeze_delivery_manifest.py",
+      "current": false
+    },
+    "experimental/polymer-exploration/20261104/delivery-r33-r35/scoped-tests-r33-r35.log": {
+      "sha256": "990105e5d946597b4a815b53430c645bb1189004073699955447e7508aa22643",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\delivery-r33-r35\\scoped-tests-r33-r35.log",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/delivery-r33-r35/validate_delivery.py": {
+      "sha256": "ac4254c81f51d62547167ac4632aa1da94db7788220b823907ba4b31e893033d",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\delivery-r33-r35\\validate_delivery.py",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/delivery-r33-r35/verify_cumulative_consumer.py": {
+      "sha256": "c47dcd35e3c9934f441e30eb8fed11c62f9e4fb553ee21e188e993155548550c",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\delivery-r33-r35\\verify_cumulative_consumer.py",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r33/APPLICATION_INTENT_R33.json": {
+      "sha256": "1643dc48819e3185920342fd14be0b6f8e19dc73c85a5e7a180bbee969645c1a",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r33\\APPLICATION_INTENT_R33.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r33/APPLICATION_R33.json": {
+      "sha256": "104a5d983f1433ea1bd9bb218d8ae9f8ac594593b61342292eb4d52a1f0b1c66",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r33\\APPLICATION_R33.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r33/CANDIDATE_CONSUMER_BINDING_R33.json": {
+      "sha256": "5811816516560bae02f38ece4facfb31fc389f74374cfe3b79f063d982dabbe3",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r33\\CANDIDATE_CONSUMER_BINDING_R33.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r33/CURRENT_POLYMER_CONDITION_COUNTS_R33.json": {
+      "sha256": "5a6fcc6c9514d8225a21e6cbe13d82d1bffbe325aedd11519fcba096fc81378f",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r33\\CURRENT_POLYMER_CONDITION_COUNTS_R33.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r33/FINAL_LOCAL_STATUS_R33.zh.md": {
+      "sha256": "127d44dbba26339e3d14276aa4910d3165d4ab4cdaa751c7eaa38b4869aa4b0f",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r33\\FINAL_LOCAL_STATUS_R33.zh.md",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r33/HISTORICAL_INPUT_RESOLUTION_R33.json": {
+      "sha256": "29dc56e0bf7f5a42ad6a7e6de7848377194b8ec8f6b46b3c879bfa95d75b5fb3",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r33\\HISTORICAL_INPUT_RESOLUTION_R33.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r33/INDEPENDENT_ACCEPTANCE_REVIEW_R33.json": {
+      "sha256": "64f8db0dfe396cc79e414bb459feaa81f2a3704f13396c7ed981902e39e895a9",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r33\\INDEPENDENT_ACCEPTANCE_REVIEW_R33.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r33/INSTALLED_VALIDATION_R33.json": {
+      "sha256": "b4474502fe244709726cd61b53a5f9262c7844562c4776eaf36478ca21a72823",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r33\\INSTALLED_VALIDATION_R33.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r33/INSTALL_ORIGIN_LIMIT_R33.json": {
+      "sha256": "426300bde1038fd07513289323af82d7f15855d5e59af95bc537da4fa92c5a1d",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r33\\INSTALL_ORIGIN_LIMIT_R33.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r33/NATIVE_GRAPH_R33.json": {
+      "sha256": "a70d741d7534b189fde62e368bd3e6b7862966da7e3132d99a718adf7c326f3c",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r33\\NATIVE_GRAPH_R33.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r33/NATIVE_TEST_INPUTS_R33.json": {
+      "sha256": "ab4de82b22df78db103be6fccb1fc10e57c3aa0b69b59a4eec53e16627f9ca32",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r33\\NATIVE_TEST_INPUTS_R33.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r33/NATIVE_TEST_RESULTS_R33.json": {
+      "sha256": "367378e9b2e74d96c239e60177ed05318b45958dd31a84b097b6ed0c69ffd693",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r33\\NATIVE_TEST_RESULTS_R33.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r33/PACKAGE_INPUTS_R33.json": {
+      "sha256": "2771ac87456c57a4f6f730ae5c7644d96082738a92dbd92d7380b48ad59aae18",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r33\\PACKAGE_INPUTS_R33.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r33/PLANNED_POLYMER_CONDITION_DELTA_R33.json": {
+      "sha256": "94ca5c1556991c5f2337a9c5aba8b78a724b6f15c40685cd9f66051a05fac2ab",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r33\\PLANNED_POLYMER_CONDITION_DELTA_R33.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r33/PRE_APPLICATION_STATUS_R33.json": {
+      "sha256": "d22db3e688d2f41a6bcfe1eddc3c9d20bc48fd4df1ec520b3509d4b97d55af0a",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r33\\PRE_APPLICATION_STATUS_R33.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r33/README.zh.md": {
+      "sha256": "5f93052f6f08541366c36fc100394c5d5195545c5f3a17904fa762b2a4d39e94",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r33\\README.zh.md",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r33/REVIEW_ACCEPTANCE_INPUTS_R33.json": {
+      "sha256": "55289058a82a2fcb70e8c8e39bd4c9d52559c74a20c9324c23f581282300de44",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r33\\REVIEW_ACCEPTANCE_INPUTS_R33.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r33/apply_reviewed.py": {
+      "sha256": "16069bf38a9e6df8b552934124969f20dcd555ad6576a0b70eb4a0214e1c8209",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r33\\apply_reviewed.py",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r33/build_install_r33.py": {
+      "sha256": "940016eb4f27c083fd100ed6e5507180d42060e4d2ca2bef5b4de77a39b4e828",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r33\\build_install_r33.py",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r33/native-graph-r33.log": {
+      "sha256": "f4583ed78f53c47202d97c9ec01aecd925cccfb8b0f774b5c362fbc1295af4e4",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r33\\native-graph-r33.log",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r33/native-tests-r33.log": {
+      "sha256": "29ad0a3130d57e1f4124a53ce61aec09036af8e72d9842a68d00ebe932cd0836",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r33\\native-tests-r33.log",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r34/ACCEPTED_CONSUMER_R34.json": {
+      "sha256": "a7dadf5a306a0a8b0e33317c15d8382016ee05d02870e84ed7c98ede9fb1dbea",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r34\\ACCEPTED_CONSUMER_R34.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r34/APPLICATION_INTENT_R34.json": {
+      "sha256": "bf5a5bc1d2f96c08b9be0e8613d8ef3b950e30bf78079d1154c99420f603b52a",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r34\\APPLICATION_INTENT_R34.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r34/APPLICATION_R34.json": {
+      "sha256": "17209a217b57dba3083b2668bd0a74a3277da618c8675ab3f6e1b2b18dfdc837",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r34\\APPLICATION_R34.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r34/FINAL_LOCAL_STATUS_R34.zh.md": {
+      "sha256": "42755ea0d7e6dde5c47950d3d2c9f50746078decae7a629abd6fa53eab71c059",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r34\\FINAL_LOCAL_STATUS_R34.zh.md",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r34/HISTORICAL_INPUT_RESOLUTION_R34.json": {
+      "sha256": "51d2e84f22196c789c1357ffbbd400a26a98f1ef997f98aeb3686994f31df563",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r34\\HISTORICAL_INPUT_RESOLUTION_R34.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r34/INDEPENDENT_ACCEPTANCE_REVIEW_R34.json": {
+      "sha256": "c95f2e182fa5d3152b050d4ad536b77de1ad7c8c27395fc08da6b5597b9a494f",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r34\\INDEPENDENT_ACCEPTANCE_REVIEW_R34.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r34/README.zh.md": {
+      "sha256": "52103b4019666f5701240b5e019c40bed35476caa0c444e553a9e177d4514c2e",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r34\\README.zh.md",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r34/REVIEW_INPUTS_R34.json": {
+      "sha256": "5eebbe182bde597796bf61c8c9bcc2628f32b5747ef61440ae2c94f6d17c0f84",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r34\\REVIEW_INPUTS_R34.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r34/TEST_INPUTS_R34.json": {
+      "sha256": "71f5f89be45fef344e54eca7216d0c6b2c5e14a69d7f41f0d60261b4e0d94690",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r34\\TEST_INPUTS_R34.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r34/TEST_RESULTS_R34.json": {
+      "sha256": "f1d6dfdedb038a21ba470a84991d540b7d7d2577514301a5afd0a5af9b8f5f56",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r34\\TEST_RESULTS_R34.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r34/database-tests-r34.log": {
+      "sha256": "2481a0405bf8b8509f7360dadd6ca625b4e8a96c7f636044d1b212df810906ba",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r34\\database-tests-r34.log",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r35/ACCEPTED_CONSUMER_R35.json": {
+      "sha256": "47533cbb3f3391b97cac0eb3e0561e04b6c6b3777c26f8244cd59742bc9071cd",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r35\\ACCEPTED_CONSUMER_R35.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r35/APPLICATION_INTENT_R35.json": {
+      "sha256": "10fd82407ca4e6ab046bf0487968b3de063fa3c0ffa898a9107ec06376553bfb",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r35\\APPLICATION_INTENT_R35.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r35/APPLICATION_R35.json": {
+      "sha256": "0c196eb3376d1625ebc36d4b20b3db6910c5438d25024f0947b7a387e45287a3",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r35\\APPLICATION_R35.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r35/FINAL_LOCAL_STATUS_R35.zh.md": {
+      "sha256": "fad4bc13ad5064a31d28f980893995cf9c1dffe1961f1fbeabbd26fb02092553",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r35\\FINAL_LOCAL_STATUS_R35.zh.md",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r35/HISTORICAL_INPUT_RESOLUTION_R35.json": {
+      "sha256": "3a0d91cb5c72a7eee8ad4c8af18395e43c649fa79b8d3cc55d1b41135dad3fd5",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r35\\HISTORICAL_INPUT_RESOLUTION_R35.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r35/HISTORICAL_INPUT_RESOLUTION_R35_DOCS.json": {
+      "sha256": "ed75888f31fc6e3fb6766762f312707e7afdee306df6562ddf2a2087051cd6da",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r35\\HISTORICAL_INPUT_RESOLUTION_R35_DOCS.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r35/INDEPENDENT_ACCEPTANCE_REVIEW_R35.json": {
+      "sha256": "efd935a252c0db76b1ef73cb16a1dfd37727bdaa4b798f79cdf5274fcd4325b1",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r35\\INDEPENDENT_ACCEPTANCE_REVIEW_R35.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r35/INSTALLED_VALIDATION_R35.json": {
+      "sha256": "609644762d4317bfb0c4d348a9f04bb16793196f68966767e5f8a3edadd7ea2d",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r35\\INSTALLED_VALIDATION_R35.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r35/INSTALL_ORIGIN_SCOPE_R35.json": {
+      "sha256": "2c17b1553e6c676720ab8f003e9ad71f0ffa718849ae439eb50398c3fad44dc6",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r35\\INSTALL_ORIGIN_SCOPE_R35.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r35/NATIVE_GRAPH_R35.json": {
+      "sha256": "e1a8ea1aea0cb14be057116968177f7a6fba3c9724509ff974fd9959cc1f2865",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r35\\NATIVE_GRAPH_R35.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r35/NATIVE_TEST_INPUTS_R35.json": {
+      "sha256": "8bbac68096db2374c4c4872766c5772f27225433696a27b7f4c617a194b1d22d",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r35\\NATIVE_TEST_INPUTS_R35.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r35/NATIVE_TEST_RESULTS_R35.json": {
+      "sha256": "ed0298216becae8ab24845a4a34f6dfbf79ed06accdb10a46baa0b812026a6ee",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r35\\NATIVE_TEST_RESULTS_R35.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r35/PACKAGE_INPUTS_R35.json": {
+      "sha256": "5e6b4164c8d57d1935599ae2e689963d9a7eb3181a8ac64aae8a322f4891f921",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r35\\PACKAGE_INPUTS_R35.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r35/POSTTEST_DOCUMENT_BINDING_R35.json": {
+      "sha256": "ab17a899e4a88f3f82f91372e29f903e5cebccb8a4374cde7f8af6ce02d2dccc",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r35\\POSTTEST_DOCUMENT_BINDING_R35.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r35/README.zh.md": {
+      "sha256": "2caea4adbedaf389a61cbf4b06f4c0ed3da4e6f66254f38fc2a5af3753ab3a76",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r35\\README.zh.md",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r35/REVIEW_ACCEPTANCE_INPUTS_R35.json": {
+      "sha256": "9d8479cb4de0ed875759ef6872ac0613e37ef32e5b51a6c4cf855c2cf5b51868",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r35\\REVIEW_ACCEPTANCE_INPUTS_R35.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r35/apply_reviewed.py": {
+      "sha256": "68aa675eee8cab71a33d1a08542dd246c64b566aa11437e871fb9b96df115bd7",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r35\\apply_reviewed.py",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r35/build_install_r35.py": {
+      "sha256": "824971061d0e7f6f57871c4094f1924aec18b7af8cb1d15f1726c04ce82b6940",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r35\\build_install_r35.py",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r35/native-tests-r35.log": {
+      "sha256": "5a0903aefadb944fa8fdb813f1c4c8e604a864398162a00a08a79061c522158d",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r35\\native-tests-r35.log",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-acceptance-r35/validate_native.py": {
+      "sha256": "99146b1742a66cfa8bc2e2a73ef651293a9e49343b6bac11ad8d30271b88d0f4",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-acceptance-r35\\validate_native.py",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-progress-r33-r34/CURRENT_NATIVE_COUNTS_R1.json": {
+      "sha256": "33087dbaedf7ebfd50d52025b4f229e06f5976ef8d45ebad83984d889b4c61e7",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-progress-r33-r34\\CURRENT_NATIVE_COUNTS_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-progress-r33-r34/README.zh.md": {
+      "sha256": "497b2b6e80b97f5c0771cae84c8540bae3592d2b6bf5dc42977d3e8ee3ddb9a2",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-progress-r33-r34\\README.zh.md",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-progress-r33-r35/CURRENT_NATIVE_COUNTS_R1.json": {
+      "sha256": "965882a77854b7b0492c1ff769d86720e9797448ea5fb01356a8dcaaaf581910",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-progress-r33-r35\\CURRENT_NATIVE_COUNTS_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/local-progress-r33-r35/README.zh.md": {
+      "sha256": "2d2d36626e2079c4304cc1e5e395e28833ca5345a5a6d26b5730af2a3206078d",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\local-progress-r33-r35\\README.zh.md",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/nbr-method-figure-followup-r1/INDEPENDENT_REVIEW_R1.json": {
+      "sha256": "c954478556a8c84491e0626ac49cbf50c26be48d5a2bcde83727b7b17ad7fc32",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\nbr-method-figure-followup-r1\\INDEPENDENT_REVIEW_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/nbr-method-figure-followup-r1/README.zh.md": {
+      "sha256": "9098837824b25bbe822456100f9907b2cea27504661fc76c28053352bdf132bc",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\nbr-method-figure-followup-r1\\README.zh.md",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/nbr-method-figure-followup-r1/REVIEW_INPUTS_R1.json": {
+      "sha256": "54b235ba95f73ab5fd8e92e638c1bd2617549e3b55c7988d0897b0c6378f3fdd",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\nbr-method-figure-followup-r1\\REVIEW_INPUTS_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/nbr-method-figure-followup-r1/SOURCE_FACTS_R1.json": {
+      "sha256": "96fbc3552e8b5be35fa634e99bf4b4e4c14b7e7638e7efb99dc72c71c3ec2512",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\nbr-method-figure-followup-r1\\SOURCE_FACTS_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/nbr-method-figure-followup-r1/SOURCE_UPDATE_PROPOSAL_R1.json": {
+      "sha256": "5728a2e4580ff5a8afd79933c7b190b5f64dfd0ef687af7ad58bd1d91572d050",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\nbr-method-figure-followup-r1\\SOURCE_UPDATE_PROPOSAL_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/nbr-method-figure-followup-r1/VALIDATION_R1.json": {
+      "sha256": "0b4bb30728368483075c0e08a6b0cace4d4401b389b891574d1489f6bee44ed7",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\nbr-method-figure-followup-r1\\VALIDATION_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/nbr-method-figure-followup-r1/build_audit.py": {
+      "sha256": "c50191d28e16315fc105efc2c039b714adaad142cdf3999736e427bfb952aaae",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\nbr-method-figure-followup-r1\\build_audit.py",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/nbr-source-metadata-native-r1/INDEPENDENT_MAPPING_REVIEW_R1.json": {
+      "sha256": "47b84d17ed6e2355fff250848705d96f30a52c7b419256452d65d3ea28bff806",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\nbr-source-metadata-native-r1\\INDEPENDENT_MAPPING_REVIEW_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/nbr-source-metadata-native-r1/MAPPING_FACTS_R1.json": {
+      "sha256": "8e22ffa94c6fbfee0665af211927ff12f30b3a26eebe0d908ffae4289d46bad7",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\nbr-source-metadata-native-r1\\MAPPING_FACTS_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/nbr-source-metadata-native-r1/README.zh.md": {
+      "sha256": "8fe52d24a5dce63d1c15dc4175b71d5dbd5c45cd65f9683dab83368b39c084fb",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\nbr-source-metadata-native-r1\\README.zh.md",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/nbr-source-metadata-native-r1/REVIEW_INPUTS_R1.json": {
+      "sha256": "592e346f0a16dafc0ebeb688c13d19cb198251023052c1574fa672438e96a826",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\nbr-source-metadata-native-r1\\REVIEW_INPUTS_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/nbr-source-metadata-native-r1/VALIDATION_R1.json": {
+      "sha256": "28d570af19232ce3adda0abc9bd26a4b8030791e74e7def4c3ece3c3df8a183c",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\nbr-source-metadata-native-r1\\VALIDATION_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/nbr-source-metadata-native-r1/prepare_mapping.py": {
+      "sha256": "3b102795a2e3506d2bcdffa84555ff21adcd0edc99712d712bdb1f8315cc0d2a",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\nbr-source-metadata-native-r1\\prepare_mapping.py",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/pur-thermal-conductivity-native-mapping-r1/INDEPENDENT_MAPPING_REVIEW_R1.json": {
+      "sha256": "f3a991f3a182f045ddeb322beeccd3000577b2fe0777ddf37ecba024a5203c2c",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\pur-thermal-conductivity-native-mapping-r1\\INDEPENDENT_MAPPING_REVIEW_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/pur-thermal-conductivity-native-mapping-r1/NEW_PROPERTIES_R1.json": {
+      "sha256": "d3298778ed870a800f09fe9a88784def3ed11a8f0d280cee3c6803388088cabc",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\pur-thermal-conductivity-native-mapping-r1\\NEW_PROPERTIES_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/pur-thermal-conductivity-native-mapping-r1/NEW_STATES_R1.json": {
+      "sha256": "aa9e2c4bfb03984497bdecb5f14680be08566c26c030aa34ed03071a9dc1d519",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\pur-thermal-conductivity-native-mapping-r1\\NEW_STATES_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/pur-thermal-conductivity-native-mapping-r1/README.zh.md": {
+      "sha256": "7d4a218b738e69af9c154639a4f112ec95736a9cae996ae0c823856964cb603d",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\pur-thermal-conductivity-native-mapping-r1\\README.zh.md",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/pur-thermal-conductivity-native-mapping-r1/REVIEW_INPUTS_R1.json": {
+      "sha256": "d172d5126d127de988ddab58f920404aedceb719dfb0a40e8fb8077f406f5a67",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\pur-thermal-conductivity-native-mapping-r1\\REVIEW_INPUTS_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/pur-thermal-conductivity-native-mapping-r1/SOURCE_UPDATE_PROPOSAL_R1.json": {
+      "sha256": "cb719efa052bd1f094e2c7630df1b561a009498c84a4cb43891db29776e1d757",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\pur-thermal-conductivity-native-mapping-r1\\SOURCE_UPDATE_PROPOSAL_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/pur-thermal-conductivity-native-mapping-r1/VALIDATION_R1.json": {
+      "sha256": "80d188d736b197ddd2cd207d8f8e419e8d4d1fd9eaaa04e6acf362688cf0ac82",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\pur-thermal-conductivity-native-mapping-r1\\VALIDATION_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/pur-thermal-conductivity-native-mapping-r1/prepare_mapping.py": {
+      "sha256": "05e6b4fb35a2ed763216067ac4a35a1e07b8d161df2e6d994d3e42f550882605",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\pur-thermal-conductivity-native-mapping-r1\\prepare_mapping.py",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/pur-thermal-conductivity-source-contract-r1/CONTRACT_PROPOSAL_R1.json": {
+      "sha256": "9c4e2a160e4819501ce2888be8be2942a01bdd7850f20fc9b7f5fc0d001f564a",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\pur-thermal-conductivity-source-contract-r1\\CONTRACT_PROPOSAL_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/pur-thermal-conductivity-source-contract-r1/INDEPENDENT_SOURCE_REVIEW_R1.json": {
+      "sha256": "f6d68c954a2bd00051504e2fc7404f3910b27dcd7a34e070c3554ba43075457f",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\pur-thermal-conductivity-source-contract-r1\\INDEPENDENT_SOURCE_REVIEW_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/pur-thermal-conductivity-source-contract-r1/README.zh.md": {
+      "sha256": "edf44b62b13f6bcffe4dafb1e93262ca4241b2222d29a1a043bc5febfe494d8d",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\pur-thermal-conductivity-source-contract-r1\\README.zh.md",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/pur-thermal-conductivity-source-contract-r1/REVIEW_INPUTS_R1.json": {
+      "sha256": "ea1b784e7a4e35064f5351a7a085178af241b5a04a00aef5663a9c2827aac9cd",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\pur-thermal-conductivity-source-contract-r1\\REVIEW_INPUTS_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/pur-thermal-conductivity-source-contract-r1/REVIEW_STATUS_R1.zh.md": {
+      "sha256": "36707716ec4f95a7487fed9760e03971bf676e551c234d15452dc68858bfdd29",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\pur-thermal-conductivity-source-contract-r1\\REVIEW_STATUS_R1.zh.md",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/pur-thermal-conductivity-source-contract-r1/SOURCE_FACTS_R1.json": {
+      "sha256": "816dd973a17d239d1dd78f322ae7bfca7015907a375cae3f1823221f68fa5fd5",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\pur-thermal-conductivity-source-contract-r1\\SOURCE_FACTS_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/pur-thermal-conductivity-source-contract-r1/SOURCE_UPDATE_PROPOSAL_R1.json": {
+      "sha256": "cb719efa052bd1f094e2c7630df1b561a009498c84a4cb43891db29776e1d757",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\pur-thermal-conductivity-source-contract-r1\\SOURCE_UPDATE_PROPOSAL_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/pur-thermal-conductivity-source-contract-r1/UNIT_REFERENCE_R1.json": {
+      "sha256": "f6ef2ca18b5e04dc644fbe6b5eaca150b891d192b0cbc8a3ad6bddc4ddab56d7",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\pur-thermal-conductivity-source-contract-r1\\UNIT_REFERENCE_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/pur-thermal-conductivity-source-contract-r1/VALIDATION_R1.json": {
+      "sha256": "8c9cbf90ba7e1507406f368fe93e365ba85d0b94c696804ddcf3196cfe654efb",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\pur-thermal-conductivity-source-contract-r1\\VALIDATION_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/pur-thermal-conductivity-source-contract-r1/prepare_source.py": {
+      "sha256": "77187642188e7e2d7bc5b12635be49c7167a5f8cfc12058385714726c4882962",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\pur-thermal-conductivity-source-contract-r1\\prepare_source.py",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/sahin-ac-breakdown-native-mapping-r1/INDEPENDENT_MAPPING_REVIEW_R1.json": {
+      "sha256": "5029e35cb85e4a822a4f90e356223c9aa986609b61bcbc1b24f96b166e3984c6",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\sahin-ac-breakdown-native-mapping-r1\\INDEPENDENT_MAPPING_REVIEW_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/sahin-ac-breakdown-native-mapping-r1/NEW_PROPERTIES_R1.json": {
+      "sha256": "6dfbf7378545c0a2151e1bc9733bcc306ef270e9fe3bc12556952d2d2e669e92",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\sahin-ac-breakdown-native-mapping-r1\\NEW_PROPERTIES_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/sahin-ac-breakdown-native-mapping-r1/NEW_STATES_R1.json": {
+      "sha256": "7e609df713ae1fa8d2cd93c12f03bcd336038e433f3af1669f39616c8001814b",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\sahin-ac-breakdown-native-mapping-r1\\NEW_STATES_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/sahin-ac-breakdown-native-mapping-r1/README.zh.md": {
+      "sha256": "a36808e2b22c89b52e2a3f8fc0304c08f4d7bc34829c06541054aadd9fe42782",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\sahin-ac-breakdown-native-mapping-r1\\README.zh.md",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/sahin-ac-breakdown-native-mapping-r1/REVIEW_INPUTS_R1.json": {
+      "sha256": "61a68b969342c42ba16cc5cafbd05a02ebfcfb4e50cddd7a9825c7f6343c00b2",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\sahin-ac-breakdown-native-mapping-r1\\REVIEW_INPUTS_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/sahin-ac-breakdown-native-mapping-r1/SOURCE_UPDATE_PROPOSAL_R1.json": {
+      "sha256": "5366e01dcb0b8caffaf329055cad170d92de8c688499ba9b60fe97c947b83d20",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\sahin-ac-breakdown-native-mapping-r1\\SOURCE_UPDATE_PROPOSAL_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/sahin-ac-breakdown-native-mapping-r1/VALIDATION_R1.json": {
+      "sha256": "130f4075a0206edbf7bea1fc7ddf78d4bc79794cc4c88d992c112c0a996185e1",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\sahin-ac-breakdown-native-mapping-r1\\VALIDATION_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/sahin-ac-breakdown-native-mapping-r1/prepare_mapping.py": {
+      "sha256": "fe1fd93bd1c4e6596f0970fda01e2c5da280aff39b53df832a235fbab9072695",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\sahin-ac-breakdown-native-mapping-r1\\prepare_mapping.py",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/sahin-ac-breakdown-source-contract-r1/CONTRACT_PROPOSAL_R1.json": {
+      "sha256": "448f4a5b14fce3ffaa09d4cb522f1256331cbdf4200b785afb4d2244a28769d3",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\sahin-ac-breakdown-source-contract-r1\\CONTRACT_PROPOSAL_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/sahin-ac-breakdown-source-contract-r1/INDEPENDENT_SOURCE_REVIEW_R1.json": {
+      "sha256": "d45ae144ac0eb82d25c018e7808f9a6a526f197b6cd95835d22be367d09ecd7d",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\sahin-ac-breakdown-source-contract-r1\\INDEPENDENT_SOURCE_REVIEW_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/sahin-ac-breakdown-source-contract-r1/README.zh.md": {
+      "sha256": "b4af452aafb8bf2e45b12afc6a6bb5118c2bffd64ea278d6e4568b375ef54d50",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\sahin-ac-breakdown-source-contract-r1\\README.zh.md",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/sahin-ac-breakdown-source-contract-r1/REVIEW_INPUTS_R1.json": {
+      "sha256": "b5acc90a255662bc817f4b65e5b2f288d296b9848457223c4ed8cd4d282f3353",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\sahin-ac-breakdown-source-contract-r1\\REVIEW_INPUTS_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/sahin-ac-breakdown-source-contract-r1/SOURCE_FACTS_R1.json": {
+      "sha256": "a5cdd7f77a4e9cafe6a01dc9310e0a41bbb9cc0e8af3f88ed27d5fa83a615d8c",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\sahin-ac-breakdown-source-contract-r1\\SOURCE_FACTS_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/sahin-ac-breakdown-source-contract-r1/SOURCE_UPDATE_PROPOSAL_R1.json": {
+      "sha256": "5366e01dcb0b8caffaf329055cad170d92de8c688499ba9b60fe97c947b83d20",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\sahin-ac-breakdown-source-contract-r1\\SOURCE_UPDATE_PROPOSAL_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/sahin-ac-breakdown-source-contract-r1/UNIT_REFERENCE_R1.json": {
+      "sha256": "b82ab454e904b7605bde5af531ab86099eb18c8065f613d762c017ee735c9236",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\sahin-ac-breakdown-source-contract-r1\\UNIT_REFERENCE_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/sahin-ac-breakdown-source-contract-r1/VALIDATION_R1.json": {
+      "sha256": "3e80921b2eafae3138d9a3bfdbb27cf402666e614e45a5da22513978c1bd5ffe",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\sahin-ac-breakdown-source-contract-r1\\VALIDATION_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/sahin-ac-breakdown-source-contract-r1/prepare_source.py": {
+      "sha256": "feb266edb68b3fd39c8b2386659010c637983afcd400ca985bfe1bd18e521230",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\sahin-ac-breakdown-source-contract-r1\\prepare_source.py",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/thermal-conductivity-contract-implementation-r1/CURRENT_OLD_DATA_GRAPH_R1.json": {
+      "sha256": "f48b2baf8a6328781f21bccd0f8e5ae84d567152f9f512f6fe881759abe73628",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\thermal-conductivity-contract-implementation-r1\\CURRENT_OLD_DATA_GRAPH_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/thermal-conductivity-contract-implementation-r1/INDEPENDENT_IMPLEMENTATION_REVIEW_R1.json": {
+      "sha256": "f2a8a025c27fcbfd4364fd9dd83e7e48b0c6d07e002d22c9f29fccbc5fdef548",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\thermal-conductivity-contract-implementation-r1\\INDEPENDENT_IMPLEMENTATION_REVIEW_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/thermal-conductivity-contract-implementation-r1/LEGACY_SCHEMA_COMPATIBILITY_R1.json": {
+      "sha256": "c1489a418b9bfc13a4e9b5a83c8bb0f6e68d9c383712cb64866514f04a79d72f",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\thermal-conductivity-contract-implementation-r1\\LEGACY_SCHEMA_COMPATIBILITY_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/thermal-conductivity-contract-implementation-r1/PATCH_INPUTS_R1.json": {
+      "sha256": "919b16efec17c1a3d8d14eaa63956fcf70328018f5e462b15519ca880299a983",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\thermal-conductivity-contract-implementation-r1\\PATCH_INPUTS_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/thermal-conductivity-contract-implementation-r1/README.zh.md": {
+      "sha256": "151e2490bd66c03195789c5c78c8b98ecb45ad5d4a213ef994b9faafa667a17f",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\thermal-conductivity-contract-implementation-r1\\README.zh.md",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/thermal-conductivity-contract-implementation-r1/REVIEW_INPUTS_R1.json": {
+      "sha256": "5d6bc1f75c8deb53178d54e87a83cf9041e694bd9c50a1ccc69faaadcb9ee837",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\thermal-conductivity-contract-implementation-r1\\REVIEW_INPUTS_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/thermal-conductivity-contract-implementation-r1/SCOPED_TEST_RESULTS_R1.json": {
+      "sha256": "751a390cab58d39d4f20c9efe5f22a77e7e2d4b8d36c7de1a339dad911a6f29e",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\thermal-conductivity-contract-implementation-r1\\SCOPED_TEST_RESULTS_R1.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/thermal-conductivity-contract-implementation-r1/implementation.patch": {
+      "sha256": "36ad00c9e653b855d262c97a4b02c8728176443bfc9c20c59857bd20ed9fce59",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\thermal-conductivity-contract-implementation-r1\\implementation.patch",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/thermal-conductivity-contract-implementation-r1/payload/docs/MATERIAL_REFERENCE_CATALOG.md": {
+      "sha256": "2624655abccf3ae40bc47a106f7943c08b8afa8a6755827526afa5b5201958cf",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\thermal-conductivity-contract-implementation-r1\\payload\\docs\\MATERIAL_REFERENCE_CATALOG.md",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/thermal-conductivity-contract-implementation-r1/payload/materials_boundaries/data/material_locales.json": {
+      "sha256": "e63e0ffe2fbc8c65d91ec0f169b97867bf130528e7a4bdbcdc7576d6a3822b38",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\thermal-conductivity-contract-implementation-r1\\payload\\materials_boundaries\\data\\material_locales.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/thermal-conductivity-contract-implementation-r1/payload/materials_boundaries/material_presentation.py": {
+      "sha256": "e6c2cf12ed16f9019b111d85e9b8ee30e006e8a5ae1d575b69a03ac910445170",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\thermal-conductivity-contract-implementation-r1\\payload\\materials_boundaries\\material_presentation.py",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/thermal-conductivity-contract-implementation-r1/payload/materials_boundaries/material_references.py": {
+      "sha256": "a8e7515cc4301fcea2b881687cd2a7e25bb0122f8a1649cdb23bde7cea6385ad",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\thermal-conductivity-contract-implementation-r1\\payload\\materials_boundaries\\material_references.py",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/thermal-conductivity-contract-implementation-r1/payload/schemas/reference_properties.schema.json": {
+      "sha256": "59daab8caf643d0690480feb0e2593322817baa2dac3d8d86dae956f084d51fd",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\thermal-conductivity-contract-implementation-r1\\payload\\schemas\\reference_properties.schema.json",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/thermal-conductivity-contract-implementation-r1/payload/tests/test_compression_reference_contract.py": {
+      "sha256": "fe85686284285a9be5da151df0aa55bfaca53cd5e2a1026ca5ab3e4d5a881c68",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\thermal-conductivity-contract-implementation-r1\\payload\\tests\\test_compression_reference_contract.py",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/thermal-conductivity-contract-implementation-r1/payload/tests/test_flexural_elongation_contract.py": {
+      "sha256": "5df8ec7b7f95aa8354c6fc25a555b45e0603dbb624485603df6ea478e3264df7",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\thermal-conductivity-contract-implementation-r1\\payload\\tests\\test_flexural_elongation_contract.py",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/thermal-conductivity-contract-implementation-r1/payload/tests/test_glass_transition_temperature_contract.py": {
+      "sha256": "333bf49210bc179f15ad9124145f5c0fb0fb7ca0f2d97e454d8031e74cfb19c2",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\thermal-conductivity-contract-implementation-r1\\payload\\tests\\test_glass_transition_temperature_contract.py",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/thermal-conductivity-contract-implementation-r1/payload/tests/test_izod_impact_contract.py": {
+      "sha256": "53dc30a9b24a9524f8414c1ad126d75fc12e2074e919b5eb7a9a3947aaff1668",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\thermal-conductivity-contract-implementation-r1\\payload\\tests\\test_izod_impact_contract.py",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/thermal-conductivity-contract-implementation-r1/payload/tests/test_melting_peak_temperature_contract.py": {
+      "sha256": "8b2d7f971f9305b9d4e3d401fdf52f435c9f7975740ee86b8c29c6197d49e234",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\thermal-conductivity-contract-implementation-r1\\payload\\tests\\test_melting_peak_temperature_contract.py",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/thermal-conductivity-contract-implementation-r1/payload/tests/test_shore_a_hardness_contract.py": {
+      "sha256": "045c9758ef09ed36e68511898e3ca4b79325c302dffa70961a91541b27273b10",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\thermal-conductivity-contract-implementation-r1\\payload\\tests\\test_shore_a_hardness_contract.py",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/thermal-conductivity-contract-implementation-r1/payload/tests/test_tear_strength_contract.py": {
+      "sha256": "0b11747a8cdba665ec707ace188a5508823cb5e7e7d864e5580a84b271888be1",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\thermal-conductivity-contract-implementation-r1\\payload\\tests\\test_tear_strength_contract.py",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/thermal-conductivity-contract-implementation-r1/payload/tests/test_thermal_conductivity_contract.py": {
+      "sha256": "d40408387edda123bb5df6ee996762d36efd60a323846e502026b050923a8984",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\thermal-conductivity-contract-implementation-r1\\payload\\tests\\test_thermal_conductivity_contract.py",
+      "current": true
+    },
+    "experimental/polymer-exploration/20261104/thermal-conductivity-contract-implementation-r1/prepare_prototype.py": {
+      "sha256": "5e3a1dbfa4deceac90c0e9908fbd6b70a2a3fca9f37a795dad6bc065c78e19e0",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\experimental\\polymer-exploration\\20261104\\thermal-conductivity-contract-implementation-r1\\prepare_prototype.py",
+      "current": true
+    },
+    "materials_boundaries/data/material_locales.json": {
+      "sha256": "e63e0ffe2fbc8c65d91ec0f169b97867bf130528e7a4bdbcdc7576d6a3822b38",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\materials_boundaries\\data\\material_locales.json",
+      "current": true
+    },
+    "materials_boundaries/data/materials.json": {
+      "sha256": "fd267dda30815a58663074d182f0af9875388026d6d4575ec9bc333baf8ebd47",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\materials_boundaries\\data\\materials.json",
+      "current": true
+    },
+    "materials_boundaries/data/reference_properties.json": {
+      "sha256": "6adf1273c88ca26221e0c9337e31923524fdcab7aa5e6b290c2cd40b1cba4bc6",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\materials_boundaries\\data\\reference_properties.json",
+      "current": true
+    },
+    "materials_boundaries/data/sources.json": {
+      "sha256": "9bb081a43294e2880b188dc3957ec7a46dcb139b6d21a4c65c75c29703882651",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\materials_boundaries\\data\\sources.json",
+      "current": true
+    },
+    "materials_boundaries/material_presentation.py": {
+      "sha256": "e6c2cf12ed16f9019b111d85e9b8ee30e006e8a5ae1d575b69a03ac910445170",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\materials_boundaries\\material_presentation.py",
+      "current": true
+    },
+    "materials_boundaries/material_references.py": {
+      "sha256": "a8e7515cc4301fcea2b881687cd2a7e25bb0122f8a1649cdb23bde7cea6385ad",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\materials_boundaries\\material_references.py",
+      "current": true
+    },
+    "schemas/reference_properties.schema.json": {
+      "sha256": "59daab8caf643d0690480feb0e2593322817baa2dac3d8d86dae956f084d51fd",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\schemas\\reference_properties.schema.json",
+      "current": true
+    },
+    "tests/test_compression_reference_contract.py": {
+      "sha256": "fe85686284285a9be5da151df0aa55bfaca53cd5e2a1026ca5ab3e4d5a881c68",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\tests\\test_compression_reference_contract.py",
+      "current": true
+    },
+    "tests/test_dielectric_breakdown_strength_contract.py": {
+      "sha256": "0bbd2377b171e9185c2abbc9d43b91f3f3cedff571f0f1b410b7c31588122a96",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\tests\\test_dielectric_breakdown_strength_contract.py",
+      "current": true
+    },
+    "tests/test_flexural_elongation_contract.py": {
+      "sha256": "5df8ec7b7f95aa8354c6fc25a555b45e0603dbb624485603df6ea478e3264df7",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\tests\\test_flexural_elongation_contract.py",
+      "current": true
+    },
+    "tests/test_glass_transition_temperature_contract.py": {
+      "sha256": "333bf49210bc179f15ad9124145f5c0fb0fb7ca0f2d97e454d8031e74cfb19c2",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\tests\\test_glass_transition_temperature_contract.py",
+      "current": true
+    },
+    "tests/test_izod_impact_contract.py": {
+      "sha256": "53dc30a9b24a9524f8414c1ad126d75fc12e2074e919b5eb7a9a3947aaff1668",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\tests\\test_izod_impact_contract.py",
+      "current": true
+    },
+    "tests/test_melting_peak_temperature_contract.py": {
+      "sha256": "8b2d7f971f9305b9d4e3d401fdf52f435c9f7975740ee86b8c29c6197d49e234",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\tests\\test_melting_peak_temperature_contract.py",
+      "current": true
+    },
+    "tests/test_shore_a_hardness_contract.py": {
+      "sha256": "045c9758ef09ed36e68511898e3ca4b79325c302dffa70961a91541b27273b10",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\tests\\test_shore_a_hardness_contract.py",
+      "current": true
+    },
+    "tests/test_tear_strength_contract.py": {
+      "sha256": "0b11747a8cdba665ec707ace188a5508823cb5e7e7d864e5580a84b271888be1",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\tests\\test_tear_strength_contract.py",
+      "current": true
+    },
+    "tests/test_thermal_conductivity_contract.py": {
+      "sha256": "d40408387edda123bb5df6ee996762d36efd60a323846e502026b050923a8984",
+      "resolved_path_hint": "F:\\材料边界\\open-database\\tests\\test_thermal_conductivity_contract.py",
+      "current": true
+    }
+  },
+  "unresolved": 0,
+  "tests_not_rerun": "No productioncode/data change;current203andartifactbindings unchanged"
+}

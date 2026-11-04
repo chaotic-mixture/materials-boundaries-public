@@ -1,0 +1,37 @@
+{
+  "schema": "closed-electric-field-reference-contract-proposal/1",
+  "status": "proposal_only_unimplemented",
+  "quantity": "dielectric_breakdown_strength",
+  "dimension": "electric_field",
+  "units": [
+    "V/m",
+    "kV/mm"
+  ],
+  "source_unit_preserved": "kV/mm",
+  "positive_scalar_centre": true,
+  "nonnegative_absolute_uncertainty": true,
+  "unit_reference": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-4-two-classes-si-units-and-si-prefixes",
+  "unit_basis": "NIST Table4 electricfieldstrength V/m;Table5 kilo10^3,milli10^-3. Arithmetic relation1kV/mm=10^6V/m;not a source-value conversion or automatic runtime normalization.",
+  "schema_rule": "Add explicit quantity/dimension/unit branch;retain all old closed branches,fixedpoint/scientific literals,uncertainty roles andforbidden descriptors. No generic acceptance ofvoltage-only V/kV,pressure units or frequency units.",
+  "method_definition": "Existing source_reported_conventional descriptor with AC rapid-rise/electrodes/oil/ramp andexplicit unknowns;no generic electric-field model or DC/impulse equivalence.",
+  "engine_support": "catalog_only,engineering_allowable=False,universal_bound=False;no evaluatorinput or voltage/thickness calculator",
+  "planned_positive_checks": [
+    "Fictionalpositive source-scalar electricfield,query/export roundtrip andfour-language metadata",
+    "Native5source values/n3/ASAmean versus4unknown centres retained exactly",
+    "Absolute SD uses electricfieldunit andnonnegativeamplitude;current5uncertaintiesremainNone"
+  ],
+  "planned_rejection_checks": [
+    "zero/negative central electricbreakdownfield",
+    "MPa,GPa,V,kV,Hz or temperature unit asfieldscalar",
+    "electricfieldunits onoldmechanical/density/temperature quantities",
+    "wrongdimension orother-quantity specified_elongation/density descriptors",
+    "noncanonical unitrole or centre/uncertainty mismatch"
+  ],
+  "scientific_limits": "Software cannot certify source truth,mean/median or waveform semantics. Producer/source review must exclude Weibull quantiles and guessed RMS/temperature;no production ID whitelist.",
+  "next_gates": [
+    "Independent source/identity/statistical adjudication",
+    "Separate frozen contract implementation and meaningful fictional role tests",
+    "Separate exact native mapping,installation/integration review before admission"
+  ],
+  "native_applied": false
+}

@@ -21,6 +21,8 @@ from urllib.parse import urlsplit
 LANGUAGES = ("en", "zh", "ja", "de")
 CATEGORIES = ("metal", "inorganic", "polymer", "composite", "natural")
 QUANTITY_DIMENSIONS = {
+    "thermal_conductivity": "power_per_length_temperature",
+    "dielectric_breakdown_strength": "electric_field",
     "mass_density": "mass_per_volume",
     "basic_wood_density": "mass_per_volume",
     "youngs_modulus": "pressure",
@@ -45,6 +47,8 @@ QUANTITY_DIMENSIONS = {
     "slump_flow_spread": "length",
 }
 UNIT_DIMENSIONS = {
+    "W/(m*K)": "power_per_length_temperature", "mW/(m*K)": "power_per_length_temperature",
+    "V/m": "electric_field", "kV/mm": "electric_field",
     "degC": "temperature", "K": "temperature",
     "mm": "length",
     "kJ/m^2": "energy_per_area", "J/m^2": "energy_per_area",
@@ -56,6 +60,8 @@ UNIT_DIMENSIONS = {
     "percent_elongation": "dimensionless",
     "shore_a_scale": "dimensionless",
 }
+THERMAL_CONDUCTIVITY_UNITS = ("W/(m*K)", "mW/(m*K)")
+ELECTRIC_FIELD_UNITS = ("V/m", "kV/mm")
 PERCENT_ELONGATION_QUANTITIES = (
     "tensile_elongation_at_break", "tensile_elongation_at_strength",
     "flexural_elongation_at_break",
@@ -216,6 +222,12 @@ def _make_properties_schema():
     definitions["elongation_reported_value"] = deepcopy(definitions["reported_value"])
     definitions["shore_a_reported_value"] = deepcopy(definitions["reported_value"])
     definitions["temperature_reported_value"] = deepcopy(definitions["reported_value"])
+    definitions["thermal_conductivity_reported_value"] = deepcopy(definitions["reported_value"])
+    for branch in definitions["thermal_conductivity_reported_value"]["oneOf"]:
+        branch["properties"]["unit_code"] = _enum(THERMAL_CONDUCTIVITY_UNITS)
+    definitions["electric_field_reported_value"] = deepcopy(definitions["reported_value"])
+    for branch in definitions["electric_field_reported_value"]["oneOf"]:
+        branch["properties"]["unit_code"] = _enum(ELECTRIC_FIELD_UNITS)
     for branch in definitions["temperature_reported_value"]["oneOf"]:
         branch["properties"]["unit_code"] = _enum(TEMPERATURE_UNITS)
         for key in ("number", "lower", "upper"):
@@ -227,7 +239,7 @@ def _make_properties_schema():
     for branch in definitions["legacy_reported_value"]["oneOf"]:
         branch["properties"]["unit_code"] = _enum(
             code for code in UNIT_DIMENSIONS
-            if code not in {"percent_elongation", "shore_a_scale", *TEMPERATURE_UNITS})
+            if code not in {"percent_elongation", "shore_a_scale", *TEMPERATURE_UNITS, *ELECTRIC_FIELD_UNITS, *THERMAL_CONDUCTIVITY_UNITS})
     for branch in definitions["elongation_reported_value"]["oneOf"]:
         branch["properties"]["unit_code"] = {"const": "percent_elongation"}
     # Closed source-reported uncertainty variants. An amplitude alone never
@@ -313,7 +325,8 @@ def _make_properties_schema():
     definitions["property"] = _object({
         "id": _id("refprop"), "version": _record_revision(), "material_state_id": _id("state"),
         "quantity": _enum(QUANTITY_DIMENSIONS),
-        "quantity_dimension": _enum(sorted(set(QUANTITY_DIMENSIONS.values()))),
+        "quantity_dimension": _enum(sorted({dimension for quantity, dimension in QUANTITY_DIMENSIONS.items()
+                                             if quantity not in {"dielectric_breakdown_strength", "thermal_conductivity"}})),
         "source_property_label": TEXT, "reported_value": _ref("legacy_reported_value"),
         "evidence_kind": _enum(EVIDENCE_KINDS), "reporting_basis": _enum(REPORTING_BASES),
         "determination_basis": _enum(("source_reports_measurement", "source_reports_calculation", "source_reports_compiled_measurements", "not_stated", "mixed_or_unclear")),
@@ -359,13 +372,23 @@ def _make_properties_schema():
     temperature["properties"]["quantity_dimension"] = {"const": "temperature"}
     temperature["properties"]["reported_value"] = _ref("temperature_reported_value")
     del temperature["properties"]["specified_elongation"]
+    electric = deepcopy(definitions["property"])
+    electric["properties"]["quantity"] = {"const": "dielectric_breakdown_strength"}
+    electric["properties"]["quantity_dimension"] = {"const": "electric_field"}
+    electric["properties"]["reported_value"] = _ref("electric_field_reported_value")
+    del electric["properties"]["specified_elongation"]
+    thermal = deepcopy(definitions["property"])
+    thermal["properties"]["quantity"] = {"const": "thermal_conductivity"}
+    thermal["properties"]["quantity_dimension"] = {"const": "power_per_length_temperature"}
+    thermal["properties"]["reported_value"] = _ref("thermal_conductivity_reported_value")
+    del thermal["properties"]["specified_elongation"]
     other = definitions["property"]
     other["properties"]["quantity"] = _enum(
         q for q in QUANTITY_DIMENSIONS
-        if q not in {"tensile_stress_at_specified_elongation", "shore_a_hardness", *TEMPERATURE_QUANTITIES}
+        if q not in {"thermal_conductivity", "dielectric_breakdown_strength", "tensile_stress_at_specified_elongation", "shore_a_hardness", *TEMPERATURE_QUANTITIES}
         and q not in PERCENT_ELONGATION_QUANTITIES)
     del other["properties"]["specified_elongation"]
-    definitions["property"] = {"oneOf": [other, stress, elongation, shore, temperature]}
+    definitions["property"] = {"oneOf": [other, stress, elongation, shore, temperature, electric, thermal]}
     return {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "$id": "urn:materials-boundaries:schema:reference_properties:1.0.0",
@@ -624,6 +647,9 @@ def _validate_links(materials, properties, indices):
 # Only spelling/typography normalization; these mappings never change a unit or
 # infer a quantity. Unknown spellings need deliberate capability review.
 _UNIT_SPELLINGS = {
+    "W/(m*K)": {"W/(m*K)", "W/(m·K)"},
+    "mW/(m*K)": {"mW/(m*K)", "mW/(m·K)"},
+    "V/m": {"V/m"}, "kV/mm": {"kV/mm"},
     "degC": {"°C", "° C", "degC"}, "K": {"K"},
     "mm": {"mm"},
     "kJ/m^2": {"kJ/m^2", "kJ/m2", "kJ/m²"},
