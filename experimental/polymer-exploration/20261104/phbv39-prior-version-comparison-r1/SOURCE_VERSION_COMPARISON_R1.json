@@ -1,0 +1,118 @@
+{
+  "schema": "existing-PHBV-prior-version-research-comparison/1",
+  "status": "research_only_not_native_admission",
+  "identity_id": "mat_abbasi2022_manure_phbv39",
+  "prior_work": {
+    "author": "Nicholas Mark Guho",
+    "dissertation_year": 2022,
+    "title": "Polyhydroxyalkanoate Production from Dairy Manure Using Mixed Microbial Consortia",
+    "chapter": 2,
+    "chapter_publication_relationship": "The indexed chapter introduction states a version was published in 2020 with DOI 10.1016/j.biteb.2020.100588; this is not proof of byte equality with that journal version.",
+    "known_library_object_path": "https://s3.amazonaws.com/na-st01.ext.exlibrisgroup.com/01ALLIANCE_UID/storage/alma/84/4A/7A/18/8C/06/80/17/E0/CE/C7/60/90/D7/10/B8/Nicholas%20Guho.pdf"
+  },
+  "evidence_quality": {
+    "accessible": "Search-tool indexed primary dissertation text; preserved tool readbacks outside repository.",
+    "not_obtained": [
+      "Original dissertation PDF bytes",
+      "Table page image",
+      "Final 2020 journal full text",
+      "Raw measurements",
+      "Stable refreshed library download link"
+    ],
+    "direct_download": "HTTP403; see external ACQUISITION_R1.json",
+    "screenshot": "Search tool screenshot of requested PDF page index32 returned cache miss, not a successful page inspection.",
+    "no_pdf_hash_claim": true
+  },
+  "comparison": [
+    {
+      "property_id": "refprop_abbasi2022_manure_phbv39_glass_transition_temperature",
+      "current_native_value": {
+        "kind": "scalar",
+        "number": "-5.3",
+        "value_text": "−5.3",
+        "unit_code": "degC",
+        "unit_text": "°C"
+      },
+      "current_sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Selected PHBV-39 Table4 Tg cell:actual contributing measurement/specimen and independent batch counts unknown because per-cell run provenance is unresolved.",
+        "source_statement": "Section2.2.5 states a common in-duplicate DSC method;section3.4 jointly cites Guho results and reanalysis. Common duplication is retained separately,not asserted as this scalar n.",
+        "evidence": []
+      },
+      "current_summary_statistic": "not_stated",
+      "current_uncertainty": null,
+      "prior_dissertation_parser_lead": {
+        "number": "-6.8",
+        "plus_minus_amplitude": "0.9",
+        "unit": "degC",
+        "status": "provisional_parser_readback_not_visual_or_original_pdf_verified"
+      }
+    },
+    {
+      "property_id": "refprop_abbasi2022_manure_phbv39_melting_peak_1_temperature",
+      "current_native_value": {
+        "kind": "scalar",
+        "number": "159.7",
+        "value_text": "159.7",
+        "unit_code": "degC",
+        "unit_text": "°C"
+      },
+      "current_sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Selected PHBV-39 Table4 Tm1 cell:actual contributing measurement/specimen and independent batch counts unknown;per-cell original/reanalysis run linkage unresolved.",
+        "source_statement": "Common section2.2.5 DSC method states in duplicate;this does not establish selected Tm1 n. Neither two peak columns nor two heating cycles count as independent specimens.",
+        "evidence": []
+      },
+      "current_summary_statistic": "not_stated",
+      "current_uncertainty": null,
+      "prior_dissertation_parser_lead": {
+        "number": "159.8",
+        "plus_minus_amplitude": "0.2",
+        "unit": "degC",
+        "status": "provisional_parser_readback_not_visual_or_original_pdf_verified"
+      }
+    },
+    {
+      "property_id": "refprop_abbasi2022_manure_phbv39_melting_peak_2_temperature",
+      "current_native_value": {
+        "kind": "scalar",
+        "number": "170.1",
+        "value_text": "170.1",
+        "unit_code": "degC",
+        "unit_text": "°C"
+      },
+      "current_sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Selected PHBV-39 Table4 Tm2 cell:actual contributing measurement/specimen and independent batch counts unknown;per-cell original/reanalysis run linkage unresolved.",
+        "source_statement": "Common section2.2.5 DSC method states in duplicate;this does not establish selected Tm2 n. Neither two peak columns nor two heating cycles count as independent specimens.",
+        "evidence": []
+      },
+      "current_summary_statistic": "not_stated",
+      "current_uncertainty": null,
+      "prior_dissertation_parser_lead": {
+        "number": "170.2",
+        "plus_minus_amplitude": "0.2",
+        "unit": "degC",
+        "status": "provisional_parser_readback_not_visual_or_original_pdf_verified"
+      }
+    }
+  ],
+  "method_and_statistics_leads": {
+    "prior_dissertation_section_2_2_2_5": "Indexed DSC method says in triplicate; Q200 DSC, second heating peak/inflection criteria.",
+    "prior_dissertation_table_2_2": "Indexed footnote identifies mean and standard deviation, with a precision-rounding caveat.",
+    "current_Abbasi_2022_section_2_2_5": "Retained primary XML says in duplicate.",
+    "current_Abbasi_2022_section_3_4": "Mixes prior Guho results and reanalysis without per-cell original-run linkage."
+  },
+  "decisions": [
+    "Keep the three current native values, selected exact n, scalar summary and uncertainties unchanged.",
+    "Do not transplant prior dissertation triplicate method or Table2.2 mean/SD into current Table4 scalar records.",
+    "Operational day39 and similar melting peaks do not establish identical aliquots, run identity or version equivalence.",
+    "Numerical differences do not prove independent experiments, erroneous current values or a basis to average or replace them.",
+    "Before admitting any prior-version data, obtain a verifiable full-text copy and visually check the table, footnotes, identity, method, license and publication-version relationship."
+  ],
+  "native_applied": false,
+  "pushed": false
+}

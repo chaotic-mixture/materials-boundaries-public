@@ -1,0 +1,69 @@
+{
+  "schema": "existing-polymer-supplement-provenance-audit/1",
+  "source_id": "abbasi_2022_manure_phbv",
+  "doi": "10.3390/polym14194140",
+  "pmcid": "PMC9571417",
+  "identity_id": "mat_abbasi2022_manure_phbv39",
+  "state_id": "state_abbasi2022_manure_phbv39_dsc_second_heating",
+  "scope": "Supplementary evidence for three existing PHBV-39 thermal records; no new values, identities, states or contract changes.",
+  "acquisition": {
+    "official_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9571417/supplementaryFiles",
+    "outer_zip_sha256": "3b693fe68343e23c3f6ebe71b3f9657ba2852cdfcb7a04de556326fd0fde729a",
+    "nested_zip_sha256": "d52534fea2035e067a8cd434179ebda24ebaa14c890eeedb5034cec0ad98da1b",
+    "pdf_sha256": "f43676b7d77563dcdb6dfa3747ea716735fa60ae37622fc0ea347e7ad80858e9",
+    "pdf_pages": 6,
+    "all_six_rendered_pages_visually_checked": true,
+    "main_xml_sha256": "a37eac0af73559b942f680a671d41a4d870d66d94b76e825cdaf61cc6cd3a3a5"
+  },
+  "page_findings": [
+    {
+      "page": 1,
+      "locator": "Figure S1(a)/(b)",
+      "confirmed": "DSC series includes PHBV-39; panel (a) is second heating, panel (b) first cooling. This independently inspects the supplementary figure already cited by the main text.",
+      "limits": "No replicate/run identifiers, scalar aggregation rule, error bars or per-cell prior-study provenance are supplied. Curves were not digitized; peak temperatures and Tg remain sourced to Table 4, not estimated from this figure."
+    },
+    {
+      "page": 2,
+      "locator": "Figure S2(a)/(b)",
+      "confirmed": "TGA and DTG series includes PHBV-39.",
+      "limits": "No TGA value accepted here; do not transfer TGA acquisition conditions to DSC. The upper panel uses a Weight Loss (%) label although curves descend from near 100; no reinterpretation or correction is made."
+    },
+    {
+      "page": 3,
+      "locator": "Figure S3 and Table S1",
+      "confirmed": "NMR spectrum and chemical shift table are explicitly for PHBV-61.",
+      "limits": "Not PHBV-39 composition evidence; no transfer of assay, sequence distribution or identity."
+    },
+    {
+      "pages": [
+        4,
+        5,
+        6
+      ],
+      "locator": "Sequence-distribution equations and references",
+      "confirmed": "NMR sequence-distribution models, definitions and references.",
+      "limits": "No additional PHBV-39 DSC replicate attribution, scalar summary or conditioning information identified in these inspected pages; equations not validated or implemented."
+    }
+  ],
+  "retained_unknowns": {
+    "selected_scalar_exact_n": null,
+    "scalar_summary_statistic": null,
+    "scalar_SD_SE_CI": null,
+    "original_run_and_reanalysis_attribution_by_cell": null,
+    "independence_from_Guho2020": null,
+    "DSC_specific_conditioning_RH_and_duration": null,
+    "DSC_exact_sample_mass": null,
+    "pan_lid_and_geometry": null,
+    "baseline_algorithm_and_calibration_certificate": null
+  },
+  "use_boundaries": [
+    "Method-level duplicate measurements in main section 2.2.5 do not establish selected scalar n=2; one plotted trace does not establish n=1.",
+    "Second heating and first cooling are acquisition phases, not independent material identities or statistical repetitions.",
+    "Do not apply mechanical vacuum drying at 60 degC overnight or mechanical specimen geometry to DSC.",
+    "Two melting peaks remain two source-labeled properties on one state, not an interval, mean or two materials.",
+    "Guho2020 full text and raw data were not obtained in this audit; lack of supplementary attribution cannot establish independent 2022 measurement.",
+    "License and scientific validity of uninspected prior-study content are not certified; no raw PDF or ZIP is added to the repository."
+  ],
+  "native_applied": false,
+  "pushed": false
+}

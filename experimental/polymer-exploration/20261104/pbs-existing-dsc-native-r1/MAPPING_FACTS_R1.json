@@ -1,0 +1,3955 @@
+{
+  "property_records": {
+    "refprop_ewurum2025_b0_dsc_melting_temperature": {
+      "id": "refprop_ewurum2025_b0_dsc_melting_temperature",
+      "version": "1.0.0",
+      "material_state_id": "state_ewurum2025_b0_extruded_dsc_second_heating",
+      "quantity": "melting_peak_temperature",
+      "quantity_dimension": "temperature",
+      "source_property_label": "Tm (°C), Table 4",
+      "reported_value": {
+        "kind": "scalar",
+        "number": "115",
+        "value_text": "115",
+        "unit_code": "degC",
+        "unit_text": "°C"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "not_stated",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Table4 B0 literal at source integer precision;central aggregation,selected n and numerical dispersion not stated. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45.",
+      "conditions": {
+        "temperature": {
+          "status": "reported",
+          "text": "DSC program30 to150°C at10°C/min,cool to30°C at−10°C/min,then second ramp to150°C at10°C/min;hold durations unknown.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45."
+        },
+        "test_standard": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No DSC-specific standard named in inspected method;mechanical ASTM standards not transferred."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Source Table4 Tm of extruded PBS formulation,Perkin Elmer DSC-7,nominal10mg. DSC program30 to150°C at10°C/min,cool to30°C at−10°C/min,then second ramp to150°C at10°C/min;hold durations unknown. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. Section3.5 describes a large main melting peak as Tm2;Table4 label remains Tm. Precise peak-picking/baseline algorithm unknown;not onset,Tg,Tc or TGA.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source main-peak context retained;not a certified generic melting point."
+        },
+        "direction": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading direction is not applicable;specimen isotropy is not inferred."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "DSC-specific RH,moisture equilibrium,storage and pre-scan drying unknown. Reactive precursor drying is not DSC conditioning;no such schedule assigned to B-series."
+        },
+        "loading_rate": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading rate not applicable;thermal ramp recorded separately."
+        },
+        "additional_conditions": [
+          {
+            "name": "thermal_heating_rate",
+            "fact": {
+              "status": "reported",
+              "text": "10°C/min",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": null
+            }
+          },
+          {
+            "name": "thermal_cooling_rate",
+            "fact": {
+              "status": "reported",
+              "text": "−10°C/min to30°C",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": null
+            }
+          },
+          {
+            "name": "thermal_peak_label",
+            "fact": {
+              "status": "reported",
+              "text": "Tm,Table4",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.10 Table4 B0 row × Tm(°C) column",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Main-peak Tm2 context appears in section3.5;column itself is Tm. No per-row Tm1 inferred."
+            }
+          },
+          {
+            "name": "scan_phase_context",
+            "fact": {
+              "status": "reported",
+              "text": "Second heating,shared section3.5/Figure4 context",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45."
+            }
+          },
+          {
+            "name": "nominal_DSC_sample_mass",
+            "fact": {
+              "status": "reported",
+              "text": "10mg",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Nominal source method,not replicate count or actual weighing log."
+            }
+          },
+          {
+            "name": "purge_atmosphere_and_flow",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Not specified in DSC paragraph;TGA nitrogen30mL/min not transferred."
+            }
+          },
+          {
+            "name": "pan_and_lid",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "DSC pan/lid geometry not specified."
+            }
+          },
+          {
+            "name": "calibration_and_software",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "DSC calibration and software not specified;DMA/TGA statements not transferred."
+            }
+          },
+          {
+            "name": "thermal_holds",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "No DSC dwell/hold durations stated."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "not_stated",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "Table4 gives integer literals without defined central statistics or SD/SE/CI. DMA triplicate and mechanical mean/SD do not apply. Narrative/table range differences are not uncertainty;unknown is not zero scatter.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Selected Table4 B0 Tm cell;measurement,specimen and independent-batch counts unknown.",
+        "source_statement": "DSC repeat count not stated;nearby triplicate statement belongs to DMA only.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Source Table4 Tm of extruded PBS formulation,Perkin Elmer DSC-7,nominal10mg. DSC program30 to150°C at10°C/min,cool to30°C at−10°C/min,then second ramp to150°C at10°C/min;hold durations unknown. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. Section3.5 describes a large main melting peak as Tm2;Table4 label remains Tm. Precise peak-picking/baseline algorithm unknown;not onset,Tg,Tc or TGA.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+            "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+            "supports": [
+              "method",
+              "classification"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Section3.5 describes main peaks at113–115degC and later113.2–115.6degC, whereas Table4 reports integer Tm values including B10=116 and B30=113.",
+          "disposition": "Keep selected table literals and their precision; do not reconstruct decimals, repair rounding, average, or turn the narrative range into uncertainty.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.9 section3.5;p.10 Table4",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Section3.5 opening mentions Tg among DSC thermal properties, but Table3 Tg is explicitly obtained from DMA tan-delta maxima in section3.4.",
+          "disposition": "Do not admit DMA Tg as DSC Tg or extend the DSC-specific Tg method description in this batch.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.9 section3.5;p.10 Table4",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+          "locator": "PDF p.10 Table4 B0 row × Tm(°C) column",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+          "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ],
+      "source_document": {
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+        "revision": "Official publisher PDF Polymers2025,17,194;retained 2026-11-04.",
+        "inspected_on": "2026-11-04",
+        "sha256": "766d17f0e92c7e93cd57a3a5e97dddff0cb66a84bba6bf9118fbd0796d4c2e6f",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "PDF p.3 sections2.1–2.3;p.4 section2.8;p.9 section3.5/Figure4;p.10 Table4;retained XML permissions. Selected content only,no SI/raw-trace/calibration-certificate/latest-notice inspection.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "scope_note": "Source-qualified B0 Table4 Tm=115°C only. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. Precise algorithm,n,aggregation,dispersion,pan,gas,calibration,software and moisture/storage unknown. No DMA/TGA/mechanical metadata transfer,small-peak digitization,decimal reconstruction,service limit,allowable,universal bound,automatic conversion or engine input.",
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "PDF p.3 sections2.1–2.3;p.4 section2.8;p.9 section3.5/Figure4;p.10 Table4;retained XML permissions. Selected content only,no SI/raw-trace/calibration-certificate/latest-notice inspection.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      }
+    },
+    "refprop_ewurum2025_b10_dsc_melting_temperature": {
+      "id": "refprop_ewurum2025_b10_dsc_melting_temperature",
+      "version": "1.0.0",
+      "material_state_id": "state_ewurum2025_b10_extruded_dsc_second_heating",
+      "quantity": "melting_peak_temperature",
+      "quantity_dimension": "temperature",
+      "source_property_label": "Tm (°C), Table 4",
+      "reported_value": {
+        "kind": "scalar",
+        "number": "116",
+        "value_text": "116",
+        "unit_code": "degC",
+        "unit_text": "°C"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "not_stated",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Table4 B10 literal at source integer precision;central aggregation,selected n and numerical dispersion not stated. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45.",
+      "conditions": {
+        "temperature": {
+          "status": "reported",
+          "text": "DSC program30 to150°C at10°C/min,cool to30°C at−10°C/min,then second ramp to150°C at10°C/min;hold durations unknown.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45."
+        },
+        "test_standard": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No DSC-specific standard named in inspected method;mechanical ASTM standards not transferred."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Source Table4 Tm of extruded PBS formulation,Perkin Elmer DSC-7,nominal10mg. DSC program30 to150°C at10°C/min,cool to30°C at−10°C/min,then second ramp to150°C at10°C/min;hold durations unknown. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. Section3.5 describes a large main melting peak as Tm2;Table4 label remains Tm. Precise peak-picking/baseline algorithm unknown;not onset,Tg,Tc or TGA.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source main-peak context retained;not a certified generic melting point."
+        },
+        "direction": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading direction is not applicable;specimen isotropy is not inferred."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "DSC-specific RH,moisture equilibrium,storage and pre-scan drying unknown. Reactive precursor drying is not DSC conditioning;no such schedule assigned to B-series."
+        },
+        "loading_rate": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading rate not applicable;thermal ramp recorded separately."
+        },
+        "additional_conditions": [
+          {
+            "name": "thermal_heating_rate",
+            "fact": {
+              "status": "reported",
+              "text": "10°C/min",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": null
+            }
+          },
+          {
+            "name": "thermal_cooling_rate",
+            "fact": {
+              "status": "reported",
+              "text": "−10°C/min to30°C",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": null
+            }
+          },
+          {
+            "name": "thermal_peak_label",
+            "fact": {
+              "status": "reported",
+              "text": "Tm,Table4",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.10 Table4 B10 row × Tm(°C) column",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Main-peak Tm2 context appears in section3.5;column itself is Tm. No per-row Tm1 inferred."
+            }
+          },
+          {
+            "name": "scan_phase_context",
+            "fact": {
+              "status": "reported",
+              "text": "Second heating,shared section3.5/Figure4 context",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45."
+            }
+          },
+          {
+            "name": "nominal_DSC_sample_mass",
+            "fact": {
+              "status": "reported",
+              "text": "10mg",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Nominal source method,not replicate count or actual weighing log."
+            }
+          },
+          {
+            "name": "purge_atmosphere_and_flow",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Not specified in DSC paragraph;TGA nitrogen30mL/min not transferred."
+            }
+          },
+          {
+            "name": "pan_and_lid",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "DSC pan/lid geometry not specified."
+            }
+          },
+          {
+            "name": "calibration_and_software",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "DSC calibration and software not specified;DMA/TGA statements not transferred."
+            }
+          },
+          {
+            "name": "thermal_holds",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "No DSC dwell/hold durations stated."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "not_stated",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "Table4 gives integer literals without defined central statistics or SD/SE/CI. DMA triplicate and mechanical mean/SD do not apply. Narrative/table range differences are not uncertainty;unknown is not zero scatter.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Selected Table4 B10 Tm cell;measurement,specimen and independent-batch counts unknown.",
+        "source_statement": "DSC repeat count not stated;nearby triplicate statement belongs to DMA only.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Source Table4 Tm of extruded PBS formulation,Perkin Elmer DSC-7,nominal10mg. DSC program30 to150°C at10°C/min,cool to30°C at−10°C/min,then second ramp to150°C at10°C/min;hold durations unknown. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. Section3.5 describes a large main melting peak as Tm2;Table4 label remains Tm. Precise peak-picking/baseline algorithm unknown;not onset,Tg,Tc or TGA.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+            "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+            "supports": [
+              "method",
+              "classification"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Section3.5 describes main peaks at113–115degC and later113.2–115.6degC, whereas Table4 reports integer Tm values including B10=116 and B30=113.",
+          "disposition": "Keep selected table literals and their precision; do not reconstruct decimals, repair rounding, average, or turn the narrative range into uncertainty.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.9 section3.5;p.10 Table4",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Section3.5 opening mentions Tg among DSC thermal properties, but Table3 Tg is explicitly obtained from DMA tan-delta maxima in section3.4.",
+          "disposition": "Do not admit DMA Tg as DSC Tg or extend the DSC-specific Tg method description in this batch.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.9 section3.5;p.10 Table4",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+          "locator": "PDF p.10 Table4 B10 row × Tm(°C) column",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+          "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ],
+      "source_document": {
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+        "revision": "Official publisher PDF Polymers2025,17,194;retained 2026-11-04.",
+        "inspected_on": "2026-11-04",
+        "sha256": "766d17f0e92c7e93cd57a3a5e97dddff0cb66a84bba6bf9118fbd0796d4c2e6f",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "PDF p.3 sections2.1–2.3;p.4 section2.8;p.9 section3.5/Figure4;p.10 Table4;retained XML permissions. Selected content only,no SI/raw-trace/calibration-certificate/latest-notice inspection.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "scope_note": "Source-qualified B10 Table4 Tm=116°C only. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. Precise algorithm,n,aggregation,dispersion,pan,gas,calibration,software and moisture/storage unknown. No DMA/TGA/mechanical metadata transfer,small-peak digitization,decimal reconstruction,service limit,allowable,universal bound,automatic conversion or engine input.",
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "PDF p.3 sections2.1–2.3;p.4 section2.8;p.9 section3.5/Figure4;p.10 Table4;retained XML permissions. Selected content only,no SI/raw-trace/calibration-certificate/latest-notice inspection.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      }
+    },
+    "refprop_ewurum2025_b20_dsc_melting_temperature": {
+      "id": "refprop_ewurum2025_b20_dsc_melting_temperature",
+      "version": "1.0.0",
+      "material_state_id": "state_ewurum2025_b20_extruded_dsc_second_heating",
+      "quantity": "melting_peak_temperature",
+      "quantity_dimension": "temperature",
+      "source_property_label": "Tm (°C), Table 4",
+      "reported_value": {
+        "kind": "scalar",
+        "number": "114",
+        "value_text": "114",
+        "unit_code": "degC",
+        "unit_text": "°C"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "not_stated",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Table4 B20 literal at source integer precision;central aggregation,selected n and numerical dispersion not stated. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45.",
+      "conditions": {
+        "temperature": {
+          "status": "reported",
+          "text": "DSC program30 to150°C at10°C/min,cool to30°C at−10°C/min,then second ramp to150°C at10°C/min;hold durations unknown.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45."
+        },
+        "test_standard": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No DSC-specific standard named in inspected method;mechanical ASTM standards not transferred."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Source Table4 Tm of extruded PBS formulation,Perkin Elmer DSC-7,nominal10mg. DSC program30 to150°C at10°C/min,cool to30°C at−10°C/min,then second ramp to150°C at10°C/min;hold durations unknown. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. Section3.5 describes a large main melting peak as Tm2;Table4 label remains Tm. Precise peak-picking/baseline algorithm unknown;not onset,Tg,Tc or TGA.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source main-peak context retained;not a certified generic melting point."
+        },
+        "direction": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading direction is not applicable;specimen isotropy is not inferred."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "DSC-specific RH,moisture equilibrium,storage and pre-scan drying unknown. Reactive precursor drying is not DSC conditioning;no such schedule assigned to B-series."
+        },
+        "loading_rate": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading rate not applicable;thermal ramp recorded separately."
+        },
+        "additional_conditions": [
+          {
+            "name": "thermal_heating_rate",
+            "fact": {
+              "status": "reported",
+              "text": "10°C/min",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": null
+            }
+          },
+          {
+            "name": "thermal_cooling_rate",
+            "fact": {
+              "status": "reported",
+              "text": "−10°C/min to30°C",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": null
+            }
+          },
+          {
+            "name": "thermal_peak_label",
+            "fact": {
+              "status": "reported",
+              "text": "Tm,Table4",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.10 Table4 B20 row × Tm(°C) column",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Main-peak Tm2 context appears in section3.5;column itself is Tm. No per-row Tm1 inferred."
+            }
+          },
+          {
+            "name": "scan_phase_context",
+            "fact": {
+              "status": "reported",
+              "text": "Second heating,shared section3.5/Figure4 context",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45."
+            }
+          },
+          {
+            "name": "nominal_DSC_sample_mass",
+            "fact": {
+              "status": "reported",
+              "text": "10mg",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Nominal source method,not replicate count or actual weighing log."
+            }
+          },
+          {
+            "name": "purge_atmosphere_and_flow",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Not specified in DSC paragraph;TGA nitrogen30mL/min not transferred."
+            }
+          },
+          {
+            "name": "pan_and_lid",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "DSC pan/lid geometry not specified."
+            }
+          },
+          {
+            "name": "calibration_and_software",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "DSC calibration and software not specified;DMA/TGA statements not transferred."
+            }
+          },
+          {
+            "name": "thermal_holds",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "No DSC dwell/hold durations stated."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "not_stated",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "Table4 gives integer literals without defined central statistics or SD/SE/CI. DMA triplicate and mechanical mean/SD do not apply. Narrative/table range differences are not uncertainty;unknown is not zero scatter.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Selected Table4 B20 Tm cell;measurement,specimen and independent-batch counts unknown.",
+        "source_statement": "DSC repeat count not stated;nearby triplicate statement belongs to DMA only.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Source Table4 Tm of extruded PBS formulation,Perkin Elmer DSC-7,nominal10mg. DSC program30 to150°C at10°C/min,cool to30°C at−10°C/min,then second ramp to150°C at10°C/min;hold durations unknown. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. Section3.5 describes a large main melting peak as Tm2;Table4 label remains Tm. Precise peak-picking/baseline algorithm unknown;not onset,Tg,Tc or TGA.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+            "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+            "supports": [
+              "method",
+              "classification"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Section3.5 describes main peaks at113–115degC and later113.2–115.6degC, whereas Table4 reports integer Tm values including B10=116 and B30=113.",
+          "disposition": "Keep selected table literals and their precision; do not reconstruct decimals, repair rounding, average, or turn the narrative range into uncertainty.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.9 section3.5;p.10 Table4",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Section3.5 opening mentions Tg among DSC thermal properties, but Table3 Tg is explicitly obtained from DMA tan-delta maxima in section3.4.",
+          "disposition": "Do not admit DMA Tg as DSC Tg or extend the DSC-specific Tg method description in this batch.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.9 section3.5;p.10 Table4",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+          "locator": "PDF p.10 Table4 B20 row × Tm(°C) column",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+          "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ],
+      "source_document": {
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+        "revision": "Official publisher PDF Polymers2025,17,194;retained 2026-11-04.",
+        "inspected_on": "2026-11-04",
+        "sha256": "766d17f0e92c7e93cd57a3a5e97dddff0cb66a84bba6bf9118fbd0796d4c2e6f",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "PDF p.3 sections2.1–2.3;p.4 section2.8;p.9 section3.5/Figure4;p.10 Table4;retained XML permissions. Selected content only,no SI/raw-trace/calibration-certificate/latest-notice inspection.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "scope_note": "Source-qualified B20 Table4 Tm=114°C only. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. Precise algorithm,n,aggregation,dispersion,pan,gas,calibration,software and moisture/storage unknown. No DMA/TGA/mechanical metadata transfer,small-peak digitization,decimal reconstruction,service limit,allowable,universal bound,automatic conversion or engine input.",
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "PDF p.3 sections2.1–2.3;p.4 section2.8;p.9 section3.5/Figure4;p.10 Table4;retained XML permissions. Selected content only,no SI/raw-trace/calibration-certificate/latest-notice inspection.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      }
+    },
+    "refprop_ewurum2025_b30_dsc_melting_temperature": {
+      "id": "refprop_ewurum2025_b30_dsc_melting_temperature",
+      "version": "1.0.0",
+      "material_state_id": "state_ewurum2025_b30_extruded_dsc_second_heating",
+      "quantity": "melting_peak_temperature",
+      "quantity_dimension": "temperature",
+      "source_property_label": "Tm (°C), Table 4",
+      "reported_value": {
+        "kind": "scalar",
+        "number": "113",
+        "value_text": "113",
+        "unit_code": "degC",
+        "unit_text": "°C"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "not_stated",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Table4 B30 literal at source integer precision;central aggregation,selected n and numerical dispersion not stated. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45.",
+      "conditions": {
+        "temperature": {
+          "status": "reported",
+          "text": "DSC program30 to150°C at10°C/min,cool to30°C at−10°C/min,then second ramp to150°C at10°C/min;hold durations unknown.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45."
+        },
+        "test_standard": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No DSC-specific standard named in inspected method;mechanical ASTM standards not transferred."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Source Table4 Tm of extruded PBS formulation,Perkin Elmer DSC-7,nominal10mg. DSC program30 to150°C at10°C/min,cool to30°C at−10°C/min,then second ramp to150°C at10°C/min;hold durations unknown. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. Section3.5 describes a large main melting peak as Tm2;Table4 label remains Tm. Precise peak-picking/baseline algorithm unknown;not onset,Tg,Tc or TGA.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source main-peak context retained;not a certified generic melting point."
+        },
+        "direction": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading direction is not applicable;specimen isotropy is not inferred."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "DSC-specific RH,moisture equilibrium,storage and pre-scan drying unknown. Reactive precursor drying is not DSC conditioning;no such schedule assigned to B-series."
+        },
+        "loading_rate": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading rate not applicable;thermal ramp recorded separately."
+        },
+        "additional_conditions": [
+          {
+            "name": "thermal_heating_rate",
+            "fact": {
+              "status": "reported",
+              "text": "10°C/min",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": null
+            }
+          },
+          {
+            "name": "thermal_cooling_rate",
+            "fact": {
+              "status": "reported",
+              "text": "−10°C/min to30°C",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": null
+            }
+          },
+          {
+            "name": "thermal_peak_label",
+            "fact": {
+              "status": "reported",
+              "text": "Tm,Table4",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.10 Table4 B30 row × Tm(°C) column",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Main-peak Tm2 context appears in section3.5;column itself is Tm. No per-row Tm1 inferred."
+            }
+          },
+          {
+            "name": "scan_phase_context",
+            "fact": {
+              "status": "reported",
+              "text": "Second heating,shared section3.5/Figure4 context",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45."
+            }
+          },
+          {
+            "name": "nominal_DSC_sample_mass",
+            "fact": {
+              "status": "reported",
+              "text": "10mg",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Nominal source method,not replicate count or actual weighing log."
+            }
+          },
+          {
+            "name": "purge_atmosphere_and_flow",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Not specified in DSC paragraph;TGA nitrogen30mL/min not transferred."
+            }
+          },
+          {
+            "name": "pan_and_lid",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "DSC pan/lid geometry not specified."
+            }
+          },
+          {
+            "name": "calibration_and_software",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "DSC calibration and software not specified;DMA/TGA statements not transferred."
+            }
+          },
+          {
+            "name": "thermal_holds",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "No DSC dwell/hold durations stated."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "not_stated",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "Table4 gives integer literals without defined central statistics or SD/SE/CI. DMA triplicate and mechanical mean/SD do not apply. Narrative/table range differences are not uncertainty;unknown is not zero scatter.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Selected Table4 B30 Tm cell;measurement,specimen and independent-batch counts unknown.",
+        "source_statement": "DSC repeat count not stated;nearby triplicate statement belongs to DMA only.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Source Table4 Tm of extruded PBS formulation,Perkin Elmer DSC-7,nominal10mg. DSC program30 to150°C at10°C/min,cool to30°C at−10°C/min,then second ramp to150°C at10°C/min;hold durations unknown. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. Section3.5 describes a large main melting peak as Tm2;Table4 label remains Tm. Precise peak-picking/baseline algorithm unknown;not onset,Tg,Tc or TGA.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+            "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+            "supports": [
+              "method",
+              "classification"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Section3.5 describes main peaks at113–115degC and later113.2–115.6degC, whereas Table4 reports integer Tm values including B10=116 and B30=113.",
+          "disposition": "Keep selected table literals and their precision; do not reconstruct decimals, repair rounding, average, or turn the narrative range into uncertainty.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.9 section3.5;p.10 Table4",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Section3.5 opening mentions Tg among DSC thermal properties, but Table3 Tg is explicitly obtained from DMA tan-delta maxima in section3.4.",
+          "disposition": "Do not admit DMA Tg as DSC Tg or extend the DSC-specific Tg method description in this batch.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.9 section3.5;p.10 Table4",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+          "locator": "PDF p.10 Table4 B30 row × Tm(°C) column",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+          "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ],
+      "source_document": {
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+        "revision": "Official publisher PDF Polymers2025,17,194;retained 2026-11-04.",
+        "inspected_on": "2026-11-04",
+        "sha256": "766d17f0e92c7e93cd57a3a5e97dddff0cb66a84bba6bf9118fbd0796d4c2e6f",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "PDF p.3 sections2.1–2.3;p.4 section2.8;p.9 section3.5/Figure4;p.10 Table4;retained XML permissions. Selected content only,no SI/raw-trace/calibration-certificate/latest-notice inspection.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "scope_note": "Source-qualified B30 Table4 Tm=113°C only. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. Precise algorithm,n,aggregation,dispersion,pan,gas,calibration,software and moisture/storage unknown. No DMA/TGA/mechanical metadata transfer,small-peak digitization,decimal reconstruction,service limit,allowable,universal bound,automatic conversion or engine input.",
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "PDF p.3 sections2.1–2.3;p.4 section2.8;p.9 section3.5/Figure4;p.10 Table4;retained XML permissions. Selected content only,no SI/raw-trace/calibration-certificate/latest-notice inspection.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      }
+    },
+    "refprop_ewurum2025_b45_dsc_melting_temperature": {
+      "id": "refprop_ewurum2025_b45_dsc_melting_temperature",
+      "version": "1.0.0",
+      "material_state_id": "state_ewurum2025_b45_extruded_dsc_second_heating",
+      "quantity": "melting_peak_temperature",
+      "quantity_dimension": "temperature",
+      "source_property_label": "Tm (°C), Table 4",
+      "reported_value": {
+        "kind": "scalar",
+        "number": "114",
+        "value_text": "114",
+        "unit_code": "degC",
+        "unit_text": "°C"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "not_stated",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Table4 B45 literal at source integer precision;central aggregation,selected n and numerical dispersion not stated. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45.",
+      "conditions": {
+        "temperature": {
+          "status": "reported",
+          "text": "DSC program30 to150°C at10°C/min,cool to30°C at−10°C/min,then second ramp to150°C at10°C/min;hold durations unknown.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45."
+        },
+        "test_standard": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No DSC-specific standard named in inspected method;mechanical ASTM standards not transferred."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Source Table4 Tm of extruded PBS formulation,Perkin Elmer DSC-7,nominal10mg. DSC program30 to150°C at10°C/min,cool to30°C at−10°C/min,then second ramp to150°C at10°C/min;hold durations unknown. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. Section3.5 describes a large main melting peak as Tm2;Table4 label remains Tm. Precise peak-picking/baseline algorithm unknown;not onset,Tg,Tc or TGA.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source main-peak context retained;not a certified generic melting point."
+        },
+        "direction": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading direction is not applicable;specimen isotropy is not inferred."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "DSC-specific RH,moisture equilibrium,storage and pre-scan drying unknown. Reactive precursor drying is not DSC conditioning;no such schedule assigned to B-series."
+        },
+        "loading_rate": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading rate not applicable;thermal ramp recorded separately."
+        },
+        "additional_conditions": [
+          {
+            "name": "thermal_heating_rate",
+            "fact": {
+              "status": "reported",
+              "text": "10°C/min",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": null
+            }
+          },
+          {
+            "name": "thermal_cooling_rate",
+            "fact": {
+              "status": "reported",
+              "text": "−10°C/min to30°C",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": null
+            }
+          },
+          {
+            "name": "thermal_peak_label",
+            "fact": {
+              "status": "reported",
+              "text": "Tm,Table4",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.10 Table4 B45 row × Tm(°C) column",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Main-peak Tm2 context appears in section3.5;column itself is Tm. No per-row Tm1 inferred."
+            }
+          },
+          {
+            "name": "scan_phase_context",
+            "fact": {
+              "status": "reported",
+              "text": "Second heating,shared section3.5/Figure4 context",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45."
+            }
+          },
+          {
+            "name": "nominal_DSC_sample_mass",
+            "fact": {
+              "status": "reported",
+              "text": "10mg",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Nominal source method,not replicate count or actual weighing log."
+            }
+          },
+          {
+            "name": "purge_atmosphere_and_flow",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Not specified in DSC paragraph;TGA nitrogen30mL/min not transferred."
+            }
+          },
+          {
+            "name": "pan_and_lid",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "DSC pan/lid geometry not specified."
+            }
+          },
+          {
+            "name": "calibration_and_software",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "DSC calibration and software not specified;DMA/TGA statements not transferred."
+            }
+          },
+          {
+            "name": "thermal_holds",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "No DSC dwell/hold durations stated."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "not_stated",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "Table4 gives integer literals without defined central statistics or SD/SE/CI. DMA triplicate and mechanical mean/SD do not apply. Narrative/table range differences are not uncertainty;unknown is not zero scatter.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Selected Table4 B45 Tm cell;measurement,specimen and independent-batch counts unknown.",
+        "source_statement": "DSC repeat count not stated;nearby triplicate statement belongs to DMA only.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Source Table4 Tm of extruded PBS formulation,Perkin Elmer DSC-7,nominal10mg. DSC program30 to150°C at10°C/min,cool to30°C at−10°C/min,then second ramp to150°C at10°C/min;hold durations unknown. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. Section3.5 describes a large main melting peak as Tm2;Table4 label remains Tm. Precise peak-picking/baseline algorithm unknown;not onset,Tg,Tc or TGA.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+            "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+            "supports": [
+              "method",
+              "classification"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Section3.5 describes main peaks at113–115degC and later113.2–115.6degC, whereas Table4 reports integer Tm values including B10=116 and B30=113.",
+          "disposition": "Keep selected table literals and their precision; do not reconstruct decimals, repair rounding, average, or turn the narrative range into uncertainty.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.9 section3.5;p.10 Table4",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Section3.5 opening mentions Tg among DSC thermal properties, but Table3 Tg is explicitly obtained from DMA tan-delta maxima in section3.4.",
+          "disposition": "Do not admit DMA Tg as DSC Tg or extend the DSC-specific Tg method description in this batch.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.9 section3.5;p.10 Table4",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+          "locator": "PDF p.10 Table4 B45 row × Tm(°C) column",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+          "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ],
+      "source_document": {
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+        "revision": "Official publisher PDF Polymers2025,17,194;retained 2026-11-04.",
+        "inspected_on": "2026-11-04",
+        "sha256": "766d17f0e92c7e93cd57a3a5e97dddff0cb66a84bba6bf9118fbd0796d4c2e6f",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "PDF p.3 sections2.1–2.3;p.4 section2.8;p.9 section3.5/Figure4;p.10 Table4;retained XML permissions. Selected content only,no SI/raw-trace/calibration-certificate/latest-notice inspection.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "scope_note": "Source-qualified B45 Table4 Tm=114°C only. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. Precise algorithm,n,aggregation,dispersion,pan,gas,calibration,software and moisture/storage unknown. No DMA/TGA/mechanical metadata transfer,small-peak digitization,decimal reconstruction,service limit,allowable,universal bound,automatic conversion or engine input.",
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "PDF p.3 sections2.1–2.3;p.4 section2.8;p.9 section3.5/Figure4;p.10 Table4;retained XML permissions. Selected content only,no SI/raw-trace/calibration-certificate/latest-notice inspection.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      }
+    },
+    "refprop_ewurum2025_r10_dsc_melting_temperature": {
+      "id": "refprop_ewurum2025_r10_dsc_melting_temperature",
+      "version": "1.0.0",
+      "material_state_id": "state_ewurum2025_r10_extruded_dsc_second_heating",
+      "quantity": "melting_peak_temperature",
+      "quantity_dimension": "temperature",
+      "source_property_label": "Tm (°C), Table 4",
+      "reported_value": {
+        "kind": "scalar",
+        "number": "115",
+        "value_text": "115",
+        "unit_code": "degC",
+        "unit_text": "°C"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "not_stated",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Table4 R10 literal at source integer precision;central aggregation,selected n and numerical dispersion not stated. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45.",
+      "conditions": {
+        "temperature": {
+          "status": "reported",
+          "text": "DSC program30 to150°C at10°C/min,cool to30°C at−10°C/min,then second ramp to150°C at10°C/min;hold durations unknown.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45."
+        },
+        "test_standard": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No DSC-specific standard named in inspected method;mechanical ASTM standards not transferred."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Source Table4 Tm of extruded PBS formulation,Perkin Elmer DSC-7,nominal10mg. DSC program30 to150°C at10°C/min,cool to30°C at−10°C/min,then second ramp to150°C at10°C/min;hold durations unknown. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. Section3.5 describes a large main melting peak as Tm2;Table4 label remains Tm. Precise peak-picking/baseline algorithm unknown;not onset,Tg,Tc or TGA.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source main-peak context retained;not a certified generic melting point."
+        },
+        "direction": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading direction is not applicable;specimen isotropy is not inferred."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "DSC-specific RH,moisture equilibrium,storage and pre-scan drying unknown. Reactive precursor drying is not DSC conditioning;no such schedule assigned to B-series."
+        },
+        "loading_rate": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading rate not applicable;thermal ramp recorded separately."
+        },
+        "additional_conditions": [
+          {
+            "name": "thermal_heating_rate",
+            "fact": {
+              "status": "reported",
+              "text": "10°C/min",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": null
+            }
+          },
+          {
+            "name": "thermal_cooling_rate",
+            "fact": {
+              "status": "reported",
+              "text": "−10°C/min to30°C",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": null
+            }
+          },
+          {
+            "name": "thermal_peak_label",
+            "fact": {
+              "status": "reported",
+              "text": "Tm,Table4",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.10 Table4 R10 row × Tm(°C) column",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Main-peak Tm2 context appears in section3.5;column itself is Tm. No per-row Tm1 inferred."
+            }
+          },
+          {
+            "name": "scan_phase_context",
+            "fact": {
+              "status": "reported",
+              "text": "Second heating,shared section3.5/Figure4 context",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45."
+            }
+          },
+          {
+            "name": "nominal_DSC_sample_mass",
+            "fact": {
+              "status": "reported",
+              "text": "10mg",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Nominal source method,not replicate count or actual weighing log."
+            }
+          },
+          {
+            "name": "purge_atmosphere_and_flow",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Not specified in DSC paragraph;TGA nitrogen30mL/min not transferred."
+            }
+          },
+          {
+            "name": "pan_and_lid",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "DSC pan/lid geometry not specified."
+            }
+          },
+          {
+            "name": "calibration_and_software",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "DSC calibration and software not specified;DMA/TGA statements not transferred."
+            }
+          },
+          {
+            "name": "thermal_holds",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "No DSC dwell/hold durations stated."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "not_stated",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "Table4 gives integer literals without defined central statistics or SD/SE/CI. DMA triplicate and mechanical mean/SD do not apply. Narrative/table range differences are not uncertainty;unknown is not zero scatter.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Selected Table4 R10 Tm cell;measurement,specimen and independent-batch counts unknown.",
+        "source_statement": "DSC repeat count not stated;nearby triplicate statement belongs to DMA only.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Source Table4 Tm of extruded PBS formulation,Perkin Elmer DSC-7,nominal10mg. DSC program30 to150°C at10°C/min,cool to30°C at−10°C/min,then second ramp to150°C at10°C/min;hold durations unknown. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. Section3.5 describes a large main melting peak as Tm2;Table4 label remains Tm. Precise peak-picking/baseline algorithm unknown;not onset,Tg,Tc or TGA.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+            "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+            "supports": [
+              "method",
+              "classification"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Section3.5 describes main peaks at113–115degC and later113.2–115.6degC, whereas Table4 reports integer Tm values including B10=116 and B30=113.",
+          "disposition": "Keep selected table literals and their precision; do not reconstruct decimals, repair rounding, average, or turn the narrative range into uncertainty.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.9 section3.5;p.10 Table4",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Section3.5 opening mentions Tg among DSC thermal properties, but Table3 Tg is explicitly obtained from DMA tan-delta maxima in section3.4.",
+          "disposition": "Do not admit DMA Tg as DSC Tg or extend the DSC-specific Tg method description in this batch.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.9 section3.5;p.10 Table4",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+          "locator": "PDF p.10 Table4 R10 row × Tm(°C) column",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+          "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ],
+      "source_document": {
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+        "revision": "Official publisher PDF Polymers2025,17,194;retained 2026-11-04.",
+        "inspected_on": "2026-11-04",
+        "sha256": "766d17f0e92c7e93cd57a3a5e97dddff0cb66a84bba6bf9118fbd0796d4c2e6f",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "PDF p.3 sections2.1–2.3;p.4 section2.8;p.9 section3.5/Figure4;p.10 Table4;retained XML permissions. Selected content only,no SI/raw-trace/calibration-certificate/latest-notice inspection.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "scope_note": "Source-qualified R10 Table4 Tm=115°C only. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. Precise algorithm,n,aggregation,dispersion,pan,gas,calibration,software and moisture/storage unknown. No DMA/TGA/mechanical metadata transfer,small-peak digitization,decimal reconstruction,service limit,allowable,universal bound,automatic conversion or engine input.",
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "PDF p.3 sections2.1–2.3;p.4 section2.8;p.9 section3.5/Figure4;p.10 Table4;retained XML permissions. Selected content only,no SI/raw-trace/calibration-certificate/latest-notice inspection.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      }
+    },
+    "refprop_ewurum2025_r20_dsc_melting_temperature": {
+      "id": "refprop_ewurum2025_r20_dsc_melting_temperature",
+      "version": "1.0.0",
+      "material_state_id": "state_ewurum2025_r20_extruded_dsc_second_heating",
+      "quantity": "melting_peak_temperature",
+      "quantity_dimension": "temperature",
+      "source_property_label": "Tm (°C), Table 4",
+      "reported_value": {
+        "kind": "scalar",
+        "number": "114",
+        "value_text": "114",
+        "unit_code": "degC",
+        "unit_text": "°C"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "not_stated",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Table4 R20 literal at source integer precision;central aggregation,selected n and numerical dispersion not stated. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45.",
+      "conditions": {
+        "temperature": {
+          "status": "reported",
+          "text": "DSC program30 to150°C at10°C/min,cool to30°C at−10°C/min,then second ramp to150°C at10°C/min;hold durations unknown.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45."
+        },
+        "test_standard": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No DSC-specific standard named in inspected method;mechanical ASTM standards not transferred."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Source Table4 Tm of extruded PBS formulation,Perkin Elmer DSC-7,nominal10mg. DSC program30 to150°C at10°C/min,cool to30°C at−10°C/min,then second ramp to150°C at10°C/min;hold durations unknown. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. Section3.5 describes a large main melting peak as Tm2;Table4 label remains Tm. Precise peak-picking/baseline algorithm unknown;not onset,Tg,Tc or TGA.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source main-peak context retained;not a certified generic melting point."
+        },
+        "direction": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading direction is not applicable;specimen isotropy is not inferred."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "DSC-specific RH,moisture equilibrium,storage and pre-scan drying unknown. Reactive precursor drying is not DSC conditioning;no such schedule assigned to B-series."
+        },
+        "loading_rate": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading rate not applicable;thermal ramp recorded separately."
+        },
+        "additional_conditions": [
+          {
+            "name": "thermal_heating_rate",
+            "fact": {
+              "status": "reported",
+              "text": "10°C/min",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": null
+            }
+          },
+          {
+            "name": "thermal_cooling_rate",
+            "fact": {
+              "status": "reported",
+              "text": "−10°C/min to30°C",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": null
+            }
+          },
+          {
+            "name": "thermal_peak_label",
+            "fact": {
+              "status": "reported",
+              "text": "Tm,Table4",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.10 Table4 R20 row × Tm(°C) column",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Main-peak Tm2 context appears in section3.5;column itself is Tm. No per-row Tm1 inferred."
+            }
+          },
+          {
+            "name": "scan_phase_context",
+            "fact": {
+              "status": "reported",
+              "text": "Second heating,shared section3.5/Figure4 context",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45."
+            }
+          },
+          {
+            "name": "nominal_DSC_sample_mass",
+            "fact": {
+              "status": "reported",
+              "text": "10mg",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Nominal source method,not replicate count or actual weighing log."
+            }
+          },
+          {
+            "name": "purge_atmosphere_and_flow",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Not specified in DSC paragraph;TGA nitrogen30mL/min not transferred."
+            }
+          },
+          {
+            "name": "pan_and_lid",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "DSC pan/lid geometry not specified."
+            }
+          },
+          {
+            "name": "calibration_and_software",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "DSC calibration and software not specified;DMA/TGA statements not transferred."
+            }
+          },
+          {
+            "name": "thermal_holds",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "No DSC dwell/hold durations stated."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "not_stated",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "Table4 gives integer literals without defined central statistics or SD/SE/CI. DMA triplicate and mechanical mean/SD do not apply. Narrative/table range differences are not uncertainty;unknown is not zero scatter.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Selected Table4 R20 Tm cell;measurement,specimen and independent-batch counts unknown.",
+        "source_statement": "DSC repeat count not stated;nearby triplicate statement belongs to DMA only.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Source Table4 Tm of extruded PBS formulation,Perkin Elmer DSC-7,nominal10mg. DSC program30 to150°C at10°C/min,cool to30°C at−10°C/min,then second ramp to150°C at10°C/min;hold durations unknown. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. Section3.5 describes a large main melting peak as Tm2;Table4 label remains Tm. Precise peak-picking/baseline algorithm unknown;not onset,Tg,Tc or TGA.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+            "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+            "supports": [
+              "method",
+              "classification"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Section3.5 describes main peaks at113–115degC and later113.2–115.6degC, whereas Table4 reports integer Tm values including B10=116 and B30=113.",
+          "disposition": "Keep selected table literals and their precision; do not reconstruct decimals, repair rounding, average, or turn the narrative range into uncertainty.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.9 section3.5;p.10 Table4",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Section3.5 opening mentions Tg among DSC thermal properties, but Table3 Tg is explicitly obtained from DMA tan-delta maxima in section3.4.",
+          "disposition": "Do not admit DMA Tg as DSC Tg or extend the DSC-specific Tg method description in this batch.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.9 section3.5;p.10 Table4",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+          "locator": "PDF p.10 Table4 R20 row × Tm(°C) column",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+          "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ],
+      "source_document": {
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+        "revision": "Official publisher PDF Polymers2025,17,194;retained 2026-11-04.",
+        "inspected_on": "2026-11-04",
+        "sha256": "766d17f0e92c7e93cd57a3a5e97dddff0cb66a84bba6bf9118fbd0796d4c2e6f",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "PDF p.3 sections2.1–2.3;p.4 section2.8;p.9 section3.5/Figure4;p.10 Table4;retained XML permissions. Selected content only,no SI/raw-trace/calibration-certificate/latest-notice inspection.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "scope_note": "Source-qualified R20 Table4 Tm=114°C only. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. Precise algorithm,n,aggregation,dispersion,pan,gas,calibration,software and moisture/storage unknown. No DMA/TGA/mechanical metadata transfer,small-peak digitization,decimal reconstruction,service limit,allowable,universal bound,automatic conversion or engine input.",
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "PDF p.3 sections2.1–2.3;p.4 section2.8;p.9 section3.5/Figure4;p.10 Table4;retained XML permissions. Selected content only,no SI/raw-trace/calibration-certificate/latest-notice inspection.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      }
+    },
+    "refprop_ewurum2025_r30_dsc_melting_temperature": {
+      "id": "refprop_ewurum2025_r30_dsc_melting_temperature",
+      "version": "1.0.0",
+      "material_state_id": "state_ewurum2025_r30_extruded_dsc_second_heating",
+      "quantity": "melting_peak_temperature",
+      "quantity_dimension": "temperature",
+      "source_property_label": "Tm (°C), Table 4",
+      "reported_value": {
+        "kind": "scalar",
+        "number": "114",
+        "value_text": "114",
+        "unit_code": "degC",
+        "unit_text": "°C"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "not_stated",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Table4 R30 literal at source integer precision;central aggregation,selected n and numerical dispersion not stated. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45.",
+      "conditions": {
+        "temperature": {
+          "status": "reported",
+          "text": "DSC program30 to150°C at10°C/min,cool to30°C at−10°C/min,then second ramp to150°C at10°C/min;hold durations unknown.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45."
+        },
+        "test_standard": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No DSC-specific standard named in inspected method;mechanical ASTM standards not transferred."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Source Table4 Tm of extruded PBS formulation,Perkin Elmer DSC-7,nominal10mg. DSC program30 to150°C at10°C/min,cool to30°C at−10°C/min,then second ramp to150°C at10°C/min;hold durations unknown. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. Section3.5 describes a large main melting peak as Tm2;Table4 label remains Tm. Precise peak-picking/baseline algorithm unknown;not onset,Tg,Tc or TGA.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source main-peak context retained;not a certified generic melting point."
+        },
+        "direction": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading direction is not applicable;specimen isotropy is not inferred."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "DSC-specific RH,moisture equilibrium,storage and pre-scan drying unknown. Reactive precursor drying is not DSC conditioning;no such schedule assigned to B-series."
+        },
+        "loading_rate": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading rate not applicable;thermal ramp recorded separately."
+        },
+        "additional_conditions": [
+          {
+            "name": "thermal_heating_rate",
+            "fact": {
+              "status": "reported",
+              "text": "10°C/min",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": null
+            }
+          },
+          {
+            "name": "thermal_cooling_rate",
+            "fact": {
+              "status": "reported",
+              "text": "−10°C/min to30°C",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": null
+            }
+          },
+          {
+            "name": "thermal_peak_label",
+            "fact": {
+              "status": "reported",
+              "text": "Tm,Table4",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.10 Table4 R30 row × Tm(°C) column",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Main-peak Tm2 context appears in section3.5;column itself is Tm. No per-row Tm1 inferred."
+            }
+          },
+          {
+            "name": "scan_phase_context",
+            "fact": {
+              "status": "reported",
+              "text": "Second heating,shared section3.5/Figure4 context",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45."
+            }
+          },
+          {
+            "name": "nominal_DSC_sample_mass",
+            "fact": {
+              "status": "reported",
+              "text": "10mg",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Nominal source method,not replicate count or actual weighing log."
+            }
+          },
+          {
+            "name": "purge_atmosphere_and_flow",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Not specified in DSC paragraph;TGA nitrogen30mL/min not transferred."
+            }
+          },
+          {
+            "name": "pan_and_lid",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "DSC pan/lid geometry not specified."
+            }
+          },
+          {
+            "name": "calibration_and_software",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "DSC calibration and software not specified;DMA/TGA statements not transferred."
+            }
+          },
+          {
+            "name": "thermal_holds",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "No DSC dwell/hold durations stated."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "not_stated",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "Table4 gives integer literals without defined central statistics or SD/SE/CI. DMA triplicate and mechanical mean/SD do not apply. Narrative/table range differences are not uncertainty;unknown is not zero scatter.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Selected Table4 R30 Tm cell;measurement,specimen and independent-batch counts unknown.",
+        "source_statement": "DSC repeat count not stated;nearby triplicate statement belongs to DMA only.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Source Table4 Tm of extruded PBS formulation,Perkin Elmer DSC-7,nominal10mg. DSC program30 to150°C at10°C/min,cool to30°C at−10°C/min,then second ramp to150°C at10°C/min;hold durations unknown. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. Section3.5 describes a large main melting peak as Tm2;Table4 label remains Tm. Precise peak-picking/baseline algorithm unknown;not onset,Tg,Tc or TGA.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+            "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+            "supports": [
+              "method",
+              "classification"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Section3.5 describes main peaks at113–115degC and later113.2–115.6degC, whereas Table4 reports integer Tm values including B10=116 and B30=113.",
+          "disposition": "Keep selected table literals and their precision; do not reconstruct decimals, repair rounding, average, or turn the narrative range into uncertainty.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.9 section3.5;p.10 Table4",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Section3.5 opening mentions Tg among DSC thermal properties, but Table3 Tg is explicitly obtained from DMA tan-delta maxima in section3.4.",
+          "disposition": "Do not admit DMA Tg as DSC Tg or extend the DSC-specific Tg method description in this batch.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.9 section3.5;p.10 Table4",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+          "locator": "PDF p.10 Table4 R30 row × Tm(°C) column",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+          "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ],
+      "source_document": {
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+        "revision": "Official publisher PDF Polymers2025,17,194;retained 2026-11-04.",
+        "inspected_on": "2026-11-04",
+        "sha256": "766d17f0e92c7e93cd57a3a5e97dddff0cb66a84bba6bf9118fbd0796d4c2e6f",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "PDF p.3 sections2.1–2.3;p.4 section2.8;p.9 section3.5/Figure4;p.10 Table4;retained XML permissions. Selected content only,no SI/raw-trace/calibration-certificate/latest-notice inspection.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "scope_note": "Source-qualified R30 Table4 Tm=114°C only. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. Precise algorithm,n,aggregation,dispersion,pan,gas,calibration,software and moisture/storage unknown. No DMA/TGA/mechanical metadata transfer,small-peak digitization,decimal reconstruction,service limit,allowable,universal bound,automatic conversion or engine input.",
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "PDF p.3 sections2.1–2.3;p.4 section2.8;p.9 section3.5/Figure4;p.10 Table4;retained XML permissions. Selected content only,no SI/raw-trace/calibration-certificate/latest-notice inspection.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      }
+    },
+    "refprop_ewurum2025_r45_dsc_melting_temperature": {
+      "id": "refprop_ewurum2025_r45_dsc_melting_temperature",
+      "version": "1.0.0",
+      "material_state_id": "state_ewurum2025_r45_extruded_dsc_second_heating",
+      "quantity": "melting_peak_temperature",
+      "quantity_dimension": "temperature",
+      "source_property_label": "Tm (°C), Table 4",
+      "reported_value": {
+        "kind": "scalar",
+        "number": "114",
+        "value_text": "114",
+        "unit_code": "degC",
+        "unit_text": "°C"
+      },
+      "evidence_kind": "published_experimental_reference",
+      "reporting_basis": "not_stated",
+      "determination_basis": "source_reports_measurement",
+      "basis_note": "Table4 R45 literal at source integer precision;central aggregation,selected n and numerical dispersion not stated. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45.",
+      "conditions": {
+        "temperature": {
+          "status": "reported",
+          "text": "DSC program30 to150°C at10°C/min,cool to30°C at−10°C/min,then second ramp to150°C at10°C/min;hold durations unknown.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45."
+        },
+        "test_standard": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No DSC-specific standard named in inspected method;mechanical ASTM standards not transferred."
+        },
+        "test_method": {
+          "status": "reported",
+          "text": "Source Table4 Tm of extruded PBS formulation,Perkin Elmer DSC-7,nominal10mg. DSC program30 to150°C at10°C/min,cool to30°C at−10°C/min,then second ramp to150°C at10°C/min;hold durations unknown. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. Section3.5 describes a large main melting peak as Tm2;Table4 label remains Tm. Precise peak-picking/baseline algorithm unknown;not onset,Tg,Tc or TGA.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+              "supports": [
+                "condition"
+              ]
+            }
+          ],
+          "notes": "Source main-peak context retained;not a certified generic melting point."
+        },
+        "direction": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading direction is not applicable;specimen isotropy is not inferred."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "DSC-specific RH,moisture equilibrium,storage and pre-scan drying unknown. Reactive precursor drying is not DSC conditioning;no such schedule assigned to B-series."
+        },
+        "loading_rate": {
+          "status": "not_applicable",
+          "text": null,
+          "evidence": [],
+          "notes": "Mechanical loading rate not applicable;thermal ramp recorded separately."
+        },
+        "additional_conditions": [
+          {
+            "name": "thermal_heating_rate",
+            "fact": {
+              "status": "reported",
+              "text": "10°C/min",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": null
+            }
+          },
+          {
+            "name": "thermal_cooling_rate",
+            "fact": {
+              "status": "reported",
+              "text": "−10°C/min to30°C",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": null
+            }
+          },
+          {
+            "name": "thermal_peak_label",
+            "fact": {
+              "status": "reported",
+              "text": "Tm,Table4",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.10 Table4 R45 row × Tm(°C) column",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Main-peak Tm2 context appears in section3.5;column itself is Tm. No per-row Tm1 inferred."
+            }
+          },
+          {
+            "name": "scan_phase_context",
+            "fact": {
+              "status": "reported",
+              "text": "Second heating,shared section3.5/Figure4 context",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45."
+            }
+          },
+          {
+            "name": "nominal_DSC_sample_mass",
+            "fact": {
+              "status": "reported",
+              "text": "10mg",
+              "evidence": [
+                {
+                  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                  "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+                  "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+                  "supports": [
+                    "condition"
+                  ]
+                }
+              ],
+              "notes": "Nominal source method,not replicate count or actual weighing log."
+            }
+          },
+          {
+            "name": "purge_atmosphere_and_flow",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "Not specified in DSC paragraph;TGA nitrogen30mL/min not transferred."
+            }
+          },
+          {
+            "name": "pan_and_lid",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "DSC pan/lid geometry not specified."
+            }
+          },
+          {
+            "name": "calibration_and_software",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "DSC calibration and software not specified;DMA/TGA statements not transferred."
+            }
+          },
+          {
+            "name": "thermal_holds",
+            "fact": {
+              "status": "not_reported_in_inspected_source",
+              "text": null,
+              "evidence": [],
+              "notes": "No DSC dwell/hold durations stated."
+            }
+          }
+        ]
+      },
+      "density_basis": null,
+      "summary_statistic": "not_stated",
+      "uncertainty": null,
+      "uncertainty_status": "not_reported_in_inspected_source",
+      "uncertainty_note": "Table4 gives integer literals without defined central statistics or SD/SE/CI. DMA triplicate and mechanical mean/SD do not apply. Narrative/table range differences are not uncertainty;unknown is not zero scatter.",
+      "sample_count": {
+        "value": null,
+        "relation": "not_reported",
+        "scope": "Selected Table4 R45 Tm cell;measurement,specimen and independent-batch counts unknown.",
+        "source_statement": "DSC repeat count not stated;nearby triplicate statement belongs to DMA only.",
+        "evidence": []
+      },
+      "method_definition": {
+        "type": "source_reported_conventional",
+        "definition": "Source Table4 Tm of extruded PBS formulation,Perkin Elmer DSC-7,nominal10mg. DSC program30 to150°C at10°C/min,cool to30°C at−10°C/min,then second ramp to150°C at10°C/min;hold durations unknown. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. Section3.5 describes a large main melting peak as Tm2;Table4 label remains Tm. Precise peak-picking/baseline algorithm unknown;not onset,Tg,Tc or TGA.",
+        "extraction_window": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+            "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+            "supports": [
+              "method",
+              "classification"
+            ]
+          }
+        ]
+      },
+      "source_discrepancies": [
+        {
+          "description": "Section3.5 describes main peaks at113–115degC and later113.2–115.6degC, whereas Table4 reports integer Tm values including B10=116 and B30=113.",
+          "disposition": "Keep selected table literals and their precision; do not reconstruct decimals, repair rounding, average, or turn the narrative range into uncertainty.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.9 section3.5;p.10 Table4",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Section3.5 opening mentions Tg among DSC thermal properties, but Table3 Tg is explicitly obtained from DMA tan-delta maxima in section3.4.",
+          "disposition": "Do not admit DMA Tg as DSC Tg or extend the DSC-specific Tg method description in this batch.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.9 section3.5;p.10 Table4",
+              "supports": [
+                "source_discrepancy"
+              ]
+            }
+          ]
+        }
+      ],
+      "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+          "locator": "PDF p.10 Table4 R45 row × Tm(°C) column",
+          "supports": [
+            "reported_value",
+            "classification"
+          ]
+        },
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+          "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ],
+      "source_document": {
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+        "revision": "Official publisher PDF Polymers2025,17,194;retained 2026-11-04.",
+        "inspected_on": "2026-11-04",
+        "sha256": "766d17f0e92c7e93cd57a3a5e97dddff0cb66a84bba6bf9118fbd0796d4c2e6f",
+        "hash_status": "recorded",
+        "hash_note": null,
+        "inspection_scope": "PDF p.3 sections2.1–2.3;p.4 section2.8;p.9 section3.5/Figure4;p.10 Table4;retained XML permissions. Selected content only,no SI/raw-trace/calibration-certificate/latest-notice inspection.",
+        "inspection_status": "selected_content_inspected"
+      },
+      "scope_note": "Source-qualified R45 Table4 Tm=114°C only. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. Precise algorithm,n,aggregation,dispersion,pan,gas,calibration,software and moisture/storage unknown. No DMA/TGA/mechanical metadata transfer,small-peak digitization,decimal reconstruction,service limit,allowable,universal bound,automatic conversion or engine input.",
+      "evaluation_support": "catalog_only",
+      "universal_bound": false,
+      "engineering_allowable": false,
+      "verification": {
+        "source_inspection_scope": "PDF p.3 sections2.1–2.3;p.4 section2.8;p.9 section3.5/Figure4;p.10 Table4;retained XML permissions. Selected content only,no SI/raw-trace/calibration-certificate/latest-notice inspection.",
+        "transcription_cross_check": "completed",
+        "independent_scientific_review": false,
+        "raw_data_reanalysis": false
+      }
+    }
+  },
+  "state_records": {
+    "state_ewurum2025_b0_extruded_dsc_second_heating": {
+      "id": "state_ewurum2025_b0_extruded_dsc_second_heating",
+      "version": "1.0.0",
+      "identity_id": "mat_ewurum2025_biopbs",
+      "grade_id": null,
+      "name": "B0 extruded PBS formulation,DSC second-heating context",
+      "names": {
+        "en": "B0 extruded PBS formulation,DSC second-heating context",
+        "zh": "B0 extruded PBS formulation,DSC second-heating context",
+        "ja": "B0 extruded PBS formulation,DSC second-heating context",
+        "de": "B0 extruded PBS formulation,DSC second-heating context"
+      },
+      "aliases": [],
+      "source_designation": "B0",
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Extruded formulation sample,nominal10mg for DSC",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Actual per-run mass,pan,lid and aliquot geometry unknown;not injection-molded tensile or hot-pressed flexural specimen."
+        },
+        "processing": {
+          "status": "reported",
+          "text": "Source formulation single-screw extruded at140°C into3mm strands and pelletized.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.3 section2.3",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Pre-extrusion recipe only;selected DSC aliquot route beyond extruded material is not resolved. No post-extrusion hot pressing,additional compounding or injection molding assigned."
+        },
+        "temper_or_heat_treatment": {
+          "status": "reported",
+          "text": "DSC program30 to150°C at10°C/min,cool to30°C at−10°C/min,then second ramp to150°C at10°C/min;hold durations unknown.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. Not ambient conditioning or proof of complete history erasure."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "DSC-specific RH,moisture equilibrium,storage and pre-scan drying unknown. Reactive precursor drying is not DSC conditioning;no such schedule assigned to B-series."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "Neat PBS, source B0 with zero added lignin in the simple-blend series",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.3 sections2.1–2.3,source formulation B0",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "§2.1 gives the unresolved combined designation BioPBS FZ91PM/FZ91PB; no single grade is selected or inferred. B0/B20 are study formulation labels, not certified grades. No chemical-purity assay or universal biodegradability claim is inferred."
+        },
+        "reinforcement": {
+          "status": "reported",
+          "text": "No added lignin in source B0",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.3 sections2.1–2.3,source formulation B0",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Not established for the selected extruded DSC specimen;mechanical-state facts are not transferred."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Not established for the selected extruded DSC specimen;mechanical-state facts are not transferred."
+        }
+      },
+      "source_scope": "Existing B0 source formulation identity;separate extruded DSC state. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. BioPBS FZ91PM/FZ91PB unresolved;recipe additions do not establish final reacted composition or network topology. No mechanical geometry/conditioning,n or statistics transferred.",
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+          "locator": "PDF p.3 sections2.1–2.3",
+          "supports": [
+            "state"
+          ]
+        },
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+          "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_ewurum2025_b0_dsc_melting_temperature"
+      ],
+      "evaluation_support": "catalog_only"
+    },
+    "state_ewurum2025_b10_extruded_dsc_second_heating": {
+      "id": "state_ewurum2025_b10_extruded_dsc_second_heating",
+      "version": "1.0.0",
+      "identity_id": "mat_ewurum2025_pbs_lignin10",
+      "grade_id": null,
+      "name": "B10 extruded PBS formulation,DSC second-heating context",
+      "names": {
+        "en": "B10 extruded PBS formulation,DSC second-heating context",
+        "zh": "B10 extruded PBS formulation,DSC second-heating context",
+        "ja": "B10 extruded PBS formulation,DSC second-heating context",
+        "de": "B10 extruded PBS formulation,DSC second-heating context"
+      },
+      "aliases": [],
+      "source_designation": "B10",
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Extruded formulation sample,nominal10mg for DSC",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Actual per-run mass,pan,lid and aliquot geometry unknown;not injection-molded tensile or hot-pressed flexural specimen."
+        },
+        "processing": {
+          "status": "reported",
+          "text": "Source formulation single-screw extruded at140°C into3mm strands and pelletized.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.3 section2.3",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Pre-extrusion recipe only;selected DSC aliquot route beyond extruded material is not resolved. No post-extrusion hot pressing,additional compounding or injection molding assigned."
+        },
+        "temper_or_heat_treatment": {
+          "status": "reported",
+          "text": "DSC program30 to150°C at10°C/min,cool to30°C at−10°C/min,then second ramp to150°C at10°C/min;hold durations unknown.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. Not ambient conditioning or proof of complete history erasure."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "DSC-specific RH,moisture equilibrium,storage and pre-scan drying unknown. Reactive precursor drying is not DSC conditioning;no such schedule assigned to B-series."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "PBS with 10 wt.% Indulin AT softwood kraft lignin, percentage of total polymer mass, source B10 simple blend",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.3 sections2.1–2.3,source formulation B10",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Section 2.1 gives the unresolved combined designation BioPBS FZ91PM/FZ91PB; no single grade is selected or inferred. Bxx/Rxx are study formulation labels, not certified grades. No chemical-purity assay or universal biodegradability claim is inferred."
+        },
+        "reinforcement": {
+          "status": "reported",
+          "text": "10 wt.% Indulin AT softwood kraft lignin",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.3 sections2.1–2.3,source formulation B10",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Not established for the selected extruded DSC specimen;mechanical-state facts are not transferred."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Not established for the selected extruded DSC specimen;mechanical-state facts are not transferred."
+        }
+      },
+      "source_scope": "Existing B10 source formulation identity;separate extruded DSC state. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. BioPBS FZ91PM/FZ91PB unresolved;recipe additions do not establish final reacted composition or network topology. No mechanical geometry/conditioning,n or statistics transferred.",
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+          "locator": "PDF p.3 sections2.1–2.3",
+          "supports": [
+            "state"
+          ]
+        },
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+          "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_ewurum2025_b10_dsc_melting_temperature"
+      ],
+      "evaluation_support": "catalog_only"
+    },
+    "state_ewurum2025_b20_extruded_dsc_second_heating": {
+      "id": "state_ewurum2025_b20_extruded_dsc_second_heating",
+      "version": "1.0.0",
+      "identity_id": "mat_ewurum2025_pbs_lignin20",
+      "grade_id": null,
+      "name": "B20 extruded PBS formulation,DSC second-heating context",
+      "names": {
+        "en": "B20 extruded PBS formulation,DSC second-heating context",
+        "zh": "B20 extruded PBS formulation,DSC second-heating context",
+        "ja": "B20 extruded PBS formulation,DSC second-heating context",
+        "de": "B20 extruded PBS formulation,DSC second-heating context"
+      },
+      "aliases": [],
+      "source_designation": "B20",
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Extruded formulation sample,nominal10mg for DSC",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Actual per-run mass,pan,lid and aliquot geometry unknown;not injection-molded tensile or hot-pressed flexural specimen."
+        },
+        "processing": {
+          "status": "reported",
+          "text": "Source formulation single-screw extruded at140°C into3mm strands and pelletized.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.3 section2.3",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Pre-extrusion recipe only;selected DSC aliquot route beyond extruded material is not resolved. No post-extrusion hot pressing,additional compounding or injection molding assigned."
+        },
+        "temper_or_heat_treatment": {
+          "status": "reported",
+          "text": "DSC program30 to150°C at10°C/min,cool to30°C at−10°C/min,then second ramp to150°C at10°C/min;hold durations unknown.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. Not ambient conditioning or proof of complete history erasure."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "DSC-specific RH,moisture equilibrium,storage and pre-scan drying unknown. Reactive precursor drying is not DSC conditioning;no such schedule assigned to B-series."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "PBS with 20 wt.% Indulin AT softwood kraft lignin, percentage of total polymer mass, source B20 simple blend",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.3 sections2.1–2.3,source formulation B20",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "§2.1 gives the unresolved combined designation BioPBS FZ91PM/FZ91PB; no single grade is selected or inferred. B0/B20 are study formulation labels, not certified grades. No chemical-purity assay or universal biodegradability claim is inferred."
+        },
+        "reinforcement": {
+          "status": "reported",
+          "text": "20 wt.% Indulin AT softwood kraft lignin",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.3 sections2.1–2.3,source formulation B20",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Not established for the selected extruded DSC specimen;mechanical-state facts are not transferred."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Not established for the selected extruded DSC specimen;mechanical-state facts are not transferred."
+        }
+      },
+      "source_scope": "Existing B20 source formulation identity;separate extruded DSC state. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. BioPBS FZ91PM/FZ91PB unresolved;recipe additions do not establish final reacted composition or network topology. No mechanical geometry/conditioning,n or statistics transferred.",
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+          "locator": "PDF p.3 sections2.1–2.3",
+          "supports": [
+            "state"
+          ]
+        },
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+          "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_ewurum2025_b20_dsc_melting_temperature"
+      ],
+      "evaluation_support": "catalog_only"
+    },
+    "state_ewurum2025_b30_extruded_dsc_second_heating": {
+      "id": "state_ewurum2025_b30_extruded_dsc_second_heating",
+      "version": "1.0.0",
+      "identity_id": "mat_ewurum2025_pbs_lignin30",
+      "grade_id": null,
+      "name": "B30 extruded PBS formulation,DSC second-heating context",
+      "names": {
+        "en": "B30 extruded PBS formulation,DSC second-heating context",
+        "zh": "B30 extruded PBS formulation,DSC second-heating context",
+        "ja": "B30 extruded PBS formulation,DSC second-heating context",
+        "de": "B30 extruded PBS formulation,DSC second-heating context"
+      },
+      "aliases": [],
+      "source_designation": "B30",
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Extruded formulation sample,nominal10mg for DSC",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Actual per-run mass,pan,lid and aliquot geometry unknown;not injection-molded tensile or hot-pressed flexural specimen."
+        },
+        "processing": {
+          "status": "reported",
+          "text": "Source formulation single-screw extruded at140°C into3mm strands and pelletized.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.3 section2.3",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Pre-extrusion recipe only;selected DSC aliquot route beyond extruded material is not resolved. No post-extrusion hot pressing,additional compounding or injection molding assigned."
+        },
+        "temper_or_heat_treatment": {
+          "status": "reported",
+          "text": "DSC program30 to150°C at10°C/min,cool to30°C at−10°C/min,then second ramp to150°C at10°C/min;hold durations unknown.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. Not ambient conditioning or proof of complete history erasure."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "DSC-specific RH,moisture equilibrium,storage and pre-scan drying unknown. Reactive precursor drying is not DSC conditioning;no such schedule assigned to B-series."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "PBS with 30 wt.% Indulin AT softwood kraft lignin, percentage of total polymer mass, source B30 simple blend",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.3 sections2.1–2.3,source formulation B30",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Section 2.1 gives the unresolved combined designation BioPBS FZ91PM/FZ91PB; no single grade is selected or inferred. Bxx/Rxx are study formulation labels, not certified grades. No chemical-purity assay or universal biodegradability claim is inferred."
+        },
+        "reinforcement": {
+          "status": "reported",
+          "text": "30 wt.% Indulin AT softwood kraft lignin",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.3 sections2.1–2.3,source formulation B30",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Not established for the selected extruded DSC specimen;mechanical-state facts are not transferred."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Not established for the selected extruded DSC specimen;mechanical-state facts are not transferred."
+        }
+      },
+      "source_scope": "Existing B30 source formulation identity;separate extruded DSC state. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. BioPBS FZ91PM/FZ91PB unresolved;recipe additions do not establish final reacted composition or network topology. No mechanical geometry/conditioning,n or statistics transferred.",
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+          "locator": "PDF p.3 sections2.1–2.3",
+          "supports": [
+            "state"
+          ]
+        },
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+          "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_ewurum2025_b30_dsc_melting_temperature"
+      ],
+      "evaluation_support": "catalog_only"
+    },
+    "state_ewurum2025_b45_extruded_dsc_second_heating": {
+      "id": "state_ewurum2025_b45_extruded_dsc_second_heating",
+      "version": "1.0.0",
+      "identity_id": "mat_ewurum2025_pbs_lignin45",
+      "grade_id": null,
+      "name": "B45 extruded PBS formulation,DSC second-heating context",
+      "names": {
+        "en": "B45 extruded PBS formulation,DSC second-heating context",
+        "zh": "B45 extruded PBS formulation,DSC second-heating context",
+        "ja": "B45 extruded PBS formulation,DSC second-heating context",
+        "de": "B45 extruded PBS formulation,DSC second-heating context"
+      },
+      "aliases": [],
+      "source_designation": "B45",
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Extruded formulation sample,nominal10mg for DSC",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Actual per-run mass,pan,lid and aliquot geometry unknown;not injection-molded tensile or hot-pressed flexural specimen."
+        },
+        "processing": {
+          "status": "reported",
+          "text": "Source formulation single-screw extruded at140°C into3mm strands and pelletized.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.3 section2.3",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Pre-extrusion recipe only;selected DSC aliquot route beyond extruded material is not resolved. No post-extrusion hot pressing,additional compounding or injection molding assigned."
+        },
+        "temper_or_heat_treatment": {
+          "status": "reported",
+          "text": "DSC program30 to150°C at10°C/min,cool to30°C at−10°C/min,then second ramp to150°C at10°C/min;hold durations unknown.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. Not ambient conditioning or proof of complete history erasure."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "DSC-specific RH,moisture equilibrium,storage and pre-scan drying unknown. Reactive precursor drying is not DSC conditioning;no such schedule assigned to B-series."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "PBS with 45 wt.% Indulin AT softwood kraft lignin, percentage of total polymer mass, source B45 simple blend",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.3 sections2.1–2.3,source formulation B45",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Section 2.1 gives the unresolved combined designation BioPBS FZ91PM/FZ91PB; no single grade is selected or inferred. Bxx/Rxx are study formulation labels, not certified grades. No chemical-purity assay or universal biodegradability claim is inferred."
+        },
+        "reinforcement": {
+          "status": "reported",
+          "text": "45 wt.% Indulin AT softwood kraft lignin",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.3 sections2.1–2.3,source formulation B45",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Not established for the selected extruded DSC specimen;mechanical-state facts are not transferred."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Not established for the selected extruded DSC specimen;mechanical-state facts are not transferred."
+        }
+      },
+      "source_scope": "Existing B45 source formulation identity;separate extruded DSC state. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. BioPBS FZ91PM/FZ91PB unresolved;recipe additions do not establish final reacted composition or network topology. No mechanical geometry/conditioning,n or statistics transferred.",
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+          "locator": "PDF p.3 sections2.1–2.3",
+          "supports": [
+            "state"
+          ]
+        },
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+          "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_ewurum2025_b45_dsc_melting_temperature"
+      ],
+      "evaluation_support": "catalog_only"
+    },
+    "state_ewurum2025_r10_extruded_dsc_second_heating": {
+      "id": "state_ewurum2025_r10_extruded_dsc_second_heating",
+      "version": "1.0.0",
+      "identity_id": "mat_ewurum2025_pbs_lignin_r10",
+      "grade_id": null,
+      "name": "R10 extruded PBS formulation,DSC second-heating context",
+      "names": {
+        "en": "R10 extruded PBS formulation,DSC second-heating context",
+        "zh": "R10 extruded PBS formulation,DSC second-heating context",
+        "ja": "R10 extruded PBS formulation,DSC second-heating context",
+        "de": "R10 extruded PBS formulation,DSC second-heating context"
+      },
+      "aliases": [],
+      "source_designation": "R10",
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Extruded formulation sample,nominal10mg for DSC",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Actual per-run mass,pan,lid and aliquot geometry unknown;not injection-molded tensile or hot-pressed flexural specimen."
+        },
+        "processing": {
+          "status": "reported",
+          "text": "Source formulation single-screw extruded at140°C into3mm strands and pelletized. DCP reactive-series preparation includes acetone/DCP treatment,24h fume-hood drying and80°C vacuum drying12h before extrusion.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.3 section2.3",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Pre-extrusion recipe only;selected DSC aliquot route beyond extruded material is not resolved. No post-extrusion hot pressing,additional compounding or injection molding assigned."
+        },
+        "temper_or_heat_treatment": {
+          "status": "reported",
+          "text": "DSC program30 to150°C at10°C/min,cool to30°C at−10°C/min,then second ramp to150°C at10°C/min;hold durations unknown.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. Not ambient conditioning or proof of complete history erasure."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "DSC-specific RH,moisture equilibrium,storage and pre-scan drying unknown. Reactive precursor drying is not DSC conditioning;no such schedule assigned to B-series."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "Nominal PBS / 10 wt.% Indulin AT softwood kraft lignin (percentage of total polymer mass), source R10 reactive series; 0.25 wt.% DCP added to PBS.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.3 sections2.1–2.3,source formulation R10",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "The source says 0.25 wt.% DCP added to PBS. Its exact denominator and final retained DCP are not resolved; no final mass fractions, crosslink density, graft fraction, molecular architecture or chemical purity are inferred. Section 2.1 gives BioPBS FZ91PM/FZ91PB without resolving a single grade. Keep grade_id null; the R labels are study formulations, not commercial grades."
+        },
+        "reinforcement": {
+          "status": "reported",
+          "text": "10 wt.% Indulin AT softwood kraft lignin relative to total polymer mass",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.3 sections2.1–2.3,source formulation R10",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Nominal feed loading, not an analyzed final mass fraction."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Not established for the selected extruded DSC specimen;mechanical-state facts are not transferred."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Not established for the selected extruded DSC specimen;mechanical-state facts are not transferred."
+        }
+      },
+      "source_scope": "Existing R10 source formulation identity;separate extruded DSC state. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. BioPBS FZ91PM/FZ91PB unresolved;recipe additions do not establish final reacted composition or network topology. No mechanical geometry/conditioning,n or statistics transferred.",
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+          "locator": "PDF p.3 sections2.1–2.3",
+          "supports": [
+            "state"
+          ]
+        },
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+          "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_ewurum2025_r10_dsc_melting_temperature"
+      ],
+      "evaluation_support": "catalog_only"
+    },
+    "state_ewurum2025_r20_extruded_dsc_second_heating": {
+      "id": "state_ewurum2025_r20_extruded_dsc_second_heating",
+      "version": "1.0.0",
+      "identity_id": "mat_ewurum2025_pbs_lignin_r20",
+      "grade_id": null,
+      "name": "R20 extruded PBS formulation,DSC second-heating context",
+      "names": {
+        "en": "R20 extruded PBS formulation,DSC second-heating context",
+        "zh": "R20 extruded PBS formulation,DSC second-heating context",
+        "ja": "R20 extruded PBS formulation,DSC second-heating context",
+        "de": "R20 extruded PBS formulation,DSC second-heating context"
+      },
+      "aliases": [],
+      "source_designation": "R20",
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Extruded formulation sample,nominal10mg for DSC",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Actual per-run mass,pan,lid and aliquot geometry unknown;not injection-molded tensile or hot-pressed flexural specimen."
+        },
+        "processing": {
+          "status": "reported",
+          "text": "Source formulation single-screw extruded at140°C into3mm strands and pelletized. DCP reactive-series preparation includes acetone/DCP treatment,24h fume-hood drying and80°C vacuum drying12h before extrusion.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.3 section2.3",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Pre-extrusion recipe only;selected DSC aliquot route beyond extruded material is not resolved. No post-extrusion hot pressing,additional compounding or injection molding assigned."
+        },
+        "temper_or_heat_treatment": {
+          "status": "reported",
+          "text": "DSC program30 to150°C at10°C/min,cool to30°C at−10°C/min,then second ramp to150°C at10°C/min;hold durations unknown.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. Not ambient conditioning or proof of complete history erasure."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "DSC-specific RH,moisture equilibrium,storage and pre-scan drying unknown. Reactive precursor drying is not DSC conditioning;no such schedule assigned to B-series."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "Nominal PBS / 20 wt.% Indulin AT softwood kraft lignin (percentage of total polymer mass), source R20 reactive series; 0.25 wt.% DCP added to PBS.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.3 sections2.1–2.3,source formulation R20",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "The source says 0.25 wt.% DCP added to PBS. Its exact denominator and final retained DCP are not resolved; no final mass fractions, crosslink density, graft fraction, molecular architecture or chemical purity are inferred. Section 2.1 gives BioPBS FZ91PM/FZ91PB without resolving a single grade. Keep grade_id null; the R labels are study formulations, not commercial grades."
+        },
+        "reinforcement": {
+          "status": "reported",
+          "text": "20 wt.% Indulin AT softwood kraft lignin relative to total polymer mass",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.3 sections2.1–2.3,source formulation R20",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Nominal feed loading, not an analyzed final mass fraction."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Not established for the selected extruded DSC specimen;mechanical-state facts are not transferred."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Not established for the selected extruded DSC specimen;mechanical-state facts are not transferred."
+        }
+      },
+      "source_scope": "Existing R20 source formulation identity;separate extruded DSC state. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. BioPBS FZ91PM/FZ91PB unresolved;recipe additions do not establish final reacted composition or network topology. No mechanical geometry/conditioning,n or statistics transferred.",
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+          "locator": "PDF p.3 sections2.1–2.3",
+          "supports": [
+            "state"
+          ]
+        },
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+          "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_ewurum2025_r20_dsc_melting_temperature"
+      ],
+      "evaluation_support": "catalog_only"
+    },
+    "state_ewurum2025_r30_extruded_dsc_second_heating": {
+      "id": "state_ewurum2025_r30_extruded_dsc_second_heating",
+      "version": "1.0.0",
+      "identity_id": "mat_ewurum2025_pbs_lignin_r30",
+      "grade_id": null,
+      "name": "R30 extruded PBS formulation,DSC second-heating context",
+      "names": {
+        "en": "R30 extruded PBS formulation,DSC second-heating context",
+        "zh": "R30 extruded PBS formulation,DSC second-heating context",
+        "ja": "R30 extruded PBS formulation,DSC second-heating context",
+        "de": "R30 extruded PBS formulation,DSC second-heating context"
+      },
+      "aliases": [],
+      "source_designation": "R30",
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Extruded formulation sample,nominal10mg for DSC",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Actual per-run mass,pan,lid and aliquot geometry unknown;not injection-molded tensile or hot-pressed flexural specimen."
+        },
+        "processing": {
+          "status": "reported",
+          "text": "Source formulation single-screw extruded at140°C into3mm strands and pelletized. DCP reactive-series preparation includes acetone/DCP treatment,24h fume-hood drying and80°C vacuum drying12h before extrusion.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.3 section2.3",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Pre-extrusion recipe only;selected DSC aliquot route beyond extruded material is not resolved. No post-extrusion hot pressing,additional compounding or injection molding assigned."
+        },
+        "temper_or_heat_treatment": {
+          "status": "reported",
+          "text": "DSC program30 to150°C at10°C/min,cool to30°C at−10°C/min,then second ramp to150°C at10°C/min;hold durations unknown.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. Not ambient conditioning or proof of complete history erasure."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "DSC-specific RH,moisture equilibrium,storage and pre-scan drying unknown. Reactive precursor drying is not DSC conditioning;no such schedule assigned to B-series."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "Nominal PBS / 30 wt.% Indulin AT softwood kraft lignin (percentage of total polymer mass), source R30 reactive series; 0.25 wt.% DCP added to PBS.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.3 sections2.1–2.3,source formulation R30",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "The source says 0.25 wt.% DCP added to PBS. Its exact denominator and final retained DCP are not resolved; no final mass fractions, crosslink density, graft fraction, molecular architecture or chemical purity are inferred. Section 2.1 gives BioPBS FZ91PM/FZ91PB without resolving a single grade. Keep grade_id null; the R labels are study formulations, not commercial grades."
+        },
+        "reinforcement": {
+          "status": "reported",
+          "text": "30 wt.% Indulin AT softwood kraft lignin relative to total polymer mass",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.3 sections2.1–2.3,source formulation R30",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Nominal feed loading, not an analyzed final mass fraction."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Not established for the selected extruded DSC specimen;mechanical-state facts are not transferred."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Not established for the selected extruded DSC specimen;mechanical-state facts are not transferred."
+        }
+      },
+      "source_scope": "Existing R30 source formulation identity;separate extruded DSC state. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. BioPBS FZ91PM/FZ91PB unresolved;recipe additions do not establish final reacted composition or network topology. No mechanical geometry/conditioning,n or statistics transferred.",
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+          "locator": "PDF p.3 sections2.1–2.3",
+          "supports": [
+            "state"
+          ]
+        },
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+          "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_ewurum2025_r30_dsc_melting_temperature"
+      ],
+      "evaluation_support": "catalog_only"
+    },
+    "state_ewurum2025_r45_extruded_dsc_second_heating": {
+      "id": "state_ewurum2025_r45_extruded_dsc_second_heating",
+      "version": "1.0.0",
+      "identity_id": "mat_ewurum2025_pbs_lignin_r45",
+      "grade_id": null,
+      "name": "R45 extruded PBS formulation,DSC second-heating context",
+      "names": {
+        "en": "R45 extruded PBS formulation,DSC second-heating context",
+        "zh": "R45 extruded PBS formulation,DSC second-heating context",
+        "ja": "R45 extruded PBS formulation,DSC second-heating context",
+        "de": "R45 extruded PBS formulation,DSC second-heating context"
+      },
+      "aliases": [],
+      "source_designation": "R45",
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Extruded formulation sample,nominal10mg for DSC",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Actual per-run mass,pan,lid and aliquot geometry unknown;not injection-molded tensile or hot-pressed flexural specimen."
+        },
+        "processing": {
+          "status": "reported",
+          "text": "Source formulation single-screw extruded at140°C into3mm strands and pelletized. DCP reactive-series preparation includes acetone/DCP treatment,24h fume-hood drying and80°C vacuum drying12h before extrusion.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.3 section2.3",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Pre-extrusion recipe only;selected DSC aliquot route beyond extruded material is not resolved. No post-extrusion hot pressing,additional compounding or injection molding assigned."
+        },
+        "temper_or_heat_treatment": {
+          "status": "reported",
+          "text": "DSC program30 to150°C at10°C/min,cool to30°C at−10°C/min,then second ramp to150°C at10°C/min;hold durations unknown.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. Not ambient conditioning or proof of complete history erasure."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "DSC-specific RH,moisture equilibrium,storage and pre-scan drying unknown. Reactive precursor drying is not DSC conditioning;no such schedule assigned to B-series."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "Nominal PBS / 45 wt.% Indulin AT softwood kraft lignin (percentage of total polymer mass), source R45 reactive series; 0.25 wt.% DCP added to PBS.",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.3 sections2.1–2.3,source formulation R45",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "The source says 0.25 wt.% DCP added to PBS. Its exact denominator and final retained DCP are not resolved; no final mass fractions, crosslink density, graft fraction, molecular architecture or chemical purity are inferred. Section 2.1 gives BioPBS FZ91PM/FZ91PB without resolving a single grade. Keep grade_id null; the R labels are study formulations, not commercial grades."
+        },
+        "reinforcement": {
+          "status": "reported",
+          "text": "45 wt.% Indulin AT softwood kraft lignin relative to total polymer mass",
+          "evidence": [
+            {
+              "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+              "locator": "PDF p.3 sections2.1–2.3,source formulation R45",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Nominal feed loading, not an analyzed final mass fraction."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Not established for the selected extruded DSC specimen;mechanical-state facts are not transferred."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Not established for the selected extruded DSC specimen;mechanical-state facts are not transferred."
+        }
+      },
+      "source_scope": "Existing R45 source formulation identity;separate extruded DSC state. Second-heating context from section3.5/Figure4 caption,not a separately documented scan assignment for each Table4 cell;Figure4 plots only B0/B20/B45/R20/R45. BioPBS FZ91PM/FZ91PB unresolved;recipe additions do not establish final reacted composition or network topology. No mechanical geometry/conditioning,n or statistics transferred.",
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+          "locator": "PDF p.3 sections2.1–2.3",
+          "supports": [
+            "state"
+          ]
+        },
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+          "locator": "PDF p.4 section2.8 DSC paragraph;p.9 section3.5 and Figure4",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_ewurum2025_r45_dsc_melting_temperature"
+      ],
+      "evaluation_support": "catalog_only"
+    }
+  },
+  "source_record": {
+    "id": "ewurum_mcdonald_2025_pbs_lignin",
+    "title": "Lignin Reinforcement in Polybutylene Succinate Copolymers",
+    "authors": [
+      "Nnaemeka Ewurum",
+      "Armando G. McDonald"
+    ],
+    "year": 2025,
+    "doi": "10.3390/polym17020194",
+    "urls": [
+      "https://doi.org/10.3390/polym17020194",
+      "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+      "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml"
+    ],
+    "read_status": "selected_primary_identity_state_property_method_statistics_and_article_rights_inspected_and_independently_transcription_cross_checked",
+    "license": {
+      "status": "explicit_reuse_license_verified",
+      "identifier": "CC-BY-4.0"
+    },
+    "role": "published_experimental_reference",
+    "claim_notes": [
+      "PDF p.1 article-specific CC BY 4.0 notice; p.3 §§2.1–2.3 identity, nitrogen pycnometry and preparation; p.5 §2.9 and Table 1; p.12 Table 6 and its mean/SD footnote.",
+      "Retained original publisher PDF inspected on 2026-10-05: SHA-256 766d17f0e92c7e93cd57a3a5e97dddff0cb66a84bba6bf9118fbd0796d4c2e6f, 3211541 bytes. Page images of selected numerical tables were also checked locally. No formal revision number or comprehensive errata/retraction audit is claimed.",
+      "Article p.1 explicitly grants CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Attribution applies to selected original experimental facts. Adaptations consist of factual transcription, structured metadata, authored four-language names and source-scope qualifications; no full table, figure, PDF, screenshot or source dump is bundled or relicensed under project MIT.",
+      "An independent original-PDF transcription review reported acceptance of the selected numerical facts without correction. Local rereading retained the grade ambiguity, unknown aggregation/plus-minus semantics and ratio-basis limits. This is not independent scientific peer review, experimental replication, raw-data reanalysis or legal clearance.",
+      "2026-11-03 primary XML supplement: Table 6 tensile strength means/SDs and section 2.9 method reread by curator; draft supplements for nine existing states remain pending independent review. No fresh PDF visual inspection or scientific replication claimed.",
+      "2026-11-04 source Table4 literal DSC Tm values for nine existing B0/B10/B20/B30/B45/R10/R20/R30/R45 formulation identities on separate extruded DSC states. Common second-heating context from section3.5/Figure4,not per-cell phase certification. Keep integer precision,source Tm label,narrative ranges and unknown n/statistics/conditioning/DSC atmosphere. No R0 identity mapping,DMA/TGA/mechanical metadata transfer,small-peak digitization or engineering/engine use."
+    ],
+    "provenance": {
+      "curation_date": "2026-10-05",
+      "method": "Original PDF identity, preparation, selected numerical cells, methods, statistical scope and article-specific rights inspected; independent source-transcription acceptance followed by local method and table rereading. No independent scientific review or raw-data reanalysis."
+    },
+    "bundled_content": "selected_source_qualified_facts_bibliographic_metadata_and_original_curation_only_no_source_assets"
+  }
+}

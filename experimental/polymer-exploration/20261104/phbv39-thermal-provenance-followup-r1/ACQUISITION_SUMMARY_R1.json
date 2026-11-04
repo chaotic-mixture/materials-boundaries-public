@@ -1,0 +1,24 @@
+{
+  "attempts": [
+    {
+      "receipt": "SUPPLEMENT_ACQUISITION_R1.json",
+      "result": "DNS failure; no supplementary body"
+    },
+    {
+      "receipt": "SUPPLEMENT_ACQUISITION_R2.json",
+      "result": "HTTP200 HTML recaptcha challenge, not a ZIP; not scientific supplementary evidence"
+    },
+    {
+      "receipt": "SUPPLEMENT_ACQUISITION_R3.json",
+      "result": "Official Europe PMC HTTP200 application/zip; verified outer ZIP, nested ZIP and PDF byte chain"
+    }
+  ],
+  "tool_limitations": [
+    "Initial pypdf import in project Python failed before PDF extraction; bundled Python pypdf subsequently extracted six pages.",
+    "Bundled pdftotext executable was absent; Poppler pdfinfo and pdftoppm succeeded; all six page images inspected.",
+    "First preparation used nonexistent material_states/reference_sources filenames and stopped before writing audit files; corrected to actual materials.json/sources.json before freezing.",
+    "Acquisition and inspection checks are not unit tests, full graph validation, installation or historical regression."
+  ],
+  "read_only_scientific_inspection": true,
+  "attached_code_executed": false
+}

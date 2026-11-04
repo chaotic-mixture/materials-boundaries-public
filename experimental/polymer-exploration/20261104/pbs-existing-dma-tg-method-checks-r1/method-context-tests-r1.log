@@ -1,0 +1,52 @@
+test_four_language_rendering_preserves_method_criterion_and_unknown_count (test_glass_transition_method_context_contract.GlassTransitionMethodContextTests.test_four_language_rendering_preserves_method_criterion_and_unknown_count) ... ERROR
+test_same_coordinate_and_identity_preserve_two_method_states_and_exports (test_glass_transition_method_context_contract.GlassTransitionMethodContextTests.test_same_coordinate_and_identity_preserve_two_method_states_and_exports) ... ERROR
+
+======================================================================
+ERROR: test_four_language_rendering_preserves_method_criterion_and_unknown_count (test_glass_transition_method_context_contract.GlassTransitionMethodContextTests.test_four_language_rendering_preserves_method_criterion_and_unknown_count)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "F:\材料边界\open-database\tests\test_glass_transition_method_context_contract.py", line 63, in test_four_language_rendering_preserves_method_criterion_and_unknown_count
+    text=render_material_catalog(graph[1],'reference-properties',language)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\材料边界\open-database\materials_boundaries\material_presentation.py", line 155, in render_material_catalog
+    materials, properties, sources = _resolved_graph(catalog, kind)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\材料边界\open-database\materials_boundaries\material_presentation.py", line 96, in _resolved_graph
+    validate_material_catalog(materials, properties, sources)
+  File "F:\材料边界\open-database\materials_boundaries\material_references.py", line 1011, in validate_material_catalog
+    _validate_material_catalog(materials, properties, sources)
+  File "F:\材料边界\open-database\materials_boundaries\material_references.py", line 1020, in _validate_material_catalog
+    indices = _validate_structure(materials, properties)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\材料边界\open-database\materials_boundaries\material_references.py", line 544, in _validate_structure
+    _reject_structural_duplicates(materials)
+  File "F:\材料边界\open-database\materials_boundaries\material_references.py", line 595, in _reject_structural_duplicates
+    _fail(record["id"], f"duplicate structural {kind} of {seen[signature]}; new IDs or display labels do not create distinct coverage")
+  File "F:\材料边界\open-database\materials_boundaries\material_references.py", line 385, in _fail
+    raise ValueError(f"{path}: {message}")
+ValueError: state_synthetic_a_dma: duplicate structural state of state_synthetic_a; new IDs or display labels do not create distinct coverage
+
+======================================================================
+ERROR: test_same_coordinate_and_identity_preserve_two_method_states_and_exports (test_glass_transition_method_context_contract.GlassTransitionMethodContextTests.test_same_coordinate_and_identity_preserve_two_method_states_and_exports)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "F:\材料边界\open-database\tests\test_glass_transition_method_context_contract.py", line 42, in test_same_coordinate_and_identity_preserve_two_method_states_and_exports
+    graph=methods_fixture();original=deepcopy(graph);validate_material_catalog(*graph)
+                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\材料边界\open-database\materials_boundaries\material_references.py", line 1011, in validate_material_catalog
+    _validate_material_catalog(materials, properties, sources)
+  File "F:\材料边界\open-database\materials_boundaries\material_references.py", line 1020, in _validate_material_catalog
+    indices = _validate_structure(materials, properties)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\材料边界\open-database\materials_boundaries\material_references.py", line 544, in _validate_structure
+    _reject_structural_duplicates(materials)
+  File "F:\材料边界\open-database\materials_boundaries\material_references.py", line 595, in _reject_structural_duplicates
+    _fail(record["id"], f"duplicate structural {kind} of {seen[signature]}; new IDs or display labels do not create distinct coverage")
+  File "F:\材料边界\open-database\materials_boundaries\material_references.py", line 385, in _fail
+    raise ValueError(f"{path}: {message}")
+ValueError: state_synthetic_a_dma: duplicate structural state of state_synthetic_a; new IDs or display labels do not create distinct coverage
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.005s
+
+FAILED (errors=2)

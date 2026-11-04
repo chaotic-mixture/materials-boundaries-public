@@ -1,5 +1,49 @@
 # Materials Boundaries — source-qualified materials database
 
+
+## r29–r32聚合物累计交付核验（2026-11-04）
+
+当前全库5180身份、31牌号、5245目录状态记录、5371性质、133来源。四轮已独审本地接纳：既有PBS配方补36条性质和27目录状态，PLA/PCL来源补PDF检查范围及链接；原5335性质、5218状态对象完整保持，无新身份／牌号／来源。目录情境不认证独立物理覆盖。
+
+聚合物1037身份、1078状态记录、1180性质（1000计算／180实验参考标签）。113条实验性质温度未报、128条调湿未报，111条确切n未确认；来源未支持的条件继续未知。弯曲两项性质共享来源n=8组，不计16次独立实验；DMA、DSC及弯曲方法不混同。
+
+[统一交付证据](experimental/polymer-exploration/20261104/delivery-r29-r32/README.zh.md)记录当前测试、实际安装、目录读取和后续提交／CI各自范围；缺少精确回执不视为通过。重建安装包及统一验收以本轮精确回执为准，缺少回执不视为完成；不冒用r31旧包作为当前三表等价证据。软件版本仍0.35.0。仅实验分支交付，不合并main、不稳定发布、不部署。以下保留旧检查点原文。
+
+
+## 当前本地检查点：PLA/PCL来源更新 r32（2026-11-04）
+
+一个既有来源补充已独审PDF核验范围及官方链接，25条性质的未知条件保持；全库仍为5180身份、5245目录状态、5371性质。接纳后19项数据库检查通过。当前来源更新尚未重新打包，r31安装包只代表其原冻结范围。详见[当前本地证据](experimental/polymer-exploration/20261104/local-acceptance-r32/FINAL_LOCAL_STATUS_R32.zh.md)。本批未提交／推送，无本批远端CI；不合并main、不稳定发布、不部署。
+
+以下保留旧检查点，旧计数、安装和CI仅适用于各自冻结范围。
+
+
+## Current local checkpoint: PBS flexural r31 (2026-11-04)
+
+Native tables: **5,180 identities, 5,245 catalogue state records, 5,371 properties**. Nine existing formulations gain 18 source-reported flexural means/SDs and nine source-qualified test contexts. Physical form, forming route and association with existing specimens remain unresolved; these records do not establish additional independent physical coverage. All 5,353 preceding properties and 5,236 state objects remain unchanged. Polymer coverage is 1,037 identities, 1,078 state records and 1,180 properties (1,000 computational and 180 experimental-reference labels).
+
+Actual isolated installation, frozen in-process consumer and 22 fresh post-acceptance checks passed. Unknown conditions remain unknown; both properties share the reported eight-repeat group. No current remote CI, commit, push, main merge, stable release or deployment. See [current local evidence](experimental/polymer-exploration/20261104/local-acceptance-r31/FINAL_LOCAL_STATUS_R31.zh.md).
+
+The sections below preserve previous checkpoints and do not describe the current native snapshot.
+
+
+## Current local checkpoint: PBS DMA Tg r30 (2026-11-04)
+
+Native tables: **5,180 identities, 5,236 states, 5,353 properties**. Nine method-qualified DMA Tg properties/states supplement existing formulations (one polymer, eight polymer-based composites). All 5,344 preceding properties and 5,227 states remain unchanged. Polymer coverage is 1,037 identities, 1,077 states and 1,178 properties (1,000 computational and 178 experimental-reference labels). Common triplication is retained separately from unknown scalar n and statistics.
+
+Actual isolated installation, frozen in-process consumer and 22 fresh post-acceptance checks (19 database plus 3 method-context cases) passed. No full-history, HTTP or full-platform regression. This batch is local and uncommitted: no current remote CI, push, main merge, stable release or deployment. See [current local evidence](experimental/polymer-exploration/20261104/local-acceptance-r30/FINAL_LOCAL_STATUS_R30.zh.md).
+
+The sections below preserve previous checkpoints and do not describe the current native snapshot.
+
+
+## Current local checkpoint: PBS DSC r29 (2026-11-04)
+
+Native tables: **5,180 identities, 5,227 states, 5,344 properties**. Nine thermal properties/states supplement existing formulations (one polymer, eight polymer-based composites); all 5,335 old properties and 5,218 old states remain unchanged. Polymer coverage is 1,037 identities, 1,076 states and 1,177 properties (1,000 computational and 177 experimental-reference labels). Unknown conditions and source discrepancies remain explicit.
+
+Actual isolated installation, frozen in-process consumer and 19 current database checks passed; no full-history, HTTP or full-platform regression. This batch is local and uncommitted: no new remote CI, push, main merge, stable release or deployment. See [current local evidence](experimental/polymer-exploration/20261104/local-acceptance-r29/FINAL_LOCAL_STATUS_R29.zh.md).
+
+The sections below preserve previous checkpoints and do not describe the current native snapshot.
+
+
 ## Current database checkpoint: polymer r26-r28 (2026-11-04)
 
 Current native tables contain **5,180 identities, 5,218 states and 5,335 properties**. Polymer coverage is **1,037 identities, 1,075 states and 1,176 properties**: 1,000 computational-reference and 176 experimental-reference labels, without scientific certification.

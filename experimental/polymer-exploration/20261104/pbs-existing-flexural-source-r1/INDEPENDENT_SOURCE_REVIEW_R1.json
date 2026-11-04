@@ -1,0 +1,41 @@
+{
+  "decision": "approved",
+  "reviewer": "/root/review_phbv39_flexural",
+  "review_inputs_sha256": "bb9bbeed15f6a395e0be9962c2de8c27061f3082ad025204ee876dcc9398c050",
+  "adjudications": {
+    "sample_count": {
+      "decision": "exact8_selected_formulation_flexural_group",
+      "value": 8,
+      "relation": "exact",
+      "reason": "§2.9将8次重复明确归于三点弯曲试验，Table7又明确报告对应配方的mean±SD，两者足以支持来源弯曲试验组的n=8。",
+      "limits": "不认定8个独立生产批次，不推断有效自由度、总体或样本SD算法；两项性质共享该组，不能计为16个独立试验。"
+    },
+    "state_plan": {
+      "decision": "conditional_catalog_only_test_context",
+      "requirements": [
+        "可为每个既有身份建立来源限定、制样关联未解决的弯曲试验上下文状态。",
+        "product_form保持未报告；尺寸、跨距、方向、具体成形路线、温湿度和调湿保持未知，仅保留有证据的共同挤出背景。",
+        "不得填入120°C热压、3.1mm厚度、DMA条形尺寸/15mm跨距或注塑狗骨路线。",
+        "名称及source_scope必须明确物理形态和与既有试样的同一性未解决；新增状态记录不证明新增独立物理试样覆盖、批次或材料。",
+        "具体mapping若触发结构重复，须重新审阅关联方案，不能增加标签、无依据事实或放宽validator来绕过。"
+      ]
+    },
+    "quantities": "可按既有flexural_strength与flexural_modulus作目录限定转录。强度端点和模量子型/提取窗口保持未知，不解释为断裂应力、Young模量或DMA储能模量。"
+  },
+  "checks": [
+    "8项仓库文件、3张原生表及6项外部文件哈希全部匹配；当前5353性质、5236状态及快照与提案一致。",
+    "独立查看PDF第5、13页，复用已审同字节第3页；逐行核对XML Table7九配方的18个均值、18个SD、MPa单位及源精度，全部一致。",
+    "Table7脚注明确mean±SD和必要时向上舍入SD；Tukey字母及p<0.05未作为数值不确定度、样本数或CI。",
+    "§2.9支持三点弯曲、8次重复、Mecmesin MultiTest-dV、2.5kN容量、VectorPro Lite V6.1.0.0和1.1mm/min。容量未当实际施加载荷。",
+    "ASTM D790引用及参考文献2015年信息匹配，未据此编造修订后缀、标准默认尺寸或合规认证。",
+    "九个既有身份均存在，分类保持1个polymer、8个composite；R0排除，计划状态ID尚不存在。",
+    "正文舍入GPa未替换表格MPa整数，未转移拉伸或DMA统计、几何和试验条件。"
+  ],
+  "findings": [],
+  "limits": [
+    "仅批准来源及上述有条件状态计划，不批准具体mapping、安装或原生接纳。",
+    "未认证原始数据、强度判据、模量算法、结构成因、标准合规或工程适用性。",
+    "未执行作者或生产者脚本、套件、全图或历史回归，未写文件或推送；未新增最新通知或原始曲线核验。"
+  ],
+  "receipt_note": "Stored by parent;no writes describes reviewer behavior."
+}

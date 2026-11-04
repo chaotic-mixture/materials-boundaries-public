@@ -643,7 +643,7 @@ is silently promoted to record-level uncertainty.
 选定表格与摘要／图形不一致时，将各原文写法和未解决原因随记录保存；来源限定转录不裁定真实实验值，不以差异构造测量不确定度、区间或第二个独立试验，不平均、补精度或修所谓笔误。数值离散度、样本数和统计未报告继续未知，不表示零散布；未知缺口模式的记录不能宣称与其他结果条件相当。
 
 
-### Source-reported DSC glass transition temperature
+### Source-reported method-qualified glass transition temperature
 
 `glass_transition_temperature` and `melting_peak_temperature` share the closed fifth property branch with dimension
 `temperature` and central units `degC` or `K`. Signed fixed-point coordinates
@@ -663,9 +663,28 @@ unknown-origin caveat; no Celsius/kelvin coefficient of variation is calculated.
 Other quantities retain their existing unsigned number and same-unit uncertainty
 rules. Thermal scan rate is separate from mechanical loading rate.
 
-A transcribed DSC Tg is catalogue context only: unknown onset/midpoint/inflection,
-scan cycle, thermal history, conditioning, replicate count or dispersion remain
-unknown. Tg is not a melting point, cure temperature, service-temperature limit,
+A transcribed Tg is catalogue context only. Preserve its source method and
+criterion: a DSC onset/midpoint/inflection, a DMA storage-modulus onset,
+loss-modulus maximum or tan-delta maximum must not be silently substituted.
+For a source-reported DMA Tg, retain the frequency, strain amplitude and its
+stated or unknown convention, temperature scan, fixture, span, specimen form,
+software and cycle information or explicit unknowns. Thermal scan rate and
+oscillatory frequency are separate; neither is a quasistatic crosshead rate.
+
+The common quantity groups temperature coordinates, not interchangeable method
+definitions. Query and export retain every complete source-qualified property,
+including its source label, method, criterion, conditions and unknowns. Do not
+deduplicate by quantity/value, average DSC and DMA results or infer a conversion
+or comparability merely from their shared Tg label. Distinct physical specimens
+or preparation may require separate states; method labels alone do not create
+distinct state or identity coverage.
+
+A common-method repeat count remains separate from an unknown selected-scalar
+contributor count or aggregation rule; it does not establish independent
+specimens, batches, a mean or dispersion. Unknown scan cycle, thermal history,
+conditioning, selected n and numerical dispersion remain unknown. No compliance
+with an unreported DSC or DMA standard is inferred. Tg is not a melting point,
+cure temperature, service-temperature limit,
 engineering allowable, universal bound or evaluation-engine input. Source table,
 abstract and cross-reference disagreements must remain visible without repair.
 

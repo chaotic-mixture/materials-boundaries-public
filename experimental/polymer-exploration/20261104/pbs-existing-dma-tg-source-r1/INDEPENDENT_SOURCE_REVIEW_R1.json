@@ -1,0 +1,30 @@
+{
+  "decision": "approved",
+  "reviewer": "/root/review_phbv39_flexural",
+  "review_inputs_sha256": "f1b53d90bbd454f89d3d4c1d3389bf862080821d99f1c973c032c416d267c7bf",
+  "count_adjudication": {
+    "decision": "method_context_only",
+    "confirmed_common_method_repeats": 3,
+    "selected_scalar_sample_count": {"value": null,"relation": "not_reported"},
+    "reason": "§2.8明确报告DMA in triplicate，应完整保留。Table3未说明单格是三个峰温的均值、平均曲线的峰、代表曲线结果或其他汇总，也未提供贡献记录。因此不足以将每个选定标量确定为n=3。",
+    "required_boundary": "共同方法重复3次与选定结果贡献次数未知须同时展示；不得改写为没有重复测量，也不得认定三个独立试样、批次或均值/SD。"
+  },
+  "checks": [
+    "10项仓库文件、3张原生表及7项外部文件哈希全部匹配；当前快照及5344性质、5227状态与提案一致。",
+    "独立查看新增第8页图并核对XML Table3：B0/B10/B20/B30/B45为−33/−30/−22/−23/−13°C，R10/R20/R30/R45为−27/−25/−26/−4°C，R0排除。",
+    "§3.4明确Tg取tanδ最大值；§2.8支持DMA-7、三点弯曲、15mm跨距、3×5×20mm、1Hz、0.2%应变、−50至120°C及3°C/min、Pyris v13.3。",
+    "九个身份与既有机械、DSC状态关联一致，分类保持1个polymer和8个composite；计划DMA状态及性质ID尚不存在。",
+    "独立DMA状态方案适当。后挤出条形试样成形路线、循环、预载、气氛及DMA调湿保持未知；0.2%振幅约定不补造，不继承DSC、热压或注塑条件。",
+    "复用glass_transition_temperature温度坐标契约在科学表达上可接受，条件是保留DMA方法、tanδ判据、频率、振幅及扫描条件；同名量不代表与DSC数值可互换。",
+    "拟议文档明确区分方法判据，禁止按quantity或数值去重、求均值或换算；未新增量、单位、分支或运行时能力。",
+    "§3.5笼统DSC Tg措辞与§3.4/Table3明确DMA链条的差异已保留；未以外部ASTM标准替代本文证据。"
+  ],
+  "findings": [],
+  "limits": [
+    "仅批准来源、方法范围和状态计划；具体文档修改、mapping、测试、安装及接纳仍须另冻审阅。",
+    "summary_statistic保持not_stated，uncertainty保持null，不从共同triplicate推导统计量。",
+    "不认证方法间可比性、峰算法、结构成因、标准合规或工程适用性；未核验原始曲线和最新通知。",
+    "未执行作者或生产者脚本、套件、全图或历史回归，未写文件或推送。"
+  ],
+  "receipt_note": "Stored by parent;no file writes describes reviewer behavior."
+}
