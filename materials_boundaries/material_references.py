@@ -21,6 +21,10 @@ from urllib.parse import urlsplit
 LANGUAGES = ("en", "zh", "ja", "de")
 CATEGORIES = ("metal", "inorganic", "polymer", "composite", "natural")
 QUANTITY_DIMENSIONS = {
+    "thermal_degradation_onset_temperature": "temperature",
+    "temperature_at_specified_mass_loss": "temperature",
+    "thermal_degradation_rate_peak_temperature": "temperature",
+    "tga_residue_percentage": "dimensionless",
     "thermal_conductivity": "power_per_length_temperature",
     "dielectric_breakdown_strength": "electric_field",
     "mass_density": "mass_per_volume",
@@ -47,6 +51,7 @@ QUANTITY_DIMENSIONS = {
     "slump_flow_spread": "length",
 }
 UNIT_DIMENSIONS = {
+    "percent_tga_residue": "dimensionless",
     "W/(m*K)": "power_per_length_temperature", "mW/(m*K)": "power_per_length_temperature",
     "V/m": "electric_field", "kV/mm": "electric_field",
     "degC": "temperature", "K": "temperature",
@@ -111,6 +116,12 @@ SIGNED_DECIMAL = {"type": "string", "maxLength": 50,
                   "pattern": r"^-?(?:0|[1-9][0-9]{0,23})(?:\.[0-9]{1,24})?(?![\s\S])"}
 TEMPERATURE_UNITS = ("degC", "K")
 TEMPERATURE_QUANTITIES = ("glass_transition_temperature", "melting_peak_temperature")
+TGA_TEMPERATURE_QUANTITIES = (
+    "thermal_degradation_onset_temperature", "temperature_at_specified_mass_loss",
+    "thermal_degradation_rate_peak_temperature",
+)
+RESULT_TEMPERATURE_QUANTITIES = (*TEMPERATURE_QUANTITIES, *TGA_TEMPERATURE_QUANTITIES)
+TGA_QUANTITIES = (*TGA_TEMPERATURE_QUANTITIES, "tga_residue_percentage")
 HTTPS = {"type": "string", "format": "uri", "pattern": r"^(?![\s\S]*[\x00-\x1f\x7f-\x9f\ud800-\udfff])https://[^\s/?#]+(?:[/?#][^\s]*)?(?![\s\S])"}
 
 
@@ -206,7 +217,10 @@ def _make_materials_schema():
 def _make_properties_schema():
     definitions = {**_defs(), **_bulk_definitions()}
     evidence = _array(_ref("evidence"), 1)
-    unit = _enum(UNIT_DIMENSIONS)
+    # Preserve the legacy value definitions and seven existing property branches.
+    # The residue role enters only its dedicated central-value branch and the
+    # shared uncertainty vocabulary, where same-role checks still apply.
+    unit = _enum(code for code in UNIT_DIMENSIONS if code != "percent_tga_residue")
     common_value = {"value_text": TEXT, "unit_text": TEXT, "unit_code": unit}
     definitions["reported_value"] = {"oneOf": [
         _object({"kind": {"const": "scalar"}, **common_value, "number": DECIMAL}),
@@ -239,13 +253,14 @@ def _make_properties_schema():
     for branch in definitions["legacy_reported_value"]["oneOf"]:
         branch["properties"]["unit_code"] = _enum(
             code for code in UNIT_DIMENSIONS
-            if code not in {"percent_elongation", "shore_a_scale", *TEMPERATURE_UNITS, *ELECTRIC_FIELD_UNITS, *THERMAL_CONDUCTIVITY_UNITS})
+            if code not in {"percent_tga_residue", "percent_elongation", "shore_a_scale", *TEMPERATURE_UNITS, *ELECTRIC_FIELD_UNITS, *THERMAL_CONDUCTIVITY_UNITS})
     for branch in definitions["elongation_reported_value"]["oneOf"]:
         branch["properties"]["unit_code"] = {"const": "percent_elongation"}
     # Closed source-reported uncertainty variants. An amplitude alone never
     # establishes dispersion, mean aggregation or a confidence construction.
     # Keep the existing SD shape unchanged for old catalog/output compatibility.
-    uncertainty_common = {**common_value, "number": DECIMAL, "scope": TEXT,
+    uncertainty_value = {**common_value, "unit_code": _enum(UNIT_DIMENSIONS)}
+    uncertainty_common = {**uncertainty_value, "number": DECIMAL, "scope": TEXT,
                           "coverage_factor": NULL, "evidence": evidence}
     definitions["confidence_level"] = _object({
         "value_text": TEXT, "number": DECIMAL, "unit_code": {"const": "percent"},
@@ -274,7 +289,7 @@ def _make_properties_schema():
         "scope": TEXT, "evidence": evidence,
         "confidence_level": NULL, "coverage_factor": NULL,
     }
-    absolute_measure_value = _object({**common_value, "number": DECIMAL})
+    absolute_measure_value = _object({**uncertainty_value, "number": DECIMAL})
     relative_measure_value = _object({
         "value_text": TEXT, "unit_text": TEXT,
         "unit_code": {"const": "percent"}, "number": DECIMAL,
@@ -385,10 +400,44 @@ def _make_properties_schema():
     other = definitions["property"]
     other["properties"]["quantity"] = _enum(
         q for q in QUANTITY_DIMENSIONS
-        if q not in {"thermal_conductivity", "dielectric_breakdown_strength", "tensile_stress_at_specified_elongation", "shore_a_hardness", *TEMPERATURE_QUANTITIES}
+        if q not in {"thermal_conductivity", "dielectric_breakdown_strength", "tensile_stress_at_specified_elongation", "shore_a_hardness", *TEMPERATURE_QUANTITIES, *TGA_QUANTITIES}
         and q not in PERCENT_ELONGATION_QUANTITIES)
     del other["properties"]["specified_elongation"]
-    definitions["property"] = {"oneOf": [other, stress, elongation, shore, temperature, electric, thermal]}
+    definitions["specified_mass_loss"] = _object({
+        "kind": {"const": "scalar"}, "value_text": TEXT, "number": DECIMAL,
+        "unit_text": TEXT, "unit_code": {"const": "percent_mass_loss"},
+        "evidence": evidence, "notes": TEXT,
+    })
+    definitions["degradation_peak_ordinal"] = _object({
+        "value": {"type": "integer", "minimum": 1}, "evidence": evidence, "notes": TEXT,
+    })
+    definitions["residue_endpoint_temperature"] = _object({
+        "kind": {"const": "scalar"}, "value_text": TEXT, "number": SIGNED_DECIMAL,
+        "unit_text": TEXT, "unit_code": _enum(TEMPERATURE_UNITS),
+        "evidence": evidence, "notes": TEXT,
+    })
+    # A mass reference is relevant even when unknown; 'not applicable' would
+    # erase that distinction. Keep the existing fact shape for the other states.
+    definitions["mass_reference_basis"] = {"oneOf": deepcopy(definitions["fact"]["oneOf"][:3])}
+    definitions["tga_residue_reported_value"] = deepcopy(definitions["reported_value"])
+    for branch in definitions["tga_residue_reported_value"]["oneOf"]:
+        branch["properties"]["unit_code"] = {"const": "percent_tga_residue"}
+    tga_branches = []
+    for quantity, qualifiers in (
+        ("thermal_degradation_onset_temperature", ()),
+        ("temperature_at_specified_mass_loss", ("specified_mass_loss", "mass_reference_basis")),
+        ("thermal_degradation_rate_peak_temperature", ("degradation_peak_ordinal",)),
+        ("tga_residue_percentage", ("residue_endpoint_temperature", "mass_reference_basis")),
+    ):
+        branch = deepcopy(elongation if quantity == "tga_residue_percentage" else temperature)
+        branch["properties"]["quantity"] = {"const": quantity}
+        if quantity == "tga_residue_percentage":
+            branch["properties"]["reported_value"] = _ref("tga_residue_reported_value")
+        for qualifier in qualifiers:
+            branch["properties"][qualifier] = _ref(qualifier)
+            branch["required"].append(qualifier)
+        tga_branches.append(branch)
+    definitions["property"] = {"oneOf": [other, stress, elongation, shore, temperature, electric, thermal, *tga_branches]}
     return {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "$id": "urn:materials-boundaries:schema:reference_properties:1.0.0",
@@ -647,6 +696,7 @@ def _validate_links(materials, properties, indices):
 # Only spelling/typography normalization; these mappings never change a unit or
 # infer a quantity. Unknown spellings need deliberate capability review.
 _UNIT_SPELLINGS = {
+    "percent_tga_residue": {"%"}, "percent_mass_loss": {"%"},
     "W/(m*K)": {"W/(m*K)", "W/(m·K)"},
     "mW/(m*K)": {"mW/(m*K)", "mW/(m·K)"},
     "V/m": {"V/m"}, "kV/mm": {"kV/mm"},
@@ -809,7 +859,7 @@ def _validate_temperature_value(value, path):
 
 def _absolute_uncertainty_unit_matches(prop, unit):
     central = prop["reported_value"]["unit_code"]
-    return (unit == central or (prop["quantity"] in TEMPERATURE_QUANTITIES
+    return (unit == central or (prop["quantity"] in RESULT_TEMPERATURE_QUANTITIES
             and central in TEMPERATURE_UNITS and unit in TEMPERATURE_UNITS))
 
 
@@ -851,7 +901,7 @@ def _validate_reported_measures(prop, path):
                 _fail(measure_path, "absolute measure unit must equal result unit")
             _validate_value(value, measure_path, prop["quantity_dimension"], nonnegative=True)
         else:
-            if prop["quantity"] in TEMPERATURE_QUANTITIES and measure["note"] is None:
+            if prop["quantity"] in RESULT_TEMPERATURE_QUANTITIES and measure["note"] is None:
                 _fail(measure_path, "relative temperature measure needs a source-scale/origin caveat")
             _validate_value(value, measure_path, nonnegative=True)
 
@@ -862,12 +912,27 @@ def _validate_property(prop):
     dimension = QUANTITY_DIMENSIONS[prop["quantity"]]
     if prop["quantity_dimension"] != dimension:
         _fail(path, "quantity dimension mismatch")
-    if prop["quantity"] in TEMPERATURE_QUANTITIES:
+    if prop["quantity"] in RESULT_TEMPERATURE_QUANTITIES:
         _validate_temperature_value(prop["reported_value"], path + ".reported_value")
     else:
         _validate_value(prop["reported_value"], path + ".reported_value", dimension,
                         nonnegative=(prop["quantity"] in PERCENT_ELONGATION_QUANTITIES or
-                                     prop["quantity"] == "shore_a_hardness"))
+                                     prop["quantity"] in {"shore_a_hardness", "tga_residue_percentage"}))
+    for field in ("specified_mass_loss", "degradation_peak_ordinal", "residue_endpoint_temperature", "mass_reference_basis"):
+        if field not in prop:
+            continue
+        descriptor = prop[field]
+        if field == "specified_mass_loss":
+            _validate_value(descriptor, path + "." + field)
+            if Decimal(descriptor["number"]) > 100:
+                _fail(path, "fractional mass-loss percentage must not exceed 100")
+        elif field == "residue_endpoint_temperature":
+            _validate_temperature_value(descriptor, path + "." + field)
+        if field != "mass_reference_basis" or descriptor["status"] == "reported":
+            _require_tag(descriptor["evidence"], "condition", path + "." + field, source)
+            if not any(e["url"] == prop["source_document"]["url"]
+                       for e in _tagged(descriptor["evidence"], "condition", source)):
+                _fail(path, "TGA qualifier needs primary inspected-document condition evidence")
     if prop["quantity"] == "shore_a_hardness":
         value = prop["reported_value"]
         numbers = [value["lower"], value["upper"]] if value["kind"] == "interval" else [value["number"]]
@@ -991,6 +1056,32 @@ def _validate_property(prop):
 
 
 
+def _tga_coordinate_key(prop):
+    """Typed coordinates only: evidence/notes cannot manufacture coverage."""
+    result = {}
+    for field in ("specified_mass_loss", "residue_endpoint_temperature"):
+        if field in prop:
+            value = prop[field]
+            decimal = Decimal(value["number"])
+            if decimal == 0:
+                number = [0, [], 0]
+            else:
+                token = decimal.as_tuple()
+                digits, exponent = list(token.digits), token.exponent
+                while digits[-1] == 0:
+                    digits.pop()
+                    exponent += 1
+                number = [token.sign, digits, exponent]
+            result[field] = [value["unit_code"], number]
+    if "degradation_peak_ordinal" in prop:
+        result["degradation_peak_ordinal"] = prop["degradation_peak_ordinal"]["value"]
+    if "mass_reference_basis" in prop:
+        basis = prop["mass_reference_basis"]
+        result["mass_reference_basis"] = (["reported", basis["text"]]
+                                          if basis["status"] == "reported" else ["unknown", None])
+    return result
+
+
 def _unique_fact(prop, seen):
     value = prop["reported_value"]
     represented_value = {key: item for key, item in value.items() if key not in {"value_text", "unit_text"}}
@@ -1021,6 +1112,7 @@ def _unique_fact(prop, seen):
         "locators": sorted({entry["locator"] for entry in _tagged(prop["evidence"], "reported_value", prop["source_id"])}),
         "value": represented_value, "conditions": conditions,
         "specified_elongation": elongation_key,
+        **({"tga_coordinates": _tga_coordinate_key(prop)} if prop["quantity"] in TGA_QUANTITIES else {}),
     }, sort_keys=True, ensure_ascii=False)
     if signature in seen:
         _fail(prop["id"], "duplicate source fact for the same material state")

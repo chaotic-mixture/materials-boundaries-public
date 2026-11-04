@@ -1,0 +1,19 @@
+{
+  "decision": "changes_required",
+  "reviewer": "/root/review_phbv39_flexural",
+  "review_inputs_sha256": "1b293895d664f39e90baa0594a962c854280e4c9d0724356b261dbe91a33736b",
+  "findings": [
+    {"field": "qualifiers.specified_mass_loss.domain", "required_change": "Fractional mass loss must satisfy 0<loss<=100; unknown basis alone cannot justify >100. Other source-defined ratios require separate definition review; never repair source values or silently admit them. Residue ratio has no universal100 cap, but unknown alone does not establish scientific validity."},
+    {"field": "qualifiers.residue_endpoint_temperature.domain;implementation_acceptance", "required_change": "Preserve existing coordinate floors K>=0 and degC>=-273.15, including endpoint qualifiers; not proof of experimental attainability. Difference amplitudes nonnegative with no offset."},
+    {"field": "uniqueness_and_coverage", "required_change": "Retain existing state/quantity/document/original source cell/core fact semantics. Only descriptor evidence, display labels, numeric typography and unknown-basis note variations cannot create new coordinates under the same existing semantics."}
+  ],
+  "checks": [
+    "15repo/3native/10external hashes match; exact source approval closure",
+    "28 partial crosswalk examples match approved source expressions, centres, amplitudes, identities, roles and unknown statistics/n",
+    "onset4/loss8/DTG12/residue4 and planned4TGA states coherent",
+    "Old7branch/legacy domain preservation, four new disjoint branches and four-language complete presentation require separate implementation review",
+    "Primary NIST chapter7 percent and chapter8 temperature-difference/mass-fraction references read independently",
+    "28 current source values unaffected; DSC hold and common-method sample count boundaries retained"
+  ],
+  "limits": ["Concept only;not implementation/mapping/install/admission approval", "No author helpers/tests/suites/fullgraph/history/writes/install/push", "No experiment,normalization,latest-notice or engineering certification"]
+}

@@ -743,3 +743,43 @@ These are condition-qualified catalogue references, not thermal-engine inputs
 or engineering allowables. Mean plate temperature is not evidence of a group
 mean, isotropy, replicate count or a complete specimen-conditioning procedure.
 Do not transfer counts or density normalization from neighbouring mechanical tests.
+
+### TGA endpoint coordinates
+
+Four catalogue quantities distinguish thermal degradation onset temperature,
+temperature at specified fractional mass loss, source-labelled degradation-rate
+peak temperature, and TGA residue percentage. These quantities are distinct from
+Tg and melting peaks and do not establish intrinsic decomposition or service limits.
+
+`temperature_at_specified_mass_loss` requires a scalar `specified_mass_loss`
+coordinate with the descriptor-only `percent_mass_loss` role and 0 < loss <= 100.
+Values outside that fractional-loss definition require separate source/contract
+review; unknown normalization does not justify repairing or admitting them.
+`thermal_degradation_rate_peak_temperature` requires a positive integer
+`degradation_peak_ordinal` copied from the source, rather than a calculated rank.
+`tga_residue_percentage` requires a scalar `residue_endpoint_temperature` and
+retains the original `%` scale under the result-only `percent_tga_residue` role.
+Zero residue is valid; negative residue is rejected. A remaining-mass/reference-
+mass ratio has no universal 100 cap, but an unknown basis does not itself establish
+scientific validity of any ratio. It is not automatically certified ash or a
+mixture mass fraction, and 13.7% is never silently rewritten as 0.137.
+
+Mass-loss and residue records require `mass_reference_basis`. Reported bases and
+all numeric/ordinal coordinates require primary inspected-document condition
+evidence. Unreported or unverified bases remain explicit; they cannot be marked
+inapplicable. The three temperature-result quantities and residue endpoint obey
+the existing coordinate floors K >= 0 and degC >= -273.15, without conversion or
+any assertion that a boundary coordinate is experimentally attainable. Absolute
+temperature uncertainty amplitudes are differences with no zero-point shift.
+
+Coordinates participate in semantic duplicate checks while retaining the existing
+state, quantity, document, original value-cell locator and core-fact distinctions.
+Descriptor evidence, numeric typography and unknown-basis wording cannot add
+coverage. Source-defined ordinal peaks or loss thresholds can distinguish equal
+temperature results. No onset/threshold ordering correction is performed.
+Undefined source +/- remains undefined, and a common method replicate statement
+does not establish an exact per-cell n. Four-language views and complete exports
+retain these descriptors, evidence and unknown conditions. Contract support alone
+does not admit source candidates; source, mapping and integration approval remain
+separate gates. The seven earlier property branches and legacy central unit domain
+remain unchanged.

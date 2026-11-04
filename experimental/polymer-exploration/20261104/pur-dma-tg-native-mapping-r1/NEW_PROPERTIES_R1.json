@@ -1,0 +1,1232 @@
+[
+  {
+    "id": "refprop_ivdre2024_lpo1_dma_glass_transition_temperature",
+    "version": "1.0.0",
+    "material_state_id": "state_ivdre2024_lpo1_rigid_pur_dma_cylinder",
+    "quantity": "glass_transition_temperature",
+    "quantity_dimension": "temperature",
+    "source_property_label": "Tg by DMA, source-labelled tanδ peak",
+    "reported_value": {
+      "kind": "scalar",
+      "number": "126",
+      "value_text": "126",
+      "unit_code": "degC",
+      "unit_text": "°C"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "not_stated",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Explicit source Figure15(b) printed annotation matched to the named curve/legend; not a digitized curve coordinate, mean-of-peaks, peak-of-mean-curve or fitted raw-data result. Caption identifies DMA tanδ-derived Tg; selected estimator unknown.",
+    "conditions": {
+      "temperature": {
+        "status": "reported",
+        "text": "DMA scan25–220°C at3°C/min; cycle number and actual prior thermal history unknown",
+        "evidence": [
+          {
+            "source_id": "ivdre_2024_lpo_rigid_pur",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+            "locator": "PDF p8 §2.8 DMA paragraph",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source scan settings, not ambient temperature, a logged trace or a claim that the property is a group mean."
+      },
+      "test_standard": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "No DMA standard named in inspected method; ISO844:2021 concerns static compression,not automatically this DMA experiment."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "Mettler Toledo DMA/SDTA861e compression oscillation; Figure15(b) source-labelled tanδ-peak Tg; roughly13mm diameter×7mm high cylinders;1Hz,5μm displacement amplitude,maximum force1N. DMA scan25–220°C at3°C/min; cycle number and actual prior thermal history unknown",
+        "evidence": [
+          {
+            "source_id": "ivdre_2024_lpo_rigid_pur",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+            "locator": "PDF p8 §2.8;p19 Figure15(b)/caption",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Not DSC inflection,storage-modulus onset,loss-modulus peak or a calibrated global-maximum extraction algorithm."
+      },
+      "loading_rate": {
+        "status": "reported",
+        "text": "Compression oscillation1Hz;displacement amplitude5μm;maximum force1N",
+        "evidence": [
+          {
+            "source_id": "ivdre_2024_lpo_rigid_pur",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+            "locator": "PDF p8 §2.8 DMA paragraph",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Amplitude peak/RMS convention unknown;maximum force is not a stated preload;no strain conversion or static10%/min-rate transfer."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Compression direction relative to foam-rise direction unknown;source anisotropy doesnot establish isotropic Tg or mechanical behaviour."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "DMA-specific RH,equilibration,storage/drying and prior heating unknown;24h room-temperature cure is processing,not fullconditioning."
+      },
+      "additional_conditions": [
+        {
+          "name": "measurement_method_family",
+          "fact": {
+            "status": "reported",
+            "text": "DMA",
+            "evidence": [
+              {
+                "source_id": "ivdre_2024_lpo_rigid_pur",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+                "locator": "PDF p8 §2.8;p19 Figure15(b) caption",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Not DSC,TGA or staticcompression."
+          }
+        },
+        {
+          "name": "Tg_extraction_criterion",
+          "fact": {
+            "status": "reported",
+            "text": "Source-labelled tanδ peak",
+            "evidence": [
+              {
+                "source_id": "ivdre_2024_lpo_rigid_pur",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+                "locator": "PDF p19 Figure15(b), annotations andcaption",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Source coordinate; peak fitting/interpolation/selection and scalar aggregation unknown."
+          }
+        },
+        {
+          "name": "oscillation_frequency",
+          "fact": {
+            "status": "reported",
+            "text": "1Hz",
+            "evidence": [
+              {
+                "source_id": "ivdre_2024_lpo_rigid_pur",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+                "locator": "PDF p8 §2.8 DMA paragraph",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "No frequency normalization or time-temperature shift."
+          }
+        },
+        {
+          "name": "displacement_amplitude",
+          "fact": {
+            "status": "reported",
+            "text": "5μm",
+            "evidence": [
+              {
+                "source_id": "ivdre_2024_lpo_rigid_pur",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+                "locator": "PDF p8 §2.8 DMA paragraph",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Displacement,not measured strain;amplitude convention unknown."
+          }
+        },
+        {
+          "name": "maximum_force",
+          "fact": {
+            "status": "reported",
+            "text": "1N",
+            "evidence": [
+              {
+                "source_id": "ivdre_2024_lpo_rigid_pur",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+                "locator": "PDF p8 §2.8 DMA paragraph",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Maximum force,not a reported staticpreload."
+          }
+        },
+        {
+          "name": "DMA_atmosphere_preload_and_cycle",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "DMA gas/flow,staticpreload and heatingcycle number unknown;DSC nitrogen/secondheat andTGA counts nottransferred."
+          }
+        },
+        {
+          "name": "smoothing_context",
+          "fact": {
+            "status": "reported",
+            "text": "Adjacent-averaging smoothing for noise above170°C",
+            "evidence": [
+              {
+                "source_id": "ivdre_2024_lpo_rigid_pur",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+                "locator": "PDF p8 §2.8 DMA paragraph",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Source context only;no reprocessing of curves or correction of the explicit lower-temperature labels."
+          }
+        },
+        {
+          "name": "transcription_locator",
+          "fact": {
+            "status": "reported",
+            "text": "PDF p19 Figure15(b), author printed black annotation and same-colour LPO-1 curve/legend",
+            "evidence": [
+              {
+                "source_id": "ivdre_2024_lpo_rigid_pur",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+                "locator": "PDF p19 Figure15(b)",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Visible printed annotation,not PDF text reading order or hidden draft text."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "not_stated",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "uncertainty_note": "No numerical dispersion attached to selected annotation; not inferred from curve breadth, nearby DSC values, TGA plus-minus or other-test counts.",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "Contributors to the selected printed DMA Tg annotation and independent specimen/batch count unknown.",
+      "source_statement": "The DMA paragraph and Figure15 do not state a selected DMA count; the three-or-more parallel samples statement occurs in the TGA paragraph and is not transferred.",
+      "evidence": [
+        {
+          "source_id": "ivdre_2024_lpo_rigid_pur",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+          "locator": "PDF p8 §2.8 separate DMA and TGA paragraphs;p19 Figure15",
+          "supports": [
+            "sample_count"
+          ]
+        }
+      ]
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source Figure15(b) printed DMA tanδ-peak Tg annotation,compression oscillation withDMA/SDTA861e;1Hz,5μm,max1N and25–220°C at3°C/min. Exact scalar aggregation,cycle,preload,peak fitting and direction unknown. Not DSC or a method-independent universal Tg.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "ivdre_2024_lpo_rigid_pur",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+          "locator": "PDF p8 §2.8;p19 Figure15(b)/caption",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [
+      {
+        "description": "Adjacent DSC paragraph first reports detection for LPO and later says LPO was not detected;group wording conflict unresolved.",
+        "disposition": "Selected coordinate is the explicit DMA Figure15(b) annotation,not a DSC value;do not silently repair the DSC group name or infer method equivalence.",
+        "evidence": [
+          {
+            "source_id": "ivdre_2024_lpo_rigid_pur",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+            "locator": "PDF p19 paragraph aboveFigure15 andcaption",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      }
+    ],
+    "source_id": "ivdre_2024_lpo_rigid_pur",
+    "evidence": [
+      {
+        "source_id": "ivdre_2024_lpo_rigid_pur",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+        "locator": "PDF p19 Figure15(b), author printed black annotation and same-colour LPO-1 curve/legend",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "ivdre_2024_lpo_rigid_pur",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+        "locator": "PDF p8 §2.8 DMA paragraph;p19 Figure15(b)/caption",
+        "supports": [
+          "method",
+          "condition"
+        ]
+      }
+    ],
+    "source_document": {
+      "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+      "revision": "Official article-deploy PDF retained2026-11-04;latest revision/correction/retraction unknown",
+      "inspected_on": "2026-11-04",
+      "sha256": "70b6da773e757f43557ed69bb651ce14e8ff82c1f09d39de1f50671343239e0e",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Same official23pagePDF,selected visiblepages1,7–8,16,19–20,23;four Figure15(b) author annotations/colour legends read directly. XML corroborates method/caption,not annotation numerics. Table11 TGA facts andDSC conflict reviewed separately,not admitted as these coordinates. No curve digitization,rawdata analysis or latestnotice confirmation.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Study-specific method-qualified DMA coordinate,original integer°C annotation preserved. summary not_stated,nunknown,null numerical dispersion. No TGA3ormore,staticcompression6,DSC6mg/secondheat/nitrogen,water4days or40kg/m³ normalization transfer. Unknown RH/equilibration,gas,cycle,preload,amplitude convention,loading/foaming relation and estimator remain unknown. Not universal Tg,engineeringallowable,isotropy or calculator input.",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Same official23pagePDF,selected visiblepages1,7–8,16,19–20,23;four Figure15(b) author annotations/colour legends read directly. XML corroborates method/caption,not annotation numerics. Table11 TGA facts andDSC conflict reviewed separately,not admitted as these coordinates. No curve digitization,rawdata analysis or latestnotice confirmation.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    }
+  },
+  {
+    "version": "1.0.0",
+    "quantity": "glass_transition_temperature",
+    "quantity_dimension": "temperature",
+    "source_property_label": "Tg by DMA, source-labelled tanδ peak",
+    "reported_value": {
+      "kind": "scalar",
+      "number": "116",
+      "value_text": "116",
+      "unit_code": "degC",
+      "unit_text": "°C"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "not_stated",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Explicit source Figure15(b) printed annotation matched to the named curve/legend; not a digitized curve coordinate, mean-of-peaks, peak-of-mean-curve or fitted raw-data result. Caption identifies DMA tanδ-derived Tg; selected estimator unknown.",
+    "conditions": {
+      "temperature": {
+        "status": "reported",
+        "text": "DMA scan25–220°C at3°C/min; cycle number and actual prior thermal history unknown",
+        "evidence": [
+          {
+            "source_id": "ivdre_2024_lpo_rigid_pur",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+            "locator": "PDF p8 §2.8 DMA paragraph",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source scan settings, not ambient temperature, a logged trace or a claim that the property is a group mean."
+      },
+      "test_standard": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "No DMA standard named in inspected method; ISO844:2021 concerns static compression,not automatically this DMA experiment."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "Mettler Toledo DMA/SDTA861e compression oscillation; Figure15(b) source-labelled tanδ-peak Tg; roughly13mm diameter×7mm high cylinders;1Hz,5μm displacement amplitude,maximum force1N. DMA scan25–220°C at3°C/min; cycle number and actual prior thermal history unknown",
+        "evidence": [
+          {
+            "source_id": "ivdre_2024_lpo_rigid_pur",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+            "locator": "PDF p8 §2.8;p19 Figure15(b)/caption",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Not DSC inflection,storage-modulus onset,loss-modulus peak or a calibrated global-maximum extraction algorithm."
+      },
+      "loading_rate": {
+        "status": "reported",
+        "text": "Compression oscillation1Hz;displacement amplitude5μm;maximum force1N",
+        "evidence": [
+          {
+            "source_id": "ivdre_2024_lpo_rigid_pur",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+            "locator": "PDF p8 §2.8 DMA paragraph",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Amplitude peak/RMS convention unknown;maximum force is not a stated preload;no strain conversion or static10%/min-rate transfer."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Compression direction relative to foam-rise direction unknown;source anisotropy doesnot establish isotropic Tg or mechanical behaviour."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "DMA-specific RH,equilibration,storage/drying and prior heating unknown;24h room-temperature cure is processing,not fullconditioning."
+      },
+      "additional_conditions": [
+        {
+          "name": "measurement_method_family",
+          "fact": {
+            "status": "reported",
+            "text": "DMA",
+            "evidence": [
+              {
+                "source_id": "ivdre_2024_lpo_rigid_pur",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+                "locator": "PDF p8 §2.8;p19 Figure15(b) caption",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Not DSC,TGA or staticcompression."
+          }
+        },
+        {
+          "name": "Tg_extraction_criterion",
+          "fact": {
+            "status": "reported",
+            "text": "Source-labelled tanδ peak",
+            "evidence": [
+              {
+                "source_id": "ivdre_2024_lpo_rigid_pur",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+                "locator": "PDF p19 Figure15(b), annotations andcaption",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Source coordinate; peak fitting/interpolation/selection and scalar aggregation unknown."
+          }
+        },
+        {
+          "name": "oscillation_frequency",
+          "fact": {
+            "status": "reported",
+            "text": "1Hz",
+            "evidence": [
+              {
+                "source_id": "ivdre_2024_lpo_rigid_pur",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+                "locator": "PDF p8 §2.8 DMA paragraph",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "No frequency normalization or time-temperature shift."
+          }
+        },
+        {
+          "name": "displacement_amplitude",
+          "fact": {
+            "status": "reported",
+            "text": "5μm",
+            "evidence": [
+              {
+                "source_id": "ivdre_2024_lpo_rigid_pur",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+                "locator": "PDF p8 §2.8 DMA paragraph",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Displacement,not measured strain;amplitude convention unknown."
+          }
+        },
+        {
+          "name": "maximum_force",
+          "fact": {
+            "status": "reported",
+            "text": "1N",
+            "evidence": [
+              {
+                "source_id": "ivdre_2024_lpo_rigid_pur",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+                "locator": "PDF p8 §2.8 DMA paragraph",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Maximum force,not a reported staticpreload."
+          }
+        },
+        {
+          "name": "DMA_atmosphere_preload_and_cycle",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "DMA gas/flow,staticpreload and heatingcycle number unknown;DSC nitrogen/secondheat andTGA counts nottransferred."
+          }
+        },
+        {
+          "name": "smoothing_context",
+          "fact": {
+            "status": "reported",
+            "text": "Adjacent-averaging smoothing for noise above170°C",
+            "evidence": [
+              {
+                "source_id": "ivdre_2024_lpo_rigid_pur",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+                "locator": "PDF p8 §2.8 DMA paragraph",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Source context only;no reprocessing of curves or correction of the explicit lower-temperature labels."
+          }
+        },
+        {
+          "name": "transcription_locator",
+          "fact": {
+            "status": "reported",
+            "text": "PDF p19 Figure15(b), author printed red annotation and same-colour LPO-2 curve/legend",
+            "evidence": [
+              {
+                "source_id": "ivdre_2024_lpo_rigid_pur",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+                "locator": "PDF p19 Figure15(b)",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Visible printed annotation,not PDF text reading order or hidden draft text."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "not_stated",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "uncertainty_note": "No numerical dispersion attached to selected annotation; not inferred from curve breadth, nearby DSC values, TGA plus-minus or other-test counts.",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "Contributors to the selected printed DMA Tg annotation and independent specimen/batch count unknown.",
+      "source_statement": "The DMA paragraph and Figure15 do not state a selected DMA count; the three-or-more parallel samples statement occurs in the TGA paragraph and is not transferred.",
+      "evidence": [
+        {
+          "source_id": "ivdre_2024_lpo_rigid_pur",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+          "locator": "PDF p8 §2.8 separate DMA and TGA paragraphs;p19 Figure15",
+          "supports": [
+            "sample_count"
+          ]
+        }
+      ]
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source Figure15(b) printed DMA tanδ-peak Tg annotation,compression oscillation withDMA/SDTA861e;1Hz,5μm,max1N and25–220°C at3°C/min. Exact scalar aggregation,cycle,preload,peak fitting and direction unknown. Not DSC or a method-independent universal Tg.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "ivdre_2024_lpo_rigid_pur",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+          "locator": "PDF p8 §2.8;p19 Figure15(b)/caption",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [
+      {
+        "description": "Adjacent DSC paragraph first reports detection for LPO and later says LPO was not detected;group wording conflict unresolved.",
+        "disposition": "Selected coordinate is the explicit DMA Figure15(b) annotation,not a DSC value;do not silently repair the DSC group name or infer method equivalence.",
+        "evidence": [
+          {
+            "source_id": "ivdre_2024_lpo_rigid_pur",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+            "locator": "PDF p19 paragraph aboveFigure15 andcaption",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      }
+    ],
+    "source_id": "ivdre_2024_lpo_rigid_pur",
+    "source_document": {
+      "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+      "revision": "Official article-deploy PDF retained2026-11-04;latest revision/correction/retraction unknown",
+      "inspected_on": "2026-11-04",
+      "sha256": "70b6da773e757f43557ed69bb651ce14e8ff82c1f09d39de1f50671343239e0e",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Same official23pagePDF,selected visiblepages1,7–8,16,19–20,23;four Figure15(b) author annotations/colour legends read directly. XML corroborates method/caption,not annotation numerics. Table11 TGA facts andDSC conflict reviewed separately,not admitted as these coordinates. No curve digitization,rawdata analysis or latestnotice confirmation.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Same official23pagePDF,selected visiblepages1,7–8,16,19–20,23;four Figure15(b) author annotations/colour legends read directly. XML corroborates method/caption,not annotation numerics. Table11 TGA facts andDSC conflict reviewed separately,not admitted as these coordinates. No curve digitization,rawdata analysis or latestnotice confirmation.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "id": "refprop_ivdre2024_lpo2_dma_glass_transition_temperature",
+    "material_state_id": "state_ivdre2024_lpo2_rigid_pur_dma_cylinder",
+    "evidence": [
+      {
+        "source_id": "ivdre_2024_lpo_rigid_pur",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+        "locator": "PDF p19 Figure15(b), author printed red annotation and same-colour LPO-2 curve/legend",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "ivdre_2024_lpo_rigid_pur",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+        "locator": "PDF p8 §2.8 DMA paragraph;p19 Figure15(b)/caption",
+        "supports": [
+          "method",
+          "condition"
+        ]
+      }
+    ],
+    "scope_note": "Study-specific method-qualified DMA coordinate,original integer°C annotation preserved. summary not_stated,nunknown,null numerical dispersion. No TGA3ormore,staticcompression6,DSC6mg/secondheat/nitrogen,water4days or40kg/m³ normalization transfer. Unknown RH/equilibration,gas,cycle,preload,amplitude convention,loading/foaming relation and estimator remain unknown. Not universal Tg,engineeringallowable,isotropy or calculator input."
+  },
+  {
+    "id": "refprop_ivdre2024_spo2_dma_glass_transition_temperature",
+    "version": "1.0.0",
+    "material_state_id": "state_ivdre2024_spo2_rigid_pur_dma_cylinder",
+    "quantity": "glass_transition_temperature",
+    "quantity_dimension": "temperature",
+    "source_property_label": "Tg by DMA, source-labelled tanδ peak",
+    "reported_value": {
+      "kind": "scalar",
+      "number": "125",
+      "value_text": "125",
+      "unit_code": "degC",
+      "unit_text": "°C"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "not_stated",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Explicit source Figure15(b) printed annotation matched to the named curve/legend; not a digitized curve coordinate, mean-of-peaks, peak-of-mean-curve or fitted raw-data result. Caption identifies DMA tanδ-derived Tg; selected estimator unknown.",
+    "conditions": {
+      "temperature": {
+        "status": "reported",
+        "text": "DMA scan25–220°C at3°C/min; cycle number and actual prior thermal history unknown",
+        "evidence": [
+          {
+            "source_id": "ivdre_2024_lpo_rigid_pur",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+            "locator": "PDF p8 §2.8 DMA paragraph",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source scan settings, not ambient temperature, a logged trace or a claim that the property is a group mean."
+      },
+      "test_standard": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "No DMA standard named in inspected method; ISO844:2021 concerns static compression,not automatically this DMA experiment."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "Mettler Toledo DMA/SDTA861e compression oscillation; Figure15(b) source-labelled tanδ-peak Tg; roughly13mm diameter×7mm high cylinders;1Hz,5μm displacement amplitude,maximum force1N. DMA scan25–220°C at3°C/min; cycle number and actual prior thermal history unknown",
+        "evidence": [
+          {
+            "source_id": "ivdre_2024_lpo_rigid_pur",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+            "locator": "PDF p8 §2.8;p19 Figure15(b)/caption",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Not DSC inflection,storage-modulus onset,loss-modulus peak or a calibrated global-maximum extraction algorithm."
+      },
+      "loading_rate": {
+        "status": "reported",
+        "text": "Compression oscillation1Hz;displacement amplitude5μm;maximum force1N",
+        "evidence": [
+          {
+            "source_id": "ivdre_2024_lpo_rigid_pur",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+            "locator": "PDF p8 §2.8 DMA paragraph",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Amplitude peak/RMS convention unknown;maximum force is not a stated preload;no strain conversion or static10%/min-rate transfer."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Compression direction relative to foam-rise direction unknown;source anisotropy doesnot establish isotropic Tg or mechanical behaviour."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "DMA-specific RH,equilibration,storage/drying and prior heating unknown;24h room-temperature cure is processing,not fullconditioning."
+      },
+      "additional_conditions": [
+        {
+          "name": "measurement_method_family",
+          "fact": {
+            "status": "reported",
+            "text": "DMA",
+            "evidence": [
+              {
+                "source_id": "ivdre_2024_lpo_rigid_pur",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+                "locator": "PDF p8 §2.8;p19 Figure15(b) caption",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Not DSC,TGA or staticcompression."
+          }
+        },
+        {
+          "name": "Tg_extraction_criterion",
+          "fact": {
+            "status": "reported",
+            "text": "Source-labelled tanδ peak",
+            "evidence": [
+              {
+                "source_id": "ivdre_2024_lpo_rigid_pur",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+                "locator": "PDF p19 Figure15(b), annotations andcaption",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Source coordinate; peak fitting/interpolation/selection and scalar aggregation unknown."
+          }
+        },
+        {
+          "name": "oscillation_frequency",
+          "fact": {
+            "status": "reported",
+            "text": "1Hz",
+            "evidence": [
+              {
+                "source_id": "ivdre_2024_lpo_rigid_pur",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+                "locator": "PDF p8 §2.8 DMA paragraph",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "No frequency normalization or time-temperature shift."
+          }
+        },
+        {
+          "name": "displacement_amplitude",
+          "fact": {
+            "status": "reported",
+            "text": "5μm",
+            "evidence": [
+              {
+                "source_id": "ivdre_2024_lpo_rigid_pur",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+                "locator": "PDF p8 §2.8 DMA paragraph",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Displacement,not measured strain;amplitude convention unknown."
+          }
+        },
+        {
+          "name": "maximum_force",
+          "fact": {
+            "status": "reported",
+            "text": "1N",
+            "evidence": [
+              {
+                "source_id": "ivdre_2024_lpo_rigid_pur",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+                "locator": "PDF p8 §2.8 DMA paragraph",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Maximum force,not a reported staticpreload."
+          }
+        },
+        {
+          "name": "DMA_atmosphere_preload_and_cycle",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "DMA gas/flow,staticpreload and heatingcycle number unknown;DSC nitrogen/secondheat andTGA counts nottransferred."
+          }
+        },
+        {
+          "name": "smoothing_context",
+          "fact": {
+            "status": "reported",
+            "text": "Adjacent-averaging smoothing for noise above170°C",
+            "evidence": [
+              {
+                "source_id": "ivdre_2024_lpo_rigid_pur",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+                "locator": "PDF p8 §2.8 DMA paragraph",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Source context only;no reprocessing of curves or correction of the explicit lower-temperature labels."
+          }
+        },
+        {
+          "name": "transcription_locator",
+          "fact": {
+            "status": "reported",
+            "text": "PDF p19 Figure15(b), author printed purple annotation and same-colour SPO-2 curve/legend",
+            "evidence": [
+              {
+                "source_id": "ivdre_2024_lpo_rigid_pur",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+                "locator": "PDF p19 Figure15(b)",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Visible printed annotation,not PDF text reading order or hidden draft text."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "not_stated",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "uncertainty_note": "No numerical dispersion attached to selected annotation; not inferred from curve breadth, nearby DSC values, TGA plus-minus or other-test counts.",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "Contributors to the selected printed DMA Tg annotation and independent specimen/batch count unknown.",
+      "source_statement": "The DMA paragraph and Figure15 do not state a selected DMA count; the three-or-more parallel samples statement occurs in the TGA paragraph and is not transferred.",
+      "evidence": [
+        {
+          "source_id": "ivdre_2024_lpo_rigid_pur",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+          "locator": "PDF p8 §2.8 separate DMA and TGA paragraphs;p19 Figure15",
+          "supports": [
+            "sample_count"
+          ]
+        }
+      ]
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source Figure15(b) printed DMA tanδ-peak Tg annotation,compression oscillation withDMA/SDTA861e;1Hz,5μm,max1N and25–220°C at3°C/min. Exact scalar aggregation,cycle,preload,peak fitting and direction unknown. Not DSC or a method-independent universal Tg.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "ivdre_2024_lpo_rigid_pur",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+          "locator": "PDF p8 §2.8;p19 Figure15(b)/caption",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [],
+    "source_id": "ivdre_2024_lpo_rigid_pur",
+    "evidence": [
+      {
+        "source_id": "ivdre_2024_lpo_rigid_pur",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+        "locator": "PDF p19 Figure15(b), author printed purple annotation and same-colour SPO-2 curve/legend",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "ivdre_2024_lpo_rigid_pur",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+        "locator": "PDF p8 §2.8 DMA paragraph;p19 Figure15(b)/caption",
+        "supports": [
+          "method",
+          "condition"
+        ]
+      }
+    ],
+    "source_document": {
+      "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+      "revision": "Official article-deploy PDF retained2026-11-04;latest revision/correction/retraction unknown",
+      "inspected_on": "2026-11-04",
+      "sha256": "70b6da773e757f43557ed69bb651ce14e8ff82c1f09d39de1f50671343239e0e",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Same official23pagePDF,selected visiblepages1,7–8,16,19–20,23;four Figure15(b) author annotations/colour legends read directly. XML corroborates method/caption,not annotation numerics. Table11 TGA facts andDSC conflict reviewed separately,not admitted as these coordinates. No curve digitization,rawdata analysis or latestnotice confirmation.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Study-specific method-qualified DMA coordinate,original integer°C annotation preserved. summary not_stated,nunknown,null numerical dispersion. No TGA3ormore,staticcompression6,DSC6mg/secondheat/nitrogen,water4days or40kg/m³ normalization transfer. Unknown RH/equilibration,gas,cycle,preload,amplitude convention,loading/foaming relation and estimator remain unknown. Not universal Tg,engineeringallowable,isotropy or calculator input.",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Same official23pagePDF,selected visiblepages1,7–8,16,19–20,23;four Figure15(b) author annotations/colour legends read directly. XML corroborates method/caption,not annotation numerics. Table11 TGA facts andDSC conflict reviewed separately,not admitted as these coordinates. No curve digitization,rawdata analysis or latestnotice confirmation.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    }
+  },
+  {
+    "version": "1.0.0",
+    "quantity": "glass_transition_temperature",
+    "quantity_dimension": "temperature",
+    "source_property_label": "Tg by DMA, source-labelled tanδ peak",
+    "reported_value": {
+      "kind": "scalar",
+      "number": "137",
+      "value_text": "137",
+      "unit_code": "degC",
+      "unit_text": "°C"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "not_stated",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Explicit source Figure15(b) printed annotation matched to the named curve/legend; not a digitized curve coordinate, mean-of-peaks, peak-of-mean-curve or fitted raw-data result. Caption identifies DMA tanδ-derived Tg; selected estimator unknown.",
+    "conditions": {
+      "temperature": {
+        "status": "reported",
+        "text": "DMA scan25–220°C at3°C/min; cycle number and actual prior thermal history unknown",
+        "evidence": [
+          {
+            "source_id": "ivdre_2024_lpo_rigid_pur",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+            "locator": "PDF p8 §2.8 DMA paragraph",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source scan settings, not ambient temperature, a logged trace or a claim that the property is a group mean."
+      },
+      "test_standard": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "No DMA standard named in inspected method; ISO844:2021 concerns static compression,not automatically this DMA experiment."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "Mettler Toledo DMA/SDTA861e compression oscillation; Figure15(b) source-labelled tanδ-peak Tg; roughly13mm diameter×7mm high cylinders;1Hz,5μm displacement amplitude,maximum force1N. DMA scan25–220°C at3°C/min; cycle number and actual prior thermal history unknown",
+        "evidence": [
+          {
+            "source_id": "ivdre_2024_lpo_rigid_pur",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+            "locator": "PDF p8 §2.8;p19 Figure15(b)/caption",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Not DSC inflection,storage-modulus onset,loss-modulus peak or a calibrated global-maximum extraction algorithm."
+      },
+      "loading_rate": {
+        "status": "reported",
+        "text": "Compression oscillation1Hz;displacement amplitude5μm;maximum force1N",
+        "evidence": [
+          {
+            "source_id": "ivdre_2024_lpo_rigid_pur",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+            "locator": "PDF p8 §2.8 DMA paragraph",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Amplitude peak/RMS convention unknown;maximum force is not a stated preload;no strain conversion or static10%/min-rate transfer."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Compression direction relative to foam-rise direction unknown;source anisotropy doesnot establish isotropic Tg or mechanical behaviour."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "DMA-specific RH,equilibration,storage/drying and prior heating unknown;24h room-temperature cure is processing,not fullconditioning."
+      },
+      "additional_conditions": [
+        {
+          "name": "measurement_method_family",
+          "fact": {
+            "status": "reported",
+            "text": "DMA",
+            "evidence": [
+              {
+                "source_id": "ivdre_2024_lpo_rigid_pur",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+                "locator": "PDF p8 §2.8;p19 Figure15(b) caption",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Not DSC,TGA or staticcompression."
+          }
+        },
+        {
+          "name": "Tg_extraction_criterion",
+          "fact": {
+            "status": "reported",
+            "text": "Source-labelled tanδ peak",
+            "evidence": [
+              {
+                "source_id": "ivdre_2024_lpo_rigid_pur",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+                "locator": "PDF p19 Figure15(b), annotations andcaption",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Source coordinate; peak fitting/interpolation/selection and scalar aggregation unknown."
+          }
+        },
+        {
+          "name": "oscillation_frequency",
+          "fact": {
+            "status": "reported",
+            "text": "1Hz",
+            "evidence": [
+              {
+                "source_id": "ivdre_2024_lpo_rigid_pur",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+                "locator": "PDF p8 §2.8 DMA paragraph",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "No frequency normalization or time-temperature shift."
+          }
+        },
+        {
+          "name": "displacement_amplitude",
+          "fact": {
+            "status": "reported",
+            "text": "5μm",
+            "evidence": [
+              {
+                "source_id": "ivdre_2024_lpo_rigid_pur",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+                "locator": "PDF p8 §2.8 DMA paragraph",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Displacement,not measured strain;amplitude convention unknown."
+          }
+        },
+        {
+          "name": "maximum_force",
+          "fact": {
+            "status": "reported",
+            "text": "1N",
+            "evidence": [
+              {
+                "source_id": "ivdre_2024_lpo_rigid_pur",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+                "locator": "PDF p8 §2.8 DMA paragraph",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Maximum force,not a reported staticpreload."
+          }
+        },
+        {
+          "name": "DMA_atmosphere_preload_and_cycle",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "DMA gas/flow,staticpreload and heatingcycle number unknown;DSC nitrogen/secondheat andTGA counts nottransferred."
+          }
+        },
+        {
+          "name": "smoothing_context",
+          "fact": {
+            "status": "reported",
+            "text": "Adjacent-averaging smoothing for noise above170°C",
+            "evidence": [
+              {
+                "source_id": "ivdre_2024_lpo_rigid_pur",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+                "locator": "PDF p8 §2.8 DMA paragraph",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Source context only;no reprocessing of curves or correction of the explicit lower-temperature labels."
+          }
+        },
+        {
+          "name": "transcription_locator",
+          "fact": {
+            "status": "reported",
+            "text": "PDF p19 Figure15(b), author printed orange annotation and same-colour SPO-3 curve/legend",
+            "evidence": [
+              {
+                "source_id": "ivdre_2024_lpo_rigid_pur",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+                "locator": "PDF p19 Figure15(b)",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Visible printed annotation,not PDF text reading order or hidden draft text."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "not_stated",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "uncertainty_note": "No numerical dispersion attached to selected annotation; not inferred from curve breadth, nearby DSC values, TGA plus-minus or other-test counts.",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "Contributors to the selected printed DMA Tg annotation and independent specimen/batch count unknown.",
+      "source_statement": "The DMA paragraph and Figure15 do not state a selected DMA count; the three-or-more parallel samples statement occurs in the TGA paragraph and is not transferred.",
+      "evidence": [
+        {
+          "source_id": "ivdre_2024_lpo_rigid_pur",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+          "locator": "PDF p8 §2.8 separate DMA and TGA paragraphs;p19 Figure15",
+          "supports": [
+            "sample_count"
+          ]
+        }
+      ]
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source Figure15(b) printed DMA tanδ-peak Tg annotation,compression oscillation withDMA/SDTA861e;1Hz,5μm,max1N and25–220°C at3°C/min. Exact scalar aggregation,cycle,preload,peak fitting and direction unknown. Not DSC or a method-independent universal Tg.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "ivdre_2024_lpo_rigid_pur",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+          "locator": "PDF p8 §2.8;p19 Figure15(b)/caption",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [],
+    "source_id": "ivdre_2024_lpo_rigid_pur",
+    "source_document": {
+      "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+      "revision": "Official article-deploy PDF retained2026-11-04;latest revision/correction/retraction unknown",
+      "inspected_on": "2026-11-04",
+      "sha256": "70b6da773e757f43557ed69bb651ce14e8ff82c1f09d39de1f50671343239e0e",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Same official23pagePDF,selected visiblepages1,7–8,16,19–20,23;four Figure15(b) author annotations/colour legends read directly. XML corroborates method/caption,not annotation numerics. Table11 TGA facts andDSC conflict reviewed separately,not admitted as these coordinates. No curve digitization,rawdata analysis or latestnotice confirmation.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Same official23pagePDF,selected visiblepages1,7–8,16,19–20,23;four Figure15(b) author annotations/colour legends read directly. XML corroborates method/caption,not annotation numerics. Table11 TGA facts andDSC conflict reviewed separately,not admitted as these coordinates. No curve digitization,rawdata analysis or latestnotice confirmation.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "id": "refprop_ivdre2024_spo3_dma_glass_transition_temperature",
+    "material_state_id": "state_ivdre2024_spo3_rigid_pur_dma_cylinder",
+    "evidence": [
+      {
+        "source_id": "ivdre_2024_lpo_rigid_pur",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+        "locator": "PDF p19 Figure15(b), author printed orange annotation and same-colour SPO-3 curve/legend",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "ivdre_2024_lpo_rigid_pur",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-16-00942/article_deploy/polymers-16-00942.pdf",
+        "locator": "PDF p8 §2.8 DMA paragraph;p19 Figure15(b)/caption",
+        "supports": [
+          "method",
+          "condition"
+        ]
+      }
+    ],
+    "scope_note": "Study-specific method-qualified DMA coordinate,original integer°C annotation preserved. summary not_stated,nunknown,null numerical dispersion. No TGA3ormore,staticcompression6,DSC6mg/secondheat/nitrogen,water4days or40kg/m³ normalization transfer. Unknown RH/equilibration,gas,cycle,preload,amplitude convention,loading/foaming relation and estimator remain unknown. Not universal Tg,engineeringallowable,isotropy or calculator input."
+  }
+]

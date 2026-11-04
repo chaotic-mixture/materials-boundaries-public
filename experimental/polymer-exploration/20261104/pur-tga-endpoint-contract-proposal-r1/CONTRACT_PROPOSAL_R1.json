@@ -1,0 +1,151 @@
+{
+  "schema": "unimplemented-TGA-endpoint-contract-concept/1",
+  "status": "proposal_only_not_native_schema",
+  "source_entry_sha256": "c7feada80dfbdc58326ed5692ad4d02a93ec3e79894de62f7c97ad9bc41e62ed",
+  "source_approval_sha256": "51ca380e4fe60a68a0a293bd144ddc04954651daa72300e7edae79f302056d63",
+  "quantities": {
+    "thermal_degradation_onset_temperature": {
+      "dimension": "temperature",
+      "source_cells": 4,
+      "required_qualifiers": [],
+      "meaning": "Source first TGA onset;unknown onset criterion;may include additive volatilization,not intrinsic neat-polymer decomposition or service limit"
+    },
+    "temperature_at_specified_mass_loss": {
+      "dimension": "temperature",
+      "source_cells": 8,
+      "required_qualifiers": [
+        "specified_mass_loss",
+        "mass_reference_basis"
+      ],
+      "meaning": "Source endpoint at an explicitly specified positive mass-loss percentage;5% and10% distinct,not melting peaks"
+    },
+    "thermal_degradation_rate_peak_temperature": {
+      "dimension": "temperature",
+      "source_cells": 12,
+      "required_qualifiers": [
+        "degradation_peak_ordinal"
+      ],
+      "meaning": "Source DTG ordinal peak temperature;source1/2/3 retained,not a universal maximum allowed temperature"
+    },
+    "tga_residue_percentage": {
+      "dimension": "dimensionless",
+      "source_cells": 4,
+      "required_qualifiers": [
+        "residue_endpoint_temperature",
+        "mass_reference_basis"
+      ],
+      "meaning": "Source TGA remaining-solid percentage at specified endpoint;not certified ash or automatically a mass fraction"
+    }
+  },
+  "qualifiers": {
+    "specified_mass_loss": {
+      "shape": "Scalar original number/value_text/unit_text plus percent_mass_loss role code and nonempty primary condition evidence",
+      "domain": "Strictly positive source percentage;do not silently assume initial/dry mass basis or impose an unreported fraction cap",
+      "example": {
+        "kind": "scalar",
+        "value_text": "5",
+        "number": "5",
+        "unit_text": "%",
+        "unit_code": "percent_mass_loss"
+      },
+      "not_allowed": [
+        "zero/negative thresholds",
+        "percent_elongation role",
+        "automatic5percent to0.05 conversion",
+        "interval or comparison as a specified fixed threshold"
+      ]
+    },
+    "degradation_peak_ordinal": {
+      "shape": "Object with positive integer value and nonempty primary condition evidence",
+      "domain": "Source-labelled ordinal>=1,not fitted rank or materialID whitelist",
+      "examples": [
+        1,
+        2,
+        3
+      ]
+    },
+    "residue_endpoint_temperature": {
+      "shape": "Scalar original temperature coordinate with degC/K and nonempty primary condition evidence",
+      "domain": "Signed Celsius or strictlypositiveKelvin,source precision preserved;not an interval,scan range or automatically shifted coordinate",
+      "example": {
+        "kind": "scalar",
+        "value_text": "700",
+        "number": "700",
+        "unit_text": "°C",
+        "unit_code": "degC"
+      }
+    },
+    "mass_reference_basis": {
+      "shape": "Existing fact envelope required for mass-loss and residue branches;reported facts need primary condition evidence",
+      "source_default": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Initial/as-received/dry normalization and correction basis not unambiguously established;do not fill from a graph starting near100%."
+      }
+    }
+  },
+  "unit_roles": {
+    "temperature_results": [
+      "degC",
+      "K"
+    ],
+    "residue_central_unit": {
+      "unit_code": "percent_tga_residue",
+      "unit_text": "%",
+      "dimension": "dimensionless",
+      "domain": "Nonnegative original percentage includingzero;no automatic0–1 rescaling or universal100 cap with unknown massreference"
+    },
+    "mass_loss_descriptor_unit": {
+      "unit_code": "percent_mass_loss",
+      "unit_text": "%",
+      "domain": "Descriptor only,not a legal central unit for any result quantity"
+    },
+    "code_scope": "Internal role identifiers,not differentSI units;physical % symbol unchanged. No wt.%/volume/elongation role inference."
+  },
+  "schema_strategy": [
+    "Add four complete mutuallyexclusive branches after existingseven;keep oldseven branchobjects andlegacy_reported_value literallysame",
+    "New qualifiers appear only in their own required branches;forbidden in oldquantities and unrelated newTGA branches",
+    "Temperature result semantic family must extend runtime temperature-domain,absolute amplitude and relative-origin checks without enlarging oldTg/melting schema branch enum",
+    "Residue nonnegative domain is quantity-specific;all old quantity domains remain unchanged",
+    "Use existing condition/method/classification evidence tags,not new material-ID exceptions",
+    "Percent residue unit may extend shared absolute-uncertainty vocabulary,but exact unit/role checks prevent leakage;mass-loss descriptor code never enters central result branches"
+  ],
+  "statistics": {
+    "centre": "not_stated for these28",
+    "selected_n": "unknown;commonTGAatleast3 separate methodfact,not exact3 or selected-per-cell lowerbound",
+    "source_plus_minus": "Reuse reported_plus_minus_unspecified scalar envelope with nonnegative amplitude and unknown statistical interpretation;not meanSD/SE/CI promotion",
+    "amplitude_units": "Temperature amplitudes retain Celsius/K difference role with nooffset;residue amplitude same percent_tga_residue code as centre;not relativeCV"
+  },
+  "uniqueness_and_coverage": [
+    "Typed masslosslevel,sourcepeakordinal andresidueendpoint/basis must participate in semantic property identity",
+    "Equal temperature values at5%/10%,or two labelledDTGpeaks,can be distinct coordinates under oneTGAstate",
+    "Exact qualifier clones areduplicates despite changed labels/evidence/decimal formatting;normalization must be independent of ambientDecimalcontext",
+    "Four source-qualifiedTGA specimen/pan states planned,not28states/identities;mass/dimensions unknown;no certified physicalcoverage"
+  ],
+  "presentation": "Four-language labels for quantities and typedqualifiers/basis;human render and complete query/export must preserve unknownbasis,percent scale,sourceordinal and endpoint temperature. No calculator or engineeringallowable use.",
+  "science_boundaries": [
+    "No onset<=T5 ordering repair;unknown onset criterion and unpaired source summaries do not justify cross-record constraints",
+    "No source Tm5/Tm10 relabel as melting temperatures",
+    "No residue700C relabel as certified ash,purity or final-mixture massfraction",
+    "No repair of author values or hidden-draft/curve digitization",
+    "No transfer of DSC/DMA n,gas orgeometry;TGAplatinumpans ownstate and30–700C10CminN2 method"
+  ],
+  "implementation_acceptance": [
+    "Public/runtime schema equality and oldseven branch/legacyvalue byte equivalence",
+    "PositiveKelvin/signedC source forms and uncertainty difference-role checks",
+    "Residuezero accepted,negative rejected,original13.7not0.137;no global0..100 bound inferred",
+    "Required typedqualifiers,evidence,basis and wrong-unit/wrong-branch rejection",
+    "Qualifier-aware semanticduplicate rejection without label or format inflation",
+    "Undefinedplusminus remains undefined;selectedn unknown",
+    "Four-language complete descriptor rendering/query/export;noengine",
+    "Meaningful regression of currentolddata and methods,not fullhistory replay",
+    "Freeze exact implementation,independentreadonlyreview,then separate28mapping/install/nativeintegration gates"
+  ],
+  "native_snapshot": "4f2f95b2f8635782d8af28412fafa077f93db3786b3953a123d6daec49207513",
+  "native_code_data_changed": false,
+  "new_native_records": 0,
+  "implementation": "not_started",
+  "tests_installation": "not_run_proposal_only",
+  "pushed": false
+}

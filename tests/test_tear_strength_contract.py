@@ -112,7 +112,7 @@ class TearStrengthContractTests(unittest.TestCase):
     def test_public_schema_and_other_quantity_domains_remain_closed(self):
         stored = json.loads((Path(__file__).resolve().parents[1] / 'schemas/reference_properties.schema.json').read_bytes())
         self.assertEqual(stored, _PROPERTIES_SCHEMA)
-        self.assertEqual(len(stored['$defs']['property']['oneOf']), 7)
+        self.assertEqual(len(stored['$defs']['property']['oneOf']), 11)
         Draft202012Validator.check_schema(stored)
         for factory in (synthetic_mean_catalog, hardness_fixture, lambda: elongation_fixture('1040'), target_fixture):
             graph = factory()
