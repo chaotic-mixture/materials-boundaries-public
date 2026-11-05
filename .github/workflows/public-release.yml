@@ -1,0 +1,44 @@
+name: public-release-checks
+on:
+  push:
+    branches: [main, 'release/**']
+    tags: ['v*']
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ['3.11', '3.12']
+    env:
+      PYTHONUTF8: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python scripts/check_public_release.py
+      - run: python -m pip install build
+      - run: python -m build --wheel
+      - name: Install the built wheel
+        shell: bash
+        run: python -m pip install --no-deps dist/*.whl
+      - name: Check installed calculation outside the checkout
+        working-directory: ${{ runner.temp }}
+        run: materials-mechanics convert --young 210 --poisson 0.3 --unit GPa --assume-isotropic
+      - name: Check installed database outside the checkout
+        working-directory: ${{ runner.temp }}
+        run: materials-database export --query C11000 --quantity mass_density --output release-example
+      - name: Verify installed data export
+        working-directory: ${{ runner.temp }}
+        run: materials-database verify --snapshot release-example

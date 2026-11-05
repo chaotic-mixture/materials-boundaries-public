@@ -1,3 +1,5 @@
+> 数据贡献请先阅读 [当前数据库贡献流程](docs/DATABASE_CONTRIBUTING.zh.md)；计算模型贡献需包含公式来源、适用条件及可复现测试。发布检查运行 `python scripts/check_public_release.py`，不默认启动历史全量回放。
+
 # Contributing catalog knowledge
 
 Contributions are welcome through [issues](https://github.com/chaotic-mixture/materials-boundaries-public/issues) and pull requests to [the public repository](https://github.com/chaotic-mixture/materials-boundaries-public). Use a focused change with source locators, explicit limitations and reproducible tests. Original contributed code, documentation and curation are covered by the project [MIT License](LICENSE); do not submit third-party works as though you own their rights. Preserve [source-specific notices](THIRD_PARTY_NOTICES.md).

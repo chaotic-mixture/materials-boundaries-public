@@ -92,6 +92,7 @@ def _build_parser(language: str) -> argparse.ArgumentParser:
     add_language(parser)
     sub = parser.add_subparsers(dest="command", required=True, title=t("cli_commands"),
                                 parser_class=partial(_LocalizedParser, language=language))
+    sub.add_parser("mechanics", help="Elastic constants, stress response and executable knowledge (use mechanics --help)")
     evaluate_parser = sub.add_parser("evaluate", help=t("cli_evaluate"), description=t("cli_evaluate"))
     evaluate_parser.add_argument("instance", help=t("cli_instance"))
     evaluate_parser.add_argument("--unit", choices=tuple(UNITS), default="GPa", help=t("cli_unit"))
@@ -214,6 +215,9 @@ def _build_parser(language: str) -> argparse.ArgumentParser:
 
 def main(argv: list[str] | None = None) -> int:
     argv = list(sys.argv[1:] if argv is None else argv)
+    if argv and argv[0] == 'mechanics':
+        from .mechanics import main as mechanics_main
+        return mechanics_main(argv[1:])
     # Select the help language before argparse's help action exits. The real
     # parser still validates all syntax and unsupported language codes.
     language_parser = argparse.ArgumentParser(add_help=False, allow_abbrev=False)

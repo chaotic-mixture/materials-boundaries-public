@@ -29,6 +29,8 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Database behavior and incremental contracts
         run: python -m unittest discover -s tests -p 'test_database*.py' -v
+      - name: Executable mechanics models
+        run: python -m unittest discover -s tests -p test_mechanics.py -v
       - name: Current material graph contracts (once, no history replay)
         run: python -m materials_boundaries.database check --scientific-contracts
       - name: Export a source-qualified example

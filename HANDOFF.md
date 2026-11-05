@@ -1,3 +1,5 @@
+> 当前公开交付：v0.36.0。以 [README](README.md) 和 [版本说明](docs/RELEASE_v0.36.0.md) 为准。下文保留历史交接状态，不构成当前暂停、禁止合并或禁止发布的指令。
+
 # Materials Boundaries development handoff
 
 ## 当前聚合物进展：r36–r38
