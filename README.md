@@ -1,11 +1,23 @@
 # 材料边界 · Materials Boundaries
 
-Current software release: **v0.36.0**
+Current software release: **v0.37.0**
 
 **查材料数据，读适用条件，运行可追溯的力学计算。**
 An open, source-qualified materials database and executable mechanics toolkit.
 
-[下载与版本说明](https://github.com/chaotic-mixture/materials-boundaries-public/releases/tag/v0.36.0) · [数据格式](docs/DATABASE_FORMAT.md) · [计算与知识库](docs/EXECUTABLE_MECHANICS.md) · [贡献数据](docs/DATABASE_CONTRIBUTING.zh.md)
+[下载与版本说明](https://github.com/chaotic-mixture/materials-boundaries-public/releases/tag/v0.37.0) · [数据格式](docs/DATABASE_FORMAT.md) · [计算与知识库](docs/EXECUTABLE_MECHANICS.md) · [贡献数据](docs/DATABASE_CONTRIBUTING.zh.md)
+
+## 单轴拉伸专家系统 · 三个可复现案例
+
+安装下方 wheel 后运行。轴向应变 0.001 即 0.1%。每次输出的 `current` 是当前判断，包含选定记录、材料状态、来源页码、输入、边界条件和实际采用的规则。
+
+| 案例 | 命令 | 当前判断 |
+| --- | --- | --- |
+| 正常计算 | `materials-tension --strain .001 --assume-model` | 退火 Nickel 200，侧向自由，205 GPa × 0.001 = **0.205 GPa** |
+| 缺少模量 | `materials-tension --record refprop_aurubis_c11000_mass_density --strain .001 --assume-model` | 选中的 C11000 记录提供密度，提示补充适用的杨氏模量 |
+| 改变约束 | `materials-tension --strain .001 --assume-model --then fixed` | 同一材料改为两个侧向应变均为零，原结果进入历史；当前提示补充同状态泊松比 |
+
+第三例可追加 `--poisson .3`，得到约 **0.276 GPa**。这里的 0.3 是用户提供的教学假设。默认模量来自 [Special Metals Nickel 200 技术公报，表 4](https://www.specialmetals.com/documents/technical-bulletins/nickel-200.pdf) 的 26 °C 退火材料动态弹性数据。将该参考值用于此拉伸估算需要用户明确接受其适用性，并假定无初始应力、无热应变、各向同性和小应变线弹性。输出不提供屈服、失效或工程许用值。
 
 ## 现在有什么 / What's available
 
@@ -25,7 +37,7 @@ An open, source-qualified materials database and executable mechanics toolkit.
 Python 3.10+，无第三方运行时依赖。安装本仓库发布的 wheel（不是 PyPI 上的同名包）：
 
 ```sh
-python -m pip install "https://github.com/chaotic-mixture/materials-boundaries-public/releases/download/v0.36.0/materials_boundaries-0.36.0-py3-none-any.whl"
+python -m pip install "https://github.com/chaotic-mixture/materials-boundaries-public/releases/download/v0.37.0/materials_boundaries-0.37.0-py3-none-any.whl"
 ```
 
 或克隆后在仓库根目录运行 `python -m pip install .`。

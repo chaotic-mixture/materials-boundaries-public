@@ -12,7 +12,7 @@ from materials_boundaries.database import Database
 def main():
     loader = unittest.TestLoader()
     suite = unittest.TestSuite()
-    for pattern in ('test_mechanics.py', 'test_database*.py', 'test_engine.py',
+    for pattern in ('test_tension.py', 'test_mechanics.py', 'test_database*.py', 'test_engine.py',
                     'test_validation.py', 'test_release_metadata.py'):
         suite.addTests(loader.discover(str(ROOT/'tests'), pattern=pattern))
     if loader.errors:
