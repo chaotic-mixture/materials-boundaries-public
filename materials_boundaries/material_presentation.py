@@ -24,6 +24,9 @@ REQUIRED_LABELS |= frozenset(('code_tear_strength',))
 REQUIRED_LABELS |= frozenset(('code_izod_impact_strength',))
 REQUIRED_LABELS |= frozenset(('code_glass_transition_temperature',))
 REQUIRED_LABELS |= frozenset(('code_melting_peak_temperature',))
+REQUIRED_LABELS |= frozenset(('code_crystallization_peak_temperature', 'thermal_scan_definition',
+                             'code_nonisothermal_temperature_scan', 'thermal_scan_phase',
+                             'code_heating', 'code_cooling', 'thermal_phase_occurrence_ordinal'))
 REQUIRED_LABELS |= frozenset(('code_dielectric_breakdown_strength',))
 REQUIRED_LABELS |= frozenset(('code_thermal_conductivity',))
 REQUIRED_LABELS |= frozenset('code_' + quantity for quantity in TGA_QUANTITIES)
@@ -238,9 +241,21 @@ def render_material_catalog(catalog: dict, kind: str, language: str = "en") -> s
                 output.extend(evidence(target["evidence"], indent + "      "))
         if "degradation_peak_ordinal" in prop:
             target = prop["degradation_peak_ordinal"]
-            output.append(field("degradation_peak_ordinal", str(target["value"]), indent + "    "))
+            ordinal = str(target["value"]) if target["value"] is not None else code(target["status"])
+            output.append(field("degradation_peak_ordinal", ordinal, indent + "    "))
             output.append(field("scope_note", target["notes"], indent + "      "))
             output.extend(evidence(target["evidence"], indent + "      "))
+        if "thermal_scan_definition" in prop:
+            program = prop["thermal_scan_definition"]
+            output.append(field("thermal_scan_definition", code(program["kind"]), indent + "    "))
+            output.append(field("scope_note", program["notes"], indent + "      "))
+            output.extend(evidence(program["evidence"], indent + "      "))
+            for key, value_key in (("thermal_scan_phase", "code"), ("thermal_phase_occurrence_ordinal", "value")):
+                descriptor = prop[key]
+                value = (code(descriptor[value_key]) if value_key == "code" else str(descriptor[value_key])) if descriptor["status"] == "reported" else code(descriptor["status"])
+                output.append(field(key, value, indent + "    "))
+                output.append(field("scope_note", descriptor["notes"], indent + "      "))
+                output.extend(evidence(descriptor["evidence"], indent + "      "))
         if "thermal_response_phase" in prop:
             phase=prop["thermal_response_phase"];boundary=prop["thermal_convection"]
             output.append(field("thermal_response_phase",code(phase["code"]),indent+"    "))

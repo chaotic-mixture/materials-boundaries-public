@@ -1,0 +1,63 @@
+{
+  "schema": "PHBV39-TGA-concrete-mapping-plan/1",
+  "source_review_sha256": "69f902542e5e9217be943c27c7eee5d8a10079bcb741453ebe41ace9793a7f2c",
+  "existing_identity_id": "mat_abbasi2022_manure_phbv39",
+  "new_state_id": "state_abbasi2022_manure_phbv39_tga",
+  "new_state_count": 1,
+  "new_identity_count": 0,
+  "properties": [
+    {
+      "id": "refprop_abbasi2022_manure_phbv39_thermal_degradation_onset_temperature",
+      "quantity": "thermal_degradation_onset_temperature",
+      "number": "299",
+      "unit_code": "degC",
+      "source_property_label": "T_onset"
+    },
+    {
+      "id": "refprop_abbasi2022_manure_phbv39_thermal_degradation_rate_peak_temperature",
+      "quantity": "thermal_degradation_rate_peak_temperature",
+      "number": "325",
+      "unit_code": "degC",
+      "source_property_label": "T_d"
+    }
+  ],
+  "state_boundaries": {
+    "product_form": "unknown;4–5mg retained as method mass,not shape",
+    "processing": "TGA-specific history unknown;do not inherit mechanical0.3g/60Cdrying/180Chotpress",
+    "conditioning": "unknown",
+    "orientation": "unknown",
+    "porosity": "unknown",
+    "composition_and_reinforcement": "retain existing identity-qualified facts only"
+  },
+  "statistics": {
+    "summary_statistic": "not_stated",
+    "uncertainty": null,
+    "n": null,
+    "duplicate": "method wording only",
+    "DTG_ordinal": null
+  },
+  "source_document": {
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9571417/fullTextXML",
+    "sha256": "a37eac0af73559b942f680a671d41a4d870d66d94b76e825cdaf61cc6cd3a3a5",
+    "new_main_PDF_inspection": false
+  },
+  "held": [
+    "Tc104.8:peak definition/selected occurrence insufficient",
+    "Tendset333:separate endpoint contract needed"
+  ],
+  "required_next_gates": [
+    "generate actual closed-schema property/state objects",
+    "validate current candidate graph and old5504objects/5301states unchanged",
+    "complete joined query/export recovery/copy checks",
+    "freeze exact candidate and independent mapping review",
+    "apply reviewed bytes with backups",
+    "daily database checks and actual isolated installation",
+    "independent final acceptance"
+  ],
+  "expected_candidate_counts": {
+    "properties": 5506,
+    "states": 5302,
+    "sources": 134
+  },
+  "native_applied": false
+}

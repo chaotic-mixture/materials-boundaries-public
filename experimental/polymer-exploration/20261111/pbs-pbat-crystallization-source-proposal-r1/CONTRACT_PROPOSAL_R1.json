@@ -1,0 +1,85 @@
+{
+  "scope": "Concept only;existing hold remains until all later approvals",
+  "quantity": "crystallization_peak_temperature",
+  "dimension": "temperature",
+  "definition": "Source-reported thermal-analysis crystallization peak coordinate with explicit scan phase;not onset/endset,Tg,melting peak,enthalpy,crystallinity or an operating limit",
+  "temperature_roles": "Reuse existing signed degC/K coordinates,absolute physical floor and temperature-difference uncertainty rules;no conversion,fit or numerical graph reading",
+  "preserve_source": "Keep source_property_label Tcc and source wording;record discrepancy with cooling method/caption. Generic quantity class does not certify author intent,cold-crystallization mechanism or correct nomenclature.",
+  "required_descriptors": {
+    "thermal_scan_phase": {
+      "reported": {
+        "status": "reported",
+        "code": [
+          "heating",
+          "cooling"
+        ],
+        "evidence": "Same inspected primary-document condition evidence",
+        "notes": "Nonempty source-scope explanation"
+      },
+      "unknown": {
+        "status": [
+          "not_reported_in_inspected_source",
+          "not_verified"
+        ],
+        "code": null,
+        "evidence": "Inspected primary-document condition evidence",
+        "notes": "Nonempty unknown explanation"
+      },
+      "forbidden": [
+        "not_applicable",
+        "inferred default heating/cooling",
+        "unknown status with known phase"
+      ]
+    },
+    "thermal_phase_occurrence_ordinal": {
+      "reported": {
+        "status": "reported",
+        "value": "Positive integer explicitly identifying occurrence of this same phase",
+        "evidence": "Same inspected primary-document condition evidence",
+        "notes": "Nonempty source scope"
+      },
+      "unknown": {
+        "status": [
+          "not_reported_in_inspected_source",
+          "not_verified"
+        ],
+        "value": null,
+        "evidence": "Inspected primary-document condition evidence",
+        "notes": "Nonempty explanation"
+      },
+      "role": "Occurrence ordinal within named phase,not overall program step,number of cycles,technical repeats or statistical n",
+      "forbidden": [
+        "not_applicable",
+        "zero",
+        "negative",
+        "boolean",
+        "numeric string",
+        "inferred1/2 from program sequence or cycle count"
+      ]
+    }
+  },
+  "new_property_branch": "Append dedicated branch;old fifteen branch objects and known TGA ordinal structure preserved;new descriptors illegal on unrelated quantities;no silent widening of legacy Tg/Tm branch",
+  "deduplication": {
+    "base": "Same original inspected source cell,quantity,unit/value and actual other conditions,with exact numerical-format normalization",
+    "coordinates": [
+      "scan phase",
+      "occurrence ordinal within phase"
+    ],
+    "unknowns": "Both unknown statuses normalize to one unknown value;label/notes/descriptor evidence typography cannot create coverage",
+    "overlap_rule": "Reject coexistence when every coordinate is equal or one side unknown. At least one coordinate known on both sides and different is needed to distinguish otherwise identical facts. Apply in both insertion orders;unknown-known curation upgrades are not added coverage.",
+    "preserve": "Distinct original cells,actual protocols,and supported heating/cooling or same-phase occurrence ordinals remain distinct;no sample-count inference"
+  },
+  "presentation": "Four-language quantity/phase/occurrence labels;display unknown rather than None/0/inferred1;keep source Tcc,label discrepancy,evidence,cycle-count statement and unknown n in query/resolve/exports",
+  "runtime_boundary": "Catalog_only,not universal_bound/engineering_allowable;no engine coupling,phase kinetics or elapsed-time inference",
+  "acceptance_checks": [
+    "Signed temperatures and their physical lower floors,uncertainty roles and closed dedicated shape",
+    "Mandatory phase and occurrence descriptors;correct primary document/condition evidence;unknowns not NA",
+    "Wrong quantity/unit/descriptor reuse rejected;no default ordinal or temperature conversion",
+    "All unknown/known coordinate overlap permutations reject double-counting in both orders,low-precision/trailing-zero robustness;truly differing known coordinates and original cells preserved",
+    "Source label Tcc and cooling discrepancy retained in four languages and complete consumer/export recovery/copy isolation",
+    "Old fifteen branch/schema scope compatibility,current native graph and appropriate related regressions",
+    "Independent implementation review before actual mapping;independent mapping and real installed acceptance before native admission"
+  ],
+  "implementation": "not_started",
+  "native_admission": "not_approved"
+}

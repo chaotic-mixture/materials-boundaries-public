@@ -1,0 +1,2366 @@
+[
+  {
+    "id": "refprop_mtibe2022_pbs_pbat_70_30_thermal_degradation_rate_peak_temperature",
+    "version": "1.0.0",
+    "material_state_id": "state_mtibe2022_pbs_pbat_70_30_tga_single_major_loss",
+    "quantity": "thermal_degradation_rate_peak_temperature",
+    "quantity_dimension": "temperature",
+    "source_property_label": "Tmax",
+    "reported_value": {
+      "kind": "scalar",
+      "number": "409.2",
+      "value_text": "409.2",
+      "unit_code": "degC",
+      "unit_text": "°C"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "not_stated",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Selected Table4 Tmax cell. Central aggregation,uncertainty and contributing n unspecified. Celsius unit context comes from the same article methods/axes/prose,not the table header;no curve refit or temperature conversion.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Separate numerical ambient test temperature unreported;scanned temperature program is kept separately,not filled from mechanical25°C."
+      },
+      "test_standard": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "No thermal standard/edition independently assigned;ASTM D638 belongs to tensile method."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "PerkinElmer thermogravimetric analyser,model unspecified;source Tmax associated with DTG/single major weight-loss event,not scan maximum or onset.",
+        "evidence": [
+          {
+            "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+            "locator": "PDF p5 section2.6.3;p7-8section3.3/Figure3/Table4",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Differentiation,smoothing/baseline and precise peak-picking implementation unknown."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Thermal sampling orientation unreported."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Thermal-piece RH,equilibration and storage unreported;no mechanical48h conditioning transfer."
+      },
+      "loading_rate": {
+        "status": "not_applicable",
+        "text": null,
+        "evidence": [],
+        "notes": "Mechanical loading rate is not the thermal scan heating rate."
+      },
+      "additional_conditions": [
+        {
+          "name": "thermal_scan_program",
+          "fact": {
+            "status": "reported",
+            "text": "Room temperature to900°C at10°C/min under nitrogen",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5 section2.6.3;p7-8section3.3/Figure3/Table4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Temperature coordinates and ramp are scan settings,not ambient temperature,conditioning or an operating envelope."
+          }
+        },
+        {
+          "name": "heating_rate",
+          "fact": {
+            "status": "reported",
+            "text": "10°C/min",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5 section2.6.3;p7-8section3.3/Figure3/Table4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Source heating rate;cooling rate is not inferred."
+          }
+        },
+        {
+          "name": "test_atmosphere",
+          "fact": {
+            "status": "reported",
+            "text": "Nitrogen",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5 section2.6.3;p7-8section3.3/Figure3/Table4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": null
+          }
+        },
+        {
+          "name": "gas_flow",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "TGA numerical gas flow not reported;DSC25mL/min not transferred."
+          }
+        },
+        {
+          "name": "sample_mass",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Selected thermal sample mass unreported."
+          }
+        },
+        {
+          "name": "pan_and_calibration",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Pan,baseline calibration and traceability details unreported."
+          }
+        },
+        {
+          "name": "independent_batches",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Independent batch count and cross-method physical pairing unconfirmed."
+          }
+        },
+        {
+          "name": "source_unit_context",
+          "fact": {
+            "status": "reported",
+            "text": "°C supported by same-article method and figure axes;Table4 header has no printed unit.",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5 section2.6.3 andp8Figure3 temperature axis",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Values are direct Table4 literals,not graph digitization;not falsely attributed to a printed table-header unit."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "not_stated",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "uncertainty_note": "No selected-cell uncertainty or statistical estimator reported;not zero dispersion,no SD/SE/CI or mechanical plus-minus transfer.",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "Selected thermal-cell contributing measurements/specimens and independent batches unknown.",
+      "source_statement": "Thermal methods give no selected-cell n;mechanical five specimens and DSC cycle sequence are not statistical counts for this result.",
+      "evidence": []
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "PerkinElmer thermogravimetric analyser,model unspecified;source Tmax associated with DTG/single major weight-loss event,not scan maximum or onset. Room temperature to900°C at10°C/min under nitrogen. Source cell transcribed,not recomputed;exact extraction algorithm and aggregation unknown.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+          "locator": "PDF p5 section2.6.3;p7-8section3.3/Figure3/Table4",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [
+      {
+        "description": "Table4 temperature-column headers omit units;Celsius context is supplied by same-article methods,axes and prose.",
+        "disposition": "Retain direct numerical literal and explicit unit provenance;do not claim a printed header unit or digitize/refit curves.",
+        "evidence": [
+          {
+            "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+            "locator": "PDF p8Table4 PBS-PBAT (70/30) Tmax;PDF p5 section2.6.3 andp8Figure3 temperature axis",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      }
+    ],
+    "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+    "evidence": [
+      {
+        "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+        "locator": "PDF p8Table4 PBS-PBAT (70/30) Tmax",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+        "locator": "PDF p5 section2.6.3 andp8Figure3 temperature axis",
+        "supports": [
+          "method",
+          "condition"
+        ]
+      }
+    ],
+    "source_document": {
+      "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+      "revision": "Reacquired official PDF byte-identical to retained version;latest revision/notices unverified",
+      "inspected_on": "2026-11-11",
+      "sha256": "fa72f3441329d8db6348926906817ebac7b3bd7077a90e836f75f8ecdb087287",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained officialPDF p1license,p3recipe,p5methods,p7-9Table4/Figures3-4 and identical EuropePMC XML. Table header units absent;same-document methods/axes support Celsius. No raw curve analysis or latest-notice completeness certification.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Source-qualified PBS-PBAT (70/30) Tmax thermal coordinate. Not an operating/service limit or independent batch. Centre,uncertainty,n,thermal sample mass/geometry,conditioning,calibration and original peak extraction unknown. Recipe70/30 basis and1.5ZnO denominator remain unresolved,not normalized. No Tg,ambiguous Tcc,enthalpy or neatPBAT thermal value imported;no mechanical-statistic transfer or raw curve reconstruction.",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained officialPDF p1license,p3recipe,p5methods,p7-9Table4/Figures3-4 and identical EuropePMC XML. Table header units absent;same-document methods/axes support Celsius. No raw curve analysis or latest-notice completeness certification.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "degradation_peak_ordinal": {
+      "status": "not_reported_in_inspected_source",
+      "value": null,
+      "evidence": [
+        {
+          "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+          "locator": "PDF p8Table4 PBS-PBAT (70/30) Tmax;PDF p7-8section3.3/Figure3b",
+          "supports": [
+            "condition"
+          ]
+        }
+      ],
+      "notes": "Source labels the selected single-major-event coordinate Tmax without a numbered peak. No ordinal1 or rank inferred;minor events are not denied."
+    }
+  },
+  {
+    "id": "refprop_mtibe2022_pbs_pbat_70_30_melting_peak_temperature",
+    "version": "1.0.0",
+    "material_state_id": "state_mtibe2022_pbs_pbat_70_30_dsc_second_heating",
+    "quantity": "melting_peak_temperature",
+    "quantity_dimension": "temperature",
+    "source_property_label": "Tm",
+    "reported_value": {
+      "kind": "scalar",
+      "number": "114.9",
+      "value_text": "114.9",
+      "unit_code": "degC",
+      "unit_text": "°C"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "not_stated",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Selected Table4 Tm cell. Central aggregation,uncertainty and contributing n unspecified. Celsius unit context comes from the same article methods/axes/prose,not the table header;no curve refit or temperature conversion.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Separate numerical ambient test temperature unreported;scanned temperature program is kept separately,not filled from mechanical25°C."
+      },
+      "test_standard": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "No thermal standard/edition independently assigned;ASTM D638 belongs to tensile method."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "TA Instruments DSC-Q2000;source Tm in second-heating melting endotherm context,not onset/endset or cooling peak.",
+        "evidence": [
+          {
+            "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+            "locator": "PDF p5section2.6.4;p8-9section3.3/Figure4/Table4",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Differentiation,smoothing/baseline and precise peak-picking implementation unknown."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Thermal sampling orientation unreported."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Thermal-piece RH,equilibration and storage unreported;no mechanical48h conditioning transfer."
+      },
+      "loading_rate": {
+        "status": "not_applicable",
+        "text": null,
+        "evidence": [],
+        "notes": "Mechanical loading rate is not the thermal scan heating rate."
+      },
+      "additional_conditions": [
+        {
+          "name": "thermal_scan_program",
+          "fact": {
+            "status": "reported",
+            "text": "Source states two cycles;listed sequence:heat−60to200°C,coolto−60°C,heatto200°C;selected Tm from second heating",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5section2.6.4;p8-9section3.3/Figure4/Table4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Temperature coordinates and ramp are scan settings,not ambient temperature,conditioning or an operating envelope."
+          }
+        },
+        {
+          "name": "heating_rate",
+          "fact": {
+            "status": "reported",
+            "text": "10°C/min",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5section2.6.4;p8-9section3.3/Figure4/Table4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Source heating rate;cooling rate is not inferred."
+          }
+        },
+        {
+          "name": "test_atmosphere",
+          "fact": {
+            "status": "reported",
+            "text": "Nitrogen",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5section2.6.4;p8-9section3.3/Figure4/Table4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": null
+          }
+        },
+        {
+          "name": "gas_flow",
+          "fact": {
+            "status": "reported",
+            "text": "25mL/min",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5section2.6.4;p8-9section3.3/Figure4/Table4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "DSC-specific source setting,not TGA flow."
+          }
+        },
+        {
+          "name": "sample_mass",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Selected thermal sample mass unreported."
+          }
+        },
+        {
+          "name": "pan_and_calibration",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Pan,baseline calibration and traceability details unreported."
+          }
+        },
+        {
+          "name": "independent_batches",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Independent batch count and cross-method physical pairing unconfirmed."
+          }
+        },
+        {
+          "name": "source_unit_context",
+          "fact": {
+            "status": "reported",
+            "text": "°C supported by same-article method and figure axes;Table4 header has no printed unit.",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5section2.6.4,p8section3.3 explicitly115C andp9Figure4 temperature axes",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Values are direct Table4 literals,not graph digitization;not falsely attributed to a printed table-header unit."
+          }
+        },
+        {
+          "name": "selected_scan",
+          "fact": {
+            "status": "reported",
+            "text": "Second heating",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5section2.6.4;p8-9section3.3/Figure4/Table4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": null
+          }
+        },
+        {
+          "name": "cooling_rate",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Cooling rate not separately stated;do not infer−10°C/min."
+          }
+        },
+        {
+          "name": "cycle_count_scope",
+          "fact": {
+            "status": "reported",
+            "text": "Source wording:two cycles;listed heat/cool/reheat sequence retained",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5section2.6.4;p8-9section3.3/Figure4/Table4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Not two independent specimens,n2 or a manufactured further cooling stage."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "not_stated",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "uncertainty_note": "No selected-cell uncertainty or statistical estimator reported;not zero dispersion,no SD/SE/CI or mechanical plus-minus transfer.",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "Selected thermal-cell contributing measurements/specimens and independent batches unknown.",
+      "source_statement": "Thermal methods give no selected-cell n;mechanical five specimens and DSC cycle sequence are not statistical counts for this result.",
+      "evidence": []
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "TA Instruments DSC-Q2000;source Tm in second-heating melting endotherm context,not onset/endset or cooling peak. Source states two cycles;listed sequence:heat−60to200°C,coolto−60°C,heatto200°C;selected Tm from second heating. Source cell transcribed,not recomputed;exact extraction algorithm and aggregation unknown.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+          "locator": "PDF p5section2.6.4;p8-9section3.3/Figure4/Table4",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [
+      {
+        "description": "Table4 temperature-column headers omit units;Celsius context is supplied by same-article methods,axes and prose.",
+        "disposition": "Retain direct numerical literal and explicit unit provenance;do not claim a printed header unit or digitize/refit curves.",
+        "evidence": [
+          {
+            "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+            "locator": "PDF p8Table4 PBS-PBAT (70/30) Tm;PDF p5section2.6.4,p8section3.3 explicitly115C andp9Figure4 temperature axes",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      }
+    ],
+    "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+    "evidence": [
+      {
+        "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+        "locator": "PDF p8Table4 PBS-PBAT (70/30) Tm",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+        "locator": "PDF p5section2.6.4,p8section3.3 explicitly115C andp9Figure4 temperature axes",
+        "supports": [
+          "method",
+          "condition"
+        ]
+      }
+    ],
+    "source_document": {
+      "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+      "revision": "Reacquired official PDF byte-identical to retained version;latest revision/notices unverified",
+      "inspected_on": "2026-11-11",
+      "sha256": "fa72f3441329d8db6348926906817ebac7b3bd7077a90e836f75f8ecdb087287",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained officialPDF p1license,p3recipe,p5methods,p7-9Table4/Figures3-4 and identical EuropePMC XML. Table header units absent;same-document methods/axes support Celsius. No raw curve analysis or latest-notice completeness certification.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Source-qualified PBS-PBAT (70/30) Tm thermal coordinate. Not an operating/service limit or independent batch. Centre,uncertainty,n,thermal sample mass/geometry,conditioning,calibration and original peak extraction unknown. Recipe70/30 basis and1.5ZnO denominator remain unresolved,not normalized. No Tg,ambiguous Tcc,enthalpy or neatPBAT thermal value imported;no mechanical-statistic transfer or raw curve reconstruction.",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained officialPDF p1license,p3recipe,p5methods,p7-9Table4/Figures3-4 and identical EuropePMC XML. Table header units absent;same-document methods/axes support Celsius. No raw curve analysis or latest-notice completeness certification.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    }
+  },
+  {
+    "id": "refprop_mtibe2022_pbs_pbat_lignin5_zno_thermal_degradation_rate_peak_temperature",
+    "version": "1.0.0",
+    "material_state_id": "state_mtibe2022_pbs_pbat_lignin5_zno_tga_single_major_loss",
+    "quantity": "thermal_degradation_rate_peak_temperature",
+    "quantity_dimension": "temperature",
+    "source_property_label": "Tmax",
+    "reported_value": {
+      "kind": "scalar",
+      "number": "394.5",
+      "value_text": "394.5",
+      "unit_code": "degC",
+      "unit_text": "°C"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "not_stated",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Selected Table4 Tmax cell. Central aggregation,uncertainty and contributing n unspecified. Celsius unit context comes from the same article methods/axes/prose,not the table header;no curve refit or temperature conversion.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Separate numerical ambient test temperature unreported;scanned temperature program is kept separately,not filled from mechanical25°C."
+      },
+      "test_standard": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "No thermal standard/edition independently assigned;ASTM D638 belongs to tensile method."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "PerkinElmer thermogravimetric analyser,model unspecified;source Tmax associated with DTG/single major weight-loss event,not scan maximum or onset.",
+        "evidence": [
+          {
+            "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+            "locator": "PDF p5 section2.6.3;p7-8section3.3/Figure3/Table4",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Differentiation,smoothing/baseline and precise peak-picking implementation unknown."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Thermal sampling orientation unreported."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Thermal-piece RH,equilibration and storage unreported;no mechanical48h conditioning transfer."
+      },
+      "loading_rate": {
+        "status": "not_applicable",
+        "text": null,
+        "evidence": [],
+        "notes": "Mechanical loading rate is not the thermal scan heating rate."
+      },
+      "additional_conditions": [
+        {
+          "name": "thermal_scan_program",
+          "fact": {
+            "status": "reported",
+            "text": "Room temperature to900°C at10°C/min under nitrogen",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5 section2.6.3;p7-8section3.3/Figure3/Table4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Temperature coordinates and ramp are scan settings,not ambient temperature,conditioning or an operating envelope."
+          }
+        },
+        {
+          "name": "heating_rate",
+          "fact": {
+            "status": "reported",
+            "text": "10°C/min",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5 section2.6.3;p7-8section3.3/Figure3/Table4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Source heating rate;cooling rate is not inferred."
+          }
+        },
+        {
+          "name": "test_atmosphere",
+          "fact": {
+            "status": "reported",
+            "text": "Nitrogen",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5 section2.6.3;p7-8section3.3/Figure3/Table4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": null
+          }
+        },
+        {
+          "name": "gas_flow",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "TGA numerical gas flow not reported;DSC25mL/min not transferred."
+          }
+        },
+        {
+          "name": "sample_mass",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Selected thermal sample mass unreported."
+          }
+        },
+        {
+          "name": "pan_and_calibration",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Pan,baseline calibration and traceability details unreported."
+          }
+        },
+        {
+          "name": "independent_batches",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Independent batch count and cross-method physical pairing unconfirmed."
+          }
+        },
+        {
+          "name": "source_unit_context",
+          "fact": {
+            "status": "reported",
+            "text": "°C supported by same-article method and figure axes;Table4 header has no printed unit.",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5 section2.6.3 andp8Figure3 temperature axis",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Values are direct Table4 literals,not graph digitization;not falsely attributed to a printed table-header unit."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "not_stated",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "uncertainty_note": "No selected-cell uncertainty or statistical estimator reported;not zero dispersion,no SD/SE/CI or mechanical plus-minus transfer.",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "Selected thermal-cell contributing measurements/specimens and independent batches unknown.",
+      "source_statement": "Thermal methods give no selected-cell n;mechanical five specimens and DSC cycle sequence are not statistical counts for this result.",
+      "evidence": []
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "PerkinElmer thermogravimetric analyser,model unspecified;source Tmax associated with DTG/single major weight-loss event,not scan maximum or onset. Room temperature to900°C at10°C/min under nitrogen. Source cell transcribed,not recomputed;exact extraction algorithm and aggregation unknown.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+          "locator": "PDF p5 section2.6.3;p7-8section3.3/Figure3/Table4",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [
+      {
+        "description": "Table4 temperature-column headers omit units;Celsius context is supplied by same-article methods,axes and prose.",
+        "disposition": "Retain direct numerical literal and explicit unit provenance;do not claim a printed header unit or digitize/refit curves.",
+        "evidence": [
+          {
+            "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+            "locator": "PDF p8Table4 (PBS-PBAT (70/30)/(lignin) (95/5)) Tmax;PDF p5 section2.6.3 andp8Figure3 temperature axis",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      }
+    ],
+    "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+    "evidence": [
+      {
+        "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+        "locator": "PDF p8Table4 (PBS-PBAT (70/30)/(lignin) (95/5)) Tmax",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+        "locator": "PDF p5 section2.6.3 andp8Figure3 temperature axis",
+        "supports": [
+          "method",
+          "condition"
+        ]
+      }
+    ],
+    "source_document": {
+      "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+      "revision": "Reacquired official PDF byte-identical to retained version;latest revision/notices unverified",
+      "inspected_on": "2026-11-11",
+      "sha256": "fa72f3441329d8db6348926906817ebac7b3bd7077a90e836f75f8ecdb087287",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained officialPDF p1license,p3recipe,p5methods,p7-9Table4/Figures3-4 and identical EuropePMC XML. Table header units absent;same-document methods/axes support Celsius. No raw curve analysis or latest-notice completeness certification.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Source-qualified (PBS-PBAT (70/30)/(lignin) (95/5)) Tmax thermal coordinate. Not an operating/service limit or independent batch. Centre,uncertainty,n,thermal sample mass/geometry,conditioning,calibration and original peak extraction unknown. Recipe70/30 basis and1.5ZnO denominator remain unresolved,not normalized. No Tg,ambiguous Tcc,enthalpy or neatPBAT thermal value imported;no mechanical-statistic transfer or raw curve reconstruction.",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained officialPDF p1license,p3recipe,p5methods,p7-9Table4/Figures3-4 and identical EuropePMC XML. Table header units absent;same-document methods/axes support Celsius. No raw curve analysis or latest-notice completeness certification.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "degradation_peak_ordinal": {
+      "status": "not_reported_in_inspected_source",
+      "value": null,
+      "evidence": [
+        {
+          "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+          "locator": "PDF p8Table4 (PBS-PBAT (70/30)/(lignin) (95/5)) Tmax;PDF p7-8section3.3/Figure3b",
+          "supports": [
+            "condition"
+          ]
+        }
+      ],
+      "notes": "Source labels the selected single-major-event coordinate Tmax without a numbered peak. No ordinal1 or rank inferred;minor events are not denied."
+    }
+  },
+  {
+    "id": "refprop_mtibe2022_pbs_pbat_lignin5_zno_melting_peak_temperature",
+    "version": "1.0.0",
+    "material_state_id": "state_mtibe2022_pbs_pbat_lignin5_zno_dsc_second_heating",
+    "quantity": "melting_peak_temperature",
+    "quantity_dimension": "temperature",
+    "source_property_label": "Tm",
+    "reported_value": {
+      "kind": "scalar",
+      "number": "115.7",
+      "value_text": "115.7",
+      "unit_code": "degC",
+      "unit_text": "°C"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "not_stated",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Selected Table4 Tm cell. Central aggregation,uncertainty and contributing n unspecified. Celsius unit context comes from the same article methods/axes/prose,not the table header;no curve refit or temperature conversion.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Separate numerical ambient test temperature unreported;scanned temperature program is kept separately,not filled from mechanical25°C."
+      },
+      "test_standard": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "No thermal standard/edition independently assigned;ASTM D638 belongs to tensile method."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "TA Instruments DSC-Q2000;source Tm in second-heating melting endotherm context,not onset/endset or cooling peak.",
+        "evidence": [
+          {
+            "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+            "locator": "PDF p5section2.6.4;p8-9section3.3/Figure4/Table4",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Differentiation,smoothing/baseline and precise peak-picking implementation unknown."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Thermal sampling orientation unreported."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Thermal-piece RH,equilibration and storage unreported;no mechanical48h conditioning transfer."
+      },
+      "loading_rate": {
+        "status": "not_applicable",
+        "text": null,
+        "evidence": [],
+        "notes": "Mechanical loading rate is not the thermal scan heating rate."
+      },
+      "additional_conditions": [
+        {
+          "name": "thermal_scan_program",
+          "fact": {
+            "status": "reported",
+            "text": "Source states two cycles;listed sequence:heat−60to200°C,coolto−60°C,heatto200°C;selected Tm from second heating",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5section2.6.4;p8-9section3.3/Figure4/Table4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Temperature coordinates and ramp are scan settings,not ambient temperature,conditioning or an operating envelope."
+          }
+        },
+        {
+          "name": "heating_rate",
+          "fact": {
+            "status": "reported",
+            "text": "10°C/min",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5section2.6.4;p8-9section3.3/Figure4/Table4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Source heating rate;cooling rate is not inferred."
+          }
+        },
+        {
+          "name": "test_atmosphere",
+          "fact": {
+            "status": "reported",
+            "text": "Nitrogen",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5section2.6.4;p8-9section3.3/Figure4/Table4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": null
+          }
+        },
+        {
+          "name": "gas_flow",
+          "fact": {
+            "status": "reported",
+            "text": "25mL/min",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5section2.6.4;p8-9section3.3/Figure4/Table4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "DSC-specific source setting,not TGA flow."
+          }
+        },
+        {
+          "name": "sample_mass",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Selected thermal sample mass unreported."
+          }
+        },
+        {
+          "name": "pan_and_calibration",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Pan,baseline calibration and traceability details unreported."
+          }
+        },
+        {
+          "name": "independent_batches",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Independent batch count and cross-method physical pairing unconfirmed."
+          }
+        },
+        {
+          "name": "source_unit_context",
+          "fact": {
+            "status": "reported",
+            "text": "°C supported by same-article method and figure axes;Table4 header has no printed unit.",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5section2.6.4,p8section3.3 explicitly115C andp9Figure4 temperature axes",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Values are direct Table4 literals,not graph digitization;not falsely attributed to a printed table-header unit."
+          }
+        },
+        {
+          "name": "selected_scan",
+          "fact": {
+            "status": "reported",
+            "text": "Second heating",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5section2.6.4;p8-9section3.3/Figure4/Table4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": null
+          }
+        },
+        {
+          "name": "cooling_rate",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Cooling rate not separately stated;do not infer−10°C/min."
+          }
+        },
+        {
+          "name": "cycle_count_scope",
+          "fact": {
+            "status": "reported",
+            "text": "Source wording:two cycles;listed heat/cool/reheat sequence retained",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5section2.6.4;p8-9section3.3/Figure4/Table4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Not two independent specimens,n2 or a manufactured further cooling stage."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "not_stated",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "uncertainty_note": "No selected-cell uncertainty or statistical estimator reported;not zero dispersion,no SD/SE/CI or mechanical plus-minus transfer.",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "Selected thermal-cell contributing measurements/specimens and independent batches unknown.",
+      "source_statement": "Thermal methods give no selected-cell n;mechanical five specimens and DSC cycle sequence are not statistical counts for this result.",
+      "evidence": []
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "TA Instruments DSC-Q2000;source Tm in second-heating melting endotherm context,not onset/endset or cooling peak. Source states two cycles;listed sequence:heat−60to200°C,coolto−60°C,heatto200°C;selected Tm from second heating. Source cell transcribed,not recomputed;exact extraction algorithm and aggregation unknown.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+          "locator": "PDF p5section2.6.4;p8-9section3.3/Figure4/Table4",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [
+      {
+        "description": "Table4 temperature-column headers omit units;Celsius context is supplied by same-article methods,axes and prose.",
+        "disposition": "Retain direct numerical literal and explicit unit provenance;do not claim a printed header unit or digitize/refit curves.",
+        "evidence": [
+          {
+            "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+            "locator": "PDF p8Table4 (PBS-PBAT (70/30)/(lignin) (95/5)) Tm;PDF p5section2.6.4,p8section3.3 explicitly115C andp9Figure4 temperature axes",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      }
+    ],
+    "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+    "evidence": [
+      {
+        "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+        "locator": "PDF p8Table4 (PBS-PBAT (70/30)/(lignin) (95/5)) Tm",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+        "locator": "PDF p5section2.6.4,p8section3.3 explicitly115C andp9Figure4 temperature axes",
+        "supports": [
+          "method",
+          "condition"
+        ]
+      }
+    ],
+    "source_document": {
+      "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+      "revision": "Reacquired official PDF byte-identical to retained version;latest revision/notices unverified",
+      "inspected_on": "2026-11-11",
+      "sha256": "fa72f3441329d8db6348926906817ebac7b3bd7077a90e836f75f8ecdb087287",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained officialPDF p1license,p3recipe,p5methods,p7-9Table4/Figures3-4 and identical EuropePMC XML. Table header units absent;same-document methods/axes support Celsius. No raw curve analysis or latest-notice completeness certification.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Source-qualified (PBS-PBAT (70/30)/(lignin) (95/5)) Tm thermal coordinate. Not an operating/service limit or independent batch. Centre,uncertainty,n,thermal sample mass/geometry,conditioning,calibration and original peak extraction unknown. Recipe70/30 basis and1.5ZnO denominator remain unresolved,not normalized. No Tg,ambiguous Tcc,enthalpy or neatPBAT thermal value imported;no mechanical-statistic transfer or raw curve reconstruction.",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained officialPDF p1license,p3recipe,p5methods,p7-9Table4/Figures3-4 and identical EuropePMC XML. Table header units absent;same-document methods/axes support Celsius. No raw curve analysis or latest-notice completeness certification.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    }
+  },
+  {
+    "id": "refprop_mtibe2022_pbs_pbat_lignin10_zno_thermal_degradation_rate_peak_temperature",
+    "version": "1.0.0",
+    "material_state_id": "state_mtibe2022_pbs_pbat_lignin10_zno_tga_single_major_loss",
+    "quantity": "thermal_degradation_rate_peak_temperature",
+    "quantity_dimension": "temperature",
+    "source_property_label": "Tmax",
+    "reported_value": {
+      "kind": "scalar",
+      "number": "394.7",
+      "value_text": "394.7",
+      "unit_code": "degC",
+      "unit_text": "°C"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "not_stated",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Selected Table4 Tmax cell. Central aggregation,uncertainty and contributing n unspecified. Celsius unit context comes from the same article methods/axes/prose,not the table header;no curve refit or temperature conversion.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Separate numerical ambient test temperature unreported;scanned temperature program is kept separately,not filled from mechanical25°C."
+      },
+      "test_standard": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "No thermal standard/edition independently assigned;ASTM D638 belongs to tensile method."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "PerkinElmer thermogravimetric analyser,model unspecified;source Tmax associated with DTG/single major weight-loss event,not scan maximum or onset.",
+        "evidence": [
+          {
+            "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+            "locator": "PDF p5 section2.6.3;p7-8section3.3/Figure3/Table4",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Differentiation,smoothing/baseline and precise peak-picking implementation unknown."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Thermal sampling orientation unreported."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Thermal-piece RH,equilibration and storage unreported;no mechanical48h conditioning transfer."
+      },
+      "loading_rate": {
+        "status": "not_applicable",
+        "text": null,
+        "evidence": [],
+        "notes": "Mechanical loading rate is not the thermal scan heating rate."
+      },
+      "additional_conditions": [
+        {
+          "name": "thermal_scan_program",
+          "fact": {
+            "status": "reported",
+            "text": "Room temperature to900°C at10°C/min under nitrogen",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5 section2.6.3;p7-8section3.3/Figure3/Table4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Temperature coordinates and ramp are scan settings,not ambient temperature,conditioning or an operating envelope."
+          }
+        },
+        {
+          "name": "heating_rate",
+          "fact": {
+            "status": "reported",
+            "text": "10°C/min",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5 section2.6.3;p7-8section3.3/Figure3/Table4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Source heating rate;cooling rate is not inferred."
+          }
+        },
+        {
+          "name": "test_atmosphere",
+          "fact": {
+            "status": "reported",
+            "text": "Nitrogen",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5 section2.6.3;p7-8section3.3/Figure3/Table4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": null
+          }
+        },
+        {
+          "name": "gas_flow",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "TGA numerical gas flow not reported;DSC25mL/min not transferred."
+          }
+        },
+        {
+          "name": "sample_mass",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Selected thermal sample mass unreported."
+          }
+        },
+        {
+          "name": "pan_and_calibration",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Pan,baseline calibration and traceability details unreported."
+          }
+        },
+        {
+          "name": "independent_batches",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Independent batch count and cross-method physical pairing unconfirmed."
+          }
+        },
+        {
+          "name": "source_unit_context",
+          "fact": {
+            "status": "reported",
+            "text": "°C supported by same-article method and figure axes;Table4 header has no printed unit.",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5 section2.6.3 andp8Figure3 temperature axis",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Values are direct Table4 literals,not graph digitization;not falsely attributed to a printed table-header unit."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "not_stated",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "uncertainty_note": "No selected-cell uncertainty or statistical estimator reported;not zero dispersion,no SD/SE/CI or mechanical plus-minus transfer.",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "Selected thermal-cell contributing measurements/specimens and independent batches unknown.",
+      "source_statement": "Thermal methods give no selected-cell n;mechanical five specimens and DSC cycle sequence are not statistical counts for this result.",
+      "evidence": []
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "PerkinElmer thermogravimetric analyser,model unspecified;source Tmax associated with DTG/single major weight-loss event,not scan maximum or onset. Room temperature to900°C at10°C/min under nitrogen. Source cell transcribed,not recomputed;exact extraction algorithm and aggregation unknown.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+          "locator": "PDF p5 section2.6.3;p7-8section3.3/Figure3/Table4",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [
+      {
+        "description": "Table4 temperature-column headers omit units;Celsius context is supplied by same-article methods,axes and prose.",
+        "disposition": "Retain direct numerical literal and explicit unit provenance;do not claim a printed header unit or digitize/refit curves.",
+        "evidence": [
+          {
+            "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+            "locator": "PDF p8Table4 (PBS-PBAT 70/30)/(lignin) (90/10)) Tmax;PDF p5 section2.6.3 andp8Figure3 temperature axis",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      }
+    ],
+    "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+    "evidence": [
+      {
+        "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+        "locator": "PDF p8Table4 (PBS-PBAT 70/30)/(lignin) (90/10)) Tmax",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+        "locator": "PDF p5 section2.6.3 andp8Figure3 temperature axis",
+        "supports": [
+          "method",
+          "condition"
+        ]
+      }
+    ],
+    "source_document": {
+      "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+      "revision": "Reacquired official PDF byte-identical to retained version;latest revision/notices unverified",
+      "inspected_on": "2026-11-11",
+      "sha256": "fa72f3441329d8db6348926906817ebac7b3bd7077a90e836f75f8ecdb087287",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained officialPDF p1license,p3recipe,p5methods,p7-9Table4/Figures3-4 and identical EuropePMC XML. Table header units absent;same-document methods/axes support Celsius. No raw curve analysis or latest-notice completeness certification.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Source-qualified (PBS-PBAT 70/30)/(lignin) (90/10)) Tmax thermal coordinate. Not an operating/service limit or independent batch. Centre,uncertainty,n,thermal sample mass/geometry,conditioning,calibration and original peak extraction unknown. Recipe70/30 basis and1.5ZnO denominator remain unresolved,not normalized. No Tg,ambiguous Tcc,enthalpy or neatPBAT thermal value imported;no mechanical-statistic transfer or raw curve reconstruction.",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained officialPDF p1license,p3recipe,p5methods,p7-9Table4/Figures3-4 and identical EuropePMC XML. Table header units absent;same-document methods/axes support Celsius. No raw curve analysis or latest-notice completeness certification.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "degradation_peak_ordinal": {
+      "status": "not_reported_in_inspected_source",
+      "value": null,
+      "evidence": [
+        {
+          "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+          "locator": "PDF p8Table4 (PBS-PBAT 70/30)/(lignin) (90/10)) Tmax;PDF p7-8section3.3/Figure3b",
+          "supports": [
+            "condition"
+          ]
+        }
+      ],
+      "notes": "Source labels the selected single-major-event coordinate Tmax without a numbered peak. No ordinal1 or rank inferred;minor events are not denied."
+    }
+  },
+  {
+    "id": "refprop_mtibe2022_pbs_pbat_lignin10_zno_melting_peak_temperature",
+    "version": "1.0.0",
+    "material_state_id": "state_mtibe2022_pbs_pbat_lignin10_zno_dsc_second_heating",
+    "quantity": "melting_peak_temperature",
+    "quantity_dimension": "temperature",
+    "source_property_label": "Tm",
+    "reported_value": {
+      "kind": "scalar",
+      "number": "115.7",
+      "value_text": "115.7",
+      "unit_code": "degC",
+      "unit_text": "°C"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "not_stated",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Selected Table4 Tm cell. Central aggregation,uncertainty and contributing n unspecified. Celsius unit context comes from the same article methods/axes/prose,not the table header;no curve refit or temperature conversion.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Separate numerical ambient test temperature unreported;scanned temperature program is kept separately,not filled from mechanical25°C."
+      },
+      "test_standard": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "No thermal standard/edition independently assigned;ASTM D638 belongs to tensile method."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "TA Instruments DSC-Q2000;source Tm in second-heating melting endotherm context,not onset/endset or cooling peak.",
+        "evidence": [
+          {
+            "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+            "locator": "PDF p5section2.6.4;p8-9section3.3/Figure4/Table4",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Differentiation,smoothing/baseline and precise peak-picking implementation unknown."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Thermal sampling orientation unreported."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Thermal-piece RH,equilibration and storage unreported;no mechanical48h conditioning transfer."
+      },
+      "loading_rate": {
+        "status": "not_applicable",
+        "text": null,
+        "evidence": [],
+        "notes": "Mechanical loading rate is not the thermal scan heating rate."
+      },
+      "additional_conditions": [
+        {
+          "name": "thermal_scan_program",
+          "fact": {
+            "status": "reported",
+            "text": "Source states two cycles;listed sequence:heat−60to200°C,coolto−60°C,heatto200°C;selected Tm from second heating",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5section2.6.4;p8-9section3.3/Figure4/Table4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Temperature coordinates and ramp are scan settings,not ambient temperature,conditioning or an operating envelope."
+          }
+        },
+        {
+          "name": "heating_rate",
+          "fact": {
+            "status": "reported",
+            "text": "10°C/min",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5section2.6.4;p8-9section3.3/Figure4/Table4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Source heating rate;cooling rate is not inferred."
+          }
+        },
+        {
+          "name": "test_atmosphere",
+          "fact": {
+            "status": "reported",
+            "text": "Nitrogen",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5section2.6.4;p8-9section3.3/Figure4/Table4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": null
+          }
+        },
+        {
+          "name": "gas_flow",
+          "fact": {
+            "status": "reported",
+            "text": "25mL/min",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5section2.6.4;p8-9section3.3/Figure4/Table4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "DSC-specific source setting,not TGA flow."
+          }
+        },
+        {
+          "name": "sample_mass",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Selected thermal sample mass unreported."
+          }
+        },
+        {
+          "name": "pan_and_calibration",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Pan,baseline calibration and traceability details unreported."
+          }
+        },
+        {
+          "name": "independent_batches",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Independent batch count and cross-method physical pairing unconfirmed."
+          }
+        },
+        {
+          "name": "source_unit_context",
+          "fact": {
+            "status": "reported",
+            "text": "°C supported by same-article method and figure axes;Table4 header has no printed unit.",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5section2.6.4,p8section3.3 explicitly115C andp9Figure4 temperature axes",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Values are direct Table4 literals,not graph digitization;not falsely attributed to a printed table-header unit."
+          }
+        },
+        {
+          "name": "selected_scan",
+          "fact": {
+            "status": "reported",
+            "text": "Second heating",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5section2.6.4;p8-9section3.3/Figure4/Table4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": null
+          }
+        },
+        {
+          "name": "cooling_rate",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Cooling rate not separately stated;do not infer−10°C/min."
+          }
+        },
+        {
+          "name": "cycle_count_scope",
+          "fact": {
+            "status": "reported",
+            "text": "Source wording:two cycles;listed heat/cool/reheat sequence retained",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5section2.6.4;p8-9section3.3/Figure4/Table4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Not two independent specimens,n2 or a manufactured further cooling stage."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "not_stated",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "uncertainty_note": "No selected-cell uncertainty or statistical estimator reported;not zero dispersion,no SD/SE/CI or mechanical plus-minus transfer.",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "Selected thermal-cell contributing measurements/specimens and independent batches unknown.",
+      "source_statement": "Thermal methods give no selected-cell n;mechanical five specimens and DSC cycle sequence are not statistical counts for this result.",
+      "evidence": []
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "TA Instruments DSC-Q2000;source Tm in second-heating melting endotherm context,not onset/endset or cooling peak. Source states two cycles;listed sequence:heat−60to200°C,coolto−60°C,heatto200°C;selected Tm from second heating. Source cell transcribed,not recomputed;exact extraction algorithm and aggregation unknown.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+          "locator": "PDF p5section2.6.4;p8-9section3.3/Figure4/Table4",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [
+      {
+        "description": "Table4 temperature-column headers omit units;Celsius context is supplied by same-article methods,axes and prose.",
+        "disposition": "Retain direct numerical literal and explicit unit provenance;do not claim a printed header unit or digitize/refit curves.",
+        "evidence": [
+          {
+            "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+            "locator": "PDF p8Table4 (PBS-PBAT 70/30)/(lignin) (90/10)) Tm;PDF p5section2.6.4,p8section3.3 explicitly115C andp9Figure4 temperature axes",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      }
+    ],
+    "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+    "evidence": [
+      {
+        "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+        "locator": "PDF p8Table4 (PBS-PBAT 70/30)/(lignin) (90/10)) Tm",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+        "locator": "PDF p5section2.6.4,p8section3.3 explicitly115C andp9Figure4 temperature axes",
+        "supports": [
+          "method",
+          "condition"
+        ]
+      }
+    ],
+    "source_document": {
+      "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+      "revision": "Reacquired official PDF byte-identical to retained version;latest revision/notices unverified",
+      "inspected_on": "2026-11-11",
+      "sha256": "fa72f3441329d8db6348926906817ebac7b3bd7077a90e836f75f8ecdb087287",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained officialPDF p1license,p3recipe,p5methods,p7-9Table4/Figures3-4 and identical EuropePMC XML. Table header units absent;same-document methods/axes support Celsius. No raw curve analysis or latest-notice completeness certification.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Source-qualified (PBS-PBAT 70/30)/(lignin) (90/10)) Tm thermal coordinate. Not an operating/service limit or independent batch. Centre,uncertainty,n,thermal sample mass/geometry,conditioning,calibration and original peak extraction unknown. Recipe70/30 basis and1.5ZnO denominator remain unresolved,not normalized. No Tg,ambiguous Tcc,enthalpy or neatPBAT thermal value imported;no mechanical-statistic transfer or raw curve reconstruction.",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained officialPDF p1license,p3recipe,p5methods,p7-9Table4/Figures3-4 and identical EuropePMC XML. Table header units absent;same-document methods/axes support Celsius. No raw curve analysis or latest-notice completeness certification.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    }
+  },
+  {
+    "id": "refprop_mtibe2022_pbs_pbat_lignin15_zno_thermal_degradation_rate_peak_temperature",
+    "version": "1.0.0",
+    "material_state_id": "state_mtibe2022_pbs_pbat_lignin15_zno_tga_single_major_loss",
+    "quantity": "thermal_degradation_rate_peak_temperature",
+    "quantity_dimension": "temperature",
+    "source_property_label": "Tmax",
+    "reported_value": {
+      "kind": "scalar",
+      "number": "398.6",
+      "value_text": "398.6",
+      "unit_code": "degC",
+      "unit_text": "°C"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "not_stated",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Selected Table4 Tmax cell. Central aggregation,uncertainty and contributing n unspecified. Celsius unit context comes from the same article methods/axes/prose,not the table header;no curve refit or temperature conversion.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Separate numerical ambient test temperature unreported;scanned temperature program is kept separately,not filled from mechanical25°C."
+      },
+      "test_standard": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "No thermal standard/edition independently assigned;ASTM D638 belongs to tensile method."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "PerkinElmer thermogravimetric analyser,model unspecified;source Tmax associated with DTG/single major weight-loss event,not scan maximum or onset.",
+        "evidence": [
+          {
+            "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+            "locator": "PDF p5 section2.6.3;p7-8section3.3/Figure3/Table4",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Differentiation,smoothing/baseline and precise peak-picking implementation unknown."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Thermal sampling orientation unreported."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Thermal-piece RH,equilibration and storage unreported;no mechanical48h conditioning transfer."
+      },
+      "loading_rate": {
+        "status": "not_applicable",
+        "text": null,
+        "evidence": [],
+        "notes": "Mechanical loading rate is not the thermal scan heating rate."
+      },
+      "additional_conditions": [
+        {
+          "name": "thermal_scan_program",
+          "fact": {
+            "status": "reported",
+            "text": "Room temperature to900°C at10°C/min under nitrogen",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5 section2.6.3;p7-8section3.3/Figure3/Table4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Temperature coordinates and ramp are scan settings,not ambient temperature,conditioning or an operating envelope."
+          }
+        },
+        {
+          "name": "heating_rate",
+          "fact": {
+            "status": "reported",
+            "text": "10°C/min",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5 section2.6.3;p7-8section3.3/Figure3/Table4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Source heating rate;cooling rate is not inferred."
+          }
+        },
+        {
+          "name": "test_atmosphere",
+          "fact": {
+            "status": "reported",
+            "text": "Nitrogen",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5 section2.6.3;p7-8section3.3/Figure3/Table4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": null
+          }
+        },
+        {
+          "name": "gas_flow",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "TGA numerical gas flow not reported;DSC25mL/min not transferred."
+          }
+        },
+        {
+          "name": "sample_mass",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Selected thermal sample mass unreported."
+          }
+        },
+        {
+          "name": "pan_and_calibration",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Pan,baseline calibration and traceability details unreported."
+          }
+        },
+        {
+          "name": "independent_batches",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Independent batch count and cross-method physical pairing unconfirmed."
+          }
+        },
+        {
+          "name": "source_unit_context",
+          "fact": {
+            "status": "reported",
+            "text": "°C supported by same-article method and figure axes;Table4 header has no printed unit.",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5 section2.6.3 andp8Figure3 temperature axis",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Values are direct Table4 literals,not graph digitization;not falsely attributed to a printed table-header unit."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "not_stated",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "uncertainty_note": "No selected-cell uncertainty or statistical estimator reported;not zero dispersion,no SD/SE/CI or mechanical plus-minus transfer.",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "Selected thermal-cell contributing measurements/specimens and independent batches unknown.",
+      "source_statement": "Thermal methods give no selected-cell n;mechanical five specimens and DSC cycle sequence are not statistical counts for this result.",
+      "evidence": []
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "PerkinElmer thermogravimetric analyser,model unspecified;source Tmax associated with DTG/single major weight-loss event,not scan maximum or onset. Room temperature to900°C at10°C/min under nitrogen. Source cell transcribed,not recomputed;exact extraction algorithm and aggregation unknown.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+          "locator": "PDF p5 section2.6.3;p7-8section3.3/Figure3/Table4",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [
+      {
+        "description": "Table4 temperature-column headers omit units;Celsius context is supplied by same-article methods,axes and prose.",
+        "disposition": "Retain direct numerical literal and explicit unit provenance;do not claim a printed header unit or digitize/refit curves.",
+        "evidence": [
+          {
+            "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+            "locator": "PDF p8Table4 (PBS-PBAT 70/30)/(lignin) (85/15)) Tmax;PDF p5 section2.6.3 andp8Figure3 temperature axis",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      }
+    ],
+    "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+    "evidence": [
+      {
+        "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+        "locator": "PDF p8Table4 (PBS-PBAT 70/30)/(lignin) (85/15)) Tmax",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+        "locator": "PDF p5 section2.6.3 andp8Figure3 temperature axis",
+        "supports": [
+          "method",
+          "condition"
+        ]
+      }
+    ],
+    "source_document": {
+      "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+      "revision": "Reacquired official PDF byte-identical to retained version;latest revision/notices unverified",
+      "inspected_on": "2026-11-11",
+      "sha256": "fa72f3441329d8db6348926906817ebac7b3bd7077a90e836f75f8ecdb087287",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained officialPDF p1license,p3recipe,p5methods,p7-9Table4/Figures3-4 and identical EuropePMC XML. Table header units absent;same-document methods/axes support Celsius. No raw curve analysis or latest-notice completeness certification.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Source-qualified (PBS-PBAT 70/30)/(lignin) (85/15)) Tmax thermal coordinate. Not an operating/service limit or independent batch. Centre,uncertainty,n,thermal sample mass/geometry,conditioning,calibration and original peak extraction unknown. Recipe70/30 basis and1.5ZnO denominator remain unresolved,not normalized. No Tg,ambiguous Tcc,enthalpy or neatPBAT thermal value imported;no mechanical-statistic transfer or raw curve reconstruction.",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained officialPDF p1license,p3recipe,p5methods,p7-9Table4/Figures3-4 and identical EuropePMC XML. Table header units absent;same-document methods/axes support Celsius. No raw curve analysis or latest-notice completeness certification.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "degradation_peak_ordinal": {
+      "status": "not_reported_in_inspected_source",
+      "value": null,
+      "evidence": [
+        {
+          "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+          "locator": "PDF p8Table4 (PBS-PBAT 70/30)/(lignin) (85/15)) Tmax;PDF p7-8section3.3/Figure3b",
+          "supports": [
+            "condition"
+          ]
+        }
+      ],
+      "notes": "Source labels the selected single-major-event coordinate Tmax without a numbered peak. No ordinal1 or rank inferred;minor events are not denied."
+    }
+  },
+  {
+    "id": "refprop_mtibe2022_pbs_pbat_lignin15_zno_melting_peak_temperature",
+    "version": "1.0.0",
+    "material_state_id": "state_mtibe2022_pbs_pbat_lignin15_zno_dsc_second_heating",
+    "quantity": "melting_peak_temperature",
+    "quantity_dimension": "temperature",
+    "source_property_label": "Tm",
+    "reported_value": {
+      "kind": "scalar",
+      "number": "115.2",
+      "value_text": "115.2",
+      "unit_code": "degC",
+      "unit_text": "°C"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "not_stated",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Selected Table4 Tm cell. Central aggregation,uncertainty and contributing n unspecified. Celsius unit context comes from the same article methods/axes/prose,not the table header;no curve refit or temperature conversion.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Separate numerical ambient test temperature unreported;scanned temperature program is kept separately,not filled from mechanical25°C."
+      },
+      "test_standard": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "No thermal standard/edition independently assigned;ASTM D638 belongs to tensile method."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "TA Instruments DSC-Q2000;source Tm in second-heating melting endotherm context,not onset/endset or cooling peak.",
+        "evidence": [
+          {
+            "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+            "locator": "PDF p5section2.6.4;p8-9section3.3/Figure4/Table4",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Differentiation,smoothing/baseline and precise peak-picking implementation unknown."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Thermal sampling orientation unreported."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Thermal-piece RH,equilibration and storage unreported;no mechanical48h conditioning transfer."
+      },
+      "loading_rate": {
+        "status": "not_applicable",
+        "text": null,
+        "evidence": [],
+        "notes": "Mechanical loading rate is not the thermal scan heating rate."
+      },
+      "additional_conditions": [
+        {
+          "name": "thermal_scan_program",
+          "fact": {
+            "status": "reported",
+            "text": "Source states two cycles;listed sequence:heat−60to200°C,coolto−60°C,heatto200°C;selected Tm from second heating",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5section2.6.4;p8-9section3.3/Figure4/Table4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Temperature coordinates and ramp are scan settings,not ambient temperature,conditioning or an operating envelope."
+          }
+        },
+        {
+          "name": "heating_rate",
+          "fact": {
+            "status": "reported",
+            "text": "10°C/min",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5section2.6.4;p8-9section3.3/Figure4/Table4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Source heating rate;cooling rate is not inferred."
+          }
+        },
+        {
+          "name": "test_atmosphere",
+          "fact": {
+            "status": "reported",
+            "text": "Nitrogen",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5section2.6.4;p8-9section3.3/Figure4/Table4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": null
+          }
+        },
+        {
+          "name": "gas_flow",
+          "fact": {
+            "status": "reported",
+            "text": "25mL/min",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5section2.6.4;p8-9section3.3/Figure4/Table4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "DSC-specific source setting,not TGA flow."
+          }
+        },
+        {
+          "name": "sample_mass",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Selected thermal sample mass unreported."
+          }
+        },
+        {
+          "name": "pan_and_calibration",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Pan,baseline calibration and traceability details unreported."
+          }
+        },
+        {
+          "name": "independent_batches",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Independent batch count and cross-method physical pairing unconfirmed."
+          }
+        },
+        {
+          "name": "source_unit_context",
+          "fact": {
+            "status": "reported",
+            "text": "°C supported by same-article method and figure axes;Table4 header has no printed unit.",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5section2.6.4,p8section3.3 explicitly115C andp9Figure4 temperature axes",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Values are direct Table4 literals,not graph digitization;not falsely attributed to a printed table-header unit."
+          }
+        },
+        {
+          "name": "selected_scan",
+          "fact": {
+            "status": "reported",
+            "text": "Second heating",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5section2.6.4;p8-9section3.3/Figure4/Table4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": null
+          }
+        },
+        {
+          "name": "cooling_rate",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Cooling rate not separately stated;do not infer−10°C/min."
+          }
+        },
+        {
+          "name": "cycle_count_scope",
+          "fact": {
+            "status": "reported",
+            "text": "Source wording:two cycles;listed heat/cool/reheat sequence retained",
+            "evidence": [
+              {
+                "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+                "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+                "locator": "PDF p5section2.6.4;p8-9section3.3/Figure4/Table4",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Not two independent specimens,n2 or a manufactured further cooling stage."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "not_stated",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "uncertainty_note": "No selected-cell uncertainty or statistical estimator reported;not zero dispersion,no SD/SE/CI or mechanical plus-minus transfer.",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "Selected thermal-cell contributing measurements/specimens and independent batches unknown.",
+      "source_statement": "Thermal methods give no selected-cell n;mechanical five specimens and DSC cycle sequence are not statistical counts for this result.",
+      "evidence": []
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "TA Instruments DSC-Q2000;source Tm in second-heating melting endotherm context,not onset/endset or cooling peak. Source states two cycles;listed sequence:heat−60to200°C,coolto−60°C,heatto200°C;selected Tm from second heating. Source cell transcribed,not recomputed;exact extraction algorithm and aggregation unknown.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+          "locator": "PDF p5section2.6.4;p8-9section3.3/Figure4/Table4",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [
+      {
+        "description": "Table4 temperature-column headers omit units;Celsius context is supplied by same-article methods,axes and prose.",
+        "disposition": "Retain direct numerical literal and explicit unit provenance;do not claim a printed header unit or digitize/refit curves.",
+        "evidence": [
+          {
+            "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+            "locator": "PDF p8Table4 (PBS-PBAT 70/30)/(lignin) (85/15)) Tm;PDF p5section2.6.4,p8section3.3 explicitly115C andp9Figure4 temperature axes",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      }
+    ],
+    "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+    "evidence": [
+      {
+        "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+        "locator": "PDF p8Table4 (PBS-PBAT 70/30)/(lignin) (85/15)) Tm",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+        "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+        "locator": "PDF p5section2.6.4,p8section3.3 explicitly115C andp9Figure4 temperature axes",
+        "supports": [
+          "method",
+          "condition"
+        ]
+      }
+    ],
+    "source_document": {
+      "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+      "revision": "Reacquired official PDF byte-identical to retained version;latest revision/notices unverified",
+      "inspected_on": "2026-11-11",
+      "sha256": "fa72f3441329d8db6348926906817ebac7b3bd7077a90e836f75f8ecdb087287",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained officialPDF p1license,p3recipe,p5methods,p7-9Table4/Figures3-4 and identical EuropePMC XML. Table header units absent;same-document methods/axes support Celsius. No raw curve analysis or latest-notice completeness certification.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Source-qualified (PBS-PBAT 70/30)/(lignin) (85/15)) Tm thermal coordinate. Not an operating/service limit or independent batch. Centre,uncertainty,n,thermal sample mass/geometry,conditioning,calibration and original peak extraction unknown. Recipe70/30 basis and1.5ZnO denominator remain unresolved,not normalized. No Tg,ambiguous Tcc,enthalpy or neatPBAT thermal value imported;no mechanical-statistic transfer or raw curve reconstruction.",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained officialPDF p1license,p3recipe,p5methods,p7-9Table4/Figures3-4 and identical EuropePMC XML. Table header units absent;same-document methods/axes support Celsius. No raw curve analysis or latest-notice completeness certification.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    }
+  }
+]

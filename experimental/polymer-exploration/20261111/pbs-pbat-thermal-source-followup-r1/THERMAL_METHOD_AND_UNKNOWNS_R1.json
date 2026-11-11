@@ -1,0 +1,44 @@
+{
+  "TGA": {
+    "instrument": "PerkinElmer;model unspecified",
+    "ramp": "Room temperature to900°C at10°C/min",
+    "atmosphere": "Nitrogen",
+    "gas_flow": null,
+    "sample_mass": null,
+    "pan": null,
+    "replicates": null,
+    "statistical_n": null,
+    "temperature_definition": "Source Tmax corresponds to DTG/single major loss context;actual differentiation,smoothing and picking implementation unknown",
+    "source_numbered_peak_ordinal": null
+  },
+  "DSC": {
+    "instrument": "DSC-Q2000,TA Instruments",
+    "program": "Source states two cycles and lists heat−60to200°C,coolto−60°C,heatto200°C;do not manufacture a further cooling stage",
+    "heating_rate": "10°C/min",
+    "cooling_rate": null,
+    "gas": "Nitrogen",
+    "gas_flow": "25mL/min",
+    "selected_heating": "Second heating",
+    "sample_mass": null,
+    "pan": null,
+    "replicates": null,
+    "statistical_n": null,
+    "melting_definition": "Source-labelled Tm in second-heating melting endotherm context;precise baseline,picking and aggregation unknown"
+  },
+  "shared_unknown": [
+    "thermal specimen physical geometry/cutting history",
+    "thermal-specific humidity and conditioning",
+    "independent batches",
+    "central estimator",
+    "uncertainty",
+    "cross-method physical pairing"
+  ],
+  "prohibited_transfers": [
+    "Mechanical n5,25°C and48h conditioning are not thermal facts",
+    "Two DSC cycles are not n2 or independent specimens",
+    "DSC25mL/min gas flow not assigned toTGA",
+    "Heating10°C/min not assumed as cooling−10°C/min",
+    "General moulded dog-bone dimensions are not thermal specimen geometry",
+    "Source70/30 ratio and1.5ZnO denominator ambiguity not normalized or repaired"
+  ]
+}

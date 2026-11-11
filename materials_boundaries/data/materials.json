@@ -298104,7 +298104,7 @@
       ]
     },
     {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "grade_id": null,
       "aliases": [],
       "state": {
@@ -298225,11 +298225,13 @@
         }
       ],
       "property_ids": [
-        "refprop_mtibe2022_pbs_pbat_lignin10_zno_tensile_modulus"
+        "refprop_mtibe2022_pbs_pbat_lignin10_zno_tensile_modulus",
+        "refprop_mtibe2022_pbs_pbat_lignin10_zno_tensile_yield_strength",
+        "refprop_mtibe2022_pbs_pbat_lignin10_zno_tensile_elongation_at_break"
       ]
     },
     {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "grade_id": null,
       "aliases": [],
       "state": {
@@ -298350,11 +298352,13 @@
         }
       ],
       "property_ids": [
-        "refprop_mtibe2022_pbs_pbat_lignin15_zno_tensile_modulus"
+        "refprop_mtibe2022_pbs_pbat_lignin15_zno_tensile_modulus",
+        "refprop_mtibe2022_pbs_pbat_lignin15_zno_tensile_yield_strength",
+        "refprop_mtibe2022_pbs_pbat_lignin15_zno_tensile_elongation_at_break"
       ]
     },
     {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "grade_id": null,
       "aliases": [],
       "state": {
@@ -298475,7 +298479,9 @@
         }
       ],
       "property_ids": [
-        "refprop_mtibe2022_pbs_pbat_lignin5_zno_tensile_modulus"
+        "refprop_mtibe2022_pbs_pbat_lignin5_zno_tensile_modulus",
+        "refprop_mtibe2022_pbs_pbat_lignin5_zno_tensile_yield_strength",
+        "refprop_mtibe2022_pbs_pbat_lignin5_zno_tensile_elongation_at_break"
       ]
     },
     {
@@ -685531,6 +685537,1508 @@
       "property_ids": [
         "refprop_bianchi2025_nr_5ommt_shore_a_hardness"
       ]
+    },
+    {
+      "id": "state_mtibe2022_pbs_pbat_70_30_tga_single_major_loss",
+      "version": "1.0.0",
+      "identity_id": "mat_mtibe2022_pbs_pbat_70_30",
+      "grade_id": null,
+      "name": "BioPBS FZ91 / Ecoflex C1200 PBS/PBAT 70/30 blend tga_single_major_loss",
+      "names": {
+        "en": "BioPBS FZ91 / Ecoflex C1200 PBS/PBAT 70/30 blend tga_single_major_loss",
+        "zh": "BioPBS FZ91 / Ecoflex C1200 PBS/PBAT 70/30 blend tga_single_major_loss",
+        "ja": "BioPBS FZ91 / Ecoflex C1200 PBS/PBAT 70/30 blend tga_single_major_loss",
+        "de": "BioPBS FZ91 / Ecoflex C1200 PBS/PBAT 70/30 blend tga_single_major_loss"
+      },
+      "aliases": [],
+      "source_designation": "PBS-PBAT (70/30);tga_single_major_loss",
+      "state": {
+        "product_form": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Geometry,mass,cutting and physical origin of the selected thermal portion unspecified;general injection-moulded dog-bone and photocatalysis strips are not assigned as thermal specimen geometry."
+        },
+        "processing": {
+          "status": "reported",
+          "text": "Study-wide preparation:biopolymer drying80°C overnight;TE-30/600-11-40 twin-screw extrusion,L/D40:1,zones120–145°C;pelletization and80°C24h drying;source also describes injection-moulded dog-bones at120–145°C.",
+          "evidence": [
+            {
+              "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+              "locator": "PDF p3section2.3",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "General formulation preparation context only. Actual selected thermal portion/cutting route and physical pairing to dog-bones or other tests unconfirmed;no specimen-specific injection history certified."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Thermal-piece-specific post-processing treatment/history not established;instrument scan program belongs to the property method and is not a confirmed prior cure or service temperature."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Thermal-specific humidity,drying,storage and equilibrated moisture unspecified. Mechanical25°C48h conditioning and general pre-processing drying are not thermal-piece conditioning."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "PBS/PBAT 70/30 from Bio PBS FZ 91 and Eco flex C1200; ratio basis unspecified",
+          "evidence": [
+            {
+              "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+              "locator": "PDF p.3 Tables 1–2 and §2.3",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Specific unfilled PBS/PBAT 70/30 blend from Bio PBS FZ 91 (PTT MCC BIOCHEM) and Eco flex C1200 (BASF). Source ratio basis is not explicitly stated: do not relabel 70/30 as wt/wt, mass fraction or volume fraction. Table 2 unfilled 100/0/0 formulation excludes added lignin and ZnO. Broad polymer category includes this polymer blend; constituent designations are not a finished-blend grade."
+        },
+        "reinforcement": {
+          "status": "reported",
+          "text": "Selected unfilled polymer comparator; no added lignin or ZnO",
+          "evidence": [
+            {
+              "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+              "locator": "PDF p.3 Tables 1–2 and §2.3",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected thermal-piece void fraction unreported;no zero-porosity inference."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Thermal sampling direction and physical relation to moulding/processing axes unspecified;no isotropy claim."
+        }
+      },
+      "source_scope": "Specific unfilled PBS/PBAT 70/30 blend from Bio PBS FZ 91 (PTT MCC BIOCHEM) and Eco flex C1200 (BASF). Source ratio basis is not explicitly stated: do not relabel 70/30 as wt/wt, mass fraction or volume fraction. Table 2 unfilled 100/0/0 formulation excludes added lignin and ZnO. Broad polymer category includes this polymer blend; constituent designations are not a finished-blend grade. Source Table4 tga_single_major_loss context;not a new material or independent physical batch. Recipe and study-wide preparation retained as source context only;thermal geometry,cutting and cross-method physical pairing unknown. Thermal statistics and n unknown;no mechanical n5/25C48h transfer. Source Tmax unnumbered and Tm second-heating context remain distinct from cooling crystallization.",
+      "evidence": [
+        {
+          "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+          "locator": "PDF p.3 Tables 1–2 and §2.3; p.7 Table 3 PBS-PBAT (70/30)",
+          "supports": [
+            "state"
+          ]
+        },
+        {
+          "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+          "locator": "PDF p8Table4 PBS-PBAT (70/30) Tmax;PDF p5 section2.6.3;p7-8section3.3/Figure3/Table4",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_mtibe2022_pbs_pbat_70_30_thermal_degradation_rate_peak_temperature"
+      ],
+      "evaluation_support": "catalog_only"
+    },
+    {
+      "id": "state_mtibe2022_pbs_pbat_70_30_dsc_second_heating",
+      "version": "1.0.0",
+      "identity_id": "mat_mtibe2022_pbs_pbat_70_30",
+      "grade_id": null,
+      "name": "BioPBS FZ91 / Ecoflex C1200 PBS/PBAT 70/30 blend dsc_second_heating",
+      "names": {
+        "en": "BioPBS FZ91 / Ecoflex C1200 PBS/PBAT 70/30 blend dsc_second_heating",
+        "zh": "BioPBS FZ91 / Ecoflex C1200 PBS/PBAT 70/30 blend dsc_second_heating",
+        "ja": "BioPBS FZ91 / Ecoflex C1200 PBS/PBAT 70/30 blend dsc_second_heating",
+        "de": "BioPBS FZ91 / Ecoflex C1200 PBS/PBAT 70/30 blend dsc_second_heating"
+      },
+      "aliases": [],
+      "source_designation": "PBS-PBAT (70/30);dsc_second_heating",
+      "state": {
+        "product_form": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Geometry,mass,cutting and physical origin of the selected thermal portion unspecified;general injection-moulded dog-bone and photocatalysis strips are not assigned as thermal specimen geometry."
+        },
+        "processing": {
+          "status": "reported",
+          "text": "Study-wide preparation:biopolymer drying80°C overnight;TE-30/600-11-40 twin-screw extrusion,L/D40:1,zones120–145°C;pelletization and80°C24h drying;source also describes injection-moulded dog-bones at120–145°C.",
+          "evidence": [
+            {
+              "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+              "locator": "PDF p3section2.3",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "General formulation preparation context only. Actual selected thermal portion/cutting route and physical pairing to dog-bones or other tests unconfirmed;no specimen-specific injection history certified."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Thermal-piece-specific post-processing treatment/history not established;instrument scan program belongs to the property method and is not a confirmed prior cure or service temperature."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Thermal-specific humidity,drying,storage and equilibrated moisture unspecified. Mechanical25°C48h conditioning and general pre-processing drying are not thermal-piece conditioning."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "PBS/PBAT 70/30 from Bio PBS FZ 91 and Eco flex C1200; ratio basis unspecified",
+          "evidence": [
+            {
+              "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+              "locator": "PDF p.3 Tables 1–2 and §2.3",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Specific unfilled PBS/PBAT 70/30 blend from Bio PBS FZ 91 (PTT MCC BIOCHEM) and Eco flex C1200 (BASF). Source ratio basis is not explicitly stated: do not relabel 70/30 as wt/wt, mass fraction or volume fraction. Table 2 unfilled 100/0/0 formulation excludes added lignin and ZnO. Broad polymer category includes this polymer blend; constituent designations are not a finished-blend grade."
+        },
+        "reinforcement": {
+          "status": "reported",
+          "text": "Selected unfilled polymer comparator; no added lignin or ZnO",
+          "evidence": [
+            {
+              "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+              "locator": "PDF p.3 Tables 1–2 and §2.3",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected thermal-piece void fraction unreported;no zero-porosity inference."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Thermal sampling direction and physical relation to moulding/processing axes unspecified;no isotropy claim."
+        }
+      },
+      "source_scope": "Specific unfilled PBS/PBAT 70/30 blend from Bio PBS FZ 91 (PTT MCC BIOCHEM) and Eco flex C1200 (BASF). Source ratio basis is not explicitly stated: do not relabel 70/30 as wt/wt, mass fraction or volume fraction. Table 2 unfilled 100/0/0 formulation excludes added lignin and ZnO. Broad polymer category includes this polymer blend; constituent designations are not a finished-blend grade. Source Table4 dsc_second_heating context;not a new material or independent physical batch. Recipe and study-wide preparation retained as source context only;thermal geometry,cutting and cross-method physical pairing unknown. Thermal statistics and n unknown;no mechanical n5/25C48h transfer. Source Tmax unnumbered and Tm second-heating context remain distinct from cooling crystallization.",
+      "evidence": [
+        {
+          "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+          "locator": "PDF p.3 Tables 1–2 and §2.3; p.7 Table 3 PBS-PBAT (70/30)",
+          "supports": [
+            "state"
+          ]
+        },
+        {
+          "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+          "locator": "PDF p8Table4 PBS-PBAT (70/30) Tm;PDF p5section2.6.4;p8-9section3.3/Figure4/Table4",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_mtibe2022_pbs_pbat_70_30_melting_peak_temperature"
+      ],
+      "evaluation_support": "catalog_only"
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "state": {
+        "product_form": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Geometry,mass,cutting and physical origin of the selected thermal portion unspecified;general injection-moulded dog-bone and photocatalysis strips are not assigned as thermal specimen geometry."
+        },
+        "processing": {
+          "status": "reported",
+          "text": "Study-wide preparation:biopolymer drying80°C overnight;TE-30/600-11-40 twin-screw extrusion,L/D40:1,zones120–145°C;pelletization and80°C24h drying;source also describes injection-moulded dog-bones at120–145°C.",
+          "evidence": [
+            {
+              "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+              "locator": "PDF p3section2.3",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "General formulation preparation context only. Actual selected thermal portion/cutting route and physical pairing to dog-bones or other tests unconfirmed;no specimen-specific injection history certified."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Thermal-piece-specific post-processing treatment/history not established;instrument scan program belongs to the property method and is not a confirmed prior cure or service temperature."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Thermal-specific humidity,drying,storage and equilibrated moisture unspecified. Mechanical25°C48h conditioning and general pre-processing drying are not thermal-piece conditioning."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "evidence": [
+            {
+              "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+              "locator": "PDF p.2 section 2.1; p.3 Tables 1-2 and section 2.3",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "text": "Table 2 (PBS/PBAT)/Lignin/ZnO = 95/5/1.5 as printed; internal PBS/PBAT = 70/30, ratio basis unspecified. Section 2.3 calls the lignosulphonate loading 5 wt.% and ZnO 1.5 wt.%; the Table 2 entries total 101.5 and the ZnO denominator is unspecified. No normalization is performed.",
+          "notes": "Source-qualified composite formulation 95/5/1.5 in Table 2, using a PBS/PBAT 70/30 matrix (Bio PBS FZ 91 and Eco flex C1200), SAPPI lignosulphonate and source-synthesized ZnO. Distinct identity is based on the explicitly different matrix/lignosulphonate formulation 95/5, not supplier, specimen, processing or a nominal grade. The internal PBS/PBAT 70/30 ratio basis is unspecified: do not relabel it as mass, volume or wt/wt. Table 2 entries sum to 101.5; the denominator for the stated 1.5 wt.% ZnO is unspecified. Preserve the printed values without normalization, conversion to a complete mass-fraction formula, or an assumed ZnO basis. Lignin denotes the source lignosulphonate, not a generic pure lignin or the separately cataloged kraft-lignin series. Table 3 abbreviates its row labels by omitting ZnO; linkage to Table 2 and sections 2.3 and 2.6.2 supplies the source-qualified hybrid interpretation."
+        },
+        "reinforcement": {
+          "status": "reported",
+          "evidence": [
+            {
+              "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+              "locator": "PDF p.2 section 2.1; p.3 sections 2.2-2.3 and Table 2",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Source ZnO synthesis is described in section 2.2; no complete final chemical composition, quantitative impurity assay or particle-size distribution is inferred.",
+          "text": "SAPPI lignosulphonate at source-stated 5 wt.% and ZnO nanoparticles at source-stated 1.5 wt.%; retain Table 2 95/5/1.5 without assigning a ZnO denominator."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected thermal-piece void fraction unreported;no zero-porosity inference."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Thermal sampling direction and physical relation to moulding/processing axes unspecified;no isotropy claim."
+        }
+      },
+      "evaluation_support": "catalog_only",
+      "id": "state_mtibe2022_pbs_pbat_lignin5_zno_tga_single_major_loss",
+      "identity_id": "mat_mtibe2022_pbs_pbat_lignin5_zno",
+      "name": "PBS/PBAT-lignosulphonate-ZnO hybrid, 95/5/1.5 (Mtibe 2022) tga_single_major_loss",
+      "names": {
+        "en": "PBS/PBAT-lignosulphonate-ZnO hybrid, 95/5/1.5 (Mtibe 2022) tga_single_major_loss",
+        "zh": "PBS/PBAT-lignosulphonate-ZnO hybrid, 95/5/1.5 (Mtibe 2022) tga_single_major_loss",
+        "ja": "PBS/PBAT-lignosulphonate-ZnO hybrid, 95/5/1.5 (Mtibe 2022) tga_single_major_loss",
+        "de": "PBS/PBAT-lignosulphonate-ZnO hybrid, 95/5/1.5 (Mtibe 2022) tga_single_major_loss"
+      },
+      "source_designation": "(PBS-PBAT (70/30)/(lignin) (95/5));tga_single_major_loss",
+      "source_scope": "Source-qualified composite formulation 95/5/1.5 in Table 2, using a PBS/PBAT 70/30 matrix (Bio PBS FZ 91 and Eco flex C1200), SAPPI lignosulphonate and source-synthesized ZnO. Distinct identity is based on the explicitly different matrix/lignosulphonate formulation 95/5, not supplier, specimen, processing or a nominal grade. The internal PBS/PBAT 70/30 ratio basis is unspecified: do not relabel it as mass, volume or wt/wt. Table 2 entries sum to 101.5; the denominator for the stated 1.5 wt.% ZnO is unspecified. Preserve the printed values without normalization, conversion to a complete mass-fraction formula, or an assumed ZnO basis. Lignin denotes the source lignosulphonate, not a generic pure lignin or the separately cataloged kraft-lignin series. Table 3 abbreviates its row labels by omitting ZnO; linkage to Table 2 and sections 2.3 and 2.6.2 supplies the source-qualified hybrid interpretation. Source Table4 tga_single_major_loss context;not a new material or independent physical batch. Recipe and study-wide preparation retained as source context only;thermal geometry,cutting and cross-method physical pairing unknown. Thermal statistics and n unknown;no mechanical n5/25C48h transfer. Source Tmax unnumbered and Tm second-heating context remain distinct from cooling crystallization.",
+      "evidence": [
+        {
+          "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+          "locator": "PDF p.3 Table 2, 95/5/1.5 row; sections 2.1-2.3; p.5 section 2.6.2; pp.6-7 section 3.2 and Table 3",
+          "supports": [
+            "state"
+          ]
+        },
+        {
+          "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+          "locator": "PDF p8Table4 (PBS-PBAT (70/30)/(lignin) (95/5)) Tmax;PDF p5 section2.6.3;p7-8section3.3/Figure3/Table4",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_mtibe2022_pbs_pbat_lignin5_zno_thermal_degradation_rate_peak_temperature"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "state": {
+        "product_form": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Geometry,mass,cutting and physical origin of the selected thermal portion unspecified;general injection-moulded dog-bone and photocatalysis strips are not assigned as thermal specimen geometry."
+        },
+        "processing": {
+          "status": "reported",
+          "text": "Study-wide preparation:biopolymer drying80°C overnight;TE-30/600-11-40 twin-screw extrusion,L/D40:1,zones120–145°C;pelletization and80°C24h drying;source also describes injection-moulded dog-bones at120–145°C.",
+          "evidence": [
+            {
+              "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+              "locator": "PDF p3section2.3",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "General formulation preparation context only. Actual selected thermal portion/cutting route and physical pairing to dog-bones or other tests unconfirmed;no specimen-specific injection history certified."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Thermal-piece-specific post-processing treatment/history not established;instrument scan program belongs to the property method and is not a confirmed prior cure or service temperature."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Thermal-specific humidity,drying,storage and equilibrated moisture unspecified. Mechanical25°C48h conditioning and general pre-processing drying are not thermal-piece conditioning."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "evidence": [
+            {
+              "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+              "locator": "PDF p.2 section 2.1; p.3 Tables 1-2 and section 2.3",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "text": "Table 2 (PBS/PBAT)/Lignin/ZnO = 95/5/1.5 as printed; internal PBS/PBAT = 70/30, ratio basis unspecified. Section 2.3 calls the lignosulphonate loading 5 wt.% and ZnO 1.5 wt.%; the Table 2 entries total 101.5 and the ZnO denominator is unspecified. No normalization is performed.",
+          "notes": "Source-qualified composite formulation 95/5/1.5 in Table 2, using a PBS/PBAT 70/30 matrix (Bio PBS FZ 91 and Eco flex C1200), SAPPI lignosulphonate and source-synthesized ZnO. Distinct identity is based on the explicitly different matrix/lignosulphonate formulation 95/5, not supplier, specimen, processing or a nominal grade. The internal PBS/PBAT 70/30 ratio basis is unspecified: do not relabel it as mass, volume or wt/wt. Table 2 entries sum to 101.5; the denominator for the stated 1.5 wt.% ZnO is unspecified. Preserve the printed values without normalization, conversion to a complete mass-fraction formula, or an assumed ZnO basis. Lignin denotes the source lignosulphonate, not a generic pure lignin or the separately cataloged kraft-lignin series. Table 3 abbreviates its row labels by omitting ZnO; linkage to Table 2 and sections 2.3 and 2.6.2 supplies the source-qualified hybrid interpretation."
+        },
+        "reinforcement": {
+          "status": "reported",
+          "evidence": [
+            {
+              "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+              "locator": "PDF p.2 section 2.1; p.3 sections 2.2-2.3 and Table 2",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Source ZnO synthesis is described in section 2.2; no complete final chemical composition, quantitative impurity assay or particle-size distribution is inferred.",
+          "text": "SAPPI lignosulphonate at source-stated 5 wt.% and ZnO nanoparticles at source-stated 1.5 wt.%; retain Table 2 95/5/1.5 without assigning a ZnO denominator."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected thermal-piece void fraction unreported;no zero-porosity inference."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Thermal sampling direction and physical relation to moulding/processing axes unspecified;no isotropy claim."
+        }
+      },
+      "evaluation_support": "catalog_only",
+      "id": "state_mtibe2022_pbs_pbat_lignin5_zno_dsc_second_heating",
+      "identity_id": "mat_mtibe2022_pbs_pbat_lignin5_zno",
+      "name": "PBS/PBAT-lignosulphonate-ZnO hybrid, 95/5/1.5 (Mtibe 2022) dsc_second_heating",
+      "names": {
+        "en": "PBS/PBAT-lignosulphonate-ZnO hybrid, 95/5/1.5 (Mtibe 2022) dsc_second_heating",
+        "zh": "PBS/PBAT-lignosulphonate-ZnO hybrid, 95/5/1.5 (Mtibe 2022) dsc_second_heating",
+        "ja": "PBS/PBAT-lignosulphonate-ZnO hybrid, 95/5/1.5 (Mtibe 2022) dsc_second_heating",
+        "de": "PBS/PBAT-lignosulphonate-ZnO hybrid, 95/5/1.5 (Mtibe 2022) dsc_second_heating"
+      },
+      "source_designation": "(PBS-PBAT (70/30)/(lignin) (95/5));dsc_second_heating",
+      "source_scope": "Source-qualified composite formulation 95/5/1.5 in Table 2, using a PBS/PBAT 70/30 matrix (Bio PBS FZ 91 and Eco flex C1200), SAPPI lignosulphonate and source-synthesized ZnO. Distinct identity is based on the explicitly different matrix/lignosulphonate formulation 95/5, not supplier, specimen, processing or a nominal grade. The internal PBS/PBAT 70/30 ratio basis is unspecified: do not relabel it as mass, volume or wt/wt. Table 2 entries sum to 101.5; the denominator for the stated 1.5 wt.% ZnO is unspecified. Preserve the printed values without normalization, conversion to a complete mass-fraction formula, or an assumed ZnO basis. Lignin denotes the source lignosulphonate, not a generic pure lignin or the separately cataloged kraft-lignin series. Table 3 abbreviates its row labels by omitting ZnO; linkage to Table 2 and sections 2.3 and 2.6.2 supplies the source-qualified hybrid interpretation. Source Table4 dsc_second_heating context;not a new material or independent physical batch. Recipe and study-wide preparation retained as source context only;thermal geometry,cutting and cross-method physical pairing unknown. Thermal statistics and n unknown;no mechanical n5/25C48h transfer. Source Tmax unnumbered and Tm second-heating context remain distinct from cooling crystallization.",
+      "evidence": [
+        {
+          "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+          "locator": "PDF p.3 Table 2, 95/5/1.5 row; sections 2.1-2.3; p.5 section 2.6.2; pp.6-7 section 3.2 and Table 3",
+          "supports": [
+            "state"
+          ]
+        },
+        {
+          "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+          "locator": "PDF p8Table4 (PBS-PBAT (70/30)/(lignin) (95/5)) Tm;PDF p5section2.6.4;p8-9section3.3/Figure4/Table4",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_mtibe2022_pbs_pbat_lignin5_zno_melting_peak_temperature"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "state": {
+        "product_form": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Geometry,mass,cutting and physical origin of the selected thermal portion unspecified;general injection-moulded dog-bone and photocatalysis strips are not assigned as thermal specimen geometry."
+        },
+        "processing": {
+          "status": "reported",
+          "text": "Study-wide preparation:biopolymer drying80°C overnight;TE-30/600-11-40 twin-screw extrusion,L/D40:1,zones120–145°C;pelletization and80°C24h drying;source also describes injection-moulded dog-bones at120–145°C.",
+          "evidence": [
+            {
+              "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+              "locator": "PDF p3section2.3",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "General formulation preparation context only. Actual selected thermal portion/cutting route and physical pairing to dog-bones or other tests unconfirmed;no specimen-specific injection history certified."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Thermal-piece-specific post-processing treatment/history not established;instrument scan program belongs to the property method and is not a confirmed prior cure or service temperature."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Thermal-specific humidity,drying,storage and equilibrated moisture unspecified. Mechanical25°C48h conditioning and general pre-processing drying are not thermal-piece conditioning."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "evidence": [
+            {
+              "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+              "locator": "PDF p.2 section 2.1; p.3 Tables 1-2 and section 2.3",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "text": "Table 2 (PBS/PBAT)/Lignin/ZnO = 90/10/1.5 as printed; internal PBS/PBAT = 70/30, ratio basis unspecified. Section 2.3 calls the lignosulphonate loading 10 wt.% and ZnO 1.5 wt.%; the Table 2 entries total 101.5 and the ZnO denominator is unspecified. No normalization is performed.",
+          "notes": "Source-qualified composite formulation 90/10/1.5 in Table 2, using a PBS/PBAT 70/30 matrix (Bio PBS FZ 91 and Eco flex C1200), SAPPI lignosulphonate and source-synthesized ZnO. Distinct identity is based on the explicitly different matrix/lignosulphonate formulation 90/10, not supplier, specimen, processing or a nominal grade. The internal PBS/PBAT 70/30 ratio basis is unspecified: do not relabel it as mass, volume or wt/wt. Table 2 entries sum to 101.5; the denominator for the stated 1.5 wt.% ZnO is unspecified. Preserve the printed values without normalization, conversion to a complete mass-fraction formula, or an assumed ZnO basis. Lignin denotes the source lignosulphonate, not a generic pure lignin or the separately cataloged kraft-lignin series. Table 3 abbreviates its row labels by omitting ZnO; linkage to Table 2 and sections 2.3 and 2.6.2 supplies the source-qualified hybrid interpretation."
+        },
+        "reinforcement": {
+          "status": "reported",
+          "evidence": [
+            {
+              "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+              "locator": "PDF p.2 section 2.1; p.3 sections 2.2-2.3 and Table 2",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Source ZnO synthesis is described in section 2.2; no complete final chemical composition, quantitative impurity assay or particle-size distribution is inferred.",
+          "text": "SAPPI lignosulphonate at source-stated 10 wt.% and ZnO nanoparticles at source-stated 1.5 wt.%; retain Table 2 90/10/1.5 without assigning a ZnO denominator."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected thermal-piece void fraction unreported;no zero-porosity inference."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Thermal sampling direction and physical relation to moulding/processing axes unspecified;no isotropy claim."
+        }
+      },
+      "evaluation_support": "catalog_only",
+      "id": "state_mtibe2022_pbs_pbat_lignin10_zno_tga_single_major_loss",
+      "identity_id": "mat_mtibe2022_pbs_pbat_lignin10_zno",
+      "name": "PBS/PBAT-lignosulphonate-ZnO hybrid, 90/10/1.5 (Mtibe 2022) tga_single_major_loss",
+      "names": {
+        "en": "PBS/PBAT-lignosulphonate-ZnO hybrid, 90/10/1.5 (Mtibe 2022) tga_single_major_loss",
+        "zh": "PBS/PBAT-lignosulphonate-ZnO hybrid, 90/10/1.5 (Mtibe 2022) tga_single_major_loss",
+        "ja": "PBS/PBAT-lignosulphonate-ZnO hybrid, 90/10/1.5 (Mtibe 2022) tga_single_major_loss",
+        "de": "PBS/PBAT-lignosulphonate-ZnO hybrid, 90/10/1.5 (Mtibe 2022) tga_single_major_loss"
+      },
+      "source_designation": "(PBS-PBAT 70/30)/(lignin) (90/10));tga_single_major_loss",
+      "source_scope": "Source-qualified composite formulation 90/10/1.5 in Table 2, using a PBS/PBAT 70/30 matrix (Bio PBS FZ 91 and Eco flex C1200), SAPPI lignosulphonate and source-synthesized ZnO. Distinct identity is based on the explicitly different matrix/lignosulphonate formulation 90/10, not supplier, specimen, processing or a nominal grade. The internal PBS/PBAT 70/30 ratio basis is unspecified: do not relabel it as mass, volume or wt/wt. Table 2 entries sum to 101.5; the denominator for the stated 1.5 wt.% ZnO is unspecified. Preserve the printed values without normalization, conversion to a complete mass-fraction formula, or an assumed ZnO basis. Lignin denotes the source lignosulphonate, not a generic pure lignin or the separately cataloged kraft-lignin series. Table 3 abbreviates its row labels by omitting ZnO; linkage to Table 2 and sections 2.3 and 2.6.2 supplies the source-qualified hybrid interpretation. Source Table4 tga_single_major_loss context;not a new material or independent physical batch. Recipe and study-wide preparation retained as source context only;thermal geometry,cutting and cross-method physical pairing unknown. Thermal statistics and n unknown;no mechanical n5/25C48h transfer. Source Tmax unnumbered and Tm second-heating context remain distinct from cooling crystallization.",
+      "evidence": [
+        {
+          "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+          "locator": "PDF p.3 Table 2, 90/10/1.5 row; sections 2.1-2.3; p.5 section 2.6.2; pp.6-7 section 3.2 and Table 3",
+          "supports": [
+            "state"
+          ]
+        },
+        {
+          "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+          "locator": "PDF p8Table4 (PBS-PBAT 70/30)/(lignin) (90/10)) Tmax;PDF p5 section2.6.3;p7-8section3.3/Figure3/Table4",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_mtibe2022_pbs_pbat_lignin10_zno_thermal_degradation_rate_peak_temperature"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "state": {
+        "product_form": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Geometry,mass,cutting and physical origin of the selected thermal portion unspecified;general injection-moulded dog-bone and photocatalysis strips are not assigned as thermal specimen geometry."
+        },
+        "processing": {
+          "status": "reported",
+          "text": "Study-wide preparation:biopolymer drying80°C overnight;TE-30/600-11-40 twin-screw extrusion,L/D40:1,zones120–145°C;pelletization and80°C24h drying;source also describes injection-moulded dog-bones at120–145°C.",
+          "evidence": [
+            {
+              "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+              "locator": "PDF p3section2.3",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "General formulation preparation context only. Actual selected thermal portion/cutting route and physical pairing to dog-bones or other tests unconfirmed;no specimen-specific injection history certified."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Thermal-piece-specific post-processing treatment/history not established;instrument scan program belongs to the property method and is not a confirmed prior cure or service temperature."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Thermal-specific humidity,drying,storage and equilibrated moisture unspecified. Mechanical25°C48h conditioning and general pre-processing drying are not thermal-piece conditioning."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "evidence": [
+            {
+              "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+              "locator": "PDF p.2 section 2.1; p.3 Tables 1-2 and section 2.3",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "text": "Table 2 (PBS/PBAT)/Lignin/ZnO = 90/10/1.5 as printed; internal PBS/PBAT = 70/30, ratio basis unspecified. Section 2.3 calls the lignosulphonate loading 10 wt.% and ZnO 1.5 wt.%; the Table 2 entries total 101.5 and the ZnO denominator is unspecified. No normalization is performed.",
+          "notes": "Source-qualified composite formulation 90/10/1.5 in Table 2, using a PBS/PBAT 70/30 matrix (Bio PBS FZ 91 and Eco flex C1200), SAPPI lignosulphonate and source-synthesized ZnO. Distinct identity is based on the explicitly different matrix/lignosulphonate formulation 90/10, not supplier, specimen, processing or a nominal grade. The internal PBS/PBAT 70/30 ratio basis is unspecified: do not relabel it as mass, volume or wt/wt. Table 2 entries sum to 101.5; the denominator for the stated 1.5 wt.% ZnO is unspecified. Preserve the printed values without normalization, conversion to a complete mass-fraction formula, or an assumed ZnO basis. Lignin denotes the source lignosulphonate, not a generic pure lignin or the separately cataloged kraft-lignin series. Table 3 abbreviates its row labels by omitting ZnO; linkage to Table 2 and sections 2.3 and 2.6.2 supplies the source-qualified hybrid interpretation."
+        },
+        "reinforcement": {
+          "status": "reported",
+          "evidence": [
+            {
+              "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+              "locator": "PDF p.2 section 2.1; p.3 sections 2.2-2.3 and Table 2",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Source ZnO synthesis is described in section 2.2; no complete final chemical composition, quantitative impurity assay or particle-size distribution is inferred.",
+          "text": "SAPPI lignosulphonate at source-stated 10 wt.% and ZnO nanoparticles at source-stated 1.5 wt.%; retain Table 2 90/10/1.5 without assigning a ZnO denominator."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected thermal-piece void fraction unreported;no zero-porosity inference."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Thermal sampling direction and physical relation to moulding/processing axes unspecified;no isotropy claim."
+        }
+      },
+      "evaluation_support": "catalog_only",
+      "id": "state_mtibe2022_pbs_pbat_lignin10_zno_dsc_second_heating",
+      "identity_id": "mat_mtibe2022_pbs_pbat_lignin10_zno",
+      "name": "PBS/PBAT-lignosulphonate-ZnO hybrid, 90/10/1.5 (Mtibe 2022) dsc_second_heating",
+      "names": {
+        "en": "PBS/PBAT-lignosulphonate-ZnO hybrid, 90/10/1.5 (Mtibe 2022) dsc_second_heating",
+        "zh": "PBS/PBAT-lignosulphonate-ZnO hybrid, 90/10/1.5 (Mtibe 2022) dsc_second_heating",
+        "ja": "PBS/PBAT-lignosulphonate-ZnO hybrid, 90/10/1.5 (Mtibe 2022) dsc_second_heating",
+        "de": "PBS/PBAT-lignosulphonate-ZnO hybrid, 90/10/1.5 (Mtibe 2022) dsc_second_heating"
+      },
+      "source_designation": "(PBS-PBAT 70/30)/(lignin) (90/10));dsc_second_heating",
+      "source_scope": "Source-qualified composite formulation 90/10/1.5 in Table 2, using a PBS/PBAT 70/30 matrix (Bio PBS FZ 91 and Eco flex C1200), SAPPI lignosulphonate and source-synthesized ZnO. Distinct identity is based on the explicitly different matrix/lignosulphonate formulation 90/10, not supplier, specimen, processing or a nominal grade. The internal PBS/PBAT 70/30 ratio basis is unspecified: do not relabel it as mass, volume or wt/wt. Table 2 entries sum to 101.5; the denominator for the stated 1.5 wt.% ZnO is unspecified. Preserve the printed values without normalization, conversion to a complete mass-fraction formula, or an assumed ZnO basis. Lignin denotes the source lignosulphonate, not a generic pure lignin or the separately cataloged kraft-lignin series. Table 3 abbreviates its row labels by omitting ZnO; linkage to Table 2 and sections 2.3 and 2.6.2 supplies the source-qualified hybrid interpretation. Source Table4 dsc_second_heating context;not a new material or independent physical batch. Recipe and study-wide preparation retained as source context only;thermal geometry,cutting and cross-method physical pairing unknown. Thermal statistics and n unknown;no mechanical n5/25C48h transfer. Source Tmax unnumbered and Tm second-heating context remain distinct from cooling crystallization.",
+      "evidence": [
+        {
+          "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+          "locator": "PDF p.3 Table 2, 90/10/1.5 row; sections 2.1-2.3; p.5 section 2.6.2; pp.6-7 section 3.2 and Table 3",
+          "supports": [
+            "state"
+          ]
+        },
+        {
+          "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+          "locator": "PDF p8Table4 (PBS-PBAT 70/30)/(lignin) (90/10)) Tm;PDF p5section2.6.4;p8-9section3.3/Figure4/Table4",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_mtibe2022_pbs_pbat_lignin10_zno_melting_peak_temperature"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "state": {
+        "product_form": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Geometry,mass,cutting and physical origin of the selected thermal portion unspecified;general injection-moulded dog-bone and photocatalysis strips are not assigned as thermal specimen geometry."
+        },
+        "processing": {
+          "status": "reported",
+          "text": "Study-wide preparation:biopolymer drying80°C overnight;TE-30/600-11-40 twin-screw extrusion,L/D40:1,zones120–145°C;pelletization and80°C24h drying;source also describes injection-moulded dog-bones at120–145°C.",
+          "evidence": [
+            {
+              "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+              "locator": "PDF p3section2.3",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "General formulation preparation context only. Actual selected thermal portion/cutting route and physical pairing to dog-bones or other tests unconfirmed;no specimen-specific injection history certified."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Thermal-piece-specific post-processing treatment/history not established;instrument scan program belongs to the property method and is not a confirmed prior cure or service temperature."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Thermal-specific humidity,drying,storage and equilibrated moisture unspecified. Mechanical25°C48h conditioning and general pre-processing drying are not thermal-piece conditioning."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "evidence": [
+            {
+              "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+              "locator": "PDF p.2 section 2.1; p.3 Tables 1-2 and section 2.3",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "text": "Table 2 (PBS/PBAT)/Lignin/ZnO = 85/15/1.5 as printed; internal PBS/PBAT = 70/30, ratio basis unspecified. Section 2.3 calls the lignosulphonate loading 15 wt.% and ZnO 1.5 wt.%; the Table 2 entries total 101.5 and the ZnO denominator is unspecified. No normalization is performed.",
+          "notes": "Source-qualified composite formulation 85/15/1.5 in Table 2, using a PBS/PBAT 70/30 matrix (Bio PBS FZ 91 and Eco flex C1200), SAPPI lignosulphonate and source-synthesized ZnO. Distinct identity is based on the explicitly different matrix/lignosulphonate formulation 85/15, not supplier, specimen, processing or a nominal grade. The internal PBS/PBAT 70/30 ratio basis is unspecified: do not relabel it as mass, volume or wt/wt. Table 2 entries sum to 101.5; the denominator for the stated 1.5 wt.% ZnO is unspecified. Preserve the printed values without normalization, conversion to a complete mass-fraction formula, or an assumed ZnO basis. Lignin denotes the source lignosulphonate, not a generic pure lignin or the separately cataloged kraft-lignin series. Table 3 abbreviates its row labels by omitting ZnO; linkage to Table 2 and sections 2.3 and 2.6.2 supplies the source-qualified hybrid interpretation."
+        },
+        "reinforcement": {
+          "status": "reported",
+          "evidence": [
+            {
+              "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+              "locator": "PDF p.2 section 2.1; p.3 sections 2.2-2.3 and Table 2",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Source ZnO synthesis is described in section 2.2; no complete final chemical composition, quantitative impurity assay or particle-size distribution is inferred.",
+          "text": "SAPPI lignosulphonate at source-stated 15 wt.% and ZnO nanoparticles at source-stated 1.5 wt.%; retain Table 2 85/15/1.5 without assigning a ZnO denominator."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected thermal-piece void fraction unreported;no zero-porosity inference."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Thermal sampling direction and physical relation to moulding/processing axes unspecified;no isotropy claim."
+        }
+      },
+      "evaluation_support": "catalog_only",
+      "id": "state_mtibe2022_pbs_pbat_lignin15_zno_tga_single_major_loss",
+      "identity_id": "mat_mtibe2022_pbs_pbat_lignin15_zno",
+      "name": "PBS/PBAT-lignosulphonate-ZnO hybrid, 85/15/1.5 (Mtibe 2022) tga_single_major_loss",
+      "names": {
+        "en": "PBS/PBAT-lignosulphonate-ZnO hybrid, 85/15/1.5 (Mtibe 2022) tga_single_major_loss",
+        "zh": "PBS/PBAT-lignosulphonate-ZnO hybrid, 85/15/1.5 (Mtibe 2022) tga_single_major_loss",
+        "ja": "PBS/PBAT-lignosulphonate-ZnO hybrid, 85/15/1.5 (Mtibe 2022) tga_single_major_loss",
+        "de": "PBS/PBAT-lignosulphonate-ZnO hybrid, 85/15/1.5 (Mtibe 2022) tga_single_major_loss"
+      },
+      "source_designation": "(PBS-PBAT 70/30)/(lignin) (85/15));tga_single_major_loss",
+      "source_scope": "Source-qualified composite formulation 85/15/1.5 in Table 2, using a PBS/PBAT 70/30 matrix (Bio PBS FZ 91 and Eco flex C1200), SAPPI lignosulphonate and source-synthesized ZnO. Distinct identity is based on the explicitly different matrix/lignosulphonate formulation 85/15, not supplier, specimen, processing or a nominal grade. The internal PBS/PBAT 70/30 ratio basis is unspecified: do not relabel it as mass, volume or wt/wt. Table 2 entries sum to 101.5; the denominator for the stated 1.5 wt.% ZnO is unspecified. Preserve the printed values without normalization, conversion to a complete mass-fraction formula, or an assumed ZnO basis. Lignin denotes the source lignosulphonate, not a generic pure lignin or the separately cataloged kraft-lignin series. Table 3 abbreviates its row labels by omitting ZnO; linkage to Table 2 and sections 2.3 and 2.6.2 supplies the source-qualified hybrid interpretation. Source Table4 tga_single_major_loss context;not a new material or independent physical batch. Recipe and study-wide preparation retained as source context only;thermal geometry,cutting and cross-method physical pairing unknown. Thermal statistics and n unknown;no mechanical n5/25C48h transfer. Source Tmax unnumbered and Tm second-heating context remain distinct from cooling crystallization.",
+      "evidence": [
+        {
+          "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+          "locator": "PDF p.3 Table 2, 85/15/1.5 row; sections 2.1-2.3; p.5 section 2.6.2; pp.6-7 section 3.2 and Table 3",
+          "supports": [
+            "state"
+          ]
+        },
+        {
+          "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+          "locator": "PDF p8Table4 (PBS-PBAT 70/30)/(lignin) (85/15)) Tmax;PDF p5 section2.6.3;p7-8section3.3/Figure3/Table4",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_mtibe2022_pbs_pbat_lignin15_zno_thermal_degradation_rate_peak_temperature"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "state": {
+        "product_form": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Geometry,mass,cutting and physical origin of the selected thermal portion unspecified;general injection-moulded dog-bone and photocatalysis strips are not assigned as thermal specimen geometry."
+        },
+        "processing": {
+          "status": "reported",
+          "text": "Study-wide preparation:biopolymer drying80°C overnight;TE-30/600-11-40 twin-screw extrusion,L/D40:1,zones120–145°C;pelletization and80°C24h drying;source also describes injection-moulded dog-bones at120–145°C.",
+          "evidence": [
+            {
+              "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+              "locator": "PDF p3section2.3",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "General formulation preparation context only. Actual selected thermal portion/cutting route and physical pairing to dog-bones or other tests unconfirmed;no specimen-specific injection history certified."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Thermal-piece-specific post-processing treatment/history not established;instrument scan program belongs to the property method and is not a confirmed prior cure or service temperature."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Thermal-specific humidity,drying,storage and equilibrated moisture unspecified. Mechanical25°C48h conditioning and general pre-processing drying are not thermal-piece conditioning."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "evidence": [
+            {
+              "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+              "locator": "PDF p.2 section 2.1; p.3 Tables 1-2 and section 2.3",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "text": "Table 2 (PBS/PBAT)/Lignin/ZnO = 85/15/1.5 as printed; internal PBS/PBAT = 70/30, ratio basis unspecified. Section 2.3 calls the lignosulphonate loading 15 wt.% and ZnO 1.5 wt.%; the Table 2 entries total 101.5 and the ZnO denominator is unspecified. No normalization is performed.",
+          "notes": "Source-qualified composite formulation 85/15/1.5 in Table 2, using a PBS/PBAT 70/30 matrix (Bio PBS FZ 91 and Eco flex C1200), SAPPI lignosulphonate and source-synthesized ZnO. Distinct identity is based on the explicitly different matrix/lignosulphonate formulation 85/15, not supplier, specimen, processing or a nominal grade. The internal PBS/PBAT 70/30 ratio basis is unspecified: do not relabel it as mass, volume or wt/wt. Table 2 entries sum to 101.5; the denominator for the stated 1.5 wt.% ZnO is unspecified. Preserve the printed values without normalization, conversion to a complete mass-fraction formula, or an assumed ZnO basis. Lignin denotes the source lignosulphonate, not a generic pure lignin or the separately cataloged kraft-lignin series. Table 3 abbreviates its row labels by omitting ZnO; linkage to Table 2 and sections 2.3 and 2.6.2 supplies the source-qualified hybrid interpretation."
+        },
+        "reinforcement": {
+          "status": "reported",
+          "evidence": [
+            {
+              "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+              "locator": "PDF p.2 section 2.1; p.3 sections 2.2-2.3 and Table 2",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Source ZnO synthesis is described in section 2.2; no complete final chemical composition, quantitative impurity assay or particle-size distribution is inferred.",
+          "text": "SAPPI lignosulphonate at source-stated 15 wt.% and ZnO nanoparticles at source-stated 1.5 wt.%; retain Table 2 85/15/1.5 without assigning a ZnO denominator."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected thermal-piece void fraction unreported;no zero-porosity inference."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Thermal sampling direction and physical relation to moulding/processing axes unspecified;no isotropy claim."
+        }
+      },
+      "evaluation_support": "catalog_only",
+      "id": "state_mtibe2022_pbs_pbat_lignin15_zno_dsc_second_heating",
+      "identity_id": "mat_mtibe2022_pbs_pbat_lignin15_zno",
+      "name": "PBS/PBAT-lignosulphonate-ZnO hybrid, 85/15/1.5 (Mtibe 2022) dsc_second_heating",
+      "names": {
+        "en": "PBS/PBAT-lignosulphonate-ZnO hybrid, 85/15/1.5 (Mtibe 2022) dsc_second_heating",
+        "zh": "PBS/PBAT-lignosulphonate-ZnO hybrid, 85/15/1.5 (Mtibe 2022) dsc_second_heating",
+        "ja": "PBS/PBAT-lignosulphonate-ZnO hybrid, 85/15/1.5 (Mtibe 2022) dsc_second_heating",
+        "de": "PBS/PBAT-lignosulphonate-ZnO hybrid, 85/15/1.5 (Mtibe 2022) dsc_second_heating"
+      },
+      "source_designation": "(PBS-PBAT 70/30)/(lignin) (85/15));dsc_second_heating",
+      "source_scope": "Source-qualified composite formulation 85/15/1.5 in Table 2, using a PBS/PBAT 70/30 matrix (Bio PBS FZ 91 and Eco flex C1200), SAPPI lignosulphonate and source-synthesized ZnO. Distinct identity is based on the explicitly different matrix/lignosulphonate formulation 85/15, not supplier, specimen, processing or a nominal grade. The internal PBS/PBAT 70/30 ratio basis is unspecified: do not relabel it as mass, volume or wt/wt. Table 2 entries sum to 101.5; the denominator for the stated 1.5 wt.% ZnO is unspecified. Preserve the printed values without normalization, conversion to a complete mass-fraction formula, or an assumed ZnO basis. Lignin denotes the source lignosulphonate, not a generic pure lignin or the separately cataloged kraft-lignin series. Table 3 abbreviates its row labels by omitting ZnO; linkage to Table 2 and sections 2.3 and 2.6.2 supplies the source-qualified hybrid interpretation. Source Table4 dsc_second_heating context;not a new material or independent physical batch. Recipe and study-wide preparation retained as source context only;thermal geometry,cutting and cross-method physical pairing unknown. Thermal statistics and n unknown;no mechanical n5/25C48h transfer. Source Tmax unnumbered and Tm second-heating context remain distinct from cooling crystallization.",
+      "evidence": [
+        {
+          "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+          "locator": "PDF p.3 Table 2, 85/15/1.5 row; sections 2.1-2.3; p.5 section 2.6.2; pp.6-7 section 3.2 and Table 3",
+          "supports": [
+            "state"
+          ]
+        },
+        {
+          "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+          "locator": "PDF p8Table4 (PBS-PBAT 70/30)/(lignin) (85/15)) Tm;PDF p5section2.6.4;p8-9section3.3/Figure4/Table4",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_mtibe2022_pbs_pbat_lignin15_zno_melting_peak_temperature"
+      ]
+    },
+    {
+      "id": "state_mtibe2022_pbs_pbat_70_30_dsc_cooling_tcc",
+      "version": "1.0.0",
+      "identity_id": "mat_mtibe2022_pbs_pbat_70_30",
+      "grade_id": null,
+      "name": "BioPBS FZ91 / Ecoflex C1200 PBS/PBAT 70/30 blend DSC cooling Tcc",
+      "names": {
+        "en": "BioPBS FZ91 / Ecoflex C1200 PBS/PBAT 70/30 blend DSC cooling Tcc",
+        "zh": "BioPBS FZ91 / Ecoflex C1200 PBS/PBAT 70/30 blend DSC cooling Tcc",
+        "ja": "BioPBS FZ91 / Ecoflex C1200 PBS/PBAT 70/30 blend DSC cooling Tcc",
+        "de": "BioPBS FZ91 / Ecoflex C1200 PBS/PBAT 70/30 blend DSC cooling Tcc"
+      },
+      "aliases": [],
+      "source_designation": "PBS-PBAT (70/30);DSC cooling Tcc",
+      "state": {
+        "product_form": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Geometry,mass,cutting and physical origin of the selected thermal portion unspecified;general injection-moulded dog-bone and photocatalysis strips are not assigned as thermal specimen geometry."
+        },
+        "processing": {
+          "status": "reported",
+          "text": "Study-wide preparation:biopolymer drying80°C overnight;TE-30/600-11-40 twin-screw extrusion,L/D40:1,zones120–145°C;pelletization and80°C24h drying;source also describes injection-moulded dog-bones at120–145°C.",
+          "evidence": [
+            {
+              "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+              "locator": "PDF p3section2.3",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "General formulation preparation context only. Actual selected thermal portion/cutting route and physical pairing to dog-bones or other tests unconfirmed;no specimen-specific injection history certified."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Thermal-piece-specific post-processing treatment/history not established;instrument scan program belongs to the property method and is not a confirmed prior cure or service temperature."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Thermal-specific humidity,drying,storage and equilibrated moisture unspecified. Mechanical25°C48h conditioning and general pre-processing drying are not thermal-piece conditioning."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "PBS/PBAT 70/30 from Bio PBS FZ 91 and Eco flex C1200; ratio basis unspecified",
+          "evidence": [
+            {
+              "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+              "locator": "PDF p.3 Tables 1–2 and §2.3",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Specific unfilled PBS/PBAT 70/30 blend from Bio PBS FZ 91 (PTT MCC BIOCHEM) and Eco flex C1200 (BASF). Source ratio basis is not explicitly stated: do not relabel 70/30 as wt/wt, mass fraction or volume fraction. Table 2 unfilled 100/0/0 formulation excludes added lignin and ZnO. Broad polymer category includes this polymer blend; constituent designations are not a finished-blend grade."
+        },
+        "reinforcement": {
+          "status": "reported",
+          "text": "Selected unfilled polymer comparator; no added lignin or ZnO",
+          "evidence": [
+            {
+              "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+              "locator": "PDF p.3 Tables 1–2 and §2.3",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected thermal-piece void fraction unreported;no zero-porosity inference."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Thermal sampling direction and physical relation to moulding/processing axes unspecified;no isotropy claim."
+        }
+      },
+      "source_scope": "Specific unfilled PBS/PBAT 70/30 blend from Bio PBS FZ 91 (PTT MCC BIOCHEM) and Eco flex C1200 (BASF). Source ratio basis is not explicitly stated: do not relabel 70/30 as wt/wt, mass fraction or volume fraction. Table 2 unfilled 100/0/0 formulation excludes added lignin and ZnO. Broad polymer category includes this polymer blend; constituent designations are not a finished-blend grade. Source Table4 Tcc cooling-scan context,not a new material or physical batch. Original cold-crystallization wording retained as a source discrepancy,not a certified mechanism. Selected cooling occurrence and cooling rate unknown;no thermal-piece geometry,conditioning,mechanical n5 or25C48h transfer. Study-wide preparation is background only.",
+      "evidence": [
+        {
+          "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+          "locator": "PDF p.3 Tables 1–2 and §2.3; p.7 Table 3 PBS-PBAT (70/30)",
+          "supports": [
+            "state"
+          ]
+        },
+        {
+          "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+          "locator": "PDF p8Table4 PBS-PBAT (70/30) Tm;PDF p5section2.6.4;p8-9section3.3/Figure4/Table4",
+          "supports": [
+            "state"
+          ]
+        },
+        {
+          "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+          "locator": "PDF p8Table4 PBS-PBAT (70/30) Tcc;PDF p5section2.6.4;p8-9section3.3/Table4/Figure4b",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_mtibe2022_pbs_pbat_70_30_crystallization_peak_temperature"
+      ],
+      "evaluation_support": "catalog_only"
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "state": {
+        "product_form": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Geometry,mass,cutting and physical origin of the selected thermal portion unspecified;general injection-moulded dog-bone and photocatalysis strips are not assigned as thermal specimen geometry."
+        },
+        "processing": {
+          "status": "reported",
+          "text": "Study-wide preparation:biopolymer drying80°C overnight;TE-30/600-11-40 twin-screw extrusion,L/D40:1,zones120–145°C;pelletization and80°C24h drying;source also describes injection-moulded dog-bones at120–145°C.",
+          "evidence": [
+            {
+              "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+              "locator": "PDF p3section2.3",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "General formulation preparation context only. Actual selected thermal portion/cutting route and physical pairing to dog-bones or other tests unconfirmed;no specimen-specific injection history certified."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Thermal-piece-specific post-processing treatment/history not established;instrument scan program belongs to the property method and is not a confirmed prior cure or service temperature."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Thermal-specific humidity,drying,storage and equilibrated moisture unspecified. Mechanical25°C48h conditioning and general pre-processing drying are not thermal-piece conditioning."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "evidence": [
+            {
+              "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+              "locator": "PDF p.2 section 2.1; p.3 Tables 1-2 and section 2.3",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "text": "Table 2 (PBS/PBAT)/Lignin/ZnO = 95/5/1.5 as printed; internal PBS/PBAT = 70/30, ratio basis unspecified. Section 2.3 calls the lignosulphonate loading 5 wt.% and ZnO 1.5 wt.%; the Table 2 entries total 101.5 and the ZnO denominator is unspecified. No normalization is performed.",
+          "notes": "Source-qualified composite formulation 95/5/1.5 in Table 2, using a PBS/PBAT 70/30 matrix (Bio PBS FZ 91 and Eco flex C1200), SAPPI lignosulphonate and source-synthesized ZnO. Distinct identity is based on the explicitly different matrix/lignosulphonate formulation 95/5, not supplier, specimen, processing or a nominal grade. The internal PBS/PBAT 70/30 ratio basis is unspecified: do not relabel it as mass, volume or wt/wt. Table 2 entries sum to 101.5; the denominator for the stated 1.5 wt.% ZnO is unspecified. Preserve the printed values without normalization, conversion to a complete mass-fraction formula, or an assumed ZnO basis. Lignin denotes the source lignosulphonate, not a generic pure lignin or the separately cataloged kraft-lignin series. Table 3 abbreviates its row labels by omitting ZnO; linkage to Table 2 and sections 2.3 and 2.6.2 supplies the source-qualified hybrid interpretation."
+        },
+        "reinforcement": {
+          "status": "reported",
+          "evidence": [
+            {
+              "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+              "locator": "PDF p.2 section 2.1; p.3 sections 2.2-2.3 and Table 2",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Source ZnO synthesis is described in section 2.2; no complete final chemical composition, quantitative impurity assay or particle-size distribution is inferred.",
+          "text": "SAPPI lignosulphonate at source-stated 5 wt.% and ZnO nanoparticles at source-stated 1.5 wt.%; retain Table 2 95/5/1.5 without assigning a ZnO denominator."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected thermal-piece void fraction unreported;no zero-porosity inference."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Thermal sampling direction and physical relation to moulding/processing axes unspecified;no isotropy claim."
+        }
+      },
+      "evaluation_support": "catalog_only",
+      "id": "state_mtibe2022_pbs_pbat_lignin5_zno_dsc_cooling_tcc",
+      "identity_id": "mat_mtibe2022_pbs_pbat_lignin5_zno",
+      "name": "PBS/PBAT-lignosulphonate-ZnO hybrid, 95/5/1.5 (Mtibe 2022) DSC cooling Tcc",
+      "names": {
+        "en": "PBS/PBAT-lignosulphonate-ZnO hybrid, 95/5/1.5 (Mtibe 2022) DSC cooling Tcc",
+        "zh": "PBS/PBAT-lignosulphonate-ZnO hybrid, 95/5/1.5 (Mtibe 2022) DSC cooling Tcc",
+        "ja": "PBS/PBAT-lignosulphonate-ZnO hybrid, 95/5/1.5 (Mtibe 2022) DSC cooling Tcc",
+        "de": "PBS/PBAT-lignosulphonate-ZnO hybrid, 95/5/1.5 (Mtibe 2022) DSC cooling Tcc"
+      },
+      "source_designation": "(PBS-PBAT (70/30)/(lignin) (95/5));DSC cooling Tcc",
+      "source_scope": "Source-qualified composite formulation 95/5/1.5 in Table 2, using a PBS/PBAT 70/30 matrix (Bio PBS FZ 91 and Eco flex C1200), SAPPI lignosulphonate and source-synthesized ZnO. Distinct identity is based on the explicitly different matrix/lignosulphonate formulation 95/5, not supplier, specimen, processing or a nominal grade. The internal PBS/PBAT 70/30 ratio basis is unspecified: do not relabel it as mass, volume or wt/wt. Table 2 entries sum to 101.5; the denominator for the stated 1.5 wt.% ZnO is unspecified. Preserve the printed values without normalization, conversion to a complete mass-fraction formula, or an assumed ZnO basis. Lignin denotes the source lignosulphonate, not a generic pure lignin or the separately cataloged kraft-lignin series. Table 3 abbreviates its row labels by omitting ZnO; linkage to Table 2 and sections 2.3 and 2.6.2 supplies the source-qualified hybrid interpretation. Source Table4 Tcc cooling-scan context,not a new material or physical batch. Original cold-crystallization wording retained as a source discrepancy,not a certified mechanism. Selected cooling occurrence and cooling rate unknown;no thermal-piece geometry,conditioning,mechanical n5 or25C48h transfer. Study-wide preparation is background only.",
+      "evidence": [
+        {
+          "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+          "locator": "PDF p.3 Table 2, 95/5/1.5 row; sections 2.1-2.3; p.5 section 2.6.2; pp.6-7 section 3.2 and Table 3",
+          "supports": [
+            "state"
+          ]
+        },
+        {
+          "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+          "locator": "PDF p8Table4 (PBS-PBAT (70/30)/(lignin) (95/5)) Tm;PDF p5section2.6.4;p8-9section3.3/Figure4/Table4",
+          "supports": [
+            "state"
+          ]
+        },
+        {
+          "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+          "locator": "PDF p8Table4 (PBS-PBAT (70/30)/(lignin) (95/5)) Tcc;PDF p5section2.6.4;p8-9section3.3/Table4/Figure4b",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_mtibe2022_pbs_pbat_lignin5_zno_crystallization_peak_temperature"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "state": {
+        "product_form": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Geometry,mass,cutting and physical origin of the selected thermal portion unspecified;general injection-moulded dog-bone and photocatalysis strips are not assigned as thermal specimen geometry."
+        },
+        "processing": {
+          "status": "reported",
+          "text": "Study-wide preparation:biopolymer drying80°C overnight;TE-30/600-11-40 twin-screw extrusion,L/D40:1,zones120–145°C;pelletization and80°C24h drying;source also describes injection-moulded dog-bones at120–145°C.",
+          "evidence": [
+            {
+              "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+              "locator": "PDF p3section2.3",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "General formulation preparation context only. Actual selected thermal portion/cutting route and physical pairing to dog-bones or other tests unconfirmed;no specimen-specific injection history certified."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Thermal-piece-specific post-processing treatment/history not established;instrument scan program belongs to the property method and is not a confirmed prior cure or service temperature."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Thermal-specific humidity,drying,storage and equilibrated moisture unspecified. Mechanical25°C48h conditioning and general pre-processing drying are not thermal-piece conditioning."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "evidence": [
+            {
+              "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+              "locator": "PDF p.2 section 2.1; p.3 Tables 1-2 and section 2.3",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "text": "Table 2 (PBS/PBAT)/Lignin/ZnO = 90/10/1.5 as printed; internal PBS/PBAT = 70/30, ratio basis unspecified. Section 2.3 calls the lignosulphonate loading 10 wt.% and ZnO 1.5 wt.%; the Table 2 entries total 101.5 and the ZnO denominator is unspecified. No normalization is performed.",
+          "notes": "Source-qualified composite formulation 90/10/1.5 in Table 2, using a PBS/PBAT 70/30 matrix (Bio PBS FZ 91 and Eco flex C1200), SAPPI lignosulphonate and source-synthesized ZnO. Distinct identity is based on the explicitly different matrix/lignosulphonate formulation 90/10, not supplier, specimen, processing or a nominal grade. The internal PBS/PBAT 70/30 ratio basis is unspecified: do not relabel it as mass, volume or wt/wt. Table 2 entries sum to 101.5; the denominator for the stated 1.5 wt.% ZnO is unspecified. Preserve the printed values without normalization, conversion to a complete mass-fraction formula, or an assumed ZnO basis. Lignin denotes the source lignosulphonate, not a generic pure lignin or the separately cataloged kraft-lignin series. Table 3 abbreviates its row labels by omitting ZnO; linkage to Table 2 and sections 2.3 and 2.6.2 supplies the source-qualified hybrid interpretation."
+        },
+        "reinforcement": {
+          "status": "reported",
+          "evidence": [
+            {
+              "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+              "locator": "PDF p.2 section 2.1; p.3 sections 2.2-2.3 and Table 2",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Source ZnO synthesis is described in section 2.2; no complete final chemical composition, quantitative impurity assay or particle-size distribution is inferred.",
+          "text": "SAPPI lignosulphonate at source-stated 10 wt.% and ZnO nanoparticles at source-stated 1.5 wt.%; retain Table 2 90/10/1.5 without assigning a ZnO denominator."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected thermal-piece void fraction unreported;no zero-porosity inference."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Thermal sampling direction and physical relation to moulding/processing axes unspecified;no isotropy claim."
+        }
+      },
+      "evaluation_support": "catalog_only",
+      "id": "state_mtibe2022_pbs_pbat_lignin10_zno_dsc_cooling_tcc",
+      "identity_id": "mat_mtibe2022_pbs_pbat_lignin10_zno",
+      "name": "PBS/PBAT-lignosulphonate-ZnO hybrid, 90/10/1.5 (Mtibe 2022) DSC cooling Tcc",
+      "names": {
+        "en": "PBS/PBAT-lignosulphonate-ZnO hybrid, 90/10/1.5 (Mtibe 2022) DSC cooling Tcc",
+        "zh": "PBS/PBAT-lignosulphonate-ZnO hybrid, 90/10/1.5 (Mtibe 2022) DSC cooling Tcc",
+        "ja": "PBS/PBAT-lignosulphonate-ZnO hybrid, 90/10/1.5 (Mtibe 2022) DSC cooling Tcc",
+        "de": "PBS/PBAT-lignosulphonate-ZnO hybrid, 90/10/1.5 (Mtibe 2022) DSC cooling Tcc"
+      },
+      "source_designation": "(PBS-PBAT 70/30)/(lignin) (90/10));DSC cooling Tcc",
+      "source_scope": "Source-qualified composite formulation 90/10/1.5 in Table 2, using a PBS/PBAT 70/30 matrix (Bio PBS FZ 91 and Eco flex C1200), SAPPI lignosulphonate and source-synthesized ZnO. Distinct identity is based on the explicitly different matrix/lignosulphonate formulation 90/10, not supplier, specimen, processing or a nominal grade. The internal PBS/PBAT 70/30 ratio basis is unspecified: do not relabel it as mass, volume or wt/wt. Table 2 entries sum to 101.5; the denominator for the stated 1.5 wt.% ZnO is unspecified. Preserve the printed values without normalization, conversion to a complete mass-fraction formula, or an assumed ZnO basis. Lignin denotes the source lignosulphonate, not a generic pure lignin or the separately cataloged kraft-lignin series. Table 3 abbreviates its row labels by omitting ZnO; linkage to Table 2 and sections 2.3 and 2.6.2 supplies the source-qualified hybrid interpretation. Source Table4 Tcc cooling-scan context,not a new material or physical batch. Original cold-crystallization wording retained as a source discrepancy,not a certified mechanism. Selected cooling occurrence and cooling rate unknown;no thermal-piece geometry,conditioning,mechanical n5 or25C48h transfer. Study-wide preparation is background only.",
+      "evidence": [
+        {
+          "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+          "locator": "PDF p.3 Table 2, 90/10/1.5 row; sections 2.1-2.3; p.5 section 2.6.2; pp.6-7 section 3.2 and Table 3",
+          "supports": [
+            "state"
+          ]
+        },
+        {
+          "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+          "locator": "PDF p8Table4 (PBS-PBAT 70/30)/(lignin) (90/10)) Tm;PDF p5section2.6.4;p8-9section3.3/Figure4/Table4",
+          "supports": [
+            "state"
+          ]
+        },
+        {
+          "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+          "locator": "PDF p8Table4 (PBS-PBAT 70/30)/(lignin) (90/10)) Tcc;PDF p5section2.6.4;p8-9section3.3/Table4/Figure4b",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_mtibe2022_pbs_pbat_lignin10_zno_crystallization_peak_temperature"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "state": {
+        "product_form": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Geometry,mass,cutting and physical origin of the selected thermal portion unspecified;general injection-moulded dog-bone and photocatalysis strips are not assigned as thermal specimen geometry."
+        },
+        "processing": {
+          "status": "reported",
+          "text": "Study-wide preparation:biopolymer drying80°C overnight;TE-30/600-11-40 twin-screw extrusion,L/D40:1,zones120–145°C;pelletization and80°C24h drying;source also describes injection-moulded dog-bones at120–145°C.",
+          "evidence": [
+            {
+              "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+              "locator": "PDF p3section2.3",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "General formulation preparation context only. Actual selected thermal portion/cutting route and physical pairing to dog-bones or other tests unconfirmed;no specimen-specific injection history certified."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Thermal-piece-specific post-processing treatment/history not established;instrument scan program belongs to the property method and is not a confirmed prior cure or service temperature."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Thermal-specific humidity,drying,storage and equilibrated moisture unspecified. Mechanical25°C48h conditioning and general pre-processing drying are not thermal-piece conditioning."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "evidence": [
+            {
+              "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+              "locator": "PDF p.2 section 2.1; p.3 Tables 1-2 and section 2.3",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "text": "Table 2 (PBS/PBAT)/Lignin/ZnO = 85/15/1.5 as printed; internal PBS/PBAT = 70/30, ratio basis unspecified. Section 2.3 calls the lignosulphonate loading 15 wt.% and ZnO 1.5 wt.%; the Table 2 entries total 101.5 and the ZnO denominator is unspecified. No normalization is performed.",
+          "notes": "Source-qualified composite formulation 85/15/1.5 in Table 2, using a PBS/PBAT 70/30 matrix (Bio PBS FZ 91 and Eco flex C1200), SAPPI lignosulphonate and source-synthesized ZnO. Distinct identity is based on the explicitly different matrix/lignosulphonate formulation 85/15, not supplier, specimen, processing or a nominal grade. The internal PBS/PBAT 70/30 ratio basis is unspecified: do not relabel it as mass, volume or wt/wt. Table 2 entries sum to 101.5; the denominator for the stated 1.5 wt.% ZnO is unspecified. Preserve the printed values without normalization, conversion to a complete mass-fraction formula, or an assumed ZnO basis. Lignin denotes the source lignosulphonate, not a generic pure lignin or the separately cataloged kraft-lignin series. Table 3 abbreviates its row labels by omitting ZnO; linkage to Table 2 and sections 2.3 and 2.6.2 supplies the source-qualified hybrid interpretation."
+        },
+        "reinforcement": {
+          "status": "reported",
+          "evidence": [
+            {
+              "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+              "locator": "PDF p.2 section 2.1; p.3 sections 2.2-2.3 and Table 2",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Source ZnO synthesis is described in section 2.2; no complete final chemical composition, quantitative impurity assay or particle-size distribution is inferred.",
+          "text": "SAPPI lignosulphonate at source-stated 15 wt.% and ZnO nanoparticles at source-stated 1.5 wt.%; retain Table 2 85/15/1.5 without assigning a ZnO denominator."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected thermal-piece void fraction unreported;no zero-porosity inference."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Thermal sampling direction and physical relation to moulding/processing axes unspecified;no isotropy claim."
+        }
+      },
+      "evaluation_support": "catalog_only",
+      "id": "state_mtibe2022_pbs_pbat_lignin15_zno_dsc_cooling_tcc",
+      "identity_id": "mat_mtibe2022_pbs_pbat_lignin15_zno",
+      "name": "PBS/PBAT-lignosulphonate-ZnO hybrid, 85/15/1.5 (Mtibe 2022) DSC cooling Tcc",
+      "names": {
+        "en": "PBS/PBAT-lignosulphonate-ZnO hybrid, 85/15/1.5 (Mtibe 2022) DSC cooling Tcc",
+        "zh": "PBS/PBAT-lignosulphonate-ZnO hybrid, 85/15/1.5 (Mtibe 2022) DSC cooling Tcc",
+        "ja": "PBS/PBAT-lignosulphonate-ZnO hybrid, 85/15/1.5 (Mtibe 2022) DSC cooling Tcc",
+        "de": "PBS/PBAT-lignosulphonate-ZnO hybrid, 85/15/1.5 (Mtibe 2022) DSC cooling Tcc"
+      },
+      "source_designation": "(PBS-PBAT 70/30)/(lignin) (85/15));DSC cooling Tcc",
+      "source_scope": "Source-qualified composite formulation 85/15/1.5 in Table 2, using a PBS/PBAT 70/30 matrix (Bio PBS FZ 91 and Eco flex C1200), SAPPI lignosulphonate and source-synthesized ZnO. Distinct identity is based on the explicitly different matrix/lignosulphonate formulation 85/15, not supplier, specimen, processing or a nominal grade. The internal PBS/PBAT 70/30 ratio basis is unspecified: do not relabel it as mass, volume or wt/wt. Table 2 entries sum to 101.5; the denominator for the stated 1.5 wt.% ZnO is unspecified. Preserve the printed values without normalization, conversion to a complete mass-fraction formula, or an assumed ZnO basis. Lignin denotes the source lignosulphonate, not a generic pure lignin or the separately cataloged kraft-lignin series. Table 3 abbreviates its row labels by omitting ZnO; linkage to Table 2 and sections 2.3 and 2.6.2 supplies the source-qualified hybrid interpretation. Source Table4 Tcc cooling-scan context,not a new material or physical batch. Original cold-crystallization wording retained as a source discrepancy,not a certified mechanism. Selected cooling occurrence and cooling rate unknown;no thermal-piece geometry,conditioning,mechanical n5 or25C48h transfer. Study-wide preparation is background only.",
+      "evidence": [
+        {
+          "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+          "locator": "PDF p.3 Table 2, 85/15/1.5 row; sections 2.1-2.3; p.5 section 2.6.2; pp.6-7 section 3.2 and Table 3",
+          "supports": [
+            "state"
+          ]
+        },
+        {
+          "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+          "locator": "PDF p8Table4 (PBS-PBAT 70/30)/(lignin) (85/15)) Tm;PDF p5section2.6.4;p8-9section3.3/Figure4/Table4",
+          "supports": [
+            "state"
+          ]
+        },
+        {
+          "source_id": "mtibe_2022_pbs_pbat_lignin_zno",
+          "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-05065/article_deploy/polymers-14-05065.pdf",
+          "locator": "PDF p8Table4 (PBS-PBAT 70/30)/(lignin) (85/15)) Tcc;PDF p5section2.6.4;p8-9section3.3/Table4/Figure4b",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_mtibe2022_pbs_pbat_lignin15_zno_crystallization_peak_temperature"
+      ]
+    },
+    {
+      "id": "state_abbasi2022_manure_phbv39_tga",
+      "version": "1.0.3",
+      "identity_id": "mat_abbasi2022_manure_phbv39",
+      "grade_id": null,
+      "name": "PHBV-39 TGA context",
+      "names": {
+        "en": "PHBV-39 TGA context",
+        "zh": "PHBV-39 TGA context",
+        "ja": "PHBV-39 TGA context",
+        "de": "PHBV-39 TGA context"
+      },
+      "aliases": [],
+      "source_designation": "PHBV-39;TGA",
+      "state": {
+        "product_form": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected TGA portion-specific information unknown;no mechanical orDSC transfer."
+        },
+        "processing": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected TGA portion-specific information unknown;no mechanical orDSC transfer."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected TGA portion-specific information unknown;no mechanical orDSC transfer."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected TGA portion-specific information unknown;no mechanical orDSC transfer."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "Table 1 purified PHBV-39: purity 88.5 ± 4.7%; 3HV molar fraction 0.21 ± 0.01 by GC-MS",
+          "evidence": [
+            {
+              "source_id": "abbasi_2022_manure_phbv",
+              "url": "https://mdpi-res.com/d_attachment/polymers/polymers-14-04140/article_deploy/polymers-14-04140.pdf",
+              "locator": "PDF pp.2–3 Table 1 and §2.2.1; pp.4–5 §2.2.8",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "The meaning of these composition ± tokens is not defined by the inspected Table 1; do not transfer the mechanical Table 9 SD footnote. The 1H-NMR comparison 0.19 ± 0.00 is attributed to reference [6], not used as the selected composition assay here. Composition context does not add a reference-property record."
+        },
+        "reinforcement": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Not reported for this selected source-qualified result."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected TGA portion-specific information unknown;no mechanical orDSC transfer."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected TGA portion-specific information unknown;no mechanical orDSC transfer."
+        }
+      },
+      "source_scope": "PHBV-39 isolated from mixed microbial consortia fed fermented dairy manure in the study. 39 denotes operational day, not 39% HV, a grade, a specimen count or a distinct polymer family. Other operational days are not additional material identities in this batch. TGA-specific context;not independent batch. No mechanical processing/geometry orDSC program transfer.",
+      "evidence": [
+        {
+          "source_id": "abbasi_2022_manure_phbv",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9571417/fullTextXML",
+          "locator": "XMLTable4 PHBV39;sections2.2.5/3.4 TGA",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_abbasi2022_manure_phbv39_thermal_degradation_onset_temperature",
+        "refprop_abbasi2022_manure_phbv39_thermal_degradation_rate_peak_temperature"
+      ],
+      "evaluation_support": "catalog_only"
     }
   ]
 }

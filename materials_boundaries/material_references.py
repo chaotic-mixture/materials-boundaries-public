@@ -26,6 +26,7 @@ THERMAL_NEW_QUANTITIES = ("mass_specific_heat_capacity", "thermal_diffusivity")
 RESPONSE_TIME_UNITS = ("s", "ms")
 WORK_UNITS = ("J/cm^3", "MJ/m^3", "J/m^3")
 QUANTITY_DIMENSIONS = {
+    "crystallization_peak_temperature": "temperature",
     "thermal_response_characteristic_time": "time",
     "mass_specific_heat_capacity": "energy_per_mass_temperature",
     "thermal_diffusivity": "area_per_time",
@@ -133,7 +134,7 @@ TGA_TEMPERATURE_QUANTITIES = (
     "thermal_degradation_onset_temperature", "temperature_at_specified_mass_loss",
     "thermal_degradation_rate_peak_temperature",
 )
-RESULT_TEMPERATURE_QUANTITIES = (*TEMPERATURE_QUANTITIES, *TGA_TEMPERATURE_QUANTITIES)
+RESULT_TEMPERATURE_QUANTITIES = (*TEMPERATURE_QUANTITIES, "crystallization_peak_temperature", *TGA_TEMPERATURE_QUANTITIES)
 TGA_QUANTITIES = (*TGA_TEMPERATURE_QUANTITIES, "tga_residue_percentage")
 HTTPS = {"type": "string", "format": "uri", "pattern": r"^(?![\s\S]*[\x00-\x1f\x7f-\x9f\ud800-\udfff])https://[^\s/?#]+(?:[/?#][^\s]*)?(?![\s\S])"}
 
@@ -414,7 +415,7 @@ def _make_properties_schema():
     other = definitions["property"]
     other["properties"]["quantity"] = _enum(
         q for q in QUANTITY_DIMENSIONS
-        if q not in {"thermal_response_characteristic_time", *THERMAL_NEW_QUANTITIES, "thermal_conductivity", "dielectric_breakdown_strength", "tensile_stress_at_specified_elongation", "shore_a_hardness", *TEMPERATURE_QUANTITIES, *TGA_QUANTITIES, "volumetric_tensile_work_to_break"}
+        if q not in {"crystallization_peak_temperature", "thermal_response_characteristic_time", *THERMAL_NEW_QUANTITIES, "thermal_conductivity", "dielectric_breakdown_strength", "tensile_stress_at_specified_elongation", "shore_a_hardness", *TEMPERATURE_QUANTITIES, *TGA_QUANTITIES, "volumetric_tensile_work_to_break"}
         and q not in PERCENT_ELONGATION_QUANTITIES)
     del other["properties"]["specified_elongation"]
     definitions["specified_mass_loss"] = _object({
@@ -422,9 +423,13 @@ def _make_properties_schema():
         "unit_text": TEXT, "unit_code": {"const": "percent_mass_loss"},
         "evidence": evidence, "notes": TEXT,
     })
-    definitions["degradation_peak_ordinal"] = _object({
+    known_peak_ordinal = _object({
         "value": {"type": "integer", "minimum": 1}, "evidence": evidence, "notes": TEXT,
     })
+    definitions["degradation_peak_ordinal"] = {"oneOf": [known_peak_ordinal, _object({
+        "status": _enum(("not_reported_in_inspected_source", "not_verified")),
+        "value": NULL, "evidence": evidence, "notes": TEXT,
+    })]}
     definitions["residue_endpoint_temperature"] = _object({
         "kind": {"const": "scalar"}, "value_text": TEXT, "number": SIGNED_DECIMAL,
         "unit_text": TEXT, "unit_code": _enum(TEMPERATURE_UNITS),
@@ -487,7 +492,23 @@ def _make_properties_schema():
     response = deepcopy(new_thermal[-1])
     response["properties"].update(quantity={"const": "thermal_response_characteristic_time"}, quantity_dimension={"const": "time"}, reported_value=_ref("thermal_response_reported_value"), thermal_response_phase=_ref("thermal_response_phase"), thermal_convection=_ref("thermal_convection"))
     response["required"].extend(("thermal_response_phase", "thermal_convection"))
-    definitions["property"] = {"oneOf": [other, stress, elongation, shore, temperature, electric, thermal, *tga_branches, work, *new_thermal, response]}
+    definitions["thermal_scan_definition"] = _object({
+        "kind": {"const": "nonisothermal_temperature_scan"}, "evidence": evidence, "notes": TEXT,
+    })
+    definitions["thermal_scan_phase"] = {"oneOf": [
+        _object({"status": {"const": "reported"}, "code": _enum(("heating", "cooling")), "evidence": evidence, "notes": TEXT}),
+        _object({"status": _enum(("not_reported_in_inspected_source", "not_verified")), "code": NULL, "evidence": evidence, "notes": TEXT}),
+    ]}
+    definitions["thermal_phase_occurrence_ordinal"] = {"oneOf": [
+        _object({"status": {"const": "reported"}, "value": {"type": "integer", "minimum": 1}, "evidence": evidence, "notes": TEXT}),
+        _object({"status": _enum(("not_reported_in_inspected_source", "not_verified")), "value": NULL, "evidence": evidence, "notes": TEXT}),
+    ]}
+    crystallization = deepcopy(temperature)
+    crystallization["properties"]["quantity"] = {"const": "crystallization_peak_temperature"}
+    for qualifier in ("thermal_scan_definition", "thermal_scan_phase", "thermal_phase_occurrence_ordinal"):
+        crystallization["properties"][qualifier] = _ref(qualifier)
+        crystallization["required"].append(qualifier)
+    definitions["property"] = {"oneOf": [other, stress, elongation, shore, temperature, electric, thermal, *tga_branches, work, *new_thermal, response, crystallization]}
     return {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "$id": "urn:materials-boundaries:schema:reference_properties:1.0.0",
@@ -992,6 +1013,15 @@ def _validate_property(prop):
             if not any(e["url"] == prop["source_document"]["url"]
                        for e in _tagged(descriptor["evidence"], "condition", source)):
                 _fail(path, "TGA qualifier needs primary inspected-document condition evidence")
+    if prop["quantity"] == "crystallization_peak_temperature":
+        for field in ("thermal_scan_definition", "thermal_scan_phase", "thermal_phase_occurrence_ordinal"):
+            descriptor = prop[field]
+            roles = ("method", "condition") if field == "thermal_scan_definition" else ("condition",)
+            for role in roles:
+                _require_tag(descriptor["evidence"], role, path + "." + field, source)
+                if not any(e["url"] == prop["source_document"]["url"]
+                           for e in _tagged(descriptor["evidence"], role, source)):
+                    _fail(path, "Crystallization scan qualifiers need primary inspected-document evidence")
     if "thermal_mass_reference_basis" in prop:
         basis = prop["thermal_mass_reference_basis"]
         if basis["status"] == "reported":
@@ -1159,6 +1189,53 @@ def _tga_coordinate_key(prop):
     return result
 
 
+def _coordinate_fact_base(signature, field, ordinal=None):
+    """Exact same-cell/value/protocol key without the coordinates under review."""
+    base = json.loads(signature)
+    if ordinal is None:
+        base[field] = {}
+    else:
+        base[field].pop(ordinal)
+    for name in ("number", "lower", "upper"):
+        if name not in base["value"]:
+            continue
+        token = Decimal(base["value"][name]).as_tuple()
+        digits, exponent = list(token.digits), token.exponent
+        if not any(digits):
+            base["value"][name] = [0, [], 0]
+        else:
+            while digits[-1] == 0:
+                digits.pop()
+                exponent += 1
+            base["value"][name] = [token.sign, digits, exponent]
+    return json.dumps(base, sort_keys=True, ensure_ascii=False)
+
+
+def _crystallization_coordinate_guard(prop, signature, seen):
+    """Index partial coordinates without treating unknowns as new coverage."""
+    base = _coordinate_fact_base(signature, "crystallization_coordinates")
+    phase = prop["thermal_scan_phase"]["code"]
+    ordinal = prop["thermal_phase_occurrence_ordinal"]["value"]
+    def key(kind, *coordinates):
+        return "crystallization:" + json.dumps([base, kind, *coordinates], ensure_ascii=False)
+    if phase is None and ordinal is None:
+        overlap = key("any") in seen
+        additions = (key("uu"),)
+    elif phase is None:
+        overlap = any(k in seen for k in (key("uu"), key("pu_any"), key("uo", ordinal), key("po_ordinal", ordinal)))
+        additions = (key("uo", ordinal), key("uo_any"))
+    elif ordinal is None:
+        overlap = any(k in seen for k in (key("uu"), key("uo_any"), key("pu", phase), key("po_phase", phase)))
+        additions = (key("pu", phase), key("pu_any"))
+    else:
+        overlap = any(k in seen for k in (key("uu"), key("uo", ordinal), key("pu", phase), key("po", phase, ordinal)))
+        additions = (key("po", phase, ordinal), key("po_phase", phase), key("po_ordinal", ordinal))
+    if overlap:
+        _fail(prop["id"], "duplicate source fact for overlapping crystallization coordinates")
+    seen.update(additions)
+    seen.add(key("any"))
+
+
 def _unique_fact(prop, seen):
     value = prop["reported_value"]
     represented_value = {key: item for key, item in value.items() if key not in {"value_text", "unit_text"}}
@@ -1199,7 +1276,23 @@ def _unique_fact(prop, seen):
                            if prop["work_reference_basis"]["status"] == "reported" else ["unknown", None])}
            if "work_reference_basis" in prop else {}),
         **({"tga_coordinates": _tga_coordinate_key(prop)} if prop["quantity"] in TGA_QUANTITIES else {}),
+        **({"crystallization_coordinates": {
+            "phase": prop["thermal_scan_phase"]["code"],
+            "occurrence": prop["thermal_phase_occurrence_ordinal"]["value"],
+        }} if prop["quantity"] == "crystallization_peak_temperature" else {}),
     }, sort_keys=True, ensure_ascii=False)
+    if prop["quantity"] == "thermal_degradation_rate_peak_temperature":
+        # Curation of an unnumbered source cell cannot create a second fact
+        # merely by later assigning an ordinal. Numbered peaks remain distinct.
+        key = _coordinate_fact_base(signature, "tga_coordinates", "degradation_peak_ordinal")
+        unknown_key = "tga_ordinal_unknown:" + key
+        known_key = "tga_ordinal_known:" + key
+        unknown = prop["degradation_peak_ordinal"]["value"] is None
+        if unknown_key in seen or (unknown and known_key in seen):
+            _fail(prop["id"], "duplicate source fact for the same material state")
+        seen.add(unknown_key if unknown else known_key)
+    if prop["quantity"] == "crystallization_peak_temperature":
+        _crystallization_coordinate_guard(prop, signature, seen)
     if signature in seen:
         _fail(prop["id"], "duplicate source fact for the same material state")
     seen.add(signature)

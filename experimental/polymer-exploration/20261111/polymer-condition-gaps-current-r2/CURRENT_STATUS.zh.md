@@ -1,0 +1,7 @@
+# R2当前只读条件清单独审通过
+
+本清单随../pbs-pbat-crystallization-source-proposal-r1/REVIEW_INPUTS_R1.json冻结（SHA256 6c004b7e47598d41792ddc40d8106528b08b5b8f2c354d5e77ccbd3456fe2882），获其INDEPENDENT_SOURCE_CONCEPT_REVIEW_R1.json批准。231条记录和12来源汇总独立重算一致，选择与汇总算法和已审R1的AST相同。
+
+当前r46本地已接纳快照d4146fffdd9bf439b2e492acab15c75c33826883ee5d4031cc18f50b243acba3，226实验参考/5派生参考；确切n已报告75条，n数值为空152条，另4条只有下限，所以确切n未确认156条。123温度字段明确未报、179调湿字段明确未报；温度字段计数不抹除另外报告的扫描程序或峰温度，reported调湿不证明RH完整。
+
+这是目录polymer类别的性质对象描述，不代表化学纯度、独立试样数、全面条件覆盖或科学认证；旧229条R1不可变快照保留。四条新Tcc概念未接纳、不计入231条。原生数据未变，本批清单尚未提交/推送。

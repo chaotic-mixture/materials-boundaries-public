@@ -60,7 +60,7 @@ class ShoreAHardnessContractTests(unittest.TestCase):
     def test_closed_units_targets_shapes_and_generated_public_schema(self):
         m,p,s=fixture();stored=json.loads((Path(__file__).resolve().parents[1]/'schemas/reference_properties.schema.json').read_bytes())
         self.assertEqual(stored,_PROPERTIES_SCHEMA);Draft202012Validator.check_schema(stored)
-        self.assertEqual(len(stored['$defs']['property']['oneOf']),15)
+        self.assertEqual(len(stored['$defs']['property']['oneOf']),16)
         for unit in [{'unit_code':'percent','unit_text':'%'},{'unit_code':'percent_elongation','unit_text':'%'},{'unit_code':'MPa','unit_text':'MPa'},{'unit_code':'shore_d_scale','unit_text':'Shore D'}]:
             bad=deepcopy(p);bad['records'][0]['reported_value'].update(unit)
             self.assertFalse(Draft202012Validator(stored).is_valid(bad))

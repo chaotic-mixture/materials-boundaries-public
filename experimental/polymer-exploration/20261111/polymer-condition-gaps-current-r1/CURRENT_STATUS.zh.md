@@ -1,0 +1,5 @@
+# 当前清单只读独审通过
+
+INVENTORY_R1.json、生成器及README已纳入../dtg-unknown-ordinal-implementation-r1/REVIEW_IMPLEMENTATION_INPUTS_R1.json（SHA256 fa0df5f235265210d50bfec99dfa8510e94a7668543bf3a1963511cc79572357），获该目录INDEPENDENT_IMPLEMENTATION_REVIEW_R1.json批准，分来源和逐条统计经独立重算一致。
+
+确认范围是当前原生229条非计算聚合物类别性质的描述性清单，不代表独立样本数、完整条件覆盖、材料真实性或科学认证。n为空150条，加仅下限4条，确切n未确认154条，不能误写成154条n数值为空。reported调湿不证明RH完整；草案8条新热性质未计入。原生数据和来源事实未改变，本批清单未提交/推送。
