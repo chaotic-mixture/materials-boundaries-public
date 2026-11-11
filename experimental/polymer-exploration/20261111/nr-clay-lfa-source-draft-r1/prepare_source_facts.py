@@ -1,0 +1,30 @@
+"""Freeze eighteen selected Table3 cells and method boundaries,without native mapping or writes."""
+from pathlib import Path
+import hashlib,json
+ROOT=Path(__file__).resolve().parents[4];HERE=Path(__file__).resolve().parent
+EXT=ROOT.parent/'open-database-evidence/polymer-nr-notice-damping-20261111-r2'
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def write(n,obj):
+    with (HERE/n).open('x',encoding='utf-8',newline='\n') as f:json.dump(obj,f,ensure_ascii=False,indent=2);f.write('\n')
+def main():
+    assert sha(EXT/'publisher2025.pdf')=='2e729bb58b361568d27ab772ec1c031648cb6a858f58a6e4ece9ce45b74c3ea2'
+    materials=json.loads((ROOT/'materials_boundaries/data/materials.json').read_bytes());identities={x['id']:x for x in materials['identities']}
+    props=json.loads((ROOT/'materials_boundaries/data/reference_properties.json').read_bytes())['records'];states={x['id']:x for x in materials['records']}
+    rows=[('1mmt','NR_1MMT','1.87','0.08','0.085','0.001','0.153','0.006'),('3mmt','NR_3MMT','1.82','0.03','0.086','0.001','0.151','0.002'),('5mmt','NR_5MMT','1.75','0.03','0.088','0.001','0.150','0.003'),('1ommt','NR_1O-MMT','1.82','0.05','0.081','0.002','0.141','0.001'),('3ommt','NR_3O-MMT','1.82','0.04','0.081','0.001','0.144','0.002'),('5ommt','NR_5O-MMT','1.75','0.02','0.084','0.001','0.142','0.004')]
+    quantities=[('mass_specific_heat_capacity','J/g·K','published_experimental_reference','source_reports_measurement'),('thermal_diffusivity','mm²/s','published_experimental_reference','source_reports_measurement'),('thermal_conductivity','W/m·K','published_measurement_derived_reference','source_reports_calculation')]
+    text=(EXT/'pages2025/page-06.txt').read_text(encoding='utf-8');facts=[];overlaps=[]
+    for suffix,label,*numbers in rows:
+        identity='mat_bianchi2025_nr_'+suffix
+        assert identities[identity]['category']=='composite'
+        assert label+' '+' '.join(numbers[j]+' ± '+numbers[j+1] for j in range(0,6,2)) in text
+        for i,(quantity,unit,kind,basis) in enumerate(quantities):
+            matches=[p['id'] for p in props if p['quantity']==quantity and states[p['material_state_id']]['identity_id']==identity]
+            overlaps.append(dict(identity_id=identity,quantity=quantity,existing_record_ids=matches));assert not matches
+            facts.append(dict(source_id='bianchi_2025_nr_nanoclay',source_designation=label,existing_identity_id=identity,existing_state_id='state_bianchi2025_nr_'+suffix,quantity=quantity,number=numbers[2*i],plus_minus=numbers[2*i+1],unit_text=unit,summary_statistic='not_stated',plus_minus_meaning='not_stated',per_cell_statistical_n=None,evidence_kind_proposed=kind,determination_basis_proposed=basis,source_locator='PDF p6 Table3 '+label+' '+quantity,method_locator='PDF p18 section3.3.3'+('/Equation4' if quantity=='thermal_conductivity' else ''),native_mapping='not_prepared'))
+    assert len(facts)==18 and len({(f['existing_identity_id'],f['quantity']) for f in facts})==18
+    protocol=dict(source_id='bianchi_2025_nr_nanoclay',reported_temperature='20 °C',instrument='Netzsch LFA447',initial_geometry='Cylindrical specimens,diameter12.7mm,thickness1mm',method_tested_specimens_per_formulation=3,pulses_per_specimen=5,per_cell_statistical_n=None,independent_batches=None,diffusivity_method='Cowan method with numerical pulse correction',heat_capacity_reference='Pyroceram9606',heat_capacity_standard_context='ASTM-E1461,as printed in source,no separate edition reported',conductivity=dict(source_formula='lambda=alpha*cp*rho',source_reports_calculation=True,software_multiply=False,software_propagate_uncertainty=False,paired_inputs=None,physical_sample_linkage=None,density_temperature_equivalence=None,calculation_aggregation_order=None,covariance=None,original_uncertainty_propagation=None),unknown=['mass_reference_basis','humidity','conditioning','gas_and_flow','orientation','exact_per_cell_n','thermal_summary_estimator','meaning_of_plus_minus','independent_batches'],boundaries=['Three specimens and five pulses are separate method facts,not n15 or per-cell fit count','20C LFA temperature not density-test temperature or22C caloric protocol','ASTM-E1461 retained only in source heat-capacity reference context,not universal certification','No reference-paper or supplier numerical transfer,no same-specimen assertion across quantities or density','No Tg from sentence reporting unpublished DSC/no observed differences;no unreported scalar invented'])
+    write('SOURCE_FACTS_R1.json',facts);write('LFA_PROTOCOL_AND_UNKNOWNS_R1.json',protocol);write('EXISTING_OVERLAP_AUDIT_R1.json',overlaps)
+    write('EVIDENCE_BINDINGS_R1.json',dict(source_document_sha256=sha(EXT/'publisher2025.pdf'),external_files_sha256={str(p):sha(p) for p in [EXT/'publisher2025.pdf',EXT/'pages2025/page-06.txt',EXT/'pages2025/page-18.txt',EXT/'visual2025/page-06.png',EXT/'visual2025/page-18.png',EXT/'visual2025/page-16.png',EXT/'visual2025/page-17.png']},native_files_sha256={f'materials_boundaries/data/{n}.json':sha(ROOT/f'materials_boundaries/data/{n}.json') for n in ('materials','reference_properties','sources')},latest_notice_completeness='unknown'))
+    write('VALIDATION_R1.json',dict(scope='Producer source curation checks,not unit tests or independent approval',checks=['Official retained PDF hash exact','Twelve thermal-measurement and six calculated-conductivity cells match source text and manually inspected p6 page image','Six existing composite identities and phr contexts retained','All18 identity/quantity pairs unique','All18 absent from existing same-identity properties','Method p18 visually inspected;specimens and pulses separated from n','Raw evidence external only;native tables not written'],source_facts=18,native_applied=False,independent_review='not_run',mapping='not_prepared',installation='not_run',remote_CI='not_run'))
+    print('18 LFA source facts frozen;no existing same-identity/quantity overlap;native unchanged;not independently reviewed or mapped')
+if __name__=='__main__':main()

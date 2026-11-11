@@ -66,6 +66,9 @@ def validate_material_locales(locales: dict) -> None:
 REQUIRED_LABELS |= frozenset(('code_source_reported_thermal_transport_product','source_product_derivation','source_product_notice'))
 
 
+REQUIRED_LABELS |= frozenset(('code_thermal_response_characteristic_time','thermal_response_phase','code_post_stretching_hold','code_post_retraction_recovery','thermal_convection','code_natural_convection','code_forced_convection','code_source_reported_thermal_response_fit','thermal_response_fit_notice','thermal_response_derivation'))
+
+
 def material_labels(language: str = "en") -> dict:
     from .catalog import _read_reference_resource
     if language not in LANGUAGES:
@@ -238,6 +241,14 @@ def render_material_catalog(catalog: dict, kind: str, language: str = "en") -> s
             output.append(field("degradation_peak_ordinal", str(target["value"]), indent + "    "))
             output.append(field("scope_note", target["notes"], indent + "      "))
             output.extend(evidence(target["evidence"], indent + "      "))
+        if "thermal_response_phase" in prop:
+            phase=prop["thermal_response_phase"];boundary=prop["thermal_convection"]
+            output.append(field("thermal_response_phase",code(phase["code"]),indent+"    "))
+            output.append(field("scope",phase["notes"],indent+"    "))
+            output.extend(evidence(phase["evidence"],indent+"      "))
+            output.append(field("thermal_convection",code(boundary["regime"] if boundary["status"]=="reported" else boundary["status"]),indent+"    "))
+            output.append(field("scope",boundary["notes"],indent+"    "))
+            output.extend(evidence(boundary["evidence"],indent+"      "))
         if "thermal_mass_reference_basis" in prop:
             output.extend(fact("thermal_mass_reference_basis", prop["thermal_mass_reference_basis"], indent + "    "))
         if "work_reference_basis" in prop:
@@ -307,8 +318,9 @@ def render_material_catalog(catalog: dict, kind: str, language: str = "en") -> s
             output.append(field(key, value, indent + "  "))
         if "derivation" in prop:
             product = prop["method_definition"]["type"] == "source_reported_thermal_transport_product"
-            output.append(indent + "  " + labels["source_product_notice" if product else "derived_notice"])
-            output.append(field("source_product_derivation" if product else "derivation", raw(prop["derivation"]), indent + "  "))
+            fit = prop["method_definition"]["type"] == "source_reported_thermal_response_fit"
+            output.append(indent + "  " + labels["thermal_response_fit_notice" if fit else "source_product_notice" if product else "derived_notice"])
+            output.append(field("thermal_response_derivation" if fit else "source_product_derivation" if product else "derivation", raw(prop["derivation"]), indent + "  "))
         output.append(field("scope_note", prop["scope_note"], indent + "  "))
         output.extend(evidence(prop["evidence"], indent + "  "))
         output.extend([field("source_read_status", source["read_status"], indent + "  "),

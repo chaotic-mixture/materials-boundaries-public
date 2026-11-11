@@ -1,0 +1,111 @@
+{
+  "scope": "Exact r45 fresh246 checks reused without rerunning;current three CLI gates actually executed",
+  "scoped_tests": {
+    "tests": 246,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "successful": true,
+    "stable_inputs": 114,
+    "inputs_unchanged": true,
+    "scope": "Fresh affected contracts including daily19;not historical sum",
+    "installation_native_admission": "not_run"
+  },
+  "scoped_input_entry_sha256": "93eedc2c0c5da15c24755544301236e128fb7b821ca24528c087369706228d95",
+  "scoped_inputs_still_exact": true,
+  "daily19_subset_not_additional": true,
+  "commands": [
+    {
+      "command": [
+        "F:\\材料边界\\ci-optimization\\.venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "-m",
+        "materials_boundaries.database",
+        "check",
+        "--scientific-contracts"
+      ],
+      "exit_code": 0,
+      "result": {
+        "status": "material_contracts_passed",
+        "snapshot": "921239866811e038708751232e0b1f97242fd80d72a9b726503d830c01f0e8c7",
+        "properties": 5486,
+        "independent_scientific_review": false,
+        "scope": "current_material_graph_once_no_history_replay"
+      }
+    },
+    {
+      "command": [
+        "F:\\材料边界\\ci-optimization\\.venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "-m",
+        "materials_boundaries.database",
+        "export",
+        "--query",
+        "C11000",
+        "--quantity",
+        "mass_density",
+        "--output",
+        "F:\\材料边界\\open-database-evidence\\polymer-consolidated-delivery-20261111-r42-r45\\daily-scope-r1\\database-example"
+      ],
+      "exit_code": 0,
+      "result": {
+        "format": "materials-database/1",
+        "database_snapshot": "921239866811e038708751232e0b1f97242fd80d72a9b726503d830c01f0e8c7",
+        "record_count": 1,
+        "filters": {
+          "query": "C11000",
+          "quantity": "mass_density",
+          "category": null,
+          "source": null
+        },
+        "files": {
+          "records.jsonl": "3d64b2debb77bed35d1fd465f846303f49542596d2f4a563f0541273dec42083"
+        },
+        "review_status": "exported_local_snapshot_not_release_acceptance",
+        "source_rights": "per_source_metadata_no_blanket_relicense"
+      }
+    },
+    {
+      "command": [
+        "F:\\材料边界\\ci-optimization\\.venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "-m",
+        "materials_boundaries.database",
+        "verify",
+        "--snapshot",
+        "F:\\材料边界\\open-database-evidence\\polymer-consolidated-delivery-20261111-r42-r45\\daily-scope-r1\\database-example"
+      ],
+      "exit_code": 0,
+      "result": {
+        "status": "snapshot_integrity_passed",
+        "manifest": {
+          "database_snapshot": "921239866811e038708751232e0b1f97242fd80d72a9b726503d830c01f0e8c7",
+          "files": {
+            "records.jsonl": "3d64b2debb77bed35d1fd465f846303f49542596d2f4a563f0541273dec42083"
+          },
+          "filters": {
+            "category": null,
+            "quantity": "mass_density",
+            "query": "C11000",
+            "source": null
+          },
+          "format": "materials-database/1",
+          "record_count": 1,
+          "review_status": "exported_local_snapshot_not_release_acceptance",
+          "source_rights": "per_source_metadata_no_blanket_relicense"
+        }
+      }
+    }
+  ],
+  "C11000_join_content_unchanged_excluding_database_snapshot": true,
+  "C11000_current_records_sha256": "3d64b2debb77bed35d1fd465f846303f49542596d2f4a563f0541273dec42083",
+  "full_history": "not_run",
+  "HTTP": "not_run",
+  "remote_CI": "not_run_for_uncommitted_content"
+}

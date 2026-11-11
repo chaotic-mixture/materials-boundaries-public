@@ -1249,6 +1249,214 @@
             "software_calculation_performed",
             "software_uncertainty_propagation_performed"
           ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "schema_version": {
+              "const": "1.0.0"
+            },
+            "profile_id": {
+              "const": "thermal_temperature_decay_fit_with_cited_method_v1"
+            },
+            "profile_version": {
+              "const": "1.0.0"
+            },
+            "kind": {
+              "const": "source_reported_temperature_response_fit"
+            },
+            "model": {
+              "const": "T(t)=Tf+(T0-Tf)*exp(-t/tau_c)"
+            },
+            "definition": {
+              "const": "absolute_temperature_deviation_to_fluid_decays_to_initial_divided_by_e"
+            },
+            "primary_delegation": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "primary_doi": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "cited_source_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "cited_doi": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "cited_document_url": {
+                  "type": "string",
+                  "format": "uri",
+                  "pattern": "^(?![\\s\\S]*[\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff])https://[^\\s/?#]+(?:[/?#][^\\s]*)?(?![\\s\\S])"
+                },
+                "cited_document_sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "evidence": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/evidence"
+                  },
+                  "minItems": 1
+                }
+              },
+              "required": [
+                "primary_doi",
+                "cited_source_id",
+                "cited_doi",
+                "cited_document_url",
+                "cited_document_sha256",
+                "evidence"
+              ]
+            },
+            "method_reference": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "source_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "doi": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "url": {
+                  "type": "string",
+                  "format": "uri",
+                  "pattern": "^(?![\\s\\S]*[\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff])https://[^\\s/?#]+(?:[/?#][^\\s]*)?(?![\\s\\S])"
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "inspected_on": {
+                  "type": "string",
+                  "format": "date",
+                  "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                },
+                "inspection_scope": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "use_role": {
+                  "const": "method_definition_only_not_current_protocol_or_numeric_input"
+                },
+                "evidence": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/evidence"
+                  },
+                  "minItems": 1
+                }
+              },
+              "required": [
+                "source_id",
+                "doi",
+                "url",
+                "sha256",
+                "inspected_on",
+                "inspection_scope",
+                "use_role",
+                "evidence"
+              ]
+            },
+            "model_context": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "fluid_temperature": {
+                  "const": "reference_model_assumes_constant"
+                },
+                "heat_transfer_coefficient": {
+                  "const": "reference_model_assumes_uniform_constant"
+                },
+                "radiation": {
+                  "const": "reference_model_neglects_radiation"
+                },
+                "actual_applicability_certified": {
+                  "const": false
+                }
+              },
+              "required": [
+                "fluid_temperature",
+                "heat_transfer_coefficient",
+                "radiation",
+                "actual_applicability_certified"
+              ]
+            },
+            "unverified_fit_inputs": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "raw_temperature_curves": {
+                  "type": "null"
+                },
+                "fit_window": {
+                  "type": "null"
+                },
+                "optimizer_and_weighting": {
+                  "type": "null"
+                },
+                "baseline_temperature_treatment": {
+                  "type": "null"
+                },
+                "fit_aggregation_order": {
+                  "type": "null"
+                },
+                "per_cell_fit_count": {
+                  "type": "null"
+                },
+                "unknown_scope_note": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                }
+              },
+              "required": [
+                "raw_temperature_curves",
+                "fit_window",
+                "optimizer_and_weighting",
+                "baseline_temperature_treatment",
+                "fit_aggregation_order",
+                "per_cell_fit_count",
+                "unknown_scope_note"
+              ]
+            },
+            "software_fit_performed": {
+              "const": false
+            },
+            "software_inverse_performed": {
+              "const": false
+            }
+          },
+          "required": [
+            "schema_version",
+            "profile_id",
+            "profile_version",
+            "kind",
+            "model",
+            "definition",
+            "primary_delegation",
+            "method_reference",
+            "model_context",
+            "unverified_fit_inputs",
+            "software_fit_performed",
+            "software_inverse_performed"
+          ]
         }
       ]
     },

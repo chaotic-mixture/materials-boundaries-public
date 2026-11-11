@@ -1,0 +1,50 @@
+{
+  "status": "unimplemented_contract_concept",
+  "quantity": "thermal_response_characteristic_time",
+  "dimension": "time",
+  "closed_units_proposed": [
+    "s",
+    "ms"
+  ],
+  "domain": "Positive scalar centre;nonnegative absolute plus-minus with exact same unit_code,no implicit multiplier conversion",
+  "definition": "Source-fitted1/e decay time of absolute specimen-to-fluid temperature deviation",
+  "reference_model": "T(t)=Tf+(T0-Tf)*exp(-t/tau_c)",
+  "method_definition_evidence": {
+    "source_id": "bianchi_2024_nr_crosslink_methods",
+    "url": "https://mdpi-res.com/d_attachment/applsci/applsci-14-10525/article_deploy/applsci-14-10525.pdf",
+    "locator": "PDFp8 section2.3.4 Equation5 and surrounding1/e/fitting text"
+  },
+  "primary_delegation_evidence": {
+    "source_id": "bianchi_2025_nr_nanoclay",
+    "url": "https://mdpi-res.com/d_attachment/molecules/molecules-30-03035/article_deploy/molecules-30-03035.pdf",
+    "locator": "PDF p20 section3.3.5 final sentence and Reference10"
+  },
+  "method_reference_scope": "Use model definition only;do not transfer2024natural250s protocol,numerical tables,fit example coefficients,fit standard errors or Bi<0.1 claim into2025forced condition",
+  "required_qualifiers": [
+    "Source-reported phase:post_stretching_hold or post_retraction_recovery",
+    "Convection regime fact with evidence;unknown relevant qualifiers never not_applicable",
+    "Explicit source calculation/fit provenance with primary delegation and separately inspected method-reference document",
+    "Unknown raw curves,fit window,actual solver/weighting,baseline temperature treatment,aggregation order and Table6 statistics"
+  ],
+  "proposed_method": "source_reported_thermal_response_fit",
+  "proposed_profile": "thermal_temperature_decay_fit_with_cited_method_v1",
+  "classification": "published_measurement_derived_reference/source_reports_calculation;not direct independently measured intrinsic relaxation constant",
+  "integration_gates": [
+    "One new closed time branch,old14branches/domains unchanged except explicit new method enumeration",
+    "Preserve old wood and conductivity-product profile objects and old validators",
+    "Two-source evidence and document/DOI/hash/role binding;complete source joins must retain method reference",
+    "Phase and boundary-condition-aware duplicate facts;unknown wording cannot inflate counts",
+    "Four-language quantity/phase/fit/geometry-convection scope notice,complete queries/export/copy isolation",
+    "Independent concrete implementation,then mapping,state assignment,actual installation and final acceptance reviews"
+  ],
+  "forbidden": [
+    "No software refit of temperature curves",
+    "No half-life,cycle-duration,heat-transfer coefficient,diffusivity or intrinsic mechanical relaxation conversion",
+    "No sigma/mean/n transfer from mechanical tests or reference-fit example",
+    "No multiplication of tested specimens byprecycles or frame rate",
+    "No transfer of forced protocol into natural control",
+    "No numeric2024property admission from contradictory Tables6/7"
+  ],
+  "current_native_mapping": "not_prepared",
+  "production_modified": false
+}

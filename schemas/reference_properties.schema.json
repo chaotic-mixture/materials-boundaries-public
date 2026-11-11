@@ -1233,6 +1233,214 @@
             "software_calculation_performed",
             "software_uncertainty_propagation_performed"
           ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "schema_version": {
+              "const": "1.0.0"
+            },
+            "profile_id": {
+              "const": "thermal_temperature_decay_fit_with_cited_method_v1"
+            },
+            "profile_version": {
+              "const": "1.0.0"
+            },
+            "kind": {
+              "const": "source_reported_temperature_response_fit"
+            },
+            "model": {
+              "const": "T(t)=Tf+(T0-Tf)*exp(-t/tau_c)"
+            },
+            "definition": {
+              "const": "absolute_temperature_deviation_to_fluid_decays_to_initial_divided_by_e"
+            },
+            "primary_delegation": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "primary_doi": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "cited_source_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "cited_doi": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "cited_document_url": {
+                  "type": "string",
+                  "format": "uri",
+                  "pattern": "^(?![\\s\\S]*[\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff])https://[^\\s/?#]+(?:[/?#][^\\s]*)?(?![\\s\\S])"
+                },
+                "cited_document_sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "evidence": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/evidence"
+                  },
+                  "minItems": 1
+                }
+              },
+              "required": [
+                "primary_doi",
+                "cited_source_id",
+                "cited_doi",
+                "cited_document_url",
+                "cited_document_sha256",
+                "evidence"
+              ]
+            },
+            "method_reference": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "source_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "doi": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "url": {
+                  "type": "string",
+                  "format": "uri",
+                  "pattern": "^(?![\\s\\S]*[\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff])https://[^\\s/?#]+(?:[/?#][^\\s]*)?(?![\\s\\S])"
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "inspected_on": {
+                  "type": "string",
+                  "format": "date",
+                  "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                },
+                "inspection_scope": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "use_role": {
+                  "const": "method_definition_only_not_current_protocol_or_numeric_input"
+                },
+                "evidence": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/evidence"
+                  },
+                  "minItems": 1
+                }
+              },
+              "required": [
+                "source_id",
+                "doi",
+                "url",
+                "sha256",
+                "inspected_on",
+                "inspection_scope",
+                "use_role",
+                "evidence"
+              ]
+            },
+            "model_context": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "fluid_temperature": {
+                  "const": "reference_model_assumes_constant"
+                },
+                "heat_transfer_coefficient": {
+                  "const": "reference_model_assumes_uniform_constant"
+                },
+                "radiation": {
+                  "const": "reference_model_neglects_radiation"
+                },
+                "actual_applicability_certified": {
+                  "const": false
+                }
+              },
+              "required": [
+                "fluid_temperature",
+                "heat_transfer_coefficient",
+                "radiation",
+                "actual_applicability_certified"
+              ]
+            },
+            "unverified_fit_inputs": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "raw_temperature_curves": {
+                  "type": "null"
+                },
+                "fit_window": {
+                  "type": "null"
+                },
+                "optimizer_and_weighting": {
+                  "type": "null"
+                },
+                "baseline_temperature_treatment": {
+                  "type": "null"
+                },
+                "fit_aggregation_order": {
+                  "type": "null"
+                },
+                "per_cell_fit_count": {
+                  "type": "null"
+                },
+                "unknown_scope_note": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                }
+              },
+              "required": [
+                "raw_temperature_curves",
+                "fit_window",
+                "optimizer_and_weighting",
+                "baseline_temperature_treatment",
+                "fit_aggregation_order",
+                "per_cell_fit_count",
+                "unknown_scope_note"
+              ]
+            },
+            "software_fit_performed": {
+              "const": false
+            },
+            "software_inverse_performed": {
+              "const": false
+            }
+          },
+          "required": [
+            "schema_version",
+            "profile_id",
+            "profile_version",
+            "kind",
+            "model",
+            "definition",
+            "primary_delegation",
+            "method_reference",
+            "model_context",
+            "unverified_fit_inputs",
+            "software_fit_performed",
+            "software_inverse_performed"
+          ]
         }
       ]
     },
@@ -2446,6 +2654,8 @@
                 "unit_code": {
                   "type": "string",
                   "enum": [
+                    "s",
+                    "ms",
                     "J/(g*K)",
                     "J/(kg*K)",
                     "kJ/(kg*K)",
@@ -2909,6 +3119,8 @@
             "unit_code": {
               "type": "string",
               "enum": [
+                "s",
+                "ms",
                 "J/(g*K)",
                 "J/(kg*K)",
                 "kJ/(kg*K)",
@@ -2998,6 +3210,8 @@
             "unit_code": {
               "type": "string",
               "enum": [
+                "s",
+                "ms",
                 "J/(g*K)",
                 "J/(kg*K)",
                 "kJ/(kg*K)",
@@ -3095,6 +3309,8 @@
             "unit_code": {
               "type": "string",
               "enum": [
+                "s",
+                "ms",
                 "J/(g*K)",
                 "J/(kg*K)",
                 "kJ/(kg*K)",
@@ -3565,6 +3781,7 @@
                     "source_reported_crystallographic_derivation",
                     "source_reported_empirical_conversion",
                     "source_reported_thermal_transport_product",
+                    "source_reported_thermal_response_fit",
                     "source_reported_computational_structure_density",
                     "source_reported_molecular_simulation_density"
                   ]
@@ -3921,6 +4138,7 @@
                     "source_reported_crystallographic_derivation",
                     "source_reported_empirical_conversion",
                     "source_reported_thermal_transport_product",
+                    "source_reported_thermal_response_fit",
                     "source_reported_computational_structure_density",
                     "source_reported_molecular_simulation_density"
                   ]
@@ -4277,6 +4495,7 @@
                     "source_reported_crystallographic_derivation",
                     "source_reported_empirical_conversion",
                     "source_reported_thermal_transport_product",
+                    "source_reported_thermal_response_fit",
                     "source_reported_computational_structure_density",
                     "source_reported_molecular_simulation_density"
                   ]
@@ -4624,6 +4843,7 @@
                     "source_reported_crystallographic_derivation",
                     "source_reported_empirical_conversion",
                     "source_reported_thermal_transport_product",
+                    "source_reported_thermal_response_fit",
                     "source_reported_computational_structure_density",
                     "source_reported_molecular_simulation_density"
                   ]
@@ -4975,6 +5195,7 @@
                     "source_reported_crystallographic_derivation",
                     "source_reported_empirical_conversion",
                     "source_reported_thermal_transport_product",
+                    "source_reported_thermal_response_fit",
                     "source_reported_computational_structure_density",
                     "source_reported_molecular_simulation_density"
                   ]
@@ -5322,6 +5543,7 @@
                     "source_reported_crystallographic_derivation",
                     "source_reported_empirical_conversion",
                     "source_reported_thermal_transport_product",
+                    "source_reported_thermal_response_fit",
                     "source_reported_computational_structure_density",
                     "source_reported_molecular_simulation_density"
                   ]
@@ -5669,6 +5891,7 @@
                     "source_reported_crystallographic_derivation",
                     "source_reported_empirical_conversion",
                     "source_reported_thermal_transport_product",
+                    "source_reported_thermal_response_fit",
                     "source_reported_computational_structure_density",
                     "source_reported_molecular_simulation_density"
                   ]
@@ -6016,6 +6239,7 @@
                     "source_reported_crystallographic_derivation",
                     "source_reported_empirical_conversion",
                     "source_reported_thermal_transport_product",
+                    "source_reported_thermal_response_fit",
                     "source_reported_computational_structure_density",
                     "source_reported_molecular_simulation_density"
                   ]
@@ -6363,6 +6587,7 @@
                     "source_reported_crystallographic_derivation",
                     "source_reported_empirical_conversion",
                     "source_reported_thermal_transport_product",
+                    "source_reported_thermal_response_fit",
                     "source_reported_computational_structure_density",
                     "source_reported_molecular_simulation_density"
                   ]
@@ -6718,6 +6943,7 @@
                     "source_reported_crystallographic_derivation",
                     "source_reported_empirical_conversion",
                     "source_reported_thermal_transport_product",
+                    "source_reported_thermal_response_fit",
                     "source_reported_computational_structure_density",
                     "source_reported_molecular_simulation_density"
                   ]
@@ -7069,6 +7295,7 @@
                     "source_reported_crystallographic_derivation",
                     "source_reported_empirical_conversion",
                     "source_reported_thermal_transport_product",
+                    "source_reported_thermal_response_fit",
                     "source_reported_computational_structure_density",
                     "source_reported_molecular_simulation_density"
                   ]
@@ -7424,6 +7651,7 @@
                     "source_reported_crystallographic_derivation",
                     "source_reported_empirical_conversion",
                     "source_reported_thermal_transport_product",
+                    "source_reported_thermal_response_fit",
                     "source_reported_computational_structure_density",
                     "source_reported_molecular_simulation_density"
                   ]
@@ -7775,6 +8003,7 @@
                     "source_reported_crystallographic_derivation",
                     "source_reported_empirical_conversion",
                     "source_reported_thermal_transport_product",
+                    "source_reported_thermal_response_fit",
                     "source_reported_computational_structure_density",
                     "source_reported_molecular_simulation_density"
                   ]
@@ -8126,6 +8355,7 @@
                     "source_reported_crystallographic_derivation",
                     "source_reported_empirical_conversion",
                     "source_reported_thermal_transport_product",
+                    "source_reported_thermal_response_fit",
                     "source_reported_computational_structure_density",
                     "source_reported_molecular_simulation_density"
                   ]
@@ -8280,6 +8510,362 @@
             "universal_bound",
             "engineering_allowable",
             "verification"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^refprop_[a-z0-9][a-z0-9_]*(?![\\s\\S])",
+              "maxLength": 160
+            },
+            "version": {
+              "type": "string",
+              "pattern": "^1\\.0\\.(0|[1-9][0-9]*)(?![\\s\\S])"
+            },
+            "material_state_id": {
+              "type": "string",
+              "pattern": "^state_[a-z0-9][a-z0-9_]*(?![\\s\\S])",
+              "maxLength": 160
+            },
+            "quantity": {
+              "const": "thermal_response_characteristic_time"
+            },
+            "quantity_dimension": {
+              "const": "time"
+            },
+            "source_property_label": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "reported_value": {
+              "$ref": "#/$defs/thermal_response_reported_value"
+            },
+            "evidence_kind": {
+              "type": "string",
+              "enum": [
+                "manufacturer_reference",
+                "technical_association_reference",
+                "published_experimental_reference",
+                "published_computational_reference",
+                "published_handbook_reference",
+                "published_measurement_derived_reference"
+              ]
+            },
+            "reporting_basis": {
+              "type": "string",
+              "enum": [
+                "typical",
+                "nominal",
+                "guideline",
+                "specification_limit",
+                "reported_summary",
+                "not_stated"
+              ]
+            },
+            "determination_basis": {
+              "type": "string",
+              "enum": [
+                "source_reports_measurement",
+                "source_reports_calculation",
+                "source_reports_compiled_measurements",
+                "not_stated",
+                "mixed_or_unclear"
+              ]
+            },
+            "basis_note": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "conditions": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "temperature": {
+                  "$ref": "#/$defs/fact"
+                },
+                "test_standard": {
+                  "$ref": "#/$defs/fact"
+                },
+                "test_method": {
+                  "$ref": "#/$defs/fact"
+                },
+                "direction": {
+                  "$ref": "#/$defs/fact"
+                },
+                "conditioning": {
+                  "$ref": "#/$defs/fact"
+                },
+                "loading_rate": {
+                  "$ref": "#/$defs/fact"
+                },
+                "additional_conditions": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "minLength": 1,
+                        "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                      },
+                      "fact": {
+                        "$ref": "#/$defs/fact"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "fact"
+                    ]
+                  },
+                  "minItems": 0
+                }
+              },
+              "required": [
+                "temperature",
+                "test_standard",
+                "test_method",
+                "direction",
+                "conditioning",
+                "loading_rate"
+              ]
+            },
+            "density_basis": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "enum": [
+                    "apparent",
+                    "bulk",
+                    "true",
+                    "crystallographic",
+                    "simulation_cell",
+                    "oven_dry_mass_over_fresh_or_water_saturated_volume",
+                    "not_stated"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "summary_statistic": {
+              "type": "string",
+              "enum": [
+                "not_stated",
+                "reported_value",
+                "reported_mean"
+              ]
+            },
+            "uncertainty": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/uncertainty"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "uncertainty_status": {
+              "type": "string",
+              "enum": [
+                "reported_standard_deviation",
+                "reported_confidence_interval",
+                "reported_plus_minus_unspecified",
+                "reported_measures",
+                "not_reported_in_inspected_source",
+                "not_applicable"
+              ]
+            },
+            "uncertainty_note": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "sample_count": {
+              "$ref": "#/$defs/sample_count"
+            },
+            "method_definition": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "source_reported_conventional",
+                    "source_reported_compilation",
+                    "source_reported_crystallographic_derivation",
+                    "source_reported_empirical_conversion",
+                    "source_reported_thermal_transport_product",
+                    "source_reported_thermal_response_fit",
+                    "source_reported_computational_structure_density",
+                    "source_reported_molecular_simulation_density"
+                  ]
+                },
+                "definition": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "extraction_window": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/$defs/reported_window"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "evidence": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/evidence"
+                  },
+                  "minItems": 1
+                }
+              },
+              "required": [
+                "type",
+                "definition",
+                "extraction_window",
+                "evidence"
+              ]
+            },
+            "source_discrepancies": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "description": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                  },
+                  "disposition": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                  },
+                  "evidence": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/evidence"
+                    },
+                    "minItems": 1
+                  }
+                },
+                "required": [
+                  "description",
+                  "disposition",
+                  "evidence"
+                ]
+              },
+              "minItems": 0
+            },
+            "source_id": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "source_document": {
+              "$ref": "#/$defs/source_document"
+            },
+            "scope_note": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evaluation_support": {
+              "const": "catalog_only"
+            },
+            "universal_bound": {
+              "const": false
+            },
+            "engineering_allowable": {
+              "const": false
+            },
+            "verification": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "source_inspection_scope": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "transcription_cross_check": {
+                  "const": "completed"
+                },
+                "independent_scientific_review": {
+                  "const": false
+                },
+                "raw_data_reanalysis": {
+                  "const": false
+                }
+              },
+              "required": [
+                "source_inspection_scope",
+                "transcription_cross_check",
+                "independent_scientific_review",
+                "raw_data_reanalysis"
+              ]
+            },
+            "derivation": {
+              "$ref": "#/$defs/derivation"
+            },
+            "thermal_response_phase": {
+              "$ref": "#/$defs/thermal_response_phase"
+            },
+            "thermal_convection": {
+              "$ref": "#/$defs/thermal_convection"
+            }
+          },
+          "required": [
+            "id",
+            "version",
+            "material_state_id",
+            "quantity",
+            "quantity_dimension",
+            "source_property_label",
+            "reported_value",
+            "evidence_kind",
+            "reporting_basis",
+            "determination_basis",
+            "basis_note",
+            "conditions",
+            "density_basis",
+            "summary_statistic",
+            "uncertainty",
+            "uncertainty_status",
+            "uncertainty_note",
+            "sample_count",
+            "method_definition",
+            "source_discrepancies",
+            "source_id",
+            "evidence",
+            "source_document",
+            "scope_note",
+            "evaluation_support",
+            "universal_bound",
+            "engineering_allowable",
+            "verification",
+            "thermal_response_phase",
+            "thermal_convection"
           ]
         }
       ]
@@ -9306,6 +9892,146 @@
             "number"
           ]
         }
+      ]
+    },
+    "thermal_response_phase": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "type": "string",
+          "enum": [
+            "post_stretching_hold",
+            "post_retraction_recovery"
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          },
+          "minItems": 1
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        }
+      },
+      "required": [
+        "code",
+        "evidence",
+        "notes"
+      ]
+    },
+    "thermal_convection": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "const": "reported"
+            },
+            "regime": {
+              "type": "string",
+              "enum": [
+                "natural_convection",
+                "forced_convection"
+              ]
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "notes": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            }
+          },
+          "required": [
+            "status",
+            "regime",
+            "evidence",
+            "notes"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "type": "string",
+              "enum": [
+                "not_reported_in_inspected_source",
+                "not_verified"
+              ]
+            },
+            "regime": {
+              "type": "null"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 0
+            },
+            "notes": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            }
+          },
+          "required": [
+            "status",
+            "regime",
+            "evidence",
+            "notes"
+          ]
+        }
+      ]
+    },
+    "thermal_response_reported_value": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "scalar"
+        },
+        "value_text": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "unit_text": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "unit_code": {
+          "type": "string",
+          "enum": [
+            "s",
+            "ms"
+          ]
+        },
+        "number": {
+          "type": "string",
+          "maxLength": 49,
+          "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+        }
+      },
+      "required": [
+        "kind",
+        "value_text",
+        "unit_text",
+        "unit_code",
+        "number"
       ]
     }
   }

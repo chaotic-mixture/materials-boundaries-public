@@ -38,12 +38,14 @@ class ThermalTransportDerivationTests(unittest.TestCase):
     def test_disjoint_schema_preserves_old_wood_profile(self):
         schema=json.loads((Path(__file__).resolve().parents[1]/'schemas/reference_properties.schema.json').read_bytes())
         self.assertEqual(schema,_PROPERTIES_SCHEMA);Draft202012Validator.check_schema(schema)
-        old,new=schema['$defs']['derivation']['oneOf']
+        old,new,fit=schema['$defs']['derivation']['oneOf']
+        self.assertEqual(fit['properties']['profile_id']['const'],'thermal_temperature_decay_fit_with_cited_method_v1')
         self.assertEqual(hashlib.sha256(json.dumps(old,sort_keys=True,ensure_ascii=False).encode()).hexdigest(),'cc60366b0c11aaaf5aaaa30e6f9d43e8db3c57a2e0eedb9802acb4513945df21')
-        original_branches=deepcopy(schema['$defs']['property']['oneOf'])
+        original_branches=deepcopy(schema['$defs']['property']['oneOf'][:14])
         for branch in original_branches:
             methods=branch['properties']['method_definition']['properties']['type']['enum']
             self.assertEqual(methods.count(TRANSPORT_METHOD),1);methods.remove(TRANSPORT_METHOD)
+            self.assertEqual(methods.count('source_reported_thermal_response_fit'),1);methods.remove('source_reported_thermal_response_fit')
         self.assertEqual(hashlib.sha256(json.dumps(original_branches,sort_keys=True,ensure_ascii=False).encode()).hexdigest(),'da4c82b36aa69587077b5023afe935aebc94ed6769a1abc613d91bfb374f55bc')
         for graph in (fixture(),synthetic_derived_catalog(),direct_fixture()):
             Draft202012Validator(schema).validate(graph[1]);validate_material_catalog(*graph)
