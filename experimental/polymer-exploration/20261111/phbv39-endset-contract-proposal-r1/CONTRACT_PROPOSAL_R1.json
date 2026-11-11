@@ -1,0 +1,35 @@
+{
+  "schema": "source-qualified-TGA-endset-proposal/1",
+  "source_id": "abbasi_2022_manure_phbv",
+  "existing_identity_id": "mat_abbasi2022_manure_phbv39",
+  "existing_tga_state_id": "state_abbasi2022_manure_phbv39_tga",
+  "source_label": "T_endset",
+  "number": "333",
+  "unit_code": "degC",
+  "quantity_proposed": "thermal_degradation_endset_temperature",
+  "dimension": "temperature",
+  "scope": "Source-labelled nonisothermal TGA degradation endset only;not DSC melting/crystallization endset,maximum furnace temperature,zero mass,service limit or complete chemical degradation",
+  "endpoint_definition_proposed": {
+    "reported": "Nonblank source algorithm text plus same inspected primary-document method/condition evidence",
+    "unknown": "Explicit not_reported_in_inspected_source or not_verified;null text,nonblank qualification notes and inspected primary condition evidence;never invent tangent/baseline/threshold"
+  },
+  "current_source_definition": "Unknown operational endset criterion;source Table4 literal only",
+  "schema_proposal": "Separate closed branch;preserve all current16branch objects and old quantity contracts;Celsius/K and absolute-temperature floors follow existing temperature-coordinate rules;uncertainty magnitude same unit and nonnegative",
+  "deduplication": "Same source document/cell/value/otherconditions is one fact;unknown-to-reported definition is a revision,not extra coverage. Label/notes/number trailing zeros do not create distinct facts. Distinct source-labelled events need explicit source evidence;single-step text does not assign event ordinal1.",
+  "forbidden_inferences": [
+    "No onset/DTG/endset ordering law imposed across unknown event correspondence",
+    "No derivation of width,duration,residue fraction or mechanical failure",
+    "No source event ordinal inferred from one-step behavior",
+    "No per-cell n2,mean or error inferred from duplicate",
+    "No new experimental independence or PDF verification asserted"
+  ],
+  "required_gates": [
+    "independent source/type-concept adjudication",
+    "closed implementation/schema/fourlanguage display and meaningful fictional checks",
+    "independent implementation review",
+    "exact existing-state revision/property mapping and independent review",
+    "local apply/complete-object recovery/real installation/final review"
+  ],
+  "native_applied": false,
+  "runtime_changed": false
+}

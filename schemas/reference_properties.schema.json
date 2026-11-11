@@ -9227,6 +9227,362 @@
             "thermal_scan_phase",
             "thermal_phase_occurrence_ordinal"
           ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^refprop_[a-z0-9][a-z0-9_]*(?![\\s\\S])",
+              "maxLength": 160
+            },
+            "version": {
+              "type": "string",
+              "pattern": "^1\\.0\\.(0|[1-9][0-9]*)(?![\\s\\S])"
+            },
+            "material_state_id": {
+              "type": "string",
+              "pattern": "^state_[a-z0-9][a-z0-9_]*(?![\\s\\S])",
+              "maxLength": 160
+            },
+            "quantity": {
+              "const": "thermal_degradation_endset_temperature"
+            },
+            "quantity_dimension": {
+              "const": "temperature"
+            },
+            "source_property_label": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "reported_value": {
+              "$ref": "#/$defs/temperature_reported_value"
+            },
+            "evidence_kind": {
+              "type": "string",
+              "enum": [
+                "manufacturer_reference",
+                "technical_association_reference",
+                "published_experimental_reference",
+                "published_computational_reference",
+                "published_handbook_reference",
+                "published_measurement_derived_reference"
+              ]
+            },
+            "reporting_basis": {
+              "type": "string",
+              "enum": [
+                "typical",
+                "nominal",
+                "guideline",
+                "specification_limit",
+                "reported_summary",
+                "not_stated"
+              ]
+            },
+            "determination_basis": {
+              "type": "string",
+              "enum": [
+                "source_reports_measurement",
+                "source_reports_calculation",
+                "source_reports_compiled_measurements",
+                "not_stated",
+                "mixed_or_unclear"
+              ]
+            },
+            "basis_note": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "conditions": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "temperature": {
+                  "$ref": "#/$defs/fact"
+                },
+                "test_standard": {
+                  "$ref": "#/$defs/fact"
+                },
+                "test_method": {
+                  "$ref": "#/$defs/fact"
+                },
+                "direction": {
+                  "$ref": "#/$defs/fact"
+                },
+                "conditioning": {
+                  "$ref": "#/$defs/fact"
+                },
+                "loading_rate": {
+                  "$ref": "#/$defs/fact"
+                },
+                "additional_conditions": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "minLength": 1,
+                        "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                      },
+                      "fact": {
+                        "$ref": "#/$defs/fact"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "fact"
+                    ]
+                  },
+                  "minItems": 0
+                }
+              },
+              "required": [
+                "temperature",
+                "test_standard",
+                "test_method",
+                "direction",
+                "conditioning",
+                "loading_rate"
+              ]
+            },
+            "density_basis": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "enum": [
+                    "apparent",
+                    "bulk",
+                    "true",
+                    "crystallographic",
+                    "simulation_cell",
+                    "oven_dry_mass_over_fresh_or_water_saturated_volume",
+                    "not_stated"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "summary_statistic": {
+              "type": "string",
+              "enum": [
+                "not_stated",
+                "reported_value",
+                "reported_mean"
+              ]
+            },
+            "uncertainty": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/uncertainty"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "uncertainty_status": {
+              "type": "string",
+              "enum": [
+                "reported_standard_deviation",
+                "reported_confidence_interval",
+                "reported_plus_minus_unspecified",
+                "reported_measures",
+                "not_reported_in_inspected_source",
+                "not_applicable"
+              ]
+            },
+            "uncertainty_note": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "sample_count": {
+              "$ref": "#/$defs/sample_count"
+            },
+            "method_definition": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "source_reported_conventional",
+                    "source_reported_compilation",
+                    "source_reported_crystallographic_derivation",
+                    "source_reported_empirical_conversion",
+                    "source_reported_thermal_transport_product",
+                    "source_reported_thermal_response_fit",
+                    "source_reported_computational_structure_density",
+                    "source_reported_molecular_simulation_density"
+                  ]
+                },
+                "definition": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "extraction_window": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/$defs/reported_window"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "evidence": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/evidence"
+                  },
+                  "minItems": 1
+                }
+              },
+              "required": [
+                "type",
+                "definition",
+                "extraction_window",
+                "evidence"
+              ]
+            },
+            "source_discrepancies": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "description": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                  },
+                  "disposition": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                  },
+                  "evidence": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/evidence"
+                    },
+                    "minItems": 1
+                  }
+                },
+                "required": [
+                  "description",
+                  "disposition",
+                  "evidence"
+                ]
+              },
+              "minItems": 0
+            },
+            "source_id": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "source_document": {
+              "$ref": "#/$defs/source_document"
+            },
+            "scope_note": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evaluation_support": {
+              "const": "catalog_only"
+            },
+            "universal_bound": {
+              "const": false
+            },
+            "engineering_allowable": {
+              "const": false
+            },
+            "verification": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "source_inspection_scope": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "transcription_cross_check": {
+                  "const": "completed"
+                },
+                "independent_scientific_review": {
+                  "const": false
+                },
+                "raw_data_reanalysis": {
+                  "const": false
+                }
+              },
+              "required": [
+                "source_inspection_scope",
+                "transcription_cross_check",
+                "independent_scientific_review",
+                "raw_data_reanalysis"
+              ]
+            },
+            "derivation": {
+              "$ref": "#/$defs/derivation"
+            },
+            "thermal_scan_definition": {
+              "$ref": "#/$defs/thermal_scan_definition"
+            },
+            "degradation_endset_definition": {
+              "$ref": "#/$defs/degradation_endset_definition"
+            }
+          },
+          "required": [
+            "id",
+            "version",
+            "material_state_id",
+            "quantity",
+            "quantity_dimension",
+            "source_property_label",
+            "reported_value",
+            "evidence_kind",
+            "reporting_basis",
+            "determination_basis",
+            "basis_note",
+            "conditions",
+            "density_basis",
+            "summary_statistic",
+            "uncertainty",
+            "uncertainty_status",
+            "uncertainty_note",
+            "sample_count",
+            "method_definition",
+            "source_discrepancies",
+            "source_id",
+            "evidence",
+            "source_document",
+            "scope_note",
+            "evaluation_support",
+            "universal_bound",
+            "engineering_allowable",
+            "verification",
+            "thermal_scan_definition",
+            "degradation_endset_definition"
+          ]
         }
       ]
     },
@@ -10593,6 +10949,76 @@
           "required": [
             "status",
             "value",
+            "evidence",
+            "notes"
+          ]
+        }
+      ]
+    },
+    "degradation_endset_definition": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "const": "reported"
+            },
+            "text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "notes": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            }
+          },
+          "required": [
+            "status",
+            "text",
+            "evidence",
+            "notes"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "type": "string",
+              "enum": [
+                "not_reported_in_inspected_source",
+                "not_verified"
+              ]
+            },
+            "text": {
+              "type": "null"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "notes": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            }
+          },
+          "required": [
+            "status",
+            "text",
             "evidence",
             "notes"
           ]

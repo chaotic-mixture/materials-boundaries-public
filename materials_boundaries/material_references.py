@@ -26,6 +26,7 @@ THERMAL_NEW_QUANTITIES = ("mass_specific_heat_capacity", "thermal_diffusivity")
 RESPONSE_TIME_UNITS = ("s", "ms")
 WORK_UNITS = ("J/cm^3", "MJ/m^3", "J/m^3")
 QUANTITY_DIMENSIONS = {
+    "thermal_degradation_endset_temperature": "temperature",
     "crystallization_peak_temperature": "temperature",
     "thermal_response_characteristic_time": "time",
     "mass_specific_heat_capacity": "energy_per_mass_temperature",
@@ -134,7 +135,7 @@ TGA_TEMPERATURE_QUANTITIES = (
     "thermal_degradation_onset_temperature", "temperature_at_specified_mass_loss",
     "thermal_degradation_rate_peak_temperature",
 )
-RESULT_TEMPERATURE_QUANTITIES = (*TEMPERATURE_QUANTITIES, "crystallization_peak_temperature", *TGA_TEMPERATURE_QUANTITIES)
+RESULT_TEMPERATURE_QUANTITIES = ("thermal_degradation_endset_temperature", *TEMPERATURE_QUANTITIES, "crystallization_peak_temperature", *TGA_TEMPERATURE_QUANTITIES)
 TGA_QUANTITIES = (*TGA_TEMPERATURE_QUANTITIES, "tga_residue_percentage")
 HTTPS = {"type": "string", "format": "uri", "pattern": r"^(?![\s\S]*[\x00-\x1f\x7f-\x9f\ud800-\udfff])https://[^\s/?#]+(?:[/?#][^\s]*)?(?![\s\S])"}
 
@@ -415,7 +416,7 @@ def _make_properties_schema():
     other = definitions["property"]
     other["properties"]["quantity"] = _enum(
         q for q in QUANTITY_DIMENSIONS
-        if q not in {"crystallization_peak_temperature", "thermal_response_characteristic_time", *THERMAL_NEW_QUANTITIES, "thermal_conductivity", "dielectric_breakdown_strength", "tensile_stress_at_specified_elongation", "shore_a_hardness", *TEMPERATURE_QUANTITIES, *TGA_QUANTITIES, "volumetric_tensile_work_to_break"}
+        if q not in {"thermal_degradation_endset_temperature", "crystallization_peak_temperature", "thermal_response_characteristic_time", *THERMAL_NEW_QUANTITIES, "thermal_conductivity", "dielectric_breakdown_strength", "tensile_stress_at_specified_elongation", "shore_a_hardness", *TEMPERATURE_QUANTITIES, *TGA_QUANTITIES, "volumetric_tensile_work_to_break"}
         and q not in PERCENT_ELONGATION_QUANTITIES)
     del other["properties"]["specified_elongation"]
     definitions["specified_mass_loss"] = _object({
@@ -508,7 +509,16 @@ def _make_properties_schema():
     for qualifier in ("thermal_scan_definition", "thermal_scan_phase", "thermal_phase_occurrence_ordinal"):
         crystallization["properties"][qualifier] = _ref(qualifier)
         crystallization["required"].append(qualifier)
-    definitions["property"] = {"oneOf": [other, stress, elongation, shore, temperature, electric, thermal, *tga_branches, work, *new_thermal, response, crystallization]}
+    definitions["degradation_endset_definition"] = {"oneOf": [
+        _object({"status": {"const": "reported"}, "text": TEXT, "evidence": evidence, "notes": TEXT}),
+        _object({"status": _enum(("not_reported_in_inspected_source", "not_verified")), "text": NULL, "evidence": evidence, "notes": TEXT}),
+    ]}
+    endset = deepcopy(temperature)
+    endset["properties"]["quantity"] = {"const": "thermal_degradation_endset_temperature"}
+    for qualifier in ("thermal_scan_definition", "degradation_endset_definition"):
+        endset["properties"][qualifier] = _ref(qualifier)
+        endset["required"].append(qualifier)
+    definitions["property"] = {"oneOf": [other, stress, elongation, shore, temperature, electric, thermal, *tga_branches, work, *new_thermal, response, crystallization, endset]}
     return {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "$id": "urn:materials-boundaries:schema:reference_properties:1.0.0",
@@ -939,6 +949,8 @@ def _validate_temperature_value(value, path):
 
 def _absolute_uncertainty_unit_matches(prop, unit):
     central = prop["reported_value"]["unit_code"]
+    if prop["quantity"] == "thermal_degradation_endset_temperature":
+        return unit == central
     return (unit == central or (prop["quantity"] in RESULT_TEMPERATURE_QUANTITIES
             and central in TEMPERATURE_UNITS and unit in TEMPERATURE_UNITS))
 
@@ -1013,6 +1025,15 @@ def _validate_property(prop):
             if not any(e["url"] == prop["source_document"]["url"]
                        for e in _tagged(descriptor["evidence"], "condition", source)):
                 _fail(path, "TGA qualifier needs primary inspected-document condition evidence")
+    if prop["quantity"] == "thermal_degradation_endset_temperature":
+        for field in ("thermal_scan_definition", "degradation_endset_definition"):
+            descriptor = prop[field]
+            roles = ("method", "condition") if field == "thermal_scan_definition" or descriptor.get("status") == "reported" else ("condition",)
+            for role in roles:
+                _require_tag(descriptor["evidence"], role, path + "." + field, source)
+                if not any(e["url"] == prop["source_document"]["url"]
+                           for e in _tagged(descriptor["evidence"], role, source)):
+                    _fail(path, "TGA endset qualifiers need primary inspected-document evidence")
     if prop["quantity"] == "crystallization_peak_temperature":
         for field in ("thermal_scan_definition", "thermal_scan_phase", "thermal_phase_occurrence_ordinal"):
             descriptor = prop[field]
@@ -1293,6 +1314,12 @@ def _unique_fact(prop, seen):
         seen.add(unknown_key if unknown else known_key)
     if prop["quantity"] == "crystallization_peak_temperature":
         _crystallization_coordinate_guard(prop, signature, seen)
+    if prop["quantity"] == "thermal_degradation_endset_temperature":
+        # Definition enrichment is a revision, not extra source coverage.
+        key = "tga_endset:" + _coordinate_fact_base(signature, "endset_definition")
+        if key in seen:
+            _fail(prop["id"], "duplicate source fact for the same TGA endset cell")
+        seen.add(key)
     if signature in seen:
         _fail(prop["id"], "duplicate source fact for the same material state")
     seen.add(signature)

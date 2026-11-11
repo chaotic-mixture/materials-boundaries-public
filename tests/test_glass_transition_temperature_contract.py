@@ -125,7 +125,7 @@ class GlassTransitionTemperatureContractTests(unittest.TestCase):
 
     def test_generated_schema_fifth_branch_and_catalog_only_contract(self):
         schema=json.loads((Path(__file__).resolve().parents[1]/'schemas/reference_properties.schema.json').read_bytes())
-        self.assertEqual(schema,_PROPERTIES_SCHEMA);self.assertEqual(len(schema['$defs']['property']['oneOf']),16)
+        self.assertEqual(schema,_PROPERTIES_SCHEMA);self.assertEqual(len(schema['$defs']['property']['oneOf']),17)
         Draft202012Validator.check_schema(schema);Draft202012Validator(schema).validate(fixture()[1])
         for update in ({'engineering_allowable':True},{'universal_bound':True},{'evaluation_support':'evaluator_input'},{'quantity_dimension':'pressure'}):
             graph=fixture();graph[1]['records'][0].update(update)

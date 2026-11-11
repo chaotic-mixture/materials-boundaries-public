@@ -112,7 +112,7 @@ class MeltingPeakTemperatureContractTests(unittest.TestCase):
 
     def test_generated_schema_retains_five_branches_and_existing_Tg(self):
         schema=json.loads((Path(__file__).resolve().parents[1]/'schemas/reference_properties.schema.json').read_bytes())
-        self.assertEqual(schema,_PROPERTIES_SCHEMA);self.assertEqual(len(schema['$defs']['property']['oneOf']),16)
+        self.assertEqual(schema,_PROPERTIES_SCHEMA);self.assertEqual(len(schema['$defs']['property']['oneOf']),17)
         Draft202012Validator.check_schema(schema)
         for graph in (fixture(),two_peaks(),tg_fixture(),synthetic_mean_catalog(),target_fixture()):
             Draft202012Validator(schema).validate(graph[1]);validate_material_catalog(*graph)

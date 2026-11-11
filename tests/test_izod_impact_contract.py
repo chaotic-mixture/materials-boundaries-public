@@ -103,7 +103,7 @@ class IzodImpactContractTests(unittest.TestCase):
 
     def test_public_schema_legacy_domains_and_no_target_or_engine_use(self):
         schema=json.loads((Path(__file__).resolve().parents[1]/'schemas/reference_properties.schema.json').read_bytes())
-        self.assertEqual(schema,_PROPERTIES_SCHEMA);self.assertEqual(len(schema['$defs']['property']['oneOf']),16)
+        self.assertEqual(schema,_PROPERTIES_SCHEMA);self.assertEqual(len(schema['$defs']['property']['oneOf']),17)
         Draft202012Validator.check_schema(schema)
         for update in [{'specified_elongation':target_fixture()[1]['records'][0]['specified_elongation']},
                        {'quantity':'charpy_impact_strength'},{'quantity':'mode_i_energy_release_rate'},
