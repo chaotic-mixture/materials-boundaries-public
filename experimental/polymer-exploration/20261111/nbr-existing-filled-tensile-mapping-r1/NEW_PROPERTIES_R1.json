@@ -1,0 +1,3752 @@
+[
+  {
+    "version": "1.0.0",
+    "quantity": "tensile_stress_at_specified_elongation",
+    "quantity_dimension": "pressure",
+    "source_property_label": "M100 (MPa)",
+    "reported_value": {
+      "kind": "scalar",
+      "unit_text": "MPa",
+      "unit_code": "MPa",
+      "value_text": "1.84",
+      "number": "1.84"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Source section3.3 pools tensile results across specimens/directions;reported mean,not paired raw curves or certified directional equivalence.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Tensile-test temperature is not stated. Mixing at 110 °C and pressing at 170 °C are preparation conditions, not testing temperatures; no standard laboratory default is assigned."
+      },
+      "test_standard": {
+        "status": "reported",
+        "text": "ISO 37; Type 2 dumbbell specimens",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/B",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-stated method; edition and independent compliance verification are not supplied."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "ISO 37 tensile testing with Type 2 dumbbell specimens cut from nominally 2 mm vulcanized sheets; Zwick Z005 universal testing machine with a 5 kN load cell, at 500 mm/min crosshead speed. Two mutually perpendicular specimen orientations were tested and the source averaged tensile results across all specimens regardless of orientation. Numerical gauge geometry, detailed stress/strength extraction convention, test temperature, humidity, conditioning and tensile specimen count are not established in the selected source statements.",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/B",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-labelled finite-elongation stress, not modulus slope; 5kN is instrument capacity. ISO2024 terminology reference does not identify the edition used by authors or prove compliance."
+      },
+      "direction": {
+        "status": "reported",
+        "text": "Tensile results averaged across specimens tested in two mutually perpendicular orientations",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/B",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "No source-unstated orientation axes, weighting, direction-specific strength or universal isotropy are inferred."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Tensile-specific pre-test conditioning time, temperature and humidity are not reported. Preparation, cure and density/foaming procedures are not substituted."
+      },
+      "loading_rate": {
+        "status": "reported",
+        "text": "500 mm/min crosshead speed",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/B",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Crosshead speed is not converted to a strain rate without source-reported gauge information."
+      },
+      "additional_conditions": [
+        {
+          "name": "test_relative_humidity",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Tensile-test relative humidity is not stated; no default humidity is assigned."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "reported_mean",
+    "uncertainty": {
+      "type": "reported_plus_minus_unspecified",
+      "unit_text": "MPa",
+      "unit_code": "MPa",
+      "scope": "Selected Table4 B M100 source stress group only; per-target participant count and ± type unknown.",
+      "coverage_factor": null,
+      "confidence_level": null,
+      "value_text": "0.48",
+      "number": "0.48",
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLtbl4/B/column4",
+          "supports": [
+            "uncertainty"
+          ]
+        }
+      ]
+    },
+    "uncertainty_status": "reported_plus_minus_unspecified",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "Selected Table4 B M100 target group only; per-target/per-direction specimen and independent-batch counts unknown. Do not assume every tensile specimen reached this target or equals the strength-test population.",
+      "source_statement": "No tensile specimen count or per-orientation count is stated in the inspected methods/results; two orientations are not n=2 specimens and ANOVA statistics are not used to reconstruct n.",
+      "evidence": []
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source ISO37 Type2 tensile testing of nominal2mm vulcanized sheet on ZwickZ005/5kN load cell at500mm/min, pooled across two orientations. Reported M100 stress at 100% elongation; source standard edition/compliance, actual strain estimator/stress convention and point-extraction/averaging order unknown. No division by elongation or fitted tangent/secant modulus.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLtbl4/B/column4",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [],
+    "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+    "source_document": {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+      "revision": "Primary Europe PMC full-text XML; distinct from the historically inspected university PDF.",
+      "inspected_on": "2026-11-11",
+      "sha256": "2d8008e2b16dd3fe14b91a6747fb3632c70b461ccee4ccc8dea546dc3c272347",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained primaryXML Table4 B selected cell;sections2.2/2.3/3.3method/pooling/statistics;no newPDF orrawdata analysis.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained primaryXML Table4 B selected cell;sections2.2/2.3/3.3method/pooling/statistics;no newPDF orrawdata analysis.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "id": "refprop_tamas_benyei2025_nbr_mcf5_m100_stress",
+    "material_state_id": "state_tamas_benyei2025_nbr_mcf5",
+    "uncertainty_note": "Source ± undefined;break-specific SD not transferred.",
+    "evidence": [
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLtbl4/B/column4",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/B",
+        "supports": [
+          "summary_statistic"
+        ]
+      }
+    ],
+    "scope_note": "Source-qualified solid formulation B with 5 phr recycled milled carbon fiber (mCF/rCF), PERBUNAN 3445 F NBR and the fixed Table 3 additives. The distinct 5 phr fiber loading defines the formulation relative to the other solid recipes and the existing mCF=0 REF. Identity is the source-defined solid NBR/recycled-milled-carbon-fiber formulation, not a specimen, test direction, curing condition, supplier grade or foam state. PERBUNAN 3445 in Table 2 abbreviates the section 2.1 PERBUNAN 3445 F input, not a second material. Sul is ACTMIX S-80 product input as added; no conversion to elemental sulfur or to a fully specified chemical composition is made. The recycled fiber input is not assumed to be pure carbon, and no source-unstated final mass fractions or filler-purity correction are inferred. Table 3 loadings are retained in phr without normalization. Selected Table4 B tensile fact;phr unchanged. n,participants,weights,gauge,conditioning andextraction/pooling order unknown. Not engineering allowable or automatic mechanics input.",
+    "specified_elongation": {
+      "value_text": "100",
+      "number": "100",
+      "unit_text": "%",
+      "unit_code": "percent",
+      "basis": "source_reported_percent_elongation",
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/B",
+          "supports": [
+            "condition"
+          ]
+        }
+      ],
+      "notes": "Source M100 at 100% elongation. This is the source target, not a verified specimen-wise strain measurement, stretch ratio or logarithmic strain. Gauge and strain-estimation implementation remain unknown; no target/result conversion performed."
+    }
+  },
+  {
+    "version": "1.0.0",
+    "quantity": "tensile_stress_at_specified_elongation",
+    "quantity_dimension": "pressure",
+    "source_property_label": "M200 (MPa)",
+    "reported_value": {
+      "kind": "scalar",
+      "unit_text": "MPa",
+      "unit_code": "MPa",
+      "value_text": "2.79",
+      "number": "2.79"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Source section3.3 pools tensile results across specimens/directions;reported mean,not paired raw curves or certified directional equivalence.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Tensile-test temperature is not stated. Mixing at 110 °C and pressing at 170 °C are preparation conditions, not testing temperatures; no standard laboratory default is assigned."
+      },
+      "test_standard": {
+        "status": "reported",
+        "text": "ISO 37; Type 2 dumbbell specimens",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/B",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-stated method; edition and independent compliance verification are not supplied."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "ISO 37 tensile testing with Type 2 dumbbell specimens cut from nominally 2 mm vulcanized sheets; Zwick Z005 universal testing machine with a 5 kN load cell, at 500 mm/min crosshead speed. Two mutually perpendicular specimen orientations were tested and the source averaged tensile results across all specimens regardless of orientation. Numerical gauge geometry, detailed stress/strength extraction convention, test temperature, humidity, conditioning and tensile specimen count are not established in the selected source statements.",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/B",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-labelled finite-elongation stress, not modulus slope; 5kN is instrument capacity. ISO2024 terminology reference does not identify the edition used by authors or prove compliance."
+      },
+      "direction": {
+        "status": "reported",
+        "text": "Tensile results averaged across specimens tested in two mutually perpendicular orientations",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/B",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "No source-unstated orientation axes, weighting, direction-specific strength or universal isotropy are inferred."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Tensile-specific pre-test conditioning time, temperature and humidity are not reported. Preparation, cure and density/foaming procedures are not substituted."
+      },
+      "loading_rate": {
+        "status": "reported",
+        "text": "500 mm/min crosshead speed",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/B",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Crosshead speed is not converted to a strain rate without source-reported gauge information."
+      },
+      "additional_conditions": [
+        {
+          "name": "test_relative_humidity",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Tensile-test relative humidity is not stated; no default humidity is assigned."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "reported_mean",
+    "uncertainty": {
+      "type": "reported_plus_minus_unspecified",
+      "unit_text": "MPa",
+      "unit_code": "MPa",
+      "scope": "Selected Table4 B M200 source stress group only; per-target participant count and ± type unknown.",
+      "coverage_factor": null,
+      "confidence_level": null,
+      "value_text": "0.66",
+      "number": "0.66",
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLtbl4/B/column5",
+          "supports": [
+            "uncertainty"
+          ]
+        }
+      ]
+    },
+    "uncertainty_status": "reported_plus_minus_unspecified",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "Selected Table4 B M200 target group only; per-target/per-direction specimen and independent-batch counts unknown. Do not assume every tensile specimen reached this target or equals the strength-test population.",
+      "source_statement": "No tensile specimen count or per-orientation count is stated in the inspected methods/results; two orientations are not n=2 specimens and ANOVA statistics are not used to reconstruct n.",
+      "evidence": []
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source ISO37 Type2 tensile testing of nominal2mm vulcanized sheet on ZwickZ005/5kN load cell at500mm/min, pooled across two orientations. Reported M200 stress at 200% elongation; source standard edition/compliance, actual strain estimator/stress convention and point-extraction/averaging order unknown. No division by elongation or fitted tangent/secant modulus.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLtbl4/B/column5",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [],
+    "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+    "source_document": {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+      "revision": "Primary Europe PMC full-text XML; distinct from the historically inspected university PDF.",
+      "inspected_on": "2026-11-11",
+      "sha256": "2d8008e2b16dd3fe14b91a6747fb3632c70b461ccee4ccc8dea546dc3c272347",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained primaryXML Table4 B selected cell;sections2.2/2.3/3.3method/pooling/statistics;no newPDF orrawdata analysis.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained primaryXML Table4 B selected cell;sections2.2/2.3/3.3method/pooling/statistics;no newPDF orrawdata analysis.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "id": "refprop_tamas_benyei2025_nbr_mcf5_m200_stress",
+    "material_state_id": "state_tamas_benyei2025_nbr_mcf5",
+    "uncertainty_note": "Source ± undefined;break-specific SD not transferred.",
+    "evidence": [
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLtbl4/B/column5",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/B",
+        "supports": [
+          "summary_statistic"
+        ]
+      }
+    ],
+    "scope_note": "Source-qualified solid formulation B with 5 phr recycled milled carbon fiber (mCF/rCF), PERBUNAN 3445 F NBR and the fixed Table 3 additives. The distinct 5 phr fiber loading defines the formulation relative to the other solid recipes and the existing mCF=0 REF. Identity is the source-defined solid NBR/recycled-milled-carbon-fiber formulation, not a specimen, test direction, curing condition, supplier grade or foam state. PERBUNAN 3445 in Table 2 abbreviates the section 2.1 PERBUNAN 3445 F input, not a second material. Sul is ACTMIX S-80 product input as added; no conversion to elemental sulfur or to a fully specified chemical composition is made. The recycled fiber input is not assumed to be pure carbon, and no source-unstated final mass fractions or filler-purity correction are inferred. Table 3 loadings are retained in phr without normalization. Selected Table4 B tensile fact;phr unchanged. n,participants,weights,gauge,conditioning andextraction/pooling order unknown. Not engineering allowable or automatic mechanics input.",
+    "specified_elongation": {
+      "value_text": "200",
+      "number": "200",
+      "unit_text": "%",
+      "unit_code": "percent",
+      "basis": "source_reported_percent_elongation",
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/B",
+          "supports": [
+            "condition"
+          ]
+        }
+      ],
+      "notes": "Source M200 at 200% elongation. This is the source target, not a verified specimen-wise strain measurement, stretch ratio or logarithmic strain. Gauge and strain-estimation implementation remain unknown; no target/result conversion performed."
+    }
+  },
+  {
+    "version": "1.0.0",
+    "quantity": "tensile_elongation_at_break",
+    "quantity_dimension": "dimensionless",
+    "source_property_label": "strain at break (%)",
+    "reported_value": {
+      "kind": "scalar",
+      "unit_text": "%",
+      "unit_code": "percent_elongation",
+      "value_text": "487",
+      "number": "487"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Source section3.3 pools tensile results across specimens/directions;reported mean,not paired raw curves or certified directional equivalence.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Tensile-test temperature is not stated. Mixing at 110 °C and pressing at 170 °C are preparation conditions, not testing temperatures; no standard laboratory default is assigned."
+      },
+      "test_standard": {
+        "status": "reported",
+        "text": "ISO 37; Type 2 dumbbell specimens",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/B",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-stated method; edition and independent compliance verification are not supplied."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "Source ISO37 Type2 dumbbell tensile specimens from nominal2mm vulcanized sheets; ZwickZ005/5kN at500mm/min crosshead. Two mutually perpendicular orientations pooled by source. Source-labelled strain at break(%); actual reference gauge, strain estimator/convention and rupture/point selection unknown. No percent-to-fraction, stretch-ratio or strain-rate conversion; standard citation does not establish independent compliance.",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/B",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Existing source-specific tensile protocol only; strain estimator, actual gauge, fracture algorithm, temperature/RH and conditioning remain unconfirmed. Preparation temperatures are not test conditions."
+      },
+      "direction": {
+        "status": "reported",
+        "text": "Tensile results averaged across specimens tested in two mutually perpendicular orientations",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/B",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "No source-unstated orientation axes, weighting, direction-specific strength or universal isotropy are inferred."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Tensile-specific pre-test conditioning time, temperature and humidity are not reported. Preparation, cure and density/foaming procedures are not substituted."
+      },
+      "loading_rate": {
+        "status": "reported",
+        "text": "500 mm/min crosshead speed",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/B",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Crosshead speed is not converted to a strain rate without source-reported gauge information."
+      },
+      "additional_conditions": [
+        {
+          "name": "test_relative_humidity",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Tensile-test relative humidity is not stated; no default humidity is assigned."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "reported_mean",
+    "uncertainty": {
+      "type": "reported_standard_deviation",
+      "unit_text": "%",
+      "unit_code": "percent_elongation",
+      "scope": "Absolute SD in elongation percentage points for the pooled Table4 B break-elongation result; not relative error, SE, CI or tolerance.",
+      "coverage_factor": null,
+      "confidence_level": null,
+      "value_text": "141",
+      "number": "141",
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLtbl4/B/column3",
+          "supports": [
+            "uncertainty"
+          ]
+        }
+      ]
+    },
+    "uncertainty_status": "reported_standard_deviation",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "Specimens contributing to selected break-elongation result; exact per-direction and independent-batch counts unknown.",
+      "source_statement": "No tensile specimen count or per-orientation count is stated in the inspected methods/results; two orientations are not n=2 specimens and ANOVA statistics are not used to reconstruct n.",
+      "evidence": []
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source ISO37 Type2 dumbbell tensile specimens from nominal2mm vulcanized sheets; ZwickZ005/5kN at500mm/min crosshead. Two mutually perpendicular orientations pooled by source. Source-labelled strain at break(%); actual reference gauge, strain estimator/convention and rupture/point selection unknown. No percent-to-fraction, stretch-ratio or strain-rate conversion; standard citation does not establish independent compliance.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/B",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [],
+    "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+    "source_document": {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+      "revision": "Primary Europe PMC full-text XML; distinct from the historically inspected university PDF.",
+      "inspected_on": "2026-11-11",
+      "sha256": "2d8008e2b16dd3fe14b91a6747fb3632c70b461ccee4ccc8dea546dc3c272347",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained primaryXML Table4 B selected cell;sections2.2/2.3/3.3method/pooling/statistics;no newPDF orrawdata analysis.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained primaryXML Table4 B selected cell;sections2.2/2.3/3.3method/pooling/statistics;no newPDF orrawdata analysis.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "id": "refprop_tamas_benyei2025_nbr_mcf5_tensile_elongation_at_break",
+    "material_state_id": "state_tamas_benyei2025_nbr_mcf5",
+    "uncertainty_note": "Source break-specific SD,absolute percentage points;not relative error,SE/CI or sample/population convention.",
+    "evidence": [
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLtbl4/B/column3",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/B",
+        "supports": [
+          "method",
+          "condition"
+        ]
+      },
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLtbl4/B/column3",
+        "supports": [
+          "summary_statistic",
+          "uncertainty"
+        ]
+      }
+    ],
+    "scope_note": "Source-qualified solid formulation B with 5 phr recycled milled carbon fiber (mCF/rCF), PERBUNAN 3445 F NBR and the fixed Table 3 additives. The distinct 5 phr fiber loading defines the formulation relative to the other solid recipes and the existing mCF=0 REF. Identity is the source-defined solid NBR/recycled-milled-carbon-fiber formulation, not a specimen, test direction, curing condition, supplier grade or foam state. PERBUNAN 3445 in Table 2 abbreviates the section 2.1 PERBUNAN 3445 F input, not a second material. Sul is ACTMIX S-80 product input as added; no conversion to elemental sulfur or to a fully specified chemical composition is made. The recycled fiber input is not assumed to be pure carbon, and no source-unstated final mass fractions or filler-purity correction are inferred. Table 3 loadings are retained in phr without normalization. Selected Table4 B tensile fact;phr unchanged. n,participants,weights,gauge,conditioning andextraction/pooling order unknown. Not engineering allowable or automatic mechanics input."
+  },
+  {
+    "version": "1.0.0",
+    "quantity": "tensile_stress_at_specified_elongation",
+    "quantity_dimension": "pressure",
+    "source_property_label": "M100 (MPa)",
+    "reported_value": {
+      "kind": "scalar",
+      "unit_text": "MPa",
+      "unit_code": "MPa",
+      "value_text": "2.01",
+      "number": "2.01"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Source section3.3 pools tensile results across specimens/directions;reported mean,not paired raw curves or certified directional equivalence.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Tensile-test temperature is not stated. Mixing at 110 °C and pressing at 170 °C are preparation conditions, not testing temperatures; no standard laboratory default is assigned."
+      },
+      "test_standard": {
+        "status": "reported",
+        "text": "ISO 37; Type 2 dumbbell specimens",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/C",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-stated method; edition and independent compliance verification are not supplied."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "ISO 37 tensile testing with Type 2 dumbbell specimens cut from nominally 2 mm vulcanized sheets; Zwick Z005 universal testing machine with a 5 kN load cell, at 500 mm/min crosshead speed. Two mutually perpendicular specimen orientations were tested and the source averaged tensile results across all specimens regardless of orientation. Numerical gauge geometry, detailed stress/strength extraction convention, test temperature, humidity, conditioning and tensile specimen count are not established in the selected source statements.",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/C",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-labelled finite-elongation stress, not modulus slope; 5kN is instrument capacity. ISO2024 terminology reference does not identify the edition used by authors or prove compliance."
+      },
+      "direction": {
+        "status": "reported",
+        "text": "Tensile results averaged across specimens tested in two mutually perpendicular orientations",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/C",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "No source-unstated orientation axes, weighting, direction-specific strength or universal isotropy are inferred."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Tensile-specific pre-test conditioning time, temperature and humidity are not reported. Preparation, cure and density/foaming procedures are not substituted."
+      },
+      "loading_rate": {
+        "status": "reported",
+        "text": "500 mm/min crosshead speed",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/C",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Crosshead speed is not converted to a strain rate without source-reported gauge information."
+      },
+      "additional_conditions": [
+        {
+          "name": "test_relative_humidity",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Tensile-test relative humidity is not stated; no default humidity is assigned."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "reported_mean",
+    "uncertainty": {
+      "type": "reported_plus_minus_unspecified",
+      "unit_text": "MPa",
+      "unit_code": "MPa",
+      "scope": "Selected Table4 C M100 source stress group only; per-target participant count and ± type unknown.",
+      "coverage_factor": null,
+      "confidence_level": null,
+      "value_text": "0.30",
+      "number": "0.30",
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLtbl4/C/column4",
+          "supports": [
+            "uncertainty"
+          ]
+        }
+      ]
+    },
+    "uncertainty_status": "reported_plus_minus_unspecified",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "Selected Table4 C M100 target group only; per-target/per-direction specimen and independent-batch counts unknown. Do not assume every tensile specimen reached this target or equals the strength-test population.",
+      "source_statement": "No tensile specimen count or per-orientation count is stated in the inspected methods/results; two orientations are not n=2 specimens and ANOVA statistics are not used to reconstruct n.",
+      "evidence": []
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source ISO37 Type2 tensile testing of nominal2mm vulcanized sheet on ZwickZ005/5kN load cell at500mm/min, pooled across two orientations. Reported M100 stress at 100% elongation; source standard edition/compliance, actual strain estimator/stress convention and point-extraction/averaging order unknown. No division by elongation or fitted tangent/secant modulus.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLtbl4/C/column4",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [],
+    "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+    "source_document": {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+      "revision": "Primary Europe PMC full-text XML; distinct from the historically inspected university PDF.",
+      "inspected_on": "2026-11-11",
+      "sha256": "2d8008e2b16dd3fe14b91a6747fb3632c70b461ccee4ccc8dea546dc3c272347",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained primaryXML Table4 C selected cell;sections2.2/2.3/3.3method/pooling/statistics;no newPDF orrawdata analysis.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained primaryXML Table4 C selected cell;sections2.2/2.3/3.3method/pooling/statistics;no newPDF orrawdata analysis.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "id": "refprop_tamas_benyei2025_nbr_mcf10_m100_stress",
+    "material_state_id": "state_tamas_benyei2025_nbr_mcf10",
+    "uncertainty_note": "Source ± undefined;break-specific SD not transferred.",
+    "evidence": [
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLtbl4/C/column4",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/C",
+        "supports": [
+          "summary_statistic"
+        ]
+      }
+    ],
+    "scope_note": "Source-qualified solid formulation C with 10 phr recycled milled carbon fiber (mCF/rCF), PERBUNAN 3445 F NBR and the fixed Table 3 additives. The distinct 10 phr fiber loading defines the formulation relative to the other solid recipes and the existing mCF=0 REF. Identity is the source-defined solid NBR/recycled-milled-carbon-fiber formulation, not a specimen, test direction, curing condition, supplier grade or foam state. PERBUNAN 3445 in Table 2 abbreviates the section 2.1 PERBUNAN 3445 F input, not a second material. Sul is ACTMIX S-80 product input as added; no conversion to elemental sulfur or to a fully specified chemical composition is made. The recycled fiber input is not assumed to be pure carbon, and no source-unstated final mass fractions or filler-purity correction are inferred. Table 3 loadings are retained in phr without normalization. Selected Table4 C tensile fact;phr unchanged. n,participants,weights,gauge,conditioning andextraction/pooling order unknown. Not engineering allowable or automatic mechanics input.",
+    "specified_elongation": {
+      "value_text": "100",
+      "number": "100",
+      "unit_text": "%",
+      "unit_code": "percent",
+      "basis": "source_reported_percent_elongation",
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/C",
+          "supports": [
+            "condition"
+          ]
+        }
+      ],
+      "notes": "Source M100 at 100% elongation. This is the source target, not a verified specimen-wise strain measurement, stretch ratio or logarithmic strain. Gauge and strain-estimation implementation remain unknown; no target/result conversion performed."
+    }
+  },
+  {
+    "version": "1.0.0",
+    "quantity": "tensile_stress_at_specified_elongation",
+    "quantity_dimension": "pressure",
+    "source_property_label": "M200 (MPa)",
+    "reported_value": {
+      "kind": "scalar",
+      "unit_text": "MPa",
+      "unit_code": "MPa",
+      "value_text": "2.79",
+      "number": "2.79"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Source section3.3 pools tensile results across specimens/directions;reported mean,not paired raw curves or certified directional equivalence.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Tensile-test temperature is not stated. Mixing at 110 °C and pressing at 170 °C are preparation conditions, not testing temperatures; no standard laboratory default is assigned."
+      },
+      "test_standard": {
+        "status": "reported",
+        "text": "ISO 37; Type 2 dumbbell specimens",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/C",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-stated method; edition and independent compliance verification are not supplied."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "ISO 37 tensile testing with Type 2 dumbbell specimens cut from nominally 2 mm vulcanized sheets; Zwick Z005 universal testing machine with a 5 kN load cell, at 500 mm/min crosshead speed. Two mutually perpendicular specimen orientations were tested and the source averaged tensile results across all specimens regardless of orientation. Numerical gauge geometry, detailed stress/strength extraction convention, test temperature, humidity, conditioning and tensile specimen count are not established in the selected source statements.",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/C",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-labelled finite-elongation stress, not modulus slope; 5kN is instrument capacity. ISO2024 terminology reference does not identify the edition used by authors or prove compliance."
+      },
+      "direction": {
+        "status": "reported",
+        "text": "Tensile results averaged across specimens tested in two mutually perpendicular orientations",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/C",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "No source-unstated orientation axes, weighting, direction-specific strength or universal isotropy are inferred."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Tensile-specific pre-test conditioning time, temperature and humidity are not reported. Preparation, cure and density/foaming procedures are not substituted."
+      },
+      "loading_rate": {
+        "status": "reported",
+        "text": "500 mm/min crosshead speed",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/C",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Crosshead speed is not converted to a strain rate without source-reported gauge information."
+      },
+      "additional_conditions": [
+        {
+          "name": "test_relative_humidity",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Tensile-test relative humidity is not stated; no default humidity is assigned."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "reported_mean",
+    "uncertainty": {
+      "type": "reported_plus_minus_unspecified",
+      "unit_text": "MPa",
+      "unit_code": "MPa",
+      "scope": "Selected Table4 C M200 source stress group only; per-target participant count and ± type unknown.",
+      "coverage_factor": null,
+      "confidence_level": null,
+      "value_text": "0.46",
+      "number": "0.46",
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLtbl4/C/column5",
+          "supports": [
+            "uncertainty"
+          ]
+        }
+      ]
+    },
+    "uncertainty_status": "reported_plus_minus_unspecified",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "Selected Table4 C M200 target group only; per-target/per-direction specimen and independent-batch counts unknown. Do not assume every tensile specimen reached this target or equals the strength-test population.",
+      "source_statement": "No tensile specimen count or per-orientation count is stated in the inspected methods/results; two orientations are not n=2 specimens and ANOVA statistics are not used to reconstruct n.",
+      "evidence": []
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source ISO37 Type2 tensile testing of nominal2mm vulcanized sheet on ZwickZ005/5kN load cell at500mm/min, pooled across two orientations. Reported M200 stress at 200% elongation; source standard edition/compliance, actual strain estimator/stress convention and point-extraction/averaging order unknown. No division by elongation or fitted tangent/secant modulus.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLtbl4/C/column5",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [],
+    "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+    "source_document": {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+      "revision": "Primary Europe PMC full-text XML; distinct from the historically inspected university PDF.",
+      "inspected_on": "2026-11-11",
+      "sha256": "2d8008e2b16dd3fe14b91a6747fb3632c70b461ccee4ccc8dea546dc3c272347",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained primaryXML Table4 C selected cell;sections2.2/2.3/3.3method/pooling/statistics;no newPDF orrawdata analysis.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained primaryXML Table4 C selected cell;sections2.2/2.3/3.3method/pooling/statistics;no newPDF orrawdata analysis.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "id": "refprop_tamas_benyei2025_nbr_mcf10_m200_stress",
+    "material_state_id": "state_tamas_benyei2025_nbr_mcf10",
+    "uncertainty_note": "Source ± undefined;break-specific SD not transferred.",
+    "evidence": [
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLtbl4/C/column5",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/C",
+        "supports": [
+          "summary_statistic"
+        ]
+      }
+    ],
+    "scope_note": "Source-qualified solid formulation C with 10 phr recycled milled carbon fiber (mCF/rCF), PERBUNAN 3445 F NBR and the fixed Table 3 additives. The distinct 10 phr fiber loading defines the formulation relative to the other solid recipes and the existing mCF=0 REF. Identity is the source-defined solid NBR/recycled-milled-carbon-fiber formulation, not a specimen, test direction, curing condition, supplier grade or foam state. PERBUNAN 3445 in Table 2 abbreviates the section 2.1 PERBUNAN 3445 F input, not a second material. Sul is ACTMIX S-80 product input as added; no conversion to elemental sulfur or to a fully specified chemical composition is made. The recycled fiber input is not assumed to be pure carbon, and no source-unstated final mass fractions or filler-purity correction are inferred. Table 3 loadings are retained in phr without normalization. Selected Table4 C tensile fact;phr unchanged. n,participants,weights,gauge,conditioning andextraction/pooling order unknown. Not engineering allowable or automatic mechanics input.",
+    "specified_elongation": {
+      "value_text": "200",
+      "number": "200",
+      "unit_text": "%",
+      "unit_code": "percent",
+      "basis": "source_reported_percent_elongation",
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/C",
+          "supports": [
+            "condition"
+          ]
+        }
+      ],
+      "notes": "Source M200 at 200% elongation. This is the source target, not a verified specimen-wise strain measurement, stretch ratio or logarithmic strain. Gauge and strain-estimation implementation remain unknown; no target/result conversion performed."
+    }
+  },
+  {
+    "version": "1.0.0",
+    "quantity": "tensile_elongation_at_break",
+    "quantity_dimension": "dimensionless",
+    "source_property_label": "strain at break (%)",
+    "reported_value": {
+      "kind": "scalar",
+      "unit_text": "%",
+      "unit_code": "percent_elongation",
+      "value_text": "467",
+      "number": "467"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Source section3.3 pools tensile results across specimens/directions;reported mean,not paired raw curves or certified directional equivalence.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Tensile-test temperature is not stated. Mixing at 110 °C and pressing at 170 °C are preparation conditions, not testing temperatures; no standard laboratory default is assigned."
+      },
+      "test_standard": {
+        "status": "reported",
+        "text": "ISO 37; Type 2 dumbbell specimens",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/C",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-stated method; edition and independent compliance verification are not supplied."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "Source ISO37 Type2 dumbbell tensile specimens from nominal2mm vulcanized sheets; ZwickZ005/5kN at500mm/min crosshead. Two mutually perpendicular orientations pooled by source. Source-labelled strain at break(%); actual reference gauge, strain estimator/convention and rupture/point selection unknown. No percent-to-fraction, stretch-ratio or strain-rate conversion; standard citation does not establish independent compliance.",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/C",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Existing source-specific tensile protocol only; strain estimator, actual gauge, fracture algorithm, temperature/RH and conditioning remain unconfirmed. Preparation temperatures are not test conditions."
+      },
+      "direction": {
+        "status": "reported",
+        "text": "Tensile results averaged across specimens tested in two mutually perpendicular orientations",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/C",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "No source-unstated orientation axes, weighting, direction-specific strength or universal isotropy are inferred."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Tensile-specific pre-test conditioning time, temperature and humidity are not reported. Preparation, cure and density/foaming procedures are not substituted."
+      },
+      "loading_rate": {
+        "status": "reported",
+        "text": "500 mm/min crosshead speed",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/C",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Crosshead speed is not converted to a strain rate without source-reported gauge information."
+      },
+      "additional_conditions": [
+        {
+          "name": "test_relative_humidity",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Tensile-test relative humidity is not stated; no default humidity is assigned."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "reported_mean",
+    "uncertainty": {
+      "type": "reported_standard_deviation",
+      "unit_text": "%",
+      "unit_code": "percent_elongation",
+      "scope": "Absolute SD in elongation percentage points for the pooled Table4 C break-elongation result; not relative error, SE, CI or tolerance.",
+      "coverage_factor": null,
+      "confidence_level": null,
+      "value_text": "163",
+      "number": "163",
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLtbl4/C/column3",
+          "supports": [
+            "uncertainty"
+          ]
+        }
+      ]
+    },
+    "uncertainty_status": "reported_standard_deviation",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "Specimens contributing to selected break-elongation result; exact per-direction and independent-batch counts unknown.",
+      "source_statement": "No tensile specimen count or per-orientation count is stated in the inspected methods/results; two orientations are not n=2 specimens and ANOVA statistics are not used to reconstruct n.",
+      "evidence": []
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source ISO37 Type2 dumbbell tensile specimens from nominal2mm vulcanized sheets; ZwickZ005/5kN at500mm/min crosshead. Two mutually perpendicular orientations pooled by source. Source-labelled strain at break(%); actual reference gauge, strain estimator/convention and rupture/point selection unknown. No percent-to-fraction, stretch-ratio or strain-rate conversion; standard citation does not establish independent compliance.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/C",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [],
+    "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+    "source_document": {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+      "revision": "Primary Europe PMC full-text XML; distinct from the historically inspected university PDF.",
+      "inspected_on": "2026-11-11",
+      "sha256": "2d8008e2b16dd3fe14b91a6747fb3632c70b461ccee4ccc8dea546dc3c272347",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained primaryXML Table4 C selected cell;sections2.2/2.3/3.3method/pooling/statistics;no newPDF orrawdata analysis.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained primaryXML Table4 C selected cell;sections2.2/2.3/3.3method/pooling/statistics;no newPDF orrawdata analysis.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "id": "refprop_tamas_benyei2025_nbr_mcf10_tensile_elongation_at_break",
+    "material_state_id": "state_tamas_benyei2025_nbr_mcf10",
+    "uncertainty_note": "Source break-specific SD,absolute percentage points;not relative error,SE/CI or sample/population convention.",
+    "evidence": [
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLtbl4/C/column3",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/C",
+        "supports": [
+          "method",
+          "condition"
+        ]
+      },
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLtbl4/C/column3",
+        "supports": [
+          "summary_statistic",
+          "uncertainty"
+        ]
+      }
+    ],
+    "scope_note": "Source-qualified solid formulation C with 10 phr recycled milled carbon fiber (mCF/rCF), PERBUNAN 3445 F NBR and the fixed Table 3 additives. The distinct 10 phr fiber loading defines the formulation relative to the other solid recipes and the existing mCF=0 REF. Identity is the source-defined solid NBR/recycled-milled-carbon-fiber formulation, not a specimen, test direction, curing condition, supplier grade or foam state. PERBUNAN 3445 in Table 2 abbreviates the section 2.1 PERBUNAN 3445 F input, not a second material. Sul is ACTMIX S-80 product input as added; no conversion to elemental sulfur or to a fully specified chemical composition is made. The recycled fiber input is not assumed to be pure carbon, and no source-unstated final mass fractions or filler-purity correction are inferred. Table 3 loadings are retained in phr without normalization. Selected Table4 C tensile fact;phr unchanged. n,participants,weights,gauge,conditioning andextraction/pooling order unknown. Not engineering allowable or automatic mechanics input."
+  },
+  {
+    "version": "1.0.0",
+    "quantity": "tensile_stress_at_specified_elongation",
+    "quantity_dimension": "pressure",
+    "source_property_label": "M100 (MPa)",
+    "reported_value": {
+      "kind": "scalar",
+      "unit_text": "MPa",
+      "unit_code": "MPa",
+      "value_text": "2.37",
+      "number": "2.37"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Source section3.3 pools tensile results across specimens/directions;reported mean,not paired raw curves or certified directional equivalence.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Tensile-test temperature is not stated. Mixing at 110 °C and pressing at 170 °C are preparation conditions, not testing temperatures; no standard laboratory default is assigned."
+      },
+      "test_standard": {
+        "status": "reported",
+        "text": "ISO 37; Type 2 dumbbell specimens",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/D",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-stated method; edition and independent compliance verification are not supplied."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "ISO 37 tensile testing with Type 2 dumbbell specimens cut from nominally 2 mm vulcanized sheets; Zwick Z005 universal testing machine with a 5 kN load cell, at 500 mm/min crosshead speed. Two mutually perpendicular specimen orientations were tested and the source averaged tensile results across all specimens regardless of orientation. Numerical gauge geometry, detailed stress/strength extraction convention, test temperature, humidity, conditioning and tensile specimen count are not established in the selected source statements.",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/D",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-labelled finite-elongation stress, not modulus slope; 5kN is instrument capacity. ISO2024 terminology reference does not identify the edition used by authors or prove compliance."
+      },
+      "direction": {
+        "status": "reported",
+        "text": "Tensile results averaged across specimens tested in two mutually perpendicular orientations",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/D",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "No source-unstated orientation axes, weighting, direction-specific strength or universal isotropy are inferred."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Tensile-specific pre-test conditioning time, temperature and humidity are not reported. Preparation, cure and density/foaming procedures are not substituted."
+      },
+      "loading_rate": {
+        "status": "reported",
+        "text": "500 mm/min crosshead speed",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/D",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Crosshead speed is not converted to a strain rate without source-reported gauge information."
+      },
+      "additional_conditions": [
+        {
+          "name": "test_relative_humidity",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Tensile-test relative humidity is not stated; no default humidity is assigned."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "reported_mean",
+    "uncertainty": {
+      "type": "reported_plus_minus_unspecified",
+      "unit_text": "MPa",
+      "unit_code": "MPa",
+      "scope": "Selected Table4 D M100 source stress group only; per-target participant count and ± type unknown.",
+      "coverage_factor": null,
+      "confidence_level": null,
+      "value_text": "0.53",
+      "number": "0.53",
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLtbl4/D/column4",
+          "supports": [
+            "uncertainty"
+          ]
+        }
+      ]
+    },
+    "uncertainty_status": "reported_plus_minus_unspecified",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "Selected Table4 D M100 target group only; per-target/per-direction specimen and independent-batch counts unknown. Do not assume every tensile specimen reached this target or equals the strength-test population.",
+      "source_statement": "No tensile specimen count or per-orientation count is stated in the inspected methods/results; two orientations are not n=2 specimens and ANOVA statistics are not used to reconstruct n.",
+      "evidence": []
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source ISO37 Type2 tensile testing of nominal2mm vulcanized sheet on ZwickZ005/5kN load cell at500mm/min, pooled across two orientations. Reported M100 stress at 100% elongation; source standard edition/compliance, actual strain estimator/stress convention and point-extraction/averaging order unknown. No division by elongation or fitted tangent/secant modulus.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLtbl4/D/column4",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [],
+    "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+    "source_document": {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+      "revision": "Primary Europe PMC full-text XML; distinct from the historically inspected university PDF.",
+      "inspected_on": "2026-11-11",
+      "sha256": "2d8008e2b16dd3fe14b91a6747fb3632c70b461ccee4ccc8dea546dc3c272347",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained primaryXML Table4 D selected cell;sections2.2/2.3/3.3method/pooling/statistics;no newPDF orrawdata analysis.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained primaryXML Table4 D selected cell;sections2.2/2.3/3.3method/pooling/statistics;no newPDF orrawdata analysis.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "id": "refprop_tamas_benyei2025_nbr_mcf20_m100_stress",
+    "material_state_id": "state_tamas_benyei2025_nbr_mcf20",
+    "uncertainty_note": "Source ± undefined;break-specific SD not transferred.",
+    "evidence": [
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLtbl4/D/column4",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/D",
+        "supports": [
+          "summary_statistic"
+        ]
+      }
+    ],
+    "scope_note": "Source-qualified solid formulation D with 20 phr recycled milled carbon fiber (mCF/rCF), PERBUNAN 3445 F NBR and the fixed Table 3 additives. The distinct 20 phr fiber loading defines the formulation relative to the other solid recipes and the existing mCF=0 REF. Identity is the source-defined solid NBR/recycled-milled-carbon-fiber formulation, not a specimen, test direction, curing condition, supplier grade or foam state. PERBUNAN 3445 in Table 2 abbreviates the section 2.1 PERBUNAN 3445 F input, not a second material. Sul is ACTMIX S-80 product input as added; no conversion to elemental sulfur or to a fully specified chemical composition is made. The recycled fiber input is not assumed to be pure carbon, and no source-unstated final mass fractions or filler-purity correction are inferred. Table 3 loadings are retained in phr without normalization. Selected Table4 D tensile fact;phr unchanged. n,participants,weights,gauge,conditioning andextraction/pooling order unknown. Not engineering allowable or automatic mechanics input.",
+    "specified_elongation": {
+      "value_text": "100",
+      "number": "100",
+      "unit_text": "%",
+      "unit_code": "percent",
+      "basis": "source_reported_percent_elongation",
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/D",
+          "supports": [
+            "condition"
+          ]
+        }
+      ],
+      "notes": "Source M100 at 100% elongation. This is the source target, not a verified specimen-wise strain measurement, stretch ratio or logarithmic strain. Gauge and strain-estimation implementation remain unknown; no target/result conversion performed."
+    }
+  },
+  {
+    "version": "1.0.0",
+    "quantity": "tensile_stress_at_specified_elongation",
+    "quantity_dimension": "pressure",
+    "source_property_label": "M200 (MPa)",
+    "reported_value": {
+      "kind": "scalar",
+      "unit_text": "MPa",
+      "unit_code": "MPa",
+      "value_text": "3.02",
+      "number": "3.02"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Source section3.3 pools tensile results across specimens/directions;reported mean,not paired raw curves or certified directional equivalence.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Tensile-test temperature is not stated. Mixing at 110 °C and pressing at 170 °C are preparation conditions, not testing temperatures; no standard laboratory default is assigned."
+      },
+      "test_standard": {
+        "status": "reported",
+        "text": "ISO 37; Type 2 dumbbell specimens",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/D",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-stated method; edition and independent compliance verification are not supplied."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "ISO 37 tensile testing with Type 2 dumbbell specimens cut from nominally 2 mm vulcanized sheets; Zwick Z005 universal testing machine with a 5 kN load cell, at 500 mm/min crosshead speed. Two mutually perpendicular specimen orientations were tested and the source averaged tensile results across all specimens regardless of orientation. Numerical gauge geometry, detailed stress/strength extraction convention, test temperature, humidity, conditioning and tensile specimen count are not established in the selected source statements.",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/D",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-labelled finite-elongation stress, not modulus slope; 5kN is instrument capacity. ISO2024 terminology reference does not identify the edition used by authors or prove compliance."
+      },
+      "direction": {
+        "status": "reported",
+        "text": "Tensile results averaged across specimens tested in two mutually perpendicular orientations",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/D",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "No source-unstated orientation axes, weighting, direction-specific strength or universal isotropy are inferred."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Tensile-specific pre-test conditioning time, temperature and humidity are not reported. Preparation, cure and density/foaming procedures are not substituted."
+      },
+      "loading_rate": {
+        "status": "reported",
+        "text": "500 mm/min crosshead speed",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/D",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Crosshead speed is not converted to a strain rate without source-reported gauge information."
+      },
+      "additional_conditions": [
+        {
+          "name": "test_relative_humidity",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Tensile-test relative humidity is not stated; no default humidity is assigned."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "reported_mean",
+    "uncertainty": {
+      "type": "reported_plus_minus_unspecified",
+      "unit_text": "MPa",
+      "unit_code": "MPa",
+      "scope": "Selected Table4 D M200 source stress group only; per-target participant count and ± type unknown.",
+      "coverage_factor": null,
+      "confidence_level": null,
+      "value_text": "0.69",
+      "number": "0.69",
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLtbl4/D/column5",
+          "supports": [
+            "uncertainty"
+          ]
+        }
+      ]
+    },
+    "uncertainty_status": "reported_plus_minus_unspecified",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "Selected Table4 D M200 target group only; per-target/per-direction specimen and independent-batch counts unknown. Do not assume every tensile specimen reached this target or equals the strength-test population.",
+      "source_statement": "No tensile specimen count or per-orientation count is stated in the inspected methods/results; two orientations are not n=2 specimens and ANOVA statistics are not used to reconstruct n.",
+      "evidence": []
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source ISO37 Type2 tensile testing of nominal2mm vulcanized sheet on ZwickZ005/5kN load cell at500mm/min, pooled across two orientations. Reported M200 stress at 200% elongation; source standard edition/compliance, actual strain estimator/stress convention and point-extraction/averaging order unknown. No division by elongation or fitted tangent/secant modulus.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLtbl4/D/column5",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [],
+    "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+    "source_document": {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+      "revision": "Primary Europe PMC full-text XML; distinct from the historically inspected university PDF.",
+      "inspected_on": "2026-11-11",
+      "sha256": "2d8008e2b16dd3fe14b91a6747fb3632c70b461ccee4ccc8dea546dc3c272347",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained primaryXML Table4 D selected cell;sections2.2/2.3/3.3method/pooling/statistics;no newPDF orrawdata analysis.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained primaryXML Table4 D selected cell;sections2.2/2.3/3.3method/pooling/statistics;no newPDF orrawdata analysis.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "id": "refprop_tamas_benyei2025_nbr_mcf20_m200_stress",
+    "material_state_id": "state_tamas_benyei2025_nbr_mcf20",
+    "uncertainty_note": "Source ± undefined;break-specific SD not transferred.",
+    "evidence": [
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLtbl4/D/column5",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/D",
+        "supports": [
+          "summary_statistic"
+        ]
+      }
+    ],
+    "scope_note": "Source-qualified solid formulation D with 20 phr recycled milled carbon fiber (mCF/rCF), PERBUNAN 3445 F NBR and the fixed Table 3 additives. The distinct 20 phr fiber loading defines the formulation relative to the other solid recipes and the existing mCF=0 REF. Identity is the source-defined solid NBR/recycled-milled-carbon-fiber formulation, not a specimen, test direction, curing condition, supplier grade or foam state. PERBUNAN 3445 in Table 2 abbreviates the section 2.1 PERBUNAN 3445 F input, not a second material. Sul is ACTMIX S-80 product input as added; no conversion to elemental sulfur or to a fully specified chemical composition is made. The recycled fiber input is not assumed to be pure carbon, and no source-unstated final mass fractions or filler-purity correction are inferred. Table 3 loadings are retained in phr without normalization. Selected Table4 D tensile fact;phr unchanged. n,participants,weights,gauge,conditioning andextraction/pooling order unknown. Not engineering allowable or automatic mechanics input.",
+    "specified_elongation": {
+      "value_text": "200",
+      "number": "200",
+      "unit_text": "%",
+      "unit_code": "percent",
+      "basis": "source_reported_percent_elongation",
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/D",
+          "supports": [
+            "condition"
+          ]
+        }
+      ],
+      "notes": "Source M200 at 200% elongation. This is the source target, not a verified specimen-wise strain measurement, stretch ratio or logarithmic strain. Gauge and strain-estimation implementation remain unknown; no target/result conversion performed."
+    }
+  },
+  {
+    "version": "1.0.0",
+    "quantity": "tensile_elongation_at_break",
+    "quantity_dimension": "dimensionless",
+    "source_property_label": "strain at break (%)",
+    "reported_value": {
+      "kind": "scalar",
+      "unit_text": "%",
+      "unit_code": "percent_elongation",
+      "value_text": "493",
+      "number": "493"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Source section3.3 pools tensile results across specimens/directions;reported mean,not paired raw curves or certified directional equivalence.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Tensile-test temperature is not stated. Mixing at 110 °C and pressing at 170 °C are preparation conditions, not testing temperatures; no standard laboratory default is assigned."
+      },
+      "test_standard": {
+        "status": "reported",
+        "text": "ISO 37; Type 2 dumbbell specimens",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/D",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-stated method; edition and independent compliance verification are not supplied."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "Source ISO37 Type2 dumbbell tensile specimens from nominal2mm vulcanized sheets; ZwickZ005/5kN at500mm/min crosshead. Two mutually perpendicular orientations pooled by source. Source-labelled strain at break(%); actual reference gauge, strain estimator/convention and rupture/point selection unknown. No percent-to-fraction, stretch-ratio or strain-rate conversion; standard citation does not establish independent compliance.",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/D",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Existing source-specific tensile protocol only; strain estimator, actual gauge, fracture algorithm, temperature/RH and conditioning remain unconfirmed. Preparation temperatures are not test conditions."
+      },
+      "direction": {
+        "status": "reported",
+        "text": "Tensile results averaged across specimens tested in two mutually perpendicular orientations",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/D",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "No source-unstated orientation axes, weighting, direction-specific strength or universal isotropy are inferred."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Tensile-specific pre-test conditioning time, temperature and humidity are not reported. Preparation, cure and density/foaming procedures are not substituted."
+      },
+      "loading_rate": {
+        "status": "reported",
+        "text": "500 mm/min crosshead speed",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/D",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Crosshead speed is not converted to a strain rate without source-reported gauge information."
+      },
+      "additional_conditions": [
+        {
+          "name": "test_relative_humidity",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Tensile-test relative humidity is not stated; no default humidity is assigned."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "reported_mean",
+    "uncertainty": {
+      "type": "reported_standard_deviation",
+      "unit_text": "%",
+      "unit_code": "percent_elongation",
+      "scope": "Absolute SD in elongation percentage points for the pooled Table4 D break-elongation result; not relative error, SE, CI or tolerance.",
+      "coverage_factor": null,
+      "confidence_level": null,
+      "value_text": "105",
+      "number": "105",
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLtbl4/D/column3",
+          "supports": [
+            "uncertainty"
+          ]
+        }
+      ]
+    },
+    "uncertainty_status": "reported_standard_deviation",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "Specimens contributing to selected break-elongation result; exact per-direction and independent-batch counts unknown.",
+      "source_statement": "No tensile specimen count or per-orientation count is stated in the inspected methods/results; two orientations are not n=2 specimens and ANOVA statistics are not used to reconstruct n.",
+      "evidence": []
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source ISO37 Type2 dumbbell tensile specimens from nominal2mm vulcanized sheets; ZwickZ005/5kN at500mm/min crosshead. Two mutually perpendicular orientations pooled by source. Source-labelled strain at break(%); actual reference gauge, strain estimator/convention and rupture/point selection unknown. No percent-to-fraction, stretch-ratio or strain-rate conversion; standard citation does not establish independent compliance.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/D",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [],
+    "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+    "source_document": {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+      "revision": "Primary Europe PMC full-text XML; distinct from the historically inspected university PDF.",
+      "inspected_on": "2026-11-11",
+      "sha256": "2d8008e2b16dd3fe14b91a6747fb3632c70b461ccee4ccc8dea546dc3c272347",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained primaryXML Table4 D selected cell;sections2.2/2.3/3.3method/pooling/statistics;no newPDF orrawdata analysis.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained primaryXML Table4 D selected cell;sections2.2/2.3/3.3method/pooling/statistics;no newPDF orrawdata analysis.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "id": "refprop_tamas_benyei2025_nbr_mcf20_tensile_elongation_at_break",
+    "material_state_id": "state_tamas_benyei2025_nbr_mcf20",
+    "uncertainty_note": "Source break-specific SD,absolute percentage points;not relative error,SE/CI or sample/population convention.",
+    "evidence": [
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLtbl4/D/column3",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/D",
+        "supports": [
+          "method",
+          "condition"
+        ]
+      },
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLtbl4/D/column3",
+        "supports": [
+          "summary_statistic",
+          "uncertainty"
+        ]
+      }
+    ],
+    "scope_note": "Source-qualified solid formulation D with 20 phr recycled milled carbon fiber (mCF/rCF), PERBUNAN 3445 F NBR and the fixed Table 3 additives. The distinct 20 phr fiber loading defines the formulation relative to the other solid recipes and the existing mCF=0 REF. Identity is the source-defined solid NBR/recycled-milled-carbon-fiber formulation, not a specimen, test direction, curing condition, supplier grade or foam state. PERBUNAN 3445 in Table 2 abbreviates the section 2.1 PERBUNAN 3445 F input, not a second material. Sul is ACTMIX S-80 product input as added; no conversion to elemental sulfur or to a fully specified chemical composition is made. The recycled fiber input is not assumed to be pure carbon, and no source-unstated final mass fractions or filler-purity correction are inferred. Table 3 loadings are retained in phr without normalization. Selected Table4 D tensile fact;phr unchanged. n,participants,weights,gauge,conditioning andextraction/pooling order unknown. Not engineering allowable or automatic mechanics input."
+  },
+  {
+    "version": "1.0.0",
+    "quantity": "tensile_stress_at_specified_elongation",
+    "quantity_dimension": "pressure",
+    "source_property_label": "M100 (MPa)",
+    "reported_value": {
+      "kind": "scalar",
+      "unit_text": "MPa",
+      "unit_code": "MPa",
+      "value_text": "2.53",
+      "number": "2.53"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Source section3.3 pools tensile results across specimens/directions;reported mean,not paired raw curves or certified directional equivalence.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Tensile-test temperature is not stated. Mixing at 110 °C and pressing at 170 °C are preparation conditions, not testing temperatures; no standard laboratory default is assigned."
+      },
+      "test_standard": {
+        "status": "reported",
+        "text": "ISO 37; Type 2 dumbbell specimens",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/E",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-stated method; edition and independent compliance verification are not supplied."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "ISO 37 tensile testing with Type 2 dumbbell specimens cut from nominally 2 mm vulcanized sheets; Zwick Z005 universal testing machine with a 5 kN load cell, at 500 mm/min crosshead speed. Two mutually perpendicular specimen orientations were tested and the source averaged tensile results across all specimens regardless of orientation. Numerical gauge geometry, detailed stress/strength extraction convention, test temperature, humidity, conditioning and tensile specimen count are not established in the selected source statements.",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/E",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-labelled finite-elongation stress, not modulus slope; 5kN is instrument capacity. ISO2024 terminology reference does not identify the edition used by authors or prove compliance."
+      },
+      "direction": {
+        "status": "reported",
+        "text": "Tensile results averaged across specimens tested in two mutually perpendicular orientations",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/E",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "No source-unstated orientation axes, weighting, direction-specific strength or universal isotropy are inferred."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Tensile-specific pre-test conditioning time, temperature and humidity are not reported. Preparation, cure and density/foaming procedures are not substituted."
+      },
+      "loading_rate": {
+        "status": "reported",
+        "text": "500 mm/min crosshead speed",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/E",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Crosshead speed is not converted to a strain rate without source-reported gauge information."
+      },
+      "additional_conditions": [
+        {
+          "name": "test_relative_humidity",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Tensile-test relative humidity is not stated; no default humidity is assigned."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "reported_mean",
+    "uncertainty": {
+      "type": "reported_plus_minus_unspecified",
+      "unit_text": "MPa",
+      "unit_code": "MPa",
+      "scope": "Selected Table4 E M100 source stress group only; per-target participant count and ± type unknown.",
+      "coverage_factor": null,
+      "confidence_level": null,
+      "value_text": "0.65",
+      "number": "0.65",
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLtbl4/E/column4",
+          "supports": [
+            "uncertainty"
+          ]
+        }
+      ]
+    },
+    "uncertainty_status": "reported_plus_minus_unspecified",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "Selected Table4 E M100 target group only; per-target/per-direction specimen and independent-batch counts unknown. Do not assume every tensile specimen reached this target or equals the strength-test population.",
+      "source_statement": "No tensile specimen count or per-orientation count is stated in the inspected methods/results; two orientations are not n=2 specimens and ANOVA statistics are not used to reconstruct n.",
+      "evidence": []
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source ISO37 Type2 tensile testing of nominal2mm vulcanized sheet on ZwickZ005/5kN load cell at500mm/min, pooled across two orientations. Reported M100 stress at 100% elongation; source standard edition/compliance, actual strain estimator/stress convention and point-extraction/averaging order unknown. No division by elongation or fitted tangent/secant modulus.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLtbl4/E/column4",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [],
+    "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+    "source_document": {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+      "revision": "Primary Europe PMC full-text XML; distinct from the historically inspected university PDF.",
+      "inspected_on": "2026-11-11",
+      "sha256": "2d8008e2b16dd3fe14b91a6747fb3632c70b461ccee4ccc8dea546dc3c272347",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained primaryXML Table4 E selected cell;sections2.2/2.3/3.3method/pooling/statistics;no newPDF orrawdata analysis.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained primaryXML Table4 E selected cell;sections2.2/2.3/3.3method/pooling/statistics;no newPDF orrawdata analysis.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "id": "refprop_tamas_benyei2025_nbr_mcf30_m100_stress",
+    "material_state_id": "state_tamas_benyei2025_nbr_mcf30",
+    "uncertainty_note": "Source ± undefined;break-specific SD not transferred.",
+    "evidence": [
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLtbl4/E/column4",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/E",
+        "supports": [
+          "summary_statistic"
+        ]
+      }
+    ],
+    "scope_note": "Source-qualified solid formulation E with 30 phr recycled milled carbon fiber (mCF/rCF), PERBUNAN 3445 F NBR and the fixed Table 3 additives. The distinct 30 phr fiber loading defines the formulation relative to the other solid recipes and the existing mCF=0 REF. Identity is the source-defined solid NBR/recycled-milled-carbon-fiber formulation, not a specimen, test direction, curing condition, supplier grade or foam state. PERBUNAN 3445 in Table 2 abbreviates the section 2.1 PERBUNAN 3445 F input, not a second material. Sul is ACTMIX S-80 product input as added; no conversion to elemental sulfur or to a fully specified chemical composition is made. The recycled fiber input is not assumed to be pure carbon, and no source-unstated final mass fractions or filler-purity correction are inferred. Table 3 loadings are retained in phr without normalization. Selected Table4 E tensile fact;phr unchanged. n,participants,weights,gauge,conditioning andextraction/pooling order unknown. Not engineering allowable or automatic mechanics input.",
+    "specified_elongation": {
+      "value_text": "100",
+      "number": "100",
+      "unit_text": "%",
+      "unit_code": "percent",
+      "basis": "source_reported_percent_elongation",
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/E",
+          "supports": [
+            "condition"
+          ]
+        }
+      ],
+      "notes": "Source M100 at 100% elongation. This is the source target, not a verified specimen-wise strain measurement, stretch ratio or logarithmic strain. Gauge and strain-estimation implementation remain unknown; no target/result conversion performed."
+    }
+  },
+  {
+    "version": "1.0.0",
+    "quantity": "tensile_stress_at_specified_elongation",
+    "quantity_dimension": "pressure",
+    "source_property_label": "M200 (MPa)",
+    "reported_value": {
+      "kind": "scalar",
+      "unit_text": "MPa",
+      "unit_code": "MPa",
+      "value_text": "3.07",
+      "number": "3.07"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Source section3.3 pools tensile results across specimens/directions;reported mean,not paired raw curves or certified directional equivalence.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Tensile-test temperature is not stated. Mixing at 110 °C and pressing at 170 °C are preparation conditions, not testing temperatures; no standard laboratory default is assigned."
+      },
+      "test_standard": {
+        "status": "reported",
+        "text": "ISO 37; Type 2 dumbbell specimens",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/E",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-stated method; edition and independent compliance verification are not supplied."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "ISO 37 tensile testing with Type 2 dumbbell specimens cut from nominally 2 mm vulcanized sheets; Zwick Z005 universal testing machine with a 5 kN load cell, at 500 mm/min crosshead speed. Two mutually perpendicular specimen orientations were tested and the source averaged tensile results across all specimens regardless of orientation. Numerical gauge geometry, detailed stress/strength extraction convention, test temperature, humidity, conditioning and tensile specimen count are not established in the selected source statements.",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/E",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-labelled finite-elongation stress, not modulus slope; 5kN is instrument capacity. ISO2024 terminology reference does not identify the edition used by authors or prove compliance."
+      },
+      "direction": {
+        "status": "reported",
+        "text": "Tensile results averaged across specimens tested in two mutually perpendicular orientations",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/E",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "No source-unstated orientation axes, weighting, direction-specific strength or universal isotropy are inferred."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Tensile-specific pre-test conditioning time, temperature and humidity are not reported. Preparation, cure and density/foaming procedures are not substituted."
+      },
+      "loading_rate": {
+        "status": "reported",
+        "text": "500 mm/min crosshead speed",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/E",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Crosshead speed is not converted to a strain rate without source-reported gauge information."
+      },
+      "additional_conditions": [
+        {
+          "name": "test_relative_humidity",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Tensile-test relative humidity is not stated; no default humidity is assigned."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "reported_mean",
+    "uncertainty": {
+      "type": "reported_plus_minus_unspecified",
+      "unit_text": "MPa",
+      "unit_code": "MPa",
+      "scope": "Selected Table4 E M200 source stress group only; per-target participant count and ± type unknown.",
+      "coverage_factor": null,
+      "confidence_level": null,
+      "value_text": "0.75",
+      "number": "0.75",
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLtbl4/E/column5",
+          "supports": [
+            "uncertainty"
+          ]
+        }
+      ]
+    },
+    "uncertainty_status": "reported_plus_minus_unspecified",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "Selected Table4 E M200 target group only; per-target/per-direction specimen and independent-batch counts unknown. Do not assume every tensile specimen reached this target or equals the strength-test population.",
+      "source_statement": "No tensile specimen count or per-orientation count is stated in the inspected methods/results; two orientations are not n=2 specimens and ANOVA statistics are not used to reconstruct n.",
+      "evidence": []
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source ISO37 Type2 tensile testing of nominal2mm vulcanized sheet on ZwickZ005/5kN load cell at500mm/min, pooled across two orientations. Reported M200 stress at 200% elongation; source standard edition/compliance, actual strain estimator/stress convention and point-extraction/averaging order unknown. No division by elongation or fitted tangent/secant modulus.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLtbl4/E/column5",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [],
+    "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+    "source_document": {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+      "revision": "Primary Europe PMC full-text XML; distinct from the historically inspected university PDF.",
+      "inspected_on": "2026-11-11",
+      "sha256": "2d8008e2b16dd3fe14b91a6747fb3632c70b461ccee4ccc8dea546dc3c272347",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained primaryXML Table4 E selected cell;sections2.2/2.3/3.3method/pooling/statistics;no newPDF orrawdata analysis.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained primaryXML Table4 E selected cell;sections2.2/2.3/3.3method/pooling/statistics;no newPDF orrawdata analysis.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "id": "refprop_tamas_benyei2025_nbr_mcf30_m200_stress",
+    "material_state_id": "state_tamas_benyei2025_nbr_mcf30",
+    "uncertainty_note": "Source ± undefined;break-specific SD not transferred.",
+    "evidence": [
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLtbl4/E/column5",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/E",
+        "supports": [
+          "summary_statistic"
+        ]
+      }
+    ],
+    "scope_note": "Source-qualified solid formulation E with 30 phr recycled milled carbon fiber (mCF/rCF), PERBUNAN 3445 F NBR and the fixed Table 3 additives. The distinct 30 phr fiber loading defines the formulation relative to the other solid recipes and the existing mCF=0 REF. Identity is the source-defined solid NBR/recycled-milled-carbon-fiber formulation, not a specimen, test direction, curing condition, supplier grade or foam state. PERBUNAN 3445 in Table 2 abbreviates the section 2.1 PERBUNAN 3445 F input, not a second material. Sul is ACTMIX S-80 product input as added; no conversion to elemental sulfur or to a fully specified chemical composition is made. The recycled fiber input is not assumed to be pure carbon, and no source-unstated final mass fractions or filler-purity correction are inferred. Table 3 loadings are retained in phr without normalization. Selected Table4 E tensile fact;phr unchanged. n,participants,weights,gauge,conditioning andextraction/pooling order unknown. Not engineering allowable or automatic mechanics input.",
+    "specified_elongation": {
+      "value_text": "200",
+      "number": "200",
+      "unit_text": "%",
+      "unit_code": "percent",
+      "basis": "source_reported_percent_elongation",
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/E",
+          "supports": [
+            "condition"
+          ]
+        }
+      ],
+      "notes": "Source M200 at 200% elongation. This is the source target, not a verified specimen-wise strain measurement, stretch ratio or logarithmic strain. Gauge and strain-estimation implementation remain unknown; no target/result conversion performed."
+    }
+  },
+  {
+    "version": "1.0.0",
+    "quantity": "tensile_elongation_at_break",
+    "quantity_dimension": "dimensionless",
+    "source_property_label": "strain at break (%)",
+    "reported_value": {
+      "kind": "scalar",
+      "unit_text": "%",
+      "unit_code": "percent_elongation",
+      "value_text": "490",
+      "number": "490"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Source section3.3 pools tensile results across specimens/directions;reported mean,not paired raw curves or certified directional equivalence.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Tensile-test temperature is not stated. Mixing at 110 °C and pressing at 170 °C are preparation conditions, not testing temperatures; no standard laboratory default is assigned."
+      },
+      "test_standard": {
+        "status": "reported",
+        "text": "ISO 37; Type 2 dumbbell specimens",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/E",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-stated method; edition and independent compliance verification are not supplied."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "Source ISO37 Type2 dumbbell tensile specimens from nominal2mm vulcanized sheets; ZwickZ005/5kN at500mm/min crosshead. Two mutually perpendicular orientations pooled by source. Source-labelled strain at break(%); actual reference gauge, strain estimator/convention and rupture/point selection unknown. No percent-to-fraction, stretch-ratio or strain-rate conversion; standard citation does not establish independent compliance.",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/E",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Existing source-specific tensile protocol only; strain estimator, actual gauge, fracture algorithm, temperature/RH and conditioning remain unconfirmed. Preparation temperatures are not test conditions."
+      },
+      "direction": {
+        "status": "reported",
+        "text": "Tensile results averaged across specimens tested in two mutually perpendicular orientations",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/E",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "No source-unstated orientation axes, weighting, direction-specific strength or universal isotropy are inferred."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Tensile-specific pre-test conditioning time, temperature and humidity are not reported. Preparation, cure and density/foaming procedures are not substituted."
+      },
+      "loading_rate": {
+        "status": "reported",
+        "text": "500 mm/min crosshead speed",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/E",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Crosshead speed is not converted to a strain rate without source-reported gauge information."
+      },
+      "additional_conditions": [
+        {
+          "name": "test_relative_humidity",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Tensile-test relative humidity is not stated; no default humidity is assigned."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "reported_mean",
+    "uncertainty": {
+      "type": "reported_standard_deviation",
+      "unit_text": "%",
+      "unit_code": "percent_elongation",
+      "scope": "Absolute SD in elongation percentage points for the pooled Table4 E break-elongation result; not relative error, SE, CI or tolerance.",
+      "coverage_factor": null,
+      "confidence_level": null,
+      "value_text": "89",
+      "number": "89",
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLtbl4/E/column3",
+          "supports": [
+            "uncertainty"
+          ]
+        }
+      ]
+    },
+    "uncertainty_status": "reported_standard_deviation",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "Specimens contributing to selected break-elongation result; exact per-direction and independent-batch counts unknown.",
+      "source_statement": "No tensile specimen count or per-orientation count is stated in the inspected methods/results; two orientations are not n=2 specimens and ANOVA statistics are not used to reconstruct n.",
+      "evidence": []
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source ISO37 Type2 dumbbell tensile specimens from nominal2mm vulcanized sheets; ZwickZ005/5kN at500mm/min crosshead. Two mutually perpendicular orientations pooled by source. Source-labelled strain at break(%); actual reference gauge, strain estimator/convention and rupture/point selection unknown. No percent-to-fraction, stretch-ratio or strain-rate conversion; standard citation does not establish independent compliance.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/E",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [],
+    "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+    "source_document": {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+      "revision": "Primary Europe PMC full-text XML; distinct from the historically inspected university PDF.",
+      "inspected_on": "2026-11-11",
+      "sha256": "2d8008e2b16dd3fe14b91a6747fb3632c70b461ccee4ccc8dea546dc3c272347",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained primaryXML Table4 E selected cell;sections2.2/2.3/3.3method/pooling/statistics;no newPDF orrawdata analysis.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained primaryXML Table4 E selected cell;sections2.2/2.3/3.3method/pooling/statistics;no newPDF orrawdata analysis.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "id": "refprop_tamas_benyei2025_nbr_mcf30_tensile_elongation_at_break",
+    "material_state_id": "state_tamas_benyei2025_nbr_mcf30",
+    "uncertainty_note": "Source break-specific SD,absolute percentage points;not relative error,SE/CI or sample/population convention.",
+    "evidence": [
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLtbl4/E/column3",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/E",
+        "supports": [
+          "method",
+          "condition"
+        ]
+      },
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLtbl4/E/column3",
+        "supports": [
+          "summary_statistic",
+          "uncertainty"
+        ]
+      }
+    ],
+    "scope_note": "Source-qualified solid formulation E with 30 phr recycled milled carbon fiber (mCF/rCF), PERBUNAN 3445 F NBR and the fixed Table 3 additives. The distinct 30 phr fiber loading defines the formulation relative to the other solid recipes and the existing mCF=0 REF. Identity is the source-defined solid NBR/recycled-milled-carbon-fiber formulation, not a specimen, test direction, curing condition, supplier grade or foam state. PERBUNAN 3445 in Table 2 abbreviates the section 2.1 PERBUNAN 3445 F input, not a second material. Sul is ACTMIX S-80 product input as added; no conversion to elemental sulfur or to a fully specified chemical composition is made. The recycled fiber input is not assumed to be pure carbon, and no source-unstated final mass fractions or filler-purity correction are inferred. Table 3 loadings are retained in phr without normalization. Selected Table4 E tensile fact;phr unchanged. n,participants,weights,gauge,conditioning andextraction/pooling order unknown. Not engineering allowable or automatic mechanics input."
+  },
+  {
+    "version": "1.0.0",
+    "quantity": "tensile_stress_at_specified_elongation",
+    "quantity_dimension": "pressure",
+    "source_property_label": "M100 (MPa)",
+    "reported_value": {
+      "kind": "scalar",
+      "unit_text": "MPa",
+      "unit_code": "MPa",
+      "value_text": "2.29",
+      "number": "2.29"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Source section3.3 pools tensile results across specimens/directions;reported mean,not paired raw curves or certified directional equivalence.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Tensile-test temperature is not stated. Mixing at 110 °C and pressing at 170 °C are preparation conditions, not testing temperatures; no standard laboratory default is assigned."
+      },
+      "test_standard": {
+        "status": "reported",
+        "text": "ISO 37; Type 2 dumbbell specimens",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/F",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-stated method; edition and independent compliance verification are not supplied."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "ISO 37 tensile testing with Type 2 dumbbell specimens cut from nominally 2 mm vulcanized sheets; Zwick Z005 universal testing machine with a 5 kN load cell, at 500 mm/min crosshead speed. Two mutually perpendicular specimen orientations were tested and the source averaged tensile results across all specimens regardless of orientation. Numerical gauge geometry, detailed stress/strength extraction convention, test temperature, humidity, conditioning and tensile specimen count are not established in the selected source statements.",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/F",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-labelled finite-elongation stress, not modulus slope; 5kN is instrument capacity. ISO2024 terminology reference does not identify the edition used by authors or prove compliance."
+      },
+      "direction": {
+        "status": "reported",
+        "text": "Tensile results averaged across specimens tested in two mutually perpendicular orientations",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/F",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "No source-unstated orientation axes, weighting, direction-specific strength or universal isotropy are inferred."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Tensile-specific pre-test conditioning time, temperature and humidity are not reported. Preparation, cure and density/foaming procedures are not substituted."
+      },
+      "loading_rate": {
+        "status": "reported",
+        "text": "500 mm/min crosshead speed",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/F",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Crosshead speed is not converted to a strain rate without source-reported gauge information."
+      },
+      "additional_conditions": [
+        {
+          "name": "test_relative_humidity",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Tensile-test relative humidity is not stated; no default humidity is assigned."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "reported_mean",
+    "uncertainty": {
+      "type": "reported_plus_minus_unspecified",
+      "unit_text": "MPa",
+      "unit_code": "MPa",
+      "scope": "Selected Table4 F M100 source stress group only; per-target participant count and ± type unknown.",
+      "coverage_factor": null,
+      "confidence_level": null,
+      "value_text": "0.27",
+      "number": "0.27",
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLtbl4/F/column4",
+          "supports": [
+            "uncertainty"
+          ]
+        }
+      ]
+    },
+    "uncertainty_status": "reported_plus_minus_unspecified",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "Selected Table4 F M100 target group only; per-target/per-direction specimen and independent-batch counts unknown. Do not assume every tensile specimen reached this target or equals the strength-test population.",
+      "source_statement": "No tensile specimen count or per-orientation count is stated in the inspected methods/results; two orientations are not n=2 specimens and ANOVA statistics are not used to reconstruct n.",
+      "evidence": []
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source ISO37 Type2 tensile testing of nominal2mm vulcanized sheet on ZwickZ005/5kN load cell at500mm/min, pooled across two orientations. Reported M100 stress at 100% elongation; source standard edition/compliance, actual strain estimator/stress convention and point-extraction/averaging order unknown. No division by elongation or fitted tangent/secant modulus.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLtbl4/F/column4",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [],
+    "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+    "source_document": {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+      "revision": "Primary Europe PMC full-text XML; distinct from the historically inspected university PDF.",
+      "inspected_on": "2026-11-11",
+      "sha256": "2d8008e2b16dd3fe14b91a6747fb3632c70b461ccee4ccc8dea546dc3c272347",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained primaryXML Table4 F selected cell;sections2.2/2.3/3.3method/pooling/statistics;no newPDF orrawdata analysis.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained primaryXML Table4 F selected cell;sections2.2/2.3/3.3method/pooling/statistics;no newPDF orrawdata analysis.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "id": "refprop_tamas_benyei2025_nbr_mcf40_m100_stress",
+    "material_state_id": "state_tamas_benyei2025_nbr_mcf40",
+    "uncertainty_note": "Source ± undefined;break-specific SD not transferred.",
+    "evidence": [
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLtbl4/F/column4",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/F",
+        "supports": [
+          "summary_statistic"
+        ]
+      }
+    ],
+    "scope_note": "Source-qualified solid formulation F with 40 phr recycled milled carbon fiber (mCF/rCF), PERBUNAN 3445 F NBR and the fixed Table 3 additives. The distinct 40 phr fiber loading defines the formulation relative to the other solid recipes and the existing mCF=0 REF. Identity is the source-defined solid NBR/recycled-milled-carbon-fiber formulation, not a specimen, test direction, curing condition, supplier grade or foam state. PERBUNAN 3445 in Table 2 abbreviates the section 2.1 PERBUNAN 3445 F input, not a second material. Sul is ACTMIX S-80 product input as added; no conversion to elemental sulfur or to a fully specified chemical composition is made. The recycled fiber input is not assumed to be pure carbon, and no source-unstated final mass fractions or filler-purity correction are inferred. Table 3 loadings are retained in phr without normalization. Selected Table4 F tensile fact;phr unchanged. n,participants,weights,gauge,conditioning andextraction/pooling order unknown. Not engineering allowable or automatic mechanics input.",
+    "specified_elongation": {
+      "value_text": "100",
+      "number": "100",
+      "unit_text": "%",
+      "unit_code": "percent",
+      "basis": "source_reported_percent_elongation",
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/F",
+          "supports": [
+            "condition"
+          ]
+        }
+      ],
+      "notes": "Source M100 at 100% elongation. This is the source target, not a verified specimen-wise strain measurement, stretch ratio or logarithmic strain. Gauge and strain-estimation implementation remain unknown; no target/result conversion performed."
+    }
+  },
+  {
+    "version": "1.0.0",
+    "quantity": "tensile_stress_at_specified_elongation",
+    "quantity_dimension": "pressure",
+    "source_property_label": "M200 (MPa)",
+    "reported_value": {
+      "kind": "scalar",
+      "unit_text": "MPa",
+      "unit_code": "MPa",
+      "value_text": "2.62",
+      "number": "2.62"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Source section3.3 pools tensile results across specimens/directions;reported mean,not paired raw curves or certified directional equivalence.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Tensile-test temperature is not stated. Mixing at 110 °C and pressing at 170 °C are preparation conditions, not testing temperatures; no standard laboratory default is assigned."
+      },
+      "test_standard": {
+        "status": "reported",
+        "text": "ISO 37; Type 2 dumbbell specimens",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/F",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-stated method; edition and independent compliance verification are not supplied."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "ISO 37 tensile testing with Type 2 dumbbell specimens cut from nominally 2 mm vulcanized sheets; Zwick Z005 universal testing machine with a 5 kN load cell, at 500 mm/min crosshead speed. Two mutually perpendicular specimen orientations were tested and the source averaged tensile results across all specimens regardless of orientation. Numerical gauge geometry, detailed stress/strength extraction convention, test temperature, humidity, conditioning and tensile specimen count are not established in the selected source statements.",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/F",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-labelled finite-elongation stress, not modulus slope; 5kN is instrument capacity. ISO2024 terminology reference does not identify the edition used by authors or prove compliance."
+      },
+      "direction": {
+        "status": "reported",
+        "text": "Tensile results averaged across specimens tested in two mutually perpendicular orientations",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/F",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "No source-unstated orientation axes, weighting, direction-specific strength or universal isotropy are inferred."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Tensile-specific pre-test conditioning time, temperature and humidity are not reported. Preparation, cure and density/foaming procedures are not substituted."
+      },
+      "loading_rate": {
+        "status": "reported",
+        "text": "500 mm/min crosshead speed",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/F",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Crosshead speed is not converted to a strain rate without source-reported gauge information."
+      },
+      "additional_conditions": [
+        {
+          "name": "test_relative_humidity",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Tensile-test relative humidity is not stated; no default humidity is assigned."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "reported_mean",
+    "uncertainty": {
+      "type": "reported_plus_minus_unspecified",
+      "unit_text": "MPa",
+      "unit_code": "MPa",
+      "scope": "Selected Table4 F M200 source stress group only; per-target participant count and ± type unknown.",
+      "coverage_factor": null,
+      "confidence_level": null,
+      "value_text": "0.29",
+      "number": "0.29",
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLtbl4/F/column5",
+          "supports": [
+            "uncertainty"
+          ]
+        }
+      ]
+    },
+    "uncertainty_status": "reported_plus_minus_unspecified",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "Selected Table4 F M200 target group only; per-target/per-direction specimen and independent-batch counts unknown. Do not assume every tensile specimen reached this target or equals the strength-test population.",
+      "source_statement": "No tensile specimen count or per-orientation count is stated in the inspected methods/results; two orientations are not n=2 specimens and ANOVA statistics are not used to reconstruct n.",
+      "evidence": []
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source ISO37 Type2 tensile testing of nominal2mm vulcanized sheet on ZwickZ005/5kN load cell at500mm/min, pooled across two orientations. Reported M200 stress at 200% elongation; source standard edition/compliance, actual strain estimator/stress convention and point-extraction/averaging order unknown. No division by elongation or fitted tangent/secant modulus.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLtbl4/F/column5",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [],
+    "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+    "source_document": {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+      "revision": "Primary Europe PMC full-text XML; distinct from the historically inspected university PDF.",
+      "inspected_on": "2026-11-11",
+      "sha256": "2d8008e2b16dd3fe14b91a6747fb3632c70b461ccee4ccc8dea546dc3c272347",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained primaryXML Table4 F selected cell;sections2.2/2.3/3.3method/pooling/statistics;no newPDF orrawdata analysis.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained primaryXML Table4 F selected cell;sections2.2/2.3/3.3method/pooling/statistics;no newPDF orrawdata analysis.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "id": "refprop_tamas_benyei2025_nbr_mcf40_m200_stress",
+    "material_state_id": "state_tamas_benyei2025_nbr_mcf40",
+    "uncertainty_note": "Source ± undefined;break-specific SD not transferred.",
+    "evidence": [
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLtbl4/F/column5",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/F",
+        "supports": [
+          "summary_statistic"
+        ]
+      }
+    ],
+    "scope_note": "Source-qualified solid formulation F with 40 phr recycled milled carbon fiber (mCF/rCF), PERBUNAN 3445 F NBR and the fixed Table 3 additives. The distinct 40 phr fiber loading defines the formulation relative to the other solid recipes and the existing mCF=0 REF. Identity is the source-defined solid NBR/recycled-milled-carbon-fiber formulation, not a specimen, test direction, curing condition, supplier grade or foam state. PERBUNAN 3445 in Table 2 abbreviates the section 2.1 PERBUNAN 3445 F input, not a second material. Sul is ACTMIX S-80 product input as added; no conversion to elemental sulfur or to a fully specified chemical composition is made. The recycled fiber input is not assumed to be pure carbon, and no source-unstated final mass fractions or filler-purity correction are inferred. Table 3 loadings are retained in phr without normalization. Selected Table4 F tensile fact;phr unchanged. n,participants,weights,gauge,conditioning andextraction/pooling order unknown. Not engineering allowable or automatic mechanics input.",
+    "specified_elongation": {
+      "value_text": "200",
+      "number": "200",
+      "unit_text": "%",
+      "unit_code": "percent",
+      "basis": "source_reported_percent_elongation",
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/F",
+          "supports": [
+            "condition"
+          ]
+        }
+      ],
+      "notes": "Source M200 at 200% elongation. This is the source target, not a verified specimen-wise strain measurement, stretch ratio or logarithmic strain. Gauge and strain-estimation implementation remain unknown; no target/result conversion performed."
+    }
+  },
+  {
+    "version": "1.0.0",
+    "quantity": "tensile_elongation_at_break",
+    "quantity_dimension": "dimensionless",
+    "source_property_label": "strain at break (%)",
+    "reported_value": {
+      "kind": "scalar",
+      "unit_text": "%",
+      "unit_code": "percent_elongation",
+      "value_text": "500",
+      "number": "500"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Source section3.3 pools tensile results across specimens/directions;reported mean,not paired raw curves or certified directional equivalence.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Tensile-test temperature is not stated. Mixing at 110 °C and pressing at 170 °C are preparation conditions, not testing temperatures; no standard laboratory default is assigned."
+      },
+      "test_standard": {
+        "status": "reported",
+        "text": "ISO 37; Type 2 dumbbell specimens",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/F",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-stated method; edition and independent compliance verification are not supplied."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "Source ISO37 Type2 dumbbell tensile specimens from nominal2mm vulcanized sheets; ZwickZ005/5kN at500mm/min crosshead. Two mutually perpendicular orientations pooled by source. Source-labelled strain at break(%); actual reference gauge, strain estimator/convention and rupture/point selection unknown. No percent-to-fraction, stretch-ratio or strain-rate conversion; standard citation does not establish independent compliance.",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/F",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Existing source-specific tensile protocol only; strain estimator, actual gauge, fracture algorithm, temperature/RH and conditioning remain unconfirmed. Preparation temperatures are not test conditions."
+      },
+      "direction": {
+        "status": "reported",
+        "text": "Tensile results averaged across specimens tested in two mutually perpendicular orientations",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/F",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "No source-unstated orientation axes, weighting, direction-specific strength or universal isotropy are inferred."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Tensile-specific pre-test conditioning time, temperature and humidity are not reported. Preparation, cure and density/foaming procedures are not substituted."
+      },
+      "loading_rate": {
+        "status": "reported",
+        "text": "500 mm/min crosshead speed",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/F",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Crosshead speed is not converted to a strain rate without source-reported gauge information."
+      },
+      "additional_conditions": [
+        {
+          "name": "test_relative_humidity",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Tensile-test relative humidity is not stated; no default humidity is assigned."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "reported_mean",
+    "uncertainty": {
+      "type": "reported_standard_deviation",
+      "unit_text": "%",
+      "unit_code": "percent_elongation",
+      "scope": "Absolute SD in elongation percentage points for the pooled Table4 F break-elongation result; not relative error, SE, CI or tolerance.",
+      "coverage_factor": null,
+      "confidence_level": null,
+      "value_text": "97",
+      "number": "97",
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLtbl4/F/column3",
+          "supports": [
+            "uncertainty"
+          ]
+        }
+      ]
+    },
+    "uncertainty_status": "reported_standard_deviation",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "Specimens contributing to selected break-elongation result; exact per-direction and independent-batch counts unknown.",
+      "source_statement": "No tensile specimen count or per-orientation count is stated in the inspected methods/results; two orientations are not n=2 specimens and ANOVA statistics are not used to reconstruct n.",
+      "evidence": []
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source ISO37 Type2 dumbbell tensile specimens from nominal2mm vulcanized sheets; ZwickZ005/5kN at500mm/min crosshead. Two mutually perpendicular orientations pooled by source. Source-labelled strain at break(%); actual reference gauge, strain estimator/convention and rupture/point selection unknown. No percent-to-fraction, stretch-ratio or strain-rate conversion; standard citation does not establish independent compliance.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/F",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [],
+    "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+    "source_document": {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+      "revision": "Primary Europe PMC full-text XML; distinct from the historically inspected university PDF.",
+      "inspected_on": "2026-11-11",
+      "sha256": "2d8008e2b16dd3fe14b91a6747fb3632c70b461ccee4ccc8dea546dc3c272347",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained primaryXML Table4 F selected cell;sections2.2/2.3/3.3method/pooling/statistics;no newPDF orrawdata analysis.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained primaryXML Table4 F selected cell;sections2.2/2.3/3.3method/pooling/statistics;no newPDF orrawdata analysis.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "id": "refprop_tamas_benyei2025_nbr_mcf40_tensile_elongation_at_break",
+    "material_state_id": "state_tamas_benyei2025_nbr_mcf40",
+    "uncertainty_note": "Source break-specific SD,absolute percentage points;not relative error,SE/CI or sample/population convention.",
+    "evidence": [
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLtbl4/F/column3",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/F",
+        "supports": [
+          "method",
+          "condition"
+        ]
+      },
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLtbl4/F/column3",
+        "supports": [
+          "summary_statistic",
+          "uncertainty"
+        ]
+      }
+    ],
+    "scope_note": "Source-qualified solid formulation F with 40 phr recycled milled carbon fiber (mCF/rCF), PERBUNAN 3445 F NBR and the fixed Table 3 additives. The distinct 40 phr fiber loading defines the formulation relative to the other solid recipes and the existing mCF=0 REF. Identity is the source-defined solid NBR/recycled-milled-carbon-fiber formulation, not a specimen, test direction, curing condition, supplier grade or foam state. PERBUNAN 3445 in Table 2 abbreviates the section 2.1 PERBUNAN 3445 F input, not a second material. Sul is ACTMIX S-80 product input as added; no conversion to elemental sulfur or to a fully specified chemical composition is made. The recycled fiber input is not assumed to be pure carbon, and no source-unstated final mass fractions or filler-purity correction are inferred. Table 3 loadings are retained in phr without normalization. Selected Table4 F tensile fact;phr unchanged. n,participants,weights,gauge,conditioning andextraction/pooling order unknown. Not engineering allowable or automatic mechanics input."
+  },
+  {
+    "version": "1.0.0",
+    "quantity": "tensile_stress_at_specified_elongation",
+    "quantity_dimension": "pressure",
+    "source_property_label": "M100 (MPa)",
+    "reported_value": {
+      "kind": "scalar",
+      "unit_text": "MPa",
+      "unit_code": "MPa",
+      "value_text": "2.44",
+      "number": "2.44"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Source section3.3 pools tensile results across specimens/directions;reported mean,not paired raw curves or certified directional equivalence.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Tensile-test temperature is not stated. Mixing at 110 °C and pressing at 170 °C are preparation conditions, not testing temperatures; no standard laboratory default is assigned."
+      },
+      "test_standard": {
+        "status": "reported",
+        "text": "ISO 37; Type 2 dumbbell specimens",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/G",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-stated method; edition and independent compliance verification are not supplied."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "ISO 37 tensile testing with Type 2 dumbbell specimens cut from nominally 2 mm vulcanized sheets; Zwick Z005 universal testing machine with a 5 kN load cell, at 500 mm/min crosshead speed. Two mutually perpendicular specimen orientations were tested and the source averaged tensile results across all specimens regardless of orientation. Numerical gauge geometry, detailed stress/strength extraction convention, test temperature, humidity, conditioning and tensile specimen count are not established in the selected source statements.",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/G",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-labelled finite-elongation stress, not modulus slope; 5kN is instrument capacity. ISO2024 terminology reference does not identify the edition used by authors or prove compliance."
+      },
+      "direction": {
+        "status": "reported",
+        "text": "Tensile results averaged across specimens tested in two mutually perpendicular orientations",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/G",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "No source-unstated orientation axes, weighting, direction-specific strength or universal isotropy are inferred."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Tensile-specific pre-test conditioning time, temperature and humidity are not reported. Preparation, cure and density/foaming procedures are not substituted."
+      },
+      "loading_rate": {
+        "status": "reported",
+        "text": "500 mm/min crosshead speed",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/G",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Crosshead speed is not converted to a strain rate without source-reported gauge information."
+      },
+      "additional_conditions": [
+        {
+          "name": "test_relative_humidity",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Tensile-test relative humidity is not stated; no default humidity is assigned."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "reported_mean",
+    "uncertainty": {
+      "type": "reported_plus_minus_unspecified",
+      "unit_text": "MPa",
+      "unit_code": "MPa",
+      "scope": "Selected Table4 G M100 source stress group only; per-target participant count and ± type unknown.",
+      "coverage_factor": null,
+      "confidence_level": null,
+      "value_text": "0.40",
+      "number": "0.40",
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLtbl4/G/column4",
+          "supports": [
+            "uncertainty"
+          ]
+        }
+      ]
+    },
+    "uncertainty_status": "reported_plus_minus_unspecified",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "Selected Table4 G M100 target group only; per-target/per-direction specimen and independent-batch counts unknown. Do not assume every tensile specimen reached this target or equals the strength-test population.",
+      "source_statement": "No tensile specimen count or per-orientation count is stated in the inspected methods/results; two orientations are not n=2 specimens and ANOVA statistics are not used to reconstruct n.",
+      "evidence": []
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source ISO37 Type2 tensile testing of nominal2mm vulcanized sheet on ZwickZ005/5kN load cell at500mm/min, pooled across two orientations. Reported M100 stress at 100% elongation; source standard edition/compliance, actual strain estimator/stress convention and point-extraction/averaging order unknown. No division by elongation or fitted tangent/secant modulus.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLtbl4/G/column4",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [],
+    "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+    "source_document": {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+      "revision": "Primary Europe PMC full-text XML; distinct from the historically inspected university PDF.",
+      "inspected_on": "2026-11-11",
+      "sha256": "2d8008e2b16dd3fe14b91a6747fb3632c70b461ccee4ccc8dea546dc3c272347",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained primaryXML Table4 G selected cell;sections2.2/2.3/3.3method/pooling/statistics;no newPDF orrawdata analysis.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained primaryXML Table4 G selected cell;sections2.2/2.3/3.3method/pooling/statistics;no newPDF orrawdata analysis.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "id": "refprop_tamas_benyei2025_nbr_mcf50_m100_stress",
+    "material_state_id": "state_tamas_benyei2025_nbr_mcf50",
+    "uncertainty_note": "Source ± undefined;break-specific SD not transferred.",
+    "evidence": [
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLtbl4/G/column4",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/G",
+        "supports": [
+          "summary_statistic"
+        ]
+      }
+    ],
+    "scope_note": "Source-qualified solid formulation G with 50 phr recycled milled carbon fiber (mCF/rCF), PERBUNAN 3445 F NBR and the fixed Table 3 additives. The distinct 50 phr fiber loading defines the formulation relative to the other solid recipes and the existing mCF=0 REF. Identity is the source-defined solid NBR/recycled-milled-carbon-fiber formulation, not a specimen, test direction, curing condition, supplier grade or foam state. PERBUNAN 3445 in Table 2 abbreviates the section 2.1 PERBUNAN 3445 F input, not a second material. Sul is ACTMIX S-80 product input as added; no conversion to elemental sulfur or to a fully specified chemical composition is made. The recycled fiber input is not assumed to be pure carbon, and no source-unstated final mass fractions or filler-purity correction are inferred. Table 3 loadings are retained in phr without normalization. Selected Table4 G tensile fact;phr unchanged. n,participants,weights,gauge,conditioning andextraction/pooling order unknown. Not engineering allowable or automatic mechanics input.",
+    "specified_elongation": {
+      "value_text": "100",
+      "number": "100",
+      "unit_text": "%",
+      "unit_code": "percent",
+      "basis": "source_reported_percent_elongation",
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/G",
+          "supports": [
+            "condition"
+          ]
+        }
+      ],
+      "notes": "Source M100 at 100% elongation. This is the source target, not a verified specimen-wise strain measurement, stretch ratio or logarithmic strain. Gauge and strain-estimation implementation remain unknown; no target/result conversion performed."
+    }
+  },
+  {
+    "version": "1.0.0",
+    "quantity": "tensile_stress_at_specified_elongation",
+    "quantity_dimension": "pressure",
+    "source_property_label": "M200 (MPa)",
+    "reported_value": {
+      "kind": "scalar",
+      "unit_text": "MPa",
+      "unit_code": "MPa",
+      "value_text": "2.75",
+      "number": "2.75"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Source section3.3 pools tensile results across specimens/directions;reported mean,not paired raw curves or certified directional equivalence.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Tensile-test temperature is not stated. Mixing at 110 °C and pressing at 170 °C are preparation conditions, not testing temperatures; no standard laboratory default is assigned."
+      },
+      "test_standard": {
+        "status": "reported",
+        "text": "ISO 37; Type 2 dumbbell specimens",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/G",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-stated method; edition and independent compliance verification are not supplied."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "ISO 37 tensile testing with Type 2 dumbbell specimens cut from nominally 2 mm vulcanized sheets; Zwick Z005 universal testing machine with a 5 kN load cell, at 500 mm/min crosshead speed. Two mutually perpendicular specimen orientations were tested and the source averaged tensile results across all specimens regardless of orientation. Numerical gauge geometry, detailed stress/strength extraction convention, test temperature, humidity, conditioning and tensile specimen count are not established in the selected source statements.",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/G",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-labelled finite-elongation stress, not modulus slope; 5kN is instrument capacity. ISO2024 terminology reference does not identify the edition used by authors or prove compliance."
+      },
+      "direction": {
+        "status": "reported",
+        "text": "Tensile results averaged across specimens tested in two mutually perpendicular orientations",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/G",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "No source-unstated orientation axes, weighting, direction-specific strength or universal isotropy are inferred."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Tensile-specific pre-test conditioning time, temperature and humidity are not reported. Preparation, cure and density/foaming procedures are not substituted."
+      },
+      "loading_rate": {
+        "status": "reported",
+        "text": "500 mm/min crosshead speed",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/G",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Crosshead speed is not converted to a strain rate without source-reported gauge information."
+      },
+      "additional_conditions": [
+        {
+          "name": "test_relative_humidity",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Tensile-test relative humidity is not stated; no default humidity is assigned."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "reported_mean",
+    "uncertainty": {
+      "type": "reported_plus_minus_unspecified",
+      "unit_text": "MPa",
+      "unit_code": "MPa",
+      "scope": "Selected Table4 G M200 source stress group only; per-target participant count and ± type unknown.",
+      "coverage_factor": null,
+      "confidence_level": null,
+      "value_text": "0.41",
+      "number": "0.41",
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLtbl4/G/column5",
+          "supports": [
+            "uncertainty"
+          ]
+        }
+      ]
+    },
+    "uncertainty_status": "reported_plus_minus_unspecified",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "Selected Table4 G M200 target group only; per-target/per-direction specimen and independent-batch counts unknown. Do not assume every tensile specimen reached this target or equals the strength-test population.",
+      "source_statement": "No tensile specimen count or per-orientation count is stated in the inspected methods/results; two orientations are not n=2 specimens and ANOVA statistics are not used to reconstruct n.",
+      "evidence": []
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source ISO37 Type2 tensile testing of nominal2mm vulcanized sheet on ZwickZ005/5kN load cell at500mm/min, pooled across two orientations. Reported M200 stress at 200% elongation; source standard edition/compliance, actual strain estimator/stress convention and point-extraction/averaging order unknown. No division by elongation or fitted tangent/secant modulus.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLtbl4/G/column5",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [],
+    "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+    "source_document": {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+      "revision": "Primary Europe PMC full-text XML; distinct from the historically inspected university PDF.",
+      "inspected_on": "2026-11-11",
+      "sha256": "2d8008e2b16dd3fe14b91a6747fb3632c70b461ccee4ccc8dea546dc3c272347",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained primaryXML Table4 G selected cell;sections2.2/2.3/3.3method/pooling/statistics;no newPDF orrawdata analysis.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained primaryXML Table4 G selected cell;sections2.2/2.3/3.3method/pooling/statistics;no newPDF orrawdata analysis.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "id": "refprop_tamas_benyei2025_nbr_mcf50_m200_stress",
+    "material_state_id": "state_tamas_benyei2025_nbr_mcf50",
+    "uncertainty_note": "Source ± undefined;break-specific SD not transferred.",
+    "evidence": [
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLtbl4/G/column5",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/G",
+        "supports": [
+          "summary_statistic"
+        ]
+      }
+    ],
+    "scope_note": "Source-qualified solid formulation G with 50 phr recycled milled carbon fiber (mCF/rCF), PERBUNAN 3445 F NBR and the fixed Table 3 additives. The distinct 50 phr fiber loading defines the formulation relative to the other solid recipes and the existing mCF=0 REF. Identity is the source-defined solid NBR/recycled-milled-carbon-fiber formulation, not a specimen, test direction, curing condition, supplier grade or foam state. PERBUNAN 3445 in Table 2 abbreviates the section 2.1 PERBUNAN 3445 F input, not a second material. Sul is ACTMIX S-80 product input as added; no conversion to elemental sulfur or to a fully specified chemical composition is made. The recycled fiber input is not assumed to be pure carbon, and no source-unstated final mass fractions or filler-purity correction are inferred. Table 3 loadings are retained in phr without normalization. Selected Table4 G tensile fact;phr unchanged. n,participants,weights,gauge,conditioning andextraction/pooling order unknown. Not engineering allowable or automatic mechanics input.",
+    "specified_elongation": {
+      "value_text": "200",
+      "number": "200",
+      "unit_text": "%",
+      "unit_code": "percent",
+      "basis": "source_reported_percent_elongation",
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/G",
+          "supports": [
+            "condition"
+          ]
+        }
+      ],
+      "notes": "Source M200 at 200% elongation. This is the source target, not a verified specimen-wise strain measurement, stretch ratio or logarithmic strain. Gauge and strain-estimation implementation remain unknown; no target/result conversion performed."
+    }
+  },
+  {
+    "version": "1.0.0",
+    "quantity": "tensile_elongation_at_break",
+    "quantity_dimension": "dimensionless",
+    "source_property_label": "strain at break (%)",
+    "reported_value": {
+      "kind": "scalar",
+      "unit_text": "%",
+      "unit_code": "percent_elongation",
+      "value_text": "494",
+      "number": "494"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Source section3.3 pools tensile results across specimens/directions;reported mean,not paired raw curves or certified directional equivalence.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Tensile-test temperature is not stated. Mixing at 110 °C and pressing at 170 °C are preparation conditions, not testing temperatures; no standard laboratory default is assigned."
+      },
+      "test_standard": {
+        "status": "reported",
+        "text": "ISO 37; Type 2 dumbbell specimens",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/G",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source-stated method; edition and independent compliance verification are not supplied."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "Source ISO37 Type2 dumbbell tensile specimens from nominal2mm vulcanized sheets; ZwickZ005/5kN at500mm/min crosshead. Two mutually perpendicular orientations pooled by source. Source-labelled strain at break(%); actual reference gauge, strain estimator/convention and rupture/point selection unknown. No percent-to-fraction, stretch-ratio or strain-rate conversion; standard citation does not establish independent compliance.",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/G",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Existing source-specific tensile protocol only; strain estimator, actual gauge, fracture algorithm, temperature/RH and conditioning remain unconfirmed. Preparation temperatures are not test conditions."
+      },
+      "direction": {
+        "status": "reported",
+        "text": "Tensile results averaged across specimens tested in two mutually perpendicular orientations",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/G",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "No source-unstated orientation axes, weighting, direction-specific strength or universal isotropy are inferred."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Tensile-specific pre-test conditioning time, temperature and humidity are not reported. Preparation, cure and density/foaming procedures are not substituted."
+      },
+      "loading_rate": {
+        "status": "reported",
+        "text": "500 mm/min crosshead speed",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/G",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Crosshead speed is not converted to a strain rate without source-reported gauge information."
+      },
+      "additional_conditions": [
+        {
+          "name": "test_relative_humidity",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Tensile-test relative humidity is not stated; no default humidity is assigned."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "reported_mean",
+    "uncertainty": {
+      "type": "reported_standard_deviation",
+      "unit_text": "%",
+      "unit_code": "percent_elongation",
+      "scope": "Absolute SD in elongation percentage points for the pooled Table4 G break-elongation result; not relative error, SE, CI or tolerance.",
+      "coverage_factor": null,
+      "confidence_level": null,
+      "value_text": "72",
+      "number": "72",
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLtbl4/G/column3",
+          "supports": [
+            "uncertainty"
+          ]
+        }
+      ]
+    },
+    "uncertainty_status": "reported_standard_deviation",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "Specimens contributing to selected break-elongation result; exact per-direction and independent-batch counts unknown.",
+      "source_statement": "No tensile specimen count or per-orientation count is stated in the inspected methods/results; two orientations are not n=2 specimens and ANOVA statistics are not used to reconstruct n.",
+      "evidence": []
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source ISO37 Type2 dumbbell tensile specimens from nominal2mm vulcanized sheets; ZwickZ005/5kN at500mm/min crosshead. Two mutually perpendicular orientations pooled by source. Source-labelled strain at break(%); actual reference gauge, strain estimator/convention and rupture/point selection unknown. No percent-to-fraction, stretch-ratio or strain-rate conversion; standard citation does not establish independent compliance.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/G",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [],
+    "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+    "source_document": {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+      "revision": "Primary Europe PMC full-text XML; distinct from the historically inspected university PDF.",
+      "inspected_on": "2026-11-11",
+      "sha256": "2d8008e2b16dd3fe14b91a6747fb3632c70b461ccee4ccc8dea546dc3c272347",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained primaryXML Table4 G selected cell;sections2.2/2.3/3.3method/pooling/statistics;no newPDF orrawdata analysis.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained primaryXML Table4 G selected cell;sections2.2/2.3/3.3method/pooling/statistics;no newPDF orrawdata analysis.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "id": "refprop_tamas_benyei2025_nbr_mcf50_tensile_elongation_at_break",
+    "material_state_id": "state_tamas_benyei2025_nbr_mcf50",
+    "uncertainty_note": "Source break-specific SD,absolute percentage points;not relative error,SE/CI or sample/population convention.",
+    "evidence": [
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLtbl4/G/column3",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLsections2.2/2.3/3.3;Table4/G",
+        "supports": [
+          "method",
+          "condition"
+        ]
+      },
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "PrimaryXMLtbl4/G/column3",
+        "supports": [
+          "summary_statistic",
+          "uncertainty"
+        ]
+      }
+    ],
+    "scope_note": "Source-qualified solid formulation G with 50 phr recycled milled carbon fiber (mCF/rCF), PERBUNAN 3445 F NBR and the fixed Table 3 additives. The distinct 50 phr fiber loading defines the formulation relative to the other solid recipes and the existing mCF=0 REF. Identity is the source-defined solid NBR/recycled-milled-carbon-fiber formulation, not a specimen, test direction, curing condition, supplier grade or foam state. PERBUNAN 3445 in Table 2 abbreviates the section 2.1 PERBUNAN 3445 F input, not a second material. Sul is ACTMIX S-80 product input as added; no conversion to elemental sulfur or to a fully specified chemical composition is made. The recycled fiber input is not assumed to be pure carbon, and no source-unstated final mass fractions or filler-purity correction are inferred. Table 3 loadings are retained in phr without normalization. Selected Table4 G tensile fact;phr unchanged. n,participants,weights,gauge,conditioning andextraction/pooling order unknown. Not engineering allowable or automatic mechanics input."
+  }
+]

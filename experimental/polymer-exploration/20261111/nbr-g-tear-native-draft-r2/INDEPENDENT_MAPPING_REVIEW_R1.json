@@ -1,0 +1,19 @@
+{
+  "decision": "approved",
+  "review_inputs_sha256": "183460290f8d71df7caf3e36853470fe482491f120807e67f9fc777b4b407ec5",
+  "candidate_snapshot": "78e72cb3d11a15dd26050484fadd52813cd13967d08b124db489f15cb572f7cd",
+  "checks": [
+    "67项仓库、13项外部及3张原生表绑定哈希全部匹配。",
+    "新状态与R1相比仅processing.notes由tensile-test改为tear-test；其他状态字段完全相同。",
+    "NEW_PROPERTIES及SOURCE_AUDIT与R1逐字相同，数值、统计和来源边界未变。",
+    "REVIEW_FIX准确绑定原入口及修正前后文字；R1全部冻结绑定保持原哈希。",
+    "独立合成R2快照匹配；tear2、source31和composite25完整导出均与候选查询完全相等。",
+    "R1非阻塞文案项已闭合，无新增问题。"
+  ],
+  "findings": [],
+  "limits": [
+    "仅批准R2具体映射，继承R1同字节来源审阅；不批准未来应用、安装或最终接纳。",
+    "未执行作者辅助程序、测试、完整图、历史回归、安装或Git变更，未写文件或缓存。",
+    "不认证科学有效性、标准符合性或最新来源状态。"
+  ]
+}

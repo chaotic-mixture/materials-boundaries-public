@@ -1,0 +1,27 @@
+{
+  "decision": "changes_required",
+  "review_inputs_sha256": "5a7899052ba1854a6fc9286db9d37edaf08aac4d9aa697ce38a3ea39b992d783",
+  "checks": [
+    "60项仓库、17项外部及3张原生表绑定哈希全部匹配。",
+    "工作簿ZIP完整性及保留OOXML成员逐字匹配；Density→sheet5→drawing5/TextBox3 id4关系成立。",
+    "九项G列实测密度和H列avedev与原始单元格全部精确一致；E列TDS未被选取。",
+    "文本框明确圆柱几何体积法及三个试样平均，支持reported_mean和密度组n=3；近似尺寸、仪器±与未知校准边界准确。",
+    "avedev仅保留原值说明，uncertainty=null；PEKK字面0未解释为零测量误差，未借用打印立方体true-density定义。",
+    "九个新状态的身份关联正确，未迁移拉伸尺寸、速率、计数或打印条件；密度环境、调湿、方向及制造历史未知保持。",
+    "候选快照匹配；旧5553条性质、5312个状态、身份、牌号和来源保持。四组9/31/24/7完整导出与独立候选查询相等。",
+    "九个新上下文通过公开schema、格式、小图科学契约及resolve核验；既有CC-BY-4.0来源元数据保持。"
+  ],
+  "findings": [
+    {
+      "field": "README.zh.md：九个既有身份（八polymer、一composite）",
+      "issue": "将九个选中丝材系列/状态误计为九个不同材料身份。实际引用8个不同identity_id，其中7个polymer、1个composite；黑色与白色Tough PLA共用mat_aniskevich_2023_ultimaker_tough_pla。",
+      "required_change": "改为九个选中参考丝材系列、九个密度上下文，覆盖八个既有身份；九条记录分类为八条polymer、一条composite。保留当前身份映射，不拆分或新增身份。"
+    }
+  ],
+  "limits": [
+    "本结论要求修正文档计数，不涉及数值、统计或身份映射错误；修订后可定向复核。",
+    "仅为来源及具体映射审阅，不批准原生应用、安装或最终接纳。",
+    "未渲染Excel界面、刷新外链、计算公式或执行工作簿代码，未认证最新元数据或科学有效性。",
+    "未执行作者辅助程序、测试、完整图、历史回归、安装或Git变更，未写文件或缓存。"
+  ]
+}

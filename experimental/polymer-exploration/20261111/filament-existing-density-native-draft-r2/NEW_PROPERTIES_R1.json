@@ -1,0 +1,1685 @@
+[
+  {
+    "version": "1.0.0",
+    "quantity_dimension": "mass_per_volume",
+    "reported_value": {
+      "kind": "scalar",
+      "unit_text": "kg/m^3",
+      "unit_code": "kg/m^3",
+      "value_text": "1193.4405286929525",
+      "number": "1193.4405286929525"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Measured density columnG,not TDScolumnE. Three-specimen average explicitly stated in linked Density drawing. Source precision retained,no recomputation or inferred exact per-specimen geometry. True/bulk/apparent basis label not supplied for reference filament;geometric-volume method explicit.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Density-test temperature unknown;no printing/nozzle/bed or room-temperature default."
+      },
+      "test_standard": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "No reference-filament density standard named in linked method."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "Reference-filament density calculated from measured mass and cylindrical geometric volume using measured diameter and length;source nominal reference filament2.8mm,method circa2.85mm diameter and circa100mm length. Source lists weighing±0.00001g,diameter±0.001mm,length±0.01mm;their accuracy/resolution/tolerance meaning and calibration unknown. Three specimens averaged. No buoyancy,pycnometry,printed-cube protocol or standard inferred.",
+        "evidence": [
+          {
+            "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+            "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+            "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source mass and cylinder geometry procedure,not an inferred ISO or buoyancy test."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "No density direction/isotropy definition;not imported from tensile or printed specimens."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Density-specific moisture,pre-test drying,storage,T/RH and equilibration unknown."
+      },
+      "loading_rate": {
+        "status": "not_applicable",
+        "text": null,
+        "evidence": [],
+        "notes": "Geometric density,not a tensile loading experiment."
+      },
+      "additional_conditions": [
+        {
+          "name": "nominal_density_specimen_geometry",
+          "fact": {
+            "status": "reported",
+            "text": "Diameter circa2.85mm;length circa100mm",
+            "evidence": [
+              {
+                "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+                "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+                "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Approximate source method dimensions,not per-row exact measurements."
+          }
+        },
+        {
+          "name": "source_instrument_plusminus",
+          "fact": {
+            "status": "reported",
+            "text": "Weight±0.00001g;diameter±0.001mm;length±0.01mm",
+            "evidence": [
+              {
+                "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+                "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+                "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Source instrument/measurement± wording only;resolution/accuracy/tolerance and calibration unknown,not propagated as property scatter."
+          }
+        }
+      ]
+    },
+    "density_basis": "not_stated",
+    "summary_statistic": "reported_mean",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "sample_count": {
+      "value": 3,
+      "relation": "exact",
+      "scope": "Three reference-filament density specimens for the selected series;repeat weighings,independent lots/batches and statistical independence unknown.",
+      "source_statement": "Results for three specimens were averaged.",
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+          "supports": [
+            "sample_count",
+            "summary_statistic"
+          ]
+        }
+      ]
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Reference-filament density calculated from measured mass and cylindrical geometric volume using measured diameter and length;source nominal reference filament2.8mm,method circa2.85mm diameter and circa100mm length. Source lists weighing±0.00001g,diameter±0.001mm,length±0.01mm;their accuracy/resolution/tolerance meaning and calibration unknown. Three specimens averaged. No buoyancy,pycnometry,printed-cube protocol or standard inferred.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+          "supports": [
+            "method",
+            "summary_statistic"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [],
+    "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+    "source_document": {
+      "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+      "revision": "Zenodo version DOI 10.5281/zenodo.8089569; record revision 2",
+      "inspected_on": "2026-11-11",
+      "sha256": "830b2c9277dcc2d03265b63e311a5e7089c258ebb6a389b45d07601ae4b2e4e7",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained workbook OOXML Density!D/G/H selected nine existing-identity rows;worksheet/workbook relationships and linked drawing5 TextBox3 checked. No Excel UI render,formula evaluation,external-link refresh,newacquisition/latestversion/SI or source-code execution.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Source-qualified three-specimen mean geometric density for this existing reference-filament identity;not TDS/theoretical/true-density/printed-cube or raw polymer density. No porosity correction,relative-density conversion,thermal/moisture correction,engineering allowable or mechanics-engine input. Unknown T/RH/conditioning,calibration,independent batches and avedev definition retained.",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained workbook OOXML Density!D/G/H selected nine existing-identity rows;worksheet/workbook relationships and linked drawing5 TextBox3 checked. No Excel UI render,formula evaluation,external-link refresh,newacquisition/latestversion/SI or source-code execution.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "id": "refprop_aniskevich_2023_ultimaker_pc_filament_mass_density",
+    "material_state_id": "state_aniskevich_2023_ultimaker_pc_filament_density",
+    "quantity": "mass_density",
+    "source_property_label": "ρ, kg/m^3",
+    "uncertainty_note": "Source Density!H4 reports avedev=8.5911187976332712 kg/m^3. Label has no verified definition;not typed as SD,SEM,CI or printed plus/minus. Numeric uncertainty=null preserves this typing limitation,not absence of deviation. Instrument± values are not propagated as density uncertainty;literal zero avedev,if present,does not certify zero measurement error.",
+    "evidence": [
+      {
+        "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+        "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+        "locator": "Density!D4/G4/H4;G2:H3 measured reference-filament headers",
+        "supports": [
+          "reported_value",
+          "uncertainty",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+        "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+        "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+        "supports": [
+          "method",
+          "condition",
+          "sample_count",
+          "summary_statistic"
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.0",
+    "quantity_dimension": "mass_per_volume",
+    "reported_value": {
+      "kind": "scalar",
+      "unit_text": "kg/m^3",
+      "unit_code": "kg/m^3",
+      "value_text": "1209.2036668543024",
+      "number": "1209.2036668543024"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Measured density columnG,not TDScolumnE. Three-specimen average explicitly stated in linked Density drawing. Source precision retained,no recomputation or inferred exact per-specimen geometry. True/bulk/apparent basis label not supplied for reference filament;geometric-volume method explicit.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Density-test temperature unknown;no printing/nozzle/bed or room-temperature default."
+      },
+      "test_standard": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "No reference-filament density standard named in linked method."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "Reference-filament density calculated from measured mass and cylindrical geometric volume using measured diameter and length;source nominal reference filament2.8mm,method circa2.85mm diameter and circa100mm length. Source lists weighing±0.00001g,diameter±0.001mm,length±0.01mm;their accuracy/resolution/tolerance meaning and calibration unknown. Three specimens averaged. No buoyancy,pycnometry,printed-cube protocol or standard inferred.",
+        "evidence": [
+          {
+            "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+            "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+            "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source mass and cylinder geometry procedure,not an inferred ISO or buoyancy test."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "No density direction/isotropy definition;not imported from tensile or printed specimens."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Density-specific moisture,pre-test drying,storage,T/RH and equilibration unknown."
+      },
+      "loading_rate": {
+        "status": "not_applicable",
+        "text": null,
+        "evidence": [],
+        "notes": "Geometric density,not a tensile loading experiment."
+      },
+      "additional_conditions": [
+        {
+          "name": "nominal_density_specimen_geometry",
+          "fact": {
+            "status": "reported",
+            "text": "Diameter circa2.85mm;length circa100mm",
+            "evidence": [
+              {
+                "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+                "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+                "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Approximate source method dimensions,not per-row exact measurements."
+          }
+        },
+        {
+          "name": "source_instrument_plusminus",
+          "fact": {
+            "status": "reported",
+            "text": "Weight±0.00001g;diameter±0.001mm;length±0.01mm",
+            "evidence": [
+              {
+                "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+                "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+                "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Source instrument/measurement± wording only;resolution/accuracy/tolerance and calibration unknown,not propagated as property scatter."
+          }
+        }
+      ]
+    },
+    "density_basis": "not_stated",
+    "summary_statistic": "reported_mean",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "sample_count": {
+      "value": 3,
+      "relation": "exact",
+      "scope": "Three reference-filament density specimens for the selected series;repeat weighings,independent lots/batches and statistical independence unknown.",
+      "source_statement": "Results for three specimens were averaged.",
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+          "supports": [
+            "sample_count",
+            "summary_statistic"
+          ]
+        }
+      ]
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Reference-filament density calculated from measured mass and cylindrical geometric volume using measured diameter and length;source nominal reference filament2.8mm,method circa2.85mm diameter and circa100mm length. Source lists weighing±0.00001g,diameter±0.001mm,length±0.01mm;their accuracy/resolution/tolerance meaning and calibration unknown. Three specimens averaged. No buoyancy,pycnometry,printed-cube protocol or standard inferred.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+          "supports": [
+            "method",
+            "summary_statistic"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [],
+    "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+    "source_document": {
+      "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+      "revision": "Zenodo version DOI 10.5281/zenodo.8089569; record revision 2",
+      "inspected_on": "2026-11-11",
+      "sha256": "830b2c9277dcc2d03265b63e311a5e7089c258ebb6a389b45d07601ae4b2e4e7",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained workbook OOXML Density!D/G/H selected nine existing-identity rows;worksheet/workbook relationships and linked drawing5 TextBox3 checked. No Excel UI render,formula evaluation,external-link refresh,newacquisition/latestversion/SI or source-code execution.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Source-qualified three-specimen mean geometric density for this existing reference-filament identity;not TDS/theoretical/true-density/printed-cube or raw polymer density. No porosity correction,relative-density conversion,thermal/moisture correction,engineering allowable or mechanics-engine input. Unknown T/RH/conditioning,calibration,independent batches and avedev definition retained.",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained workbook OOXML Density!D/G/H selected nine existing-identity rows;worksheet/workbook relationships and linked drawing5 TextBox3 checked. No Excel UI render,formula evaluation,external-link refresh,newacquisition/latestversion/SI or source-code execution.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "id": "refprop_aniskevich_2023_ultimaker_tough_pla_black_filament_mass_density",
+    "material_state_id": "state_aniskevich_2023_ultimaker_tough_pla_black_filament_density",
+    "quantity": "mass_density",
+    "source_property_label": "ρ, kg/m^3",
+    "uncertainty_note": "Source Density!H5 reports avedev=13.045304850618171 kg/m^3. Label has no verified definition;not typed as SD,SEM,CI or printed plus/minus. Numeric uncertainty=null preserves this typing limitation,not absence of deviation. Instrument± values are not propagated as density uncertainty;literal zero avedev,if present,does not certify zero measurement error.",
+    "evidence": [
+      {
+        "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+        "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+        "locator": "Density!D5/G5/H5;G2:H3 measured reference-filament headers",
+        "supports": [
+          "reported_value",
+          "uncertainty",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+        "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+        "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+        "supports": [
+          "method",
+          "condition",
+          "sample_count",
+          "summary_statistic"
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.0",
+    "quantity_dimension": "mass_per_volume",
+    "reported_value": {
+      "kind": "scalar",
+      "unit_text": "kg/m^3",
+      "unit_code": "kg/m^3",
+      "value_text": "1199.0439182733733",
+      "number": "1199.0439182733733"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Measured density columnG,not TDScolumnE. Three-specimen average explicitly stated in linked Density drawing. Source precision retained,no recomputation or inferred exact per-specimen geometry. True/bulk/apparent basis label not supplied for reference filament;geometric-volume method explicit.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Density-test temperature unknown;no printing/nozzle/bed or room-temperature default."
+      },
+      "test_standard": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "No reference-filament density standard named in linked method."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "Reference-filament density calculated from measured mass and cylindrical geometric volume using measured diameter and length;source nominal reference filament2.8mm,method circa2.85mm diameter and circa100mm length. Source lists weighing±0.00001g,diameter±0.001mm,length±0.01mm;their accuracy/resolution/tolerance meaning and calibration unknown. Three specimens averaged. No buoyancy,pycnometry,printed-cube protocol or standard inferred.",
+        "evidence": [
+          {
+            "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+            "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+            "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source mass and cylinder geometry procedure,not an inferred ISO or buoyancy test."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "No density direction/isotropy definition;not imported from tensile or printed specimens."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Density-specific moisture,pre-test drying,storage,T/RH and equilibration unknown."
+      },
+      "loading_rate": {
+        "status": "not_applicable",
+        "text": null,
+        "evidence": [],
+        "notes": "Geometric density,not a tensile loading experiment."
+      },
+      "additional_conditions": [
+        {
+          "name": "nominal_density_specimen_geometry",
+          "fact": {
+            "status": "reported",
+            "text": "Diameter circa2.85mm;length circa100mm",
+            "evidence": [
+              {
+                "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+                "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+                "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Approximate source method dimensions,not per-row exact measurements."
+          }
+        },
+        {
+          "name": "source_instrument_plusminus",
+          "fact": {
+            "status": "reported",
+            "text": "Weight±0.00001g;diameter±0.001mm;length±0.01mm",
+            "evidence": [
+              {
+                "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+                "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+                "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Source instrument/measurement± wording only;resolution/accuracy/tolerance and calibration unknown,not propagated as property scatter."
+          }
+        }
+      ]
+    },
+    "density_basis": "not_stated",
+    "summary_statistic": "reported_mean",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "sample_count": {
+      "value": 3,
+      "relation": "exact",
+      "scope": "Three reference-filament density specimens for the selected series;repeat weighings,independent lots/batches and statistical independence unknown.",
+      "source_statement": "Results for three specimens were averaged.",
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+          "supports": [
+            "sample_count",
+            "summary_statistic"
+          ]
+        }
+      ]
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Reference-filament density calculated from measured mass and cylindrical geometric volume using measured diameter and length;source nominal reference filament2.8mm,method circa2.85mm diameter and circa100mm length. Source lists weighing±0.00001g,diameter±0.001mm,length±0.01mm;their accuracy/resolution/tolerance meaning and calibration unknown. Three specimens averaged. No buoyancy,pycnometry,printed-cube protocol or standard inferred.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+          "supports": [
+            "method",
+            "summary_statistic"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [],
+    "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+    "source_document": {
+      "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+      "revision": "Zenodo version DOI 10.5281/zenodo.8089569; record revision 2",
+      "inspected_on": "2026-11-11",
+      "sha256": "830b2c9277dcc2d03265b63e311a5e7089c258ebb6a389b45d07601ae4b2e4e7",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained workbook OOXML Density!D/G/H selected nine existing-identity rows;worksheet/workbook relationships and linked drawing5 TextBox3 checked. No Excel UI render,formula evaluation,external-link refresh,newacquisition/latestversion/SI or source-code execution.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Source-qualified three-specimen mean geometric density for this existing reference-filament identity;not TDS/theoretical/true-density/printed-cube or raw polymer density. No porosity correction,relative-density conversion,thermal/moisture correction,engineering allowable or mechanics-engine input. Unknown T/RH/conditioning,calibration,independent batches and avedev definition retained.",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained workbook OOXML Density!D/G/H selected nine existing-identity rows;worksheet/workbook relationships and linked drawing5 TextBox3 checked. No Excel UI render,formula evaluation,external-link refresh,newacquisition/latestversion/SI or source-code execution.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "id": "refprop_aniskevich_2023_ultimaker_tough_pla_white_filament_mass_density",
+    "material_state_id": "state_aniskevich_2023_ultimaker_tough_pla_white_filament_density",
+    "quantity": "mass_density",
+    "source_property_label": "ρ, kg/m^3",
+    "uncertainty_note": "Source Density!H6 reports avedev=19.617762553513256 kg/m^3. Label has no verified definition;not typed as SD,SEM,CI or printed plus/minus. Numeric uncertainty=null preserves this typing limitation,not absence of deviation. Instrument± values are not propagated as density uncertainty;literal zero avedev,if present,does not certify zero measurement error.",
+    "evidence": [
+      {
+        "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+        "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+        "locator": "Density!D6/G6/H6;G2:H3 measured reference-filament headers",
+        "supports": [
+          "reported_value",
+          "uncertainty",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+        "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+        "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+        "supports": [
+          "method",
+          "condition",
+          "sample_count",
+          "summary_statistic"
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.0",
+    "quantity_dimension": "mass_per_volume",
+    "reported_value": {
+      "kind": "scalar",
+      "unit_text": "kg/m^3",
+      "unit_code": "kg/m^3",
+      "value_text": "1100.0946930612963",
+      "number": "1100.0946930612963"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Measured density columnG,not TDScolumnE. Three-specimen average explicitly stated in linked Density drawing. Source precision retained,no recomputation or inferred exact per-specimen geometry. True/bulk/apparent basis label not supplied for reference filament;geometric-volume method explicit.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Density-test temperature unknown;no printing/nozzle/bed or room-temperature default."
+      },
+      "test_standard": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "No reference-filament density standard named in linked method."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "Reference-filament density calculated from measured mass and cylindrical geometric volume using measured diameter and length;source nominal reference filament2.8mm,method circa2.85mm diameter and circa100mm length. Source lists weighing±0.00001g,diameter±0.001mm,length±0.01mm;their accuracy/resolution/tolerance meaning and calibration unknown. Three specimens averaged. No buoyancy,pycnometry,printed-cube protocol or standard inferred.",
+        "evidence": [
+          {
+            "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+            "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+            "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source mass and cylinder geometry procedure,not an inferred ISO or buoyancy test."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "No density direction/isotropy definition;not imported from tensile or printed specimens."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Density-specific moisture,pre-test drying,storage,T/RH and equilibration unknown."
+      },
+      "loading_rate": {
+        "status": "not_applicable",
+        "text": null,
+        "evidence": [],
+        "notes": "Geometric density,not a tensile loading experiment."
+      },
+      "additional_conditions": [
+        {
+          "name": "nominal_density_specimen_geometry",
+          "fact": {
+            "status": "reported",
+            "text": "Diameter circa2.85mm;length circa100mm",
+            "evidence": [
+              {
+                "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+                "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+                "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Approximate source method dimensions,not per-row exact measurements."
+          }
+        },
+        {
+          "name": "source_instrument_plusminus",
+          "fact": {
+            "status": "reported",
+            "text": "Weight±0.00001g;diameter±0.001mm;length±0.01mm",
+            "evidence": [
+              {
+                "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+                "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+                "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Source instrument/measurement± wording only;resolution/accuracy/tolerance and calibration unknown,not propagated as property scatter."
+          }
+        }
+      ]
+    },
+    "density_basis": "not_stated",
+    "summary_statistic": "reported_mean",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "sample_count": {
+      "value": 3,
+      "relation": "exact",
+      "scope": "Three reference-filament density specimens for the selected series;repeat weighings,independent lots/batches and statistical independence unknown.",
+      "source_statement": "Results for three specimens were averaged.",
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+          "supports": [
+            "sample_count",
+            "summary_statistic"
+          ]
+        }
+      ]
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Reference-filament density calculated from measured mass and cylindrical geometric volume using measured diameter and length;source nominal reference filament2.8mm,method circa2.85mm diameter and circa100mm length. Source lists weighing±0.00001g,diameter±0.001mm,length±0.01mm;their accuracy/resolution/tolerance meaning and calibration unknown. Three specimens averaged. No buoyancy,pycnometry,printed-cube protocol or standard inferred.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+          "supports": [
+            "method",
+            "summary_statistic"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [],
+    "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+    "source_document": {
+      "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+      "revision": "Zenodo version DOI 10.5281/zenodo.8089569; record revision 2",
+      "inspected_on": "2026-11-11",
+      "sha256": "830b2c9277dcc2d03265b63e311a5e7089c258ebb6a389b45d07601ae4b2e4e7",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained workbook OOXML Density!D/G/H selected nine existing-identity rows;worksheet/workbook relationships and linked drawing5 TextBox3 checked. No Excel UI render,formula evaluation,external-link refresh,newacquisition/latestversion/SI or source-code execution.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Source-qualified three-specimen mean geometric density for this existing reference-filament identity;not TDS/theoretical/true-density/printed-cube or raw polymer density. No porosity correction,relative-density conversion,thermal/moisture correction,engineering allowable or mechanics-engine input. Unknown T/RH/conditioning,calibration,independent batches and avedev definition retained.",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained workbook OOXML Density!D/G/H selected nine existing-identity rows;worksheet/workbook relationships and linked drawing5 TextBox3 checked. No Excel UI render,formula evaluation,external-link refresh,newacquisition/latestversion/SI or source-code execution.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "id": "refprop_aniskevich_2023_ultimaker_nylon_transparent_filament_mass_density",
+    "material_state_id": "state_aniskevich_2023_ultimaker_nylon_transparent_filament_density",
+    "quantity": "mass_density",
+    "source_property_label": "ρ, kg/m^3",
+    "uncertainty_note": "Source Density!H7 reports avedev=0.90916301780354536 kg/m^3. Label has no verified definition;not typed as SD,SEM,CI or printed plus/minus. Numeric uncertainty=null preserves this typing limitation,not absence of deviation. Instrument± values are not propagated as density uncertainty;literal zero avedev,if present,does not certify zero measurement error.",
+    "evidence": [
+      {
+        "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+        "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+        "locator": "Density!D7/G7/H7;G2:H3 measured reference-filament headers",
+        "supports": [
+          "reported_value",
+          "uncertainty",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+        "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+        "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+        "supports": [
+          "method",
+          "condition",
+          "sample_count",
+          "summary_statistic"
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.0",
+    "quantity_dimension": "mass_per_volume",
+    "reported_value": {
+      "kind": "scalar",
+      "unit_text": "kg/m^3",
+      "unit_code": "kg/m^3",
+      "value_text": "1181.7239230433456",
+      "number": "1181.7239230433456"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Measured density columnG,not TDScolumnE. Three-specimen average explicitly stated in linked Density drawing. Source precision retained,no recomputation or inferred exact per-specimen geometry. True/bulk/apparent basis label not supplied for reference filament;geometric-volume method explicit.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Density-test temperature unknown;no printing/nozzle/bed or room-temperature default."
+      },
+      "test_standard": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "No reference-filament density standard named in linked method."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "Reference-filament density calculated from measured mass and cylindrical geometric volume using measured diameter and length;source nominal reference filament2.8mm,method circa2.85mm diameter and circa100mm length. Source lists weighing±0.00001g,diameter±0.001mm,length±0.01mm;their accuracy/resolution/tolerance meaning and calibration unknown. Three specimens averaged. No buoyancy,pycnometry,printed-cube protocol or standard inferred.",
+        "evidence": [
+          {
+            "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+            "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+            "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source mass and cylinder geometry procedure,not an inferred ISO or buoyancy test."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "No density direction/isotropy definition;not imported from tensile or printed specimens."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Density-specific moisture,pre-test drying,storage,T/RH and equilibration unknown."
+      },
+      "loading_rate": {
+        "status": "not_applicable",
+        "text": null,
+        "evidence": [],
+        "notes": "Geometric density,not a tensile loading experiment."
+      },
+      "additional_conditions": [
+        {
+          "name": "nominal_density_specimen_geometry",
+          "fact": {
+            "status": "reported",
+            "text": "Diameter circa2.85mm;length circa100mm",
+            "evidence": [
+              {
+                "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+                "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+                "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Approximate source method dimensions,not per-row exact measurements."
+          }
+        },
+        {
+          "name": "source_instrument_plusminus",
+          "fact": {
+            "status": "reported",
+            "text": "Weight±0.00001g;diameter±0.001mm;length±0.01mm",
+            "evidence": [
+              {
+                "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+                "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+                "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Source instrument/measurement± wording only;resolution/accuracy/tolerance and calibration unknown,not propagated as property scatter."
+          }
+        }
+      ]
+    },
+    "density_basis": "not_stated",
+    "summary_statistic": "reported_mean",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "sample_count": {
+      "value": 3,
+      "relation": "exact",
+      "scope": "Three reference-filament density specimens for the selected series;repeat weighings,independent lots/batches and statistical independence unknown.",
+      "source_statement": "Results for three specimens were averaged.",
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+          "supports": [
+            "sample_count",
+            "summary_statistic"
+          ]
+        }
+      ]
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Reference-filament density calculated from measured mass and cylindrical geometric volume using measured diameter and length;source nominal reference filament2.8mm,method circa2.85mm diameter and circa100mm length. Source lists weighing±0.00001g,diameter±0.001mm,length±0.01mm;their accuracy/resolution/tolerance meaning and calibration unknown. Three specimens averaged. No buoyancy,pycnometry,printed-cube protocol or standard inferred.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+          "supports": [
+            "method",
+            "summary_statistic"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [],
+    "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+    "source_document": {
+      "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+      "revision": "Zenodo version DOI 10.5281/zenodo.8089569; record revision 2",
+      "inspected_on": "2026-11-11",
+      "sha256": "830b2c9277dcc2d03265b63e311a5e7089c258ebb6a389b45d07601ae4b2e4e7",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained workbook OOXML Density!D/G/H selected nine existing-identity rows;worksheet/workbook relationships and linked drawing5 TextBox3 checked. No Excel UI render,formula evaluation,external-link refresh,newacquisition/latestversion/SI or source-code execution.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Source-qualified three-specimen mean geometric density for this existing reference-filament identity;not TDS/theoretical/true-density/printed-cube or raw polymer density. No porosity correction,relative-density conversion,thermal/moisture correction,engineering allowable or mechanics-engine input. Unknown T/RH/conditioning,calibration,independent batches and avedev definition retained.",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained workbook OOXML Density!D/G/H selected nine existing-identity rows;worksheet/workbook relationships and linked drawing5 TextBox3 checked. No Excel UI render,formula evaluation,external-link refresh,newacquisition/latestversion/SI or source-code execution.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "id": "refprop_aniskevich_2023_ultimaker_tpu95a_filament_mass_density",
+    "material_state_id": "state_aniskevich_2023_ultimaker_tpu95a_filament_density",
+    "quantity": "mass_density",
+    "source_property_label": "ρ, kg/m^3",
+    "uncertainty_note": "Source Density!H9 reports avedev=14.721322314135932 kg/m^3. Label has no verified definition;not typed as SD,SEM,CI or printed plus/minus. Numeric uncertainty=null preserves this typing limitation,not absence of deviation. Instrument± values are not propagated as density uncertainty;literal zero avedev,if present,does not certify zero measurement error.",
+    "evidence": [
+      {
+        "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+        "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+        "locator": "Density!D9/G9/H9;G2:H3 measured reference-filament headers",
+        "supports": [
+          "reported_value",
+          "uncertainty",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+        "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+        "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+        "supports": [
+          "method",
+          "condition",
+          "sample_count",
+          "summary_statistic"
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.0",
+    "quantity_dimension": "mass_per_volume",
+    "reported_value": {
+      "kind": "scalar",
+      "unit_text": "kg/m^3",
+      "unit_code": "kg/m^3",
+      "value_text": "891.36759115428742",
+      "number": "891.36759115428742"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Measured density columnG,not TDScolumnE. Three-specimen average explicitly stated in linked Density drawing. Source precision retained,no recomputation or inferred exact per-specimen geometry. True/bulk/apparent basis label not supplied for reference filament;geometric-volume method explicit.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Density-test temperature unknown;no printing/nozzle/bed or room-temperature default."
+      },
+      "test_standard": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "No reference-filament density standard named in linked method."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "Reference-filament density calculated from measured mass and cylindrical geometric volume using measured diameter and length;source nominal reference filament2.8mm,method circa2.85mm diameter and circa100mm length. Source lists weighing±0.00001g,diameter±0.001mm,length±0.01mm;their accuracy/resolution/tolerance meaning and calibration unknown. Three specimens averaged. No buoyancy,pycnometry,printed-cube protocol or standard inferred.",
+        "evidence": [
+          {
+            "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+            "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+            "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source mass and cylinder geometry procedure,not an inferred ISO or buoyancy test."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "No density direction/isotropy definition;not imported from tensile or printed specimens."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Density-specific moisture,pre-test drying,storage,T/RH and equilibration unknown."
+      },
+      "loading_rate": {
+        "status": "not_applicable",
+        "text": null,
+        "evidence": [],
+        "notes": "Geometric density,not a tensile loading experiment."
+      },
+      "additional_conditions": [
+        {
+          "name": "nominal_density_specimen_geometry",
+          "fact": {
+            "status": "reported",
+            "text": "Diameter circa2.85mm;length circa100mm",
+            "evidence": [
+              {
+                "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+                "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+                "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Approximate source method dimensions,not per-row exact measurements."
+          }
+        },
+        {
+          "name": "source_instrument_plusminus",
+          "fact": {
+            "status": "reported",
+            "text": "Weight±0.00001g;diameter±0.001mm;length±0.01mm",
+            "evidence": [
+              {
+                "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+                "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+                "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Source instrument/measurement± wording only;resolution/accuracy/tolerance and calibration unknown,not propagated as property scatter."
+          }
+        }
+      ]
+    },
+    "density_basis": "not_stated",
+    "summary_statistic": "reported_mean",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "sample_count": {
+      "value": 3,
+      "relation": "exact",
+      "scope": "Three reference-filament density specimens for the selected series;repeat weighings,independent lots/batches and statistical independence unknown.",
+      "source_statement": "Results for three specimens were averaged.",
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+          "supports": [
+            "sample_count",
+            "summary_statistic"
+          ]
+        }
+      ]
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Reference-filament density calculated from measured mass and cylindrical geometric volume using measured diameter and length;source nominal reference filament2.8mm,method circa2.85mm diameter and circa100mm length. Source lists weighing±0.00001g,diameter±0.001mm,length±0.01mm;their accuracy/resolution/tolerance meaning and calibration unknown. Three specimens averaged. No buoyancy,pycnometry,printed-cube protocol or standard inferred.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+          "supports": [
+            "method",
+            "summary_statistic"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [],
+    "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+    "source_document": {
+      "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+      "revision": "Zenodo version DOI 10.5281/zenodo.8089569; record revision 2",
+      "inspected_on": "2026-11-11",
+      "sha256": "830b2c9277dcc2d03265b63e311a5e7089c258ebb6a389b45d07601ae4b2e4e7",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained workbook OOXML Density!D/G/H selected nine existing-identity rows;worksheet/workbook relationships and linked drawing5 TextBox3 checked. No Excel UI render,formula evaluation,external-link refresh,newacquisition/latestversion/SI or source-code execution.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Source-qualified three-specimen mean geometric density for this existing reference-filament identity;not TDS/theoretical/true-density/printed-cube or raw polymer density. No porosity correction,relative-density conversion,thermal/moisture correction,engineering allowable or mechanics-engine input. Unknown T/RH/conditioning,calibration,independent batches and avedev definition retained.",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained workbook OOXML Density!D/G/H selected nine existing-identity rows;worksheet/workbook relationships and linked drawing5 TextBox3 checked. No Excel UI render,formula evaluation,external-link refresh,newacquisition/latestversion/SI or source-code execution.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "id": "refprop_aniskevich_2023_ultimaker_pp_filament_mass_density",
+    "material_state_id": "state_aniskevich_2023_ultimaker_pp_filament_density",
+    "quantity": "mass_density",
+    "source_property_label": "ρ, kg/m^3",
+    "uncertainty_note": "Source Density!H10 reports avedev=7.8874571834469025 kg/m^3. Label has no verified definition;not typed as SD,SEM,CI or printed plus/minus. Numeric uncertainty=null preserves this typing limitation,not absence of deviation. Instrument± values are not propagated as density uncertainty;literal zero avedev,if present,does not certify zero measurement error.",
+    "evidence": [
+      {
+        "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+        "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+        "locator": "Density!D10/G10/H10;G2:H3 measured reference-filament headers",
+        "supports": [
+          "reported_value",
+          "uncertainty",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+        "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+        "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+        "supports": [
+          "method",
+          "condition",
+          "sample_count",
+          "summary_statistic"
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.0",
+    "quantity_dimension": "mass_per_volume",
+    "reported_value": {
+      "kind": "scalar",
+      "unit_text": "kg/m^3",
+      "unit_code": "kg/m^3",
+      "value_text": "1233.2658780598924",
+      "number": "1233.2658780598924"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Measured density columnG,not TDScolumnE. Three-specimen average explicitly stated in linked Density drawing. Source precision retained,no recomputation or inferred exact per-specimen geometry. True/bulk/apparent basis label not supplied for reference filament;geometric-volume method explicit.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Density-test temperature unknown;no printing/nozzle/bed or room-temperature default."
+      },
+      "test_standard": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "No reference-filament density standard named in linked method."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "Reference-filament density calculated from measured mass and cylindrical geometric volume using measured diameter and length;source nominal reference filament2.8mm,method circa2.85mm diameter and circa100mm length. Source lists weighing±0.00001g,diameter±0.001mm,length±0.01mm;their accuracy/resolution/tolerance meaning and calibration unknown. Three specimens averaged. No buoyancy,pycnometry,printed-cube protocol or standard inferred.",
+        "evidence": [
+          {
+            "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+            "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+            "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source mass and cylinder geometry procedure,not an inferred ISO or buoyancy test."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "No density direction/isotropy definition;not imported from tensile or printed specimens."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Density-specific moisture,pre-test drying,storage,T/RH and equilibration unknown."
+      },
+      "loading_rate": {
+        "status": "not_applicable",
+        "text": null,
+        "evidence": [],
+        "notes": "Geometric density,not a tensile loading experiment."
+      },
+      "additional_conditions": [
+        {
+          "name": "nominal_density_specimen_geometry",
+          "fact": {
+            "status": "reported",
+            "text": "Diameter circa2.85mm;length circa100mm",
+            "evidence": [
+              {
+                "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+                "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+                "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Approximate source method dimensions,not per-row exact measurements."
+          }
+        },
+        {
+          "name": "source_instrument_plusminus",
+          "fact": {
+            "status": "reported",
+            "text": "Weight±0.00001g;diameter±0.001mm;length±0.01mm",
+            "evidence": [
+              {
+                "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+                "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+                "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Source instrument/measurement± wording only;resolution/accuracy/tolerance and calibration unknown,not propagated as property scatter."
+          }
+        }
+      ]
+    },
+    "density_basis": "not_stated",
+    "summary_statistic": "reported_mean",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "sample_count": {
+      "value": 3,
+      "relation": "exact",
+      "scope": "Three reference-filament density specimens for the selected series;repeat weighings,independent lots/batches and statistical independence unknown.",
+      "source_statement": "Results for three specimens were averaged.",
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+          "supports": [
+            "sample_count",
+            "summary_statistic"
+          ]
+        }
+      ]
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Reference-filament density calculated from measured mass and cylindrical geometric volume using measured diameter and length;source nominal reference filament2.8mm,method circa2.85mm diameter and circa100mm length. Source lists weighing±0.00001g,diameter±0.001mm,length±0.01mm;their accuracy/resolution/tolerance meaning and calibration unknown. Three specimens averaged. No buoyancy,pycnometry,printed-cube protocol or standard inferred.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+          "supports": [
+            "method",
+            "summary_statistic"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [],
+    "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+    "source_document": {
+      "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+      "revision": "Zenodo version DOI 10.5281/zenodo.8089569; record revision 2",
+      "inspected_on": "2026-11-11",
+      "sha256": "830b2c9277dcc2d03265b63e311a5e7089c258ebb6a389b45d07601ae4b2e4e7",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained workbook OOXML Density!D/G/H selected nine existing-identity rows;worksheet/workbook relationships and linked drawing5 TextBox3 checked. No Excel UI render,formula evaluation,external-link refresh,newacquisition/latestversion/SI or source-code execution.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Source-qualified three-specimen mean geometric density for this existing reference-filament identity;not TDS/theoretical/true-density/printed-cube or raw polymer density. No porosity correction,relative-density conversion,thermal/moisture correction,engineering allowable or mechanics-engine input. Unknown T/RH/conditioning,calibration,independent batches and avedev definition retained.",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained workbook OOXML Density!D/G/H selected nine existing-identity rows;worksheet/workbook relationships and linked drawing5 TextBox3 checked. No Excel UI render,formula evaluation,external-link refresh,newacquisition/latestversion/SI or source-code execution.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "id": "refprop_aniskevich_2023_protopasta_conductive_pla_filament_mass_density",
+    "material_state_id": "state_aniskevich_2023_protopasta_conductive_pla_filament_density",
+    "quantity": "mass_density",
+    "source_property_label": "ρ, kg/m^3",
+    "uncertainty_note": "Source Density!H15 reports avedev=5.7982577160914559 kg/m^3. Label has no verified definition;not typed as SD,SEM,CI or printed plus/minus. Numeric uncertainty=null preserves this typing limitation,not absence of deviation. Instrument± values are not propagated as density uncertainty;literal zero avedev,if present,does not certify zero measurement error.",
+    "evidence": [
+      {
+        "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+        "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+        "locator": "Density!D15/G15/H15;G2:H3 measured reference-filament headers",
+        "supports": [
+          "reported_value",
+          "uncertainty",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+        "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+        "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+        "supports": [
+          "method",
+          "condition",
+          "sample_count",
+          "summary_statistic"
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.0",
+    "quantity_dimension": "mass_per_volume",
+    "reported_value": {
+      "kind": "scalar",
+      "unit_text": "kg/m^3",
+      "unit_code": "kg/m^3",
+      "value_text": "1266.5814396490923",
+      "number": "1266.5814396490923"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Measured density columnG,not TDScolumnE. Three-specimen average explicitly stated in linked Density drawing. Source precision retained,no recomputation or inferred exact per-specimen geometry. True/bulk/apparent basis label not supplied for reference filament;geometric-volume method explicit.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Density-test temperature unknown;no printing/nozzle/bed or room-temperature default."
+      },
+      "test_standard": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "No reference-filament density standard named in linked method."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "Reference-filament density calculated from measured mass and cylindrical geometric volume using measured diameter and length;source nominal reference filament2.8mm,method circa2.85mm diameter and circa100mm length. Source lists weighing±0.00001g,diameter±0.001mm,length±0.01mm;their accuracy/resolution/tolerance meaning and calibration unknown. Three specimens averaged. No buoyancy,pycnometry,printed-cube protocol or standard inferred.",
+        "evidence": [
+          {
+            "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+            "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+            "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source mass and cylinder geometry procedure,not an inferred ISO or buoyancy test."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "No density direction/isotropy definition;not imported from tensile or printed specimens."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Density-specific moisture,pre-test drying,storage,T/RH and equilibration unknown."
+      },
+      "loading_rate": {
+        "status": "not_applicable",
+        "text": null,
+        "evidence": [],
+        "notes": "Geometric density,not a tensile loading experiment."
+      },
+      "additional_conditions": [
+        {
+          "name": "nominal_density_specimen_geometry",
+          "fact": {
+            "status": "reported",
+            "text": "Diameter circa2.85mm;length circa100mm",
+            "evidence": [
+              {
+                "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+                "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+                "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Approximate source method dimensions,not per-row exact measurements."
+          }
+        },
+        {
+          "name": "source_instrument_plusminus",
+          "fact": {
+            "status": "reported",
+            "text": "Weight±0.00001g;diameter±0.001mm;length±0.01mm",
+            "evidence": [
+              {
+                "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+                "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+                "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Source instrument/measurement± wording only;resolution/accuracy/tolerance and calibration unknown,not propagated as property scatter."
+          }
+        }
+      ]
+    },
+    "density_basis": "not_stated",
+    "summary_statistic": "reported_mean",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "sample_count": {
+      "value": 3,
+      "relation": "exact",
+      "scope": "Three reference-filament density specimens for the selected series;repeat weighings,independent lots/batches and statistical independence unknown.",
+      "source_statement": "Results for three specimens were averaged.",
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+          "supports": [
+            "sample_count",
+            "summary_statistic"
+          ]
+        }
+      ]
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Reference-filament density calculated from measured mass and cylindrical geometric volume using measured diameter and length;source nominal reference filament2.8mm,method circa2.85mm diameter and circa100mm length. Source lists weighing±0.00001g,diameter±0.001mm,length±0.01mm;their accuracy/resolution/tolerance meaning and calibration unknown. Three specimens averaged. No buoyancy,pycnometry,printed-cube protocol or standard inferred.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+          "supports": [
+            "method",
+            "summary_statistic"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [],
+    "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+    "source_document": {
+      "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+      "revision": "Zenodo version DOI 10.5281/zenodo.8089569; record revision 2",
+      "inspected_on": "2026-11-11",
+      "sha256": "830b2c9277dcc2d03265b63e311a5e7089c258ebb6a389b45d07601ae4b2e4e7",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained workbook OOXML Density!D/G/H selected nine existing-identity rows;worksheet/workbook relationships and linked drawing5 TextBox3 checked. No Excel UI render,formula evaluation,external-link refresh,newacquisition/latestversion/SI or source-code execution.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Source-qualified three-specimen mean geometric density for this existing reference-filament identity;not TDS/theoretical/true-density/printed-cube or raw polymer density. No porosity correction,relative-density conversion,thermal/moisture correction,engineering allowable or mechanics-engine input. Unknown T/RH/conditioning,calibration,independent batches and avedev definition retained.",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained workbook OOXML Density!D/G/H selected nine existing-identity rows;worksheet/workbook relationships and linked drawing5 TextBox3 checked. No Excel UI render,formula evaluation,external-link refresh,newacquisition/latestversion/SI or source-code execution.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "id": "refprop_aniskevich_2023_stratasys_ultem9085cg_filament_mass_density",
+    "material_state_id": "state_aniskevich_2023_stratasys_ultem9085cg_filament_density",
+    "quantity": "mass_density",
+    "source_property_label": "ρ, kg/m^3",
+    "uncertainty_note": "Source Density!H21 reports avedev=5.705972876896567 kg/m^3. Label has no verified definition;not typed as SD,SEM,CI or printed plus/minus. Numeric uncertainty=null preserves this typing limitation,not absence of deviation. Instrument± values are not propagated as density uncertainty;literal zero avedev,if present,does not certify zero measurement error.",
+    "evidence": [
+      {
+        "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+        "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+        "locator": "Density!D21/G21/H21;G2:H3 measured reference-filament headers",
+        "supports": [
+          "reported_value",
+          "uncertainty",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+        "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+        "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+        "supports": [
+          "method",
+          "condition",
+          "sample_count",
+          "summary_statistic"
+        ]
+      }
+    ]
+  },
+  {
+    "version": "1.0.0",
+    "quantity_dimension": "mass_per_volume",
+    "reported_value": {
+      "kind": "scalar",
+      "unit_text": "kg/m^3",
+      "unit_code": "kg/m^3",
+      "value_text": "1265.2669460413631",
+      "number": "1265.2669460413631"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Measured density columnG,not TDScolumnE. Three-specimen average explicitly stated in linked Density drawing. Source precision retained,no recomputation or inferred exact per-specimen geometry. True/bulk/apparent basis label not supplied for reference filament;geometric-volume method explicit.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Density-test temperature unknown;no printing/nozzle/bed or room-temperature default."
+      },
+      "test_standard": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "No reference-filament density standard named in linked method."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "Reference-filament density calculated from measured mass and cylindrical geometric volume using measured diameter and length;source nominal reference filament2.8mm,method circa2.85mm diameter and circa100mm length. Source lists weighing±0.00001g,diameter±0.001mm,length±0.01mm;their accuracy/resolution/tolerance meaning and calibration unknown. Three specimens averaged. No buoyancy,pycnometry,printed-cube protocol or standard inferred.",
+        "evidence": [
+          {
+            "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+            "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+            "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Source mass and cylinder geometry procedure,not an inferred ISO or buoyancy test."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "No density direction/isotropy definition;not imported from tensile or printed specimens."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Density-specific moisture,pre-test drying,storage,T/RH and equilibration unknown."
+      },
+      "loading_rate": {
+        "status": "not_applicable",
+        "text": null,
+        "evidence": [],
+        "notes": "Geometric density,not a tensile loading experiment."
+      },
+      "additional_conditions": [
+        {
+          "name": "nominal_density_specimen_geometry",
+          "fact": {
+            "status": "reported",
+            "text": "Diameter circa2.85mm;length circa100mm",
+            "evidence": [
+              {
+                "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+                "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+                "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Approximate source method dimensions,not per-row exact measurements."
+          }
+        },
+        {
+          "name": "source_instrument_plusminus",
+          "fact": {
+            "status": "reported",
+            "text": "Weight±0.00001g;diameter±0.001mm;length±0.01mm",
+            "evidence": [
+              {
+                "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+                "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+                "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Source instrument/measurement± wording only;resolution/accuracy/tolerance and calibration unknown,not propagated as property scatter."
+          }
+        }
+      ]
+    },
+    "density_basis": "not_stated",
+    "summary_statistic": "reported_mean",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "sample_count": {
+      "value": 3,
+      "relation": "exact",
+      "scope": "Three reference-filament density specimens for the selected series;repeat weighings,independent lots/batches and statistical independence unknown.",
+      "source_statement": "Results for three specimens were averaged.",
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+          "supports": [
+            "sample_count",
+            "summary_statistic"
+          ]
+        }
+      ]
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Reference-filament density calculated from measured mass and cylindrical geometric volume using measured diameter and length;source nominal reference filament2.8mm,method circa2.85mm diameter and circa100mm length. Source lists weighing±0.00001g,diameter±0.001mm,length±0.01mm;their accuracy/resolution/tolerance meaning and calibration unknown. Three specimens averaged. No buoyancy,pycnometry,printed-cube protocol or standard inferred.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+          "supports": [
+            "method",
+            "summary_statistic"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [],
+    "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+    "source_document": {
+      "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+      "revision": "Zenodo version DOI 10.5281/zenodo.8089569; record revision 2",
+      "inspected_on": "2026-11-11",
+      "sha256": "830b2c9277dcc2d03265b63e311a5e7089c258ebb6a389b45d07601ae4b2e4e7",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained workbook OOXML Density!D/G/H selected nine existing-identity rows;worksheet/workbook relationships and linked drawing5 TextBox3 checked. No Excel UI render,formula evaluation,external-link refresh,newacquisition/latestversion/SI or source-code execution.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Source-qualified three-specimen mean geometric density for this existing reference-filament identity;not TDS/theoretical/true-density/printed-cube or raw polymer density. No porosity correction,relative-density conversion,thermal/moisture correction,engineering allowable or mechanics-engine input. Unknown T/RH/conditioning,calibration,independent batches and avedev definition retained.",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained workbook OOXML Density!D/G/H selected nine existing-identity rows;worksheet/workbook relationships and linked drawing5 TextBox3 checked. No Excel UI render,formula evaluation,external-link refresh,newacquisition/latestversion/SI or source-code execution.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "id": "refprop_aniskevich_2023_stratasys_antero800na_filament_mass_density",
+    "material_state_id": "state_aniskevich_2023_stratasys_antero800na_filament_density",
+    "quantity": "mass_density",
+    "source_property_label": "ρ, kg/m^3",
+    "uncertainty_note": "Source Density!H22 reports avedev=0 kg/m^3. Label has no verified definition;not typed as SD,SEM,CI or printed plus/minus. Numeric uncertainty=null preserves this typing limitation,not absence of deviation. Instrument± values are not propagated as density uncertainty;literal zero avedev,if present,does not certify zero measurement error.",
+    "evidence": [
+      {
+        "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+        "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+        "locator": "Density!D22/G22/H22;G2:H3 measured reference-filament headers",
+        "supports": [
+          "reported_value",
+          "uncertainty",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+        "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+        "locator": "Density worksheet -> xl/worksheets/_rels/sheet5.xml.rels rId1 -> xl/drawings/drawing5.xml,TextBox3/cNvPr id4,Testing paragraph for filament density",
+        "supports": [
+          "method",
+          "condition",
+          "sample_count",
+          "summary_statistic"
+        ]
+      }
+    ]
+  }
+]

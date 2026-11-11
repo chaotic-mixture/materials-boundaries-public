@@ -1,0 +1,194 @@
+[
+  {
+    "version": "1.0.0",
+    "quantity": "tear_strength",
+    "quantity_dimension": "force_per_length",
+    "source_property_label": "tear strength (kN/m)",
+    "reported_value": {
+      "kind": "scalar",
+      "unit_text": "kN/m",
+      "unit_code": "kN/m",
+      "value_text": "22.15",
+      "number": "22.15"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Exact G50phr scalar transcribed from section3.3 text,not graph digitization. Source identifies this as the maximum across formulations,not an individual-specimen maximum or a certified mean. Central estimator,exact numeric scatter and bar definition unknown.",
+    "conditions": {
+      "temperature": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Tear-test temperature unknown;170°C is processing/rheometry, not test ambient."
+      },
+      "test_standard": {
+        "status": "reported",
+        "text": "ISO34, MethodB, angle testpieces, as printed",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "Retained primary XML/served PMC section2.2: ISO34 MethodB angle tear, ZwickZ005 and common tensile/tear 500mm/min",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Part/edition, exact notch geometry and independent compliance not verified."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "Source ISO34 MethodB angle tear testing on G50phr specimens cut from nominal2mm vulcanized sheets; ZwickZ005 universal test machine,5kN load-cell capacity,500mm/min crosshead speed. Standard part/edition, notch geometry, actual thickness, peak/mean-force choice, normalization algorithm and calibration unverified. General two-direction method does not establish tear-specific groups or tensile-style pooling.",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "Retained primary XML/served PMC section2.2: ISO34 MethodB angle tear, ZwickZ005 and common tensile/tear 500mm/min",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "5kN is load-cell capacity, not measured specimen force."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "General mechanical method describes two mutually perpendicular orientations; tear-specific axes, notch relation, pooling weights and isotropy unknown. No tensile ANOVA/pooling transfer."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Tear-specific pre-test temperature/RH, duration, moisture equilibrium and post-cure storage unknown."
+      },
+      "loading_rate": {
+        "status": "reported",
+        "text": "500mm/min crosshead speed",
+        "evidence": [
+          {
+            "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+            "locator": "Retained primary XML/served PMC section2.2: ISO34 MethodB angle tear, ZwickZ005 and common tensile/tear 500mm/min",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Common source statement explicitly covers both tensile and tear testing; not converted to strain rate."
+      },
+      "additional_conditions": [
+        {
+          "name": "test_relative_humidity",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Tear-test RH unknown; no standard default assigned."
+          }
+        },
+        {
+          "name": "actual_specimen_thickness",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Only nominal2mm source-sheet preparation is reported; measured tear-specimen thickness and its normalization implementation unknown."
+          }
+        },
+        {
+          "name": "load_cell_capacity",
+          "fact": {
+            "status": "reported",
+            "text": "5kN load-cell capacity",
+            "evidence": [
+              {
+                "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+                "locator": "Retained primary XML/served PMC section2.2: ISO34 MethodB angle tear, ZwickZ005 and common tensile/tear 500mm/min",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Instrument range only, not test force or a record of calibration."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "reported_value",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "Exact tear specimen, per-direction and independent-batch counts unknown.",
+      "source_statement": "10hardness points,3abrasion samples and tensile statistics do not establish tear n.",
+      "evidence": []
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source ISO34 MethodB angle tear testing on G50phr specimens cut from nominal2mm vulcanized sheets; ZwickZ005 universal test machine,5kN load-cell capacity,500mm/min crosshead speed. Standard part/edition, notch geometry, actual thickness, peak/mean-force choice, normalization algorithm and calibration unverified. General two-direction method does not establish tear-specific groups or tensile-style pooling.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+          "locator": "Retained primary XML/served PMC section2.2: ISO34 MethodB angle tear, ZwickZ005 and common tensile/tear 500mm/min",
+          "supports": [
+            "method",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [],
+    "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+    "source_document": {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+      "revision": "Primary Europe PMC full-text XML; distinct from the historically inspected university PDF.",
+      "inspected_on": "2026-11-11",
+      "sha256": "2d8008e2b16dd3fe14b91a6747fb3632c70b461ccee4ccc8dea546dc3c272347",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained primary XML sections2.1-2.3,Table3/G and section3.3 tear paragraph:exact22.15kN/m at50phrG. No freshPDF/figure/servedHTML/latestnotice/SI inspection this phase;numeric error bars not extracted.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained primary XML sections2.1-2.3,Table3/G and section3.3 tear paragraph:exact22.15kN/m at50phrG. No freshPDF/figure/servedHTML/latestnotice/SI inspection this phase;numeric error bars not extracted.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "id": "refprop_tamas_benyei2025_nbr_mcf50_tear_strength",
+    "material_state_id": "state_tamas_benyei2025_nbr_mcf50_tear",
+    "uncertainty_note": "Figure7 and section3.3 discuss scatter/highSD;exact numeric G uncertainty and plotted error-bar definition not established. Null is unavailable uncertainty,not zero scatter. No digitization or transfer from tensile/hardness.",
+    "evidence": [
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "Retained primary XML section3.3 tear paragraph:22.15kN/m for50phr G;Figure7 referenced but not digitized",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "tamas_benyei_santha_2025_nbr_rcf",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12750214/fullTextXML",
+        "locator": "Retained primary XML section2.2 ISO34 MethodB angle tear;ZwickZ005,5kNcapacity,common500mm/min",
+        "supports": [
+          "method",
+          "condition"
+        ]
+      }
+    ],
+    "scope_note": "Source-qualified22.15kN/m tear strength for existing additive-containing,50phr mCF solid G formulation,not raw NBR or REF. Force per length;no fracture-energy,Gc,KIC,pressure,elastic-modulus or engineering-allowable interpretation. Unknown central estimator,n,numeric uncertainty,environment,conditioning,actual thickness/notch and extraction algorithm. Tensile direction pooling/statistics are not transferred."
+  }
+]
