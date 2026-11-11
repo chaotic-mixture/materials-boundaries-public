@@ -1,5 +1,7 @@
 """Presentation-only, source-preserving views for the reference-material lane."""
 from copy import deepcopy
+from ._extension_contract import LABEL_KEYS as EXTENSION_LABELS
+from ._water_absorption_contract import LABEL_KEYS as WATER_LABELS, FACT_FIELDS as WATER_FACTS
 import json
 import math
 
@@ -12,6 +14,8 @@ TGA_QUANTITIES = (
 )
 REQUIRED_LABELS = frozenset(('materials', 'reference_properties', 'count', 'empty', 'unknown', 'identity', 'grade', 'category', 'state', 'original_name', 'source_designation', 'source_scope', 'identity_scope', 'authority', 'manufacturer', 'product_form', 'processing', 'temper_or_heat_treatment', 'conditioning', 'composition_or_purity', 'reinforcement', 'porosity', 'orientation', 'property_label', 'quantity', 'evidence_kind', 'reporting_basis', 'determination_basis', 'basis_note', 'reported_value', 'conditions', 'temperature', 'test_standard', 'test_method', 'direction', 'loading_rate', 'density_basis', 'summary_statistic', 'uncertainty', 'uncertainty_status', 'uncertainty_note', 'standard_deviation', 'confidence_interval', 'plus_minus_unspecified', 'confidence_level', 'estimand', 'construction', 'reported_uncertainty_notice', 'sample_count', 'scope', 'method_definition', 'source_document', 'source_discrepancies', 'verification', 'scope_note', 'evaluation_support', 'source', 'source_title', 'source_locator', 'source_url', 'source_read_status', 'source_rights', 'evidence', 'caveat', 'reference_notice', 'statistics_notice', 'unknown_notice', 'range_notice', 'comparison_notice', 'translation_notice', 'cli_catalog_extra', 'cli_material_id', 'cli_identity_id', 'cli_grade_id', 'cli_category', 'cli_evidence_kind', 'cli_reporting_basis', 'cli_source_id', 'cli_quantity', 'cli_filter_notice', 'code_catalog_only', 'code_reported', 'code_not_reported_in_inspected_source', 'code_not_verified', 'code_not_applicable', 'code_manufacturer_reference', 'code_technical_association_reference', 'code_published_experimental_reference', 'code_published_computational_reference', 'code_typical', 'code_nominal', 'code_guideline', 'code_specification_limit', 'code_reported_summary', 'code_not_stated', 'code_source_reports_measurement', 'code_source_reports_calculation', 'code_mixed_or_unclear', 'code_reported_mean', 'code_reported_value', 'code_mass_density', 'code_youngs_modulus', 'code_tensile_modulus', 'code_flexural_modulus', 'code_elastic_modulus_unspecified', 'code_tensile_strength', 'code_metal', 'code_polymer', 'code_inorganic', 'code_composite', 'code_apparent', 'code_bulk', 'code_true', 'code_published_handbook_reference', 'code_published_measurement_derived_reference', 'code_source_reports_compiled_measurements', 'code_crystallographic', 'code_source_reported_compilation', 'code_source_reported_crystallographic_derivation'))
 REQUIRED_LABELS |= frozenset(("code_thermal_degradation_endset_temperature", "degradation_endset_definition"))
+REQUIRED_LABELS |= frozenset(EXTENSION_LABELS)
+REQUIRED_LABELS |= frozenset(WATER_LABELS)
 REQUIRED_LABELS |= frozenset(('code_source_reported_computational_structure_density',))
 REQUIRED_LABELS |= frozenset(('code_source_reported_molecular_simulation_density', 'code_simulation_cell'))
 REQUIRED_LABELS |= frozenset(('code_slump_flow_spread',))
@@ -234,6 +238,23 @@ def render_material_catalog(catalog: dict, kind: str, language: str = "en") -> s
         if prop["density_basis"] is not None:
             output.append(field("density_basis", code(prop["density_basis"]), indent + "  "))
         output.append(field("conditions", "", indent + "  "))
+        if "water_absorption_definition" in prop:
+            definition = prop["water_absorption_definition"]
+            output.append(field("water_absorption_definition", "", indent + "    "))
+            output.append(field("scope_note", definition["notes"], indent + "      "))
+            output.extend(evidence(definition["evidence"], indent + "      "))
+            for name in WATER_FACTS:
+                output.extend(fact("water_absorption_" + name, definition[name], indent + "      "))
+            output.append(indent + "    " + labels["water_absorption_reference_notice"])
+        if "extension_definition" in prop:
+            definition = prop["extension_definition"]
+            output.append(field("extension_definition", "", indent + "    "))
+            output.append(field("extension_correction_basis", code(definition["correction_basis"]), indent + "      "))
+            output.append(field("scope_note", definition["notes"], indent + "      "))
+            output.extend(evidence(definition["evidence"], indent + "      "))
+            for name in ("measurement_channel", "reference_length", "failure_criterion"):
+                output.extend(fact("extension_" + name, definition[name], indent + "      "))
+            output.append(indent + "    " + labels["extension_reference_notice"])
         for key in ("specified_mass_loss", "residue_endpoint_temperature"):
             if key in prop:
                 target = prop[key]

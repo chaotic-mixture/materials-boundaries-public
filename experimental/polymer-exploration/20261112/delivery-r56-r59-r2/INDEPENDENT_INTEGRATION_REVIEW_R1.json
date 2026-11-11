@@ -1,0 +1,27 @@
+{
+  "decision": "approved",
+  "review_inputs_sha256": "fd2fdaeb55e0dded7640ff089261b0c62439945574d222d9ca446ced911d02b2",
+  "checks": {
+    "frozen_hashes": {"repo": 347, "external": 1620, "native": 3, "result": "全部匹配"},
+    "r1_finding_resolution": "17个tracked文件仅恢复CRLF→LF；Python AST相同。五份文档另仅修改R1→R2导航，schema/locales原CRLF保持。R1字节及结论保留，197项历史pin逐项解析匹配。",
+    "native_delta": "独立核对32条新增性质、36条既有性质修订、27个新上下文、5个既有状态仅version/property_ids变化、3个来源更新；身份和牌号保持。",
+    "compatibility": "旧17个分支对象及其余旧定义精确保持；新长度与水吸收尺度、统计和未知项沿用已审边界。",
+    "fresh_execution": "原始日志为290项检查通过；127输入匹配。共享126输入中13项预期差异、113项不变，不将daily19另行累加。",
+    "actual_installation": {
+      "wheel_sha256": "2cdaa4cd8f2fcb767f65aeeacf58ce3c6e67b484886cc87d89dfb32fe544391d",
+      "package_inputs": 71, "payload": 67, "metadata": 6,
+      "wheel_record_checked": 73, "installed_record_checked": 78,
+      "result": "实际安装与wheel逐字节一致；66个非版本载荷等当前原生，METADATA正文等当前README。"
+    },
+    "consumers": "独立使用实际隔离安装核对六组100/30/44/5/4/32完整关联对象，均等原生及保存导出，覆盖68条新增或修订性质；返回副本隔离通过。",
+    "snapshot": "4e7a7558997d75ba44986d0f3c47ad5b4eb24bfaa23aada0006e9b1de01a19b8",
+    "prospective_scope": "245项计划中当前244项存在，唯一待写项为独审回执；无额外路径、原始资产或workflow变化。HEAD为3880c8ad4c83d8a3c4decf71e130e021b91a8c0d，实验分支、暂存区为空。"
+  },
+  "findings": [],
+  "limits": [
+    "批准限于R2内容整合及已核实际安装；不替代最终精确提交清单审核。",
+    "未运行作者脚本、测试套件、完整科学图或历史回归，未写文件或执行Git变更。",
+    "direct_url仅含本地wheel URL且archive_info为空；内容一致性不认证安装过程的加密来源链。",
+    "不认证科学有效性、标准符合性、推送、远端CI、main合并、发布或部署。"
+  ]
+}

@@ -33,7 +33,7 @@ class CrystallizationPhaseContractTests(unittest.TestCase):
     def test_closed_sixteenth_branch_preserves_original_fifteen_objects(self):
         stored=json.loads((Path(__file__).resolve().parents[1]/'schemas/reference_properties.schema.json').read_bytes())
         self.assertEqual(stored,_PROPERTIES_SCHEMA);Draft202012Validator.check_schema(stored)
-        self.assertEqual(len(stored['$defs']['property']['oneOf']),17)
+        self.assertEqual(len(stored['$defs']['property']['oneOf']),19)
         digest=lambda x:hashlib.sha256(json.dumps(x,sort_keys=True,ensure_ascii=False).encode()).hexdigest()
         self.assertEqual(digest(stored['$defs']['property']['oneOf'][:15]),'7982b7f526400aa3e41079706550e733bbb3e8b63e6fa2de782587a877b20317')
         self.assertEqual(stored['$defs']['property']['oneOf'][15]['properties']['quantity'],{'const':'crystallization_peak_temperature'})

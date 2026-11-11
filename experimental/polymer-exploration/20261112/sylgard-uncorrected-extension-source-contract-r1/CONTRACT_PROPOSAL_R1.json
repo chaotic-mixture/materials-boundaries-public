@@ -1,0 +1,46 @@
+{
+  "status": "proposal_only_no_implementation_or_native_mapping",
+  "quantity": "tensile_extension_at_failure",
+  "quantity_dimension": "length",
+  "initial_unit_codes": [
+    "mm"
+  ],
+  "definition": "Source-qualified tensile extension length at source-labelled failure,not strain,percentage,gauge-normalizedelongation,correctedlocalextension or load.",
+  "correction_basis": "initial closedimplementation accepts source_reported_uncorrected only",
+  "proposed_required_extension_definition": {
+    "correction_basis": "source_reported_uncorrected",
+    "measurement_channel": "Fact:reported directchannel or unknown/not_verified;never infer crossheadtravel fromcrossheadspeed",
+    "reference_length": "Fact:reported reference length withdirect primary evidence or unknown;no ASTM/neckdimension default",
+    "failure_criterion": "Fact:reported sourcecriterion or unknown/not_verified;failure label alone not a threshold",
+    "evidence": "Directprimary method/condition evidence andnonblanknotes forcorrectionbasis andallqualifiedfacts"
+  },
+  "eligibility": {
+    "evidence_kind": "published_experimental_reference",
+    "method_definition_type": "source_reported_conventional",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false
+  },
+  "scientific_guards": [
+    "Nonnegative centre length;zero only ifsourceactuallyreportszero",
+    "Onlyinitial mm lengthunit;rejectpercent/dimensionless,force andpressure",
+    "Absolute uncertainty/reported-measure units must matchcentre;keep existing genericstatisticalrepresentation",
+    "Do not convertuncorrectedlength by0.40 ornormalizebyinferredreference length",
+    "Requiredunknownfacts explicit;no missingfield defaults ornot_applicable erasure",
+    "Require sameprimarysource method/condition evidence,not secondarycitations",
+    "New extension_definition forbidden on alloldquantitybranches",
+    "Keep allold17closedbranch objects/definitions/runtimebehaviour unchanged;append one closedbranch only"
+  ],
+  "presentation": "Fourlanguages mustdistinguish extensionlength from percentelongation;inspectshowsuncorrected andunknownchannel/reference/failurecriterion;query/export/resolve preservefullnativefacts",
+  "future_validation": [
+    "meaningfulpositiveandnegative unit/correction/provenance/unknownfact tests",
+    "old17branch objects andlegacyfixtures preserved",
+    "dedupe/identity/stateversion regression andnative/exportroundtrip",
+    "freshbounded affectedcontract checks;no blindhistoricalreplay",
+    "read-onlyindependent implementationreview before native mapping",
+    "exact5property5stateversion mapping and independent review,actualinstallation before localadmission"
+  ],
+  "current_native_quantity_supported": false,
+  "current_native_new_properties": 0,
+  "current_native_new_states": 0
+}

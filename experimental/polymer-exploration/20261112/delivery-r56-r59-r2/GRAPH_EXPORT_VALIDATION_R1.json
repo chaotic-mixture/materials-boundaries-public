@@ -1,0 +1,104 @@
+{
+  "graph": {
+    "status": "material_contracts_passed",
+    "snapshot": "4e7a7558997d75ba44986d0f3c47ad5b4eb24bfaa23aada0006e9b1de01a19b8",
+    "properties": 5640,
+    "independent_scientific_review": false,
+    "scope": "current_material_graph_once_no_history_replay"
+  },
+  "exports": [
+    {
+      "name": "filament-source",
+      "records": 100,
+      "complete_recovery": true,
+      "copy_isolation": true
+    },
+    {
+      "name": "sylgard-source",
+      "records": 30,
+      "complete_recovery": true,
+      "copy_isolation": true
+    },
+    {
+      "name": "pur-source",
+      "records": 44,
+      "complete_recovery": true,
+      "copy_isolation": true
+    },
+    {
+      "name": "extension-five",
+      "records": 5,
+      "complete_recovery": true,
+      "copy_isolation": true
+    },
+    {
+      "name": "water-four",
+      "records": 4,
+      "complete_recovery": true,
+      "copy_isolation": true
+    },
+    {
+      "name": "filament-density",
+      "records": 32,
+      "complete_recovery": true,
+      "copy_isolation": true
+    }
+  ],
+  "cli_commands": [
+    {
+      "command": [
+        "export",
+        "--query",
+        "C11000",
+        "--quantity",
+        "mass_density",
+        "--output",
+        "F:\\材料边界\\open-database-evidence\\polymer-consolidated-delivery-20261112-r56-r59-r2\\database-example"
+      ],
+      "exit_code": 0,
+      "result": {
+        "format": "materials-database/1",
+        "database_snapshot": "4e7a7558997d75ba44986d0f3c47ad5b4eb24bfaa23aada0006e9b1de01a19b8",
+        "record_count": 1,
+        "filters": {
+          "query": "C11000",
+          "quantity": "mass_density",
+          "category": null,
+          "source": null
+        },
+        "files": {
+          "records.jsonl": "6c2e86fb639fac4ee01c2bc976419efe458d60efa558bacab7aeeea33b87e710"
+        },
+        "review_status": "exported_local_snapshot_not_release_acceptance",
+        "source_rights": "per_source_metadata_no_blanket_relicense"
+      }
+    },
+    {
+      "command": [
+        "verify",
+        "--snapshot",
+        "F:\\材料边界\\open-database-evidence\\polymer-consolidated-delivery-20261112-r56-r59-r2\\database-example"
+      ],
+      "exit_code": 0,
+      "result": {
+        "status": "snapshot_integrity_passed",
+        "manifest": {
+          "database_snapshot": "4e7a7558997d75ba44986d0f3c47ad5b4eb24bfaa23aada0006e9b1de01a19b8",
+          "files": {
+            "records.jsonl": "6c2e86fb639fac4ee01c2bc976419efe458d60efa558bacab7aeeea33b87e710"
+          },
+          "filters": {
+            "category": null,
+            "quantity": "mass_density",
+            "query": "C11000",
+            "source": null
+          },
+          "format": "materials-database/1",
+          "record_count": 1,
+          "review_status": "exported_local_snapshot_not_release_acceptance",
+          "source_rights": "per_source_metadata_no_blanket_relicense"
+        }
+      }
+    }
+  ]
+}

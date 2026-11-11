@@ -1,0 +1,49 @@
+{
+  "status": "held_not_proposed_for_admission",
+  "facts": [
+    {
+      "cure_temperature_degC": "25",
+      "number": "92.34",
+      "source_unit": "kN",
+      "source_column": "Table2Averagefailureload(kN)",
+      "native_admissible": false
+    },
+    {
+      "cure_temperature_degC": "100",
+      "number": "112.5",
+      "source_unit": "kN",
+      "source_column": "Table2Averagefailureload(kN)",
+      "native_admissible": false
+    },
+    {
+      "cure_temperature_degC": "125",
+      "number": "137.7",
+      "source_unit": "kN",
+      "source_column": "Table2Averagefailureload(kN)",
+      "native_admissible": false
+    },
+    {
+      "cure_temperature_degC": "150",
+      "number": "94.32",
+      "source_unit": "kN",
+      "source_column": "Table2Averagefailureload(kN)",
+      "native_admissible": false
+    },
+    {
+      "cure_temperature_degC": "200",
+      "number": "63.18",
+      "source_unit": "kN",
+      "source_column": "Table2Averagefailureload(kN)",
+      "native_admissible": false
+    }
+  ],
+  "source_machine_wording": "Hounsfield Universal10kN,p3section3.1",
+  "issue": "Potential unit/capability inconsistency:Table2prints kN and63.18–137.7values while machine describedUniversal10kN;actualunitnotverified.",
+  "prohibited_repairs": [
+    "Do not silently replacekNwithN",
+    "Do not derive force fromaveragedUTS times assumedarea",
+    "Do not treat discrepancy asuncertainty orprecision",
+    "Do not infer a verified loadcell range from model name alone"
+  ],
+  "extension_values_not_converted": true
+}

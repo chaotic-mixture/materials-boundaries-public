@@ -26,6 +26,8 @@ THERMAL_NEW_QUANTITIES = ("mass_specific_heat_capacity", "thermal_diffusivity")
 RESPONSE_TIME_UNITS = ("s", "ms")
 WORK_UNITS = ("J/cm^3", "MJ/m^3", "J/m^3")
 QUANTITY_DIMENSIONS = {
+    "water_absorption_volume_percentage": "dimensionless",
+    "tensile_extension_at_failure": "length",
     "thermal_degradation_endset_temperature": "temperature",
     "crystallization_peak_temperature": "temperature",
     "thermal_response_characteristic_time": "time",
@@ -62,6 +64,7 @@ QUANTITY_DIMENSIONS = {
     "slump_flow_spread": "length",
 }
 UNIT_DIMENSIONS = {
+    "percent_water_absorption_volume": "dimensionless",
     **{u: "time" for u in RESPONSE_TIME_UNITS},
     **{u: "energy_per_mass_temperature" for u in HEAT_CAPACITY_UNITS},
     **{u: "area_per_time" for u in DIFFUSIVITY_UNITS},
@@ -235,7 +238,7 @@ def _make_properties_schema():
     # Preserve the legacy value definitions and seven existing property branches.
     # The residue role enters only its dedicated central-value branch and the
     # shared uncertainty vocabulary, where same-role checks still apply.
-    unit = _enum(code for code in UNIT_DIMENSIONS if code != "percent_tga_residue" and code not in (*RESPONSE_TIME_UNITS, *WORK_UNITS, *HEAT_CAPACITY_UNITS, *DIFFUSIVITY_UNITS))
+    unit = _enum(code for code in UNIT_DIMENSIONS if code not in {"percent_tga_residue", "percent_water_absorption_volume"} and code not in (*RESPONSE_TIME_UNITS, *WORK_UNITS, *HEAT_CAPACITY_UNITS, *DIFFUSIVITY_UNITS))
     common_value = {"value_text": TEXT, "unit_text": TEXT, "unit_code": unit}
     definitions["reported_value"] = {"oneOf": [
         _object({"kind": {"const": "scalar"}, **common_value, "number": DECIMAL}),
@@ -268,13 +271,13 @@ def _make_properties_schema():
     for branch in definitions["legacy_reported_value"]["oneOf"]:
         branch["properties"]["unit_code"] = _enum(
             code for code in UNIT_DIMENSIONS
-            if code not in {*RESPONSE_TIME_UNITS, *HEAT_CAPACITY_UNITS, *DIFFUSIVITY_UNITS, *WORK_UNITS, "percent_tga_residue", "percent_elongation", "shore_a_scale", *TEMPERATURE_UNITS, *ELECTRIC_FIELD_UNITS, *THERMAL_CONDUCTIVITY_UNITS})
+            if code not in {*RESPONSE_TIME_UNITS, *HEAT_CAPACITY_UNITS, *DIFFUSIVITY_UNITS, *WORK_UNITS, "percent_water_absorption_volume", "percent_tga_residue", "percent_elongation", "shore_a_scale", *TEMPERATURE_UNITS, *ELECTRIC_FIELD_UNITS, *THERMAL_CONDUCTIVITY_UNITS})
     for branch in definitions["elongation_reported_value"]["oneOf"]:
         branch["properties"]["unit_code"] = {"const": "percent_elongation"}
     # Closed source-reported uncertainty variants. An amplitude alone never
     # establishes dispersion, mean aggregation or a confidence construction.
     # Keep the existing SD shape unchanged for old catalog/output compatibility.
-    uncertainty_value = {**common_value, "unit_code": _enum(UNIT_DIMENSIONS)}
+    uncertainty_value = {**common_value, "unit_code": _enum(code for code in UNIT_DIMENSIONS if code != "percent_water_absorption_volume")}
     uncertainty_common = {**uncertainty_value, "number": DECIMAL, "scope": TEXT,
                           "coverage_factor": NULL, "evidence": evidence}
     definitions["confidence_level"] = _object({
@@ -416,7 +419,7 @@ def _make_properties_schema():
     other = definitions["property"]
     other["properties"]["quantity"] = _enum(
         q for q in QUANTITY_DIMENSIONS
-        if q not in {"thermal_degradation_endset_temperature", "crystallization_peak_temperature", "thermal_response_characteristic_time", *THERMAL_NEW_QUANTITIES, "thermal_conductivity", "dielectric_breakdown_strength", "tensile_stress_at_specified_elongation", "shore_a_hardness", *TEMPERATURE_QUANTITIES, *TGA_QUANTITIES, "volumetric_tensile_work_to_break"}
+        if q not in {"water_absorption_volume_percentage", "tensile_extension_at_failure", "thermal_degradation_endset_temperature", "crystallization_peak_temperature", "thermal_response_characteristic_time", *THERMAL_NEW_QUANTITIES, "thermal_conductivity", "dielectric_breakdown_strength", "tensile_stress_at_specified_elongation", "shore_a_hardness", *TEMPERATURE_QUANTITIES, *TGA_QUANTITIES, "volumetric_tensile_work_to_break"}
         and q not in PERCENT_ELONGATION_QUANTITIES)
     del other["properties"]["specified_elongation"]
     definitions["specified_mass_loss"] = _object({
@@ -518,7 +521,11 @@ def _make_properties_schema():
     for qualifier in ("thermal_scan_definition", "degradation_endset_definition"):
         endset["properties"][qualifier] = _ref(qualifier)
         endset["required"].append(qualifier)
-    definitions["property"] = {"oneOf": [other, stress, elongation, shore, temperature, electric, thermal, *tga_branches, work, *new_thermal, response, crystallization, endset]}
+    from ._extension_contract import schema_branch
+    extension = schema_branch(definitions, other, text=TEXT, obj=_object, array=_array, ref=_ref)
+    from ._water_absorption_contract import schema_branch as water_branch
+    water = water_branch(definitions, other, text=TEXT, obj=_object, array=_array, ref=_ref)
+    definitions["property"] = {"oneOf": [other, stress, elongation, shore, temperature, electric, thermal, *tga_branches, work, *new_thermal, response, crystallization, endset, extension, water]}
     return {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "$id": "urn:materials-boundaries:schema:reference_properties:1.0.0",
@@ -777,6 +784,7 @@ def _validate_links(materials, properties, indices):
 # Only spelling/typography normalization; these mappings never change a unit or
 # infer a quantity. Unknown spellings need deliberate capability review.
 _UNIT_SPELLINGS = {
+    "percent_water_absorption_volume": {"V%", "vol.%", "vol%"},
     "s": {"s"}, "ms": {"ms"},
     "J/(g*K)": {"J/(g*K)", "J/(g·K)", "J/g·K"},
     "J/(kg*K)": {"J/(kg*K)", "J/(kg·K)"},
@@ -1009,7 +1017,11 @@ def _validate_property(prop):
     else:
         _validate_value(prop["reported_value"], path + ".reported_value", dimension,
                         nonnegative=(prop["quantity"] in PERCENT_ELONGATION_QUANTITIES or
-                                     prop["quantity"] in {"shore_a_hardness", "tga_residue_percentage", "volumetric_tensile_work_to_break"}))
+                                     prop["quantity"] in {"water_absorption_volume_percentage", "tensile_extension_at_failure", "shore_a_hardness", "tga_residue_percentage", "volumetric_tensile_work_to_break"}))
+    from ._extension_contract import validate as validate_extension
+    validate_extension(prop, _fail)
+    from ._water_absorption_contract import validate as validate_water_absorption
+    validate_water_absorption(prop, _fail)
     for field in ("specified_mass_loss", "degradation_peak_ordinal", "residue_endpoint_temperature", "mass_reference_basis"):
         if field not in prop:
             continue
@@ -1319,6 +1331,17 @@ def _unique_fact(prop, seen):
         key = "tga_endset:" + _coordinate_fact_base(signature, "endset_definition")
         if key in seen:
             _fail(prop["id"], "duplicate source fact for the same TGA endset cell")
+        seen.add(key)
+    if prop["quantity"] == "water_absorption_volume_percentage":
+        key = "water_absorption:" + _coordinate_fact_base(signature, "water_absorption_definition")
+        if key in seen:
+            _fail(prop["id"], "duplicate source fact for the same water absorption cell")
+        seen.add(key)
+    if prop["quantity"] == "tensile_extension_at_failure":
+        # Channel/reference/criterion enrichment revises the same source cell.
+        key = "tensile_extension:" + _coordinate_fact_base(signature, "extension_definition")
+        if key in seen:
+            _fail(prop["id"], "duplicate source fact for the same extension cell")
         seen.add(key)
     if signature in seen:
         _fail(prop["id"], "duplicate source fact for the same material state")

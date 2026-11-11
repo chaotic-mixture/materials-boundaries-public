@@ -193968,7 +193968,7 @@
     },
     {
       "id": "state_dow_corning_sylgard184_johnston2014_100c",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "identity_id": "mat_dow_corning_sylgard184",
       "grade_id": "grade_dow_corning_sylgard184",
       "name": "Sylgard 184, 10:1 parts, 100 °C/48 min tensile cure (Johnston 2014)",
@@ -194099,7 +194099,8 @@
       ],
       "property_ids": [
         "refprop_dow_corning_sylgard184_johnston2014_100c_youngs_modulus",
-        "refprop_dow_corning_sylgard184_johnston2014_100c_tensile_strength"
+        "refprop_dow_corning_sylgard184_johnston2014_100c_tensile_strength",
+        "refprop_dow_corning_sylgard184_johnston2014_100c_tensile_extension_at_failure"
       ],
       "evaluation_support": "catalog_only"
     },
@@ -671805,7 +671806,7 @@
     },
     {
       "id": "state_dow_corning_sylgard184_johnston2014_125c",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "identity_id": "mat_dow_corning_sylgard184",
       "grade_id": "grade_dow_corning_sylgard184",
       "name": "Sylgard 184, 10:1 parts, 125 °C/33 min tensile cure (Johnston 2014)",
@@ -671936,13 +671937,14 @@
       ],
       "property_ids": [
         "refprop_dow_corning_sylgard184_johnston2014_125c_youngs_modulus",
-        "refprop_dow_corning_sylgard184_johnston2014_125c_tensile_strength"
+        "refprop_dow_corning_sylgard184_johnston2014_125c_tensile_strength",
+        "refprop_dow_corning_sylgard184_johnston2014_125c_tensile_extension_at_failure"
       ],
       "evaluation_support": "catalog_only"
     },
     {
       "id": "state_dow_corning_sylgard184_johnston2014_150c",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "identity_id": "mat_dow_corning_sylgard184",
       "grade_id": "grade_dow_corning_sylgard184",
       "name": "Sylgard 184, 10:1 parts, 150 °C/23 min tensile cure (Johnston 2014)",
@@ -672073,13 +672075,14 @@
       ],
       "property_ids": [
         "refprop_dow_corning_sylgard184_johnston2014_150c_youngs_modulus",
-        "refprop_dow_corning_sylgard184_johnston2014_150c_tensile_strength"
+        "refprop_dow_corning_sylgard184_johnston2014_150c_tensile_strength",
+        "refprop_dow_corning_sylgard184_johnston2014_150c_tensile_extension_at_failure"
       ],
       "evaluation_support": "catalog_only"
     },
     {
       "id": "state_dow_corning_sylgard184_johnston2014_200c",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "identity_id": "mat_dow_corning_sylgard184",
       "grade_id": "grade_dow_corning_sylgard184",
       "name": "Sylgard 184, 10:1 parts, 200 °C/18 min tensile cure (Johnston 2014)",
@@ -672210,13 +672213,14 @@
       ],
       "property_ids": [
         "refprop_dow_corning_sylgard184_johnston2014_200c_youngs_modulus",
-        "refprop_dow_corning_sylgard184_johnston2014_200c_tensile_strength"
+        "refprop_dow_corning_sylgard184_johnston2014_200c_tensile_strength",
+        "refprop_dow_corning_sylgard184_johnston2014_200c_tensile_extension_at_failure"
       ],
       "evaluation_support": "catalog_only"
     },
     {
       "id": "state_dow_corning_sylgard184_johnston2014_25c",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "identity_id": "mat_dow_corning_sylgard184",
       "grade_id": "grade_dow_corning_sylgard184",
       "name": "Sylgard 184, 10:1 parts, 25 °C/48 h tensile cure (Johnston 2014)",
@@ -672347,7 +672351,8 @@
       ],
       "property_ids": [
         "refprop_dow_corning_sylgard184_johnston2014_25c_youngs_modulus",
-        "refprop_dow_corning_sylgard184_johnston2014_25c_tensile_strength"
+        "refprop_dow_corning_sylgard184_johnston2014_25c_tensile_strength",
+        "refprop_dow_corning_sylgard184_johnston2014_25c_tensile_extension_at_failure"
       ],
       "evaluation_support": "catalog_only"
     },
@@ -691633,6 +691638,2733 @@
       "property_ids": [
         "refprop_aniskevich_2023_stratasys_antero800na_filament_dogbone_source90_tensile_modulus",
         "refprop_aniskevich_2023_stratasys_antero800na_filament_dogbone_source90_tensile_strength"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Single-fiber extruded filament,source nominal0.4mm;actual selected density-piece length/diameter implementation unknown",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Density!J4/K4;Drow series,J2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Do not assign reference2.85mm/100mm geometry."
+        },
+        "processing": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group processing unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group temper_or_heat_treatment unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group conditioning unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "reinforcement": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "The workbook does not report a quantitative filler assay. Separate manufacturer identity evidence is restricted to classification; no filler fraction, morphology or exact-lot certification is inferred."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group porosity unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group orientation unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "Material family: Polycarbonate; supplier: Ultimaker; source designation: PC, White 1642",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Tested materials!B22; C22:D22; Tensile modulus!B6",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Preserve the commercial source identity; no pure-polymer assay or complete chemical composition is inferred. Manufacturer classification evidence is not a numerical or exact-lot composition determination."
+        }
+      },
+      "evaluation_support": "catalog_only",
+      "id": "state_aniskevich_2023_ultimaker_pc_filament_density_single_fiber",
+      "identity_id": "mat_aniskevich_2023_ultimaker_pc",
+      "name": "Ultimaker PC, White 1642 (source-qualified polycarbonate) / density: Single-fiber extruded filament 0.4 mm",
+      "names": {
+        "en": "Ultimaker PC, White 1642 (source-qualified polycarbonate) / density: Single-fiber extruded filament 0.4 mm",
+        "zh": "Ultimaker PC, White 1642 (来源限定聚碳酸酯) / 密度：来源组 Single-fiber extruded filament 0.4 mm",
+        "ja": "Ultimaker PC, White 1642 (資料で特定されたポリカーボネート) / 密度：資料グループ Single-fiber extruded filament 0.4 mm",
+        "de": "Ultimaker PC, White 1642 (quellenbezogen: Polycarbonat) / Dichte:Quellengruppe Single-fiber extruded filament 0.4 mm"
+      },
+      "source_designation": "PC, White 1642 / Single-fiber extruded filament 0.4 mm",
+      "source_scope": "Separate density catalog context for literal worksheet group Single-fiber extruded filament 0.4 mm under existing identity. No new material/grade or certified independent physical coverage. Column-specific method,dimensions,processing/surface treatment,n and estimator unknown;reference-density and tensile procedures are not transferred.",
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density!J4/K4;Drow series,J2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_aniskevich_2023_ultimaker_pc_filament_density_single_fiber_mass_density"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Printed cube,source worksheet group Cube 1.0;group-label unit and exact column-specific edge size/surface treatment not verified",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Density!M4/N4;Drow series,M2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "General10mm/25mm cube discussion is background only;no direct M/P size or polishing correspondence established."
+        },
+        "processing": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group processing unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group temper_or_heat_treatment unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group conditioning unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "reinforcement": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "The workbook does not report a quantitative filler assay. Separate manufacturer identity evidence is restricted to classification; no filler fraction, morphology or exact-lot certification is inferred."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group porosity unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group orientation unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "Material family: Polycarbonate; supplier: Ultimaker; source designation: PC, White 1642",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Tested materials!B22; C22:D22; Tensile modulus!B6",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Preserve the commercial source identity; no pure-polymer assay or complete chemical composition is inferred. Manufacturer classification evidence is not a numerical or exact-lot composition determination."
+        }
+      },
+      "evaluation_support": "catalog_only",
+      "id": "state_aniskevich_2023_ultimaker_pc_filament_density_cube_source1_0",
+      "identity_id": "mat_aniskevich_2023_ultimaker_pc",
+      "name": "Ultimaker PC, White 1642 (source-qualified polycarbonate) / density: Cube 1.0",
+      "names": {
+        "en": "Ultimaker PC, White 1642 (source-qualified polycarbonate) / density: Cube 1.0",
+        "zh": "Ultimaker PC, White 1642 (来源限定聚碳酸酯) / 密度：来源组 Cube 1.0",
+        "ja": "Ultimaker PC, White 1642 (資料で特定されたポリカーボネート) / 密度：資料グループ Cube 1.0",
+        "de": "Ultimaker PC, White 1642 (quellenbezogen: Polycarbonat) / Dichte:Quellengruppe Cube 1.0"
+      },
+      "source_designation": "PC, White 1642 / Cube 1.0",
+      "source_scope": "Separate density catalog context for literal worksheet group Cube 1.0 under existing identity. No new material/grade or certified independent physical coverage. Column-specific method,dimensions,processing/surface treatment,n and estimator unknown;reference-density and tensile procedures are not transferred.",
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density!M4/N4;Drow series,M2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_aniskevich_2023_ultimaker_pc_filament_density_cube_source1_0_mass_density"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Printed cube,source worksheet group Cube 2.5;group-label unit and exact column-specific edge size/surface treatment not verified",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Density!P4/Q4;Drow series,P2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "General10mm/25mm cube discussion is background only;no direct M/P size or polishing correspondence established."
+        },
+        "processing": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group processing unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group temper_or_heat_treatment unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group conditioning unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "reinforcement": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "The workbook does not report a quantitative filler assay. Separate manufacturer identity evidence is restricted to classification; no filler fraction, morphology or exact-lot certification is inferred."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group porosity unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group orientation unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "Material family: Polycarbonate; supplier: Ultimaker; source designation: PC, White 1642",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Tested materials!B22; C22:D22; Tensile modulus!B6",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Preserve the commercial source identity; no pure-polymer assay or complete chemical composition is inferred. Manufacturer classification evidence is not a numerical or exact-lot composition determination."
+        }
+      },
+      "evaluation_support": "catalog_only",
+      "id": "state_aniskevich_2023_ultimaker_pc_filament_density_cube_source2_5",
+      "identity_id": "mat_aniskevich_2023_ultimaker_pc",
+      "name": "Ultimaker PC, White 1642 (source-qualified polycarbonate) / density: Cube 2.5",
+      "names": {
+        "en": "Ultimaker PC, White 1642 (source-qualified polycarbonate) / density: Cube 2.5",
+        "zh": "Ultimaker PC, White 1642 (来源限定聚碳酸酯) / 密度：来源组 Cube 2.5",
+        "ja": "Ultimaker PC, White 1642 (資料で特定されたポリカーボネート) / 密度：資料グループ Cube 2.5",
+        "de": "Ultimaker PC, White 1642 (quellenbezogen: Polycarbonat) / Dichte:Quellengruppe Cube 2.5"
+      },
+      "source_designation": "PC, White 1642 / Cube 2.5",
+      "source_scope": "Separate density catalog context for literal worksheet group Cube 2.5 under existing identity. No new material/grade or certified independent physical coverage. Column-specific method,dimensions,processing/surface treatment,n and estimator unknown;reference-density and tensile procedures are not transferred.",
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density!P4/Q4;Drow series,P2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_aniskevich_2023_ultimaker_pc_filament_density_cube_source2_5_mass_density"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Single-fiber extruded filament,source nominal0.4mm;actual selected density-piece length/diameter implementation unknown",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Density!J5/K5;Drow series,J2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Do not assign reference2.85mm/100mm geometry."
+        },
+        "processing": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group processing unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group temper_or_heat_treatment unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group conditioning unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "reinforcement": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "The workbook does not report a quantitative filler assay. Separate manufacturer identity evidence is restricted to classification; no filler fraction, morphology or exact-lot certification is inferred."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group porosity unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group orientation unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "Workbook family: Polylactic acid; supplier: Ultimaker; source designation: PLA Tough Black 202300",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Tested materials!B10; C11:D11; Tensile modulus!B7",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "This preserves the workbook family/product label, not a pure-PLA assay or complete recipe. Manufacturer identity evidence does not authenticate this code or exact tested lot."
+        }
+      },
+      "evaluation_support": "catalog_only",
+      "id": "state_aniskevich_2023_ultimaker_tough_pla_black_filament_density_single_fiber",
+      "identity_id": "mat_aniskevich_2023_ultimaker_tough_pla",
+      "name": "Ultimaker Tough PLA Black 202300 / density: Single-fiber extruded filament 0.4 mm",
+      "names": {
+        "en": "Ultimaker Tough PLA Black 202300 / density: Single-fiber extruded filament 0.4 mm",
+        "zh": "Ultimaker Tough PLA 黑色 202300 / 密度：来源组 Single-fiber extruded filament 0.4 mm",
+        "ja": "Ultimaker Tough PLA 黒色 202300 / 密度：資料グループ Single-fiber extruded filament 0.4 mm",
+        "de": "Ultimaker Tough PLA Schwarz 202300 / Dichte:Quellengruppe Single-fiber extruded filament 0.4 mm"
+      },
+      "source_designation": "PLA Tough Black 202300 / Single-fiber extruded filament 0.4 mm",
+      "source_scope": "Separate density catalog context for literal worksheet group Single-fiber extruded filament 0.4 mm under existing identity. No new material/grade or certified independent physical coverage. Column-specific method,dimensions,processing/surface treatment,n and estimator unknown;reference-density and tensile procedures are not transferred.",
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density!J5/K5;Drow series,J2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_aniskevich_2023_ultimaker_tough_pla_black_filament_density_single_fiber_mass_density"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Printed cube,source worksheet group Cube 1.0;group-label unit and exact column-specific edge size/surface treatment not verified",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Density!M5/N5;Drow series,M2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "General10mm/25mm cube discussion is background only;no direct M/P size or polishing correspondence established."
+        },
+        "processing": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group processing unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group temper_or_heat_treatment unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group conditioning unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "reinforcement": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "The workbook does not report a quantitative filler assay. Separate manufacturer identity evidence is restricted to classification; no filler fraction, morphology or exact-lot certification is inferred."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group porosity unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group orientation unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "Workbook family: Polylactic acid; supplier: Ultimaker; source designation: PLA Tough Black 202300",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Tested materials!B10; C11:D11; Tensile modulus!B7",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "This preserves the workbook family/product label, not a pure-PLA assay or complete recipe. Manufacturer identity evidence does not authenticate this code or exact tested lot."
+        }
+      },
+      "evaluation_support": "catalog_only",
+      "id": "state_aniskevich_2023_ultimaker_tough_pla_black_filament_density_cube_source1_0",
+      "identity_id": "mat_aniskevich_2023_ultimaker_tough_pla",
+      "name": "Ultimaker Tough PLA Black 202300 / density: Cube 1.0",
+      "names": {
+        "en": "Ultimaker Tough PLA Black 202300 / density: Cube 1.0",
+        "zh": "Ultimaker Tough PLA 黑色 202300 / 密度：来源组 Cube 1.0",
+        "ja": "Ultimaker Tough PLA 黒色 202300 / 密度：資料グループ Cube 1.0",
+        "de": "Ultimaker Tough PLA Schwarz 202300 / Dichte:Quellengruppe Cube 1.0"
+      },
+      "source_designation": "PLA Tough Black 202300 / Cube 1.0",
+      "source_scope": "Separate density catalog context for literal worksheet group Cube 1.0 under existing identity. No new material/grade or certified independent physical coverage. Column-specific method,dimensions,processing/surface treatment,n and estimator unknown;reference-density and tensile procedures are not transferred.",
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density!M5/N5;Drow series,M2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_aniskevich_2023_ultimaker_tough_pla_black_filament_density_cube_source1_0_mass_density"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Single-fiber extruded filament,source nominal0.4mm;actual selected density-piece length/diameter implementation unknown",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Density!J6/K6;Drow series,J2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Do not assign reference2.85mm/100mm geometry."
+        },
+        "processing": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group processing unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group temper_or_heat_treatment unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group conditioning unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "reinforcement": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "The workbook does not report a quantitative filler assay. Separate manufacturer identity evidence is restricted to classification; no filler fraction, morphology or exact-lot certification is inferred."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group porosity unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group orientation unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "Workbook family: Polylactic acid; supplier: Ultimaker; source designation: PLA Tough White 20231",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Tested materials!B10; C10:D10; Tensile modulus!B8",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "This preserves the workbook family/product label, not a pure-PLA assay or complete recipe. Manufacturer identity evidence does not authenticate this code or exact tested lot."
+        }
+      },
+      "evaluation_support": "catalog_only",
+      "id": "state_aniskevich_2023_ultimaker_tough_pla_white_filament_density_single_fiber",
+      "identity_id": "mat_aniskevich_2023_ultimaker_tough_pla",
+      "name": "Ultimaker Tough PLA White 20231 / density: Single-fiber extruded filament 0.4 mm",
+      "names": {
+        "en": "Ultimaker Tough PLA White 20231 / density: Single-fiber extruded filament 0.4 mm",
+        "zh": "Ultimaker Tough PLA 白色 20231 / 密度：来源组 Single-fiber extruded filament 0.4 mm",
+        "ja": "Ultimaker Tough PLA 白色 20231 / 密度：資料グループ Single-fiber extruded filament 0.4 mm",
+        "de": "Ultimaker Tough PLA Weiß 20231 / Dichte:Quellengruppe Single-fiber extruded filament 0.4 mm"
+      },
+      "source_designation": "PLA Tough White 20231 / Single-fiber extruded filament 0.4 mm",
+      "source_scope": "Separate density catalog context for literal worksheet group Single-fiber extruded filament 0.4 mm under existing identity. No new material/grade or certified independent physical coverage. Column-specific method,dimensions,processing/surface treatment,n and estimator unknown;reference-density and tensile procedures are not transferred.",
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density!J6/K6;Drow series,J2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_aniskevich_2023_ultimaker_tough_pla_white_filament_density_single_fiber_mass_density"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Printed cube,source worksheet group Cube 1.0;group-label unit and exact column-specific edge size/surface treatment not verified",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Density!M6/N6;Drow series,M2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "General10mm/25mm cube discussion is background only;no direct M/P size or polishing correspondence established."
+        },
+        "processing": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group processing unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group temper_or_heat_treatment unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group conditioning unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "reinforcement": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "The workbook does not report a quantitative filler assay. Separate manufacturer identity evidence is restricted to classification; no filler fraction, morphology or exact-lot certification is inferred."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group porosity unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group orientation unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "Workbook family: Polylactic acid; supplier: Ultimaker; source designation: PLA Tough White 20231",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Tested materials!B10; C10:D10; Tensile modulus!B8",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "This preserves the workbook family/product label, not a pure-PLA assay or complete recipe. Manufacturer identity evidence does not authenticate this code or exact tested lot."
+        }
+      },
+      "evaluation_support": "catalog_only",
+      "id": "state_aniskevich_2023_ultimaker_tough_pla_white_filament_density_cube_source1_0",
+      "identity_id": "mat_aniskevich_2023_ultimaker_tough_pla",
+      "name": "Ultimaker Tough PLA White 20231 / density: Cube 1.0",
+      "names": {
+        "en": "Ultimaker Tough PLA White 20231 / density: Cube 1.0",
+        "zh": "Ultimaker Tough PLA 白色 20231 / 密度：来源组 Cube 1.0",
+        "ja": "Ultimaker Tough PLA 白色 20231 / 密度：資料グループ Cube 1.0",
+        "de": "Ultimaker Tough PLA Weiß 20231 / Dichte:Quellengruppe Cube 1.0"
+      },
+      "source_designation": "PLA Tough White 20231 / Cube 1.0",
+      "source_scope": "Separate density catalog context for literal worksheet group Cube 1.0 under existing identity. No new material/grade or certified independent physical coverage. Column-specific method,dimensions,processing/surface treatment,n and estimator unknown;reference-density and tensile procedures are not transferred.",
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density!M6/N6;Drow series,M2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_aniskevich_2023_ultimaker_tough_pla_white_filament_density_cube_source1_0_mass_density"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Printed cube,source worksheet group Cube 2.5;group-label unit and exact column-specific edge size/surface treatment not verified",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Density!P6/Q6;Drow series,P2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "General10mm/25mm cube discussion is background only;no direct M/P size or polishing correspondence established."
+        },
+        "processing": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group processing unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group temper_or_heat_treatment unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group conditioning unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "reinforcement": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "The workbook does not report a quantitative filler assay. Separate manufacturer identity evidence is restricted to classification; no filler fraction, morphology or exact-lot certification is inferred."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group porosity unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group orientation unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "Workbook family: Polylactic acid; supplier: Ultimaker; source designation: PLA Tough White 20231",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Tested materials!B10; C10:D10; Tensile modulus!B8",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "This preserves the workbook family/product label, not a pure-PLA assay or complete recipe. Manufacturer identity evidence does not authenticate this code or exact tested lot."
+        }
+      },
+      "evaluation_support": "catalog_only",
+      "id": "state_aniskevich_2023_ultimaker_tough_pla_white_filament_density_cube_source2_5",
+      "identity_id": "mat_aniskevich_2023_ultimaker_tough_pla",
+      "name": "Ultimaker Tough PLA White 20231 / density: Cube 2.5",
+      "names": {
+        "en": "Ultimaker Tough PLA White 20231 / density: Cube 2.5",
+        "zh": "Ultimaker Tough PLA 白色 20231 / 密度：来源组 Cube 2.5",
+        "ja": "Ultimaker Tough PLA 白色 20231 / 密度：資料グループ Cube 2.5",
+        "de": "Ultimaker Tough PLA Weiß 20231 / Dichte:Quellengruppe Cube 2.5"
+      },
+      "source_designation": "PLA Tough White 20231 / Cube 2.5",
+      "source_scope": "Separate density catalog context for literal worksheet group Cube 2.5 under existing identity. No new material/grade or certified independent physical coverage. Column-specific method,dimensions,processing/surface treatment,n and estimator unknown;reference-density and tensile procedures are not transferred.",
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density!P6/Q6;Drow series,P2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_aniskevich_2023_ultimaker_tough_pla_white_filament_density_cube_source2_5_mass_density"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Single-fiber extruded filament,source nominal0.4mm;actual selected density-piece length/diameter implementation unknown",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Density!J7/K7;Drow series,J2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Do not assign reference2.85mm/100mm geometry."
+        },
+        "processing": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group processing unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group temper_or_heat_treatment unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group conditioning unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "reinforcement": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "The workbook does not report a quantitative filler assay. Separate manufacturer identity evidence is restricted to classification; no filler fraction, morphology or exact-lot certification is inferred."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group porosity unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group orientation unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "composition_or_purity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "The workbook labels this product Polyamide but reports no studied-state composition assay, subtype, ratio, architecture, purity or additive recipe. Historical manufacturer-family evidence is restricted to identity and does not certify this measured lot or formulation continuity."
+        }
+      },
+      "evaluation_support": "catalog_only",
+      "id": "state_aniskevich_2023_ultimaker_nylon_transparent_filament_density_single_fiber",
+      "identity_id": "mat_aniskevich_2023_ultimaker_nylon",
+      "name": "Ultimaker Nylon Transparent 1647 / density: Single-fiber extruded filament 0.4 mm",
+      "names": {
+        "en": "Ultimaker Nylon Transparent 1647 / density: Single-fiber extruded filament 0.4 mm",
+        "zh": "Ultimaker Nylon 透明 1647 / 密度：来源组 Single-fiber extruded filament 0.4 mm",
+        "ja": "Ultimaker Nylon 透明 1647 / 密度：資料グループ Single-fiber extruded filament 0.4 mm",
+        "de": "Ultimaker Nylon Transparent 1647 / Dichte:Quellengruppe Single-fiber extruded filament 0.4 mm"
+      },
+      "source_designation": "PA, Nylon Transparent 1647 / Single-fiber extruded filament 0.4 mm",
+      "source_scope": "Separate density catalog context for literal worksheet group Single-fiber extruded filament 0.4 mm under existing identity. No new material/grade or certified independent physical coverage. Column-specific method,dimensions,processing/surface treatment,n and estimator unknown;reference-density and tensile procedures are not transferred.",
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density!J7/K7;Drow series,J2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_aniskevich_2023_ultimaker_nylon_transparent_filament_density_single_fiber_mass_density"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Printed cube,source worksheet group Cube 1.0;group-label unit and exact column-specific edge size/surface treatment not verified",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Density!M7/N7;Drow series,M2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "General10mm/25mm cube discussion is background only;no direct M/P size or polishing correspondence established."
+        },
+        "processing": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group processing unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group temper_or_heat_treatment unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group conditioning unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "reinforcement": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "The workbook does not report a quantitative filler assay. Separate manufacturer identity evidence is restricted to classification; no filler fraction, morphology or exact-lot certification is inferred."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group porosity unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group orientation unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "composition_or_purity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "The workbook labels this product Polyamide but reports no studied-state composition assay, subtype, ratio, architecture, purity or additive recipe. Historical manufacturer-family evidence is restricted to identity and does not certify this measured lot or formulation continuity."
+        }
+      },
+      "evaluation_support": "catalog_only",
+      "id": "state_aniskevich_2023_ultimaker_nylon_transparent_filament_density_cube_source1_0",
+      "identity_id": "mat_aniskevich_2023_ultimaker_nylon",
+      "name": "Ultimaker Nylon Transparent 1647 / density: Cube 1.0",
+      "names": {
+        "en": "Ultimaker Nylon Transparent 1647 / density: Cube 1.0",
+        "zh": "Ultimaker Nylon 透明 1647 / 密度：来源组 Cube 1.0",
+        "ja": "Ultimaker Nylon 透明 1647 / 密度：資料グループ Cube 1.0",
+        "de": "Ultimaker Nylon Transparent 1647 / Dichte:Quellengruppe Cube 1.0"
+      },
+      "source_designation": "PA, Nylon Transparent 1647 / Cube 1.0",
+      "source_scope": "Separate density catalog context for literal worksheet group Cube 1.0 under existing identity. No new material/grade or certified independent physical coverage. Column-specific method,dimensions,processing/surface treatment,n and estimator unknown;reference-density and tensile procedures are not transferred.",
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density!M7/N7;Drow series,M2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_aniskevich_2023_ultimaker_nylon_transparent_filament_density_cube_source1_0_mass_density"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Printed cube,source worksheet group Cube 2.5;group-label unit and exact column-specific edge size/surface treatment not verified",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Density!P7/Q7;Drow series,P2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "General10mm/25mm cube discussion is background only;no direct M/P size or polishing correspondence established."
+        },
+        "processing": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group processing unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group temper_or_heat_treatment unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group conditioning unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "reinforcement": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "The workbook does not report a quantitative filler assay. Separate manufacturer identity evidence is restricted to classification; no filler fraction, morphology or exact-lot certification is inferred."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group porosity unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group orientation unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "composition_or_purity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "The workbook labels this product Polyamide but reports no studied-state composition assay, subtype, ratio, architecture, purity or additive recipe. Historical manufacturer-family evidence is restricted to identity and does not certify this measured lot or formulation continuity."
+        }
+      },
+      "evaluation_support": "catalog_only",
+      "id": "state_aniskevich_2023_ultimaker_nylon_transparent_filament_density_cube_source2_5",
+      "identity_id": "mat_aniskevich_2023_ultimaker_nylon",
+      "name": "Ultimaker Nylon Transparent 1647 / density: Cube 2.5",
+      "names": {
+        "en": "Ultimaker Nylon Transparent 1647 / density: Cube 2.5",
+        "zh": "Ultimaker Nylon 透明 1647 / 密度：来源组 Cube 2.5",
+        "ja": "Ultimaker Nylon 透明 1647 / 密度：資料グループ Cube 2.5",
+        "de": "Ultimaker Nylon Transparent 1647 / Dichte:Quellengruppe Cube 2.5"
+      },
+      "source_designation": "PA, Nylon Transparent 1647 / Cube 2.5",
+      "source_scope": "Separate density catalog context for literal worksheet group Cube 2.5 under existing identity. No new material/grade or certified independent physical coverage. Column-specific method,dimensions,processing/surface treatment,n and estimator unknown;reference-density and tensile procedures are not transferred.",
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density!P7/Q7;Drow series,P2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_aniskevich_2023_ultimaker_nylon_transparent_filament_density_cube_source2_5_mass_density"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Single-fiber extruded filament,source nominal0.4mm;actual selected density-piece length/diameter implementation unknown",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Density!J9/K9;Drow series,J2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Do not assign reference2.85mm/100mm geometry."
+        },
+        "processing": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group processing unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group temper_or_heat_treatment unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group conditioning unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "reinforcement": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "The workbook does not report a quantitative filler assay. Separate manufacturer identity evidence is restricted to classification; no filler fraction, morphology or exact-lot certification is inferred."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group porosity unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group orientation unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "Material family: Thermoplastic polyurethane; supplier: Ultimaker; source designation: TPU95A, White 1755",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Tested materials!B24; C24:D24; Tensile modulus!B11",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Preserve the commercial source identity; no pure-polymer assay or complete chemical composition is inferred. Manufacturer classification evidence is not a numerical or exact-lot composition determination."
+        }
+      },
+      "evaluation_support": "catalog_only",
+      "id": "state_aniskevich_2023_ultimaker_tpu95a_filament_density_single_fiber",
+      "identity_id": "mat_aniskevich_2023_ultimaker_tpu95a",
+      "name": "Ultimaker TPU95A, White 1755 (source-qualified thermoplastic polyurethane) / density: Single-fiber extruded filament 0.4 mm",
+      "names": {
+        "en": "Ultimaker TPU95A, White 1755 (source-qualified thermoplastic polyurethane) / density: Single-fiber extruded filament 0.4 mm",
+        "zh": "Ultimaker TPU95A, White 1755 (来源限定热塑性聚氨酯) / 密度：来源组 Single-fiber extruded filament 0.4 mm",
+        "ja": "Ultimaker TPU95A, White 1755 (資料で特定された熱可塑性ポリウレタン) / 密度：資料グループ Single-fiber extruded filament 0.4 mm",
+        "de": "Ultimaker TPU95A, White 1755 (quellenbezogen: thermoplastisches Polyurethan) / Dichte:Quellengruppe Single-fiber extruded filament 0.4 mm"
+      },
+      "source_designation": "TPU95A, White 1755 / Single-fiber extruded filament 0.4 mm",
+      "source_scope": "Separate density catalog context for literal worksheet group Single-fiber extruded filament 0.4 mm under existing identity. No new material/grade or certified independent physical coverage. Column-specific method,dimensions,processing/surface treatment,n and estimator unknown;reference-density and tensile procedures are not transferred.",
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density!J9/K9;Drow series,J2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_aniskevich_2023_ultimaker_tpu95a_filament_density_single_fiber_mass_density"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Printed cube,source worksheet group Cube 1.0;group-label unit and exact column-specific edge size/surface treatment not verified",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Density!M9/N9;Drow series,M2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "General10mm/25mm cube discussion is background only;no direct M/P size or polishing correspondence established."
+        },
+        "processing": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group processing unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group temper_or_heat_treatment unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group conditioning unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "reinforcement": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "The workbook does not report a quantitative filler assay. Separate manufacturer identity evidence is restricted to classification; no filler fraction, morphology or exact-lot certification is inferred."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group porosity unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group orientation unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "Material family: Thermoplastic polyurethane; supplier: Ultimaker; source designation: TPU95A, White 1755",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Tested materials!B24; C24:D24; Tensile modulus!B11",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Preserve the commercial source identity; no pure-polymer assay or complete chemical composition is inferred. Manufacturer classification evidence is not a numerical or exact-lot composition determination."
+        }
+      },
+      "evaluation_support": "catalog_only",
+      "id": "state_aniskevich_2023_ultimaker_tpu95a_filament_density_cube_source1_0",
+      "identity_id": "mat_aniskevich_2023_ultimaker_tpu95a",
+      "name": "Ultimaker TPU95A, White 1755 (source-qualified thermoplastic polyurethane) / density: Cube 1.0",
+      "names": {
+        "en": "Ultimaker TPU95A, White 1755 (source-qualified thermoplastic polyurethane) / density: Cube 1.0",
+        "zh": "Ultimaker TPU95A, White 1755 (来源限定热塑性聚氨酯) / 密度：来源组 Cube 1.0",
+        "ja": "Ultimaker TPU95A, White 1755 (資料で特定された熱可塑性ポリウレタン) / 密度：資料グループ Cube 1.0",
+        "de": "Ultimaker TPU95A, White 1755 (quellenbezogen: thermoplastisches Polyurethan) / Dichte:Quellengruppe Cube 1.0"
+      },
+      "source_designation": "TPU95A, White 1755 / Cube 1.0",
+      "source_scope": "Separate density catalog context for literal worksheet group Cube 1.0 under existing identity. No new material/grade or certified independent physical coverage. Column-specific method,dimensions,processing/surface treatment,n and estimator unknown;reference-density and tensile procedures are not transferred.",
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density!M9/N9;Drow series,M2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_aniskevich_2023_ultimaker_tpu95a_filament_density_cube_source1_0_mass_density"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Printed cube,source worksheet group Cube 2.5;group-label unit and exact column-specific edge size/surface treatment not verified",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Density!P9/Q9;Drow series,P2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "General10mm/25mm cube discussion is background only;no direct M/P size or polishing correspondence established."
+        },
+        "processing": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group processing unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group temper_or_heat_treatment unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group conditioning unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "reinforcement": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "The workbook does not report a quantitative filler assay. Separate manufacturer identity evidence is restricted to classification; no filler fraction, morphology or exact-lot certification is inferred."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group porosity unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group orientation unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "Material family: Thermoplastic polyurethane; supplier: Ultimaker; source designation: TPU95A, White 1755",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Tested materials!B24; C24:D24; Tensile modulus!B11",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Preserve the commercial source identity; no pure-polymer assay or complete chemical composition is inferred. Manufacturer classification evidence is not a numerical or exact-lot composition determination."
+        }
+      },
+      "evaluation_support": "catalog_only",
+      "id": "state_aniskevich_2023_ultimaker_tpu95a_filament_density_cube_source2_5",
+      "identity_id": "mat_aniskevich_2023_ultimaker_tpu95a",
+      "name": "Ultimaker TPU95A, White 1755 (source-qualified thermoplastic polyurethane) / density: Cube 2.5",
+      "names": {
+        "en": "Ultimaker TPU95A, White 1755 (source-qualified thermoplastic polyurethane) / density: Cube 2.5",
+        "zh": "Ultimaker TPU95A, White 1755 (来源限定热塑性聚氨酯) / 密度：来源组 Cube 2.5",
+        "ja": "Ultimaker TPU95A, White 1755 (資料で特定された熱可塑性ポリウレタン) / 密度：資料グループ Cube 2.5",
+        "de": "Ultimaker TPU95A, White 1755 (quellenbezogen: thermoplastisches Polyurethan) / Dichte:Quellengruppe Cube 2.5"
+      },
+      "source_designation": "TPU95A, White 1755 / Cube 2.5",
+      "source_scope": "Separate density catalog context for literal worksheet group Cube 2.5 under existing identity. No new material/grade or certified independent physical coverage. Column-specific method,dimensions,processing/surface treatment,n and estimator unknown;reference-density and tensile procedures are not transferred.",
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density!P9/Q9;Drow series,P2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_aniskevich_2023_ultimaker_tpu95a_filament_density_cube_source2_5_mass_density"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Single-fiber extruded filament,source nominal0.4mm;actual selected density-piece length/diameter implementation unknown",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Density!J10/K10;Drow series,J2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Do not assign reference2.85mm/100mm geometry."
+        },
+        "processing": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group processing unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group temper_or_heat_treatment unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group conditioning unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "reinforcement": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "The workbook does not report a quantitative filler assay. Separate manufacturer identity evidence is restricted to classification; no filler fraction, morphology or exact-lot certification is inferred."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group porosity unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group orientation unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "Material family: Polypropylene; supplier: Ultimaker; source designation: PP, Natural",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Tested materials!B23; C23:D23; Tensile modulus!B12",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Preserve the commercial source identity; no pure-polymer assay or complete chemical composition is inferred. Manufacturer classification evidence is not a numerical or exact-lot composition determination."
+        }
+      },
+      "evaluation_support": "catalog_only",
+      "id": "state_aniskevich_2023_ultimaker_pp_filament_density_single_fiber",
+      "identity_id": "mat_aniskevich_2023_ultimaker_pp",
+      "name": "Ultimaker PP, Natural (source-qualified polypropylene) / density: Single-fiber extruded filament 0.4 mm",
+      "names": {
+        "en": "Ultimaker PP, Natural (source-qualified polypropylene) / density: Single-fiber extruded filament 0.4 mm",
+        "zh": "Ultimaker PP, Natural (来源限定聚丙烯) / 密度：来源组 Single-fiber extruded filament 0.4 mm",
+        "ja": "Ultimaker PP, Natural (資料で特定されたポリプロピレン) / 密度：資料グループ Single-fiber extruded filament 0.4 mm",
+        "de": "Ultimaker PP, Natural (quellenbezogen: Polypropylen) / Dichte:Quellengruppe Single-fiber extruded filament 0.4 mm"
+      },
+      "source_designation": "PP, Natural / Single-fiber extruded filament 0.4 mm",
+      "source_scope": "Separate density catalog context for literal worksheet group Single-fiber extruded filament 0.4 mm under existing identity. No new material/grade or certified independent physical coverage. Column-specific method,dimensions,processing/surface treatment,n and estimator unknown;reference-density and tensile procedures are not transferred.",
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density!J10/K10;Drow series,J2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_aniskevich_2023_ultimaker_pp_filament_density_single_fiber_mass_density"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Printed cube,source worksheet group Cube 1.0;group-label unit and exact column-specific edge size/surface treatment not verified",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Density!M10/N10;Drow series,M2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "General10mm/25mm cube discussion is background only;no direct M/P size or polishing correspondence established."
+        },
+        "processing": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group processing unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group temper_or_heat_treatment unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group conditioning unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "reinforcement": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "The workbook does not report a quantitative filler assay. Separate manufacturer identity evidence is restricted to classification; no filler fraction, morphology or exact-lot certification is inferred."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group porosity unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group orientation unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "Material family: Polypropylene; supplier: Ultimaker; source designation: PP, Natural",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Tested materials!B23; C23:D23; Tensile modulus!B12",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Preserve the commercial source identity; no pure-polymer assay or complete chemical composition is inferred. Manufacturer classification evidence is not a numerical or exact-lot composition determination."
+        }
+      },
+      "evaluation_support": "catalog_only",
+      "id": "state_aniskevich_2023_ultimaker_pp_filament_density_cube_source1_0",
+      "identity_id": "mat_aniskevich_2023_ultimaker_pp",
+      "name": "Ultimaker PP, Natural (source-qualified polypropylene) / density: Cube 1.0",
+      "names": {
+        "en": "Ultimaker PP, Natural (source-qualified polypropylene) / density: Cube 1.0",
+        "zh": "Ultimaker PP, Natural (来源限定聚丙烯) / 密度：来源组 Cube 1.0",
+        "ja": "Ultimaker PP, Natural (資料で特定されたポリプロピレン) / 密度：資料グループ Cube 1.0",
+        "de": "Ultimaker PP, Natural (quellenbezogen: Polypropylen) / Dichte:Quellengruppe Cube 1.0"
+      },
+      "source_designation": "PP, Natural / Cube 1.0",
+      "source_scope": "Separate density catalog context for literal worksheet group Cube 1.0 under existing identity. No new material/grade or certified independent physical coverage. Column-specific method,dimensions,processing/surface treatment,n and estimator unknown;reference-density and tensile procedures are not transferred.",
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density!M10/N10;Drow series,M2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_aniskevich_2023_ultimaker_pp_filament_density_cube_source1_0_mass_density"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Printed cube,source worksheet group Cube 2.5;group-label unit and exact column-specific edge size/surface treatment not verified",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Density!P10/Q10;Drow series,P2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "General10mm/25mm cube discussion is background only;no direct M/P size or polishing correspondence established."
+        },
+        "processing": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group processing unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group temper_or_heat_treatment unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group conditioning unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "reinforcement": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "The workbook does not report a quantitative filler assay. Separate manufacturer identity evidence is restricted to classification; no filler fraction, morphology or exact-lot certification is inferred."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group porosity unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group orientation unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "Material family: Polypropylene; supplier: Ultimaker; source designation: PP, Natural",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Tested materials!B23; C23:D23; Tensile modulus!B12",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Preserve the commercial source identity; no pure-polymer assay or complete chemical composition is inferred. Manufacturer classification evidence is not a numerical or exact-lot composition determination."
+        }
+      },
+      "evaluation_support": "catalog_only",
+      "id": "state_aniskevich_2023_ultimaker_pp_filament_density_cube_source2_5",
+      "identity_id": "mat_aniskevich_2023_ultimaker_pp",
+      "name": "Ultimaker PP, Natural (source-qualified polypropylene) / density: Cube 2.5",
+      "names": {
+        "en": "Ultimaker PP, Natural (source-qualified polypropylene) / density: Cube 2.5",
+        "zh": "Ultimaker PP, Natural (来源限定聚丙烯) / 密度：来源组 Cube 2.5",
+        "ja": "Ultimaker PP, Natural (資料で特定されたポリプロピレン) / 密度：資料グループ Cube 2.5",
+        "de": "Ultimaker PP, Natural (quellenbezogen: Polypropylen) / Dichte:Quellengruppe Cube 2.5"
+      },
+      "source_designation": "PP, Natural / Cube 2.5",
+      "source_scope": "Separate density catalog context for literal worksheet group Cube 2.5 under existing identity. No new material/grade or certified independent physical coverage. Column-specific method,dimensions,processing/surface treatment,n and estimator unknown;reference-density and tensile procedures are not transferred.",
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density!P10/Q10;Drow series,P2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_aniskevich_2023_ultimaker_pp_filament_density_cube_source2_5_mass_density"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Single-fiber extruded filament,source nominal0.4mm;actual selected density-piece length/diameter implementation unknown",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Density!J15/K15;Drow series,J2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Do not assign reference2.85mm/100mm geometry."
+        },
+        "processing": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group processing unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group temper_or_heat_treatment unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group conditioning unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "reinforcement": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "The workbook does not report a quantitative filler assay. Separate manufacturer identity evidence is restricted to classification; no filler fraction, morphology or exact-lot certification is inferred."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group porosity unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group orientation unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "Material family: Polylactic acid; supplier: Proto-pasta; source designation: PLA conductive, CDP12805 Batch 171201",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Tested materials!B10; C16:D16; Tensile modulus!B17",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Preserve the commercial source identity; no pure-polymer assay or complete chemical composition is inferred. Manufacturer classification evidence is not a numerical or exact-lot composition determination."
+        }
+      },
+      "evaluation_support": "catalog_only",
+      "id": "state_aniskevich_2023_protopasta_conductive_pla_filament_density_single_fiber",
+      "identity_id": "mat_aniskevich_2023_protopasta_conductive_pla",
+      "name": "Proto-pasta PLA conductive, CDP12805 Batch 171201 (source-qualified conductive PLA/carbon-black formulation) / density: Single-fiber extruded filament 0.4 mm",
+      "names": {
+        "en": "Proto-pasta PLA conductive, CDP12805 Batch 171201 (source-qualified conductive PLA/carbon-black formulation) / density: Single-fiber extruded filament 0.4 mm",
+        "zh": "Proto-pasta PLA conductive, CDP12805 Batch 171201 (来源限定导电 PLA/炭黑配方) / 密度：来源组 Single-fiber extruded filament 0.4 mm",
+        "ja": "Proto-pasta PLA conductive, CDP12805 Batch 171201 (資料で特定された導電性 PLA・カーボンブラック配合物) / 密度：資料グループ Single-fiber extruded filament 0.4 mm",
+        "de": "Proto-pasta PLA conductive, CDP12805 Batch 171201 (quellenbezogen: leitfähige PLA/Ruß-Rezeptur) / Dichte:Quellengruppe Single-fiber extruded filament 0.4 mm"
+      },
+      "source_designation": "PLA conductive, CDP12805 Batch 171201 / Single-fiber extruded filament 0.4 mm",
+      "source_scope": "Separate density catalog context for literal worksheet group Single-fiber extruded filament 0.4 mm under existing identity. No new material/grade or certified independent physical coverage. Column-specific method,dimensions,processing/surface treatment,n and estimator unknown;reference-density and tensile procedures are not transferred.",
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density!J15/K15;Drow series,J2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_aniskevich_2023_protopasta_conductive_pla_filament_density_single_fiber_mass_density"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Printed cube,source worksheet group Cube 2.5;group-label unit and exact column-specific edge size/surface treatment not verified",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Density!P15/Q15;Drow series,P2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "General10mm/25mm cube discussion is background only;no direct M/P size or polishing correspondence established."
+        },
+        "processing": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group processing unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group temper_or_heat_treatment unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group conditioning unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "reinforcement": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "The workbook does not report a quantitative filler assay. Separate manufacturer identity evidence is restricted to classification; no filler fraction, morphology or exact-lot certification is inferred."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group porosity unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group orientation unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "Material family: Polylactic acid; supplier: Proto-pasta; source designation: PLA conductive, CDP12805 Batch 171201",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Tested materials!B10; C16:D16; Tensile modulus!B17",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Preserve the commercial source identity; no pure-polymer assay or complete chemical composition is inferred. Manufacturer classification evidence is not a numerical or exact-lot composition determination."
+        }
+      },
+      "evaluation_support": "catalog_only",
+      "id": "state_aniskevich_2023_protopasta_conductive_pla_filament_density_cube_source2_5",
+      "identity_id": "mat_aniskevich_2023_protopasta_conductive_pla",
+      "name": "Proto-pasta PLA conductive, CDP12805 Batch 171201 (source-qualified conductive PLA/carbon-black formulation) / density: Cube 2.5",
+      "names": {
+        "en": "Proto-pasta PLA conductive, CDP12805 Batch 171201 (source-qualified conductive PLA/carbon-black formulation) / density: Cube 2.5",
+        "zh": "Proto-pasta PLA conductive, CDP12805 Batch 171201 (来源限定导电 PLA/炭黑配方) / 密度：来源组 Cube 2.5",
+        "ja": "Proto-pasta PLA conductive, CDP12805 Batch 171201 (資料で特定された導電性 PLA・カーボンブラック配合物) / 密度：資料グループ Cube 2.5",
+        "de": "Proto-pasta PLA conductive, CDP12805 Batch 171201 (quellenbezogen: leitfähige PLA/Ruß-Rezeptur) / Dichte:Quellengruppe Cube 2.5"
+      },
+      "source_designation": "PLA conductive, CDP12805 Batch 171201 / Cube 2.5",
+      "source_scope": "Separate density catalog context for literal worksheet group Cube 2.5 under existing identity. No new material/grade or certified independent physical coverage. Column-specific method,dimensions,processing/surface treatment,n and estimator unknown;reference-density and tensile procedures are not transferred.",
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density!P15/Q15;Drow series,P2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_aniskevich_2023_protopasta_conductive_pla_filament_density_cube_source2_5_mass_density"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Printed cube,source worksheet group Cube 1.0;group-label unit and exact column-specific edge size/surface treatment not verified",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Density!M21/N21;Drow series,M2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "General10mm/25mm cube discussion is background only;no direct M/P size or polishing correspondence established."
+        },
+        "processing": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group processing unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group temper_or_heat_treatment unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group conditioning unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "reinforcement": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "The workbook does not report a quantitative filler assay. Separate manufacturer identity evidence is restricted to classification; no filler fraction, morphology or exact-lot certification is inferred."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group porosity unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group orientation unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "Material family: Polyetherimide; supplier: Stratasys; source designation: PEI, ULTEM 9085 CG",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Tested materials!B28; C28:D28; Tensile modulus!B23",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Preserve the commercial source identity; no pure-polymer assay or complete chemical composition is inferred. Manufacturer classification evidence is not a numerical or exact-lot composition determination."
+        }
+      },
+      "evaluation_support": "catalog_only",
+      "id": "state_aniskevich_2023_stratasys_ultem9085cg_filament_density_cube_source1_0",
+      "identity_id": "mat_aniskevich_2023_stratasys_ultem9085cg",
+      "name": "Stratasys PEI, ULTEM 9085 CG (source-qualified PEI-based product) / density: Cube 1.0",
+      "names": {
+        "en": "Stratasys PEI, ULTEM 9085 CG (source-qualified PEI-based product) / density: Cube 1.0",
+        "zh": "Stratasys PEI, ULTEM 9085 CG (来源限定PEI 基产品) / 密度：来源组 Cube 1.0",
+        "ja": "Stratasys PEI, ULTEM 9085 CG (資料で特定されたPEI 系製品) / 密度：資料グループ Cube 1.0",
+        "de": "Stratasys PEI, ULTEM 9085 CG (quellenbezogen: PEI-basiertes Produkt) / Dichte:Quellengruppe Cube 1.0"
+      },
+      "source_designation": "PEI, ULTEM 9085 CG / Cube 1.0",
+      "source_scope": "Separate density catalog context for literal worksheet group Cube 1.0 under existing identity. No new material/grade or certified independent physical coverage. Column-specific method,dimensions,processing/surface treatment,n and estimator unknown;reference-density and tensile procedures are not transferred.",
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density!M21/N21;Drow series,M2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_aniskevich_2023_stratasys_ultem9085cg_filament_density_cube_source1_0_mass_density"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Printed cube,source worksheet group Cube 2.5;group-label unit and exact column-specific edge size/surface treatment not verified",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Density!P21/Q21;Drow series,P2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "General10mm/25mm cube discussion is background only;no direct M/P size or polishing correspondence established."
+        },
+        "processing": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group processing unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group temper_or_heat_treatment unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group conditioning unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "reinforcement": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "The workbook does not report a quantitative filler assay. Separate manufacturer identity evidence is restricted to classification; no filler fraction, morphology or exact-lot certification is inferred."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group porosity unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group orientation unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "Material family: Polyetherimide; supplier: Stratasys; source designation: PEI, ULTEM 9085 CG",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Tested materials!B28; C28:D28; Tensile modulus!B23",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Preserve the commercial source identity; no pure-polymer assay or complete chemical composition is inferred. Manufacturer classification evidence is not a numerical or exact-lot composition determination."
+        }
+      },
+      "evaluation_support": "catalog_only",
+      "id": "state_aniskevich_2023_stratasys_ultem9085cg_filament_density_cube_source2_5",
+      "identity_id": "mat_aniskevich_2023_stratasys_ultem9085cg",
+      "name": "Stratasys PEI, ULTEM 9085 CG (source-qualified PEI-based product) / density: Cube 2.5",
+      "names": {
+        "en": "Stratasys PEI, ULTEM 9085 CG (source-qualified PEI-based product) / density: Cube 2.5",
+        "zh": "Stratasys PEI, ULTEM 9085 CG (来源限定PEI 基产品) / 密度：来源组 Cube 2.5",
+        "ja": "Stratasys PEI, ULTEM 9085 CG (資料で特定されたPEI 系製品) / 密度：資料グループ Cube 2.5",
+        "de": "Stratasys PEI, ULTEM 9085 CG (quellenbezogen: PEI-basiertes Produkt) / Dichte:Quellengruppe Cube 2.5"
+      },
+      "source_designation": "PEI, ULTEM 9085 CG / Cube 2.5",
+      "source_scope": "Separate density catalog context for literal worksheet group Cube 2.5 under existing identity. No new material/grade or certified independent physical coverage. Column-specific method,dimensions,processing/surface treatment,n and estimator unknown;reference-density and tensile procedures are not transferred.",
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density!P21/Q21;Drow series,P2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_aniskevich_2023_stratasys_ultem9085cg_filament_density_cube_source2_5_mass_density"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Printed cube,source worksheet group Cube 1.0;group-label unit and exact column-specific edge size/surface treatment not verified",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Density!M22/N22;Drow series,M2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "General10mm/25mm cube discussion is background only;no direct M/P size or polishing correspondence established."
+        },
+        "processing": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group processing unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group temper_or_heat_treatment unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group conditioning unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "reinforcement": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "The workbook does not report a quantitative filler assay. Separate manufacturer identity evidence is restricted to classification; no filler fraction, morphology or exact-lot certification is inferred."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group porosity unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group orientation unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "Material family: Poly(ether ketone ketone); supplier: Stratasys; source designation: PEKK, Antero 800NA",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Tested materials!B27; C27:D27; Tensile modulus!B24",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Preserve the commercial source identity; no pure-polymer assay or complete chemical composition is inferred. Manufacturer classification evidence is not a numerical or exact-lot composition determination."
+        }
+      },
+      "evaluation_support": "catalog_only",
+      "id": "state_aniskevich_2023_stratasys_antero800na_filament_density_cube_source1_0",
+      "identity_id": "mat_aniskevich_2023_stratasys_antero800na",
+      "name": "Stratasys PEKK, Antero 800NA (source-qualified PEKK-based product) / density: Cube 1.0",
+      "names": {
+        "en": "Stratasys PEKK, Antero 800NA (source-qualified PEKK-based product) / density: Cube 1.0",
+        "zh": "Stratasys PEKK, Antero 800NA (来源限定PEKK 基产品) / 密度：来源组 Cube 1.0",
+        "ja": "Stratasys PEKK, Antero 800NA (資料で特定されたPEKK 系製品) / 密度：資料グループ Cube 1.0",
+        "de": "Stratasys PEKK, Antero 800NA (quellenbezogen: PEKK-basiertes Produkt) / Dichte:Quellengruppe Cube 1.0"
+      },
+      "source_designation": "PEKK, Antero 800NA / Cube 1.0",
+      "source_scope": "Separate density catalog context for literal worksheet group Cube 1.0 under existing identity. No new material/grade or certified independent physical coverage. Column-specific method,dimensions,processing/surface treatment,n and estimator unknown;reference-density and tensile procedures are not transferred.",
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density!M22/N22;Drow series,M2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_aniskevich_2023_stratasys_antero800na_filament_density_cube_source1_0_mass_density"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Printed cube,source worksheet group Cube 2.5;group-label unit and exact column-specific edge size/surface treatment not verified",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Density!P22/Q22;Drow series,P2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "General10mm/25mm cube discussion is background only;no direct M/P size or polishing correspondence established."
+        },
+        "processing": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group processing unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group temper_or_heat_treatment unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "conditioning": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group conditioning unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "reinforcement": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "The workbook does not report a quantitative filler assay. Separate manufacturer identity evidence is restricted to classification; no filler fraction, morphology or exact-lot certification is inferred."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group porosity unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Selected density-group orientation unverified;no transfer from reference filament,tensile methods,printing table or other cube group."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "Material family: Poly(ether ketone ketone); supplier: Stratasys; source designation: PEKK, Antero 800NA",
+          "evidence": [
+            {
+              "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+              "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+              "locator": "Tested materials!B27; C27:D27; Tensile modulus!B24",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Preserve the commercial source identity; no pure-polymer assay or complete chemical composition is inferred. Manufacturer classification evidence is not a numerical or exact-lot composition determination."
+        }
+      },
+      "evaluation_support": "catalog_only",
+      "id": "state_aniskevich_2023_stratasys_antero800na_filament_density_cube_source2_5",
+      "identity_id": "mat_aniskevich_2023_stratasys_antero800na",
+      "name": "Stratasys PEKK, Antero 800NA (source-qualified PEKK-based product) / density: Cube 2.5",
+      "names": {
+        "en": "Stratasys PEKK, Antero 800NA (source-qualified PEKK-based product) / density: Cube 2.5",
+        "zh": "Stratasys PEKK, Antero 800NA (来源限定PEKK 基产品) / 密度：来源组 Cube 2.5",
+        "ja": "Stratasys PEKK, Antero 800NA (資料で特定されたPEKK 系製品) / 密度：資料グループ Cube 2.5",
+        "de": "Stratasys PEKK, Antero 800NA (quellenbezogen: PEKK-basiertes Produkt) / Dichte:Quellengruppe Cube 2.5"
+      },
+      "source_designation": "PEKK, Antero 800NA / Cube 2.5",
+      "source_scope": "Separate density catalog context for literal worksheet group Cube 2.5 under existing identity. No new material/grade or certified independent physical coverage. Column-specific method,dimensions,processing/surface treatment,n and estimator unknown;reference-density and tensile procedures are not transferred.",
+      "evidence": [
+        {
+          "source_id": "aniskevich_bulderberga_2023_polymer_mechanical_characterisation",
+          "url": "https://zenodo.org/api/records/8089569/files/Annex%203.1.%20Characterisation%20of%20mechanical%20properties.xlsx/content",
+          "locator": "Density!P22/Q22;Drow series,P2/3headers;Density linked drawing5.xml TextBox3 id4 generaldensitymethod;chart3.xml series andcustomerrorbars",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_aniskevich_2023_stratasys_antero800na_filament_density_cube_source2_5_mass_density"
+      ]
+    },
+    {
+      "id": "state_ivdre2024_lpo1_rigid_pur_water_immersion_4d",
+      "version": "1.0.0",
+      "identity_id": "mat_ivdre2024_lpo1_rigid_pur",
+      "grade_id": null,
+      "name": "LPO-1 rigid PUR, four-day water immersion",
+      "names": {
+        "en": "LPO-1 rigid PUR, four-day water immersion",
+        "zh": "LPO-1硬质PUR，浸水四天",
+        "ja": "LPO-1硬質PUR、4日間浸水",
+        "de": "LPO-1-PUR-Hartschaum, vier Tage Wasserlagerung"
+      },
+      "aliases": [],
+      "source_designation": "LPO-1, Table10 water absorption, four-day immersion",
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Rigid PUR water-test specimens, nominal dimensions 50 x 50 x 50 mm",
+          "evidence": [
+            {
+              "source_id": "ivdre_2024_lpo_rigid_pur",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+              "locator": "Section 2.8, XML sec2dot8-polymers-16-00942, water-absorption paragraph; Table10 polymers-16-00942-t010 water-absorption row",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Water-test specimen dimensions, not mold size or compression/DMA geometry."
+        },
+        "processing": {
+          "status": "reported",
+          "text": "Polyol components mechanically mixed about 2 min at 2000 rpm; physical blowing agent added last and mixed about 1 min; pMDI mixed 10 s before pouring",
+          "evidence": [
+            {
+              "source_id": "ivdre_2024_lpo_rigid_pur",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+              "locator": "§2.7",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Not reported for the selected source result."
+        },
+        "conditioning": {
+          "status": "reported",
+          "text": "Cured for 24 h at room temperature before additional testing; water absorption tested after four days of water immersion",
+          "evidence": [
+            {
+              "source_id": "ivdre_2024_lpo_rigid_pur",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+              "locator": "Sections2.7 and2.8, optimized specimens preparation and water-absorption paragraphs",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Curing is preparation; no humidity equilibrium, numeric room temperature, water temperature, pre-drying or surface-water removal is established."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "Table 9 LPO-1 formulation inputs: Lupranol 3300 40 g; Lupranol 3422 60 g; total water 2.0 g; Opteon 1100 16.3 g; Polycat NP10 4 g; PC CAT TKA 30 0.5 g; Niax Silicone L-6915 2.5 g; TCPP 25.3 g; pMDI (Desmodur 44 V20 L) 165 g. Table footnotes state TCPP was adjusted to 8 wt.% of total foam mass and pMDI to NCO/OH ratio 1.2.",
+          "evidence": [
+            {
+              "source_id": "ivdre_2024_lpo_rigid_pur",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+              "locator": "§2.4 and Table 9 LPO-1 column and footnotes",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "These are formulation inputs, not a measured cured-foam elemental composition or purity certification."
+        },
+        "reinforcement": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No quantitative reinforcement specification is assigned to this selected source-qualified material."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No porosity measurement assigned to the selected water-test pieces; closed-cell content of other characterization is not transferred."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [
+            {
+              "source_id": "ivdre_2024_lpo_rigid_pur",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+              "locator": "Section 2.8, XML sec2dot8-polymers-16-00942, water-absorption paragraph; Table10 polymers-16-00942-t010 water-absorption row",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Water-test specimen orientation relative to foam rise and exposure direction is not stated; full/partial immersion details are unknown. Scalar absorption does not establish isotropy or make orientation inapplicable."
+        }
+      },
+      "source_scope": "Source-qualified LPO-1 formulation, separate nominal water-test context. No assertion of specimen, batch or test-piece equivalence with density, thermal or compression measurements.",
+      "evidence": [
+        {
+          "source_id": "ivdre_2024_lpo_rigid_pur",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+          "locator": "Table9 LPO-1 formulation; Table10 LPO-1 water-absorption row; Sections2.7 and2.8",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_ivdre2024_lpo1_rigid_pur_water_absorption_volume_percentage"
+      ],
+      "evaluation_support": "catalog_only"
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Rigid PUR water-test specimens, nominal dimensions 50 x 50 x 50 mm",
+          "evidence": [
+            {
+              "source_id": "ivdre_2024_lpo_rigid_pur",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+              "locator": "Section 2.8, XML sec2dot8-polymers-16-00942, water-absorption paragraph; Table10 polymers-16-00942-t010 water-absorption row",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Water-test specimen dimensions, not mold size or compression/DMA geometry."
+        },
+        "processing": {
+          "status": "reported",
+          "text": "Polyol components mechanically mixed approximately 2 min at 2000 rpm; physical blowing agent added last and mixed approximately 1 min; pMDI added and mixed 10 s before pouring into the larger mold.",
+          "evidence": [
+            {
+              "source_id": "ivdre_2024_lpo_rigid_pur",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+              "locator": "Section 2.7 (XML id sec2dot7-polymers-16-00942), optimized larger-sample preparation and 24-hour cure paragraphs.",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No separate heat treatment is reported for the selected optimized density result."
+        },
+        "conditioning": {
+          "status": "reported",
+          "text": "Cured for 24 h at room temperature before additional testing; water absorption tested after four days of water immersion",
+          "evidence": [
+            {
+              "source_id": "ivdre_2024_lpo_rigid_pur",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+              "locator": "Sections2.7 and2.8, optimized specimens preparation and water-absorption paragraphs",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Curing is preparation; no humidity equilibrium, numeric room temperature, water temperature, pre-drying or surface-water removal is established."
+        },
+        "reinforcement": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No quantitative reinforcement specification is assigned to these selected study formulations."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [
+            {
+              "source_id": "ivdre_2024_lpo_rigid_pur",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+              "locator": "Section 2.8, XML sec2dot8-polymers-16-00942, water-absorption paragraph; Table10 polymers-16-00942-t010 water-absorption row",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Water-test specimen orientation relative to foam rise and exposure direction is not stated; full/partial immersion details are unknown. Scalar absorption does not establish isotropy or make orientation inapplicable."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "Table 9 LPO-2 formulation inputs: Lupranol 3300 66 g; Lupranol 3422 34 g; total water 2.0 g; Opteon 1100 14.8 g; Polycat NP10 4 g; PC CAT TKA 30 0.5 g; L-6915 2.5 g; TCPP 24.5 g; pMDI 158 g. Table 9 footnotes state TCPP was adjusted to 8 wt.% of total foam mass and pMDI to NCO/OH ratio 1.2.",
+          "evidence": [
+            {
+              "source_id": "ivdre_2024_lpo_rigid_pur",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+              "locator": "Section 2.4 (XML id sec2dot4-polymers-16-00942), LP/SP polyol definitions and other foam ingredients. Table 9 (polymers-16-00942-t009), LPO-2 column and footnotes.",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Input masses are not a cured-foam elemental assay. Section 2.4 identifies pMDI as Desmodur 44 V20 L and surfactant as Niax Silicone L-6915. Table 9 uses Polycat NP10 while Section 2.4 uses PC CAT NP10; preserve the naming without independent supplier-equivalence certification. The 50:50 strings in SP polyol names label precursor feeds, not the final foam input ratio."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No porosity measurement assigned to the selected water-test pieces; closed-cell content of other characterization is not transferred."
+        }
+      },
+      "evaluation_support": "catalog_only",
+      "id": "state_ivdre2024_lpo2_rigid_pur_water_immersion_4d",
+      "identity_id": "mat_ivdre2024_lpo2_rigid_pur",
+      "name": "LPO-2 rigid PUR, four-day water immersion",
+      "names": {
+        "en": "LPO-2 rigid PUR, four-day water immersion",
+        "zh": "LPO-2硬质PUR，浸水四天",
+        "ja": "LPO-2硬質PUR、4日間浸水",
+        "de": "LPO-2-PUR-Hartschaum, vier Tage Wasserlagerung"
+      },
+      "source_designation": "LPO-2, Table10 water absorption, four-day immersion",
+      "source_scope": "Source-qualified LPO-2 formulation, separate nominal water-test context. No assertion of specimen, batch or test-piece equivalence with density, thermal or compression measurements.",
+      "evidence": [
+        {
+          "source_id": "ivdre_2024_lpo_rigid_pur",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+          "locator": "Table9 LPO-2 formulation; Table10 LPO-2 water-absorption row; Sections2.7 and2.8",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_ivdre2024_lpo2_rigid_pur_water_absorption_volume_percentage"
+      ]
+    },
+    {
+      "id": "state_ivdre2024_spo2_rigid_pur_water_immersion_4d",
+      "version": "1.0.0",
+      "identity_id": "mat_ivdre2024_spo2_rigid_pur",
+      "grade_id": null,
+      "name": "SPO-2 rigid PUR, four-day water immersion",
+      "names": {
+        "en": "SPO-2 rigid PUR, four-day water immersion",
+        "zh": "SPO-2硬质PUR，浸水四天",
+        "ja": "SPO-2硬質PUR、4日間浸水",
+        "de": "SPO-2-PUR-Hartschaum, vier Tage Wasserlagerung"
+      },
+      "aliases": [],
+      "source_designation": "SPO-2, Table10 water absorption, four-day immersion",
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Rigid PUR water-test specimens, nominal dimensions 50 x 50 x 50 mm",
+          "evidence": [
+            {
+              "source_id": "ivdre_2024_lpo_rigid_pur",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+              "locator": "Section 2.8, XML sec2dot8-polymers-16-00942, water-absorption paragraph; Table10 polymers-16-00942-t010 water-absorption row",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Water-test specimen dimensions, not mold size or compression/DMA geometry."
+        },
+        "processing": {
+          "status": "reported",
+          "text": "Polyol components mechanically mixed about 2 min at 2000 rpm; physical blowing agent added last and mixed about 1 min; pMDI mixed 10 s before pouring",
+          "evidence": [
+            {
+              "source_id": "ivdre_2024_lpo_rigid_pur",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+              "locator": "§2.7",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "Not reported for the selected source result."
+        },
+        "conditioning": {
+          "status": "reported",
+          "text": "Cured for 24 h at room temperature before additional testing; water absorption tested after four days of water immersion",
+          "evidence": [
+            {
+              "source_id": "ivdre_2024_lpo_rigid_pur",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+              "locator": "Sections2.7 and2.8, optimized specimens preparation and water-absorption paragraphs",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Curing is preparation; no humidity equilibrium, numeric room temperature, water temperature, pre-drying or surface-water removal is established."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "Table 9 SPO-2 formulation inputs: SA-C_TOFA(50:50)/TMP 67 g; SA-E_ETOFA(50:50)/TMP 33 g; total water 0.5 g; Opteon 1100 24.3 g; Polycat NP10 1.55 g; PC CAT TKA 30 0.5 g; Niax Silicone L-6915 2.5 g; TCPP 20 g; pMDI (Desmodur 44 V20 L) 102 g. Table footnotes state TCPP was adjusted to 8 wt.% of total foam mass and pMDI to NCO/OH ratio 1.2.",
+          "evidence": [
+            {
+              "source_id": "ivdre_2024_lpo_rigid_pur",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+              "locator": "§2.4 and Table 9 SPO-2 column and footnotes",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "These are formulation inputs, not a measured cured-foam elemental composition or purity certification. Table 9 calls the catalyst Polycat NP10 while Section 2.4 uses PC CAT NP10; retain source naming without independent supplier-equivalence certification. The 50:50 figures describe each precursor feed; 67/33 g is the selected foam polyol input ratio."
+        },
+        "reinforcement": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No quantitative reinforcement specification is assigned to this selected source-qualified material."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No porosity measurement assigned to the selected water-test pieces; closed-cell content of other characterization is not transferred."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [
+            {
+              "source_id": "ivdre_2024_lpo_rigid_pur",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+              "locator": "Section 2.8, XML sec2dot8-polymers-16-00942, water-absorption paragraph; Table10 polymers-16-00942-t010 water-absorption row",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Water-test specimen orientation relative to foam rise and exposure direction is not stated; full/partial immersion details are unknown. Scalar absorption does not establish isotropy or make orientation inapplicable."
+        }
+      },
+      "source_scope": "Source-qualified SPO-2 formulation, separate nominal water-test context. No assertion of specimen, batch or test-piece equivalence with density, thermal or compression measurements.",
+      "evidence": [
+        {
+          "source_id": "ivdre_2024_lpo_rigid_pur",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+          "locator": "Table9 SPO-2 formulation; Table10 SPO-2 water-absorption row; Sections2.7 and2.8",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_ivdre2024_spo2_rigid_pur_water_absorption_volume_percentage"
+      ],
+      "evaluation_support": "catalog_only"
+    },
+    {
+      "version": "1.0.0",
+      "grade_id": null,
+      "aliases": [],
+      "state": {
+        "product_form": {
+          "status": "reported",
+          "text": "Rigid PUR water-test specimens, nominal dimensions 50 x 50 x 50 mm",
+          "evidence": [
+            {
+              "source_id": "ivdre_2024_lpo_rigid_pur",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+              "locator": "Section 2.8, XML sec2dot8-polymers-16-00942, water-absorption paragraph; Table10 polymers-16-00942-t010 water-absorption row",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Water-test specimen dimensions, not mold size or compression/DMA geometry."
+        },
+        "processing": {
+          "status": "reported",
+          "text": "Polyol components mechanically mixed approximately 2 min at 2000 rpm; physical blowing agent added last and mixed approximately 1 min; pMDI added and mixed 10 s before pouring into the larger mold.",
+          "evidence": [
+            {
+              "source_id": "ivdre_2024_lpo_rigid_pur",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+              "locator": "Section 2.7 (XML id sec2dot7-polymers-16-00942), optimized larger-sample preparation and 24-hour cure paragraphs.",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": null
+        },
+        "temper_or_heat_treatment": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No separate heat treatment is reported for the selected optimized density result."
+        },
+        "conditioning": {
+          "status": "reported",
+          "text": "Cured for 24 h at room temperature before additional testing; water absorption tested after four days of water immersion",
+          "evidence": [
+            {
+              "source_id": "ivdre_2024_lpo_rigid_pur",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+              "locator": "Sections2.7 and2.8, optimized specimens preparation and water-absorption paragraphs",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Curing is preparation; no humidity equilibrium, numeric room temperature, water temperature, pre-drying or surface-water removal is established."
+        },
+        "reinforcement": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No quantitative reinforcement specification is assigned to these selected study formulations."
+        },
+        "orientation": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [
+            {
+              "source_id": "ivdre_2024_lpo_rigid_pur",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+              "locator": "Section 2.8, XML sec2dot8-polymers-16-00942, water-absorption paragraph; Table10 polymers-16-00942-t010 water-absorption row",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Water-test specimen orientation relative to foam rise and exposure direction is not stated; full/partial immersion details are unknown. Scalar absorption does not establish isotropy or make orientation inapplicable."
+        },
+        "composition_or_purity": {
+          "status": "reported",
+          "text": "Table 9 SPO-3 formulation inputs: SA-C_TOFA(50:50)/TMP 40 g; SA-E_ETOFA(50:50)/TMP 60 g; total water 0.74 g; Opteon 1100 23.6 g; Polycat NP10 3.03 g; PC CAT TKA 30 0.5 g; L-6915 2.5 g; TCPP 21.5 g; pMDI 117 g. Table 9 footnotes state TCPP was adjusted to 8 wt.% of total foam mass and pMDI to NCO/OH ratio 1.2.",
+          "evidence": [
+            {
+              "source_id": "ivdre_2024_lpo_rigid_pur",
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+              "locator": "Section 2.4 (XML id sec2dot4-polymers-16-00942), LP/SP polyol definitions and other foam ingredients. Table 9 (polymers-16-00942-t009), SPO-3 column and footnotes.",
+              "supports": [
+                "state"
+              ]
+            }
+          ],
+          "notes": "Input masses are not a cured-foam elemental assay. Section 2.4 identifies pMDI as Desmodur 44 V20 L and surfactant as Niax Silicone L-6915. Table 9 uses Polycat NP10 while Section 2.4 uses PC CAT NP10; preserve the naming without independent supplier-equivalence certification. The 50:50 strings in SP polyol names label precursor feeds, not the final foam input ratio."
+        },
+        "porosity": {
+          "status": "not_reported_in_inspected_source",
+          "text": null,
+          "evidence": [],
+          "notes": "No porosity measurement assigned to the selected water-test pieces; closed-cell content of other characterization is not transferred."
+        }
+      },
+      "evaluation_support": "catalog_only",
+      "id": "state_ivdre2024_spo3_rigid_pur_water_immersion_4d",
+      "identity_id": "mat_ivdre2024_spo3_rigid_pur",
+      "name": "SPO-3 rigid PUR, four-day water immersion",
+      "names": {
+        "en": "SPO-3 rigid PUR, four-day water immersion",
+        "zh": "SPO-3硬质PUR，浸水四天",
+        "ja": "SPO-3硬質PUR、4日間浸水",
+        "de": "SPO-3-PUR-Hartschaum, vier Tage Wasserlagerung"
+      },
+      "source_designation": "SPO-3, Table10 water absorption, four-day immersion",
+      "source_scope": "Source-qualified SPO-3 formulation, separate nominal water-test context. No assertion of specimen, batch or test-piece equivalence with density, thermal or compression measurements.",
+      "evidence": [
+        {
+          "source_id": "ivdre_2024_lpo_rigid_pur",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11013755/fullTextXML",
+          "locator": "Table9 SPO-3 formulation; Table10 SPO-3 water-absorption row; Sections2.7 and2.8",
+          "supports": [
+            "state"
+          ]
+        }
+      ],
+      "property_ids": [
+        "refprop_ivdre2024_spo3_rigid_pur_water_absorption_volume_percentage"
       ]
     }
   ]

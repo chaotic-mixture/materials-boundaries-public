@@ -1,0 +1,743 @@
+{
+  "status": "plan only;not native mapping",
+  "new_states": 0,
+  "new_identities": 0,
+  "expected_new_properties_if_all_gates_pass": 5,
+  "states": [
+    {
+      "state_id": "state_dow_corning_sylgard184_johnston2014_25c",
+      "current_version": "1.0.1",
+      "future_version_if_accepted": "1.0.2",
+      "current_property_ids": [
+        "refprop_dow_corning_sylgard184_johnston2014_25c_youngs_modulus",
+        "refprop_dow_corning_sylgard184_johnston2014_25c_tensile_strength"
+      ],
+      "allowed_change": "version increment and append one extension property only",
+      "current_state": {
+        "id": "state_dow_corning_sylgard184_johnston2014_25c",
+        "version": "1.0.1",
+        "identity_id": "mat_dow_corning_sylgard184",
+        "grade_id": "grade_dow_corning_sylgard184",
+        "name": "Sylgard 184, 10:1 parts, 25 °C/48 h tensile cure (Johnston 2014)",
+        "names": {
+          "en": "Sylgard 184, 10:1 parts, 25 °C/48 h tensile cure (Johnston 2014)",
+          "zh": "Sylgard 184，10:1 份，25 °C/48 h 拉伸试样固化（Johnston 2014）",
+          "ja": "Sylgard 184、10:1 部、25 °C/48 h 引張試験片硬化（Johnston 2014）",
+          "de": "Sylgard 184, 10:1 Teile, Zugprobenhärtung 25 °C/48 h (Johnston 2014)"
+        },
+        "aliases": [],
+        "source_designation": "Sylgard 184",
+        "state": {
+          "product_form": {
+            "status": "reported",
+            "text": "Cured commercial silicone kit formed as ASTM D412 Type C dumbbell; 3.0 mm central PMMA mold section",
+            "evidence": [
+              {
+                "source_id": "johnston_2014_bulk_sylgard184",
+                "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+                "locator": "PDF pp.2–3, §§2.1–2.3 and Table 1, 25 °C tensile cure and specimen preparation; p.3 §3 cooling/testing time",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": null
+          },
+          "processing": {
+            "status": "reported",
+            "text": "Base and curing agent mixed for 1 min at 195 rpm; vacuum degassing 30 min; filled closed molds suspended vertically 30 min",
+            "evidence": [
+              {
+                "source_id": "johnston_2014_bulk_sylgard184",
+                "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+                "locator": "PDF pp.2–3, §§2.1–2.3 and Table 1, 25 °C tensile cure and specimen preparation; p.3 §3 cooling/testing time",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Vacuum pressure is not specified."
+          },
+          "temper_or_heat_treatment": {
+            "status": "reported",
+            "text": "Tensile cure at 25 degrees C for 48 h; Table 1 corrected tensile cure duration, including heat propagation where applicable.",
+            "evidence": [
+              {
+                "source_id": "johnston_2014_bulk_sylgard184",
+                "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+                "locator": "PDF pp.2–3, §§2.1–2.3 and Table 1, 25 °C tensile cure and specimen preparation; p.3 §3 cooling/testing time",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Tensile specimen duration only; do not substitute the compression duration. Analytical degree of cure is not reported; the source assumes well-cured specimens."
+          },
+          "conditioning": {
+            "status": "reported",
+            "text": "Cooled for 1 h at laboratory 22 °C before mold removal; tested within 2 h after the end of curing",
+            "evidence": [
+              {
+                "source_id": "johnston_2014_bulk_sylgard184",
+                "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+                "locator": "PDF pp.2–3, §§2.1–2.3 and Table 1, 25 °C tensile cure and specimen preparation; p.3 §3 cooling/testing time",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "22 °C cooling and 25 °C cure are distinct from the 21 °C average tensile-test ambient."
+          },
+          "composition_or_purity": {
+            "status": "reported",
+            "text": "Sylgard 184 two-part commercial PDMS-based silicone kit, 10 parts base to 1 part curing agent",
+            "evidence": [
+              {
+                "source_id": "johnston_2014_bulk_sylgard184",
+                "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+                "locator": "PDF pp.2–3, §§2.1–2.2, Sylgard 184 kit, supplier and base/curing-agent ratio",
+                "supports": [
+                  "material_identity",
+                  "grade",
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Mass-versus-volume ratio basis, exact molecular formulation, fillers/concentrations, lot and purity are not specified. No pure or unfilled PDMS claim."
+          },
+          "reinforcement": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Kit filler/reinforcement content not specified; absence is not assumed."
+          },
+          "porosity": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [
+              {
+                "source_id": "johnston_2014_bulk_sylgard184",
+                "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+                "locator": "PDF pp.2–3, §§2.1–2.3 and Table 1, 25 °C tensile cure and specimen preparation; p.3 §3 cooling/testing time",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Specimens were visually free of bubbles/tears/detectable defects; quantitative porosity was not measured."
+          },
+          "orientation": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "No material-axis characterization or proof of isotropy reported; dumbbell tensile direction is retained with the property."
+          }
+        },
+        "source_scope": "Table 2 25 degrees C tensile-cure state; same commercial kit identity. Curator candidate, pending independent review. 2026-11-03 supplement: same tensile cure/specimens also link the Table 2 source-labelled ultimate tensile strength. Finite Young-modulus window and strength calculation-range discrepancy are property-specific, not transferable method assumptions.",
+        "evidence": [
+          {
+            "source_id": "johnston_2014_bulk_sylgard184",
+            "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+            "locator": "PDF pp.2–3, §§2.1–2.3 and Table 1, 25 °C tensile cure and specimen preparation; p.3 §3 cooling/testing time",
+            "supports": [
+              "state"
+            ]
+          }
+        ],
+        "property_ids": [
+          "refprop_dow_corning_sylgard184_johnston2014_25c_youngs_modulus",
+          "refprop_dow_corning_sylgard184_johnston2014_25c_tensile_strength"
+        ],
+        "evaluation_support": "catalog_only"
+      }
+    },
+    {
+      "state_id": "state_dow_corning_sylgard184_johnston2014_100c",
+      "current_version": "1.0.1",
+      "future_version_if_accepted": "1.0.2",
+      "current_property_ids": [
+        "refprop_dow_corning_sylgard184_johnston2014_100c_youngs_modulus",
+        "refprop_dow_corning_sylgard184_johnston2014_100c_tensile_strength"
+      ],
+      "allowed_change": "version increment and append one extension property only",
+      "current_state": {
+        "id": "state_dow_corning_sylgard184_johnston2014_100c",
+        "version": "1.0.1",
+        "identity_id": "mat_dow_corning_sylgard184",
+        "grade_id": "grade_dow_corning_sylgard184",
+        "name": "Sylgard 184, 10:1 parts, 100 °C/48 min tensile cure (Johnston 2014)",
+        "names": {
+          "en": "Sylgard 184, 10:1 parts, 100 °C/48 min tensile cure (Johnston 2014)",
+          "zh": "Sylgard 184，10:1 份，100 °C/48 min 拉伸试样固化（Johnston 2014）",
+          "ja": "Sylgard 184、10:1 部、100 °C/48 min 引張試験片硬化（Johnston 2014）",
+          "de": "Sylgard 184, 10:1 Teile, Zugprobenhärtung 100 °C/48 min (Johnston 2014)"
+        },
+        "aliases": [],
+        "source_designation": "Sylgard 184",
+        "state": {
+          "product_form": {
+            "status": "reported",
+            "text": "Cured commercial silicone kit formed as ASTM D412 Type C dumbbell; 3.0 mm central PMMA mold section",
+            "evidence": [
+              {
+                "source_id": "johnston_2014_bulk_sylgard184",
+                "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+                "locator": "PDF pp.2–3, §§2.1–2.3 and Table 1, 100 °C tensile cure and specimen preparation; p.3 §3 cooling/testing time",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": null
+          },
+          "processing": {
+            "status": "reported",
+            "text": "Base and curing agent mixed for 1 min at 195 rpm; vacuum degassing 30 min; filled closed molds suspended vertically 30 min",
+            "evidence": [
+              {
+                "source_id": "johnston_2014_bulk_sylgard184",
+                "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+                "locator": "PDF pp.2–3, §§2.1–2.3 and Table 1, 100 °C tensile cure and specimen preparation; p.3 §3 cooling/testing time",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Vacuum pressure is not specified."
+          },
+          "temper_or_heat_treatment": {
+            "status": "reported",
+            "text": "Tensile cure at 100 °C for corrected duration 48 min (35 min recommendation plus 13 min heat-propagation allowance)",
+            "evidence": [
+              {
+                "source_id": "johnston_2014_bulk_sylgard184",
+                "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+                "locator": "PDF pp.2–3, §§2.1–2.3 and Table 1, 100 °C tensile cure and specimen preparation; p.3 §3 cooling/testing time",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "The 53 min compression-cure duration is not the selected tensile state. Analytically measured degree of cure is not reported."
+          },
+          "conditioning": {
+            "status": "reported",
+            "text": "Cooled for 1 h at laboratory 22 °C before mold removal; tested within 2 h after the end of curing",
+            "evidence": [
+              {
+                "source_id": "johnston_2014_bulk_sylgard184",
+                "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+                "locator": "PDF pp.2–3, §§2.1–2.3 and Table 1, 100 °C tensile cure and specimen preparation; p.3 §3 cooling/testing time",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "22 °C cooling and 100 °C cure are distinct from the 21 °C average tensile-test ambient."
+          },
+          "composition_or_purity": {
+            "status": "reported",
+            "text": "Sylgard 184 two-part commercial PDMS-based silicone kit, 10 parts base to 1 part curing agent",
+            "evidence": [
+              {
+                "source_id": "johnston_2014_bulk_sylgard184",
+                "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+                "locator": "PDF pp.2–3, §§2.1–2.2, Sylgard 184 kit, supplier and base/curing-agent ratio",
+                "supports": [
+                  "material_identity",
+                  "grade",
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Mass-versus-volume ratio basis, exact molecular formulation, fillers/concentrations, lot and purity are not specified. No pure or unfilled PDMS claim."
+          },
+          "reinforcement": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Kit filler/reinforcement content not specified; absence is not assumed."
+          },
+          "porosity": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [
+              {
+                "source_id": "johnston_2014_bulk_sylgard184",
+                "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+                "locator": "PDF pp.2–3, §§2.1–2.3 and Table 1, 100 °C tensile cure and specimen preparation; p.3 §3 cooling/testing time",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Specimens were visually free of bubbles/tears/detectable defects; quantitative porosity was not measured."
+          },
+          "orientation": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "No material-axis characterization or proof of isotropy reported; dumbbell tensile direction is retained with the property."
+          }
+        },
+        "source_scope": "Selected Table 2 100 °C tensile-cure state only; source finite-window tensile result, not a global hyperelastic constant. 2026-11-03 supplement: same tensile cure/specimens also link the Table 2 source-labelled ultimate tensile strength. Finite Young-modulus window and strength calculation-range discrepancy are property-specific, not transferable method assumptions.",
+        "evidence": [
+          {
+            "source_id": "johnston_2014_bulk_sylgard184",
+            "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+            "locator": "PDF pp.2–3, §§2.1–2.3 and Table 1, 100 °C tensile cure and specimen preparation; p.3 §3 cooling/testing time",
+            "supports": [
+              "state"
+            ]
+          }
+        ],
+        "property_ids": [
+          "refprop_dow_corning_sylgard184_johnston2014_100c_youngs_modulus",
+          "refprop_dow_corning_sylgard184_johnston2014_100c_tensile_strength"
+        ],
+        "evaluation_support": "catalog_only"
+      }
+    },
+    {
+      "state_id": "state_dow_corning_sylgard184_johnston2014_125c",
+      "current_version": "1.0.1",
+      "future_version_if_accepted": "1.0.2",
+      "current_property_ids": [
+        "refprop_dow_corning_sylgard184_johnston2014_125c_youngs_modulus",
+        "refprop_dow_corning_sylgard184_johnston2014_125c_tensile_strength"
+      ],
+      "allowed_change": "version increment and append one extension property only",
+      "current_state": {
+        "id": "state_dow_corning_sylgard184_johnston2014_125c",
+        "version": "1.0.1",
+        "identity_id": "mat_dow_corning_sylgard184",
+        "grade_id": "grade_dow_corning_sylgard184",
+        "name": "Sylgard 184, 10:1 parts, 125 °C/33 min tensile cure (Johnston 2014)",
+        "names": {
+          "en": "Sylgard 184, 10:1 parts, 125 °C/33 min tensile cure (Johnston 2014)",
+          "zh": "Sylgard 184，10:1 份，125 °C/33 min 拉伸试样固化（Johnston 2014）",
+          "ja": "Sylgard 184、10:1 部、125 °C/33 min 引張試験片硬化（Johnston 2014）",
+          "de": "Sylgard 184, 10:1 Teile, Zugprobenhärtung 125 °C/33 min (Johnston 2014)"
+        },
+        "aliases": [],
+        "source_designation": "Sylgard 184",
+        "state": {
+          "product_form": {
+            "status": "reported",
+            "text": "Cured commercial silicone kit formed as ASTM D412 Type C dumbbell; 3.0 mm central PMMA mold section",
+            "evidence": [
+              {
+                "source_id": "johnston_2014_bulk_sylgard184",
+                "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+                "locator": "PDF pp.2–3, §§2.1–2.3 and Table 1, 125 °C tensile cure and specimen preparation; p.3 §3 cooling/testing time",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": null
+          },
+          "processing": {
+            "status": "reported",
+            "text": "Base and curing agent mixed for 1 min at 195 rpm; vacuum degassing 30 min; filled closed molds suspended vertically 30 min",
+            "evidence": [
+              {
+                "source_id": "johnston_2014_bulk_sylgard184",
+                "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+                "locator": "PDF pp.2–3, §§2.1–2.3 and Table 1, 125 °C tensile cure and specimen preparation; p.3 §3 cooling/testing time",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Vacuum pressure is not specified."
+          },
+          "temper_or_heat_treatment": {
+            "status": "reported",
+            "text": "Tensile cure at 125 degrees C for 33 min; Table 1 corrected tensile cure duration, including heat propagation where applicable.",
+            "evidence": [
+              {
+                "source_id": "johnston_2014_bulk_sylgard184",
+                "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+                "locator": "PDF pp.2–3, §§2.1–2.3 and Table 1, 125 °C tensile cure and specimen preparation; p.3 §3 cooling/testing time",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Tensile specimen duration only; do not substitute the compression duration. Analytical degree of cure is not reported; the source assumes well-cured specimens."
+          },
+          "conditioning": {
+            "status": "reported",
+            "text": "Cooled for 1 h at laboratory 22 °C before mold removal; tested within 2 h after the end of curing",
+            "evidence": [
+              {
+                "source_id": "johnston_2014_bulk_sylgard184",
+                "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+                "locator": "PDF pp.2–3, §§2.1–2.3 and Table 1, 125 °C tensile cure and specimen preparation; p.3 §3 cooling/testing time",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "22 °C cooling and 125 °C cure are distinct from the 21 °C average tensile-test ambient."
+          },
+          "composition_or_purity": {
+            "status": "reported",
+            "text": "Sylgard 184 two-part commercial PDMS-based silicone kit, 10 parts base to 1 part curing agent",
+            "evidence": [
+              {
+                "source_id": "johnston_2014_bulk_sylgard184",
+                "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+                "locator": "PDF pp.2–3, §§2.1–2.2, Sylgard 184 kit, supplier and base/curing-agent ratio",
+                "supports": [
+                  "material_identity",
+                  "grade",
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Mass-versus-volume ratio basis, exact molecular formulation, fillers/concentrations, lot and purity are not specified. No pure or unfilled PDMS claim."
+          },
+          "reinforcement": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Kit filler/reinforcement content not specified; absence is not assumed."
+          },
+          "porosity": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [
+              {
+                "source_id": "johnston_2014_bulk_sylgard184",
+                "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+                "locator": "PDF pp.2–3, §§2.1–2.3 and Table 1, 125 °C tensile cure and specimen preparation; p.3 §3 cooling/testing time",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Specimens were visually free of bubbles/tears/detectable defects; quantitative porosity was not measured."
+          },
+          "orientation": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "No material-axis characterization or proof of isotropy reported; dumbbell tensile direction is retained with the property."
+          }
+        },
+        "source_scope": "Table 2 125 degrees C tensile-cure state; same commercial kit identity. Curator candidate, pending independent review. 2026-11-03 supplement: same tensile cure/specimens also link the Table 2 source-labelled ultimate tensile strength. Finite Young-modulus window and strength calculation-range discrepancy are property-specific, not transferable method assumptions.",
+        "evidence": [
+          {
+            "source_id": "johnston_2014_bulk_sylgard184",
+            "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+            "locator": "PDF pp.2–3, §§2.1–2.3 and Table 1, 125 °C tensile cure and specimen preparation; p.3 §3 cooling/testing time",
+            "supports": [
+              "state"
+            ]
+          }
+        ],
+        "property_ids": [
+          "refprop_dow_corning_sylgard184_johnston2014_125c_youngs_modulus",
+          "refprop_dow_corning_sylgard184_johnston2014_125c_tensile_strength"
+        ],
+        "evaluation_support": "catalog_only"
+      }
+    },
+    {
+      "state_id": "state_dow_corning_sylgard184_johnston2014_150c",
+      "current_version": "1.0.1",
+      "future_version_if_accepted": "1.0.2",
+      "current_property_ids": [
+        "refprop_dow_corning_sylgard184_johnston2014_150c_youngs_modulus",
+        "refprop_dow_corning_sylgard184_johnston2014_150c_tensile_strength"
+      ],
+      "allowed_change": "version increment and append one extension property only",
+      "current_state": {
+        "id": "state_dow_corning_sylgard184_johnston2014_150c",
+        "version": "1.0.1",
+        "identity_id": "mat_dow_corning_sylgard184",
+        "grade_id": "grade_dow_corning_sylgard184",
+        "name": "Sylgard 184, 10:1 parts, 150 °C/23 min tensile cure (Johnston 2014)",
+        "names": {
+          "en": "Sylgard 184, 10:1 parts, 150 °C/23 min tensile cure (Johnston 2014)",
+          "zh": "Sylgard 184，10:1 份，150 °C/23 min 拉伸试样固化（Johnston 2014）",
+          "ja": "Sylgard 184、10:1 部、150 °C/23 min 引張試験片硬化（Johnston 2014）",
+          "de": "Sylgard 184, 10:1 Teile, Zugprobenhärtung 150 °C/23 min (Johnston 2014)"
+        },
+        "aliases": [],
+        "source_designation": "Sylgard 184",
+        "state": {
+          "product_form": {
+            "status": "reported",
+            "text": "Cured commercial silicone kit formed as ASTM D412 Type C dumbbell; 3.0 mm central PMMA mold section",
+            "evidence": [
+              {
+                "source_id": "johnston_2014_bulk_sylgard184",
+                "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+                "locator": "PDF pp.2–3, §§2.1–2.3 and Table 1, 150 °C tensile cure and specimen preparation; p.3 §3 cooling/testing time",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": null
+          },
+          "processing": {
+            "status": "reported",
+            "text": "Base and curing agent mixed for 1 min at 195 rpm; vacuum degassing 30 min; filled closed molds suspended vertically 30 min",
+            "evidence": [
+              {
+                "source_id": "johnston_2014_bulk_sylgard184",
+                "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+                "locator": "PDF pp.2–3, §§2.1–2.3 and Table 1, 150 °C tensile cure and specimen preparation; p.3 §3 cooling/testing time",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Vacuum pressure is not specified."
+          },
+          "temper_or_heat_treatment": {
+            "status": "reported",
+            "text": "Tensile cure at 150 degrees C for 23 min; Table 1 corrected tensile cure duration, including heat propagation where applicable.",
+            "evidence": [
+              {
+                "source_id": "johnston_2014_bulk_sylgard184",
+                "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+                "locator": "PDF pp.2–3, §§2.1–2.3 and Table 1, 150 °C tensile cure and specimen preparation; p.3 §3 cooling/testing time",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Tensile specimen duration only; do not substitute the compression duration. Analytical degree of cure is not reported; the source assumes well-cured specimens."
+          },
+          "conditioning": {
+            "status": "reported",
+            "text": "Cooled for 1 h at laboratory 22 °C before mold removal; tested within 2 h after the end of curing",
+            "evidence": [
+              {
+                "source_id": "johnston_2014_bulk_sylgard184",
+                "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+                "locator": "PDF pp.2–3, §§2.1–2.3 and Table 1, 150 °C tensile cure and specimen preparation; p.3 §3 cooling/testing time",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "22 °C cooling and 150 °C cure are distinct from the 21 °C average tensile-test ambient."
+          },
+          "composition_or_purity": {
+            "status": "reported",
+            "text": "Sylgard 184 two-part commercial PDMS-based silicone kit, 10 parts base to 1 part curing agent",
+            "evidence": [
+              {
+                "source_id": "johnston_2014_bulk_sylgard184",
+                "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+                "locator": "PDF pp.2–3, §§2.1–2.2, Sylgard 184 kit, supplier and base/curing-agent ratio",
+                "supports": [
+                  "material_identity",
+                  "grade",
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Mass-versus-volume ratio basis, exact molecular formulation, fillers/concentrations, lot and purity are not specified. No pure or unfilled PDMS claim."
+          },
+          "reinforcement": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Kit filler/reinforcement content not specified; absence is not assumed."
+          },
+          "porosity": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [
+              {
+                "source_id": "johnston_2014_bulk_sylgard184",
+                "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+                "locator": "PDF pp.2–3, §§2.1–2.3 and Table 1, 150 °C tensile cure and specimen preparation; p.3 §3 cooling/testing time",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Specimens were visually free of bubbles/tears/detectable defects; quantitative porosity was not measured."
+          },
+          "orientation": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "No material-axis characterization or proof of isotropy reported; dumbbell tensile direction is retained with the property."
+          }
+        },
+        "source_scope": "Table 2 150 degrees C tensile-cure state; same commercial kit identity. Curator candidate, pending independent review. 2026-11-03 supplement: same tensile cure/specimens also link the Table 2 source-labelled ultimate tensile strength. Finite Young-modulus window and strength calculation-range discrepancy are property-specific, not transferable method assumptions.",
+        "evidence": [
+          {
+            "source_id": "johnston_2014_bulk_sylgard184",
+            "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+            "locator": "PDF pp.2–3, §§2.1–2.3 and Table 1, 150 °C tensile cure and specimen preparation; p.3 §3 cooling/testing time",
+            "supports": [
+              "state"
+            ]
+          }
+        ],
+        "property_ids": [
+          "refprop_dow_corning_sylgard184_johnston2014_150c_youngs_modulus",
+          "refprop_dow_corning_sylgard184_johnston2014_150c_tensile_strength"
+        ],
+        "evaluation_support": "catalog_only"
+      }
+    },
+    {
+      "state_id": "state_dow_corning_sylgard184_johnston2014_200c",
+      "current_version": "1.0.1",
+      "future_version_if_accepted": "1.0.2",
+      "current_property_ids": [
+        "refprop_dow_corning_sylgard184_johnston2014_200c_youngs_modulus",
+        "refprop_dow_corning_sylgard184_johnston2014_200c_tensile_strength"
+      ],
+      "allowed_change": "version increment and append one extension property only",
+      "current_state": {
+        "id": "state_dow_corning_sylgard184_johnston2014_200c",
+        "version": "1.0.1",
+        "identity_id": "mat_dow_corning_sylgard184",
+        "grade_id": "grade_dow_corning_sylgard184",
+        "name": "Sylgard 184, 10:1 parts, 200 °C/18 min tensile cure (Johnston 2014)",
+        "names": {
+          "en": "Sylgard 184, 10:1 parts, 200 °C/18 min tensile cure (Johnston 2014)",
+          "zh": "Sylgard 184，10:1 份，200 °C/18 min 拉伸试样固化（Johnston 2014）",
+          "ja": "Sylgard 184、10:1 部、200 °C/18 min 引張試験片硬化（Johnston 2014）",
+          "de": "Sylgard 184, 10:1 Teile, Zugprobenhärtung 200 °C/18 min (Johnston 2014)"
+        },
+        "aliases": [],
+        "source_designation": "Sylgard 184",
+        "state": {
+          "product_form": {
+            "status": "reported",
+            "text": "Cured commercial silicone kit formed as ASTM D412 Type C dumbbell; 3.0 mm central PMMA mold section",
+            "evidence": [
+              {
+                "source_id": "johnston_2014_bulk_sylgard184",
+                "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+                "locator": "PDF pp.2–3, §§2.1–2.3 and Table 1, 200 °C tensile cure and specimen preparation; p.3 §3 cooling/testing time",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": null
+          },
+          "processing": {
+            "status": "reported",
+            "text": "Base and curing agent mixed for 1 min at 195 rpm; vacuum degassing 30 min; filled closed molds suspended vertically 30 min",
+            "evidence": [
+              {
+                "source_id": "johnston_2014_bulk_sylgard184",
+                "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+                "locator": "PDF pp.2–3, §§2.1–2.3 and Table 1, 200 °C tensile cure and specimen preparation; p.3 §3 cooling/testing time",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Vacuum pressure is not specified."
+          },
+          "temper_or_heat_treatment": {
+            "status": "reported",
+            "text": "Tensile cure at 200 degrees C for 18 min; Table 1 corrected tensile cure duration, including heat propagation where applicable.",
+            "evidence": [
+              {
+                "source_id": "johnston_2014_bulk_sylgard184",
+                "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+                "locator": "PDF pp.2–3, §§2.1–2.3 and Table 1, 200 °C tensile cure and specimen preparation; p.3 §3 cooling/testing time",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Tensile specimen duration only; do not substitute the compression duration. Analytical degree of cure is not reported; the source assumes well-cured specimens."
+          },
+          "conditioning": {
+            "status": "reported",
+            "text": "Cooled for 1 h at laboratory 22 °C before mold removal; tested within 2 h after the end of curing",
+            "evidence": [
+              {
+                "source_id": "johnston_2014_bulk_sylgard184",
+                "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+                "locator": "PDF pp.2–3, §§2.1–2.3 and Table 1, 200 °C tensile cure and specimen preparation; p.3 §3 cooling/testing time",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "22 °C cooling and 200 °C cure are distinct from the 21 °C average tensile-test ambient."
+          },
+          "composition_or_purity": {
+            "status": "reported",
+            "text": "Sylgard 184 two-part commercial PDMS-based silicone kit, 10 parts base to 1 part curing agent",
+            "evidence": [
+              {
+                "source_id": "johnston_2014_bulk_sylgard184",
+                "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+                "locator": "PDF pp.2–3, §§2.1–2.2, Sylgard 184 kit, supplier and base/curing-agent ratio",
+                "supports": [
+                  "material_identity",
+                  "grade",
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Mass-versus-volume ratio basis, exact molecular formulation, fillers/concentrations, lot and purity are not specified. No pure or unfilled PDMS claim."
+          },
+          "reinforcement": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Kit filler/reinforcement content not specified; absence is not assumed."
+          },
+          "porosity": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [
+              {
+                "source_id": "johnston_2014_bulk_sylgard184",
+                "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+                "locator": "PDF pp.2–3, §§2.1–2.3 and Table 1, 200 °C tensile cure and specimen preparation; p.3 §3 cooling/testing time",
+                "supports": [
+                  "state"
+                ]
+              }
+            ],
+            "notes": "Specimens were visually free of bubbles/tears/detectable defects; quantitative porosity was not measured."
+          },
+          "orientation": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "No material-axis characterization or proof of isotropy reported; dumbbell tensile direction is retained with the property."
+          }
+        },
+        "source_scope": "Table 2 200 degrees C tensile-cure state; same commercial kit identity. Curator candidate, pending independent review. 2026-11-03 supplement: same tensile cure/specimens also link the Table 2 source-labelled ultimate tensile strength. Finite Young-modulus window and strength calculation-range discrepancy are property-specific, not transferable method assumptions.",
+        "evidence": [
+          {
+            "source_id": "johnston_2014_bulk_sylgard184",
+            "url": "https://herts-repo-prod.herts.cdl.cosector.com/id/eprint/3211/1/906746.pdf",
+            "locator": "PDF pp.2–3, §§2.1–2.3 and Table 1, 200 °C tensile cure and specimen preparation; p.3 §3 cooling/testing time",
+            "supports": [
+              "state"
+            ]
+          }
+        ],
+        "property_ids": [
+          "refprop_dow_corning_sylgard184_johnston2014_200c_youngs_modulus",
+          "refprop_dow_corning_sylgard184_johnston2014_200c_tensile_strength"
+        ],
+        "evaluation_support": "catalog_only"
+      }
+    }
+  ]
+}

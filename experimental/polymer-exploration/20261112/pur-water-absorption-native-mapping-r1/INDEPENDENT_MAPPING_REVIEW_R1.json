@@ -1,0 +1,26 @@
+{
+  "decision": "changes_required",
+  "review_inputs_sha256": "ec274625cb23f8c2d05694001863871d1855c356465fddf1a2aa15913b38a898",
+  "candidate_snapshot": "b74fe9cec6755e12bee590aa46d64d9c4463177b586dc63be1e70b3c7ea4418a",
+  "checks": [
+    "147项仓库、26项外部及3张原生表绑定哈希全部匹配。",
+    "四个中心及±、专用V%单位、reported_value、未定义plus/minus、n未知和七项事实与已审来源范围一致。",
+    "独立水浸状态关联四个既有PUR身份，配方和加工背景匹配；水温、体积基准、预处理及表面水处理未知保持。",
+    "旧5636条性质、5369个状态、身份和牌号保持；来源仅追加说明，其他133个来源不变。",
+    "候选快照匹配，三组4/44/4完整关联导出与独立查询相等；四个新状态和性质通过小图schema、科学契约及resolve检查。",
+    "首次生产者source_id参数错误及原辅助程序已保留；修正使用public source参数，已完成首组导出只作恢复比较，未覆盖，未放宽对象一致性断言。"
+  ],
+  "findings": [
+    {
+      "fields": ["四条NEW_PROPERTIES_R1.json记录的conditions.direction", "四个NEW_STATES_R1.json记录的state.orientation"],
+      "issue": "仅以结果为标量为由填写not_applicable，提前消除了来源未报告的试样方向和暴露关系。标量水吸收并不能证明这些因素不适用，当前完整/部分浸没细节也未知。",
+      "required_change": "八处均改为not_reported_in_inspected_source/null，并说明相对泡沫上升方向、暴露方向及浸没关系未报告，不推断各向同性。其他数值、统计、身份和方法保持。"
+    }
+  ],
+  "limits": [
+    "当前R1不批准应用或安装；修订后可针对八字段及派生快照、导出定向复核。",
+    "除上述未知方向边界外，未发现其他阻塞项；小图通过不替代来源语义判断。",
+    "未执行作者辅助程序、测试、完整图、历史回归、安装或Git变更，未写文件或缓存。",
+    "不认证科学有效性、ISO符合性或未查程序。"
+  ]
+}
