@@ -1,0 +1,30 @@
+{
+  "decision": "changes_required",
+  "reviewer": "/root/review_phbv39_flexural",
+  "review_inputs_sha256": "28d85c35c5653519b175324cb2ea0de31ac950dcbbc0de9a6cafaf9dffa50fee",
+  "findings": [{
+    "priority": "P2",
+    "file": "experimental/polymer-exploration/20261111/delivery-r39-r41/freeze_delivery_manifest.py",
+    "line_in_frozen_r1": 17,
+    "issue": "Only HEAD checked;branch and empty index not asserted. Unstaged/untracked enumeration cannot detect preexisting staged changes.",
+    "required_change": "Assert experimental/open-database and git diff --cached --quiet before collection/manifest creation;retain HEAD,set and hash guards;archive R1 bytes and refreeze."
+  }],
+  "checks": {
+    "hashes": "206 repository files and1995 external files match",
+    "delta": "Own Git baseline comparison confirms4 properties/1state,0new identities/grades;old5412 properties preserved;old NR state only version/backlink/scope,source only NR URL/note append",
+    "counts": "Own counts polymer1037 identities,1096 states,1225properties=1000computed+224direct experimental+1derived;direct119temp/172conditioning/149exactn unconfirmed",
+    "history": "209 contexts,15712 exact bindings and2 historical null absence conditions verified",
+    "approvals": "r39/r40/r41 exact entries and approved receipts close",
+    "validation": "113 current inputs equal reused236-run evidence;three CLI records scoped;own C11000 comparison only snapshot changed",
+    "navigation": "Five main entries updated with old body/archives preserved;old unified package not claimed current after heading change",
+    "installation": "Current r2 wheel f2415f8c341fa35e7625536ab5d2d116fafa3733df9f6552c6f5842f7d30537d,69 inputs,65payload,6metadata,71/76RECORD and README match",
+    "consumers": "Own isolated import verifies tables/version/path,six query sets equal native/recovered exports,copy isolation;overlapping sets not independent counts",
+    "git": "Observed correct branch/HEAD,empty index;207 paths equal206 content plus entry"
+  },
+  "limits": [
+    "No other required findings,but whole R1 content not approved until guard fix",
+    "direct_url lacks archive digest;installed-content consistency only",
+    "No author helpers,suites,full graph/history,writes,stage,commit or push",
+    "No final manifest,remote CI,main,tag,release,deployment or scientific certification"
+  ]
+}

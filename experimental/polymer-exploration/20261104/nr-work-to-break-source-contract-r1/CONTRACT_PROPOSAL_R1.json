@@ -1,0 +1,36 @@
+{
+  "schema": "unimplemented-volumetric-tensile-work-concept/1",
+  "quantity": "volumetric_tensile_work_to_break",
+  "quantity_dimension": "energy_per_volume",
+  "dimension_note": "Semantic energy-density role;SIbase dimensions coincide with pressure,not a new independent SI dimension or automatic permission to use stress units",
+  "central_units": [
+    "J/cm^3",
+    "MJ/m^3",
+    "J/m^3"
+  ],
+  "domain": "Nonnegative source scalar/interval/comparison;preserve zero as reported precision,not certified zero work",
+  "required_qualifier": "work_reference_basis",
+  "qualifier_shape": "Existing fact envelope reported/not_reported/not_verified;nevernot_applicable. Reported basis needs primary inspected-document condition evidence;unknown basis explicit explanatory note",
+  "source_work_reference_basis": "Unknown reference volume and stress/strain conventions;source unit retained,not inferred initial volume",
+  "schema_strategy": "Append one complete disjoint branch after current11;all current11 branchobjects/legacy central units unchanged;newfield forbidden in oldbranches",
+  "unit_strategy": "New energy-volume unit roles stay out of old central branches;absolute uncertainty may use same role only;no automatic scale or pressure conversion",
+  "statistics": "Reuse reported_mean/SD with exact5specimen evidence for selected source;no claim of mean/integration order or batch independence",
+  "uniqueness": "Keep source-cell/core-fact semantics;basis reported coordinates matter,unknown status/note wording/evidence formatting cannot inflate properties",
+  "presentation": "Four-language quantity/basis labels and complete query/export evidence/unknowns;no mechanics engine,fracture-area metrics or caloric allowables",
+  "meaningful_checks_required": [
+    "Old11branches/legacy equality",
+    "Source-unit precision/scale and no pressure or mass-specific leakage",
+    "Nonnegative work and uncertainty domains",
+    "Required basis/evidence/wrong-branch rejection",
+    "Basis-aware duplicate semantics",
+    "Four-language rendering/query/export/copy isolation",
+    "Separate exact implementation/mapping/install/native integration review"
+  ],
+  "unit_reference": {
+    "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-4-two-classes-si-units-and-si-prefixes",
+    "locator": "Tables3and4",
+    "scope": "Energy density J/m³ and pressure same base dimensions;doesnot certify source volume basis or normalize source values"
+  },
+  "implementation": "not_started",
+  "native_applied": false
+}

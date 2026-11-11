@@ -1,0 +1,50 @@
+{
+  "source_id": "bianchi_2025_nr_nanoclay",
+  "source_label": "NR",
+  "locator": "PDF p6 Table3;PDF p18 §3.3.3;XML Table3",
+  "facts": [
+    {
+      "quantity_concept_only": "specific_heat_capacity",
+      "centre": "1.70",
+      "amplitude": "0.05",
+      "source_unit_text": "J/g·K",
+      "method_role": "Source LFA reference comparison;Pyroceram9606",
+      "native_status": "unsupported_quantity_research_lead"
+    },
+    {
+      "quantity_concept_only": "thermal_diffusivity",
+      "centre": "0.081",
+      "amplitude": "0.001",
+      "source_unit_text": "mm²/s",
+      "method_role": "Source LFA Cowan model with numerical pulse correction",
+      "native_status": "unsupported_quantity_research_lead"
+    },
+    {
+      "quantity_concept_only": "thermal_conductivity",
+      "centre": "0.132",
+      "amplitude": "0.003",
+      "source_unit_text": "W/m·K",
+      "method_role": "Source calculated lambda=alpha*cp*rho,not directly measured heat-flow plate result",
+      "native_status": "supported_quantity_but_separate_derivation_classification_review_required"
+    }
+  ],
+  "method_conditions": {
+    "temperature": "20°C",
+    "apparatus": "NetzschLFA447",
+    "specimen": "Cylinder12.7mm diameter/1mm thickness",
+    "standard_as_cited": "ASTM-E1461,edition/compliance unverified",
+    "method_tested_specimens_per_formulation": 3,
+    "pulses_per_specimen": 5
+  },
+  "statistics": "Table ± semantics/centre estimator/per-cell contributing n unconfirmed;mechanical meanSD statement not transferred;method3specimens separate,not n15",
+  "unknowns": [
+    "Thermal sample conditioning/RH/drying",
+    "Gas/flow",
+    "Direction/anisotropy",
+    "Temperature-specific density equivalence",
+    "Mean/product order and covariance",
+    "Cross-paper independence"
+  ],
+  "native_applied": false,
+  "new_quantities_or_derivation_profile_implemented": false
+}

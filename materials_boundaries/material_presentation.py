@@ -5,6 +5,7 @@ import math
 
 
 LANGUAGES = ("en", "zh", "ja", "de")
+WORK_LABELS = ("code_volumetric_tensile_work_to_break", "work_reference_basis", "work_reference_notice")
 TGA_QUANTITIES = (
     "thermal_degradation_onset_temperature", "temperature_at_specified_mass_loss",
     "thermal_degradation_rate_peak_temperature", "tga_residue_percentage",
@@ -26,6 +27,8 @@ REQUIRED_LABELS |= frozenset(('code_melting_peak_temperature',))
 REQUIRED_LABELS |= frozenset(('code_dielectric_breakdown_strength',))
 REQUIRED_LABELS |= frozenset(('code_thermal_conductivity',))
 REQUIRED_LABELS |= frozenset('code_' + quantity for quantity in TGA_QUANTITIES)
+REQUIRED_LABELS |= frozenset(WORK_LABELS)
+REQUIRED_LABELS |= frozenset(("code_mass_specific_heat_capacity", "code_thermal_diffusivity", "thermal_mass_reference_basis"))
 REQUIRED_LABELS |= frozenset(("specified_mass_loss", "degradation_peak_ordinal",
                              "residue_endpoint_temperature", "mass_reference_basis", "tga_reference_notice"))
 REQUIRED_LABELS |= frozenset(('coverage', 'coverage_notice', 'coverage_target', 'coverage_admitted', 'coverage_remaining'))
@@ -58,6 +61,9 @@ def validate_material_locales(locales: dict) -> None:
                or any(_unsafe_display_codepoint(char) for char in value)
                for value in labels.values()):
             raise ValueError(f"material locales: invalid label for {language}")
+
+
+REQUIRED_LABELS |= frozenset(('code_source_reported_thermal_transport_product','source_product_derivation','source_product_notice'))
 
 
 def material_labels(language: str = "en") -> dict:
@@ -232,6 +238,11 @@ def render_material_catalog(catalog: dict, kind: str, language: str = "en") -> s
             output.append(field("degradation_peak_ordinal", str(target["value"]), indent + "    "))
             output.append(field("scope_note", target["notes"], indent + "      "))
             output.extend(evidence(target["evidence"], indent + "      "))
+        if "thermal_mass_reference_basis" in prop:
+            output.extend(fact("thermal_mass_reference_basis", prop["thermal_mass_reference_basis"], indent + "    "))
+        if "work_reference_basis" in prop:
+            output.extend(fact("work_reference_basis", prop["work_reference_basis"], indent + "    "))
+            output.append(indent + "    " + labels["work_reference_notice"])
         if "mass_reference_basis" in prop:
             output.extend(fact("mass_reference_basis", prop["mass_reference_basis"], indent + "    "))
         if prop["quantity"] in TGA_QUANTITIES:
@@ -295,8 +306,9 @@ def render_material_catalog(catalog: dict, kind: str, language: str = "en") -> s
                 value = code(prop[key]["type"]) + ": " + value
             output.append(field(key, value, indent + "  "))
         if "derivation" in prop:
-            output.append(indent + "  " + labels["derived_notice"])
-            output.append(field("derivation", raw(prop["derivation"]), indent + "  "))
+            product = prop["method_definition"]["type"] == "source_reported_thermal_transport_product"
+            output.append(indent + "  " + labels["source_product_notice" if product else "derived_notice"])
+            output.append(field("source_product_derivation" if product else "derivation", raw(prop["derivation"]), indent + "  "))
         output.append(field("scope_note", prop["scope_note"], indent + "  "))
         output.extend(evidence(prop["evidence"], indent + "  "))
         output.extend([field("source_read_status", source["read_status"], indent + "  "),

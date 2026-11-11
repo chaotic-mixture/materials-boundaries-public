@@ -1,0 +1,47 @@
+{
+  "schema": "existing-NR-volumetric-tensile-work-source-fact/1",
+  "source_id": "bianchi_2025_nr_nanoclay",
+  "existing_identity_id": "mat_smr10_bianchi2025_nr",
+  "existing_grade_id": "grade_smr10_bianchi2025_nr",
+  "existing_state_id": "state_smr10_bianchi2025_nr",
+  "source_label": "NR",
+  "source_quantity_label": "Specific tensile energy to break, Eb",
+  "source_expression": "32.2 ± 6.4",
+  "mean": "32.2",
+  "SD": "6.4",
+  "source_unit_text": "J/cm³",
+  "locator": "PDF p7 Table4 NR/Eb column;XML Table4 NR row",
+  "method": "PDF p18 §3.3.4:source integrates stress-strain curve to break;this software does not integrate,digitize or recalculate",
+  "summary": "reported_mean",
+  "uncertainty": "reported_standard_deviation",
+  "statistics_evidence": "PDF p19 §3.3.4 final sentence applies mean/SD to mechanical properties",
+  "sample_count": {
+    "value": 5,
+    "relation": "exact",
+    "scope": "Reported quasi-static tensile specimens per composition,not verified independent production batches",
+    "locator": "PDF p18 §3.3.4 quasi-static paragraph"
+  },
+  "method_conditions": {
+    "machine": "Instron5969",
+    "load_cell_capacity": "1kN",
+    "crosshead_speed": "500mm/min",
+    "strain_measurement": "Resistance extensometer Instron2603,gauge length25mm",
+    "standard_as_cited": "ASTMD412,edition/compliance unverified"
+  },
+  "unknowns": [
+    "Quasi-static temperature/RH/post-cureconditioning/storage",
+    "Stress and strain conventions",
+    "Initial/current/other reference volume and cross-section",
+    "Integration start,offset/algorithm/sampling/smoothing",
+    "Mean-of-individual-integrals versus integral-of-mean-curve",
+    "Independent production batches/cross-paper independence"
+  ],
+  "boundaries": [
+    "Not recoverable elastic strain energy,calorimetric heat Qab,cyclic hysteresis loss or fracture energy per area",
+    "J/cm³ identifies volumetric reporting,not a measured/certified volume basis or J/g mass-specific quantity",
+    "No hardness25C,relaxation25C,thermal20C,elastocaloric22C or cyclic125mm/min/n1/10cycles/prestretches transferred",
+    "Selected table work value/unit independent source transcription;unresolved epsilon header not silently corrected or used to reconstruct integral"
+  ],
+  "native_applied": false,
+  "implementation": "not_started"
+}

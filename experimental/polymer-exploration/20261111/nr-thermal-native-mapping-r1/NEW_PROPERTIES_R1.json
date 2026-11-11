@@ -1,0 +1,482 @@
+[
+  {
+    "id": "refprop_smr10_bianchi2025_nr_mass_specific_heat_capacity",
+    "version": "1.0.0",
+    "material_state_id": "state_smr10_bianchi2025_nr_lfa",
+    "quantity": "mass_specific_heat_capacity",
+    "quantity_dimension": "energy_per_mass_temperature",
+    "source_property_label": "Specific heat capacity,cp",
+    "reported_value": {
+      "kind": "scalar",
+      "value_text": "1.70",
+      "unit_text": "J/g·K",
+      "unit_code": "J/(g*K)",
+      "number": "1.70"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Source Table3 thermal summary;central estimator unspecified. LFA measured response processing does not establish an independent material batch or a computed-material identity.",
+    "conditions": {
+      "temperature": {
+        "status": "reported",
+        "text": "20 °C",
+        "evidence": [
+          {
+            "source_id": "bianchi_2025_nr_nanoclay",
+            "url": "https://mdpi-res.com/d_attachment/molecules/molecules-30-03035/article_deploy/molecules-30-03035.pdf",
+            "locator": "PDF p18 section3.3.3 Thermal Properties",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": null
+      },
+      "test_standard": {
+        "status": "reported",
+        "text": "ASTM-E1461 as cited",
+        "evidence": [
+          {
+            "source_id": "bianchi_2025_nr_nanoclay",
+            "url": "https://mdpi-res.com/d_attachment/molecules/molecules-30-03035/article_deploy/molecules-30-03035.pdf",
+            "locator": "PDF p18 section3.3.3 Thermal Properties",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Edition and independent compliance unknown."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "Netzsch LFA447;Pyroceram9606 reference for heat capacity;Cowan method with numerical pulse correction for diffusivity",
+        "evidence": [
+          {
+            "source_id": "bianchi_2025_nr_nanoclay",
+            "url": "https://mdpi-res.com/d_attachment/molecules/molecules-30-03035/article_deploy/molecules-30-03035.pdf",
+            "locator": "PDF p18 section3.3.3 Thermal Properties",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": null
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Heat transport direction relative to sheet processing unknown;no isotropy inference."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "RH,drying,conditioning,storage and post-cure interval unspecified for LFA."
+      },
+      "loading_rate": {
+        "status": "not_applicable",
+        "text": null,
+        "evidence": [],
+        "notes": "Mechanical loading rate is not a condition of this LFA thermal result."
+      },
+      "additional_conditions": [
+        {
+          "name": "method_tested_specimens",
+          "fact": {
+            "status": "reported",
+            "text": "Three tested specimens per NR formulation",
+            "evidence": [
+              {
+                "source_id": "bianchi_2025_nr_nanoclay",
+                "url": "https://mdpi-res.com/d_attachment/molecules/molecules-30-03035/article_deploy/molecules-30-03035.pdf",
+                "locator": "PDF p18 section3.3.3 Thermal Properties",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Not proven per-cell aggregation n or independent batches."
+          }
+        },
+        {
+          "name": "pulses_per_specimen",
+          "fact": {
+            "status": "reported",
+            "text": "Five pulses for each specimen",
+            "evidence": [
+              {
+                "source_id": "bianchi_2025_nr_nanoclay",
+                "url": "https://mdpi-res.com/d_attachment/molecules/molecules-30-03035/article_deploy/molecules-30-03035.pdf",
+                "locator": "PDF p18 section3.3.3 Thermal Properties",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Technical pulses;not five independent specimens or n15."
+          }
+        },
+        {
+          "name": "test_atmosphere",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Gas composition,pressure and flow unspecified."
+          }
+        },
+        {
+          "name": "test_relative_humidity",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "No LFA humidity assigned."
+          }
+        },
+        {
+          "name": "calibration_implementation",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Reference named,but full calibration implementation and traceability unverified."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "not_stated",
+    "uncertainty": {
+      "type": "reported_plus_minus_unspecified",
+      "value_text": "0.05",
+      "number": "0.05",
+      "unit_text": "J/g·K",
+      "unit_code": "J/(g*K)",
+      "scope": "Source Table3 plus-minus amplitude;meaning unspecified for these thermal values,not imported mechanical SD.",
+      "coverage_factor": null,
+      "confidence_level": null,
+      "evidence": [
+        {
+          "source_id": "bianchi_2025_nr_nanoclay",
+          "url": "https://mdpi-res.com/d_attachment/molecules/molecules-30-03035/article_deploy/molecules-30-03035.pdf",
+          "locator": "PDF p6 Table3,NR row",
+          "supports": [
+            "uncertainty"
+          ]
+        }
+      ]
+    },
+    "uncertainty_status": "reported_plus_minus_unspecified",
+    "uncertainty_note": "Thermal plus-minus meaning,coverage and estimator unspecified;no mechanical SD or propagated error assigned.",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "Per-cell contributing statistical n unknown;three tested specimens and five pulses each retained only as distinct method facts.",
+      "source_statement": "Three specimens tested per formulation;five pulses performed for each specimen.",
+      "evidence": [
+        {
+          "source_id": "bianchi_2025_nr_nanoclay",
+          "url": "https://mdpi-res.com/d_attachment/molecules/molecules-30-03035/article_deploy/molecules-30-03035.pdf",
+          "locator": "PDF p18 section3.3.3 Thermal Properties",
+          "supports": [
+            "sample_count"
+          ]
+        }
+      ]
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source LFA heat-capacity determination using Pyroceram9606 reference;source calls quantitycp,constant-pressure experimental conditions independently unverified. Pulse-processing window,fit interval and aggregation order unspecified.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "bianchi_2025_nr_nanoclay",
+          "url": "https://mdpi-res.com/d_attachment/molecules/molecules-30-03035/article_deploy/molecules-30-03035.pdf",
+          "locator": "PDF p18 section3.3.3 Thermal Properties",
+          "supports": [
+            "method"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [],
+    "source_id": "bianchi_2025_nr_nanoclay",
+    "evidence": [
+      {
+        "source_id": "bianchi_2025_nr_nanoclay",
+        "url": "https://mdpi-res.com/d_attachment/molecules/molecules-30-03035/article_deploy/molecules-30-03035.pdf",
+        "locator": "PDF p6 Table3 NR row;p18 section3.3.3",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      }
+    ],
+    "source_document": {
+      "url": "https://mdpi-res.com/d_attachment/molecules/molecules-30-03035/article_deploy/molecules-30-03035.pdf",
+      "revision": "Retained official PDF;latest revision/notices unverified",
+      "inspected_on": "2026-11-11",
+      "sha256": "2e729bb58b361568d27ab772ec1c031648cb6a858f58a6e4ece9ce45b74c3ea2",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained officialPDF p6Table3 and p18section3.3.3,source recipe pp16-17 and same-source XML inspected;thermal statistics remain unspecified. No raw pulse reanalysis or latest-notice verification.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Study-specific unfilled vulcanizate at20C using source LFA method. Not a universal bound or design allowable. Per-cell n,estimator,plus-minus meaning,independent batches,RH,conditioning,atmosphere,direction and calibration implementation unknown. No conversion,thermal-conductivity product or uncertainty propagation.",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained officialPDF p6Table3 and p18section3.3.3,source recipe pp16-17 and same-source XML inspected;thermal statistics remain unspecified. No raw pulse reanalysis or latest-notice verification.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "thermal_mass_reference_basis": {
+      "status": "not_reported_in_inspected_source",
+      "text": null,
+      "evidence": [],
+      "notes": "As-received/dry mass basis and moisture content unspecified;unit establishes mass normalization only."
+    }
+  },
+  {
+    "id": "refprop_smr10_bianchi2025_nr_thermal_diffusivity",
+    "version": "1.0.0",
+    "material_state_id": "state_smr10_bianchi2025_nr_lfa",
+    "quantity": "thermal_diffusivity",
+    "quantity_dimension": "area_per_time",
+    "source_property_label": "Thermal diffusivity",
+    "reported_value": {
+      "kind": "scalar",
+      "value_text": "0.081",
+      "unit_text": "mm²/s",
+      "unit_code": "mm^2/s",
+      "number": "0.081"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Source Table3 thermal summary;central estimator unspecified. LFA measured response processing does not establish an independent material batch or a computed-material identity.",
+    "conditions": {
+      "temperature": {
+        "status": "reported",
+        "text": "20 °C",
+        "evidence": [
+          {
+            "source_id": "bianchi_2025_nr_nanoclay",
+            "url": "https://mdpi-res.com/d_attachment/molecules/molecules-30-03035/article_deploy/molecules-30-03035.pdf",
+            "locator": "PDF p18 section3.3.3 Thermal Properties",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": null
+      },
+      "test_standard": {
+        "status": "reported",
+        "text": "ASTM-E1461 as cited",
+        "evidence": [
+          {
+            "source_id": "bianchi_2025_nr_nanoclay",
+            "url": "https://mdpi-res.com/d_attachment/molecules/molecules-30-03035/article_deploy/molecules-30-03035.pdf",
+            "locator": "PDF p18 section3.3.3 Thermal Properties",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Edition and independent compliance unknown."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "Netzsch LFA447;Pyroceram9606 reference for heat capacity;Cowan method with numerical pulse correction for diffusivity",
+        "evidence": [
+          {
+            "source_id": "bianchi_2025_nr_nanoclay",
+            "url": "https://mdpi-res.com/d_attachment/molecules/molecules-30-03035/article_deploy/molecules-30-03035.pdf",
+            "locator": "PDF p18 section3.3.3 Thermal Properties",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": null
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "Heat transport direction relative to sheet processing unknown;no isotropy inference."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [],
+        "notes": "RH,drying,conditioning,storage and post-cure interval unspecified for LFA."
+      },
+      "loading_rate": {
+        "status": "not_applicable",
+        "text": null,
+        "evidence": [],
+        "notes": "Mechanical loading rate is not a condition of this LFA thermal result."
+      },
+      "additional_conditions": [
+        {
+          "name": "method_tested_specimens",
+          "fact": {
+            "status": "reported",
+            "text": "Three tested specimens per NR formulation",
+            "evidence": [
+              {
+                "source_id": "bianchi_2025_nr_nanoclay",
+                "url": "https://mdpi-res.com/d_attachment/molecules/molecules-30-03035/article_deploy/molecules-30-03035.pdf",
+                "locator": "PDF p18 section3.3.3 Thermal Properties",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Not proven per-cell aggregation n or independent batches."
+          }
+        },
+        {
+          "name": "pulses_per_specimen",
+          "fact": {
+            "status": "reported",
+            "text": "Five pulses for each specimen",
+            "evidence": [
+              {
+                "source_id": "bianchi_2025_nr_nanoclay",
+                "url": "https://mdpi-res.com/d_attachment/molecules/molecules-30-03035/article_deploy/molecules-30-03035.pdf",
+                "locator": "PDF p18 section3.3.3 Thermal Properties",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Technical pulses;not five independent specimens or n15."
+          }
+        },
+        {
+          "name": "test_atmosphere",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Gas composition,pressure and flow unspecified."
+          }
+        },
+        {
+          "name": "test_relative_humidity",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "No LFA humidity assigned."
+          }
+        },
+        {
+          "name": "calibration_implementation",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [],
+            "notes": "Reference named,but full calibration implementation and traceability unverified."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "not_stated",
+    "uncertainty": {
+      "type": "reported_plus_minus_unspecified",
+      "value_text": "0.001",
+      "number": "0.001",
+      "unit_text": "mm²/s",
+      "unit_code": "mm^2/s",
+      "scope": "Source Table3 plus-minus amplitude;meaning unspecified for these thermal values,not imported mechanical SD.",
+      "coverage_factor": null,
+      "confidence_level": null,
+      "evidence": [
+        {
+          "source_id": "bianchi_2025_nr_nanoclay",
+          "url": "https://mdpi-res.com/d_attachment/molecules/molecules-30-03035/article_deploy/molecules-30-03035.pdf",
+          "locator": "PDF p6 Table3,NR row",
+          "supports": [
+            "uncertainty"
+          ]
+        }
+      ]
+    },
+    "uncertainty_status": "reported_plus_minus_unspecified",
+    "uncertainty_note": "Thermal plus-minus meaning,coverage and estimator unspecified;no mechanical SD or propagated error assigned.",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "scope": "Per-cell contributing statistical n unknown;three tested specimens and five pulses each retained only as distinct method facts.",
+      "source_statement": "Three specimens tested per formulation;five pulses performed for each specimen.",
+      "evidence": [
+        {
+          "source_id": "bianchi_2025_nr_nanoclay",
+          "url": "https://mdpi-res.com/d_attachment/molecules/molecules-30-03035/article_deploy/molecules-30-03035.pdf",
+          "locator": "PDF p18 section3.3.3 Thermal Properties",
+          "supports": [
+            "sample_count"
+          ]
+        }
+      ]
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source LFA thermal diffusivity using Cowan method with numerical pulse correction;no software pulse refit or mass-diffusion interpretation. Pulse-processing window,fit interval and aggregation order unspecified.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "bianchi_2025_nr_nanoclay",
+          "url": "https://mdpi-res.com/d_attachment/molecules/molecules-30-03035/article_deploy/molecules-30-03035.pdf",
+          "locator": "PDF p18 section3.3.3 Thermal Properties",
+          "supports": [
+            "method"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [],
+    "source_id": "bianchi_2025_nr_nanoclay",
+    "evidence": [
+      {
+        "source_id": "bianchi_2025_nr_nanoclay",
+        "url": "https://mdpi-res.com/d_attachment/molecules/molecules-30-03035/article_deploy/molecules-30-03035.pdf",
+        "locator": "PDF p6 Table3 NR row;p18 section3.3.3",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      }
+    ],
+    "source_document": {
+      "url": "https://mdpi-res.com/d_attachment/molecules/molecules-30-03035/article_deploy/molecules-30-03035.pdf",
+      "revision": "Retained official PDF;latest revision/notices unverified",
+      "inspected_on": "2026-11-11",
+      "sha256": "2e729bb58b361568d27ab772ec1c031648cb6a858f58a6e4ece9ce45b74c3ea2",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Retained officialPDF p6Table3 and p18section3.3.3,source recipe pp16-17 and same-source XML inspected;thermal statistics remain unspecified. No raw pulse reanalysis or latest-notice verification.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Study-specific unfilled vulcanizate at20C using source LFA method. Not a universal bound or design allowable. Per-cell n,estimator,plus-minus meaning,independent batches,RH,conditioning,atmosphere,direction and calibration implementation unknown. No conversion,thermal-conductivity product or uncertainty propagation.",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Retained officialPDF p6Table3 and p18section3.3.3,source recipe pp16-17 and same-source XML inspected;thermal statistics remain unspecified. No raw pulse reanalysis or latest-notice verification.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    }
+  }
+]

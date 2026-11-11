@@ -1,0 +1,204 @@
+{
+  "id": "refprop_synthetic_a_density",
+  "version": "1.0.0",
+  "material_state_id": "state_synthetic_a",
+  "quantity": "thermal_conductivity",
+  "quantity_dimension": "power_per_length_temperature",
+  "source_property_label": "Fictional plate thermal conductivity",
+  "reported_value": {
+    "kind": "scalar",
+    "value_text": "0.1230",
+    "unit_text": "W/(m·K)",
+    "unit_code": "W/(m*K)",
+    "number": "0.1230"
+  },
+  "evidence_kind": "published_measurement_derived_reference",
+  "reporting_basis": "not_stated",
+  "determination_basis": "source_reports_calculation",
+  "basis_note": "Synthetic typical reference",
+  "conditions": {
+    "temperature": {
+      "status": "reported",
+      "text": "23 °C",
+      "evidence": [
+        {
+          "source_id": "synthetic_reference",
+          "url": "https://example.invalid/synthetic-reference.pdf",
+          "locator": "Synthetic test table 1, row SYN-A, density column",
+          "supports": [
+            "condition"
+          ]
+        }
+      ],
+      "notes": null
+    },
+    "test_standard": {
+      "status": "not_reported_in_inspected_source",
+      "text": null,
+      "evidence": [],
+      "notes": null
+    },
+    "test_method": {
+      "status": "not_reported_in_inspected_source",
+      "text": null,
+      "evidence": [],
+      "notes": null
+    },
+    "direction": {
+      "status": "not_reported_in_inspected_source",
+      "text": null,
+      "evidence": [],
+      "notes": null
+    },
+    "conditioning": {
+      "status": "not_reported_in_inspected_source",
+      "text": null,
+      "evidence": [],
+      "notes": null
+    },
+    "loading_rate": {
+      "status": "not_reported_in_inspected_source",
+      "text": null,
+      "evidence": [],
+      "notes": null
+    }
+  },
+  "density_basis": null,
+  "summary_statistic": "not_stated",
+  "uncertainty": null,
+  "uncertainty_status": "not_reported_in_inspected_source",
+  "uncertainty_note": "No numeric dispersion; mean apparatus temperature is not a group mean.",
+  "sample_count": {
+    "value": null,
+    "relation": "not_reported",
+    "scope": "Fictional thermal measurement count unknown.",
+    "source_statement": "No thermal n in fictional source.",
+    "evidence": []
+  },
+  "method_definition": {
+    "type": "source_reported_thermal_transport_product",
+    "definition": "Fictional heat-flow plate result; direction relative to foam rise and moisture unknown.",
+    "extraction_window": null,
+    "evidence": [
+      {
+        "source_id": "synthetic_reference",
+        "url": "https://example.invalid/synthetic-reference.pdf",
+        "locator": "Synthetic test table 1, row SYN-A, density column",
+        "supports": [
+          "method"
+        ]
+      }
+    ]
+  },
+  "source_discrepancies": [],
+  "source_id": "synthetic_reference",
+  "evidence": [
+    {
+      "source_id": "synthetic_reference",
+      "url": "https://example.invalid/synthetic-reference.pdf",
+      "locator": "Synthetic test table 1, row SYN-A, density column",
+      "supports": [
+        "reported_value",
+        "classification",
+        "summary_statistic"
+      ]
+    }
+  ],
+  "source_document": {
+    "url": "https://example.invalid/synthetic-reference.pdf",
+    "revision": null,
+    "inspected_on": "2026-10-04",
+    "sha256": null,
+    "hash_status": "not_retained",
+    "hash_note": "Synthetic fixture has no source artifact",
+    "inspection_scope": "Synthetic table 1 and notes only",
+    "inspection_status": "selected_content_inspected"
+  },
+  "scope_note": "Fictional test-only numeric fact",
+  "evaluation_support": "catalog_only",
+  "universal_bound": false,
+  "engineering_allowable": false,
+  "verification": {
+    "source_inspection_scope": "Synthetic table 1 and notes only",
+    "transcription_cross_check": "completed",
+    "independent_scientific_review": false,
+    "raw_data_reanalysis": false
+  },
+  "derivation": {
+    "schema_version": "1.0.0",
+    "profile_id": "thermal_transport_product_unpaired_context_v1",
+    "profile_version": "1.0.0",
+    "kind": "source_reported_product_from_measurements",
+    "formula": {
+      "expression": "lambda = alpha * cp * rho",
+      "evidence": [
+        {
+          "source_id": "synthetic_reference",
+          "url": "https://example.invalid/synthetic-reference.pdf",
+          "locator": "Fictional selected source cell or method",
+          "supports": [
+            "method"
+          ]
+        }
+      ]
+    },
+    "contextual_inputs": {
+      "thermal_diffusivity": {
+        "quantity": "thermal_diffusivity",
+        "role": "source_context_not_verified_actual_input",
+        "source_property_label": "Fictional thermal_diffusivity",
+        "evidence": [
+          {
+            "source_id": "synthetic_reference",
+            "url": "https://example.invalid/synthetic-reference.pdf",
+            "locator": "Fictional selected source cell or method",
+            "supports": [
+              "reported_value"
+            ]
+          }
+        ]
+      },
+      "mass_specific_heat_capacity": {
+        "quantity": "mass_specific_heat_capacity",
+        "role": "source_context_not_verified_actual_input",
+        "source_property_label": "Fictional mass_specific_heat_capacity",
+        "evidence": [
+          {
+            "source_id": "synthetic_reference",
+            "url": "https://example.invalid/synthetic-reference.pdf",
+            "locator": "Fictional selected source cell or method",
+            "supports": [
+              "reported_value"
+            ]
+          }
+        ]
+      },
+      "mass_density": {
+        "quantity": "mass_density",
+        "role": "source_context_not_verified_actual_input",
+        "source_property_label": "Fictional mass_density",
+        "evidence": [
+          {
+            "source_id": "synthetic_reference",
+            "url": "https://example.invalid/synthetic-reference.pdf",
+            "locator": "Fictional selected source cell or method",
+            "supports": [
+              "reported_value"
+            ]
+          }
+        ]
+      }
+    },
+    "input_provenance": {
+      "actual_paired_input_values": null,
+      "actual_specimen_pairing": null,
+      "density_temperature_alignment": null,
+      "input_aggregation_order": null,
+      "input_covariance": null,
+      "source_uncertainty_propagation_method": null,
+      "unknown_scope_note": "Actual paired inputs,order,covariance and propagation unknown."
+    },
+    "software_calculation_performed": false,
+    "software_uncertainty_propagation_performed": false
+  }
+}

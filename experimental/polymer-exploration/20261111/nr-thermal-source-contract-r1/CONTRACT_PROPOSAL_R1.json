@@ -1,0 +1,61 @@
+{
+  "scope": "Unimplemented contracts for three already-inspected NR thermal source facts;not native admission",
+  "baseline_snapshot": "6441d83014936d3a92156278fd85cbb437c77f481ce35272c388066eb050a4d8",
+  "source": "Bianchi2025 DOI10.3390/molecules30143035;PDFp6Table3/p18section3.3.3",
+  "quantities": {
+    "mass_specific_heat_capacity": {
+      "source_label": "Specific heat capacity,cp",
+      "centre": "1.70",
+      "amplitude": "0.05",
+      "source_unit_text": "J/g·K",
+      "dimension": "energy_per_mass_temperature",
+      "closed_unit_codes": ["J/(g*K)", "J/(kg*K)", "kJ/(kg*K)"],
+      "required_qualifier": "thermal_mass_reference_basis",
+      "basis": "Unknown as-received/dry mass basis,moisture and reference-comparison implementation;unit establishes mass normalization only",
+      "method": "Source LFA comparison with Pyroceram9606;source calls quantitycp but constant-pressure experimental conditions are not independently established",
+      "exclusions": ["Do not inferCv,Cp/Cv,pressure dependence or heat per specimen", "Do not transfer mechanical SD or sample counts", "Not volumetric heat capacity"]
+    },
+    "thermal_diffusivity": {
+      "centre": "0.081",
+      "amplitude": "0.001",
+      "source_unit_text": "mm²/s",
+      "dimension": "area_per_time",
+      "closed_unit_codes": ["mm^2/s", "m^2/s"],
+      "method": "Source Cowan model with numerical pulse correction applied to LFA measurements",
+      "exclusions": ["Not kinematic viscosity or mass diffusion", "Scalar source value does not certify isotropy or a complete diffusivity tensor", "Do not re-fit pulse data or equate model-processing with DFT/computational material generation"]
+    },
+    "thermal_conductivity": {
+      "centre": "0.132",
+      "amplitude": "0.003",
+      "source_unit_text": "W/m·K",
+      "existing_quantity_supported": true,
+      "method": "Source explicitly calculates lambda=alpha*cp*rho",
+      "classification_proposal": "published_measurement_derived_reference/source_reports_calculation/new source_reported_thermal_transport_product method",
+      "required_new_profile": "Source-reported measured-input product with contextual/unpaired input provenance;not an empirical wood conversion",
+      "source_formula": "lambda=alpha*cp*rho",
+      "input_context": ["Table3 thermal diffusivity", "Table3 mass-specific heat capacity", "Table1 Archimedes density"],
+      "input_role_limit": "These tables provide contextual summaries,not proven actual paired inputs or proof of product-of-means. Actual raw joint inputs,temperature alignment,covariance and averaging order unknown.",
+      "constraints": ["Do not reuse direct PUR heat-flow-plate method classification", "Do not assert density was measured at20C or on the LFA specimens", "No software product,rounding equivalence,uncertainty propagation or inferred inputs", "Cannot reuse current empirical-only derivation payload without an explicit disjoint profile and validator change"],
+      "admission": "Hold until new provenance profile is concretely implemented and independently reviewed"
+    }
+  },
+  "shared_conditions": {
+    "source_temperature": "20°C",
+    "apparatus": "NetzschLFA447",
+    "geometry": "12.7mm diameter,1mm thickness cylinders",
+    "source_standard": "ASTM-E1461 as cited;edition/compliance unknown",
+    "method_tested_specimens": 3,
+    "pulses_per_specimen": 5,
+    "statistical_disposition": "Keep per-cell n unknown pending source adjudication;3tested specimens and5pulses retained as distinct method facts,never n15",
+    "centre_and_plusminus": "not_stated/reported_plus_minus_unspecified;mechanical meanSD sentence does not define these thermal statistics",
+    "unknowns": ["RH/conditioning/drying/storage", "Atmosphere and flow", "Direction relative to sheet processing", "Reference-material calibration implementation", "Per-cell estimator/n and independent batches", "Cross-paper independence"]
+  },
+  "schema_strategy": "Append two closed quantity branches while preserving current12branchobjects/legacy central unit domain;mass-reference field exclusive to heat capacity. Shared uncertainty vocabulary may expand but exact central unit role/scale remains required.",
+  "domain_proposal": "Positive central thermal values,nonnegative absolute amplitudes;out-of-domain source zeros held for separate adjudication,not silently altered. Work zero remains valid under its existing contract.",
+  "derivation_strategy": "Extend generic derivation as a disjoint tagged union if adopted;preserve existing empirical-profile fields and old acceptance/rejection semantics. New method/quantity/provenance coupling must be bidirectional. Unknown contextual summaries cannot be represented as certified actual calculation inputs.",
+  "presentation": "Four-language quantity/method/basis/unknown provenance labels,complete query/export/copy isolation;no thermal solver or engineering allowables",
+  "required_checks": ["Old12branch/domain preservation", "New unit role and scale isolation", "MeanSD/n leakage rejection", "Reference mass applicability and primary evidence", "Derived versus direct method bidirectional rejection", "Old empirical derivation regression", "Unknown contextual input provenance preserved", "Complete rendering/export and native-state reuse review"],
+  "implementation": "not_started",
+  "native_applied": false,
+  "pushed": false
+}

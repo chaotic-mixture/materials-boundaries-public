@@ -64,8 +64,13 @@ class TgaEndpointContractTests(unittest.TestCase):
         Draft202012Validator.check_schema(public)
         def digest(obj):
             return hashlib.sha256(json.dumps(obj, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
-        self.assertEqual(len(public['$defs']['property']['oneOf']), 11)
-        self.assertEqual(digest(public['$defs']['property']['oneOf'][:7]), 'efbb98481fda44b3dff58601c05ad5150e2abcdec1b4bf1529c93a8634201aba')
+        self.assertEqual(len(public['$defs']['property']['oneOf']), 14)
+        original_branches=deepcopy(public['$defs']['property']['oneOf'][:7])
+        for branch in original_branches:
+            methods=branch['properties']['method_definition']['properties']['type']['enum']
+            self.assertEqual(methods.count('source_reported_thermal_transport_product'),1)
+            methods.remove('source_reported_thermal_transport_product')
+        self.assertEqual(digest(original_branches), 'efbb98481fda44b3dff58601c05ad5150e2abcdec1b4bf1529c93a8634201aba')
         self.assertEqual(digest(public['$defs']['legacy_reported_value']), '5a77df88c82bf7828bc7ab36226e43e820fe3b4db365662e9710dfe1898a052e')
 
     def test_complete_query_export_preserves_each_typed_coordinate_and_unknown(self):

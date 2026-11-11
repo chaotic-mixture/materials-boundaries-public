@@ -20,7 +20,14 @@ from urllib.parse import urlsplit
 
 LANGUAGES = ("en", "zh", "ja", "de")
 CATEGORIES = ("metal", "inorganic", "polymer", "composite", "natural")
+HEAT_CAPACITY_UNITS = ("J/(g*K)", "J/(kg*K)", "kJ/(kg*K)")
+DIFFUSIVITY_UNITS = ("mm^2/s", "m^2/s")
+THERMAL_NEW_QUANTITIES = ("mass_specific_heat_capacity", "thermal_diffusivity")
+WORK_UNITS = ("J/cm^3", "MJ/m^3", "J/m^3")
 QUANTITY_DIMENSIONS = {
+    "mass_specific_heat_capacity": "energy_per_mass_temperature",
+    "thermal_diffusivity": "area_per_time",
+    "volumetric_tensile_work_to_break": "energy_per_volume",
     "thermal_degradation_onset_temperature": "temperature",
     "temperature_at_specified_mass_loss": "temperature",
     "thermal_degradation_rate_peak_temperature": "temperature",
@@ -51,6 +58,9 @@ QUANTITY_DIMENSIONS = {
     "slump_flow_spread": "length",
 }
 UNIT_DIMENSIONS = {
+    **{u: "energy_per_mass_temperature" for u in HEAT_CAPACITY_UNITS},
+    **{u: "area_per_time" for u in DIFFUSIVITY_UNITS},
+    **{unit: "energy_per_volume" for unit in WORK_UNITS},
     "percent_tga_residue": "dimensionless",
     "W/(m*K)": "power_per_length_temperature", "mW/(m*K)": "power_per_length_temperature",
     "V/m": "electric_field", "kV/mm": "electric_field",
@@ -220,7 +230,7 @@ def _make_properties_schema():
     # Preserve the legacy value definitions and seven existing property branches.
     # The residue role enters only its dedicated central-value branch and the
     # shared uncertainty vocabulary, where same-role checks still apply.
-    unit = _enum(code for code in UNIT_DIMENSIONS if code != "percent_tga_residue")
+    unit = _enum(code for code in UNIT_DIMENSIONS if code != "percent_tga_residue" and code not in (*WORK_UNITS, *HEAT_CAPACITY_UNITS, *DIFFUSIVITY_UNITS))
     common_value = {"value_text": TEXT, "unit_text": TEXT, "unit_code": unit}
     definitions["reported_value"] = {"oneOf": [
         _object({"kind": {"const": "scalar"}, **common_value, "number": DECIMAL}),
@@ -253,7 +263,7 @@ def _make_properties_schema():
     for branch in definitions["legacy_reported_value"]["oneOf"]:
         branch["properties"]["unit_code"] = _enum(
             code for code in UNIT_DIMENSIONS
-            if code not in {"percent_tga_residue", "percent_elongation", "shore_a_scale", *TEMPERATURE_UNITS, *ELECTRIC_FIELD_UNITS, *THERMAL_CONDUCTIVITY_UNITS})
+            if code not in {*HEAT_CAPACITY_UNITS, *DIFFUSIVITY_UNITS, *WORK_UNITS, "percent_tga_residue", "percent_elongation", "shore_a_scale", *TEMPERATURE_UNITS, *ELECTRIC_FIELD_UNITS, *THERMAL_CONDUCTIVITY_UNITS})
     for branch in definitions["elongation_reported_value"]["oneOf"]:
         branch["properties"]["unit_code"] = {"const": "percent_elongation"}
     # Closed source-reported uncertainty variants. An amplitude alone never
@@ -341,7 +351,7 @@ def _make_properties_schema():
         "id": _id("refprop"), "version": _record_revision(), "material_state_id": _id("state"),
         "quantity": _enum(QUANTITY_DIMENSIONS),
         "quantity_dimension": _enum(sorted({dimension for quantity, dimension in QUANTITY_DIMENSIONS.items()
-                                             if quantity not in {"dielectric_breakdown_strength", "thermal_conductivity"}})),
+                                             if quantity not in {*THERMAL_NEW_QUANTITIES, "dielectric_breakdown_strength", "thermal_conductivity", "volumetric_tensile_work_to_break"}})),
         "source_property_label": TEXT, "reported_value": _ref("legacy_reported_value"),
         "evidence_kind": _enum(EVIDENCE_KINDS), "reporting_basis": _enum(REPORTING_BASES),
         "determination_basis": _enum(("source_reports_measurement", "source_reports_calculation", "source_reports_compiled_measurements", "not_stated", "mixed_or_unclear")),
@@ -353,6 +363,7 @@ def _make_properties_schema():
         "uncertainty_note": TEXT, "sample_count": _ref("sample_count"),
         "method_definition": _object({"type": _enum(("source_reported_conventional", "source_reported_compilation",
                                                        "source_reported_crystallographic_derivation", "source_reported_empirical_conversion",
+                                                       "source_reported_thermal_transport_product",
                                                        "source_reported_computational_structure_density",
                                                        "source_reported_molecular_simulation_density")),
                                        "definition": TEXT, "extraction_window": {"anyOf": [_ref("reported_window"), NULL]}, "evidence": evidence}),
@@ -400,7 +411,7 @@ def _make_properties_schema():
     other = definitions["property"]
     other["properties"]["quantity"] = _enum(
         q for q in QUANTITY_DIMENSIONS
-        if q not in {"thermal_conductivity", "dielectric_breakdown_strength", "tensile_stress_at_specified_elongation", "shore_a_hardness", *TEMPERATURE_QUANTITIES, *TGA_QUANTITIES}
+        if q not in {*THERMAL_NEW_QUANTITIES, "thermal_conductivity", "dielectric_breakdown_strength", "tensile_stress_at_specified_elongation", "shore_a_hardness", *TEMPERATURE_QUANTITIES, *TGA_QUANTITIES, "volumetric_tensile_work_to_break"}
         and q not in PERCENT_ELONGATION_QUANTITIES)
     del other["properties"]["specified_elongation"]
     definitions["specified_mass_loss"] = _object({
@@ -437,7 +448,32 @@ def _make_properties_schema():
             branch["properties"][qualifier] = _ref(qualifier)
             branch["required"].append(qualifier)
         tga_branches.append(branch)
-    definitions["property"] = {"oneOf": [other, stress, elongation, shore, temperature, electric, thermal, *tga_branches]}
+    definitions["work_reference_basis"] = {"oneOf": deepcopy(definitions["fact"]["oneOf"][:3])}
+    definitions["work_reported_value"] = deepcopy(definitions["reported_value"])
+    for value in definitions["work_reported_value"]["oneOf"]:
+        value["properties"]["unit_code"] = _enum(WORK_UNITS)
+    work = deepcopy(other)
+    work["properties"]["quantity"] = {"const": "volumetric_tensile_work_to_break"}
+    work["properties"]["quantity_dimension"] = {"const": "energy_per_volume"}
+    work["properties"]["reported_value"] = _ref("work_reported_value")
+    work["properties"]["work_reference_basis"] = _ref("work_reference_basis")
+    work["required"].append("work_reference_basis")
+    definitions["thermal_mass_reference_basis"] = {"oneOf": deepcopy(definitions["fact"]["oneOf"][:3])}
+    new_thermal = []
+    for quantity, units in (("mass_specific_heat_capacity", HEAT_CAPACITY_UNITS), ("thermal_diffusivity", DIFFUSIVITY_UNITS)):
+        value_name = quantity + "_reported_value"
+        definitions[value_name] = deepcopy(definitions["reported_value"])
+        for value in definitions[value_name]["oneOf"]:
+            value["properties"]["unit_code"] = _enum(units)
+        branch = deepcopy(other)
+        branch["properties"]["quantity"] = {"const": quantity}
+        branch["properties"]["quantity_dimension"] = {"const": QUANTITY_DIMENSIONS[quantity]}
+        branch["properties"]["reported_value"] = _ref(value_name)
+        if quantity == "mass_specific_heat_capacity":
+            branch["properties"]["thermal_mass_reference_basis"] = _ref("thermal_mass_reference_basis")
+            branch["required"].append("thermal_mass_reference_basis")
+        new_thermal.append(branch)
+    definitions["property"] = {"oneOf": [other, stress, elongation, shore, temperature, electric, thermal, *tga_branches, work, *new_thermal]}
     return {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "$id": "urn:materials-boundaries:schema:reference_properties:1.0.0",
@@ -696,8 +732,16 @@ def _validate_links(materials, properties, indices):
 # Only spelling/typography normalization; these mappings never change a unit or
 # infer a quantity. Unknown spellings need deliberate capability review.
 _UNIT_SPELLINGS = {
+    "J/(g*K)": {"J/(g*K)", "J/(g·K)", "J/g·K"},
+    "J/(kg*K)": {"J/(kg*K)", "J/(kg·K)"},
+    "kJ/(kg*K)": {"kJ/(kg*K)", "kJ/(kg·K)"},
+    "mm^2/s": {"mm^2/s", "mm²/s", "mm2/s"},
+    "m^2/s": {"m^2/s", "m²/s", "m2/s"},
+    "J/cm^3": {"J/cm^3", "J/cm³", "J/cm3"},
+    "MJ/m^3": {"MJ/m^3", "MJ/m³", "MJ/m3"},
+    "J/m^3": {"J/m^3", "J/m³", "J/m3"},
     "percent_tga_residue": {"%"}, "percent_mass_loss": {"%"},
-    "W/(m*K)": {"W/(m*K)", "W/(m·K)"},
+    "W/(m*K)": {"W/(m*K)", "W/(m·K)", "W/m·K"},
     "mW/(m*K)": {"mW/(m*K)", "mW/(m·K)"},
     "V/m": {"V/m"}, "kV/mm": {"kV/mm"},
     "degC": {"°C", "° C", "degC"}, "K": {"K"},
@@ -917,7 +961,7 @@ def _validate_property(prop):
     else:
         _validate_value(prop["reported_value"], path + ".reported_value", dimension,
                         nonnegative=(prop["quantity"] in PERCENT_ELONGATION_QUANTITIES or
-                                     prop["quantity"] in {"shore_a_hardness", "tga_residue_percentage"}))
+                                     prop["quantity"] in {"shore_a_hardness", "tga_residue_percentage", "volumetric_tensile_work_to_break"}))
     for field in ("specified_mass_loss", "degradation_peak_ordinal", "residue_endpoint_temperature", "mass_reference_basis"):
         if field not in prop:
             continue
@@ -933,6 +977,22 @@ def _validate_property(prop):
             if not any(e["url"] == prop["source_document"]["url"]
                        for e in _tagged(descriptor["evidence"], "condition", source)):
                 _fail(path, "TGA qualifier needs primary inspected-document condition evidence")
+    if "thermal_mass_reference_basis" in prop:
+        basis = prop["thermal_mass_reference_basis"]
+        if basis["status"] == "reported":
+            _require_tag(basis["evidence"], "condition", path + ".thermal_mass_reference_basis", source)
+            if not any(e["url"] == prop["source_document"]["url"] for e in _tagged(basis["evidence"], "condition", source)):
+                _fail(path, "Thermal mass basis needs primary inspected-document condition evidence")
+        elif not basis["notes"]:
+            _fail(path, "Unknown thermal mass basis needs an explanatory note")
+    if "work_reference_basis" in prop:
+        basis = prop["work_reference_basis"]
+        if basis["status"] == "reported":
+            _require_tag(basis["evidence"], "condition", path + ".work_reference_basis", source)
+            if not any(e["url"] == prop["source_document"]["url"] for e in _tagged(basis["evidence"], "condition", source)):
+                _fail(path, "Work basis needs primary inspected-document condition evidence")
+        elif not basis["notes"]:
+            _fail(path, "Unknown work reference basis needs an explanatory note")
     if prop["quantity"] == "shore_a_hardness":
         value = prop["reported_value"]
         numbers = [value["lower"], value["upper"]] if value["kind"] == "interval" else [value["number"]]
@@ -991,7 +1051,8 @@ def _validate_property(prop):
     is_derived = prop["evidence_kind"] == "published_measurement_derived_reference"
     is_crystallographic = method == "source_reported_crystallographic_derivation"
     is_empirical = method == "source_reported_empirical_conversion"
-    if is_derived != (is_crystallographic or is_empirical):
+    is_thermal_product = method == "source_reported_thermal_transport_product"
+    if is_derived != (is_crystallographic or is_empirical or is_thermal_product):
         _fail(path, "measured-input-derived evidence requires an admitted derivation method")
     is_computational_crystal = method == "source_reported_computational_structure_density"
     if (prop["density_basis"] == "crystallographic") != (is_crystallographic or is_computational_crystal):
@@ -1112,6 +1173,12 @@ def _unique_fact(prop, seen):
         "locators": sorted({entry["locator"] for entry in _tagged(prop["evidence"], "reported_value", prop["source_id"])}),
         "value": represented_value, "conditions": conditions,
         "specified_elongation": elongation_key,
+        **({"thermal_mass_basis": (["reported", prop["thermal_mass_reference_basis"]["text"]]
+                  if prop["thermal_mass_reference_basis"]["status"] == "reported" else ["unknown", None])}
+           if "thermal_mass_reference_basis" in prop else {}),
+        **({"work_basis": (["reported", prop["work_reference_basis"]["text"]]
+                           if prop["work_reference_basis"]["status"] == "reported" else ["unknown", None])}
+           if "work_reference_basis" in prop else {}),
         **({"tga_coordinates": _tga_coordinate_key(prop)} if prop["quantity"] in TGA_QUANTITIES else {}),
     }, sort_keys=True, ensure_ascii=False)
     if signature in seen:
