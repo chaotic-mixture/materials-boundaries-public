@@ -19,7 +19,22 @@ An open, source-qualified materials database and executable mechanics toolkit.
 
 第三例可追加 `--poisson .3`，得到约 **0.276 GPa**。这里的 0.3 是用户提供的教学假设。默认模量来自 [Special Metals Nickel 200 技术公报，表 4](https://www.specialmetals.com/documents/technical-bulletins/nickel-200.pdf) 的 26 °C 退火材料动态弹性数据。将该参考值用于此拉伸估算需要用户明确接受其适用性，并假定无初始应力、无热应变、各向同性和小应变线弹性。输出不提供屈服、失效或工程许用值。
 
-## 聚合物研究进展 · PLA/PCL（2026-11-12 更新）
+## 聚合物研究进展（2026-11-12 更新）
+
+v0.37.0 的聚合物目录含 **1,037 个来源限定身份、1,095 个状态、1,221 条性质记录**。其中 PolyOmics 贡献 1,000 个假想线性聚合物模型及对应的计算密度。其余来源共提供 221 条性质记录，覆盖拉伸、弯曲、压缩、热学和电学等测试。下表按来源列举可查的数据，条数按性质记录统计。
+
+| 研究对象 | 来源 | 聚合物类性质记录数 |
+| --- | --- | ---: |
+| 硬质聚氨酯 | Ivdre 等，2024 | 40 |
+| 环氧树脂 | Tarasov 等，2022 | 40 |
+| 打印聚合物的力学与介电性能 | Şahin 等，2026 | 30 |
+| Sylgard 184 硅橡胶 | Johnston 等，2014 | 25 |
+| 注塑 PLA/PCL 共混物 | Delgado-Aguilar 等，2020 | 25 |
+| PA12 老化 | Zakręcki、Cieślik，2025 | 13 |
+
+[版本化性质记录](materials_boundaries/data/reference_properties.json) · [来源与出处](materials_boundaries/data/sources.json)
+
+### PLA/PCL 专题
 
 **项目已收录的数据。** Delgado 等研究了七种注塑 PLA/PCL 共混配方。按 PLA/PCL 名义质量比从 20/80 到 95/5 排列，七组杨氏模量依次为 1.13、1.86、2.55、3.20、3.38、3.60 和 3.70 GPa。库中还收录了七组拉伸强度、七组达到拉伸强度时的伸长率，以及四组断裂伸长率。比较延性时应选用同一种伸长率指标。可运行 `materials-database query --query Delgado --quantity youngs_modulus` 查询模量记录。[Delgado 原始研究](https://europepmc.org/articles/PMC7321633)
 
