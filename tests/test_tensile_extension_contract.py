@@ -59,7 +59,7 @@ class ExtensionContractTests(unittest.TestCase):
         self.assertEqual(stored, _PROPERTIES_SCHEMA)
         Draft202012Validator.check_schema(stored)
         branches = stored['$defs']['property']['oneOf']
-        self.assertEqual(len(branches), 24)
+        self.assertEqual(len(branches), 27)
         self.assertEqual(digest(branches[:17]), baseline['old_branch_digest'])
         for key, expected in baseline['old_definition_digests'].items():
             self.assertEqual(digest(stored['$defs'][key]), expected, key)

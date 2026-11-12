@@ -1,0 +1,37 @@
+{
+  "decision": "changes_required",
+  "review_inputs_sha256": "3ada0ab2c50eb038af53469a439e90e134c87eedfb6b31617692e94ce0d843c2",
+  "checks": {
+    "bindings": "2 repo、1 external、3 native哈希全部匹配；原生未改。",
+    "density_values": "Table1九值1.244/1.256/1.256/1.238/1.239/1.240/1.262/1.239/1.246 g/cm³逐格及精度匹配。",
+    "gel_values": "R10/R20/R30/R45为4.7/4.3/12.7/26.2%；五个B系列横线保留为null，未改零。R0排除。",
+    "identities_and_overlap": "九个既有身份锚点匹配，1 polymer、8 composite；这些身份当前无同来源密度性质。既有木质素1.226 g/cm³记录保持，供应商PBS 1.26不替代B0实报值。",
+    "density_method_scope": "§2.2氮气比重法、2 g及Ultra-Pycnometer 1000明确针对木质素，不能迁移至PBS配方；PBS密度方法和basis not_stated保留适当。",
+    "gel_method": "§2.4明确hot-pressed材料、CHCl3索氏48 h、未溶凝胶收集后真空干燥48 h，以及原式Wgel/W0×100。",
+    "statistics": "所选表未明确逐格n、中心统计或误差；§2.10统计检验与95%显著性不能代填mean、SD或CI。",
+    "rights": "主XML明确CC BY 4.0；本轮仅留存XML审阅，无新增PDF视觉或最新通知核验。"
+  },
+  "findings": [
+    {
+      "id": "GEL_COMMON_PREPARATION_CONTEXT",
+      "severity": "required_scope_clarification",
+      "paths": [
+        "experimental/polymer-exploration/20261112/pbs-density-gel-source-screen-r1/README.zh.md",
+        "experimental/polymer-exploration/20261112/pbs-density-gel-source-screen-r1/SOURCE_FACTS_R1.json"
+      ],
+      "issue": "README笼统称热压参数未知，未保留§2.3已有的共同制备背景：30 g pellets、75 mm模具、120°C热压、3.1 mm盘及切条。§2.4未建立具体凝胶aliquot与该描述的逐样对应，二者应分层表达。",
+      "required_change": "补充§2.3共同背景及证据定位；同时明确实际凝胶aliquot的质量、几何、压力、停留和制样谱系未确认，不将背景直接赋给凝胶试片。80°C/12 h属于挤出前PBS/DCP预处理，不是凝胶真空干燥48 h的温度。"
+    }
+  ],
+  "adjudications": {
+    "source_facts": "九个密度和四个凝胶含量字面值可保留；修订仅需澄清制备背景，不改变数值。",
+    "gel_ratio": "仅保留来源Wgel/W0×100定义；W0干基、残留溶剂、木质素校正及萃取完全性未知，不能转为交联密度或推算其他分数。",
+    "physical_scope": "Table1挤出材料语境不证明具体密度试样形状；热压凝胶方法不得转移至注塑拉伸试片，也不证明各方法共享物理试样。",
+    "missing_cells": "横线表示无所选数值，不能解释为零凝胶、无交联或检测限。"
+  },
+  "limits": [
+    "仅来源筛查，不批准新契约、具体映射、原生接纳或安装。",
+    "不认证科学有效性、标准符合性或独立实验数量。",
+    "未运行作者代码、测试、完整图及历史回归；未写文件或缓存、安装、执行Git变更或推送。"
+  ]
+}

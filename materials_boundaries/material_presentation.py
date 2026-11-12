@@ -2,6 +2,8 @@
 from copy import deepcopy
 from ._extension_contract import LABEL_KEYS as EXTENSION_LABELS
 from ._water_absorption_contract import LABEL_KEYS as WATER_LABELS, FACT_FIELDS as WATER_FACTS
+from ._dma_flexural_contract import LABEL_KEYS as DMA_LABELS, FACT_FIELDS as DMA_FACTS
+from ._gel_fraction_contract import LABEL_KEYS as GEL_FRACTION_LABELS, FACT_FIELDS as GEL_FRACTION_FACTS
 from ._closed_cell_contract import LABEL_KEYS as CLOSED_CELL_LABELS, FACT_FIELDS as CLOSED_CELL_FACTS
 from ._complex_viscosity_contract import LABEL_KEYS as COMPLEX_VISCOSITY_LABELS, FACT_FIELDS as COMPLEX_VISCOSITY_FACTS
 from ._dsc_enthalpy_contract import LABEL_KEYS as DSC_ENTHALPY_LABELS, FACT_FIELDS as DSC_ENTHALPY_FACTS
@@ -22,6 +24,8 @@ REQUIRED_LABELS |= frozenset(("code_thermal_degradation_endset_temperature", "de
 REQUIRED_LABELS |= frozenset(EXTENSION_LABELS)
 REQUIRED_LABELS |= frozenset(WATER_LABELS)
 REQUIRED_LABELS |= frozenset(CLOSED_CELL_LABELS)
+REQUIRED_LABELS |= frozenset(GEL_FRACTION_LABELS)
+REQUIRED_LABELS |= frozenset(DMA_LABELS)
 REQUIRED_LABELS |= frozenset(FOAM_EVENT_LABELS)
 REQUIRED_LABELS |= frozenset(CELL_ANISOTROPY_LABELS)
 REQUIRED_LABELS |= frozenset(DSC_ENTHALPY_LABELS)
@@ -260,6 +264,20 @@ def render_material_catalog(catalog: dict, kind: str, language: str = "en") -> s
             for name in FOAM_EVENT_FACTS:
                 output.extend(fact("reaction_time_" + name, definition[name], indent + "      "))
             output.append(indent + "    " + labels["reaction_time_reference_notice"])
+        if "dma_definition" in prop:
+            for coordinate_name in ("dma_measurement_temperature", "dma_oscillation_frequency"):
+                coordinate = prop[coordinate_name]
+                displayed = coordinate["value_text"] + " " + coordinate["unit_text"] if coordinate["status"] == "reported" else code(coordinate["status"])
+                output.append(field(coordinate_name, displayed, indent + "    "))
+                output.append(field("scope_note", coordinate["notes"], indent + "      "))
+                output.extend(evidence(coordinate["evidence"], indent + "      "))
+            definition = prop["dma_definition"]
+            output.append(field("dma_definition", "", indent + "    "))
+            output.append(field("scope_note", definition["notes"], indent + "      "))
+            output.extend(evidence(definition["evidence"], indent + "      "))
+            for name in DMA_FACTS:
+                output.extend(fact("dma_" + name, definition[name], indent + "      "))
+            output.append(indent + "    " + labels["dma_reference_notice"])
         if "complex_viscosity_definition" in prop:
             coordinate = prop["oscillation_frequency"]
             displayed_frequency = coordinate["value_text"] + " " + coordinate["unit_text"] if coordinate["status"] == "reported" else code(coordinate["status"])
@@ -289,6 +307,14 @@ def render_material_catalog(catalog: dict, kind: str, language: str = "en") -> s
             for name in CELL_ANISOTROPY_FACTS:
                 output.extend(fact("cell_anisotropy_" + name, definition[name], indent + "      "))
             output.append(indent + "    " + labels["cell_anisotropy_reference_notice"])
+        if "gel_fraction_definition" in prop:
+            definition = prop["gel_fraction_definition"]
+            output.append(field("gel_fraction_definition", "", indent + "    "))
+            output.append(field("scope_note", definition["notes"], indent + "      "))
+            output.extend(evidence(definition["evidence"], indent + "      "))
+            for name in GEL_FRACTION_FACTS:
+                output.extend(fact("gel_fraction_" + name, definition[name], indent + "      "))
+            output.append(indent + "    " + labels["gel_fraction_reference_notice"])
         if "closed_cell_definition" in prop:
             definition = prop["closed_cell_definition"]
             output.append(field("closed_cell_definition", "", indent + "    "))

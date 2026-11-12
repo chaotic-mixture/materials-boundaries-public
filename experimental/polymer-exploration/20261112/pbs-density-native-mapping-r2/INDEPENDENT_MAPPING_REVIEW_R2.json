@@ -1,0 +1,23 @@
+{
+  "decision": "approved",
+  "review_inputs_sha256": "29756bbb340841c88954f169b11249a7fa70329e66b23a759f851577789b9a54",
+  "checks": {
+    "bindings": "76 repo、1 external、3 native哈希全部匹配。",
+    "source_values": "九个密度原值及精度与已审Table1一致；g/cm3文本、g/cm^3规范码及mass_density角色正确，未用供应商值或混合计算替代。",
+    "identities": "九个既有配方身份匹配，1 polymer、8 composite；R0排除，无新增身份、牌号或来源。",
+    "method_and_unknowns": "density_basis为not_stated，中心为reported_value，n及数值不确定度未知。PBS配方方法、温湿度、调湿和具体试片谱系未补造；木质素氮气比重法未迁移。",
+    "states": "九个独立密度方法上下文仅沿用对应身份的组成、强化及共同挤出背景。140°C未当测量温度；未迁移DSC 10 mg、热程序、热压几何或其他方法样本数。物理orientation保持未知。",
+    "r2_correction": "R1与R2科学对象差异仅九处verification.source_inspection_scope，改为当前XML检查范围；所有新状态及其余性质字段保持，R1和观察记录保留。",
+    "old_objects": "独立内存合成确认旧5691性质、5398状态、全部身份及牌号完整保持；来源对象未修改。",
+    "candidate": "独立计算候选为5700性质、5407状态、134来源，快照ef3b75e83de9315fb4099de7b9f64185094b50d7c9859d9ef9d74e10413907c8。",
+    "limited_contracts": "仅对九个新状态及九个性质执行有限契约验证和逐状态resolve，均通过；每状态关联一条正确密度性质。",
+    "scope_reporting": "候选图验证、测试未运行、消费者未运行及未安装的阶段声明清楚，未放宽现有mass_density实现。"
+  },
+  "findings": [],
+  "limits": [
+    "批准仅覆盖冻结R2具体映射，不批准未来原生应用、安装或最终接纳。",
+    "完整消费者导出、恢复和安装验证尚未执行，本结论不声称已完成。",
+    "不认证未知测量方法、密度物理基准、独立试样或科学有效性。",
+    "未执行作者脚本、测试或套件、完整图及历史回归；未写文件或缓存、安装、执行Git变更或推送。原生仍5691性质、5398状态。"
+  ]
+}

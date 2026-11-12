@@ -1,0 +1,78 @@
+{
+  "quantity": "solvent_extraction_gel_fraction_percentage",
+  "dimension": "dimensionless",
+  "unit_code": "percent_solvent_extraction_gel_fraction",
+  "source_property_label": "Gel Fraction (%)",
+  "definition": "Direct source-reported insoluble gel fraction after specified solvent extraction,with source numerator/denominator labels retained. Not numerical crosslink density,gelation conversion,pure network-polymer fraction,closed-cell content,porosity,water uptake or crystallinity.",
+  "source_formula": "Gel fraction(%)=(Wgel/W0)×100",
+  "formula_limits": "Source Wgel and W0 preserved literally. W0 preparation/dry basis,numerator residual solvent,lignin contribution,ash and corrections remain unknown;do not silently certify a dry polymer mass denominator.",
+  "value_contract": {
+    "kind": "scalar only",
+    "range": "Finite directly reported percentage0to100 inclusive;preserve literal precision,do not round/clamp or normalize. Dash is missing,not0.",
+    "uncertainty": "Absolute uncertainty nonnegative same dedicated percentage-point role,without100cap on spread;relative-percent independently validated. Bounds do not certify physical correctness of any value.",
+    "role": "published_experimental_reference/reported_summary/source_reports_measurement;density_basis null;catalog_only"
+  },
+  "definition_fields": [
+    "numerator_and_denominator",
+    "solvent_identity",
+    "extraction_protocol",
+    "residue_collection_and_drying",
+    "starting_specimen_preparation",
+    "corrections_and_recovery",
+    "replication_and_piece_relationship",
+    "conditioning_and_storage"
+  ],
+  "field_shape": "Closed typed reported evidence+text+notes,or not_reported_in_inspected_source/not_verified with text null,evidence and nonblank reason;mandatory primary inspected-source method/condition support;not_applicable cannot hide missing facts.",
+  "deduplication": "Do not create coverage by rewording source Wlabels,adding descriptive fields,unknown-to-known metadata,method notes or evidence aliases. Same original source cell and actual conditions/value/unit is one fact;separate reported protocol cells remain separate;no independent specimens inferred.",
+  "method_scope": "Preserve known extraction/drying durations without converting48h to independent n or importing80°C12h precursor treatment. Common120°C/30g/75mm/3.1mm background distinct from actual gel aliquot lineage.",
+  "implementation_requirements": [
+    "Append dedicated closed branch preserving existing24 branches and all old definitions",
+    "No widening existing percentage or density quantities",
+    "Reject wrongquantity/unit/definition reuse,booleans,nonfinite,outofrange and missing primary-source conditions",
+    "Reject invented numerator/denominator dry-basis defaults;source Wlabels remain explanatory facts",
+    "Four-language query/resolve/export display retains full methods,unknowns and source rights",
+    "Complete actual native mapping and isolated installation plus independent review before acceptance"
+  ],
+  "candidate_rows": [
+    {
+      "source_label": "R10",
+      "value_text": "4.7",
+      "unit_text": "%",
+      "source_table": "Table1 Gel Fraction column",
+      "existing_identity_anchor_property": "refprop_ewurum2025_r10_dsc_melting_temperature",
+      "context_plan": "Separate hot-pressed extraction-method context,not density/DSC/tensile specimen"
+    },
+    {
+      "source_label": "R20",
+      "value_text": "4.3",
+      "unit_text": "%",
+      "source_table": "Table1 Gel Fraction column",
+      "existing_identity_anchor_property": "refprop_ewurum2025_r20_dsc_melting_temperature",
+      "context_plan": "Separate hot-pressed extraction-method context,not density/DSC/tensile specimen"
+    },
+    {
+      "source_label": "R30",
+      "value_text": "12.7",
+      "unit_text": "%",
+      "source_table": "Table1 Gel Fraction column",
+      "existing_identity_anchor_property": "refprop_ewurum2025_r30_dsc_melting_temperature",
+      "context_plan": "Separate hot-pressed extraction-method context,not density/DSC/tensile specimen"
+    },
+    {
+      "source_label": "R45",
+      "value_text": "26.2",
+      "unit_text": "%",
+      "source_table": "Table1 Gel Fraction column",
+      "existing_identity_anchor_property": "refprop_ewurum2025_r45_dsc_melting_temperature",
+      "context_plan": "Separate hot-pressed extraction-method context,not density/DSC/tensile specimen"
+    }
+  ],
+  "holds": [
+    "R0 identity unresolved and gel cell dash",
+    "Bseries dash not numerical0",
+    "No inverse sol fraction,no crosslink-density conversion,no solvent/lignin correction",
+    "No new identity/grade/source proposed"
+  ],
+  "implementation": "not_started",
+  "native_admission": "not_approved"
+}

@@ -26,6 +26,9 @@ THERMAL_NEW_QUANTITIES = ("mass_specific_heat_capacity", "thermal_diffusivity")
 RESPONSE_TIME_UNITS = ("s", "ms")
 WORK_UNITS = ("J/cm^3", "MJ/m^3", "J/m^3")
 QUANTITY_DIMENSIONS = {
+    "dma_flexural_storage_modulus": "pressure",
+    "dma_flexural_loss_tangent": "dimensionless",
+    "solvent_extraction_gel_fraction_percentage": "dimensionless",
     "oscillatory_complex_viscosity_magnitude": "pressure_time",
     "dsc_reported_melting_specific_enthalpy": "energy_per_mass",
     "foam_cell_geometric_anisotropy_ratio": "dimensionless",
@@ -69,6 +72,9 @@ QUANTITY_DIMENSIONS = {
     "slump_flow_spread": "length",
 }
 UNIT_DIMENSIONS = {
+    "GPa_dma_flexural_storage": "pressure",
+    "ratio_dma_flexural_loss_tangent": "dimensionless",
+    "percent_solvent_extraction_gel_fraction": "dimensionless",
     "kPa_s_complex_viscosity": "pressure_time",
     "J_per_g_dsc_melting_enthalpy": "energy_per_mass",
     "ratio_foam_cell_geometric_anisotropy": "dimensionless",
@@ -247,7 +253,7 @@ def _make_properties_schema():
     # Preserve the legacy value definitions and seven existing property branches.
     # The residue role enters only its dedicated central-value branch and the
     # shared uncertainty vocabulary, where same-role checks still apply.
-    unit = _enum(code for code in UNIT_DIMENSIONS if code not in {"kPa_s_complex_viscosity", "J_per_g_dsc_melting_enthalpy", "ratio_foam_cell_geometric_anisotropy", "percent_tga_residue", "percent_water_absorption_volume", "percent_closed_cell_content_volume"} and code not in (*RESPONSE_TIME_UNITS, *WORK_UNITS, *HEAT_CAPACITY_UNITS, *DIFFUSIVITY_UNITS))
+    unit = _enum(code for code in UNIT_DIMENSIONS if code not in {"kPa_s_complex_viscosity", "J_per_g_dsc_melting_enthalpy", "ratio_foam_cell_geometric_anisotropy", "percent_tga_residue", "percent_water_absorption_volume", "GPa_dma_flexural_storage", "ratio_dma_flexural_loss_tangent", "percent_solvent_extraction_gel_fraction", "percent_closed_cell_content_volume"} and code not in (*RESPONSE_TIME_UNITS, *WORK_UNITS, *HEAT_CAPACITY_UNITS, *DIFFUSIVITY_UNITS))
     common_value = {"value_text": TEXT, "unit_text": TEXT, "unit_code": unit}
     definitions["reported_value"] = {"oneOf": [
         _object({"kind": {"const": "scalar"}, **common_value, "number": DECIMAL}),
@@ -280,13 +286,13 @@ def _make_properties_schema():
     for branch in definitions["legacy_reported_value"]["oneOf"]:
         branch["properties"]["unit_code"] = _enum(
             code for code in UNIT_DIMENSIONS
-            if code not in {*RESPONSE_TIME_UNITS, *HEAT_CAPACITY_UNITS, *DIFFUSIVITY_UNITS, *WORK_UNITS, "kPa_s_complex_viscosity", "J_per_g_dsc_melting_enthalpy", "ratio_foam_cell_geometric_anisotropy", "percent_closed_cell_content_volume", "percent_water_absorption_volume", "percent_tga_residue", "percent_elongation", "shore_a_scale", *TEMPERATURE_UNITS, *ELECTRIC_FIELD_UNITS, *THERMAL_CONDUCTIVITY_UNITS})
+            if code not in {*RESPONSE_TIME_UNITS, *HEAT_CAPACITY_UNITS, *DIFFUSIVITY_UNITS, *WORK_UNITS, "kPa_s_complex_viscosity", "J_per_g_dsc_melting_enthalpy", "ratio_foam_cell_geometric_anisotropy", "GPa_dma_flexural_storage", "ratio_dma_flexural_loss_tangent", "percent_solvent_extraction_gel_fraction", "percent_closed_cell_content_volume", "percent_water_absorption_volume", "percent_tga_residue", "percent_elongation", "shore_a_scale", *TEMPERATURE_UNITS, *ELECTRIC_FIELD_UNITS, *THERMAL_CONDUCTIVITY_UNITS})
     for branch in definitions["elongation_reported_value"]["oneOf"]:
         branch["properties"]["unit_code"] = {"const": "percent_elongation"}
     # Closed source-reported uncertainty variants. An amplitude alone never
     # establishes dispersion, mean aggregation or a confidence construction.
     # Keep the existing SD shape unchanged for old catalog/output compatibility.
-    uncertainty_value = {**common_value, "unit_code": _enum(code for code in UNIT_DIMENSIONS if code not in {"kPa_s_complex_viscosity", "J_per_g_dsc_melting_enthalpy", "ratio_foam_cell_geometric_anisotropy", "percent_water_absorption_volume", "percent_closed_cell_content_volume"})}
+    uncertainty_value = {**common_value, "unit_code": _enum(code for code in UNIT_DIMENSIONS if code not in {"kPa_s_complex_viscosity", "J_per_g_dsc_melting_enthalpy", "ratio_foam_cell_geometric_anisotropy", "percent_water_absorption_volume", "GPa_dma_flexural_storage", "ratio_dma_flexural_loss_tangent", "percent_solvent_extraction_gel_fraction", "percent_closed_cell_content_volume"})}
     uncertainty_common = {**uncertainty_value, "number": DECIMAL, "scope": TEXT,
                           "coverage_factor": NULL, "evidence": evidence}
     definitions["confidence_level"] = _object({
@@ -428,7 +434,7 @@ def _make_properties_schema():
     other = definitions["property"]
     other["properties"]["quantity"] = _enum(
         q for q in QUANTITY_DIMENSIONS
-        if q not in {"oscillatory_complex_viscosity_magnitude", "dsc_reported_melting_specific_enthalpy", "foam_cell_geometric_anisotropy_ratio", "foam_reaction_event_time", "closed_cell_content_volume_percentage", "water_absorption_volume_percentage", "tensile_extension_at_failure", "thermal_degradation_endset_temperature", "crystallization_peak_temperature", "thermal_response_characteristic_time", *THERMAL_NEW_QUANTITIES, "thermal_conductivity", "dielectric_breakdown_strength", "tensile_stress_at_specified_elongation", "shore_a_hardness", *TEMPERATURE_QUANTITIES, *TGA_QUANTITIES, "volumetric_tensile_work_to_break"}
+        if q not in {"oscillatory_complex_viscosity_magnitude", "dsc_reported_melting_specific_enthalpy", "foam_cell_geometric_anisotropy_ratio", "foam_reaction_event_time", "dma_flexural_storage_modulus", "dma_flexural_loss_tangent", "solvent_extraction_gel_fraction_percentage", "closed_cell_content_volume_percentage", "water_absorption_volume_percentage", "tensile_extension_at_failure", "thermal_degradation_endset_temperature", "crystallization_peak_temperature", "thermal_response_characteristic_time", *THERMAL_NEW_QUANTITIES, "thermal_conductivity", "dielectric_breakdown_strength", "tensile_stress_at_specified_elongation", "shore_a_hardness", *TEMPERATURE_QUANTITIES, *TGA_QUANTITIES, "volumetric_tensile_work_to_break"}
         and q not in PERCENT_ELONGATION_QUANTITIES)
     del other["properties"]["specified_elongation"]
     definitions["specified_mass_loss"] = _object({
@@ -544,7 +550,11 @@ def _make_properties_schema():
     dsc_enthalpy = dsc_enthalpy_branch(definitions, other, text=TEXT, obj=_object, array=_array, ref=_ref)
     from ._complex_viscosity_contract import schema_branch as complex_viscosity_branch
     complex_viscosity = complex_viscosity_branch(definitions, other, text=TEXT, obj=_object, array=_array, ref=_ref)
-    definitions["property"] = {"oneOf": [other, stress, elongation, shore, temperature, electric, thermal, *tga_branches, work, *new_thermal, response, crystallization, endset, extension, water, closed_cell, foam_event, cell_anisotropy, dsc_enthalpy, complex_viscosity]}
+    from ._gel_fraction_contract import schema_branch as gel_fraction_branch
+    gel_fraction = gel_fraction_branch(definitions, other, text=TEXT, obj=_object, array=_array, ref=_ref)
+    from ._dma_flexural_contract import schema_branches as dma_schema_branches
+    dma_branches = dma_schema_branches(definitions, other, text=TEXT, obj=_object, array=_array, ref=_ref)
+    definitions["property"] = {"oneOf": [other, stress, elongation, shore, temperature, electric, thermal, *tga_branches, work, *new_thermal, response, crystallization, endset, extension, water, closed_cell, foam_event, cell_anisotropy, dsc_enthalpy, complex_viscosity, gel_fraction, *dma_branches]}
     return {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "$id": "urn:materials-boundaries:schema:reference_properties:1.0.0",
@@ -806,6 +816,9 @@ _UNIT_SPELLINGS = {
     "kPa_s_complex_viscosity": {"kPa.s", "kPa·s", "kPa s"},
     "J_per_g_dsc_melting_enthalpy": {"J/g", "J g^-1", "J g−1"},
     "ratio_foam_cell_geometric_anisotropy": {"1", "ratio", "dimensionless"},
+    "GPa_dma_flexural_storage": {"GPa"},
+    "ratio_dma_flexural_loss_tangent": {"1", "dimensionless", "tan delta"},
+    "percent_solvent_extraction_gel_fraction": {"%"},
     "percent_closed_cell_content_volume": {"vol.%", "vol%", "V%"},
     "percent_water_absorption_volume": {"V%", "vol.%", "vol%"},
     "s": {"s"}, "ms": {"ms"},
@@ -1043,11 +1056,15 @@ def _validate_property(prop):
     else:
         _validate_value(prop["reported_value"], path + ".reported_value", dimension,
                         nonnegative=(prop["quantity"] in PERCENT_ELONGATION_QUANTITIES or
-                                     prop["quantity"] in {"oscillatory_complex_viscosity_magnitude", "foam_reaction_event_time", "closed_cell_content_volume_percentage", "water_absorption_volume_percentage", "tensile_extension_at_failure", "shore_a_hardness", "tga_residue_percentage", "volumetric_tensile_work_to_break"}))
+                                     prop["quantity"] in {"oscillatory_complex_viscosity_magnitude", "foam_reaction_event_time", "dma_flexural_storage_modulus", "dma_flexural_loss_tangent", "solvent_extraction_gel_fraction_percentage", "closed_cell_content_volume_percentage", "water_absorption_volume_percentage", "tensile_extension_at_failure", "shore_a_hardness", "tga_residue_percentage", "volumetric_tensile_work_to_break"}))
     from ._extension_contract import validate as validate_extension
     validate_extension(prop, _fail)
     from ._water_absorption_contract import validate as validate_water_absorption
     validate_water_absorption(prop, _fail)
+    from ._dma_flexural_contract import validate as validate_dma
+    validate_dma(prop, _fail, _numeric_token_matches, _validate_temperature_value)
+    from ._gel_fraction_contract import validate as validate_gel_fraction
+    validate_gel_fraction(prop, _fail)
     from ._closed_cell_contract import validate as validate_closed_cell
     validate_closed_cell(prop, _fail)
     from ._foam_event_contract import validate as validate_foam_event
@@ -1388,6 +1405,17 @@ def _unique_fact(prop, seen):
         key = "foam_event:" + _coordinate_fact_base(signature, "reaction_time_definition")
         if key in seen:
             _fail(prop["id"], "duplicate source fact for the same reaction-event cell")
+        seen.add(key)
+    if prop["quantity"] in {"dma_flexural_storage_modulus", "dma_flexural_loss_tangent"}:
+        from ._dma_flexural_contract import cell_key
+        key = "dma:" + cell_key(_coordinate_fact_base(signature, "dma_definition"))
+        if key in seen:
+            _fail(prop["id"], "duplicate source fact for the same flexural DMA source cell")
+        seen.add(key)
+    if prop["quantity"] == "solvent_extraction_gel_fraction_percentage":
+        key = "gel_fraction:" + _coordinate_fact_base(signature, "gel_fraction_definition")
+        if key in seen:
+            _fail(prop["id"], "duplicate source fact for the same extraction gel fraction source cell")
         seen.add(key)
     if prop["quantity"] == "closed_cell_content_volume_percentage":
         key = "closed_cell:" + _coordinate_fact_base(signature, "closed_cell_definition")

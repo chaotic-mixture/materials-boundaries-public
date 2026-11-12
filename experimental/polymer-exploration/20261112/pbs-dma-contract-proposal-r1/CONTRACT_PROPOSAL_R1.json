@@ -1,0 +1,63 @@
+{
+  "scope": "Dedicated source-qualified flexural DMA results;not static modulus or dielectric response",
+  "quantities": [
+    {
+      "quantity": "dma_flexural_storage_modulus",
+      "dimension": "pressure",
+      "unit": "GPa_dma_flexural_storage",
+      "source_label": "E′",
+      "domain": "Finite nonnegative source scalar including reported0;no conversion,no static modulus equivalence"
+    },
+    {
+      "quantity": "dma_flexural_loss_tangent",
+      "dimension": "dimensionless",
+      "unit": "ratio_dma_flexural_loss_tangent",
+      "source_label": "tan δ",
+      "domain": "Finite nonnegative source scalar including0;no universal upper bound1 or100,no percent scaling"
+    }
+  ],
+  "channel_basis": "Source explicitly labels Eprime storage modulus and tan delta;threepoint-bending geometry establishes flexural method. This source-specific lane does not assert axial tensile or shear Gprime equivalence.",
+  "typed_coordinates": {
+    "dma_measurement_temperature": "Required reported numeric coordinate with source precision,degC/K and absolute physical floor,or unknown status with all numeric/unit fields null and primary condition evidence. It is a measurement coordinate,not sample conditioning or service limit.",
+    "dma_oscillation_frequency": "Required reported strictly positive cyclic Hz scalar and source precision,or explicit unknown null shape. No default1Hz,no angular frequency/shear-rate conversion.",
+    "mode": "Definition basis fixed to flexural_DMA;primary-source bending method evidence required. Threepoint source is actual source context,not assumed from Eprime symbol alone."
+  },
+  "definition_fields": [
+    "apparatus_and_bending_geometry",
+    "strain_amplitude_and_convention",
+    "temperature_program_and_control",
+    "frequency_protocol",
+    "signal_channel_and_reduction",
+    "specimen_preparation_and_lineage",
+    "replication_and_statistics",
+    "conditioning_and_corrections"
+  ],
+  "facts": "Closed mandatory fields;reported needs primary inspected-document method+condition evidence/nonblanktext,unknown textnull+condition evidence/nonblanknotes. No not_applicable replacement for missing evidence.",
+  "uncertainty": "Absolute spread nonnegative same dedicated role,not source central domain cap;relativepercent independent;no automatic propagation,SD/mean assignment or sample-count conversion.",
+  "deduplication": "Same source cell cannot be duplicated by changing mode wording,temperature/frequency annotations,definition enrichment or numeric trailing zeros. Primary source actual distinct table cells or supported actual protocols can remain distinct. Unknown-to-known coordinate is revision,not added coverage;do not turn temperatures or quantities into specimen counts.",
+  "presentation": "Fourlanguage query/resolve/JSONL export retains rawEprime/tandelta,unit role,typedmeasurementtemperature/frequency,methods,source rights,unknowns and original source precision. No reconstruction of E-double-prime or complex modulus magnitude.",
+  "preservation": "Append two closed branches after current25;all existing branch objects and definition values retained. New units/fields illegal on unrelated quantities. Preserve genericpositive,temperaturefloor,uncertainty and oldresolvedobjects.",
+  "source_values": "36cells from approved source screen:9existingformulations×2temperatures×2quantities;R0excluded. No actual implementation,mapping or admission.",
+  "source_known": {
+    "temperature_C": [
+      "-50",
+      "10"
+    ],
+    "frequency_Hz": "1",
+    "strain_source": "0.2%",
+    "instrument": "Perkin Elmer DMA-7",
+    "geometry": "3pointbending span15mm,3x5x20mm bars",
+    "ramp": "−50to120°C at3°C/min",
+    "software": "Pyris v13.3",
+    "replication": "Source common triplicate;independent/per-cell n unknown"
+  },
+  "source_unknown": [
+    "Amplitudeconvention,LVR validation,clamp/compliance corrections",
+    "Temperature calibration/hold/equilibration",
+    "Per-cellmean,uncertainty,independent n,run and batch",
+    "Actual bar linkage to common hotpress120°C/30g/75mm/3.1mm;30-ton is equipment not actual force",
+    "Conditioning,RH,storage and exact signal reduction"
+  ],
+  "implementation": "not_started",
+  "native_changed": false
+}

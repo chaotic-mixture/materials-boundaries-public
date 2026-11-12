@@ -1,0 +1,38 @@
+{
+  "decision": "changes_required",
+  "review_inputs_sha256": "0d4596cfeb268586396c8207f66b6420623b3dc0cb4c040259a59d6e0ca0c880",
+  "checks": {
+    "bindings": "172 repo、115 external、3 native哈希全部匹配。",
+    "source_values": "四个值4.7/4.3/12.7/26.2%与Table1对应行匹配，专用单位及原精度正确。",
+    "identities": "四个既有composite身份、配方组成及强化信息匹配，状态与性质双向关联正确，无新增身份、牌号或来源。",
+    "definition": "八事实保留Wgel/W0原符号、CHCl3萃取48 h及真空干燥48 h；干基、残留溶剂、校正、回收、n和误差未知，未推断纯网络或交联密度。",
+    "preparation": "性质定义正确区分共同120°C/30 g/75 mm/3.1 mm背景与实际凝胶aliquot未知；80°C/12 h未作为凝胶干燥温度。",
+    "old_objects": "独立内存合成确认旧5700性质、5407状态及身份、牌号、来源保持；候选快照为359464b10268d11432ab6913eb587b9660369af868b33af7fb5afb202bc06b91。",
+    "limited_contracts": "仅四新状态和四性质的有限契约验证及逐状态resolve通过；这些结构检查不能发现下述文字和证据语境残留。",
+    "r1_failure": "原脚本及观察记录保留，记录缺state证据标记在候选输出和原生写入前被拒绝；未声称保留完整原始控制台日志。R2产品形态证据角色已修正。"
+  },
+  "findings": [
+    {
+      "id": "GEL_STATE_DENSITY_TEMPLATE_REMAINS",
+      "severity": "blocking_for_mapping",
+      "path": "experimental/polymer-exploration/20261112/pbs-gel-fraction-native-mapping-r2/NEW_STATES_R1.json",
+      "affected_states": "R10、R20、R30、R45全部四个新状态",
+      "fields": [
+        "state.processing.notes",
+        "state.porosity.notes",
+        "state.porosity.evidence[*].locator",
+        "state.orientation.notes",
+        "state.orientation.evidence[*].locator"
+      ],
+      "issue": "processing.notes仍写actual density aliquot及“No hot pressing…asserted”，与当前已知hot-pressed凝胶语境不一致；porosity和orientation说明仍指selected density specimen，证据定位仍指Table1 Density(g/cm3)列。",
+      "required_change": "全部重绑凝胶萃取语境。保留共同挤出背景、来源已知hot-pressed材料及具体aliquot路线/参数未知的分层；porosity/orientation继续未知，但说明和证据须针对凝胶方法，不引用密度结果列。",
+      "unchanged_requirements": "无需改变四个数值、单位、统计、八事实或未知状态，也不得因此赋予具体几何、方向、压力或干基。"
+    }
+  ],
+  "limits": [
+    "本轮不批准映射继续应用或安装；修正须另冻复核，原生仍5700性质、5407状态。",
+    "未批准完整消费者导出、恢复或副本隔离；后补未冻结消费者尝试不作为本结论依据。",
+    "未运行作者脚本、测试或套件、完整图及历史回归；未写文件或缓存、安装或执行Git变更。",
+    "不构成科学有效性、独立试样或干基认证。"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "decision": "changes_required",
+  "review_inputs_sha256": "98d8f1c6f327f9a80ded1081d680f807dd2eae793a3171587ca80d45e23719e2",
+  "checks": {
+    "bindings": "3 repo、1 external、3 native哈希全部匹配；原生未改。",
+    "source_values": "独立核对主XML Table4：九配方Tc为77/82/82/78/80/80/81/79/76，表头明确Tc (°C)，数值与原精度一致。",
+    "method": "§2.8明确DSC-7、挤出材料10 mg及30→150°C、冷却至30°C、第二次升温程序；冷却速率原文为−10°C/min。",
+    "phase": "§3.5明确Tc取自cooling curve，支持非等温冷却语境。逐格发生序号未明确，保持null，不推1或n2。",
+    "identities_and_overlap": "九个既有身份锚点匹配，类别为1 polymer、8 composite；当前无对应同来源结晶温度记录。R0排除，拟议冷却上下文未占用旧second-heating状态。",
+    "unknowns": "峰识别算法、校准、统计中心、误差、逐格n、独立试片、pan/purge及调湿未知；DMA三次、TGA氮气及软件不迁移至DSC。",
+    "rights_and_scope": "主XML明确CC BY 4.0；本轮仅XML审阅，未新增PDF视觉核验，不认证最新通知完整性。"
+  },
+  "findings": [
+    {
+      "id": "PBS_TC_PEAK_ENDPOINT_NOT_ESTABLISHED",
+      "severity": "blocking_for_peak_mapping",
+      "paths": [
+        "experimental/polymer-exploration/20261112/pbs-cooling-crystallization-source-proposal-r1/SOURCE_CANDIDATES_R1.json",
+        "experimental/polymer-exploration/20261112/pbs-cooling-crystallization-source-proposal-r1/README.zh.md"
+      ],
+      "issue": "Table4仅标Tc，§3.5仅说明取自冷却曲线；所绑定XML未明确该温度为结晶峰顶、最大值或其他峰操作定义。直接赋予crystallization_peak_temperature会增加尚无来源支持的endpoint语义。",
+      "required_change": "保留九个source-reported Tc字面事实，但暂停其peak类型映射。取得同主源明确峰定义证据后再审，或另行审阅更合适的独立契约；不得用惯例、未知判据、旧契约或Figure4第二升温图注补足峰依据。"
+    }
+  ],
+  "adjudications": {
+    "literal_facts": "九个Tc数值、°C单位及冷却语境可作为来源研究事实保留。",
+    "state_plan": "独立冷却方法上下文方向合理，但不证明独立试样、同aliquot/run或与既有DSC状态相同谱系。",
+    "mass_and_rate": "10 mg及−10°C/min仅作为来源共同DSC程序，不认证逐样实称质量、实测速率或逐格周期。",
+    "statistics": "后续不得推断mean、SD、n2或DMA triplicate适用于这些单元格。"
+  },
+  "limits": [
+    "不批准具体映射、实现扩展、原生接纳或安装；现有peak契约不自动放宽。",
+    "不认证科学有效性、动力学、成核机制、工程温区或独立实验数量。",
+    "未运行作者脚本、测试或套件、完整图及历史回归；未写文件或缓存、安装、执行Git变更或推送。"
+  ]
+}
