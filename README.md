@@ -1,11 +1,21 @@
 # 材料边界 · Materials Boundaries
 
-Current software release: **v0.37.0**
+Current software release: **v0.38.0**
 
 **查材料数据，读适用条件，运行可追溯的力学计算。**
 An open, source-qualified materials database and executable mechanics toolkit.
 
-[下载与版本说明](https://github.com/chaotic-mixture/materials-boundaries-public/releases/tag/v0.37.0) · [数据格式](docs/DATABASE_FORMAT.md) · [计算与知识库](docs/EXECUTABLE_MECHANICS.md) · [贡献数据](docs/DATABASE_CONTRIBUTING.zh.md)
+[下载与版本说明](https://github.com/chaotic-mixture/materials-boundaries-public/releases/tag/v0.38.0) · [数据格式](docs/DATABASE_FORMAT.md) · [计算与知识库](docs/EXECUTABLE_MECHANICS.md) · [贡献数据](docs/DATABASE_CONTRIBUTING.zh.md)
+
+## 查询 v0.38.0 新增的 161 条聚合物性质
+
+安装下方 wheel 后，可用同一批次标识查询、筛选或导出原始记录。每条结果保留材料状态、原文报告值与单位、来源定位和测试条件。
+
+```sh
+materials-database summary --batch polymer-r74
+materials-database query --batch polymer-r74 --quantity source_reported_elemental_mass_content_percentage
+materials-database export --batch polymer-r74 --output polymer-r74
+```
 
 ## 单轴拉伸专家系统 · 三个可复现案例
 
@@ -21,7 +31,7 @@ An open, source-qualified materials database and executable mechanics toolkit.
 
 ## 聚合物研究进展（2026-11-12 更新）
 
-v0.37.0 的聚合物目录含 **1,037 个来源限定身份、1,095 个状态、1,221 条性质记录**。其中 PolyOmics 贡献 1,000 个假想线性聚合物模型及对应的计算密度。其余来源共提供 221 条性质记录，覆盖拉伸、弯曲、压缩、热学和电学等测试。下表按来源列举可查的数据，条数按性质记录统计。
+v0.37.0 的历史基线含 **1,037 个来源限定身份、1,095 个状态、1,221 条性质记录**。其中 PolyOmics 贡献 1,000 个假想线性聚合物模型及对应的计算密度。其余来源共提供 221 条性质记录，覆盖拉伸、弯曲、压缩、热学和电学等测试。下表按来源列举可查的数据，条数按性质记录统计。
 
 | 研究对象 | 来源 | 聚合物类性质记录数 |
 | --- | --- | ---: |
@@ -57,10 +67,10 @@ v0.37.0 的聚合物目录含 **1,037 个来源限定身份、1,095 个状态、
 
 ## 现在有什么 / What's available
 
-| 内容 | v0.36.0 |
+| 内容 | v0.38.0 |
 | --- | --- |
 | 材料身份 | 5,180，按来源限定；别名与多个测量不重复计数 |
-| 材料状态 / 性质记录 | 5,262 / 5,412 |
+| 材料状态 / 性质记录 | 5,359 / 5,573 |
 | 数据库操作 | 搜索、分类与证据概览、JSONL 导出、快照校验、版本差异与增量验证 |
 | 原有复合材料计算 | 8 条 HS / Reuss / Voigt 及派生外包络规则 |
 | **新增可执行模型** | **弹性常数换算；三维各向同性应力—应变、刚度矩阵与应变能** |
@@ -73,7 +83,7 @@ v0.37.0 的聚合物目录含 **1,037 个来源限定身份、1,095 个状态、
 Python 3.10+，无第三方运行时依赖。安装本仓库发布的 wheel（不是 PyPI 上的同名包）：
 
 ```sh
-python -m pip install "https://github.com/chaotic-mixture/materials-boundaries-public/releases/download/v0.37.0/materials_boundaries-0.37.0-py3-none-any.whl"
+python -m pip install "https://github.com/chaotic-mixture/materials-boundaries-public/releases/download/v0.38.0/materials_boundaries-0.38.0-py3-none-any.whl"
 ```
 
 或克隆后在仓库根目录运行 `python -m pip install .`。

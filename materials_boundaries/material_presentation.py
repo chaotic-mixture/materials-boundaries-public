@@ -1,15 +1,45 @@
 """Presentation-only, source-preserving views for the reference-material lane."""
+from ._ftir_band_area_ratio_contract import LABEL_KEYS as FTIR_AREA_RATIO_LABELS, FACT_FIELDS as FTIR_AREA_RATIO_FACTS
+from ._continuous_shear_contract import LABEL_KEYS as CONTINUOUS_SHEAR_LABELS, FACT_FIELDS as CONTINUOUS_SHEAR_FACTS
+from ._elemental_content_contract import LABEL_KEYS as ELEMENTAL_CONTENT_LABELS, FACT_FIELDS as ELEMENTAL_CONTENT_FACTS
 from copy import deepcopy
+from ._sec_molar_mass_contract import LABEL_KEYS as SEC_LABELS, FACT_FIELDS as SEC_FACTS, VERIFICATIONS as SEC_VERIFICATIONS
+from ._extension_contract import LABEL_KEYS as EXTENSION_LABELS
+from ._water_absorption_contract import LABEL_KEYS as WATER_LABELS, FACT_FIELDS as WATER_FACTS
+from ._dsc_crystallinity_contract import LABEL_KEYS as DSC_CRYSTALLINITY_LABELS, FACT_FIELDS as DSC_CRYSTALLINITY_FACTS
+from ._dma_flexural_contract import LABEL_KEYS as DMA_LABELS, FACT_FIELDS as DMA_FACTS
+from ._gel_fraction_contract import LABEL_KEYS as GEL_FRACTION_LABELS, FACT_FIELDS as GEL_FRACTION_FACTS
+from ._closed_cell_contract import LABEL_KEYS as CLOSED_CELL_LABELS, FACT_FIELDS as CLOSED_CELL_FACTS
+from ._complex_viscosity_contract import LABEL_KEYS as COMPLEX_VISCOSITY_LABELS, FACT_FIELDS as COMPLEX_VISCOSITY_FACTS
+from ._dsc_enthalpy_contract import LABEL_KEYS as DSC_ENTHALPY_LABELS, FACT_FIELDS as DSC_ENTHALPY_FACTS
+from ._cell_anisotropy_contract import LABEL_KEYS as CELL_ANISOTROPY_LABELS, FACT_FIELDS as CELL_ANISOTROPY_FACTS
+from ._foam_event_contract import LABEL_KEYS as FOAM_EVENT_LABELS, FACT_FIELDS as FOAM_EVENT_FACTS
 import json
 import math
 
 
 LANGUAGES = ("en", "zh", "ja", "de")
+WORK_LABELS = ("code_volumetric_tensile_work_to_break", "work_reference_basis", "work_reference_notice")
 TGA_QUANTITIES = (
     "thermal_degradation_onset_temperature", "temperature_at_specified_mass_loss",
     "thermal_degradation_rate_peak_temperature", "tga_residue_percentage",
 )
 REQUIRED_LABELS = frozenset(('materials', 'reference_properties', 'count', 'empty', 'unknown', 'identity', 'grade', 'category', 'state', 'original_name', 'source_designation', 'source_scope', 'identity_scope', 'authority', 'manufacturer', 'product_form', 'processing', 'temper_or_heat_treatment', 'conditioning', 'composition_or_purity', 'reinforcement', 'porosity', 'orientation', 'property_label', 'quantity', 'evidence_kind', 'reporting_basis', 'determination_basis', 'basis_note', 'reported_value', 'conditions', 'temperature', 'test_standard', 'test_method', 'direction', 'loading_rate', 'density_basis', 'summary_statistic', 'uncertainty', 'uncertainty_status', 'uncertainty_note', 'standard_deviation', 'confidence_interval', 'plus_minus_unspecified', 'confidence_level', 'estimand', 'construction', 'reported_uncertainty_notice', 'sample_count', 'scope', 'method_definition', 'source_document', 'source_discrepancies', 'verification', 'scope_note', 'evaluation_support', 'source', 'source_title', 'source_locator', 'source_url', 'source_read_status', 'source_rights', 'evidence', 'caveat', 'reference_notice', 'statistics_notice', 'unknown_notice', 'range_notice', 'comparison_notice', 'translation_notice', 'cli_catalog_extra', 'cli_material_id', 'cli_identity_id', 'cli_grade_id', 'cli_category', 'cli_evidence_kind', 'cli_reporting_basis', 'cli_source_id', 'cli_quantity', 'cli_filter_notice', 'code_catalog_only', 'code_reported', 'code_not_reported_in_inspected_source', 'code_not_verified', 'code_not_applicable', 'code_manufacturer_reference', 'code_technical_association_reference', 'code_published_experimental_reference', 'code_published_computational_reference', 'code_typical', 'code_nominal', 'code_guideline', 'code_specification_limit', 'code_reported_summary', 'code_not_stated', 'code_source_reports_measurement', 'code_source_reports_calculation', 'code_mixed_or_unclear', 'code_reported_mean', 'code_reported_value', 'code_mass_density', 'code_youngs_modulus', 'code_tensile_modulus', 'code_flexural_modulus', 'code_elastic_modulus_unspecified', 'code_tensile_strength', 'code_metal', 'code_polymer', 'code_inorganic', 'code_composite', 'code_apparent', 'code_bulk', 'code_true', 'code_published_handbook_reference', 'code_published_measurement_derived_reference', 'code_source_reports_compiled_measurements', 'code_crystallographic', 'code_source_reported_compilation', 'code_source_reported_crystallographic_derivation'))
+REQUIRED_LABELS |= frozenset(("code_thermal_degradation_endset_temperature", "degradation_endset_definition"))
+REQUIRED_LABELS |= frozenset(EXTENSION_LABELS)
+REQUIRED_LABELS |= frozenset(WATER_LABELS)
+REQUIRED_LABELS |= frozenset(CLOSED_CELL_LABELS)
+REQUIRED_LABELS |= frozenset(GEL_FRACTION_LABELS)
+REQUIRED_LABELS |= frozenset(DMA_LABELS)
+REQUIRED_LABELS |= frozenset(DSC_CRYSTALLINITY_LABELS)
+REQUIRED_LABELS |= frozenset(FTIR_AREA_RATIO_LABELS)
+REQUIRED_LABELS |= frozenset(SEC_LABELS)
+REQUIRED_LABELS |= frozenset(CONTINUOUS_SHEAR_LABELS)
+REQUIRED_LABELS |= frozenset(ELEMENTAL_CONTENT_LABELS)
+REQUIRED_LABELS |= frozenset(FOAM_EVENT_LABELS)
+REQUIRED_LABELS |= frozenset(CELL_ANISOTROPY_LABELS)
+REQUIRED_LABELS |= frozenset(DSC_ENTHALPY_LABELS)
+REQUIRED_LABELS |= frozenset(COMPLEX_VISCOSITY_LABELS)
 REQUIRED_LABELS |= frozenset(('code_source_reported_computational_structure_density',))
 REQUIRED_LABELS |= frozenset(('code_source_reported_molecular_simulation_density', 'code_simulation_cell'))
 REQUIRED_LABELS |= frozenset(('code_slump_flow_spread',))
@@ -23,9 +53,14 @@ REQUIRED_LABELS |= frozenset(('code_tear_strength',))
 REQUIRED_LABELS |= frozenset(('code_izod_impact_strength',))
 REQUIRED_LABELS |= frozenset(('code_glass_transition_temperature',))
 REQUIRED_LABELS |= frozenset(('code_melting_peak_temperature',))
+REQUIRED_LABELS |= frozenset(('code_crystallization_peak_temperature', 'thermal_scan_definition',
+                             'code_nonisothermal_temperature_scan', 'thermal_scan_phase',
+                             'code_heating', 'code_cooling', 'thermal_phase_occurrence_ordinal'))
 REQUIRED_LABELS |= frozenset(('code_dielectric_breakdown_strength',))
 REQUIRED_LABELS |= frozenset(('code_thermal_conductivity',))
 REQUIRED_LABELS |= frozenset('code_' + quantity for quantity in TGA_QUANTITIES)
+REQUIRED_LABELS |= frozenset(WORK_LABELS)
+REQUIRED_LABELS |= frozenset(("code_mass_specific_heat_capacity", "code_thermal_diffusivity", "thermal_mass_reference_basis"))
 REQUIRED_LABELS |= frozenset(("specified_mass_loss", "degradation_peak_ordinal",
                              "residue_endpoint_temperature", "mass_reference_basis", "tga_reference_notice"))
 REQUIRED_LABELS |= frozenset(('coverage', 'coverage_notice', 'coverage_target', 'coverage_admitted', 'coverage_remaining'))
@@ -58,6 +93,12 @@ def validate_material_locales(locales: dict) -> None:
                or any(_unsafe_display_codepoint(char) for char in value)
                for value in labels.values()):
             raise ValueError(f"material locales: invalid label for {language}")
+
+
+REQUIRED_LABELS |= frozenset(('code_source_reported_thermal_transport_product','source_product_derivation','source_product_notice'))
+
+
+REQUIRED_LABELS |= frozenset(('code_thermal_response_characteristic_time','thermal_response_phase','code_post_stretching_hold','code_post_retraction_recovery','thermal_convection','code_natural_convection','code_forced_convection','code_source_reported_thermal_response_fit','thermal_response_fit_notice','thermal_response_derivation'))
 
 
 def material_labels(language: str = "en") -> dict:
@@ -221,6 +262,120 @@ def render_material_catalog(catalog: dict, kind: str, language: str = "en") -> s
         if prop["density_basis"] is not None:
             output.append(field("density_basis", code(prop["density_basis"]), indent + "  "))
         output.append(field("conditions", "", indent + "  "))
+        if "reaction_time_definition" in prop:
+            event = prop["reaction_event"]
+            output.append(field("reaction_event", code(event["code"]), indent + "    "))
+            output.append(field("scope_note", event["notes"], indent + "      "))
+            output.extend(evidence(event["evidence"], indent + "      "))
+            definition = prop["reaction_time_definition"]
+            output.append(field("reaction_time_definition", "", indent + "    "))
+            output.append(field("scope_note", definition["notes"], indent + "      "))
+            output.extend(evidence(definition["evidence"], indent + "      "))
+            for name in FOAM_EVENT_FACTS:
+                output.extend(fact("reaction_time_" + name, definition[name], indent + "      "))
+            output.append(indent + "    " + labels["reaction_time_reference_notice"])
+        if "dma_definition" in prop:
+            for coordinate_name in ("dma_measurement_temperature", "dma_oscillation_frequency"):
+                coordinate = prop[coordinate_name]
+                displayed = coordinate["value_text"] + " " + coordinate["unit_text"] if coordinate["status"] == "reported" else code(coordinate["status"])
+                output.append(field(coordinate_name, displayed, indent + "    "))
+                output.append(field("scope_note", coordinate["notes"], indent + "      "))
+                output.extend(evidence(coordinate["evidence"], indent + "      "))
+            definition = prop["dma_definition"]
+            output.append(field("dma_definition", "", indent + "    "))
+            output.append(field("scope_note", definition["notes"], indent + "      "))
+            output.extend(evidence(definition["evidence"], indent + "      "))
+            for name in DMA_FACTS:
+                output.extend(fact("dma_" + name, definition[name], indent + "      "))
+            output.append(indent + "    " + labels["dma_reference_notice"])
+        if "complex_viscosity_definition" in prop:
+            coordinate = prop["oscillation_frequency"]
+            displayed_frequency = coordinate["value_text"] + " " + coordinate["unit_text"] if coordinate["status"] == "reported" else code(coordinate["status"])
+            output.append(field("oscillation_frequency", displayed_frequency, indent + "    "))
+            output.append(field("scope_note", coordinate["notes"], indent + "      "))
+            output.extend(evidence(coordinate["evidence"], indent + "      "))
+            definition = prop["complex_viscosity_definition"]
+            output.append(field("complex_viscosity_definition", "", indent + "    "))
+            output.append(field("scope_note", definition["notes"], indent + "      "))
+            output.extend(evidence(definition["evidence"], indent + "      "))
+            for name in COMPLEX_VISCOSITY_FACTS:
+                output.extend(fact("complex_viscosity_" + name, definition[name], indent + "      "))
+            output.append(indent + "    " + labels["complex_viscosity_reference_notice"])
+        if "continuous_shear_definition" in prop:
+            for coordinate_name in ("shear_rate", "shear_temperature"):
+                coordinate = prop[coordinate_name]
+                displayed = coordinate["value_text"] + " " + coordinate["unit_text"] if coordinate["status"] == "reported" else code(coordinate["status"])
+                output.append(field(coordinate_name, displayed, indent + "    "))
+                output.append(field("scope_note", coordinate["notes"], indent + "      "))
+                output.extend(evidence(coordinate["evidence"], indent + "      "))
+            definition = prop["continuous_shear_definition"]
+            output.append(field("continuous_shear_definition", "", indent + "    "))
+            output.append(field("scope_note", definition["notes"], indent + "      "))
+            output.extend(evidence(definition["evidence"], indent + "      "))
+            for name in CONTINUOUS_SHEAR_FACTS:
+                output.extend(fact("continuous_shear_" + name, definition[name], indent + "      "))
+            output.append(indent + "    " + labels["continuous_shear_reference_notice"])
+        if "elemental_content_definition" in prop:
+            coordinate = prop["elemental_analyte"]
+            output.append(field("elemental_analyte", coordinate["symbol"], indent + "    "))
+            output.append(field("scope_note", coordinate["notes"], indent + "      "))
+            output.extend(evidence(coordinate["evidence"], indent + "      "))
+            definition = prop["elemental_content_definition"]
+            output.append(field("elemental_content_definition", "", indent + "    "))
+            output.append(field("scope_note", definition["notes"], indent + "      "))
+            output.extend(evidence(definition["evidence"], indent + "      "))
+            for name in ELEMENTAL_CONTENT_FACTS:
+                output.extend(fact("elemental_content_" + name, definition[name], indent + "      "))
+            output.append(indent + "    " + labels["elemental_content_reference_notice"])
+        if "dsc_enthalpy_definition" in prop:
+            definition = prop["dsc_enthalpy_definition"]
+            output.append(field("dsc_enthalpy_definition", "", indent + "    "))
+            output.append(field("scope_note", definition["notes"], indent + "      "))
+            output.extend(evidence(definition["evidence"], indent + "      "))
+            for name in DSC_ENTHALPY_FACTS:
+                output.extend(fact("dsc_enthalpy_" + name, definition[name], indent + "      "))
+            output.append(indent + "    " + labels["dsc_enthalpy_reference_notice"])
+        if "cell_anisotropy_definition" in prop:
+            definition = prop["cell_anisotropy_definition"]
+            output.append(field("cell_anisotropy_definition", "", indent + "    "))
+            output.append(field("scope_note", definition["notes"], indent + "      "))
+            output.extend(evidence(definition["evidence"], indent + "      "))
+            for name in CELL_ANISOTROPY_FACTS:
+                output.extend(fact("cell_anisotropy_" + name, definition[name], indent + "      "))
+            output.append(indent + "    " + labels["cell_anisotropy_reference_notice"])
+        if "gel_fraction_definition" in prop:
+            definition = prop["gel_fraction_definition"]
+            output.append(field("gel_fraction_definition", "", indent + "    "))
+            output.append(field("scope_note", definition["notes"], indent + "      "))
+            output.extend(evidence(definition["evidence"], indent + "      "))
+            for name in GEL_FRACTION_FACTS:
+                output.extend(fact("gel_fraction_" + name, definition[name], indent + "      "))
+            output.append(indent + "    " + labels["gel_fraction_reference_notice"])
+        if "closed_cell_definition" in prop:
+            definition = prop["closed_cell_definition"]
+            output.append(field("closed_cell_definition", "", indent + "    "))
+            output.append(field("scope_note", definition["notes"], indent + "      "))
+            output.extend(evidence(definition["evidence"], indent + "      "))
+            for name in CLOSED_CELL_FACTS:
+                output.extend(fact("closed_cell_" + name, definition[name], indent + "      "))
+            output.append(indent + "    " + labels["closed_cell_reference_notice"])
+        if "water_absorption_definition" in prop:
+            definition = prop["water_absorption_definition"]
+            output.append(field("water_absorption_definition", "", indent + "    "))
+            output.append(field("scope_note", definition["notes"], indent + "      "))
+            output.extend(evidence(definition["evidence"], indent + "      "))
+            for name in WATER_FACTS:
+                output.extend(fact("water_absorption_" + name, definition[name], indent + "      "))
+            output.append(indent + "    " + labels["water_absorption_reference_notice"])
+        if "extension_definition" in prop:
+            definition = prop["extension_definition"]
+            output.append(field("extension_definition", "", indent + "    "))
+            output.append(field("extension_correction_basis", code(definition["correction_basis"]), indent + "      "))
+            output.append(field("scope_note", definition["notes"], indent + "      "))
+            output.extend(evidence(definition["evidence"], indent + "      "))
+            for name in ("measurement_channel", "reference_length", "failure_criterion"):
+                output.extend(fact("extension_" + name, definition[name], indent + "      "))
+            output.append(indent + "    " + labels["extension_reference_notice"])
         for key in ("specified_mass_loss", "residue_endpoint_temperature"):
             if key in prop:
                 target = prop[key]
@@ -229,12 +384,41 @@ def render_material_catalog(catalog: dict, kind: str, language: str = "en") -> s
                 output.extend(evidence(target["evidence"], indent + "      "))
         if "degradation_peak_ordinal" in prop:
             target = prop["degradation_peak_ordinal"]
-            output.append(field("degradation_peak_ordinal", str(target["value"]), indent + "    "))
+            ordinal = str(target["value"]) if target["value"] is not None else code(target["status"])
+            output.append(field("degradation_peak_ordinal", ordinal, indent + "    "))
             output.append(field("scope_note", target["notes"], indent + "      "))
             output.extend(evidence(target["evidence"], indent + "      "))
+        if "thermal_scan_definition" in prop:
+            program = prop["thermal_scan_definition"]
+            output.append(field("thermal_scan_definition", code(program["kind"]), indent + "    "))
+            output.append(field("scope_note", program["notes"], indent + "      "))
+            output.extend(evidence(program["evidence"], indent + "      "))
+            for key, value_key in (("thermal_scan_phase", "code"), ("thermal_phase_occurrence_ordinal", "value")):
+                if key not in prop:
+                    continue
+                descriptor = prop[key]
+                value = (code(descriptor[value_key]) if value_key == "code" else str(descriptor[value_key])) if descriptor["status"] == "reported" else code(descriptor["status"])
+                output.append(field(key, value, indent + "    "))
+                output.append(field("scope_note", descriptor["notes"], indent + "      "))
+                output.extend(evidence(descriptor["evidence"], indent + "      "))
+        if "thermal_response_phase" in prop:
+            phase=prop["thermal_response_phase"];boundary=prop["thermal_convection"]
+            output.append(field("thermal_response_phase",code(phase["code"]),indent+"    "))
+            output.append(field("scope",phase["notes"],indent+"    "))
+            output.extend(evidence(phase["evidence"],indent+"      "))
+            output.append(field("thermal_convection",code(boundary["regime"] if boundary["status"]=="reported" else boundary["status"]),indent+"    "))
+            output.append(field("scope",boundary["notes"],indent+"    "))
+            output.extend(evidence(boundary["evidence"],indent+"      "))
+        if "thermal_mass_reference_basis" in prop:
+            output.extend(fact("thermal_mass_reference_basis", prop["thermal_mass_reference_basis"], indent + "    "))
+        if "work_reference_basis" in prop:
+            output.extend(fact("work_reference_basis", prop["work_reference_basis"], indent + "    "))
+            output.append(indent + "    " + labels["work_reference_notice"])
         if "mass_reference_basis" in prop:
             output.extend(fact("mass_reference_basis", prop["mass_reference_basis"], indent + "    "))
-        if prop["quantity"] in TGA_QUANTITIES:
+        if "degradation_endset_definition" in prop:
+            output.extend(fact("degradation_endset_definition", prop["degradation_endset_definition"], indent + "    "))
+        if prop["quantity"] in TGA_QUANTITIES or prop["quantity"] == "thermal_degradation_endset_temperature":
             output.append(indent + "    " + labels["tga_reference_notice"])
         if "specified_elongation" in prop:
             target = prop["specified_elongation"]
@@ -294,9 +478,92 @@ def render_material_catalog(catalog: dict, kind: str, language: str = "en") -> s
             if key == "method_definition" and prop[key]["type"] != "source_reported_conventional":
                 value = code(prop[key]["type"]) + ": " + value
             output.append(field(key, value, indent + "  "))
-        if "derivation" in prop:
-            output.append(indent + "  " + labels["derived_notice"])
-            output.append(field("derivation", raw(prop["derivation"]), indent + "  "))
+        if prop["method_definition"]["type"] == "source_reported_dsc_reference_normalization":
+            d = prop["derivation"]
+            output.append(field("dsc_crystallinity_derivation", "", indent + "  "))
+            output.append(indent + "    " + labels["dsc_crystallinity_notice"])
+            output.append(field("dsc_crystallinity_formula_family", code(d["formula_family"]), indent + "    "))
+            reference = d["reference_specific_enthalpy"]
+            display = reference["value_text"] + " " + reference["unit_text"] if reference["status"] == "reported" else code(reference["status"])
+            output.append(field("dsc_crystallinity_reference", display, indent + "    "))
+            output.append(field("scope_note", reference["notes"], indent + "      "))
+            output.extend(evidence(reference["evidence"], indent + "      "))
+            cycle = d["cycle_assignment"]
+            output.append(field("dsc_crystallinity_cycle_status", code(cycle["status"]), indent + "    "))
+            if cycle["assignment_text"] is not None:output.append(field("scope_note", cycle["assignment_text"], indent + "      "))
+            output.append(field("scope_note", cycle["notes"], indent + "      "))
+            output.extend(evidence(cycle["evidence"], indent + "      "))
+            for claim in cycle["claims"]:
+                output.append(field("dsc_crystallinity_claim", claim["text"], indent + "      "))
+                output.append(field("scope_note", claim["notes"], indent + "        "))
+                output.extend(evidence(claim["evidence"], indent + "        "))
+            for name in DSC_CRYSTALLINITY_FACTS:
+                output.extend(fact("dsc_crystallinity_" + name, d[name], indent + "    "))
+            output.append(field("scope_note", d["notes"], indent + "    "))
+            output.extend(evidence(d["evidence"], indent + "    "))
+        if prop["method_definition"]["type"] == "source_reported_ftir_fitted_band_area_ratio":
+            d = prop["derivation"]
+            output.append(field("ftir_area_ratio_derivation", "", indent + "  "))
+            output.append(indent + "    " + labels["ftir_area_ratio_notice"])
+            for role in ("numerator", "denominator"):
+                band = d[role + "_band"]
+                output.append(field("ftir_area_ratio_" + role, band["value_text"] + " " + band["unit_text"], indent + "    "))
+                output.append(field("scope_note", band["notes"], indent + "      "))
+                output.extend(evidence(band["evidence"], indent + "      "))
+            cell = d["source_result_cell"]
+            output.append(field("ftir_area_ratio_source_cell", " / ".join(cell[n] for n in ("table_id", "row_key", "column_key")), indent + "    "))
+            output.append(field("scope_note", cell["notes"], indent + "      "))
+            output.extend(evidence(cell["evidence"], indent + "      "))
+            for name in FTIR_AREA_RATIO_FACTS:
+                output.extend(fact("ftir_area_ratio_" + name, d[name], indent + "    "))
+            output.append(field("scope_note", d["notes"], indent + "    "))
+            output.extend(evidence(d["evidence"], indent + "    "))
+        if "sec_definition" in prop:
+            d = prop["sec_definition"]
+            output.append(field("sec_definition", "", indent + "  "))
+            output.append(indent + "    " + labels["sec_notice"])
+            cell = d["source_result_cell"]
+            output.append(field("sec_source_cell", " / ".join(cell[n] for n in ("table_id", "row_key", "column_key")), indent + "    "))
+            output.append(field("scope_note", cell["notes"], indent + "      "))
+            output.extend(evidence(cell["evidence"], indent + "      "))
+            origin = d["origin"]
+            output.append(field("sec_origin", code(origin["status"]), indent + "    "))
+            reference = origin["original_reference"]
+            if reference is not None:
+                output.append(field("sec_cited_original", reference["title"] + " (" + str(reference["year"]) + "), DOI: " + reference["doi"], indent + "      "))
+                output.append(field("scope_note", reference["notes"], indent + "        "))
+                output.extend(evidence(reference["evidence"], indent + "        "))
+            original = origin["original_result"]
+            output.append(field("sec_original_result", code("sec_original_verified" if original["status"] == "verified" else original["status"]), indent + "      "))
+            if original["status"] == "verified":
+                output.append(field("scope_note", original["document_url"] + " / " + " / ".join(original[n] for n in ("table_id", "row_key", "column_key")), indent + "        "))
+            output.append(field("scope_note", original["notes"], indent + "        "))
+            output.extend(evidence(original["evidence"], indent + "        "))
+            for name in SEC_VERIFICATIONS:
+                output.extend(fact("sec_" + name, origin["verification"][name], indent + "      "))
+            output.append(field("scope_note", origin["notes"], indent + "      "))
+            output.extend(evidence(origin["evidence"], indent + "      "))
+            for group, label in (("reported_common_context", "sec_reported_common_context"), ("actual_original_result_context", "sec_actual_original_context")):
+                output.append(field(label, "", indent + "    "))
+                for name in SEC_FACTS:output.extend(fact("sec_" + name, d[group][name], indent + "      "))
+            basis = d["measurement_basis"]
+            output.append(field("sec_measurement_basis", code(basis["status"]), indent + "    "))
+            if basis["text"] is not None:output.append(field("scope_note", basis["text"], indent + "      "))
+            output.append(field("scope_note", basis["notes"], indent + "      "))
+            output.extend(evidence(basis["evidence"], indent + "      "))
+            output.append(field("scope_note", d["notes"], indent + "    "))
+            output.extend(evidence(d["evidence"], indent + "    "))
+            if prop["method_definition"]["type"] == "source_reported_sec_molar_mass_dispersity":
+                derivation = prop["derivation"]
+                output.append(field("sec_dispersity_derivation", code(derivation["numerator_role"]) + " / " + code(derivation["denominator_role"]), indent + "    "))
+                output.extend(fact("sec_reported_formula", derivation["reported_formula"], indent + "      "))
+                output.append(field("scope_note", derivation["notes"], indent + "      "))
+                output.extend(evidence(derivation["evidence"], indent + "      "))
+        if "derivation" in prop and prop["method_definition"]["type"] not in ("source_reported_dsc_reference_normalization", "source_reported_ftir_fitted_band_area_ratio", "source_reported_sec_molar_mass_dispersity"):
+            product = prop["method_definition"]["type"] == "source_reported_thermal_transport_product"
+            fit = prop["method_definition"]["type"] == "source_reported_thermal_response_fit"
+            output.append(indent + "  " + labels["thermal_response_fit_notice" if fit else "source_product_notice" if product else "derived_notice"])
+            output.append(field("thermal_response_derivation" if fit else "source_product_derivation" if product else "derivation", raw(prop["derivation"]), indent + "  "))
         output.append(field("scope_note", prop["scope_note"], indent + "  "))
         output.extend(evidence(prop["evidence"], indent + "  "))
         output.extend([field("source_read_status", source["read_status"], indent + "  "),

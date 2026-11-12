@@ -69,10 +69,16 @@ class Database:
                     evidence_walk(child)
         evidence_walk(self.data)
 
-    def records(self, *, query='', quantity=None, category=None, source=None):
+    def records(self, *, query='', quantity=None, category=None, source=None, batch=None):
         """Yield detached records with complete native evidence and unknowns."""
         self._require_unchanged()
-        for identifier in sorted(self.properties):
+        identifiers = self.properties
+        if batch is not None:
+            if batch != 'polymer-r74':
+                raise ValueError('Unknown property batch')
+            resource = files('materials_boundaries').joinpath('data').joinpath('polymer_r74_ids.json')
+            identifiers = self.properties.keys() & set(json.loads(resource.read_bytes()))
+        for identifier in sorted(identifiers):
             prop = self.properties[identifier]
             state = self.states[prop['material_state_id']]
             identity = self.identities[state['identity_id']]
@@ -275,6 +281,7 @@ def main():
     parser.add_argument('--quantity')
     parser.add_argument('--category')
     parser.add_argument('--source')
+    parser.add_argument('--batch', choices=['polymer-r74'], help='Select records added in a published data batch')
     parser.add_argument('--output', type=Path)
     parser.add_argument('--before', type=Path)
     parser.add_argument('--snapshot', type=Path)
@@ -300,6 +307,8 @@ def main():
         print(json.dumps(ValidationSession(from_directory(args.before)).validate(database)))
         return
     filters = {k: getattr(args, k) for k in ('query', 'quantity', 'category', 'source')}
+    if args.batch:
+        filters['batch'] = args.batch
     if args.action == 'export':
         print(json.dumps(database.export(args.output, **filters), ensure_ascii=False))
     elif args.action == 'summary':

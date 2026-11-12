@@ -21,7 +21,7 @@ PROFILES = {
 }
 
 
-def definitions(text, decimal, https, null, obj, array, enum):
+def _wood_definitions(text, decimal, https, null, obj, array, enum):
     sha = {'type': 'string', 'pattern': r'^[0-9a-f]{64}$', 'maxLength': 64}
     integer = {'type': 'integer', 'minimum': 1}
     wfo = {'type': 'string', 'pattern': r'^wfo-[0-9]{10}$', 'maxLength': 14}
@@ -137,7 +137,7 @@ def validate_taxon(identity):
         raise ValueError('invalid taxonomic backbone line range')
 
 
-def validate_derivation(prop, identity=None, sources=None):
+def _validate_empirical_derivation(prop, identity=None, sources=None):
     """Audit the declared conversion without inventing measurement precision."""
     derived = prop.get('derivation')
     empirical = prop['method_definition']['type'] == 'source_reported_empirical_conversion'
@@ -244,3 +244,141 @@ def validate_baseline_exclusions(materials):
         taxon = identity.get('canonical_taxon')
         if taxon and taxon['tissue_scope'] == TISSUE and taxon['accepted_taxon_id'] in excluded:
             raise ValueError('canonical imported tissue duplicates a retained baseline identity')
+
+
+TRANSPORT_PROFILE='thermal_transport_product_unpaired_context_v1'
+TRANSPORT_METHOD='source_reported_thermal_transport_product'
+TRANSPORT_KIND='source_reported_product_from_measurements'
+TRANSPORT_EXPRESSION='lambda = alpha * cp * rho'
+TRANSPORT_ROLES=('thermal_diffusivity','mass_specific_heat_capacity','mass_density')
+TRANSPORT_UNKNOWNS=('actual_paired_input_values','actual_specimen_pairing','density_temperature_alignment',
+          'input_aggregation_order','input_covariance','source_uncertainty_propagation_method')
+
+def _thermal_product_definition(text,https,null,obj,array,enum):
+    """No input numbers or compute flags can masquerade as verified raw inputs."""
+    evidence=array({'$ref':'#/$defs/evidence'},1)
+    inputs={q:obj({'quantity':{'const':q},'role':{'const':'source_context_not_verified_actual_input'},
+                    'source_property_label':text,'evidence':evidence}) for q in TRANSPORT_ROLES}
+    return obj({'schema_version':{'const':'1.0.0'},'profile_id':{'const':TRANSPORT_PROFILE},
+        'profile_version':{'const':'1.0.0'},'kind':{'const':TRANSPORT_KIND},
+        'formula':obj({'expression':{'const':TRANSPORT_EXPRESSION},'evidence':evidence}),
+        'contextual_inputs':obj(inputs),
+        'input_provenance':obj({**{q:null for q in TRANSPORT_UNKNOWNS},'unknown_scope_note':text}),
+        'software_calculation_performed':{'const':False},
+        'software_uncertainty_propagation_performed':{'const':False}})
+
+def _validate_thermal_product(prop):
+    """Semantic half;caller must first apply the closed schema definition."""
+    derived=prop.get('derivation')
+    product=prop['method_definition']['type']==TRANSPORT_METHOD
+    tagged=isinstance(derived,dict) and derived.get('profile_id')==TRANSPORT_PROFILE
+    if product!=tagged:raise ValueError('source thermal product requires its profile and vice versa')
+    if not product:return
+    if (prop['quantity']!='thermal_conductivity' or prop['density_basis'] is not None or
+        prop['evidence_kind']!='published_measurement_derived_reference' or
+        prop['determination_basis']!='source_reports_calculation'):
+        raise ValueError('source thermal product quantity,basis or provenance class mismatch')
+    if prop['reported_value']['unit_code'] not in ('W/(m*K)','mW/(m*K)'):
+        raise ValueError('source thermal product output must retain conductivity units')
+    sid=prop['source_id'];url=prop['source_document']['url']
+    for group,tag in [(derived['formula']['evidence'],'method')]+[(derived['contextual_inputs'][q]['evidence'],'reported_value') for q in TRANSPORT_ROLES]:
+        if not group or any(e['source_id']!=sid or e['url']!=url or tag not in e['supports'] for e in group):
+            raise ValueError('product formula and contextual summaries require same primary-document evidence')
+    # No Decimal operation,product,rounding audit,source refit or error propagation.
+
+
+def definitions(text,decimal,https,null,obj,array,enum):
+    result=_wood_definitions(text,decimal,https,null,obj,array,enum)
+    result['derivation']={'oneOf':[result['derivation'],_thermal_product_definition(text,https,null,obj,array,enum),_thermal_fit_definition(text,https,null,obj,array,enum)]}
+    return result
+
+
+def validate_derivation(prop,identity=None,sources=None):
+    from ._sec_molar_mass_contract import applies as applies_sec, validate as validate_sec
+    if applies_sec(prop):
+        validate_sec(prop, identity, sources)
+        return
+    from ._ftir_band_area_ratio_contract import applies as applies_ftir, validate_derivation as validate_ftir
+    if applies_ftir(prop):
+        validate_ftir(prop)
+        return
+    from ._dsc_crystallinity_contract import applies as applies_dsc, validate_derivation as validate_dsc
+    if applies_dsc(prop):
+        validate_dsc(prop)
+        return
+    derived=prop.get('derivation')
+    if (prop['quantity']==FIT_QUANTITY or prop['method_definition']['type']==FIT_METHOD or
+        isinstance(derived,dict) and derived.get('profile_id')==FIT_PROFILE):
+        _validate_thermal_fit(prop,sources)
+        return
+    if (prop['method_definition']['type']==TRANSPORT_METHOD or
+        isinstance(derived,dict) and derived.get('profile_id')==TRANSPORT_PROFILE):
+        _validate_thermal_product(prop)
+        return
+    _validate_empirical_derivation(prop,identity,sources)
+
+
+FIT_PROFILE='thermal_temperature_decay_fit_with_cited_method_v1'
+FIT_METHOD='source_reported_thermal_response_fit'
+FIT_QUANTITY='thermal_response_characteristic_time'
+FIT_EXPRESSION='T(t)=Tf+(T0-Tf)*exp(-t/tau_c)'
+FIT_UNKNOWNS=('raw_temperature_curves','fit_window','optimizer_and_weighting',
+    'baseline_temperature_treatment','fit_aggregation_order','per_cell_fit_count')
+FIT_PHASES=('post_stretching_hold','post_retraction_recovery')
+FIT_REGIMES=('natural_convection','forced_convection')
+
+def _thermal_fit_definition(text,https,null,obj,array,enum):
+    evidence=array({'$ref':'#/$defs/evidence'},1)
+    sha={'type':'string','pattern':r'^[0-9a-f]{64}$','maxLength':64}
+    return obj({'schema_version':{'const':'1.0.0'},'profile_id':{'const':FIT_PROFILE},
+        'profile_version':{'const':'1.0.0'},'kind':{'const':'source_reported_temperature_response_fit'},
+        'model':{'const':FIT_EXPRESSION},
+        'definition':{'const':'absolute_temperature_deviation_to_fluid_decays_to_initial_divided_by_e'},
+        'primary_delegation':obj({'primary_doi':text,'cited_source_id':text,'cited_doi':text,'cited_document_url':https,'cited_document_sha256':sha,'evidence':evidence}),
+        'method_reference':obj({'source_id':text,'doi':text,'url':https,'sha256':sha,
+            'inspected_on':{'type':'string','format':'date','pattern':r'^\d{4}-\d{2}-\d{2}$'},
+            'inspection_scope':text,'use_role':{'const':'method_definition_only_not_current_protocol_or_numeric_input'},'evidence':evidence}),
+        'model_context':obj({'fluid_temperature':{'const':'reference_model_assumes_constant'},
+            'heat_transfer_coefficient':{'const':'reference_model_assumes_uniform_constant'},
+            'radiation':{'const':'reference_model_neglects_radiation'},
+            'actual_applicability_certified':{'const':False}}),
+        'unverified_fit_inputs':obj({**{k:null for k in FIT_UNKNOWNS},'unknown_scope_note':text}),
+        'software_fit_performed':{'const':False},'software_inverse_performed':{'const':False}})
+
+def _validate_thermal_fit(prop,sources=None):
+    derived=prop.get('derivation')
+    if not (prop['quantity']==FIT_QUANTITY and prop['method_definition']['type']==FIT_METHOD
+            and isinstance(derived,dict) and derived.get('profile_id')==FIT_PROFILE):
+        raise ValueError('thermal response time requires its fit method and profile and vice versa')
+    if (prop['evidence_kind']!='published_measurement_derived_reference' or
+            prop['determination_basis']!='source_reports_calculation' or prop['density_basis'] is not None):
+        raise ValueError('thermal response fit classification or basis mismatch')
+    value=prop['reported_value']
+    if value['kind']!='scalar' or value['unit_code'] not in ('s','ms'):
+        raise ValueError('thermal response fit requires scalar time units')
+    primary=prop['source_id'];document=prop['source_document'];delegation=derived['primary_delegation'];reference=derived['method_reference']
+    if (document['hash_status']!='recorded' or document['sha256'] is None or
+        reference['source_id']==primary or reference['url']==document['url'] or reference['sha256']==document['sha256'] or
+        delegation['cited_source_id']!=reference['source_id'] or delegation['cited_doi']!=reference['doi'] or
+        delegation['cited_document_url']!=reference['url'] or delegation['cited_document_sha256']!=reference['sha256']):
+        raise ValueError('thermal fit needs distinct inspected documents and an explicit cited-method binding')
+    def bound(items,sid,url,tag):
+        if not items or any(e['source_id']!=sid or e['url']!=url or tag not in e['supports'] for e in items):
+            raise ValueError('thermal fit evidence source,document or role mismatch')
+    bound(delegation['evidence'],primary,document['url'],'method')
+    bound(reference['evidence'],reference['source_id'],reference['url'],'method')
+    bound(prop['thermal_response_phase']['evidence'],primary,document['url'],'condition')
+    convection=prop['thermal_convection']
+    if convection['status']=='reported':bound(convection['evidence'],primary,document['url'],'condition')
+    if (derived['software_fit_performed'] is not False or derived['software_inverse_performed'] is not False
+        or derived['model_context']['actual_applicability_certified'] is not False):
+        raise ValueError('source fit contract does not perform or certify calculations')
+    if sources is not None:
+        if primary not in sources or reference['source_id'] not in sources:
+            raise ValueError('thermal fit both source roles must resolve')
+        if (sources[primary].get('doi')!=delegation['primary_doi'] or
+            sources[reference['source_id']].get('doi')!=reference['doi'] or
+            document['url'] not in sources[primary]['urls'] or
+            reference['url'] not in sources[reference['source_id']]['urls']):
+            raise ValueError('thermal fit DOI or document differs from source registry')
+    # No fit,inverse,unit conversion,half-life or numeric example reconstruction.

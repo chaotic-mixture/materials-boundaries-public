@@ -42,3 +42,9 @@ jobs:
       - name: Verify installed data export
         working-directory: ${{ runner.temp }}
         run: materials-database verify --snapshot release-example
+      - name: Verify installed polymer release batch outside the checkout
+        working-directory: ${{ runner.temp }}
+        shell: bash
+        run: |
+          materials-database summary --batch polymer-r74 > polymer-summary.json
+          python -c "import json; s=json.load(open('polymer-summary.json',encoding='utf-8')); assert s['property_records']==161 and set(s['identities_by_category'])=={'polymer'}"

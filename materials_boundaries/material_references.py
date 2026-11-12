@@ -20,7 +20,35 @@ from urllib.parse import urlsplit
 
 LANGUAGES = ("en", "zh", "ja", "de")
 CATEGORIES = ("metal", "inorganic", "polymer", "composite", "natural")
+HEAT_CAPACITY_UNITS = ("J/(g*K)", "J/(kg*K)", "kJ/(kg*K)")
+DIFFUSIVITY_UNITS = ("mm^2/s", "m^2/s")
+THERMAL_NEW_QUANTITIES = ("mass_specific_heat_capacity", "thermal_diffusivity")
+RESPONSE_TIME_UNITS = ("s", "ms")
+WORK_UNITS = ("J/cm^3", "MJ/m^3", "J/m^3")
 QUANTITY_DIMENSIONS = {
+    "source_reported_elemental_mass_content_percentage": "dimensionless",
+    "source_reported_continuous_shear_viscosity": "pressure_time",
+    "dsc_reference_normalized_crystallinity_percentage": "dimensionless",
+    "ftir_fitted_carbonyl_band_area_ratio": "dimensionless",
+    "sec_weight_average_molar_mass": "mass_per_amount",
+    "sec_number_average_molar_mass": "mass_per_amount",
+    "sec_source_reported_molar_mass_dispersity": "dimensionless",
+    "dma_flexural_storage_modulus": "pressure",
+    "dma_flexural_loss_tangent": "dimensionless",
+    "solvent_extraction_gel_fraction_percentage": "dimensionless",
+    "oscillatory_complex_viscosity_magnitude": "pressure_time",
+    "dsc_reported_melting_specific_enthalpy": "energy_per_mass",
+    "foam_cell_geometric_anisotropy_ratio": "dimensionless",
+    "foam_reaction_event_time": "time",
+    "closed_cell_content_volume_percentage": "dimensionless",
+    "water_absorption_volume_percentage": "dimensionless",
+    "tensile_extension_at_failure": "length",
+    "thermal_degradation_endset_temperature": "temperature",
+    "crystallization_peak_temperature": "temperature",
+    "thermal_response_characteristic_time": "time",
+    "mass_specific_heat_capacity": "energy_per_mass_temperature",
+    "thermal_diffusivity": "area_per_time",
+    "volumetric_tensile_work_to_break": "energy_per_volume",
     "thermal_degradation_onset_temperature": "temperature",
     "temperature_at_specified_mass_loss": "temperature",
     "thermal_degradation_rate_peak_temperature": "temperature",
@@ -51,6 +79,26 @@ QUANTITY_DIMENSIONS = {
     "slump_flow_spread": "length",
 }
 UNIT_DIMENSIONS = {
+    "percent_elemental_mass_content": "dimensionless",
+    "Pa_s_continuous_shear_viscosity": "pressure_time",
+    "percent_dsc_reference_crystallinity": "dimensionless",
+    "ratio_ftir_fitted_carbonyl_areas": "dimensionless",
+    "g_per_mol_sec_molar_mass": "mass_per_amount",
+    "kg_per_mol_sec_molar_mass": "mass_per_amount",
+    "ten5_g_per_mol_sec_molar_mass": "mass_per_amount",
+    "ratio_sec_molar_mass_dispersity": "dimensionless",
+    "GPa_dma_flexural_storage": "pressure",
+    "ratio_dma_flexural_loss_tangent": "dimensionless",
+    "percent_solvent_extraction_gel_fraction": "dimensionless",
+    "kPa_s_complex_viscosity": "pressure_time",
+    "J_per_g_dsc_melting_enthalpy": "energy_per_mass",
+    "ratio_foam_cell_geometric_anisotropy": "dimensionless",
+    "percent_closed_cell_content_volume": "dimensionless",
+    "percent_water_absorption_volume": "dimensionless",
+    **{u: "time" for u in RESPONSE_TIME_UNITS},
+    **{u: "energy_per_mass_temperature" for u in HEAT_CAPACITY_UNITS},
+    **{u: "area_per_time" for u in DIFFUSIVITY_UNITS},
+    **{unit: "energy_per_volume" for unit in WORK_UNITS},
     "percent_tga_residue": "dimensionless",
     "W/(m*K)": "power_per_length_temperature", "mW/(m*K)": "power_per_length_temperature",
     "V/m": "electric_field", "kV/mm": "electric_field",
@@ -120,7 +168,7 @@ TGA_TEMPERATURE_QUANTITIES = (
     "thermal_degradation_onset_temperature", "temperature_at_specified_mass_loss",
     "thermal_degradation_rate_peak_temperature",
 )
-RESULT_TEMPERATURE_QUANTITIES = (*TEMPERATURE_QUANTITIES, *TGA_TEMPERATURE_QUANTITIES)
+RESULT_TEMPERATURE_QUANTITIES = ("thermal_degradation_endset_temperature", *TEMPERATURE_QUANTITIES, "crystallization_peak_temperature", *TGA_TEMPERATURE_QUANTITIES)
 TGA_QUANTITIES = (*TGA_TEMPERATURE_QUANTITIES, "tga_residue_percentage")
 HTTPS = {"type": "string", "format": "uri", "pattern": r"^(?![\s\S]*[\x00-\x1f\x7f-\x9f\ud800-\udfff])https://[^\s/?#]+(?:[/?#][^\s]*)?(?![\s\S])"}
 
@@ -220,7 +268,7 @@ def _make_properties_schema():
     # Preserve the legacy value definitions and seven existing property branches.
     # The residue role enters only its dedicated central-value branch and the
     # shared uncertainty vocabulary, where same-role checks still apply.
-    unit = _enum(code for code in UNIT_DIMENSIONS if code != "percent_tga_residue")
+    unit = _enum(code for code in UNIT_DIMENSIONS if code not in {"percent_elemental_mass_content", "Pa_s_continuous_shear_viscosity", "kPa_s_complex_viscosity", "J_per_g_dsc_melting_enthalpy", "ratio_foam_cell_geometric_anisotropy", "percent_tga_residue", "percent_water_absorption_volume", "GPa_dma_flexural_storage", "ratio_dma_flexural_loss_tangent", "percent_dsc_reference_crystallinity", "ratio_ftir_fitted_carbonyl_areas", "g_per_mol_sec_molar_mass", "kg_per_mol_sec_molar_mass", "ten5_g_per_mol_sec_molar_mass", "ratio_sec_molar_mass_dispersity", "percent_solvent_extraction_gel_fraction", "percent_closed_cell_content_volume"} and code not in (*RESPONSE_TIME_UNITS, *WORK_UNITS, *HEAT_CAPACITY_UNITS, *DIFFUSIVITY_UNITS))
     common_value = {"value_text": TEXT, "unit_text": TEXT, "unit_code": unit}
     definitions["reported_value"] = {"oneOf": [
         _object({"kind": {"const": "scalar"}, **common_value, "number": DECIMAL}),
@@ -253,13 +301,13 @@ def _make_properties_schema():
     for branch in definitions["legacy_reported_value"]["oneOf"]:
         branch["properties"]["unit_code"] = _enum(
             code for code in UNIT_DIMENSIONS
-            if code not in {"percent_tga_residue", "percent_elongation", "shore_a_scale", *TEMPERATURE_UNITS, *ELECTRIC_FIELD_UNITS, *THERMAL_CONDUCTIVITY_UNITS})
+            if code not in {*RESPONSE_TIME_UNITS, *HEAT_CAPACITY_UNITS, *DIFFUSIVITY_UNITS, *WORK_UNITS, "percent_elemental_mass_content", "Pa_s_continuous_shear_viscosity", "kPa_s_complex_viscosity", "J_per_g_dsc_melting_enthalpy", "ratio_foam_cell_geometric_anisotropy", "GPa_dma_flexural_storage", "ratio_dma_flexural_loss_tangent", "percent_dsc_reference_crystallinity", "ratio_ftir_fitted_carbonyl_areas", "g_per_mol_sec_molar_mass", "kg_per_mol_sec_molar_mass", "ten5_g_per_mol_sec_molar_mass", "ratio_sec_molar_mass_dispersity", "percent_solvent_extraction_gel_fraction", "percent_closed_cell_content_volume", "percent_water_absorption_volume", "percent_tga_residue", "percent_elongation", "shore_a_scale", *TEMPERATURE_UNITS, *ELECTRIC_FIELD_UNITS, *THERMAL_CONDUCTIVITY_UNITS})
     for branch in definitions["elongation_reported_value"]["oneOf"]:
         branch["properties"]["unit_code"] = {"const": "percent_elongation"}
     # Closed source-reported uncertainty variants. An amplitude alone never
     # establishes dispersion, mean aggregation or a confidence construction.
     # Keep the existing SD shape unchanged for old catalog/output compatibility.
-    uncertainty_value = {**common_value, "unit_code": _enum(UNIT_DIMENSIONS)}
+    uncertainty_value = {**common_value, "unit_code": _enum(code for code in UNIT_DIMENSIONS if code not in {"percent_elemental_mass_content", "Pa_s_continuous_shear_viscosity", "kPa_s_complex_viscosity", "J_per_g_dsc_melting_enthalpy", "ratio_foam_cell_geometric_anisotropy", "percent_water_absorption_volume", "GPa_dma_flexural_storage", "ratio_dma_flexural_loss_tangent", "percent_dsc_reference_crystallinity", "ratio_ftir_fitted_carbonyl_areas", "g_per_mol_sec_molar_mass", "kg_per_mol_sec_molar_mass", "ten5_g_per_mol_sec_molar_mass", "ratio_sec_molar_mass_dispersity", "percent_solvent_extraction_gel_fraction", "percent_closed_cell_content_volume"})}
     uncertainty_common = {**uncertainty_value, "number": DECIMAL, "scope": TEXT,
                           "coverage_factor": NULL, "evidence": evidence}
     definitions["confidence_level"] = _object({
@@ -341,7 +389,7 @@ def _make_properties_schema():
         "id": _id("refprop"), "version": _record_revision(), "material_state_id": _id("state"),
         "quantity": _enum(QUANTITY_DIMENSIONS),
         "quantity_dimension": _enum(sorted({dimension for quantity, dimension in QUANTITY_DIMENSIONS.items()
-                                             if quantity not in {"dielectric_breakdown_strength", "thermal_conductivity"}})),
+                                             if quantity not in {"sec_weight_average_molar_mass", "sec_number_average_molar_mass", "sec_source_reported_molar_mass_dispersity", "source_reported_elemental_mass_content_percentage", "source_reported_continuous_shear_viscosity", "oscillatory_complex_viscosity_magnitude", "dsc_reported_melting_specific_enthalpy", "foam_reaction_event_time", "thermal_response_characteristic_time", *THERMAL_NEW_QUANTITIES, "dielectric_breakdown_strength", "thermal_conductivity", "volumetric_tensile_work_to_break"}})),
         "source_property_label": TEXT, "reported_value": _ref("legacy_reported_value"),
         "evidence_kind": _enum(EVIDENCE_KINDS), "reporting_basis": _enum(REPORTING_BASES),
         "determination_basis": _enum(("source_reports_measurement", "source_reports_calculation", "source_reports_compiled_measurements", "not_stated", "mixed_or_unclear")),
@@ -353,6 +401,7 @@ def _make_properties_schema():
         "uncertainty_note": TEXT, "sample_count": _ref("sample_count"),
         "method_definition": _object({"type": _enum(("source_reported_conventional", "source_reported_compilation",
                                                        "source_reported_crystallographic_derivation", "source_reported_empirical_conversion",
+                                                       "source_reported_thermal_transport_product", "source_reported_thermal_response_fit",
                                                        "source_reported_computational_structure_density",
                                                        "source_reported_molecular_simulation_density")),
                                        "definition": TEXT, "extraction_window": {"anyOf": [_ref("reported_window"), NULL]}, "evidence": evidence}),
@@ -400,7 +449,7 @@ def _make_properties_schema():
     other = definitions["property"]
     other["properties"]["quantity"] = _enum(
         q for q in QUANTITY_DIMENSIONS
-        if q not in {"thermal_conductivity", "dielectric_breakdown_strength", "tensile_stress_at_specified_elongation", "shore_a_hardness", *TEMPERATURE_QUANTITIES, *TGA_QUANTITIES}
+        if q not in {"source_reported_elemental_mass_content_percentage", "source_reported_continuous_shear_viscosity", "oscillatory_complex_viscosity_magnitude", "dsc_reported_melting_specific_enthalpy", "foam_cell_geometric_anisotropy_ratio", "foam_reaction_event_time", "dma_flexural_storage_modulus", "dma_flexural_loss_tangent", "dsc_reference_normalized_crystallinity_percentage", "ftir_fitted_carbonyl_band_area_ratio", "sec_weight_average_molar_mass", "sec_number_average_molar_mass", "sec_source_reported_molar_mass_dispersity", "solvent_extraction_gel_fraction_percentage", "closed_cell_content_volume_percentage", "water_absorption_volume_percentage", "tensile_extension_at_failure", "thermal_degradation_endset_temperature", "crystallization_peak_temperature", "thermal_response_characteristic_time", *THERMAL_NEW_QUANTITIES, "thermal_conductivity", "dielectric_breakdown_strength", "tensile_stress_at_specified_elongation", "shore_a_hardness", *TEMPERATURE_QUANTITIES, *TGA_QUANTITIES, "volumetric_tensile_work_to_break"}
         and q not in PERCENT_ELONGATION_QUANTITIES)
     del other["properties"]["specified_elongation"]
     definitions["specified_mass_loss"] = _object({
@@ -408,9 +457,13 @@ def _make_properties_schema():
         "unit_text": TEXT, "unit_code": {"const": "percent_mass_loss"},
         "evidence": evidence, "notes": TEXT,
     })
-    definitions["degradation_peak_ordinal"] = _object({
+    known_peak_ordinal = _object({
         "value": {"type": "integer", "minimum": 1}, "evidence": evidence, "notes": TEXT,
     })
+    definitions["degradation_peak_ordinal"] = {"oneOf": [known_peak_ordinal, _object({
+        "status": _enum(("not_reported_in_inspected_source", "not_verified")),
+        "value": NULL, "evidence": evidence, "notes": TEXT,
+    })]}
     definitions["residue_endpoint_temperature"] = _object({
         "kind": {"const": "scalar"}, "value_text": TEXT, "number": SIGNED_DECIMAL,
         "unit_text": TEXT, "unit_code": _enum(TEMPERATURE_UNITS),
@@ -437,7 +490,96 @@ def _make_properties_schema():
             branch["properties"][qualifier] = _ref(qualifier)
             branch["required"].append(qualifier)
         tga_branches.append(branch)
-    definitions["property"] = {"oneOf": [other, stress, elongation, shore, temperature, electric, thermal, *tga_branches]}
+    definitions["work_reference_basis"] = {"oneOf": deepcopy(definitions["fact"]["oneOf"][:3])}
+    definitions["work_reported_value"] = deepcopy(definitions["reported_value"])
+    for value in definitions["work_reported_value"]["oneOf"]:
+        value["properties"]["unit_code"] = _enum(WORK_UNITS)
+    work = deepcopy(other)
+    work["properties"]["quantity"] = {"const": "volumetric_tensile_work_to_break"}
+    work["properties"]["quantity_dimension"] = {"const": "energy_per_volume"}
+    work["properties"]["reported_value"] = _ref("work_reported_value")
+    work["properties"]["work_reference_basis"] = _ref("work_reference_basis")
+    work["required"].append("work_reference_basis")
+    definitions["thermal_mass_reference_basis"] = {"oneOf": deepcopy(definitions["fact"]["oneOf"][:3])}
+    new_thermal = []
+    for quantity, units in (("mass_specific_heat_capacity", HEAT_CAPACITY_UNITS), ("thermal_diffusivity", DIFFUSIVITY_UNITS)):
+        value_name = quantity + "_reported_value"
+        definitions[value_name] = deepcopy(definitions["reported_value"])
+        for value in definitions[value_name]["oneOf"]:
+            value["properties"]["unit_code"] = _enum(units)
+        branch = deepcopy(other)
+        branch["properties"]["quantity"] = {"const": quantity}
+        branch["properties"]["quantity_dimension"] = {"const": QUANTITY_DIMENSIONS[quantity]}
+        branch["properties"]["reported_value"] = _ref(value_name)
+        if quantity == "mass_specific_heat_capacity":
+            branch["properties"]["thermal_mass_reference_basis"] = _ref("thermal_mass_reference_basis")
+            branch["required"].append("thermal_mass_reference_basis")
+        new_thermal.append(branch)
+    definitions["thermal_response_phase"] = _object({"code": _enum(("post_stretching_hold", "post_retraction_recovery")), "evidence": evidence, "notes": TEXT})
+    definitions["thermal_convection"] = {"oneOf": [
+        _object({"status": {"const": "reported"}, "regime": _enum(("natural_convection", "forced_convection")), "evidence": evidence, "notes": TEXT}),
+        _object({"status": _enum(("not_reported_in_inspected_source", "not_verified")), "regime": NULL, "evidence": _array(_ref("evidence"), 0), "notes": TEXT}),
+    ]}
+    scalar = next(deepcopy(v) for v in definitions["reported_value"]["oneOf"] if v["properties"]["kind"].get("const") == "scalar")
+    scalar["properties"]["unit_code"] = _enum(RESPONSE_TIME_UNITS)
+    definitions["thermal_response_reported_value"] = scalar
+    response = deepcopy(new_thermal[-1])
+    response["properties"].update(quantity={"const": "thermal_response_characteristic_time"}, quantity_dimension={"const": "time"}, reported_value=_ref("thermal_response_reported_value"), thermal_response_phase=_ref("thermal_response_phase"), thermal_convection=_ref("thermal_convection"))
+    response["required"].extend(("thermal_response_phase", "thermal_convection"))
+    definitions["thermal_scan_definition"] = _object({
+        "kind": {"const": "nonisothermal_temperature_scan"}, "evidence": evidence, "notes": TEXT,
+    })
+    definitions["thermal_scan_phase"] = {"oneOf": [
+        _object({"status": {"const": "reported"}, "code": _enum(("heating", "cooling")), "evidence": evidence, "notes": TEXT}),
+        _object({"status": _enum(("not_reported_in_inspected_source", "not_verified")), "code": NULL, "evidence": evidence, "notes": TEXT}),
+    ]}
+    definitions["thermal_phase_occurrence_ordinal"] = {"oneOf": [
+        _object({"status": {"const": "reported"}, "value": {"type": "integer", "minimum": 1}, "evidence": evidence, "notes": TEXT}),
+        _object({"status": _enum(("not_reported_in_inspected_source", "not_verified")), "value": NULL, "evidence": evidence, "notes": TEXT}),
+    ]}
+    crystallization = deepcopy(temperature)
+    crystallization["properties"]["quantity"] = {"const": "crystallization_peak_temperature"}
+    for qualifier in ("thermal_scan_definition", "thermal_scan_phase", "thermal_phase_occurrence_ordinal"):
+        crystallization["properties"][qualifier] = _ref(qualifier)
+        crystallization["required"].append(qualifier)
+    definitions["degradation_endset_definition"] = {"oneOf": [
+        _object({"status": {"const": "reported"}, "text": TEXT, "evidence": evidence, "notes": TEXT}),
+        _object({"status": _enum(("not_reported_in_inspected_source", "not_verified")), "text": NULL, "evidence": evidence, "notes": TEXT}),
+    ]}
+    endset = deepcopy(temperature)
+    endset["properties"]["quantity"] = {"const": "thermal_degradation_endset_temperature"}
+    for qualifier in ("thermal_scan_definition", "degradation_endset_definition"):
+        endset["properties"][qualifier] = _ref(qualifier)
+        endset["required"].append(qualifier)
+    from ._extension_contract import schema_branch
+    extension = schema_branch(definitions, other, text=TEXT, obj=_object, array=_array, ref=_ref)
+    from ._water_absorption_contract import schema_branch as water_branch
+    water = water_branch(definitions, other, text=TEXT, obj=_object, array=_array, ref=_ref)
+    from ._closed_cell_contract import schema_branch as closed_cell_branch
+    closed_cell = closed_cell_branch(definitions, other, text=TEXT, obj=_object, array=_array, ref=_ref)
+    from ._foam_event_contract import schema_branch as foam_event_branch
+    foam_event = foam_event_branch(definitions, other, text=TEXT, obj=_object, array=_array, ref=_ref)
+    from ._cell_anisotropy_contract import schema_branch as cell_anisotropy_branch
+    cell_anisotropy = cell_anisotropy_branch(definitions, other, text=TEXT, obj=_object, array=_array, ref=_ref)
+    from ._dsc_enthalpy_contract import schema_branch as dsc_enthalpy_branch
+    dsc_enthalpy = dsc_enthalpy_branch(definitions, other, text=TEXT, obj=_object, array=_array, ref=_ref)
+    from ._complex_viscosity_contract import schema_branch as complex_viscosity_branch
+    complex_viscosity = complex_viscosity_branch(definitions, other, text=TEXT, obj=_object, array=_array, ref=_ref)
+    from ._gel_fraction_contract import schema_branch as gel_fraction_branch
+    gel_fraction = gel_fraction_branch(definitions, other, text=TEXT, obj=_object, array=_array, ref=_ref)
+    from ._dma_flexural_contract import schema_branches as dma_schema_branches
+    dma_branches = dma_schema_branches(definitions, other, text=TEXT, obj=_object, array=_array, ref=_ref)
+    from ._dsc_crystallinity_contract import schema_branch as dsc_crystallinity_branch
+    dsc_crystallinity = dsc_crystallinity_branch(definitions, other, text=TEXT, obj=_object, array=_array, ref=_ref)
+    from ._ftir_band_area_ratio_contract import schema_branch as ftir_area_ratio_branch
+    ftir_area_ratio = ftir_area_ratio_branch(definitions, other, text=TEXT, obj=_object, array=_array, ref=_ref)
+    from ._sec_molar_mass_contract import schema_branches as sec_molar_mass_branches
+    sec_branches = sec_molar_mass_branches(definitions, other, text=TEXT, https=HTTPS, obj=_object, array=_array, ref=_ref)
+    from ._continuous_shear_contract import schema_branch as continuous_shear_branch
+    continuous_shear = continuous_shear_branch(definitions, other, text=TEXT, obj=_object, array=_array, ref=_ref)
+    from ._elemental_content_contract import schema_branch as elemental_content_branch
+    elemental_content = elemental_content_branch(definitions, other, text=TEXT, obj=_object, array=_array, ref=_ref)
+    definitions["property"] = {"oneOf": [other, stress, elongation, shore, temperature, electric, thermal, *tga_branches, work, *new_thermal, response, crystallization, endset, extension, water, closed_cell, foam_event, cell_anisotropy, dsc_enthalpy, complex_viscosity, gel_fraction, *dma_branches, dsc_crystallinity, ftir_area_ratio, *sec_branches, continuous_shear, elemental_content]}
     return {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "$id": "urn:materials-boundaries:schema:reference_properties:1.0.0",
@@ -696,8 +838,33 @@ def _validate_links(materials, properties, indices):
 # Only spelling/typography normalization; these mappings never change a unit or
 # infer a quantity. Unknown spellings need deliberate capability review.
 _UNIT_SPELLINGS = {
+    "percent_elemental_mass_content": {"wt.%", "wt%", "mass %"},
+    "Pa_s_continuous_shear_viscosity": {"Pa.s", "Pa·s", "Pa s"},
+    "kPa_s_complex_viscosity": {"kPa.s", "kPa·s", "kPa s"},
+    "J_per_g_dsc_melting_enthalpy": {"J/g", "J g^-1", "J g−1"},
+    "ratio_foam_cell_geometric_anisotropy": {"1", "ratio", "dimensionless"},
+    "GPa_dma_flexural_storage": {"GPa"},
+    "ratio_dma_flexural_loss_tangent": {"1", "dimensionless", "tan delta"},
+    "percent_dsc_reference_crystallinity": {"%"},
+    "ratio_ftir_fitted_carbonyl_areas": {"ratio"},
+    "g_per_mol_sec_molar_mass": {"g/mol", "g·mol⁻¹"},
+    "kg_per_mol_sec_molar_mass": {"kg/mol", "kg·mol⁻¹"},
+    "ten5_g_per_mol_sec_molar_mass": {"×10^5 g/mol", "×10⁵ g·mol⁻¹"},
+    "ratio_sec_molar_mass_dispersity": {"ratio"},
+    "percent_solvent_extraction_gel_fraction": {"%"},
+    "percent_closed_cell_content_volume": {"vol.%", "vol%", "V%"},
+    "percent_water_absorption_volume": {"V%", "vol.%", "vol%"},
+    "s": {"s"}, "ms": {"ms"},
+    "J/(g*K)": {"J/(g*K)", "J/(g·K)", "J/g·K"},
+    "J/(kg*K)": {"J/(kg*K)", "J/(kg·K)"},
+    "kJ/(kg*K)": {"kJ/(kg*K)", "kJ/(kg·K)"},
+    "mm^2/s": {"mm^2/s", "mm²/s", "mm2/s"},
+    "m^2/s": {"m^2/s", "m²/s", "m2/s"},
+    "J/cm^3": {"J/cm^3", "J/cm³", "J/cm3"},
+    "MJ/m^3": {"MJ/m^3", "MJ/m³", "MJ/m3"},
+    "J/m^3": {"J/m^3", "J/m³", "J/m3"},
     "percent_tga_residue": {"%"}, "percent_mass_loss": {"%"},
-    "W/(m*K)": {"W/(m*K)", "W/(m·K)"},
+    "W/(m*K)": {"W/(m*K)", "W/(m·K)", "W/m·K"},
     "mW/(m*K)": {"mW/(m*K)", "mW/(m·K)"},
     "V/m": {"V/m"}, "kV/mm": {"kV/mm"},
     "degC": {"°C", "° C", "degC"}, "K": {"K"},
@@ -859,6 +1026,8 @@ def _validate_temperature_value(value, path):
 
 def _absolute_uncertainty_unit_matches(prop, unit):
     central = prop["reported_value"]["unit_code"]
+    if prop["quantity"] == "thermal_degradation_endset_temperature":
+        return unit == central
     return (unit == central or (prop["quantity"] in RESULT_TEMPERATURE_QUANTITIES
             and central in TEMPERATURE_UNITS and unit in TEMPERATURE_UNITS))
 
@@ -912,12 +1081,37 @@ def _validate_property(prop):
     dimension = QUANTITY_DIMENSIONS[prop["quantity"]]
     if prop["quantity_dimension"] != dimension:
         _fail(path, "quantity dimension mismatch")
-    if prop["quantity"] in RESULT_TEMPERATURE_QUANTITIES:
+    if prop["quantity"] == "dsc_reported_melting_specific_enthalpy":
+        from ._dsc_enthalpy_contract import validate_value as validate_dsc_enthalpy_value
+        validate_dsc_enthalpy_value(prop["reported_value"], path + ".reported_value", _fail, _temperature_token_matches)
+    elif prop["quantity"] in RESULT_TEMPERATURE_QUANTITIES:
         _validate_temperature_value(prop["reported_value"], path + ".reported_value")
     else:
         _validate_value(prop["reported_value"], path + ".reported_value", dimension,
                         nonnegative=(prop["quantity"] in PERCENT_ELONGATION_QUANTITIES or
-                                     prop["quantity"] in {"shore_a_hardness", "tga_residue_percentage"}))
+                                     prop["quantity"] in {"source_reported_elemental_mass_content_percentage", "source_reported_continuous_shear_viscosity", "oscillatory_complex_viscosity_magnitude", "foam_reaction_event_time", "dma_flexural_storage_modulus", "dma_flexural_loss_tangent", "dsc_reference_normalized_crystallinity_percentage", "ftir_fitted_carbonyl_band_area_ratio", "sec_weight_average_molar_mass", "sec_number_average_molar_mass", "sec_source_reported_molar_mass_dispersity", "solvent_extraction_gel_fraction_percentage", "closed_cell_content_volume_percentage", "water_absorption_volume_percentage", "tensile_extension_at_failure", "shore_a_hardness", "tga_residue_percentage", "volumetric_tensile_work_to_break"}))
+    from ._extension_contract import validate as validate_extension
+    validate_extension(prop, _fail)
+    from ._water_absorption_contract import validate as validate_water_absorption
+    validate_water_absorption(prop, _fail)
+    from ._dma_flexural_contract import validate as validate_dma
+    validate_dma(prop, _fail, _numeric_token_matches, _validate_temperature_value)
+    from ._gel_fraction_contract import validate as validate_gel_fraction
+    validate_gel_fraction(prop, _fail)
+    from ._closed_cell_contract import validate as validate_closed_cell
+    validate_closed_cell(prop, _fail)
+    from ._foam_event_contract import validate as validate_foam_event
+    validate_foam_event(prop, _fail)
+    from ._cell_anisotropy_contract import validate as validate_cell_anisotropy
+    validate_cell_anisotropy(prop, _fail)
+    from ._dsc_enthalpy_contract import validate as validate_dsc_enthalpy
+    validate_dsc_enthalpy(prop, _fail)
+    from ._complex_viscosity_contract import validate as validate_complex_viscosity
+    validate_complex_viscosity(prop, _fail, _numeric_token_matches)
+    from ._continuous_shear_contract import validate as validate_continuous_shear
+    validate_continuous_shear(prop, _fail, _numeric_token_matches, _validate_temperature_value)
+    from ._elemental_content_contract import validate as validate_elemental_content
+    validate_elemental_content(prop, _fail)
     for field in ("specified_mass_loss", "degradation_peak_ordinal", "residue_endpoint_temperature", "mass_reference_basis"):
         if field not in prop:
             continue
@@ -933,6 +1127,40 @@ def _validate_property(prop):
             if not any(e["url"] == prop["source_document"]["url"]
                        for e in _tagged(descriptor["evidence"], "condition", source)):
                 _fail(path, "TGA qualifier needs primary inspected-document condition evidence")
+    if prop["quantity"] == "thermal_degradation_endset_temperature":
+        for field in ("thermal_scan_definition", "degradation_endset_definition"):
+            descriptor = prop[field]
+            roles = ("method", "condition") if field == "thermal_scan_definition" or descriptor.get("status") == "reported" else ("condition",)
+            for role in roles:
+                _require_tag(descriptor["evidence"], role, path + "." + field, source)
+                if not any(e["url"] == prop["source_document"]["url"]
+                           for e in _tagged(descriptor["evidence"], role, source)):
+                    _fail(path, "TGA endset qualifiers need primary inspected-document evidence")
+    if prop["quantity"] == "crystallization_peak_temperature":
+        for field in ("thermal_scan_definition", "thermal_scan_phase", "thermal_phase_occurrence_ordinal"):
+            descriptor = prop[field]
+            roles = ("method", "condition") if field == "thermal_scan_definition" else ("condition",)
+            for role in roles:
+                _require_tag(descriptor["evidence"], role, path + "." + field, source)
+                if not any(e["url"] == prop["source_document"]["url"]
+                           for e in _tagged(descriptor["evidence"], role, source)):
+                    _fail(path, "Crystallization scan qualifiers need primary inspected-document evidence")
+    if "thermal_mass_reference_basis" in prop:
+        basis = prop["thermal_mass_reference_basis"]
+        if basis["status"] == "reported":
+            _require_tag(basis["evidence"], "condition", path + ".thermal_mass_reference_basis", source)
+            if not any(e["url"] == prop["source_document"]["url"] for e in _tagged(basis["evidence"], "condition", source)):
+                _fail(path, "Thermal mass basis needs primary inspected-document condition evidence")
+        elif not basis["notes"]:
+            _fail(path, "Unknown thermal mass basis needs an explanatory note")
+    if "work_reference_basis" in prop:
+        basis = prop["work_reference_basis"]
+        if basis["status"] == "reported":
+            _require_tag(basis["evidence"], "condition", path + ".work_reference_basis", source)
+            if not any(e["url"] == prop["source_document"]["url"] for e in _tagged(basis["evidence"], "condition", source)):
+                _fail(path, "Work basis needs primary inspected-document condition evidence")
+        elif not basis["notes"]:
+            _fail(path, "Unknown work reference basis needs an explanatory note")
     if prop["quantity"] == "shore_a_hardness":
         value = prop["reported_value"]
         numbers = [value["lower"], value["upper"]] if value["kind"] == "interval" else [value["number"]]
@@ -991,7 +1219,12 @@ def _validate_property(prop):
     is_derived = prop["evidence_kind"] == "published_measurement_derived_reference"
     is_crystallographic = method == "source_reported_crystallographic_derivation"
     is_empirical = method == "source_reported_empirical_conversion"
-    if is_derived != (is_crystallographic or is_empirical):
+    is_thermal_product = method == "source_reported_thermal_transport_product"
+    is_thermal_fit = method == "source_reported_thermal_response_fit"
+    is_dsc_normalization = method == "source_reported_dsc_reference_normalization"
+    is_ftir_area_ratio = method == "source_reported_ftir_fitted_band_area_ratio"
+    is_sec_dispersity = method == "source_reported_sec_molar_mass_dispersity"
+    if is_derived != (is_sec_dispersity or is_ftir_area_ratio or is_crystallographic or is_empirical or is_thermal_product or is_thermal_fit or is_dsc_normalization):
         _fail(path, "measured-input-derived evidence requires an admitted derivation method")
     is_computational_crystal = method == "source_reported_computational_structure_density"
     if (prop["density_basis"] == "crystallographic") != (is_crystallographic or is_computational_crystal):
@@ -1082,7 +1315,60 @@ def _tga_coordinate_key(prop):
     return result
 
 
-def _unique_fact(prop, seen):
+def _coordinate_fact_base(signature, field, ordinal=None):
+    """Exact same-cell/value/protocol key without the coordinates under review."""
+    base = json.loads(signature)
+    if ordinal is None:
+        base[field] = {}
+    else:
+        base[field].pop(ordinal)
+    for name in ("number", "lower", "upper"):
+        if name not in base["value"]:
+            continue
+        token = Decimal(base["value"][name]).as_tuple()
+        digits, exponent = list(token.digits), token.exponent
+        if not any(digits):
+            base["value"][name] = [0, [], 0]
+        else:
+            while digits[-1] == 0:
+                digits.pop()
+                exponent += 1
+            base["value"][name] = [token.sign, digits, exponent]
+    return json.dumps(base, sort_keys=True, ensure_ascii=False)
+
+
+def _crystallization_coordinate_guard(prop, signature, seen):
+    """Index partial coordinates without treating unknowns as new coverage."""
+    base = _coordinate_fact_base(signature, "crystallization_coordinates")
+    phase = prop["thermal_scan_phase"]["code"]
+    ordinal = prop["thermal_phase_occurrence_ordinal"]["value"]
+    def key(kind, *coordinates):
+        return "crystallization:" + json.dumps([base, kind, *coordinates], ensure_ascii=False)
+    if phase is None and ordinal is None:
+        overlap = key("any") in seen
+        additions = (key("uu"),)
+    elif phase is None:
+        overlap = any(k in seen for k in (key("uu"), key("pu_any"), key("uo", ordinal), key("po_ordinal", ordinal)))
+        additions = (key("uo", ordinal), key("uo_any"))
+    elif ordinal is None:
+        overlap = any(k in seen for k in (key("uu"), key("uo_any"), key("pu", phase), key("po_phase", phase)))
+        additions = (key("pu", phase), key("pu_any"))
+    else:
+        overlap = any(k in seen for k in (key("uu"), key("uo", ordinal), key("pu", phase), key("po", phase, ordinal)))
+        additions = (key("po", phase, ordinal), key("po_phase", phase), key("po_ordinal", ordinal))
+    if overlap:
+        _fail(prop["id"], "duplicate source fact for overlapping crystallization coordinates")
+    seen.update(additions)
+    seen.add(key("any"))
+
+
+def _unique_fact(prop, seen, identity_id=None):
+    from ._sec_molar_mass_contract import guard_cell as guard_sec_cell
+    guard_sec_cell(prop, seen, identity_id)
+    from ._continuous_shear_contract import guard_cell as guard_continuous_shear_cell
+    guard_continuous_shear_cell(prop, seen)
+    from ._elemental_content_contract import guard_cell as guard_elemental_content_cell
+    guard_elemental_content_cell(prop, seen)
     value = prop["reported_value"]
     represented_value = {key: item for key, item in value.items() if key not in {"value_text", "unit_text"}}
     # An omitted optional array and an explicitly empty array encode the same
@@ -1112,8 +1398,99 @@ def _unique_fact(prop, seen):
         "locators": sorted({entry["locator"] for entry in _tagged(prop["evidence"], "reported_value", prop["source_id"])}),
         "value": represented_value, "conditions": conditions,
         "specified_elongation": elongation_key,
+        **({"thermal_response": [prop["thermal_response_phase"]["code"],
+            prop["thermal_convection"]["regime"] if prop["thermal_convection"]["status"] == "reported" else "unknown"]}
+            if "thermal_response_phase" in prop else {}),
+        **({"thermal_mass_basis": (["reported", prop["thermal_mass_reference_basis"]["text"]]
+                  if prop["thermal_mass_reference_basis"]["status"] == "reported" else ["unknown", None])}
+           if "thermal_mass_reference_basis" in prop else {}),
+        **({"work_basis": (["reported", prop["work_reference_basis"]["text"]]
+                           if prop["work_reference_basis"]["status"] == "reported" else ["unknown", None])}
+           if "work_reference_basis" in prop else {}),
         **({"tga_coordinates": _tga_coordinate_key(prop)} if prop["quantity"] in TGA_QUANTITIES else {}),
+        **({"crystallization_coordinates": {
+            "phase": prop["thermal_scan_phase"]["code"],
+            "occurrence": prop["thermal_phase_occurrence_ordinal"]["value"],
+        }} if prop["quantity"] == "crystallization_peak_temperature" else {}),
     }, sort_keys=True, ensure_ascii=False)
+    if prop["quantity"] == "thermal_degradation_rate_peak_temperature":
+        # Curation of an unnumbered source cell cannot create a second fact
+        # merely by later assigning an ordinal. Numbered peaks remain distinct.
+        key = _coordinate_fact_base(signature, "tga_coordinates", "degradation_peak_ordinal")
+        unknown_key = "tga_ordinal_unknown:" + key
+        known_key = "tga_ordinal_known:" + key
+        unknown = prop["degradation_peak_ordinal"]["value"] is None
+        if unknown_key in seen or (unknown and known_key in seen):
+            _fail(prop["id"], "duplicate source fact for the same material state")
+        seen.add(unknown_key if unknown else known_key)
+    if prop["quantity"] == "crystallization_peak_temperature":
+        _crystallization_coordinate_guard(prop, signature, seen)
+    if prop["quantity"] == "thermal_degradation_endset_temperature":
+        # Definition enrichment is a revision, not extra source coverage.
+        key = "tga_endset:" + _coordinate_fact_base(signature, "endset_definition")
+        if key in seen:
+            _fail(prop["id"], "duplicate source fact for the same TGA endset cell")
+        seen.add(key)
+    if prop["quantity"] == "oscillatory_complex_viscosity_magnitude":
+        key = "complex_viscosity:" + _coordinate_fact_base(signature, "complex_viscosity_definition")
+        if key in seen:
+            _fail(prop["id"], "duplicate source fact for the same complex viscosity cell")
+        seen.add(key)
+    if prop["quantity"] == "dsc_reported_melting_specific_enthalpy":
+        key = "dsc_enthalpy:" + _coordinate_fact_base(signature, "dsc_enthalpy_definition")
+        if key in seen:
+            _fail(prop["id"], "duplicate source fact for the same DSC enthalpy source cell")
+        seen.add(key)
+    if prop["quantity"] == "foam_cell_geometric_anisotropy_ratio":
+        key = "cell_anisotropy:" + _coordinate_fact_base(signature, "cell_anisotropy_definition")
+        if key in seen:
+            _fail(prop["id"], "duplicate source fact for the same cell anisotropy source cell")
+        seen.add(key)
+    if prop["quantity"] == "foam_reaction_event_time":
+        # Re-labelling an event or enriching its definition cannot duplicate a cell.
+        key = "foam_event:" + _coordinate_fact_base(signature, "reaction_time_definition")
+        if key in seen:
+            _fail(prop["id"], "duplicate source fact for the same reaction-event cell")
+        seen.add(key)
+    if prop["quantity"] == "ftir_fitted_carbonyl_band_area_ratio":
+        from ._ftir_band_area_ratio_contract import cell_key as ftir_cell_key
+        key = "ftir_area_ratio:" + ftir_cell_key(prop)
+        if key in seen:
+            _fail(prop["id"], "duplicate source fact for the same FTIR source cell; revise instead")
+        seen.add(key)
+    if prop["quantity"] == "dsc_reference_normalized_crystallinity_percentage":
+        from ._dsc_crystallinity_contract import cell_key
+        key = "dsc_crystallinity:" + cell_key(_coordinate_fact_base(signature, "derivation"))
+        if key in seen:
+            _fail(prop["id"], "duplicate source fact for the same DSC normalization source cell")
+        seen.add(key)
+    if prop["quantity"] in {"dma_flexural_storage_modulus", "dma_flexural_loss_tangent"}:
+        from ._dma_flexural_contract import cell_key
+        key = "dma:" + cell_key(_coordinate_fact_base(signature, "dma_definition"))
+        if key in seen:
+            _fail(prop["id"], "duplicate source fact for the same flexural DMA source cell")
+        seen.add(key)
+    if prop["quantity"] == "solvent_extraction_gel_fraction_percentage":
+        key = "gel_fraction:" + _coordinate_fact_base(signature, "gel_fraction_definition")
+        if key in seen:
+            _fail(prop["id"], "duplicate source fact for the same extraction gel fraction source cell")
+        seen.add(key)
+    if prop["quantity"] == "closed_cell_content_volume_percentage":
+        key = "closed_cell:" + _coordinate_fact_base(signature, "closed_cell_definition")
+        if key in seen:
+            _fail(prop["id"], "duplicate source fact for the same closed cell source cell")
+        seen.add(key)
+    if prop["quantity"] == "water_absorption_volume_percentage":
+        key = "water_absorption:" + _coordinate_fact_base(signature, "water_absorption_definition")
+        if key in seen:
+            _fail(prop["id"], "duplicate source fact for the same water absorption cell")
+        seen.add(key)
+    if prop["quantity"] == "tensile_extension_at_failure":
+        # Channel/reference/criterion enrichment revises the same source cell.
+        key = "tensile_extension:" + _coordinate_fact_base(signature, "extension_definition")
+        if key in seen:
+            _fail(prop["id"], "duplicate source fact for the same extension cell")
+        seen.add(key)
     if signature in seen:
         _fail(prop["id"], "duplicate source fact for the same material state")
     seen.add(signature)
@@ -1181,7 +1558,13 @@ def _validate_material_catalog(materials, properties, sources, *, property_is_va
             _fail(prop["id"], "manufacturer source cannot become published specimen evidence")
         if "technical association" in source_class.replace("_", " ").replace("-", " ") and prop["evidence_kind"] != "technical_association_reference":
             _fail(prop["id"], "technical-association source must retain its reference evidence class")
-        _unique_fact(prop, duplicate_facts)
+        from ._sec_molar_mass_contract import validate_state_context as validate_sec_state_context
+        validate_sec_state_context(prop, state)
+        from ._continuous_shear_contract import validate_state_context as validate_shear_state_context
+        validate_shear_state_context(prop, state)
+        from ._elemental_content_contract import validate_state_context as validate_elemental_state_context
+        validate_elemental_state_context(prop, state)
+        _unique_fact(prop, duplicate_facts, identity["id"])
 
 
 def resolve_materials(state_ids, materials: dict, properties: dict, sources: dict) -> list[dict]:
@@ -1230,7 +1613,14 @@ def material_coverage(materials: dict, properties: dict) -> dict:
     duplicate_facts = set()
     for prop in properties["records"]:
         _validate_property(prop)
-        _unique_fact(prop, duplicate_facts)
+        from ._sec_molar_mass_contract import validate_state_context as validate_sec_state_context
+        state = indices[2][prop["material_state_id"]]
+        validate_sec_state_context(prop, state)
+        from ._continuous_shear_contract import validate_state_context as validate_shear_state_context
+        validate_shear_state_context(prop, state)
+        from ._elemental_content_contract import validate_state_context as validate_elemental_state_context
+        validate_elemental_state_context(prop, state)
+        _unique_fact(prop, duplicate_facts, state["identity_id"])
     return {
         "material_identity_count": len(materials["identities"]),
         "grade_count": len(materials["grades"]),
