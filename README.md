@@ -19,6 +19,18 @@ An open, source-qualified materials database and executable mechanics toolkit.
 
 第三例可追加 `--poisson .3`，得到约 **0.276 GPa**。这里的 0.3 是用户提供的教学假设。默认模量来自 [Special Metals Nickel 200 技术公报，表 4](https://www.specialmetals.com/documents/technical-bulletins/nickel-200.pdf) 的 26 °C 退火材料动态弹性数据。将该参考值用于此拉伸估算需要用户明确接受其适用性，并假定无初始应力、无热应变、各向同性和小应变线弹性。输出不提供屈服、失效或工程许用值。
 
+## 材料方向 / Material families
+
+| 方向 | 材料身份数 | 收录示例 |
+| --- | ---: | --- |
+| 聚合物（`polymer`） | 1,037 | PLA、ABS、PETG、ASA 打印丝材 |
+| 金属（`metal`） | 1,037 | C11000 铜、6061 铝合金、Nickel 200 纯镍 |
+| 无机材料（`inorganic`） | 1,059 | 硼硅玻璃、熔融石英、氧化铝陶瓷、人造石墨 |
+| 复合材料（`composite`） | 1,037 | 混凝土、炭黑填充 EPDM 橡胶、PBS／木质素共混材料 |
+| 天然材料（`natural`） | 1,010 | 糖枫木、西加云杉木、亚麻纤维束、大麻纤维束 |
+
+共 5,180 个按来源区分的材料身份。可用 `materials-database summary --category polymer` 查看聚合物概况，将 `polymer` 换成表中其他分类即可切换方向。可计算的性质取决于具体材料状态及其数据。
+
 ## 现在有什么 / What's available
 
 | 内容 | v0.36.0 |
