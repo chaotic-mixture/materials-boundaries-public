@@ -26,6 +26,9 @@ THERMAL_NEW_QUANTITIES = ("mass_specific_heat_capacity", "thermal_diffusivity")
 RESPONSE_TIME_UNITS = ("s", "ms")
 WORK_UNITS = ("J/cm^3", "MJ/m^3", "J/m^3")
 QUANTITY_DIMENSIONS = {
+    "foam_cell_geometric_anisotropy_ratio": "dimensionless",
+    "foam_reaction_event_time": "time",
+    "closed_cell_content_volume_percentage": "dimensionless",
     "water_absorption_volume_percentage": "dimensionless",
     "tensile_extension_at_failure": "length",
     "thermal_degradation_endset_temperature": "temperature",
@@ -64,6 +67,8 @@ QUANTITY_DIMENSIONS = {
     "slump_flow_spread": "length",
 }
 UNIT_DIMENSIONS = {
+    "ratio_foam_cell_geometric_anisotropy": "dimensionless",
+    "percent_closed_cell_content_volume": "dimensionless",
     "percent_water_absorption_volume": "dimensionless",
     **{u: "time" for u in RESPONSE_TIME_UNITS},
     **{u: "energy_per_mass_temperature" for u in HEAT_CAPACITY_UNITS},
@@ -238,7 +243,7 @@ def _make_properties_schema():
     # Preserve the legacy value definitions and seven existing property branches.
     # The residue role enters only its dedicated central-value branch and the
     # shared uncertainty vocabulary, where same-role checks still apply.
-    unit = _enum(code for code in UNIT_DIMENSIONS if code not in {"percent_tga_residue", "percent_water_absorption_volume"} and code not in (*RESPONSE_TIME_UNITS, *WORK_UNITS, *HEAT_CAPACITY_UNITS, *DIFFUSIVITY_UNITS))
+    unit = _enum(code for code in UNIT_DIMENSIONS if code not in {"ratio_foam_cell_geometric_anisotropy", "percent_tga_residue", "percent_water_absorption_volume", "percent_closed_cell_content_volume"} and code not in (*RESPONSE_TIME_UNITS, *WORK_UNITS, *HEAT_CAPACITY_UNITS, *DIFFUSIVITY_UNITS))
     common_value = {"value_text": TEXT, "unit_text": TEXT, "unit_code": unit}
     definitions["reported_value"] = {"oneOf": [
         _object({"kind": {"const": "scalar"}, **common_value, "number": DECIMAL}),
@@ -271,13 +276,13 @@ def _make_properties_schema():
     for branch in definitions["legacy_reported_value"]["oneOf"]:
         branch["properties"]["unit_code"] = _enum(
             code for code in UNIT_DIMENSIONS
-            if code not in {*RESPONSE_TIME_UNITS, *HEAT_CAPACITY_UNITS, *DIFFUSIVITY_UNITS, *WORK_UNITS, "percent_water_absorption_volume", "percent_tga_residue", "percent_elongation", "shore_a_scale", *TEMPERATURE_UNITS, *ELECTRIC_FIELD_UNITS, *THERMAL_CONDUCTIVITY_UNITS})
+            if code not in {*RESPONSE_TIME_UNITS, *HEAT_CAPACITY_UNITS, *DIFFUSIVITY_UNITS, *WORK_UNITS, "ratio_foam_cell_geometric_anisotropy", "percent_closed_cell_content_volume", "percent_water_absorption_volume", "percent_tga_residue", "percent_elongation", "shore_a_scale", *TEMPERATURE_UNITS, *ELECTRIC_FIELD_UNITS, *THERMAL_CONDUCTIVITY_UNITS})
     for branch in definitions["elongation_reported_value"]["oneOf"]:
         branch["properties"]["unit_code"] = {"const": "percent_elongation"}
     # Closed source-reported uncertainty variants. An amplitude alone never
     # establishes dispersion, mean aggregation or a confidence construction.
     # Keep the existing SD shape unchanged for old catalog/output compatibility.
-    uncertainty_value = {**common_value, "unit_code": _enum(code for code in UNIT_DIMENSIONS if code != "percent_water_absorption_volume")}
+    uncertainty_value = {**common_value, "unit_code": _enum(code for code in UNIT_DIMENSIONS if code not in {"ratio_foam_cell_geometric_anisotropy", "percent_water_absorption_volume", "percent_closed_cell_content_volume"})}
     uncertainty_common = {**uncertainty_value, "number": DECIMAL, "scope": TEXT,
                           "coverage_factor": NULL, "evidence": evidence}
     definitions["confidence_level"] = _object({
@@ -359,7 +364,7 @@ def _make_properties_schema():
         "id": _id("refprop"), "version": _record_revision(), "material_state_id": _id("state"),
         "quantity": _enum(QUANTITY_DIMENSIONS),
         "quantity_dimension": _enum(sorted({dimension for quantity, dimension in QUANTITY_DIMENSIONS.items()
-                                             if quantity not in {"thermal_response_characteristic_time", *THERMAL_NEW_QUANTITIES, "dielectric_breakdown_strength", "thermal_conductivity", "volumetric_tensile_work_to_break"}})),
+                                             if quantity not in {"foam_reaction_event_time", "thermal_response_characteristic_time", *THERMAL_NEW_QUANTITIES, "dielectric_breakdown_strength", "thermal_conductivity", "volumetric_tensile_work_to_break"}})),
         "source_property_label": TEXT, "reported_value": _ref("legacy_reported_value"),
         "evidence_kind": _enum(EVIDENCE_KINDS), "reporting_basis": _enum(REPORTING_BASES),
         "determination_basis": _enum(("source_reports_measurement", "source_reports_calculation", "source_reports_compiled_measurements", "not_stated", "mixed_or_unclear")),
@@ -419,7 +424,7 @@ def _make_properties_schema():
     other = definitions["property"]
     other["properties"]["quantity"] = _enum(
         q for q in QUANTITY_DIMENSIONS
-        if q not in {"water_absorption_volume_percentage", "tensile_extension_at_failure", "thermal_degradation_endset_temperature", "crystallization_peak_temperature", "thermal_response_characteristic_time", *THERMAL_NEW_QUANTITIES, "thermal_conductivity", "dielectric_breakdown_strength", "tensile_stress_at_specified_elongation", "shore_a_hardness", *TEMPERATURE_QUANTITIES, *TGA_QUANTITIES, "volumetric_tensile_work_to_break"}
+        if q not in {"foam_cell_geometric_anisotropy_ratio", "foam_reaction_event_time", "closed_cell_content_volume_percentage", "water_absorption_volume_percentage", "tensile_extension_at_failure", "thermal_degradation_endset_temperature", "crystallization_peak_temperature", "thermal_response_characteristic_time", *THERMAL_NEW_QUANTITIES, "thermal_conductivity", "dielectric_breakdown_strength", "tensile_stress_at_specified_elongation", "shore_a_hardness", *TEMPERATURE_QUANTITIES, *TGA_QUANTITIES, "volumetric_tensile_work_to_break"}
         and q not in PERCENT_ELONGATION_QUANTITIES)
     del other["properties"]["specified_elongation"]
     definitions["specified_mass_loss"] = _object({
@@ -525,7 +530,13 @@ def _make_properties_schema():
     extension = schema_branch(definitions, other, text=TEXT, obj=_object, array=_array, ref=_ref)
     from ._water_absorption_contract import schema_branch as water_branch
     water = water_branch(definitions, other, text=TEXT, obj=_object, array=_array, ref=_ref)
-    definitions["property"] = {"oneOf": [other, stress, elongation, shore, temperature, electric, thermal, *tga_branches, work, *new_thermal, response, crystallization, endset, extension, water]}
+    from ._closed_cell_contract import schema_branch as closed_cell_branch
+    closed_cell = closed_cell_branch(definitions, other, text=TEXT, obj=_object, array=_array, ref=_ref)
+    from ._foam_event_contract import schema_branch as foam_event_branch
+    foam_event = foam_event_branch(definitions, other, text=TEXT, obj=_object, array=_array, ref=_ref)
+    from ._cell_anisotropy_contract import schema_branch as cell_anisotropy_branch
+    cell_anisotropy = cell_anisotropy_branch(definitions, other, text=TEXT, obj=_object, array=_array, ref=_ref)
+    definitions["property"] = {"oneOf": [other, stress, elongation, shore, temperature, electric, thermal, *tga_branches, work, *new_thermal, response, crystallization, endset, extension, water, closed_cell, foam_event, cell_anisotropy]}
     return {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "$id": "urn:materials-boundaries:schema:reference_properties:1.0.0",
@@ -784,6 +795,8 @@ def _validate_links(materials, properties, indices):
 # Only spelling/typography normalization; these mappings never change a unit or
 # infer a quantity. Unknown spellings need deliberate capability review.
 _UNIT_SPELLINGS = {
+    "ratio_foam_cell_geometric_anisotropy": {"1", "ratio", "dimensionless"},
+    "percent_closed_cell_content_volume": {"vol.%", "vol%", "V%"},
     "percent_water_absorption_volume": {"V%", "vol.%", "vol%"},
     "s": {"s"}, "ms": {"ms"},
     "J/(g*K)": {"J/(g*K)", "J/(g·K)", "J/g·K"},
@@ -1017,11 +1030,17 @@ def _validate_property(prop):
     else:
         _validate_value(prop["reported_value"], path + ".reported_value", dimension,
                         nonnegative=(prop["quantity"] in PERCENT_ELONGATION_QUANTITIES or
-                                     prop["quantity"] in {"water_absorption_volume_percentage", "tensile_extension_at_failure", "shore_a_hardness", "tga_residue_percentage", "volumetric_tensile_work_to_break"}))
+                                     prop["quantity"] in {"foam_reaction_event_time", "closed_cell_content_volume_percentage", "water_absorption_volume_percentage", "tensile_extension_at_failure", "shore_a_hardness", "tga_residue_percentage", "volumetric_tensile_work_to_break"}))
     from ._extension_contract import validate as validate_extension
     validate_extension(prop, _fail)
     from ._water_absorption_contract import validate as validate_water_absorption
     validate_water_absorption(prop, _fail)
+    from ._closed_cell_contract import validate as validate_closed_cell
+    validate_closed_cell(prop, _fail)
+    from ._foam_event_contract import validate as validate_foam_event
+    validate_foam_event(prop, _fail)
+    from ._cell_anisotropy_contract import validate as validate_cell_anisotropy
+    validate_cell_anisotropy(prop, _fail)
     for field in ("specified_mass_loss", "degradation_peak_ordinal", "residue_endpoint_temperature", "mass_reference_basis"):
         if field not in prop:
             continue
@@ -1331,6 +1350,22 @@ def _unique_fact(prop, seen):
         key = "tga_endset:" + _coordinate_fact_base(signature, "endset_definition")
         if key in seen:
             _fail(prop["id"], "duplicate source fact for the same TGA endset cell")
+        seen.add(key)
+    if prop["quantity"] == "foam_cell_geometric_anisotropy_ratio":
+        key = "cell_anisotropy:" + _coordinate_fact_base(signature, "cell_anisotropy_definition")
+        if key in seen:
+            _fail(prop["id"], "duplicate source fact for the same cell anisotropy source cell")
+        seen.add(key)
+    if prop["quantity"] == "foam_reaction_event_time":
+        # Re-labelling an event or enriching its definition cannot duplicate a cell.
+        key = "foam_event:" + _coordinate_fact_base(signature, "reaction_time_definition")
+        if key in seen:
+            _fail(prop["id"], "duplicate source fact for the same reaction-event cell")
+        seen.add(key)
+    if prop["quantity"] == "closed_cell_content_volume_percentage":
+        key = "closed_cell:" + _coordinate_fact_base(signature, "closed_cell_definition")
+        if key in seen:
+            _fail(prop["id"], "duplicate source fact for the same closed cell source cell")
         seen.add(key)
     if prop["quantity"] == "water_absorption_volume_percentage":
         key = "water_absorption:" + _coordinate_fact_base(signature, "water_absorption_definition")

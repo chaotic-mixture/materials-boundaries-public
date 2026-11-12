@@ -1,0 +1,31 @@
+{
+  "decision": "approved",
+  "review_inputs_sha256": "232d96d1520fcca4086f7e6c504981b1ac991d8a8f4633bb0968fa49a04a16db",
+  "reviewer": "/root/review_phbv39_flexural",
+  "checks": {
+    "hashes": "181 repo、62 external、3 native全部匹配；R1全部绑定保持原哈希，原changes_required范围未被改写。",
+    "r1_finding_closure": "R2的73项打包输入全部匹配当前文件。当前README、实际staged README及wheel METADATA正文在仅CRLF→LF规范化后逐字节相同，无裁剪或忽略正文。",
+    "readme_sha256": "4f096b8de9d966a310cb5546016dfc5306a7e17b423af58f4b4a5fc5231ace3b",
+    "installation": {
+      "version": "0.35.0+polymerlocal.20261112.r62r2",
+      "wheel_sha256": "8b2fd1f27bbd7372165eb6007636efdcd73fe547f9c017648755ea9a99de0dcd",
+      "package_inputs": 73,
+      "payload": 69,
+      "metadata": 6,
+      "wheel_record_checked": 75,
+      "installed_record_checked": 80,
+      "result": "实际安装与新wheel逐字节一致；68个非版本载荷等当前原生，staged仅版本文件不同。"
+    },
+    "consumers": "实际R2隔离安装的16/64/4三组完整对象等当前原生、R1与R2文件导出；恢复校验和副本隔离通过。",
+    "preserved_results": "三表、代码、五份主文档及原19项检查的90输入未变，沿用R1已核的数据应用、旧对象保持及未知边界结论；未重跑测试，未与历史312项相加。",
+    "failure_scope": "R1旧README包及原结论保留。R2首次字面比较因METADATA换行不同失败的说明保留；独立检查确认当前仅换行规范化即可精确相等。",
+    "snapshot": "20a936c91e6dcdc4e81ef7ecd3bcaf3483a3e5829484860576261ba71168d074"
+  },
+  "findings": [],
+  "limits": [
+    "批准r62 R2本地最终整合；R1仍为changes_required历史阶段，不将其旧README包追认为当前文档证据。",
+    "未运行作者helpers、测试模块或套件、完整图或历史回归；未写文件、缓存、安装或执行Git变更。",
+    "direct_url的archive_info为空，不认证安装过程的加密来源链。",
+    "不认证科学有效性、标准符合性、提交推送、远端CI、main合并或部署。"
+  ]
+}

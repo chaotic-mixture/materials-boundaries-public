@@ -1,0 +1,36 @@
+{
+  "decision": "changes_required",
+  "review_inputs_sha256": "c61da5eee4a79ede256f5e453ffef7c8c971ba121826ec356bc00b5c66336ee8",
+  "checks": {
+    "hashes": "6 repo、5 external、3 native全部匹配。",
+    "source": "独立查看PDF p7/p17并读取JATS。Table10四个既有配方LPO-1/LPO-2/SPO-2/SPO-3依次为94/93/95/95 vol.%，未报告幅度或逐格n。",
+    "method": "原文明示AccuPyc II 1340及ISO 4590:2016，并使用measured and computed表述；未给出具体体积定义、计算式或校正过程。",
+    "overlap": "四个既有polymer身份及密度状态关联正确，porosity文本已记载同一来源格。当前无对应独立quantity；结构化不代表新增独立材料、样本或实验覆盖。",
+    "rights": "JATS明确CC BY 4.0；保留既有选择性事实使用及原始资产不入库的边界。",
+    "native": "当前三表保持r60冻结字节，未新增或修订原生对象。"
+  },
+  "findings": [
+    {
+      "severity": "blocking",
+      "location": "CONTRACT_PROPOSAL_R1.json:number_domain_for_review",
+      "issue": "闭孔体积含量的拟定通用中心值仅设非负、取消上界，不能由体积分母尚未转录来支持。闭孔含量与可超过100%的水吸收比值具有不同语义。",
+      "required_change": "初版专用中央尺度限定0≤value≤100，保留0及原精度。未来若来源报告超出该范围，应保留原文并另行审查异常结果或扩展契约；不得裁剪、修值或自动接纳。此限定不补造具体分母、标准公式或符合性。",
+      "current_candidates_affected": false
+    }
+  ],
+  "adjudications": {
+    "source_facts": "四个来源值可以进入后续具体映射审阅。",
+    "classification": "published_experimental_reference/source_reports_measurement/source_reported_conventional适当，须保留measured and computed，不能称原始直接计数，也不虚构数值输入或软件计算。",
+    "statistics": "reported_value、n=null、uncertainty=null适当；不推断mean、SD或跨方法样本数。",
+    "unknowns": "体积定义、气体、温压、几何、方向、切面校正和专用预处理继续未知。七项必需事实及主文档证据方案可行；generic方向字段也须显式保留未知。",
+    "preparation": "24h室温固化仅共同制备背景，不建立方法平衡、测试温度或逐试样一致性。",
+    "separation": "不得转换为总孔隙率、100减所得开孔率、水吸收、密度或渗透率。独立比重瓶测试上下文可以采用，但不认证与其他方法试样的物理关联。",
+    "revision_identity": "同一来源格的定义补全应修订既有事实，不产生额外事实；专用单位和绝对幅度角色与其他percent尺度隔离。"
+  },
+  "limits": [
+    "本结论仅审来源与契约原则；修订数域后仍需另审实现、映射、应用和实际安装。",
+    "未读取ISO完整程序，不补填标准默认值，不认证标准符合性或科学有效性。",
+    "未运行作者helpers、测试模块或套件、完整图或历史回归；未写文件、安装或执行Git变更。",
+    "未新取PDF或核验最新通知完整性。"
+  ]
+}

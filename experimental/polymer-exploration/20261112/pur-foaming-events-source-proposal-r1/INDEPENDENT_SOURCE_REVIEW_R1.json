@@ -1,0 +1,29 @@
+{
+  "decision": "approved",
+  "review_inputs_sha256": "b9110b02348d058b28a7636830fc4621b6f7389e8801b1bd2a953bfe628bca61",
+  "checks": {
+    "hashes": "6 repo、5 external、3 native全部匹配。",
+    "source_values": "独立读取JATS Table10全部相关行，16格与提案一致，保留原整数和s。",
+    "methods": "§2.8明确Foamat用于起发／上升时间；拉丝端点为玻璃棒浸拉时开始出现丝，不粘端点为轻触后无泡沫粘附。复用本会话已独立查看的同字节PDF p7/p17。",
+    "identity": "四个既有identity_scope及配方事实与当前原生一致，均明确锚定研究输入配方，而非认证固化网络。",
+    "unknowns": "计时起点、Foamat阈值、实际反应环境、装料／几何、n、中心估计及误差未补。MRSM三杯、其他方法样本数及24h固化未迁移。",
+    "overlap": "当前没有foam_reaction_event_time；已有thermal_response_characteristic_time保持独立，不作替代。",
+    "native": "当前5644性质／5377状态／134来源冻结字节保持不变。"
+  },
+  "findings": [],
+  "adjudications": {
+    "identity_and_lane": "允许在现有研究配方身份下有条件建立反应混合物／发泡过程上下文，无需仅因时间阶段不同另造材料身份。依据是已存在的输入配方语义及同文Table9/10关联，不是标签相同本身。",
+    "required_state_boundary": "实际映射的product_form、名称、四语及source_scope必须明确反应阶段和过程观察；不得复用固化密度、水吸收、DMA、TGA等状态。身份关联不证明同杯、同试样、同批或固化网络化学等价，也不增加独立材料或实验覆盖。",
+    "context_partition": "按Foamat与玻璃棒方法族建立上下文可行，但上下文数量不代表实际试样数；不得由方法族分组推定组内共用试样或计时钟。",
+    "quantity": "独立过程事件时间量适当；四种typed_event须封闭、保留源标签和证据。秒制非负标量含原文0可行，未知不得编码为0；不得扩大旧热响应时间语义。",
+    "endpoints": "拉丝不等于流变交叉或化学转化；不粘不等于完全固化或标准化适用期；上升时间不推最大高度或完全反应。",
+    "temporal_relations": "所有clock_origin保持未知，不强制事件排序、不相减推区间、不默认混合开始、pMDI加入、10s混合结束或仪器触发为零点。",
+    "classification": "来源限定的published_experimental_reference/source_reports_measurement/source_reported_conventional适当。七项强制事实应在实现中保留严格reported／explicit unknown及同所检主文档证据。",
+    "statistics_and_deduplication": "16格reported_value、n=null、uncertainty=null适当。事件角色及原来源单元格须在查询、导出和去重中保留；定义补全或标签变化不能制造新事实。"
+  },
+  "limits": [
+    "批准仅限来源、身份／时间语义及契约原则，可进入具体实现；不批准未来映射、应用或安装。",
+    "未运行作者helpers、测试模块或套件、完整图或历史回归；未写文件、缓存、安装或执行Git变更。",
+    "不认证原始计时程序、标准符合性、科学有效性、跨方法试样关联或最新通知完整性。"
+  ]
+}

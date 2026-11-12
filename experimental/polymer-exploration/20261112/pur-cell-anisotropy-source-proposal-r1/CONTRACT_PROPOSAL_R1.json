@@ -1,0 +1,25 @@
+{
+  "quantity": "foam_cell_geometric_anisotropy_ratio",
+  "dimension": "dimensionless",
+  "central_domain": "strictly positive scalar ratio; no upper bound1 or100; no absolute amplitude semantics inherited without same-code checking",
+  "basis": "source_reported_ratio_of_directional_mean_cell_sizes",
+  "definition": "Average cell diameter parallel to foam rise divided by average cell size perpendicular to foam rise; preserve source wording and integer decimal precision",
+  "facts_required": [
+    "numerator_direction_and_measure",
+    "denominator_direction_and_measure",
+    "imaging_and_analysis",
+    "sectioning_and_sampling",
+    "averaging_and_ratio_reduction",
+    "cell_selection_and_count",
+    "preconditioning"
+  ],
+  "classification_proposal": "source-reported conventional microscopy/ImageJ reduction, not evaluator calculation or independent simulation; reviewer must adjudicate evidence/determination role",
+  "prohibited": [
+    "Do not derive numerator or denominator from ratio",
+    "Do not interpret as mechanical stiffness,strength,conductivity or full3D anisotropy",
+    "Do not assume ratio1 means full isotropy",
+    "No mean-of-per-cell-ratios inference",
+    "Do not use normality assumption as tested normality or uncertainty",
+    "No shared pieces or counts across methods"
+  ]
+}

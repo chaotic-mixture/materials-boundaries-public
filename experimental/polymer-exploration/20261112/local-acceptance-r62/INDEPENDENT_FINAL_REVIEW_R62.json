@@ -1,0 +1,38 @@
+{
+  "decision": "changes_required",
+  "review_inputs_sha256": "14da16c65c224f3b0b9b5316784b76c71aa32bb2ea665f19a93ebe5189a4b850",
+  "reviewer": "/root/review_phbv39_flexural",
+  "checks": {
+    "hashes": "174 repo、49 external、3 native全部匹配。",
+    "application": "实际16条性质及8个反应上下文逐对象等于获批候选。三表before备份匹配映射入口及应用意图；旧5644性质、5377状态、全部身份牌号和来源完整保持。",
+    "semantics": "反应阶段名称、product_form及scope保持；未知clock_origin、环境、装料、n和误差未补，未推定共杯、共钟、排序、差值或固化状态。",
+    "execution": "原始日志Ran 19 tests、OK；90项检查输入全部仍匹配当前字节，README不在这90项中。该结果可保留，不与历史312项相加。",
+    "installation_content": {
+      "version": "0.35.0+polymerlocal.20261112.r62",
+      "wheel_sha256": "ce681b964fe65e355d28a460434962bda461ea5e1672ceeefbe33ab34d0cb2b1",
+      "payload": 69,
+      "metadata": 6,
+      "wheel_record_checked": 75,
+      "installed_record_checked": 80,
+      "result": "wheel与实际安装逐字节一致，68个非版本载荷等当前原生，新事件模块实际存在；代码、数据及RECORD内容核验通过。"
+    },
+    "consumers": "实际隔离安装16/64/4三组完整对象等原生和保存文件导出；16条性质等获批候选，恢复校验及副本隔离通过。",
+    "documents": "五份当前主文档保持LF，新增r62头部后原r61正文可精确还原到其冻结哈希；文档说明中的计数及未知边界准确。",
+    "snapshot": "20a936c91e6dcdc4e81ef7ecd3bcaf3483a3e5829484860576261ba71168d074"
+  },
+  "findings": [
+    {
+      "severity": "blocking",
+      "location": "PACKAGE_INPUTS_R62.json:README.md；当前README.md；wheel/installed METADATA正文",
+      "issue": "安装完成后追加r62文档头部，导致最终包输入与当前README不一致。73项打包输入中仅README漂移：记录值为7ba7026be62b667aae8d390f1ef4994cf7dad8167c05e25fa14836c738824888，当前为4f096b8de9d966a310cb5546016dfc5306a7e17b423af58f4b4a5fc5231ace3b。包内METADATA仍为r61 README，不能认证其包含当前r62文档。",
+      "evidence": "实际source目录73项与BUILD_INPUTS匹配，staged仅版本文件不同；其README确为旧哈希。wheel和installed METADATA彼此一致，但换行规范化后仍与当前README正文不同。",
+      "required_change": "保留R1全部冻结输入、wheel和安装证据。稳定当前文档后另建并冻结R2打包／安装证据，核对73项当前输入、METADATA正文及实际安装内容，明确R1阶段边界。",
+      "impact": "不否定已核原生16条映射、旧对象保持、19项检查或R1安装的代码／数据／导出一致性；阻塞当前文档与安装包整体终审批准。"
+    }
+  ],
+  "limits": [
+    "尚未批准r62当前文档与安装的最终整合；后补R2尚不属于本入口。",
+    "未运行作者helpers、测试模块或套件、完整图或历史回归；未写文件、缓存、安装或执行Git变更。",
+    "不认证安装过程的加密来源链、科学有效性、标准符合性、提交推送或远端CI。"
+  ]
+}

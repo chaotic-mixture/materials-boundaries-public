@@ -1,0 +1,34 @@
+{
+  "status": "source_and_contract_proposal_only",
+  "quantity": "closed_cell_content_volume_percentage",
+  "dimension": "dimensionless",
+  "unit_role": "percent_closed_cell_content_volume",
+  "initial_value_shape": "source-reported scalar only, preserve integer precision and literal0",
+  "number_domain_for_review": "Dedicated closed-cell volume-content central scalar:0<=value<=100 inclusive, preserve original precision and literal0. This role is part-volume content, unlike water-absorption ratio. Unknown exact denominator/correction does not remove this upper bound. If future sources report outside range, retain source bytes and separately adjudicate anomaly or extension; do not clamp, repair or automatically admit. Bound alone does not establish denominator, standard formula, saturated state or compliance.",
+  "required_definition": [
+    "volume_reference_basis",
+    "measurement_principle",
+    "test_gas",
+    "test_temperature_pressure",
+    "specimen_geometry",
+    "cut_surface_correction",
+    "preconditioning"
+  ],
+  "evidence_policy": "All facts mandatory; unknown=null with notes and same inspected primary-document condition evidence; reported also primary method evidence.",
+  "method_class_for_review": "Published experimental reference / source_reports_measurement / conventional method: source explicitly measured and computed with pycnometer; do not invent hidden reduction or derivation inputs.",
+  "guardrails": [
+    "No reuse water,TGA,elongation or relative-uncertainty percent central units",
+    "Preserve conventional measurement wording, do not re-label as raw direct cell counting",
+    "No100-minus open fraction, density/porosity/water conversion or correction",
+    "Definitions enrichment revises same source cell, not new fact",
+    "Absolute amplitudes if ever reported must use same dedicated role; source four cells have no amplitude",
+    "Four-language presentation and complete query/resolve/export definitions",
+    "No geometry or direction default from scalar result"
+  ],
+  "pending": [
+    "independent source/semantics adjudication",
+    "implementation and independent review",
+    "full mapping and independent review",
+    "application,real installation and final review"
+  ]
+}

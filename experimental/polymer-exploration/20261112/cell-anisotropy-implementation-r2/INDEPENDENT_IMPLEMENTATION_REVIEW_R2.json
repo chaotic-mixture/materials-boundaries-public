@@ -1,0 +1,24 @@
+{
+  "decision": "approved",
+  "review_inputs_sha256": "2a98a427fc268b178679e55baab2e83f9d0c3e42286d8c722f870f1703ce130d",
+  "reviewer": "/root/review_phbv39_flexural",
+  "checks": {
+    "hashes": "152 repo、21 external、3 native全部匹配；精确before档案匹配。",
+    "compatibility": "旧21个完整分支及其余全部旧定义逐对象保持，公开schema等于运行时生成结果。14个旧测试仅分支总数21→22。",
+    "domain_and_units": "自建低精度探针确认严格正有限比值允许小于1及大于100；0、负数、NaN、Infinity和指数格式拒绝。专用ratio码与percent、闭孔、水吸收、TGA、伸长及时间角色隔离。",
+    "facts": "七项必需事实严格保留reported或显式unknown、主文档证据及非空说明。49项独立事实负例及方向not_applicable负例拒绝。",
+    "uncertainty": "传统幅度和reported_measures绝对幅度均接受专用比值码及零幅度；负幅度、跨角色单位拒绝。相对CV仅用独立percent角色。",
+    "deduplication": "同源格定义补全、别名和数字尾零在低Decimal精度下两个顺序均不能产生额外事实。",
+    "consumers_and_locales": "有限虚构图的验证、resolve、量筛选、完整JSON保留及副本隔离通过；四语各新增10项，旧值保持，并明确不推断力学、完整三维各向异性、共用试片或材料各向同性。",
+    "failure_history": "R1原始323项日志保留10个22!=21计数断言失败、0 errors。132项原输入均可解析，其中10项对应精确before测试，其余当前匹配；R2共享输入差异仅这10项计数修正。",
+    "fresh_execution": "R2原始日志Ran 323 tests、OK；132项当前输入匹配。包含11项新增及daily19，不与定向检查或R1运行累加。",
+    "native_and_graph_scope": "三表仍精确等r62，5660性质／5385状态／134来源。一次完整图回执属于计数修正前阶段，其代码、schema和原生字节与R2一致，未冒称重新执行。"
+  },
+  "findings": [],
+  "limits": [
+    "批准仅限R2实现，不批准四条真实映射、原生应用或实际安装。",
+    "真实映射仍须核对方向均值定义、取样和显微上下文，不得反算尺寸或将比值1解释为完整各向同性。",
+    "未运行作者helpers、测试模块或套件、完整图或历史回归；未写文件、缓存、安装或执行Git变更。",
+    "不认证科学有效性、标准符合性、提交推送或远端CI。"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "decision": "approved",
+  "review_inputs_sha256": "92cfad1180f71aae0b2eeb0b8c5bedf63b6d03c4f7e54497774482f442ac9c34",
+  "checks": {
+    "hashes": "151 repo、22 external、3 native全部匹配；before档案绑定匹配。",
+    "compatibility": "旧19个完整分支及其余全部旧定义逐对象相同；公开schema等于运行时生成结果。12个旧测试仅19→20总数修订。",
+    "domain": "独立低Decimal精度探针确认0、100及合法尾零保持；负数、101、100.000000000000000000000001均拒绝，无裁剪或舍入准入。",
+    "units": "中央值仅使用percent_closed_cell_content_volume；water、TGA、relative percent、elongation及压力角色不能混入。传统绝对幅度与reported_measures绝对SD均验证专用角色，跨角色拒绝。",
+    "facts": "七项强制事实、同主文档证据、reported/unknown形状及非空说明保持严格。独立49项事实负例与方向not_applicable负例均拒绝。",
+    "deduplication": "同来源格的定义补充和数字尾零不能产生新事实，低精度环境下两个顺序均拒绝重复。",
+    "consumers": "自建有限虚构图的验证、resolve、量筛选、完整JSON对象保留和副本隔离通过；四语言均呈现七项事实、未知状态及专用提示。",
+    "locales": "四语言各追加10项，所有旧文本保持。",
+    "execution": "原始日志Ran 300 tests、OK；126项输入哈希匹配。300包含10项新增及daily19，不另行累加。",
+    "native": "三表仍精确等r60，5640性质／5373状态／134来源；无真实闭孔新量记录。当前图回执绑定快照8930825b4b767a6b86d2fa0b1e70cdc64cc5288adcae20cf9bee3be4f7352a98。"
+  },
+  "findings": [],
+  "limits": [
+    "批准仅限本实现，不批准四条真实映射、原生应用或实际安装。",
+    "未运行作者helpers、测试模块或套件、完整图或历史回归；未写文件、缓存、安装或执行Git变更。",
+    "0至100是此专用中央尺度的语义约束，不补造分母、公式、校正或标准符合性；异常来源结果仍须另审。",
+    "不认证科学有效性、独立实验覆盖、推送或远端CI。"
+  ]
+}

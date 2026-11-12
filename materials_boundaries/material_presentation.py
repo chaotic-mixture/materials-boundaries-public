@@ -2,6 +2,9 @@
 from copy import deepcopy
 from ._extension_contract import LABEL_KEYS as EXTENSION_LABELS
 from ._water_absorption_contract import LABEL_KEYS as WATER_LABELS, FACT_FIELDS as WATER_FACTS
+from ._closed_cell_contract import LABEL_KEYS as CLOSED_CELL_LABELS, FACT_FIELDS as CLOSED_CELL_FACTS
+from ._cell_anisotropy_contract import LABEL_KEYS as CELL_ANISOTROPY_LABELS, FACT_FIELDS as CELL_ANISOTROPY_FACTS
+from ._foam_event_contract import LABEL_KEYS as FOAM_EVENT_LABELS, FACT_FIELDS as FOAM_EVENT_FACTS
 import json
 import math
 
@@ -16,6 +19,9 @@ REQUIRED_LABELS = frozenset(('materials', 'reference_properties', 'count', 'empt
 REQUIRED_LABELS |= frozenset(("code_thermal_degradation_endset_temperature", "degradation_endset_definition"))
 REQUIRED_LABELS |= frozenset(EXTENSION_LABELS)
 REQUIRED_LABELS |= frozenset(WATER_LABELS)
+REQUIRED_LABELS |= frozenset(CLOSED_CELL_LABELS)
+REQUIRED_LABELS |= frozenset(FOAM_EVENT_LABELS)
+REQUIRED_LABELS |= frozenset(CELL_ANISOTROPY_LABELS)
 REQUIRED_LABELS |= frozenset(('code_source_reported_computational_structure_density',))
 REQUIRED_LABELS |= frozenset(('code_source_reported_molecular_simulation_density', 'code_simulation_cell'))
 REQUIRED_LABELS |= frozenset(('code_slump_flow_spread',))
@@ -238,6 +244,34 @@ def render_material_catalog(catalog: dict, kind: str, language: str = "en") -> s
         if prop["density_basis"] is not None:
             output.append(field("density_basis", code(prop["density_basis"]), indent + "  "))
         output.append(field("conditions", "", indent + "  "))
+        if "reaction_time_definition" in prop:
+            event = prop["reaction_event"]
+            output.append(field("reaction_event", code(event["code"]), indent + "    "))
+            output.append(field("scope_note", event["notes"], indent + "      "))
+            output.extend(evidence(event["evidence"], indent + "      "))
+            definition = prop["reaction_time_definition"]
+            output.append(field("reaction_time_definition", "", indent + "    "))
+            output.append(field("scope_note", definition["notes"], indent + "      "))
+            output.extend(evidence(definition["evidence"], indent + "      "))
+            for name in FOAM_EVENT_FACTS:
+                output.extend(fact("reaction_time_" + name, definition[name], indent + "      "))
+            output.append(indent + "    " + labels["reaction_time_reference_notice"])
+        if "cell_anisotropy_definition" in prop:
+            definition = prop["cell_anisotropy_definition"]
+            output.append(field("cell_anisotropy_definition", "", indent + "    "))
+            output.append(field("scope_note", definition["notes"], indent + "      "))
+            output.extend(evidence(definition["evidence"], indent + "      "))
+            for name in CELL_ANISOTROPY_FACTS:
+                output.extend(fact("cell_anisotropy_" + name, definition[name], indent + "      "))
+            output.append(indent + "    " + labels["cell_anisotropy_reference_notice"])
+        if "closed_cell_definition" in prop:
+            definition = prop["closed_cell_definition"]
+            output.append(field("closed_cell_definition", "", indent + "    "))
+            output.append(field("scope_note", definition["notes"], indent + "      "))
+            output.extend(evidence(definition["evidence"], indent + "      "))
+            for name in CLOSED_CELL_FACTS:
+                output.extend(fact("closed_cell_" + name, definition[name], indent + "      "))
+            output.append(indent + "    " + labels["closed_cell_reference_notice"])
         if "water_absorption_definition" in prop:
             definition = prop["water_absorption_definition"]
             output.append(field("water_absorption_definition", "", indent + "    "))

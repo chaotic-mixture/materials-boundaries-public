@@ -1,0 +1,39 @@
+{
+  "status": "proposal_only",
+  "quantity": "foam_reaction_event_time",
+  "dimension": "time",
+  "initial_central_unit": "s only,source seconds preserved",
+  "initial_shape": "scalar nonnegative fixed point including source-reported literal0; unknown is never0; no arbitrary upper bound",
+  "required_typed_event": [
+    "foaming_start",
+    "gel_string",
+    "tack_free",
+    "foam_rise"
+  ],
+  "required_definition": [
+    "clock_origin",
+    "endpoint_criterion",
+    "apparatus_or_observation_method",
+    "mixing_reference",
+    "reaction_test_geometry_charge",
+    "reaction_test_environment",
+    "replicate_and_piece_relationship"
+  ],
+  "rules": [
+    "No modulus extraction window or source-derived evaluator calculation",
+    "No forced event ordering,subtraction,normalization or24h-cure default",
+    "Primary inspected-document evidence for all required facts,unknown=null with notes",
+    "Event role is explicit and source-qualified;start/rise criteria may remain unknown while printed time is retained",
+    "Same source cell definition enrichment revises fact,not new coverage",
+    "Absolute uncertainty seconds and relative percentages remain separate",
+    "Do not expand thermal_response_characteristic_time to hold reaction endpoints",
+    "Full query/resolve/export and four-language boundaries required"
+  ],
+  "classification_for_review": "published_experimental_reference/source_reports_measurement/source_reported_conventional,for explicitly sourced process-event results only",
+  "pending": [
+    "independent source/identity-temporal and event semantics review",
+    "schema/validation/deduplication/presentation implementation and independent review",
+    "complete mapping review",
+    "application,actual installation,final review"
+  ]
+}

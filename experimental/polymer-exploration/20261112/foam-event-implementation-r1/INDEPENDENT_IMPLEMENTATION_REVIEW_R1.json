@@ -1,0 +1,26 @@
+{
+  "decision": "approved",
+  "review_inputs_sha256": "c6a09244f0a05e6f54fdb1f95787cbd4e547dc966180cfc8296e75358cdd45c0",
+  "reviewer": "/root/review_phbv39_flexural",
+  "checks": {
+    "hashes": "145 repo、27 external、3 native全部匹配；before档案绑定匹配。",
+    "compatibility": "旧20个完整分支及其余全部旧定义逐对象保持，公开schema与运行时一致。13个旧测试仅总数20→21；四语言旧值保持，各新增15项。",
+    "event_and_provenance": "四种reaction_event封闭；事件证据须与主文档reported_value单元格定位一致并同时支持reported_value/classification。错误文档、来源、单元格、角色及空说明均被独立探针拒绝。",
+    "facts": "七项强制事实的严格reported／unknown形状、同所检主文档证据和非空说明落实。49项自建事实负例及方向not_applicable负例均拒绝。",
+    "domain_and_units": "秒制非负标量含0及大于100的值通过；负数、未知文字、ms及其他单位拒绝。两类绝对幅度表示仅接受同码秒，负幅度和跨码拒绝；相对CV仍使用独立percent角色。",
+    "deduplication": "同格改事件名、标签、数字尾零或补全定义，低Decimal精度下两个顺序均拒绝重复；真正不同来源格可分别保留。",
+    "temporal_behavior": "自建四事件小图以非通常顺序数值通过且未被修改，未推定共享clock_origin、顺序或时间差。",
+    "consumers": "有限虚构图的验证、resolve、量筛选、完整JSON字段保留、副本隔离及四语言事件／七项事实／未知提示通过。",
+    "execution": "当前原始日志Ran 312 tests、OK；129项输入哈希匹配。此前12项定向通过独立记录，不与312或daily19累加。",
+    "first_failure": "原失败夹具哈希和观察JSON保留，明确记录12项中6 errors、无效夹具下的负例不可信；当前setUp逐次验证基线。原控制台截断且完整原日志未保存的限制没有隐藏。",
+    "native": "三表仍精确等r61，5644性质／5377状态／134来源，快照dec71f6cdfe34eb906017d06518f4560eb8f2782dbd8ce0568206a3eba53d5ed；未新增真实事件记录。"
+  },
+  "findings": [],
+  "limits": [
+    "批准仅限本实现，不批准16条真实映射、原生应用或实际安装。",
+    "实际反应阶段的product_form、名称、source_scope及配方身份关联仍须映射独审；字面校验不认证物理阶段或同杯、同批关系。",
+    "首次失败仅能核验保存夹具与明确观察摘要，不能恢复未保存的完整控制台。",
+    "未运行作者helpers、测试模块或套件、完整图或历史回归；未写文件、缓存、安装或执行Git变更。",
+    "不认证科学有效性、标准符合性、提交推送或远端CI。"
+  ]
+}
