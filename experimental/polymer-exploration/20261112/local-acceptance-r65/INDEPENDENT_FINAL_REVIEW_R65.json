@@ -1,0 +1,24 @@
+{
+  "decision": "approved",
+  "review_inputs_sha256": "f5f8fb63194fb6dc16dfc388436eb5804dbc0043c6fb9e474841ecad65193afb",
+  "reviewer": "/root/review_phbv39_flexural",
+  "checks": {
+    "bindings": "185 repo、61 external、3 native哈希全部匹配。",
+    "application": "实际新增18性质、9流变上下文与获批候选逐对象相等；三张前驱表备份哈希闭合。旧5673性质、5389状态、全部身份及牌号保持，来源表字节不变。",
+    "current_native": "5691性质、5398状态、134来源；独立计算快照为9713cd8823556102b6d7548025dc03cb528c74c5395e7a15b6ea15969a105bcf。",
+    "source_and_unknowns": "18个原值、kPa.s精度及1/30 Hz坐标保留；2 polymer、16 composite分类正确。n、误差、实际间隙、LVR、振幅约定、热稳定、滑移及试片谱系未知边界保持，无DSC条件迁移。",
+    "regression_scope": "新鲜19项日志Ran 19 tests in 22.173s、OK；0失败/错误/跳过，93输入当前逐项匹配。356项仅实现阶段，不与本轮19相加。",
+    "package": "wheel SHA256为020b362788cbce75f676ec5b94c036da2537a33ae9767d9ed780c9e0ad075534。76当前输入全部匹配，staged仅版本文件不同；72载荷及6 metadata与实际安装逐字节相等，71项非版本载荷与当前原生一致。",
+    "records": "独立核对78项wheel RECORD及83项installed RECORD哈希和大小，均自洽。",
+    "installed_consumers": "从既有隔离环境以-I -B独立导入查询；18性质及两频率各9条完整保留。18／109／9三组候选、原生、安装、导出恢复对象完全一致，副本隔离通过。",
+    "documents": "五份主文档旧字节备份及当前哈希匹配，保持LF且仅追加当前头部；本地标题正确。当前README、staged README及换行规范化后的METADATA正文精确相等。",
+    "stage_boundaries": "测试回执not_run及应用回执pending属于各自冻结阶段；独立安装回执和原始安装/probe日志提供后续实际结果，未混淆阶段。"
+  },
+  "findings": [],
+  "limits": [
+    "批准本次精确字节范围的本地最终接纳，不涵盖统一交付、提交、推送、远端CI、main、发布或部署。",
+    "direct_url仅记录本地wheel路径，archive_info为空；内容一致性及RECORD自洽不构成安装过程的加密来源链证明。",
+    "不认证科学有效性、标准符合性、独立物理覆盖或跨方法等价。",
+    "未运行作者helpers、测试模块或套件、完整图及历史回归；未写文件或缓存、安装或执行Git变更。"
+  ]
+}

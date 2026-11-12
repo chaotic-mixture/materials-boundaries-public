@@ -1,0 +1,3530 @@
+[
+  {
+    "id": "refprop_ewurum2025_b0_dsc_melting_enthalpy",
+    "version": "1.0.0",
+    "material_state_id": "state_ewurum2025_b0_extruded_dsc_second_heating",
+    "quantity": "dsc_reported_melting_specific_enthalpy",
+    "quantity_dimension": "energy_per_mass",
+    "source_property_label": "Delta H_m (J/g)",
+    "reported_value": {
+      "kind": "scalar",
+      "value_text": "58",
+      "number": "58",
+      "unit_text": "J/g",
+      "unit_code": "J_per_g_dsc_melting_enthalpy"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Author-reported peak-area reduction,not raw instrument reading or evaluator computation. Preserve positive printed integer without sign flip,scaling or assumed normalization.",
+    "conditions": {
+      "temperature": {
+        "status": "reported",
+        "text": "30to150C at10C/min,cool to30C at-10C/min,then second ramp to150C at10C/min;hold durations unknown",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Dynamic source program,not ambient temperature or a single isothermal enthalpy measurement point."
+      },
+      "test_standard": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "No DSC-specific standard named in inspected method; mechanical standards not transferred."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "Perkin Elmer DSC-7; extruded formulation nominal10mg;source peak-area melting enthalpy;30to150C at10C/min,cool to30C at-10C/min,then second ramp to150C at10C/min;hold durations unknown",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Second heating is contextual only; integration coverage and mass normalization not resolved."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "DSC-specific sampling orientation and physical aliquot relation unknown; no scalar-isotropy or mechanical-direction inference."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "DSC pre-scan drying,storage,RH and equilibration unknown; precursor preparation is not DSC conditioning."
+      },
+      "loading_rate": {
+        "status": "not_applicable",
+        "text": null,
+        "evidence": [],
+        "notes": "Mechanical loading rate does not describe DSC; signed heating/cooling rates retained in thermal program."
+      },
+      "additional_conditions": [
+        {
+          "name": "nominal_DSC_sample_mass",
+          "fact": {
+            "status": "reported",
+            "text": "10mg",
+            "evidence": [
+              {
+                "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+                "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+                "supports": [
+                  "method",
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Nominal source method only,not actual per-run weighing,replicate count or normalization denominator."
+          }
+        },
+        {
+          "name": "purge_pan_software",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [
+              {
+                "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+                "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "DSC gas,flow,pan,lid and software unspecified; neighboring DMA/TGA statements not transferred."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "reported_value",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "uncertainty_note": "No numeric amplitude printed in selected Table4 enthalpy cell; mechanical-table SD and DSC trace appearance not transferred.",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "source_statement": "No unambiguous DSC enthalpy contributor count;10mg is nominal mass,two ramps are program steps,DMAtriplicate not transferred.",
+      "scope": "B0 Table4 DeltaHm only;per-run,specimen and independent batch counts unknown.",
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+          "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+          "supports": [
+            "sample_count"
+          ]
+        }
+      ]
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source-reported DSC melting peak-area specific enthalpy;30to150C at10C/min,cool to30C at-10C/min,then second ramp to150C at10C/min;hold durations unknown;integration,mass basis and sign convention unknown.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+          "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+          "supports": [
+            "method",
+            "condition",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [
+      {
+        "description": "Section3.5 describes main peaks at113–115degC and later113.2–115.6degC, whereas Table4 reports integer Tm values including B10=116 and B30=113.",
+        "disposition": "Keep selected table literals and their precision; do not reconstruct decimals, repair rounding, average, or turn the narrative range into uncertainty.",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+            "locator": "PDF p.9 section3.5;p.10 Table4",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      },
+      {
+        "description": "Section3.5 opening mentions Tg among DSC thermal properties, but Table3 Tg is explicitly obtained from DMA tan-delta maxima in section3.4.",
+        "disposition": "Do not admit DMA Tg as DSC Tg or extend the DSC-specific Tg method description in this batch.",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+            "locator": "PDF p.9 section3.5;p.10 Table4",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      }
+    ],
+    "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+    "evidence": [
+      {
+        "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+        "locator": "Table4 B0 / Delta H_m (J/g) / polymers-17-00194-t004",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+        "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+        "supports": [
+          "method",
+          "condition",
+          "classification"
+        ]
+      }
+    ],
+    "source_document": {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+      "revision": "Retained primary XML;formal revision and latest notices not independently verified.",
+      "inspected_on": "2026-11-12",
+      "sha256": "a16999d84b85e49d09979b2d32804e9e9763bc0478449d9a4a2c3c346d7a4a1a",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Primary retained XML Table4 and selected DSC method/discussion/caption inspected;secondary same-byte publisher PDFpp4/9/10 visually corroborated. XML primary URL/hash not replaced by PDF hash. No raw traces,integration logs,full standard or latest-notice completeness inspection.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Source Table4 DeltaHm from calorimetric peak area. Shared extruded DSC method context only,not proof of same aliquot,run,scan or batch as Tm. Second heating is shared Figure4/discussion context,not per-cell certification. Exact included peaks,mass basis,baseline,limits,sign convention,n and uncertainty unknown; no Xc conversion or110.3J/g reference assigned as measurement.",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Primary retained XML Table4 and selected DSC method/discussion/caption inspected;secondary same-byte publisher PDFpp4/9/10 visually corroborated. XML primary URL/hash not replaced by PDF hash. No raw traces,integration logs,full standard or latest-notice completeness inspection.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "dsc_enthalpy_definition": {
+      "basis": "source_reported_dsc_melting_peak_area_specific_enthalpy",
+      "thermal_program": {
+        "status": "reported",
+        "text": "30to150C at10C/min,cool to30C at-10C/min,then second ramp to150C at10C/min;hold durations unknown",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Actual run history,holds and heat-history erasure not independently verified."
+      },
+      "cycle_assignment": {
+        "status": "reported",
+        "text": "Figure4 caption identifies second heating;Table4 situated in same DSC discussion",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Shared context only;Figure4 plots B0/B20/B45/R20/R45,not all selected rows;Table4 does not individually assign each DeltaHm cell."
+      },
+      "integration_scope": {
+        "status": "reported",
+        "text": "Source defines DeltaHm as melting enthalpy derived from area under the peak",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Two melting peaks discussed; main-peak-only versus combined integration not specified. No range or deconvolution inferred."
+      },
+      "normalization_mass_basis": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Unambiguous per-cell sample-mass versus polymer-phase-mass normalization not stated independently;Xc equation f and110.3 reference do not substitute for that evidence."
+      },
+      "baseline_and_limits": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Baseline construction,integration limits and software reduction settings not given."
+      },
+      "apparatus_and_calibration": {
+        "status": "reported",
+        "text": "Perkin Elmer DSC-7;nominal10mg extruded formulations",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Calibration,pan,lid,gas and DSC-specific software not supplied;no defaults or neighboring-method software transferred."
+      },
+      "sample_replication_conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "DSC n,run/aliquot/batch links,drying,RH and storage unknown;two ramps are not n2 and DMAtriplicate not transferred."
+      },
+      "sign_convention": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Table4 selected values are printed positive;endotherm/exotherm and software sign convention not explicitly established. Preserve signs,do not infer from plot orientation."
+      },
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+          "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ],
+      "notes": "Source Table4 DeltaHm from calorimetric peak area. Shared extruded DSC method context only,not proof of same aliquot,run,scan or batch as Tm. Second heating is shared Figure4/discussion context,not per-cell certification. Exact included peaks,mass basis,baseline,limits,sign convention,n and uncertainty unknown; no Xc conversion or110.3J/g reference assigned as measurement."
+    }
+  },
+  {
+    "id": "refprop_ewurum2025_b10_dsc_melting_enthalpy",
+    "version": "1.0.0",
+    "material_state_id": "state_ewurum2025_b10_extruded_dsc_second_heating",
+    "quantity": "dsc_reported_melting_specific_enthalpy",
+    "quantity_dimension": "energy_per_mass",
+    "source_property_label": "Delta H_m (J/g)",
+    "reported_value": {
+      "kind": "scalar",
+      "value_text": "49",
+      "number": "49",
+      "unit_text": "J/g",
+      "unit_code": "J_per_g_dsc_melting_enthalpy"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Author-reported peak-area reduction,not raw instrument reading or evaluator computation. Preserve positive printed integer without sign flip,scaling or assumed normalization.",
+    "conditions": {
+      "temperature": {
+        "status": "reported",
+        "text": "30to150C at10C/min,cool to30C at-10C/min,then second ramp to150C at10C/min;hold durations unknown",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Dynamic source program,not ambient temperature or a single isothermal enthalpy measurement point."
+      },
+      "test_standard": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "No DSC-specific standard named in inspected method; mechanical standards not transferred."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "Perkin Elmer DSC-7; extruded formulation nominal10mg;source peak-area melting enthalpy;30to150C at10C/min,cool to30C at-10C/min,then second ramp to150C at10C/min;hold durations unknown",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Second heating is contextual only; integration coverage and mass normalization not resolved."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "DSC-specific sampling orientation and physical aliquot relation unknown; no scalar-isotropy or mechanical-direction inference."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "DSC pre-scan drying,storage,RH and equilibration unknown; precursor preparation is not DSC conditioning."
+      },
+      "loading_rate": {
+        "status": "not_applicable",
+        "text": null,
+        "evidence": [],
+        "notes": "Mechanical loading rate does not describe DSC; signed heating/cooling rates retained in thermal program."
+      },
+      "additional_conditions": [
+        {
+          "name": "nominal_DSC_sample_mass",
+          "fact": {
+            "status": "reported",
+            "text": "10mg",
+            "evidence": [
+              {
+                "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+                "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+                "supports": [
+                  "method",
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Nominal source method only,not actual per-run weighing,replicate count or normalization denominator."
+          }
+        },
+        {
+          "name": "purge_pan_software",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [
+              {
+                "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+                "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "DSC gas,flow,pan,lid and software unspecified; neighboring DMA/TGA statements not transferred."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "reported_value",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "uncertainty_note": "No numeric amplitude printed in selected Table4 enthalpy cell; mechanical-table SD and DSC trace appearance not transferred.",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "source_statement": "No unambiguous DSC enthalpy contributor count;10mg is nominal mass,two ramps are program steps,DMAtriplicate not transferred.",
+      "scope": "B10 Table4 DeltaHm only;per-run,specimen and independent batch counts unknown.",
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+          "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+          "supports": [
+            "sample_count"
+          ]
+        }
+      ]
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source-reported DSC melting peak-area specific enthalpy;30to150C at10C/min,cool to30C at-10C/min,then second ramp to150C at10C/min;hold durations unknown;integration,mass basis and sign convention unknown.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+          "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+          "supports": [
+            "method",
+            "condition",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [
+      {
+        "description": "Section3.5 describes main peaks at113–115degC and later113.2–115.6degC, whereas Table4 reports integer Tm values including B10=116 and B30=113.",
+        "disposition": "Keep selected table literals and their precision; do not reconstruct decimals, repair rounding, average, or turn the narrative range into uncertainty.",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+            "locator": "PDF p.9 section3.5;p.10 Table4",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      },
+      {
+        "description": "Section3.5 opening mentions Tg among DSC thermal properties, but Table3 Tg is explicitly obtained from DMA tan-delta maxima in section3.4.",
+        "disposition": "Do not admit DMA Tg as DSC Tg or extend the DSC-specific Tg method description in this batch.",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+            "locator": "PDF p.9 section3.5;p.10 Table4",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      }
+    ],
+    "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+    "evidence": [
+      {
+        "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+        "locator": "Table4 B10 / Delta H_m (J/g) / polymers-17-00194-t004",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+        "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+        "supports": [
+          "method",
+          "condition",
+          "classification"
+        ]
+      }
+    ],
+    "source_document": {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+      "revision": "Retained primary XML;formal revision and latest notices not independently verified.",
+      "inspected_on": "2026-11-12",
+      "sha256": "a16999d84b85e49d09979b2d32804e9e9763bc0478449d9a4a2c3c346d7a4a1a",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Primary retained XML Table4 and selected DSC method/discussion/caption inspected;secondary same-byte publisher PDFpp4/9/10 visually corroborated. XML primary URL/hash not replaced by PDF hash. No raw traces,integration logs,full standard or latest-notice completeness inspection.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Source Table4 DeltaHm from calorimetric peak area. Shared extruded DSC method context only,not proof of same aliquot,run,scan or batch as Tm. Second heating is shared Figure4/discussion context,not per-cell certification. Exact included peaks,mass basis,baseline,limits,sign convention,n and uncertainty unknown; no Xc conversion or110.3J/g reference assigned as measurement.",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Primary retained XML Table4 and selected DSC method/discussion/caption inspected;secondary same-byte publisher PDFpp4/9/10 visually corroborated. XML primary URL/hash not replaced by PDF hash. No raw traces,integration logs,full standard or latest-notice completeness inspection.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "dsc_enthalpy_definition": {
+      "basis": "source_reported_dsc_melting_peak_area_specific_enthalpy",
+      "thermal_program": {
+        "status": "reported",
+        "text": "30to150C at10C/min,cool to30C at-10C/min,then second ramp to150C at10C/min;hold durations unknown",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Actual run history,holds and heat-history erasure not independently verified."
+      },
+      "cycle_assignment": {
+        "status": "reported",
+        "text": "Figure4 caption identifies second heating;Table4 situated in same DSC discussion",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Shared context only;Figure4 plots B0/B20/B45/R20/R45,not all selected rows;Table4 does not individually assign each DeltaHm cell."
+      },
+      "integration_scope": {
+        "status": "reported",
+        "text": "Source defines DeltaHm as melting enthalpy derived from area under the peak",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Two melting peaks discussed; main-peak-only versus combined integration not specified. No range or deconvolution inferred."
+      },
+      "normalization_mass_basis": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Unambiguous per-cell sample-mass versus polymer-phase-mass normalization not stated independently;Xc equation f and110.3 reference do not substitute for that evidence."
+      },
+      "baseline_and_limits": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Baseline construction,integration limits and software reduction settings not given."
+      },
+      "apparatus_and_calibration": {
+        "status": "reported",
+        "text": "Perkin Elmer DSC-7;nominal10mg extruded formulations",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Calibration,pan,lid,gas and DSC-specific software not supplied;no defaults or neighboring-method software transferred."
+      },
+      "sample_replication_conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "DSC n,run/aliquot/batch links,drying,RH and storage unknown;two ramps are not n2 and DMAtriplicate not transferred."
+      },
+      "sign_convention": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Table4 selected values are printed positive;endotherm/exotherm and software sign convention not explicitly established. Preserve signs,do not infer from plot orientation."
+      },
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+          "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ],
+      "notes": "Source Table4 DeltaHm from calorimetric peak area. Shared extruded DSC method context only,not proof of same aliquot,run,scan or batch as Tm. Second heating is shared Figure4/discussion context,not per-cell certification. Exact included peaks,mass basis,baseline,limits,sign convention,n and uncertainty unknown; no Xc conversion or110.3J/g reference assigned as measurement."
+    }
+  },
+  {
+    "id": "refprop_ewurum2025_b20_dsc_melting_enthalpy",
+    "version": "1.0.0",
+    "material_state_id": "state_ewurum2025_b20_extruded_dsc_second_heating",
+    "quantity": "dsc_reported_melting_specific_enthalpy",
+    "quantity_dimension": "energy_per_mass",
+    "source_property_label": "Delta H_m (J/g)",
+    "reported_value": {
+      "kind": "scalar",
+      "value_text": "44",
+      "number": "44",
+      "unit_text": "J/g",
+      "unit_code": "J_per_g_dsc_melting_enthalpy"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Author-reported peak-area reduction,not raw instrument reading or evaluator computation. Preserve positive printed integer without sign flip,scaling or assumed normalization.",
+    "conditions": {
+      "temperature": {
+        "status": "reported",
+        "text": "30to150C at10C/min,cool to30C at-10C/min,then second ramp to150C at10C/min;hold durations unknown",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Dynamic source program,not ambient temperature or a single isothermal enthalpy measurement point."
+      },
+      "test_standard": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "No DSC-specific standard named in inspected method; mechanical standards not transferred."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "Perkin Elmer DSC-7; extruded formulation nominal10mg;source peak-area melting enthalpy;30to150C at10C/min,cool to30C at-10C/min,then second ramp to150C at10C/min;hold durations unknown",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Second heating is contextual only; integration coverage and mass normalization not resolved."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "DSC-specific sampling orientation and physical aliquot relation unknown; no scalar-isotropy or mechanical-direction inference."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "DSC pre-scan drying,storage,RH and equilibration unknown; precursor preparation is not DSC conditioning."
+      },
+      "loading_rate": {
+        "status": "not_applicable",
+        "text": null,
+        "evidence": [],
+        "notes": "Mechanical loading rate does not describe DSC; signed heating/cooling rates retained in thermal program."
+      },
+      "additional_conditions": [
+        {
+          "name": "nominal_DSC_sample_mass",
+          "fact": {
+            "status": "reported",
+            "text": "10mg",
+            "evidence": [
+              {
+                "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+                "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+                "supports": [
+                  "method",
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Nominal source method only,not actual per-run weighing,replicate count or normalization denominator."
+          }
+        },
+        {
+          "name": "purge_pan_software",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [
+              {
+                "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+                "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "DSC gas,flow,pan,lid and software unspecified; neighboring DMA/TGA statements not transferred."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "reported_value",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "uncertainty_note": "No numeric amplitude printed in selected Table4 enthalpy cell; mechanical-table SD and DSC trace appearance not transferred.",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "source_statement": "No unambiguous DSC enthalpy contributor count;10mg is nominal mass,two ramps are program steps,DMAtriplicate not transferred.",
+      "scope": "B20 Table4 DeltaHm only;per-run,specimen and independent batch counts unknown.",
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+          "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+          "supports": [
+            "sample_count"
+          ]
+        }
+      ]
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source-reported DSC melting peak-area specific enthalpy;30to150C at10C/min,cool to30C at-10C/min,then second ramp to150C at10C/min;hold durations unknown;integration,mass basis and sign convention unknown.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+          "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+          "supports": [
+            "method",
+            "condition",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [
+      {
+        "description": "Section3.5 describes main peaks at113–115degC and later113.2–115.6degC, whereas Table4 reports integer Tm values including B10=116 and B30=113.",
+        "disposition": "Keep selected table literals and their precision; do not reconstruct decimals, repair rounding, average, or turn the narrative range into uncertainty.",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+            "locator": "PDF p.9 section3.5;p.10 Table4",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      },
+      {
+        "description": "Section3.5 opening mentions Tg among DSC thermal properties, but Table3 Tg is explicitly obtained from DMA tan-delta maxima in section3.4.",
+        "disposition": "Do not admit DMA Tg as DSC Tg or extend the DSC-specific Tg method description in this batch.",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+            "locator": "PDF p.9 section3.5;p.10 Table4",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      }
+    ],
+    "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+    "evidence": [
+      {
+        "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+        "locator": "Table4 B20 / Delta H_m (J/g) / polymers-17-00194-t004",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+        "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+        "supports": [
+          "method",
+          "condition",
+          "classification"
+        ]
+      }
+    ],
+    "source_document": {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+      "revision": "Retained primary XML;formal revision and latest notices not independently verified.",
+      "inspected_on": "2026-11-12",
+      "sha256": "a16999d84b85e49d09979b2d32804e9e9763bc0478449d9a4a2c3c346d7a4a1a",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Primary retained XML Table4 and selected DSC method/discussion/caption inspected;secondary same-byte publisher PDFpp4/9/10 visually corroborated. XML primary URL/hash not replaced by PDF hash. No raw traces,integration logs,full standard or latest-notice completeness inspection.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Source Table4 DeltaHm from calorimetric peak area. Shared extruded DSC method context only,not proof of same aliquot,run,scan or batch as Tm. Second heating is shared Figure4/discussion context,not per-cell certification. Exact included peaks,mass basis,baseline,limits,sign convention,n and uncertainty unknown; no Xc conversion or110.3J/g reference assigned as measurement.",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Primary retained XML Table4 and selected DSC method/discussion/caption inspected;secondary same-byte publisher PDFpp4/9/10 visually corroborated. XML primary URL/hash not replaced by PDF hash. No raw traces,integration logs,full standard or latest-notice completeness inspection.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "dsc_enthalpy_definition": {
+      "basis": "source_reported_dsc_melting_peak_area_specific_enthalpy",
+      "thermal_program": {
+        "status": "reported",
+        "text": "30to150C at10C/min,cool to30C at-10C/min,then second ramp to150C at10C/min;hold durations unknown",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Actual run history,holds and heat-history erasure not independently verified."
+      },
+      "cycle_assignment": {
+        "status": "reported",
+        "text": "Figure4 caption identifies second heating;Table4 situated in same DSC discussion",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Shared context only;Figure4 plots B0/B20/B45/R20/R45,not all selected rows;Table4 does not individually assign each DeltaHm cell."
+      },
+      "integration_scope": {
+        "status": "reported",
+        "text": "Source defines DeltaHm as melting enthalpy derived from area under the peak",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Two melting peaks discussed; main-peak-only versus combined integration not specified. No range or deconvolution inferred."
+      },
+      "normalization_mass_basis": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Unambiguous per-cell sample-mass versus polymer-phase-mass normalization not stated independently;Xc equation f and110.3 reference do not substitute for that evidence."
+      },
+      "baseline_and_limits": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Baseline construction,integration limits and software reduction settings not given."
+      },
+      "apparatus_and_calibration": {
+        "status": "reported",
+        "text": "Perkin Elmer DSC-7;nominal10mg extruded formulations",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Calibration,pan,lid,gas and DSC-specific software not supplied;no defaults or neighboring-method software transferred."
+      },
+      "sample_replication_conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "DSC n,run/aliquot/batch links,drying,RH and storage unknown;two ramps are not n2 and DMAtriplicate not transferred."
+      },
+      "sign_convention": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Table4 selected values are printed positive;endotherm/exotherm and software sign convention not explicitly established. Preserve signs,do not infer from plot orientation."
+      },
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+          "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ],
+      "notes": "Source Table4 DeltaHm from calorimetric peak area. Shared extruded DSC method context only,not proof of same aliquot,run,scan or batch as Tm. Second heating is shared Figure4/discussion context,not per-cell certification. Exact included peaks,mass basis,baseline,limits,sign convention,n and uncertainty unknown; no Xc conversion or110.3J/g reference assigned as measurement."
+    }
+  },
+  {
+    "id": "refprop_ewurum2025_b30_dsc_melting_enthalpy",
+    "version": "1.0.0",
+    "material_state_id": "state_ewurum2025_b30_extruded_dsc_second_heating",
+    "quantity": "dsc_reported_melting_specific_enthalpy",
+    "quantity_dimension": "energy_per_mass",
+    "source_property_label": "Delta H_m (J/g)",
+    "reported_value": {
+      "kind": "scalar",
+      "value_text": "42",
+      "number": "42",
+      "unit_text": "J/g",
+      "unit_code": "J_per_g_dsc_melting_enthalpy"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Author-reported peak-area reduction,not raw instrument reading or evaluator computation. Preserve positive printed integer without sign flip,scaling or assumed normalization.",
+    "conditions": {
+      "temperature": {
+        "status": "reported",
+        "text": "30to150C at10C/min,cool to30C at-10C/min,then second ramp to150C at10C/min;hold durations unknown",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Dynamic source program,not ambient temperature or a single isothermal enthalpy measurement point."
+      },
+      "test_standard": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "No DSC-specific standard named in inspected method; mechanical standards not transferred."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "Perkin Elmer DSC-7; extruded formulation nominal10mg;source peak-area melting enthalpy;30to150C at10C/min,cool to30C at-10C/min,then second ramp to150C at10C/min;hold durations unknown",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Second heating is contextual only; integration coverage and mass normalization not resolved."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "DSC-specific sampling orientation and physical aliquot relation unknown; no scalar-isotropy or mechanical-direction inference."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "DSC pre-scan drying,storage,RH and equilibration unknown; precursor preparation is not DSC conditioning."
+      },
+      "loading_rate": {
+        "status": "not_applicable",
+        "text": null,
+        "evidence": [],
+        "notes": "Mechanical loading rate does not describe DSC; signed heating/cooling rates retained in thermal program."
+      },
+      "additional_conditions": [
+        {
+          "name": "nominal_DSC_sample_mass",
+          "fact": {
+            "status": "reported",
+            "text": "10mg",
+            "evidence": [
+              {
+                "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+                "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+                "supports": [
+                  "method",
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Nominal source method only,not actual per-run weighing,replicate count or normalization denominator."
+          }
+        },
+        {
+          "name": "purge_pan_software",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [
+              {
+                "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+                "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "DSC gas,flow,pan,lid and software unspecified; neighboring DMA/TGA statements not transferred."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "reported_value",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "uncertainty_note": "No numeric amplitude printed in selected Table4 enthalpy cell; mechanical-table SD and DSC trace appearance not transferred.",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "source_statement": "No unambiguous DSC enthalpy contributor count;10mg is nominal mass,two ramps are program steps,DMAtriplicate not transferred.",
+      "scope": "B30 Table4 DeltaHm only;per-run,specimen and independent batch counts unknown.",
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+          "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+          "supports": [
+            "sample_count"
+          ]
+        }
+      ]
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source-reported DSC melting peak-area specific enthalpy;30to150C at10C/min,cool to30C at-10C/min,then second ramp to150C at10C/min;hold durations unknown;integration,mass basis and sign convention unknown.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+          "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+          "supports": [
+            "method",
+            "condition",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [
+      {
+        "description": "Section3.5 describes main peaks at113–115degC and later113.2–115.6degC, whereas Table4 reports integer Tm values including B10=116 and B30=113.",
+        "disposition": "Keep selected table literals and their precision; do not reconstruct decimals, repair rounding, average, or turn the narrative range into uncertainty.",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+            "locator": "PDF p.9 section3.5;p.10 Table4",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      },
+      {
+        "description": "Section3.5 opening mentions Tg among DSC thermal properties, but Table3 Tg is explicitly obtained from DMA tan-delta maxima in section3.4.",
+        "disposition": "Do not admit DMA Tg as DSC Tg or extend the DSC-specific Tg method description in this batch.",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+            "locator": "PDF p.9 section3.5;p.10 Table4",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      }
+    ],
+    "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+    "evidence": [
+      {
+        "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+        "locator": "Table4 B30 / Delta H_m (J/g) / polymers-17-00194-t004",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+        "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+        "supports": [
+          "method",
+          "condition",
+          "classification"
+        ]
+      }
+    ],
+    "source_document": {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+      "revision": "Retained primary XML;formal revision and latest notices not independently verified.",
+      "inspected_on": "2026-11-12",
+      "sha256": "a16999d84b85e49d09979b2d32804e9e9763bc0478449d9a4a2c3c346d7a4a1a",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Primary retained XML Table4 and selected DSC method/discussion/caption inspected;secondary same-byte publisher PDFpp4/9/10 visually corroborated. XML primary URL/hash not replaced by PDF hash. No raw traces,integration logs,full standard or latest-notice completeness inspection.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Source Table4 DeltaHm from calorimetric peak area. Shared extruded DSC method context only,not proof of same aliquot,run,scan or batch as Tm. Second heating is shared Figure4/discussion context,not per-cell certification. Exact included peaks,mass basis,baseline,limits,sign convention,n and uncertainty unknown; no Xc conversion or110.3J/g reference assigned as measurement.",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Primary retained XML Table4 and selected DSC method/discussion/caption inspected;secondary same-byte publisher PDFpp4/9/10 visually corroborated. XML primary URL/hash not replaced by PDF hash. No raw traces,integration logs,full standard or latest-notice completeness inspection.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "dsc_enthalpy_definition": {
+      "basis": "source_reported_dsc_melting_peak_area_specific_enthalpy",
+      "thermal_program": {
+        "status": "reported",
+        "text": "30to150C at10C/min,cool to30C at-10C/min,then second ramp to150C at10C/min;hold durations unknown",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Actual run history,holds and heat-history erasure not independently verified."
+      },
+      "cycle_assignment": {
+        "status": "reported",
+        "text": "Figure4 caption identifies second heating;Table4 situated in same DSC discussion",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Shared context only;Figure4 plots B0/B20/B45/R20/R45,not all selected rows;Table4 does not individually assign each DeltaHm cell."
+      },
+      "integration_scope": {
+        "status": "reported",
+        "text": "Source defines DeltaHm as melting enthalpy derived from area under the peak",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Two melting peaks discussed; main-peak-only versus combined integration not specified. No range or deconvolution inferred."
+      },
+      "normalization_mass_basis": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Unambiguous per-cell sample-mass versus polymer-phase-mass normalization not stated independently;Xc equation f and110.3 reference do not substitute for that evidence."
+      },
+      "baseline_and_limits": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Baseline construction,integration limits and software reduction settings not given."
+      },
+      "apparatus_and_calibration": {
+        "status": "reported",
+        "text": "Perkin Elmer DSC-7;nominal10mg extruded formulations",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Calibration,pan,lid,gas and DSC-specific software not supplied;no defaults or neighboring-method software transferred."
+      },
+      "sample_replication_conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "DSC n,run/aliquot/batch links,drying,RH and storage unknown;two ramps are not n2 and DMAtriplicate not transferred."
+      },
+      "sign_convention": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Table4 selected values are printed positive;endotherm/exotherm and software sign convention not explicitly established. Preserve signs,do not infer from plot orientation."
+      },
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+          "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ],
+      "notes": "Source Table4 DeltaHm from calorimetric peak area. Shared extruded DSC method context only,not proof of same aliquot,run,scan or batch as Tm. Second heating is shared Figure4/discussion context,not per-cell certification. Exact included peaks,mass basis,baseline,limits,sign convention,n and uncertainty unknown; no Xc conversion or110.3J/g reference assigned as measurement."
+    }
+  },
+  {
+    "id": "refprop_ewurum2025_b45_dsc_melting_enthalpy",
+    "version": "1.0.0",
+    "material_state_id": "state_ewurum2025_b45_extruded_dsc_second_heating",
+    "quantity": "dsc_reported_melting_specific_enthalpy",
+    "quantity_dimension": "energy_per_mass",
+    "source_property_label": "Delta H_m (J/g)",
+    "reported_value": {
+      "kind": "scalar",
+      "value_text": "29",
+      "number": "29",
+      "unit_text": "J/g",
+      "unit_code": "J_per_g_dsc_melting_enthalpy"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Author-reported peak-area reduction,not raw instrument reading or evaluator computation. Preserve positive printed integer without sign flip,scaling or assumed normalization.",
+    "conditions": {
+      "temperature": {
+        "status": "reported",
+        "text": "30to150C at10C/min,cool to30C at-10C/min,then second ramp to150C at10C/min;hold durations unknown",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Dynamic source program,not ambient temperature or a single isothermal enthalpy measurement point."
+      },
+      "test_standard": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "No DSC-specific standard named in inspected method; mechanical standards not transferred."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "Perkin Elmer DSC-7; extruded formulation nominal10mg;source peak-area melting enthalpy;30to150C at10C/min,cool to30C at-10C/min,then second ramp to150C at10C/min;hold durations unknown",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Second heating is contextual only; integration coverage and mass normalization not resolved."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "DSC-specific sampling orientation and physical aliquot relation unknown; no scalar-isotropy or mechanical-direction inference."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "DSC pre-scan drying,storage,RH and equilibration unknown; precursor preparation is not DSC conditioning."
+      },
+      "loading_rate": {
+        "status": "not_applicable",
+        "text": null,
+        "evidence": [],
+        "notes": "Mechanical loading rate does not describe DSC; signed heating/cooling rates retained in thermal program."
+      },
+      "additional_conditions": [
+        {
+          "name": "nominal_DSC_sample_mass",
+          "fact": {
+            "status": "reported",
+            "text": "10mg",
+            "evidence": [
+              {
+                "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+                "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+                "supports": [
+                  "method",
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Nominal source method only,not actual per-run weighing,replicate count or normalization denominator."
+          }
+        },
+        {
+          "name": "purge_pan_software",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [
+              {
+                "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+                "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "DSC gas,flow,pan,lid and software unspecified; neighboring DMA/TGA statements not transferred."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "reported_value",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "uncertainty_note": "No numeric amplitude printed in selected Table4 enthalpy cell; mechanical-table SD and DSC trace appearance not transferred.",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "source_statement": "No unambiguous DSC enthalpy contributor count;10mg is nominal mass,two ramps are program steps,DMAtriplicate not transferred.",
+      "scope": "B45 Table4 DeltaHm only;per-run,specimen and independent batch counts unknown.",
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+          "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+          "supports": [
+            "sample_count"
+          ]
+        }
+      ]
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source-reported DSC melting peak-area specific enthalpy;30to150C at10C/min,cool to30C at-10C/min,then second ramp to150C at10C/min;hold durations unknown;integration,mass basis and sign convention unknown.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+          "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+          "supports": [
+            "method",
+            "condition",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [
+      {
+        "description": "Section3.5 describes main peaks at113–115degC and later113.2–115.6degC, whereas Table4 reports integer Tm values including B10=116 and B30=113.",
+        "disposition": "Keep selected table literals and their precision; do not reconstruct decimals, repair rounding, average, or turn the narrative range into uncertainty.",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+            "locator": "PDF p.9 section3.5;p.10 Table4",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      },
+      {
+        "description": "Section3.5 opening mentions Tg among DSC thermal properties, but Table3 Tg is explicitly obtained from DMA tan-delta maxima in section3.4.",
+        "disposition": "Do not admit DMA Tg as DSC Tg or extend the DSC-specific Tg method description in this batch.",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+            "locator": "PDF p.9 section3.5;p.10 Table4",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      }
+    ],
+    "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+    "evidence": [
+      {
+        "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+        "locator": "Table4 B45 / Delta H_m (J/g) / polymers-17-00194-t004",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+        "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+        "supports": [
+          "method",
+          "condition",
+          "classification"
+        ]
+      }
+    ],
+    "source_document": {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+      "revision": "Retained primary XML;formal revision and latest notices not independently verified.",
+      "inspected_on": "2026-11-12",
+      "sha256": "a16999d84b85e49d09979b2d32804e9e9763bc0478449d9a4a2c3c346d7a4a1a",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Primary retained XML Table4 and selected DSC method/discussion/caption inspected;secondary same-byte publisher PDFpp4/9/10 visually corroborated. XML primary URL/hash not replaced by PDF hash. No raw traces,integration logs,full standard or latest-notice completeness inspection.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Source Table4 DeltaHm from calorimetric peak area. Shared extruded DSC method context only,not proof of same aliquot,run,scan or batch as Tm. Second heating is shared Figure4/discussion context,not per-cell certification. Exact included peaks,mass basis,baseline,limits,sign convention,n and uncertainty unknown; no Xc conversion or110.3J/g reference assigned as measurement.",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Primary retained XML Table4 and selected DSC method/discussion/caption inspected;secondary same-byte publisher PDFpp4/9/10 visually corroborated. XML primary URL/hash not replaced by PDF hash. No raw traces,integration logs,full standard or latest-notice completeness inspection.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "dsc_enthalpy_definition": {
+      "basis": "source_reported_dsc_melting_peak_area_specific_enthalpy",
+      "thermal_program": {
+        "status": "reported",
+        "text": "30to150C at10C/min,cool to30C at-10C/min,then second ramp to150C at10C/min;hold durations unknown",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Actual run history,holds and heat-history erasure not independently verified."
+      },
+      "cycle_assignment": {
+        "status": "reported",
+        "text": "Figure4 caption identifies second heating;Table4 situated in same DSC discussion",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Shared context only;Figure4 plots B0/B20/B45/R20/R45,not all selected rows;Table4 does not individually assign each DeltaHm cell."
+      },
+      "integration_scope": {
+        "status": "reported",
+        "text": "Source defines DeltaHm as melting enthalpy derived from area under the peak",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Two melting peaks discussed; main-peak-only versus combined integration not specified. No range or deconvolution inferred."
+      },
+      "normalization_mass_basis": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Unambiguous per-cell sample-mass versus polymer-phase-mass normalization not stated independently;Xc equation f and110.3 reference do not substitute for that evidence."
+      },
+      "baseline_and_limits": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Baseline construction,integration limits and software reduction settings not given."
+      },
+      "apparatus_and_calibration": {
+        "status": "reported",
+        "text": "Perkin Elmer DSC-7;nominal10mg extruded formulations",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Calibration,pan,lid,gas and DSC-specific software not supplied;no defaults or neighboring-method software transferred."
+      },
+      "sample_replication_conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "DSC n,run/aliquot/batch links,drying,RH and storage unknown;two ramps are not n2 and DMAtriplicate not transferred."
+      },
+      "sign_convention": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Table4 selected values are printed positive;endotherm/exotherm and software sign convention not explicitly established. Preserve signs,do not infer from plot orientation."
+      },
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+          "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ],
+      "notes": "Source Table4 DeltaHm from calorimetric peak area. Shared extruded DSC method context only,not proof of same aliquot,run,scan or batch as Tm. Second heating is shared Figure4/discussion context,not per-cell certification. Exact included peaks,mass basis,baseline,limits,sign convention,n and uncertainty unknown; no Xc conversion or110.3J/g reference assigned as measurement."
+    }
+  },
+  {
+    "id": "refprop_ewurum2025_r10_dsc_melting_enthalpy",
+    "version": "1.0.0",
+    "material_state_id": "state_ewurum2025_r10_extruded_dsc_second_heating",
+    "quantity": "dsc_reported_melting_specific_enthalpy",
+    "quantity_dimension": "energy_per_mass",
+    "source_property_label": "Delta H_m (J/g)",
+    "reported_value": {
+      "kind": "scalar",
+      "value_text": "49",
+      "number": "49",
+      "unit_text": "J/g",
+      "unit_code": "J_per_g_dsc_melting_enthalpy"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Author-reported peak-area reduction,not raw instrument reading or evaluator computation. Preserve positive printed integer without sign flip,scaling or assumed normalization.",
+    "conditions": {
+      "temperature": {
+        "status": "reported",
+        "text": "30to150C at10C/min,cool to30C at-10C/min,then second ramp to150C at10C/min;hold durations unknown",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Dynamic source program,not ambient temperature or a single isothermal enthalpy measurement point."
+      },
+      "test_standard": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "No DSC-specific standard named in inspected method; mechanical standards not transferred."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "Perkin Elmer DSC-7; extruded formulation nominal10mg;source peak-area melting enthalpy;30to150C at10C/min,cool to30C at-10C/min,then second ramp to150C at10C/min;hold durations unknown",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Second heating is contextual only; integration coverage and mass normalization not resolved."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "DSC-specific sampling orientation and physical aliquot relation unknown; no scalar-isotropy or mechanical-direction inference."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "DSC pre-scan drying,storage,RH and equilibration unknown; precursor preparation is not DSC conditioning."
+      },
+      "loading_rate": {
+        "status": "not_applicable",
+        "text": null,
+        "evidence": [],
+        "notes": "Mechanical loading rate does not describe DSC; signed heating/cooling rates retained in thermal program."
+      },
+      "additional_conditions": [
+        {
+          "name": "nominal_DSC_sample_mass",
+          "fact": {
+            "status": "reported",
+            "text": "10mg",
+            "evidence": [
+              {
+                "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+                "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+                "supports": [
+                  "method",
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Nominal source method only,not actual per-run weighing,replicate count or normalization denominator."
+          }
+        },
+        {
+          "name": "purge_pan_software",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [
+              {
+                "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+                "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "DSC gas,flow,pan,lid and software unspecified; neighboring DMA/TGA statements not transferred."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "reported_value",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "uncertainty_note": "No numeric amplitude printed in selected Table4 enthalpy cell; mechanical-table SD and DSC trace appearance not transferred.",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "source_statement": "No unambiguous DSC enthalpy contributor count;10mg is nominal mass,two ramps are program steps,DMAtriplicate not transferred.",
+      "scope": "R10 Table4 DeltaHm only;per-run,specimen and independent batch counts unknown.",
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+          "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+          "supports": [
+            "sample_count"
+          ]
+        }
+      ]
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source-reported DSC melting peak-area specific enthalpy;30to150C at10C/min,cool to30C at-10C/min,then second ramp to150C at10C/min;hold durations unknown;integration,mass basis and sign convention unknown.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+          "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+          "supports": [
+            "method",
+            "condition",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [
+      {
+        "description": "Section3.5 describes main peaks at113–115degC and later113.2–115.6degC, whereas Table4 reports integer Tm values including B10=116 and B30=113.",
+        "disposition": "Keep selected table literals and their precision; do not reconstruct decimals, repair rounding, average, or turn the narrative range into uncertainty.",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+            "locator": "PDF p.9 section3.5;p.10 Table4",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      },
+      {
+        "description": "Section3.5 opening mentions Tg among DSC thermal properties, but Table3 Tg is explicitly obtained from DMA tan-delta maxima in section3.4.",
+        "disposition": "Do not admit DMA Tg as DSC Tg or extend the DSC-specific Tg method description in this batch.",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+            "locator": "PDF p.9 section3.5;p.10 Table4",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      }
+    ],
+    "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+    "evidence": [
+      {
+        "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+        "locator": "Table4 R10 / Delta H_m (J/g) / polymers-17-00194-t004",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+        "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+        "supports": [
+          "method",
+          "condition",
+          "classification"
+        ]
+      }
+    ],
+    "source_document": {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+      "revision": "Retained primary XML;formal revision and latest notices not independently verified.",
+      "inspected_on": "2026-11-12",
+      "sha256": "a16999d84b85e49d09979b2d32804e9e9763bc0478449d9a4a2c3c346d7a4a1a",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Primary retained XML Table4 and selected DSC method/discussion/caption inspected;secondary same-byte publisher PDFpp4/9/10 visually corroborated. XML primary URL/hash not replaced by PDF hash. No raw traces,integration logs,full standard or latest-notice completeness inspection.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Source Table4 DeltaHm from calorimetric peak area. Shared extruded DSC method context only,not proof of same aliquot,run,scan or batch as Tm. Second heating is shared Figure4/discussion context,not per-cell certification. Exact included peaks,mass basis,baseline,limits,sign convention,n and uncertainty unknown; no Xc conversion or110.3J/g reference assigned as measurement.",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Primary retained XML Table4 and selected DSC method/discussion/caption inspected;secondary same-byte publisher PDFpp4/9/10 visually corroborated. XML primary URL/hash not replaced by PDF hash. No raw traces,integration logs,full standard or latest-notice completeness inspection.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "dsc_enthalpy_definition": {
+      "basis": "source_reported_dsc_melting_peak_area_specific_enthalpy",
+      "thermal_program": {
+        "status": "reported",
+        "text": "30to150C at10C/min,cool to30C at-10C/min,then second ramp to150C at10C/min;hold durations unknown",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Actual run history,holds and heat-history erasure not independently verified."
+      },
+      "cycle_assignment": {
+        "status": "reported",
+        "text": "Figure4 caption identifies second heating;Table4 situated in same DSC discussion",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Shared context only;Figure4 plots B0/B20/B45/R20/R45,not all selected rows;Table4 does not individually assign each DeltaHm cell."
+      },
+      "integration_scope": {
+        "status": "reported",
+        "text": "Source defines DeltaHm as melting enthalpy derived from area under the peak",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Two melting peaks discussed; main-peak-only versus combined integration not specified. No range or deconvolution inferred."
+      },
+      "normalization_mass_basis": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Unambiguous per-cell sample-mass versus polymer-phase-mass normalization not stated independently;Xc equation f and110.3 reference do not substitute for that evidence."
+      },
+      "baseline_and_limits": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Baseline construction,integration limits and software reduction settings not given."
+      },
+      "apparatus_and_calibration": {
+        "status": "reported",
+        "text": "Perkin Elmer DSC-7;nominal10mg extruded formulations",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Calibration,pan,lid,gas and DSC-specific software not supplied;no defaults or neighboring-method software transferred."
+      },
+      "sample_replication_conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "DSC n,run/aliquot/batch links,drying,RH and storage unknown;two ramps are not n2 and DMAtriplicate not transferred."
+      },
+      "sign_convention": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Table4 selected values are printed positive;endotherm/exotherm and software sign convention not explicitly established. Preserve signs,do not infer from plot orientation."
+      },
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+          "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ],
+      "notes": "Source Table4 DeltaHm from calorimetric peak area. Shared extruded DSC method context only,not proof of same aliquot,run,scan or batch as Tm. Second heating is shared Figure4/discussion context,not per-cell certification. Exact included peaks,mass basis,baseline,limits,sign convention,n and uncertainty unknown; no Xc conversion or110.3J/g reference assigned as measurement."
+    }
+  },
+  {
+    "id": "refprop_ewurum2025_r20_dsc_melting_enthalpy",
+    "version": "1.0.0",
+    "material_state_id": "state_ewurum2025_r20_extruded_dsc_second_heating",
+    "quantity": "dsc_reported_melting_specific_enthalpy",
+    "quantity_dimension": "energy_per_mass",
+    "source_property_label": "Delta H_m (J/g)",
+    "reported_value": {
+      "kind": "scalar",
+      "value_text": "44",
+      "number": "44",
+      "unit_text": "J/g",
+      "unit_code": "J_per_g_dsc_melting_enthalpy"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Author-reported peak-area reduction,not raw instrument reading or evaluator computation. Preserve positive printed integer without sign flip,scaling or assumed normalization.",
+    "conditions": {
+      "temperature": {
+        "status": "reported",
+        "text": "30to150C at10C/min,cool to30C at-10C/min,then second ramp to150C at10C/min;hold durations unknown",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Dynamic source program,not ambient temperature or a single isothermal enthalpy measurement point."
+      },
+      "test_standard": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "No DSC-specific standard named in inspected method; mechanical standards not transferred."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "Perkin Elmer DSC-7; extruded formulation nominal10mg;source peak-area melting enthalpy;30to150C at10C/min,cool to30C at-10C/min,then second ramp to150C at10C/min;hold durations unknown",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Second heating is contextual only; integration coverage and mass normalization not resolved."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "DSC-specific sampling orientation and physical aliquot relation unknown; no scalar-isotropy or mechanical-direction inference."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "DSC pre-scan drying,storage,RH and equilibration unknown; precursor preparation is not DSC conditioning."
+      },
+      "loading_rate": {
+        "status": "not_applicable",
+        "text": null,
+        "evidence": [],
+        "notes": "Mechanical loading rate does not describe DSC; signed heating/cooling rates retained in thermal program."
+      },
+      "additional_conditions": [
+        {
+          "name": "nominal_DSC_sample_mass",
+          "fact": {
+            "status": "reported",
+            "text": "10mg",
+            "evidence": [
+              {
+                "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+                "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+                "supports": [
+                  "method",
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Nominal source method only,not actual per-run weighing,replicate count or normalization denominator."
+          }
+        },
+        {
+          "name": "purge_pan_software",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [
+              {
+                "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+                "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "DSC gas,flow,pan,lid and software unspecified; neighboring DMA/TGA statements not transferred."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "reported_value",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "uncertainty_note": "No numeric amplitude printed in selected Table4 enthalpy cell; mechanical-table SD and DSC trace appearance not transferred.",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "source_statement": "No unambiguous DSC enthalpy contributor count;10mg is nominal mass,two ramps are program steps,DMAtriplicate not transferred.",
+      "scope": "R20 Table4 DeltaHm only;per-run,specimen and independent batch counts unknown.",
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+          "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+          "supports": [
+            "sample_count"
+          ]
+        }
+      ]
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source-reported DSC melting peak-area specific enthalpy;30to150C at10C/min,cool to30C at-10C/min,then second ramp to150C at10C/min;hold durations unknown;integration,mass basis and sign convention unknown.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+          "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+          "supports": [
+            "method",
+            "condition",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [
+      {
+        "description": "Section3.5 describes main peaks at113–115degC and later113.2–115.6degC, whereas Table4 reports integer Tm values including B10=116 and B30=113.",
+        "disposition": "Keep selected table literals and their precision; do not reconstruct decimals, repair rounding, average, or turn the narrative range into uncertainty.",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+            "locator": "PDF p.9 section3.5;p.10 Table4",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      },
+      {
+        "description": "Section3.5 opening mentions Tg among DSC thermal properties, but Table3 Tg is explicitly obtained from DMA tan-delta maxima in section3.4.",
+        "disposition": "Do not admit DMA Tg as DSC Tg or extend the DSC-specific Tg method description in this batch.",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+            "locator": "PDF p.9 section3.5;p.10 Table4",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      }
+    ],
+    "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+    "evidence": [
+      {
+        "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+        "locator": "Table4 R20 / Delta H_m (J/g) / polymers-17-00194-t004",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+        "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+        "supports": [
+          "method",
+          "condition",
+          "classification"
+        ]
+      }
+    ],
+    "source_document": {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+      "revision": "Retained primary XML;formal revision and latest notices not independently verified.",
+      "inspected_on": "2026-11-12",
+      "sha256": "a16999d84b85e49d09979b2d32804e9e9763bc0478449d9a4a2c3c346d7a4a1a",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Primary retained XML Table4 and selected DSC method/discussion/caption inspected;secondary same-byte publisher PDFpp4/9/10 visually corroborated. XML primary URL/hash not replaced by PDF hash. No raw traces,integration logs,full standard or latest-notice completeness inspection.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Source Table4 DeltaHm from calorimetric peak area. Shared extruded DSC method context only,not proof of same aliquot,run,scan or batch as Tm. Second heating is shared Figure4/discussion context,not per-cell certification. Exact included peaks,mass basis,baseline,limits,sign convention,n and uncertainty unknown; no Xc conversion or110.3J/g reference assigned as measurement.",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Primary retained XML Table4 and selected DSC method/discussion/caption inspected;secondary same-byte publisher PDFpp4/9/10 visually corroborated. XML primary URL/hash not replaced by PDF hash. No raw traces,integration logs,full standard or latest-notice completeness inspection.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "dsc_enthalpy_definition": {
+      "basis": "source_reported_dsc_melting_peak_area_specific_enthalpy",
+      "thermal_program": {
+        "status": "reported",
+        "text": "30to150C at10C/min,cool to30C at-10C/min,then second ramp to150C at10C/min;hold durations unknown",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Actual run history,holds and heat-history erasure not independently verified."
+      },
+      "cycle_assignment": {
+        "status": "reported",
+        "text": "Figure4 caption identifies second heating;Table4 situated in same DSC discussion",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Shared context only;Figure4 plots B0/B20/B45/R20/R45,not all selected rows;Table4 does not individually assign each DeltaHm cell."
+      },
+      "integration_scope": {
+        "status": "reported",
+        "text": "Source defines DeltaHm as melting enthalpy derived from area under the peak",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Two melting peaks discussed; main-peak-only versus combined integration not specified. No range or deconvolution inferred."
+      },
+      "normalization_mass_basis": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Unambiguous per-cell sample-mass versus polymer-phase-mass normalization not stated independently;Xc equation f and110.3 reference do not substitute for that evidence."
+      },
+      "baseline_and_limits": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Baseline construction,integration limits and software reduction settings not given."
+      },
+      "apparatus_and_calibration": {
+        "status": "reported",
+        "text": "Perkin Elmer DSC-7;nominal10mg extruded formulations",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Calibration,pan,lid,gas and DSC-specific software not supplied;no defaults or neighboring-method software transferred."
+      },
+      "sample_replication_conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "DSC n,run/aliquot/batch links,drying,RH and storage unknown;two ramps are not n2 and DMAtriplicate not transferred."
+      },
+      "sign_convention": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Table4 selected values are printed positive;endotherm/exotherm and software sign convention not explicitly established. Preserve signs,do not infer from plot orientation."
+      },
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+          "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ],
+      "notes": "Source Table4 DeltaHm from calorimetric peak area. Shared extruded DSC method context only,not proof of same aliquot,run,scan or batch as Tm. Second heating is shared Figure4/discussion context,not per-cell certification. Exact included peaks,mass basis,baseline,limits,sign convention,n and uncertainty unknown; no Xc conversion or110.3J/g reference assigned as measurement."
+    }
+  },
+  {
+    "id": "refprop_ewurum2025_r30_dsc_melting_enthalpy",
+    "version": "1.0.0",
+    "material_state_id": "state_ewurum2025_r30_extruded_dsc_second_heating",
+    "quantity": "dsc_reported_melting_specific_enthalpy",
+    "quantity_dimension": "energy_per_mass",
+    "source_property_label": "Delta H_m (J/g)",
+    "reported_value": {
+      "kind": "scalar",
+      "value_text": "39",
+      "number": "39",
+      "unit_text": "J/g",
+      "unit_code": "J_per_g_dsc_melting_enthalpy"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Author-reported peak-area reduction,not raw instrument reading or evaluator computation. Preserve positive printed integer without sign flip,scaling or assumed normalization.",
+    "conditions": {
+      "temperature": {
+        "status": "reported",
+        "text": "30to150C at10C/min,cool to30C at-10C/min,then second ramp to150C at10C/min;hold durations unknown",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Dynamic source program,not ambient temperature or a single isothermal enthalpy measurement point."
+      },
+      "test_standard": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "No DSC-specific standard named in inspected method; mechanical standards not transferred."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "Perkin Elmer DSC-7; extruded formulation nominal10mg;source peak-area melting enthalpy;30to150C at10C/min,cool to30C at-10C/min,then second ramp to150C at10C/min;hold durations unknown",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Second heating is contextual only; integration coverage and mass normalization not resolved."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "DSC-specific sampling orientation and physical aliquot relation unknown; no scalar-isotropy or mechanical-direction inference."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "DSC pre-scan drying,storage,RH and equilibration unknown; precursor preparation is not DSC conditioning."
+      },
+      "loading_rate": {
+        "status": "not_applicable",
+        "text": null,
+        "evidence": [],
+        "notes": "Mechanical loading rate does not describe DSC; signed heating/cooling rates retained in thermal program."
+      },
+      "additional_conditions": [
+        {
+          "name": "nominal_DSC_sample_mass",
+          "fact": {
+            "status": "reported",
+            "text": "10mg",
+            "evidence": [
+              {
+                "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+                "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+                "supports": [
+                  "method",
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Nominal source method only,not actual per-run weighing,replicate count or normalization denominator."
+          }
+        },
+        {
+          "name": "purge_pan_software",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [
+              {
+                "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+                "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "DSC gas,flow,pan,lid and software unspecified; neighboring DMA/TGA statements not transferred."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "reported_value",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "uncertainty_note": "No numeric amplitude printed in selected Table4 enthalpy cell; mechanical-table SD and DSC trace appearance not transferred.",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "source_statement": "No unambiguous DSC enthalpy contributor count;10mg is nominal mass,two ramps are program steps,DMAtriplicate not transferred.",
+      "scope": "R30 Table4 DeltaHm only;per-run,specimen and independent batch counts unknown.",
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+          "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+          "supports": [
+            "sample_count"
+          ]
+        }
+      ]
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source-reported DSC melting peak-area specific enthalpy;30to150C at10C/min,cool to30C at-10C/min,then second ramp to150C at10C/min;hold durations unknown;integration,mass basis and sign convention unknown.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+          "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+          "supports": [
+            "method",
+            "condition",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [
+      {
+        "description": "Section3.5 describes main peaks at113–115degC and later113.2–115.6degC, whereas Table4 reports integer Tm values including B10=116 and B30=113.",
+        "disposition": "Keep selected table literals and their precision; do not reconstruct decimals, repair rounding, average, or turn the narrative range into uncertainty.",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+            "locator": "PDF p.9 section3.5;p.10 Table4",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      },
+      {
+        "description": "Section3.5 opening mentions Tg among DSC thermal properties, but Table3 Tg is explicitly obtained from DMA tan-delta maxima in section3.4.",
+        "disposition": "Do not admit DMA Tg as DSC Tg or extend the DSC-specific Tg method description in this batch.",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+            "locator": "PDF p.9 section3.5;p.10 Table4",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      }
+    ],
+    "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+    "evidence": [
+      {
+        "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+        "locator": "Table4 R30 / Delta H_m (J/g) / polymers-17-00194-t004",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+        "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+        "supports": [
+          "method",
+          "condition",
+          "classification"
+        ]
+      }
+    ],
+    "source_document": {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+      "revision": "Retained primary XML;formal revision and latest notices not independently verified.",
+      "inspected_on": "2026-11-12",
+      "sha256": "a16999d84b85e49d09979b2d32804e9e9763bc0478449d9a4a2c3c346d7a4a1a",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Primary retained XML Table4 and selected DSC method/discussion/caption inspected;secondary same-byte publisher PDFpp4/9/10 visually corroborated. XML primary URL/hash not replaced by PDF hash. No raw traces,integration logs,full standard or latest-notice completeness inspection.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Source Table4 DeltaHm from calorimetric peak area. Shared extruded DSC method context only,not proof of same aliquot,run,scan or batch as Tm. Second heating is shared Figure4/discussion context,not per-cell certification. Exact included peaks,mass basis,baseline,limits,sign convention,n and uncertainty unknown; no Xc conversion or110.3J/g reference assigned as measurement.",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Primary retained XML Table4 and selected DSC method/discussion/caption inspected;secondary same-byte publisher PDFpp4/9/10 visually corroborated. XML primary URL/hash not replaced by PDF hash. No raw traces,integration logs,full standard or latest-notice completeness inspection.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "dsc_enthalpy_definition": {
+      "basis": "source_reported_dsc_melting_peak_area_specific_enthalpy",
+      "thermal_program": {
+        "status": "reported",
+        "text": "30to150C at10C/min,cool to30C at-10C/min,then second ramp to150C at10C/min;hold durations unknown",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Actual run history,holds and heat-history erasure not independently verified."
+      },
+      "cycle_assignment": {
+        "status": "reported",
+        "text": "Figure4 caption identifies second heating;Table4 situated in same DSC discussion",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Shared context only;Figure4 plots B0/B20/B45/R20/R45,not all selected rows;Table4 does not individually assign each DeltaHm cell."
+      },
+      "integration_scope": {
+        "status": "reported",
+        "text": "Source defines DeltaHm as melting enthalpy derived from area under the peak",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Two melting peaks discussed; main-peak-only versus combined integration not specified. No range or deconvolution inferred."
+      },
+      "normalization_mass_basis": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Unambiguous per-cell sample-mass versus polymer-phase-mass normalization not stated independently;Xc equation f and110.3 reference do not substitute for that evidence."
+      },
+      "baseline_and_limits": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Baseline construction,integration limits and software reduction settings not given."
+      },
+      "apparatus_and_calibration": {
+        "status": "reported",
+        "text": "Perkin Elmer DSC-7;nominal10mg extruded formulations",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Calibration,pan,lid,gas and DSC-specific software not supplied;no defaults or neighboring-method software transferred."
+      },
+      "sample_replication_conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "DSC n,run/aliquot/batch links,drying,RH and storage unknown;two ramps are not n2 and DMAtriplicate not transferred."
+      },
+      "sign_convention": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Table4 selected values are printed positive;endotherm/exotherm and software sign convention not explicitly established. Preserve signs,do not infer from plot orientation."
+      },
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+          "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ],
+      "notes": "Source Table4 DeltaHm from calorimetric peak area. Shared extruded DSC method context only,not proof of same aliquot,run,scan or batch as Tm. Second heating is shared Figure4/discussion context,not per-cell certification. Exact included peaks,mass basis,baseline,limits,sign convention,n and uncertainty unknown; no Xc conversion or110.3J/g reference assigned as measurement."
+    }
+  },
+  {
+    "id": "refprop_ewurum2025_r45_dsc_melting_enthalpy",
+    "version": "1.0.0",
+    "material_state_id": "state_ewurum2025_r45_extruded_dsc_second_heating",
+    "quantity": "dsc_reported_melting_specific_enthalpy",
+    "quantity_dimension": "energy_per_mass",
+    "source_property_label": "Delta H_m (J/g)",
+    "reported_value": {
+      "kind": "scalar",
+      "value_text": "29",
+      "number": "29",
+      "unit_text": "J/g",
+      "unit_code": "J_per_g_dsc_melting_enthalpy"
+    },
+    "evidence_kind": "published_experimental_reference",
+    "reporting_basis": "reported_summary",
+    "determination_basis": "source_reports_measurement",
+    "basis_note": "Author-reported peak-area reduction,not raw instrument reading or evaluator computation. Preserve positive printed integer without sign flip,scaling or assumed normalization.",
+    "conditions": {
+      "temperature": {
+        "status": "reported",
+        "text": "30to150C at10C/min,cool to30C at-10C/min,then second ramp to150C at10C/min;hold durations unknown",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Dynamic source program,not ambient temperature or a single isothermal enthalpy measurement point."
+      },
+      "test_standard": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "No DSC-specific standard named in inspected method; mechanical standards not transferred."
+      },
+      "test_method": {
+        "status": "reported",
+        "text": "Perkin Elmer DSC-7; extruded formulation nominal10mg;source peak-area melting enthalpy;30to150C at10C/min,cool to30C at-10C/min,then second ramp to150C at10C/min;hold durations unknown",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Second heating is contextual only; integration coverage and mass normalization not resolved."
+      },
+      "direction": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "DSC-specific sampling orientation and physical aliquot relation unknown; no scalar-isotropy or mechanical-direction inference."
+      },
+      "conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "DSC pre-scan drying,storage,RH and equilibration unknown; precursor preparation is not DSC conditioning."
+      },
+      "loading_rate": {
+        "status": "not_applicable",
+        "text": null,
+        "evidence": [],
+        "notes": "Mechanical loading rate does not describe DSC; signed heating/cooling rates retained in thermal program."
+      },
+      "additional_conditions": [
+        {
+          "name": "nominal_DSC_sample_mass",
+          "fact": {
+            "status": "reported",
+            "text": "10mg",
+            "evidence": [
+              {
+                "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+                "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+                "supports": [
+                  "method",
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "Nominal source method only,not actual per-run weighing,replicate count or normalization denominator."
+          }
+        },
+        {
+          "name": "purge_pan_software",
+          "fact": {
+            "status": "not_reported_in_inspected_source",
+            "text": null,
+            "evidence": [
+              {
+                "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+                "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+                "supports": [
+                  "condition"
+                ]
+              }
+            ],
+            "notes": "DSC gas,flow,pan,lid and software unspecified; neighboring DMA/TGA statements not transferred."
+          }
+        }
+      ]
+    },
+    "density_basis": null,
+    "summary_statistic": "reported_value",
+    "uncertainty": null,
+    "uncertainty_status": "not_reported_in_inspected_source",
+    "uncertainty_note": "No numeric amplitude printed in selected Table4 enthalpy cell; mechanical-table SD and DSC trace appearance not transferred.",
+    "sample_count": {
+      "value": null,
+      "relation": "not_reported",
+      "source_statement": "No unambiguous DSC enthalpy contributor count;10mg is nominal mass,two ramps are program steps,DMAtriplicate not transferred.",
+      "scope": "R45 Table4 DeltaHm only;per-run,specimen and independent batch counts unknown.",
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+          "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+          "supports": [
+            "sample_count"
+          ]
+        }
+      ]
+    },
+    "method_definition": {
+      "type": "source_reported_conventional",
+      "definition": "Source-reported DSC melting peak-area specific enthalpy;30to150C at10C/min,cool to30C at-10C/min,then second ramp to150C at10C/min;hold durations unknown;integration,mass basis and sign convention unknown.",
+      "extraction_window": null,
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+          "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+          "supports": [
+            "method",
+            "condition",
+            "classification"
+          ]
+        }
+      ]
+    },
+    "source_discrepancies": [
+      {
+        "description": "Section3.5 describes main peaks at113–115degC and later113.2–115.6degC, whereas Table4 reports integer Tm values including B10=116 and B30=113.",
+        "disposition": "Keep selected table literals and their precision; do not reconstruct decimals, repair rounding, average, or turn the narrative range into uncertainty.",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+            "locator": "PDF p.9 section3.5;p.10 Table4",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      },
+      {
+        "description": "Section3.5 opening mentions Tg among DSC thermal properties, but Table3 Tg is explicitly obtained from DMA tan-delta maxima in section3.4.",
+        "disposition": "Do not admit DMA Tg as DSC Tg or extend the DSC-specific Tg method description in this batch.",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://mdpi-res.com/d_attachment/polymers/polymers-17-00194/article_deploy/polymers-17-00194.pdf",
+            "locator": "PDF p.9 section3.5;p.10 Table4",
+            "supports": [
+              "source_discrepancy"
+            ]
+          }
+        ]
+      }
+    ],
+    "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+    "evidence": [
+      {
+        "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+        "locator": "Table4 R45 / Delta H_m (J/g) / polymers-17-00194-t004",
+        "supports": [
+          "reported_value",
+          "classification"
+        ]
+      },
+      {
+        "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+        "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+        "supports": [
+          "method",
+          "condition",
+          "classification"
+        ]
+      }
+    ],
+    "source_document": {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+      "revision": "Retained primary XML;formal revision and latest notices not independently verified.",
+      "inspected_on": "2026-11-12",
+      "sha256": "a16999d84b85e49d09979b2d32804e9e9763bc0478449d9a4a2c3c346d7a4a1a",
+      "hash_status": "recorded",
+      "hash_note": null,
+      "inspection_scope": "Primary retained XML Table4 and selected DSC method/discussion/caption inspected;secondary same-byte publisher PDFpp4/9/10 visually corroborated. XML primary URL/hash not replaced by PDF hash. No raw traces,integration logs,full standard or latest-notice completeness inspection.",
+      "inspection_status": "selected_content_inspected"
+    },
+    "scope_note": "Source Table4 DeltaHm from calorimetric peak area. Shared extruded DSC method context only,not proof of same aliquot,run,scan or batch as Tm. Second heating is shared Figure4/discussion context,not per-cell certification. Exact included peaks,mass basis,baseline,limits,sign convention,n and uncertainty unknown; no Xc conversion or110.3J/g reference assigned as measurement.",
+    "evaluation_support": "catalog_only",
+    "universal_bound": false,
+    "engineering_allowable": false,
+    "verification": {
+      "source_inspection_scope": "Primary retained XML Table4 and selected DSC method/discussion/caption inspected;secondary same-byte publisher PDFpp4/9/10 visually corroborated. XML primary URL/hash not replaced by PDF hash. No raw traces,integration logs,full standard or latest-notice completeness inspection.",
+      "transcription_cross_check": "completed",
+      "independent_scientific_review": false,
+      "raw_data_reanalysis": false
+    },
+    "dsc_enthalpy_definition": {
+      "basis": "source_reported_dsc_melting_peak_area_specific_enthalpy",
+      "thermal_program": {
+        "status": "reported",
+        "text": "30to150C at10C/min,cool to30C at-10C/min,then second ramp to150C at10C/min;hold durations unknown",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Actual run history,holds and heat-history erasure not independently verified."
+      },
+      "cycle_assignment": {
+        "status": "reported",
+        "text": "Figure4 caption identifies second heating;Table4 situated in same DSC discussion",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Shared context only;Figure4 plots B0/B20/B45/R20/R45,not all selected rows;Table4 does not individually assign each DeltaHm cell."
+      },
+      "integration_scope": {
+        "status": "reported",
+        "text": "Source defines DeltaHm as melting enthalpy derived from area under the peak",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Two melting peaks discussed; main-peak-only versus combined integration not specified. No range or deconvolution inferred."
+      },
+      "normalization_mass_basis": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Unambiguous per-cell sample-mass versus polymer-phase-mass normalization not stated independently;Xc equation f and110.3 reference do not substitute for that evidence."
+      },
+      "baseline_and_limits": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Baseline construction,integration limits and software reduction settings not given."
+      },
+      "apparatus_and_calibration": {
+        "status": "reported",
+        "text": "Perkin Elmer DSC-7;nominal10mg extruded formulations",
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "method",
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Calibration,pan,lid,gas and DSC-specific software not supplied;no defaults or neighboring-method software transferred."
+      },
+      "sample_replication_conditioning": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "DSC n,run/aliquot/batch links,drying,RH and storage unknown;two ramps are not n2 and DMAtriplicate not transferred."
+      },
+      "sign_convention": {
+        "status": "not_reported_in_inspected_source",
+        "text": null,
+        "evidence": [
+          {
+            "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+            "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+            "supports": [
+              "condition"
+            ]
+          }
+        ],
+        "notes": "Table4 selected values are printed positive;endotherm/exotherm and software sign convention not explicitly established. Preserve signs,do not infer from plot orientation."
+      },
+      "evidence": [
+        {
+          "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+          "locator": "Section2.8 DSC paragraph and equation3 explanation;Section3.5/Figure4 shared second-heating context;Table4 DeltaHm",
+          "supports": [
+            "method",
+            "condition"
+          ]
+        }
+      ],
+      "notes": "Source Table4 DeltaHm from calorimetric peak area. Shared extruded DSC method context only,not proof of same aliquot,run,scan or batch as Tm. Second heating is shared Figure4/discussion context,not per-cell certification. Exact included peaks,mass basis,baseline,limits,sign convention,n and uncertainty unknown; no Xc conversion or110.3J/g reference assigned as measurement."
+    }
+  }
+]

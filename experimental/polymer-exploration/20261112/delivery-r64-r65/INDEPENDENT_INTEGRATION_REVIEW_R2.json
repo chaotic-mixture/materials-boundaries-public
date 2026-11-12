@@ -1,0 +1,21 @@
+{
+  "decision": "approved",
+  "review_inputs_sha256": "d9f229d2598f18c8e70e4360ecf4e98521873da46ec280c06ba381185e11ee19",
+  "checks": {
+    "bindings": "279 repo、127 external、3 native哈希全部匹配。",
+    "r1_preservation": "R1入口及changes_required回执原字节保留；原freezer归档哈希bd44f4449dede02c71419497701d3bb5ad016418f41dbb5cce4d84e52e341a9d与R1冻结绑定一致。",
+    "minimal_fix": "唯一共享文件变化为freeze_delivery.py新增一行空index断言；位于main的HEAD/branch检查之后、批准读取、范围收集及任何写入之前。",
+    "finding_closed": "新增守卫拒绝非空暂存区，解决staged-only路径可能被范围收集遗漏的问题。其余HEAD、branch和既有逻辑保持。",
+    "negative_evidence": "NEGATIVE_PROBE_R2.json绑定修正脚本精确哈希；静态核对模拟非空index在范围收集前被拒绝、writer_calls为0。该记录不声称科学测试或真实Git修改。",
+    "exact_scope": "R2列170个预期路径；当前169个实际改动路径加唯一待写INDEPENDENT_INTEGRATION_REVIEW_R2.json精确一致，无额外路径、原始资产或workflow变更。",
+    "git_state": "HEAD仍dd91c1841e3630bd7de0cbeb1707ad3276080272，分支experimental/open-database，index为空。",
+    "unchanged_evidence": "R1其余repo绑定、全部既有external及native绑定保持；当前19项检查的93输入和76打包输入逐项匹配。科学数据、安装包及安装证据未变，可复用R1已核累计增量、历史解析、库存及消费者结论。"
+  },
+  "findings": [],
+  "limits": [
+    "批准R2累计交付内容及所列守卫修正，不代替后续精确提交清单核验或认证提交、推送、远端CI、main、发布、部署。",
+    "外部verify_commit_r2.py不在本次冻结审阅范围内。",
+    "未执行作者脚本、负例脚本、测试或套件、完整图及历史回归；未写文件或缓存、安装或执行Git变更。",
+    "不构成科学有效性或安装过程加密来源链认证。"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "decision": "approved",
+  "review_inputs_sha256": "c1857300f05198904be7558cb4aa281559355172d60de18a9fbeb413e60b737a",
+  "reviewer": "/root/review_phbv39_flexural",
+  "checks": {
+    "bindings": "153 repo、28 external、3 native哈希全部匹配；138执行输入当前逐项匹配。",
+    "compatibility": "旧23个完整分支及全部既有定义逐对象相等；16个旧测试仅23→24总分支数修订；四语言既有值保留，各新增12项。",
+    "domain_and_units": "第24分支限定pressure_time及专用kPa_s_complex_viscosity标量。非负含原文0，无100上限；负值、非有限值及指数格式拒绝。绝对幅度专用同码、非负，relative percent保持独立。",
+    "frequency": "reported频率必须正Hz、保留数值精度，并绑定同主文档所选reported_value单元格的condition/classification证据；unknown严格四字段null、非空说明及主文档condition证据。",
+    "facts": "八项事实已知/未知形状、主文档角色和非空说明闭合；未知不得填文本或not_applicable。方向不得以标量性质为由填not_applicable。",
+    "independent_probes": "自有55项反例通过；同格频率改标、未知补齐、定义补充及尾零变化在双顺序、低Decimal精度下均拒绝重复；不同真实频率列可保留相同中心值。",
+    "consumers": "有限自建小图验证、resolve及量筛选通过；四语言保留数值、八事实和频率未知状态，未将unknown渲染为0 Hz。",
+    "execution_evidence": "完整定向日志19项通过；权威新鲜日志Ran 356 tests in 62.562s、OK，与0失败/错误/跳过回执一致。19项已包含于356，不相加。",
+    "native": "三张原生表哈希保持，仍5673性质、5389状态、134来源；当前图回执绑定d2062c34b747e03fc4affc2998e25a7f69e362fef2f98503e0b50433b662b177。",
+    "history": "inactive原型及语法阶段说明保留，未将其作为正式实现或成功检查证据。"
+  },
+  "findings": [],
+  "limits": [
+    "批准仅覆盖冻结规则实现，不批准真实18条映射、原生接纳或实际安装。",
+    "来源协议、单元格定位和实验真实性仍需策展审阅；代码约束不认证LVR、稳态剪切等价、拟合有效性或科学有效性。",
+    "未执行作者helpers、测试模块或套件、完整图及历史回归；未写文件或缓存、安装、执行Git变更或推送。",
+    "文件导出行为依据静态实现及冻结测试证据核验；独立消费者探针限内存对象与有限小图，不写导出文件。"
+  ]
+}

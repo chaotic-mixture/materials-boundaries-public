@@ -1,0 +1,24 @@
+{
+  "decision": "approved",
+  "review_inputs_sha256": "ec10f8816962022ed4989ca1600eb24073d14a9c639beab70bd9f94f1df9911b",
+  "reviewer": "/root/review_phbv39_flexural",
+  "checks": {
+    "hashes": "157 repo、23 external、3 native全部匹配；before档案绑定匹配。",
+    "compatibility": "旧22个完整分支及其余全部旧定义逐对象保持，公开schema等于运行时结果。共享无符号数值、温度及误差校验函数AST保持；15个旧测试仅总数22→23。",
+    "signed_central_value": "独立探针确认负数、0、负零及低于温度绝对零界限的焓值合法；符号、负零和原精度不匹配均拒绝。Unicode负号可保留，NaN、Infinity和指数格式拒绝。",
+    "unit_and_uncertainty_roles": "专用J/g中央角色与比热、断裂功密度、percent及其他单位隔离。传统幅度和reported_measures绝对幅度均非负且同码；带负数／零／负零中心仍拒绝负幅度。相对CV仅用独立percent，不自动计算。",
+    "facts": "八项强制事实的严格reported／unknown、同所检主文档证据及非空说明落实；56项自建事实负例通过拒绝检查。",
+    "deduplication": "质量基准或符号解释补全、别名及数字尾零在低Decimal精度下两个顺序均不能产生同格新事实。",
+    "consumers_and_locales": "有限虚构图验证、resolve、量筛选、完整JSON字段保留、副本隔离及四语言通过；有符号原文和八项事实保留。四语旧值不变，各追加11项。",
+    "failure_history": "首个维度泄入守卫的代码与观察JSON保留；保存代码到当前仅一处新维度排除修正。当前旧分支无扩张，未将该守卫失败冒称测试运行，也未声称保存完整原日志。",
+    "execution": "原始日志Ran 337 tests、OK；135项当前输入匹配。337包含14项新增与daily19，不与此前13项定向检查累加。",
+    "native": "三表保持5664性质／5389状态／134来源及快照f702a8c5b0d6de2592a262b440a76f30d5d4bbe41ec179754cd73fcf8836a40c；九条真实熔融焓尚未映射。"
+  },
+  "findings": [],
+  "limits": [
+    "批准仅限本实现，不批准九条真实映射、原生接纳或实际安装。",
+    "首次守卫历史仅按保存代码和观察摘要核验，不补造未保存的完整控制台。",
+    "未运行作者helpers、测试模块或套件、完整图或历史回归；未写文件、缓存、安装或执行Git变更。",
+    "PDF补充文件不在本入口范围；不认证实际积分过程、热力学标准化含义、科学有效性或远端CI。"
+  ]
+}

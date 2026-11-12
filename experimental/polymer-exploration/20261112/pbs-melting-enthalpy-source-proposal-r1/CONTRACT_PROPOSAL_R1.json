@@ -1,0 +1,27 @@
+{
+  "quantity": "dsc_reported_melting_specific_enthalpy",
+  "dimension": "energy_per_mass",
+  "unit_role": "dedicated J/g for DSC melting enthalpy; not heat capacity,work density or crystallinity percent",
+  "central_domain_proposal": "finite signed scalar preserving source sign,including source-reported0; no absolute-value/sign flip,unit scaling or arbitrary cap; all selected cells positive integers",
+  "basis": "source_reported_dsc_melting_peak_area_specific_enthalpy",
+  "required_facts": [
+    "thermal_program",
+    "cycle_assignment",
+    "integration_scope",
+    "normalization_mass_basis",
+    "baseline_and_limits",
+    "apparatus_and_calibration",
+    "sample_replication_conditioning",
+    "sign_convention"
+  ],
+  "classification_proposal": "published_experimental_reference/source_reports_measurement/source_reported_conventional; author-reported calorimetric peak-area reduction,not evaluator calculation",
+  "prohibited": [
+    "Do not convert DeltaH into Xc or vice versa",
+    "Do not assign reference110.3 to a measured formulation",
+    "No inference of per-polymer vs per-sample mass basis beyond source wording",
+    "Do not label as main peak only or sum both peaks without explicit evidence",
+    "No invented integration limits,baseline,calibration or DSC n from DMA triplicate",
+    "No numerical temperature or single isothermal condition inferred from dynamic program",
+    "No mechanical energy-to-break or heat-capacity conversion"
+  ]
+}

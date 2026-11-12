@@ -1,0 +1,32 @@
+{
+  "decision": "approved",
+  "review_inputs_sha256": "f7583604c659b0902a0ff84336f0585d4df968c3a32bc3180438e6f82829ea4c",
+  "reviewer": "/root/review_phbv39_flexural",
+  "checks": {
+    "hashes": "12 repo、1 external、3 native全部匹配；R1全部冻结字节保持。",
+    "source_identity": "留存XML明确PMCID PMC11768263、DOI 10.3390/polym17020194；R2主XML URL修正正确，XML哈希未变。",
+    "values": "Table4九个ΔHm逐格为58/49/44/42/29/49/44/39/29 J/g，原整数精度保持。",
+    "identities": "九个既有身份、DSC状态及熔融温度记录关联正确，分类为1 polymer、8 composite；R0未纳入。",
+    "method": "DSC-7、挤出配方名义10mg、30→150→30→150°C及升温10／冷却−10°C/min有据。DMA triplicate、Pyris软件等相邻方法信息未转移。",
+    "rights": "XML明确CC BY 4.0；110.3 J/g为引用的完全结晶PBS参考值，不是九配方实测。",
+    "correction_scope": "来源事实相对R1仅primary_url及source_identity变化；九值、XML哈希、方法边界和契约文件保持。",
+    "native": "无对应新量记录，当前原生未改。"
+  },
+  "findings": [],
+  "adjudications": {
+    "source_admissibility": "九个来源限定标量可进入后续实现及映射审阅，保持reported_value、n=null、uncertainty=null。",
+    "classification": "作者报告的DSC峰面积常规归约可采用published_experimental_reference/source_reports_measurement/source_reported_conventional；须明确source-reported reduction，不称直接原始读数或软件重新计算。",
+    "signed_domain": "拟定名称dsc_reported_melting_specific_enthalpy下，有限有符号标量含原文0可行。保留打印符号、精度及符号约定未知，不取绝对值、翻转或自动缩放；不能据此宣称规范热力学熔融焓或自动接纳来源归属不明的负峰。",
+    "units_and_uncertainty": "J/g仅进入本新量的封闭能量／质量角色，不混入比热、机械断裂功密度或结晶度。未来绝对幅度须非负且同单位码；相对percent独立保留，不从符号或零值自动计算CV。",
+    "integration_and_mass_basis": "峰面积定义已知，不能抹为未知；主峰、双峰总和、基线和积分界限仍未知。Xc公式中的f及110.3不能替代明确逐格质量归一化证据，不反算焓或结晶度。",
+    "cycle": "第二升温仅为共同图注／讨论上下文，不能升级为每格独立周期认证；两个升温程序不等于n=2，动态程序不当作环境温度或等温测试点。",
+    "required_facts": "八项强制事实方案可行，实施时应保留同所检主文档证据、严格reported／explicit unknown及非空说明。已知仪器和程序与未知校准、积分、预处理及样本关系须分层保留。",
+    "revision_boundary": "同来源格的定义、归一化或符号解释补全应修订原事实，不能仅靠排版或说明变化并列新增记录；旧量的无符号数域不得随新量放宽。"
+  },
+  "limits": [
+    "批准仅限R2来源与契约原则，不批准实现、具体映射、应用或安装。",
+    "本次仅核留存XML，未新看PDF或核验完整最新通知。",
+    "未运行作者helpers、测试、完整图或历史回归；未写文件、缓存、安装或执行Git变更。",
+    "不认证科学有效性、标准符合性或实际积分过程。"
+  ]
+}

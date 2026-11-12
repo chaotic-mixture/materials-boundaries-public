@@ -149,7 +149,7 @@ class CompressionReferenceContractTests(unittest.TestCase):
     def test_public_schema_legacy_domains_and_catalog_only_gate(self):
         stored = json.loads((Path(__file__).resolve().parents[1] / 'schemas/reference_properties.schema.json').read_bytes())
         self.assertEqual(stored, _PROPERTIES_SCHEMA)
-        self.assertEqual(len(stored['$defs']['property']['oneOf']), 22)
+        self.assertEqual(len(stored['$defs']['property']['oneOf']), 24)
         Draft202012Validator.check_schema(stored)
         for factory in (fixture, lambda: fixture(QUANTITIES[1]), hardness_fixture, lambda: elongation_fixture('1040'), target_fixture):
             graph = factory()

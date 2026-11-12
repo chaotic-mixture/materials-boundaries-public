@@ -26,6 +26,8 @@ THERMAL_NEW_QUANTITIES = ("mass_specific_heat_capacity", "thermal_diffusivity")
 RESPONSE_TIME_UNITS = ("s", "ms")
 WORK_UNITS = ("J/cm^3", "MJ/m^3", "J/m^3")
 QUANTITY_DIMENSIONS = {
+    "oscillatory_complex_viscosity_magnitude": "pressure_time",
+    "dsc_reported_melting_specific_enthalpy": "energy_per_mass",
     "foam_cell_geometric_anisotropy_ratio": "dimensionless",
     "foam_reaction_event_time": "time",
     "closed_cell_content_volume_percentage": "dimensionless",
@@ -67,6 +69,8 @@ QUANTITY_DIMENSIONS = {
     "slump_flow_spread": "length",
 }
 UNIT_DIMENSIONS = {
+    "kPa_s_complex_viscosity": "pressure_time",
+    "J_per_g_dsc_melting_enthalpy": "energy_per_mass",
     "ratio_foam_cell_geometric_anisotropy": "dimensionless",
     "percent_closed_cell_content_volume": "dimensionless",
     "percent_water_absorption_volume": "dimensionless",
@@ -243,7 +247,7 @@ def _make_properties_schema():
     # Preserve the legacy value definitions and seven existing property branches.
     # The residue role enters only its dedicated central-value branch and the
     # shared uncertainty vocabulary, where same-role checks still apply.
-    unit = _enum(code for code in UNIT_DIMENSIONS if code not in {"ratio_foam_cell_geometric_anisotropy", "percent_tga_residue", "percent_water_absorption_volume", "percent_closed_cell_content_volume"} and code not in (*RESPONSE_TIME_UNITS, *WORK_UNITS, *HEAT_CAPACITY_UNITS, *DIFFUSIVITY_UNITS))
+    unit = _enum(code for code in UNIT_DIMENSIONS if code not in {"kPa_s_complex_viscosity", "J_per_g_dsc_melting_enthalpy", "ratio_foam_cell_geometric_anisotropy", "percent_tga_residue", "percent_water_absorption_volume", "percent_closed_cell_content_volume"} and code not in (*RESPONSE_TIME_UNITS, *WORK_UNITS, *HEAT_CAPACITY_UNITS, *DIFFUSIVITY_UNITS))
     common_value = {"value_text": TEXT, "unit_text": TEXT, "unit_code": unit}
     definitions["reported_value"] = {"oneOf": [
         _object({"kind": {"const": "scalar"}, **common_value, "number": DECIMAL}),
@@ -276,13 +280,13 @@ def _make_properties_schema():
     for branch in definitions["legacy_reported_value"]["oneOf"]:
         branch["properties"]["unit_code"] = _enum(
             code for code in UNIT_DIMENSIONS
-            if code not in {*RESPONSE_TIME_UNITS, *HEAT_CAPACITY_UNITS, *DIFFUSIVITY_UNITS, *WORK_UNITS, "ratio_foam_cell_geometric_anisotropy", "percent_closed_cell_content_volume", "percent_water_absorption_volume", "percent_tga_residue", "percent_elongation", "shore_a_scale", *TEMPERATURE_UNITS, *ELECTRIC_FIELD_UNITS, *THERMAL_CONDUCTIVITY_UNITS})
+            if code not in {*RESPONSE_TIME_UNITS, *HEAT_CAPACITY_UNITS, *DIFFUSIVITY_UNITS, *WORK_UNITS, "kPa_s_complex_viscosity", "J_per_g_dsc_melting_enthalpy", "ratio_foam_cell_geometric_anisotropy", "percent_closed_cell_content_volume", "percent_water_absorption_volume", "percent_tga_residue", "percent_elongation", "shore_a_scale", *TEMPERATURE_UNITS, *ELECTRIC_FIELD_UNITS, *THERMAL_CONDUCTIVITY_UNITS})
     for branch in definitions["elongation_reported_value"]["oneOf"]:
         branch["properties"]["unit_code"] = {"const": "percent_elongation"}
     # Closed source-reported uncertainty variants. An amplitude alone never
     # establishes dispersion, mean aggregation or a confidence construction.
     # Keep the existing SD shape unchanged for old catalog/output compatibility.
-    uncertainty_value = {**common_value, "unit_code": _enum(code for code in UNIT_DIMENSIONS if code not in {"ratio_foam_cell_geometric_anisotropy", "percent_water_absorption_volume", "percent_closed_cell_content_volume"})}
+    uncertainty_value = {**common_value, "unit_code": _enum(code for code in UNIT_DIMENSIONS if code not in {"kPa_s_complex_viscosity", "J_per_g_dsc_melting_enthalpy", "ratio_foam_cell_geometric_anisotropy", "percent_water_absorption_volume", "percent_closed_cell_content_volume"})}
     uncertainty_common = {**uncertainty_value, "number": DECIMAL, "scope": TEXT,
                           "coverage_factor": NULL, "evidence": evidence}
     definitions["confidence_level"] = _object({
@@ -364,7 +368,7 @@ def _make_properties_schema():
         "id": _id("refprop"), "version": _record_revision(), "material_state_id": _id("state"),
         "quantity": _enum(QUANTITY_DIMENSIONS),
         "quantity_dimension": _enum(sorted({dimension for quantity, dimension in QUANTITY_DIMENSIONS.items()
-                                             if quantity not in {"foam_reaction_event_time", "thermal_response_characteristic_time", *THERMAL_NEW_QUANTITIES, "dielectric_breakdown_strength", "thermal_conductivity", "volumetric_tensile_work_to_break"}})),
+                                             if quantity not in {"oscillatory_complex_viscosity_magnitude", "dsc_reported_melting_specific_enthalpy", "foam_reaction_event_time", "thermal_response_characteristic_time", *THERMAL_NEW_QUANTITIES, "dielectric_breakdown_strength", "thermal_conductivity", "volumetric_tensile_work_to_break"}})),
         "source_property_label": TEXT, "reported_value": _ref("legacy_reported_value"),
         "evidence_kind": _enum(EVIDENCE_KINDS), "reporting_basis": _enum(REPORTING_BASES),
         "determination_basis": _enum(("source_reports_measurement", "source_reports_calculation", "source_reports_compiled_measurements", "not_stated", "mixed_or_unclear")),
@@ -424,7 +428,7 @@ def _make_properties_schema():
     other = definitions["property"]
     other["properties"]["quantity"] = _enum(
         q for q in QUANTITY_DIMENSIONS
-        if q not in {"foam_cell_geometric_anisotropy_ratio", "foam_reaction_event_time", "closed_cell_content_volume_percentage", "water_absorption_volume_percentage", "tensile_extension_at_failure", "thermal_degradation_endset_temperature", "crystallization_peak_temperature", "thermal_response_characteristic_time", *THERMAL_NEW_QUANTITIES, "thermal_conductivity", "dielectric_breakdown_strength", "tensile_stress_at_specified_elongation", "shore_a_hardness", *TEMPERATURE_QUANTITIES, *TGA_QUANTITIES, "volumetric_tensile_work_to_break"}
+        if q not in {"oscillatory_complex_viscosity_magnitude", "dsc_reported_melting_specific_enthalpy", "foam_cell_geometric_anisotropy_ratio", "foam_reaction_event_time", "closed_cell_content_volume_percentage", "water_absorption_volume_percentage", "tensile_extension_at_failure", "thermal_degradation_endset_temperature", "crystallization_peak_temperature", "thermal_response_characteristic_time", *THERMAL_NEW_QUANTITIES, "thermal_conductivity", "dielectric_breakdown_strength", "tensile_stress_at_specified_elongation", "shore_a_hardness", *TEMPERATURE_QUANTITIES, *TGA_QUANTITIES, "volumetric_tensile_work_to_break"}
         and q not in PERCENT_ELONGATION_QUANTITIES)
     del other["properties"]["specified_elongation"]
     definitions["specified_mass_loss"] = _object({
@@ -536,7 +540,11 @@ def _make_properties_schema():
     foam_event = foam_event_branch(definitions, other, text=TEXT, obj=_object, array=_array, ref=_ref)
     from ._cell_anisotropy_contract import schema_branch as cell_anisotropy_branch
     cell_anisotropy = cell_anisotropy_branch(definitions, other, text=TEXT, obj=_object, array=_array, ref=_ref)
-    definitions["property"] = {"oneOf": [other, stress, elongation, shore, temperature, electric, thermal, *tga_branches, work, *new_thermal, response, crystallization, endset, extension, water, closed_cell, foam_event, cell_anisotropy]}
+    from ._dsc_enthalpy_contract import schema_branch as dsc_enthalpy_branch
+    dsc_enthalpy = dsc_enthalpy_branch(definitions, other, text=TEXT, obj=_object, array=_array, ref=_ref)
+    from ._complex_viscosity_contract import schema_branch as complex_viscosity_branch
+    complex_viscosity = complex_viscosity_branch(definitions, other, text=TEXT, obj=_object, array=_array, ref=_ref)
+    definitions["property"] = {"oneOf": [other, stress, elongation, shore, temperature, electric, thermal, *tga_branches, work, *new_thermal, response, crystallization, endset, extension, water, closed_cell, foam_event, cell_anisotropy, dsc_enthalpy, complex_viscosity]}
     return {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "$id": "urn:materials-boundaries:schema:reference_properties:1.0.0",
@@ -795,6 +803,8 @@ def _validate_links(materials, properties, indices):
 # Only spelling/typography normalization; these mappings never change a unit or
 # infer a quantity. Unknown spellings need deliberate capability review.
 _UNIT_SPELLINGS = {
+    "kPa_s_complex_viscosity": {"kPa.s", "kPa·s", "kPa s"},
+    "J_per_g_dsc_melting_enthalpy": {"J/g", "J g^-1", "J g−1"},
     "ratio_foam_cell_geometric_anisotropy": {"1", "ratio", "dimensionless"},
     "percent_closed_cell_content_volume": {"vol.%", "vol%", "V%"},
     "percent_water_absorption_volume": {"V%", "vol.%", "vol%"},
@@ -1025,12 +1035,15 @@ def _validate_property(prop):
     dimension = QUANTITY_DIMENSIONS[prop["quantity"]]
     if prop["quantity_dimension"] != dimension:
         _fail(path, "quantity dimension mismatch")
-    if prop["quantity"] in RESULT_TEMPERATURE_QUANTITIES:
+    if prop["quantity"] == "dsc_reported_melting_specific_enthalpy":
+        from ._dsc_enthalpy_contract import validate_value as validate_dsc_enthalpy_value
+        validate_dsc_enthalpy_value(prop["reported_value"], path + ".reported_value", _fail, _temperature_token_matches)
+    elif prop["quantity"] in RESULT_TEMPERATURE_QUANTITIES:
         _validate_temperature_value(prop["reported_value"], path + ".reported_value")
     else:
         _validate_value(prop["reported_value"], path + ".reported_value", dimension,
                         nonnegative=(prop["quantity"] in PERCENT_ELONGATION_QUANTITIES or
-                                     prop["quantity"] in {"foam_reaction_event_time", "closed_cell_content_volume_percentage", "water_absorption_volume_percentage", "tensile_extension_at_failure", "shore_a_hardness", "tga_residue_percentage", "volumetric_tensile_work_to_break"}))
+                                     prop["quantity"] in {"oscillatory_complex_viscosity_magnitude", "foam_reaction_event_time", "closed_cell_content_volume_percentage", "water_absorption_volume_percentage", "tensile_extension_at_failure", "shore_a_hardness", "tga_residue_percentage", "volumetric_tensile_work_to_break"}))
     from ._extension_contract import validate as validate_extension
     validate_extension(prop, _fail)
     from ._water_absorption_contract import validate as validate_water_absorption
@@ -1041,6 +1054,10 @@ def _validate_property(prop):
     validate_foam_event(prop, _fail)
     from ._cell_anisotropy_contract import validate as validate_cell_anisotropy
     validate_cell_anisotropy(prop, _fail)
+    from ._dsc_enthalpy_contract import validate as validate_dsc_enthalpy
+    validate_dsc_enthalpy(prop, _fail)
+    from ._complex_viscosity_contract import validate as validate_complex_viscosity
+    validate_complex_viscosity(prop, _fail, _numeric_token_matches)
     for field in ("specified_mass_loss", "degradation_peak_ordinal", "residue_endpoint_temperature", "mass_reference_basis"):
         if field not in prop:
             continue
@@ -1350,6 +1367,16 @@ def _unique_fact(prop, seen):
         key = "tga_endset:" + _coordinate_fact_base(signature, "endset_definition")
         if key in seen:
             _fail(prop["id"], "duplicate source fact for the same TGA endset cell")
+        seen.add(key)
+    if prop["quantity"] == "oscillatory_complex_viscosity_magnitude":
+        key = "complex_viscosity:" + _coordinate_fact_base(signature, "complex_viscosity_definition")
+        if key in seen:
+            _fail(prop["id"], "duplicate source fact for the same complex viscosity cell")
+        seen.add(key)
+    if prop["quantity"] == "dsc_reported_melting_specific_enthalpy":
+        key = "dsc_enthalpy:" + _coordinate_fact_base(signature, "dsc_enthalpy_definition")
+        if key in seen:
+            _fail(prop["id"], "duplicate source fact for the same DSC enthalpy source cell")
         seen.add(key)
     if prop["quantity"] == "foam_cell_geometric_anisotropy_ratio":
         key = "cell_anisotropy:" + _coordinate_fact_base(signature, "cell_anisotropy_definition")

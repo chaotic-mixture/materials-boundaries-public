@@ -49,7 +49,7 @@ class ThermalResponseFitTests(unittest.TestCase):
         schema=json.loads((Path(__file__).resolve().parents[1]/'schemas/reference_properties.schema.json').read_bytes());self.assertEqual(schema,_PROPERTIES_SCHEMA)
         Draft202012Validator.check_schema(schema)
         digest=lambda v:hashlib.sha256(json.dumps(v,sort_keys=True,ensure_ascii=False).encode()).hexdigest()
-        old=deepcopy(schema['$defs']['property']['oneOf'][:14]);self.assertEqual(len(schema['$defs']['property']['oneOf']),22)
+        old=deepcopy(schema['$defs']['property']['oneOf'][:14]);self.assertEqual(len(schema['$defs']['property']['oneOf']),24)
         for b in old:
             methods=b['properties']['method_definition']['properties']['type']['enum'];self.assertEqual(methods.count(FIT_METHOD),1);methods.remove(FIT_METHOD)
         self.assertEqual(digest(old),'36512d8c2704d24d8f7eff64e71cbfbe9f0e0435b13a5105010eee537dbddcc4')

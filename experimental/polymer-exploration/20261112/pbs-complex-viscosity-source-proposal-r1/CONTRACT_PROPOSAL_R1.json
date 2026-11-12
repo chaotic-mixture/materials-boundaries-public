@@ -1,0 +1,27 @@
+{
+  "quantity": "oscillatory_complex_viscosity_magnitude",
+  "dimension": "pressure_time",
+  "central_domain": "finite nonnegative source magnitude including printed0;unknownnot0,no cap,unit scaling or fit evaluation",
+  "unit": "dedicated kPa_s_complex_viscosity role;sourcekPa.s only,no steady-shear or other-property role",
+  "frequency_coordinate": "Mandatory closed typed cyclic-frequency descriptor: source-reportedpositive scalarHz with matching primarycell evidence,or explicitunknown with null numeric/unit text and nonblank scope. No angularfrequency/shearrate conversion;allselected18known1or30Hz.",
+  "required_facts": [
+    "rheometer_and_geometry",
+    "temperature_control",
+    "strain_amplitude",
+    "frequency_protocol",
+    "measurement_and_reduction",
+    "sample_preparation_conditioning",
+    "replicate_and_piece_relationship",
+    "instrument_corrections"
+  ],
+  "classification_proposal": "source-reported conventional oscillatory rheometry measurement/reduction;not source-fit K/n evaluation or evaluator calculation",
+  "deduplication": "Same source-cell frequency relabel,definition enrichment or tailzeros are revisions,not newfacts;distinct actual frequency-column cells remain distinct even if same central number",
+  "prohibited": [
+    "No steady-shear viscosity,CoxMerz,zero-shear limit or real/imaginary component inference",
+    "No LVR certification from0.025% alone",
+    "No back-calculation of n or uncertainties from n/R2 fit columns",
+    "No conversion of1Hz to shear rate or angular frequency",
+    "No independent specimen counts from two frequencies",
+    "No DSC/DMA/TGA specimen,conditioning or repeat transfer"
+  ]
+}

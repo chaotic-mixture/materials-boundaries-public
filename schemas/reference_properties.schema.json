@@ -11052,6 +11052,596 @@
             "verification",
             "cell_anisotropy_definition"
           ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^refprop_[a-z0-9][a-z0-9_]*(?![\\s\\S])",
+              "maxLength": 160
+            },
+            "version": {
+              "type": "string",
+              "pattern": "^1\\.0\\.(0|[1-9][0-9]*)(?![\\s\\S])"
+            },
+            "material_state_id": {
+              "type": "string",
+              "pattern": "^state_[a-z0-9][a-z0-9_]*(?![\\s\\S])",
+              "maxLength": 160
+            },
+            "quantity": {
+              "const": "dsc_reported_melting_specific_enthalpy"
+            },
+            "quantity_dimension": {
+              "const": "energy_per_mass"
+            },
+            "source_property_label": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "reported_value": {
+              "$ref": "#/$defs/dsc_enthalpy_reported_value"
+            },
+            "evidence_kind": {
+              "const": "published_experimental_reference"
+            },
+            "reporting_basis": {
+              "const": "reported_summary"
+            },
+            "determination_basis": {
+              "const": "source_reports_measurement"
+            },
+            "basis_note": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "conditions": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "temperature": {
+                  "$ref": "#/$defs/fact"
+                },
+                "test_standard": {
+                  "$ref": "#/$defs/fact"
+                },
+                "test_method": {
+                  "$ref": "#/$defs/fact"
+                },
+                "direction": {
+                  "$ref": "#/$defs/fact"
+                },
+                "conditioning": {
+                  "$ref": "#/$defs/fact"
+                },
+                "loading_rate": {
+                  "$ref": "#/$defs/fact"
+                },
+                "additional_conditions": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "minLength": 1,
+                        "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                      },
+                      "fact": {
+                        "$ref": "#/$defs/fact"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "fact"
+                    ]
+                  },
+                  "minItems": 0
+                }
+              },
+              "required": [
+                "temperature",
+                "test_standard",
+                "test_method",
+                "direction",
+                "conditioning",
+                "loading_rate"
+              ]
+            },
+            "density_basis": {
+              "type": "null"
+            },
+            "summary_statistic": {
+              "type": "string",
+              "enum": [
+                "not_stated",
+                "reported_value",
+                "reported_mean"
+              ]
+            },
+            "uncertainty": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/dsc_enthalpy_uncertainty"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "uncertainty_status": {
+              "type": "string",
+              "enum": [
+                "reported_standard_deviation",
+                "reported_confidence_interval",
+                "reported_plus_minus_unspecified",
+                "reported_measures",
+                "not_reported_in_inspected_source",
+                "not_applicable"
+              ]
+            },
+            "uncertainty_note": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "sample_count": {
+              "$ref": "#/$defs/sample_count"
+            },
+            "method_definition": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "const": "source_reported_conventional"
+                },
+                "definition": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "extraction_window": {
+                  "type": "null"
+                },
+                "evidence": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/evidence"
+                  },
+                  "minItems": 1
+                }
+              },
+              "required": [
+                "type",
+                "definition",
+                "extraction_window",
+                "evidence"
+              ]
+            },
+            "source_discrepancies": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "description": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                  },
+                  "disposition": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                  },
+                  "evidence": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/evidence"
+                    },
+                    "minItems": 1
+                  }
+                },
+                "required": [
+                  "description",
+                  "disposition",
+                  "evidence"
+                ]
+              },
+              "minItems": 0
+            },
+            "source_id": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "source_document": {
+              "$ref": "#/$defs/source_document"
+            },
+            "scope_note": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evaluation_support": {
+              "const": "catalog_only"
+            },
+            "universal_bound": {
+              "const": false
+            },
+            "engineering_allowable": {
+              "const": false
+            },
+            "verification": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "source_inspection_scope": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "transcription_cross_check": {
+                  "const": "completed"
+                },
+                "independent_scientific_review": {
+                  "const": false
+                },
+                "raw_data_reanalysis": {
+                  "const": false
+                }
+              },
+              "required": [
+                "source_inspection_scope",
+                "transcription_cross_check",
+                "independent_scientific_review",
+                "raw_data_reanalysis"
+              ]
+            },
+            "dsc_enthalpy_definition": {
+              "$ref": "#/$defs/dsc_enthalpy_definition"
+            }
+          },
+          "required": [
+            "id",
+            "version",
+            "material_state_id",
+            "quantity",
+            "quantity_dimension",
+            "source_property_label",
+            "reported_value",
+            "evidence_kind",
+            "reporting_basis",
+            "determination_basis",
+            "basis_note",
+            "conditions",
+            "density_basis",
+            "summary_statistic",
+            "uncertainty",
+            "uncertainty_status",
+            "uncertainty_note",
+            "sample_count",
+            "method_definition",
+            "source_discrepancies",
+            "source_id",
+            "evidence",
+            "source_document",
+            "scope_note",
+            "evaluation_support",
+            "universal_bound",
+            "engineering_allowable",
+            "verification",
+            "dsc_enthalpy_definition"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^refprop_[a-z0-9][a-z0-9_]*(?![\\s\\S])",
+              "maxLength": 160
+            },
+            "version": {
+              "type": "string",
+              "pattern": "^1\\.0\\.(0|[1-9][0-9]*)(?![\\s\\S])"
+            },
+            "material_state_id": {
+              "type": "string",
+              "pattern": "^state_[a-z0-9][a-z0-9_]*(?![\\s\\S])",
+              "maxLength": 160
+            },
+            "quantity": {
+              "const": "oscillatory_complex_viscosity_magnitude"
+            },
+            "quantity_dimension": {
+              "const": "pressure_time"
+            },
+            "source_property_label": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "reported_value": {
+              "$ref": "#/$defs/complex_viscosity_reported_value"
+            },
+            "evidence_kind": {
+              "const": "published_experimental_reference"
+            },
+            "reporting_basis": {
+              "const": "reported_summary"
+            },
+            "determination_basis": {
+              "const": "source_reports_measurement"
+            },
+            "basis_note": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "conditions": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "temperature": {
+                  "$ref": "#/$defs/fact"
+                },
+                "test_standard": {
+                  "$ref": "#/$defs/fact"
+                },
+                "test_method": {
+                  "$ref": "#/$defs/fact"
+                },
+                "direction": {
+                  "$ref": "#/$defs/fact"
+                },
+                "conditioning": {
+                  "$ref": "#/$defs/fact"
+                },
+                "loading_rate": {
+                  "$ref": "#/$defs/fact"
+                },
+                "additional_conditions": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "minLength": 1,
+                        "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                      },
+                      "fact": {
+                        "$ref": "#/$defs/fact"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "fact"
+                    ]
+                  },
+                  "minItems": 0
+                }
+              },
+              "required": [
+                "temperature",
+                "test_standard",
+                "test_method",
+                "direction",
+                "conditioning",
+                "loading_rate"
+              ]
+            },
+            "density_basis": {
+              "type": "null"
+            },
+            "summary_statistic": {
+              "type": "string",
+              "enum": [
+                "not_stated",
+                "reported_value",
+                "reported_mean"
+              ]
+            },
+            "uncertainty": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/complex_viscosity_uncertainty"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "uncertainty_status": {
+              "type": "string",
+              "enum": [
+                "reported_standard_deviation",
+                "reported_confidence_interval",
+                "reported_plus_minus_unspecified",
+                "reported_measures",
+                "not_reported_in_inspected_source",
+                "not_applicable"
+              ]
+            },
+            "uncertainty_note": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "sample_count": {
+              "$ref": "#/$defs/sample_count"
+            },
+            "method_definition": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "const": "source_reported_conventional"
+                },
+                "definition": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "extraction_window": {
+                  "type": "null"
+                },
+                "evidence": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/evidence"
+                  },
+                  "minItems": 1
+                }
+              },
+              "required": [
+                "type",
+                "definition",
+                "extraction_window",
+                "evidence"
+              ]
+            },
+            "source_discrepancies": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "description": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                  },
+                  "disposition": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                  },
+                  "evidence": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/evidence"
+                    },
+                    "minItems": 1
+                  }
+                },
+                "required": [
+                  "description",
+                  "disposition",
+                  "evidence"
+                ]
+              },
+              "minItems": 0
+            },
+            "source_id": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "source_document": {
+              "$ref": "#/$defs/source_document"
+            },
+            "scope_note": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evaluation_support": {
+              "const": "catalog_only"
+            },
+            "universal_bound": {
+              "const": false
+            },
+            "engineering_allowable": {
+              "const": false
+            },
+            "verification": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "source_inspection_scope": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "transcription_cross_check": {
+                  "const": "completed"
+                },
+                "independent_scientific_review": {
+                  "const": false
+                },
+                "raw_data_reanalysis": {
+                  "const": false
+                }
+              },
+              "required": [
+                "source_inspection_scope",
+                "transcription_cross_check",
+                "independent_scientific_review",
+                "raw_data_reanalysis"
+              ]
+            },
+            "complex_viscosity_definition": {
+              "$ref": "#/$defs/complex_viscosity_definition"
+            },
+            "oscillation_frequency": {
+              "$ref": "#/$defs/oscillation_frequency"
+            }
+          },
+          "required": [
+            "id",
+            "version",
+            "material_state_id",
+            "quantity",
+            "quantity_dimension",
+            "source_property_label",
+            "reported_value",
+            "evidence_kind",
+            "reporting_basis",
+            "determination_basis",
+            "basis_note",
+            "conditions",
+            "density_basis",
+            "summary_statistic",
+            "uncertainty",
+            "uncertainty_status",
+            "uncertainty_note",
+            "sample_count",
+            "method_definition",
+            "source_discrepancies",
+            "source_id",
+            "evidence",
+            "source_document",
+            "scope_note",
+            "evaluation_support",
+            "universal_bound",
+            "engineering_allowable",
+            "verification",
+            "complex_viscosity_definition",
+            "oscillation_frequency"
+          ]
         }
       ]
     },
@@ -15219,6 +15809,1708 @@
           "required": [
             "type",
             "measures"
+          ]
+        }
+      ]
+    },
+    "dsc_enthalpy_fact": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "const": "reported"
+            },
+            "text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "notes": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            }
+          },
+          "required": [
+            "status",
+            "text",
+            "evidence",
+            "notes"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "type": "string",
+              "enum": [
+                "not_reported_in_inspected_source",
+                "not_verified"
+              ]
+            },
+            "text": {
+              "type": "null"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "notes": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            }
+          },
+          "required": [
+            "status",
+            "text",
+            "evidence",
+            "notes"
+          ]
+        }
+      ]
+    },
+    "dsc_enthalpy_definition": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "basis": {
+          "const": "source_reported_dsc_melting_peak_area_specific_enthalpy"
+        },
+        "thermal_program": {
+          "$ref": "#/$defs/dsc_enthalpy_fact"
+        },
+        "cycle_assignment": {
+          "$ref": "#/$defs/dsc_enthalpy_fact"
+        },
+        "integration_scope": {
+          "$ref": "#/$defs/dsc_enthalpy_fact"
+        },
+        "normalization_mass_basis": {
+          "$ref": "#/$defs/dsc_enthalpy_fact"
+        },
+        "baseline_and_limits": {
+          "$ref": "#/$defs/dsc_enthalpy_fact"
+        },
+        "apparatus_and_calibration": {
+          "$ref": "#/$defs/dsc_enthalpy_fact"
+        },
+        "sample_replication_conditioning": {
+          "$ref": "#/$defs/dsc_enthalpy_fact"
+        },
+        "sign_convention": {
+          "$ref": "#/$defs/dsc_enthalpy_fact"
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          },
+          "minItems": 1
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        }
+      },
+      "required": [
+        "basis",
+        "thermal_program",
+        "cycle_assignment",
+        "integration_scope",
+        "normalization_mass_basis",
+        "baseline_and_limits",
+        "apparatus_and_calibration",
+        "sample_replication_conditioning",
+        "sign_convention",
+        "evidence",
+        "notes"
+      ]
+    },
+    "dsc_enthalpy_reported_value": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "scalar"
+        },
+        "value_text": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "unit_text": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "unit_code": {
+          "const": "J_per_g_dsc_melting_enthalpy"
+        },
+        "number": {
+          "type": "string",
+          "maxLength": 50,
+          "pattern": "^-?(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+        }
+      },
+      "required": [
+        "kind",
+        "value_text",
+        "unit_text",
+        "unit_code",
+        "number"
+      ]
+    },
+    "dsc_enthalpy_reported_measure": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "standard_deviation"
+            },
+            "availability": {
+              "const": "numeric_reported"
+            },
+            "basis": {
+              "const": "absolute"
+            },
+            "reported_value": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value_text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "unit_text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "unit_code": {
+                  "const": "J_per_g_dsc_melting_enthalpy"
+                },
+                "number": {
+                  "type": "string",
+                  "maxLength": 49,
+                  "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+                }
+              },
+              "required": [
+                "value_text",
+                "unit_text",
+                "unit_code",
+                "number"
+              ]
+            },
+            "qualifier": {
+              "type": "string",
+              "enum": [
+                "approximately",
+                "not_qualified_in_source"
+              ]
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "confidence_level": {
+              "type": "null"
+            },
+            "coverage_factor": {
+              "type": "null"
+            },
+            "note": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "availability",
+            "basis",
+            "reported_value",
+            "qualifier",
+            "scope",
+            "evidence",
+            "confidence_level",
+            "coverage_factor",
+            "note"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "coefficient_of_variation"
+            },
+            "availability": {
+              "const": "numeric_reported"
+            },
+            "basis": {
+              "const": "relative_to_reported_value"
+            },
+            "reported_value": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value_text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "unit_text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "unit_code": {
+                  "const": "percent"
+                },
+                "number": {
+                  "type": "string",
+                  "maxLength": 49,
+                  "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+                }
+              },
+              "required": [
+                "value_text",
+                "unit_text",
+                "unit_code",
+                "number"
+              ]
+            },
+            "qualifier": {
+              "type": "string",
+              "enum": [
+                "approximately",
+                "not_qualified_in_source"
+              ]
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "confidence_level": {
+              "type": "null"
+            },
+            "coverage_factor": {
+              "type": "null"
+            },
+            "note": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "availability",
+            "basis",
+            "reported_value",
+            "qualifier",
+            "scope",
+            "evidence",
+            "confidence_level",
+            "coverage_factor",
+            "note"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "standard_error_of_mean"
+            },
+            "availability": {
+              "const": "numeric_reported"
+            },
+            "basis": {
+              "const": "relative_to_reported_value"
+            },
+            "reported_value": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value_text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "unit_text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "unit_code": {
+                  "const": "percent"
+                },
+                "number": {
+                  "type": "string",
+                  "maxLength": 49,
+                  "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+                }
+              },
+              "required": [
+                "value_text",
+                "unit_text",
+                "unit_code",
+                "number"
+              ]
+            },
+            "qualifier": {
+              "type": "string",
+              "enum": [
+                "approximately",
+                "not_qualified_in_source"
+              ]
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "confidence_level": {
+              "type": "null"
+            },
+            "coverage_factor": {
+              "type": "null"
+            },
+            "note": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "availability",
+            "basis",
+            "reported_value",
+            "qualifier",
+            "scope",
+            "evidence",
+            "confidence_level",
+            "coverage_factor",
+            "note"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "estimated_inaccuracy"
+            },
+            "availability": {
+              "const": "numeric_reported"
+            },
+            "basis": {
+              "const": "relative_to_reported_value"
+            },
+            "reported_value": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value_text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "unit_text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "unit_code": {
+                  "const": "percent"
+                },
+                "number": {
+                  "type": "string",
+                  "maxLength": 49,
+                  "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+                }
+              },
+              "required": [
+                "value_text",
+                "unit_text",
+                "unit_code",
+                "number"
+              ]
+            },
+            "qualifier": {
+              "type": "string",
+              "enum": [
+                "approximately",
+                "not_qualified_in_source"
+              ]
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "confidence_level": {
+              "type": "null"
+            },
+            "coverage_factor": {
+              "type": "null"
+            },
+            "note": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "availability",
+            "basis",
+            "reported_value",
+            "qualifier",
+            "scope",
+            "evidence",
+            "confidence_level",
+            "coverage_factor",
+            "note"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "standard_deviation"
+            },
+            "availability": {
+              "const": "graphical_only"
+            },
+            "basis": {
+              "const": "absolute"
+            },
+            "reported_value": {
+              "type": "null"
+            },
+            "qualifier": {
+              "type": "string",
+              "enum": [
+                "approximately",
+                "not_qualified_in_source"
+              ]
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "confidence_level": {
+              "type": "null"
+            },
+            "coverage_factor": {
+              "type": "null"
+            },
+            "note": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            }
+          },
+          "required": [
+            "kind",
+            "availability",
+            "basis",
+            "reported_value",
+            "qualifier",
+            "scope",
+            "evidence",
+            "confidence_level",
+            "coverage_factor",
+            "note"
+          ]
+        }
+      ]
+    },
+    "dsc_enthalpy_uncertainty": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "const": "reported_standard_deviation"
+            },
+            "value_text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "unit_text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "unit_code": {
+              "const": "J_per_g_dsc_melting_enthalpy"
+            },
+            "number": {
+              "type": "string",
+              "maxLength": 49,
+              "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "coverage_factor": {
+              "type": "null"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "confidence_level": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "type",
+            "value_text",
+            "unit_text",
+            "unit_code",
+            "number",
+            "scope",
+            "coverage_factor",
+            "evidence",
+            "confidence_level"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "const": "reported_confidence_interval"
+            },
+            "value_text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "unit_text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "unit_code": {
+              "const": "J_per_g_dsc_melting_enthalpy"
+            },
+            "number": {
+              "type": "string",
+              "maxLength": 49,
+              "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "coverage_factor": {
+              "type": "null"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "confidence_level": {
+              "$ref": "#/$defs/confidence_level"
+            },
+            "estimand": {
+              "$ref": "#/$defs/uncertainty_fact"
+            },
+            "construction": {
+              "$ref": "#/$defs/uncertainty_fact"
+            }
+          },
+          "required": [
+            "type",
+            "value_text",
+            "unit_text",
+            "unit_code",
+            "number",
+            "scope",
+            "coverage_factor",
+            "evidence",
+            "confidence_level",
+            "estimand",
+            "construction"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "const": "reported_plus_minus_unspecified"
+            },
+            "value_text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "unit_text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "unit_code": {
+              "const": "J_per_g_dsc_melting_enthalpy"
+            },
+            "number": {
+              "type": "string",
+              "maxLength": 49,
+              "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "coverage_factor": {
+              "type": "null"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "confidence_level": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "type",
+            "value_text",
+            "unit_text",
+            "unit_code",
+            "number",
+            "scope",
+            "coverage_factor",
+            "evidence",
+            "confidence_level"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "const": "reported_measures"
+            },
+            "measures": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/dsc_enthalpy_reported_measure"
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "type",
+            "measures"
+          ]
+        }
+      ]
+    },
+    "complex_viscosity_fact": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "const": "reported"
+            },
+            "text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "notes": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            }
+          },
+          "required": [
+            "status",
+            "text",
+            "evidence",
+            "notes"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "type": "string",
+              "enum": [
+                "not_reported_in_inspected_source",
+                "not_verified"
+              ]
+            },
+            "text": {
+              "type": "null"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "notes": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            }
+          },
+          "required": [
+            "status",
+            "text",
+            "evidence",
+            "notes"
+          ]
+        }
+      ]
+    },
+    "complex_viscosity_definition": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "basis": {
+          "const": "source_reported_oscillatory_complex_viscosity_magnitude"
+        },
+        "rheometer_and_geometry": {
+          "$ref": "#/$defs/complex_viscosity_fact"
+        },
+        "temperature_control": {
+          "$ref": "#/$defs/complex_viscosity_fact"
+        },
+        "strain_amplitude": {
+          "$ref": "#/$defs/complex_viscosity_fact"
+        },
+        "frequency_protocol": {
+          "$ref": "#/$defs/complex_viscosity_fact"
+        },
+        "measurement_and_reduction": {
+          "$ref": "#/$defs/complex_viscosity_fact"
+        },
+        "sample_preparation_conditioning": {
+          "$ref": "#/$defs/complex_viscosity_fact"
+        },
+        "replicate_and_piece_relationship": {
+          "$ref": "#/$defs/complex_viscosity_fact"
+        },
+        "instrument_corrections": {
+          "$ref": "#/$defs/complex_viscosity_fact"
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          },
+          "minItems": 1
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        }
+      },
+      "required": [
+        "basis",
+        "rheometer_and_geometry",
+        "temperature_control",
+        "strain_amplitude",
+        "frequency_protocol",
+        "measurement_and_reduction",
+        "sample_preparation_conditioning",
+        "replicate_and_piece_relationship",
+        "instrument_corrections",
+        "evidence",
+        "notes"
+      ]
+    },
+    "complex_viscosity_reported_value": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "scalar"
+        },
+        "value_text": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "unit_text": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+        },
+        "unit_code": {
+          "const": "kPa_s_complex_viscosity"
+        },
+        "number": {
+          "type": "string",
+          "maxLength": 49,
+          "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+        }
+      },
+      "required": [
+        "kind",
+        "value_text",
+        "unit_text",
+        "unit_code",
+        "number"
+      ]
+    },
+    "complex_viscosity_reported_measure": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "standard_deviation"
+            },
+            "availability": {
+              "const": "numeric_reported"
+            },
+            "basis": {
+              "const": "absolute"
+            },
+            "reported_value": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value_text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "unit_text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "unit_code": {
+                  "const": "kPa_s_complex_viscosity"
+                },
+                "number": {
+                  "type": "string",
+                  "maxLength": 49,
+                  "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+                }
+              },
+              "required": [
+                "value_text",
+                "unit_text",
+                "unit_code",
+                "number"
+              ]
+            },
+            "qualifier": {
+              "type": "string",
+              "enum": [
+                "approximately",
+                "not_qualified_in_source"
+              ]
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "confidence_level": {
+              "type": "null"
+            },
+            "coverage_factor": {
+              "type": "null"
+            },
+            "note": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "availability",
+            "basis",
+            "reported_value",
+            "qualifier",
+            "scope",
+            "evidence",
+            "confidence_level",
+            "coverage_factor",
+            "note"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "coefficient_of_variation"
+            },
+            "availability": {
+              "const": "numeric_reported"
+            },
+            "basis": {
+              "const": "relative_to_reported_value"
+            },
+            "reported_value": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value_text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "unit_text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "unit_code": {
+                  "const": "percent"
+                },
+                "number": {
+                  "type": "string",
+                  "maxLength": 49,
+                  "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+                }
+              },
+              "required": [
+                "value_text",
+                "unit_text",
+                "unit_code",
+                "number"
+              ]
+            },
+            "qualifier": {
+              "type": "string",
+              "enum": [
+                "approximately",
+                "not_qualified_in_source"
+              ]
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "confidence_level": {
+              "type": "null"
+            },
+            "coverage_factor": {
+              "type": "null"
+            },
+            "note": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "availability",
+            "basis",
+            "reported_value",
+            "qualifier",
+            "scope",
+            "evidence",
+            "confidence_level",
+            "coverage_factor",
+            "note"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "standard_error_of_mean"
+            },
+            "availability": {
+              "const": "numeric_reported"
+            },
+            "basis": {
+              "const": "relative_to_reported_value"
+            },
+            "reported_value": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value_text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "unit_text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "unit_code": {
+                  "const": "percent"
+                },
+                "number": {
+                  "type": "string",
+                  "maxLength": 49,
+                  "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+                }
+              },
+              "required": [
+                "value_text",
+                "unit_text",
+                "unit_code",
+                "number"
+              ]
+            },
+            "qualifier": {
+              "type": "string",
+              "enum": [
+                "approximately",
+                "not_qualified_in_source"
+              ]
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "confidence_level": {
+              "type": "null"
+            },
+            "coverage_factor": {
+              "type": "null"
+            },
+            "note": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "availability",
+            "basis",
+            "reported_value",
+            "qualifier",
+            "scope",
+            "evidence",
+            "confidence_level",
+            "coverage_factor",
+            "note"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "estimated_inaccuracy"
+            },
+            "availability": {
+              "const": "numeric_reported"
+            },
+            "basis": {
+              "const": "relative_to_reported_value"
+            },
+            "reported_value": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "value_text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "unit_text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                "unit_code": {
+                  "const": "percent"
+                },
+                "number": {
+                  "type": "string",
+                  "maxLength": 49,
+                  "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+                }
+              },
+              "required": [
+                "value_text",
+                "unit_text",
+                "unit_code",
+                "number"
+              ]
+            },
+            "qualifier": {
+              "type": "string",
+              "enum": [
+                "approximately",
+                "not_qualified_in_source"
+              ]
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "confidence_level": {
+              "type": "null"
+            },
+            "coverage_factor": {
+              "type": "null"
+            },
+            "note": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "availability",
+            "basis",
+            "reported_value",
+            "qualifier",
+            "scope",
+            "evidence",
+            "confidence_level",
+            "coverage_factor",
+            "note"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "standard_deviation"
+            },
+            "availability": {
+              "const": "graphical_only"
+            },
+            "basis": {
+              "const": "absolute"
+            },
+            "reported_value": {
+              "type": "null"
+            },
+            "qualifier": {
+              "type": "string",
+              "enum": [
+                "approximately",
+                "not_qualified_in_source"
+              ]
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "confidence_level": {
+              "type": "null"
+            },
+            "coverage_factor": {
+              "type": "null"
+            },
+            "note": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            }
+          },
+          "required": [
+            "kind",
+            "availability",
+            "basis",
+            "reported_value",
+            "qualifier",
+            "scope",
+            "evidence",
+            "confidence_level",
+            "coverage_factor",
+            "note"
+          ]
+        }
+      ]
+    },
+    "complex_viscosity_uncertainty": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "const": "reported_standard_deviation"
+            },
+            "value_text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "unit_text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "unit_code": {
+              "const": "kPa_s_complex_viscosity"
+            },
+            "number": {
+              "type": "string",
+              "maxLength": 49,
+              "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "coverage_factor": {
+              "type": "null"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "confidence_level": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "type",
+            "value_text",
+            "unit_text",
+            "unit_code",
+            "number",
+            "scope",
+            "coverage_factor",
+            "evidence",
+            "confidence_level"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "const": "reported_confidence_interval"
+            },
+            "value_text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "unit_text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "unit_code": {
+              "const": "kPa_s_complex_viscosity"
+            },
+            "number": {
+              "type": "string",
+              "maxLength": 49,
+              "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "coverage_factor": {
+              "type": "null"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "confidence_level": {
+              "$ref": "#/$defs/confidence_level"
+            },
+            "estimand": {
+              "$ref": "#/$defs/uncertainty_fact"
+            },
+            "construction": {
+              "$ref": "#/$defs/uncertainty_fact"
+            }
+          },
+          "required": [
+            "type",
+            "value_text",
+            "unit_text",
+            "unit_code",
+            "number",
+            "scope",
+            "coverage_factor",
+            "evidence",
+            "confidence_level",
+            "estimand",
+            "construction"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "const": "reported_plus_minus_unspecified"
+            },
+            "value_text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "unit_text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "unit_code": {
+              "const": "kPa_s_complex_viscosity"
+            },
+            "number": {
+              "type": "string",
+              "maxLength": 49,
+              "pattern": "^(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "coverage_factor": {
+              "type": "null"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "confidence_level": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "type",
+            "value_text",
+            "unit_text",
+            "unit_code",
+            "number",
+            "scope",
+            "coverage_factor",
+            "evidence",
+            "confidence_level"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "const": "reported_measures"
+            },
+            "measures": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/complex_viscosity_reported_measure"
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "type",
+            "measures"
+          ]
+        }
+      ]
+    },
+    "oscillation_frequency": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "const": "reported"
+            },
+            "number": {
+              "type": "string",
+              "maxLength": 49,
+              "pattern": "^(?=[0-9.]*[1-9])(?:0|[1-9][0-9]{0,23})(?:\\.[0-9]{1,24})?(?![\\s\\S])"
+            },
+            "value_text": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            },
+            "unit_code": {
+              "const": "Hz"
+            },
+            "unit_text": {
+              "const": "Hz"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "notes": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            }
+          },
+          "required": [
+            "status",
+            "number",
+            "value_text",
+            "unit_code",
+            "unit_text",
+            "evidence",
+            "notes"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "type": "string",
+              "enum": [
+                "not_reported_in_inspected_source",
+                "not_verified"
+              ]
+            },
+            "number": {
+              "type": "null"
+            },
+            "value_text": {
+              "type": "null"
+            },
+            "unit_code": {
+              "type": "null"
+            },
+            "unit_text": {
+              "type": "null"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 1
+            },
+            "notes": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(?=.*\\S)[^\\x00-\\x1f\\x7f-\\x9f\\ud800-\\udfff]+(?![\\s\\S])"
+            }
+          },
+          "required": [
+            "status",
+            "number",
+            "value_text",
+            "unit_code",
+            "unit_text",
+            "evidence",
+            "notes"
           ]
         }
       ]

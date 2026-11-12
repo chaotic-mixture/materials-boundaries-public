@@ -3,6 +3,8 @@ from copy import deepcopy
 from ._extension_contract import LABEL_KEYS as EXTENSION_LABELS
 from ._water_absorption_contract import LABEL_KEYS as WATER_LABELS, FACT_FIELDS as WATER_FACTS
 from ._closed_cell_contract import LABEL_KEYS as CLOSED_CELL_LABELS, FACT_FIELDS as CLOSED_CELL_FACTS
+from ._complex_viscosity_contract import LABEL_KEYS as COMPLEX_VISCOSITY_LABELS, FACT_FIELDS as COMPLEX_VISCOSITY_FACTS
+from ._dsc_enthalpy_contract import LABEL_KEYS as DSC_ENTHALPY_LABELS, FACT_FIELDS as DSC_ENTHALPY_FACTS
 from ._cell_anisotropy_contract import LABEL_KEYS as CELL_ANISOTROPY_LABELS, FACT_FIELDS as CELL_ANISOTROPY_FACTS
 from ._foam_event_contract import LABEL_KEYS as FOAM_EVENT_LABELS, FACT_FIELDS as FOAM_EVENT_FACTS
 import json
@@ -22,6 +24,8 @@ REQUIRED_LABELS |= frozenset(WATER_LABELS)
 REQUIRED_LABELS |= frozenset(CLOSED_CELL_LABELS)
 REQUIRED_LABELS |= frozenset(FOAM_EVENT_LABELS)
 REQUIRED_LABELS |= frozenset(CELL_ANISOTROPY_LABELS)
+REQUIRED_LABELS |= frozenset(DSC_ENTHALPY_LABELS)
+REQUIRED_LABELS |= frozenset(COMPLEX_VISCOSITY_LABELS)
 REQUIRED_LABELS |= frozenset(('code_source_reported_computational_structure_density',))
 REQUIRED_LABELS |= frozenset(('code_source_reported_molecular_simulation_density', 'code_simulation_cell'))
 REQUIRED_LABELS |= frozenset(('code_slump_flow_spread',))
@@ -256,6 +260,27 @@ def render_material_catalog(catalog: dict, kind: str, language: str = "en") -> s
             for name in FOAM_EVENT_FACTS:
                 output.extend(fact("reaction_time_" + name, definition[name], indent + "      "))
             output.append(indent + "    " + labels["reaction_time_reference_notice"])
+        if "complex_viscosity_definition" in prop:
+            coordinate = prop["oscillation_frequency"]
+            displayed_frequency = coordinate["value_text"] + " " + coordinate["unit_text"] if coordinate["status"] == "reported" else code(coordinate["status"])
+            output.append(field("oscillation_frequency", displayed_frequency, indent + "    "))
+            output.append(field("scope_note", coordinate["notes"], indent + "      "))
+            output.extend(evidence(coordinate["evidence"], indent + "      "))
+            definition = prop["complex_viscosity_definition"]
+            output.append(field("complex_viscosity_definition", "", indent + "    "))
+            output.append(field("scope_note", definition["notes"], indent + "      "))
+            output.extend(evidence(definition["evidence"], indent + "      "))
+            for name in COMPLEX_VISCOSITY_FACTS:
+                output.extend(fact("complex_viscosity_" + name, definition[name], indent + "      "))
+            output.append(indent + "    " + labels["complex_viscosity_reference_notice"])
+        if "dsc_enthalpy_definition" in prop:
+            definition = prop["dsc_enthalpy_definition"]
+            output.append(field("dsc_enthalpy_definition", "", indent + "    "))
+            output.append(field("scope_note", definition["notes"], indent + "      "))
+            output.extend(evidence(definition["evidence"], indent + "      "))
+            for name in DSC_ENTHALPY_FACTS:
+                output.extend(fact("dsc_enthalpy_" + name, definition[name], indent + "      "))
+            output.append(indent + "    " + labels["dsc_enthalpy_reference_notice"])
         if "cell_anisotropy_definition" in prop:
             definition = prop["cell_anisotropy_definition"]
             output.append(field("cell_anisotropy_definition", "", indent + "    "))

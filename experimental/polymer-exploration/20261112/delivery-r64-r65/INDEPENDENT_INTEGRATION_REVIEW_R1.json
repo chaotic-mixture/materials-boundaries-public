@@ -1,0 +1,33 @@
+{
+  "decision": "changes_required",
+  "review_inputs_sha256": "14058c7dc8c3ec787ee29e99cf88930839e1198fc1ae75047aa02148f939cd1b",
+  "reviewer": "/root/review_phbv39_flexural",
+  "checks": {
+    "bindings": "275 repo、124 external、3 native哈希全部匹配。",
+    "git_scope": "HEAD为dd91c1841e3630bd7de0cbeb1707ad3276080272，分支experimental/open-database，暂存区为空。当前165个改动路径加唯一待写独审回执，精确对应166个prospective路径；无额外路径、原始资产或workflow变更。",
+    "cumulative_delta": "相对Git基线新增27性质：9 DSC熔融比焓、18振荡复黏度，类别为3 polymer、24 composite；新增9流变上下文。九个既有DSC状态仅version/property_ids/source_scope变化，旧5664性质及状态物理事实、身份、牌号、来源保持。",
+    "approval_chain": "r64R2、r65最终批准与精确入口匹配；既有来源、实现和映射结论按相同哈希复用。",
+    "historical_bindings": "独立读取10个历史入口的1603项绑定；121项漂移引用均由精确保存字节解析，零未解析。r64旧标题、单行修正及各阶段失败记录保留。",
+    "execution_scope": "当前19项检查的93输入全部匹配。历史356项的138输入中仅两张后续接纳的原生表改变，136项仍匹配；文档未冒称当前重跑356或累加次数。",
+    "package_and_consumers": "r65既有76输入及已审wheel字节保持；复用72载荷、78 wheel RECORD、83 installed RECORD及18／109／9完整对象恢复证据。交付说明明确新增审计文档不在旧wheel内。",
+    "inventory": "独立重算343条非计算polymer性质：338实验来源参考、5派生参考；温度未报227、调湿未报282、确切n未确认255。逐行条件、typed frequency/definition和来源分组汇总匹配，排除1000条计算性质。",
+    "scientific_boundaries": "质量基准、积分范围、逐格周期、符号约定、n、误差、LVR、间隙及物理谱系未知边界保持；未反算结晶度、拟合求值或推断跨方法等价。"
+  },
+  "findings": [
+    {
+      "id": "R64_R65_FREEZER_EMPTY_INDEX",
+      "severity": "blocking_for_helper_reuse",
+      "path": "experimental/polymer-exploration/20261112/delivery-r64-r65/freeze_delivery.py",
+      "location": "main()，收集Git路径之前",
+      "issue": "生成器检查HEAD和分支，但未断言暂存区为空；路径集合只读取未暂存diff和untracked，非空index下可能遗漏仅已暂存的路径。",
+      "current_impact": "本次独立确认index为空且实际路径集合精确匹配，因此当前内容、数据、安装和166路径核算未受影响。",
+      "required_change": "保留R1冻结字节，在范围收集及任何写入之前增加空index只读守卫，并另冻R2定向复核。无需修改科学数据、重跑测试或重装。"
+    }
+  ],
+  "limits": [
+    "除所列生成工具守卫缺口外，未发现本次累计内容或当前安装证据问题。",
+    "本结论不批准精确提交、Git写入、推送、远端CI、main、发布或部署。",
+    "不认证科学有效性、独立实验数量或安装过程的加密来源链。",
+    "未运行作者helpers、测试模块或套件、完整图及历史回归；未写文件或缓存、安装或执行Git变更。"
+  ]
+}
