@@ -1,0 +1,185 @@
+{
+  "quantity": "dsc_reference_normalized_crystallinity_percentage",
+  "dimension": "dimensionless",
+  "unit_code": "percent_dsc_reference_crystallinity",
+  "definition": "Source-reported DSC enthalpy/reference normalization result labelledXc. Not direct measured crystalline phase proportion,absolute/volume crystallinity,XRDcrystallinity,gel fraction or software-recomputed result.",
+  "classification": {
+    "evidence_kind": "published_measurement_derived_reference",
+    "determination_basis": "source_reports_calculation",
+    "method_type": "source_reported_dsc_reference_normalization",
+    "profile_id": "source_dsc_reference_enthalpy_normalization_v1",
+    "profile_version": "1.0.0",
+    "executor": "source_reported_only;no software arithmetic/reconstruction or engine coupling"
+  },
+  "value_contract": {
+    "kind": "scalar",
+    "central_domain": "Finite0to100 inclusive with literal precision;outside-domain source anomalies held separately,never clipped or fixed",
+    "absolute_uncertainty": "Nonnegative dedicated percentage-point role,not capped100",
+    "relative_uncertainty": "Independent percent role;do not infermean/SD/CV or propagation"
+  },
+  "source_formula": {
+    "family_codes": [
+      "source_enthalpy_ratio",
+      "source_fraction_corrected_enthalpy_ratio"
+    ],
+    "raw_symbols": "Required reported original source expression and descriptions;do not relabelDeltaHf as cooling or melting integral where unresolved",
+    "fraction_factor": "Preserve source f definition and uncertainty of actual denominator/dry basis. Formula without f does not imply an independently established dry mass basis."
+  },
+  "reference_specific_enthalpy": {
+    "shape": "Required reported positive scalar withnumber/value_text/unit_code/unit_text and primary evidence,or explicitunknown with allfour null and reason",
+    "unit_code": "J_per_g_dsc_crystalline_reference",
+    "unit_text": "J/g",
+    "role": "Input-model reference only,not measured DSCmeltingenthalpy output or a universally certified material constant",
+    "source_values": [
+      "PBS110.3",
+      "PHBV146"
+    ],
+    "evidence": "Reported reference requires same inspected-primary-documentmethod+classification support;unknown requires primaryclassification evidence and nonblank notes;no cross-source substitution"
+  },
+  "derivation_fields": [
+    "reported_formula",
+    "reference_material_and_citation",
+    "fraction_factor_and_mass_basis",
+    "thermal_signal_and_cycle_claims",
+    "integration_baseline_and_corrections",
+    "instrument_program_and_calibration",
+    "source_data_attribution",
+    "replication_and_statistics"
+  ],
+  "fact_shape": "All8mandatory closed reportedtext+primarymethod/conditionevidence+notes or strictunknown textnull+primaryconditionevidence+notes. Descriptive facts retain sourceclaims without certifying actual per-cell input.",
+  "cycle_assignment": {
+    "statuses": [
+      "reported_source_assignment",
+      "not_reported_in_inspected_source",
+      "not_verified",
+      "conflicting_source_statements"
+    ],
+    "source_claims": "Always retain known source cycle/phase statements as attributed claims. Conflict requires at least2distinct sourceclaims with primarylocator/evidence and at least1corresponding source_discrepancy;no automatically selected resolved phase.",
+    "PHBV": "PreserveSection3.4firstcooling versusSection2.2.5secondheating/DeltaHfEq1. Actual per-cell calculation-input signal unresolved;do not mark wholly unreported or prefersecondheating.",
+    "PBS": "Preserve common program/secondheating context without per-cell cycle certification"
+  },
+  "provenance": "PHBV Table4 jointly attributed toGuho existingresults/reanalyzed data;per-cell ownership and independent experiment unknown. Source normalization class does not certify2022newexperiment or n2. Common DMAtriplicate and DSCduplicate not per-cell independent n.",
+  "generic_integration": "Append one specialized28thbranch after27. Preserve all existingbranch objects/olddefinitions;do not add newmethod to old generic method enums or broaden existingfour derivation profiles. Generic evidence-method equivalence gets one explicitly quantity-gated method;dispatch onlynewprofile to dedicated validation. Newunit/derivation fields illegal on unrelated quantities.",
+  "deduplication": "Same sourcecell cannot gain coverage fromformula/reference/cycleclaim/attribution annotation,unknownknown enrichment,notes or trailingzero changes. Different actual reported protocol/model cells remain distinguishable bysourcecell provenance;do not infer independent specimens.",
+  "presentation": "Fourlanguages preserve derived classification,sourceformula/reference,all sourceclaims/discrepancies,unknowns and rights in query/resolve/fullJSONLexport/restore;never display as directmeasurement or enginecomputed output.",
+  "source_rows": [
+    {
+      "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+      "source_label": "B0",
+      "source_value_text": "53",
+      "unit_text": "%",
+      "quantity_label": "Xc",
+      "primary_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+      "source_table": "Table4 Xc(%)",
+      "existing_identity_anchor": "refprop_ewurum2025_b0_dsc_melting_temperature",
+      "normalization": "Author Eq3 Xc=DeltaHm/(f DeltaH0)x100;f source weight fraction of polymer,DeltaH0=110.3J/g for100%crystallinePBS;do not supply actual per-cell f,dry basis or recompute"
+    },
+    {
+      "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+      "source_label": "B10",
+      "source_value_text": "49",
+      "unit_text": "%",
+      "quantity_label": "Xc",
+      "primary_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+      "source_table": "Table4 Xc(%)",
+      "existing_identity_anchor": "refprop_ewurum2025_b10_dsc_melting_temperature",
+      "normalization": "Author Eq3 Xc=DeltaHm/(f DeltaH0)x100;f source weight fraction of polymer,DeltaH0=110.3J/g for100%crystallinePBS;do not supply actual per-cell f,dry basis or recompute"
+    },
+    {
+      "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+      "source_label": "B20",
+      "source_value_text": "50",
+      "unit_text": "%",
+      "quantity_label": "Xc",
+      "primary_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+      "source_table": "Table4 Xc(%)",
+      "existing_identity_anchor": "refprop_ewurum2025_b20_dsc_melting_temperature",
+      "normalization": "Author Eq3 Xc=DeltaHm/(f DeltaH0)x100;f source weight fraction of polymer,DeltaH0=110.3J/g for100%crystallinePBS;do not supply actual per-cell f,dry basis or recompute"
+    },
+    {
+      "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+      "source_label": "B30",
+      "source_value_text": "54",
+      "unit_text": "%",
+      "quantity_label": "Xc",
+      "primary_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+      "source_table": "Table4 Xc(%)",
+      "existing_identity_anchor": "refprop_ewurum2025_b30_dsc_melting_temperature",
+      "normalization": "Author Eq3 Xc=DeltaHm/(f DeltaH0)x100;f source weight fraction of polymer,DeltaH0=110.3J/g for100%crystallinePBS;do not supply actual per-cell f,dry basis or recompute"
+    },
+    {
+      "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+      "source_label": "B45",
+      "source_value_text": "49",
+      "unit_text": "%",
+      "quantity_label": "Xc",
+      "primary_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+      "source_table": "Table4 Xc(%)",
+      "existing_identity_anchor": "refprop_ewurum2025_b45_dsc_melting_temperature",
+      "normalization": "Author Eq3 Xc=DeltaHm/(f DeltaH0)x100;f source weight fraction of polymer,DeltaH0=110.3J/g for100%crystallinePBS;do not supply actual per-cell f,dry basis or recompute"
+    },
+    {
+      "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+      "source_label": "R10",
+      "source_value_text": "50",
+      "unit_text": "%",
+      "quantity_label": "Xc",
+      "primary_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+      "source_table": "Table4 Xc(%)",
+      "existing_identity_anchor": "refprop_ewurum2025_r10_dsc_melting_temperature",
+      "normalization": "Author Eq3 Xc=DeltaHm/(f DeltaH0)x100;f source weight fraction of polymer,DeltaH0=110.3J/g for100%crystallinePBS;do not supply actual per-cell f,dry basis or recompute"
+    },
+    {
+      "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+      "source_label": "R20",
+      "source_value_text": "50",
+      "unit_text": "%",
+      "quantity_label": "Xc",
+      "primary_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+      "source_table": "Table4 Xc(%)",
+      "existing_identity_anchor": "refprop_ewurum2025_r20_dsc_melting_temperature",
+      "normalization": "Author Eq3 Xc=DeltaHm/(f DeltaH0)x100;f source weight fraction of polymer,DeltaH0=110.3J/g for100%crystallinePBS;do not supply actual per-cell f,dry basis or recompute"
+    },
+    {
+      "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+      "source_label": "R30",
+      "source_value_text": "50",
+      "unit_text": "%",
+      "quantity_label": "Xc",
+      "primary_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+      "source_table": "Table4 Xc(%)",
+      "existing_identity_anchor": "refprop_ewurum2025_r30_dsc_melting_temperature",
+      "normalization": "Author Eq3 Xc=DeltaHm/(f DeltaH0)x100;f source weight fraction of polymer,DeltaH0=110.3J/g for100%crystallinePBS;do not supply actual per-cell f,dry basis or recompute"
+    },
+    {
+      "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+      "source_label": "R45",
+      "source_value_text": "48",
+      "unit_text": "%",
+      "quantity_label": "Xc",
+      "primary_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+      "source_table": "Table4 Xc(%)",
+      "existing_identity_anchor": "refprop_ewurum2025_r45_dsc_melting_temperature",
+      "normalization": "Author Eq3 Xc=DeltaHm/(f DeltaH0)x100;f source weight fraction of polymer,DeltaH0=110.3J/g for100%crystallinePBS;do not supply actual per-cell f,dry basis or recompute"
+    },
+    {
+      "source_id": "abbasi_2022_manure_phbv",
+      "source_label": "PHBV-39",
+      "source_value_text": "25.8",
+      "unit_text": "%",
+      "quantity_label": "Xc",
+      "primary_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9571417/fullTextXML",
+      "source_table": "Table4 DSC Xc(%)",
+      "existing_identity_anchor": "refprop_abbasi2022_manure_phbv39_melting_peak_1_temperature",
+      "normalization": "Author Eq1 Xc=DeltaHf/DeltaHf0x100;source146J/g reference for pure crystallinePHBV;not absolute universally applicable fraction"
+    }
+  ],
+  "admission_requirements": [
+    "Concept independent review",
+    "Meaningful source-only profile/schema/role/cycle-conflict/legacy-isolation tests and independent implementation review",
+    "Concrete10cell mapping review",
+    "Fresh native checks,actual newmodule isolated installation and final independent acceptance"
+  ],
+  "implementation": "not_started",
+  "native_admission": false
+}

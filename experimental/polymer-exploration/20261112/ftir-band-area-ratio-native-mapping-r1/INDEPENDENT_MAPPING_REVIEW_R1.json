@@ -1,0 +1,29 @@
+{
+  "decision": "approved",
+  "review_inputs_sha256": "fc24694b93729dcd6b458626b086f725b868edc62066e7f39c9e5502c5ab102d",
+  "scope": "PHBV-39 单条FTIR拟合碳酰基面积比候选映射",
+  "checks": [
+    "入口及全部180 repo、138 external、3 native绑定哈希匹配。",
+    "主XML Table4的PHBV-39×I_C=O原格为2.35；固定table_id、row_key、column_key与实际原格一致。",
+    "有序A1720/A1740、Gaussian积分面积、10cm⁻¹半高宽、仪器及软件角色符合§2.2.4与§3.3；未误作峰高比、百分比、浓度或相含量。",
+    "共同FTIR duplicate保留为方法事实；逐格n、中心统计、数值误差、原始面积及运算次序保持未知。",
+    "§2.2.1真空干燥仅作为共同制备背景；实际conditioning、温湿度、几何及谱图aliquot关联未知。未迁移DSC、机械或流变条件。",
+    "来源归属保持not_verified，并明确§3.4混合来源句属于DSC讨论，未据此认证FTIR继承或新增独立实验。",
+    "候选仅追加1 property与1 context；旧5753 properties、5431 states、全部identities、grades及sources保持，候选5754/5432/134快照为5dbde16b9e62612d5d1622a96e20274a5cc9b95364cc4346f7d5e69f4411bc0e。",
+    "独立小范围schema、语义、双向关联、resolve及四语言展示通过；1/12/12完整候选查询与保存导出逐对象相等，恢复及副本隔离通过。"
+  ],
+  "findings": [
+    {
+      "severity": "non_blocking",
+      "location": "NEW_PROPERTIES_R1.json: derivation.sample_preparation_conditioning.evidence",
+      "issue": "共同提纯及真空干燥事实的text明确引用§2.2.1，但对应evidence.locator仅列§2.2.4、§3.3/Table4。",
+      "recommendation": "后续修订可在该locator补列§2.2.1，以便直接定位共同制备背景。事实已由同一主XML独立核实，不影响当前未知边界或判定。"
+    }
+  ],
+  "limits": [
+    "批准仅覆盖冻结候选映射，不批准未来原生应用、安装或最终接纳。",
+    "消费者中的native表示候选内存完整对象，不代表工作树已经应用。",
+    "未新跑409回归、完整图或历史回归；未执行作者helpers或测试模块，未写文件、缓存、安装或执行Git变更。",
+    "未新看PDF或数字化光谱；不认证原始谱图质量、独立样本、逐格实验出处或科学有效性。"
+  ]
+}

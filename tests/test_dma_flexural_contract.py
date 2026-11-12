@@ -36,7 +36,7 @@ class DMAFlexuralContractTests(unittest.TestCase):
     def test_old25branches_definitions_and_schema_preserved(self):
         b=json.loads((ROOT/'tests/fixtures/dma_flexural_schema_baseline.json').read_bytes());stored=json.loads((ROOT/'schemas/reference_properties.schema.json').read_bytes())
         self.assertEqual(stored,_PROPERTIES_SCHEMA);Draft202012Validator.check_schema(stored)
-        self.assertEqual(len(stored['$defs']['property']['oneOf']),27)
+        self.assertEqual(len(stored['$defs']['property']['oneOf']),31)
         self.assertEqual(digest(stored['$defs']['property']['oneOf'][:25]),b['old_branch_digest'])
         for k,h in b['old_definition_digests'].items():self.assertEqual(digest(stored['$defs'][k]),h,k)
 

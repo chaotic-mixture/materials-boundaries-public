@@ -1,0 +1,22 @@
+{
+  "decision": "approved",
+  "review_inputs_sha256": "47ca03aba09100cac86d826d307edf8d5a71fd7a2ae0b7cc2e1e6cc1eaa30053",
+  "scope": "FTIR面积比候选映射R2证据定位定向复核",
+  "checks": [
+    "入口及全部190 repo、144 external、3 native绑定哈希匹配。",
+    "相对R1，property唯一变化为sample_preparation_conditioning证据locator，现精确指向§2.2.1共同提纯与真空干燥；其余property逐对象相等。",
+    "NEW_STATES与R1逐字节相同；R1冻结入口、原批准及非阻断建议保留。",
+    "候选5754 properties、5432 states、134 sources，快照匹配70d595937504a14a5b93f12906834b5dff2eddefa0cbf4cc4566d5570a09f85d。",
+    "更新后的1/12/12完整导出与独立候选查询逐对象相等，恢复及副本隔离通过。",
+    "共同制备背景、实际conditioning未知、共同duplicate非逐格n及source-only分类等既有边界保持。"
+  ],
+  "findings": [],
+  "resolved_findings": [
+    "R1 sample_preparation_conditioning证据locator缺少§2.2.1的非阻断定位建议"
+  ],
+  "limits": [
+    "仅批准冻结候选映射；不批准原生应用、安装或最终接纳。",
+    "其余来源与实现结论复用已审同字节证据，未新跑409回归。",
+    "未执行作者helpers、测试、完整图或历史回归；未写文件、缓存、安装或执行Git变更。"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "issue": "Same-phase unknown occurrence versus known occurrence must not alone qualify as source conflict",
+  "previous_result": "392checks passed;case absent,not a failed execution",
+  "original_files": {
+    "materials_boundaries/_dsc_crystallinity_contract.py": {
+      "sha256": "eeec06077ac2b52cfea858007d046ba17c13f7e3affe9ebde3ad12f7b2caaf66",
+      "archive": "F:\\\u6750\u6599\u8fb9\u754c\\open-database-evidence\\polymer-dsc-crystallinity-implementation-20261112-r1\\pre-conflict-edge-fix-r1\\_dsc_crystallinity_contract.py"
+    },
+    "tests/test_dsc_crystallinity_contract.py": {
+      "sha256": "9a8300e8e23729ec5d3716404967666118e3528460c6ddbff449e7f3aac215cb",
+      "archive": "F:\\\u6750\u6599\u8fb9\u754c\\open-database-evidence\\polymer-dsc-crystallinity-implementation-20261112-r1\\pre-conflict-edge-fix-r1\\test_dsc_crystallinity_contract.py"
+    }
+  },
+  "correction": "Require an actual known phase or occurrence incompatibility for conflict status;add specific negative case",
+  "native_changed": false
+}

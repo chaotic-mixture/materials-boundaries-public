@@ -1,0 +1,65 @@
+{
+  "source_id": "ewurum_mcdonald_2025_pbs_lignin",
+  "doi": "10.3390/polym17020194",
+  "primary_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11768263/fullTextXML?format=xml",
+  "existing_identity_anchor": "refprop_ewurum2025_indulin_at_mass_density",
+  "density_state_reference_only": "state_ewurum2025_indulin_at",
+  "table": "polymers-17-00194-t005",
+  "raw_row": [
+    "Lignin",
+    "320 (±1.5)",
+    "40 (±0.2)",
+    "407 (±1.9)"
+  ],
+  "selected_facts": [
+    {
+      "quantity": "thermal_degradation_onset_temperature",
+      "source_label": "Tonset",
+      "number": "320",
+      "unit": "°C",
+      "plus_minus_source_text": "1.5",
+      "uncertainty_unit": "temperature difference,not absolute coordinate"
+    },
+    {
+      "quantity": "tga_residue_percentage",
+      "source_label": "Residue at800°C",
+      "number": "40",
+      "unit": "%",
+      "plus_minus_source_text": "0.2",
+      "endpoint_C": "800"
+    },
+    {
+      "quantity": "thermal_degradation_rate_peak_temperature",
+      "source_label": "DTGmax",
+      "number": "407",
+      "unit": "°C",
+      "plus_minus_source_text": "1.9",
+      "selected_peak_ordinal": null
+    }
+  ],
+  "source_method_paragraph": "The thermal stabilities of kraft lignin, PBS, and copolymers (5 mg) were determined by TGA using a PerkinElmer TGA 7 instrument (Shelton, CT, USA) from 30 to 800 °C at 20 °C/min under nitrogen (30 mL/min). The TGA was calibrated with alumel, perkalloy, nickel, and iron standards. The data were analyzed using Pyris v13.3.1 software.",
+  "source_discussion_paragraph": "The thermal degradation behaviors of PBS and various lignin–PBS formulations were determined by TGA and differential thermogravimetric (DTG) analysis (Figure 5). It was observed that, after the initial moisture release, the thermal degradation onset (Tonset) of lignin started at 320 °C, which is lower than that of PBS, at 396 °C (Table 5). Cross-linking PBS (R0) did not significantly change its Tonset. The Tonset for lignin was 320 °C. The Tonset values for the PBS–lignin formulations were comparable to PBS, suggesting that lignin did not influence PBS onset [39]. From the DTG curves, the temperatures at the peak maximum (DTGmax) were determined (Table 5). The DTGmax values for lignin and PBS were 407 °C and 437 °C, respectively. For the PBS–lignin formulations, the DTGmax was between 426 and 437 °C. However, the intensity of the DTGmax peak reduced with lignin content, suggesting that lignin can be used to improve the thermal stability of PBS [29,37,50]. Lignin had a residual mass of 40% at 800 °C, and this is lower than those reported by Zhang et al. at 50% [51] and Beis et al. at 44% [52] for kraft lignin. The TGA residual material at 800 °C was shown to increase with lignin content. For example, at 45% lignin, the residual mass was around 18–19%, indicating that lignin contributes to char formation during thermal degradation in N2. This behavior is consistent with the findings that lignin can improve the char yield due to its aromatic structure, which provides thermal stability [37]. DCP addition was not found to have any significant effect on the thermal degradation behavior of the copolymers.",
+  "source_statistics_paragraph": "Statistical analyses were conducted using Tukey’s pairwise comparisons and t-tests to evaluate differences between formulations. The results were considered statistically significant at a confidence level of 95% (p < 0.05).",
+  "known": [
+    "Shared lignin/PBS/copolymer TGA method nominal5mg,TGA7,30to800°C at20°C/min,N2 30mL/min",
+    "Source alumel/perkalloy/nickel/iron calibration andPyrisv13.3.1",
+    "Discussion explicitly identifies lignin onset320,DTGmax407 and residual mass40%at800°C"
+  ],
+  "unknown": [
+    "Meaning of Table5 plusminus,central aggregation,per-cell n and independent samples",
+    "Onset operational criterion,tangent/threshold method and baseline",
+    "DTG derivative/smoothing and peak occurrence ordinal",
+    "Initial mass reference before/after moisture loss,pan,actual specimen conditioning and geometry",
+    "Cross-method physical pairing to nitrogen-pycnometry2g sample"
+  ],
+  "boundaries": [
+    "Do not borrow lignin density gas-method pressure or2g mass;TGA method has its own5mg nominal mass and30mL/min gas flow",
+    "Tukey/t-test95%significance does not define ± as SD orCI",
+    "DMAtriplicate/DSCcycles not TGAn",
+    "Residue is source TGA residualmass,not elemental carbon,purity,gel or chemical char assay",
+    "No source n/zero-uncertainty inference;unknownDTG ordinal not default1"
+  ],
+  "native_changed": false,
+  "scope": "Source facts only;reuse existingquantity contracts after independent source and concrete mapping review",
+  "tests": "not_run_source_only"
+}

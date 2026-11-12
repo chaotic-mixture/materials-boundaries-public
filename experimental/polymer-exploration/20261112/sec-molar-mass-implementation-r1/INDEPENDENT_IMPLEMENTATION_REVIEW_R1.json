@@ -1,0 +1,39 @@
+{
+  "decision": "changes_required",
+  "review_inputs_sha256": "37ffc62d142e0aaabe826dc565bbb24ee8f5c393b1d3ebd0d4bf08adf2863915",
+  "scope": "SEC摩尔质量矩与来源报告分散度的具体实现",
+  "findings": [
+    {
+      "id": "SEC-STRING-01",
+      "severity": "blocking",
+      "locations": [
+        "materials_boundaries/_sec_molar_mass_contract.py:46",
+        "materials_boundaries/_sec_molar_mass_contract.py:52"
+      ],
+      "issue": "新DOI和original_result.document_url正则仅使用非空白匹配及$结尾，未继承既有控制字符禁令和严格结尾要求。",
+      "reproduction": "独立小图中，未知original_reference.doi含NUL、ESC或尾LF均通过完整schema及validate_material_catalog。original_result.document_url含相同字符也通过专用schema。",
+      "impact": "未知原始出处的DOI无需经过已注册来源匹配，因此非法字符可进入已接受记录及展示。URL专用schema也弱于既有HTTPS边界。",
+      "required_change": "DOI复用既有TEXT的控制字符与严格结尾约束，同时保留DOI结构限制；document_url复用既有HTTPS约束。新增NUL、ESC、DEL、C1、尾LF/CRLF、surrogate拒绝及安全字符串通过的定向反例，保留R1原字节和结果后另冻复核。"
+    }
+  ],
+  "checks": [
+    "入口及全部170 repo、137 external、3 native绑定哈希匹配。",
+    "旧29完整分支、101个旧定义及旧locale键值逐对象保持；21个旧测试仅总分支数29→31。",
+    "旧派生模块移除新增SEC dispatch后AST完全相同；原生三表与实现前备份逐字节相同。",
+    "独立三个小型虚构图核对Mw、Mn、PDI的角色、查询、resolve、完整对象、副本隔离及四语言展示通过。",
+    "59项自建反例覆盖正中心、PDI≥1、严格未知、原协议条件迁移、已知继承、单位倍率、PDI source-only角色及同格修订、未知跨出版物重复；预期拒绝均成立。低Decimal精度与同码绝对幅度150通过。",
+    "原始正式日志为428项、284.724秒，零失败、错误、跳过；153项执行输入当前哈希匹配，新增检查与daily19已包含在428内。",
+    "两轮18项预检失败文件及说明保留；原始预检日志未保存的限制明确，未将观察摘要当完整日志或历史通过证明。"
+  ],
+  "adjudications": {
+    "classification": "Mw/Mn来源测量结果与source-only派生PDI的分类隔离适当，不将转载结果认证为新2022实验。",
+    "provenance": "已检共同方法与实际原结果语境分层及注册来源核对原则可保留；其内容真实性、原文精度、协议和权利仍需后续来源与映射审阅。",
+    "dedup": "同原格修订、确认同一原datum及未核第二出版物representation暂缓规则可保留，不能以DOI本身合并不同结果。",
+    "fix_scope": "上述字符串修正可定向复核；不需借此改变分类、数域、方法或去重语义。"
+  },
+  "limits": [
+    "R1不批准进入真实映射或接纳；修正后须重新冻结独审。",
+    "未执行作者helpers、测试模块或套件、完整图或历史回归；未写文件、缓存、安装或执行Git变更。",
+    "428项属于实现执行证据，不是新安装或原生接纳证明；未认证Guho2020原文、科学有效性或许可。"
+  ]
+}

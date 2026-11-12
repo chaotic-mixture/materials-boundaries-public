@@ -1,0 +1,23 @@
+{
+  "decision": "approved",
+  "review_inputs_sha256": "9b917127fecb135221f303fcd96c64f09c5a61fff600ba268c0cfd40d8424363",
+  "scope": "r70 本地最终接纳与实际隔离安装",
+  "checks": [
+    "入口 SHA256 及全部 258 repo、514 external、3 native 绑定匹配；历史漂移项按明确归档路径验证原哈希。",
+    "实际新增三条性质和一个 TGA 上下文与已批准映射逐对象相等；旧 5750 properties、5430 states、identities、grades、sources 及表级其余内容保持。",
+    "当前 5753 properties、5431 states、134 sources，快照为 2eff4c967df09f6f24ee6afef4c6940bc46e70478a2c4f2466e5896d355c345d。",
+    "320±1.5°C onset、407±1.9°C DTGmax、800°C residue 40±0.2% 保持源值及精度；±类别未定义、n 未报告、DTG ordinal 和质量基准未知均保留。未迁移密度法 2g 或其他方法统计。",
+    "原始日志为当前 19 项检查通过，零失败、错误、跳过；96 项执行输入当前哈希匹配。未将历史 393 或 17 项定向检查计为本轮执行。",
+    "实际 wheel SHA256 为 4a3ddc3a45d2c74c75ff254784fb1b92d167bb4090553903c875d0ad96436040；79 项打包输入匹配，75 payload、6 metadata、81 wheel RECORD、86 installed RECORD 独立核验通过。",
+    "全部安装载荷与 wheel、staged source 逐字节一致；74 个非版本载荷与当前原生文件一致。当前 README、staged README 与 METADATA 正文仅规范化换行后精确一致。",
+    "3、4、170 条完整关联导出在当前原生、实际安装及保存文件间逐对象相等；有限安装查询确认正确环境、快照及返回副本隔离。",
+    "五文档前后哈希及原字节备份闭合；当前导航明确 r70 本地、尚未推送。"
+  ],
+  "findings": [],
+  "limits": [
+    "批准仅覆盖冻结 r70 本地最终接纳，不包括累计交付、提交、推送、远端 CI、main、tag 或部署。",
+    "未执行作者 helper、测试模块或套件、完整图或历史回归；未写文件、缓存、安装或执行 Git 变更。",
+    "direct_url 仅记录本地 wheel URL，archive_info 为空；已核验安装内容一致性，不认证安装过程的加密来源链。",
+    "不认证科学有效性、独立试样或批次；未将未冻结的新库存清单纳入本次批准。"
+  ]
+}

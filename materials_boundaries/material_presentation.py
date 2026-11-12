@@ -1,7 +1,10 @@
 """Presentation-only, source-preserving views for the reference-material lane."""
+from ._ftir_band_area_ratio_contract import LABEL_KEYS as FTIR_AREA_RATIO_LABELS, FACT_FIELDS as FTIR_AREA_RATIO_FACTS
 from copy import deepcopy
+from ._sec_molar_mass_contract import LABEL_KEYS as SEC_LABELS, FACT_FIELDS as SEC_FACTS, VERIFICATIONS as SEC_VERIFICATIONS
 from ._extension_contract import LABEL_KEYS as EXTENSION_LABELS
 from ._water_absorption_contract import LABEL_KEYS as WATER_LABELS, FACT_FIELDS as WATER_FACTS
+from ._dsc_crystallinity_contract import LABEL_KEYS as DSC_CRYSTALLINITY_LABELS, FACT_FIELDS as DSC_CRYSTALLINITY_FACTS
 from ._dma_flexural_contract import LABEL_KEYS as DMA_LABELS, FACT_FIELDS as DMA_FACTS
 from ._gel_fraction_contract import LABEL_KEYS as GEL_FRACTION_LABELS, FACT_FIELDS as GEL_FRACTION_FACTS
 from ._closed_cell_contract import LABEL_KEYS as CLOSED_CELL_LABELS, FACT_FIELDS as CLOSED_CELL_FACTS
@@ -26,6 +29,9 @@ REQUIRED_LABELS |= frozenset(WATER_LABELS)
 REQUIRED_LABELS |= frozenset(CLOSED_CELL_LABELS)
 REQUIRED_LABELS |= frozenset(GEL_FRACTION_LABELS)
 REQUIRED_LABELS |= frozenset(DMA_LABELS)
+REQUIRED_LABELS |= frozenset(DSC_CRYSTALLINITY_LABELS)
+REQUIRED_LABELS |= frozenset(FTIR_AREA_RATIO_LABELS)
+REQUIRED_LABELS |= frozenset(SEC_LABELS)
 REQUIRED_LABELS |= frozenset(FOAM_EVENT_LABELS)
 REQUIRED_LABELS |= frozenset(CELL_ANISOTROPY_LABELS)
 REQUIRED_LABELS |= frozenset(DSC_ENTHALPY_LABELS)
@@ -442,7 +448,88 @@ def render_material_catalog(catalog: dict, kind: str, language: str = "en") -> s
             if key == "method_definition" and prop[key]["type"] != "source_reported_conventional":
                 value = code(prop[key]["type"]) + ": " + value
             output.append(field(key, value, indent + "  "))
-        if "derivation" in prop:
+        if prop["method_definition"]["type"] == "source_reported_dsc_reference_normalization":
+            d = prop["derivation"]
+            output.append(field("dsc_crystallinity_derivation", "", indent + "  "))
+            output.append(indent + "    " + labels["dsc_crystallinity_notice"])
+            output.append(field("dsc_crystallinity_formula_family", code(d["formula_family"]), indent + "    "))
+            reference = d["reference_specific_enthalpy"]
+            display = reference["value_text"] + " " + reference["unit_text"] if reference["status"] == "reported" else code(reference["status"])
+            output.append(field("dsc_crystallinity_reference", display, indent + "    "))
+            output.append(field("scope_note", reference["notes"], indent + "      "))
+            output.extend(evidence(reference["evidence"], indent + "      "))
+            cycle = d["cycle_assignment"]
+            output.append(field("dsc_crystallinity_cycle_status", code(cycle["status"]), indent + "    "))
+            if cycle["assignment_text"] is not None:output.append(field("scope_note", cycle["assignment_text"], indent + "      "))
+            output.append(field("scope_note", cycle["notes"], indent + "      "))
+            output.extend(evidence(cycle["evidence"], indent + "      "))
+            for claim in cycle["claims"]:
+                output.append(field("dsc_crystallinity_claim", claim["text"], indent + "      "))
+                output.append(field("scope_note", claim["notes"], indent + "        "))
+                output.extend(evidence(claim["evidence"], indent + "        "))
+            for name in DSC_CRYSTALLINITY_FACTS:
+                output.extend(fact("dsc_crystallinity_" + name, d[name], indent + "    "))
+            output.append(field("scope_note", d["notes"], indent + "    "))
+            output.extend(evidence(d["evidence"], indent + "    "))
+        if prop["method_definition"]["type"] == "source_reported_ftir_fitted_band_area_ratio":
+            d = prop["derivation"]
+            output.append(field("ftir_area_ratio_derivation", "", indent + "  "))
+            output.append(indent + "    " + labels["ftir_area_ratio_notice"])
+            for role in ("numerator", "denominator"):
+                band = d[role + "_band"]
+                output.append(field("ftir_area_ratio_" + role, band["value_text"] + " " + band["unit_text"], indent + "    "))
+                output.append(field("scope_note", band["notes"], indent + "      "))
+                output.extend(evidence(band["evidence"], indent + "      "))
+            cell = d["source_result_cell"]
+            output.append(field("ftir_area_ratio_source_cell", " / ".join(cell[n] for n in ("table_id", "row_key", "column_key")), indent + "    "))
+            output.append(field("scope_note", cell["notes"], indent + "      "))
+            output.extend(evidence(cell["evidence"], indent + "      "))
+            for name in FTIR_AREA_RATIO_FACTS:
+                output.extend(fact("ftir_area_ratio_" + name, d[name], indent + "    "))
+            output.append(field("scope_note", d["notes"], indent + "    "))
+            output.extend(evidence(d["evidence"], indent + "    "))
+        if "sec_definition" in prop:
+            d = prop["sec_definition"]
+            output.append(field("sec_definition", "", indent + "  "))
+            output.append(indent + "    " + labels["sec_notice"])
+            cell = d["source_result_cell"]
+            output.append(field("sec_source_cell", " / ".join(cell[n] for n in ("table_id", "row_key", "column_key")), indent + "    "))
+            output.append(field("scope_note", cell["notes"], indent + "      "))
+            output.extend(evidence(cell["evidence"], indent + "      "))
+            origin = d["origin"]
+            output.append(field("sec_origin", code(origin["status"]), indent + "    "))
+            reference = origin["original_reference"]
+            if reference is not None:
+                output.append(field("sec_cited_original", reference["title"] + " (" + str(reference["year"]) + "), DOI: " + reference["doi"], indent + "      "))
+                output.append(field("scope_note", reference["notes"], indent + "        "))
+                output.extend(evidence(reference["evidence"], indent + "        "))
+            original = origin["original_result"]
+            output.append(field("sec_original_result", code("sec_original_verified" if original["status"] == "verified" else original["status"]), indent + "      "))
+            if original["status"] == "verified":
+                output.append(field("scope_note", original["document_url"] + " / " + " / ".join(original[n] for n in ("table_id", "row_key", "column_key")), indent + "        "))
+            output.append(field("scope_note", original["notes"], indent + "        "))
+            output.extend(evidence(original["evidence"], indent + "        "))
+            for name in SEC_VERIFICATIONS:
+                output.extend(fact("sec_" + name, origin["verification"][name], indent + "      "))
+            output.append(field("scope_note", origin["notes"], indent + "      "))
+            output.extend(evidence(origin["evidence"], indent + "      "))
+            for group, label in (("reported_common_context", "sec_reported_common_context"), ("actual_original_result_context", "sec_actual_original_context")):
+                output.append(field(label, "", indent + "    "))
+                for name in SEC_FACTS:output.extend(fact("sec_" + name, d[group][name], indent + "      "))
+            basis = d["measurement_basis"]
+            output.append(field("sec_measurement_basis", code(basis["status"]), indent + "    "))
+            if basis["text"] is not None:output.append(field("scope_note", basis["text"], indent + "      "))
+            output.append(field("scope_note", basis["notes"], indent + "      "))
+            output.extend(evidence(basis["evidence"], indent + "      "))
+            output.append(field("scope_note", d["notes"], indent + "    "))
+            output.extend(evidence(d["evidence"], indent + "    "))
+            if prop["method_definition"]["type"] == "source_reported_sec_molar_mass_dispersity":
+                derivation = prop["derivation"]
+                output.append(field("sec_dispersity_derivation", code(derivation["numerator_role"]) + " / " + code(derivation["denominator_role"]), indent + "    "))
+                output.extend(fact("sec_reported_formula", derivation["reported_formula"], indent + "      "))
+                output.append(field("scope_note", derivation["notes"], indent + "      "))
+                output.extend(evidence(derivation["evidence"], indent + "      "))
+        if "derivation" in prop and prop["method_definition"]["type"] not in ("source_reported_dsc_reference_normalization", "source_reported_ftir_fitted_band_area_ratio", "source_reported_sec_molar_mass_dispersity"):
             product = prop["method_definition"]["type"] == "source_reported_thermal_transport_product"
             fit = prop["method_definition"]["type"] == "source_reported_thermal_response_fit"
             output.append(indent + "  " + labels["thermal_response_fit_notice" if fit else "source_product_notice" if product else "derived_notice"])

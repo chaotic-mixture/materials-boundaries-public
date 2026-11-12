@@ -1,0 +1,30 @@
+{
+  "decision": "changes_required",
+  "review_inputs_sha256": "6675aac45a62002a49aa9b45fb67bbbbf0933f097a9357d76d3acdfa818b2a56",
+  "checks": {
+    "bindings": "192 repo、128 external、3 native哈希全部匹配。",
+    "source_values": "10个Xc值、原精度、公式家族及110.3/146 J/g模型参考与已审来源一致；未软件重算或配对既有焓记录。",
+    "classification": "专用derived/source_reports_calculation/source-only profile及参考焓专码正确，未套用旧派生方法。",
+    "cycle_and_provenance": "PBS仅保留共同程序主张，实际Xc归属null；PHBV保留cooling1 origin与heating2 enthalpy张力、对应主文档discrepancy及null assignment。Guho/reanalysis单格归属和独立n未知。",
+    "identities_and_delta": "十个既有身份正确，2 polymer、8 composite；新增10性质和10方法上下文。旧5740性质、5420状态、身份、牌号及来源保持。",
+    "candidate": "独立快照e1ddad0ddcc373d0cc967f8cbf5617e9b5212956e9500867960e6fdbb68ef900，5750性质、5430状态、134来源。",
+    "limited_contracts": "仅十个新状态和性质的有限契约验证、逐状态resolve及四语言10个ID展示通过；结构验证不能判定下述reported标记的语义。",
+    "consumers": "10／167／11完整保存导出与独立候选查询逐对象一致，恢复校验和独立deepcopy副本隔离通过。"
+  },
+  "findings": [
+    {
+      "id": "PBS_UNKNOWN_REPLICATION_MARKED_REPORTED",
+      "severity": "blocking_for_mapping",
+      "path": "experimental/polymer-exploration/20261112/dsc-crystallinity-native-mapping-r1/NEW_PROPERTIES_R1.json",
+      "field": "九个PBS性质的derivation.replication_and_statistics",
+      "issue": "status为reported，但text只是审阅缺口说明“No per-cell DSCXc independent n…established; no DMA…transferred”，不是来源已报告的重复或统计事实。",
+      "required_change": "九个PBS对象改为适当unknown状态、text null，将缺口及不转用DMA/机械统计说明放入notes并保留主文档condition证据。不得改变数值或补造n。",
+      "preserve_known_fact": "PHBV该字段包含真实来源共同duplicate陈述，应保留reported及逐格n未知，不一并抹成完全未报告。"
+    }
+  ],
+  "limits": [
+    "本轮不批准实际应用或安装；修正须另冻映射及派生导出后复核。",
+    "当前原生仍5740性质、5420状态；不认证实际输入配对、相位归属、作者算术或科学有效性。",
+    "未运行作者脚本、测试模块或套件、完整图及历史回归；未写文件或缓存、安装或执行Git变更。"
+  ]
+}

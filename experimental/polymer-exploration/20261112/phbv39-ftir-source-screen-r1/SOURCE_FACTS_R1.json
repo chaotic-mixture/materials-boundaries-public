@@ -1,0 +1,56 @@
+{
+  "source_id": "abbasi_2022_manure_phbv",
+  "doi": "10.3390/polym14194140",
+  "existing_identity_id": "mat_abbasi2022_manure_phbv39",
+  "primary_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9571417/fullTextXML",
+  "license": "ArticleXML explicitly CC BY4.0;not a latest revision check.",
+  "table_id": "polymers-14-04140-t004",
+  "raw_row": [
+    "PHBV-39",
+    "−5.3",
+    "159.7",
+    "170.1",
+    "104.8",
+    "25.8",
+    "2.35",
+    "299",
+    "325",
+    "333"
+  ],
+  "selected_fact": {
+    "source_label": "I_C=O",
+    "number": "2.35",
+    "unit_role": "dimensionless fitted carbonyl-band integrated-area ratio,not percent",
+    "formula_source": "A1720/A1740",
+    "numerator_wavenumber_cm_inverse": "1720",
+    "denominator_wavenumber_cm_inverse": "1740",
+    "boundary": "Areas of Gaussian-fitted peaks,not raw peak heights,total composition,carbonyl concentration,DSC crystallinity or degradation index."
+  },
+  "source_method": {
+    "locator": "Section2.2.4 FTIR Spectroscopy;Section3.3",
+    "instrument": "Nicolet-iS5,ATR ZnSe ID5 accessory",
+    "reduction": "Baseline-corrected and averaged spectra;normalized spectra curve-fitted using Igor Pro9;Omnic v9.5 for spectral processing.",
+    "fit": "Gaussian band fitting at1720/1740cm^-1,source peak width at half height10cm^-1,then integrated areas.",
+    "source_interpretation": "Source assigns1720 band crystalline and1740 band amorphous PHBV;only author attribution,not a calibrated phase fraction.",
+    "replication": "Common method says in duplicate;does not establish per-cell independent pieces/batches or exact n for ratio2.35."
+  },
+  "unknowns": [
+    "Actual normalization algorithm and reference",
+    "Baseline choice and fitting intervals",
+    "Fit constraints and component count beyond stated bands",
+    "Integration bounds and error propagation",
+    "ATR correction,contact pressure,number of scans and resolution",
+    "Actual measurement temperature,humidity and ratio-specific conditioning",
+    "Per-cell uncertainty and summary statistic",
+    "Independent replicate count and averaging/ratio ordering"
+  ],
+  "source_boundaries": [
+    "PHBV39 is operationalday39,not39%HV.",
+    "Section3.4 explicitly describes Table4 as combining Guho results and reanalyzed data;single FTIR cell attribution to inherited/new/reanalyzed acquisition is not resolved.",
+    "Source reports weak correlation of FTIR index with DSC Xc;do not transform2.35 into percent crystallinity or use25.8% as independent calibration.",
+    "Do not migrate DSC duplicate,purge,thermal cycles or tensile pressing/drying conditions into FTIR."
+  ],
+  "role_proposal_status": "Source-only frozen screen;new explicit fitted-band-area-ratio contract required before native mapping. Existing mass fractions/DSC crystallinity/chemical concentration roles not suitable. No runtime implementation or native admission.",
+  "inspection_scope": "Local mainXML Section2.2.1,2.2.4,3.3,3.4,Table4 andFigure1 caption;no plotted-spectrum digitization orPDF/supplement visual review.",
+  "tests": "not_run_source_screen"
+}

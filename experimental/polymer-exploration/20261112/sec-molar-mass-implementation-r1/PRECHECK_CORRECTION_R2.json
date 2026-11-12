@@ -1,0 +1,14 @@
+{
+  "stage": "second targeted18 precheck",
+  "tests": 18,
+  "failures": 0,
+  "errors": 1,
+  "skipped": 0,
+  "raw_log": "not saved;terminaltooloutput available inchat",
+  "failed_test_file_saved": "F:\\材料边界\\open-database-evidence\\polymer-sec-molar-mass-implementation-20261112-r1\\precheck-r2-failed-test.py",
+  "failed_test_file_sha256": "8a69cfb9e1095618f8484f21f6f4bcbd2cee06fa400c3aa323e52518631ad163",
+  "cause": "Shared uncertainty fixture deliberately sets summary_statistic=reported_value even when passedSD;positivecase omitted explicitreportedmean. Runtime correctly rejected missingmean.",
+  "fix": "PositiveSD case now explicitly provides reportedmean andmatchingfictional basisnotes before asserting negativecase withoutmean rejects.",
+  "runtime_changed": false,
+  "native_changed": false
+}

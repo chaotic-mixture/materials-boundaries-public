@@ -64,7 +64,7 @@ class TgaEndpointContractTests(unittest.TestCase):
         Draft202012Validator.check_schema(public)
         def digest(obj):
             return hashlib.sha256(json.dumps(obj, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
-        self.assertEqual(len(public['$defs']['property']['oneOf']), 27)
+        self.assertEqual(len(public['$defs']['property']['oneOf']), 31)
         original_branches=deepcopy(public['$defs']['property']['oneOf'][:7])
         for branch in original_branches:
             methods=branch['properties']['method_definition']['properties']['type']['enum']

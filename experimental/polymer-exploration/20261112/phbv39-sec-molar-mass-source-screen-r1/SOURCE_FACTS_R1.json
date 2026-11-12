@@ -1,0 +1,102 @@
+{
+  "source_id": "abbasi_2022_manure_phbv",
+  "doi": "10.3390/polym14194140",
+  "primary_inspected_document": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9571417/fullTextXML",
+  "existing_identity_id": "mat_abbasi2022_manure_phbv39",
+  "table_id": "polymers-14-04140-t002",
+  "raw_selected_row": [
+    "PHBV-39",
+    "6.96 ± 0.38",
+    "6.45 ± 0.32",
+    "1.08 ± 0.08"
+  ],
+  "selected_facts": [
+    {
+      "role": "weight_average_molar_mass",
+      "source_symbol": "Mw",
+      "number": "6.96",
+      "absolute_sd": "0.38",
+      "source_unit": "×10^5 g·mol^-1",
+      "unit_boundary": "Scaled molar-mass role,not g/mol without source-preserving scale,not density or specimen mass."
+    },
+    {
+      "role": "number_average_molar_mass",
+      "source_symbol": "Mn",
+      "number": "6.45",
+      "absolute_sd": "0.32",
+      "source_unit": "×10^5 g·mol^-1",
+      "unit_boundary": "Number-average is moment weighting role,not replicate count."
+    },
+    {
+      "role": "source_reported_molar_mass_dispersity",
+      "source_symbol": "PDI",
+      "number": "1.08",
+      "absolute_sd": "0.08",
+      "source_unit": "dimensionless ratio",
+      "formula_source": "Mw/Mn",
+      "unit_boundary": "Source-reported dispersity,not sample count or weight fraction. Do not recompute1.08 from6.96/6.45 or propagate the printedSDs."
+    }
+  ],
+  "table_statistics": {
+    "locator": "Table2 footnote b",
+    "center": "reported mean",
+    "uncertainty": "explicit reported standard deviation",
+    "source_rounding": "Source states SD rounded upward to mean precision where necessary. Preserve tokens;do not infer additional precision.",
+    "exact_n": null,
+    "boundaries": [
+      "Mw/Mn name denotes molecular distribution moments;reported mean is source aggregation statistic,not proof of independent material batches.",
+      "Do not infer SD meaning from another table;Table2 has its own explicit footnote.",
+      "Mean of reported PDI ratios is not necessarily ratio of printed Mw/Mn means;keep source1.08±0.08.",
+      "A lower SD interval extending below a physical ratio bound would not justify clipping or deleting a source amplitude."
+    ]
+  },
+  "inheritance": {
+    "status": "explicitly_reproduced_from_cited_work",
+    "locator": "Section3.2 PHBV Molar Mass Determination and Table2 heading/reference6",
+    "original_reference": {
+      "authors": "Guho et al.",
+      "year": "2020",
+      "doi": "10.1016/j.biteb.2020.100588",
+      "title": "Pilot-scale production of poly-3-hydroxybutyrate-co-3-hydroxyvalerate from fermented dairy manure: Process performance, polymer characterization, and scale-up implications",
+      "publisher_url": "https://www.sciencedirect.com/science/article/pii/S2589014X20302103",
+      "original_fulltext_inspected": false,
+      "original_method_value_identity_license_verified": false
+    },
+    "boundary": "Known reproduced origin,not unknown new2022 acquisition. Inspected2022 document supports transcription/attribution only;does not establish independent newmeasurement or original method equivalence. Do not create a second experiment across publications."
+  },
+  "reported_method_context_2022": {
+    "locator": "Section2.2.3 Size Exclusion Chromatography",
+    "technique": "SEC with refractive-index and MALS detection",
+    "concentration": "2mg/mL sample solution,not replicate count or specimen mass",
+    "column": "Jordi DVB linear mixed-bed column",
+    "source_geometry_notation": "7.8 mm × 300 mm^2",
+    "geometry_boundary": "Source notation retained;do not silently repair to diameter/length or assign cross-sectional area.",
+    "eluent": "CHCl3",
+    "flow": "0.5mL/min",
+    "temperature_C": "30",
+    "detectors": "Waters2414 RI and PostNovaPN3609 MALS at658nm",
+    "calibration": "Narrow polystyrene standard,source Mw=105,268g/mol",
+    "software": "NovaSECv1.5.0",
+    "boundary": "This is the method reported in2022,not independently verified actual Guho2020 per-cell conditions. Polystyrene calibrant is not the PHBV sample and does not certify absolute molar-mass accuracy."
+  },
+  "unconfirmed": [
+    "Original2020 fulltext,exact selected row identity and original reporting precision",
+    "Original method/protocol equivalence with2022 description",
+    "Original raw chromatograms,detector pairing and integration/fit settings",
+    "dn/dc value,concentration calibration,solvent optical constants and detector normalization",
+    "Relative versus absolute molar-mass reduction and calibration pathway",
+    "Exact independent replicate count,pieces,batches and mean/ratio ordering",
+    "Actual source-specific conditioning,moisture,storage and solution preparation duration",
+    "Separate2020 original license and reproduction permissions beyond2022 CC BY notice"
+  ],
+  "scope_exclusions": [
+    "Other seven source operational-day identities excluded",
+    "No native property/state/source changes",
+    "No new method/quantity implementation or source-based scientific certification",
+    "No conversion to unscaled values or new computed averages/ratios",
+    "Do not import mechanical/DSC/FTIR/rheology conditions or duplicate counts"
+  ],
+  "admission_status": "source_facts_only_pending_independent_review;hold original-method equivalence and finalclassification/newrole proposal until source provenance assessed",
+  "license_scope": "Inspected2022 XML explicitlyCCBY4.0;does not independently establish2020 original license",
+  "tests": "not_run_source_screen"
+}

@@ -1,0 +1,63 @@
+{
+  "source_id": "abbasi_2022_manure_phbv",
+  "doi": "10.3390/polym14194140",
+  "primary_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9571417/fullTextXML",
+  "existing_identity_id": "mat_abbasi2022_manure_phbv39",
+  "identity_boundary": "39 denotes operational-day source label,not HV percentage;other seven source identities outside current existing-material scope.",
+  "table_id": "polymers-14-04140-t008",
+  "raw_row": [
+    "PHBV-39",
+    "15.48",
+    "0.827",
+    "11.26",
+    "0.931"
+  ],
+  "selected_fact": {
+    "source_label": "η*",
+    "number": "11.26",
+    "unit": "Pa·s",
+    "role": "source tabulated oscillatory complex viscosity;not steady-shear viscosity",
+    "temperature_C": "180",
+    "cyclic_frequency_Hz": "1",
+    "source_angular_frequency_rad_per_s": "6.28",
+    "coordinate_boundary": "1 Hz and6.28rad/s are both explicitly source-reported;do not compute an exact2pi substitution or interpret angular frequency as shear rate."
+  },
+  "common_method": {
+    "locator": "Section2.2.7 Dynamic Rheology",
+    "instrument": "Bohlin CVO100N",
+    "geometry": "25mm parallel plates",
+    "strain_amplitude_percent": "0.5",
+    "frequency_range_source": "0.01–100Hz (source angular range0.0628–628rad/s)",
+    "disc_preparation": "Purified PHBV compression-molded using hydraulic press and pellet die at source-described room temperature,nominal1.5mm height×25mm diameter.",
+    "boundary": "Disc thickness is not verified plate gap;preparation room temperature is not rheology test temperature;do not import tensile hot-pressing/drying/DSC program."
+  },
+  "unknowns": [
+    "Actual plate gap",
+    "Thermal equilibration time and temperature-control details",
+    "Atmosphere and humidity",
+    "Method-specific conditioning and moisture history",
+    "Rheology replicate count,independent pieces and batches",
+    "Per-cell uncertainty and summary statistic",
+    "Instrument inertia/compliance/slip corrections",
+    "Whether Table8 η* cell is directly selected measurement or evaluated fitted-model output;source juxtaposes tabulation with power-law fit but does not explicitly establish per-cell processing provenance."
+  ],
+  "source_tensions": [
+    {
+      "locator": "Sections2.2.7,3.6 andFigure3 caption",
+      "description": "Methods describe oscillatory frequency sweep;results and figure call ω shear rate. Preserve attribution,do not grant steady-shear/Cox–Merz equivalence."
+    },
+    {
+      "locator": "Section3.6 final discussion versusTable8",
+      "description": "Narrative upper bound14.57Pa·s excludes table R46=16.7;retain selected PHBV39 cell11.26 without silently correcting either statement."
+    }
+  ],
+  "excluded_facts": {
+    "K": "15.48 source model consistency parameter,not selectedviscosity value",
+    "n": "0.827 source power-law flow index,not sample count",
+    "R_squared": "0.931 source fit goodness,not uncertainty/confidence or experimental replication",
+    "FTIR_I_C_equals_O": "2.35 inTable4;different fitted carbonyl-band area ratio role,not DSC crystallinity;requires separate role review before mapping."
+  },
+  "admission_status": "source facts only;no native mapping or acceptance. Resolve/report cell-processing provenance before selecting measurement/derived classification;do not recompute model.",
+  "inspection_scope": "Local mainXML §2.2.7,§3.6,Table8,Figure3 caption;no figure digitization,PDF or supplement visual inspection,or latest revision check.",
+  "tests": "not_run_source_screen"
+}

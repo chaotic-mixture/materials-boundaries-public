@@ -294,6 +294,18 @@ def definitions(text,decimal,https,null,obj,array,enum):
 
 
 def validate_derivation(prop,identity=None,sources=None):
+    from ._sec_molar_mass_contract import applies as applies_sec, validate as validate_sec
+    if applies_sec(prop):
+        validate_sec(prop, identity, sources)
+        return
+    from ._ftir_band_area_ratio_contract import applies as applies_ftir, validate_derivation as validate_ftir
+    if applies_ftir(prop):
+        validate_ftir(prop)
+        return
+    from ._dsc_crystallinity_contract import applies as applies_dsc, validate_derivation as validate_dsc
+    if applies_dsc(prop):
+        validate_dsc(prop)
+        return
     derived=prop.get('derivation')
     if (prop['quantity']==FIT_QUANTITY or prop['method_definition']['type']==FIT_METHOD or
         isinstance(derived,dict) and derived.get('profile_id')==FIT_PROFILE):

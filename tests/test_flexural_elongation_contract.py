@@ -110,7 +110,7 @@ class FlexuralElongationContractTests(unittest.TestCase):
     def test_generated_schema_and_existing_quantity_domains_unchanged(self):
         schema = json.loads((Path(__file__).resolve().parents[1]/'schemas/reference_properties.schema.json').read_bytes())
         self.assertEqual(schema, _PROPERTIES_SCHEMA)
-        self.assertEqual(len(schema['$defs']['property']['oneOf']), 27)
+        self.assertEqual(len(schema['$defs']['property']['oneOf']), 31)
         Draft202012Validator.check_schema(schema)
         for factory in (synthetic_mean_catalog, tensile_fixture, target_fixture, hardness_fixture, tear_fixture):
             graph = factory()

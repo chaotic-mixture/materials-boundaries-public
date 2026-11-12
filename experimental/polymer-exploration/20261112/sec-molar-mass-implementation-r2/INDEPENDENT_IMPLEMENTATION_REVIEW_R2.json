@@ -1,0 +1,24 @@
+{
+  "decision": "approved",
+  "review_inputs_sha256": "0e0e2e6787167490a157e4361608dbf5ec51ce73baa1ed6032fb6fee46829384",
+  "scope": "SEC实现R2字符串约束定向复核",
+  "checks": [
+    "入口及全部181 repo、141 external、3 native绑定哈希匹配。",
+    "DOI继承TEXT控制字符、surrogate及严格结尾约束，并追加DOI结构限制；原文档URL复用HTTPS约束。",
+    "相对R1，31个完整分支全部相同，仅sec_original_reference和sec_original_result两项新定义变化；其余定义保持。",
+    "所有SEC运行验证函数AST保持；原19个SEC测试方法AST相同，仅新增2项字符串检查。",
+    "独立复现36项DOI/URL异常字符串拒绝，覆盖NUL、ESC、DEL、C1、尾LF/CRLF及surrogate；原先3项完整小图复现现均被拒绝，正常DOI及HTTPS输入原样通过。",
+    "当前21项原始日志为18.611秒，零失败、错误、跳过；111项执行输入当前哈希匹配。",
+    "原428项执行的153输入准确解析为149当前加4项精确归档；R1结论、原代码测试及预检失败记录保留，不冒称新430或累计449。",
+    "原生仍为5754 properties、5432 states、134 sources，未新增SEC候选或应用。"
+  ],
+  "findings": [],
+  "resolved_findings": [
+    "SEC-STRING-01"
+  ],
+  "limits": [
+    "批准仅覆盖修订后的实现，可进入另行冻结的真实映射审阅；不批准映射、原生接纳或安装。",
+    "复用R1未变的分类、继承、单位、去重及兼容性结论，不重新认证科学来源。",
+    "未执行作者helpers、测试模块或套件、完整图或历史回归；未写文件、缓存、安装或执行Git变更。"
+  ]
+}

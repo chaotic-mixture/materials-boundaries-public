@@ -1,0 +1,63 @@
+{
+  "status": "proposal_only_not_implemented_or_admitted",
+  "quantity": "ftir_fitted_carbonyl_band_area_ratio",
+  "dimension": "dimensionless",
+  "unit": "ratio_ftir_fitted_carbonyl_areas",
+  "method": "source_reported_ftir_fitted_band_area_ratio",
+  "profile": "source_ftir_fitted_carbonyl_band_area_ratio_v1",
+  "classification": {
+    "evidence_kind": "published_measurement_derived_reference",
+    "determination_basis": "source_reports_calculation",
+    "executor": "source_reported_only",
+    "reason": "Source explicitly reports integration of fitted bands and ratio;not a model inferred by this project. Per-cell acquisition provenance remains separate unknown."
+  },
+  "reported_scalar": {
+    "minimum": "0",
+    "maximum": null,
+    "precision": "Preserve literal source precision;reject nonfinite/negative;no0–1or0–100 cap.",
+    "unit_boundary": "Dedicated ratio role,not percent,concentration,peak-height ratio or DSC reference crystallinity."
+  },
+  "derivation_required": {
+    "formula": "source explicitly reports integrated numerator-area divided by denominator-area;ordered roles fixed,no reciprocal substitution",
+    "numerator_band": {
+      "coordinate": "positive source-reported wavenumber",
+      "unit": "cm_inverse_ftir_band_center",
+      "role": "fitted integrated carbonyl-band area;not peak maximum height"
+    },
+    "denominator_band": {
+      "coordinate": "positive source-reported wavenumber",
+      "unit": "cm_inverse_ftir_band_center",
+      "role": "fitted integrated carbonyl-band area;actual integral value/positivity unknown unless source states it"
+    },
+    "source_model": "Source-reported lineshape must be stated;first version limited to Gaussian carbonyl-area ratio,not arbitrary peak models.",
+    "facts": [
+      "spectrometer_and_acquisition_mode",
+      "band_assignments_as_author_interpretation",
+      "baseline_and_normalization",
+      "fit_model_width_constraints_and_intervals",
+      "integration_and_ratio_averaging_order",
+      "sample_preparation_conditioning",
+      "source_data_attribution",
+      "replication_and_statistics",
+      "instrument_corrections_and_calibration"
+    ],
+    "unknown_rules": "Unknown facts status explicit,textnull,primary method/condition evidence and notes;never use curator absence statement as reported fact. Partial facts must separate reported portion from unknown details.",
+    "input_boundary": "Source ratio and declared method sufficient;raw areas need not be invented. Do not execute fitting/integration/division,invert or derive missing areas. Source-author reported denominator coordinate is not a known positive area."
+  },
+  "uncertainty": "Only explicit source typed absolute ratio amplitude or source relativeCV,never infer SD/CI/n from duplicate or fitR2. Unknown uncertainty retained. Negative absolute amplitude rejected,no upper cap;keep confidence/coverage unknown unless reported.",
+  "identity_and_dedup": "Existing material identity only;new method context not independent physical sample. Normalize numeric spellings and ignore annotations for dedup;ordered band coordinates and physical conditions are substantive,source locator/scope must not create duplicate cell.",
+  "presentation": "Chinese/English/French labels explain fitted integrated ratio/source-only status,show ordered band roles and source facts;do not expose implementation constants in human views;fullmetadata survives JSONL/export/recovery/copy isolation.",
+  "compatibility": "Append closed dedicated branch;preserve all28 old branches/definitions/enums/runtime role behavior. Do not treat dedicated wavenumber metadata as generic measured result or engine input.",
+  "meaningful_validation_plan": [
+    "Reject mismatched quantity/unit/method/profile and foreign closed fields",
+    "Reject percent/peakheight/DSC substitutions and source-free formula/model",
+    "Validate typed band roles,positive coordinates andstrictunknowns",
+    "Accept ratios0and2.35and>100withoutclamping;reject negative/nonfinite",
+    "Reject hidden reciprocal/malformed evidence and unknown-as-reported facts",
+    "Prove duplicate representations cannot create duplicate sourcecell",
+    "Preserve old28branch definitions and current historical contracts",
+    "Full accepted source object query/export/install roundtrip if implementation later approved"
+  ],
+  "selected_candidate": "PHBV39 I_C=O2.35 A1720/A1740Gaussian;halfheightwidth10cm^-1 source method;actualfitintervals,rawareas,ordering,percelln/acquisitionprovenanceunknown.",
+  "scope": "Concept proposal only;requires independent conceptual review,then separate frozen implementation review and mapping/final acceptance. No new tests executed at this stage."
+}

@@ -1,0 +1,87 @@
+{
+  "status": "concept_only_not_implemented_or_admitted",
+  "scope": "Source-qualified SEC molar-mass moments and author-reported dispersity of existing polymer identities,including explicit reproduced-origin provenance;not spectral/chromatographic computation.",
+  "roles": {
+    "molar_mass_moments": {
+      "quantities": [
+        "sec_weight_average_molar_mass",
+        "sec_number_average_molar_mass"
+      ],
+      "dimension": "mass_per_amount",
+      "units": [
+        "g_per_mol_sec_molar_mass",
+        "kg_per_mol_sec_molar_mass",
+        "ten5_g_per_mol_sec_molar_mass"
+      ],
+      "method": "source_reported_sec_molar_mass",
+      "evidence_kind": "published_experimental_reference",
+      "determination_basis": "source_reports_measurement",
+      "meaning": "Reported SEC measurement-result moments,not specimen mass,density,replication or number of molecules. Experimental reference does not mean new experiment in reproducing publication."
+    },
+    "dispersity": {
+      "quantity": "sec_source_reported_molar_mass_dispersity",
+      "dimension": "dimensionless",
+      "unit": "ratio_sec_molar_mass_dispersity",
+      "method": "source_reported_sec_molar_mass_dispersity",
+      "evidence_kind": "published_measurement_derived_reference",
+      "determination_basis": "source_reports_calculation",
+      "profile": "source_sec_molar_mass_dispersity_v1",
+      "executor": "source_reported_only",
+      "formula": "Source explicitly defines Mw/Mn;retain original orderedmoment roles. No software division,input-pair inference,error propagation or replacement with ratio of printedmeans."
+    }
+  },
+  "reported_values_and_uncertainty": {
+    "moments": "Finite strictly positive source scalar;preserve native unit,scale and precision. SelectedMw6.96 SD0.38,Mn6.45 SD0.32 bothten5g/mol,not unscaledg/mol.",
+    "dispersity": "Finite scalar >=1 admitted in first closed role;source anomalies below1 remain frozen outsideadmission for separate adjudication,never clamp or rewrite. No uppercap.",
+    "absolute_sd": "Only source-explicit SD with reportedmean;same role and source unit/scale ascenter. Nonnegative finite;SD not clipped tocentral domain or treated as bound.",
+    "relative_measures": "Source-relativeCV remains percent;not dedicatedratio or source-molar-mass amplitude. NoSD/CI/n inferred from methodname,R2 orduplicate.",
+    "source_statistics": "Table2 itself explicitly reportsmean±SD. Moment weighting is different from replicate aggregation;meanPDI not asserted equal ratioofmeans. Exactn and batch count unknown."
+  },
+  "required_method_facts": [
+    "sec_column_and_geometry_source_notation",
+    "sample_solution_preparation_and_concentration",
+    "eluent_flow_and_temperature",
+    "detector_types_pairing_and_optical_configuration",
+    "calibrants_and_calibration_pathway",
+    "dn_dc_and_concentration_reduction",
+    "chromatogram_integration_and_moment_reduction",
+    "sample_conditioning_storage_and_history",
+    "replication_and_statistics",
+    "instrument_corrections_and_quality_controls"
+  ],
+  "method_attribution_structure": {
+    "reported_common_context": "Facts explicitly reported in the inspected/reproducing publication,with primarydocument method/condition evidence. A partially known fact must separate reportedcontent from unknown details.",
+    "actual_original_result_context": "Separate fact group with strictunknowns when original result protocol equivalence unverified. Do not copy30°C,concentration,calibrants,geometry orsoftware toactualpropertyconditions merely because reproducedTable andcommonmethod share publication.",
+    "unknown_shape": "Explicitnot_reported_in_inspected_source ornot_verified,textnull,scope notes and relevantprimary evidence;absence descriptions not reported facts.",
+    "measurement_basis": "Typedstatusnot_verified orsource_reported_relative_calibration orsource_reported_absolute_reduction only ifsourceexplicit. SEC-MALS/PSstandard alone cannot autochooseabsolute/relative or accuracy.",
+    "geometry": "Retain ambiguous7.8mm×300mm² notation and mark dimensional interpretation unresolved;not silentlyrepair todiameter/length.",
+    "raw_input_boundary": "Do not invent dn/dc,rawtraces,detectorpairing,actualoriginalcalibration,tracepairing or molar-mass distributions."
+  },
+  "required_origin_provenance": {
+    "status": "direct_or_original_attribution_unresolved_or_explicitly_reproduced_from_cited_work;explicit known inheritance cannot be downgraded tounknown orcallednewexperiment.",
+    "inspected_document": "Existing registered2022 source and its inspectedXML hash remain primaryevidence document.",
+    "cited_original": "KnownDOI/title/year/reference locator retained as citedoriginalcitation,not fabricated verifiedsource_id or claimoriginalfulltextlicense inspected.",
+    "original_result_verification": "Explicitunknown status for originalvalueprecision,identity/protocol equivalence and independent license unless verified;unknown does not become false certainty.",
+    "origin_sample_and_cell": "Reproducing sample/cell stable,originalsample/cell only verifiedorstrictunknown;PHBV39operationalday label notHVpercentage.",
+    "future_admission_gate": "Separate review must justify usable inspectedsource/reproducedfactscope,existingidentity match and inheritance/dedup handling. No newmaterial/scientificcoverage count for the reproducedexperiment;primaryfulltext can stayunknown when genuinelyunavailable,without asserting originalmethod orlicense."
+  },
+  "source_cell_and_cross_publication_dedup": {
+    "within_document": "Fixed inspectedtable/row/column+state+quantity;changes of units/scale,values,conditions,definition,statistics,annotations orlocators are revisions,not parallelfacts. Legitimatelydifferentcells/protocols needsourceevidence.",
+    "across_publications": "A confirmedsameoriginaldatum must be onecuratedrecord with multipleprovenance links/citations,not a new independentexperiment. OriginalDOI alone cannot merge allrows orallmoments.",
+    "unverified_origin_match": "Retainknownattribution and unknownoriginalsample/cell;hold anysecond representation aspossibleduplicate until adjudicated. Neverauto-merge uncertain identity or countcitations asnewmaterialcoverage."
+  },
+  "presentation": "Existingen/zh/ja/de show weightedmomentrole,unit/scale,typeduncertainty,knownreproducedorigin,reportedcommonmethod separatedfromactualunknowncontext,anddispersitysource-onlynotice. Humanviews omitinternalprofileconstants;JSONL/fullqueries/export/recovery/copyisolation retainallmetadata.",
+  "compatibility": "Appendtwo dedicatedclosedbranches preservingall29oldbranches/definitions/enums and oldmethodsemantics. Addmolar-mass dimension only inreferencecatalog;no evaluator/engineeringallowable path. PreserveexistingderivedmoduleASTafternewdispatchremoved.",
+  "meaningful_validation_plan": [
+    "Unit/scale aliases cannot makeanother sourcecell;centerandabsoluteSD mustshare unit/scale",
+    "Source-onlymomentroles separatedfrom samplecount/weightfraction/density",
+    "PDI profile closed,orderedMw/Mn,noactualinputinvention orrecomputation",
+    "Reportedmean/SD requiresownsourceevidence;relativeCV separate",
+    "KnownGuho2020inheritance cannot bedeclarednew2022experiment",
+    "Common2022method cannot silentlypopulateactualoriginalconditions",
+    "Samecell corrections rejectparallelfacts inbothorders;possiblecrosspaperduplicatesheld",
+    "Preserveold29branches/definitions and oldrules,fullconsumerfourlanguage/export/install checks if laterimplemented"
+  ],
+  "selected_candidate_admission": "Not approved or mapped by this proposal. Keep3sourcefacts frozen outside native until concreteimplementation andmapping reviewed. Original2020 fulltext/value/method/license remains unverified.",
+  "tests": "not_run_concept_proposal"
+}

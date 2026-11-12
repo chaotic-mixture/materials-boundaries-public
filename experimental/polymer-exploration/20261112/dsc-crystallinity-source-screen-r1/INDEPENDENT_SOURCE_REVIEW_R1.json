@@ -1,0 +1,36 @@
+{
+  "decision": "changes_required",
+  "review_inputs_sha256": "b81cc0a70b71ce816f4d45f7900efc38af5ea66fb45e731e47279eda7db5a706",
+  "checks": {
+    "bindings": "3 repo、2 external、3 native哈希全部匹配，原生未改。",
+    "source_cells": "独立核对PBS Table4九值53/49/50/54/49/50/50/50/48%及PHBV-39 Table4的25.8%，原值和精度一致。",
+    "identities_and_overlap": "十个既有身份锚点匹配，2 polymer、8 composite；未发现对应结晶度性质重叠。R0及七个无既有身份PHBV标签排除，PHBV-39不是39%HV。",
+    "formulas": "PBS原式及文字支持ΔHm/(f·ΔH0)×100，参考110.3 J/g；PHBV原MathML支持ΔHf/ΔHf0×100，参考146 J/g。均为作者参考焓归一化结果，不是软件本轮计算。",
+    "contract_gap": "当前measurement-derived证据仅准入晶体学、经验换算、热输运乘积和热响应拟合四类方法，不覆盖DSC参考焓归一化，不能借用既有类别绕过。",
+    "rights": "两份主XML均明确CC BY 4.0；本轮未新增PDF或补充图视觉核验。"
+  },
+  "findings": [
+    {
+      "id": "PHBV_XC_PHASE_SOURCE_DISCREPANCY",
+      "severity": "required_source_boundary",
+      "paths": [
+        "experimental/polymer-exploration/20261112/dsc-crystallinity-source-screen-r1/SOURCE_FACTS_R1.json",
+        "experimental/polymer-exploration/20261112/dsc-crystallinity-source-screen-r1/README.zh.md"
+      ],
+      "issue": "Abbasi §3.4明确称Xc取自first cooling cycle；§2.2.5却将ΔHf关联second-heating endothermal peak，并给出以ΔHf归一化的公式。当前材料仅泛列phase/cycle未知，遗漏了来源已明确的first-cooling主张及两段描述之间的张力。",
+      "required_change": "同时保留first-cooling原文主张和第二升温/ΔHf公式语境，明确实际逐格积分信号及计算输入关联未解决。不判定作者错误、不改数值、不直接赋second heating，也不把来源说法隐藏为完全未报告。"
+    }
+  ],
+  "adjudications": {
+    "literal_facts": "十个来源Xc字面值可保留；修正针对来源范围说明，不要求重算或修改数值。",
+    "classification": "将其视为来源报告的实验焓输入与参考模型归一化计算结果恰当；不得标作直接测得结晶相比例，或软件已独立计算的结果。具体新方法/profile须后续独审。",
+    "normalization": "PBS逐格实际f、分母实现、干基及校正未知；PHBV不得反推未报告ΔHf。110.3与146是各来源参考，不能跨来源替换或认证统一绝对/体积结晶度。",
+    "provenance": "Abbasi §3.4共同引用Guho既有结果和reanalyzed data；PHBV-39单格归属仍未知，不据此认定2022新独立实验、同一run或逐格n2。",
+    "statistics": "中心统计、误差、独立样本数及实际积分界限未知；不得转用DMA triplicate、机械n或DSC共同duplicate作为逐格n。"
+  },
+  "limits": [
+    "本轮不批准新契约、实现、具体映射、原生接纳或安装。",
+    "不认证作者计算一致性、跨研究可比性、科学有效性或独立实验数量。",
+    "未运行作者脚本、测试或套件、完整图及历史回归；未写文件或缓存、安装或执行Git变更。"
+  ]
+}

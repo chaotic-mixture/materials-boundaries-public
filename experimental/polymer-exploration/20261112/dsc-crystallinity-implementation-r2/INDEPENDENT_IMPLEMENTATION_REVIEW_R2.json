@@ -1,0 +1,35 @@
+{
+  "decision": "changes_required",
+  "review_inputs_sha256": "7101e20febe1fe5cedb791fb60af48e924ccdb2920e7b769e31467e927d90b73",
+  "checks": {
+    "bindings": "173 repo、120 external、3 native哈希全部匹配；当前147执行输入逐项匹配。",
+    "legacy_preservation": "旧27完整分支、全部旧定义及旧method枚举保持；19个旧测试仅27→28计数修订；旧语言值保持，各语言新增20项。",
+    "old_derivation": "去除唯一新增dispatch后，原四类派生模块AST完全相同。",
+    "roles_and_evidence": "专用quantity/method/profile/derived/source_reports_calculation角色闭合，source-only executor及参考焓模型角色正确。八事实、严格未知、主文档证据和参考正值/精度约束通过有限反例核验。",
+    "domain_and_uncertainty": "中央0至100含端点及精确越界拒绝通过；150绝对幅度同专码合法，relative CV使用percent且拒绝绝对码混用。",
+    "cycle_edge": "真正origin-cooling/input-heating张力及对应discrepancy可保留；同phase未知occurrence与已知occurrence不单独构成冲突的R2修正有效。",
+    "limited_consumers": "自有38项其他反例、低精度双顺序同格去重，以及有限小图、resolve、查询、JSON、副本隔离和四语言展示通过。",
+    "execution_scope": "正式日志Ran 393 tests in 151.446s、OK，0失败/错误/跳过；旧392的两项变化输入由精确原档解析，未累加执行次数。",
+    "native_scope": "原生仍5740性质及既有快照，无真实Xc记录或本次新安装。"
+  },
+  "findings": [
+    {
+      "id": "COMMON_PROGRAM_IS_NOT_SOURCE_CONFLICT",
+      "severity": "blocking",
+      "path": "materials_boundaries/_dsc_crystallinity_contract.py",
+      "location": "validate_derivation()的conflicting_source_statements准入检查",
+      "issue": "tension计算正确排除共同程序，但conflict准入改用所有known_coordinates，包含reported_common_program。因此普通程序中的冷却和升温可被误当作来源矛盾。",
+      "independent_reproduction": [
+        "只有common_program cooling1与heating2，附对应discrepancy，Schema及完整属性验证均接受conflicting_source_statements。",
+        "crystallinity_origin与enthalpy_scan均为heating2，仅另加common_program cooling1，仍接受冲突，实际origin/input没有张力。"
+      ],
+      "required_change": "冲突状态必须要求实质tension成立，即不相容的origin/input或不同origin主张；共同程序段不能单独制造冲突。增加上述两个拒绝反例，同时保留真正PHBV张力和未知occurrence边界。",
+      "impact": "目前影响专用规则的冲突语义，不涉及原生数值变更；真实Xc映射尚未生成。"
+    }
+  ],
+  "limits": [
+    "本轮不批准实现继续用于真实映射、原生接纳或安装；修正须另冻复核。",
+    "不认证来源计算、实际输入配对、相位归属或科学有效性。",
+    "未运行作者helpers、测试模块或套件、完整图及历史回归；未写文件或缓存、安装或执行Git变更。"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "stage": "targeted initial18 precheck",
+  "tests": 18,
+  "failures": 1,
+  "errors": 1,
+  "skipped": 0,
+  "raw_log": "not saved;initial terminaltool output available in chat",
+  "failed_test_file_saved": "F:\\材料边界\\open-database-evidence\\polymer-sec-molar-mass-implementation-20261112-r1\\precheck-r1-failed-test.py",
+  "failed_test_file_sha256": "50cac77570f39498ed96a250f9463d2f541eecbed4be0533abcde44b954269e3",
+  "findings": [
+    {
+      "test": "test_distinct_confirmed_original_cells_and_moments_not_merged",
+      "cause": "Synthetic secondary clone restored original-document evidence forunknownverification/actualfacts;unknowns must reference reproducing inspected document.",
+      "fix": "Preserve original evidence only for reportedverification/actualfacts;unknown evidence remains rebound tosecondary."
+    },
+    {
+      "test": "test_source_mean_sd_and_relative_cv_roles_remain_separate",
+      "cause": "Fixture default uncertainty type is confidenceinterval,not SD;mean-required negative test used wrong fixture.",
+      "fix": "Explicit reported_standard_deviation fixture;test still requires reportedmean."
+    }
+  ],
+  "runtime_changed_for_these_fixes": false,
+  "scientific_sources_or_native_changed": false
+}

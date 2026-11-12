@@ -1,0 +1,40 @@
+{
+  "decision": "changes_required",
+  "review_inputs_sha256": "8ff188b92c523b10bbffd24ee3c3267b1b2791e56b7c83d754a98425aa22bdda",
+  "scope": "FTIR拟合碳酰基带积分面积比契约概念",
+  "checks": [
+    "入口及全部6个repo、3个native绑定哈希匹配，来源批准链闭合。",
+    "来源报告计算、source-only executor及专用quantity/method/profile分类适当；不执行拟合、积分、除法或反推原始面积。",
+    "有序A1720/A1740与Gaussian拟合限定符合已审来源；正波数坐标不等于已知正积分面积，提案已明确区分。",
+    "有限非负比值含0、无1或100上限合理；绝对幅度非负且无比值上限，不能从duplicate或R²推断SD、CI或n。",
+    "未知事实使用显式status、null和证据说明，部分已知方法与未知细节分层原则适当。",
+    "保留旧28分支、定义、枚举及既有量行为的兼容原则适当；尚未验证未来实现。"
+  ],
+  "findings": [
+    {
+      "id": "FTIR-CONCEPT-01",
+      "location": "CONTRACT_PROPOSAL_R1.json:48 identity_and_dedup",
+      "issue": "将有序波数坐标称为substantive，但未明确同一原始来源单元格改标坐标或补齐定义时的处理规则，可能被实现为另一条事实。",
+      "required_change": "明确同state、quantity、primary document及原始结果单元格下，波数改标、顺序纠正、未知补齐、定义或统计解释更新属于修订，不能与原记录并列。真正不同来源结果格或协议仍可区分；保留原始来源locator语义，不通过任意改写locator制造新格。",
+      "severity": "concept_clarification_required"
+    },
+    {
+      "id": "FTIR-CONCEPT-02",
+      "location": "CONTRACT_PROPOSAL_R1.json:49 presentation",
+      "issue": "展示要求写为Chinese/English/French，与当前en/zh/ja/de四语言范围不一致。",
+      "required_change": "改为现有四语言完整展示有序带角色、已知事实、未知状态及source-only提示；若未来新增法语，应另行明确范围。",
+      "severity": "documentation_correction_required"
+    }
+  ],
+  "adjudications": {
+    "raw_inputs": "不得要求伪造原始面积或以坐标正值证明分母积分为正；保留来源比值与方法即可。",
+    "partial_knowledge": "已知Gaussian、10cm⁻¹宽度和带坐标应保留，未知积分界限、归一化算法及运算次序单独表达。",
+    "classification": "批准来源计算分类原则；不由此认证逐格新实验出处、拟合质量或相含量解释。",
+    "next_stage": "修订上述概念文字后可定向复核；本次不批准实现、映射或接纳。"
+  },
+  "limits": [
+    "本次为概念与冻结绑定审阅，未执行未来schema或运行时代码。",
+    "未运行作者helpers、测试、完整图或历史回归；未写文件、缓存、安装或执行Git变更。",
+    "不认证科学有效性、原始谱图质量或独立试样与批次。"
+  ]
+}
