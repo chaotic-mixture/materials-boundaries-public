@@ -19,6 +19,15 @@ An open, source-qualified materials database and executable mechanics toolkit.
 
 第三例可追加 `--poisson .3`，得到约 **0.276 GPa**。这里的 0.3 是用户提供的教学假设。默认模量来自 [Special Metals Nickel 200 技术公报，表 4](https://www.specialmetals.com/documents/technical-bulletins/nickel-200.pdf) 的 26 °C 退火材料动态弹性数据。将该参考值用于此拉伸估算需要用户明确接受其适用性，并假定无初始应力、无热应变、各向同性和小应变线弹性。输出不提供屈服、失效或工程许用值。
 
+## 聚合物研究进展 · PLA/PCL（2026-11-12 更新）
+
+**项目已收录的数据。** Delgado 等研究了七种注塑 PLA/PCL 共混配方。按 PLA/PCL 名义质量比从 20/80 到 95/5 排列，七组杨氏模量依次为 1.13、1.86、2.55、3.20、3.38、3.60 和 3.70 GPa。库中还收录了七组拉伸强度、七组达到拉伸强度时的伸长率，以及四组断裂伸长率。比较延性时应选用同一种伸长率指标。可运行 `materials-database query --query Delgado --quantity youngs_modulus` 查询模量记录。[Delgado 原始研究](https://europepmc.org/articles/PMC7321633)
+
+**近期原始研究。** 以下结果保留各论文的试样和测试指标，供与上述注塑数据对照阅读。
+
+- **打印件的拉伸强度随添加剂而变。** 一项 2026 年研究在相同的商业 PLA/PCL 80/20 质量比基料中分别加入两种三嵌段共聚物。含 PDLA-PCL-PDLA 的打印试样拉伸强度为 30–32 MPa，含 PLLA-PCL-PLLA 的试样为 20–21 MPa。即使基料配比相同，引用强度时仍需注明添加剂与成形方式。[研究团队的论文记录](https://cris.tau.ac.il/en/publications/improving-interlayer-adhesion-of-3d-printed-plapcl-blends-using-t/)
+- **富 PCL 板材的屈服响应。** 另一项 2026 年研究对含交联助剂的 PCL/PLA 95/5 板材进行辐照。在 100 kGy 条件下，作者报告的拉伸屈服强度达 25 MPa。这里 PCL 占 95%，且测量的是屈服强度；与上面的富 PLA 注塑样比较时，需要同时核对配比顺序、工艺和指标。[《Polymer》原文](https://doi.org/10.1016/j.polymer.2026.130295)
+
 ## 材料方向 / Material families
 
 | 方向 | 材料身份数 | 收录示例 |
