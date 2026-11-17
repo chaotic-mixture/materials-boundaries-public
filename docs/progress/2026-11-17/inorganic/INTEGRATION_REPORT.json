@@ -1,0 +1,54 @@
+{
+  "report_id": "wang2024_si3n4_whisker_tensile_integration_20261117_r1",
+  "date": "2026-11-17",
+  "decision": "admitted_to_local_runtime_catalog",
+  "source": {
+    "id": "wang_2024_silicon_nitride_whisker_tensile",
+    "doi": "10.3390/ma17184549",
+    "url": "https://www.mdpi.com/1996-1944/17/18/4549",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "article": "Bokang Wang, Tanglong Bai, Weide Wang, Hongti Zhang, Mechanical Properties of Silicon Nitride in Different Morphologies: In Situ Experimental Analysis of Bulk and Whisker Structures, Materials 17(18), 4549 (2024)."
+  },
+  "admitted_scope": {
+    "identities": [
+      "mat_wang2024_si3n4_whiskers_y2o3_aid",
+      "mat_wang2024_si3n4_whiskers_mgsin2_aid"
+    ],
+    "states": [
+      "state_wang2024_si3n4_whisker_y2o3_sample_1",
+      "state_wang2024_si3n4_whisker_y2o3_sample_2",
+      "state_wang2024_si3n4_whisker_y2o3_sample_3",
+      "state_wang2024_si3n4_whisker_y2o3_sample_4",
+      "state_wang2024_si3n4_whisker_mgsin2_sample_5",
+      "state_wang2024_si3n4_whisker_mgsin2_sample_6",
+      "state_wang2024_si3n4_whisker_mgsin2_sample_7",
+      "state_wang2024_si3n4_whisker_mgsin2_sample_8"
+    ],
+    "property_count": 16,
+    "quantities": {
+      "youngs_modulus": 8,
+      "tensile_strength": 8
+    },
+    "representation": "Table 1 per-whisker reported values. Each property sample_count is 1 for that individual whisker; group n=4 is source context, not a group mean. The listed Y2O3 and MgSiN2 are source group/aid labels, not asserted retained whisker composition."
+  },
+  "identity_review": {
+    "result": "No duplicate Wang DOI, matching whisker states, or matching properties were found in the local inorganic catalog before admission.",
+    "nearest_existing_identity": "mat_lukianova2017_si3n4_85_9_6_sps1650",
+    "difference": "Distinct Si3N4-Al2O3-Y2O3 bulk input formulation with density only; not the individual whisker populations."
+  },
+  "limitations": [
+    "Article says fracture stress is calculated from fracture load but the inspected method text does not specify the exact cross-sectional area/stress formula.",
+    "The article does not report per-whisker uncertainty or raw force-displacement curves for independent curve-level recomputation.",
+    "Young's modulus is author-calculated as fracture stress divided by fracture strain; this calculation basis is preserved.",
+    "No temperature or SEM environment pressure is reported for these observations.",
+    "Publisher PDF endpoint denied access; official publisher full-text HTML was inspected. No source PDF or raw data asset is bundled.",
+    "These sample-level facts are not bulk ceramic, product-grade, or universal Si3N4 reference properties."
+  ],
+  "verification": {
+    "json_parse": "checked",
+    "record_and_source_link_integrity": "checked by direct local JSON inspection",
+    "schema_validation_or_test_suite": "not run",
+    "scientific_reanalysis": "not performed"
+  }
+}
