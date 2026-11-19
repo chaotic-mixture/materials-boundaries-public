@@ -1,6 +1,6 @@
 # 复合材料
 
-[返回五方向阅读入口](README.md)
+[返回五方向阅读入口](./README.md)
 
 **公开版本 v0.38.0** 收录 1,080 条复合材料性质记录。安装发行包后运行 `materials-database summary --category composite` 可复核。阅读主题为再生 PP 配方和跨来源可比性。[发行包](https://github.com/chaotic-mixture/materials-boundaries-public/releases/tag/v0.38.0)
 

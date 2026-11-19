@@ -1,6 +1,6 @@
 # 无机材料
 
-[返回五方向阅读入口](README.md)
+[返回五方向阅读入口](./README.md)
 
 **公开版本 v0.38.0** 收录 1,059 条无机材料性质记录。安装发行包后运行 `materials-database summary --category inorganic` 可复核。阅读主题为陶瓷的烧结状态、热传导和弯曲强度。[发行包](https://github.com/chaotic-mixture/materials-boundaries-public/releases/tag/v0.38.0)
 

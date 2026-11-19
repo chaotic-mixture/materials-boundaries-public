@@ -1,6 +1,6 @@
 # 聚合物
 
-[返回五方向阅读入口](README.md)
+[返回五方向阅读入口](./README.md)
 
 **公开版本 v0.38.0** 收录 1,382 条聚合物性质记录。安装发行包后运行 `materials-database summary --category polymer` 可复核。阅读主题为打印丝材吸湿与 PHBV 摩尔质量。[发行包](https://github.com/chaotic-mixture/materials-boundaries-public/releases/tag/v0.38.0)
 

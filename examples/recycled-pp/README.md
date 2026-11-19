@@ -20,4 +20,4 @@
 | Corn10，玉米秸秆 10 wt.%、未加相容剂 | 14.56 ± 0.42 MPa，5 个试件 | [García 论文表 2](https://www.mdpi.com/2073-4360/18/11/1384#polymers-18-01384-t002)，来源筛查转录 |
 | CS10，玉米湿磨淀粉富集组分 10 wt.%、成品名义 MAPP 4.5 wt.% | 47.5 ± 2.1 MPa，10 个试件 | [Cunha 论文补充材料入口，表 S1 第 1 页](https://www.mdpi.com/article/10.3390/polym18222856/s1)，候选转录待独立审核 |
 
-[核对两条记录及测试方法](cross-source.json) · [查看判断规则](compare_sources.py) · [返回复合材料方向](../../docs/reading/composite.md)
+[核对两条记录及测试方法](https://github.com/chaotic-mixture/materials-boundaries-public/blob/86d19c23c0063405c46eb8526e5c1797b7abc372/examples/recycled-pp/cross-source.json) · [查看判断规则](https://github.com/chaotic-mixture/materials-boundaries-public/blob/86d19c23c0063405c46eb8526e5c1797b7abc372/examples/recycled-pp/compare_sources.py) · [返回复合材料方向](../../docs/reading/composite.md)

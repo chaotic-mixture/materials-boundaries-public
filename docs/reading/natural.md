@@ -1,6 +1,6 @@
 # 天然材料
 
-[返回五方向阅读入口](README.md)
+[返回五方向阅读入口](./README.md)
 
 **公开版本 v0.38.0** 收录 1,010 条天然材料性质记录。安装发行包后运行 `materials-database summary --category natural` 可复核。阅读主题为木竹与天然纤维的方向性、含水率及力学性能。[发行包](https://github.com/chaotic-mixture/materials-boundaries-public/releases/tag/v0.38.0)
 

@@ -1,6 +1,6 @@
 # 金属
 
-[返回五方向阅读入口](README.md)
+[返回五方向阅读入口](./README.md)
 
 **公开版本 v0.38.0** 收录 1,042 条金属性质记录。安装发行包后运行 `materials-database summary --category metal` 可复核。阅读主题为合金批次、温度与力学试样。[发行包](https://github.com/chaotic-mixture/materials-boundaries-public/releases/tag/v0.38.0)
 
