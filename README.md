@@ -7,7 +7,7 @@ An open, source-qualified materials database and executable mechanics toolkit.
 
 [下载与版本说明](https://github.com/chaotic-mixture/materials-boundaries-public/releases/tag/v0.38.0) · [数据格式](docs/DATABASE_FORMAT.md) · [计算与知识库](docs/EXECUTABLE_MECHANICS.md) · [贡献数据](docs/DATABASE_CONTRIBUTING.zh.md)
 
-[再生 PP 复材比较案例](examples/recycled-pp/) · [五方向最新进度](docs/progress/2026-11-18/)
+[五个材料方向阅读入口](docs/reading/README.md) · [再生 PP 复材比较案例](examples/recycled-pp/README.md) · [11 月 18 日进度快照](docs/progress/2026-11-18/README.md)
 
 ## 查询 v0.38.0 新增的 161 条聚合物性质
 
