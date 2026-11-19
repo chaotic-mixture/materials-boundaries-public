@@ -1,0 +1,22 @@
+name: Catalog ID continuity
+on:
+  pull_request:
+    branches: [main]
+    paths: ['materials_boundaries/data/reference_properties.json', 'scripts/check_catalog_transition.py', '.github/workflows/catalog-continuity.yml']
+  push:
+    branches: [main]
+    paths: ['materials_boundaries/data/reference_properties.json', 'scripts/check_catalog_transition.py', '.github/workflows/catalog-continuity.yml']
+permissions:
+  contents: read
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Verify all previous property IDs
+        env:
+          BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: python scripts/check_catalog_transition.py "$BASE"
