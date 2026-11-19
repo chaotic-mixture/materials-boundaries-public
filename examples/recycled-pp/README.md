@@ -8,7 +8,7 @@
 
 从仓库根目录运行 `python examples/recycled-pp/compare_sources.py strength` 或将参数改为 `strain`。前者并列 García 的 Corn10 与 Cunha 的 CS10：[García & Febres](https://doi.org/10.3390/polym18111384) 和 [Cunha et al.](https://doi.org/10.3390/polym18222856)。两者同为名义 10 wt.% 且量为拉伸强度，但树脂流、是否含 MAPP、填料身份、混炼/成型路线、标准版本和加载速率均不同；批次也未报告。因此只展示来源值，不把均值差解释为材料或 MAPP 的因果效应。两文的 n=5 与 n=10 都是试件数，不能当作独立配混批数。
 
-`strain` 案例保留 García Table 2 的原标签 “Max. Elongation”，与 Cunha 的 “Nominal strain at tensile strength” 比较。端点没有对齐，García 值不自动改称断裂伸长；程序应明确拒绝直接比较数值。García 的拉伸方法为 ASTM D638-03、5.5 mm/min，Cunha 为 ASTM D638-22、1 mm/min，且 Cunha 的名义应变由横梁位移估算。Cunha 的 S1 数值仍是待独立审核的研究转录，输出须保留此状态。
+`strain` 案例保留 García Table 2 的原标签 “Max. Elongation”，与 Cunha 的 “Nominal strain at tensile strength” 比较。端点没有对齐，García 值不自动改称断裂伸长；程序应明确拒绝直接比较数值。García 的拉伸方法为 ASTM D638-03、5.5 mm/min，Cunha 为 ASTM D638-22、1 mm/min，且 Cunha 的名义应变由横梁位移估算。Cunha 的应变记录仍待独立审核。
 
 
 ### 从比较结论核对原始证据
@@ -18,6 +18,6 @@
 | 配方 | 拉伸强度均值 ± SD | 定位与状态 |
 | --- | --- | --- |
 | Corn10，玉米秸秆 10 wt.%、未加相容剂 | 14.56 ± 0.42 MPa，5 个试件 | [García 论文表 2](https://www.mdpi.com/2073-4360/18/11/1384#polymers-18-01384-t002)，来源筛查转录 |
-| CS10，玉米湿磨淀粉富集组分 10 wt.%、成品名义 MAPP 4.5 wt.% | 47.5 ± 2.1 MPa，10 个试件 | [Cunha 论文补充材料入口，表 S1 第 1 页](https://www.mdpi.com/article/10.3390/polym18222856/s1)，候选转录待独立审核 |
+| CS10，玉米湿磨淀粉富集组分 10 wt.%、成品名义 MAPP 4.5 wt.% | 47.5 ± 2.1 MPa，10 个试件 | [Cunha 论文补充材料入口，表 S1 第 1 页](https://www.mdpi.com/article/10.3390/polym18222856/s1)，CS10 行 Tensile Strength (MPa) 列，表注定义为均值 ± 标准差。每配方 10 个注塑 IV 型拉伸试件见[正文 PDF 第 9 页 §2.4.4](https://mdpi-res.com/d_attachment/polymers/polymers-18-02856/article_deploy/polymers-18-02856.pdf#page=9)。强度和试件数均已独立核对，独立配混批次数未知 |
 
-[核对两条记录及测试方法](https://github.com/chaotic-mixture/materials-boundaries-public/blob/86d19c23c0063405c46eb8526e5c1797b7abc372/examples/recycled-pp/cross-source.json) · [查看判断规则](https://github.com/chaotic-mixture/materials-boundaries-public/blob/86d19c23c0063405c46eb8526e5c1797b7abc372/examples/recycled-pp/compare_sources.py) · [返回复合材料方向](../../docs/reading/composite.md)
+[核对两条记录及测试方法](https://github.com/chaotic-mixture/materials-boundaries-public/blob/main/examples/recycled-pp/cross-source.json) · [查看判断规则](https://github.com/chaotic-mixture/materials-boundaries-public/blob/86d19c23c0063405c46eb8526e5c1797b7abc372/examples/recycled-pp/compare_sources.py) · [返回复合材料方向](../../docs/reading/composite.md)

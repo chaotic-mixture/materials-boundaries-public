@@ -6,6 +6,6 @@
 
 **本地快照**　11 月 18 日 R8 有 1,522 条，11 月 19 日指纹 `7132b77f…` 的快照有 1,485 条。两个数字按性质 ID 计数。[11 月 18 日统计](../progress/2026-11-18/README.md) · [R12 与 R13 的恢复审计](../recovery/R12-R13/README.md)
 
-**证据与待审事项**　Cunha 表 S1 的数值用于演示比较规则，仍待独立审核。试件数和独立配混批次数必须分开。[来源审阅记录](../progress/2026-11-17/composite/COMPOSITE_EVIDENCE_READINESS_MATRIX_R1.md)
+**证据与待审事项**　Cunha CS10 的拉伸强度和试件数已独立核对；应变记录仍待审。试件数和独立配混批次数必须分开。[来源审阅记录](../progress/2026-11-17/composite/COMPOSITE_EVIDENCE_READINESS_MATRIX_R1.md)
 
 [再生 PP 的结论、试样与原文表号](../../examples/recycled-pp/README.md)
