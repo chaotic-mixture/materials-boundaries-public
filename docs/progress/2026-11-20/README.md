@@ -13,3 +13,11 @@
 复核依据为 Bianchi 来源覆盖 R2 的 README 和 manifest、Deng 的 CURRENT_REVALIDATION_R2、Zakrecki 的 R2_SUPERSESSION_NOTICE 与 R3 候选，以及天然材料探索记录 R1107。
 
 [五方向阅读入口](../../reading/README.md)
+
+## 按性质记录 ID 对账
+
+公开基线为 `ab80ce7cd15bad4fca02bcd1579557a1ea0585d2`，本地正式性质表 SHA-256 为 `f807b6c27e7c3052ff419f4f111d9bfc62896c60b3ed7f199aa2263f34eaab7c`。比较完整记录对象，共有 1,319 个本地新增 ID、2,395 个同 ID 内容差异，以及 25 个仅公开库存在的 ID。
+
+[已发布 194 条的逐行清单](./published-ids.csv) 给出变更类型、前后内容指纹、复核依据和发布位置。其中 70 条新增与 112 条修订已进入可查询主目录。另外 12 条新增以[完整记录和关联来源](./verified-records.json)公开，当前查询器尚未支持其完整记录格式。审核依据为本地绑定快照的复核记录，独立科学审核状态沿用各原始记录。
+
+[待核差异 3,520 条](./pending-ids.csv)保留在本地，本次未逐一判定其审核状态。[仅公开库存在的 25 条](./remote-only-ids.csv)全部保留。[Zakrecki R3 待审候选](./zakrecki-pending.csv)涉及 12 个目标 ID，候选字段未写入主目录。候选覆盖既有 ID，不与差额相加。

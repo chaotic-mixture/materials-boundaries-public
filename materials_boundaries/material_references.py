@@ -26,6 +26,7 @@ THERMAL_NEW_QUANTITIES = ("mass_specific_heat_capacity", "thermal_diffusivity")
 RESPONSE_TIME_UNITS = ("s", "ms")
 WORK_UNITS = ("J/cm^3", "MJ/m^3", "J/m^3")
 QUANTITY_DIMENSIONS = {
+    "relative_density": "dimensionless",
     "source_reported_elemental_mass_content_percentage": "dimensionless",
     "source_reported_continuous_shear_viscosity": "pressure_time",
     "dsc_reference_normalized_crystallinity_percentage": "dimensionless",
@@ -79,6 +80,7 @@ QUANTITY_DIMENSIONS = {
     "slump_flow_spread": "length",
 }
 UNIT_DIMENSIONS = {
+    "percent_relative_density": "dimensionless",
     "percent_elemental_mass_content": "dimensionless",
     "Pa_s_continuous_shear_viscosity": "pressure_time",
     "percent_dsc_reference_crystallinity": "dimensionless",
@@ -268,7 +270,7 @@ def _make_properties_schema():
     # Preserve the legacy value definitions and seven existing property branches.
     # The residue role enters only its dedicated central-value branch and the
     # shared uncertainty vocabulary, where same-role checks still apply.
-    unit = _enum(code for code in UNIT_DIMENSIONS if code not in {"percent_elemental_mass_content", "Pa_s_continuous_shear_viscosity", "kPa_s_complex_viscosity", "J_per_g_dsc_melting_enthalpy", "ratio_foam_cell_geometric_anisotropy", "percent_tga_residue", "percent_water_absorption_volume", "GPa_dma_flexural_storage", "ratio_dma_flexural_loss_tangent", "percent_dsc_reference_crystallinity", "ratio_ftir_fitted_carbonyl_areas", "g_per_mol_sec_molar_mass", "kg_per_mol_sec_molar_mass", "ten5_g_per_mol_sec_molar_mass", "ratio_sec_molar_mass_dispersity", "percent_solvent_extraction_gel_fraction", "percent_closed_cell_content_volume"} and code not in (*RESPONSE_TIME_UNITS, *WORK_UNITS, *HEAT_CAPACITY_UNITS, *DIFFUSIVITY_UNITS))
+    unit = _enum(code for code in UNIT_DIMENSIONS if code not in {"percent_relative_density", "percent_elemental_mass_content", "Pa_s_continuous_shear_viscosity", "kPa_s_complex_viscosity", "J_per_g_dsc_melting_enthalpy", "ratio_foam_cell_geometric_anisotropy", "percent_tga_residue", "percent_water_absorption_volume", "GPa_dma_flexural_storage", "ratio_dma_flexural_loss_tangent", "percent_dsc_reference_crystallinity", "ratio_ftir_fitted_carbonyl_areas", "g_per_mol_sec_molar_mass", "kg_per_mol_sec_molar_mass", "ten5_g_per_mol_sec_molar_mass", "ratio_sec_molar_mass_dispersity", "percent_solvent_extraction_gel_fraction", "percent_closed_cell_content_volume"} and code not in (*RESPONSE_TIME_UNITS, *WORK_UNITS, *HEAT_CAPACITY_UNITS, *DIFFUSIVITY_UNITS))
     common_value = {"value_text": TEXT, "unit_text": TEXT, "unit_code": unit}
     definitions["reported_value"] = {"oneOf": [
         _object({"kind": {"const": "scalar"}, **common_value, "number": DECIMAL}),
@@ -301,13 +303,13 @@ def _make_properties_schema():
     for branch in definitions["legacy_reported_value"]["oneOf"]:
         branch["properties"]["unit_code"] = _enum(
             code for code in UNIT_DIMENSIONS
-            if code not in {*RESPONSE_TIME_UNITS, *HEAT_CAPACITY_UNITS, *DIFFUSIVITY_UNITS, *WORK_UNITS, "percent_elemental_mass_content", "Pa_s_continuous_shear_viscosity", "kPa_s_complex_viscosity", "J_per_g_dsc_melting_enthalpy", "ratio_foam_cell_geometric_anisotropy", "GPa_dma_flexural_storage", "ratio_dma_flexural_loss_tangent", "percent_dsc_reference_crystallinity", "ratio_ftir_fitted_carbonyl_areas", "g_per_mol_sec_molar_mass", "kg_per_mol_sec_molar_mass", "ten5_g_per_mol_sec_molar_mass", "ratio_sec_molar_mass_dispersity", "percent_solvent_extraction_gel_fraction", "percent_closed_cell_content_volume", "percent_water_absorption_volume", "percent_tga_residue", "percent_elongation", "shore_a_scale", *TEMPERATURE_UNITS, *ELECTRIC_FIELD_UNITS, *THERMAL_CONDUCTIVITY_UNITS})
+            if code not in {"percent_relative_density", *RESPONSE_TIME_UNITS, *HEAT_CAPACITY_UNITS, *DIFFUSIVITY_UNITS, *WORK_UNITS, "percent_elemental_mass_content", "Pa_s_continuous_shear_viscosity", "kPa_s_complex_viscosity", "J_per_g_dsc_melting_enthalpy", "ratio_foam_cell_geometric_anisotropy", "GPa_dma_flexural_storage", "ratio_dma_flexural_loss_tangent", "percent_dsc_reference_crystallinity", "ratio_ftir_fitted_carbonyl_areas", "g_per_mol_sec_molar_mass", "kg_per_mol_sec_molar_mass", "ten5_g_per_mol_sec_molar_mass", "ratio_sec_molar_mass_dispersity", "percent_solvent_extraction_gel_fraction", "percent_closed_cell_content_volume", "percent_water_absorption_volume", "percent_tga_residue", "percent_elongation", "shore_a_scale", *TEMPERATURE_UNITS, *ELECTRIC_FIELD_UNITS, *THERMAL_CONDUCTIVITY_UNITS})
     for branch in definitions["elongation_reported_value"]["oneOf"]:
         branch["properties"]["unit_code"] = {"const": "percent_elongation"}
     # Closed source-reported uncertainty variants. An amplitude alone never
     # establishes dispersion, mean aggregation or a confidence construction.
     # Keep the existing SD shape unchanged for old catalog/output compatibility.
-    uncertainty_value = {**common_value, "unit_code": _enum(code for code in UNIT_DIMENSIONS if code not in {"percent_elemental_mass_content", "Pa_s_continuous_shear_viscosity", "kPa_s_complex_viscosity", "J_per_g_dsc_melting_enthalpy", "ratio_foam_cell_geometric_anisotropy", "percent_water_absorption_volume", "GPa_dma_flexural_storage", "ratio_dma_flexural_loss_tangent", "percent_dsc_reference_crystallinity", "ratio_ftir_fitted_carbonyl_areas", "g_per_mol_sec_molar_mass", "kg_per_mol_sec_molar_mass", "ten5_g_per_mol_sec_molar_mass", "ratio_sec_molar_mass_dispersity", "percent_solvent_extraction_gel_fraction", "percent_closed_cell_content_volume"})}
+    uncertainty_value = {**common_value, "unit_code": _enum(code for code in UNIT_DIMENSIONS if code not in {"percent_relative_density", "percent_elemental_mass_content", "Pa_s_continuous_shear_viscosity", "kPa_s_complex_viscosity", "J_per_g_dsc_melting_enthalpy", "ratio_foam_cell_geometric_anisotropy", "percent_water_absorption_volume", "GPa_dma_flexural_storage", "ratio_dma_flexural_loss_tangent", "percent_dsc_reference_crystallinity", "ratio_ftir_fitted_carbonyl_areas", "g_per_mol_sec_molar_mass", "kg_per_mol_sec_molar_mass", "ten5_g_per_mol_sec_molar_mass", "ratio_sec_molar_mass_dispersity", "percent_solvent_extraction_gel_fraction", "percent_closed_cell_content_volume"})}
     uncertainty_common = {**uncertainty_value, "number": DECIMAL, "scope": TEXT,
                           "coverage_factor": NULL, "evidence": evidence}
     definitions["confidence_level"] = _object({
@@ -449,9 +451,17 @@ def _make_properties_schema():
     other = definitions["property"]
     other["properties"]["quantity"] = _enum(
         q for q in QUANTITY_DIMENSIONS
-        if q not in {"source_reported_elemental_mass_content_percentage", "source_reported_continuous_shear_viscosity", "oscillatory_complex_viscosity_magnitude", "dsc_reported_melting_specific_enthalpy", "foam_cell_geometric_anisotropy_ratio", "foam_reaction_event_time", "dma_flexural_storage_modulus", "dma_flexural_loss_tangent", "dsc_reference_normalized_crystallinity_percentage", "ftir_fitted_carbonyl_band_area_ratio", "sec_weight_average_molar_mass", "sec_number_average_molar_mass", "sec_source_reported_molar_mass_dispersity", "solvent_extraction_gel_fraction_percentage", "closed_cell_content_volume_percentage", "water_absorption_volume_percentage", "tensile_extension_at_failure", "thermal_degradation_endset_temperature", "crystallization_peak_temperature", "thermal_response_characteristic_time", *THERMAL_NEW_QUANTITIES, "thermal_conductivity", "dielectric_breakdown_strength", "tensile_stress_at_specified_elongation", "shore_a_hardness", *TEMPERATURE_QUANTITIES, *TGA_QUANTITIES, "volumetric_tensile_work_to_break"}
+        if q not in {"relative_density", "source_reported_elemental_mass_content_percentage", "source_reported_continuous_shear_viscosity", "oscillatory_complex_viscosity_magnitude", "dsc_reported_melting_specific_enthalpy", "foam_cell_geometric_anisotropy_ratio", "foam_reaction_event_time", "dma_flexural_storage_modulus", "dma_flexural_loss_tangent", "dsc_reference_normalized_crystallinity_percentage", "ftir_fitted_carbonyl_band_area_ratio", "sec_weight_average_molar_mass", "sec_number_average_molar_mass", "sec_source_reported_molar_mass_dispersity", "solvent_extraction_gel_fraction_percentage", "closed_cell_content_volume_percentage", "water_absorption_volume_percentage", "tensile_extension_at_failure", "thermal_degradation_endset_temperature", "crystallization_peak_temperature", "thermal_response_characteristic_time", *THERMAL_NEW_QUANTITIES, "thermal_conductivity", "dielectric_breakdown_strength", "tensile_stress_at_specified_elongation", "shore_a_hardness", *TEMPERATURE_QUANTITIES, *TGA_QUANTITIES, "volumetric_tensile_work_to_break"}
         and q not in PERCENT_ELONGATION_QUANTITIES)
     del other["properties"]["specified_elongation"]
+    relative_density = deepcopy(other)
+    relative_density["properties"]["method_definition"]["properties"]["type"]["enum"].append("source_reported_calculation")
+    relative_density["properties"]["quantity"] = {"const": "relative_density"}
+    relative_density["properties"]["quantity_dimension"] = {"const": "dimensionless"}
+    relative_density["properties"]["reported_value"] = _object({
+        "kind": {"const": "scalar"}, "value_text": TEXT, "number": DECIMAL,
+        "unit_text": {"const": "%"}, "unit_code": {"const": "percent_relative_density"},
+    })
     definitions["specified_mass_loss"] = _object({
         "kind": {"const": "scalar"}, "value_text": TEXT, "number": DECIMAL,
         "unit_text": TEXT, "unit_code": {"const": "percent_mass_loss"},
@@ -579,7 +589,7 @@ def _make_properties_schema():
     continuous_shear = continuous_shear_branch(definitions, other, text=TEXT, obj=_object, array=_array, ref=_ref)
     from ._elemental_content_contract import schema_branch as elemental_content_branch
     elemental_content = elemental_content_branch(definitions, other, text=TEXT, obj=_object, array=_array, ref=_ref)
-    definitions["property"] = {"oneOf": [other, stress, elongation, shore, temperature, electric, thermal, *tga_branches, work, *new_thermal, response, crystallization, endset, extension, water, closed_cell, foam_event, cell_anisotropy, dsc_enthalpy, complex_viscosity, gel_fraction, *dma_branches, dsc_crystallinity, ftir_area_ratio, *sec_branches, continuous_shear, elemental_content]}
+    definitions["property"] = {"oneOf": [other, relative_density, stress, elongation, shore, temperature, electric, thermal, *tga_branches, work, *new_thermal, response, crystallization, endset, extension, water, closed_cell, foam_event, cell_anisotropy, dsc_enthalpy, complex_viscosity, gel_fraction, *dma_branches, dsc_crystallinity, ftir_area_ratio, *sec_branches, continuous_shear, elemental_content]}
     return {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "$id": "urn:materials-boundaries:schema:reference_properties:1.0.0",
@@ -883,6 +893,7 @@ _UNIT_SPELLINGS = {
     # Relative measures and specified-elongation descriptors use this spelling;
     # UNIT_DIMENSIONS and central-result units deliberately exclude percent.
     "percent": {"%"},
+    "percent_relative_density": {"%"},
     "percent_elongation": {"%"},
 }
 
@@ -1090,6 +1101,8 @@ def _validate_property(prop):
         _validate_value(prop["reported_value"], path + ".reported_value", dimension,
                         nonnegative=(prop["quantity"] in PERCENT_ELONGATION_QUANTITIES or
                                      prop["quantity"] in {"source_reported_elemental_mass_content_percentage", "source_reported_continuous_shear_viscosity", "oscillatory_complex_viscosity_magnitude", "foam_reaction_event_time", "dma_flexural_storage_modulus", "dma_flexural_loss_tangent", "dsc_reference_normalized_crystallinity_percentage", "ftir_fitted_carbonyl_band_area_ratio", "sec_weight_average_molar_mass", "sec_number_average_molar_mass", "sec_source_reported_molar_mass_dispersity", "solvent_extraction_gel_fraction_percentage", "closed_cell_content_volume_percentage", "water_absorption_volume_percentage", "tensile_extension_at_failure", "shore_a_hardness", "tga_residue_percentage", "volumetric_tensile_work_to_break"}))
+    if prop["quantity"] == "relative_density" and not 0 <= Decimal(prop["reported_value"]["number"]) <= 100:
+        _fail(path, "relative density must be a percentage between 0 and 100")
     from ._extension_contract import validate as validate_extension
     validate_extension(prop, _fail)
     from ._water_absorption_contract import validate as validate_water_absorption
@@ -1224,7 +1237,8 @@ def _validate_property(prop):
     is_dsc_normalization = method == "source_reported_dsc_reference_normalization"
     is_ftir_area_ratio = method == "source_reported_ftir_fitted_band_area_ratio"
     is_sec_dispersity = method == "source_reported_sec_molar_mass_dispersity"
-    if is_derived != (is_sec_dispersity or is_ftir_area_ratio or is_crystallographic or is_empirical or is_thermal_product or is_thermal_fit or is_dsc_normalization):
+    is_relative_density_calculation = prop["quantity"] == "relative_density" and method == "source_reported_calculation"
+    if is_derived != (is_relative_density_calculation or is_sec_dispersity or is_ftir_area_ratio or is_crystallographic or is_empirical or is_thermal_product or is_thermal_fit or is_dsc_normalization):
         _fail(path, "measured-input-derived evidence requires an admitted derivation method")
     is_computational_crystal = method == "source_reported_computational_structure_density"
     if (prop["density_basis"] == "crystallographic") != (is_crystallographic or is_computational_crystal):
