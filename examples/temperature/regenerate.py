@@ -1,4 +1,4 @@
-"""Rebuild checked-in synthetic demonstration exports from the installed package.
+"""Rebuild checked-in synthetic and empirical temperature exports from the installed package.
 
 Run from the repository root:
     python examples/temperature/regenerate.py
@@ -24,6 +24,14 @@ def main():
             'synthetic_interval_temperature',
         ],
     }
+    selections['nist-catalog-visualization'] = [
+        'nist_al6061_t6_young_temperature',
+        'nist_ss304_young_temperature',
+        'nist_al5083_o_young_temperature',
+        'nist_invar_fe36ni_young_temperature',
+        'nist_ss316_young_temperature',
+    ]
+    selections['nist-visualization'] = ['nist_al6061_t6_young_temperature', 'nist_ss304_young_temperature']
     for folder, model_ids in selections.items():
         target = Path(__file__).resolve().parent / folder
         target.mkdir(parents=True, exist_ok=True)

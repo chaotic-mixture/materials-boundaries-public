@@ -1,0 +1,58 @@
+{
+  "retrieved_date": "2026-10-02",
+  "purpose": "Independent literal transcription of selected official source-table facts, followed by synthetic arithmetic checks. No source pages, figures, raw measurements or source software are bundled. Synthetic outputs are not measurements or uncertainty estimates.",
+  "equation_display": "E_GPa = a + b*T_K + c*T_K^2 + d*T_K^3 + e*T_K^4",
+  "coefficient_order": ["a", "b", "c", "d", "e"],
+  "coefficient_units": ["GPa", "GPa/K", "GPa/K^2", "GPa/K^3", "GPa/K^4"],
+  "models": [
+    {
+      "id": "nist_al5083_o_young_temperature",
+      "source_id": "nist_cryogenic_al5083",
+      "source_url": "https://trc.nist.gov/cryogenics/materials/5083%20Aluminum/5083Aluminum_rev.htm",
+      "table_locator": "Second property table; first property column (Young's Modulus), rows a-e, data range, equation range and fit error; GPa unit and ordinary T-polynomial below table",
+      "material_name": "5083-O Aluminum (NIST index label)",
+      "UNS": "A95083",
+      "temper": "O",
+      "temper_status": "specified",
+      "condition_caveat": "O comes from the official material index. The property-page heading and modulus reference omit temper; independently verified specimen/annealing history is unavailable.",
+      "reference_chart": "1009",
+      "branches": [
+        {"id": "al5083_o_2_295", "coefficients_text": ["8.083212E1", "1.061708E-2", "-3.016100E-4", "7.561340E-7", "-6.994800E-10"], "source_data_range_K": [0, 300], "equation_range_K": [2, 295], "source_fit_error_percent_text": "1", "source_data_only_checks_K": [0, 1, 1.999, 295.001, 297.5, 300], "arithmetic_checks": [["2", "80.8521537578803200"], ["4.2", "80.87144713839888019200"], ["20", "80.9297547552000000"], ["77", "80.1820007443033200"], ["295", "71.8308966530750000"]]}
+      ]
+    },
+    {
+      "id": "nist_invar_fe36ni_young_temperature",
+      "source_id": "nist_cryogenic_invar",
+      "source_url": "https://trc.nist.gov/cryogenics/materials/Invar(Fe-36Ni)/Invar_rev.htm",
+      "table_locator": "Second property table; first property column (Young's Modulus), rows a-e, data range, equation range and fit error; GPa unit and ordinary T-polynomial below table",
+      "material_name": "Invar (Fe-36Ni)",
+      "UNS": "K93600",
+      "temper": null,
+      "temper_status": "not specified",
+      "condition_caveat": "Treatment, magnetic state and compositional tolerances are not inferred from the alloy name.",
+      "reference_chart": "1005",
+      "branches": [
+        {"id": "invar_fe36ni_3_298", "coefficients_text": ["1.41565E2", "2.54435E-2", "-1.00842E-3", "6.72797E-6", "-1.08230E-8"], "source_data_range_K": [1, 298], "equation_range_K": [3, 298], "source_fit_error_percent_text": "1", "source_data_only_checks_K": [1, 2, 2.999], "arithmetic_checks": [["3", "141.6324354985270"], ["4.2", "141.65456926525277920"], ["20", "141.7225940800000"], ["100", "139.6708200000000"], ["200", "142.8238600000000"], ["298", "152.2898804358720"]]}
+      ]
+    },
+    {
+      "id": "nist_ss316_young_temperature",
+      "source_id": "nist_cryogenic_ss316",
+      "source_url": "https://trc.nist.gov/cryogenics/materials/316Stainless/316Stainless_rev.htm",
+      "table_locator": "Second property table; first and second Young's Modulus columns, rows a-e, data range, equation range and fit error; both GPa units and ordinary T-polynomial below table",
+      "material_name": "316 Stainless",
+      "UNS": "S31600",
+      "temper": null,
+      "temper_status": "not specified",
+      "condition_caveat": "316 does not establish 316L applicability, treatment, product form, cold work or test direction.",
+      "reference_chart": "1016",
+      "branches": [
+        {"id": "ss316_8_50", "coefficients_text": ["2.084729E2", "-1.358965E-1", "8.368629E-3", "-1.381700E-4", "6.831930E-7"], "source_data_range_K": [5, 60], "equation_range_K": [8, 50], "source_fit_error_percent_text": "1", "source_data_only_checks_K": [5, 6.5, 7.999, 50.001, 55, 60], "arithmetic_checks": [["8", "207.8533755745280"], ["10", "207.8194598300000"], ["20", "208.1063724800000"], ["50", "209.5983537500000"]]},
+        {"id": "ss316_50_294", "coefficients_text": ["2.079488E2", "7.394241E-2", "-9.627200E-4", "2.845560E-6", "-3.240800E-9"], "source_data_range_K": [48, 294], "equation_range_K": [50, 294], "source_fit_error_percent_text": "1", "source_data_only_checks_K": [48, 49, 49.999], "arithmetic_checks": [["50", "209.574560500000000"], ["77", "209.119566758207200"], ["294", "194.573489986323200"]]}
+      ]
+    }
+  ],
+  "shared_endpoint": {"model_id": "nist_ss316_young_temperature", "temperature_K": "50", "branch_values_GPa": {"ss316_8_50": "209.5983537500000", "ss316_50_294": "209.574560500000000"}, "low_minus_high_GPa": "0.023793250000000", "interpretation": "Branch-fit mismatch only; no source selection rule, physical discontinuity, averaging, splicing or smoothing is inferred."},
+  "new_source_ids": ["nist_cryogenic_al5083", "nist_cryogenic_invar", "nist_cryogenic_ss316", "nist_cryogenic_material_index", "nist_cryogenic_srd_provenance"],
+  "rights_evidence_urls": ["https://trc.nist.gov/cryogenics/", "https://www.nist.gov/copyrights-disclaimers", "https://www.nist.gov/open/copyright-fair-use-and-licensing-statements-srd-data-software-and-technical-series-publications"]
+}

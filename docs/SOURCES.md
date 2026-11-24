@@ -117,29 +117,9 @@ No source PDFs or figures are bundled. Full locators and links are in the
 [anisotropy guide](ELASTIC_ANISOTROPY.md).
 
 
-## NIST cryogenic bibliography and conservative omission
+## NIST cryogenic model provenance
 
-The five NIST cryogenic coefficient datasets and all derived results are omitted
-from this public release. Their bibliographic/source records remain to preserve
-provenance. Omission pending reuse clarification is not a finding that
-redistribution is prohibited, and it does not exclude unrelated literature
-numerical facts such as the graphene observations or Ni/Si predictions.
-
-NIST's [current curated-collection listing](https://www.nist.gov/srd/related-data-products-and-links/curated-data-collections)
-identifies the database as formerly SRD 152. Its [related-products explanation](https://www.nist.gov/srd/related-data-products-and-links)
-distinguishes curated collections from current SRD critical-evaluation criteria;
-the [cryogenics homepage](https://trc.nist.gov/cryogenics/) also records a past-SRD
-origin. These statuses do not themselves establish a verified express grant to
-redistribute or relicense the particular correlations. No public-domain/CC0
-claim or NIST endorsement is inferred. The [general policy](https://www.nist.gov/copyrights-disclaimers)
-and [SRD/data policy](https://www.nist.gov/open/copyright-fair-use-and-licensing-statements-srd-data-software-and-technical-series-publications)
-provide context, not a newly verified product-specific grant.
-
-The retained source identities cover the five property pages, the reference
-list, material index, 2006 database paper, general reuse guidance and provenance
-homepage. No coefficient table, equation-range transcription or derived plot is
-reproduced here. The runnable catalog instead uses original synthetic examples;
-see [temperature contract](TEMPERATURE_MODELS.md) and [notices](../THIRD_PARTY_NOTICES.md).
+The current catalog includes five empirical Young's modulus models from the NIST Cryogenic Material Properties Database alongside five synthetic demonstrations. The NIST records include selected coefficients, equation ranges and calculated examples. Source-specific redistribution and relicensing terms remain unverified. The project MIT license covers original project work. NIST retains its applicable rights. See [source tables and equation ranges](NIST_TEMPERATURE_MODELS.md).
 
 ## v0.16.0 hydrostatic-compressibility provenance
 

@@ -834,6 +834,924 @@
         "is_empirical": false,
         "derived_from_measurements": false
       }
+    },
+    {
+      "id": "nist_al6061_t6_young_temperature",
+      "version": "1.0.0",
+      "name": "6061-T6 Aluminum temperature-conditioned Young’s modulus",
+      "descriptions": {
+        "en": "NIST empirical Young’s-modulus fit for 6061-T6 aluminum, valid only from 2 to 295 K. Fitted prediction, not a theoretical bound or uncertainty interval.",
+        "zh": "NIST 的 6061-T6 铝杨氏模量经验拟合，仅适用于 2–295 K。这是拟合预测，不是理论界或不确定性区间。",
+        "ja": "6061-T6 アルミニウムの NIST ヤング率経験的適合式。有効範囲は 2–295 K。理論的限界や不確かさ区間ではなく、適合による予測。",
+        "de": "Empirische NIST-Anpassung des Elastizitätsmoduls von 6061-T6-Aluminium, gültig nur von 2 bis 295 K. Modellvorhersage, keine theoretische Schranke oder Unsicherheitsspanne."
+      },
+      "classification": "empirical_fit_prediction",
+      "evaluation_support": "temperature_quartic",
+      "equation_family": "temperature_quartic_v1",
+      "quantity": "youngs_modulus",
+      "input_unit": "K",
+      "output_unit": "GPa",
+      "equation_display": "E_GPa = a + b*T_K + c*T_K^2 + d*T_K^3 + e*T_K^4",
+      "coefficient_order": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e"
+      ],
+      "coefficient_units": [
+        "GPa",
+        "GPa/K",
+        "GPa/K^2",
+        "GPa/K^3",
+        "GPa/K^4"
+      ],
+      "material": {
+        "name": "6061-T6 Aluminum",
+        "UNS": "A96061",
+        "temper": "T6",
+        "temper_status": "specified"
+      },
+      "branches": [
+        {
+          "id": "al6061_t6_2_295",
+          "coefficients_text": [
+            "7.771221E1",
+            "1.030646E-2",
+            "-2.924100E-4",
+            "8.993600E-7",
+            "-1.070900E-9"
+          ],
+          "source_data_range_K": [
+            0,
+            299
+          ],
+          "equation_range_K": [
+            2,
+            295
+          ],
+          "endpoints": "inclusive",
+          "reported_fit_error": {
+            "value": 1,
+            "unit": "percent_relative_to_source_data",
+            "statistic": null,
+            "confidence_level": null,
+            "is_measurement_uncertainty": false,
+            "is_confidence_interval": false,
+            "is_validated_maximum_error_bound": false
+          }
+        }
+      ],
+      "unknown_conditions": {
+        "pressure": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "test_direction": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "grain_size": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "texture": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "porosity": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "product_form": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "specimen_geometry": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "cold_work": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "test_method": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "strain_rate_or_frequency": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "measurement_uncertainty": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "fit_error_statistical_definition": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "confidence_level": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        }
+      },
+      "overlap_policy": "retain_all_matching_branches_without_selection_averaging_or_smoothing",
+      "source_ids": [
+        "nist_cryogenic_al6061_t6",
+        "nist_cryogenic_reference_list",
+        "bradley_radebaugh_lewis_2006",
+        "nist_public_information_reuse"
+      ],
+      "source_locator": "Second property table, Youngs Modulus column; a-e, data range (K), equation range (K), curve fit % error relative to data rows; equation immediately below",
+      "original_reference": {
+        "title": "LNG Materials and Fluids",
+        "editor": "Douglas Mann",
+        "institution": "National Bureau of Standards, Cryogenics Division",
+        "edition": "First Edition, 1977",
+        "chart": "1009",
+        "reference_list_locator": "Aluminum 6061 > Youngs Modulus",
+        "reference_chart_retrieved": false
+      },
+      "scope_exclusions": [
+        "T < 2 K",
+        "T > 295 K",
+        "Other 6061 tempers, including T651, without independent evidence",
+        "All other aluminum alloys",
+        "Strength, yield, fracture, fatigue and allowable-stress inference",
+        "Universal stiffness or strength bound",
+        "Pressure dependence or unspecified specimen condition inference"
+      ],
+      "verification": {
+        "source_equation_checked": true,
+        "synthetic_arithmetic_checked": true,
+        "independent_scientific_review": false,
+        "translation_review": "machine_assisted_not_scientifically_reviewed",
+        "original_charts_retrieved": false
+      },
+      "reuse": {
+        "status": "Selected NIST fit coefficients, equation ranges and derived examples are included in this public project; source-specific redistribution and relicensing terms remain unverified. Inclusion is not a permission grant, public-domain/CC0 claim, or NIST endorsement. The project MIT license applies to original project work, not NIST content.",
+        "caveats": [
+          "The NIST Cryogenic Technology Resources homepage, item 3, identifies these correlations as developed under a past SRD project; no specific SRD product identifier or license was verified.",
+          "General NIST web guidance allows product-specific terms. The separate SRD policy cannot be replaced by non-SRD guidance or absence of a copyright marker in a page extraction.",
+          "The 2006 paper’s NIST-contribution notice is paper-specific and does not establish rights for the linked database. Attribution alone does not resolve reuse rights.",
+          "This catalog curates selected factual coefficients and validity intervals with attribution and independently implements evaluation; it does not reproduce the full source compilation, website, figures, PDFs, raw measurement collection or source software.",
+          "Public redistribution and relicensing review remain pending, including any applicable foreign, database and third-party rights. This metadata correction supplies neither legal clearance nor a finding that private coefficient curation is prohibited.",
+          "Inclusion in this public repository is not evidence of redistribution permission and does not make NIST content MIT-licensed."
+        ],
+        "recommended_attribution": "Coefficients and validity intervals from NIST Cryogenic Material Properties Database, retrieved 2026-10-02. Research extraction and synthetic arithmetic checks generated 2026-10-02; not endorsed by NIST."
+      },
+      "curation_date": "2026-10-02",
+      "range_interpretation": "Inclusive endpoints are a catalog interpretation of the published range notation; the source gives no branch-selection rule at 57 K. Data ranges are metadata, not proof of measured data at each endpoint, including 0 K."
+    },
+    {
+      "id": "nist_ss304_young_temperature",
+      "version": "1.0.0",
+      "name": "304 Stainless temperature-conditioned Young’s modulus",
+      "descriptions": {
+        "en": "NIST empirical Young’s-modulus fits for 304 stainless steel, valid over 5–57 and 57–293 K. Both predictions are retained at 57 K; no source tie-break or physical discontinuity is inferred.",
+        "zh": "NIST 的 304 不锈钢杨氏模量经验拟合，有效区间为 5–57 K 与 57–293 K。57 K 保留两个预测；来源未给出优先规则，也不推断物理不连续。",
+        "ja": "304 ステンレス鋼の NIST ヤング率経験的適合式。有効範囲は 5–57 K と 57–293 K。57 K では両予測を保持し、優先規則や物理的不連続を推定しない。",
+        "de": "Empirische NIST-Anpassungen des Elastizitätsmoduls von Edelstahl 304 für 5–57 und 57–293 K. Bei 57 K bleiben beide Vorhersagen erhalten; keine unbelegte Vorrangregel oder physikalische Unstetigkeit."
+      },
+      "classification": "empirical_fit_prediction",
+      "evaluation_support": "temperature_quartic",
+      "equation_family": "temperature_quartic_v1",
+      "quantity": "youngs_modulus",
+      "input_unit": "K",
+      "output_unit": "GPa",
+      "equation_display": "E_GPa = a + b*T_K + c*T_K^2 + d*T_K^3 + e*T_K^4",
+      "coefficient_order": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e"
+      ],
+      "coefficient_units": [
+        "GPa",
+        "GPa/K",
+        "GPa/K^2",
+        "GPa/K^3",
+        "GPa/K^4"
+      ],
+      "material": {
+        "name": "304 Stainless",
+        "UNS": "S30400",
+        "temper": null,
+        "temper_status": "not specified"
+      },
+      "branches": [
+        {
+          "id": "ss304_5_57",
+          "coefficients_text": [
+            "2.098145E2",
+            "1.217019E-1",
+            "-1.146999E-2",
+            "3.605430E-4",
+            "-3.017900E-6"
+          ],
+          "source_data_range_K": [
+            5,
+            65
+          ],
+          "equation_range_K": [
+            5,
+            57
+          ],
+          "endpoints": "inclusive",
+          "reported_fit_error": {
+            "value": 1,
+            "unit": "percent_relative_to_source_data",
+            "statistic": null,
+            "confidence_level": null,
+            "is_measurement_uncertainty": false,
+            "is_confidence_interval": false,
+            "is_validated_maximum_error_bound": false
+          }
+        },
+        {
+          "id": "ss304_57_293",
+          "coefficients_text": [
+            "2.100593E2",
+            "1.534883E-1",
+            "-1.617390E-3",
+            "5.117060E-6",
+            "-6.154600E-9"
+          ],
+          "source_data_range_K": [
+            48,
+            293
+          ],
+          "equation_range_K": [
+            57,
+            293
+          ],
+          "endpoints": "inclusive",
+          "reported_fit_error": {
+            "value": 1,
+            "unit": "percent_relative_to_source_data",
+            "statistic": null,
+            "confidence_level": null,
+            "is_measurement_uncertainty": false,
+            "is_confidence_interval": false,
+            "is_validated_maximum_error_bound": false
+          }
+        }
+      ],
+      "unknown_conditions": {
+        "pressure": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "test_direction": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "grain_size": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "texture": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "porosity": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "product_form": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "specimen_geometry": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "cold_work": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "test_method": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "strain_rate_or_frequency": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "measurement_uncertainty": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "fit_error_statistical_definition": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "confidence_level": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        }
+      },
+      "overlap_policy": "retain_all_matching_branches_without_selection_averaging_or_smoothing",
+      "source_ids": [
+        "nist_cryogenic_ss304",
+        "nist_cryogenic_reference_list",
+        "bradley_radebaugh_lewis_2006",
+        "nist_public_information_reuse"
+      ],
+      "source_locator": "Second property table, first and second Youngs Modulus columns; a-e, data range (K), equation range (K), curve fit % error relative to data rows; equation immediately below",
+      "original_reference": {
+        "title": "LNG Materials and Fluids",
+        "editor": "Douglas Mann",
+        "institution": "National Bureau of Standards, Cryogenics Division",
+        "edition": "First Edition, 1977",
+        "source_date_annotation": "6/1/1979",
+        "chart": "1016",
+        "reference_list_locator": "Stainless Steel 304 > Youngs Modulus",
+        "reference_chart_retrieved": false
+      },
+      "scope_exclusions": [
+        "T < 5 K",
+        "T > 293 K",
+        "Applying low branch above 57 K despite its wider data range",
+        "Applying high branch below 57 K despite its wider data range",
+        "304L, 316 or other stainless grades without independent evidence",
+        "Annealed, solution-treated or cold-worked condition claims not in verified source",
+        "Strength, yield, fracture, fatigue and allowable-stress inference",
+        "Universal stiffness or strength bound",
+        "Pressure dependence or unspecified specimen condition inference"
+      ],
+      "verification": {
+        "source_equation_checked": true,
+        "synthetic_arithmetic_checked": true,
+        "independent_scientific_review": false,
+        "translation_review": "machine_assisted_not_scientifically_reviewed",
+        "original_charts_retrieved": false
+      },
+      "reuse": {
+        "status": "Selected NIST fit coefficients, equation ranges and derived examples are included in this public project; source-specific redistribution and relicensing terms remain unverified. Inclusion is not a permission grant, public-domain/CC0 claim, or NIST endorsement. The project MIT license applies to original project work, not NIST content.",
+        "caveats": [
+          "The NIST Cryogenic Technology Resources homepage, item 3, identifies these correlations as developed under a past SRD project; no specific SRD product identifier or license was verified.",
+          "General NIST web guidance allows product-specific terms. The separate SRD policy cannot be replaced by non-SRD guidance or absence of a copyright marker in a page extraction.",
+          "The 2006 paper’s NIST-contribution notice is paper-specific and does not establish rights for the linked database. Attribution alone does not resolve reuse rights.",
+          "This catalog curates selected factual coefficients and validity intervals with attribution and independently implements evaluation; it does not reproduce the full source compilation, website, figures, PDFs, raw measurement collection or source software.",
+          "Public redistribution and relicensing review remain pending, including any applicable foreign, database and third-party rights. This metadata correction supplies neither legal clearance nor a finding that private coefficient curation is prohibited.",
+          "Inclusion in this public repository is not evidence of redistribution permission and does not make NIST content MIT-licensed."
+        ],
+        "recommended_attribution": "Coefficients and validity intervals from NIST Cryogenic Material Properties Database, retrieved 2026-10-02. Research extraction and synthetic arithmetic checks generated 2026-10-02; not endorsed by NIST."
+      },
+      "curation_date": "2026-10-02",
+      "range_interpretation": "Inclusive endpoints are a catalog interpretation of the published range notation; the source gives no branch-selection rule at 57 K. Data ranges are metadata, not proof of measured data at each endpoint, including 0 K."
+    },
+    {
+      "version": "1.0.0",
+      "classification": "empirical_fit_prediction",
+      "evaluation_support": "temperature_quartic",
+      "equation_family": "temperature_quartic_v1",
+      "quantity": "youngs_modulus",
+      "input_unit": "K",
+      "output_unit": "GPa",
+      "equation_display": "E_GPa = a + b*T_K + c*T_K^2 + d*T_K^3 + e*T_K^4",
+      "coefficient_order": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e"
+      ],
+      "coefficient_units": [
+        "GPa",
+        "GPa/K",
+        "GPa/K^2",
+        "GPa/K^3",
+        "GPa/K^4"
+      ],
+      "unknown_conditions": {
+        "pressure": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "test_direction": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "grain_size": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "texture": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "porosity": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "product_form": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "specimen_geometry": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "cold_work": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "test_method": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "strain_rate_or_frequency": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "measurement_uncertainty": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "fit_error_statistical_definition": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "confidence_level": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        }
+      },
+      "overlap_policy": "retain_all_matching_branches_without_selection_averaging_or_smoothing",
+      "verification": {
+        "source_equation_checked": true,
+        "synthetic_arithmetic_checked": true,
+        "independent_scientific_review": false,
+        "translation_review": "machine_assisted_not_scientifically_reviewed",
+        "original_charts_retrieved": false
+      },
+      "id": "nist_al5083_o_young_temperature",
+      "name": "5083-O Aluminum (NIST index label) temperature-conditioned Young’s modulus",
+      "descriptions": {
+        "en": "NIST empirical Young’s-modulus fit for 5083 aluminum, labeled 5083-O in the material index, valid only from 2 to 295 K. Fitted prediction; specimen applicability and measurement uncertainty are not established.",
+        "zh": "NIST 的 5083 铝杨氏模量经验拟合；材料索引标为 5083-O，仅适用于 2–295 K。此为拟合预测，尚未确定对具体试样的适用性及测量不确定度。",
+        "ja": "NIST の 5083 アルミニウムのヤング率経験的適合式。材料索引では 5083-O と表記され、有効範囲は 2–295 K。適合による予測であり、個別試験片への適用性と測定の不確かさは未確認。",
+        "de": "Empirische NIST-Anpassung des Elastizitätsmoduls von Aluminium 5083, im Materialindex als 5083-O bezeichnet. Nur für 2–295 K gültig. Modellvorhersage; Probeneignung und Messunsicherheit sind nicht belegt."
+      },
+      "material": {
+        "name": "5083-O Aluminum (NIST index label)",
+        "UNS": "A95083",
+        "temper": "O",
+        "temper_status": "specified"
+      },
+      "branches": [
+        {
+          "id": "al5083_o_2_295",
+          "coefficients_text": [
+            "8.083212E1",
+            "1.061708E-2",
+            "-3.016100E-4",
+            "7.561340E-7",
+            "-6.994800E-10"
+          ],
+          "source_data_range_K": [
+            0,
+            300
+          ],
+          "equation_range_K": [
+            2,
+            295
+          ],
+          "endpoints": "inclusive",
+          "reported_fit_error": {
+            "value": 1,
+            "unit": "percent_relative_to_source_data",
+            "statistic": null,
+            "confidence_level": null,
+            "is_measurement_uncertainty": false,
+            "is_confidence_interval": false,
+            "is_validated_maximum_error_bound": false
+          }
+        }
+      ],
+      "source_ids": [
+        "nist_cryogenic_al5083",
+        "nist_cryogenic_material_index",
+        "nist_cryogenic_reference_list",
+        "bradley_radebaugh_lewis_2006",
+        "nist_cryogenic_srd_provenance",
+        "nist_public_information_reuse"
+      ],
+      "source_locator": "Second property table, Young’s Modulus column(s): units, a–e, data range (K), equation range (K), curve fit % error relative to data; ordinary T-polynomial immediately below. T_low and f contain no modulus values.",
+      "original_reference": {
+        "title": "LNG Materials and Fluids",
+        "editor": "Douglas Mann",
+        "institution": "National Bureau of Standards, Cryogenics Division",
+        "edition": "First Edition, 1977",
+        "chart": "1009",
+        "reference_list_locator": "Aluminum 5083 > Young’s Modulus",
+        "reference_chart_retrieved": false
+      },
+      "scope_exclusions": [
+        "Temperatures outside each source equation interval",
+        "Unspecified specimen-condition inference",
+        "Other alloys, grades or unverified material conditions",
+        "Strength, yield, fracture, fatigue or allowable-stress inference",
+        "Universal stiffness bounds or certified reference values",
+        "Treating curve-fit error as measurement uncertainty, a confidence interval, or a validated maximum error bound",
+        "Other 5083 tempers; the O label is source-index metadata, not independently verified specimen condition"
+      ],
+      "reuse": {
+        "status": "Selected NIST fit coefficients, equation ranges and derived examples are included in this public project; source-specific redistribution and relicensing terms remain unverified. Inclusion is not a permission grant, public-domain/CC0 claim, or NIST endorsement. The project MIT license applies to original project work, not NIST content.",
+        "caveats": [
+          "This is a correction of overstated license confidence, not a finding that private factual research or authorized private repository work is prohibited.",
+          "No affirmative product-specific license grant or SRD identifier was established by the pages inspected.",
+          "Absence of a page-level copyright marker in web extraction does not resolve the source compilation's rights.",
+          "NIST authorship and a paper-specific government-contribution notice do not establish a license for all linked database content.",
+          "Attribution records scientific provenance; attribution alone does not resolve copyright or license scope.",
+          "Do not attach a public data license or represent public redistribution as cleared on this evidence alone.",
+          "Do not copy or bundle source pages, PDFs, plots, raw measurement collections or source software.",
+          "Inclusion in this public repository is not evidence of redistribution permission and does not make NIST content MIT-licensed."
+        ],
+        "recommended_attribution": "Coefficients and validity intervals: NIST Cryogenic Material Properties Database, retrieved 2026-10-02. Original extraction, translations and synthetic arithmetic checks: Materials Boundaries research, 2026-10-02. Not endorsed by NIST; no source-license grant implied."
+      },
+      "curation_date": "2026-10-02",
+      "range_interpretation": "Inclusive endpoints are a catalog interpretation of the source range notation. Data ranges are metadata, not evidence of measured data at each endpoint. No extrapolation or monotonicity assumption. The property-page heading and modulus reference name 5083 without a temper; O is explicitly supported by the linked official material index, not by an independently retrieved specimen record."
+    },
+    {
+      "version": "1.0.0",
+      "classification": "empirical_fit_prediction",
+      "evaluation_support": "temperature_quartic",
+      "equation_family": "temperature_quartic_v1",
+      "quantity": "youngs_modulus",
+      "input_unit": "K",
+      "output_unit": "GPa",
+      "equation_display": "E_GPa = a + b*T_K + c*T_K^2 + d*T_K^3 + e*T_K^4",
+      "coefficient_order": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e"
+      ],
+      "coefficient_units": [
+        "GPa",
+        "GPa/K",
+        "GPa/K^2",
+        "GPa/K^3",
+        "GPa/K^4"
+      ],
+      "unknown_conditions": {
+        "pressure": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "test_direction": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "grain_size": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "texture": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "porosity": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "product_form": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "specimen_geometry": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "cold_work": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "test_method": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "strain_rate_or_frequency": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "measurement_uncertainty": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "fit_error_statistical_definition": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "confidence_level": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        }
+      },
+      "overlap_policy": "retain_all_matching_branches_without_selection_averaging_or_smoothing",
+      "verification": {
+        "source_equation_checked": true,
+        "synthetic_arithmetic_checked": true,
+        "independent_scientific_review": false,
+        "translation_review": "machine_assisted_not_scientifically_reviewed",
+        "original_charts_retrieved": false
+      },
+      "id": "nist_invar_fe36ni_young_temperature",
+      "name": "Invar (Fe-36Ni) temperature-conditioned Young’s modulus",
+      "descriptions": {
+        "en": "NIST empirical Young’s-modulus fit for Invar (Fe-36Ni), valid only from 3 to 298 K. The fitted curve is not assumed monotonic. Material treatment, specimen applicability and measurement uncertainty are not established.",
+        "zh": "NIST 的因瓦合金（Fe-36Ni）杨氏模量经验拟合，仅适用于 3–298 K。不假定拟合曲线单调；材料处理状态、对具体试样的适用性及测量不确定度尚未确定。",
+        "ja": "インバー（Fe-36Ni）の NIST ヤング率経験的適合式。有効範囲は 3–298 K。適合曲線の単調性は仮定しない。材料の処理状態、個別試験片への適用性、測定の不確かさは未確認。",
+        "de": "Empirische NIST-Anpassung des Elastizitätsmoduls von Invar (Fe-36Ni), nur für 3–298 K gültig. Kein monotoner Verlauf vorausgesetzt. Behandlungszustand, Probeneignung und Messunsicherheit sind nicht belegt."
+      },
+      "material": {
+        "name": "Invar (Fe-36Ni)",
+        "UNS": "K93600",
+        "temper": null,
+        "temper_status": "not specified"
+      },
+      "branches": [
+        {
+          "id": "invar_fe36ni_3_298",
+          "coefficients_text": [
+            "1.41565E2",
+            "2.54435E-2",
+            "-1.00842E-3",
+            "6.72797E-6",
+            "-1.08230E-8"
+          ],
+          "source_data_range_K": [
+            1,
+            298
+          ],
+          "equation_range_K": [
+            3,
+            298
+          ],
+          "endpoints": "inclusive",
+          "reported_fit_error": {
+            "value": 1,
+            "unit": "percent_relative_to_source_data",
+            "statistic": null,
+            "confidence_level": null,
+            "is_measurement_uncertainty": false,
+            "is_confidence_interval": false,
+            "is_validated_maximum_error_bound": false
+          }
+        }
+      ],
+      "source_ids": [
+        "nist_cryogenic_invar",
+        "nist_cryogenic_material_index",
+        "nist_cryogenic_reference_list",
+        "bradley_radebaugh_lewis_2006",
+        "nist_cryogenic_srd_provenance",
+        "nist_public_information_reuse"
+      ],
+      "source_locator": "Second property table, Young’s Modulus column(s): units, a–e, data range (K), equation range (K), curve fit % error relative to data; ordinary T-polynomial immediately below. T_low and f contain no modulus values.",
+      "original_reference": {
+        "title": "LNG Materials and Fluids",
+        "editor": "Douglas Mann",
+        "institution": "National Bureau of Standards, Cryogenics Division",
+        "edition": "First Edition, 1977",
+        "chart": "1005",
+        "reference_list_locator": "Invar (Fe-36Ni) > Young’s Modulus",
+        "reference_chart_retrieved": false,
+        "source_date_annotation": "6/1/1979 appears in reference entry; significance not independently established"
+      },
+      "scope_exclusions": [
+        "Temperatures outside each source equation interval",
+        "Unspecified specimen-condition inference",
+        "Other alloys, grades or unverified material conditions",
+        "Strength, yield, fracture, fatigue or allowable-stress inference",
+        "Universal stiffness bounds or certified reference values",
+        "Treating curve-fit error as measurement uncertainty, a confidence interval, or a validated maximum error bound"
+      ],
+      "reuse": {
+        "status": "Selected NIST fit coefficients, equation ranges and derived examples are included in this public project; source-specific redistribution and relicensing terms remain unverified. Inclusion is not a permission grant, public-domain/CC0 claim, or NIST endorsement. The project MIT license applies to original project work, not NIST content.",
+        "caveats": [
+          "This is a correction of overstated license confidence, not a finding that private factual research or authorized private repository work is prohibited.",
+          "No affirmative product-specific license grant or SRD identifier was established by the pages inspected.",
+          "Absence of a page-level copyright marker in web extraction does not resolve the source compilation's rights.",
+          "NIST authorship and a paper-specific government-contribution notice do not establish a license for all linked database content.",
+          "Attribution records scientific provenance; attribution alone does not resolve copyright or license scope.",
+          "Do not attach a public data license or represent public redistribution as cleared on this evidence alone.",
+          "Do not copy or bundle source pages, PDFs, plots, raw measurement collections or source software.",
+          "Inclusion in this public repository is not evidence of redistribution permission and does not make NIST content MIT-licensed."
+        ],
+        "recommended_attribution": "Coefficients and validity intervals: NIST Cryogenic Material Properties Database, retrieved 2026-10-02. Original extraction, translations and synthetic arithmetic checks: Materials Boundaries research, 2026-10-02. Not endorsed by NIST; no source-license grant implied."
+      },
+      "curation_date": "2026-10-02",
+      "range_interpretation": "Inclusive endpoints are a catalog interpretation of the source range notation. Data ranges are metadata, not evidence of measured data at each endpoint. No extrapolation or monotonicity assumption."
+    },
+    {
+      "version": "1.0.0",
+      "classification": "empirical_fit_prediction",
+      "evaluation_support": "temperature_quartic",
+      "equation_family": "temperature_quartic_v1",
+      "quantity": "youngs_modulus",
+      "input_unit": "K",
+      "output_unit": "GPa",
+      "equation_display": "E_GPa = a + b*T_K + c*T_K^2 + d*T_K^3 + e*T_K^4",
+      "coefficient_order": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e"
+      ],
+      "coefficient_units": [
+        "GPa",
+        "GPa/K",
+        "GPa/K^2",
+        "GPa/K^3",
+        "GPa/K^4"
+      ],
+      "unknown_conditions": {
+        "pressure": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "test_direction": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "grain_size": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "texture": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "porosity": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "product_form": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "specimen_geometry": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "cold_work": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "test_method": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "strain_rate_or_frequency": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "measurement_uncertainty": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "fit_error_statistical_definition": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        },
+        "confidence_level": {
+          "value": null,
+          "status": "not specified in verified property page or its Youngs-modulus reference entry"
+        }
+      },
+      "overlap_policy": "retain_all_matching_branches_without_selection_averaging_or_smoothing",
+      "verification": {
+        "source_equation_checked": true,
+        "synthetic_arithmetic_checked": true,
+        "independent_scientific_review": false,
+        "translation_review": "machine_assisted_not_scientifically_reviewed",
+        "original_charts_retrieved": false
+      },
+      "id": "nist_ss316_young_temperature",
+      "name": "316 Stainless temperature-conditioned Young’s modulus",
+      "descriptions": {
+        "en": "NIST empirical Young’s-modulus fits for 316 stainless steel, valid over 8–50 and 50–294 K. Both predictions are retained at 50 K; no source tie-break or physical discontinuity is inferred. Material treatment and measurement uncertainty are not established.",
+        "zh": "NIST 的 316 不锈钢杨氏模量经验拟合，有效区间为 8–50 K 和 50–294 K。50 K 保留两个预测；不推断来源未给出的优先规则或物理不连续。材料处理状态及测量不确定度尚未确定。",
+        "ja": "316 ステンレス鋼の NIST ヤング率経験的適合式。有効範囲は 8–50 K と 50–294 K。50 K では両予測を保持し、優先規則や物理的不連続を推定しない。材料の処理状態と測定の不確かさは未確認。",
+        "de": "Empirische NIST-Anpassungen des Elastizitätsmoduls von Edelstahl 316 für 8–50 und 50–294 K. Bei 50 K bleiben beide Vorhersagen erhalten; keine unbelegte Vorrangregel oder physikalische Unstetigkeit. Behandlungszustand und Messunsicherheit sind nicht belegt."
+      },
+      "material": {
+        "name": "316 Stainless",
+        "UNS": "S31600",
+        "temper": null,
+        "temper_status": "not specified"
+      },
+      "branches": [
+        {
+          "id": "ss316_8_50",
+          "coefficients_text": [
+            "2.084729E2",
+            "-1.358965E-1",
+            "8.368629E-3",
+            "-1.381700E-4",
+            "6.831930E-7"
+          ],
+          "source_data_range_K": [
+            5,
+            60
+          ],
+          "equation_range_K": [
+            8,
+            50
+          ],
+          "endpoints": "inclusive",
+          "reported_fit_error": {
+            "value": 1,
+            "unit": "percent_relative_to_source_data",
+            "statistic": null,
+            "confidence_level": null,
+            "is_measurement_uncertainty": false,
+            "is_confidence_interval": false,
+            "is_validated_maximum_error_bound": false
+          }
+        },
+        {
+          "id": "ss316_50_294",
+          "coefficients_text": [
+            "2.079488E2",
+            "7.394241E-2",
+            "-9.627200E-4",
+            "2.845560E-6",
+            "-3.240800E-9"
+          ],
+          "source_data_range_K": [
+            48,
+            294
+          ],
+          "equation_range_K": [
+            50,
+            294
+          ],
+          "endpoints": "inclusive",
+          "reported_fit_error": {
+            "value": 1,
+            "unit": "percent_relative_to_source_data",
+            "statistic": null,
+            "confidence_level": null,
+            "is_measurement_uncertainty": false,
+            "is_confidence_interval": false,
+            "is_validated_maximum_error_bound": false
+          }
+        }
+      ],
+      "source_ids": [
+        "nist_cryogenic_ss316",
+        "nist_cryogenic_material_index",
+        "nist_cryogenic_reference_list",
+        "bradley_radebaugh_lewis_2006",
+        "nist_cryogenic_srd_provenance",
+        "nist_public_information_reuse"
+      ],
+      "source_locator": "Second property table, Young’s Modulus column(s): units, a–e, data range (K), equation range (K), curve fit % error relative to data; ordinary T-polynomial immediately below. T_low and f contain no modulus values.",
+      "original_reference": {
+        "title": "LNG Materials and Fluids",
+        "editor": "Douglas Mann",
+        "institution": "National Bureau of Standards, Cryogenics Division",
+        "edition": "First Edition, 1977",
+        "chart": "1016",
+        "reference_list_locator": "Stainless Steel 316 > Young’s Modulus",
+        "reference_chart_retrieved": false,
+        "source_date_annotation": "6/1/1979 appears in reference entry; significance not independently established"
+      },
+      "scope_exclusions": [
+        "Temperatures outside each source equation interval",
+        "Unspecified specimen-condition inference",
+        "Other alloys, grades or unverified material conditions",
+        "Strength, yield, fracture, fatigue or allowable-stress inference",
+        "Universal stiffness bounds or certified reference values",
+        "Treating curve-fit error as measurement uncertainty, a confidence interval, or a validated maximum error bound",
+        "316L, 316H or other variants without independent evidence",
+        "Averaging, selecting, smoothing or interpolating between branch predictions at 50 K"
+      ],
+      "reuse": {
+        "status": "Selected NIST fit coefficients, equation ranges and derived examples are included in this public project; source-specific redistribution and relicensing terms remain unverified. Inclusion is not a permission grant, public-domain/CC0 claim, or NIST endorsement. The project MIT license applies to original project work, not NIST content.",
+        "caveats": [
+          "This is a correction of overstated license confidence, not a finding that private factual research or authorized private repository work is prohibited.",
+          "No affirmative product-specific license grant or SRD identifier was established by the pages inspected.",
+          "Absence of a page-level copyright marker in web extraction does not resolve the source compilation's rights.",
+          "NIST authorship and a paper-specific government-contribution notice do not establish a license for all linked database content.",
+          "Attribution records scientific provenance; attribution alone does not resolve copyright or license scope.",
+          "Do not attach a public data license or represent public redistribution as cleared on this evidence alone.",
+          "Do not copy or bundle source pages, PDFs, plots, raw measurement collections or source software.",
+          "Inclusion in this public repository is not evidence of redistribution permission and does not make NIST content MIT-licensed."
+        ],
+        "recommended_attribution": "Coefficients and validity intervals: NIST Cryogenic Material Properties Database, retrieved 2026-10-02. Original extraction, translations and synthetic arithmetic checks: Materials Boundaries research, 2026-10-02. Not endorsed by NIST; no source-license grant implied."
+      },
+      "curation_date": "2026-10-02",
+      "range_interpretation": "Inclusive endpoints are a catalog interpretation of the source range notation. Data ranges are metadata, not evidence of measured data at each endpoint. No extrapolation or monotonicity assumption. The two equation intervals touch at 50 K; both predictions must be returned there. Their source-data intervals overlap over 48–60 K, which must not expand equation applicability."
     }
   ]
 }

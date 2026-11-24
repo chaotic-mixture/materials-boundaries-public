@@ -155,11 +155,7 @@ Static SVG inspection is not browser interaction testing or material validation.
 
 ## NIST bibliography and release boundary
 
-The public package omits the five NIST cryogenic coefficient datasets and all
-their derived evaluations, fixtures and plots. Their bibliographic source
-records remain, but no runnable NIST model is supplied. This conservative
-choice pending reuse clarification does not establish that redistribution is
-prohibited and does not remove unrelated literature facts.
+The current catalog includes five empirical Young's modulus models from the NIST Cryogenic Material Properties Database alongside five synthetic demonstrations. The NIST records include selected coefficients, equation ranges and calculated examples. Source-specific redistribution and relicensing terms remain unverified. The project MIT license covers original project work. NIST retains its applicable rights. See [model ranges and examples](NIST_TEMPERATURE_MODELS.md).
 
 NIST currently lists the collection as a curated data collection, formerly
 SRD 152. Its current classification and past-SRD origin are distinct facts;

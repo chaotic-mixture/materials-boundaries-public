@@ -1,10 +1,10 @@
-# Synthetic temperature demonstrations
+# Temperature examples
 
-Every input and rendered export in this directory uses project-authored artificial
-polynomials. No real material, measured property, empirical correlation, source
-coefficient table, uncertainty estimate or design allowable is represented. K and
-GPa exercise the software's unit contract only. The intervals are arbitrary demo
-intervals; out-of-range inputs produce no evaluated values.
+Run an empirical example from the repository root with `python -m materials_boundaries temperature evaluate examples/temperature/al6061-77k.json --json`. The nine alloy inputs cover in-range, overlap and out-of-range cases. See [NIST models](../../docs/NIST_TEMPERATURE_MODELS.md) for source tables and reuse status.
+
+## Synthetic demonstrations
+
+These inputs exercise artificial polynomial branches and boundary handling.
 
 Inputs:
 
