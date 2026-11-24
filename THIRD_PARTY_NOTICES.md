@@ -19,6 +19,11 @@ license fields describe recorded evidence, not an independent permission grant.
 
 ## NIST cryogenic material properties
 
+The current catalog includes five empirical Young's modulus models from the NIST Cryogenic Material Properties Database alongside five synthetic demonstrations. The NIST records include selected coefficients, equation ranges and calculated examples. Source-specific redistribution and relicensing terms remain unverified. The project MIT license covers original project work. NIST retains its applicable rights.
+
+### First public release
+
+
 The five NIST cryogenic coefficient datasets used during development and all
 their derived sample outputs are **omitted from the first public release**.
 The packaged temperature examples instead use five original synthetic models

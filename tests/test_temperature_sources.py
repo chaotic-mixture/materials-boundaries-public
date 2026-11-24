@@ -184,7 +184,7 @@ class TemperatureConstructionTests(unittest.TestCase):
         models = read_catalog('temperature_models')['records']
         bundle = build_temperature_comparison(points_per_branch=2)
         self.assertEqual([case['model_id'] for case in bundle['cases']],[model['id'] for model in models])
-        self.assertEqual(bundle['classification'],'synthetic_demo')
+        self.assertEqual(bundle['classification'],'mixed_temperature_models')
         self.assertTrue({model['id'] for model in CONSTRUCTION['models']}.issubset(
             {case['model_id'] for case in bundle['cases']}))
         for fixture in CONSTRUCTION['models']:
