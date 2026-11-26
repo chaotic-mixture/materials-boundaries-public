@@ -4,7 +4,7 @@ An open, source-qualified materials database and executable mechanics toolkit. E
 
 **Current software release: v0.38.0**
 
-[Install and release notes](https://github.com/chaotic-mixture/materials-boundaries-public/releases/tag/v0.38.0) · [Database format](docs/DATABASE_FORMAT.md) · [Mechanics and knowledge base](docs/EXECUTABLE_MECHANICS.md) · [Contribute data](docs/DATABASE_CONTRIBUTING.zh.md)
+[Install and release notes](https://github.com/chaotic-mixture/materials-boundaries-public/releases/tag/v0.38.0) · [Database format](docs/DATABASE_FORMAT.md) · [Mechanics and knowledge base](docs/EXECUTABLE_MECHANICS.md) · [Contribute data](docs/DATABASE_CONTRIBUTING.en.md)
 
 ## Try the database
 
@@ -63,5 +63,5 @@ Records keep source wording, material state, test conditions, evidence locators,
 - [Download release v0.38.0](https://github.com/chaotic-mixture/materials-boundaries-public/releases/tag/v0.38.0)
 - [Database schema and fields](docs/DATABASE_FORMAT.md)
 - [Executable mechanics and knowledge base](docs/EXECUTABLE_MECHANICS.md)
-- [Data contribution process](docs/DATABASE_CONTRIBUTING.zh.md)
+- [Data contribution process](docs/DATABASE_CONTRIBUTING.en.md)
 - [Release checks and validation](docs/DATABASE_CI.md)
