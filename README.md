@@ -2,7 +2,7 @@
 
 An open, source-qualified materials database and executable mechanics toolkit. Explore material records with their conditions and sources, then run calculations whose assumptions and limits remain visible.
 
-**Current software release: v0.38.0**
+Current software release: **v0.38.0**
 
 [Install and release notes](https://github.com/chaotic-mixture/materials-boundaries-public/releases/tag/v0.38.0) · [Database format](docs/DATABASE_FORMAT.md) · [Mechanics and knowledge base](docs/EXECUTABLE_MECHANICS.md) · [Contribute data](docs/DATABASE_CONTRIBUTING.en.md)
 
